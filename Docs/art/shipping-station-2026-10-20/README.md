@@ -1,5 +1,7 @@
 # Сборщик: весовая станция — арт-кандидат и референсы
 
+**20.10.2026: модель repaint R2 одобрена пользователем.** Текущие wood/iron pixels, face-sized UV, editable Blockbench/Java export и native views — в [model/README.md](model/README.md), точный статус в `model/art-revision.json`. Использовать эти текущие файлы вместо прежнего compressed atlas/UV. GUI остаётся отдельным кандидатом, runtime integration ещё не выполнена этой сессией.
+
 20.10.2026. **SOURCE_EDITABLE / ART_CANDIDATE / NOT_INSTALLED.** Показанные пиксели не означают принятие пользователем и не являются записью работающего интерфейса Minecraft.
 
 ## Направление пользователя и исправления

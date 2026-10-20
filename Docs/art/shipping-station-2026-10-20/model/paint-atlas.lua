@@ -1,28 +1,86 @@
--- Native 64x32 hand-directed material atlas, painted and exported only in Aseprite.
+-- Collector repaint r2: material pixels authored in Aseprite at final64x64.
+-- Exact face islands come from geometry, never a whole16px tile squeezed onto a rail.
+local file=io.open(app.params.layout,'r');local layout=json.decode(file:read('*a'));file:close()
 local out=app.params.output
-local sprite=Sprite(64,32,ColorMode.RGB)
-local function c(hex)return app.pixelColor.rgba(tonumber(hex:sub(1,2),16),tonumber(hex:sub(3,4),16),tonumber(hex:sub(5,6),16),255)end
-local layers={sprite.layers[1],sprite:newLayer(),sprite:newLayer()}
-layers[1].name='01 material masses';layers[2].name='02 directional form and grain';layers[3].name='03 contact highlights and hardware'
-local ims={Image(sprite.spec),Image(sprite.spec),Image(sprite.spec)}
-local function r(l,x,y,w,h,col)for py=y,y+h-1 do for px=x,x+w-1 do ims[l]:drawPixel(px,py,c(col))end end end
--- Warm oak side: broad fibre changes and one connected knot, no random noise.
-r(1,0,0,16,16,'936B3E');r(2,0,0,16,2,'C59C60');r(2,0,2,16,1,'B58950');r(2,0,14,16,2,'64482F')
-r(2,1,5,8,1,'AD824B');r(2,2,6,5,1,'A27842');r(2,10,4,6,1,'735231');r(2,11,5,4,1,'735231')
-r(2,0,10,5,1,'735231');r(2,2,11,8,1,'735231');r(2,6,12,10,1,'AE8249');r(3,11,6,3,2,'67462D');r(3,10,6,1,1,'C29659');r(3,12,8,3,1,'AF8146')
--- Cut end/cross grain for rails and floor, intentionally different from sides.
-r(1,16,0,16,16,'AA814A');r(2,16,0,16,2,'D0A766');r(2,16,14,16,2,'775535');r(2,17,4,12,1,'906435');r(2,18,5,9,1,'906435');r(2,20,8,11,1,'BF9556');r(2,17,11,8,1,'906435');r(3,23,6,4,2,'765331');r(3,24,6,2,1,'D1AA69')
--- Quiet shaded interior.
-r(1,32,0,16,16,'59402C');r(2,32,0,16,2,'79603D');r(2,32,10,11,1,'684C30');r(2,39,6,9,1,'4C3728');r(2,32,15,16,1,'3A2D25')
--- Pan rim iron: blue-grey edge, wide quiet mid face, dark underside.
-r(1,48,0,16,16,'515B60');r(2,48,0,16,2,'A7AFAB');r(2,48,2,16,2,'737E81');r(2,48,12,16,4,'30383C');r(3,49,4,5,1,'879194');r(3,58,5,6,1,'637174');r(3,48,14,10,1,'222B30')
--- Brass fittings have their own warm light/shadow family.
-r(1,0,16,16,16,'B18A35');r(2,0,16,16,2,'F1D47C');r(2,0,18,16,2,'D2AC51');r(2,0,28,16,4,'785624');r(2,0,20,2,8,'D7B65F');r(2,13,20,3,8,'91702C');r(3,3,21,4,2,'E4C46A');r(3,9,26,4,1,'654A23')
--- Dark structural iron, not recoloured wood.
-r(1,16,16,16,16,'343D42');r(2,16,16,16,2,'758285');r(2,16,18,16,1,'58666A');r(2,16,29,16,3,'1E292F');r(3,18,21,5,1,'46545A');r(3,26,25,6,1,'273139')
--- Strap/rivet face; bolt is pixels, not needless geometry.
-r(1,32,16,16,16,'3C454A');r(2,32,16,16,1,'829091');r(2,32,30,16,2,'232E34');r(3,38,20,3,3,'1D292E');r(3,38,20,2,1,'B0B7B0');r(3,39,21,1,1,'7C898B');r(3,38,26,3,3,'1D292E');r(3,38,26,2,1,'9BA7A4')
--- Recessed pan interior; the brighter rim stays a separate UV island.
-r(1,48,16,16,16,'333E43');r(2,48,16,16,2,'68787C');r(2,48,18,2,12,'53656A');r(2,50,28,14,4,'222E35');r(3,53,21,8,1,'3F5056');r(3,56,23,6,1,'3F5056')
-for i=1,3 do sprite:newCel(layers[i],sprite.frames[1],ims[i],Point(0,0))end
-sprite:saveAs(out..'/shipping-station-atlas.aseprite');sprite:saveCopyAs(out..'/shipping-station-atlas.png');sprite:close()
+local spr=Sprite(64,64,ColorMode.RGB)
+local names={'01 substance','02 connected grain and plane values','03 selective metal contact','UV guide (hidden)'}
+local layers={spr.layers[1],spr:newLayer(),spr:newLayer(),spr:newLayer()}
+local images={Image(spr.spec),Image(spr.spec),Image(spr.spec),Image(spr.spec)}
+for i=1,4 do layers[i].name=names[i]end
+local function col(hex)return app.pixelColor.rgba(tonumber(hex:sub(1,2),16),tonumber(hex:sub(3,4),16),tonumber(hex:sub(5,6),16),255)end
+local function pixel(l,x,y,hex)images[l]:drawPixel(x,y,col(hex))end
+local function rect(l,x,y,w,h,hex)for yy=y,y+h-1 do for xx=x,x+w-1 do pixel(l,xx,yy,hex)end end end
+
+for _,i in ipairs(layout.islands)do
+ local x,y,w,h,role,v=i.x,i.y,i.width,i.height,i.material,i.variant
+ local wood=role:sub(1,4)=='wood'
+ local brass=role:sub(1,5)=='brass'
+ local base=wood and '936A39' or brass and 'B28B3D' or '3B4242'
+ if role=='wood_under' then base='65492E' end
+ if role=='wood_top' then base='AE8347' end
+ if role=='wood_post' then base='805C34' end
+ if role=='wood_end' then base='9E7844' end
+ if role=='iron_under' then base='242B2D' end
+ if role=='iron_top' or role=='iron_rim_top' then base='626B69' end
+ if role=='iron_bowl' then base='343C3C' end
+ if role=='brass_top' then base='D3AD58' end
+ if role=='brass_under' then base='785A2C' end
+ rect(1,x,y,w,h,base)
+ if role=='wood_board' then
+   -- Each long face has only its actual1–2 rows, with broad connected fibres.
+   if h>1 then rect(2,x,y+h-1,w,1,'7C582F') end
+   if w>=6 then
+     local start=v==0 and 1 or v==1 and 4 or 7
+     if start<w then rect(2,x+start,y,math.min(3,w-start),1,'AB8045')end
+     if h>1 and w>=10 then rect(2,x+(v==2 and 2 or 7),y+h-1,2,1,'8A6233')end
+   end
+ elseif role=='wood_post' then
+   if w>1 then rect(2,x+w-1,y,1,h,'956E3C') end
+   if h>=6 then rect(2,x,y+3,1,3,'73502F')end
+ elseif role=='wood_top' then
+   if h>1 then rect(2,x,y,w,1,'BA9455')end
+   if w>=8 then rect(2,x+3,y+h-1,3,1,'946B39')end
+ elseif role=='wood_end' then
+   if w>1 and h>1 then pixel(2,x+w-1,y+h-1,'805D35')end
+ elseif role=='wood_floor' then
+   -- Actual broad floor islands can carry three plank fields at native density.
+   for line=4,w-1,5 do rect(2,x+line,y,1,h,'765431')end
+   if w>=8 and h>=6 then rect(2,x+1,y+3,2,4,'A77C43');rect(2,x+7,y+1,2,3,'886137')end
+ elseif role=='iron_structure' then
+   -- Neutral dark forged iron, no chrome strip pattern on every face.
+   if w<=2 and h>=5 then
+     pixel(3,x,y+1,'697371');rect(2,x+w-1,y+3,1,math.min(4,h-3),'303738')
+   elseif w>=7 then
+     rect(2,x+1,y,3,1,'4D5654');rect(2,x+w-4,y+h-1,3,1,'303738')
+   end
+ elseif role=='iron_strap' then
+   if h>=5 then pixel(3,x,y+1,'858D85');pixel(2,x,y+2,'2A3131');pixel(3,x,y+h-2,'69736D')end
+ elseif role=='iron_rim' then
+   if w>=4 then rect(2,x,y,2,1,'4F5957')end
+ elseif role=='iron_rim_top' then
+   if w>=4 then pixel(3,x+1,y,'939A91')end
+ elseif role=='iron_bowl' then
+   if w>=3 and h>=3 then rect(2,x+1,y+1,w-2,h-2,'2C3435');rect(3,x,y,math.min(2,w),1,'55625F')end
+ elseif role=='iron_hanger' then
+   if h>=3 then pixel(3,x,y,'727D77')end
+ elseif role=='brass_body' then
+   if h>=2 then rect(2,x,y+h-1,w,1,'8D6B30')end
+   if w>=2 then pixel(3,x,y,'D6B460')end
+ end
+ -- Edge extension is only a gutter for atlas sampling, not extra on-model detail.
+ for yy=y-1,y+h do for xx=x-1,x+w do
+   if xx<x or xx>=x+w or yy<y or yy>=y+h then
+     local sx=math.max(x,math.min(x+w-1,xx));local sy=math.max(y,math.min(y+h-1,yy))
+     local value=images[1]:getPixel(sx,sy)
+     for l=2,3 do local c=images[l]:getPixel(sx,sy);if app.pixelColor.rgbaA(c)>0 then value=c end end
+     images[1]:drawPixel(xx,yy,value)
+   end
+ end end
+ for xx=x,x+w-1 do pixel(4,xx,y,'D95BCD')end
+ for yy=y,y+h-1 do pixel(4,x,yy,'D95BCD')end
+end
+for i=1,4 do spr:newCel(layers[i],spr.frames[1],images[i],Point(0,0))end
+layers[4].isVisible=false
+spr:saveAs(out..'/shipping-station-atlas.aseprite')
+spr:saveCopyAs(out..'/shipping-station-atlas.png')
+spr:close()

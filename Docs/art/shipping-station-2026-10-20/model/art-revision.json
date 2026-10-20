@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "revision": "repaint-r2",
+  "status": "USER_APPROVED_ART_NOT_INSTALLED",
+  "approved_date": "2026-10-20",
+  "approved_signal": "вооооо - approved",
+  "approval_scope": "Collector repaint-r2 native Blockbench material/UV views shown in this chat. No runtime, GUI or gameplay acceptance implied.",
+  "atlas": [
+    64,
+    64
+  ],
+  "body_cuboids": 47,
+  "goods_anchors": 12,
+  "geometry_changed": false,
+  "uv_layout": "native-uv-layout.json",
+  "paint_source": "paint-atlas.lua",
+  "references": [
+    "Minecraft1.20.1 barrel_side/anvil",
+    "Create6.0.8 andesite_casing/depot_side/depot_top",
+    "../reference/ai-weighing-block-reference.png (reference only)"
+  ],
+  "rejection": "r1 repeated complete16x16 material samples on fractional thin faces, compressed grain/chrome bands",
+  "ruling": "Allocate face-size islands; target1source texel/model unit with ceil/min1 for fractional geometry; no downsampling.64x64 includes57 islands and1px gutters, not higher on-model density.",
+  "evidence": "view-*.png are actual native Blockbench offscreen views with MSAA disabled; blockbench-viewport.png is desktop active view; no Minecraft launch",
+  "approved_artifact_sha256": {
+    "shipping-station.bbmodel": "02c2595a606223890bf3e64d5236cf8fd247a5b48654cf11605d25767ff00e30",
+    "shipping-station-goods-preview.bbmodel": "aea741a129241d1f655733d3b5a12dcc09c6bd5a124885be092ef3c5bbcdda82",
+    "shipping_station_body.json": "3eff2bbdf6faa44c5ed80314fed49570ba3ce8c8bc5e539f00986eff37d9172e",
+    "shipping-station-atlas.png": "9c7aad1e4ae6cdf05f495fa0dbb89422876fdeab326ab2476e6c2ac7f5419210",
+    "shipping-station-atlas.aseprite": "d33a209cf13921f26a5442d6b6f074c17a82d037e50cb2fab244205d82aa02f5",
+    "goods-anchors.json": "554a8bb8ff8df1187e3ba4fa5778ebd1b6024f397a9d8e2d2b5a576b7475ed2f",
+    "view-three-quarter.png": "4bb654be64d11eab1dfd85d771887c6260fc35b5ccad277f478d998927c1a687"
+  }
+}

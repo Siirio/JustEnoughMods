@@ -1,3 +1,10 @@
+## 2026-10-20 — Approve collector repaint with face-sized UVs
+
+- User rejects the collector's compressed wood/iron texture and explicitly requests inspecting references and reducing excessive detail across thin parts. The other session retains ownership of the remaining implementation plan; this session changes only the external model art and documentation.
+- Bug / Client art candidate / fixed16×16 material islands were squeezed onto fractional thin faces because the material study was reused as final object UVs / resolved for the external art by geometry-sized UV islands and native Aseprite repaint; user approves the shown R2 native Blockbench views with “вооооо - approved”. Game integration/acceptance remains pending.
+- Codex authors57 shared face-size islands on a native64×64 atlas with1px gutters: boards receive2 rows, thin hangers/pan edges1. Warm broad wood clusters and quiet dark iron replace compressed grain/chrome bands. Three paint layers plus hidden UV guide, refreshed editable BBModels/Java export and native multi-angle captures are preserved. Actual vanilla/Create references were inspected; no reference or AI pixels enter production art.
+- Body geometry47 cuboids,12 native item anchors, goods, controls and runtime resources are unchanged. No builds, tests, game launch, native publication/application, Server/MineRENT changes or world mutation by this art session. The current approved revision is recorded beside the model for the implementing session.
+
 ## 2026-10-20 — Complete test-to-original handoff and collector model candidate
 
 - User requests a complete next-chat implementation/cutover plan, incorporates the supplied builder/economy/Backpacked addendum, and explicitly excludes project fundraising. Existing two plans now include lot pricing, deterministic exact-ID classification, rational settlement, funded builder delivery, fishing/hunting fairness, backpack furnace and animation-free Auto Feed while preserving Workbench. Gameplay/runtime implementation remains pending.

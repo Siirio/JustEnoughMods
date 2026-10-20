@@ -1,0 +1,4588 @@
+{
+  "schema": 1,
+  "atlas": [
+    64,
+    64
+  ],
+  "density": "1texel/model unit, ceil with min1 on fractional thin geometry",
+  "gutter": 1,
+  "islands": [
+    {
+      "name": "wood_board_0_14x2",
+      "material": "wood_board",
+      "variant": 0,
+      "width": 14,
+      "height": 2,
+      "users": [
+        "floor/north",
+        "floor/south",
+        "floor/east",
+        "floor/west"
+      ],
+      "x": 35,
+      "y": 30
+    },
+    {
+      "name": "wood_floor_0_14x14",
+      "material": "wood_floor",
+      "variant": 0,
+      "width": 14,
+      "height": 14,
+      "users": [
+        "floor/up"
+      ],
+      "x": 1,
+      "y": 1
+    },
+    {
+      "name": "wood_under_0_14x14",
+      "material": "wood_under",
+      "variant": 0,
+      "width": 14,
+      "height": 14,
+      "users": [
+        "floor/down"
+      ],
+      "x": 17,
+      "y": 1
+    },
+    {
+      "name": "wood_post_0_2x9",
+      "material": "wood_post",
+      "variant": 0,
+      "width": 2,
+      "height": 9,
+      "users": [
+        "corner_1_1/north",
+        "corner_1_1/south",
+        "corner_1_1/east",
+        "corner_1_1/west",
+        "corner_1_13.6/north",
+        "corner_1_13.6/south",
+        "corner_1_13.6/east",
+        "corner_1_13.6/west",
+        "corner_13.6_1/north",
+        "corner_13.6_1/south",
+        "corner_13.6_1/east",
+        "corner_13.6_1/west",
+        "corner_13.6_13.6/north",
+        "corner_13.6_13.6/south",
+        "corner_13.6_13.6/east",
+        "corner_13.6_13.6/west"
+      ],
+      "x": 53,
+      "y": 1
+    },
+    {
+      "name": "wood_end_0_2x2",
+      "material": "wood_end",
+      "variant": 0,
+      "width": 2,
+      "height": 2,
+      "users": [
+        "corner_1_1/up",
+        "corner_1_1/down",
+        "corner_1_13.6/up",
+        "corner_1_13.6/down",
+        "corner_13.6_1/up",
+        "corner_13.6_1/down",
+        "corner_13.6_13.6/up",
+        "corner_13.6_13.6/down",
+        "front_board_1.4/east",
+        "front_board_1.4/west",
+        "back_board_1.4/east",
+        "back_board_1.4/west",
+        "left_board_1.4/north",
+        "left_board_1.4/south",
+        "right_board_1.4/north",
+        "right_board_1.4/south",
+        "front_board_4/east",
+        "front_board_4/west",
+        "back_board_4/east",
+        "back_board_4/west",
+        "left_board_4/north",
+        "left_board_4/south",
+        "right_board_4/north",
+        "right_board_4/south",
+        "front_board_6.7/east",
+        "front_board_6.7/west",
+        "back_board_6.7/east",
+        "back_board_6.7/west",
+        "left_board_6.7/north",
+        "left_board_6.7/south",
+        "right_board_6.7/north",
+        "right_board_6.7/south"
+      ],
+      "x": 51,
+      "y": 34
+    },
+    {
+      "name": "wood_board_0_12x2",
+      "material": "wood_board",
+      "variant": 0,
+      "width": 12,
+      "height": 2,
+      "users": [
+        "front_board_1.4/north",
+        "front_board_1.4/south",
+        "back_board_1.4/north",
+        "back_board_1.4/south",
+        "left_board_1.4/east",
+        "left_board_1.4/west",
+        "right_board_1.4/east",
+        "right_board_1.4/west"
+      ],
+      "x": 1,
+      "y": 24
+    },
+    {
+      "name": "wood_top_0_12x2",
+      "material": "wood_top",
+      "variant": 0,
+      "width": 12,
+      "height": 2,
+      "users": [
+        "front_board_1.4/up",
+        "back_board_1.4/up",
+        "front_board_4/up",
+        "back_board_4/up",
+        "front_board_6.7/up",
+        "back_board_6.7/up"
+      ],
+      "x": 15,
+      "y": 34
+    },
+    {
+      "name": "wood_under_0_12x2",
+      "material": "wood_under",
+      "variant": 0,
+      "width": 12,
+      "height": 2,
+      "users": [
+        "front_board_1.4/down",
+        "back_board_1.4/down",
+        "front_board_4/down",
+        "back_board_4/down",
+        "front_board_6.7/down",
+        "back_board_6.7/down"
+      ],
+      "x": 29,
+      "y": 34
+    },
+    {
+      "name": "wood_top_0_2x12",
+      "material": "wood_top",
+      "variant": 0,
+      "width": 2,
+      "height": 12,
+      "users": [
+        "left_board_1.4/up",
+        "right_board_1.4/up",
+        "left_board_4/up",
+        "right_board_4/up",
+        "left_board_6.7/up",
+        "right_board_6.7/up"
+      ],
+      "x": 37,
+      "y": 1
+    },
+    {
+      "name": "wood_under_0_2x12",
+      "material": "wood_under",
+      "variant": 0,
+      "width": 2,
+      "height": 12,
+      "users": [
+        "left_board_1.4/down",
+        "right_board_1.4/down",
+        "left_board_4/down",
+        "right_board_4/down",
+        "left_board_6.7/down",
+        "right_board_6.7/down"
+      ],
+      "x": 45,
+      "y": 1
+    },
+    {
+      "name": "wood_board_1_12x2",
+      "material": "wood_board",
+      "variant": 1,
+      "width": 12,
+      "height": 2,
+      "users": [
+        "front_board_4/north",
+        "front_board_4/south",
+        "back_board_4/north",
+        "back_board_4/south",
+        "left_board_4/east",
+        "left_board_4/west",
+        "right_board_4/east",
+        "right_board_4/west"
+      ],
+      "x": 51,
+      "y": 30
+    },
+    {
+      "name": "wood_board_2_12x2",
+      "material": "wood_board",
+      "variant": 2,
+      "width": 12,
+      "height": 2,
+      "users": [
+        "front_board_6.7/north",
+        "front_board_6.7/south",
+        "back_board_6.7/north",
+        "back_board_6.7/south",
+        "left_board_6.7/east",
+        "left_board_6.7/west",
+        "right_board_6.7/east",
+        "right_board_6.7/west"
+      ],
+      "x": 1,
+      "y": 32
+    },
+    {
+      "name": "wood_board_1_15x1",
+      "material": "wood_board",
+      "variant": 1,
+      "width": 15,
+      "height": 1,
+      "users": [
+        "front_rail/north",
+        "front_rail/south",
+        "back_rail/north",
+        "back_rail/south"
+      ],
+      "x": 18,
+      "y": 38
+    },
+    {
+      "name": "wood_end_1_2x1",
+      "material": "wood_end",
+      "variant": 1,
+      "width": 2,
+      "height": 1,
+      "users": [
+        "front_rail/east",
+        "front_rail/west",
+        "back_rail/east",
+        "back_rail/west",
+        "left_rail/north",
+        "left_rail/south",
+        "right_rail/north",
+        "right_rail/south"
+      ],
+      "x": 61,
+      "y": 34
+    },
+    {
+      "name": "wood_top_1_15x2",
+      "material": "wood_top",
+      "variant": 1,
+      "width": 15,
+      "height": 2,
+      "users": [
+        "front_rail/up",
+        "back_rail/up"
+      ],
+      "x": 1,
+      "y": 28
+    },
+    {
+      "name": "wood_under_1_15x2",
+      "material": "wood_under",
+      "variant": 1,
+      "width": 15,
+      "height": 2,
+      "users": [
+        "front_rail/down",
+        "back_rail/down"
+      ],
+      "x": 18,
+      "y": 30
+    },
+    {
+      "name": "wood_board_1_12x1",
+      "material": "wood_board",
+      "variant": 1,
+      "width": 12,
+      "height": 1,
+      "users": [
+        "left_rail/east",
+        "left_rail/west",
+        "right_rail/east",
+        "right_rail/west"
+      ],
+      "x": 49,
+      "y": 38
+    },
+    {
+      "name": "wood_top_1_2x12",
+      "material": "wood_top",
+      "variant": 1,
+      "width": 2,
+      "height": 12,
+      "users": [
+        "left_rail/up",
+        "right_rail/up"
+      ],
+      "x": 41,
+      "y": 1
+    },
+    {
+      "name": "wood_under_1_2x12",
+      "material": "wood_under",
+      "variant": 1,
+      "width": 2,
+      "height": 12,
+      "users": [
+        "left_rail/down",
+        "right_rail/down"
+      ],
+      "x": 49,
+      "y": 1
+    },
+    {
+      "name": "wood_board_1_3x1",
+      "material": "wood_board",
+      "variant": 1,
+      "width": 3,
+      "height": 1,
+      "users": [
+        "mast_mount_board/north",
+        "mast_mount_board/south"
+      ],
+      "x": 43,
+      "y": 41
+    },
+    {
+      "name": "wood_board_1_4x1",
+      "material": "wood_board",
+      "variant": 1,
+      "width": 4,
+      "height": 1,
+      "users": [
+        "mast_mount_board/east",
+        "mast_mount_board/west"
+      ],
+      "x": 32,
+      "y": 41
+    },
+    {
+      "name": "wood_top_1_3x4",
+      "material": "wood_top",
+      "variant": 1,
+      "width": 3,
+      "height": 4,
+      "users": [
+        "mast_mount_board/up"
+      ],
+      "x": 15,
+      "y": 17
+    },
+    {
+      "name": "wood_under_1_3x4",
+      "material": "wood_under",
+      "variant": 1,
+      "width": 3,
+      "height": 4,
+      "users": [
+        "mast_mount_board/down"
+      ],
+      "x": 20,
+      "y": 17
+    },
+    {
+      "name": "iron_strap_0_1x8",
+      "material": "iron_strap",
+      "variant": 0,
+      "width": 1,
+      "height": 8,
+      "users": [
+        "strap_0.92_0.92/north",
+        "strap_0.92_0.92/south",
+        "strap_0.92_13.65/north",
+        "strap_0.92_13.65/south",
+        "strap_14.46_0.92/north",
+        "strap_14.46_0.92/south",
+        "strap_14.46_13.65/north",
+        "strap_14.46_13.65/south"
+      ],
+      "x": 61,
+      "y": 1
+    },
+    {
+      "name": "iron_strap_0_2x8",
+      "material": "iron_strap",
+      "variant": 0,
+      "width": 2,
+      "height": 8,
+      "users": [
+        "strap_0.92_0.92/east",
+        "strap_0.92_0.92/west",
+        "strap_0.92_13.65/east",
+        "strap_0.92_13.65/west",
+        "strap_14.46_0.92/east",
+        "strap_14.46_0.92/west",
+        "strap_14.46_13.65/east",
+        "strap_14.46_13.65/west"
+      ],
+      "x": 57,
+      "y": 1
+    },
+    {
+      "name": "iron_strap_0_1x2",
+      "material": "iron_strap",
+      "variant": 0,
+      "width": 1,
+      "height": 2,
+      "users": [
+        "strap_0.92_0.92/up",
+        "strap_0.92_0.92/down",
+        "strap_0.92_13.65/up",
+        "strap_0.92_13.65/down",
+        "strap_14.46_0.92/up",
+        "strap_14.46_0.92/down",
+        "strap_14.46_13.65/up",
+        "strap_14.46_13.65/down"
+      ],
+      "x": 58,
+      "y": 34
+    },
+    {
+      "name": "iron_structure_0_2x14",
+      "material": "iron_structure",
+      "variant": 0,
+      "width": 2,
+      "height": 14,
+      "users": [
+        "mast_floor_support/north",
+        "mast_floor_support/south",
+        "mast_floor_support/east",
+        "mast_floor_support/west"
+      ],
+      "x": 33,
+      "y": 1
+    },
+    {
+      "name": "iron_top_0_2x2",
+      "material": "iron_top",
+      "variant": 0,
+      "width": 2,
+      "height": 2,
+      "users": [
+        "mast_floor_support/up"
+      ],
+      "x": 43,
+      "y": 34
+    },
+    {
+      "name": "iron_under_0_2x2",
+      "material": "iron_under",
+      "variant": 0,
+      "width": 2,
+      "height": 2,
+      "users": [
+        "mast_floor_support/down"
+      ],
+      "x": 47,
+      "y": 34
+    },
+    {
+      "name": "iron_structure_0_15x1",
+      "material": "iron_structure",
+      "variant": 0,
+      "width": 15,
+      "height": 1,
+      "users": [
+        "balance_beam/north",
+        "balance_beam/south"
+      ],
+      "x": 1,
+      "y": 38
+    },
+    {
+      "name": "iron_structure_0_2x1",
+      "material": "iron_structure",
+      "variant": 0,
+      "width": 2,
+      "height": 1,
+      "users": [
+        "balance_beam/east",
+        "balance_beam/west"
+      ],
+      "x": 53,
+      "y": 12
+    },
+    {
+      "name": "iron_top_0_15x2",
+      "material": "iron_top",
+      "variant": 0,
+      "width": 15,
+      "height": 2,
+      "users": [
+        "balance_beam/up"
+      ],
+      "x": 25,
+      "y": 26
+    },
+    {
+      "name": "iron_under_0_15x2",
+      "material": "iron_under",
+      "variant": 0,
+      "width": 15,
+      "height": 2,
+      "users": [
+        "balance_beam/down"
+      ],
+      "x": 42,
+      "y": 26
+    },
+    {
+      "name": "iron_rim_0_5x1",
+      "material": "iron_rim",
+      "variant": 0,
+      "width": 5,
+      "height": 1,
+      "users": [
+        "pan_front_1/north",
+        "pan_front_1/south",
+        "pan_back_1/north",
+        "pan_back_1/south",
+        "pan_front_10.5/north",
+        "pan_front_10.5/south",
+        "pan_back_10.5/north",
+        "pan_back_10.5/south"
+      ],
+      "x": 25,
+      "y": 23
+    },
+    {
+      "name": "iron_rim_0_1x1",
+      "material": "iron_rim",
+      "variant": 0,
+      "width": 1,
+      "height": 1,
+      "users": [
+        "pan_front_1/east",
+        "pan_front_1/west",
+        "pan_back_1/east",
+        "pan_back_1/west",
+        "pan_left_1/north",
+        "pan_left_1/south",
+        "pan_right_1/north",
+        "pan_right_1/south",
+        "pan_front_10.5/east",
+        "pan_front_10.5/west",
+        "pan_back_10.5/east",
+        "pan_back_10.5/west",
+        "pan_left_10.5/north",
+        "pan_left_10.5/south",
+        "pan_right_10.5/north",
+        "pan_right_10.5/south"
+      ],
+      "x": 51,
+      "y": 41
+    },
+    {
+      "name": "iron_rim_top_0_5x1",
+      "material": "iron_rim_top",
+      "variant": 0,
+      "width": 5,
+      "height": 1,
+      "users": [
+        "pan_front_1/up",
+        "pan_back_1/up",
+        "pan_front_10.5/up",
+        "pan_back_10.5/up"
+      ],
+      "x": 12,
+      "y": 41
+    },
+    {
+      "name": "iron_under_0_5x1",
+      "material": "iron_under",
+      "variant": 0,
+      "width": 5,
+      "height": 1,
+      "users": [
+        "pan_front_1/down",
+        "pan_back_1/down",
+        "pan_front_10.5/down",
+        "pan_back_10.5/down",
+        "pan_floor_1/north",
+        "pan_floor_1/south",
+        "pan_floor_1/east",
+        "pan_floor_1/west",
+        "pan_floor_10.5/north",
+        "pan_floor_10.5/south",
+        "pan_floor_10.5/east",
+        "pan_floor_10.5/west"
+      ],
+      "x": 19,
+      "y": 41
+    },
+    {
+      "name": "iron_rim_0_4x1",
+      "material": "iron_rim",
+      "variant": 0,
+      "width": 4,
+      "height": 1,
+      "users": [
+        "pan_left_1/east",
+        "pan_left_1/west",
+        "pan_right_1/east",
+        "pan_right_1/west",
+        "pan_left_10.5/east",
+        "pan_left_10.5/west",
+        "pan_right_10.5/east",
+        "pan_right_10.5/west"
+      ],
+      "x": 26,
+      "y": 41
+    },
+    {
+      "name": "iron_rim_top_0_1x4",
+      "material": "iron_rim_top",
+      "variant": 0,
+      "width": 1,
+      "height": 4,
+      "users": [
+        "pan_left_1/up",
+        "pan_right_1/up",
+        "pan_left_10.5/up",
+        "pan_right_10.5/up"
+      ],
+      "x": 28,
+      "y": 17
+    },
+    {
+      "name": "iron_under_0_1x4",
+      "material": "iron_under",
+      "variant": 0,
+      "width": 1,
+      "height": 4,
+      "users": [
+        "pan_left_1/down",
+        "pan_right_1/down",
+        "pan_left_10.5/down",
+        "pan_right_10.5/down"
+      ],
+      "x": 31,
+      "y": 17
+    },
+    {
+      "name": "iron_hanger_0_1x4",
+      "material": "iron_hanger",
+      "variant": 0,
+      "width": 1,
+      "height": 4,
+      "users": [
+        "pan_hanger_1_0.4/north",
+        "pan_hanger_1_0.4/south",
+        "pan_hanger_1_0.4/east",
+        "pan_hanger_1_0.4/west",
+        "pan_hanger_1_3.8/north",
+        "pan_hanger_1_3.8/south",
+        "pan_hanger_1_3.8/east",
+        "pan_hanger_1_3.8/west",
+        "pan_hanger_10.5_0.4/north",
+        "pan_hanger_10.5_0.4/south",
+        "pan_hanger_10.5_0.4/east",
+        "pan_hanger_10.5_0.4/west",
+        "pan_hanger_10.5_3.8/north",
+        "pan_hanger_10.5_3.8/south",
+        "pan_hanger_10.5_3.8/east",
+        "pan_hanger_10.5_3.8/west"
+      ],
+      "x": 25,
+      "y": 17
+    },
+    {
+      "name": "iron_hanger_0_1x1",
+      "material": "iron_hanger",
+      "variant": 0,
+      "width": 1,
+      "height": 1,
+      "users": [
+        "pan_hanger_1_0.4/up",
+        "pan_hanger_1_0.4/down",
+        "pan_hanger_1_3.8/up",
+        "pan_hanger_1_3.8/down",
+        "pan_hanger_10.5_0.4/up",
+        "pan_hanger_10.5_0.4/down",
+        "pan_hanger_10.5_3.8/up",
+        "pan_hanger_10.5_3.8/down"
+      ],
+      "x": 48,
+      "y": 41
+    },
+    {
+      "name": "brass_body_0_3x1",
+      "material": "brass_body",
+      "variant": 0,
+      "width": 3,
+      "height": 1,
+      "users": [
+        "mast_foot/north",
+        "mast_foot/south",
+        "mast_foot/east",
+        "mast_foot/west"
+      ],
+      "x": 38,
+      "y": 41
+    },
+    {
+      "name": "brass_top_0_3x3",
+      "material": "brass_top",
+      "variant": 0,
+      "width": 3,
+      "height": 3,
+      "users": [
+        "mast_foot/up"
+      ],
+      "x": 15,
+      "y": 23
+    },
+    {
+      "name": "brass_under_0_3x3",
+      "material": "brass_under",
+      "variant": 0,
+      "width": 3,
+      "height": 3,
+      "users": [
+        "mast_foot/down"
+      ],
+      "x": 20,
+      "y": 23
+    },
+    {
+      "name": "brass_body_0_2x2",
+      "material": "brass_body",
+      "variant": 0,
+      "width": 2,
+      "height": 2,
+      "users": [
+        "center_pivot/north",
+        "center_pivot/south",
+        "center_pivot/east",
+        "center_pivot/west",
+        "beam_end_1.2/east",
+        "beam_end_1.2/west",
+        "beam_end_13.8/east",
+        "beam_end_13.8/west"
+      ],
+      "x": 57,
+      "y": 11
+    },
+    {
+      "name": "brass_top_0_2x2",
+      "material": "brass_top",
+      "variant": 0,
+      "width": 2,
+      "height": 2,
+      "users": [
+        "center_pivot/up"
+      ],
+      "x": 61,
+      "y": 11
+    },
+    {
+      "name": "brass_under_0_2x2",
+      "material": "brass_under",
+      "variant": 0,
+      "width": 2,
+      "height": 2,
+      "users": [
+        "center_pivot/down"
+      ],
+      "x": 59,
+      "y": 26
+    },
+    {
+      "name": "brass_body_0_1x2",
+      "material": "brass_body",
+      "variant": 0,
+      "width": 1,
+      "height": 2,
+      "users": [
+        "beam_end_1.2/north",
+        "beam_end_1.2/south",
+        "beam_end_13.8/north",
+        "beam_end_13.8/south"
+      ],
+      "x": 34,
+      "y": 17
+    },
+    {
+      "name": "brass_top_0_1x2",
+      "material": "brass_top",
+      "variant": 0,
+      "width": 1,
+      "height": 2,
+      "users": [
+        "beam_end_1.2/up",
+        "beam_end_13.8/up"
+      ],
+      "x": 34,
+      "y": 21
+    },
+    {
+      "name": "brass_under_0_1x2",
+      "material": "brass_under",
+      "variant": 0,
+      "width": 1,
+      "height": 2,
+      "users": [
+        "beam_end_1.2/down",
+        "beam_end_13.8/down"
+      ],
+      "x": 55,
+      "y": 34
+    },
+    {
+      "name": "iron_bowl_0_5x5",
+      "material": "iron_bowl",
+      "variant": 0,
+      "width": 5,
+      "height": 5,
+      "users": [
+        "pan_floor_1/up",
+        "pan_floor_10.5/up"
+      ],
+      "x": 1,
+      "y": 17
+    },
+    {
+      "name": "iron_under_0_5x5",
+      "material": "iron_under",
+      "variant": 0,
+      "width": 5,
+      "height": 5,
+      "users": [
+        "pan_floor_1/down",
+        "pan_floor_10.5/down"
+      ],
+      "x": 8,
+      "y": 17
+    },
+    {
+      "name": "wood_board_0_12x1",
+      "material": "wood_board",
+      "variant": 0,
+      "width": 12,
+      "height": 1,
+      "users": [
+        "supported_inner_cargo_tray/north",
+        "supported_inner_cargo_tray/south"
+      ],
+      "x": 35,
+      "y": 38
+    },
+    {
+      "name": "wood_board_0_9x1",
+      "material": "wood_board",
+      "variant": 0,
+      "width": 9,
+      "height": 1,
+      "users": [
+        "supported_inner_cargo_tray/east",
+        "supported_inner_cargo_tray/west"
+      ],
+      "x": 1,
+      "y": 41
+    },
+    {
+      "name": "wood_floor_0_12x9",
+      "material": "wood_floor",
+      "variant": 0,
+      "width": 12,
+      "height": 9,
+      "users": [
+        "supported_inner_cargo_tray/up"
+      ],
+      "x": 37,
+      "y": 15
+    },
+    {
+      "name": "wood_under_0_12x9",
+      "material": "wood_under",
+      "variant": 0,
+      "width": 12,
+      "height": 9,
+      "users": [
+        "supported_inner_cargo_tray/down"
+      ],
+      "x": 51,
+      "y": 15
+    }
+  ],
+  "faces": [
+    {
+      "node": "floor",
+      "side": "north",
+      "island": "wood_board_0_14x2",
+      "model_size": [
+        14,
+        1.4
+      ],
+      "texel_size": [
+        14,
+        2
+      ]
+    },
+    {
+      "node": "floor",
+      "side": "south",
+      "island": "wood_board_0_14x2",
+      "model_size": [
+        14,
+        1.4
+      ],
+      "texel_size": [
+        14,
+        2
+      ]
+    },
+    {
+      "node": "floor",
+      "side": "east",
+      "island": "wood_board_0_14x2",
+      "model_size": [
+        14,
+        1.4
+      ],
+      "texel_size": [
+        14,
+        2
+      ]
+    },
+    {
+      "node": "floor",
+      "side": "west",
+      "island": "wood_board_0_14x2",
+      "model_size": [
+        14,
+        1.4
+      ],
+      "texel_size": [
+        14,
+        2
+      ]
+    },
+    {
+      "node": "floor",
+      "side": "up",
+      "island": "wood_floor_0_14x14",
+      "model_size": [
+        14,
+        14
+      ],
+      "texel_size": [
+        14,
+        14
+      ]
+    },
+    {
+      "node": "floor",
+      "side": "down",
+      "island": "wood_under_0_14x14",
+      "model_size": [
+        14,
+        14
+      ],
+      "texel_size": [
+        14,
+        14
+      ]
+    },
+    {
+      "node": "corner_1_1",
+      "side": "north",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_1",
+      "side": "south",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_1",
+      "side": "east",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_1",
+      "side": "west",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_1",
+      "side": "up",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4,
+        1.4
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_1_1",
+      "side": "down",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4,
+        1.4
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_1_13.6",
+      "side": "north",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_13.6",
+      "side": "south",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_13.6",
+      "side": "east",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_13.6",
+      "side": "west",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_1_13.6",
+      "side": "up",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4,
+        1.4000000000000004
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_1_13.6",
+      "side": "down",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4,
+        1.4000000000000004
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_13.6_1",
+      "side": "north",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_1",
+      "side": "south",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_1",
+      "side": "east",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_1",
+      "side": "west",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_1",
+      "side": "up",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4000000000000004,
+        1.4
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_13.6_1",
+      "side": "down",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4000000000000004,
+        1.4
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_13.6_13.6",
+      "side": "north",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_13.6",
+      "side": "south",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_13.6",
+      "side": "east",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_13.6",
+      "side": "west",
+      "island": "wood_post_0_2x9",
+      "model_size": [
+        1.4000000000000004,
+        8.4
+      ],
+      "texel_size": [
+        2,
+        9
+      ]
+    },
+    {
+      "node": "corner_13.6_13.6",
+      "side": "up",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4000000000000004,
+        1.4000000000000004
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "corner_13.6_13.6",
+      "side": "down",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.4000000000000004,
+        1.4000000000000004
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_1.4",
+      "side": "north",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_1.4",
+      "side": "south",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_1.4",
+      "side": "east",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_1.4",
+      "side": "west",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_1.4",
+      "side": "up",
+      "island": "wood_top_0_12x2",
+      "model_size": [
+        11.2,
+        1.05
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_1.4",
+      "side": "down",
+      "island": "wood_under_0_12x2",
+      "model_size": [
+        11.2,
+        1.05
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_1.4",
+      "side": "north",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_1.4",
+      "side": "south",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_1.4",
+      "side": "east",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "back_board_1.4",
+      "side": "west",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "back_board_1.4",
+      "side": "up",
+      "island": "wood_top_0_12x2",
+      "model_size": [
+        11.2,
+        1.0500000000000007
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_1.4",
+      "side": "down",
+      "island": "wood_under_0_12x2",
+      "model_size": [
+        11.2,
+        1.0500000000000007
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_1.4",
+      "side": "north",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "left_board_1.4",
+      "side": "south",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "left_board_1.4",
+      "side": "east",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_1.4",
+      "side": "west",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_1.4",
+      "side": "up",
+      "island": "wood_top_0_2x12",
+      "model_size": [
+        1.05,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "left_board_1.4",
+      "side": "down",
+      "island": "wood_under_0_2x12",
+      "model_size": [
+        1.05,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_board_1.4",
+      "side": "north",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "right_board_1.4",
+      "side": "south",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "right_board_1.4",
+      "side": "east",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "right_board_1.4",
+      "side": "west",
+      "island": "wood_board_0_12x2",
+      "model_size": [
+        11.2,
+        1.8000000000000003
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "right_board_1.4",
+      "side": "up",
+      "island": "wood_top_0_2x12",
+      "model_size": [
+        1.0500000000000007,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_board_1.4",
+      "side": "down",
+      "island": "wood_under_0_2x12",
+      "model_size": [
+        1.0500000000000007,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "front_board_4",
+      "side": "north",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_4",
+      "side": "south",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_4",
+      "side": "east",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_4",
+      "side": "west",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_4",
+      "side": "up",
+      "island": "wood_top_0_12x2",
+      "model_size": [
+        11.2,
+        1.05
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_4",
+      "side": "down",
+      "island": "wood_under_0_12x2",
+      "model_size": [
+        11.2,
+        1.05
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_4",
+      "side": "north",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_4",
+      "side": "south",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_4",
+      "side": "east",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "back_board_4",
+      "side": "west",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "back_board_4",
+      "side": "up",
+      "island": "wood_top_0_12x2",
+      "model_size": [
+        11.2,
+        1.0500000000000007
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_4",
+      "side": "down",
+      "island": "wood_under_0_12x2",
+      "model_size": [
+        11.2,
+        1.0500000000000007
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_4",
+      "side": "north",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "left_board_4",
+      "side": "south",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "left_board_4",
+      "side": "east",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_4",
+      "side": "west",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_4",
+      "side": "up",
+      "island": "wood_top_0_2x12",
+      "model_size": [
+        1.05,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "left_board_4",
+      "side": "down",
+      "island": "wood_under_0_2x12",
+      "model_size": [
+        1.05,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_board_4",
+      "side": "north",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "right_board_4",
+      "side": "south",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "right_board_4",
+      "side": "east",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "right_board_4",
+      "side": "west",
+      "island": "wood_board_1_12x2",
+      "model_size": [
+        11.2,
+        1.5999999999999996
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "right_board_4",
+      "side": "up",
+      "island": "wood_top_0_2x12",
+      "model_size": [
+        1.0500000000000007,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_board_4",
+      "side": "down",
+      "island": "wood_under_0_2x12",
+      "model_size": [
+        1.0500000000000007,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "front_board_6.7",
+      "side": "north",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_6.7",
+      "side": "south",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_6.7",
+      "side": "east",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_6.7",
+      "side": "west",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "front_board_6.7",
+      "side": "up",
+      "island": "wood_top_0_12x2",
+      "model_size": [
+        11.2,
+        1.05
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "front_board_6.7",
+      "side": "down",
+      "island": "wood_under_0_12x2",
+      "model_size": [
+        11.2,
+        1.05
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_6.7",
+      "side": "north",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_6.7",
+      "side": "south",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_6.7",
+      "side": "east",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "back_board_6.7",
+      "side": "west",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "back_board_6.7",
+      "side": "up",
+      "island": "wood_top_0_12x2",
+      "model_size": [
+        11.2,
+        1.0500000000000007
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "back_board_6.7",
+      "side": "down",
+      "island": "wood_under_0_12x2",
+      "model_size": [
+        11.2,
+        1.0500000000000007
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_6.7",
+      "side": "north",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "left_board_6.7",
+      "side": "south",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.05,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "left_board_6.7",
+      "side": "east",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_6.7",
+      "side": "west",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "left_board_6.7",
+      "side": "up",
+      "island": "wood_top_0_2x12",
+      "model_size": [
+        1.05,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "left_board_6.7",
+      "side": "down",
+      "island": "wood_under_0_2x12",
+      "model_size": [
+        1.05,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_board_6.7",
+      "side": "north",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "right_board_6.7",
+      "side": "south",
+      "island": "wood_end_0_2x2",
+      "model_size": [
+        1.0500000000000007,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "right_board_6.7",
+      "side": "east",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "right_board_6.7",
+      "side": "west",
+      "island": "wood_board_2_12x2",
+      "model_size": [
+        11.2,
+        1.7000000000000002
+      ],
+      "texel_size": [
+        12,
+        2
+      ]
+    },
+    {
+      "node": "right_board_6.7",
+      "side": "up",
+      "island": "wood_top_0_2x12",
+      "model_size": [
+        1.0500000000000007,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_board_6.7",
+      "side": "down",
+      "island": "wood_under_0_2x12",
+      "model_size": [
+        1.0500000000000007,
+        11.2
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "front_rail",
+      "side": "north",
+      "island": "wood_board_1_15x1",
+      "model_size": [
+        14.399999999999999,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        15,
+        1
+      ]
+    },
+    {
+      "node": "front_rail",
+      "side": "south",
+      "island": "wood_board_1_15x1",
+      "model_size": [
+        14.399999999999999,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        15,
+        1
+      ]
+    },
+    {
+      "node": "front_rail",
+      "side": "east",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6500000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "front_rail",
+      "side": "west",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6500000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "front_rail",
+      "side": "up",
+      "island": "wood_top_1_15x2",
+      "model_size": [
+        14.399999999999999,
+        1.6500000000000001
+      ],
+      "texel_size": [
+        15,
+        2
+      ]
+    },
+    {
+      "node": "front_rail",
+      "side": "down",
+      "island": "wood_under_1_15x2",
+      "model_size": [
+        14.399999999999999,
+        1.6500000000000001
+      ],
+      "texel_size": [
+        15,
+        2
+      ]
+    },
+    {
+      "node": "back_rail",
+      "side": "north",
+      "island": "wood_board_1_15x1",
+      "model_size": [
+        14.399999999999999,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        15,
+        1
+      ]
+    },
+    {
+      "node": "back_rail",
+      "side": "south",
+      "island": "wood_board_1_15x1",
+      "model_size": [
+        14.399999999999999,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        15,
+        1
+      ]
+    },
+    {
+      "node": "back_rail",
+      "side": "east",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6499999999999986,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "back_rail",
+      "side": "west",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6499999999999986,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "back_rail",
+      "side": "up",
+      "island": "wood_top_1_15x2",
+      "model_size": [
+        14.399999999999999,
+        1.6499999999999986
+      ],
+      "texel_size": [
+        15,
+        2
+      ]
+    },
+    {
+      "node": "back_rail",
+      "side": "down",
+      "island": "wood_under_1_15x2",
+      "model_size": [
+        14.399999999999999,
+        1.6499999999999986
+      ],
+      "texel_size": [
+        15,
+        2
+      ]
+    },
+    {
+      "node": "left_rail",
+      "side": "north",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6500000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "left_rail",
+      "side": "south",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6500000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "left_rail",
+      "side": "east",
+      "island": "wood_board_1_12x1",
+      "model_size": [
+        11.100000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        12,
+        1
+      ]
+    },
+    {
+      "node": "left_rail",
+      "side": "west",
+      "island": "wood_board_1_12x1",
+      "model_size": [
+        11.100000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        12,
+        1
+      ]
+    },
+    {
+      "node": "left_rail",
+      "side": "up",
+      "island": "wood_top_1_2x12",
+      "model_size": [
+        1.6500000000000001,
+        11.100000000000001
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "left_rail",
+      "side": "down",
+      "island": "wood_under_1_2x12",
+      "model_size": [
+        1.6500000000000001,
+        11.100000000000001
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_rail",
+      "side": "north",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6499999999999986,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "right_rail",
+      "side": "south",
+      "island": "wood_end_1_2x1",
+      "model_size": [
+        1.6499999999999986,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "right_rail",
+      "side": "east",
+      "island": "wood_board_1_12x1",
+      "model_size": [
+        11.100000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        12,
+        1
+      ]
+    },
+    {
+      "node": "right_rail",
+      "side": "west",
+      "island": "wood_board_1_12x1",
+      "model_size": [
+        11.100000000000001,
+        0.7000000000000011
+      ],
+      "texel_size": [
+        12,
+        1
+      ]
+    },
+    {
+      "node": "right_rail",
+      "side": "up",
+      "island": "wood_top_1_2x12",
+      "model_size": [
+        1.6499999999999986,
+        11.100000000000001
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "right_rail",
+      "side": "down",
+      "island": "wood_under_1_2x12",
+      "model_size": [
+        1.6499999999999986,
+        11.100000000000001
+      ],
+      "texel_size": [
+        2,
+        12
+      ]
+    },
+    {
+      "node": "mast_mount_board",
+      "side": "north",
+      "island": "wood_board_1_3x1",
+      "model_size": [
+        3.0,
+        0.8999999999999995
+      ],
+      "texel_size": [
+        3,
+        1
+      ]
+    },
+    {
+      "node": "mast_mount_board",
+      "side": "south",
+      "island": "wood_board_1_3x1",
+      "model_size": [
+        3.0,
+        0.8999999999999995
+      ],
+      "texel_size": [
+        3,
+        1
+      ]
+    },
+    {
+      "node": "mast_mount_board",
+      "side": "east",
+      "island": "wood_board_1_4x1",
+      "model_size": [
+        3.3499999999999996,
+        0.8999999999999995
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "mast_mount_board",
+      "side": "west",
+      "island": "wood_board_1_4x1",
+      "model_size": [
+        3.3499999999999996,
+        0.8999999999999995
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "mast_mount_board",
+      "side": "up",
+      "island": "wood_top_1_3x4",
+      "model_size": [
+        3.0,
+        3.3499999999999996
+      ],
+      "texel_size": [
+        3,
+        4
+      ]
+    },
+    {
+      "node": "mast_mount_board",
+      "side": "down",
+      "island": "wood_under_1_3x4",
+      "model_size": [
+        3.0,
+        3.3499999999999996
+      ],
+      "texel_size": [
+        3,
+        4
+      ]
+    },
+    {
+      "node": "strap_0.92_0.92",
+      "side": "north",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.62,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_0.92",
+      "side": "south",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.62,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_0.92",
+      "side": "east",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4300000000000002,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_0.92",
+      "side": "west",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4300000000000002,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_0.92",
+      "side": "up",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.62,
+        1.4300000000000002
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_0.92_0.92",
+      "side": "down",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.62,
+        1.4300000000000002
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_0.92_13.65",
+      "side": "north",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.62,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_13.65",
+      "side": "south",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.62,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_13.65",
+      "side": "east",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4299999999999997,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_13.65",
+      "side": "west",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4299999999999997,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_0.92_13.65",
+      "side": "up",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.62,
+        1.4299999999999997
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_0.92_13.65",
+      "side": "down",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.62,
+        1.4299999999999997
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_14.46_0.92",
+      "side": "north",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.6199999999999992,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_0.92",
+      "side": "south",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.6199999999999992,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_0.92",
+      "side": "east",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4300000000000002,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_0.92",
+      "side": "west",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4300000000000002,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_0.92",
+      "side": "up",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.6199999999999992,
+        1.4300000000000002
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_14.46_0.92",
+      "side": "down",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.6199999999999992,
+        1.4300000000000002
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_14.46_13.65",
+      "side": "north",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.6199999999999992,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_13.65",
+      "side": "south",
+      "island": "iron_strap_0_1x8",
+      "model_size": [
+        0.6199999999999992,
+        7.2
+      ],
+      "texel_size": [
+        1,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_13.65",
+      "side": "east",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4299999999999997,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_13.65",
+      "side": "west",
+      "island": "iron_strap_0_2x8",
+      "model_size": [
+        1.4299999999999997,
+        7.2
+      ],
+      "texel_size": [
+        2,
+        8
+      ]
+    },
+    {
+      "node": "strap_14.46_13.65",
+      "side": "up",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.6199999999999992,
+        1.4299999999999997
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "strap_14.46_13.65",
+      "side": "down",
+      "island": "iron_strap_0_1x2",
+      "model_size": [
+        0.6199999999999992,
+        1.4299999999999997
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "mast_floor_support",
+      "side": "north",
+      "island": "iron_structure_0_2x14",
+      "model_size": [
+        1.3000000000000007,
+        13.7
+      ],
+      "texel_size": [
+        2,
+        14
+      ]
+    },
+    {
+      "node": "mast_floor_support",
+      "side": "south",
+      "island": "iron_structure_0_2x14",
+      "model_size": [
+        1.3000000000000007,
+        13.7
+      ],
+      "texel_size": [
+        2,
+        14
+      ]
+    },
+    {
+      "node": "mast_floor_support",
+      "side": "east",
+      "island": "iron_structure_0_2x14",
+      "model_size": [
+        1.3000000000000007,
+        13.7
+      ],
+      "texel_size": [
+        2,
+        14
+      ]
+    },
+    {
+      "node": "mast_floor_support",
+      "side": "west",
+      "island": "iron_structure_0_2x14",
+      "model_size": [
+        1.3000000000000007,
+        13.7
+      ],
+      "texel_size": [
+        2,
+        14
+      ]
+    },
+    {
+      "node": "mast_floor_support",
+      "side": "up",
+      "island": "iron_top_0_2x2",
+      "model_size": [
+        1.3000000000000007,
+        1.3000000000000007
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "mast_floor_support",
+      "side": "down",
+      "island": "iron_under_0_2x2",
+      "model_size": [
+        1.3000000000000007,
+        1.3000000000000007
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "balance_beam",
+      "side": "north",
+      "island": "iron_structure_0_15x1",
+      "model_size": [
+        14.399999999999999,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        15,
+        1
+      ]
+    },
+    {
+      "node": "balance_beam",
+      "side": "south",
+      "island": "iron_structure_0_15x1",
+      "model_size": [
+        14.399999999999999,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        15,
+        1
+      ]
+    },
+    {
+      "node": "balance_beam",
+      "side": "east",
+      "island": "iron_structure_0_2x1",
+      "model_size": [
+        1.4000000000000004,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "balance_beam",
+      "side": "west",
+      "island": "iron_structure_0_2x1",
+      "model_size": [
+        1.4000000000000004,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        2,
+        1
+      ]
+    },
+    {
+      "node": "balance_beam",
+      "side": "up",
+      "island": "iron_top_0_15x2",
+      "model_size": [
+        14.399999999999999,
+        1.4000000000000004
+      ],
+      "texel_size": [
+        15,
+        2
+      ]
+    },
+    {
+      "node": "balance_beam",
+      "side": "down",
+      "island": "iron_under_0_15x2",
+      "model_size": [
+        14.399999999999999,
+        1.4000000000000004
+      ],
+      "texel_size": [
+        15,
+        2
+      ]
+    },
+    {
+      "node": "pan_front_1",
+      "side": "north",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_1",
+      "side": "south",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_1",
+      "side": "east",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_1",
+      "side": "west",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_1",
+      "side": "up",
+      "island": "iron_rim_top_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_1",
+      "side": "down",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_1",
+      "side": "north",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_1",
+      "side": "south",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_1",
+      "side": "east",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_1",
+      "side": "west",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_1",
+      "side": "up",
+      "island": "iron_rim_top_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_1",
+      "side": "down",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_1",
+      "side": "north",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.3999999999999999,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_1",
+      "side": "south",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.3999999999999999,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_1",
+      "side": "east",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_1",
+      "side": "west",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_1",
+      "side": "up",
+      "island": "iron_rim_top_0_1x4",
+      "model_size": [
+        0.3999999999999999,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_left_1",
+      "side": "down",
+      "island": "iron_under_0_1x4",
+      "model_size": [
+        0.3999999999999999,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_right_1",
+      "side": "north",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_1",
+      "side": "south",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_1",
+      "side": "east",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_1",
+      "side": "west",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_1",
+      "side": "up",
+      "island": "iron_rim_top_0_1x4",
+      "model_size": [
+        0.40000000000000036,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_right_1",
+      "side": "down",
+      "island": "iron_under_0_1x4",
+      "model_size": [
+        0.40000000000000036,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_0.4",
+      "side": "north",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.30000000000000004,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_0.4",
+      "side": "south",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.30000000000000004,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_0.4",
+      "side": "east",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_0.4",
+      "side": "west",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_0.4",
+      "side": "up",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.30000000000000004,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_hanger_1_0.4",
+      "side": "down",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.30000000000000004,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_hanger_1_3.8",
+      "side": "north",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.2999999999999998,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_3.8",
+      "side": "south",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.2999999999999998,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_3.8",
+      "side": "east",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_3.8",
+      "side": "west",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_1_3.8",
+      "side": "up",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.2999999999999998,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_hanger_1_3.8",
+      "side": "down",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.2999999999999998,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_10.5",
+      "side": "north",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_10.5",
+      "side": "south",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_10.5",
+      "side": "east",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_10.5",
+      "side": "west",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_10.5",
+      "side": "up",
+      "island": "iron_rim_top_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_front_10.5",
+      "side": "down",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_10.5",
+      "side": "north",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_10.5",
+      "side": "south",
+      "island": "iron_rim_0_5x1",
+      "model_size": [
+        4.5,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_10.5",
+      "side": "east",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_10.5",
+      "side": "west",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_10.5",
+      "side": "up",
+      "island": "iron_rim_top_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_back_10.5",
+      "side": "down",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.40000000000000036
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_10.5",
+      "side": "north",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_10.5",
+      "side": "south",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_10.5",
+      "side": "east",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_10.5",
+      "side": "west",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_left_10.5",
+      "side": "up",
+      "island": "iron_rim_top_0_1x4",
+      "model_size": [
+        0.40000000000000036,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_left_10.5",
+      "side": "down",
+      "island": "iron_under_0_1x4",
+      "model_size": [
+        0.40000000000000036,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_right_10.5",
+      "side": "north",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_10.5",
+      "side": "south",
+      "island": "iron_rim_0_1x1",
+      "model_size": [
+        0.40000000000000036,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_10.5",
+      "side": "east",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_10.5",
+      "side": "west",
+      "island": "iron_rim_0_4x1",
+      "model_size": [
+        3.6999999999999993,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        4,
+        1
+      ]
+    },
+    {
+      "node": "pan_right_10.5",
+      "side": "up",
+      "island": "iron_rim_top_0_1x4",
+      "model_size": [
+        0.40000000000000036,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_right_10.5",
+      "side": "down",
+      "island": "iron_under_0_1x4",
+      "model_size": [
+        0.40000000000000036,
+        3.6999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_0.4",
+      "side": "north",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.29999999999999893,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_0.4",
+      "side": "south",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.29999999999999893,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_0.4",
+      "side": "east",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_0.4",
+      "side": "west",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_0.4",
+      "side": "up",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.29999999999999893,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_0.4",
+      "side": "down",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.29999999999999893,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_3.8",
+      "side": "north",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.29999999999999893,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_3.8",
+      "side": "south",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.29999999999999893,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_3.8",
+      "side": "east",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_3.8",
+      "side": "west",
+      "island": "iron_hanger_0_1x4",
+      "model_size": [
+        0.3000000000000007,
+        3.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        4
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_3.8",
+      "side": "up",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.29999999999999893,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "pan_hanger_10.5_3.8",
+      "side": "down",
+      "island": "iron_hanger_0_1x1",
+      "model_size": [
+        0.29999999999999893,
+        0.3000000000000007
+      ],
+      "texel_size": [
+        1,
+        1
+      ]
+    },
+    {
+      "node": "mast_foot",
+      "side": "north",
+      "island": "brass_body_0_3x1",
+      "model_size": [
+        2.3999999999999995,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        3,
+        1
+      ]
+    },
+    {
+      "node": "mast_foot",
+      "side": "south",
+      "island": "brass_body_0_3x1",
+      "model_size": [
+        2.3999999999999995,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        3,
+        1
+      ]
+    },
+    {
+      "node": "mast_foot",
+      "side": "east",
+      "island": "brass_body_0_3x1",
+      "model_size": [
+        2.1500000000000004,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        3,
+        1
+      ]
+    },
+    {
+      "node": "mast_foot",
+      "side": "west",
+      "island": "brass_body_0_3x1",
+      "model_size": [
+        2.1500000000000004,
+        0.8000000000000007
+      ],
+      "texel_size": [
+        3,
+        1
+      ]
+    },
+    {
+      "node": "mast_foot",
+      "side": "up",
+      "island": "brass_top_0_3x3",
+      "model_size": [
+        2.3999999999999995,
+        2.1500000000000004
+      ],
+      "texel_size": [
+        3,
+        3
+      ]
+    },
+    {
+      "node": "mast_foot",
+      "side": "down",
+      "island": "brass_under_0_3x3",
+      "model_size": [
+        2.3999999999999995,
+        2.1500000000000004
+      ],
+      "texel_size": [
+        3,
+        3
+      ]
+    },
+    {
+      "node": "center_pivot",
+      "side": "north",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        2,
+        1.4499999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "center_pivot",
+      "side": "south",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        2,
+        1.4499999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "center_pivot",
+      "side": "east",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        1.8000000000000007,
+        1.4499999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "center_pivot",
+      "side": "west",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        1.8000000000000007,
+        1.4499999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "center_pivot",
+      "side": "up",
+      "island": "brass_top_0_2x2",
+      "model_size": [
+        2,
+        1.8000000000000007
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "center_pivot",
+      "side": "down",
+      "island": "brass_under_0_2x2",
+      "model_size": [
+        2,
+        1.8000000000000007
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_1.2",
+      "side": "north",
+      "island": "brass_body_0_1x2",
+      "model_size": [
+        1.0000000000000002,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_1.2",
+      "side": "south",
+      "island": "brass_body_0_1x2",
+      "model_size": [
+        1.0000000000000002,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_1.2",
+      "side": "east",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        1.8000000000000007,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_1.2",
+      "side": "west",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        1.8000000000000007,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_1.2",
+      "side": "up",
+      "island": "brass_top_0_1x2",
+      "model_size": [
+        1.0000000000000002,
+        1.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_1.2",
+      "side": "down",
+      "island": "brass_under_0_1x2",
+      "model_size": [
+        1.0000000000000002,
+        1.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_13.8",
+      "side": "north",
+      "island": "brass_body_0_1x2",
+      "model_size": [
+        1.0,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_13.8",
+      "side": "south",
+      "island": "brass_body_0_1x2",
+      "model_size": [
+        1.0,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_13.8",
+      "side": "east",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        1.8000000000000007,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_13.8",
+      "side": "west",
+      "island": "brass_body_0_2x2",
+      "model_size": [
+        1.8000000000000007,
+        1.1999999999999993
+      ],
+      "texel_size": [
+        2,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_13.8",
+      "side": "up",
+      "island": "brass_top_0_1x2",
+      "model_size": [
+        1.0,
+        1.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "beam_end_13.8",
+      "side": "down",
+      "island": "brass_under_0_1x2",
+      "model_size": [
+        1.0,
+        1.8000000000000007
+      ],
+      "texel_size": [
+        1,
+        2
+      ]
+    },
+    {
+      "node": "pan_floor_1",
+      "side": "north",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_1",
+      "side": "south",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_1",
+      "side": "east",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_1",
+      "side": "west",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_1",
+      "side": "up",
+      "island": "iron_bowl_0_5x5",
+      "model_size": [
+        4.5,
+        4.5
+      ],
+      "texel_size": [
+        5,
+        5
+      ]
+    },
+    {
+      "node": "pan_floor_1",
+      "side": "down",
+      "island": "iron_under_0_5x5",
+      "model_size": [
+        4.5,
+        4.5
+      ],
+      "texel_size": [
+        5,
+        5
+      ]
+    },
+    {
+      "node": "pan_floor_10.5",
+      "side": "north",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_10.5",
+      "side": "south",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_10.5",
+      "side": "east",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_10.5",
+      "side": "west",
+      "island": "iron_under_0_5x1",
+      "model_size": [
+        4.5,
+        0.34999999999999964
+      ],
+      "texel_size": [
+        5,
+        1
+      ]
+    },
+    {
+      "node": "pan_floor_10.5",
+      "side": "up",
+      "island": "iron_bowl_0_5x5",
+      "model_size": [
+        4.5,
+        4.5
+      ],
+      "texel_size": [
+        5,
+        5
+      ]
+    },
+    {
+      "node": "pan_floor_10.5",
+      "side": "down",
+      "island": "iron_under_0_5x5",
+      "model_size": [
+        4.5,
+        4.5
+      ],
+      "texel_size": [
+        5,
+        5
+      ]
+    },
+    {
+      "node": "supported_inner_cargo_tray",
+      "side": "north",
+      "island": "wood_board_0_12x1",
+      "model_size": [
+        11.5,
+        0.5
+      ],
+      "texel_size": [
+        12,
+        1
+      ]
+    },
+    {
+      "node": "supported_inner_cargo_tray",
+      "side": "south",
+      "island": "wood_board_0_12x1",
+      "model_size": [
+        11.5,
+        0.5
+      ],
+      "texel_size": [
+        12,
+        1
+      ]
+    },
+    {
+      "node": "supported_inner_cargo_tray",
+      "side": "east",
+      "island": "wood_board_0_9x1",
+      "model_size": [
+        8.25,
+        0.5
+      ],
+      "texel_size": [
+        9,
+        1
+      ]
+    },
+    {
+      "node": "supported_inner_cargo_tray",
+      "side": "west",
+      "island": "wood_board_0_9x1",
+      "model_size": [
+        8.25,
+        0.5
+      ],
+      "texel_size": [
+        9,
+        1
+      ]
+    },
+    {
+      "node": "supported_inner_cargo_tray",
+      "side": "up",
+      "island": "wood_floor_0_12x9",
+      "model_size": [
+        11.5,
+        8.25
+      ],
+      "texel_size": [
+        12,
+        9
+      ]
+    },
+    {
+      "node": "supported_inner_cargo_tray",
+      "side": "down",
+      "island": "wood_under_0_12x9",
+      "model_size": [
+        11.5,
+        8.25
+      ],
+      "texel_size": [
+        12,
+        9
+      ]
+    }
+  ]
+}
