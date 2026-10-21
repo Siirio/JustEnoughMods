@@ -1,5 +1,7 @@
 # SMP: выступающие карточки и новые иконки
 
+Latest decision, 2026-10-22: **USER_REJECTED**. The user explicitly rejects `smp-cards-review.png` together with the preceding trading-station preview. Do not use its frame, icons or scenes as a foundation/source for the new SMP example. All existing native files remain unchanged as historical rejection evidence. The earlier NEEDS_DIRECTION status below predates this decision.
+
 21.10.2026. **SOURCE_EDITABLE / REVISED ART CANDIDATE / NEEDS_DIRECTION / NOT INSTALLED.**
 
 ## Новое указание пользователя

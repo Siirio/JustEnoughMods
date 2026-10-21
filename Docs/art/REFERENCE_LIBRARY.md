@@ -1,5 +1,9 @@
 # JEM art reference library
 
+Current JEM storage/handoff: [ASSET_WORKFLOW.md](ASSET_WORKFLOW.md). The [persistent original archive](reference-library/minecraft-2026-10-22/README.md) and [source/hash manifest](reference-library/minecraft-2026-10-22/manifest.json) preserve the existing Minecraft reference collections inside this project. Search them before asking for repeat uploads. Later corrections override historical choices below.
+
+2026-10-22: the user explicitly rejects the first two previews shown in the graphics-process task: `smp-style-studies-2026-10-21/01-trading-station-1x.png` and `smp-trading-cards-2026-10-21/smp-cards-review.png`. Neither may be a target or a source of reusable parts for the new SMP example. Positive card reference originals remain references, not cutout textures.
+
 User's supplied quality contract: [QUALITY_ENGINE_SOURCE.md](QUALITY_ENGINE_SOURCE.md), copied without changing its bytes on 2026-10-17. Canonical execution workflow is the global `taste-engine` skill; this library stores evidence and classifications, not a competing skill.
 
 ## Born in Bloom

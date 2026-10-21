@@ -84,9 +84,11 @@ Boss discoveries остаются в прежнем `jem_server` SavedData с sy
 
 ## Visual assets
 
+Current graphics handoff and source archive: [JEM asset workflow](../art/ASSET_WORKFLOW.md) and [persistent references](../art/REFERENCE_LIBRARY.md). The 2026-10-22 correction rejects both previous trading-station/card previews as new-work foundations. Keep their historical sources, but do not reuse their frame/icons/scenes in the new example. Show one finished native PNG with game-size, integer and light/dark review before integration or a series; production acceptance and runtime evidence remain separate.
+
 `visual-library` хранит исходные GUI atlases, covers, menu assets и прежние reference packs. `ui-design` хранит утверждённый reference 2026-09-27. Frame corners имеют фиксированный размер; event accent не меняет базовую brown/copper/cream palette.
 
-`visual-library/JEMLightDarkGUI` содержит одну производственную систему vanilla GUI для Java 1.20.1 и две согласованные темы: светлую `Sunlit Birch` с parchment/birch, walnut и copper конструкцией и тёмную `Moonlit Slate` со slate, aged brass и cyan акцентом. Обе темы сохраняют одинаковую geometry, atlas coordinates и semantic colors; тёмные containers оставляют светлые рабочие поверхности для читаемости vanilla dark labels без core-shader override. Готовые `JEM_GUI_Sunlit_Birch_1.20.1.zip` и `JEM_GUI_Moonlit_Slate_1.20.1.zip` принадлежат `Client/ManagedPack/resourcepacks`, а `build_light_dark_gui_packs.py` остаётся единственным owner их generated textures.
+`visual-library/JEMLightDarkGUI` содержит прежнюю производственную систему vanilla GUI для Java 1.20.1 и две темы: `Sunlit Birch` и `Moonlit Slate`. Их существующие geometry, atlas coordinates, semantic colors и светлые рабочие поверхности для vanilla labels сохраняются. ZIP принадлежат `Client/ManagedPack/resourcepacks`; `build_light_dark_gui_packs.py` остаётся историческим сборщиком этих пакетов. Новый процесс не перерисовывает их и не разрешает использовать procedural texture generation этого сборщика вместо Aseprite для новых ассетов. Новое утверждённое искусство поступает из редактируемого источника; упаковка сохраняет его пиксели.
 
 До создания нового изображения агент обязан проверить:
 
