@@ -20,6 +20,7 @@ public final class CampaignEyeService {
     }
 
     public static void deliver(ServerLevel level, Vec3 position, CampaignBoss boss, Collection<UUID> participants) {
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(level.getServer())) return;
         Item eye = BuiltInRegistries.ITEM.get(boss.eye());
         GateAdvancements.recipients(level, position, participants).stream()
                 .filter(player -> !has(player, boss))
@@ -27,6 +28,7 @@ public final class CampaignEyeService {
     }
 
     public static int recover(ServerPlayer player) {
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(player.server)) return 0;
         CampaignSavedData data = CampaignSavedData.get(player.server);
         int recovered = 0;
         for (CampaignBoss boss : CampaignBoss.values()) {

@@ -41,8 +41,11 @@ public final class RaceApi {
     private static RaceSnapshot snapshot(MinecraftServer server, RaceRecord record) {
         boolean test = com.siirio.jemroles.race.RaceService.testRaceReselect(server);
         long remaining = test ? 0L : record.remainingReselectTicks(server.overworld().getGameTime());
+        int progress = record.mechanics().getBoolean("Migrated")
+                ? record.mechanics().getInt("Uses" + record.race().ordinal()) : record.spellProgress();
+        int nativeTier = com.siirio.jemvisualsandbox.workbench.RacePowerStages.stageForUses(progress) + 1;
         return new RaceSnapshot(record.race(), true, record.activeTicks(), remaining == 0L, record.lastRespecAt(),
-                RaceRecord.SCHEMA, record.spellTier(), record.spellProgress(), record.resonance(), record.waterExposure(),
+                RaceRecord.SCHEMA, nativeTier, progress, record.resonance(), record.waterExposure(),
                 record.lavaExposure(), record.livingPath(), remaining, test);
     }
 }

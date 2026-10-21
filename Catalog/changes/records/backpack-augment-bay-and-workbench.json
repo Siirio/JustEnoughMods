@@ -102,7 +102,8 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackIntegratedAugmentListMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAuthority.java",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
@@ -116,7 +117,6 @@
       "Mods/JEMCompat/build.gradle",
       "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png"
     ]
   },
@@ -294,6 +294,41 @@
         "Docs/backpack/furnace-icon-20261020/furnace.aseprite",
         "Docs/backpack/furnace-icon-20261020/authoring.json",
         "Docs/backpack/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackIntegratedAugmentListMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackClient.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchIcon.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAuthority.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AutoFeedAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAutoFeed.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnace.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnaceAccess.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/FurnaceAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/NativeItemAugmentIcon.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackInventoryProcessMixin.java",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png"
       ]
     }
   ],

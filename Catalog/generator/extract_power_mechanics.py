@@ -39,7 +39,7 @@ def atlas_rows(pattern: str) -> Iterable[dict[str, Any]]:
 
 def boss_reward_ids() -> set[str]:
     directory = (
-        ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" /
+        ROOT / "Mods" / "JEMWorldBossTiers" / "src" / "main" / "resources" / "data" /
         "jem_world_boss_tiers" / "jem_world_boss_tiers" / "rewards"
     )
     return {
@@ -584,7 +584,7 @@ def spell_evidence(config_values: list[dict[str, Any]]) -> tuple[list[dict[str, 
 
 
 def boss_profiles() -> dict[str, dict[str, Any]]:
-    directory = ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "bosses"
+    directory = ROOT / "Mods" / "JEMWorldBossTiers" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "bosses"
     result: dict[str, dict[str, Any]] = {}
     for source in sorted(directory.glob("*.json")):
         for profile in load(source).get("bosses", []):

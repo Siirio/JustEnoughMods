@@ -2,10 +2,6 @@ plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)'; id 'org.spongepowe
 group = 'com.siirio.jemsettlements'
 version = '2.1.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-def settlementProfile = providers.gradleProperty('settlementProfile').getOrElse('production')
-if (!(settlementProfile in ['production', 'sandbox'])) throw new GradleException('settlementProfile must be production or sandbox')
-if (settlementProfile == 'sandbox') layout.buildDirectory = file('build/sandbox-profile')
-sourceSets.main.java.srcDir "src/${settlementProfile}/java"
 minecraft { mappings channel: 'official', version: '1.20.1' }
 repositories { flatDir { dirs '../../Server/mods' } }
 def xaeroWorldMap = file('../../Client/ManagedPack/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar')
@@ -26,7 +22,7 @@ dependencies {
     compileOnly files(xaeroWorldMap)
     compileOnly files(xaeroLib)
     compileOnly files('../JEMIdentity/build/classes/java/main')
-    compileOnly files('../JEMCurrencyCore/build/classes/java/main')
+    compileOnly files('../JEMEconomy/build/classes/java/main')
     compileOnly fg.deobf(files('../../Server/mods/Jade-1.20.1-Forge-11.13.3.jar'))
     compileOnly fg.deobf('local:recruits:1.20.1-1.15.2')
     compileOnly fg.deobf(files('../../Client/ManagedPack/mods/PatPat-1.3.1%2B1.20.1%2Bforge.jar'))
@@ -36,31 +32,4 @@ mixin { add sourceSets.main, 'jem_settlements.refmap.json'; config 'jem_settleme
 
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17; options.incremental = false }
 tasks.withType(Test).configureEach { enabled = false }
-// Explicit economy-overhaul suite; ordinary builds never run it.
-tasks.register('settlementEconomyContractTest', JavaExec) {
-    dependsOn testClasses
-    classpath = sourceSets.test.runtimeClasspath
-    mainClass = 'com.siirio.jemsettlements.town.SettlementEconomyContracts'
-}
-
 jar { archiveBaseName = 'jem-settlements'; manifest { attributes 'MixinConfigs': 'jem_settlements.mixins.json' }; finalizedBy 'reobfJar' }
-
-apply from: '../JEMCurrencyCore/embed.gradle'
-
-tasks.named('jar', Jar).configure {
-    manifest { attributes 'JEM-Settlement-Profile': settlementProfile }
-}
-tasks.named('jarJar').configure {
-    if (settlementProfile == 'sandbox') archiveClassifier = 'sandbox'
-    manifest { attributes 'JEM-Settlement-Profile': settlementProfile }
-}
-
-// Explicitly requested living-condition regressions; never attached to ordinary builds.
-['LivingConditionContracts', 'ResidentialRoomsContracts', 'ThreatRouteContracts'].each { contract ->
-    tasks.register(contract[0].toLowerCase() + contract.substring(1), JavaExec) {
-        dependsOn testClasses
-        classpath = sourceSets.test.runtimeClasspath
-        mainClass = 'com.siirio.jemsettlements.happiness.' + contract
-        systemProperty 'jem.test.standalone', settlementProfile == 'sandbox'
-    }
-}

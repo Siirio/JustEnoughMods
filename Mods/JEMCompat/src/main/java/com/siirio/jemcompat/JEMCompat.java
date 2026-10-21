@@ -27,6 +27,9 @@ public final class JEMCompat {
 
     public JEMCompat() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        com.siirio.jemcompat.feature.excavation.CoreEnchantments.register(modBus);
+        com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.excavation.ExcavationEvents.class);
         TransportContent.register(modBus);
         if (ModList.get().isLoaded("backpacked")) com.siirio.jemcompat.feature.backpack.BackpackContent.register(modBus);
         modBus.addListener(JEMCompat::creativeTabs);

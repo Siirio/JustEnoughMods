@@ -38,6 +38,10 @@ public final class CampaignLocatorItem extends Item {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResultHolder.sidedSuccess(locator, true);
         }
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(serverPlayer.server)) {
+            com.siirio.jemtwelveeyes.CampaignAvailability.explain(serverPlayer);
+            return InteractionResultHolder.fail(locator);
+        }
         if (target.dimension().equals(Level.NETHER.location()) && serverPlayer.level().dimension() != Level.NETHER) {
             serverPlayer.displayClientMessage(Component.translatable("message.jemcompat.map_requires_nether").withStyle(ChatFormatting.RED), true);
             return InteractionResultHolder.fail(locator);

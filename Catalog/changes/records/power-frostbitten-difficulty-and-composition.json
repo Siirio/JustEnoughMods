@@ -11,7 +11,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Dedicated server; native difficulty injection gated to installed Legendary Monsters2.2.2 actual metadata1.20.1; balance profile loaded through existing registry owner."
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -45,11 +46,11 @@
     ]
   },
   "cause": {
-    "owner": "JEMCompat exact-version native adapter and JEMPackCore authoritative boss profile",
+    "owner": "JEMCompat / JEMWorldBossTiers",
     "kind": "installed_bytecode_difficulty_defect_and_authorized_balance_decision",
     "source_files": [
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
-      "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
@@ -81,6 +82,49 @@
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
         "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Dedicated server; native difficulty injection gated to installed Legendary Monsters2.2.2 actual metadata1.20.1; balance profile loaded through existing registry owner."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMCompat exact-version native adapter and JEMPackCore authoritative boss profile",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]

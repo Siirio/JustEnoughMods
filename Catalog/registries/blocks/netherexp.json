@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "blocks",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -13,6 +13,325 @@
     "version": "2.3.5"
   },
   "records": [
+    {
+      "registry_id": "minecraft:bone_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/bone_block.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Bone Block",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "alexscaves:blocks/whalefall_ignores",
+        "alexsmobs:blocks/soul_vulture_perches",
+        "c:blocks/storage_blocks/bone_meal",
+        "cataclysm:blocks/netherite_monstrosity_break",
+        "minecraft:blocks/mineable/pickaxe",
+        "netherexp:blocks/sanctum_blocks"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/bone_block.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:nether_wart_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/nether_wart_block.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Nether Wart Block",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "alexsmobs:blocks/warped_mosco_breakables",
+        "elysium_api:blocks/roots_plantable_on",
+        "immersive_weathering:blocks/wart_grow_blocks",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/wart_blocks",
+        "netherexp:blocks/lightspores_applicable",
+        "netherexp:blocks/nether_wart_blocks",
+        "trek:blocks/tree/nether"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/nether_wart_block.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:soul_campfire",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/soul_campfire.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Soul Campfire",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "create:blocks/fan_processing_catalysts/haunting",
+        "minecraft:blocks/campfires",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/piglin_repellents",
+        "netherexp:blocks/sanctum_blocks"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/soul_campfire.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:twisting_vines",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/twisting_vines.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Twisting Vines",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "create:blocks/brittle",
+        "create:blocks/movable_empty_collider",
+        "minecraft:blocks/climbable",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/sword_efficient",
+        "netherexp:blocks/nightspores_applicable",
+        "sereneseasons:blocks/unbreakable_infertile_crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/twisting_vines.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:twisting_vines_plant",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/twisting_vines_plant.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Twisting Vines Plant",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "create:blocks/brittle",
+        "create:blocks/movable_empty_collider",
+        "minecraft:blocks/climbable",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/sword_efficient",
+        "sereneseasons:blocks/unbreakable_infertile_crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/twisting_vines_plant.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:warped_wart_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/warped_wart_block.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Warped Wart Block",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "alexsmobs:blocks/warped_mosco_breakables",
+        "elysium_api:blocks/roots_plantable_on",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/wart_blocks",
+        "netherexp:blocks/nightspores_applicable",
+        "netherexp:blocks/warped_wart_blocks",
+        "trek:blocks/tree/nether"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/warped_wart_block.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:weeping_vines",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/weeping_vines.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Weeping Vines",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "create:blocks/brittle",
+        "create:blocks/movable_empty_collider",
+        "minecraft:blocks/climbable",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/sword_efficient",
+        "netherexp:blocks/lightspores_applicable",
+        "sereneseasons:blocks/unbreakable_infertile_crops"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/blockstates/weeping_vines.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
     {
       "registry_id": "netherexp:ancient_burning_skull_block",
       "registry_type": "block",

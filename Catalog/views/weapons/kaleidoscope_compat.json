@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "weapons",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -787,6 +787,122 @@
       "source_provenance": [
         "kaleidoscope_compat-2.6.5-forge%2Bmc1.20.1.jar:assets/eatinganimation/models/item/sweet_and_sour_pork_rice_bowl_eating_2.json",
         "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar:assets/eatinganimation/models/item/sweet_and_sour_pork_rice_bowl_eating_2.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "kaleidoscope_cookery:braised_fish_rice_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_compat",
+      "mod_name": "Kaleidoscope Compat",
+      "mod_version": "2.6.5-forge+mc1.20.1",
+      "source_jar": "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar",
+      "source_sha256": "7728ed3341e09f06169bbbde96483a6a8231f82d2e2f8f2fba44c058cd5685c4",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/braised_fish_rice_bowl.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscope_compat-2.6.5-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/braised_fish_rice_bowl.json",
+        "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/braised_fish_rice_bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "kaleidoscope_cookery:spicy_chicken_rice_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_compat",
+      "mod_name": "Kaleidoscope Compat",
+      "mod_version": "2.6.5-forge+mc1.20.1",
+      "source_jar": "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar",
+      "source_sha256": "7728ed3341e09f06169bbbde96483a6a8231f82d2e2f8f2fba44c058cd5685c4",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/spicy_chicken_rice_bowl.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscope_compat-2.6.5-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_chicken_rice_bowl.json",
+        "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/spicy_chicken_rice_bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "kaleidoscope_cookery:stir_fried_beef_offal_rice_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_compat",
+      "mod_name": "Kaleidoscope Compat",
+      "mod_version": "2.6.5-forge+mc1.20.1",
+      "source_jar": "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar",
+      "source_sha256": "7728ed3341e09f06169bbbde96483a6a8231f82d2e2f8f2fba44c058cd5685c4",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/stir_fried_beef_offal_rice_bowl.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscope_compat-2.6.5-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stir_fried_beef_offal_rice_bowl.json",
+        "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/stir_fried_beef_offal_rice_bowl.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "weapon_archetypes": [
+        "bow"
+      ],
+      "category_evidence": "registry path; requires runtime class confirmation"
+    },
+    {
+      "item_id": "kaleidoscope_cookery:suspicious_stir_fry_rice_bowl",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_compat",
+      "mod_name": "Kaleidoscope Compat",
+      "mod_version": "2.6.5-forge+mc1.20.1",
+      "source_jar": "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar",
+      "source_sha256": "7728ed3341e09f06169bbbde96483a6a8231f82d2e2f8f2fba44c058cd5685c4",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/kaleidoscope_cookery/models/item/suspicious_stir_fry_rice_bowl.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "kaleidoscope_compat-2.6.5-forge%2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/suspicious_stir_fry_rice_bowl.json",
+        "kaleidoscope_compat-2.6.5-forge_2Bmc1.20.1.jar:assets/kaleidoscope_cookery/models/item/suspicious_stir_fry_rice_bowl.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

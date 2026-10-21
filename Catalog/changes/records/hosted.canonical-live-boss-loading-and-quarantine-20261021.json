@@ -11,7 +11,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Physically dedicated server, registered boss profile and canonical arena lifecycle; repair only for fully loaded same-type standalone roots of an unambiguous single-type profile.",
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending.",
       "evidence_boundary": "Loaded local observations do not prove absence in unloaded chunks or complete world duplicate coverage."
     }
   ],
@@ -163,6 +164,36 @@
       "commit": "SELF",
       "action": "implement_canonical_identity_loading_guard_and_explicit_quarantine",
       "summary": "Diagnose four local legacy REVIVAL duplicates and parallel structural identity; implement owner/load acknowledgment and explicit recoverable repair. Source in testing, isolated-copy runtime execution and deployment not yet claimed.",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaRecord.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ServerLevelEntityManagerAccessor.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossArenaDiagnostics.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+        "Docs/events/BOSS_FIGHT.md",
+        "Docs/SERVER_COMMANDS.md",
+        "Docs/DEVELOPMENT.md"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Physically dedicated server, registered boss profile and canonical arena lifecycle; repair only for fully loaded same-type standalone roots of an unambiguous single-type profile.",
+          "evidence_boundary": "Loaded local observations do not prove absence in unloaded chunks or complete world duplicate coverage."
+        }
+      ],
       "source_files": [
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",

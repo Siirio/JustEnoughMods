@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class FishingProfiles {
     public record Profile(double quality, boolean nether, boolean end, boolean intrinsicLava,
                           boolean intrinsicVoid) {}

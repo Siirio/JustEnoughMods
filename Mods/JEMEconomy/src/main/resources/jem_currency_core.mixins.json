@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemeconomy.mixin",
+  "plugin": "com.siirio.jemeconomy.mixin.JemEconomyMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jem_currency_core.refmap.json",
+  "mixins": [
+    "MerchantMenuMixin",
+    "MerchantContainerMixin",
+    "AbstractVillagerOffersAccessor",
+    "AbstractVillagerOfferProjectionMixin",
+    "NativeOfferGenerationMixin",
+    "CommercePlayerSaveAccess",
+    "CommerceServerStorageAccess"
+  ],
+  "client": [
+    "MerchantScreenMixin",
+    "MerchantOfferTooltipMixin",
+    "NativeTradeClickMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

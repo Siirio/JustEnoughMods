@@ -28,7 +28,7 @@ public final class RecruitHirePresentation {
     private RecruitHirePresentation() { }
     public static Component tr(String key, Object... args) { return Component.translatable("jem.settlements.recruit_gui." + key, args); }
     public static boolean requiresQuote() {
-        return !Minecraft.getInstance().hasSingleplayerServer() && com.siirio.jemsettlements.network.SettlementNetwork.supported();
+        return com.siirio.jemsettlements.network.SettlementNetwork.supported();
     }
 
     public static String groupName(RecruitsGroup group) {

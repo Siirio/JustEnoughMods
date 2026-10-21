@@ -25,7 +25,8 @@ public final class CampaignCoordinator {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void defeated(LivingDeathEvent event) {
-        if (raid(event.getEntity()) || !(event.getEntity().level() instanceof ServerLevel level)) {
+        if (raid(event.getEntity()) || !(event.getEntity().level() instanceof ServerLevel level)
+                || !com.siirio.jemtwelveeyes.CampaignAvailability.playable(level.getServer())) {
             return;
         }
         var entityId = RegistryIds.entity(event.getEntity());
@@ -134,6 +135,7 @@ public final class CampaignCoordinator {
     }
 
     private static void recordPrerequisite(ServerLevel level, net.minecraft.resources.ResourceLocation entityId) {
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(level.getServer())) return;
         CampaignPrerequisite prerequisite = CampaignPrerequisite.byEntity(entityId).orElse(null);
         if (prerequisite == null) {
             return;

@@ -34,6 +34,8 @@ public abstract class ShopEntityMixin implements ShopSnapshot, ShopCoinAccess {
     public CompoundTag jemShopSnapshot() {
         var block = (BlockEntity) (Object) this;
         var result = new CompoundTag();
+        result.putBoolean("CoinCurrency", block.getLevel() instanceof net.minecraft.server.level.ServerLevel serverLevel
+                && com.siirio.jemserver.smp.DomainFeatures.economy(serverLevel.getServer()));
         var offer = shopInventory.getVendingStack();
         var payment = shopInventory.getPaymentStack();
         result.put("offer", offer.save(new CompoundTag()));
@@ -87,6 +89,9 @@ public abstract class ShopEntityMixin implements ShopSnapshot, ShopCoinAccess {
 
     @Override
     public ItemStack jemTakeCoinSale(ItemStack expected, int quantity) {
+        var block = (BlockEntity) (Object) this;
+        if (!(block.getLevel() instanceof net.minecraft.server.level.ServerLevel level)
+                || !com.siirio.jemserver.smp.DomainFeatures.economy(level.getServer())) return ItemStack.EMPTY;
         if (expected.isEmpty() || quantity <= 0) return ItemStack.EMPTY;
         if (jemCreativeStock()) return expected.copyWithCount(quantity);
         int remaining = quantity;
@@ -110,6 +115,7 @@ public abstract class ShopEntityMixin implements ShopSnapshot, ShopCoinAccess {
 
     @Override
     public boolean jemRestoreCoinSale(ItemStack returned) {
+        // Returning already removed stock must remain possible after the feature is switched off.
         if (returned.isEmpty() || jemCreativeStock()) return true;
         int remaining = returned.getCount();
         for (int slot = 0; slot <= 53 && remaining > 0; slot++) {

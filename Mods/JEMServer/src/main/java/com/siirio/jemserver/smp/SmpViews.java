@@ -7,6 +7,12 @@ import java.util.*;
 
 public final class SmpViews {
     public static CompoundTag build(ServerPlayer player, SmpQuery query) {
+        CompoundTag result = buildView(player, query);
+        result.put("features", DomainFeatures.snapshot(player.server));
+        return result;
+    }
+
+    private static CompoundTag buildView(ServerPlayer player, SmpQuery query) {
         var data = SmpData.get(player.server);
         var result = new CompoundTag();
         result.putString("tab", query.tab());
@@ -14,16 +20,16 @@ public final class SmpViews {
         result.putString("querySearch", query.search());
         result.putInt("page", query.page());
         result.putUUID("viewer", player.getUUID());
-        int pendingRewards = com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.count(player);
+        int pendingRewards = RewardsAdapter.count(player);
         result.putInt("pendingRewards", pendingRewards);
         if (query.tab().equals("settlements")) return com.siirio.jemserver.smp.settlements.SettlementProjection.view(player, query.selected());
         if (query.tab().equals("recruits")) return com.siirio.jemserver.smp.recruits.RecruitProjection.view(player);
         if (query.tab().equals("prizes")) {
             int pageSize = SmpConfig.PAGE_SIZE.get();
-            var rewards = com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.bundles(player, query.page() * pageSize, pageSize);
+            var rewards = RewardsAdapter.bundles(player, query.page() * pageSize, pageSize);
             result.put("rows", rewards);
             result.putInt("total", pendingRewards);
-            result.putInt("totalItems", com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.totalItems(player));
+            result.putInt("totalItems", RewardsAdapter.totalItems(player));
             result.putInt("pageSize", pageSize);
             return result;
         }
@@ -246,9 +252,15 @@ public final class SmpViews {
         if (table.equals("parties") && !closed && owner && row.getString("state").equals("ACTIVE") && row.getString("activity").equals("BOSS")) add(result, "cancel");
         if (table.equals("profiles")) {
             if (owner) {
-                add(result, "death_history", "settlements", "roles");
+                add(result, "death_history");
+                if (DomainFeatures.loaded("jem_settlements")) add(result, "settlements");
+                if (DomainFeatures.loaded("jem_roles")) add(result, "roles");
                 if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) add(result, "professions");
-            } else add(result, "message", "tpa", "invite", "view_shops", "settlements");
+            } else {
+                add(result, "message", "tpa", "invite");
+                if (DomainFeatures.economy(player.server)) add(result, "view_shops");
+                if (DomainFeatures.loaded("jem_settlements")) add(result, "settlements");
+            }
             return result;
         }
         if (!closed && table.equals("parties") && !row.getString("state").equals("ACTIVE")) {
@@ -328,6 +340,17 @@ public final class SmpViews {
 
     private static void add(ListTag list, String... actions) {
         for (String action : actions) list.add(StringTag.valueOf(action));
+    }
+
+    private static final class RewardsAdapter {
+        static int count(ServerPlayer player) { return DomainFeatures.loaded("jem_world_boss_tiers") ? NativeRewards.count(player) : 0; }
+        static int totalItems(ServerPlayer player) { return DomainFeatures.loaded("jem_world_boss_tiers") ? NativeRewards.totalItems(player) : 0; }
+        static ListTag bundles(ServerPlayer player, int start, int size) { return DomainFeatures.loaded("jem_world_boss_tiers") ? NativeRewards.bundles(player, start, size) : new ListTag(); }
+    }
+    private static final class NativeRewards {
+        static int count(ServerPlayer player) { return com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.count(player); }
+        static int totalItems(ServerPlayer player) { return com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.totalItems(player); }
+        static ListTag bundles(ServerPlayer player, int start, int size) { return com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.bundles(player, start, size); }
     }
 
     private SmpViews() {}

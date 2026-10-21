@@ -1,7 +1,5 @@
 package com.siirio.jemsettlements.currency;
 
-import com.siirio.jemeconomy.api.EconomyApi;
-import com.siirio.jemeconomy.ledger.TransferResult;
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import java.util.UUID;
 import net.minecraft.nbt.ListTag;
@@ -11,16 +9,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.ModList;
 
-/** Settlement-only currency selection. Currency Core's presence never enables the Economy product. */
+/** Settlement-owned provider selection. Absent or disabled Economy uses the independent emerald treasury. */
 @net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_settlements")
 public final class SettlementCurrency {
     private static final String MARKER = "JemSettlementEmeraldIntent";
     private SettlementCurrency() { }
-    public static boolean coins() { return ModList.get().isLoaded("jem_economy"); }
-    public static UUID townAccount(UUID town) { return EconomyApi.townAccount(town); }
-    public static long balance(ServerPlayer player) { return coins() ? EconomyApi.balance(player) : 0L; }
+    private static final class CoinProvider {
+        static final SettlementCoinProvider INSTANCE = new com.siirio.jemsettlements.compat.economy.CoinCurrencyProvider();
+    }
+    public static boolean coins() { return coins(net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer()); }
+    public static boolean coins(MinecraftServer server) {
+        return ModList.get().isLoaded("jem_economy") && CoinProvider.INSTANCE.enabled(server);
+    }
+    public static UUID townAccount(UUID town) { return UUID.nameUUIDFromBytes(("jem:town:" + town).getBytes(java.nio.charset.StandardCharsets.UTF_8)); }
+    public static long balance(ServerPlayer player) { return coins(player.getServer()) ? CoinProvider.INSTANCE.balance(player) : 0L; }
     public static long held(ServerPlayer player) {
-        if (coins()) return EconomyApi.heldCash(player).value();
+        if (coins(player.getServer())) return CoinProvider.INSTANCE.held(player);
         long count = 0L;
         for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
             ItemStack stack = player.getInventory().getItem(slot); if (stack.is(Items.EMERALD)) count += stack.getCount();
@@ -30,18 +34,18 @@ public final class SettlementCurrency {
     public static long spendable(ServerPlayer player) { return Math.addExact(balance(player), held(player)); }
     public static long accountBalance(ServerPlayer player, UUID account) {
         if (!SettlementAuthority.active(player) || SettlementAuthority.principal(player).isEmpty()) return 0L;
-        return coins() ? EconomyApi.accountBalance(player, account) : EmeraldTreasury.get(player.getServer()).balance(account);
+        return coins(player.getServer()) ? CoinProvider.INSTANCE.accountBalance(player, account) : EmeraldTreasury.get(player.getServer()).balance(account);
     }
     public static long townBalance(MinecraftServer server, UUID town) {
         if (!SettlementAuthority.active(server)) return 0L;
-        return coins() ? EconomyApi.townBalance(server, town) : EmeraldTreasury.get(server).balance(townAccount(town));
+        return coins(server) ? CoinProvider.INSTANCE.townBalance(server, town) : EmeraldTreasury.get(server).balance(townAccount(town));
     }
     public static TransferResult depositToAccount(ServerPlayer player, UUID destination, long amount, UUID request) {
-        if (coins()) return EconomyApi.depositToAccount(player, destination, amount, request);
+        if (coins(player.getServer())) return CoinProvider.INSTANCE.deposit(player, destination, amount, request);
         return inventoryTransfer(player, destination, amount, request, true);
     }
     public static TransferResult withdrawFromAccount(ServerPlayer player, UUID source, long amount, UUID request) {
-        if (coins()) return EconomyApi.withdrawFromAccount(player, source, amount, request);
+        if (coins(player.getServer())) return CoinProvider.INSTANCE.withdraw(player, source, amount, request);
         return inventoryTransfer(player, source, amount, request, false);
     }
     private static TransferResult result(TransferResult.Status status) { return new TransferResult(status, null, 0L, 0L); }
@@ -177,17 +181,17 @@ public final class SettlementCurrency {
     public static boolean canDelete(ServerPlayer player, UUID town) {
         recover(player); var data = EmeraldTreasury.get(player.getServer()); UUID account = townAccount(town);
         if (data.locked(account)) return false;
-        return coins() ? data.balance(account) == 0L
-                : com.siirio.jemeconomy.ledger.EconomySavedData.get(player.getServer()).balance(account) == 0L;
+        return data.balance(account) == 0L && (!ModList.get().isLoaded("jem_economy")
+                || CoinProvider.INSTANCE.empty(player.getServer(), account));
     }
     public static TransferResult settleTownPayroll(MinecraftServer server, UUID town, long amount, long period) {
-        if (coins()) return EconomyApi.settleTownPayroll(server, town, amount, period);
+        if (coins(server)) return CoinProvider.INSTANCE.townPayroll(server, town, amount, period);
         return debit(server, townAccount(town), amount, "townPayroll:" + town + ":" + period);
     }
     public static TransferResult settleEmployerPayroll(MinecraftServer server, UUID owner, long amount, long period) {
-        if (coins()) return EconomyApi.settleEmployerPayroll(server, owner, amount, period);
+        if (coins(server)) return CoinProvider.INSTANCE.employerPayroll(server, owner, amount, period);
         for (ServerPlayer player : server.getPlayerList().getPlayers()) if (SettlementAuthority.principal(player).filter(owner::equals).isPresent())
-            return depositToAccount(player, com.siirio.jemeconomy.ledger.SystemAccount.CENTRAL_RESERVE.id(), amount,
+            return depositToAccount(player, com.siirio.jemsettlements.currency.SettlementAccounts.CENTRAL_RESERVE.id(), amount,
                     UUID.nameUUIDFromBytes(("emeraldEmployerPayroll:" + owner + ":" + period).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         return result(TransferResult.Status.INSUFFICIENT_FUNDS);
     }
@@ -200,24 +204,22 @@ public final class SettlementCurrency {
         if (data.full() || data.locked(account)) return result(TransferResult.Status.UNAVAILABLE);
         long current = data.balance(account); if (current < amount) return result(TransferResult.Status.INSUFFICIENT_FUNDS);
         data.accounts.put(account, current - amount);
-        UUID receipt = data.record(key, terms, account, com.siirio.jemeconomy.ledger.SystemAccount.CENTRAL_RESERVE.id(), amount);
+        UUID receipt = data.record(key, terms, account, com.siirio.jemsettlements.currency.SettlementAccounts.CENTRAL_RESERVE.id(), amount);
         data.flush(server);
         return new TransferResult(TransferResult.Status.COMMITTED, receipt, current - amount, 0L);
     }
+    public static ListTag history(MinecraftServer server, UUID town) {
+        return coins(server) ? CoinProvider.INSTANCE.history(server, town) : emeraldHistory(server, town);
+    }
+    public static net.minecraft.nbt.CompoundTag bulletin(ServerPlayer player) {
+        return coins(player.getServer()) ? CoinProvider.INSTANCE.bulletin(player) : new net.minecraft.nbt.CompoundTag();
+    }
     public static ListTag emeraldHistory(MinecraftServer server, UUID town) { return EmeraldTreasury.get(server).history(townAccount(town)); }
-    /** Server-authored daily NPC income. Coins transfer existing funds; standalone emeralds are vanilla NPC income. */
+    /** Server-authored daily NPC income, using the existing exact Coin/emerald contracts. */
     public static TransferResult creditDailyTax(MinecraftServer server, UUID town, long amount, long day) {
         if (!SettlementAuthority.active(server) || town == null || amount <= 0 || day < 0) return result(TransferResult.Status.INVALID);
         String key = "settlementDailyTax:" + town + ":" + day;
-        if (coins()) {
-            var ledger = com.siirio.jemeconomy.ledger.EconomySavedData.get(server);
-            var transfer = ledger.hasReceipt(key)
-                    ? ledger.transfer(com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), townAccount(town), amount, key)
-                    : ledger.issueSettlementIncome(town, townAccount(town), amount, day);
-            if (transfer.status() == TransferResult.Status.COMMITTED || transfer.status() == TransferResult.Status.REPLAYED)
-                com.siirio.jemsettlements.payroll.TaxDurability.save(server, ledger, "jem_economy");
-            return transfer;
-        }
+        if (coins(server)) return CoinProvider.INSTANCE.dailyTax(server, town, amount, day);
         var data = EmeraldTreasury.get(server); UUID account = townAccount(town); String terms = account + ":" + amount;
         var prior = data.prior(key);
         if (prior != null) {
@@ -236,7 +238,7 @@ public final class SettlementCurrency {
         return new TransferResult(TransferResult.Status.COMMITTED, receipt, 0L, next);
     }
     public static net.minecraft.network.chat.Component format(long amount) {
-        return coins() ? com.siirio.jemeconomy.physical.CoinFormatter.format(amount)
+        return coins() ? CoinProvider.INSTANCE.format(amount)
                 : net.minecraft.network.chat.Component.translatable("jem.settlements.currency.emerald_amount", amount);
     }
 }

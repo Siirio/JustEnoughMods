@@ -18,20 +18,11 @@ public record SettlementUiAction(UUID request, UUID town, String action, UUID ta
     }
     void handle(net.minecraft.server.level.ServerPlayer player) {
         if (!Set.of("rename", "remove", "delete", "buyback", "deposit", "withdraw").contains(action)) return;
-        var result = switch (action) {
-            case "rename" -> com.siirio.jemsettlements.api.SettlementApi.rename(player, town, text);
-            case "remove" -> target == null ? com.siirio.jemsettlements.api.SettlementApi.Result.INVALID
-                    : com.siirio.jemsettlements.api.SettlementApi.removeRegistration(player, town, target);
-            case "delete" -> com.siirio.jemsettlements.api.SettlementApi.delete(player, town, request);
-            case "buyback" -> target == null ? com.siirio.jemsettlements.api.SettlementApi.Result.INVALID
-                    : com.siirio.jemsettlements.api.SettlementApi.openRecruitBuyback(player, town, target);
-            case "deposit" -> com.siirio.jemsettlements.api.SettlementApi.treasury(player, town, true, amount, request);
-            case "withdraw" -> com.siirio.jemsettlements.api.SettlementApi.treasury(player, town, false, amount, request);
-            default -> com.siirio.jemsettlements.api.SettlementApi.Result.INVALID;
-        };
-        player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.settlement.action." + result.name().toLowerCase(java.util.Locale.ROOT)), true);
-        if (action.equals("buyback") && result == com.siirio.jemsettlements.api.SettlementApi.Result.ACCEPTED) return;
-        SmpNetwork.open(player, "settlements", action.equals("delete") && (result == com.siirio.jemsettlements.api.SettlementApi.Result.ACCEPTED
-                || result == com.siirio.jemsettlements.api.SettlementApi.Result.REPLAYED) ? null : town);
+        if (!DomainFeatures.loaded("jem_settlements")) return;
+        String result = com.siirio.jemserver.compat.settlements.SettlementHostAdapter.action(player, this);
+        player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.settlement.action." + result.toLowerCase(java.util.Locale.ROOT)), true);
+        if (action.equals("buyback") && result.equals("ACCEPTED")) return;
+        SmpNetwork.open(player, "settlements", action.equals("delete") && (result.equals("ACCEPTED")
+                || result.equals("REPLAYED")) ? null : town);
     }
 }

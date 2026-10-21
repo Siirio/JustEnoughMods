@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "blocks",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -834,6 +834,51 @@
         "kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar:assets/kaleidoscope_end/lang/en_us.json",
         "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:assets/kaleidoscope_end/blockstates/void_tea.json",
         "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:assets/kaleidoscope_end/lang/en_us.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:chorus_flower",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "kaleidoscope_end",
+      "mod_name": "Kaleidoscope End",
+      "mod_version": "1.0.14-forge+mc1.20.1",
+      "source_jar": "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar",
+      "source_sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/chorus_flower.json",
+        "assets/minecraft/lang/en_us.json"
+      ],
+      "display_name_en_us": "Chorus Flower",
+      "display_name_ru_ru": null,
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "alexsmobs:blocks/endergrade_breakables",
+        "alexsmobs:blocks/void_worm_breakables",
+        "luminous_nether:blocks/ectoplasmblacklist",
+        "minecraft:blocks/mineable/axe",
+        "minecraft:blocks/sword_efficient"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar:assets/minecraft/blockstates/chorus_flower.json",
+        "kaleidoscope_end-1.0.14-forge_2Bmc1.20.1.jar:assets/minecraft/blockstates/chorus_flower.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

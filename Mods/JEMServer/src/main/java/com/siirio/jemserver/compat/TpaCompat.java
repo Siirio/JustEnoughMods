@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid="jem_server",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid="jem_server")
 public final class TpaCompat {
     @SubscribeEvent(priority=EventPriority.LOWEST)
     public static void commands(RegisterCommandsEvent event) {

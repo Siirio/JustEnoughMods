@@ -39,6 +39,17 @@ public final class LegacyRewards {
         recover(player);
         var data = SmpData.get(player.server);
         var profile = Profiles.get(player.server, player.getUUID());
+        if (!DomainFeatures.loaded("jem_world_boss_tiers")) {
+            if (profile.contains("rewardMigration", Tag.TAG_COMPOUND) || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
+                if (!profile.getString("rewardAvailability").equals("UNAVAILABLE_MISSING_REWARD_OWNER")) {
+                    profile.putString("rewardAvailability", "UNAVAILABLE_MISSING_REWARD_OWNER");
+                    data.changed(profile); data.flush(player.server);
+                    player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.escrow_recovery_required"));
+                }
+            }
+            return;
+        }
+        if (profile.contains("rewardAvailability")) { profile.remove("rewardAvailability"); data.changed(profile); data.flush(player.server); }
         while (profile.contains("rewardMigration", Tag.TAG_COMPOUND)
                 || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
             if (!profile.contains("rewardMigration", Tag.TAG_COMPOUND)) {
@@ -52,13 +63,13 @@ public final class LegacyRewards {
             }
             var journal = profile.getCompound("rewardMigration");
             if (!journal.getBoolean("committed")) {
-                com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.importLegacy(
+                RewardImports.importLegacy(
                         player, journal.getUUID("id"), journal.getList("items", Tag.TAG_COMPOUND));
                 journal.putBoolean("committed", true);
                 data.changed(profile);
             }
             data.flush(player.server);
-            com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.finishLegacyImport(
+            RewardImports.finishLegacyImport(
                     player, journal.getUUID("id"));
             profile.remove("rewardMigration");
             data.changed(profile);
@@ -168,6 +179,15 @@ public final class LegacyRewards {
             com.mojang.logging.LogUtils.getLogger()
                     .error("Could not verify escrow player save for {}", player.getUUID(), failure);
             throw new com.siirio.jemserver.smp.SmpActionFailure("storage_unavailable");
+        }
+    }
+
+    private static final class RewardImports {
+        static void importLegacy(ServerPlayer player, UUID id, ListTag items) {
+            com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.importLegacy(player, id, items);
+        }
+        static void finishLegacyImport(ServerPlayer player, UUID id) {
+            com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.finishLegacyImport(player, id);
         }
     }
 

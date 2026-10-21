@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class IronsSiphonHealingMixin {
     @Unique
     private static boolean jem$siphoning(LivingEntity target, DamageSource source) {
-        return target.level() instanceof ServerLevel level && level.getServer().isDedicatedServer()
+        return target.level() instanceof ServerLevel level
                 && source instanceof SpellDamageSource spell && spell.spell() instanceof RayOfSiphoningSpell
                 && ModList.get().getModContainerById("irons_spellbooks")
                 .map(mod -> mod.getModInfo().getVersion().toString().equals("1.20.1-3.15.6")).orElse(false);

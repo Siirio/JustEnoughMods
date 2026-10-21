@@ -12,8 +12,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
-      "confidence": "source"
+      "runtime": "Logical integrated or dedicated server; EconomyApi.isEnabled(server) is true; native session, exact registration/admission, canonical identity and authoritative quote/payment validation remain required. Client presentation uses matching protocol.",
+      "acceptance": "Manual gameplay acceptance pending; no automated tests or gameplay scenarios asserted."
     }
   ],
   "precedence": {
@@ -84,11 +84,11 @@
       "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
       "Mods/JEMEconomy/build.gradle",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
     ]
   },
   "rationale": {
@@ -169,6 +169,48 @@
       "summary": "Remove unreferenced automated native merchant fixture; opt-in evidence export records real loaded data without running tests.",
       "source_files": [
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/NativeMerchantContracts.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Mods/JEMEconomy/build.gradle",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
+          "confidence": "source"
+        }
+      ],
+      "source_files": [
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Mods/JEMEconomy/build.gradle",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/JemEconomy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
       ]
     }
   ],

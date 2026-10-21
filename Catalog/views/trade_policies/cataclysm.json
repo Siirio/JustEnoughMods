@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -15655,51 +15655,6 @@
       "source_provenance": [
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/en_us.json",
         "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "cataclysm:soul_render_blocking",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "cataclysm",
-      "mod_name": "cataclysm",
-      "mod_version": "3.31",
-      "source_jar": "L_Enders_Cataclysm-3.31.jar",
-      "source_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/cataclysm/models/item/soul_render_blocking.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/soul_render_blocking.json",
-        "p1nero_ec-20.14.0.9.jar:assets/cataclysm/models/item/soul_render_blocking.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

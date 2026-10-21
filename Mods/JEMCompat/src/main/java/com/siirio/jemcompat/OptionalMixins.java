@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
+            Map.entry("com.siirio.jemcompat.mixin.grave.LegacyGraveCreationMixin", List.of("jacksgravestones", "gravestone")),
             Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
             Map.entry("com.siirio.jemcompat.mixin.guide.SpawnWithJourneyGuideProcedureMixin", List.of("spawn")),
@@ -24,7 +25,6 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackInventoryProcessMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackWorkbenchMenuMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackAugmentAdmissionMixin", List.of("backpacked", "framework")),
-            Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackIntegratedAugmentListMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.backpack.BackpackWorkbenchScreenMixin", List.of("backpacked", "framework")),
             Map.entry("com.siirio.jemcompat.mixin.transport.RoyalWagonInventoryMixin", List.of("trotting_wagons")),
             Map.entry("com.siirio.jemcompat.mixin.transport.TrottingWagonClydesdaleMixin", List.of("trotting_wagons", "barnyardbuddies")),
@@ -53,7 +53,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
         }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.worldtier.FrostbittenDifficultyMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("legendary_monsters");
-            return FMLLoader.getDist().isDedicatedServer() && file != null
+            return file != null
                     && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("legendary_monsters")
                     && mod.getVersion().toString().equals("1.20.1"));
         }

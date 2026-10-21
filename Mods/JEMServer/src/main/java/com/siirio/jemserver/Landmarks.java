@@ -1,6 +1,6 @@
 package com.siirio.jemserver;
 
-import com.siirio.jemmenus.VanillaMenus;
+import com.siirio.jemserver.menus.VanillaMenus;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;

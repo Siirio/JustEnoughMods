@@ -35,7 +35,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Dedicated settlement authority only; exact block IDs/tags or native carpet/nonempty pot/lit candle types; native Animal diversity only nonhostile/nonangry/nontargeting; optional mod classes isolated."
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     },
     {
       "acceptance": "Production source awaiting parent build/sync and real player scenarios; no gameplay acceptance implied."
@@ -286,6 +287,58 @@
       "source_files": [
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Dedicated settlement authority only; exact block IDs/tags or native carpet/nonempty pot/lit candle types; native Animal diversity only nonhostile/nonangry/nontargeting; optional mod classes isolated."
+        },
+        {
+          "acceptance": "Production source awaiting parent build/sync and real player scenarios; no gameplay acceptance implied."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/command/SettlementCommands.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityRegistry.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AmenityScanService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/SettlementMetricsConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/FoodValueRegistry.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementWarnings.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/FairyLightsEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitDefenseEvidence.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PatPatSuccessMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/base.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/amenities/decor_compat.json",
+        "Mods/JEMSettlements/src/main/resources/data/jem_settlements/happiness/food_values/base.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Docs/settlements/standalone/README.md",
+        "Catalog/changes/sets/settlements-decor-coverage.json",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/VillagerBirthMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java"
       ]
     }
   ],

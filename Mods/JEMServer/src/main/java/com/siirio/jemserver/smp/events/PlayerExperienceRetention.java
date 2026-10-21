@@ -7,7 +7,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class PlayerExperienceRetention {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void drops(LivingExperienceDropEvent event) {

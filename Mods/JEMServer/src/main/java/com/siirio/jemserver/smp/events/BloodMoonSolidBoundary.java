@@ -24,7 +24,7 @@ public final class BloodMoonSolidBoundary {
     }
 
     static List<EventBoundary> boundaries(Entity entity) {
-        if(!(entity.level() instanceof ServerLevel level)||!com.siirio.jemserver.smp.SmpEnvironment.active(level.getServer())) return List.of();
+        if(!(entity.level() instanceof ServerLevel level)||!EventRuntime.enabled(level.getServer())) return List.of();
         List<EventBoundary> boundaries=new ArrayList<>();
         for(var row:SmpData.get(level.getServer()).all("events")) {
             if(!row.getString("state").equals("ACTIVE")||!row.getString("dimension").equals(level.dimension().location().toString())) continue;
@@ -40,6 +40,7 @@ public final class BloodMoonSolidBoundary {
     }
 
     public static BossTeleportSafety.Decision validateTeleport(ServerPlayer player,ServerLevel level,Vec3 requested) {
+        if (!EventRuntime.enabled(player.server)) return BossTeleportSafety.Decision.unmatched();
         for(var row:SmpData.get(player.server).all("events")) {
             if(!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")
                     ||!locked(player,row)) continue;

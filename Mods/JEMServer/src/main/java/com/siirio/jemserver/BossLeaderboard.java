@@ -1,6 +1,6 @@
 package com.siirio.jemserver;
 
-import com.siirio.jemmenus.VanillaMenus;
+import com.siirio.jemserver.menus.VanillaMenus;
 
 import com.siirio.jemworldbosstiers.balance.BalanceRegistry;
 import java.util.Comparator;

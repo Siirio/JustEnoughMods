@@ -1,6 +1,6 @@
 package com.siirio.jemsettlements.payroll;
 
-import com.siirio.jemeconomy.ledger.TransferResult;
+import com.siirio.jemsettlements.currency.TransferResult;
 import com.siirio.jemsettlements.currency.SettlementCurrency;
 import com.siirio.jemsettlements.resident.ResidentMood;
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
@@ -101,7 +101,7 @@ public final class DailyTaxService {
         }
         for (String id : rows.getAllKeys()) if (!current.contains(id)) rows.getCompound(id).putBoolean("Active", false);
         state.put("Residents", rows); state.putInt("Rate", town.taxPercent());
-        if (SettlementCurrency.coins()) state.putLong("CalculatedDailyIncome", new com.siirio.jemeconomy.policy.RationalPrice(happinessUnits, 100_000_000L).multiply(40L).floor());
+        if (SettlementCurrency.coins()) state.putLong("CalculatedDailyIncome", new com.siirio.jemsettlements.payroll.TaxFraction(happinessUnits, 100_000_000L).multiply(40L).floor());
         // The comfort owner keeps its last trustworthy score across unavailable chunks.
         var comfort = town.observedComfort();
         state.putBoolean("ComfortKnown", comfort.isPresent());
@@ -111,7 +111,7 @@ public final class DailyTaxService {
     private static void closeDay(TownRecord town, CompoundTag state) {
         boolean coins = state.getBoolean("Coins");
         double residents = 0;
-        com.siirio.jemeconomy.policy.RationalPrice exactResidents = com.siirio.jemeconomy.policy.RationalPrice.ZERO;
+        com.siirio.jemsettlements.payroll.TaxFraction exactResidents = com.siirio.jemsettlements.payroll.TaxFraction.ZERO;
         CompoundTag rows = state.getCompound("Residents");
         for (String id : rows.getAllKeys()) {
             CompoundTag row = rows.getCompound(id); long ticks = row.getLong("Ticks");
@@ -119,7 +119,7 @@ public final class DailyTaxService {
             double happiness = row.getDouble("HappinessIntegral") / ticks / 100.0;
             double satiety = row.getDouble("SatietyIntegral") / ticks / 100.0;
             double rate = row.getDouble("TaxIntegral") / ticks;
-            if (coins) exactResidents = exactResidents.add(new com.siirio.jemeconomy.policy.RationalPrice(
+            if (coins) exactResidents = exactResidents.add(new com.siirio.jemsettlements.payroll.TaxFraction(
                     row.contains("HappinessUnits") ? row.getLong("HappinessUnits") : Math.round(row.getDouble("HappinessIntegral") * 1_000_000D), 100_000_000L * DAY).multiply(40L));
             residents += coins ? 0D
                     : SettlementEconomyConfig.dailyResidentTax(false) * happiness * satiety * rate * ticks / DAY;
@@ -131,8 +131,8 @@ public final class DailyTaxService {
         long residentPay;
         if (coins) {
             var remainder = state.contains("IncomeRemainderDenominator")
-                    ? new com.siirio.jemeconomy.policy.RationalPrice(state.getLong("IncomeRemainderNumerator"),state.getLong("IncomeRemainderDenominator"))
-                    : new com.siirio.jemeconomy.policy.RationalPrice(Math.round((state.getDouble("ResidentRemainderCopper")+state.getDouble("ComfortRemainderCopper"))*1_000_000D),1_000_000L);
+                    ? new com.siirio.jemsettlements.payroll.TaxFraction(state.getLong("IncomeRemainderNumerator"),state.getLong("IncomeRemainderDenominator"))
+                    : new com.siirio.jemsettlements.payroll.TaxFraction(Math.round((state.getDouble("ResidentRemainderCopper")+state.getDouble("ComfortRemainderCopper"))*1_000_000D),1_000_000L);
             var total=exactResidents.add(remainder); residentPay=total.floor();
             state.putLong("IncomeRemainderNumerator",total.remainder().numerator());state.putLong("IncomeRemainderDenominator",total.remainder().denominator());
             comfortTotal=0D;residentTotal=residentPay;

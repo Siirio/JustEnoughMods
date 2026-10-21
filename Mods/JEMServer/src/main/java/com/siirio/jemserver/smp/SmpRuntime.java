@@ -18,7 +18,7 @@ import net.minecraftforge.eventbus.api.*;
 public final class SmpRuntime {
     public static void register() {
         boolean dedicated = net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER;
-        if (dedicated) {
+        {
             net.minecraftforge.fml.ModLoadingContext.get()
                     .registerConfig(
                             net.minecraftforge.fml.config.ModConfig.Type.SERVER,
@@ -31,9 +31,9 @@ public final class SmpRuntime {
         SmpNetwork.register();
         Navigation.register();
         CombatNetwork.register();
-        if (dedicated) {
+        {
             MinecraftForge.EVENT_BUS.register(new SmpRuntime());
-            MinecraftForge.EVENT_BUS.register(new TestProfileRuntime());
+            if (dedicated) MinecraftForge.EVENT_BUS.register(new TestProfileRuntime());
             if (net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers")) registerBossHooks();
         }
     }
@@ -54,16 +54,17 @@ public final class SmpRuntime {
     @SubscribeEvent
     public void starting(net.minecraftforge.event.server.ServerStartingEvent event) {
         if (!SmpEnvironment.active(event.getServer())) return;
-        EventRuntime.starting();
+        EventRuntime.starting(event.getServer());
     }
 
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
-        if (!com.siirio.jemidentity.api.DedicatedSmp.accepts(event)) return;
+        if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED
+                && event.getCommandSelection() != Commands.CommandSelection.INTEGRATED) return;
         com.siirio.jemserver.smp.events.calendar.HolidayCommands.register(event.getDispatcher());
         com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
         event.getDispatcher().register(Commands.literal("smp").executes(c -> {
-            SmpNetwork.open(c.getSource().getPlayerOrException(), "events", null);
+            SmpNetwork.open(c.getSource().getPlayerOrException(), EventRuntime.enabled(c.getSource().getServer()) ? "events" : "profiles", null);
             return 1;
         }));
     }
@@ -158,7 +159,7 @@ public final class SmpRuntime {
 
     @SubscribeEvent
     public void started(ServerStartedEvent event) {
-        if (SmpEnvironment.active(event.getServer())) EventRuntime.started();
+        if (SmpEnvironment.active(event.getServer())) EventRuntime.started(event.getServer());
     }
 
     @SubscribeEvent

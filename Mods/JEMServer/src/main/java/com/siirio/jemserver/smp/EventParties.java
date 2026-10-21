@@ -7,6 +7,7 @@ import java.util.*;
 
 public final class EventParties {
     public static void join(ServerPlayer player, CompoundTag event, boolean solo) {
+        SmpRecords.require(EventRuntime.available(player.server, event), "unavailable");
         SmpRecords.require(!SmpData.closed(event), "unavailable");
         if (event.getString("activity").equals("BOSS_RAID") && event.contains("raidArenaId"))
             SmpRecords.require(!com.siirio.jemworldbosstiers.api.RaidArenaApi.participated(player.server, event.getString("raidArenaId"), player.getUUID()), "raid_already_participated");

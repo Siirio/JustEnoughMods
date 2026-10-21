@@ -1,5 +1,9 @@
 # Settlements standalone design
 
+## Universal production contract - 2026-10-22
+
+The same production `jem-settlements-2.1.0.jar` now runs on integrated and dedicated logical servers. The older sandbox-only build requirement below is historical. `JEMIdentity` is required; Economy and Recruits are optional isolated adapters. Economy enabled uses its canonical Coin ledger; absent/off uses the existing EmeraldTreasury. Pending obligations keep their original currency and day watermark, rather than replaying income in the replacement provider. No settlement-count limit is applied in solo. Prices, happiness and workforce authority remain in their existing owners. See [universal inventory](../../universal/README.md) for distribution and acceptance limits.
+
 ## Current source contract — 2026-10-21
 
 Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.

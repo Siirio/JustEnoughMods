@@ -23,7 +23,7 @@ public final class EventCommands {
                 .executes(context -> startRequested(context.getSource(), StringArgumentType.getString(context, "event"), null))
                 .then(Commands.argument("position", BlockPosArgument.blockPos())
                         .executes(context -> startRequested(context.getSource(), StringArgumentType.getString(context, "event"), BlockPosArgument.getBlockPos(context, "position"))));
-        var eventRoot = Commands.literal("event").requires(source -> source.hasPermission(2))
+        var eventRoot = Commands.literal("event").requires(source -> source.hasPermission(2) && EventRuntime.enabled(source.getServer()))
                 .then(Commands.literal("start").then(type))
                 .then(Commands.literal("stop").then(Commands.argument("id", UuidArgument.uuid())
                         .suggests((context, builder) -> SharedSuggestionProvider.suggest(

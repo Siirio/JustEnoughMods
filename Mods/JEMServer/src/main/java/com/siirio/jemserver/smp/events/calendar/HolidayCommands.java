@@ -20,7 +20,7 @@ public final class HolidayCommands {
     }
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("jem").then(Commands.literal("holiday")
+        dispatcher.register(Commands.literal("jem").then(Commands.literal("holiday").requires(source -> com.siirio.jemserver.smp.events.EventRuntime.enabled(source.getServer()))
                 .executes(context -> status(context.getSource()))
                 .then(Commands.literal("mute").then(Commands.argument("muted", BoolArgumentType.bool())
                         .executes(context -> mute(context.getSource(), BoolArgumentType.getBool(context, "muted")))))

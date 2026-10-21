@@ -27,7 +27,7 @@ public final class RacialSpell extends AbstractSpell {
         this.id = new ResourceLocation(JemRoles.MOD_ID, path);
         this.race = race;
         this.config = new DefaultConfig().setMinRarity(SpellRarity.COMMON).setSchoolResource(school)
-                .setMaxLevel(3).setCooldownSeconds(cooldownSeconds).setAllowCrafting(false).build();
+                .setMaxLevel(4).setCooldownSeconds(cooldownSeconds).setAllowCrafting(false).build();
         this.baseManaCost = 0; this.manaCostPerLevel = 0; this.castTime = 0;
     }
     @Override public ResourceLocation getSpellResource() { return id; }
@@ -38,7 +38,7 @@ public final class RacialSpell extends AbstractSpell {
     @Override public boolean requiresLearning() { return false; }
 
     private boolean ownsSpell(ServerPlayer player) {
-        return player.server.isDedicatedServer()
+        return com.siirio.jemvisualsandbox.workbench.RaceExperience.allowed(player)
                 && RaceService.record(player).map(record -> record.race() == race).orElse(false);
     }
 
@@ -47,7 +47,7 @@ public final class RacialSpell extends AbstractSpell {
         if (!ownsSpell(player))
             return new CastResult(CastResult.Type.FAILURE);
         RacialSpellBridge.syncCooldown(player);
-        long remaining = RaceService.record(player).orElseThrow().remaining("signature", player.level().getGameTime());
+        long remaining = com.siirio.jemvisualsandbox.workbench.RaceExperience.remaining(player, "signature");
         if (remaining > 0) return new CastResult(CastResult.Type.FAILURE,
                 Component.translatable("jem.roles.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(remaining)));
         return super.canBeCastedBy(spellLevel, source, data, entity);

@@ -24,7 +24,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /** Native team tags select support; the canonical structure claim selects its encounter. */
-@Mod.EventBusSubscriber(modid = JemWorldBossTiers.MOD_ID, value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = JemWorldBossTiers.MOD_ID)
 public final class HostedGroup {
     private static final String ARENA = "JEMHostedSupportArena";
     private static final String OWNER = "JEMHostedBoss";

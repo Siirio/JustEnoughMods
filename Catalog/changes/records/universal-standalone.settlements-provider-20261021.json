@@ -1,0 +1,166 @@
+{
+  "schema_version": 2,
+  "change_id": "universal-standalone.settlements-provider-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "universal_standalone",
+    "priority": 1120,
+    "overrides": [
+      "settlements.standalone",
+      "settlements.sandbox-build-boundary"
+    ]
+  },
+  "change": {
+    "summary": "One production Settlements implementation supports integrated/dedicated worlds, unlimited explicit towns and independent emerald authority when Economy is absent/off.",
+    "modifiers": [
+      {
+        "property": "settlements.runtime_authority",
+        "operation": "replace",
+        "before": "Dedicated-only production and separate sandbox build profile",
+        "after": {
+          "runtime": "One production logical-server implementation; no STANDALONE source/build mode",
+          "towns": "Unlimited towns; ambiguous no-ID operations do not silently choose another town; authoritative actions bind explicit selected IDs",
+          "identity": "Integrated UUID and existing authenticated dedicated principal contracts retained"
+        }
+      },
+      {
+        "property": "settlements.currency_provider",
+        "operation": "replace",
+        "before": "Bundled CurrencyCore and common Economy type signatures",
+        "after": {
+          "owner": "Settlement-owned native-signature provider/result/financial destination/tax fraction contracts",
+          "coins": "Isolated optional provider uses same EconomyApi.isEnabled(server) flag and existing ledger",
+          "emeralds": "Existing independent EmeraldTreasury and native inventory when Economy absent/off; no account conversion or copied Coin ledger",
+          "finance": "Exact existing Coin/emerald hire/wage/expansion/tax formulas; captured-currency obligations and daily watermarks, durable intent->debit->ack ordering retained",
+          "integrations": "Recruits/Jade/Xaero/PatPat optional; Workers inactive historical data only"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM canonical domain owners",
+    "kind": "approved_universal_standalone",
+    "source_files": [
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CivicCommerceAdapter.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CivicTradeBridge.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinCurrencyProvider.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinPresentationAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinPricePresentation.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/EmeraldTreasury.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementAccounts.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCoinProvider.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/TransferResult.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxFraction.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/sandbox/SandboxCivicRuntime.java",
+      "Mods/JEMSettlements/src/main/resources/META-INF/mods.toml"
+    ]
+  },
+  "rationale": {
+    "purpose": "One production Settlements implementation supports integrated/dedicated worlds, unlimited explicit towns and independent emerald authority when Economy is absent/off.",
+    "decision_source": "User explicitly requested execution of the Universal Standalone plan on 2026-10-21, with repository plan amendments and Windows/Linux/macOS portability.",
+    "user_requested": "One shared production implementation for integrated/dedicated worlds, source-domain ownership, optional feature absence, Economy ON/OFF, preserved native IDs/saves/behavior, dedicated opt-in events, content-aware progression/quests, Bootstrap in shareable pack.",
+    "codex_choices": "Domain adapters, exact generation-bound recipe reconciliation, per-world frozen progression profile, native quest folder projection and source/resource routing implement that approved contract. No implicit player acceptance is asserted."
+  },
+  "introduced": {
+    "date": "2026-10-22",
+    "commit": "SELF",
+    "action": "implement_universal_standalone",
+    "summary": "One production Settlements implementation supports integrated/dedicated worlds, unlimited explicit towns and independent emerald authority when Economy is absent/off."
+  },
+  "history": [
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "implement_universal_standalone",
+      "summary": "One production Settlements implementation supports integrated/dedicated worlds, unlimited explicit towns and independent emerald authority when Economy is absent/off.",
+      "source_files": [
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/RecruitHirePresentation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CivicCommerceAdapter.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CivicTradeBridge.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinCurrencyProvider.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinPresentationAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinPricePresentation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/EmeraldTreasury.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementAccounts.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCoinProvider.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/TransferResult.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxFraction.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/sandbox/SandboxCivicRuntime.java",
+        "Mods/JEMSettlements/src/main/resources/META-INF/mods.toml"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "towns",
+      "treasury",
+      "taxes",
+      "payroll",
+      "villager housing",
+      "recruits",
+      "optional mods"
+    ],
+    "relations": [
+      "canonical source owner -> shared production artifact -> logical-server authority -> synchronized client presentation"
+    ],
+    "notes": [
+      "Existing registry/resource/network namespace and saved-data identities are retained unless the explicitly recorded protocol version changes. No new price policy or copied gameplay state owner is introduced.",
+      "Controller produced and synchronized fresh production artifacts to ordinary Client/ManagedPack and Server; native publication/application and manual player acceptance are separate delivery evidence."
+    ],
+    "unresolved": [
+      "Fresh missing-mod/ON-OFF/restart/manual gameplay and visual acceptance on Windows/Linux/macOS remains unexercised. No automated tests or gameplay scenarios were run."
+    ]
+  }
+}

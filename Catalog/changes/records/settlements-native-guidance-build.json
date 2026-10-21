@@ -2,17 +2,99 @@
   "schema_version": 2,
   "change_id": "settlements.native-guidance-build-import",
   "status": "active",
-  "selectors": [{"type": "id", "registry": "entities", "value": "minecraft:villager"}],
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    }
+  ],
   "exceptions": [],
-  "conditions": [{"expression": "Registered resident in an ordinary dedicated-server town", "confidence": "source"}],
-  "precedence": {"layer": "build_imports", "priority": 100, "overrides": []},
+  "conditions": [
+    {
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "build_imports",
+    "priority": 100,
+    "overrides": []
+  },
   "change": {
     "summary": "Restore the missing BlockPos import required to compile existing soft town guidance; no runtime rule changes.",
-    "modifiers": [{"property": "integration.settlements.guidance_compilation", "operation": "document", "before": {"value": "SettlementRuntime references BlockPos without importing it; compileJava fails"}, "after": {"value": "Resolve existing BlockPos variables through net.minecraft.core.BlockPos"}, "notes": "Import-only correction preserves native villager AI, town ownership, soft boundary, home preference and bounded guidance cadence."}]
+    "modifiers": [
+      {
+        "property": "integration.settlements.guidance_compilation",
+        "operation": "document",
+        "before": {
+          "value": "SettlementRuntime references BlockPos without importing it; compileJava fails"
+        },
+        "after": {
+          "value": "Resolve existing BlockPos variables through net.minecraft.core.BlockPos"
+        },
+        "notes": "Import-only correction preserves native villager AI, town ownership, soft boundary, home preference and bounded guidance cadence."
+      }
+    ]
   },
-  "cause": {"owner": "JEMSettlements", "kind": "build_import", "source_files": ["Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java"]},
-  "rationale": {"purpose": "Unblock the explicitly requested matching local QA environment without altering approved town behavior.", "decision_source": "Overnight QA brief and Docs/DEVELOPMENT.md settlement/native AI ownership"},
-  "introduced": {"date": "2026-10-14", "commit": "SELF", "action": "restore_missing_import", "summary": "Added only the missing Minecraft BlockPos type import."},
-  "history": [{"date": "2026-10-14", "commit": "SELF", "action": "restore_missing_import", "summary": "Fresh source build demonstrated two cannot-find-symbol errors in guideResidentsHome; restored its type import.", "source_files": ["Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java"]}],
-  "impacts": {"systems": ["build", "settlements", "villager_ai", "native_pathfinding"], "relations": ["SettlementRuntime->guideResidentsHome->BlockPos"], "notes": ["No gameplay expression, state schema, network contract or native API changed."], "unresolved": ["In-game guidance replay remains pending."]}
+  "cause": {
+    "owner": "JEMSettlements",
+    "kind": "build_import",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Unblock the explicitly requested matching local QA environment without altering approved town behavior.",
+    "decision_source": "Overnight QA brief and Docs/DEVELOPMENT.md settlement/native AI ownership"
+  },
+  "introduced": {
+    "date": "2026-10-14",
+    "commit": "SELF",
+    "action": "restore_missing_import",
+    "summary": "Added only the missing Minecraft BlockPos type import."
+  },
+  "history": [
+    {
+      "date": "2026-10-14",
+      "commit": "SELF",
+      "action": "restore_missing_import",
+      "summary": "Fresh source build demonstrated two cannot-find-symbol errors in guideResidentsHome; restored its type import.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "expression": "Registered resident in an ordinary dedicated-server town",
+          "confidence": "source"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "build",
+      "settlements",
+      "villager_ai",
+      "native_pathfinding"
+    ],
+    "relations": [
+      "SettlementRuntime->guideResidentsHome->BlockPos"
+    ],
+    "notes": [
+      "No gameplay expression, state schema, network contract or native API changed."
+    ],
+    "unresolved": [
+      "In-game guidance replay remains pending."
+    ]
+  }
 }

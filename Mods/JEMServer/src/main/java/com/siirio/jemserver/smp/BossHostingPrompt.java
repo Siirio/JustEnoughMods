@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /** Attack admission shares EventChoice/HostedParties; no proximity activation or arena immunity. */
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class BossHostingPrompt {
     private static final Map<UUID, Long> NEXT_PROMPT = new HashMap<>();
 

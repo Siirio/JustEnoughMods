@@ -36,7 +36,7 @@ public final class EventMobScale {
 
     @SubscribeEvent
     public static void tracking(PlayerEvent.StartTracking event) {
-        if(event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player&&event.getTarget().getPersistentData().hasUUID(BloodMoon.EVENT_ID))
+        if(event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player&&EventRuntime.enabled(player.server)&&event.getTarget().getPersistentData().hasUUID(BloodMoon.EVENT_ID))
             EventNetwork.eventMob(player,event.getTarget());
     }
 

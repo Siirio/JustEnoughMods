@@ -16,7 +16,7 @@ public final class RaceJadePlugin implements IWailaPlugin {
         private static final ResourceLocation ID = new ResourceLocation("jem_roles", "race");
         @Override public ResourceLocation getUid() { return ID; }
         @Override public void appendServerData(CompoundTag tag, EntityAccessor accessor) {
-            if (accessor.getEntity() instanceof ServerPlayer player && player.server.isDedicatedServer())
+            if (accessor.getEntity() instanceof ServerPlayer player)
                 com.siirio.jemroles.api.RaceApi.get(player).ifPresent(value -> tag.putString("JemRace", value.race().name()));
         }
         @Override public void appendTooltip(ITooltip tooltip, EntityAccessor accessor, IPluginConfig config) {

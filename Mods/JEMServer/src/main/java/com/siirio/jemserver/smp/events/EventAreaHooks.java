@@ -19,7 +19,7 @@ import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.Mod;
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid="jem_server",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid="jem_server")
 public final class EventAreaHooks {
     static final double PROJECTILE_RESTITUTION_REDUCTION=.2;
     private static final Map<UUID,Set<UUID>> INSIDE=new HashMap<>();
@@ -76,6 +76,7 @@ public final class EventAreaHooks {
 
     public static void prompt(ServerPlayer player, UUID id) {
         CompoundTag row = SmpData.get(player.server).find("events", id);
+        SmpRecords.require(EventRuntime.available(player.server, row), "unavailable");
         SmpRecords.require(row != null && row.getString("state").equals("ACTIVE") && !row.getBoolean("combatStarted"), "unavailable");
         String type = row.getString("activity");
         SmpRecords.require((type.equals("BLOOD_MOON") || type.equals("BOSS_RAID")) && EventRegions.near(row, player.serverLevel(), player.blockPosition()), "travel_to_arena");
@@ -115,6 +116,7 @@ public final class EventAreaHooks {
         var target=event.getNewTarget();
         if(target==null) return;
         var row=SmpData.get(mob.getServer()).find("events",tag.getUUID(EventSession.SESSION));
+        if (row != null ? !EventRuntime.available(mob.getServer(), row) : !EventRuntime.enabled(mob.getServer())) return;
         if(row!=null&&row.getString("activity").equals("BLOOD_MOON")&&!BloodMoon.canTarget(mob,target)) {
             event.setCanceled(true);
             return;
@@ -127,6 +129,7 @@ public final class EventAreaHooks {
         if(attacker==null) attacker=EventSession.owner(event.getSource().getDirectEntity());
         var victim=event.getEntity();
         if(attacker==null) return;
+        if (unavailableEventEntity(attacker) || unavailableEventEntity(victim)) return;
         if(attacker instanceof Mob && victim instanceof Mob
                 && attacker.getPersistentData().hasUUID(BloodMoon.EVENT_ID)
                 && victim.getPersistentData().hasUUID(BloodMoon.EVENT_ID)
@@ -174,6 +177,7 @@ public final class EventAreaHooks {
         }
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void statistics(LivingDamageEvent event) {
+        if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         if(event.getEntity().level().isClientSide || event.getAmount()<=0) return;
         var owner=EventSession.owner(event.getSource().getEntity());
         if(owner==null) owner=EventSession.owner(event.getSource().getDirectEntity());
@@ -186,10 +190,11 @@ public final class EventAreaHooks {
         SmpData.get(player.server).changed(row);
     }
     @SubscribeEvent public static void removed(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {
-        if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level && event.getEntity() instanceof LivingEntity living)
+        if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level && EventRuntime.enabled(level.getServer()) && event.getEntity() instanceof LivingEntity living)
             BloodMoon.removed(level.getServer(), living);
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void drops(LivingDropsEvent event) {
+        if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         if(!event.getEntity().getPersistentData().hasUUID(BloodMoon.EVENT_ID)) return;
         UUID eventId=event.getEntity().getPersistentData().getUUID(BloodMoon.EVENT_ID);
         var row=SmpData.get(event.getEntity().getServer()).find("events",eventId);
@@ -200,6 +205,7 @@ public final class EventAreaHooks {
         }
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public static void experience(LivingExperienceDropEvent event) {
+        if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         var boss=event.getEntity();
         if(event.getDroppedExperience()<=0 || !boss.getPersistentData().hasUUID(BloodMoon.EVENT_ID)
                 || !EventMobModifiers.isSetPieceBoss(boss) || boss.getServer()==null) return;
@@ -213,6 +219,15 @@ public final class EventAreaHooks {
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { invalidate(event.getEntity().getUUID()); }
     @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent event) { invalidate(event.getEntity().getUUID()); }
     @SubscribeEvent public static void dimensionChanged(PlayerEvent.PlayerChangedDimensionEvent event) { invalidate(event.getEntity().getUUID()); }
+    private static boolean unavailableEventEntity(Entity entity) {
+        if (entity.getServer() == null) return false;
+        var tag = entity.getPersistentData();
+        String key = tag.hasUUID(EventSession.SESSION) ? EventSession.SESSION : RaidEvent.EVENT_ID;
+        if (!tag.hasUUID(key)) return false;
+        var row = SmpData.get(entity.getServer()).find("events", tag.getUUID(key));
+        return row != null ? !EventRuntime.available(entity.getServer(), row) : !EventRuntime.enabled(entity.getServer());
+    }
+
     private static void invalidate(UUID id) {
         INSIDE.remove(id);
         PROMPTED.remove(id);

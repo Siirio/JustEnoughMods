@@ -20,6 +20,11 @@ public final class TemporaryPathSavedData extends SavedData {
         return server.overworld().getDataStorage().computeIfAbsent(TemporaryPathSavedData::load, TemporaryPathSavedData::new, NAME);
     }
 
+    /** Same temporary-path implementation retains the promoted namespace's existing save. */
+    public static TemporaryPathSavedData getSandbox(MinecraftServer server) {
+        return server.overworld().getDataStorage().computeIfAbsent(TemporaryPathSavedData::load, TemporaryPathSavedData::new, "jem_sandbox_paths");
+    }
+
     public void add(ResourceKey<Level> dimension, BlockPos pos, long expires) {
         entries.put(key(dimension, pos), new Entry(dimension.location(), pos.immutable(), expires));
         setDirty();

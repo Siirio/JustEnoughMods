@@ -17,7 +17,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = JemRoles.MOD_ID, value = Dist.CLIENT)
 public final class RoleClientState {
     private static final ResourceLocation GUI_ICONS = new ResourceLocation("minecraft", "textures/gui/icons.png");
     private static RaceStatusPacket status;
@@ -32,7 +31,6 @@ public final class RoleClientState {
     private RoleClientState() {}
 
     public static void accept(RaceStatusPacket packet) {
-        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
         var currentConnection = Minecraft.getInstance().getConnection();
         if (connection != currentConnection) { connection=currentConnection; status=null; pendingOpen=false; utilityHeld=false; }
         boolean firstSelection = status != null && !status.selected() && packet.selected();
@@ -49,13 +47,11 @@ public final class RoleClientState {
     public static com.siirio.jemroles.race.RaceId race() { return status != null && status.selected() ? status.race() : null; }
     public static int spellTier() { return status == null ? 1 : status.spellTier(); }
 
-    @Mod.EventBusSubscriber(modid = JemRoles.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static final class ModBus {
         private ModBus() {}
         @SubscribeEvent
         public static void keys(RegisterKeyMappingsEvent event) {
-            if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
-            event.register(SIGNATURE);
+                event.register(SIGNATURE);
             event.register(UTILITY);
         }
     }
@@ -63,7 +59,6 @@ public final class RoleClientState {
     @SubscribeEvent
     public static void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
-        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_visual_sandbox")) return;
         var minecraft = Minecraft.getInstance();
         if (connection != minecraft.getConnection()) { connection=minecraft.getConnection(); status=null; pendingOpen=false; utilityHeld=false; }
         if (pendingOpen && status!=null && minecraft.player!=null && minecraft.level!=null && minecraft.screen==null) {

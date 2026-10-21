@@ -6,7 +6,7 @@
     {
       "type": "source_set",
       "registry": "items",
-      "members_path": "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "members_path": "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
       "id_field": "item"
     }
   ],
@@ -46,9 +46,9 @@
     "owner": "JEMEconomy",
     "kind": "jem_datapack_policy",
     "source_files": [
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
-      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
     ]
   },
   "rationale": {
@@ -112,6 +112,20 @@
       "action": "relocate_current_artifact_and_selector_evidence",
       "summary": "Current installed artifact and exact source-set evidence references follow migrated Economy1.3.0/Settlements2.1.0 and the sole Core resource owner. Selector membership, prices, saved balances and prior historical evidence are unchanged.",
       "source_files": [
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
         "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
       ]
     }

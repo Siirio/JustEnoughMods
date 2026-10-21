@@ -1,5 +1,9 @@
 # Boss Raid
 
+## Universal ordinary Raid — 2026-10-22
+
+Ordinary solo/party Raid reuses the canonical hosted encounter on integrated and dedicated servers. It is distinct from scheduled/seasonal Events: those remain explicit dedicated opt-in, default off. WorldBossTiers offers solo admission without Server and owns the same preparation, full-collision-box admission, historical arena participation, rewards and durable normal-boss recovery. Server, when installed, provides the existing party/UI adapter and delegates structure discovery to StructureEncounterApi. No second Raid allowlist, scaling owner, barrier or reward ledger is introduced. Source behavior is not a completed gameplay/recovery acceptance claim. See [WorldTier](../../Mods/JEMWorldBossTiers/README.md).
+
 ## Source update —2026-10-21
 
 In testing; runtime acceptance, artifact delivery and MineRENT deployment pending. The user's barrier removal applies to ordinary bosses, Campaign and Raid only. Blood Moon and Resource Rush retain their contracts. Participant departure is allowed physically; an empty arena closes through the canonical hosted grace lifecycle. Damage/reward membership and immediate elimination on actual death remain enforced.
@@ -49,7 +53,7 @@ Xaero не создаёт отдельную Raid-территорию: active R
 
 Historical note: before2026-10-21, the shared boundary presence predicate controlled a boss virtual wall. That boss-wall policy is now superseded entirely; arena/revival identity remains canonical. Blood Moon/Resource Rush geometry is unchanged.
 
-Waiting-area immunity never applies to an ALIVE participant of another active hosted encounter. HostedEncounters owns that classification, preventing overlapping waiting bosses from canceling active boss damage. Held bosses skip their whole native entity tick at the physically dedicated ServerLevel dispatcher: NoAI alone cannot pause Bosses Rise custom combat/cinematics/bar/music. Start clears the existing hold marker and resumes native behavior; tracking still suppresses dormant bars. Integrated singleplayer is excluded by JemServerMixinPlugin. Native phases, damage values, rewards and progression are unchanged.
+Waiting-area immunity never applies to an ALIVE participant of another active hosted encounter. HostedEncounters owns that classification, preventing overlapping waiting bosses from canceling active boss damage. Held bosses skip their whole native entity tick at the physically dedicated ServerLevel dispatcher: NoAI alone cannot pause Bosses Rise custom combat/cinematics/bar/music. Start clears the existing hold marker and resumes native behavior; tracking still suppresses dormant bars. That 2026-10-19 source checkpoint excluded integrated singleplayer through JemServerMixinPlugin; the 2026-10-22 universal ownership section supersedes that distribution gate. Native phases, damage values, rewards and progression are unchanged.
 
 The supplied crab crash is an obsolete BOSS prompt passed to EventEntryKind.valueOf; source producer was already corrected in4dc02558. The prompt API now accepts only EventEntryKind, preserving protocol9 and rejecting invalid producers at compilation. Helvar second-phase no-damage is consistent with overlapping lobby immunity; the exact live incident is not observed locally. All fixes remain in testing until player acceptance.
 

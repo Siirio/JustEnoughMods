@@ -15,7 +15,7 @@ import net.minecraft.world.level.storage.LevelResource;
 public final class TaxDurability {
     private TaxDurability() { }
     public static void save(MinecraftServer server, SavedData data, String name) {
-        if (!name.equals("jem_settlements") && !name.equals("jem_economy")) throw new IllegalArgumentException("Unknown tax storage owner");
+        if (!name.equals("jem_settlements") && !name.equals("jem_economy") && !name.equals("jem_sandbox_civic") && !name.equals("jem_settlements_emeralds")) throw new IllegalArgumentException("Unknown tax storage owner");
         var directory = server.getWorldPath(LevelResource.ROOT).resolve("data");
         var target = directory.resolve(name + ".dat");
         var temporary = directory.resolve(name + ".tax.tmp");
@@ -26,12 +26,7 @@ public final class TaxDurability {
             if (net.minecraft.Util.getPlatform() == net.minecraft.Util.OS.WINDOWS) {
                 // JDK atomic-move ignores REPLACE_EXISTING on Windows. Request one native
                 // same-volume replacement, without Java's delete-then-move alternative.
-                var windows = com.sun.jna.platform.win32.Kernel32.INSTANCE;
-                int flags = com.sun.jna.platform.win32.WinBase.MOVEFILE_REPLACE_EXISTING
-                        | com.sun.jna.platform.win32.WinBase.MOVEFILE_WRITE_THROUGH;
-                if (!windows.MoveFileEx(temporary.toAbsolutePath().toString(), target.toAbsolutePath().toString(),
-                        new com.sun.jna.platform.win32.WinDef.DWORD(flags)))
-                    throw new IOException("Native tax file replacement failed: " + windows.GetLastError());
+                WindowsReplacement.replace(temporary, target);
             } else {
                 Files.move(temporary, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
             }
@@ -41,4 +36,15 @@ public final class TaxDurability {
             data.setDirty(); throw new IllegalStateException("Daily tax transaction remains pending: " + name, failure);
         }
     }
+    private static final class WindowsReplacement {
+        private static void replace(java.nio.file.Path source, java.nio.file.Path target) throws IOException {
+            var windows = com.sun.jna.platform.win32.Kernel32.INSTANCE;
+            int flags = com.sun.jna.platform.win32.WinBase.MOVEFILE_REPLACE_EXISTING
+                    | com.sun.jna.platform.win32.WinBase.MOVEFILE_WRITE_THROUGH;
+            if (!windows.MoveFileEx(source.toAbsolutePath().toString(), target.toAbsolutePath().toString(),
+                    new com.sun.jna.platform.win32.WinDef.DWORD(flags)))
+                throw new IOException("Native tax file replacement failed: " + windows.GetLastError());
+        }
+    }
+
 }

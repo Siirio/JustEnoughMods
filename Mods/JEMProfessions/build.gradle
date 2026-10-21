@@ -18,7 +18,7 @@ tasks.named('processResources') {
     inputs.file 'build.gradle'
     filesMatching('META-INF/mods.toml') {
         def metadata = '\n[[mods]]\nmodId="jem_professions_sandbox"\nversion="1.0.0"\ndisplayName="JEM Professions Sandbox Controls"\ndescription="Explicit integrated-owner profession capability."\n'
-        [jem_currency_core:'1.0.0',jem_economy:'1.3.0',jem_settlements:'2.1.0',create:'6.0.8',epicfight:'20.14.17',
+        [jem_economy:'1.3.0',jem_settlements:'2.1.0',create:'6.0.8',epicfight:'20.14.17',
          playerrevive:'2.0.31',irons_spellbooks:'1.20.1-3.15.6',tinyinv:'1.1.0.1',recruits:'1.15.2'].each { mod, minimum ->
             metadata += "\n[[dependencies.jem_professions_sandbox]]\nmodId=\"${mod}\"\nmandatory=true\nversionRange=\"[${minimum},)\"\nordering=\"AFTER\"\nside=\"BOTH\"\n"
         }
@@ -52,7 +52,7 @@ dependencies {
     compileOnly fg.deobf('local:puffish_skills:0.19.2-1.20-forge')
     if (professionProfile == 'sandbox') {
         annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-        compileOnly files('../JEMCurrencyCore/build/classes/java/main', '../JEMEconomy/build/classes/java/main', '../JEMSettlements/build/classes/java/main')
+        compileOnly files('../JEMEconomy/build/classes/java/main', '../JEMSettlements/build/classes/java/main')
         compileOnly fg.deobf('local:create:1.20.1-6.0.8')
         compileOnly fg.deobf('local:epic-fight:20.14.17-mc1.20.1-forge')
         compileOnly fg.deobf('local:PlayerRevive_FORGE_v2.0.31_mc1.20.1:installed')

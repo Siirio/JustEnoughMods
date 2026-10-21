@@ -7,7 +7,7 @@ modId="jem_roles"
 version="2.0.0"
 displayName="JEM Races"
 authors="Siirio"
-description='''Server-authoritative Ancestors, Void Walkers, Born in Bloom, Infected by Sculk and Nether Hearteds.'''
+description='''One server-authoritative Races implementation for integrated worlds and dedicated servers, with all five developed races, selection, powers, progression and presentation. Keeps jem_roles saves and legacy visual resource/registry namespaces. Lodestone is required for the preserved particle renderer. Iron's Spells, Jade and JEM Economy integrations are optional.'''
 
 [[dependencies.jem_roles]]
 modId="forge"
@@ -48,5 +48,12 @@ side="BOTH"
 modId="jem_economy"
 mandatory=false
 versionRange="[1.2.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.jem_roles]]
+modId="jade"
+mandatory=false
+versionRange="[11.13.3,)"
 ordering="AFTER"
 side="BOTH"

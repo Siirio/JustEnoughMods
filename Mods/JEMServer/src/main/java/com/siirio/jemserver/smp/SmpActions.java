@@ -42,6 +42,11 @@ public final class SmpActions {
                 "unknown_action");
         CompoundTag row = SmpData.get(player.server).find(table, request.id());
         SmpRecords.require(row != null, "unavailable");
+        if ((table.equals("events") || row.hasUUID("eventId"))
+                && !Set.of(SmpActionKind.CANCEL, SmpActionKind.DISSOLVE, SmpActionKind.LEAVE).contains(action)) {
+            var event = table.equals("events") ? row : SmpData.get(player.server).find("events", row.getUUID("eventId"));
+            SmpRecords.require(com.siirio.jemserver.smp.events.EventRuntime.available(player.server, event), "unavailable");
+        }
         if (table.equals("parties") && (action == SmpActionKind.START) && row.getString("state").equals("ACTIVE")) {
             SmpRecords.owner(player, row);
             return;

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "change_id": "menu-support.full-distribution-refmap",
-  "status": "active",
+  "status": "superseded",
   "selectors": [
     {
       "type": "namespace",
@@ -38,10 +38,12 @@
     ]
   },
   "cause": {
-    "owner": "JEMMenuSupport shared build adapter",
+    "owner": "JEMCompat / JEMRoles / JEMServer",
     "kind": "packaging_metadata_omission",
     "source_files": [
-      "Mods/JEMMenuSupport/embed.gradle"
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMServer/build.gradle"
     ]
   },
   "rationale": {
@@ -80,6 +82,30 @@
       "summary": "Fresh+ordinarybuild retain7474byteSolidBoundaryrefmap; full448589 SHAcloneDone06:47:04; realnativegen3commit06:55:07/all13hashmatch; currentSurvivalhome reachesmissingrespawnvalidation. Claimsruntimeexcluded.",
       "source_files": [
         "Mods/JEMMenuSupport/embed.gradle"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMMenuSupport/embed.gradle",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMServer/build.gradle"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMMenuSupport shared build adapter",
+      "source_files": [
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMServer/build.gradle"
       ]
     }
   ],

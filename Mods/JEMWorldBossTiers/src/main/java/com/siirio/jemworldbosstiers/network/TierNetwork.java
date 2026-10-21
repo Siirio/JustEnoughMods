@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public final class TierNetwork {
-    private static final String PROTOCOL = "5";
+    private static final String PROTOCOL = "6";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             ResourceLocation.fromNamespaceAndPath(JemWorldBossTiers.MOD_ID, "main"),
             () -> PROTOCOL,
@@ -27,6 +27,10 @@ public final class TierNetwork {
     }
 
     public static void register() {
+        CHANNEL.registerMessage(1, AdmissionPromptPacket.class, AdmissionPromptPacket::encode,
+                AdmissionPromptPacket::decode, AdmissionPromptPacket::handle, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        CHANNEL.registerMessage(2, AdmissionChoicePacket.class, AdmissionChoicePacket::encode,
+                AdmissionChoicePacket::decode, AdmissionChoicePacket::handle, Optional.of(NetworkDirection.PLAY_TO_SERVER));
         CHANNEL.registerMessage(
                 0,
                 TierSyncPacket.class,
@@ -35,6 +39,15 @@ public final class TierNetwork {
                 TierSyncPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT)
         );
+    }
+
+    public static void openAdmission(ServerPlayer player, java.util.UUID token, net.minecraft.network.chat.Component boss,
+                                     net.minecraft.network.chat.Component blocked, boolean raid) {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new AdmissionPromptPacket(token, boss, blocked, raid));
+    }
+
+    public static void chooseAdmission(java.util.UUID token, int choice) {
+        CHANNEL.sendToServer(new AdmissionChoicePacket(token, choice));
     }
 
     public static void sync(ServerPlayer player) {
@@ -49,7 +62,7 @@ public final class TierNetwork {
     private static TierSyncPacket packet(MinecraftServer server) {
         WorldTierData data = WorldTierData.get(server);
         int defeatCount = data.activeDefeatCount();
-        int nextThreshold = BalanceRegistry.tierThresholds().stream()
+        int nextThreshold = data.tierThresholds().stream()
                 .filter(threshold -> threshold > defeatCount)
                 .findFirst()
                 .orElse(-1);

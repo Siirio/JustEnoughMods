@@ -4,8 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
-import xaero.map.WorldMapSession;
-import xaero.map.controls.ControlsRegister;
 
 public final class CampaignMapClient {
     private CampaignMapClient() {
@@ -19,10 +17,7 @@ public final class CampaignMapClient {
                     .append(" (" + dimension + ")"), false);
         }
         if (ModList.get().isLoaded("xaeroworldmap")) {
-            var session = WorldMapSession.getCurrentSession();
-            if (session != null && session.isUsable()) {
-                session.getControlsHandler().keyDown(ControlsRegister.keyOpenMap, false, false);
-            }
+            XaeroMapAdapter.open();
         }
     }
 }

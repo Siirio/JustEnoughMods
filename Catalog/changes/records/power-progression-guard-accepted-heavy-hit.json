@@ -2,16 +2,57 @@
   "schema_version": 2,
   "change_id": "power.progression-guard-accepted-heavy-hit",
   "status": "active",
-  "selectors": [{"type": "registry", "registry": "items"}],
-  "conditions": [{"rule": "Dedicated server, eligible Progression chest armor, World Tier III-V"}],
-  "precedence": {"layer": "jem_combat", "priority": 160},
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_combat",
+    "priority": 160
+  },
   "change": {
     "summary": "Reserve the existing chest guard for significant accepted hits; preserve reduction and cooldown.",
     "modifiers": [
-      {"property": "progression.chest.guard.trigger", "operation": "replace", "before": "Any ready eligible LivingHurtEvent", "after": "Finite positive event amount >=8 before Progression reductions; canceled/fully reflected hits do not reserve"},
-      {"property": "progression.chest.guard.commit", "operation": "replace", "before": "Immediate persistent cooldown on LivingHurtEvent", "after": "Native actuallyHurt try/finally commits only for own health or absorption loss; same-target nested damage cannot spend a rejected parent guard"},
-      {"property": "progression.chest.guard.strength", "operation": "document", "before": {"reduction": 0.35, "cooldown_ticks": 240, "secondary_share": 0.25}, "after": {"reduction": 0.35, "cooldown_ticks": 240, "secondary_share": 0.25}},
-      {"property": "power.research.laser_fire_mapping", "operation": "replace", "before": "Misidentified five-second fire mutation as invulnerableTime=5", "after": "Exact mapped fire methods; cataclysm:laser lacks installed bypasses_cooldown. Accepted hits remain target/cooldown dependent;49*7 is scheduled upper bound only"}
+      {
+        "property": "progression.chest.guard.trigger",
+        "operation": "replace",
+        "before": "Any ready eligible LivingHurtEvent",
+        "after": "Finite positive event amount >=8 before Progression reductions; canceled/fully reflected hits do not reserve"
+      },
+      {
+        "property": "progression.chest.guard.commit",
+        "operation": "replace",
+        "before": "Immediate persistent cooldown on LivingHurtEvent",
+        "after": "Native actuallyHurt try/finally commits only for own health or absorption loss; same-target nested damage cannot spend a rejected parent guard"
+      },
+      {
+        "property": "progression.chest.guard.strength",
+        "operation": "document",
+        "before": {
+          "reduction": 0.35,
+          "cooldown_ticks": 240,
+          "secondary_share": 0.25
+        },
+        "after": {
+          "reduction": 0.35,
+          "cooldown_ticks": 240,
+          "secondary_share": 0.25
+        }
+      },
+      {
+        "property": "power.research.laser_fire_mapping",
+        "operation": "replace",
+        "before": "Misidentified five-second fire mutation as invulnerableTime=5",
+        "after": "Exact mapped fire methods; cataclysm:laser lacks installed bypasses_cooldown. Accepted hits remain target/cooldown dependent;49*7 is scheduled upper bound only"
+      }
     ]
   },
   "cause": {
@@ -29,8 +70,7 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Catalog/generator/build_power_views.py",
-      "Catalog/power-sources/boss-reward-weapons-stage35.json",
-      "tools/check_power_system.py"
+      "Catalog/power-sources/boss-reward-weapons-stage35.json"
     ]
   },
   "rationale": {
@@ -38,12 +78,72 @@
     "decision_source": "User2026-10-20 Power System Revamp explicitly requests implementation, priority guard correction, automated tests and source verification; October15 Drive proposals are candidates only.",
     "codex_choices": "Reuse existing8HP heavy-hit threshold, native actuallyHurt completion and existing cooldown key. No schema/keybind/tier threshold change; new gameplay adapters are physically dedicated-server-only."
   },
-  "introduced": {"date": "2026-10-20", "commit": "SELF", "action": "implement", "summary": "Guard threshold and accepted-hit lifecycle; correct laser fire mapping and live power findings."},
-  "history": [{"date": "2026-10-20", "commit": "SELF", "action": "implement", "summary": "Source-verifiable production corrections with offline regression contracts; player acceptance remains in testing."}],
+  "introduced": {
+    "date": "2026-10-20",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Guard threshold and accepted-hit lifecycle; correct laser fire mapping and live power findings."
+  },
+  "history": [
+    {
+      "date": "2026-10-20",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Source-verifiable production corrections with offline regression contracts; player acceptance remains in testing."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "rule": "Dedicated server, eligible Progression chest armor, World Tier III-V"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionArmor.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/GuardHitTracker.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionGuardMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/ru_ru.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Catalog/generator/build_power_views.py",
+        "Catalog/power-sources/boss-reward-weapons-stage35.json",
+        "tools/check_power_system.py"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "retire_remaining_automated_fixtures",
+      "summary": "Root removed remaining automated fixtures/runner under the explicit no-retained-tests architecture contract. Historical references retained only here; no tests were run.",
+      "source_files": [
+        "tools/check_power_system.py"
+      ]
+    }
+  ],
   "impacts": {
-    "systems": ["progression_armor", "damage_event_order", "health_absorption", "multiplayer", "power_catalog", "localization"],
+    "systems": [
+      "progression_armor",
+      "damage_event_order",
+      "health_absorption",
+      "multiplayer",
+      "power_catalog",
+      "localization"
+    ],
     "relations": [],
-    "notes": ["Tier cap, normal durability, native mitigation, diminishing armor overlap and existing saves preserved.", "Probe events remain observations; guard uses independent finally-paired transactions."],
-    "unresolved": ["Equipped player acceptance including shields, damage bypasses and native mixin application must be recorded separately from offline contracts.", "No all-ID DPS claim; unknown acquisition/combos/Curios remain explicit."]
+    "notes": [
+      "Tier cap, normal durability, native mitigation, diminishing armor overlap and existing saves preserved.",
+      "Probe events remain observations; guard uses independent finally-paired transactions."
+    ],
+    "unresolved": [
+      "Equipped player acceptance including shields, damage bypasses and native mixin application must be recorded separately from offline contracts.",
+      "No all-ID DPS claim; unknown acquisition/combos/Curios remain explicit."
+    ]
   }
 }

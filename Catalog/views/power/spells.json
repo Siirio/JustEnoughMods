@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "spells",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -144,15 +144,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -299,15 +295,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -505,15 +497,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -666,15 +654,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -891,15 +875,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -1081,15 +1061,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -1295,15 +1271,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -1493,15 +1465,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -1663,15 +1631,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -1840,15 +1804,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -2047,15 +2007,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -2217,15 +2173,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -2426,15 +2378,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -2639,15 +2587,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -2792,15 +2736,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -2984,15 +2924,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -3155,15 +3091,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -3296,15 +3228,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -3481,15 +3409,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -3680,15 +3604,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -3819,15 +3739,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -4005,15 +3921,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -4158,15 +4070,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -4357,15 +4265,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -4574,15 +4478,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -4746,15 +4646,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -4907,15 +4803,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -5108,15 +5000,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -5279,15 +5167,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -5430,15 +5314,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -5581,15 +5461,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -5784,15 +5660,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -5983,15 +5855,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -6188,15 +6056,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -6378,15 +6242,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -6541,15 +6401,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -6694,15 +6550,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -6898,15 +6750,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -7052,15 +6900,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -7232,15 +7076,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -7386,15 +7226,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -7571,15 +7407,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -7769,15 +7601,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -7940,15 +7768,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -8108,15 +7932,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -8298,15 +8118,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -8456,15 +8272,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -8637,15 +8449,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -8814,15 +8622,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -9038,15 +8842,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -9208,15 +9008,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -9411,15 +9207,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -9616,15 +9408,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -9836,15 +9624,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -10001,15 +9785,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -10193,15 +9973,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -10375,15 +10151,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -10569,15 +10341,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -10745,15 +10513,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -10898,15 +10662,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -11077,15 +10837,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -11267,15 +11023,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -11477,15 +11229,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -11651,15 +11399,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -11822,15 +11566,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -11961,15 +11701,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -12142,15 +11878,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -12341,15 +12073,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -12552,15 +12280,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -12691,15 +12415,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -12833,15 +12553,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -13049,15 +12765,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -13215,15 +12927,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -13373,15 +13081,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -13512,15 +13216,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -13665,15 +13365,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -13826,15 +13522,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -14047,15 +13739,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -14198,15 +13886,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -14467,15 +14151,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -14609,15 +14289,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -14844,15 +14520,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -15027,15 +14699,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -15236,15 +14904,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -15398,15 +15062,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -15553,15 +15213,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -15724,15 +15380,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -15933,15 +15585,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -16142,15 +15790,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -16283,15 +15927,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -16424,15 +16064,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -16565,15 +16201,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -16707,15 +16339,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -16849,15 +16477,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -17069,15 +16693,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -17288,15 +16908,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -17429,15 +17045,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -17625,15 +17237,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -17781,15 +17389,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -17952,15 +17556,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -18093,15 +17693,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -18307,15 +17903,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -18460,15 +18052,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -18611,15 +18199,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -18764,15 +18348,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",
@@ -18903,15 +18483,11 @@
         {
           "owner": "JEMWorldBossTiers",
           "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"
-        },
-        {
-          "owner": "JEMRoles",
-          "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"
         }
       ],
       "effective": {
         "status": "partial",
-        "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+        "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
       },
       "acquisition": {
         "status": "partial",

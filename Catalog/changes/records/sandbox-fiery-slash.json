@@ -11,7 +11,8 @@
   ],
   "conditions": [
     {
-      "scope": "Explicit standalone jem sandbox integrated owner only; Nether selection; excludes dedicated server and canonical pack."
+      "runtime": "One universal Races production artifact on logical integrated/dedicated servers; RaceService saved-data identity and earned progression remain authoritative. Production development controls are inert; optional adapters require installed dependencies.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -36,15 +37,16 @@
     "owner": "Mods/JEMVisualSandboxR3",
     "kind": "explicit_sandbox_ability_replacement",
     "source_files": [
-      "Mods/JEMVisualSandboxR3/generate-skills.py",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxSkills.java",
       "Mods/JEMVisualSandboxR3/prepare.py",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/rising_hook.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/return_sweep.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/descending_cleave.png"
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/rising_hook.png",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/return_sweep.png",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/descending_cleave.png"
     ]
   },
   "rationale": {
@@ -69,6 +71,55 @@
       "commit": "SELF",
       "action": "revise",
       "summary": "User rejected R4 internal cuts and same-power variants; R5 paints continuous masses and escalates per-hit art, size and lifetime."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/generate-skills.py",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/rising_hook.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/return_sweep.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/fire_slash/descending_cleave.png",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxSkills.java",
+        "Mods/JEMVisualSandboxR3/prepare.py",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/rising_hook.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/return_sweep.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/descending_cleave.png"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "scope": "Explicit standalone jem sandbox integrated owner only; Nether selection; excludes dedicated server and canonical pack."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxSkills.java",
+        "Mods/JEMVisualSandboxR3/prepare.py",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/rising_hook.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/return_sweep.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/fire_slash/descending_cleave.png"
+      ]
     }
   ],
   "impacts": {

@@ -44,7 +44,7 @@ import net.minecraftforge.fml.ModList;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class StructureStaging {
     public record RaidTarget(UUID id, ResourceLocation boss, String dimension, BlockPos center, BoundingBox bounds) {}
     private static final int AREA_LIMIT = 1024;
@@ -53,9 +53,6 @@ public final class StructureStaging {
     private static final int LANDMARK_RADIUS = 10;
     private static final int EXIT_SEARCH_MARGIN = 6;
     private static final String RAID_EXIT_PENDING = "raidArenaExitPending";
-    private static final Map<ResourceLocation, ResourceLocation> STRUCTURES = new HashMap<>();
-    private static final Set<ResourceLocation> ACTIVATION_BLOCKS = new HashSet<>();
-    private static final Set<ResourceLocation> ACTIVATION_ITEMS = new HashSet<>();
     private static final LinkedHashMap<UUID, Area> AREAS = new LinkedHashMap<>();
     private static final Map<UUID, UUID> INSIDE = new HashMap<>();
     private static final Map<UUID, UUID> NEAR = new HashMap<>();
@@ -67,54 +64,18 @@ public final class StructureStaging {
 
     @SubscribeEvent
     public static void reload(AddReloadListenerEvent event) {
-        event.addListener(new SimpleJsonResourceReloadListener(new Gson(), "jem/events/structures") {
-            @Override
-            protected void apply(Map<ResourceLocation, JsonElement> files, ResourceManager manager, ProfilerFiller profiler) {
-                STRUCTURES.clear(); ACTIVATION_BLOCKS.clear(); ACTIVATION_ITEMS.clear(); AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear();
-                for (JsonElement file : files.values()) {
-                    var root = file.getAsJsonObject();
-                    for (JsonElement value : root.getAsJsonArray("structures")) {
-                        var entry = value.getAsJsonObject();
-                        STRUCTURES.put(new ResourceLocation(entry.get("structure").getAsString()), new ResourceLocation(entry.get("boss").getAsString()));
-                    }
-                    for (JsonElement value : root.getAsJsonArray("activation_blocks")) ACTIVATION_BLOCKS.add(new ResourceLocation(value.getAsString()));
-                    for (JsonElement value : root.getAsJsonArray("activation_items")) ACTIVATION_ITEMS.add(new ResourceLocation(value.getAsString()));
-                }
-            }
-        });
+        AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear();
     }
 
     private static Area discover(ServerLevel level, BlockPos position) {
-        for (Area area : AREAS.values()) if (area.contains(level, position)) {
-            return area;
-        }
-        var chunk = level.getChunkSource().getChunkNow(position.getX() >> 4, position.getZ() >> 4);
-        if (chunk == null) return null;
-        List<StructureStart> starts = new ArrayList<>(chunk.getAllStarts().values());
-        for (var reference : chunk.getAllReferences().entrySet()) for (long value : reference.getValue()) {
-            ChunkPos origin = new ChunkPos(value);
-            var source = level.getChunkSource().getChunkNow(origin.x, origin.z);
-            if (source != null) {
-                var start = source.getStartForStructure(reference.getKey());
-                if (start != null) starts.add(start);
-            }
-        }
-        var registry = level.registryAccess().registryOrThrow(Registries.STRUCTURE);
-        for (var start : starts) {
-            var boss = STRUCTURES.get(registry.getKey(start.getStructure()));
-            if (!start.isValid() || boss == null) continue;
-            BoundingBox bounds = start.getBoundingBox();
-            String dimension = level.dimension().location().toString();
-            String key = dimension + ":" + registry.getKey(start.getStructure()) + ":" + bounds.minX() + ":" + bounds.minZ();
-            UUID id = UUID.nameUUIDFromBytes(key.getBytes(StandardCharsets.UTF_8));
-            var area = new Area(id, dimension, boss, bounds);
-            RaidArenaApi.register(level.getServer(), id.toString(), boss, level.dimension().location(), bounds);
-            RaidArenaApi.migrateNativeAnchor(level.getServer(), id.toString(), boss, start);
-            if (!AREAS.containsKey(id) && AREAS.size() >= AREA_LIMIT) AREAS.remove(AREAS.keySet().iterator().next());
-            AREAS.put(id, area);
-            if (area.contains(level, position)) return area;
-        }
-        return null;
+        for (Area area : AREAS.values()) if (area.contains(level, position)) return area;
+        var discovered = com.siirio.jemworldbosstiers.api.StructureEncounterApi.discover(level, position);
+        if (discovered.isEmpty()) return null;
+        var nativeArena = discovered.get();
+        var area = new Area(nativeArena.id(), nativeArena.dimension(), nativeArena.boss(), nativeArena.bounds());
+        if (!AREAS.containsKey(area.id()) && AREAS.size() >= AREA_LIMIT) AREAS.remove(AREAS.keySet().iterator().next());
+        AREAS.put(area.id(), area);
+        return area;
     }
 
     private static CompoundTag party(ServerLevel level, UUID id) {
@@ -151,7 +112,11 @@ public final class StructureStaging {
     }
 
     private static Area bossArea(ServerLevel level,LivingEntity boss) {
-        discover(level,boss.blockPosition());
+        com.siirio.jemworldbosstiers.api.StructureEncounterApi.bind(boss).ifPresent(nativeArena -> {
+            var area = new Area(nativeArena.id(), nativeArena.dimension(), nativeArena.boss(), nativeArena.bounds());
+            if (!AREAS.containsKey(area.id()) && AREAS.size() >= AREA_LIMIT) AREAS.remove(AREAS.keySet().iterator().next());
+            AREAS.put(area.id(), area);
+        });
         ResourceLocation bossType=BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType());
         Area area = AREAS.values().stream()
                 .filter(candidate->candidate.dimension().equals(level.dimension().location().toString())&&candidate.boss().equals(bossType)&&candidate.containsColumn(boss.position()))
@@ -170,8 +135,10 @@ public final class StructureStaging {
     public static boolean raidAvailable(ServerPlayer player, UUID id) {
         Area area = AREAS.get(id);
         CompoundTag event = EventScheduler.active(player.server, "BOSS_RAID");
-        if (area == null || !area.near(player.serverLevel(), player.position()) || event == null
-                || event.getBoolean("combatStarted") || party(player.serverLevel(), id) != null) return false;
+        if (area == null || !area.near(player.serverLevel(), player.position())
+                || party(player.serverLevel(), id) != null) return false;
+        if (event == null) return RaidArenaApi.compatible(player.server, id.toString(), area.boss());
+        if (event.getBoolean("combatStarted")) return false;
         return event.contains("raidArenaId") ? event.getString("raidArenaId").equals(id.toString())
                 : RaidArenaApi.compatible(player.server, id.toString(), area.boss());
     }
@@ -191,8 +158,21 @@ public final class StructureStaging {
         SmpRecords.require(blockers(player.serverLevel(), area, Set.of(player.getUUID())).isEmpty(), "arena_occupied");
         if (mode.equals("BOSS_RAID")) {
             CompoundTag event = EventScheduler.active(player.server, "BOSS_RAID");
-            SmpRecords.require(event != null && raidAvailable(player, id), "raid_unavailable");
-            SmpRecords.require(RaidEvent.claimArena(player.server, event, id.toString(), area.boss(), area.dimension(), area.center(), area.bounds()), "arena_busy");
+            SmpRecords.require(raidAvailable(player, id), "raid_unavailable");
+            boolean created = event == null;
+            if (created) {
+                event = SmpData.get(player.server).create("events", player.getUUID());
+                event.putString("slot", "manual:raid:" + event.getUUID("id"));
+                event.putString("activity", "BOSS_RAID");
+                event.putBoolean("ordinaryRaid", true);
+                event.putString("state", "ACTIVE");
+                event.putLong("started", System.currentTimeMillis());
+                event.putLong("ends", System.currentTimeMillis() + Math.min(3, SmpConfig.EVENT_HOURS.get()) * 3600000L);
+            }
+            if (!RaidEvent.claimArena(player.server, event, id.toString(), area.boss(), area.dimension(), area.center(), area.bounds())) {
+                if (created) EventScheduler.cancelPreparation(player.server, event);
+                SmpRecords.require(false, "arena_busy");
+            }
             PARTY_CACHE.remove(id);
             EventParties.join(player, event, solo);
             PARTY_CACHE.put(id, SmpData.get(player.server).all("parties").stream()
@@ -614,7 +594,7 @@ public final class StructureStaging {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void activateBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getLevel() instanceof ServerLevel level && ACTIVATION_BLOCKS.contains(BuiltInRegistries.BLOCK.getKey(level.getBlockState(event.getPos()).getBlock()))
+        if (event.getLevel() instanceof ServerLevel level && com.siirio.jemworldbosstiers.api.StructureEncounterApi.activationBlock(BuiltInRegistries.BLOCK.getKey(level.getBlockState(event.getPos()).getBlock()))
                 && !allowNativeSpawn(level, event.getPos())) {
             event.setCanceled(true);
             event.getEntity().displayClientMessage(Component.translatable("jem.event.start_before_ritual"), true);
@@ -623,7 +603,7 @@ public final class StructureStaging {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void activateItem(PlayerInteractEvent.RightClickItem event) {
-        if (event.getLevel() instanceof ServerLevel level && ACTIVATION_ITEMS.contains(BuiltInRegistries.ITEM.getKey(event.getItemStack().getItem()))
+        if (event.getLevel() instanceof ServerLevel level && com.siirio.jemworldbosstiers.api.StructureEncounterApi.activationItem(BuiltInRegistries.ITEM.getKey(event.getItemStack().getItem()))
                 && !allowNativeSpawn(level, event.getEntity().blockPosition())) event.setCanceled(true);
     }
 

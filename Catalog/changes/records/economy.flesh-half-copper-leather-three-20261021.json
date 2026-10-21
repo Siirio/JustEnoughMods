@@ -64,10 +64,9 @@
     "owner": "Canonical JEM module sources",
     "kind": "user_requested_correction",
     "source_files": [
-      "Mods/JEMCurrencyCore/build.gradle",
-      "Mods/JEMCurrencyCore/embed.gradle",
-      "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
-      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json"
+      "Mods/JEMEconomy/build.gradle",
+      "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
     ]
   },
   "rationale": {
@@ -97,6 +96,21 @@
         "Mods/JEMCurrencyCore/embed.gradle",
         "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
         "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/build.gradle",
+        "Mods/JEMCurrencyCore/embed.gradle",
+        "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMEconomy/build.gradle",
+        "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
       ]
     }
   ],

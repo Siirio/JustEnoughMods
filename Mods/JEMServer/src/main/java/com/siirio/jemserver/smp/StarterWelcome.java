@@ -1,8 +1,6 @@
 package com.siirio.jemserver.smp;
 
 import com.siirio.jemidentity.api.IdentityPolicy;
-import com.siirio.jemroles.api.RaceApi;
-import com.siirio.jemworldbosstiers.api.HostedEncounterApi;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
@@ -17,20 +15,30 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /** Dedicated-server welcome entitlement and authoritative authentication/race-choice damage guard. */
-@Mod.EventBusSubscriber(modid = "jem_server", value = Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class StarterWelcome {
     private StarterWelcome() {}
 
     private static boolean protectedPlayer(ServerPlayer player) {
         if (!SmpEnvironment.active(player)) return false;
         var principal = IdentityPolicy.resolve(player);
-        return principal.isEmpty() || RaceApi.get(player.server, principal.get().accountId()).isEmpty();
+        return principal.isEmpty() || DomainFeatures.loaded("jem_roles") && RacesAdapter.unselected(player, principal.get().accountId());
+    }
+
+    private static final class RacesAdapter {
+        static boolean unselected(ServerPlayer player, java.util.UUID account) { return com.siirio.jemroles.api.RaceApi.get(player.server, account).isEmpty(); }
+    }
+    private static net.minecraft.world.entity.Entity damageOwner(net.minecraft.world.entity.Entity entity) {
+        return DomainFeatures.loaded("jem_world_boss_tiers") ? BossDamageAdapter.owner(entity) : entity;
+    }
+    private static final class BossDamageAdapter {
+        static net.minecraft.world.entity.Entity owner(net.minecraft.world.entity.Entity entity) { return com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(entity); }
     }
 
     private static boolean blocked(net.minecraft.world.entity.LivingEntity target, net.minecraft.world.damagesource.DamageSource source) {
         if (target instanceof ServerPlayer player && protectedPlayer(player)) return true;
-        var owner = HostedEncounterApi.damageOwner(source.getEntity());
-        if (owner == null) owner = HostedEncounterApi.damageOwner(source.getDirectEntity());
+        var owner = damageOwner(source.getEntity());
+        if (owner == null) owner = damageOwner(source.getDirectEntity());
         return owner instanceof ServerPlayer player && protectedPlayer(player);
     }
 

@@ -3,7 +3,6 @@ package com.siirio.jemcompat.mixin.backpack;
 import com.mrcrayfish.backpacked.BackpackHelper;
 import com.mrcrayfish.backpacked.inventory.BackpackInventory;
 import com.siirio.jemcompat.feature.backpack.*;
-import com.siirio.jemidentity.api.IdentityPolicy;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.*;
@@ -21,8 +20,8 @@ public abstract class BackpackInventoryProcessMixin implements BackpackFurnaceAc
     }
     @Inject(method = "tick", at = @At("TAIL"))
     private void jemcompat$tickProcesses(CallbackInfo callback) {
-        if (!(player instanceof ServerPlayer owner) || owner.getServer() == null || !owner.getServer().isDedicatedServer()
-                || !owner.isAlive() || owner.isSpectator() || !IdentityPolicy.permitsAccountMutation(owner)) return;
+        if (!(player instanceof ServerPlayer owner) || !owner.isAlive() || owner.isSpectator()
+                || !BackpackAuthority.permits(owner)) return;
         var inventory = (BackpackInventory)(Object)this;
         if (!inventory.stillValid(owner)) return;
         var stack = inventory.getBackpackStack();

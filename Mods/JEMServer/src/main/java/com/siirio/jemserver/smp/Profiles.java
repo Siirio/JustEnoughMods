@@ -72,7 +72,8 @@ public final class Profiles {
                         "biomesExplored",
                         "animalsTamed",
                         "tameSpecies",
-                        "fishingMilestones")) {
+                        "fishingMilestones",
+                        "rewardAvailability")) {
             if (source.contains(key)) row.put(key, source.get(key).copy());
         }
         row.putInt("discoveredBiomes", source.getCompound("discoveredBiomes").size());
@@ -100,41 +101,24 @@ public final class Profiles {
                     "mobsKilled",
                     player.getStats().getValue(net.minecraft.stats.Stats.CUSTOM.get(net.minecraft.stats.Stats.MOB_KILLS)));
         else if (source.contains("mobsKilled")) row.putInt("mobsKilled", source.getInt("mobsKilled"));
-        com.siirio.jemroles.api.RaceApi.get(viewer.server, id).ifPresent(race -> row.putString("race", race.race().name()));
+        if (DomainFeatures.loaded("jem_roles")) RacesAdapter.project(viewer, id, row);
         var professions = new net.minecraft.nbt.ListTag();
         if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) {
             professions = source.getList("professions", net.minecraft.nbt.Tag.TAG_COMPOUND).copy();
             if (player != null) {
-                professions = ProfessionsAdapter.snapshot(player);
+                professions = com.siirio.jemserver.compat.professions.ProfessionHostAdapter.snapshot(player);
                 source.put("professions", professions.copy());
                 SmpData.get(viewer.server).changed(source);
             }
         }
         row.put("professions", professions);
-        var settlements = com.siirio.jemsettlements.town.SettlementSavedData.get(viewer.server);
-        settlements.towns().stream().filter(town -> town.members().contains(id)).findFirst().ifPresent(town -> {
-            row.putString("settlement", town.name()); row.putBoolean("settlementOwner", town.owner().equals(id));
-            row.putString("settlementTier", town.tier().name());
-        });
-        long recruits = settlements.towns().stream().flatMap(town -> settlements.workforce(town.id()).stream())
-                .filter(record -> record.ownerId().equals(id) && record.type() == com.siirio.jemsettlements.workforce.WorkforceType.RECRUIT).count();
-        row.putLong("recruitCount", recruits);
+        if (DomainFeatures.loaded("jem_settlements")) com.siirio.jemserver.compat.settlements.SettlementHostAdapter.profile(viewer, id, row);
         return row;
     }
 
-    private static final class ProfessionsAdapter {
-        private static net.minecraft.nbt.ListTag snapshot(net.minecraft.server.level.ServerPlayer player) {
-            var professions = new net.minecraft.nbt.ListTag();
-            for (var profession : com.siirio.jemprofessions.progress.ProfessionId.values()) {
-                long xp = com.siirio.jemprofessions.api.ProfessionApi.xp(player, profession);
-                if (xp <= 0L) continue;
-                var value = new CompoundTag();
-                value.putString("id", profession.name());
-                value.putLong("xp", xp);
-                value.putInt("level", com.siirio.jemprofessions.api.ProfessionApi.level(player, profession));
-                professions.add(value);
-            }
-            return professions;
+    private static final class RacesAdapter {
+        static void project(ServerPlayer viewer, UUID id, CompoundTag row) {
+            com.siirio.jemroles.api.RaceApi.get(viewer.server, id).ifPresent(race -> row.putString("race", race.race().name()));
         }
     }
 

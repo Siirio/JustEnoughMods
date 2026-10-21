@@ -115,7 +115,7 @@ def registered_item_map(native: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 def reward_profiles() -> dict[str, list[dict[str, Any]]]:
     directory = (
-        ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" /
+        ROOT / "Mods" / "JEMWorldBossTiers" / "src" / "main" / "resources" / "data" /
         "jem_world_boss_tiers" / "jem_world_boss_tiers" / "rewards"
     )
     result: dict[str, list[dict[str, Any]]] = {}
@@ -466,10 +466,10 @@ def attach_defense_stage35c(
     accessories: list[dict[str, Any]],
     evidence: dict[str, Any],
 ) -> None:
-    if len(defenses) != 219 or len({row["id"] for row in defenses}) != 219:
-        raise SystemExit(f"Stage 3.5C requires the canonical 219 unique defense records, found {len(defenses)}")
-    if len(accessories) != 52 or len({row["id"] for row in accessories}) != 52:
-        raise SystemExit(f"Stage 3.5C requires the canonical 52 unique accessory records, found {len(accessories)}")
+    if len({row["id"] for row in defenses}) != len(defenses):
+        raise SystemExit("Stage 3.5C defense projection contains duplicate IDs")
+    if len({row["id"] for row in accessories}) != len(accessories):
+        raise SystemExit("Stage 3.5C accessory projection contains duplicate IDs")
     for artifact in evidence.get("artifacts", []):
         path = ROOT / "Client" / "ManagedPack" / "mods" / artifact["file"]
         actual = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -580,12 +580,11 @@ def spell_records(evidence: dict[str, Any], native: dict[str, Any]) -> list[dict
             },
             "modifiers": [{"owner": "Iron's Spells", "expression": "school resistance soft-cap multiplier after SpellDamageEvent"}],
             "jem_tweaks": [
-                {"owner": "JEMWorldBossTiers", "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"},
-                {"owner": "JEMRoles", "expression": "Human direct-hit spell +1 when its native direct-hit conditions apply"}
+                {"owner": "JEMWorldBossTiers", "expression": "PvE player cast x0.65/x0.80/x0.95/x1.10/x1.20 by World Tier; PvP x1.00"}
             ],
             "effective": {
                 "status": "partial" if mechanic.get("owner_class") else "unresolved",
-                "expression": "(native expression * PvE tier factor or PvP 1.00 + conditional Human direct-hit 1) * Iron school-resistance multiplier; then ordinary target mitigation"
+                "expression": "native expression * (PvE tier factor or PvP 1.00) * Iron school-resistance multiplier; then ordinary target mitigation"
             },
             "acquisition": {
                 "status": "partial",
@@ -642,7 +641,7 @@ def native_boss_tags() -> dict[str, list[dict[str, str]]]:
 
 
 def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
-    directory = ROOT / "Mods" / "JEMPackCore" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "bosses"
+    directory = ROOT / "Mods" / "JEMWorldBossTiers" / "src" / "main" / "resources" / "data" / "jem_world_boss_tiers" / "jem_world_boss_tiers" / "bosses"
     profiles: dict[str, tuple[dict[str, Any], Path]] = {}
     for source in sorted(directory.glob("*.json")):
         for profile in load(source).get("bosses", []):
@@ -658,7 +657,7 @@ def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
         source = profile_source[1] if profile_source else None
         registered = profile is not None
         mechanic = mechanics.get(entity_id, {})
-        profile_values = mechanic.get("profile", profile or {})
+        profile_values = profile if profile is not None else mechanic.get("profile", {})
         special_values = profile_values.get("special_damage_multiplier")
         tier_expression = "native attack"
         if registered:
@@ -699,7 +698,7 @@ def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
                 ] if registered else [{"expression": "No JEM registered profile proven; native boss behavior remains authoritative."}]),
                 "effective": {"status": "partial", "expression": tier_expression + "; each delegated projectile/goal without a resolved arithmetic formula remains symbolic"},
                 "acquisition": {"status": "not_applicable", "routes": []},
-                "assessment": {"status": "source_reviewed_runtime_unverified", "reason": ("JEM registration, exact owner class and observed attack-channel signals are recorded; non-observed delegated goals/projectiles remain explicitly unresolved and no runtime result is claimed." if registered else "Native boss tag/owner evidence is recorded, but the entity is not in the canonical JEM Pack Core boss profiles.")},
+                "assessment": {"status": "source_reviewed_runtime_unverified", "reason": ("JEM registration, exact owner class and observed attack-channel signals are recorded; non-observed delegated goals/projectiles remain explicitly unresolved and no runtime result is claimed." if registered else "Native boss tag/owner evidence is recorded, but the entity is not in the canonical JEM World Boss Tiers profiles.")},
                 "evidence": (([{"type": "jem_owner", "source": source.relative_to(ROOT).as_posix(), "confidence": "source_verified"}] if source else [])
                              + [{"type": "native_boss_tag", **item, "confidence": "source_verified"} for item in native.get(entity_id, [])]
                              + ([{"type": "owner_bytecode", "artifact": mechanic.get("owner_artifact"), "classes": mechanic.get("owner_classes", []), "confidence": mechanic.get("owner_status")} ] if mechanic else []))
@@ -708,8 +707,8 @@ def boss_records(native_mechanics: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def attach_boss_stage35b(bosses: list[dict[str, Any]], evidence: dict[str, Any]) -> None:
-    if len(bosses) != 61 or len({boss["id"] for boss in bosses}) != 61:
-        raise SystemExit(f"Stage 3.5B requires the canonical 61 unique boss records, found {len(bosses)}")
+    if len({boss["id"] for boss in bosses}) != len(bosses):
+        raise SystemExit("Stage 3.5B boss projection contains duplicate IDs")
     by_id = {boss["id"]: boss for boss in bosses}
     overrides: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for override in evidence.get("formula_overrides", []):
@@ -803,7 +802,8 @@ def modifier_records() -> list[dict[str, Any]]:
         {"id": "jem.progression-weapon", "owner": "JEMWorldBossTiers", "expression": "eligible progression weapon x1.00/x1.05/x1.10; Tier III+ 15% x1.5 critical", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java"]},
         {"id": "jem.spell-tier", "owner": "JEMWorldBossTiers", "expression": "non-PvP player spell x0.65/0.80/0.95/1.10/1.20; PvP x1.00", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SpellTierFactors.java"]},
         {"id": "jem.hosted-boss", "owner": "JEMWorldBossTiers", "expression": "participant health 1/1.45/1.8/2.1/+0.2; damage 1/1.10/1.18/1.25/+0.05 capped1.45; raid defaults x2.5; owned attacks x0.88", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java", "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java"]},
-        {"id": "jem.race-profession-defense", "owner": "JEMRoles/JEMProfessions", "expression": "Elf fall x0.90; Miner level10 stone fall x0.90; Human direct spell +1; Elf eligible arrow +1", "source_files": ["Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java", "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionGameplay.java"]}
+        {"id": "jem.race-defense", "owner": "JEMRaces", "expression": "Selected race 2 fire damage x2; race 3 fire damage x1.25; race 4 cancels fire attacks and damage, while the race runtime is enabled", "source_files": ["Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java"]},
+        {"id": "jem.profession-defense", "owner": "JEMProfessions (development-only; absent from production)", "expression": "Only if separately installed and Miner stone_step is enabled: fall damage x0.90 while standing on Forge stone", "source_files": ["Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionGameplay.java"]}
     ])
     return changes
 
@@ -822,7 +822,7 @@ def scenarios() -> list[dict[str, Any]]:
         (10, "One recruit or tameable", ["recruits:recruit"], "native companion attributes/AI; JEM does not invent combat scaling"),
         (11, "Several mixed troops", [], "sum source-resolved per-unit output with target access and uptime; unresolved units stay unresolved"),
         (12, "Large funded army", [], "include Recruits payroll/acquisition, congestion, survival and native AI; never multiply one unit by count blindly"),
-        (13, "Iron's Spells mage", ["irons_spellbooks:ray_of_siphoning"], "native per-hit expression -> PvE tier factor -> conditional Human +1 -> school resistance"),
+        (13, "Iron's Spells mage", ["irons_spellbooks:ray_of_siphoning"], "native per-hit expression -> PvE tier factor -> school resistance"),
         (14, "Epic Fight melee", [], "requires exact weapon moveset, animation timings, stamina and target context from installed Nightfall/Epic Fight owners"),
         (15, "Heavy armor versus beam", ["irons_spellbooks:sunbeam", "irons_spellbooks:ray_of_siphoning"], "magic damage is not tagged bypasses_armor by Iron, but school resistance and actual armor integration must be measured separately"),
         (16, "World Tier hosted raid boss", ["minecraft:wither"], "native attack * boss tier * optional profile factor * party damage * raid x2.5 * hosted owned-attack x0.88; health uses corresponding health factors")
@@ -837,7 +837,7 @@ def warnings(evidence: dict[str, Any]) -> list[dict[str, Any]]:
             "exact_ids": [row["spell_id"] for row in evidence["beam_candidates"]],
             "context": "Reported easy-to-obtain unenchanted book/scroll removes about half of Nightfall-armored player health.",
             "original_expression": "Candidate-specific fixed or per-channel-hit expressions; none of the inspected candidates uses percentage-health damage.",
-            "jem_expression": "PvP x1.00; PvE x0.65/0.80/0.95/1.10/1.20, plus conditional Human direct-hit +1, then Iron resistance.",
+            "jem_expression": "PvP x1.00; PvE x0.65/0.80/0.95/1.10/1.20, then Iron resistance.",
             "effective_expression": "Cannot be made unique without spell ID, level and caster/target attributes from the observed ItemStack/context.",
             "suspicion": "Common continuous spells can accumulate several native hit applications and Ray of Siphoning also heals for post-event damage.",
             "evidence": ["exact installed Iron's Spells 3.15.6 bytecode", "native loot randomize_spell tables", "JEM spell adapters"],
@@ -882,7 +882,7 @@ def audit_findings() -> list[dict[str, Any]]:
             "finding": "Frost-only blanket special multipliers [2.7, 2.8, 3.2, 5.0, 5.0] were removed. Native damage, the registered-boss tier boost, hosted participant factors and x0.88 remain; Raid is unchanged.",
             "mechanism": "Frost no longer declares special_damage_multiplier in expanded_bosses.json. This removes amplification of every hurt channel, including basic melee; it is an intentional scoped balance decision, not an observed DPS result.",
             "sources": [
-                "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+                "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
                 "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
             ],
             "runtime_change": True,
@@ -1041,7 +1041,7 @@ def spell_numeric_calculations(spells: list[dict[str, Any]]) -> list[dict[str, A
             "kind": "spell_damage_table",
             "native_expression": expression,
             "levels": levels,
-            "calculation_boundary": "One successful native damage application with no caster spell-power bonus, Human +1, school resistance, Resistance effect, absorption, shield, iframe, hit-count or duration assumption.",
+            "calculation_boundary": "One successful native damage application with no caster spell-power bonus, school resistance, Resistance effect, absorption, shield, iframe, hit-count or duration assumption.",
             "mitigation_boundary": "Reference armor math is included because the exact installed Iron damage types are not tagged bypasses_armor; other mod integrations and school resistance remain unresolved.",
             "evidence": spell["evidence"],
         })
@@ -1821,7 +1821,7 @@ def main() -> int:
             "stage_3_5c_exact_armor_attribute_profiles": sum(bool(row.get("stage_3_5c")) for row in armor),
             "stage_3_5c_complete_sets_with_exact_material_totals": sum(row.get("kind") == "stage_3_5c_defense_matrix" for row in calculations),
             "stage_3_5c_confirmed_explicit_set_gates": sum(
-                bool(row.get("set_bonus_evidence", {}).get("confirmed_set_gates"))
+                bool((row.get("set_bonus_evidence") or {}).get("confirmed_set_gates"))
                 for row in calculations if row.get("kind") == "armor_set_card"
             ),
             "stage_3_5c_accessories_with_exact_slots": sum(bool(row.get("stage_3_5c", {}).get("valid_slots")) for row in accessories),

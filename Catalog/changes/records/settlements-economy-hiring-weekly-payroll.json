@@ -22,8 +22,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
-      "confidence": "source"
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     },
     {
       "runtime": "Native Recruits rank must be supported by RecruitRank, valid authenticated employer/group and actual hire ownership contract; unsupported entities are not enrolled by namespace alone",
@@ -262,6 +262,65 @@
       "summary": "Current installed artifact and exact source-set evidence references follow migrated Economy1.3.0/Settlements2.1.0 and the sole Core resource owner. Selector membership, prices, saved balances and prior historical evidence are unchanged.",
       "source_files": [
         "Client/ManagedPack/mods/jem-settlements-2.0.0.jar"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
+          "confidence": "source"
+        },
+        {
+          "runtime": "Native Recruits rank must be supported by RecruitRank, valid authenticated employer/group and actual hire ownership contract; unsupported entities are not enrolled by namespace alone",
+          "confidence": "source"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/settings.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HireQuoteClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleQuoteClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TownFoundingScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitHiringService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitRebellionService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleQuoteMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeListEntryMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitCurrencyMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHireScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/HireQuotePacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/NobleQuotePacket.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/EmployerPayroll.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollBook.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollClock.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollPeriod.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/RecruitRank.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/SettlementSavedData.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
       ]
     }
   ],

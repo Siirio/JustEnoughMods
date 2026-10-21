@@ -2,7 +2,7 @@ package com.siirio.jemcompat.mixin.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.siirio.jemcompat.client.render.GuiPlayerRenderScope;
-import com.siirio.jemmenus.client.VanillaGuiPlayers;
+import com.siirio.jemcompat.client.menu.VanillaGuiPlayers;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;

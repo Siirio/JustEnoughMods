@@ -1,0 +1,3035 @@
+{
+  "schema_version": 1,
+  "registry_type": "blocks",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "generation": {
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "vanillabackport",
+    "name": "VanillaBackport",
+    "version": "1.1.7.10"
+  },
+  "records": [
+    {
+      "registry_id": "minecraft:bush",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/bush.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Bush",
+      "display_name_ru_ru": "Куст",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/replaceable_by_trees"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/bush.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cactus_flower",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cactus_flower.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cactus Flower",
+      "display_name_ru_ru": "Цветок кактуса",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/enderman_holdable",
+        "minecraft:blocks/flowers",
+        "minecraft:blocks/wall_post_override"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cactus_flower.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:chiseled_cinnabar",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/chiseled_cinnabar.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Chiseled Cinnabar",
+      "display_name_ru_ru": "Резная киноварь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/chiseled_cinnabar.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:chiseled_resin_bricks",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/chiseled_resin_bricks.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Chiseled Resin Bricks",
+      "display_name_ru_ru": "Резные смоляные кирпичи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/chiseled_resin_bricks.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:chiseled_sulfur",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/chiseled_sulfur.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Chiseled Sulfur",
+      "display_name_ru_ru": "Резная сера",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/chiseled_sulfur.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar",
+      "display_name_ru_ru": "Киноварь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/overworld_carver_replaceables",
+        "minecraft:blocks/sculk_replaceable",
+        "minecraft:blocks/sulfur_spike_replaceable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_brick_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_brick_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Brick Slab",
+      "display_name_ru_ru": "Плита из киноварного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_brick_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_brick_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_brick_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Brick Stairs",
+      "display_name_ru_ru": "Ступеньки из киноварного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_brick_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_brick_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_brick_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Brick Wall",
+      "display_name_ru_ru": "Ограда из киноварного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_brick_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_bricks",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_bricks.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Bricks",
+      "display_name_ru_ru": "Киноварные кирпичи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_bricks.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Slab",
+      "display_name_ru_ru": "Киноварная плита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Stairs",
+      "display_name_ru_ru": "Киноварные ступеньки",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:cinnabar_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/cinnabar_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Cinnabar Wall",
+      "display_name_ru_ru": "Киноварная ограда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/cinnabar_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:closed_eyeblossom",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/closed_eyeblossom.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Closed Eyeblossom",
+      "display_name_ru_ru": "Закрытая глазалия",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/small_flowers"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/closed_eyeblossom.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:creaking_heart",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/creaking_heart.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Creaking Heart",
+      "display_name_ru_ru": "Скрипцевина",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/axe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/creaking_heart.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:dried_ghast",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/dried_ghast.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Dried Ghast",
+      "display_name_ru_ru": "Высохший гаст",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/dried_ghast.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:firefly_bush",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/firefly_bush.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Firefly Bush",
+      "display_name_ru_ru": "Куст со светлячками",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/replaceable_by_trees"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/firefly_bush.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:leaf_litter",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/leaf_litter.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Leaf Litter",
+      "display_name_ru_ru": "Сухие листья",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/inside_step_sound_blocks",
+        "minecraft:blocks/replaceable_by_trees"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/leaf_litter.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:open_eyeblossom",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/open_eyeblossom.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Open Eyeblossom",
+      "display_name_ru_ru": "Раскрытая глазалия",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/small_flowers"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/open_eyeblossom.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_hanging_moss",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_hanging_moss.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Hanging Moss",
+      "display_name_ru_ru": "Свисающий бледный мох",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_hanging_moss.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_moss_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_moss_block.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Moss Block",
+      "display_name_ru_ru": "Блок бледного мха",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/dirt",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/sniffer_diggable_block"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_moss_block.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_moss_carpet",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_moss_carpet.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Moss Carpet",
+      "display_name_ru_ru": "Бледный моховой ковёр",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/combination_step_sound_blocks",
+        "minecraft:blocks/mineable/hoe",
+        "minecraft:blocks/replaceable_by_trees"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_moss_carpet.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_button",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_button.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Button",
+      "display_name_ru_ru": "Кнопка из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_buttons"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_button.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_door",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_door.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Door",
+      "display_name_ru_ru": "Дверь из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_doors"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_door.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_fence",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_fence.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Fence",
+      "display_name_ru_ru": "Забор из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_fences"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_fence.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_fence_gate",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_fence_gate.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Fence Gate",
+      "display_name_ru_ru": "Калитка из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/fence_gates"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_fence_gate.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_hanging_sign",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_hanging_sign.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Hanging Sign",
+      "display_name_ru_ru": "Подвесная табличка из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/ceiling_hanging_signs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_hanging_sign.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_leaves",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_leaves.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Leaves",
+      "display_name_ru_ru": "Листья бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/leaves",
+        "minecraft:blocks/mineable/hoe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_leaves.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_log",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_log.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Log",
+      "display_name_ru_ru": "Бревно бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/overworld_natural_logs",
+        "minecraft:blocks/pale_oak_logs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_log.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_planks",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_planks.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Planks",
+      "display_name_ru_ru": "Доски из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/planks"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_planks.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_pressure_plate",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_pressure_plate.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Pressure Plate",
+      "display_name_ru_ru": "Нажимная плита из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_pressure_plates"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_pressure_plate.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_sapling",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_sapling.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Sapling",
+      "display_name_ru_ru": "Саженец бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/saplings"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_sapling.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_sign",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_sign.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Sign",
+      "display_name_ru_ru": "Табличка из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/standing_signs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_sign.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Slab",
+      "display_name_ru_ru": "Плита из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Stairs",
+      "display_name_ru_ru": "Ступеньки из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_trapdoor",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_trapdoor.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Trapdoor",
+      "display_name_ru_ru": "Люк из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wooden_trapdoors"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_trapdoor.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_wall_hanging_sign",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_wall_hanging_sign.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Wall Hanging Sign",
+      "display_name_ru_ru": "Подвесная табличка из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wall_hanging_signs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_wall_hanging_sign.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_wall_sign",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_wall_sign.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Wall Sign",
+      "display_name_ru_ru": "Табличка из бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/wall_signs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_wall_sign.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:pale_oak_wood",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/pale_oak_wood.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Pale Oak Wood",
+      "display_name_ru_ru": "Бледный дуб",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/pale_oak_logs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/pale_oak_wood.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_cinnabar",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_cinnabar.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Cinnabar",
+      "display_name_ru_ru": "Полированная киноварь",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_cinnabar.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_cinnabar_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_cinnabar_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Cinnabar Slab",
+      "display_name_ru_ru": "Плита из полированной киновари",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_cinnabar_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_cinnabar_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_cinnabar_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Cinnabar Stairs",
+      "display_name_ru_ru": "Ступеньки из полированной киновари",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_cinnabar_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_cinnabar_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_cinnabar_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Cinnabar Wall",
+      "display_name_ru_ru": "Ограда из полированной киновари",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_cinnabar_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_sulfur",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_sulfur.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Sulfur",
+      "display_name_ru_ru": "Полированная сера",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_sulfur.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_sulfur_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_sulfur_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Sulfur Slab",
+      "display_name_ru_ru": "Плита из полированной серы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_sulfur_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_sulfur_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_sulfur_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Sulfur Stairs",
+      "display_name_ru_ru": "Ступеньки из полированной серы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_sulfur_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:polished_sulfur_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/polished_sulfur_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Polished Sulfur Wall",
+      "display_name_ru_ru": "Ограда из полированной серы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/polished_sulfur_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:potent_sulfur",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/potent_sulfur.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potent Sulfur",
+      "display_name_ru_ru": "Активная сера",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/overworld_carver_replaceables"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/potent_sulfur.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:potted_closed_eyeblossom",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/potted_closed_eyeblossom.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Closed Eyeblossom",
+      "display_name_ru_ru": "Закрытая глазалия в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/flower_pots"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/potted_closed_eyeblossom.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:potted_open_eyeblossom",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/potted_open_eyeblossom.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Open Eyeblossom",
+      "display_name_ru_ru": "Раскрытая глазалия в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/flower_pots"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/potted_open_eyeblossom.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:potted_pale_oak_sapling",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/potted_pale_oak_sapling.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Potted Pale Oak Sapling",
+      "display_name_ru_ru": "Саженец бледного дуба в горшке",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/flower_pots"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/potted_pale_oak_sapling.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:resin_block",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/resin_block.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Block of Resin",
+      "display_name_ru_ru": "Смоляной блок",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/resin_block.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:resin_brick_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/resin_brick_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Resin Brick Slab",
+      "display_name_ru_ru": "Плита из смоляного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/resin_brick_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:resin_brick_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/resin_brick_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Resin Brick Stairs",
+      "display_name_ru_ru": "Ступеньки из смоляного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/resin_brick_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:resin_brick_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/resin_brick_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Resin Brick Wall",
+      "display_name_ru_ru": "Ограда из смоляного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/resin_brick_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:resin_bricks",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/resin_bricks.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Resin Bricks",
+      "display_name_ru_ru": "Смоляные кирпичи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/resin_bricks.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:resin_clump",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/resin_clump.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Resin Clump",
+      "display_name_ru_ru": "Сгусток смолы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/combination_step_sound_blocks"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/resin_clump.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:short_dry_grass",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/short_dry_grass.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Short Dry Grass",
+      "display_name_ru_ru": "Низкая сухая трава",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/replaceable_by_trees"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/short_dry_grass.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:stripped_pale_oak_log",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/stripped_pale_oak_log.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stripped Pale Oak Log",
+      "display_name_ru_ru": "Обтёсанное бревно бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:blocks/stripped_logs",
+        "forge:blocks/stripped_logs",
+        "minecraft:blocks/pale_oak_logs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/stripped_pale_oak_log.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:stripped_pale_oak_wood",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/stripped_pale_oak_wood.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Stripped Pale Oak Wood",
+      "display_name_ru_ru": "Обтёсанная древесина бледного дуба",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "c:blocks/stripped_wood",
+        "forge:blocks/stripped_wood",
+        "minecraft:blocks/pale_oak_logs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/stripped_pale_oak_wood.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur",
+      "display_name_ru_ru": "Сера",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/overworld_carver_replaceables",
+        "minecraft:blocks/sculk_replaceable",
+        "minecraft:blocks/sulfur_spike_replaceable"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_brick_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_brick_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Brick Slab",
+      "display_name_ru_ru": "Плита из серного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_brick_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_brick_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_brick_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Brick Stairs",
+      "display_name_ru_ru": "Ступеньки из серного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_brick_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_brick_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_brick_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Brick Wall",
+      "display_name_ru_ru": "Ограда из серного кирпича",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_brick_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_bricks",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_bricks.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Bricks",
+      "display_name_ru_ru": "Серные кирпичи",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_bricks.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_slab",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_slab.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Slab",
+      "display_name_ru_ru": "Серная плита",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/slabs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_slab.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_spike",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_spike.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Spike",
+      "display_name_ru_ru": "Серный шип",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/speleothems"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_spike.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_stairs",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_stairs.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Stairs",
+      "display_name_ru_ru": "Серные ступеньки",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/stairs"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_stairs.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:sulfur_wall",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/sulfur_wall.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Sulfur Wall",
+      "display_name_ru_ru": "Серная ограда",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/mineable/pickaxe",
+        "minecraft:blocks/walls"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/sulfur_wall.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:tall_dry_grass",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/tall_dry_grass.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Tall Dry Grass",
+      "display_name_ru_ru": "Высокая сухая трава",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/replaceable_by_trees"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/tall_dry_grass.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    },
+    {
+      "registry_id": "minecraft:wildflowers",
+      "registry_type": "block",
+      "schema_version": 1,
+      "mod_id": "vanillabackport",
+      "mod_name": "VanillaBackport",
+      "mod_version": "1.1.7.10",
+      "source_jar": "VanillaBackport-forge-1.20.1-1.1.7.10.jar",
+      "source_sha256": "157f95106c7f00f92b05c72f25e2d87e2ffbef04137e9ea609fc03838bb39e2d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/blockstates/wildflowers.json",
+        "assets/vanillabackport/lang/en_us.json",
+        "assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "display_name_en_us": "Wildflowers",
+      "display_name_ru_ru": "Полевые цветы",
+      "java_registry_class": null,
+      "implementation_class": null,
+      "tags": [
+        "minecraft:blocks/flowers",
+        "minecraft:blocks/inside_step_sound_blocks"
+      ],
+      "is_registered": null,
+      "survival_obtainable": null,
+      "survival_source_evidence": [],
+      "acquisition_class": "unresolved",
+      "source_provenance": [
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/minecraft/blockstates/wildflowers.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/en_us.json",
+        "VanillaBackport-forge-1.20.1-1.1.7.10.jar:assets/vanillabackport/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "variant_model": {
+        "kind": "registry_id",
+        "stack_dependent": null,
+        "reason": "Static artifact cannot prove all ItemStack variants"
+      },
+      "unresolved_reason": "Runtime registration and dynamic properties not observed"
+    }
+  ]
+}

@@ -14,14 +14,14 @@ public abstract class CombatProbeMixin {
     @Inject(method = "hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", at = @At("HEAD"))
     private void jem$beginHit(DamageSource source, float amount, CallbackInfoReturnable<Boolean> callback) {
         LivingEntity target = (LivingEntity) (Object) this;
-        if (!(target.level() instanceof ServerLevel level) || !level.getServer().isDedicatedServer()) return;
+        if (!(target.level() instanceof ServerLevel level)) return;
         CombatProbe.beginHit(target, source, amount);
     }
 
     @Inject(method = "hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", at = @At("RETURN"))
     private void jem$finishHit(DamageSource source, float amount, CallbackInfoReturnable<Boolean> callback) {
         LivingEntity target = (LivingEntity) (Object) this;
-        if (!(target.level() instanceof ServerLevel level) || !level.getServer().isDedicatedServer()) return;
+        if (!(target.level() instanceof ServerLevel level)) return;
         CombatProbe.finishHit(target, callback.getReturnValue());
     }
 }

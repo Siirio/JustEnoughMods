@@ -17,7 +17,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -142,6 +143,40 @@
       "date": "2026-10-21",
       "commit": "SELF",
       "event": "Fix client startup against the exact deployed Xaero World Map1.46.0. Remove required mouseDragged/m_7979_ injection because GuiMap does not declare it. Existing renderPreDropdown -> SettlementMapClient.render/update owns live preview; mouseClicked/mouseReleased own exclusive begin/finish. Native map controls outside explicit expansion and all server pricing/ownership remain unchanged. Client13:29crash and matching active artifact prove deployment of this defect; runtime player acceptance remains unrun. Exact XaeroLib1.7.3 drawSlot bytecode additionally proves slotBackground is a local variable, not a method argument; remove the unused extra int from the required drawSlot callback descriptor before final publication."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementExpansionOption.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMenuAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/ResidentNavigationMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementDropdownMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementRightClickMenuMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentTerritoryTravel.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Docs/settlements/standalone/README.md",
+        "Docs/settlements/DESIGN_JOURNAL.md"
+      ]
     }
   ],
   "impacts": {

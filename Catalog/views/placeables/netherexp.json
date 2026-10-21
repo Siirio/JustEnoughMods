@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "placeables",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -13,6 +13,78 @@
     "version": "2.3.5"
   },
   "records": [
+    {
+      "item_id": "minecraft:twisting_vines",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/twisting_vines.json"
+      ],
+      "display_name_en_us": "Twisting Vines",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/models/item/twisting_vines.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "minecraft:twisting_vines",
+      "placed_registry_ids": [
+        "minecraft:twisting_vines"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
+      "item_id": "minecraft:weeping_vines",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/weeping_vines.json"
+      ],
+      "display_name_en_us": "Weeping Vines",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/models/item/weeping_vines.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "minecraft:weeping_vines",
+      "placed_registry_ids": [
+        "minecraft:weeping_vines"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
     {
       "item_id": "netherexp:ancient_burning_skull_block",
       "registry_type": "item_view",

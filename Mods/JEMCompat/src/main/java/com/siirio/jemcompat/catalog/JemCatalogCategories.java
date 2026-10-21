@@ -22,7 +22,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.ModList;
 import java.util.function.Predicate;
-import com.siirio.jemworldbosstiers.enchantment.ProgressionEnchantment;
 
 
 import java.util.Locale;
@@ -125,7 +124,7 @@ public final class JemCatalogCategories {
     }
 
     private static boolean isWeapon(ItemStack stack) {
-        return ProgressionEnchantment.isWeaponEligible(stack)||stack.getItem() instanceof ArrowItem;
+        return com.siirio.jemcompat.compat.equipment.EquipmentEligibility.weapon(stack)||stack.getItem() instanceof ArrowItem;
     }
 
     private static boolean isFarming(ItemStack stack, String path) {

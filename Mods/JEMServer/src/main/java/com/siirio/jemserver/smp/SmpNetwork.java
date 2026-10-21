@@ -22,8 +22,7 @@ public final class SmpNetwork {
                     var player = context.get().getSender();
                     if (player != null && SmpEnvironment.active(player)) {
                         if (packet.tab().equals("settlements")) {
-                            if (packet.selected() == null) com.siirio.jemsettlements.network.SettlementNetwork.sendOwned(player, true);
-                            else com.siirio.jemsettlements.network.SettlementNetwork.sendSelected(player, packet.selected(), true);
+                            if (DomainFeatures.loaded("jem_settlements")) com.siirio.jemserver.compat.settlements.SettlementHostAdapter.open(player, packet.selected());
                         } else SmpSubscriptions.query(player, packet);
                     }
                     context.get().setPacketHandled(true);
@@ -73,8 +72,7 @@ public final class SmpNetwork {
     public static void open(ServerPlayer player, SmpQuery query) {
         if (!SmpEnvironment.active(player)) return;
         if (query.tab().equals("settlements")) {
-            if (query.selected() == null) com.siirio.jemsettlements.network.SettlementNetwork.sendOwned(player, true);
-            else com.siirio.jemsettlements.network.SettlementNetwork.sendSelected(player, query.selected(), true);
+            if (DomainFeatures.loaded("jem_settlements")) com.siirio.jemserver.compat.settlements.SettlementHostAdapter.open(player, query.selected());
         } else SmpSubscriptions.open(player, query);
     }
     public static void close(ServerPlayer player) { SmpSubscriptions.close(player); }

@@ -27,7 +27,6 @@
     "backpack.BackpackWorkbenchMenuMixin",
     "backpack.BackpackInventoryProcessMixin",
     "backpack.BackpackAugmentAdmissionMixin",
-    "backpack.BackpackIntegratedAugmentListMixin",
     "transport.EntityStuckSpeedAccessor",
     "transport.DonkeyInventoryMixin",
     "transport.FurnaceMinecartMixin",
@@ -36,7 +35,11 @@
     "transport.RoyalWagonInventoryMixin",
     "transport.TrottingWagonClydesdaleMixin",
     "trading.FabricTypeAwareTradeMixin",
-    "login.ClosedConnectionErrorMixin"
+    "login.ClosedConnectionErrorMixin",
+    "excavation.ExcavationGameModeMixin",
+    "excavation.ExcavationDiggerItemMixin",
+    "excavation.ExcavationItemStackMixin",
+    "grave.LegacyGraveCreationMixin"
   ],
   "client": [
     "client.recruits.RecruitDebugScreenPoseMixin",

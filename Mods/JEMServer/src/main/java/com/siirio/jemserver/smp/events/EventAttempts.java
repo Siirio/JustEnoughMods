@@ -10,6 +10,7 @@ public final class EventAttempts {
         SmpRecords.require(host.getUUID().equals(participants.host()), "owner_required");
         var data = SmpData.get(host.server);
         var event = data.find("events", eventId);
+        SmpRecords.require(EventRuntime.available(host.server, event), "unavailable");
         SmpRecords.require(event != null && event.getString("state").equals("ACTIVE")
                 && EventRegions.near(event, host.serverLevel(), host.blockPosition()), "travel_to_arena");
         if (event.getBoolean("combatStarted")) return false;

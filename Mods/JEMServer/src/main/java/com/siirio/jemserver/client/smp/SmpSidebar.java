@@ -8,13 +8,26 @@ import net.minecraft.network.chat.Component;
 
 public final class SmpSidebar {
     private static final List<String> SMP_TABS = List.of("profile", "players", "parties", "events", "market", "settlements", "prizes", "roles", "professions");
-    private int x, y, width, rowHeight;
+    private int x, y, width, rowHeight, availableHeight;
     private List<String> tabs = SMP_TABS;
+    private net.minecraft.nbt.CompoundTag features = new net.minecraft.nbt.CompoundTag();
+    public void features(net.minecraft.nbt.CompoundTag value) {
+        features = value.copy();
+        if (availableHeight > 0) updateRows();
+    }
+    private void updateRows() {
+        tabs = SMP_TABS.stream().filter(this::available).toList();
+        rowHeight = Math.max(18, Math.min(38, availableHeight / tabs.size()));
+    }
+    private boolean available(String tab) {
+        String feature = tab.equals("market") || tab.equals("shops") ? "economy" : tab;
+        return !java.util.Set.of("economy", "roles", "professions", "settlements", "recruits", "events", "prizes").contains(feature)
+                || features.getBoolean(feature);
+    }
     public void layout(int x, int y, int width, int availableHeight) {
         this.x = x; this.y = y; this.width = width;
-        tabs = net.minecraftforge.fml.ModList.get().isLoaded("jem_professions") ? SMP_TABS
-                : SMP_TABS.stream().filter(tab -> !tab.equals("professions")).toList();
-        rowHeight = Math.max(18, Math.min(38, availableHeight / tabs.size()));
+        this.availableHeight = availableHeight;
+        updateRows();
     }
     public void render(GuiGraphics g, String active, int mouseX, int mouseY) {
         var font = Minecraft.getInstance().font;
@@ -43,6 +56,7 @@ public final class SmpSidebar {
 
     public static boolean openExternal(String route) {
         if (route.equals("professions") && !net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) return true;
+        if (route.equals("roles") && !net.minecraftforge.fml.ModList.get().isLoaded("jem_roles")) return true;
         var module = switch (route) {
             case "roles" -> com.siirio.jemserver.smp.SmpModuleOpen.Module.ROLES;
             case "professions" -> com.siirio.jemserver.smp.SmpModuleOpen.Module.PROFESSIONS;

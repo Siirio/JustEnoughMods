@@ -2,8 +2,14 @@
   "replace": false,
   "values": [
     "minecraft:fishing_rod",
-    "#tide:fishing_rods",
+    {
+      "id": "#tide:fishing_rods",
+      "required": false
+    },
     "#forge:tools/fishing_rods",
-    "#c:tools/fishing_rod"
+    {
+      "id": "#c:tools/fishing_rod",
+      "required": false
+    }
   ]
 }

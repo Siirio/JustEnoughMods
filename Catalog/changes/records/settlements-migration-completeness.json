@@ -21,7 +21,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Settlements authoritative gameplay only; production dedicated, explicitly built sandbox integrated. Optional Recruits requires installed1.15.2."
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -80,6 +81,31 @@
       "commit": "SELF",
       "action": "complete_feature_scope",
       "summary": "Repair empty isometry and untranslated happiness UI after migration; carry the entire developed Noble UI scope and lock complete migrations"
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Settlements authoritative gameplay only; production dedicated, explicitly built sandbox integrated. Optional Recruits requires installed1.15.2."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/AnimalObservationService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/NobleTradePresentation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/NobleTradeListEntryMixin.java"
+      ]
     }
   ],
   "impacts": {

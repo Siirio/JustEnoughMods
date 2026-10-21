@@ -12,7 +12,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Market remains dedicated-SMP authoritative; only its client view changes."
+      "runtime": "Logical integrated or dedicated server; EconomyApi.isEnabled(server) is true; native session, exact registration/admission, canonical identity and authoritative quote/payment validation remain required. Client presentation uses matching protocol.",
+      "acceptance": "Manual gameplay acceptance pending; no automated tests or gameplay scenarios asserted."
     }
   ],
   "precedence": {
@@ -40,15 +41,15 @@
     ]
   },
   "cause": {
-    "owner": "JEMCurrencyCore MarketScreen / EconomyApi / MarketSupply",
+    "owner": "JEMEconomy",
     "kind": "client_storefront_and_server_query_presentation",
     "source_files": [
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
-      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
-      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
-      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
     ]
   },
   "rationale": {
@@ -82,6 +83,60 @@
         "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
         "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
         "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Market remains dedicated-SMP authoritative; only its client view changes."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMCurrencyCore MarketScreen / EconomyApi / MarketSupply",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/market/storefront.png"
       ]
     }
   ],

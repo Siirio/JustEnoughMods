@@ -95,7 +95,7 @@ def main():
             environment["JAVA_HOME"] = str(args.java_home.resolve())
         revision = config["revision"] + ("-no-shaders.1" if args.skip_shaders else "")
         subprocess.run([
-            str(source / "gradlew.bat"), *config["buildArguments"],
+            *( [str(source / "gradlew.bat")] if os.name == "nt" else ["sh", str(source / "gradlew")] ), *config["buildArguments"],
             f"-Pmod_version={config['version']}", f"-PjemBootstrapRevision={revision}",
             f"-PjemSkipShaders={'true' if args.skip_shaders else 'false'}",
             f"-PjemUpstreamCommit={config['commit']}", "--init-script", str(MODULE / "production.gradle"),

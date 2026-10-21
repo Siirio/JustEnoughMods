@@ -105,6 +105,11 @@ public final class HostedEncounterApi {
         if (profile == null || raid != isRaid(boss) || raid && !WorldTierData.get(boss.getServer()).defeatedBosses().contains(profile.key())) {
             return false;
         }
+        if (agreedPlayers.isEmpty()) return false;
+        for (UUID id : agreedPlayers) {
+            ServerPlayer player = boss.getServer().getPlayerList().getPlayer(id);
+            if (player == null || com.siirio.jemworldbosstiers.encounter.CampaignAdmission.blocked(player, boss) != null) return false;
+        }
         EncounterScaler.ensureScaled(boss, profile);
         var encounter = WorldTierApi.encounter(boss).orElse(null);
         String spawnType = boss.getPersistentData().getString("forge:spawn_type");

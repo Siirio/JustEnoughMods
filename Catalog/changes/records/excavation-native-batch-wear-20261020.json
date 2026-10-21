@@ -43,17 +43,17 @@
     ]
   },
   "cause": {
-    "owner": "JEMPackCore ExcavationMining with narrow native mining Mixins",
+    "owner": "JEMAchievementGuide / JEMCompat",
     "kind": "bugfix_native_mining_batch",
     "source_files": [
-      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationEvents.java",
-      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationMining.java",
-      "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/client/ExcavationHighlight.java",
-      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationGameModeMixin.java",
-      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java",
-      "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java",
-      "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
-      "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar"
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationGameModeMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationDiggerItemMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationItemStackMixin.java",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Mods/JEMCompat/build.gradle"
     ]
   },
   "rationale": {
@@ -91,6 +91,47 @@
         "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java",
         "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
         "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationEvents.java",
+        "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/enchantment/ExcavationMining.java",
+        "Mods/JEMPackCore/src/main/java/com/siirio/jempackcore/client/ExcavationHighlight.java",
+        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationGameModeMixin.java",
+        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java",
+        "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationItemStackMixin.java",
+        "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
+        "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationGameModeMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationDiggerItemMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationItemStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+        "Mods/JEMCompat/build.gradle"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMPackCore ExcavationMining with narrow native mining Mixins",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationGameModeMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationDiggerItemMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationItemStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+        "Mods/JEMCompat/build.gradle"
       ]
     }
   ],

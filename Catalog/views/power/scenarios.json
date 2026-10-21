@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "combat_scenarios",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -125,7 +125,7 @@
       "exact_ids": [
         "irons_spellbooks:ray_of_siphoning"
       ],
-      "expression": "native per-hit expression -> PvE tier factor -> conditional Human +1 -> school resistance",
+      "expression": "native per-hit expression -> PvE tier factor -> school resistance",
       "result_status": "partial",
       "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
     },

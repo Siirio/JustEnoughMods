@@ -1,8 +1,8 @@
 package com.siirio.jemsettlements.compat.recruits;
 
 import com.siirio.jemsettlements.currency.SettlementCurrency;
-import com.siirio.jemeconomy.ledger.SystemAccount;
-import com.siirio.jemeconomy.ledger.TransferResult;
+import com.siirio.jemsettlements.currency.SettlementAccounts;
+import com.siirio.jemsettlements.currency.TransferResult;
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.payroll.RecruitRank;
 import com.siirio.jemsettlements.town.SettlementSavedData;
@@ -42,7 +42,7 @@ public final class RecruitHiringService {
         long generation = recruit.getPersistentData().getLong(GENERATION);
         UUID request = UUID.nameUUIDFromBytes(("recruitHire:" + recruit.getUUID() + ":" + generation + ":"
                 + SettlementAuthority.principal(player).orElseThrow()).getBytes(StandardCharsets.UTF_8));
-        var result = SettlementCurrency.depositToAccount(player, SystemAccount.OPERATIONS.id(), quote(recruit), request);
+        var result = SettlementCurrency.depositToAccount(player, SettlementAccounts.OPERATIONS.id(), quote(recruit), request);
         if (result.status() == TransferResult.Status.COMMITTED || result.status() == TransferResult.Status.REPLAYED) return true;
         player.sendSystemMessage(Component.translatable("jem.settlements.recruit.hire_unfunded"), true);
         return false;

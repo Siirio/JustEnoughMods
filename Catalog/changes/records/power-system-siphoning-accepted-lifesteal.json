@@ -15,9 +15,10 @@
   ],
   "conditions": [
     {
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending.",
       "mod": "irons_spellbooks",
       "version": "1.20.1-3.15.6",
-      "runtime": "dedicated server",
       "native_spell_class": "io.redspace.ironsspellbooks.spells.blood.RayOfSiphoningSpell"
     }
   ],
@@ -42,8 +43,7 @@
     "kind": "premitigation_lifesteal_owner_order",
     "source_files": [
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java",
-      "Mods/JEMWorldBossTiers/src/test/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealingTest.java"
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java"
     ]
   },
   "rationale": {
@@ -72,6 +72,34 @@
       "commit": "SELF",
       "action": "fix",
       "summary": "Ray of Siphoning heals from accepted final target health-plus-absorption loss rather than pre-mitigation LivingHurtEvent damage."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "mod": "irons_spellbooks",
+          "version": "1.20.1-3.15.6",
+          "runtime": "dedicated server",
+          "native_spell_class": "io.redspace.ironsspellbooks.spells.blood.RayOfSiphoningSpell"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java",
+        "Mods/JEMWorldBossTiers/src/test/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealingTest.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "retire_remaining_automated_fixtures",
+      "summary": "Root removed remaining automated fixtures/runner under the explicit no-retained-tests architecture contract. Historical references retained only here; no tests were run.",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/test/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealingTest.java"
+      ]
     }
   ],
   "impacts": {

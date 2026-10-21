@@ -1,21 +1,29 @@
 package com.siirio.jemsettlements.client;
 
-import com.siirio.jemeconomy.client.CoinPriceRenderer;
+import java.util.List;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-/** Render the server-selected settlement currency inside native currency cells. */
+/** The host chooses currency. Optional Coin presentation is reached only for Coin snapshots. */
 public final class SettlementPriceRenderer {
+    public record Unit(String id, long value) { }
     private SettlementPriceRenderer() { }
+    public static List<Unit> units() {
+        if (!net.minecraftforge.fml.ModList.get().isLoaded("jem_economy")) return List.of(new Unit("emerald", 1L));
+        return com.siirio.jemsettlements.compat.economy.CoinPresentationAccess.units();
+    }
     public static Component format(long amount, boolean coins) {
-        return coins ? com.siirio.jemeconomy.physical.CoinFormatter.format(amount)
+        return coins ? com.siirio.jemsettlements.compat.economy.CoinPricePresentation.format(amount, true)
                 : Component.translatable("jem.settlements.currency.emerald_amount", amount);
     }
+    public static Component formatAll(long amount, boolean coins) {
+        return coins ? com.siirio.jemsettlements.compat.economy.CoinPresentationAccess.formatAll(amount) : format(amount, false);
+    }
     public static void draw(GuiGraphics graphics, Font font, long amount, int x, int y, int width, int color, boolean coins) {
-        if (coins) { CoinPriceRenderer.draw(graphics, font, amount, x, y, width, color); return; }
+        if (coins) { com.siirio.jemsettlements.compat.economy.CoinPricePresentation.draw(graphics, font, amount, x, y, width, color, true); return; }
         graphics.renderFakeItem(new ItemStack(Items.EMERALD), x, y);
         String count = Long.toString(amount);
         if (width > 30) graphics.drawString(font, count, x + 18, y + 4, color, false);
@@ -24,31 +32,15 @@ public final class SettlementPriceRenderer {
             graphics.pose().scale(.5F, .5F, 1F); graphics.drawString(font, count, 0, 0, color, true); graphics.pose().popPose();
         }
     }
-    /** Full-size currency cells wrap before the next icon; no denomination is truncated or scaled away. */
     public static int fullHeight(Font font, long amount, int width, boolean coins) {
-        if (!coins) return 18;
-        int dx=0, rows=1; long remainder=Math.max(0L,amount);
-        for (var denomination:com.siirio.jemeconomy.physical.CoinDenomination.descending()) {
-            long count=remainder/denomination.value(); remainder%=denomination.value();
-            int cell=22+font.width(Long.toString(count));
-            if (dx>0 && dx+cell>width) { rows++; dx=0; }
-            dx+=cell;
-        }
-        return rows*18;
+        return coins ? com.siirio.jemsettlements.compat.economy.CoinPricePresentation.fullHeight(font, amount, width, true) : 18;
     }
     public static void drawFull(GuiGraphics graphics, Font font, long amount, int x, int y, int width, int color, boolean coins) {
-        if (!coins) { draw(graphics,font,amount,x,y,width,color,false); return; }
-        int dx=0,dy=0; long remainder=Math.max(0L,amount);
-        for (var denomination:com.siirio.jemeconomy.physical.CoinDenomination.descending()) {
-            long count=remainder/denomination.value(); remainder%=denomination.value();
-            int cell=22+font.width(Long.toString(count));
-            if (dx>0 && dx+cell>width) { dy+=18; dx=0; }
-            graphics.renderItem(new ItemStack(com.siirio.jemcurrency.CurrencyItems.item(denomination)),x+dx,y+dy);
-            graphics.drawString(font,Long.toString(count),x+dx+18,y+dy+4,color,false); dx+=cell;
-        }
+        if (coins) com.siirio.jemsettlements.compat.economy.CoinPricePresentation.drawFull(graphics, font, amount, x, y, width, color, true);
+        else draw(graphics, font, amount, x, y, width, color, false);
     }
     public static void tooltip(GuiGraphics graphics, Font font, long amount, int x, int y, int width, int height, boolean coins) {
-        if (coins) CoinPriceRenderer.tooltip(graphics, font, amount, x, y, width, height);
+        if (coins) com.siirio.jemsettlements.compat.economy.CoinPricePresentation.tooltip(graphics, font, amount, x, y, width, height, true);
         else graphics.renderTooltip(font, format(amount, false), x, y);
     }
 }

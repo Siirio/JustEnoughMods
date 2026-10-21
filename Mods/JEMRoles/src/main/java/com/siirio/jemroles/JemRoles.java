@@ -1,7 +1,6 @@
 package com.siirio.jemroles;
 
 import com.siirio.jemroles.network.RolesNetwork;
-import com.siirio.jemroles.trait.RaceTraitRuntime;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.ModList;
@@ -21,11 +20,12 @@ public final class JemRoles {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT,
                 com.siirio.jemroles.vfx.RaceVfxClientConfig.SPEC, "jem-races-vfx-client.toml");
         RolesNetwork.register();
-        if (!ModList.get().isLoaded("jem_visual_sandbox")) MinecraftForge.EVENT_BUS.register(RaceTraitRuntime.class);
+        com.siirio.jemvisualsandbox.workbench.SandboxRaceLoot.register(modBus);
+        com.siirio.jemvisualsandbox.workbench.SandboxOptionalIrons.register(modBus);
         MinecraftForge.EVENT_BUS.register(RolesNetwork.class);
         if (ModList.get().isLoaded("irons_spellbooks")) {
             com.siirio.jemroles.compat.irons.RacialSpells.register(modBus);
-            if (!ModList.get().isLoaded("jem_visual_sandbox")) MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.irons.RacialSpellBridge.class);
+            // Preserve legacy spell IDs; the final native selection/HUD has one owner.
         }
         if (ModList.get().isLoaded("jem_economy")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemroles.compat.economy.CoinTradeRaceBridge.class);

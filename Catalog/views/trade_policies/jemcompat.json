@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -21,7 +21,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -71,7 +71,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -110,1330 +110,6 @@
       "review_status": "unresolved"
     },
     {
-      "item_id": "jemcompat:boss_locator_",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "source"
-      ],
-      "observed_in": [
-        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "CampaignItems.java:Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_ancient_guardian",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_ancient_guardian.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_ancient_guardian.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_ancient_remnant",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_ancient_remnant.json"
-      ],
-      "display_name_en_us": "Ancient Remnant Locator",
-      "display_name_ru_ru": "Локатор Древнего останца",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_ancient_remnant.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_bone_stalker",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_bone_stalker.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_bone_stalker.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_captain_cornelia",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_captain_cornelia.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_captain_cornelia.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_cumulonimbus",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_cumulonimbus.json"
-      ],
-      "display_name_en_us": "Cumulonimbus Locator",
-      "display_name_ru_ru": "Локатор Кумулонимбуса",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_cumulonimbus.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_dune_sentinel",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_dune_sentinel.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_dune_sentinel.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_frostbitten_golem",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_frostbitten_golem.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_frostbitten_golem.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_furnace",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_furnace.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_furnace.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_golden_hermit_king",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_golden_hermit_king.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_golden_hermit_king.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_harbinger",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_harbinger.json"
-      ],
-      "display_name_en_us": "Harbinger Locator",
-      "display_name_ru_ru": "Локатор Предвестника",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_harbinger.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_helvar",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_helvar.json"
-      ],
-      "display_name_en_us": "Helvar Locator",
-      "display_name_ru_ru": "Локатор Хельвара",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_helvar.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_infernal_dragon",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_infernal_dragon.json"
-      ],
-      "display_name_en_us": "Ashlord Locator",
-      "display_name_ru_ru": "Локатор Эшлорда",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_infernal_dragon.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_lava_eater",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_lava_eater.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_lava_eater.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_leviathan",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_leviathan.json"
-      ],
-      "display_name_en_us": "Leviathan Locator",
-      "display_name_ru_ru": "Локатор Левиафана",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_leviathan.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_luxtructosaurus",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_luxtructosaurus.json"
-      ],
-      "display_name_en_us": "Luxtructosaurus Locator",
-      "display_name_ru_ru": "Локатор Люкструктозавра",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_luxtructosaurus.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_maledictus",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_maledictus.json"
-      ],
-      "display_name_en_us": "Maledictus Locator",
-      "display_name_ru_ru": "Локатор Маледиктуса",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_maledictus.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_mummy",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_mummy.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_mummy.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_netherite_monstrosity",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_netherite_monstrosity.json"
-      ],
-      "display_name_en_us": "Netherite Monstrosity Locator",
-      "display_name_ru_ru": "Локатор Незеритовой чудовищности",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_netherite_monstrosity.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_overgrown_colossus",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_overgrown_colossus.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_overgrown_colossus.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_piglin_executioner",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_piglin_executioner.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_piglin_executioner.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_possessed_paladin",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_possessed_paladin.json"
-      ],
-      "display_name_en_us": "Possessed Paladin Locator",
-      "display_name_ru_ru": "Локатор Одержимого паладина",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_possessed_paladin.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_scylla",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_scylla.json"
-      ],
-      "display_name_en_us": "Scylla Locator",
-      "display_name_ru_ru": "Локатор Сциллы",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_scylla.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_sea_viper",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_sea_viper.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_sea_viper.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_sirok",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/lang/en_us.json",
-        "assets/jemcompat/lang/ru_ru.json",
-        "assets/jemcompat/models/item/boss_locator_sirok.json"
-      ],
-      "display_name_en_us": "Sirok Locator",
-      "display_name_ru_ru": "Локатор Сирока",
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_sirok.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_skeletosaurus",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_skeletosaurus.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_skeletosaurus.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_skor",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_skor.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_skor.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_withered_abomination",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_withered_abomination.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_withered_abomination.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:boss_locator_yeti",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/boss_locator_yeti.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/boss_locator_yeti.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
       "item_id": "jemcompat:campaign_map.ancient_guardian",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -1441,7 +117,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1452,8 +128,8 @@
       "display_name_en_us": "Map to Ancient Guardian",
       "display_name_ru_ru": "Карта к Древнему стражу",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1487,7 +163,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1498,8 +174,8 @@
       "display_name_en_us": "Map to Ancient Remnant",
       "display_name_ru_ru": "Карта к Древнему останцу",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1533,7 +209,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1544,8 +220,8 @@
       "display_name_en_us": "Overworld — desert regions. Search ancient pyramids.",
       "display_name_ru_ru": "Верхний мир — пустыни. Ищите древние пирамиды.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1579,7 +255,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1590,8 +266,8 @@
       "display_name_en_us": "Map to Bone Stalker",
       "display_name_ru_ru": "Карта к Костяному преследователю",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1625,7 +301,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1636,8 +312,8 @@
       "display_name_en_us": "Map to Ghost of Captain Cornelia",
       "display_name_ru_ru": "Карта к призраку капитана Корнелии",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1671,7 +347,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1682,8 +358,8 @@
       "display_name_en_us": "Map to Cumulonimbus",
       "display_name_ru_ru": "Карта к Кумулонимбусу",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1717,7 +393,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1728,8 +404,8 @@
       "display_name_en_us": "Overworld — high mountain regions. Nature's Compass can help locate the biome.",
       "display_name_ru_ru": "Верхний мир — высокогорья. Компас природы поможет найти этот биом.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1763,7 +439,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1774,8 +450,8 @@
       "display_name_en_us": "Map to Dune Sentinel",
       "display_name_ru_ru": "Карта к Стражу дюн",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1809,7 +485,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1820,8 +496,8 @@
       "display_name_en_us": "Map to Frostbitten Golem",
       "display_name_ru_ru": "Карта к Обмороженному голему",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1855,7 +531,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1866,8 +542,8 @@
       "display_name_en_us": "Map to Furnace",
       "display_name_ru_ru": "Карта к Живой печи",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1901,7 +577,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1912,8 +588,8 @@
       "display_name_en_us": "Map to Golden Hermit King",
       "display_name_ru_ru": "Карта к Золотому королевскому крабу-отшельнику",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1947,7 +623,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -1958,8 +634,8 @@
       "display_name_en_us": "Map to Harbinger",
       "display_name_ru_ru": "Карта к Предвестнику",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -1993,7 +669,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2004,8 +680,8 @@
       "display_name_en_us": "Overworld — deep underground. Search the ancient factory.",
       "display_name_ru_ru": "Верхний мир — глубоко под землёй. Ищите древнюю фабрику.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2039,7 +715,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2050,8 +726,8 @@
       "display_name_en_us": "Map to Helvar",
       "display_name_ru_ru": "Карта к Хельвару",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2085,7 +761,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2096,8 +772,8 @@
       "display_name_en_us": "Nether — wastes and soul sand valleys. Search the underworld arena.",
       "display_name_ru_ru": "Незер — пустоши и долины песка душ. Ищите арену подземного мира.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2131,7 +807,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2142,8 +818,8 @@
       "display_name_en_us": "Map to Ashlord",
       "display_name_ru_ru": "Карта к Эшлорду",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2177,7 +853,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2188,8 +864,8 @@
       "display_name_en_us": "Overworld — warm forests, plains, and wetlands. Search the dragon tower.",
       "display_name_ru_ru": "Верхний мир — тёплые леса, равнины и болота. Ищите башню дракона.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2223,7 +899,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2234,8 +910,8 @@
       "display_name_en_us": "Map to Lava Eater",
       "display_name_ru_ru": "Карта к Пожирателю лавы",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2269,7 +945,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2280,8 +956,8 @@
       "display_name_en_us": "Map to Leviathan",
       "display_name_ru_ru": "Карта к Левиафану",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2315,7 +991,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2326,8 +1002,8 @@
       "display_name_en_us": "Overworld — deep oceans. Search the sunken city.",
       "display_name_ru_ru": "Верхний мир — глубокие океаны. Ищите затонувший город.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2361,7 +1037,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2372,8 +1048,8 @@
       "display_name_en_us": "Exact reusable locator for %s.",
       "display_name_ru_ru": "Точный многоразовый локатор: %s.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2407,7 +1083,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2418,8 +1094,8 @@
       "display_name_en_us": "Map to Luxtructosaurus",
       "display_name_ru_ru": "Карта к Люкструктозавру",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2453,7 +1129,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2464,8 +1140,8 @@
       "display_name_en_us": "Overworld — primordial caves. Nature's Compass can help locate the biome.",
       "display_name_ru_ru": "Верхний мир — первобытные пещеры. Компас природы поможет найти этот биом.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2499,7 +1175,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2510,8 +1186,8 @@
       "display_name_en_us": "Map to Maledictus",
       "display_name_ru_ru": "Карта к Маледиктусу",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2545,7 +1221,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2556,8 +1232,8 @@
       "display_name_en_us": "Overworld — snowy plains. Search the frosted prison.",
       "display_name_ru_ru": "Верхний мир — снежные равнины. Ищите морозную тюрьму.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2591,7 +1267,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2602,8 +1278,8 @@
       "display_name_en_us": "Map to Mummy",
       "display_name_ru_ru": "Карта к Мумии",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2637,7 +1313,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2648,8 +1324,8 @@
       "display_name_en_us": "Map to Netherite Monstrosity",
       "display_name_ru_ru": "Карта к Незеритовой чудовищности",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2683,7 +1359,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2694,8 +1370,8 @@
       "display_name_en_us": "Nether — search the ancient soul blacksmith.",
       "display_name_ru_ru": "Незер — ищите древнюю кузницу душ.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2729,7 +1405,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2740,8 +1416,8 @@
       "display_name_en_us": "Map to Overgrown Colossus",
       "display_name_ru_ru": "Карта к Заросшему колоссу",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2775,7 +1451,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2786,8 +1462,8 @@
       "display_name_en_us": "Map to Piglin Executioner",
       "display_name_ru_ru": "Карта к Палачу пиглинов",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2821,7 +1497,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2832,8 +1508,8 @@
       "display_name_en_us": "Map to Possessed Paladin",
       "display_name_ru_ru": "Карта к Одержимому паладину",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2867,7 +1543,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2878,8 +1554,8 @@
       "display_name_en_us": "Overworld — forests and plains. Search the collapsed kingdom.",
       "display_name_ru_ru": "Верхний мир — леса и равнины. Ищите разрушенное королевство.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2913,7 +1589,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2924,8 +1600,8 @@
       "display_name_en_us": "Map to Scylla",
       "display_name_ru_ru": "Карта к Сцилле",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -2959,7 +1635,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -2970,8 +1646,8 @@
       "display_name_en_us": "Overworld — warm oceans. Climb the acropolis.",
       "display_name_ru_ru": "Верхний мир — тёплые океаны. Поднимитесь в акрополь.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3005,7 +1681,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3016,8 +1692,8 @@
       "display_name_en_us": "Map to Sea Viper",
       "display_name_ru_ru": "Карта к Морской гадюке",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3051,7 +1727,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3062,8 +1738,8 @@
       "display_name_en_us": "Map to Sirok",
       "display_name_ru_ru": "Карта к Сироку",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3097,7 +1773,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3108,8 +1784,8 @@
       "display_name_en_us": "Overworld — desert regions. Search for Sirok's nest.",
       "display_name_ru_ru": "Верхний мир — пустыни. Ищите гнездо Сирока.",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3143,7 +1819,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3154,8 +1830,8 @@
       "display_name_en_us": "Map to Skeletosaurus",
       "display_name_ru_ru": "Карта к Скелетозавру",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3189,7 +1865,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3200,8 +1876,8 @@
       "display_name_en_us": "Map to Skor",
       "display_name_ru_ru": "Карта к Скору",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3235,7 +1911,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3246,8 +1922,8 @@
       "display_name_en_us": "Map to Withered Abomination",
       "display_name_ru_ru": "Карта к Иссохшей мерзости",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3281,7 +1957,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3292,52 +1968,8 @@
       "display_name_en_us": "Map to Yeti",
       "display_name_ru_ru": "Карта к Йети",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:mystery_locator",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/mystery_locator.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/mystery_locator.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3371,7 +2003,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3382,8 +2014,8 @@
       "display_name_en_us": "Map to Ender Guardian",
       "display_name_ru_ru": "Карта к Эндер-стражу",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3417,7 +2049,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3428,8 +2060,8 @@
       "display_name_en_us": "Map to Endersent",
       "display_name_ru_ru": "Карта к Эндер-посланнику",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -3463,7 +2095,7 @@
       "mod_name": "JustEnoughMods Compatibility",
       "mod_version": "3.7.0",
       "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
+      "source_sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
       "side_availability": [
         "client"
       ],
@@ -3474,140 +2106,8 @@
       "display_name_en_us": "Map to Shulker Mimic",
       "display_name_ru_ru": "Карта к Подражателю шалкера",
       "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/en_us.json",
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:post_end_locator_ender_guardian",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/post_end_locator_ender_guardian.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/post_end_locator_ender_guardian.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:post_end_locator_endersent",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/post_end_locator_endersent.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/post_end_locator_endersent.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "trade_outcome": "NONE",
-      "reason": "unreviewed_static_registry_entry",
-      "progression_protected": false,
-      "protection_source_ids": [],
-      "independent_ordinary_routes": [],
-      "recipe_dependency_evidence": [],
-      "buy_copper": null,
-      "sell_copper": null,
-      "buy_denominator": null,
-      "sell_denominator": null,
-      "quota_family": null,
-      "quota_units": null,
-      "bulk_1024": null,
-      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
-      "daily_player_units": 0,
-      "daily_global_units": 0,
-      "demand_group": "",
-      "price_basis": null,
-      "arbitrage_risk": "unresolved",
-      "review_status": "unresolved"
-    },
-    {
-      "item_id": "jemcompat:post_end_locator_shulker_mimic",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "jemcompat",
-      "mod_name": "JustEnoughMods Compatibility",
-      "mod_version": "3.7.0",
-      "source_jar": "jemcompat-3.7.0.jar",
-      "source_sha256": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/jemcompat/models/item/post_end_locator_shulker_mimic.json"
-      ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
-      "source_provenance": [
-        "jem-pack-core-2.0.0-dev.jar:assets/jemcompat/models/item/post_end_locator_shulker_mimic.json"
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
+        "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

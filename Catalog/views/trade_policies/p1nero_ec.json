@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "registry_type": "trade_policies",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "generation": {
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "p1nero_ec",
+    "name": "P1nero's Epic Cataclysm",
+    "version": "20.14.0.9"
+  },
+  "records": [
+    {
+      "item_id": "cataclysm:soul_render_blocking",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "p1nero_ec",
+      "mod_name": "P1nero's Epic Cataclysm",
+      "mod_version": "20.14.0.9",
+      "source_jar": "p1nero_ec-20.14.0.9.jar",
+      "source_sha256": "a079ae0561c6526c89ead33211c04df3518d6e038e27d80f23cee88ac9d5b69d",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/cataclysm/models/item/soul_render_blocking.json"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "L_Enders_Cataclysm-3.31.jar:assets/cataclysm/models/item/soul_render_blocking.json",
+        "p1nero_ec-20.14.0.9.jar:assets/cataclysm/models/item/soul_render_blocking.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    }
+  ]
+}

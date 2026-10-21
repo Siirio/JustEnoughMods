@@ -22,7 +22,7 @@ public record EventSession(CompoundTag data) {
         return member.getBoolean("accepted")&&!member.getBoolean("eliminated");
     }
     public List<ServerPlayer> active(MinecraftServer server) {
-        if (!SmpEnvironment.active(server)) return List.of();
+        if (!EventRuntime.available(server, data)) return List.of();
         return server.getPlayerList().getPlayers().stream().filter(p -> accepted(p.getUUID()) && p.isAlive() && !p.isSpectator() && EventRegions.contains(data,p.serverLevel(),p.blockPosition())).toList();
     }
     public void accept(ServerPlayer player) {
@@ -43,7 +43,7 @@ public record EventSession(CompoundTag data) {
     }
 
     public static CompoundTag forPlayer(ServerPlayer player) {
-        if (!SmpEnvironment.active(player)) return null;
+        if (!SmpEnvironment.active(player) || !EventRuntime.enabled(player.server)) return null;
         for(var row:SmpData.get(player.server).all("events"))
             if(row.getString("activity").equals("BLOOD_MOON") && row.getString("state").equals("ACTIVE") && new EventSession(row).accepted(player.getUUID())) return row;
         return null;

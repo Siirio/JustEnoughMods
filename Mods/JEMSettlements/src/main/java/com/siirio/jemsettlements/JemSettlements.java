@@ -15,7 +15,6 @@ public final class JemSettlements {
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemsettlements.happiness.SettlementMetricsConfig.SPEC, "jem-settlements-metrics.toml");
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, com.siirio.jemsettlements.happiness.HousingConditionConfig.SPEC, "jem-settlements-living-conditions.toml");
         SettlementNetwork.register();
-        if (!SettlementBuild.STANDALONE && !net.minecraftforge.fml.loading.FMLLoader.getDist().isDedicatedServer()) return;
         MinecraftForge.EVENT_BUS.register(SettlementCommands.class);
         MinecraftForge.EVENT_BUS.register(SettlementNetwork.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.network.SettlementActions.class);

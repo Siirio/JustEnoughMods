@@ -58,6 +58,7 @@ public final class BossDebuffController {
                     vanilla("glowing",()->MobEffects.GLOWING,200,0))));
 
     public static void initializeBoss(ServerLevel level,CompoundTag row,Mob boss,List<ServerPlayer> players) {
+        if (!EventRuntime.enabled(level.getServer())) return;
         long now=level.getGameTime();
         int profile=Math.floorMod(row.getInt(PROFILE_CURSOR),PROFILES.size());
         row.putInt(PROFILE_CURSOR,profile+1);
@@ -72,6 +73,7 @@ public final class BossDebuffController {
     }
 
     public static void tick(ServerLevel level,CompoundTag row,List<Mob> bosses) {
+        if (!EventRuntime.enabled(level.getServer())) return;
         long now=level.getGameTime();
         if(now<row.getLong(NEXT_CAST)) return;
         List<ServerPlayer> players=new EventSession(row).active(level.getServer());
@@ -159,7 +161,7 @@ public final class BossDebuffController {
     }
 
     private static boolean active(ServerPlayer player,String key) {
-        return player.getPersistentData().getLong(key)>player.server.overworld().getGameTime();
+        return EventRuntime.enabled(player.server) && player.getPersistentData().getLong(key)>player.server.overworld().getGameTime();
     }
 
     private static void copy(CompoundTag source,CompoundTag target,String key) {

@@ -1,9 +1,7 @@
 package com.siirio.jemsettlements.sandbox;
 
-import com.siirio.jemeconomy.api.EconomyApi;
-import com.siirio.jemeconomy.ledger.EconomySavedData;
-import com.siirio.jemeconomy.sandbox.NativeTradePaymentEvent;
-import com.siirio.jemeconomy.sandbox.SandboxCommerce;
+import com.siirio.jemsettlements.currency.SettlementCurrency;
+import com.siirio.jemsettlements.compat.economy.CivicCommerceAdapter;
 import com.siirio.jemsettlements.api.SettlementApi;
 import com.siirio.jemsettlements.resident.ResidentMood;
 import com.siirio.jemsettlements.runtime.ResidentFoodService;
@@ -50,30 +48,31 @@ public final class SandboxCivicRuntime extends SavedData {
     private static java.util.function.BiPredicate<ServerPlayer,String> permission=(player,node)->false;
     private static int cursor;
     public static void register() {
-        if (!registered) { registered = true; MinecraftForge.EVENT_BUS.register(SandboxCivicRuntime.class); }
+        if (!registered) { registered = true; MinecraftForge.EVENT_BUS.register(SandboxCivicRuntime.class);
+            if (ModList.get().isLoaded("jem_economy")) MinecraftForge.EVENT_BUS.register(com.siirio.jemsettlements.compat.economy.CivicTradeBridge.class); }
     }
     public static void permission(java.util.function.BiPredicate<ServerPlayer,String> permission) {
         SandboxCivicRuntime.permission=permission;
         if (ModList.get().isLoaded("recruits")) SandboxRecruitOrders.permission = permission;
     }
-    public static boolean active(MinecraftServer server) { return SandboxCommerce.active(server) && ModList.get().isLoaded("jem_settlements"); }
+    public static boolean active(MinecraftServer server) { return ModList.get().isLoaded("jem_economy") && CivicCommerceAdapter.active(server) && ModList.get().isLoaded("jem_settlements"); }
     public static SandboxCivicRuntime get(MinecraftServer server) {
         return server.overworld().getDataStorage().computeIfAbsent(SandboxCivicRuntime::load, SandboxCivicRuntime::new, "jem_sandbox_civic");
     }
     private CompoundTag metadata(UUID town) { return towns.computeIfAbsent(town, key -> new CompoundTag()); }
     void persist(MinecraftServer server) {
         setDirty();
-        com.siirio.jemeconomy.sandbox.SandboxDurability.save(server,SettlementSavedData.get(server),"jem_settlements");
-        com.siirio.jemeconomy.sandbox.SandboxDurability.save(server,this,"jem_sandbox_civic");
+        com.siirio.jemsettlements.payroll.TaxDurability.save(server,SettlementSavedData.get(server),"jem_settlements");
+        com.siirio.jemsettlements.payroll.TaxDurability.save(server,this,"jem_sandbox_civic");
     }
     public static boolean beforeDelete(ServerPlayer player,UUID townId){
         if(!active(player.getServer()))return true;var town=SettlementApi.ownedTown(player,townId).orElse(null);if(town==null)return false;
-        SandboxCommerce.releaseFunds(player,townId);if(SandboxCommerce.purposeFundsOutstanding(player.getServer(),townId))return false;
+        CivicCommerceAdapter.releaseFunds(player,townId);if(CivicCommerceAdapter.purposeFundsOutstanding(player.getServer(),townId))return false;
         var data=get(player.getServer());if(ModList.get().isLoaded("recruits"))SandboxRecruitOrders.cancel(player,town,data.metadata(townId));
         data.persist(player.getServer());return true;
     }
     public static void afterDelete(ServerPlayer player){
-        if(!active(player.getServer()))return;SandboxCommerce.flushOwner(player.getServer());get(player.getServer()).persist(player.getServer());
+        if(!active(player.getServer()))return;CivicCommerceAdapter.flushOwner(player.getServer());get(player.getServer()).persist(player.getServer());
     }
     boolean guardPending(UUID entity){var row=guardRestorations.get(entity);return row!=null&&!row.getBoolean("Reconciled");}
     void queueGuard(UUID entity,CompoundTag row){
@@ -128,14 +127,14 @@ public final class SandboxCivicRuntime extends SavedData {
         if (percent != 0 && percent != 5 && percent != 10 && percent != 15) return false;
         town.taxPercent(percent);SettlementSavedData.get(player.getServer()).changed(); persist(player.getServer()); return true;
     }
-    @SubscribeEvent public static void payment(NativeTradePaymentEvent event) {
-        if (!active(event.player.getServer()) || event.merchant == null || !event.merchant.isAlive()) return;
-        var settlements = SettlementSavedData.get(event.player.getServer());
-        var resident = settlements.resident(event.merchant.getUUID()).filter(ResidentMood::living).orElse(null); if (resident == null) return;
+    public static void payment(ServerPlayer player, net.minecraft.world.entity.Entity merchant, java.util.function.BiConsumer<UUID,Integer> townPayment) {
+        if (!active(player.getServer()) || merchant == null || !merchant.isAlive()) return;
+        var settlements = SettlementSavedData.get(player.getServer());
+        var resident = settlements.resident(merchant.getUUID()).filter(ResidentMood::living).orElse(null); if (resident == null) return;
         var town = settlements.town(resident.townId()).orElse(null);
-        if (town != null && town.dimension().equals(event.merchant.level().dimension().location()) && town.contains(event.merchant.blockPosition())) {
-            ServerPlayer owner=event.player.getServer().getPlayerList().getPlayers().stream().filter(p->SettlementAuthority.principal(p).filter(town.owner()::equals).isPresent()).findFirst().orElse(null);
-            if(owner==null||permission.test(owner,"taxes"))event.town(town.id(), town.taxPercent());
+        if (town != null && town.dimension().equals(merchant.level().dimension().location()) && town.contains(merchant.blockPosition())) {
+            ServerPlayer owner=player.getServer().getPlayerList().getPlayers().stream().filter(p->SettlementAuthority.principal(p).filter(town.owner()::equals).isPresent()).findFirst().orElse(null);
+            if(owner==null||permission.test(owner,"taxes"))townPayment.accept(town.id(), town.taxPercent());
         }
     }
     private List<BlockPos> homes(ServerPlayer player, TownRecord town) {
@@ -231,9 +230,9 @@ public final class SandboxCivicRuntime extends SavedData {
     }
     private boolean fund(ServerPlayer player, TownRecord town, CompoundTag input) {
         String mode = input.getString("Mode"), purpose = input.getString("Purpose");
-        if (mode.equals("reserve") || mode.equals("return")) return SandboxCommerce.fund(player,town.id(),purpose,input.getLong("Price"),UUID.randomUUID(),mode.equals("return"));
+        if (mode.equals("reserve") || mode.equals("return")) return CivicCommerceAdapter.fund(player,town.id(),purpose,input.getLong("Price"),UUID.randomUUID(),mode.equals("return"));
         if (mode.equals("spend")) { UUID listing; try { listing = UUID.fromString(input.getString("Id")); } catch (IllegalArgumentException invalid) { return false; }
-            return SandboxCommerce.buyWithFund(player,town.id(),purpose,listing);
+            return CivicCommerceAdapter.buyWithFund(player,town.id(),purpose,listing);
         }
         return false;
     }
@@ -264,7 +263,7 @@ public final class SandboxCivicRuntime extends SavedData {
             if (player == null) continue;
             CompoundTag before=data.metadata(town.id()).copy();int previousTax=town.taxPercent();
             if(!permission.test(player,"taxes")&&town.taxPercent()!=0){town.taxPercent(0);settlements.changed();}
-            if(!permission.test(player,"civic_fund"))SandboxCommerce.releaseFunds(player,town.id());
+            if(!permission.test(player,"civic_fund"))CivicCommerceAdapter.releaseFunds(player,town.id());
             String guardOrder=data.metadata(town.id()).getString("Order");
             if(ModList.get().isLoaded("recruits")&&!guardOrder.isEmpty()&&!permission.test(player,guardOrder))SandboxRecruitOrders.cancel(player,town,data.metadata(town.id()));
             if(town.dimension().equals(player.serverLevel().dimension().location())){
@@ -312,13 +311,15 @@ public final class SandboxCivicRuntime extends SavedData {
         if (!active(player.getServer())) return result;
         var settlements = SettlementSavedData.get(player.getServer());
         for (var town : SettlementApi.ownedTowns(player).stream().limit(8).toList()) {
-            CompoundTag townRow = row(town.id(),town.name(),"Налог "+town.taxPercent()+"% · Казна "+EconomySavedData.get(player.getServer()).balance(EconomyApi.townAccount(town.id()))+" медных монет"); townRows.add(townRow);
-            if (node.equals("treasury_audit")) for (var receipt : EconomySavedData.get(player.getServer()).receiptHistory(EconomyApi.townAccount(town.id()),16)) {
-                if(rows.size()>=64)break;
-                boolean incoming=receipt.destination().equals(EconomyApi.townAccount(town.id()));
-                CompoundTag row = row(receipt.receipt(),(incoming?"Приход: ":"Расход: ")+receipt.amount()+" медных монет",accountName(receipt.source(),town)+" → "+accountName(receipt.destination(),town)); row.putString("Town",town.id().toString()); rows.add(row);
+            CompoundTag townRow = row(town.id(),town.name(),"Налог "+town.taxPercent()+"% · Казна "+SettlementCurrency.townBalance(player.getServer(), town.id())+" медных монет"); townRows.add(townRow);
+            if (node.equals("treasury_audit")) for (var tag : SettlementCurrency.history(player.getServer(), town.id())) {
+                if (rows.size() >= 64) break;
+                CompoundTag receipt = (CompoundTag) tag; boolean incoming = receipt.getBoolean("Incoming");
+                CompoundTag row = row(receipt.getUUID("Receipt"), (incoming ? "Приход: " : "Расход: ") + receipt.getLong("Amount") + " медных монет",
+                        accountName(receipt.getUUID("Source"), town) + " → " + accountName(receipt.getUUID("Destination"), town));
+                row.putString("Town", town.id().toString()); rows.add(row);
             }
-            if (node.equals("civic_fund")) for (var fund : SandboxCommerce.fundRows(player,town.id())) { if(rows.size()>=64)break;fund.putString("Town",town.id().toString()); rows.add(fund); }
+            if (node.equals("civic_fund")) for (var fund : CivicCommerceAdapter.fundRows(player,town.id())) { if(rows.size()>=64)break;fund.putString("Town",town.id().toString()); rows.add(fund); }
             if (node.equals("resident_move") || node.equals("invite_residents")) for (var resident : settlements.residents(town.id())) {
                 if (rows.size()>=48 || !resident.living()) break;
                 var entity = player.serverLevel().getEntity(resident.villagerId()); if (entity == null) continue;
@@ -327,15 +328,15 @@ public final class SandboxCivicRuntime extends SavedData {
             if (java.util.Set.of("rally","patrol_route","captain_order").contains(node) && ModList.get().isLoaded("recruits")) SandboxRecruitOrders.rows(player,town,rows);
         }
         if(node.equals("civic_fund")) {
-            ListTag offers=SandboxCommerce.snapshot(player,"trading_post").getList("Rows",Tag.TAG_COMPOUND);
+            ListTag offers=CivicCommerceAdapter.snapshot(player,"trading_post").getList("Rows",Tag.TAG_COMPOUND);
             for(int i=0;i<offers.size()&&rows.size()<64;i++)if(offers.getCompound(i).getString("Kind").equals("trading_post")&&!offers.getCompound(i).getBoolean("Own"))rows.add(offers.getCompound(i).copy());
         }
         return result;
     }
     private static String accountName(UUID account,TownRecord town){
-        if(account.equals(EconomyApi.townAccount(town.id())))return "Городская казна";
-        if(account.equals(com.siirio.jemeconomy.ledger.SystemAccount.NPC_MARKET.id()))return "Торговля с жителями";
-        if(account.equals(com.siirio.jemeconomy.ledger.SystemAccount.MARKET_ESCROW.id()))return "Оплата покупателя";
+        if(account.equals(SettlementCurrency.townAccount(town.id())))return "Городская казна";
+        if(account.equals(com.siirio.jemsettlements.currency.SettlementAccounts.NPC_MARKET.id()))return "Торговля с жителями";
+        if(account.equals(com.siirio.jemsettlements.currency.SettlementAccounts.MARKET_ESCROW.id()))return "Оплата покупателя";
         if(account.equals(town.owner()))return "Владелец города";
         return "Счёт "+account.toString().substring(0,8);
     }

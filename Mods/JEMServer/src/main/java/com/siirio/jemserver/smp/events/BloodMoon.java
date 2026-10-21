@@ -511,6 +511,7 @@ public final class BloodMoon {
         return row.getList("mobs",Tag.TAG_STRING).contains(StringTag.valueOf(entity.getStringUUID()));
     }
     public static boolean canTarget(Entity eventMob,Entity target) {
+        if (!EventRuntime.enabled(eventMob.getServer())) return true;
         var data=eventMob.getPersistentData();
         if(!data.hasUUID(EVENT_ID)||eventMob.getServer()==null) return true;
         var row=SmpData.get(eventMob.getServer()).find("events",data.getUUID(EVENT_ID));

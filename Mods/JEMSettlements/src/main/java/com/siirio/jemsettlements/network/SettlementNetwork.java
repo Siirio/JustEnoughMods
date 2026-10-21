@@ -184,9 +184,7 @@ public final class SettlementNetwork {
         view.putLong("CalculatedDailyIncome", town.dailyTax().getLong("CalculatedDailyIncome"));
         view.putInt("Housing", town.housingScore()); view.putInt("Food", town.foodScore()); view.putInt("Safety", town.safetyScore()); view.putInt("Jobs", town.jobsScore()); view.putInt("Community", town.communityScore()); view.putInt("Decoration", town.decorationScore());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
-        var bulletin = com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? com.siirio.jemeconomy.api.EconomyApi.marketBulletin(player) : new com.siirio.jemeconomy.api.EconomyApi.MarketBulletin("", "", 0L, 0L, 0L);
-        view.putString("MarketPrimary", bulletin.primaryGroup()); view.putString("MarketSecondary", bulletin.secondaryGroup());
-        view.putLong("MarketTicks", bulletin.ticksUntilUpdate()); view.putLong("MarketAccountRemaining", bulletin.accountRemaining()); view.putLong("MarketGlobalRemaining", bulletin.globalRemaining());
+        view.merge(com.siirio.jemsettlements.currency.SettlementCurrency.bulletin(player));
         view.putString("Dimension", town.dimension().toString()); view.putInt("StorageLinks", town.storage().size());
         var data = SettlementSavedData.get(player.getServer());
         CompoundTag workforce = new CompoundTag();

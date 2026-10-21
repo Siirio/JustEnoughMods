@@ -20,7 +20,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Settlements authoritative gameplay only; production dedicated, explicitly built sandbox integrated. Optional Recruits requires installed1.15.2."
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -64,6 +65,22 @@
       "commit": "SELF",
       "action": "complete_feature_scope",
       "summary": "User requests a small happiness increase from eaten food and a larger increase for the suitable requested dish"
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Settlements authoritative gameplay only; production dedicated, explicitly built sandbox integrated. Optional Recruits requires installed1.15.2."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json"
+      ]
     }
   ],
   "impacts": {

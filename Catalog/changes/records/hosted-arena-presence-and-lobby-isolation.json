@@ -11,7 +11,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "requires": "registered WorldTierApi boss profile; dedicated JEM hosted lifecycle; structural boundary additionally requires live boss or open hosted party"
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -55,7 +56,7 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
       "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
@@ -95,6 +96,44 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "requires": "registered WorldTierApi boss profile; dedicated JEM hosted lifecycle; structural boundary additionally requires live boss or open hosted party"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
         "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"

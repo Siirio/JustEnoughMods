@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "tools",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -13,134 +13,6 @@
     "version": "1.20.1"
   },
   "records": [
-    {
-      "item_id": "minecraft:copper_axe",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "assets/minecraft/lang/ru_ru.json",
-        "assets/minecraft/models/item/copper_axe.json",
-        "data/minecraft/recipes/copper_axe.json"
-      ],
-      "display_name_en_us": "Copper Axe",
-      "display_name_ru_ru": "Copper Axe",
-      "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_axe.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_axe.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "tool_class": "axe",
-      "category_evidence": "registry path; requires runtime class confirmation"
-    },
-    {
-      "item_id": "minecraft:copper_hoe",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "assets/minecraft/lang/ru_ru.json",
-        "assets/minecraft/models/item/copper_hoe.json",
-        "data/minecraft/recipes/copper_hoe.json"
-      ],
-      "display_name_en_us": "Copper Hoe",
-      "display_name_ru_ru": "Copper Hoe",
-      "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_hoe.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_hoe.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "tool_class": "hoe",
-      "category_evidence": "registry path; requires runtime class confirmation"
-    },
-    {
-      "item_id": "minecraft:copper_pickaxe",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "assets/minecraft/lang/ru_ru.json",
-        "assets/minecraft/models/item/copper_pickaxe.json",
-        "data/minecraft/recipes/copper_pickaxe.json"
-      ],
-      "display_name_en_us": "Copper Pickaxe",
-      "display_name_ru_ru": "Copper Pickaxe",
-      "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_pickaxe.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_pickaxe.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "tool_class": "pickaxe",
-      "category_evidence": "registry path; requires runtime class confirmation"
-    },
-    {
-      "item_id": "minecraft:copper_shovel",
-      "registry_type": "item_view",
-      "schema_version": 1,
-      "mod_id": "minecraft",
-      "mod_name": "Minecraft",
-      "mod_version": "1.20.1",
-      "source_jar": "server-1.20.1-20230612.114412-unpacked.jar",
-      "source_sha256": "80db52b203ac5de6e5fc1c5082259df440fb2b5390b4c61d474e8fbc63cc41f5",
-      "side_availability": [
-        "client"
-      ],
-      "observed_in": [
-        "assets/minecraft/lang/en_us.json",
-        "assets/minecraft/lang/ru_ru.json",
-        "assets/minecraft/models/item/copper_shovel.json",
-        "data/minecraft/recipes/copper_shovel.json"
-      ],
-      "display_name_en_us": "Copper Shovel",
-      "display_name_ru_ru": "Copper Shovel",
-      "source_provenance": [
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/en_us.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/lang/ru_ru.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:assets/minecraft/models/item/copper_shovel.json",
-        "copperagebackport-forge-1.20.1-0.1.4.jar:data/minecraft/recipes/copper_shovel.json"
-      ],
-      "confidence": "inferred",
-      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
-      "unresolved_reason": "Runtime registration and dynamic properties not observed",
-      "tool_class": "shovel",
-      "category_evidence": "registry path; requires runtime class confirmation"
-    },
     {
       "item_id": "minecraft:diamond_axe",
       "registry_type": "item_view",

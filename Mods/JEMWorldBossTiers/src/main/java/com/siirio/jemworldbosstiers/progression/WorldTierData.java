@@ -40,13 +40,45 @@ public final class WorldTierData extends SavedData {
     private final Map<String, Set<java.util.UUID>> conflictingBosses = new LinkedHashMap<>();
     private final Map<String, String> arenaAliases = new LinkedHashMap<>();
     private Integer tierOverride;
+    private final Set<ResourceLocation> progressionRoster = new LinkedHashSet<>();
+    private List<Integer> progressionThresholds = List.of();
+    private boolean legacyProfile;
 
     public static WorldTierData get(MinecraftServer server) {
-        return server.overworld().getDataStorage().computeIfAbsent(WorldTierData::load, WorldTierData::new, FILE_ID);
+        WorldTierData data = server.overworld().getDataStorage().computeIfAbsent(WorldTierData::load, WorldTierData::new, FILE_ID);
+        data.initializeProgressionProfile();
+        return data;
     }
 
     public int tier() {
-        return tierOverride == null ? BalanceRegistry.worldTierForDefeats(defeatedBosses) : tierOverride;
+        initializeProgressionProfile();
+        return tierOverride == null ? ProgressionRules.tier(defeatedBosses, progressionRoster, tierThresholds()) : tierOverride;
+    }
+
+    private void initializeProgressionProfile() {
+        if (!progressionThresholds.isEmpty() || BalanceRegistry.qualifyingKeys().isEmpty()) return;
+        Set<ResourceLocation> full = BalanceRegistry.qualifyingKeys();
+        Set<ResourceLocation> available = legacyProfile ? full : BalanceRegistry.activeQualifyingKeys();
+        progressionRoster.addAll(available);
+        var thresholds = new java.util.ArrayList<Integer>();
+        thresholds.add(0);
+        for (int configured : BalanceRegistry.tierThresholds().stream().skip(1).toList()) {
+            int scaled = legacyProfile || available.size() == full.size() ? configured
+                    : Math.max(1, (int) Math.ceil((double) configured * available.size() / full.size()));
+            int next = Math.max(thresholds.get(thresholds.size() - 1) + 1, scaled);
+            if (!legacyProfile && next > available.size()) break;
+            thresholds.add(next);
+        }
+        progressionThresholds = List.copyOf(thresholds);
+        setDirty();
+    }
+
+    public List<Integer> tierThresholds() {
+        return progressionThresholds.isEmpty() ? List.of(0) : progressionThresholds;
+    }
+
+    public Set<ResourceLocation> progressionRoster() {
+        return Set.copyOf(progressionRoster);
     }
 
     public Optional<Integer> tierOverride() {
@@ -79,7 +111,7 @@ public final class WorldTierData extends SavedData {
     }
 
     public int activeDefeatCount() {
-        return ProgressionRules.activeDefeatCount(defeatedBosses, BalanceRegistry.activeQualifyingKeys());
+        return ProgressionRules.activeDefeatCount(defeatedBosses, progressionRoster);
     }
 
     public void putArena(ArenaRecord arena) {
@@ -259,6 +291,12 @@ public final class WorldTierData extends SavedData {
     @Override
     public CompoundTag save(CompoundTag tag) {
         tag.putInt(SCHEMA_VERSION, CURRENT_SCHEMA_VERSION);
+        if (!progressionThresholds.isEmpty()) {
+            ListTag roster = new ListTag();
+            progressionRoster.forEach(id -> roster.add(StringTag.valueOf(id.toString())));
+            tag.put("ProgressionRoster", roster);
+            tag.putIntArray("ProgressionThresholds", progressionThresholds);
+        }
         if(tierOverride!=null) tag.putInt(TIER_OVERRIDE,tierOverride);
         ListTag values = new ListTag();
         defeatedBosses.forEach(id -> values.add(StringTag.valueOf(id.toString())));
@@ -307,6 +345,15 @@ public final class WorldTierData extends SavedData {
         WorldTierData data = new WorldTierData();
         if (tag.getInt(SCHEMA_VERSION) != CURRENT_SCHEMA_VERSION) {
             return data;
+        }
+        data.legacyProfile = !tag.contains("ProgressionThresholds", Tag.TAG_INT_ARRAY);
+        if (!data.legacyProfile) {
+            data.progressionThresholds = java.util.Arrays.stream(tag.getIntArray("ProgressionThresholds")).boxed().toList();
+            for (Tag value : tag.getList("ProgressionRoster", Tag.TAG_STRING)) {
+                ResourceLocation id = ResourceLocation.tryParse(value.getAsString());
+                if (id != null) data.progressionRoster.add(id);
+            }
+            ProgressionRules.tierForCount(0, data.progressionThresholds);
         }
         if(tag.contains(TIER_OVERRIDE,Tag.TAG_INT)) data.tierOverride=tag.getInt(TIER_OVERRIDE);
         ListTag values = tag.getList(DEFEATED_BOSSES, Tag.TAG_STRING);

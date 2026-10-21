@@ -41,19 +41,20 @@
     "owner": "JEM canonical module sources",
     "kind": "user_requested_behavior_and_bug_fix",
     "source_files": [
-      "Mods/JEMMenuSupport/build.gradle",
-      "Mods/JEMMenuSupport/embed.gradle",
-      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
       "Mods/JEMCompat/build.gradle",
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Mods/JEMVisualSandboxR3/build.gradle",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
     ]
   },
   "rationale": {
@@ -140,6 +141,34 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMMenuSupport/build.gradle",
+        "Mods/JEMMenuSupport/embed.gradle",
+        "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
       ]
     }
   ],

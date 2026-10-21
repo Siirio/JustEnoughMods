@@ -16,8 +16,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Dedicated production or exact bound dedicated test profile; matching client presentation/packet artifacts where applicable.",
-      "acceptance": "Source implementation recorded; final artifact synchronization/native publication/application, hosted startup and player acceptance remain pending root delivery evidence. Original migration not executed."
+      "runtime": "Logical integrated or dedicated server; EconomyApi.isEnabled(server) is true; native session, exact registration/admission, canonical identity and authoritative quote/payment validation remain required. Client presentation uses matching protocol.",
+      "acceptance": "Manual gameplay acceptance pending; no automated tests or gameplay scenarios asserted."
     }
   ],
   "precedence": {
@@ -76,10 +76,10 @@
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
       "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
       "Docs/economy/native-trading-design.md",
       "Docs/art/shipping-station-2026-10-20/model/README.md"
     ]
@@ -151,6 +151,82 @@
         "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
         "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
         "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+        "Docs/economy/native-trading-design.md",
+        "Docs/art/shipping-station-2026-10-20/model/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_goods.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_station_atlas.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/shipping_box.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+        "Docs/economy/native-trading-design.md",
+        "Docs/art/shipping-station-2026-10-20/model/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Dedicated production or exact bound dedicated test profile; matching client presentation/packet artifacts where applicable.",
+          "acceptance": "Source implementation recorded; final artifact synchronization/native publication/application, hosted startup and player acceptance remain pending root delivery evidence. Original migration not executed."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/audit/EconomyRuntimeExport.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_goods.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_station_atlas.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/shipping_box.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
         "Docs/economy/native-trading-design.md",
         "Docs/art/shipping-station-2026-10-20/model/README.md"
       ]

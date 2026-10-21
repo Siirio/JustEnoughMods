@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "shared_modifiers",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -43,8 +43,452 @@
       ],
       "owner": "JEMEconomy",
       "source_files": [
-        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json",
-        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java"
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/item_policies.json"
+      ]
+    },
+    {
+      "id": "economy.native-merchandise-prices",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "items",
+          "members_path": "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+          "id_field": "item"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "economy.native_merchandise_policy",
+          "operation": "derive",
+          "before": {
+            "value": "Native Coin adapter used only reviewed Market policy; unsupported native goods lacked a priced two-way counterpart"
+          },
+          "after": {
+            "source_member_fields": [
+              "buy_copper",
+              "sell_copper",
+              "sell_units",
+              "daily_player_units",
+              "daily_global_units",
+              "notes"
+            ]
+          }
+        },
+        {
+          "property": "economy.native_trade.safe_price_math",
+          "operation": "derive",
+          "before": {
+            "value": "Native price adjustment without current bulk/demand closure contract"
+          },
+          "after": {
+            "value": "Canonical per-unit or exact bulk sale rounding; bounded demand/discount floor; no free/negative/overflow trade; actual native goods/NBT retained"
+          }
+        }
+      ],
+      "owner": "JEMEconomy/JEMSettlements/JEMServer",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/native_item_prices.json"
+      ]
+    },
+    {
+      "id": "hosted.arena-presence-and-lobby-isolation",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "hosted.arena_boundary_presence",
+          "operation": "derive",
+          "before": "Every discovered structure produces a wall even when no boss or party exists.",
+          "after": "Rendering, collision and teleport policy share live registered boss OR open party presence, cached for one level tick; saved arena identity and revival remain intact."
+        },
+        {
+          "property": "hosted.lobby_protection",
+          "operation": "replace",
+          "before": "Nearby held boss or unauthorized overlapping structure cancels all incoming damage and player death, even for an ALIVE participant in another active hosted encounter.",
+          "after": "Canonical active ALIVE hosted participant bypasses waiting-area immunity; ordinary hosted combat validates attackers/participants. Held bosses still cannot attack anyone."
+        },
+        {
+          "property": "hosted.dormant_tick",
+          "operation": "replace",
+          "before": "NoAI stops goals but Bosses Rise custom tick reactivates bars/music and runs attacks/cinematics.",
+          "after": "Dedicated ServerLevel tickNonPassenger skips held boss native tick until canonical Start removes the lobby marker; no client/integrated tick interception."
+        },
+        {
+          "property": "hosted.prompt_kind",
+          "operation": "replace",
+          "before": "String API accepted BOSS despite EventEntryKind lacking that value; deployed client crash supplied. Existing source producer already corrected in4dc02558.",
+          "after": "Prompt producers accept EventEntryKind and serialize name; no invented legacy alias or wire change."
+        }
+      ],
+      "owner": "JEMServer StructureStaging/BossHostingPrompt, JEMWorldBossTiers HostedEncounters",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+      ]
+    },
+    {
+      "id": "hosted-fight-chat-links",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "hosted_encounter.chat_entry",
+          "operation": "replace",
+          "before": "Boss/structure notification RUN_COMMAND targets /smp boss or /smp arena, but only /smp is registered; Brigadier rejects UUID as an invalid argument.",
+          "after": "Typed ARENA/BOSS + UUID presentation request; client intercepts exact reserved action and old boss/arena scrollback links. Server verifies dedicated authentication, shared throttle and canonical prompt proximity/availability/progression; selection/start unchanged."
+        }
+      ],
+      "owner": "JEMServer hosted encounter presentation",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventPromptRequest.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/HostedFightChatLinkMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json"
+      ]
+    },
+    {
+      "id": "hosted.barrier-free-attack-admission-official-travel-20261021",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        },
+        {
+          "type": "registry",
+          "registry": "structures"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "hosted.structural_boss_admission_and_barriers",
+          "operation": "replace",
+          "before": "Structural Fight/Campaign/Raid used visual, collision and teleport containment; proximity prompts and timeout/reload lobby release existed.",
+          "after": {
+            "boss_barriers": "Remove entirely for structural Boss Fight/Campaign/Raid; preserve Blood Moon/Resource Rush contracts. Structure identity/safe placement/rewards stay canonical.",
+            "lobby": "Persist noAI/invulnerability/target/presentation hold across join/reload until canonical Start, no proximity player immunity.",
+            "attack": "Cancel attempted dormant-boss hit and open existing GUI with authoritative admission checks, never automatic combat.",
+            "raid": "HostedRaidScaling owns preparation boost; Start adds participant scale once without double melee multiplier.",
+            "marker_travel": "Native actions only for official server boss/event object identities; server resolves IDs, checks availability/eligibility/safe destination. Personal/home/death native behavior/privacy unchanged.",
+            "empty_attempt": "Existing hosted grace closes no-present-participant attempt.",
+            "raid_authored_adds": "Authored Raid reinforcements associate with the canonical hosted boss; damage authority resolves through that boss, so outsider damage remains denied.",
+            "orphan_recovery": "A closed Raid orphan observed on load returns to a normal dormant held boss; it cannot retain active Raid combat state.",
+            "campaign_start": "Canonical hosted Start rechecks Campaign prerequisites; terrain remains freely accessible.",
+            "retired_block_cleanup": "Exact retired JEM barrier IDs in known owned shell cells only; no broader old-world migration."
+          }
+        },
+        {
+          "property": "player.personal_death_home_routes",
+          "operation": "replace",
+          "before": "No public /death registration; existing HomeTravel single return.",
+          "after": {
+            "death": "Up to three latest own UUID-bound records; current ownership and full-box safe arrival revalidation.",
+            "home": "Existing personal respawn point; /home all bounded nearby living/ ridden passenger tree preflight with ownership/combat/event gates.",
+            "rollback": "Continue each detach/restore/reattach independently; report recovery_required for incomplete native rollback."
+          }
+        }
+      ],
+      "owner": "hosted.barrier-free-attack-admission-official-travel-20261021",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/OfficialMarkerTravel.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointOptionMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointTeleportMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventSession.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeSettlementAccess.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravel.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravelGroup.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/gate/CampaignGateEvents.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java",
+        "Docs/events/BOSS_FIGHT.md",
+        "Docs/events/BOSS_RAID.md",
+        "Docs/SERVER_COMMANDS.md",
+        "Docs/smp-gui/README.md",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPresentation.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
+        "Mods/JEMTwelveEyes/AGENTS.md"
+      ]
+    },
+    {
+      "id": "power.bloom-registered-boss-targeting",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities",
+          "value": "*"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "race.bloom.green_ground_target_cancellation",
+          "operation": "replace",
+          "before": "Cancel every mob target toward Bloom on green except EnderMan, including every registered boss.",
+          "after": "Preserve cancellation for ordinary mobs; do not cancel for any mob with a canonical WorldTierApi.profile. No boss allowlist or independent encounter state."
+        }
+      ],
+      "owner": "Final Races SandboxRaceTraits and optional ProductionRaceBridge",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java"
+      ]
+    },
+    {
+      "id": "power.frostbitten-difficulty-and-composition",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "legendary_monsters:frostbitten_golem"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "combat.attackTargets.damage_before_jem_scaling",
+          "operation": "replace",
+          "before": "B=14*configured FrostbittenGolemDamageMutliplier; EASY=B+13, NORMAL=B, HARD=B-4",
+          "after": "B=14*configured FrostbittenGolemDamageMutliplier; EASY=B-4, NORMAL=B, HARD=B+4",
+          "notes": "Effective config1 gives10/14/18. Multiply-then-offset ordering retained; config2 gives24/28/32. No change to attack scheduling, hitbox, damage type or accepted-hit rules."
+        },
+        {
+          "property": "boss_profile.special_damage_multiplier",
+          "operation": "replace",
+          "before": [
+            2.7,
+            2.8,
+            3.2,
+            5.0,
+            5.0
+          ],
+          "after": null,
+          "notes": "Absent profile field already means native factor1 in the existing owner. Narrow Frost-only balance decision removes amplification applied to all outgoing hits, including ordinary melee; not a claim that author intent was accidental. WorldTier, co-op, hosted0.88 and Raid remain native JEM-owned."
+        }
+      ],
+      "owner": "JEMCompat / JEMWorldBossTiers",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    },
+    {
+      "id": "power.race-cinematic-reentry",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "race.cinematic.protection_eligibility",
+          "operation": "replace",
+          "before": "Any authenticated player may create a600-tick protected scene using action6; clearing and reopening permits unlimited renewal.",
+          "after": "New scenes require authoritative unselected race state; selected progression-menu reopen cannot create immunity. Existing first-choice scene remains protected until selection and completion."
+        },
+        {
+          "property": "race.cinematic.completion_expiry",
+          "operation": "replace",
+          "before": "Every selection acknowledgement sets scene expiry to current tick+100, allowing repeated same-race selections to extend existing immunity.",
+          "after": "A transient server-owned completing marker permits exactly one100-tick completion window; repeated acknowledgements cannot extend it, including when initial selection took longer than600ticks."
+        }
+      ],
+      "owner": "RaceExperience authoritative scene lifecycle",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java"
+      ]
+    },
+    {
+      "id": "power-system-native-cataclysm-capabilities",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "cataclysm:the_incinerator"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "cataclysm:the_annihilator"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "cataclysm:soul_render"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "cataclysm:cursed_bow"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "cataclysm:wrath_of_the_desert"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "combat.epicfight.weapon_capability",
+          "operation": "replace",
+          "before": "Overlapping generic Epic Fight Patch and dedicated P1nero resources; winner depends on pack precedence.",
+          "after": {
+            "the_incinerator": {
+              "type": "p1nero_ec:the_incinerator",
+              "attributes": {
+                "common": {
+                  "impact": 2.5,
+                  "armor_negation": 20.0,
+                  "max_strikes": 4,
+                  "speed_bonus": -0.3
+                }
+              }
+            },
+            "the_annihilator": {
+              "type": "p1nero_ec:dual_annihilator",
+              "attributes": {
+                "common": {
+                  "impact": 4.5,
+                  "armor_negation": 10.0,
+                  "max_strikes": 3,
+                  "speed_bonus": 0.3
+                }
+              }
+            },
+            "soul_render": {
+              "type": "p1nero_ec:soul_render",
+              "attributes": {
+                "common": {
+                  "impact": 1.0,
+                  "armor_negation": 20.0,
+                  "max_strikes": 3
+                }
+              }
+            },
+            "cursed_bow": {
+              "type": "p1nero_ec:cursed_bow",
+              "attributes": {
+                "common": {
+                  "impact": 0.7,
+                  "damage_bonus": 2.0,
+                  "speed_bonus": -3.55
+                },
+                "ranged": {
+                  "max_strikes": 1
+                }
+              }
+            },
+            "wrath_of_the_desert": {
+              "type": "p1nero_ec:wrath_of_the_desert",
+              "attributes": {
+                "common": {
+                  "impact": 0.7,
+                  "damage_bonus": 2.0,
+                  "speed_bonus": -3.4,
+                  "max_strikes": 5
+                },
+                "ranged": {
+                  "max_strikes": 2
+                }
+              }
+            }
+          },
+          "notes": "Values are exact installed preset facts, not a damage multiplier stack or measured DPS."
+        }
+      ],
+      "owner": "JEMAchievementGuide / JEMCompat / JEMServer / JEMTwelveEyes / JEMWorldBossTiers",
+      "source_files": [
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+        "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMTwelveEyes/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml"
+      ]
+    },
+    {
+      "id": "power-system-siphoning-accepted-lifesteal",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "irons_spellbooks:scroll"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "combat.siphoning.lifesteal",
+          "operation": "replace",
+          "before": "Native postHitEffects heals caster by LivingHurtEvent.amount * getLifestealPercent before final armor, Protection, absorption and cancellation.",
+          "after": "Suppress only Siphoning early heal; after one native hurt call, if accepted heal native caster by max(0, targetBeforeHealthAndAbsorption - targetAfterHealthAndAbsorption) * native getLifestealPercent through native LivingEntity.heal.",
+          "notes": "No damage, resistance, spell power, mana, cooldown, native heal modifier or persistent spell state changed. Default native share stays1.0."
+        }
+      ],
+      "owner": "JEMWorldBossTiers optional native Iron integration",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java"
       ]
     },
     {
@@ -68,10 +512,11 @@
           },
           "after": {
             "owner": "Pufferfish's Skills 0.19.2",
-            "ui": "native skill screen",
-            "state": "native category XP, levels, points and unlocked skills"
+            "ui": "JEM unified radial presentation adapter",
+            "state": "native category XP, levels, points and unlocked skills",
+            "node_count": 78
           },
-          "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. Only effects backed by current implementation are exposed as skills."
+          "notes": "Legacy JEM XP and enabled nodes migrate once; audit IDs, discovery caps and cooldown evidence remain in JEMProfessions. JEM presents but does not duplicate Pufferfish progression state."
         },
         {
           "property": "epic_fight.irons_spellbooks.integration",
@@ -85,11 +530,32 @@
             "epic_fight_spell_skill": "efs_iss 1.0.3"
           },
           "notes": "Iron's first-person arms/items are disabled as required by the animation addon. The EFS ISS magic-sword skill can cast the selected spell and reduce its level while cooling down; this native addon behavior is an explicit balance surface."
+        },
+        {
+          "property": "races.irons_spellbooks.signature",
+          "operation": "add",
+          "before": {
+            "native_spell_selection": false,
+            "cast_route": "JEM V key only"
+          },
+          "after": {
+            "native_spell_selection": true,
+            "spell_ids": [
+              "jem_roles:life_chorus",
+              "jem_roles:rift_ambush",
+              "jem_roles:verdant_dominion",
+              "jem_roles:sculk_veins",
+              "jem_roles:infernal_eruption"
+            ],
+            "cast_route": "shared server-authoritative race signature"
+          },
+          "notes": "SpellSelectionEvent adds only the chosen race spell to the standard Iron's Spells HUD and wheel; no physical scroll, crafting recipe or loot entry is created."
         }
       ],
       "owner": "Pufferfish's Skills, JEMProfessions, EFIS Compat and EFS ISS",
       "source_files": [
         "Mods/JEMProfessions/**",
+        "Mods/JEMRoles/**",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/**",
         "Mods/JEMServer/build.gradle",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
@@ -98,6 +564,646 @@
         "Client/ManagedPack/config/paxi/datapacks/jem-profession-skills/**",
         "Client/ManagedPack/config/irons_spellbooks-client.toml",
         "tools/generate_profession_skills.py"
+      ]
+    },
+    {
+      "id": "professions.sandbox-native-tree",
+      "status": "removed",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "professions.sandbox_progression",
+          "operation": "add",
+          "before": "Existing separate profession sandbox admits only eight effects; other catalog promises have no standalone owners; sidebar omits concrete XP guidance.",
+          "after": "All78 stable nodes have approved effect adapters and actual validated XP signals; one spaced radial tree and concise RU/EN instructions; owner-only native free claim/unclaim with per-node point sources; Create/Epic Fight/Iron/PlayerRevive and existing finance/town systems preserve their native owners."
+        },
+        {
+          "property": "professions.sandbox_class_loading",
+          "operation": "replace",
+          "before": "Mixin config package com.siirio.jemprofessions.sandbox reserves application helpers and @Mod entry point, causing IllegalClassLoadError during Forge mod construction.",
+          "after": "Only the16 injection/accessor classes live beneath com.siirio.jemprofessions.mixin.sandbox; gameplay helpers, marker and plugin load as ordinary application classes."
+        }
+      ],
+      "owner": "JEMProfessions adapters + native Puffish progression + CurrencyCore financial owner + Settlements town owner",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSettlement.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/CommercePlayerSaveAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/CommerceServerStorageAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/sandbox/CommerceCommittedEvent.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/sandbox/NativeTradePaymentEvent.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/sandbox/SandboxCommerce.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/sandbox/SandboxDurability.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json",
+        "Mods/JEMProfessions/build.gradle",
+        "Mods/JEMProfessions/prepare-sandbox-data.py",
+        "Mods/JEMProfessions/settings.gradle",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/JemProfessions.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/client/ProfessionClientState.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/network/ProfessionsNetwork.java",
+        "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionRecord.java",
+        "Mods/JEMProfessions/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/ProfessionProfile.java",
+        "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/client/ProfessionPresentation.java",
+        "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/production/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/ProfessionProfile.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionMaterials.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionPresentation.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/ProfessionRadialScreen.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxActionScreen.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxClientState.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionKeys.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxProfessionPresentation.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/client/SandboxSkillText.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/SkillAdmissionMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/BoatThrustMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/CropGrowthMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/FishingHookMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/FishingLootPoolMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/LootItemAccessor.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/OreProvenanceMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/PlayerRationMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/PlayerTeleportMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/ServerPlayerGameModeMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/core/SheepShearMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/nativecompat/EpicDodgeMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/nativecompat/EpicParryingMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/nativecompat/IronCastMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/nativecompat/ReviveCompletionMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/mixin/sandbox/nativecompat/ReviveProgressMixin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/network/ProfessionUnlockAuthority.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxCreditJournal.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxMixinPlugin.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxPreferences.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionAccess.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionPolicy.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionRuntime.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfessionSupport.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxProfileMarker.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/SandboxSkillAdmission.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/civic/SandboxCivicEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreActions.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreBuilding.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreDiscoveryLedger.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreExploration.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreFarming.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/CoreFishing.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/SandboxCoreData.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/core/SandboxCoreEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/SandboxEngineerEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/SandboxMagicEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/SandboxNativeEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/SandboxReviveEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/SandboxSchematicProjection.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/SandboxWarriorEffects.java",
+        "Mods/JEMProfessions/src/sandbox/java/com/siirio/jemprofessions/sandbox/nativecompat/client/SandboxSchematicClient.java",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-icons.json",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions/sandbox-skills.json",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/en_us.json",
+        "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/ru_ru.json",
+        "Mods/JEMProfessions/src/sandbox/resources/jem_professions_sandbox.mixins.json",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/sandbox/CivicCommittedEvent.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/sandbox/SandboxCivicRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/sandbox/SandboxRecruitOrders.java"
+      ]
+    },
+    {
+      "id": "progression.paladin-guardian-edge-20261021",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "legendary_monsters:posessed_paladin"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "legendary_monsters:ancient_guardian"
+        },
+        {
+          "type": "id",
+          "registry": "structures",
+          "value": "legendary_monsters:ancient_tower_remains"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "progression.paladin_ancient_guardian_edge",
+          "operation": "replace",
+          "before": {
+            "paladin_prerequisites": [
+              "ancient_guardian",
+              "bone_stalker",
+              "overgrown_colossus"
+            ],
+            "ancient_guardian_dimension": "minecraft:overworld"
+          },
+          "after": {
+            "paladin_prerequisites": [
+              "bone_stalker",
+              "overgrown_colossus"
+            ],
+            "ancient_guardian_dimension": "minecraft:the_end",
+            "ancient_guardian_structure": "legendary_monsters:ancient_tower_remains",
+            "preserved": "Coppermincer and other edges; guardian entity/structure remain, no synthetic defeat or old-chunk worldgen promise."
+          }
+        },
+        {
+          "property": "packcore.mixin_refmap_packaging",
+          "operation": "replace",
+          "before": {
+            "cause": "Incremental javac could skip annotation processing and leave the Pack Core jar without its generated Mixin refmap.",
+            "impact": "Production mappings unavailable to all affected Pack Core Mixin features."
+          },
+          "after": {
+            "owner": "JEMPackCore JavaCompile/jar production tasks",
+            "mechanism": "Disable incremental Java compilation, declare generated refmap/TSRG outputs and fail jar creation when the refmap is missing.",
+            "semantics": "Preserve existing Mixin feature behavior and registration; correct production artifact packaging only.",
+            "status": "in testing; fresh artifact delivery and runtime acceptance pending"
+          }
+        }
+      ],
+      "owner": "PackCore canonical campaigns.json",
+      "source_files": [
+        "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json",
+        "Docs/events/BOSS_FIGHT.md",
+        "Mods/JEMAchievementGuide/build.gradle",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMTwelveEyes/build.gradle",
+        "Mods/JEMWorldBossTiers/build.gradle",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json"
+      ]
+    },
+    {
+      "id": "races-sandbox-complete",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_visual_sandbox"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "race.standalone.progression",
+          "operation": "replace",
+          "before": "fixed tier3; only Bloom manual upgrades; no ordinary cooldown gates",
+          "after": {
+            "tiers": "successful casts 0/10/30",
+            "save": "world SavedData UUID records",
+            "bloom": "sequential I/II/III gated by mastery; preserve existing unlocked stages",
+            "developer": "explicit temporary overrides; normal record never mutated"
+          }
+        },
+        {
+          "property": "race.sonic_wave.damage_hp",
+          "operation": "add",
+          "before": 8,
+          "after": 12,
+          "notes": "User explicitly requires +4HP, not a total of4HP."
+        },
+        {
+          "property": "race.leaf_bridge.cooldown_ticks",
+          "operation": "set",
+          "before": 0,
+          "after": 300
+        },
+        {
+          "property": "race.void_projectile.inaccuracy",
+          "operation": "set",
+          "before": 0.25,
+          "after": 0,
+          "notes": "Codex implementation choice for deterministic shared live prediction/actual launch. Speed1.5, gravity0.03, air drag0.99, water drag0.8 and native collision remain; safe arrival is server-owned."
+        },
+        {
+          "property": "race.sandbox.signature.tier_effects",
+          "operation": "derive",
+          "before": "all hardcoded maximum, unrelated to saved progression",
+          "after": "Ancestors12/16 radius, tierII cleanse, tierIII absorption; Void24/32 reach and tierIII slow; Bloom preserves approved action-lock/constriction/poison ordering; Sonic baseline12 damage, tierII push/tierIII2s slow; Nether6/8/10 damage and2/4/6s fire with five authored eruptions.",
+          "notes": "Canonical progression thresholds reused. Sonic tierII/III and Nether tier scaling are explicitly Codex implementation choices; existing sandbox-approved ability identity remains."
+        }
+      ],
+      "owner": "Mods/JEMVisualSandboxR3",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/README.md",
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxSkills.java",
+        "Mods/JEMVisualSandboxR3/prepare.py",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/client/SandboxIronsClient.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/SandboxAnimalFearMixin.java",
+        "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/MainSkillProgression.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxOptionalIrons.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceLoot.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+        "Mods/JEMRoles/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/guardian_dome/gold-wave-one-shot.png.mcmeta",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/infernal_eruption.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/life_chorus.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/rift_ambush.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/sculk_veins.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/textures/gui/spell_icons/verdant_dominion.png",
+        "Mods/JEMRoles/src/main/resources/data/forge/loot_modifiers/global_loot_modifiers.json",
+        "Mods/JEMRoles/src/main/resources/data/jem_visual_sandbox/loot_modifiers/piglin_fortune.json",
+        "Mods/JEMRoles/src/main/resources/jem_sandbox.mixins.json",
+        "Mods/JEMRoles/src/main/resources/pack.mcmeta"
+      ]
+    },
+    {
+      "id": "races.sandbox-preview-profiles",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_visual_sandbox"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "races.development.authority",
+          "operation": "replace",
+          "before": "Manual developer opt-in map; normal FreeSwitchUsed/ActiveTicks selection lock and cooldown gates still ran in installed sandbox unless separately enabled.",
+          "after": {
+            "sandbox": "automatic integrated-owner no-cooldown/unlimited selection; separate persisted DevelopmentTier and DevelopmentBloomUpgrade overrides; native resource/target/collision and active-timeline rules retained",
+            "production": "default/explicit PRODUCTION source alternative has no enabled development handler/state mutation or commands; normal cooldowns/selection rules; native dedicated authority unaffected"
+          }
+        },
+        {
+          "property": "races.selection.cleanup",
+          "operation": "extend",
+          "before": "Partial attribute/utility reset; some active effect timelines and enhanced existing self buffs could survive a change.",
+          "after": "Cancel owned timelines, tracked projectiles/guardian across levels, root squeeze, charges/gravity and race self-buff contribution; restore prior external effect where known, remove exact attribute IDs and immediately refresh new passives. Preserve earned per-race mastery."
+        },
+        {
+          "property": "races.gui.ability_preview",
+          "operation": "add",
+          "before": "Full-body skin cinematic and text progression only.",
+          "after": "Detached current-skin RemotePlayer, vanilla Creeper/golem/pearl;5second clipped3quarter scene;actual shared VFX draw entrypoints;V/B and three real tiers plus Bloom0..3 inspection independent from grants;no world insertion,tick,damage,cast,packets or gameplay saves. Contextual nonoffensive powers remain nonoffensive."
+        },
+        {
+          "property": "races.sandbox.installation",
+          "operation": "replace",
+          "before": "Copy over a potentially loaded mod JAR; user reported deferred class-load crash after live overwrite.",
+          "after": "Require closed sandbox Java profile, verify complete ZIP/class presence, backup and atomically replace. User crash-free acceptance pending."
+        },
+        {
+          "property": "races.void_pearl_aiming_readability",
+          "operation": "replace",
+          "before": "Eye-centred shared launch position and thin forward dashed preview collapse to a centre line/contact bar in first person.",
+          "after": "Shared real/predicted dominant-hand0.42lateral/0.24down origin, native block-clipped against nearby cover; world-spaced0.75 lavender chevrons and0.46face contact marker. Existing afterfire, projectile physics and server safe-arrival retained."
+        },
+        {
+          "property": "races.void_preview.localization",
+          "operation": "replace",
+          "before": "HUD chooses corrupted Russian Java literals and middle-dot separator by languageCode.",
+          "after": "Component.translatable distance/contact label from ru_ru and en_us resources. Prediction and physical launch unchanged."
+        }
+      ],
+      "owner": "JEMRaces",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxSkills.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/AbilityPreviewPresentation.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ElementalRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FierySlash.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/FlameSlashRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/GuardianDomeRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/PearlAfterfire.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ProjectileEstimation.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceOwnedEffects.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveAbility.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SonicWaveRenderer.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SurfaceVfx.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/UtilityVfx.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/VisualRenderContext.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+        "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
+        "Mods/JEMVisualSandboxR3/install-sandbox.py",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/VoidDistancePreview.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json"
+      ]
+    },
+    {
+      "id": "races.sandbox-short-leaf-decay",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "tag",
+          "registry": "blocks",
+          "value": "minecraft:blocks/leaves"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "races.leaf_bridge.lifetime",
+          "operation": "replace",
+          "before": "800+200*stage ticks:40/50/60/70seconds.",
+          "after": "200+100*stage ticks:10/15/20/25seconds at0/1/2/3. Existing path restoration, range and activation cooldown unchanged; progression material UI only, black origin stage retained."
+        }
+      ],
+      "owner": "JEM Races",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RacePowerStages.java"
+      ]
+    },
+    {
+      "id": "races.innate-guardian-jade-20261021",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:iron_golem"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "races.innate_spell_guardian_jade",
+          "operation": "replace",
+          "before": "Innate spells inherited school-learning; guardian selected nearest Enemy and used one-Minecraft-day cooldown; no Roles Jade race field.",
+          "after": {
+            "spells": "Innate RacialSpell requiresLearning=false only; ownership and native cast checks remain.",
+            "guardian_cooldown_minecraft_days": 0.05,
+            "guardian": "One-time saved-cooldown clamp; eligible actual attacker priority including PvP-allowed player, no random player targets.",
+            "jade": "Roles-owned server race ID snapshot and client localization, no balances/hidden progress."
+          }
+        }
+      ],
+      "owner": "races.innate-guardian-jade-20261021",
+      "source_files": [
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Docs/races/README.md"
+      ]
+    },
+    {
+      "id": "settlements.sandbox-explicit-needs-chest-meals",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:villager"
+        },
+        {
+          "type": "namespace",
+          "registry": "entities",
+          "value": "recruits"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "settlements.sandbox_needs_enrollment",
+          "operation": "replace",
+          "before": "Native Jade bars for all recruits; hire/adoption workforce records implicitly enable needs.",
+          "after": "Explicit bell flag, false for legacy ambiguous records; valid owned town/native ownership required; hiring/payroll retained. Actual CustomName/localized names from optional Villager Names preserved; no UUID text."
+        },
+        {
+          "property": "settlements.sandbox_chests_meals",
+          "operation": "add",
+          "before": "No actionable per-chest inventory GUI/all-registered-NPC meal order; permanent combat feed skip; native starvation setting could disable damage.",
+          "after": "Five-tab compact roster/chest GUI; read-only owner-linked54slot pages,8192byte item metadata limit; real120sec meal orders for registered hungry NPCs, explicit craving below100; bounded32tick critical combat meal at<10satiety each100ticks; native clock and single zero-hunger starvation damage. Protocol9 only sandbox."
+        },
+        {
+          "property": "settlements.sandbox_recruit_meal_navigation",
+          "operation": "replace",
+          "before": "Immediate canReach rejection discards pending native AsyncPath; periodic serving runs outside MOVE/LOOK arbitration; combat target unconditionally blocks selected-chest orders.",
+          "after": "Retain the returned native path and hand that same path to navigation, without blocking on async completion. Meal goal reserves MOVE/LOOK for spontaneous eligible food or an explicit selected-chest order; explicit orders permit serving during combat and release item use. Availability checks are bounded to once/20ticks and8192storage slots; real extraction still requires distance<=2.5blocks. Native hunger/morale clocks, critical-meal limits, harmful-food rules and bell enrollment remain."
+        }
+      ],
+      "owner": "JEMSettlements",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/RecruitJadeData.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/CriticalRecruitMealGoal.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitMealOrderGoal.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitNeedsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/MobGoalsAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/RecruitHiringMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNames.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/PayrollService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SharedStorageService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/TownMealService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/workforce/WorkforceRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json"
+      ]
+    },
+    {
+      "id": "skarrier-mobs-111-hotfix-local-upgrade-20261020",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "skarrier_mobs"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "distribution.skarrier_version",
+          "operation": "replace",
+          "before": {
+            "version": "1.0.6",
+            "sha256": "55d56f8acca2f3a2c0bacbf02ea001ab4ce8c1b3646c6a42c110a02fecd0495c"
+          },
+          "after": {
+            "version": "1.1.1",
+            "file_id": 9164445,
+            "sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+            "release": "Beta hotfix"
+          },
+          "notes": "Official original bytes. New registrations/resources/packet classes come from upstream; JEM does not duplicate them. Carnager direct API signature retained."
+        }
+      ],
+      "owner": "Official Skarrier Mobs artifact and JEMServer compile dependency",
+      "source_files": [
+        "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+        "Mods/JEMServer/build.gradle",
+        "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json",
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+      ]
+    },
+    {
+      "id": "smp.starter-kit-and-prechoice-protection-20261021",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:cooked_beef"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:iron_ingot"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather_helmet"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather_chestplate"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather_leggings"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather_boots"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "backpacked:backpack"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "naturescompass:naturescompass"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "smp.starter_item_entitlement",
+          "operation": "add",
+          "before": null,
+          "after": {
+            "kit": {
+              "minecraft:cooked_beef": 64,
+              "minecraft:iron_ingot": 10,
+              "minecraft:leather_helmet": 1,
+              "minecraft:leather_chestplate": 1,
+              "minecraft:leather_leggings": 1,
+              "minecraft:leather_boots": 1,
+              "backpacked:backpack": 1,
+              "naturescompass:naturescompass": 1
+            },
+            "scope": "Once per canonical verified account including existing players; no race wait after authentication.",
+            "currency": "Existing20Gold grant, finite funding and receipt unchanged; no money regrant.",
+            "delivery": "Inventory-first bounded insertion; undelivered remainder remains journaled, never drops or equips over worn items.",
+            "durability": "Pending account operation -> native inventory+persisted player account/operation receipt save and exact readback -> remaining entitlement commit. Reconcile interrupted pending operations and copy receipt on death clone.",
+            "failure": "Missing required native item/storage failure refuses completion; disconnect on unacknowledged inventory persistence failure.",
+            "status": "in testing; no runtime/delivery claimed"
+          }
+        },
+        {
+          "property": "smp.authentication_race_choice_damage_guard",
+          "operation": "add",
+          "before": null,
+          "after": {
+            "condition": "IdentityPolicy unresolved OR RaceApi.get(server, canonical account) has no effective race.",
+            "incoming": "Cancel attack/hurt/damage/death for the protected player.",
+            "outgoing": "Deny melee and damage whose resolved projectile/owned source belongs to the protected player.",
+            "end": "Immediately when verification AND effective race choice exist; reopening GUI cannot restore protection.",
+            "owners": "Consume IdentityPolicy/RaceApi/HostedEncounterApi damageOwner; no duplicate auth/race record.",
+            "status": "Source in testing; protection checks not yet exercised."
+          }
+        }
+      ],
+      "owner": "JEMServer StarterWelcome and StarterKitData; existing native player save accessor",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Docs/smp-gui/README.md",
+        "Docs/DEVELOPMENT.md"
       ]
     },
     {
@@ -178,11 +1284,18 @@
       ]
     },
     {
-      "id": "jem.race-profession-defense",
-      "owner": "JEMRoles/JEMProfessions",
-      "expression": "Elf fall x0.90; Miner level10 stone fall x0.90; Human direct spell +1; Elf eligible arrow +1",
+      "id": "jem.race-defense",
+      "owner": "JEMRaces",
+      "expression": "Selected race 2 fire damage x2; race 3 fire damage x1.25; race 4 cancels fire attacks and damage, while the race runtime is enabled",
       "source_files": [
-        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java"
+      ]
+    },
+    {
+      "id": "jem.profession-defense",
+      "owner": "JEMProfessions (development-only; absent from production)",
+      "expression": "Only if separately installed and Miner stone_step is enabled: fall damage x0.90 while standing on Forge stone",
+      "source_files": [
         "Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionGameplay.java"
       ]
     }

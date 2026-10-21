@@ -1,20 +1,77 @@
 plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
 group = 'com.justenoughmods'
 version = '5.1.0'
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-minecraft { mappings channel: 'official', version: '1.20.1' }
-dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.4.10' }
+
+def instanceOverride = findProperty('jemRuntimeRoot') ?: findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
+def jemRuntimeRoot = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+dependencies {
+    compileOnly files('../JEMDrillLifecycle/build/classes/java/main')
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-quests-forge-2001.4.22.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-library-forge-2001.2.13.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-teams-forge-2001.3.2.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/architectury-9.2.14-forge.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/BetterAdvancements-Forge-1.20.1-0.6.0.73.jar"))
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/Patchouli-1.20.1-85-FORGE.jar"))
+    compileOnly files("${jemRuntimeRoot}/mods/backpacked-forge-1.20.1-3.0.9.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/framework-forge-1.20.1-0.8.0.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/TreeChop-1.20.1-forge-0.19.0-fixed.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/Paraglider-forge-20.1.3.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/spawn-4.0.7-1.20.1.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/immersive_melodies-0.8.0%2B1.20.1-forge.jar")
+    compileOnly files("${jemRuntimeRoot}/mods/zipline-forge-1.20.1-1.3.0.jar")
+    compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/immersive_weathering-1.20.1-2.0.5-forge.jar"))
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'jem_advancements.refmap.json'
+    config 'jem_advancements.mixins.json'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.release = 17
+    options.incremental = false
 }
+
+afterEvaluate {
+    tasks.withType(JavaCompile).configureEach {
+        ['refMapFile', 'outTsrgFile'].each { name ->
+            if (extensions.extraProperties.has(name)) outputs.file(extensions.extraProperties.get(name))
+        }
+    }
+}
+
 jar {
     archiveBaseName = 'jem-advancements'
-    manifest { attributes 'Implementation-Version': project.version }
+    manifest {
+        attributes([
+            'Specification-Title': 'JEM Advancement Guide',
+            'Specification-Version': project.version,
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'MixinConfigs': 'jem_advancements.mixins.json'
+        ])
+    }
     finalizedBy 'reobfJar'
+    doFirst {
+        def refmap = tasks.named('compileJava').get().extensions.extraProperties.get('refMapFile')
+        if (!file(refmap).isFile()) throw new GradleException('Generated Advancement Guide Mixin refmap is missing')
+    }
 }
 
 tasks.withType(Test).configureEach { enabled = false }

@@ -20,34 +20,49 @@ public final class EventRuntime {
         var bus = net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus();
         SmpEventBlocks.register(bus);
         LOOT.register(bus);
-        if (dedicated) ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, EventRules.SPEC, "jem-events-server.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, EventRules.SPEC, "jem-events-server.toml");
         EventNetwork.register(entryActions);
     }
 
-    public static void starting() {
+    public static boolean enabled(MinecraftServer server) {
+        return server != null && server.isDedicatedServer() && EventRules.ENABLED.get();
+    }
+
+    public static boolean available(MinecraftServer server, net.minecraft.nbt.CompoundTag row) {
+        return row != null && com.siirio.jemserver.smp.SmpEnvironment.active(server)
+                && (enabled(server) || ordinaryRaid(row));
+    }
+
+    public static boolean ordinaryRaid(net.minecraft.nbt.CompoundTag row) {
+        return row != null && row.getBoolean("ordinaryRaid") && row.getString("activity").equals("BOSS_RAID");
+    }
+
+    public static void starting(MinecraftServer server) {
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return;
         EventHooks.register();
     }
 
-    public static void started() {
+    public static void started(MinecraftServer server) {
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return;
         EventHooks.registerSpawnGuard();
     }
 
     public static void login(ServerPlayer player) {
         var event = EncounterContext.reconnectFor(player);
-        if (event != null) new EncounterContext(event).reconnected(player);
-        com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.login(player);
+        if (available(player.getServer(), event)) new EncounterContext(event).reconnected(player);
+        if (enabled(player.getServer())) com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.login(player);
     }
 
     public static void logout(ServerPlayer player) {
         var event = EncounterContext.activeFor(player);
-        if (event != null) new EncounterContext(event).disconnected(player);
-        BloodMoonVoting.disconnect(player);
+        if (available(player.getServer(), event)) new EncounterContext(event).disconnected(player);
+        if (enabled(player.getServer())) BloodMoonVoting.disconnect(player);
         EventTravel.cancel(player.getUUID());
     }
 
     public static void tick(MinecraftServer server) {
         EventScheduler.tick(server);
-        com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.tick(server);
+        if (enabled(server)) com.siirio.jemserver.smp.events.calendar.CalendarEventScheduler.tick(server);
     }
 
     public static void stopped() {

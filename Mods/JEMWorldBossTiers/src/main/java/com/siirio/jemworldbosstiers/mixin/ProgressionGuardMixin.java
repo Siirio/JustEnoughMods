@@ -19,7 +19,7 @@ public abstract class ProgressionGuardMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V"),
             require = 2, expect = 2)
     private void jem$guardedDamage(LivingEntity wearer, DamageSource source, float amount) {
-        if (!(wearer.level() instanceof ServerLevel level) || !level.getServer().isDedicatedServer()) {
+        if (!(wearer.level() instanceof ServerLevel level)) {
             actuallyHurt(source, amount);
             return;
         }
