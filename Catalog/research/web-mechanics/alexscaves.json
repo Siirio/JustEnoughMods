@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "mod_id": "alexscaves",
+  "installed_version": "2.0.2",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "getting_started",
+      "url": "https://alexscaves.wiki.gg/wiki/Guides/Getting_Started",
+      "publisher": "Alex's Caves community wiki",
+      "scope": "community_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "tablet",
+      "url": "https://alexscaves.wiki.gg/wiki/Cave_Tablet",
+      "publisher": "Alex's Caves community wiki",
+      "scope": "community_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "spelunkery",
+      "url": "https://alexscaves.wiki.gg/wiki/Spelunkery_Table",
+      "publisher": "Alex's Caves community wiki",
+      "scope": "community_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "compendium",
+      "url": "https://alexscaves.wiki.gg/wiki/Cave_Compendium",
+      "publisher": "Alex's Caves community wiki",
+      "scope": "community_wiki",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "alexscaves:cabin_discovery",
+      "kind": "progression",
+      "title": "Underground Cabin exploration",
+      "player_action": "Explore underground; discover an Underground Cabin. Look for its Spelunkery Table and loot container.",
+      "outcome": "Access to cave tablet research.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "getting_started"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди подземную хижину и изучи стол спелеолога.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "alexscaves:cave_tablet",
+      "kind": "acquisition",
+      "title": "Find Cave Tablets",
+      "player_action": "Loot a Cave Tablet from a suitable structure, especially an Underground Cabin.",
+      "outcome": "Untranslated tablet for one rare cave biome.",
+      "registry_refs": [],
+      "depends_on": [
+        "alexscaves:cabin_discovery"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "tablet"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Достань первую пещерную табличку.",
+        "detection": "inventory"
+      },
+      "review_note": "Tablet variants and NBT must be checked in the installed JAR before an exact-ID FTB task."
+    },
+    {
+      "key": "alexscaves:spelunkery_research",
+      "kind": "interaction",
+      "title": "Translate a Cave Tablet",
+      "player_action": "Use a Spelunkery Table with a Cave Tablet and paper; complete its three-stage symbol-guessing minigame.",
+      "outcome": "Produces a cave codex identifying a cave biome.",
+      "registry_refs": [],
+      "depends_on": [
+        "alexscaves:cave_tablet"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "spelunkery",
+        "getting_started"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Расшифруй табличку за столом спелеолога.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "alexscaves:cave_compendium",
+      "kind": "interaction",
+      "title": "Build or find a Cave Compendium",
+      "player_action": "Find the guide in an Underground Cabin or craft it using a Cave Tablet, a book and a gold nugget.",
+      "outcome": "Read an in-game exploration compendium.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "compendium"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи пещерный путеводитель.",
+        "detection": "inventory"
+      }
+    },
+    {
+      "key": "alexscaves:codex_to_map",
+      "kind": "progression",
+      "title": "Locate a rare cave biome",
+      "player_action": "Turn a researched Cave Codex into a cave biome map and follow the map toward its cave type.",
+      "outcome": "Guided travel to a rare cave biome.",
+      "registry_refs": [],
+      "depends_on": [
+        "alexscaves:spelunkery_research"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "getting_started"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создай карту пещерного биома и найди его.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "alexscaves:compendium_chapters",
+      "kind": "interaction",
+      "title": "Learn a cave biome",
+      "player_action": "Use Cave Codices to reveal General, Resources, Inhabitants and Utilities entries in the Cave Compendium.",
+      "outcome": "Unlock knowledge progressively instead of giving spoiler-heavy descriptions.",
+      "registry_refs": [],
+      "depends_on": [
+        "alexscaves:spelunkery_research",
+        "alexscaves:cave_compendium"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "getting_started"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Открой раздел ресурсов выбранной пещеры.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Specific chapter count may vary by version and biome; treat as guide inspiration until exact JAR verified."
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "mod_id": "skarrier_mobs",
+  "installed_version": "1.1.1",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs",
+      "publisher": "Skarrier",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v111",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs/files/9161764",
+      "publisher": "Skarrier",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v108",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs/files/9012417",
+      "publisher": "Skarrier",
+      "scope": "historical_release",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "skarrier_mobs:breacher",
+      "kind": "combat",
+      "title": "Breacher timing and cover",
+      "player_action": "Avoid fighting beside weak cover; bait its heavy attack, then punish its stated three-second attack interval.",
+      "outcome": "Breacher may destroy weak blocks and disable a blocking shield for four seconds.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:breacher"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переживи удар Breacher и победи его.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:dragger",
+      "kind": "combat",
+      "title": "Dragger web control",
+      "player_action": "Avoid pillaring up without an escape path; its web snare can restrict movement and pull victims.",
+      "outcome": "Defeat an early-game crowd-control threat.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Одолей Dragger, не позволив поймать себя паутиной.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:bowlder",
+      "kind": "combat",
+      "title": "Bowlder counterplay",
+      "player_action": "After the Wither milestone, fight a Bowlder with a pickaxe to bypass its heavy damage reduction; avoid arrows.",
+      "outcome": "Pickaxe bypasses the project-described reduction; Bowlder inflicts Armor Crumbling.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:bowlder"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Wither defeat milestone (exact world-state trigger requires runtime check)"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй кирку против Bowlder.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author description gives 60% reduction; JEM World Tier modifiers can change effective numbers."
+    },
+    {
+      "key": "skarrier_mobs:tunnel_gore",
+      "kind": "combat",
+      "title": "Tunnel Gore environmental weakness",
+      "player_action": "Find its distinctive deep tunnel, avoid over-mining, and lure charges into netherite blocks.",
+      "outcome": "Author describes a three-charge vulnerability that opens access to lair rewards.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:tunnel_gore"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Заставь Tunnel Gore трижды столкнуться с незеритом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Do not turn this into a deterministic FTB objective until a reliable event signal is found."
+    },
+    {
+      "key": "skarrier_mobs:quake",
+      "kind": "interaction",
+      "title": "Ride a temporary Quake mount",
+      "player_action": "Feed cactus to a Quake in desert terrain and use its temporary riding ability.",
+      "outcome": "Mounted Quake can produce a powerful area attack.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:quake"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оседлай Quake после кормления кактусом.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:coatings",
+      "kind": "crafting",
+      "title": "Workshop coatings",
+      "player_action": "Use the Workshop to apply suitable coating items to compatible gear.",
+      "outcome": "Special coating effects on tools, armor and weapons.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "skarrier_mobs:workshop"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:workshop"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй мастерскую, чтобы нанести первое покрытие на снаряжение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Which coating works on which item is context/tooltip dependent; no fabricated universal compatibility."
+    },
+    {
+      "key": "skarrier_mobs:wretch_optional_alexscaves",
+      "kind": "compatibility",
+      "title": "Wretch depends on Alex's Caves",
+      "player_action": "Treat the Wretch content as survival-obtainable only when Alex's Caves is present.",
+      "outcome": "Conditional cross-mod creature and content.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:wretch"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "requires mod alexscaves"
+      ],
+      "source_ids": [
+        "v108"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди Wretch в связке Skarrier Mobs и Alex’s Caves.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Verify biome/spawn criteria from installed config and code before generating a locate/kill quest."
+    },
+    {
+      "key": "skarrier_mobs:endorah",
+      "kind": "combat",
+      "title": "Endorah release addition",
+      "player_action": "Treat Endorah as a boss added in Skarrier Mobs 1.1.1; do not invent a summoning ritual from the release note.",
+      "outcome": "Adds boss encounter and related Voidrake, Frost, Freeze mobs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "v111"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди и одолей Endorah.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "The installed 1.1.1 predates the hotfix; author later fixed a Frost mob crash. Do not assume the hotfix is installed."
+    },
+    {
+      "key": "skarrier_mobs:raider_support",
+      "kind": "combat",
+      "title": "Skarrier illager support",
+      "player_action": "Focus the Sorcerer during raids before it buffs allied illagers with healing, speed or strength.",
+      "outcome": "More dangerous cross-mob interaction in raids.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выведи из боя Sorcerer во время рейда.",
+        "detection": "custom_criterion"
+      }
+    }
+  ]
+}

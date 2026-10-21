@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "mod_id": "unearthed_journey",
+  "installed_version": "2.2.3",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/unearthed-journey",
+      "publisher": "Epoch_Studio",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "unearthed_journey:three_eras",
+      "kind": "metadata",
+      "title": "Three Cenozoic dimensions",
+      "player_action": "Explore Paleogene, Neogene and Pleistocene eras. Formations are biome-like regions within each dimension.",
+      "outcome": "Content scope is three dimensions, not two.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Начни путешествие по трём доисторическим эпохам.",
+        "detection": "manual"
+      }
+    },
+    {
+      "key": "unearthed_journey:temple",
+      "kind": "progression",
+      "title": "Find Methuselah temple",
+      "player_action": "Search jungle biomes for the Temple to Methuselah; explore its chambers to reach the boss.",
+      "outcome": "Entrance to the time-travel unlock path.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "unearthed_journey:temple_to_methuselah"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди храм Мафусаила в джунглях.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "unearthed_journey:methuselah_eye",
+      "kind": "progression",
+      "title": "Defeat Methuselah",
+      "player_action": "Defeat the Methuselah boss in the temple and collect its eye.",
+      "outcome": "Eye needed to activate a completed forgotten portal.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:methuselah_boss"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:eye_of_methuselah"
+        }
+      ],
+      "depends_on": [
+        "unearthed_journey:temple"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Мафусаила и получи его глаз.",
+        "detection": "inventory"
+      }
+    },
+    {
+      "key": "unearthed_journey:forgotten_portal",
+      "kind": "progression",
+      "title": "Restore a forgotten portal",
+      "player_action": "Find a forgotten portal, make its four portal corners correspond to the same era and complete the archstone pillars; activate it with the Eye of Methuselah.",
+      "outcome": "Travel to the selected Cenozoic dimension.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:eye_of_methuselah"
+        },
+        {
+          "registry": "blocks",
+          "id": "unearthed_journey:paleogene_portal_corner"
+        },
+        {
+          "registry": "blocks",
+          "id": "unearthed_journey:neogene_portal_corner"
+        },
+        {
+          "registry": "blocks",
+          "id": "unearthed_journey:pleistocene_portal_corner"
+        }
+      ],
+      "depends_on": [
+        "unearthed_journey:methuselah_eye"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Восстанови портал и впервые отправься в прошлое.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Portal corner combinations and server travel criteria need installed-version runtime verification."
+    },
+    {
+      "key": "unearthed_journey:peat_drying",
+      "kind": "interaction",
+      "title": "Make dried peat fuel",
+      "player_action": "Mine peat in Paleogene/Neogene, craft a peat pie, place it for roughly 20 minutes and collect the dried peat pie.",
+      "outcome": "Fuel usable in furnaces, smokers and blast furnaces.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:peat_pie"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:dried_peat_pie"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Высуши торфяную лепёшку и используй её как топливо.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "unearthed_journey:leptictidium",
+      "kind": "interaction",
+      "title": "Tame a Leptictidium",
+      "player_action": "In the Paleogene Messel Pit formation, use a seed pouch to tame a Leptictidium; shift-use a tamed one to trigger its digging behavior.",
+      "outcome": "Tamed creature unearths items with a documented two-minute cooldown.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:leptictidium"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:pouch_of_seeds"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи лептиктидия и попроси его раскопать предмет.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "unearthed_journey:manganese_gear",
+      "kind": "interaction",
+      "title": "Craft manganese steel",
+      "player_action": "Acquire manganese from the Pleistocene and process it with raw iron and silicate into manganese steel blend; smelt to ingot.",
+      "outcome": "Material for cold-resistant armor and utility gear.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:raw_manganese"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:manganese_steel_blend"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:manganese_steel_ingot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выплави первый слиток марганцевой стали.",
+        "detection": "inventory"
+      }
+    }
+  ]
+}

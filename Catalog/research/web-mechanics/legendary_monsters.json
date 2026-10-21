@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "mod_id": "legendary_monsters",
+  "installed_version": "1.20.1",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/legendary-monsters",
+      "publisher": "miauczel",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "exact_download",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/legendary-monsters/files/8715502",
+      "publisher": "miauczel",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "legendary_monsters:mid_late_bosses",
+      "kind": "progression",
+      "title": "Mid- and late-game boss discovery",
+      "player_action": "Discover native Legendary Monsters boss encounters and mini-bosses spread across the world.",
+      "outcome": "High-difficulty exploration and combat path.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official",
+        "exact_download"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отыщи и победи одного из легендарных монстров.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Use Catalog/views/power/bosses.json and installed structure registries for exact enemy/structure mapping; public overview does not prove it."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "mod_id": "aquamirae",
+  "installed_version": "7.1.13",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/aquamirae",
+      "publisher": "Aquamirae authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "aquamirae:ice_maze",
+      "kind": "progression",
+      "title": "Explore the Ice Maze",
+      "player_action": "Explore the frozen maze and its wreck-filled lower layers to find unique locations and loot.",
+      "outcome": "Environmental exploration quest chain.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Исследуй ледяной лабиринт и корабельные обломки.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "aquamirae:cornelia",
+      "kind": "combat",
+      "title": "Captain Cornelia encounter",
+      "player_action": "Locate and confront the ghostly Captain Cornelia in the ship graveyard.",
+      "outcome": "Boss/story reward tied to the Ice Maze.",
+      "registry_refs": [],
+      "depends_on": [
+        "aquamirae:ice_maze"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи капитана Корнелию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Actual entity ID and loot must be matched to Aquamirae 7.1.13 and JEM boss participation logic."
+    }
+  ]
+}

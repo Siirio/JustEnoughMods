@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "mod_id": "irons_spellbooks",
+  "installed_version": "1.20.1-3.15.6",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://iron.wiki/",
+      "publisher": "Iron's Spells n Spellbooks authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "irons_spellbooks:scroll_found",
+      "kind": "acquisition",
+      "title": "Discover spell scrolls",
+      "player_action": "Find scrolls as loot and identify their spell and level.",
+      "outcome": "Obtain a spell with rarity/level constraints.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "irons_spellbooks:scroll"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди первый свиток заклинания.",
+        "detection": "inventory"
+      }
+    },
+    {
+      "key": "irons_spellbooks:inscription",
+      "kind": "progression",
+      "title": "Inscription Table book building",
+      "player_action": "Insert an appropriate spell scroll into a spellbook at the Inscription Table; book tier limits what it accepts.",
+      "outcome": "Spellbook with an inscribed spell.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "irons_spellbooks:inscription_table"
+        },
+        {
+          "registry": "items",
+          "id": "irons_spellbooks:scroll"
+        }
+      ],
+      "depends_on": [
+        "irons_spellbooks:scroll_found"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Впиши заклинание из свитка в книгу.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "irons_spellbooks:scroll_forge",
+      "kind": "crafting",
+      "title": "Forge spell scrolls",
+      "player_action": "Use ink, paper and a school focus in the Scroll Forge; ink controls rarity and focus controls school.",
+      "outcome": "Craft spell scrolls rather than solely looting them.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "irons_spellbooks:scroll_forge"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создай собственный свиток в кузнице свитков.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "irons_spellbooks:arcane_anvil",
+      "kind": "crafting",
+      "title": "Upgrade spells and books",
+      "player_action": "Use the Arcane Anvil to upgrade scrolls, spellbooks and school armor with appropriate components.",
+      "outcome": "Upgraded magic equipment.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "irons_spellbooks:arcane_anvil"
+        }
+      ],
+      "depends_on": [
+        "irons_spellbooks:inscription"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Улучши магический предмет на арканной наковальне.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "irons_spellbooks:weapon_imbuement",
+      "kind": "interaction",
+      "title": "Imbue a sword with a spell",
+      "player_action": "At an Arcane Anvil, apply one spell to a supported sword; source notes scroll cannot be recovered from the imbued sword.",
+      "outcome": "New combat interaction with a durable commitment.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "irons_spellbooks:arcane_anvil"
+        }
+      ],
+      "depends_on": [
+        "irons_spellbooks:arcane_anvil"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Надели меч заклинанием.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Check compatibility with JEM weapons, native sword types and current version before an automatic quest."
+    },
+    {
+      "key": "irons_spellbooks:school_focus",
+      "kind": "progression",
+      "title": "School-specific spell crafting",
+      "player_action": "Acquire appropriate magical focuses; spell schools use different material sources.",
+      "outcome": "Unlock chosen-school scrolls with the Scroll Forge.",
+      "registry_refs": [],
+      "depends_on": [
+        "irons_spellbooks:scroll_forge"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь свиток выбранной магической школы.",
+        "detection": "custom_criterion"
+      }
+    }
+  ]
+}

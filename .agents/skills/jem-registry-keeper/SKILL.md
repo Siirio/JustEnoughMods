@@ -8,6 +8,12 @@ description: Maintain the permanent JEM Registry Atlas before and after any chan
 Use the existing `Catalog/` only. Never create a parallel registry, spreadsheet,
 report database or per-object copy of one shared rule.
 
+For third-party mechanics, cross-mod assumptions and quest ideas, additionally
+consult `Catalog/research/README.md` and run
+`python Catalog/generator/query_web_mechanics.py find <mod_id>` / `coverage`.
+This evidence-only supplement never overrides installed source or canonical
+registry, changes and effective behavior. Follow its version and detection limits.
+
 ## Required workflow
 
 1. From the repository root, read `Catalog/README.md`,

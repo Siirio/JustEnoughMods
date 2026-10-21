@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "mod_id": "create",
+  "installed_version": "6.0.8",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/create",
+      "publisher": "simibubi/Create team",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "mechanical_press",
+      "url": "https://github.com/Creators-of-Create/Create/wiki/Mechanical-Press",
+      "publisher": "Creators-of-Create",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "stress",
+      "url": "https://github.com/Creators-of-Create/Create/wiki/Stress-Units%2C-Capacity-and-Impact",
+      "publisher": "Creators-of-Create",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "release",
+      "url": "https://wiki.createmod.net/users/changelogs/6.0.8",
+      "publisher": "Create Wiki",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "create:rotation_network",
+      "kind": "progression",
+      "title": "Build a working kinetic network",
+      "player_action": "Connect a power source, shafts and consumers so the machines receive rotational force.",
+      "outcome": "Basic automation that depends on mechanical stress.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official",
+        "stress"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создай первый работающий привод Create.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "create:stress_balance",
+      "kind": "interaction",
+      "title": "Diagnose overstress",
+      "player_action": "Inspect stress impact versus stress capacity; reduce load or add generation when the network is overstressed.",
+      "outcome": "Operational network under stress capacity.",
+      "registry_refs": [],
+      "depends_on": [
+        "create:rotation_network"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "stress"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери сеть, которая выдерживает нагрузку нескольких механизмов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Numerical stress limits may depend on Create 6 config/JEM changes; do not lift old wiki values into balance."
+    },
+    {
+      "key": "create:press",
+      "kind": "crafting",
+      "title": "Press ingots into sheets",
+      "player_action": "Power a Mechanical Press and give it a supported ingot input on a belt or beneath it.",
+      "outcome": "Processed material for machine crafting.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "create:mechanical_press"
+        },
+        {
+          "registry": "items",
+          "id": "create:mechanical_press"
+        }
+      ],
+      "depends_on": [
+        "create:rotation_network"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "mechanical_press"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Преврати металл в лист с помощью Mechanical Press.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "create:basin_compacting",
+      "kind": "crafting",
+      "title": "Use Basin compacting",
+      "player_action": "Place a Mechanical Press above a Basin to compact ingredients using valid recipes.",
+      "outcome": "Second useful processing mode beyond single-item pressing.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "create:mechanical_press"
+        }
+      ],
+      "depends_on": [
+        "create:press"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "mechanical_press"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Спрессуй составной рецепт в Basin.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "create:contraptions",
+      "kind": "interaction",
+      "title": "Assemble moving machine systems",
+      "player_action": "Combine Create components into animated contraptions rather than only static crafting UIs.",
+      "outcome": "Player-designed automation contraptions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Построй свой первый движущийся механизм.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Specific recipes/assemblers require exact Create 6 source review."
+    }
+  ]
+}

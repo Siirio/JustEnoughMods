@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "mod_id": "exposure",
+  "installed_version": "1.9.21",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/exposure",
+      "publisher": "mortuusars",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "historical_wiki",
+      "url": "https://github-wiki-see.page/m/mortuusars/Exposure/wiki/Content",
+      "publisher": "mortuusars wiki mirror",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "exposure:camera_film",
+      "kind": "interaction",
+      "title": "Load camera film",
+      "player_action": "Insert a film roll into a camera via the sneak-use attachments UI, then enter the viewfinder.",
+      "outcome": "Camera can expose frames rather than merely taking screenshots.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:black_and_white_film"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери камеру и вставь в неё фотоплёнку.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:camera_controls",
+      "kind": "interaction",
+      "title": "Compose and expose a photograph",
+      "player_action": "While in the viewfinder, use camera controls for shutter speed, composition guides and installed flash.",
+      "outcome": "Capture a film frame with chosen settings.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сделай кадр с настроенной выдержкой.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:develop_and_print",
+      "kind": "progression",
+      "title": "Develop and print film",
+      "player_action": "Use the film-developing process and Lightroom to print photographs from film negatives.",
+      "outcome": "Physical photograph items available for display and albums.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:lightroom"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:developed_black_and_white_film"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_controls"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki",
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Прояви плёнку и напечатай первую фотографию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "A mere photograph item is not proof the player personally exposed and developed a frame."
+    },
+    {
+      "key": "exposure:album",
+      "kind": "interaction",
+      "title": "Archive photographs in an album",
+      "player_action": "Place printed photographs into a Photo Album; optionally sign the album to prevent editing.",
+      "outcome": "Archival/creative photography goal.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:album"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:signed_album"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери альбом из нескольких собственных фотографий.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:redstone_lightroom",
+      "kind": "automation",
+      "title": "Automate Lightroom printing",
+      "player_action": "Give the Lightroom a redstone pulse to start printing the selected frame and advance the film.",
+      "outcome": "Potential Create/redstone factory challenge; requires source-level integration verification.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "exposure:lightroom"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Автоматизируй печать снимков импульсом редстоуна.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:exordium_issue",
+      "kind": "compatibility",
+      "title": "Exposure and Exordium viewfinder issue",
+      "player_action": "If Exordium is installed, investigate official author warning about viewfinder flicker.",
+      "outcome": "Compatibility watch, not proof of a current JEM defect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "only if exordium installed"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Manifest snapshot does not include Exordium; never report this as an active conflict."
+    },
+    {
+      "key": "exposure:visual_overhaul_issue",
+      "kind": "compatibility",
+      "title": "Exposure and Visual Overhaul camera controls",
+      "player_action": "If Visual Overhaul is installed, investigate official author warning about camera controls crash.",
+      "outcome": "Compatibility watch, not proof of a current JEM defect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "only if Visual Overhaul installed"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Manifest snapshot does not include Visual Overhaul; validate exact versions before reporting."
+    }
+  ]
+}

@@ -1,3 +1,12 @@
+## 2026-10-21 - Integrate source-backed Atlas mechanics research
+
+- User requests integration of the supplied research ZIP, validation, issue repair and a PR against main, preserving Atlas architecture and excluding gameplay and MineRENT changes.
+- Imported 52 external observations, 20 prerequisite edges and 23 source declarations for 10 mods under Catalog/research. Canonical registries, JEM changes and effective behavior retain ownership; every observation remains EXTERNAL_SOURCE_ONLY and runtime_verified false.
+- Integration decisions: adapt the three documentation links to the current files, enforce the supplied JSON Schema using a declared offline jsonschema dependency, include embedded mod IDs in coverage, retain source/version/condition provenance on graph edges, and report snapshot drift without relabeling research. Coverage is 10 researched of 349 installed IDs, with 339 explicit gaps.
+- Bug / Both Sided (offline catalog reader only) / the supplied audit omitted full schema validation and accepted missing research or manifest inputs as empty coverage; outer-artifact-only traversal omitted embedded mod IDs / in testing. Schema validation, explicit input errors and recursive manifest traversal repair those owning paths; no runtime behavior changes.
+- Validation: research audit with registry checks passes with zero errors/warnings on the PR snapshot; all five modes return the expected real-data results; the existing Atlas validator passes with canonical referenced sources and installed artifacts available. All 20 reviewed client/server JAR hashes match the working manifest. Unrelated concurrent catalog/index work is excluded rather than regenerated.
+- No Gradle build, automated tests, game/server launch, runtime verification, managed client/server synchronization, AutoModpack publication, stable-profile mutation, release-baseline promotion or MineRENT deployment.
+
 ## 2026-10-21 — Replace broken friend-update instructions with native recovery
 
 - User requests updated instructions for friends who already downloaded the broken release. Codex replaces the misleading copy-managed-files instructions with a player-approved standalone AutoModpack recovery utility and a new cumulative ZIP. The source adapter is in tools/client-recovery; tools/jem.py now generates native-installation guidance for future packages.
