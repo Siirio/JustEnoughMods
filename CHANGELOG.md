@@ -1,3 +1,11 @@
+## 2026-10-22 - Plan mandatory Twelve Eyes universal baseline
+
+User decision: make Twelve Eyes and all of its boss dependencies mandatory as the next stage of the universal plan; this prompt requests planning rather than implementation.
+
+Recorded the original twelve MAIN bosses, sixteen prerequisite entities, End Remastered Eyes, native structure/dimension requirements and full transitive dependency review in the existing universal implementation plan. Exact installed metadata supplies initial library requirements; undeclared native requirements and post-End closure remain explicit implementation work. Current optional-content availability behavior, production artifacts and generation 59 remain unchanged.
+
+Reviewed combat ownership against current source and the permanent Atlas: WorldTier ordinary-hostile/boss/party/Raid/Progression/Iron PvE layers; Server event, debuff and Phantom armor rules; Races traits/abilities; Compat elemental/transport extensions; Settlements recovery and native combat owners. This is a source-backed scope explanation, not a new balance change or runtime combat measurement. The shared Atlas engine reports uninitialized; the existing permanent Catalog queries and owning source were used, and no new audit or gameplay launch was run.
+
 ## 2026-10-22 - Universal standalone production architecture (in testing)
 
 User decisions: execute the supplied universal standalone plan; combine Currency Core with Economy and all production races in one Races mod; distribute and retire Pack Core; remove Menu Support; keep Professions, Villager Talking and Claims development-only; include Bootstrap in a complete shareable Windows/Linux/macOS pack. Bootstrap ordinary consent is a file list, "Согласен с рисками" and "Скачать", without a countdown. The earlier dedicated-only non-event SMP restriction is superseded. Hosted scheduled/seasonal events still require explicit dedicated activation.
