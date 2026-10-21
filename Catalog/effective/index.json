@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "0203b14ca5ad690cb23c8142c7195f755b66266cabdc1695d7ba2af53c47021e",
+  "change_records_sha256": "df082bc78c615872fe2946d674732050e035ca6d93864dde3c10154c28e879a8",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -958,6 +958,31 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1623
+    },
+    {
+      "change_id": "presentation.hammer-coin-tooltip-trade-gaps-20261021",
+      "status": "active",
+      "summary": "Compact exact Coin breakdown tooltip; resource-pack 3D copper hammer; preserve leather purchase at12Copper and sale at3Copper; document native offer price gaps without assigning prices.",
+      "record": "Catalog/changes/records/presentation.hammer-coin-tooltip-trade-gaps-20261021.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "bbb:hammer"
+        },
+        {
+          "type": "namespace",
+          "registry": "items",
+          "value": "jem_economy"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 8
     },
     {
       "change_id": "professions.native-skills-and-spell-combat",
@@ -2277,15 +2302,20 @@
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "0dad22168c091d46b4a010ffc65819b5177685c7751d70accefa1027527ea62c",
-    "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "d13bd9d2d21c62485633a7666b06e7c3b686f25d6c4a381a5c3437c5f0a13999",
+    "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "a61ea00e73eb1fb3b4f0a99d2c84bc7c4c8ef11014fd1fd35f88765e4ed604b4",
     "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar": "c331d469f57e1dff9477968450f73b836b155d49df5990fc7ac3f537be4898bd",
     "Client/ManagedPack/mods/jem-roles-2.0.0.jar": "c106a17b393720052a1b38bdd8c0eaf3a9fe64be0aa5a59786b7735c522d8c94",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "c68e728b52c80d9b73014ef25f59ade6c140b2b2114b05788cfaaef10999c965",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "3c11bd9372940be7409145a21845aec3566d770bd475ba9deb0dd6907a77f702",
+    "Docs/DEVELOPMENT.md": "0dad9626f77a563550c00f0baf77e5e99231c33fc58b141394c433bfa7f0eef6",
     "Docs/SERVER_COMMANDS.md": "c0dfc06fd98aa74bf766bc23f95fa30b63a73473ebf2ad0367d9ddcb415c3cf6",
+    "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
+    "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
+    "Docs/art/bbb-hammer-2026-10-21/hammer-final.json": "4b8389a357a71cf49f4b3a3359d674f74d3ceee98d5f5405299be9ccbbc07583",
+    "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite": "79155e144f5b7045626fd525ccf1f41d71035ec4adc1ccf333850c3916968a08",
+    "Docs/art/bbb-hammer-2026-10-21/hammer.png": "e53ad0acf66af651b834387a8e355e3e378b7b48c7b137b6522afd9777935173",
     "Docs/art/crafted-gui-2026-10-20/README.md": "ccddecf9df5801ec42bf606563a07b5d6e591fc4c81f2690335b119c884fd07b",
     "Docs/art/shipping-station-2026-10-20/model/README.md": "94b651d5ae7ee9b17162cd7ba1456a2402879215bc2f7bfd1cf1aa8f70acf103",
     "Docs/economy/native-trading-design.md": "d1328493bbac31e57485604c6699cf9a8b70e5880f5f2bce37086bfadf2cc1f7",
@@ -2379,8 +2409,8 @@
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png": "26d524e4ba1670a58118f4b9f61f468f0a83322abc77be9967f130907f2cca65",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "5a7463634353f887ac45675092f022f3b37590d34ff472e31d6e344e24c3ed9e",
     "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "9e1d6beb2c0bfc6a1a02dded0dc2dcbfe14377f40e4fc1bd792213a8a27be5f1",
-    "Mods/JEMCurrencyCore/build.gradle": "881048f2f5cb536876a7765dc326073676c15ae07d3397c42ca190a5d38318da",
-    "Mods/JEMCurrencyCore/embed.gradle": "de9b669e473100d52af60328b1d28d3d215e2973dab338364bb7e7ac0e92545f",
+    "Mods/JEMCurrencyCore/build.gradle": "507ede597aef0b5f08bc4a9060f2061e045120e456f76f20676ee409d416413b",
+    "Mods/JEMCurrencyCore/embed.gradle": "24a9eb2d195f1d1b33f9e0c743ec3a07655c9617adbdb6f34541c76a9f78dc92",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",
     "Mods/JEMCurrencyCore/settings.gradle": "2540ad1f7db0e58f6cabf950a37f5ba4d6d968ab7756d083841f620aae155015",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyAuthority.java": "e0d21cb9bdc53c1f86152da9d3f67aff9defb30dc777c8f2a3bdd9aabb890910",
@@ -2393,7 +2423,7 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java": "35f09a7e5144ffb6a9e9c7cc4ad00b7d99ae33195c328cfe27ade76489f0e3f8",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java": "bf3660d3dd54aa63539598fd67b255fdc435a99991a13d78e3086d72afea5e9c",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java": "85e64545a2ea5d9b0316166feafe956aa0e39af472de44988dc5f9436d26946d",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java": "427e3819ce1983ca341b7b851fe233e9349c95584bcfd867627fd4db9ac7a8ad",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java": "1235fadd9adfd42bb0da0aebb29033b12bdd438874c606d3cc588f97b176d1e0",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyClientConnection.java": "ef7b29c0af5f64babdf48a5acf61a9aa2ed626de7d1ff979a85714371d951592",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java": "a42875ac01b840a3d3bf1c954029f570064165dbfee6783b7aa16c1dbd42856a",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java": "5ec6aabdc99cf9afd31cd9fcb375f4183de2764d02e02f4574c1815087611a76",
@@ -2456,7 +2486,7 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/NativeTradePaymentEvent.java": "24e0e41c41734235cef319c03c5a2a09c358dd445702324b860a56f7d79cef21",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/SandboxCommerce.java": "c9009bbe0666453c699b5bbc4041c8e37d78c1cc0c0627adb75963ffe836e081",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/SandboxDurability.java": "f601cf4e64fab6cff5de6d9516f52b4b27cd8c121c2a03ea6b634333b6b6a558",
-    "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml": "f5611c593333fe2da2c76c435c6e7afd1158782db5b1afe597a71d8e61bf72af",
+    "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml": "6a21702ada5f112fb9b3578a9de830a067fc8d9071bdbaaced87a622f789fb72",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/font/coins.json": "128ecb7ff1fa5b07a180d7c426cd04834e6165617222e5ede847e73b22c92024",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json": "563355813ad2811f1b4d822f5cfe07a30d1805f23fd79fba133c37596e995dfd",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json": "fc761d9e868e369b0d118277c40caaf6d8b814b7bbf891954a95a313d565bc43",

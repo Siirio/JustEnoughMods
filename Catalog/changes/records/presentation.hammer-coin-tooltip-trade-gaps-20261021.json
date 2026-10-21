@@ -1,0 +1,147 @@
+{
+  "schema_version": 2,
+  "change_id": "presentation.hammer-coin-tooltip-trade-gaps-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "bbb:hammer"
+    },
+    {
+      "type": "namespace",
+      "registry": "items",
+      "value": "jem_economy"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Next local update only; MineRENT/stable/baseline untouched; player acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1310
+  },
+  "change": {
+    "summary": "Compact exact Coin breakdown tooltip; resource-pack 3D copper hammer; preserve leather purchase at12Copper and sale at3Copper; document native offer price gaps without assigning prices.",
+    "modifiers": [
+      {
+        "property": "client.coin_tooltip.width",
+        "operation": "replace",
+        "before": "At least180GUI pixels even for a single Coin denomination.",
+        "after": "Measured coin rows and wrapped reason text; maximum240GUI pixels or available screen width, whichever is smaller; no fixed minimum."
+      },
+      {
+        "property": "client.item_model.bbb:hammer",
+        "operation": "replace",
+        "before": "Installed bbb2.0pre4 item/handheld generated flat sprite.",
+        "after": "Java1.20.1 seven-cuboid model; native32x32 layered Aseprite copper/wood texture; Paxi required resource pack overrides only model/texture."
+      },
+      {
+        "property": "economy.leather.prices",
+        "operation": "document",
+        "before": {
+          "buy_copper": 12,
+          "sell_copper": 3
+        },
+        "after": {
+          "buy_copper": 12,
+          "sell_copper": 3
+        }
+      },
+      {
+        "property": "merchant.unpriced_offer_scope",
+        "operation": "document",
+        "before": "Missing prices fail closed in NativeTradePricing; screen displays barrier.",
+        "after": "Existing643provider pool rows compared to current source policy definitions.128distinct missing-price goods,165sample rows;18direction-denied rows;20uninvoked provider rows; no prices or eligibility changed."
+      },
+      {
+        "property": "dependency.jem_currency_core.minimum_version",
+        "operation": "replace",
+        "before": "1.0.2",
+        "after": "1.0.3 embedded by Economy; existing Settlements compatible range selects the fresh shared core."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "CurrencyCore client renderer and native Blockbench/Aseprite hammer source",
+    "kind": "user_requested_presentation",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMCurrencyCore/build.gradle",
+      "Mods/JEMCurrencyCore/embed.gradle",
+      "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+      "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel",
+      "Docs/art/bbb-hammer-2026-10-21/hammer-final.json",
+      "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite",
+      "Docs/art/bbb-hammer-2026-10-21/hammer.png",
+      "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Compact exact Coin breakdown tooltip; resource-pack 3D copper hammer; preserve leather purchase at12Copper and sale at3Copper; document native offer price gaps without assigning prices.",
+    "decision_source": "User requested3Dresource-pack hammer, compact Coin tooltip, missing-price list and unchanged12Copper leather purchase. Authoring/UV/display transforms, measured wrapping and1.0.3dependency pin selected by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Compact exact Coin breakdown tooltip; resource-pack 3D copper hammer; preserve leather purchase at12Copper and sale at3Copper; document native offer price gaps without assigning prices.",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMCurrencyCore/build.gradle",
+      "Mods/JEMCurrencyCore/embed.gradle",
+      "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+      "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel",
+      "Docs/art/bbb-hammer-2026-10-21/hammer-final.json",
+      "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite",
+      "Docs/art/bbb-hammer-2026-10-21/hammer.png",
+      "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Compact exact Coin breakdown tooltip; resource-pack 3D copper hammer; preserve leather purchase at12Copper and sale at3Copper; document native offer price gaps without assigning prices.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMCurrencyCore/build.gradle",
+        "Mods/JEMCurrencyCore/embed.gradle",
+        "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+        "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel",
+        "Docs/art/bbb-hammer-2026-10-21/hammer-final.json",
+        "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite",
+        "Docs/art/bbb-hammer-2026-10-21/hammer.png",
+        "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client item rendering",
+      "Paxi resource packs",
+      "shared Coin tooltip",
+      "native merchants",
+      "Market",
+      "AutoModpack"
+    ],
+    "relations": [],
+    "notes": [
+      "Only presentation and evidence change. No economy issuance, arbitrary trade pricing, sale-price override, recipe or hammer gameplay change.",
+      "Existing runtime capture is diagnostic evidence; unknown/randomized/world-dependent providers remain explicit gaps."
+    ],
+    "unresolved": [
+      "No gameplay launch or player acceptance.",
+      "Native offer snapshot is not a current exhaustive runtime catalog."
+    ]
+  }
+}

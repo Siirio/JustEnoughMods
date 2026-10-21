@@ -1,3 +1,12 @@
+## 2026-10-21 — 3D-молоток, компактный tooltip Coins и список непроставленных цен
+
+- Пользователь запросил объёмную Blockbench-модель `bbb:hammer` вместо плоской2D через ресурс-пак. Выполнена отдельная7-кубоидная Java1.20.1 модель с32×32 текстурой, нарисованной и экспортированной в Aseprite. Technical choice Codex: required Paxi ZIP, отдельные UV-острова и native item display transforms; native source, PNG, JSON, exporter и реальные editor captures сохранены в `Docs/art/bbb-hammer-2026-10-21`. Рецепт и работа молотка прежние. Art reviewed; game runtime и user visual approval не заявлены.
+- Пользователь окончательно попросил сохранить текущую покупку кожи за1серебро+2меди: canonical buy12Copper/sell3Copper сохранены, новая цена продажи12Copper не вводилась.
+- Bug / Client / `CoinPriceRenderer.tooltip` принудительно задавал минимум180GUI pixels даже для одного медного номинала; content width не участвовал в уменьшении фона / in testing: minimum удалён, фон измеряется по реальным строкам Coins и пояснения, перенос ограничен экраном и240GUI pixels. Выбор measured layout и версия общего CurrencyCore1.0.3 — implementation Codex.
+- По запросу пользователя выявлены непроставленные цены native merchant offers: сохранённые643provider rows сопоставлены с текущими canonical policies.128разных товаров без цены, включая114товаров, продаваемых NPC игроку; отдельно18строк с запрещённым направлением и20providers без образца. Полный список и пределы доказательства: `Docs/economy/native-offer-price-gaps-2026-10-21.md` и CSV. Новые произвольные цены не назначались.
+- Bug / Both Sided / `xtraarrows:iron_arrow` отсутствует в merchandise price definitions: native Fletcher принимает2железные стрелы, quote получаетUNPRICED, MerchantScreen рисует барьер / in testing: причина и остальные пробелы перечислены; разрешение торгов и цены остаются отдельным решением. Совпадение с конкретной строкой скриншота — вывод по виду/количеству, без чтения того жителя.
+- Локальное следующее обновление: свежий Economy с embedded CurrencyCore1.0.3 синхронизирован в Server/ManagedPack, ресурс-пак доставляется штатным AutoModpack. Production packaging выполнен; tests, gameplay QA и запуск клиента не выполнялись. MineRENT, stable и release baseline не изменялись. Точные publication/application hashes и состояние локального сервера отражены в `Docs/releases/2026-10-21-next-update/receipt.json`; прежняя блокировка local development-ledger не обходилась.
+
 
 ## 2026-10-21 — Next update: boss support, public chat, preview scope and sale prices
 

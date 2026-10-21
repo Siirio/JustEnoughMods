@@ -1,5 +1,19 @@
 # Native Coin Merchant Coverage
 
+## Current missing-price review — 2026-10-21
+
+The user requested an explicit list of native offers lacking prices. See
+[the scoped report](native-offer-price-gaps-2026-10-21.md) and its linked CSV:
+the saved643-row pool contains128distinct missing-price goods, including114goods
+offered for purchase by players, and18separate direction-denied rows.20providers
+have no captured stack sample. This is the existing2026-10-20 runtime snapshot
+compared with current source policy; no new runtime audit or complete randomized
+variant coverage is claimed. In particular,2`xtraarrows:iron_arrow` sold to the
+Fletcher lacks a native price; ordinary vanilla arrows already have prices.
+No arbitrary prices, eligibility changes or barrier-hiding fallback were added.
+The older coverage statements below retain their historical validation limits.
+
+
 Updated 2026-10-16 for the explicitly requested complete economy overhaul.
 Native `MerchantOffer` remains the owner of goods, counts, NBT, original order,
 stock, demand, XP and restocking. Original vanilla and mod-installed offers are

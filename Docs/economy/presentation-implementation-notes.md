@@ -73,3 +73,16 @@ expansion rate; a full selected-polygon server quote is not supplied by that
 interface. Other third-party monetary screens outside the inspected merchant,
 RecruitHireScreen and NobleTradeScreen adapters must be traced before claiming
 every installed-mod UI is covered.
+
+
+## Compact Coin tooltips — 2026-10-21
+
+User request: remove the excessive empty tooltip width. The shared CurrencyCore
+CoinPriceRenderer previously forced at least180GUI pixels even for one Copper.
+It now measures the widest rendered Coin row and wrapped reason text, excludes
+the final inter-cell gap, and caps wrapping at240GUI pixels or available width.
+All denominations, count digits, reason lines and screen-edge placement remain.
+CurrencyCore1.0.3 is embedded by the refreshed Economy artifact so Forge selects
+the new renderer over older compatible nested copies. Build completed; game
+appearance/player acceptance remains in testing. No pricing or ledger behavior
+changed. Leather remains buy12Copper/sell3Copper under the user's final request.
