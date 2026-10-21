@@ -16,6 +16,10 @@ The following package ideas fit the current direction: the existing 72-real-hour
 
 The existing retired calm/power choice and mob chores remain retired. A Darkness implementation must extend the current calendar lifecycle rather than reactivate those records or create a second event scheduler.
 
+### Phase 1 visual prototype status
+
+The first sandbox art phase now contains three neutral Candy King massing studies and one refinement of the selected crawler direction in [`Docs/art/halloween-darkness-phase1-2026-10-21`](../art/halloween-darkness-phase1-2026-10-21/README.md). These are editable Generic Blockbench prototypes for direction selection only. They introduce no texture, rig, animation, hitbox, registry, renderer or runtime asset, and C1 remains an agent recommendation pending user approval.
+
 ## Sandbox boundary
 
 Until a separate release request, all Darkness work is sandbox-only:

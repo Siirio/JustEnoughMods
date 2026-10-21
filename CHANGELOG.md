@@ -1,3 +1,11 @@
+## 2026-10-21 — Create Candy King Phase 1 model studies
+
+- User requests continuing from the completed session without deleting anything and asks to begin Halloween Darkness with prototype models as Phase 1. Codex limits this phase to external sandbox geometry and preserves all existing project/runtime changes in place.
+- Authored three editable neutral Blockbench massing alternatives for the Candy King: wide Gullet Oak, tall Crowned Stump and low Crawling Crown. The crawler is the agent-selected direction for one refinement pass because its player-height maw and four-root stance best support feeding, candy-vomit and shockwave staging; this choice is not yet user-approved.
+- C1 adds a deeper maw, uneven teeth, crooked pumpkin crown, asymmetric branch hooks, mantle plates, claws and back spines. Front/right/back/top/three-quarter studio evidence and 96 px silhouette checks are archived with the sources in `Docs/art/halloween-darkness-phase1-2026-10-21`; A/B/C C0 alternatives remain intact.
+- Visual-auditor verdict is NEEDS_DIRECTION. Texture/UV, rigging, animation, hitbox, Forge runtime scale, performance and in-game presentation remain unobserved. No source image pixels were copied, no production texture was improvised and no second correction round was spent before user selection.
+- No gameplay source, registry, Atlas, Client/ManagedPack, local Server, MineRENT, native AutoModpack generation, stable profile or release baseline changed. No build, automated test, static analysis or game launch ran.
+
 ## 2026-10-21 — Deploy cumulative release to the current MineRENT world
 
 - User explicitly requires the actual existing world, permits a backup for recovery only and cancels the isolated-copy runtime phase. Codex leaves `level-name=world` and all original save/auth/player bindings intact; no backup restoration, world replacement or local-world import occurs. Fresh archive `archive-2026-10-21T103924+0300.tar.zst` appears at2.69GB before hosted JAR replacement; integrity checking remains waived.
