@@ -1,3 +1,9 @@
+## 2026-10-21 — Replace broken friend-update instructions with native recovery
+
+- User requests updated instructions for friends who already downloaded the broken release. Codex replaces the misleading copy-managed-files instructions with a player-approved standalone AutoModpack recovery utility and a new cumulative ZIP. The source adapter is in tools/client-recovery; tools/jem.py now generates native-installation guidance for future packages.
+- Bug / Client / copying a fixed JAR into gameDir left AutoModpack's older active projection authoritative and preload refused the unverified JEM JAR, repeating the old Xaero crash / in testing. The utility uses the player's installed bootstrap and fetched MineRENT journal, validates the exact published Settlements/manifest, previews a bounded native plan and obtains the player's confirmation before UpdateAttempt.approve/commit. Native duplicate cleanup requires matching published bytes retained in the projection. A different release/bootstrap, conflicts, a pending transaction or running game stop recovery; no raw installation, active-pointer edit, trust bypass or cache deletion is used.
+- Production Java17 utility compiled. The new14-34-23 ZIP retains all133 prior/current payload files and full kubejs, with Repair.cmd, a localized guide and the helper. Package contents and exact payload/helper hashes are confirmed; the new utility was not executed and no game launch or automated tests ran. Receipt: Docs/releases/2026-10-21-friend-recovery.json. Server/ManagedPack/native generation55 and the release-content baseline remain unchanged; only the current friend-package reference advances.
+
 ## 2026-10-21 — Apply approved native recovery to the stable client
 
 - User reports another JustEnoughMods crash, then explicitly authorizes applying the published hotfix to that exact profile through native AutoModpack after reviewing the artifact and the preload refusal.

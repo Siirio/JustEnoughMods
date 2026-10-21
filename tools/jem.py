@@ -502,24 +502,20 @@ def point_update_files(config, delta):
 
 def update_notes(delta, packaged_files=None):
     changed_files = packaged_files if packaged_files is not None else delta["added"] + delta["changed"]
-    roots = sorted({Path(path).parts[0] for path in changed_files})
     lines = [
         "# Что делать",
         "",
-        "Удалить:",
-        *(f"- `versions/JustEnoughMods/{path}`" for path in delta["deleted"]),
+        "Закройте Minecraft и запустите JustEnoughMods через свой лаунчер. Подтвердите обновление AutoModpack и дождитесь его завершения; перезапустите игру, если загрузчик попросит.",
+        "",
+        "Если игра падает до окна обновления, одного перезапуска или замены JAR в обычной mods недостаточно: активной установкой управляет AutoModpack. Используйте приложенную инструкцию восстановления, если она есть, либо отправьте администратору свежий crash-report и latest.log.",
+        "",
+        "Не копируйте папку Файлы поверх активного профиля AutoModpack, не удаляйте его кэш и не редактируйте active-state.json. Папка Файлы содержит полный накопительный материал обновления для штатного установщика и восстановления.",
+        "",
+        "Удаление устаревших управляемых файлов также выполняет AutoModpack. Миры, скриншоты, личные точки и настройки вручную удалять не нужно.",
+        "",
+        f"В накопительном пакете файлов: {len(changed_files)}.",
+        "",
     ]
-    if not delta["deleted"]:
-        lines.append("- Ничего.")
-    lines.append("")
-    for root in roots:
-        matching = [Path(path) for path in changed_files if Path(path).parts[0] == root]
-        if all(len(path.parts) == 1 for path in matching):
-            for path in matching:
-                lines.append(f"Вставить файл `Файлы/{path.as_posix()}` → `versions/JustEnoughMods/{path.as_posix()}` с заменой.")
-        else:
-            lines.append(f"Вставить всё из папки `Файлы/{root}` → `versions/JustEnoughMods/{root}` с заменой.")
-    lines.extend(("", "Готово.", ""))
     return "\n".join(lines)
 
 
