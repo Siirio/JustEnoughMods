@@ -1,3 +1,9 @@
+## 2026-10-21 — Apply approved native recovery to the stable client
+
+- User reports another JustEnoughMods crash, then explicitly authorizes applying the published hotfix to that exact profile through native AutoModpack after reviewing the artifact and the preload refusal.
+- Bug / Client / preload refused unverified local JEM JAR writes and retained active generation eb4b76b, so the old required jem$drag injection still loaded despite a corrected JAR in gameDir / in testing. The earlier restart advice did not complete the required native application. Codex uses the already fetched MineRENT head/journal and the canonical planner with explicit UpdateAttempt approval; content replacements are restricted to the exact Settlements JAR and pack manifest. Native removal of redundant gameDir JAR copies additionally requires the retained published target and matching live/canonical/published SHA1, preserving the installed mods in their canonical projection. No raw managed-file copy, pointer edit, cache deletion or trust-gate weakening is used. No server/world or gameplay-source change is needed.
+- Native recovery committed token14522bb; the installed active Settlements SHA256 is e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe, all28 removed gameDir duplicates remain present in the active projection, and no transaction is pending. Receipt: Docs/releases/2026-10-21-stable-native-recovery.json. Local Server synchronization and native publication55 remain unchanged. No game launch or automated tests are claimed.
+
 ## 2026-10-21 — Repair Settlements/Xaero client startup
 
 - User reports client crash, asks how friends should update, then explicitly authorizes the repair and corrected AutoModpack/friend delivery. The active stable-profile token and Settlements SHA256 match the preceding12:51release; this is a shipped source defect rather than an obsolete client.

@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "SELF",
+  "status": "native recovery committed; player acceptance in testing",
+  "authorization": "User explicitly approved native AutoModpack application to JustEnoughMods after exact artifact and preload refusal were explained",
+  "latestCrash": "2026-10-21T14:12:38+05:00",
+  "rootCause": "Preload refused local unverified JAR writes, kept active eb4b76b and loaded the old SettlementMapScreenMixin; a new gamedir JAR did not replace the native active projection",
+  "logEvidence": [
+    "14:09:04: mirror14522bb differs from active eb4b76b",
+    "14:11:01: Launch apply aborted: unverified jars will not be written during preload",
+    "14:12:11: old jem$drag injection fails on missing m_7979_"
+  ],
+  "expectedContentToken": "14522bb63bb0ef90ecb9a71e1650cb2bb19402c6",
+  "expectedSettlementsSha256": "e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe",
+  "recoveryMechanism": "Existing fetched MineRENT journal/head; native SelectedModpackTarget, ModpackUpdater and explicit UpdateAttempt approval/commit; content mutations restricted to exact Settlements JAR and manifest. Native GAME_DIR duplicate deletions allowed only when the same path is retained in the published projection and its live, canonical and published SHA1 all agree.",
+  "rawManagedFileCopy": false,
+  "activePointerEdited": false,
+  "trustGateChanged": false,
+  "bootstrapChanged": false,
+  "gameLaunched": false,
+  "serverChanged": false,
+  "worldChanged": false,
+  "acceptance": "in testing",
+  "initialPlanReview": "Stopped before approval when native planner requested redundant GAME_DIR cleanup. Confirmed Chunky exists with identical SHA1 in gameDir, active projection and ManagedPack; added exact hash and retained-target guards for native duplicate cleanup.",
+  "completedAt": "2026-10-21T14:26:46.947755+05:00",
+  "activeContentToken": "14522bb63bb0ef90ecb9a71e1650cb2bb19402c6",
+  "installedSettlementsSha256": "e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe",
+  "pendingTransaction": false,
+  "duplicateGameDirCopiesRemoved": 29,
+  "removedDuplicatesRetainedInActiveProjection": true
+}
