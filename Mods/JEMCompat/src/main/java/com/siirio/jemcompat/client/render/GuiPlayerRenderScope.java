@@ -12,6 +12,8 @@ public final class GuiPlayerRenderScope {
     private GuiPlayerRenderScope() { }
     public static boolean active() { return active; }
     public static void reset() { active = false; }
-    @SubscribeEvent public static void begin(ScreenEvent.Render.Pre event) { active = true; }
+    @SubscribeEvent public static void begin(ScreenEvent.Render.Pre event) {
+        active = event.getScreen().getClass().getName().equals("com.siirio.jemserver.client.smp.SmpScreen");
+    }
     @SubscribeEvent public static void end(ScreenEvent.Render.Post event) { reset(); }
 }

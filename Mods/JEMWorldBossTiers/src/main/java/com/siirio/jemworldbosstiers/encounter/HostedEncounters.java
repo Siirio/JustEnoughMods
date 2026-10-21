@@ -168,7 +168,9 @@ public final class HostedEncounters {
             nativeData.putFloat("InitialHealth", boss.getMaxHealth());
         }
         state.putDouble("StartingHealth", boss.getMaxHealth());
+        HostedGroup.stage(boss);
         HostedLobby.release(boss);
+        HostedGroup.release(boss);
         ACTIVE.put(boss.getUUID(), boss);
         BossPeriodicEffects.begin(boss);
         if(boss instanceof Mob mob) {
@@ -356,9 +358,10 @@ public final class HostedEncounters {
     public static void target(net.minecraftforge.event.entity.living.LivingChangeTargetEvent event) {
         var mob = event.getEntity();
         var target = event.getNewTarget();
-        if (mob.level().isClientSide || !isHosted(mob) || target == null) return;
-        if (!(target instanceof ServerPlayer player) || !ALIVE.equals(participant(mob, player.getUUID()).getString("State"))
-                || !inside(mob, player) || player.isSpectator()) event.setCanceled(true);
+        var root = isHosted(mob) ? mob : HostedGroup.owner(mob);
+        if (mob.level().isClientSide || root == null || !isHosted(root) || target == null) return;
+        if (!(target instanceof ServerPlayer player) || !ALIVE.equals(participant(root, player.getUUID()).getString("State"))
+                || !inside(root, player) || player.isSpectator()) event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -547,6 +550,8 @@ public final class HostedEncounters {
         }
         MinecraftForge.EVENT_BUS.post(new HostedEncounterClosedEvent(boss, raid, success, eligible));
         boss.getPersistentData().remove(ROOT);
+        if (success) HostedGroup.finish(boss);
+        else HostedGroup.hold(boss);
         if (!success && boss.isAlive()) {
             if (raid&&!preserveRaid) {
                 boss.discard();

@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.flesh-half-copper-leather-three-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:rotten_flesh"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Next local update; MineRENT and stable release baseline unchanged; player acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1300
+  },
+  "change": {
+    "summary": "User final price correction: rotten flesh base sale 1/2 Copper each; leather remains 3 Copper each.",
+    "modifiers": [
+      {
+        "property": "economy.sell_price.minecraft:rotten_flesh",
+        "operation": "replace",
+        "before": {
+          "numerator": 9801,
+          "denominator": 5000
+        },
+        "after": {
+          "numerator": 1,
+          "denominator": 2
+        }
+      },
+      {
+        "property": "economy.sell_price.minecraft:leather",
+        "operation": "document",
+        "before": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "after": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "notes": "User superseded the intermediate 4 Copper request; source already matches final 3 Copper. Purchase price, demand and quotas preserved."
+      },
+      {
+        "property": "dependency.jem_currency_core.minimum_version",
+        "operation": "replace",
+        "before": "1.0.1 shared embedded version",
+        "after": "1.0.2 in new Economy; old Settlements accepts [1.0.1,2.0.0), so Forge selects the new shared owner without compiling unrelated Settlements edits."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Canonical JEM module sources",
+    "kind": "user_requested_correction",
+    "source_files": [
+      "Mods/JEMCurrencyCore/build.gradle",
+      "Mods/JEMCurrencyCore/embed.gradle",
+      "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "User final price correction: rotten flesh base sale 1/2 Copper each; leather remains 3 Copper each.",
+    "decision_source": "User final correction: 0.5 Copper per rotten flesh, 3 Copper per leather; intermediate 1/4 request superseded. Rational storage and dependency version selected by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "User final price correction: rotten flesh base sale 1/2 Copper each; leather remains 3 Copper each.",
+    "source_files": [
+      "Mods/JEMCurrencyCore/build.gradle",
+      "Mods/JEMCurrencyCore/embed.gradle",
+      "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "User final price correction: rotten flesh base sale 1/2 Copper each; leather remains 3 Copper each.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/build.gradle",
+        "Mods/JEMCurrencyCore/embed.gradle",
+        "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Shipping",
+      "Market",
+      "physical Coins",
+      "shared CurrencyCore",
+      "Economy",
+      "Settlements dependency selection"
+    ],
+    "relations": [],
+    "notes": [
+      "No tests or gameplay launch; source/build/publication do not prove player acceptance."
+    ],
+    "unresolved": [
+      "Player acceptance remains pending."
+    ]
+  }
+}

@@ -1,3 +1,11 @@
+
+## 2026-10-21 — Next update: boss support, public chat, preview scope and sale prices
+
+- User retained solo/party and revive; requested boss-only admission, simultaneous native allies/spirit activation and the custom player renderer only in SMP GUI. Implementation separates hosted roles from World Tier enrollment, binds tagged support to canonical arena/live ownership, pauses owner-bound projectiles before Start and restores native previews outside SMP.
+- Bug / Server / World Tier enrollment was reused as hosted-boss admission, giving ordinary Legendary Monsters support independent lobbies / in testing; role metadata and shared support lifecycle correct the owner.
+- Bug / Server / ServerLogin 1.0.3 intercepted ordinary OP2 chat into same-dimension 100-block system messages, causing `[local]`, distant non-delivery and missing player sender context / in testing; exact-version adapter preserves authentication and native public chat.
+- User final prices: rotten flesh 0.5 Copper each and leather 3 Copper each; earlier 1/4 prices are superseded. Implementation uses rational 1/2, preserves existing leather3, demand/quotas and bumps shared CurrencyCore to1.0.2.
+- User explicitly holds MineRENT and treats this as a new local update. Stable client and immutable release baseline remain unchanged. No tests, gameplay launch or player acceptance are claimed. Local artifact/publication receipt is recorded separately when completed.
 ## 2026-10-21 - Repair shipping payments, market loading and active boss-party controls
 
 - User requests smooth shipping with a visible quote, physical Coins in "Оплата", no normal closing until collection, exclusive pending payment, no breaking/explosions/burning; adds market JEI, buy-only music discs for1Arcane, hidden unusable entries, rarity-priced Tide sales and easier rare catches. Codex implements persistent forced-close seller recovery, bounded native client/server projections and cache/request ownership without a second ledger.

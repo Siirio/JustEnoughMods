@@ -1,0 +1,156 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.native-support-public-chat-smp-render-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Next local update; MineRENT and stable release baseline unchanged; player acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1300
+  },
+  "change": {
+    "summary": "Separate World Tier enrollment from hosted admission; native team support shares canonical boss Start and protection; public OP chat and native previews outside SMP.",
+    "modifiers": [
+      {
+        "property": "encounter.hosting_role",
+        "operation": "replace",
+        "before": "Every World Tier profile could enter a solo/party lobby, including ordinary Legendary Monsters mobs.",
+        "after": "hosted_encounter is independent of scaling/progression; expanded Legendary Monsters mobs remain enrolled but cannot host. Native forge:bosses contains only cloud_golem, the_obliterator and posessed_paladin."
+      },
+      {
+        "property": "encounter.native_support",
+        "operation": "replace",
+        "before": "Dormancy and Start applied only to one registered living entity; support could be held in independent lobbies.",
+        "after": "Paladin ally_tags uses native possessed_armor_team inside the canonical registered structure. Support binds to the canonical live claim, never becomes an independent host, shares hold/Start/failure and participant target/damage gates. Native SoulStrike is an owner-bound ThrowableProjectile, not another boss; native owner resolution pauses its tick while the owner is held."
+      },
+      {
+        "property": "client.gui.player_preview",
+        "operation": "replace",
+        "before": "Global ScreenEvent scope, native Quick Skin override and direct custom race-preview calls.",
+        "after": "Custom PlayerRenderer interception only in SmpScreen; Quick Skin override removed; race previews use native renderers."
+      },
+      {
+        "property": "server.chat.default",
+        "operation": "replace",
+        "before": "ServerLogin 1.0.3 rerouted OP2 default messages into 100-block same-dimension system chat.",
+        "after": "Exact-version dedicated adapter returns false from handleDefaultChat after the unchanged LoginEvents authentication checks; vanilla public chat retains sender identity. Explicit admin commands are unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Canonical JEM module sources",
+    "kind": "user_requested_correction",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/defaults/bosses/major_bosses.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Separate World Tier enrollment from hosted admission; native team support shares canonical boss Start and protection; public OP chat and native previews outside SMP.",
+    "decision_source": "User retained solo/party and revive, required boss-only admission, linked allies/native spirit, SMP-only custom player rendering and public chat. Exact implementation selected by Codex."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Separate World Tier enrollment from hosted admission; native team support shares canonical boss Start and protection; public OP chat and native previews outside SMP.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/defaults/bosses/major_bosses.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Separate World Tier enrollment from hosted admission; native team support shares canonical boss Start and protection; public OP chat and native previews outside SMP.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/defaults/bosses/major_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "World Tier",
+      "hosted encounters",
+      "Raid",
+      "native allies and projectiles",
+      "SMP UI",
+      "race previews",
+      "ServerLogin",
+      "Chat Heads"
+    ],
+    "relations": [],
+    "notes": [
+      "No tests or gameplay launch; source/build/publication do not prove player acceptance."
+    ],
+    "unresolved": [
+      "Player acceptance remains pending."
+    ]
+  }
+}

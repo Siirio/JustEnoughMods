@@ -154,3 +154,7 @@ The user explicitly requested removal from `test jem` and confirmed removal from
 An ACTIVE boss party no longer carries closeLobby. Leaders can reopen its existing SMP detail view and confirm "End encounter" through the existing CANCEL action, revision validation, HostedBoundary action token and HostedParties.forfeit. Closed rows still close; a successful canonical START still closes once. Existing boss/raid cancellation, rewards and membership ownership are reused.
 
 JEMMenuSupport1.1.2 adds vanilla HumanoidArmorLayer to the existing neutral GUI skin model with the same transform. Native armor hooks, materials, trim and glint remain authoritative; world/EpicFight rendering isolation is retained. Matching full Compat and Server embed the updated library. Actual in-game GUI and equipment acceptance remain unobserved.
+
+## Player preview ownership —2026-10-21
+
+User correction: custom player geometry is for the SMP GUI only. GuiPlayerRenderScope now activates only for SmpScreen; ordinary screens and inventories keep native renderers. The Quick Skin preview replacement is removed, and direct race-preview calls return to the native entity renderer. SMP controls, assets and server actions remain unchanged. Visual runtime acceptance is UNOBSERVED: no game was launched for this task and no new art was authored.

@@ -35,6 +35,11 @@ public final class HostedEncounterApi {
         return entity;
     }
 
+    public static boolean canHost(LivingEntity boss) {
+        return WorldTierApi.profile(boss).filter(com.siirio.jemworldbosstiers.balance.BossProfile::hostedEncounter).isPresent()
+                && !com.siirio.jemworldbosstiers.encounter.HostedGroup.member(boss);
+    }
+
     public static boolean hold(LivingEntity boss) { return com.siirio.jemworldbosstiers.encounter.HostedLobby.hold(boss); }
     public static boolean held(LivingEntity boss) { return com.siirio.jemworldbosstiers.encounter.HostedLobby.held(boss); }
     public static boolean participating(ServerPlayer player) { return HostedEncounters.participating(player); }
@@ -93,7 +98,7 @@ public final class HostedEncounterApi {
     }
 
     public static boolean start(LivingEntity boss, Collection<UUID> agreedPlayers, boolean raid, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
-        if (boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss)) {
+        if (boss.level().isClientSide || !boss.isAlive() || !canHost(boss) || HostedEncounters.isHosted(boss)) {
             return false;
         }
         var profile = WorldTierApi.profile(boss).orElse(null);

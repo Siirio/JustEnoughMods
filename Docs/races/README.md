@@ -229,3 +229,7 @@ deployed. No tests, gameplay launch or visual acceptance is claimed.
 ## Void Walker trajectory HUD encoding —2026-10-19
 
 The user's runtime screenshot showed mojibake in the distance/contact label. The first incorrect data was already in `VoidDistancePreview.hud`: Russian phrases and the middle-dot separator were stored as corrupted Java literals; languageCode chose those literals and the native font rendered them faithfully. The label bypassed the owning localization resources. It now uses `Component.translatable` with ru_ru/en_us distance, clear/blocked/unknown keys, so the selected resource language owns the wording. Prediction, projectile motion and teleport safety are unchanged. Sandbox and production profiles are built; only jem sandbox is installed. No tests or launch; user acceptance pending.
+
+## Native preview restoration —2026-10-21
+
+The user restricted the custom player renderer to SMP GUI. RaceStageRenderer and AbilityPreviewRenderer now use native entity renderers; the black screen composition, camera, GUI scale and race mechanics retain their existing owners. No visual runtime pass or user acceptance is claimed.
