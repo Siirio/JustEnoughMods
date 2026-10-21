@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "mod_id": "simplybows",
+  "installed_version": "0.1.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/simply-bows",
+      "publisher": "Timefall Development",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/simply-bows",
+      "publisher": "Timefall Development",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/simplybows-forge-neoforge-0.1.4.jar",
+        "sha256": "70c77f7e2207393f2bbc8f58da06309378897252041e5102d249d33d64753a91",
+        "resource": "assets/simplybows/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "simplybows:find",
+      "kind": "acquisition",
+      "title": "Find a unique bow",
+      "player_action": "Loot chests while exploring.",
+      "outcome": "Find unique bows, bow upgrades and rune etchings with location-dependent frequency.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите уникальный лук.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "simplybows:upgrade",
+      "kind": "progression",
+      "title": "Improve a bow permanently",
+      "player_action": "Apply Enchanted Bow Strings or Reinforced Bow Frames at an anvil; inspect the Alt tooltip first.",
+      "outcome": "Enhance the unique bow through irreversible upgrades.",
+      "registry_refs": [],
+      "depends_on": [
+        "simplybows:find"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Улучшите уникальный лук.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "simplybows:rune",
+      "kind": "progression",
+      "title": "Etch a bow rune",
+      "player_action": "Combine a rune etching with a unique bow at an anvil.",
+      "outcome": "Alter its ability; another etching can replace the previous rune.",
+      "registry_refs": [],
+      "depends_on": [
+        "simplybows:find"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Нанесите руну на лук.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "simplybows:vine_ability",
+      "kind": "interaction",
+      "title": "Vine Bow rune choices",
+      "player_action": "Shoot the Vine Bow to establish its flower field.",
+      "outcome": "Pain trades healing for faster damage; Grace cleanses allies instead of harming enemies; Bounty adds kill-loot chances; Chaos replaces the field with a rooting parasite blossom and an ending ally buff.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.vine.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Vine.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:earth_ability",
+      "kind": "interaction",
+      "title": "Earth Bow rune choices",
+      "player_action": "Shoot the Earth Bow to create a ground tremor.",
+      "outcome": "Pain adds spreading spikes, Grace launches allies with protection/slow fall, Bounty concentrates damage/launching at a central spike, and Chaos chains traveling spikes through hostiles.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.earth.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Earth.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:ice_ability",
+      "kind": "interaction",
+      "title": "Ice Bow rune choices",
+      "player_action": "Shoot the Ice Bow to release homing frost arrows.",
+      "outcome": "Pain concentrates shots, Grace adds stacking slowness, Bounty adds weaker arrows, and Chaos builds a wall that blocks entities and projectiles.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.ice.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Ice.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:bee_ability",
+      "kind": "interaction",
+      "title": "Bee Bow rune choices",
+      "player_action": "Shoot the Bee Bow to attack with poisonous bees.",
+      "outcome": "Pain homes bees, Grace gives an ally a hit-blocking bee, Bounty creates a temporary attacking hive, and Chaos produces a healing/slowing honey storm with explosive bees.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.bee.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Bee.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:bubble_ability",
+      "kind": "interaction",
+      "title": "Bubble Bow rune choices",
+      "player_action": "Shoot the Bubble Bow underwater without ordinary water drag.",
+      "outcome": "Pain fires axolotls, Grace protects a bubble column with an axolotl and ally resistance, Bounty adds an attacking swarm, and Chaos sends a damaging knockback wave.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.bubble.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Bubble.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:blossom_ability",
+      "kind": "interaction",
+      "title": "Blossom Bow rune choices",
+      "player_action": "Shoot the Blossom Bow to create a blossom storm.",
+      "outcome": "Pain enlarges a stationary damage storm, Grace targets allies with speed/haste, Bounty creates multiple heavy-entry-damage storms, and Chaos gives orbiting koi that damage and reflect projectiles.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.blossom.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Blossom.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:echo_ability",
+      "kind": "interaction",
+      "title": "Echo Bow rune choices",
+      "player_action": "Summon Echo magical bows that attack nearby hostiles and mirror your shots.",
+      "outcome": "Pain focuses the last target and adds kill explosions; Grace uses an offhand potion to charge effects and may target allies; Bounty mirrors a non-Echo offhand bow; Chaos creates an expanding-on-kill black hole.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.echo.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Echo.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "simplybows:cosmic_ability",
+      "kind": "interaction",
+      "title": "Cosmic Bow rune choices",
+      "player_action": "Shoot Cosmic arrows to attach a damaging constellation.",
+      "outcome": "Pain shares damage across tethered targets; Grace gives an ally-buff field with protective cocoons; Bounty charges an airborne star with optional swing detonation; Chaos captures/refires projectiles and grants stacking draw-speed buffs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed tooltip.simplybows.bow.cosmic.ability and .rune.{pain,grace,bounty,chaos}. Cooldowns, caps and damage are configurable; this records branches rather than pretending these are concurrent effects.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте способности лука Cosmic.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

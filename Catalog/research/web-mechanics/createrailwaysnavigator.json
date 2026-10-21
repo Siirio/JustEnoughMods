@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "mod_id": "createrailwaysnavigator",
+  "installed_version": "1.20.1-beta-0.9.1-C6",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://wiki.mrjulsen.net/createrailwaysnavigator/",
+      "publisher": "MrJulsen author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://wiki.mrjulsen.net/createrailwaysnavigator/",
+      "publisher": "MrJulsen author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/createrailwaysnavigator-forge-1.20.1-beta-0.9.1-C6.jar",
+        "sha256": "af2425223fb3f2e2cc3acf78a14b8f3725520faae00ba5764140a8d5d6541b3f",
+        "resource": "assets/createrailwaysnavigator/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "createrailwaysnavigator:navigator",
+      "kind": "interaction",
+      "title": "Search a rail connection",
+      "player_action": "Use the Navigator to search between stations on an existing Create rail network.",
+      "outcome": "View possible routes with departures and delays.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "createrailwaysnavigator:navigator"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author identifies C6 builds for Create 6 and DragonLib requirement from 0.9.0."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите маршрут между станциями.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/createrailwaysnavigator.json."
+    },
+    {
+      "key": "createrailwaysnavigator:displays",
+      "kind": "interaction",
+      "title": "Display station information",
+      "player_action": "Configure Advanced Displays for a station or train.",
+      "outcome": "Show arriving trains or upcoming stops.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author identifies C6 builds for Create 6 and DragonLib requirement from 0.9.0."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте железнодорожное табло.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "createrailwaysnavigator:schedule",
+      "kind": "automation",
+      "title": "Extend a train schedule",
+      "player_action": "Use the documented dynamic delay or prioritized destination schedule entries.",
+      "outcome": "Adapt scheduled train service using the addon's schedule instructions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author identifies C6 builds for Create 6 and DragonLib requirement from 0.9.0."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте расписание поезда.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "createrailwaysnavigator:routing_filters",
+      "kind": "interaction",
+      "title": "Configure passenger route searches",
+      "player_action": "Set minimum transfer time and allowed train categories; use shared station aliases and train/station exclusions where permitted.",
+      "outcome": "Group platforms into a station and keep unwanted routes out of passenger suggestions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте маршрут с пересадкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "createrailwaysnavigator:configure_display",
+      "kind": "interaction",
+      "title": "Configure a rail information display",
+      "player_action": "Right-click an Advanced Display with a Wrench and choose information type/detail.",
+      "outcome": "Show station, destination or passenger information; native settings control line color, carriage index and repeated arrivals.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте информационное табло.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "createrailwaysnavigator:route_overlay",
+      "kind": "interaction",
+      "title": "Follow a navigator journey",
+      "player_action": "Enable the native route overlay options, notifications or narrator while following a route.",
+      "outcome": "Receive stop and transfer updates; station clocks can report current time and be expanded to four sides.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Проследите маршрут поезда.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

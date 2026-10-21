@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "0edb6dd41b087b5ddc67801a0eb99345c4b23704188ddf430fc482dda110e763",
+  "change_records_sha256": "df082bc78c615872fe2946d674732050e035ca6d93864dde3c10154c28e879a8",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -43,7 +43,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32443
+      "potential_static_target_count": 32478
     },
     {
       "change_id": "backpack.augment-bay-and-workbench",
@@ -98,7 +98,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32443
+      "potential_static_target_count": 32478
     },
     {
       "change_id": "compat.narrator-and-shared-categories",
@@ -112,7 +112,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17167
+      "potential_static_target_count": 17187
     },
     {
       "change_id": "client.preferences-and-carryon-removal",
@@ -139,6 +139,21 @@
       "status": "conditional",
       "summary": "Clean first-install native QuickSkin defaults avoid dangling maintainer asset references; existing user selections remain native editable overlays.",
       "record": "Catalog/changes/records/client-quickskin-clean-defaults.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
+    },
+    {
+      "change_id": "client.gui-armor-and-closed-channel-diagnostics-20261021",
+      "status": "conditional",
+      "summary": "Restore native equipped armor over neutral GUI players and bound repeated already-closed connection diagnostics.",
+      "record": "Catalog/changes/records/client.gui-armor-and-closed-channel-diagnostics-20261021.json",
       "selectors": [
         {
           "type": "id",
@@ -177,7 +192,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 0
+      "potential_static_target_count": 6
     },
     {
       "change_id": "economy.building-supply-prohibitions",
@@ -195,7 +210,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29306
+      "potential_static_target_count": 29327
     },
     {
       "change_id": "economy.reviewed-item-policies",
@@ -211,7 +226,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2191
+      "potential_static_target_count": 2193
     },
     {
       "change_id": "economy.ledger-market-replay-safety",
@@ -389,7 +404,27 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2191
+      "potential_static_target_count": 2193
+    },
+    {
+      "change_id": "economy.flesh-half-copper-leather-three-20261021",
+      "status": "active",
+      "summary": "User final price correction: rotten flesh base sale 1/2 Copper each; leather remains 3 Copper each.",
+      "record": "Catalog/changes/records/economy.flesh-half-copper-leather-three-20261021.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:rotten_flesh"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 2
     },
     {
       "change_id": "economy.local-development-wallet",
@@ -407,6 +442,31 @@
       "potential_static_target_count": 1
     },
     {
+      "change_id": "economy.market-jei-discs-tide-rarity-20261021",
+      "status": "conditional",
+      "summary": "Add market JEI links, bounded loading, buy-only music discs and native-rarity Tide fish sales and fishing weights.",
+      "record": "Catalog/changes/records/economy.market-jei-discs-tide-rarity-20261021.json",
+      "selectors": [
+        {
+          "type": "tag",
+          "registry": "items",
+          "value": "jem_economy:items/tide_sale_fish"
+        },
+        {
+          "type": "tag",
+          "registry": "items",
+          "value": "c:items/music_discs"
+        },
+        {
+          "type": "tag",
+          "registry": "items",
+          "value": "minecraft:items/creeper_drop_music_discs"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 120
+    },
+    {
       "change_id": "economy.pooled-coins-public-shipping-20261021",
       "status": "active",
       "summary": "economy pooled coins public shipping 20261021",
@@ -418,7 +478,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17167
+      "potential_static_target_count": 17187
     },
     {
       "change_id": "excavation-native-batch-wear-20261020",
@@ -508,7 +568,7 @@
     {
       "change_id": "gui.vanilla-player-fixed-race-scale",
       "status": "active",
-      "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+      "summary": "Custom player preview is scoped to SMP; race GUI scale and camera remain independently owned.",
       "record": "Catalog/changes/records/gui.vanilla-player-fixed-race-scale.json",
       "selectors": [
         {
@@ -547,7 +607,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "hosted-fight-chat-links",
@@ -561,7 +621,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "hosted.structural-arena-volume",
@@ -575,7 +635,22 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
+    },
+    {
+      "change_id": "hosted.active-party-forfeit-control-20261021",
+      "status": "conditional",
+      "summary": "Allow active boss-party view and leader-confirmed encounter forfeit through the existing party system.",
+      "record": "Catalog/changes/records/hosted.active-party-forfeit-control-20261021.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:player"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "hosted.barrier-free-attack-admission-official-travel-20261021",
@@ -593,7 +668,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2128
+      "potential_static_target_count": 2142
     },
     {
       "change_id": "hosted.canonical-live-boss-loading-and-quarantine-20261021",
@@ -607,7 +682,21 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
+    },
+    {
+      "change_id": "hosted.native-support-public-chat-smp-render-20261021",
+      "status": "active",
+      "summary": "Separate World Tier enrollment from hosted admission; native team support shares canonical boss Start and protection; public OP chat and native previews outside SMP.",
+      "record": "Catalog/changes/records/hosted.native-support-public-chat-smp-render-20261021.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "login.connectivity-terminal-socket",
@@ -672,7 +761,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1
+      "potential_static_target_count": 5
     },
     {
       "change_id": "client.native-previews-and-recruit-intent",
@@ -727,7 +816,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "power.opt-in-combat-capture",
@@ -741,7 +830,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "power.frostbitten-difficulty-and-composition",
@@ -770,7 +859,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17167
+      "potential_static_target_count": 17187
     },
     {
       "change_id": "power.race-cinematic-reentry",
@@ -814,7 +903,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "power-system-native-cataclysm-capabilities",
@@ -868,7 +957,32 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1609
+      "potential_static_target_count": 1623
+    },
+    {
+      "change_id": "presentation.hammer-coin-tooltip-trade-gaps-20261021",
+      "status": "active",
+      "summary": "Compact exact Coin breakdown tooltip; resource-pack 3D copper hammer; preserve leather purchase at12Copper and sale at3Copper; document native offer price gaps without assigning prices.",
+      "record": "Catalog/changes/records/presentation.hammer-coin-tooltip-trade-gaps-20261021.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "bbb:hammer"
+        },
+        {
+          "type": "namespace",
+          "registry": "items",
+          "value": "jem_economy"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:leather"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 8
     },
     {
       "change_id": "professions.native-skills-and-spell-combat",
@@ -1286,7 +1400,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 29306
+      "potential_static_target_count": 29327
     },
     {
       "change_id": "settlements.city-sidebar-tab",
@@ -1425,7 +1539,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13747
+      "potential_static_target_count": 13762
     },
     {
       "change_id": "settlements.fed-recovery-readable-native-ui",
@@ -1499,7 +1613,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12152
+      "potential_static_target_count": 12153
     },
     {
       "change_id": "settlements.isometry-local-host-masking",
@@ -1513,7 +1627,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12139
+      "potential_static_target_count": 12140
     },
     {
       "change_id": "settlements.migration-completeness",
@@ -1602,7 +1716,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12151
+      "potential_static_target_count": 12152
     },
     {
       "change_id": "settlements.recruit-needs-camera-cutaway-hire-gui",
@@ -1726,7 +1840,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17179
+      "potential_static_target_count": 17199
     },
     {
       "change_id": "settlements.sandbox-build-boundary",
@@ -1851,7 +1965,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 1715
+      "potential_static_target_count": 1729
     },
     {
       "change_id": "settlements.update-1",
@@ -1968,6 +2082,26 @@
           "type": "id",
           "registry": "blocks",
           "value": "minecraft:bell"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 2
+    },
+    {
+      "change_id": "shipping.payment-session-and-native-menu-20261021",
+      "status": "conditional",
+      "summary": "Repair native shipping menu synchronization and retain funded physical payment until collected.",
+      "record": "Catalog/changes/records/shipping.payment-session-and-native-menu-20261021.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "jem_economy:shipping_box"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "jem_economy:shipping_box"
         }
       ],
       "exceptions": [],
@@ -2127,7 +2261,7 @@
           "value": "c:bosses"
         }
       ],
-      "potential_static_target_count": 1608
+      "potential_static_target_count": 1622
     },
     {
       "change_id": "xaero.native-optional-overlays",
@@ -2168,19 +2302,24 @@
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "0dad22168c091d46b4a010ffc65819b5177685c7751d70accefa1027527ea62c",
-    "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "d83f549e4e91dea6f97849c79e5e5dc2d2a686f9b6e158d8a85885646d2329a7",
-    "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar": "9415955ab81d8778ec74a37566563f318c14d32b8d16a828b04fdc86c63b4419",
+    "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "a61ea00e73eb1fb3b4f0a99d2c84bc7c4c8ef11014fd1fd35f88765e4ed604b4",
+    "Client/ManagedPack/mods/jem-pack-core-2.0.0-dev.jar": "c331d469f57e1dff9477968450f73b836b155d49df5990fc7ac3f537be4898bd",
     "Client/ManagedPack/mods/jem-roles-2.0.0.jar": "c106a17b393720052a1b38bdd8c0eaf3a9fe64be0aa5a59786b7735c522d8c94",
-    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "e50ff3a3d7f016c2f0433fef7c8163a655d0edbe9f41716bb33ea2f248f5d346",
+    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "c68e728b52c80d9b73014ef25f59ade6c140b2b2114b05788cfaaef10999c965",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe",
-    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "a01f9be7e7dff77519c96aacf0df58b54e50b8cc0dc5898be07229f66efbf5fc",
+    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "83726fc78af9264cac242b1a01d8793296a363fe0ee786b298aa8038bc3f1011",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "76c631c0a5feadde20078169ada5965d63c4f858e02cc3fea0b0cb9a98c8071e",
-    "Docs/SERVER_COMMANDS.md": "5c2485613c0c47ca923fccdc5224825d2ecb7f156b0483ef85b64eb7f7c130ca",
+    "Docs/DEVELOPMENT.md": "0dad9626f77a563550c00f0baf77e5e99231c33fc58b141394c433bfa7f0eef6",
+    "Docs/SERVER_COMMANDS.md": "c0dfc06fd98aa74bf766bc23f95fa30b63a73473ebf2ad0367d9ddcb415c3cf6",
+    "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
+    "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
+    "Docs/art/bbb-hammer-2026-10-21/hammer-final.json": "4b8389a357a71cf49f4b3a3359d674f74d3ceee98d5f5405299be9ccbbc07583",
+    "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite": "79155e144f5b7045626fd525ccf1f41d71035ec4adc1ccf333850c3916968a08",
+    "Docs/art/bbb-hammer-2026-10-21/hammer.png": "e53ad0acf66af651b834387a8e355e3e378b7b48c7b137b6522afd9777935173",
     "Docs/art/crafted-gui-2026-10-20/README.md": "ccddecf9df5801ec42bf606563a07b5d6e591fc4c81f2690335b119c884fd07b",
     "Docs/art/shipping-station-2026-10-20/model/README.md": "94b651d5ae7ee9b17162cd7ba1456a2402879215bc2f7bfd1cf1aa8f70acf103",
-    "Docs/economy/native-trading-design.md": "b08826988b530b22fa062b96f44c1fcdc76081b5e3fd566bfc4bd19ca51bfd97",
-    "Docs/events/BOSS_FIGHT.md": "41bf6703570bcd1db209a80e7c0e99991c4cc69af2fea5b1e2ba97fd4c1562e3",
+    "Docs/economy/native-trading-design.md": "d1328493bbac31e57485604c6699cf9a8b70e5880f5f2bce37086bfadf2cc1f7",
+    "Docs/events/BOSS_FIGHT.md": "78dd6802ecf78f4f1ff5fc0a4016278f61cfb09f4fd84f6fd2a2de2c3b83ae14",
     "Docs/events/BOSS_RAID.md": "9b79a52e6ac50e6178df417c7961c4c94f2b26f3dd0398e2da495ec41ceef1a5",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
@@ -2193,31 +2332,32 @@
     "Docs/power-system/README.md": "6126ef340f35b28de6734c00c4f76fbf304cd542d65eb6efa589bd98dac55a58",
     "Docs/power-system/Weapons.md": "5a67dada7b91f501c6ce9da04690102441a718ebb6e05a5d30aa1f3978ade479",
     "Docs/prepared-updates/2026-10-20-digger-skarrier-aircraft/skarrier/manifest.json": "42e3c46095986c686e5582a746f3bc96de8376ff3db03e4591c1971db1fa2406",
-    "Docs/races/README.md": "e0c98e0b3e0b9fbbfea31e9456687d5c76374e19c879f352d743a7d5e136a0e2",
+    "Docs/races/README.md": "039cdf88413d54b821cdee42491551a8d68682516abb5420dfa55e20ab505547",
     "Docs/races/VFX_REFERENCE_BRIEFS.md": "e6e6f81334f8fdaf0b5f2197562ee4afc0eb8c2e2b1e6cf3d33d56c2e2233c87",
     "Docs/races/assets/guardian-dome/PLAN.md": "8519ffb62d2ed6f61ccb8e21cb907cd2a1a0563f1a839ca1afb40b17b1dc5f52",
     "Docs/races/assets/guardian-dome/author.py": "7b644e0ccc1c13820f09262a43d573ea7489ff780133375a01b05146185504c4",
     "Docs/races/assets/guardian-dome/export.mjs": "6dedc11a5d5bd716180afc9361870c2081ffbe8018f2dc104a35eeab2046eee8",
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/races/server-test-migration.json": "666c4642ce4b177eea8a20f7a9dfc2269e2fec05ab5f2d68c049395aca188f1a",
+    "Docs/releases/2026-10-21-shipping-market-repair.json": "a6f88bf08933b6c5c79407657add4e86379d6548faaf7e810ada29ce1c92bd27",
     "Docs/settlements/DESIGN_JOURNAL.md": "440abcac8af594a5b41e177da3b36049d47b7b95435431730eb3f4aee08b62bd",
     "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py": "98fa13c327c20af73c3b9d6d341967f069b18c1367768155b6867f755ab928d8",
     "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora": "15729a822314845f271a79782977b7c8572d6572d28b32387804848f28210931",
     "Docs/settlements/assets/source/dashboard-r2/regions.json": "64e589b6512dac75641325c3e7fb59df7cf3e2402126b4c14bedaff59f015b2b",
     "Docs/settlements/standalone/GUI_SPEC.md": "4e7d59b84c3214d5122ede400fefc13a0ba2c762566549c3040ae31b049c7605",
     "Docs/settlements/standalone/README.md": "dbb88453108b055b877a701e47e8b78df0478732951d37ee03e8fe5c736736f7",
-    "Docs/smp-gui/README.md": "83729fb7676ee0bef38085a35a51a03f6999a129b19f3381290d31f2b974a227",
+    "Docs/smp-gui/README.md": "611e3934b0161b2916de726d25119380bec4ea4f64d881d47d2e27563f4af15b",
     "Mods/JEMBootstrap/patches/reliable-updates.patch": "90162b5100c37da26ecd5938483253a131e8e316b6f769792df64dfff0c14fa7",
     "Mods/JEMBootstrap/prepare.py": "e582eb57b8363b93121a03c291e93ffb4cd082bf73904390cf9700a4a9d77d2a",
     "Mods/JEMBootstrap/upstream.json": "0e8d7e3a810035ac197290d5f2651cbf423ba11a64ce6814886b65a1f8866d85",
     "Mods/JEMCompat/build.gradle": "df883ccd36afaec881cfd15184f859ec7cc4f900855ea6ace8f9bf4b25299730",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "34a5c2d390ab830e72e2ddf8815a631d29883bb6bdabea901d3f6d030da1a7f0",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "89b0211151357fbd55cad8272ee1b632f9460a6a9472f3e12bd5d7d98b42ae88",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "52e8d713c9881ee1eadee81684a79754106fd3e70249b5697b79c810399d3ec4",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "be01dce9803e85ae7cd51f5bacfd4d71eae6244ccf03d09522eb9ba70d3a7bb2",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java": "202fee218ca234b2a73af58557aca26aa7b017f03d136081b7b2ffcbd3755d4c",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "14bcf20eb72cb3c1319857d8392c892d7b2aa98e1c148adc0c643048806f66b8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java": "ef4b4c328336fc714f970989ffabef982ebea2fa16742f65e0940291878a44b7",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java": "869fc86c1ce1b94294a1b0855cd4703a353cd34dedfb6b45db1fe060f35ecaf5",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java": "49bbe53bcaa0ce884bd12871751547325193611f57493f61bc3c967ff3235ec3",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java": "42ae5d9c5e107a5799ca6fe317628d55b8e09b075afa1197323dd57ba05b0030",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java": "c95c49bbb48cd10c469493169e49b4b8c8872876914bc131326b7ec89152f5a0",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/login/TerminalSocketFailure.java": "0e09149740042f5ee17c67d1cfb37fb7d9d9e17ecf17ce79be5d077c4b8d6afc",
@@ -2248,10 +2388,11 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java": "96752409bdb147bc5daad70121aaee06eb8e65024c401dfe66efb16eeeeae55c",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java": "ebde334231687b2a06a9a9fddc12f297a3528e5b9beffba366bbb3999b5f4cd9",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java": "f7867f2788aee0e7143a49c44875dd8a211047db699b63294e2373659d4dd108",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java": "8027c34c8b6cc2428596a0265c49a119f3d025d923ff85703cfb14e226e28926",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/VillagerOutfitMixin.java": "6c838f131c9fe2b8bfe71ee97f8503b4ff2bde64f1959de3af2600a5eb83c8ab",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/recruits/RecruitDebugScreenPoseMixin.java": "77b90932a9d89dbe2c25fe5905062b4a4d77e7a4583faca9d27ddc705dfb41e6",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java": "da54837470a855cdefb8767df722a75e0f30674c5a622f56da33d9904fc09dd8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ConnectivityTerminalSocketMixin.java": "c810c8223a32dadf701f4f24a153e0f481b7c0982bf2efc0137b1414e09725c8",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java": "507f6f38d5e11e7882bd5a0f41e34658a53eee92486494ed1048ebdb1bb3b164",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java": "ea9c3326e28a9ce40603c647b02e0a1e6272161d171281408dac02000c2df2df",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/TerminalConnectionFailureMixin.java": "1c8ddb802504484ca1ab1a926e3b9ad762c292ab84b51a59ae67f09820b91a78",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "329c1a2f95637a32aa883832f5aa7332a4994a2b64a8f04aefe9f2d2aebd7479",
@@ -2267,9 +2408,9 @@
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "2c5cce57390e9f59ec2c4bde025a192b66a467aa704e2f5ad858d92064540eac",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png": "26d524e4ba1670a58118f4b9f61f468f0a83322abc77be9967f130907f2cca65",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "5a7463634353f887ac45675092f022f3b37590d34ff472e31d6e344e24c3ed9e",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "dbdedc93f2b4aa0199d88b6efde8dcf69c16d2a604a4f97b5a4b16cedaa41bda",
-    "Mods/JEMCurrencyCore/build.gradle": "4e05e22210afa95d41fd44c841aea7cdf73efef9ddc76fb7681c328b9eb03369",
-    "Mods/JEMCurrencyCore/embed.gradle": "06cd052d7d1fa7e97b8a9ac169de89c00c5c2634efb770c2e2ec422382481ddb",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "9e1d6beb2c0bfc6a1a02dded0dc2dcbfe14377f40e4fc1bd792213a8a27be5f1",
+    "Mods/JEMCurrencyCore/build.gradle": "507ede597aef0b5f08bc4a9060f2061e045120e456f76f20676ee409d416413b",
+    "Mods/JEMCurrencyCore/embed.gradle": "24a9eb2d195f1d1b33f9e0c743ec3a07655c9617adbdb6f34541c76a9f78dc92",
     "Mods/JEMCurrencyCore/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",
     "Mods/JEMCurrencyCore/settings.gradle": "2540ad1f7db0e58f6cabf950a37f5ba4d6d968ab7756d083841f620aae155015",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyAuthority.java": "e0d21cb9bdc53c1f86152da9d3f67aff9defb30dc777c8f2a3bdd9aabb890910",
@@ -2278,15 +2419,15 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java": "3c189083f0f5cb275c3b7e17383eeb25c427085886702c6bebc21c52481ce51c",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java": "0eae829d75e3c974b3c7a5d6d1c47b46d9aa00322d873b1506f0a32455def615",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java": "f96bc314160be3e076b8a208e3e8dc1c0d59a08ca1b482c597da433985129cdf",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "ec96a21810070514be8fe2da9fd5d24b5f0aefd236358046dce8fd8eb25db8da",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "7a38c2309fe07e1e363deab07ae5e40568c869d95f0264e88c40b85207dd85e0",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java": "35f09a7e5144ffb6a9e9c7cc4ad00b7d99ae33195c328cfe27ade76489f0e3f8",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java": "bf3660d3dd54aa63539598fd67b255fdc435a99991a13d78e3086d72afea5e9c",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java": "85e64545a2ea5d9b0316166feafe956aa0e39af472de44988dc5f9436d26946d",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java": "427e3819ce1983ca341b7b851fe233e9349c95584bcfd867627fd4db9ac7a8ad",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java": "1235fadd9adfd42bb0da0aebb29033b12bdd438874c606d3cc588f97b176d1e0",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyClientConnection.java": "ef7b29c0af5f64babdf48a5acf61a9aa2ed626de7d1ff979a85714371d951592",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CurrencyContainerScreen.java": "a42875ac01b840a3d3bf1c954029f570064165dbfee6783b7aa16c1dbd42856a",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java": "5ec6aabdc99cf9afd31cd9fcb375f4183de2764d02e02f4574c1815087611a76",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java": "132bb208a75e0e5887492dfcedc8705e3701d4f1fef3b6de3ff61f41a00e1129",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java": "533ba735ae934c65bc116bc83d11c0a70bcecda9f16801a7d81f7c336a176001",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeClient.java": "210263388f0872316dde640ac050cdc9abf54ec2bca49ebb294b69f946e2d447",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java": "fa63bd45100de42ff65d6d4bd5157807a34ebfaee5581311a9c51b5c8a4003cc",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java": "902e19c0b221255d824d798a164be55b16975b8697a39cc2df3e2c64fd96a5ab",
@@ -2335,20 +2476,20 @@
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinItem.java": "9b55264cfdc9694a1df061b88041bb1bdec158495f5e7420ba25bfa913ad0115",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java": "6e7bae9b42f8d01ad8a5588ebb3a3cb29440bc4a54e2c39324eb62c409ea7671",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java": "bcf9e322c514f2e7c6ef81e70a4a4831682e92b06eb0348f726cf57d627b966c",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java": "f3e8c7fa0ef8eb9d519d0a69df6f1679fcd3a124b6b4e1fa2c6a4bedf979f02b",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "7632fc91e46a04e794fc5eccafc1f4ee2253934718fce0e0b04326ce3cff7bfc",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java": "964051aad50ec218610cfbf4c0a32f9a0f05ec75e2d8014563aa4e6413086a85",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/ItemPolicyRegistry.java": "0ed981bb753d4bacb4fca2a2299382b62f80ce44812e8c4a5418a14d280ed22a",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSearch.java": "de4dc74e05e7c2f78eeb1640810edfda92efd77683489afb2424d7a3f4223358",
-    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java": "ef4605b6404189ca78fac0608a6aadd00887cca40f7978c892bea2290978e395",
+    "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/MarketSupply.java": "739b97f01c25f762c512cff611611c156ae630b8c30cda9ff5c1ca5a9311af1f",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/RationalPrice.java": "5def572606bf02ece7fd56ae947555974fc3303452f46ac3c1aafc157f621600",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/policy/TradeRestrictions.java": "3a688a5cd3b937a162c5b32719b47e05e5075225a1b9021ec93853c81175872b",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/CommerceCommittedEvent.java": "c64b65ddb689084b41359e386eccac8da3763bb95fbc375a74beaaf7d7513148",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/NativeTradePaymentEvent.java": "24e0e41c41734235cef319c03c5a2a09c358dd445702324b860a56f7d79cef21",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/SandboxCommerce.java": "c9009bbe0666453c699b5bbc4041c8e37d78c1cc0c0627adb75963ffe836e081",
     "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/sandbox/SandboxDurability.java": "f601cf4e64fab6cff5de6d9516f52b4b27cd8c121c2a03ea6b634333b6b6a558",
-    "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml": "15f52f57e50c541bcda048b60616f9e6c39eabea5daab65e38f66783f4b42775",
+    "Mods/JEMCurrencyCore/src/main/resources/META-INF/mods.toml": "6a21702ada5f112fb9b3578a9de830a067fc8d9071bdbaaced87a622f789fb72",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/font/coins.json": "128ecb7ff1fa5b07a180d7c426cd04834e6165617222e5ede847e73b22c92024",
-    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json": "3fc6a86e623460a74d6220af09802e346ae0a469383671f62e488f15ac1a2976",
-    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json": "cd38e2da7c2c26f6c0078aabfc8a554e7c23bb444fa47fcdbbae7eb112c5f99a",
+    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json": "563355813ad2811f1b4d822f5cfe07a30d1805f23fd79fba133c37596e995dfd",
+    "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json": "fc761d9e868e369b0d118277c40caaf6d8b814b7bbf891954a95a313d565bc43",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/aether_coin.json": "4c3ac11a8e5088a22a14edaa3bf173809dd9a1ccfe4e55bc122535808857b57d",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/arcane_coin.json": "bc12550245b569ff98a834b239ca349b9273adccc2015eb5145b9eadbb6bf356",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/models/item/coin_base.json": "3ca679f39952f82709ed9bdd2709fab18d2675e841e5d2a2740788c629c84554",
@@ -2372,12 +2513,13 @@
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_front.png": "8a9b984ed2a6ba3cbfe3b404300f064726f6a79dbb0b30646bf9e975da5dea2b",
     "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/textures/item/silver_coin_rim.png": "12befe6edfb5ea54eee220ea04bab62752c25adb589fc558010221452d96b836",
     "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/building_purchase_prices.json": "8eeb70ddbb086aef02d22007169894f3672d372a6b36a2009d07aa43408924c2",
-    "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json": "9cd140165ce8c36bf0a4d690e68098dd04953d0e758f07d72df124495c554f8e",
+    "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json": "a94f89a57ac8f0f32059d2425017d6a1820002772748754d1acc823f898aebcd",
     "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_limits.json": "03cbaeef637161748ece1b6440c885c1bd71f1164346999d61e81d04f7b0f772",
     "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/market_search_terms.json": "70f589d3e2fcdbe342eff9078065633e9ef617b57c7436f6ba8fc7dbcbd3f5f8",
     "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json": "a02935861a7c9d9fb1e649dec1288358578177d91589f656ac4f4cc1226960ec",
     "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json": "173dfb1d554b50cd2e57c20ee189d8a804ad4e85e347b65206400f57ddcb32ab",
     "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/trade_restrictions.json": "48cdf909436a90ffde244da307d6005dba465401979230b3df4f75ae71a9752a",
+    "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/tags/items/tide_sale_fish.json": "4858cf540e25f66f9c6a608da1cba9d0e5742e696543d6d5aa5abc60e8d231ff",
     "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json": "4f7632fae968e7f559f0b49326619e57c6150896300310ee4950604f6129fa03",
     "Mods/JEMCurrencyCore/src/main/resources/pack.mcmeta": "d7bffbb0920c24cdc1201da135f172d49f03e4780a00be08474a6be3a0624b2f",
     "Mods/JEMCurrencyCore/tools/author_shipping_economy.py": "91122a97456a18db2fbe48eb9e3fe65acde05834b97fe92329c709d1e73dcaaf",
@@ -2391,16 +2533,16 @@
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxItemRenderer.java": "c9f60e35589b98a8ccc14720826ecea1338525b9e701b59ab30d4d0d48744abb",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxParticles.java": "bbbaa0385033c96bc0569c9edcc24c66a1c446385c3a151b562f0220cdf13820",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java": "12b5e6c8daf0776d083940db1c31c970844bb1b41757fd3c9280d4bcf3cf6e7a",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java": "918fdb973def395fde65b7b4c9ee773fb2ef0fed5978d34fbefe3b404394f288",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java": "933b49ce107f8e68d586d619dd7fb7c5acaefa39bff2bd411b233fe888850d9f",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java": "6687e023eb1ea29411aa2951f2b4932fd86717c43cadfdc91345f25cc40da134",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java": "442e23af1498c1258d580c9f3fbba772f5a19b49da7c4b3c88601cacee13c201",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java": "6977ace4b8de1bf98f99b3bbc15fe2ae06b4a2e48a947a067273985ab9560289",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyItems.java": "ccc45066562f672f4ee7c5686a21df2ae07b204ce88a5367d778d531db3580eb",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyMenus.java": "954d6c44fc4fe48ec15d452dcd226cdc406045eef484af2e94c368699de2bed4",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java": "db643cb9b2244683f1ad55694f69557768a5c66bd64a9134d66453cda1c59adf",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java": "38287de7a316c9bee999ec7408cca871ec9809b8d44fb503ea550949ca876b65",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java": "a520875b61b538b20cde57f64a45372829e86bdddedb8a344f015a8c3b48e8a4",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java": "7281355716720318110b76ae9f65d1603bed71a5ec98949a811d7d82ffdffc7a",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxItem.java": "f5b69bb91ed35bf082573b78f8a515dc929526de352810a3e45cf1d6554ba938",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java": "63fa5e5fb31db709d022fe2dafbc542d351dde0ee1edfc774296e089139000e9",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java": "7685db9650193a06c76d7e1b49c87e91e89c330bb1208722af2d99b6022560c8",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java": "9f51e9963eb871581db249d1fd0e359e4122a3cb56c34a95d384a5e85710a616",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java": "9ea8aab1c2a13c21d9741d33ad9b1c24eea60f57af0d7c08e2426eefa4498e55",
     "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml": "14c98c65e2374372b6da2cd281df2149a784a253c639aad50f31ee117397ecbd",
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json": "61d34b8e052db294abca1fb108f9a51e28d12247e8c938162f391145f2540eab",
@@ -2408,16 +2550,16 @@
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json": "64add4b7589fb57c406025bba1ec56929b91cc771b7262df26886b4d54a8f815",
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/block/shipping_station_atlas.png": "9c7aad1e4ae6cdf05f495fa0dbb89422876fdeab326ab2476e6c2ac7f5419210",
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/controls.png": "930c27a410aea842d92bb7a90dfa2f285101e93630e84bb5fc8c8301e7834769",
-    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png": "f425a2af954f7092b9af4f70d5b27ed3085bf1929c903b41f3eda0fbfe806716",
-    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png": "b8f6413be71711ab755793e8b820fc34eed1fe180bb06e72b50d7ac26d2fdac9",
+    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png": "a1f61121f134b1fe31ee9a1191295a010fb742326493d200d3322335e6960f4e",
+    "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png": "f6025a428d555a42b83f6c4ba55fbe12ed3e06df9c23f254d1e8ca985512b86d",
     "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/item/shipping_box.png": "8230f5150728e4a39e9f4c98f66af11953e3e5afec4ba8645dbee2f68d9c4720",
     "Mods/JEMEconomy/tools/author_building_supply.py": "d021a7e95f34f3679999d189d11999ab7fde68962006b874d56fd65398d25ca9",
     "Mods/JEMEconomy/tools/reconcile_economy.py": "8f60fe9341ad30cd8ea1fc2bce57f9ca109996666124da789f8869c52548899e",
     "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/DedicatedTestProfile.java": "7d57113e37362de0fd525d4d6ea7ef43b24c0c34f51d61a4b994a6c4a1235e47",
     "Mods/JEMIdentity/src/main/java/com/siirio/jemidentity/api/MinecraftDays.java": "5de124b4337dad5b3a9b58708e58d8b8c5b0397a1f030c62918870d5379c9ef8",
-    "Mods/JEMMenuSupport/build.gradle": "89a823ef505dc08fea77beee59c0d747cc74342de5e8f1349606c3c983fa767e",
-    "Mods/JEMMenuSupport/embed.gradle": "e2e3fccf69942bb4917939085c781ab6a06150cf01bac5e08c28c9ef079a63e6",
-    "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java": "029493498ed5d16894af8946a4ef279cfce44a92a489ceca8c7c56b546f358d1",
+    "Mods/JEMMenuSupport/build.gradle": "eca00db41dbc89a35f147785c32c3f88977b8af0e50e65081faafa08926d1368",
+    "Mods/JEMMenuSupport/embed.gradle": "1d47054042f41fffccd8d6305b8d843e303113e5bc9d08dbc62322a106f3f574",
+    "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java": "e6c162fecb9d0589a4167637651939b7efa396b1c56f4729745bcf421b497523",
     "Mods/JEMPackCore/build.gradle": "24037b93b0ff4b775df78d2df974b75b3943a42cdcf323cf96b58643889e2ce7",
     "Mods/JEMPackCore/src/main/advancements/manifest.json": "9d88639ec5d4849a1cea88a6de66550fdfd1622cfab3df8f86eaa6cb2cd87dd6",
     "Mods/JEMPackCore/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationDiggerItemMixin.java": "60b3fbb58750cb5063aa4d481817572573bb54338c6036d995a68682a043527a",
@@ -2436,7 +2578,7 @@
     "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json": "245e2abee528963c6fd06d4c58834931ef1f35d2f251eb7f99dcd2c2e5911724",
     "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json": "476863f6df99d6e62de962b542a632b4babb31e5225f1f4b370cae9e37a6fcf6",
     "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json": "b57d0a1fdbf35abeea5a2aefd222ef446c654e1b02df4ffada9f245a895912e9",
-    "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json": "05c4dfb88b0386fb20b40353a7b1a1d1478a7ebbf59aacbceed0443e1d302632",
+    "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json": "2b02c808187ad56cf375919ccccedc69250657a4f9a14a9fa8510ae4e8ca4cf2",
     "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json": "232f6e11be9eaab7de88671c09c0dcf10bc47f481ac95764d78a779e741e3a0d",
     "Mods/JEMPackCore/src/main/resources/jem_twelve_eyes/campaigns.json": "7eb81a4857be33a762de08a8850463a021be44a955aafd41f1cb5c0d2afc23ef",
     "Mods/JEMProfessions/build.gradle": "281a8be70c903d0d489513d5ac760f69856b9193b05e35b176149125fff301c5",
@@ -2555,16 +2697,19 @@
     "Mods/JEMRoles/src/main/resources/jem_roles.mixins.json": "38759916f300caea40d65e141e64b23b4cfc482fc13a003a08b8fde1bbb0d00e",
     "Mods/JEMServer/build.gradle": "bbd222f0ec5aacd4d4752274e6fe7e6957956ee75c938f079686239145268060",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java": "c59f45397e9c8b2ddbcc1fcd5245c2f6355c918f07b3fc58e3a790ac41948896",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/EventDefaultPack.java": "4767b0382607fb9be4e103631da57673b03b6a0191170a9e4b1acd21de8490fe",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/FishingBalancePack.java": "fd250885ee2634fce5aae11b4a6addbf3b6bca8f57905ee0a194a0464aeae98c",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java": "455bed6e02f1640e6b1d0ae61499d4ee3cbd615d683c1c578bff4436a7331ec4",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/Landmarks.java": "9f473bf8321a286f2f7fd3e9a589dbb5db56259a31dd512d2d7184b01e2b4ed7",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java": "4df0e410052e7dc100ee1a7ed4a26f34d94c3502ef0c70d993e70cfff696b0de",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java": "6434b7742c9ab88e6d7e6d665aa828a27a5b39b9ab4f5aa876e690dcef342515",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java": "e2f600d497b308b6ec8fe3ef62a88bf1dc4cb5cd9a28bd7fdf264a69f4176ab1",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/JeiItemLink.java": "81f239a2a3108ef48bcd4756403ea8532559875d7b1d6dbcdf6853409291b938",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PreviewPlayerEntity.java": "41b4007529204689c7aea2ce3e622f6addf250c967b6eddf34699d3dbca5f000",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpActionButton.java": "f6681d776a78db6cc7d30a6f5047c575c03ca49d3aae622325e5ecf7501280ec",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpGuiAssets.java": "bd34b7a5599dbd33da5ab6b1ea3ae2e72c73c9103c73b915337f0dfed55bc283",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java": "e74f9a402b1a6494e34000d54228ba2c9728e553e24a317ccfc924ce93bd9567",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "fca64a17133849c5a87b9e73210046f5fe07ee641129423e42722293f04cb2fe",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java": "799cb9930a9f637df07f5bbb838d5dfc9e2e81347b1063cfb92ef1fd3e57da84",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java": "4cd570cafc01ef6f36cd7ac9465bd938bca4cfeddb4c666bde5c5050b2721d2d",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemMenuScreen.java": "655ee46a8a7b4ff6294b45025d07907fdb3b50636490a4487fda4c963d0e4b41",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java": "03ff642323e78ba616830c441e64fa57ad4637247d34f6b7aa0c0445bd4c25e8",
@@ -2578,13 +2723,14 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java": "03d90d2c7611f0939d272c88e32f64bd10d76cefd1d97f5dfc9a20ccfc64d097",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java": "11fdc91b1be2a02b15beeef828496ee8449aee62a9c32863ce1b278efe941f96",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/HostedFightChatLinkMixin.java": "cd6d453449c7f78a77003bc821adfaa9dd41744af53eb33067780254bb92cde0",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java": "20cdd32cdd7aa0b14dc68a189bec60472d8e5d80ce89f6a56715b1c38a023466",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java": "d18c528725dcb7178cea92c25b7ae00357fa64b67dfc12addcb813a8c257f351",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/MapScreenMixin.java": "efa5fe452219be18dfb3ddb33b547ba2c323a997343018f1bd42756413354261",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointOptionMixin.java": "8c63658720c5343c1d97c036b0f33d2ececc61c4195ec14813038d997a32ac35",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointTeleportMixin.java": "8e408e230bdeaafc47d650b50bd56ea952155c73c367fe68fea358f8854a0205",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java": "e09d9f41929cd631ee256e6b636e89cbc1fcfbb3eb9d83a4e7e34a7f8d0d1adc",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java": "1e6ec7f9cfa2c2280afec7ab69b6aff94294de2a202a3d5a842e8d2aa8ee14fc",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HomePreview.java": "8927a92e2b708d0ae510c7a2c2c4a2b02a20a47c60662a872f4853a156244b00",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java": "3c586ee386eaeb9fd75e60baebc357e28c8d0a9899a07fd80760667aec723e9a",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java": "5073b49ef0699f434aa0d56ee07661e68c8cdc4ffe0841992332779799ea7b93",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java": "2017816643f23e9b20ea4bf4166795f0bc9c1f1339fe3432134bc99d832066fb",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java": "6ce5a5a289212236a64429398f57c038e7c47daaa555694ae89d00e2221aa5dd",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SettlementUiAction.java": "769f451af3543468f3d79b845c9f17c5b88b96f1fa1d6d00390f599779d20474",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java": "cb2962bb4c791cecfffd9dfeabac2c1efe32ddec7e1b54fb7a0551da15e46947",
@@ -2593,10 +2739,10 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpModuleOpen.java": "c041054d3e29eb12e1f0d4afdbf95e227945c6ee82e4824b68bdfb8370a88f2a",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java": "7d2e8f5464490d773eb8a54be28828eced3e83b9fcf74702e3dc97ec81a63106",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java": "f1ff648e7a3d6ab6b6cbaae729520416a710da3970ef88dbbb24c0483c158501",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java": "25be404ba5b7fafa0abd4fdccb6ef50ac7029faa5fd5c1eb0fd6c36f2625edd6",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java": "94e9e86dbb1ca2ce239b9af09fdcde168100080fe6cd5d13ebc9ce01662644a2",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java": "b28c233f499f57e4fad94b2949a4cd0e8bff579ad52ac5ff71a65e7271cadd1c",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java": "8b0065265a3ff9d99f951f77ee5e07d25fb3eb585c731a82330b3fc53f5e3103",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java": "250e9b9e404adc7b8b92a3f144d42daba77b722ede37bb2b09140e558146a899",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java": "f6578489ce08633a83a2474edd8e46aa66ae072fa6c738fe85de85fcc79e1495",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java": "767325504346af6602cebaed1bbd7de7cd4a60edcf6a45c2819de88df8e1c6de",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java": "544e2b3b415c6475bf31daafdb5a68c535040daf68f5e371096eba14bfaa9d42",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/TestProfileRuntime.java": "27bb96e93f5e2b5e89a0cf283ad8818b15e3b18a205b563d912fc90ee4ff8e6d",
@@ -2617,11 +2763,114 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java": "a5bac6ad5b87b62955ec1e4e45cb8c7244dd52e0ab1035f1aa8f0b1b28e9d595",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java": "52a7af40e0a46bdee7fc4208b7aac4cec9d5c2b3fbd6184be0dfa25a8479c8df",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java": "4551afcbcb7d0c05ea72ac553bf71bb41a703486d6e4443f732a7c13bb9fdc80",
-    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java": "80e3a6110a58fd581d1c60831a565550427ca712a2537d078c695702a286f091",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java": "5155c60a011bb0e458484cc799734dda18f6f3eb97528c60230e5d4faf31fcfc",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java": "f9973c6ee45ca8c54ef7dd3edf24bfffd6610654e93b2220f26439b5be5499ec",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java": "7284d0d46b8ab129529295c81468b1aa5f584c25a8ab348ffecf00b79c7a13c2",
-    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "a96decf8888274315bfdb700c2b613054de3901d1c66373517d070cc9f676b79",
-    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "70f418deb7d791824a7d50b1bc250e98a0c75a0f827f35607593659ce241b3ef",
+    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json": "29d0c210046fd60a4857c0b80016627d47bb805cd399ea6376cdc6e3ecdf4677",
+    "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json": "0c004d550de1b5f73e13a8deda07c6ce646f3bc4f6fde3602ea4303eb3bf7033",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/NOTICE.md": "d9d1a6d0b07caf29421ba279daf93e440b7d7bfa7f1a4560c957daa9ad72f3c6",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/arapaima.json": "3d05f61affc2f88223b343d814ff9c5d897edce7f1e46cb605e3950c6e07bf9c",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/black_crappie.json": "71bfc0779c5a18544b97f7ff849923b229b2bbab4d24348d091ff36383ec4328",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/blossom_bass.json": "4c53c4fdbb9b31303dd14389e9b67ba43c23d09cdac48bf0026a321dd1da099a",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/bluegill.json": "9dfbf494b9add53164b4d6bfd29bcc7bf3495c4dc15ba66065d3ffbab7deffc1",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/brook_trout.json": "fabb8554d5d859a6dc4fa6e3e1985f7b34c93e719513a999225cd08bcad02787",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/bull_shark.json": "8ea62c573ec424d31462aae64edcaf92934628c8438a7bd4b838c9df59fbe5de",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/carp.json": "0637b7f07a475d885761dbea879269833754fe7e91a5385e5441d2b5c5ae5abc",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/catfish.json": "8039b0cc521270064fa6ef08874264f665b251ab5f11139bb39d0487477b0e85",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/frostbite_flounder.json": "f41bc715b93e4bf13b0f1d8050f570b416eac7713642671d63e8a3dfb4d28b3b",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/guppy.json": "5c8e013cfc12b48b8854f8671ec8b8f5a8ecdcce0ac739597830d8b4121b0f6f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/largemouth_bass.json": "6bfdf51208ee01d84f550cd42bfdabf6be44543872c1c3317039c022dfe4ca1e",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/mirage_catfish.json": "d231699f4dd2810c28df90742866fd74e552b6165689ae8e2c010db0394dc968",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/mooneye.json": "73f8929762d0a1021a83a28c0e662f4a55750f437d5f5a96f6cb674ac0e86ee6",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/pike.json": "50d82003f768699300969993407ec17bf91e076e011f9df9e7166d58b487dcd5",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/rainbow_trout.json": "97ea8b8573bd4696b3300a3e61f1d8058d2800d07bf72b57b227e7ef2cfcd572",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/sand_tiger_shark.json": "9a10001a34d65ca256f4f1b665969431f01311faaceab4d48a60a5e7cdfd391c",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/slimy_salmon.json": "39fbdd2c07e17874826303303804ce70baa20739f576a36aa361419148203423",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/smallmouth_bass.json": "961d8a510105d01484bb7efd9f30b5828a178570bbd701dadbf605566c7f054d",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/sturgeon.json": "cc15112a912e84594bb823bddfa0b458bc0be09c9420d923210a49704aad1bf9",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/walleye.json": "4861bdaab5a3d6c89bd370f3dc4f7aeba95670978ce9c73aa2f5c48958acc580",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/white_crappie.json": "a7b5618053e4deefe250be4a58551520645a8ae1e1b9ae58a109eed54ff27e59",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/freshwater/yellow_perch.json": "adbd541b698931af09dfe59fbdd6b00f6d544fec6fb3fc44de3c3675b0c1cdc5",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/ash_perch.json": "61ed3136a8410515a4099cdac753b15a3d20f5f54d55e6a522d5993a6cdb1159",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/blazing_swordfish.json": "70bac013dcd0204cd4649241edb58b0e05a2609b1689bd24c37076df05a8a92f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/crimson_fangjaw.json": "9d6626a2e56efc2b4767ec2490417ee63f29c454027e0042bef5ac4f1e1f8e88",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/ember_koi.json": "6d1a953aa4f33c861f3e7eedee170f48b129cc6ffec0989583babbae692eccf2",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/inferno_guppy.json": "76ec5d538cd22f34545268dd48fe10a10cb587cbb8db71e6fd4d06b7477aeeb2",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/magma_mackerel.json": "a425870a7487244f9bd6890009fba2ca285cc3e0f93fab2ec4fe4795abcc3f01",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/obsidian_pike.json": "83e42227d91d983c923464a2e1d2163525246bc8802adb15c2266329dc9f304c",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/soulscale.json": "e20143c5d25bf2ee36ab6724392350a6801dea50bc65997a4c399d84e3f286a8",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/volcano_tuna.json": "88d9482e61fceed4398d2d2a374d63911527aa8d36c50587ff644b61c8ef67ff",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/warped_guppy.json": "a79b81a6ee4228bf60025ce7fc3ecf70a261a3db331a18ebcbfb650c3647fae2",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/lava/witherfin.json": "a96442e7d9f2ce732d5886e7e9a6cffa8b1c9cac63e8fa8146e066c68f7c265e",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/anchovy.json": "3bd90352b0b3f97cd8a09a088ba406bc8da924dd933bdbb6c59d13ec3e585dea",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/angelfish.json": "4f4d261ebff04003189062deed59390b69dbe8bb89c5c67272ed6081ac7de5f8",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/aquathorn.json": "61d6f0554fc43c034b29ee6f28ba4ae8a3e11f14c7cf271e05c9dec70d76dbd5",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/coelacanth.json": "b9179b6fa462bd382635680aebdf72aeefb61b6ef982653a45fc5967ea201248",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/flounder.json": "781b6124e68d028ec1df18175b35c7f0b82dd565914d634b8c3ffde1ed24e5ed",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/great_white_shark.json": "257b40aea59c660f038312709ac5c8c2cb08286c7d0c20f80f64c8ad191552c6",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/mackerel.json": "fd4819171239c1340401fb4809a774f4318c65e839866b03c66a5849ea79a5f2",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/mahi_mahi.json": "8f1d38f3ef3a56bb69937ae51f64426afa17dab5db7a39c9dc35ed6ff23526c8",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/manta_ray.json": "bc2af4ae74af333afe9540791c5987e8673c853b8582ce29ee66c6773ea1b8ba",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/marstilus.json": "664b935bcae3547c6e26c05701fee697dbaed759c36e3df4b7809aac1bb7003a",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/neptune_koi.json": "560b3e79ec0b89d645f86db3f673cca97d10cb9a4287d22c7a55ed3513f9638f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/ocean_perch.json": "22ec1d39371a3e2da7baa3e049a880a8c64f04524df424896a4c2d10892a754e",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/pluto_snail.json": "a8b748e8ac3cbd754be623f88c93942bc19971f537fb84a51ecd211b409c2b54",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/red_snapper.json": "69117ae210a432da1247049b9fd25a48fa4369f5ee89416c1f0383189e418645",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/sailfish.json": "b174cb5fdb9fdf75942c3294ed02b68bb641fd5512ac201b37da08c18c7f5ed0",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/saturn_cuttlefish.json": "1fd6dd1a8d223606aff13627072498ebcf920275dcf2b25045c6053b9d3c9861",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/shooting_starfish.json": "d7b4ea687f4728b73c0c91bf628a0a2531d3be8ee251edd7589cf66a7f8c72e2",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/snook.json": "97919042af3dba4b5136e071a25d80926b95a917e8a6cc8cbed59101d0581337",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/spore_stalker.json": "71284f8d5be7b3f0ea51c782694ee327ef3bcf0e03515a62b081c4224b7a2aa7",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/sun_emblem.json": "db6acd42a2eb85e27b5bd07a8340b40afd3d1476c2ffa147d7ef26de886b699f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/swordfish.json": "dc1a763884be9ac8860f2708e9d1847971718036592564360ce66a183a8a1eb8",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/tuna.json": "24171e8d6e053f2fa67f9e03e4b12c8ee8fabebd793ad53b750e06d389b218da",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/saltwater/uranias_pisces.json": "6306c867223d6773a6c80ce3dee725968534a991f6d1fa7a6e5be856bdef41b6",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/abyss_angler.json": "27354b2be224c997e0f02b8539ce192fca97b28bed41e2e7f613a377c0da9b1c",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/anglerfish.json": "4dae68103065141bc1a88821db9814bfe12b7e085a93379d16ef22e890684b92",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/bedrock_tetra.json": "e24fe70461e9659b0e489320a83927303a366dd190746d67a2b482961c5bd666",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/cave_crawler.json": "5b74c40b040a91762ece67434856ed583de175c7cf1610bdd985d2de58acd66a",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/cave_eel.json": "88db7499d9167d151292636f493e41c9289b9c48120d42452fe216768dc8547e",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/chasm_eel.json": "2b8352b46300a86918bf206138f8a8f06c4854c6238c00ecd91e9c3a9706fa85",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/crystal_shrimp.json": "aa50f7f647a0972033fe090d5fb058528f72d221518d3592e7c113bef33a5bd5",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/crystalline_carp.json": "bcd3e2d0975cb4436792c8f62606c35855fa718d88353cbe2094206d8841ecae",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/deep_grouper.json": "79db42bb88fef8205e509ce996ee400a2d9c02f38ba3be787522e3d84a982134",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/devils_hole_pupfish.json": "046b97d723d496887383ff83e18e6ef61632b30591c57b087049466a3dcc362f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/dripstone_darter.json": "66fed7e03a743ad2308cdda2c21723612bfc73e4c98197dfd5523e572c3c1cb7",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/echo_snapper.json": "66197726e67205dfdea8c766f23fa921882d78b75b602382fac8ed0108f0353c",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/gilded_minnow.json": "8a5a58e8ce7a359767e9284307b97686d466a7da58dc158a3907410268900e75",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/glowfish.json": "40a46c2b43eb1827585459705d57f3d7127786cd12ba9391550a3376fe607402",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/iron_tetra.json": "be12d77e95972e8b63975790dde3ee636be9fd5824d79cd3aa0e2b615ab48952",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/lapis_lanternfish.json": "55067e9d4d820af282c1d198f2eee4f489b4a883a4161240a62042705c803535",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/luminescent_jellyfish.json": "b3d30e51aaab6473653cace927a0d16e4ecb662247b44b99d1b3106a8bc08965",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/midas_fish.json": "0ebe2b0607cc2930e4c5a1cb81036f4938985498a39511645353b7197ec14ecf",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/underground/shadow_snapper.json": "d4f00ec499587e11bd3d2f003fccb039f8fc9e2537ea9734779d203da0322148",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/alpha_fish.json": "a8bca744b4618cfd48fc2426eb6b16e8de11c4d0ec54ec1edd1bfa5129e44766",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/amber_rockfish.json": "78ab703669c9c1e7f8187243f47c558a71115ea612f16895f8e778d9c011488f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/bedrock_bug.json": "f3e5fe85b566f1412c47c246967a4491363a813de96cf9cc07d43108c7ac252e",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/blue_neonfish.json": "460e315dd4db27aa45b663f40c47fa90001fa0d55770c27c8547908c7019499b",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/chorus_cod.json": "36195bcb953783b20ac1db7dad8fe4f64f51a48925ed9a80c502abcc0f1bd813",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/darkness_eater.json": "fd4cc8c1baa158f525e1a38c0ba369475e381942950f3eb170f9352c008f818f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/deep_blue.json": "8dd302e4ad3a9bd1ea1cc0d943325ec89773a44d8975682b8e7b9cadf5c2385a",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/dragon_fish.json": "101fcd5b87f616f0604656df43cbde6a0bfdd0b5d2dbc51240b4095f6daf02e1",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/dutchman_sock.json": "eeaca844ae565f85b5650e3980f50f76734df6630d22db897e2601b876fbcab7",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/elytrout.json": "d13513b6cee11b6b48d3b974f2562e7fad281ef94c4e53cd336a51bb8b3a129c",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/ender_glider.json": "0bd800fac32a89d3836f7970fa607e1683c44ef4fb4d709df50ce5e37067504a",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/enderfin.json": "0caa206ba7f86859367f68d18eda053be6946e1c3952c99d96d5f2b88922a0f0",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/endergazer.json": "771a9294604034f22a89e9d773b0394bd11a9b3b381e9b05afb96ac109a1e536",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/incandescent_larva.json": "5174f983952d37cfb05a49087143f99f01399218877954f6072f6ddf2fb00e8f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/judgment_fish.json": "86e950a71808acb148de6322aed5baa677ee9b7fc8c94e17dfe0d6f9f3dbbef0",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/mantyvern.json": "dfe3fbb729063614a8955b5f9ea3aeb3bf8b0713736fb10b3edbd4b9939dc9eb",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/nephrosilu.json": "3cd9f3e8e0fdfd8691bf7e9039ceed9edb01d527e54375ddf972c15e7a3ae3e5",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/pale_clubfish.json": "fc977e36c531784609aa8661d2b8b21162ce4942af2726ef99206b68bf095db5",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/pentapus.json": "a92a3a23a6c0080d24ea8b9eee8e639f946ad68aec188623ac23f5265aa15a52",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/red_40.json": "48e15a24a6894e8b97e829d5273a3e9df3da682844f49e9a1a9e5b4ed6366540",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/shadow_shark.json": "bdf637bc8e23e9e3a2b6bd8b1197326712e954d0cecb90582eb3f0da2cbf0333",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/sleepy_carp.json": "a647937a892f9e7b6b4a0afc1804e87d31034bbbde0be301c27d86364f7edbb7",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/snatcher_squid.json": "919e170682fe527d8532f8c6cdb8e8fd740cbcd2836abe96371749d07ca98df3",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/vengeance.json": "95f8f5292286eb955fb339b6f59d88befca598d2c40c6662a411ccdd163c058f",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/violet_carp.json": "235d5f08761d329793ce7d059c501d2138a2beebc19ef58dfff15032f60c150d",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/data/tide/fishing/fish/void/voidseeker.json": "4203d4fbe5167d8bd224eae36d7133320d05d2a47db45e765e99d0b6602e1fde",
+    "Mods/JEMServer/src/main/resources/builtin/fishing_balance/pack.mcmeta": "7481b0f6c6302ed0f09ee997fb9f4fc89cf7cc7c10094e6d4c07277041965969",
     "Mods/JEMServer/src/main/resources/jem_server.mixins.json": "4e9908e9485d4bf39379c8fd52ca340d58b6765348344bca16a15f74a1b1ee92",
     "Mods/JEMSettlements/build.gradle": "21424d01b7b4facad81a6255b1a7a7f09609be4bdba08e617ca16940d512edc8",
     "Mods/JEMSettlements/settings.gradle": "f8b891577df47e6452a03e7eff35b7b0a48a6cf1dd653568e810c6a5e7f1d948",
@@ -2822,13 +3071,13 @@
     "Mods/JEMVisualSandboxR3/settings.gradle": "f4f7ff9183af10c06ad8294f978a2dc75637309e0c762719c063b7fe44f5cf33",
     "Mods/JEMVisualSandboxR3/snapshot-sources.py": "1e6d80eef0e3fd7cd3f6ac3519a469c9e96396112ca692eb14d91394c92eb4f1",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/JemRacesSandbox.java": "568bb42e472a497043a46e32b4d1fe32349154f0ef3e410f115843e1382401f8",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "f3daaeb2c6371dee9dc77fd8a360cfb4093a213946bccebe2f29dd8b93570d79",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java": "8ec39852872c0139b5cf709cb9e05cd9dc81bd85fd8e39771a6e421bb5e6e005",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java": "56d4503752e626799a69076f6dd2eab7e96eba3f9e8c6f96efb8af67d91ef42e",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java": "f845b82dbd34913ee5b961889e786912e642315b0e1f1ff106f7f0788f5397d9",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java": "53469dc4fb66cc5a9dfe9ef6c2c756792b2a26d2ba270d3517c9b399b498432d",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java": "15e1f5794742b687afed9bbda011d2046ae570294e035d4e013f308818fc629a",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RacePanelMaterials.java": "7f046400fff809d1ad7b9a3164f060f3c3dda859411eba1ff475fd9b4b33af3f",
-    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java": "69b52848ec0ccfb8a36ad4d645db64c46502d9ed59227d0c0c519306422f92ae",
+    "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java": "aa3f66df99526e45f6189f456426c40fddd52cf7283e512b178a9b7f92e7e8b8",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/SculkScaleClient.java": "2602e4cc56543f298e8fb641374714c2c1712fb8ca1572f41b77b22734c6d226",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxIronsBridge.java": "c7f0a9952d559ce18a7db8f615cefdcb00be1425b6bd5d5b095b1e15524e0d48",
     "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/compat/irons/SandboxRacialSpell.java": "3c898181ebbb0e4f11dfb882d0510cd22ab8bcc3e4dc03abc2289fefedcbc476",
@@ -2954,8 +3203,10 @@
     "Mods/JEMVisualSandboxR3/src/sandbox/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java": "81bf01d9ca63d96bf2e88fa13f040ec236b7dd391ecef730441b00bb98dd763a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "b69c21e3f3b4621d8a2b97b6e3550eacfd6ba6f25e123c1945b75941df6f1c3a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java": "84181ca78a0c800d662f38795aa5acdcdb8a5867942c684becfcd2714b31bb94",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java": "cba0539765d99fdd0600e31388f70920405bd1bd2cffb10f57728d61d1361e82",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java": "2f7ed673a8ea2d4690581031e6573224ca7037426b613969641fc7acd4439620",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java": "8c581e210acd954156c655e3a3c29c597cd7b779e02301d327b0c9ed1ba1bd4b",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java": "b0ed11dc81a2d516c7422044add7375776a4619c2ef7c751d00c640c96d76c35",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java": "d8698a93e7d2373db72aaf4e3a5207fe6f1f0eb583cb1284447e156a571b2a5a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/GuardHitTracker.java": "892687e894a25608f5d3593ef198a1746006246616a006de57f510be628b2029",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/OrdinaryHostileScaler.java": "729980767df8c532c8463e4699a39ba6821053c9829995237ec56855009abeaf",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionArmor.java": "985cc58dd8b32ade07e59fa02fd234e851e632e0b1a5056660f288a930b51710",
@@ -2965,8 +3216,9 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/diagnostic/CombatCaptureTotals.java": "05fc0e1d8d45027c7300967a7c829c3de4a15d999082c0bb006943779a530613",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/diagnostic/CombatProbe.java": "2857fdd1fd610311632d950253f84c474b25f3437a7851ebae34c4acbafd817c",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPresentation.java": "46399a0ce74d3612bcdef2afb3c4fad3982d3fd2f4f792d7b615bdb652616353",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java": "cb8630121f6c05dafbd68ad9a214dd1995949ece10c7ac8d8e8e62cada556b82",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java": "6b8e5c5a18541b7351ed003c282dd37ad33c81d7b54f6fe9b47bb06caf034e85",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java": "18f56627e2800aeb4e3bcd20df2e4de3110843d9a192da7f53395fc3be358021",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java": "957ba6a952814e366b03fe6aaf610771c50cdffe05fd49e49288c694893d78d4",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java": "e4fd41d7ca7753d8a85fc298d776829b561bf303a949a4dee4a70f597a1ee3f6",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java": "6148df14344b0edd3da7f24df62a61331b4fd016e197532a327701792eebcf65",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CombatProbeMixin.java": "5271671d6cc82405062cb0aa1a3b03667635aa4c129bcab18377a26b76571f29",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java": "a9e8bbc34e76cf9363b51722618a17609239f498485f78282dbed054836bd302",
@@ -2979,6 +3231,7 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java": "9490105ac0f6d389b13dbac23025e2ef58ecfc1e0e84620d80981ad34c4108bc",
     "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json": "9ef366714315597bad9851bfea2d1a216ed5b19f77c492d32d20d624dbd4bc58",
     "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/ru_ru.json": "2aabb68260ce3f2ac8deb58e6483b4dba77b83f3f2ebce6b063c42ceda945c47",
+    "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/defaults/bosses/major_bosses.json": "3b0a62bb7f2bce4c4d2db002a4ead1ff028f65fd4684b7c85d5923cd88f183bb",
     "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json": "90ebdd56a3f1ac47ea67c2e3ca808cae789269dc3475571b66d9010aabb7e9ff",
     "Mods/JEMWorldBossTiers/src/test/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealingTest.java": "5912a1c3b455e5bc71c056c2b4de6c96c0f86bd58d28eeb74f588f7bd14231f1",
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
@@ -2989,7 +3242,7 @@
     "Server/run.bat": "4d42c275b005814be58b8819283f79a108876923e51cf63557b27caba4352f2a",
     "tools/check_power_system.py": "f48959a4ab3050de95d18ba4ae2beb35ec137ee96380ac2b2ba9ebecc70733ae",
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
-    "tools/jem.py": "842250e34ce4590fff174b96f77821ba60aedf3495d529fca766455aa8ea3a02",
+    "tools/jem.py": "b4c3977cfd6d7434e0601e035688f9ea7d437e4428c6faaa3f782a18a41591b8",
     "tools/tests/test_hosted_death_contract.py": "45f20c18eba714999f68f408c2e4b7d93ecc41379e6a45ac921544b338e07d91",
     "tools/tests/test_power_capabilities.py": "cf8bf9c98b8461d41979963e27dd7d36375b1fe14f3bbf9bfc4f62f93ed886af",
     "tools/workspace.json": "0a056528cf370bcbb73303540103394715d19d11f9438070c59b832852ff240c"

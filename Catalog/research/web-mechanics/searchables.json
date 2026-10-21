@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "mod_id": "searchables",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://modrinth.com/mod/searchables",
+      "publisher": "Jaredlll08",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Searchables-forge-1.20.1-1.0.3.jar",
+        "sha256": "c1a76e93886210574d3f298c0461241fb711e52ac22c7a04d3236840f29e6576",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "author_project",
+      "url": "https://modrinth.com/mod/searchables",
+      "publisher": "Searchables project authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "searchables:installed_role",
+      "kind": "compatibility",
+      "title": "Searchables role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Provides reusable filtering and auto-complete support for consuming interfaces; consumers define searchable records and user controls.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata",
+        "author_project"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: ${file.jarVersion}"
+    }
+  ]
+}

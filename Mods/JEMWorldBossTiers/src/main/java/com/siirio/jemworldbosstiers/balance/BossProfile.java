@@ -12,6 +12,8 @@ public record BossProfile(
         List<ResourceLocation> victoryAdvancementIds,
         boolean scalesWithWorldTier,
         boolean countsTowardWorldTier,
+        boolean hostedEncounter,
+        List<ResourceLocation> allyTags,
         double nativeThreat,
         String hpScalingSafety,
         Map<ResourceLocation, TierValues> attributes,
@@ -29,6 +31,7 @@ public record BossProfile(
 ) {
     public BossProfile {
         entityIds = List.copyOf(entityIds);
+        allyTags = List.copyOf(allyTags);
         victoryAdvancementIds = List.copyOf(victoryAdvancementIds);
         attributes = Map.copyOf(attributes);
     }

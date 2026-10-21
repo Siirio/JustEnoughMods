@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "mod_id": "bellsandwhistles",
+  "installed_version": "0.4.3-1.20.x",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/gJ5afkVv",
+      "publisher": "Alexander Weimer",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "bellsandwhistles:grab_bar",
+      "kind": "interaction",
+      "title": "Climb train grab bars",
+      "player_action": "Place an Andesite, Brass or Copper Grab Bar and climb it.",
+      "outcome": "Use a ladder-like block that the author also supports on trains.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Installed metadata reports 0.4.3 while artifact name says 0.4.5; identity mismatch retained for review."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Поднимитесь по поручню.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/bellsandwhistles.json."
+    },
+    {
+      "key": "bellsandwhistles:bogie_steps",
+      "kind": "interaction",
+      "title": "Fit bogie steps",
+      "player_action": "Attach Bogie Steps to the carriage.",
+      "outcome": "Provide a ladder-like step extending below its placement block.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Installed metadata reports 0.4.3 while artifact name says 0.4.5; identity mismatch retained for review."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Установите ступени вагона.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "bellsandwhistles:platform",
+      "kind": "crafting",
+      "title": "Build station platforms",
+      "player_action": "Craft or stonecut Station Platform blocks.",
+      "outcome": "Create platform edges sized for trains or subways.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Installed metadata reports 0.4.3 while artifact name says 0.4.5; identity mismatch retained for review."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Постройте платформу станции.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

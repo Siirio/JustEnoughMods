@@ -171,6 +171,7 @@ public final class SmpScreen extends Screen {
             pending = null;
             error = update.error();
             if (error.isEmpty()) {
+                if (action.equals("start")) closeLobby = true;
                 if (action.equals("message") && messageBox != null) messageBox.setValue("");
                 else if (!action.equals("invite")) clearForm();
                 if (action.equals("leave")) leaveAccepted = true;
@@ -617,12 +618,12 @@ public final class SmpScreen extends Screen {
         maxScroll = 0;
         text(g, Component.literal(detail.getString("title")), bodyX + 4, bodyY + 6, CREAM, bodyWidth - 8);
         var controls = new ArrayList<String>();
-        for (String action : List.of("join", "arrive", "ready", "leave", "dissolve", "start"))
+        for (String action : List.of("join", "arrive", "ready", "leave", "dissolve", "start", "cancel"))
             if (hasAction(actions, action)) controls.add(action);
         int buttonColumns = Math.max(1, controls.size());
         int buttonsY = bodyBottom + 9;
         int contentTop = bodyY + 25;
-        if (detail.getBoolean("leader") && !detail.getBoolean("canStart") && !detail.getString("startReason").isEmpty()) {
+        if (!detail.getString("state").equals("ACTIVE") && detail.getBoolean("leader") && !detail.getBoolean("canStart") && !detail.getString("startReason").isEmpty()) {
             var reason = font.split(Component.translatable("jem.smp.error." + detail.getString("startReason")), bodyWidth - 12);
             for (var line : reason) {
                 g.drawString(font, line, bodyX + 5, contentTop, MUTED, false);
@@ -733,7 +734,7 @@ public final class SmpScreen extends Screen {
             for (int i = 0; i < controls.size(); i++) {
                 String action = controls.get(i);
                 int bx = bodyX + i * (bw + GAP);
-                String label = action.equals("dissolve") ? "leave" : action;
+                String label = action.equals("cancel") ? "finish_encounter" : action.equals("dissolve") ? "leave" : action;
                 if (action.equals("ready") && model.hasUUID("viewer") && members.getCompound(model.getUUID("viewer").toString()).getBoolean("ready")) label = "unready";
                 if (action.equals("start") && !detail.getBoolean("canStart")) disabledButton(g, bx, buttonsY, bw, "start", detail.getString("startReason"), mx, my);
                 else button(g, bx, buttonsY, bw, 24, label, () -> invoke(action), mx, my);
@@ -1424,6 +1425,7 @@ public final class SmpScreen extends Screen {
         if (action.equals("roles") || action.equals("professions")) { SmpSidebar.openExternal(action); return; }
         if (action.equals("invite") && tab.equals("parties")) { openForm("invite"); return; }
         if (action.equals("dissolve")) { openForm("dissolve_confirm"); return; }
+        if (action.equals("cancel") && tab.equals("parties") && model.getCompound("detail").getString("state").equals("ACTIVE")) { openForm("forfeit_confirm"); return; }
         if (Set.of("approve", "remove", "transfer").contains(action) && participant != null) {
             var args = new JsonObject();
             args.addProperty("player", participant.toString());
@@ -1468,7 +1470,7 @@ public final class SmpScreen extends Screen {
             messageBox = new MultiLineEditBox(font, bodyX + 8, bodyY + 52, Math.max(80, bodyWidth - 16), Math.max(72, bodyBottom - bodyY - 94), Component.translatable("jem.smp.field.message"), Component.translatable("jem.smp.message_placeholder"));
             messageBox.setCharacterLimit(256);
             addWidget(messageBox);
-        } else if (!Set.of("invite", "dissolve_confirm").contains(action) || !tab.equals("parties")) field("player", "");
+        } else if (!Set.of("invite", "dissolve_confirm", "forfeit_confirm").contains(action) || !tab.equals("parties")) field("player", "");
     }
 
     private void choice(String name, List<String> values) {
@@ -1520,13 +1522,14 @@ public final class SmpScreen extends Screen {
     private void renderForm(GuiGraphics g, int mx, int my, float partial) {
         if (form.equals("invite") && tab.equals("parties")) { renderInvites(g, mx, my); return; }
         if (form.equals("message")) { renderMessageForm(g, mx, my, partial); return; }
-        if (form.equals("dissolve_confirm")) {
+        if (form.equals("dissolve_confirm") || form.equals("forfeit_confirm")) {
+            boolean forfeit = form.equals("forfeit_confirm");
             int y = bodyY + 12;
-            for (var line : font.split(Component.translatable("jem.smp.dissolve_confirm"), Math.max(20, bodyWidth - 16))) {
+            for (var line : font.split(Component.translatable(forfeit ? "jem.smp.forfeit_confirm" : "jem.smp.dissolve_confirm"), Math.max(20, bodyWidth - 16))) {
                 g.drawString(font, line, bodyX + 8, y, CREAM, false); y += 12;
             }
             int w = Math.max(30, (bodyWidth - 8) / 2);
-            button(g, bodyX, y + 14, w, 24, "confirm", () -> send("dissolve", new JsonObject()), mx, my);
+            button(g, bodyX, y + 14, w, 24, "confirm", () -> send(forfeit ? "cancel" : "dissolve", new JsonObject()), mx, my);
             button(g, bodyX + w + 8, y + 14, w, 24, "cancel", this::clearForm, mx, my);
             return;
         }

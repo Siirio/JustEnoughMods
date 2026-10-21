@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "mod_id": "shutterup",
+  "installed_version": "1.1.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/shutter-up",
+      "publisher": "Shutter Up author",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "shutterup:shutter",
+      "kind": "interaction",
+      "title": "Operate a window shutter",
+      "player_action": "Place a shutter beside a window and right-click it.",
+      "outcome": "Open or close the decorative shutter, whose model responds to surrounding obstructions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Установите оконные ставни.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/shutterup.json."
+    },
+    {
+      "key": "shutterup:wood",
+      "kind": "integration",
+      "title": "Match an added wood type",
+      "player_action": "Use Shutter Up together with Every Compat.",
+      "outcome": "Generate matching shutters for supported modded wood types.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подберите ставни под древесину.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

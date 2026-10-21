@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "mod_id": "zipline",
+  "installed_version": "1.3.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://github.com/evanbones/Ziplines-Rezipped",
+      "publisher": "evanbones / Tomate0613",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "zipline:ride",
+      "kind": "interaction",
+      "title": "Ride a supported cable",
+      "player_action": "Hold a supported attachment tool, aim at a compatible chain and hold right-click.",
+      "outcome": "Attach to the cable and zip along it; looking influences travel direction.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Exact installed mods.toml points to evanbones/Ziplines-Rezipped; original Fabric project was excluded as owning source."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Прокатитесь по цепи.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "zipline:detach",
+      "kind": "interaction",
+      "title": "Leave the zipline",
+      "player_action": "Jump or release right-click while riding.",
+      "outcome": "Detach from the line, with momentum behavior controlled by configuration.",
+      "registry_refs": [],
+      "depends_on": [
+        "zipline:ride"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Exact installed mods.toml points to evanbones/Ziplines-Rezipped; original Fabric project was excluded as owning source."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Спрыгните с зиплайна.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "zipline:tool",
+      "kind": "integration",
+      "title": "Choose attachment tools",
+      "player_action": "Add an item to the zipline attachment tag.",
+      "outcome": "Allow that tool to attach to supported cables; the mod supplies no cables itself.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Exact installed mods.toml points to evanbones/Ziplines-Rezipped; original Fabric project was excluded as owning source."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выберите инструмент для зиплайна.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

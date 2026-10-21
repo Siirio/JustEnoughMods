@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "mod_id": "gpumemleakfix",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/fix-gpu-memory-leak",
+      "publisher": "Someaddon",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/gpumemleakfix-1.20.1-1.8.jar",
+        "sha256": "a7019442f1b07b1a4a875fe404d04d162905cc7fd42e0b3c843aefc7b39efc46",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "gpumemleakfix:installed_role",
+      "kind": "compatibility",
+      "title": "Gpu memory leak fix role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Targets GPU-memory leaks in the installed client stack; its presence does not constitute a measured reduction in this pack's GPU memory.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: ${file.jarVersion}"
+    }
+  ]
+}

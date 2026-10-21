@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "mod_id": "fairylights",
+  "installed_version": "7.0.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/fairy-lights",
+      "publisher": "pau101",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "fairylights:craft",
+      "kind": "crafting",
+      "title": "Make a patterned light strand",
+      "player_action": "Combine individual lights with the hanging-light recipe; choose string or a stick and optional glowstone.",
+      "outcome": "Create a colored sequence with slack or a straight connection and optional twinkling.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создайте узор гирлянды.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/fairylights.json."
+    },
+    {
+      "key": "fairylights:hang",
+      "kind": "interaction",
+      "title": "Connect two fasteners",
+      "player_action": "Right-click a hanging-light item on one block face and then another face or fastener.",
+      "outcome": "Hang a strand between its attachment points.",
+      "registry_refs": [],
+      "depends_on": [
+        "fairylights:craft"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Повесьте гирлянду между опорами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "fairylights:adjust",
+      "kind": "interaction",
+      "title": "Adjust a strand",
+      "player_action": "Right-click a strand with string or a stick.",
+      "outcome": "Increase or decrease its slack; empty interaction can switch hanging lights on or off.",
+      "registry_refs": [],
+      "depends_on": [
+        "fairylights:hang"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте провисание гирлянды.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

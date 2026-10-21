@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexSorting;
 import net.minecraft.client.Minecraft;
-import com.siirio.jemmenus.client.VanillaGuiPlayers;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.util.Mth;
 import org.joml.Matrix3f;
@@ -98,7 +97,7 @@ final class RaceStageRenderer {
             // Resolve through the dispatcher, then render only the live entity.
             // Skipping dispatcher.render avoids world shadows, fire and hitboxes
             // without changing any of the dispatcher's corresponding flags.
-            RenderSystem.runAsFancy(() -> VanillaGuiPlayers.render(player, 0, poses, buffers, 15728880));
+            RenderSystem.runAsFancy(() -> dispatcher.getRenderer(player).render(player, 0, 0, poses, buffers, 15728880));
             buffers.endBatch();
         } finally {
             player.yBodyRot = body; player.yBodyRotO = oldBody;

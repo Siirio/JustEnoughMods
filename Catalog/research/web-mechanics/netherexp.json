@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "mod_id": "netherexp",
+  "installed_version": "2.3.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansion",
+      "publisher": "ThatJadenXgamer",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "candle_wiki",
+      "url": "https://netherexp.wiki.gg/wiki/Treacherous_Candle",
+      "publisher": "Official Jaden's Nether Expansion Wiki",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "flame_wiki",
+      "url": "https://netherexp.wiki.gg/wiki/Treacherous_Flame",
+      "publisher": "Official Jaden's Nether Expansion Wiki",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "core_wiki",
+      "url": "https://netherexp.wiki.gg/wiki/Shotgun_Core",
+      "publisher": "Official Jaden's Nether Expansion Wiki",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "apparition_wiki",
+      "url": "https://netherexp.wiki.gg/wiki/Apparition",
+      "publisher": "Official Jaden's Nether Expansion Wiki",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/jadens-nether-expansion",
+      "publisher": "ThatJadenXgamer; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar",
+        "sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+        "resource": "data/netherexp/recipes/smithing/pump_charge_shotgun.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "netherexp:candle_gauntlet",
+      "kind": "combat",
+      "title": "Protect a Treacherous Candle through its gauntlet",
+      "player_action": "Light the Sanctum's Treacherous Candle with flint and steel and defend it through the waves.",
+      "outcome": "A successful defense yields Treacherous Flames; the supporting block sets difficulty.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "netherexp:treacherous_candle"
+        },
+        {
+          "registry": "structures",
+          "id": "netherexp:sanctum"
+        },
+        {
+          "registry": "items",
+          "id": "netherexp:treacherous_flame"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "candle_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Защити предательскую свечу до конца испытания.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.3.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "netherexp:brazier_chest",
+      "kind": "acquisition",
+      "title": "Unlock a Brazier Chest with a flame",
+      "player_action": "Spend a Treacherous Flame on a Brazier Chest inside the Sanctum.",
+      "outcome": "The locked reward container becomes available.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "netherexp:treacherous_flame"
+        },
+        {
+          "registry": "blocks",
+          "id": "netherexp:brazier_chest"
+        }
+      ],
+      "depends_on": [
+        "netherexp:candle_gauntlet"
+      ],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "flame_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Открой жаровенный сундук предательским пламенем.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.3.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "netherexp:shotgun_core",
+      "kind": "crafting",
+      "title": "Craft a Shotgun Fist from an artifact",
+      "player_action": "Find a Shotgun Core in Brazier Chest loot and use its supported recipe.",
+      "outcome": "The core acts as a reusable artifact ingredient for shotgun equipment.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "netherexp:shotgun_core"
+        },
+        {
+          "registry": "items",
+          "id": "netherexp:shotgun_fist"
+        }
+      ],
+      "depends_on": [
+        "netherexp:brazier_chest"
+      ],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "core_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди ядро дробовика и создай кулак-дробовик.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.3.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "netherexp:apparition_possession",
+      "kind": "combat",
+      "title": "Account for Apparition possession",
+      "player_action": "Watch which victim an Apparition slays before choosing how to engage its new form.",
+      "outcome": "Possession can turn skeletons, striders, magma cubes or blazes into distinct threats.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "netherexp:apparition"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "apparition_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переживи столкновение с одержимым существом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.3.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "netherexp:pump_upgrade",
+      "kind": "crafting",
+      "title": "Upgrade a Shotgun Fist at a smithing table",
+      "player_action": "Use the native Pump-Charge upgrade recipe with the template, Shotgun Fist and Treacherous Flame.",
+      "outcome": "The smithing data produces a Pump-Charge Shotgun.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "netherexp:shotgun_fist"
+        },
+        {
+          "registry": "items",
+          "id": "netherexp:pump_charge_shotgun"
+        },
+        {
+          "registry": "items",
+          "id": "netherexp:treacherous_flame"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Улучши кулак-дробовик до помпового дробовика.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar; SHA256 97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb; entry data/netherexp/recipes/smithing/pump_charge_shotgun.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    }
+  ]
+}

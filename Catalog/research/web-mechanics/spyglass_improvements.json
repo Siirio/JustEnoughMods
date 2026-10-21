@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "mod_id": "spyglass_improvements",
+  "installed_version": "1.5.12b",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/spyglass-improvements",
+      "publisher": "juancarloscp52",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "spyglass_improvements:zoom_hotkey",
+      "kind": "interaction",
+      "title": "Use quick spyglass access and variable zoom",
+      "player_action": "Use the documented Z quick-access binding and scroll the mouse wheel while scoping.",
+      "outcome": "The spyglass opens quickly and its magnification can be adjusted.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Rebindings and the installed location requirements for the spyglass need confirmation.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "spyglass_improvements:scope_presentation",
+      "kind": "interaction",
+      "title": "Adjust the scoped view",
+      "player_action": "Configure overlays, crosshair hiding and smooth camera.",
+      "outcome": "The scope's presentation can be personalized.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "spyglass_improvements:equipment_integration",
+      "kind": "compatibility",
+      "title": "Use supported equipment-slot integration",
+      "player_action": "Inspect Curios support for the installed Forge release before equipping the spyglass in an accessory slot.",
+      "outcome": "The project documents equipment-slot integrations, but newer Accessories/Curios Continuation instructions are not automatically valid for 1.20.1.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

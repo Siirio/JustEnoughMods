@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "mod_id": "epic_fight_avalon",
+  "installed_version": "20.12.6.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/epic-fight-avalon",
+      "publisher": "merlin204",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "epic_fight_avalon:animation_library",
+      "kind": "integration",
+      "title": "Use an addon built on Avalon",
+      "player_action": "A developer registers frame-based animations and shared animation events through the library.",
+      "outcome": "Dependent addons can reuse registration helpers and animation classes with multi-hitbox damage detection.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed 20.12.6.4 precedes the advertised 20.12.6.5; API and dependent-mod compatibility must be version-matched.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Avalon is an animation library, not an independent player quest. The consuming weapon/skill addon owns combat actions and completion signals."
+    }
+  ]
+}

@@ -190,10 +190,19 @@ public final class EconomyApi {
         final String selectedSearch = search;
         final String selectedCategory = category.contains("_") ? category.substring(0,category.indexOf('_')) : category;
         MarketSavedData market = MarketSavedData.get(player.getServer());
-        var listings = com.siirio.jemeconomy.policy.MarketSupply.listings(player.getServer()).stream()
-                .filter(row -> com.siirio.jemeconomy.policy.MarketSupply.matchesCategory(row, selectedCategory))
+        var ledger=EconomySavedData.get(player.getServer());
+        long reserve=ledger.balance(SystemAccount.NPC_MARKET.id());
+        var listings = com.siirio.jemeconomy.policy.MarketSupply.listings(player.getServer(), selectedCategory).stream()
                 .filter(row -> com.siirio.jemeconomy.policy.MarketSearch.matches(row, selectedSearch))
-                .sorted(Comparator.comparing(row -> row.id().toString())).toList();
+                .filter(row -> {
+                    var policy=row.policy();
+                    if(policy.buyable()&&market.purchaseRemaining(player.getServer(),principal.get().accountId(),policy)>=orderQuantity)return true;
+                    if(!policy.sellable()||reserve<=0||market.accountItemRemaining(player.getServer(),principal.get().accountId(),policy)<orderQuantity
+                            ||market.globalItemRemaining(player.getServer(),policy)<orderQuantity)return false;
+                    var price=policy.salePrice(orderQuantity,market.multiplier(player.getServer(),policy.demandGroup()));
+                    var quote=ledger.quoteSale(principal.get().accountId(),price.numerator(),price.denominator());
+                    return quote.payout()>0&&quote.fundingRequired()<=reserve;
+                }).toList();
         int pageSize = 12;
         int pages = Math.max(1, (listings.size() + pageSize - 1) / pageSize);
         int page = Math.max(0, Math.min(requestedPage, pages - 1));
@@ -297,7 +306,7 @@ public final class EconomyApi {
         if (principal.isEmpty()) return new NpcSaleResult(NpcSaleStatus.UNAUTHENTICATED, 0L, 0);
         if (optional.isEmpty() || !optional.get().sellable()) return new NpcSaleResult(NpcSaleStatus.NONE, 0L, 0);
         int held = 0;
-        for (ItemStack stack : seller.getInventory().items) if (ItemStack.isSameItemSameTags(stack, offered)) held += stack.getCount();
+        for (ItemStack stack : seller.getInventory().items) if (ItemPolicyRegistry.matchesSaleGoods(offered,stack)) held += stack.getCount();
         if (held < quantity) return new NpcSaleResult(NpcSaleStatus.INVENTORY_CHANGED, 0L, 0);
         var policy = optional.get(); MarketSavedData market = MarketSavedData.get(seller.getServer());
         var allowed = market.allowanceRational(seller.getServer(), principal.get().accountId(), policy, quantity);
@@ -314,7 +323,7 @@ public final class EconomyApi {
         if (transfer.status() != TransferResult.Status.COMMITTED && transfer.status() != TransferResult.Status.REPLAYED) return new NpcSaleResult(NpcSaleStatus.UNAVAILABLE, 0L, 0);
         if (transfer.status() == TransferResult.Status.COMMITTED) {
             int remaining = allowed.units();
-            for (ItemStack stack : seller.getInventory().items) if (remaining > 0 && ItemStack.isSameItemSameTags(stack, offered)) { int take = Math.min(remaining, stack.getCount()); stack.shrink(take); remaining -= take; }
+            for (ItemStack stack : seller.getInventory().items) if (remaining > 0 && ItemPolicyRegistry.matchesSaleGoods(offered,stack)) { int take = Math.min(remaining, stack.getCount()); stack.shrink(take); remaining -= take; }
             var id = ForgeRegistries.ITEMS.getKey(offered.getItem());
             if (id == null || !market.commit(seller.getServer(), key, principal.get().accountId(), java.util.Map.of(id, allowed.units()), allowed.payout())) {
                 return new NpcSaleResult(NpcSaleStatus.QUARANTINED, allowed.payout(), allowed.units());

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "mod_id": "quickskin",
+  "installed_version": "2.6.2.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/quick-skin",
+      "publisher": "The Plum Team",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "quickskin:skin_library",
+      "kind": "interaction",
+      "title": "Change skin from the in-game library",
+      "player_action": "Open Quick Skin from the title or pause menu, import a local skin or retrieve one by username, and select it.",
+      "outcome": "The chosen appearance can be managed in-game, including Classic/Slim model selection.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "This is The Plum Team Quick Skin, not the unrelated Ryhon keybinding mod named quickskin.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "quickskin:cape_library",
+      "kind": "interaction",
+      "title": "Choose a static or animated cape",
+      "player_action": "Select a built-in cape or import a compatible static/GIF cape in the cape menu.",
+      "outcome": "The chosen cape can animate using a generated texture atlas; playback and resource limits are configurable.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "quickskin:format_compatibility",
+      "kind": "compatibility",
+      "title": "Check imported skins and renderer integrations",
+      "player_action": "Inspect legacy/HD skin normalization and the version's supported player-model integrations.",
+      "outcome": "The project describes import normalization and preview scaling; advertised CPM/Ears/other integrations require version matching.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "A skin change is presentation, not account identity or authentication.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

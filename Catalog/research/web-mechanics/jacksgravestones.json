@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "mod_id": "jacksgravestones",
+  "installed_version": "1.0.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/gravestones-jacks-gravestone-mod",
+      "publisher": "Jack_853",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "jacksgravestones:death_recovery",
+      "kind": "interaction",
+      "title": "Recover inventory from a death gravestone",
+      "player_action": "After an ordinary death, return to the automatically created gravestone and recover stored inventory.",
+      "outcome": "The mod preserves items against normal despawn or lava loss.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вернись к своему надгробию и забери вещи.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author overview establishes storage/recovery but not ownership checks or exact input. Do not deliberately create a death quest or bypass JEM encounter elimination."
+    }
+  ]
+}

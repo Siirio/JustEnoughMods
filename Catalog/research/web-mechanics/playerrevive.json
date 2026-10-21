@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "mod_id": "playerrevive",
+  "installed_version": "2.0.31",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/playerrevive",
+      "publisher": "CreativeMD",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "playerrevive:revive_window",
+      "kind": "interaction",
+      "title": "Help a downed teammate before death completes",
+      "player_action": "Approach a teammate in PlayerRevive's recoverable state and use its installed revive interaction before the configured window expires.",
+      "outcome": "Upstream provides a limited rescue window instead of immediately finalizing every fatal incident.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The project page does not specify the interaction key or full 2.0.31 rules; do not invent them.",
+        "JEM hosted-boss actual death must still eliminate immediately; this research does not override that canonical rule.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Distinguish downed, revived and actual-death transitions from native PlayerRevive/Forge signals before quest design. A health threshold alone is not a safe detection mechanism."
+    }
+  ]
+}

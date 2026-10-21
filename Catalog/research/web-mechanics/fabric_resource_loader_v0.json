@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "mod_id": "fabric_resource_loader_v0",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_module",
+      "url": "https://github.com/Sinytra/ForgifiedFabricAPI",
+      "publisher": "FabricMC / Sinytra",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/txnilib-forge-1.0.24-1.20.1.jar!/META-INF/jars/fabric-api-0.92.2+1.11.12+1.20.1.jar!/META-INF/jarjar/fabric-resource-loader-v0-0.11.10+bcd08ed377.jar",
+        "sha256": "2b4af95a0a874ec79f6005529b5cb8ac058b2010b01d8ec5a4909f53e23314b1",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "upstream_family",
+      "url": "https://github.com/FabricMC/fabric-api",
+      "publisher": "FabricMC",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "fabric_resource_loader_v0:module_contract",
+      "kind": "integration",
+      "title": "fabric resource loader v0 integration role",
+      "player_action": "No separate player interaction; a consuming mod calls this API.",
+      "outcome": "Loads asset/data resource packs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed embedded module metadata supplies the specific role; the public repository describes the API family.",
+        "This Forge pack contains Forgified API modules; their presence is not permission to install arbitrary Fabric artifacts.",
+        "No independent survival objective applies to an API module."
+      ],
+      "source_ids": [
+        "installed_module",
+        "upstream_family"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Source locator includes the exact outer artifact and nested JAR path. Runtime API consumption and loader resolution were not exercised."
+    }
+  ]
+}

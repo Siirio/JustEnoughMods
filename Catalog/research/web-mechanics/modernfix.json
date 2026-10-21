@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "mod_id": "modernfix",
+  "installed_version": "5.27.77+mc1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://modrinth.com/mod/modernfix",
+      "publisher": "embeddedt",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/modernfix-forge-5.27.77%2Bmc1.20.1.jar",
+        "sha256": "d4be9281c569eb761a5764a27c7733e6cb6a34adaff5392b711edf09bba32636",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "author_project",
+      "url": "https://modrinth.com/mod/modernfix",
+      "publisher": "ModernFix project authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "narrated_guide",
+      "url": "https://www.youtube.com/watch?v=xOxQlVHakbM&t=684",
+      "publisher": "Aarods",
+      "scope": "youtube_transcript",
+      "reviewed_on": "2026-10-21",
+      "video_evidence": {
+        "language": "es",
+        "caption_kind": "automatic",
+        "start_seconds": 684,
+        "end_seconds": 818,
+        "transcript_sha256": "2b66a35edc50ef537fb9bb93a090f3b5572e8012d91465000676e4c5fc8f21f8"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "modernfix:installed_role",
+      "kind": "compatibility",
+      "title": "ModernFix role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Improves startup and memory behavior and applies targeted fixes. Optional dynamic-resource changes are configurable and upstream recommendations do not authorize enabling them in this pack.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata",
+        "author_project"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 5.27.77+mc1.20.1"
+    },
+    {
+      "key": "modernfix:guide_corroboration",
+      "kind": "compatibility",
+      "title": "Narrated guide corroboration with loader caveat",
+      "player_action": "Compare the narrated chapter with installed author documentation before changing a setting.",
+      "outcome": "The guide treats dynamic resource loading as optional and potentially incompatible.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The 2025-11-20 video discusses NeoForge and multiple Minecraft versions; it cannot establish an installed Forge 1.20.1 option, benchmark or exact implementation.",
+        "Automatic Spanish captions can misrecognize names; the author project and installed static source remain necessary corroboration."
+      ],
+      "source_ids": [
+        "narrated_guide",
+        "installed_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null
+    }
+  ]
+}

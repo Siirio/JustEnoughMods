@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "change_id": "shipping.payment-session-and-native-menu-20261021",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:shipping_box"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "jem_economy:shipping_box"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_shipping_market_repair",
+    "priority": 650
+  },
+  "change": {
+    "summary": "Repair native shipping menu synchronization and retain funded physical payment until collected.",
+    "modifiers": [
+      {
+        "property": "shipping.client_menu",
+        "operation": "replace",
+        "before": "Client slots reused the client world block entity; server-only validity rejected pickups and incoming slot updates.",
+        "after": "Separate native SimpleContainer/SimpleContainerData projection receives authoritative native slot/property sync; snapshot all menu properties once per server tick; bounded preview refresh at broadcast."
+      },
+      {
+        "property": "shipping.presentation",
+        "operation": "replace",
+        "before": "Backgrounds contained baked controls; atlas used incorrect row stride; labels overlapped.",
+        "after": "Keep authored native inventory/slot art, remove baked controls, correct 25px atlas rows, independent press state, fitted labels and wrapped status; no world launch claimed."
+      },
+      {
+        "property": "shipping.payment",
+        "operation": "replace",
+        "before": "New transactions set LedgerOnly=true and sellAndCollect immediately collected funds.",
+        "after": "New transactions use existing funded physical issuance journal and leave stamped Coins in 9 payment slots. Existing LedgerOnly transaction recovery remains compatible. Button sells or collects existing payment; normal Escape/inventory close blocked until payment empty."
+      },
+      {
+        "property": "shipping.payment_security",
+        "operation": "replace",
+        "before": "Closing could return/stash output and release visitor; owner break allowed; no explicit explosion/fire contract.",
+        "after": "Persist existing seller account and visitor UUID; pending payment/in-flight journal blocks manual acquisition, all player breaks and release. Forced close/death/disconnect retains exclusive session and automatically resumes only authenticated same account near loaded box with default inventory menu. No forced teleports or overrides of another screen. Explosion and mob destruction denied, nonflammable, no fire spread. Piston remains blocked."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy shipping container",
+    "kind": "source_owned_correction",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Docs/releases/2026-10-21-shipping-market-repair.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Repair native shipping menu synchronization and retain funded physical payment until collected.",
+    "decision_source": "User requests smooth shipping, visible quote and physical payment, prohibits normal closing before collection, opening/breaking while unclaimed, explosions and burning. Codex chooses native projection/cache and persistent exclusive forced-close recovery without new financial authority."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_requested_repair",
+    "summary": "Repair native shipping menu synchronization and retain funded physical payment until collected.",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_requested_repair",
+      "summary": "Repair native shipping menu synchronization and retain funded physical payment until collected.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEMEconomy shipping container",
+      "CurrencyCore funded physical ledger",
+      "native slot synchronization",
+      "shipping GUI and block lifecycle"
+    ],
+    "relations": [],
+    "notes": [
+      "Existing schema, identity, ledger, provenance, native mod owners and unrelated gameplay remain authoritative.",
+      "Exact full artifacts synchronized, local native generation56 applied to test jem and MineRENT generation10 published with content token43f6ddb. See Docs/releases/2026-10-21-shipping-market-repair.json for final installation and release boundary."
+    ],
+    "unresolved": [
+      "Actual gameplay/GUI and player acceptance remain unobserved; no automated tests or gameplay launch."
+    ]
+  }
+}

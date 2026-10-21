@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "mod_id": "siegeweapons",
+  "installed_version": "0.2.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://github.com/talhanation/wiki/wiki/Siege-weapons-Wiki",
+      "publisher": "talhanation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "siegeweapons:table",
+      "kind": "crafting",
+      "title": "Build a siege engine",
+      "player_action": "Use a Siege Table to craft siege equipment.",
+      "outcome": "Produce the mod's catapult or ballista through its dedicated workstation.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Постройте осадную машину.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/siegeweapons.json."
+    },
+    {
+      "key": "siegeweapons:catapult",
+      "kind": "combat",
+      "title": "Aim a catapult",
+      "player_action": "Use movement controls to aim, hold right-click for the trajectory preview and Space to load/fire.",
+      "outcome": "Launch stones, clusters, fire pots or explosive pots on an arc.",
+      "registry_refs": [],
+      "depends_on": [
+        "siegeweapons:table"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выстрелите из катапульты.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "siegeweapons:ballista",
+      "kind": "combat",
+      "title": "Aim a ballista",
+      "player_action": "Use the ballista's right-click precision aiming mode and fire its bolts.",
+      "outcome": "Launch a direct ballistic attack.",
+      "registry_refs": [],
+      "depends_on": [
+        "siegeweapons:table"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выстрелите из баллисты.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "siegeweapons:repair",
+      "kind": "interaction",
+      "title": "Repair siege equipment",
+      "player_action": "Use Iron Nuggets and Wooden Planks on damaged equipment.",
+      "outcome": "Restore the siege engine through its native repair system.",
+      "registry_refs": [],
+      "depends_on": [
+        "siegeweapons:table"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отремонтируйте осадную машину.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

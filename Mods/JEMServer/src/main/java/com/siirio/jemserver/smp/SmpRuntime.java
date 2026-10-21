@@ -103,7 +103,7 @@ public final class SmpRuntime {
         if (event.getEntity() instanceof ServerPlayer player
                 && SmpEnvironment.active(player)
                 && event.getTarget() instanceof LivingEntity boss
-                && WorldTierApi.profile(boss).isPresent() && BossHostingPrompt.canOffer(player,boss)) {
+                && HostedEncounterApi.canHost(boss) && BossHostingPrompt.canOffer(player,boss)) {
             host(player, boss);
             event.setCanceled(true);
         }

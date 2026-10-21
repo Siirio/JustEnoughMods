@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "mod_id": "xaerominimap",
+  "installed_version": "26.4.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/xaeros-minimap",
+      "publisher": "Xaero96",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_cf_controls",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap",
+      "publisher": "Xaero96",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "author_maven_1201",
+      "url": "https://chocolateminecraft.com/maven/xaero/minimap/xaerominimap-forge-1.20.1/",
+      "publisher": "Xaero96",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    }
+  ],
+  "observations": [
+    {
+      "key": "xaerominimap:map_controls",
+      "kind": "interaction",
+      "title": "Read or enlarge the local minimap",
+      "player_action": "Use Y for settings, Z for temporary enlargement and the configured zoom controls.",
+      "outcome": "Size, position, rotation and zoom can be adjusted.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints remain creator-private in JEM; optional chat sharing is deliberate user action. A radar dot or deathpoint is not server boss discovery, and teleport buttons do not bypass server permissions."
+    },
+    {
+      "key": "xaerominimap:personal_waypoints",
+      "kind": "interaction",
+      "title": "Create and manage a private waypoint",
+      "player_action": "Use B to create and U to list/edit waypoints, unless remapped.",
+      "outcome": "Waypoints can be organized into sets, hidden individually and separated by dimension/sub-world.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints remain creator-private in JEM; optional chat sharing is deliberate user action. A radar dot or deathpoint is not server boss discovery, and teleport buttons do not bypass server permissions."
+    },
+    {
+      "key": "xaerominimap:deathpoint_scope",
+      "kind": "interaction",
+      "title": "Navigate to a local death marker",
+      "player_action": "Inspect the automatic skull marker after death.",
+      "outcome": "Deathpoints mark local death positions; retaining old deathpoints is configurable.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints remain creator-private in JEM; optional chat sharing is deliberate user action. A radar dot or deathpoint is not server boss discovery, and teleport buttons do not bypass server permissions."
+    },
+    {
+      "key": "xaerominimap:radar_caves",
+      "kind": "interaction",
+      "title": "Configure entity and cave display",
+      "player_action": "Inspect entity-radar and cave-mode settings.",
+      "outcome": "Entity categories and roof-sensitive cave display depend on edition and server restrictions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Fair-play editions omit entities/cave maps; full-edition documentation is not proof those options are allowed on a server.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints remain creator-private in JEM; optional chat sharing is deliberate user action. A radar dot or deathpoint is not server boss discovery, and teleport buttons do not bypass server permissions."
+    },
+    {
+      "key": "xaerominimap:teleport_permission",
+      "kind": "compatibility",
+      "title": "Use waypoint teleport only with server authorization",
+      "player_action": "Inspect the selected sub-world and teleport-command settings before using Teleport.",
+      "outcome": "The native button sends a command and requires permission; wrong sub-world selection can disable it.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints remain creator-private in JEM; optional chat sharing is deliberate user action. A radar dot or deathpoint is not server boss discovery, and teleport buttons do not bypass server permissions."
+    },
+    {
+      "key": "xaerominimap:world_identity",
+      "kind": "integration",
+      "title": "Keep worlds and waypoint sets distinct",
+      "player_action": "Select the correct server/dimension/sub-world rather than assuming disappeared markers were deleted.",
+      "outcome": "Server-provided world identity improves separation; manual map selection can affect the automatic waypoint sub-world.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints remain creator-private in JEM; optional chat sharing is deliberate user action. A radar dot or deathpoint is not server boss discovery, and teleport buttons do not bypass server permissions."
+    },
+    {
+      "key": "xaerominimap:native_profile_enforcement",
+      "kind": "compatibility",
+      "title": "Respect the active server minimap profile",
+      "player_action": "Use the map features permitted by the server profile.",
+      "outcome": "The author documents rank/permission-based enforced profiles and neutral/harmful effect variants for hiding minimap, entity radar, waypoints or cave maps. Client preferences cannot establish permission.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints, deathpoints and settings stay creator-private. Server profile enforcement and native effects govern feature availability; a minimap display does not prove server-authoritative location discovery. Pin integrations to the installed version and preserve native UI."
+    },
+    {
+      "key": "xaerominimap:native_item_gate",
+      "kind": "interaction",
+      "title": "Carry the configured navigation item",
+      "player_action": "If item gating is enabled, keep its required item in the hotbar or equipped.",
+      "outcome": "The documented minimapItemId option gates map visibility; its compass example is a configurable example, not an installed JEM requirement.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints, deathpoints and settings stay creator-private. Server profile enforcement and native effects govern feature availability; a minimap display does not prove server-authoritative location discovery. Pin integrations to the installed version and preserve native UI."
+    },
+    {
+      "key": "xaerominimap:native_light_overlay",
+      "kind": "interaction",
+      "title": "Inspect light and chunk overlays",
+      "player_action": "Enable the native light, chunk-grid or slime-chunk overlay in settings.",
+      "outcome": "Light overlay marks a configured light range; the grid and slime shading are separate map aids, not automatic discoveries of loot or structures.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints, deathpoints and settings stay creator-private. Server profile enforcement and native effects govern feature availability; a minimap display does not prove server-authoritative location discovery. Pin integrations to the installed version and preserve native UI."
+    },
+    {
+      "key": "xaerominimap:native_developer_route",
+      "kind": "integration",
+      "title": "Pin a compatible native mapping integration",
+      "player_action": "For a future adapter, select the exact Forge/Minecraft/version artifact from the author Maven repository.",
+      "outcome": "The author publishes 1.20.1 Forge artifacts, including 26.4.2. Current developer guidance distinguishes mapped dev artifacts from other mapping routes; historical custom-waypoint examples are not proof of current method signatures.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls",
+        "author_maven_1201"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native personal waypoints, deathpoints and settings stay creator-private. Server profile enforcement and native effects govern feature availability; a minimap display does not prove server-authoritative location discovery. Pin integrations to the installed version and preserve native UI."
+    }
+  ]
+}

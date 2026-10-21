@@ -27,6 +27,7 @@ public final class MarketSupply {
         private static final Method CLASSIFY = classificationMethod();
     }
     private static final Map<MinecraftServer, List<Listing>> CACHE = new java.util.WeakHashMap<>();
+    private static final Map<MinecraftServer,Map<String,List<Listing>>> CATEGORY_CACHE=new java.util.WeakHashMap<>();
     private MarketSupply() { }
 
     /** Presentation filter over admitted stock; never admits goods or changes buyback policy. */
@@ -52,7 +53,12 @@ public final class MarketSupply {
         }
     }
 
-    public static synchronized void invalidate() { CACHE.clear(); }
+    public static synchronized void invalidate() { CACHE.clear(); CATEGORY_CACHE.clear(); }
+
+    public static synchronized List<Listing> listings(MinecraftServer server,String category) {
+        return CATEGORY_CACHE.computeIfAbsent(server,ignored->new java.util.HashMap<>()).computeIfAbsent(category,
+                key->listings(server).stream().filter(row->matchesCategory(row,key)).toList());
+    }
 
     public static synchronized List<Listing> listings(MinecraftServer server) {
         var cached = CACHE.get(server);
@@ -63,7 +69,7 @@ public final class MarketSupply {
             if (item == Items.AIR || item == Items.PAINTING) continue;
             ItemStack stack = new ItemStack(item);
             var policy = policy(stack);
-            if (policy != null) result.add(new Listing(id, stack, policy));
+            if (policy != null && (policy.buyable() || policy.sellable())) result.add(new Listing(id, stack, policy));
         }
         var paintingPolicy = policy(new ItemStack(Items.PAINTING));
         if (paintingPolicy != null) {
@@ -73,6 +79,7 @@ public final class MarketSupply {
                 result.add(new Listing(offer, painting(variant), paintingPolicy));
             });
         }
+        result.sort(java.util.Comparator.comparing(row->row.id().toString()));
         var immutable = List.copyOf(result);
         CACHE.put(server, immutable);
         return immutable;

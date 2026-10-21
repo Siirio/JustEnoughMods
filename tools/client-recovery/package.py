@@ -26,7 +26,7 @@ def main():
     bootstrap = profile / "mods/jem-bootstrap.jar"
     if jem.digest(bootstrap) != "a8c26d26b28ba4d51134731cf6c285cd6a92268777d82c28831e38a716a5c99b":
         raise SystemExit("Matching bootstrap required")
-    if jem.digest(config["clientSource"] / "jem-pack/manifest.json") != "87f1ce9c0e863d6e285bf04424b8b582bc08750c3103be03fa8e3a86bdaa1a83":
+    if jem.digest(config["clientSource"] / "jem-pack/manifest.json") != "73510ffdfc350b013da370bcd10482971b785f5176dae3891f4ba81822f01d47":
         raise SystemExit("This recovery is pinned to the October 21 hotfix")
     dependencies = [bootstrap]
     for library in json.loads((profile / "JustEnoughMods.json").read_text())["libraries"]:
@@ -65,8 +65,9 @@ def main():
         destination = folder / "Файлы" / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(current, destination)
-    for name in ("Repair.cmd", "Что делать.md"):
-        shutil.copy2(SOURCE / name, folder / name)
+    shutil.copy2(SOURCE / "Repair.cmd", folder / "Repair.cmd")
+    shutil.copy2(SOURCE / "Что делать.md", folder / "Восстановление.md")
+    (folder / "Что делать.md").write_text(jem.update_notes(jem.current_delta(config), sorted(wanted)), encoding="utf-8")
     shutil.copy2(helper, folder / helper.name)
     script = (SOURCE / "Repair.ps1").read_text(encoding="utf-8").replace("__RECOVERY_SHA256__", jem.digest(helper))
     (folder / "Repair.ps1").write_text(script, encoding="utf-8-sig")
@@ -77,8 +78,9 @@ def main():
                 output.write(path, path.relative_to(folder).as_posix())
     result = {"folder": str(folder), "archive": str(archive), "sha256": jem.digest(archive),
               "inheritedFrom": str(old), "includedFiles": len(wanted), "helperSha256": jem.digest(helper)}
-    baseline["pointUpdate"] = {key: result[key] for key in ("folder", "archive", "sha256")}
-    jem.write_json_atomic(jem.baseline_path(config), baseline)
+    if "--prepare-only" not in sys.argv:
+        baseline["pointUpdate"] = {key: result[key] for key in ("folder", "archive", "sha256")}
+        jem.write_json_atomic(jem.baseline_path(config), baseline)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

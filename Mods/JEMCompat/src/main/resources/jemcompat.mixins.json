@@ -8,6 +8,7 @@
     "login.TerminalConnectionFailureMixin",
     "login.ConnectivityTerminalSocketMixin",
     "login.ServerLoginRespawnPacketMixin",
+    "login.ServerLoginPublicChatMixin",
     "DurabilityEnchantmentMixin",
     "LeashFenceKnotEntityMixin",
     "InfiniteEquipmentDurabilityMixin",
@@ -34,7 +35,8 @@
     "transport.PigBoostMixin",
     "transport.RoyalWagonInventoryMixin",
     "transport.TrottingWagonClydesdaleMixin",
-    "trading.FabricTypeAwareTradeMixin"
+    "trading.FabricTypeAwareTradeMixin",
+    "login.ClosedConnectionErrorMixin"
   ],
   "client": [
     "client.recruits.RecruitDebugScreenPoseMixin",
@@ -42,7 +44,6 @@
     "client.GuiPlayerRendererMixin",
     "client.VillagerOutfitMixin",
     "client.GuiPlayerFrameMixin",
-    "client.QuickSkinVanillaPreviewMixin",
     "client.EntityRenderDispatcherFrozenTintMixin",
     "client.IngredientListOverlayAccessor",
     "client.StorageTerminalFocusMixin",

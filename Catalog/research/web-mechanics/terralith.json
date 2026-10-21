@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "mod_id": "terralith",
+  "installed_version": "2.5.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/terralith",
+      "publisher": "Starmute / Stardust Labs",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "terralith:biome_exploration",
+      "kind": "progression",
+      "title": "Visit contrasting Terralith biomes",
+      "player_action": "Explore landscapes such as Yellowstone, Volcanic Peaks and Moonlight Grove.",
+      "outcome": "Biome discovery spans realistic and fantasy terrain using vanilla resources.",
+      "registry_refs": [
+        {
+          "registry": "biomes",
+          "id": "terralith:yellowstone"
+        },
+        {
+          "registry": "biomes",
+          "id": "terralith:volcanic_peaks"
+        },
+        {
+          "registry": "biomes",
+          "id": "terralith:moonlight_grove"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посети контрастные биомы Терралита.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.5.4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "terralith:cave_resources",
+      "kind": "acquisition",
+      "title": "Search for specialized stone caves",
+      "player_action": "Explore Terralith's stone-cave habitats for concentrated rock resources.",
+      "outcome": "Large material-rich caves offer an alternative to scattered vanilla rock blobs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди каменную пещеру с большим запасом породы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.5.4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "terralith:worldgen_boundary",
+      "kind": "compatibility",
+      "title": "Separate newly generated terrain from old chunks",
+      "player_action": "Inspect actual chunk generation history before treating a missing biome as an absent feature.",
+      "outcome": "Generator changes cannot establish what terrain an existing chunk already contains.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Author cautions against installation into an existing world. This record does not authorize a world reset, generation change or save mutation."
+    }
+  ]
+}

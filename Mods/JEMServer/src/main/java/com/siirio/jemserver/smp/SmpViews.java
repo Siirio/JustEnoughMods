@@ -243,6 +243,7 @@ public final class SmpViews {
         boolean owner = row.getUUID("owner").equals(player.getUUID()),
                 member = SmpRecords.member(row, player.getUUID());
         boolean closed = SmpData.closed(row);
+        if (table.equals("parties") && !closed && owner && row.getString("state").equals("ACTIVE") && row.getString("activity").equals("BOSS")) add(result, "cancel");
         if (table.equals("profiles")) {
             if (owner) {
                 add(result, "death_history", "settlements", "roles");

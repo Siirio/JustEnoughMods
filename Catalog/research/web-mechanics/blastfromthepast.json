@@ -1,0 +1,497 @@
+{
+  "schema_version": 1,
+  "mod_id": "blastfromthepast",
+  "installed_version": "1.0.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bftp",
+      "publisher": "thegbzard",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bftp",
+      "publisher": "thegbzard",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_b26693612db8",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bftp",
+      "publisher": "thegbzard; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar",
+        "sha256": "b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c",
+        "resource": "assets/blastfromthepast/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "blastfromthepast:frostbite_exploration",
+      "kind": "progression",
+      "title": "Explore the Frostbite Forest",
+      "player_action": "Travel to the Frostbite Forest and gather its cedar and cold-biome plants.",
+      "outcome": "A distinct Ice Age themed habitat provides local resources and wildlife.",
+      "registry_refs": [
+        {
+          "registry": "biomes",
+          "id": "blastfromthepast:frostbite_forest"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:cedar_log"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отыщи морозный лес и собери его растения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "blastfromthepast:burrel_pinecones",
+      "kind": "interaction",
+      "title": "Feed pinecones to a Burrel",
+      "player_action": "Offer pinecones to a Burrel found in the cold forest.",
+      "outcome": "The author identifies pinecones as its favored food; taming is not established.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:burrel"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:pinecone"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Угости буррела сосновой шишкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "blastfromthepast:frostomper_food",
+      "kind": "acquisition",
+      "title": "Hunt a Frostomper for Beast Chops",
+      "player_action": "Defeat a Frostomper and collect its meat.",
+      "outcome": "The large mammoth supplies Beast Chops.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:frostomper"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:raw_beast_chops"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь мясо фростомпера в морозном лесу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "blastfromthepast:native_chapter_burrel",
+      "kind": "interaction",
+      "title": "burrel native guide",
+      "player_action": "Feed a Burrel Pinecones or offer sap.",
+      "outcome": "The climbing forest critter favors these foods; the installed advancement explicitly recognizes Pinecone feeding.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:burrel"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:pinecone"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми буррела сосновой шишкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Native translation section glacial_guidebook.burrel read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "blastfromthepast:native_chapter_frostomper",
+      "kind": "interaction",
+      "title": "frostomper native guide",
+      "player_action": "Tame a baby Frostomper rather than challenging an adult herd.",
+      "outcome": "The guide offers a combat companion route while adults use ice powers and provide hunting loot.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:frostomper"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи детёныша фростомпера.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Native translation section glacial_guidebook.frostomper read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "blastfromthepast:native_chapter_glaceros",
+      "kind": "interaction",
+      "title": "glaceros native guide",
+      "player_action": "Match a Glaceros antler variant with its preferred Larkspur.",
+      "outcome": "The skittish herd animal has variant-specific flower preferences and supplies venison when hunted.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:glaceros"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:blush_larkspur"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:royal_larkspur"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:shiver_larkspur"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:snow_larkspur"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подбери цветок живокости для варианта глацероса.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Native translation section glacial_guidebook.glaceros read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "blastfromthepast:native_chapter_psycho_bear",
+      "kind": "interaction",
+      "title": "psycho bear native guide",
+      "player_action": "Offer Psycho Ice Cream to pacify a Psycho Bear, or defeat one for its claws.",
+      "outcome": "Native advancement text explicitly specifies the ice cream; the guide identifies Psycho Berries as its favorite food.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:psycho_bear"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:psycho_berry_ice_cream"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:bear_claw"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Успокой психомедведя особым мороженым.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Native translation section glacial_guidebook.psycho_bear read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "blastfromthepast:native_chapter_snowdo",
+      "kind": "interaction",
+      "title": "snowdo native guide",
+      "player_action": "Shear a Snowdo for renewable shaggy material, or hold it while falling.",
+      "outcome": "The bird provides reusable shearing harvest and slows the holder's descent; melon is its documented favorite food.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:snowdo"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:shaggy_pelt"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подстриги сноудо и используй его для мягкого падения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Native translation section glacial_guidebook.snowdo read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "blastfromthepast:native_chapter_speartooth",
+      "kind": "interaction",
+      "title": "speartooth native guide",
+      "player_action": "Offer Beast Chops while working toward taming a Speartooth.",
+      "outcome": "The guide identifies its food and pack ambush/chase behavior; the native advancement confirms taming is a real progression goal without proving its exact chance.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:speartooth"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:raw_beast_chops"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи саблезуба.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Native translation section glacial_guidebook.speartooth read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "blastfromthepast:sap_gravity",
+      "kind": "interaction",
+      "title": "sap gravity native mechanic",
+      "player_action": "Apply Sap to a gravity-affected block.",
+      "outcome": "The installed advancement recognizes this sticky-block interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "blastfromthepast:sap_ball"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Закрепи сыпучий блок смолой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "blastfromthepast:bear_wall_slide",
+      "kind": "interaction",
+      "title": "bear wall slide native mechanic",
+      "player_action": "Wear Bear Claws and slide down a wall.",
+      "outcome": "A native advancement recognizes the movement ability.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "blastfromthepast:bear_claw"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:bear_glove"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Спустись по стене с медвежьими когтями.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "blastfromthepast:idol_retrieval",
+      "kind": "interaction",
+      "title": "idol retrieval native mechanic",
+      "player_action": "Retrieve your lost items with Idol of Retrieval.",
+      "outcome": "The native progression identifies an item-recovery loop; do not create a quest requiring deliberate death.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "blastfromthepast:idol_of_retrieval"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "blastfromthepast:music_herd",
+      "kind": "interaction",
+      "title": "music herd native mechanic",
+      "player_action": "Play music so each Frostbite animal dances.",
+      "outcome": "The installed advancement explicitly recognizes a multi-species dance goal.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:burrel"
+        },
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:frostomper"
+        },
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:glaceros"
+        },
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:psycho_bear"
+        },
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:snowdo"
+        },
+        {
+          "registry": "entities",
+          "id": "blastfromthepast:speartooth"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Устрой танцы для всех животных морозного леса.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "blastfromthepast:ice_cuisine_armor",
+      "kind": "interaction",
+      "title": "ice cuisine armor native mechanic",
+      "player_action": "Craft all three Ice Cream types and a full Frostbite armor set.",
+      "outcome": "Native milestones separate cooking collection from protective equipment progression.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "blastfromthepast:melon_ice_cream"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:psycho_berry_ice_cream"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:sap_ice_cream"
+        },
+        {
+          "registry": "items",
+          "id": "blastfromthepast:frostbite_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b26693612db8"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери три вида мороженого и морозную броню.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar; SHA256 b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c; entry assets/blastfromthepast/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

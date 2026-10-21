@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "mod_id": "copperagebackport",
+  "installed_version": "0.1.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/copper-age-backport",
+      "publisher": "Smallinger",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "copperagebackport:summon",
+      "kind": "acquisition",
+      "title": "Assemble a Copper Golem",
+      "player_action": "Place a carved pumpkin on a copper block.",
+      "outcome": "Summon the backported Copper Golem.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создайте медного голема.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/copperagebackport.json."
+    },
+    {
+      "key": "copperagebackport:sort",
+      "kind": "automation",
+      "title": "Move chest contents",
+      "player_action": "Provide a Copper Golem with Copper Chests and items to transport.",
+      "outcome": "Use its native item-transport behavior, subject to configuration.",
+      "registry_refs": [],
+      "depends_on": [
+        "copperagebackport:summon"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Организуйте перенос предметов големом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "copperagebackport:button",
+      "kind": "automation",
+      "title": "Use a copper button",
+      "player_action": "Place Copper Buttons near a Copper Golem.",
+      "outcome": "Let the golem randomly press nearby supported buttons.",
+      "registry_refs": [],
+      "depends_on": [
+        "copperagebackport:summon"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Поручите голему нажимать кнопки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "copperagebackport:wax",
+      "kind": "interaction",
+      "title": "Protect copper storage",
+      "player_action": "Wax a Copper Chest.",
+      "outcome": "Control oxidation of copper storage; the author also supports double chests.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Backported vanilla features may use minecraft namespace; never infer copperagebackport IDs from the owning mod ID."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вощите медный сундук.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

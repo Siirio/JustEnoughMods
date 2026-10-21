@@ -21,7 +21,7 @@ public final class HostedLobby {
 
     public static boolean hold(LivingEntity boss) {
         if (boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss) && !retiringRaid(boss)
-                || WorldTierApi.profile(boss).isEmpty()) return false;
+                || !HostedEncounterApi.canHost(boss) && !HostedGroup.member(boss)) return false;
         if (held(boss)) {
             freeze(boss);
             return true;
@@ -29,6 +29,7 @@ public final class HostedLobby {
         CompoundTag state = new CompoundTag();
         boss.getPersistentData().put(ROOT, state);
         freeze(boss);
+        if (!HostedGroup.member(boss)) HostedGroup.stage(boss);
         return true;
     }
 
@@ -56,6 +57,7 @@ public final class HostedLobby {
         if (boss instanceof net.minecraft.world.entity.Mob mob) mob.setNoAi(false);
         BossPresentation.restore(boss);
         boss.getPersistentData().remove(ROOT);
+        if (!HostedGroup.member(boss)) HostedGroup.release(boss);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -97,7 +99,8 @@ public final class HostedLobby {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void loaded(EntityJoinLevelEvent event) {
         if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity boss && held(boss)) {
-            if (HostedEncounters.isHosted(boss) && !retiringRaid(boss)) release(boss);
+            if (!HostedEncounterApi.canHost(boss) && !HostedGroup.member(boss)
+                    || HostedEncounters.isHosted(boss) && !retiringRaid(boss)) release(boss);
             else freeze(boss);
         }
     }

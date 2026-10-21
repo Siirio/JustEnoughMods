@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "mod_id": "herbalbrews",
+  "installed_version": "1.0.12",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://lets-do.ch/wiki/herbalbrews/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://lets-do.ch/wiki/herbalbrews/",
+      "publisher": "Let's Do author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/letsdo-herbalbrews-forge-1.0.12.jar",
+        "sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+        "resource": "assets/herbalbrews/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "herbalbrews:tea_crop",
+      "kind": "acquisition",
+      "title": "Grow tea",
+      "player_action": "Shear small flowers for Tea Blossom, plant it and harvest tea leaves.",
+      "outcome": "Establish a source of tea ingredients.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "herbalbrews:tea_blossom"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите чай.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/herbalbrews.json."
+    },
+    {
+      "key": "herbalbrews:kettle",
+      "kind": "crafting",
+      "title": "Brew tea and coffee",
+      "player_action": "Fill the Tea Kettle with water and recipe ingredients; provide heat below or through Blaze Powder.",
+      "outcome": "Brew drinks using the kettle's water and heat resources.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "herbalbrews:tea_kettle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted.",
+        "Tea Kettle separates five ingredient slots from water, heat and output. Each recipe draws both water and heat; the copper variant follows the same workflow."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Заварите чай в чайнике.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "herbalbrews:flask",
+      "kind": "crafting",
+      "title": "Combine potions",
+      "player_action": "Put three potions and Herbal Infusion into a Brewing Cauldron.",
+      "outcome": "Obtain a flask carrying the three potion effects.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "herbalbrews:cauldron"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Смешайте зелья во фляге.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "herbalbrews:dry_tea",
+      "kind": "crafting",
+      "title": "Dry and ferment tea leaves",
+      "player_action": "Craft tea leaves into their leaf block and place it to dry.",
+      "outcome": "Obtain dried green, oolong or black tea according to the starting block and drying stage.",
+      "registry_refs": [],
+      "depends_on": [
+        "herbalbrews:tea_crop"
+      ],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Высушите чайные листья.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made. No exact static registry reference was selected."
+    },
+    {
+      "key": "herbalbrews:share_tea",
+      "kind": "interaction",
+      "title": "Share tea effects",
+      "player_action": "Drink a tea near other players.",
+      "outcome": "Many tea effects extend to nearby players, becoming weaker when shared by more people.",
+      "registry_refs": [],
+      "depends_on": [
+        "herbalbrews:kettle"
+      ],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Разделите эффект чая.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made. No exact static registry reference was selected."
+    },
+    {
+      "key": "herbalbrews:tea_jug",
+      "kind": "interaction",
+      "title": "Combine tea in a jug",
+      "player_action": "Fill the jug with up to three different teas, then right-click to drink.",
+      "outcome": "Receive the effects of the infused teas together.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact tooltip.herbalbrews.description.jug_1/jug_2; this is the tea jug, distinct from the potion-combining Brewing Cauldron.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Смешайте чай в кувшине.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "herbalbrews:magic_hat",
+      "kind": "interaction",
+      "title": "Protect against magic",
+      "player_action": "Wear the Witch Hat or Top Hat in the helmet slot.",
+      "outcome": "Gain configured magic-damage protection.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "herbalbrews:witch_hat"
+        },
+        {
+          "registry": "items",
+          "id": "herbalbrews:top_hat"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наденьте шляпу от магии.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "herbalbrews:tea_effect_choices",
+      "kind": "interaction",
+      "title": "Select a tea for the task",
+      "player_action": "Choose Green/Oolong/Black tea for absorption/luck/low-health support, Lavender for combat, Hibiscus for life drain, or coffee for depth-based mining.",
+      "outcome": "Use the native effect families; Yerba Mate shares absorption/regeneration.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Current wiki calls Feral extra hearts while installed tooltip calls it armor; use installed effect.herbalbrews.feral.description for the installed claim.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "main",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подберите чай для похода.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

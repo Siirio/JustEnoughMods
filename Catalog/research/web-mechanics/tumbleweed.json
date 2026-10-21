@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "mod_id": "tumbleweed",
+  "installed_version": "0.5.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/tumbleweed",
+      "publisher": "Tumbleweed author",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_metadata",
+      "url": "https://modrinth.com/mod/tumbleweed",
+      "publisher": "Tumbleweed author",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Tumbleweed-forge-1.20.1-0.5.5.jar",
+        "sha256": "db37a99504d7d506d01504cde1502b5eb93ab835d9455cdb665603ba3fbd5da4",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "tumbleweed:harvest",
+      "kind": "acquisition",
+      "title": "Harvest a tumbleweed",
+      "player_action": "Find tumbleweeds spawning around dead bushes in deserts and harvest one.",
+      "outcome": "Receive random drops controlled by datapacks and configuration.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Installed META-INF/mods.toml declares0.5.5 and explicitly describes desert/dead-bush spawning with random drops on destruction; the earlier web-page version caution is superseded by this exact metadata."
+      ],
+      "source_ids": [
+        "main",
+        "native_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите перекати-поле.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "mod_id": "fishingreal",
+  "installed_version": "1.9.1-backport",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/fishing-real",
+      "publisher": "Fishing Real author",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "fishingreal:living_catch",
+      "kind": "acquisition",
+      "title": "Catch a living fish",
+      "player_action": "Fish a catch whose item has an active Fishing Real conversion.",
+      "outcome": "Spawn the mapped living entity instead of the fish item.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "A conversion is not proof that every Tide or other mod fish is supported; active mappings decide."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Поймайте живую рыбу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "fishingreal:mapping",
+      "kind": "integration",
+      "title": "Define catch conversions",
+      "player_action": "Supply a datapack fishing mapping from an item to an entity, with optional entity NBT.",
+      "outcome": "Change which living catch replaces a matching fishing result.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "A conversion is not proof that every Tide or other mod fish is supported; active mappings decide."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте преобразование улова.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

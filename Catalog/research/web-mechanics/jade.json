@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "mod_id": "jade",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/jade",
+      "publisher": "Snownee",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "jade:target_information",
+      "kind": "interaction",
+      "title": "Identify a targeted block or entity",
+      "player_action": "Look at the target with Jade's overlay enabled.",
+      "outcome": "The HUD shows identity and supported contextual data; storage contents, brewing fuel and bee counts need server support.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "jade:overlay_controls",
+      "kind": "interaction",
+      "title": "Configure and toggle target information",
+      "player_action": "Use the documented keypad bindings: 0 configuration, 1 overlay, 2 liquid display and 5 narration, unless remapped.",
+      "outcome": "The player can control visibility, include fluid targets and narrate the selected target.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "jade:recipe_bridge",
+      "kind": "integration",
+      "title": "Open recipes from a world target",
+      "player_action": "With JEI present, use keypad 3 for recipes or keypad 4 for uses of the target.",
+      "outcome": "Jade passes the target to the recipe viewer.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The JEI integration and configured keybindings must exist in the installed release.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

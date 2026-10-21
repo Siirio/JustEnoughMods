@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "mod_id": "spudaciousshops",
+  "installed_version": "1.10.2-forge-1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/spuds-shops",
+      "publisher": "Spudacious5705",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "spudaciousshops:place",
+      "kind": "interaction",
+      "title": "Own a shop",
+      "player_action": "Place a shop and configure its offered trade.",
+      "outcome": "Bind the shop to its placer and define a trade using non-consuming setup slots.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Откройте собственный магазин.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "spudaciousshops:trade",
+      "kind": "interaction",
+      "title": "Buy from a stocked shop",
+      "player_action": "Complete a configured trade at another player's shop.",
+      "outcome": "Take the offered goods while payment is drawn from the customer inventory.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Совершите покупку в магазине.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "spudaciousshops:delegate",
+      "kind": "interaction",
+      "title": "Delegate shop access",
+      "player_action": "Have another player sign a Contract Scroll and place it in a permission row.",
+      "outcome": "Grant the chosen role; removing the contract revokes its permission.",
+      "registry_refs": [],
+      "depends_on": [
+        "spudaciousshops:place"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Назначьте сотрудника магазина.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

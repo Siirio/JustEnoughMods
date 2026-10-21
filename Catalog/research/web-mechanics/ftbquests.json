@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "mod_id": "ftbquests",
+  "installed_version": "2001.4.22",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "opening_docs",
+      "url": "https://docs.feed-the-beast.com/mod-docs/mods/suite/Quests/Player/Questbook/Opening/",
+      "publisher": "Feed The Beast",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "creation_docs",
+      "url": "https://docs.feed-the-beast.com/mod-docs/mods/suite/Quests/Developer/Quests/",
+      "publisher": "Feed The Beast",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "types_docs",
+      "url": "https://docs.feed-the-beast.com/mod-docs/mods/suite/Quests/Developer/Quests/Types/",
+      "publisher": "Feed The Beast",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "rewards_docs",
+      "url": "https://docs.feed-the-beast.com/mod-docs/mods/suite/Quests/Developer/Quests/Rewards/",
+      "publisher": "Feed The Beast",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_task_types",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/quest/task/TaskTypes.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_custom_task",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/quest/task/CustomTask.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_custom_event",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/events/CustomTaskEvent.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_item_task",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/quest/task/ItemTask.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_quest_dependencies",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/quest/Quest.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_completion_event",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/events/ObjectCompletedEvent.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_progress_event",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/events/ObjectProgressEvent.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_public_api",
+      "url": "https://raw.githubusercontent.com/FTBTeam/FTB-Quests/a74ee04bf80e7fba2c8475112a07ace4a4abd0a6/common/src/main/java/dev/ftb/mods/ftbquests/api/FTBQuestsAPI.java",
+      "publisher": "FTBTeam/FTB-Quests",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    }
+  ],
+  "observations": [
+    {
+      "key": "ftbquests:open_book",
+      "kind": "interaction",
+      "title": "Open and navigate the pack's quest book",
+      "player_action": "Use the inventory book icon, a supported quest-book item or a configured keybinding, then select a chapter.",
+      "outcome": "Authored quests show their description, tasks and rewards; a pack without quest definitions has an empty book.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The reviewed docs are explicitly version 26.1.x and are not installed-version proof.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "opening_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the installed FTB task's real server completion state. Checkmark is manual acknowledgement; Custom does not magically detect mod behavior. Newer task/filter types must be checked against installed 1.20.1 code before quest implementation."
+    },
+    {
+      "key": "ftbquests:author_chapters_tasks",
+      "kind": "integration",
+      "title": "Build a quest from explicit tasks",
+      "player_action": "In authorized edit mode, create a chapter, right-click blank space to add a task/quest, then use the tasks + control for more objectives.",
+      "outcome": "Quest structure separates chapters, quests and their task requirements.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "creation_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the installed FTB task's real server completion state. Checkmark is manual acknowledgement; Custom does not magically detect mod behavior. Newer task/filter types must be checked against installed 1.20.1 code before quest implementation."
+    },
+    {
+      "key": "ftbquests:objective_types",
+      "kind": "progression",
+      "title": "Match the objective to the real action",
+      "player_action": "Choose an appropriate installed item, statistic, kill, location, advancement, biome or observation task.",
+      "outcome": "Different objective types measure different native signals; item ownership does not prove use or crafting.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The current docs also list structure/fluid/energy tasks; availability in the installed branch must be confirmed.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "types_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the installed FTB task's real server completion state. Checkmark is manual acknowledgement; Custom does not magically detect mod behavior. Newer task/filter types must be checked against installed 1.20.1 code before quest implementation."
+    },
+    {
+      "key": "ftbquests:manual_custom_distinction",
+      "kind": "integration",
+      "title": "Separate acknowledgement from automatic detection",
+      "player_action": "Inspect Checkmark versus Custom task behavior before designing a mod-specific action quest.",
+      "outcome": "Checkmark completes on a click; a custom task requires actual implementing logic.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "types_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the installed FTB task's real server completion state. Checkmark is manual acknowledgement; Custom does not magically detect mod behavior. Newer task/filter types must be checked against installed 1.20.1 code before quest implementation."
+    },
+    {
+      "key": "ftbquests:reward_semantics",
+      "kind": "progression",
+      "title": "Choose the correct reward behavior",
+      "player_action": "Configure item, choice, random/loot-table, XP, command or stage rewards as supported by the installed branch.",
+      "outcome": "Choice selects an option; random/loot tables and command rewards have different result contracts.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Custom rewards do nothing on their own in the documented model; command execution needs explicit server-side review.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "rewards_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the installed FTB task's real server completion state. Checkmark is manual acknowledgement; Custom does not magically detect mod behavior. Newer task/filter types must be checked against installed 1.20.1 code before quest implementation."
+    },
+    {
+      "key": "ftbquests:tag_filter_version",
+      "kind": "compatibility",
+      "title": "Check tag-filter dependencies and version",
+      "player_action": "Inspect the current docs' Convert to FTB Filter System Tag Filter command before using it.",
+      "outcome": "The documented conversion requires FTB Filter System and FTB XMod Compat; their current UI is not assumed in installed 1.20.1.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "creation_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the installed FTB task's real server completion state. Checkmark is manual acknowledgement; Custom does not magically detect mod behavior. Newer task/filter types must be checked against installed 1.20.1 code before quest implementation."
+    },
+    {
+      "key": "ftbquests:native_1201_task_families",
+      "kind": "integration",
+      "title": "Select a native task before writing a custom one",
+      "player_action": "Match a proposed goal to the 1.20.1 task registry.",
+      "outcome": "TaskTypes registers item, custom, XP, dimension, stat, kill, location, checkmark, advancement, observation, biome, structure, gamestage and fluid tasks. Platform/addon tasks require their own installed registration evidence.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_task_types"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:item_possession_vs_crafting",
+      "kind": "crafting",
+      "title": "Distinguish possession, crafting and submission",
+      "player_action": "Inspect an item task before collecting or crafting its target.",
+      "outcome": "ItemTask separates inventory checks from only_from_crafting progress, consuming submission and task_screen_only insertion; NBT and weak-NBT matching alter acceptable stacks. Owning an item cannot prove its use.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_item_task"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:custom_check_callback",
+      "kind": "integration",
+      "title": "Bridge an observed action into a custom task",
+      "player_action": "For a future adapter, register CustomTaskEvent handling and configure the task check callback.",
+      "outcome": "CustomTask exposes setCheck, setCheckTimer, setMaxProgress and setEnableButton; Data.setProgress/addProgress update native TeamData. Submission checks task sequence and existing completion; custom tasks do not check on login by default.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_custom_task",
+        "native_custom_event"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:checkmark_vs_custom_button",
+      "kind": "progression",
+      "title": "Treat manual buttons according to their contract",
+      "player_action": "Click a permitted manual task button only when the task requests acknowledgment.",
+      "outcome": "The optional CustomTask button sends submission to the server; progress still needs its configured callback. An unconnected custom task is not automatically an action detector.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_custom_task"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:dependency_and_visibility",
+      "kind": "progression",
+      "title": "Follow configured quest prerequisites",
+      "player_action": "Complete the required prerequisite objects, then advance through sequential tasks if enabled.",
+      "outcome": "Quest supports all/any or minimum-count dependencies, started/completed requirements, hidden details and exclusive branches. Visibility and completion are distinct; optional/repeat settings do not imply unrestricted progress.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_quest_dependencies"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:repeat_after_rewards",
+      "kind": "progression",
+      "title": "Finish reward claims before repeating a quest",
+      "player_action": "Claim the rewards of a repeatable quest and observe its configured repeat gate.",
+      "outcome": "The native repeat path checks every reward claim; Quest exposes a separate repeat cooldown. A completed task is not proof that a player claimed the reward.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_quest_dependencies"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:completion_event_scope",
+      "kind": "integration",
+      "title": "Observe the correct completion level",
+      "player_action": "Choose TASK, QUEST, CHAPTER or FILE completion events for a future integration.",
+      "outcome": "ObjectCompletedEvent exposes distinct scopes and forwards them to GENERIC; ObjectProgressEvent carries native TeamData, object, time and member/notified-player lists. Team completion must not be mistaken for one member performing every action.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_completion_event",
+        "native_progress_event"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    },
+    {
+      "key": "ftbquests:public_api_boundary",
+      "kind": "integration",
+      "title": "Keep the native quest file authoritative",
+      "player_action": "Resolve the appropriate client/server quest file through FTBQuestsAPI.api().",
+      "outcome": "The public API exposes quest-file lookup and item-filter adapters. Upstream explicitly limits stability guarantees outside its api package; pin internal custom-task/event adapters to the installed version.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_public_api"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Native TeamData owns task progress. A custom-task check must observe the actual server action, satisfy task sequence/dependencies and update that native state; a visible task button is not evidence of action. Source pinned to upstream 1.20.1/main branch, not claimed to be installed 2001.4.22 byte-for-byte."
+    }
+  ]
+}

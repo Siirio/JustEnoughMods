@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "mod_id": "spectrelib",
+  "installed_version": "0.13.17+1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://github.com/illusivesoulworks/spectrelib",
+      "publisher": "Illusive Soulworks",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/polymorph-forge-0.49.10+1.20.1.jar!/META-INF/jarjar/spectrelib-forge-0.13.17+1.20.1.jar",
+        "sha256": "0e2b29d9a55eeaf6196b284b4a964f917254c4102152c328bf82f58b52ade389",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "spectrelib:installed_role",
+      "kind": "compatibility",
+      "title": "SpectreLib role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Provides cross-platform support code for Illusive Soulworks consumers; it has no independent survival quest action.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 0.13.17+1.20.1"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "mod_id": "mvs",
+  "installed_version": "5.0.8",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author",
+      "publisher": "FinnDog / Moog's Mods",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/moogs-voyager-structures",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "installed",
+      "publisher": "FinnDog / Moog's Mods",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/moogs-voyager-structures",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/MoogsVoyagerStructures-1.20-5.0.8.jar",
+        "sha256": "584749f9e963313984dacbfbe0aff32f6a99ddd8c662c18a5b44aba375aa2fb1",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "mvs:exploration",
+      "kind": "acquisition",
+      "title": "Explore Voyager structures",
+      "player_action": "Travel through newly generated terrain and investigate the author's generated structures.",
+      "outcome": "Structures use vanilla blocks and entities to supply exploration, encounters and loot; content differs by template and release.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Existing generated chunks are not assumed to regenerate structures.",
+        "Placement frequency and permitted biomes must be read from the exact installed worldgen data and pack overrides.",
+        "Author documentation can cover newer releases; installed version is 5.0.8."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Исследуй сооружение путешественников",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Exact quest criterion and world-state result were not exercised; a custom signal must observe the action, not a manual checkmark."
+    },
+    {
+      "key": "mvs:pack_integration",
+      "kind": "compatibility",
+      "title": "Native structure and loot ownership",
+      "player_action": "Use the installed structure definitions and JEM encounter registration when preparing an exploration objective.",
+      "outcome": "The mod's worldgen resources own placement and template content; an author project page is not proof of a live structure position or hosted boss eligibility.",
+      "registry_refs": [],
+      "depends_on": [
+        "mvs:exploration"
+      ],
+      "conditions": [
+        "Do not infer a manual boss allowlist, server marker or quest criterion from the structure's name.",
+        "No local world was loaded or regenerated.",
+        "Author documentation can cover newer releases; installed version is 5.0.8."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Exact quest criterion and world-state result were not exercised; a custom signal must observe the action, not a manual checkmark."
+    }
+  ]
+}

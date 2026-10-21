@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "mod_id": "irons_lib",
+  "installed_version": "1.20.1-1.0.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://modrinth.com/mod/irons-lib",
+      "publisher": "Iron431",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/irons_lib-1.20.1-1.0.2.jar",
+        "sha256": "7c1afcd2772aa1ced0c30678a6bf1bf9c605a482d18e2b03d51152e05d4a2800",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "author_project",
+      "url": "https://modrinth.com/mod/irons-lib",
+      "publisher": "Iron's Lib project authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "irons_lib:installed_role",
+      "kind": "compatibility",
+      "title": "Iron's Lib role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Provides shared frameworks and content for Iron431's mods; current upstream descriptions can include newer attribute and weapon-component systems, so installed source must determine which APIs exist here.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata",
+        "author_project"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 1.20.1-1.0.2"
+    }
+  ]
+}

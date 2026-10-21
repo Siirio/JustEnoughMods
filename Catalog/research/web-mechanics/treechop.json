@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "mod_id": "treechop",
+  "installed_version": "0.19.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/treechop",
+      "publisher": "Hammertater",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/treechop",
+      "publisher": "Hammertater",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/TreeChop-1.20.1-forge-0.19.0-fixed.jar",
+        "sha256": "219fbe5bf8d862dc7b524ca5a0151f66bba4d53a01010858e136a9e8c4d55d4f",
+        "resource": "assets/treechop/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "treechop:chop",
+      "kind": "interaction",
+      "title": "Fell a tree by repeated chops",
+      "player_action": "Repeatedly break a log of the same tree, alone or with other players.",
+      "outcome": "Accumulate chops until the connected tree falls.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Срубите дерево совместными ударами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "treechop:sneak",
+      "kind": "interaction",
+      "title": "Harvest a normal log",
+      "player_action": "Hold sneak while breaking a log.",
+      "outcome": "Bypass TreeChop and break the selected block normally.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудьте отдельное бревно.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "treechop:fungi",
+      "kind": "interaction",
+      "title": "Harvest a giant fungus",
+      "player_action": "Chop a supported mushroom or fungus as a connected tree.",
+      "outcome": "Use the same felling system on supported fungal structures.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Срубите огромный гриб.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "treechop:chop_settings",
+      "kind": "interaction",
+      "title": "Choose chopping and felling behavior",
+      "player_action": "Use the native settings/hotkeys to toggle chopping, felling and sneak behavior.",
+      "outcome": "Chopping, whole-tree felling and the leaves-connection requirement can be configured separately.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте рубку деревьев.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

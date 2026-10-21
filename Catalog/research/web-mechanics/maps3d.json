@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "mod_id": "maps3d",
+  "installed_version": "1.0.1-1.20.1-forge",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/maps3d",
+      "publisher": "sulikala",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "maps3d:frame",
+      "kind": "interaction",
+      "title": "Display a map in 3D",
+      "player_action": "Put a vanilla filled map into an item frame.",
+      "outcome": "Render the mapped terrain as a volumetric miniature.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покажите карту объёмно.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "maps3d:slice",
+      "kind": "interaction",
+      "title": "Choose a map slice",
+      "player_action": "Sneak-right-click the framed map and change its rendering mode or base Y level.",
+      "outcome": "Change that frame's 2D/3D view and terrain slice.",
+      "registry_refs": [],
+      "depends_on": [
+        "maps3d:frame"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выберите высоту среза карты.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "maps3d:quality",
+      "kind": "interaction",
+      "title": "Tune map display quality",
+      "player_action": "Choose a quality/performance preset or disable 3D rendering globally.",
+      "outcome": "Reduce rendering cost while retaining per-frame choices.",
+      "registry_refs": [],
+      "depends_on": [
+        "maps3d:frame"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте качество карты.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

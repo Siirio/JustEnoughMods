@@ -35,14 +35,17 @@ public final class CoinPriceRenderer {
                                net.minecraft.network.chat.Component reason) {
         var parts = parts(copper);
         if (parts.isEmpty()) return;
-        int natural = parts.stream().mapToInt(part -> 20 + font.width(Long.toString(part.count()))).sum();
-        int w = Math.min(Math.max(180, natural), Math.max(1, screenWidth - 12));
-        int rows=1, dx=0;
+        int limit = Math.min(240, Math.max(1, screenWidth - 12));
+        int rows=1, dx=0, coinWidth=0;
         for (var part:parts) {
             int cell=20+font.width(Long.toString(part.count()));
-            if(dx>0 && dx+cell>w) { rows++; dx=0; } dx+=cell;
+            if(dx>0 && dx+cell>limit) { rows++; dx=0; }
+            dx+=cell;
+            coinWidth=Math.max(coinWidth,dx-4);
         }
-        var reasonLines=font.split(reason,w);
+        var reasonLines=font.split(reason,limit);
+        int reasonWidth=reasonLines.stream().mapToInt(font::width).max().orElse(0);
+        int w=Math.min(limit,Math.max(coinWidth,reasonWidth));
         int textHeight=reason.getString().isEmpty()?0:reasonLines.size()*(font.lineHeight+1)+3;
         int h=rows*18+textHeight;
         int x=Math.max(4,Math.min(mouseX+12,screenWidth-w-4));
@@ -53,7 +56,7 @@ public final class CoinPriceRenderer {
         dx=0; int dy=0;
         for (var part:parts) {
             int cell=20+font.width(Long.toString(part.count()));
-            if(dx>0 && dx+cell>w) { dy+=18; dx=0; }
+            if(dx>0 && dx+cell>limit) { dy+=18; dx=0; }
             g.renderItem(new ItemStack(CurrencyItems.item(part.denomination())),x+dx,y+dy);
             g.drawString(font,Long.toString(part.count()),x+dx+16,y+dy+4,0xFFFFFFFF,false); dx+=cell;
         }

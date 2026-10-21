@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "mod_id": "detailab",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/detail-armor-bar-re-equipment",
+      "publisher": "redstaroverplank",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "detailab:armor_readout",
+      "kind": "interaction",
+      "title": "Read equipped armor details from the armor bar",
+      "player_action": "Equip different armor pieces and inspect the armor HUD.",
+      "outcome": "The bar represents armor type, low durability, Mending, Thorns and protection-enchantment information.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The external page advertises armor trims; match this to installed 2.7.0 before promising every option.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "detailab:protection_colors",
+      "kind": "interaction",
+      "title": "Distinguish protection types visually",
+      "player_action": "Inspect armor carrying Protection, Projectile Protection, Blast Protection or Fire Protection.",
+      "outcome": "The documented colors distinguish general, projectile, blast and fire protection.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "detailab:elytra_dependency",
+      "kind": "compatibility",
+      "title": "Display Elytra trims when the required addon is present",
+      "player_action": "Inspect the mod's Elytra presentation support.",
+      "outcome": "Elytra coloring/trims are advertised, with trim support conditional on Elytra Trims.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Do not infer Elytra Trims is installed merely because this project supports it.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

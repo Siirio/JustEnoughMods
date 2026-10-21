@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "mod_id": "vinery",
+  "installed_version": "1.4.41",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://lets-do.ch/wiki/vinery/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "press_doc",
+      "url": "https://lets-do.ch/wiki/vinery/apple-press/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "lattice_doc",
+      "url": "https://lets-do.ch/wiki/vinery/lattice/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "outfit_doc",
+      "url": "https://lets-do.ch/wiki/vinery/winemaker-armor/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "fruit_doc",
+      "url": "https://lets-do.ch/wiki/vinery/apple-cherry-trees/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://lets-do.ch/wiki/vinery/",
+      "publisher": "Let's Do author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/letsdo-vinery-forge-1.4.41.jar",
+        "sha256": "5d7e11f6e2218562ce75d60788fdcfc9ccf59e4532757c18bf37759d5fc739ee",
+        "resource": "assets/vinery/lang/en_us.json"
+      }
+    },
+    {
+      "id": "teleport_source",
+      "url": "https://raw.githubusercontent.com/satisfyu/Vinery/9612390b6f958c659935c46a6ce0341b8360a84b/common/src/main/java/net/satisfy/vinery/core/effect/TeleportEffect.java",
+      "publisher": "Let's Do author wiki",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_teleport_class",
+      "url": "https://raw.githubusercontent.com/satisfyu/Vinery/9612390b6f958c659935c46a6ce0341b8360a84b/common/src/main/java/net/satisfy/vinery/core/effect/TeleportEffect.java",
+      "publisher": "Let's Do author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/letsdo-vinery-forge-1.4.41.jar",
+        "sha256": "5d7e11f6e2218562ce75d60788fdcfc9ccf59e4532757c18bf37759d5fc739ee",
+        "resource": "net/satisfy/vinery/core/effect/TeleportEffect.class"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "vinery:grapes",
+      "kind": "acquisition",
+      "title": "Establish a vineyard",
+      "player_action": "Find wild grapes in the documented forest, savanna, taiga or jungle habitats and plant them on stems or lattices.",
+      "outcome": "Grow grapes for juice production.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "vinery:grapevine_stem"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посадите виноградник.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/vinery.json."
+    },
+    {
+      "key": "vinery:stomp",
+      "kind": "crafting",
+      "title": "Stomp grape juice",
+      "player_action": "Fill a Grapevine Pot with grapes, jump inside to crush them and collect juice with empty Wine Bottles.",
+      "outcome": "Produce grape juice through physical interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "vinery:grapevine_pot"
+        }
+      ],
+      "depends_on": [
+        "vinery:grapes"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получите виноградный сок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "vinery:ferment",
+      "kind": "crafting",
+      "title": "Ferment wine",
+      "player_action": "Put one juice type and the wine recipe's ingredients and bottles in a Fermentation Barrel.",
+      "outcome": "Process juice into wine.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "vinery:fermentation_barrel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted.",
+        "Grape juice and Apple Juice are alternative inputs; grape crushing is not a universal prerequisite. Barrel accepts one juice type at a time; sneak-right-click empties it. Raw recipes: Catalog/graphs/recipes/vinery.json."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте вино.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "vinery:age",
+      "kind": "progression",
+      "title": "Age a bottle",
+      "player_action": "Store finished wine instead of drinking it immediately.",
+      "outcome": "The author describes stronger effects as wine ages; installed scaling needs confirmation.",
+      "registry_refs": [],
+      "depends_on": [
+        "vinery:ferment"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выдержите бутылку вина.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "vinery:apple_press",
+      "kind": "interaction",
+      "title": "Press apple juice",
+      "player_action": "Feed apples into the Apple Press, then provide an empty Wine Bottle for the automatically transferred mash.",
+      "outcome": "Produce Apple Juice in two stages; the press also processes honeycomb blocks and bottles honey.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "vinery:apple_press"
+        },
+        {
+          "registry": "items",
+          "id": "vinery:apple_mash"
+        },
+        {
+          "registry": "items",
+          "id": "vinery:apple_juice"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "press_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отожмите яблочный сок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "vinery:jungle_lattice",
+      "kind": "interaction",
+      "title": "Grow jungle grapes on a lattice",
+      "player_action": "Plant Jungle Grape Seeds on a Lattice, right-click ripe grapes to harvest and use Shears to remove the plant.",
+      "outcome": "Recover seeds; an axe changes support posts independently.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "lattice_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите джунглевый виноград.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "vinery:fruit_tree",
+      "kind": "interaction",
+      "title": "Harvest a fruit-bearing tree",
+      "player_action": "Pick ripe apple/cherry leaves with an empty hand and use Bone Meal to accelerate fruit growth.",
+      "outcome": "Collect fruit repeatedly without cutting down the tree.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "vinery:apple_tree_sapling"
+        },
+        {
+          "registry": "items",
+          "id": "vinery:dark_cherry_sapling"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "fruit_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите плоды с дерева.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "vinery:winemaker_outfit",
+      "kind": "interaction",
+      "title": "Save Bone Meal with workwear",
+      "player_action": "Wear all four Winemaker outfit pieces when applying Bone Meal.",
+      "outcome": "Save Bone Meal by spending outfit durability.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "vinery:straw_hat"
+        },
+        {
+          "registry": "items",
+          "id": "vinery:winemaker_apron"
+        },
+        {
+          "registry": "items",
+          "id": "vinery:winemaker_leggings"
+        },
+        {
+          "registry": "items",
+          "id": "vinery:winemaker_boots"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "outfit_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте костюм винодела.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "vinery:wine_storage",
+      "kind": "interaction",
+      "title": "Choose a bottle rack",
+      "player_action": "Read a rack's accepted bottle-size tooltip and right-click a bottle into or out of it.",
+      "outcome": "Small/big bottle storage accepts small bottles, while the single-bottle Wine Rack accepts any bottle size and opens with sneak interaction.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "main",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Уложите вино в подходящий стеллаж.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "vinery:wine_effects",
+      "kind": "interaction",
+      "title": "Choose a wine effect",
+      "player_action": "Use wine for its native movement, utility or combat effect; stop Magnetic Wine item attraction by sneaking.",
+      "outcome": "Effects include wall climbing, double jump, water/lava walking, health/armor and item attraction; instant-effect wines do not follow ordinary aging.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime.",
+        "Exact installed TeleportEffect.teleport bytecode confirms a forward look-vector search for two non-full-block positions; it is not a random safe-location search. This does not prove full player-box clearance or cross-mod teleport success. The oldTeleport method is unused by the active implementation."
+      ],
+      "source_ids": [
+        "main",
+        "native_lang",
+        "teleport_source",
+        "native_teleport_class"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте эффект вина.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

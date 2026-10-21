@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "0edb6dd41b087b5ddc67801a0eb99345c4b23704188ddf430fc482dda110e763",
+  "change_records_sha256": "df082bc78c615872fe2946d674732050e035ca6d93864dde3c10154c28e879a8",
   "totals": {
-    "watched": 3574,
-    "covered": 688,
-    "unresolved": 2886
+    "watched": 3681,
+    "covered": 801,
+    "unresolved": 2880
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1454,8 +1454,8 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 120,
-      "covered": 54,
+      "watched": 121,
+      "covered": 55,
       "unresolved": 66,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
@@ -1527,8 +1527,8 @@
       ]
     },
     "Mods/JEMCurrencyCore": {
-      "watched": 107,
-      "covered": 107,
+      "watched": 108,
+      "covered": 108,
       "unresolved": 0,
       "unresolved_paths": []
     },
@@ -2617,13 +2617,12 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 308,
-      "covered": 68,
-      "unresolved": 240,
+      "watched": 412,
+      "covered": 175,
+      "unresolved": 237,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/BossLeaderboard.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/EventDefaultPack.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/PackSyncCommands.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/ServerConfig.java",
@@ -2643,7 +2642,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventSurfaceCell.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/FishingTooltips.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ItemRewardStrip.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/JeiItemLink.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PlayerPreviewWidget.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ResultScreen.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpClient.java",
@@ -2713,7 +2711,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoint.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoints.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Notifications.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpAction.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionFailure.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionInput.java",
@@ -2962,9 +2959,9 @@
       "unresolved_paths": []
     },
     "Mods/JEMWorldBossTiers": {
-      "watched": 96,
-      "covered": 26,
-      "unresolved": 70,
+      "watched": 97,
+      "covered": 30,
+      "unresolved": 67,
       "unresolved_paths": [
         "Mods/JEMWorldBossTiers/build.gradle",
         "Mods/JEMWorldBossTiers/gradle.properties",
@@ -2973,10 +2970,8 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/ExperienceRewardApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/WorldTierApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataLoader.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceRegistry.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossFrenzy.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossTierScaling.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EncounterScaler.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentRefreshPolicy.java",
@@ -3029,7 +3024,6 @@
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/3.json",
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/4.json",
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/advancements/world_tier/5.json",
-        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/defaults/bosses/major_bosses.json",
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/loot_modifiers/progression_book.json",
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/blocks/protected_from_boss_destruction.json",
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/entity_types/boss_frenzy_excluded.json",

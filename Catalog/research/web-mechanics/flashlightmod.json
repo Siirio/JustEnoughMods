@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "mod_id": "flashlightmod",
+  "installed_version": "1.2.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/flashlightmod",
+      "publisher": "XstudioTeam",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/flashlightmod",
+      "publisher": "XstudioTeam",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Flashier%20Flashlights%201.2.0.jar",
+        "sha256": "670e0d33ea12b4c6ac3129bf027cf19c038cc7aaf31cae7eacdbc1f27b04cc63",
+        "resource": "assets/flashlightmod/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "flashlightmod:obtain",
+      "kind": "acquisition",
+      "title": "Obtain a flashlight",
+      "player_action": "Enter the world or respawn; alternatively craft the iron, glass and redstone recipe.",
+      "outcome": "Receive the flashlight described by the author.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получите ручной фонарь.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/flashlightmod.json."
+    },
+    {
+      "key": "flashlightmod:toggle",
+      "kind": "interaction",
+      "title": "Toggle directional lighting",
+      "player_action": "Hold the flashlight in the main hand and right-click.",
+      "outcome": "Toggle invisible light sources along the player's view direction.",
+      "registry_refs": [],
+      "depends_on": [
+        "flashlightmod:obtain"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Включите ручной фонарь.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "flashlightmod:stow",
+      "kind": "interaction",
+      "title": "Stow the flashlight",
+      "player_action": "Move the active flashlight to the offhand or inventory.",
+      "outcome": "Remove its temporary illumination.",
+      "registry_refs": [],
+      "depends_on": [
+        "flashlightmod:toggle"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Уберите включённый фонарь.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "flashlightmod:battery",
+      "kind": "interaction",
+      "title": "Power a flashlight",
+      "player_action": "Right-click the flashlight to insert or remove its battery and check the stored FE charge.",
+      "outcome": "A missing or empty battery prevents illumination.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Зарядите фонарик.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

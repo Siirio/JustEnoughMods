@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "mod_id": "sereneseasons",
+  "installed_version": "9.1.0.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://github.com/Glitchfiend/SereneSeasons/wiki/Crop-Fertility",
+      "publisher": "Glitchfiend",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "calendar_doc",
+      "url": "https://github.com/Glitchfiend/SereneSeasons/wiki/Calendar",
+      "publisher": "Glitchfiend",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "sensor_doc",
+      "url": "https://github.com/Glitchfiend/SereneSeasons/wiki/Season-Sensor",
+      "publisher": "Glitchfiend",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "seasons_doc",
+      "url": "https://github.com/Glitchfiend/SereneSeasons/wiki/Seasons",
+      "publisher": "Glitchfiend",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    }
+  ],
+  "observations": [
+    {
+      "key": "sereneseasons:fertility",
+      "kind": "interaction",
+      "title": "Choose a seasonal crop",
+      "player_action": "Read the seed or crop tooltip before planting.",
+      "outcome": "Identify its fertile seasons; unlisted crops are unaffected by this fertility system.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Wiki describes current defaults; installed fertility configuration can slow, prohibit or destroy out-of-season crops."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выберите культуру по сезону.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/sereneseasons.json."
+    },
+    {
+      "key": "sereneseasons:greenhouse",
+      "kind": "interaction",
+      "title": "Grow out of season",
+      "player_action": "Place qualifying glass above crops or use a qualifying sheltered underground farm.",
+      "outcome": "Use the documented protection routes for out-of-season crops.",
+      "registry_refs": [],
+      "depends_on": [
+        "sereneseasons:fertility"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Wiki describes current defaults; installed fertility configuration can slow, prohibit or destroy out-of-season crops."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите урожай вне сезона.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "sereneseasons:bees",
+      "kind": "integration",
+      "title": "Pollinate seasonal crops",
+      "player_action": "Allow vanilla bees to pollinate a crop.",
+      "outcome": "Use bee pollination regardless of that crop's current season.",
+      "registry_refs": [],
+      "depends_on": [
+        "sereneseasons:fertility"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Wiki describes current defaults; installed fertility configuration can slow, prohibit or destroy out-of-season crops."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Опылите сезонную культуру.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "sereneseasons:calendar",
+      "kind": "interaction",
+      "title": "Read the farming calendar",
+      "player_action": "Read the held Calendar tooltip or its filled display rows.",
+      "outcome": "See early/mid/late season progress, sub-season and Minecraft days; tropical information follows the biome.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "sereneseasons:calendar"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "calendar_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Прочитайте сезонный календарь.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "sereneseasons:season_redstone",
+      "kind": "interaction",
+      "title": "Signal a selected season",
+      "player_action": "Right-click the Season Sensor to choose its season.",
+      "outcome": "Output redstone in four horizontal directions while that season is active; strength rises with seasonal progress.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "sereneseasons:season_sensor"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "sensor_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте сезонный датчик.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "sereneseasons:season_climate",
+      "kind": "interaction",
+      "title": "Plan for seasonal weather",
+      "player_action": "Compare temperate spring/summer/autumn/winter with tropical wet/dry seasons.",
+      "outcome": "Temperature, foliage and rain/storm chances change; tropical farming treats summer crops as in-season.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Season duration is configurable; no current server calendar length is asserted.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "seasons_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Спланируйте сезонную ферму.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

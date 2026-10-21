@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "mod_id": "easyanvils",
+  "installed_version": "8.0.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/easy-anvils",
+      "publisher": "Fuzs",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "easyanvils:persistent_inputs",
+      "kind": "interaction",
+      "title": "Leave items in an anvil",
+      "player_action": "Insert items and close the anvil screen.",
+      "outcome": "Inputs remain stored and are rendered on the block instead of returning immediately to the player.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Anvil output and cost depend on native menu/configuration. Successful result extraction is stronger than inventory ownership; confirm the installed operation signal before a quest."
+    },
+    {
+      "key": "easyanvils:rename_format",
+      "kind": "interaction",
+      "title": "Rename an item with formatting",
+      "player_action": "Use the anvil's rename field, optionally applying supported formatting codes.",
+      "outcome": "The mod advertises free renaming and formatted names, subject to configuration.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Anvil output and cost depend on native menu/configuration. Successful result extraction is stronger than inventory ownership; confirm the installed operation signal before a quest."
+    },
+    {
+      "key": "easyanvils:repair_costs",
+      "kind": "crafting",
+      "title": "Repair gear and restore an anvil",
+      "player_action": "Inspect gear repair/enchantment costs and use iron blocks to restore a damaged anvil.",
+      "outcome": "Prior-work penalties, book costs and anvil durability are configurable upstream changes.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Do not copy advertised cost behavior into JEM balance without reading the installed 8.0.2 configuration.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Anvil output and cost depend on native menu/configuration. Successful result extraction is stronger than inventory ownership; confirm the installed operation signal before a quest."
+    }
+  ]
+}

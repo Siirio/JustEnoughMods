@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "mod_id": "efiscompat",
+  "installed_version": "2.6.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/epic-fight-x-irons-spells-enhanced-animations",
+      "publisher": "YukamiNeeSan",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_readme",
+      "url": "https://github.com/domanhthang2110/efiscompat/blob/master/README.md",
+      "publisher": "domanhthang2110 / YukamiNeeSan",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "efiscompat:casting_motion",
+      "kind": "integration",
+      "title": "Cast through Epic Fight animation",
+      "player_action": "Cast an Iron's spell with the compatibility mod active; hold a configured staff for its variant.",
+      "outcome": "Spellcasting uses Epic Fight-compatible animations, including staff-specific poses.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A cast animation does not prove a spell completed or spent mana. Use Iron's native successful-cast/cancel signal; guarding and rolling can cancel rather than finish casting."
+    },
+    {
+      "key": "efiscompat:cancel_cast",
+      "kind": "combat",
+      "title": "Interrupt casting with an Epic Fight action",
+      "player_action": "Perform a supported guard, roll or other configured combat skill during casting.",
+      "outcome": "The spell can be cancelled rather than leaving incompatible animations active.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Confirm installed 2.6.0 cancellation and cooldown behavior against both mod versions.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A cast animation does not prove a spell completed or spent mana. Use Iron's native successful-cast/cancel signal; guarding and rolling can cancel rather than finish casting."
+    },
+    {
+      "key": "efiscompat:first_person_settings",
+      "kind": "compatibility",
+      "title": "Avoid overlapping casting renderers",
+      "player_action": "Inspect the author's recommended Iron's showFirstPersonArms/showFirstPersonItems settings and Epic Fight animation filtering.",
+      "outcome": "The recommendation coordinates which renderer owns first-person arms/items during casting.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Research only: no configuration was changed; broader renderer issues require tracing their owner.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A cast animation does not prove a spell completed or spent mana. Use Iron's native successful-cast/cancel signal; guarding and rolling can cancel rather than finish casting."
+    }
+  ]
+}

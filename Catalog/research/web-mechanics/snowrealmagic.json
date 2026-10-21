@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "mod_id": "snowrealmagic",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/snow-real-magic",
+      "publisher": "Snownee",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "snowrealmagic:snowlogged_building",
+      "kind": "interaction",
+      "title": "Combine snow with supported blocks",
+      "player_action": "Place snow on compatible fences, walls, stairs, slabs or plants.",
+      "outcome": "Snow can coexist with supported blocks and render a snow-covered form.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The current page contains newer Minecraft examples; exact 10.7.0 supported tags/blocks require installed source.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "For snow objectives inspect actual block state and placement/collection events; the decorative overlay is not the same as layer count."
+    },
+    {
+      "key": "snowrealmagic:falling_and_landing",
+      "kind": "interaction",
+      "title": "Account for falling snow and soft landings",
+      "player_action": "Observe supported snow layers losing support or land on layered snow.",
+      "outcome": "Configured gravity can make snow fall; contact with water can form ice, and deeper snow can reduce fall damage.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "For snow objectives inspect actual block state and placement/collection events; the decorative overlay is not the same as layer count."
+    },
+    {
+      "key": "snowrealmagic:scrape_and_overlay",
+      "kind": "interaction",
+      "title": "Remove a snow layer or change its overlay",
+      "player_action": "Use the documented shovel interaction or sneak-use with an empty hand to scrape snow; use empty hands for the overlay toggle where enabled.",
+      "outcome": "The action yields a snowball/consumes a layer or changes the visual overlay according to the chosen action.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Confirm these advertised interactions exist in installed 10.7.0 before writing player instructions.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "For snow objectives inspect actual block state and placement/collection events; the decorative overlay is not the same as layer count."
+    },
+    {
+      "key": "snowrealmagic:weather_accumulation",
+      "kind": "integration",
+      "title": "Separate snowfall accumulation from melting",
+      "player_action": "Inspect server accumulation, storm and warm-biome/season integration configuration.",
+      "outcome": "Weather, maximum depth and melting behavior are configurable; a snowy biome alone does not determine every layer change.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "For snow objectives inspect actual block state and placement/collection events; the decorative overlay is not the same as layer count."
+    }
+  ]
+}

@@ -28,6 +28,8 @@ public final class BalanceDataParser {
                     ids(GsonHelper.getAsJsonArray(object, "victory_advancement_ids", new JsonArray())),
                     GsonHelper.getAsBoolean(object, "scales_with_world_tier", true),
                     GsonHelper.getAsBoolean(object, "counts_toward_world_tier", true),
+                    GsonHelper.getAsBoolean(object, "hosted_encounter", true),
+                    ids(GsonHelper.getAsJsonArray(object, "ally_tags", new JsonArray())),
                     GsonHelper.getAsDouble(object, "native_threat", 0.0D),
                     GsonHelper.getAsString(object, "hp_scaling_safety", "UNKNOWN"),
                     attributeValues(GsonHelper.getAsJsonObject(object, "attributes", new JsonObject())),

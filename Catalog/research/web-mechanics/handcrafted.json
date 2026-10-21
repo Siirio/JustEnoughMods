@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "mod_id": "handcrafted",
+  "installed_version": "3.0.6",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/handcrafted/version/3.0.6",
+      "publisher": "Terrarium / Handcrafted authors",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/handcrafted-forge-1.20.1-3.0.6.jar",
+        "sha256": "1da3c7c524bfb656bb370757af55f08f1678e8e1cb934e1c4c04aa773ed64a79",
+        "resource": "assets/handcrafted/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "handcrafted:counter",
+      "kind": "interaction",
+      "title": "Change a countertop",
+      "player_action": "Right-click a counter with supported wood or stone.",
+      "outcome": "Replace the counter surface material.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read directly from installed handcrafted-forge-1.20.1-3.0.6.jar!/assets/handcrafted/lang/en_us.json (tooltip.handcrafted.*). Release page provides exact artifact provenance; it does not itself describe these mechanics."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Измените столешницу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/handcrafted.json."
+    },
+    {
+      "key": "handcrafted:bed",
+      "kind": "interaction",
+      "title": "Dress a bed",
+      "player_action": "Apply a cushion or sheet to a compatible bed.",
+      "outcome": "Change pillow color or bedsheets.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read directly from installed handcrafted-forge-1.20.1-3.0.6.jar!/assets/handcrafted/lang/en_us.json (tooltip.handcrafted.*). Release page provides exact artifact provenance; it does not itself describe these mechanics."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Украсьте кровать.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "handcrafted:hammer",
+      "kind": "interaction",
+      "title": "Reshape furniture",
+      "player_action": "Right-click supported furniture with the Hammer; some variants use sneak-right-click.",
+      "outcome": "Change furniture shape or appearance.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "handcrafted:hammer"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read directly from installed handcrafted-forge-1.20.1-3.0.6.jar!/assets/handcrafted/lang/en_us.json (tooltip.handcrafted.*). Release page provides exact artifact provenance; it does not itself describe these mechanics."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Измените вид мебели.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "handcrafted:plate",
+      "kind": "interaction",
+      "title": "Set a plate",
+      "player_action": "Right-click a plate with an item.",
+      "outcome": "Display that item on the plate.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read directly from installed handcrafted-forge-1.20.1-3.0.6.jar!/assets/handcrafted/lang/en_us.json (tooltip.handcrafted.*). Release page provides exact artifact provenance; it does not itself describe these mechanics."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Положите предмет на тарелку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

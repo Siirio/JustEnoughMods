@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "statuseffectbars",
+  "installed_version": "1.0.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "port_author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/status-effect-bars-reforged",
+      "publisher": "Project8gbDeRam / Leclowndu93150",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "statuseffectbars:duration_bars",
+      "kind": "interaction",
+      "title": "Read an effect's remaining duration visually",
+      "player_action": "Inspect an active effect in the HUD or inventory.",
+      "outcome": "A small bar visualizes remaining duration alongside the existing effect icon.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "port_author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "statuseffectbars:bar_settings",
+      "kind": "interaction",
+      "title": "Reduce clutter and adjust effect bars",
+      "player_action": "Configure bar position/colors and automatic hiding for selected cases.",
+      "outcome": "Beacon-like refreshes or very long effects can be hidden to reduce clutter.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Styling does not change server effect duration; the source advertises Stylish Effects compatibility from 1.0.2.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "port_author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

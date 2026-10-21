@@ -28,6 +28,7 @@ public record ItemPolicy(int schema, ResourceLocation item, Outcome outcome, Lon
     public boolean buyable() { return (outcome == Outcome.BUY_AND_SELL || outcome == Outcome.BUY_ONLY) && buyCopper != null && buyCopper > 0; }
     public MarketCategory marketCategory() {
         String path = item.getPath();
+        if (demandGroup.equals("music_discs")) return MarketCategory.RESOURCES;
         if (outcome == Outcome.BUY_ONLY) return MarketCategory.BLOCKS;
         if (demandGroup.equals("drops") || path.equals("bone") || path.equals("string") || path.equals("gunpowder")) return MarketCategory.DROPS;
         if (demandGroup.equals("mining")) return MarketCategory.RESOURCES;

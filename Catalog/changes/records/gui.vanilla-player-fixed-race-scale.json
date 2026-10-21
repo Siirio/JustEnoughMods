@@ -15,13 +15,13 @@
     "priority": 30
   },
   "change": {
-    "summary": "All GUI player previews use freshly baked vanilla skin geometry; race screen owns fixed GUI scale 3 and a camera 25% farther away.",
+    "summary": "Custom player preview is scoped to SMP; race GUI scale and camera remain independently owned.",
     "modifiers": [
       {
         "property": "client.gui.player_preview",
         "operation": "replace",
         "before": "Live modded renderer and animation/resource-pack model reloads",
-        "after": "Shared vanilla classic/slim mesh, skin only, neutral pose; screen-scoped PlayerRenderer interception and exact Quick Skin preview seam; world rendering unchanged"
+        "after": "SMP-only screen interception; native inventory, Quick Skin and race previews restored by the user correction on 2026-10-21."
       },
       {
         "property": "client.gui.race_scale",
@@ -49,7 +49,6 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerRendererMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Mods/JEMVisualSandboxR3/build.gradle",
       "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
@@ -113,6 +112,34 @@
       "summary": "Client crash11:55: Forge selected MenuSupport1.0, six CONSTRUCT failures followed, resource reload removed all selected packs, then joining hit uninitialized dynamic lights. Require1.1 in shared embed metadata; restore only the client-owned resourcePacks option from its proven pre-crash order. No FancyMenu/resourcepack files were missing.",
       "source_files": [
         "Mods/JEMMenuSupport/embed.gradle"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Separate World Tier enrollment from hosted admission; native team support shares canonical boss Start and protection; public OP chat and native previews outside SMP.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMPackCore/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataParser.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/defaults/bosses/major_bosses.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/QuickSkinVanillaPreviewMixin.java"
       ]
     }
   ],

@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "mod_id": "efn",
+  "installed_version": "3.4.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/epicfight-nightfall",
+      "publisher": "Super Awesome Baby team",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "efn:greatsword_duskfire",
+      "kind": "combat",
+      "title": "Use a clash or charged fire attack",
+      "player_action": "Ruin Greatsword uses Key3 for its rising clash; Duskfire charges with both mouse buttons at full energy and releases with Key3.",
+      "outcome": "The source describes clash-based protection or a firestorm/state release.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Key3 is the named addon skill control, not an assumed physical keyboard key. Native ability state/cost/hit events are required for quests. The current page advertises 3.4.2 while installed is 3.4.1; exact registrations and mechanics remain version-scoped."
+    },
+    {
+      "key": "efn:echo_vanguard_exile",
+      "kind": "combat",
+      "title": "Choose an execution, guard break or dual-wield branch",
+      "player_action": "Use Ancient Echo Blades' tap/hold Key3, Vanguard Saber's Key3, or Exile's left-click/Key3 combinations.",
+      "outcome": "These produce launcher/finisher, guard-breaking or conditional dual-wield moves.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Key3 is the named addon skill control, not an assumed physical keyboard key. Native ability state/cost/hit events are required for quests. The current page advertises 3.4.2 while installed is 3.4.1; exact registrations and mechanics remain version-scoped."
+    },
+    {
+      "key": "efn:queen_replay",
+      "kind": "combat",
+      "title": "Replay a previous damage instance",
+      "player_action": "Use Queen's Short Blade's Key3 before the next attack.",
+      "outcome": "The source describes adding an earlier damage instance to that next attack.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The exact history window and eligible damage sources require installed source inspection.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Key3 is the named addon skill control, not an assumed physical keyboard key. Native ability state/cost/hit events are required for quests. The current page advertises 3.4.2 while installed is 3.4.1; exact registrations and mechanics remain version-scoped."
+    },
+    {
+      "key": "efn:frenzy_tradeoff",
+      "kind": "combat",
+      "title": "Trade defense for a frenzy",
+      "player_action": "Activate Wild Claws' Key3 skill.",
+      "outcome": "The advertised state improves motion/attacks and control resistance while increasing incoming damage.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Key3 is the named addon skill control, not an assumed physical keyboard key. Native ability state/cost/hit events are required for quests. The current page advertises 3.4.2 while installed is 3.4.1; exact registrations and mechanics remain version-scoped."
+    },
+    {
+      "key": "efn:blood_blade",
+      "kind": "combat",
+      "title": "Use a draining blood-wave state",
+      "player_action": "Activate Blood Mania's Key3 skill.",
+      "outcome": "The advertised blade releases blood waves while continuously draining the wielder's health.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Key3 is the named addon skill control, not an assumed physical keyboard key. Native ability state/cost/hit events are required for quests. The current page advertises 3.4.2 while installed is 3.4.1; exact registrations and mechanics remain version-scoped."
+    },
+    {
+      "key": "efn:other_arsenal_scope",
+      "kind": "progression",
+      "title": "Identify named weapons whose combos are not explained by the page",
+      "player_action": "Inspect Yamato/Phantom Swords, Murasama, Kusabimaru/Mortal Blade, Ghiza's Wheel, Crimson Moon and the listed Combat Arts.",
+      "outcome": "The page names these without a complete executable move list; controls and acquisition must come from installed descriptions/source.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Key3 is the named addon skill control, not an assumed physical keyboard key. Native ability state/cost/hit events are required for quests. The current page advertises 3.4.2 while installed is 3.4.1; exact registrations and mechanics remain version-scoped."
+    }
+  ]
+}

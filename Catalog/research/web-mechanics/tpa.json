@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "mod_id": "tpa",
+  "installed_version": "2.0.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/tpa",
+      "publisher": "WereF0X",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "tpa:request_accept",
+      "kind": "interaction",
+      "title": "Ask another player for teleport consent",
+      "player_action": "Use tpa to request going to a player or tpahere to request their arrival; the recipient uses tpaccept.",
+      "outcome": "Only the accepted request performs the configured teleport flow.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Request expiry, limits and teleport conditions come from installed server configuration.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native accepted/completed teleport state, not request-sent chat. The installed artifact is WereF0X's 2.0.0 mod, not the unrelated 1.20.2 macro datapack named TPA."
+    },
+    {
+      "key": "tpa:cancel_toggle",
+      "kind": "interaction",
+      "title": "Cancel or block incoming requests",
+      "player_action": "Use tpacancel for the outgoing request or tpatoggle to control receipt.",
+      "outcome": "Requests can be withdrawn or refused automatically rather than forcing another player to move.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native accepted/completed teleport state, not request-sent chat. The installed artifact is WereF0X's 2.0.0 mod, not the unrelated 1.20.2 macro datapack named TPA."
+    },
+    {
+      "key": "tpa:return_history",
+      "kind": "interaction",
+      "title": "Return to an eligible previous position",
+      "player_action": "Use back when the server has recorded an eligible previous position.",
+      "outcome": "The mod records configurable return locations after teleport/death, subject to server rules.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "JEM event safe-exit/death-elimination policy remains canonical and is not replaced by upstream back semantics.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native accepted/completed teleport state, not request-sent chat. The installed artifact is WereF0X's 2.0.0 mod, not the unrelated 1.20.2 macro datapack named TPA."
+    }
+  ]
+}

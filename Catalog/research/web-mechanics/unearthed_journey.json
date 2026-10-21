@@ -12,6 +12,30 @@
       "publisher": "Epoch_Studio",
       "scope": "installed_release",
       "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/unearthed-journey",
+      "publisher": "Epoch_Studio",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/unearthed-journey",
+      "publisher": "Epoch_Studio; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/unearthed_journey-2.2.3.jar",
+        "sha256": "e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6",
+        "resource": "assets/unearthed_journey/lang/en_us.json",
+        "resources": [
+          "assets/unearthed_journey/lang/en_us.json",
+          "data/unearthed_journey/recipes/tipped_blow_dart_recipe.json",
+          "data/unearthed_journey/recipes/bituminous_rock_smelt_recipe.json"
+        ]
+      }
     }
   ],
   "observations": [
@@ -214,6 +238,202 @@
         "goal_ru": "Выплави первый слиток марганцевой стали.",
         "detection": "inventory"
       }
+    },
+    {
+      "key": "unearthed_journey:seed_pod_tree_farm",
+      "kind": "automation",
+      "title": "Grow small Platypodium trees from seed pods",
+      "player_action": "Harvest Platypodium seed pods in the Neogene and place them on ground.",
+      "outcome": "Small trees provide convenient wood farming despite non-decaying native leaves.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посади семенные коробочки для выращивания древних деревьев.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "unearthed_journey:herbivore_pouches",
+      "kind": "crafting",
+      "title": "Prepare food pouches for herbivore care",
+      "player_action": "Craft pelt-based grass or seed pouches and offer them to supported herbivores.",
+      "outcome": "Pouches support taming or breeding according to species.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:pouch_of_grass"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:pouch_of_seeds"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь кормовые мешочки для древних травоядных.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "unearthed_journey:portable_satchel",
+      "kind": "interaction",
+      "title": "Carry a native satchel",
+      "player_action": "Craft the native satchel using its material recipe.",
+      "outcome": "The guide describes in-inventory storage for long expeditions.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:hide_satchel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь сумку для длительной экспедиции.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry assets/unearthed_journey/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:carbonemys_companion",
+      "kind": "interaction",
+      "title": "Tame and equip a Carbonemys carrier",
+      "player_action": "Find Carbonemys in the Cerrejon formation, tame it with clams and equip a satchel; sneak-use opens inventory.",
+      "outcome": "The large turtle carries resources as a companion.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:carbonemys"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи древнюю черепаху и оснасти её сумкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry assets/unearthed_journey/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:gnatusuchus_digging",
+      "kind": "interaction",
+      "title": "Feed a Gnatusuchus for a digging companion",
+      "player_action": "Find Gnatusuchus in the Neogene Pebas formation and offer Raw Fillet.",
+      "outcome": "The native guide describes a tame that can dig up items.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:gnatusuchus"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи гнатозуха рыбным филе.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry assets/unearthed_journey/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:blowgun_darts",
+      "kind": "crafting",
+      "title": "Craft a blowgun and mushroom-tipped darts",
+      "player_action": "Follow the native Bamboo Blowgun and tipped dart recipes.",
+      "outcome": "The ranged tool supports poison-delivering tipped ammunition.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:bamboo_blowgun"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:tipped_blow_dart"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь духовую трубку и особые дротики.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry data/unearthed_journey/recipes/tipped_blow_dart_recipe.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:bituminous_processing",
+      "kind": "crafting",
+      "title": "Smelt Bituminous Rock into Powder",
+      "player_action": "Process Bituminous Rock using its installed smelting recipe.",
+      "outcome": "The powder becomes an input for other recipes.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:bituminous_rock"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:bituminous_powder"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переплавь битумную породу в порошок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry data/unearthed_journey/recipes/bituminous_rock_smelt_recipe.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
     }
   ]
 }

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "betterf3",
+  "installed_version": "7.0.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/betterf3",
+      "publisher": "cominixo and TreyRuffy",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "betterf3:debug_modules",
+      "kind": "interaction",
+      "title": "Read the modular debug HUD",
+      "player_action": "Open F3 and inspect its grouped information modules.",
+      "outcome": "Debug information appears in customizable modules instead of the vanilla arrangement.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "betterf3:configure_modules",
+      "kind": "interaction",
+      "title": "Configure only the debug information needed",
+      "player_action": "Use F3 + M with Cloth Config, then move, color, hide or space modules and individual lines.",
+      "outcome": "The user controls module placement, visible data, text shadow, background and opening/closing animation.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The Forge settings shortcut requires Cloth Config; do not assume Fabric Mod Menu controls exist on Forge.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

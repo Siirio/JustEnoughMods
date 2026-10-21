@@ -1,0 +1,1128 @@
+{
+  "schema_version": 1,
+  "mod_id": "luminous_beasts",
+  "installed_version": "1.2.7",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/luminous-beasts",
+      "publisher": "RipleysMods",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/luminous-beasts",
+      "publisher": "RipleysMods; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+        "sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+        "resource": "assets/luminous_beasts/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/luminous-beasts",
+      "publisher": "RipleysMods",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_ac6fd8633482",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/luminous-beasts",
+      "publisher": "RipleysMods; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+        "sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+        "resource": "assets/luminous_beasts/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "luminous_beasts:beast_hunt",
+      "kind": "combat",
+      "title": "Hunt a biome's legendary beast",
+      "player_action": "Find and defeat a legendary beast such as a Tree Ent or Piglin Executioner.",
+      "outcome": "Beasts provide distinct loot-oriented exploration fights.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отыщи легендарного зверя и получи его добычу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.2.7. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "luminous_beasts:bestiary",
+      "kind": "interaction",
+      "title": "Use the native bestiary to select a hunt",
+      "player_action": "Read the Ultimate Bestiary before choosing a beast and variant.",
+      "outcome": "The native item is intended to document beast families and variants.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "luminous_beasts:ultimate_bestiary"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи бестиарий и выбери следующую охоту.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "luminous_beasts:beast_pit",
+      "kind": "interaction",
+      "title": "Place a Beast Pit in a suitable biome",
+      "player_action": "Place a Beast Pit in an open area of a biome where the desired beast occurs.",
+      "outcome": "The pit offers a chance to attract a local legendary beast.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "luminous_beasts:beast_pit"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Установи звериную яму в подходящем биоме.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "luminous_beasts:yeti_horn",
+      "kind": "interaction",
+      "title": "Use a Yeti Horn in cold terrain",
+      "player_action": "Hold a Yeti Horn in the offhand while in a cold biome.",
+      "outcome": "Native item text describes improved health recovery in that environment.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "luminous_beasts:yeti_horn"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй рог йети для восстановления в холодном биоме.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "luminous_beasts:jungle_pendant",
+      "kind": "combat",
+      "title": "Use the Jungle Pendant during combat",
+      "player_action": "Equip a Jungle Pendant in the offhand and defeat enemies.",
+      "outcome": "Kills have a chance to grant Resistance; no guaranteed proc is assumed.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "luminous_beasts:jungle_pendant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи врага с джунглевым кулоном в руке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "luminous_beasts:prototype_exclusion",
+      "kind": "compatibility",
+      "title": "Exclude marked prototype augments from progression",
+      "player_action": "Check native item descriptions before proposing smithing-augment quests.",
+      "outcome": "Several augments and Legendary Scrap are explicitly marked as testing or unused.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "luminous_beasts:legendary_scrap"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_1",
+      "kind": "combat",
+      "title": "tree ent native bestiary",
+      "player_action": "Search the guide's forests habitat for tree ent and prepare for its described encounter.",
+      "outcome": "Leaf-breaking pursuit; its Magic Root offhand trophy can slow struck enemies.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:tree_ent"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:magic_root"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_1.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_2",
+      "kind": "combat",
+      "title": "hermit king native bestiary",
+      "player_action": "Search the guide's beaches habitat for hermit king and prepare for its described encounter.",
+      "outcome": "It heals inside its shell at half health; Shellmet supports faster travel across sand.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:hermit_king"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:shellmet_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_2.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_3",
+      "kind": "combat",
+      "title": "mummy native bestiary",
+      "player_action": "Search the guide's deserts habitat for mummy and prepare for its described encounter.",
+      "outcome": "An amulet changes its attack behavior; Mummy Wraps have poison/weakness protection in the item tooltip.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:mummy"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:mummy_wraps_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_3.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. Book says poison/hunger while current installed item tooltip says poison/weakness; contradiction retained, tooltip used only as tooltip evidence."
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_4",
+      "kind": "combat",
+      "title": "yeti native bestiary",
+      "player_action": "Search the guide's cold biomes habitat for yeti and prepare for its described encounter.",
+      "outcome": "Frost breath threatens attackers; Yeti Horn improves regeneration while carried offhand in cold habitats.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:yeti"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:yeti_horn"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_4.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_5",
+      "kind": "combat",
+      "title": "sea viper native bestiary",
+      "player_action": "Search the guide's cold oceans habitat for sea viper and prepare for its described encounter.",
+      "outcome": "It throws swimmers around; Viper Tooth supplies underwater night vision and resistance when held offhand.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:sea_viper"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:viper_tooth"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_5.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_6",
+      "kind": "combat",
+      "title": "vile gator native bestiary",
+      "player_action": "Search the guide's swamps habitat for vile gator and prepare for its described encounter.",
+      "outcome": "Launch and poison attacks are described; Gator Tooth gives offhand attacks a poison chance.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:vile_gator"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:gator_tooth"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_6.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_7",
+      "kind": "combat",
+      "title": "phoenix native bestiary",
+      "player_action": "Search the guide's Badlands habitat for phoenix and prepare for its described encounter.",
+      "outcome": "Its first defeat causes a baby rebirth; Phoenix Feather is a held one-use death inventory-retention item.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:phoenix"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:phoenix_feather"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_7.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_8",
+      "kind": "combat",
+      "title": "bone stalker native bestiary",
+      "player_action": "Search the guide's Dark Oak Forest habitat for bone stalker and prepare for its described encounter.",
+      "outcome": "It disappears and blinds prey; Bone Rattle's one-use death trigger summons a friendly phantom stalker.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:bone_stalker"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:bone_rattle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_8.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_9",
+      "kind": "combat",
+      "title": "crimson mushlin king native bestiary",
+      "player_action": "Search the guide's Crimson Forest habitat for crimson mushlin king and prepare for its described encounter.",
+      "outcome": "The guide's Crimson Spitter spits acid clouds; Spore Bundle releases a harmful slowing cloud on death.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:crimson_mushlin_king"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:spore_bundle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_9.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_10",
+      "kind": "combat",
+      "title": "piglin executioner native bestiary",
+      "player_action": "Search the guide's Nether Wastes habitat for piglin executioner and prepare for its described encounter.",
+      "outcome": "It summons piglin assistance; Executioner Cowl supplies Strength after kills.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:piglin_executioner"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:executioner_cowl_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_10.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_11",
+      "kind": "combat",
+      "title": "the furnace native bestiary",
+      "player_action": "Search the guide's Nether Wastes habitat for the furnace and prepare for its described encounter.",
+      "outcome": "Ember reinforcements support its attacks; Molten Coal strengthens a burning offhand holder.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:the_furnace"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:molten_coal"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_11.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_12",
+      "kind": "combat",
+      "title": "horseless headsman native bestiary",
+      "player_action": "Search the guide's Taigas during a full moon habitat for horseless headsman and prepare for its described encounter.",
+      "outcome": "Pumpkin minions complicate the fight; Pumpkin Helmet grants Strength during a full moon.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:horseless_headsman"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:pumpkin_helmet_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_12.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_13",
+      "kind": "combat",
+      "title": "cherry tree ent native bestiary",
+      "player_action": "Search the guide's Cherry Grove habitat for cherry tree ent and prepare for its described encounter.",
+      "outcome": "The variant breaks leaves while chasing and shares the offhand slowing-root branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:cherry_tree_ent"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:magic_root"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_13.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_14",
+      "kind": "combat",
+      "title": "golden hermit king native bestiary",
+      "player_action": "Search the guide's deserts habitat for golden hermit king and prepare for its described encounter.",
+      "outcome": "Its protective shell healing and sand-movement trophy parallel the coastal Hermit branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:golden_hermit_king"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:shellmet_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_14.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_15",
+      "kind": "combat",
+      "title": "red mummy native bestiary",
+      "player_action": "Search the guide's Badlands habitat for red mummy and prepare for its described encounter.",
+      "outcome": "The variant uses the amulet-based attack branch and Mummy Wraps trophy.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:red_mummy"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:mummy_wraps_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_15.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. Book says poison/hunger while current installed item tooltip says poison/weakness; contradiction retained, tooltip used only as tooltip evidence."
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_16",
+      "kind": "combat",
+      "title": "arid yeti native bestiary",
+      "player_action": "Search the guide's Savannas habitat for arid yeti and prepare for its described encounter.",
+      "outcome": "Unlike the cold Yeti chapter, this page describes mud-ball attacks; its trophy still favors cold regeneration.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:arid_yeti"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:yeti_horn"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_16.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_17",
+      "kind": "combat",
+      "title": "coral sea viper native bestiary",
+      "player_action": "Search the guide's coral reefs habitat for coral sea viper and prepare for its described encounter.",
+      "outcome": "Its swimmer-displacement attacks and underwater defensive trophy parallel the cold-ocean viper branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:coral_sea_viper"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:viper_tooth"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_17.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_18",
+      "kind": "combat",
+      "title": "frigid gator native bestiary",
+      "player_action": "Search the guide's Ice Spikes habitat for frigid gator and prepare for its described encounter.",
+      "outcome": "The page describes launching and poisoning targets, with Gator Tooth as its item branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:frigid_gator"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:gator_tooth"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_18.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_19",
+      "kind": "combat",
+      "title": "wind phoenix native bestiary",
+      "player_action": "Search the guide's Stony Peaks habitat for wind phoenix and prepare for its described encounter.",
+      "outcome": "Its first death transitions to a baby variant and shares the Phoenix Feather recovery branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:wind_phoenix"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:phoenix_feather"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_19.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_20",
+      "kind": "combat",
+      "title": "bogged bone stalker native bestiary",
+      "player_action": "Search the guide's swamps habitat for bogged bone stalker and prepare for its described encounter.",
+      "outcome": "Its chapter describes invisibility and blindness, with Bone Rattle support on the holder's death.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:bogged_bone_stalker"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:bone_rattle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_20.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_21",
+      "kind": "combat",
+      "title": "warped mushlin king native bestiary",
+      "player_action": "Search the guide's Warped Forest habitat for warped mushlin king and prepare for its described encounter.",
+      "outcome": "The guide's Warped Spitter uses acid-cloud attacks and the Spore Bundle branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:warped_mushlin_king"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:spore_bundle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_21.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_22",
+      "kind": "combat",
+      "title": "basalt executioner native bestiary",
+      "player_action": "Search the guide's Basalt Deltas habitat for basalt executioner and prepare for its described encounter.",
+      "outcome": "Piglin assistance and a kill-activated Strength cowl form its documented fight/trophy branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:basalt_executioner"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:executioner_cowl_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_22.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_23",
+      "kind": "combat",
+      "title": "soul furnace native bestiary",
+      "player_action": "Search the guide's Soul Sand Valley habitat for soul furnace and prepare for its described encounter.",
+      "outcome": "Its chapter describes Ember assistance and a Molten Coal trophy benefiting a burning carrier.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:soul_furnace"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:molten_coal"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_23.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_24",
+      "kind": "combat",
+      "title": "the scarecrow native bestiary",
+      "player_action": "Search the guide's plains during a full moon habitat for the scarecrow and prepare for its described encounter.",
+      "outcome": "Pumpkin minions support its attacks; Pumpkin Helmet has a full-moon Strength condition.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:the_scarecrow"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:pumpkin_helmet_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_24.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_25",
+      "kind": "combat",
+      "title": "gilded ent native bestiary",
+      "player_action": "Search the guide's Overworld limited-time events habitat for gilded ent and prepare for its described encounter.",
+      "outcome": "The special Ent breaks through leaves and drops loot when attacked; it is explicitly limited-time rather than ordinary guaranteed world content.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:gilded_ent"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_25.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_26",
+      "kind": "combat",
+      "title": "witch doctor native bestiary",
+      "player_action": "Search the guide's Sparse Jungle habitat for witch doctor and prepare for its described encounter.",
+      "outcome": "Two invisibility changes leave hostile helpers; Jungle Pendant offers kill-triggered resistance chance.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:witch_doctor"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:jungle_pendant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_26.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_27",
+      "kind": "combat",
+      "title": "woodland witch doctor native bestiary",
+      "player_action": "Search the guide's old taiga/spruce forests habitat for woodland witch doctor and prepare for its described encounter.",
+      "outcome": "The chapter describes repeated invisibility with helpers and the same pendant resistance branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:woodland_witch_doctor"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:jungle_pendant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_27.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. "
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_28",
+      "kind": "combat",
+      "title": "luminous moth native bestiary",
+      "player_action": "Search the guide's old taiga/spruce forests habitat for luminous moth and prepare for its described encounter.",
+      "outcome": "The page repeats an invisibility/helper description; Luminous Antennae reveal nearby mobs after its offhand holder is hurt in darkness.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:luminous_moth"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:luminous_antennae"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_28.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. Repeated Witch Doctor-like page ability wording may be stale; no AI behavior is promoted without code/runtime proof."
+    },
+    {
+      "key": "luminous_beasts:native_bestiary_29",
+      "kind": "combat",
+      "title": "albino moth native bestiary",
+      "player_action": "Search the guide's Dark Forest habitat for albino moth and prepare for its described encounter.",
+      "outcome": "Its native page likewise contains the invisibility/helper text and the dark-area antenna revealing branch.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "luminous_beasts:albino_moth"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:luminous_antennae"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи описанного зверя и изучи его трофей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Read full gui.luminous_beasts.beast_book_29.label_* page. Habitat and drop/ability descriptions are native guide claims, not runtime-proven spawn or guaranteed loot. Repeated Witch Doctor-like page ability wording may be stale; no AI behavior is promoted without code/runtime proof."
+    },
+    {
+      "key": "luminous_beasts:bestiary_item_limits",
+      "kind": "progression",
+      "title": "Native prototype and event limits",
+      "player_action": "Inspect augment and Legendary Scrap descriptions before planning survival progression.",
+      "outcome": "Most listed smithing augments and Legendary Scrap are explicitly labeled testing/no use; the Gilded trophy is a celebration reward. They are excluded from executable quest seeds.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "luminous_beasts:legendary_scrap"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:recovery_smithing_augment"
+        },
+        {
+          "registry": "items",
+          "id": "luminous_beasts:gilded_ent_trophy"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ac6fd8633482"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar; SHA256 dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3; entry assets/luminous_beasts/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    }
+  ]
+}

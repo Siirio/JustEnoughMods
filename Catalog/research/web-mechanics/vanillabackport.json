@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "mod_id": "vanillabackport",
+  "installed_version": "1.1.7.10",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://github.com/ItsBlackGear/VanillaBackport/wiki/Chase-the-Skies",
+      "publisher": "ItsBlackGear",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "garden",
+      "url": "https://github.com/ItsBlackGear/VanillaBackport/wiki/The-Garden-Awakens",
+      "publisher": "ItsBlackGear",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "bundle",
+      "url": "https://github.com/ItsBlackGear/VanillaBackport/wiki/Bundle-o'-Life-Update",
+      "publisher": "ItsBlackGear",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "vanillabackport:hydrate",
+      "kind": "acquisition",
+      "title": "Revive a Dried Ghast",
+      "player_action": "Find a Dried Ghast or craft one and keep it waterlogged.",
+      "outcome": "Hydrate it through stages until it becomes a Ghastling.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Multiple update families are version-sensitive and configurable; author roadmap is not proof every newest update exists in installed 1.1.7.10."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оживите высушенного гаста.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "vanillabackport:raise",
+      "kind": "progression",
+      "title": "Raise a Happy Ghast",
+      "player_action": "Feed Snowballs to a Ghastling while it grows.",
+      "outcome": "Accelerate growth into a Happy Ghast.",
+      "registry_refs": [],
+      "depends_on": [
+        "vanillabackport:hydrate"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Multiple update families are version-sensitive and configurable; author roadmap is not proof every newest update exists in installed 1.1.7.10."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите счастливого гаста.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "vanillabackport:ride",
+      "kind": "interaction",
+      "title": "Harness a Happy Ghast",
+      "player_action": "Equip an adult Happy Ghast with a Harness and mount it.",
+      "outcome": "Carry multiple players, with the first rider controlling flight.",
+      "registry_refs": [],
+      "depends_on": [
+        "vanillabackport:raise"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Multiple update families are version-sensitive and configurable; author roadmap is not proof every newest update exists in installed 1.1.7.10."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Полетайте на счастливом гасте.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "vanillabackport:pale_oak",
+      "kind": "acquisition",
+      "title": "Grow Pale Oak",
+      "player_action": "Plant Pale Oak Saplings in a square formation.",
+      "outcome": "Grow Pale Oak trees for the backported wood family.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Multiple update families are version-sensitive and configurable; author roadmap is not proof every newest update exists in installed 1.1.7.10."
+      ],
+      "source_ids": [
+        "garden"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите бледный дуб.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "vanillabackport:creaking",
+      "kind": "combat",
+      "title": "Find the Creaking's heart",
+      "player_action": "Explore Pale Gardens at night and trace a Creaking encounter to its heart-bearing Pale Oak.",
+      "outcome": "Discover the heart-controlled mob whose movement stops while observed.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Multiple update families are version-sensitive and configurable; author roadmap is not proof every newest update exists in installed 1.1.7.10."
+      ],
+      "source_ids": [
+        "garden"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите сердце скрипуна.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "vanillabackport:pot_storage",
+      "kind": "interaction",
+      "title": "Store items in a decorated pot",
+      "player_action": "Insert items into a supported decorated pot.",
+      "outcome": "Use the pot's backported storage behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Multiple update families are version-sensitive and configurable; author roadmap is not proof every newest update exists in installed 1.1.7.10."
+      ],
+      "source_ids": [
+        "bundle"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сохраните предметы в украшенном горшке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

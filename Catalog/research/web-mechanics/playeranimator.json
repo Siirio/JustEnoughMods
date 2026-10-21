@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "mod_id": "playeranimator",
+  "installed_version": "1.0.2-rc1+1.20",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://github.com/KosmX/minecraftPlayerAnimator",
+      "publisher": "KosmX",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/player-animation-lib-forge-1.0.2-rc1+1.20.jar",
+        "sha256": "90d9965cb9efdbda29fdc5610be3914cf7008bf5c392ff34f7ab25f96a852691",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "playeranimator:installed_role",
+      "kind": "compatibility",
+      "title": "Player Animator role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Provides a common player-animation library used by consumers; installing it does not specify the consumers' attacks or overwrite server combat admission.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 1.0.2-rc1+1.20"
+    }
+  ]
+}

@@ -24,6 +24,12 @@ public final class MarketRuntime {
     public static void register(ServerLevel level, BlockPos pos) { LOADED.computeIfAbsent(level, ignored -> new java.util.LinkedHashSet<>()).add(pos.immutable()); }
     public static void unregister(ServerLevel level, BlockPos pos) { Set<BlockPos> set = LOADED.get(level); if (set != null) set.remove(pos); }
 
+    @SubscribeEvent public static void started(net.minecraftforge.event.server.ServerStartedEvent event) {
+        if (!event.getServer().isDedicatedServer()) return;
+        for (String category : java.util.List.of("blocks","food","plants","resources","drops","building64"))
+            com.siirio.jemeconomy.policy.MarketSupply.listings(event.getServer(),category);
+    }
+
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0 || !event.getServer().isDedicatedServer()) return;

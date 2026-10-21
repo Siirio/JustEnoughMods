@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "mod_id": "kaleidoscope_end",
+  "installed_version": "1.0.14-forge+mc1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/kaleidoscope-end",
+      "publisher": "BmtUltra",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/kaleidoscope-end",
+      "publisher": "BmtUltra",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar",
+        "sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340",
+        "resource": "assets/kaleidoscope_end/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "kaleidoscope_end:crops",
+      "kind": "acquisition",
+      "title": "Find End cooking crops",
+      "player_action": "Explore the End for Dream Berries and Ender Mint.",
+      "outcome": "Collect ingredients added by the End cooking expansion.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите кулинарные растения Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/kaleidoscope_end.json."
+    },
+    {
+      "key": "kaleidoscope_end:dishes",
+      "kind": "crafting",
+      "title": "Cook an End dish",
+      "player_action": "Use the addon's End ingredients in Kaleidoscope Cookery recipes.",
+      "outcome": "Prepare dragon, shulker or chorus-themed foods.",
+      "registry_refs": [],
+      "depends_on": [
+        "kaleidoscope_end:crops"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте блюдо Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_end:egg",
+      "kind": "interaction",
+      "title": "Eat a dragon egg dish",
+      "player_action": "Consume one of the documented dragon egg dishes.",
+      "outcome": "Receive the addon's special effect; the page does not specify a complete effect formula.",
+      "registry_refs": [],
+      "depends_on": [
+        "kaleidoscope_end:dishes"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Попробуйте блюдо из яйца дракона.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_end:brush_materials",
+      "kind": "interaction",
+      "title": "Brush End ingredients",
+      "player_action": "Brush suspicious End Stone for Void Conch and suspicious Dragon Eggs for Dragon Dust or egg liquid.",
+      "outcome": "Use conch as an enchanting material and Dragon Dust as reusable Bone Meal.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "kaleidoscope_end:void_conch"
+        },
+        {
+          "registry": "items",
+          "id": "kaleidoscope_end:dragon_dust"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудьте ингредиенты кистью.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "kaleidoscope_end:end_meat",
+      "kind": "interaction",
+      "title": "Prepare End creature ingredients",
+      "player_action": "Use a knife to kill Endermen or Endermites; obtain Shulker meat and Dragon tooth/meat from their documented defeated creatures.",
+      "outcome": "Supply ingredient families to cooking recipes; shear Chorus Flowers for petals.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Заготовьте ингредиенты Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "kaleidoscope_end:end_effects",
+      "kind": "interaction",
+      "title": "Use End food effects",
+      "player_action": "Choose Dream, Mint or Void Erosion according to the food's native effect.",
+      "outcome": "Gain air swimming, reduced magic damage with Enderman stare safety, or the documented survival/armor-bypass effect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed effect.kaleidoscope_end.* descriptions are documentary claims. Hosted encounter death/elimination rules and cross-mod damage behavior are runtime-owned; no invulnerability guarantee is inferred.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте еду Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "kaleidoscope_end:void_enchantments",
+      "kind": "interaction",
+      "title": "Enchant for void exploration",
+      "player_action": "Use the native Void Walker enchantment or combat enchantments Void Assault/Void Echo on supported gear.",
+      "outcome": "Walk in void or gain chance-based multiplied/area damage according to enchantment level.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact enchantment.kaleidoscope_end.*.desc; supported item predicates, level formulas and recipes stay with installed native/canonical data.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получите зачарование пустоты.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

@@ -9,11 +9,18 @@ import pl.skidam.automodpack_core.config.*;
 import pl.skidam.automodpack_core.modpack.group.*;
 import pl.skidam.automodpack_core.update.*;
 
-/** Player-approved adapter to the installed native updater for the October 21 hotfix. */
+/** Player-approved adapter to the installed native updater for the October 21 shipping/market release. */
 public final class JemClientRecovery {
-    private static final String TOKEN = "14522bb63bb0ef90ecb9a71e1650cb2bb19402c6";
+    private static final String TOKEN = "43f6ddb2930f8a59a6e61fde5c033078b4a29b31";
     private static final String SETTLEMENTS = "mods/jem-settlements-2.1.0.jar";
     private static final String FIX = "e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe";
+
+    private static final Map<String,String> REVIEWED = Map.of(
+        "mods/jem-economy-1.3.0.jar", "ebbe93fc0761c48c95762488ecc0c0e6e61dbdf05dff63b7b7a8778f3371a73c",
+        "mods/jemcompat-3.7.0.jar", "7040700570ecd1b14537c503ec9476f1d2e3e13cc913ac77aa3ca1f7d0745737",
+        "mods/jem-server-2.0.0-dev.jar", "53769bc0ec1b5a19f56c72c4bdd27e87467b549c9448c576dd6a5c80a519f462",
+        "mods/jem-settlements-2.1.0.jar", "e61c824bc391707922bd3bc0b7e244fe676955f7a77cd1ab60e60fec7c9466fe",
+        "jem-pack/manifest.json", "73510ffdfc350b013da370bcd10482971b785f5176dae3891f4ba81822f01d47");
 
     private static String hash(Path path, String algorithm) throws Exception {
         try (var input = Files.newInputStream(path)) {
@@ -70,7 +77,7 @@ public final class JemClientRecovery {
         var active = storage.readActiveState();
         require(active != null, "No installed AutoModpack generation. Install the normal JEM client first");
         if (TOKEN.equals(active.contentToken)) {
-            require(hash(storage.activeDirectory().resolve(SETTLEMENTS), "SHA-256").equals(FIX), "Installed artifact differs");
+            for (var artifact : REVIEWED.entrySet()) require(hash(storage.activeDirectory().resolve(artifact.getKey()), "SHA-256").equals(artifact.getValue()), "Installed artifact differs: " + artifact.getKey());
             JOptionPane.showMessageDialog(null, "Исправление уже установлено. Можно запускать JustEnoughMods.");
             return;
         }
@@ -84,8 +91,7 @@ public final class JemClientRecovery {
             "The cached server release differs. Launch once to fetch the current MineRENT release, close the game and retry");
         var target = SelectedModpackTarget.prepare(document, new ClientSelectionStore(storage.selectionFile()), ClientPlatform.WINDOWS);
         var payload = bundle.resolve("Файлы");
-        var reviewed = Map.of(SETTLEMENTS, FIX, "jem-pack/manifest.json",
-            "87f1ce9c0e863d6e285bf04424b8b582bc08750c3103be03fa8e3a86bdaa1a83");
+        var reviewed = REVIEWED;
         for (var entry : reviewed.entrySet()) {
             Path file = payload.resolve(entry.getKey());
             require(hash(file, "SHA-256").equals(entry.getValue()), "Recovery payload differs: " + entry.getKey());
@@ -118,9 +124,9 @@ public final class JemClientRecovery {
                 }
             }
             int answer = JOptionPane.showConfirmDialog(null,
-                "Установить исправление краша Xaero для JustEnoughMods?\n\n"
+                "Установить исправления ящика, магазина и групп JustEnoughMods?\n\n"
                 + "Профиль: " + profile + "\n"
-                + "Будут применены опубликованные Settlements и манифест.\n"
+                + "Будут применены опубликованные Economy, Compat, Server, Settlements и манифест.\n"
                 + "Точных лишних копий модов в обычной mods: " + duplicates + ".\n"
                 + "Эти моды остаются в активной установке AutoModpack.\n"
                 + "Миры, настройки и личные данные не удаляются.\n\n"
@@ -136,7 +142,7 @@ public final class JemClientRecovery {
             ((UpdateAttempt)session).commit();
             require(TOKEN.equals(storage.readActiveState().contentToken), "Native generation did not commit");
             require(new ClientGenerationStore(storage).headMatchesActive(active.modpackId, TOKEN), "Native head differs");
-            require(hash(storage.activeDirectory().resolve(SETTLEMENTS), "SHA-256").equals(FIX), "Installed artifact differs");
+            for (var artifact : REVIEWED.entrySet()) require(hash(storage.activeDirectory().resolve(artifact.getKey()), "SHA-256").equals(artifact.getValue()), "Installed artifact differs: " + artifact.getKey());
             require(!Files.exists(profile.resolve("automodpack/client/update-transaction.json")), "Pending transaction remains");
         }
         System.out.println("ГОТОВО: " + TOKEN + "; SHA256 " + FIX);

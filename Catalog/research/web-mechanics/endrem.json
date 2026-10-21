@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "mod_id": "endrem",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/endremastered",
+      "publisher": "jack_bagel",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "endrem:structure_eyes",
+      "kind": "acquisition",
+      "title": "Collect distinct eyes through exploration",
+      "player_action": "Search desert pyramids, fortresses, igloos and other listed structures for custom eyes.",
+      "outcome": "Reaching the End becomes a multi-location collection journey.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endrem:old_eye"
+        },
+        {
+          "registry": "items",
+          "id": "endrem:nether_eye"
+        },
+        {
+          "registry": "items",
+          "id": "endrem:cold_eye"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest version is the unresolved literal ${file.jarVersion}; artifact filename is endrem_forge-5.3.3-R-1.20.1.jar."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди разные глаза в древних сооружениях.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed ${file.jarVersion}. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endrem:boss_eyes",
+      "kind": "combat",
+      "title": "Earn eyes through vanilla boss fights",
+      "player_action": "Defeat the Wither or Elder Guardian for the corresponding custom eye; Evokers provide the Magical Eye.",
+      "outcome": "Combat offers acquisition paths separate from structure loot.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endrem:wither_eye"
+        },
+        {
+          "registry": "items",
+          "id": "endrem:guardian_eye"
+        },
+        {
+          "registry": "items",
+          "id": "endrem:magical_eye"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest version is the unresolved literal ${file.jarVersion}; artifact filename is endrem_forge-5.3.3-R-1.20.1.jar."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь особый глаз победой над сильным противником.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed ${file.jarVersion}. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endrem:cleric_eye",
+      "kind": "acquisition",
+      "title": "Acquire the Evil Eye through a cleric",
+      "player_action": "Trade with a master cleric for the Evil Eye.",
+      "outcome": "Villager progression supplies another portal-eye route.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endrem:evil_eye"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest version is the unresolved literal ${file.jarVersion}; artifact filename is endrem_forge-5.3.3-R-1.20.1.jar."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи зловещий глаз у мастера-священника.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed ${file.jarVersion}. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endrem:portal_eyes",
+      "kind": "progression",
+      "title": "Open the portal using custom eyes",
+      "player_action": "Bring twelve custom eyes to the stronghold portal, replacing any vanilla eyes as described by the author.",
+      "outcome": "The custom eye set activates End access.",
+      "registry_refs": [],
+      "depends_on": [
+        "endrem:structure_eyes"
+      ],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest version is a literal placeholder; artifact identifies endrem_forge-5.3.3-R-1.20.1.jar, not the newer upstream 6.x release.",
+        "Manifest version is the unresolved literal ${file.jarVersion}; artifact filename is endrem_forge-5.3.3-R-1.20.1.jar."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери двенадцать особых глаз и открой портал.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed ${file.jarVersion}. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

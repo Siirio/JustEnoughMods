@@ -27,7 +27,7 @@ public final class BossHostingPrompt {
     public static boolean canOffer(ServerPlayer player, LivingEntity boss) {
         return SmpEnvironment.active(player) && player.isAlive() && !player.isSpectator()
                 && player.level() == boss.level() && boss.isAlive() && !boss.isRemoved()
-                && WorldTierApi.profile(boss).isPresent() && HostedEncounterApi.status(boss).isEmpty()
+                && HostedEncounterApi.canHost(boss) && HostedEncounterApi.status(boss).isEmpty()
                 && !StructureStaging.managed(boss) && BossStaging.contains(boss, player)
                 && (!net.minecraftforge.fml.ModList.get().isLoaded("jem_twelve_eyes")
                 || com.siirio.jemtwelveeyes.api.CampaignApi.unlocked(player,
@@ -36,6 +36,7 @@ public final class BossHostingPrompt {
 
     public static void prompt(ServerPlayer player, UUID id) {
         if (!(player.serverLevel().getEntity(id) instanceof LivingEntity boss)) throw new SmpActionFailure("unavailable");
+        SmpRecords.require(HostedEncounterApi.canHost(boss), "unavailable");
         var raid = EventScheduler.active(player.server, "BOSS_RAID");
         if (raid != null && raid.hasUUID("targetBoss") && raid.getUUID("targetBoss").equals(id)) {
             EventAreaHooks.prompt(player, raid.getUUID("id"));
@@ -54,7 +55,7 @@ public final class BossHostingPrompt {
 
     private static LivingEntity boss(Entity target) {
         while (target instanceof net.minecraftforge.entity.PartEntity<?> part) target = part.getParent();
-        return target instanceof LivingEntity living && WorldTierApi.profile(living).isPresent() ? living : null;
+        return target instanceof LivingEntity living && HostedEncounterApi.canHost(living) ? living : null;
     }
 
     private static void attempt(ServerPlayer player, LivingEntity boss) {
@@ -92,7 +93,7 @@ public final class BossHostingPrompt {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void joined(EntityJoinLevelEvent event) {
         if (event.getLevel() instanceof ServerLevel && event.getEntity() instanceof LivingEntity boss
-                && SmpEnvironment.active(boss.getServer()) && WorldTierApi.profile(boss).isPresent()
+                && SmpEnvironment.active(boss.getServer()) && HostedEncounterApi.canHost(boss)
                 && !boss.getPersistentData().getBoolean(EventSession.SPAWNED)
                 && HostedEncounterApi.status(boss).isEmpty()) HostedEncounterApi.hold(boss);
     }

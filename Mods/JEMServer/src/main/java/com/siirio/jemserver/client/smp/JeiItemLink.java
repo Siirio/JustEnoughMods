@@ -9,8 +9,8 @@ import mezz.jei.gui.overlay.bookmarks.BookmarkOverlay;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.ModList;
 
-final class JeiItemLink {
-    static boolean open(ItemStack source) {
+public final class JeiItemLink {
+    public static boolean open(ItemStack source) {
         if (source.isEmpty() || !ModList.get().isLoaded("jei")) return false;
         try {
             var runtime = Internal.getOptionalJeiRuntime().orElse(null);

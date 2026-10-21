@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "mod_id": "gravestone",
+  "installed_version": "1.20.1-1.0.35",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/gravestone-mod",
+      "publisher": "henkelmax",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "gravestone:retrieve_grave",
+      "kind": "interaction",
+      "title": "Recover items from a death grave",
+      "player_action": "Return to the grave and break it, or use the configured sneak-recovery option.",
+      "outcome": "The grave releases stored possessions and can restore their original inventory slots.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Owner-only access, sneak recovery, sorting and ghost behavior are configuration options.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Death ID and actual grave recovery are distinct native state transitions; an obituary item alone does not prove recovery. JEM encounter elimination remains authoritative."
+    },
+    {
+      "key": "gravestone:read_obituary",
+      "kind": "interaction",
+      "title": "Locate and identify a death",
+      "player_action": "Read the obituary or right-click the grave.",
+      "outcome": "The record supplies player, dimension, coordinates and stored-item information; obituary creation/removal is configurable.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Death ID and actual grave recovery are distinct native state transitions; an obituary item alone does not prove recovery. JEM encounter elimination remains authoritative."
+    },
+    {
+      "key": "gravestone:grave_decoration",
+      "kind": "crafting",
+      "title": "Create a named decorative grave",
+      "player_action": "Craft a grave or retrieve it with Silk Touch and rename it in an anvil.",
+      "outcome": "The displayed grave text follows the name.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Death ID and actual grave recovery are distinct native state transitions; an obituary item alone does not prove recovery. JEM encounter elimination remains authoritative."
+    },
+    {
+      "key": "gravestone:restore_and_placement",
+      "kind": "compatibility",
+      "title": "Understand failed placement and admin recovery",
+      "player_action": "Inspect a failed grave placement's logged death ID and the documented restore command before recovery.",
+      "outcome": "Upstream describes relocation above obstructions, special void placement, normal drops when placement fails, and restore add/replace modes.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Replace overwrites inventory; no restore or world mutation was executed.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Death ID and actual grave recovery are distinct native state transitions; an obituary item alone does not prove recovery. JEM encounter elimination remains authoritative."
+    }
+  ]
+}

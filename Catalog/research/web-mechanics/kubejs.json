@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "mod_id": "kubejs",
+  "installed_version": "2001.6.5-build.26",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author",
+      "publisher": "KubeJS / LatvianModder",
+      "url": "https://modrinth.com/mod/kubejs",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "installed",
+      "publisher": "KubeJS / LatvianModder",
+      "url": "https://modrinth.com/mod/kubejs",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/kubejs-forge-2001.6.5-build.26.jar",
+        "sha256": "1769312192fbf9d72f45054ba61130523bfb471b5f480a4bff8c210ec09400bb",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "narrated_lifecycle",
+      "url": "https://www.youtube.com/watch?v=xhJJbNJjics",
+      "publisher": "Liopyu",
+      "scope": "youtube_transcript",
+      "reviewed_on": "2026-10-21",
+      "video_evidence": {
+        "language": "en",
+        "caption_kind": "automatic",
+        "start_seconds": 0,
+        "end_seconds": 105,
+        "transcript_sha256": "750b9810319bca30f5654da88c582a936b99e36d42c7c023b4991cb00a37882f"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "kubejs:startup_lifecycle",
+      "kind": "automation",
+      "title": "Keep startup registration in its native lifecycle",
+      "player_action": "Author item and block registration handlers in the pack's startup script tree.",
+      "outcome": "Startup registrations run at game startup and generally require a restart after identity changes; a server data reload is not equivalent to rebuilding registries.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Research only: no script, registry or running game was changed.",
+        "Author documentation can cover newer releases; installed version is 2001.6.5-build.26."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Pack-author scripting workflow, not a survival objective. The owning script and native recipe event remain authoritative."
+    },
+    {
+      "key": "kubejs:server_data_lifecycle",
+      "kind": "automation",
+      "title": "Use server data events for recipes and tags",
+      "player_action": "Author a recipe or tag handler in server scripts and review the owning data event.",
+      "outcome": "Reloadable recipe and tag modifications belong to server/data events, while some other changes still require a world or game restart.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The exact installed API/event signature and project Atlas change record are required before implementing a rule.",
+        "Author documentation can cover newer releases; installed version is 2001.6.5-build.26."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Pack-author scripting workflow, not a survival objective. The owning script and native recipe event remain authoritative."
+    },
+    {
+      "key": "kubejs:client_boundary",
+      "kind": "compatibility",
+      "title": "Separate client presentation from server rules",
+      "player_action": "Keep client-specific presentation handlers in client scripts and gameplay validation on the server.",
+      "outcome": "The script directory/lifecycle boundary prevents client rendering work from being treated as authoritative world state.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Client-only imports are not valid in a dedicated server script.",
+        "A copied tutorial for 1.19.2 does not establish 1.20.1 event names.",
+        "Author documentation can cover newer releases; installed version is 2001.6.5-build.26."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Pack-author scripting workflow, not a survival objective. The owning script and native recipe event remain authoritative."
+    },
+    {
+      "key": "kubejs:narrated_lifecycle_boundary",
+      "kind": "compatibility",
+      "title": "Narrated script-directory lifecycle corroboration",
+      "player_action": "Compare the introductory script-directory explanation with the installed KubeJS documentation before editing a pack script.",
+      "outcome": "The tutorial distinguishes client, server and startup scripts; startup registration is a different lifecycle from world/data processing.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked tutorial targets an older KubeJS/Minecraft generation; it corroborates directory roles, not current event signatures or registration syntax.",
+        "No tutorial script was executed and no game was launched."
+      ],
+      "source_ids": [
+        "narrated_lifecycle",
+        "author"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.active-party-forfeit-control-20261021",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_shipping_market_repair",
+    "priority": 650
+  },
+  "change": {
+    "summary": "Allow active boss-party view and leader-confirmed encounter forfeit through the existing party system.",
+    "modifiers": [
+      {
+        "property": "party.active_view",
+        "operation": "replace",
+        "before": "ACTIVE rows marked closeLobby, closing the screen immediately; active CANCEL excluded.",
+        "after": "Only closed rows auto-close. Existing canonical START still closes once after confirmation. Active boss-party leader sees confirmed End encounter using existing CANCEL action, revision validation, action token and HostedParties.forfeit; no new party or packet authority."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer parties and HostedParties",
+    "kind": "source_owned_correction",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Docs/releases/2026-10-21-shipping-market-repair.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Allow active boss-party view and leader-confirmed encounter forfeit through the existing party system.",
+    "decision_source": "User requests clickable active group and End encounter for initiator. Codex reuses canonical forfeit path and confirmation."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_requested_repair",
+    "summary": "Allow active boss-party view and leader-confirmed encounter forfeit through the existing party system.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_requested_repair",
+      "summary": "Allow active boss-party view and leader-confirmed encounter forfeit through the existing party system.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEMServer parties and HostedParties",
+      "boss and raid cancellation",
+      "SMP controls"
+    ],
+    "relations": [],
+    "notes": [
+      "Existing schema, identity, ledger, provenance, native mod owners and unrelated gameplay remain authoritative.",
+      "Exact full artifacts synchronized, local native generation56 applied to test jem and MineRENT generation10 published with content token43f6ddb. See Docs/releases/2026-10-21-shipping-market-repair.json for final installation and release boundary."
+    ],
+    "unresolved": [
+      "Actual gameplay/GUI and player acceptance remain unobserved; no automated tests or gameplay launch."
+    ]
+  }
+}

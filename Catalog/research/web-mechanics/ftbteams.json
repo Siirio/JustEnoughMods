@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "mod_id": "ftbteams",
+  "installed_version": "2001.3.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/ftb-teams-forge",
+      "publisher": "Feed The Beast",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "team_docs",
+      "url": "https://docs.feed-the-beast.com/mod-docs/mods/suite/Teams/",
+      "publisher": "Feed The Beast",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "ftbteams:party_management",
+      "kind": "interaction",
+      "title": "Create a party and invite players",
+      "player_action": "Use the installed FTB Teams GUI or ftbteams party commands for team creation/invitations.",
+      "outcome": "Players can cooperate through shared team membership and configured permissions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Current docs use the party command branch; older project text shows a different create syntax. Use installed help.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "team_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The canonical native team ID/membership and dependent mod's team policy are the signals. FTB party membership must not be silently treated as JEM event participation or map-publication consent."
+    },
+    {
+      "key": "ftbteams:team_progress",
+      "kind": "progression",
+      "title": "Cooperate on a team-aware quest",
+      "player_action": "Join a team participating in FTB Quests.",
+      "outcome": "The author describes team progression so multiple members can work on the same quests.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Join/leave inheritance and reward ownership need installed FTB Quests settings, not assumptions.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The canonical native team ID/membership and dependent mod's team policy are the signals. FTB party membership must not be silently treated as JEM event participation or map-publication consent."
+    },
+    {
+      "key": "ftbteams:allies_chat",
+      "kind": "interaction",
+      "title": "Communicate and grant limited team trust",
+      "player_action": "Use team chat and the ally/permission features supported by the installed release.",
+      "outcome": "Allies and members can have distinct relationships; FTB Chunks protection requires that separate mod.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "team_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The canonical native team ID/membership and dependent mod's team policy are the signals. FTB party membership must not be silently treated as JEM event participation or map-publication consent."
+    },
+    {
+      "key": "ftbteams:server_team",
+      "kind": "integration",
+      "title": "Distinguish administrator teams from player parties",
+      "player_action": "Inspect a server-managed team rather than presenting it as joinable party membership.",
+      "outcome": "The docs state server teams cannot be joined, invited to or left by ordinary players.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "team_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The canonical native team ID/membership and dependent mod's team policy are the signals. FTB party membership must not be silently treated as JEM event participation or map-publication consent."
+    }
+  ]
+}

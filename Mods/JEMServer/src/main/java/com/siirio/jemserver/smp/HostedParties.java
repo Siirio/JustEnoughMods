@@ -59,7 +59,7 @@ public final class HostedParties {
                     level.getEntitiesOfClass(
                             LivingEntity.class,
                             new AABB(center).inflate(SmpConfig.ENCOUNTER_RADIUS.get()),
-                            entity -> entity.isAlive() && WorldTierApi.profile(entity).isPresent());
+                            entity -> entity.isAlive() && HostedEncounterApi.canHost(entity));
             SmpRecords.require(candidates.size() == 1, "one_awakened_boss_required");
             boss = candidates.get(0);
         }

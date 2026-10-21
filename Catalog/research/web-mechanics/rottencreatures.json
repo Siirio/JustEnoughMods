@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "mod_id": "rottencreatures",
+  "installed_version": "1.1.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/rotten-creatures",
+      "publisher": "RPorotos / Fusion Studio",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/rotten-creatures",
+      "publisher": "RPorotos / Fusion Studio",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_2a372655f126",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/rotten-creatures",
+      "publisher": "RPorotos / Fusion Studio; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/rottencreatures-forge-1.20.1-1.1.0.jar",
+        "sha256": "cbf97ceeb4378b493884fc49fb668098edaca135dad81db548dea6f4c324e81b",
+        "resource": "assets/rottencreatures/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "rottencreatures:frozen_flesh",
+      "kind": "crafting",
+      "title": "Process Frostbitten loot",
+      "player_action": "Defeat a Frostbitten and cook Frozen Rotten Flesh or use its supported brewing route.",
+      "outcome": "The cold zombie drop supports ordinary flesh processing and Freeze brewing.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "rottencreatures:frostbitten"
+        },
+        {
+          "registry": "items",
+          "id": "rottencreatures:frozen_rotten_flesh"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь замёрзшую плоть и переработай её.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.0. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "rottencreatures:burned_conversion",
+      "kind": "combat",
+      "title": "Change a Burned using water",
+      "player_action": "Expose a Burned to water while accounting for the Obsidian form's defenses.",
+      "outcome": "The altered form gains projectile immunity and different mobility; lava can reignite it.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "rottencreatures:burned"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи превращение обожжённого зомби в воде.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.0. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "rottencreatures:dead_beard_chest",
+      "kind": "combat",
+      "title": "Defeat Dead Beard before his barrel explodes",
+      "player_action": "Finish Dead Beard before his explosive self-destruction and place the dropped Treasure Chest.",
+      "outcome": "The placed chest releases its loot; an explosion can prevent the normal reward.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "rottencreatures:dead_beard"
+        },
+        {
+          "registry": "items",
+          "id": "rottencreatures:treasure_chest"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Мёртвую Бороду и открой его сундук.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.0. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "rottencreatures:immortal_weather",
+      "kind": "combat",
+      "title": "Account for weather during an Immortal fight",
+      "player_action": "Confront an Immortal while observing thunderstorm state and lightning.",
+      "outcome": "Storm power and healing change the fight and its trident reward conditions.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "rottencreatures:immortal"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Бессмертного, учитывая грозовую погоду.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.0. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "rottencreatures:freeze_brewing",
+      "kind": "interaction",
+      "title": "freeze brewing native mechanic",
+      "player_action": "Brew a Freeze potion.",
+      "outcome": "Its native effect immobilizes its target, and brewing is a dedicated advancement.",
+      "registry_refs": [
+        {
+          "registry": "effects",
+          "id": "rottencreatures:freeze"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_2a372655f126"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Свари зелье заморозки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/rottencreatures-forge-1.20.1-1.1.0.jar; SHA256 cbf97ceeb4378b493884fc49fb668098edaca135dad81db548dea6f4c324e81b; entry assets/rottencreatures/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "rottencreatures:deadbeard_treasure",
+      "kind": "interaction",
+      "title": "deadbeard treasure native mechanic",
+      "player_action": "Defeat DeadBeard and recover its treasure.",
+      "outcome": "The installed advancement explicitly links the fight with treasure recovery.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "rottencreatures:dead_beard"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_2a372655f126"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Мертвеца-пирата и найди сокровище.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/rottencreatures-forge-1.20.1-1.1.0.jar; SHA256 cbf97ceeb4378b493884fc49fb668098edaca135dad81db548dea6f4c324e81b; entry assets/rottencreatures/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "rottencreatures:channeled_lightning",
+      "kind": "interaction",
+      "title": "channeled lightning native mechanic",
+      "player_action": "Account for Channeled on a player during storms.",
+      "outcome": "The native description makes afflicted players naturally attract lightning.",
+      "registry_refs": [
+        {
+          "registry": "effects",
+          "id": "rottencreatures:channeled"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_2a372655f126"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/rottencreatures-forge-1.20.1-1.1.0.jar; SHA256 cbf97ceeb4378b493884fc49fb668098edaca135dad81db548dea6f4c324e81b; entry assets/rottencreatures/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

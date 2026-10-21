@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "mod_id": "nullscape",
+  "installed_version": "1.2.8",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/nullscape",
+      "publisher": "Starmute / Stardust Labs",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "nullscape:vertical_end",
+      "kind": "progression",
+      "title": "Plan a route across the expanded End terrain",
+      "player_action": "Explore shattered islands, floating valleys and crystallized peaks while planning vertical crossings.",
+      "outcome": "The End's expanded vertical terrain changes traversal without proving a separate dimension.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Проложи маршрут через новые острова и долины Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.2.8. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "nullscape:single_end_dimension",
+      "kind": "compatibility",
+      "title": "Use the normal End identity for exploration detection",
+      "player_action": "Resolve exploration objectives against the installed End dimension and actual location state.",
+      "outcome": "The author states modern Nullscape uses one End dimension rather than the earlier split.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Author page may describe a different release than installed 1.2.8. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "mod_id": "ribbits",
+  "installed_version": "1.20.1-Forge-3.0.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/ribbits",
+      "publisher": "joosh_7889 / YUNGNICKYOUNG",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "ribbits:swamp_trade",
+      "kind": "acquisition",
+      "title": "Trade with swamp Ribbits",
+      "player_action": "Find a Ribbit swamp village and trade with merchant or fisherman Ribbits.",
+      "outcome": "Trades provide native plant blocks and maracas.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посети деревню риббитов и соверши обмен.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.20.1-Forge-3.0.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "ribbits:music",
+      "kind": "interaction",
+      "title": "Join a Ribbit music gathering",
+      "player_action": "Approach a group that has sat down to play music and join their session.",
+      "outcome": "The village supports a social music activity.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Присоединись к музыкальному кругу риббитов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.20.1-Forge-3.0.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "ribbits:home_relocation",
+      "kind": "interaction",
+      "title": "Relocate a Ribbit home with amethyst",
+      "player_action": "Move a Ribbit to its new home position and right click it with amethyst.",
+      "outcome": "Its home point resets so night-time homing uses the new location.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пересели риббита и закрепи новый дом аметистом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.20.1-Forge-3.0.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "ribbits:garden_support",
+      "kind": "integration",
+      "title": "Place crops around gardener Ribbits",
+      "player_action": "Keep gardener Ribbits near crops and interact with the village support roles.",
+      "outcome": "Gardeners water crops and sorcerers can give the player buffs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Организуй огород рядом с риббитом-садовником.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.20.1-Forge-3.0.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

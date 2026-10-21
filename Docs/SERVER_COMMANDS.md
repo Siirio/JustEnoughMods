@@ -182,3 +182,7 @@ Samples separate requested native hurt amount, LOWEST event-stage amounts/cancel
 `/jemkeys preview` shows the current registered-key differences; `/jemkeys apply` applies the curated preset once. Existing clients are not silently remapped during an update. These are client-side commands; do not enter them in the dedicated console.
 
 Shipping Box sales use the owner-authorized native container button, without a scheduler or a new public sale command. Its second tab exchanges physical Coins and withdraws from the same CurrencyCore wallet. Test mode bypasses ordinary selling quotas only when its exact binding explicitly enables `bypassQuotas`; reserve backing and the shared music-disc quota remain active.
+
+### Ordinary public chat —2026-10-21
+
+ServerLogin 1.0.3 previously intercepted ordinary OP2 chat and sent `[local]` system messages only to players in the same dimension within its configured radius (100 blocks in the inspected config). This also removed the normal player-chat sender context used by Chat Heads. The next-update dedicated compatibility adapter keeps LoginEvents authentication checks and lets default chat continue through the native public player-chat path. Explicit admin-chat commands remain native. This is a local candidate; it has not been installed on MineRENT.

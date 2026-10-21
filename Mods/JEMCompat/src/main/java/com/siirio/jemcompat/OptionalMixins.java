@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
-            Map.entry("com.siirio.jemcompat.mixin.client.QuickSkinVanillaPreviewMixin", List.of("quickskin")),
             Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
             Map.entry("com.siirio.jemcompat.mixin.guide.SpawnWithJourneyGuideProcedureMixin", List.of("spawn")),
@@ -35,6 +34,16 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginPublicChatMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("serverlogin");
+            return FMLLoader.getDist().isDedicatedServer() && file != null && file.getMods().stream()
+                    .anyMatch(mod -> mod.getModId().equals("serverlogin") && mod.getVersion().toString().equals("1.0.3"));
+        }
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ClosedConnectionErrorMixin")) {
+            var file=FMLLoader.getLoadingModList().getModFileById("serverlogin");
+            return FMLLoader.getDist().isDedicatedServer()&&file!=null&&file.getMods().stream()
+                    .anyMatch(mod->mod.getModId().equals("serverlogin")&&mod.getVersion().toString().equals("1.0.3"));
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.TerminalConnectionFailureMixin")
                 || mixinClassName.equals("com.siirio.jemcompat.mixin.login.ConnectivityTerminalSocketMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("connectivity");

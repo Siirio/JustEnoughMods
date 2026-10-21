@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "mod_id": "fwa",
+  "installed_version": "1.2.31",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author",
+      "publisher": "maDU59",
+      "url": "https://modrinth.com/mod/fwa",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "installed",
+      "publisher": "maDU59",
+      "url": "https://modrinth.com/mod/fwa",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/fwa%2B1.20.1-forge-1.2.31.jar",
+        "sha256": "a490f1435f8eccec0a4d354184d37d4ddbcf9e048c805261e86f2008e6ca2e3f",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "fwa:interactable_animation",
+      "kind": "interaction",
+      "title": "Animate native interactive blocks",
+      "player_action": "Open a native door, trapdoor or fence gate, or interact with supported switches and containers.",
+      "outcome": "Supported client block transitions animate smoothly; the server's block state and interaction validation remain native.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Newer author pages list blocks absent from Minecraft 1.20.1; do not promise vaults or other later-version content.",
+        "Author documentation can cover newer releases; installed version is 1.2.31."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Взаимодействуй с анимированным блоком",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Exact quest criterion and world-state result were not exercised; a custom signal must observe the action, not a manual checkmark."
+    },
+    {
+      "key": "fwa:configuration",
+      "kind": "compatibility",
+      "title": "Configure animation compatibility",
+      "player_action": "Use the installed configuration interface and per-block exclusions when preparing resource-pack compatibility.",
+      "outcome": "Author configuration supports turning animation paths off for conflicting block or mod content; this research does not alter those settings.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Current docs describe /fwaConfig, fwa.json and a fwa-blacklist.json exclusion file; verify names against the installed version before use.",
+        "Author documentation can cover newer releases; installed version is 1.2.31."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Exact quest criterion and world-state result were not exercised; a custom signal must observe the action, not a manual checkmark."
+    }
+  ]
+}

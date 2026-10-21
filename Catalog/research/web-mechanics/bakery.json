@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "mod_id": "bakery",
+  "installed_version": "2.0.6",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://lets-do.ch/wiki/bakery/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "sink_doc",
+      "url": "https://lets-do.ch/wiki/bakery/kitchen-sink/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "tray_doc",
+      "url": "https://lets-do.ch/wiki/bakery/tray/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "wall_doc",
+      "url": "https://lets-do.ch/wiki/bakery/wall-display/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://lets-do.ch/wiki/bakery/",
+      "publisher": "Let's Do author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/letsdo-bakery-forge-2.0.6.jar",
+        "sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+        "resource": "assets/bakery/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "bakery:blank_cake",
+      "kind": "crafting",
+      "title": "Start a blank cake",
+      "player_action": "Place Cake Dough on the Caking Station.",
+      "outcome": "Prepare the base for cake, cupcake or cookie decoration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:baker_station"
+        },
+        {
+          "registry": "items",
+          "id": "bakery:cake_dough"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подготовьте основу торта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/bakery.json."
+    },
+    {
+      "key": "bakery:cake",
+      "kind": "crafting",
+      "title": "Decorate a cake",
+      "player_action": "Put Cake Dough on the Caking Station and apply jam or chocolate spread.",
+      "outcome": "Finish a cake directly on the work surface without a crafting menu.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:baker_station"
+        }
+      ],
+      "depends_on": [
+        "bakery:blank_cake"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Украсьте торт на станции.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bakery:cupcakes",
+      "kind": "crafting",
+      "title": "Cut cupcakes",
+      "player_action": "Use the Bread Knife on a blank cake and finish the pieces with suitable jam.",
+      "outcome": "Produce cupcakes through the station's hand interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:bread_knife"
+        }
+      ],
+      "depends_on": [
+        "bakery:blank_cake"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте кексы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bakery:cookies",
+      "kind": "crafting",
+      "title": "Roll cookies",
+      "player_action": "Flatten the cut cupcake pieces with a Rolling Pin, then glaze them.",
+      "outcome": "Produce cookies through a different station branch.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:rolling_pin"
+        }
+      ],
+      "depends_on": [
+        "bakery:blank_cake"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Раскатайте печенье.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bakery:heated_pot",
+      "kind": "crafting",
+      "title": "Cook a small meal",
+      "player_action": "Place the Small Cooking Pot over a supported heat source and supply recipe ingredients and a container.",
+      "outcome": "Cook a meal while heat is present.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:small_cooking_pot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted.",
+        "Small Cooking Pot requires a compatible heat source below and a recipe container in its dedicated slot; placing ingredients alone is insufficient. The native kitchen layout separates ingredients, container and output."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте блюдо в малой кастрюле.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bakery:serve_cake",
+      "kind": "interaction",
+      "title": "Serve or recover a placed cake",
+      "player_action": "Right-click a cake to take it back, use a Knife to slice it, or sneak-right-click to eat it in place.",
+      "outcome": "Choose collection, portions or direct consumption.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Разрежьте и подайте пирог.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "bakery:sink_water",
+      "kind": "interaction",
+      "title": "Draw kitchen water",
+      "player_action": "Interact with the sink lower half empty-handed or fill it with a Water Bucket, then draw water into a bucket or bottle.",
+      "outcome": "Obtain kitchen water from the filled sink.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:kitchen_sink"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "sink_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наберите воду на кухне.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "bakery:display_food",
+      "kind": "interaction",
+      "title": "Arrange bakery displays",
+      "player_action": "Right-click individual tray or shelf positions to insert or recover items.",
+      "outcome": "Tray holds a row of items; Wall Display is restricted to food/Bakery bread, while Cupcake Display accepts any item.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:tray"
+        },
+        {
+          "registry": "items",
+          "id": "bakery:wall_display"
+        },
+        {
+          "registry": "items",
+          "id": "bakery:cupcake_display"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "tray_doc",
+        "wall_doc",
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выложите выпечку на витрину.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "bakery:cake_stand",
+      "kind": "interaction",
+      "title": "Choose a cake display",
+      "player_action": "Put a whole cake on a Cake Stand, or small food on a Cake Display; sneak-interact with the stand to retrieve its contents.",
+      "outcome": "The stand accepts a whole cake; the connected display case accepts portions rather than whole cakes. Bread Box stores one visible food item and has a separately toggled lid.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bakery:cake_stand"
+        },
+        {
+          "registry": "items",
+          "id": "bakery:cake_display"
+        },
+        {
+          "registry": "items",
+          "id": "bakery:breadbox"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подберите подставку для торта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    }
+  ]
+}

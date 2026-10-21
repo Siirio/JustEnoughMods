@@ -471,6 +471,7 @@ public final class StructureStaging {
         if (!adminSpawn && (encounter == null || encounter.provenance() != com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT))
             RaidArenaApi.observeNativeBoss(level.getServer(), area.id().toString(), boss);
         if (encounter != null && encounter.provenance() == com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT) return;
+        com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
         HostedEncounterApi.hold(boss);
         if (encounter == null) return;
         CompoundTag row = party(level, area.id());

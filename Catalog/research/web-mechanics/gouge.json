@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "mod_id": "gouge",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/gouge",
+      "publisher": "Simplezes",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "gouge:pickaxe_wall_catch",
+      "kind": "interaction",
+      "title": "Catch a fall with a pickaxe",
+      "player_action": "Right-click a nearby wall with a pickaxe while falling.",
+      "outcome": "Hard surfaces reduce downward motion toward a hang; softer surfaces allow a slowing slide.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The source's protection/damage claims are version-dependent and are not guaranteed JEM safety.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A wall catch requires the native Gouge action/state event; holding a pickaxe is not evidence. Durability, grip and fall-damage formulas must be inspected in installed source/config."
+    },
+    {
+      "key": "gouge:kick_release",
+      "kind": "interaction",
+      "title": "Leave a wall hang deliberately",
+      "player_action": "Double-tap crouch within the configured recognition window while hanging or sliding.",
+      "outcome": "The player kicks away from the wall.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A wall catch requires the native Gouge action/state event; holding a pickaxe is not evidence. Durability, grip and fall-damage formulas must be inspected in installed source/config."
+    },
+    {
+      "key": "gouge:grip_progression",
+      "kind": "progression",
+      "title": "Improve wall-hanging equipment",
+      "player_action": "Inspect pickaxe tier and the advertised Grip/Momentum enchantments.",
+      "outcome": "Higher tiers are described as holding longer with lower durability drain; Grip extends holding and Momentum reduces post-slip cooldown.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "No registry IDs or numeric formulas are assumed without local static confirmation.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A wall catch requires the native Gouge action/state event; holding a pickaxe is not evidence. Durability, grip and fall-damage formulas must be inspected in installed source/config."
+    }
+  ]
+}

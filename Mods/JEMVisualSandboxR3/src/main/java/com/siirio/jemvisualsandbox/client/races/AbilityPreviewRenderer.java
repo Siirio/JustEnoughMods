@@ -8,7 +8,6 @@ import com.siirio.jemvisualsandbox.workbench.RacePowerStages;
 import com.siirio.jemvisualsandbox.workbench.VisualRenderContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
-import com.siirio.jemmenus.client.VanillaGuiPlayers;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.RemotePlayer;
@@ -279,12 +278,8 @@ public final class AbilityPreviewRenderer {
     private static <T extends Entity> void drawEntity(T entity, Vec3 at, PoseStack poses, float partialTick) {
         var client = Minecraft.getInstance();
         poses.pushPose(); poses.translate(at.x, at.y, at.z);
-        if (entity instanceof AbstractClientPlayer player) {
-            VanillaGuiPlayers.render(player, entity.getYRot(), poses, client.renderBuffers().bufferSource(), 15728880);
-        } else {
-            RenderSystem.runAsFancy(() -> client.getEntityRenderDispatcher().getRenderer(entity)
-                    .render(entity, entity.getYRot(), partialTick, poses, client.renderBuffers().bufferSource(), 15728880));
-        }
+        RenderSystem.runAsFancy(() -> client.getEntityRenderDispatcher().getRenderer(entity)
+                .render(entity, entity.getYRot(), partialTick, poses, client.renderBuffers().bufferSource(), 15728880));
         poses.popPose();
     }
     private static float smooth(float value) {

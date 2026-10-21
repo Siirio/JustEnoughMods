@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "mod_id": "dummmmmmy",
+  "installed_version": "1.20-2.0.11",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/mmmmmmmmmmmm",
+      "publisher": "MehVahdJukaar and MmmMmmMmmMmm authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "dummmmmmy:place_dummy",
+      "kind": "interaction",
+      "title": "Place and remove a target dummy",
+      "player_action": "Use a target dummy on a block; crouch and left-click it empty-handed to remove it.",
+      "outcome": "The dummy stands in the facing-dependent orientation and provides a reusable damage target.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A dummy damage readout is an external observation, not automatically an FTB signal. A quest requires native damage/event integration; armor possession is insufficient."
+    },
+    {
+      "key": "dummmmmmy:equip_armor",
+      "kind": "interaction",
+      "title": "Compare damage against equipped armor",
+      "player_action": "Use armor on the dummy; click the corresponding body part to remove that piece.",
+      "outcome": "Armor changes the damage the dummy receives and its displayed damage values.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A dummy damage readout is an external observation, not automatically an FTB signal. A quest requires native damage/event integration; armor possession is insufficient."
+    },
+    {
+      "key": "dummmmmmy:mimic_mob_type",
+      "kind": "combat",
+      "title": "Exercise enchantments against a simulated mob type",
+      "player_action": "Equip the dummy with an undead head, turtle helmet or pillager banner.",
+      "outcome": "The dummy can take the relevant undead, aquatic or illager classification for damage interactions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The author says classification does not make ordinary mobs automatically attack the dummy.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A dummy damage readout is an external observation, not automatically an FTB signal. A quest requires native damage/event integration; armor possession is insufficient."
+    },
+    {
+      "key": "dummmmmmy:scarecrow_automation",
+      "kind": "automation",
+      "title": "Use the dummy as a scarecrow or dispenser target",
+      "player_action": "Equip a pumpkin/jack o lantern for the scarecrow function; place a dummy with a dispenser when needed.",
+      "outcome": "A pumpkin-equipped dummy scares nearby animals; dispensing and removal of its supporting block provide placement/removal automation.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed metadata 1.20-2.0.11 differs from artifact filename 2.0.12; exact behavior requires matching source.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "A dummy damage readout is an external observation, not automatically an FTB signal. A quest requires native damage/event integration; armor possession is insufficient."
+    }
+  ]
+}

@@ -495,7 +495,7 @@ Latest user instruction revokes the temporary MineRENT pause and authorizes fixi
 
 The current source contract and explicit final overrides are recorded in the owning economy, race, Settlements, SMP GUI, command and Boss Fight/Raid docs and the dated plan. Source remains in testing; this paragraph is not a build/install/deployment receipt. Only the parent release workflow may record fresh artifacts, native published/installed hashes and MineRENT delivery after those steps occur.
 
-CurrencyCore owns pooled denomination backing, operation quantities, lazy proven-legacy normalization, partial-stack capacity, approved rational price anchors and a native Mending minimum8Gold. Starter20Gold and finite NPC funding remain unchanged. The only new production issuance authorization is happiness income to a town treasury, persisted once per town/day with an explicit supply counter. Shipping owns public exclusive visitor sessions, account-bound goods recovery, ledger sale payout and the money tab. Buyer-only trading and the separate wallet UI are retired without removing ledger or shared native merchant owners.
+CurrencyCore owns pooled denomination backing, operation quantities, lazy proven-legacy normalization, partial-stack capacity, approved rational price anchors and a native Mending minimum8Gold. Starter20Gold and finite NPC funding remain unchanged. The only new production issuance authorization is happiness income to a town treasury, persisted once per town/day with an explicit supply counter. Shipping owns public exclusive visitor sessions, account-bound goods recovery, funded physical sale payout in payment slots and the money tab. Pending payment blocks ordinary close, new acquisition and all player breaking; forced-close seller recovery remains account-bound. Shipping blocks are nonflammable and explosion-proof. Buyer-only trading and the separate wallet UI are retired without removing ledger or shared native merchant owners.
 
 WorldBossTiers/HostedLobby own dormant AI/invulnerability/presentation restoration on reload and canonical Start. An attempted boss hit opens the existing GUI; it does not start combat. HostedRaidScaling owns one preparation boost and its Start/retry restoration. Ordinary structural Boss Fight/Campaign/Raid have no visual/collision/teleport barrier; registered structure geometry continues to own identity, eligibility and safe placement. Blood Moon/Resource Rush barriers remain unchanged. Official Xaero marker travel remains an ID adapter to existing server arrival owners; no personal waypoint data/actions are shared or replaced.
 
@@ -517,3 +517,20 @@ The incoming/outgoing guard reads IdentityPolicy and RaceApi directly: unresolve
 ### 2026-10-21 current-world cumulative delivery
 
 The latest user correction cancels the isolated-copy runtime phase and requires installing the cumulative release directly into existing MineRENT `world`, retaining a backup only for recovery. The completed [economy/boss release receipt](releases/2026-10-21-economy-bosses/README.md) records original-world startup, ENTRY8 publication, local generation53/native application, matching friend package and baseline promotion. Earlier pending/source-only statements describe their own historical point in the work; they are superseded for delivery by this receipt. Gameplay/player acceptance remains unrun/in testing.
+
+Point-update inheritance uses the prior extracted package when available, or the exact SHA-256-pinned prior ZIP when its extracted folder has been removed. tools/jem.py reads ZIP payload metadata without recreating deleted folders; unsafe or duplicate payload paths fail closed. The cumulative payload and canonical guide still have to match the current clean source before baseline promotion.
+
+## Next local update —2026-10-21, MineRENT held
+
+The user explicitly keeps MineRENT, stable profiles and the published release baseline unchanged while accumulating this update in current source, ManagedPack and ordinary local Server. Current source refinements belong to the owning Boss Fight, SMP/race GUI, server-command and economy documents. World Tier membership now remains independent from hosted admission; native-tag support delegates to the canonical arena/live-boss owner. Custom player geometry applies only inside SmpScreen; native external/race previews are restored. CurrencyCore1.0.2 contains the final rotten-flesh1/2Copper policy and unchanged leather3Copper; rebuilt Economy requires1.0.2 while existing compatible Settlements accepts it, avoiding publication of unrelated Settlements source changes. Local artifact/publication/application evidence belongs to `Docs/releases/2026-10-21-next-update/receipt.json`; it is not a MineRENT release or gameplay acceptance claim.
+
+
+## Building But Better hammer resource override — 2026-10-21
+
+The editable Blockbench/Aseprite source and exporter are in
+`Docs/art/bbb-hammer-2026-10-21`. The canonical managed output is
+`Client/ManagedPack/config/paxi/resourcepacks/JEM Building Hammer.zip` and reuses
+Paxi4.0 required-pack activation. Only `bbb:hammer` model and its new texture are
+overridden; no BBB gameplay code, native merchant layout or personal options are
+changed. Regenerate the ZIP with that folder's `build_resource_pack.py --output`
+then stage/publish/apply through the ordinary native AutoModpack lifecycle.

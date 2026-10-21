@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "mod_id": "moreculling",
+  "installed_version": "0.24.6",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://modrinth.com/mod/moreculling",
+      "publisher": "MikihinaSann, FX - PR0CESS",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/moreculling-0.24.6-all.jar",
+        "sha256": "56734f0ccba99efa731e9d3bc2628cd601aa72a8202183b8e0358d4ad4fffc83",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "author_project",
+      "url": "https://modrinth.com/mod/moreculling",
+      "publisher": "More Culling project authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "moreculling:installed_role",
+      "kind": "compatibility",
+      "title": "More Culling role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Avoids rendering surfaces considered hidden by supported culling paths; client configuration controls tradeoffs and actual visual compatibility requires runtime observation.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata",
+        "author_project"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 0.24.6"
+    }
+  ]
+}

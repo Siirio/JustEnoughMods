@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "mod_id": "xaeroworldmap",
+  "installed_version": "1.46.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/xaeros-world-map",
+      "publisher": "Xaero96",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_cf_controls",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/xaeros-world-map",
+      "publisher": "Xaero96",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    }
+  ],
+  "observations": [
+    {
+      "key": "xaeroworldmap:explored_world_map",
+      "kind": "interaction",
+      "title": "Review terrain already discovered",
+      "player_action": "Open the world map with its configured binding and pan/zoom the recorded regions.",
+      "outcome": "The world map displays explored terrain and can provide textures to the companion minimap.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain, native personal waypoints and official JEM boss/event markers have different owners. Native map/waypoint teleport sends permission-checked commands; JEM additions may apply only to official marker IDs."
+    },
+    {
+      "key": "xaeroworldmap:waypoint_menu",
+      "kind": "interaction",
+      "title": "Manage minimap waypoints on the full map",
+      "player_action": "Open the lower-right waypoint menu and filter/interact with listed markers.",
+      "outcome": "Native sets and waypoint visibility can be managed without leaving the map.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain, native personal waypoints and official JEM boss/event markers have different owners. Native map/waypoint teleport sends permission-checked commands; JEM additions may apply only to official marker IDs."
+    },
+    {
+      "key": "xaeroworldmap:cave_layers",
+      "kind": "interaction",
+      "title": "Choose cave mapping for a dimension",
+      "player_action": "Use the cave menu/settings to choose supported cave layers or disable cave mode.",
+      "outcome": "Surface/cave display and top-height choices are dimension-sensitive and subject to server/fair-play restrictions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain, native personal waypoints and official JEM boss/event markers have different owners. Native map/waypoint teleport sends permission-checked commands; JEM additions may apply only to official marker IDs."
+    },
+    {
+      "key": "xaeroworldmap:map_selection",
+      "kind": "compatibility",
+      "title": "Select the correct saved map for a server world",
+      "player_action": "Use the map-selection menu and existing-map dropdown; inspect Server, Manual, World Spawn or Single mode.",
+      "outcome": "Different worlds at one address can retain separate maps; wrong selection can look like a reset.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Server mode needs server-side world identification; do not delete personal data to hide an identity mismatch.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain, native personal waypoints and official JEM boss/event markers have different owners. Native map/waypoint teleport sends permission-checked commands; JEM additions may apply only to official marker IDs."
+    },
+    {
+      "key": "xaeroworldmap:teleport_commands",
+      "kind": "interaction",
+      "title": "Distinguish map, player and waypoint teleport commands",
+      "player_action": "Review the map teleport, player teleport and companion minimap waypoint command settings.",
+      "outcome": "These are separate permission-dependent routes rather than one universal teleport ability.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain, native personal waypoints and official JEM boss/event markers have different owners. Native map/waypoint teleport sends permission-checked commands; JEM additions may apply only to official marker IDs."
+    },
+    {
+      "key": "xaeroworldmap:export_map",
+      "kind": "interaction",
+      "title": "Export a recorded map image",
+      "player_action": "Use the native PNG export option when available.",
+      "outcome": "The map is exported as an image, with practical limits for very large maps.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain, native personal waypoints and official JEM boss/event markers have different owners. Native map/waypoint teleport sends permission-checked commands; JEM additions may apply only to official marker IDs."
+    },
+    {
+      "key": "xaeroworldmap:native_navigation_controls",
+      "kind": "interaction",
+      "title": "Navigate the native world map",
+      "player_action": "Press M, drag to pan and scroll to zoom, unless remapped; inspect the native control tooltip.",
+      "outcome": "The world map is explored terrain persisted by the client. Visible map controls can be customized without adding a replacement JEM map screen.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain is separate from private native waypoints and authoritatively discovered JEM boss markers. Native map settings, state identity and UI own presentation. Upstream features do not authorize publishing personal coordinates."
+    },
+    {
+      "key": "xaeroworldmap:native_profile_item_restrictions",
+      "kind": "compatibility",
+      "title": "Follow server world-map restrictions",
+      "player_action": "Use the map with its enforced profile and any required hotbar/equipped item.",
+      "outcome": "The author documents rank-based server profiles, mapItemId gating and a native no-world-map effect with a harmful variant. These govern access separately from waypoint teleport permission.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain is separate from private native waypoints and authoritatively discovered JEM boss markers. Native map settings, state identity and UI own presentation. Upstream features do not authorize publishing personal coordinates."
+    },
+    {
+      "key": "xaeroworldmap:native_texture_and_claim_layers",
+      "kind": "compatibility",
+      "title": "Interpret native map overlays by their owner",
+      "player_action": "Use resource packs or supported claim/ally overlays with the native map.",
+      "outcome": "Resource-pack changes regenerate map textures; Open Parties and Claims owns its claim/ally integration. Map coloration or recent footsteps are not server-authoritative boss discovery.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_cf_controls"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Explored terrain is separate from private native waypoints and authoritatively discovered JEM boss markers. Native map settings, state identity and UI own presentation. Upstream features do not authorize publishing personal coordinates."
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "mod_id": "trials",
+  "installed_version": "2.3.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/trials-chambers-reuploaded",
+      "publisher": "Pansmith / original Trials authors",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/trials-chambers-reuploaded",
+      "publisher": "Pansmith / original Trials authors; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Trials-2.3.3.jar",
+        "sha256": "1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8",
+        "resource": "assets/trials/lang/en_us.json",
+        "resources": [
+          "assets/trials/lang/en_us.json",
+          "data/trials/recipes/mace.json",
+          "data/trials/recipes/wind_charge.json"
+        ]
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/trials-chambers-reuploaded",
+      "publisher": "Pansmith / original Trials authors",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_29c70e989005",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/trials-chambers-reuploaded",
+      "publisher": "Pansmith / original Trials authors; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Trials-2.3.3.jar",
+        "sha256": "1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8",
+        "resource": "assets/trials/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "trials:chamber_discovery",
+      "kind": "progression",
+      "title": "Explore the backported Trial Chambers",
+      "player_action": "Locate the installed Trials Chambers structure and inspect its native challenge rooms.",
+      "outcome": "The backport supplies its own namespace and content, rather than proving vanilla 1.21 parity.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "trials:trials_chambers"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди палаты испытаний и изучи их комнаты.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "trials:ominous_trials",
+      "kind": "combat",
+      "title": "Recognize the Cursed modifier on Trial Spawners",
+      "player_action": "Activate a Trial Spawner while afflicted by Cursed.",
+      "outcome": "Native text says the condition increases the challenge difficulty.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "trials:trial_spawner"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пройди усложнённое испытание с эффектом проклятия.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Trials-2.3.3.jar; SHA256 1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8; entry assets/trials/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "trials:mace_crafting",
+      "kind": "crafting",
+      "title": "Craft the installed Mace recipe",
+      "player_action": "Combine a Breeze Rod and Heavy Core using the native recipe.",
+      "outcome": "The installed 2.3.3 data produces a Mace.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "trials:breeze_rod"
+        },
+        {
+          "registry": "items",
+          "id": "trials:heavy_core"
+        },
+        {
+          "registry": "items",
+          "id": "trials:mace"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соедини тяжёлое ядро и стержень вихря в булаву.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Trials-2.3.3.jar; SHA256 1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8; entry data/trials/recipes/mace.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "trials:wind_charges",
+      "kind": "crafting",
+      "title": "Craft Wind Charges from a Breeze Rod",
+      "player_action": "Process one Breeze Rod through its crafting recipe.",
+      "outcome": "The installed recipe produces four Wind Charges.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "trials:breeze_rod"
+        },
+        {
+          "registry": "items",
+          "id": "trials:wind_charge"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь заряды ветра из стержня вихря.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Trials-2.3.3.jar; SHA256 1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8; entry data/trials/recipes/wind_charge.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "trials:mace_enchantments",
+      "kind": "combat",
+      "title": "Choose a Mace enchantment for a combat role",
+      "player_action": "Inspect Density, Breach and Wind Burst before enchanting a Mace.",
+      "outcome": "Native text distinguishes falling damage, armor penetration and smash-triggered wind.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "trials:mace"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подбери зачарование булавы под свой стиль боя.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Trials-2.3.3.jar; SHA256 1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8; entry assets/trials/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "trials:native_effect_chains",
+      "kind": "interaction",
+      "title": "native effect chains native mechanic",
+      "player_action": "Use Infested, Ooze, Winded or Weave effects with their documented event conditions.",
+      "outcome": "Damage may spawn silverfish, death spawns slimes or a wind cloud, and attacks may place cobwebs; these effects have different triggers.",
+      "registry_refs": [
+        {
+          "registry": "effects",
+          "id": "trials:infested"
+        },
+        {
+          "registry": "effects",
+          "id": "trials:ooze"
+        },
+        {
+          "registry": "effects",
+          "id": "trials:winded"
+        },
+        {
+          "registry": "effects",
+          "id": "trials:weave"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_29c70e989005"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое зелье с подходящим условием срабатывания.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Trials-2.3.3.jar; SHA256 1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8; entry assets/trials/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "trials:cursed_spawner",
+      "kind": "interaction",
+      "title": "cursed spawner native mechanic",
+      "player_action": "Activate a Trial Spawner while afflicted by Cursed.",
+      "outcome": "Native effect text states that this enhances the trial difficulty.",
+      "registry_refs": [
+        {
+          "registry": "effects",
+          "id": "trials:cursed"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_29c70e989005"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Начни усиленное испытание.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Trials-2.3.3.jar; SHA256 1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8; entry assets/trials/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

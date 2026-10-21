@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "mod_id": "bbb",
+  "installed_version": "2.0pre4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://raw.githubusercontent.com/starfish-studios/Building-But-Better/main/src/main/resources/assets/bbb/lang/en_us.json",
+      "publisher": "Starfish Studios / crispytwig",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://raw.githubusercontent.com/starfish-studios/Building-But-Better/main/src/main/resources/assets/bbb/lang/en_us.json",
+      "publisher": "Starfish Studios / crispytwig",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/bbb-forge-2.0pre4.jar",
+        "sha256": "9127d9013708f72784f538166db42451e3fae5d0f7f348d2675751eb26837d33",
+        "resource": "assets/bbb/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "bbb:lattice",
+      "kind": "interaction",
+      "title": "Plant a decorative lattice",
+      "player_action": "Apply leaves or another supported plant to a lattice; use shears to clear it.",
+      "outcome": "Dress and clear the lattice's planted surface.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bbb:oak_lattice"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author language instructions agree with installed bbb-forge-2.0pre4.jar assets/bbb/lang/en_us.json; tooltips are not runtime proof."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Украсьте решётку листвой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/bbb.json."
+    },
+    {
+      "key": "bbb:urn",
+      "kind": "interaction",
+      "title": "Fill a decorative urn",
+      "player_action": "Use dirt on an Urn, then a shovel to remove it.",
+      "outcome": "Switch between filled and empty urn decoration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bbb:stone_urn"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author language instructions agree with installed bbb-forge-2.0pre4.jar assets/bbb/lang/en_us.json; tooltips are not runtime proof."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наполните урну землёй.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bbb:hammer",
+      "kind": "interaction",
+      "title": "Shape building details",
+      "player_action": "Use the Hammer on supported frames, ladders, mouldings or fences.",
+      "outcome": "Cycle supports, styles or decorative parts through native block interactions.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bbb:hammer"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author language instructions agree with installed bbb-forge-2.0pre4.jar assets/bbb/lang/en_us.json; tooltips are not runtime proof."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Измените форму строительной детали.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bbb:pallet",
+      "kind": "interaction",
+      "title": "Adjust a pallet",
+      "player_action": "Use a Hammer to change its layers, or sneak-right-click empty-handed.",
+      "outcome": "Change pallet height or its open/closed form.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "bbb:oak_pallet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author language instructions agree with installed bbb-forge-2.0pre4.jar assets/bbb/lang/en_us.json; tooltips are not runtime proof."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте деревянный поддон.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "bbb:frame_supports",
+      "kind": "interaction",
+      "title": "Edit a frame support",
+      "player_action": "Right-click a Frame with a Hammer to cycle its center support, or punch to remove the center.",
+      "outcome": "Edit the support; holding Frames/Hammers or crouching exposes the expanded hitbox according to settings.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте каркас.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "bbb:hammer_details",
+      "kind": "interaction",
+      "title": "Adjust architectural details",
+      "player_action": "Hammer balustrade ends, moulding dentils, stone-fence sides/pillars, column layers, ladder styles, supports or lantern hooks.",
+      "outcome": "Change the targeted detail; balustrade rotation and stone-fence pillar toggling use sneak-Hammer interaction.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте строительные детали.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

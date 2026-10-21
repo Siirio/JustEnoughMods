@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "mod_id": "primal",
+  "installed_version": "1.1.6",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/mod-primal",
+      "publisher": "domino7218 / Primal team",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/mod-primal",
+      "publisher": "domino7218 / Primal team; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar",
+        "sha256": "bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5",
+        "resource": "assets/primal/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/mod-primal",
+      "publisher": "domino7218 / Primal team",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_34779601870b",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/mod-primal",
+      "publisher": "domino7218 / Primal team; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar",
+        "sha256": "bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5",
+        "resource": "assets/primal/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "primal:bear_care",
+      "kind": "interaction",
+      "title": "Tame and provision a bear",
+      "player_action": "Approach slowly with honeycombs, tame the bear and equip a barrel with food.",
+      "outcome": "The tamed bear can eat from its barrel at low health.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:bear"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи медведя и обеспечь его запасом еды.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "primal:crocodile_stomach",
+      "kind": "interaction",
+      "title": "Recover swallowed items from a crocodile",
+      "player_action": "Use a feather on a crocodile that has swallowed drops from its victims.",
+      "outcome": "Native text describes recovery of items held in its stomach.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:crocodile"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пощекочи крокодила пером и верни проглоченные вещи.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "primal:eagle_raising",
+      "kind": "progression",
+      "title": "Raise an eagle from its nest",
+      "player_action": "Find an eagle nest, obtain an egg and feed raw chicken to the baby.",
+      "outcome": "Only the baby-stage taming route is described by native text.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:eagle"
+        },
+        {
+          "registry": "items",
+          "id": "primal:eagle_egg"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выведи орлёнка и приручи его сырой курятиной.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "primal:cassowary_fruit",
+      "kind": "acquisition",
+      "title": "Let a cassowary peck petrified fruit",
+      "player_action": "Retrieve petrified fruit from a cassowary nest and offer it for pecking.",
+      "outcome": "The interaction may yield exotic fruit seeds.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:cassowary"
+        },
+        {
+          "registry": "items",
+          "id": "primal:petrified_fruit"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи экзотические семена с помощью казуара.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "primal:snake_taming",
+      "kind": "interaction",
+      "title": "Distract a snake with music before taming",
+      "player_action": "Play a jukebox or note block near a snake, then offer raw rabbit while it dances.",
+      "outcome": "The music trance enables taming; a carried tame snake assists attacks.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:snake"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Зачаруй змею музыкой и приручи крольчатиной.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "primal:walrus_mount",
+      "kind": "combat",
+      "title": "Tame and ride a walrus",
+      "player_action": "Tame a walrus through riding, then use its mounted attacks on land or in water.",
+      "outcome": "The mount has a land slam and underwater whirlwind.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:walrus"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оседлай моржа и освой его водную атаку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "primal:native_chapter_lion",
+      "kind": "interaction",
+      "title": "lion native guide",
+      "player_action": "Approach a Savanna Lion slowly and offer substantial amounts of meat.",
+      "outcome": "Taming provides a powerful hunting companion and enables its lap-nap interaction; a rare variant occurs in Snowy Plains.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:lion"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Медленно подойди ко льву и приручи его мясом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.lion read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_deer",
+      "kind": "interaction",
+      "title": "deer native guide",
+      "player_action": "Approach forest deer quietly and avoid loud noises.",
+      "outcome": "They flee rapidly and can clear two-block obstacles; a separate native advancement records witnessing lightning strike a deer.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:deer"
+        },
+        {
+          "registry": "items",
+          "id": "primal:music_disc_oh_deer"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наблюдай лесного оленя, не вспугнув его.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.deer read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_shark",
+      "kind": "interaction",
+      "title": "shark native guide",
+      "player_action": "Use a Conduit to attract ocean sharks and restore health promptly after an attack.",
+      "outcome": "Sharks target low-health entities; native advancement text distinguishes Conduit swimming from surviving an attack.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:shark"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй морской проводник рядом с акулой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.shark read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_snake_bottle",
+      "kind": "interaction",
+      "title": "snake bottle native guide",
+      "player_action": "Let a snake bite an empty bottle.",
+      "outcome": "The native advancement identifies a snake-bottle extraction interaction; exact potion/effect contents remain an item/state-specific runtime question.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:snake"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи содержимое бутылки после укуса змеи.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.snake_bottle read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_croc_clock",
+      "kind": "interaction",
+      "title": "croc clock native guide",
+      "player_action": "Feed a crocodile a clock.",
+      "outcome": "The installed advancement proposes scaring pillagers; its wording is tentative, so an exact radius or guaranteed fear outcome is not asserted.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:crocodile"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми крокодила часами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.croc_clock read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_conch_binding",
+      "kind": "interaction",
+      "title": "conch binding native guide",
+      "player_action": "Right-click a pet with a Conch Shell and have a walrus play a shell.",
+      "outcome": "The tooltip records pet binding, while the native advancement independently recognizes walrus shell-playing.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:walrus"
+        },
+        {
+          "registry": "items",
+          "id": "primal:conch_shell"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Свяжи раковину с питомцем.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.conch_binding read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_helmet_decoration",
+      "kind": "interaction",
+      "title": "helmet decoration native guide",
+      "player_action": "Apply a decoration to a helmet.",
+      "outcome": "The native progression recognizes helmet decorations and an additional horns milestone.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "primal:fallow_deer_antler"
+        },
+        {
+          "registry": "items",
+          "id": "primal:reindeer_antler"
+        },
+        {
+          "registry": "items",
+          "id": "primal:whitetail_deer_antler"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добавь украшение к шлему.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.helmet_decoration read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_fruit_growth",
+      "kind": "interaction",
+      "title": "fruit growth native guide",
+      "player_action": "Recover exotic seeds through Cassowary petrified-fruit pecking, then plant Kiwano, Litchi and Starfruit.",
+      "outcome": "Kiwano grows as a ground bulk; Litchi and Starfruit form small trees. All pass through sapling, juvenile and adult stages.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "primal:petrified_fruit"
+        },
+        {
+          "registry": "items",
+          "id": "primal:kiwano_seeds"
+        },
+        {
+          "registry": "items",
+          "id": "primal:litchi_seeds"
+        },
+        {
+          "registry": "items",
+          "id": "primal:starfruit_seeds"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выращивай три вида экзотических фруктов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.fruit_growth read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_thorny_acacia",
+      "kind": "interaction",
+      "title": "thorny acacia native guide",
+      "player_action": "Gather Thorny Acacia in Savanna Plateaus and account for its thorn-covered trunk.",
+      "outcome": "The guide distinguishes this orange-leaved tree from ordinary acacia.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "primal:thorny_acacia_sapling"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди колючую акацию на плато саванны.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.thorny_acacia read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_nest_parenting",
+      "kind": "interaction",
+      "title": "nest parenting native guide",
+      "player_action": "Retrieve Eagle eggs and feed raw chicken to the baby; approach Cassowary nests expecting the father's defense.",
+      "outcome": "Native advancements reinforce the baby-only eagle taming route and the danger of stealing Cassowary eggs.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:eagle"
+        },
+        {
+          "registry": "entities",
+          "id": "primal:cassowary"
+        },
+        {
+          "registry": "items",
+          "id": "primal:eagle_egg"
+        },
+        {
+          "registry": "items",
+          "id": "primal:cassowary_egg"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырасти ручного орла из яйца.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.nest_parenting read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_eagle_captain",
+      "kind": "interaction",
+      "title": "eagle captain native guide",
+      "player_action": "Fight a raid captain alongside a tamed eagle.",
+      "outcome": "The native advancement explicitly recognizes this cooperative combat goal.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "primal:eagle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи капитана разбойников вместе с орлом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.eagle_captain read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "primal:native_chapter_cooking",
+      "kind": "interaction",
+      "title": "cooking native guide",
+      "player_action": "Prepare and eat an Apple Fritter.",
+      "outcome": "A native food advancement recognizes this cooking route independently from collecting exotic fruits.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "primal:apple_fritter"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_34779601870b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовь и съешь яблочный оладий.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar; SHA256 bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5; entry assets/primal/lang/en_us.json. Native text/data is not runtime proof. Native translation section entity/fieldguide/advancements.primal.cooking read in full and paraphrased; exact runtime completion signal is unverified."
+    }
+  ]
+}
