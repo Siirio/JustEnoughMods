@@ -137,6 +137,11 @@
         "Docs/settlements/standalone/README.md",
         "Docs/settlements/DESIGN_JOURNAL.md"
       ]
+    },
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "event": "Fix client startup against the exact deployed Xaero World Map1.46.0. Remove required mouseDragged/m_7979_ injection because GuiMap does not declare it. Existing renderPreDropdown -> SettlementMapClient.render/update owns live preview; mouseClicked/mouseReleased own exclusive begin/finish. Native map controls outside explicit expansion and all server pricing/ownership remain unchanged. Client13:29crash and matching active artifact prove deployment of this defect; runtime player acceptance remains unrun. Exact XaeroLib1.7.3 drawSlot bytecode additionally proves slotBackground is a local variable, not a method argument; remove the unused extra int from the required drawSlot callback descriptor before final publication."
     }
   ],
   "impacts": {

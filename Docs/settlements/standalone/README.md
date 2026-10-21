@@ -1148,3 +1148,10 @@ launch or live NPC acceptance is claimed. Delivery receipt:
 ### Runtime UI correction, 2026-10-19
 
 The user removed whole-town isometry and crossed header/search controls; resident house inspection remains. Directory and chest windows now fit their data. Search filters on typing, control states retain pixel material, factor hover uses a book cue, pale-card glyphs render without shadows and footer statuses are mutually exclusive. Ordinary Server/ManagedPack and AutoModpack generation44 remain unchanged. New sandbox delivery receipt: `ui-corrections-delivery.json`. No gameplay launch or tests; runtime acceptance pending.
+
+
+## Xaero1.46.0 startup correction —2026-10-21
+
+The client13:29crash identifies the required `SettlementMapScreenMixin.jem$drag` injection into missing `GuiMap.m_7979_`. The installed active Settlements hash matches the published release, so updating to the same artifact cannot repair it. Exact upstream bytecode declares click/release/render hooks but no mouseDragged override. Remove the duplicate drag injection: existing `renderPreDropdown` calls `SettlementMapClient.render`, which already updates the drag draft every frame; canceling native left-button begin in explicit expansion mode prevents map panning. Native controls outside that mode, release confirmation, territory pricing/ownership and server contracts remain. Fresh release delivery is recorded separately; player runtime acceptance remains in testing.
+
+The adjacent dropdown callback also captured an extra `slotBackground` integer as an argument. XaeroLib1.7.3 descriptor is `(GuiGraphics, Component, int, int, int, int, boolean, int, int, int)V`; its local variable table places slotBackground in slot11. The corrected callback uses exactly that descriptor plus CallbackInfo. This is a bytecode-proven additional incompatibility, not a second reproduced client crash.

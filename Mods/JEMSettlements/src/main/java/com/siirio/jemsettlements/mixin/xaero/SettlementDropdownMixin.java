@@ -20,7 +20,7 @@ public abstract class SettlementDropdownMixin {
     @ModifyConstant(method={"drawSlot","drawMenu","getHoveredId","getRenderY","onDropDown","optionLimit","scrolling"},constant=@Constant(intValue=11),require=0)
     private int jem$height(int original) { return jem$confirmation()?32:original; }
     @Inject(method="drawSlot",at=@At("HEAD"),cancellable=true)
-    private void jem$twoLines(GuiGraphics g,Component label,int index,int row,int mouseX,int mouseY,boolean scrolling,int limit,int x,int y,int background,CallbackInfo callback) {
+    private void jem$twoLines(GuiGraphics g,Component label,int index,int row,int mouseX,int mouseY,boolean scrolling,int limit,int x,int y,CallbackInfo callback) {
         if (!jem$confirmation()) return;
         var option=((SettlementMenuAccess)(Object)this).jem$expansionOption();
         int top=y+(openingUp?-row-1:row)*32, width=((AbstractWidget)(Object)this).getWidth();

@@ -56,14 +56,6 @@ public abstract class SettlementMapScreenMixin {
         callback.setReturnValue(true);
     }
 
-    @Inject(method = "m_7979_", at = @At("HEAD"), cancellable = true)
-    private void jem$drag(double x,double y,int button,double dx,double dy,CallbackInfoReturnable<Boolean> callback) {
-        if (button==0 && SettlementMapClient.dragging()) {
-            if(lastViewedDimensionId!=null)SettlementMapClient.update(lastViewedDimensionId.location(),mouseBlockPosX,mouseBlockPosZ);
-            callback.setReturnValue(true);
-        }
-    }
-
     @Inject(method = "getRightClickOptions", at = @At("RETURN"))
     private void jem$expand(CallbackInfoReturnable<ArrayList<RightClickOption>> callback) {
         if (rightClickDim == null) return;
