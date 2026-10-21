@@ -34,6 +34,8 @@ public final class RacialSpell extends AbstractSpell {
     @Override public DefaultConfig getDefaultConfig() { return config; }
     @Override public CastType getCastType() { return CastType.INSTANT; }
     @Override public int getSpellCooldown() { return RaceAbilities.signatureCooldown(race); }
+    // Innate racial spells do not require the school's research unlock. Ownership stays server-validated.
+    @Override public boolean requiresLearning() { return false; }
 
     private boolean ownsSpell(ServerPlayer player) {
         return player.server.isDedicatedServer()
@@ -47,7 +49,7 @@ public final class RacialSpell extends AbstractSpell {
         RacialSpellBridge.syncCooldown(player);
         long remaining = RaceService.record(player).orElseThrow().remaining("signature", player.level().getGameTime());
         if (remaining > 0) return new CastResult(CastResult.Type.FAILURE,
-                Component.translatable("jem.roles.cooldown", (remaining + 19L) / 20L));
+                Component.translatable("jem.roles.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(remaining)));
         return super.canBeCastedBy(spellLevel, source, data, entity);
     }
 

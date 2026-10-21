@@ -1,5 +1,23 @@
 # SMP GUI
 
+## Starter entitlement and authentication/race protection —2026-10-21
+
+Source implemented / **in testing**. No build, runtime delivery, protection check or deployment is claimed by this section.
+
+The user requests starter supplies and protection while authentication or initial race selection is incomplete. Codex's announced interpretation is one kit per canonical verified account, including existing players; cooked beef is the selected food. These once-only/food choices are implementation assumptions, not separate user approval of every detail. The kit contains64cooked beef,10iron ingots, one leather helmet/chestplate/leggings/boots, one native Backpacked backpack and one Nature's Compass. Existing20Gold starter funding/receipts remain unchanged.
+
+The kit becomes eligible after authentication and does not wait for race choice. Server-owned entitlement/journal state and native player inventory+operation receipt prevent reconnect/death/replay from granting another kit. Partial delivery keeps undelivered items in the durable journal when inventory is full; nothing drops on the ground or replaces worn equipment. A missing required native item or failed persistence is an explicit delivery failure, not a replacement item or falsely completed kit.
+
+Protection is authoritative while IdentityPolicy cannot resolve the verified account or that account has no effective RaceApi selection. Incoming attack/hurt/damage/death is blocked; melee and damage whose resolved owner is the protected player are also blocked to prevent protected attacks. It ends immediately when both authentication and effective race selection exist. Merely reopening a race GUI cannot restore it. StarterWelcome consumes these owners without adding authentication or race-choice state.
+
+## Functional source update — 2026-10-21
+
+Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.
+
+The user explicitly retains the present SMP materials, icons, dimensions and navigation structure. No art-study redesign is integrated. The separate wallet/profile entry and Buyer-only routes are retired; CurrencyCore money remains available through Shipping's money tab. Death history opens its own UUID-bound choice of up to three personal records and safe return. Money summaries share nonzero Coin denominations. Settlements finances show happiness income instead of a Coin tax-rate selector.
+
+Attacking a dormant registered boss opens the existing encounter choice/host GUI; the attempted hit does not start combat or damage the lobby boss. The server checks current identity, proximity, prerequisites, party and encounter state. Ordinary boss/Raid structures have no visual/collision/teleport barrier; Blood Moon and Resource Rush keep their own boundary contracts. Official server boss/event markers may expose native Xaero teleport actions with server ID resolution; personal waypoints keep their native behavior and privacy. Details belong to the boss event and command owners, not a second GUI gameplay model.
+
 ## Navigation
 
 SMP различает server-hosted Events и player-hosted Party. Activities отсутствует полностью. На каждом screen ровно один Back; Back возвращает на предыдущий экран, а не в фиксированный root. Cursor, scroll, selected row и form draft сохраняются при server-owned действиях.

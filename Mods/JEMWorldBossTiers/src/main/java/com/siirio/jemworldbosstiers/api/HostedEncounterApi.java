@@ -3,6 +3,7 @@ package com.siirio.jemworldbosstiers.api;
 import com.siirio.jemworldbosstiers.balance.EncounterScaler;
 import com.siirio.jemworldbosstiers.encounter.EncounterProvenance;
 import com.siirio.jemworldbosstiers.encounter.HostedEncounters;
+import com.siirio.jemworldbosstiers.encounter.HostedRaidScaling;
 import com.siirio.jemworldbosstiers.progression.WorldTierData;
 import java.util.Collection;
 import java.util.List;
@@ -40,6 +41,13 @@ public final class HostedEncounterApi {
     public static void release(LivingEntity boss) { com.siirio.jemworldbosstiers.encounter.HostedLobby.release(boss); }
 
     public static boolean prepareRaid(LivingEntity boss) {
+        if(preservesRaidBoss(boss)) {
+            if(boss.level().isClientSide||!boss.isAlive()||HostedEncounters.isHosted(boss)||!isRaid(boss)) return false;
+            var profile=WorldTierApi.profile(boss).orElse(null);
+            if(profile==null) return false;
+            HostedRaidScaling.prepare(boss,profile.key().toString());
+            return hold(boss);
+        }
         if(!canPrepareRaid(boss)) return false;
         var profile=WorldTierApi.profile(boss).orElseThrow();
         var data=boss.getPersistentData();
@@ -48,6 +56,8 @@ public final class HostedEncounterApi {
         EncounterScaler.ensureScaled(boss,profile);
         com.siirio.jemworldbosstiers.encounter.EncounterData.convertToRaid(data);
         data.putBoolean(PRESERVE_RAID_BOSS,true);
+        HostedRaidScaling.prepare(boss,profile.key().toString());
+        hold(boss);
         return true;
     }
 
@@ -62,8 +72,15 @@ public final class HostedEncounterApi {
         return boss.getPersistentData().getBoolean(PRESERVE_RAID_BOSS);
     }
 
+    public static boolean wasNativeBeforeRaid(LivingEntity boss) {
+        var data=boss.getPersistentData();
+        return data.contains(ORIGINAL_RAID_ENCOUNTER,net.minecraft.nbt.Tag.TAG_COMPOUND)
+                &&!EncounterProvenance.RAID_EVENT.name().equals(data.getCompound(ORIGINAL_RAID_ENCOUNTER).getString("Provenance"));
+    }
+
     public static void restorePreparedRaid(LivingEntity boss) {
         var data=boss.getPersistentData();
+        HostedRaidScaling.restore(boss);
         if(data.contains(ORIGINAL_RAID_ENCOUNTER,net.minecraft.nbt.Tag.TAG_COMPOUND))
             data.put(com.siirio.jemworldbosstiers.encounter.EncounterData.ROOT_KEY,data.getCompound(ORIGINAL_RAID_ENCOUNTER).copy());
         else data.remove(com.siirio.jemworldbosstiers.encounter.EncounterData.ROOT_KEY);
@@ -84,6 +101,10 @@ public final class HostedEncounterApi {
             return false;
         }
         EncounterScaler.ensureScaled(boss, profile);
+        var encounter = WorldTierApi.encounter(boss).orElse(null);
+        String spawnType = boss.getPersistentData().getString("forge:spawn_type");
+        if (!spawnType.equals("SPAWN_EGG") && !spawnType.equals("COMMAND") && encounter != null && encounter.arenaId() != null
+                && WorldTierData.get(boss.getServer()).liveBoss(encounter.arenaId()).filter(id -> !id.equals(boss.getUUID())).isPresent()) return false;
         return HostedEncounters.start(boss, agreedPlayers, raid, profile.arenaRadius(), bounds);
     }
 

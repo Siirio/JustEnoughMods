@@ -1,5 +1,15 @@
 # Settlements standalone design
 
+## Current source contract — 2026-10-21
+
+Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.
+
+With full Economy, the user replaces selectable tax rates with daily treasury income from canonical personal happiness: sum40Copper × H/100 per resident per Minecraft-day, integrated over actual observed membership/time with rational carry. Ten residents continuously at100% yield4Gold; twenty yield8Gold. No separate satiety, rate or comfort multiplier is added. CurrencyCore explicitly issues this income and accounts for supply; the town/day watermark prevents a replay from minting it twice. The earlier finite OPERATIONS/proportional-fund proposal is superseded. Existing treasury money and receipt ordering remain; standalone emerald income retains its prior separate formula/currency contract.
+
+Settlement membership owns bells and residents: founding cannot overlap an existing town or claim its bell, and an assigned resident cannot be taken by another town. A free newly assigned villager navigates to its town; arrived residents receive bounded route guidance within their territory using real collision/path checks. Unreachable travel remains visible as unavailable rather than silently teleporting. Native trading remains usable. These changes do not reactivate Villager Workers.
+
+The native Xaero context menu offers an explicit owner expansion mode. Only that mode owns drag input; its release confirmation is one wide two-line action, “Buy for” above nonzero Coin icons, with one hit/focus/action region and no internal separator. Server ownership, dimension, overlap, quote and payment are revalidated at commit. Escape/map closure/dimension change cancel the draft. Existing `/smp` materials and layout remain unchanged; this is a local functional update.
+
 Текущие формулы счастья, решения пользователя, открытые вопросы и отложенные
 изменения ведутся в [журнале Settlements](../DESIGN_JOURNAL.md). Обновлять его
 в той же задаче при изменениях механик или плана; предложения не считать реализацией.

@@ -16,30 +16,40 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = JemWorldBossTiers.MOD_ID)
 public final class HostedLobby {
     private static final String ROOT = "JEMHostedLobby";
-    private static final long TIMEOUT_TICKS = 18000;
 
     private HostedLobby() {}
 
     public static boolean hold(LivingEntity boss) {
-        if (boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss)
+        if (boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss) && !retiringRaid(boss)
                 || WorldTierApi.profile(boss).isEmpty()) return false;
         if (held(boss)) {
-            boss.getPersistentData().getCompound(ROOT).putLong("Until", boss.level().getGameTime() + TIMEOUT_TICKS);
+            freeze(boss);
             return true;
         }
         CompoundTag state = new CompoundTag();
-        state.putLong("Until", boss.level().getGameTime() + TIMEOUT_TICKS);
         boss.getPersistentData().put(ROOT, state);
+        freeze(boss);
+        return true;
+    }
+
+    private static void freeze(LivingEntity boss) {
         if (boss instanceof net.minecraft.world.entity.Mob mob) {
             mob.setTarget(null);
             mob.getNavigation().stop();
             mob.setNoAi(true);
         }
+        boss.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
         BossPresentation.suppress(boss);
-        return true;
     }
 
     public static boolean held(LivingEntity boss) { return boss.getPersistentData().contains(ROOT); }
+
+    private static boolean retiringRaid(LivingEntity boss) {
+        return boss.getServer() != null && WorldTierApi.encounter(boss)
+                .filter(encounter -> encounter.arenaId() != null)
+                .map(encounter -> com.siirio.jemworldbosstiers.progression.WorldTierData.get(boss.getServer()).raidReplacementPending(encounter.arenaId()))
+                .orElse(false);
+    }
 
     public static void release(LivingEntity boss) {
         if (boss.level().isClientSide || !held(boss)) return;
@@ -61,6 +71,24 @@ public final class HostedLobby {
         if (!event.getEntity().level().isClientSide && held(event.getEntity())) event.setCanceled(true);
     }
 
+    @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
+    public static void hurt(net.minecraftforge.event.entity.living.LivingHurtEvent event) {
+        if (!event.getEntity().level().isClientSide && held(event.getEntity())) event.setCanceled(true);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
+    public static void damage(net.minecraftforge.event.entity.living.LivingDamageEvent event) {
+        if (!event.getEntity().level().isClientSide && held(event.getEntity())) event.setCanceled(true);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
+    public static void death(net.minecraftforge.event.entity.living.LivingDeathEvent event) {
+        if (!event.getEntity().level().isClientSide && held(event.getEntity())) {
+            event.setCanceled(true);
+            event.getEntity().setHealth(event.getEntity().getMaxHealth());
+        }
+    }
+
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void tracking(PlayerEvent.StartTracking event) {
         if (event.getTarget() instanceof LivingEntity boss && held(boss)) BossPresentation.suppress(boss);
@@ -68,6 +96,9 @@ public final class HostedLobby {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void loaded(EntityJoinLevelEvent event) {
-        if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity boss) release(boss);
+        if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity boss && held(boss)) {
+            if (HostedEncounters.isHosted(boss) && !retiringRaid(boss)) release(boss);
+            else freeze(boss);
+        }
     }
 }

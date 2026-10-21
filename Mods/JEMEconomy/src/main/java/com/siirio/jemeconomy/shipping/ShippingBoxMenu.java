@@ -42,6 +42,7 @@ public final class ShippingBoxMenu extends AbstractContainerMenu implements com.
     }
 
     public ShippingBoxBlockEntity box() { return box; }
+    @Override public void removed(Player player) { super.removed(player); if (player instanceof ServerPlayer serverPlayer) box.release(serverPlayer); }
     public int tab() { return tab; }
     public void clientTab(int value) { tab = value == 1 ? 1 : 0; }
     @Override public boolean permitsCurrencyAction(ServerPlayer player) { return tab == 1 && player.containerMenu == this && stillValid(player); }

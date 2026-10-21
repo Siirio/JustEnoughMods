@@ -23,11 +23,20 @@ public final class PhysicalCoinService {
         if (principal.isEmpty()) return new WithdrawResult(Status.UNAUTHENTICATED, 0L, Map.of());
         Map<CoinDenomination, Long> breakdown = decompose(amount);
         if (breakdown.isEmpty()) return new WithdrawResult(Status.INVALID, 0L, Map.of());
-        int requiredSlots = breakdown.values().stream().mapToInt(count -> (int) ((count + 63L) / 64L)).sum();
-        long emptySlots = player.getInventory().items.stream().filter(ItemStack::isEmpty).count();
-        if (emptySlots < requiredSlots) return new WithdrawResult(Status.NO_SPACE, 0L, breakdown);
-
         EconomySavedData data = EconomySavedData.get(player.getServer());
+        player.getInventory().items.forEach(data::normalizeCoin);
+        List<ItemStack> simulated = player.getInventory().items.stream().map(ItemStack::copy)
+                .collect(java.util.stream.Collectors.toCollection(ArrayList::new));
+        for (var entry : breakdown.entrySet()) {
+            long remaining = entry.getValue();
+            while (remaining > 0) {
+                int count = (int) Math.min(64L, remaining);
+                if (!insertSimulated(simulated, data.coinTemplate(entry.getKey(), count)))
+                    return new WithdrawResult(Status.NO_SPACE, 0L, breakdown);
+                remaining -= count;
+            }
+        }
+
         EconomySavedData.WithdrawLedgerResult plan = data.prepareWithdraw(principal.get().accountId(), amount, requestId);
         if (plan.status() == EconomySavedData.PhysicalStatus.INSUFFICIENT_FUNDS) {
             return new WithdrawResult(Status.INSUFFICIENT_FUNDS, 0L, breakdown);
@@ -36,7 +45,7 @@ public final class PhysicalCoinService {
             return new WithdrawResult(plan.status() == EconomySavedData.PhysicalStatus.REPLAYED ? Status.REPLAYED : Status.INVALID, 0L, breakdown);
         }
         for (CoinLot lot : plan.lots()) {
-            ItemStack issued = CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), requestId);
+            ItemStack issued = CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), lot.issuanceOperation());
             if (!player.getInventory().add(issued) || !issued.isEmpty()) {
                 data.quarantineWithdraw(requestId);
                 return new WithdrawResult(Status.QUARANTINED, 0L, breakdown);
@@ -213,7 +222,7 @@ public final class PhysicalCoinService {
             after.get(selection.slot()).shrink(selection.accepted());
         }
         for (CoinLot lot : reservation.outputs()) {
-            ItemStack output = CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), requestId);
+            ItemStack output = CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), lot.issuanceOperation());
             if (!insertSimulated(after, output)) {
                 data.cancelExchange(requestId);
                 return new ExchangeResult(Status.NO_SPACE, 0L, 0);
@@ -260,11 +269,11 @@ public final class PhysicalCoinService {
         EconomySavedData.WithdrawLedgerResult plan = EconomySavedData.get(server).prepareSystemIssuance(source, amount, operationId);
         if (plan.status() == EconomySavedData.PhysicalStatus.INSUFFICIENT_FUNDS) return new ContainerPayment(Status.INSUFFICIENT_FUNDS, operationId, 0L, List.of());
         if (plan.status() == EconomySavedData.PhysicalStatus.REPLAYED) {
-            List<ItemStack> replayStacks = plan.lots().stream().map(lot -> CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), operationId)).toList();
+            List<ItemStack> replayStacks = plan.lots().stream().map(lot -> CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), lot.issuanceOperation())).toList();
             return new ContainerPayment(Status.REPLAYED, operationId, plan.value(), replayStacks);
         }
         if (plan.status() != EconomySavedData.PhysicalStatus.PREPARED) return new ContainerPayment(Status.INVALID, operationId, 0L, List.of());
-        List<ItemStack> stacks = plan.lots().stream().map(lot -> CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), operationId)).toList();
+        List<ItemStack> stacks = plan.lots().stream().map(lot -> CoinProvenance.issue(lot.denomination(), lot.issued(), lot.id(), lot.issuanceOperation())).toList();
         return new ContainerPayment(Status.COMMITTED, operationId, amount, stacks);
     }
 

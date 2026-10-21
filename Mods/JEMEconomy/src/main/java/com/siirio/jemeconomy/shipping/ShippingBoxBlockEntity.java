@@ -45,6 +45,46 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     public static final int TOTAL_SLOTS = 63;
     private final NonNullList<ItemStack> items = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
     private UUID owner;
+    private UUID visitorAccount;
+    private UUID visitorPlayer;
+    private final Map<UUID, NonNullList<ItemStack>> recovery = new HashMap<>();
+    private UUID seller() { return visitorAccount == null ? owner : visitorAccount; }
+
+    public boolean acquire(ServerPlayer player) {
+        var principal = IdentityPolicy.resolve(player);
+        if (principal.isEmpty() || !(level instanceof ServerLevel serverLevel)) return false;
+        refresh();
+        if (visitorPlayer != null && !visitorPlayer.equals(player.getUUID())) return false;
+        if (!inventoryUnlocked()) return false;
+        UUID account = principal.get().accountId();
+        if (visitorPlayer == null) {
+            stash(seller());
+            visitorAccount = account;
+            var prior = recovery.remove(account);
+            if (prior != null) for (int slot = 0; slot < TOTAL_SLOTS; slot++) items.set(slot, prior.get(slot));
+        }
+        visitorPlayer = player.getUUID(); previewDirty = true; setChanged();
+        return true;
+    }
+
+    private void stash(UUID account) {
+        if (account == null || isEmpty()) return;
+        // A prior visitor's unresolved slots are never exposed to another visitor.
+        if (recovery.containsKey(account)) throw new IllegalStateException("Shipping recovery already occupied");
+        NonNullList<ItemStack> saved = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY);
+        for (int slot = 0; slot < TOTAL_SLOTS; slot++) { saved.set(slot, items.get(slot)); items.set(slot, ItemStack.EMPTY); }
+        recovery.put(account, saved);
+    }
+
+    public void release(ServerPlayer player) {
+        if (!player.getUUID().equals(visitorPlayer) || !inventoryUnlocked()) return;
+        for (int slot = 0; slot < TOTAL_SLOTS; slot++) {
+            ItemStack remaining = items.get(slot).copy();
+            if (player.isAlive()) player.getInventory().add(remaining);
+            items.set(slot, remaining.isEmpty() ? ItemStack.EMPTY : remaining);
+        }
+        stash(visitorAccount); visitorAccount = null; visitorPlayer = null; setChanged();
+    }
     private String ownerName = "";
     private UUID instanceId = UUID.randomUUID();
     private long lastProcessedCycle = Long.MIN_VALUE;
@@ -64,7 +104,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
         private long value(int index, ServerLevel serverLevel) {
             MarketSavedData market = MarketSavedData.get(serverLevel.getServer()); var demand = market.demand(serverLevel.getServer());
             long time = serverLevel.getServer().overworld().getDayTime(); long next = (Math.floorDiv(time - 1_000L, 24_000L) + 1L) * 24_000L + 1_000L;
-            return switch (index) { case 0 -> statusCode(); case 1 -> previewPayout; case 2 -> market.accountRemaining(serverLevel.getServer(), owner);
+            return switch (index) { case 0 -> statusCode(); case 1 -> previewPayout; case 2 -> market.accountRemaining(serverLevel.getServer(), seller());
                 case 3 -> market.globalRemaining(serverLevel.getServer()); case 4 -> Math.max(0L, next - time);
                 case 5 -> groupIndex(demand.primary()); case 6 -> groupIndex(demand.secondary()); case 7 -> transaction == null ? 0 : transaction.phase.ordinal() + 1; default -> 0; };
         }
@@ -100,7 +140,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     }
 
     @Override public Component getDisplayName() { return Component.translatable("container.jem_economy.shipping_box"); }
-    @Override public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) { return isOwner(player) ? new ShippingBoxMenu(id, inventory, this) : null; }
+    @Override public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) { return player.getUUID().equals(visitorPlayer) ? new ShippingBoxMenu(id, inventory, this) : null; }
 
     @Override public void onLoad() { super.onLoad(); if (level instanceof ServerLevel serverLevel) MarketRuntime.register(serverLevel, worldPosition); }
     @Override public void setRemoved() { if (level instanceof ServerLevel serverLevel) MarketRuntime.unregister(serverLevel, worldPosition); super.setRemoved(); }
@@ -108,6 +148,12 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     /** Recovery never starts a new sale; legacy in-flight payments keep their journal. */
     public void refresh() {
         if (!(level instanceof ServerLevel serverLevel) || owner == null) return;
+        if (visitorPlayer != null) {
+            ServerPlayer active = serverLevel.getServer().getPlayerList().getPlayer(visitorPlayer);
+            if (active == null) { if (inventoryUnlocked()) { stash(visitorAccount); visitorPlayer = null; visitorAccount = null; setChanged(); } }
+            else if (!active.isAlive() || active.level() != level || active.distanceToSqr(worldPosition.getCenter()) > 64D
+                    || !(active.containerMenu instanceof ShippingBoxMenu menu) || menu.box() != this) release(active);
+        }
         if (transaction != null && transaction.phase != Phase.COMMITTED && transaction.phase != Phase.QUARANTINED) recover(serverLevel);
         if (transaction != null && transaction.phase == Phase.QUARANTINED) { status = "quarantined"; return; }
         long revision = MarketSavedData.get(serverLevel.getServer()).revision(serverLevel.getServer());
@@ -143,13 +189,9 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
         Quote quote = quote(serverLevel);
         previewPayout = quote.payout;
         if (quote.payout <= 0L) { status = quote.reason; return; }
-        int emptyPayout = 0;
-        for (int slot = PAYOUT_START; slot < TOTAL_SLOTS; slot++) if (items.get(slot).isEmpty()) emptyPayout++;
-        int required = PhysicalCoinService.decompose(quote.payout).values().stream().mapToInt(value -> (int) ((value + 63L) / 64L)).sum();
-        if (emptyPayout < required) { status = "payout_full"; return; }
         String dimension = serverLevel.dimension().location().toString();
         String key = "shipping:" + dimension + ":" + worldPosition.asLong() + ":" + instanceId + ":" + cycle + ":" + sequence++;
-        transaction = new Transaction(key, cycle, Phase.PREPARED, quote.payout, null, quote.lines, quote.price.numerator(), quote.price.denominator());
+        transaction = new Transaction(key, cycle, Phase.PREPARED, quote.payout, null, quote.lines, quote.price.numerator(), quote.price.denominator(), true);
         setChanged();
         recover(serverLevel);
     }
@@ -160,7 +202,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             if (transaction.phase == Phase.PREPARED) {
                 if (!fingerprintsMatch(transaction.lines)) { quarantine(serverLevel, "inventory_changed"); return; }
                 if (transaction.rational()) {
-                    var reservation = EconomySavedData.get(serverLevel.getServer()).reserveSale(owner, transaction.key, transaction.numerator, transaction.denominator);
+                    var reservation = EconomySavedData.get(serverLevel.getServer()).reserveSale(seller(), transaction.key, transaction.numerator, transaction.denominator);
                     if (reservation.status() == EconomySavedData.SaleStatus.INSUFFICIENT_FUNDS || reservation.status() == EconomySavedData.SaleStatus.BUSY) {
                         status = reservation.status() == EconomySavedData.SaleStatus.BUSY ? "sale_busy" : "market_budget_exhausted";
                         transaction = null; setChanged(); return;
@@ -170,13 +212,17 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
                         quarantine(serverLevel, "sale_reservation_mismatch"); return;
                     }
                 }
+                if (transaction.ledgerOnly) {
+                    transaction = transaction.with(Phase.FUNDS_RESERVED, null); setChanged();
+                } else {
                 var payment = PhysicalCoinService.prepareContainerPayment(serverLevel.getServer(), transaction.source(), transaction.payout, transaction.key);
                 if (payment.status() == PhysicalCoinService.Status.INSUFFICIENT_FUNDS) {
-                    if (transaction.rational()) EconomySavedData.get(serverLevel.getServer()).cancelSale(owner, transaction.key);
+                    if (transaction.rational()) EconomySavedData.get(serverLevel.getServer()).cancelSale(seller(), transaction.key);
                     transaction = null; status = "market_budget_exhausted"; setChanged(); return;
                 }
                 if (payment.status() != PhysicalCoinService.Status.COMMITTED && payment.status() != PhysicalCoinService.Status.REPLAYED) { quarantine(serverLevel, "issuance_failed"); return; }
                 transaction = transaction.with(Phase.FUNDS_RESERVED, payment.operationId()); setChanged();
+                }
             }
             if (transaction.phase == Phase.FUNDS_RESERVED) {
                 if (!fingerprintsMatch(transaction.lines)) { quarantine(serverLevel, "inventory_changed"); return; }
@@ -184,25 +230,44 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
                 transaction = transaction.with(Phase.INPUT_CONSUMED, transaction.operationId); setChanged();
             }
             if (transaction.phase == Phase.INPUT_CONSUMED) {
+                if (transaction.ledgerOnly) {
+                    var paid = EconomySavedData.get(serverLevel.getServer()).transfer(SystemAccount.MARKET_ESCROW.id(), seller(), transaction.payout, transaction.key + ":credit");
+                    if (paid.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
+                            && paid.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) { quarantine(serverLevel, "credit_failed"); return; }
+                } else {
                 var payment = PhysicalCoinService.prepareContainerPayment(serverLevel.getServer(), transaction.source(), transaction.payout, transaction.key);
                 if (payment.status() != PhysicalCoinService.Status.REPLAYED && payment.status() != PhysicalCoinService.Status.COMMITTED) { quarantine(serverLevel, "issuance_recovery_failed"); return; }
                 int cursor = PAYOUT_START;
+                Map<CoinProvenance.Stamp, Integer> delivered = new HashMap<>();
+                for (int slot = PAYOUT_START; slot < TOTAL_SLOTS; slot++) {
+                    ItemStack existing = items.get(slot);
+                    CoinProvenance.read(existing).ifPresent(stamp -> delivered.merge(stamp, existing.getCount(), Math::addExact));
+                }
                 for (ItemStack stack : payment.stacks()) {
                     var stamp = CoinProvenance.read(stack); if (stamp.isEmpty()) { quarantine(serverLevel, "unstamped_payment"); return; }
-                    if (containsLot(stamp.get().lotId())) continue;
-                    while (cursor < TOTAL_SLOTS && !items.get(cursor).isEmpty()) cursor++;
-                    if (cursor >= TOTAL_SLOTS) { quarantine(serverLevel, "payout_full_during_recovery"); return; }
-                    items.set(cursor++, stack.copy());
+                    int present = delivered.getOrDefault(stamp.get(), 0);
+                    int skipped = Math.min(present, stack.getCount());
+                    delivered.put(stamp.get(), present - skipped);
+                    int remaining = stack.getCount() - skipped;
+                    while (remaining > 0) {
+                        while (cursor < TOTAL_SLOTS && !items.get(cursor).isEmpty()) cursor++;
+                        if (cursor >= TOTAL_SLOTS) { quarantine(serverLevel, "payout_full_during_recovery"); return; }
+                        int count = Math.min(remaining, stack.getMaxStackSize());
+                        items.set(cursor++, stack.copyWithCount(count));
+                        remaining -= count;
+                        setChanged();
+                    }
+                }
                 }
                 transaction = transaction.with(Phase.PAYOUT_ISSUED, transaction.operationId); setChanged();
             }
             if (transaction.phase == Phase.PAYOUT_ISSUED) {
-                if (!PhysicalCoinService.commitContainerPayment(serverLevel.getServer(), transaction.operationId)) { quarantine(serverLevel, "ledger_commit_failed"); return; }
+                if (!transaction.ledgerOnly && !PhysicalCoinService.commitContainerPayment(serverLevel.getServer(), transaction.operationId)) { quarantine(serverLevel, "ledger_commit_failed"); return; }
                 Map<ResourceLocation, Integer> units = new HashMap<>(); transaction.lines.forEach(line -> units.merge(line.item, line.count, Integer::sum));
-                if (!MarketSavedData.get(serverLevel.getServer()).commit(serverLevel.getServer(), transaction.key, owner, units, transaction.payout)) {
+                if (!MarketSavedData.get(serverLevel.getServer()).commit(serverLevel.getServer(), transaction.key, seller(), units, transaction.payout)) {
                     quarantine(serverLevel, "quota_commit_failed"); return;
                 }
-                if (transaction.rational() && !EconomySavedData.get(serverLevel.getServer()).commitSale(owner, transaction.key)) {
+                if (transaction.rational() && !EconomySavedData.get(serverLevel.getServer()).commitSale(seller(), transaction.key)) {
                     quarantine(serverLevel, "fraction_commit_failed"); return;
                 }
                 transaction = transaction.with(Phase.COMMITTED, transaction.operationId); status = "paid:" + transaction.payout; setChanged();
@@ -219,7 +284,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     private Quote quote(ServerLevel level) {
         MarketSavedData market = MarketSavedData.get(level.getServer());
         EconomySavedData ledger = EconomySavedData.get(level.getServer());
-        long ordinaryBudget = Math.min(market.accountRemaining(level.getServer(), owner), market.globalRemaining(level.getServer()));
+        long ordinaryBudget = Math.min(market.accountRemaining(level.getServer(), seller()), market.globalRemaining(level.getServer()));
         long reserve = ledger.balance(SystemAccount.NPC_MARKET.id());
         List<Line> lines = new ArrayList<>();
         Map<ResourceLocation, Long> localUnits = new HashMap<>();
@@ -232,7 +297,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             var optional = ItemPolicyRegistry.policy(stack);
             if (optional.isEmpty() || !ItemPolicyRegistry.acceptsShipping(stack)) { reason = "blocked_item"; continue; }
             ItemPolicy policy = optional.get();
-            long familyAvailable = Math.min(market.accountFamilyRemaining(level.getServer(), owner, policy), market.globalFamilyRemaining(level.getServer(), policy));
+            long familyAvailable = Math.min(market.accountFamilyRemaining(level.getServer(), seller(), policy), market.globalFamilyRemaining(level.getServer(), policy));
             long local = localUnits.getOrDefault(policy.quotaFamily(), 0L);
             int high = (int) Math.min(stack.getCount(), Math.max(0L, familyAvailable-local)/policy.quotaUnits());
             int low = 0;
@@ -241,7 +306,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             while (low < high) {
                 int candidate = low+(high-low+1)/2;
                 RationalPrice total = price.add(policy.salePrice(candidate, multiplier));
-                var payment = ledger.quoteSale(owner, total.numerator(), total.denominator());
+                var payment = ledger.quoteSale(seller(), total.numerator(), total.denominator());
                 long discPayout = Math.addExact(discs, policy.disc() ? Math.multiplyExact(10_000L, candidate) : 0L);
                 if (payment.fundingRequired() <= reserve && (market.testQuotaBypass(level.getServer()) || payment.payout()-discPayout <= ordinaryBudget)) low = candidate;
                 else high = candidate-1;
@@ -253,7 +318,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             if (policy.disc()) discs = Math.addExact(discs, Math.multiplyExact(10_000L, low));
             reason = "ok";
         }
-        long payout = price.numerator() == 0L ? 0L : ledger.quoteSale(owner, price.numerator(), price.denominator()).payout();
+        long payout = price.numerator() == 0L ? 0L : ledger.quoteSale(seller(), price.numerator(), price.denominator()).payout();
         if (payout == 0L && !lines.isEmpty()) return new Quote(List.of(), 0L, "budget_too_small", RationalPrice.ZERO);
         return new Quote(List.copyOf(lines), payout, reason, price);
     }
@@ -262,14 +327,9 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
         for (Line line : lines) { ItemStack current = items.get(line.slot); if (current.getCount() < line.count || !ItemStack.isSameItemSameTags(current, line.fingerprint)) return false; }
         return true;
     }
-    private boolean containsLot(UUID lot) {
-        if (lot == null) return false;
-        for (int slot = PAYOUT_START; slot < TOTAL_SLOTS; slot++) if (CoinProvenance.read(items.get(slot)).map(stamp -> lot.equals(stamp.lotId())).orElse(false)) return true;
-        return false;
-    }
 
     public void collect(ServerPlayer player) {
-        if (!isOwner(player)) return;
+        if (!player.getUUID().equals(visitorPlayer)) return;
         for (int slot = PAYOUT_START; slot < TOTAL_SLOTS; slot++) {
             ItemStack stack = items.get(slot); if (stack.isEmpty()) continue;
             ItemStack copy = stack.copy(); player.getInventory().add(copy); items.set(slot, copy.isEmpty() ? ItemStack.EMPTY : copy);
@@ -286,9 +346,14 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
         super.saveAdditional(tag); ContainerHelper.saveAllItems(tag, items); if (owner != null) tag.putUUID("Owner", owner); tag.putString("OwnerName", ownerName);
         tag.putUUID("Instance", instanceId); tag.putLong("LastCycle", lastProcessedCycle); tag.putLong("Sequence", sequence); tag.putString("Status", status); tag.putLong("PreviewPayout", previewPayout);
         if (transaction != null) tag.put("Transaction", transaction.save());
+        if (visitorAccount != null) tag.putUUID("VisitorAccount", visitorAccount);
+        ListTag recoveries = new ListTag(); recovery.forEach((account, slots) -> { CompoundTag row = new CompoundTag(); row.putUUID("Account", account); ContainerHelper.saveAllItems(row, slots); recoveries.add(row); }); tag.put("VisitorRecovery", recoveries);
     }
     @Override public void load(CompoundTag tag) {
         super.load(tag); ContainerHelper.loadAllItems(tag, items); owner = tag.hasUUID("Owner") ? tag.getUUID("Owner") : null; ownerName = tag.getString("OwnerName");
+        visitorPlayer = null; visitorAccount = tag.hasUUID("VisitorAccount") ? tag.getUUID("VisitorAccount") : null;
+        recovery.clear(); ListTag recoveries = tag.getList("VisitorRecovery", Tag.TAG_COMPOUND);
+        for (int i = 0; i < recoveries.size(); i++) { CompoundTag row = recoveries.getCompound(i); NonNullList<ItemStack> slots = NonNullList.withSize(TOTAL_SLOTS, ItemStack.EMPTY); ContainerHelper.loadAllItems(row, slots); recovery.put(row.getUUID("Account"), slots); }
         instanceId = tag.hasUUID("Instance") ? tag.getUUID("Instance") : UUID.randomUUID(); lastProcessedCycle = tag.contains("LastCycle") ? tag.getLong("LastCycle") : Long.MIN_VALUE;
         sequence = tag.getLong("Sequence"); status = tag.getString("Status"); previewPayout = tag.getLong("PreviewPayout"); transaction = tag.contains("Transaction", Tag.TAG_COMPOUND) ? Transaction.load(tag.getCompound("Transaction")) : null;
     }
@@ -300,9 +365,11 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     @Override public ItemStack removeItem(int slot, int amount) { ItemStack result = ContainerHelper.removeItem(items, slot, amount); if (!result.isEmpty()) setChanged(); return result; }
     @Override public ItemStack removeItemNoUpdate(int slot) { return ContainerHelper.takeItem(items, slot); }
     @Override public void setItem(int slot, ItemStack stack) { if (slot < INPUT_SLOTS && !stack.isEmpty() && !ItemPolicyRegistry.acceptsShipping(stack)) return; if (slot >= PAYOUT_START && !stack.isEmpty() && CoinProvenance.read(stack).isEmpty()) return; items.set(slot, stack); setChanged(); }
-    @Override public boolean stillValid(Player player) { return isOwner(player) && level != null && level.getBlockEntity(worldPosition) == this && player.distanceToSqr(worldPosition.getX() + .5D, worldPosition.getY() + .5D, worldPosition.getZ() + .5D) <= 64D; }
+    @Override public boolean stillValid(Player player) { return player.isAlive() && player.getUUID().equals(visitorPlayer) && player instanceof ServerPlayer serverPlayer && IdentityPolicy.resolve(serverPlayer).map(p -> p.accountId().equals(visitorAccount)).orElse(false) && level != null && level.getBlockEntity(worldPosition) == this && player.distanceToSqr(worldPosition.getX() + .5D, worldPosition.getY() + .5D, worldPosition.getZ() + .5D) <= 64D; }
     @Override public void clearContent() { for (int slot = 0; slot < items.size(); slot++) items.set(slot, ItemStack.EMPTY); setChanged(); }
-    @Override public boolean canPlaceItem(int slot, ItemStack stack) { return slot < INPUT_SLOTS && ItemPolicyRegistry.acceptsShipping(stack); }
+    private boolean automationUnlocked() { return visitorPlayer == null && visitorAccount == null && inventoryUnlocked(); }
+    @Override public boolean canPlaceItem(int slot, ItemStack stack) { return automationUnlocked() && slot < INPUT_SLOTS && ItemPolicyRegistry.acceptsShipping(stack); }
+    @Override public boolean canTakeItem(Container destination, int slot, ItemStack stack) { return automationUnlocked(); }
 
     private int statusCode() {
         String key = status; int split = key.indexOf(':'); if (split >= 0) key = key.substring(0, split);
@@ -319,13 +386,14 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
         static Line load(CompoundTag tag) { return new Line(tag.getInt("Slot"), ResourceLocation.tryParse(tag.getString("Item")), tag.getInt("Count"), ItemStack.of(tag.getCompound("Fingerprint"))); }
     }
     private record Transaction(String key, long cycle, Phase phase, long payout, UUID operationId, List<Line> lines,
-                               long numerator, long denominator) {
+                               long numerator, long denominator, boolean ledgerOnly) {
         boolean rational() { return numerator > 0L; }
         SystemAccount source() { return rational() ? SystemAccount.MARKET_ESCROW : SystemAccount.NPC_MARKET; }
-        Transaction with(Phase next, UUID operation) { return new Transaction(key, cycle, next, payout, operation, lines, numerator, denominator); }
+        Transaction with(Phase next, UUID operation) { return new Transaction(key, cycle, next, payout, operation, lines, numerator, denominator, ledgerOnly); }
         CompoundTag save() {
             CompoundTag tag = new CompoundTag(); tag.putString("Key", key); tag.putLong("Cycle", cycle); tag.putString("Phase", phase.name());
             tag.putLong("Payout", payout); tag.putLong("PriceNumerator", numerator); tag.putLong("PriceDenominator", denominator);
+            tag.putBoolean("LedgerOnly", ledgerOnly);
             if (operationId != null) tag.putUUID("Operation", operationId);
             ListTag list = new ListTag(); lines.forEach(line -> list.add(line.save())); tag.put("Lines", list); return tag;
         }
@@ -337,7 +405,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
             long numerator = tag.getLong("PriceNumerator"), denominator = tag.contains("PriceDenominator") ? tag.getLong("PriceDenominator") : 1L;
             if (numerator < 0L || denominator <= 0L) phase = Phase.QUARANTINED;
             return new Transaction(tag.getString("Key"), tag.getLong("Cycle"), phase, tag.getLong("Payout"),
-                    tag.hasUUID("Operation") ? tag.getUUID("Operation") : null, List.copyOf(lines), numerator, denominator);
+                    tag.hasUUID("Operation") ? tag.getUUID("Operation") : null, List.copyOf(lines), numerator, denominator, tag.getBoolean("LedgerOnly"));
         }
     }
 }

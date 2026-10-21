@@ -22,7 +22,7 @@ public final class RaceRules {
     static {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
         b.push("cooldowns");
-        GUARDIAN_COOLDOWN = b.defineInRange("ancestralGuardianTicks", 24_000, 20, 240_000);
+        GUARDIAN_COOLDOWN = b.defineInRange("ancestralGuardianTicks", 1_200, 20, 1_200);
         LIFE_CHORUS_COOLDOWN = b.defineInRange("lifeChorusTicks", 500, 20, 72_000);
         SCULK_VEINS_COOLDOWN = b.defineInRange("sculkVeinsTicks", 400, 20, 72_000);
         VERDANT_DOMINION_COOLDOWN = b.defineInRange("verdantDominionTicks", 500, 20, 72_000);

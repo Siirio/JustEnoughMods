@@ -33,7 +33,7 @@ public final class EventAreaHooks {
         var before=INSIDE.getOrDefault(player.getUUID(),Set.of());
         var prompted=new HashSet<UUID>();
         var promptedBefore=PROMPTED.getOrDefault(player.getUUID(),Set.of());
-        var zones=new ArrayList<EventBoundary>(StructureStaging.boundaries(player));
+        var zones=new ArrayList<EventBoundary>();
         for(var row:EventScheduler.active(player.server)) {
             if(!row.contains("radius")) continue;
             String type=row.getString("activity");UUID id=row.getUUID("id");
@@ -85,7 +85,7 @@ public final class EventAreaHooks {
     @SubscribeEvent
     public static void combatMobBoundary(LivingEvent.LivingTickEvent event) {
         if(!(event.getEntity() instanceof Mob mob) || !(mob.level() instanceof net.minecraft.server.level.ServerLevel level)) return;
-        for(String type:List.of("BLOOD_MOON","BOSS_RAID")) {
+        for(String type:List.of("BLOOD_MOON")) {
             var row=EventScheduler.active(level.getServer(),type);
             if(row==null || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             boolean belongs=type.equals("BLOOD_MOON")?BloodMoon.belongs(row,mob):RaidEvent.belongs(row,mob);
@@ -134,12 +134,14 @@ public final class EventAreaHooks {
             event.setCanceled(true);
             return;
         }
-        var sourceSession = attacker instanceof ServerPlayer sourcePlayer ? EventSession.forPlayer(sourcePlayer) : null;
-        var targetSession = victim instanceof ServerPlayer targetPlayer ? EventSession.forPlayer(targetPlayer) : null;
+        var sourceSession = attacker instanceof ServerPlayer sourcePlayer ? EventSession.combatForPlayer(sourcePlayer) : null;
+        var targetSession = victim instanceof ServerPlayer targetPlayer ? EventSession.combatForPlayer(targetPlayer) : null;
         UUID sourceId = sourceSession != null && sourceSession.getBoolean("combatStarted") ? sourceSession.getUUID("id")
-                : attacker.getPersistentData().hasUUID(EventSession.SESSION) ? attacker.getPersistentData().getUUID(EventSession.SESSION) : null;
+                : attacker.getPersistentData().hasUUID(EventSession.SESSION) ? attacker.getPersistentData().getUUID(EventSession.SESSION)
+                : attacker.getPersistentData().hasUUID(RaidEvent.EVENT_ID) ? attacker.getPersistentData().getUUID(RaidEvent.EVENT_ID) : null;
         UUID targetId = targetSession != null && targetSession.getBoolean("combatStarted") ? targetSession.getUUID("id")
-                : victim.getPersistentData().hasUUID(EventSession.SESSION) ? victim.getPersistentData().getUUID(EventSession.SESSION) : null;
+                : victim.getPersistentData().hasUUID(EventSession.SESSION) ? victim.getPersistentData().getUUID(EventSession.SESSION)
+                : victim.getPersistentData().hasUUID(RaidEvent.EVENT_ID) ? victim.getPersistentData().getUUID(RaidEvent.EVENT_ID) : null;
         if ((sourceId != null || targetId != null) && (!Objects.equals(sourceId, targetId)
                 || attacker instanceof ServerPlayer && victim instanceof ServerPlayer)) {
             event.setCanceled(true);

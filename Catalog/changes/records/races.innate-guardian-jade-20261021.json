@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "change_id": "races.innate-guardian-jade-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:iron_golem"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1200,
+    "overrides": []
+  },
+  "change": {
+    "summary": "races innate guardian jade 20261021",
+    "modifiers": [
+      {
+        "property": "races.innate_spell_guardian_jade",
+        "operation": "replace",
+        "before": "Innate spells inherited school-learning; guardian selected nearest Enemy and used one-Minecraft-day cooldown; no Roles Jade race field.",
+        "after": {
+          "spells": "Innate RacialSpell requiresLearning=false only; ownership and native cast checks remain.",
+          "guardian_cooldown_minecraft_days": 0.05,
+          "guardian": "One-time saved-cooldown clamp; eligible actual attacker priority including PvP-allowed player, no random player targets.",
+          "jade": "Roles-owned server race ID snapshot and client localization, no balances/hidden progress."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "races.innate-guardian-jade-20261021",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Docs/races/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
+    "decision_source": "User plan and explicit later overrides on2026-10-21; Docs/plans/2026-10-21-economy-races-settlements-gui.md current override section.",
+    "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
+    "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_user_overrides_source_in_testing",
+    "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+    "source_files": [
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+      "Docs/races/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_user_overrides_source_in_testing",
+      "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+      "source_files": [
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceTraitRuntime.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Docs/races/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "racial_abilities",
+      "irons_spellbooks",
+      "pvp",
+      "jade",
+      "save_migration"
+    ],
+    "relations": "Owning modules remain single authorities; adapters translate server-authoritative identities/state. Source paths include the complete current task diff for this domain; unrelated VFX/registry-coverage.csv excluded.",
+    "notes": "Prohibitions on tests/static analysis/gameplay respected. Atlas effective/artifact refresh belongs to parent release workflow after fresh artifacts.",
+    "unresolved": [
+      "Runtime/player acceptance unrun; status in testing.",
+      "Final production artifacts, normal native publication/application and MineRENT deployment pending."
+    ]
+  }
+}

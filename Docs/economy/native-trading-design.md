@@ -1,5 +1,17 @@
 # Current native economy contract — 2026-10-16
 
+## Current source contract — 2026-10-21
+
+Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.
+
+The user's final overrides supersede earlier funding proposals and Buyer/wallet UI requirements below. CurrencyCore keeps the sole ledger, quote, physical liability and receipt owners. Coins of one denomination now use a world-local bearer series so native stacks merge up to64; operation-specific quantities remain in the server journal. Proven legacy Coins normalize lazily on encountered inventory/container/drop paths without a world scan or granting backing to unknown stamps. Withdrawal capacity includes partial matching stacks before debit. Legacy container recovery counts delivered quantities rather than treating a repeated pooled lot ID as a complete payout.
+
+Approved base sale anchors per64goods: wheat10Copper, carrots8Copper, beetroot80Copper, gold ingots54Copper and diamonds1000Copper (1Ether). Fish prices remain unchanged. Exact rational fractions, carried account remainder and owning generation inputs retain these anchors; native Mending purchase has an8Gold minimum. Netherite ingot sale is admitted through its exact commodity policy; this does not open arbitrary netherite equipment. Ordinary account/global/family daily caps and artificial ordinary building stock are removed; finite NPC market funding, special disc limits, admission/progression restrictions, native villager stock/restock and bounded atomic delivery remain authoritative. Bulk purchases may fit the player's inventory; a private warehouse is no longer mandatory.
+
+Starter grants remain20Gold with their existing finite funding and one-time receipts; no reserve redistribution or promise of40simultaneously funded starters was approved. The sole newly authorized production issuance is daily happiness income credited to the town treasury through CurrencyCore, with persisted town/day deduplication and supply accounting. It is not a market, wallet or starter emission permission. See the Settlements decision journal for the formula and standalone emerald distinction.
+
+Shipping is a public terminal with one authenticated visitor at a time. Placement ownership still controls breaking. Goods and legacy payouts remain account-bound across session close/restart/full inventories, and automation is denied during a visitor session or incomplete transaction. Sales credit the current seller's ledger; physical withdrawal is explicit. The money tab owns deposit, withdrawal, transfer and icon-to-icon exchange with all five denominations available in each dropdown. Only nonzero denominations appear in amount summaries. Buyer creation/trading and the standalone wallet UI are retired while save compatibility, money data and shared native merchant services remain. Native MerchantScreen, offer counts/NBT/restock and ordinary Xaero controls remain protected.
+
 The later user-approved [building supply and permanent restrictions](market-building-supply.md)
 overrides NPC sale eligibility and public-market admission in the older contract below.
 Native presentation, lifecycle and funded settlement remain unchanged.

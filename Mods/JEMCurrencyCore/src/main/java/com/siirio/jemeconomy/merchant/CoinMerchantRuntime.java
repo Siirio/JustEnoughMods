@@ -14,9 +14,6 @@ public final class CoinMerchantRuntime {
         if (!(event.getEntity() instanceof ServerPlayer player) || !(event.getTarget() instanceof AbstractVillager merchant)
                 || !CurrencyAuthority.merchantActive(player) || event.getHand() != net.minecraft.world.InteractionHand.MAIN_HAND) return;
         // Let the NPC open its real MerchantMenu and preserve its native interaction lifecycle.
-        if (com.siirio.jemcurrency.NativeMerchantTags.isBuyer(merchant) && merchant.getTradingPlayer() == null)
-            BuyerTradeOffers.refresh(merchant, player);
-        else if (!com.siirio.jemcurrency.NativeMerchantTags.isBuyer(merchant) && merchant.getTradingPlayer() == null)
-            ProfessionTradePools.extend(merchant);
+        if (merchant.getTradingPlayer() == null) ProfessionTradePools.extend(merchant);
     }
 }

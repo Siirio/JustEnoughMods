@@ -51,7 +51,6 @@
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/CoinExchangePacket.java",
@@ -96,7 +95,8 @@
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/BossCommands.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java"
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/command/TierCommands.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java"
     ]
   },
   "rationale": {
@@ -211,6 +211,17 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinOperation.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/policy/ItemPolicy.java"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "retire_deleted_source_references",
+      "summary": "Explicit2026-10-21 user retirement: Buyer-only trading and the standalone Wallet UI are removed, not migrated as live mechanics. Shipping now owns public sale/money-tab actions; CurrencyCore retains shared native-merchant/network/ledger ownership. NativeMerchantTags startup hook is retired at JemCurrencyCore. Historical before/after evidence is preserved; current active behavior follows economy.pooled-coins-public-shipping-20261021. Mapping: Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java -> Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java, Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java"
       ]
     }
   ],

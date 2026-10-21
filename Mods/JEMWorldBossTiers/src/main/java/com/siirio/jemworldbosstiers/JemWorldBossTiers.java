@@ -13,6 +13,7 @@ import com.siirio.jemworldbosstiers.progression.WorldTierData;
 import com.siirio.jemworldbosstiers.progression.TierAdvancements;
 import com.siirio.jemworldbosstiers.progression.BossDefeatPolicy;
 import com.siirio.jemworldbosstiers.encounter.EncounterData;
+import com.siirio.jemworldbosstiers.encounter.EncounterProvenance;
 import com.siirio.jemworldbosstiers.command.TierCommands;
 import com.siirio.jemworldbosstiers.command.BossCommands;
 import com.siirio.jemworldbosstiers.event.WorldTierChangedEvent;
@@ -172,6 +173,16 @@ public final class JemWorldBossTiers {
         }
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof LivingEntity living && !eventOwned(living)) {
             boss(living).ifPresent(profile -> EncounterScaler.ensureScaled(living, profile));
+            EncounterData.read(living.getPersistentData()).filter(encounter -> encounter.arenaId() != null)
+                    .filter(encounter -> encounter.provenance() != EncounterProvenance.UNVERIFIED)
+                    .filter(encounter -> !living.getPersistentData().getString("forge:spawn_type").equals("SPAWN_EGG"))
+                    .ifPresent(encounter -> {
+                        WorldTierData identity = WorldTierData.get(living.getServer());
+                        if (!identity.observeLiveBoss(encounter.arenaId(), living))
+                            com.mojang.logging.LogUtils.getLogger().warn("Boss identity conflict: arena={}, saved={}, observed={}, type={}, position={}, loadedFromDisk={}",
+                                    identity.canonicalArenaId(encounter.arenaId()), identity.liveBoss(encounter.arenaId()), living.getUUID(),
+                                    BuiltInRegistries.ENTITY_TYPE.getKey(living.getType()), living.blockPosition(), event.loadedFromDisk());
+                    });
             OrdinaryHostileScaler.apply(living, living.getServer());
         }
     }
@@ -228,6 +239,7 @@ public final class JemWorldBossTiers {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity living)) {
             return;
         }
+        if (living.getPersistentData().getBoolean("JEMQuarantinedDuplicate")) return;
         Entity.RemovalReason reason = living.getRemovalReason();
         if (reason == null || reason == Entity.RemovalReason.UNLOADED_TO_CHUNK || reason == Entity.RemovalReason.CHANGED_DIMENSION) {
             return;
@@ -250,13 +262,18 @@ public final class JemWorldBossTiers {
         }
         EncounterData encounter = EncounterData.read(event.getEntity().getPersistentData()).orElse(null);
         WorldTierData data = WorldTierData.get(level.getServer());
+        if (encounter != null && encounter.arenaId() != null) {
+            if (data.liveBoss(encounter.arenaId()).filter(id -> !id.equals(event.getEntity().getUUID())).isPresent()) return;
+            if (event.getEntity().getPersistentData().getString("forge:spawn_type").equals("SPAWN_EGG")) return;
+            data.clearLiveBoss(encounter.arenaId(), event.getEntity().getUUID());
+        }
         ArenaRecord arena = encounter != null && encounter.arenaId() != null
                 ? data.arena(encounter.arenaId()).orElseGet(() -> ArenaService.findOrRegister(event.getEntity(), profile))
                 : ArenaService.findOrRegister(event.getEntity(), profile);
         ArenaRecord released = (arena.structureArena() ? arena : arena.withRespawnPosition(event.getEntity().blockPosition()))
                 .unlock().release(event.getEntity().getUUID());
         data.putArena(released);
-        bossRespawns.scheduleAfterDeath(
+        if (data.liveBoss(arena.id()).isEmpty()) bossRespawns.scheduleAfterDeath(
                 level,
                 profile,
                 released,

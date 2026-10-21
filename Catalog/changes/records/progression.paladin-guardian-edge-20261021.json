@@ -1,0 +1,141 @@
+{
+  "schema_version": 2,
+  "change_id": "progression.paladin-guardian-edge-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "legendary_monsters:posessed_paladin"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "legendary_monsters:ancient_guardian"
+    },
+    {
+      "type": "id",
+      "registry": "structures",
+      "value": "legendary_monsters:ancient_tower_remains"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1200,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Remove only Ancient Guardian as Paladin prerequisite and correct guardian association to The End.",
+    "modifiers": [
+      {
+        "property": "progression.paladin_ancient_guardian_edge",
+        "operation": "replace",
+        "before": {
+          "paladin_prerequisites": [
+            "ancient_guardian",
+            "bone_stalker",
+            "overgrown_colossus"
+          ],
+          "ancient_guardian_dimension": "minecraft:overworld"
+        },
+        "after": {
+          "paladin_prerequisites": [
+            "bone_stalker",
+            "overgrown_colossus"
+          ],
+          "ancient_guardian_dimension": "minecraft:the_end",
+          "ancient_guardian_structure": "legendary_monsters:ancient_tower_remains",
+          "preserved": "Coppermincer and other edges; guardian entity/structure remain, no synthetic defeat or old-chunk worldgen promise."
+        }
+      },
+      {
+        "property": "packcore.mixin_refmap_packaging",
+        "operation": "replace",
+        "before": {
+          "cause": "Incremental javac could skip annotation processing and leave the Pack Core jar without its generated Mixin refmap.",
+          "impact": "Production mappings unavailable to all affected Pack Core Mixin features."
+        },
+        "after": {
+          "owner": "JEMPackCore JavaCompile/jar production tasks",
+          "mechanism": "Disable incremental Java compilation, declare generated refmap/TSRG outputs and fail jar creation when the refmap is missing.",
+          "semantics": "Preserve existing Mixin feature behavior and registration; correct production artifact packaging only.",
+          "status": "in testing; fresh artifact delivery and runtime acceptance pending"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "PackCore canonical campaigns.json",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+      "Mods/JEMPackCore/src/main/resources/jem_twelve_eyes/campaigns.json",
+      "Docs/events/BOSS_FIGHT.md",
+      "Mods/JEMPackCore/build.gradle",
+      "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
+    "decision_source": "User plan and explicit later overrides on2026-10-21; Docs/plans/2026-10-21-economy-races-settlements-gui.md current override section.",
+    "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
+    "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_user_overrides_source_in_testing",
+    "summary": "Remove only Ancient Guardian as Paladin prerequisite and correct guardian association to The End.",
+    "source_files": [
+      "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+      "Mods/JEMPackCore/src/main/resources/jem_twelve_eyes/campaigns.json",
+      "Docs/events/BOSS_FIGHT.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_user_overrides_source_in_testing",
+      "summary": "Remove only Ancient Guardian as Paladin prerequisite and correct guardian association to The End.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMPackCore/src/main/resources/jem_twelve_eyes/campaigns.json",
+        "Docs/events/BOSS_FIGHT.md"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "repair_packcore_generated_refmap_packaging",
+      "summary": "Incremental javac omitted annotation-processor refmap output; production compile/output declarations and jar guard now require it. No feature/balance redesign or runtime acceptance claim.",
+      "source_files": [
+        "Mods/JEMPackCore/build.gradle",
+        "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "progression",
+      "boss_discovery",
+      "campaign_prerequisites",
+      "structure_dimension"
+    ],
+    "relations": "Exact Paladin/Guardian/tower selectors only; Coppermincer and all unrelated prerequisite edges remain unchanged.",
+    "notes": "Prohibitions on tests/static analysis/gameplay respected. Atlas effective/artifact refresh belongs to parent release workflow after fresh artifacts.",
+    "unresolved": [
+      "Runtime/player acceptance unrun; status in testing.",
+      "Final production artifacts, normal native publication/application and MineRENT deployment pending."
+    ]
+  }
+}

@@ -20,16 +20,23 @@ public final class HomeTravel {
 
     private HomeTravel() { }
 
-    public static int execute(ServerPlayer player) {
-        if (IdentityPolicy.resolve(player).isEmpty()) return fail(player, "jem.home.identity_required");
-        if (!player.isAlive() || player.isSpectator()) return fail(player, "jem.home.unavailable");
+    private static boolean rejected(ServerPlayer player, String key, Object... arguments) { fail(player,key,arguments); return false; }
+    static boolean ready(ServerPlayer player) {
+        if (IdentityPolicy.resolve(player).isEmpty()) return rejected(player, "jem.home.identity_required");
+        if (!player.isAlive() || player.isSpectator()) return rejected(player, "jem.home.unavailable");
         long now = player.server.overworld().getGameTime();
         long damaged = player.getPersistentData().getLong(LAST_DAMAGE);
-        if (damaged > 0 && now - damaged < COMBAT_TICKS) return fail(player, "jem.home.combat", (COMBAT_TICKS - now + damaged + 19L) / 20L);
+        if (damaged > 0 && now - damaged < COMBAT_TICKS) return rejected(player, "jem.home.combat", com.siirio.jemidentity.api.MinecraftDays.format(COMBAT_TICKS - now + damaged));
         long used = player.getPersistentData().getLong(LAST_USE);
-        if (used > 0 && now - used < COOLDOWN_TICKS) return fail(player, "jem.home.cooldown", (COOLDOWN_TICKS - now + used + 19L) / 20L);
+        if (used > 0 && now - used < COOLDOWN_TICKS) return rejected(player, "jem.home.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(COOLDOWN_TICKS - now + used));
         var event = EventSession.forPlayer(player);
-        if (event != null && event.getBoolean("combatStarted")) return fail(player, "jem.home.arena");
+        if (event != null && event.getBoolean("combatStarted")) return rejected(player, "jem.home.arena");
+        return true;
+    }
+    static void used(ServerPlayer player) { player.getPersistentData().putLong(LAST_USE, player.server.overworld().getGameTime()); }
+    public static int execute(ServerPlayer player) { return execute(player, false); }
+    public static int execute(ServerPlayer player, boolean all) {
+        if (!ready(player)) return 0;
         BlockPos respawn = player.getRespawnPosition();
         ServerLevel level = player.server.getLevel(player.getRespawnDimension());
         if (respawn == null || level == null) return fail(player, "jem.home.missing");
@@ -39,6 +46,7 @@ public final class HomeTravel {
                 || state.getBlock() instanceof RespawnAnchorBlock && state.getValue(RespawnAnchorBlock.CHARGE) > 0
                 || player.isRespawnForced();
         if (!valid) return fail(player, "jem.home.invalid");
+        if (all) return HomeTravelGroup.execute(player, level, respawn);
         Vec3 target = DeathHistory.nearestSafe(player, level, respawn, 3);
         if (target == null) return fail(player, "jem.home.unsafe");
         BossTeleportSafety.Decision decision = BossTeleportSafety.validate(player, level, target);
@@ -46,7 +54,7 @@ public final class HomeTravel {
         player.closeContainer();
         player.stopRiding();
         BossTeleportSafety.apply(player, level, target, player.getRespawnAngle(), player.getXRot());
-        player.getPersistentData().putLong(LAST_USE, now);
+        used(player);
         player.sendSystemMessage(Component.translatable("jem.home.arrived"), true);
         return 1;
     }

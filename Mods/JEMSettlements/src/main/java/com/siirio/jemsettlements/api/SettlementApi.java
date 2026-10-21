@@ -146,17 +146,19 @@ public final class SettlementApi {
     public static Result registerResident(ServerPlayer player, Villager villager) {
         if (!SettlementAuthority.active(player) || villager == null || !villager.isAlive()) return Result.INVALID;
         var town = ownedTownNear(player, villager.blockPosition());
+        if (town.isEmpty()) town = ownedTown(player);
         return town.isEmpty() ? Result.INVALID : registerResident(player, town.get().id(), villager);
     }
     public static Result registerResident(ServerPlayer player, UUID townId, Villager villager) {
         if (!SettlementAuthority.active(player) || villager == null || !villager.isAlive() || villager.level() != player.level() || player.distanceToSqr(villager) > 256.0D) return Result.INVALID;
-        var town = ownedTown(player, townId); if (town.isEmpty() || !town.get().contains(villager.blockPosition())) return Result.UNAUTHENTICATED;
-        if (!town.get().dimension().equals(player.serverLevel().dimension().location()) || town.get().center().distSqr(villager.blockPosition()) > 128L * 128L) return Result.INVALID;
+        var town = ownedTown(player, townId); if (town.isEmpty()) return Result.UNAUTHENTICATED;
+        if (!town.get().dimension().equals(player.serverLevel().dimension().location())) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer()); if (data.residentAssigned(villager.getUUID())) return Result.CONFLICT;
         int cap = switch (town.get().tier()) { case CAMP, VILLAGE -> 24; case TOWN -> 48; case CITY, CITADEL -> 96; };
         if (data.residents(town.get().id()).stream().filter(ResidentMood::living).count() >= cap) return Result.CONFLICT;
         var home = villager.getBrain().getMemory(MemoryModuleType.HOME).orElse(null); var work = villager.getBrain().getMemory(MemoryModuleType.JOB_SITE).orElse(null);
         ResidentMood resident = new ResidentMood(villager.getUUID(), town.get().id(), home, work); resident.observeName(villager); resident.markAmenitiesDirty(player.serverLevel().getGameTime()); data.add(resident);
+        com.siirio.jemsettlements.runtime.ResidentTerritoryTravel.enrolled(villager, town.get());
         if (com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()))
             com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.enrollment(player,town.get().id(),villager.getUUID());
         return Result.ACCEPTED;
@@ -220,14 +222,7 @@ public final class SettlementApi {
     }
 
     public static Result setTax(ServerPlayer player, UUID townId, int percent) {
-        var town=ownedTown(player,townId);if(town.isEmpty())return Result.UNAUTHENTICATED;
-        if(percent!=0&&percent!=5&&percent!=10&&percent!=15)return Result.INVALID;
-        // Civic law retains its permission owner when the full civic runtime is active.
-        if(com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()))return Result.UNAVAILABLE;
-        town.get().taxPercent(percent);var data=SettlementSavedData.get(player.getServer());
-        var level=player.getServer().getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,town.get().dimension()));
-        if(level!=null)com.siirio.jemsettlements.happiness.TownMetricsService.recompute(data,town.get(),level);
-        data.changed();return Result.ACCEPTED;
+        return Result.UNAVAILABLE; // Retired action; old packets must never become another action.
     }
 
     public static Result rename(ServerPlayer player, UUID townId, String rawName) {

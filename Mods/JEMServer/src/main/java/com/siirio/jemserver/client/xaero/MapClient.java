@@ -44,6 +44,7 @@ public final class MapClient {
     public static void acceptEvents(List<MapNetwork.EventArea> areas) {
         if (events.equals(areas)) return;
         events = List.copyOf(areas);
+        if (net.minecraftforge.fml.ModList.get().isLoaded("xaerominimap")) com.siirio.jemserver.client.XaeroLandmarks.acceptEvents(events);
         eventLayers = events.stream().map(area -> new Layer(area.dimension(), eventColor(area.activity()), 0,
                 RegionGeometry.union(List.of(new RegionGeometry.Rectangle(
                         area.minX(), area.minZ(), area.maxX() + 1, area.maxZ() + 1))))).toList();

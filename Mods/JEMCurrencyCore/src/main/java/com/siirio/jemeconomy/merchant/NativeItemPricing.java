@@ -37,6 +37,8 @@ public final class NativeItemPricing {
             premium = Math.addExact(premium, Math.multiplyExact(scarcity, Math.multiplyExact((long) level, level)));
         }
         long buy = Math.addExact(policy.buyCopper(), premium);
+        if (EnchantmentHelper.getEnchantments(stack).containsKey(net.minecraft.world.item.enchantment.Enchantments.MENDING))
+            buy = Math.max(800L, buy);
         // Damage, custom names, maps and enchantments do not increase buyback. Original NBT remains on the offer.
         long sell = policy.sellCopper();
         if (stack.isDamaged() && sell > 0) sell = Math.max(1L, sell / 4L);

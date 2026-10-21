@@ -25,7 +25,7 @@ def solve_and_author(capture,policies,native,prices,roots,recipes,apply):
   family[i]=owner;factor[i]=F(units);demand[i]=multi
   raw=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))/units
   desired[owner]=min(desired.get(owner,raw),raw)
-  if i in fixed or p.get('fixed_price'):protected.add(owner)
+  if i in fixed or p.get('fixed_price') or p.get('user_income_anchor'):protected.add(owner)
  nodes=set(roots)|set(family)|set(remainders.values())
  for r in recipes:
   nodes.update(r['outputs'])
@@ -73,11 +73,27 @@ def solve_and_author(capture,policies,native,prices,roots,recipes,apply):
  for i,f in family.items():constraint({findex[f]:desired[f]*factor[i]*demand[i],index[i]:F(-1)})
  matrix=coo_matrix((values,(rows,cols)),shape=(len(b),count)).tocsr()
  prior_path=ROOT/'Docs/economy/shipping-monetary-potential-certificate.json'
+ def input_fingerprint(price_rows):
+  return hashlib.sha256(json.dumps({'roots':{i:str(v) for i,v in sorted(roots.items())},'recipes':recipes,'prices':price_rows},sort_keys=True,default=str).encode()).hexdigest()
+ fingerprint=input_fingerprint(prices)
  prior=read(prior_path) if not apply and prior_path.exists() else {}
  # A previously certified exact assignment is a proposal only: all current
  # recipes, roots and actual stored buy/sell rows are rechecked below.
- if prior and all(i in prior.get('potential',{}) for i in nodes):
-  potential={i:F(prior['potential'][i]) for i in nodes};iteration=0;projection_zero=[]
+ proposal={i:F(prior['potential'][i]) for i in nodes} if all(i in prior.get('potential',{}) for i in nodes) else None
+ def current_witness(candidate):
+  if candidate is None or any(value<0 for value in candidate.values()):return False
+  if any(candidate[i]>cost for i,cost in roots.items()):return False
+  for i in family:
+   row=prices[i];sale=F(row['sell_copper'],row.get('sell_denominator',row.get('sell_units',1)))
+   if sale*demand[i]>candidate[i]:return False
+  for recipe in recipes:
+   available=sum((min(candidate[i]-(candidate.get(remainders.get(i),F(0)) if deduct else F(0)) for i in g)*q for (g,deduct),q in zip(recipe['potentialGroups'],recipe['quantities'])),F(0))
+   if sum((candidate[i]*q for i,q in recipe['outputs'].items()),F(0))>available:return False
+  return True
+ # Price lowering changes the input fingerprint without invalidating a witness.
+ # Exact current inequalities, rather than fingerprint identity, decide reuse.
+ if current_witness(proposal):
+  potential=proposal;iteration=0;projection_zero=[]
   print('Revalidating prior exact assignment against current recipe/root/serialized terms',flush=True)
  else:
   print('Solving monetary potential',len(nodes),'nodes',len(b),'constraints',flush=True)
@@ -153,9 +169,9 @@ def solve_and_author(capture,policies,native,prices,roots,recipes,apply):
    out,outq=next(iter(r['outputs'].items()));g,qty=consumed[0]
    for i in g:
     if i not in remainders:edges[(i,out)].add(qty/outq)
-  for (a,b),ratios in edges.items():
+  for (source,target),ratios in edges.items():
    for ratio in ratios:
-    if 1/ratio in edges.get((b,a),set()):union(a,b,ratio)
+    if 1/ratio in edges.get((target,source),set()):union(source,target,ratio)
   components=defaultdict(list)
   for i in nodes:
    owner,w=find(i);components[owner].append((i,w))
@@ -298,13 +314,19 @@ def solve_and_author(capture,policies,native,prices,roots,recipes,apply):
   # the complete prepared proposal.
   for path,rows in prepared:write(path,rows)
   write(DATA/'item_policies.json',sorted(policies.values(),key=lambda r:r['item']))
+  persisted_prices={}
+  for filename in ['native_item_prices.json','profession_pools.json']:
+   for row in read(DATA/filename):persisted_prices.setdefault(row['item'],row)
+  for row in read(DATA/'item_policies.json'):
+   if row.get('outcome')!='NONE' or row['item'] not in persisted_prices:persisted_prices[row['item']]=row
+  fingerprint=input_fingerprint(persisted_prices)
  report={'status':'EXACT_EXPECTED_RECIPE_POTENTIAL_CERTIFIED','capturedUtc':capture['capturedUtc'],'recipes':len(recipes),'nodes':len(nodes),
   'unitPriceQuantumDenominator':1000000,'maximumSaleRemainderDenominator':100000000,'constraints':len(b),'projectionPasses':iteration+1,'decisions':len(decisions),'applied':apply,
   'proof':'Each consumed ingredient deducts its captured default crafting remainder; retained catalysts consume zero. Each purchase has cost>=potential; each expected recipe output sum<=minimum input sum for every alternative; each maximum-demand sell payout<=potential. Therefore any finite composition of modeled conversions has non-positive expected monetary gain, including coproducts. Funds/quotas/replay are separate runtime gates.',
   'limits':['ACTIVE_USER_ALLOWED_AUTOMATION_EXEMPTION: copper ingot to raw copper mincer remains active with positive byproduct buyback; no no-arbitrage claim covers compositions using that productive circuit.','Expected probabilities, not a guarantee every lucky finite craft loses money.','Only current captured and explicitly modeled recipes; dynamic/NBT/progression and unproven native container remainder handlers remain explicitly excluded.','Default crafting remainders are conservatively returned; GenericItemEmptying exact native caller returns only the explicit single output, with no extra remainder.','No runtime/player/crash acceptance.'],
   'storedResourceBuyAndSellCertified':True,'purchaseRootTerms':root_terms,
   'resourceSha256':{file:hashlib.sha256((DATA/file).read_bytes()).hexdigest() for file in ['item_policies.json','native_item_prices.json','profession_pools.json']},
-  'fixedIncomes':{i:str(desired[family[i]]*factor[i]) for i in family if family[i] in protected},'priceDecisions':decisions,'projectionZeroCauses':projection_zero,
+  'inputFingerprint':fingerprint,'fixedIncomes':{i:str(desired[family[i]]*factor[i]) for i in family if family[i] in protected},'priceDecisions':decisions,'projectionZeroCauses':projection_zero,
   'potential':{i:str(value) for i,value in potential.items()},'recipeCertificates':certificates}
  write(ROOT/'Docs/economy/shipping-monetary-potential-certificate.json',report)
  return {k:v for k,v in report.items() if k not in ['potential','recipeCertificates','priceDecisions']}

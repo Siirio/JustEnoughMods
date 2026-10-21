@@ -245,7 +245,7 @@ public final class SmpViews {
         boolean closed = SmpData.closed(row);
         if (table.equals("profiles")) {
             if (owner) {
-                add(result, "wallet", "death_history", "settlements", "roles");
+                add(result, "death_history", "settlements", "roles");
                 if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) add(result, "professions");
             } else add(result, "message", "tpa", "invite", "view_shops", "settlements");
             return result;

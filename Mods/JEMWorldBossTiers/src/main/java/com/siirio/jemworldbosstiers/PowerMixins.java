@@ -16,7 +16,8 @@ public final class PowerMixins implements IMixinConfigPlugin {
                     && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("irons_spellbooks")
                     && mod.getVersion().toString().equals("1.20.1-3.15.6"));
         }
-        if (mixin.endsWith(".CombatProbeMixin") || mixin.endsWith(".ProgressionGuardMixin"))
+        if (mixin.endsWith(".CombatProbeMixin") || mixin.endsWith(".ProgressionGuardMixin")
+                || mixin.endsWith(".ServerLevelEntityManagerAccessor"))
             return FMLLoader.getDist().isDedicatedServer();
         return true;
     }

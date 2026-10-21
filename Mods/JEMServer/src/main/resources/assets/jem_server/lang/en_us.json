@@ -1,8 +1,8 @@
 {
   "jem.home.identity_required": "Log in before using /home.",
   "jem.home.unavailable": "/home is unavailable in the current player state.",
-  "jem.home.combat": "You were recently hurt. /home unlocks in %s seconds.",
-  "jem.home.cooldown": "/home is ready in %s seconds.",
+  "jem.home.combat": "After damage, /home is ready in %s Minecraft days.",
+  "jem.home.cooldown": "/home ready in %s Minecraft days.",
   "jem.home.arena": "/home cannot cross an active encounter boundary.",
   "jem.home.missing": "No loaded vanilla respawn point is available.",
   "jem.home.invalid": "Your saved bed or respawn anchor is no longer valid.",
@@ -619,7 +619,7 @@
   "jem.deaths.empty": "No recorded deaths",
   "jem.deaths.return_hint": "Click to return",
   "jem.deaths.just_now": "Just now",
-  "jem.deaths.days_ago": "%s days ago",
+  "jem.deaths.days_ago": "%s Minecraft days ago",
   "jem.deaths.minutes_ago": "%s minutes ago",
   "jem.deaths.error.expired": "This death is no longer in your history.",
   "jem.deaths.error.dimension": "That dimension is unavailable.",
@@ -732,5 +732,10 @@
   "jem.smp.settlement.action.already_owned": "That settlement is already yours.",
   "jem.smp.settlement.payroll_label": "Weekly wages",
   "jem.smp.settlement.unpaid_label": "Unpaid wages",
-  "jem.smp.settlement.expansion_price": "Per added block"
+  "jem.smp.settlement.expansion_price": "Per added block",
+  "jem.home.group_too_large": "Too many nearby entities for one operation.",
+  "jem.home.group_unavailable": "A group member cannot travel: ownership, combat or dimension.",
+  "jem.home.group_rolled_back": "Transfer rejected; group restored to original positions.",
+  "jem.home.group_recovery_required": "Transfer failed. Administrator recovery required; see server log.",
+  "jem.starter.storage_unavailable": "Starter kit delivery could not be saved. Please reconnect; your remaining items are retained."
 }

@@ -98,7 +98,7 @@ public final class SmpActions {
             }
             case WALLET -> {
                 SmpRecords.require(table.equals("profiles") && row.getUUID("owner").equals(player.getUUID()), "private");
-                com.siirio.jemeconomy.network.EconomyNetwork.sendStatus(player, true);
+                SmpRecords.require(false, "unknown_action");
             }
             case DEATH_HISTORY -> {
                 SmpRecords.require(table.equals("profiles") && row.getUUID("owner").equals(player.getUUID()), "private");

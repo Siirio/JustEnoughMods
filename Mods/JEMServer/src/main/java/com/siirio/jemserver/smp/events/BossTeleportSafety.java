@@ -10,8 +10,7 @@ public final class BossTeleportSafety {
 
     public static Decision validate(ServerPlayer player, ServerLevel level, Vec3 requested) {
         if (APPLYING.get() || player.hasPermissions(2)) return Decision.allow(requested);
-        Decision decision = StructureStaging.safeTeleport(player, level, requested);
-        return decision.matched() ? decision : BloodMoonSolidBoundary.validateTeleport(player, level, requested);
+        return BloodMoonSolidBoundary.validateTeleport(player, level, requested);
     }
 
     public static Decision validate(Entity entity, ServerLevel level, Vec3 requested) {

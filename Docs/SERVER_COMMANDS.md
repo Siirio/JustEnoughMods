@@ -1,5 +1,11 @@
 # Server terminal commands
 
+## Current player routes —2026-10-21, source in testing
+
+`/smp` remains the GUI entry. `/death` opens the player's own latest three saved death locations; the selected bounded UUID is revalidated before safe teleport. `/home` uses the caller's existing personal respawn point. `/home all` additionally considers eligible living entities within1block and the ridden root vehicle/passenger tree, with bounded whole-group clearance around the same destination. No `/spawn` alias or second home store is introduced. Identity, combat, cooldown, ownership and active-event gates remain server-owned. A native transfer failure attempts each entity restoration independently; incomplete rollback reports recovery required rather than success.
+
+Wallet actions move to Shipping's money tab; the older “Wallet” navigation description below is historical. Hitting a dormant registered boss opens the existing Start GUI, without a command or automatic combat start. Native Xaero actions for official boss/event markers send IDs only; player-created personal/home/death points receive no JEM teleport route. Artifact installation, MineRENT deployment and runtime acceptance remain pending for this update.
+
 Команды без `/` вводятся в server console; в игре используется `/`.
 
 ## SMP and events
@@ -13,6 +19,17 @@
 Все три управляющие операции требуют permission 2. Старые `smp event ...`, `smp boss ...`, `smp arena ...`, `smp event-open`, `smp event-return`, `smp vote`, `smp forfeit` и `smp encounter-leave` больше не регистрируются.
 
 Boss «Открыть бой» chat actions use typed GUI prompt requests, without a public command. Updated clients consume reserved `/jem-ui arena|boss <uuid>` click markers and old `/smp arena|boss <uuid>` scrollback links. Markers are not commands to type or register. Server authentication, throttle, proximity/progression and availability remain canonical; opening the screen does not start combat.
+
+## Boss identity audit —2026-10-21, source in testing
+
+All routes below require OP2 on the physically dedicated server; they are not executed by preparing these sources.
+
+- `jem boss-audit list [page]` — bounded loaded-only identities and unresolved registry claims; no chunk loading or absence inference.
+- `jem boss-audit plan <keeperUUID> <duplicateUUID>` — read-only explicit repair plan for the same validated canonical arena.
+- `jem boss-audit confirm <token> <keeperUUID> <duplicateUUID>` — actor-bound, one-use confirmation within0.05Minecraft-day. Preserve full duplicate NBT with synchronous exact readback; durably retain/transfer the keeper claim before marked discard. Refuse independent structures and active/ambiguous identities.
+- `jem boss-audit archive <duplicateUUID>` — inspect preserved quarantine metadata; no automatic restore/spawn.
+
+Exact evidence, exclusions and lifecycle ownership live only in [Boss Fight](events/BOSS_FIGHT.md#duplicate-boss-investigation-and-source-repair-2026-10-21). Isolated-copy checks and production repairs/deployment remain separate execution steps.
 
 ## World tier
 

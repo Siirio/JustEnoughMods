@@ -1,12 +1,12 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-20T19:02:40.934295+00:00` for `4a4bc5621a4c059aeca46ad6c1f4719178d16b31`.
+Generated from Atlas schema 1 at `2026-10-21T07:33:49.996257+00:00` for `25db5ec536a2909505505b81b61db79a9c4ed77e`.
 
 Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| alexscaves | 610 | 127 | 483 | 0 | 483 |
+| alexscaves | 610 | 129 | 481 | 0 | 481 |
 | alexsmobs | 321 | 23 | 298 | 2 | 298 |
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
 | aquamirae | 88 | 15 | 73 | 1 | 73 |
@@ -15,14 +15,14 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | bakery | 84 | 35 | 49 | 0 | 49 |
 | barnyardbuddies | 59 | 1 | 58 | 0 | 58 |
 | bbb | 263 | 3 | 260 | 0 | 260 |
-| beachparty | 86 | 22 | 64 | 4 | 64 |
+| beachparty | 86 | 23 | 63 | 4 | 63 |
 | bellsandwhistles | 38 | 0 | 38 | 0 | 38 |
-| blastfromthepast | 133 | 10 | 123 | 0 | 123 |
+| blastfromthepast | 133 | 11 | 122 | 0 | 122 |
 | block_factorys_bosses | 137 | 1 | 136 | 0 | 136 |
 | blueprint | 1 | 0 | 1 | 0 | 1 |
 | brewery | 72 | 31 | 41 | 6 | 41 |
 | casualswing | 32 | 0 | 32 | 0 | 32 |
-| cataclysm | 386 | 17 | 369 | 0 | 369 |
+| cataclysm | 386 | 18 | 368 | 0 | 368 |
 | chimes | 7 | 0 | 7 | 0 | 7 |
 | citadel | 5 | 0 | 5 | 0 | 5 |
 | cnc | 103 | 14 | 89 | 5 | 89 |
@@ -52,7 +52,7 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | golemoverhaul | 13 | 0 | 13 | 0 | 13 |
 | gravestone | 2 | 0 | 2 | 0 | 2 |
 | guardvillagers | 4 | 0 | 4 | 0 | 4 |
-| handcrafted | 285 | 52 | 233 | 0 | 233 |
+| handcrafted | 285 | 63 | 222 | 0 | 222 |
 | herbalbrews | 48 | 19 | 29 | 9 | 29 |
 | immersive_aircraft | 40 | 0 | 40 | 0 | 40 |
 | immersive_melodies | 22 | 0 | 22 | 0 | 22 |
@@ -81,20 +81,20 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 14 | 169 | 0 | 169 |
 | luminous_nether | 205 | 8 | 197 | 0 | 197 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1702 | 315 | 1387 | 82 | 1390 |
+| minecraft | 1702 | 327 | 1375 | 82 | 1378 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
 | moonlight | 1 | 0 | 1 | 0 | 1 |
 | moretotems | 7 | 0 | 7 | 0 | 7 |
 | natures_spirit | 717 | 189 | 528 | 58 | 528 |
 | naturescompass | 32 | 0 | 32 | 0 | 32 |
-| netherexp | 394 | 14 | 380 | 0 | 380 |
+| netherexp | 394 | 16 | 378 | 0 | 378 |
 | oceanicrealms | 43 | 9 | 34 | 4 | 34 |
 | paraglider | 14 | 0 | 14 | 0 | 14 |
 | patchouli | 13 | 0 | 13 | 0 | 13 |
 | primal | 104 | 13 | 91 | 4 | 91 |
 | railways | 1928 | 288 | 1640 | 0 | 1640 |
 | recruits | 14 | 0 | 14 | 0 | 14 |
-| ribbits | 21 | 2 | 19 | 0 | 19 |
+| ribbits | 21 | 3 | 18 | 0 | 18 |
 | rottencreatures | 30 | 2 | 28 | 0 | 28 |
 | secretdoors | 158 | 0 | 158 | 0 | 158 |
 | sereneseasons | 22 | 0 | 22 | 0 | 22 |
@@ -104,9 +104,9 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | skarrier_mobs | 294 | 6 | 288 | 2 | 288 |
 | smallships | 66 | 0 | 66 | 0 | 66 |
 | snowyspirit | 73 | 6 | 67 | 2 | 67 |
-| somemoreblocks | 663 | 271 | 392 | 0 | 392 |
+| somemoreblocks | 663 | 281 | 382 | 0 | 382 |
 | sootychimneys | 14 | 0 | 14 | 0 | 14 |
-| spawn | 311 | 40 | 271 | 3 | 271 |
+| spawn | 311 | 42 | 269 | 3 | 269 |
 | spider_overhaul | 20 | 2 | 18 | 0 | 18 |
 | spudaciousshops | 229 | 0 | 229 | 0 | 229 |
 | tide | 446 | 108 | 338 | 25 | 338 |
@@ -116,6 +116,6 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | trotting_wagons | 5 | 0 | 5 | 0 | 5 |
 | unearthed_journey | 413 | 22 | 391 | 5 | 391 |
 | vanillabackport | 96 | 0 | 96 | 0 | 96 |
-| vinery | 171 | 59 | 112 | 23 | 112 |
+| vinery | 171 | 60 | 111 | 23 | 111 |
 | whaleborne | 10 | 1 | 9 | 0 | 9 |
 | xtraarrows | 104 | 0 | 104 | 0 | 104 |

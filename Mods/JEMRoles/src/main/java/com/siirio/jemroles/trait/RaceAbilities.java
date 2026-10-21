@@ -489,7 +489,7 @@ public final class RaceAbilities {
     }
 
     private static void cooldown(ServerPlayer player, long ticks) {
-        player.sendSystemMessage(Component.translatable("jem.roles.cooldown", Math.max(1L, (ticks + 19) / 20)), true);
+        player.sendSystemMessage(Component.translatable("jem.roles.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(ticks)), true);
     }
 
     private static void fail(ServerPlayer player, String reason) {

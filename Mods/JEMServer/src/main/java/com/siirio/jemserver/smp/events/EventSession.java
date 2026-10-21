@@ -48,4 +48,17 @@ public record EventSession(CompoundTag data) {
             if(row.getString("activity").equals("BLOOD_MOON") && row.getString("state").equals("ACTIVE") && new EventSession(row).accepted(player.getUUID())) return row;
         return null;
     }
+
+    public static CompoundTag combatForPlayer(ServerPlayer player) {
+        CompoundTag bloodMoon = forPlayer(player);
+        if (bloodMoon != null) return bloodMoon;
+        if (!SmpEnvironment.active(player)) return null;
+        var raid = EventScheduler.active(player.server, "BOSS_RAID");
+        if (raid == null || !raid.getBoolean("combatStarted") || !new EventSession(raid).accepted(player.getUUID())) return null;
+        var level = EventRegions.level(player.server, raid);
+        if (level == null || !raid.hasUUID("bossEntity")
+                || !(level.getEntity(raid.getUUID("bossEntity")) instanceof net.minecraft.world.entity.LivingEntity boss)) return null;
+        return com.siirio.jemworldbosstiers.api.HostedEncounterApi.status(boss).stream()
+                .anyMatch(member -> member.playerId().equals(player.getUUID()) && member.state().equals("ALIVE")) ? raid : null;
+    }
 }

@@ -63,7 +63,7 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     }
     public UUID id() { return id; } public UUID owner() { return owner; } public String name() { return name; } public ResourceLocation dimension() { return dimension; }
     public BlockPos center() { return center; } public Set<UUID> members() { return Set.copyOf(members); } public List<StorageLink> storage() { return List.copyOf(storage); }
-    public int happiness() { return happiness; } public int taxPercent() { return taxPercent; } public long lastHappinessDay() { return lastHappinessDay; }
+    public int happiness() { return happiness; } public int taxPercent() { return com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? 0 : taxPercent; } public long lastHappinessDay() { return lastHappinessDay; }
     public long payrollEpoch() { return payrollEpoch; } public long nextPayrollGameTime() { return nextPayrollGameTime; } public long nextPayrollIndex() { return nextPayrollIndex; }
     public int consecutiveMissedPayrolls() { return com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? consecutiveMissedPayrolls : emeraldMissedPayrolls; } public List<PayrollPeriod> payroll() { return List.copyOf(payroll); }
     public SettlementSimulationState simulation() { return simulation; } public TownTier tier() { return tier; }

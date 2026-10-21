@@ -56,16 +56,27 @@ public abstract class SettlementMapScreenMixin {
         callback.setReturnValue(true);
     }
 
+    @Inject(method = "m_7979_", at = @At("HEAD"), cancellable = true)
+    private void jem$drag(double x,double y,int button,double dx,double dy,CallbackInfoReturnable<Boolean> callback) {
+        if (button==0 && SettlementMapClient.dragging()) {
+            if(lastViewedDimensionId!=null)SettlementMapClient.update(lastViewedDimensionId.location(),mouseBlockPosX,mouseBlockPosZ);
+            callback.setReturnValue(true);
+        }
+    }
+
     @Inject(method = "getRightClickOptions", at = @At("RETURN"))
     private void jem$expand(CallbackInfoReturnable<ArrayList<RightClickOption>> callback) {
         if (rightClickDim == null) return;
         var draft = SettlementMapClient.pending(rightClickDim.location());
-        if (draft == null) return;
+        if (draft == null) {
+            var owned=SettlementMapClient.ownedAt(rightClickDim.location(),mouseBlockPosX,mouseBlockPosZ);
+            if(owned!=null) callback.getReturnValue().add(new RightClickOption("gui.jem_settlements.expand_mode", callback.getReturnValue().size(), (GuiMap)(Object)this) {
+                @Override public void onAction(Screen screen) { SettlementMapClient.enter(owned); }
+            });
+            return;
+        }
         var options = callback.getReturnValue();
-        options.add(new RightClickOption("gui.jem_settlements.settlement_claim", options.size(), (GuiMap) (Object) this) {
-            @Override public void onAction(Screen screen) {
-                SettlementMapClient.confirm(draft);
-            }
-        }.setNameFormatArgs(SettlementMapClient.price(draft)));
+        options.clear();
+        options.add(new com.siirio.jemsettlements.compat.xaero.SettlementExpansionOption(draft,(GuiMap)(Object)this));
     }
 }

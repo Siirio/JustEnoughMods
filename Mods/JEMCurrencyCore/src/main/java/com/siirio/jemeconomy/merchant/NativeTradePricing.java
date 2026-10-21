@@ -23,14 +23,13 @@ public final class NativeTradePricing {
         ItemStack stack = slot == 0 ? offer.getCostA() : offer.getCostB();
         return stack.is(Items.EMERALD) ? ItemStack.EMPTY : stack;
     }
-    public static NativeTradeQuote quote(ServerPlayer player, MerchantOffer offer, int index, boolean buyer) {
+    public static NativeTradeQuote quote(ServerPlayer player, MerchantOffer offer, int index) {
         if (com.siirio.jemeconomy.policy.TradeRestrictions.offerProhibited(offer)) return row(index, UNPRICED, 0, false, "prohibited");
-        if (buyer && com.siirio.jemeconomy.policy.TradeRestrictions.saleProhibited(offer.getCostA())) return row(index, UNPRICED, 0, false, "prohibited");
         if (IdentityPolicy.resolve(player).isEmpty()) return row(index, UNPRICED, 0, false, "identity");
         if (!monetary(offer)) return row(index, ITEM_BARTER, 0, !offer.isOutOfStock(), offer.isOutOfStock() ? "stock" : "ok");
         try {
             if (offer.getResult().is(Items.EMERALD) && !offer.getCostA().is(Items.EMERALD) && !offer.getCostB().is(Items.EMERALD)) {
-                var policy = (buyer ? ItemPolicyRegistry.policy(offer.getCostA()) : NativeItemPricing.policy(offer.getCostA())).filter(p -> p.sellable());
+                var policy = NativeItemPricing.policy(offer.getCostA()).filter(p -> p.sellable());
                 if (policy.isEmpty()) return row(index, UNPRICED, 0, false, "unpriced");
                 var market = MarketSavedData.get(player.getServer());
                 var demand = market.demand(player.getServer());
@@ -38,8 +37,6 @@ public final class NativeTradePricing {
                 var raw = NativeItemPricing.salePrice(offer.getCostA(),offer.getCostA().getCount(),market.multiplier(player.getServer(),p.demandGroup()));
                 var saleQuote = EconomySavedData.get(player.getServer()).quoteSale(IdentityPolicy.resolve(player).orElseThrow().accountId(),raw.numerator(),raw.denominator());
                 long copper = saleQuote.payout();
-                if (buyer && !p.disc() && !p.demandGroup().equals(demand.primary()) && !p.demandGroup().equals(demand.secondary()))
-                    return row(index, PLAYER_SELLS, copper, false, "demand");
                 var principal = IdentityPolicy.resolve(player).orElseThrow();
                 var allowance = market.allowanceExactTrade(player.getServer(), principal.accountId(), p, offer.getCostA().getCount(), copper);
                 String reason = offer.isOutOfStock() ? "stock" : EconomySavedData.get(player.getServer()).frozen() ? "unavailable"
@@ -65,6 +62,8 @@ public final class NativeTradePricing {
                 var event = new CoinTradePriceEvent(player, adjusted);
                 MinecraftForge.EVENT_BUS.post(event);
                 long copper = NativePriceMath.afterDiscount(floor, event.price().ceil());
+                if (net.minecraft.world.item.enchantment.EnchantmentHelper.getEnchantments(offer.getResult()).containsKey(net.minecraft.world.item.enchantment.Enchantments.MENDING))
+                    copper = Math.max(copper, Math.multiplyExact(800L, offer.getResult().getCount()));
                 long funds = Math.addExact(EconomyApi.balance(player), EconomyApi.heldCash(player).value());
                 String reason = offer.isOutOfStock() ? "stock" : EconomySavedData.get(player.getServer()).frozen() ? "unavailable"
                         : funds < copper ? "funds" : "ok";

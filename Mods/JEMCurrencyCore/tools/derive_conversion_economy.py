@@ -219,7 +219,7 @@ def main():
    family[i]=owner;factors[i]=F(units);multipliers[i]=F(1) if p.get('fixed_price') or not canonical_active(i) else F(3,2)
    current=F(p['sell_copper'],p.get('sell_denominator',p.get('sell_units',1)))/units
    base[owner]=min(base.get(owner,current),current)
-   if i in fixed or p.get('fixed_price'):protected.add(owner)
+   if i in fixed or p.get('fixed_price') or p.get('user_income_anchor'):protected.add(owner)
   margin=F(9,10)
   for i,cost in costs.items():
    if i not in family or family[i] in protected:continue

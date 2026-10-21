@@ -24,7 +24,10 @@ public final class ShippingBoxRenderer implements BlockEntityRenderer<ShippingBo
     private final List<Display> displays;
 
     public ShippingBoxRenderer(BlockEntityRendererProvider.Context context) {
-        renderer = context.getItemRenderer();
+        this(context.getItemRenderer());
+    }
+    public ShippingBoxRenderer(net.minecraft.client.renderer.entity.ItemRenderer itemRenderer) {
+        renderer = itemRenderer;
         List<Display> values = new ArrayList<>();
         try (var stream = ShippingBoxRenderer.class.getResourceAsStream("/assets/jem_economy/models/block/shipping_goods.json")) {
             if (stream == null) throw new IllegalStateException("Missing approved shipping display anchors");

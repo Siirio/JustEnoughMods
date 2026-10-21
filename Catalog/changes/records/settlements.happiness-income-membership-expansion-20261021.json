@@ -1,0 +1,159 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.happiness-income-membership-expansion-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1200,
+    "overrides": [
+      "settlements.happiness-comfort-daily-tax",
+      "settlements.configured-territory-and-pointer-lifecycle"
+    ]
+  },
+  "change": {
+    "summary": "settlements happiness income membership expansion 20261021",
+    "modifiers": [
+      {
+        "property": "settlements.coin_income_membership_expansion",
+        "operation": "replace",
+        "before": "Selectable Coin tax rates, satiety/rate/comfort multipliers and finite OPERATIONS payout; prior expansion gesture.",
+        "after": {
+          "coin_income": "40 Copper * canonical personal H/100 per resident per Minecraft-day, integrated active resident time, rational carry.",
+          "funding": "User explicitly authorizes issuance into town treasury only; CurrencyCore persists town/day deduplication and supply counter. No finite-fund proportional payout or starter reserve redistribution.",
+          "standalone_emerald": "Existing separate formula/currency preserved.",
+          "membership": "Reject overlapping/foreign founding/bells and already assigned residents; free new resident navigates home, then territory constrains native routing. No silent teleport or false arrival.",
+          "xaero": "Explicit owner expansion mode; one wide two-line native confirmation, nonzero Coin icons, no separator; server owner/dimension/overlap/price/payment revalidation.",
+          "ui": "Retain current SMP design; remove Coin tax-rate controls, preserve established happiness factors and Workers exclusion."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "settlements.happiness-income-membership-expansion-20261021",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementExpansionOption.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMenuAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/ResidentNavigationMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementDropdownMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementRightClickMenuMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentTerritoryTravel.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Docs/settlements/standalone/README.md",
+      "Docs/settlements/DESIGN_JOURNAL.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
+    "decision_source": "User plan and explicit later overrides on2026-10-21; Docs/plans/2026-10-21-economy-races-settlements-gui.md current override section.",
+    "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
+    "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_user_overrides_source_in_testing",
+    "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementExpansionOption.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMenuAccess.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/ResidentNavigationMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementDropdownMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementRightClickMenuMixin.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentTerritoryTravel.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+      "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+      "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+      "Docs/settlements/standalone/README.md",
+      "Docs/settlements/DESIGN_JOURNAL.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_user_overrides_source_in_testing",
+      "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementExpansionOption.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMenuAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/ResidentNavigationMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementDropdownMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementRightClickMenuMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentTerritoryTravel.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Docs/settlements/standalone/README.md",
+        "Docs/settlements/DESIGN_JOURNAL.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements",
+      "resident_mood",
+      "treasury",
+      "money_supply",
+      "villager_navigation",
+      "xaero_optional",
+      "native_trade"
+    ],
+    "relations": "Owning modules remain single authorities; adapters translate server-authoritative identities/state. Source paths include the complete current task diff for this domain; unrelated VFX/registry-coverage.csv excluded.",
+    "notes": "Prohibitions on tests/static analysis/gameplay respected. Atlas effective/artifact refresh belongs to parent release workflow after fresh artifacts.",
+    "unresolved": [
+      "Runtime/player acceptance unrun; status in testing.",
+      "Final production artifacts, normal native publication/application and MineRENT deployment pending."
+    ]
+  }
+}

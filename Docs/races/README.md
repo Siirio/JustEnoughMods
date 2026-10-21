@@ -1,5 +1,11 @@
 # JEM Races
 
+## Innate spells, guardian and Jade —2026-10-21
+
+Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.
+
+The source cause of the Sculk rejection is the inherited school-learning requirement on an innate racial spell. `RacialSpell.requiresLearning()` now exempts registered innate racial spells while race ownership, server authority and native cast/ability checks still apply; other Eldritch spells are unchanged. Guardian cooldown becomes0.05Minecraft-day, including a one-time clamp of a larger saved legacy remainder. The guardian follows the owner's actual eligible attacker, including a hostile player allowed by PvP/alliance checks, instead of always replacing it with the nearest Enemy. Invalid/dead/out-of-dimension targets and safe spectators remain ineligible. A Roles-owned Jade provider synchronizes only the current race ID and localizes it client-side; no second race record or private progress is exposed. Existing race panels and VFX remain outside this update's visual scope.
+
 ## Daily reselection and first-login lifecycle —2026-10-20 source handoff
 
 The user requests a stable first choice after authentication, ordinary reselection once per Minecraft-day and unrestricted reselection only in the isolated test profile. JEMRoles RaceSavedData remains the sole production account record. RaceRecord schema5 adds ReselectReadyAt, TestChoiceEpoch and ChoiceRequired while retaining the existing record/Mechanics fields. RaceService uses authoritative overworld gameTime for the1Minecraft-day wait. A successful ordinary change starts the next wait; same-race selection returns unchanged. Legacy records lacking the new deadline are ready for their first change without losing their selected race or progress. The old JVM race-reselect flag is no longer an authority.

@@ -2,7 +2,6 @@ package com.siirio.jemeconomy.merchant;
 
 import com.siirio.jemeconomy.api.CoinTradeContext;
 import com.siirio.jemeconomy.api.EconomyApi;
-import com.siirio.jemcurrency.NativeMerchantTags;
 import com.siirio.jemeconomy.market.MarketSavedData;
 import com.siirio.jemeconomy.network.EconomyNetwork;
 import com.siirio.jemeconomy.network.NativeTradePacket;
@@ -29,11 +28,8 @@ public final class NativeTradeSession {
     private final MerchantContainer inputs;
     private final AbstractVillager merchant;
     private final ServerPlayer player;
-    private final boolean buyer;
-    private final boolean preview;
     private final UUID sessionId = UUID.randomUUID();
     private long sequence;
-    private long buyerCycle;
     private int selected;
     private boolean closed;
     private boolean refreshing;
@@ -48,9 +44,6 @@ public final class NativeTradeSession {
 
     public NativeTradeSession(MerchantMenu menu, MerchantContainer inputs, AbstractVillager merchant, ServerPlayer player) {
         this.menu = menu; this.inputs = inputs; this.merchant = merchant; this.player = player;
-        buyer = NativeMerchantTags.isBuyer(merchant);
-        preview = NativeMerchantTags.isPreview(merchant);
-        buyerCycle = buyer ? MarketSavedData.get(player.getServer()).cycle(player.getServer()) : 0L;
     }
     public void keepNativeResult(Slot nativeResult, Slot guardedResult) {
         this.nativeResult = nativeResult; this.guardedResult = guardedResult;
@@ -59,7 +52,7 @@ public final class NativeTradeSession {
     }
     public boolean valid() {
         return !closed && CurrencyAuthority.merchantActive(player) && player.isAlive() && merchant.isAlive()
-                && merchant.getTradingPlayer() == player && (preview || player.distanceToSqr(merchant) < 64.0D);
+                && merchant.getTradingPlayer() == player && player.distanceToSqr(merchant) < 64.0D;
     }
     public boolean select(int index) {
         if (index < 0 || index >= merchant.getOffers().size()) return false;
@@ -71,7 +64,7 @@ public final class NativeTradeSession {
     private NativeTradeQuote quote() {
         var offer = offer();
         return offer == null ? new NativeTradeQuote(selected, NativeTradeQuote.Direction.UNPRICED, 0, false, "jem.economy.trade.stock")
-                : NativeTradePricing.quote(player, offer, selected, buyer);
+                : NativeTradePricing.quote(player, offer, selected);
     }
     public boolean nativeBarter() { return offer() != null && !com.siirio.jemeconomy.policy.TradeRestrictions.offerProhibited(offer()) && !NativeTradePricing.monetary(offer()) && IdentityPolicy.resolve(player).isPresent(); }
     public boolean updateResult() {
@@ -86,7 +79,7 @@ public final class NativeTradeSession {
             return true;
         }
         var offer = offer(); var quote = quote();
-        boolean ready = !preview && offer != null && quote.available() && matchesInputs(offer);
+        boolean ready = offer != null && quote.available() && matchesInputs(offer);
         ItemStack result = ready ? quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS
                 ? payoutPreview(quote.copper()) : offer.getResult().copy() : ItemStack.EMPTY;
         if (ready && quote.direction() == NativeTradeQuote.Direction.PLAYER_SELLS)
@@ -153,25 +146,18 @@ public final class NativeTradeSession {
         refreshing = true;
         lastRefreshTick = player.tickCount;
         try {
-            if (buyer) {
-                long cycle = MarketSavedData.get(player.getServer()).cycle(player.getServer());
-                if (cycle != buyerCycle) {
-                    buyerCycle = cycle; BuyerTradeOffers.refresh(merchant, player); selected = 0;
-                    inputs.setSelectionHint(0); syncNativeOffers(); status = "jem.economy.trade.demand_changed";
-                }
-            }
-            if (!buyer) ProfessionTradePools.extend(merchant);
+            ProfessionTradePools.extend(merchant);
             selected = Math.max(0, Math.min(selected, Math.max(0, merchant.getOffers().size() - 1)));
             updateResult();
             List<NativeTradeQuote> rows = new ArrayList<>();
             var offers = merchant.getOffers();
             var terms = offers.stream().map(MerchantOffer::createTag).toList();
             for (int i = 0; i < offers.size(); i++) {
-                var quote = NativeTradePricing.quote(player, offers.get(i), i, buyer);
-                rows.add(preview ? new NativeTradeQuote(i, quote.direction(), quote.copper(), false, "jem.economy.trade.preview") : quote);
+                var quote = NativeTradePricing.quote(player, offers.get(i), i);
+                rows.add(quote);
             }
             var bulletin = EconomyApi.marketBulletin(player);
-            var snapshot = new NativeTradePacket(menu.containerId, preview ? -1 : merchant.getId(), selected, revision, List.copyOf(rows),
+            var snapshot = new NativeTradePacket(menu.containerId, merchant.getId(), selected, revision, List.copyOf(rows),
                     EconomyApi.balance(player), bulletin.accountRemaining(), bulletin.ticksUntilUpdate(), status);
             if (!snapshot.equals(lastSnapshot) || !terms.equals(lastTerms)) {
                 if (!terms.equals(lastTerms) && player.containerMenu == menu) syncNativeOffers();
@@ -200,7 +186,6 @@ public final class NativeTradeSession {
     }
     public void rejectUnquotedTake() { lastSnapshot = null; refresh(); }
     private void take(int button, ClickType type, NativeTradeQuote acknowledged) {
-        if (preview) { status = "jem.economy.trade.preview"; lastSnapshot = null; refresh(); return; }
         if (!valid() || player.containerMenu != menu || IdentityPolicy.resolve(player).isEmpty()) { status = "jem.economy.trade.identity"; return; }
         if (type != ClickType.PICKUP && type != ClickType.QUICK_MOVE && type != ClickType.SWAP && type != ClickType.THROW) return;
         if ((type == ClickType.PICKUP || type == ClickType.THROW || type == ClickType.QUICK_MOVE) && (button < 0 || button > 1)) return;

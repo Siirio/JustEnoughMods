@@ -27,10 +27,11 @@ public final class DeathHistory {
     private DeathHistory() {}
 
     public static void open(ServerPlayer player) {
+        if (com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isEmpty() || !player.server.isDedicatedServer()) return;
         var history = ServerData.get(player.server).deaths(player.getUUID());
         VanillaMenus.chest(player, JemServer.MOD_ID, "deaths", Component.translatable("jem.deaths.title"), menu -> {
             if (history.isEmpty()) menu.button(22, VanillaMenus.icon(Items.CLOCK, Component.translatable("jem.deaths.empty")), null);
-            for (int index = 0; index < history.size(); index++) {
+            for (int index = 0; index < Math.min(3, history.size()); index++) {
                 var death = history.get(index);
                 menu.button(FIRST_SLOT + index * SLOT_SPACING, VanillaMenus.icon(Items.RECOVERY_COMPASS, age(death.timestamp()),
                         Component.literal(death.dimension().toString()), Component.literal("X: " + (int) Math.floor(death.x())), Component.literal("Y: " + (int) Math.floor(death.y())), Component.literal("Z: " + (int) Math.floor(death.z())),
@@ -40,15 +41,14 @@ public final class DeathHistory {
     }
 
     private static Component age(long timestamp) {
-        long minutes = Math.max(0, (System.currentTimeMillis() - timestamp) / MINUTE_MILLIS);
-        if (minutes == 0) return Component.translatable("jem.deaths.just_now");
-        if (minutes >= DAY_MINUTES) return Component.translatable("jem.deaths.days_ago", minutes / DAY_MINUTES);
-        return Component.translatable("jem.deaths.minutes_ago", minutes);
+        long elapsedTicks = Math.max(0L, (System.currentTimeMillis() - timestamp) / 50L);
+        if (elapsedTicks == 0L) return Component.translatable("jem.deaths.just_now");
+        return Component.translatable("jem.deaths.days_ago", com.siirio.jemidentity.api.MinecraftDays.format(elapsedTicks));
     }
 
     public static void teleport(ServerPlayer player, UUID id) {
-        if (!player.isAlive()) return;
-        var death = ServerData.get(player.server).deaths(player.getUUID()).stream().filter(record -> record.id().equals(id)).findFirst().orElse(null);
+        if (!player.isAlive() || player.isSpectator() || com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isEmpty()) return;
+        var death = ServerData.get(player.server).deaths(player.getUUID()).stream().limit(3).filter(record -> record.id().equals(id)).findFirst().orElse(null);
         if (death == null) {
             message(player, "jem.deaths.error.expired");
             open(player);
@@ -66,9 +66,16 @@ public final class DeathHistory {
             message(player, "jem.deaths.error.no_safe_point");
             return;
         }
+        var decision = com.siirio.jemserver.smp.events.BossTeleportSafety.validate(player, level, target);
+        if (decision.matched() && !target.equals(decision.destination())) {
+            message(player, "jem.home.arena");
+            return;
+        }
+        var encounter = com.siirio.jemserver.smp.events.EventSession.forPlayer(player);
+        if (encounter != null && encounter.getBoolean("combatStarted")) { message(player, "jem.home.arena"); return; }
         player.closeContainer();
         player.stopRiding();
-        player.teleportTo(level, target.x, target.y, target.z, death.yaw(), death.pitch());
+        com.siirio.jemserver.smp.events.BossTeleportSafety.apply(player, level, target, death.yaw(), death.pitch());
         player.fallDistance = 0;
     }
 
@@ -94,7 +101,7 @@ public final class DeathHistory {
         return !dangerous(floor) && floor.isFaceSturdy(level, feet.below(), Direction.UP) && level.noCollision(player, box);
     }
 
-    private static boolean dangerous(net.minecraft.world.level.block.state.BlockState state) {
+    public static boolean dangerous(net.minecraft.world.level.block.state.BlockState state) {
         return state.is(BlockTags.FIRE) || state.is(Blocks.MAGMA_BLOCK) || state.is(Blocks.CACTUS)
                 || state.is(Blocks.SWEET_BERRY_BUSH) || state.is(Blocks.POWDER_SNOW) || state.is(Blocks.WITHER_ROSE)
                 || state.is(Blocks.CAMPFIRE) || state.is(Blocks.SOUL_CAMPFIRE) || state.is(Blocks.END_PORTAL)

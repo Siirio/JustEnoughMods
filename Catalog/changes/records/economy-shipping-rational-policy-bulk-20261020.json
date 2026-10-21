@@ -53,11 +53,9 @@
     "source_files": [
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java",
       "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
@@ -84,7 +82,10 @@
       "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
       "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
       "Catalog/generator/build_atlas.py",
-      "Catalog/generator/impact_model.py"
+      "Catalog/generator/impact_model.py",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
     ]
   },
   "rationale": {
@@ -195,6 +196,20 @@
       "summary": "Atlas source-set lookups reuse parsed JSON keyed by path, modification time, size and selector fields; normal writes invalidate it. Selector membership and price behavior are unchanged.",
       "source_files": [
         "Catalog/generator/impact_model.py"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "retire_deleted_source_references",
+      "summary": "Explicit2026-10-21 user retirement: Buyer-only trading and the standalone Wallet UI are removed, not migrated as live mechanics. Shipping now owns public sale/money-tab actions; CurrencyCore retains shared native-merchant/network/ledger ownership. NativeMerchantTags startup hook is retired at JemCurrencyCore. Historical before/after evidence is preserved; current active behavior follows economy.pooled-coins-public-shipping-20261021. Mapping: Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java -> Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java, Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java; Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java -> Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java, Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
       ]
     }
   ],

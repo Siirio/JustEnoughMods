@@ -62,11 +62,17 @@ public final class JemServer {
     public void registerCommands(RegisterCommandsEvent event) {
         PackSyncCommands.register(event);
         var dispatcher = event.getDispatcher();
+        dispatcher.register(Commands.literal("jem").then(com.siirio.jemserver.smp.events.BossArenaDiagnostics.commands()));
+        dispatcher.register(Commands.literal("death").executes(context -> {
+            DeathHistory.open(context.getSource().getPlayerOrException());
+            return 1;
+        }));
         dispatcher.register(Commands.literal("sleep")
                 .then(Commands.literal("agree").executes(context -> sleep.vote(context.getSource().getPlayerOrException(), true)))
                 .then(Commands.literal("disagree").executes(context -> sleep.vote(context.getSource().getPlayerOrException(), false))));
         dispatcher.register(Commands.literal("home").executes(context ->
-                com.siirio.jemserver.smp.events.HomeTravel.execute(context.getSource().getPlayerOrException())));
+                com.siirio.jemserver.smp.events.HomeTravel.execute(context.getSource().getPlayerOrException()))
+                .then(Commands.literal("all").executes(context -> com.siirio.jemserver.smp.events.HomeTravel.execute(context.getSource().getPlayerOrException(), true))));
         var landmarks = Commands.literal("landmarks").executes(context -> {
             Landmarks.open(context.getSource().getPlayerOrException(), 0, false);
             return 1;

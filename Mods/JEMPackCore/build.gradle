@@ -46,6 +46,15 @@ mixin {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.release = 17
+    options.incremental = false
+}
+
+afterEvaluate {
+    tasks.withType(JavaCompile).configureEach {
+        ['refMapFile', 'outTsrgFile'].each { name ->
+            if (extensions.extraProperties.has(name)) outputs.file(extensions.extraProperties.get(name))
+        }
+    }
 }
 
 jar {
@@ -60,6 +69,10 @@ jar {
         ])
     }
     finalizedBy 'reobfJar'
+    doFirst {
+        def refmap = tasks.named('compileJava').get().extensions.extraProperties.get('refMapFile')
+        if (!file(refmap).isFile()) throw new GradleException('Generated Pack Core Mixin refmap is missing')
+    }
 }
 
 tasks.withType(Test).configureEach { enabled = false }

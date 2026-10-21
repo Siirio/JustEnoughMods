@@ -111,13 +111,15 @@ public final class MarketBulkOrders extends SavedData {
     }
     /** Exact installed settlement API; no access inferred from block proximity or a client-supplied coordinate. */
     private static List<Destination> destinations(ServerPlayer player) {
-        if(!net.minecraftforge.fml.ModList.get().isLoaded("jem_settlements"))return List.of();
+        List<Destination> personal = new ArrayList<>();
+        personal.add(new Destination("player:"+player.getUUID(), player.blockPosition(), new net.minecraftforge.items.wrapper.PlayerMainInvWrapper(player.getInventory())));
+        if(!net.minecraftforge.fml.ModList.get().isLoaded("jem_settlements"))return personal;
         try {
             var api=Class.forName("com.siirio.jemsettlements.api.SettlementApi");
             var service=Class.forName("com.siirio.jemsettlements.runtime.SharedStorageService");
             var linkClass=Class.forName("com.siirio.jemsettlements.town.StorageLink");
             List<?> towns=(List<?>)api.getMethod("ownedTowns",ServerPlayer.class).invoke(null,player);
-            List<Destination> result=new ArrayList<>();Set<Long> positions=new HashSet<>();
+            List<Destination> result=new ArrayList<>(personal);Set<Long> positions=new HashSet<>();
             for(var town:towns) for(var link:(List<?>)town.getClass().getMethod("storage").invoke(town)) {
                 var dimension=(net.minecraft.resources.ResourceLocation)linkClass.getMethod("dimension").invoke(link);
                 var position=(BlockPos)linkClass.getMethod("position").invoke(link);
@@ -130,7 +132,7 @@ public final class MarketBulkOrders extends SavedData {
                 positions.add(position.asLong());if(second!=null)positions.add(second.asLong());
                 result.add(new Destination(dimension+"@"+position.asLong(),position,inventory));
             }
-            result.sort(Comparator.comparing(Destination::key));return result;
+            result.sort(Comparator.comparing((Destination value) -> !value.key.startsWith("player:")).thenComparing(Destination::key));return result;
         }catch(ReflectiveOperationException failure){throw new IllegalStateException("Installed settlement storage API changed",failure);}
     }
     /** Same native NBT format and atomic replacement as the existing financial durability owner. */

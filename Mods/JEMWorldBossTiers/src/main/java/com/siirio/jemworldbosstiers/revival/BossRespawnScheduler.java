@@ -40,6 +40,7 @@ public final class BossRespawnScheduler {
     private final PriorityQueue<ScheduledRespawn> scheduled = new PriorityQueue<>(Comparator.comparingLong(ScheduledRespawn::dueTime));
     private final Map<String, ScheduledRespawn> scheduledByArena = new HashMap<>();
     private final Map<ChunkKey, List<ScheduledRespawn>> waitingForChunk = new HashMap<>();
+    private final Map<String,String> blockedReasons = new HashMap<>();
     private MinecraftServer activeServer;
 
     public void scheduleAfterDeath(ServerLevel level, BossProfile profile, ArenaRecord arena, ResourceLocation entityId, BlockPos deathPosition) {
@@ -83,19 +84,18 @@ public final class BossRespawnScheduler {
         if (profile == null) return BossRevivalApi.Result.UNAVAILABLE;
         LivingEntity livingBoss=livingBoss(player.serverLevel(),arena,profile);
         if(livingBoss!=null) {
+            if(!data.recordLiveBoss(arena.id(),livingBoss)) return BossRevivalApi.Result.ACTIVE;
+            data.putArena(arena.recover(livingBoss.getUUID(),player.serverLevel().getGameTime()));
             cancel(arena.id());
-            if(!arena.structureArena()||arena.activeEncounterId()!=null&&!arena.activeEncounterId().equals(livingBoss.getUUID())) return BossRevivalApi.Result.ACTIVE;
-            if(livingBoss instanceof net.minecraft.world.entity.Mob mob) {
-                mob.setNoAi(false);
-                mob.getNavigation().stop();
-            }
-            com.siirio.jemworldbosstiers.api.HostedEncounterApi.release(livingBoss);
-            return BossRevivalApi.Result.CREATED;
+            return BossRevivalApi.Result.ACTIVE;
         }
+        if(data.liveBoss(arena.id()).isPresent()||arena.activeEncounterId()!=null) return BossRevivalApi.Result.ACTIVE;
         if (arena.structureArena() && !data.nativeAnchorVerified(arena.id())) return BossRevivalApi.Result.UNAVAILABLE;
+        if(!ArenaService.entitiesLoaded(player.serverLevel(),arena)) return BossRevivalApi.Result.UNAVAILABLE;
         ScheduledRespawn pending = cancel(arena.id());
         ScheduledRespawn task = new ScheduledRespawn(arena.id(), arena.profileKey(), pending == null ? null : pending.entityId(),
                 player.serverLevel().dimension().location(), arena.structureArena()?arena.respawnPosition():pending == null ? arena.respawnPosition() : pending.position(), server.overworld().getGameTime());
+        data.scheduleRespawn(arena.id(),task.entityId()==null?profile.entityIds().get(0):task.entityId(),task.dueTime());
         return spawn(server, task) ? BossRevivalApi.Result.CREATED : BossRevivalApi.Result.UNAVAILABLE;
     }
 
@@ -104,7 +104,7 @@ public final class BossRespawnScheduler {
         WorldTierData data = WorldTierData.get(server);
         ArenaRecord arena = data.arena(arenaId).orElse(null);
         BossProfile profile = arena == null ? null : BalanceRegistry.bossByKey(arena.profileKey()).orElse(null);
-        if (arena == null || profile == null || !arena.unlocked() || arena.activeEncounterId() != null
+        if (arena == null || profile == null || !arena.unlocked() || arena.activeEncounterId() != null || data.liveBoss(arenaId).isPresent()
                 || !data.defeatedBosses().contains(profile.key()) || !data.nativeAnchorVerified(arenaId)
                 || !RespawnOwnership.usesJemScheduler(profile.revivalStrategy())) return;
         ResourceLocation dimension = ResourceLocation.tryParse(arena.dimension());
@@ -134,6 +134,7 @@ public final class BossRespawnScheduler {
         long dueTime = event.getServer().overworld().getGameTime() + RESPAWN_DELAY;
         data.arenas().stream()
                 .filter(ArenaRecord::unlocked)
+                .filter(arena -> arena.activeEncounterId()==null&&data.liveBoss(arena.id()).isEmpty())
                 .filter(arena -> data.defeatedBosses().contains(arena.profileKey()))
                 .filter(arena -> data.respawn(arena.id()).isEmpty())
                 .filter(arena -> data.nativeAnchorVerified(arena.id()))
@@ -180,22 +181,17 @@ public final class BossRespawnScheduler {
             return;
         }
         ChunkKey key = new ChunkKey(level.dimension().location(), event.getChunk().getPos().toLong());
-        WorldTierData data = WorldTierData.get(level.getServer());
-        data.arenas().stream()
-                .filter(arena -> arena.dimension().equals(level.dimension().location().toString()))
-                .filter(arena -> new ChunkPos(arena.respawnPosition()).toLong() == key.chunkPosition())
-                .forEach(arena -> BalanceRegistry.bossByKey(arena.profileKey()).ifPresent(profile -> {
-                    if (livingBossPresent(level, arena, profile)) cancel(arena.id());
-                }));
         List<ScheduledRespawn> tasks = waitingForChunk.remove(key);
         if (tasks == null) {
             return;
         }
-        level.getServer().execute(() -> tasks.forEach(task -> {
+        // ChunkEvent.Load precedes asynchronous saved-entity loading. Wake the
+        // normal scheduler; only entitiesLoaded may authorize a negative scan.
+        tasks.forEach(task -> {
             if (scheduledByArena.get(task.arenaId()) == task) {
-                spawn(level.getServer(), task);
+                retry(level.getServer(), task);
             }
-        }));
+        });
     }
 
     private void startupTask(MinecraftServer server, ArenaRecord arena, long dueTime) {
@@ -228,16 +224,32 @@ public final class BossRespawnScheduler {
             BossProfile profile = BalanceRegistry.bossByKey(task.profileKey()).orElse(null);
             ServerLevel level = server.getLevel(ResourceKey.create(Registries.DIMENSION, task.dimension()));
             if (arena == null || profile == null || level == null
+                    || !arena.profileKey().equals(profile.key())||!arena.dimension().equals(task.dimension().toString())
                     || !RespawnOwnership.usesJemScheduler(profile.revivalStrategy())
                     || arena.structureArena() && !data.nativeAnchorVerified(arena.id())) {
                 WorldTierData.get(server).cancelRespawn(task.arenaId());
                 return false;
             }
-            if (livingBossPresent(level, arena, profile)) {
+            // A raid or a native observation may have canceled this persisted
+            // task while its old in-memory entry was waiting for a chunk.
+            if(data.respawn(arena.id()).isEmpty()) {scheduledByArena.remove(task.arenaId(),task);return false;}
+            LivingEntity existing=livingBoss(level,arena,profile);
+            if (existing!=null) {
+                if(!data.recordLiveBoss(arena.id(),existing)) {retry(server,task);return false;}
+                data.putArena(arena.recover(existing.getUUID(),level.getGameTime()));
                 data.cancelRespawn(task.arenaId());
                 scheduledByArena.remove(task.arenaId(), task);
                 return false;
             }
+            // Unloaded UUIDs are live ownership, never evidence of absence.
+            String blocked=data.liveBoss(arena.id()).map(id->"recorded live UUID "+id+" is not resolved in its owning dimension").orElse(
+                    arena.activeEncounterId()!=null?"active encounter identity "+arena.activeEncounterId()+" is unresolved":
+                    !ArenaService.entitiesLoaded(level,arena)?"saved arena chunk entities have not finished loading":null);
+            if(blocked!=null) {
+                if(!blocked.equals(blockedReasons.put(arena.id(),blocked))) LOGGER.info("Deferring boss respawn for {}: {}",arena.id(),blocked);
+                retry(server,task);return false;
+            }
+            blockedReasons.remove(arena.id());
             BlockPos position = arena.structureArena()?arena.respawnPosition():ArenaService.safePosition(level,task.position(),arena.bounds()).orElse(null);
             if(position==null) { retry(server, task); return false; }
             ResourceLocation entityId = task.entityId() != null && profile.entityIds().contains(task.entityId())
@@ -256,7 +268,17 @@ public final class BossRespawnScheduler {
             ArenaRecord active = arena.recover(boss.getUUID(), level.getGameTime());
             if (data.defeatedBosses().contains(profile.key())) WorldTierApi.markRevivalEncounter(boss, arena.id());
             else WorldTierApi.markStructureEncounter(boss, arena.id());
+            if(!data.recordLiveBoss(arena.id(),boss)) {retry(server,task);return false;}
+            data.putArena(active);
+            if(!data.flush(server)) {
+                data.clearLiveBoss(arena.id(),boss.getUUID());
+                data.putArena(arena);
+                retry(server,task);return false;
+            }
             if (!level.addFreshEntity(boss)) {
+                data.clearLiveBoss(arena.id(),boss.getUUID());
+                data.putArena(active.release(boss.getUUID()));
+                data.flush(server);
                 retry(server, task); return false;
             }
             data.putArena(active);
@@ -283,17 +305,28 @@ public final class BossRespawnScheduler {
     }
 
     private static LivingEntity livingBoss(ServerLevel level,ArenaRecord arena,BossProfile profile) {
-        if (arena.activeEncounterId() != null) {
-            Entity active = level.getEntity(arena.activeEncounterId());
-            if (active instanceof LivingEntity living && living.isAlive()) {
+        WorldTierData data=WorldTierData.get(level.getServer());
+        java.util.UUID recorded=data.liveBoss(arena.id()).orElse(arena.activeEncounterId());
+        if (recorded != null) {
+            Entity active = level.getEntity(recorded);
+            if (active instanceof LivingEntity living && matches(level,arena,profile,living)) {
                 return living;
             }
+            return null;
         }
         AABB bounds=arena.structureArena()
                 ?new AABB(arena.minX(),level.getMinBuildHeight(),arena.minZ(),arena.maxX()+1,level.getMaxBuildHeight(),arena.maxZ()+1)
                 :AABB.of(arena.bounds());
-        return level.getEntitiesOfClass(LivingEntity.class,bounds,entity->profile.entityIds().contains(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()))&&entity.isAlive())
-                .stream().min(Comparator.comparingDouble(entity->entity.distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(arena.respawnPosition())))).orElse(null);
+        return level.getEntitiesOfClass(LivingEntity.class,bounds,entity->matches(level,arena,profile,entity))
+                .stream().min(Comparator.comparing(LivingEntity::getStringUUID)).orElse(null);
+    }
+
+    private static boolean matches(ServerLevel level,ArenaRecord arena,BossProfile profile,LivingEntity boss) {
+        WorldTierData data=WorldTierData.get(level.getServer());
+        return boss.isAlive()&&boss.level()==level&&arena.dimension().equals(level.dimension().location().toString())
+                &&profile.entityIds().contains(BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()))
+                &&WorldTierApi.encounter(boss).filter(encounter->encounter.profileKey().equals(profile.key())
+                &&encounter.arenaId()!=null&&data.canonicalArenaId(encounter.arenaId()).equals(data.canonicalArenaId(arena.id()))).isPresent();
     }
 
     private void schedule(ScheduledRespawn task) {
@@ -306,6 +339,7 @@ public final class BossRespawnScheduler {
     }
 
     private ScheduledRespawn cancel(String arenaId) {
+        blockedReasons.remove(arenaId);
         if (activeServer != null) WorldTierData.get(activeServer).cancelRespawn(arenaId);
         ScheduledRespawn previous = scheduledByArena.remove(arenaId);
         if (previous == null) return null;
@@ -325,6 +359,7 @@ public final class BossRespawnScheduler {
         scheduled.clear();
         scheduledByArena.clear();
         waitingForChunk.clear();
+        blockedReasons.clear();
     }
 
     private record ScheduledRespawn(String arenaId, ResourceLocation profileKey, ResourceLocation entityId, ResourceLocation dimension, BlockPos position, long dueTime) {

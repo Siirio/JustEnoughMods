@@ -31,6 +31,51 @@ public final class EconomySavedData extends SavedData {
     private final Map<String, String> receiptTerms = new LinkedHashMap<>();
     private final java.util.Set<UUID> starterRecipients = new java.util.HashSet<>();
     private final LinkedHashMap<UUID, CoinLot> lots = new LinkedHashMap<>();
+    private final Map<CoinDenomination, UUID> coinPools = new java.util.EnumMap<>(CoinDenomination.class);
+
+    /** A world-local bearer series. Operations stay in the journal, never in stack identity. */
+    private CoinLot poolIssue(CoinDenomination denomination, int count) {
+        UUID id = coinPools.computeIfAbsent(denomination, ignored -> UUID.randomUUID());
+        CoinLot prior = lots.get(id);
+        int outstanding = prior == null ? 0 : Math.subtractExact(prior.issued(), prior.redeemed());
+        lots.put(id, new CoinLot(id, id, denomination, Math.addExact(outstanding, count), 0, prior == null ? 0 : prior.reserved()));
+        return new CoinLot(id, id, denomination, count, 0, 0);
+    }
+
+    public synchronized net.minecraft.world.item.ItemStack coinTemplate(CoinDenomination denomination, int count) {
+        CoinLot pool = poolIssue(denomination, 0);
+        setDirty();
+        return com.siirio.jemeconomy.physical.CoinProvenance.issue(denomination, count, pool.id(), pool.issuanceOperation());
+    }
+
+    private List<CoinLot> operationOutputs(Map<UUID, Integer> quantities) {
+        List<CoinLot> result = new ArrayList<>();
+        quantities.forEach((id, units) -> {
+            CoinLot lot = lots.get(id);
+            if (lot == null) return;
+            for (int remaining = units; remaining > 0; remaining -= Math.min(64, remaining))
+                result.add(new CoinLot(id, lot.issuanceOperation(), lot.denomination(), Math.min(64, remaining), 0, 0));
+        });
+        return List.copyOf(result);
+    }
+
+    /** Consume only proven legacy backing, preserving physical liability and unrelated stack data. */
+    public synchronized void normalizeCoin(net.minecraft.world.item.ItemStack stack) {
+        if (frozen() || stack.isEmpty()) return;
+        var stamp = com.siirio.jemeconomy.physical.CoinProvenance.read(stack);
+        if (stamp.isEmpty() || coinPools.containsValue(stamp.get().lotId())) return;
+        CoinLot old = lots.get(stamp.get().lotId());
+        if (old == null || old.denomination() != stamp.get().denomination()
+                || !old.issuanceOperation().equals(stamp.get().operationId()) || old.available() < stack.getCount()) return;
+        boolean pending = physicalOperations.values().stream().anyMatch(op -> op.phase() == PhysicalCoinOperation.Phase.PREPARED
+                && (op.lotQuantities().containsKey(old.id()) || op.outputLots().containsKey(old.id())));
+        if (pending) return;
+        CoinLot pooled = poolIssue(old.denomination(), stack.getCount());
+        lots.put(old.id(), old.reserve(stack.getCount()).commitReserved(stack.getCount()));
+        var replacement = com.siirio.jemeconomy.physical.CoinProvenance.issue(pooled.denomination(), pooled.issued(), pooled.id(), pooled.issuanceOperation());
+        stack.getOrCreateTag().put("JemPhysicalCoin", replacement.getTagElement("JemPhysicalCoin").copy());
+        setDirty();
+    }
     private final LinkedHashMap<UUID, PhysicalCoinOperation> physicalOperations = new LinkedHashMap<>();
     private boolean frozen;
     private String frozenReason = "";
@@ -39,6 +84,25 @@ public final class EconomySavedData extends SavedData {
     private MinecraftServer developmentServer;
     private boolean developmentWalletActivated;
     private long testIssued;
+    private long settlementIncomeIssued;
+    private final Map<UUID, Long> settlementIncomeDays = new LinkedHashMap<>();
+    private final Map<UUID, Long> settlementIncomeAmounts = new LinkedHashMap<>();
+
+    /** User-authorized NPC income issuance only; ordinary wallet, market and starter rules remain funded. */
+    public synchronized TransferResult issueSettlementIncome(UUID town, UUID treasury, long amount, long day) {
+        if (developmentServer == null || !developmentServer.isDedicatedServer() || !developmentServer.isSameThread()
+                || frozen() || town == null || treasury == null || amount <= 0L || day < 0L)
+            return new TransferResult(TransferResult.Status.INVALID, null, 0L, 0L);
+        long prior = settlementIncomeDays.getOrDefault(town, -1L);
+        if (day <= prior) return new TransferResult(day == prior && settlementIncomeAmounts.getOrDefault(town, -1L) == amount
+                ? TransferResult.Status.REPLAYED : TransferResult.Status.INVALID, null, 0L, balance(treasury));
+        long issued = Math.addExact(settlementIncomeIssued, amount);
+        Math.addExact(INITIAL_SUPPLY, Math.addExact(issued, Math.addExact(testIssued, developmentIssued)));
+        long next = Math.addExact(balance(treasury), amount);
+        balances.put(treasury, next); settlementIncomeIssued = issued;
+        settlementIncomeDays.put(town, day); settlementIncomeAmounts.put(town, amount); setDirty();
+        return new TransferResult(TransferResult.Status.COMMITTED, UUID.nameUUIDFromBytes(("settlementIncome:" + town + ":" + day).getBytes(StandardCharsets.UTF_8)), 0L, next);
+    }
     private UUID testSaveIdentity;
     private String testEpoch = "";
     private final java.util.Set<UUID> testRecipients = new java.util.HashSet<>();
@@ -373,7 +437,7 @@ public final class EconomySavedData extends SavedData {
         }
         PhysicalCoinOperation replay = physicalOperations.get(operationId);
         if (replay != null) {
-            List<CoinLot> replayLots = replay.lotQuantities().keySet().stream().map(lots::get).filter(Objects::nonNull).toList();
+            List<CoinLot> replayLots = operationOutputs(replay.lotQuantities());
             return new WithdrawLedgerResult(replay.phase() == PhysicalCoinOperation.Phase.QUARANTINED ? PhysicalStatus.QUARANTINED : PhysicalStatus.REPLAYED,
                     operationId, replay.value(), replayLots);
         }
@@ -393,11 +457,10 @@ public final class EconomySavedData extends SavedData {
             remainder %= denomination.value();
             while (units > 0L) {
                 int count = (int) Math.min(64L, units);
-                UUID lotId = UUID.nameUUIDFromBytes((operationId + ":" + denomination.id() + ":" + sequence++).getBytes(StandardCharsets.UTF_8));
-                CoinLot lot = new CoinLot(lotId, operationId, denomination, count, 0, 0);
-                lots.put(lotId, lot);
+                CoinLot lot = poolIssue(denomination, count);
+                UUID lotId = lot.id();
                 created.add(lot);
-                quantities.put(lotId, count);
+                quantities.merge(lotId, count, Math::addExact);
                 units -= count;
             }
         }
@@ -508,7 +571,7 @@ public final class EconomySavedData extends SavedData {
             return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of());
         PhysicalCoinOperation replay = physicalOperations.get(operationId);
         if (replay != null) {
-            List<CoinLot> replayOutputs = replay.outputLots().keySet().stream().map(lots::get).filter(Objects::nonNull).toList();
+            List<CoinLot> replayOutputs = operationOutputs(replay.outputLots());
             return new ExchangeReservation(replay.phase() == PhysicalCoinOperation.Phase.QUARANTINED ? PhysicalStatus.QUARANTINED : PhysicalStatus.REPLAYED,
                     operationId, replay.value(), List.of(), replayOutputs);
         }
@@ -539,11 +602,10 @@ public final class EconomySavedData extends SavedData {
         int sequence = 0;
         while (units > 0L) {
             int count = (int) Math.min(64L, units);
-            UUID lotId = UUID.nameUUIDFromBytes((operationId + ":exchange:" + target.id() + ":" + sequence++).getBytes(StandardCharsets.UTF_8));
-            CoinLot lot = new CoinLot(lotId, operationId, target, count, 0, 0);
-            lots.put(lotId, lot);
+            CoinLot lot = poolIssue(target, count);
+            UUID lotId = lot.id();
             outputs.add(lot);
-            outputQuantities.put(lotId, count);
+            outputQuantities.merge(lotId, count, Math::addExact);
             units -= count;
         }
         physicalOperations.put(operationId, new PhysicalCoinOperation(operationId, accountId,
@@ -569,7 +631,10 @@ public final class EconomySavedData extends SavedData {
         PhysicalCoinOperation operation = physicalOperations.get(operationId);
         if (operation == null || operation.kind() != PhysicalCoinOperation.Kind.EXCHANGE || operation.phase() != PhysicalCoinOperation.Phase.PREPARED) return;
         operation.lotQuantities().forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.cancelReserved(count)));
-        operation.outputLots().keySet().forEach(lots::remove);
+        operation.outputLots().forEach((id, count) -> lots.computeIfPresent(id, (ignored, lot) -> {
+            if (coinPools.containsValue(id)) return new CoinLot(id, id, lot.denomination(), lot.issued() - count, lot.redeemed(), lot.reserved());
+            return null;
+        }));
         physicalOperations.put(operationId, operation.withPhase(PhysicalCoinOperation.Phase.QUARANTINED));
         setDirty();
     }
@@ -581,6 +646,9 @@ public final class EconomySavedData extends SavedData {
 
     @Override
     public synchronized CompoundTag save(CompoundTag tag) {
+        tag.putLong("SettlementIncomeIssued", settlementIncomeIssued);
+        ListTag income = new ListTag(); settlementIncomeDays.forEach((town, day) -> { CompoundTag row = new CompoundTag(); row.putUUID("Town", town); row.putLong("Day", day); row.putLong("Amount", settlementIncomeAmounts.get(town)); income.add(row); }); tag.put("SettlementIncome", income);
+        CompoundTag pools = new CompoundTag(); coinPools.forEach((denomination, id) -> pools.putUUID(denomination.id(), id)); tag.put("CoinPools", pools);
         CompoundTag fractions = new CompoundTag();
         saleRemainders.forEach((id, value) -> { CompoundTag row = new CompoundTag(); row.putLong("N", value.numerator()); row.putLong("D", value.denominator()); fractions.put(id.toString(), row); });
         tag.put("SaleRemainders", fractions);
@@ -622,6 +690,12 @@ public final class EconomySavedData extends SavedData {
     private static EconomySavedData load(CompoundTag tag, MinecraftServer server) {
         EconomySavedData data = new EconomySavedData();
         data.developmentServer = server;
+        data.settlementIncomeIssued = tag.getLong("SettlementIncomeIssued");
+        ListTag income = tag.getList("SettlementIncome", Tag.TAG_COMPOUND);
+        for (int i = 0; i < income.size(); i++) { CompoundTag row = income.getCompound(i); UUID town = row.getUUID("Town"); data.settlementIncomeDays.put(town, row.getLong("Day")); data.settlementIncomeAmounts.put(town, row.getLong("Amount")); }
+        CompoundTag pools = tag.getCompound("CoinPools");
+        for (CoinDenomination denomination : CoinDenomination.values())
+            if (pools.hasUUID(denomination.id())) data.coinPools.put(denomination, pools.getUUID(denomination.id()));
         CompoundTag fractions = tag.getCompound("SaleRemainders");
         fractions.getAllKeys().forEach(key -> { var row = fractions.getCompound(key); data.saleRemainders.put(UUID.fromString(key), new com.siirio.jemeconomy.policy.RationalPrice(row.getLong("N"), row.getLong("D"))); });
         ListTag sales = tag.getList("SaleOperations", Tag.TAG_COMPOUND);
@@ -684,7 +758,8 @@ public final class EconomySavedData extends SavedData {
             long total = 0L;
             for (long amount : balances.values()) total = Math.addExact(total, amount);
             if (developmentIssued < 0L || testIssued < 0L || (testIssued != 0L || testSaveIdentity != null) && !testBindingMatches()) return false;
-            long supply = Math.addExact(INITIAL_SUPPLY, testIssued);
+            if (settlementIncomeIssued < 0L) return false;
+            long supply = Math.addExact(INITIAL_SUPPLY, Math.addExact(testIssued, settlementIncomeIssued));
             if (developmentAccount == null) return developmentIssued == 0L && total == supply;
             return localDevelopmentMarkerMatches(developmentServer, developmentAccount)
                     && testIssued == 0L && total == Math.addExact(supply, developmentIssued);
@@ -707,7 +782,7 @@ public final class EconomySavedData extends SavedData {
         }
         while (lots.size() > MAX_LOTS) {
             UUID removable = lots.entrySet().stream()
-                    .filter(entry -> entry.getValue().redeemed() >= entry.getValue().issued() && entry.getValue().reserved() == 0)
+                    .filter(entry -> !coinPools.containsValue(entry.getKey()) && entry.getValue().redeemed() >= entry.getValue().issued() && entry.getValue().reserved() == 0)
                     .map(Map.Entry::getKey).findFirst().orElse(null);
             if (removable == null) break;
             lots.remove(removable);

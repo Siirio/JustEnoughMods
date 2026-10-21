@@ -1,0 +1,206 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.canonical-live-boss-loading-and-quarantine-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated server, registered boss profile and canonical arena lifecycle; repair only for fully loaded same-type standalone roots of an unambiguous single-type profile.",
+      "evidence_boundary": "Loaded local observations do not prove absence in unloaded chunks or complete world duplicate coverage."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_lifecycle_owner",
+    "priority": 1300,
+    "overrides": [
+      "hosted.arena-presence-and-lobby-isolation",
+      "hosted.barrier-free-attack-admission-official-travel-20261021"
+    ]
+  },
+  "change": {
+    "summary": "Persist one canonical live boss identity across arena aliases and native entity loading; provide bounded audit and explicit durable duplicate quarantine without defeat/progression side effects.",
+    "modifiers": [
+      {
+        "property": "hosted.live_boss_identity_and_revival_loading",
+        "operation": "replace",
+        "before": {
+          "initial_incorrect_state": "Four local REVIVAL Colossi share a legacy arena and exact position while another Colossus uses a structural UUID.",
+          "causal_chain": [
+            "ChunkEvent.Load/hasChunkAt reported terrain before saved chunk entities completed loading.",
+            "Startup enqueued unlocked arenas even with a recorded active UUID.",
+            "Loaded-only null boss lookup was treated as absence and permitted a replacement.",
+            "Legacy center-derived arena and structural arena persisted as independent identities/timers.",
+            "No single durable live-UUID owner enforced complete native entity readiness across replacement paths."
+          ]
+        },
+        "after": {
+          "owner": "WorldTierData canonical arena aliases and liveBoss map, consumed by shared scheduler/Raid/native staging owners.",
+          "alias_proof": "Only exact original-center-derived legacy identity with same profile/dimension and center contained by verified canonical structure. Preserve former records, unlock state, pending replacements, timers and participation.",
+          "spawn_gate": "Full native saved-entity-storage acknowledgment plus durably saved/read-back live UUID claim; block all replacement paths while UUID is unresolved/unknown.",
+          "unknown_identity": "Null loaded lookup never clears claim or proves death.",
+          "excluded_changes": "No density/worldgen/spacing changes, chunk deletion, synthetic defeats or automatic duplicate removal."
+        }
+      },
+      {
+        "property": "hosted.operator_duplicate_quarantine",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "routes": "OP2 /jem boss-audit list [page], plan <keeperUUID> <duplicateUUID>, confirm <token> <keeperUUID> <duplicateUUID>, archive <duplicateUUID>.",
+          "audit": "Bounded loaded-only entities and canonical registry identities; show UUID/type/position/dimension/arena/provenance/spawn ownership and unknown unloaded state; no force-loading.",
+          "plan": "One-use actor-bound token, expiry0.05Minecraft-day; require exact canonical arena/type/dimension and native verified anchor. Keeper in structure; out-of-bounds candidate only with persisted alias and REVIVAL proof. Canonical owner must be keeper or the explicit candidate.",
+          "refusals": "Different independent structures, unknown/foreign claims, active hosted/Raid/event/party, unverified/admin/egg provenance, multipart/vehicle/passenger trees, ambiguous multi-type profiles.",
+          "durability_order": [
+            "Serialize full native entity NBT and prior canonical claim to existing SmpData boss_quarantine table.",
+            "Synchronously save and verify exact disk readback before removing anything.",
+            "If needed, compare-and-set current candidate claim to explicit keeper and durably verify WorldTierData before removal.",
+            "Mark JEMQuarantinedDuplicate then discard without death/drop/advancement/unlock processing.",
+            "Retain archive and report incomplete failure; no automatic retry or respawn."
+          ],
+          "execution_status": "in testing; no isolated-copy or production repair/deployment claimed by this record."
+        }
+      },
+      {
+        "property": "hosted.native_density_investigation",
+        "operation": "document",
+        "before": {
+          "reported_symptom": "Repeated Colossi and a nearby Paladin could suggest template duplication or excessive mutual structure density."
+        },
+        "after": {
+          "jar_manifest": "Legendary Monsters2.2.2MC1.20.1",
+          "jar_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+          "templates": "Exact native templates contain one boss each.",
+          "placements": {
+            "mossy_temple": {
+              "spacing": 35,
+              "separation": 24,
+              "salt": 12381234
+            },
+            "collapsed_citadel": {
+              "spacing": 110,
+              "separation": 80,
+              "salt": 542863
+            }
+          },
+          "cross_set_policy": "Independent sets, no exclusion_zone and no Sparse Structures override; same-set separation is not cross-type exclusion radius.",
+          "observed_start_chunks": [
+            [
+              -415,
+              -105
+            ],
+            [
+              -425,
+              -108
+            ]
+          ],
+          "density_change": "Not implemented; optional future new-chunk cross-set exclusion requires separate approval.",
+          "evidence_owner": "Docs/events/BOSS_FIGHT.md"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "WorldTierData/ArenaService/BossRespawnScheduler/RaidArenaApi; StructureStaging adapts identities, BossArenaDiagnostics owns explicit OP quarantine.",
+    "kind": "evidence_backed_defect_fix",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaRecord.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ServerLevelEntityManagerAccessor.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossArenaDiagnostics.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+      "Docs/events/BOSS_FIGHT.md",
+      "Docs/SERVER_COMMANDS.md",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent revival clones without destroying legitimate independent bosses, structures or progression; make exact recovery reviewable and durable.",
+    "decision_source": "Explicit user request21October2026 for exact duplication/density investigation, safe diagnostics/one-time confirmed repair, isolated-copy checks and subsequent deployment.",
+    "user_requested": "Fix confirmed duplicates and root cause; provide UUID/ArenaId/provenance/spawn ownership; preserve native generation and legitimate nearby bosses. Density adjustment is proposal-only.",
+    "codex_choices": "Persistent canonical CAS claims, source-backed alias proof, native entity-storage readiness accessor, bounded loaded-only plans, saved NBT quarantine with synchronous readback and removal marker."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_canonical_identity_loading_guard_and_explicit_quarantine",
+    "summary": "Diagnose four local legacy REVIVAL duplicates and parallel structural identity; implement owner/load acknowledgment and explicit recoverable repair. Source in testing, isolated-copy runtime execution and deployment not yet claimed.",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaRecord.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ServerLevelEntityManagerAccessor.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossArenaDiagnostics.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+      "Docs/events/BOSS_FIGHT.md",
+      "Docs/SERVER_COMMANDS.md",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_canonical_identity_loading_guard_and_explicit_quarantine",
+      "summary": "Diagnose four local legacy REVIVAL duplicates and parallel structural identity; implement owner/load acknowledgment and explicit recoverable repair. Source in testing, isolated-copy runtime execution and deployment not yet claimed.",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaRecord.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ServerLevelEntityManagerAccessor.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossArenaDiagnostics.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+        "Docs/events/BOSS_FIGHT.md",
+        "Docs/SERVER_COMMANDS.md",
+        "Docs/DEVELOPMENT.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "boss_revival",
+      "native_chunk_entity_loading",
+      "canonical_arena_identity",
+      "raid_preparation_and_cleanup",
+      "world_tier_progression",
+      "operator_diagnostics",
+      "durable_entity_quarantine",
+      "structure_discovery"
+    ],
+    "relations": "One canonical source owner serves native/revival/Raid paths. The known Colossus legacy identity may alias to its verified structure; the nearby Paladin remains an independent type/structure. SmpData stores recovery evidence, not a second live-boss registry.",
+    "notes": "Exact local UUID/position evidence and native JAR/template/placement analysis live only in Docs/events/BOSS_FIGHT.md. No tests/builds/runtime/repair/deployment are claimed by documentation creation. Earlier MineRENT pause was revoked by the user; execution receipts remain separate.",
+    "unresolved": [
+      "Source remains in testing until explicit user acceptance; not resolved.",
+      "Isolated-copy runtime checks and actual operator quarantine execution pending at record creation.",
+      "Fresh artifacts/native publication/application and MineRENT deployment need separate actual evidence.",
+      "Loaded audit cannot establish absence of duplicates in unloaded chunks."
+    ]
+  }
+}

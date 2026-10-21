@@ -129,16 +129,7 @@ public final class StructureStaging {
     }
 
     public static boolean allowNative(Level level, BlockPos position) {
-        if (!(level instanceof ServerLevel serverLevel)) return true;
-        String key = level.dimension().location() + ":" + position.asLong();
-        if (!NATIVE_LOOKUPS.containsKey(key)) {
-            if (NATIVE_LOOKUPS.size() >= AREA_LIMIT) NATIVE_LOOKUPS.remove(NATIVE_LOOKUPS.keySet().iterator().next());
-            NATIVE_LOOKUPS.put(key, Optional.ofNullable(discover(serverLevel, position)));
-        }
-        Area area = NATIVE_LOOKUPS.get(key).orElse(null);
-        if (area == null) return true;
-        CompoundTag row = party(serverLevel, area.id());
-        return row != null && row.getString("state").equals("ACTIVE") && row.getBoolean("nativePending");
+        return true;
     }
 
     public static boolean allowNativeSpawn(Level level, BlockPos position) {
@@ -171,12 +162,18 @@ public final class StructureStaging {
         return area;
     }
 
+    public static boolean arenaAvailable(net.minecraft.server.MinecraftServer server,String id) {
+        return SmpData.get(server).all("parties").stream().noneMatch(row->row.hasUUID("structureId")
+                &&row.getUUID("structureId").toString().equals(id)&&!SmpData.closed(row));
+    }
+
     public static boolean raidAvailable(ServerPlayer player, UUID id) {
         Area area = AREAS.get(id);
         CompoundTag event = EventScheduler.active(player.server, "BOSS_RAID");
-        return area != null && area.near(player.serverLevel(), player.position()) && event != null && !event.contains("raidArenaId")
-                && party(player.serverLevel(), id) == null
-                && RaidArenaApi.compatible(player.server, id.toString(), area.boss());
+        if (area == null || !area.near(player.serverLevel(), player.position()) || event == null
+                || event.getBoolean("combatStarted") || party(player.serverLevel(), id) != null) return false;
+        return event.contains("raidArenaId") ? event.getString("raidArenaId").equals(id.toString())
+                : RaidArenaApi.compatible(player.server, id.toString(), area.boss());
     }
 
     public static RaidTarget availableRaid(ServerLevel level,BlockPos position) {
@@ -203,6 +200,8 @@ public final class StructureStaging {
             return;
         }
         SmpRecords.require(mode.equals("BOSS_FIGHT"), "unavailable");
+        CompoundTag activeRaid = EventScheduler.active(player.server, "BOSS_RAID");
+        SmpRecords.require(activeRaid == null || !activeRaid.getString("raidArenaId").equals(id.toString()), "raid_unavailable");
         SmpRecords.require(livingBoss(player.serverLevel(), area) != null, "boss_not_respawned");
         CompoundTag row = party(player.serverLevel(), id);
         if (row == null) {
@@ -223,6 +222,7 @@ public final class StructureStaging {
         if (!row.getBoolean("nativePending")) return false;
         Area area = row.hasUUID("structureId") ? AREAS.get(row.getUUID("structureId")) : null;
         SmpRecords.require(area != null, "unavailable");
+        SmpRecords.require(!locked(host, area), "unavailable");
         SmpRecords.require(livingBoss(host.serverLevel(), area) != null, "boss_not_respawned");
         SmpRecords.require(blockers(host.serverLevel(), area, new HashSet<>(ids)).isEmpty(), "arena_occupied");
         row.putString("state", "ACTIVE");
@@ -278,28 +278,6 @@ public final class StructureStaging {
     }
 
     private static boolean finishRaidExit(ServerPlayer player, CompoundTag party, CompoundTag member) {
-        ResourceLocation dimension = ResourceLocation.tryParse(party.getString("dimension"));
-        ServerLevel level = dimension == null ? null : player.server.getLevel(net.minecraft.resources.ResourceKey.create(Registries.DIMENSION, dimension));
-        int[] saved = party.getIntArray("structureBounds");
-        if (level == null || saved.length != 6) {
-            if (!PartyTeleportFlow.forceReturn(player, party)) return false;
-            member.remove(RAID_EXIT_PENDING);
-            PartyTeleportFlow.clearMember(party, player.getUUID());
-            return true;
-        }
-        BoundingBox shell = arenaShell(new BoundingBox(saved[0], saved[1], saved[2], saved[3], saved[4], saved[5]));
-        boolean insideArena = player.serverLevel() == level && SolidBoundary.movementBox(player).intersects(
-                new AABB(shell.minX(), shell.minY(), shell.minZ(), shell.maxX() + 1D, shell.maxY() + 1D, shell.maxZ() + 1D));
-        if (!insideArena) {
-            member.remove(RAID_EXIT_PENDING);
-            PartyTeleportFlow.clearMember(party, player.getUUID());
-            return true;
-        }
-        BlockPos destination = safeOutside(player, level, shell, player.blockPosition());
-        if (destination != null) {
-            teleport(player, level, destination);
-            player.setDeltaMovement(Vec3.ZERO);
-        } else if (!PartyTeleportFlow.forceReturn(player, party)) return false;
         member.remove(RAID_EXIT_PENDING);
         PartyTeleportFlow.clearMember(party, player.getUUID());
         return true;
@@ -341,13 +319,10 @@ public final class StructureStaging {
         BoundingBox bounds=area!=null?area.bounds():saved.length==6
                 ?new BoundingBox(saved[0],saved[1],saved[2],saved[3],saved[4],saved[5])
                 :BossStaging.bounds(boss);
-        if(area!=null) ejectArenaMobs(level,area,boss);
-        else {
+        if(area==null) {
             EventRegions.locate(record,level,boss.blockPosition(),bounds.minX(),bounds.minZ(),bounds.maxX(),bounds.maxZ());
             record.putInt("minY",bounds.minY());
             record.putInt("maxY",bounds.maxY());
-            var box=new AABB(bounds.minX(),bounds.minY(),bounds.minZ(),bounds.maxX()+1,bounds.maxY()+1,bounds.maxZ()+1);
-            level.getEntitiesOfClass(Mob.class,box,candidate->candidate!=boss).forEach(mob->EventRegions.eject(mob,record));
         }
         return bounds;
     }
@@ -444,16 +419,14 @@ public final class StructureStaging {
     }
 
     private static void bindExisting(ServerLevel level, Area area, CompoundTag row, List<UUID> ids) {
-        var bounds = area.bounds();
-        for (LivingEntity boss : level.getEntitiesOfClass(LivingEntity.class,
-                new net.minecraft.world.phys.AABB(bounds.minX(), level.getMinBuildHeight(), bounds.minZ(), bounds.maxX() + 1, level.getMaxBuildHeight(), bounds.maxZ() + 1),
-                entity -> entity.isAlive() && BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss()))) bind(level, boss, row, ids);
+        LivingEntity boss = livingBoss(level, area);
+        if (boss != null) bind(level, boss, row, ids);
     }
 
     private static void bind(ServerLevel level, LivingEntity boss, CompoundTag row, List<UUID> ids) {
         if (row.hasUUID("bossEntity") || !row.getBoolean("nativePending") || HostedEncounterApi.isRaid(boss)) return;
         Area area = bossArea(level,boss);
-        if (area == null || !blockers(level, area, new HashSet<>(ids)).isEmpty()) return;
+        if (area == null || livingBoss(level, area) != boss) return;
         boss.getPersistentData().putBoolean("jem_solo", row.getBoolean("solo"));
         if (HostedEncounterApi.start(boss, ids, false, prepareCombat(level,row,boss))) {
             row.putUUID("bossEntity", boss.getUUID());
@@ -468,17 +441,7 @@ public final class StructureStaging {
         HostedEncounterApi.hold(boss);
     }
 
-    private static void ejectArenaMobs(ServerLevel level,Area area,LivingEntity boss) {
-        var bounds=area.bounds();
-        var box=new AABB(bounds.minX(),bounds.minY(),bounds.minZ(),bounds.maxX()+1,bounds.maxY()+1,bounds.maxZ()+1);
-        for(var mob:level.getEntitiesOfClass(Mob.class,box,candidate->candidate!=boss)) {
-            BlockPos exit=safeExit(mob,level,area);
-            if(exit==null) continue;
-            mob.teleportTo(exit.getX()+.5,exit.getY(),exit.getZ()+.5);
-            mob.setDeltaMovement(0,0,0);
-            mob.getNavigation().stop();
-        }
-    }
+
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void spawned(EntityJoinLevelEvent event) {
@@ -487,12 +450,25 @@ public final class StructureStaging {
         Area area = bossArea(level,boss);
         if (area == null) return;
         PRESENCE.remove(area.id());
-        AABB column = new AABB(area.bounds().minX(), level.getMinBuildHeight(), area.bounds().minZ(), area.bounds().maxX() + 1, level.getMaxBuildHeight(), area.bounds().maxZ() + 1);
-        boolean duplicate = !level.getEntitiesOfClass(LivingEntity.class, column, entity -> entity != boss && entity.isAlive()
-                && BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss())).isEmpty();
-        if (duplicate) { event.setCanceled(true); return; }
         var encounter = WorldTierApi.encounter(boss).orElse(null);
-        if (encounter == null || encounter.provenance() != com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT)
+        String spawnType = boss.getPersistentData().getString("forge:spawn_type");
+        boolean adminSpawn = spawnType.equals("SPAWN_EGG") || spawnType.equals("COMMAND")
+                || encounter != null && encounter.provenance() == com.siirio.jemworldbosstiers.encounter.EncounterProvenance.UNVERIFIED;
+        if (!adminSpawn) {
+            var ownership = com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer());
+            if (encounter != null && encounter.arenaId() != null
+                    && !ownership.canonicalArenaId(encounter.arenaId()).equals(ownership.canonicalArenaId(area.id().toString()))) return;
+            UUID known = ownership.liveBoss(area.id().toString()).orElse(null);
+            if (known != null && !known.equals(boss.getUUID())) {
+                // Saved duplicates stay intact and dormant for explicit diagnosis/quarantine.
+                if (!event.loadedFromDisk()) { event.setCanceled(true); return; }
+                HostedEncounterApi.hold(boss);
+                com.mojang.logging.LogUtils.getLogger().warn("Saved boss identity conflict retained for /jem boss-audit: arena={}, keeper={}, duplicate={}", area.id(), known, boss.getUUID());
+                return;
+            }
+            ownership.recordLiveBoss(area.id().toString(), boss);
+        }
+        if (!adminSpawn && (encounter == null || encounter.provenance() != com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT))
             RaidArenaApi.observeNativeBoss(level.getServer(), area.id().toString(), boss);
         if (encounter != null && encounter.provenance() == com.siirio.jemworldbosstiers.encounter.EncounterProvenance.RAID_EVENT) return;
         HostedEncounterApi.hold(boss);
@@ -530,7 +506,6 @@ public final class StructureStaging {
                 .forEach(candidate -> Landmarks.publishBoss(player.server, candidate.id(), candidate.boss(), player.level().dimension().location(), candidate.center(), candidate.bounds()));
         if (area == null) { INSIDE.remove(player.getUUID()); return; }
         CompoundTag activeParty = party(player.serverLevel(), area.id());
-        if (activeParty != null) HostedBoundary.observe(player, activeParty, area.bounds());
         UUID before = INSIDE.put(player.getUUID(), area.id());
         if (!area.id().equals(before)) {
             CompoundTag row = party(player.serverLevel(), area.id());
@@ -545,21 +520,7 @@ public final class StructureStaging {
         return ModList.get().isLoaded("jem_twelve_eyes") && !com.siirio.jemtwelveeyes.api.CampaignApi.unlocked(player, area.boss());
     }
 
-    public static List<EventBoundary> boundaries(ServerPlayer player) {
-        List<EventBoundary> result = new ArrayList<>();
-        for (Area area : AREAS.values()) {
-            if (!area.dimension().equals(player.level().dimension().location().toString())) continue;
-            var bounds = area.shell();
-            double distance = area.distance(player.position());
-            if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
-            CompoundTag row = party(player.serverLevel(), area.id());
-            boolean passable = row != null && HostedBoundary.passable(player, row);
-            result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
-                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
-            if (result.size() >= BOUNDARY_LIMIT) break;
-        }
-        return result;
-    }
+
 
     public static String startReason(ServerPlayer host, CompoundTag row, Collection<UUID> participants) {
         if (!row.hasUUID("structureId")) return "";
@@ -575,13 +536,28 @@ public final class StructureStaging {
         return livingBoss(host.serverLevel(),area)==null?"boss_not_respawned":"";
     }
 
-    private static LivingEntity livingBoss(ServerLevel level,Area area) {
-        if(!area.dimension().equals(level.dimension().location().toString())) return null;
-        BoundingBox bounds=area.bounds();
+    private static LivingEntity livingBoss(ServerLevel level, Area area) {
+        if (!area.dimension().equals(level.dimension().location().toString())) return null;
+        var data = com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer());
+        var known = data.liveBoss(area.id().toString()).orElse(null);
+        if (known != null) {
+            var entity = level.getEntity(known);
+            return entity instanceof LivingEntity boss && canonicalBoss(data, area, boss) ? boss : null;
+        }
+        var bounds = area.bounds();
         return level.getEntitiesOfClass(LivingEntity.class,
-                new AABB(bounds.minX(),level.getMinBuildHeight(),bounds.minZ(),bounds.maxX()+1,level.getMaxBuildHeight(),bounds.maxZ()+1),
-                entity->entity.isAlive()&&!entity.isRemoved()&&BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).equals(area.boss()))
-                .stream().findFirst().orElse(null);
+                new AABB(bounds.minX(), bounds.minY(), bounds.minZ(), bounds.maxX() + 1, bounds.maxY() + 1, bounds.maxZ() + 1),
+                boss -> canonicalBoss(data, area, boss)).stream()
+                .min(Comparator.comparing(LivingEntity::getStringUUID)).orElse(null);
+    }
+
+    private static boolean canonicalBoss(com.siirio.jemworldbosstiers.progression.WorldTierData data, Area area, LivingEntity boss) {
+        var encounter = WorldTierApi.encounter(boss).orElse(null);
+        return boss.isAlive() && !boss.isRemoved() && BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).equals(area.boss())
+                && encounter != null && encounter.arenaId() != null
+                && data.canonicalArenaId(encounter.arenaId()).equals(data.canonicalArenaId(area.id().toString()))
+                && !boss.getPersistentData().getString("forge:spawn_type").equals("SPAWN_EGG")
+                && !boss.getPersistentData().getString("forge:spawn_type").equals("COMMAND");
     }
 
     private static Area nearby(ServerLevel level, Vec3 position) {
@@ -622,86 +598,14 @@ public final class StructureStaging {
     }
 
     private static List<ServerPlayer> blockers(ServerLevel level, Area area, Set<UUID> participants) {
-        return level.players().stream()
-                .filter(player -> player.isAlive() && !player.isSpectator() && !player.hasPermissions(2))
-                .filter(player -> !participants.contains(player.getUUID()) && area.bounds().isInside(player.blockPosition()))
-                .toList();
+        return List.of();
     }
 
-    public static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity) {
-        return solidBoundaries(entity, null);
-    }
 
-    static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity, AABB query) {
-        if (!(entity.level() instanceof ServerLevel level)) return List.of();
-        List<EventBoundary> result = new ArrayList<>();
-        for (Area area : AREAS.values()) {
-            if (!area.dimension().equals(level.dimension().location().toString())) continue;
-            BoundingBox bounds = area.shell();
-            if (query != null && (query.maxX < bounds.minX() - SolidBoundary.WALL_THICKNESS || query.minX > bounds.maxX() + 1D + SolidBoundary.WALL_THICKNESS
-                    || query.maxZ < bounds.minZ() - SolidBoundary.WALL_THICKNESS || query.minZ > bounds.maxZ() + 1D + SolidBoundary.WALL_THICKNESS
-                    || query.maxY < bounds.minY() || query.minY > bounds.maxY() + 1D)) continue;
-            if (!guarded(level, area)) continue;
-            List<ServerPlayer> players = SolidBoundary.players(entity);
-            CompoundTag row = party(level, area.id());
-            boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
-            if (!passable) result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
-                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), false));
-        }
-        return result;
-    }
 
-    static BossTeleportSafety.Decision safeTeleport(ServerPlayer player, ServerLevel level, Vec3 requested) {
-        discover(level, BlockPos.containing(requested));
-        AABB source = SolidBoundary.movementBox(player);
-        AABB destination = SolidBoundary.destinationBox(player, requested);
-        for (Area area : AREAS.values()) {
-            ServerLevel areaLevel = level(player.server, area);
-            if (areaLevel == null) continue;
-            BoundingBox shell = area.shell();
-            EventBoundary boundary = SolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
-                    shell.minY(), shell.maxY(), EventRules.RAID_COLOR.get(), false);
-            boolean sourceInside = player.serverLevel() == areaLevel && SolidBoundary.contains(source, boundary);
-            boolean destinationInside = level == areaLevel && SolidBoundary.contains(destination, boundary);
-            boolean destinationWall = level == areaLevel && SolidBoundary.intersectsWall(destination, boundary);
-            CompoundTag row = party(areaLevel, area.id());
-            if (!sourceInside && !destinationInside && !destinationWall && (row == null || !HostedBoundary.locked(player, row))) continue;
-            if (!guarded(areaLevel, area)) continue;
-            if (row != null && HostedBoundary.locked(player, row)) {
-                if (destinationInside && !destinationWall && level.noCollision(player, destination)) continue;
-                if (sourceInside && !SolidBoundary.intersectsWall(source, boundary) && areaLevel.noCollision(player, source))
-                    return BossTeleportSafety.Decision.redirect(player.position());
-                BlockPos respawn = RaidArenaApi.respawnPosition(player.server, area.id().toString(), area.boss()).orElse(null);
-                Vec3 recovery = respawn == null ? null : Vec3.atBottomCenterOf(respawn);
-                AABB recoveryBox = recovery == null ? null : SolidBoundary.destinationBox(player, recovery);
-                return BossTeleportSafety.Decision.redirect(recoveryBox != null && SolidBoundary.contains(recoveryBox, boundary)
-                        && !SolidBoundary.intersectsWall(recoveryBox, boundary) && areaLevel.noCollision(player, recoveryBox) ? recovery : null);
-            }
-            if (!destinationInside && !destinationWall) continue;
-            if (!destinationWall && row != null && HostedBoundary.authorized(player, row) && level.noCollision(player, destination)) continue;
-            BlockPos safe = safeExit(player, areaLevel, area, BlockPos.containing(requested));
-            return BossTeleportSafety.Decision.redirect(safe == null ? null : Vec3.atBottomCenterOf(safe));
-        }
-        return BossTeleportSafety.Decision.unmatched();
-    }
 
-    private static void forEachBarrierPosition(Area area,ChunkPos chunk,java.util.function.Consumer<BlockPos> action) {
-        BoundingBox bounds = area.bounds();
-        // Remove retired physical barriers at their original all-axis margin, not the current territory.
-        BoundingBox shell = new BoundingBox(bounds.minX()-1,bounds.minY()-1,bounds.minZ()-1,bounds.maxX()+1,bounds.maxY()+1,bounds.maxZ()+1);
-        int minX=Math.max(shell.minX(),chunk.getMinBlockX()),maxX=Math.min(shell.maxX(),chunk.getMaxBlockX());
-        int minZ=Math.max(shell.minZ(),chunk.getMinBlockZ()),maxZ=Math.min(shell.maxZ(),chunk.getMaxBlockZ());
-        for(int x=minX;x<=maxX;x++) for(int z=minZ;z<=maxZ;z++) {
-            action.accept(new BlockPos(x,shell.minY(),z));
-            action.accept(new BlockPos(x,shell.maxY(),z));
-        }
-        for(int y=shell.minY()+1;y<shell.maxY();y++) {
-            if(shell.minZ()>=minZ&&shell.minZ()<=maxZ) for(int x=minX;x<=maxX;x++) action.accept(new BlockPos(x,y,shell.minZ()));
-            if(shell.maxZ()>=minZ&&shell.maxZ()<=maxZ) for(int x=minX;x<=maxX;x++) action.accept(new BlockPos(x,y,shell.maxZ()));
-            if(shell.minX()>=minX&&shell.minX()<=maxX) for(int z=minZ;z<=maxZ;z++) action.accept(new BlockPos(shell.minX(),y,z));
-            if(shell.maxX()>=minX&&shell.maxX()<=maxX) for(int z=minZ;z<=maxZ;z++) action.accept(new BlockPos(shell.maxX(),y,z));
-        }
-    }
+
+
 
     private static boolean physicallyLocked(ServerLevel level, Area area) {
         return ModList.get().isLoaded("jem_twelve_eyes")&&com.siirio.jemtwelveeyes.api.CampaignApi.locked(level.getServer(),area.boss());
@@ -732,26 +636,11 @@ public final class StructureStaging {
         if (event.getTarget() instanceof LivingEntity boss && managed(boss) && !allowNative(boss.level(), boss.blockPosition())) event.setCanceled(true);
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void stagingDamage(LivingAttackEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player && stagingProtected(player)) event.setCanceled(true);
-    }
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public static void stagingDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player && stagingProtected(player)) {
-            event.setCanceled(true);
-            player.setHealth(Math.max(1, player.getHealth()));
-        }
-    }
 
-    private static boolean stagingProtected(ServerPlayer player) {
-        if (HostedEncounterApi.participating(player)) return false;
-        Area area = discover(player.serverLevel(), player.blockPosition());
-        if (area == null || !guarded(player.serverLevel(), area)) return false;
-        CompoundTag row = party(player.serverLevel(), area.id());
-        return row == null || !HostedBoundary.authorized(player, row);
-    }
+
+
+
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void chunkLoaded(net.minecraftforge.event.level.ChunkEvent.Load event) {
@@ -764,12 +653,24 @@ public final class StructureStaging {
             Area area = AREAS.values().stream().filter(candidate -> candidate.contains(level, position)).findFirst().orElse(null);
             if (area != null) RaidArenaApi.migrateNativeAnchor(level, area.id().toString(), area.boss(), position);
         }
-        for (Area area : AREAS.values()) if (area.dimension().equals(level.dimension().location().toString()))
-            forEachBarrierPosition(area, chunk, position -> {
-                ResourceLocation id = BuiltInRegistries.BLOCK.getKey(level.getBlockState(position).getBlock());
-                if (id.equals(new ResourceLocation("jem_server", "structure_barrier"))
-                        || id.equals(new ResourceLocation("jem_twelve_eyes", "locked_boss_barrier"))) level.removeBlock(position, false);
-            });
+        if (event.getChunk() instanceof LevelChunk loaded) {
+            var sections = loaded.getSections();
+            for (int index = 0; index < sections.length; index++) {
+                var section = sections[index];
+                if (section.hasOnlyAir() || !section.maybeHas(StructureStaging::retiredBarrier)) continue;
+                int baseY = loaded.getMinBuildHeight() + index * 16;
+                for (int x = 0; x < 16; x++) for (int y = 0; y < 16; y++) for (int z = 0; z < 16; z++) {
+                    if (retiredBarrier(section.getBlockState(x, y, z)))
+                        level.removeBlock(new BlockPos(chunk.getMinBlockX() + x, baseY + y, chunk.getMinBlockZ() + z), false);
+                }
+            }
+        }
+    }
+
+    private static boolean retiredBarrier(net.minecraft.world.level.block.state.BlockState state) {
+        ResourceLocation id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
+        return id.equals(new ResourceLocation("jem_server", "structure_barrier"))
+                || id.equals(new ResourceLocation("jem_twelve_eyes", "locked_boss_barrier"));
     }
 
     @SubscribeEvent

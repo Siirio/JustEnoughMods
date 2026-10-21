@@ -211,7 +211,9 @@ public final class SettlementCurrency {
         String key = "settlementDailyTax:" + town + ":" + day;
         if (coins()) {
             var ledger = com.siirio.jemeconomy.ledger.EconomySavedData.get(server);
-            var transfer = ledger.transfer(com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), townAccount(town), amount, key);
+            var transfer = ledger.hasReceipt(key)
+                    ? ledger.transfer(com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), townAccount(town), amount, key)
+                    : ledger.issueSettlementIncome(town, townAccount(town), amount, day);
             if (transfer.status() == TransferResult.Status.COMMITTED || transfer.status() == TransferResult.Status.REPLAYED)
                 com.siirio.jemsettlements.payroll.TaxDurability.save(server, ledger, "jem_economy");
             return transfer;

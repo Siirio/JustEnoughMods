@@ -15,7 +15,6 @@ public final class CoinAmounts {
             long count = copper / denomination.value(); copper %= denomination.value();
             if (count > 0) result.add(new Part(denomination, count));
         }
-        if (result.isEmpty()) result.add(new Part(CoinDenomination.COPPER, 0));
         return List.copyOf(result);
     }
 }

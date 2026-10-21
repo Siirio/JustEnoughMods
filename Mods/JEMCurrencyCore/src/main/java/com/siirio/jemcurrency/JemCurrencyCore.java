@@ -19,5 +19,6 @@ public final class JemCurrencyCore {
         MinecraftForge.EVENT_BUS.register(EconomyNetwork.class);
         MinecraftForge.EVENT_BUS.register(ItemPolicyRegistry.class);
         MinecraftForge.EVENT_BUS.register(CoinMerchantRuntime.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.physical.CoinMigration.class);
     }
 }

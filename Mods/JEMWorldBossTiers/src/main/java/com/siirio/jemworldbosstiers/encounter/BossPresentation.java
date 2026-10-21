@@ -26,20 +26,26 @@ final class BossPresentation {
     }
 
     private static void visibility(LivingEntity boss, boolean visible) {
-        for (Field field : BOSS_EVENTS.computeIfAbsent(boss.getClass(), BossPresentation::bossEvents)) {
-            try {
-                if (field.get(boss) instanceof ServerBossEvent event) event.setVisible(visible);
-            } catch (IllegalAccessException exception) {
-                throw new IllegalStateException(exception);
-            }
-        }
+        visibilityFields(boss, visible);
+        if (boss instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon dragon && dragon.getDragonFight() != null)
+            visibilityFields(dragon.getDragonFight(), visible);
         invoke(BAR_VISIBILITY, boss, "setBarVisible", visible);
         invoke(MUSIC, boss, "setPlayingMusic", visible);
     }
 
+    private static void visibilityFields(Object owner, boolean visible) {
+        for (Field field : BOSS_EVENTS.computeIfAbsent(owner.getClass(), BossPresentation::bossEvents)) {
+            try {
+                if (field.get(owner) instanceof ServerBossEvent event) event.setVisible(visible);
+            } catch (IllegalAccessException exception) {
+                throw new IllegalStateException(exception);
+            }
+        }
+    }
+
     private static List<Field> bossEvents(Class<?> type) {
         List<Field> fields = new ArrayList<>();
-        for (Class<?> current = type; current != null && LivingEntity.class.isAssignableFrom(current); current = current.getSuperclass()) {
+        for (Class<?> current = type; current != null && current != Object.class; current = current.getSuperclass()) {
             for (Field field : current.getDeclaredFields()) {
                 if (!ServerBossEvent.class.isAssignableFrom(field.getType()) || !field.trySetAccessible()) continue;
                 fields.add(field);

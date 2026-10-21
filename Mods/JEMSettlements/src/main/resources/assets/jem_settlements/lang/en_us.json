@@ -264,7 +264,7 @@
   "jem.settlements.guide.payroll": "Payroll\nRequires Recruits. Fund the settlement treasury before wages fall due. The established cycle is seven game days. Pay overdue wages processes only genuine unpaid periods; future periods are not paid early. The server validates employer, roster, receipts and funds before committing.",
   "jem.settlements.guide.rebellion": "Loyalty\nThree missed payroll periods can make a recruit hostile. Removing a town does not erase personal debt or loyalty. A hostile recruit must actually be defeated before the former owner can use the supported native paid hire recovery. No screen click fakes defeat or employment.",
   "jem.settlements.guide.treasury": "Treasury\nAll five canonical coin denominations share one currency ledger. Choose a denomination and coin count for deposits or withdrawals, then confirm the exact transfer. A pending payment stays pending until its matching server acknowledgment. Closing a window does not cancel a submitted payment. Never repeat an uncertain payment with a new intent.",
-  "jem.settlements.guide.tax": "Daily taxes\nThe treasury receives resident income and a separate town comfort bonus. Resident income uses time-weighted happiness and satiety over the previous game day. The comfort bonus depends on comfort of 0–100 and is not multiplied by population. Payment occurs once per game day. Tax burden reduces personal happiness separately: rates 0/5/10/15% reduce it by 0/3/8/16.",
+  "jem.settlements.guide.tax": "Resident income\nAt 100% happiness a resident generates 40 Copper per Minecraft day; at 50%, 20 Copper. Ten residents at 100% yield 4 Gold; twenty yield 8 Gold. Issued into the treasury once per period, without a separate rate or comfort bonus.",
   "jem.settlements.reason.accepted": "Completed.",
   "jem.settlements.reason.replayed": "This operation was already recorded.",
   "jem.settlements.reason.invalid": "Check the entered name, amount or target.",
@@ -514,5 +514,9 @@
   "jem.settlements.gui.dashboard.beauty": "Town comfort",
   "jem.settlements.gui.dashboard.residents": "Residents / goal",
   "jem.settlements.gui.dashboard.treasury": "Treasury",
-  "jem.settlements.gui.dashboard.budget": "Shared needs: up to 90. Activities: up to 10. Tax: −%s."
+  "jem.settlements.gui.dashboard.budget": "Shared conditions: up to 90. Activities: up to 10.",
+  "gui.jem_settlements.expand_mode": "Expand territory",
+  "gui.jem_settlements.buy_for": "Buy for",
+  "jem.settlements.resident_path_blocked": "%s cannot reach the settlement. Clear a path.",
+  "jem.settlements.gui.calculated_income": "Per Minecraft day: %s"
 }

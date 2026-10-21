@@ -131,7 +131,7 @@ public final class MapNetwork {
                 .filter(row -> "ACTIVE".equals(row.getString("state")) && row.getLong("ends") > now
                         && row.hasUUID("id") && row.contains("position") && row.getInt("radius") > 0
                         && ResourceLocation.tryParse(row.getString("dimension")) != null)
-                .filter(row -> row.getString("activity").equals("BLOOD_MOON") || row.getString("activity").equals("RESOURCE_RUSH"))
+                .filter(row -> java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(row.getString("activity")))
                 .map(row -> new EventArea(row.getUUID("id"), row.getString("activity"),
                         new ResourceLocation(row.getString("dimension")), BlockPos.of(row.getLong("position")),
                         com.siirio.jemserver.smp.events.EventRegions.minX(row), com.siirio.jemserver.smp.events.EventRegions.minZ(row),

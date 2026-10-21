@@ -25,6 +25,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
 public final class ShippingBoxBlock extends BaseEntityBlock {
+    @Override public void initializeClient(java.util.function.Consumer<net.minecraftforge.client.extensions.common.IClientBlockExtensions> consumer) {
+        consumer.accept(new com.siirio.jemeconomy.full.client.ShippingBoxParticles());
+    }
     public ShippingBoxBlock(Properties properties) { super(properties); registerDefaultState(stateDefinition.any().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)); }
     @Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(BlockStateProperties.HORIZONTAL_FACING); }
     @Override public BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) { return defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, context.getHorizontalDirection().getOpposite()); }
@@ -46,7 +49,7 @@ public final class ShippingBoxBlock extends BaseEntityBlock {
     @Override public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
         if (!(player instanceof ServerPlayer serverPlayer) || !(level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box)) return InteractionResult.FAIL;
-        if (!box.isOwner(serverPlayer)) { player.displayClientMessage(Component.translatable("jem.economy.shipping.owner_only"), true); return InteractionResult.CONSUME; }
+        if (!box.acquire(serverPlayer)) { player.displayClientMessage(Component.translatable("jem.economy.shipping.busy"), true); return InteractionResult.CONSUME; }
         NetworkHooks.openScreen(serverPlayer, box, buffer -> buffer.writeBlockPos(pos));
         return InteractionResult.CONSUME;
     }

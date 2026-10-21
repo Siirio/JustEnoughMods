@@ -17,10 +17,27 @@ public final class ArenaService {
     private ArenaService() {
     }
 
+    /** Block availability alone does not prove that saved chunk entities were read. */
+    public static boolean entitiesLoaded(ServerLevel level,ArenaRecord arena) {
+        if(!arena.dimension().equals(level.dimension().location().toString())
+                ||!(level instanceof com.siirio.jemworldbosstiers.mixin.ServerLevelEntityManagerAccessor access)) return false;
+        var manager=access.jemWorldBossTiers$entityManager();
+        for(int x=arena.minX()>>4;x<=arena.maxX()>>4;x++) {
+            for(int z=arena.minZ()>>4;z<=arena.maxZ()>>4;z++) {
+                if(!level.hasChunkAt(new BlockPos(x<<4,arena.respawnPosition().getY(),z<<4))
+                        ||!manager.areEntitiesLoaded(net.minecraft.world.level.ChunkPos.asLong(x,z))) return false;
+            }
+        }
+        return true;
+    }
+
     public static ArenaRecord findOrRegister(LivingEntity entity, BossProfile profile) {
         ServerLevel level = (ServerLevel) entity.level();
         WorldTierData data = WorldTierData.get(level.getServer());
         String dimension = level.dimension().location().toString();
+        var encounter = com.siirio.jemworldbosstiers.api.WorldTierApi.encounter(entity).orElse(null);
+        ArenaRecord bound = encounter == null || encounter.arenaId() == null ? null : data.arena(encounter.arenaId()).orElse(null);
+        if (bound != null && bound.profileKey().equals(profile.key()) && bound.dimension().equals(dimension)) return bound;
         Optional<ArenaRecord> existing = data.arenas().stream()
                 .filter(arena -> arena.profileKey().equals(profile.key()) && arena.contains(dimension, entity.getX(), entity.getY(), entity.getZ()))
                 .max(java.util.Comparator.comparing(ArenaRecord::structureArena));
@@ -41,7 +58,17 @@ public final class ArenaService {
     }
 
     public static void unlockAndRelease(WorldTierData data, String arenaId, java.util.UUID encounterId) {
+        if (data.liveBoss(arenaId).filter(id -> !id.equals(encounterId)).isPresent()) {
+            data.clearLiveBoss(arenaId, encounterId);
+            return;
+        }
+        data.clearLiveBoss(arenaId, encounterId);
         data.arena(arenaId).ifPresent(arena -> data.putArena(arena.unlock().release(encounterId)));
+    }
+
+    public static void reconcileStructure(WorldTierData data, ArenaRecord structure) {
+        if (!structure.structureArena()) return;
+        for (ArenaRecord previous : data.arenas()) if (!previous.structureArena()) data.aliasArena(previous.id(), structure.id());
     }
 
     public static Optional<BlockPos> safePosition(ServerLevel level, BlockPos preferred, BoundingBox bounds) {

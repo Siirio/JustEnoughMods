@@ -1,0 +1,241 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.pooled-coins-public-shipping-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1200,
+    "overrides": [
+      "economy.shipping-rational-policy-bulk-20261020",
+      "economy.shipping-instant-exchange-r2-20261020",
+      "economy.native-merchandise-prices"
+    ]
+  },
+  "change": {
+    "summary": "economy pooled coins public shipping 20261021",
+    "modifiers": [
+      {
+        "property": "economy.bearer_coin_and_terminal_contract",
+        "operation": "replace",
+        "before": "Operation-specific coin stamps prevented merge; owner-only shipping paid physical output; Buyer and separate wallet routes existed.",
+        "after": {
+          "coins": "World-local denomination pools, per-operation quantity journal, lazy proven-legacy normalization, partial-stack withdrawal capacity and quantity-based legacy delivery recovery.",
+          "shipping": "Public exclusive identity-bound session; account recovery; automation locked during session/transaction; seller ledger payout; five-denomination icon dropdowns, deposit/withdraw/send.",
+          "retired": "Buyer creation/trading and standalone wallet UI; retain compatibility registrations and shared native merchants.",
+          "quotas": "Remove ordinary daily monetary/family/item quotas and artificial ordinary building stock; keep finite NPC funding, special disc/progression/native-restock and atomic capacity checks.",
+          "bulk": "Player inventory is a valid full-order destination; no mandatory personal warehouse."
+        }
+      },
+      {
+        "property": "economy.user_price_anchors",
+        "operation": "replace",
+        "before": {
+          "exact_old_values": "See prior source/history; not guessed from rounded UI."
+        },
+        "after": {
+          "sale_per_64_copper": {
+            "minecraft:wheat": 10,
+            "minecraft:carrot": 8,
+            "minecraft:beetroot": 80,
+            "minecraft:gold_ingot": 54,
+            "minecraft:diamond": 1000
+          },
+          "fish": "Unchanged",
+          "mending_purchase_minimum_copper": 800,
+          "starter_copper": 2000,
+          "reserve_redistribution": "None",
+          "policy": "Exact fractions and owning generator anchors; netherite_ingot sale only, no blanket netherite admission."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "economy.pooled-coins-public-shipping-20261021",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/JemCurrencyCore.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinMigration.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+      "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+      "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py",
+      "Mods/JEMCurrencyCore/tools/monetary_potential.py",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxItemRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxParticles.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxItem.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+      "Docs/economy/native-trading-design.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
+    "decision_source": "User plan and explicit later overrides on2026-10-21; Docs/plans/2026-10-21-economy-races-settlements-gui.md current override section.",
+    "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
+    "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_user_overrides_source_in_testing",
+    "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+    "source_files": [
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/JemCurrencyCore.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/NativeMerchantTags.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinMigration.java",
+      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+      "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+      "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+      "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+      "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py",
+      "Mods/JEMCurrencyCore/tools/monetary_potential.py",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxItemRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxParticles.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxItem.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+      "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+      "Docs/economy/native-trading-design.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_user_overrides_source_in_testing",
+      "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/JemCurrencyCore.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/NativeMerchantTags.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinAmounts.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/MarketScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletClientState.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketBulkOrders.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/market/MarketSavedData.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeItemPricing.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinFormatter.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/CoinMigration.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/en_us.json",
+        "Mods/JEMCurrencyCore/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/item_policies.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/native_item_prices.json",
+        "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy/profession_pools.json",
+        "Mods/JEMCurrencyCore/tools/author_shipping_economy.py",
+        "Mods/JEMCurrencyCore/tools/derive_conversion_economy.py",
+        "Mods/JEMCurrencyCore/tools/monetary_potential.py",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxItemRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxParticles.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxItem.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/block/shipping_box.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/models/item/shipping_box.json",
+        "Docs/economy/native-trading-design.md"
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "retire_obsolete_sources",
+      "summary": "Retire Buyer/wallet-only sources without losing shared ledger/merchant ownership.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/NativeMerchantTags.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/WalletScreen.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "currency",
+      "ledger",
+      "physical_liability",
+      "market",
+      "shipping",
+      "native_merchants",
+      "bulk_delivery",
+      "recipes",
+      "smp_navigation"
+    ],
+    "relations": "Owning modules remain single authorities; adapters translate server-authoritative identities/state. Source paths include the complete current task diff for this domain; unrelated VFX/registry-coverage.csv excluded.",
+    "notes": "Prohibitions on tests/static analysis/gameplay respected. Atlas effective/artifact refresh belongs to parent release workflow after fresh artifacts.",
+    "unresolved": [
+      "Runtime/player acceptance unrun; status in testing.",
+      "Final production artifacts, normal native publication/application and MineRENT deployment pending."
+    ]
+  }
+}

@@ -13,6 +13,7 @@ public final class CoinPriceRenderer {
     /** Fits every denomination; never drops low-value remainder when space runs out. */
     public static void draw(GuiGraphics g, Font font, long copper, int x, int y, int maxWidth, int color) {
         var parts = parts(copper);
+        if (parts.isEmpty()) return;
         int naturalWidth = parts.stream().mapToInt(part -> 15 + font.width(Long.toString(part.count())) + 3).sum() - 3;
         float scale = Math.min(1f, Math.max(1, maxWidth) / (float) naturalWidth);
         g.pose().pushPose();
@@ -33,6 +34,7 @@ public final class CoinPriceRenderer {
     public static void tooltip(GuiGraphics g, Font font, long copper, int mouseX, int mouseY, int screenWidth, int screenHeight,
                                net.minecraft.network.chat.Component reason) {
         var parts = parts(copper);
+        if (parts.isEmpty()) return;
         int natural = parts.stream().mapToInt(part -> 20 + font.width(Long.toString(part.count()))).sum();
         int w = Math.min(Math.max(180, natural), Math.max(1, screenWidth - 12));
         int rows=1, dx=0;

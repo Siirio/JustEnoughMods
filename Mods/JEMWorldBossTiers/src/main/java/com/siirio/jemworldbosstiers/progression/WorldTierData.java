@@ -36,6 +36,9 @@ public final class WorldTierData extends SavedData {
     private final Set<String> verifiedAnchors = new LinkedHashSet<>();
     private final Map<String, Set<java.util.UUID>> raidParticipation = new LinkedHashMap<>();
     private final Set<String> pendingRaidReplacements = new LinkedHashSet<>();
+    private final Map<String, java.util.UUID> liveBosses = new LinkedHashMap<>();
+    private final Map<String, Set<java.util.UUID>> conflictingBosses = new LinkedHashMap<>();
+    private final Map<String, String> arenaAliases = new LinkedHashMap<>();
     private Integer tierOverride;
 
     public static WorldTierData get(MinecraftServer server) {
@@ -85,27 +88,139 @@ public final class WorldTierData extends SavedData {
     }
 
     public Optional<ArenaRecord> arena(String id) {
-        return Optional.ofNullable(arenas.get(id));
+        return Optional.ofNullable(arenas.get(canonicalArenaId(id)));
     }
 
     public Collection<ArenaRecord> arenas() {
-        return List.copyOf(arenas.values());
+        return arenas.values().stream().filter(arena -> !arenaAliases.containsKey(arena.id())).toList();
+    }
+
+    public String canonicalArenaId(String id) {
+        var visited = new java.util.HashSet<String>();
+        while (arenaAliases.containsKey(id) && visited.add(id)) id = arenaAliases.get(id);
+        return id;
+    }
+
+    public Optional<java.util.UUID> liveBoss(String arenaId) {
+        String id = canonicalArenaId(arenaId);
+        java.util.UUID keeper = liveBosses.get(id);
+        return keeper != null ? Optional.of(keeper) : conflictingBosses.getOrDefault(id, Set.of()).stream().sorted().findFirst();
+    }
+
+    public boolean recordLiveBoss(String arenaId, java.util.UUID bossId) {
+        String id = canonicalArenaId(arenaId);
+        java.util.UUID current = liveBoss(id).orElse(null);
+        if (current != null) return current.equals(bossId);
+        liveBosses.put(id, bossId);
+        setDirty();
+        return true;
+    }
+
+    public boolean recordLiveBoss(String arenaId, net.minecraft.world.entity.LivingEntity boss) {
+        ArenaRecord arena = arena(arenaId).orElse(null);
+        var profile = com.siirio.jemworldbosstiers.api.WorldTierApi.profile(boss).orElse(null);
+        var encounter = com.siirio.jemworldbosstiers.api.WorldTierApi.encounter(boss).orElse(null);
+        if (arena == null || profile == null || encounter == null || encounter.arenaId() == null
+                || !arena.profileKey().equals(profile.key()) || !arena.dimension().equals(boss.level().dimension().location().toString())
+                || !canonicalArenaId(arenaId).equals(canonicalArenaId(encounter.arenaId()))) return false;
+        return recordLiveBoss(arenaId, boss.getUUID());
+    }
+
+    public void clearLiveBoss(String arenaId, java.util.UUID bossId) {
+        String id = canonicalArenaId(arenaId);
+        boolean removed = liveBosses.remove(id, bossId);
+        var conflicts = conflictingBosses.get(id);
+        if (conflicts != null) removed |= conflicts.remove(bossId);
+        if (!liveBosses.containsKey(id) && conflicts != null && !conflicts.isEmpty()) {
+            java.util.UUID promoted = conflicts.stream().sorted().findFirst().orElseThrow();
+            liveBosses.put(id, promoted);
+            conflicts.remove(promoted);
+            removed = true;
+        }
+        if (removed) setDirty();
+    }
+
+    public boolean observeLiveBoss(String arenaId, net.minecraft.world.entity.LivingEntity boss) {
+        var owner = arena(arenaId).orElse(null);
+        var profile = com.siirio.jemworldbosstiers.api.WorldTierApi.profile(boss).orElse(null);
+        var encounter = com.siirio.jemworldbosstiers.api.WorldTierApi.encounter(boss).orElse(null);
+        if (owner == null || profile == null || encounter == null || encounter.arenaId() == null
+                || !owner.profileKey().equals(profile.key()) || !owner.dimension().equals(boss.level().dimension().location().toString())
+                || !canonicalArenaId(arenaId).equals(canonicalArenaId(encounter.arenaId()))) return false;
+        if (recordLiveBoss(arenaId, boss)) return true;
+        if (conflictingBosses.computeIfAbsent(canonicalArenaId(arenaId), ignored -> new LinkedHashSet<>()).add(boss.getUUID())) setDirty();
+        return false;
+    }
+
+    public boolean replaceLiveBoss(String arenaId, java.util.UUID expected, java.util.UUID replacement) {
+        if (!liveBosses.replace(canonicalArenaId(arenaId), expected, replacement)) return false;
+        conflictingBosses.computeIfAbsent(canonicalArenaId(arenaId), ignored -> new LinkedHashSet<>()).remove(replacement);
+        setDirty();
+        return true;
+    }
+
+    /** Aliases retain old records, but only one canonical arena owns timers and admission. */
+    public void aliasArena(String formerId, String structureId) {
+        String from = canonicalArenaId(formerId), to = canonicalArenaId(structureId);
+        if (from.equals(to) || !arenas.containsKey(from) || !arenas.containsKey(to)) return;
+        ArenaRecord old = arenas.get(from), target = arenas.get(to);
+        if (old.structureArena() || !target.structureArena() || !old.profileKey().equals(target.profileKey())
+                || !old.dimension().equals(target.dimension())) return;
+        var center = old.center();
+        String legacyOriginId = old.dimension() + '|' + old.profileKey() + '|' + center.getX() + '|' + center.getZ();
+        if (!old.id().equals(legacyOriginId)) return;
+        if (center.getX() < target.minX() || center.getX() > target.maxX()
+                || center.getZ() < target.minZ() || center.getZ() > target.maxZ()) return;
+        arenaAliases.put(from, to);
+        if (old.unlocked()) arenas.put(to, target.unlock());
+        if (target.activeEncounterId() != null) liveBosses.putIfAbsent(to, target.activeEncounterId());
+        var claim = liveBosses.getOrDefault(from, old.activeEncounterId());
+        if (claim != null) liveBosses.putIfAbsent(to, claim);
+        if (claim != null && !claim.equals(liveBosses.get(to))) conflictingBosses.computeIfAbsent(to, ignored -> new LinkedHashSet<>()).add(claim);
+        conflictingBosses.computeIfAbsent(to, ignored -> new LinkedHashSet<>()).addAll(conflictingBosses.getOrDefault(from, Set.of()));
+        RespawnState previous = respawns.remove(from), current = respawns.get(to);
+        if (previous != null && (current == null || previous.dueTime() < current.dueTime())) respawns.put(to, previous);
+        var participants = raidParticipation.get(from);
+        if (participants != null) raidParticipation.computeIfAbsent(to, ignored -> new LinkedHashSet<>()).addAll(participants);
+        if (pendingRaidReplacements.remove(from)) pendingRaidReplacements.add(to);
+        setDirty();
+    }
+
+    /** Native storage must acknowledge the exact persisted claim before spawning a replacement. */
+    public boolean flush(MinecraftServer server) {
+        CompoundTag expected = save(new CompoundTag());
+        setDirty();
+        server.overworld().getDataStorage().save();
+        var path = server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT)
+                .resolve("data").resolve(FILE_ID + ".dat").toFile();
+        try {
+            CompoundTag persisted = net.minecraft.nbt.NbtIo.readCompressed(path);
+            if (persisted.getCompound("data").equals(expected)) return true;
+        } catch (java.io.IOException error) {
+            com.mojang.logging.LogUtils.getLogger().error("Boss identity storage acknowledgement failed", error);
+        }
+        setDirty();
+        return false;
     }
 
     public void verifyNativeAnchor(String arenaId) {
+        arenaId = canonicalArenaId(arenaId);
         if (verifiedAnchors.add(arenaId)) setDirty();
     }
 
     public boolean nativeAnchorVerified(String arenaId) {
+        arenaId = canonicalArenaId(arenaId);
         return verifiedAnchors.contains(arenaId);
     }
 
     public void scheduleRespawn(String arenaId, ResourceLocation entityType, long dueTime) {
+        arenaId = canonicalArenaId(arenaId);
         respawns.put(arenaId, new RespawnState(entityType, dueTime));
         setDirty();
     }
 
     public Optional<RespawnState> respawn(String arenaId) {
+        arenaId = canonicalArenaId(arenaId);
         return Optional.ofNullable(respawns.get(arenaId));
     }
 
@@ -114,24 +229,30 @@ public final class WorldTierData extends SavedData {
     }
 
     public void cancelRespawn(String arenaId) {
+        arenaId = canonicalArenaId(arenaId);
         if (respawns.remove(arenaId) != null) setDirty();
     }
 
     public boolean hasRaidParticipation(String arenaId, java.util.UUID playerId) {
+        arenaId = canonicalArenaId(arenaId);
         return raidParticipation.getOrDefault(arenaId, Set.of()).contains(playerId);
     }
 
     public void recordRaidParticipation(String arenaId, Collection<java.util.UUID> players) {
+        arenaId = canonicalArenaId(arenaId);
         if (raidParticipation.computeIfAbsent(arenaId, ignored -> new LinkedHashSet<>()).addAll(players)) setDirty();
     }
 
-    public boolean raidReplacementPending(String arenaId) { return pendingRaidReplacements.contains(arenaId); }
+    public boolean raidReplacementPending(String arenaId) {
+        arenaId = canonicalArenaId(arenaId); return pendingRaidReplacements.contains(arenaId); }
 
     public void markRaidReplacement(String arenaId) {
+        arenaId = canonicalArenaId(arenaId);
         if (pendingRaidReplacements.add(arenaId)) setDirty();
     }
 
     public void clearRaidReplacement(String arenaId) {
+        arenaId = canonicalArenaId(arenaId);
         if (pendingRaidReplacements.remove(arenaId)) setDirty();
     }
 
@@ -170,6 +291,15 @@ public final class WorldTierData extends SavedData {
         ListTag replacements = new ListTag();
         pendingRaidReplacements.forEach(id -> replacements.add(StringTag.valueOf(id)));
         tag.put(RAID_REPLACEMENTS, replacements);
+        ListTag claims = new ListTag();
+        liveBosses.forEach((arena, uuid) -> { CompoundTag claim = new CompoundTag(); claim.putString("Arena", arena); claim.putUUID("Boss", uuid); claims.add(claim); });
+        tag.put("LiveBossIdentities", claims);
+        ListTag conflicts = new ListTag();
+        conflictingBosses.forEach((arena, ids) -> ids.forEach(uuid -> { CompoundTag claim = new CompoundTag(); claim.putString("Arena", arena); claim.putUUID("Boss", uuid); conflicts.add(claim); }));
+        tag.put("ConflictingBossIdentities", conflicts);
+        ListTag aliases = new ListTag();
+        arenaAliases.forEach((from, to) -> { CompoundTag alias = new CompoundTag(); alias.putString("From", from); alias.putString("To", to); aliases.add(alias); });
+        tag.put("ArenaAliases", aliases);
         return tag;
     }
 
@@ -204,6 +334,20 @@ public final class WorldTierData extends SavedData {
             if (!entry.getString("Arena").isBlank()) data.raidParticipation.put(entry.getString("Arena"), players);
         }
         for (Tag value : tag.getList(RAID_REPLACEMENTS, Tag.TAG_STRING)) data.pendingRaidReplacements.add(value.getAsString());
+        for (Tag value : tag.getList("LiveBossIdentities", Tag.TAG_COMPOUND)) {
+            CompoundTag claim = (CompoundTag)value;
+            if (claim.hasUUID("Boss") && !claim.getString("Arena").isBlank()) data.liveBosses.put(claim.getString("Arena"), claim.getUUID("Boss"));
+        }
+        for (Tag value : tag.getList("ArenaAliases", Tag.TAG_COMPOUND)) {
+            CompoundTag alias = (CompoundTag)value;
+            if (data.arenas.containsKey(alias.getString("From")) && data.arenas.containsKey(alias.getString("To"))
+                    && !alias.getString("From").equals(alias.getString("To"))) data.arenaAliases.put(alias.getString("From"), alias.getString("To"));
+        }
+        for (Tag value : tag.getList("ConflictingBossIdentities", Tag.TAG_COMPOUND)) {
+            CompoundTag claim = (CompoundTag)value;
+            if (claim.hasUUID("Boss") && !claim.getString("Arena").isBlank())
+                data.conflictingBosses.computeIfAbsent(data.canonicalArenaId(claim.getString("Arena")), ignored -> new LinkedHashSet<>()).add(claim.getUUID("Boss"));
+        }
         return data;
     }
 

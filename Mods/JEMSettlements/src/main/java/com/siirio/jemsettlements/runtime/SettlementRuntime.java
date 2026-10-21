@@ -101,6 +101,12 @@ public final class SettlementRuntime {
 
     @SubscribeEvent public static void placed(BlockEvent.EntityPlaceEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !SettlementAuthority.active(level.getServer())) return;
+        if (event.getPlacedBlock().is(Blocks.BELL)
+                && SettlementSavedData.get(level.getServer()).towns().stream().anyMatch(town -> town.dimension().equals(level.dimension().location()) && town.contains(event.getPos()))) {
+            event.setCanceled(true);
+            if (event.getEntity() instanceof ServerPlayer player) player.sendSystemMessage(Component.translatable("jem.settlements.reason.conflict"), true);
+            return;
+        }
         AmenityScanService.invalidate(level.getServer(), level.dimension(), event.getPos());
         com.siirio.jemsettlements.happiness.BedPersonalSpace.invalidate(level, event.getPos());
         com.siirio.jemsettlements.happiness.ResidentConditions.invalidate(level, event.getPos());
@@ -252,12 +258,7 @@ public final class SettlementRuntime {
             for (ResidentMood resident : data.residents(town.id())) {
                 var entity = level.getEntity(resident.villagerId()); if (!(entity instanceof Villager villager) || !villager.isAlive()
                         || resident.mood() < 10 || villager.isLeashed() || villager.isPassenger() || villager.hurtTime > 0) continue;
-                BlockPos current = villager.blockPosition();
-                if (current.getX() >= town.territoryMinX() - 12 && current.getX() <= town.territoryMaxX() + 12 && current.getZ() >= town.territoryMinZ() - 12 && current.getZ() <= town.territoryMaxZ() + 12) continue;
-                BlockPos preferred = villager.getBrain().getMemory(MemoryModuleType.HOME).filter(pos -> pos.dimension().equals(level.dimension()) && town.contains(pos.pos())).map(GlobalPos::pos)
-                        .orElseGet(() -> villager.getBrain().getMemory(MemoryModuleType.MEETING_POINT).filter(pos -> pos.dimension().equals(level.dimension()) && town.contains(pos.pos())).map(GlobalPos::pos).orElse(town.center()));
-                double dx = preferred.getX() + .5D - villager.getX(), dz = preferred.getZ() + .5D - villager.getZ(), length = Math.max(1.0D, Math.sqrt(dx * dx + dz * dz));
-                villager.getNavigation().moveTo(villager.getX() + dx / length * 8.0D, villager.getY(), villager.getZ() + dz / length * 8.0D, 0.6D);
+                ResidentTerritoryTravel.advance(villager, town);
             }
         }
     }

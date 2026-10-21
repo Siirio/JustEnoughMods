@@ -1,0 +1,119 @@
+{
+  "sourceCommit": "SELF",
+  "branch": "main",
+  "mode": "client-and-server",
+  "world": "world",
+  "worldReplaced": false,
+  "backup": {
+    "path": "archive-2026-10-21T103924+0300.tar.zst",
+    "displayedSize": "2.69 GB",
+    "integrityCheck": "waived by user"
+  },
+  "remote": {
+    "server": "JustEnough / ForeverSMP",
+    "startedAt": "2026-10-21T12:48:18+05:00",
+    "publishedAt": "2026-10-21T12:50:24+05:00",
+    "generation": 8,
+    "contentTokenPrefix": "eb4b76b",
+    "delta": {
+      "added": 0,
+      "changed": 8,
+      "deleted": 0
+    },
+    "state": "running",
+    "testPrivileges": false
+  },
+  "local": {
+    "generation": 53,
+    "contentToken": "eb4b76bda7a547d685430caba312445a27278f6e",
+    "published": true,
+    "testJemNativeApplied": true,
+    "exactSevenJarHashes": true,
+    "pendingTransaction": false,
+    "runtimeState": "Stopped after preexisting Windows TaxDurability replacement error5; all dimensions saved; shutdown watchdog timeout",
+    "runtimeAcceptance": "not passed"
+  },
+  "artifacts": [
+    {
+      "module": "JEMEconomy",
+      "file": "mods/jem-economy-1.3.0.jar",
+      "size": 2225104,
+      "sha256": "d83f549e4e91dea6f97849c79e5e5dc2d2a686f9b6e158d8a85885646d2329a7"
+    },
+    {
+      "module": "JEMSettlements",
+      "file": "mods/jem-settlements-2.1.0.jar",
+      "size": 2822124,
+      "sha256": "25f7f8107985e6054963f96cb4dd66cf0813c5eba66dfac535cd862daba92957"
+    },
+    {
+      "module": "JEMRoles",
+      "file": "mods/jem-roles-2.0.0.jar",
+      "size": 181154,
+      "sha256": "c106a17b393720052a1b38bdd8c0eaf3a9fe64be0aa5a59786b7735c522d8c94"
+    },
+    {
+      "module": "JEMPackCore",
+      "file": "mods/jem-pack-core-2.0.0-dev.jar",
+      "size": 770584,
+      "sha256": "9415955ab81d8778ec74a37566563f318c14d32b8d16a828b04fdc86c63b4419"
+    },
+    {
+      "module": "JEMTwelveEyes",
+      "file": "mods/jem_twelve_eyes-1.7.0-dev.jar",
+      "size": 111445,
+      "sha256": "0319d045fc571aadb955053b6e28f071c9b72c447a821bb3a9f28e6aedb4f8e6"
+    },
+    {
+      "module": "JEMWorldBossTiers",
+      "file": "mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "size": 270505,
+      "sha256": "f7f88257e57a91139068582bdcb1049efd56251f72bf92535fd56f13ac545dcb"
+    },
+    {
+      "module": "JEMServer",
+      "file": "mods/jem-server-2.0.0-dev.jar",
+      "size": 19884342,
+      "sha256": "e50ff3a3d7f016c2f0433fef7c8163a655d0edbe9f41716bb33ea2f248f5d346"
+    }
+  ],
+  "hostArchive": {
+    "name": "jem-release-20261021-final.zip",
+    "entries": 15,
+    "bytes": 51807111,
+    "sha256": "5d344d7a6c077a7c63305571753039b4929c9bc0a310cbf2408b32b2db10539b"
+  },
+  "clientRelease": {
+    "createdAt": "2026-10-21T12:51:39.488684+05:00",
+    "previousCreatedAt": "2026-10-21T00:25:00.082595+05:00",
+    "publishedDelta": {
+      "added": [],
+      "changed": [
+        "jem-pack/manifest.json",
+        "mods/jem-economy-1.3.0.jar",
+        "mods/jem-pack-core-2.0.0-dev.jar",
+        "mods/jem-roles-2.0.0.jar",
+        "mods/jem-server-2.0.0-dev.jar",
+        "mods/jem-settlements-2.1.0.jar",
+        "mods/jem-world-boss-tiers-2.5.0-dev.jar",
+        "mods/jem_twelve_eyes-1.7.0-dev.jar"
+      ],
+      "deleted": []
+    },
+    "pointUpdate": {
+      "folder": "C:\\MyProjects\\Minecraft\\JustEnoughMods-updates\\JustEnoughMods-update-2026-10-21_12-33-20",
+      "archive": "C:\\MyProjects\\Minecraft\\JustEnoughMods-updates\\JustEnoughMods-update-2026-10-21_12-33-20.zip",
+      "sha256": "c726afd57221c4b41efa0d986ca30b874fbf8217e93122b32a4cc43d1016096d"
+    }
+  },
+  "tests": "Not run; user canceled isolated-copy runtime checks; no client/gameplay launch",
+  "quarantineExecuted": false,
+  "playerAcceptance": "in testing",
+  "atlas": {
+    "trackedProjectionValid": true,
+    "changeRecords": 103,
+    "installedArtifactDrift": [],
+    "preexistingUncoveredPaths": 6,
+    "unrelatedUntrackedPartitionsPreserved": 16
+  }
+}

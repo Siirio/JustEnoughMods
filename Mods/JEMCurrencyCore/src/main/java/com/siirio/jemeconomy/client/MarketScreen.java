@@ -129,6 +129,7 @@ public final class MarketScreen extends Screen {
         int x = 505;
         for (CoinDenomination denomination : CoinDenomination.descending()) {
             long count = remaining / denomination.value(); remaining %= denomination.value();
+            if (count == 0L) continue;
             g.renderItem(new ItemStack(CurrencyItems.item(denomination)), x, 47);
             fitted(g, Component.literal("×" + count), x + 18, 52, 34, CREAM);
             if (inside(mx, my, x, 45, 53, 25)) hoveredText = denominationName(denomination);

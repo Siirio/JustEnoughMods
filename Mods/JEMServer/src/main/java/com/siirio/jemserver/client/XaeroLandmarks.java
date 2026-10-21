@@ -22,11 +22,14 @@ public final class XaeroLandmarks {
     private static final ResourceLocation LEGACY_ORIGIN = new ResourceLocation("jem_server", "landmarks");
     private static final ResourceLocation BOSS_ORIGIN = new ResourceLocation("jem_server", "boss_discoveries");
     private static final ResourceLocation PERSONAL_ORIGIN = new ResourceLocation("jem_server", "personal_landmarks");
+    private static final ResourceLocation EVENT_ORIGIN = new ResourceLocation("jem_server", "current_events");
     private static final String SYMBOL = "◆";
     private record Applied(int revision, ResourceLocation dimension) {}
     private static final Map<MinimapWorldContainer, Applied> APPLIED = new IdentityHashMap<>();
     private record Shared(java.util.UUID id, MinimapWorldContainer container) {}
     private static final Map<Waypoint, Shared> SHARED_IDS = new IdentityHashMap<>();
+    private static final Map<Waypoint, Shared> EVENT_IDS = new IdentityHashMap<>();
+    private static List<com.siirio.jemserver.MapNetwork.EventArea> events = List.of();
     private static List<ServerData.Landmark> snapshot;
     private static int revision;
     private static MinimapWorldRootContainer preparedRoot;
@@ -52,6 +55,18 @@ public final class XaeroLandmarks {
         return shared == null || snapshot == null ? null : snapshot.stream().filter(value -> value.id().equals(shared.id())).findFirst().orElse(null);
     }
 
+    public static java.util.UUID event(Object waypoint) {
+        Shared shared = EVENT_IDS.get(waypoint);
+        return shared == null ? null : events.stream().filter(value -> value.id().equals(shared.id())).map(com.siirio.jemserver.MapNetwork.EventArea::id).findFirst().orElse(null);
+    }
+
+    public static void acceptEvents(List<com.siirio.jemserver.MapNetwork.EventArea> update) {
+        events = update.stream().filter(value -> java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(value.activity())).toList();
+        revision++;
+        mapPrepared = false;
+        synchronize();
+    }
+
     static void accept(List<ServerData.Landmark> landmarks) {
         snapshot = List.copyOf(landmarks);
         revision++;
@@ -64,6 +79,8 @@ public final class XaeroLandmarks {
         APPLIED.keySet().forEach(XaeroLandmarks::clearShared);
         APPLIED.clear();
         SHARED_IDS.clear();
+        EVENT_IDS.clear();
+        events = List.of();
         revision = 0;
         preparedRoot = null;
         preparedRevision = 0;
@@ -76,7 +93,7 @@ public final class XaeroLandmarks {
     }
 
     private static void synchronize() {
-        if (Minecraft.getInstance().player == null) return;
+        if (Minecraft.getInstance().player == null || snapshot == null) return;
         var session = BuiltInHudModules.MINIMAP.getCurrentSession();
         if (session == null) return;
         var manager = session.getWorldManager();
@@ -94,7 +111,7 @@ public final class XaeroLandmarks {
         for (var container : root.getSubContainers()) {
             if (container.getThirdPartyWaypointManager() != null) apply(container, container.getEquivalentDimId());
         }
-        snapshot.stream().map(ServerData.Landmark::dimension).distinct().forEach(dimension -> {
+        java.util.stream.Stream.concat(snapshot.stream().map(ServerData.Landmark::dimension), events.stream().map(com.siirio.jemserver.MapNetwork.EventArea::dimension)).distinct().forEach(dimension -> {
             var key = ResourceKey.create(Registries.DIMENSION, dimension);
             var path = root.getPath().resolve(session.getDimensionHelper().getDimensionDirectoryName(key));
             apply(manager.addWorldContainer(path), dimension);
@@ -129,6 +146,15 @@ public final class XaeroLandmarks {
             manager.get(boss ? BOSS_ORIGIN : PERSONAL_ORIGIN).add(landmark.id().toString(), waypoint);
             SHARED_IDS.put(waypoint, new Shared(landmark.id(), container));
         }
+        for (var event : events) {
+            if (!event.dimension().equals(dimension)) continue;
+            var pos = event.position();
+            var waypoint = new Waypoint(pos.getX(), pos.getY(), pos.getZ(),
+                    Component.translatable("jem.smp." + event.activity()).getString(), SYMBOL, WaypointColor.GOLD);
+            waypoint.setTemporary(true);
+            manager.get(EVENT_ORIGIN).add(event.id().toString(), waypoint);
+            EVENT_IDS.put(waypoint, new Shared(event.id(), container));
+        }
         APPLIED.put(container, new Applied(revision, dimension));
     }
 
@@ -138,7 +164,7 @@ public final class XaeroLandmarks {
                 java.util.List<Waypoint> shared = new java.util.ArrayList<>();
                 for (Waypoint waypoint : set.getWaypoints()) {
                     var origin = waypoint.getThirdPartyOrigin();
-                    if (LEGACY_ORIGIN.equals(origin) || BOSS_ORIGIN.equals(origin) || PERSONAL_ORIGIN.equals(origin)) shared.add(waypoint);
+                    if (LEGACY_ORIGIN.equals(origin) || BOSS_ORIGIN.equals(origin) || PERSONAL_ORIGIN.equals(origin) || EVENT_ORIGIN.equals(origin)) shared.add(waypoint);
                 }
                 set.removeAll(shared);
             }
@@ -147,7 +173,9 @@ public final class XaeroLandmarks {
         manager.clearOrigin(LEGACY_ORIGIN);
         manager.clearOrigin(BOSS_ORIGIN);
         manager.clearOrigin(PERSONAL_ORIGIN);
+        manager.clearOrigin(EVENT_ORIGIN);
         SHARED_IDS.entrySet().removeIf(entry -> entry.getValue().container() == container);
+        EVENT_IDS.entrySet().removeIf(entry -> entry.getValue().container() == container);
     }
 
     private static WaypointColor color(String category) {

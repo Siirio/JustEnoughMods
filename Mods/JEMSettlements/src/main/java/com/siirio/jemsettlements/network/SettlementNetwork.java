@@ -176,11 +176,12 @@ public final class SettlementNetwork {
 
     static CompoundTag buildView(ServerPlayer player, TownRecord town) {
         CompoundTag view = new CompoundTag(); view.putBoolean("CoinCurrency", com.siirio.jemsettlements.currency.SettlementCurrency.coins()); view.putLong("ExpansionCostPerBlock", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.expansionPerBlock()); view.putLong("ExpansionMinimumCost", com.siirio.jemsettlements.payroll.SettlementEconomyConfig.expansionMinimum()); view.putUUID("Id", town.id()); view.putString("Name", town.name());
-        view.putBoolean("SetTaxAvailable",!com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()));view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
+        view.putBoolean("SetTaxAvailable",false);view.putInt("Happiness", town.happiness()); view.putInt("Tax", town.taxPercent()); view.putLong("Center", town.center().asLong());
         view.putInt("TerritoryRadius", town.territoryRadius()); view.putInt("TerritoryMinX", town.territoryMinX()); view.putInt("TerritoryMaxX", town.territoryMaxX()); view.putInt("TerritoryMinZ", town.territoryMinZ()); view.putInt("TerritoryMaxZ", town.territoryMaxZ()); view.putLong("TerritoryArea", town.territoryArea());
         view.putString("Tier", town.tier().name()); view.putString("PrimarySpecialization", town.primarySpecialization().name()); view.putString("SecondarySpecialization", town.secondarySpecialization().name());
         view.put("Metrics", town.metrics());
         view.putLong("LastResidentTax",town.metrics().getLong("LastResidentIncome"));view.putLong("LastBeautyTax",town.metrics().getLong("LastComfortIncome"));view.putLong("LastDailyTax",town.metrics().getLong("LastDailyTax"));
+        view.putLong("CalculatedDailyIncome", town.dailyTax().getLong("CalculatedDailyIncome"));
         view.putInt("Housing", town.housingScore()); view.putInt("Food", town.foodScore()); view.putInt("Safety", town.safetyScore()); view.putInt("Jobs", town.jobsScore()); view.putInt("Community", town.communityScore()); view.putInt("Decoration", town.decorationScore());
         view.putLong("Treasury", SettlementApi.treasuryBalance(player, town));
         var bulletin = com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? com.siirio.jemeconomy.api.EconomyApi.marketBulletin(player) : new com.siirio.jemeconomy.api.EconomyApi.MarketBulletin("", "", 0L, 0L, 0L);

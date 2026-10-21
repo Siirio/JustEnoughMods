@@ -27,7 +27,6 @@ public final class MarketRuntime {
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0 || !event.getServer().isDedicatedServer()) return;
-        if (event.getServer().getTickCount() % 1200 == 0) reconcileBuyer(event.getServer().overworld());
         synchronized (LOADED) {
             LOADED.forEach((level, positions) -> positions.removeIf(pos -> {
                 if (!level.isLoaded(pos)) return true;
@@ -37,36 +36,12 @@ public final class MarketRuntime {
         }
     }
 
-    public static int bulletin(ServerPlayer player) {
-        if (!com.siirio.jemidentity.api.DedicatedSmp.active(player)) return 0;
-        // A transient native merchant supplies remote read-only offers; no NPC lookup/chunk load.
-        Villager preview = net.minecraft.world.entity.EntityType.VILLAGER.create(player.serverLevel());
-        if (preview == null) return 0;
-        preview.addTag(BUYER_TAG); preview.addTag("jem_market_preview");
-        preview.setCustomName(Component.translatable("jem.economy.buyer.preview_title"));
-        com.siirio.jemeconomy.merchant.BuyerTradeOffers.refresh(preview, player);
-        preview.setTradingPlayer(player);
-        preview.openTradingScreen(player, preview.getDisplayName(), 1);
-        return 1;
-    }
-
-    public static boolean isPreview(net.minecraft.world.entity.Entity entity) { return entity.getTags().contains("jem_market_preview"); }
-
-    private static void reconcileBuyer(ServerLevel level) {
-        BlockPos spawn = level.getSharedSpawnPos(); if (!level.hasChunkAt(spawn)) return;
-        AABB area = new AABB(spawn).inflate(32.0D);
-        var buyers = level.getEntitiesOfClass(Villager.class, area, villager -> villager.getTags().contains(BUYER_TAG));
-        Villager buyer = buyers.isEmpty() ? null : buyers.get(0);
-        for (int i = 1; i < buyers.size(); i++) buyers.get(i).discard();
-        if (buyer == null) {
-            buyer = net.minecraft.world.entity.EntityType.VILLAGER.create(level); if (buyer == null) return;
-            buyer.moveTo(spawn.getX() + .5D, spawn.getY(), spawn.getZ() + .5D, 0.0F, 0.0F);
-            if (!level.noCollision(buyer)) { buyer.discard(); return; }
-            buyer.addTag(BUYER_TAG); buyer.setPersistenceRequired(); buyer.setInvulnerable(true); buyer.setNoAi(true);
-            level.addFreshEntity(buyer);
-        }
-        var demand = MarketSavedData.get(level.getServer()).demand(level.getServer());
-        buyer.setCustomName(Component.translatable("jem.economy.buyer.name", Component.translatable("jem.economy.demand." + demand.primary()), Component.translatable("jem.economy.demand." + demand.secondary())));
-        buyer.setCustomNameVisible(true);
+    /** Retire only the synthetic trading role; native villager inventory and identity survive. */
+    @SubscribeEvent public static void retireBuyer(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide || !event.getLevel().getServer().isDedicatedServer()
+                || !(event.getEntity() instanceof Villager villager) || !isBuyer(villager)) return;
+        villager.removeTag(BUYER_TAG); villager.removeTag("jem_market_preview");
+        villager.setInvulnerable(false); villager.setNoAi(false); villager.setCustomName(null); villager.setCustomNameVisible(false);
+        ((com.siirio.jemeconomy.mixin.AbstractVillagerOffersAccessor) villager).jem$setOffers(new net.minecraft.world.item.trading.MerchantOffers());
     }
 }

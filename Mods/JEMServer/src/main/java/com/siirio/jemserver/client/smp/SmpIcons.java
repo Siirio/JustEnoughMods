@@ -34,7 +34,7 @@ final class SmpIcons {
             case "RESOURCE_RUSH" -> Items.DIAMOND_PICKAXE;
             case "BLOOD_MOON", "bloodMoonClears" -> Items.ZOMBIE_HEAD;
             case "shops", "market", "TRADING" -> Items.EMERALD;
-            case "wallet" -> Items.GOLD_NUGGET;
+            case "death_history" -> Items.RECOVERY_COMPASS;
             case "treasury_deposit", "treasury_withdraw" -> Items.GOLD_INGOT;
             case "roles" -> Items.TOTEM_OF_UNDYING;
             case "professions" -> Items.EXPERIENCE_BOTTLE;

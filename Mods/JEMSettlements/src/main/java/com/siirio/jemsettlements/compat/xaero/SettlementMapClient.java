@@ -26,11 +26,12 @@ public final class SettlementMapClient {
     private static boolean coins, received;
     private static TerritoryDragState state = TerritoryDragState.IDLE;
     private static Object activeScreen;
+    private static Area expansionArea;
     private static long perBlock, minimum;
     private static long lastRequest;
     private SettlementMapClient() { }
     public static void opened(Object screen) { cancel(); activeScreen = screen; refresh(true); }
-    public static void cancel() { state = TerritoryDragState.CANCEL; draft = null; state = TerritoryDragState.IDLE; }
+    public static void cancel() { expansionArea = null; state = TerritoryDragState.CANCEL; draft = null; state = TerritoryDragState.IDLE; }
     /** Also catches removal/focus loss when the native screen receives no mouse-up. */
     public static void tick() {
         var client = Minecraft.getInstance();
@@ -70,10 +71,15 @@ public final class SettlementMapClient {
         return areas.stream().filter(a -> (!owned || a.owned()) && a.dimension().equals(dim)
                 && x >= a.minX() && x <= a.maxX() && z >= a.minZ() && z <= a.maxZ()).findFirst().orElse(null);
     }
+    public static Area ownedAt(ResourceLocation dim,int x,int z) { return area(dim,x,z,true); }
+    public static void enter(Area value) { cancel(); expansionArea=value; activeScreen=Minecraft.getInstance().screen; }
+    public static boolean dragging() { return state==TerritoryDragState.DRAGGING; }
+    public static boolean coins() { return coins; }
     public static boolean begin(ResourceLocation dim, int x, int z) {
         if (!received || state == TerritoryDragState.COMMIT || SettlementClientState.pending()) return false;
-        cancel(); activeScreen = Minecraft.getInstance().screen;
-        Area area = area(dim, x, z, true); if (area == null) return false;
+        Area area=expansionArea;
+        if(area==null || !area.dimension().equals(dim)) return false;
+        activeScreen = Minecraft.getInstance().screen;
         draft = new Draft(area, x, z, TerritoryQuote.union(area.minX(), area.minZ(), area.maxX(), area.maxZ(), x, z, x, z, perBlock, minimum));
         state = TerritoryDragState.DRAGGING; return true;
     }

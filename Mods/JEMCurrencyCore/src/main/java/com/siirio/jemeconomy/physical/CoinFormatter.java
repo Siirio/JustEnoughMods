@@ -8,7 +8,7 @@ import net.minecraft.network.chat.MutableComponent;
 public final class CoinFormatter {
     private CoinFormatter() { }
     public static Component format(long copper) {
-        if (copper <= 0L) return iconAmount(CoinDenomination.COPPER, 0L);
+        if (copper <= 0L) return Component.literal("0");
         List<MutableComponent> parts = new ArrayList<>();
         long remainder = copper;
         for (CoinDenomination denomination : CoinDenomination.descending()) {
@@ -24,17 +24,7 @@ public final class CoinFormatter {
         return result;
     }
     public static Component formatAll(long copper) {
-        MutableComponent result = Component.empty();
-        long remainder = Math.max(0L, copper);
-        var values = CoinDenomination.descending();
-        for (int i = 0; i < values.length; i++) {
-            CoinDenomination denomination = values[i];
-            long count = remainder / denomination.value();
-            remainder %= denomination.value();
-            if (i > 0) result.append(Component.literal(" + "));
-            result.append(iconAmount(denomination, count));
-        }
-        return result;
+        return format(copper);
     }
     /** Uses the registered coin faces, also in chat/actionbar and native Component tooltips. */
     public static MutableComponent iconAmount(CoinDenomination denomination, long count) {

@@ -1,0 +1,234 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.barrier-free-attack-admission-official-travel-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    },
+    {
+      "type": "registry",
+      "registry": "structures"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1200,
+    "overrides": [
+      "hosted.arena-presence-and-lobby-isolation",
+      "hosted.structural-arena-volume",
+      "xaero.native-optional-overlays"
+    ]
+  },
+  "change": {
+    "summary": "hosted barrier free attack admission official travel 20261021",
+    "modifiers": [
+      {
+        "property": "hosted.structural_boss_admission_and_barriers",
+        "operation": "replace",
+        "before": "Structural Fight/Campaign/Raid used visual, collision and teleport containment; proximity prompts and timeout/reload lobby release existed.",
+        "after": {
+          "boss_barriers": "Remove entirely for structural Boss Fight/Campaign/Raid; preserve Blood Moon/Resource Rush contracts. Structure identity/safe placement/rewards stay canonical.",
+          "lobby": "Persist noAI/invulnerability/target/presentation hold across join/reload until canonical Start, no proximity player immunity.",
+          "attack": "Cancel attempted dormant-boss hit and open existing GUI with authoritative admission checks, never automatic combat.",
+          "raid": "HostedRaidScaling owns preparation boost; Start adds participant scale once without double melee multiplier.",
+          "marker_travel": "Native actions only for official server boss/event object identities; server resolves IDs, checks availability/eligibility/safe destination. Personal/home/death native behavior/privacy unchanged.",
+          "empty_attempt": "Existing hosted grace closes no-present-participant attempt.",
+          "raid_authored_adds": "Authored Raid reinforcements associate with the canonical hosted boss; damage authority resolves through that boss, so outsider damage remains denied.",
+          "orphan_recovery": "A closed Raid orphan observed on load returns to a normal dormant held boss; it cannot retain active Raid combat state.",
+          "campaign_start": "Canonical hosted Start rechecks Campaign prerequisites; terrain remains freely accessible.",
+          "retired_block_cleanup": "Exact retired JEM barrier IDs in known owned shell cells only; no broader old-world migration."
+        }
+      },
+      {
+        "property": "player.personal_death_home_routes",
+        "operation": "replace",
+        "before": "No public /death registration; existing HomeTravel single return.",
+        "after": {
+          "death": "Up to three latest own UUID-bound records; current ownership and full-box safe arrival revalidation.",
+          "home": "Existing personal respawn point; /home all bounded nearby living/ ridden passenger tree preflight with ownership/combat/event gates.",
+          "rollback": "Continue each detach/restore/reattach independently; report recovery_required for incomplete native rollback."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "hosted.barrier-free-attack-admission-official-travel-20261021",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/OfficialMarkerTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointOptionMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointTeleportMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventSession.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeSettlementAccess.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravelGroup.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/gate/CampaignGateEvents.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java",
+      "Docs/events/BOSS_FIGHT.md",
+      "Docs/events/BOSS_RAID.md",
+      "Docs/SERVER_COMMANDS.md",
+      "Docs/smp-gui/README.md",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPresentation.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMTwelveEyes/AGENTS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
+    "decision_source": "User plan and explicit later overrides on2026-10-21; Docs/plans/2026-10-21-economy-races-settlements-gui.md current override section.",
+    "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
+    "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_user_overrides_source_in_testing",
+    "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/OfficialMarkerTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointOptionMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointTeleportMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventSession.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeSettlementAccess.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravelGroup.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/gate/CampaignGateEvents.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java",
+      "Docs/events/BOSS_FIGHT.md",
+      "Docs/events/BOSS_RAID.md",
+      "Docs/SERVER_COMMANDS.md",
+      "Docs/smp-gui/README.md",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPresentation.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+      "Mods/JEMTwelveEyes/AGENTS.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_user_overrides_source_in_testing",
+      "summary": "Current source contract; runtime acceptance unrun and artifact/native/MineRENT delivery pending.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/DeathHistory.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/JemServer.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/MapNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/XaeroLandmarks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/MapClient.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/xaero/OfficialMarkerTravel.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointOptionMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/OfficialWaypointTeleportMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventSession.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeSettlementAccess.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravel.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravelGroup.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+        "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/gate/CampaignGateEvents.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java",
+        "Docs/events/BOSS_FIGHT.md",
+        "Docs/events/BOSS_RAID.md",
+        "Docs/SERVER_COMMANDS.md",
+        "Docs/smp-gui/README.md",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPresentation.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/HostedBossTickMixin.java",
+        "Mods/JEMTwelveEyes/AGENTS.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "hosted_encounters",
+      "raid_scaling",
+      "progression",
+      "world_tiers",
+      "teleports",
+      "death_history",
+      "passenger_transfer",
+      "xaero_optional",
+      "native_presentation"
+    ],
+    "relations": "Owning modules remain single authorities; adapters translate server-authoritative identities/state. Source paths include the complete current task diff for this domain; unrelated VFX/registry-coverage.csv excluded.",
+    "notes": "Prohibitions on tests/static analysis/gameplay respected. Atlas effective/artifact refresh belongs to parent release workflow after fresh artifacts.",
+    "unresolved": [
+      "Runtime/player acceptance unrun; status in testing.",
+      "Final production artifacts, normal native publication/application and MineRENT deployment pending."
+    ]
+  }
+}

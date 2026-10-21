@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "change_id": "smp.starter-kit-and-prechoice-protection-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:cooked_beef"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:iron_ingot"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather_helmet"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather_chestplate"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather_leggings"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:leather_boots"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "backpacked:backpack"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "naturescompass:naturescompass"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Physically dedicated JEM SMP; IdentityPolicy canonical verified account owns entitlement. Kit eligibility begins after auth, independent of race completion.",
+      "implementation_assumption": "One entitlement per canonical account, including existing players; cooked beef selected by Codex and announced, not separately approved in a reply."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_player_admission",
+    "priority": 1300,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add durable starter item entitlement without changing20Gold, and deny incoming/outgoing combat until authoritative verification and race choice exist.",
+    "modifiers": [
+      {
+        "property": "smp.starter_item_entitlement",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "kit": {
+            "minecraft:cooked_beef": 64,
+            "minecraft:iron_ingot": 10,
+            "minecraft:leather_helmet": 1,
+            "minecraft:leather_chestplate": 1,
+            "minecraft:leather_leggings": 1,
+            "minecraft:leather_boots": 1,
+            "backpacked:backpack": 1,
+            "naturescompass:naturescompass": 1
+          },
+          "scope": "Once per canonical verified account including existing players; no race wait after authentication.",
+          "currency": "Existing20Gold grant, finite funding and receipt unchanged; no money regrant.",
+          "delivery": "Inventory-first bounded insertion; undelivered remainder remains journaled, never drops or equips over worn items.",
+          "durability": "Pending account operation -> native inventory+persisted player account/operation receipt save and exact readback -> remaining entitlement commit. Reconcile interrupted pending operations and copy receipt on death clone.",
+          "failure": "Missing required native item/storage failure refuses completion; disconnect on unacknowledged inventory persistence failure.",
+          "status": "in testing; no runtime/delivery claimed"
+        }
+      },
+      {
+        "property": "smp.authentication_race_choice_damage_guard",
+        "operation": "add",
+        "before": null,
+        "after": {
+          "condition": "IdentityPolicy unresolved OR RaceApi.get(server, canonical account) has no effective race.",
+          "incoming": "Cancel attack/hurt/damage/death for the protected player.",
+          "outgoing": "Deny melee and damage whose resolved projectile/owned source belongs to the protected player.",
+          "end": "Immediately when verification AND effective race choice exist; reopening GUI cannot restore protection.",
+          "owners": "Consume IdentityPolicy/RaceApi/HostedEncounterApi damageOwner; no duplicate auth/race record.",
+          "status": "Source in testing; protection checks not yet exercised."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer StarterWelcome and StarterKitData; existing native player save accessor",
+    "kind": "user_requested_starter_and_protection",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Docs/smp-gui/README.md",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide requested starter supplies safely through authentication and initial race selection without repeat grants, ground drops or protected-player attacks.",
+    "decision_source": "Latest user starter/protection addition21October2026, with Codex-announced once-per-account and food-choice assumptions.",
+    "user_requested": "Starter food/materials/leather armor/backpack/compass and damage protection until authentication and race choice. Existing20Gold unchanged.",
+    "codex_choices": "Once per verified canonical account including current players; cooked beef, durable per-account remaining journal, native player operation receipt and death-clone persistence."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_starter_entitlement_and_prechoice_protection",
+    "summary": "Source starter kit and incoming/outgoing auth/race shield; once-per-account and cooked-beef choices announced by Codex. In testing, no runtime/delivery/deployment claim.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+      "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+      "Docs/smp-gui/README.md",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_starter_entitlement_and_prechoice_protection",
+      "summary": "Source starter kit and incoming/outgoing auth/race shield; once-per-account and cooked-beef choices announced by Codex. In testing, no runtime/delivery/deployment claim.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Docs/smp-gui/README.md",
+        "Docs/DEVELOPMENT.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "authentication",
+      "race_choice",
+      "starter_inventory",
+      "native_player_save",
+      "death_clone",
+      "replay_recovery",
+      "pvp",
+      "projectile_ownership",
+      "backpacked",
+      "natures_compass"
+    ],
+    "relations": "StarterKitData owns item entitlement only; IdentityPolicy owns verification, Roles owns effective race, CurrencyCore keeps the separate20Gold receipt. Native item IDs are reused without new registries.",
+    "notes": "No tests/build/runtime/copyrepair/deployment claim. Existing players qualify once under the announced implementation assumption; full-inventory remainder is retained.",
+    "unresolved": [
+      "In testing; user/runtime acceptance pending.",
+      "Once-only entitlement and cooked-beef implementation choices were announced, no separate approving reply yet.",
+      "Fresh artifact/delivery and runtime protection/recovery evidence remain separate execution steps."
+    ]
+  }
+}

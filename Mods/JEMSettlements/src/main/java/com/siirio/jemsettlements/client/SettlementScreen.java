@@ -206,12 +206,10 @@ public class SettlementScreen extends Screen {
             int rx=cx+cw/2+6;
             graphics.drawString(font,tr("dashboard.yesterday"),rx,treasuryY+10,PALE,false);
             graphics.drawString(font,clip(tr("resident_income",SettlementPriceRenderer.format(town.getLong("LastResidentTax"),coinCurrency())),cw/2-16),rx,treasuryY+28,0xffc8cfb3,false);
-            graphics.drawString(font,clip(tr("comfort_income",SettlementPriceRenderer.format(town.getLong("LastBeautyTax"),coinCurrency())),cw/2-16),rx,treasuryY+43,0xffc8cfb3,false);
+            graphics.drawString(font,clip(tr(coinCurrency()?"calculated_income":"comfort_income",SettlementPriceRenderer.format(town.getLong(coinCurrency()?"CalculatedDailyIncome":"LastBeautyTax"),coinCurrency())),cw/2-16),rx,treasuryY+43,0xffc8cfb3,false);
             graphics.drawString(font,clip(tr("daily_income",SettlementPriceRenderer.format(town.getLong("LastDailyTax"),coinCurrency())),cw/2-16),rx,treasuryY+62,0xffa9d77b,false);
         });
-        final int nextTax=switch(town.getInt("Tax")){case 0->5;case 5->10;case 10->15;default->0;};
-        var tax=button(tr("tax",town.getInt("Tax")),cx+8,y+65,Math.max(90,cw/2-18),()->{CompoundTag payload=new CompoundTag();payload.putInt("Percent",nextTax);request("tax",payload);},true);
-        tax.active=town.getBoolean("SetTaxAvailable")&&!SettlementClientState.pending();y+=98;
+        y+=98;
         int quarter=Math.max(28,cw/4),moneyY=y;
         Button unit=button(currencyItem().getHoverName(),cx,moneyY,quarter,()->{denomination=CoinDenomination.values()[(denomination.ordinal()+1)%CoinDenomination.values().length];rebuild();},false);
         unit.active=coinCurrency();unit.setTooltip(Tooltip.create(tr("coin_cycle")));

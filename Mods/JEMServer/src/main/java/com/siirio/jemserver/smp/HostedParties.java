@@ -40,7 +40,6 @@ public final class HostedParties {
             EventParties.start(host,row,ids);
             return;
         }
-        com.siirio.jemserver.smp.events.HostedBoundary.captureEntrances(host.server,row,ids);
         if (row.getBoolean("raid")) {
             com.siirio.jemserver.smp.events.RaidEvent.start(host, row, ids);
             row.putString("state", "ACTIVE");
@@ -64,6 +63,9 @@ public final class HostedParties {
             SmpRecords.require(candidates.size() == 1, "one_awakened_boss_required");
             boss = candidates.get(0);
         }
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_twelve_eyes"))
+            SmpRecords.require(com.siirio.jemtwelveeyes.api.CampaignApi.unlocked(host,
+                    net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType())), "unavailable");
         boss.getPersistentData().putBoolean("jem_solo", row.getBoolean("solo"));
         var bounds=com.siirio.jemserver.smp.events.StructureStaging.prepareCombat(level,row,boss);
         SmpRecords.require(HostedEncounterApi.start(boss, ids, false, bounds), "unavailable");

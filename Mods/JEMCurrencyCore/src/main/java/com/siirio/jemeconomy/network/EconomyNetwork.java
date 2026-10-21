@@ -19,7 +19,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class EconomyNetwork {
-    private static final String VERSION = "5";
+    private static final String VERSION = "6";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemCurrencyCore.LEGACY_NAMESPACE, "wallet"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(EconomyNetwork::acceptVersion)
             .serverAcceptedVersions(EconomyNetwork::acceptVersion).simpleChannel();
@@ -50,6 +50,20 @@ public final class EconomyNetwork {
                             var outcome = EconomyApi.exchangePhysical(player, packet.source(), packet.count(), packet.target(), packet.requestId());
                             result = "jem.economy.exchange." + outcome.status().name().toLowerCase(java.util.Locale.ROOT);
                         }
+                        if (packet.action() == ContainerCurrencyPacket.Action.DEPOSIT) {
+                            var outcome = EconomyApi.depositAll(player, packet.requestId());
+                            result = "jem.economy.exchange." + outcome.status().name().toLowerCase(java.util.Locale.ROOT);
+                        }
+                        if (packet.action() == ContainerCurrencyPacket.Action.SEND) {
+                            var recipient = player.server.getPlayerList().getPlayerByName(packet.recipient());
+                            var account = recipient == null ? java.util.Optional.<com.siirio.jemidentity.api.VerifiedPrincipal>empty() : com.siirio.jemidentity.api.IdentityPolicy.resolve(recipient);
+                            result = "jem.economy.invalid";
+                            if (account.isPresent() && recipient != player && packet.amount() > 0 && packet.amount() <= 1_000_000_000L) {
+                                var sent = EconomyApi.send(player, account.get().accountId(), packet.amount(), packet.requestId());
+                                result = sent.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
+                                        || sent.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED ? "jem.economy.exchange.committed" : "jem.economy.insufficient";
+                            }
+                        }
                         player.inventoryMenu.broadcastChanges(); player.containerMenu.broadcastChanges();
                         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new ContainerCurrencyStatusPacket(
                                 packet.containerId(), packet.requestId(), EconomyApi.balance(player), result));
@@ -67,7 +81,9 @@ public final class EconomyNetwork {
         CHANNEL.messageBuilder(WalletActionPacket.class, 0, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(WalletActionPacket::encode).decoder(WalletActionPacket::decode).consumerMainThread((packet, context) -> {
                     ServerPlayer player = context.get().getSender();
-                    if (player != null && CurrencyAuthority.active(player)) handle(player, packet);
+                    if (player != null && CurrencyAuthority.active(player)
+                            && player.containerMenu instanceof com.siirio.jemeconomy.api.CurrencyContainerAccess access
+                            && access.permitsCurrencyAction(player)) handle(player, packet);
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(WalletStatusPacket.class, 1, NetworkDirection.PLAY_TO_CLIENT)
@@ -207,7 +223,7 @@ public final class EconomyNetwork {
                     ? "jem.economy.no_valid_physical" : "jem.economy.invalid";
             player.sendSystemMessage(Component.translatable(key, com.siirio.jemeconomy.physical.CoinFormatter.format(result.value())), true);
         }
-        sendStatus(player, true);
+        sendStatus(player, false);
     }
 
     public static void action(WalletActionPacket.Action action, long amount) { action(action, amount, ""); }

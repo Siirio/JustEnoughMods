@@ -15,8 +15,7 @@ public final class SolidBoundary {
     private static volatile List<EventBoundary> clientZones = List.of();
 
     public static void clientZones(List<EventBoundary> zones) {
-        clientZones = zones.stream().filter(zone -> zone.type().equals("BOSS_FIGHT")
-                || zone.type().equals("BLOOD_MOON") && zone.active()).toList();
+        clientZones = zones.stream().filter(zone -> zone.type().equals("BLOOD_MOON") && zone.active()).toList();
     }
 
     static List<ServerPlayer> players(Entity entity) {
@@ -32,7 +31,7 @@ public final class SolidBoundary {
             return clientZones.stream().filter(zone -> !zone.passable())
                     .filter(zone -> zone.dimension().equals(entity.level().dimension().location().toString())).toList();
         }
-        List<EventBoundary> result = new ArrayList<>(StructureStaging.solidBoundaries(entity));
+        List<EventBoundary> result = new ArrayList<>();
         result.addAll(BloodMoonSolidBoundary.boundaries(entity));
         return result;
     }
@@ -46,7 +45,7 @@ public final class SolidBoundary {
         List<EventBoundary> boundaries;
         if (entity.level().isClientSide) boundaries = boundaries(entity);
         else {
-            boundaries = new ArrayList<>(StructureStaging.solidBoundaries(entity, query));
+            boundaries = new ArrayList<>();
             boundaries.addAll(BloodMoonSolidBoundary.boundaries(entity));
         }
         return boundaries.stream().filter(boundary -> query.maxX >= boundary.minX() - WALL_THICKNESS

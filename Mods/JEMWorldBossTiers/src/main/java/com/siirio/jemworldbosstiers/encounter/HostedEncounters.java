@@ -142,7 +142,9 @@ public final class HostedEncounters {
         if (entries.isEmpty()) {
             return false;
         }
-        HostedScaling scaling = HostedConfig.scale(WorldTierApi.profile(boss).orElseThrow().key().toString(), entries.size(), raid);
+        String profileKey = WorldTierApi.profile(boss).orElseThrow().key().toString();
+        HostedScaling scaling = raid ? HostedRaidScaling.startScaling(boss, profileKey, entries.size())
+                : HostedConfig.scale(profileKey, entries.size(), false);
         double health = scaling.health();
         double damage = scaling.damage();
         CompoundTag state = new CompoundTag();
@@ -304,6 +306,14 @@ public final class HostedEncounters {
         if (resolved == null) resolved = HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
         LivingEntity sourceBoss = resolved instanceof ServerPlayer sourcePlayer ? encounter(sourcePlayer.getUUID())
                 : resolved instanceof LivingEntity living && isHosted(living) ? living : null;
+        if (sourceBoss == null && resolved != null && resolved.level() instanceof ServerLevel level
+                && resolved.getPersistentData().hasUUID("JEMHostedBoss")
+                && level.getEntity(resolved.getPersistentData().getUUID("JEMHostedBoss")) instanceof LivingEntity owner
+                && isHosted(owner)) sourceBoss = owner;
+        if (boss == null && target.getPersistentData().hasUUID("JEMHostedBoss")
+                && target.level() instanceof ServerLevel level
+                && level.getEntity(target.getPersistentData().getUUID("JEMHostedBoss")) instanceof LivingEntity owner
+                && isHosted(owner)) boss = owner;
         if (resolved != null && (boss != null || sourceBoss != null)) {
             if (boss != sourceBoss || target instanceof ServerPlayer && resolved instanceof ServerPlayer) {
                 event.setCanceled(true);
@@ -452,6 +462,7 @@ public final class HostedEncounters {
             }
             maintainTarget(boss);
             boolean remains = false;
+            boolean present = false;
             for (String id : players(boss).getAllKeys()) {
                 CompoundTag entry = players(boss).getCompound(id);
                 ServerPlayer player = event.getServer().getPlayerList().getPlayer(UUID.fromString(id));
@@ -481,8 +492,12 @@ public final class HostedEncounters {
                     player.stopUsingItem();
                 }
                 remains |= !ELIMINATED.equals(entry.getString("State"));
+                present |= player != null && player.isAlive() && !player.isSpectator()
+                        && ALIVE.equals(entry.getString("State")) && inside(boss, player);
             }
-            if (!remains) {
+            if (present) data(boss).remove("EmptySince");
+            else if (!data(boss).contains("EmptySince")) data(boss).putLong("EmptySince", now(boss));
+            if (!remains || !present && now(boss) - data(boss).getLong("EmptySince") >= HostedConfig.GRACE.get()) {
                 close(boss, false);
             } else {
                 List<ServerPlayer> effectTargets=players(boss).getAllKeys().stream()
@@ -520,6 +535,7 @@ public final class HostedEncounters {
 
     private static void close(LivingEntity boss, boolean success) {
         boolean raid = HostedEncounterApi.isRaid(boss);
+        boolean preserveRaid = raid && HostedEncounterApi.preservesRaidBoss(boss);
         Set<UUID> eligible = success ? eligible(boss) : Set.of();
         ACTIVE.remove(boss.getUUID());
         BossPeriodicEffects.clear(boss);
@@ -532,7 +548,6 @@ public final class HostedEncounters {
         MinecraftForge.EVENT_BUS.post(new HostedEncounterClosedEvent(boss, raid, success, eligible));
         boss.getPersistentData().remove(ROOT);
         if (!success && boss.isAlive()) {
-            boolean preserveRaid=raid&&HostedEncounterApi.preservesRaidBoss(boss);
             if (raid&&!preserveRaid) {
                 boss.discard();
             } else {
@@ -542,10 +557,8 @@ public final class HostedEncounters {
                 if (boss instanceof Mob mob) {
                     mob.setTarget(null);
                 }
-                if(preserveRaid) {
-                    HostedEncounterApi.restorePreparedRaid(boss);
-                    HostedLobby.hold(boss);
-                }
+                if(preserveRaid) HostedEncounterApi.restorePreparedRaid(boss);
+                HostedLobby.hold(boss);
             }
         }
     }
@@ -613,7 +626,7 @@ public final class HostedEncounters {
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof LivingEntity boss && isHosted(boss)) {
             applyScale(boss, Attributes.ATTACK_DAMAGE, 1);
             ACTIVE.put(boss.getUUID(), boss);
-            if (boss instanceof Mob mob) mob.setNoAi(false);
+            if (boss instanceof Mob mob && !HostedLobby.held(boss)) mob.setNoAi(false);
             for (String id : players(boss).getAllKeys()) {
                 CompoundTag entry = players(boss).getCompound(id);
                 if (boss.getServer().getPlayerList().getPlayer(UUID.fromString(id)) == null && !entry.contains("DisconnectUntil")) {

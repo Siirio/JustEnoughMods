@@ -27,8 +27,12 @@ public final class EventTravel {
     }
 
     public static void request(ServerPlayer player, UUID eventId, boolean inside) {
+        if (!eligiblePlayer(player)) return;
         var event = SmpData.get(player.server).find("events", eventId);
-        if (event == null || SmpData.closed(event) || !new EventSession(event).accepted(player.getUUID())) return;
+        if (!eligibleEvent(player, event)) {
+            player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_destination_unavailable"));
+            return;
+        }
         inside=inside&&event.getString("activity").equals("RESOURCE_RUSH");
         ServerLevel level = EventRegions.level(player.server, event);
         if (level == null) return;
@@ -37,6 +41,7 @@ public final class EventTravel {
     }
 
     public static void requestBoss(ServerPlayer player, UUID destinationId) {
+        if (!eligiblePlayer(player)) return;
         var target = bossTarget(player, destinationId);
         if (target == null) {
             player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_destination_unavailable"));
@@ -61,7 +66,8 @@ public final class EventTravel {
             var entry = iterator.next();
             ServerPlayer player = event.getServer().getPlayerList().getPlayer(entry.getKey());
             PendingEventTravel travel = entry.getValue();
-            if (player == null || travel.level().getGameTime() >= travel.expiresAtTick()) {
+            if (player == null || player.getId() != travel.playerId() || !eligiblePlayer(player)
+                    || travel.level().getGameTime() >= travel.expiresAtTick()) {
                 if (player != null) player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.no_safe_arrival"));
                 travel.release();
                 iterator.remove();
@@ -75,7 +81,7 @@ public final class EventTravel {
             }
             if (travel.type() != Destination.BOSS_STRUCTURE) {
                 var row = SmpData.get(event.getServer()).find("events", travel.destinationId());
-                if (row == null || SmpData.closed(row)) {
+                if (!eligibleEvent(player, row) || EventRegions.level(event.getServer(), row) != travel.level()) {
                     travel.release();
                     iterator.remove();
                     continue;
@@ -83,6 +89,7 @@ public final class EventTravel {
             }
             BlockPos pos = resolve(event.getServer(), player, travel);
             if (pos == null) continue;
+            if (!safeArrival(player, travel.level(), pos)) continue;
             travel.release();
             iterator.remove();
             Vec3 destination = Vec3.atBottomCenterOf(pos);
@@ -91,6 +98,8 @@ public final class EventTravel {
                 player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.teleport_contained"));
                 continue;
             }
+            player.closeContainer();
+            player.stopRiding();
             BossTeleportSafety.apply(player, travel.level(), destination, player.getYRot(), player.getXRot());
         }
     }
@@ -114,6 +123,7 @@ public final class EventTravel {
     }
 
     private static BossTarget bossTarget(ServerPlayer player, UUID destinationId) {
+        if (!eligiblePlayer(player)) return null;
         var landmark = com.siirio.jemserver.ServerData.get(player.server).landmark(destinationId);
         var arena = com.siirio.jemworldbosstiers.api.RaidArenaApi.arena(player.server, destinationId).orElse(null);
         if (landmark == null || !com.siirio.jemserver.Landmarks.isBoss(landmark) || arena == null
@@ -159,4 +169,26 @@ public final class EventTravel {
     }
 
     private record BossTarget(ServerLevel level, com.siirio.jemworldbosstiers.api.RaidArenaApi.Arena arena) {}
+
+    private static boolean eligiblePlayer(ServerPlayer player) {
+        return com.siirio.jemserver.smp.SmpEnvironment.active(player) && player.isAlive() && !player.isSpectator()
+                && !player.isSleeping() && com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isPresent();
+    }
+
+    private static boolean eligibleEvent(ServerPlayer player, net.minecraft.nbt.CompoundTag event) {
+        return event != null && "ACTIVE".equals(event.getString("state"))
+                && event.getLong("ends") > System.currentTimeMillis() && event.contains("position")
+                && java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(event.getString("activity"))
+                && new EventSession(event).accepted(player.getUUID());
+    }
+
+    private static boolean safeArrival(ServerPlayer player, ServerLevel level, BlockPos position) {
+        var box = player.getDimensions(player.getPose()).makeBoundingBox(position.getX() + .5, position.getY(), position.getZ() + .5);
+        if (box.minY < level.getMinBuildHeight() || box.maxY > level.getMaxBuildHeight()
+                || !level.getWorldBorder().isWithinBounds(box)) return false;
+        for (BlockPos occupied : BlockPos.betweenClosed(BlockPos.containing(box.minX, box.minY, box.minZ),
+                BlockPos.containing(box.maxX - 1.0E-7, box.maxY - 1.0E-7, box.maxZ - 1.0E-7)))
+            if (!level.hasChunkAt(occupied) || !level.getFluidState(occupied).isEmpty()) return false;
+        return level.noCollision(player, box) && StructureStaging.safeOutside(player, level, position);
+    }
 }

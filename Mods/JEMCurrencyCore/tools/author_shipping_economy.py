@@ -8,6 +8,7 @@ DATA=ROOT/'Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy'
 DOC=ROOT/'Docs/economy'
 def read(p): return json.loads(p.read_text(encoding='utf-8'))
 DECOR_CLASSES={
+ 'earth.terrarium.handcrafted.common.blocks.BenchBlock':('DECOR_BUILD',140,'Handcrafted3.0.6 BenchBlock/ModularSeatBlock: native seat/color/shape only; exact bytecode has no item/fluid/energy storage or block entity.'),
  'earth.terrarium.handcrafted.common.blocks.trims.CornerTrimBlock':('DECOR_BUILD',140,'Handcrafted3.0.6: SimpleBlock directional/waterlogging; only shape/state Hammerable methods; no inventory/BE/energy.'),
  'earth.terrarium.handcrafted.common.blocks.trims.PillarTrimBlock':('DECOR_BUILD',140,'Handcrafted3.0.6: directional/waterlogged shape trim; no inventory/BE/energy.'),
  'earth.terrarium.handcrafted.common.blocks.misc.PotBlock':('DECOR_BUILD',140,'Handcrafted3.0.6 exact class overrides only shape/size.'),
@@ -42,7 +43,7 @@ def main():
  # Explicit agreed resource anchors; reversible storage forms use exact recipe proof below.
  anchors={'oak_log':(15,70),'coal':(20,100),'copper_ingot':(40,200),'iron_ingot':(100,500),
  'gold_ingot':(140,700),'redstone':(40,200),'lapis_lazuli':(40,200),'quartz':(40,200),
- 'amethyst_shard':(50,250),'diamond':(600,3000)}
+ 'amethyst_shard':(50,250),'diamond':(1000,3000)}
  for path,(sell,buy) in anchors.items():
   policy('minecraft:'+path,sell,buy,64,'forestry' if path=='oak_log' else 'mining',notes='Authorized batch anchor per64; exact rational settlement.')
  policy('create:zinc_ingot',60,300,64,notes='Create6.0.8 registered ingot; batch anchor.')
@@ -183,11 +184,30 @@ def main():
     material_rank[i]=tier;added+=1
    if not added:break
  if 'minecraft:oak_log' in policies:policies['minecraft:oak_log']['bulk_1024']=1120
+ for item in ['minecraft:diamond','minecraft:diamond_block']:
+  if item in policies:policies[item]['fixed_price']=True
+ # Native planks use the existing reviewed wood material tier instead of per-item fallback.
+ for i,row in loaded.items():
+  block=row.get('block',{})
+  if 'minecraft:planks]' not in ' '.join(row.get('tags',[])) or block.get('class')!='net.minecraft.world.level.block.Block':continue
+  if block.get('hasBlockEntity') or block.get('entityBlock') or block.get('redstoneSource') or any(row.get(k) for k in ['itemInventoryCapability','itemFluidCapability','itemEnergyCapability']):continue
+  policies[i]=dict(schema=2,item=i,outcome='BUY_ONLY',sell_copper=None,buy_copper=9,buy_denominator=64,bulk_1024=140,daily_player_units=65536,daily_global_units=262144,demand_group='building_supply',notes='Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback.')
  # Reviewed current recipe decisions survive authoring; canonical rows remain the only price owner.
  for i,previous in applied_overrides.items():
+  if i in ['minecraft:diamond','minecraft:diamond_block']:continue
   if i in policies:
    for key in ['sell_copper','sell_denominator','outcome','recipe_audit_adjusted']:
     if key in previous:policies[i][key]=previous[key]
+ # Explicit2026-10-21 user decisions are immutable income anchors, applied after historical recipe adjustments.
+ for i,(n,d) in {'minecraft:diamond':(1000,64),'minecraft:diamond_block':(9000,64),'minecraft:wheat':(10,64),'minecraft:carrot':(8,64),'minecraft:beetroot':(80,64)}.items():
+  policies[i].update(sell_copper=n,sell_denominator=d,user_income_anchor=True)
+  policies[i].pop('recipe_audit_adjusted',None)
+ for i,p in policies.items():
+  if p.get('quota_family')=='minecraft:gold_ingot':
+   from fractions import Fraction
+   price=Fraction(54*p.get('quota_units',1),64*9)
+   p.update(sell_copper=price.numerator,sell_denominator=price.denominator,user_income_anchor=True)
+   p.pop('recipe_audit_adjusted',None)
  if '--audit-only' in sys.argv:policies={r['item']:r for r in read(DATA/'item_policies.json')}
  else:(DATA/'item_policies.json').write_text(json.dumps(sorted(policies.values(),key=lambda r:r['item']),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  certificate=read(DOC/'shipping-monetary-potential-certificate.json') if (DOC/'shipping-monetary-potential-certificate.json').exists() else {}

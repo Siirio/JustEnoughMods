@@ -1524,6 +1524,19 @@
   },
   {
     "schema": 2,
+    "item": "alexscaves:pewen_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "alexscaves:pewen_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -2413,6 +2426,19 @@
   },
   {
     "schema": 2,
+    "item": "alexscaves:thornwood_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "alexscaves:thornwood_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -2860,9 +2886,9 @@
     "schema": 2,
     "item": "alexsmobs:kangaroo_burger",
     "outcome": "SELL_ONLY",
-    "sell_copper": 5880599,
+    "sell_copper": 2940299,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 500000,
     "buy_denominator": 1,
     "daily_player_units": 64,
     "daily_global_units": 2048,
@@ -2871,7 +2897,7 @@
     "quota_units": 1,
     "notes": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "alexsmobs:kangaroo_burger"
@@ -4464,6 +4490,19 @@
   },
   {
     "schema": 2,
+    "item": "beachparty:palm_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "beachparty:palm_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -4604,6 +4643,19 @@
     "quota_units": 1,
     "notes": "Historical loaded RecordItem/jukebox tag; fixed price, shared disc quota.",
     "fixed_price": true
+  },
+  {
+    "schema": 2,
+    "item": "blastfromthepast:cedar",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -5467,6 +5519,19 @@
   },
   {
     "schema": 2,
+    "item": "cataclysm:chorus_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "cataclysm:chorus_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -5989,9 +6054,9 @@
     "schema": 2,
     "item": "companions:big_bread",
     "outcome": "SELL_ONLY",
-    "sell_copper": 2450249,
+    "sell_copper": 4900497,
     "buy_copper": null,
-    "sell_denominator": 500000,
+    "sell_denominator": 1000000,
     "buy_denominator": 1,
     "daily_player_units": 64,
     "daily_global_units": 2048,
@@ -6000,7 +6065,7 @@
     "quota_units": 1,
     "notes": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "companions:big_bread"
@@ -6191,9 +6256,9 @@
     "schema": 2,
     "item": "create:crushed_raw_gold",
     "outcome": "SELL_ONLY",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -6201,12 +6266,7 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Actual create:crushed_raw_materials tag; exact smelting create:blasting/gold_ingot_from_crushed output 1; purchase remains closed.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -6233,9 +6293,9 @@
     "schema": 2,
     "item": "create:crushed_raw_zinc",
     "outcome": "SELL_ONLY",
-    "sell_copper": 229707,
+    "sell_copper": 918819,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -6244,7 +6304,7 @@
     "quota_units": 9,
     "notes": "Actual create:crushed_raw_materials tag; exact smelting create:blasting/zinc_ingot_from_crushed output 1; purchase remains closed.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -6674,9 +6734,9 @@
     "schema": 2,
     "item": "create:deepslate_zinc_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 229707,
+    "sell_copper": 918819,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -6685,7 +6745,7 @@
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -7010,9 +7070,9 @@
     "schema": 2,
     "item": "create:raw_zinc",
     "outcome": "SELL_ONLY",
-    "sell_copper": 229707,
+    "sell_copper": 918819,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -7021,7 +7081,7 @@
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -7031,9 +7091,9 @@
     "schema": 2,
     "item": "create:raw_zinc_block",
     "outcome": "SELL_ONLY",
-    "sell_copper": 2067363,
+    "sell_copper": 8269371,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -7042,7 +7102,7 @@
     "quota_units": 81,
     "notes": "Exact reciprocal9:1 recipes; immutable material anchor and normalized shared quota.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -7329,9 +7389,9 @@
     "schema": 2,
     "item": "create:zinc_block",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 2067363,
+    "sell_copper": 8269371,
     "buy_copper": 2700,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -7340,7 +7400,7 @@
     "quota_units": 81,
     "notes": "Exact reciprocal9:1 recipes; immutable material anchor and normalized shared quota.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -7350,9 +7410,9 @@
     "schema": 2,
     "item": "create:zinc_ingot",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 229707,
+    "sell_copper": 918819,
     "buy_copper": 300,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -7361,7 +7421,7 @@
     "quota_units": 9,
     "notes": "Immutable approved resource anchor per64; exact recipe family.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -7371,9 +7431,9 @@
     "schema": 2,
     "item": "create:zinc_nugget",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 25523,
+    "sell_copper": 102091,
     "buy_copper": 300,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 576,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -7382,7 +7442,7 @@
     "quota_units": 1,
     "notes": "Exact9-nugget reciprocal recipe; anchor is the ingot, never the legacy nugget.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -7392,9 +7452,9 @@
     "schema": 2,
     "item": "create:zinc_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 229707,
+    "sell_copper": 918819,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -7403,7 +7463,7 @@
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "create:zinc_ingot"
@@ -8744,6 +8804,20 @@
   },
   {
     "schema": 2,
+    "item": "handcrafted:acacia_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:acacia_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
     "item": "handcrafted:acacia_corner_trim",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -8800,6 +8874,20 @@
   },
   {
     "schema": 2,
+    "item": "handcrafted:bamboo_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:bamboo_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
     "item": "handcrafted:bamboo_corner_trim",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -8825,6 +8913,20 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.trims.PillarTrimBlock; actual recipe handcrafted:bamboo_pillar_trim output 4; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "handcrafted:birch_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:birch_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
   },
   {
     "schema": 2,
@@ -8968,6 +9070,20 @@
   },
   {
     "schema": 2,
+    "item": "handcrafted:cherry_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:cherry_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
     "item": "handcrafted:cherry_corner_trim",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -8996,6 +9112,20 @@
   },
   {
     "schema": 2,
+    "item": "handcrafted:crimson_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:crimson_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
     "item": "handcrafted:crimson_corner_trim",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -9021,6 +9151,20 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.trims.PillarTrimBlock; actual recipe handcrafted:crimson_pillar_trim output 4; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "handcrafted:dark_oak_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:dark_oak_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
   },
   {
     "schema": 2,
@@ -9164,6 +9308,20 @@
   },
   {
     "schema": 2,
+    "item": "handcrafted:jungle_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:jungle_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
     "item": "handcrafted:jungle_corner_trim",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -9192,6 +9350,20 @@
   },
   {
     "schema": 2,
+    "item": "handcrafted:mangrove_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:mangrove_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
     "item": "handcrafted:mangrove_corner_trim",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -9217,6 +9389,20 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.trims.PillarTrimBlock; actual recipe handcrafted:mangrove_pillar_trim output 4; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "handcrafted:oak_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:oak_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
   },
   {
     "schema": 2,
@@ -9273,6 +9459,20 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.trims.PillarTrimBlock; actual recipe handcrafted:sandstone_pillar_trim output 4; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "handcrafted:spruce_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:spruce_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
   },
   {
     "schema": 2,
@@ -9385,6 +9585,20 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.misc.PotBlock; actual recipe handcrafted:terracotta_wide_pot output 3; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "handcrafted:warped_bench",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "building_class": "DECOR_BUILD",
+    "notes": "Current loaded exact nonfunctional class earth.terrarium.handcrafted.common.blocks.BenchBlock; actual recipe handcrafted:warped_bench output 2; family material tier 140. No BE/redstone/capability/progression inference from names."
   },
   {
     "schema": 2,
@@ -11365,9 +11579,9 @@
     "schema": 2,
     "item": "kaleidoscope_cookery:qingtuan",
     "outcome": "SELL_ONLY",
-    "sell_copper": 72167,
+    "sell_copper": 288667,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 1,
     "daily_player_units": 64,
     "daily_global_units": 2048,
@@ -11376,7 +11590,7 @@
     "quota_units": 1,
     "notes": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "kaleidoscope_cookery:qingtuan"
@@ -11680,9 +11894,9 @@
     "schema": 2,
     "item": "kaleidoscope_cookery:slime_ball_meal",
     "outcome": "SELL_ONLY",
-    "sell_copper": 72167,
+    "sell_copper": 288667,
     "buy_copper": null,
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "buy_denominator": 1,
     "daily_player_units": 64,
     "daily_global_units": 2048,
@@ -11691,7 +11905,7 @@
     "quota_units": 1,
     "notes": "Observed FoodProperties in loaded capture; arbitrary NBT denied.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "kaleidoscope_cookery:slime_ball_meal"
@@ -15162,6 +15376,19 @@
     }
   },
   {
+    "schema": 2,
+    "item": "minecraft:acacia_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
     "schema": 1,
     "item": "minecraft:acacia_sapling",
     "outcome": "BUY_AND_SELL",
@@ -15431,6 +15658,19 @@
   },
   {
     "schema": 2,
+    "item": "minecraft:bamboo_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "minecraft:bamboo_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -15476,19 +15716,14 @@
     "schema": 1,
     "item": "minecraft:beetroot",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 1176119,
+    "sell_copper": 80,
     "buy_copper": 4,
     "daily_player_units": 64,
     "daily_global_units": 2048,
     "demand_group": "crops",
     "notes": "Base crop",
-    "sell_denominator": 1000000,
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:beetroot"
-    }
+    "sell_denominator": 64,
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -15549,6 +15784,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:birch_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "minecraft:birch_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,
@@ -16098,9 +16346,9 @@
     "schema": 2,
     "item": "minecraft:carrot",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 91883,
+    "sell_copper": 8,
     "buy_copper": 30,
-    "sell_denominator": 1000000,
+    "sell_denominator": 64,
     "buy_denominator": 64,
     "daily_player_units": 128,
     "daily_global_units": 4096,
@@ -16108,12 +16356,7 @@
     "quota_family": "minecraft:carrot",
     "quota_units": 1,
     "notes": "Authorized agrarian/food batch anchor; native counts unchanged.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:carrot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 1,
@@ -16150,6 +16393,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:cherry_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "minecraft:cherry_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,
@@ -16321,15 +16577,15 @@
     "schema": 1,
     "item": "minecraft:clay_ball",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 64949,
+    "sell_copper": 16237,
     "buy_copper": 6,
     "daily_player_units": 32,
     "daily_global_units": 512,
     "demand_group": "mining",
     "notes": "Ordinary clay and mud conversion; not generator currency Evidence: loaded registry, installed tags/recipes/loot",
-    "sell_denominator": 1000000,
+    "sell_denominator": 250000,
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:clay_ball"
@@ -16691,6 +16947,19 @@
   },
   {
     "schema": 2,
+    "item": "minecraft:crimson_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "minecraft:crimson_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -16876,6 +17145,19 @@
     }
   },
   {
+    "schema": 2,
+    "item": "minecraft:dark_oak_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
     "schema": 1,
     "item": "minecraft:dark_oak_sapling",
     "outcome": "BUY_AND_SELL",
@@ -17006,9 +17288,9 @@
     "schema": 2,
     "item": "minecraft:deepslate_gold_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -17016,12 +17298,7 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -17090,9 +17367,9 @@
     "schema": 2,
     "item": "minecraft:diamond",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 9188437,
+    "sell_copper": 1000,
     "buy_copper": 3000,
-    "sell_denominator": 1000000,
+    "sell_denominator": 64,
     "buy_denominator": 64,
     "daily_player_units": 256,
     "daily_global_units": 8192,
@@ -17100,20 +17377,16 @@
     "quota_family": "minecraft:diamond",
     "quota_units": 1,
     "notes": "Immutable approved resource anchor per64; exact recipe family.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:diamond"
-    }
+    "fixed_price": true,
+    "user_income_anchor": true
   },
   {
     "schema": 2,
     "item": "minecraft:diamond_block",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 82695933,
+    "sell_copper": 9000,
     "buy_copper": 27000,
-    "sell_denominator": 1000000,
+    "sell_denominator": 64,
     "buy_denominator": 64,
     "daily_player_units": 256,
     "daily_global_units": 8192,
@@ -17121,12 +17394,8 @@
     "quota_family": "minecraft:diamond",
     "quota_units": 9,
     "notes": "Exact reciprocal9:1 recipes; immutable material anchor and normalized shared quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:diamond"
-    }
+    "fixed_price": true,
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -17385,9 +17654,9 @@
     "schema": 2,
     "item": "minecraft:gold_block",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 7056639,
+    "sell_copper": 243,
     "buy_copper": 6300,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -17395,20 +17664,15 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 81,
     "notes": "Exact reciprocal9:1 recipes; immutable material anchor and normalized shared quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
     "item": "minecraft:gold_ingot",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": 700,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -17416,20 +17680,15 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Immutable approved resource anchor per64; exact recipe family.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
     "item": "minecraft:gold_nugget",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 87119,
+    "sell_copper": 3,
     "buy_copper": 700,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 576,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -17437,20 +17696,15 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 1,
     "notes": "Exact9-nugget reciprocal recipe; anchor is the ingot, never the legacy nugget.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
     "item": "minecraft:gold_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -17458,12 +17712,7 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -17975,6 +18224,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:jungle_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "minecraft:jungle_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,
@@ -18603,6 +18865,19 @@
     }
   },
   {
+    "schema": 2,
+    "item": "minecraft:mangrove_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
     "schema": 1,
     "item": "minecraft:mangrove_propagule",
     "outcome": "BUY_AND_SELL",
@@ -19052,9 +19327,9 @@
     "schema": 2,
     "item": "minecraft:nether_gold_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -19062,20 +19337,15 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
     "item": "minecraft:nether_quartz_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 1159,
+    "sell_copper": 14487,
     "buy_copper": null,
-    "sell_denominator": 40000,
+    "sell_denominator": 500000,
     "buy_denominator": 64,
     "daily_player_units": 256,
     "daily_global_units": 8192,
@@ -19084,7 +19354,7 @@
     "quota_units": 1,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:quartz"
@@ -19185,6 +19455,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:oak_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "minecraft:oak_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,
@@ -19361,6 +19644,19 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe minecraft:dye_orange_wool output 1; family material tier 180. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "minecraft:pale_oak_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -19924,9 +20220,9 @@
     "schema": 2,
     "item": "minecraft:quartz",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 1159,
+    "sell_copper": 14487,
     "buy_copper": 200,
-    "sell_denominator": 40000,
+    "sell_denominator": 500000,
     "buy_denominator": 64,
     "daily_player_units": 256,
     "daily_global_units": 8192,
@@ -19935,7 +20231,7 @@
     "quota_units": 1,
     "notes": "Immutable approved resource anchor per64; exact recipe family.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:quartz"
@@ -19945,9 +20241,9 @@
     "schema": 2,
     "item": "minecraft:quartz_block",
     "outcome": "SELL_ONLY",
-    "sell_copper": 1159,
+    "sell_copper": 14487,
     "buy_copper": null,
-    "sell_denominator": 10000,
+    "sell_denominator": 125000,
     "buy_denominator": 64,
     "daily_player_units": 256,
     "daily_global_units": 8192,
@@ -19956,7 +20252,7 @@
     "quota_units": 4,
     "notes": "Exact one-way4:1 recipe minecraft:quartz_block; no invented reverse recipe or NPC block purchase.",
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:quartz"
@@ -20083,9 +20379,9 @@
     "schema": 2,
     "item": "minecraft:raw_gold",
     "outcome": "SELL_ONLY",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -20093,20 +20389,15 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
     "item": "minecraft:raw_gold_block",
     "outcome": "SELL_ONLY",
-    "sell_copper": 7056639,
+    "sell_copper": 243,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -20114,12 +20405,7 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 81,
     "notes": "Exact reciprocal9:1 recipes; immutable material anchor and normalized shared quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -20463,15 +20749,15 @@
     "schema": 1,
     "item": "minecraft:slime_ball",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 72167,
+    "sell_copper": 288667,
     "buy_copper": 8,
     "daily_player_units": 16,
     "daily_global_units": 256,
     "demand_group": "drops",
     "notes": "Swamp/slime-chunk renewable input; multiple conversions audited Evidence: loaded registry, installed tags/recipes/loot",
-    "sell_denominator": 250000,
+    "sell_denominator": 1000000,
     "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
+      "capturedUtc": "2026-10-20T18:27:03.876130700Z",
       "decision": "User: preserve cheap construction, adjust derived buyback",
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:slime_ball"
@@ -20581,6 +20867,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "minecraft:spruce_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "minecraft:spruce_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,
@@ -20818,6 +21117,19 @@
   },
   {
     "schema": 2,
+    "item": "minecraft:warped_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "minecraft:warped_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -20848,9 +21160,9 @@
     "schema": 2,
     "item": "minecraft:wheat",
     "outcome": "BUY_AND_SELL",
-    "sell_copper": 7657,
+    "sell_copper": 10,
     "buy_copper": 40,
-    "sell_denominator": 62500,
+    "sell_denominator": 64,
     "buy_denominator": 64,
     "daily_player_units": 128,
     "daily_global_units": 4096,
@@ -20858,12 +21170,7 @@
     "quota_family": "minecraft:wheat",
     "quota_units": 1,
     "notes": "Authorized agrarian/food batch anchor; native counts unchanged.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:wheat"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -21555,9 +21862,9 @@
     "schema": 2,
     "item": "natures_spirit:chert_gold_ore",
     "outcome": "SELL_ONLY",
-    "sell_copper": 784071,
+    "sell_copper": 27,
     "buy_copper": null,
-    "sell_denominator": 1000000,
+    "sell_denominator": 32,
     "buy_denominator": 64,
     "daily_player_units": 2304,
     "daily_global_units": 73728,
@@ -21565,12 +21872,7 @@
     "quota_family": "minecraft:gold_ingot",
     "quota_units": 9,
     "notes": "Exact tagged material; conservative base yield and common family quota.",
-    "recipe_audit_adjusted": {
-      "capturedUtc": "2026-10-20T17:11:19.327639500Z",
-      "decision": "User: preserve cheap construction, adjust derived buyback",
-      "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
-      "family": "minecraft:gold_ingot"
-    }
+    "user_income_anchor": true
   },
   {
     "schema": 2,
@@ -24102,6 +24404,19 @@
   },
   {
     "schema": 2,
+    "item": "netherexp:claret_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "netherexp:claret_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -24285,6 +24600,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "netherexp:roasted_bone"
     }
+  },
+  {
+    "schema": 2,
+    "item": "netherexp:smokestalk_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -28811,6 +29139,19 @@
   },
   {
     "schema": 2,
+    "item": "ribbits:mossy_oak_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "ribbits:mossy_oak_planks_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -29119,6 +29460,19 @@
   },
   {
     "schema": 2,
+    "item": "somemoreblocks:acacia_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "somemoreblocks:acacia_mosaic_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -29228,6 +29582,19 @@
     "demand_group": "building_supply",
     "building_class": "COMMON_BUILD",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe somemoreblocks:andesite_tiles output 4; family material tier 100. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "somemoreblocks:birch_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -29676,6 +30043,19 @@
     "demand_group": "building_supply",
     "building_class": "COMMON_BUILD",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe somemoreblocks:calcite_tiles output 4; family material tier 100. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "somemoreblocks:cherry_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -30169,6 +30549,19 @@
   },
   {
     "schema": 2,
+    "item": "somemoreblocks:crimson_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "somemoreblocks:crimson_mosaic_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -30404,6 +30797,19 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe somemoreblocks:cyan_terracotta_tiles_from_cyan_terracotta_bricks output 4; family material tier 180. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "somemoreblocks:dark_oak_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -30866,6 +31272,19 @@
     "demand_group": "building_supply",
     "building_class": "PREMIUM_DECOR",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe somemoreblocks:iron_bricks output 4; family material tier 400. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "somemoreblocks:jungle_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -31359,6 +31778,19 @@
   },
   {
     "schema": 2,
+    "item": "somemoreblocks:mangrove_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "somemoreblocks:mangrove_mosaic_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -31384,6 +31816,19 @@
     "demand_group": "building_supply",
     "building_class": "DECOR_BUILD",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.StairBlock; actual recipe somemoreblocks:mangrove_mosaic_stairs output 4; family material tier 140. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "somemoreblocks:oak_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -32479,6 +32924,19 @@
   },
   {
     "schema": 2,
+    "item": "somemoreblocks:spruce_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "somemoreblocks:spruce_mosaic_slab",
     "outcome": "BUY_ONLY",
     "sell_copper": null,
@@ -32658,6 +33116,19 @@
     "demand_group": "building_supply",
     "building_class": "COMMON_BUILD",
     "notes": "Current loaded exact nonfunctional class net.minecraft.world.level.block.Block; actual recipe somemoreblocks:tuff_tiles output 4; family material tier 100. No BE/redstone/capability/progression inference from names."
+  },
+  {
+    "schema": 2,
+    "item": "somemoreblocks:warped_mosaic",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 2,
@@ -33228,6 +33699,19 @@
   },
   {
     "schema": 2,
+    "item": "spawn:cracked_rotten_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
+  },
+  {
+    "schema": 2,
     "item": "spawn:date_cookie",
     "outcome": "SELL_ONLY",
     "sell_copper": 9801,
@@ -33264,6 +33748,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "spawn:date_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "spawn:date_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,
@@ -36918,6 +37415,19 @@
       "certificate": "Exact expected-recipe monetary potentials; arbitrary-length conversion and coproduct composition",
       "family": "vinery:dark_cherry_log"
     }
+  },
+  {
+    "schema": 2,
+    "item": "vinery:dark_cherry_planks",
+    "outcome": "BUY_ONLY",
+    "sell_copper": null,
+    "buy_copper": 9,
+    "buy_denominator": 64,
+    "bulk_1024": 140,
+    "daily_player_units": 65536,
+    "daily_global_units": 262144,
+    "demand_group": "building_supply",
+    "notes": "Exact native plank tag and ordinary Block class; existing wood material tariff140/1024, no buyback."
   },
   {
     "schema": 1,

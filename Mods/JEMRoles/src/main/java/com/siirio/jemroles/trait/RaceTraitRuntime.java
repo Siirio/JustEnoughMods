@@ -108,7 +108,15 @@ public final class RaceTraitRuntime {
                 if (entity != null) entity.discard();
                 return true;
             }
-            var enemy = golem.level().getEntitiesOfClass(Mob.class, golem.getBoundingBox().inflate(16), mob -> mob instanceof Enemy)
+            ServerPlayer owner = event.getServer().getPlayerList().getPlayer(entry.getKey());
+            if (owner == null || !owner.isAlive() || owner.level() != golem.level()) { golem.discard(); return true; }
+            LivingEntity attacker = owner.getLastHurtByMob();
+            if (validGuardianTarget(owner, golem, attacker)) {
+                golem.setTarget(attacker);
+                return false;
+            }
+            if (golem.getTarget() instanceof net.minecraft.world.entity.player.Player) golem.setTarget(null);
+            var enemy = golem.level().getEntitiesOfClass(Mob.class, golem.getBoundingBox().inflate(16), mob -> mob instanceof Enemy && validGuardianTarget(owner, golem, mob))
                     .stream().min(java.util.Comparator.comparingDouble(golem::distanceToSqr)).orElse(null);
             if (enemy != null) golem.setTarget(enemy);
             return false;
@@ -232,15 +240,33 @@ public final class RaceTraitRuntime {
                     player.getId(), -1, new int[0], List.of(), 1, 18);
     }
 
+    private static boolean validGuardianTarget(ServerPlayer owner, IronGolem golem, LivingEntity target) {
+        if (owner == null || target == null || target == owner || !target.isAlive() || target.isSpectator()
+                || target.level() != golem.level() || target.isInvulnerable() || owner.isAlliedTo(target)
+                || !golem.canAttack(target) || golem.distanceToSqr(target) > 32 * 32) return false;
+        return !(target instanceof net.minecraft.world.entity.player.Player player)
+                || !player.isCreative() && owner.server.isPvpAllowed() && owner.canHarmPlayer(player);
+    }
+
     private static void guardian(ServerPlayer player, RaceRecord record) {
         long now = player.level().getGameTime();
+        if (!player.getPersistentData().getBoolean("JemGuardianCooldownV2")) {
+            if (record.remaining("guardian", now) > RaceRules.GUARDIAN_COOLDOWN.get())
+                RaceService.mutate(player, value -> value.cooldown("guardian", now + RaceRules.GUARDIAN_COOLDOWN.get()));
+            player.getPersistentData().putBoolean("JemGuardianCooldownV2", true);
+        }
         if (GUARDIANS.containsKey(player.getUUID()) || !record.ready("guardian", now)) return;
-        IronGolem golem = new IronGolem(net.minecraft.world.entity.EntityType.IRON_GOLEM, player.level());
+        IronGolem golem = new IronGolem(net.minecraft.world.entity.EntityType.IRON_GOLEM, player.level()) {
+            @Override public boolean canAttackType(net.minecraft.world.entity.EntityType<?> type) {
+                return type == net.minecraft.world.entity.EntityType.PLAYER || super.canAttackType(type);
+            }
+        };
         golem.moveTo(player.getX(), player.getY(), player.getZ(), player.getYRot(), 0);
         golem.setPlayerCreated(true);
         golem.setInvulnerable(true);
         golem.setCustomName(Component.translatable("jem.roles.guardian"));
         golem.getPersistentData().putBoolean("JemAncestralGuardian", true);
+        golem.getPersistentData().putUUID("JemGuardianOwner", player.getUUID());
         if (player.level().addFreshEntity(golem)) {
             GUARDIANS.put(player.getUUID(), new Guardian(golem.getUUID(), now + 600));
             RaceService.mutate(player, value -> value.cooldown("guardian", now + RaceRules.GUARDIAN_COOLDOWN.get()));
@@ -369,6 +395,14 @@ public final class RaceTraitRuntime {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void target(LivingChangeTargetEvent event) {
+        if (event.getEntity() instanceof IronGolem golem && golem.getPersistentData().hasUUID("JemGuardianOwner")
+                && golem.level() instanceof ServerLevel level && event.getNewTarget() != null) {
+            ServerPlayer owner = level.getServer().getPlayerList().getPlayer(golem.getPersistentData().getUUID("JemGuardianOwner"));
+            if (!validGuardianTarget(owner, golem, event.getNewTarget())
+                    || event.getNewTarget() instanceof net.minecraft.world.entity.player.Player && owner.getLastHurtByMob() != event.getNewTarget()) {
+                event.setCanceled(true); return;
+            }
+        }
         if (!(event.getNewTarget() instanceof ServerPlayer player)) return;
         RaceId race = RaceApi.get(player).map(com.siirio.jemroles.api.RaceSnapshot::race).orElse(null);
         if (race == null) return;

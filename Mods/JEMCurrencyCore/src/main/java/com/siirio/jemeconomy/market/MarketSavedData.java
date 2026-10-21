@@ -66,8 +66,8 @@ public final class MarketSavedData extends SavedData {
     public synchronized QuoteAllowance allowance(MinecraftServer server, UUID account, ItemPolicy policy, int requested, long unitPrice) {
         cycle(server);
         if (account == null || !policy.sellable() || requested <= 0 || unitPrice <= 0L) return new QuoteAllowance(0, 0L, "blocked");
-        long accountMoney = Math.max(0L, ACCOUNT_DAILY_PAYOUT - accountPaid.getOrDefault(account, 0L));
-        long globalMoney = Math.max(0L, GLOBAL_DAILY_PAYOUT - globalPaid);
+        long accountMoney = Long.MAX_VALUE;
+        long globalMoney = Long.MAX_VALUE;
         int accountItem = accountItemRemaining(server, account, policy);
         int globalItem = globalItemRemaining(server, policy);
         long money = Math.min(accountMoney, globalMoney);
@@ -123,15 +123,15 @@ public final class MarketSavedData extends SavedData {
             var policy = exact.getOrDefault(entry.getKey(),com.siirio.jemeconomy.policy.ItemPolicyRegistry.policy(entry.getKey()));
             if (entry.getValue() <= 0) return false;
             if (policy.disc()) discs = Math.addExact(discs, Math.multiplyExact((long) entry.getValue(), 10_000L));
-            families.merge(policy.quotaFamily(), Math.multiplyExact(entry.getValue(),policy.quotaUnits()), Math::addExact);
+            if (policy.disc()) families.merge(policy.quotaFamily(), Math.multiplyExact(entry.getValue(),policy.quotaUnits()), Math::addExact);
         }
         ordinary = Math.max(0L, ordinary - discs);
         if (!testQuotaBypass(server) && (ordinary > accountRemaining(server,account) || ordinary > globalRemaining(server))) return false;
         Map<ResourceLocation, Integer> perAccount = accountUnits.computeIfAbsent(account, ignored -> new HashMap<>());
         for (var entry : units.entrySet()) {
             var policy = exact.getOrDefault(entry.getKey(),com.siirio.jemeconomy.policy.ItemPolicyRegistry.policy(entry.getKey()));
-            int used = families.get(policy.quotaFamily());
-            if ((!testQuotaBypass(server) || policy.disc()) && (used > policy.dailyPlayerUnits() - perAccount.getOrDefault(policy.quotaFamily(),0)
+            int used = families.getOrDefault(policy.quotaFamily(), 0);
+            if (policy.disc() && (used > policy.dailyPlayerUnits() - perAccount.getOrDefault(policy.quotaFamily(),0)
                     || used > policy.dailyGlobalUnits() - globalUnits.getOrDefault(policy.quotaFamily(),0))) return false;
         }
         globalPaid = Math.addExact(globalPaid,ordinary);
@@ -144,13 +144,13 @@ public final class MarketSavedData extends SavedData {
         return true;
     }
 
-    public synchronized long accountRemaining(MinecraftServer server, UUID account) { cycle(server); return Math.max(0L, ACCOUNT_DAILY_PAYOUT - accountPaid.getOrDefault(account, 0L)); }
-    public synchronized long globalRemaining(MinecraftServer server) { cycle(server); return Math.max(0L, GLOBAL_DAILY_PAYOUT - globalPaid); }
+    public synchronized long accountRemaining(MinecraftServer server, UUID account) { cycle(server); return Long.MAX_VALUE; }
+    public synchronized long globalRemaining(MinecraftServer server) { cycle(server); return Long.MAX_VALUE; }
     public synchronized long accountFamilyRemaining(MinecraftServer server, UUID account, ItemPolicy policy) {
-        cycle(server); if(testQuotaBypass(server) && !policy.disc()) return Integer.MAX_VALUE; return Math.max(0,policy.dailyPlayerUnits()-accountUnits.getOrDefault(account,Map.of()).getOrDefault(policy.quotaFamily(),0));
+        cycle(server); if(!policy.disc()) return Integer.MAX_VALUE; return Math.max(0,policy.dailyPlayerUnits()-accountUnits.getOrDefault(account,Map.of()).getOrDefault(policy.quotaFamily(),0));
     }
     public synchronized long globalFamilyRemaining(MinecraftServer server, ItemPolicy policy) {
-        cycle(server); if(testQuotaBypass(server) && !policy.disc()) return Integer.MAX_VALUE; return Math.max(0,policy.dailyGlobalUnits()-globalUnits.getOrDefault(policy.quotaFamily(),0));
+        cycle(server); if(!policy.disc()) return Integer.MAX_VALUE; return Math.max(0,policy.dailyGlobalUnits()-globalUnits.getOrDefault(policy.quotaFamily(),0));
     }
     public synchronized int accountItemRemaining(MinecraftServer server, UUID account, ItemPolicy policy) {
         cycle(server);
@@ -164,6 +164,7 @@ public final class MarketSavedData extends SavedData {
     /** Daily supplier stock is distinct from the NPC's budget and purchases from players. */
     public synchronized int purchaseRemaining(MinecraftServer server, UUID account, ItemPolicy policy) {
         cycle(server);
+        if (!policy.disc()) return Integer.MAX_VALUE;
         boolean building = policy.marketCategory() == ItemPolicy.MarketCategory.BLOCKS;
         int personalLimit = building ? Math.max(65536,policy.dailyPlayerUnits()) : policy.dailyPlayerUnits();
         int stockLimit = building ? Math.max(262144,policy.dailyGlobalUnits()) : policy.dailyGlobalUnits();
@@ -174,6 +175,7 @@ public final class MarketSavedData extends SavedData {
     public synchronized void recordPurchase(MinecraftServer server, UUID account, ItemPolicy policy, int quantity) {
         if (quantity <= 0 || purchaseRemaining(server, account, policy) < quantity)
             throw new IllegalStateException("Market supply changed during synchronous purchase");
+        if (!policy.disc()) { revision++; setDirty(); return; }
         purchasedUnits.merge(policy.item(), quantity, Math::addExact);
         accountPurchases.computeIfAbsent(account, ignored -> new HashMap<>()).merge(policy.item(), quantity, Math::addExact);
         revision++; setDirty();
