@@ -54,13 +54,13 @@ public final class ShippingBoxBlock extends BaseEntityBlock {
         return InteractionResult.CONSUME;
     }
     @Override public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
-        if (player instanceof ServerPlayer serverPlayer && level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box && !box.isOwner(serverPlayer)) return 0.0F;
+        if (player instanceof ServerPlayer serverPlayer && level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box && (box.paymentLocked() || !box.isOwner(serverPlayer))) return 0.0F;
         return super.getDestroyProgress(state, player, level, pos);
     }
     @Override public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest,
                                                   net.minecraft.world.level.material.FluidState fluid) {
-        if (!level.isClientSide && level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box && !box.isOwner(player)) {
-            player.displayClientMessage(Component.translatable("jem.economy.shipping.owner_only"), true); return false;
+        if (!level.isClientSide && level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box && (box.paymentLocked() || !box.isOwner(player))) {
+            player.displayClientMessage(Component.translatable("jem.economy.shipping." + (box.paymentLocked() ? "payment_required" : "owner_only")), true); return false;
         }
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
@@ -69,4 +69,10 @@ public final class ShippingBoxBlock extends BaseEntityBlock {
         return entity instanceof ShippingBoxBlockEntity box ? java.util.List.of(box.preservedStack()) : java.util.List.of();
     }
     @Override public net.minecraft.world.level.material.PushReaction getPistonPushReaction(BlockState state) { return net.minecraft.world.level.material.PushReaction.BLOCK; }
+    @Override public float getExplosionResistance(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.world.level.Explosion explosion) { return Float.MAX_VALUE; }
+    @Override public void onBlockExploded(BlockState state, Level level, BlockPos pos, net.minecraft.world.level.Explosion explosion) { }
+    @Override public boolean canEntityDestroy(BlockState state, BlockGetter level, BlockPos pos, net.minecraft.world.entity.Entity entity) { return false; }
+    @Override public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction face) { return false; }
+    @Override public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction face) { return 0; }
+    @Override public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction face) { return 0; }
 }

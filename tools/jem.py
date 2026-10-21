@@ -8,7 +8,7 @@ import subprocess
 import sys
 import zipfile
 from datetime import datetime
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -134,6 +134,23 @@ def baseline(config):
 
 
 def point_update_folder_files(folder, excluded=()):
+    if folder.is_file() and folder.suffix.lower() == ".zip":
+        files = {}
+        with zipfile.ZipFile(folder) as archive:
+            if "Что делать.md" not in archive.namelist():
+                raise SystemExit(f"Point-update archive lacks its guide: {folder}")
+            for entry in archive.infolist():
+                if entry.is_dir() or not entry.filename.startswith("Файлы/"):
+                    continue
+                relative = PurePosixPath(entry.filename).relative_to("Файлы")
+                if relative.is_absolute() or ".." in relative.parts or "\\" in entry.filename or relative.as_posix() in files:
+                    raise SystemExit(f"Unsafe or duplicate point-update member: {entry.filename}")
+                with archive.open(entry) as source:
+                    checksum = hashlib.file_digest(source, "sha256").hexdigest()
+                files[relative.as_posix()] = {"sha256": checksum, "size": entry.file_size}
+        if not files:
+            raise SystemExit(f"Point-update archive has no payload: {folder}")
+        return exclude_inventory(files, excluded)
     files = folder / "Файлы"
     guide = folder / "Что делать.md"
     if not files.is_dir() or not guide.is_file():
@@ -153,7 +170,13 @@ def baseline_point_update_folder(baseline_data):
     point_update = baseline_data.get("pointUpdate")
     if not point_update or not point_update.get("folder"):
         return None
-    return Path(point_update["folder"])
+    folder = Path(point_update["folder"])
+    if (folder / "Файлы").is_dir() and (folder / "Что делать.md").is_file():
+        return folder
+    archive = Path(point_update.get("archive", ""))
+    if archive.is_file() and digest(archive) == point_update.get("sha256"):
+        return archive
+    raise SystemExit(f"Prior point-update folder and verified archive are unavailable: {folder}")
 
 
 def matching_point_update(config, delta, base_update=None):

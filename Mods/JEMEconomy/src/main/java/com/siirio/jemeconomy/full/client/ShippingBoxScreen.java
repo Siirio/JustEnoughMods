@@ -46,11 +46,11 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
         saleControls.add(button(190,137,164,22,tr("collect"),()->minecraft.gameMode.handleInventoryButtonClick(menu.containerId,1)));
         sourceChooser=button(35,48,24,24,denomination(source),()->toggleDropdown(1));exchangeControls.add(sourceChooser);
         targetChooser=button(124,48,24,24,denomination(target),()->toggleDropdown(2));exchangeControls.add(targetChooser);
-        count=field(49,90,80,oldCount);amount=field(194,100,154,oldAmount);
+        count=field(49,90,80,oldCount);amount=field(194,107,154,oldAmount);
         exchangeControls.add(button(16,89,22,18,Component.literal("−"),()->count.setValue(Long.toString(Math.max(1L,number(count)-1)))));
         exchangeControls.add(button(138,89,32,18,Component.literal("+"),()->count.setValue(Long.toString(Math.min(4096L,number(count)+1)))));
         exchange=button(16,122,154,18,Component.translatable("jem.economy.exchange.confirm"),()->send(ContainerCurrencyPacket.Action.EXCHANGE));exchangeControls.add(exchange);
-        withdraw=button(274,126,74,18,tr("withdraw"),()->send(ContainerCurrencyPacket.Action.WITHDRAW));exchangeControls.add(withdraw);
+        withdraw=button(274,126,74,18,tr("withdraw_short"),()->send(ContainerCurrencyPacket.Action.WITHDRAW));exchangeControls.add(withdraw);
         exchangeControls.add(button(194,126,74,18,tr("deposit"),()->send(ContainerCurrencyPacket.Action.DEPOSIT)));
         recipient = new EditBox(font,leftPos+194,topPos+149,92,16,tr("recipient")); recipient.setMaxLength(16); addRenderableWidget(recipient);
         recipient.setHint(tr("recipient"));recipient.setValue(oldRecipient);
@@ -63,12 +63,18 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
     }
     private Button button(int x,int y,int width,int height,Component label,Runnable action){
         return addRenderableWidget(new Button(leftPos+x,topPos+y,width,height,label,ignored->action.run(),supplier->supplier.get()){
+            private long pressedUntil;
+            @Override public void onPress(){pressedUntil=net.minecraft.Util.getMillis()+120;super.onPress();}
             @Override public void renderWidget(GuiGraphics g,int mouseX,int mouseY,float partialTick){
-                int v=!active?96:isHoveredOrFocused()?24:0;
-                g.blit(CONTROLS,getX(),getY(),3,getHeight(),24,v,3,22,128,128);
-                g.blit(CONTROLS,getX()+3,getY(),getWidth()-6,getHeight(),27,v,97,22,128,128);
-                g.blit(CONTROLS,getX()+getWidth()-3,getY(),3,getHeight(),124,v,3,22,128,128);
-                if(this!=sourceChooser&&this!=targetChooser)g.drawCenteredString(font,getMessage(),getX()+getWidth()/2,getY()+(getHeight()-8)/2,active?0xFFF3E6CD:0xFFBAAE98);
+                int v=net.minecraft.Util.getMillis()<pressedUntil?75:!active?100:isHovered()?25:isFocused()?50:0;
+                g.blit(CONTROLS,getX(),getY(),3,getHeight(),23,v,3,22,128,128);
+                g.blit(CONTROLS,getX()+3,getY(),getWidth()-6,getHeight(),26,v,97,22,128,128);
+                g.blit(CONTROLS,getX()+getWidth()-3,getY(),3,getHeight(),123,v,3,22,128,128);
+                if(this!=sourceChooser&&this!=targetChooser) {
+                    float scale=Math.min(1F,(getWidth()-8F)/Math.max(1,font.width(getMessage())));
+                    g.pose().pushPose();g.pose().translate(getX()+getWidth()/2F,getY()+(getHeight()-8*scale)/2F,0);g.pose().scale(scale,scale,1);
+                    g.drawString(font,getMessage(),-font.width(getMessage())/2,0,active?0xFFF3E6CD:0xFFBAAE98,false);g.pose().popPose();
+                }
             }
         });
     }
@@ -97,6 +103,7 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
     private boolean exact(){long n=number(count);return n>0L&&n<=4096L&&source!=target&&n*source.value()%target.value()==0L;}
     private void updateControls(){
         boolean second=menu.tab()==1;
+        if (!saleControls.isEmpty()) saleControls.get(0).setMessage(tr(menu.hasPayment()?"collect_payment":"sell"));
         saleControls.forEach(b->{b.visible=!second;b.active=!second;});exchangeControls.forEach(b->{b.visible=second;b.active=second&&pending==null;});
         if(count!=null){count.visible=second;count.active=second&&pending==null&&dropdown==0;}if(amount!=null){amount.visible=second;amount.active=second&&pending==null&&dropdown==0;}
         if(recipient!=null){recipient.visible=second;recipient.active=second&&pending==null&&dropdown==0;}
@@ -115,7 +122,7 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
                 int x=leftPos+(dropdown==1?16:98), y=topPos+74;
                 for (var denomination : CoinDenomination.values()) {
                     int row=y+denomination.ordinal()*18;
-                    g.blit(CONTROLS,x,row,72,18,24,denomination.ordinal()==dropdownIndex||mouseX>=x&&mouseX<x+72&&mouseY>=row&&mouseY<row+18?24:0,103,22,128,128);
+                    g.blit(CONTROLS,x,row,72,18,23,denomination.ordinal()==dropdownIndex||mouseX>=x&&mouseX<x+72&&mouseY>=row&&mouseY<row+18?25:0,103,22,128,128);
                     g.renderItem(new ItemStack(CurrencyItems.item(denomination)),x+3,row+1);
                     g.drawString(font,Long.toString(denomination.value()),x+23,row+5,0xFFF3E6CD,false);
                 }
@@ -133,12 +140,13 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
             g.drawString(font,font.plainSubstrByWidth(tr("status."+statusKey(menu.statusCode())).getString(),160),192,162,0xFF8EAFAC,false);
         }else{
             g.drawString(font,tr("exchange_tab"),13,29,0xFFF3E6CD,false);g.drawString(font,tr("wallet"),192,30,0xFFF3E6CD,false);
-            CoinPriceRenderer.draw(g,font,wallet,194,51,154,0xFFF3E6CD);g.drawString(font,tr("withdraw_amount"),192,85,0xFFF3E6CD,false);
+            CoinPriceRenderer.draw(g,font,wallet,194,51,154,0xFFF3E6CD);g.drawString(font,tr("withdraw_amount"),192,94,0xFFF3E6CD,false);
             long receive=exact()?number(count)*source.value()/target.value():0L;
             g.drawCenteredString(font,Long.toString(number(count)),47,76,0xFFF3E6CD);
             g.drawString(font,"→",90,56,0xFFF3E6CD,false);g.drawCenteredString(font,Long.toString(receive),136,76,0xFFF3E6CD);
             Component message=result.isBlank()?tr("inventory_destination"):Component.translatable(result);
-            g.drawString(font,font.plainSubstrByWidth(message.getString(),330),16,171,0xFFF3E6CD,false);
+            var lines=font.split(message,154);
+            for(int line=0;line<Math.min(2,lines.size());line++)g.drawString(font,lines.get(line),194,72+line*9,0xFFF3E6CD,false);
         }
     }
     @Override public boolean mouseClicked(double x,double y,int button) {
@@ -152,6 +160,9 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
         return super.mouseClicked(x,y,button);
     }
     @Override public boolean keyPressed(int key,int scan,int modifiers) {
+        if (menu.paymentLocked() && (key==256 || minecraft.options.keyInventory.matches(key,scan))) {
+            minecraft.player.displayClientMessage(tr("payment_required"),true); return true;
+        }
         if (dropdown!=0) {
             if(key==256||key==258){Button chooser=dropdown==1?sourceChooser:targetChooser;dropdown=0;updateControls();setFocused(chooser);if(key==256)return true;}
             else if(key==264||key==265){dropdownIndex=Math.floorMod(dropdownIndex+(key==264?1:-1),CoinDenomination.values().length);return true;}
@@ -161,6 +172,11 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
         }
         return super.keyPressed(key,scan,modifiers);
     }
-    private void price(GuiGraphics g,String key,long value,int y){g.drawString(font,tr(key),192,y,0xFFF3E6CD,false);CoinPriceRenderer.draw(g,font,value,192,y+13,160,0xFFE5C46F);}
+    @Override public boolean shouldCloseOnEsc() { return !menu.paymentLocked(); }
+    @Override public void onClose() {
+        if (menu.paymentLocked()) { minecraft.player.displayClientMessage(tr("payment_required"),true); return; }
+        super.onClose();
+    }
+    private void price(GuiGraphics g,String key,long value,int y){g.drawString(font,tr(key),192,y,0xFFF3E6CD,false);if(value==0)g.drawString(font,"0",192,y+17,0xFFE5C46F,false);else CoinPriceRenderer.draw(g,font,value,192,y+13,160,0xFFE5C46F);}
     private static String statusKey(int v){return switch(v){case 1->"preview";case 2->"paid";case 3->"empty";case 4->"blocked_item";case 5->"account_daily_cap";case 6->"global_daily_cap";case 7->"item_account_cap";case 8->"item_global_cap";case 9->"budget_too_small";case 10->"payout_full";case 11->"market_budget_exhausted";case 12->"quarantined";case 13->"sale_busy";default->"waiting";};}
 }

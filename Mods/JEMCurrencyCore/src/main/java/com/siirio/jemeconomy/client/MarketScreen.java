@@ -39,12 +39,17 @@ public final class MarketScreen extends Screen {
     private float uiScale, originX, originY;
     private ItemStack hoveredItem = ItemStack.EMPTY;
     private Component hoveredText;
+    private long searchDue;
+    private boolean waiting;
+    private String sentSearch, sentCategory;
+    private List<List<net.minecraft.util.FormattedCharSequence>> itemNames=List.of();
     private long hoveredPrice = -1;
 
     MarketScreen(Screen parent, MarketCatalogSnapshot data) {
         super(Component.translatable("jem.economy.market.title"));
         this.parent = parent;
         this.data = data;
+        sentSearch=data.search();sentCategory=data.category();
         String baseCategory=data.category().split("_")[0];
         this.activeCategory = data.category().startsWith("building") ? "building" : java.util.Arrays.asList(CATEGORIES).contains(baseCategory)?baseCategory:"blocks";
         if(data.category().startsWith("building"))bulkQuantity=Integer.parseInt(data.category().substring(8));
@@ -52,9 +57,10 @@ public final class MarketScreen extends Screen {
     }
 
     void accept(MarketCatalogSnapshot next) {
-        if(next.errorKey().isBlank()&&!next.category().equals(requestCategory()))return;
+        if(!next.category().equals(sentCategory)||!next.search().equals(sentSearch))return;
         data = next;
-        if (search != null && !search.isFocused() && !search.getValue().equals(next.search())) search.setValue(next.search());
+        waiting=false;
+        cacheNames();
     }
 
     @Override protected void init() {
@@ -68,8 +74,9 @@ public final class MarketScreen extends Screen {
         search.setValue(draft);
         search.setMaxLength(64);
         search.setHint(Component.translatable("jem.economy.market.search"));
-        search.setResponder(value -> { EconomyNetwork.marketQuery(value, requestCategory(), 0, false); });
+        search.setResponder(value -> searchDue=net.minecraft.Util.getMillis()+250);
         addWidget(search);
+        cacheNames();
         if (minecraft != null && minecraft.level != null) {
             merchant = EntityType.VILLAGER.create(minecraft.level);
             if (merchant != null) {
@@ -81,6 +88,28 @@ public final class MarketScreen extends Screen {
     }
 
     @Override public boolean isPauseScreen() { return false; }
+    @Override public void tick() {
+        super.tick();search.tick();
+        if(!waiting&&searchDue>0&&net.minecraft.Util.getMillis()>=searchDue){searchDue=0;request(0);}
+    }
+
+    private void request(int page) {
+        if(waiting)return;
+        waiting=true;sentSearch=search.getValue().strip().toLowerCase(java.util.Locale.ROOT);sentCategory=requestCategory();
+        EconomyNetwork.marketQuery(sentSearch,sentCategory,page,false);
+    }
+
+    private static void recipes(ItemStack stack) {
+        try {
+            Class.forName("com.siirio.jemserver.client.smp.JeiItemLink").getMethod("open",ItemStack.class).invoke(null,stack);
+        } catch (ReflectiveOperationException | LinkageError absent) {
+            net.minecraft.client.Minecraft.getInstance().player.displayClientMessage(Component.translatable("jem.economy.market.jei_unavailable"),true);
+        }
+    }
+
+    private void cacheNames() {
+        if(font!=null)itemNames=data.items().stream().map(item->font.split(marketName(item.stack()),79)).toList();
+    }
 
     @Override public void render(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
         renderBackground(g);
@@ -144,10 +173,10 @@ public final class MarketScreen extends Screen {
         {
             int[] sizes=activeCategory.equals("building")?new int[]{64,256,1024,4096}:new int[]{1,8,64};
             for(int i=0;i<sizes.length;i++) { final int size=sizes[i];
-                button(g,560+i*55,101,51,17,Component.literal("×"+size),()->{if(activeCategory.equals("building"))bulkQuantity=size;else retailQuantity=size;EconomyNetwork.marketQuery(search.getValue(),requestCategory(),0,false);});
+                button(g,560+i*55,101,51,17,Component.literal("×"+size),()->{if(waiting)return;if(activeCategory.equals("building"))bulkQuantity=size;else retailQuantity=size;request(0);});
             }
         }
-        if(!data.category().equals(requestCategory())||!data.errorKey().isBlank()) {
+        if(!data.category().equals(requestCategory())||!data.search().equals(search.getValue().strip().toLowerCase(java.util.Locale.ROOT))) {
             g.drawCenteredString(font,Component.translatable("jem.economy.market.loading_category"),516,244,MUTED);
             return;
         }
@@ -162,13 +191,14 @@ public final class MarketScreen extends Screen {
             g.pose().pushPose(); g.pose().translate(x + 8, y + 12, 0); g.pose().scale(1.75f, 1.75f, 1);
             g.renderItem(stack, 0, 0); g.pose().popPose();
             g.renderItemDecorations(font, stack, x + 17, y + 23);
-            List<net.minecraft.util.FormattedCharSequence> lines = font.split(marketName(stack), 79);
+            List<net.minecraft.util.FormattedCharSequence> lines = itemNames.get(index);
             for (int line = 0; line < Math.min(2, lines.size()); line++) g.drawString(font, lines.get(line), x + 49, y + 9 + line * 10, CREAM, false);
             CoinPriceRenderer.draw(g, font, item.buyCopper(), x + 49, y + 31, 77, CREAM);
             if (inside(mx, my, x + 4, y + 4, 123, 48) && !categoriesOpen) hoveredItem = stack;
-            artButton(g, x + 4, y + 53, 59, 21, tr("buy"), item.buyAvailable(), mx, my,
+            hits.add(new Hit(x+4,y+4,123,48,()->recipes(stack)));
+            artButton(g, x + 4, y + 53, 59, 21, tr("buy"), !waiting&&item.buyAvailable(), mx, my,
                     () -> transact(MarketActionPacket.Action.BUY, item));
-            artButton(g, x + 67, y + 53, 59, 21, tr("sell"), item.sellAvailable() && !activeCategory.equals("building"), mx, my,
+            artButton(g, x + 67, y + 53, 59, 21, tr("sell"), !waiting&&item.sellAvailable() && !activeCategory.equals("building"), mx, my,
                     () -> transact(MarketActionPacket.Action.SELL, item));
             if (!categoriesOpen && inside(mx, my, x + 67, y + 53, 59, 21)) {
                 if (item.sellCopper() > 0) hoveredPrice = item.sellCopper();
@@ -187,7 +217,7 @@ public final class MarketScreen extends Screen {
             g.fill(58,y,210,y+16,category.equals(activeCategory)?0xff70482f:0xff35251c);
             g.renderItem(categoryIcon(category),61,y);
             fitted(g,categoryName(category),81,y+4,125,CREAM);
-            hits.add(new Hit(58,y,152,16,()->{activeCategory=category;EconomyNetwork.marketQuery(search.getValue(),requestCategory(),0,false);}));
+            hits.add(new Hit(58,y,152,16,()->{if(waiting)return;activeCategory=category;request(0);}));
         }
         g.fill(58,378,210,402,0xff35251c);
         hits.add(new Hit(192,381,16,18,()->{search.setValue("");search.setFocused(true);setFocused(search);}));
@@ -197,7 +227,8 @@ public final class MarketScreen extends Screen {
     private String requestCategory() { return activeCategory.equals("building") ? "building"+bulkQuantity : activeCategory+(retailQuantity==1?"":"_"+retailQuantity); }
 
     private void transact(MarketActionPacket.Action action, MarketItemSnapshot item) {
-        if(!data.category().equals(requestCategory())||!data.errorKey().isBlank())return;
+        if(waiting||searchDue>0||!data.category().equals(requestCategory())||!data.search().equals(search.getValue().strip().toLowerCase(java.util.Locale.ROOT)))return;
+        waiting=true;sentSearch=data.search();sentCategory=data.category();
         EconomyNetwork.marketAction(activeCategory.equals("building") && action==MarketActionPacket.Action.BUY?MarketActionPacket.Action.BULK_BUY:action, item.id(), activeCategory.equals("building") ? bulkQuantity : retailQuantity, data.revision(), data.search(), requestCategory(), data.page());
     }
 
@@ -246,7 +277,7 @@ public final class MarketScreen extends Screen {
     }
 
     private void queryPage(int page) {
-        if (page >= 0 && page < data.pages()) EconomyNetwork.marketQuery(search.getValue(), requestCategory(), page, false);
+        if (page >= 0 && page < data.pages()) request(page);
     }
     private static Component denominationName(CoinDenomination value) { return Component.translatable("item.jem_economy." + value.id()); }
     private double localX(double x) { return (x - originX) / uiScale; }
@@ -261,7 +292,7 @@ public final class MarketScreen extends Screen {
             if (button == 0 && inside(mx, my, 444, 125, 335, CATEGORIES.length * 23)) {
                 int index = (int) (my - 125) / 23;
                 categoriesOpen = false;
-                EconomyNetwork.marketQuery(search.getValue(), CATEGORIES[index], 0, false);
+                if(!waiting){activeCategory=CATEGORIES[index];request(0);}
             } else categoriesOpen = false;
             return true;
         }
@@ -286,6 +317,7 @@ public final class MarketScreen extends Screen {
         return false;
     }
     @Override public boolean keyPressed(int key, int scanCode, int modifiers) {
+        if(key==82&&!search.isFocused()&&!hoveredItem.isEmpty()){recipes(hoveredItem);return true;}
         if(key==256&&search.isFocused()){if(!search.getValue().isEmpty())search.setValue("");else{search.setFocused(false);setFocused(null);}return true;}
         if (key == 256 && categoriesOpen) { categoriesOpen = false; return true; }
         return super.keyPressed(key, scanCode, modifiers);

@@ -35,6 +35,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ClosedConnectionErrorMixin")) {
+            var file=FMLLoader.getLoadingModList().getModFileById("serverlogin");
+            return FMLLoader.getDist().isDedicatedServer()&&file!=null&&file.getMods().stream()
+                    .anyMatch(mod->mod.getModId().equals("serverlogin")&&mod.getVersion().toString().equals("1.0.3"));
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.TerminalConnectionFailureMixin")
                 || mixinClassName.equals("com.siirio.jemcompat.mixin.login.ConnectivityTerminalSocketMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("connectivity");

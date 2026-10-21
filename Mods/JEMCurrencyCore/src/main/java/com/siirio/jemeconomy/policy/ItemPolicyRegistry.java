@@ -25,13 +25,17 @@ public final class ItemPolicyRegistry {
 
     public static Optional<ItemPolicy> policy(ItemStack stack) {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
-        ItemPolicy policy = id == null ? null : policies.get(id);
-        if (policy == null || !canonical(stack)) return Optional.empty();
+        ItemPolicy policy = id == null ? null : policy(id);
+        if (policy == null || policy.outcome() == ItemPolicy.Outcome.NONE || !canonical(stack)) return Optional.empty();
         return Optional.of(policy);
     }
 
     public static ItemPolicy policy(ResourceLocation id) {
-        return policies.getOrDefault(id, new ItemPolicy(1, id, ItemPolicy.Outcome.NONE, null, null, 0, 0, "", "Unclassified; fail closed"));
+        var policy = policies.getOrDefault(id, new ItemPolicy(1, id, ItemPolicy.Outcome.NONE, null, null, 0, 0, "", "Unclassified; fail closed"));
+        if (ForgeRegistries.ITEMS.getValue(id) instanceof net.minecraft.world.item.RecordItem || policy.demandGroup().equals("music_discs"))
+            return new ItemPolicy(2,id,ItemPolicy.Outcome.BUY_ONLY,null,com.siirio.jemeconomy.physical.CoinDenomination.ARCANE.value(),
+                    Math.max(1,policy.dailyPlayerUnits()),Math.max(1,policy.dailyGlobalUnits()),"music_discs","User: one Arcane to buy; never buy back",1,1,id,1,true,null);
+        return policy;
     }
 
     public static boolean acceptsShipping(ItemStack stack) { return !TradeRestrictions.saleProhibited(stack) && policy(stack).map(ItemPolicy::sellable).orElse(false); }
@@ -41,9 +45,29 @@ public final class ItemPolicyRegistry {
         if (stack.isEmpty() || stack.isDamaged() || stack.isEnchanted()) return false;
         CompoundTag tag = stack.getTag();
         if (tag == null || tag.isEmpty()) return true;
+        if (nativeTideFish(stack)) {
+            for (String key : tag.getAllKeys()) {
+                if (key.equals("FishLength")) {
+                    double length=tag.getDouble(key);
+                    if (!tag.contains(key, net.minecraft.nbt.Tag.TAG_DOUBLE) || !Double.isFinite(length) || length<=0) return false;
+                } else if (!key.equals("IsBucketable") || !tag.contains(key,net.minecraft.nbt.Tag.TAG_BYTE) || tag.getByte(key)<0 || tag.getByte(key)>1) return false;
+            }
+            return true;
+        }
         // Exact native Vinery adapter accepts only bounded native aging fields, without stripping NBT.
         return stack.getItem().isEdible() && com.siirio.jemeconomy.merchant.NativeItemPricing.usesWineAging(stack)
                 && com.siirio.jemeconomy.merchant.NativeItemPricing.matchesGoods(new ItemStack(stack.getItem()),stack);
+    }
+
+    public static boolean nativeTideFish(ItemStack stack) {
+        return stack.is(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+                new ResourceLocation("jem_economy","tide_sale_fish")));
+    }
+
+    /** Native catch size is preserved in storage but never increases the species price. */
+    public static boolean matchesSaleGoods(ItemStack expected,ItemStack actual) {
+        return ItemStack.isSameItemSameTags(expected,actual) || expected.getItem()==actual.getItem()
+                && (!expected.hasTag() || expected.getTag().isEmpty()) && nativeTideFish(actual) && canonical(actual);
     }
 
     @SubscribeEvent

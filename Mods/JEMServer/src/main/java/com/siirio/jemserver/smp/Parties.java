@@ -196,6 +196,10 @@ public final class Parties {
             }
             case CANCEL, DISSOLVE -> {
                 SmpRecords.owner(player, row);
+                if (action == SmpActionKind.CANCEL && row.getString("state").equals("ACTIVE") && row.getString("activity").equals("BOSS")) {
+                    HostedParties.forfeit(player, row.getUUID("id"), com.siirio.jemserver.smp.events.HostedBoundary.actionToken(player.server, row));
+                    return;
+                }
                 SmpRecords.require(!row.getString("state").equals("ACTIVE"), "combat_locked");
                 HostedParties.release(player.server, row);
                 row.putString("state", "CANCELLED");
@@ -261,7 +265,7 @@ public final class Parties {
         String reason = HostedParties.startReason(player, row);
         copy.putBoolean("canStart", reason.isEmpty());
         copy.putString("startReason", reason);
-        copy.putBoolean("closeLobby", row.getString("state").equals("ACTIVE") || SmpData.closed(row));
+        copy.putBoolean("closeLobby", SmpData.closed(row));
         if (SmpData.closed(row)) copy.putString("lobbyMessage", "party_dissolved");
         var candidates = new net.minecraft.nbt.ListTag();
         if (copy.getBoolean("leader") && !row.getBoolean("solo") && !row.getString("state").equals("ACTIVE") && !SmpData.closed(row)) {

@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "change_id": "client.gui-armor-and-closed-channel-diagnostics-20261021",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_shipping_market_repair",
+    "priority": 650
+  },
+  "change": {
+    "summary": "Restore native equipped armor over neutral GUI players and bound repeated already-closed connection diagnostics.",
+    "modifiers": [
+      {
+        "property": "player.gui_equipment",
+        "operation": "replace",
+        "before": "Neutral skin-only GUI mesh cancelled normal renderer and omitted armor layer.",
+        "after": "JEMMenuSupport1.1.2 adds native HumanoidArmorLayer with native equipment/hooks/materials/trim/glint under the same GUI transform; world and Epic Fight isolation remains."
+      },
+      {
+        "property": "network.closed_channel_diagnostics",
+        "operation": "replace",
+        "before": "Server Login1.0.3 injected diagnostics before vanilla closed-state guard and repeated StacklessClosedChannelException per connection.",
+        "after": "Dedicated optional adapter lets first closed-channel error report, cancels repeats only for ClosedChannelException on an already closed channel. Does not suppress other errors or alter authentication. Root cause of original disconnect remains unresolved."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMMenuSupport GUI player renderer",
+    "kind": "source_owned_correction",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMMenuSupport/build.gradle",
+      "Mods/JEMMenuSupport/embed.gradle",
+      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Docs/releases/2026-10-21-shipping-market-repair.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore native equipped armor over neutral GUI players and bound repeated already-closed connection diagnostics.",
+    "decision_source": "User reports missing armor and repeated server console errors. Exact installed API/bytecode shows missing armor layer and unbounded closed-channel diagnostics. Codex selects narrow native-layer and per-connection diagnostic fixes."
+  },
+  "introduced": {
+    "date": "2026-10-21",
+    "commit": "SELF",
+    "action": "implement_requested_repair",
+    "summary": "Restore native equipped armor over neutral GUI players and bound repeated already-closed connection diagnostics.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMMenuSupport/build.gradle",
+      "Mods/JEMMenuSupport/embed.gradle",
+      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-21",
+      "commit": "SELF",
+      "action": "implement_requested_repair",
+      "summary": "Restore native equipped armor over neutral GUI players and bound repeated already-closed connection diagnostics.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMMenuSupport/build.gradle",
+        "Mods/JEMMenuSupport/embed.gradle",
+        "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEMMenuSupport GUI player renderer",
+      "JEMCompat optional Server Login adapter",
+      "native armor layer"
+    ],
+    "relations": [],
+    "notes": [
+      "Existing schema, identity, ledger, provenance, native mod owners and unrelated gameplay remain authoritative.",
+      "Exact full artifacts synchronized, local native generation56 applied to test jem and MineRENT generation10 published with content token43f6ddb. See Docs/releases/2026-10-21-shipping-market-repair.json for final installation and release boundary."
+    ],
+    "unresolved": [
+      "Actual gameplay/GUI and player acceptance remain unobserved; no automated tests or gameplay launch.",
+      "Original disconnect cause remains unproven; repeated closed-channel reporting is the bounded correction."
+    ]
+  }
+}

@@ -148,3 +148,9 @@ The parent delivery record owns exact built artifacts, native AutoModpack public
 ## Professions local distribution removal — 2026-10-20
 
 The user explicitly requested removal from `test jem` and confirmed removal from local ManagedPack/server. `jem-professions-1.0.0.jar`, its otherwise unused mandatory `puffish_skills` dependency, the JEM professions datapack/config and its FTB guide chapter are removed from this distribution. Native AutoModpack owns client deletions. JEMServer hides the sidebar/profile module action and isolates optional API linkage. JEMProfessions source and historical world/player progression are retained as inactive history; ordinary villager professions are unaffected. Stable client, MineRENT and release baseline are unchanged. This later explicit request supersedes the earlier approved concept's Professions navigation label for this distribution.
+
+## Active party and GUI player repair - 2026-10-21
+
+An ACTIVE boss party no longer carries closeLobby. Leaders can reopen its existing SMP detail view and confirm "End encounter" through the existing CANCEL action, revision validation, HostedBoundary action token and HostedParties.forfeit. Closed rows still close; a successful canonical START still closes once. Existing boss/raid cancellation, rewards and membership ownership are reused.
+
+JEMMenuSupport1.1.2 adds vanilla HumanoidArmorLayer to the existing neutral GUI skin model with the same transform. Native armor hooks, materials, trim and glint remain authoritative; world/EpicFight rendering isolation is retained. Matching full Compat and Server embed the updated library. Actual in-game GUI and equipment acceptance remain unobserved.

@@ -17,6 +17,7 @@ final class EventDefaultPack {
     }
 
     static void register() {
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(FishingBalancePack::find);
         if (!ModList.get().isLoaded("jem_pack_core")) {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(EventDefaultPack::find);
         }
