@@ -1,3 +1,10 @@
+## 2026-10-21 — Prepare Halloween Darkness sandbox-to-MineRENT guide
+
+- User supplies `Halloween_Darkness_Package_v2.zip` and requests a sandbox-only guide for later MineRENT migration and server-side operation. The archive is classified as a concept document plus 14 visual references, not a deployable mod/config/resource payload; its embedded implementation directions remain reference material rather than execution authorization.
+- Expanded the single canonical `Docs/events/HALLOWEEN.md` owner with the sandbox boundary, existing-owner mapping, authoritative MineRENT lifecycle, client/server release classification, production-world migration sequence, native AutoModpack delivery, manual smoke gates and rollback procedure. The migration keeps the production world and starts fresh event state; sandbox player data, boss IDs, rewards, unlocks, wallets, operators and forced flags are explicitly excluded.
+- The complete Darkness concept is not server-only because it requires new registries, shared packets and client presentation. Exact matching client artifacts/resources must accompany the eventual server release; a resource pack cannot supply Forge gameplay contracts. Package proposal values, irreversible death policy and visual references remain unapproved inputs.
+- Documentation only. No gameplay source/config, Registry Atlas, build, test, sandbox launch, local Server, MineRENT, AutoModpack publication/application, client profile, stable distribution or release baseline changed.
+
 ## 2026-10-21 — Amend source-only plan for death returns, home groups and funded economy
 
 - User requests restoring `/death` with selection/return to one of the three latest personal death locations, then explicitly corrects the home commands to `/home` and `/home all`, not `/spawn`. Group return covers the nearby1-block composition plus the ridden mount/passenger tree, with safe clearance around the caller's bed for large mounts. Existing DeathHistory open/teleport and HomeTravel owners are named instead of planning duplicate systems.
