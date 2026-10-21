@@ -57,6 +57,7 @@ Changelog описывает только запрошенные player-visible 
 | `JEMProfessions` | Development-only consumer Pufferfish-owned category XP/levels/points; не включается в original/shareable pack |
 | `JEMVillagerTalking` | Development-only text-only villager scenes/subtitles; не включается в original/shareable pack |
 | `JEMClaims` | Development-only; не включается в original/shareable pack |
+| `JEMGuiSandbox` | Development-only GUI gallery для `jem sandbox`: relocated native screens, in-memory demo transports и существующий detached race preview; не входит в Client/ManagedPack, Server или AutoModpack. Installation/coverage: `Docs/gui-sandbox/README.md` |
 
 `JEMCurrencyCore` объединён в Economy, а `JEMVisualSandboxR3` больше не производит отдельный gameplay JAR: его developed race scope находится в JEMRoles. Pack Core удалён как source/build/runtime owner; его source/resources распределены по Guide, Compat, WorldTier, TwelveEyes и Server с сохранением content IDs. Menu Support runtime library удалена: требуемые native helper classes стали private source потребителей. Эти старые названия допустимы в неизменяемой истории и compatibility namespace, но не являются production dependencies.
 

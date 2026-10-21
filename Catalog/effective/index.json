@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "c3bade9995cc6db8969ccc50fd6b1199ba97696805e39ac45b8c22c09e086d38",
+  "change_records_sha256": "c493cde26c5646dc267555414d2a4fb060f48ba4d68420b2e4600c2b8550628f",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -544,6 +544,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 12
+    },
+    {
+      "change_id": "gui-sandbox.presentation-only-20261022",
+      "status": "conditional",
+      "summary": "Standalone development gallery reuses current JEM GUI source and native pixels while terminating its requests at local in-memory presentation transports.",
+      "record": "Catalog/changes/records/gui-sandbox.presentation-only-20261022.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "items",
+          "value": "jem_gui_sandbox"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "gui.settlements-existing-layout-corrections-20261020",
@@ -2549,7 +2564,7 @@
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "f87500061392c7ff452e182c4c0113951486a4468ac16042c5a16aad27d2a4f2",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "a525d608b9cf9f60ec20e16929a68d2721bd73329fc2cc866a0bff4af4e58c52",
+    "Docs/DEVELOPMENT.md": "ab121f6d8ea9bb8d8fc578414fcfc790712bdb12e415c004ccf352028f906e7d",
     "Docs/SERVER_COMMANDS.md": "c0dfc06fd98aa74bf766bc23f95fa30b63a73473ebf2ad0367d9ddcb415c3cf6",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -2561,6 +2576,8 @@
     "Docs/economy/native-trading-design.md": "d1328493bbac31e57485604c6699cf9a8b70e5880f5f2bce37086bfadf2cc1f7",
     "Docs/events/BOSS_FIGHT.md": "fa5dbdcdd81c65799420814db8a012375555a905119be5021f63dd81702ff424",
     "Docs/events/BOSS_RAID.md": "3cb5728166a9e946c8138bf0790716000cf1bd126756ba755d0cbdb33b1b0b98",
+    "Docs/gui-sandbox/README.md": "71775c921e2cbb7dda22ee07e603be62a045ea17aa78e9ba6f0bb4e1dc227d63",
+    "Docs/gui-sandbox/delivery.json": "018431eef19b2f240853ba2d87ca271f38e7cd9ce3973fa7c2628c95fa44650b",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
     "Docs/power-system/Balance.md": "945b232544a2ba3ddfe9b1f6e297c50079d3b273e397c5529f97e35aaaa8fe65",
