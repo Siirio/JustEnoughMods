@@ -1,0 +1,1923 @@
+{
+  "id": "20C0F34F330D9588",
+  "filename": "jem_18",
+  "title": "Спутники и сделанные друзья",
+  "subtitle": [
+    "Когда: После первых ресурсов; отдельные семьи помощников идут параллельно.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "companions:empty_puppet_block",
+  "group": "26D9D9FA602B3A53",
+  "order_index": 17,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "24B3BA1405756B15",
+      "title": "18.02 · Soul Furnace",
+      "subtitle": "Поставить Soul Furnace; получить Crystallized Blood и Soul Gem.",
+      "description": [
+        "Что сделать: Поставить Soul Furnace; получить Crystallized Blood и Soul Gem.",
+        "",
+        "Зачем: Центральная обработка ресурсов для приручения и особых спутников.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить Soul Furnace и провести две операции: Rotten Flesh → Crystallized Blood, Diamond → Soul Gem.",
+        "",
+        "Награда: Самостоятельно собранная духовная мастерская получает расходники для продолжения экспериментов."
+      ],
+      "icon": "companions:soul_furnace_block",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29C277800E35D3EB",
+          "type": "custom",
+          "title": "Поставить Soul Furnace; получить Crystallized Blood и Soul Gem.",
+          "icon": "companions:soul_furnace_block",
+          "count": 1
+        },
+        {
+          "id": "2FEB0291D17E7D91",
+          "type": "item",
+          "item": "companions:crystallized_blood",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2EF29B0E41801551",
+          "type": "item",
+          "item": "companions:soul_gem",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2692DAEEA45AAA6C",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:crystallized_blood",
+          "count": 24,
+          "claim_key": "cp02/item/0",
+          "claim_reward_id": "2692DAEEA45AAA6C",
+          "team_reward": false
+        },
+        {
+          "id": "2100215909B88131",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:soul_gem",
+          "count": 8,
+          "claim_key": "cp02/item/1",
+          "claim_reward_id": "2100215909B88131",
+          "team_reward": false
+        },
+        {
+          "id": "2D548B58139163CA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2218A2C7A21BD563",
+      "title": "18.03 · Четыре возраста Antlion",
+      "subtitle": "Нажать ПКМ по Antlion с Crystallized Blood в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Antlion с Crystallized Blood в основной руке.",
+        "",
+        "Зачем: Рытьё и шерсть, полёт-планирование и военная форма; один спутник с четырьмя ролями.",
+        "",
+        "Совет: Совет, не условие зачёта: Подойти к Antlion сзади и приручить Crystallized Blood; последовательно познакомиться с базовой, куколочной, взрослой и солдатской формами по естественному времени/Hourglass.",
+        "",
+        "Награда: Кормление муравьиного льва дает тематический материал и провизию.",
+        "",
+        "Рекомендуемый путь: 18.02 · Soul Furnace. Порядок свободный."
+      ],
+      "icon": "companions:antlion_fur",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F12FE51BBB25FD4",
+          "type": "custom",
+          "title": "Нажать ПКМ по Antlion с Crystallized Blood в основной руке.",
+          "icon": "companions:antlion_fur",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EAB6E9B4F84F545",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:antlion_fur",
+          "count": 16,
+          "claim_key": "cp03/item/0",
+          "claim_reward_id": "2EAB6E9B4F84F545",
+          "team_reward": false
+        },
+        {
+          "id": "2E3EE780A59C8F63",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:cooked_kangaroo_meat",
+          "count": 16,
+          "claim_key": "cp03/item/1",
+          "claim_reward_id": "2E3EE780A59C8F63",
+          "team_reward": false
+        },
+        {
+          "id": "20CC9CA386BC5533",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BD7C0CBD145911A",
+      "title": "18.04 · Яйцо из большого хлеба",
+      "subtitle": "Получить Croissant Egg.",
+      "description": [
+        "Что сделать: Получить Croissant Egg.",
+        "",
+        "Зачем: Пищевой спутник и отдельная ветка вкусового снаряжения.",
+        "",
+        "Совет: Совет, не условие зачёта: Обработать Big Bread в Soul Furnace, вылупить Croissant Egg и вырастить тремя вёдрами молока.",
+        "",
+        "Награда: Найденное яйцо получает запас принадлежностей для питомца и материал для обустройства; дополнительное яйцо не выдается.",
+        "",
+        "Рекомендуемый путь: 18.02 · Soul Furnace. Порядок свободный."
+      ],
+      "icon": "companions:croissant_egg_block",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "230403508F249C1E",
+          "type": "item",
+          "item": "companions:croissant_egg_block",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "276901F53AD012E1",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:big_bread",
+          "count": 24,
+          "claim_key": "cp04/item/0",
+          "claim_reward_id": "276901F53AD012E1",
+          "team_reward": false
+        },
+        {
+          "id": "2428F6D161D1E445",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_bale",
+          "count": 64,
+          "claim_key": "cp04/item/1",
+          "claim_reward_id": "2428F6D161D1E445",
+          "team_reward": false
+        },
+        {
+          "id": "2C3BB1FF90328B32",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AB7878847240DD6",
+      "title": "18.05 · Три вкуса защиты",
+      "subtitle": "Получить ванильную, шоколадную и клубничную броню Croissant.",
+      "description": [
+        "Что сделать: Получить ванильную, шоколадную и клубничную броню Croissant.",
+        "",
+        "Зачем: Настраиваемые эффекты спутника и замедление врагов.",
+        "",
+        "Совет: Совет, не условие зачёта: Оснастить Croissant одним видом вкусовой брони и проверить эффект; отдельные карточки показывают ванильную стойкость, шоколадную скорость и клубничную регенерацию.",
+        "",
+        "Награда: Полная коллекция трех видов брони дракончика заслуживает полезной магической книги.",
+        "",
+        "Рекомендуемый путь: 18.04 · Яйцо из большого хлеба. Порядок свободный."
+      ],
+      "icon": "companions:croissant_dragon_vanilla_armor",
+      "x": -6.22,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25944C4F07CD700E",
+          "type": "item",
+          "item": "companions:croissant_dragon_vanilla_armor",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2FE4E3122A2BFBDA",
+          "type": "item",
+          "item": "companions:croissant_dragon_chocolate_armor",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "27C9B6BF6794CD96",
+          "type": "item",
+          "item": "companions:croissant_dragon_strawberry_armor",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "293D2C17049142E3",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:big_bread",
+          "count": 24,
+          "claim_key": "cp05/item/0",
+          "claim_reward_id": "293D2C17049142E3",
+          "team_reward": false
+        },
+        {
+          "id": "2024EE5BBB621EA3",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:crystallized_blood",
+          "count": 24,
+          "claim_key": "cp05/item/1",
+          "claim_reward_id": "2024EE5BBB621EA3",
+          "team_reward": false
+        },
+        {
+          "id": "25DCD965A29A1612",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        },
+        {
+          "id": "2549E3F9BE00E643",
+          "type": "choice",
+          "table_id": 2366196698280442535L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C3FBC523B170392",
+      "title": "18.06 · Снаряжение для Soul Mage",
+      "subtitle": "Получить Coat, Hat и Staff для Golden Allay Companions.",
+      "description": [
+        "Что сделать: Получить Coat, Hat и Staff для Golden Allay Companions.",
+        "",
+        "Зачем: Магический спутник с книгой и сменой способностей.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти Golden Allay в болоте, передать Coat, Hat и Staff, затем дать книгу; проверить применение выбранного заклинания Soul Mage.",
+        "",
+        "Награда: Полный комплект мага получает выбор одной книги поддержки для спутников.",
+        "",
+        "Рекомендуемый путь: 18.02 · Soul Furnace. Порядок свободный."
+      ],
+      "icon": "companions:mage_coat",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D265C4FD3EE7032",
+          "type": "item",
+          "item": "companions:mage_coat",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "23E901529A125AF3",
+          "type": "item",
+          "item": "companions:mage_hat",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "224C2094D14DC887",
+          "type": "item",
+          "item": "companions:mage_staff",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "223B487CA8DAF29F",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:soul_gem",
+          "count": 12,
+          "claim_key": "cp06/item/0",
+          "claim_reward_id": "223B487CA8DAF29F",
+          "team_reward": false
+        },
+        {
+          "id": "2C1A61A4165D392B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        },
+        {
+          "id": "2E1023A9A93290B3",
+          "type": "choice",
+          "table_id": 2346961072147340570L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28802719A1EB0D46",
+      "title": "18.07 · Живая свеча",
+      "subtitle": "Нажать ПКМ по Living Candle.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Living Candle.",
+        "",
+        "Зачем: Особый расходуемый защитник мага.",
+        "",
+        "Совет: Совет, не условие зачёта: Провести свечу через Soul Furnace, получить Living Candle и передать Soul Mage, чтобы продемонстрировать предусмотренную защиту.",
+        "",
+        "Награда: Живая свеча дополняется материалами и светом для домашнего святилища.",
+        "",
+        "Living Candle — сущность, а не получаемый предмет; условие честно проверяет взаимодействие.",
+        "",
+        "Рекомендуемый путь: 18.06 · Снаряжение для Soul Mage. Порядок свободный."
+      ],
+      "icon": "companions:living_candle_spawn_egg",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CEB11469C25FDBC",
+          "type": "custom",
+          "title": "Нажать ПКМ по Living Candle.",
+          "icon": "companions:living_candle_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20BEB200A930F23B",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:porcelain_pottery",
+          "count": 16,
+          "claim_key": "cp07/item/0",
+          "claim_reward_id": "20BEB200A930F23B",
+          "team_reward": false
+        },
+        {
+          "id": "29AE7E89C3F762AC",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:swamp_lantern",
+          "count": 16,
+          "claim_key": "cp07/item/1",
+          "claim_reward_id": "29AE7E89C3F762AC",
+          "team_reward": false
+        },
+        {
+          "id": "22A9A1A7E091D973",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E0A43B5A284FCA5",
+      "title": "18.08 · Камень, ножницы, бумага",
+      "subtitle": "Нажать ПКМ по Magic Glove и получить Empty Puppet.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Magic Glove и получить Empty Puppet.",
+        "",
+        "Зачем: Путь Puppet через взаимодействие, а не обычный случайный корм.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить Magic Glove в Witch House, выиграть родную игру предъявлением предметов и получить Empty Puppet.",
+        "",
+        "Награда: Первые кукольные инструменты получают рабочий ключ и материал для дальнейшей сборки.",
+        "",
+        "Magic Glove — сущность; два независимых простых действия вместо несуществующего предмета."
+      ],
+      "icon": "companions:hostile_puppet_glove_spawn_egg",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2948697D83344CBE",
+          "type": "custom",
+          "title": "Нажать ПКМ по Magic Glove и получить Empty Puppet.",
+          "icon": "companions:hostile_puppet_glove_spawn_egg",
+          "count": 1
+        },
+        {
+          "id": "2E0F1F1E7A159DCB",
+          "type": "item",
+          "item": "companions:empty_puppet_block",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "214BC5223E2A47CF",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:wrench",
+          "count": 1,
+          "claim_key": "cp08/item/0",
+          "claim_reward_id": "214BC5223E2A47CF",
+          "team_reward": false
+        },
+        {
+          "id": "2659CCB7998B450A",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:crystallized_blood",
+          "count": 24,
+          "claim_key": "cp08/item/1",
+          "claim_reward_id": "2659CCB7998B450A",
+          "team_reward": false
+        },
+        {
+          "id": "265F17FA71CE3A58",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "229CAA3380BE98AA",
+      "title": "18.09 · Четыре руки куклы",
+      "subtitle": "Получить любые две разные руки Puppet из списка: Whip, Mutant, Cannon, Blade.",
+      "description": [
+        "Что сделать: Получить любые две разные руки Puppet из списка: Whip, Mutant, Cannon, Blade.",
+        "",
+        "Зачем: Сменные роли одного спутника и специализированное оружие.",
+        "",
+        "Совет: Совет, не условие зачёта: Поставить Puppet выбранную руку и испытать: Whip, Mutant, Cannon, Blade вынести в четыре независимые карточки.",
+        "",
+        "Награда: После двух самостоятельно собранных рук можно выбрать одну книгу поддержки.",
+        "",
+        "Рекомендуемый путь: 18.08 · Камень, ножницы, бумага. Порядок свободный."
+      ],
+      "icon": "companions:whip_arm",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24A99F9FF7A8BF9A",
+          "type": "custom",
+          "title": "Получить любые две разные руки Puppet из списка: Whip, Mutant, Cannon, Blade.",
+          "icon": "companions:whip_arm",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "232A83830FEE83CD",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:crystallized_blood",
+          "count": 32,
+          "claim_key": "cp09/item/0",
+          "claim_reward_id": "232A83830FEE83CD",
+          "team_reward": false
+        },
+        {
+          "id": "296BEC7EDAFDECFB",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:soul_gem",
+          "count": 8,
+          "claim_key": "cp09/item/1",
+          "claim_reward_id": "296BEC7EDAFDECFB",
+          "team_reward": false
+        },
+        {
+          "id": "2441D1B9AB93339F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        },
+        {
+          "id": "2F6A437F62DEF963",
+          "type": "choice",
+          "table_id": 2734073642069889472L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F08D13AE39F4AD4",
+      "title": "18.10 · Осмотреть Dinamo",
+      "subtitle": "Нажать ПКМ пустой рукой по Dinamo.",
+      "description": [
+        "Что сделать: Нажать ПКМ пустой рукой по Dinamo.",
+        "",
+        "Зачем: Энергетическая ветка Companions и спутник-генератор.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти сломанный Dinamo в Factory/после соответствующей встречи, передать запрошенные ресурсы и включить сидящий режим генератора.",
+        "",
+        "Награда: Знакомство с Dinamo дает строительный набор для электрической мастерской."
+      ],
+      "icon": "companions:voltaic_pillar_block",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21D348D3DA722521",
+          "type": "custom",
+          "title": "Нажать ПКМ пустой рукой по Dinamo.",
+          "icon": "companions:voltaic_pillar_block",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26D7127E23D3AE02",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:voltaic_pillar_block",
+          "count": 16,
+          "claim_key": "cp10/item/0",
+          "claim_reward_id": "26D7127E23D3AE02",
+          "team_reward": false
+        },
+        {
+          "id": "257F3CA19859391F",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:plasma_lamp_block",
+          "count": 12,
+          "claim_key": "cp10/item/1",
+          "claim_reward_id": "257F3CA19859391F",
+          "team_reward": false
+        },
+        {
+          "id": "2B586DABA159C430",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FA111252EE11198",
+      "title": "18.11 · Сеть Tesla",
+      "subtitle": "Поставить Tesla Coil, Voltaic Relay и Plasma Lamp, по одному устройству каждого вида.",
+      "description": [
+        "Что сделать: Поставить Tesla Coil, Voltaic Relay и Plasma Lamp, по одному устройству каждого вида.",
+        "",
+        "Зачем: Местная инфраструктура и устройства Companions.",
+        "",
+        "Совет: Совет, не условие зачёта: Ключом соединить Dinamo, Tesla Coil и Voltaic Relay; включить Plasma Lamp, добавить Pillar и проверить передачу энергии.",
+        "",
+        "Награда: Три установленных устройства окупаются валютой и материалом для оформления рабочей зоны.",
+        "",
+        "Рекомендуемый путь: 18.10 · Осмотреть Dinamo. Порядок свободный."
+      ],
+      "icon": "companions:tesla_coil_block",
+      "x": 4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "235D5F9277B6F190",
+          "type": "custom",
+          "title": "Поставить Tesla Coil, Voltaic Relay и Plasma Lamp, по одному устройству каждого вида.",
+          "icon": "companions:tesla_coil_block",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "203FFA114DCC8720",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:copper_coin",
+          "count": 16,
+          "claim_key": "cp11/item/0",
+          "claim_reward_id": "203FFA114DCC8720",
+          "team_reward": false
+        },
+        {
+          "id": "239F3AAB9EC2D55D",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:voltaic_pillar_block",
+          "count": 32,
+          "claim_key": "cp11/item/1",
+          "claim_reward_id": "239F3AAB9EC2D55D",
+          "team_reward": false
+        },
+        {
+          "id": "2FE3C1DA5F3F960A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22D165322A829159",
+      "title": "18.12 · Платформы отзыва",
+      "subtitle": "Поставить две Recall Platforms.",
+      "description": [
+        "Что сделать: Поставить две Recall Platforms.",
+        "",
+        "Зачем: Связанная транспортная система Companions.",
+        "",
+        "Совет: Совет, не условие зачёта: Подключить две Recall Platforms к одной Tesla Network и совершить переход/отзыв по назначению устройства.",
+        "",
+        "Награда: После освоения пары платформ можно расширить собственную сеть еще двумя точками.",
+        "",
+        "Рекомендуемый путь: 18.11 · Сеть Tesla. Порядок свободный."
+      ],
+      "icon": "companions:recall_platform_block",
+      "x": 6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "276F3C9EAA595BD4",
+          "type": "custom",
+          "title": "Поставить две Recall Platforms.",
+          "icon": "companions:recall_platform_block",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B58D7687FC9A568",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:recall_platform_block",
+          "count": 2,
+          "claim_key": "cp12/item/0",
+          "claim_reward_id": "2B58D7687FC9A568",
+          "team_reward": false
+        },
+        {
+          "id": "2509E5A7C85DB790",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:copper_coin",
+          "count": 16,
+          "claim_key": "cp12/item/1",
+          "claim_reward_id": "2509E5A7C85DB790",
+          "team_reward": false
+        },
+        {
+          "id": "2D78C4DCB1890E4C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BDD4281725953EC",
+      "title": "18.13 · Спасти Teddy",
+      "subtitle": "Нажать ПКМ по Teddy с Needle в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Teddy с Needle в основной руке.",
+        "",
+        "Зачем: Ветвь плюшевого спутника и смысл базовой формы Antlion.",
+        "",
+        "Совет: Совет, не условие зачёта: Сделать Needle с шерстью Antlion, найти Teddy в тюрьме и завершить приручение.",
+        "",
+        "Награда: Швейное действие пополняет ткань и материалы для комнаты спутников."
+      ],
+      "icon": "companions:teddy_spawn_egg",
+      "x": -8.07,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C4727B842ACE0F1",
+          "type": "custom",
+          "title": "Нажать ПКМ по Teddy с Needle в основной руке.",
+          "icon": "companions:teddy_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28345BFC656A927D",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:old_cloth",
+          "count": 16,
+          "claim_key": "cp13/item/0",
+          "claim_reward_id": "28345BFC656A927D",
+          "team_reward": false
+        },
+        {
+          "id": "2513874A504FEDDA",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:weaved_straw",
+          "count": 64,
+          "claim_key": "cp13/item/1",
+          "claim_reward_id": "2513874A504FEDDA",
+          "team_reward": false
+        },
+        {
+          "id": "2A0E473306F621C9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C4835AFF9C0CC86",
+      "title": "18.14 · Плюшевые превращения",
+      "subtitle": "Получить Eternal Lighter, Mutant Flesh и Holy Porcelain Companions.",
+      "description": [
+        "Что сделать: Получить Eternal Lighter, Mutant Flesh и Holy Porcelain Companions.",
+        "",
+        "Зачем: Несколько реальных форм Teddy; Holy Teddy уже присутствует с 1.3.0.",
+        "",
+        "Совет: Совет, не условие зачёта: Независимые карточки: Eternal Lighter для летающей мутировавшей формы; лава/MUTANT-материалы для иной способности; Holy Porcelain/Pottery для святой формы.",
+        "",
+        "Награда: Три редких ритуальных материала оправдывают ощутимый запас компонентов, без выдачи новых существ.",
+        "",
+        "Рекомендуемый путь: 18.13 · Спасти Teddy. Порядок свободный."
+      ],
+      "icon": "companions:eternal_lighter",
+      "x": -6.22,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "238C7AD90BC47013",
+          "type": "item",
+          "item": "companions:eternal_lighter",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "25831A89322F7654",
+          "type": "item",
+          "item": "companions:mutant_flesh",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "221F1439B5045C41",
+          "type": "item",
+          "item": "companions:holy_porcelain_pottery",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20E25BD17C599A90",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:crystallized_blood",
+          "count": 32,
+          "claim_key": "cp14/item/0",
+          "claim_reward_id": "20E25BD17C599A90",
+          "team_reward": false
+        },
+        {
+          "id": "2AE561834B912BD3",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:demon_flesh",
+          "count": 16,
+          "claim_key": "cp14/item/1",
+          "claim_reward_id": "2AE561834B912BD3",
+          "team_reward": false
+        },
+        {
+          "id": "21196AB03C3C31FD",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:soul_gem",
+          "count": 8,
+          "claim_key": "cp14/item/2",
+          "claim_reward_id": "21196AB03C3C31FD",
+          "team_reward": false
+        },
+        {
+          "id": "2AB80793B2B30F16",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "233B9FA0EB2820D6",
+      "title": "18.15 · Священный сосуд",
+      "subtitle": "Нажать ПКМ по обычной овце с Holy Porcelain в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по обычной овце с Holy Porcelain в основной руке.",
+        "",
+        "Зачем: Особый перенос сущностей и очистка формы.",
+        "",
+        "Совет: Совет, не условие зачёта: Использовать Holy Porcelain для переноса совместимого существа; отдельная карточка — снять предусмотренное проклятие через предмет с Curse of Vanishing.",
+        "",
+        "Награда: После применения святого фарфора остается материал для мастерской и кормовой запас.",
+        "",
+        "Рекомендуемый путь: 18.14 · Плюшевые превращения. Порядок свободный."
+      ],
+      "icon": "minecraft:sheep_spawn_egg",
+      "x": -4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C395B47E8819936",
+          "type": "custom",
+          "title": "Нажать ПКМ по обычной овце с Holy Porcelain в основной руке.",
+          "icon": "minecraft:sheep_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21AE332FF6E87B39",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:porcelain_pottery",
+          "count": 24,
+          "claim_key": "cp15/item/0",
+          "claim_reward_id": "21AE332FF6E87B39",
+          "team_reward": false
+        },
+        {
+          "id": "251A7288A6F070E3",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:big_bread",
+          "count": 16,
+          "claim_key": "cp15/item/1",
+          "claim_reward_id": "251A7288A6F070E3",
+          "team_reward": false
+        },
+        {
+          "id": "2F70B18343BBE51B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 85,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24EE6A3E87758DA4",
+      "title": "18.16 · Три тени",
+      "subtitle": "Получить Shadow Bell Companions.",
+      "description": [
+        "Что сделать: Получить Shadow Bell Companions.",
+        "",
+        "Зачем: Теневой транспорт, оружие и летающая тень.",
+        "",
+        "Совет: Совет, не условие зачёта: Активировать Shadow Bell-алтарь Crystallized Blood и испытать Shade Maw, Shade Sword, Shade Bat отдельными карточками; заряженную кровь показать как следующий вариант.",
+        "",
+        "Награда: Освоенный теневой колокол получает духовные компоненты и призрачный свет.",
+        "",
+        "Рекомендуемый путь: 18.02 · Soul Furnace. Порядок свободный."
+      ],
+      "icon": "companions:shadow_bell",
+      "x": -2.52,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BF756E49F45F8CF",
+          "type": "item",
+          "item": "companions:shadow_bell",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CB47D4F5340F571",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:soul_gem",
+          "count": 8,
+          "claim_key": "cp16/item/0",
+          "claim_reward_id": "2CB47D4F5340F571",
+          "team_reward": false
+        },
+        {
+          "id": "2FAD2DA43C832429",
+          "type": "jem_advancements:quest_item",
+          "item": "luminous_nether:ghost_lamp",
+          "count": 16,
+          "claim_key": "cp16/item/1",
+          "claim_reward_id": "2FAD2DA43C832429",
+          "team_reward": false
+        },
+        {
+          "id": "261BF33ABEBC2530",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp16",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2778576EC7F59125",
+      "title": "18.17 · Cornelius и контракт",
+      "subtitle": "Нажать ПКМ пустой рукой по Cornelius.",
+      "description": [
+        "Что сделать: Нажать ПКМ пустой рукой по Cornelius.",
+        "",
+        "Зачем: Особый спутник-торговец и собственная экономика призыва.",
+        "",
+        "Совет: Совет, не условие зачёта: Привести пчелу к Cornelius по родной процедуре приручения; после получения контракта выполнить доступный призыв через его собственные монеты.",
+        "",
+        "Награда: Знакомство с Cornelius дает небольшой рабочий набор для дальнейшего ухода."
+      ],
+      "icon": "companions:cornelius_spawn_egg",
+      "x": -8.07,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25633C5C25169FC6",
+          "type": "custom",
+          "title": "Нажать ПКМ пустой рукой по Cornelius.",
+          "icon": "companions:cornelius_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "226BD63E175A7489",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:wrench",
+          "count": 1,
+          "claim_key": "cp17/item/0",
+          "claim_reward_id": "226BD63E175A7489",
+          "team_reward": false
+        },
+        {
+          "id": "2AF7A441A908511D",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:big_bread",
+          "count": 16,
+          "claim_key": "cp17/item/1",
+          "claim_reward_id": "2AF7A441A908511D",
+          "team_reward": false
+        },
+        {
+          "id": "26ADADA467BB6F1E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp17",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2081B9618F116E50",
+      "title": "18.18 · Три мира одного Imp",
+      "subtitle": "Нажать ПКМ пустой основной рукой по Imp; получить Netherite Chains.",
+      "description": [
+        "Что сделать: Нажать ПКМ пустой основной рукой по Imp; получить Netherite Chains.",
+        "",
+        "Зачем: Межпространственные формы и фиксация нужной роли.",
+        "",
+        "Совет: Совет, не условие зачёта: Нанять Imp его штатной монетой; по мере обычного доступа посетить Overworld, Nether и End, увидеть Minion/Imp/Gargoyle; закрепить выбранную форму Netherite Chains.",
+        "",
+        "Награда: Демон и найденные цепи дают тематические компоненты, без дубликата самого спутника.",
+        "",
+        "Imp отображается нативным MinionEntity,; это тот же спутник, а не дикий Hostile Imp."
+      ],
+      "icon": "companions:netherite_chains",
+      "x": -6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F2D910AAD425CF3",
+          "type": "custom",
+          "title": "Нажать ПКМ пустой основной рукой по Imp; получить Netherite Chains.",
+          "icon": "companions:netherite_chains",
+          "count": 1
+        },
+        {
+          "id": "2FCF21195250A5F6",
+          "type": "item",
+          "item": "companions:netherite_chains",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A6B075608FF5797",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:nether_coin",
+          "count": 8,
+          "claim_key": "cp18/item/0",
+          "claim_reward_id": "2A6B075608FF5797",
+          "team_reward": false
+        },
+        {
+          "id": "269B6F949C2E26F2",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:demon_flesh",
+          "count": 16,
+          "claim_key": "cp18/item/1",
+          "claim_reward_id": "269B6F949C2E26F2",
+          "team_reward": false
+        },
+        {
+          "id": "20DF148A931972DF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp18",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2904C349C5962F78",
+      "title": "18.19 · Реликвии старшего спутника",
+      "subtitle": "Получить Old Cloth и Relic Gold Companions.",
+      "description": [
+        "Что сделать: Получить Old Cloth и Relic Gold Companions.",
+        "",
+        "Зачем: Поздние материалы, особые призываемые спутники и система возвращения.",
+        "",
+        "Совет: Совет, не условие зачёта: Эти материалы связаны с Sacred Pontiff / His Holiness. Если победа входит в JEM WorldTier, её хранит JEM. Эта карточка проверяет только два предмета и не создаёт второй зачёт босса.",
+        "",
+        "Награда: Собранные реликтовые материалы возвращаются в количестве для нескольких рецептов."
+      ],
+      "icon": "companions:old_cloth",
+      "x": -4.38,
+      "y": 9.1,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29FEDA8600BF38A1",
+          "type": "item",
+          "item": "companions:old_cloth",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2B816C813E2CF9C1",
+          "type": "item",
+          "item": "companions:relic_gold",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27327C9C071E54E4",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:old_cloth",
+          "count": 32,
+          "claim_key": "cp19/item/0",
+          "claim_reward_id": "27327C9C071E54E4",
+          "team_reward": false
+        },
+        {
+          "id": "2210754095935820",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:relic_gold",
+          "count": 8,
+          "claim_key": "cp19/item/1",
+          "claim_reward_id": "2210754095935820",
+          "team_reward": false
+        },
+        {
+          "id": "28CD2039A788E3E8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp19",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "236A7353B5E1DBF9",
+      "title": "18.20 · Возвращение спутника",
+      "subtitle": "Получить Respawn Totem и Hourglass Companions.",
+      "description": [
+        "Что сделать: Получить Respawn Totem и Hourglass Companions.",
+        "",
+        "Зачем: Позднее восстановление спутников и применение финальных материалов.",
+        "",
+        "Совет: Совет, не условие зачёта: Создать Respawn Totem и использовать совместно с Hourglass по живой инструкции; отдельно показать ограниченный общий запас возрождений и призыв Cloak/Mankh, расходующий тотем.",
+        "",
+        "Награда: Освоенная система восстановления получает один запасной тотем и редкую валюту мода.",
+        "",
+        "Рекомендуемый путь: 18.19 · Реликвии старшего спутника. Порядок свободный."
+      ],
+      "icon": "companions:respawn_totem_block",
+      "x": -2.52,
+      "y": 9.1,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20D0193FA138027D",
+          "type": "item",
+          "item": "companions:respawn_totem_block",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "21EF7BFD06C1C03E",
+          "type": "item",
+          "item": "companions:hourglass",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20FF6F5A7E3AF578",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:respawn_totem_block",
+          "count": 1,
+          "claim_key": "cp20/item/0",
+          "claim_reward_id": "20FF6F5A7E3AF578",
+          "team_reward": false
+        },
+        {
+          "id": "2D084123CD5F8A7C",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:end_coin",
+          "count": 4,
+          "claim_key": "cp20/item/1",
+          "claim_reward_id": "2D084123CD5F8A7C",
+          "team_reward": false
+        },
+        {
+          "id": "22E43B86F1758181",
+          "type": "jem_advancements:quest_xp",
+          "xp": 250,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "cp20",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24DF76E9D1F17346",
+      "title": "18.21 · Бочка с характером",
+      "subtitle": "Нажать ПКМ по Barrel Golem с дубовыми досками в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Barrel Golem с дубовыми досками в основной руке.",
+        "",
+        "Зачем: Barter и восстановление деревянного помощника.",
+        "",
+        "Совет: Совет, не условие зачёта: Доски служат ремонтом Barrel Golem. Для его торговли изумруды бросают рядом; разрешённый платёж JEM проверяется отдельно. Задание считает только ПКМ с досками.",
+        "",
+        "Награда: Деревянный помощник получает практичный набор для складского уголка."
+      ],
+      "icon": "golemoverhaul:barrel_golem_spawn_egg",
+      "x": 2.52,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A968D6F7D94C9A5",
+          "type": "custom",
+          "title": "Нажать ПКМ по Barrel Golem с дубовыми досками в основной руке.",
+          "icon": "golemoverhaul:barrel_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26BAE29AF49E19E8",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:rotten_planks",
+          "count": 64,
+          "claim_key": "golems_01/item/0",
+          "claim_reward_id": "26BAE29AF49E19E8",
+          "team_reward": false
+        },
+        {
+          "id": "2DC2BAA6CE943DD6",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:oak_backpack_shelf",
+          "count": 2,
+          "claim_key": "golems_01/item/1",
+          "claim_reward_id": "2DC2BAA6CE943DD6",
+          "team_reward": false
+        },
+        {
+          "id": "2C5E21FE30FFD94A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EC9C4CE6F73CA54",
+      "title": "18.22 · Соломенный сторож",
+      "subtitle": "Нажать ПКМ по Hay Golem со снопом сена в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Hay Golem со снопом сена в основной руке.",
+        "",
+        "Зачем: Мирная защита хозяйства.",
+        "",
+        "Совет: Совет, не условие зачёта: Поставить Hay Golem у работающей грядки и использовать его защиту урожая.",
+        "",
+        "Награда: Сенной помощник приносит запас соломы и корзин для фермы."
+      ],
+      "icon": "golemoverhaul:hay_golem_spawn_egg",
+      "x": 4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "230CCA6F34B045AD",
+          "type": "custom",
+          "title": "Нажать ПКМ по Hay Golem со снопом сена в основной руке.",
+          "icon": "golemoverhaul:hay_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CA0A4FE0670A425",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_bale",
+          "count": 64,
+          "claim_key": "golems_02/item/0",
+          "claim_reward_id": "2CA0A4FE0670A425",
+          "team_reward": false
+        },
+        {
+          "id": "20E82D4968E33C28",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_basket",
+          "count": 4,
+          "claim_key": "golems_02/item/1",
+          "claim_reward_id": "20E82D4968E33C28",
+          "team_reward": false
+        },
+        {
+          "id": "2FD5777B77F9FFF6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AC4834C42286E9D",
+      "title": "18.23 · Работник пасеки",
+      "subtitle": "Нажать ПКМ по Honey Golem с бутылочкой мёда в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Honey Golem с бутылочкой мёда в основной руке.",
+        "",
+        "Зачем: Пасека и состояние медового голема.",
+        "",
+        "Совет: Совет, не условие зачёта: Включить Honey Golem в пасеку и выполнить поддерживаемое взаимодействие с пчёлами/мёдом.",
+        "",
+        "Награда: Медовое знакомство дает материал самого мода и небольшие статуи."
+      ],
+      "icon": "golemoverhaul:honey_golem_spawn_egg",
+      "x": 6.22,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22B007DF4DE18B94",
+          "type": "custom",
+          "title": "Нажать ПКМ по Honey Golem с бутылочкой мёда в основной руке.",
+          "icon": "golemoverhaul:honey_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27147EDB25E5D228",
+          "type": "jem_advancements:quest_item",
+          "item": "golemoverhaul:honey_blob",
+          "count": 16,
+          "claim_key": "golems_03/item/0",
+          "claim_reward_id": "27147EDB25E5D228",
+          "team_reward": false
+        },
+        {
+          "id": "2B52A5AB37F54909",
+          "type": "jem_advancements:quest_item",
+          "item": "golemoverhaul:clay_golem_statue",
+          "count": 4,
+          "claim_key": "golems_03/item/1",
+          "claim_reward_id": "2B52A5AB37F54909",
+          "team_reward": false
+        },
+        {
+          "id": "24F9CA7F70FBAEA2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F059ECF2833B6A3",
+      "title": "18.24 · Угольный отряд",
+      "subtitle": "Нажать ПКМ в воздухе с бросаемым Coal Golem в основной руке и огнивом во второй.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с бросаемым Coal Golem в основной руке и огнивом во второй.",
+        "",
+        "Зачем: Временный боевой помощник.",
+        "",
+        "Совет: Совет, не условие зачёта: Сделать бросаемого Coal Golem, зажечь и использовать против враждебного моба.",
+        "",
+        "Награда: Первый бросок угольного голема оплачивается рабочими материалами, без редких взрывчатых устройств."
+      ],
+      "icon": "golemoverhaul:coal_golem",
+      "x": 8.07,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "265A724F457174DC",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с бросаемым Coal Golem в основной руке и огнивом во второй.",
+          "icon": "golemoverhaul:coal_golem",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25051AC963A867E6",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 16,
+          "claim_key": "golems_04/item/0",
+          "claim_reward_id": "25051AC963A867E6",
+          "team_reward": false
+        },
+        {
+          "id": "217371AEF220A81F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:industrial_iron_block",
+          "count": 32,
+          "claim_key": "golems_04/item/1",
+          "claim_reward_id": "217371AEF220A81F",
+          "team_reward": false
+        },
+        {
+          "id": "2F723A45A709FF65",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "200EEDA80FC3A767",
+      "title": "18.25 · Защитник берега",
+      "subtitle": "Нажать ПКМ по Kelp Golem с ламинарией в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Kelp Golem с ламинарией в основной руке.",
+        "",
+        "Зачем: Амфибийный защитник.",
+        "",
+        "Совет: Совет, не условие зачёта: Использовать Kelp Golem в водном бою и восстановить его подходящим материалом.",
+        "",
+        "Награда: Водорослевый помощник дает подходящий материал для водной площадки."
+      ],
+      "icon": "golemoverhaul:kelp_golem_spawn_egg",
+      "x": 3.45,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20DC5543D4ADC99C",
+          "type": "custom",
+          "title": "Нажать ПКМ по Kelp Golem с ламинарией в основной руке.",
+          "icon": "golemoverhaul:kelp_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26A9FCD8C8AB9F00",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:red_algae_carpet",
+          "count": 48,
+          "claim_key": "golems_05/item/0",
+          "claim_reward_id": "26A9FCD8C8AB9F00",
+          "team_reward": false
+        },
+        {
+          "id": "270152DF0A9DB745",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reefstone_tiles",
+          "count": 48,
+          "claim_key": "golems_05/item/1",
+          "claim_reward_id": "270152DF0A9DB745",
+          "team_reward": false
+        },
+        {
+          "id": "25E5071140F3C973",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "281AF380D4FBC1C1",
+      "title": "18.26 · Глина и слизь",
+      "subtitle": "По одному разу нажать ПКМ по Terracotta Golem с терракотой и по Slime Golem со слизью.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по Terracotta Golem с терракотой и по Slime Golem со слизью.",
+        "",
+        "Зачем: Разные боевые жизненные циклы.",
+        "",
+        "Совет: Совет, не условие зачёта: Выбрать Terracotta Golem или Slime Golem; испытать смену состояния/нативное разделение. Остальная семья — дополнительная карточка.",
+        "",
+        "Награда: Два разных помощника приносят заметный набор для декоративного двора."
+      ],
+      "icon": "golemoverhaul:terracotta_golem_spawn_egg",
+      "x": 5.3,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27DC2829BDA316C8",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по Terracotta Golem с терракотой и по Slime Golem со слизью.",
+          "icon": "golemoverhaul:terracotta_golem_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "266FEBCB2B0B111F",
+          "type": "jem_advancements:quest_item",
+          "item": "golemoverhaul:clay_golem_statue",
+          "count": 8,
+          "claim_key": "golems_06/item/0",
+          "claim_reward_id": "266FEBCB2B0B111F",
+          "team_reward": false
+        },
+        {
+          "id": "26A3EE104270DB58",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:snail_shell_tiles",
+          "count": 64,
+          "claim_key": "golems_06/item/1",
+          "claim_reward_id": "26A3EE104270DB58",
+          "team_reward": false
+        },
+        {
+          "id": "2D4948AEDB6DAF50",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20A0C0887AEC622C",
+      "title": "18.27 · Живая свеча",
+      "subtitle": "Нажать ПКМ по Candle Golem со свечой в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Candle Golem со свечой в основной руке.",
+        "",
+        "Зачем: Светящийся помощник.",
+        "",
+        "Совет: Совет, не условие зачёта: Выполнить подтверждённое превращение Candle Golem в блок/обратное состояние.",
+        "",
+        "Награда: Знакомство со свечным големом дает статуэтки и большой запас декоративного света."
+      ],
+      "icon": "golemoverhaul:candle_golem_spawn_egg",
+      "x": 7.15,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28472F904607CB67",
+          "type": "custom",
+          "title": "Нажать ПКМ по Candle Golem со свечой в основной руке.",
+          "icon": "golemoverhaul:candle_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B8258BF48C8F718",
+          "type": "jem_advancements:quest_item",
+          "item": "golemoverhaul:clay_golem_statue",
+          "count": 4,
+          "claim_key": "golems_07/item/0",
+          "claim_reward_id": "2B8258BF48C8F718",
+          "team_reward": false
+        },
+        {
+          "id": "2BD310C29CB3C465",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:swamp_lantern",
+          "count": 24,
+          "claim_key": "golems_07/item/1",
+          "claim_reward_id": "2BD310C29CB3C465",
+          "team_reward": false
+        },
+        {
+          "id": "208BD8444F81DB67",
+          "type": "jem_advancements:quest_xp",
+          "xp": 50,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2174B5A441FBF353",
+      "title": "18.28 · Железный шаг",
+      "subtitle": "Сесть верхом на Netherite Golem.",
+      "description": [
+        "Что сделать: Сесть верхом на Netherite Golem.",
+        "",
+        "Зачем: Поздний боевой маунт.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить Netherite Golem; сесть и применить атаку во время езды.",
+        "",
+        "Награда: Освоенный тяжелый голем приносит немного дорогой отделки и строительный запас."
+      ],
+      "icon": "golemoverhaul:netherite_golem_spawn_egg",
+      "x": -7.15,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25D4BFD265D86EA6",
+          "type": "custom",
+          "title": "Сесть верхом на Netherite Golem.",
+          "icon": "golemoverhaul:netherite_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2467D144305B04DE",
+          "type": "jem_advancements:quest_item",
+          "item": "netherexp:netherite_plating",
+          "count": 4,
+          "claim_key": "golems_08/item/0",
+          "claim_reward_id": "2467D144305B04DE",
+          "team_reward": false
+        },
+        {
+          "id": "207633AE7BAEF32B",
+          "type": "jem_advancements:quest_item",
+          "item": "netherexp:polished_basalt_bricks",
+          "count": 64,
+          "claim_key": "golems_08/item/1",
+          "claim_reward_id": "207633AE7BAEF32B",
+          "team_reward": false
+        },
+        {
+          "id": "217492C3E5B19727",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2272E03653AB8C20",
+      "title": "18.29 · Паспорт в Незер",
+      "subtitle": "Нажать ПКМ по Netherite Golem с золотым слитком в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Netherite Golem с золотым слитком в основной руке.",
+        "",
+        "Зачем: Отношение пиглинов и отделка.",
+        "",
+        "Совет: Совет, не условие зачёта: Добавить золотую отделку голему и применить её при встрече с пиглинами.",
+        "",
+        "Награда: Уход за тяжелым големом дает небольшую дорогую добавку и полноценную провизию.",
+        "",
+        "Рекомендуемый путь: 18.28 · Железный шаг. Порядок свободный."
+      ],
+      "icon": "golemoverhaul:netherite_golem_spawn_egg",
+      "x": -5.3,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B00A12968871F36",
+          "type": "custom",
+          "title": "Нажать ПКМ по Netherite Golem с золотым слитком в основной руке.",
+          "icon": "golemoverhaul:netherite_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BEF43B607AFC16F",
+          "type": "jem_advancements:quest_item",
+          "item": "netherexp:nether_pizza_slice",
+          "count": 16,
+          "claim_key": "golems_09/item/0",
+          "claim_reward_id": "2BEF43B607AFC16F",
+          "team_reward": false
+        },
+        {
+          "id": "2D79C465F5B0D6D6",
+          "type": "jem_advancements:quest_item",
+          "item": "netherexp:netherite_plating",
+          "count": 2,
+          "claim_key": "golems_09/item/1",
+          "claim_reward_id": "2D79C465F5B0D6D6",
+          "team_reward": false
+        },
+        {
+          "id": "24E190B535F7DDFC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C1A5627F48CD8C3",
+      "title": "18.30 · Печь внутри",
+      "subtitle": "Нажать ПКМ по Netherite Golem с ведром лавы в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Netherite Golem с ведром лавы в основной руке.",
+        "",
+        "Зачем: Сильная способность с реальной ценой/недостатком.",
+        "",
+        "Совет: Совет, не условие зачёта: Улучшить голема лавой, вызвать Coal Golems; учитывать новую уязвимость к воде.",
+        "",
+        "Награда: Работа с лавой пополняет рацион и жаростойкую палитру двора.",
+        "",
+        "Рекомендуемый путь: 18.28 · Железный шаг. Порядок свободный."
+      ],
+      "icon": "golemoverhaul:netherite_golem_spawn_egg",
+      "x": -3.45,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26D26D78DC40190A",
+          "type": "custom",
+          "title": "Нажать ПКМ по Netherite Golem с ведром лавы в основной руке.",
+          "icon": "golemoverhaul:netherite_golem_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EDC75A3F78A2CF8",
+          "type": "jem_advancements:quest_item",
+          "item": "netherexp:cooked_hogham",
+          "count": 16,
+          "claim_key": "golems_10/item/0",
+          "claim_reward_id": "2EDC75A3F78A2CF8",
+          "team_reward": false
+        },
+        {
+          "id": "282AB164DD3AE968",
+          "type": "jem_advancements:quest_item",
+          "item": "netherexp:polished_basalt_bricks",
+          "count": 64,
+          "claim_key": "golems_10/item/1",
+          "claim_reward_id": "282AB164DD3AE968",
+          "team_reward": false
+        },
+        {
+          "id": "20EBCF877F65E064",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "golems_10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Знакомство и Soul Furnace",
+      "order": -5,
+      "hover": [
+        "Знакомство и Soul Furnace"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Куклы и электричество",
+      "order": -5,
+      "hover": [
+        "Куклы и электричество"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Плюш, тени и контракты",
+      "order": -5,
+      "hover": [
+        "Плюш, тени и контракты"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Големы дома и пасеки",
+      "order": -5,
+      "hover": [
+        "Големы дома и пасеки"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Големы воды и камня",
+      "order": -5,
+      "hover": [
+        "Големы воды и камня"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 11.1,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Незеритовый друг",
+      "order": -5,
+      "hover": [
+        "Незеритовый друг"
+      ]
+    },
+    {
+      "x": -8.07,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:cp01",
+      "hover": [
+        "18.01 · Сущность для ухода",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "24B3BA1405756B15"
+}

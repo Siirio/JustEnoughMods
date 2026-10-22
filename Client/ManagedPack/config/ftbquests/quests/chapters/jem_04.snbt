@@ -1,0 +1,1055 @@
+{
+  "id": "2D4B317AFF92A661",
+  "filename": "jem_04",
+  "title": "Кухня и пекарня",
+  "subtitle": [
+    "Когда: С первым урожаем; блюда других измерений доступны после обычного получения их сырья.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "bakery:croissant",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 3,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2DD9DF9DBE41651C",
+      "title": "04.01 · Стол подготовки продуктов",
+      "subtitle": "Поставить Mincer и Crafting Bowl Farm & Charm.",
+      "description": [
+        "Что сделать: Поставить Mincer и Crafting Bowl Farm & Charm.",
+        "",
+        "Зачем: Мука/нарезка/смешивание; основа выпечки и фермерской кухни.",
+        "",
+        "Совет: Эти подтверждённые станции готовят ингредиенты и смеси. Помол/переработку смотри в текущих рецептах; отдельный непроверенный Grinder не требуется.",
+        "",
+        "Награда: Две рабочие станции получают настоящие кухонные инструменты и запас муки."
+      ],
+      "icon": "farm_and_charm:mincer",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25A400C326F01430",
+          "type": "custom",
+          "title": "Поставить Mincer и Crafting Bowl Farm & Charm.",
+          "icon": "farm_and_charm:mincer",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "292692AA48FE300B",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:rolling_pin",
+          "count": 1,
+          "claim_key": "H02.01/item/0",
+          "claim_reward_id": "292692AA48FE300B",
+          "team_reward": false
+        },
+        {
+          "id": "2D48B5ABF96D3E13",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:bread_knife",
+          "count": 1,
+          "claim_key": "H02.01/item/1",
+          "claim_reward_id": "2D48B5ABF96D3E13",
+          "team_reward": false
+        },
+        {
+          "id": "2CA9B247C5F7A013",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:flour",
+          "count": 32,
+          "claim_key": "H02.01/item/2",
+          "claim_reward_id": "2CA9B247C5F7A013",
+          "team_reward": false
+        },
+        {
+          "id": "2BCC531DEB309F9E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25E0A9326C743193",
+      "title": "04.02 · Горячие станции",
+      "subtitle": "Поставить Cooking Pot и Roaster Farm & Charm.",
+      "description": [
+        "Что сделать: Поставить Cooking Pot и Roaster Farm & Charm.",
+        "",
+        "Зачем: Жаркое/супы; нагрев и контейнеры.",
+        "",
+        "Совет: Для готовки важны тепло, ингредиенты и тара. Квест проверяет две станции, без определения нагрева и готового процесса.",
+        "",
+        "Награда: Горячая кухня даёт полноценный походный паёк и место для инструмента.",
+        "",
+        "Рекомендуемый путь: 04.01 · Стол подготовки продуктов. Порядок свободный."
+      ],
+      "icon": "farm_and_charm:cooking_pot",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AEBC8C8258F62E2",
+          "type": "custom",
+          "title": "Поставить Cooking Pot и Roaster Farm & Charm.",
+          "icon": "farm_and_charm:cooking_pot",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20434B621845BDDB",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:goulash",
+          "count": 12,
+          "claim_key": "H02.02/item/0",
+          "claim_reward_id": "20434B621845BDDB",
+          "team_reward": false
+        },
+        {
+          "id": "2B8070C67061B8FB",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:lamb_with_corn",
+          "count": 12,
+          "claim_key": "H02.02/item/1",
+          "claim_reward_id": "2B8070C67061B8FB",
+          "team_reward": false
+        },
+        {
+          "id": "284BF3713A8E565D",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:tool_rack",
+          "count": 4,
+          "claim_key": "H02.02/item/2",
+          "claim_reward_id": "284BF3713A8E565D",
+          "team_reward": false
+        },
+        {
+          "id": "29F6F773ACEBD14D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E3011DCDD9B08F4",
+      "title": "04.03 · Своя булочная",
+      "subtitle": "Получить 4 хлеба Bakery.",
+      "description": [
+        "Что сделать: Получить 4 хлеба Bakery.",
+        "",
+        "Зачем: Цепочка зерно → переработка → выпечка → подача.",
+        "",
+        "Совет: Зерно проходит через муку и тесто к выпечке. Выставить хлеб на прилавке можно по желанию; происхождение ингредиентов не проверяется.",
+        "",
+        "Награда: Первые хлеба открывают оборудованную хлебницу и сытную выпечку на дорогу.",
+        "",
+        "Рекомендуемый путь: 04.02 · Горячие станции. Порядок свободный."
+      ],
+      "icon": "bakery:bread",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26870ED71A454889",
+          "type": "item",
+          "item": "bakery:bread",
+          "count": 4,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28B8BC7F11D0640E",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:breadbox",
+          "count": 2,
+          "claim_key": "H02.03/item/0",
+          "claim_reward_id": "28B8BC7F11D0640E",
+          "team_reward": false
+        },
+        {
+          "id": "2F3DCF992F7C1BD4",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_salmon_sandwich",
+          "count": 16,
+          "claim_key": "H02.03/item/1",
+          "claim_reward_id": "2F3DCF992F7C1BD4",
+          "team_reward": false
+        },
+        {
+          "id": "221B0977633C0CE9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CE78CC9A0D08846",
+      "title": "04.04 · Торт для стола",
+      "subtitle": "Поставить 1 торт или пирог Bakery.",
+      "description": [
+        "Что сделать: Поставить 1 торт или пирог Bakery.",
+        "",
+        "Зачем: Порционные блюда, витрины и вывески Bakery.",
+        "",
+        "Совет: Порционные изделия можно подавать на стол; рядом пригодятся витрины и вывески. Декор и съеденную порцию квест не оценивает.",
+        "",
+        "Награда: Торт получает витрину и сервировку; сладостей хватает угостить группу.",
+        "",
+        "Рекомендуемый путь: 04.03 · Своя булочная. Порядок свободный."
+      ],
+      "icon": "bakery:apple_pie",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24F8471C00F8CF5D",
+          "type": "custom",
+          "title": "Поставить 1 торт или пирог Bakery.",
+          "icon": "bakery:apple_pie",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B1D4389F1C3D617",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:cake_display",
+          "count": 4,
+          "claim_key": "H02.04/item/0",
+          "claim_reward_id": "2B1D4389F1C3D617",
+          "team_reward": false
+        },
+        {
+          "id": "2BD4B1A929B48378",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:tray",
+          "count": 4,
+          "claim_key": "H02.04/item/1",
+          "claim_reward_id": "2BD4B1A929B48378",
+          "team_reward": false
+        },
+        {
+          "id": "29CBA7CC3D98069D",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:strawberry_cupcake",
+          "count": 16,
+          "claim_key": "H02.04/item/2",
+          "claim_reward_id": "29CBA7CC3D98069D",
+          "team_reward": false
+        },
+        {
+          "id": "2CF89F36A8EB6EE1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "283093A193FF667F",
+      "title": "04.05 · Первый вок",
+      "subtitle": "Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+      "description": [
+        "Что сделать: Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+        "",
+        "Зачем: Ручная готовка Kaleidoscope: тепло, масло, помешивание, подача.",
+        "",
+        "Совет: Для настоящей готовки нужны огонь, масло, ингредиенты, помешивание и подача. Проверяются размещение и нажатие; готовое блюдо не требуется.",
+        "",
+        "Награда: Проверенный вок снабжается расходным маслом и готовой партией еды.",
+        "",
+        "Нативная лопатка этой версии Cookery называется Kitchen Shovel."
+      ],
+      "icon": "kaleidoscope_cookery:pot",
+      "x": -8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29D6909B474D4F03",
+          "type": "custom",
+          "title": "Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+          "icon": "kaleidoscope_cookery:pot",
+          "count": 1
+        },
+        {
+          "id": "2807C8B1B1C82B33",
+          "type": "custom",
+          "title": "Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+          "icon": "kaleidoscope_cookery:pot",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2194F375BB0C13B5",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:oil",
+          "count": 24,
+          "claim_key": "H02.05/item/0",
+          "claim_reward_id": "2194F375BB0C13B5",
+          "team_reward": false
+        },
+        {
+          "id": "2D1D2200121C605F",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:egg_fried_rice",
+          "count": 16,
+          "claim_key": "H02.05/item/1",
+          "claim_reward_id": "2D1D2200121C605F",
+          "team_reward": false
+        },
+        {
+          "id": "2C0F75AE9441C206",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BA2DB804B8A5647",
+      "title": "04.06 · Закрыть крышку",
+      "subtitle": "Получить Stockpot и подходящую крышку Cookery.",
+      "description": [
+        "Что сделать: Получить Stockpot и подходящую крышку Cookery.",
+        "",
+        "Зачем: Супы и тушение; крышка имеет также защитное применение.",
+        "",
+        "Совет: Супы и тушение используют нагрев, основу, ингредиенты и крышку; у крышки есть и защитное применение. Сборка станции и цикл готовки не отслеживаются.",
+        "",
+        "Награда: Кастрюля с крышкой дополняется печью и двумя готовыми блюдами.",
+        "",
+        "Рекомендуемый путь: 04.05 · Первый вок. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:stockpot",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DA81F081B0E5E4F",
+          "type": "item",
+          "item": "kaleidoscope_cookery:stockpot",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "287F8084E4970DA0",
+          "type": "item",
+          "item": "kaleidoscope_cookery:stockpot_lid",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "202603750B6AA25B",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:beef_noodle",
+          "count": 12,
+          "claim_key": "H02.06/item/0",
+          "claim_reward_id": "202603750B6AA25B",
+          "team_reward": false
+        },
+        {
+          "id": "2514D7462FB3D0C0",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:hui_noodle",
+          "count": 12,
+          "claim_key": "H02.06/item/1",
+          "claim_reward_id": "2514D7462FB3D0C0",
+          "team_reward": false
+        },
+        {
+          "id": "2ADD97A12D878F04",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:stove",
+          "count": 1,
+          "claim_key": "H02.06/item/2",
+          "claim_reward_id": "2ADD97A12D878F04",
+          "team_reward": false
+        },
+        {
+          "id": "29C074158D510E7A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CD2F3D44643AEED",
+      "title": "04.07 · Рецепт запомнен",
+      "subtitle": "Нажать Recipe Book Cookery правой кнопкой по Wok или Stockpot.",
+      "description": [
+        "Что сделать: Нажать Recipe Book Cookery правой кнопкой по Wok или Stockpot.",
+        "",
+        "Зачем: Повторение собственных блюд без ручного перекладывания.",
+        "",
+        "Совет: Книга помогает записать сочетание и повторять загрузку станции. Зачёт даётся за ПКМ, без проверки записи или переноса ингредиентов.",
+        "",
+        "Награда: Книга рецептов сразу получает материал для следующих кухонных опытов.",
+        "",
+        "Используется нативный предмет рецепта установленной Cookery.",
+        "",
+        "Рекомендуемый путь: 04.06 · Закрыть крышку. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:pot",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "200A1ADBCC21CE9F",
+          "type": "custom",
+          "title": "Нажать Recipe Book Cookery правой кнопкой по Wok или Stockpot.",
+          "icon": "kaleidoscope_cookery:pot",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25C90FEE36E6FD95",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:raw_noodles",
+          "count": 32,
+          "claim_key": "H02.07/item/0",
+          "claim_reward_id": "25C90FEE36E6FD95",
+          "team_reward": false
+        },
+        {
+          "id": "27991616DA7A5FEA",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:minced_beef",
+          "count": 24,
+          "claim_key": "H02.07/item/1",
+          "claim_reward_id": "27991616DA7A5FEA",
+          "team_reward": false
+        },
+        {
+          "id": "2866655349F2C008",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2166F25117A3A42F",
+      "title": "04.08 · Паровая кухня",
+      "subtitle": "Поставить 2 секции Steamer.",
+      "description": [
+        "Что сделать: Поставить 2 секции Steamer.",
+        "",
+        "Зачем: Многоярусная готовка одной печью.",
+        "",
+        "Совет: Пароварку можно собирать ярусами над подходящим нагревом и закрывать сверху. Правильность сборки и продукты в ярусах не проверяются.",
+        "",
+        "Награда: Больше секций и большая партия еды делают пароварку полезным производством.",
+        "",
+        "Рекомендуемый путь: 04.07 · Рецепт запомнен. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:steamer",
+      "x": -2.52,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DD8F7399C06BEBD",
+          "type": "custom",
+          "title": "Поставить 2 секции Steamer.",
+          "icon": "kaleidoscope_cookery:steamer",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "294CE28EA77606CE",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:dumpling",
+          "count": 24,
+          "claim_key": "H02.08/item/0",
+          "claim_reward_id": "294CE28EA77606CE",
+          "team_reward": false
+        },
+        {
+          "id": "28A8DF9695F5F4F0",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:steamer",
+          "count": 4,
+          "claim_key": "H02.08/item/1",
+          "claim_reward_id": "28A8DF9695F5F4F0",
+          "team_reward": false
+        },
+        {
+          "id": "2E82A2E426778E6B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26DE638FEBCE5FA4",
+      "title": "04.09 · Жарка и выключатель",
+      "subtitle": "Поставить Rotisserie и рычаг.",
+      "description": [
+        "Что сделать: Поставить Rotisserie и рычаг.",
+        "",
+        "Зачем: Готовка по сигналу; мясо не нужно снимать руками при работе.",
+        "",
+        "Совет: Редстоун управляет жаркой. Сначала останови устройство, затем забирай мясо. Квест не оценивает подключение и приготовление.",
+        "",
+        "Награда: Гриль награждает готовой едой и узнаваемым кухонно-фермерским нарядом.",
+        "",
+        "Рекомендуемый путь: 04.08 · Паровая кухня. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:shawarma_spit",
+      "x": -6.22,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "282ABE06925C8698",
+          "type": "custom",
+          "title": "Поставить Rotisserie и рычаг.",
+          "icon": "kaleidoscope_cookery:shawarma_spit",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2789CA92380E1D2B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "H02.09/item/0",
+          "claim_reward_id": "2789CA92380E1D2B",
+          "team_reward": false
+        },
+        {
+          "id": "2BC6004FDAB9DD07",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:straw_hat",
+          "count": 1,
+          "claim_key": "H02.09/item/1",
+          "claim_reward_id": "2BC6004FDAB9DD07",
+          "team_reward": false
+        },
+        {
+          "id": "2209AF3DA63EDD86",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22D5AAB9B60DB45F",
+      "title": "04.10 · Масло для кухни",
+      "subtitle": "Получить 1 масло Kaleidoscope Cookery.",
+      "description": [
+        "Что сделать: Получить 1 масло Kaleidoscope Cookery.",
+        "",
+        "Зачем: Внутренняя переработка Cookery и масло.",
+        "",
+        "Совет: Посмотри в JEI путь нарезки/измельчения и получения масла. Получить ингредиент достаточно; все операции по порядку не отслеживаются.",
+        "",
+        "Награда: Освоенное масло выдаётся большим запасом вместе с блюдом для дальнейших вылазок.",
+        "",
+        "Рекомендуемый путь: 04.09 · Жарка и выключатель. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:oil",
+      "x": -4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CA57A559F825373",
+          "type": "item",
+          "item": "kaleidoscope_cookery:oil",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29D4AF04CBB7E876",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:oil",
+          "count": 48,
+          "claim_key": "H02.10/item/0",
+          "claim_reward_id": "29D4AF04CBB7E876",
+          "team_reward": false
+        },
+        {
+          "id": "2CD6EF5F54E6801D",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:sweet_and_sour_pork_rice_bowl",
+          "count": 12,
+          "claim_key": "H02.10/item/1",
+          "claim_reward_id": "2CD6EF5F54E6801D",
+          "team_reward": false
+        },
+        {
+          "id": "23DA4CA8AF5FEB78",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27079217290C4692",
+      "title": "04.11 · Обед из Незера",
+      "subtitle": "Съесть 1 готовое блюдо Kaleidoscope Nether.",
+      "description": [
+        "Что сделать: Съесть 1 готовое блюдо Kaleidoscope Nether.",
+        "",
+        "Зачем: Dimension-food Nether: выращивание/добыча местного сырья, новые блюда.",
+        "",
+        "Совет: Особые блюда используют ресурсы Незера. Место добычи и вся цепочка производства не входят в условие.",
+        "",
+        "Награда: Знакомство с кухней Незера получает две ощутимые партии уже доступной еды; ингредиенты боссов не выдаются.",
+        "",
+        "Рекомендуемый путь: 04.05 · Первый вок. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_nether:black_apple_salad",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FB9091F1C123729",
+          "type": "custom",
+          "title": "Съесть 1 готовое блюдо Kaleidoscope Nether.",
+          "icon": "kaleidoscope_nether:black_apple_salad",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28D85B9DCD5E3ADE",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_nether:blaze_soup",
+          "count": 12,
+          "claim_key": "H02.11/item/0",
+          "claim_reward_id": "28D85B9DCD5E3ADE",
+          "team_reward": false
+        },
+        {
+          "id": "256C7D011DF4531D",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_nether:nether_fries_platter",
+          "count": 12,
+          "claim_key": "H02.11/item/1",
+          "claim_reward_id": "256C7D011DF4531D",
+          "team_reward": false
+        },
+        {
+          "id": "2691C4B1FCAFF4B8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29B9141A764727FB",
+      "title": "04.12 · Вкус Края",
+      "subtitle": "Съесть 1 готовое блюдо Kaleidoscope End.",
+      "description": [
+        "Что сделать: Съесть 1 готовое блюдо Kaleidoscope End.",
+        "",
+        "Зачем: Dimension-food End; самостоятельный кулинарный эпилог.",
+        "",
+        "Совет: Сырьё приходит из доступного игроку Края. Доступ к измерению сохраняет нативную кампанию; квест еды не создаёт дополнительной блокировки.",
+        "",
+        "Награда: Кухня Края продолжается меню из двух блюд, без драконьих инструментов и ключей.",
+        "",
+        "Рекомендуемый путь: 04.05 · Первый вок. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_end:chorus_pasta",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "285CCC170D0E136B",
+          "type": "custom",
+          "title": "Съесть 1 готовое блюдо Kaleidoscope End.",
+          "icon": "kaleidoscope_end:chorus_pasta",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2160F526B6C22C59",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_end:chorus_flower_cake",
+          "count": 12,
+          "claim_key": "H02.12/item/0",
+          "claim_reward_id": "2160F526B6C22C59",
+          "team_reward": false
+        },
+        {
+          "id": "259AFEDAA3FFB0B5",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_end:ender_mint_tea",
+          "count": 12,
+          "claim_key": "H02.12/item/1",
+          "claim_reward_id": "259AFEDAA3FFB0B5",
+          "team_reward": false
+        },
+        {
+          "id": "2AC513B2CB2B8F5E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21560F9CDB8E7FCE",
+      "title": "04.13 · Ужин перед дорогой",
+      "subtitle": "Съесть круассан Bakery, картофельный суп Farm & Charm и яичницу Cookery.",
+      "description": [
+        "Что сделать: Съесть круассан Bakery, картофельный суп Farm & Charm и яичницу Cookery.",
+        "",
+        "Зачем: Собственная кухня снабжает остальные приключения.",
+        "",
+        "Совет: Это небольшая коллекция готовой еды. Место употребления, собственный урожай и вся производственная история не проверяются.",
+        "",
+        "Награда: Три разных блюда заслуживают оборудования для любимого направления и угощения на компанию.",
+        "",
+        "Рекомендуемый путь: 04.03 · Своя булочная; 04.07 · Рецепт запомнен. Порядок свободный."
+      ],
+      "icon": "bakery:croissant",
+      "x": 5.3,
+      "y": 9.1,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25B42AF841DE2F84",
+          "type": "custom",
+          "title": "Съесть круассан Bakery, картофельный суп Farm & Charm и яичницу Cookery.",
+          "icon": "bakery:croissant",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "212E0B0D4EE12939",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_box",
+          "count": 8,
+          "claim_key": "H02.13/item/0",
+          "claim_reward_id": "212E0B0D4EE12939",
+          "team_reward": false
+        },
+        {
+          "id": "2A11EBD518DBA773",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:pretzel",
+          "count": 16,
+          "claim_key": "H02.13/item/1",
+          "claim_reward_id": "2A11EBD518DBA773",
+          "team_reward": false
+        },
+        {
+          "id": "25D8B1A2CFB845AF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        },
+        {
+          "id": "22063C56D67C2360",
+          "type": "choice",
+          "table_id": 2332278574596838651L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27E2A0180FAA4F37",
+      "title": "04.14 · Сыр в котле",
+      "subtitle": "Получить 1 сыр Nature’s Spirit.",
+      "description": [
+        "Что сделать: Получить 1 сыр Nature’s Spirit.",
+        "",
+        "Зачем: Отдельная пищевая цепочка Nature's Spirit.",
+        "",
+        "Совет: Нативная цепочка: молоко в котле, коричневый гриб, выдержка и сбор ведром. Квест не измеряет время и не восстанавливает историю превращения.",
+        "",
+        "Награда: Сыр получает необычное практическое применение и готовые бутерброды."
+      ],
+      "icon": "natures_spirit:cheese_bucket",
+      "x": -6.22,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2100DC8BFF0784AA",
+          "type": "item",
+          "item": "natures_spirit:cheese_bucket",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22AD77949796FEE5",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cheese_arrow",
+          "count": 32,
+          "claim_key": "H02.14/item/0",
+          "claim_reward_id": "22AD77949796FEE5",
+          "team_reward": false
+        },
+        {
+          "id": "2F30DA919563166D",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:vegetable_sandwich",
+          "count": 12,
+          "claim_key": "H02.14/item/1",
+          "claim_reward_id": "2F30DA919563166D",
+          "team_reward": false
+        },
+        {
+          "id": "2F3D96F3614320AD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "284F845A6BCDF04F",
+      "title": "04.15 · Пицца на свой вкус",
+      "subtitle": "Поставить 1 пиццу Nature’s Spirit.",
+      "description": [
+        "Что сделать: Поставить 1 пиццу Nature’s Spirit.",
+        "",
+        "Зачем: Размещаемая еда и до четырёх начинок; Cheese Arrow — ссылка на боевую ветку после проверки эффекта.",
+        "",
+        "Совет: Добавляй разрешённые начинки и пробуй порции; доступно до четырёх начинок. Cheese Arrow относится к необязательной боевой ветке. Добавки и употребление здесь не проверяются.",
+        "",
+        "Награда: После пиццы можно оборудовать собственную террасу для совместной еды.",
+        "",
+        "Рекомендуемый путь: 04.14 · Сыр в котле. Порядок свободный."
+      ],
+      "icon": "natures_spirit:cypress_planks",
+      "x": -4.38,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20F5DBAF35E96A2F",
+          "type": "custom",
+          "title": "Поставить 1 пиццу Nature’s Spirit.",
+          "icon": "natures_spirit:cypress_planks",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "287A6B3617510ACC",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_planks",
+          "count": 64,
+          "claim_key": "H02.15/item/0",
+          "claim_reward_id": "287A6B3617510ACC",
+          "team_reward": false
+        },
+        {
+          "id": "2F0C99F882776828",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:iron_table",
+          "count": 2,
+          "claim_key": "H02.15/item/1",
+          "claim_reward_id": "2F0C99F882776828",
+          "team_reward": false
+        },
+        {
+          "id": "2D0B79440DA3A9D6",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:iron_chair",
+          "count": 4,
+          "claim_key": "H02.15/item/2",
+          "claim_reward_id": "2D0B79440DA3A9D6",
+          "team_reward": false
+        },
+        {
+          "id": "2AC88F8812037F5A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H02.15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Farm & Charm",
+      "order": -5,
+      "hover": [
+        "Farm & Charm"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Bakery",
+      "order": -5,
+      "hover": [
+        "Bakery"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Cookery",
+      "order": -5,
+      "hover": [
+        "Cookery"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:измерения",
+      "order": -5,
+      "hover": [
+        "измерения"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:сыроварня",
+      "order": -5,
+      "hover": [
+        "сыроварня"
+      ]
+    }
+  ],
+  "autofocus_id": "2DD9DF9DBE41651C"
+}

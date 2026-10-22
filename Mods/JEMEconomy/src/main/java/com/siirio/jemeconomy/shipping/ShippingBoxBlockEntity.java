@@ -221,6 +221,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
 
     private void recover(ServerLevel serverLevel) {
         if (transaction == null) return;
+        boolean newlyCommitted = false;
         try {
             if (transaction.phase == Phase.PREPARED) {
                 if (!fingerprintsMatch(transaction.lines)) { quarantine(serverLevel, "inventory_changed"); return; }
@@ -294,8 +295,13 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
                     quarantine(serverLevel, "fraction_commit_failed"); return;
                 }
                 transaction = transaction.with(Phase.COMMITTED, transaction.operationId); status = "paid:" + transaction.payout; setChanged();
+                newlyCommitted = true;
             }
         } catch (RuntimeException failure) { quarantine(serverLevel, "exception"); }
+        if (newlyCommitted && transaction.payout > 0)
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.siirio.jemeconomy.api.EconomyOperationEvent(
+                    serverLevel.getServer(), seller(), transaction.operationId,
+                    com.siirio.jemeconomy.api.EconomyOperationEvent.Kind.SHIPPING_SALE, ItemStack.EMPTY));
     }
 
     private void quarantine(ServerLevel level, String reason) {

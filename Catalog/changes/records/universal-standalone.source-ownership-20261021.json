@@ -66,11 +66,6 @@
       "Catalog/generator/build_power_views.py",
       "Catalog/generator/extract_power_mechanics.py",
       "Catalog/generator/impact_model.py",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/bosses_12_eyes.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/create.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt",
       "Client/ManagedPack/config/ftbquests/quests/data.snbt",
       "Client/ManagedPack/config/oculus.properties",
       "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js",
@@ -1555,7 +1550,12 @@
       "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/items/progression_excluded.json",
       "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/items/raid_forbidden.json",
       "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/items/raid_resources.json",
-      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/bosses_12_eyes.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/create.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/getting_started.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/living_world.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/races.snbt"
     ]
   },
   "rationale": {
@@ -4503,6 +4503,19 @@
       ],
       "current_source_files": [
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "archive_replaced_quest_sources",
+      "summary": "The supplied adventure book replaces these small chapter files. Original bytes and retired progress IDs remain in Guide tools/questbook/legacy; new canonical authored book and projection are recorded by ftb-authored-adventure-book-20261022.",
+      "source_files": [
+        "Client/ManagedPack/config/ftbquests/quests/chapters/bosses_12_eyes.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/create.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt"
       ]
     }
   ],

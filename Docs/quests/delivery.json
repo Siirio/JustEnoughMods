@@ -1,0 +1,148 @@
+{
+  "date_local": "2026-10-23",
+  "timezone": "Asia/Yekaterinburg",
+  "state": "FUNCTIONAL_LOCAL_DELIVERY_VISUALS_INCOMPLETE",
+  "branch": "main",
+  "commit": "SELF",
+  "source_book": {
+    "chapters": 32,
+    "cards": 596,
+    "active": 566,
+    "informational": 30,
+    "choice_tables": 61
+  },
+  "production_build": {
+    "tasks": [
+      ":JEMAchievementGuide:jar",
+      ":JEMEconomy:jar",
+      ":JEMSettlements:jar"
+    ],
+    "result": "BUILD SUCCESSFUL",
+    "java_target": 17,
+    "paused_source_excluded": true,
+    "source_basis": "HEAD plus exact task-owned Guide/Economy/Settlements source; unrelated current checkout edits preserved",
+    "artifact_sha256": {
+      "jem-advancements-5.1.0.jar": "a5c81bbae1ff2866e62b82b00ee8b7772af78317a5b101b1cb6cb75888400440",
+      "jem-economy-1.3.0.jar": "b87055924a910215a5844fbd4ec303e6e7c946221bf0c97bfd06b8d80d23a1a0",
+      "jem-settlements-2.1.0.jar": "df32538df5fc5357513d2e487b08170c9151bf1d91b2e9307e2b539f69f83e6e"
+    },
+    "source_base_commit": "b5c16f87a0bbf09ecb4393f3008695006dee33af"
+  },
+  "ordinary_server": {
+    "synchronized": true,
+    "native_load": "7 groups / 40 chapters / 608 quests / 61 reward tables, including invisible archives and dormant chapter",
+    "visible_authored_chapters": 32,
+    "active_objectives": 562,
+    "unavailable": {
+      "2029CA3534C9FE17": "События и Raid требуют выделенного сервера с включёнными событиями",
+      "2836F95F0A6A47CE": "События и Raid требуют выделенного сервера с включёнными событиями",
+      "29AD5A24C4CC0D6D": "События и Raid требуют выделенного сервера с включёнными событиями",
+      "2EF63CC9DF7C927A": "События и Raid требуют выделенного сервера с включёнными событиями"
+    },
+    "projection_fingerprint": "14299ece5df05ed358a7b3c56d56ac8543d6eb9b424abe507769ff24f0f127dd",
+    "features": {
+      "economy": true,
+      "settlements": true,
+      "recruits": true,
+      "races": true,
+      "campaign": true,
+      "events": false,
+      "create": true,
+      "planning": true
+    },
+    "registry_diagnostic": {
+      "command": "native KubeJS dump_registry",
+      "item_entries": 13936,
+      "block_entries": 10299,
+      "entity_entries": 1607,
+      "potion_entries": 95,
+      "enchantment_entries": 124,
+      "scope": "registration diagnostic only; not a promoted runtime Atlas session; no gameplay actions performed"
+    },
+    "stopped_cleanly_after_publication": false,
+    "final_state": "STOPPED_AFTER_UNRELATED_RUNTIME_FAILURE; worlds saved, watchdog subsequently terminated shutdown",
+    "blockers": [
+      {
+        "owner": "existing Settlements TaxDurability",
+        "symptom": "Daily tax transaction remains pending: jem_settlements",
+        "first_error": "Win32 MoveFileEx returned ERROR_ACCESS_DENIED (5) replacing world/data/jem_settlements.dat",
+        "root_limit": "Target has no read-only attribute; specific holder/ACL/transient cause is not established. No speculative retry, permission change or data reset applied.",
+        "class_bytes_identical_to_previous_generation_62": true
+      },
+      {
+        "owner": "existing EconomySavedData development guard",
+        "symptom": "Saved development currency is outside its dedicated local opt-in/account marker boundary",
+        "evidence": "Current ordinary run user_jvm_args has no -Djem.localDevelopmentMoney=true; a local account marker exists. Existing issuance requires both opt-ins.",
+        "class_bytes_identical_to_previous_generation_62": true,
+        "action": "No wallet/marker/ledger mutation or unfreeze workaround applied."
+      }
+    ]
+  },
+  "automodpack": {
+    "published": true,
+    "journalSequence": 63,
+    "publishedManifestSha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+    "stagedManifestSha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+    "content_token": "ea5c8e10320356cce80c6bda1af5c992198ce954",
+    "preview": "+101 ~5 -7; all paths belong to this task",
+    "native_installed_profile": "test jem",
+    "native_operations_reviewed": 223,
+    "installed_token_matches_published": true,
+    "jar_hashes_match": true,
+    "book_files_compared": 102,
+    "pending_transaction": false,
+    "raw_managed_gameDir_copy": false
+  },
+  "visuals": {
+    "status": "NEEDS_DIRECTION",
+    "sources": "visual-assets.json",
+    "missing": [
+      "real HUD-free gameplay scenes",
+      "clean transparent title exports",
+      "composed in-game review at requested resolutions and states"
+    ]
+  },
+  "verification_limits": [
+    "No client/gameplay launch, automated tests or fixtures.",
+    "Native event action/claim/relogin, integrated-world and GUI acceptance remain unobserved.",
+    "Existing third-party recipe/tag/dist warnings remain in ordinary server logs; the book itself parsed successfully.",
+    "Stable profiles, MineRENT and release baseline unchanged.",
+    "Ordinary server readiness is blocked by the unchanged tax save failure and development-ledger guard; successful FTB load/publication does not imply a healthy gameplay server."
+  ],
+  "atlas": {
+    "schema_and_effective_validation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12139,
+        "creative_tabs": 55,
+        "effects": 472,
+        "enchantments": 218,
+        "entities": 1608,
+        "items": 17162,
+        "structures": 520
+      },
+      "change_records": 126,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "static_artifact_refresh": {
+      "artifacts": 698,
+      "files": 859,
+      "registry_ids_unchanged": true,
+      "source_snapshot": "HEAD plus exact task-owned source; paused source excluded",
+      "manual_notes_preserved": true
+    },
+    "artifact_drift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "full_regeneration_required": false,
+    "task_uncovered_paths": [],
+    "whole_working_tree_uncovered": 98,
+    "initial_uncovered": 86,
+    "scope": "Remaining gaps belong to unrelated paused source; not represented as a clean whole-workspace scan.",
+    "runtime_facts_promoted": false
+  }
+}

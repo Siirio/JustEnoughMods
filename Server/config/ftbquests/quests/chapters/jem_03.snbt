@@ -1,0 +1,983 @@
+{
+  "id": "2737629454E291BB",
+  "filename": "jem_03",
+  "title": "Ферма и времена года",
+  "subtitle": [
+    "Когда: После начала игры; растениеводство и животные доступны независимыми ветвями.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "farm_and_charm:fertilizer",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 2,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "29711D8C0283A81D",
+      "title": "03.01 · Свои семена",
+      "subtitle": "Нажать ПКМ по одной зрелой культуре Farm & Charm.",
+      "description": [
+        "Что сделать: Нажать ПКМ по одной зрелой культуре Farm & Charm.",
+        "",
+        "Зачем: Овощи и зерно для кухни; управление урожаем.",
+        "",
+        "Совет: Right Click Harvest позволяет собирать урожай без ручной пересадки. Проверяется обращение к зрелому растению, а не изменение его состояния.",
+        "",
+        "Награда: После первого урожая хватает семян расширить грядки несколькими культурами."
+      ],
+      "icon": "farm_and_charm:tomato_seeds",
+      "x": -7.15,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22DB198774F7B81C",
+          "type": "custom",
+          "title": "Нажать ПКМ по одной зрелой культуре Farm & Charm.",
+          "icon": "farm_and_charm:tomato_seeds",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F0D1190F2116844",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:tomato_seeds",
+          "count": 16,
+          "claim_key": "H01.01/item/0",
+          "claim_reward_id": "2F0D1190F2116844",
+          "team_reward": false
+        },
+        {
+          "id": "257325BDAC69C474",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:lettuce_seeds",
+          "count": 16,
+          "claim_key": "H01.01/item/1",
+          "claim_reward_id": "257325BDAC69C474",
+          "team_reward": false
+        },
+        {
+          "id": "21BF47A1D34476E3",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:oat_seeds",
+          "count": 16,
+          "claim_key": "H01.01/item/2",
+          "claim_reward_id": "21BF47A1D34476E3",
+          "team_reward": false
+        },
+        {
+          "id": "2915B6AE2570CEB0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26AD22674387F18F",
+      "title": "03.02 · Уход за землёй",
+      "subtitle": "Получить 1 удобрение Farm & Charm.",
+      "description": [
+        "Что сделать: Получить 1 удобрение Farm & Charm.",
+        "",
+        "Зачем: Уход за полем вместо бесконечного костного порошка.",
+        "",
+        "Совет: Удобрение, подходящая почва и полив помогают ферме. Не требуется связывать обработанную грядку с последующим урожаем.",
+        "",
+        "Награда: Проверенное удобрение становится настоящим расходным запасом, а пугало дополняет хозяйство.",
+        "",
+        "Рекомендуемый путь: 03.01 · Свои семена. Порядок свободный."
+      ],
+      "icon": "farm_and_charm:fertilizer",
+      "x": -5.3,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E2E088EC3CDCF64",
+          "type": "item",
+          "item": "farm_and_charm:fertilizer",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F1D2E8CFC222911",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:fertilizer",
+          "count": 48,
+          "claim_key": "H01.02/item/0",
+          "claim_reward_id": "2F1D2E8CFC222911",
+          "team_reward": false
+        },
+        {
+          "id": "2CBA6BA43AFF39C6",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:scarecrow",
+          "count": 1,
+          "claim_key": "H01.02/item/1",
+          "claim_reward_id": "2CBA6BA43AFF39C6",
+          "team_reward": false
+        },
+        {
+          "id": "25B0CC7C2E910671",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E668FE9FE8F642D",
+      "title": "03.03 · Плуг вместо рутины",
+      "subtitle": "Получить 1 плуг Farm & Charm.",
+      "description": [
+        "Что сделать: Получить 1 плуг Farm & Charm.",
+        "",
+        "Зачем: Физическая обработка больших полей; supply cart — дополнительная хозяйственная альтернатива.",
+        "",
+        "Совет: Прицепи плуг предусмотренным способом и опусти его для вспашки. Supply Cart — соседний хозяйственный вариант. Работа и движение плуга не проверяются.",
+        "",
+        "Награда: Освоенный плуг получает комплект для дальнейшей работы и перевозки фермерских грузов.",
+        "",
+        "Рекомендуемый путь: 03.02 · Уход за землёй. Порядок свободный."
+      ],
+      "icon": "farm_and_charm:plow",
+      "x": -3.45,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20DE506F54834D56",
+          "type": "item",
+          "item": "farm_and_charm:plow",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23899955E6AF44C5",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:supply_cart",
+          "count": 1,
+          "claim_key": "H01.03/item/0",
+          "claim_reward_id": "23899955E6AF44C5",
+          "team_reward": false
+        },
+        {
+          "id": "2B4238BE7841C903",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:pitchfork",
+          "count": 1,
+          "claim_key": "H01.03/item/1",
+          "claim_reward_id": "2B4238BE7841C903",
+          "team_reward": false
+        },
+        {
+          "id": "2C3F94E3E81E7704",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2172EBE66FE94C45",
+      "title": "03.04 · Запас зерна",
+      "subtitle": "Получить 4 мешка сухой пшеницы Brewery.",
+      "description": [
+        "Что сделать: Получить 4 мешка сухой пшеницы Brewery.",
+        "",
+        "Зачем: Сушёное зерно для Brewery; вместимость составного силоса.",
+        "",
+        "Совет: Сырьё высушивается в Silo Farm & Charm, но результат принадлежит Brewery. Размер силоса и ход обработки не проверяются.",
+        "",
+        "Награда: Запас сухих зерновых и хранилище полезны следующему урожаю и пивоварению.",
+        "",
+        "Рекомендуемый путь: 03.03 · Плуг вместо рутины. Порядок свободный."
+      ],
+      "icon": "brewery:dried_wheat",
+      "x": 5.3,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A66B0F5BEC888A4",
+          "type": "item",
+          "item": "brewery:dried_wheat",
+          "count": 4,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "296F71158F59F4EA",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:dried_barley",
+          "count": 16,
+          "claim_key": "H01.04/item/0",
+          "claim_reward_id": "296F71158F59F4EA",
+          "team_reward": false
+        },
+        {
+          "id": "28117B96DBDAA704",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:dried_oat",
+          "count": 16,
+          "claim_key": "H01.04/item/1",
+          "claim_reward_id": "28117B96DBDAA704",
+          "team_reward": false
+        },
+        {
+          "id": "245E18EE9BB63B05",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:silo_wood",
+          "count": 1,
+          "claim_key": "H01.04/item/2",
+          "claim_reward_id": "245E18EE9BB63B05",
+          "team_reward": false
+        },
+        {
+          "id": "236A03B408BDDB56",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "204F813010AF4DDC",
+      "title": "03.05 · Сезон под рукой",
+      "subtitle": "Получить 1 календарь Serene Seasons.",
+      "description": [
+        "Что сделать: Получить 1 календарь Serene Seasons.",
+        "",
+        "Зачем: Планирование посадок по действующим тегам JEM.",
+        "",
+        "Совет: Сверяй сезонность культур по текущим подсказкам. Ждать смены сезона или искать растение в заданном сезоне не требуется.",
+        "",
+        "Награда: Календарь сопровождается материалами для теплицы и её оформления; климат по территории не проверяется.",
+        "",
+        "Рекомендуемый путь: 03.01 · Свои семена. Порядок свободный."
+      ],
+      "icon": "sereneseasons:calendar",
+      "x": -7.15,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C982C34A757ADDC",
+          "type": "item",
+          "item": "sereneseasons:calendar",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A06AD1176010626",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:glass",
+          "count": 64,
+          "claim_key": "H01.05/item/0",
+          "claim_reward_id": "2A06AD1176010626",
+          "team_reward": false
+        },
+        {
+          "id": "26727F93474A8954",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:window_sill",
+          "count": 16,
+          "claim_key": "H01.05/item/1",
+          "claim_reward_id": "26727F93474A8954",
+          "team_reward": false
+        },
+        {
+          "id": "26AD887C60B7392A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FF5565C0FB7F336",
+      "title": "03.06 · Стекло для теплицы",
+      "subtitle": "Поставить 8 обычных стеклянных блоков.",
+      "description": [
+        "Что сделать: Поставить 8 обычных стеклянных блоков.",
+        "",
+        "Зачем: Круглогодичное хозяйство; две альтернативы одного задания.",
+        "",
+        "Совет: Serene Seasons использует разрешённое стекло над грядками; отдельного Greenhouse Glass в текущем каталоге нет. Расположение крыши, сезон и рост не оцениваются. Подземный вариант описывается по текущим настройкам.",
+        "",
+        "Награда: После первого стеклянного укрытия — рабочее приспособление и запас для выращивания.",
+        "",
+        "Рекомендуемый путь: 03.05 · Сезон под рукой. Порядок свободный."
+      ],
+      "icon": "minecraft:glass",
+      "x": -5.3,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25DDBE6CFBB95C9B",
+          "type": "custom",
+          "title": "Поставить 8 обычных стеклянных блоков.",
+          "icon": "minecraft:glass",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2774D0AD70C815EA",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:water_sprinkler",
+          "count": 1,
+          "claim_key": "H01.06/item/0",
+          "claim_reward_id": "2774D0AD70C815EA",
+          "team_reward": false
+        },
+        {
+          "id": "2BACE09D026ED57A",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:fertilizer",
+          "count": 32,
+          "claim_key": "H01.06/item/1",
+          "claim_reward_id": "2BACE09D026ED57A",
+          "team_reward": false
+        },
+        {
+          "id": "22F13AD8A13D14D5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AF03B97BF91AD49",
+      "title": "03.07 · Сезонный датчик",
+      "subtitle": "Поставить 1 Season Sensor.",
+      "description": [
+        "Что сделать: Поставить 1 Season Sensor.",
+        "",
+        "Зачем: Сезонная автоматика.",
+        "",
+        "Совет: Подключи датчик к лампе и попробуй настройки. Квест не проверяет сигнал, сезон или работающую цепь.",
+        "",
+        "Награда: Сезонный датчик отмечается хозяйственным оборудованием и хранением инструментов.",
+        "",
+        "Рекомендуемый путь: 03.06 · Стекло для теплицы. Порядок свободный."
+      ],
+      "icon": "sereneseasons:season_sensor",
+      "x": -3.45,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DCD7F70DF441259",
+          "type": "custom",
+          "title": "Поставить 1 Season Sensor.",
+          "icon": "sereneseasons:season_sensor",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26F3F00FB831B205",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:silo_copper",
+          "count": 1,
+          "claim_key": "H01.07/item/0",
+          "claim_reward_id": "26F3F00FB831B205",
+          "team_reward": false
+        },
+        {
+          "id": "2DE8B1D1BCF0D4EB",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:tool_rack",
+          "count": 8,
+          "claim_key": "H01.07/item/1",
+          "claim_reward_id": "2DE8B1D1BCF0D4EB",
+          "team_reward": false
+        },
+        {
+          "id": "22D19B1214B75AC3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20E9AFC311822BDF",
+      "title": "03.08 · Корм для фермы",
+      "subtitle": "Нажать ПКМ подходящим кормом по одному разрешённому фермерскому животному.",
+      "description": [
+        "Что сделать: Нажать ПКМ подходящим кормом по одному разрешённому фермерскому животному.",
+        "",
+        "Зачем: Разведение и кормовая база.",
+        "",
+        "Совет: Для Hampshire существуют дополнительные продукты. Двое взрослых и корм нужны игре для разведения; появление детёныша квест не проверяет.",
+        "",
+        "Награда: Кормления хватает на несколько дальнейших посещений загона."
+      ],
+      "icon": "minecraft:cow_spawn_egg",
+      "x": 2.52,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F6ED9DD33062129",
+          "type": "custom",
+          "title": "Нажать ПКМ подходящим кормом по одному разрешённому фермерскому животному.",
+          "icon": "minecraft:cow_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27D61CA91034DD09",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 24,
+          "claim_key": "H01.08/item/0",
+          "claim_reward_id": "27D61CA91034DD09",
+          "team_reward": false
+        },
+        {
+          "id": "2FF38491EF24DF9C",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_feed",
+          "count": 24,
+          "claim_key": "H01.08/item/1",
+          "claim_reward_id": "2FF38491EF24DF9C",
+          "team_reward": false
+        },
+        {
+          "id": "24571157B5168F32",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24BD6EA74A10FACB",
+      "title": "03.09 · Общая кормушка",
+      "subtitle": "Поставить 1 кормушку Animal Feeding Trough.",
+      "description": [
+        "Что сделать: Поставить 1 кормушку Animal Feeding Trough.",
+        "",
+        "Зачем: Самостоятельное кормление; сбор XP у этой кормушки.",
+        "",
+        "Совет: Загрузи совместимый корм и изучи сбор опыта. Кормление и разведение остаются нативной работой блока. Кормушка Farm & Charm в паке отключена.",
+        "",
+        "Награда: Уход за животными и материал для нормального загона дополняют установленную кормушку.",
+        "",
+        "Рекомендуемый путь: 03.08 · Корм для фермы. Порядок свободный."
+      ],
+      "icon": "animal_feeding_trough:feeding_trough",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "279A5AF1A9F15FC8",
+          "type": "custom",
+          "title": "Поставить 1 кормушку Animal Feeding Trough.",
+          "icon": "animal_feeding_trough:feeding_trough",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C5B4BA59D8132D1",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:enrichment_brush",
+          "count": 1,
+          "claim_key": "H01.09/item/0",
+          "claim_reward_id": "2C5B4BA59D8132D1",
+          "team_reward": false
+        },
+        {
+          "id": "2DAD14D5F4E5DBF9",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:iron_corral_bars",
+          "count": 32,
+          "claim_key": "H01.09/item/1",
+          "claim_reward_id": "2DAD14D5F4E5DBF9",
+          "team_reward": false
+        },
+        {
+          "id": "2996844D67E64471",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "253EBE8EC5230D43",
+      "title": "03.10 · Курятник для хозяйства",
+      "subtitle": "Поставить 1 Chicken Coop Farm & Charm.",
+      "description": [
+        "Что сделать: Поставить 1 Chicken Coop Farm & Charm.",
+        "",
+        "Зачем: Курятник и его реальная логика животных.",
+        "",
+        "Совет: Подведи совместимых кур и изучи взаимодействия. Заселение, время ожидания и производство квест не проверяет.",
+        "",
+        "Награда: Курятник получает большой запас корма и тематическую экипировку Barnyard Buddies.",
+        "",
+        "Рекомендуемый путь: 03.09 · Общая кормушка. Порядок свободный."
+      ],
+      "icon": "farm_and_charm:chicken_coop",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F468AD28302A1CF",
+          "type": "custom",
+          "title": "Поставить 1 Chicken Coop Farm & Charm.",
+          "icon": "farm_and_charm:chicken_coop",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2452F588E293AD30",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_feed",
+          "count": 64,
+          "claim_key": "H01.10/item/0",
+          "claim_reward_id": "2452F588E293AD30",
+          "team_reward": false
+        },
+        {
+          "id": "21DB9A89478594A2",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:silkie_armor_helmet",
+          "count": 1,
+          "claim_key": "H01.10/item/1",
+          "claim_reward_id": "21DB9A89478594A2",
+          "team_reward": false
+        },
+        {
+          "id": "21F3E88A244BEC71",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EA1F30C31C11003",
+      "title": "03.11 · Пятнистая шерсть",
+      "subtitle": "Получить 1 Spotted Wool Barnyard Buddies.",
+      "description": [
+        "Что сделать: Получить 1 Spotted Wool Barnyard Buddies.",
+        "",
+        "Зачем: Уникальные ткани Barnyard; переплёт с оформлением дома.",
+        "",
+        "Совет: Jacob’s Sheep даёт особую шерсть. Из неё можно сделать интерьерный текстиль; способ добычи и оформление дома не оцениваются.",
+        "",
+        "Награда: Уже добытая пятнистая шерсть превращается в полноценный набор для оформления дома.",
+        "",
+        "Рекомендуемый путь: 03.08 · Корм для фермы. Порядок свободный."
+      ],
+      "icon": "barnyardbuddies:spotted_wool",
+      "x": 8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20EAD3A325CC2A88",
+          "type": "item",
+          "item": "barnyardbuddies:spotted_wool",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29DF2A1268739046",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:spotted_wool",
+          "count": 32,
+          "claim_key": "H01.11/item/0",
+          "claim_reward_id": "29DF2A1268739046",
+          "team_reward": false
+        },
+        {
+          "id": "21F29A3B7FA0F4FF",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:spotted_quilt_rug",
+          "count": 16,
+          "claim_key": "H01.11/item/1",
+          "claim_reward_id": "21F29A3B7FA0F4FF",
+          "team_reward": false
+        },
+        {
+          "id": "20C239BD99CE0702",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F4FDAB69E749AC6",
+      "title": "03.12 · Набор для защитника двора",
+      "subtitle": "Получить 1 жилет для собаки и 1 Pet Kibble Barnyard Buddies.",
+      "description": [
+        "Что сделать: Получить 1 жилет для собаки и 1 Pet Kibble Barnyard Buddies.",
+        "",
+        "Зачем: Уход за охранной собакой; реакция на хищников — отдельное наблюдение.",
+        "",
+        "Совет: Great Pyrenees можно приручить, экипировать и лечить. Реальная охрана и ранение питомца не требуются.",
+        "",
+        "Награда: Освоенный уход получает корм, запасной жилет и миски; новый вид питомца наградой не создаётся.",
+        "",
+        "Рекомендуемый путь: 03.11 · Пятнистая шерсть. Порядок свободный."
+      ],
+      "icon": "barnyardbuddies:pyrenees_protective_vest",
+      "x": 5.3,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B78B8ABB4E90EAF",
+          "type": "item",
+          "item": "barnyardbuddies:pyrenees_protective_vest",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28817BE1F490D89E",
+          "type": "item",
+          "item": "barnyardbuddies:pet_kibble",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "230434921FEAB9FC",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:pet_kibble",
+          "count": 32,
+          "claim_key": "H01.12/item/0",
+          "claim_reward_id": "230434921FEAB9FC",
+          "team_reward": false
+        },
+        {
+          "id": "2368B5FF97A82D75",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:pyrenees_protective_vest",
+          "count": 1,
+          "claim_key": "H01.12/item/1",
+          "claim_reward_id": "2368B5FF97A82D75",
+          "team_reward": false
+        },
+        {
+          "id": "2D34D001D5BA7D4B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:pet_bowl",
+          "count": 2,
+          "claim_key": "H01.12/item/2",
+          "claim_reward_id": "2D34D001D5BA7D4B",
+          "team_reward": false
+        },
+        {
+          "id": "268108C3C5C38CF4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BFAA70A5CAE8318",
+      "title": "03.13 · Запас для животных и кухни",
+      "subtitle": "Получить 1 Pet Kibble и 1 муку Farm & Charm.",
+      "description": [
+        "Что сделать: Получить 1 Pet Kibble и 1 муку Farm & Charm.",
+        "",
+        "Зачем: Кухня, напитки и склад получают рабочую ресурсную базу.",
+        "",
+        "Совет: Корм и кулинарные ингредиенты связывают ферму с кухней и хранением. Происхождение урожая и заполнение конкретной кладовой не отслеживаются.",
+        "",
+        "Награда: Практичный запас ингредиента и еды для домашних животных.",
+        "",
+        "Рекомендуемый путь: 03.04 · Запас зерна; 03.08 · Корм для фермы. Порядок свободный."
+      ],
+      "icon": "barnyardbuddies:pet_kibble",
+      "x": -5.3,
+      "y": 9.1,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24E68E42E20985D3",
+          "type": "item",
+          "item": "barnyardbuddies:pet_kibble",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2013AFE886782979",
+          "type": "item",
+          "item": "farm_and_charm:flour",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "284979FE22E7A68B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:flour",
+          "count": 32,
+          "claim_key": "H01.13/item/0",
+          "claim_reward_id": "284979FE22E7A68B",
+          "team_reward": false
+        },
+        {
+          "id": "2B0E5A59A70BCDF1",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:dog_food",
+          "count": 24,
+          "claim_key": "H01.13/item/1",
+          "claim_reward_id": "2B0E5A59A70BCDF1",
+          "team_reward": false
+        },
+        {
+          "id": "293BA6D9D78F7016",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:cat_food",
+          "count": 24,
+          "claim_key": "H01.13/item/2",
+          "claim_reward_id": "293BA6D9D78F7016",
+          "team_reward": false
+        },
+        {
+          "id": "2DE2F1EDAD23A468",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23FB8BBC5FCFCF77",
+      "title": "03.14 · Лес для хозяйства",
+      "subtitle": "Сломать 4 бревна и посадить 1 дубовый саженец.",
+      "description": [
+        "Что сделать: Сломать 4 бревна и посадить 1 дубовый саженец.",
+        "",
+        "Зачем: Лесозаготовка, tree-wide progress и безопасное точечное редактирование.",
+        "",
+        "Совет: TreeChop меняет процесс рубки; Shift позволяет работать точечно. Завершённое падение целого дерева не проверяется.",
+        "",
+        "Награда: Посадка и рубка продолжаются новой древесной палитрой и материалом для строительства."
+      ],
+      "icon": "natures_spirit:cypress_sapling",
+      "x": 5.3,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26C70580882FF26B",
+          "type": "custom",
+          "title": "Сломать 4 бревна и посадить 1 дубовый саженец.",
+          "icon": "natures_spirit:cypress_sapling",
+          "count": 4
+        },
+        {
+          "id": "2979B5F66C513C32",
+          "type": "custom",
+          "title": "Сломать 4 бревна и посадить 1 дубовый саженец.",
+          "icon": "natures_spirit:cypress_sapling",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "296BA45E20A333F1",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_sapling",
+          "count": 8,
+          "claim_key": "H01.14/item/0",
+          "claim_reward_id": "296BA45E20A333F1",
+          "team_reward": false
+        },
+        {
+          "id": "21F2EA2D2BBEF4F2",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_planks",
+          "count": 128,
+          "claim_key": "H01.14/item/1",
+          "claim_reward_id": "21F2EA2D2BBEF4F2",
+          "team_reward": false
+        },
+        {
+          "id": "201AFA8F6097E025",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H01.14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:растения",
+      "order": -5,
+      "hover": [
+        "растения"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:переработка",
+      "order": -5,
+      "hover": [
+        "переработка"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:сезоны",
+      "order": -5,
+      "hover": [
+        "сезоны"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:животные",
+      "order": -5,
+      "hover": [
+        "животные"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:лесное хозяйство",
+      "order": -5,
+      "hover": [
+        "лесное хозяйство"
+      ]
+    }
+  ],
+  "autofocus_id": "29711D8C0283A81D"
+}

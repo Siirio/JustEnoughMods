@@ -1,0 +1,669 @@
+{
+  "id": "272B23D7E343E10D",
+  "filename": "jem_08",
+  "title": "Фото, музыка и маленькие истории",
+  "subtitle": [
+    "Когда: Независимые творческие ветви; кооперация и качество художественного результата не требуются.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "exposure:camera",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 7,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2109213C28DB3BCB",
+      "title": "08.01 · Камера в руках",
+      "subtitle": "Нажать ПКМ в воздухе с Camera Exposure.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Camera Exposure.",
+        "",
+        "Зачем: Физическая фотоплёнка; отличие фотографии от F2.",
+        "",
+        "Совет: Для снимков установи плёнку. ПКМ знакомит с управлением; успешная съёмка и содержимое кадра не являются проверкой.",
+        "",
+        "Награда: Камера сразу обеспечена плёнкой для нескольких самостоятельных фотосессий."
+      ],
+      "icon": "exposure:camera",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B9E6C230F8D3A83",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Camera Exposure.",
+          "icon": "exposure:camera",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "249191CED531CADE",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 8,
+          "claim_key": "H06.01/item/0",
+          "claim_reward_id": "249191CED531CADE",
+          "team_reward": false
+        },
+        {
+          "id": "26845AF11603DFC9",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 4,
+          "claim_key": "H06.01/item/1",
+          "claim_reward_id": "26845AF11603DFC9",
+          "team_reward": false
+        },
+        {
+          "id": "28866666FF12B1B2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22D33BBA9F68298C",
+      "title": "08.02 · От плёнки к отпечатку",
+      "subtitle": "Получить проявленную чёрно-белую плёнку и 1 фотографию Exposure.",
+      "description": [
+        "Что сделать: Получить проявленную чёрно-белую плёнку и 1 фотографию Exposure.",
+        "",
+        "Зачем: Полная цепочка негатив → отпечаток.",
+        "",
+        "Совет: Lightroom превращает отснятый материал в отпечаток. Авторство, цвет изображения и причинная связь этих двух предметов не проверяются.",
+        "",
+        "Награда: Проявленная плёнка и снимок заслуживают собственного оборудования и новой плёнки.",
+        "",
+        "Рекомендуемый путь: 08.01 · Камера в руках. Порядок свободный."
+      ],
+      "icon": "exposure:developed_black_and_white_film",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21C50B40D6D4D601",
+          "type": "item",
+          "item": "exposure:developed_black_and_white_film",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2C959A9F4E4EAC7B",
+          "type": "item",
+          "item": "exposure:photograph",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2430FD0B4FEEE83F",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:lightroom",
+          "count": 1,
+          "claim_key": "H06.02/item/0",
+          "claim_reward_id": "2430FD0B4FEEE83F",
+          "team_reward": false
+        },
+        {
+          "id": "2B5F50E8B9F9EC21",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_black_and_white_film",
+          "count": 8,
+          "claim_key": "H06.02/item/1",
+          "claim_reward_id": "2B5F50E8B9F9EC21",
+          "team_reward": false
+        },
+        {
+          "id": "2C6B95FFC6C6ED74",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C16BE3929950742",
+      "title": "08.04 · Цветная плёнка",
+      "subtitle": "Получить 1 проявленную цветную плёнку Exposure.",
+      "description": [
+        "Что сделать: Получить 1 проявленную цветную плёнку Exposure.",
+        "",
+        "Зачем: Цветной процесс печати.",
+        "",
+        "Совет: Из неё печатаются цветные снимки. Цвет пикселей, число кадров и сам процесс проявки не отслеживаются.",
+        "",
+        "Награда: Освоенная цветная фотография получает материал для дальнейших экспериментов.",
+        "",
+        "Рекомендуемый путь: 08.02 · От плёнки к отпечатку. Порядок свободный."
+      ],
+      "icon": "exposure:developed_color_film",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28DE5E8A7D62EA7E",
+          "type": "item",
+          "item": "exposure:developed_color_film",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D9250D5C4E6544D",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_color_film",
+          "count": 8,
+          "claim_key": "H06.04/item/0",
+          "claim_reward_id": "2D9250D5C4E6544D",
+          "team_reward": false
+        },
+        {
+          "id": "2B38FF9C5707E61B",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 8,
+          "claim_key": "H06.04/item/1",
+          "claim_reward_id": "2B38FF9C5707E61B",
+          "team_reward": false
+        },
+        {
+          "id": "24C347B1F98A217E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CC368B6E0021BE8",
+      "title": "08.05 · Штатив для автопортрета",
+      "subtitle": "Получить 1 Camera Stand Exposure.",
+      "description": [
+        "Что сделать: Получить 1 Camera Stand Exposure.",
+        "",
+        "Зачем: Штатив, автоспуск, портреты; не требует друзей онлайн.",
+        "",
+        "Совет: Поставь штатив, установи камеру и попробуй автоспуск. Для этого предмета не предполагается BlockEvent: появление стойки и содержание кадра не проверяются.",
+        "",
+        "Награда: Штатив сопровождается плёнкой и рамками для серии готовых работ.",
+        "",
+        "Рекомендуемый путь: 08.02 · От плёнки к отпечатку. Порядок свободный."
+      ],
+      "icon": "exposure:camera_stand",
+      "x": -8.07,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "212D56DE851FEE52",
+          "type": "item",
+          "item": "exposure:camera_stand",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "240D0255A26079DD",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 8,
+          "claim_key": "H06.05/item/0",
+          "claim_reward_id": "240D0255A26079DD",
+          "team_reward": false
+        },
+        {
+          "id": "2E6304FB9CA88005",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:glass_photograph_frame",
+          "count": 16,
+          "claim_key": "H06.05/item/1",
+          "claim_reward_id": "2E6304FB9CA88005",
+          "team_reward": false
+        },
+        {
+          "id": "2A8A00973F2698F7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E79FB6D893C857F",
+      "title": "08.07 · Альбом и рамка",
+      "subtitle": "Получить 1 фотоальбом и 1 фоторамку Exposure.",
+      "description": [
+        "Что сделать: Получить 1 фотоальбом и 1 фоторамку Exposure.",
+        "",
+        "Зачем: Альбомы, заметки и физическая домашняя галерея.",
+        "",
+        "Совет: Добавляй снимки и подписи, а любимый отпечаток выставь дома. Число страниц, собственное авторство и размещение экспозиции не проверяются.",
+        "",
+        "Награда: Готовый альбом получает место для большой коллекции, без выдачи пустых псевдофотографий.",
+        "",
+        "Рекомендуемый путь: 08.04 · Цветная плёнка; 08.05 · Штатив для автопортрета. Порядок свободный."
+      ],
+      "icon": "exposure:album",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FE091D18D90E5D1",
+          "type": "item",
+          "item": "exposure:album",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "22452DBF415A753A",
+          "type": "item",
+          "item": "exposure:photograph_frame",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27A5FA58F77C59A1",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:album",
+          "count": 2,
+          "claim_key": "H06.07/item/0",
+          "claim_reward_id": "27A5FA58F77C59A1",
+          "team_reward": false
+        },
+        {
+          "id": "240F978ECF3BEB75",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:photograph_frame",
+          "count": 32,
+          "claim_key": "H06.07/item/1",
+          "claim_reward_id": "240F978ECF3BEB75",
+          "team_reward": false
+        },
+        {
+          "id": "2347E5B514B31BD8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F93C978D3C26542",
+      "title": "08.08 · Состаренный отпечаток",
+      "subtitle": "Получить 1 состаренную фотографию Exposure.",
+      "description": [
+        "Что сделать: Получить 1 состаренную фотографию Exposure.",
+        "",
+        "Зачем: Стилизация снимков; внешний импорт — необязательная возможность.",
+        "",
+        "Совет: Стилизация меняет вид отпечатка. Interplanar Projector описан как дополнительная возможность только для разрешённых сервером источников; внешний импорт не нужен.",
+        "",
+        "Награда: Освоенная состаренная фотография получает запасную камеру для второго фотографа и большую партию плёнки.",
+        "",
+        "Рекомендуемый путь: 08.07 · Альбом и рамка. Порядок свободный."
+      ],
+      "icon": "exposure:aged_photograph",
+      "x": -2.52,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F1B60E5CCD54A2F",
+          "type": "item",
+          "item": "exposure:aged_photograph",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24EA155F2CE2A407",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:camera",
+          "count": 1,
+          "claim_key": "H06.08/item/0",
+          "claim_reward_id": "24EA155F2CE2A407",
+          "team_reward": false
+        },
+        {
+          "id": "27C57B915BDBDE96",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_color_film",
+          "count": 16,
+          "claim_key": "H06.08/item/1",
+          "claim_reward_id": "27C57B915BDBDE96",
+          "team_reward": false
+        },
+        {
+          "id": "2E78C4FDC034A413",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26888A4207561732",
+      "title": "08.09 · Первый инструмент",
+      "subtitle": "Нажать ПКМ в воздухе с флейтой или лютней Immersive Melodies.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с флейтой или лютней Immersive Melodies.",
+        "",
+        "Зачем: Музыкальные инструменты и библиотека мелодий.",
+        "",
+        "Совет: Выбери встроенную мелодию. Длительность, звук и завершение исполнения не проверяются.",
+        "",
+        "Награда: Первое исполнение открывает другой реально играющий инструмент на выбор."
+      ],
+      "icon": "immersive_melodies:flute",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2267373FE40E675D",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с флейтой или лютней Immersive Melodies.",
+          "icon": "immersive_melodies:flute",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "230EB512B34181EC",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:white_cushion",
+          "count": 16,
+          "claim_key": "H06.09/item/0",
+          "claim_reward_id": "230EB512B34181EC",
+          "team_reward": false
+        },
+        {
+          "id": "2D7CC05A972ACDA6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        },
+        {
+          "id": "26604FFC3D0A974E",
+          "type": "choice",
+          "table_id": 2714499338224502179L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "221BD59443ED86CD",
+      "title": "08.10 · Два тембра",
+      "subtitle": "Получить флейту и лютню Immersive Melodies.",
+      "description": [
+        "Что сделать: Получить флейту и лютню Immersive Melodies.",
+        "",
+        "Зачем: Синхронизация; добровольное творчество.",
+        "",
+        "Совет: Попробуй разные тембры. Совместный ансамбль и собственные мелодии доступны по желанию; синхронизация не является условием.",
+        "",
+        "Награда: Коллекция флейты и лютни заслуживает одного полноценного инструмента для домашней сцены.",
+        "",
+        "Рекомендуемый путь: 08.09 · Первый инструмент. Порядок свободный."
+      ],
+      "icon": "immersive_melodies:flute",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20E7FBC70A8F6526",
+          "type": "item",
+          "item": "immersive_melodies:flute",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "22CA36995CF76F43",
+          "type": "item",
+          "item": "immersive_melodies:lute",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2FC87B65C2462F97",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 4,
+          "claim_key": "H06.10/item/0",
+          "claim_reward_id": "2FC87B65C2462F97",
+          "team_reward": false
+        },
+        {
+          "id": "239C36767DB9C51E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        },
+        {
+          "id": "2BD8BB77ACB3B9EB",
+          "type": "choice",
+          "table_id": 3209230277776788357L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F2885CF51A6273C",
+      "title": "08.11 · Кукла — не только блок",
+      "subtitle": "Получить 1 куклу Kaleidoscope Doll.",
+      "description": [
+        "Что сделать: Получить 1 куклу Kaleidoscope Doll.",
+        "",
+        "Зачем: Kaleidoscope Doll: носимые/размещаемые/бросаемые формы.",
+        "",
+        "Совет: У кукол есть размещаемая, носимая и физическая формы. Изучи обычные способы получения и превращения; смена формы не отслеживается.",
+        "",
+        "Награда: Первая кукла получает штатный инструмент настройки и полки для будущей коллекции."
+      ],
+      "icon": "kaleidoscope_doll:custom_doll",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "204822C5AA9B7B6D",
+          "type": "item",
+          "item": "kaleidoscope_doll:custom_doll",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BB04C41A585511C",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_doll:tweaks_tool",
+          "count": 1,
+          "claim_key": "H06.11/item/0",
+          "claim_reward_id": "2BB04C41A585511C",
+          "team_reward": false
+        },
+        {
+          "id": "21DE25F91F6247BF",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_shelf",
+          "count": 16,
+          "claim_key": "H06.11/item/1",
+          "claim_reward_id": "21DE25F91F6247BF",
+          "team_reward": false
+        },
+        {
+          "id": "238B2C2353163C84",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:фотография",
+      "order": -5,
+      "hover": [
+        "фотография"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:музыка",
+      "order": -5,
+      "hover": [
+        "музыка"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:игрушки",
+      "order": -5,
+      "hover": [
+        "игрушки"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:социальное",
+      "order": -5,
+      "hover": [
+        "социальное"
+      ]
+    },
+    {
+      "x": -4.38,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H06.03",
+      "hover": [
+        "08.03 · Свет и кадр: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": -6.22,
+      "y": 3.55,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H06.06",
+      "hover": [
+        "08.06 · Три фильтра — один цвет: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 6.22,
+      "y": 5.4,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H06.12",
+      "hover": [
+        "08.12 · Сцена с куклами: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": -5.3,
+      "y": 7.25,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H06.13",
+      "hover": [
+        "08.13 · Тёплая встреча",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2109213C28DB3BCB"
+}

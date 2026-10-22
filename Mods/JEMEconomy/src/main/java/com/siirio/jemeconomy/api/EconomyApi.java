@@ -302,6 +302,8 @@ public final class EconomyApi {
         buyer.getInventory().setChanged();
         market.recordPurchase(buyer.getServer(), principal.get().accountId(), policy, quantity);
         buyer.containerMenu.broadcastChanges();
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new EconomyOperationEvent(buyer.server, buyer.getUUID(), requestId,
+                EconomyOperationEvent.Kind.MARKET_PURCHASE, delivery));
         return new MarketPurchaseResult(MarketPurchaseStatus.COMMITTED, total, quantity);
     }
 

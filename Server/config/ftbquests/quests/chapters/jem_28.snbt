@@ -1,0 +1,2548 @@
+{
+  "id": "1000000000000005",
+  "filename": "jem_28",
+  "title": "Двенадцать глаз",
+  "subtitle": [
+    "Когда: Только доступная полная кампания. Все её нативные зависимости и правила Start остаются неизменными.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "minecraft:ender_eye",
+  "group": "2ED93FC997095853",
+  "order_index": 27,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2313C9D7E54363CA",
+      "title": "28.01 · Маршрут до выхода",
+      "subtitle": "Получить любой многоразовый указатель Twelve Eyes.",
+      "description": [
+        "Что сделать: Получить любой многоразовый указатель Twelve Eyes.",
+        "",
+        "Зачем: Нативные структуры, подбоссы и подготовка. Указатель не заменяет ключ/ритуал.",
+        "",
+        "Совет: У картографа или нужного торговца найдите указатель и откройте отметку на карте. До похода прочитайте нативные SUB, ключ и активацию. Указатель сам по себе не открывает бой.",
+        "",
+        "Награда: Экспедиционный запас для старта кампании по уже полученному указателю."
+      ],
+      "icon": "jemcompat:boss_locator_ancient_remnant",
+      "x": -0.93,
+      "y": -2.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23C1F04EEF9163F8",
+          "type": "custom",
+          "title": "Получить любой многоразовый указатель Twelve Eyes.",
+          "icon": "jemcompat:boss_locator_ancient_remnant",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28756D8E8E165C5D",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_01/item/0",
+          "claim_reward_id": "28756D8E8E165C5D",
+          "team_reward": false
+        },
+        {
+          "id": "2BE37C735DA0D4B2",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_lantern_arrow",
+          "count": 48,
+          "claim_key": "eyes_01/item/1",
+          "claim_reward_id": "2BE37C735DA0D4B2",
+          "team_reward": false
+        },
+        {
+          "id": "2D3740CD12B85F27",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "eyes_01/item/2",
+          "claim_reward_id": "2D3740CD12B85F27",
+          "team_reward": false
+        },
+        {
+          "id": "22FECEBA7C934CF0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 250,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22CD4D0DB0265E10",
+      "title": "28.03 · Сирок",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Сирок».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Сирок».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Уникальная механика сегментов и Sandworm Gauntlet.",
+        "",
+        "Совет: Найти Sirok, подготовиться к сегментированному телу и атаковать ослабленный сегмент с выходом из ответной зоны. Дополнительных JEM SUB у этой ветки нет; нативная активация и явный Start остаются. Eye и босс-лут выдаёт существующий владелец. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Сирок. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_tracking_arrow",
+      "x": 0.0,
+      "y": 10.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "245EA67EA9CCC26A",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Сирок».",
+          "icon": "xtraarrows:diamond_tracking_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2108F034D37985CB",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_tracking_arrow",
+          "count": 48,
+          "claim_key": "eyes_07/item/0",
+          "claim_reward_id": "2108F034D37985CB",
+          "team_reward": false
+        },
+        {
+          "id": "24AF37C15CD69B98",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:deep_alloy_ingot",
+          "count": 24,
+          "claim_key": "eyes_07/item/1",
+          "claim_reward_id": "24AF37C15CD69B98",
+          "team_reward": false
+        },
+        {
+          "id": "2A7B271D2A6D7EAC",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_07/item/2",
+          "claim_reward_id": "2A7B271D2A6D7EAC",
+          "team_reward": false
+        },
+        {
+          "id": "2CD756A6F62467EA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_07/item/3",
+          "claim_reward_id": "2CD756A6F62467EA",
+          "team_reward": false
+        },
+        {
+          "id": "20A6892668FD5B12",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2A96D55872733399",
+          "type": "choice",
+          "table_id": 3017196769762334127L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_07",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24AE106D3BADB156",
+      "title": "28.04 · Кумулонимбус",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Кумулонимбус».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Кумулонимбус».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Воздушные/грозовые встречи и уникальный лут.",
+        "",
+        "Совет: Найти облачного голема и пройти encounter; следить за точкой телеграфа молнии. Дополнительных JEM SUB у этой ветки нет; нативная активация и явный Start остаются. Eye и босс-лут выдаёт существующий владелец. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Кумулонимбус. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_lightning_arrow",
+      "x": -7.0,
+      "y": 17.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E1DEB17A9DE3BE8",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Кумулонимбус».",
+          "icon": "xtraarrows:diamond_lightning_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2523F5AB8473A221",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_lightning_arrow",
+          "count": 48,
+          "claim_key": "eyes_09/item/0",
+          "claim_reward_id": "2523F5AB8473A221",
+          "team_reward": false
+        },
+        {
+          "id": "22BA08B60A468033",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_ingot",
+          "count": 24,
+          "claim_key": "eyes_09/item/1",
+          "claim_reward_id": "22BA08B60A468033",
+          "team_reward": false
+        },
+        {
+          "id": "25F3EA56FBBBCB52",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_09/item/2",
+          "claim_reward_id": "25F3EA56FBBBCB52",
+          "team_reward": false
+        },
+        {
+          "id": "2D1B63A6C3B81D7D",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_09/item/3",
+          "claim_reward_id": "2D1B63A6C3B81D7D",
+          "team_reward": false
+        },
+        {
+          "id": "23371869A2C740D0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2C21EBA171BB858F",
+          "type": "choice",
+          "table_id": 3133440948566889301L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_09",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AA5255939BBB914",
+      "title": "28.05 · Незеритовая чудовищность",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Незеритовая чудовищность».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Незеритовая чудовищность».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Monstrous-экипировка и инструменты Cataclysm.",
+        "",
+        "Совет: Подготовиться к лаве, пройти Soul Blacksmith и победить босса после Start. Дополнительных JEM SUB у этой ветки нет; нативная активация и явный Start остаются. Eye и босс-лут выдаёт существующий владелец. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Незеритовая чудовищность. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": 0.0,
+      "y": 17.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27556D675ECDE0FE",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Незеритовая чудовищность».",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26909622A08E9DF0",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 48,
+          "claim_key": "eyes_10/item/0",
+          "claim_reward_id": "26909622A08E9DF0",
+          "team_reward": false
+        },
+        {
+          "id": "277596B097649587",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:invulnerite_chunk",
+          "count": 8,
+          "claim_key": "eyes_10/item/1",
+          "claim_reward_id": "277596B097649587",
+          "team_reward": false
+        },
+        {
+          "id": "2A01983073751BF7",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_10/item/2",
+          "claim_reward_id": "2A01983073751BF7",
+          "team_reward": false
+        },
+        {
+          "id": "216646670E93EA79",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_10/item/3",
+          "claim_reward_id": "216646670E93EA79",
+          "team_reward": false
+        },
+        {
+          "id": "250509B6C85391E5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2E851BA9A3A97152",
+          "type": "choice",
+          "table_id": 2782075086060434213L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_10",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C8D7D8B7ECA2F78",
+      "title": "28.06 · Предвестник",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Предвестник».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Предвестник».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Техническая боевая ветка, EMP и механические артефакты.",
+        "",
+        "Совет: Получить Nether Star через Wither; исследовать Ancient Factory, выполнить нативное включение машины и начать бой. Дополнительных JEM SUB у этой ветки нет; нативная активация и явный Start остаются. Eye и босс-лут выдаёт существующий владелец. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Предвестник. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_lightning_arrow",
+      "x": 7.0,
+      "y": 17.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "240A8B18D1044E3A",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Предвестник».",
+          "icon": "xtraarrows:diamond_lightning_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2ED0C6A4F73771AA",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_lightning_arrow",
+          "count": 48,
+          "claim_key": "eyes_11/item/0",
+          "claim_reward_id": "2ED0C6A4F73771AA",
+          "team_reward": false
+        },
+        {
+          "id": "2231D45BBE4F93FA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 8,
+          "claim_key": "eyes_11/item/1",
+          "claim_reward_id": "2231D45BBE4F93FA",
+          "team_reward": false
+        },
+        {
+          "id": "22211D731180598F",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_11/item/2",
+          "claim_reward_id": "22211D731180598F",
+          "team_reward": false
+        },
+        {
+          "id": "264E0FD02EE91DFD",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_11/item/3",
+          "claim_reward_id": "264E0FD02EE91DFD",
+          "team_reward": false
+        },
+        {
+          "id": "2FFE00222FA363B9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "226ECD0B77FB46D2",
+          "type": "choice",
+          "table_id": 2401616076619585090L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_11",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27B036EA27E155F1",
+      "title": "28.07 · Сцилла",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Сцилла».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Сцилла».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Грозовое снаряжение Cataclysm.",
+        "",
+        "Совет: Пройти Acropolis, взаимодействовать с неактивной Scylla (особый предмет для mobInteract не нужен), подтвердить Start и победить. Дополнительных JEM SUB у этой ветки нет; нативная активация и явный Start остаются. Eye и босс-лут выдаёт существующий владелец. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Сцилла. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_atlantean_arrow",
+      "x": -7.0,
+      "y": 24.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "217F5EE25F09087A",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Сцилла».",
+          "icon": "xtraarrows:diamond_atlantean_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EBD4C1D28E33A7B",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 48,
+          "claim_key": "eyes_12/item/0",
+          "claim_reward_id": "2EBD4C1D28E33A7B",
+          "team_reward": false
+        },
+        {
+          "id": "234846C3418EE78D",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:divine_pearl",
+          "count": 16,
+          "claim_key": "eyes_12/item/1",
+          "claim_reward_id": "234846C3418EE78D",
+          "team_reward": false
+        },
+        {
+          "id": "2D32ED81786BE4A7",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_12/item/2",
+          "claim_reward_id": "2D32ED81786BE4A7",
+          "team_reward": false
+        },
+        {
+          "id": "25A424D1D00FE286",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_12/item/3",
+          "claim_reward_id": "25A424D1D00FE286",
+          "team_reward": false
+        },
+        {
+          "id": "2CAA39D8CFCAEF9F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2FD38493CBF8C2DE",
+          "type": "choice",
+          "table_id": 2702337662202249512L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_12",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C830D0D9760F92B",
+      "title": "28.08 · Хельвар",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Хельвар».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Хельвар».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Ключи/испытания/хранилища Bosses’Rise.",
+        "",
+        "Совет: Пройти Underworld dungeon, получить его штатный ключ, открыть доступ и использовать Vulnerable Mark окна во время боя. Дополнительных JEM SUB у этой ветки нет; нативная активация и явный Start остаются. Eye и босс-лут выдаёт существующий владелец. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Хельвар. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_life_steal_arrow",
+      "x": 7.0,
+      "y": 24.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C2BC570AEC55374",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Хельвар».",
+          "icon": "xtraarrows:diamond_life_steal_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "247016FF9DF13775",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 48,
+          "claim_key": "eyes_14/item/0",
+          "claim_reward_id": "247016FF9DF13775",
+          "team_reward": false
+        },
+        {
+          "id": "24A3980CC78E6A22",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 4,
+          "claim_key": "eyes_14/item/1",
+          "claim_reward_id": "24A3980CC78E6A22",
+          "team_reward": false
+        },
+        {
+          "id": "224F6EDE1D29BE2A",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_14/item/2",
+          "claim_reward_id": "224F6EDE1D29BE2A",
+          "team_reward": false
+        },
+        {
+          "id": "299AA407B677CE45",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_14/item/3",
+          "claim_reward_id": "299AA407B677CE45",
+          "team_reward": false
+        },
+        {
+          "id": "24A727F09156500E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2E998BE55588B4D7",
+          "type": "choice",
+          "table_id": 2616132160678323422L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_14",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A5681EEF23A14F0",
+      "title": "28.09 · Страж дюн",
+      "subtitle": "Зафиксировать победу кампании мира: Страж дюн.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Страж дюн.",
+        "",
+        "Зачем: Допуск к ancient_remnant.",
+        "",
+        "Совет: Ищите Стража дюн в пустынях и древних руинах. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_tracking_arrow",
+      "x": -8.85,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21602BE81D59D47B",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Страж дюн.",
+          "icon": "xtraarrows:diamond_tracking_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27A4F407C206CDE2",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_tracking_arrow",
+          "count": 32,
+          "claim_key": "sub_dune_sentinel/item/0",
+          "claim_reward_id": "27A4F407C206CDE2",
+          "team_reward": false
+        },
+        {
+          "id": "2AF68A97EF1D1931",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_dune_sentinel/item/1",
+          "claim_reward_id": "2AF68A97EF1D1931",
+          "team_reward": false
+        },
+        {
+          "id": "2EBD438D2A8C3DF6",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_dune_sentinel/item/2",
+          "claim_reward_id": "2EBD438D2A8C3DF6",
+          "team_reward": false
+        },
+        {
+          "id": "2B59A51BB45213D4",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_dune_sentinel/item/3",
+          "claim_reward_id": "2B59A51BB45213D4",
+          "team_reward": false
+        },
+        {
+          "id": "27A835782B42D11C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_dune_sentinel",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FAC3ED956ED7BCF",
+      "title": "28.10 · Мумия",
+      "subtitle": "Зафиксировать победу кампании мира: Мумия.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Мумия.",
+        "",
+        "Зачем: Допуск к ancient_remnant.",
+        "",
+        "Совет: Ищите Мумию в пустынях и погребённых гробницах. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_life_steal_arrow",
+      "x": -7.0,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AC1F0CB83DDECC9",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Мумия.",
+          "icon": "xtraarrows:diamond_life_steal_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2450411FB406F0FD",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 32,
+          "claim_key": "sub_mummy/item/0",
+          "claim_reward_id": "2450411FB406F0FD",
+          "team_reward": false
+        },
+        {
+          "id": "27C929C31107F9BC",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_mummy/item/1",
+          "claim_reward_id": "27C929C31107F9BC",
+          "team_reward": false
+        },
+        {
+          "id": "261137E83BD42707",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_mummy/item/2",
+          "claim_reward_id": "261137E83BD42707",
+          "team_reward": false
+        },
+        {
+          "id": "2DE1775A3929265B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_mummy/item/3",
+          "claim_reward_id": "2DE1775A3929265B",
+          "team_reward": false
+        },
+        {
+          "id": "2F7494CA0B4BA49D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_mummy",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EDD36590025E6EC",
+      "title": "28.11 · Золотой королевский краб-отшельник",
+      "subtitle": "Зафиксировать победу кампании мира: Золотой королевский краб-отшельник.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Золотой королевский краб-отшельник.",
+        "",
+        "Зачем: Допуск к ancient_remnant.",
+        "",
+        "Совет: Ищите Золотого королевского краба-отшельника на тёплых песчаных берегах и в засушливых землях. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_atlantean_arrow",
+      "x": -5.15,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "250DEF2CAAA35A33",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Золотой королевский краб-отшельник.",
+          "icon": "xtraarrows:diamond_atlantean_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CFCF67B4EB0AA9A",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 32,
+          "claim_key": "sub_golden_hermit_king/item/0",
+          "claim_reward_id": "2CFCF67B4EB0AA9A",
+          "team_reward": false
+        },
+        {
+          "id": "2515CB7D5BE0A524",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_golden_hermit_king/item/1",
+          "claim_reward_id": "2515CB7D5BE0A524",
+          "team_reward": false
+        },
+        {
+          "id": "20D5BBE3BF66D1F7",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_golden_hermit_king/item/2",
+          "claim_reward_id": "20D5BBE3BF66D1F7",
+          "team_reward": false
+        },
+        {
+          "id": "2F696566FDB7267E",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_golden_hermit_king/item/3",
+          "claim_reward_id": "2F696566FDB7267E",
+          "team_reward": false
+        },
+        {
+          "id": "2A062F14AF920D03",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_golden_hermit_king",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "218810E1EE712946",
+      "title": "28.12 · Древний Остаток",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Древний Остаток».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Древний Остаток».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Пустынная археология и артефакты Cataclysm.",
+        "",
+        "Совет: Dune Sentinel + Mummy + Golden Hermit King в любом порядке; затем Cursed Pyramid, археология Necklace of the Desert, нативное пробуждение и Start. Все перечисленные SUB выполняются в любом порядке по нативным правилам. После допуска подтвердите Start. Eye и босс-лут выдаёт нативный владелец; FTB показывает зачёт и не дублирует их. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Древний Остаток. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_tracking_arrow",
+      "x": -7.0,
+      "y": 3.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21DEC6B4D0806CAF",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Древний Остаток».",
+          "icon": "xtraarrows:diamond_tracking_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2861CBFCC0D778F4",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_tracking_arrow",
+          "count": 48,
+          "claim_key": "eyes_03/item/0",
+          "claim_reward_id": "2861CBFCC0D778F4",
+          "team_reward": false
+        },
+        {
+          "id": "226D8F51108393BC",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 8,
+          "claim_key": "eyes_03/item/1",
+          "claim_reward_id": "226D8F51108393BC",
+          "team_reward": false
+        },
+        {
+          "id": "20DE03865A3DD342",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_03/item/2",
+          "claim_reward_id": "20DE03865A3DD342",
+          "team_reward": false
+        },
+        {
+          "id": "28450E44351A5E34",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_03/item/3",
+          "claim_reward_id": "28450E44351A5E34",
+          "team_reward": false
+        },
+        {
+          "id": "2C4B2A85ACD68366",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2D914EBF5FB89343",
+          "type": "choice",
+          "table_id": 3241512167944961757L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_03",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21A90EF5CE6FCB66",
+      "title": "28.13 · Костяной преследователь",
+      "subtitle": "Зафиксировать победу кампании мира: Костяной преследователь.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Костяной преследователь.",
+        "",
+        "Зачем: Допуск к possessed_paladin.",
+        "",
+        "Совет: Ищите Костяного преследователя ночью в тёмных лесах и дикой местности. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": -0.93,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BD41F687556A188",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Костяной преследователь.",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "216BAF07E15F2F28",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 32,
+          "claim_key": "sub_bone_stalker/item/0",
+          "claim_reward_id": "216BAF07E15F2F28",
+          "team_reward": false
+        },
+        {
+          "id": "2E413AE9144C7F3E",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_bone_stalker/item/1",
+          "claim_reward_id": "2E413AE9144C7F3E",
+          "team_reward": false
+        },
+        {
+          "id": "24B3547C4992C1E0",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_bone_stalker/item/2",
+          "claim_reward_id": "24B3547C4992C1E0",
+          "team_reward": false
+        },
+        {
+          "id": "22968CC706FC52EC",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_bone_stalker/item/3",
+          "claim_reward_id": "22968CC706FC52EC",
+          "team_reward": false
+        },
+        {
+          "id": "2E9100F535C12785",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_bone_stalker",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "213B1AC0F4835B40",
+      "title": "28.14 · Заросший колосс",
+      "subtitle": "Зафиксировать победу кампании мира: Заросший колосс.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Заросший колосс.",
+        "",
+        "Зачем: Допуск к possessed_paladin.",
+        "",
+        "Совет: Ищите Заросшего колосса в густой зелёной глуши и древних заросших руинах. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_gravity_arrow",
+      "x": 0.93,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "279B539E33758B6E",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Заросший колосс.",
+          "icon": "xtraarrows:diamond_gravity_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2524BAC5FB7B6275",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_gravity_arrow",
+          "count": 32,
+          "claim_key": "sub_overgrown_colossus/item/0",
+          "claim_reward_id": "2524BAC5FB7B6275",
+          "team_reward": false
+        },
+        {
+          "id": "2C4E8903441CABC1",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_overgrown_colossus/item/1",
+          "claim_reward_id": "2C4E8903441CABC1",
+          "team_reward": false
+        },
+        {
+          "id": "28160B65F9C44710",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_overgrown_colossus/item/2",
+          "claim_reward_id": "28160B65F9C44710",
+          "team_reward": false
+        },
+        {
+          "id": "21F122C807EE1318",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_overgrown_colossus/item/3",
+          "claim_reward_id": "21F122C807EE1318",
+          "team_reward": false
+        },
+        {
+          "id": "26D1EAB8CF0F3A09",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_overgrown_colossus",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2849470DBE7F0ADD",
+      "title": "28.15 · Одержимый паладин",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Одержимый паладин».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Одержимый паладин».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Лесные/руинные встречи, оружие паладина.",
+        "",
+        "Совет: Bone Stalker + Overgrown Colossus, затем найти Paladin и пройти доступный encounter. Ancient Guardian НЕ нужен. Все перечисленные SUB выполняются в любом порядке по нативным правилам. После допуска подтвердите Start. Eye и босс-лут выдаёт нативный владелец; FTB показывает зачёт и не дублирует их. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Одержимый паладин. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_life_steal_arrow",
+      "x": 0.0,
+      "y": 3.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "235E2E9647AD837B",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Одержимый паладин».",
+          "icon": "xtraarrows:diamond_life_steal_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "225B08A9ED3E9726",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 48,
+          "claim_key": "eyes_04/item/0",
+          "claim_reward_id": "225B08A9ED3E9726",
+          "team_reward": false
+        },
+        {
+          "id": "25D8DADD67239273",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_ingot",
+          "count": 24,
+          "claim_key": "eyes_04/item/1",
+          "claim_reward_id": "25D8DADD67239273",
+          "team_reward": false
+        },
+        {
+          "id": "2F630DF2282A9678",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_04/item/2",
+          "claim_reward_id": "2F630DF2282A9678",
+          "team_reward": false
+        },
+        {
+          "id": "29DF79384686453F",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_04/item/3",
+          "claim_reward_id": "29DF79384686453F",
+          "team_reward": false
+        },
+        {
+          "id": "23422BE872F9CA47",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2B49FC6B16238CA3",
+          "type": "choice",
+          "table_id": 3094420619088949232L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_04",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B7A06C67BBF1411",
+      "title": "28.16 · Призрак капитана Корнелии",
+      "subtitle": "Зафиксировать победу кампании мира: Призрак капитана Корнелии.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Призрак капитана Корнелии.",
+        "",
+        "Зачем: Допуск к leviathan.",
+        "",
+        "Совет: Завершить маршрут Aquamirae до победы над Captain Cornelia; здесь показать уже существующий канонический зачёт. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_atlantean_arrow",
+      "x": 6.08,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "257A63672EEA3101",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Призрак капитана Корнелии.",
+          "icon": "xtraarrows:diamond_atlantean_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21FB5FC4F930DF3C",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 32,
+          "claim_key": "sub_captain_cornelia/item/0",
+          "claim_reward_id": "21FB5FC4F930DF3C",
+          "team_reward": false
+        },
+        {
+          "id": "223E415258CE59D7",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:invisibility_elixir",
+          "count": 8,
+          "claim_key": "sub_captain_cornelia/item/1",
+          "claim_reward_id": "223E415258CE59D7",
+          "team_reward": false
+        },
+        {
+          "id": "245B461910150B70",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_captain_cornelia/item/2",
+          "claim_reward_id": "245B461910150B70",
+          "team_reward": false
+        },
+        {
+          "id": "259A9FC6140487CF",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_captain_cornelia/item/3",
+          "claim_reward_id": "259A9FC6140487CF",
+          "team_reward": false
+        },
+        {
+          "id": "23DD62CF3B829A1E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_captain_cornelia",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21F1097FF2E307A1",
+      "title": "28.17 · Морская гадюка",
+      "subtitle": "Зафиксировать победу кампании мира: Морская гадюка.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Морская гадюка.",
+        "",
+        "Зачем: Допуск к leviathan.",
+        "",
+        "Совет: Ищите Морскую гадюку в открытом океане и прибрежных водах. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_atlantean_arrow",
+      "x": 7.92,
+      "y": 1.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2309CEC64DDD94E3",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Морская гадюка.",
+          "icon": "xtraarrows:diamond_atlantean_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "205CC705BF0B481C",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 32,
+          "claim_key": "sub_sea_viper/item/0",
+          "claim_reward_id": "205CC705BF0B481C",
+          "team_reward": false
+        },
+        {
+          "id": "26B1F65CAA6B35AE",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_sea_viper/item/1",
+          "claim_reward_id": "26B1F65CAA6B35AE",
+          "team_reward": false
+        },
+        {
+          "id": "2CAC759A2C066391",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_sea_viper/item/2",
+          "claim_reward_id": "2CAC759A2C066391",
+          "team_reward": false
+        },
+        {
+          "id": "23C4FEBEB82A40A8",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_sea_viper/item/3",
+          "claim_reward_id": "23C4FEBEB82A40A8",
+          "team_reward": false
+        },
+        {
+          "id": "2A17E0791877805F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_sea_viper",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "236DCA631B54C70D",
+      "title": "28.18 · Левиафан",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Левиафан».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Левиафан».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Подводный бой и снаряжение Cataclysm.",
+        "",
+        "Совет: Captain Cornelia + Sea Viper в любом порядке; затем Sunken City, Abyssal Sacrifice на Altar of Abyss, подводная подготовка и Start. Все перечисленные SUB выполняются в любом порядке по нативным правилам. После допуска подтвердите Start. Eye и босс-лут выдаёт нативный владелец; FTB показывает зачёт и не дублирует их. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Левиафан. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_atlantean_arrow",
+      "x": 7.0,
+      "y": 3.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25FEEED9B27CF184",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Левиафан».",
+          "icon": "xtraarrows:diamond_atlantean_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27F65B21B09F1F74",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 48,
+          "claim_key": "eyes_05/item/0",
+          "claim_reward_id": "27F65B21B09F1F74",
+          "team_reward": false
+        },
+        {
+          "id": "275B93F0B23440C2",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:divine_pearl",
+          "count": 16,
+          "claim_key": "eyes_05/item/1",
+          "claim_reward_id": "275B93F0B23440C2",
+          "team_reward": false
+        },
+        {
+          "id": "2F706BD59D354015",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_05/item/2",
+          "claim_reward_id": "2F706BD59D354015",
+          "team_reward": false
+        },
+        {
+          "id": "20C1DA276DE6E02F",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_05/item/3",
+          "claim_reward_id": "20C1DA276DE6E02F",
+          "team_reward": false
+        },
+        {
+          "id": "2EBD976AF61D83B9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "23734FE809E0C028",
+          "type": "choice",
+          "table_id": 2874229108276737210L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_05",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E25E496F86E96FF",
+      "title": "28.19 · Скор",
+      "subtitle": "Зафиксировать победу кампании мира: Скор.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Скор.",
+        "",
+        "Зачем: Допуск к maledictus.",
+        "",
+        "Совет: Ищите Скора в снежных горах и скрытом логове Йети. Компас природы поможет найти горы. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_life_steal_arrow",
+      "x": -8.85,
+      "y": 8.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2781C24DB43A83C2",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Скор.",
+          "icon": "xtraarrows:diamond_life_steal_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20747BE07FE3E50E",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 32,
+          "claim_key": "sub_skor/item/0",
+          "claim_reward_id": "20747BE07FE3E50E",
+          "team_reward": false
+        },
+        {
+          "id": "2BCC55EC4542ED8C",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_skor/item/1",
+          "claim_reward_id": "2BCC55EC4542ED8C",
+          "team_reward": false
+        },
+        {
+          "id": "2853B907FE95C128",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_skor/item/2",
+          "claim_reward_id": "2853B907FE95C128",
+          "team_reward": false
+        },
+        {
+          "id": "2BD8202D015BEE11",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_skor/item/3",
+          "claim_reward_id": "2BD8202D015BEE11",
+          "team_reward": false
+        },
+        {
+          "id": "2E91933CADD56EEA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_skor",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2255EA3FACA3D02E",
+      "title": "28.20 · Обмороженный голем",
+      "subtitle": "Зафиксировать победу кампании мира: Обмороженный голем.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Обмороженный голем.",
+        "",
+        "Зачем: Допуск к maledictus.",
+        "",
+        "Совет: Ищите Обмороженного голема в снежных землях и замёрзших храмах. Компас природы поможет найти подходящий климат. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_lightning_arrow",
+      "x": -7.0,
+      "y": 8.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C1F2E9075ADCBCA",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Обмороженный голем.",
+          "icon": "xtraarrows:diamond_lightning_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C9C87237F19861E",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_lightning_arrow",
+          "count": 32,
+          "claim_key": "sub_frostbitten_golem/item/0",
+          "claim_reward_id": "2C9C87237F19861E",
+          "team_reward": false
+        },
+        {
+          "id": "2C27807F0C8B9CB0",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_frostbitten_golem/item/1",
+          "claim_reward_id": "2C27807F0C8B9CB0",
+          "team_reward": false
+        },
+        {
+          "id": "237F39DFEE7BB234",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_frostbitten_golem/item/2",
+          "claim_reward_id": "237F39DFEE7BB234",
+          "team_reward": false
+        },
+        {
+          "id": "26E0552D5B9CE42E",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_frostbitten_golem/item/3",
+          "claim_reward_id": "26E0552D5B9CE42E",
+          "team_reward": false
+        },
+        {
+          "id": "2CD871DB31A3B79A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_frostbitten_golem",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22772DB16B8320F2",
+      "title": "28.21 · Йети",
+      "subtitle": "Зафиксировать победу кампании мира: Йети.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Йети.",
+        "",
+        "Зачем: Допуск к maledictus.",
+        "",
+        "Совет: Ищите Йети в снежной глуши. Компас природы поможет найти подходящий климат. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_tracking_arrow",
+      "x": -5.15,
+      "y": 8.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "219D8DB583FE1172",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Йети.",
+          "icon": "xtraarrows:diamond_tracking_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A8CB4140CF550D9",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_tracking_arrow",
+          "count": 32,
+          "claim_key": "sub_yeti/item/0",
+          "claim_reward_id": "2A8CB4140CF550D9",
+          "team_reward": false
+        },
+        {
+          "id": "25151C158E516B63",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_yeti/item/1",
+          "claim_reward_id": "25151C158E516B63",
+          "team_reward": false
+        },
+        {
+          "id": "27A5703033145305",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_yeti/item/2",
+          "claim_reward_id": "27A5703033145305",
+          "team_reward": false
+        },
+        {
+          "id": "25E6A9B27FC0EB11",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_yeti/item/3",
+          "claim_reward_id": "25E6A9B27FC0EB11",
+          "team_reward": false
+        },
+        {
+          "id": "2A50F6344A56C36B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_yeti",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2948A2BF4B41669D",
+      "title": "28.22 · Маледиктус",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Маледиктус».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Маледиктус».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Ледяные сражения и Cursium-ветка.",
+        "",
+        "Совет: Skor (Bosses’Rise), Frostbitten Golem, Yeti (Luminous Beasts), затем Frosted Prison. Все перечисленные SUB выполняются в любом порядке по нативным правилам. После допуска подтвердите Start. Eye и босс-лут выдаёт нативный владелец; FTB показывает зачёт и не дублирует их. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Маледиктус. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": -7.0,
+      "y": 10.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C67EEFA12526424",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Маледиктус».",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23B56BA6D668D892",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 48,
+          "claim_key": "eyes_06/item/0",
+          "claim_reward_id": "23B56BA6D668D892",
+          "team_reward": false
+        },
+        {
+          "id": "29201B629F3204A3",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 3,
+          "claim_key": "eyes_06/item/1",
+          "claim_reward_id": "29201B629F3204A3",
+          "team_reward": false
+        },
+        {
+          "id": "2E5DD9FA5C877AEC",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_06/item/2",
+          "claim_reward_id": "2E5DD9FA5C877AEC",
+          "team_reward": false
+        },
+        {
+          "id": "29916EC79E40522C",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_06/item/3",
+          "claim_reward_id": "29916EC79E40522C",
+          "team_reward": false
+        },
+        {
+          "id": "2F592608936111FA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "252570CCFA78BCFB",
+          "type": "choice",
+          "table_id": 2404374383461487928L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_06",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "223CA8EFBBA536D5",
+      "title": "28.23 · Иссохшая мерзость",
+      "subtitle": "Зафиксировать победу кампании мира: Иссохшая мерзость.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Иссохшая мерзость.",
+        "",
+        "Зачем: Допуск к infernal_dragon.",
+        "",
+        "Совет: Ищите Иссохшую мерзость среди долин душ и разрушенных крепостей Незера. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": -2.78,
+      "y": 22.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23848649FAB1794F",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Иссохшая мерзость.",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27C34182C2845ACD",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 32,
+          "claim_key": "sub_withered_abomination/item/0",
+          "claim_reward_id": "27C34182C2845ACD",
+          "team_reward": false
+        },
+        {
+          "id": "292C30237CB43CD8",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_withered_abomination/item/1",
+          "claim_reward_id": "292C30237CB43CD8",
+          "team_reward": false
+        },
+        {
+          "id": "2D31322B290C82FF",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_withered_abomination/item/2",
+          "claim_reward_id": "2D31322B290C82FF",
+          "team_reward": false
+        },
+        {
+          "id": "25C6E16289FA6362",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_withered_abomination/item/3",
+          "claim_reward_id": "25C6E16289FA6362",
+          "team_reward": false
+        },
+        {
+          "id": "29F761EA1B7D22DC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_withered_abomination",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21CF6492A05516DA",
+      "title": "28.24 · Пожиратель лавы",
+      "subtitle": "Зафиксировать победу кампании мира: Пожиратель лавы.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Пожиратель лавы.",
+        "",
+        "Зачем: Допуск к infernal_dragon.",
+        "",
+        "Совет: Ищите Пожирателя лавы в самых жарких лавовых регионах Незера. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": -0.93,
+      "y": 22.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "298F66F22C56497F",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Пожиратель лавы.",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A60EC748E943862",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 32,
+          "claim_key": "sub_lava_eater/item/0",
+          "claim_reward_id": "2A60EC748E943862",
+          "team_reward": false
+        },
+        {
+          "id": "2E827D718E0BCBF8",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_lava_eater/item/1",
+          "claim_reward_id": "2E827D718E0BCBF8",
+          "team_reward": false
+        },
+        {
+          "id": "20354CCBA98A48F6",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_lava_eater/item/2",
+          "claim_reward_id": "20354CCBA98A48F6",
+          "team_reward": false
+        },
+        {
+          "id": "28CB521D623E5CC2",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_lava_eater/item/3",
+          "claim_reward_id": "28CB521D623E5CC2",
+          "team_reward": false
+        },
+        {
+          "id": "2041DB7F0C78E700",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_lava_eater",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BE6B4F6519409D8",
+      "title": "28.25 · Палач пиглинов",
+      "subtitle": "Зафиксировать победу кампании мира: Палач пиглинов.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Палач пиглинов.",
+        "",
+        "Зачем: Допуск к infernal_dragon.",
+        "",
+        "Совет: Ищите Палача пиглинов на территориях пиглинов и в звериных ямах Незера. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_gravity_arrow",
+      "x": 0.93,
+      "y": 22.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B6DC8DB2FE6D1E0",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Палач пиглинов.",
+          "icon": "xtraarrows:diamond_gravity_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D992C4741AC8241",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_gravity_arrow",
+          "count": 32,
+          "claim_key": "sub_piglin_executioner/item/0",
+          "claim_reward_id": "2D992C4741AC8241",
+          "team_reward": false
+        },
+        {
+          "id": "217D8A48100FAC31",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_piglin_executioner/item/1",
+          "claim_reward_id": "217D8A48100FAC31",
+          "team_reward": false
+        },
+        {
+          "id": "2BC636A274D682AB",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_piglin_executioner/item/2",
+          "claim_reward_id": "2BC636A274D682AB",
+          "team_reward": false
+        },
+        {
+          "id": "288477FA29D6AF55",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_piglin_executioner/item/3",
+          "claim_reward_id": "288477FA29D6AF55",
+          "team_reward": false
+        },
+        {
+          "id": "2E304BB9C382F02D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_piglin_executioner",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F1ACEB54C7AC8E6",
+      "title": "28.26 · Печь",
+      "subtitle": "Зафиксировать победу кампании мира: Печь.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Печь.",
+        "",
+        "Зачем: Допуск к infernal_dragon.",
+        "",
+        "Совет: Ищите Печь в выжженных регионах Незера. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": 2.78,
+      "y": 22.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C6174531AA87C0E",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Печь.",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "278F7136565BBDB8",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 32,
+          "claim_key": "sub_furnace/item/0",
+          "claim_reward_id": "278F7136565BBDB8",
+          "team_reward": false
+        },
+        {
+          "id": "255C9359AF7243F9",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_oakskin_elixir",
+          "count": 8,
+          "claim_key": "sub_furnace/item/1",
+          "claim_reward_id": "255C9359AF7243F9",
+          "team_reward": false
+        },
+        {
+          "id": "21BF0B02DA103DFD",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_furnace/item/2",
+          "claim_reward_id": "21BF0B02DA103DFD",
+          "team_reward": false
+        },
+        {
+          "id": "20C842B521E4AACC",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_furnace/item/3",
+          "claim_reward_id": "20C842B521E4AACC",
+          "team_reward": false
+        },
+        {
+          "id": "28483DE8E721B5C9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_furnace",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D9B98422BD1BD72",
+      "title": "28.27 · Эшлорд / Адский дракон",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Эшлорд / Адский дракон».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Эшлорд / Адский дракон».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Dragon Armor и многофазный бой Bosses’Rise.",
+        "",
+        "Совет: В Незере: Withered Abomination, Lava Eater, luminous_beasts:Piglin Executioner и luminous_beasts:The Furnace; затем Ashlord в Верхнем мире. Все перечисленные SUB выполняются в любом порядке по нативным правилам. После допуска подтвердите Start. Eye и босс-лут выдаёт нативный владелец; FTB показывает зачёт и не дублирует их. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Эшлорд / Адский дракон. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_freezing_arrow",
+      "x": 0.0,
+      "y": 24.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21D27218722AD559",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Эшлорд / Адский дракон».",
+          "icon": "xtraarrows:diamond_freezing_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28ED6DF5BA7137B2",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 48,
+          "claim_key": "eyes_13/item/0",
+          "claim_reward_id": "28ED6DF5BA7137B2",
+          "team_reward": false
+        },
+        {
+          "id": "25E17EC532EA5290",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 4,
+          "claim_key": "eyes_13/item/1",
+          "claim_reward_id": "25E17EC532EA5290",
+          "team_reward": false
+        },
+        {
+          "id": "2BFC853F59A3C303",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_13/item/2",
+          "claim_reward_id": "2BFC853F59A3C303",
+          "team_reward": false
+        },
+        {
+          "id": "2DEC4121CDDCDA9E",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_13/item/3",
+          "claim_reward_id": "2DEC4121CDDCDA9E",
+          "team_reward": false
+        },
+        {
+          "id": "231AC985E75A7D53",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "24F362CE7C697D52",
+          "type": "choice",
+          "table_id": 3282344346424696636L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_13",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21635F816C2944B8",
+      "title": "28.28 · Скелетозавр",
+      "subtitle": "Зафиксировать победу кампании мира: Скелетозавр.",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира: Скелетозавр.",
+        "",
+        "Зачем: Допуск к luxtructosaurus.",
+        "",
+        "Совет: Ищите Скелетозавра в долинах песка душ и древних гнёздах Незера. Подготовить подходящее снаряжение, выполнить доступные нативные условия встречи, подтвердить Start и получить канонический зачёт победы. FTB читает уже накопленный мировой зачёт; повторное убийство для этой карточки не требуется. Этот флаг не доказывает личное участие или право на нативный трофей.",
+        "",
+        "Награда: Пройденный этап мировой кампании даёт полный комплект сильных боеприпасов, алхимии, чернил и еды."
+      ],
+      "icon": "xtraarrows:diamond_explosive_arrow",
+      "x": 7.0,
+      "y": 8.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23870D069459B839",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира: Скелетозавр.",
+          "icon": "xtraarrows:diamond_explosive_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B6051E914058B0D",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_explosive_arrow",
+          "count": 32,
+          "claim_key": "sub_skeletosaurus/item/0",
+          "claim_reward_id": "2B6051E914058B0D",
+          "team_reward": false
+        },
+        {
+          "id": "271386648DC60A05",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 8,
+          "claim_key": "sub_skeletosaurus/item/1",
+          "claim_reward_id": "271386648DC60A05",
+          "team_reward": false
+        },
+        {
+          "id": "294C70EC57E80149",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 8,
+          "claim_key": "sub_skeletosaurus/item/2",
+          "claim_reward_id": "294C70EC57E80149",
+          "team_reward": false
+        },
+        {
+          "id": "29D0430F42559002",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sub_skeletosaurus/item/3",
+          "claim_reward_id": "29D0430F42559002",
+          "team_reward": false
+        },
+        {
+          "id": "2E5DF54CC595D7D5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sub_skeletosaurus",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25678D24282BAD6E",
+      "title": "28.29 · Люкструктозавр",
+      "subtitle": "Зафиксировать победу кампании мира над боссом «Люкструктозавр».",
+      "description": [
+        "Что сделать: Зафиксировать победу кампании мира над боссом «Люкструктозавр».",
+        "",
+        "Зачем: Одна из 12 мировых вех; Вулканическая ветка Alex’s Caves и Tectonic Shard.",
+        "",
+        "Совет: Сначала Skeletosaurus в Незере; затем Primordial Caves и нативный Ominous Catalyst у действующего Volcanic Core. Все перечисленные SUB выполняются в любом порядке по нативным правилам. После допуска подтвердите Start. Eye и босс-лут выдаёт нативный владелец; FTB показывает зачёт и не дублирует их. Это мировая веха, а не доказательство личного участия: индивидуальную выдачу Eye и трофеев определяет нативная кампания.",
+        "",
+        "Награда: Мировая победа: Люкструктозавр. Один ценный полезный приз на выбор, редкие материалы и запас на следующую встречу."
+      ],
+      "icon": "xtraarrows:diamond_explosive_arrow",
+      "x": 7.0,
+      "y": 10.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C1E486DF0ED1C69",
+          "type": "custom",
+          "title": "Зафиксировать победу кампании мира над боссом «Люкструктозавр».",
+          "icon": "xtraarrows:diamond_explosive_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24CBE96C8C51D5D3",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_explosive_arrow",
+          "count": 48,
+          "claim_key": "eyes_08/item/0",
+          "claim_reward_id": "24CBE96C8C51D5D3",
+          "team_reward": false
+        },
+        {
+          "id": "2E23F99A329EA046",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 4,
+          "claim_key": "eyes_08/item/1",
+          "claim_reward_id": "2E23F99A329EA046",
+          "team_reward": false
+        },
+        {
+          "id": "2239930D1CD455D7",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "eyes_08/item/2",
+          "claim_reward_id": "2239930D1CD455D7",
+          "team_reward": false
+        },
+        {
+          "id": "289FC58F8952E002",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 6,
+          "claim_key": "eyes_08/item/3",
+          "claim_reward_id": "289FC58F8952E002",
+          "team_reward": false
+        },
+        {
+          "id": "22C8EB9E49AD3FAF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 900,
+          "team_reward": false
+        },
+        {
+          "id": "2382EA14B88E5BFB",
+          "type": "choice",
+          "table_id": 2969467648840723720L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_08",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "1100000000000045",
+      "title": "28.30 · Все двенадцать",
+      "subtitle": "Зафиксировать завершение всех исходных 12 MAIN в кампании мира.",
+      "description": [
+        "Что сделать: Зафиксировать завершение всех исходных 12 MAIN в кампании мира.",
+        "",
+        "Зачем: Доступ в Энд; обычные Ender Eyes служат указателем и не доказывают завершение.",
+        "",
+        "Совет: Исходные двенадцать веток обязательны; все их зависимости и выдачу Eyes проверяет сама кампания. Затем активируйте End Portal по её действующим правилам. Обычные Ender Eyes не заменяют этот прогресс.",
+        "",
+        "Награда: Финал всех 12 MAIN: улучшенный беспроводной терминал, крупный запас редких материалов и ещё один полезный редкий приз на выбор."
+      ],
+      "icon": "toms_storage:ts.adv_wireless_terminal",
+      "x": 0.0,
+      "y": 30.7,
+      "shape": "diamond",
+      "size": 1.25,
+      "tasks": [
+        {
+          "id": "1110000000000045",
+          "type": "custom",
+          "title": "Зафиксировать завершение всех исходных 12 MAIN в кампании мира.",
+          "icon": "toms_storage:ts.adv_wireless_terminal",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2566EA246084A102",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.adv_wireless_terminal",
+          "count": 1,
+          "claim_key": "eyes_15/item/0",
+          "claim_reward_id": "2566EA246084A102",
+          "team_reward": false
+        },
+        {
+          "id": "2ABF44BD02CECDBA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 8,
+          "claim_key": "eyes_15/item/1",
+          "claim_reward_id": "2ABF44BD02CECDBA",
+          "team_reward": false
+        },
+        {
+          "id": "2D91FEDAA6099B26",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_ingot",
+          "count": 48,
+          "claim_key": "eyes_15/item/2",
+          "claim_reward_id": "2D91FEDAA6099B26",
+          "team_reward": false
+        },
+        {
+          "id": "2432486D51D37B62",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:deep_alloy_ingot",
+          "count": 48,
+          "claim_key": "eyes_15/item/3",
+          "claim_reward_id": "2432486D51D37B62",
+          "team_reward": false
+        },
+        {
+          "id": "21FBD1720660A1DF",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 16,
+          "claim_key": "eyes_15/item/4",
+          "claim_reward_id": "21FBD1720660A1DF",
+          "team_reward": false
+        },
+        {
+          "id": "292F9935341D1A96",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 32,
+          "claim_key": "eyes_15/item/5",
+          "claim_reward_id": "292F9935341D1A96",
+          "team_reward": false
+        },
+        {
+          "id": "2E496C7BEA6083FE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 3000,
+          "team_reward": false
+        },
+        {
+          "id": "20815BD74388D4F5",
+          "type": "choice",
+          "table_id": 2309384496320682952L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "eyes_15",
+      "jem_required_mods": [
+        "jem_twelve_eyes"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": -4.5,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Кампания мира: пути свободны",
+      "order": -5,
+      "hover": [
+        "Кампания мира: пути свободны"
+      ]
+    },
+    {
+      "x": -7.0,
+      "y": 0.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Древний Остаток",
+      "order": -5,
+      "hover": [
+        "Древний Остаток"
+      ]
+    },
+    {
+      "x": 0.0,
+      "y": 0.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Одержимый паладин",
+      "order": -5,
+      "hover": [
+        "Одержимый паладин"
+      ]
+    },
+    {
+      "x": 7.0,
+      "y": 0.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Левиафан",
+      "order": -5,
+      "hover": [
+        "Левиафан"
+      ]
+    },
+    {
+      "x": -7.0,
+      "y": 7.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Маледиктус",
+      "order": -5,
+      "hover": [
+        "Маледиктус"
+      ]
+    },
+    {
+      "x": 0.0,
+      "y": 7.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Сирок",
+      "order": -5,
+      "hover": [
+        "Сирок"
+      ]
+    },
+    {
+      "x": 7.0,
+      "y": 7.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Люкструктозавр",
+      "order": -5,
+      "hover": [
+        "Люкструктозавр"
+      ]
+    },
+    {
+      "x": -7.0,
+      "y": 14.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Кумулонимбус",
+      "order": -5,
+      "hover": [
+        "Кумулонимбус"
+      ]
+    },
+    {
+      "x": 0.0,
+      "y": 14.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Незеритовая чудовищность",
+      "order": -5,
+      "hover": [
+        "Незеритовая чудовищность"
+      ]
+    },
+    {
+      "x": 7.0,
+      "y": 14.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Предвестник",
+      "order": -5,
+      "hover": [
+        "Предвестник"
+      ]
+    },
+    {
+      "x": -7.0,
+      "y": 21.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Сцилла",
+      "order": -5,
+      "hover": [
+        "Сцилла"
+      ]
+    },
+    {
+      "x": 0.0,
+      "y": 21.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Эшлорд / Адский дракон",
+      "order": -5,
+      "hover": [
+        "Эшлорд / Адский дракон"
+      ]
+    },
+    {
+      "x": 7.0,
+      "y": 21.0,
+      "width": 6.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Хельвар",
+      "order": -5,
+      "hover": [
+        "Хельвар"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 29,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Двенадцать побед мира",
+      "order": -5,
+      "hover": [
+        "Двенадцать побед мира"
+      ]
+    },
+    {
+      "x": 0.93,
+      "y": -2.8,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:eyes_02",
+      "hover": [
+        "28.02 · Начать осознанно",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2313C9D7E54363CA"
+}

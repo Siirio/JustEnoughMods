@@ -1,0 +1,1238 @@
+{
+  "id": "2AF22E408691796E",
+  "filename": "jem_05",
+  "title": "Виноградник, чайная и таверна",
+  "subtitle": [
+    "Когда: Ветки независимы; поздние станции требуют обычных игровых материалов.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "vinery:red_wine",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 4,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "281E5341600445EF",
+      "title": "05.01 · Настоящие лозы",
+      "subtitle": "Получить 4 винограда Vinery.",
+      "description": [
+        "Что сделать: Получить 4 винограда Vinery.",
+        "",
+        "Зачем: Виноградник и региональные сорта без восьми одинаковых квестов.",
+        "",
+        "Совет: Используй подходящую опору; климатические сорта можно искать или покупать у винодела. Процесс роста и регион происхождения не проверяются.",
+        "",
+        "Награда: Посадочный материал и тара позволяют превратить первые ягоды в виноградник."
+      ],
+      "icon": "vinery:jungle_grapes_red",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20F79E4E5D8B1D94",
+          "type": "custom",
+          "title": "Получить 4 винограда Vinery.",
+          "icon": "vinery:jungle_grapes_red",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C971F8F30064CFA",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:red_grape_seeds",
+          "count": 16,
+          "claim_key": "H03.01/item/0",
+          "claim_reward_id": "2C971F8F30064CFA",
+          "team_reward": false
+        },
+        {
+          "id": "22B0C7A835B3C2A1",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:white_grape_seeds",
+          "count": 16,
+          "claim_key": "H03.01/item/1",
+          "claim_reward_id": "22B0C7A835B3C2A1",
+          "team_reward": false
+        },
+        {
+          "id": "2FC71FF6A1B3F18C",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:wine_bottle",
+          "count": 32,
+          "claim_key": "H03.01/item/2",
+          "claim_reward_id": "2FC71FF6A1B3F18C",
+          "team_reward": false
+        },
+        {
+          "id": "2EBDB80E3AB9D541",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27264B315C0A89B0",
+      "title": "05.02 · Топчем виноград",
+      "subtitle": "Получить 1 бутылку виноградного сока Vinery.",
+      "description": [
+        "Что сделать: Получить 1 бутылку виноградного сока Vinery.",
+        "",
+        "Зачем: Физическое прессование.",
+        "",
+        "Совет: Grapevine Pot принимает сорт винограда, а вытоптанный сок разливается в тару. Работа ногами и стадия заполнения не проверяются.",
+        "",
+        "Награда: Сок получает запас тары и полноценное место для хранения напитков.",
+        "",
+        "Рекомендуемый путь: 05.01 · Настоящие лозы. Порядок свободный."
+      ],
+      "icon": "vinery:red_grapejuice",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DE9976A7626BE2F",
+          "type": "custom",
+          "title": "Получить 1 бутылку виноградного сока Vinery.",
+          "icon": "vinery:red_grapejuice",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27D37E4A932032FE",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:oak_wine_rack_big",
+          "count": 8,
+          "claim_key": "H03.02/item/0",
+          "claim_reward_id": "27D37E4A932032FE",
+          "team_reward": false
+        },
+        {
+          "id": "2E863479D040B2DE",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:wine_bottle",
+          "count": 32,
+          "claim_key": "H03.02/item/1",
+          "claim_reward_id": "2E863479D040B2DE",
+          "team_reward": false
+        },
+        {
+          "id": "2385648BAECBE7ED",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BE2E9659C207D2F",
+      "title": "05.03 · Бочка для ферментации",
+      "subtitle": "Поставить 1 Fermentation Barrel Vinery.",
+      "description": [
+        "Что сделать: Поставить 1 Fermentation Barrel Vinery.",
+        "",
+        "Зачем: Ферментация и управление жидкостью.",
+        "",
+        "Совет: Загрузи сок, ингредиенты и тару по рецепту; изучи слив ошибочного содержимого. Зачёт — за размещение бочки.",
+        "",
+        "Награда: Первая бочка сопровождается дегустационной партией и материалом для винного погреба.",
+        "",
+        "Рекомендуемый путь: 05.02 · Топчем виноград. Порядок свободный."
+      ],
+      "icon": "vinery:fermentation_barrel",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AFFF29C3CDA275A",
+          "type": "custom",
+          "title": "Поставить 1 Fermentation Barrel Vinery.",
+          "icon": "vinery:fermentation_barrel",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22E43EF737205BA5",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:bolvar_wine",
+          "count": 8,
+          "claim_key": "H03.03/item/0",
+          "claim_reward_id": "22E43EF737205BA5",
+          "team_reward": false
+        },
+        {
+          "id": "2826D3AB90B32977",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:apple_cider",
+          "count": 8,
+          "claim_key": "H03.03/item/1",
+          "claim_reward_id": "2826D3AB90B32977",
+          "team_reward": false
+        },
+        {
+          "id": "286AB8D0C6EF2446",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:dark_cherry_planks",
+          "count": 64,
+          "claim_key": "H03.03/item/2",
+          "claim_reward_id": "286AB8D0C6EF2446",
+          "team_reward": false
+        },
+        {
+          "id": "2C9D567751448DE6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AC128470D69270D",
+      "title": "05.04 · Яблочный пресс",
+      "subtitle": "Поставить 1 Apple Press Vinery.",
+      "description": [
+        "Что сделать: Поставить 1 Apple Press Vinery.",
+        "",
+        "Зачем: Альтернативная цепочка напитков и рабочее место винодела.",
+        "",
+        "Совет: Пресс открывает яблочную цепочку и связан с рабочим местом винодела. Промежуточные стадии и готовый напиток не проверяются.",
+        "",
+        "Награда: Пресс получает основу собственного яблоневого сада и партию сидра.",
+        "",
+        "Рекомендуемый путь: 05.03 · Бочка для ферментации. Порядок свободный."
+      ],
+      "icon": "vinery:apple_press",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2275BE8BE91C97C4",
+          "type": "custom",
+          "title": "Поставить 1 Apple Press Vinery.",
+          "icon": "vinery:apple_press",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25ADE24AD487E500",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:apple_tree_sapling",
+          "count": 8,
+          "claim_key": "H03.04/item/0",
+          "claim_reward_id": "25ADE24AD487E500",
+          "team_reward": false
+        },
+        {
+          "id": "2F35DA9D6CEC82FD",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:apple_cider",
+          "count": 12,
+          "claim_key": "H03.04/item/1",
+          "claim_reward_id": "2F35DA9D6CEC82FD",
+          "team_reward": false
+        },
+        {
+          "id": "224C9EB38C936E56",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27811DCDC0866EC4",
+      "title": "05.05 · Два вина — два назначения",
+      "subtitle": "Выпить красное вино и вино «Jellie» Vinery.",
+      "description": [
+        "Что сделать: Выпить красное вино и вино «Jellie» Vinery.",
+        "",
+        "Зачем: Мобильность/защита/сбор; выдержка как долгосрочная побочная цель.",
+        "",
+        "Совет: Сравни назначения эффектов. Отдельную бутылку можно оставить на выдержку; ожидание не требуется.",
+        "",
+        "Награда: Две освоенные бутылки открывают выбор новой партии вина и стеллажи для погреба.",
+        "",
+        "Рекомендуемый путь: 05.04 · Яблочный пресс. Порядок свободный."
+      ],
+      "icon": "vinery:red_wine",
+      "x": -5.3,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25294B428225DB33",
+          "type": "custom",
+          "title": "Выпить красное вино и вино «Jellie» Vinery.",
+          "icon": "vinery:red_wine",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20A023AA82C358B4",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:dark_cherry_wine_rack_big",
+          "count": 8,
+          "claim_key": "H03.05/item/0",
+          "claim_reward_id": "20A023AA82C358B4",
+          "team_reward": false
+        },
+        {
+          "id": "251CD206C7B1BC78",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        },
+        {
+          "id": "254B7219021A11DA",
+          "type": "choice",
+          "table_id": 2704179202845759990L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AB15CC0A3238735",
+      "title": "05.06 · Чай начинается с растения",
+      "subtitle": "Получить 1 Tea Blossom или 1 кофейный боб HerbalBrews.",
+      "description": [
+        "Что сделать: Получить 1 Tea Blossom или 1 кофейный боб HerbalBrews.",
+        "",
+        "Зачем: Чай и кофе как выращиваемые культуры.",
+        "",
+        "Совет: Это вход в выращивание чая и кофе. Способ получения и зрелость исходного растения не проверяются.",
+        "",
+        "Награда: Запас сырья достаточен для серии чайных и кофейных опытов."
+      ],
+      "icon": "herbalbrews:tea_blossom",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "216C20DAD608F133",
+          "type": "custom",
+          "title": "Получить 1 Tea Blossom или 1 кофейный боб HerbalBrews.",
+          "icon": "herbalbrews:tea_blossom",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24B766A82CA61207",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:tea_leaf_crate",
+          "count": 4,
+          "claim_key": "H03.06/item/0",
+          "claim_reward_id": "24B766A82CA61207",
+          "team_reward": false
+        },
+        {
+          "id": "265A97699BA5C153",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:coffee_beans",
+          "count": 24,
+          "claim_key": "H03.06/item/1",
+          "claim_reward_id": "265A97699BA5C153",
+          "team_reward": false
+        },
+        {
+          "id": "2761979ADB768D24",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E7E56C3134A7FD1",
+      "title": "05.07 · Зелёный, улун, чёрный",
+      "subtitle": "Получить сухие листья зелёного чая, улуна и чёрного чая HerbalBrews.",
+      "description": [
+        "Что сделать: Получить сухие листья зелёного чая, улуна и чёрного чая HerbalBrews.",
+        "",
+        "Зачем: Процесс сушки вместо коллекции одинаковых чашек.",
+        "",
+        "Совет: Сушка позволяет выбрать стадию обработки. Условия и длительность сушки остаются нативной механикой.",
+        "",
+        "Награда: Собранная коллекция листьев превращается в заметный запас уже освоенных видов чая.",
+        "",
+        "Рекомендуемый путь: 05.06 · Чай начинается с растения. Порядок свободный."
+      ],
+      "icon": "herbalbrews:dried_green_tea",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FB07A23B589123C",
+          "type": "item",
+          "item": "herbalbrews:dried_green_tea",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "20178E02E518FF69",
+          "type": "item",
+          "item": "herbalbrews:dried_oolong_tea",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "23B10829B7D220B6",
+          "type": "item",
+          "item": "herbalbrews:dried_black_tea",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CCCACC00353978E",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:dried_green_tea",
+          "count": 24,
+          "claim_key": "H03.07/item/0",
+          "claim_reward_id": "2CCCACC00353978E",
+          "team_reward": false
+        },
+        {
+          "id": "2CAD13C85E2731DD",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:dried_oolong_tea",
+          "count": 24,
+          "claim_key": "H03.07/item/1",
+          "claim_reward_id": "2CAD13C85E2731DD",
+          "team_reward": false
+        },
+        {
+          "id": "23F6951696C9FB5B",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:dried_black_tea",
+          "count": 24,
+          "claim_key": "H03.07/item/2",
+          "claim_reward_id": "23F6951696C9FB5B",
+          "team_reward": false
+        },
+        {
+          "id": "23A513AFE36DF1B0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "218559946D7E5400",
+      "title": "05.08 · Чайник работает",
+      "subtitle": "Поставить 1 Tea Kettle HerbalBrews.",
+      "description": [
+        "Что сделать: Поставить 1 Tea Kettle HerbalBrews.",
+        "",
+        "Зачем: Полная петля заваривания.",
+        "",
+        "Совет: Для заваривания нужны вода, тепло, сырьё и тара. Готовность чайника и производственная последовательность не проверяются.",
+        "",
+        "Награда: Первый чайник дополняется медным вариантом и посудой для собственной чайной.",
+        "",
+        "Рекомендуемый путь: 05.07 · Зелёный, улун, чёрный. Порядок свободный."
+      ],
+      "icon": "herbalbrews:tea_kettle",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26825CF7F841343A",
+          "type": "custom",
+          "title": "Поставить 1 Tea Kettle HerbalBrews.",
+          "icon": "herbalbrews:tea_kettle",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C211A217A861EB6",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:copper_tea_kettle",
+          "count": 1,
+          "claim_key": "H03.08/item/0",
+          "claim_reward_id": "2C211A217A861EB6",
+          "team_reward": false
+        },
+        {
+          "id": "2897F2953A497F7E",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:jug",
+          "count": 8,
+          "claim_key": "H03.08/item/1",
+          "claim_reward_id": "2897F2953A497F7E",
+          "team_reward": false
+        },
+        {
+          "id": "216BA4E8E42316CB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EF8730686175102",
+      "title": "05.09 · Напиток во фляге",
+      "subtitle": "Выпить 1 заполненную Flask HerbalBrews.",
+      "description": [
+        "Что сделать: Выпить 1 заполненную Flask HerbalBrews.",
+        "",
+        "Зачем: Консолидация зелий; связка с магией/алхимией.",
+        "",
+        "Совет: Herbal Infusion и Brewing Cauldron помогают объединять совместимые зелья. Квест не требует определённую тройку эффектов.",
+        "",
+        "Награда: Практика с напитком награждается тематической шляпой и готовой партией чая, без пустого NBT-флакона.",
+        "",
+        "Рекомендуемый путь: 05.08 · Чайник работает. Порядок свободный."
+      ],
+      "icon": "herbalbrews:flask",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E4225A2773A4C33",
+          "type": "custom",
+          "title": "Выпить 1 заполненную Flask HerbalBrews.",
+          "icon": "herbalbrews:flask",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "232CBC4EB36A89FE",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:witch_hat",
+          "count": 1,
+          "claim_key": "H03.09/item/0",
+          "claim_reward_id": "232CBC4EB36A89FE",
+          "team_reward": false
+        },
+        {
+          "id": "29FAAAD8859C8E19",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:lavender_tea",
+          "count": 12,
+          "claim_key": "H03.09/item/1",
+          "claim_reward_id": "29FAAAD8859C8E19",
+          "team_reward": false
+        },
+        {
+          "id": "2A57877955DF7994",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AA5D77A84B5A27F",
+      "title": "05.10 · Напиток поддержки",
+      "subtitle": "Выпить 1 чай или кофе HerbalBrews.",
+      "description": [
+        "Что сделать: Выпить 1 чай или кофе HerbalBrews.",
+        "",
+        "Зачем: Support-напитки без обязательного второго игрока.",
+        "",
+        "Совет: У некоторых напитков есть поддержка союзников. Ради задания достаточно собственного напитка; наличие второго игрока и выданный эффект не проверяются.",
+        "",
+        "Награда: Повседневная чайная практика получает заметный косметический предмет и запас кофе.",
+        "",
+        "Рекомендуемый путь: 05.09 · Напиток во фляге. Порядок свободный."
+      ],
+      "icon": "herbalbrews:black_tea",
+      "x": 5.3,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C08BDA855D48A05",
+          "type": "custom",
+          "title": "Выпить 1 чай или кофе HerbalBrews.",
+          "icon": "herbalbrews:black_tea",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D267D835855ED31",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:top_hat",
+          "count": 1,
+          "claim_key": "H03.10/item/0",
+          "claim_reward_id": "2D267D835855ED31",
+          "team_reward": false
+        },
+        {
+          "id": "2B414B4471557649",
+          "type": "jem_advancements:quest_item",
+          "item": "herbalbrews:milk_coffee",
+          "count": 16,
+          "claim_key": "H03.10/item/1",
+          "claim_reward_id": "2B414B4471557649",
+          "team_reward": false
+        },
+        {
+          "id": "2E9368BF49CF81E6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "227BEBBC063E3293",
+      "title": "05.11 · Хмель и сухое зерно",
+      "subtitle": "Получить 1 хмель и 1 мешок сухой пшеницы Brewery.",
+      "description": [
+        "Что сделать: Получить 1 хмель и 1 мешок сухой пшеницы Brewery.",
+        "",
+        "Зачем: Ингредиенты Brewery 2.0.6.",
+        "",
+        "Совет: Хмелю нужна верёвка Farm & Charm, зерно сушится в Silo Farm & Charm. Продукт принадлежит Brewery; выращивание и сушка не связываются в одну историю.",
+        "",
+        "Награда: Пивовару хватает семян и зерна для продолжения собственного производства."
+      ],
+      "icon": "brewery:hops",
+      "x": -8.07,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20BF9E52C224E67A",
+          "type": "item",
+          "item": "brewery:hops",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2BEB61754C3AE314",
+          "type": "item",
+          "item": "brewery:dried_wheat",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DE223AF7B445EFF",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:hops_seeds",
+          "count": 24,
+          "claim_key": "H03.11/item/0",
+          "claim_reward_id": "2DE223AF7B445EFF",
+          "team_reward": false
+        },
+        {
+          "id": "29C25CEC54BB1D29",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:dried_barley",
+          "count": 16,
+          "claim_key": "H03.11/item/1",
+          "claim_reward_id": "29C25CEC54BB1D29",
+          "team_reward": false
+        },
+        {
+          "id": "257FC57D287ED464",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25EDD80AA679F779",
+      "title": "05.12 · Первый пивоваренный котёл",
+      "subtitle": "Поставить деревянную Brewingstation Brewery.",
+      "description": [
+        "Что сделать: Поставить деревянную Brewingstation Brewery.",
+        "",
+        "Зачем: Интерактивная мини-игра производства.",
+        "",
+        "Совет: При варке нужны ингредиенты, вода, огонь и реакции на подсказки; напиток забирают кружкой. Мини-игра не отслеживается.",
+        "",
+        "Награда: Начало пивоварения сразу даёт меню и стойку для маленькой таверны.",
+        "",
+        "Рекомендуемый путь: 05.11 · Хмель и сухое зерно. Порядок свободный."
+      ],
+      "icon": "brewery:wooden_brewingstation",
+      "x": -6.22,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "287D65355335AB09",
+          "type": "custom",
+          "title": "Поставить деревянную Brewingstation Brewery.",
+          "icon": "brewery:wooden_brewingstation",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2033695F3C98E624",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:beer_hops",
+          "count": 12,
+          "claim_key": "H03.12/item/0",
+          "claim_reward_id": "2033695F3C98E624",
+          "team_reward": false
+        },
+        {
+          "id": "26F114FFFFFE7FDF",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:pretzel",
+          "count": 16,
+          "claim_key": "H03.12/item/1",
+          "claim_reward_id": "26F114FFFFFE7FDF",
+          "team_reward": false
+        },
+        {
+          "id": "251023C308F1618E",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:bar_counter",
+          "count": 16,
+          "claim_key": "H03.12/item/2",
+          "claim_reward_id": "251023C308F1618E",
+          "team_reward": false
+        },
+        {
+          "id": "2B6B829A1629A2E2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27F067BB5E4D41E4",
+      "title": "05.13 · Сравнить две варки",
+      "subtitle": "Выпить пшеничное и ячменное пиво Brewery.",
+      "description": [
+        "Что сделать: Выпить пшеничное и ячменное пиво Brewery.",
+        "",
+        "Зачем: Навык пивоварения; награда помогает улучшению, не выдаёт станцию.",
+        "",
+        "Совет: Качество зависит от нативной варки. Сравни рецепты и эффекты; квест не считает пропущенные сигналы или улучшение личного рекорда.",
+        "",
+        "Награда: Два сорта пива отмечаются расширением бара и полноценным тавернным меню.",
+        "",
+        "Рекомендуемый путь: 05.12 · Первый пивоваренный котёл. Порядок свободный."
+      ],
+      "icon": "brewery:beer_wheat",
+      "x": -4.38,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28670D1260054685",
+          "type": "custom",
+          "title": "Выпить пшеничное и ячменное пиво Brewery.",
+          "icon": "brewery:beer_wheat",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F8810740226938E",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:bar_counter",
+          "count": 32,
+          "claim_key": "H03.13/item/0",
+          "claim_reward_id": "2F8810740226938E",
+          "team_reward": false
+        },
+        {
+          "id": "218E1F9CD35F8F25",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:dark_brew",
+          "count": 8,
+          "claim_key": "H03.13/item/1",
+          "claim_reward_id": "218E1F9CD35F8F25",
+          "team_reward": false
+        },
+        {
+          "id": "2FEF53C8C9F963A7",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:dumplings",
+          "count": 16,
+          "claim_key": "H03.13/item/2",
+          "claim_reward_id": "2FEF53C8C9F963A7",
+          "team_reward": false
+        },
+        {
+          "id": "293BF60DF4398AA0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "206715F66B2F1142",
+      "title": "05.14 · Медная перегонка",
+      "subtitle": "Получить 1 медную Brewingstation и 1 whiskey Brewery.",
+      "description": [
+        "Что сделать: Получить 1 медную Brewingstation и 1 whiskey Brewery.",
+        "",
+        "Зачем: Медный tier напитков.",
+        "",
+        "Совет: Медная станция открывает следующий набор рецептов. Предметы достаточно иметь; происхождение напитка не требуется доказывать.",
+        "",
+        "Награда: Медная станция с виски заслуживает праздничного оформления и новой партии напитка.",
+        "",
+        "Рекомендуемый путь: 05.13 · Сравнить две варки. Порядок свободный."
+      ],
+      "icon": "brewery:copper_brewingstation",
+      "x": -2.52,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CC605E0BFEFFA7D",
+          "type": "custom",
+          "title": "Получить 1 медную Brewingstation и 1 whiskey Brewery.",
+          "icon": "brewery:copper_brewingstation",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E134E4B29C8316D",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:brewfest_hat",
+          "count": 1,
+          "claim_key": "H03.14/item/0",
+          "claim_reward_id": "2E134E4B29C8316D",
+          "team_reward": false
+        },
+        {
+          "id": "2703B981BC525797",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:patterned_wool",
+          "count": 64,
+          "claim_key": "H03.14/item/1",
+          "claim_reward_id": "2703B981BC525797",
+          "team_reward": false
+        },
+        {
+          "id": "206FA11C95782574",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        },
+        {
+          "id": "2D9E1B1A3A9E717F",
+          "type": "choice",
+          "table_id": 2439792666141198889L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A301CBEF028055F",
+      "title": "05.15 · Пряничное оформление",
+      "subtitle": "Поставить 1 пряник Brewery.",
+      "description": [
+        "Что сделать: Поставить 1 пряник Brewery.",
+        "",
+        "Зачем: Эффекты, готовка через Farm & Charm и декор таверны.",
+        "",
+        "Совет: У пряничного оформления есть собственная настройка. Подпиши его и приготовь место подачи; текст, еда и полезность эффектов не входят в условие.",
+        "",
+        "Награда: Пряничная тема становится строительной палитрой и запасом праздничных сладостей.",
+        "",
+        "Рекомендуемый путь: 05.14 · Медная перегонка. Порядок свободный."
+      ],
+      "icon": "brewery:gingerbread",
+      "x": -6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2516172EE4AF10E1",
+          "type": "custom",
+          "title": "Поставить 1 пряник Brewery.",
+          "icon": "brewery:gingerbread",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B2E575ABE980588",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:gingerbread",
+          "count": 64,
+          "claim_key": "H03.15/item/0",
+          "claim_reward_id": "2B2E575ABE980588",
+          "team_reward": false
+        },
+        {
+          "id": "2571A9302015FCF9",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:candy_cane",
+          "count": 16,
+          "claim_key": "H03.15/item/1",
+          "claim_reward_id": "2571A9302015FCF9",
+          "team_reward": false
+        },
+        {
+          "id": "2EF8163C6132FE52",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BF4C65F6A1DD959",
+      "title": "05.16 · Опытный пивовар",
+      "subtitle": "Получить 1 Netherite Brewingstation Brewery.",
+      "description": [
+        "Что сделать: Получить 1 Netherite Brewingstation Brewery.",
+        "",
+        "Зачем: Верхний tier производства; управляемая встреча с Booze.",
+        "",
+        "Совет: Она открывает поздние рецепты. Dark Brew и встреча с Booze — необязательные опыты; призыв, качество и полёт не проверяются.",
+        "",
+        "Награда: Дорогая самостоятельно полученная станция вознаграждается второй такой станцией для параллельной работы и большой партией виски.",
+        "",
+        "Рекомендуемый путь: 05.15 · Пряничное оформление. Порядок свободный."
+      ],
+      "icon": "brewery:netherite_brewingstation",
+      "x": -4.38,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DA68E22C51298B1",
+          "type": "item",
+          "item": "brewery:netherite_brewingstation",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24CE48D5F368B798",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:netherite_brewingstation",
+          "count": 1,
+          "claim_key": "H03.16/item/0",
+          "claim_reward_id": "24CE48D5F368B798",
+          "team_reward": false
+        },
+        {
+          "id": "289D61C7E7AA03D1",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:whiskey_smokey_reverie",
+          "count": 16,
+          "claim_key": "H03.16/item/1",
+          "claim_reward_id": "289D61C7E7AA03D1",
+          "team_reward": false
+        },
+        {
+          "id": "2A4F95BF36C5D701",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        },
+        {
+          "id": "2CB652B0CF13CE01",
+          "type": "choice",
+          "table_id": 2761416574796743434L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.16",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "232F684F13DF4238",
+      "title": "05.17 · Бар на берегу",
+      "subtitle": "Получить 1 кокос Beachparty и выпить 1 коктейль Beachparty.",
+      "description": [
+        "Что сделать: Получить 1 кокос Beachparty и выпить 1 коктейль Beachparty.",
+        "",
+        "Зачем: Кокосовая культура и коктейли.",
+        "",
+        "Совет: Кокос связан с пальмами, коктейли готовятся в Palm Bar. Нахождение у берега и подтверждение эффекта не нужны.",
+        "",
+        "Награда: Кокосовый отдых получает холодильник и запас напитков."
+      ],
+      "icon": "beachparty:coconut",
+      "x": 4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24D739D92ABCB874",
+          "type": "custom",
+          "title": "Получить 1 кокос Beachparty и выпить 1 коктейль Beachparty.",
+          "icon": "beachparty:coconut",
+          "count": 1
+        },
+        {
+          "id": "2A4AC85139DD0F2D",
+          "type": "custom",
+          "title": "Получить 1 кокос Beachparty и выпить 1 коктейль Beachparty.",
+          "icon": "beachparty:coconut",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2807A60E36FD0CD0",
+          "type": "jem_advancements:quest_item",
+          "item": "beachparty:mini_fridge",
+          "count": 1,
+          "claim_key": "H03.17/item/0",
+          "claim_reward_id": "2807A60E36FD0CD0",
+          "team_reward": false
+        },
+        {
+          "id": "2C66F4A8677E174E",
+          "type": "jem_advancements:quest_item",
+          "item": "beachparty:melon_cocktail",
+          "count": 16,
+          "claim_key": "H03.17/item/1",
+          "claim_reward_id": "2C66F4A8677E174E",
+          "team_reward": false
+        },
+        {
+          "id": "2037EF6730872334",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.17",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "239F0096C4CDE3EE",
+      "title": "05.18 · Летнее место встречи",
+      "subtitle": "Поставить лежак или кресло Beachparty и съесть 1 приготовленную мидию.",
+      "description": [
+        "Что сделать: Поставить лежак или кресло Beachparty и съесть 1 приготовленную мидию.",
+        "",
+        "Зачем: Прибрежная кухня, размещаемые напитки и мебель.",
+        "",
+        "Совет: Подавай напитки рядом с местом отдыха. Сидение, композиция и рыбалка у пирса — идеи для дальнейшей игры, а не условия.",
+        "",
+        "Награда: Пляжная проба превращается в оборудованное место отдыха с музыкой и едой.",
+        "",
+        "Рекомендуемый путь: 05.17 · Бар на берегу. Порядок свободный."
+      ],
+      "icon": "beachparty:beach_sun_lounger",
+      "x": 6.22,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DD7D2615250F95F",
+          "type": "custom",
+          "title": "Поставить лежак или кресло Beachparty и съесть 1 приготовленную мидию.",
+          "icon": "beachparty:beach_sun_lounger",
+          "count": 1
+        },
+        {
+          "id": "25FF9F7185CF31D8",
+          "type": "custom",
+          "title": "Поставить лежак или кресло Beachparty и съесть 1 приготовленную мидию.",
+          "icon": "beachparty:beach_sun_lounger",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24E4C0B8474D819E",
+          "type": "jem_advancements:quest_item",
+          "item": "beachparty:radio",
+          "count": 1,
+          "claim_key": "H03.18/item/0",
+          "claim_reward_id": "24E4C0B8474D819E",
+          "team_reward": false
+        },
+        {
+          "id": "28D3842CCA55BBA3",
+          "type": "jem_advancements:quest_item",
+          "item": "beachparty:beach_parasol",
+          "count": 2,
+          "claim_key": "H03.18/item/1",
+          "claim_reward_id": "28D3842CCA55BBA3",
+          "team_reward": false
+        },
+        {
+          "id": "2564BEA5615CE756",
+          "type": "jem_advancements:quest_item",
+          "item": "beachparty:cooked_mussel_meat",
+          "count": 16,
+          "claim_key": "H03.18/item/2",
+          "claim_reward_id": "2564BEA5615CE756",
+          "team_reward": false
+        },
+        {
+          "id": "2823F59625543757",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H03.18",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Vinery",
+      "order": -5,
+      "hover": [
+        "Vinery"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:HerbalBrews",
+      "order": -5,
+      "hover": [
+        "HerbalBrews"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Brewery",
+      "order": -5,
+      "hover": [
+        "Brewery"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Beachparty",
+      "order": -5,
+      "hover": [
+        "Beachparty"
+      ]
+    }
+  ],
+  "autofocus_id": "281E5341600445EF"
+}

@@ -1,0 +1,439 @@
+{
+  "id": "1000000000000006",
+  "filename": "jem_31",
+  "title": "События и праздники",
+  "subtitle": [
+    "Когда: Scheduled/seasonal/competitive доступны только при активации dedicated-хостом. В одиночной книге не являются воротами.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "minecraft:clock",
+  "group": "2ED93FC997095853",
+  "order_index": 30,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2836F95F0A6A47CE",
+      "title": "31.02 · Кровавая луна",
+      "subtitle": "Получить один существующий зачёт успешного завершения Blood Moon.",
+      "description": [
+        "Что сделать: Получить один существующий зачёт успешного завершения Blood Moon.",
+        "",
+        "Зачем: Волны, телеграфы, ограничения и исключение после фактической смерти.",
+        "",
+        "Совет: Проходите волны и выбирайте предусмотренное нативное завершение/выход с наградой. BloodMoon.finishSuccess засчитывает активного внесшего вклад участника; FTB не пересчитывает волны, смерти или нахождение внутри стен.",
+        "",
+        "Награда: Пережитая Blood Moon даёт постоянный полезный аксессуар и богатое боевое снабжение.",
+        "",
+        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве."
+      ],
+      "icon": "irons_spellbooks:emerald_stoneplate_ring",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E65D823284F150C",
+          "type": "custom",
+          "title": "Получить один существующий зачёт успешного завершения Blood Moon.",
+          "icon": "irons_spellbooks:emerald_stoneplate_ring",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28AA652D24EE5FDF",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:emerald_stoneplate_ring",
+          "count": 1,
+          "claim_key": "events_02/item/0",
+          "claim_reward_id": "28AA652D24EE5FDF",
+          "team_reward": false
+        },
+        {
+          "id": "2CF6C7C1E7B16689",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 48,
+          "claim_key": "events_02/item/1",
+          "claim_reward_id": "2CF6C7C1E7B16689",
+          "team_reward": false
+        },
+        {
+          "id": "2D1140D6B69ECA81",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 16,
+          "claim_key": "events_02/item/2",
+          "claim_reward_id": "2D1140D6B69ECA81",
+          "team_reward": false
+        },
+        {
+          "id": "242B0AB838BEDA5D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 650,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "events_02",
+      "jem_required_mods": [
+        "jem_server"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": true
+    },
+    {
+      "id": "2CF42AE8C8A6DCF5",
+      "title": "31.03 · Снарядиться на Resource Rush",
+      "subtitle": "Добыть 16 блоков угольной или глубинной угольной руды.",
+      "description": [
+        "Что сделать: Добыть 16 блоков угольной или глубинной угольной руды.",
+        "",
+        "Зачем: Знакомство с добычей для ресурсной вылазки; реальные бонусы Resource Rush принадлежат событию.",
+        "",
+        "Совет: Попробуйте добычу во время Resource Rush, когда хост его запустит. Эта карточка считает только обычную добычу руды в любом месте и не доказывает участие, выход из event-region или получение её усиления.",
+        "",
+        "Награда: Большой световой набор для шахты после добычи 16 угольных руд."
+      ],
+      "icon": "bbb:spruce_lantern",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2233EF4B803AC18D",
+          "type": "custom",
+          "title": "Добыть 16 блоков угольной или глубинной угольной руды.",
+          "icon": "bbb:spruce_lantern",
+          "count": 16
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29FD73BCD8AC3746",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:spruce_lantern",
+          "count": 24,
+          "claim_key": "events_03/item/0",
+          "claim_reward_id": "29FD73BCD8AC3746",
+          "team_reward": false
+        },
+        {
+          "id": "269BD1A8E239B575",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_torch_arrow",
+          "count": 48,
+          "claim_key": "events_03/item/1",
+          "claim_reward_id": "269BD1A8E239B575",
+          "team_reward": false
+        },
+        {
+          "id": "22CC0EABBF83E7FF",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:pretzel",
+          "count": 16,
+          "claim_key": "events_03/item/2",
+          "claim_reward_id": "22CC0EABBF83E7FF",
+          "team_reward": false
+        },
+        {
+          "id": "2168823161DD37A9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "events_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "229965D0D61EE138",
+      "title": "31.04 · Подготовить новогодний подарок",
+      "subtitle": "Собрать набор для подарка: торт, свечу и цветочный горшок.",
+      "description": [
+        "Что сделать: Собрать набор для подарка: торт, свечу и цветочный горшок.",
+        "",
+        "Зачем: Материалы для настоящего подарка и объяснение JEM gift escrow; Gifty не требуется.",
+        "",
+        "Совет: В активный New Year отправьте выбранный held stack через /jem holiday gift <player>. Получатель принимает его через /jem holiday accept <uuid>; непринятое возвращается /jem holiday cancel <uuid>. Здесь проверяется только подготовленный набор, не факт дарения. Фото и оформление добровольны.",
+        "",
+        "Награда: Щедрый праздничный комплект украшений и угощений за набор подарка."
+      ],
+      "icon": "minecraft:cake",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B5D08E184B677CF",
+          "type": "item",
+          "item": "minecraft:cake",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "284641FDC0F9A14A",
+          "type": "item",
+          "item": "minecraft:candle",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2C151432C368EC4A",
+          "type": "item",
+          "item": "minecraft:flower_pot",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21B74B7FC68DC2B2",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:wreath",
+          "count": 8,
+          "claim_key": "events_04/item/0",
+          "claim_reward_id": "21B74B7FC68DC2B2",
+          "team_reward": false
+        },
+        {
+          "id": "2AB1B7B93DFCC518",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_prismatic",
+          "count": 24,
+          "claim_key": "events_04/item/1",
+          "claim_reward_id": "2AB1B7B93DFCC518",
+          "team_reward": false
+        },
+        {
+          "id": "2D8F46C8F4243D5E",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:strawberry_cupcake",
+          "count": 16,
+          "claim_key": "events_04/item/2",
+          "claim_reward_id": "2D8F46C8F4243D5E",
+          "team_reward": false
+        },
+        {
+          "id": "2D256FFBEF2C2BC1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "events_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EF63CC9DF7C927A",
+      "title": "31.06 · Рыбалка по расписанию",
+      "subtitle": "Получить один существующий зачёт участия в Fishing за действительный улов.",
+      "description": [
+        "Что сделать: Получить один существующий зачёт участия в Fishing за действительный улов.",
+        "",
+        "Зачем: Серверный рыболовный турнир: выбор места, снасти и рыбы под ограничения активного события; дальнейшие доступные измерения без нового искусственного гейта.",
+        "",
+        "Совет: FishingRuntime сам подтверждает реальный Tide FISH catch, исключает fake/creative и повторный зачёт крючка, учитывает снасть и среду. FTB не проверяет вторично рыбу, таймер или место и не выдаёт её XP заново.",
+        "",
+        "Награда: Приманка для многих следующих забросов после первого зачтённого улова события."
+      ],
+      "icon": "tide:bait",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28CF86FD1A7721C3",
+          "type": "custom",
+          "title": "Получить один существующий зачёт участия в Fishing за действительный улов.",
+          "icon": "tide:bait",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F33467824E22DB0",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:bait",
+          "count": 64,
+          "claim_key": "events_06/item/0",
+          "claim_reward_id": "2F33467824E22DB0",
+          "team_reward": false
+        },
+        {
+          "id": "208A060C021578BC",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 12,
+          "claim_key": "events_06/item/1",
+          "claim_reward_id": "208A060C021578BC",
+          "team_reward": false
+        },
+        {
+          "id": "2CAF8A032C3DB60C",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 12,
+          "claim_key": "events_06/item/2",
+          "claim_reward_id": "2CAF8A032C3DB60C",
+          "team_reward": false
+        },
+        {
+          "id": "2102D5CFB4502CB6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "events_06",
+      "jem_required_mods": [
+        "jem_server"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": true
+    },
+    {
+      "id": "2029CA3534C9FE17",
+      "title": "31.07 · Кулинарное шоу",
+      "subtitle": "Получить один существующий зачёт завершённого личного заказа Cooking Show.",
+      "description": [
+        "Что сделать: Получить один существующий зачёт завершённого личного заказа Cooking Show.",
+        "",
+        "Зачем: Практическое применение фермы, кухни и разных рецептов: меню строится из реально доступных рецептов, а не из фиксированного несуществующего списка.",
+        "",
+        "Совет: Само Cooking Show выбирает доступное меню, считает настоящее приготовление через поддерживаемые станции, проверяет время и выдаёт easy/medium/hard-награду один раз. FTB не повторяет список блюд и внутренние условия.",
+        "",
+        "Награда: Кондитерский банкет и подставки после выполненного личного заказа."
+      ],
+      "icon": "bakery:chocolate_cake_slice",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "243066EE3175ABD6",
+          "type": "custom",
+          "title": "Получить один существующий зачёт завершённого личного заказа Cooking Show.",
+          "icon": "bakery:chocolate_cake_slice",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27973E59E63F7FBD",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_cake_slice",
+          "count": 16,
+          "claim_key": "events_07/item/0",
+          "claim_reward_id": "27973E59E63F7FBD",
+          "team_reward": false
+        },
+        {
+          "id": "23BA2543B59FC9AB",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:strawberry_cake_slice",
+          "count": 16,
+          "claim_key": "events_07/item/1",
+          "claim_reward_id": "23BA2543B59FC9AB",
+          "team_reward": false
+        },
+        {
+          "id": "23A5F0841453C3E1",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:cake_stand",
+          "count": 4,
+          "claim_key": "events_07/item/2",
+          "claim_reward_id": "23A5F0841453C3E1",
+          "team_reward": false
+        },
+        {
+          "id": "2A26CFBE8A2283C8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "events_07",
+      "jem_required_mods": [
+        "jem_server"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": true
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Основной маршрут",
+      "order": -5,
+      "hover": [
+        "Основной маршрут"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:future",
+      "order": -5,
+      "hover": [
+        "future"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:optional_scheduled",
+      "order": -5,
+      "hover": [
+        "optional_scheduled"
+      ]
+    },
+    {
+      "x": -8.07,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:events_01",
+      "hover": [
+        "31.01 · Принять участие",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 5.3,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:events_05",
+      "hover": [
+        "31.05 · Хэллоуинский кошмар — резерв",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2836F95F0A6A47CE"
+}

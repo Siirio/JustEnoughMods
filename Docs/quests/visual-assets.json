@@ -1,0 +1,122 @@
+{
+  "status": "NEEDS_DIRECTION",
+  "candidate": "C0 functional configuration, no finished visual export",
+  "user_direction": "Use the six supplied images as title overlays above real gameplay scenes; earlier background-use answer was explicitly revoked.",
+  "sources": [
+    {
+      "file": "Docs/quests/reference/implementation-pack-2026-10-22/assets/Gemini_Generated_Image_vli478vli478vli4 (1).jpg",
+      "sha256": "c31f0249d4bf08c7a530da0281fed1de79ed1d49f98cb41bce5482a1e73ecc77",
+      "role": "title artwork",
+      "title": "Cozy Home",
+      "proposed_chapters": [
+        1,
+        7,
+        8,
+        9,
+        10,
+        32
+      ],
+      "alpha": false,
+      "integration_status": "pending transparent export and composed review; original preserved"
+    },
+    {
+      "file": "Docs/quests/reference/implementation-pack-2026-10-22/assets/Gemini_Generated_Image_oiks50oiks50oiks (1).jpg",
+      "sha256": "57474455ee0351a19ef48e6ca0c36731432903a9fd9da717e319c4cd09c3a7c1",
+      "role": "title artwork",
+      "title": "Farm n Food",
+      "proposed_chapters": [
+        3,
+        4,
+        5
+      ],
+      "alpha": false,
+      "integration_status": "pending transparent export and composed review; original preserved"
+    },
+    {
+      "file": "Docs/quests/reference/implementation-pack-2026-10-22/assets/Gemini_Generated_Image_ffc00uffc00uffc0.jpg",
+      "sha256": "bbacdb4b5172153ab94db1c82a9b047880e62335f571099cbf28908e9bb81fee",
+      "role": "title artwork",
+      "title": "Cogs & Trains",
+      "proposed_chapters": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "alpha": false,
+      "integration_status": "pending transparent export and composed review; original preserved"
+    },
+    {
+      "file": "Docs/quests/reference/implementation-pack-2026-10-22/assets/Gemini_Generated_Image_99tge099tge099tg (1).jpg",
+      "sha256": "c642fbf82fb63e7bc5838874fe6a900d699a31eb6a3263673289476586de8a16",
+      "role": "title artwork",
+      "title": "Very Many Biomes",
+      "proposed_chapters": [
+        16,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        30
+      ],
+      "alpha": false,
+      "integration_status": "pending transparent export and composed review; original preserved"
+    },
+    {
+      "file": "Docs/quests/reference/implementation-pack-2026-10-22/assets/Gemini_Generated_Image_tt6ksztt6ksztt6k.jpg",
+      "sha256": "55bff42f75e57c8f0785765bc419f5dfd782a592c40b729c72ad339ce4a06a3a",
+      "role": "title artwork",
+      "title": "Acompany",
+      "proposed_chapters": [
+        17,
+        18
+      ],
+      "alpha": false,
+      "integration_status": "pending transparent export and composed review; original preserved"
+    },
+    {
+      "file": "Docs/quests/reference/implementation-pack-2026-10-22/assets/Gemini_Generated_Image_4jrkqv4jrkqv4jrk.jpg",
+      "sha256": "871eadd6377fd0cbd602fc99afb4fcf584e47c867de607b7d852ac8801a70949",
+      "role": "title artwork",
+      "title": "Secrets of Magic",
+      "proposed_chapters": [
+        2,
+        25,
+        26,
+        27,
+        28,
+        29,
+        31
+      ],
+      "alpha": false,
+      "integration_status": "pending transparent export and composed review; original preserved"
+    }
+  ],
+  "missing_scenes": [
+    "home/workshop interior",
+    "farm/greenhouse",
+    "working kitchen/tavern",
+    "Create machinery/railway",
+    "natural biomes/sea/harbour",
+    "appropriate caves",
+    "real combat arena/dimensions"
+  ],
+  "resource_contract": {
+    "background_layer": "native ChapterImage, ResourceLocation PNG, negative order",
+    "title_layer": "separate native ChapterImage above background, below quest controls; transparent approved export, preserve aspect",
+    "caption_layer": "native font, separate from artwork",
+    "runtime": "local resources only, native texture cache, no per-frame decode/network loading"
+  },
+  "review": {
+    "reference_fidelity": "UNOBSERVED: no composed game capture",
+    "geometry_perspective": "UNOBSERVED",
+    "legibility_and_states": "UNOBSERVED at both requested resolutions",
+    "native_operational_icons": "N/A: reuse installed item assets",
+    "title_alpha": "BLOCKED: JPG originals contain opaque backdrops",
+    "background_authenticity": "BLOCKED: user has no suitable HUD-free captures",
+    "rounds": "C0 only, no correction round or visual acceptance claimed"
+  }
+}

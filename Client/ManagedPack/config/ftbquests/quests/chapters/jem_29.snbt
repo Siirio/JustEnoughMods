@@ -1,0 +1,600 @@
+{
+  "id": "29C07134B085C4D9",
+  "filename": "jem_29",
+  "title": "За пределами двенадцати",
+  "subtitle": [
+    "Когда: По готовности к нативным встречам; недоступные измерения не обходятся квестами.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "minecraft:nether_star",
+  "group": "2ED93FC997095853",
+  "order_index": 28,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "28566F0E9AAC8333",
+      "title": "29.01 · Огненная кузница",
+      "subtitle": "Победить Ignis.",
+      "description": [
+        "Что сделать: Победить Ignis.",
+        "",
+        "Зачем: Дополнительный сложный босс, Ignitium-экипировка; не тринадцатый обязательный Eye.",
+        "",
+        "Совет: В Burning Arena добудьте Burning Ashes, используйте Altar of Fire и соблюдайте JEM Start, если встреча им управляется. После победы выберите применение Ignitium. Это дополнительный босс, не тринадцатый Eye.",
+        "",
+        "Награда: За реальную победу над Ignis — редкий полезный предмет на выбор и сильный запас для следующих боёв."
+      ],
+      "icon": "cataclysm:ignis_spawn_egg",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23272FFD75308177",
+          "type": "kill",
+          "entity": "cataclysm:ignis",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B43CED02E3E9B08",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 4,
+          "claim_key": "boss_loot_01/item/0",
+          "claim_reward_id": "2B43CED02E3E9B08",
+          "team_reward": false
+        },
+        {
+          "id": "2D61EAC883A9EE49",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 48,
+          "claim_key": "boss_loot_01/item/1",
+          "claim_reward_id": "2D61EAC883A9EE49",
+          "team_reward": false
+        },
+        {
+          "id": "269A9C061DA422BC",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_oakskin_elixir",
+          "count": 8,
+          "claim_key": "boss_loot_01/item/2",
+          "claim_reward_id": "269A9C061DA422BC",
+          "team_reward": false
+        },
+        {
+          "id": "27258E0B248EE567",
+          "type": "jem_advancements:quest_xp",
+          "xp": 1100,
+          "team_reward": false
+        },
+        {
+          "id": "218AFEDFF1C169E0",
+          "type": "choice",
+          "table_id": 2740692363253573482L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2232B88C4076FB9F",
+      "title": "29.02 · Проклятый корабль",
+      "subtitle": "Победить Nerakyss.",
+      "description": [
+        "Что сделать: Победить Nerakyss.",
+        "",
+        "Зачем: Новый морской набор Bosses’Rise.",
+        "",
+        "Совет: Найдите его корабль и пройдите нативную морскую встречу. Kraken Teeth ведут к новому набору оружия; FTB не проверяет происхождение зубов и не выдаёт их повторно.",
+        "",
+        "Награда: За Nerakyss — выбор утилиты для путешествий или магии плюс богатое морское снабжение."
+      ],
+      "icon": "block_factorys_bosses:kraken_spawn_egg",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "238E9850B5B7A1F4",
+          "type": "kill",
+          "entity": "block_factorys_bosses:kraken",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27C58A995485BE4B",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:divine_pearl",
+          "count": 16,
+          "claim_key": "boss_loot_02/item/0",
+          "claim_reward_id": "27C58A995485BE4B",
+          "team_reward": false
+        },
+        {
+          "id": "230CF9C521872D09",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 48,
+          "claim_key": "boss_loot_02/item/1",
+          "claim_reward_id": "230CF9C521872D09",
+          "team_reward": false
+        },
+        {
+          "id": "216C67C88A2DE485",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "boss_loot_02/item/2",
+          "claim_reward_id": "216C67C88A2DE485",
+          "team_reward": false
+        },
+        {
+          "id": "2A1457B2E5117BCB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 1000,
+          "team_reward": false
+        },
+        {
+          "id": "2D491225B92A6F96",
+          "type": "choice",
+          "table_id": 3295440468532558459L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "203EAFA250275739",
+      "title": "29.03 · Щупальце как инструмент",
+      "subtitle": "Нажать ПКМ в воздухе, держа Undying Tentacle.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе, держа Undying Tentacle.",
+        "",
+        "Зачем: Мобильность, контроль и защитная способность.",
+        "",
+        "Совет: Попробуйте зацеп за блок, подтягивание допустимой сущности и отдельный режим призыва щупалец. Проверяется только ПКМ предметом, не три успешных действия.",
+        "",
+        "Награда: Расходный боевой набор за демонстрацию уже полученного щупальца; это не повторная награда за босса.",
+        "",
+        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
+        "",
+        "Рекомендуемый путь: 29.02 · Проклятый корабль. Порядок свободный."
+      ],
+      "icon": "block_factorys_bosses:undying_tentacle",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2081A7133C639BFA",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе, держа Undying Tentacle.",
+          "icon": "block_factorys_bosses:undying_tentacle",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21CD78D020F4F280",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 32,
+          "claim_key": "boss_loot_03/item/0",
+          "claim_reward_id": "21CD78D020F4F280",
+          "team_reward": false
+        },
+        {
+          "id": "22E7B8C190A7D1A9",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 12,
+          "claim_key": "boss_loot_03/item/1",
+          "claim_reward_id": "22E7B8C190A7D1A9",
+          "team_reward": false
+        },
+        {
+          "id": "28B6580C27BFCBDC",
+          "type": "jem_advancements:quest_item",
+          "item": "brewery:pork_knuckle",
+          "count": 12,
+          "claim_key": "boss_loot_03/item/2",
+          "claim_reward_id": "28B6580C27BFCBDC",
+          "team_reward": false
+        },
+        {
+          "id": "21A93FB55DAF2E9B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23C5984AE02C87D5",
+      "title": "29.04 · Команда без команды",
+      "subtitle": "Нажать ПКМ в воздухе, держа Pirate Saber.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе, держа Pirate Saber.",
+        "",
+        "Зачем: Призыв оружием и его расход прочности.",
+        "",
+        "Совет: Разберитесь с призывом двух помощников и расходом прочности. Их появление, участие в бою и нанесённый ими урон не входят в условия.",
+        "",
+        "Награда: Пиратское снабжение за использование своей сабли, без новой редкой экипировки.",
+        "",
+        "Рекомендуемый путь: 29.02 · Проклятый корабль. Порядок свободный."
+      ],
+      "icon": "block_factorys_bosses:pirate_saber",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "206F0EEC3F4C9C68",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе, держа Pirate Saber.",
+          "icon": "block_factorys_bosses:pirate_saber",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27187CA475E63CFD",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_atlantean_arrow",
+          "count": 48,
+          "claim_key": "boss_loot_04/item/0",
+          "claim_reward_id": "27187CA475E63CFD",
+          "team_reward": false
+        },
+        {
+          "id": "28E924C781FA5C48",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "boss_loot_04/item/1",
+          "claim_reward_id": "28E924C781FA5C48",
+          "team_reward": false
+        },
+        {
+          "id": "23A524E1B9FD3BE3",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 6,
+          "claim_key": "boss_loot_04/item/2",
+          "claim_reward_id": "23A524E1B9FD3BE3",
+          "team_reward": false
+        },
+        {
+          "id": "29F5C0C0CC1CE5F5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "288A75170B1B9058",
+      "title": "29.05 · Трезубец без случайностей",
+      "subtitle": "Нажать ПКМ в воздухе, держа Kraken Trident.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе, держа Kraken Trident.",
+        "",
+        "Зачем: Морское оружие и осадная ветка.",
+        "",
+        "Совет: Испытайте стягивание и контроль. Дальнейшие применения пушки и боеприпасов остаются морской/осадной веткой. ПКМ не объявляется попаданием.",
+        "",
+        "Награда: Запас для морских боёв за использование своего трезубца.",
+        "",
+        "Рекомендуемый путь: 29.02 · Проклятый корабль. Порядок свободный."
+      ],
+      "icon": "block_factorys_bosses:kraken_trident",
+      "x": -8.07,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2402E12D763DE9AF",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе, держа Kraken Trident.",
+          "icon": "block_factorys_bosses:kraken_trident",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29C8F233A4F0602A",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_atlantean_arrow",
+          "count": 32,
+          "claim_key": "boss_loot_05/item/0",
+          "claim_reward_id": "29C8F233A4F0602A",
+          "team_reward": false
+        },
+        {
+          "id": "2E335C2F7AF7E398",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 8,
+          "claim_key": "boss_loot_05/item/1",
+          "claim_reward_id": "2E335C2F7AF7E398",
+          "team_reward": false
+        },
+        {
+          "id": "2F69784D19138E81",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "boss_loot_05/item/2",
+          "claim_reward_id": "2F69784D19138E81",
+          "team_reward": false
+        },
+        {
+          "id": "274E412B21EEBBE1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "209875E9ED8FB606",
+      "title": "29.06 · Вещь умеет больше",
+      "subtitle": "Получить часть Dragon Armor, Skor Gauntlet или Sirok Gauntlet.",
+      "description": [
+        "Что сделать: Получить часть Dragon Armor, Skor Gauntlet или Sirok Gauntlet.",
+        "",
+        "Зачем: Нативные умения трофейной брони/оружия.",
+        "",
+        "Совет: После соответствующего босса примените собственную функцию выбранного трофея: броню, удар или управление противником. Детектор не распознаёт анимацию либо результат способности.",
+        "",
+        "Награда: Редкие расходные материалы для развития уже полученной трофейной брони."
+      ],
+      "icon": "block_factorys_bosses:dragon_bones_boots",
+      "x": -6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24323A5A416465B7",
+          "type": "custom",
+          "title": "Получить часть Dragon Armor, Skor Gauntlet или Sirok Gauntlet.",
+          "icon": "block_factorys_bosses:dragon_bones_boots",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B9B3FD087AC6EA1",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_ingot",
+          "count": 24,
+          "claim_key": "boss_loot_06/item/0",
+          "claim_reward_id": "2B9B3FD087AC6EA1",
+          "team_reward": false
+        },
+        {
+          "id": "2E62A828F39F5F05",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 6,
+          "claim_key": "boss_loot_06/item/1",
+          "claim_reward_id": "2E62A828F39F5F05",
+          "team_reward": false
+        },
+        {
+          "id": "26F660E6721B1C31",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_oakskin_elixir",
+          "count": 8,
+          "claim_key": "boss_loot_06/item/2",
+          "claim_reward_id": "26F660E6721B1C31",
+          "team_reward": false
+        },
+        {
+          "id": "25E6E6648D803823",
+          "type": "jem_advancements:quest_xp",
+          "xp": 300,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23B8035F5DE1C697",
+      "title": "29.07 · Малые стражи",
+      "subtitle": "Победить 3 разных вида малых стражей Cataclysm из списка.",
+      "description": [
+        "Что сделать: Победить 3 разных вида малых стражей Cataclysm из списка.",
+        "",
+        "Зачем: Остальные dungeon-стражи и материалы.",
+        "",
+        "Совет: Все шесть встреч имеют собственные материалы и приёмы. Выберите доступные вашему измерению; Ender Golem не заставляет получать доступ в End раньше нативной кампании.",
+        "",
+        "Награда: Три разных сильных стража заслуживают полезный редкий приз по выбору игрока."
+      ],
+      "icon": "cataclysm:ender_golem_spawn_egg",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "261E52B30707D8AA",
+          "type": "custom",
+          "title": "Победить 3 разных вида малых стражей Cataclysm из списка.",
+          "icon": "cataclysm:ender_golem_spawn_egg",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21C43F2C1A56A212",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_lightning_arrow",
+          "count": 48,
+          "claim_key": "boss_loot_07/item/0",
+          "claim_reward_id": "21C43F2C1A56A212",
+          "team_reward": false
+        },
+        {
+          "id": "2E754B0FBC7EED96",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 8,
+          "claim_key": "boss_loot_07/item/1",
+          "claim_reward_id": "2E754B0FBC7EED96",
+          "team_reward": false
+        },
+        {
+          "id": "21758C5A0BEC68DB",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 24,
+          "claim_key": "boss_loot_07/item/2",
+          "claim_reward_id": "21758C5A0BEC68DB",
+          "team_reward": false
+        },
+        {
+          "id": "24A787FC9E0730DE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 850,
+          "team_reward": false
+        },
+        {
+          "id": "2F2006AD75D6FCAB",
+          "type": "choice",
+          "table_id": 2974870567576760264L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29AD5A24C4CC0D6D",
+      "title": "29.08 · Повторная встреча",
+      "subtitle": "Получить один существующий личный зачёт завершённого Raid.",
+      "description": [
+        "Что сделать: Получить один существующий личный зачёт завершённого Raid.",
+        "",
+        "Зачем: Нативные два различных ресурса + зачарованная книга; skill books не добавлять.",
+        "",
+        "Совет: У зарегистрированного побеждённого структурного босса выберите допустимый Raid. Обычный Raid поддерживается и в integrated world, отдельно от расписания событий. Нативно выдаются два разных ресурса и зачарованная книга; skill books не добавляются.",
+        "",
+        "Награда: Личный native-зачёт завершённого рейда даёт выбор полезного снаряжения и запас на следующую оборону."
+      ],
+      "icon": "xtraarrows:diamond_lightning_arrow",
+      "x": -2.52,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DF3ABFCC6DF0AA1",
+          "type": "custom",
+          "title": "Получить один существующий личный зачёт завершённого Raid.",
+          "icon": "xtraarrows:diamond_lightning_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2FBBA8E916E6D830",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_lightning_arrow",
+          "count": 32,
+          "claim_key": "boss_loot_08/item/0",
+          "claim_reward_id": "2FBBA8E916E6D830",
+          "team_reward": false
+        },
+        {
+          "id": "24CB095625FA95FF",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 24,
+          "claim_key": "boss_loot_08/item/1",
+          "claim_reward_id": "24CB095625FA95FF",
+          "team_reward": false
+        },
+        {
+          "id": "28D77DFCACD22590",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 8,
+          "claim_key": "boss_loot_08/item/2",
+          "claim_reward_id": "28D77DFCACD22590",
+          "team_reward": false
+        },
+        {
+          "id": "2B89C175C41DEB70",
+          "type": "jem_advancements:quest_xp",
+          "xp": 650,
+          "team_reward": false
+        },
+        {
+          "id": "23E7BDF619E25659",
+          "type": "choice",
+          "table_id": 2605360096682678642L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "boss_loot_08",
+      "jem_required_mods": [
+        "jem_server"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": true
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Основной маршрут",
+      "order": -5,
+      "hover": [
+        "Основной маршрут"
+      ]
+    }
+  ],
+  "autofocus_id": "28566F0E9AAC8333"
+}

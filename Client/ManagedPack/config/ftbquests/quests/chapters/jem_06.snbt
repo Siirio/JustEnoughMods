@@ -1,0 +1,918 @@
+{
+  "id": "2412AD6A695F5897",
+  "filename": "jem_06",
+  "title": "Рыбалка по условиям",
+  "subtitle": [
+    "Когда: Сразу с удочкой Tide. Среда и доступ к ресурсам ограничиваются самой игрой.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "tide:fishing_journal",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 5,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2B487C23B73A4676",
+      "title": "06.01 · Первая настоящая поклёвка",
+      "subtitle": "Поймать 1 треску, лосося или синежаберного солнечника удочкой.",
+      "description": [
+        "Что сделать: Поймать 1 треску, лосося или синежаберного солнечника удочкой.",
+        "",
+        "Зачем: Журнал считает настоящий улов, а не купленную/подаренную рыбу.",
+        "",
+        "Совет: Обычная ванильная удочка отключена — пользуйся Tide. Журнал сам отмечает настоящий улов; открытие записи и прохождение мини-игры отдельно не проверяются.",
+        "",
+        "Награда: Первый настоящий улов даёт рабочую удочку и заметный запас наживки."
+      ],
+      "icon": "minecraft:cod",
+      "x": -5.3,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22F02AADBB6F73EB",
+          "type": "custom",
+          "title": "Поймать 1 треску, лосося или синежаберного солнечника удочкой.",
+          "icon": "minecraft:cod",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F82B845C76879A2",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:iron_fishing_rod",
+          "count": 1,
+          "claim_key": "H04.01/item/0",
+          "claim_reward_id": "2F82B845C76879A2",
+          "team_reward": false
+        },
+        {
+          "id": "23F1D574CD2B2024",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 32,
+          "claim_key": "H04.01/item/1",
+          "claim_reward_id": "23F1D574CD2B2024",
+          "team_reward": false
+        },
+        {
+          "id": "2758D4B233D04A0A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23625EC5ACC25CFE",
+      "title": "06.02 · Записка рыболову",
+      "subtitle": "Нажать ПКМ в воздухе с Fishy Note Tide.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Fishy Note Tide.",
+        "",
+        "Зачем: Поиск по времени, температуре, глубине и погоде.",
+        "",
+        "Совет: Записка помогает искать условия для рыбы: время, температуру, глубину и погоду. Читать условия полезно, но сервер не оценивает место и поиск.",
+        "",
+        "Награда: Рыбацкий справочник снабжается наживкой, чтобы советы сразу было на чём применять.",
+        "",
+        "Рекомендуемый путь: 06.01 · Первая настоящая поклёвка. Порядок свободный."
+      ],
+      "icon": "tide:fishy_note",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22E1F4B0470790D3",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Fishy Note Tide.",
+          "icon": "tide:fishy_note",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F0D5398EC847D36",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:bait",
+          "count": 64,
+          "claim_key": "H04.02/item/0",
+          "claim_reward_id": "2F0D5398EC847D36",
+          "team_reward": false
+        },
+        {
+          "id": "29DE2C3345D79128",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:magnetic_bait",
+          "count": 16,
+          "claim_key": "H04.02/item/1",
+          "claim_reward_id": "29DE2C3345D79128",
+          "team_reward": false
+        },
+        {
+          "id": "2FCD4E68E4A58FF6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24523ECE4B153FC0",
+      "title": "06.03 · Место для оснастки",
+      "subtitle": "Поставить 1 Angling Table Tide.",
+      "description": [
+        "Что сделать: Поставить 1 Angling Table Tide.",
+        "",
+        "Зачем: Разные роли оснастки; поплавок — косметическая настройка.",
+        "",
+        "Совет: Через стол выбирают крючок, леску, наживку и поплавок. Изменение удочки и улов этой удочкой не проверяются.",
+        "",
+        "Награда: Рыбацкий стол получает несколько комплектов оснастки и расходный запас.",
+        "",
+        "Рекомендуемый путь: 06.01 · Первая настоящая поклёвка. Порядок свободный."
+      ],
+      "icon": "tide:angling_table",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24F391FF163F0C82",
+          "type": "custom",
+          "title": "Поставить 1 Angling Table Tide.",
+          "icon": "tide:angling_table",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EEF6BAE30C1C389",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:copper_line",
+          "count": 4,
+          "claim_key": "H04.03/item/0",
+          "claim_reward_id": "2EEF6BAE30C1C389",
+          "team_reward": false
+        },
+        {
+          "id": "2C13C43C045A5696",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:golden_line",
+          "count": 2,
+          "claim_key": "H04.03/item/1",
+          "claim_reward_id": "2C13C43C045A5696",
+          "team_reward": false
+        },
+        {
+          "id": "27598AE4009424A8",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:bait",
+          "count": 32,
+          "claim_key": "H04.03/item/2",
+          "claim_reward_id": "27598AE4009424A8",
+          "team_reward": false
+        },
+        {
+          "id": "2134AA55EBEE2002",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "289E5E27C5EE9ABF",
+      "title": "06.04 · Погоду можно измерить",
+      "subtitle": "Получить часы, климатический датчик, глубиномер и погодное радио Tide.",
+      "description": [
+        "Что сделать: Получить часы, климатический датчик, глубиномер и погодное радио Tide.",
+        "",
+        "Зачем: Полезность приборов; позднее объединение в Fish Finder.",
+        "",
+        "Совет: Все четыре прибора объясняют разные условия. Позднее их можно объединить в Fish Finder. Это одна коллекция предметов, без проверки показаний.",
+        "",
+        "Награда: Собранный набор четырёх приборов заслуживает полноценной улучшенной удочки.",
+        "",
+        "Рекомендуемый путь: 06.02 · Записка рыболову. Порядок свободный."
+      ],
+      "icon": "tide:pocket_watch",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F5230570E51A745",
+          "type": "item",
+          "item": "tide:pocket_watch",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2B51CC02B0AC4365",
+          "type": "item",
+          "item": "tide:climate_gauge",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "265AF80A632293D7",
+          "type": "item",
+          "item": "tide:depth_meter",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2FBE0390100A8B95",
+          "type": "item",
+          "item": "tide:weather_radio",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "246748D1DE61BEEC",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:diamond_fishing_rod",
+          "count": 1,
+          "claim_key": "H04.04/item/0",
+          "claim_reward_id": "246748D1DE61BEEC",
+          "team_reward": false
+        },
+        {
+          "id": "26FF22C88E89B9AC",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:magnetic_bait",
+          "count": 32,
+          "claim_key": "H04.04/item/1",
+          "claim_reward_id": "26FF22C88E89B9AC",
+          "team_reward": false
+        },
+        {
+          "id": "2BADFDBDEEBB843B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "271858507A6AF842",
+      "title": "06.05 · Место для трофея",
+      "subtitle": "Поставить 1 Fish Display.",
+      "description": [
+        "Что сделать: Поставить 1 Fish Display.",
+        "",
+        "Зачем: Размеры особей и масштабируемый трофей.",
+        "",
+        "Совет: Выставь любимый улов и сравни размеры рыб в журнале. Личный рекорд, размер и наполнение витрины не являются условиями.",
+        "",
+        "Награда: Первый экспонат продолжается небольшой рыбацкой галереей.",
+        "",
+        "Рекомендуемый путь: 06.01 · Первая настоящая поклёвка. Порядок свободный."
+      ],
+      "icon": "tide:fish_display",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2122794F44CE3241",
+          "type": "custom",
+          "title": "Поставить 1 Fish Display.",
+          "icon": "tide:fish_display",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AE6B0A0F31F6416",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:fish_display",
+          "count": 8,
+          "claim_key": "H04.05/item/0",
+          "claim_reward_id": "2AE6B0A0F31F6416",
+          "team_reward": false
+        },
+        {
+          "id": "20413F015EDCBFFC",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:fishing_lures",
+          "count": 8,
+          "claim_key": "H04.05/item/1",
+          "claim_reward_id": "20413F015EDCBFFC",
+          "team_reward": false
+        },
+        {
+          "id": "22A3D401B80D5B0E",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:glass_buoy",
+          "count": 16,
+          "claim_key": "H04.05/item/2",
+          "claim_reward_id": "22A3D401B80D5B0E",
+          "team_reward": false
+        },
+        {
+          "id": "2950ED04686E2A23",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "255DA1B683E48E47",
+      "title": "06.06 · Сумка для улова",
+      "subtitle": "Нажать ПКМ в воздухе с Fish Satchel Tide.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Fish Satchel Tide.",
+        "",
+        "Зачем: Хранение индивидуальных рыб с размером/NBT.",
+        "",
+        "Совет: Открытая сумка принимает рыбу и сохраняет её индивидуальные данные. Перенос улова именно в сумку не отслеживается.",
+        "",
+        "Награда: Сумка сопровождается оснасткой и запасом для более длинной рыбалки.",
+        "",
+        "Рекомендуемый путь: 06.03 · Место для оснастки. Порядок свободный."
+      ],
+      "icon": "tide:fish_satchel",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22D7EB33457E04F0",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Fish Satchel Tide.",
+          "icon": "tide:fish_satchel",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E2900945B2BED58",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:diamond_line",
+          "count": 2,
+          "claim_key": "H04.06/item/0",
+          "claim_reward_id": "2E2900945B2BED58",
+          "team_reward": false
+        },
+        {
+          "id": "26BA4CF632CB83C4",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:magnetic_bait",
+          "count": 32,
+          "claim_key": "H04.06/item/1",
+          "claim_reward_id": "26BA4CF632CB83C4",
+          "team_reward": false
+        },
+        {
+          "id": "274552CCDD815FE3",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:bait",
+          "count": 64,
+          "claim_key": "H04.06/item/2",
+          "claim_reward_id": "274552CCDD815FE3",
+          "team_reward": false
+        },
+        {
+          "id": "279A39BB7203C8D6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "225DFC416082B882",
+      "title": "06.07 · Живая рыба в ведре",
+      "subtitle": "Получить 1 ведро с треской, лососем или синежаберным солнечником Tide.",
+      "description": [
+        "Что сделать: Получить 1 ведро с треской, лососем или синежаберным солнечником Tide.",
+        "",
+        "Зачем: Живой улов, ведро, аквариум.",
+        "",
+        "Совет: Свежую совместимую рыбу Tide можно переносить живой. Fishing Real работает только для реально настроенных конверсий. Выпуск в водоём — совет, не условие.",
+        "",
+        "Награда: Первая живая рыба отмечается узнаваемыми поплавками и оформлением аквариума; редкая рыба наградой не создаётся.",
+        "",
+        "Рекомендуемый путь: 06.01 · Первая настоящая поклёвка. Порядок свободный."
+      ],
+      "icon": "minecraft:cod_bucket",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "295D1C9828B42694",
+          "type": "custom",
+          "title": "Получить 1 ведро с треской, лососем или синежаберным солнечником Tide.",
+          "icon": "minecraft:cod_bucket",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28FE5F53DBDF0A24",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:heart_bobber",
+          "count": 1,
+          "claim_key": "H04.07/item/0",
+          "claim_reward_id": "28FE5F53DBDF0A24",
+          "team_reward": false
+        },
+        {
+          "id": "281D76D554B691B1",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:nautilus_bobber",
+          "count": 1,
+          "claim_key": "H04.07/item/1",
+          "claim_reward_id": "281D76D554B691B1",
+          "team_reward": false
+        },
+        {
+          "id": "24B58D13F9BB8A6B",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:glass_buoy",
+          "count": 32,
+          "claim_key": "H04.07/item/2",
+          "claim_reward_id": "24B58D13F9BB8A6B",
+          "team_reward": false
+        },
+        {
+          "id": "2AC46758070FE948",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D649A1C6DB57DB3",
+      "title": "06.08 · Необычная удочка",
+      "subtitle": "Получить 1 специальную удочку Tide: хрустальную, геройскую или призмариновую.",
+      "description": [
+        "Что сделать: Получить 1 специальную удочку Tide: хрустальную, геройскую или призмариновую.",
+        "",
+        "Зачем: Рыболовство связано с исследованиями, деревнями и боссами.",
+        "",
+        "Совет: Такие снасти связывают рыбалку с исследованиями, торговлей и находками. Источник конкретной удочки и её первый улов не отслеживаются.",
+        "",
+        "Награда: После самостоятельного получения необычной удочки можно выбрать второй стиль оснастки.",
+        "",
+        "Рекомендуемый путь: 06.03 · Место для оснастки. Порядок свободный."
+      ],
+      "icon": "tide:crystal_fishing_rod",
+      "x": -5.3,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21752B08D3CEF9D6",
+          "type": "custom",
+          "title": "Получить 1 специальную удочку Tide: хрустальную, геройскую или призмариновую.",
+          "icon": "tide:crystal_fishing_rod",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22892282FBDAF9DB",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 32,
+          "claim_key": "H04.08/item/0",
+          "claim_reward_id": "22892282FBDAF9DB",
+          "team_reward": false
+        },
+        {
+          "id": "2313A6F22828D7B5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        },
+        {
+          "id": "2E3E907FE416570B",
+          "type": "choice",
+          "table_id": 3335613233292436078L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "238CE5C65DD072B4",
+      "title": "06.09 · Лава тоже водоём",
+      "subtitle": "Поймать 1 магмовую скумбрию Tide.",
+      "description": [
+        "Что сделать: Поймать 1 магмовую скумбрию Tide.",
+        "",
+        "Зачем: Лавовая фауна и другой ритм мини-игры.",
+        "",
+        "Совет: Огнеупорный крючок открывает ловлю в лаве. Выбери удобное место; наличие платформы, оснастка и среда не проверяются отдельными условиями.",
+        "",
+        "Награда: Реальный лавовый улов вознаграждается полноценным набором для продолжения лавовой рыбалки.",
+        "",
+        "Рекомендуемый путь: 06.03 · Место для оснастки. Порядок свободный."
+      ],
+      "icon": "tide:magma_mackerel",
+      "x": 4.38,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24DEC6B3A3A20B92",
+          "type": "custom",
+          "title": "Поймать 1 магмовую скумбрию Tide.",
+          "icon": "tide:magma_mackerel",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "212B0C8AFCFEF915",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:blazing_fishing_rod",
+          "count": 1,
+          "claim_key": "H04.09/item/0",
+          "claim_reward_id": "212B0C8AFCFEF915",
+          "team_reward": false
+        },
+        {
+          "id": "28F08D1999991419",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:incandescent_bait",
+          "count": 48,
+          "claim_key": "H04.09/item/1",
+          "claim_reward_id": "28F08D1999991419",
+          "team_reward": false
+        },
+        {
+          "id": "240C3310437C2718",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lavaproof_hook",
+          "count": 2,
+          "claim_key": "H04.09/item/2",
+          "claim_reward_id": "240C3310437C2718",
+          "team_reward": false
+        },
+        {
+          "id": "2B51838EC3D23C31",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20A84D5EE9D4247F",
+      "title": "06.10 · Леска в пустоте",
+      "subtitle": "Поймать 1 искателя Бездны Tide.",
+      "description": [
+        "Что сделать: Поймать 1 искателя Бездны Tide.",
+        "",
+        "Зачем: Рыбалка в пустоте.",
+        "",
+        "Совет: Крючок Бездны открывает соответствующий вылов. Следуй нативным условиям рыбы и доступу к измерениям; победа над драконом не добавляется как лишняя квестовая зависимость.",
+        "",
+        "Награда: Пойманный искатель Бездны заслуживает редкой удочки и большого запаса оснастки своего направления.",
+        "",
+        "Рекомендуемый путь: 06.09 · Лава тоже водоём. Порядок свободный."
+      ],
+      "icon": "tide:voidseeker",
+      "x": 6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CB2C34035168129",
+          "type": "custom",
+          "title": "Поймать 1 искателя Бездны Tide.",
+          "icon": "tide:voidseeker",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D245072A7615CB0",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:echo_fishing_rod",
+          "count": 1,
+          "claim_key": "H04.10/item/0",
+          "claim_reward_id": "2D245072A7615CB0",
+          "team_reward": false
+        },
+        {
+          "id": "25C0DE2335B2A1A7",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:abyss_bait",
+          "count": 48,
+          "claim_key": "H04.10/item/1",
+          "claim_reward_id": "25C0DE2335B2A1A7",
+          "team_reward": false
+        },
+        {
+          "id": "29F61045F961039E",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:void_hook",
+          "count": 2,
+          "claim_key": "H04.10/item/2",
+          "claim_reward_id": "29F61045F961039E",
+          "team_reward": false
+        },
+        {
+          "id": "273B680553F680AD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28E932BDEEE7B50D",
+      "title": "06.11 · Золотая легенда",
+      "subtitle": "Поймать 1 золотую рыбку Мидаса Tide.",
+      "description": [
+        "Что сделать: Поймать 1 золотую рыбку Мидаса Tide.",
+        "",
+        "Зачем: Самостоятельное исследование редкого вылова.",
+        "",
+        "Совет: Посмотри её условия в текущем журнале. Редкость обеспечивается нативным выловом; отдельный контроль погоды, удачи или биома квесту не нужен.",
+        "",
+        "Награда: Редкий реальный улов Мидаса получает дорогую рабочую удочку и полный запас наживки; готовая удочка Мидаса не выдаётся.",
+        "",
+        "Рекомендуемый путь: 06.04 · Погоду можно измерить; 06.03 · Место для оснастки. Порядок свободный."
+      ],
+      "icon": "tide:midas_fish",
+      "x": -6.22,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "243CF6D3F5E646E5",
+          "type": "custom",
+          "title": "Поймать 1 золотую рыбку Мидаса Tide.",
+          "icon": "tide:midas_fish",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "235C159EF63C349A",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:netherite_fishing_rod",
+          "count": 1,
+          "claim_key": "H04.11/item/0",
+          "claim_reward_id": "235C159EF63C349A",
+          "team_reward": false
+        },
+        {
+          "id": "224F0037DF992CA1",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:golden_line",
+          "count": 4,
+          "claim_key": "H04.11/item/1",
+          "claim_reward_id": "224F0037DF992CA1",
+          "team_reward": false
+        },
+        {
+          "id": "23E2D828D00F6C6D",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 64,
+          "claim_key": "H04.11/item/2",
+          "claim_reward_id": "23E2D828D00F6C6D",
+          "team_reward": false
+        },
+        {
+          "id": "25E7106B8F00E28E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2991E92421D054E3",
+      "title": "06.12 · Снасть из легенды",
+      "subtitle": "Получить 1 золотую удочку Мидаса Tide.",
+      "description": [
+        "Что сделать: Получить 1 золотую удочку Мидаса Tide.",
+        "",
+        "Зачем: Уникальные поздние рецепты Tide.",
+        "",
+        "Совет: Изучай поздние рецепты своего улова в JEI. Самостоятельное получение рыбы и изготовление предмета не связываются в одну обязательную историю.",
+        "",
+        "Награда: Самостоятельно полученная удочка Мидаса заслуживает продвинутого прибора, оснастки и коллекционного поплавка.",
+        "",
+        "Рекомендуемый путь: 06.11 · Золотая легенда. Порядок свободный."
+      ],
+      "icon": "tide:midas_fishing_rod",
+      "x": -4.38,
+      "y": 12.8,
+      "shape": "diamond",
+      "size": 1.25,
+      "tasks": [
+        {
+          "id": "2FCDEDBA5371074A",
+          "type": "item",
+          "item": "tide:midas_fishing_rod",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CC742F5F7DDCC1C",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:enchanted_pocket_watch",
+          "count": 1,
+          "claim_key": "H04.12/item/0",
+          "claim_reward_id": "2CC742F5F7DDCC1C",
+          "team_reward": false
+        },
+        {
+          "id": "2DAF99E69FB58B22",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:diamond_line",
+          "count": 4,
+          "claim_key": "H04.12/item/1",
+          "claim_reward_id": "2DAF99E69FB58B22",
+          "team_reward": false
+        },
+        {
+          "id": "2D393789ED1072DA",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:magnetic_bait",
+          "count": 64,
+          "claim_key": "H04.12/item/2",
+          "claim_reward_id": "2D393789ED1072DA",
+          "team_reward": false
+        },
+        {
+          "id": "2E8F794BF56DAFA3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 320,
+          "team_reward": false
+        },
+        {
+          "id": "2B75A744BA5AF58E",
+          "type": "choice",
+          "table_id": 3256736671050196827L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H04.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:основа",
+      "order": -5,
+      "hover": [
+        "основа"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:исследование",
+      "order": -5,
+      "hover": [
+        "исследование"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:оснащение",
+      "order": -5,
+      "hover": [
+        "оснащение"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:коллекция",
+      "order": -5,
+      "hover": [
+        "коллекция"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:приключения",
+      "order": -5,
+      "hover": [
+        "приключения"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:среды",
+      "order": -5,
+      "hover": [
+        "среды"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 11.1,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:мастерство",
+      "order": -5,
+      "hover": [
+        "мастерство"
+      ]
+    }
+  ],
+  "autofocus_id": "2B487C23B73A4676"
+}

@@ -26,6 +26,10 @@ public final class FtbQuestBridge {
     private FtbQuestBridge() {}
 
     public static void register() {
+        BookItemReward.register();
+        BookXpReward.register();
+        MinecraftForge.EVENT_BUS.register(BookEvents.class);
+        if (QuestSignals.loaded("jem_economy")) BookEconomyEvents.register();
         CustomTaskEvent.EVENT.register(event -> {
             CustomTask task = event.getTask();
             Long dormantMaximum = FtbQuestProjection.dormantMaximum(task.getQuestFile(), task.id);
@@ -35,6 +39,7 @@ public final class FtbQuestBridge {
                 task.setCheckTimer(0);
                 return EventResult.pass();
             }
+            if (BookRules.bind(task)) return EventResult.pass();
             String race = RACES.get(task.id);
             if (race == null && task.id != CAMPAIGN) return EventResult.pass();
             task.setEnableButton(false);
@@ -66,5 +71,5 @@ public final class FtbQuestBridge {
     }
 
     @SubscribeEvent
-    public static void stopped(ServerStoppedEvent event) { FtbQuestProjection.clear(event.getServer()); }
+    public static void stopped(ServerStoppedEvent event) { FtbQuestProjection.clear(event.getServer()); BookEvents.clear(); }
 }

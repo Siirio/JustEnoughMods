@@ -1,0 +1,896 @@
+{
+  "id": "1000000000000003",
+  "filename": "jem_02",
+  "title": "Своя природа",
+  "subtitle": [
+    "Когда: Сразу. Видны все описания; выполнять ветви других рас не требуется.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "minecraft:totem_of_undying",
+  "group": "2FAB9DA418A66ECD",
+  "order_index": 1,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "1100000000000093",
+      "title": "02.01 · Кто ты?",
+      "subtitle": "Выбрать расу через штатный экран JEM.",
+      "description": [
+        "Что сделать: Выбрать расу через штатный экран JEM.",
+        "",
+        "Зачем: Собственная ветка способностей; главы других занятий доступны независимо от расы.",
+        "",
+        "Совет: У каждой расы свой стиль. Выбор не закрывает ферму, технику, исследования и другие занятия.",
+        "",
+        "Награда: Стартовый походный паёк после выбора природы персонажа."
+      ],
+      "icon": "bakery:vegetable_sandwich",
+      "x": -0.93,
+      "y": -2.3,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "1110000000000093",
+          "type": "custom",
+          "title": "Выбрать расу через штатный экран JEM.",
+          "icon": "bakery:vegetable_sandwich",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2159090A0421CC79",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:vegetable_sandwich",
+          "count": 12,
+          "claim_key": "races_01/item/0",
+          "claim_reward_id": "2159090A0421CC79",
+          "team_reward": false
+        },
+        {
+          "id": "2F87780761CA7416",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_01",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "292F32C6F9A5FBA9",
+      "title": "02.02 · Первый опыт",
+      "subtitle": "Получить 1 успешное применение в нативном счётчике мастерства выбранной расы.",
+      "description": [
+        "Что сделать: Получить 1 успешное применение в нативном счётчике мастерства выбранной расы.",
+        "",
+        "Зачем: Сигнатурная способность, дополнительное умение, ограничения и ступени Base/I/II/III.",
+        "",
+        "Совет: Прочитай условия умения в расовом экране. Сервер сам отличает полезное применение от пустой попытки.",
+        "",
+        "Награда: Первое успешное применение отмечается опытом и расходным запасом, без выдачи редкой экипировки.",
+        "",
+        "Рекомендуемый путь: 02.01 · Кто ты?. Порядок свободный."
+      ],
+      "icon": "create:experience_nugget",
+      "x": 0.93,
+      "y": -2.3,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F90DEAA8EACE8E0",
+          "type": "custom",
+          "title": "Получить 1 успешное применение в нативном счётчике мастерства выбранной расы.",
+          "icon": "create:experience_nugget",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2775A3D10E24D23C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:experience_nugget",
+          "count": 16,
+          "claim_key": "races_02/item/0",
+          "claim_reward_id": "2775A3D10E24D23C",
+          "team_reward": false
+        },
+        {
+          "id": "2A076080CB0DF3C2",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_glazed_cookie",
+          "count": 12,
+          "claim_key": "races_02/item/1",
+          "claim_reward_id": "2A076080CB0DF3C2",
+          "team_reward": false
+        },
+        {
+          "id": "2B7BCDB0D031636D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_02",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A9E448F2B03CF1E",
+      "title": "02.03 · Предки: полевая помощь",
+      "subtitle": "Засчитать 2 успешных применения способностей Предков.",
+      "description": [
+        "Что сделать: Засчитать 2 успешных применения способностей Предков.",
+        "",
+        "Зачем: Лечение отряда/ездовых животных; защитная сторона способности.",
+        "",
+        "Совет: Лечение помогает раненым игрокам и подходящим мирным животным/маунтам; после него действует защитное окно. Проверяется общий счётчик Предков, а не отдельный факт лечения.",
+        "",
+        "Награда: Практичный инструмент и материалы подходят мастерскому характеру Предков.",
+        "",
+        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+      ],
+      "icon": "handcrafted:hammer",
+      "x": -9.6,
+      "y": 3.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C18766A571F377B",
+          "type": "custom",
+          "title": "Засчитать 2 успешных применения способностей Предков.",
+          "icon": "handcrafted:hammer",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "225B2898D2C04599",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:hammer",
+          "count": 1,
+          "claim_key": "races_03/item/0",
+          "claim_reward_id": "225B2898D2C04599",
+          "team_reward": false
+        },
+        {
+          "id": "2BAACCC1E2D4089C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 24,
+          "claim_key": "races_03/item/1",
+          "claim_reward_id": "2BAACCC1E2D4089C",
+          "team_reward": false
+        },
+        {
+          "id": "24759283F19299A9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_03",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2286981633C9E6B3",
+      "title": "02.04 · Предки: защитник",
+      "subtitle": "Засчитать 3 успешных применения способностей Предков.",
+      "description": [
+        "Что сделать: Засчитать 3 успешных применения способностей Предков.",
+        "",
+        "Зачем: Автоматический хранитель и его условия.",
+        "",
+        "Совет: Автоматический хранитель появляется при нативных условиях опасности. Узнай его ограничения; намеренно ранить себя не нужно. Появление и бой хранителя не входят в проверку.",
+        "",
+        "Награда: Небольшой запас для работы и чар за ещё одно подтверждённое применение.",
+        "",
+        "Рекомендуемый путь: 02.03 · Предки: полевая помощь. Порядок свободный."
+      ],
+      "icon": "bbb:stone_brick_layer",
+      "x": -9.6,
+      "y": 5.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "270287D3B34BF45B",
+          "type": "custom",
+          "title": "Засчитать 3 успешных применения способностей Предков.",
+          "icon": "bbb:stone_brick_layer",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2804BDD539774F3A",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 64,
+          "claim_key": "races_04/item/0",
+          "claim_reward_id": "2804BDD539774F3A",
+          "team_reward": false
+        },
+        {
+          "id": "264C359CE82894D3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:experience_nugget",
+          "count": 24,
+          "claim_key": "races_04/item/1",
+          "claim_reward_id": "264C359CE82894D3",
+          "team_reward": false
+        },
+        {
+          "id": "21C51109F2A280A0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_04",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2255A956F85E54F0",
+      "title": "02.05 · Пустота: точка прибытия",
+      "subtitle": "Засчитать 2 успешных применения способностей Пустоты.",
+      "description": [
+        "Что сделать: Засчитать 2 успешных применения способностей Пустоты.",
+        "",
+        "Зачем: Дуга/точка телепорта, рифт, безопасное перемещение и атака.",
+        "",
+        "Совет: Изучи прицеливание жемчужины и Rift Ambush. Общий счётчик не доказывает конкретную связку телепорта с ударом.",
+        "",
+        "Награда: Плёнка для творческих экспериментов и оформление собственного убежища; два применения не приравниваются к редкому подвигу.",
+        "",
+        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+      ],
+      "icon": "exposure:high_sensitivity_black_and_white_film",
+      "x": -4.8,
+      "y": 3.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "268709E80A1BDB10",
+          "type": "custom",
+          "title": "Засчитать 2 успешных применения способностей Пустоты.",
+          "icon": "exposure:high_sensitivity_black_and_white_film",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A2C76731BC2B102",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_black_and_white_film",
+          "count": 8,
+          "claim_key": "races_05/item/0",
+          "claim_reward_id": "2A2C76731BC2B102",
+          "team_reward": false
+        },
+        {
+          "id": "2868FA7FE2E2CB57",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:purple_cushion",
+          "count": 16,
+          "claim_key": "races_05/item/1",
+          "claim_reward_id": "2868FA7FE2E2CB57",
+          "team_reward": false
+        },
+        {
+          "id": "292B9C799B62E3B3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_05",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24DDD72D224596A7",
+      "title": "02.06 · Пустота: свой вес",
+      "subtitle": "Засчитать 3 успешных применения способностей Пустоты.",
+      "description": [
+        "Что сделать: Засчитать 3 успешных применения способностей Пустоты.",
+        "",
+        "Зачем: Гравитационная utility-способность и ограничения расы.",
+        "",
+        "Совет: Shift+B управляет гравитацией; учитывай водную слабость. Пройденный путь, время режима и переключение назад не отслеживаются.",
+        "",
+        "Награда: Полезный творческий инструмент и угощение за освоение базового ритма Пустоты.",
+        "",
+        "Рекомендуемый путь: 02.05 · Пустота: точка прибытия. Порядок свободный."
+      ],
+      "icon": "exposure:camera",
+      "x": -4.8,
+      "y": 5.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "296C37952797FCCE",
+          "type": "custom",
+          "title": "Засчитать 3 успешных применения способностей Пустоты.",
+          "icon": "exposure:camera",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20D62561A98D0AA7",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:camera",
+          "count": 1,
+          "claim_key": "races_06/item/0",
+          "claim_reward_id": "20D62561A98D0AA7",
+          "team_reward": false
+        },
+        {
+          "id": "201C7F9AE50295B5",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_truffle",
+          "count": 16,
+          "claim_key": "races_06/item/1",
+          "claim_reward_id": "201C7F9AE50295B5",
+          "team_reward": false
+        },
+        {
+          "id": "231D2D4412896E30",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_06",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "221215ED94F7C755",
+      "title": "02.07 · Цветение: живой проход",
+      "subtitle": "Засчитать 2 успешных применения способностей Цветения.",
+      "description": [
+        "Что сделать: Засчитать 2 успешных применения способностей Цветения.",
+        "",
+        "Зачем: Временный мост; время жизни растёт со ступенью.",
+        "",
+        "Совет: Leaf Bridge создаёт временный проход. Проверь его на небольшой высоте; переход через разрыв не является условием.",
+        "",
+        "Награда: Цветение получает ощутимый запас для собственного огорода.",
+        "",
+        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+      ],
+      "icon": "farm_and_charm:fertilizer",
+      "x": 0.0,
+      "y": 3.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "242D1A84DDCCB2F1",
+          "type": "custom",
+          "title": "Засчитать 2 успешных применения способностей Цветения.",
+          "icon": "farm_and_charm:fertilizer",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2197F91F7261DE24",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:fertilizer",
+          "count": 32,
+          "claim_key": "races_07/item/0",
+          "claim_reward_id": "2197F91F7261DE24",
+          "team_reward": false
+        },
+        {
+          "id": "2E01E84664059771",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:strawberry_seeds",
+          "count": 16,
+          "claim_key": "races_07/item/1",
+          "claim_reward_id": "2E01E84664059771",
+          "team_reward": false
+        },
+        {
+          "id": "2ED5FA3D624AF728",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_07",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2004CC941F6B3CA6",
+      "title": "02.08 · Цветение: удержать врага",
+      "subtitle": "Засчитать 3 успешных применения способностей Цветения.",
+      "description": [
+        "Что сделать: Засчитать 3 успешных применения способностей Цветения.",
+        "",
+        "Зачем: Контроль; позднее сдавливание и яд.",
+        "",
+        "Совет: Лозы контролируют цель, поздние ступени усиливают эффект. Конкретный статус противника и продолжение боя не проверяются.",
+        "",
+        "Награда: Полезная фермерская экипировка и узнаваемый внешний вид вместо редкого боевого предмета за три применения.",
+        "",
+        "Рекомендуемый путь: 02.07 · Цветение: живой проход. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:farmer_boots",
+      "x": 0.0,
+      "y": 5.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28C8E5162B546119",
+          "type": "custom",
+          "title": "Засчитать 3 успешных применения способностей Цветения.",
+          "icon": "kaleidoscope_cookery:farmer_boots",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A174CA1BD8B671A",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:farmer_boots",
+          "count": 1,
+          "claim_key": "races_08/item/0",
+          "claim_reward_id": "2A174CA1BD8B671A",
+          "team_reward": false
+        },
+        {
+          "id": "2E2D663AE401C1C3",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:straw_hat_flower",
+          "count": 1,
+          "claim_key": "races_08/item/1",
+          "claim_reward_id": "2E2D663AE401C1C3",
+          "team_reward": false
+        },
+        {
+          "id": "2CE665D172BC493C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_08",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26E933FD377E1BAB",
+      "title": "02.09 · Скалк: услышать и ответить",
+      "subtitle": "Засчитать 2 успешных применения способностей Скалка.",
+      "description": [
+        "Что сделать: Засчитать 2 успешных применения способностей Скалка.",
+        "",
+        "Зачем: Две ситуации применения: поиск и бой.",
+        "",
+        "Совет: Эхо помогает обнаруживать, волна — сражаться. Квест читает уже сохранённое мастерство, без проверки радиуса и поражённых целей.",
+        "",
+        "Награда: Звуковой декор и плёнка поддерживают исследовательский стиль Скалка.",
+        "",
+        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+      ],
+      "icon": "chimes:amethyst_chimes",
+      "x": 4.8,
+      "y": 3.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F2AD5D0DEF67B3A",
+          "type": "custom",
+          "title": "Засчитать 2 успешных применения способностей Скалка.",
+          "icon": "chimes:amethyst_chimes",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2383165B122D919A",
+          "type": "jem_advancements:quest_item",
+          "item": "chimes:amethyst_chimes",
+          "count": 2,
+          "claim_key": "races_09/item/0",
+          "claim_reward_id": "2383165B122D919A",
+          "team_reward": false
+        },
+        {
+          "id": "28E649775D19E28B",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_black_and_white_film",
+          "count": 8,
+          "claim_key": "races_09/item/1",
+          "claim_reward_id": "28E649775D19E28B",
+          "team_reward": false
+        },
+        {
+          "id": "2984792AE52ACA3B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_09",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28D1F90243FF0CF5",
+      "title": "02.10 · Скалк: резонанс",
+      "subtitle": "Засчитать 3 успешных применения способностей Скалка.",
+      "description": [
+        "Что сделать: Засчитать 3 успешных применения способностей Скалка.",
+        "",
+        "Зачем: Восстановление/поглощение и выбор между эхом и расходом резонанса.",
+        "",
+        "Совет: Резонанс можно тратить на восстановление и поглощение. Изменения ресурса внутри одной связки отдельно не отслеживаются.",
+        "",
+        "Награда: Музыкальный инструмент и походный запас дают ощутимую награду без скачка боевой силы.",
+        "",
+        "Рекомендуемый путь: 02.09 · Скалк: услышать и ответить. Порядок свободный."
+      ],
+      "icon": "immersive_melodies:didgeridoo",
+      "x": 4.8,
+      "y": 5.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "265DE6E3E4E6EB9D",
+          "type": "custom",
+          "title": "Засчитать 3 успешных применения способностей Скалка.",
+          "icon": "immersive_melodies:didgeridoo",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "268D572E0A89C4F3",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_melodies:didgeridoo",
+          "count": 1,
+          "claim_key": "races_10/item/0",
+          "claim_reward_id": "268D572E0A89C4F3",
+          "team_reward": false
+        },
+        {
+          "id": "2472985FF8295147",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:goulash",
+          "count": 16,
+          "claim_key": "races_10/item/1",
+          "claim_reward_id": "2472985FF8295147",
+          "team_reward": false
+        },
+        {
+          "id": "2D7551A01C014DE2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_10",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27386C2B99B69175",
+      "title": "02.11 · Сердце Незера: огненная связка",
+      "subtitle": "Засчитать 2 успешных применения способностей Сердца Незера.",
+      "description": [
+        "Что сделать: Засчитать 2 успешных применения способностей Сердца Незера.",
+        "",
+        "Зачем: Извержения и последовательность ударов.",
+        "",
+        "Совет: Огненные извержения и серия ударов — разные приёмы расы. Требуется только общий сохранённый счётчик этой расы.",
+        "",
+        "Награда: Дымоход для тёплого дома и провиант: бытовая награда за раннее применение способности.",
+        "",
+        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+      ],
+      "icon": "sootychimneys:brick_chimney",
+      "x": 9.6,
+      "y": 3.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E2258FC9D61F48E",
+          "type": "custom",
+          "title": "Засчитать 2 успешных применения способностей Сердца Незера.",
+          "icon": "sootychimneys:brick_chimney",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EBF564650135764",
+          "type": "jem_advancements:quest_item",
+          "item": "sootychimneys:brick_chimney",
+          "count": 32,
+          "claim_key": "races_11/item/0",
+          "claim_reward_id": "2EBF564650135764",
+          "team_reward": false
+        },
+        {
+          "id": "23D76CDAE3331219",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_glazed_cookie",
+          "count": 16,
+          "claim_key": "races_11/item/1",
+          "claim_reward_id": "23D76CDAE3331219",
+          "team_reward": false
+        },
+        {
+          "id": "22BDAE044A05D089",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_11",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "231F72E83258BDE9",
+      "title": "02.12 · Сердце Незера: питание лавой",
+      "subtitle": "Нажать ПКМ в воздухе с ведром лавы, играя Сердцем Незера.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с ведром лавы, играя Сердцем Незера.",
+        "",
+        "Зачем: Контекстное взаимодействие с лавой.",
+        "",
+        "Совет: Раса умеет пить лаву; с приседанием ведро используется иначе. Проверяется нажатие и текущий выбор расы, а не результат питья.",
+        "",
+        "Награда: Лавовая практика награждается собственной кухонной печью и готовой едой.",
+        "",
+        "Рекомендуемый путь: 02.11 · Сердце Незера: огненная связка. Порядок свободный."
+      ],
+      "icon": "minecraft:lava_bucket",
+      "x": 9.6,
+      "y": 5.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28B43331657F55CC",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с ведром лавы, играя Сердцем Незера.",
+          "icon": "minecraft:lava_bucket",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CA3B3EF6EFFD97C",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:stove",
+          "count": 1,
+          "claim_key": "races_12/item/0",
+          "claim_reward_id": "2CA3B3EF6EFFD97C",
+          "team_reward": false
+        },
+        {
+          "id": "2F7B773369DB6FB9",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 12,
+          "claim_key": "races_12/item/1",
+          "claim_reward_id": "2F7B773369DB6FB9",
+          "team_reward": false
+        },
+        {
+          "id": "2D26E8E9C81EE82F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_12",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23C537118BD7A826",
+      "title": "02.13 · Полное мастерство",
+      "subtitle": "Достигнуть III ступени мастерства выбранной расы.",
+      "description": [
+        "Что сделать: Достигнуть III ступени мастерства выбранной расы.",
+        "",
+        "Зачем: Развитие выбранной расы. Книга не выдаёт mastery и не требует менять расу.",
+        "",
+        "Совет: Промежуточные ступени открываются нативно после 10 и 20 успешных применений, III — после 30. Не требуется менять расу или отдельно доказывать улучшенный эффект.",
+        "",
+        "Награда: III ступень нативного мастерства даёт один полезный предмет под выбранный стиль игры.",
+        "",
+        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+      ],
+      "icon": "create:experience_nugget",
+      "x": 0.0,
+      "y": 9.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CC0E51E7B0488B7",
+          "type": "custom",
+          "title": "Достигнуть III ступени мастерства выбранной расы.",
+          "icon": "create:experience_nugget",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "252DA0A865E0D497",
+          "type": "jem_advancements:quest_item",
+          "item": "create:experience_nugget",
+          "count": 32,
+          "claim_key": "races_13/item/0",
+          "claim_reward_id": "252DA0A865E0D497",
+          "team_reward": false
+        },
+        {
+          "id": "20723F33FB285E07",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        },
+        {
+          "id": "29B212C521C9679E",
+          "type": "choice",
+          "table_id": 3456657991239479630L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "races_13",
+      "jem_required_mods": [
+        "jem_roles"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": -4,
+      "width": 4.0,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Выбор и справочник",
+      "order": -5,
+      "hover": [
+        "Выбор и справочник"
+      ]
+    },
+    {
+      "x": -9.6,
+      "y": 1.4,
+      "width": 4.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Ancestors",
+      "order": -5,
+      "hover": [
+        "Ancestors"
+      ]
+    },
+    {
+      "x": -4.8,
+      "y": 1.4,
+      "width": 4.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Void Walkers",
+      "order": -5,
+      "hover": [
+        "Void Walkers"
+      ]
+    },
+    {
+      "x": 0.0,
+      "y": 1.4,
+      "width": 4.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Born in Bloom",
+      "order": -5,
+      "hover": [
+        "Born in Bloom"
+      ]
+    },
+    {
+      "x": 4.8,
+      "y": 1.4,
+      "width": 4.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Infected by Sculk",
+      "order": -5,
+      "hover": [
+        "Infected by Sculk"
+      ]
+    },
+    {
+      "x": 9.6,
+      "y": 1.4,
+      "width": 4.4,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Nether Hearteds",
+      "order": -5,
+      "hover": [
+        "Nether Hearteds"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 8,
+      "width": 2.15,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Развитие своей расы",
+      "order": -5,
+      "hover": [
+        "Развитие своей расы"
+      ]
+    }
+  ],
+  "autofocus_id": "1100000000000093"
+}

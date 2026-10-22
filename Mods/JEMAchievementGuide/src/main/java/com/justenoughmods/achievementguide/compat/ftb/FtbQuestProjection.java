@@ -24,6 +24,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.StringTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.storage.LevelResource;
@@ -61,19 +62,25 @@ public final class FtbQuestProjection {
             if (definitions.containsKey("chapters/_jem_unavailable.snbt"))
                 throw new IOException("The reserved JEM dormant chapter path is already authored: " + authored);
             Features features = features(server);
+            boolean authoredBook = definitions.get("data.snbt").getInt("jem_questbook_revision") >= 3;
+            Map<String, String> unavailableReasons = new TreeMap<>();
             List<CompoundTag> dormant = new ArrayList<>();
             Set<String> unavailable = new HashSet<>(LEGACY);
             Map<String, CompoundTag> quests = new LinkedHashMap<>();
             for (var entry : definitions.entrySet()) {
                 if (!entry.getKey().startsWith("chapters/")) continue;
                 CompoundTag chapter = entry.getValue();
-                boolean enabled = chapterEnabled(chapter.getString("filename"), features);
+                boolean enabled = !chapter.getBoolean("jem_archive") && chapterEnabled(chapter.getString("filename"), features);
                 chapter.putBoolean("always_invisible", !enabled || chapter.getBoolean("always_invisible"));
                 for (Tag raw : chapter.getList("quests", Tag.TAG_COMPOUND)) {
                     CompoundTag quest = (CompoundTag)raw;
                     String id = quest.getString("id");
                     quests.put(id, quest);
                     if (!enabled || !questEnabled(id, features) || !referencesAvailable(quest)) unavailable.add(id);
+                    if (authoredBook && !chapter.getBoolean("jem_archive")) {
+                        String reason = authoredUnavailable(quest, definitions, features, server);
+                        if (!reason.isEmpty()) { unavailable.add(id); unavailableReasons.put(id, reason); }
+                    }
                 }
             }
             // Active children never retain an impossible dependency on a dormant objective.
@@ -102,15 +109,35 @@ public final class FtbQuestProjection {
                     if (unavailable.contains(quest.getString("id"))) {
                         for (Tag taskRaw : quest.getList("tasks", Tag.TAG_COMPOUND)) {
                             CompoundTag task = (CompoundTag)taskRaw;
-                            dormantTasks.put(Long.parseUnsignedLong(task.getString("id"), 16), Math.max(1L, task.getLong("count")));
+                            dormantTasks.put(Long.parseUnsignedLong(task.getString("id"), 16), Math.max(1L, Math.max(task.getLong("count"), task.getLong("value"))));
                         }
                         blocked.add(dormant(quest));
+                        if (authoredBook && !chapter.getBoolean("jem_archive")) {
+                            ListTag images = chapter.getList("images", Tag.TAG_COMPOUND);
+                            CompoundTag information = new CompoundTag();
+                            information.putDouble("x", quest.getDouble("x"));
+                            information.putDouble("y", quest.getDouble("y"));
+                            information.putDouble("width", 0.9);
+                            information.putDouble("height", 0.9);
+                            information.putString("image", "minecraft:textures/item/book.png");
+                            information.putString("click", "jem-info:" + quest.getString("jem_source_id"));
+                            ListTag hover = new ListTag();
+                            hover.add(StringTag.valueOf(quest.getString("title")));
+                            hover.add(StringTag.valueOf("Недоступно в этом мире; справка без награды"));
+                            information.put("hover", hover);
+                            images.add(information);
+                            chapter.put("images", images);
+                            ListTag subtitle = chapter.getList("subtitle", Tag.TAG_STRING);
+                            subtitle.add(StringTag.valueOf(quest.getString("title") + ": "
+                                    + unavailableReasons.getOrDefault(quest.getString("id"), "Требуемое содержимое отсутствует в этом мире")));
+                            chapter.put("subtitle", subtitle);
+                        }
                     } else {
                         visible.add(quest);
                         active.add(Long.parseUnsignedLong(quest.getString("id"), 16));
                     }
                 }
-                if (visible.isEmpty()) {
+                if (visible.isEmpty() && (!authoredBook || chapter.getBoolean("jem_archive"))) {
                     // Keep disabled whole chapters' children in place: an empty chapter can auto-complete natively.
                     chapter.putBoolean("always_invisible", true);
                     blocked.forEach(visible::add);
@@ -132,7 +159,8 @@ public final class FtbQuestProjection {
             String receipt = new GsonBuilder().setPrettyPrinting().create().toJson(Map.of(
                     "schema", 1, "fingerprint", fingerprint, "features", features,
                     "activeQuestIds", active.stream().map(id -> String.format("%016X", id)).sorted().toList(),
-                    "dormantQuestIds", unavailable.stream().sorted().toList()));
+                    "dormantQuestIds", unavailable.stream().sorted().toList(),
+                    "unavailableReasons", unavailableReasons));
             writeNew(destination.resolve("projection.json"), receipt.getBytes(StandardCharsets.UTF_8));
             CURRENT.put(server, new Projection(features, Set.copyOf(active), Map.copyOf(dormantTasks)));
             return destination;
@@ -182,6 +210,44 @@ public final class FtbQuestProjection {
         return true;
     }
 
+    private static String authoredUnavailable(CompoundTag quest, Map<String, CompoundTag> definitions,
+                                              Features features, MinecraftServer server) {
+        for (Tag mod : quest.getList("jem_required_mods", Tag.TAG_STRING))
+            if (!QuestSignals.loaded(mod.getAsString())) return "Не установлено требуемое содержимое: " + mod.getAsString();
+        if (!QuestSignals.loaded("jem_rewards")) return "Недоступна система получения наград";
+        if (quest.getBoolean("jem_economy") && !features.economy) return "Торговая экономика отключена в этом мире";
+        if (quest.getBoolean("jem_dedicated_event") && !features.events)
+            return "События и Raid требуют выделенного сервера с включёнными событиями";
+        for (Tag raw : quest.getList("tasks", Tag.TAG_COMPOUND)) {
+            CompoundTag task = (CompoundTag)raw;
+            String reason = BookRules.unavailable(Long.parseUnsignedLong(task.getString("id"), 16));
+            if (!reason.isEmpty()) return reason;
+            if (task.getString("type").equals("item") && !itemAvailable(itemId(task)))
+                return "Не зарегистрирован нужный предмет: " + itemId(task);
+            if (task.getString("type").equals("kill") && !BuiltInRegistries.ENTITY_TYPE.containsKey(new ResourceLocation(task.getString("entity"))))
+                return "Не зарегистрирована цель: " + task.getString("entity");
+            if (task.getString("type").equals("dimension") && server.getLevel(net.minecraft.resources.ResourceKey.create(
+                    net.minecraft.core.registries.Registries.DIMENSION, new ResourceLocation(task.getString("dimension")))) == null)
+                return "Измерение недоступно: " + task.getString("dimension");
+        }
+        for (Tag raw : quest.getList("rewards", Tag.TAG_COMPOUND)) {
+            CompoundTag reward = (CompoundTag)raw;
+            if (reward.contains("item") && !itemAvailable(itemId(reward))) return "Предмет награды отсутствует: " + itemId(reward);
+            if (reward.getString("type").equals("choice")) {
+                long tableId = reward.getLong("table_id");
+                CompoundTag table = definitions.values().stream().filter(candidate -> candidate.getString("id").equals(String.format("%016X", tableId))).findFirst().orElse(null);
+                if (table == null) return "Отсутствует таблица выбора награды";
+                for (Tag choice : table.getList("rewards", Tag.TAG_COMPOUND))
+                    if (!itemAvailable(itemId((CompoundTag)choice))) return "Вариант награды отсутствует: " + itemId((CompoundTag)choice);
+            }
+        }
+        return "";
+    }
+
+    private static String itemId(CompoundTag row) {
+        return row.contains("item", Tag.TAG_COMPOUND) ? row.getCompound("item").getString("id") : row.getString("item");
+    }
+
     private static boolean itemAvailable(String raw) {
         if (raw.isEmpty()) return true;
         ResourceLocation id = ResourceLocation.tryParse(raw);
@@ -191,6 +257,7 @@ public final class FtbQuestProjection {
     private static CompoundTag dormant(CompoundTag original) {
         CompoundTag quest = original.copy();
         quest.putString("icon", "minecraft:book");
+        quest.putBoolean("optional", true);
         quest.remove("rewards");
         ListTag tasks = new ListTag();
         for (Tag raw : quest.getList("tasks", Tag.TAG_COMPOUND)) {

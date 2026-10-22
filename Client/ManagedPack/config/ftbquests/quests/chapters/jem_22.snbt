@@ -1,0 +1,2225 @@
+{
+  "id": "258A7C6FF79091AE",
+  "filename": "jem_22",
+  "title": "Шесть пещерных миров",
+  "subtitle": [
+    "Когда: По мере получения кодексов и доступа к пещерам; ветки независимы, родные боссы сохраняют свои условия.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "alexscaves:cave_codex",
+  "group": "26D9D9FA602B3A53",
+  "order_index": 21,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "29AF37FB700BD847",
+      "title": "22.01 · Расшифрованный кодекс",
+      "subtitle": "Получить Cave Codex Alex’s Caves.",
+      "description": [
+        "Что сделать: Получить Cave Codex Alex’s Caves.",
+        "",
+        "Зачем: Карты и справочник всех шести биомов; расходуемые материалы исследования.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти Underground Cabin самостоятельно или по карте картографа/из шахты; положить Cave Tablet и бумагу в Spelunkery Table, пройти три этапа перевода и получить Cave Codex. Сделать из дополнительного Codex и бумаги карту нужной пещеры.",
+        "",
+        "Награда: Первый найденный кодекс дополняется рабочим столом и большим запасом пещерного света."
+      ],
+      "icon": "alexscaves:cave_codex",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21D4A5928AD3241A",
+          "type": "item",
+          "item": "alexscaves:cave_codex",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26360587D2FBDD0B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:spelunkery_table",
+          "count": 1,
+          "claim_key": "ac01/item/0",
+          "claim_reward_id": "26360587D2FBDD0B",
+          "team_reward": false
+        },
+        {
+          "id": "2026E6250A020A2A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:bioluminescent_torch",
+          "count": 48,
+          "claim_key": "ac01/item/1",
+          "claim_reward_id": "2026E6250A020A2A",
+          "team_reward": false
+        },
+        {
+          "id": "23AB3D9F834C4DDA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23DFB1A38D0ACCA1",
+      "title": "22.03 · Притянуть и оттолкнуть",
+      "subtitle": "Поставить Azure Magnet и Scarlet Magnet.",
+      "description": [
+        "Что сделать: Поставить Azure Magnet и Scarlet Magnet.",
+        "",
+        "Зачем: Магнитные схемы и перемещение блоков.",
+        "",
+        "Совет: Совет, не условие зачёта: В Magnetic Caves собрать Azure/Scarlet Neodymium и показать противоположное действие магнитов на подходящий блок; изменить дальность дополнительным неодимом.",
+        "",
+        "Награда: Оба освоенных магнита дают ресурсы для заметного расширения магнитной мастерской.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:azure_magnet",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F9C1D6AB7162461",
+          "type": "custom",
+          "title": "Поставить Azure Magnet и Scarlet Magnet.",
+          "icon": "alexscaves:azure_magnet",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E4B3C47F216685A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:azure_neodymium_ingot",
+          "count": 24,
+          "claim_key": "ac03/item/0",
+          "claim_reward_id": "2E4B3C47F216685A",
+          "team_reward": false
+        },
+        {
+          "id": "2563B493A6375A91",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:scarlet_neodymium_ingot",
+          "count": 24,
+          "claim_key": "ac03/item/1",
+          "claim_reward_id": "2563B493A6375A91",
+          "team_reward": false
+        },
+        {
+          "id": "2C6826ECEBD1C5F3",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:metal_rebar",
+          "count": 64,
+          "claim_key": "ac03/item/2",
+          "claim_reward_id": "2C6826ECEBD1C5F3",
+          "team_reward": false
+        },
+        {
+          "id": "2C8E5307D523803E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FA0E24035706420",
+      "title": "22.04 · Удалённая рука",
+      "subtitle": "Нажать ПКМ в воздухе с Galena Gauntlet во второй руке и железной киркой в основной.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Galena Gauntlet во второй руке и железной киркой в основной.",
+        "",
+        "Зачем: Дистанционная работа обычным снаряжением.",
+        "",
+        "Совет: Совет, не условие зачёта: Galena Gauntlet держат во второй руке, а металлический инструмент — в основной. Перчатка запускает его для дистанционной добычи/атаки и расходует прочность; Telecore используется для ремонта. Проверяется только попытка ПКМ, не полёт инструмента.",
+        "",
+        "Награда: Собственная магнитная перчатка получает защитный предмет той же технологии и материал для базы.",
+        "",
+        "Рекомендуемый путь: 22.03 · Притянуть и оттолкнуть. Порядок свободный."
+      ],
+      "icon": "alexscaves:galena_gauntlet",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2440707278D01720",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Galena Gauntlet во второй руке и железной киркой в основной.",
+          "icon": "alexscaves:galena_gauntlet",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "231001B1314B3E6F",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:resistor_shield",
+          "count": 1,
+          "claim_key": "ac04/item/0",
+          "claim_reward_id": "231001B1314B3E6F",
+          "team_reward": false
+        },
+        {
+          "id": "25CB7B44C46B608A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:galena_bricks",
+          "count": 64,
+          "claim_key": "ac04/item/1",
+          "claim_reward_id": "25CB7B44C46B608A",
+          "team_reward": false
+        },
+        {
+          "id": "20FACB1C07B0660A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B018FAD6D5D0D5E",
+      "title": "22.05 · Световая копия",
+      "subtitle": "Нажать ПКМ по обычной свинье с Holocoder; поставить Hologram Projector.",
+      "description": [
+        "Что сделать: Нажать ПКМ по обычной свинье с Holocoder; поставить Hologram Projector.",
+        "",
+        "Зачем: Голографический декор и полярная защитная механика.",
+        "",
+        "Совет: Совет, не условие зачёта: Записать существо Holocoder и показать копию через Hologram Projector; отдельно проверить магнитный Resistor Shield.",
+        "",
+        "Награда: Рабочая голограмма окупается несколькими дополнительными проекторами и конструкционными блоками.",
+        "",
+        "Рекомендуемый путь: 22.03 · Притянуть и оттолкнуть. Порядок свободный."
+      ],
+      "icon": "minecraft:pig_spawn_egg",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27C3A774A20643DF",
+          "type": "custom",
+          "title": "Нажать ПКМ по обычной свинье с Holocoder; поставить Hologram Projector.",
+          "icon": "minecraft:pig_spawn_egg",
+          "count": 1
+        },
+        {
+          "id": "2C3167E6D18356E2",
+          "type": "custom",
+          "title": "Нажать ПКМ по обычной свинье с Holocoder; поставить Hologram Projector.",
+          "icon": "minecraft:pig_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C0FC93731A4D4ED",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hologram_projector",
+          "count": 4,
+          "claim_key": "ac05/item/0",
+          "claim_reward_id": "2C0FC93731A4D4ED",
+          "team_reward": false
+        },
+        {
+          "id": "2136337FF0CC14FE",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:metal_scaffolding",
+          "count": 64,
+          "claim_key": "ac05/item/1",
+          "claim_reward_id": "2136337FF0CC14FE",
+          "team_reward": false
+        },
+        {
+          "id": "22D051AE78D5168D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26712E652738A393",
+      "title": "22.06 · Магнитный карьер",
+      "subtitle": "Поставить Magnetic Quarry и Magnetic Light; получить Magnetic Quarry Smasher.",
+      "description": [
+        "Что сделать: Поставить Magnetic Quarry и Magnetic Light; получить Magnetic Quarry Smasher.",
+        "",
+        "Зачем: Полная местная автоматизация добычи; Magnetron и его материал появляются в родной цепочке.",
+        "",
+        "Совет: Совет, не условие зачёта: После родного получения Heart of Iron собрать Magnetic Quarry, Smasher и прямоугольную границу из четырёх Magnetic Lights; добыть один блок автоматически.",
+        "",
+        "Награда: Три узла собственного карьера открывают большой строительный и осветительный комплект для промышленной пещеры.",
+        "",
+        "Smasher — размещаемая сущность из предмета, а не блок. Получение предмета не выдаётся за placement.",
+        "",
+        "Рекомендуемый путь: 22.03 · Притянуть и оттолкнуть. Порядок свободный."
+      ],
+      "icon": "alexscaves:quarry",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C89EE8EB73EA5AA",
+          "type": "custom",
+          "title": "Поставить Magnetic Quarry и Magnetic Light; получить Magnetic Quarry Smasher.",
+          "icon": "alexscaves:quarry",
+          "count": 2
+        },
+        {
+          "id": "21B61A2706C096EF",
+          "type": "item",
+          "item": "alexscaves:quarry_smasher",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2585CBA80C447305",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:packed_galena",
+          "count": 128,
+          "claim_key": "ac06/item/0",
+          "claim_reward_id": "2585CBA80C447305",
+          "team_reward": false
+        },
+        {
+          "id": "29F01E4F8346F911",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:metal_scaffolding",
+          "count": 64,
+          "claim_key": "ac06/item/1",
+          "claim_reward_id": "29F01E4F8346F911",
+          "team_reward": false
+        },
+        {
+          "id": "28A8C523E24DCC37",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:magnetic_light",
+          "count": 32,
+          "claim_key": "ac06/item/2",
+          "claim_reward_id": "28A8C523E24DCC37",
+          "team_reward": false
+        },
+        {
+          "id": "24E566B624F29E62",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "286C879816F6CDB6",
+      "title": "22.07 · Питомник первобытной пещеры",
+      "subtitle": "Получить Serene Salad, Primordial Soup и Fiddlehead.",
+      "description": [
+        "Что сделать: Получить Serene Salad, Primordial Soup и Fiddlehead.",
+        "",
+        "Зачем: Пища для доисторической фауны, местная древесина и материалы.",
+        "",
+        "Совет: Совет, не условие зачёта: В Primordial Caves вырастить местные растения, приготовить Serene Salad и Primordial Soup; показать кормление выбранного травоядного. Отдельная карточка: дать Grottoceratops съесть Curly Fern и собрать появившийся Fiddlehead.",
+        "",
+        "Награда: Три кулинарные находки превращаются в полноценный рацион и кровлю для доисторического лагеря.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:serene_salad",
+      "x": -8.07,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BBD1E22BAD93A63",
+          "type": "item",
+          "item": "alexscaves:serene_salad",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2EAE0EA1BE3FD231",
+          "type": "item",
+          "item": "alexscaves:primordial_soup",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2B2BCECFFF309A0A",
+          "type": "item",
+          "item": "alexscaves:fiddlehead",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E35BEE4CC3BB48F",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:dinosaur_nugget",
+          "count": 24,
+          "claim_key": "ac07/item/0",
+          "claim_reward_id": "2E35BEE4CC3BB48F",
+          "team_reward": false
+        },
+        {
+          "id": "2908D7ABA8F63358",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:fern_thatch",
+          "count": 64,
+          "claim_key": "ac07/item/1",
+          "claim_reward_id": "2908D7ABA8F63358",
+          "team_reward": false
+        },
+        {
+          "id": "284B17121F9C5420",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FCE3131FF2CD8C4",
+      "title": "22.08 · Лесоруб Relicheirus",
+      "subtitle": "Нажать ПКМ по Relicheirus с Primordial Soup в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Relicheirus с Primordial Soup в основной руке.",
+        "",
+        "Зачем: Живой лесозаготовитель и добыча древесины крупными животными.",
+        "",
+        "Совет: Совет, не условие зачёта: Приготовить Primordial Soup, взаимодействовать с Relicheirus и заставить его срубить дерево по родной механике.",
+        "",
+        "Награда: Освоенное кормление Relicheirus приносит материал и местный запас пищи.",
+        "",
+        "Рекомендуемый путь: 22.07 · Питомник первобытной пещеры. Порядок свободный."
+      ],
+      "icon": "alexscaves:tough_hide",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "257D6D6A32673D7A",
+          "type": "custom",
+          "title": "Нажать ПКМ по Relicheirus с Primordial Soup в основной руке.",
+          "icon": "alexscaves:tough_hide",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2027BB7181543DA4",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:tough_hide",
+          "count": 16,
+          "claim_key": "ac08/item/0",
+          "claim_reward_id": "2027BB7181543DA4",
+          "team_reward": false
+        },
+        {
+          "id": "228C5A2FFEB23005",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:pine_nuts",
+          "count": 32,
+          "claim_key": "ac08/item/1",
+          "claim_reward_id": "228C5A2FFEB23005",
+          "team_reward": false
+        },
+        {
+          "id": "24BD0B504EB75C22",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F2B12BF7AFCCAE4",
+      "title": "22.09 · Воришка становится союзником",
+      "subtitle": "Нажать ПКМ по Vallumraptor с Serene Salad в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Vallumraptor с Serene Salad в основной руке.",
+        "",
+        "Зачем: Умный спутник, команды, маскировочное восстановление и наследование владельца.",
+        "",
+        "Совет: Совет, не условие зачёта: Положить Dinosaur Nugget в сундук для Vallumraptor; дождаться кражи и расслабления; приручить Serene Salad, затем вывести птенца из кладки приручённой пары.",
+        "",
+        "Награда: Опыт с раптором дает полезную часть местной экипировки и хороший рацион.",
+        "",
+        "Рекомендуемый путь: 22.07 · Питомник первобытной пещеры. Порядок свободный."
+      ],
+      "icon": "alexscaves:primordial_helmet",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "259C57D4F27C4064",
+          "type": "custom",
+          "title": "Нажать ПКМ по Vallumraptor с Serene Salad в основной руке.",
+          "icon": "alexscaves:primordial_helmet",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20B314F2F09E50EB",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:primordial_helmet",
+          "count": 1,
+          "claim_key": "ac09/item/0",
+          "claim_reward_id": "20B314F2F09E50EB",
+          "team_reward": false
+        },
+        {
+          "id": "2E200A5FF9A6795B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:dinosaur_nugget",
+          "count": 24,
+          "claim_key": "ac09/item/1",
+          "claim_reward_id": "2E200A5FF9A6795B",
+          "team_reward": false
+        },
+        {
+          "id": "2267A1E58C22E0BF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A2A3AB929BE09F0",
+      "title": "22.10 · Два ездовых вида и монолит",
+      "subtitle": "Сесть на Subterranodon и Tremorsaurus, по одному разу на каждый вид; поставить Amber Monolith.",
+      "description": [
+        "Что сделать: Сесть на Subterranodon и Tremorsaurus, по одному разу на каждый вид; поставить Amber Monolith.",
+        "",
+        "Зачем: Летающий переносчик, ездовой боевой динозавр, размножение и восстановление экосистемы; ожидание не закрывает следующие ветки.",
+        "",
+        "Совет: Совет, не условие зачёта: Три независимые подкарточки: приручить Subterranodon хвостами Trilocaris и пролететь с промежуточной посадкой; оглушить Tremorsaurus Primitive Club и покормить Serene Salad, повторяя до приручения, затем применить управляемый рёв; создать Amber Monolith и дождаться естественного восстановления фауны.",
+        "",
+        "Награда: Два ездовых динозавра и собственный монолит заслуживают двух частей брони и строительного запаса.",
+        "",
+        "Рекомендуемый путь: 22.07 · Питомник первобытной пещеры. Порядок свободный."
+      ],
+      "icon": "alexscaves:amber_monolith",
+      "x": -2.52,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "215403CCF810D4AA",
+          "type": "custom",
+          "title": "Сесть на Subterranodon и Tremorsaurus, по одному разу на каждый вид; поставить Amber Monolith.",
+          "icon": "alexscaves:amber_monolith",
+          "count": 2
+        },
+        {
+          "id": "2A39C29602DCCC51",
+          "type": "custom",
+          "title": "Сесть на Subterranodon и Tremorsaurus, по одному разу на каждый вид; поставить Amber Monolith.",
+          "icon": "alexscaves:amber_monolith",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DEE0269B396C738",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:primordial_tunic",
+          "count": 1,
+          "claim_key": "ac10/item/0",
+          "claim_reward_id": "2DEE0269B396C738",
+          "team_reward": false
+        },
+        {
+          "id": "2024AEE26F685E1A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:primordial_pants",
+          "count": 1,
+          "claim_key": "ac10/item/1",
+          "claim_reward_id": "2024AEE26F685E1A",
+          "team_reward": false
+        },
+        {
+          "id": "28D26194F86F0866",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:fern_thatch",
+          "count": 96,
+          "claim_key": "ac10/item/2",
+          "claim_reward_id": "28D26194F86F0866",
+          "team_reward": false
+        },
+        {
+          "id": "2550A3DC871C552C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 230,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29D9651B7C026E5B",
+      "title": "22.11 · После Luxtructosaurus",
+      "subtitle": "Сесть верхом на Atlatitan.",
+      "description": [
+        "Что сделать: Сесть верхом на Atlatitan.",
+        "",
+        "Зачем: Родное появление Atlatitan после босса; терраформирование и размножение Tree Stars.",
+        "",
+        "Совет: Совет, не условие зачёта: Atlatitan появляется после родной победы над Luxtructosaurus. Serene Salad даёт временную езду; полного приручения нет. На спине доступен выравнивающий топот, Tree Stars используются для размножения. Повторная победа и деформация местности для зачёта не нужны.",
+        "",
+        "Награда: Посадка на Atlatitan дает ресурсный комплект большой экспедиции."
+      ],
+      "icon": "alexscaves:tough_hide",
+      "x": -5.3,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2733C4632C981A76",
+          "type": "custom",
+          "title": "Сесть верхом на Atlatitan.",
+          "icon": "alexscaves:tough_hide",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E25670A9573D0AE",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:tough_hide",
+          "count": 24,
+          "claim_key": "ac11/item/0",
+          "claim_reward_id": "2E25670A9573D0AE",
+          "team_reward": false
+        },
+        {
+          "id": "2FD89390DCB5E022",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:pewen_planks",
+          "count": 128,
+          "claim_key": "ac11/item/1",
+          "claim_reward_id": "2FD89390DCB5E022",
+          "team_reward": false
+        },
+        {
+          "id": "20DE145AD2145739",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:cooked_dinosaur_chop",
+          "count": 24,
+          "claim_key": "ac11/item/2",
+          "claim_reward_id": "20DE145AD2145739",
+          "team_reward": false
+        },
+        {
+          "id": "2F25ADC37A0392B6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2798C3207BE6851A",
+      "title": "22.12 · Полимер и радиационный питомец",
+      "subtitle": "Получить Polymer Plate; нажать ПКМ по Raycat с Radgill в основной руке.",
+      "description": [
+        "Что сделать: Получить Polymer Plate; нажать ПКМ по Raycat с Radgill в основной руке.",
+        "",
+        "Зачем: Hazmat-защита, урановая ветка и опасные ресурсы. Raycat даёт живой способ контроля радиации.",
+        "",
+        "Совет: Совет, не условие зачёта: В Toxic Caves получить Polymer и изготовить защитный комплект; пройти участок с радиацией и вернуться с Uranium. Отдельная карточка: приручить Raycat рыбой Radgill и дождаться снятия Irradiated с владельца; он также отпугивает Nucleeper.",
+        "",
+        "Награда: Полимер и знакомство с Raycat приносят защитные части костюма и материал для токсичной пещеры.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:polymer_plate",
+      "x": 2.52,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23D152167579922C",
+          "type": "item",
+          "item": "alexscaves:polymer_plate",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "278D67BB045906A5",
+          "type": "custom",
+          "title": "Получить Polymer Plate; нажать ПКМ по Raycat с Radgill в основной руке.",
+          "icon": "alexscaves:polymer_plate",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C1CC4F4B26A7C69",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hazmat_mask",
+          "count": 1,
+          "claim_key": "ac12/item/0",
+          "claim_reward_id": "2C1CC4F4B26A7C69",
+          "team_reward": false
+        },
+        {
+          "id": "2F74E4454CF05AE2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hazmat_boots",
+          "count": 1,
+          "claim_key": "ac12/item/1",
+          "claim_reward_id": "2F74E4454CF05AE2",
+          "team_reward": false
+        },
+        {
+          "id": "22A35F63572FA924",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:polymer_plate",
+          "count": 16,
+          "claim_key": "ac12/item/2",
+          "claim_reward_id": "22A35F63572FA924",
+          "team_reward": false
+        },
+        {
+          "id": "20AD96042E94429F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20958C5955D368F2",
+      "title": "22.13 · Ядерная печь с обслуживанием",
+      "subtitle": "Поставить 8 Nuclear Furnace; получить Waste Drum.",
+      "description": [
+        "Что сделать: Поставить 8 Nuclear Furnace; получить Waste Drum.",
+        "",
+        "Зачем: Мощная плавка, топливный цикл и обслуживание отходов.",
+        "",
+        "Совет: Совет, не условие зачёта: Собрать восемь частей Nuclear Furnace в 2×2×2, загрузить Uranium Rod и выплавить предмет; убрать отходы в Metal Barrel/Waste Drum по интерфейсу мода.",
+        "",
+        "Награда: Собственная ядерная установка получает топливный запас, полимер и материал для лаборатории.",
+        "",
+        "Рекомендуемый путь: 22.12 · Полимер и радиационный питомец. Порядок свободный."
+      ],
+      "icon": "alexscaves:waste_drum",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FDA0760F73F4B96",
+          "type": "custom",
+          "title": "Поставить 8 Nuclear Furnace; получить Waste Drum.",
+          "icon": "alexscaves:waste_drum",
+          "count": 8
+        },
+        {
+          "id": "29CF12C1EE5DA30E",
+          "type": "item",
+          "item": "alexscaves:waste_drum",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CEE4207BF52AAED",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:uranium_rod",
+          "count": 16,
+          "claim_key": "ac13/item/0",
+          "claim_reward_id": "2CEE4207BF52AAED",
+          "team_reward": false
+        },
+        {
+          "id": "24B91F0E107B990B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:polymer_plate",
+          "count": 32,
+          "claim_key": "ac13/item/1",
+          "claim_reward_id": "24B91F0E107B990B",
+          "team_reward": false
+        },
+        {
+          "id": "20F7EDAD3B1240EE",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:radrock_bricks",
+          "count": 128,
+          "claim_key": "ac13/item/2",
+          "claim_reward_id": "20F7EDAD3B1240EE",
+          "team_reward": false
+        },
+        {
+          "id": "24F9443D478A4D3E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 260,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2308261E3BA4A77B",
+      "title": "22.14 · Лучевой инструмент",
+      "subtitle": "Нажать ПКМ в воздухе с Raygun в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Raygun в основной руке.",
+        "",
+        "Зачем: Лучевое оружие и применение местного топлива.",
+        "",
+        "Совет: Совет, не условие зачёта: Создать Raygun, зарядить доступным урановым топливом и применить на выделенной цели.",
+        "",
+        "Награда: Опробованный Raygun получает материал для дальнейшего использования и лабораторный свет.",
+        "",
+        "Рекомендуемый путь: 22.12 · Полимер и радиационный питомец. Порядок свободный."
+      ],
+      "icon": "alexscaves:raygun",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2588067FA9745754",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Raygun в основной руке.",
+          "icon": "alexscaves:raygun",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E06783AE4978B6F",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:uranium",
+          "count": 24,
+          "claim_key": "ac14/item/0",
+          "claim_reward_id": "2E06783AE4978B6F",
+          "team_reward": false
+        },
+        {
+          "id": "2511AC57E62335F1",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:radon_lamp_lime",
+          "count": 32,
+          "claim_key": "ac14/item/1",
+          "claim_reward_id": "2511AC57E62335F1",
+          "team_reward": false
+        },
+        {
+          "id": "27234E0F08030CFF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22A5B1BBB0FAA77F",
+      "title": "22.15 · Легенда Tremorzilla",
+      "subtitle": "Сесть верхом на Tremorzilla.",
+      "description": [
+        "Что сделать: Сесть верхом на Tremorzilla.",
+        "",
+        "Зачем: Поздний гигантский спутник, управляемый луч и перекрёстные трофеи пещер.",
+        "",
+        "Совет: Совет, не условие зачёта: Собрать яйцо из родных трофеев, вылупить предусмотренным взрывом в подготовленном месте; кормить Waste Drums до приручения и испытать езду/луч. Отдельная карточка — размножение Nuclear Bomb.",
+        "",
+        "Награда: Освоенная езда на Tremorzilla дает расходники и одну защитную часть костюма на выбор.",
+        "",
+        "Рекомендуемый путь: 22.13 · Ядерная печь с обслуживанием. Порядок свободный."
+      ],
+      "icon": "alexscaves:uranium",
+      "x": 8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D023662629CDDF3",
+          "type": "custom",
+          "title": "Сесть верхом на Tremorzilla.",
+          "icon": "alexscaves:uranium",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2386D5EF2AF822D0",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:uranium",
+          "count": 24,
+          "claim_key": "ac15/item/0",
+          "claim_reward_id": "2386D5EF2AF822D0",
+          "team_reward": false
+        },
+        {
+          "id": "26174E6911043EAD",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hazmat_warning_block",
+          "count": 64,
+          "claim_key": "ac15/item/1",
+          "claim_reward_id": "26174E6911043EAD",
+          "team_reward": false
+        },
+        {
+          "id": "2B9C1F97306F4502",
+          "type": "jem_advancements:quest_xp",
+          "xp": 250,
+          "team_reward": false
+        },
+        {
+          "id": "2378A684B9E8828C",
+          "type": "choice",
+          "table_id": 3038174571900912991L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B03CFAE8ACB5C37",
+      "title": "22.16 · Водолазная подготовка",
+      "subtitle": "Надеть Diving Helmet Alex’s Caves.",
+      "description": [
+        "Что сделать: Надеть Diving Helmet Alex’s Caves.",
+        "",
+        "Зачем: Глубоководное исследование и особые движения/дыхание.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить Deep Sea Diving Helmet и плавательное оснащение; войти в Abyssal Chasm и испытать пополнение воздуха шлема.",
+        "",
+        "Награда: Собственный водолазный шлем дополняется еще одной частью комплекта и подводным расходником.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:diving_helmet",
+      "x": 2.52,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "249ED599559F952F",
+          "type": "custom",
+          "title": "Надеть Diving Helmet Alex’s Caves.",
+          "icon": "alexscaves:diving_helmet",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2209E2E82426EED0",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:diving_leggings",
+          "count": 1,
+          "claim_key": "ac16/item/0",
+          "claim_reward_id": "2209E2E82426EED0",
+          "team_reward": false
+        },
+        {
+          "id": "299C0C9E90E37D4A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:marine_snow",
+          "count": 32,
+          "claim_key": "ac16/item/1",
+          "claim_reward_id": "299C0C9E90E37D4A",
+          "team_reward": false
+        },
+        {
+          "id": "23A45BF83CE91741",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac16",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "262975929A1B432E",
+      "title": "22.17 · Собрать субмарину",
+      "subtitle": "Сесть в Submarine Alex’s Caves.",
+      "description": [
+        "Что сделать: Сесть в Submarine Alex’s Caves.",
+        "",
+        "Зачем: Подводный транспорт и обслуживание повреждений.",
+        "",
+        "Совет: Совет, не условие зачёта: Собрать куб медных блоков, Enigmatic Engine и шесть Depth Glass по схеме; спустить субмарину, пройти маршрут и провести ремонт медью с инструментом.",
+        "",
+        "Награда: Первая поездка в подлодке обеспечивает ремонтный запас и материал для глубинной базы.",
+        "",
+        "Рекомендуемый путь: 22.16 · Водолазная подготовка. Порядок свободный."
+      ],
+      "icon": "alexscaves:submarine",
+      "x": 4.38,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D6CC51CCC72A380",
+          "type": "custom",
+          "title": "Сесть в Submarine Alex’s Caves.",
+          "icon": "alexscaves:submarine",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2324CCD3AC7B69F5",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:polymer_plate",
+          "count": 24,
+          "claim_key": "ac17/item/0",
+          "claim_reward_id": "2324CCD3AC7B69F5",
+          "team_reward": false
+        },
+        {
+          "id": "2CD5EC1F01F8A312",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:copper_valve",
+          "count": 4,
+          "claim_key": "ac17/item/1",
+          "claim_reward_id": "2CD5EC1F01F8A312",
+          "team_reward": false
+        },
+        {
+          "id": "228597A1A70997A9",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:depth_glass",
+          "count": 96,
+          "claim_key": "ac17/item/2",
+          "claim_reward_id": "228597A1A70997A9",
+          "team_reward": false
+        },
+        {
+          "id": "238F3F9D1EBF6994",
+          "type": "jem_advancements:quest_xp",
+          "xp": 190,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac17",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C1317553CA50C5E",
+      "title": "22.18 · У алтаря Deep Ones",
+      "subtitle": "Нажать ПКМ по Abyssal Altar пустой основной рукой.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Abyssal Altar пустой основной рукой.",
+        "",
+        "Зачем: Местная репутация и возобновляемый обмен.",
+        "",
+        "Совет: Совет, не условие зачёта: Сделать подношение на Abyssal Altar и улучшить отношение Deep Ones; получить жемчуг через обмен. Не требовать убивать торговых партнёров.",
+        "",
+        "Награда: Контакт с алтарем дает провизию и свет для дальнейшего изучения; это не награда за победу.",
+        "",
+        "Рекомендуемый путь: 22.16 · Водолазная подготовка. Порядок свободный."
+      ],
+      "icon": "alexscaves:abyssal_altar",
+      "x": 6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BCCC8CD85F052BF",
+          "type": "custom",
+          "title": "Нажать ПКМ по Abyssal Altar пустой основной рукой.",
+          "icon": "alexscaves:abyssal_altar",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22B8A6AEAEEEEA1C",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:deep_sea_sushi_roll",
+          "count": 16,
+          "claim_key": "ac18/item/0",
+          "claim_reward_id": "22B8A6AEAEEEEA1C",
+          "team_reward": false
+        },
+        {
+          "id": "2DFC8FAEEE8BD1B1",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:bioluminescent_torch",
+          "count": 48,
+          "claim_key": "ac18/item/1",
+          "claim_reward_id": "2DFC8FAEEE8BD1B1",
+          "team_reward": false
+        },
+        {
+          "id": "2946010862AA30F0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac18",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A8AD94A2A69DD6F",
+      "title": "22.19 · Морской сад",
+      "subtitle": "Нажать ПКМ по блоку мёртвого трубчатого коралла с Marine Snow в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по блоку мёртвого трубчатого коралла с Marine Snow в основной руке.",
+        "",
+        "Зачем: Восстановление морской природы и оснащение базы.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить Marine Snow от Sea Pig и восстановить коралл/вырастить губку; отдельно испытать подводный свет и Floater для всплытия.",
+        "",
+        "Награда: После восстановления коралла остается большой запас для продолжения подводного озеленения.",
+        "",
+        "Рекомендуемый путь: 22.16 · Водолазная подготовка. Порядок свободный."
+      ],
+      "icon": "alexscaves:marine_snow",
+      "x": 8.07,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D8E9EC74E8807FE",
+          "type": "custom",
+          "title": "Нажать ПКМ по блоку мёртвого трубчатого коралла с Marine Snow в основной руке.",
+          "icon": "alexscaves:marine_snow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "271942D08C8DA7B0",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:marine_snow",
+          "count": 64,
+          "claim_key": "ac19/item/0",
+          "claim_reward_id": "271942D08C8DA7B0",
+          "team_reward": false
+        },
+        {
+          "id": "28CA20EA335FFBB0",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reefstone_tiles",
+          "count": 64,
+          "claim_key": "ac19/item/1",
+          "claim_reward_id": "28CA20EA335FFBB0",
+          "team_reward": false
+        },
+        {
+          "id": "2C573DE8E0D31C7F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac19",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2847037AFAF4F674",
+      "title": "22.20 · Вода и удалённый взгляд",
+      "subtitle": "Поставить Drain; получить Gazing Pearl и Magic Conch.",
+      "description": [
+        "Что сделать: Поставить Drain; получить Gazing Pearl и Magic Conch.",
+        "",
+        "Зачем: Гидротехника, удалённое наблюдение и помощь Deep Ones.",
+        "",
+        "Совет: Совет, не условие зачёта: Установить Drain и включить управление жидкостью редстоуном; дополнительными карточками испытать Gazing Pearl и Magic Conch.",
+        "",
+        "Награда: Освоенное осушение и два глубоководных инструмента дают серьезное продолжение водолазного комплекта.",
+        "",
+        "Рекомендуемый путь: 22.16 · Водолазная подготовка. Порядок свободный."
+      ],
+      "icon": "alexscaves:drain",
+      "x": 5.3,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A9EE931F9414DBD",
+          "type": "custom",
+          "title": "Поставить Drain; получить Gazing Pearl и Magic Conch.",
+          "icon": "alexscaves:drain",
+          "count": 1
+        },
+        {
+          "id": "2E96EBA4A04EA3D2",
+          "type": "item",
+          "item": "alexscaves:gazing_pearl",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2D8243CF8472C627",
+          "type": "item",
+          "item": "alexscaves:magic_conch",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2253A98FC1360DC2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:diving_chestplate",
+          "count": 1,
+          "claim_key": "ac20/item/0",
+          "claim_reward_id": "2253A98FC1360DC2",
+          "team_reward": false
+        },
+        {
+          "id": "2D9807BB7D7E4790",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:diving_boots",
+          "count": 1,
+          "claim_key": "ac20/item/1",
+          "claim_reward_id": "2D9807BB7D7E4790",
+          "team_reward": false
+        },
+        {
+          "id": "2A76290670F8C238",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:depth_glass",
+          "count": 96,
+          "claim_key": "ac20/item/2",
+          "claim_reward_id": "2A76290670F8C238",
+          "team_reward": false
+        },
+        {
+          "id": "237E8E16A102BAA2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac20",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C8E32EBD351C338",
+      "title": "22.21 · Свет среди теней",
+      "subtitle": "Получить Moth Dust и Moth Ball.",
+      "description": [
+        "Что сделать: Получить Moth Dust и Moth Ball.",
+        "",
+        "Зачем: Местная фауна и осознанное управление вниманием/светом.",
+        "",
+        "Совет: Совет, не условие зачёта: В Forlorn Hollows получить Moth Dust, отвлечь враждебную цель и защитить источник света Moth Balls.",
+        "",
+        "Награда: Самостоятельно собранные приманки теперь есть с запасом, вместе с древесиной местного лагеря.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:moth_dust",
+      "x": -8.07,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "219525BED06D48D8",
+          "type": "item",
+          "item": "alexscaves:moth_dust",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2DD55C4E4A91A2AD",
+          "type": "item",
+          "item": "alexscaves:moth_ball",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27D41A1C489C4C1E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:moth_ball",
+          "count": 24,
+          "claim_key": "ac21/item/0",
+          "claim_reward_id": "27D41A1C489C4C1E",
+          "team_reward": false
+        },
+        {
+          "id": "2004D2CEE29E4FAD",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:thornwood_planks",
+          "count": 64,
+          "claim_key": "ac21/item/1",
+          "claim_reward_id": "2004D2CEE29E4FAD",
+          "team_reward": false
+        },
+        {
+          "id": "25E5A89EB207A6F4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac21",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2783FF5D7E4AF266",
+      "title": "22.22 · Чужие глаза",
+      "subtitle": "Получить Totem of Possession и Beholder.",
+      "description": [
+        "Что сделать: Получить Totem of Possession и Beholder.",
+        "",
+        "Зачем: Управление существами и разведывательная камера.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить Occult Gem; испытать Totem of Possession на подходящем видимом существе и отдельно Beholder для удалённого наблюдения в том же измерении.",
+        "",
+        "Награда: Два сложных темных устройства получают большой запас тематических компонентов и провизии.",
+        "",
+        "Рекомендуемый путь: 22.21 · Свет среди теней. Порядок свободный."
+      ],
+      "icon": "alexscaves:totem_of_possession",
+      "x": -6.22,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "220746C63C3F7BA1",
+          "type": "item",
+          "item": "alexscaves:totem_of_possession",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2B39B9A3651C080E",
+          "type": "item",
+          "item": "alexscaves:beholder",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "223874E891697902",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:dark_tatters",
+          "count": 24,
+          "claim_key": "ac22/item/0",
+          "claim_reward_id": "223874E891697902",
+          "team_reward": false
+        },
+        {
+          "id": "2851372F5FEDA547",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:shadow_silk",
+          "count": 24,
+          "claim_key": "ac22/item/1",
+          "claim_reward_id": "2851372F5FEDA547",
+          "team_reward": false
+        },
+        {
+          "id": "24F93B13637634EA",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:vesper_stew",
+          "count": 24,
+          "claim_key": "ac22/item/2",
+          "claim_reward_id": "24F93B13637634EA",
+          "team_reward": false
+        },
+        {
+          "id": "2CEC1236CBDE9533",
+          "type": "jem_advancements:quest_xp",
+          "xp": 230,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac22",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2014855F57641EFC",
+      "title": "22.23 · Подземный инструмент",
+      "subtitle": "Получить Corrodent Tooth и Burrowing Arrow.",
+      "description": [
+        "Что сделать: Получить Corrodent Tooth и Burrowing Arrow.",
+        "",
+        "Зачем: Шахтёрский расходник и проходящие сквозь грунт снаряды.",
+        "",
+        "Совет: Совет, не условие зачёта: Использовать Corrodent Tooth в зелье Haste или Burrowing Arrows и испытать выбранный результат.",
+        "",
+        "Награда: Освоенные зубы и стрелы превращаются в настоящий боезапас; оружие босса не выдается.",
+        "",
+        "Рекомендуемый путь: 22.21 · Свет среди теней. Порядок свободный."
+      ],
+      "icon": "alexscaves:corrodent_teeth",
+      "x": -4.38,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2246F397F69B419A",
+          "type": "item",
+          "item": "alexscaves:corrodent_teeth",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2D2BA93B1D5CD6FF",
+          "type": "item",
+          "item": "alexscaves:burrowing_arrow",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24F56B91ADEE1A15",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:burrowing_arrow",
+          "count": 64,
+          "claim_key": "ac23/item/0",
+          "claim_reward_id": "24F56B91ADEE1A15",
+          "team_reward": false
+        },
+        {
+          "id": "2B49FF557D77DC6E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:corrodent_teeth",
+          "count": 16,
+          "claim_key": "ac23/item/1",
+          "claim_reward_id": "2B49FF557D77DC6E",
+          "team_reward": false
+        },
+        {
+          "id": "2E2E8147AE8264CA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 145,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac23",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2ACDFC8B2AB3FF12",
+      "title": "22.24 · Крылья из тени",
+      "subtitle": "Надеть Hood of Darkness и Cloak of Darkness.",
+      "description": [
+        "Что сделать: Надеть Hood of Darkness и Cloak of Darkness.",
+        "",
+        "Зачем: Теневой полёт; Darkened Apple расширяет применение.",
+        "",
+        "Совет: Совет, не условие зачёта: Пройти родной ритуал Underzealots и встречу с Forsaken; получить Shadow Silk, создать Dark Hood/Cloak, зарядить темнотой и пролететь управляемый участок.",
+        "",
+        "Награда: Полный комплект темной одежды получает сильный исследовательский инструмент и материал для убежища.",
+        "",
+        "Рекомендуемый путь: 22.21 · Свет среди теней. Порядок свободный."
+      ],
+      "icon": "alexscaves:hood_of_darkness",
+      "x": -2.52,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B25903B5F3971B9",
+          "type": "custom",
+          "title": "Надеть Hood of Darkness и Cloak of Darkness.",
+          "icon": "alexscaves:hood_of_darkness",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2700D658AA48096B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:ghostly_pickaxe",
+          "count": 1,
+          "claim_key": "ac24/item/0",
+          "claim_reward_id": "2700D658AA48096B",
+          "team_reward": false
+        },
+        {
+          "id": "21BB0467E6CE183C",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:dark_tatters",
+          "count": 24,
+          "claim_key": "ac24/item/1",
+          "claim_reward_id": "21BB0467E6CE183C",
+          "team_reward": false
+        },
+        {
+          "id": "2F85E9E56B786232",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:guanostone_bricks",
+          "count": 96,
+          "claim_key": "ac24/item/2",
+          "claim_reward_id": "2F85E9E56B786232",
+          "team_reward": false
+        },
+        {
+          "id": "2767BDF0350516E6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac24",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24CB6CCF9D4064C2",
+      "title": "22.25 · Материалы Candy Cavity",
+      "subtitle": "Получить Candy Cane, Rock Candy и Licoroot Log.",
+      "description": [
+        "Что сделать: Получить Candy Cane, Rock Candy и Licoroot Log.",
+        "",
+        "Зачем: Шестой биом версии 2.0.2 и самостоятельная пищевая ветка.",
+        "",
+        "Совет: Совет, не условие зачёта: В Candy Cavity собрать набор местных пищевых и строительных материалов, посетить Purple Soda и вырастить Licoroot.",
+        "",
+        "Награда: Три сладкие находки дают заметную строительную палитру и съедобное угощение.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:candy_cane",
+      "x": -8.07,
+      "y": 14.65,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E5C113B2FC7D128",
+          "type": "custom",
+          "title": "Получить Candy Cane, Rock Candy и Licoroot Log.",
+          "icon": "alexscaves:candy_cane",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2374D67BCD117EEA",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:block_of_chocolate",
+          "count": 64,
+          "claim_key": "ac25/item/0",
+          "claim_reward_id": "2374D67BCD117EEA",
+          "team_reward": false
+        },
+        {
+          "id": "26BF011389D52E9D",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:gingerbread_bricks",
+          "count": 64,
+          "claim_key": "ac25/item/1",
+          "claim_reward_id": "26BF011389D52E9D",
+          "team_reward": false
+        },
+        {
+          "id": "2F3FBEEAC783B597",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:caramel_apple",
+          "count": 16,
+          "claim_key": "ac25/item/2",
+          "claim_reward_id": "2F3FBEEAC783B597",
+          "team_reward": false
+        },
+        {
+          "id": "2FD6FCA011D4FE8A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac25",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "298F35151E30313C",
+      "title": "22.26 · Сахарная акробатика",
+      "subtitle": "Нажать ПКМ в воздухе с Candy Cane Hook; надеть Rainbounce Boots.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Candy Cane Hook; надеть Rainbounce Boots.",
+        "",
+        "Зачем: Новые способы передвижения и защита через отскок.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить Candy Cane Hook и Rainbounce Boots; пройти короткий маршрут с зацепом и управляемым отскоком.",
+        "",
+        "Награда: Освоенная мобильность получает запас тематических расходников для сладкой пещеры.",
+        "",
+        "Рекомендуемый путь: 22.25 · Материалы Candy Cavity. Порядок свободный."
+      ],
+      "icon": "alexscaves:candy_cane_hook",
+      "x": -6.22,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "276C7486AE2C9FBD",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Candy Cane Hook; надеть Rainbounce Boots.",
+          "icon": "alexscaves:candy_cane_hook",
+          "count": 1
+        },
+        {
+          "id": "20D631497BCD2A4A",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Candy Cane Hook; надеть Rainbounce Boots.",
+          "icon": "alexscaves:candy_cane_hook",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28EED02311852A5B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:purple_soda_bottle_rocket",
+          "count": 32,
+          "claim_key": "ac26/item/0",
+          "claim_reward_id": "28EED02311852A5B",
+          "team_reward": false
+        },
+        {
+          "id": "2BC8896CA2A0E97F",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:jelly_bean",
+          "count": 32,
+          "claim_key": "ac26/item/1",
+          "claim_reward_id": "2BC8896CA2A0E97F",
+          "team_reward": false
+        },
+        {
+          "id": "2DBFCE7A72992EB0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac26",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28F658E1108D26CE",
+      "title": "22.27 · Зелье становится конфетой",
+      "subtitle": "Нажать ПКМ по Gummy Bear с обычным зельем лечения в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Gummy Bear с обычным зельем лечения в основной руке.",
+        "",
+        "Зачем: Преобразование зелий в еду; отложенный результат без обязательного AFK.",
+        "",
+        "Совет: Совет, не условие зачёта: Дать Gummy Bear зелье, оставить доступ к Licoroot и после спячки подобрать Jelly Beans с тем же эффектом; дополнительно размножить рыбой соответствующего цвета.",
+        "",
+        "Награда: Лечение Gummy Bear дает щедрый десертный и декоративный комплект.",
+        "",
+        "Рекомендуемый путь: 22.25 · Материалы Candy Cavity. Порядок свободный."
+      ],
+      "icon": "alexscaves:sundae",
+      "x": -4.38,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BB71DD0905D81FE",
+          "type": "custom",
+          "title": "Нажать ПКМ по Gummy Bear с обычным зельем лечения в основной руке.",
+          "icon": "alexscaves:sundae",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22E1794B7A321F20",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:sundae",
+          "count": 16,
+          "claim_key": "ac27/item/0",
+          "claim_reward_id": "22E1794B7A321F20",
+          "team_reward": false
+        },
+        {
+          "id": "2B16F9EC208B5E47",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:gelatin_pink",
+          "count": 48,
+          "claim_key": "ac27/item/1",
+          "claim_reward_id": "2B16F9EC208B5E47",
+          "team_reward": false
+        },
+        {
+          "id": "2B6FDFE189DC66E8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac27",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2893579CFC622513",
+      "title": "22.28 · Карамельный скакун",
+      "subtitle": "Сесть верхом на Candicorn.",
+      "description": [
+        "Что сделать: Сесть верхом на Candicorn.",
+        "",
+        "Зачем: Ездовой рывок и наследование цветовых вариантов.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить Candicorn карамельными яблоками, оседлать, набрать скорость и выполнить заряженный рывок; разведение Candy Canes — отдельная карточка.",
+        "",
+        "Награда: Поездка на Candicorn приносит полезный сладкий материал и стройпалитру.",
+        "",
+        "Рекомендуемый путь: 22.25 · Материалы Candy Cavity. Порядок свободный."
+      ],
+      "icon": "alexscaves:frostmint",
+      "x": -2.52,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22E4895EC054D383",
+          "type": "custom",
+          "title": "Сесть верхом на Candicorn.",
+          "icon": "alexscaves:frostmint",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2221C17EA44B3643",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:frostmint",
+          "count": 32,
+          "claim_key": "ac28/item/0",
+          "claim_reward_id": "2221C17EA44B3643",
+          "team_reward": false
+        },
+        {
+          "id": "2120A673205D2AB2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:candy_cane_block",
+          "count": 96,
+          "claim_key": "ac28/item/1",
+          "claim_reward_id": "2120A673205D2AB2",
+          "team_reward": false
+        },
+        {
+          "id": "2D8BC93870949791",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac28",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "254275D3E3E20A79",
+      "title": "22.29 · Пряничная бригада",
+      "subtitle": "Поставить Confection Oven и Gingerbarrel.",
+      "description": [
+        "Что сделать: Поставить Confection Oven и Gingerbarrel.",
+        "",
+        "Зачем: Съедобные помощники, цветовые группы и сбор предметов.",
+        "",
+        "Совет: Совет, не условие зачёта: Запитать Confection Oven редстоуном, создать Gingerbread Men с Rock Candy, дать им собрать предметы в Gingerbarrel.",
+        "",
+        "Награда: Рабочая кондитерская получает дополнительные хранилища, сырье и готовые десерты.",
+        "",
+        "Рекомендуемый путь: 22.25 · Материалы Candy Cavity. Порядок свободный."
+      ],
+      "icon": "alexscaves:confection_oven",
+      "x": -6.22,
+      "y": 16.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FD0D4C53E2DC054",
+          "type": "custom",
+          "title": "Поставить Confection Oven и Gingerbarrel.",
+          "icon": "alexscaves:confection_oven",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F0E1D0C3F70E764",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:gingerbarrel",
+          "count": 8,
+          "claim_key": "ac29/item/0",
+          "claim_reward_id": "2F0E1D0C3F70E764",
+          "team_reward": false
+        },
+        {
+          "id": "22A0192213C19D4C",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:dough_block",
+          "count": 64,
+          "claim_key": "ac29/item/1",
+          "claim_reward_id": "22A0192213C19D4C",
+          "team_reward": false
+        },
+        {
+          "id": "26B9ECFC9A3A21FE",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:chocolate_ice_cream",
+          "count": 24,
+          "claim_key": "ac29/item/2",
+          "claim_reward_id": "26B9ECFC9A3A21FE",
+          "team_reward": false
+        },
+        {
+          "id": "23475A19DF6A2FCD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac29",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F62288E09820B24",
+      "title": "22.30 · Накормить огромного червя",
+      "subtitle": "Получить Sack of Sating.",
+      "description": [
+        "Что сделать: Получить Sack of Sating.",
+        "",
+        "Зачем: Поздний пищевой аксессуар и особое взаимодействие с Gum Worm.",
+        "",
+        "Совет: Совет, не условие зачёта: Привлечь Gum Worm с помощью Gobthumper, получить Sweet Tooth родным способом и изготовить Sack of Sating; проверить автоматическое питание.",
+        "",
+        "Награда: Собственный Sack of Sating получает большой и разнообразный запас дорогой еды.",
+        "",
+        "Рекомендуемый путь: 22.25 · Материалы Candy Cavity. Порядок свободный."
+      ],
+      "icon": "alexscaves:sack_of_sating",
+      "x": -4.38,
+      "y": 16.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2518CBFBC97C5CDA",
+          "type": "item",
+          "item": "alexscaves:sack_of_sating",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DCA424F646797F1",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:alex_meal",
+          "count": 24,
+          "claim_key": "ac30/item/0",
+          "claim_reward_id": "2DCA424F646797F1",
+          "team_reward": false
+        },
+        {
+          "id": "29ECE341E8BBAE4E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:sundae",
+          "count": 24,
+          "claim_key": "ac30/item/1",
+          "claim_reward_id": "29ECE341E8BBAE4E",
+          "team_reward": false
+        },
+        {
+          "id": "29E7F9C3D6E396AD",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hot_chocolate_bottle",
+          "count": 16,
+          "claim_key": "ac30/item/2",
+          "claim_reward_id": "29E7F9C3D6E396AD",
+          "team_reward": false
+        },
+        {
+          "id": "2D268FCD68773769",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac30",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21CE4A4BCF6ACA14",
+      "title": "22.31 · Сменить биом по рецепту",
+      "subtitle": "Поставить Conversion Crucible.",
+      "description": [
+        "Что сделать: Поставить Conversion Crucible.",
+        "",
+        "Зачем: Родное преобразование биомов и связь всех исследованных ландшафтов.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить Conversion Crucible после Licowitch, привязать Biome Treat в выбранном биоме и выполнить запросы котла; изменить небольшой выделенный участок.",
+        "",
+        "Награда: Освоенный тигель получает редкий компонент и материал для продолжения сладких экспериментов.",
+        "",
+        "Рекомендуемый путь: 22.25 · Материалы Candy Cavity. Порядок свободный."
+      ],
+      "icon": "alexscaves:conversion_crucible",
+      "x": 4.38,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "231E94CBF5E630F0",
+          "type": "custom",
+          "title": "Поставить Conversion Crucible.",
+          "icon": "alexscaves:conversion_crucible",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A858860D826DA2B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:radiant_essence",
+          "count": 8,
+          "claim_key": "ac31/item/0",
+          "claim_reward_id": "2A858860D826DA2B",
+          "team_reward": false
+        },
+        {
+          "id": "285C11144ECB1A92",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:block_of_chocolate",
+          "count": 96,
+          "claim_key": "ac31/item/1",
+          "claim_reward_id": "285C11144ECB1A92",
+          "team_reward": false
+        },
+        {
+          "id": "23410F363F327091",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:candy_cane_block",
+          "count": 96,
+          "claim_key": "ac31/item/2",
+          "claim_reward_id": "23410F363F327091",
+          "team_reward": false
+        },
+        {
+          "id": "299846C0D6F028FB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac31",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C0BCF5135B16D61",
+      "title": "22.32 · Коллекция шести кодексов",
+      "subtitle": "Собрать шесть разных Cave Codex: по одному для каждого пещерного биома.",
+      "description": [
+        "Что сделать: Собрать шесть разных Cave Codex: по одному для каждого пещерного биома.",
+        "",
+        "Зачем: Полное покрытие справочника с глубокими ветками выше; случайные коллекции не закрывают другие главы.",
+        "",
+        "Совет: Совет, не условие зачёта: В каждом из шести биомов оставить необязательные карточки остальных активных существ, растений, продуктов и строительных семейств из Cave Compendium; завершать один пример применения семейства, а не все цветовые рецепты.",
+        "",
+        "Награда: Шесть самостоятельно найденных разновидностей кодекса заслуживают редкого полезного предмета на выбор и большого экспедиционного комплекта.",
+        "",
+        "Рекомендуемый путь: 22.01 · Расшифрованный кодекс. Порядок свободный."
+      ],
+      "icon": "alexscaves:cave_codex",
+      "x": 6.22,
+      "y": 14.65,
+      "shape": "diamond",
+      "size": 1.25,
+      "tasks": [
+        {
+          "id": "2552E9B29871EFC8",
+          "type": "custom",
+          "title": "Собрать шесть разных Cave Codex: по одному для каждого пещерного биома.",
+          "icon": "alexscaves:cave_codex",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C1B1AA99D7DAE0E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:bioluminescent_torch",
+          "count": 128,
+          "claim_key": "ac32/item/0",
+          "claim_reward_id": "2C1B1AA99D7DAE0E",
+          "team_reward": false
+        },
+        {
+          "id": "238E36A9CAB3458B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:alex_meal",
+          "count": 24,
+          "claim_key": "ac32/item/1",
+          "claim_reward_id": "238E36A9CAB3458B",
+          "team_reward": false
+        },
+        {
+          "id": "2CF61E9B4AFAE519",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 8,
+          "claim_key": "ac32/item/2",
+          "claim_reward_id": "2CF61E9B4AFAE519",
+          "team_reward": false
+        },
+        {
+          "id": "2FF3677593DA5694",
+          "type": "jem_advancements:quest_xp",
+          "xp": 500,
+          "team_reward": false
+        },
+        {
+          "id": "29A759C886EFB007",
+          "type": "choice",
+          "table_id": 2801098921419427140L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ac32",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Кодекс и свободные маршруты",
+      "order": -5,
+      "hover": [
+        "Кодекс и свободные маршруты"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Магнитная пещера",
+      "order": -5,
+      "hover": [
+        "Магнитная пещера"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Первобытная пещера",
+      "order": -5,
+      "hover": [
+        "Первобытная пещера"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Токсичная пещера",
+      "order": -5,
+      "hover": [
+        "Токсичная пещера"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Бездонная пропасть",
+      "order": -5,
+      "hover": [
+        "Бездонная пропасть"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Забытые глубины",
+      "order": -5,
+      "hover": [
+        "Забытые глубины"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 12.95,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Леденцовая полость",
+      "order": -5,
+      "hover": [
+        "Леденцовая полость"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 12.95,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Атлас и перемена биома",
+      "order": -5,
+      "hover": [
+        "Атлас и перемена биома"
+      ]
+    },
+    {
+      "x": -4.38,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:ac02",
+      "hover": [
+        "22.02 · Атлас шести пещер",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "29AF37FB700BD847"
+}

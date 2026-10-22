@@ -1,0 +1,941 @@
+{
+  "id": "2877DEC4C9A8899A",
+  "filename": "jem_13",
+  "title": "Create: фабрика и подвижные машины",
+  "subtitle": [
+    "Когда: После обычного получения компонентов Create. Ветки независимы; работоспособность всей фабрики не проверяется.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "create:precision_mechanism",
+  "group": "28AF004A3850C67C",
+  "order_index": 12,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2DB7BA6BA9191344",
+      "title": "13.01 · Два пути к мощности",
+      "subtitle": "Получить Windmill Bearing или Steam Engine Create.",
+      "description": [
+        "Что сделать: Получить Windmill Bearing или Steam Engine Create.",
+        "",
+        "Зачем: Windmill/Steam Engine; выбирать под задачу.",
+        "",
+        "Совет: Выбери ветряк или пар под свою задачу. Выработку и stress видно через штатные инструменты Create. Квест проверяет лишь наличие одного компонента.",
+        "",
+        "Награда: Паруса и шасси приглашают попробовать ветряную конструкцию даже при старте с парового двигателя; валы пригодятся обоим источникам мощности.",
+        "",
+        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+      ],
+      "icon": "create:windmill_bearing",
+      "x": -0.93,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "272AE7472DD73FF1",
+          "type": "custom",
+          "title": "Получить Windmill Bearing или Steam Engine Create.",
+          "icon": "create:windmill_bearing",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B1637EAE28E18C1",
+          "type": "jem_advancements:quest_item",
+          "item": "create:white_sail",
+          "count": 32,
+          "claim_key": "H12.01/item/0",
+          "claim_reward_id": "2B1637EAE28E18C1",
+          "team_reward": false
+        },
+        {
+          "id": "2DB580BCFCC0C35F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:radial_chassis",
+          "count": 16,
+          "claim_key": "H12.01/item/1",
+          "claim_reward_id": "2DB580BCFCC0C35F",
+          "team_reward": false
+        },
+        {
+          "id": "2AD4776CEDDFB277",
+          "type": "jem_advancements:quest_item",
+          "item": "create:shaft",
+          "count": 32,
+          "claim_key": "H12.01/item/2",
+          "claim_reward_id": "2AD4776CEDDFB277",
+          "team_reward": false
+        },
+        {
+          "id": "2C2C0140ACFDD8B8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E33BCA5FFF1FC6E",
+      "title": "13.02 · Детали паровой установки",
+      "subtitle": "Разместить Fluid Tank, Steam Engine, Blaze Burner и Mechanical Pump Create.",
+      "description": [
+        "Что сделать: Разместить Fluid Tank, Steam Engine, Blaze Burner и Mechanical Pump Create.",
+        "",
+        "Зачем: Котёл и стабильность энергоснабжения.",
+        "",
+        "Совет: Котёл работает благодаря объёму резервуара, воде и нагреву. Сравни уровень пара при изменении снабжения; взаимное расположение и стабильность квест не оценивает.",
+        "",
+        "Награда: После знакомства с четырьмя узлами паровой системы — запас для её масштабирования.",
+        "",
+        "Рекомендуемый путь: 13.01 · Два пути к мощности. Порядок свободный."
+      ],
+      "icon": "create:fluid_tank",
+      "x": 0.93,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25E331FB682BD14A",
+          "type": "custom",
+          "title": "Разместить Fluid Tank, Steam Engine, Blaze Burner и Mechanical Pump Create.",
+          "icon": "create:fluid_tank",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28A83162C498CC5F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:steam_engine",
+          "count": 4,
+          "claim_key": "H12.02/item/0",
+          "claim_reward_id": "28A83162C498CC5F",
+          "team_reward": false
+        },
+        {
+          "id": "2D27C3060E9F7C91",
+          "type": "jem_advancements:quest_item",
+          "item": "create:fluid_tank",
+          "count": 16,
+          "claim_key": "H12.02/item/1",
+          "claim_reward_id": "2D27C3060E9F7C91",
+          "team_reward": false
+        },
+        {
+          "id": "214D6417C7641019",
+          "type": "jem_advancements:quest_item",
+          "item": "create:copper_sheet",
+          "count": 64,
+          "claim_key": "H12.02/item/2",
+          "claim_reward_id": "214D6417C7641019",
+          "team_reward": false
+        },
+        {
+          "id": "2C2E63C399E52DF9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 230,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "210590826702DBCC",
+      "title": "13.03 · Коллекция жидкостных компонентов",
+      "subtitle": "Разместить Fluid Pipe, Mechanical Pump, Fluid Tank, Spout и Item Drain Create.",
+      "description": [
+        "Что сделать: Разместить Fluid Pipe, Mechanical Pump, Fluid Tank, Spout и Item Drain Create.",
+        "",
+        "Зачем: Трубы, насосы, ёмкости и жидкостные рецепты.",
+        "",
+        "Совет: Трубы и насос перемещают жидкость, Spout наполняет предметы, Item Drain извлекает содержимое. Собери небольшой опыт по Ponder; наличие потока не требуется.",
+        "",
+        "Награда: Реальный монтажный комплект жидкостной линии: трубы, помпы, ёмкости и дозаторы."
+      ],
+      "icon": "create:fluid_pipe",
+      "x": 0.0,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21F06B0F2C1E0DD0",
+          "type": "custom",
+          "title": "Разместить Fluid Pipe, Mechanical Pump, Fluid Tank, Spout и Item Drain Create.",
+          "icon": "create:fluid_pipe",
+          "count": 5
+        }
+      ],
+      "rewards": [
+        {
+          "id": "245960609DDBBD26",
+          "type": "jem_advancements:quest_item",
+          "item": "create:fluid_pipe",
+          "count": 64,
+          "claim_key": "H12.03/item/0",
+          "claim_reward_id": "245960609DDBBD26",
+          "team_reward": false
+        },
+        {
+          "id": "257CFD16D7CB54D8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:mechanical_pump",
+          "count": 8,
+          "claim_key": "H12.03/item/1",
+          "claim_reward_id": "257CFD16D7CB54D8",
+          "team_reward": false
+        },
+        {
+          "id": "241B305F8D98B59D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:fluid_tank",
+          "count": 16,
+          "claim_key": "H12.03/item/2",
+          "claim_reward_id": "241B305F8D98B59D",
+          "team_reward": false
+        },
+        {
+          "id": "287A920F67955AD0",
+          "type": "jem_advancements:quest_item",
+          "item": "create:spout",
+          "count": 4,
+          "claim_key": "H12.03/item/3",
+          "claim_reward_id": "287A920F67955AD0",
+          "team_reward": false
+        },
+        {
+          "id": "25B2C3952170F5EC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 210,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21B5608325D83435",
+      "title": "13.04 · Точный механизм",
+      "subtitle": "Получить 1 Precision Mechanism Create.",
+      "description": [
+        "Что сделать: Получить 1 Precision Mechanism Create.",
+        "",
+        "Зачем: Многошаговая обработка и компоненты автоматики.",
+        "",
+        "Совет: Изучи Sequenced Assembly: одна заготовка проходит повторяемые шаги Deployers и обработки. Происхождение предмета и связь шагов квест не хранит.",
+        "",
+        "Награда: Первый механизм точности приносит запас на новые устройства; автоматизированная линия в зачёте не требуется.",
+        "",
+        "Рекомендуемый путь: 12.08 · Полированный кварц. Порядок свободный."
+      ],
+      "icon": "create:precision_mechanism",
+      "x": -1.85,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2177B20EC0C1B159",
+          "type": "item",
+          "item": "create:precision_mechanism",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AA95E8D3C4D0B96",
+          "type": "jem_advancements:quest_item",
+          "item": "create:precision_mechanism",
+          "count": 8,
+          "claim_key": "H12.04/item/0",
+          "claim_reward_id": "2AA95E8D3C4D0B96",
+          "team_reward": false
+        },
+        {
+          "id": "239865028D762230",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_sheet",
+          "count": 32,
+          "claim_key": "H12.04/item/1",
+          "claim_reward_id": "239865028D762230",
+          "team_reward": false
+        },
+        {
+          "id": "2E6FF1E10C75D06A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29A02214D3D0C3DC",
+      "title": "13.05 · Расширенный верстак",
+      "subtitle": "Поставить 3 блока Mechanical Crafter Create.",
+      "description": [
+        "Что сделать: Поставить 3 блока Mechanical Crafter Create.",
+        "",
+        "Зачем: Крупная механическая сборка.",
+        "",
+        "Совет: Механические крафтеры складываются в сетку рецепта; стрелки задают сборку и вывод. Здесь учитываются три размещения, без проверки геометрии или готового изделия.",
+        "",
+        "Награда: Позволяет увеличить матрицу крафта после первых трёх сборщиков и попробовать крупные рецепты.",
+        "",
+        "Рекомендуемый путь: 13.04 · Точный механизм. Порядок свободный."
+      ],
+      "icon": "create:mechanical_crafter",
+      "x": 0.0,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A8001A0EAD6475B",
+          "type": "custom",
+          "title": "Поставить 3 блока Mechanical Crafter Create.",
+          "icon": "create:mechanical_crafter",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A9986CBED558C85",
+          "type": "jem_advancements:quest_item",
+          "item": "create:mechanical_crafter",
+          "count": 24,
+          "claim_key": "H12.05/item/0",
+          "claim_reward_id": "2A9986CBED558C85",
+          "team_reward": false
+        },
+        {
+          "id": "22D877D3D9B8C857",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_ingot",
+          "count": 32,
+          "claim_key": "H12.05/item/1",
+          "claim_reward_id": "22D877D3D9B8C857",
+          "team_reward": false
+        },
+        {
+          "id": "2DD0177E80CB8A92",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23897209AC18142A",
+      "title": "13.06 · Механическая рука",
+      "subtitle": "Поставить 1 Mechanical Arm Create.",
+      "description": [
+        "Что сделать: Поставить 1 Mechanical Arm Create.",
+        "",
+        "Зачем: Точная логистика нескольких станков.",
+        "",
+        "Совет: До размещения можно назначить точки ввода и вывода, затем запитать руку вращением. Попробуй снабжать несколько станков; квест не проверяет настройки и переносы.",
+        "",
+        "Награда: Дополнительные руки и автономные активаторы для нескольких рабочих операций.",
+        "",
+        "Рекомендуемый путь: 13.05 · Расширенный верстак. Порядок свободный."
+      ],
+      "icon": "create:mechanical_arm",
+      "x": 1.85,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2392A7517B2E9389",
+          "type": "custom",
+          "title": "Поставить 1 Mechanical Arm Create.",
+          "icon": "create:mechanical_arm",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23D30DB70414F16A",
+          "type": "jem_advancements:quest_item",
+          "item": "create:mechanical_arm",
+          "count": 2,
+          "claim_key": "H12.06/item/0",
+          "claim_reward_id": "23D30DB70414F16A",
+          "team_reward": false
+        },
+        {
+          "id": "24515D83A865C12A",
+          "type": "jem_advancements:quest_item",
+          "item": "create:deployer",
+          "count": 8,
+          "claim_key": "H12.06/item/1",
+          "claim_reward_id": "24515D83A865C12A",
+          "team_reward": false
+        },
+        {
+          "id": "267E02DF7307D543",
+          "type": "jem_advancements:quest_item",
+          "item": "create:precision_mechanism",
+          "count": 4,
+          "claim_key": "H12.06/item/2",
+          "claim_reward_id": "267E02DF7307D543",
+          "team_reward": false
+        },
+        {
+          "id": "28ED9DA0A4012A9C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24542641FFD1F29F",
+      "title": "13.07 · Три механизма движения",
+      "subtitle": "Разместить Mechanical Bearing, Mechanical Piston и Gantry Carriage Create.",
+      "description": [
+        "Что сделать: Разместить Mechanical Bearing, Mechanical Piston и Gantry Carriage Create.",
+        "",
+        "Зачем: Moving contraptions и actors.",
+        "",
+        "Совет: Подшипник вращает, поршень выдвигает, каретка движется по валу. Клей и сборка определяют подвижную конструкцию. Движение, остановка и разборка остаются самостоятельными опытами.",
+        "",
+        "Награда: Крупный комплект для подвижных конструкций после знакомства с тремя типами привода."
+      ],
+      "icon": "create:mechanical_bearing",
+      "x": -2.78,
+      "y": 12.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B76AE0475884FBA",
+          "type": "custom",
+          "title": "Разместить Mechanical Bearing, Mechanical Piston и Gantry Carriage Create.",
+          "icon": "create:mechanical_bearing",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26CC8306439B7218",
+          "type": "jem_advancements:quest_item",
+          "item": "create:linear_chassis",
+          "count": 64,
+          "claim_key": "H12.07/item/0",
+          "claim_reward_id": "26CC8306439B7218",
+          "team_reward": false
+        },
+        {
+          "id": "2BB64A2256FCF44C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:piston_extension_pole",
+          "count": 32,
+          "claim_key": "H12.07/item/1",
+          "claim_reward_id": "2BB64A2256FCF44C",
+          "team_reward": false
+        },
+        {
+          "id": "2E14F8E1D96016BA",
+          "type": "jem_advancements:quest_item",
+          "item": "create:gantry_shaft",
+          "count": 32,
+          "claim_key": "H12.07/item/2",
+          "claim_reward_id": "2E14F8E1D96016BA",
+          "team_reward": false
+        },
+        {
+          "id": "23F1B11E89FC2DD8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:super_glue",
+          "count": 2,
+          "claim_key": "H12.07/item/3",
+          "claim_reward_id": "23F1B11E89FC2DD8",
+          "team_reward": false
+        },
+        {
+          "id": "20B6534E89404E7D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27F6D505056719B0",
+      "title": "13.08 · Инструменты механической фермы",
+      "subtitle": "Разместить Mechanical Harvester и Mechanical Saw Create.",
+      "description": [
+        "Что сделать: Разместить Mechanical Harvester и Mechanical Saw Create.",
+        "",
+        "Зачем: Автоматический сбор; сохраняется native семантика Harvester.",
+        "",
+        "Совет: Эти рабочие блоки собирают разрешённые культуры и древесину на подвижной конструкции. Проверь нативные правила Harvester; урожай, склад и принадлежность поля квесту не нужны.",
+        "",
+        "Награда: Можно собрать широкую жатку и несколько лесозаготовительных модулей.",
+        "",
+        "Рекомендуемый путь: 13.07 · Три механизма движения. Порядок свободный."
+      ],
+      "icon": "create:mechanical_harvester",
+      "x": -0.93,
+      "y": 12.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22B983F1EBB783B8",
+          "type": "custom",
+          "title": "Разместить Mechanical Harvester и Mechanical Saw Create.",
+          "icon": "create:mechanical_harvester",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A4BB477298A646A",
+          "type": "jem_advancements:quest_item",
+          "item": "create:mechanical_harvester",
+          "count": 16,
+          "claim_key": "H12.08/item/0",
+          "claim_reward_id": "2A4BB477298A646A",
+          "team_reward": false
+        },
+        {
+          "id": "2016ABEBC6950812",
+          "type": "jem_advancements:quest_item",
+          "item": "create:mechanical_saw",
+          "count": 8,
+          "claim_key": "H12.08/item/1",
+          "claim_reward_id": "2016ABEBC6950812",
+          "team_reward": false
+        },
+        {
+          "id": "2B81EDAAEA2490DB",
+          "type": "jem_advancements:quest_item",
+          "item": "create:radial_chassis",
+          "count": 32,
+          "claim_key": "H12.08/item/2",
+          "claim_reward_id": "2B81EDAAEA2490DB",
+          "team_reward": false
+        },
+        {
+          "id": "2CE2E7EAC7DCB142",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FBA84E96B8D1FF5",
+      "title": "13.09 · Бур и обслуживание",
+      "subtitle": "Поставить 1 Mechanical Drill Create.",
+      "description": [
+        "Что сделать: Поставить 1 Mechanical Drill Create.",
+        "",
+        "Зачем: JEM drill lifecycle, сервис и предел повторных ремонтов.",
+        "",
+        "Совет: JEM добавляет буру износ и обслуживание. Следи за wear через Jade, перед ремонтом останови механизм и посмотри допустимый способ сервиса. Цикл износа/ремонта не отслеживается.",
+        "",
+        "Награда: Достаточно буров для компактной проходческой головы; длина выкопанного тоннеля не проверяется.",
+        "",
+        "Рекомендуемый путь: 13.07 · Три механизма движения. Порядок свободный."
+      ],
+      "icon": "create:mechanical_drill",
+      "x": 0.93,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EAA82DD71CA429B",
+          "type": "custom",
+          "title": "Поставить 1 Mechanical Drill Create.",
+          "icon": "create:mechanical_drill",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2ABA3A2CFC715723",
+          "type": "jem_advancements:quest_item",
+          "item": "create:mechanical_drill",
+          "count": 8,
+          "claim_key": "H12.09/item/0",
+          "claim_reward_id": "2ABA3A2CFC715723",
+          "team_reward": false
+        },
+        {
+          "id": "2A402E79A4E18A91",
+          "type": "jem_advancements:quest_item",
+          "item": "create:linear_chassis",
+          "count": 16,
+          "claim_key": "H12.09/item/1",
+          "claim_reward_id": "2A402E79A4E18A91",
+          "team_reward": false
+        },
+        {
+          "id": "203BE31EAC0C23E2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DCA4C9DB2143125",
+      "title": "13.10 · Компоненты лифта",
+      "subtitle": "Разместить Elevator Pulley и Elevator Contact Create.",
+      "description": [
+        "Что сделать: Разместить Elevator Pulley и Elevator Contact Create.",
+        "",
+        "Зачем: Лифты, остановки и практическая архитектура подвижных конструкций.",
+        "",
+        "Совет: По Ponder собери кабину и этажные остановки; подвижный мост можно построить на поршне или каретке. Книга проверяет только детали, без маршрута, пассажиров и работающих остановок.",
+        "",
+        "Награда: Материалы для дополнительных остановок и оформления шахты лифта.",
+        "",
+        "Рекомендуемый путь: 13.07 · Три механизма движения. Порядок свободный."
+      ],
+      "icon": "create:elevator_pulley",
+      "x": 2.78,
+      "y": 12.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F74A0784432BB1F",
+          "type": "custom",
+          "title": "Разместить Elevator Pulley и Elevator Contact Create.",
+          "icon": "create:elevator_pulley",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24AD8A4DA0DCF546",
+          "type": "jem_advancements:quest_item",
+          "item": "create:elevator_pulley",
+          "count": 2,
+          "claim_key": "H12.10/item/0",
+          "claim_reward_id": "24AD8A4DA0DCF546",
+          "team_reward": false
+        },
+        {
+          "id": "26B578F55063DEAC",
+          "type": "jem_advancements:quest_item",
+          "item": "create:redstone_contact",
+          "count": 16,
+          "claim_key": "H12.10/item/1",
+          "claim_reward_id": "26B578F55063DEAC",
+          "team_reward": false
+        },
+        {
+          "id": "213827A2214F7B8E",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_casing",
+          "count": 64,
+          "claim_key": "H12.10/item/2",
+          "claim_reward_id": "213827A2214F7B8E",
+          "team_reward": false
+        },
+        {
+          "id": "23F7A50B9F71BFFC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2350E8A8B879DC89",
+      "title": "13.11 · Строительство по чертежам",
+      "subtitle": "Разместить Schematic Table и Schematicannon Create.",
+      "description": [
+        "Что сделать: Разместить Schematic Table и Schematicannon Create.",
+        "",
+        "Зачем: Копирование собственных построек с оплатой ресурсами.",
+        "",
+        "Совет: Schematic and Quill сохраняет область выбранной постройки, стол готовит чертеж, пушка строит за предоставленные ресурсы. Квест сам не читает область, не сравнивает постройки и не проверяет работу пушки.",
+        "",
+        "Награда: Запас схем, строительных корпусов и топлива для серийного переноса собственных построек.",
+        "",
+        "Рекомендуемый путь: 13.05 · Расширенный верстак. Порядок свободный."
+      ],
+      "icon": "create:schematic_table",
+      "x": 0.0,
+      "y": 16.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E203146439C399B",
+          "type": "custom",
+          "title": "Разместить Schematic Table и Schematicannon Create.",
+          "icon": "create:schematic_table",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20BB006925B15A92",
+          "type": "jem_advancements:quest_item",
+          "item": "create:empty_schematic",
+          "count": 16,
+          "claim_key": "H12.11/item/0",
+          "claim_reward_id": "20BB006925B15A92",
+          "team_reward": false
+        },
+        {
+          "id": "2B7281EF07F7FF74",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_casing",
+          "count": 128,
+          "claim_key": "H12.11/item/1",
+          "claim_reward_id": "2B7281EF07F7FF74",
+          "team_reward": false
+        },
+        {
+          "id": "2743C5CBCCA45DC1",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:gunpowder",
+          "count": 64,
+          "claim_key": "H12.11/item/2",
+          "claim_reward_id": "2743C5CBCCA45DC1",
+          "team_reward": false
+        },
+        {
+          "id": "20A192240D85A3F7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A6CEA56CAC77005",
+      "title": "13.12 · Снаряжение инженера",
+      "subtitle": "Собрать Copper Backtank, Copper Diving Helmet, Copper Diving Boots, Extendo Grip и Potato Cannon Create.",
+      "description": [
+        "Что сделать: Собрать Copper Backtank, Copper Diving Helmet, Copper Diving Boots, Extendo Grip и Potato Cannon Create.",
+        "",
+        "Зачем: Утилитарное снаряжение Create вне фабрики.",
+        "",
+        "Совет: Резервуар воздуха и водолазное снаряжение помогают под водой, Extendo Grip расширяет взаимодействие, Potato Cannon использует подходящие боеприпасы. Зарядку, погружение и применение не связываем в один сценарий.",
+        "",
+        "Награда: Собраны пять дорогих инженерных предметов: заслуженная модернизация одного слота и материалы на дальнейшую механику.",
+        "",
+        "Рекомендуемый путь: 13.04 · Точный механизм. Порядок свободный."
+      ],
+      "icon": "create:copper_backtank",
+      "x": 0.0,
+      "y": 20.2,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29E2EB451D58B234",
+          "type": "item",
+          "item": "create:copper_backtank",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28606D072BD0CBF8",
+          "type": "item",
+          "item": "create:copper_diving_helmet",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "26C6E510366CF891",
+          "type": "item",
+          "item": "create:copper_diving_boots",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "266AB6988BEE1300",
+          "type": "item",
+          "item": "create:extendo_grip",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "27D08E7BFF3B9376",
+          "type": "item",
+          "item": "create:potato_cannon",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CB687B31E092638",
+          "type": "jem_advancements:quest_item",
+          "item": "create:precision_mechanism",
+          "count": 12,
+          "claim_key": "H12.12/item/0",
+          "claim_reward_id": "2CB687B31E092638",
+          "team_reward": false
+        },
+        {
+          "id": "2A115E2FCEEC7B7D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:sturdy_sheet",
+          "count": 32,
+          "claim_key": "H12.12/item/1",
+          "claim_reward_id": "2A115E2FCEEC7B7D",
+          "team_reward": false
+        },
+        {
+          "id": "25137920146855A9",
+          "type": "jem_advancements:quest_item",
+          "item": "create:bar_of_chocolate",
+          "count": 32,
+          "claim_key": "H12.12/item/2",
+          "claim_reward_id": "25137920146855A9",
+          "team_reward": false
+        },
+        {
+          "id": "23BF112B7A8E1FCF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 450,
+          "team_reward": false
+        },
+        {
+          "id": "29EAE9CBB0AA9690",
+          "type": "choice",
+          "table_id": 2892222099118409036L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H12.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:энергия",
+      "order": -5,
+      "hover": [
+        "энергия"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 3.7,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:жидкости",
+      "order": -5,
+      "hover": [
+        "жидкости"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 7.4,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:сборка",
+      "order": -5,
+      "hover": [
+        "сборка"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 11.1,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:механизмы",
+      "order": -5,
+      "hover": [
+        "механизмы"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 14.8,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:строительство",
+      "order": -5,
+      "hover": [
+        "строительство"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 18.5,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:снаряжение",
+      "order": -5,
+      "hover": [
+        "снаряжение"
+      ]
+    }
+  ],
+  "autofocus_id": "2DB7BA6BA9191344"
+}

@@ -1,0 +1,1196 @@
+{
+  "id": "2B42D36659B244D8",
+  "filename": "jem_11",
+  "title": "Дорога и небо",
+  "subtitle": [
+    "Когда: Наземные средства доступны рано. Улучшения и полёт следуют обычным рецептам и ограничениям игры.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "immersive_aircraft:biplane",
+  "group": "28AF004A3850C67C",
+  "order_index": 10,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2F2EB3CD7AAC20E1",
+      "title": "11.01 · В седле",
+      "subtitle": "Сесть на обычную лошадь.",
+      "description": [
+        "Что сделать: Сесть на обычную лошадь.",
+        "",
+        "Зачем: Horseman: парковка и управление поездкой.",
+        "",
+        "Совет: Приручи её, используй седло и поводок, попробуй Horseman-инвентарь. Приручение, поездка, парковка и владение не входят в проверку.",
+        "",
+        "Награда: Первое путешествие верхом получает запас корма и подковы."
+      ],
+      "icon": "minecraft:horse_spawn_egg",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27CB4174E7FB232A",
+          "type": "custom",
+          "title": "Сесть на обычную лошадь.",
+          "icon": "minecraft:horse_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E87CCD7E367D020",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 32,
+          "claim_key": "H08.01/item/0",
+          "claim_reward_id": "2E87CCD7E367D020",
+          "team_reward": false
+        },
+        {
+          "id": "28AAEF7A5188ADF7",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:horseshoe",
+          "count": 4,
+          "claim_key": "H08.01/item/1",
+          "claim_reward_id": "28AAEF7A5188ADF7",
+          "team_reward": false
+        },
+        {
+          "id": "26FE7C0BAD405CC2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28B1EF8439B56CC7",
+      "title": "11.02 · Снаряжение для трудной дороги",
+      "subtitle": "Получить 1 кожаную конскую броню.",
+      "description": [
+        "Что сделать: Получить 1 кожаную конскую броню.",
+        "",
+        "Зачем: Препятствия рельефа и полезная экипировка.",
+        "",
+        "Совет: Horseman меняет некоторые водные взаимодействия, а кожаная броня помогает с рыхлым снегом. Переправа и проверка поверхности не требуются.",
+        "",
+        "Награда: Конская броня дополняется реальными принадлежностями для ухода и управления транспортом.",
+        "",
+        "Рекомендуемый путь: 11.01 · В седле. Порядок свободный."
+      ],
+      "icon": "minecraft:leather_horse_armor",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AB202A878160114",
+          "type": "item",
+          "item": "minecraft:leather_horse_armor",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2347B0438E3A5348",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:horseshoe",
+          "count": 4,
+          "claim_key": "H08.02/item/0",
+          "claim_reward_id": "2347B0438E3A5348",
+          "team_reward": false
+        },
+        {
+          "id": "2EE8224ECD71FF8C",
+          "type": "jem_advancements:quest_item",
+          "item": "trotting_wagons:horse_whip",
+          "count": 1,
+          "claim_key": "H08.02/item/1",
+          "claim_reward_id": "2EE8224ECD71FF8C",
+          "team_reward": false
+        },
+        {
+          "id": "2AD997E4A22EB9C3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2587CDF23D386275",
+      "title": "11.03 · Сундук вьючного животного",
+      "subtitle": "Нажать ПКМ ножницами по ослу или мулу.",
+      "description": [
+        "Что сделать: Нажать ПКМ ножницами по ослу или мулу.",
+        "",
+        "Зачем: Пак-животные; восстановление инвентаря без убийства.",
+        "",
+        "Совет: В Horseman ножницы используются для снятия грузового сундука штатным способом. Перенос груза, успешное снятие и сохранение содержимого не проверяются.",
+        "",
+        "Награда: Практика ухода получает щётку и корм для следующих поездок.",
+        "",
+        "Рекомендуемый путь: 11.02 · Снаряжение для трудной дороги. Порядок свободный."
+      ],
+      "icon": "minecraft:donkey_spawn_egg",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24273CE39BC44004",
+          "type": "custom",
+          "title": "Нажать ПКМ ножницами по ослу или мулу.",
+          "icon": "minecraft:donkey_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AF86CDE9E5FE13E",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:enrichment_brush",
+          "count": 1,
+          "claim_key": "H08.03/item/0",
+          "claim_reward_id": "2AF86CDE9E5FE13E",
+          "team_reward": false
+        },
+        {
+          "id": "2D9656402346BC4D",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 24,
+          "claim_key": "H08.03/item/1",
+          "claim_reward_id": "2D9656402346BC4D",
+          "team_reward": false
+        },
+        {
+          "id": "2656F2C29925E7E9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24F5A9261B3A4047",
+      "title": "11.04 · Познакомиться с тяжеловозом",
+      "subtitle": "Сесть на Clydesdale Barnyard Buddies.",
+      "description": [
+        "Что сделать: Сесть на Clydesdale Barnyard Buddies.",
+        "",
+        "Зачем: Тяжёлая лошадь Barnyard; отсутствие прыжка — особенность.",
+        "",
+        "Совет: Изучи нативное седло и quilt. Тяжеловоз не прыгает как обычная лошадь; экипировка и маршрут не проверяются.",
+        "",
+        "Награда: Тяжеловоз получает материал для повозки и солидный дорожный запас.",
+        "",
+        "Рекомендуемый путь: 11.01 · В седле. Порядок свободный."
+      ],
+      "icon": "barnyardbuddies:clydesdale_horse_spawn_egg",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29BC3AD58682A5DF",
+          "type": "custom",
+          "title": "Сесть на Clydesdale Barnyard Buddies.",
+          "icon": "barnyardbuddies:clydesdale_horse_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28BE288F88558FD2",
+          "type": "jem_advancements:quest_item",
+          "item": "trotting_wagons:wheel",
+          "count": 4,
+          "claim_key": "H08.04/item/0",
+          "claim_reward_id": "28BE288F88558FD2",
+          "team_reward": false
+        },
+        {
+          "id": "2ECD749B8DB9E0F3",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 48,
+          "claim_key": "H08.04/item/1",
+          "claim_reward_id": "2ECD749B8DB9E0F3",
+          "team_reward": false
+        },
+        {
+          "id": "2BB418C1B3144E0D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2308CA8F55D6A39B",
+      "title": "11.05 · Первая повозка",
+      "subtitle": "Получить 1 Conestoga, Royal или Armored Wagon.",
+      "description": [
+        "Что сделать: Получить 1 Conestoga, Royal или Armored Wagon.",
+        "",
+        "Зачем: Настоящая конная упряжь.",
+        "",
+        "Совет: Присоединяй подходящую лошадь по нативным правилам. Наличие упряжи и движение повозки не входят в условие.",
+        "",
+        "Награда: Самостоятельно полученная повозка заслуживает комплекта деталей и дополнительного походного хранения.",
+        "",
+        "Рекомендуемый путь: 11.01 · В седле. Порядок свободный."
+      ],
+      "icon": "trotting_wagons:conestoga_wagon",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B5538744EB77415",
+          "type": "custom",
+          "title": "Получить 1 Conestoga, Royal или Armored Wagon.",
+          "icon": "trotting_wagons:conestoga_wagon",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21B0D6C6B5AC5A65",
+          "type": "jem_advancements:quest_item",
+          "item": "trotting_wagons:wheel",
+          "count": 8,
+          "claim_key": "H08.05/item/0",
+          "claim_reward_id": "21B0D6C6B5AC5A65",
+          "team_reward": false
+        },
+        {
+          "id": "27CCF65B4B1AB768",
+          "type": "jem_advancements:quest_item",
+          "item": "trotting_wagons:horse_whip",
+          "count": 1,
+          "claim_key": "H08.05/item/1",
+          "claim_reward_id": "27CCF65B4B1AB768",
+          "team_reward": false
+        },
+        {
+          "id": "2A623CA7FB4FF2DE",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:backpack",
+          "count": 1,
+          "claim_key": "H08.05/item/2",
+          "claim_reward_id": "2A623CA7FB4FF2DE",
+          "team_reward": false
+        },
+        {
+          "id": "28BB10EC6AF10DC0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23E00CEAC911D09A",
+      "title": "11.06 · За управлением повозки",
+      "subtitle": "Сесть в повозку Trotting Wagons.",
+      "description": [
+        "Что сделать: Сесть в повозку Trotting Wagons.",
+        "",
+        "Зачем: Управление обозом.",
+        "",
+        "Совет: Потренируй скорость, задний ход и парковку. Само управление и положение повозки квест не оценивает.",
+        "",
+        "Награда: Первая поездка получает снабжение и материал для дорожного лагеря.",
+        "",
+        "Рекомендуемый путь: 11.05 · Первая повозка. Порядок свободный."
+      ],
+      "icon": "trotting_wagons:conestoga_wagon",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22F59683A3A820E6",
+          "type": "custom",
+          "title": "Сесть в повозку Trotting Wagons.",
+          "icon": "trotting_wagons:conestoga_wagon",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AA0E8777ECDCD5D",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:rope",
+          "count": 32,
+          "claim_key": "H08.06/item/0",
+          "claim_reward_id": "2AA0E8777ECDCD5D",
+          "team_reward": false
+        },
+        {
+          "id": "200B5CF574BF0938",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 16,
+          "claim_key": "H08.06/item/1",
+          "claim_reward_id": "200B5CF574BF0938",
+          "team_reward": false
+        },
+        {
+          "id": "2FC297CF46E8131B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "217F811A1B0632C0",
+      "title": "11.07 · Грузовой вариант",
+      "subtitle": "Получить 1 Conestoga Wagon.",
+      "description": [
+        "Что сделать: Получить 1 Conestoga Wagon.",
+        "",
+        "Зачем: Грузовая специализация; практический результат без заполнения всех слотов.",
+        "",
+        "Совет: Эта повозка подходит для грузов. Загружай и доставляй материалы по необходимости; содержимое, место и маршрут не проверяются.",
+        "",
+        "Награда: Conestoga получает оснащение погрузочной площадки и корм; совместимость блоков с самой повозкой не выдумывается.",
+        "",
+        "Рекомендуемый путь: 11.06 · За управлением повозки. Порядок свободный."
+      ],
+      "icon": "trotting_wagons:conestoga_wagon",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2486419E3146EFC1",
+          "type": "item",
+          "item": "trotting_wagons:conestoga_wagon",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DBF99CA796AB88D",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.open_crate",
+          "count": 8,
+          "claim_key": "H08.07/item/0",
+          "claim_reward_id": "2DBF99CA796AB88D",
+          "team_reward": false
+        },
+        {
+          "id": "2D9F009528A431F2",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_hopper_basic",
+          "count": 4,
+          "claim_key": "H08.07/item/1",
+          "claim_reward_id": "2D9F009528A431F2",
+          "team_reward": false
+        },
+        {
+          "id": "2A07542896FDC6DF",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 32,
+          "claim_key": "H08.07/item/2",
+          "claim_reward_id": "2A07542896FDC6DF",
+          "team_reward": false
+        },
+        {
+          "id": "2198CF6F97DC2137",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2313B60FF08F9555",
+      "title": "11.08 · Пассажирский вариант",
+      "subtitle": "Получить 1 Royal Wagon.",
+      "description": [
+        "Что сделать: Получить 1 Royal Wagon.",
+        "",
+        "Зачем: Royal/пассажирская перевозка; solo с животным.",
+        "",
+        "Совет: Попробуй перевозку совместимых пассажиров. Посадка другого существа, поездка и высадка не нужны для зачёта.",
+        "",
+        "Награда: Королевская повозка получает дорожное снабжение и заметный наряд владельца.",
+        "",
+        "Рекомендуемый путь: 11.06 · За управлением повозки. Порядок свободный."
+      ],
+      "icon": "trotting_wagons:royal_wagon",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27219036DE61F6A4",
+          "type": "item",
+          "item": "trotting_wagons:royal_wagon",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F647B1CE241EBFF",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_white",
+          "count": 32,
+          "claim_key": "H08.08/item/0",
+          "claim_reward_id": "2F647B1CE241EBFF",
+          "team_reward": false
+        },
+        {
+          "id": "26A32A1953F02BEF",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 32,
+          "claim_key": "H08.08/item/1",
+          "claim_reward_id": "26A32A1953F02BEF",
+          "team_reward": false
+        },
+        {
+          "id": "2AB846085C3FB77C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        },
+        {
+          "id": "28419FCC9B61A28B",
+          "type": "choice",
+          "table_id": 3185210556056396035L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2949A17B68DCEF6F",
+      "title": "11.09 · Уход за повозкой",
+      "subtitle": "Нажать ПКМ красным красителем по повозке Trotting Wagons.",
+      "description": [
+        "Что сделать: Нажать ПКМ красным красителем по повозке Trotting Wagons.",
+        "",
+        "Зачем: Техническое обслуживание, упаковка и оформление.",
+        "",
+        "Совет: Изучи окраску, ремонт после повреждения и нативный pickup топором. Проверяется один ПКМ; цвет, восстановленная прочность и упаковка не доказываются.",
+        "",
+        "Награда: Запас красителей позволяет продолжить штатную перекраску; детали пригодятся следующему транспортному проекту.",
+        "",
+        "Рекомендуемый путь: 11.07 · Грузовой вариант. Порядок свободный."
+      ],
+      "icon": "trotting_wagons:armored_wagon",
+      "x": 5.3,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BAE91259778ED37",
+          "type": "custom",
+          "title": "Нажать ПКМ красным красителем по повозке Trotting Wagons.",
+          "icon": "trotting_wagons:armored_wagon",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25305A728505FCFF",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:red_dye",
+          "count": 16,
+          "claim_key": "H08.09/item/0",
+          "claim_reward_id": "25305A728505FCFF",
+          "team_reward": false
+        },
+        {
+          "id": "2E6F07FD25869400",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:blue_dye",
+          "count": 16,
+          "claim_key": "H08.09/item/1",
+          "claim_reward_id": "2E6F07FD25869400",
+          "team_reward": false
+        },
+        {
+          "id": "2E054EC3A7CAAFF0",
+          "type": "jem_advancements:quest_item",
+          "item": "trotting_wagons:wheel",
+          "count": 4,
+          "claim_key": "H08.09/item/2",
+          "claim_reward_id": "2E054EC3A7CAAFF0",
+          "team_reward": false
+        },
+        {
+          "id": "21FBC2B559EF6362",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F520054A4841FC4",
+      "title": "11.10 · Сани для зимы",
+      "subtitle": "Сесть в сани Snowy Spirit.",
+      "description": [
+        "Что сделать: Сесть в сани Snowy Spirit.",
+        "",
+        "Зачем: Отдельный зимний транспорт и праздничная ветка.",
+        "",
+        "Совет: Попробуй езду по снегу, доступную упряжь и праздничные возможности. Погода, снежная поверхность и расстояние не являются условиями.",
+        "",
+        "Награда: Поездка на санях получает зимнее оформление и праздничный запас еды.",
+        "",
+        "Рекомендуемый путь: 11.01 · В седле. Порядок свободный."
+      ],
+      "icon": "snowyspirit:sled_oak",
+      "x": -5.3,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CE5639285E41196",
+          "type": "custom",
+          "title": "Сесть в сани Snowy Spirit.",
+          "icon": "snowyspirit:sled_oak",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2216922E9AE39086",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_prismatic",
+          "count": 32,
+          "claim_key": "H08.10/item/0",
+          "claim_reward_id": "2216922E9AE39086",
+          "team_reward": false
+        },
+        {
+          "id": "2CDF84C495035376",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:snow_globe",
+          "count": 1,
+          "claim_key": "H08.10/item/1",
+          "claim_reward_id": "2CDF84C495035376",
+          "team_reward": false
+        },
+        {
+          "id": "20053AE71C4F3384",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:eggnog",
+          "count": 12,
+          "claim_key": "H08.10/item/2",
+          "claim_reward_id": "20053AE71C4F3384",
+          "team_reward": false
+        },
+        {
+          "id": "24EE7369566C1930",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H08.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23BAD967A2A26F9A",
+      "title": "11.11 · Первый маунт в коллекции",
+      "subtitle": "Получить 1 запись в своей коллекции маунтов JEM.",
+      "description": [
+        "Что сделать: Получить 1 запись в своей коллекции маунтов JEM.",
+        "",
+        "Зачем: Канонический учёт владения; обычная езда на любом существе не равна записи в MountRoster.",
+        "",
+        "Совет: Коллекция отражает нативное владение допустимыми маунтами. Полный список — факультативный каталог; не требуется проходить все типы.",
+        "",
+        "Награда: Первая нативная запись коллекции получает полезный набор ухода; одна запись не выдаёт редкого нового маунта.",
+        "",
+        "Рекомендуемый путь: 11.01 · В седле. Порядок свободный."
+      ],
+      "icon": "barnyardbuddies:enrichment_brush",
+      "x": 5.3,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20B71E7D2B655C53",
+          "type": "custom",
+          "title": "Получить 1 запись в своей коллекции маунтов JEM.",
+          "icon": "barnyardbuddies:enrichment_brush",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F5905496EF18879",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:enrichment_brush",
+          "count": 1,
+          "claim_key": "mount_collection/item/0",
+          "claim_reward_id": "2F5905496EF18879",
+          "team_reward": false
+        },
+        {
+          "id": "272974814A3EAD50",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:horse_fodder",
+          "count": 64,
+          "claim_key": "mount_collection/item/1",
+          "claim_reward_id": "272974814A3EAD50",
+          "team_reward": false
+        },
+        {
+          "id": "2F2D2DC104A6F708",
+          "type": "jem_advancements:quest_item",
+          "item": "trotting_wagons:horse_whip",
+          "count": 1,
+          "claim_key": "mount_collection/item/2",
+          "claim_reward_id": "2F2D2DC104A6F708",
+          "team_reward": false
+        },
+        {
+          "id": "25D2162211C28593",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "mount_collection",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D28DFE597CBCDFB",
+      "title": "11.12 · Планер в дорогу",
+      "subtitle": "Получить 1 Paraglider или Deku Leaf.",
+      "description": [
+        "Что сделать: Получить 1 Paraglider или Deku Leaf.",
+        "",
+        "Зачем: Планирование и запас сил.",
+        "",
+        "Совет: Планер замедляет падение и расходует stamina. Испытай его на небольшом уступе; высота, посадка и восстановление сил не проверяются.",
+        "",
+        "Награда: Планер дополняется полезной дорожной экипировкой для наземных частей маршрута."
+      ],
+      "icon": "paraglider:paraglider",
+      "x": -7.15,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "297BDEC9A5BB4422",
+          "type": "custom",
+          "title": "Получить 1 Paraglider или Deku Leaf.",
+          "icon": "paraglider:paraglider",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23833C7DCB0140F2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:roadrunner_boots",
+          "count": 1,
+          "claim_key": "H09.01/item/0",
+          "claim_reward_id": "23833C7DCB0140F2",
+          "team_reward": false
+        },
+        {
+          "id": "2757FCD02DF93B11",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_salmon_sandwich",
+          "count": 16,
+          "claim_key": "H09.01/item/1",
+          "claim_reward_id": "2757FCD02DF93B11",
+          "team_reward": false
+        },
+        {
+          "id": "2A32D14E9A650296",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E3272260E29DC14",
+      "title": "11.14 · Сферы для выбора",
+      "subtitle": "Получить 4 Spirit Orbs.",
+      "description": [
+        "Что сделать: Получить 4 Spirit Orbs.",
+        "",
+        "Зачем: Native постоянное улучшение; сами Orbs/контейнеры FTB не выдаёт.",
+        "",
+        "Совет: У Goddess Statue выбирают сердце или выносливость. Квест не расходует сферы и не выдаёт улучшение; покупку проводит сама игра.",
+        "",
+        "Награда: Первый самостоятельно собранный запас сфер получает одноразовое дополнение для штатного обмена.",
+        "",
+        "Рекомендуемый путь: 11.12 · Планер в дорогу. Порядок свободный."
+      ],
+      "icon": "paraglider:spirit_orb",
+      "x": -3.45,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DEDD58A886279DD",
+          "type": "item",
+          "item": "paraglider:spirit_orb",
+          "count": 4,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A730522FF36645F",
+          "type": "jem_advancements:quest_item",
+          "item": "paraglider:spirit_orb",
+          "count": 4,
+          "claim_key": "H09.03/item/0",
+          "claim_reward_id": "2A730522FF36645F",
+          "team_reward": false
+        },
+        {
+          "id": "29567DB7926FA00F",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 24,
+          "claim_key": "H09.03/item/1",
+          "claim_reward_id": "29567DB7926FA00F",
+          "team_reward": false
+        },
+        {
+          "id": "2AFD6800BC3D0F47",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21E2F05DE03344BA",
+      "title": "11.15 · Начало цепной линии",
+      "subtitle": "Нажать ПКМ цепью по деревянному забору.",
+      "description": [
+        "Что сделать: Нажать ПКМ цепью по деревянному забору.",
+        "",
+        "Зачем: Цепи как существующий cable provider; мод zipline не добавляет кабель.",
+        "",
+        "Совет: Reconnectible Chains даёт линию, а Zipline использует совместимые линии и инструмент из attachment-tag. Соединение двух опор и езда не проверяются.",
+        "",
+        "Награда: Первый трос получает достаточный запас цепи и материал для оборудованной станции."
+      ],
+      "icon": "minecraft:chain",
+      "x": 4.38,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24E7366A0746655E",
+          "type": "custom",
+          "title": "Нажать ПКМ цепью по деревянному забору.",
+          "icon": "minecraft:chain",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29D40DFCD4837761",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:chain",
+          "count": 64,
+          "claim_key": "H09.04/item/0",
+          "claim_reward_id": "29D40DFCD4837761",
+          "team_reward": false
+        },
+        {
+          "id": "2694F75F1958C7D6",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:rope",
+          "count": 32,
+          "claim_key": "H09.04/item/1",
+          "claim_reward_id": "2694F75F1958C7D6",
+          "team_reward": false
+        },
+        {
+          "id": "205A1F616605440F",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:hammer",
+          "count": 1,
+          "claim_key": "H09.04/item/2",
+          "claim_reward_id": "205A1F616605440F",
+          "team_reward": false
+        },
+        {
+          "id": "2329DB3214DB0AB4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C0181074EE1FFB9",
+      "title": "11.17 · Свой биплан",
+      "subtitle": "Получить 1 биплан Immersive Aircraft.",
+      "description": [
+        "Что сделать: Получить 1 биплан Immersive Aircraft.",
+        "",
+        "Зачем: Immersive Aircraft с правилами JEM; моторный полёт.",
+        "",
+        "Совет: Заправляй на земле и планируй запас по текущим правилам JEM: ёмкость 16, расход одной единицы за 90 секунд. Запуск, полёт и длительность не отслеживаются.",
+        "",
+        "Награда: Полученный биплан награждается дорогими разрешёнными компонентами и топливом для дальнейшего авиастроения."
+      ],
+      "icon": "immersive_aircraft:biplane",
+      "x": -6.22,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "256DFAD92413F80C",
+          "type": "item",
+          "item": "immersive_aircraft:biplane",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26D571B687ADA72B",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_aircraft:engine",
+          "count": 2,
+          "claim_key": "H09.06/item/0",
+          "claim_reward_id": "26D571B687ADA72B",
+          "team_reward": false
+        },
+        {
+          "id": "211A8FDC6F92169A",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_aircraft:propeller",
+          "count": 2,
+          "claim_key": "H09.06/item/1",
+          "claim_reward_id": "211A8FDC6F92169A",
+          "team_reward": false
+        },
+        {
+          "id": "2A37F45D8D2FA2AA",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_aircraft:hull",
+          "count": 8,
+          "claim_key": "H09.06/item/2",
+          "claim_reward_id": "2A37F45D8D2FA2AA",
+          "team_reward": false
+        },
+        {
+          "id": "2EF9721EC0B3E671",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:coal",
+          "count": 64,
+          "claim_key": "H09.06/item/3",
+          "claim_reward_id": "2EF9721EC0B3E671",
+          "team_reward": false
+        },
+        {
+          "id": "2DD2F1743DBFAB85",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2449CDAE40D73C71",
+      "title": "11.18 · В кабине",
+      "subtitle": "Сесть в биплан Immersive Aircraft.",
+      "description": [
+        "Что сделать: Сесть в биплан Immersive Aircraft.",
+        "",
+        "Зачем: Наземная дозаправка, площадки и планирование дальности.",
+        "",
+        "Совет: Подготовь место для взлёта и возвращения. Наземная дозаправка и запас топлива остаются нативной задачей игрока; маршрут и посадка не проверяются.",
+        "",
+        "Награда: Первая посадка в биплан получает практичный набор аэрофотографии и провиант; за простую посадку не выдаётся редкий самолёт.",
+        "",
+        "Рекомендуемый путь: 11.17 · Свой биплан. Порядок свободный."
+      ],
+      "icon": "immersive_aircraft:biplane",
+      "x": -4.38,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "290D5D8145B888C4",
+          "type": "custom",
+          "title": "Сесть в биплан Immersive Aircraft.",
+          "icon": "immersive_aircraft:biplane",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "212E7D8A3A6FC3BC",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:camera",
+          "count": 1,
+          "claim_key": "H09.07/item/0",
+          "claim_reward_id": "212E7D8A3A6FC3BC",
+          "team_reward": false
+        },
+        {
+          "id": "252A5A0AA717B99C",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 8,
+          "claim_key": "H09.07/item/1",
+          "claim_reward_id": "252A5A0AA717B99C",
+          "team_reward": false
+        },
+        {
+          "id": "23D7356C5536A10D",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 16,
+          "claim_key": "H09.07/item/2",
+          "claim_reward_id": "23D7356C5536A10D",
+          "team_reward": false
+        },
+        {
+          "id": "22A9A878BEB33449",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:верхом",
+      "order": -5,
+      "hover": [
+        "верхом"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:обоз",
+      "order": -5,
+      "hover": [
+        "обоз"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:сезон",
+      "order": -5,
+      "hover": [
+        "сезон"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Основная линия",
+      "order": -5,
+      "hover": [
+        "Основная линия"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:планер",
+      "order": -5,
+      "hover": [
+        "планер"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:канатная дорога",
+      "order": -5,
+      "hover": [
+        "канатная дорога"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 11.1,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:авиация",
+      "order": -5,
+      "hover": [
+        "авиация"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 12.95,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 9.1,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H09.02",
+      "hover": [
+        "11.13 · Восходящий поток: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 6.22,
+      "y": 10.95,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H09.05",
+      "hover": [
+        "11.16 · Сойти с линии: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 5.3,
+      "y": 14.65,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H09.08",
+      "hover": [
+        "11.19 · Выбрать транспорт: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2F2EB3CD7AAC20E1"
+}

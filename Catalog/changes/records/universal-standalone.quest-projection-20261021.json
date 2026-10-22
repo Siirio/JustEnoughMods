@@ -37,11 +37,6 @@
     "owner": "JEM canonical domain owners",
     "kind": "approved_universal_standalone",
     "source_files": [
-      "Client/ManagedPack/config/ftbquests/quests/chapters/bosses_12_eyes.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/create.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt",
       "Client/ManagedPack/config/ftbquests/quests/data.snbt",
       "Mods/JEMAchievementGuide/README.md",
       "Mods/JEMAchievementGuide/build.gradle",
@@ -881,7 +876,12 @@
       "Mods/JEMAchievementGuide/tools/rebuild_curated_manifest.py",
       "Mods/JEMAchievementGuide/tools/sync_paxi_advancements.py",
       "Mods/JEMAchievementGuide/tools/validate_campaign_guide.py",
-      "Mods/JEMAchievementGuide/tools/validate_release.py"
+      "Mods/JEMAchievementGuide/tools/validate_release.py",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/bosses_12_eyes.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/create.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/getting_started.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/living_world.snbt",
+      "Mods/JEMAchievementGuide/tools/questbook/legacy/races.snbt"
     ]
   },
   "rationale": {
@@ -1748,6 +1748,19 @@
         "Mods/JEMAchievementGuide/tools/sync_paxi_advancements.py",
         "Mods/JEMAchievementGuide/tools/validate_campaign_guide.py",
         "Mods/JEMAchievementGuide/tools/validate_release.py"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "archive_replaced_quest_sources",
+      "summary": "The supplied adventure book replaces these small chapter files. Original bytes and retired progress IDs remain in Guide tools/questbook/legacy; new canonical authored book and projection are recorded by ftb-authored-adventure-book-20261022.",
+      "source_files": [
+        "Client/ManagedPack/config/ftbquests/quests/chapters/bosses_12_eyes.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/create.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt"
       ]
     }
   ],

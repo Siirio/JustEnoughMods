@@ -1,0 +1,880 @@
+{
+  "id": "1000000000000004",
+  "filename": "jem_16",
+  "title": "Экспедиции и природные мастерские",
+  "subtitle": [
+    "Когда: С первых вылазок; поздние находки отмечайте по мере естественного получения.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "natures_spirit:redwood_log",
+  "group": "26D9D9FA602B3A53",
+  "order_index": 15,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2483E3D18E9E60AD",
+      "title": "16.01 · Три природных материала",
+      "subtitle": "Собрать по одному граниту, кальциту и Redwood Log Nature’s Spirit.",
+      "description": [
+        "Что сделать: Собрать по одному граниту, кальциту и Redwood Log Nature’s Spirit.",
+        "",
+        "Зачем: Terralith, Tectonic и Nature’s Spirit как источники палитр и живых маршрутов.",
+        "",
+        "Совет: Совет, не условие зачёта: Пройти лес, холодный/горный и сухой регион; добыть по одному полезному материалу и применить их в общей постройке.",
+        "",
+        "Награда: Первая природная палитра сразу превращается в запас для небольшого лагеря."
+      ],
+      "icon": "minecraft:granite",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23D4E280850B42CF",
+          "type": "item",
+          "item": "minecraft:granite",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2D0794D03E3EB0E6",
+          "type": "item",
+          "item": "minecraft:calcite",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2DE6AA9C76CF51A6",
+          "type": "item",
+          "item": "natures_spirit:redwood_log",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E61EEB3BB28089A",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:redwood_planks",
+          "count": 64,
+          "claim_key": "land_01/item/0",
+          "claim_reward_id": "2E61EEB3BB28089A",
+          "team_reward": false
+        },
+        {
+          "id": "2F9E6B0CD0515CA8",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:travertine_bricks",
+          "count": 32,
+          "claim_key": "land_01/item/1",
+          "claim_reward_id": "2F9E6B0CD0515CA8",
+          "team_reward": false
+        },
+        {
+          "id": "2E9785BF98557AC7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "240D522D344025D1",
+      "title": "16.02 · Материалы для переправы",
+      "subtitle": "Поставить 8 дубовых плит.",
+      "description": [
+        "Что сделать: Поставить 8 дубовых плит.",
+        "",
+        "Зачем: Реки как транспортные маршруты; переход к лодкам и морю.",
+        "",
+        "Совет: Совет, не условие зачёта: Streams Reflowing формирует реки с течением. Дубовые плиты подойдут для переправы или причала; место и форма постройки не проверяются.",
+        "",
+        "Награда: Плиты открывают мостовую тему: готовый запас настила и опор для следующей переправы."
+      ],
+      "icon": "minecraft:oak_slab",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "286818CEA58D5C90",
+          "type": "custom",
+          "title": "Поставить 8 дубовых плит.",
+          "icon": "minecraft:oak_slab",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2139CCDFAD801922",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:weaved_straw",
+          "count": 64,
+          "claim_key": "land_02/item/0",
+          "claim_reward_id": "2139CCDFAD801922",
+          "team_reward": false
+        },
+        {
+          "id": "2129BD78739DB3B4",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:hollow_oak_log",
+          "count": 32,
+          "claim_key": "land_02/item/1",
+          "claim_reward_id": "2129BD78739DB3B4",
+          "team_reward": false
+        },
+        {
+          "id": "2F197BF94BC39E80",
+          "type": "jem_advancements:quest_xp",
+          "xp": 25,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20257C27E6AEB24C",
+      "title": "16.03 · Чужой лес дома",
+      "subtitle": "Получить Redwood Planks и Willow Planks Nature’s Spirit, по одному предмету каждого вида.",
+      "description": [
+        "Что сделать: Получить Redwood Planks и Willow Planks Nature’s Spirit, по одному предмету каждого вида.",
+        "",
+        "Зачем: Возобновляемые строительные палитры.",
+        "",
+        "Совет: Совет, не условие зачёта: Привезти саженец секвойи/ивы/другого доступного дерева, вырастить его и обработать древесину.",
+        "",
+        "Награда: Две самостоятельно найденные породы теперь можно использовать в заметной постройке."
+      ],
+      "icon": "natures_spirit:redwood_planks",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21BC391200BFB0C2",
+          "type": "item",
+          "item": "natures_spirit:redwood_planks",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2994F81785FBBFEE",
+          "type": "item",
+          "item": "natures_spirit:willow_planks",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D048507B3A740A3",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:redwood_planks",
+          "count": 96,
+          "claim_key": "land_03/item/0",
+          "claim_reward_id": "2D048507B3A740A3",
+          "team_reward": false
+        },
+        {
+          "id": "212551FD72670193",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:willow_planks",
+          "count": 96,
+          "claim_key": "land_03/item/1",
+          "claim_reward_id": "212551FD72670193",
+          "team_reward": false
+        },
+        {
+          "id": "2068DE8578F4444D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "279F468901856634",
+      "title": "16.04 · Пастельный камень",
+      "subtitle": "Получить Chalk и Kaolin Nature’s Spirit, по одному блоку.",
+      "description": [
+        "Что сделать: Получить Chalk и Kaolin Nature’s Spirit, по одному блоку.",
+        "",
+        "Зачем: Новые семейства камня, а также андезит для Create; ReStoned не требует отдельного квеста.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти мел или каолин, обработать/окрасить по фактическому рецепту и собрать маленький фасад.",
+        "",
+        "Награда: Два геологических открытия дают полноценную светлую строительную палитру."
+      ],
+      "icon": "natures_spirit:black_chalk",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22809CF9B09F3E5D",
+          "type": "custom",
+          "title": "Получить Chalk и Kaolin Nature’s Spirit, по одному блоку.",
+          "icon": "natures_spirit:black_chalk",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B55D9DFE9742F4D",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:kaolin_bricks",
+          "count": 128,
+          "claim_key": "land_04/item/0",
+          "claim_reward_id": "2B55D9DFE9742F4D",
+          "team_reward": false
+        },
+        {
+          "id": "2202BD082297B92A",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:white_kaolin_bricks",
+          "count": 64,
+          "claim_key": "land_04/item/1",
+          "claim_reward_id": "2202BD082297B92A",
+          "team_reward": false
+        },
+        {
+          "id": "2AFA13D79CEFCF6E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EB792C843BF6B83",
+      "title": "16.05 · Кальцит и его возобновление",
+      "subtitle": "Получить 4 блока кальцита.",
+      "description": [
+        "Что сделать: Получить 4 блока кальцита.",
+        "",
+        "Зачем: Возобновляемый источник строительного материала.",
+        "",
+        "Совет: Совет, не условие зачёта: Поставить коралловый блок над колонной пузырей, дождаться зрелой почки, собрать осколки и сделать кальцит.",
+        "",
+        "Награда: Каменная отделка и горшки помогают оформить геологический уголок.",
+        "",
+        "Рекомендуемый путь: 16.04 · Пастельный камень. Порядок свободный."
+      ],
+      "icon": "minecraft:calcite",
+      "x": 3.45,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21EAE0436E4B39C1",
+          "type": "item",
+          "item": "minecraft:calcite",
+          "count": 4,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24CB1F6C7524EC4E",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:polished_travertine",
+          "count": 64,
+          "claim_key": "land_05/item/0",
+          "claim_reward_id": "24CB1F6C7524EC4E",
+          "team_reward": false
+        },
+        {
+          "id": "25DDF7D32E123C39",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:terracotta_medium_pot",
+          "count": 8,
+          "claim_key": "land_05/item/1",
+          "claim_reward_id": "25DDF7D32E123C39",
+          "team_reward": false
+        },
+        {
+          "id": "227C1FF4DA556E22",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C4F181F17492A21",
+      "title": "16.06 · Лотос-лифт",
+      "subtitle": "Поставить Lotus Flower Nature’s Spirit.",
+      "description": [
+        "Что сделать: Поставить Lotus Flower Nature’s Spirit.",
+        "",
+        "Зачем: Естественный подъёмник для пруда или базы.",
+        "",
+        "Совет: Совет, не условие зачёта: На лотосе опуститься с приседанием, поднять его костной мукой и остановить прямым сигналом редстоуна.",
+        "",
+        "Награда: Посаженный лотос получает набор для берегового сада."
+      ],
+      "icon": "natures_spirit:lotus_flower",
+      "x": 5.3,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29AF499DBEC30AB1",
+          "type": "custom",
+          "title": "Поставить Lotus Flower Nature’s Spirit.",
+          "icon": "natures_spirit:lotus_flower",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A6FA821BC29220C",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:giant_lilypad",
+          "count": 16,
+          "claim_key": "land_06/item/0",
+          "claim_reward_id": "2A6FA821BC29220C",
+          "team_reward": false
+        },
+        {
+          "id": "22503BA40D554DFF",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:cattails",
+          "count": 24,
+          "claim_key": "land_06/item/1",
+          "claim_reward_id": "22503BA40D554DFF",
+          "team_reward": false
+        },
+        {
+          "id": "2A47FE8F178B68FC",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:lotus_stem",
+          "count": 16,
+          "claim_key": "land_06/item/2",
+          "claim_reward_id": "2A47FE8F178B68FC",
+          "team_reward": false
+        },
+        {
+          "id": "255BA8117258F36D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2469B776381E3B63",
+      "title": "16.07 · Материал для тяжёлой кладки",
+      "subtitle": "Получить 16 блоков глубинного сланца.",
+      "description": [
+        "Что сделать: Получить 16 блоков глубинного сланца.",
+        "",
+        "Зачем: Обработка материалов физическим взаимодействием.",
+        "",
+        "Совет: Совет, не условие зачёта: Положить камень над магмой и уронить на него наковальню; использовать полученный глубинный сланец в стройке.",
+        "",
+        "Награда: Набор креплений и подмостей пригодится в глубокой шахте."
+      ],
+      "icon": "minecraft:deepslate",
+      "x": 7.15,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BB8FD3A5EE5CF92",
+          "type": "item",
+          "item": "minecraft:deepslate",
+          "count": 16,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20D470F04422FE08",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_scaffolding",
+          "count": 64,
+          "claim_key": "land_07/item/0",
+          "claim_reward_id": "20D470F04422FE08",
+          "team_reward": false
+        },
+        {
+          "id": "24C85E3DAF5F3FCE",
+          "type": "jem_advancements:quest_item",
+          "item": "create:industrial_iron_block",
+          "count": 32,
+          "claim_key": "land_07/item/1",
+          "claim_reward_id": "24C85E3DAF5F3FCE",
+          "team_reward": false
+        },
+        {
+          "id": "27B1E408F61CF39F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2198552919B04DA0",
+      "title": "16.08 · Грибной круг",
+      "subtitle": "Поставить 4 Shiitake Mushrooms Nature’s Spirit.",
+      "description": [
+        "Что сделать: Поставить 4 Shiitake Mushrooms Nature’s Spirit.",
+        "",
+        "Зачем: Необязательный природный секрет.",
+        "",
+        "Совет: Совет, не условие зачёта: Расположить шиитаке кольцом формы рамки портала Энда с травой в центре; изучить подтверждённую реакцию установленной версии.",
+        "",
+        "Награда: Грибная площадка получает строительный материал и провизию."
+      ],
+      "icon": "natures_spirit:shiitake_mushroom",
+      "x": 5.3,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "225FA302B2346756",
+          "type": "custom",
+          "title": "Поставить 4 Shiitake Mushrooms Nature’s Spirit.",
+          "icon": "natures_spirit:shiitake_mushroom",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24AF19B86382282F",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:shiitake_mushroom_block",
+          "count": 48,
+          "claim_key": "land_08/item/0",
+          "claim_reward_id": "24AF19B86382282F",
+          "team_reward": false
+        },
+        {
+          "id": "2415BAD24E041D8D",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_cookie",
+          "count": 16,
+          "claim_key": "land_08/item/1",
+          "claim_reward_id": "2415BAD24E041D8D",
+          "team_reward": false
+        },
+        {
+          "id": "262173549DFCA9E9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22C8259B6C9238A1",
+      "title": "16.09 · Разговор у торгового прилавка",
+      "subtitle": "Нажать ПКМ по деревенскому жителю с изумрудом в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по деревенскому жителю с изумрудом в основной руке.",
+        "",
+        "Зачем: Поиск жителей, местная архитектура, будущая ветка поселений.",
+        "",
+        "Совет: Совет, не условие зачёта: Посетить деревню Better Village или региональную деревню Nature’s Spirit, совершить полезную торговлю и помочь с доступом к рабочему месту.",
+        "",
+        "Награда: Полки для дорожных вещей и перекус после знакомства с торговлей."
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": -8.07,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2993F62E47A6815E",
+          "type": "custom",
+          "title": "Нажать ПКМ по деревенскому жителю с изумрудом в основной руке.",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2462E39F8DE0B55D",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:oak_backpack_shelf",
+          "count": 2,
+          "claim_key": "land_09/item/0",
+          "claim_reward_id": "2462E39F8DE0B55D",
+          "team_reward": false
+        },
+        {
+          "id": "25E80717D5D32972",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_cookie",
+          "count": 12,
+          "claim_key": "land_09/item/1",
+          "claim_reward_id": "25E80717D5D32972",
+          "team_reward": false
+        },
+        {
+          "id": "2ABB5DD1BCF42D1F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 25,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "248DDFC3E8443491",
+      "title": "16.10 · Костёр путешественника",
+      "subtitle": "Поставить один обычный костёр.",
+      "description": [
+        "Что сделать: Поставить один обычный костёр.",
+        "",
+        "Зачем: Малые структуры и безопасные промежуточные базы.",
+        "",
+        "Совет: Совет, не условие зачёта: В руинах Trek и Moog’s Voyager можно устроить ночлег. Найденная структура, безопасность лагеря и возвращение домой не входят в зачёт.",
+        "",
+        "Награда: У костра появляется запас сытной еды и походные корзины."
+      ],
+      "icon": "minecraft:campfire",
+      "x": -6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28C658AE2E0E481F",
+          "type": "custom",
+          "title": "Поставить один обычный костёр.",
+          "icon": "minecraft:campfire",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28403E9B734EEEFB",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:hunters_stew",
+          "count": 12,
+          "claim_key": "land_10/item/0",
+          "claim_reward_id": "28403E9B734EEEFB",
+          "team_reward": false
+        },
+        {
+          "id": "2BF1C93E8EDB2BF3",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_basket",
+          "count": 2,
+          "claim_key": "land_10/item/1",
+          "claim_reward_id": "2BF1C93E8EDB2BF3",
+          "team_reward": false
+        },
+        {
+          "id": "2FDD64EDD9741E5B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 30,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EAD8C98FF7E9D54",
+      "title": "16.11 · Добыча в шахтёрском походе",
+      "subtitle": "Добыть 4 блока обычной или глубинной железной руды.",
+      "description": [
+        "Что сделать: Добыть 4 блока обычной или глубинной железной руды.",
+        "",
+        "Зачем: Подземные структуры и подготовка к большим пещерам.",
+        "",
+        "Совет: Совет, не условие зачёта: Пройти шахту Moog’s Mineshafts, обозначить выход, добыть нужный ресурс и покинуть её с добычей. Позже сравнить мелкую и глубокую monster room Trek.",
+        "",
+        "Награда: Небольшой горный сбор окупается материалами для мастерской."
+      ],
+      "icon": "create:andesite_alloy",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D5027983842AF64",
+          "type": "custom",
+          "title": "Добыть 4 блока обычной или глубинной железной руды.",
+          "icon": "create:andesite_alloy",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25EC324C4C63F8F6",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 16,
+          "claim_key": "land_11/item/0",
+          "claim_reward_id": "25EC324C4C63F8F6",
+          "team_reward": false
+        },
+        {
+          "id": "2966D8B05512C111",
+          "type": "jem_advancements:quest_item",
+          "item": "create:rose_quartz",
+          "count": 8,
+          "claim_key": "land_11/item/1",
+          "claim_reward_id": "2966D8B05512C111",
+          "team_reward": false
+        },
+        {
+          "id": "2864EEF80838012F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25A8DE494B51A480",
+      "title": "16.12 · Разобрать взрывную ловушку",
+      "subtitle": "Сломать один блок TNT.",
+      "description": [
+        "Что сделать: Сломать один блок TNT.",
+        "",
+        "Зачем: Большие руины и осмотр помещений до входа.",
+        "",
+        "Совет: Совет, не условие зачёта: Храмы YUNG/Moog содержат собственные ловушки и сокровища. TNT в задании можно разобрать в любом месте; происхождение блока не проверяется.",
+        "",
+        "Награда: Разбор одного TNT вознаграждается практичным комплектом, без редкого оружия."
+      ],
+      "icon": "minecraft:tnt",
+      "x": -2.52,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "226F028B165CC7FD",
+          "type": "custom",
+          "title": "Сломать один блок TNT.",
+          "icon": "minecraft:tnt",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C207922D9ED8F5C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:industrial_iron_block",
+          "count": 48,
+          "claim_key": "land_12/item/0",
+          "claim_reward_id": "2C207922D9ED8F5C",
+          "team_reward": false
+        },
+        {
+          "id": "27799E88F967825C",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:roasted_sunflower_seeds",
+          "count": 16,
+          "claim_key": "land_12/item/1",
+          "claim_reward_id": "27799E88F967825C",
+          "team_reward": false
+        },
+        {
+          "id": "27191660091FB475",
+          "type": "jem_advancements:quest_xp",
+          "xp": 25,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "212248BDF610108A",
+      "title": "16.13 · Ключ испытания",
+      "subtitle": "Получить Trial Key из Trials Chambers Reuploaded.",
+      "description": [
+        "Что сделать: Получить Trial Key из Trials Chambers Reuploaded.",
+        "",
+        "Зачем: Trials 2.3.3: арена, её нативная добыча и экипировка.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти Trial Chamber и завершить один реальный цикл её испытания; затем использовать добытую награду.",
+        "",
+        "Награда: Ключ испытаний приносит полезный защитный предмет и запас еды для следующего захода."
+      ],
+      "icon": "trials:trial_key",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FB353939D19164A",
+          "type": "item",
+          "item": "trials:trial_key",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EABC13B7DFAE4D5",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shield_of_the_deep",
+          "count": 1,
+          "claim_key": "land_13/item/0",
+          "claim_reward_id": "2EABC13B7DFAE4D5",
+          "team_reward": false
+        },
+        {
+          "id": "2EE5796F56BAA0F7",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shrimp_fried_rice",
+          "count": 16,
+          "claim_key": "land_13/item/1",
+          "claim_reward_id": "2EE5796F56BAA0F7",
+          "team_reward": false
+        },
+        {
+          "id": "240FFEF9AB77E42A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "land_13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Основная линия",
+      "order": -5,
+      "hover": [
+        "Основная линия"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Природные механизмы",
+      "order": -5,
+      "hover": [
+        "Природные механизмы"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Необязательный секрет",
+      "order": -5,
+      "hover": [
+        "Необязательный секрет"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Продолжение маршрута",
+      "order": -5,
+      "hover": [
+        "Продолжение маршрута"
+      ]
+    },
+    {
+      "x": -4.38,
+      "y": 5.4,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:land_14",
+      "hover": [
+        "16.14 · Дневник находок",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": -5.3,
+      "y": 9.1,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:land_15",
+      "hover": [
+        "16.15 · Другие берега и глубины",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2483E3D18E9E60AD"
+}

@@ -1,0 +1,924 @@
+{
+  "id": "212CD19C4F30BF20",
+  "filename": "jem_07",
+  "title": "Дом, мастерская и улицы",
+  "subtitle": [
+    "Когда: Когда хочется обустроить дом. Размер и красота постройки не проверяются.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "handcrafted:oak_chair",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 6,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "23FD98E3E92C7349",
+      "title": "07.01 · Новые строительные формы",
+      "subtitle": "Поставить 4 любых строительных блока Building But Better или Some More Blocks.",
+      "description": [
+        "Что сделать: Поставить 4 любых строительных блока Building But Better или Some More Blocks.",
+        "",
+        "Зачем: Срезы, опоры, мелкие формы и корректировка размещения.",
+        "",
+        "Совет: Изучи доступные формы и инструмент изменения формы. Фасад и сочетание материалов не оцениваются.",
+        "",
+        "Награда: После знакомства с формами выдаётся запас на полноценную стену или фасад."
+      ],
+      "icon": "bbb:acacia_balustrade",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "245C6B7B96DB2585",
+          "type": "custom",
+          "title": "Поставить 4 любых строительных блока Building But Better или Some More Blocks.",
+          "icon": "bbb:acacia_balustrade",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28BA2A12803E5B0D",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:brick_layer",
+          "count": 128,
+          "claim_key": "H05.01/item/0",
+          "claim_reward_id": "28BA2A12803E5B0D",
+          "team_reward": false
+        },
+        {
+          "id": "2A41737C574F448F",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 128,
+          "claim_key": "H05.01/item/1",
+          "claim_reward_id": "2A41737C574F448F",
+          "team_reward": false
+        },
+        {
+          "id": "24C3B50787B218E7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25EBCB6566808E4B",
+      "title": "07.02 · Ограда и стена",
+      "subtitle": "Поставить 1 дубовый забор и 1 булыжную стену.",
+      "description": [
+        "Что сделать: Поставить 1 дубовый забор и 1 булыжную стену.",
+        "",
+        "Зачем: Diagonal Fences/Walls и удобное размещение.",
+        "",
+        "Совет: Попробуй диагональные соединения и Pro Placer. Соединение, отсутствие дыр и непрерывность ряда не проверяются.",
+        "",
+        "Награда: Забор получает две модовые палитры в количестве для целого участка.",
+        "",
+        "Рекомендуемый путь: 07.01 · Новые строительные формы. Порядок свободный."
+      ],
+      "icon": "minecraft:oak_fence",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "214062A4028424A8",
+          "type": "custom",
+          "title": "Поставить 1 дубовый забор и 1 булыжную стену.",
+          "icon": "minecraft:oak_fence",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2717D0871F4FD154",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:iron_fence",
+          "count": 64,
+          "claim_key": "H05.02/item/0",
+          "claim_reward_id": "2717D0871F4FD154",
+          "team_reward": false
+        },
+        {
+          "id": "2F03C7E1AEA3E8F6",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_fence",
+          "count": 64,
+          "claim_key": "H05.02/item/1",
+          "claim_reward_id": "2F03C7E1AEA3E8F6",
+          "team_reward": false
+        },
+        {
+          "id": "2181DAC3BD116EA3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "200D59EE80AC2CCD",
+      "title": "07.03 · Три вида мебели",
+      "subtitle": "Поставить акациевый стул, акациевый сервант и акациевую изысканную кровать Handcrafted.",
+      "description": [
+        "Что сделать: Поставить акациевый стул, акациевый сервант и акациевую изысканную кровать Handcrafted.",
+        "",
+        "Зачем: Сидение, хранение, модовая кровать.",
+        "",
+        "Совет: Это три подтверждённых предмета с разным назначением. Сидение, хранение, сон и качество комнаты не проверяются.",
+        "",
+        "Награда: Три предмета мебели продолжаются согласованной обстановкой кухни и гостиной.",
+        "",
+        "Рекомендуемый путь: 07.02 · Ограда и стена. Порядок свободный."
+      ],
+      "icon": "handcrafted:acacia_chair",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25F8FBA9E7CDF8C8",
+          "type": "custom",
+          "title": "Поставить акациевый стул, акациевый сервант и акациевую изысканную кровать Handcrafted.",
+          "icon": "handcrafted:acacia_chair",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2449973F235915EF",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:acacia_table",
+          "count": 2,
+          "claim_key": "H05.03/item/0",
+          "claim_reward_id": "2449973F235915EF",
+          "team_reward": false
+        },
+        {
+          "id": "24FBF7A36F0BDE7E",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:acacia_counter",
+          "count": 8,
+          "claim_key": "H05.03/item/1",
+          "claim_reward_id": "24FBF7A36F0BDE7E",
+          "team_reward": false
+        },
+        {
+          "id": "2953FEDCB051B895",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:acacia_shelf",
+          "count": 16,
+          "claim_key": "H05.03/item/2",
+          "claim_reward_id": "2953FEDCB051B895",
+          "team_reward": false
+        },
+        {
+          "id": "27646020DB155CFB",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:red_cushion",
+          "count": 16,
+          "claim_key": "H05.03/item/3",
+          "claim_reward_id": "27646020DB155CFB",
+          "team_reward": false
+        },
+        {
+          "id": "2F9DB1C639B12BB7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2407E505CAE88DF5",
+      "title": "07.04 · Открыть ставни",
+      "subtitle": "Нажать ПКМ по ставне ShutterUp.",
+      "description": [
+        "Что сделать: Нажать ПКМ по ставне ShutterUp.",
+        "",
+        "Зачем: Настройка мебели и действующие ставни.",
+        "",
+        "Совет: Ставни открываются и закрываются своим взаимодействием. Цвет, подушки, простыни и отделки Handcrafted можно менять отдельно; результат изменения не проверяется.",
+        "",
+        "Награда: Работа со ставнями получает материал для оконных деталей и звуковой декор.",
+        "",
+        "Рекомендуемый путь: 07.03 · Три вида мебели. Порядок свободный."
+      ],
+      "icon": "shutterup:acacia_shutter",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23FCEB1377C1C35A",
+          "type": "custom",
+          "title": "Нажать ПКМ по ставне ShutterUp.",
+          "icon": "shutterup:acacia_shutter",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "274A742188D8F092",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_trapdoor",
+          "count": 32,
+          "claim_key": "H05.04/item/0",
+          "claim_reward_id": "274A742188D8F092",
+          "team_reward": false
+        },
+        {
+          "id": "290E7196A5975BB7",
+          "type": "jem_advancements:quest_item",
+          "item": "chimes:bamboo_chimes",
+          "count": 2,
+          "claim_key": "H05.04/item/1",
+          "claim_reward_id": "290E7196A5975BB7",
+          "team_reward": false
+        },
+        {
+          "id": "24BF24DD9D773DC1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BC50FB087AD9AD4",
+      "title": "07.05 · Незаметный проход",
+      "subtitle": "Поставить 1 дверь или люк Secret Doors.",
+      "description": [
+        "Что сделать: Поставить 1 дверь или люк Secret Doors.",
+        "",
+        "Зачем: Скрытая архитектура; это маскировка, не система прав доступа.",
+        "",
+        "Совет: Подбери маскировку под стены. Это скрытый проход, а не запрет доступа; пройти через него для зачёта не требуется.",
+        "",
+        "Награда: Скрытый проход получает убедительную библиотечную обстановку.",
+        "",
+        "Рекомендуемый путь: 07.01 · Новые строительные формы. Порядок свободный."
+      ],
+      "icon": "secretdoors:secret_acacia_log_door",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "208F1849B4ABDEA8",
+          "type": "custom",
+          "title": "Поставить 1 дверь или люк Secret Doors.",
+          "icon": "secretdoors:secret_acacia_log_door",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "241120D81E940586",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:bookstack",
+          "count": 16,
+          "claim_key": "H05.05/item/0",
+          "claim_reward_id": "241120D81E940586",
+          "team_reward": false
+        },
+        {
+          "id": "2A87B0C4E5F0995A",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:dark_oak_shelf",
+          "count": 16,
+          "claim_key": "H05.05/item/1",
+          "claim_reward_id": "2A87B0C4E5F0995A",
+          "team_reward": false
+        },
+        {
+          "id": "2BBC2A23DFB0AD11",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C24BB078DA25075",
+      "title": "07.06 · Кнопка под работу",
+      "subtitle": "Поставить 1 кнопку Infinity Buttons.",
+      "description": [
+        "Что сделать: Поставить 1 кнопку Infinity Buttons.",
+        "",
+        "Зачем: Разные схемы ввода; не каждый материал отдельный квест.",
+        "",
+        "Совет: Скрытые, рычажные и аварийные варианты подходят для разных схем. Подключение к лампе и выходной сигнал не проверяются.",
+        "",
+        "Награда: Кнопка получает реальные компоненты для небольших управляющих схем; сложная цепь действий не требуется.",
+        "",
+        "Рекомендуемый путь: 07.05 · Незаметный проход. Порядок свободный."
+      ],
+      "icon": "infinitybuttons:oak_large_button",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25705057BB105590",
+          "type": "custom",
+          "title": "Поставить 1 кнопку Infinity Buttons.",
+          "icon": "infinitybuttons:oak_large_button",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "256BFCF6EA9C57E3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:redstone_link",
+          "count": 2,
+          "claim_key": "H05.06/item/0",
+          "claim_reward_id": "256BFCF6EA9C57E3",
+          "team_reward": false
+        },
+        {
+          "id": "240B3B7B1DADF41C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:redstone_contact",
+          "count": 4,
+          "claim_key": "H05.06/item/1",
+          "claim_reward_id": "240B3B7B1DADF41C",
+          "team_reward": false
+        },
+        {
+          "id": "2CFE542ED1A6ED43",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BED2E276730914C",
+      "title": "07.07 · Тёплый свет",
+      "subtitle": "Получить гирлянду и поставить обычный фонарь.",
+      "description": [
+        "Что сделать: Получить гирлянду и поставить обычный фонарь.",
+        "",
+        "Зачем: Гирлянды, крепления и разные источники освещения.",
+        "",
+        "Совет: Протяни гирлянду между креплениями и выбери её рисунок. Геометрия подвеса и уровень света не являются условиями.",
+        "",
+        "Награда: Освещения хватает на улицу или зал, а не на одиночный пример.",
+        "",
+        "Immersive Lanterns изменяет отображение обычных фонарей и не регистрирует собственный предмет.",
+        "",
+        "Рекомендуемый путь: 07.03 · Три вида мебели. Порядок свободный."
+      ],
+      "icon": "fairylights:hanging_lights",
+      "x": 2.52,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2597BD5C5C1F1683",
+          "type": "item",
+          "item": "fairylights:hanging_lights",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2D4C71E8ADDAA49D",
+          "type": "custom",
+          "title": "Получить гирлянду и поставить обычный фонарь.",
+          "icon": "fairylights:hanging_lights",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CBC0BBE738E21B4",
+          "type": "jem_advancements:quest_item",
+          "item": "fairylights:candle_lantern",
+          "count": 32,
+          "claim_key": "H05.07/item/0",
+          "claim_reward_id": "2CBC0BBE738E21B4",
+          "team_reward": false
+        },
+        {
+          "id": "237465BC3D9B420A",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_white",
+          "count": 16,
+          "claim_key": "H05.07/item/1",
+          "claim_reward_id": "237465BC3D9B420A",
+          "team_reward": false
+        },
+        {
+          "id": "2752C3BF566A5759",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A6992EC7B282A53",
+      "title": "07.08 · Верёвка для мастерской",
+      "subtitle": "Поставить 1 верёвку Dusty Decorations.",
+      "description": [
+        "Что сделать: Поставить 1 верёвку Dusty Decorations.",
+        "",
+        "Зачем: Детали мастерской/рынка и функциональная верёвка.",
+        "",
+        "Совет: Верёвка дополняет склад, мастерскую или пристань и подходит для лазания. Подъём, высота и окружение не отслеживаются.",
+        "",
+        "Награда: Верёвочная тема продолжается целым набором для причала или склада.",
+        "",
+        "Рекомендуемый путь: 07.07 · Тёплый свет. Порядок свободный."
+      ],
+      "icon": "dustydecorations:rope",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D17FA535D950CBC",
+          "type": "custom",
+          "title": "Поставить 1 верёвку Dusty Decorations.",
+          "icon": "dustydecorations:rope",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "282B50B961F2F51F",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:rope",
+          "count": 64,
+          "claim_key": "H05.08/item/0",
+          "claim_reward_id": "282B50B961F2F51F",
+          "team_reward": false
+        },
+        {
+          "id": "251770B1285139DA",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:giant_anchor",
+          "count": 2,
+          "claim_key": "H05.08/item/1",
+          "claim_reward_id": "251770B1285139DA",
+          "team_reward": false
+        },
+        {
+          "id": "288D8912346D6E41",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:wooden_buoy",
+          "count": 16,
+          "claim_key": "H05.08/item/2",
+          "claim_reward_id": "288D8912346D6E41",
+          "team_reward": false
+        },
+        {
+          "id": "2A147966564E6001",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F6B1AC9B77D4727",
+      "title": "07.09 · Две секции дымохода",
+      "subtitle": "Поставить 2 секции дымохода Sooty Chimneys.",
+      "description": [
+        "Что сделать: Поставить 2 секции дымохода Sooty Chimneys.",
+        "",
+        "Зачем: Дым, обслуживание и декоративная работа печи.",
+        "",
+        "Совет: Соедини дымоход с источником дыма и изучи очистку сажи. Работа трубы, сажа и успешная очистка не являются проверками.",
+        "",
+        "Награда: Две пробные секции дают материал для нескольких законченных дымоходов.",
+        "",
+        "Рекомендуемый путь: 07.08 · Верёвка для мастерской. Порядок свободный."
+      ],
+      "icon": "sootychimneys:brick_chimney",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E62955550CF56C9",
+          "type": "custom",
+          "title": "Поставить 2 секции дымохода Sooty Chimneys.",
+          "icon": "sootychimneys:brick_chimney",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29A23FB04528116C",
+          "type": "jem_advancements:quest_item",
+          "item": "sootychimneys:brick_chimney",
+          "count": 32,
+          "claim_key": "H05.09/item/0",
+          "claim_reward_id": "29A23FB04528116C",
+          "team_reward": false
+        },
+        {
+          "id": "23DFC96E3027AC66",
+          "type": "jem_advancements:quest_item",
+          "item": "sootychimneys:copper_chimney",
+          "count": 16,
+          "claim_key": "H05.09/item/1",
+          "claim_reward_id": "23DFC96E3027AC66",
+          "team_reward": false
+        },
+        {
+          "id": "217905E4C3D36717",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2121FCB0922D79BF",
+      "title": "07.10 · Материал со следами времени",
+      "subtitle": "Получить 1 изменённый материал Immersive Weathering: ржавый, замшелый или осыпающийся.",
+      "description": [
+        "Что сделать: Получить 1 изменённый материал Immersive Weathering: ржавый, замшелый или осыпающийся.",
+        "",
+        "Зачем: Заржавевшие/замшелые/осыпающиеся поверхности; material-specific поведение.",
+        "",
+        "Совет: У материалов разные способы старения и ухода. Естественное превращение на месте и восстановление не отслеживаются.",
+        "",
+        "Награда: Патина и мох становятся строительной палитрой заметного объёма.",
+        "",
+        "Рекомендуемый путь: 07.01 · Новые строительные формы. Порядок свободный."
+      ],
+      "icon": "immersive_weathering:rusted_cut_iron",
+      "x": -5.3,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23F7B690A1088464",
+          "type": "custom",
+          "title": "Получить 1 изменённый материал Immersive Weathering: ржавый, замшелый или осыпающийся.",
+          "icon": "immersive_weathering:rusted_cut_iron",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E79F0E30702FBFE",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:mossy_stone_brick_layer",
+          "count": 128,
+          "claim_key": "H05.10/item/0",
+          "claim_reward_id": "2E79F0E30702FBFE",
+          "team_reward": false
+        },
+        {
+          "id": "22E911BD47237E39",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:weathered_cut_copper_layer",
+          "count": 64,
+          "claim_key": "H05.10/item/1",
+          "claim_reward_id": "22E911BD47237E39",
+          "team_reward": false
+        },
+        {
+          "id": "264BCBA1A5F8AEA6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DA1E1FFDB518886",
+      "title": "07.11 · Расчистить снег",
+      "subtitle": "Сломать 4 снежных слоя.",
+      "description": [
+        "Что сделать: Сломать 4 снежных слоя.",
+        "",
+        "Зачем: Снег как часть здания и сезона.",
+        "",
+        "Совет: Snow! Real Magic! и Snow Under Trees делают снег частью окружения. Не требуется зима, конкретный двор или полностью расчищенный путь.",
+        "",
+        "Награда: Снежная прогулка получает зимнюю подсветку и праздничный паёк.",
+        "",
+        "Рекомендуемый путь: 07.01 · Новые строительные формы. Порядок свободный."
+      ],
+      "icon": "minecraft:snow",
+      "x": 5.3,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23E99F7035E5BE73",
+          "type": "custom",
+          "title": "Сломать 4 снежных слоя.",
+          "icon": "minecraft:snow",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26B8E02ABCE63EC3",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_light_blue",
+          "count": 32,
+          "claim_key": "H05.11/item/0",
+          "claim_reward_id": "26B8E02ABCE63EC3",
+          "team_reward": false
+        },
+        {
+          "id": "2B96D625504B673E",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:gingerbread_cookie",
+          "count": 16,
+          "claim_key": "H05.11/item/1",
+          "claim_reward_id": "2B96D625504B673E",
+          "team_reward": false
+        },
+        {
+          "id": "2EF2E4739310CEBC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BBB57873FA2E468",
+      "title": "07.12 · Колокольчик над дверью",
+      "subtitle": "Нажать ПКМ по установленному Chimes.",
+      "description": [
+        "Что сделать: Нажать ПКМ по установленному Chimes.",
+        "",
+        "Зачем: Звуковая среда и настройка колокольчиков.",
+        "",
+        "Совет: Изучи управление звуком и доступное заглушение; у некоторых типов есть влияние на фантомов. Проверяется только взаимодействие.",
+        "",
+        "Награда: Можно выбрать новый тембр колокольчиков и оформить место вокруг.",
+        "",
+        "Рекомендуемый путь: 07.07 · Тёплый свет. Порядок свободный."
+      ],
+      "icon": "chimes:amethyst_chimes",
+      "x": 8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B8C98361CD011BE",
+          "type": "custom",
+          "title": "Нажать ПКМ по установленному Chimes.",
+          "icon": "chimes:amethyst_chimes",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22321BEE037391EC",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:blue_glazed_thick_pot",
+          "count": 16,
+          "claim_key": "H05.12/item/0",
+          "claim_reward_id": "22321BEE037391EC",
+          "team_reward": false
+        },
+        {
+          "id": "235114BF0259B2F8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        },
+        {
+          "id": "2627498778BC5928",
+          "type": "choice",
+          "table_id": 2332614185941597477L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22163E80B98910BE",
+      "title": "07.13 · Праздничные детали",
+      "subtitle": "Поставить 3 декоративных блока MOA Decor Holidays.",
+      "description": [
+        "Что сделать: Поставить 3 декоративных блока MOA Decor Holidays.",
+        "",
+        "Зачем: Сезонный декор доступен как творческая цель, без календарного gate.",
+        "",
+        "Совет: Holidays Gems участвуют в рецептах праздничного декора. Выбери собственную тему; календарная дата и красота зоны не проверяются.",
+        "",
+        "Награда: Праздничная тройка получает заметный центральный декор и гирлянды для всей комнаты.",
+        "",
+        "Рекомендуемый путь: 07.03 · Три вида мебели. Порядок свободный."
+      ],
+      "icon": "moa_decor_holidays:arana_en_telarana",
+      "x": -5.3,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24FB3AE5CD4D10EC",
+          "type": "custom",
+          "title": "Поставить 3 декоративных блока MOA Decor Holidays.",
+          "icon": "moa_decor_holidays:arana_en_telarana",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28A2974F76D7031E",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:snow_globe",
+          "count": 1,
+          "claim_key": "H05.13/item/0",
+          "claim_reward_id": "28A2974F76D7031E",
+          "team_reward": false
+        },
+        {
+          "id": "2EA83557A6F46310",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:wreath",
+          "count": 8,
+          "claim_key": "H05.13/item/1",
+          "claim_reward_id": "2EA83557A6F46310",
+          "team_reward": false
+        },
+        {
+          "id": "22B2E9B8943AAFC4",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_prismatic",
+          "count": 32,
+          "claim_key": "H05.13/item/2",
+          "claim_reward_id": "22B2E9B8943AAFC4",
+          "team_reward": false
+        },
+        {
+          "id": "2C4EB75BBE513FC0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:строительство",
+      "order": -5,
+      "hover": [
+        "строительство"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:интерьер",
+      "order": -5,
+      "hover": [
+        "интерьер"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:механизмы",
+      "order": -5,
+      "hover": [
+        "механизмы"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:атмосфера",
+      "order": -5,
+      "hover": [
+        "атмосфера"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:материалы",
+      "order": -5,
+      "hover": [
+        "материалы"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:сезоны",
+      "order": -5,
+      "hover": [
+        "сезоны"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 11.1,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    }
+  ],
+  "autofocus_id": "23FD98E3E92C7349"
+}

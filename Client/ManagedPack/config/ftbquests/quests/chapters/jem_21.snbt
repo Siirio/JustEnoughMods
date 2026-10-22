@@ -1,0 +1,1427 @@
+{
+  "id": "25B9A724B726AE15",
+  "filename": "jem_21",
+  "title": "Доисторические путешествия",
+  "subtitle": [
+    "Когда: Когда доступны родные входы; FTB знакомит с содержимым, не заменяет порталы.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "unearthed_journey:journey_guide",
+  "group": "26D9D9FA602B3A53",
+  "order_index": 20,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2B1F59EFC42B1B38",
+      "title": "21.01 · Путеводитель путешественника",
+      "subtitle": "Получить Journey Guide Unearthed Journey.",
+      "description": [
+        "Что сделать: Получить Journey Guide Unearthed Journey.",
+        "",
+        "Зачем: Храм, подготовка к Methuselah и знание устройства портала.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить Journey Guide, найти Temple to Methuselah в джунглях и отметить безопасный вход.",
+        "",
+        "Награда: Путеводитель получает комплект для первых спусков и долгого похода."
+      ],
+      "icon": "unearthed_journey:journey_guide",
+      "x": -7.15,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BE93627AF8BC2ED",
+          "type": "item",
+          "item": "unearthed_journey:journey_guide",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "205AD8649455116E",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:rope_ladder",
+          "count": 32,
+          "claim_key": "uj01/item/0",
+          "claim_reward_id": "205AD8649455116E",
+          "team_reward": false
+        },
+        {
+          "id": "2DC86E91B798D9AC",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:pemmican",
+          "count": 16,
+          "claim_key": "uj01/item/1",
+          "claim_reward_id": "2DC86E91B798D9AC",
+          "team_reward": false
+        },
+        {
+          "id": "296D17F38875C67C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "230E363BCAC2D756",
+      "title": "21.02 · Глаз хранителя",
+      "subtitle": "Победить Methuselah.",
+      "description": [
+        "Что сделать: Победить Methuselah.",
+        "",
+        "Зачем: Родной ключ к активации Forgotten Portal.",
+        "",
+        "Совет: Совет, не условие зачёта: Победить Methuselah обычным способом и подобрать его Eye; FTB не выдаёт предмет вместо боя.",
+        "",
+        "Награда: Победа над Methuselah дает две части походной брони и большой рацион; глаз остается собственным трофеем."
+      ],
+      "icon": "unearthed_journey:methuselah_boss_spawn_egg",
+      "x": -5.3,
+      "y": 1.7,
+      "shape": "diamond",
+      "size": 1.25,
+      "tasks": [
+        {
+          "id": "26F72429E8F6A889",
+          "type": "kill",
+          "entity": "unearthed_journey:methuselah_boss",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EB2FCE901E6E1E9",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:padded_armor_chestplate",
+          "count": 1,
+          "claim_key": "uj02/item/0",
+          "claim_reward_id": "2EB2FCE901E6E1E9",
+          "team_reward": false
+        },
+        {
+          "id": "28FDD34066FDA3C7",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:padded_armor_leggings",
+          "count": 1,
+          "claim_key": "uj02/item/1",
+          "claim_reward_id": "28FDD34066FDA3C7",
+          "team_reward": false
+        },
+        {
+          "id": "205C8EFE7122DF97",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:fillet_sandwich",
+          "count": 24,
+          "claim_key": "uj02/item/2",
+          "claim_reward_id": "205C8EFE7122DF97",
+          "team_reward": false
+        },
+        {
+          "id": "23841F9117335BDA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 350,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "255A658DD252A60A",
+      "title": "21.03 · Материалы забытых врат",
+      "subtitle": "Получить Eye of Methuselah и Archstone Pillar.",
+      "description": [
+        "Что сделать: Получить Eye of Methuselah и Archstone Pillar.",
+        "",
+        "Зачем: Три направления: Paleogene, Neogene, Pleistocene; видимая схема вариантов портала.",
+        "",
+        "Совет: Совет, не условие зачёта: Собрать Forgotten Portal с Archstone Pillars и четырьмя согласованными углами по Journey Guide, активировать Eye и пройти в выбранную эпоху.",
+        "",
+        "Награда: Собственные глаз и колонна открывают строительный комплект для портальной базы."
+      ],
+      "icon": "unearthed_journey:eye_of_methuselah",
+      "x": -3.45,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "222DA4537AB4D8FA",
+          "type": "item",
+          "item": "unearthed_journey:eye_of_methuselah",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2BF766FA6407613C",
+          "type": "item",
+          "item": "unearthed_journey:archstone_pillar",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21975B0BF77641BF",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:archstone_bricks",
+          "count": 128,
+          "claim_key": "uj03/item/0",
+          "claim_reward_id": "21975B0BF77641BF",
+          "team_reward": false
+        },
+        {
+          "id": "26CBBB771CA37119",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:blastproof_glass",
+          "count": 48,
+          "claim_key": "uj03/item/1",
+          "claim_reward_id": "26CBBB771CA37119",
+          "team_reward": false
+        },
+        {
+          "id": "2F1FEC30D3C4BB37",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2347DABD031902D9",
+      "title": "21.04 · Лагерь Палеогена",
+      "subtitle": "Войти в измерение Paleogene.",
+      "description": [
+        "Что сделать: Войти в измерение Paleogene.",
+        "",
+        "Зачем: Древняя флора, древесные семейства и дальнейшие природные ресурсы.",
+        "",
+        "Совет: Совет, не условие зачёта: Войти в Paleogene, отметить обратный портал и вырастить местное дерево из привезённого посадочного материала.",
+        "",
+        "Награда: Реальный вход в палеоген дает транспорт и припасы для изучения новой эпохи."
+      ],
+      "icon": "unearthed_journey:canoe_item",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A213B74AF5AB11A",
+          "type": "dimension",
+          "dimension": "unearthed_journey:paleogene",
+          "title": "Войти в измерение Paleogene."
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2468B828ECE148FD",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:canoe_item",
+          "count": 1,
+          "claim_key": "uj04/item/0",
+          "claim_reward_id": "2468B828ECE148FD",
+          "team_reward": false
+        },
+        {
+          "id": "2A9E5D043B38F8F2",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:rope_ladder",
+          "count": 48,
+          "claim_key": "uj04/item/1",
+          "claim_reward_id": "2A9E5D043B38F8F2",
+          "team_reward": false
+        },
+        {
+          "id": "2CE262178B98FF25",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:coconut_milk",
+          "count": 16,
+          "claim_key": "uj04/item/2",
+          "claim_reward_id": "2CE262178B98FF25",
+          "team_reward": false
+        },
+        {
+          "id": "24949BD608FE11B6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20CD6336E53465AC",
+      "title": "21.05 · Торфяной цикл",
+      "subtitle": "Получить Dried Peat Pie и Lead Ingot Unearthed Journey.",
+      "description": [
+        "Что сделать: Получить Dried Peat Pie и Lead Ingot Unearthed Journey.",
+        "",
+        "Зачем: Местная топливная экономика и промежуточные материалы.",
+        "",
+        "Совет: Совет, не условие зачёта: Добыть торф, сделать Peat Pie, высушить и использовать как топливо. Отдельная карточка — переработать местный свинец/кремень по JEI.",
+        "",
+        "Награда: Самостоятельно найденные топливо и металл возвращаются в количестве для полевой мастерской."
+      ],
+      "icon": "unearthed_journey:dried_peat_pie",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D2572554A7362E7",
+          "type": "item",
+          "item": "unearthed_journey:dried_peat_pie",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "24EE2E59377ED1CE",
+          "type": "item",
+          "item": "unearthed_journey:lead_ingot",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F536B7B048475E9",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:lead_ingot",
+          "count": 32,
+          "claim_key": "uj05/item/0",
+          "claim_reward_id": "2F536B7B048475E9",
+          "team_reward": false
+        },
+        {
+          "id": "28258E808B74312C",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:dried_peat_pie",
+          "count": 24,
+          "claim_key": "uj05/item/1",
+          "claim_reward_id": "28258E808B74312C",
+          "team_reward": false
+        },
+        {
+          "id": "24F257CA8D10BCBF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27F329FBC4DD9A5A",
+      "title": "21.06 · Небольшие археологи",
+      "subtitle": "По одному разу нажать ПКМ по Leptictidium с Seed Pouch и по Gnatusuchus с Clam Unearthed Journey.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по Leptictidium с Seed Pouch и по Gnatusuchus с Clam Unearthed Journey.",
+        "",
+        "Зачем: Два древних помощника для добычи, палеонтология через взаимодействие.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить Leptictidium мешочком семян и Gnatusuchus моллюсками; выполнить по одной раскопке каждым помощником.",
+        "",
+        "Награда: Два опыта с животными пополняют уже использованный корм и дорожный рацион."
+      ],
+      "icon": "unearthed_journey:leptictidium_spawn_egg",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F89A24AE394A72D",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по Leptictidium с Seed Pouch и по Gnatusuchus с Clam Unearthed Journey.",
+          "icon": "unearthed_journey:leptictidium_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2FD83FC6D0E7C83D",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:pouch_of_seeds",
+          "count": 8,
+          "claim_key": "uj06/item/0",
+          "claim_reward_id": "2FD83FC6D0E7C83D",
+          "team_reward": false
+        },
+        {
+          "id": "21898B724D7688EC",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:clams_block",
+          "count": 16,
+          "claim_key": "uj06/item/1",
+          "claim_reward_id": "21898B724D7688EC",
+          "team_reward": false
+        },
+        {
+          "id": "2CCAF47B920A0CCB",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:fillet_sandwich",
+          "count": 16,
+          "claim_key": "uj06/item/2",
+          "claim_reward_id": "2CCAF47B920A0CCB",
+          "team_reward": false
+        },
+        {
+          "id": "2326F3C52BCD0740",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F2159D8A736201D",
+      "title": "21.07 · Сумки для травоядных",
+      "subtitle": "Получить Seed Pouch и Grass Pouch Unearthed Journey.",
+      "description": [
+        "Что сделать: Получить Seed Pouch и Grass Pouch Unearthed Journey.",
+        "",
+        "Зачем: Уход за крупной фауной и естественные способы доверия.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить Seed/Grass Pouch, приручить или развести совместимое травоядное по Journey Guide и обеспечить кормовой участок.",
+        "",
+        "Награда: Оба самостоятельно приготовленных кормовых мешочка теперь есть с запасом для нескольких животных."
+      ],
+      "icon": "unearthed_journey:pouch_of_seeds",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D0F0046CD2C8A00",
+          "type": "item",
+          "item": "unearthed_journey:pouch_of_seeds",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "29D90772E0F066DC",
+          "type": "item",
+          "item": "unearthed_journey:pouch_of_grass",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2979FE83E99A7569",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:pouch_of_seeds",
+          "count": 16,
+          "claim_key": "uj07/item/0",
+          "claim_reward_id": "2979FE83E99A7569",
+          "team_reward": false
+        },
+        {
+          "id": "2731580B20EFC57C",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:pouch_of_grass",
+          "count": 16,
+          "claim_key": "uj07/item/1",
+          "claim_reward_id": "2731580B20EFC57C",
+          "team_reward": false
+        },
+        {
+          "id": "2710B30D806712F4",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:rope_ladder",
+          "count": 32,
+          "claim_key": "uj07/item/2",
+          "claim_reward_id": "2710B30D806712F4",
+          "team_reward": false
+        },
+        {
+          "id": "232C7657096F0A6B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DD27A3AD06F4515",
+      "title": "21.08 · Ресурсы Cerrejón",
+      "subtitle": "Получить Platypodium Pod и Anhima Egg Unearthed Journey.",
+      "description": [
+        "Что сделать: Получить Platypodium Pod и Anhima Egg Unearthed Journey.",
+        "",
+        "Зачем: Полная экосистема тропического древнего леса и возобновление растений.",
+        "",
+        "Совет: Совет, не условие зачёта: Исследовать Cerrejón, посадить Platypodium из стручка, получить местный пищевой продукт; открыть отдельные карточки Titanoboa, Arapaima, Acherontisuchus, Carbonemys, Lungfish и Anhima.",
+        "",
+        "Награда: Ботаническая и животная находки дают запас уже найденных семян и готовую еду, без дополнительного яйца."
+      ],
+      "icon": "unearthed_journey:platypodium_seed_pods",
+      "x": 4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "211919DA4234AAE7",
+          "type": "item",
+          "item": "unearthed_journey:platypodium_seed_pods",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2630C69CEFAD721B",
+          "type": "item",
+          "item": "unearthed_journey:anhima_egg",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22A523EE9FA5F2E4",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:platypodium_seed_pods",
+          "count": 32,
+          "claim_key": "uj08/item/0",
+          "claim_reward_id": "22A523EE9FA5F2E4",
+          "team_reward": false
+        },
+        {
+          "id": "29DCAF15BD9B0E4D",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:fried_egg_sandwich",
+          "count": 24,
+          "claim_key": "uj08/item/1",
+          "claim_reward_id": "29DCAF15BD9B0E4D",
+          "team_reward": false
+        },
+        {
+          "id": "20E7C5E909A48024",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29CA9B3A28C7950E",
+      "title": "21.09 · Технологии джунглей",
+      "subtitle": "Получить Mangaris Blowgun, Bamboo Blowgun и Thick Scute Shield.",
+      "description": [
+        "Что сделать: Получить Mangaris Blowgun, Bamboo Blowgun и Thick Scute Shield.",
+        "",
+        "Зачем: Духовые трубки, газовые заряды и защитное снаряжение эпохи.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить доступную духовую трубку из местных материалов и применить подходящий снаряд; независимо сделать щит Thick Scute и заблокировать удар.",
+        "",
+        "Награда: Две духовые трубки и щит получают серьезный боезапас и материалы для дальнейшего ремесла."
+      ],
+      "icon": "unearthed_journey:mangaris_blowgun",
+      "x": 6.22,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EB87EF93DA5BC22",
+          "type": "item",
+          "item": "unearthed_journey:mangaris_blowgun",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "232637D75B9C21D6",
+          "type": "item",
+          "item": "unearthed_journey:bamboo_blowgun",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2A4E1FD071245EA4",
+          "type": "item",
+          "item": "unearthed_journey:scute_shield",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2ED77A72AE7B4FED",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:blow_dart",
+          "count": 128,
+          "claim_key": "uj09/item/0",
+          "claim_reward_id": "2ED77A72AE7B4FED",
+          "team_reward": false
+        },
+        {
+          "id": "225781DFE52A3918",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:thick_scute",
+          "count": 24,
+          "claim_key": "uj09/item/1",
+          "claim_reward_id": "225781DFE52A3918",
+          "team_reward": false
+        },
+        {
+          "id": "2FFBBA9585731985",
+          "type": "jem_advancements:quest_xp",
+          "xp": 190,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E37DD9F539DA78A",
+      "title": "21.10 · Лагерь Неогена",
+      "subtitle": "Войти в измерение Neogene.",
+      "description": [
+        "Что сделать: Войти в измерение Neogene.",
+        "",
+        "Зачем: Второй древний мир и отдельная фауна, доступные параллельно Палеогену.",
+        "",
+        "Совет: Совет, не условие зачёта: Войти в Neogene, поставить отметку обратного пути и посетить местный открытый и морской ландшафт.",
+        "",
+        "Награда: Реальный вход в неоген обеспечивает строительство следующего полевого лагеря."
+      ],
+      "icon": "unearthed_journey:mangaris_planks",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "201234C6A31D5BB4",
+          "type": "dimension",
+          "dimension": "unearthed_journey:neogene",
+          "title": "Войти в измерение Neogene."
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A591EC9F8EECF3B",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:mangaris_planks",
+          "count": 128,
+          "claim_key": "uj10/item/0",
+          "claim_reward_id": "2A591EC9F8EECF3B",
+          "team_reward": false
+        },
+        {
+          "id": "269CF63636EEB891",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:fillet_sandwich",
+          "count": 24,
+          "claim_key": "uj10/item/1",
+          "claim_reward_id": "269CF63636EEB891",
+          "team_reward": false
+        },
+        {
+          "id": "29789C177440F2D6",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:rope_netting",
+          "count": 32,
+          "claim_key": "uj10/item/2",
+          "claim_reward_id": "29789C177440F2D6",
+          "team_reward": false
+        },
+        {
+          "id": "2E8A48F36F7B7AC8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "259EA527A8A84171",
+      "title": "21.11 · Крупные обитатели Pisco",
+      "subtitle": "По одному разу нажать ПКМ по Megalodon и Livyatan Unearthed Journey.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по Megalodon и Livyatan Unearthed Journey.",
+        "",
+        "Зачем: Крупная морская экосистема Неогена; кит и акула не объявляются боссами.",
+        "",
+        "Совет: Совет, не условие зачёта: Организовать наблюдательный рейс по Pisco; встретить Megalodon и Livyatan с безопасной дистанции, зафиксировать пищевую цепь и вернуться с обычным образцом морского ресурса.",
+        "",
+        "Награда: Два опасных морских наблюдения приносят защиту и дорогую провизию; убийство гигантов не требуется."
+      ],
+      "icon": "unearthed_journey:megalodon_spawn_egg",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "250544DF48333D26",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по Megalodon и Livyatan Unearthed Journey.",
+          "icon": "unearthed_journey:megalodon_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D767F2C9566AB08",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shield_of_the_deep",
+          "count": 1,
+          "claim_key": "uj11/item/0",
+          "claim_reward_id": "2D767F2C9566AB08",
+          "team_reward": false
+        },
+        {
+          "id": "2CD52D77770E5299",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:clam_stuffed_darne",
+          "count": 24,
+          "claim_key": "uj11/item/1",
+          "claim_reward_id": "2CD52D77770E5299",
+          "team_reward": false
+        },
+        {
+          "id": "246B2A8A211AE200",
+          "type": "jem_advancements:quest_xp",
+          "xp": 170,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "228717A2EA769981",
+      "title": "21.12 · Лагерь Плейстоцена",
+      "subtitle": "Войти в измерение Pleistocene.",
+      "description": [
+        "Что сделать: Войти в измерение Pleistocene.",
+        "",
+        "Зачем: Третий древний мир, холодная фауна и марганцевая металлургия.",
+        "",
+        "Совет: Совет, не условие зачёта: Войти в Pleistocene с подходящим снаряжением и обозначить возвратный маршрут; найти марганец.",
+        "",
+        "Награда: Реальный вход в холодную эпоху дает мех, снаряжение и большой рацион для базы."
+      ],
+      "icon": "unearthed_journey:pelt",
+      "x": 3.45,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BDF923329A2BE66",
+          "type": "dimension",
+          "dimension": "unearthed_journey:pleistocene",
+          "title": "Войти в измерение Pleistocene."
+        }
+      ],
+      "rewards": [
+        {
+          "id": "201015EDCFB95CF1",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:pelt",
+          "count": 32,
+          "claim_key": "uj12/item/0",
+          "claim_reward_id": "201015EDCFB95CF1",
+          "team_reward": false
+        },
+        {
+          "id": "29BD4030C006222A",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:rope_ladder",
+          "count": 64,
+          "claim_key": "uj12/item/1",
+          "claim_reward_id": "29BD4030C006222A",
+          "team_reward": false
+        },
+        {
+          "id": "2536FBD1839F0D40",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:meat_n_peas",
+          "count": 24,
+          "claim_key": "uj12/item/2",
+          "claim_reward_id": "2536FBD1839F0D40",
+          "team_reward": false
+        },
+        {
+          "id": "2C1B55E2DEFD1EE7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22194B12B65B16FB",
+      "title": "21.13 · Марганцевая сталь",
+      "subtitle": "Выплавить один Manganese Steel Ingot.",
+      "description": [
+        "Что сделать: Выплавить один Manganese Steel Ingot.",
+        "",
+        "Зачем: Новая материальная цепочка, оружие, инструменты и броня.",
+        "",
+        "Совет: Совет, не условие зачёта: Смешать марганец, сырое железо и силикат в Manganese Steel Blend и переплавить в сталь.",
+        "",
+        "Награда: Первая собственная плавка марганцевой стали окупается запасом изученных металлов."
+      ],
+      "icon": "unearthed_journey:manganese_steel_ingot",
+      "x": 5.3,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A2FD7939B894A33",
+          "type": "custom",
+          "title": "Выплавить один Manganese Steel Ingot.",
+          "icon": "unearthed_journey:manganese_steel_ingot",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26F4B605D964DEC3",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:manganese_steel_ingot",
+          "count": 32,
+          "claim_key": "uj13/item/0",
+          "claim_reward_id": "26F4B605D964DEC3",
+          "team_reward": false
+        },
+        {
+          "id": "2970B7E3CEEAC5EF",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:lead_ingot",
+          "count": 32,
+          "claim_key": "uj13/item/1",
+          "claim_reward_id": "2970B7E3CEEAC5EF",
+          "team_reward": false
+        },
+        {
+          "id": "2C3167D6A5B874C4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B811A3A286AC768",
+      "title": "21.14 · Снаряжение исследователя",
+      "subtitle": "Получить Manganese Steel Ingot, Hide Satchel и Rock Pick.",
+      "description": [
+        "Что сделать: Получить Manganese Steel Ingot, Hide Satchel и Rock Pick.",
+        "",
+        "Зачем: Холодозащита, перенос находок и специализированный инструмент.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить Manganese Steel-снаряжение: применить холодостойкую броню в походе, Satchel для груза и Rock Pick к обсидиану/Archstone. Три независимые подкарточки.",
+        "",
+        "Награда: Полный комплект исследователя получает еще один сильный утилитарный инструмент на выбор.",
+        "",
+        "В установленной версии нет Manganese Steel Chestplate; сохранены существующие материал и экспедиционные инструменты.",
+        "",
+        "Рекомендуемый путь: 21.13 · Марганцевая сталь. Порядок свободный."
+      ],
+      "icon": "unearthed_journey:manganese_steel_ingot",
+      "x": 7.15,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D0ECAE2861059D0",
+          "type": "item",
+          "item": "unearthed_journey:manganese_steel_ingot",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "21B76EE42B09AB12",
+          "type": "item",
+          "item": "unearthed_journey:hide_satchel",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "26BFF810CAE6C987",
+          "type": "item",
+          "item": "unearthed_journey:rock_pick",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "281CDAB0869624FC",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:manganese_steel_ingot",
+          "count": 24,
+          "claim_key": "uj14/item/0",
+          "claim_reward_id": "281CDAB0869624FC",
+          "team_reward": false
+        },
+        {
+          "id": "25117E711B2AB542",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:meat_n_peas",
+          "count": 24,
+          "claim_key": "uj14/item/1",
+          "claim_reward_id": "25117E711B2AB542",
+          "team_reward": false
+        },
+        {
+          "id": "20FDB509F84F3983",
+          "type": "jem_advancements:quest_xp",
+          "xp": 280,
+          "team_reward": false
+        },
+        {
+          "id": "23DE8ED8436C9E72",
+          "type": "choice",
+          "table_id": 3127982170391392822L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29958C413C8B2223",
+      "title": "21.15 · Три эпохи в одном журнале",
+      "subtitle": "Войти по одному разу в три измерения: Paleogene, Neogene и Pleistocene.",
+      "description": [
+        "Что сделать: Войти по одному разу в три измерения: Paleogene, Neogene и Pleistocene.",
+        "",
+        "Зачем: Все три мира освоены; факультативный атлас оставшейся фауны, пищи, пород и вариантов.",
+        "",
+        "Совет: Совет, не условие зачёта: Доставить по одному возобновляемому материалу из Paleogene, Neogene и Pleistocene; оформить небольшой музей с маршрутами и живыми посадками.",
+        "",
+        "Награда: Три лично посещенные эпохи заслуживают редкого средства полета, пленки и памятной музыки."
+      ],
+      "icon": "alexsmobs:tarantula_hawk_elytra",
+      "x": -5.3,
+      "y": 9.1,
+      "shape": "diamond",
+      "size": 1.25,
+      "tasks": [
+        {
+          "id": "2E9680C7F6C7CFB3",
+          "type": "dimension",
+          "dimension": "unearthed_journey:paleogene",
+          "title": "Войти по одному разу в три измерения: Paleogene, Neogene и Pleistocene."
+        },
+        {
+          "id": "2CF8E6B66F6218DB",
+          "type": "dimension",
+          "dimension": "unearthed_journey:neogene",
+          "title": "Войти по одному разу в три измерения: Paleogene, Neogene и Pleistocene."
+        },
+        {
+          "id": "2BA77E69FBF530B8",
+          "type": "dimension",
+          "dimension": "unearthed_journey:pleistocene",
+          "title": "Войти по одному разу в три измерения: Paleogene, Neogene и Pleistocene."
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22D65905C8FEBBE2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:tarantula_hawk_elytra",
+          "count": 1,
+          "claim_key": "uj15/item/0",
+          "claim_reward_id": "22D65905C8FEBBE2",
+          "team_reward": false
+        },
+        {
+          "id": "28786D7D80DE06DD",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 12,
+          "claim_key": "uj15/item/1",
+          "claim_reward_id": "28786D7D80DE06DD",
+          "team_reward": false
+        },
+        {
+          "id": "296D9B6C12B3E861",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:indeterminate_chronology",
+          "count": 1,
+          "claim_key": "uj15/item/2",
+          "claim_reward_id": "296D9B6C12B3E861",
+          "team_reward": false
+        },
+        {
+          "id": "23275A7DEF39B395",
+          "type": "jem_advancements:quest_xp",
+          "xp": 500,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "uj15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22B320F5BE90B812",
+      "title": "21.16 · Материалы Frostbite Forest",
+      "subtitle": "Получить Cedar Log, Psycho Berry и Pinecone.",
+      "description": [
+        "Что сделать: Получить Cedar Log, Psycho Berry и Pinecone.",
+        "",
+        "Зачем: Кедр, смола, Psychoberries/Burrel Pinecones и собственная экосистема холода.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти Frostbite Forest, привезти кедровую древесину и посадочный материал, приготовить один местный продукт из ягод/шишек.",
+        "",
+        "Награда: Три северные находки превращаются в большой запас кедровых досок и угощения.",
+        "",
+        "Использованы точные имена и регистрации установленного Blast From The Past."
+      ],
+      "icon": "blastfromthepast:cedar_log",
+      "x": 2.52,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "274DC16BA6AFE336",
+          "type": "item",
+          "item": "blastfromthepast:cedar_log",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2C98D4498CE24224",
+          "type": "item",
+          "item": "blastfromthepast:psycho_berry",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "26B134FF45F5F784",
+          "type": "item",
+          "item": "blastfromthepast:pinecone",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29E6A6A51A05927B",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:cedar",
+          "count": 128,
+          "claim_key": "wf01/item/0",
+          "claim_reward_id": "29E6A6A51A05927B",
+          "team_reward": false
+        },
+        {
+          "id": "23A4CAA219F39B00",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:psycho_berry_ice_cream",
+          "count": 16,
+          "claim_key": "wf01/item/1",
+          "claim_reward_id": "23A4CAA219F39B00",
+          "team_reward": false
+        },
+        {
+          "id": "2F6CB60B8D557327",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wf01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2066F82C0364CE35",
+      "title": "21.17 · Обитатели древнего холода",
+      "subtitle": "Нажать ПКМ по трём разным видам из списка: Snowdo, Glaceros, Speartooth, Psychobear.",
+      "description": [
+        "Что сделать: Нажать ПКМ по трём разным видам из списка: Snowdo, Glaceros, Speartooth, Psychobear.",
+        "",
+        "Зачем: Фауна Blast; рога, мех и рецепты холодного лагеря.",
+        "",
+        "Совет: Совет, не условие зачёта: Отдельные факультативные наблюдения: Snowdo, Glaceros, Speartooth и Psychobear; у каждого показать отличительное поведение и применение проверенного ресурса.",
+        "",
+        "Награда: Знакомство с тремя видами дает заметный набор для северного лагеря."
+      ],
+      "icon": "blastfromthepast:snowdo_spawn_egg",
+      "x": 4.38,
+      "y": 10.95,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AFC9F0BF7E86318",
+          "type": "custom",
+          "title": "Нажать ПКМ по трём разным видам из списка: Snowdo, Glaceros, Speartooth, Psychobear.",
+          "icon": "blastfromthepast:snowdo_spawn_egg",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2949974A0C0D878C",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:glaceros_totem_pole",
+          "count": 8,
+          "claim_key": "wf02/item/0",
+          "claim_reward_id": "2949974A0C0D878C",
+          "team_reward": false
+        },
+        {
+          "id": "20A37BCF95375660",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:snowdo_totem_pole",
+          "count": 8,
+          "claim_key": "wf02/item/1",
+          "claim_reward_id": "20A37BCF95375660",
+          "team_reward": false
+        },
+        {
+          "id": "200F295931826854",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:glazed_beast_chops",
+          "count": 24,
+          "claim_key": "wf02/item/2",
+          "claim_reward_id": "200F295931826854",
+          "team_reward": false
+        },
+        {
+          "id": "202373D1DE41DC05",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wf02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "230E531DC7269198",
+      "title": "21.18 · Шлем Froststalker",
+      "subtitle": "Надеть Froststalker Helmet.",
+      "description": [
+        "Что сделать: Надеть Froststalker Helmet.",
+        "",
+        "Зачем: Управление опасной стаей через снаряжение.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить шлем из рога Froststalker и проверить нейтральное приближение; развести стаю свининой после изучения поведения.",
+        "",
+        "Награда: Освоенный морозный шлем дополняется меховым запасом и ледяной архитектурой."
+      ],
+      "icon": "alexsmobs:froststalker_helmet",
+      "x": 6.22,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B4E1E2373CE4806",
+          "type": "custom",
+          "title": "Надеть Froststalker Helmet.",
+          "icon": "alexsmobs:froststalker_helmet",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DBB22D1A1B5473E",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:shaggy_pelt",
+          "count": 24,
+          "claim_key": "wf03/item/0",
+          "claim_reward_id": "2DBB22D1A1B5473E",
+          "team_reward": false
+        },
+        {
+          "id": "2FF066861ACA175D",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:ice_brick",
+          "count": 96,
+          "claim_key": "wf03/item/1",
+          "claim_reward_id": "2FF066861ACA175D",
+          "team_reward": false
+        },
+        {
+          "id": "2572E051BA7C7DA8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 115,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wf03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25F4664DA3A8FA2B",
+      "title": "21.19 · Древний ездовой Tusklin",
+      "subtitle": "Сесть верхом на Tusklin.",
+      "description": [
+        "Что сделать: Сесть верхом на Tusklin.",
+        "",
+        "Зачем: Грибная пища, разведение и особое оснащение ездового зверя.",
+        "",
+        "Совет: Совет, не условие зачёта: Успокоить Tusklin коричневым грибом, оседлать и освоить короткую езду; найти/изготовить Hogshoes доступным способом и сравнить управление.",
+        "",
+        "Награда: Поездка на Tusklin отмечается носимым северным предметом и большим походным рационом."
+      ],
+      "icon": "alexsmobs:moose_headgear",
+      "x": 8.07,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "228BE26767718D10",
+          "type": "custom",
+          "title": "Сесть верхом на Tusklin.",
+          "icon": "alexsmobs:moose_headgear",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D8CD59AB9D66199",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:moose_headgear",
+          "count": 1,
+          "claim_key": "wf04/item/0",
+          "claim_reward_id": "2D8CD59AB9D66199",
+          "team_reward": false
+        },
+        {
+          "id": "209199E344026AA2",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:cooked_venison",
+          "count": 24,
+          "claim_key": "wf04/item/1",
+          "claim_reward_id": "209199E344026AA2",
+          "team_reward": false
+        },
+        {
+          "id": "22423FFDE3B331EA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wf04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A1B5693AD45F210",
+      "title": "21.20 · След Frostomper",
+      "subtitle": "Победить Frostomper.",
+      "description": [
+        "Что сделать: Победить Frostomper.",
+        "",
+        "Зачем: Старшая цель ледниковой экспедиции и местная поздняя экипировка.",
+        "",
+        "Совет: Совет, не условие зачёта: Подготовить место встречи и победить Frostomper; применить полученную добычу в Beast Chops/Frostbite-снаряжении по установленным рецептам.",
+        "",
+        "Награда: Подтвержденное убийство Frostomper дает нагрудник, еще одну часть редкой брони на выбор и материалы."
+      ],
+      "icon": "blastfromthepast:frostomper_spawn_egg",
+      "x": 5.3,
+      "y": 12.8,
+      "shape": "diamond",
+      "size": 1.25,
+      "tasks": [
+        {
+          "id": "23D442F48FF39784",
+          "type": "kill",
+          "entity": "blastfromthepast:frostomper",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B7755DE86C618FF",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:frostbite_chestplate",
+          "count": 1,
+          "claim_key": "wf05/item/0",
+          "claim_reward_id": "2B7755DE86C618FF",
+          "team_reward": false
+        },
+        {
+          "id": "2C033DA7B1BC89CF",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:shaggy_pelt",
+          "count": 24,
+          "claim_key": "wf05/item/1",
+          "claim_reward_id": "2C033DA7B1BC89CF",
+          "team_reward": false
+        },
+        {
+          "id": "2390EE21B6F7D3C6",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:frostomper_totem_pole",
+          "count": 8,
+          "claim_key": "wf05/item/2",
+          "claim_reward_id": "2390EE21B6F7D3C6",
+          "team_reward": false
+        },
+        {
+          "id": "2728A0AEFBC64F6D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 450,
+          "team_reward": false
+        },
+        {
+          "id": "203706399FD4CDD3",
+          "type": "choice",
+          "table_id": 2440017006155464091L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wf05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Врата в прошлое",
+      "order": -5,
+      "hover": [
+        "Врата в прошлое"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Палеоген",
+      "order": -5,
+      "hover": [
+        "Палеоген"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Неоген",
+      "order": -5,
+      "hover": [
+        "Неоген"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Плейстоцен",
+      "order": -5,
+      "hover": [
+        "Плейстоцен"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Журнал трёх эпох",
+      "order": -5,
+      "hover": [
+        "Журнал трёх эпох"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Древний холод",
+      "order": -5,
+      "hover": [
+        "Древний холод"
+      ]
+    }
+  ],
+  "autofocus_id": "2B1F59EFC42B1B38"
+}

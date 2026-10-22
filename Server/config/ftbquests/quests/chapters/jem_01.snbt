@@ -1,0 +1,779 @@
+{
+  "id": "1000000000000001",
+  "filename": "jem_01",
+  "title": "Первые часы и полевой набор",
+  "subtitle": [
+    "Когда: Сразу; редкие инструменты проверяются только после их обычного получения.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "minecraft:compass",
+  "group": "2FAB9DA418A66ECD",
+  "order_index": 0,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "258B0E23340F9AC2",
+      "title": "01.01 · Один нужный рецепт",
+      "subtitle": "Сделать 1 хлеб или 1 деревянную кирку.",
+      "description": [
+        "Что сделать: Сделать 1 хлеб или 1 деревянную кирку.",
+        "",
+        "Зачем: Поиск рецептов и применений; ветки дома, исследований и приключений.",
+        "",
+        "Совет: Найди рецепт и применения в JEI. Клавишу рецептов смотри в своих настройках; открытие каталога не проверяется.",
+        "",
+        "Награда: Первые припасы и освещение для ночёвки: полноценный дорожный запас вместо нескольких факелов."
+      ],
+      "icon": "minecraft:bread",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BE61FEEF57B03BE",
+          "type": "custom",
+          "title": "Сделать 1 хлеб или 1 деревянную кирку.",
+          "icon": "minecraft:bread",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "222A5138ACEA64AB",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 8,
+          "claim_key": "start_01/item/0",
+          "claim_reward_id": "222A5138ACEA64AB",
+          "team_reward": false
+        },
+        {
+          "id": "2DAFBBC483E0D161",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 8,
+          "claim_key": "start_01/item/1",
+          "claim_reward_id": "2DAFBBC483E0D161",
+          "team_reward": false
+        },
+        {
+          "id": "21AE6767EE5643E4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "start_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B4E01D0F217D313",
+      "title": "01.02 · Место для первой ночи",
+      "subtitle": "Поставить 1 кровать и 1 факел.",
+      "description": [
+        "Что сделать: Поставить 1 кровать и 1 факел.",
+        "",
+        "Зачем: Дом, кухня, ферма; ранняя самостоятельность.",
+        "",
+        "Совет: Кровать, свет и еда помогут пережить первую ночь. Квест проверяет только два размещения, без оценки дома и ожидания утра.",
+        "",
+        "Награда: Обустройство первого безопасного дома: мебель, хранение и мягкие сиденья.",
+        "",
+        "Рекомендуемый путь: 01.01 · Один нужный рецепт. Порядок свободный."
+      ],
+      "icon": "minecraft:torch",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27320407A1D57ACE",
+          "type": "custom",
+          "title": "Поставить 1 кровать и 1 факел.",
+          "icon": "minecraft:torch",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "249BE71D4AC2307E",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 2,
+          "claim_key": "start_02/item/0",
+          "claim_reward_id": "249BE71D4AC2307E",
+          "team_reward": false
+        },
+        {
+          "id": "293B3D96BC492E6B",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_cupboard",
+          "count": 2,
+          "claim_key": "start_02/item/1",
+          "claim_reward_id": "293B3D96BC492E6B",
+          "team_reward": false
+        },
+        {
+          "id": "2A1D92F3B4881E4B",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:red_cushion",
+          "count": 8,
+          "claim_key": "start_02/item/2",
+          "claim_reward_id": "2A1D92F3B4881E4B",
+          "team_reward": false
+        },
+        {
+          "id": "2D70BA90C2F0A2F8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "start_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2020DC5042BBEF2E",
+      "title": "01.07 · Компас для нового маршрута",
+      "subtitle": "Нажать ПКМ в воздухе с Nature’s Compass.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Nature’s Compass.",
+        "",
+        "Зачем: Осмысленный поиск биомов; тематические экспедиции.",
+        "",
+        "Совет: Выбери биом с нужным материалом. Поиск, местоположение и возвращение домой не являются условиями.",
+        "",
+        "Награда: Компас ведёт в экспедицию; рюкзак и еда сразу делают её удобнее."
+      ],
+      "icon": "naturescompass:naturescompass",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EE65C41BD9D53EF",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Nature’s Compass.",
+          "icon": "naturescompass:naturescompass",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C0124EC1EEFED82",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:backpack",
+          "count": 1,
+          "claim_key": "field_01/item/0",
+          "claim_reward_id": "2C0124EC1EEFED82",
+          "team_reward": false
+        },
+        {
+          "id": "272DCA5527BA2B34",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_salmon_sandwich",
+          "count": 12,
+          "claim_key": "field_01/item/1",
+          "claim_reward_id": "272DCA5527BA2B34",
+          "team_reward": false
+        },
+        {
+          "id": "278CFAA63ED3B94F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22863EB08F001F8B",
+      "title": "01.09 · Посмотреть вдаль",
+      "subtitle": "Нажать ПКМ в воздухе с подзорной трубой.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с подзорной трубой.",
+        "",
+        "Зачем: Рельеф, ориентиры и подготовка подхода к структуре.",
+        "",
+        "Совет: Подзорная труба помогает выбрать путь, а 3D Maps — рассмотреть рельеф. Сам маршрут и клиентская карта не проверяются.",
+        "",
+        "Награда: Наблюдения получают практическое продолжение: камера с запасом плёнки для путевого журнала.",
+        "",
+        "Рекомендуемый путь: 01.07 · Компас для нового маршрута. Порядок свободный."
+      ],
+      "icon": "minecraft:spyglass",
+      "x": -6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C2F97BAD39E1183",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с подзорной трубой.",
+          "icon": "minecraft:spyglass",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21C8119E17C30FFF",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:camera",
+          "count": 1,
+          "claim_key": "field_03/item/0",
+          "claim_reward_id": "21C8119E17C30FFF",
+          "team_reward": false
+        },
+        {
+          "id": "29D550501ADA8A41",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 4,
+          "claim_key": "field_03/item/1",
+          "claim_reward_id": "29D550501ADA8A41",
+          "team_reward": false
+        },
+        {
+          "id": "2C1E544B83A3EC76",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27E6FF1E793B638C",
+      "title": "01.10 · Свет с собой",
+      "subtitle": "Получить 1 фонарь Flashier Flashlights.",
+      "description": [
+        "Что сделать: Получить 1 фонарь Flashier Flashlights.",
+        "",
+        "Зачем: Исследование пещер и ночные фотосъёмки.",
+        "",
+        "Совет: Настрой свет и проверь питание в интерфейсе/рецепте своей версии. Не требуется искать тёмную область или проходить маршрут.",
+        "",
+        "Награда: Освещение постоянного лагеря и запас еды для длинной вылазки с фонарём.",
+        "",
+        "Рекомендуемый путь: 01.07 · Компас для нового маршрута. Порядок свободный."
+      ],
+      "icon": "flashlightmod:flashlight",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22DD14754468D1F3",
+          "type": "item",
+          "item": "flashlightmod:flashlight",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "252340B295D6FC5B",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 32,
+          "claim_key": "field_04/item/0",
+          "claim_reward_id": "252340B295D6FC5B",
+          "team_reward": false
+        },
+        {
+          "id": "24C8A0DA8B38A911",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:goulash",
+          "count": 12,
+          "claim_key": "field_04/item/1",
+          "claim_reward_id": "24C8A0DA8B38A911",
+          "team_reward": false
+        },
+        {
+          "id": "289DFFA012D4E835",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27117D84CA01444A",
+      "title": "01.11 · Кирка и стена",
+      "subtitle": "Нажать ПКМ железной киркой по камню.",
+      "description": [
+        "Что сделать: Нажать ПКМ железной киркой по камню.",
+        "",
+        "Зачем: Gouge: удержание, скольжение, расход прочности и прыжок от стены.",
+        "",
+        "Совет: Это знакомство с управлением Gouge. На невысокой стене попробуй зацеп, скольжение и отскок; успешное движение не проверяется.",
+        "",
+        "Награда: После знакомства с инструментом — рабочий ключ и материал для первых технических приспособлений.",
+        "",
+        "Рекомендуемый путь: 01.09 · Посмотреть вдаль. Порядок свободный."
+      ],
+      "icon": "minecraft:stone",
+      "x": -2.52,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25FC3ACEB1A033F7",
+          "type": "custom",
+          "title": "Нажать ПКМ железной киркой по камню.",
+          "icon": "minecraft:stone",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F2A0AED95413C5E",
+          "type": "jem_advancements:quest_item",
+          "item": "create:wrench",
+          "count": 1,
+          "claim_key": "field_05/item/0",
+          "claim_reward_id": "2F2A0AED95413C5E",
+          "team_reward": false
+        },
+        {
+          "id": "29212B018361DFB3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 24,
+          "claim_key": "field_05/item/1",
+          "claim_reward_id": "29212B018361DFB3",
+          "team_reward": false
+        },
+        {
+          "id": "2B521F9BD2F4103C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20F9323ADBAE827B",
+      "title": "01.12 · Один блок или девять",
+      "subtitle": "Получить кирку с зачарованием «Копатель».",
+      "description": [
+        "Что сделать: Получить кирку с зачарованием «Копатель».",
+        "",
+        "Зачем: Управляемая массовая добыча; подготовка к шахтам и стройке.",
+        "",
+        "Совет: Обычно зачарование позволяет добывать 3×3. Shift оставляет один блок, Shift+ПКМ переключает режим. Не требуется доказывать добычу девяти блоков.",
+        "",
+        "Награда: Чары уже получены самостоятельно; опыт и материал поддерживают обслуживание инструмента и следующий проект.",
+        "",
+        "Рекомендуемый путь: 01.11 · Кирка и стена. Порядок свободный."
+      ],
+      "icon": "create:experience_nugget",
+      "x": -6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23AC6EC1390836D0",
+          "type": "custom",
+          "title": "Получить кирку с зачарованием «Копатель».",
+          "icon": "create:experience_nugget",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27B8EBF3F3AFBB1C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:experience_nugget",
+          "count": 32,
+          "claim_key": "field_06/item/0",
+          "claim_reward_id": "27B8EBF3F3AFBB1C",
+          "team_reward": false
+        },
+        {
+          "id": "2E216A2F6DCA3540",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 32,
+          "claim_key": "field_06/item/1",
+          "claim_reward_id": "2E216A2F6DCA3540",
+          "team_reward": false
+        },
+        {
+          "id": "2D3ACDEDAD84E3F3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EBFF2A3460B6275",
+      "title": "01.13 · Прочная кирка",
+      "subtitle": "Получить кирку, на которой одновременно есть «Копатель» и «Прочность III».",
+      "description": [
+        "Что сделать: Получить кирку, на которой одновременно есть «Копатель» и «Прочность III».",
+        "",
+        "Зачем: Экономия прочности и планирование больших работ.",
+        "",
+        "Совет: При массовой добыче JEM учитывает Прочность по своему алгоритму. Случайный расход и ремонт этим заданием не измеряются.",
+        "",
+        "Награда: Кирка с двумя нужными чарами заслуживает полноценного полезного инструмента на выбор.",
+        "",
+        "Рекомендуемый путь: 01.12 · Один блок или девять. Порядок свободный."
+      ],
+      "icon": "create:experience_nugget",
+      "x": -4.38,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2526395BA34F08ED",
+          "type": "custom",
+          "title": "Получить кирку, на которой одновременно есть «Копатель» и «Прочность III».",
+          "icon": "create:experience_nugget",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "236BC8E265735444",
+          "type": "jem_advancements:quest_item",
+          "item": "create:experience_nugget",
+          "count": 64,
+          "claim_key": "field_07/item/0",
+          "claim_reward_id": "236BC8E265735444",
+          "team_reward": false
+        },
+        {
+          "id": "266D001C67C38430",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        },
+        {
+          "id": "233E81182EB7E90A",
+          "type": "choice",
+          "table_id": 2695877607874871351L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22BE1831879F0877",
+      "title": "01.14 · Дрова и формы",
+      "subtitle": "Сломать 4 бревна и получить 4 деревянные ступеньки.",
+      "description": [
+        "Что сделать: Сломать 4 бревна и получить 4 деревянные ступеньки.",
+        "",
+        "Зачем: Лесозаготовка и строительные варианты без отдельных квестов на каждую ступеньку.",
+        "",
+        "Совет: TreeChop облегчает рубку, а JEM добавляет деревянные формы в камнерез. Происхождение ступенек и единый цикл обработки не проверяются.",
+        "",
+        "Награда: Лесозаготовка превращается в ощутимый запас дерева для первой постройки.",
+        "",
+        "Рекомендуемый путь: 01.07 · Компас для нового маршрута. Порядок свободный."
+      ],
+      "icon": "natures_spirit:cypress_planks",
+      "x": -5.3,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2624CB8629612539",
+          "type": "custom",
+          "title": "Сломать 4 бревна и получить 4 деревянные ступеньки.",
+          "icon": "natures_spirit:cypress_planks",
+          "count": 4
+        },
+        {
+          "id": "2A43EFF951FFC9F3",
+          "type": "custom",
+          "title": "Сломать 4 бревна и получить 4 деревянные ступеньки.",
+          "icon": "natures_spirit:cypress_planks",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DF0DA8CD802EEBF",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_planks",
+          "count": 128,
+          "claim_key": "field_08/item/0",
+          "claim_reward_id": "2DF0DA8CD802EEBF",
+          "team_reward": false
+        },
+        {
+          "id": "2692E5B08A43FCEE",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_stairs",
+          "count": 32,
+          "claim_key": "field_08/item/1",
+          "claim_reward_id": "2692E5B08A43FCEE",
+          "team_reward": false
+        },
+        {
+          "id": "290BA05A3A2BCED9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29F156CE13A1F437",
+      "title": "01.16 · Пробная стена",
+      "subtitle": "Поставить 8 каменных кирпичей.",
+      "description": [
+        "Что сделать: Поставить 8 каменных кирпичей.",
+        "",
+        "Зачем: Планирование большого строительства.",
+        "",
+        "Совет: Попробуй Pro Placer на повторяющемся участке. LitematicaTool используй только в пределах разрешённых функций текущего профиля; точность схемы не оценивается.",
+        "",
+        "Награда: Материала хватает продолжить стену и дорожки, а не поставить только демонстрационный угол.",
+        "",
+        "Рекомендуемый путь: 01.14 · Дрова и формы. Порядок свободный."
+      ],
+      "icon": "minecraft:stone_bricks",
+      "x": -5.3,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27990324973ABCA7",
+          "type": "custom",
+          "title": "Поставить 8 каменных кирпичей.",
+          "icon": "minecraft:stone_bricks",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2977E66CAD549603",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 128,
+          "claim_key": "field_10/item/0",
+          "claim_reward_id": "2977E66CAD549603",
+          "team_reward": false
+        },
+        {
+          "id": "258C2127FDAE08E1",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_fence",
+          "count": 32,
+          "claim_key": "field_10/item/1",
+          "claim_reward_id": "258C2127FDAE08E1",
+          "team_reward": false
+        },
+        {
+          "id": "249D76D556B0D24D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Основная линия",
+      "order": -5,
+      "hover": [
+        "Основная линия"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Справочник",
+      "order": -5,
+      "hover": [
+        "Справочник"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Кооператив",
+      "order": -5,
+      "hover": [
+        "Кооператив"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Улучшение инструмента",
+      "order": -5,
+      "hover": [
+        "Улучшение инструмента"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:После неудачи",
+      "order": -5,
+      "hover": [
+        "После неудачи"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 11.1,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Строителям",
+      "order": -5,
+      "hover": [
+        "Строителям"
+      ]
+    },
+    {
+      "x": 4.38,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:start_03",
+      "hover": [
+        "01.03 · Прочитай то, на что смотришь",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": -4.38,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:start_04",
+      "hover": [
+        "01.04 · Выбери занятие",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 5.3,
+      "y": 5.4,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:start_05",
+      "hover": [
+        "01.05 · Партия и книга — разные вещи",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 6.22,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:start_06",
+      "hover": [
+        "01.06 · Совпали рецепты",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": -8.07,
+      "y": 3.55,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:field_02",
+      "hover": [
+        "01.08 · Своя карта",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 5.3,
+      "y": 9.1,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:field_09",
+      "hover": [
+        "01.15 · Вернуть вещи",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "258B0E23340F9AC2"
+}

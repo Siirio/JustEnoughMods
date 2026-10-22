@@ -1,0 +1,662 @@
+{
+  "id": "2A24AB61A2E490C8",
+  "filename": "jem_14",
+  "title": "Create 6: заказы и снабжение",
+  "subtitle": [
+    "Когда: После обычного открытия латунных/точных компонентов. Создавать действующую сеть для зачёта не нужно.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "create:packager",
+  "group": "28AF004A3850C67C",
+  "order_index": 13,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2185CA853BD80F2F",
+      "title": "14.01 · Упаковщик",
+      "subtitle": "Поставить 1 Packager Create.",
+      "description": [
+        "Что сделать: Поставить 1 Packager Create.",
+        "",
+        "Зачем: Физические packages Create6.",
+        "",
+        "Совет: Из Cardboard получаются упаковочные компоненты. Packager взаимодействует с реальным складом и создаёт физические посылки; наличие подключённого инвентаря и выпуска посылки не проверяется.",
+        "",
+        "Награда: Набор отправки для нескольких складов после установки первого упаковщика.",
+        "",
+        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+      ],
+      "icon": "create:packager",
+      "x": -1.85,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2797C3727E1CFEB4",
+          "type": "custom",
+          "title": "Поставить 1 Packager Create.",
+          "icon": "create:packager",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "224835AC64AA5B86",
+          "type": "jem_advancements:quest_item",
+          "item": "create:packager",
+          "count": 4,
+          "claim_key": "H13.01/item/0",
+          "claim_reward_id": "224835AC64AA5B86",
+          "team_reward": false
+        },
+        {
+          "id": "2B28FDFB37824D5F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:cardboard",
+          "count": 64,
+          "claim_key": "H13.01/item/1",
+          "claim_reward_id": "2B28FDFB37824D5F",
+          "team_reward": false
+        },
+        {
+          "id": "2FBAF02AB1859E03",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_funnel",
+          "count": 8,
+          "claim_key": "H13.01/item/2",
+          "claim_reward_id": "2FBAF02AB1859E03",
+          "team_reward": false
+        },
+        {
+          "id": "2BFD24A47B8E8F46",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A73A6CCFC7C2476",
+      "title": "14.02 · Посылка в руках",
+      "subtitle": "Получить 1 посылку Create любого размера.",
+      "description": [
+        "Что сделать: Получить 1 посылку Create любого размера.",
+        "",
+        "Зачем: Адресация и доставка.",
+        "",
+        "Совет: Адрес направляет посылку к нужной точке. Попробуй упаковку и распаковку на собственном складе; доставка между двумя местами не отслеживается.",
+        "",
+        "Награда: Расходники и фильтры для следующей партии отправлений; пустые коробки с неизвестным содержимым не выдаются.",
+        "",
+        "Рекомендуемый путь: 14.01 · Упаковщик. Порядок свободный."
+      ],
+      "icon": "create:rare_creeper_package",
+      "x": 0.0,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2879602F726392B4",
+          "type": "custom",
+          "title": "Получить 1 посылку Create любого размера.",
+          "icon": "create:rare_creeper_package",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23C1D44A161130C8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:cardboard",
+          "count": 64,
+          "claim_key": "H13.02/item/0",
+          "claim_reward_id": "23C1D44A161130C8",
+          "team_reward": false
+        },
+        {
+          "id": "24E7820248EBD56B",
+          "type": "jem_advancements:quest_item",
+          "item": "create:package_filter",
+          "count": 8,
+          "claim_key": "H13.02/item/1",
+          "claim_reward_id": "24E7820248EBD56B",
+          "team_reward": false
+        },
+        {
+          "id": "2541A26C9F463756",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D5D4860A00D2929",
+      "title": "14.03 · Подвесная доставка: детали",
+      "subtitle": "Разместить Chain Conveyor, Frogport и Postbox Create.",
+      "description": [
+        "Что сделать: Разместить Chain Conveyor, Frogport и Postbox Create.",
+        "",
+        "Зачем: Транспорт packages; chain conveyor отличается от Zipline цепей.",
+        "",
+        "Совет: Соедини конвейер с точками отправления и приёма. Это транспорт посылок Create 6; он отличается от Zipline. Длина, соединение и приезд груза не проверяются.",
+        "",
+        "Награда: Можно расширить транспортную линию между несколькими точками. Конфигурация реальной сети не входит в зачёт.",
+        "",
+        "Рекомендуемый путь: 14.02 · Посылка в руках. Порядок свободный."
+      ],
+      "icon": "create:chain_conveyor",
+      "x": 1.85,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2669D945CF5ABDFC",
+          "type": "custom",
+          "title": "Разместить Chain Conveyor, Frogport и Postbox Create.",
+          "icon": "create:chain_conveyor",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2475B7E06B6718B9",
+          "type": "jem_advancements:quest_item",
+          "item": "create:chain_conveyor",
+          "count": 16,
+          "claim_key": "H13.03/item/0",
+          "claim_reward_id": "2475B7E06B6718B9",
+          "team_reward": false
+        },
+        {
+          "id": "2E64D3DDBD433C8F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:package_frogport",
+          "count": 4,
+          "claim_key": "H13.03/item/1",
+          "claim_reward_id": "2E64D3DDBD433C8F",
+          "team_reward": false
+        },
+        {
+          "id": "22E69B7A8D25CC9E",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:chain",
+          "count": 64,
+          "claim_key": "H13.03/item/2",
+          "claim_reward_id": "22E69B7A8D25CC9E",
+          "team_reward": false
+        },
+        {
+          "id": "2D05B2A67E9A285F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 230,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22F8994E87173E59",
+      "title": "14.04 · Компоненты сети запасов",
+      "subtitle": "Разместить Stock Link и Stock Ticker Create.",
+      "description": [
+        "Что сделать: Разместить Stock Link и Stock Ticker Create.",
+        "",
+        "Зачем: Сеть запасов без выдачи бесплатных предметов.",
+        "",
+        "Совет: Stock Link связывает склад с сетью, Stock Ticker показывает запасы и позволяет заказывать. Настрой сеть по Ponder; её состав, принадлежность и реальные остатки не являются условиями.",
+        "",
+        "Награда: Запас связей склада и дополнительных терминалов заказов.",
+        "",
+        "Рекомендуемый путь: 14.01 · Упаковщик. Порядок свободный."
+      ],
+      "icon": "create:stock_link",
+      "x": -1.85,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "201E9EBDEF5B218E",
+          "type": "custom",
+          "title": "Разместить Stock Link и Stock Ticker Create.",
+          "icon": "create:stock_link",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2660B9E3D5EC7DA3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:stock_link",
+          "count": 8,
+          "claim_key": "H13.04/item/0",
+          "claim_reward_id": "2660B9E3D5EC7DA3",
+          "team_reward": false
+        },
+        {
+          "id": "221B7C78827959FB",
+          "type": "jem_advancements:quest_item",
+          "item": "create:stock_ticker",
+          "count": 2,
+          "claim_key": "H13.04/item/1",
+          "claim_reward_id": "221B7C78827959FB",
+          "team_reward": false
+        },
+        {
+          "id": "26C96CAC3EF5D4F2",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_sheet",
+          "count": 32,
+          "claim_key": "H13.04/item/2",
+          "claim_reward_id": "26C96CAC3EF5D4F2",
+          "team_reward": false
+        },
+        {
+          "id": "287D77F9E0215FA1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BCCD90D19B20CBA",
+      "title": "14.05 · Знакомство с заказами",
+      "subtitle": "Нажать ПКМ по Stock Ticker Create пустой основной рукой.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Stock Ticker Create пустой основной рукой.",
+        "",
+        "Зачем: Заказ ресурсов через Stock Ticker и снабжение по запросу.",
+        "",
+        "Совет: Через интерфейс можно заказать ингредиенты к производственной станции. Зачёт даётся за обращение к блоку: открытие окна, оформление и получение заказа не требуются.",
+        "",
+        "Награда: Полезное пополнение логистического набора за знакомство с интерфейсом; ПКМ не считается доказательством выполненного заказа.",
+        "",
+        "Рекомендуемый путь: 14.04 · Компоненты сети запасов. Порядок свободный."
+      ],
+      "icon": "create:stock_ticker",
+      "x": 0.0,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25C1DAF3A7A92FFC",
+          "type": "custom",
+          "title": "Нажать ПКМ по Stock Ticker Create пустой основной рукой.",
+          "icon": "create:stock_ticker",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "216A63747DC26251",
+          "type": "jem_advancements:quest_item",
+          "item": "create:cardboard",
+          "count": 32,
+          "claim_key": "H13.05/item/0",
+          "claim_reward_id": "216A63747DC26251",
+          "team_reward": false
+        },
+        {
+          "id": "280DDA83F4C1C8E1",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_ingot",
+          "count": 16,
+          "claim_key": "H13.05/item/1",
+          "claim_reward_id": "280DDA83F4C1C8E1",
+          "team_reward": false
+        },
+        {
+          "id": "2D44B78F365AC414",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D50C184CF50D72B",
+      "title": "14.06 · Запрос от редстоуна",
+      "subtitle": "Разместить Redstone Requester Create и обычный рычаг.",
+      "description": [
+        "Что сделать: Разместить Redstone Requester Create и обычный рычаг.",
+        "",
+        "Зачем: Заказы от схем/механизмов.",
+        "",
+        "Совет: Настрой состав запроса и подай сигнал. Для зачёта достаточно двух типов размещений; соединение, сигнал и выполненный заказ не проверяются.",
+        "",
+        "Награда: Дополнительные запросчики и электроника для нескольких независимых потребителей.",
+        "",
+        "Рекомендуемый путь: 14.05 · Знакомство с заказами. Порядок свободный."
+      ],
+      "icon": "create:redstone_requester",
+      "x": 1.85,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "271AC33420642E75",
+          "type": "custom",
+          "title": "Разместить Redstone Requester Create и обычный рычаг.",
+          "icon": "create:redstone_requester",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DD99C32400524E3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:redstone_requester",
+          "count": 4,
+          "claim_key": "H13.06/item/0",
+          "claim_reward_id": "2DD99C32400524E3",
+          "team_reward": false
+        },
+        {
+          "id": "2B4FADA1EA44854F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:electron_tube",
+          "count": 24,
+          "claim_key": "H13.06/item/1",
+          "claim_reward_id": "2B4FADA1EA44854F",
+          "team_reward": false
+        },
+        {
+          "id": "2EF80136C6FE37DD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A1C16AF92E8323C",
+      "title": "14.07 · Контроль целевого запаса",
+      "subtitle": "Поставить 1 Factory Gauge Create.",
+      "description": [
+        "Что сделать: Поставить 1 Factory Gauge Create.",
+        "",
+        "Зачем: Автоматическое поддержание stock; не бесконечный ручной craft.",
+        "",
+        "Совет: Задай небольшой целевой запас, свяжи нужные узлы и посмотри, как снабжение реагирует на расход. Книга не ждёт пополнения и не сравнивает состояние склада во времени.",
+        "",
+        "Награда: Можно вывести несколько производственных показателей после первого установленного измерителя.",
+        "",
+        "Рекомендуемый путь: 14.06 · Запрос от редстоуна. Порядок свободный."
+      ],
+      "icon": "create:factory_gauge",
+      "x": -0.93,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "228D120D2C353746",
+          "type": "custom",
+          "title": "Поставить 1 Factory Gauge Create.",
+          "icon": "create:factory_gauge",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F0FA47525DB74E0",
+          "type": "jem_advancements:quest_item",
+          "item": "create:factory_gauge",
+          "count": 4,
+          "claim_key": "H13.07/item/0",
+          "claim_reward_id": "2F0FA47525DB74E0",
+          "team_reward": false
+        },
+        {
+          "id": "2A4779CBB3DE1158",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_sheet",
+          "count": 32,
+          "claim_key": "H13.07/item/1",
+          "claim_reward_id": "2A4779CBB3DE1158",
+          "team_reward": false
+        },
+        {
+          "id": "2E8A4D33BE8C1E5E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2655439F8163579B",
+      "title": "14.08 · Переупаковщик",
+      "subtitle": "Поставить 1 Re-packager Create.",
+      "description": [
+        "Что сделать: Поставить 1 Re-packager Create.",
+        "",
+        "Зачем: Составные поставки и согласование частей.",
+        "",
+        "Совет: Когда части заказа приходят разными посылками, Re-packager помогает собрать их дальше. Номера заказов, происхождение частей и дальнейшая доставка не хранятся в квесте.",
+        "",
+        "Награда: Запас упаковки и распределителей для объединения отправлений.",
+        "",
+        "Рекомендуемый путь: 14.02 · Посылка в руках. Порядок свободный."
+      ],
+      "icon": "create:repackager",
+      "x": 0.93,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DE6427362DF2B16",
+          "type": "custom",
+          "title": "Поставить 1 Re-packager Create.",
+          "icon": "create:repackager",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B39B8E3B000556B",
+          "type": "jem_advancements:quest_item",
+          "item": "create:repackager",
+          "count": 2,
+          "claim_key": "H13.08/item/0",
+          "claim_reward_id": "2B39B8E3B000556B",
+          "team_reward": false
+        },
+        {
+          "id": "22B7442EF4739A7A",
+          "type": "jem_advancements:quest_item",
+          "item": "create:cardboard",
+          "count": 64,
+          "claim_key": "H13.08/item/1",
+          "claim_reward_id": "22B7442EF4739A7A",
+          "team_reward": false
+        },
+        {
+          "id": "20EBCB2256E2989D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_tunnel",
+          "count": 8,
+          "claim_key": "H13.08/item/2",
+          "claim_reward_id": "20EBCB2256E2989D",
+          "team_reward": false
+        },
+        {
+          "id": "2CAE9FD7D32058CA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 170,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "218B78DF2979B3B9",
+      "title": "14.09 · Коллекция снабжения",
+      "subtitle": "Разместить 6 типов: Packager, Re-packager, Stock Link, Stock Ticker, Redstone Requester и Factory Gauge.",
+      "description": [
+        "Что сделать: Разместить 6 типов: Packager, Re-packager, Stock Link, Stock Ticker, Redstone Requester и Factory Gauge.",
+        "",
+        "Зачем: Полный набор инструментов заказов и снабжения Create 6.",
+        "",
+        "Совет: Из освоенных компонентов можно организовать снабжение мастерских, стройки и экспедиций. Зачёт — набор размещённых типов; общая рабочая сеть и выполненный заказ не нужны.",
+        "",
+        "Награда: Коллекция шести разных логистических устройств оплачивается большим запасом точной механики и полезным строительным инструментом. Работоспособность фабрики не утверждается.",
+        "",
+        "Рекомендуемый путь: 14.04 · Компоненты сети запасов; 14.08 · Переупаковщик. Порядок свободный."
+      ],
+      "icon": "create:packager",
+      "x": 0.0,
+      "y": 12.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A25D3C3A06DAA59",
+          "type": "custom",
+          "title": "Разместить 6 типов: Packager, Re-packager, Stock Link, Stock Ticker, Redstone Requester и Factory Gauge.",
+          "icon": "create:packager",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "id": "280F37CFA06BF2D8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:precision_mechanism",
+          "count": 16,
+          "claim_key": "H13.09/item/0",
+          "claim_reward_id": "280F37CFA06BF2D8",
+          "team_reward": false
+        },
+        {
+          "id": "28393D3B5E499FF9",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_sheet",
+          "count": 64,
+          "claim_key": "H13.09/item/1",
+          "claim_reward_id": "28393D3B5E499FF9",
+          "team_reward": false
+        },
+        {
+          "id": "2E42624189B6E713",
+          "type": "jem_advancements:quest_item",
+          "item": "create:sturdy_sheet",
+          "count": 32,
+          "claim_key": "H13.09/item/2",
+          "claim_reward_id": "2E42624189B6E713",
+          "team_reward": false
+        },
+        {
+          "id": "227E122522703493",
+          "type": "jem_advancements:quest_item",
+          "item": "create:wand_of_symmetry",
+          "count": 1,
+          "claim_key": "H13.09/item/3",
+          "claim_reward_id": "227E122522703493",
+          "team_reward": false
+        },
+        {
+          "id": "2D01C979EEF802B3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 420,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H13.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:логистика",
+      "order": -5,
+      "hover": [
+        "логистика"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 3.7,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:заказы",
+      "order": -5,
+      "hover": [
+        "заказы"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 7.4,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:производство",
+      "order": -5,
+      "hover": [
+        "производство"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 11.1,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    }
+  ],
+  "autofocus_id": "2185CA853BD80F2F"
+}

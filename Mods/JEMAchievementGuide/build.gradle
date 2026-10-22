@@ -19,6 +19,7 @@ minecraft {
 
 dependencies {
     compileOnly project(path: ':JEMDrillLifecycle', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-quests-forge-2001.4.22.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-library-forge-2001.2.13.jar"))

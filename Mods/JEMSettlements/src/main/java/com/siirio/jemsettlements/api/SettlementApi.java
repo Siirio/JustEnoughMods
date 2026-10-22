@@ -26,6 +26,11 @@ public final class SettlementApi {
     private SettlementApi() {
     }
 
+    public static int collectedMountTypes(ServerPlayer player) {
+        return SettlementAuthority.principal(player).map(principal ->
+                com.siirio.jemsettlements.collection.PlayerMountCollectionSavedData.get(player.server).typeCount(principal)).orElse(0);
+    }
+
     public static Result create(ServerPlayer player, String rawName) {
         var hit = player.pick(16.0D, 0.0F, false);
         if (!(hit instanceof net.minecraft.world.phys.BlockHitResult blockHit)) return Result.INVALID;

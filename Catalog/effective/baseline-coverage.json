@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "b444b4f367c13b2204a5bb79852dbc7ec1e7159d795c6355d1d8a6711ae2018d",
+  "change_records_sha256": "1af065313a7d27f3fc2da4537cb940b06df5154ff8254ce463df11664bf02324",
   "totals": {
     "watched": 3803,
-    "covered": 2015,
-    "unresolved": 1788
+    "covered": 2011,
+    "unresolved": 1792
   },
   "groups": {
     "Client/ManagedPack/config": {
       "watched": 1363,
-      "covered": 12,
-      "unresolved": 1351,
+      "covered": 7,
+      "unresolved": 1356,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -246,8 +246,13 @@
         "Client/ManagedPack/config/forge-client.toml",
         "Client/ManagedPack/config/fpsbooster-client.toml",
         "Client/ManagedPack/config/fpsreducer/fpsreducer-client.toml",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/bosses_12_eyes.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/create.snbt",
         "Client/ManagedPack/config/ftbquests/quests/chapters/events.snbt",
         "Client/ManagedPack/config/ftbquests/quests/chapters/exploration.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt",
         "Client/ManagedPack/config/fwa.json",
         "Client/ManagedPack/config/fzzy_config/keybinds.toml",
         "Client/ManagedPack/config/golemoverhaul.jsonc",
@@ -1788,12 +1793,11 @@
     },
     "Mods/JEMSettlements": {
       "watched": 200,
-      "covered": 185,
-      "unresolved": 15,
+      "covered": 186,
+      "unresolved": 14,
       "unresolved_paths": [
         "Mods/JEMSettlements/gradle.properties",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/MountRoster.java",
-        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/collection/PlayerMountCollectionSavedData.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/recruits/RecruitReadinessAdapter.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownFoundPacket.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/TownViewPacket.java",

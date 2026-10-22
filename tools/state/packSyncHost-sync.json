@@ -496,12 +496,12 @@
     "size": 1673634
   },
   "mods/jem-advancements-5.1.0.jar": {
-    "sha256": "d1acc01c274de3ec9b4a18151b16ee3ee0f67f49938dca18136408a68217547e",
-    "size": 570759
+    "sha256": "a5c81bbae1ff2866e62b82b00ee8b7772af78317a5b101b1cb6cb75888400440",
+    "size": 734478
   },
   "mods/jem-economy-1.3.0.jar": {
-    "sha256": "099429836a765988c6d8f332c75049cf0729905394549560209e7ddb0f1edeb0",
-    "size": 2273560
+    "sha256": "b87055924a910215a5844fbd4ec303e6e7c946221bf0c97bfd06b8d80d23a1a0",
+    "size": 2276248
   },
   "mods/jem-identity-1.0.0.jar": {
     "sha256": "2e16fa761f05677274ef5068b4724c9ac037825c1874db98a80fbdab47d8a142",
@@ -520,8 +520,8 @@
     "size": 20195473
   },
   "mods/jem-settlements-2.1.0.jar": {
-    "sha256": "829522e2b1feee27f887fb0391992912512c540c3a17f3fe4116c96365a685ac",
-    "size": 708558
+    "sha256": "df32538df5fc5357513d2e487b08170c9151bf1d91b2e9307e2b539f69f83e6e",
+    "size": 708923
   },
   "mods/jem-world-boss-tiers-2.5.0-dev.jar": {
     "sha256": "8b75a823c4a725814e3a6012dd146d7f523ca9a785ac0db571a1562f45a15cab",
@@ -2059,37 +2059,413 @@
     "sha256": "f7637fe490fad786a7c62914711f068bc3d6909eff244f22788eb6f13d14fd0c",
     "size": 3351
   },
-  "config/ftbquests/quests/chapters/bosses_12_eyes.snbt": {
-    "sha256": "681eb69e90b43a7491540a3e14397b60d59ef8479c102311dc4ba53582f92e4c",
-    "size": 1980
+  "config/ftbquests/quests/chapter_groups.snbt": {
+    "sha256": "58232af098135678ca61b4cc1d8fdd59e3a05c9f22c5b70ca20348b4aa2ba339",
+    "size": 806
   },
-  "config/ftbquests/quests/chapters/create.snbt": {
-    "sha256": "6f3b8cff13553a1f6e9a783d0d1d3a834bee98c79bc3226b20e6f5eb37095ed5",
-    "size": 1648
+  "config/ftbquests/quests/chapters/_archive_bosses_12_eyes.snbt": {
+    "sha256": "3d2597ef2afe479defbab85cf240781aad4a3fcb51050423fc31af43d848086b",
+    "size": 1727
   },
-  "config/ftbquests/quests/chapters/events.snbt": {
-    "sha256": "5ba8c1d9f4cf3c142053215a53fdde95550731d2892511e628e99b92d981af35",
-    "size": 1778
+  "config/ftbquests/quests/chapters/_archive_create.snbt": {
+    "sha256": "a2402996e346514a4b987fd05bc98f9162b10839a434ad713defa22d31c72614",
+    "size": 1704
   },
-  "config/ftbquests/quests/chapters/exploration.snbt": {
-    "sha256": "744540cdfe6ae83a8b82ceaa64b41a7924421f0349636df5766e358d885444da",
-    "size": 1346
+  "config/ftbquests/quests/chapters/_archive_events.snbt": {
+    "sha256": "723e509fd1ab4c449e672bce78032244954fbe2990f4b7ba815c1dea8dab0d04",
+    "size": 1851
   },
-  "config/ftbquests/quests/chapters/getting_started.snbt": {
-    "sha256": "f4e15938ae531bdbbeab60b35a05b80c9cb8efc2186a28f747d8857acb1326a3",
-    "size": 1679
+  "config/ftbquests/quests/chapters/_archive_exploration.snbt": {
+    "sha256": "ef7a6b32882dd4d3a2b43c33acb06b1c6fe88977c75967f3c88a52a8a5b1afdf",
+    "size": 1418
   },
-  "config/ftbquests/quests/chapters/living_world.snbt": {
-    "sha256": "5ef5f012c3ef0cce835697b06d984219a922db96935d4a8ec8574fae49ba8f2a",
-    "size": 6662
+  "config/ftbquests/quests/chapters/_archive_getting_started.snbt": {
+    "sha256": "bd249a808cba878411c74bbe7214fb2422014f3cfafe88c37983f6c3d8d2b94a",
+    "size": 1735
   },
-  "config/ftbquests/quests/chapters/races.snbt": {
-    "sha256": "66c1aafb3e6055e156456d51bb9e56ffa97a54a260e06d757f1fb6d5d480942c",
-    "size": 3296
+  "config/ftbquests/quests/chapters/_archive_living_world.snbt": {
+    "sha256": "50f49921e228ee35d10305414d2637135e58334850223d1cb487ba8e7e8df98e",
+    "size": 6718
+  },
+  "config/ftbquests/quests/chapters/_archive_races.snbt": {
+    "sha256": "a28f481823e759631818cb3eaec4cfd61117661bd55d58d49a528b33453f5188",
+    "size": 3050
+  },
+  "config/ftbquests/quests/chapters/jem_01.snbt": {
+    "sha256": "4aed2056f424518c55c2ba8c53cb34920e963a2a09163daa9fe0e43f3fa5e6bf",
+    "size": 28989
+  },
+  "config/ftbquests/quests/chapters/jem_02.snbt": {
+    "sha256": "8a89972c6ef5be1827ea3e50a8a61e81b4b4d797356b60da7a412e41332b3c7d",
+    "size": 35131
+  },
+  "config/ftbquests/quests/chapters/jem_03.snbt": {
+    "sha256": "ed770c5ccb55d106bd5972c12b4f6ef1158cd0e1550004c17c2d3ed53d5ba143",
+    "size": 37014
+  },
+  "config/ftbquests/quests/chapters/jem_04.snbt": {
+    "sha256": "817f9538af9feb41dfada66a98e70721c237f236c7123544f006ba7387e96c93",
+    "size": 39809
+  },
+  "config/ftbquests/quests/chapters/jem_05.snbt": {
+    "sha256": "e99206056ad535cf8fac736066d00062fab8eb583db58de584e5055eb2b3f674",
+    "size": 46554
+  },
+  "config/ftbquests/quests/chapters/jem_06.snbt": {
+    "sha256": "0cba20595eaa3e1918ccb8711bc68c421724b0fa73b5eb944d4c5ce254ac5f42",
+    "size": 34398
+  },
+  "config/ftbquests/quests/chapters/jem_07.snbt": {
+    "sha256": "8e3eb0e4690fd5ff7a0113812734231732f7ddca3012bfbc9573f2a911bc30a0",
+    "size": 35150
+  },
+  "config/ftbquests/quests/chapters/jem_08.snbt": {
+    "sha256": "45f8d36c1bf3d93ffc8f4b378e22ad95067ae28e6b151caa24f52316e8176590",
+    "size": 24473
+  },
+  "config/ftbquests/quests/chapters/jem_09.snbt": {
+    "sha256": "87076e0c6491317f6a31d25e87a24975ac9530851d9130dedff811080c6f233b",
+    "size": 20938
+  },
+  "config/ftbquests/quests/chapters/jem_10.snbt": {
+    "sha256": "4351b915e12f48b8de2bdb219d40e20d9b0d7c8d48a398decd8660db3145e0f5",
+    "size": 54132
+  },
+  "config/ftbquests/quests/chapters/jem_11.snbt": {
+    "sha256": "a9501c61cdebf951e407a5958dd770e4e59cdf01519b472643a419bfa741810c",
+    "size": 44112
+  },
+  "config/ftbquests/quests/chapters/jem_12.snbt": {
+    "sha256": "c3a96d689a67b4b37fd82fce4e5e53d26c1d81417df3236fcf95ad314c813f6c",
+    "size": 26938
+  },
+  "config/ftbquests/quests/chapters/jem_13.snbt": {
+    "sha256": "0853b32fb75253e8763c7f86d4aed026825862d871744102f8cada75b90a3b3f",
+    "size": 36047
+  },
+  "config/ftbquests/quests/chapters/jem_14.snbt": {
+    "sha256": "83f90549130c1f3fe8ba4d885a03bd5e5054899eba254942413f27e75814e1c3",
+    "size": 25781
+  },
+  "config/ftbquests/quests/chapters/jem_15.snbt": {
+    "sha256": "8ab0939930987d3fc16fc49d9fbb01a079e2e8737333e9d4e9264994acd97c2e",
+    "size": 33909
+  },
+  "config/ftbquests/quests/chapters/jem_16.snbt": {
+    "sha256": "10412d19f7d717170a9404bdeefcc2f6501866b867569887166f4b059f58b758",
+    "size": 33031
+  },
+  "config/ftbquests/quests/chapters/jem_17.snbt": {
+    "sha256": "5ac40d0da977d8935189ee30c160d4b604c28fe8e1b46cc4f70b5104e4124437",
+    "size": 101499
+  },
+  "config/ftbquests/quests/chapters/jem_18.snbt": {
+    "sha256": "0be900648bf3a9a672565849b5045f58b61aa065f4c9cad1905eb435c0143485",
+    "size": 74656
+  },
+  "config/ftbquests/quests/chapters/jem_19.snbt": {
+    "sha256": "aa262d069e3ca76a93ceb668739044582eaeb3ed3af3c4ab3e5895a76e756e71",
+    "size": 40140
+  },
+  "config/ftbquests/quests/chapters/jem_20.snbt": {
+    "sha256": "b8371b99d0c011b4a5a42c6bb28fb83b2a0ed93c2853ec23b0578151b0530b24",
+    "size": 112670
+  },
+  "config/ftbquests/quests/chapters/jem_21.snbt": {
+    "sha256": "54bcfae4c3dbdb80ecf4deed44c0d0f7883180880f52e31036eaef3454a10bd1",
+    "size": 54388
+  },
+  "config/ftbquests/quests/chapters/jem_22.snbt": {
+    "sha256": "5213a46f44f18376b5fd0e5d26543e685dba06573424bdff424e3c04236cdc18",
+    "size": 89130
+  },
+  "config/ftbquests/quests/chapters/jem_23.snbt": {
+    "sha256": "3f436d7510f0c6a965af3b1349f09f14c1f19613fca4ea1f99f6d62207e31e8b",
+    "size": 65293
+  },
+  "config/ftbquests/quests/chapters/jem_24.snbt": {
+    "sha256": "2d03289157891ec30a013a7705205ea8a59401c83d355a64770499ef48973f6d",
+    "size": 82897
+  },
+  "config/ftbquests/quests/chapters/jem_25.snbt": {
+    "sha256": "9b15764708f612191df04bdf240325142bc43f49329d11c557d8b0e3ab7b1172",
+    "size": 78260
+  },
+  "config/ftbquests/quests/chapters/jem_26.snbt": {
+    "sha256": "60c06368d5e26b4d65b9c5e9b0bca32851cfbb7e982a78ae7773a5ec2a0381be",
+    "size": 49788
+  },
+  "config/ftbquests/quests/chapters/jem_27.snbt": {
+    "sha256": "3abb18851e21e502c28f4ccefa36a9b6aaefe771d9fb0c70f74f02ed78ecb524",
+    "size": 50290
+  },
+  "config/ftbquests/quests/chapters/jem_28.snbt": {
+    "sha256": "e6c6794d59b8c75746db910897be3d1deaf46d41b50f970ffc53c5a2bb135268",
+    "size": 109371
+  },
+  "config/ftbquests/quests/chapters/jem_29.snbt": {
+    "sha256": "f123797d065920c8314978b8b6aa469da8e5c42d7c1586036a002f90f93a6371",
+    "size": 23743
+  },
+  "config/ftbquests/quests/chapters/jem_30.snbt": {
+    "sha256": "882e54c7c216f8d1029585f5b121094fafb689ae9c5a29e46adad6fe087659f2",
+    "size": 47322
+  },
+  "config/ftbquests/quests/chapters/jem_31.snbt": {
+    "sha256": "6736a80a1589ade3e60b624c0566b096fa8d9b5b9b8c41fa347841d733b441ef",
+    "size": 17598
+  },
+  "config/ftbquests/quests/chapters/jem_32.snbt": {
+    "sha256": "9d2618d260a988737caaae0b0cf6321e50bb63c25d8da59baba36eee453070d7",
+    "size": 31255
   },
   "config/ftbquests/quests/data.snbt": {
-    "sha256": "3200f411bb6111193c6e968ec5363350295dd71f556ff8a593020b90caa8c178",
-    "size": 549
+    "sha256": "63a43f1996e27b67065a93060b30bf3f3fd2ead0d2b8cd8dd408c30259035bc2",
+    "size": 459
+  },
+  "config/ftbquests/quests/reward_tables/ac15.snbt": {
+    "sha256": "38437e4e6068a24e33cefdafcbf66028110e9c29ea2c146cf3ac591877215b92",
+    "size": 1214
+  },
+  "config/ftbquests/quests/reward_tables/ac32.snbt": {
+    "sha256": "9a1680b1ac87885caf599ee7f0a8e10a1dfb3d615870bad32efbb1ddfee7f334",
+    "size": 952
+  },
+  "config/ftbquests/quests/reward_tables/after_end_01.snbt": {
+    "sha256": "138bdd3c6f2eccdbb12611c061921d7a4682cf7279763f8ff1927198c4096917",
+    "size": 705
+  },
+  "config/ftbquests/quests/reward_tables/after_end_03.snbt": {
+    "sha256": "a07fc90483b3c8e05eef81be4a49030b2d3c06b0ab94098c31e7895d204d9e54",
+    "size": 991
+  },
+  "config/ftbquests/quests/reward_tables/after_end_06.snbt": {
+    "sha256": "3b233064e303041665406f279c90d588384479789a2ad23d76506de5793a2810",
+    "size": 977
+  },
+  "config/ftbquests/quests/reward_tables/aquamirae_03.snbt": {
+    "sha256": "f7f004f961bf424cee4c0c751e4e949ac45cbb499cf2a3c0e0092452ca13c979",
+    "size": 1248
+  },
+  "config/ftbquests/quests/reward_tables/aquamirae_05.snbt": {
+    "sha256": "9169238c3928a51ffb9655f06f147572fa28b38567211fe019fe3100480c3a0d",
+    "size": 702
+  },
+  "config/ftbquests/quests/reward_tables/boss_loot_01.snbt": {
+    "sha256": "952554b3a3efd17a093b03cade5dd1f9f2504b609b695c0d00fcecf735c313fb",
+    "size": 984
+  },
+  "config/ftbquests/quests/reward_tables/boss_loot_02.snbt": {
+    "sha256": "ac12f7714d6951f1d78c6e79c6cb2f850f2aa4ebb0c4830f5381e84bbdcac316",
+    "size": 978
+  },
+  "config/ftbquests/quests/reward_tables/boss_loot_07.snbt": {
+    "sha256": "3b643d0744b962a316df5a8a7a58334119cc3bea0f7c2bc328562544fac2eab3",
+    "size": 1020
+  },
+  "config/ftbquests/quests/reward_tables/boss_loot_08.snbt": {
+    "sha256": "58e5c9974f55bcda7ef9bb8145799cf0cf8c1ec55c60fa08d9079ce78a908334",
+    "size": 1003
+  },
+  "config/ftbquests/quests/reward_tables/cp05.snbt": {
+    "sha256": "2e4338a83478f8ba6c13abd118059749836ec0fde704a64ae3c6aa57ff1d8f4e",
+    "size": 679
+  },
+  "config/ftbquests/quests/reward_tables/cp06.snbt": {
+    "sha256": "98f17227ba011836b7db23aa0809d1376a85e520fbd60183f9b4e3f5c3ebcaff",
+    "size": 679
+  },
+  "config/ftbquests/quests/reward_tables/cp09.snbt": {
+    "sha256": "cc79114ac5b336c1f680971ca169236f6bb24bcf2a9a8f3bf676f94d765b45cc",
+    "size": 679
+  },
+  "config/ftbquests/quests/reward_tables/eyes_03.snbt": {
+    "sha256": "26ab7392203daa657e0dfe87a2e0ea4c225ef7b48f762035297f28d222772061",
+    "size": 979
+  },
+  "config/ftbquests/quests/reward_tables/eyes_04.snbt": {
+    "sha256": "3eceb1e1a48ab4ba5f91be1a28afab9d8615e4d710dd4469e422354b4cb53166",
+    "size": 980
+  },
+  "config/ftbquests/quests/reward_tables/eyes_05.snbt": {
+    "sha256": "f3190b45c148ea7bd2840c2f74f87e605042189db6c148bb30a94dc00440c9ec",
+    "size": 963
+  },
+  "config/ftbquests/quests/reward_tables/eyes_06.snbt": {
+    "sha256": "629fddcbbd74c692fa51daf5a8a5f0fce7bb67f22ea0c5da800d348c32a0e54e",
+    "size": 990
+  },
+  "config/ftbquests/quests/reward_tables/eyes_07.snbt": {
+    "sha256": "c9ca54a19cbb5825cf86e316cb9cef5ae686e090fa0ffd66b9dba0cb7ad430c7",
+    "size": 968
+  },
+  "config/ftbquests/quests/reward_tables/eyes_08.snbt": {
+    "sha256": "5d27a847a5376358141c467fefa4b2f9834fdb007a726a6f3d82e12475f48856",
+    "size": 990
+  },
+  "config/ftbquests/quests/reward_tables/eyes_09.snbt": {
+    "sha256": "3dc051b8980f1cb4319e081ce0a611d419b00382f606d6600052c630a22a27f2",
+    "size": 974
+  },
+  "config/ftbquests/quests/reward_tables/eyes_10.snbt": {
+    "sha256": "16dc0d4cb35c0009be96a51aa38a32b081efd442d300849b171c766a003a49df",
+    "size": 975
+  },
+  "config/ftbquests/quests/reward_tables/eyes_11.snbt": {
+    "sha256": "3aea341fb7922982f0966e7daa90cea06fed60bc374c0cc7f0a64c59c1f14562",
+    "size": 983
+  },
+  "config/ftbquests/quests/reward_tables/eyes_12.snbt": {
+    "sha256": "9bf4d986a80b9ead15403295f8fdff400885c3307a81a70f3249f09187ff1e53",
+    "size": 980
+  },
+  "config/ftbquests/quests/reward_tables/eyes_13.snbt": {
+    "sha256": "54ee3dfa5d92232d9998d02498846e309e90a00fa779227c8a52aa3a4d6c4e19",
+    "size": 989
+  },
+  "config/ftbquests/quests/reward_tables/eyes_14.snbt": {
+    "sha256": "a06aa4eab69025988579999e6d0911ae0dc7fae8c68d62afe906edfb71e2e60b",
+    "size": 998
+  },
+  "config/ftbquests/quests/reward_tables/eyes_15.snbt": {
+    "sha256": "ea2816acbd6f1cbd6017056d19bd73dafbca6472583e1b5c9810242904abb25f",
+    "size": 990
+  },
+  "config/ftbquests/quests/reward_tables/field_07.snbt": {
+    "sha256": "0bec6ef9987b24b4461fed6b6e173a278042a49d895a377f26203711a32e7679",
+    "size": 681
+  },
+  "config/ftbquests/quests/reward_tables/guard_03.snbt": {
+    "sha256": "046592db2daf0b955a686f43ff155e2bd04e67376311be5e224c65313a410dea",
+    "size": 964
+  },
+  "config/ftbquests/quests/reward_tables/h02_13.snbt": {
+    "sha256": "943df5a961b2aa89db2b5b0ac5858538e0f993fa22ac3d8bdf61b565f975de3e",
+    "size": 958
+  },
+  "config/ftbquests/quests/reward_tables/h03_05.snbt": {
+    "sha256": "688ad0870c0a8a77c969daf9dea383f62273b6dc458a199c12724f5e42a21e3d",
+    "size": 932
+  },
+  "config/ftbquests/quests/reward_tables/h03_14.snbt": {
+    "sha256": "34fcc373c6a781c291a912051a2a167c2484993fa29a74e9d55f20d171311368",
+    "size": 966
+  },
+  "config/ftbquests/quests/reward_tables/h03_16.snbt": {
+    "sha256": "b069675ede04015366c9d0b13d3e26e2598c666be2a4a02685bec072a7eb462d",
+    "size": 683
+  },
+  "config/ftbquests/quests/reward_tables/h04_08.snbt": {
+    "sha256": "fd54fc1362cc3d642bff6361c6711cbb6fd36c7ca85cd8107e44c7be85b00f55",
+    "size": 689
+  },
+  "config/ftbquests/quests/reward_tables/h04_12.snbt": {
+    "sha256": "a212e2dd187c6b0aab45482f7f3b9a4c33996c404960805da08fbee7472e00ac",
+    "size": 952
+  },
+  "config/ftbquests/quests/reward_tables/h05_12.snbt": {
+    "sha256": "df7639845db246a082474f275249b2d7f83ae87daef33af6b7404e14cb4b70d8",
+    "size": 940
+  },
+  "config/ftbquests/quests/reward_tables/h06_09.snbt": {
+    "sha256": "626af1f32d15575d8eef0a2011be5ec0077afb63bccc9d4633d43c58b877654f",
+    "size": 959
+  },
+  "config/ftbquests/quests/reward_tables/h06_10.snbt": {
+    "sha256": "a033d43956f7454d473d85e3cbaf77a35cc54dcdb37be76883647ceaa545a888",
+    "size": 690
+  },
+  "config/ftbquests/quests/reward_tables/h08_08.snbt": {
+    "sha256": "df0e96c0f03fd01bfe21e5e2628b951bd2358768d5e40ab81b4b0ef81a3075f3",
+    "size": 680
+  },
+  "config/ftbquests/quests/reward_tables/h12_12.snbt": {
+    "sha256": "7445c0ffe4da19138e341d7b5dc2f1172bf5073f505da6cce487233592f2f2c3",
+    "size": 964
+  },
+  "config/ftbquests/quests/reward_tables/hostiles_04.snbt": {
+    "sha256": "9232a1179b9bd38abd6415228086236e60161877885ca3209f48e4120891089c",
+    "size": 710
+  },
+  "config/ftbquests/quests/reward_tables/hostiles_08.snbt": {
+    "sha256": "e6812547b0c391b14fe69ce804a0f3ab78c333a49e1802c6a6f878e1bf06d27e",
+    "size": 706
+  },
+  "config/ftbquests/quests/reward_tables/mg10.snbt": {
+    "sha256": "08e282675060768d1b5581342c50826cdacd4a79449711d643b0fda82f6ebbdc",
+    "size": 983
+  },
+  "config/ftbquests/quests/reward_tables/mg11.snbt": {
+    "sha256": "b0ae2fc540608c6896ada7c266170ce5755b46a15039573e07de25039976dbfa",
+    "size": 968
+  },
+  "config/ftbquests/quests/reward_tables/mg14.snbt": {
+    "sha256": "2fa9e32ca229935e391a9983c03022de7c633c326f4138871f905488e8e16cde",
+    "size": 980
+  },
+  "config/ftbquests/quests/reward_tables/nether_life_11.snbt": {
+    "sha256": "a7630c10053529de33985be33baa75092de6ff9446e59ce823a20025ed15f4a1",
+    "size": 1012
+  },
+  "config/ftbquests/quests/reward_tables/project_07.snbt": {
+    "sha256": "8f2655860189dd8a704e6a3dcfd8612531d00360c361d3464917073d1619821d",
+    "size": 967
+  },
+  "config/ftbquests/quests/reward_tables/races_13.snbt": {
+    "sha256": "417a7f74a64ef57e04bd882a043b6d72440aae008bee42484f9bb76d4fc67495",
+    "size": 957
+  },
+  "config/ftbquests/quests/reward_tables/sk14.snbt": {
+    "sha256": "846078e59c1a471002746788e1f7200217ec80e5886769233446bbd3f353831b",
+    "size": 969
+  },
+  "config/ftbquests/quests/reward_tables/sk15.snbt": {
+    "sha256": "5ca8476cbab68566c0d2ffa28e8932667900461437c1dffcb55f4435f891b743",
+    "size": 967
+  },
+  "config/ftbquests/quests/reward_tables/sk17.snbt": {
+    "sha256": "38ae6ddc142fabf72a9a65adc30c5ea6a1c8cce0f0e1f14b395450e49c4178da",
+    "size": 981
+  },
+  "config/ftbquests/quests/reward_tables/sk18.snbt": {
+    "sha256": "bdf13e15fd5718b2d8dce3dec122fd0e1fc512aa9f321a1686f89ee350ccfd1f",
+    "size": 977
+  },
+  "config/ftbquests/quests/reward_tables/trade_05.snbt": {
+    "sha256": "c0ddce799a4a8cf1fe5be4cb3009204d567775983935edc52c74ab2a9526a976",
+    "size": 954
+  },
+  "config/ftbquests/quests/reward_tables/uj14.snbt": {
+    "sha256": "48b16baab6fa6aff04141a5c441a2648de8d71dacea7a36e041b1fbe221a6f90",
+    "size": 681
+  },
+  "config/ftbquests/quests/reward_tables/vanilla_07.snbt": {
+    "sha256": "a7fde1ddf3dcea1e83c7aaf24edd1ab92ac2456149bb0812a26dcb841164e506",
+    "size": 685
+  },
+  "config/ftbquests/quests/reward_tables/wd13.snbt": {
+    "sha256": "6aa0ccb0f479ae8dab469644e9df73cf270d0fc11ed4b5a5c5d42146282fc636",
+    "size": 686
+  },
+  "config/ftbquests/quests/reward_tables/wf05.snbt": {
+    "sha256": "d740b317ff6dc1735c5c28e72d5fb10f15b444d609e60262dc27cd8f3175f4df",
+    "size": 974
+  },
+  "config/ftbquests/quests/reward_tables/wo20.snbt": {
+    "sha256": "84761da0011ef64a8362be2bf2ea0951c7ad95575cfda6f9b2100078d6c95e0c",
+    "size": 671
+  },
+  "config/ftbquests/quests/reward_tables/ws28.snbt": {
+    "sha256": "9477a67aad5e5d81660db33f142d5f551b27811fb3fe168ea296eaa7fdb50743",
+    "size": 682
+  },
+  "config/ftbquests/quests/reward_tables/ws34.snbt": {
+    "sha256": "622c5781ac9bbc0c31d829c50048613892cce29faf5ddad5bf3697418a83197d",
+    "size": 681
+  },
+  "config/ftbquests/quests/reward_tables/ws37.snbt": {
+    "sha256": "50e3ed64dc2c1564e255006b65cb1eaa532b8c65b4259e59b6a88b885ea3f9a6",
+    "size": 678
   },
   "config/fwa.json": {
     "sha256": "f5fe73d63465a261d4fa4920de41e2efd9a62cfe627b63618d7d63dd18258c58",
@@ -10996,7 +11372,7 @@
     "size": 1415
   },
   "jem-pack/manifest.json": {
-    "sha256": "07a4e4c23c4316abb2a18547a607764b349195f6ee43dddc15283ef3a8e270ef",
-    "size": 583924
+    "sha256": "253c5147ff69b766e8492839720b157670a6cd5c8fd07cbc9a99b8e2bbf705dd",
+    "size": 600124
   }
 }

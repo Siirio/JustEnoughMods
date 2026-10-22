@@ -1,0 +1,570 @@
+{
+  "id": "22B30284B7D4518D",
+  "filename": "jem_09",
+  "title": "Склад и рюкзак",
+  "subtitle": [
+    "Когда: При первых запасах. Доступ к модулям рюкзака остаётся у его нативной системы.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "backpacked:backpack",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 8,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2B94EFD2AFAD5541",
+      "title": "09.01 · Начало общей кладовой",
+      "subtitle": "Поставить Storage Terminal и Inventory Connector Tom’s Storage.",
+      "description": [
+        "Что сделать: Поставить Storage Terminal и Inventory Connector Tom’s Storage.",
+        "",
+        "Зачем: Объединённый склад.",
+        "",
+        "Совет: Подключи настоящие сундуки. Связность, чтение склада и извлечение вещей из разных контейнеров не проверяются.",
+        "",
+        "Награда: Первый склад получает протяжённую сеть подключения, а не несколько декоративных сундуков."
+      ],
+      "icon": "toms_storage:ts.storage_terminal",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F9063827CF90248",
+          "type": "custom",
+          "title": "Поставить Storage Terminal и Inventory Connector Tom’s Storage.",
+          "icon": "toms_storage:ts.storage_terminal",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26E020B1F6B775D7",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "H07.01/item/0",
+          "claim_reward_id": "26E020B1F6B775D7",
+          "team_reward": false
+        },
+        {
+          "id": "26E1A36EA4626FB1",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable_connector",
+          "count": 16,
+          "claim_key": "H07.01/item/1",
+          "claim_reward_id": "26E1A36EA4626FB1",
+          "team_reward": false
+        },
+        {
+          "id": "2D42AC97A1AEAB10",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.trim",
+          "count": 32,
+          "claim_key": "H07.01/item/2",
+          "claim_reward_id": "2D42AC97A1AEAB10",
+          "team_reward": false
+        },
+        {
+          "id": "2D08BC7AFABC2D54",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AF7007E520DCD3B",
+      "title": "09.02 · Крафт из запасов",
+      "subtitle": "Поставить 1 Crafting Terminal Tom’s Storage.",
+      "description": [
+        "Что сделать: Поставить 1 Crafting Terminal Tom’s Storage.",
+        "",
+        "Зачем: Крафт без ручного поиска материалов.",
+        "",
+        "Совет: Терминал помогает крафтить из подключённых запасов. Наличие сети, источник ингредиентов и факт крафта внутри этого меню не проверяются.",
+        "",
+        "Награда: Крафтовый терминал дополняется реальными компонентами движения и фильтрации вещей.",
+        "",
+        "Рекомендуемый путь: 09.01 · Начало общей кладовой. Порядок свободный."
+      ],
+      "icon": "toms_storage:ts.crafting_terminal",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25919AC939B1C08B",
+          "type": "custom",
+          "title": "Поставить 1 Crafting Terminal Tom’s Storage.",
+          "icon": "toms_storage:ts.crafting_terminal",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27C612EAC97FD733",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_hopper_basic",
+          "count": 4,
+          "claim_key": "H07.02/item/0",
+          "claim_reward_id": "27C612EAC97FD733",
+          "team_reward": false
+        },
+        {
+          "id": "20C5EEFA3801511D",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.open_crate",
+          "count": 8,
+          "claim_key": "H07.02/item/1",
+          "claim_reward_id": "20C5EEFA3801511D",
+          "team_reward": false
+        },
+        {
+          "id": "226E5033B53BD280",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.item_filter",
+          "count": 8,
+          "claim_key": "H07.02/item/2",
+          "claim_reward_id": "226E5033B53BD280",
+          "team_reward": false
+        },
+        {
+          "id": "238396970B48B8A5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D5481C02BA4597A",
+      "title": "09.03 · Разъём с фильтром",
+      "subtitle": "Поставить 1 Filtered Inventory Cable Connector.",
+      "description": [
+        "Что сделать: Поставить 1 Filtered Inventory Cable Connector.",
+        "",
+        "Зачем: Сортировка и назначенные хранилища.",
+        "",
+        "Совет: Настрой фильтр для нужного хранилища. Проход нужного предмета и задержка постороннего не отслеживаются.",
+        "",
+        "Награда: После первого фильтра можно построить несколько осмысленных линий сортировки.",
+        "",
+        "Рекомендуемый путь: 09.02 · Крафт из запасов. Порядок свободный."
+      ],
+      "icon": "toms_storage:ts.inventory_cable_connector_filtered",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DBF9F5509CAC20C",
+          "type": "custom",
+          "title": "Поставить 1 Filtered Inventory Cable Connector.",
+          "icon": "toms_storage:ts.inventory_cable_connector_filtered",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A77D77FDE1E1853",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.tag_item_filter",
+          "count": 8,
+          "claim_key": "H07.03/item/0",
+          "claim_reward_id": "2A77D77FDE1E1853",
+          "team_reward": false
+        },
+        {
+          "id": "211A6A3C9BE3AB00",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.polymorphic_item_filter",
+          "count": 8,
+          "claim_key": "H07.03/item/1",
+          "claim_reward_id": "211A6A3C9BE3AB00",
+          "team_reward": false
+        },
+        {
+          "id": "2935A12A38D32772",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable_connector_filtered",
+          "count": 8,
+          "claim_key": "H07.03/item/2",
+          "claim_reward_id": "2935A12A38D32772",
+          "team_reward": false
+        },
+        {
+          "id": "20D5511BFBA04D09",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F8375B1CF0CFE36",
+      "title": "09.04 · Достаточно на полке",
+      "subtitle": "Поставить 1 Level Emitter Tom’s Storage.",
+      "description": [
+        "Что сделать: Поставить 1 Level Emitter Tom’s Storage.",
+        "",
+        "Зачем: Автоматика по остаткам; связь с Create.",
+        "",
+        "Совет: Датчик реагирует на запас выбранного предмета. Порог, изменение сигнала и подключённая автоматика остаются советом.",
+        "",
+        "Награда: Контроль запаса получает достаточно датчиков и передающих узлов для настоящей системы.",
+        "",
+        "Рекомендуемый путь: 09.03 · Разъём с фильтром. Порядок свободный."
+      ],
+      "icon": "toms_storage:ts.level_emitter",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A271E1C5820B25A",
+          "type": "custom",
+          "title": "Поставить 1 Level Emitter Tom’s Storage.",
+          "icon": "toms_storage:ts.level_emitter",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2016A2A7A0B1B000",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.level_emitter",
+          "count": 4,
+          "claim_key": "H07.04/item/0",
+          "claim_reward_id": "2016A2A7A0B1B000",
+          "team_reward": false
+        },
+        {
+          "id": "297895E9B4063563",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_hopper_basic",
+          "count": 8,
+          "claim_key": "H07.04/item/1",
+          "claim_reward_id": "297895E9B4063563",
+          "team_reward": false
+        },
+        {
+          "id": "240257E33C8EFC60",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "244ED0B81F86B22D",
+      "title": "09.05 · Терминал с собой",
+      "subtitle": "Нажать ПКМ в воздухе с Wireless Terminal Tom’s Storage.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Wireless Terminal Tom’s Storage.",
+        "",
+        "Зачем: Удалённый доступ; расширения следуют native условиям.",
+        "",
+        "Совет: Привяжи терминал по нативным правилам. Открытие удалённого склада, расстояние и расширения не проверяются.",
+        "",
+        "Награда: Освоенная беспроводная сеть получает второй терминал и инфраструктуру для расширения.",
+        "",
+        "Рекомендуемый путь: 09.04 · Достаточно на полке. Порядок свободный."
+      ],
+      "icon": "toms_storage:ts.wireless_terminal",
+      "x": -5.3,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2943FF170E2A61BA",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Wireless Terminal Tom’s Storage.",
+          "icon": "toms_storage:ts.wireless_terminal",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "204A673D2F465C06",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.wireless_terminal",
+          "count": 1,
+          "claim_key": "H07.05/item/0",
+          "claim_reward_id": "204A673D2F465C06",
+          "team_reward": false
+        },
+        {
+          "id": "2250E643DC3DBC5A",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_proxy",
+          "count": 8,
+          "claim_key": "H07.05/item/1",
+          "claim_reward_id": "2250E643DC3DBC5A",
+          "team_reward": false
+        },
+        {
+          "id": "2CA1F7F35B0F8653",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "H07.05/item/2",
+          "claim_reward_id": "2CA1F7F35B0F8653",
+          "team_reward": false
+        },
+        {
+          "id": "261E41CB0B810E1E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "203CCE79C4E1E75C",
+      "title": "09.06 · Рюкзак растёт с тобой",
+      "subtitle": "Получить 1 рюкзак Backpacked.",
+      "description": [
+        "Что сделать: Получить 1 рюкзак Backpacked.",
+        "",
+        "Зачем: Native unlocks слотов/augment bays; без второго квестового XP-трека.",
+        "",
+        "Совет: Носи рюкзак и смотри родные задания/доступные bays. Прогресс, XP и выбор улучшений остаются у Backpacked; FTB их не начисляет.",
+        "",
+        "Награда: Новый рюкзак получает полезную домашнюю базу и место для хранения снаряжения."
+      ],
+      "icon": "backpacked:backpack",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "283C3604CA81661F",
+          "type": "item",
+          "item": "backpacked:backpack",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "267C9FD531239529",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:backpack_dock",
+          "count": 1,
+          "claim_key": "H07.06/item/0",
+          "claim_reward_id": "267C9FD531239529",
+          "team_reward": false
+        },
+        {
+          "id": "2E333EBEE257A69B",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:oak_backpack_shelf",
+          "count": 8,
+          "claim_key": "H07.06/item/1",
+          "claim_reward_id": "2E333EBEE257A69B",
+          "team_reward": false
+        },
+        {
+          "id": "2FBFCDB12987CCD7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27B5144202AE253B",
+      "title": "09.11 · Док для рюкзака",
+      "subtitle": "Поставить 1 Backpack Dock.",
+      "description": [
+        "Что сделать: Поставить 1 Backpack Dock.",
+        "",
+        "Зачем: Интеграция рюкзака с хозяйственной логистикой.",
+        "",
+        "Совет: Док помогает соединить рюкзак с логистикой. Hopper Bridge на надетом рюкзаке изучай отдельно. Передача вещей и содержимое рюкзака не проверяются.",
+        "",
+        "Награда: Док получает второй походный набор для смены роли или товарища и запас провианта.",
+        "",
+        "Рекомендуемый путь: 09.06 · Рюкзак растёт с тобой. Порядок свободный."
+      ],
+      "icon": "backpacked:backpack_dock",
+      "x": 5.3,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2263B13455620A8E",
+          "type": "custom",
+          "title": "Поставить 1 Backpack Dock.",
+          "icon": "backpacked:backpack_dock",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BF624F29F64FFB6",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:backpack",
+          "count": 1,
+          "claim_key": "H07.11/item/0",
+          "claim_reward_id": "2BF624F29F64FFB6",
+          "team_reward": false
+        },
+        {
+          "id": "2D683DB7CD5370D4",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:spruce_backpack_shelf",
+          "count": 8,
+          "claim_key": "H07.11/item/1",
+          "claim_reward_id": "2D683DB7CD5370D4",
+          "team_reward": false
+        },
+        {
+          "id": "2A56211488B9D2ED",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 24,
+          "claim_key": "H07.11/item/2",
+          "claim_reward_id": "2A56211488B9D2ED",
+          "team_reward": false
+        },
+        {
+          "id": "2F6F97A2CE710E25",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:склад",
+      "order": -5,
+      "hover": [
+        "склад"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:рюкзак",
+      "order": -5,
+      "hover": [
+        "рюкзак"
+      ]
+    },
+    {
+      "x": 4.38,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H07.07",
+      "hover": [
+        "09.07 · Выбор улучшения: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 6.22,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H07.08",
+      "hover": [
+        "09.08 · Переносная мастерская: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 8.07,
+      "y": 1.7,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H07.09",
+      "hover": [
+        "09.09 · Печь за спиной: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 3.45,
+      "y": 3.55,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H07.10",
+      "hover": [
+        "09.10 · Еда в дороге: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 7.15,
+      "y": 3.55,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H07.12",
+      "hover": [
+        "09.12 · Набор под своё занятие: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2B94EFD2AFAD5541"
+}

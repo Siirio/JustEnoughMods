@@ -1,0 +1,1261 @@
+{
+  "id": "24713D3BE5DF45F4",
+  "filename": "jem_27",
+  "title": "Skarrier: охотничьи приёмы",
+  "subtitle": [
+    "Когда: Нативные Wither/Dragon/Forsaken-флаги и ритуалы сохраняются; FTB их не устанавливает.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "skarrier_mobs:resisteel_ingot",
+  "group": "29D4F15F9E0A87A2",
+  "order_index": 26,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2F74D774529CEFCA",
+      "title": "27.01 · Окна уязвимости",
+      "subtitle": "Нанести по одному удару Breacher и Wrought.",
+      "description": [
+        "Что сделать: Нанести по одному удару Breacher и Wrought.",
+        "",
+        "Зачем: Два разных типа боя и материалы раннего Skarrier.",
+        "",
+        "Совет: У Breacher ищите перерыв после медленного удара. У Wrought изучите блоки и ответное окно. Квест различает только два типа поражённых целей, не фазы анимации.",
+        "",
+        "Награда: Материал для первых Resisteel-крафтов после контакта с двумя противниками."
+      ],
+      "icon": "skarrier_mobs:breacher_spawn_egg",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21FBD20BB9D5DA8B",
+          "type": "custom",
+          "title": "Нанести по одному удару Breacher и Wrought.",
+          "icon": "skarrier_mobs:breacher_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "216EC1823FB7EC5B",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:resisteel_ingot",
+          "count": 16,
+          "claim_key": "sk01/item/0",
+          "claim_reward_id": "216EC1823FB7EC5B",
+          "team_reward": false
+        },
+        {
+          "id": "261480CBC2512576",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:sausage_with_oat_patty",
+          "count": 16,
+          "claim_key": "sk01/item/1",
+          "claim_reward_id": "261480CBC2512576",
+          "team_reward": false
+        },
+        {
+          "id": "2E3D35EC78209679",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2141D5161622D38A",
+      "title": "27.02 · Resisteel работает от брони",
+      "subtitle": "Получить часть Resisteel-брони и один Resisteel-инструмент или меч.",
+      "description": [
+        "Что сделать: Получить часть Resisteel-брони и один Resisteel-инструмент или меч.",
+        "",
+        "Зачем: Комплект, связанный с показателем брони; специализация вместо прямого линейного апгрейда.",
+        "",
+        "Совет: Сравните защиту и замедление. Способности инструмента зависят от брони: попробуйте комплект, но скрытая проверка суммы атрибутов не добавляется.",
+        "",
+        "Награда: Пополнение уже освоенного металла для остальных частей снаряжения.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:resisteel_boots",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24C7286915ED26B6",
+          "type": "custom",
+          "title": "Получить часть Resisteel-брони и один Resisteel-инструмент или меч.",
+          "icon": "skarrier_mobs:resisteel_boots",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BB8D7BE9A3C2A79",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:resisteel_ingot",
+          "count": 32,
+          "claim_key": "sk02/item/0",
+          "claim_reward_id": "2BB8D7BE9A3C2A79",
+          "team_reward": false
+        },
+        {
+          "id": "2BD27D4B7E51C232",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 8,
+          "claim_key": "sk02/item/1",
+          "claim_reward_id": "2BD27D4B7E51C232",
+          "team_reward": false
+        },
+        {
+          "id": "2922E510EF7282FF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 280,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DAAA8A7B1E48090",
+      "title": "27.03 · Кисть с панцирем",
+      "subtitle": "Получить Ammonite Shell и кисть.",
+      "description": [
+        "Что сделать: Получить Ammonite Shell и кисть.",
+        "",
+        "Зачем: Расширенная археология и первое покрытие инструмента.",
+        "",
+        "Совет: Нанесите покрытие способом из подсказки, затем исследуйте гравий ПКМ. Наличие компонентов не объявляется успешным покрытием или археологической находкой.",
+        "",
+        "Награда: Набор для археологических вылазок и оформления находок.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:ammonite_shell",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B2563E5D2EEA072",
+          "type": "item",
+          "item": "skarrier_mobs:ammonite_shell",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2C35B873A8E44B45",
+          "type": "item",
+          "item": "minecraft:brush",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EC6BDD0F6BE6E4A",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 6,
+          "claim_key": "sk03/item/0",
+          "claim_reward_id": "2EC6BDD0F6BE6E4A",
+          "team_reward": false
+        },
+        {
+          "id": "2E3A3EC1A1FA82A0",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_urn",
+          "count": 8,
+          "claim_key": "sk03/item/1",
+          "claim_reward_id": "2E3A3EC1A1FA82A0",
+          "team_reward": false
+        },
+        {
+          "id": "2B75C37641D48E8C",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:beef_patty_with_vegetables",
+          "count": 12,
+          "claim_key": "sk03/item/2",
+          "claim_reward_id": "2B75C37641D48E8C",
+          "team_reward": false
+        },
+        {
+          "id": "27E70E1EBF83DB6F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "233DC5F1866829A8",
+      "title": "27.04 · Питомец ночного зрения",
+      "subtitle": "Нажать ПКМ по Glowin, держа светокаменную пыль.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Glowin, держа светокаменную пыль.",
+        "",
+        "Зачем: Небоевой спутник для исследования тёмного леса/пещер.",
+        "",
+        "Совет: Продолжите нативное приручение и проверьте Night Vision рядом с питомцем. Квест учитывает взаимодействие, а не приручение или наличие эффекта.",
+        "",
+        "Награда: Световой набор за простое взаимодействие с Glowin."
+      ],
+      "icon": "skarrier_mobs:glowin_spawn_egg",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C50F1E273F1FBD7",
+          "type": "custom",
+          "title": "Нажать ПКМ по Glowin, держа светокаменную пыль.",
+          "icon": "skarrier_mobs:glowin_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20EF0000BA40A26E",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_lantern_arrow",
+          "count": 32,
+          "claim_key": "sk04/item/0",
+          "claim_reward_id": "20EF0000BA40A26E",
+          "team_reward": false
+        },
+        {
+          "id": "2A2A4D484F5B5F4C",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:glowstone",
+          "count": 16,
+          "claim_key": "sk04/item/1",
+          "claim_reward_id": "2A2A4D484F5B5F4C",
+          "team_reward": false
+        },
+        {
+          "id": "213700F662BFCF21",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:apple_cupcake",
+          "count": 12,
+          "claim_key": "sk04/item/2",
+          "claim_reward_id": "213700F662BFCF21",
+          "team_reward": false
+        },
+        {
+          "id": "272F5F03E7560FE1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A304D6873C29150",
+      "title": "27.05 · Временный скакун Quake",
+      "subtitle": "Сесть верхом на Quake.",
+      "description": [
+        "Что сделать: Сесть верхом на Quake.",
+        "",
+        "Зачем: Временный ездовой союзник и ударная волна; Quake Boots как отдельный поздний рецепт.",
+        "",
+        "Совет: Для временного доверия нужен кактус. Во время езды попробуйте удар по земле; длительность доверия и успех умения не проверяются. Quake Boots — отдельный поздний рецепт.",
+        "",
+        "Награда: Походные припасы за знакомство с ездой на Quake; готовая редкая броня не привязана к одному mount-event.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:quake_spawn_egg",
+      "x": -6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2334AD3CFDD80B65",
+          "type": "custom",
+          "title": "Сесть верхом на Quake.",
+          "icon": "skarrier_mobs:quake_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D530F6C5AEF42F4",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_slime_arrow",
+          "count": 32,
+          "claim_key": "sk05/item/0",
+          "claim_reward_id": "2D530F6C5AEF42F4",
+          "team_reward": false
+        },
+        {
+          "id": "21218EE3F84F3366",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 20,
+          "claim_key": "sk05/item/1",
+          "claim_reward_id": "21218EE3F84F3366",
+          "team_reward": false
+        },
+        {
+          "id": "2DB09520458E0356",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E65F26290F5A214",
+      "title": "27.06 · Сердце спокойствия",
+      "subtitle": "Получить Heart of Tranquility.",
+      "description": [
+        "Что сделать: Получить Heart of Tranquility.",
+        "",
+        "Зачем: Мирное взаимодействие с редким существом и расходуемое Tranquility.",
+        "",
+        "Совет: Найдите Serene, бросьте Heart of the Sea и отойдите по нативной процедуре. Проверьте эффект добытого сердца; квест не ведёт историю передачи предмета.",
+        "",
+        "Награда: Заметный запас защиты и металла после получения Heart of Tranquility."
+      ],
+      "icon": "skarrier_mobs:heart_of_tranquility",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "267E615B7DEF2FC3",
+          "type": "item",
+          "item": "skarrier_mobs:heart_of_tranquility",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B86743FD3ED89F1",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:resisteel_ingot",
+          "count": 24,
+          "claim_key": "sk06/item/0",
+          "claim_reward_id": "2B86743FD3ED89F1",
+          "team_reward": false
+        },
+        {
+          "id": "27AFD4AA68AD72F3",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 10,
+          "claim_key": "sk06/item/1",
+          "claim_reward_id": "27AFD4AA68AD72F3",
+          "team_reward": false
+        },
+        {
+          "id": "2F96C596A28B5A3D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A6951A4E5E01026",
+      "title": "27.07 · Благословение Istukan",
+      "subtitle": "Нажать ПКМ по Istukan.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Istukan.",
+        "",
+        "Зачем: Постоянное место подготовки и сочетание статуй.",
+        "",
+        "Совет: Сверьтесь с нативной схемой, направлением и Heart of Tranquility для благословения. Ни геометрия группы, ни успешная активация в условия не входят.",
+        "",
+        "Награда: Полноценное декоративное окружение для уже поставленной статуи.",
+        "",
+        "Istukan — сущность; размещение блока заменено простым взаимодействием.",
+        "",
+        "Рекомендуемый путь: 27.06 · Сердце спокойствия. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:istukan_spawn_egg",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29192AE84274FA44",
+          "type": "custom",
+          "title": "Нажать ПКМ по Istukan.",
+          "icon": "skarrier_mobs:istukan_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2045433F8A06448E",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_column",
+          "count": 48,
+          "claim_key": "sk07/item/0",
+          "claim_reward_id": "2045433F8A06448E",
+          "team_reward": false
+        },
+        {
+          "id": "2ADAAA07E9DCE854",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_urn",
+          "count": 12,
+          "claim_key": "sk07/item/1",
+          "claim_reward_id": "2ADAAA07E9DCE854",
+          "team_reward": false
+        },
+        {
+          "id": "256F5ADAA09C300A",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:nautilus_lantern",
+          "count": 8,
+          "claim_key": "sk07/item/2",
+          "claim_reward_id": "256F5ADAA09C300A",
+          "team_reward": false
+        },
+        {
+          "id": "2E7A498E335E72B7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BE5FF3E9D9B754F",
+      "title": "27.08 · Пещерные расходники",
+      "subtitle": "Собрать два разных расходника из списка Blare Horn, Dangle Fangs, Krill, Cooked Roe.",
+      "description": [
+        "Что сделать: Собрать два разных расходника из списка Blare Horn, Dangle Fangs, Krill, Cooked Roe.",
+        "",
+        "Зачем: Контроль, ингредиенты алхимии, морская скорость и лечение телепортацией.",
+        "",
+        "Совет: Попробуйте оглушение рогом, обработку паучьего глаза, Dolphin’s Grace II и лечение телепортацией Televitality. Каждая функция объясняется в подсказке без многосоставного детектора.",
+        "",
+        "Награда: Боезапас и необычная еда после знакомства с расходниками Skarrier.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:blaring_horn",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "267749A82F194ED7",
+          "type": "custom",
+          "title": "Собрать два разных расходника из списка Blare Horn, Dangle Fangs, Krill, Cooked Roe.",
+          "icon": "skarrier_mobs:blaring_horn",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2FDF3E5847AB58CE",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:cooked_roe",
+          "count": 24,
+          "claim_key": "sk08/item/0",
+          "claim_reward_id": "2FDF3E5847AB58CE",
+          "team_reward": false
+        },
+        {
+          "id": "254611EC4D5F12E2",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_freezing_arrow",
+          "count": 32,
+          "claim_key": "sk08/item/1",
+          "claim_reward_id": "254611EC4D5F12E2",
+          "team_reward": false
+        },
+        {
+          "id": "2F56DC29123BC4C8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27B9F1F212C71BDC",
+      "title": "27.09 · Выше по пищевой цепи",
+      "subtitle": "Победить два разных вида из Carniflore, Zombiflore, Eater и Gadlisk.",
+      "description": [
+        "Что сделать: Победить два разных вида из Carniflore, Zombiflore, Eater и Gadlisk.",
+        "",
+        "Зачем: Распознавание механик угроз; редкое Sniffer Egg не требовать как фиксированный дроп.",
+        "",
+        "Совет: Carniflore требует разбираться с головами, Zombiflore меняет форму, Eater уязвим в своём окне, Gadlisk усиливает негативные эффекты. Редкое Sniffer Egg не является требуемым дропом.",
+        "",
+        "Награда: Магические материалы и усиленные расходники за два разных опасных противника.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:carniflore_spawn_egg",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26DE90D3B6DC86B0",
+          "type": "custom",
+          "title": "Победить два разных вида из Carniflore, Zombiflore, Eater и Gadlisk.",
+          "icon": "skarrier_mobs:carniflore_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29900EF1A055312D",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:divine_pearl",
+          "count": 8,
+          "claim_key": "sk09/item/0",
+          "claim_reward_id": "29900EF1A055312D",
+          "team_reward": false
+        },
+        {
+          "id": "2380D6733DB93182",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_oakskin_elixir",
+          "count": 8,
+          "claim_key": "sk09/item/1",
+          "claim_reward_id": "2380D6733DB93182",
+          "team_reward": false
+        },
+        {
+          "id": "220A312A40DEABA3",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 16,
+          "claim_key": "sk09/item/2",
+          "claim_reward_id": "220A312A40DEABA3",
+          "team_reward": false
+        },
+        {
+          "id": "202BBA45D9E2AA45",
+          "type": "jem_advancements:quest_xp",
+          "xp": 300,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23FBC4580085A380",
+      "title": "27.10 · Подготовка к старшему Skarrier",
+      "subtitle": "Получить Nether Star.",
+      "description": [
+        "Что сделать: Получить Nether Star.",
+        "",
+        "Зачем: Ориентир поздней ветки; нативный флаг Wither остаётся обязательным для появления её существ.",
+        "",
+        "Совет: Поздние встречи Skarrier открывает собственный флаг настоящей победы Wither. Эта карточка лишь подтверждает наличие звезды и не устанавливает этот флаг. После открытия ищите Bowlder, Gorger, Trawler, Crimlin, Hellamander, Viruleon и Freeze.",
+        "",
+        "Награда: Ценный ремесленный набор за уже полученный редкий материал без нового ключа или босса.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "minecraft:nether_star",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28FE3213E04EBF94",
+          "type": "item",
+          "item": "minecraft:nether_star",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D1BB0A6E26B57D3",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_ingot",
+          "count": 24,
+          "claim_key": "sk10/item/0",
+          "claim_reward_id": "2D1BB0A6E26B57D3",
+          "team_reward": false
+        },
+        {
+          "id": "2AFE7466BF29BB4F",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 12,
+          "claim_key": "sk10/item/1",
+          "claim_reward_id": "2AFE7466BF29BB4F",
+          "team_reward": false
+        },
+        {
+          "id": "21B6E47FC3ADF2E9",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sk10/item/2",
+          "claim_reward_id": "21B6E47FC3ADF2E9",
+          "team_reward": false
+        },
+        {
+          "id": "29CC792891366BDB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 320,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24379946137956F5",
+      "title": "27.11 · Кирка против камня",
+      "subtitle": "Нанести один удар Bowlder киркой.",
+      "description": [
+        "Что сделать: Нанести один удар Bowlder киркой.",
+        "",
+        "Зачем: Особая уязвимость врага и ограниченное по ударам покрытие.",
+        "",
+        "Совет: Кирка подходит против каменной защиты. Из Bowlder Dust изучите покрытие Armor Destruction и его износ; обработка инструмента не входит в автоматическую проверку.",
+        "",
+        "Награда: Шахтёрские материалы и освещение после проверки приёма на Bowlder.",
+        "",
+        "Рекомендуемый путь: 27.10 · Подготовка к старшему Skarrier. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:bowlder_spawn_egg",
+      "x": 4.38,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FA8538F14F9240C",
+          "type": "custom",
+          "title": "Нанести один удар Bowlder киркой.",
+          "icon": "skarrier_mobs:bowlder_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "254FC211B578DEEB",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:resisteel_ingot",
+          "count": 16,
+          "claim_key": "sk11/item/0",
+          "claim_reward_id": "254FC211B578DEEB",
+          "team_reward": false
+        },
+        {
+          "id": "2F2FF5901FB946C4",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_lantern_arrow",
+          "count": 32,
+          "claim_key": "sk11/item/1",
+          "claim_reward_id": "2F2FF5901FB946C4",
+          "team_reward": false
+        },
+        {
+          "id": "2058855D5F9F59D8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CBE524E4A3FB372",
+      "title": "27.12 · Кислота добывает руду",
+      "subtitle": "Сделать ПКМ по железной или медной руде, держа Acidic Bile.",
+      "description": [
+        "Что сделать: Сделать ПКМ по железной или медной руде, держа Acidic Bile.",
+        "",
+        "Зачем: Добыча через расходник; применение к редким рудам требует учёта правил экономики.",
+        "",
+        "Совет: Сравните обработку обычной руды с плавкой. Учитывается только ПКМ нужным предметом по подходящему блоку, не результат преобразования или прибыль.",
+        "",
+        "Награда: Запас уже опробованной кислоты и рудного сырья для следующей партии.",
+        "",
+        "В установленной версии Skarrier Mobs используется Acidic Bile ; отдельного Corrosive Bile нет.",
+        "",
+        "Рекомендуемый путь: 27.10 · Подготовка к старшему Skarrier. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:acidic_bile",
+      "x": 6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22B6027B46181492",
+          "type": "custom",
+          "title": "Сделать ПКМ по железной или медной руде, держа Acidic Bile.",
+          "icon": "skarrier_mobs:acidic_bile",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21724DEB16FA9ABE",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:acidic_bile",
+          "count": 12,
+          "claim_key": "sk12/item/0",
+          "claim_reward_id": "21724DEB16FA9ABE",
+          "team_reward": false
+        },
+        {
+          "id": "28D23B3A92B3BDA2",
+          "type": "jem_advancements:quest_item",
+          "item": "create:crushed_raw_iron",
+          "count": 32,
+          "claim_key": "sk12/item/1",
+          "claim_reward_id": "28D23B3A92B3BDA2",
+          "team_reward": false
+        },
+        {
+          "id": "2642D2A611A6EC57",
+          "type": "jem_advancements:quest_item",
+          "item": "create:crushed_raw_copper",
+          "count": 32,
+          "claim_key": "sk12/item/2",
+          "claim_reward_id": "2642D2A611A6EC57",
+          "team_reward": false
+        },
+        {
+          "id": "2B22DB98583725CF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2193F77CD423F662",
+      "title": "27.13 · Опасная пасть и яд",
+      "subtitle": "Победить два разных вида из Trawler, Crimlin, Hellamander и Viruleon.",
+      "description": [
+        "Что сделать: Победить два разных вида из Trawler, Crimlin, Hellamander и Viruleon.",
+        "",
+        "Зачем: Старшая региональная тактика и доступные покрытия.",
+        "",
+        "Совет: У Trawler следите за открытой пастью, у Crimlin за Hemorrhage, у Hellamander за огнём, у Viruleon за ядом и Venom Sack. WIP-покрытие Trawler Shell не представлять рабочим.",
+        "",
+        "Награда: Редкий магический материал и сильные расходники за двух разных противников Nether.",
+        "",
+        "Рекомендуемый путь: 27.10 · Подготовка к старшему Skarrier. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:trawler_spawn_egg",
+      "x": -8.07,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E8DE99A57850C7B",
+          "type": "custom",
+          "title": "Победить два разных вида из Trawler, Crimlin, Hellamander и Viruleon.",
+          "icon": "skarrier_mobs:trawler_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C480F4E7D115F82",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:cinder_essence",
+          "count": 8,
+          "claim_key": "sk13/item/0",
+          "claim_reward_id": "2C480F4E7D115F82",
+          "team_reward": false
+        },
+        {
+          "id": "2EC9C10AEE44A8F5",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_freezing_arrow",
+          "count": 32,
+          "claim_key": "sk13/item/1",
+          "claim_reward_id": "2EC9C10AEE44A8F5",
+          "team_reward": false
+        },
+        {
+          "id": "2F7116FDBE43EEA4",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 8,
+          "claim_key": "sk13/item/2",
+          "claim_reward_id": "2F7116FDBE43EEA4",
+          "team_reward": false
+        },
+        {
+          "id": "2A2896D9C9516564",
+          "type": "jem_advancements:quest_xp",
+          "xp": 360,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2311A374C087FA8E",
+      "title": "27.14 · Тотемная мастерская",
+      "subtitle": "Собрать два разных тотема из Extinction, Freezing, Repulsion и Seething.",
+      "description": [
+        "Что сделать: Собрать два разных тотема из Extinction, Freezing, Repulsion и Seething.",
+        "",
+        "Зачем: Привязка к виду, холодозащита, ветер, огонь и изменение характеристик.",
+        "",
+        "Совет: Изучите привязку к виду, холодозащиту, ветер и огонь. Melding с переносом характеристик — факультативное продолжение после проверки допустимых целей; босса для опыта не использовать.",
+        "",
+        "Награда: Игрок выбирает полезное пополнение после собственной коллекции двух тотемов.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:totem_of_extinction",
+      "x": -6.22,
+      "y": 7.25,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2371AE18879990CA",
+          "type": "custom",
+          "title": "Собрать два разных тотема из Extinction, Freezing, Repulsion и Seething.",
+          "icon": "skarrier_mobs:totem_of_extinction",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21972550FD9B0D18",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 12,
+          "claim_key": "sk14/item/0",
+          "claim_reward_id": "21972550FD9B0D18",
+          "team_reward": false
+        },
+        {
+          "id": "269FF5C6F7F12A78",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 16,
+          "claim_key": "sk14/item/1",
+          "claim_reward_id": "269FF5C6F7F12A78",
+          "team_reward": false
+        },
+        {
+          "id": "25BC270EF029524B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 350,
+          "team_reward": false
+        },
+        {
+          "id": "23F070AC4214BFC8",
+          "type": "choice",
+          "table_id": 2464328752887704217L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25D2E9EDCA8565CB",
+      "title": "27.15 · Grave Construct",
+      "subtitle": "Победить Grave Construct.",
+      "description": [
+        "Что сделать: Победить Grave Construct.",
+        "",
+        "Зачем: Старший ритуал Skarrier и его последующие материалы.",
+        "",
+        "Совет: Соберите родной ритуал из bone blocks и Breacher skulls по схеме версии 1.1.1. В бою учитывайте вторую фазу и его тотемы. Детектор фиксирует только победу.",
+        "",
+        "Награда: Победа над Grave Construct оплачивает выбор полезного аксессуара и серьёзный запас материалов.",
+        "",
+        "Рекомендуемый путь: 27.01 · Окна уязвимости. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:grave_construct_spawn_egg",
+      "x": -4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A15A9E5AC2990CA",
+          "type": "kill",
+          "entity": "skarrier_mobs:grave_construct",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AFF21BB59F6B585",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:deep_alloy_ingot",
+          "count": 16,
+          "claim_key": "sk15/item/0",
+          "claim_reward_id": "2AFF21BB59F6B585",
+          "team_reward": false
+        },
+        {
+          "id": "220ABA967657FC2E",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_life_steal_arrow",
+          "count": 32,
+          "claim_key": "sk15/item/1",
+          "claim_reward_id": "220ABA967657FC2E",
+          "team_reward": false
+        },
+        {
+          "id": "2B672C3058AD3612",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 16,
+          "claim_key": "sk15/item/2",
+          "claim_reward_id": "2B672C3058AD3612",
+          "team_reward": false
+        },
+        {
+          "id": "217E3489F8B69DDF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 750,
+          "team_reward": false
+        },
+        {
+          "id": "2EAC801D4FBA6593",
+          "type": "choice",
+          "table_id": 2653628984496640113L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29542BE6278061A6",
+      "title": "27.16 · Контакт с Tunnel Gore",
+      "subtitle": "Нажать ПКМ пустой основной рукой по Tunnel Gore.",
+      "description": [
+        "Что сделать: Нажать ПКМ пустой основной рукой по Tunnel Gore.",
+        "",
+        "Зачем: Опасность богатых залежей и самостоятельное дорогое испытание.",
+        "",
+        "Совет: Это необязательное знакомство с опасным существом. Подготовьте отход; нативную механику трёх блоков незерита изучайте отдельно по подсказке установленной версии. Квест не требует нанести урон, потратить блоки или добиться особой смерти.",
+        "",
+        "Награда: Разведывательный набор за взаимодействие с Tunnel Gore, а не награда за неподтверждённое убийство.",
+        "",
+        "Рекомендуемый путь: 27.10 · Подготовка к старшему Skarrier. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:tunnel_gore_spawn_egg",
+      "x": -2.52,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28F2B7D4648F8C1C",
+          "type": "custom",
+          "title": "Нажать ПКМ пустой основной рукой по Tunnel Gore.",
+          "icon": "skarrier_mobs:tunnel_gore_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "255D06199F90A06D",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_torch_arrow",
+          "count": 32,
+          "claim_key": "sk16/item/0",
+          "claim_reward_id": "255D06199F90A06D",
+          "team_reward": false
+        },
+        {
+          "id": "28367DBEF8D8204D",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:beef_patty_with_vegetables",
+          "count": 16,
+          "claim_key": "sk16/item/1",
+          "claim_reward_id": "28367DBEF8D8204D",
+          "team_reward": false
+        },
+        {
+          "id": "2BD9F8DBAE766E9A",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:invisibility_elixir",
+          "count": 4,
+          "claim_key": "sk16/item/2",
+          "claim_reward_id": "2BD9F8DBAE766E9A",
+          "team_reward": false
+        },
+        {
+          "id": "23E6AEF8178596DD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk16",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AF0463F73F850EE",
+      "title": "27.17 · Endorah",
+      "subtitle": "Победить Endorah.",
+      "description": [
+        "Что сделать: Победить Endorah.",
+        "",
+        "Зачем: Финальная встреча и Invulnerite-ветка по доступным рецептам.",
+        "",
+        "Совет: Сохраняются собственные флаги Wither/Dragon и родной ритуал с Voidrake-материалами, Void Scale Blocks, Dragon Heads и Beacon. Схему берите из установленной версии; во время боя разберитесь с боковыми головами. FTB не открывает доступ вместо мода.",
+        "",
+        "Награда: За Endorah — редкий инструмент, полёт или аксессуар на выбор и богатое снабжение.",
+        "",
+        "Рекомендуемый путь: 27.10 · Подготовка к старшему Skarrier. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:endorah_body_spawn_egg",
+      "x": -6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2931837E61D3B030",
+          "type": "kill",
+          "entity": "skarrier_mobs:endorah_body",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B4657382DE8EDA2",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:deep_alloy_ingot",
+          "count": 24,
+          "claim_key": "sk17/item/0",
+          "claim_reward_id": "2B4657382DE8EDA2",
+          "team_reward": false
+        },
+        {
+          "id": "2F16E7F823BA2346",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 8,
+          "claim_key": "sk17/item/1",
+          "claim_reward_id": "2F16E7F823BA2346",
+          "team_reward": false
+        },
+        {
+          "id": "259BFD349C3D3855",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:greater_evasion_elixir",
+          "count": 8,
+          "claim_key": "sk17/item/2",
+          "claim_reward_id": "259BFD349C3D3855",
+          "team_reward": false
+        },
+        {
+          "id": "2152D92D0361A0B1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 1000,
+          "team_reward": false
+        },
+        {
+          "id": "220E94749A143B72",
+          "type": "choice",
+          "table_id": 3103055656290106075L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk17",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29172CD020E878EA",
+      "title": "27.18 · После Forsaken приходит Wretch",
+      "subtitle": "Победить Wretch.",
+      "description": [
+        "Что сделать: Победить Wretch.",
+        "",
+        "Зачем: Связь Skarrier с Alex’s Caves и приём против охотника за едой.",
+        "",
+        "Совет: Wretch появляется по нативному правилу после Forsaken. Уберите привлекающую пищу и изучите три защитных блока укуса, которые ломают клыки. Карточка не отслеживает эту последовательность.",
+        "",
+        "Награда: Wretch приносит редкие материалы и один сильный практический приз, не готовый трофейный клинок.",
+        "",
+        "Рекомендуемый путь: 22.24 · Крылья из тени. Порядок свободный."
+      ],
+      "icon": "skarrier_mobs:wretch_spawn_egg",
+      "x": -4.38,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "211A1D8921795028",
+          "type": "kill",
+          "entity": "skarrier_mobs:wretch",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20B6E28F6A06F613",
+          "type": "jem_advancements:quest_item",
+          "item": "skarrier_mobs:invulnerite_chunk",
+          "count": 12,
+          "claim_key": "sk18/item/0",
+          "claim_reward_id": "20B6E28F6A06F613",
+          "team_reward": false
+        },
+        {
+          "id": "20892653566038B3",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:legendary_ink",
+          "count": 3,
+          "claim_key": "sk18/item/1",
+          "claim_reward_id": "20892653566038B3",
+          "team_reward": false
+        },
+        {
+          "id": "2FA767A17F81F52B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 24,
+          "claim_key": "sk18/item/2",
+          "claim_reward_id": "2FA767A17F81F52B",
+          "team_reward": false
+        },
+        {
+          "id": "21950DFDB1780BEC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 1100,
+          "team_reward": false
+        },
+        {
+          "id": "20755DD66DBB2698",
+          "type": "choice",
+          "table_id": 2702575453350922173L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "sk18",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Охотничий набор",
+      "order": -5,
+      "hover": [
+        "Охотничий набор"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Устройства и добыча",
+      "order": -5,
+      "hover": [
+        "Устройства и добыча"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 5.55,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Продолжение охоты",
+      "order": -5,
+      "hover": [
+        "Продолжение охоты"
+      ]
+    }
+  ],
+  "autofocus_id": "2F74D774529CEFCA"
+}

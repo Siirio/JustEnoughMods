@@ -1,0 +1,860 @@
+{
+  "id": "216D654740F71FDF",
+  "filename": "jem_15",
+  "title": "Железная дорога",
+  "subtitle": [
+    "Когда: После доступных железнодорожных ресурсов. Коллекции можно собирать без готовой пассажирской линии.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "create:track",
+  "group": "28AF004A3850C67C",
+  "order_index": 14,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "27D0F21DE2E008BB",
+      "title": "15.01 · Начало железной дороги",
+      "subtitle": "Разместить Train Track, Train Station и Train Controls Create.",
+      "description": [
+        "Что сделать: Разместить Train Track, Train Station и Train Controls Create.",
+        "",
+        "Зачем: Native train assembly и управление.",
+        "",
+        "Совет: На станции собирается состав с bogeys и органами управления. Попробуй ручную поездку между остановками; квест проверяет только размещённые компоненты.",
+        "",
+        "Награда: Запас пути и деталей первого состава: награда помогает действительно начать линию.",
+        "",
+        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+      ],
+      "icon": "create:track",
+      "x": -1.85,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26889AB7EB639A03",
+          "type": "custom",
+          "title": "Разместить Train Track, Train Station и Train Controls Create.",
+          "icon": "create:track",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "212667BD7C371539",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 128,
+          "claim_key": "H14.01/item/0",
+          "claim_reward_id": "212667BD7C371539",
+          "team_reward": false
+        },
+        {
+          "id": "24E27E8FC58E2294",
+          "type": "jem_advancements:quest_item",
+          "item": "create:railway_casing",
+          "count": 8,
+          "claim_key": "H14.01/item/1",
+          "claim_reward_id": "24E27E8FC58E2294",
+          "team_reward": false
+        },
+        {
+          "id": "2B0221017E99C180",
+          "type": "jem_advancements:quest_item",
+          "item": "create:controls",
+          "count": 2,
+          "claim_key": "H14.01/item/2",
+          "claim_reward_id": "2B0221017E99C180",
+          "team_reward": false
+        },
+        {
+          "id": "2F6B118F2A505E4F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 170,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25DE971A8F3AA5A6",
+      "title": "15.02 · Расписание в руках",
+      "subtitle": "Получить 1 Train Schedule Create.",
+      "description": [
+        "Что сделать: Получить 1 Train Schedule Create.",
+        "",
+        "Зачем: Автономный маршрут и условия ожидания.",
+        "",
+        "Совет: Запиши станции и условия ожидания, затем передай расписание совместимому машинисту. Назначенный водитель, автономное движение и прибытие не отслеживаются.",
+        "",
+        "Награда: Свисток для обращения к поездам и ещё один участок пути после знакомства с расписанием.",
+        "",
+        "Рекомендуемый путь: 15.01 · Начало железной дороги. Порядок свободный."
+      ],
+      "icon": "create:schedule",
+      "x": 0.0,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C79920E44A14C63",
+          "type": "item",
+          "item": "create:schedule",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A897B2A6B6626F4",
+          "type": "jem_advancements:quest_item",
+          "item": "railways:conductor_whistle",
+          "count": 1,
+          "claim_key": "H14.02/item/0",
+          "claim_reward_id": "2A897B2A6B6626F4",
+          "team_reward": false
+        },
+        {
+          "id": "297C97FE34F2183F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 64,
+          "claim_key": "H14.02/item/1",
+          "claim_reward_id": "297C97FE34F2183F",
+          "team_reward": false
+        },
+        {
+          "id": "2F8E5DD3DB6C10EE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 130,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2681C5FED190AB83",
+      "title": "15.03 · Сигналы и наблюдатели",
+      "subtitle": "Разместить Train Signal и Track Observer Create.",
+      "description": [
+        "Что сделать: Разместить Train Signal и Track Observer Create.",
+        "",
+        "Зачем: Train signalling и управление сетью.",
+        "",
+        "Совет: Сигналы разделяют железнодорожную сеть, наблюдатели помогают реагировать на поезда. Разберись с ожиданием свободного участка; геометрия разъезда и безопасность движения не оцениваются.",
+        "",
+        "Награда: Набор для нескольких сигнальных блок-участков и датчиков.",
+        "",
+        "Рекомендуемый путь: 15.02 · Расписание в руках. Порядок свободный."
+      ],
+      "icon": "create:track_signal",
+      "x": 1.85,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "257C28178D2442FD",
+          "type": "custom",
+          "title": "Разместить Train Signal и Track Observer Create.",
+          "icon": "create:track_signal",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2233C40CF046025D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track_signal",
+          "count": 16,
+          "claim_key": "H14.03/item/0",
+          "claim_reward_id": "2233C40CF046025D",
+          "team_reward": false
+        },
+        {
+          "id": "27DB3B5C644381F5",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track_observer",
+          "count": 8,
+          "claim_key": "H14.03/item/1",
+          "claim_reward_id": "27DB3B5C644381F5",
+          "team_reward": false
+        },
+        {
+          "id": "2A30195D19685284",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 128,
+          "claim_key": "H14.03/item/2",
+          "claim_reward_id": "2A30195D19685284",
+          "team_reward": false
+        },
+        {
+          "id": "249F6DCD6C5E3FBD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "271697261BF4BB36",
+      "title": "15.04 · Грузовые интерфейсы",
+      "subtitle": "Разместить Portable Storage Interface и Portable Fluid Interface Create.",
+      "description": [
+        "Что сделать: Разместить Portable Storage Interface и Portable Fluid Interface Create.",
+        "",
+        "Зачем: Железнодорожное снабжение.",
+        "",
+        "Совет: Встречные пары интерфейсов обслуживают предметный и жидкостный груз. Настрой остановку поезда для перегрузки; отслеживать парность, груз и конечный склад квест не будет.",
+        "",
+        "Награда: Парные интерфейсы и корпуса позволяют обустроить дополнительные грузовые точки.",
+        "",
+        "Рекомендуемый путь: 15.01 · Начало железной дороги. Порядок свободный."
+      ],
+      "icon": "create:portable_storage_interface",
+      "x": -0.93,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "233A01A01D9B3A4C",
+          "type": "custom",
+          "title": "Разместить Portable Storage Interface и Portable Fluid Interface Create.",
+          "icon": "create:portable_storage_interface",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24C96823262BF7BE",
+          "type": "jem_advancements:quest_item",
+          "item": "create:portable_storage_interface",
+          "count": 8,
+          "claim_key": "H14.04/item/0",
+          "claim_reward_id": "24C96823262BF7BE",
+          "team_reward": false
+        },
+        {
+          "id": "260FA87EB0E0E2C8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:portable_fluid_interface",
+          "count": 8,
+          "claim_key": "H14.04/item/1",
+          "claim_reward_id": "260FA87EB0E0E2C8",
+          "team_reward": false
+        },
+        {
+          "id": "2550E1E030EF12E2",
+          "type": "jem_advancements:quest_item",
+          "item": "create:railway_casing",
+          "count": 16,
+          "claim_key": "H14.04/item/2",
+          "claim_reward_id": "2550E1E030EF12E2",
+          "team_reward": false
+        },
+        {
+          "id": "22FB1260FA62EFE0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "273EDCAA17CCCE7C",
+      "title": "15.05 · Компонент манёвров",
+      "subtitle": "Поставить 1 Track Coupler Steam ’n’ Rails.",
+      "description": [
+        "Что сделать: Поставить 1 Track Coupler Steam ’n’ Rails.",
+        "",
+        "Зачем: Coupling/shunting, отдельные роли вагонов.",
+        "",
+        "Совет: Используй штатные правила сцепления/расцепления и запасные пути, чтобы менять состав. Зачёт даётся за блок, без проверки операции с вагонами.",
+        "",
+        "Награда: Сцепщики и пути для дальнейших манёвров; задание не проверяет действующий сортировочный парк.",
+        "",
+        "Рекомендуемый путь: 15.04 · Грузовые интерфейсы. Порядок свободный."
+      ],
+      "icon": "railways:track_coupler",
+      "x": 0.93,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E5D8E4A0579035D",
+          "type": "custom",
+          "title": "Поставить 1 Track Coupler Steam ’n’ Rails.",
+          "icon": "railways:track_coupler",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2232CEDD3C1A1BD5",
+          "type": "jem_advancements:quest_item",
+          "item": "railways:track_coupler",
+          "count": 4,
+          "claim_key": "H14.05/item/0",
+          "claim_reward_id": "2232CEDD3C1A1BD5",
+          "team_reward": false
+        },
+        {
+          "id": "28610F28701D6DDD",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 128,
+          "claim_key": "H14.05/item/1",
+          "claim_reward_id": "28610F28701D6DDD",
+          "team_reward": false
+        },
+        {
+          "id": "2D8FDE3C76EE6366",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F99EBF5204E9F02",
+      "title": "15.06 · Помощник машиниста",
+      "subtitle": "Нажать ПКМ по Conductor Steam ’n’ Rails пустой основной рукой.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Conductor Steam ’n’ Rails пустой основной рукой.",
+        "",
+        "Зачем: Специализированное управление поездом.",
+        "",
+        "Совет: Проводник поддерживает специализированное управление и работу рядом с поездом. Изучи доступные способы назначения и дистанционного управления в своей версии. Квест не обещает, что этот ПКМ запустит конкретный режим.",
+        "",
+        "Награда: Дополнительная фуражка и блоки прохода знакомят с обслуживанием подмастерьев. За простой ПКМ редкий транспорт не выдаётся.",
+        "",
+        "Рекомендуемый путь: 15.02 · Расписание в руках. Порядок свободный."
+      ],
+      "icon": "railways:blue_conductor_cap",
+      "x": 0.0,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2126BA37F8CE1189",
+          "type": "custom",
+          "title": "Нажать ПКМ по Conductor Steam ’n’ Rails пустой основной рукой.",
+          "icon": "railways:blue_conductor_cap",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27E3559C798649F0",
+          "type": "jem_advancements:quest_item",
+          "item": "railways:blue_conductor_cap",
+          "count": 1,
+          "claim_key": "H14.06/item/0",
+          "claim_reward_id": "27E3559C798649F0",
+          "team_reward": false
+        },
+        {
+          "id": "2EB4F64A0A93AD02",
+          "type": "jem_advancements:quest_item",
+          "item": "railways:conductor_vent",
+          "count": 16,
+          "claim_key": "H14.06/item/1",
+          "claim_reward_id": "2EB4F64A0A93AD02",
+          "team_reward": false
+        },
+        {
+          "id": "228A62806D4A4C4E",
+          "type": "jem_advancements:quest_item",
+          "item": "create:bar_of_chocolate",
+          "count": 16,
+          "claim_key": "H14.06/item/2",
+          "claim_reward_id": "228A62806D4A4C4E",
+          "team_reward": false
+        },
+        {
+          "id": "20D3BD79429AE08C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E1224D29A1D2D25",
+      "title": "15.07 · Табло для пассажиров",
+      "subtitle": "Собрать Display Board Create и Advanced Display Create Railways Navigator.",
+      "description": [
+        "Что сделать: Собрать Display Board Create и Advanced Display Create Railways Navigator.",
+        "",
+        "Зачем: Информационные табло.",
+        "",
+        "Совет: Display Link связывает источники информации с отображением; Navigator добавляет пассажирские данные, платформы, задержки и следующие остановки. Правильность текста и действующий маршрут не проверяются.",
+        "",
+        "Награда: Достаточно табло и часов для оформления нескольких платформ.",
+        "",
+        "Рекомендуемый путь: 15.02 · Расписание в руках. Порядок свободный."
+      ],
+      "icon": "create:display_board",
+      "x": -0.93,
+      "y": 12.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29C155E9805ACBD2",
+          "type": "item",
+          "item": "create:display_board",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2AE025F8C3FF210D",
+          "type": "item",
+          "item": "createrailwaysnavigator:advanced_display",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B82456E377D195D",
+          "type": "jem_advancements:quest_item",
+          "item": "createrailwaysnavigator:advanced_display",
+          "count": 8,
+          "claim_key": "H14.07/item/0",
+          "claim_reward_id": "2B82456E377D195D",
+          "team_reward": false
+        },
+        {
+          "id": "24E68B59FB5469C0",
+          "type": "jem_advancements:quest_item",
+          "item": "createrailwaysnavigator:train_station_clock",
+          "count": 2,
+          "claim_key": "H14.07/item/1",
+          "claim_reward_id": "24E68B59FB5469C0",
+          "team_reward": false
+        },
+        {
+          "id": "2866738BE6C643BD",
+          "type": "jem_advancements:quest_item",
+          "item": "create:display_board",
+          "count": 16,
+          "claim_key": "H14.07/item/2",
+          "claim_reward_id": "2866738BE6C643BD",
+          "team_reward": false
+        },
+        {
+          "id": "21B994FF605A179F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "249F49BA8AB74566",
+      "title": "15.08 · Навигатор в пути",
+      "subtitle": "Нажать ПКМ в воздухе с Navigator Create Railways Navigator.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Navigator Create Railways Navigator.",
+        "",
+        "Зачем: Поиск маршрута и пересадки.",
+        "",
+        "Совет: Найди поездку между станциями, изучи пересадки и условия ожидания. Серверный зачёт не читает выбранный путь и не проверяет, доехал ли пассажир.",
+        "",
+        "Награда: Продолжение маршрута и материал платформы за знакомство с навигатором; сам поезд или прохождение маршрута не требуются.",
+        "",
+        "Рекомендуемый путь: 15.07 · Табло для пассажиров. Порядок свободный."
+      ],
+      "icon": "createrailwaysnavigator:navigator",
+      "x": 0.93,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20D41CFB3EC07E5C",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Navigator Create Railways Navigator.",
+          "icon": "createrailwaysnavigator:navigator",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CDD21D04EFF31D2",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 64,
+          "claim_key": "H14.08/item/0",
+          "claim_reward_id": "2CDD21D04EFF31D2",
+          "team_reward": false
+        },
+        {
+          "id": "20145AD72F4F1F4B",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:station_platform",
+          "count": 64,
+          "claim_key": "H14.08/item/1",
+          "claim_reward_id": "20145AD72F4F1F4B",
+          "team_reward": false
+        },
+        {
+          "id": "2643EEF108728E9B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2950095E2A1FC2CA",
+      "title": "15.09 · Палитра поезда и вокзала",
+      "subtitle": "Разместить по одному декоративному блоку из Create Train Parts и Create: Bells & Whistles.",
+      "description": [
+        "Что сделать: Разместить по одному декоративному блоку из Create Train Parts и Create: Bells & Whistles.",
+        "",
+        "Зачем: Детали поездов и архитектурная палитра Create Train Parts / Bells & Whistles.",
+        "",
+        "Совет: Подбери части локомотива, двери, ступени, свет и архитектурные детали под свой состав и платформу. Красота, посадка пассажира и наличие действующей станции не проверяются.",
+        "",
+        "Награда: Тематический набор оформления нескольких вагонов после знакомства с двумя дополнениями.",
+        "",
+        "Рекомендуемый путь: 15.01 · Начало железной дороги. Порядок свободный."
+      ],
+      "icon": "create_train_parts:andesite_sliding_window",
+      "x": 0.0,
+      "y": 16.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D84BDC28E8621E9",
+          "type": "custom",
+          "title": "Разместить по одному декоративному блоку из Create Train Parts и Create: Bells & Whistles.",
+          "icon": "create_train_parts:andesite_sliding_window",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22E68D9034240033",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:metro_casing",
+          "count": 64,
+          "claim_key": "H14.09/item/0",
+          "claim_reward_id": "22E68D9034240033",
+          "team_reward": false
+        },
+        {
+          "id": "27B4C978D9D5D108",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:metro_window",
+          "count": 32,
+          "claim_key": "H14.09/item/1",
+          "claim_reward_id": "27B4C978D9D5D108",
+          "team_reward": false
+        },
+        {
+          "id": "20AC7B7AE28F0F83",
+          "type": "jem_advancements:quest_item",
+          "item": "create_train_parts:train_sliding_window",
+          "count": 16,
+          "claim_key": "H14.09/item/2",
+          "claim_reward_id": "20AC7B7AE28F0F83",
+          "team_reward": false
+        },
+        {
+          "id": "2DD9B66442DB7A7A",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:headlight",
+          "count": 8,
+          "claim_key": "H14.09/item/3",
+          "claim_reward_id": "2DD9B66442DB7A7A",
+          "team_reward": false
+        },
+        {
+          "id": "2BD2C1D38D9DD7BE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 190,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2736FA4C49E5CF2A",
+      "title": "15.10 · Путь за порталом",
+      "subtitle": "Войти в Незер.",
+      "description": [
+        "Что сделать: Войти в Незер.",
+        "",
+        "Зачем: Идея межизмеренной железной дороги и её нативные условия.",
+        "",
+        "Совет: Native Create позволяет строить железнодорожное соединение через доступные порталы. Изучи сборку пути и приём состава с обеих сторон. Этот учебный квест проверяет только измерение, без сопровождения поезда.",
+        "",
+        "Награда: Комплект для будущей линии в Незере. Оплачен только вход в измерение; межпространственный маршрут ещё не доказан.",
+        "",
+        "Рекомендуемый путь: 15.01 · Начало железной дороги. Порядок свободный."
+      ],
+      "icon": "create:track",
+      "x": 0.0,
+      "y": 20.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F7020658CF94DF2",
+          "type": "dimension",
+          "dimension": "minecraft:the_nether",
+          "title": "Войти в Незер."
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2035A6547665A7CC",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 64,
+          "claim_key": "H14.10/item/0",
+          "claim_reward_id": "2035A6547665A7CC",
+          "team_reward": false
+        },
+        {
+          "id": "2E424FCF0F1CF63F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:railway_casing",
+          "count": 8,
+          "claim_key": "H14.10/item/1",
+          "claim_reward_id": "2E424FCF0F1CF63F",
+          "team_reward": false
+        },
+        {
+          "id": "2C4D7505853D25B2",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:headlight",
+          "count": 8,
+          "claim_key": "H14.10/item/2",
+          "claim_reward_id": "2C4D7505853D25B2",
+          "team_reward": false
+        },
+        {
+          "id": "2505231E5185BB89",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25542A9962FD7BC7",
+      "title": "15.11 · Коллекция железнодорожника",
+      "subtitle": "Разместить 8 типов: Train Track, Train Station, Train Controls, Train Signal, Track Observer, Portable Storage Interface, Portable Fluid Interface и Track Coupler.",
+      "description": [
+        "Что сделать: Разместить 8 типов: Train Track, Train Station, Train Controls, Train Signal, Track Observer, Portable Storage Interface, Portable Fluid Interface и Track Coupler.",
+        "",
+        "Зачем: Инструменты своей железнодорожной сети: движение, сигналы, манёвры и грузовые станции.",
+        "",
+        "Совет: Собери из этих деталей пассажирскую или грузовую линию по собственному плану. Отмечаются типы размещённых блоков; полный круг, расписание, остановка по сигналу и обслуживание станции не являются условиями.",
+        "",
+        "Награда: За набор восьми железнодорожных устройств — восемь стаков пути, пульт-окуляр и станционное оснащение. Награда предназначена для дальнейшей стройки сети.",
+        "",
+        "Рекомендуемый путь: 15.03 · Сигналы и наблюдатели; 15.04 · Грузовые интерфейсы. Порядок свободный."
+      ],
+      "icon": "create:track",
+      "x": 0.0,
+      "y": 23.9,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A083C4905B4CCFE",
+          "type": "custom",
+          "title": "Разместить 8 типов: Train Track, Train Station, Train Controls, Train Signal, Track Observer, Portable Storage Interface, Portable Fluid Interface и Track Coupler.",
+          "icon": "create:track",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C83CF9247E769A0",
+          "type": "jem_advancements:quest_item",
+          "item": "create:track",
+          "count": 512,
+          "claim_key": "H14.11/item/0",
+          "claim_reward_id": "2C83CF9247E769A0",
+          "team_reward": false
+        },
+        {
+          "id": "250858D4E8AB0B0E",
+          "type": "jem_advancements:quest_item",
+          "item": "create:railway_casing",
+          "count": 32,
+          "claim_key": "H14.11/item/1",
+          "claim_reward_id": "250858D4E8AB0B0E",
+          "team_reward": false
+        },
+        {
+          "id": "24F14E9878BDCF3A",
+          "type": "jem_advancements:quest_item",
+          "item": "railways:remote_lens",
+          "count": 1,
+          "claim_key": "H14.11/item/2",
+          "claim_reward_id": "24F14E9878BDCF3A",
+          "team_reward": false
+        },
+        {
+          "id": "278843E05B12EB38",
+          "type": "jem_advancements:quest_item",
+          "item": "createrailwaysnavigator:advanced_display",
+          "count": 16,
+          "claim_key": "H14.11/item/3",
+          "claim_reward_id": "278843E05B12EB38",
+          "team_reward": false
+        },
+        {
+          "id": "20F1714F25A168E3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 450,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H14.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:основа",
+      "order": -5,
+      "hover": [
+        "основа"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 3.7,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:груз",
+      "order": -5,
+      "hover": [
+        "груз"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 7.4,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:служба",
+      "order": -5,
+      "hover": [
+        "служба"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 11.1,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:пассажиры",
+      "order": -5,
+      "hover": [
+        "пассажиры"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 14.8,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:оформление",
+      "order": -5,
+      "hover": [
+        "оформление"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 18.5,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:поздняя ветвь",
+      "order": -5,
+      "hover": [
+        "поздняя ветвь"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 22.2,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    }
+  ],
+  "autofocus_id": "27D0F21DE2E008BB"
+}

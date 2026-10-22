@@ -1,0 +1,1339 @@
+{
+  "id": "1000000000000007",
+  "filename": "jem_10",
+  "title": "Поселение и торговый путь",
+  "subtitle": [
+    "Когда: После знакомства с жителями. Квесты не подменяют симуляцию поселения и не дают валюту за бытовые действия.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "minecraft:bell",
+  "group": "2EB54FCECCD0C28A",
+  "order_index": 9,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2213E5F6426ECD0B",
+      "title": "10.01 · Первое поселение",
+      "subtitle": "Создать 1 собственное поселение через штатный интерфейс JEM.",
+      "description": [
+        "Что сделать: Создать 1 собственное поселение через штатный интерфейс JEM.",
+        "",
+        "Зачем: Границы, список жителей, управление поселением.",
+        "",
+        "Совет: У колокола начни управление и регистрируй свободных жителей. Фактические границы и допуск определяет сам мод.",
+        "",
+        "Награда: Регистрация поселения получает стартовый строительный запас; это не проверка размера построенного города."
+      ],
+      "icon": "bbb:stone_brick_layer",
+      "x": -8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2281B58DC6CFBFE1",
+          "type": "custom",
+          "title": "Создать 1 собственное поселение через штатный интерфейс JEM.",
+          "icon": "bbb:stone_brick_layer",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A63923524DADBFB",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 128,
+          "claim_key": "town_01/item/0",
+          "claim_reward_id": "2A63923524DADBFB",
+          "team_reward": false
+        },
+        {
+          "id": "212DA1232FDE4D77",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 32,
+          "claim_key": "town_01/item/1",
+          "claim_reward_id": "212DA1232FDE4D77",
+          "team_reward": false
+        },
+        {
+          "id": "2C40D03F401E7270",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:farmer_salad",
+          "count": 12,
+          "claim_key": "town_01/item/2",
+          "claim_reward_id": "2C40D03F401E7270",
+          "team_reward": false
+        },
+        {
+          "id": "217849FE16A68050",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_01",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CF0186E5409FA56",
+      "title": "10.02 · Кровать для жителя",
+      "subtitle": "Поставить 1 кровать.",
+      "description": [
+        "Что сделать: Поставить 1 кровать.",
+        "",
+        "Зачем: Привязка дома и объяснение жалоб.",
+        "",
+        "Совет: Жителю также нужны нативно подходящие крыша и проход. Инспектор объясняет проблемы; квест не оценивает здание.",
+        "",
+        "Награда: Первая кровать дополняется мебелью для нескольких жителей.",
+        "",
+        "Рекомендуемый путь: 10.01 · Первое поселение. Порядок свободный."
+      ],
+      "icon": "handcrafted:oak_bench",
+      "x": -6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F70B04E109A949F",
+          "type": "custom",
+          "title": "Поставить 1 кровать.",
+          "icon": "handcrafted:oak_bench",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "272DB14D8E49B156",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 4,
+          "claim_key": "town_02/item/0",
+          "claim_reward_id": "272DB14D8E49B156",
+          "team_reward": false
+        },
+        {
+          "id": "243A766C080934DD",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_nightstand",
+          "count": 4,
+          "claim_key": "town_02/item/1",
+          "claim_reward_id": "243A766C080934DD",
+          "team_reward": false
+        },
+        {
+          "id": "264B2733D1AEE403",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28E0671220C0A2DA",
+      "title": "10.03 · Дверь и свет",
+      "subtitle": "Поставить 1 деревянную дверь и 1 фонарь.",
+      "description": [
+        "Что сделать: Поставить 1 деревянную дверь и 1 фонарь.",
+        "",
+        "Зачем: Раздельные проверки кровати, крыши, света, площади и расстояния.",
+        "",
+        "Совет: Разделяй жилые места и смотри жалобы на расстояние, площадь и свет в инспекторе. Квест считает только блоки, без оценки расположения.",
+        "",
+        "Награда: Вход с фонарём получает материал для улицы и внутреннего обустройства.",
+        "",
+        "Рекомендуемый путь: 10.02 · Кровать для жителя. Порядок свободный."
+      ],
+      "icon": "minecraft:lantern",
+      "x": -4.38,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C55F5748067BE70",
+          "type": "custom",
+          "title": "Поставить 1 деревянную дверь и 1 фонарь.",
+          "icon": "minecraft:lantern",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A0C378ACE8D457D",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:dark_cherry_stairs",
+          "count": 64,
+          "claim_key": "town_03/item/0",
+          "claim_reward_id": "2A0C378ACE8D457D",
+          "team_reward": false
+        },
+        {
+          "id": "2357182F4F2D9B97",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_shelf",
+          "count": 16,
+          "claim_key": "town_03/item/1",
+          "claim_reward_id": "2357182F4F2D9B97",
+          "team_reward": false
+        },
+        {
+          "id": "2879EBBD7FB7338C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F6818C05E4BFA46",
+      "title": "10.04 · Кладовая",
+      "subtitle": "Нажать ПКМ колоколом в руке по сундуку или бочке.",
+      "description": [
+        "Что сделать: Нажать ПКМ колоколом в руке по сундуку или бочке.",
+        "",
+        "Зачем: Общий пищевой склад; еда реально расходуется.",
+        "",
+        "Совет: Это управление пометкой склада в JEM. Загрузи еду по правилам поселения; пометка, состав запасов и питание жителей здесь не проверяются.",
+        "",
+        "Награда: После знакомства с общим контейнером выдаются полезные складские детали.",
+        "",
+        "Рекомендуемый путь: 10.02 · Кровать для жителя. Порядок свободный."
+      ],
+      "icon": "minecraft:chest",
+      "x": -2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26E45C3966BF676F",
+          "type": "custom",
+          "title": "Нажать ПКМ колоколом в руке по сундуку или бочке.",
+          "icon": "minecraft:chest",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26611DB584ECEFE7",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.open_crate",
+          "count": 8,
+          "claim_key": "town_04/item/0",
+          "claim_reward_id": "26611DB584ECEFE7",
+          "team_reward": false
+        },
+        {
+          "id": "20BE363B7F7E7496",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.trim",
+          "count": 32,
+          "claim_key": "town_04/item/1",
+          "claim_reward_id": "20BE363B7F7E7496",
+          "team_reward": false
+        },
+        {
+          "id": "24963ECFA028A65A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F7400395E3D3FDF",
+      "title": "10.05 · Предложить еду",
+      "subtitle": "Нажать ПКМ по жителю, держа хлеб или морковь.",
+      "description": [
+        "Что сделать: Нажать ПКМ по жителю, держа хлеб или морковь.",
+        "",
+        "Зачем: Пищевые пожелания, разнообразие, восстановление после еды.",
+        "",
+        "Совет: В интерфейсе жителя проверяй желаемую еду, голод и правила передачи. ПКМ не выдаётся за успешное кормление или рост настроения.",
+        "",
+        "Награда: Встреча с жителем получает продовольствие и запас для местного огорода.",
+        "",
+        "Рекомендуемый путь: 10.04 · Кладовая. Порядок свободный."
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": -8.07,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2525DEE9F9EF03C4",
+          "type": "custom",
+          "title": "Нажать ПКМ по жителю, держа хлеб или морковь.",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "269265BC51F3640C",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:vegetable_sandwich",
+          "count": 16,
+          "claim_key": "town_05/item/0",
+          "claim_reward_id": "269265BC51F3640C",
+          "team_reward": false
+        },
+        {
+          "id": "2C750703BBC966D9",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:fertilizer",
+          "count": 32,
+          "claim_key": "town_05/item/1",
+          "claim_reward_id": "2C750703BBC966D9",
+          "team_reward": false
+        },
+        {
+          "id": "22A10CD269682EFF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26F0F466C7DFC3FC",
+      "title": "10.06 · Рабочее место",
+      "subtitle": "Поставить 1 компостер, кафедру или камнерез.",
+      "description": [
+        "Что сделать: Поставить 1 компостер, кафедру или камнерез.",
+        "",
+        "Зачем: Профессии жителей; Villager Workers не возвращается.",
+        "",
+        "Совет: Это рабочие места обычных профессий жителей. Назначение профессии и торговля проверяются владельцем механики; Villager Workers не возвращается.",
+        "",
+        "Награда: Рабочее место получает материал для мастерского двора и хранение инструмента.",
+        "",
+        "Рекомендуемый путь: 10.02 · Кровать для жителя. Порядок свободный."
+      ],
+      "icon": "minecraft:composter",
+      "x": -6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2020B5B1971B4458",
+          "type": "custom",
+          "title": "Поставить 1 компостер, кафедру или камнерез.",
+          "icon": "minecraft:composter",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2026F3BDFB348645",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:iron_corral_bars",
+          "count": 32,
+          "claim_key": "town_06/item/0",
+          "claim_reward_id": "2026F3BDFB348645",
+          "team_reward": false
+        },
+        {
+          "id": "2DFE9B1519356E85",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:tool_rack",
+          "count": 8,
+          "claim_key": "town_06/item/1",
+          "claim_reward_id": "2DFE9B1519356E85",
+          "team_reward": false
+        },
+        {
+          "id": "258B6DD7C4AEEA6C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29B11D9F4FF639C3",
+      "title": "10.07 · Три детали для улицы",
+      "subtitle": "Поставить цветочный горшок, факел и стул Handcrafted.",
+      "description": [
+        "Что сделать: Поставить цветочный горшок, факел и стул Handcrafted.",
+        "",
+        "Зачем: Понятный вклад обустройства; одинаковый декор не превращается в бесконечный бонус.",
+        "",
+        "Совет: Зелень, свет и мебель могут влиять на уют по правилам JEM. Квест не оценивает площадь, расположение и изменение happiness.",
+        "",
+        "Награда: Три простых предмета благоустройства продолжаются комплектом для общего стола.",
+        "",
+        "Рекомендуемый путь: 10.03 · Дверь и свет. Порядок свободный."
+      ],
+      "icon": "minecraft:flower_pot",
+      "x": -4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "280D7E2C1A74A640",
+          "type": "custom",
+          "title": "Поставить цветочный горшок, факел и стул Handcrafted.",
+          "icon": "minecraft:flower_pot",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2788E8D173ED37DD",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_dining_bench",
+          "count": 8,
+          "claim_key": "town_07/item/0",
+          "claim_reward_id": "2788E8D173ED37DD",
+          "team_reward": false
+        },
+        {
+          "id": "238926141B790B55",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_table",
+          "count": 4,
+          "claim_key": "town_07/item/1",
+          "claim_reward_id": "238926141B790B55",
+          "team_reward": false
+        },
+        {
+          "id": "27677B1DFF403C90",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:red_cushion",
+          "count": 16,
+          "claim_key": "town_07/item/2",
+          "claim_reward_id": "27677B1DFF403C90",
+          "team_reward": false
+        },
+        {
+          "id": "2639C6265CE43D68",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2971C356BC0C2EB6",
+      "title": "10.08 · Разобраться с угрозой",
+      "subtitle": "Победить 1 обычного зомби.",
+      "description": [
+        "Что сделать: Победить 1 обычного зомби.",
+        "",
+        "Зачем: Безопасность и отдельный штраф страха.",
+        "",
+        "Совет: Охрана уменьшает угрозы поселению, а страх остаётся отдельным нативным фактором. Где произошёл бой и снялся ли страх, не проверяется.",
+        "",
+        "Награда: Один зомби награждается практичными боеприпасами и едой, без редкого оружия.",
+        "",
+        "Рекомендуемый путь: 10.02 · Кровать для жителя. Порядок свободный."
+      ],
+      "icon": "minecraft:zombie_spawn_egg",
+      "x": -2.52,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "259DFD197DE752AC",
+          "type": "kill",
+          "entity": "minecraft:zombie",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B716A2E66A27D99",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 32,
+          "claim_key": "town_08/item/0",
+          "claim_reward_id": "2B716A2E66A27D99",
+          "team_reward": false
+        },
+        {
+          "id": "2E0F80657B2E147E",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:goulash",
+          "count": 8,
+          "claim_key": "town_08/item/1",
+          "claim_reward_id": "2E0F80657B2E147E",
+          "team_reward": false
+        },
+        {
+          "id": "2E65E562E71583DD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "216798B7EA612BCE",
+      "title": "10.09 · Доброе слово",
+      "subtitle": "Нажать ПКМ по жителю с пустой рукой во время приседания.",
+      "description": [
+        "Что сделать: Нажать ПКМ по жителю с пустой рукой во время приседания.",
+        "",
+        "Зачем: Ежедневный социальный жест без повторной FTB-награды.",
+        "",
+        "Совет: Проверь управление PatPat в своих настройках. Дневной вклад в настроение рассчитывает JEM Settlements; эта карточка подтверждает только жест взаимодействия.",
+        "",
+        "Награда: Проверка жителя отмечается бытовым снабжением и предметами для жилого дома.",
+        "",
+        "Рекомендуемый путь: 10.01 · Первое поселение. Порядок свободный."
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": -8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F57C75B0612E535",
+          "type": "custom",
+          "title": "Нажать ПКМ по жителю с пустой рукой во время приседания.",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2ED7E9636282E2CB",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:farmer_salad",
+          "count": 16,
+          "claim_key": "town_09/item/0",
+          "claim_reward_id": "2ED7E9636282E2CB",
+          "team_reward": false
+        },
+        {
+          "id": "299E504E747118DF",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:berry_jam_jar",
+          "count": 8,
+          "claim_key": "town_09/item/1",
+          "claim_reward_id": "299E504E747118DF",
+          "team_reward": false
+        },
+        {
+          "id": "22B9170F28838C93",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2527DC1E45D085CD",
+      "title": "10.10 · Первые пять жителей",
+      "subtitle": "Зарегистрировать 5 жителей в своём поселении.",
+      "description": [
+        "Что сделать: Зарегистрировать 5 жителей в своём поселении.",
+        "",
+        "Зачем: Доход по счастью: 10 жителей при постоянных 100% дают 4 золотых/день; 20 — 8. Квест не начисляет эти деньги.",
+        "",
+        "Совет: Жители приносят доход по нативным правилам счастья. Казна показывает поступления; ждать день и подтверждать новую налоговую запись для квеста не требуется.",
+        "",
+        "Награда: Пять зарегистрированных жителей заслуживают полезного строительного оборудования и большого запаса для следующего квартала.",
+        "",
+        "Рекомендуемый путь: 10.04 · Кладовая; 10.06 · Рабочее место. Порядок свободный."
+      ],
+      "icon": "create:schematicannon",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C3B7F98DB22B30D",
+          "type": "custom",
+          "title": "Зарегистрировать 5 жителей в своём поселении.",
+          "icon": "create:schematicannon",
+          "count": 5
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20D72B03BBBB13AB",
+          "type": "jem_advancements:quest_item",
+          "item": "create:schematicannon",
+          "count": 1,
+          "claim_key": "town_10/item/0",
+          "claim_reward_id": "20D72B03BBBB13AB",
+          "team_reward": false
+        },
+        {
+          "id": "2A7D2D2B40F74135",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:brick_layer",
+          "count": 128,
+          "claim_key": "town_10/item/1",
+          "claim_reward_id": "2A7D2D2B40F74135",
+          "team_reward": false
+        },
+        {
+          "id": "21F7E95AD7A006AF",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 64,
+          "claim_key": "town_10/item/2",
+          "claim_reward_id": "21F7E95AD7A006AF",
+          "team_reward": false
+        },
+        {
+          "id": "2215C788A535C6F7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_10",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C2EE8E9DE379D7F",
+      "title": "10.11 · Знакомство с наёмником",
+      "subtitle": "Нажать ПКМ по одному наёмнику Recruits.",
+      "description": [
+        "Что сделать: Нажать ПКМ по одному наёмнику Recruits.",
+        "",
+        "Зачем: Нативные приказы, гарнизон и зарплата; Guard Villagers отдельно, без обещания общего payroll.",
+        "",
+        "Совет: В родном интерфейсе изучи найм, экипировку, еду, приказы и недельную плату. Квест не доказывает найм, владение, приказ или оплату.",
+        "",
+        "Награда: Обычное взаимодействие с наёмником получает снабжение, а не бесплатную армию.",
+        "",
+        "Рекомендуемый путь: 10.08 · Разобраться с угрозой. Порядок свободный."
+      ],
+      "icon": "recruits:bowman_spawn_egg",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C9786FFFA2139E2",
+          "type": "custom",
+          "title": "Нажать ПКМ по одному наёмнику Recruits.",
+          "icon": "recruits:bowman_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AFDFFC8A412511B",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 32,
+          "claim_key": "town_11/item/0",
+          "claim_reward_id": "2AFDFFC8A412511B",
+          "team_reward": false
+        },
+        {
+          "id": "2837A6AD6B84E8FD",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 24,
+          "claim_key": "town_11/item/1",
+          "claim_reward_id": "2837A6AD6B84E8FD",
+          "team_reward": false
+        },
+        {
+          "id": "2CD2E259628C7300",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "226D5834EF44F782",
+      "title": "10.13 · Второй адрес",
+      "subtitle": "Создать 2 собственных поселения.",
+      "description": [
+        "Что сделать: Создать 2 собственных поселения.",
+        "",
+        "Зачем: Неограниченное число поселений при соблюдении нативных ограничений. Квест необязательный.",
+        "",
+        "Совет: Переключение между адресами доступно в родном списке. Все ограничения на создание сохраняются; задание необязательное.",
+        "",
+        "Награда: Второе поселение получает отдельный складской комплект и лодку для перевозок; число поселений само по себе не объявляется боевым подвигом.",
+        "",
+        "Рекомендуемый путь: 10.10 · Первые пять жителей. Порядок свободный."
+      ],
+      "icon": "toms_storage:ts.storage_terminal",
+      "x": -5.3,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D6671813DC8AD0E",
+          "type": "custom",
+          "title": "Создать 2 собственных поселения.",
+          "icon": "toms_storage:ts.storage_terminal",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26C295820B74852F",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.storage_terminal",
+          "count": 1,
+          "claim_key": "town_13/item/0",
+          "claim_reward_id": "26C295820B74852F",
+          "team_reward": false
+        },
+        {
+          "id": "2DCF52B1C9D39C63",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_connector",
+          "count": 1,
+          "claim_key": "town_13/item/1",
+          "claim_reward_id": "2DCF52B1C9D39C63",
+          "team_reward": false
+        },
+        {
+          "id": "2ABF02620AE57253",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "town_13/item/2",
+          "claim_reward_id": "2ABF02620AE57253",
+          "team_reward": false
+        },
+        {
+          "id": "2B251A08C2B37272",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_chest_boat",
+          "count": 1,
+          "claim_key": "town_13/item/3",
+          "claim_reward_id": "2B251A08C2B37272",
+          "team_reward": false
+        },
+        {
+          "id": "2D9A872FBCB2C2D8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_13",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "253950A907099A3C",
+      "title": "10.14 · Предложить службу",
+      "subtitle": "Присесть и нажать ПКМ мечом или арбалетом по безработному жителю либо Nitwit.",
+      "description": [
+        "Что сделать: Присесть и нажать ПКМ мечом или арбалетом по безработному жителю либо Nitwit.",
+        "",
+        "Зачем: Создание Guard Villagers, доверие/доступ к снаряжению, разные роли и поддержка едой. Герой деревни для превращения в текущей сборке не нужен.",
+        "",
+        "Совет: Guard Villagers допускает превращение без Hero в текущем конфиге. Зачёт за попытку взаимодействия, не за создание стража. Доверие и доступ к экипировке остаются нативными.",
+        "",
+        "Награда: Первый страж получает запас пригодных обычных стрел для дальнейшей службы.",
+        "",
+        "Рекомендуемый путь: 10.06 · Рабочее место. Порядок свободный."
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": 3.45,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27A0D68DF7E3E2EA",
+          "type": "custom",
+          "title": "Присесть и нажать ПКМ мечом или арбалетом по безработному жителю либо Nitwit.",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2130D71CF2260CCD",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 64,
+          "claim_key": "guard_01/item/0",
+          "claim_reward_id": "2130D71CF2260CCD",
+          "team_reward": false
+        },
+        {
+          "id": "2CC5FA2B0F24D959",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:flint_tracking_arrow",
+          "count": 16,
+          "claim_key": "guard_01/item/1",
+          "claim_reward_id": "2CC5FA2B0F24D959",
+          "team_reward": false
+        },
+        {
+          "id": "21E9A6CA416F4CB3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "guard_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2534D17B581E77BC",
+      "title": "10.15 · Страж прикрыл тебя",
+      "subtitle": "Дать стражу Guard Villagers ранить моба, который в этот момент целится в тебя.",
+      "description": [
+        "Что сделать: Дать стражу Guard Villagers ранить моба, который в этот момент целится в тебя.",
+        "",
+        "Зачем: Управляемый патруль и три нативных способа обслуживания. Мечник и стрелок используют пост по-разному; автоматическое блуждание по деревне не требуется.",
+        "",
+        "Совет: Назначенный Patrol помогает организовать защиту. Питание, лечение cleric и ремонт у smith поддерживают гарнизон, но здесь не проверяются. Наём, владение, радиус и предыдущее нападение не нужны.",
+        "",
+        "Награда: Реальная помощь стража награждается боеприпасами и качественным провиантом.",
+        "",
+        "Рекомендуемый путь: 10.14 · Предложить службу. Порядок свободный."
+      ],
+      "icon": "xtraarrows:iron_arrow",
+      "x": 5.3,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22D01AC796F4A958",
+          "type": "custom",
+          "title": "Дать стражу Guard Villagers ранить моба, который в этот момент целится в тебя.",
+          "icon": "xtraarrows:iron_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C36DBE2729CB4C8",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 64,
+          "claim_key": "guard_02/item/0",
+          "claim_reward_id": "2C36DBE2729CB4C8",
+          "team_reward": false
+        },
+        {
+          "id": "2DD6602777143C3E",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:beef_patty_with_vegetables",
+          "count": 16,
+          "claim_key": "guard_02/item/1",
+          "claim_reward_id": "2DD6602777143C3E",
+          "team_reward": false
+        },
+        {
+          "id": "22CD315DAB4D64CD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "guard_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2966B729C7A44271",
+      "title": "10.16 · Колокол героя",
+      "subtitle": "Нажать ПКМ по колоколу с действующим эффектом Герой деревни.",
+      "description": [
+        "Что сделать: Нажать ПКМ по колоколу с действующим эффектом Герой деревни.",
+        "",
+        "Зачем: Follow при Hero of the Village, массовая команда колоколом и мобильная защита. Это отдельная необязательная ветка после освоения постов.",
+        "",
+        "Совет: Текущие правила разрешают массовую команду стражам через колокол, а follow требует Hero. Сбор отряда, движение и возвращение не проверяются.",
+        "",
+        "Награда: Действующий «Герой деревни» подтверждает серьёзный успех; можно взять один полезный предмет снаряжения.",
+        "",
+        "Рекомендуемый путь: 10.15 · Страж прикрыл тебя. Порядок свободный."
+      ],
+      "icon": "kaleidoscope_cookery:beef_noodle",
+      "x": 7.15,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21604DEA72916D17",
+          "type": "custom",
+          "title": "Нажать ПКМ по колоколу с действующим эффектом Герой деревни.",
+          "icon": "kaleidoscope_cookery:beef_noodle",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F7708031F34EE9B",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:beef_noodle",
+          "count": 24,
+          "claim_key": "guard_03/item/0",
+          "claim_reward_id": "2F7708031F34EE9B",
+          "team_reward": false
+        },
+        {
+          "id": "2C9F4DB5EF596F39",
+          "type": "jem_advancements:quest_xp",
+          "xp": 300,
+          "team_reward": false
+        },
+        {
+          "id": "2CE8B44000A2A7A0",
+          "type": "choice",
+          "table_id": 3011125533168029351L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "guard_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26CF623E58BD63D1",
+      "title": "10.18 · Первый обмен",
+      "subtitle": "Продать 1 разрешённую партию через Shipping Box.",
+      "description": [
+        "Что сделать: Продать 1 разрешённую партию через Shipping Box.",
+        "",
+        "Зачем: Продажа; не описывать снятую схему ожидания 06:00 или старый лимит 80 меди.",
+        "",
+        "Совет: Цена определяется нативной экономикой. Не требуется ждать 06:00 или доказывать происхождение товара.",
+        "",
+        "Награда: Первая продажа приносит оборудование торговой стойки, без искусственного денежного цикла."
+      ],
+      "icon": "bakery:breadbox",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F688AD08790DA60",
+          "type": "custom",
+          "title": "Продать 1 разрешённую партию через Shipping Box.",
+          "icon": "bakery:breadbox",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CBB2C4CCE812044",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:breadbox",
+          "count": 2,
+          "claim_key": "trade_02/item/0",
+          "claim_reward_id": "2CBB2C4CCE812044",
+          "team_reward": false
+        },
+        {
+          "id": "24532781E3028730",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_counter",
+          "count": 8,
+          "claim_key": "trade_02/item/1",
+          "claim_reward_id": "24532781E3028730",
+          "team_reward": false
+        },
+        {
+          "id": "2826F4627F514988",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_02",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20A26A07AB5ED2A9",
+      "title": "10.19 · Наличные из кошелька",
+      "subtitle": "Вывести 1 собственную монету из Wallet в наличные.",
+      "description": [
+        "Что сделать: Вывести 1 собственную монету из Wallet в наличные.",
+        "",
+        "Зачем: Две формы одного баланса; пять номиналов по текущему owner.",
+        "",
+        "Совет: Монеты можно также вносить обратно. Все номиналы — формы стоимости; полный цикл внесения и снятия не требуется.",
+        "",
+        "Награда: Первый вывод монеты получает предметы для торгового кабинета; награда не создаёт новую валюту.",
+        "",
+        "Рекомендуемый путь: 10.18 · Первый обмен. Порядок свободный."
+      ],
+      "icon": "dustydecorations:small_globe",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "277997B0E32A5804",
+          "type": "custom",
+          "title": "Вывести 1 собственную монету из Wallet в наличные.",
+          "icon": "dustydecorations:small_globe",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2339A3D0C119B6CD",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:small_globe",
+          "count": 1,
+          "claim_key": "trade_03/item/0",
+          "claim_reward_id": "2339A3D0C119B6CD",
+          "team_reward": false
+        },
+        {
+          "id": "2B1FCDC670C8058B",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_cupboard",
+          "count": 4,
+          "claim_key": "trade_03/item/1",
+          "claim_reward_id": "2B1FCDC670C8058B",
+          "team_reward": false
+        },
+        {
+          "id": "264534D468AA567D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_03",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BC369103D6809AE",
+      "title": "10.20 · Местный торговец",
+      "subtitle": "Купить 1 товар у обычного жителя за текущую валюту JEM.",
+      "description": [
+        "Что сделать: Купить 1 товар у обычного жителя за текущую валюту JEM.",
+        "",
+        "Зачем: Уровни и реальные предложения торговцев.",
+        "",
+        "Совет: Предложения и уровни остаются нативными. Выгодность сделки не оценивается; потраченные деньги квест не возвращает.",
+        "",
+        "Награда: Первая покупка у жителя отмечается полезным инструментом и походным угощением.",
+        "",
+        "Рекомендуемый путь: 10.19 · Наличные из кошелька. Порядок свободный."
+      ],
+      "icon": "bakery:bread_knife",
+      "x": 8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23052E52D48F660E",
+          "type": "custom",
+          "title": "Купить 1 товар у обычного жителя за текущую валюту JEM.",
+          "icon": "bakery:bread_knife",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21FF8125F4951ED7",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:bread_knife",
+          "count": 1,
+          "claim_key": "trade_04/item/0",
+          "claim_reward_id": "21FF8125F4951ED7",
+          "team_reward": false
+        },
+        {
+          "id": "2751E8B7C076F2F4",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_glazed_cookie",
+          "count": 24,
+          "claim_key": "trade_04/item/1",
+          "claim_reward_id": "2751E8B7C076F2F4",
+          "team_reward": false
+        },
+        {
+          "id": "27083A95FC36FD9E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_04",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20FE6638B0021E0E",
+      "title": "10.21 · Покупка для стройки",
+      "subtitle": "Купить 1 разрешённый строительный товар через обычный Market.",
+      "description": [
+        "Что сделать: Купить 1 разрешённый строительный товар через обычный Market.",
+        "",
+        "Зачем: Строительные наборы и практический расход бюджета.",
+        "",
+        "Совет: Выбирай материалы под свою постройку. Куда они попадут и были ли затем размещены, не отслеживается. Оптовые заказы имеют отдельный нативный путь.",
+        "",
+        "Награда: Строительная покупка открывает выбор ощутимого запаса одной отделочной палитры.",
+        "",
+        "Рекомендуемый путь: 10.20 · Местный торговец. Порядок свободный."
+      ],
+      "icon": "minecraft:bell",
+      "x": 4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24D57F7580406920",
+          "type": "custom",
+          "title": "Купить 1 разрешённый строительный товар через обычный Market.",
+          "icon": "minecraft:bell",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21894B24238C77C3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        },
+        {
+          "id": "20DEEEF1048A601D",
+          "type": "choice",
+          "table_id": 3019680093957674945L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_05",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CBC690E425ACC6B",
+      "title": "10.22 · Продать и купить",
+      "subtitle": "Совершить 1 продажу Shipping Box и 1 обычную покупку Market.",
+      "description": [
+        "Что сделать: Совершить 1 продажу Shipping Box и 1 обычную покупку Market.",
+        "",
+        "Зачем: Полный цикл производства/обмена; квест не обязан быть прибыльнее рынка.",
+        "",
+        "Совет: Порядок свободный. Эти два события не связываются происхождением товара, прибыльностью, временем или балансом.",
+        "",
+        "Награда: Полный цикл продажи и покупки даёт тележку и складские материалы для дальнейшей торговли.",
+        "",
+        "Рекомендуемый путь: 10.18 · Первый обмен; 10.21 · Покупка для стройки. Порядок свободный."
+      ],
+      "icon": "farm_and_charm:supply_cart",
+      "x": 6.22,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "252A0054109B93EF",
+          "type": "custom",
+          "title": "Совершить 1 продажу Shipping Box и 1 обычную покупку Market.",
+          "icon": "farm_and_charm:supply_cart",
+          "count": 1
+        },
+        {
+          "id": "23B81634ACEEEEC2",
+          "type": "custom",
+          "title": "Совершить 1 продажу Shipping Box и 1 обычную покупку Market.",
+          "icon": "farm_and_charm:supply_cart",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E3DE1F7507A954B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:supply_cart",
+          "count": 1,
+          "claim_key": "trade_06/item/0",
+          "claim_reward_id": "2E3DE1F7507A954B",
+          "team_reward": false
+        },
+        {
+          "id": "2496FE24C16D30D8",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "trade_06/item/1",
+          "claim_reward_id": "2496FE24C16D30D8",
+          "team_reward": false
+        },
+        {
+          "id": "2A5E501F39539FBA",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable_connector",
+          "count": 8,
+          "claim_key": "trade_06/item/2",
+          "claim_reward_id": "2A5E501F39539FBA",
+          "team_reward": false
+        },
+        {
+          "id": "2DA143C8441557CD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_06",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Поселение",
+      "order": -5,
+      "hover": [
+        "Поселение"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Стража деревни",
+      "order": -5,
+      "hover": [
+        "Стража деревни"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Торговля",
+      "order": -5,
+      "hover": [
+        "Торговля"
+      ]
+    },
+    {
+      "x": -2.52,
+      "y": 5.4,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:town_12",
+      "hover": [
+        "10.12 · Расширение поселения: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    },
+    {
+      "x": 2.52,
+      "y": 5.4,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:trade_01",
+      "hover": [
+        "10.17 · Цена товара: памятка",
+        "Справка: без награды и процента завершения"
+      ],
+      "order": 20
+    }
+  ],
+  "autofocus_id": "2213E5F6426ECD0B"
+}

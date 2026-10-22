@@ -206,6 +206,10 @@ public final class EconomyNetwork {
         if (packet.action() == WalletActionPacket.Action.WITHDRAW) {
             if (packet.amount() <= 0 || packet.amount() > 1_000_000_000L) return;
             var result = EconomyApi.withdraw(player, packet.amount(), packet.requestId());
+            if (result.status() == com.siirio.jemeconomy.physical.PhysicalCoinService.Status.COMMITTED)
+                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.siirio.jemeconomy.api.EconomyOperationEvent(
+                        player.server, player.getUUID(), packet.requestId(),
+                        com.siirio.jemeconomy.api.EconomyOperationEvent.Kind.WITHDRAWAL, net.minecraft.world.item.ItemStack.EMPTY));
             String key = switch (result.status()) {
                 case COMMITTED -> "jem.economy.wallet.withdraw_ok";
                 case INSUFFICIENT_FUNDS -> "jem.economy.insufficient";

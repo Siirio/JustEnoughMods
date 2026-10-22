@@ -233,6 +233,10 @@ public final class NativeTradeSession {
             committed = true; status = durableDelivery?(com.siirio.jemeconomy.sandbox.SandboxCommerce.nativePurchaseDelivered(player,operation)
                     ?"jem.economy.trade.inventory_complete":"jem.economy.trade.inventory_pending"):"jem.economy.trade.complete";
             player.getInventory().setChanged();
+            if (!sale && merchant instanceof net.minecraft.world.entity.npc.Villager)
+                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.siirio.jemeconomy.api.EconomyOperationEvent(
+                        player.server, player.getUUID(), operation,
+                        com.siirio.jemeconomy.api.EconomyOperationEvent.Kind.VILLAGER_PURCHASE, delivery));
             if (sale && com.siirio.jemeconomy.sandbox.SandboxCommerce.active(player.getServer()))
                 net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.siirio.jemeconomy.sandbox.CommerceCommittedEvent(player,
                         com.siirio.jemeconomy.ledger.SystemAccount.NPC_MARKET.id(), operation));

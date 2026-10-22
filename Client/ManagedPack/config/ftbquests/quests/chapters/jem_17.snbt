@@ -1,0 +1,2533 @@
+{
+  "id": "2C26B9F14FB19A74",
+  "filename": "jem_17",
+  "title": "Живой мир",
+  "subtitle": [
+    "Когда: С первых прогулок; виды и ветки независимы друг от друга.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "alexsmobs:animal_dictionary",
+  "group": "26D9D9FA602B3A53",
+  "order_index": 16,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "29521242568B66C2",
+      "title": "17.01 · Два полевых справочника",
+      "subtitle": "Получить Animal Dictionary Alex’s Mobs и Field Guide CNC.",
+      "description": [
+        "Что сделать: Получить Animal Dictionary Alex’s Mobs и Field Guide CNC.",
+        "",
+        "Зачем: Карточки поведения, нужного корма и условий содержания; шесть независимых веток животных.",
+        "",
+        "Совет: Совет, не условие зачёта: Открыть Animal Dictionary и полевой справочник CNC; выбрать три ближайших места обитания и отметить их на карте.",
+        "",
+        "Награда: Полевые справочники получают место в лагере и провизию для первого маршрута."
+      ],
+      "icon": "alexsmobs:animal_dictionary",
+      "x": -5.3,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "203DF828E5E922AC",
+          "type": "item",
+          "item": "alexsmobs:animal_dictionary",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "27CD74DC311F5805",
+          "type": "item",
+          "item": "cnc:field_guide",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26D69CF5BA4DA78B",
+          "type": "jem_advancements:quest_item",
+          "item": "backpacked:backpack_dock",
+          "count": 1,
+          "claim_key": "ws01/item/0",
+          "claim_reward_id": "26D69CF5BA4DA78B",
+          "team_reward": false
+        },
+        {
+          "id": "20AEF5EFE8E12E6A",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:cooked_venison",
+          "count": 16,
+          "claim_key": "ws01/item/1",
+          "claim_reward_id": "20AEF5EFE8E12E6A",
+          "team_reward": false
+        },
+        {
+          "id": "2BB11D78E811F791",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F5C94CDED2B027E",
+      "title": "17.02 · Хомяк с карманами",
+      "subtitle": "Нажать ПКМ по хомяку Spawn с Sunflower Seeds в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по хомяку Spawn с Sunflower Seeds в основной руке.",
+        "",
+        "Зачем: Малый живой сборщик предметов и управление инвентарём питомца.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить хомяка Spawn семенами подсолнечника, дать ему подобрать предмет и забрать предмет из защёчного хранилища; держать в умеренной температуре.",
+        "",
+        "Награда: После кормления хомяка есть колесо для его жилья и запас привычного корма."
+      ],
+      "icon": "spawn:hamster_spawn_egg",
+      "x": 2.52,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25A109F8D8955D4C",
+          "type": "custom",
+          "title": "Нажать ПКМ по хомяку Spawn с Sunflower Seeds в основной руке.",
+          "icon": "spawn:hamster_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28113FCA4ACEE249",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:hamster_wheel",
+          "count": 1,
+          "claim_key": "ws02/item/0",
+          "claim_reward_id": "28113FCA4ACEE249",
+          "team_reward": false
+        },
+        {
+          "id": "29BC8AE6E9565676",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:sunflower_seeds",
+          "count": 32,
+          "claim_key": "ws02/item/1",
+          "claim_reward_id": "29BC8AE6E9565676",
+          "team_reward": false
+        },
+        {
+          "id": "2277F28557572025",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28CE3AFEFAD5E03B",
+      "title": "17.03 · Ворона-сортировщик",
+      "subtitle": "Нажать ПКМ по вороне с семенами тыквы в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по вороне с семенами тыквы в основной руке.",
+        "",
+        "Зачем: Живой сбор и сортировка; следующая карточка может отправлять предметы в печь.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить ворону семенами тыквы; назначить домашний тюк сена и режим сбора; поставить рамку с образцом у сундука и дождаться доставки соответствующего предмета.",
+        "",
+        "Награда: Знакомство с вороной отмечается носимым сувениром и дорожным перекусом."
+      ],
+      "icon": "alexsmobs:fedora",
+      "x": 4.38,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2107068E1E06C74F",
+          "type": "custom",
+          "title": "Нажать ПКМ по вороне с семенами тыквы в основной руке.",
+          "icon": "alexsmobs:fedora",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "212E130267CB6F8B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:fedora",
+          "count": 1,
+          "claim_key": "ws03/item/0",
+          "claim_reward_id": "212E130267CB6F8B",
+          "team_reward": false
+        },
+        {
+          "id": "2FE6398E8EF780F1",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_cookie",
+          "count": 16,
+          "claim_key": "ws03/item/1",
+          "claim_reward_id": "2FE6398E8EF780F1",
+          "team_reward": false
+        },
+        {
+          "id": "23F1F1E951364960",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20AF77C51B4779E8",
+      "title": "17.04 · Муравьиная мастерская",
+      "subtitle": "Получить Ant Pupa именно из Spawn.",
+      "description": [
+        "Что сделать: Получить Ant Pupa именно из Spawn.",
+        "",
+        "Зачем: Муравьиная переработка блоков, перенос ресурсов и охрана.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить куколку именно Spawn, вырастить своего муравья и выполнить один показанный JEI рецепт разложения у муравейника; разные окрасы колоний держать раздельно.",
+        "",
+        "Награда: Найденная куколка получает ферму и материал для обустройства; новые куколки не выдаются."
+      ],
+      "icon": "spawn:ant_pupa",
+      "x": 6.22,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2579CFC40475E482",
+          "type": "item",
+          "item": "spawn:ant_pupa",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2067DE0BA9E3F06D",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:ant_farm",
+          "count": 1,
+          "claim_key": "ws04/item/0",
+          "claim_reward_id": "2067DE0BA9E3F06D",
+          "team_reward": false
+        },
+        {
+          "id": "2820CC1BB3BB8B19",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:rotten_planks",
+          "count": 64,
+          "claim_key": "ws04/item/1",
+          "claim_reward_id": "2820CC1BB3BB8B19",
+          "team_reward": false
+        },
+        {
+          "id": "2D67183FFC57DDB8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 85,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BE454CB53C9E88C",
+      "title": "17.05 · Колибри у грядок",
+      "subtitle": "Поставить Hummingbird Feeder.",
+      "description": [
+        "Что сделать: Поставить Hummingbird Feeder.",
+        "",
+        "Зачем: Опылитель для сада; расширение сельского хозяйства живыми помощниками.",
+        "",
+        "Совет: Совет, не условие зачёта: Поставить кормушку с водой и сахаром у растений и дождаться опыления; затем показать размножение цветами.",
+        "",
+        "Награда: Кормушка дополняется кормом и материалом для тропического сада."
+      ],
+      "icon": "alexsmobs:hummingbird_feeder",
+      "x": 8.07,
+      "y": 1.7,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B1FA4FAC8401F77",
+          "type": "custom",
+          "title": "Поставить Hummingbird Feeder.",
+          "icon": "alexsmobs:hummingbird_feeder",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "234A94C2233FA291",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:acacia_blossom",
+          "count": 32,
+          "claim_key": "ws05/item/0",
+          "claim_reward_id": "234A94C2233FA291",
+          "team_reward": false
+        },
+        {
+          "id": "2D8233374CFFC2DB",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:hollow_jungle_log",
+          "count": 48,
+          "claim_key": "ws05/item/1",
+          "claim_reward_id": "2D8233374CFFC2DB",
+          "team_reward": false
+        },
+        {
+          "id": "2C9EEFF7F866F82B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BD6AC43BCA01B46",
+      "title": "17.06 · Лес, который сажают птицы",
+      "subtitle": "Нажать ПКМ по тукану с яблоком в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по тукану с яблоком в основной руке.",
+        "",
+        "Зачем: Посадка деревьев туканом и местные цветовые варианты птиц.",
+        "",
+        "Совет: Совет, не условие зачёта: Накормить тукана яблоком или бананом и получить посаженное им дерево; отдельно предложить золотое яблоко как улучшение шанса, без обязательного зачарованного яблока.",
+        "",
+        "Награда: Полезный запас фруктов и цветов для дальнейшего знакомства с тропической фауной."
+      ],
+      "icon": "alexsmobs:banana",
+      "x": 2.52,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20BA842DCB516F6B",
+          "type": "custom",
+          "title": "Нажать ПКМ по тукану с яблоком в основной руке.",
+          "icon": "alexsmobs:banana",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E74F0B3EEB8591E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:banana",
+          "count": 32,
+          "claim_key": "ws06/item/0",
+          "claim_reward_id": "2E74F0B3EEB8591E",
+          "team_reward": false
+        },
+        {
+          "id": "2810C6F16FFC7985",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:acacia_blossom",
+          "count": 24,
+          "claim_key": "ws06/item/1",
+          "claim_reward_id": "2810C6F16FFC7985",
+          "team_reward": false
+        },
+        {
+          "id": "249EA0866E2E6916",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "296D740A99EF99C6",
+      "title": "17.07 · Малые строительные службы",
+      "subtitle": "По одному разу нажать ПКМ по Gelada Monkey с пшеницей и по Maned Wolf с яблоком.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по Gelada Monkey с пшеницей и по Maned Wolf с яблоком.",
+        "",
+        "Зачем: Расчистка участка и перегон стада. Муравьиная грибная прибавка AM здесь недоступна.",
+        "",
+        "Совет: Совет, не условие зачёта: Накормить геладу пшеницей и увидеть расчистку травы; накормить гривистого волка яблоком и собрать животных его запахом.",
+        "",
+        "Награда: Две встречи обеспечивают следующий переход и лесной лагерь."
+      ],
+      "icon": "cnc:hunters_stew",
+      "x": 4.38,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2551E273E5BE6122",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по Gelada Monkey с пшеницей и по Maned Wolf с яблоком.",
+          "icon": "cnc:hunters_stew",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2FAED99CF7320D98",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:hunters_stew",
+          "count": 16,
+          "claim_key": "ws07/item/0",
+          "claim_reward_id": "2FAED99CF7320D98",
+          "team_reward": false
+        },
+        {
+          "id": "263B07D00734D0AB",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:redwood_planks",
+          "count": 64,
+          "claim_key": "ws07/item/1",
+          "claim_reward_id": "263B07D00734D0AB",
+          "team_reward": false
+        },
+        {
+          "id": "2A29BD898DBB0809",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CFBBC0732502E98",
+      "title": "17.08 · Шерсть и рога без охоты",
+      "subtitle": "Нажать ПКМ по бизону с ножницами; получить Moose Antler.",
+      "description": [
+        "Что сделать: Нажать ПКМ по бизону с ножницами; получить Moose Antler.",
+        "",
+        "Зачем: Возобновляемые материалы, движение по снегу и отбрасывание рогами.",
+        "",
+        "Совет: Совет, не условие зачёта: Состричь шерсть бизона и применить её в тёплых ботинках; подобрать естественно сброшенный рог лося и сделать головной убор. Можно завершать подкарточки отдельно.",
+        "",
+        "Награда: Освоенный сбор шерсти и рогов превращается в носимый трофей и запас меха."
+      ],
+      "icon": "alexsmobs:moose_antler",
+      "x": 6.22,
+      "y": 3.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21FB06C9858FE5EE",
+          "type": "custom",
+          "title": "Нажать ПКМ по бизону с ножницами; получить Moose Antler.",
+          "icon": "alexsmobs:moose_antler",
+          "count": 1
+        },
+        {
+          "id": "29BE03B07FF228E5",
+          "type": "item",
+          "item": "alexsmobs:moose_antler",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21B613AFDD8F1D5C",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:bison_fur",
+          "count": 24,
+          "claim_key": "ws08/item/0",
+          "claim_reward_id": "21B613AFDD8F1D5C",
+          "team_reward": false
+        },
+        {
+          "id": "294EEBB1A746E6EC",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:moose_headgear",
+          "count": 1,
+          "claim_key": "ws08/item/1",
+          "claim_reward_id": "294EEBB1A746E6EC",
+          "team_reward": false
+        },
+        {
+          "id": "28D8812F16B1A3E8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "216FF4193FC29A04",
+      "title": "17.09 · Солнце вместо печи",
+      "subtitle": "По одному разу нажать ПКМ пустой рукой по Iguana и Marine Iguana Spawn.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ пустой рукой по Iguana и Marine Iguana Spawn.",
+        "",
+        "Зачем: Приготовление пищи животным; дальнейшая береговая ветка морской игуаны.",
+        "",
+        "Совет: Совет, не условие зачёта: Помочь молодой игуане Spawn сбросить кожу для доверия; приготовить один продукт её солнечным теплом. Отдельно познакомиться с морской игуаной и её линькой.",
+        "",
+        "Награда: Материалы для сухого вольера после знакомства с двумя игуанами."
+      ],
+      "icon": "spawn:iguana_spawn_egg",
+      "x": 8.07,
+      "y": 3.55,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21EBFF2ADA953ACF",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ пустой рукой по Iguana и Marine Iguana Spawn.",
+          "icon": "spawn:iguana_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26C4FDE516A581F3",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:dried_straw_bale",
+          "count": 48,
+          "claim_key": "ws09/item/0",
+          "claim_reward_id": "26C4FDE516A581F3",
+          "team_reward": false
+        },
+        {
+          "id": "2E11160DA1756974",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:nest",
+          "count": 4,
+          "claim_key": "ws09/item/1",
+          "claim_reward_id": "2E11160DA1756974",
+          "team_reward": false
+        },
+        {
+          "id": "2A2A251E3469109E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EB1C796CA91C823",
+      "title": "17.10 · Мокрая улитка",
+      "subtitle": "Получить Mucus из Spawn.",
+      "description": [
+        "Что сделать: Получить Mucus из Spawn.",
+        "",
+        "Зачем: Пассивный источник слизи и условия содержания.",
+        "",
+        "Совет: Совет, не условие зачёта: Создать влажное место для улитки Spawn и получить слизь; отдельно проверить защитную раковину, не превращая сбивание раковин в обязательный фарм.",
+        "",
+        "Награда: Найденная слизь окупается запасом того же материала и ракушечной отделкой."
+      ],
+      "icon": "spawn:mucus",
+      "x": 4.38,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25E744BA83A7CC44",
+          "type": "item",
+          "item": "spawn:mucus",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25142D45A30BD9F7",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:mucus",
+          "count": 16,
+          "claim_key": "ws10/item/0",
+          "claim_reward_id": "25142D45A30BD9F7",
+          "team_reward": false
+        },
+        {
+          "id": "28FB121E777481D5",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:snail_shell_tiles",
+          "count": 64,
+          "claim_key": "ws10/item/1",
+          "claim_reward_id": "28FB121E777481D5",
+          "team_reward": false
+        },
+        {
+          "id": "29E0864F2AD72ED7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "259531E21B1F0C5F",
+      "title": "17.11 · Слизь, которая осушает воду",
+      "subtitle": "Поставить Banana Slug Slime Block.",
+      "description": [
+        "Что сделать: Поставить Banana Slug Slime Block.",
+        "",
+        "Зачем: Возобновляемые кристаллы и отдельная слизневая ферма.",
+        "",
+        "Совет: Совет, не условие зачёта: Банановый слизень иногда оставляет слизь. Сделанный из неё блок при касании воды превращает воду в Crystallized Mucus. Кристаллы собирают Шёлковым касанием; после разрушения исходного слизневого блока они начинают распадаться. Это свойство материала, а не ожидание кристаллов от самого животного.",
+        "",
+        "Награда: Построенный слизневый блок открывает практический запас слизневых материалов."
+      ],
+      "icon": "alexsmobs:banana_slug_slime_block",
+      "x": 6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2ED111A50EDF70D4",
+          "type": "custom",
+          "title": "Поставить Banana Slug Slime Block.",
+          "icon": "alexsmobs:banana_slug_slime_block",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21F5A30DA172EA54",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:crystalized_banana_slug_mucus",
+          "count": 16,
+          "claim_key": "ws11/item/0",
+          "claim_reward_id": "21F5A30DA172EA54",
+          "team_reward": false
+        },
+        {
+          "id": "23D134832E4532E3",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:banana_slug_slime_block",
+          "count": 16,
+          "claim_key": "ws11/item/1",
+          "claim_reward_id": "23D134832E4532E3",
+          "team_reward": false
+        },
+        {
+          "id": "276FB8CAD0D52306",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29C0D40CFEE86BAB",
+      "title": "17.12 · Слоний караван",
+      "subtitle": "Сесть верхом на слона Alex’s Mobs.",
+      "description": [
+        "Что сделать: Сесть верхом на слона Alex’s Mobs.",
+        "",
+        "Зачем: Грузовая езда, косметический ковёр, выращивание будущего бивневого слона.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить подходящего слона цветами акации, поставить сундук и перевезти груз. Во второй карточке испытать управляемый рывок ездового бивневого слона с пшеницей.",
+        "",
+        "Награда: Поездка на слоне приносит ковры для стоянки и корм; редкая экипировка за посадку не выдается."
+      ],
+      "icon": "alexsmobs:bison_carpet",
+      "x": -8.07,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27A4219951A148C7",
+          "type": "custom",
+          "title": "Сесть верхом на слона Alex’s Mobs.",
+          "icon": "alexsmobs:bison_carpet",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "286989F4CF2D7CB4",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:bison_carpet",
+          "count": 48,
+          "claim_key": "ws12/item/0",
+          "claim_reward_id": "286989F4CF2D7CB4",
+          "team_reward": false
+        },
+        {
+          "id": "281A64235D92F1B4",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:banana",
+          "count": 32,
+          "claim_key": "ws12/item/1",
+          "claim_reward_id": "281A64235D92F1B4",
+          "team_reward": false
+        },
+        {
+          "id": "2B7E2239A6B41D9A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "214184C2C3807B4D",
+      "title": "17.13 · Кенгуру со снаряжением",
+      "subtitle": "Нажать ПКМ по кенгуру с морковью в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по кенгуру с морковью в основной руке.",
+        "",
+        "Зачем: Настраиваемый боевой спутник с собственным инвентарём.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить кенгуру морковью, положить оружие и броню в его сумку и вылечить растительной пищей после настоящей стычки.",
+        "",
+        "Награда: Набор провизии и кожи для путешественника по саванне."
+      ],
+      "icon": "alexsmobs:kangaroo_burger",
+      "x": -6.22,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F2C56047817BA51",
+          "type": "custom",
+          "title": "Нажать ПКМ по кенгуру с морковью в основной руке.",
+          "icon": "alexsmobs:kangaroo_burger",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BEC595C04C52BCC",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:kangaroo_burger",
+          "count": 16,
+          "claim_key": "ws13/item/0",
+          "claim_reward_id": "2BEC595C04C52BCC",
+          "team_reward": false
+        },
+        {
+          "id": "277479673E3062CA",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:kangaroo_hide",
+          "count": 16,
+          "claim_key": "ws13/item/1",
+          "claim_reward_id": "277479673E3062CA",
+          "team_reward": false
+        },
+        {
+          "id": "258165BF1BD0ECE3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 50,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21A6AAD9273FAA7F",
+      "title": "17.14 · Набор для знакомства с енотом",
+      "subtitle": "Получить яйцо и белый ковёр, по одному предмету каждого вида.",
+      "description": [
+        "Что сделать: Получить яйцо и белый ковёр, по одному предмету каждого вида.",
+        "",
+        "Зачем: Необычная процедура приручения, косметика и разведение хлебом.",
+        "",
+        "Совет: Совет, не условие зачёта: Для приручения енот должен сам помыть и съесть брошенное у воды яйцо. Ковёр служит банданой приручённому зверю. Здесь проверяется только наличие набора; бросок, мытьё и приручение не отслеживаются.",
+        "",
+        "Награда: Простая коллекция дает съедобные яйца и перья для полезных рецептов."
+      ],
+      "icon": "minecraft:egg",
+      "x": -4.38,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D30D1C39B229771",
+          "type": "item",
+          "item": "minecraft:egg",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2068A38415F393C4",
+          "type": "item",
+          "item": "minecraft:white_carpet",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26A677BA0161DA55",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:boiled_emu_egg",
+          "count": 16,
+          "claim_key": "ws14/item/0",
+          "claim_reward_id": "26A677BA0161DA55",
+          "team_reward": false
+        },
+        {
+          "id": "26C6FFCD2FD4D97A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:emu_feather",
+          "count": 24,
+          "claim_key": "ws14/item/1",
+          "claim_reward_id": "26C6FFCD2FD4D97A",
+          "team_reward": false
+        },
+        {
+          "id": "26AD840DD1418DDE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "254DBE224B05DBBC",
+      "title": "17.15 · Доверие крупных зверей",
+      "subtitle": "По одному разу нажать ПКМ по горилле с Banana и по носорогу с пшеницей.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по горилле с Banana и по носорогу с пшеницей.",
+        "",
+        "Зачем: Дружба без обычного приручения; охрана деревни и рог как переносчик эффектов.",
+        "",
+        "Совет: Совет, не условие зачёта: Дать горилле бананы и носорогу пшеницу; проверить защиту союзника. Дополнительная карточка: нанести зелье на рог носорога и применить эффект ударом.",
+        "",
+        "Награда: Две встречи в теплых биомах приносят походный рацион и запас бананов."
+      ],
+      "icon": "alexsmobs:sopa_de_macaco",
+      "x": -2.52,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21903CF195BB986C",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по горилле с Banana и по носорогу с пшеницей.",
+          "icon": "alexsmobs:sopa_de_macaco",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CDABD35F0AD6EAF",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:sopa_de_macaco",
+          "count": 16,
+          "claim_key": "ws15/item/0",
+          "claim_reward_id": "2CDABD35F0AD6EAF",
+          "team_reward": false
+        },
+        {
+          "id": "297C075C7BD639C9",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:banana",
+          "count": 32,
+          "claim_key": "ws15/item/1",
+          "claim_reward_id": "297C075C7BD639C9",
+          "team_reward": false
+        },
+        {
+          "id": "2EC81D5F406A7917",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E19148FDE67F1EB",
+      "title": "17.16 · Кайман вырастает рядом",
+      "subtitle": "Нажать ПКМ по кайману с Raw Catfish Alex’s Mobs в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по кайману с Raw Catfish Alex’s Mobs в основной руке.",
+        "",
+        "Зачем: Приручение через потомство и связка с активным AM-сомом.",
+        "",
+        "Совет: Совет, не условие зачёта: Развести кайманов сырым сомом Alex’s Mobs и присутствовать при появлении детёныша, чтобы получить прирученного защитника.",
+        "",
+        "Награда: После кормления каймана можно оформить берег и пополнить рацион."
+      ],
+      "icon": "alexsmobs:shrimp_fried_rice",
+      "x": -6.22,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27ABF1B91A5D8ADB",
+          "type": "custom",
+          "title": "Нажать ПКМ по кайману с Raw Catfish Alex’s Mobs в основной руке.",
+          "icon": "alexsmobs:shrimp_fried_rice",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2803FFAD95373558",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shrimp_fried_rice",
+          "count": 16,
+          "claim_key": "ws16/item/0",
+          "claim_reward_id": "2803FFAD95373558",
+          "team_reward": false
+        },
+        {
+          "id": "23995CA808B3694B",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:chiseled_crocodile_scute",
+          "count": 32,
+          "claim_key": "ws16/item/1",
+          "claim_reward_id": "23995CA808B3694B",
+          "team_reward": false
+        },
+        {
+          "id": "2D9B90DB2C404DBE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws16",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2227B0A03D886FD0",
+      "title": "17.17 · Лассо из сброшенной кожи",
+      "subtitle": "Получить Vine Lasso.",
+      "description": [
+        "Что сделать: Получить Vine Lasso.",
+        "",
+        "Зачем: Перенос существ лассо, включая опасные виды при соблюдении местных правил.",
+        "",
+        "Совет: Совет, не условие зачёта: Накормить анаконду курятиной, подобрать сброшенную кожу и изготовить Vine Lasso; поймать и отпустить одну выбранную цель.",
+        "",
+        "Награда: Освоенный инструмент получает запасные экземпляры и веревочные лестницы."
+      ],
+      "icon": "alexsmobs:vine_lasso",
+      "x": -4.38,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2471FE5E9D27F246",
+          "type": "item",
+          "item": "alexsmobs:vine_lasso",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24FDD45B0BC0949D",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:vine_lasso",
+          "count": 2,
+          "claim_key": "ws17/item/0",
+          "claim_reward_id": "24FDD45B0BC0949D",
+          "team_reward": false
+        },
+        {
+          "id": "2F632770982577C8",
+          "type": "jem_advancements:quest_item",
+          "item": "unearthed_journey:rope_ladder",
+          "count": 32,
+          "claim_key": "ws17/item/1",
+          "claim_reward_id": "2F632770982577C8",
+          "team_reward": false
+        },
+        {
+          "id": "2585585A5C17E472",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws17",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2082B5A77139E951",
+      "title": "17.18 · Мир грибов",
+      "subtitle": "Нажать ПКМ по Mungus с коричневым грибом; получить Mungal Spores.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Mungus с коричневым грибом; получить Mungal Spores.",
+        "",
+        "Зачем: Грибная ферма и грибной защитник. Необязательная поздняя карточка: смерть Mungus с пятью грибами меняет биом; ядовитый картофель отменяет изменение.",
+        "",
+        "Совет: Совет, не условие зачёта: Накормить Mungus подходящими грибами и увидеть выращивание новых грибов лучом; получить Mungal Spores и превратить кролика в Bunfungus.",
+        "",
+        "Награда: После самостоятельного знакомства с Mungus спор хватает на эксперименты и грибной лагерь."
+      ],
+      "icon": "alexsmobs:mungal_spores",
+      "x": 2.52,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "256D9675B6075D64",
+          "type": "custom",
+          "title": "Нажать ПКМ по Mungus с коричневым грибом; получить Mungal Spores.",
+          "icon": "alexsmobs:mungal_spores",
+          "count": 1
+        },
+        {
+          "id": "27E5D39D8E5EC00B",
+          "type": "item",
+          "item": "alexsmobs:mungal_spores",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A6E9FDC85C0CFF8",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:mungal_spores",
+          "count": 8,
+          "claim_key": "ws18/item/0",
+          "claim_reward_id": "2A6E9FDC85C0CFF8",
+          "team_reward": false
+        },
+        {
+          "id": "29B08229322AB339",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:mossy_oak_planks",
+          "count": 64,
+          "claim_key": "ws18/item/1",
+          "claim_reward_id": "29B08229322AB339",
+          "team_reward": false
+        },
+        {
+          "id": "2A1C9770C81DBC78",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws18",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20A4294A57599AAF",
+      "title": "17.19 · Суп и гроза",
+      "subtitle": "Нажать ПКМ по Flukeshroom с миской в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Flukeshroom с миской в основной руке.",
+        "",
+        "Зачем: Возобновляемая еда и альтернативная форма существа.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить суп миской от Flukeshroom Spawn. Отдельная необязательная карточка: наблюдать его превращение при попадании молнии.",
+        "",
+        "Награда: Грибная встреча дает необычную еду и лесной материал."
+      ],
+      "icon": "spawn:flukeshroom_spawn_egg",
+      "x": 4.38,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "208050A41384751B",
+          "type": "custom",
+          "title": "Нажать ПКМ по Flukeshroom с миской в основной руке.",
+          "icon": "spawn:flukeshroom_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E77EFF8436D1D96",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:escargot",
+          "count": 16,
+          "claim_key": "ws19/item/0",
+          "claim_reward_id": "2E77EFF8436D1D96",
+          "team_reward": false
+        },
+        {
+          "id": "26743C55FA5439FD",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:rotten_planks",
+          "count": 48,
+          "claim_key": "ws19/item/1",
+          "claim_reward_id": "26743C55FA5439FD",
+          "team_reward": false
+        },
+        {
+          "id": "236A97C0FFFCDBC2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws19",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FCDA7524173C585",
+      "title": "17.20 · Цветочный спутник",
+      "subtitle": "Нажать ПКМ по Flutter с одуванчиком в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Flutter с одуванчиком в основной руке.",
+        "",
+        "Зачем: Небольшой летающий помощник и связь с азалиями.",
+        "",
+        "Совет: Совет, не условие зачёта: Flutter приручается несколькими РАЗНЫМИ цветами. Цветочный горшок даёт ему броню и возможность переноса крадучись; костная мука используется при разведении. Один ПКМ в задании не объявляется успешным приручением.",
+        "",
+        "Награда: Цветочная встреча отмечается декоративной наградой для сада и дома."
+      ],
+      "icon": "primal:dreamcatcher",
+      "x": 6.22,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A1F1302DFFE0D03",
+          "type": "custom",
+          "title": "Нажать ПКМ по Flutter с одуванчиком в основной руке.",
+          "icon": "primal:dreamcatcher",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "239BB53729BA2067",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:dreamcatcher",
+          "count": 1,
+          "claim_key": "ws20/item/0",
+          "claim_reward_id": "239BB53729BA2067",
+          "team_reward": false
+        },
+        {
+          "id": "2A0A19FC8FB1FC27",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:swamp_daisy",
+          "count": 24,
+          "claim_key": "ws20/item/1",
+          "claim_reward_id": "2A0A19FC8FB1FC27",
+          "team_reward": false
+        },
+        {
+          "id": "24BE4392A4B05010",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws20",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29BFC4EBB5889110",
+      "title": "17.21 · Хищник для верховой езды",
+      "subtitle": "Сесть верхом на Komodo Dragon Alex’s Mobs.",
+      "description": [
+        "Что сделать: Сесть верхом на Komodo Dragon Alex’s Mobs.",
+        "",
+        "Зачем: Сухопутный хищный транспорт и ингредиент противоядия.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить комодского варана гнилой плотью, оседлать и проехать короткий маршрут; изучить применение его слюны по доступным рецептам.",
+        "",
+        "Награда: Поездка на комодо заслуживает защитного снаряжения и большого запаса походной еды."
+      ],
+      "icon": "alexsmobs:shield_of_the_deep",
+      "x": 8.07,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23D66D563A9BC1C9",
+          "type": "custom",
+          "title": "Сесть верхом на Komodo Dragon Alex’s Mobs.",
+          "icon": "alexsmobs:shield_of_the_deep",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2510051B1A3493CB",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shield_of_the_deep",
+          "count": 1,
+          "claim_key": "ws21/item/0",
+          "claim_reward_id": "2510051B1A3493CB",
+          "team_reward": false
+        },
+        {
+          "id": "2078418A094A32E2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:mosquito_repellent_stew",
+          "count": 16,
+          "claim_key": "ws21/item/1",
+          "claim_reward_id": "2078418A094A32E2",
+          "team_reward": false
+        },
+        {
+          "id": "205263F067765BCC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws21",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2494A39A9A7B33E4",
+      "title": "17.22 · Необычная музыка",
+      "subtitle": "Нажать ПКМ в воздухе с Maraca Alex’s Mobs в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Maraca Alex’s Mobs в основной руке.",
+        "",
+        "Зачем: Музыкальные реакции животных, разведение тараканов сахаром и лягушек личинками.",
+        "",
+        "Совет: Совет, не условие зачёта: Сделать Maraca и вызвать танец тараканов; включить диск рядом с дождевой лягушкой. Две отдельные необязательные карточки, без обязательного ожидания погоды.",
+        "",
+        "Награда: Первое использование мараки дает музыкальный сувенир и перекус."
+      ],
+      "icon": "alexsmobs:maraca",
+      "x": 4.38,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "253FEAEAC921FD6F",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Maraca Alex’s Mobs в основной руке.",
+          "icon": "alexsmobs:maraca",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DC1892E65D50D50",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:music_disc_thime",
+          "count": 1,
+          "claim_key": "ws22/item/0",
+          "claim_reward_id": "2DC1892E65D50D50",
+          "team_reward": false
+        },
+        {
+          "id": "2B74D1683F736F6F",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_cookie",
+          "count": 12,
+          "claim_key": "ws22/item/1",
+          "claim_reward_id": "2B74D1683F736F6F",
+          "team_reward": false
+        },
+        {
+          "id": "2076C13EE3C86887",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws22",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22C092C15971A8F5",
+      "title": "17.23 · Ночной дозор поту",
+      "subtitle": "Нажать ПКМ по Potoo с Maggot в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Potoo с Maggot в основной руке.",
+        "",
+        "Зачем: Живая проверка опасной темноты. Перенос перчаткой в этой сборке недоступен.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти поту, сравнить его глаза и крик в освещённом и тёмном месте; размножить личинками по желанию.",
+        "",
+        "Награда: Ночной питомец получает запас корма и материал для места отдыха."
+      ],
+      "icon": "alexsmobs:maggot",
+      "x": 6.22,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26A4847B03317083",
+          "type": "custom",
+          "title": "Нажать ПКМ по Potoo с Maggot в основной руке.",
+          "icon": "alexsmobs:maggot",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25C6CC35273E625E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:maggot",
+          "count": 32,
+          "claim_key": "ws23/item/0",
+          "claim_reward_id": "25C6CC35273E625E",
+          "team_reward": false
+        },
+        {
+          "id": "23B4109A734FCF0C",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_planks",
+          "count": 64,
+          "claim_key": "ws23/item/1",
+          "claim_reward_id": "23B4109A734FCF0C",
+          "team_reward": false
+        },
+        {
+          "id": "272EA0871C578D84",
+          "type": "jem_advancements:quest_xp",
+          "xp": 50,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws23",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20E0ACF029505FB8",
+      "title": "17.24 · Археологический казуар",
+      "subtitle": "Нажать ПКМ по Cassowary Primal с Petrified Fruit в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Cassowary Primal с Petrified Fruit в основной руке.",
+        "",
+        "Зачем: Связь археологии с пищей и животными Primal.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти окаменелый плод в археологии и передать казуару Primal; получить экзотический плод и применить его в доступном рецепте.",
+        "",
+        "Награда: После кормления казуара остается удобный набор для дальнейшего сбора фруктов."
+      ],
+      "icon": "primal:cassowary_spawn_egg",
+      "x": -8.07,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20EB276A2E1A0D0A",
+          "type": "custom",
+          "title": "Нажать ПКМ по Cassowary Primal с Petrified Fruit в основной руке.",
+          "icon": "primal:cassowary_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23669A25F80DB935",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_basket",
+          "count": 2,
+          "claim_key": "ws24/item/0",
+          "claim_reward_id": "23669A25F80DB935",
+          "team_reward": false
+        },
+        {
+          "id": "2CA9877FBF6C34B0",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:apple_fritter",
+          "count": 16,
+          "claim_key": "ws24/item/1",
+          "claim_reward_id": "2CA9877FBF6C34B0",
+          "team_reward": false
+        },
+        {
+          "id": "250D04958CC87806",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws24",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2141FF5D65C3B3F1",
+      "title": "17.25 · Крокодил под кистью",
+      "subtitle": "Нажать ПКМ по крокодилу Primal с кистью в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по крокодилу Primal с кистью в основной руке.",
+        "",
+        "Зачем: Получение щитков без убийства и жизненный цикл рептилии.",
+        "",
+        "Совет: Совет, не условие зачёта: Счистить щиток с крокодила Primal кистью; найти кладку и вырастить детёныша в отдельной безопасной зоне.",
+        "",
+        "Награда: Освоенная чистка крокодила приносит запас чешуи и тематичную кровлю."
+      ],
+      "icon": "primal:crocodile_spawn_egg",
+      "x": -6.22,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C8BFE5396F83CA1",
+          "type": "custom",
+          "title": "Нажать ПКМ по крокодилу Primal с кистью в основной руке.",
+          "icon": "primal:crocodile_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F413A0F2D566CB7",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:crocodile_scute",
+          "count": 16,
+          "claim_key": "ws25/item/0",
+          "claim_reward_id": "2F413A0F2D566CB7",
+          "team_reward": false
+        },
+        {
+          "id": "2666A6FEF948CDE6",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:crocodile_scute_shingle",
+          "count": 48,
+          "claim_key": "ws25/item/1",
+          "claim_reward_id": "2666A6FEF948CDE6",
+          "team_reward": false
+        },
+        {
+          "id": "24BFF9608FD8C081",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws25",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2ACB6B95105A2AC8",
+      "title": "17.26 · Орёл-разведчик",
+      "subtitle": "Нажать ПКМ по орлу Primal с сырой курятиной в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по орлу Primal с сырой курятиной в основной руке.",
+        "",
+        "Зачем: Разведка с воздуха; этот орёл заменяет отключённого Bald Eagle из AM.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить птенца орла Primal сырой курятиной и использовать разведывательный крик для обнаружения угроз.",
+        "",
+        "Награда: Встреча с орлом дает узнаваемый узор флага и материал для птичьей площадки."
+      ],
+      "icon": "primal:eagle_spawn_egg",
+      "x": -4.38,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "274BE8F958C26639",
+          "type": "custom",
+          "title": "Нажать ПКМ по орлу Primal с сырой курятиной в основной руке.",
+          "icon": "primal:eagle_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B090C3D8CAFC966",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:eyrie_banner_pattern",
+          "count": 1,
+          "claim_key": "ws26/item/0",
+          "claim_reward_id": "2B090C3D8CAFC966",
+          "team_reward": false
+        },
+        {
+          "id": "20CB8C1AC7A70770",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_bale",
+          "count": 48,
+          "claim_key": "ws26/item/1",
+          "claim_reward_id": "20CB8C1AC7A70770",
+          "team_reward": false
+        },
+        {
+          "id": "275FEEE39BD12A0C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws26",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B42A9CA850E16F7",
+      "title": "17.27 · Знакомство со львом",
+      "subtitle": "Нажать ПКМ пустой рукой по льву Primal.",
+      "description": [
+        "Что сделать: Нажать ПКМ пустой рукой по льву Primal.",
+        "",
+        "Зачем: Крупный сторожевой спутник и поведение меток территории.",
+        "",
+        "Совет: Совет, не условие зачёта: Пройти этапы доверия льва Primal кормлением и поставить его на охрану; проверить отзыв в мирной обстановке.",
+        "",
+        "Награда: За близкую встречу со львом — тематичный флаг и ощутимый запас еды."
+      ],
+      "icon": "primal:lion_spawn_egg",
+      "x": -2.52,
+      "y": 10.95,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "249BFC3CEE0EF7DE",
+          "type": "custom",
+          "title": "Нажать ПКМ пустой рукой по льву Primal.",
+          "icon": "primal:lion_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2648E87E050A7452",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:royal_banner_pattern",
+          "count": 1,
+          "claim_key": "ws27/item/0",
+          "claim_reward_id": "2648E87E050A7452",
+          "team_reward": false
+        },
+        {
+          "id": "2C827EFC047831D5",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:cooked_venison",
+          "count": 16,
+          "claim_key": "ws27/item/1",
+          "claim_reward_id": "2C827EFC047831D5",
+          "team_reward": false
+        },
+        {
+          "id": "2D53CE77605C9749",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws27",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24047B1311376F9A",
+      "title": "17.28 · Змеи слушают музыку",
+      "subtitle": "Нажать ПКМ в воздухе с козьим рогом или Conch Shell Primal в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с козьим рогом или Conch Shell Primal в основной руке.",
+        "",
+        "Зачем: Звуковые реакции и косметические украшения Primal.",
+        "",
+        "Совет: Совет, не условие зачёта: Сыграть козьим рогом или доступной песней Conch Shell перед змеёй Primal и увидеть танец; отдельно оформить совместимый шлем на наковальне.",
+        "",
+        "Награда: Освоенный сигнал дополняется ракушечной палитрой берега."
+      ],
+      "icon": "minecraft:goat_horn",
+      "x": -5.3,
+      "y": 12.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2403DFD8F8CED026",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с козьим рогом или Conch Shell Primal в основной руке.",
+          "icon": "minecraft:goat_horn",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B527E577568060D",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:seashells",
+          "count": 24,
+          "claim_key": "ws28/item/0",
+          "claim_reward_id": "2B527E577568060D",
+          "team_reward": false
+        },
+        {
+          "id": "21CEF0E566D90DEC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        },
+        {
+          "id": "289E59BECCA58779",
+          "type": "choice",
+          "table_id": 2972137556144507370L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws28",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "283CA56876403403",
+      "title": "17.29 · Шахтёрский спутник Ringtail",
+      "subtitle": "Нажать ПКМ пустой рукой по Ringtail CNC.",
+      "description": [
+        "Что сделать: Нажать ПКМ пустой рукой по Ringtail CNC.",
+        "",
+        "Зачем: Шахтёрский питомец и природные помощники CNC.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить Ringtail CNC согласно Field Guide и добыть руду рядом с ним; проверить фактическое преимущество спутника.",
+        "",
+        "Награда: Короткая полевая встреча пополняет запас кожи и провизии."
+      ],
+      "icon": "cnc:ringtail_spawn_egg",
+      "x": 2.52,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C8882ED85926F55",
+          "type": "custom",
+          "title": "Нажать ПКМ пустой рукой по Ringtail CNC.",
+          "icon": "cnc:ringtail_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BD6D6A8C049ACC9",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:buckskin",
+          "count": 16,
+          "claim_key": "ws29/item/0",
+          "claim_reward_id": "2BD6D6A8C049ACC9",
+          "team_reward": false
+        },
+        {
+          "id": "2E629FD9A96EA600",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:cooked_game",
+          "count": 16,
+          "claim_key": "ws29/item/1",
+          "claim_reward_id": "2E629FD9A96EA600",
+          "team_reward": false
+        },
+        {
+          "id": "25C4C65F69A710DC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 50,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws29",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "209E8C96D37F7202",
+      "title": "17.30 · Пума и карибу",
+      "subtitle": "По одному разу нажать ПКМ по Cougar и Caribou CNC.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по Cougar и Caribou CNC.",
+        "",
+        "Зачем: Две формы доверия лесных животных; собственные линии ухода.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить пуму CNC олениной; независимая карточка — приручить карибу по Field Guide и применить его ездовые возможности после проверки 2.2.5.",
+        "",
+        "Награда: Два животных, включая хищника, дают полезный предмет одежды и походный рацион."
+      ],
+      "icon": "cnc:cougar_spawn_egg",
+      "x": 4.38,
+      "y": 14.65,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "273A240501E2A931",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по Cougar и Caribou CNC.",
+          "icon": "cnc:cougar_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C6A3DA7382532FE",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:buckskin_helmet",
+          "count": 1,
+          "claim_key": "ws30/item/0",
+          "claim_reward_id": "2C6A3DA7382532FE",
+          "team_reward": false
+        },
+        {
+          "id": "22109BB9507DC8BB",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:hunters_stew",
+          "count": 16,
+          "claim_key": "ws30/item/1",
+          "claim_reward_id": "22109BB9507DC8BB",
+          "team_reward": false
+        },
+        {
+          "id": "2B9FE0F523ED07AB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 95,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws30",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CD4D26CF178EC7D",
+      "title": "17.31 · Мышь в цветочном горшке",
+      "subtitle": "Нажать ПКМ по Mouse CNC с цветочным горшком в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Mouse CNC с цветочным горшком в основной руке.",
+        "",
+        "Зачем: Перенос мелких животных без Carry On.",
+        "",
+        "Совет: Совет, не условие зачёта: Поймать мышь CNC цветочным горшком и выпустить в подготовленном вольере.",
+        "",
+        "Награда: Мышиная история открывает практичную коллекцию горшков, без выдачи новых животных."
+      ],
+      "icon": "cnc:mouse_spawn_egg",
+      "x": 6.22,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2557601B1A823960",
+          "type": "custom",
+          "title": "Нажать ПКМ по Mouse CNC с цветочным горшком в основной руке.",
+          "icon": "cnc:mouse_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2347493B53CF2288",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:terracotta_thick_pot",
+          "count": 8,
+          "claim_key": "ws31/item/0",
+          "claim_reward_id": "2347493B53CF2288",
+          "team_reward": false
+        },
+        {
+          "id": "231185D022711929",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_cookie",
+          "count": 16,
+          "claim_key": "ws31/item/1",
+          "claim_reward_id": "231185D022711929",
+          "team_reward": false
+        },
+        {
+          "id": "24F24BF28CD88FF8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws31",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "276B36CB422000D5",
+      "title": "17.32 · Еда лесного похода",
+      "subtitle": "Съесть один Pemmican CNC.",
+      "description": [
+        "Что сделать: Съесть один Pemmican CNC.",
+        "",
+        "Зачем: Продукты CNC, buckskin-снаряжение и рецепты охотничьего лагеря.",
+        "",
+        "Совет: Совет, не условие зачёта: Изготовить пеммикан и попробовать порцию приготовленной индейки CNC; показать альтернативы из дичи и оленины.",
+        "",
+        "Награда: Опробованный рацион теперь можно взять в длинный поход."
+      ],
+      "icon": "cnc:pemmican",
+      "x": 8.07,
+      "y": 14.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FC2C469A57DD5F0",
+          "type": "custom",
+          "title": "Съесть один Pemmican CNC.",
+          "icon": "cnc:pemmican",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2446027465DB87AA",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:pemmican",
+          "count": 24,
+          "claim_key": "ws32/item/0",
+          "claim_reward_id": "2446027465DB87AA",
+          "team_reward": false
+        },
+        {
+          "id": "232BFF473DD00B09",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:straw_basket",
+          "count": 2,
+          "claim_key": "ws32/item/1",
+          "claim_reward_id": "232BFF473DD00B09",
+          "team_reward": false
+        },
+        {
+          "id": "2C9073785798DB2B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws32",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24F9BD562B4CEC00",
+      "title": "17.33 · Лесные легенды",
+      "subtitle": "Нажать ПКМ по Effigy CNC с огнивом в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Effigy CNC с огнивом в основной руке.",
+        "",
+        "Зачем: Фольклорная ветка CNC и особые встречи; точные эффекты чучела показывать после проверки.",
+        "",
+        "Совет: Совет, не условие зачёта: Зажечь Effigy огнивом; рядом открыть отдельные карточки встречи с Timber Wolf/Bewitched Timber Wolf и тактики против Wendigo, Wechuge, Skinwalker. Не включать всех в обязательную охоту.",
+        "",
+        "Награда: Опасный ритуальный опыт дает защиту и еду, но не награду за убийство криптида."
+      ],
+      "icon": "cnc:effigy",
+      "x": 5.3,
+      "y": 16.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25D321CECC6DC729",
+          "type": "custom",
+          "title": "Нажать ПКМ по Effigy CNC с огнивом в основной руке.",
+          "icon": "cnc:effigy",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2339605862D50DDA",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:buckskin_chestplate",
+          "count": 1,
+          "claim_key": "ws33/item/0",
+          "claim_reward_id": "2339605862D50DDA",
+          "team_reward": false
+        },
+        {
+          "id": "227EC029D47E10D3",
+          "type": "jem_advancements:quest_item",
+          "item": "cnc:hunters_stew",
+          "count": 16,
+          "claim_key": "ws33/item/1",
+          "claim_reward_id": "227EC029D47E10D3",
+          "team_reward": false
+        },
+        {
+          "id": "2849BBDE3CE2428D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws33",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F662DCBFEAB72C1",
+      "title": "17.34 · Пустынные приспособления",
+      "subtitle": "Получить Roadrunner Boots, Gustmaker и зелье Poison Resistance Alex’s Mobs.",
+      "description": [
+        "Что сделать: Получить Roadrunner Boots, Gustmaker и зелье Poison Resistance Alex’s Mobs.",
+        "",
+        "Зачем: Передвижение по песку, защита от яда и воздушная механика Guster.",
+        "",
+        "Совет: Совет, не условие зачёта: Сделать песчаные ботинки Roadrunner; отдельная карточка — Poison Resistance через гремучую змею AM и ногу пещерной многоножки; третья — Gustmaker и перенос блока/сущности порывом.",
+        "",
+        "Награда: Коллекция дорожного снаряжения заслуживает выбора полноценного исследовательского инструмента."
+      ],
+      "icon": "alexsmobs:roadrunner_boots",
+      "x": -8.07,
+      "y": 16.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "248C0EAC18C609F3",
+          "type": "custom",
+          "title": "Получить Roadrunner Boots, Gustmaker и зелье Poison Resistance Alex’s Mobs.",
+          "icon": "alexsmobs:roadrunner_boots",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21D289675C3EAAC4",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:mosquito_repellent_stew",
+          "count": 24,
+          "claim_key": "ws34/item/0",
+          "claim_reward_id": "21D289675C3EAAC4",
+          "team_reward": false
+        },
+        {
+          "id": "230D7B169230F038",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        },
+        {
+          "id": "2C62E988E0901F8D",
+          "type": "choice",
+          "table_id": 3396024469129599315L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws34",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2278E28D5EA03D4A",
+      "title": "17.35 · Питомник насекомых",
+      "subtitle": "Нажать ПКМ по Tarantula Hawk с паучьим глазом в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Tarantula Hawk с паучьим глазом в основной руке.",
+        "",
+        "Зачем: Воздушный защитник, необычный жизненный цикл и позднее улучшение полёта.",
+        "",
+        "Совет: Совет, не условие зачёта: Приручить Tarantula Hawk паучьими глазами; пройти его цикл размножения через паука и изучить применение крыльев для огнестойких элитр.",
+        "",
+        "Награда: Опасное кормление оплачивается запасом расходников, без готовых крыльев за один клик."
+      ],
+      "icon": "alexsmobs:mosquito_repellent_stew",
+      "x": -6.22,
+      "y": 16.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "271E6E11FC5B7283",
+          "type": "custom",
+          "title": "Нажать ПКМ по Tarantula Hawk с паучьим глазом в основной руке.",
+          "icon": "alexsmobs:mosquito_repellent_stew",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "235545AECEBD86E9",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:mosquito_repellent_stew",
+          "count": 16,
+          "claim_key": "ws35/item/0",
+          "claim_reward_id": "235545AECEBD86E9",
+          "team_reward": false
+        },
+        {
+          "id": "254BDF2D8C4935EC",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:maggot",
+          "count": 32,
+          "claim_key": "ws35/item/1",
+          "claim_reward_id": "254BDF2D8C4935EC",
+          "team_reward": false
+        },
+        {
+          "id": "24B9EB9669C3F4B3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws35",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21990E767678D53E",
+      "title": "17.36 · Три островных знакомства",
+      "subtitle": "По одному разу нажать ПКМ по Dodo, Booby и Stickbug Spawn.",
+      "description": [
+        "Что сделать: По одному разу нажать ПКМ по Dodo, Booby и Stickbug Spawn.",
+        "",
+        "Зачем: Уникальные острова Spawn, невосполнимая фауна и поиск через наблюдение.",
+        "",
+        "Совет: Совет, не условие зачёта: Отметить Dodo Island, защитить додо от кошек/волков и воды, увидеть танец пары Booby, обнаружить замаскированного Stickbug; разведение додо не требовать.",
+        "",
+        "Награда: Три необычных вида дают носимый предмет Spawn и запас еды."
+      ],
+      "icon": "spawn:dodo",
+      "x": -4.38,
+      "y": 16.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "267867E528095161",
+          "type": "custom",
+          "title": "По одному разу нажать ПКМ по Dodo, Booby и Stickbug Spawn.",
+          "icon": "spawn:dodo",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23CFEB5BEBF7D3B3",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:blue_footed_boots",
+          "count": 1,
+          "claim_key": "ws36/item/0",
+          "claim_reward_id": "23CFEB5BEBF7D3B3",
+          "team_reward": false
+        },
+        {
+          "id": "2ECFFA678BA27238",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:date_cookie",
+          "count": 24,
+          "claim_key": "ws36/item/1",
+          "claim_reward_id": "2ECFFA678BA27238",
+          "team_reward": false
+        },
+        {
+          "id": "20E0527ECB8E142C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 115,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws36",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D36701531BEEDB2",
+      "title": "17.37 · Атлас обычной жизни",
+      "subtitle": "Взаимодействовать ПКМ с четырьмя разными видами из списка полевого атласа.",
+      "description": [
+        "Что сделать: Взаимодействовать ПКМ с четырьмя разными видами из списка полевого атласа.",
+        "",
+        "Зачем: Эму-еда/уклонение/узор; остаточная фауна с явно обозначенными отключёнными взаимосвязями.",
+        "",
+        "Совет: Совет, не условие зачёта: Сделать необязательные наблюдательные карточки по поведению остальных активных обитателей: эму (яйца/перья), Shoebill (рыболовный прилов), Anteater (наблюдение), Primal bear, а также лесные виды CNC. По одному наблюдению на маршрут, а не убийство каждого вида.",
+        "",
+        "Награда: Четыре полевых наблюдения дают выбор полезного носимого сувенира."
+      ],
+      "icon": "primal:bear_spawn_egg",
+      "x": -2.52,
+      "y": 16.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BFC8491D624EAEA",
+          "type": "custom",
+          "title": "Взаимодействовать ПКМ с четырьмя разными видами из списка полевого атласа.",
+          "icon": "primal:bear_spawn_egg",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "221562BDDCDFD85F",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:banana",
+          "count": 32,
+          "claim_key": "ws37/item/0",
+          "claim_reward_id": "221562BDDCDFD85F",
+          "team_reward": false
+        },
+        {
+          "id": "21EB5C7A6AB70DCB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        },
+        {
+          "id": "253AF271CD91EDCB",
+          "type": "choice",
+          "table_id": 2790455791368534628L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ws37",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B181ADA4D08F397",
+      "title": "17.38 · Болотные соседи",
+      "subtitle": "Нажать ПКМ по Ribbit с изумрудом в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Ribbit с изумрудом в основной руке.",
+        "",
+        "Зачем: Своя социальная жизнь болота и профессии Ribbits.",
+        "",
+        "Совет: Совет, не условие зачёта: Найти поселение Ribbits, различить торговца, рыбака, садовника и колдуна; совершить полезную торговлю по фактическому предложению.",
+        "",
+        "Награда: Первое общение с Ribbit дает материалы для уютного болотного дома."
+      ],
+      "icon": "ribbits:mossy_oak_planks",
+      "x": -8.07,
+      "y": 20.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "272099B532474FC5",
+          "type": "custom",
+          "title": "Нажать ПКМ по Ribbit с изумрудом в основной руке.",
+          "icon": "ribbits:mossy_oak_planks",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "211FE01E36F70D84",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:mossy_oak_planks",
+          "count": 64,
+          "claim_key": "ribbit_01/item/0",
+          "claim_reward_id": "211FE01E36F70D84",
+          "team_reward": false
+        },
+        {
+          "id": "2B8886B741F91DD6",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:swamp_lantern",
+          "count": 8,
+          "claim_key": "ribbit_01/item/1",
+          "claim_reward_id": "2B8886B741F91DD6",
+          "team_reward": false
+        },
+        {
+          "id": "24E9527C93CB3938",
+          "type": "jem_advancements:quest_xp",
+          "xp": 45,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ribbit_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "246CA52B0EDE5FDC",
+      "title": "17.39 · Марака в ансамбле",
+      "subtitle": "Нажать ПКМ в воздухе с Maraca Ribbits в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ в воздухе с Maraca Ribbits в основной руке.",
+        "",
+        "Зачем: Многослойная музыка вместе с жителями болота.",
+        "",
+        "Совет: Совет, не условие зачёта: Получить мараку у торговца и присоединиться к играющей группе Ribbits.",
+        "",
+        "Награда: Музыкальная проба открывает грибную декоративную палитру.",
+        "",
+        "Рекомендуемый путь: 17.38 · Болотные соседи. Порядок свободный."
+      ],
+      "icon": "ribbits:maraca",
+      "x": -6.22,
+      "y": 20.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A39901645CF1BAF",
+          "type": "custom",
+          "title": "Нажать ПКМ в воздухе с Maraca Ribbits в основной руке.",
+          "icon": "ribbits:maraca",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2213F66474C880CC",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:red_toadstool",
+          "count": 48,
+          "claim_key": "ribbit_02/item/0",
+          "claim_reward_id": "2213F66474C880CC",
+          "team_reward": false
+        },
+        {
+          "id": "2118617D5A021F5C",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:brown_toadstool",
+          "count": 48,
+          "claim_key": "ribbit_02/item/1",
+          "claim_reward_id": "2118617D5A021F5C",
+          "team_reward": false
+        },
+        {
+          "id": "2F916A8940862333",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ribbit_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24F95EAFA5C5758B",
+      "title": "17.40 · Грядка для болотных соседей",
+      "subtitle": "Нажать ПКМ по пашне с семенами пшеницы; нажать ПКМ по Ribbit пустой рукой.",
+      "description": [
+        "Что сделать: Нажать ПКМ по пашне с семенами пшеницы; нажать ПКМ по Ribbit пустой рукой.",
+        "",
+        "Зачем: Земледельческая и магическая помощь; без выдуманного радиуса и бонуса роста.",
+        "",
+        "Совет: Совет, не условие зачёта: Подготовить грядку и увидеть реальный полив садовника; отдельной подкарточкой получить естественное благословение колдуна.",
+        "",
+        "Награда: Небольшой фермерский опыт приносит набор для обустройства деревенского пруда."
+      ],
+      "icon": "ribbits:giant_lilypad",
+      "x": -4.38,
+      "y": 20.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21D73A6AF7DB4EC2",
+          "type": "custom",
+          "title": "Нажать ПКМ по пашне с семенами пшеницы; нажать ПКМ по Ribbit пустой рукой.",
+          "icon": "ribbits:giant_lilypad",
+          "count": 1
+        },
+        {
+          "id": "205E1E6439436140",
+          "type": "custom",
+          "title": "Нажать ПКМ по пашне с семенами пшеницы; нажать ПКМ по Ribbit пустой рукой.",
+          "icon": "ribbits:giant_lilypad",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21E7F1BB25B088E9",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:giant_lilypad",
+          "count": 24,
+          "claim_key": "ribbit_03/item/0",
+          "claim_reward_id": "21E7F1BB25B088E9",
+          "team_reward": false
+        },
+        {
+          "id": "2F4FE3EA5E8CAE0D",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:umbrella_leaf",
+          "count": 24,
+          "claim_key": "ribbit_03/item/1",
+          "claim_reward_id": "2F4FE3EA5E8CAE0D",
+          "team_reward": false
+        },
+        {
+          "id": "25D25A0F16DB958C",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:swamp_lantern",
+          "count": 8,
+          "claim_key": "ribbit_03/item/2",
+          "claim_reward_id": "25D25A0F16DB958C",
+          "team_reward": false
+        },
+        {
+          "id": "2B7B86AA7A3A228C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ribbit_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FFAFCE4B2BA9387",
+      "title": "17.41 · Новый дом у воды",
+      "subtitle": "Нажать ПКМ по Ribbit с осколком аметиста в основной руке.",
+      "description": [
+        "Что сделать: Нажать ПКМ по Ribbit с осколком аметиста в основной руке.",
+        "",
+        "Зачем: Постоянное поселение Ribbits и возобновляемые растения.",
+        "",
+        "Совет: Совет, не условие зачёта: Перевезти Ribbit в подготовленное место, аметистом назначить новый дом и увидеть возвращение ночью. Размножить местное растение костной мукой; не искать его в снятой торговле растениями.",
+        "",
+        "Награда: Волшебная встреча оставляет полезный запас света и декоративных опор.",
+        "",
+        "Рекомендуемый путь: 17.38 · Болотные соседи. Порядок свободный."
+      ],
+      "icon": "ribbits:swamp_lantern",
+      "x": -2.52,
+      "y": 20.2,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2979E2FE1D4C5BF5",
+          "type": "custom",
+          "title": "Нажать ПКМ по Ribbit с осколком аметиста в основной руке.",
+          "icon": "ribbits:swamp_lantern",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22777A4AE1189FEB",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:swamp_lantern",
+          "count": 24,
+          "claim_key": "ribbit_04/item/0",
+          "claim_reward_id": "22777A4AE1189FEB",
+          "team_reward": false
+        },
+        {
+          "id": "2488D893E880CEC8",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:toadstool_stem",
+          "count": 48,
+          "claim_key": "ribbit_04/item/1",
+          "claim_reward_id": "2488D893E880CEC8",
+          "team_reward": false
+        },
+        {
+          "id": "2DD87B201BE2725F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 50,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "ribbit_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": -5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Полевые справочники",
+      "order": -5,
+      "hover": [
+        "Полевые справочники"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 0.0,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Маленькие помощники",
+      "order": -5,
+      "hover": [
+        "Маленькие помощники"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 3.7,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Караван и большие звери",
+      "order": -5,
+      "hover": [
+        "Караван и большие звери"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 7.4,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Грибы, цветы и музыка",
+      "order": -5,
+      "hover": [
+        "Грибы, цветы и музыка"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 9.25,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Primal: древние соседи",
+      "order": -5,
+      "hover": [
+        "Primal: древние соседи"
+      ]
+    },
+    {
+      "x": 5.3,
+      "y": 12.95,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:CNC: лесной поход",
+      "order": -5,
+      "hover": [
+        "CNC: лесной поход"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 14.8,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Полевое снаряжение",
+      "order": -5,
+      "hover": [
+        "Полевое снаряжение"
+      ]
+    },
+    {
+      "x": -5.3,
+      "y": 18.5,
+      "width": 7.7,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:Ribbits: жизнь у воды",
+      "order": -5,
+      "hover": [
+        "Ribbits: жизнь у воды"
+      ]
+    }
+  ],
+  "autofocus_id": "29521242568B66C2"
+}

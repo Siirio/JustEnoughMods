@@ -1,0 +1,720 @@
+{
+  "id": "1000000000000002",
+  "filename": "jem_12",
+  "title": "Create: первая мастерская",
+  "subtitle": [
+    "Когда: Сразу после базовых ресурсов. Проверки не требуют работающей кинетической сети.",
+    "Рекомендуемый порядок свободный; награда соседа не требуется."
+  ],
+  "icon": "create:cogwheel",
+  "group": "28AF004A3850C67C",
+  "order_index": 11,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2E117E795BDE606A",
+      "title": "12.01 · Колесо и передача вращения",
+      "subtitle": "Поставить Water Wheel и Shaft Create.",
+      "description": [
+        "Что сделать: Поставить Water Wheel и Shaft Create.",
+        "",
+        "Зачем: Источник вращения и передача мощности.",
+        "",
+        "Совет: В Ponder посмотри, как вода вращает колесо, а валы передают движение потребителю. Поставленные детали можно переставить в удобную мастерскую.",
+        "",
+        "Награда: Материал и валы для расширения первой мастерской: можно сразу подключить ещё несколько потребителей.",
+        "",
+        "Рекомендуемый путь: 01.02 · Место для первой ночи. Порядок свободный."
+      ],
+      "icon": "create:water_wheel",
+      "x": -0.93,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2486FDC8C20DCFDC",
+          "type": "custom",
+          "title": "Поставить Water Wheel и Shaft Create.",
+          "icon": "create:water_wheel",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "226FC46EC6610A0F",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 32,
+          "claim_key": "H11.01/item/0",
+          "claim_reward_id": "226FC46EC6610A0F",
+          "team_reward": false
+        },
+        {
+          "id": "200D5893EA211262",
+          "type": "jem_advancements:quest_item",
+          "item": "create:shaft",
+          "count": 32,
+          "claim_key": "H11.01/item/1",
+          "claim_reward_id": "200D5893EA211262",
+          "team_reward": false
+        },
+        {
+          "id": "22A4B97246D61A8A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "261E112E84ECB5AC",
+      "title": "12.02 · Шестерни и очки инженера",
+      "subtitle": "Собрать малую шестерню, большую шестерню и Engineer’s Goggles Create.",
+      "description": [
+        "Что сделать: Собрать малую шестерню, большую шестерню и Engineer’s Goggles Create.",
+        "",
+        "Зачем: Передаточные отношения, stress и диагностика.",
+        "",
+        "Совет: Пары шестерён меняют скорость и направление. Очки показывают stress и нагрузку; попробуй найти перегрузку в своей сети. Эти опыты не нужны для зачёта.",
+        "",
+        "Награда: Переносной запас деталей и комплект передач для настройки скорости механизмов.",
+        "",
+        "Рекомендуемый путь: 12.01 · Колесо и передача вращения. Порядок свободный."
+      ],
+      "icon": "create:cogwheel",
+      "x": 0.93,
+      "y": 1.7,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CE0A659EAE4153F",
+          "type": "item",
+          "item": "create:cogwheel",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "20100AB683E9984E",
+          "type": "item",
+          "item": "create:large_cogwheel",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "288113A95AC23D02",
+          "type": "item",
+          "item": "create:goggles",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C87EAAF3F62E836",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brown_toolbox",
+          "count": 1,
+          "claim_key": "H11.02/item/0",
+          "claim_reward_id": "2C87EAAF3F62E836",
+          "team_reward": false
+        },
+        {
+          "id": "25FA133D4596ABBC",
+          "type": "jem_advancements:quest_item",
+          "item": "create:cogwheel",
+          "count": 24,
+          "claim_key": "H11.02/item/1",
+          "claim_reward_id": "25FA133D4596ABBC",
+          "team_reward": false
+        },
+        {
+          "id": "2DAC626E73A754F1",
+          "type": "jem_advancements:quest_item",
+          "item": "create:large_cogwheel",
+          "count": 8,
+          "claim_key": "H11.02/item/2",
+          "claim_reward_id": "2DAC626E73A754F1",
+          "team_reward": false
+        },
+        {
+          "id": "26A41893F4162062",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29329985980162D6",
+      "title": "12.03 · Первые материалы мастерской",
+      "subtitle": "Получить Iron Sheet и Wheat Flour Create.",
+      "description": [
+        "Что сделать: Получить Iron Sheet и Wheat Flour Create.",
+        "",
+        "Зачем: Первые реальные процессы Create.",
+        "",
+        "Совет: Mechanical Press прессует металл, Millstone перемалывает зерно. В JEI/Ponder разберись с двумя процессами; квест проверяет полученные материалы.",
+        "",
+        "Награда: Первый выпуск материалов окупается запасом листов и модовой едой на следующую стройку.",
+        "",
+        "Рекомендуемый путь: 12.02 · Шестерни и очки инженера. Порядок свободный."
+      ],
+      "icon": "create:iron_sheet",
+      "x": -1.85,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F9D0ACFCF826AB6",
+          "type": "item",
+          "item": "create:iron_sheet",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2A58397CF9F07AE3",
+          "type": "item",
+          "item": "create:wheat_flour",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "260E08926842D34C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:iron_sheet",
+          "count": 32,
+          "claim_key": "H11.03/item/0",
+          "claim_reward_id": "260E08926842D34C",
+          "team_reward": false
+        },
+        {
+          "id": "2E791B5498756A09",
+          "type": "jem_advancements:quest_item",
+          "item": "create:dough",
+          "count": 24,
+          "claim_key": "H11.03/item/1",
+          "claim_reward_id": "2E791B5498756A09",
+          "team_reward": false
+        },
+        {
+          "id": "2E14D4CEA4A74DF8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:bar_of_chocolate",
+          "count": 16,
+          "claim_key": "H11.03/item/2",
+          "claim_reward_id": "2E14D4CEA4A74DF8",
+          "team_reward": false
+        },
+        {
+          "id": "29EAFBB073479BC5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "241196E8A61219BD",
+      "title": "12.04 · Набор для конвейера",
+      "subtitle": "Собрать Belt Connector, Andesite Funnel и Chute Create.",
+      "description": [
+        "Что сделать: Собрать Belt Connector, Andesite Funnel и Chute Create.",
+        "",
+        "Зачем: Материальный поток вместо ручного перетаскивания.",
+        "",
+        "Совет: Лента переносит предметы между валами, воронка и желоб помогают загрузке/выгрузке. Проследи за своим предметом в игре; автоматический зачёт не отслеживает его путь.",
+        "",
+        "Награда: Полноценный комплект для нескольких линий подачи, а не две случайные детали.",
+        "",
+        "Рекомендуемый путь: 12.03 · Первые материалы мастерской. Порядок свободный."
+      ],
+      "icon": "create:belt_connector",
+      "x": 0.0,
+      "y": 5.4,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FAB2B26DCB69B20",
+          "type": "item",
+          "item": "create:belt_connector",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "26B9D8D1AEFD0B61",
+          "type": "item",
+          "item": "create:andesite_funnel",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28F2B5D1723060CC",
+          "type": "item",
+          "item": "create:chute",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2742E47FBD122E3D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:belt_connector",
+          "count": 32,
+          "claim_key": "H11.04/item/0",
+          "claim_reward_id": "2742E47FBD122E3D",
+          "team_reward": false
+        },
+        {
+          "id": "2AF1C0FBD996264A",
+          "type": "jem_advancements:quest_item",
+          "item": "create:chute",
+          "count": 16,
+          "claim_key": "H11.04/item/1",
+          "claim_reward_id": "2AF1C0FBD996264A",
+          "team_reward": false
+        },
+        {
+          "id": "2CD5C776612085C4",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_funnel",
+          "count": 8,
+          "claim_key": "H11.04/item/2",
+          "claim_reward_id": "2CD5C776612085C4",
+          "team_reward": false
+        },
+        {
+          "id": "23621BB069122028",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29B46B0EC8F9234C",
+      "title": "12.05 · Вентилятор и среды обработки",
+      "subtitle": "Поставить Encased Fan Create.",
+      "description": [
+        "Что сделать: Поставить Encased Fan Create.",
+        "",
+        "Зачем: Промывка, обдув горячим источником и другие native fan modes.",
+        "",
+        "Совет: Разные среды в потоке дают промывку, обжиг, копчение и другие доступные операции. Сравни рецепты своей версии; квесту достаточно размещения вентилятора.",
+        "",
+        "Награда: Можно разнести обдув по нескольким рабочим местам; награда за установку, без обещания работающего производства.",
+        "",
+        "Рекомендуемый путь: 12.04 · Набор для конвейера. Порядок свободный."
+      ],
+      "icon": "create:encased_fan",
+      "x": 1.85,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FEA85CA236FA33D",
+          "type": "custom",
+          "title": "Поставить Encased Fan Create.",
+          "icon": "create:encased_fan",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29B63FE7BF1D1FC3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:encased_fan",
+          "count": 4,
+          "claim_key": "H11.05/item/0",
+          "claim_reward_id": "29B63FE7BF1D1FC3",
+          "team_reward": false
+        },
+        {
+          "id": "296251C3AF7DC1DF",
+          "type": "jem_advancements:quest_item",
+          "item": "create:shaft",
+          "count": 32,
+          "claim_key": "H11.05/item/1",
+          "claim_reward_id": "296251C3AF7DC1DF",
+          "team_reward": false
+        },
+        {
+          "id": "2B6CF00172E2B394",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 16,
+          "claim_key": "H11.05/item/2",
+          "claim_reward_id": "2B6CF00172E2B394",
+          "team_reward": false
+        },
+        {
+          "id": "2B87B766CDB80BF8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "215E6378BB7B60DE",
+      "title": "12.06 · Первый латунный слиток",
+      "subtitle": "Получить 1 Brass Ingot Create.",
+      "description": [
+        "Что сделать: Получить 1 Brass Ingot Create.",
+        "",
+        "Зачем: Нагреваемое смешивание и латунная ветка.",
+        "",
+        "Совет: Brass открывает точную логистику. Нативный путь использует медь, цинк, Basin, Mechanical Mixer и нагрев Blaze Burner. Размещение/захват Blaze/плавка не образуют условия внутри этого квеста.",
+        "",
+        "Награда: Первая латунь открывает запас на фильтрацию и точную механику без повторного ручного гринда.",
+        "",
+        "Рекомендуемый путь: 12.03 · Первые материалы мастерской. Порядок свободный."
+      ],
+      "icon": "create:brass_ingot",
+      "x": -1.85,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25E0FFF7DD2470CD",
+          "type": "item",
+          "item": "create:brass_ingot",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C664EF4E0DB8E28",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_ingot",
+          "count": 32,
+          "claim_key": "H11.06/item/0",
+          "claim_reward_id": "2C664EF4E0DB8E28",
+          "team_reward": false
+        },
+        {
+          "id": "28BF2C4E86938827",
+          "type": "jem_advancements:quest_item",
+          "item": "create:electron_tube",
+          "count": 8,
+          "claim_key": "H11.06/item/1",
+          "claim_reward_id": "28BF2C4E86938827",
+          "team_reward": false
+        },
+        {
+          "id": "22D1CCE1B4479537",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27E48B5475D77E5F",
+      "title": "12.07 · Компоненты сортировки",
+      "subtitle": "Собрать Filter, Brass Funnel и Brass Tunnel Create.",
+      "description": [
+        "Что сделать: Собрать Filter, Brass Funnel и Brass Tunnel Create.",
+        "",
+        "Зачем: Точная сортировка и маршрутизация.",
+        "",
+        "Совет: Укажи в фильтре, что проходит дальше, и настрой распределение в туннеле. Книга знакомит с этими компонентами через предметы; поток и его правильность не проверяются.",
+        "",
+        "Награда: Снабжение для сортировки нескольких линий и гибких правил фильтрации.",
+        "",
+        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+      ],
+      "icon": "create:filter",
+      "x": 0.0,
+      "y": 9.1,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B4AACBB0727B8F9",
+          "type": "item",
+          "item": "create:filter",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "29C1F829076C094B",
+          "type": "item",
+          "item": "create:brass_funnel",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2749DD70546D9B54",
+          "type": "item",
+          "item": "create:brass_tunnel",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DF6219E0FA7FF4A",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_funnel",
+          "count": 16,
+          "claim_key": "H11.07/item/0",
+          "claim_reward_id": "2DF6219E0FA7FF4A",
+          "team_reward": false
+        },
+        {
+          "id": "2CF29EE7427E35E9",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_tunnel",
+          "count": 8,
+          "claim_key": "H11.07/item/1",
+          "claim_reward_id": "2CF29EE7427E35E9",
+          "team_reward": false
+        },
+        {
+          "id": "2781112EF68CFE05",
+          "type": "jem_advancements:quest_item",
+          "item": "create:attribute_filter",
+          "count": 4,
+          "claim_key": "H11.07/item/2",
+          "claim_reward_id": "2781112EF68CFE05",
+          "team_reward": false
+        },
+        {
+          "id": "2860D140CD93F345",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29AC55A6A3E62721",
+      "title": "12.08 · Полированный кварц",
+      "subtitle": "Получить 1 Polished Rose Quartz Create.",
+      "description": [
+        "Что сделать: Получить 1 Polished Rose Quartz Create.",
+        "",
+        "Зачем: Ручная подготовка компонентов и sequenced assembly.",
+        "",
+        "Совет: Ручная шлифовка наждачной бумагой готовит компонент электроники; далее появится последовательная сборка. Способ обработки не является условием.",
+        "",
+        "Награда: Запас кварца и готовых электронных ламп для следующего набора механизмов.",
+        "",
+        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+      ],
+      "icon": "create:polished_rose_quartz",
+      "x": 1.85,
+      "y": 9.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A8D03918733F5B5",
+          "type": "item",
+          "item": "create:polished_rose_quartz",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A66F540D10245BB",
+          "type": "jem_advancements:quest_item",
+          "item": "create:rose_quartz",
+          "count": 32,
+          "claim_key": "H11.08/item/0",
+          "claim_reward_id": "2A66F540D10245BB",
+          "team_reward": false
+        },
+        {
+          "id": "28BFBD905B834532",
+          "type": "jem_advancements:quest_item",
+          "item": "create:polished_rose_quartz",
+          "count": 16,
+          "claim_key": "H11.08/item/1",
+          "claim_reward_id": "28BFBD905B834532",
+          "team_reward": false
+        },
+        {
+          "id": "2F81E94AF989777D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:electron_tube",
+          "count": 8,
+          "claim_key": "H11.08/item/2",
+          "claim_reward_id": "2F81E94AF989777D",
+          "team_reward": false
+        },
+        {
+          "id": "29C3685386582576",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C384695DD332C7C",
+      "title": "12.09 · Коллекция первой мастерской",
+      "subtitle": "Разместить 6 типов: Water Wheel, Shaft, Mechanical Press, Millstone, Mechanical Mixer и Basin.",
+      "description": [
+        "Что сделать: Разместить 6 типов: Water Wheel, Shaft, Mechanical Press, Millstone, Mechanical Mixer и Basin.",
+        "",
+        "Зачем: Базовые процессы Create; переход к силовым установкам, подвижным машинам, поездам и снабжению.",
+        "",
+        "Совет: Из этих блоков можно устроить мастерскую материалов для дома. Это коллекция размещений: одновременная работа, связность, планировка и применение продукции в стройке не требуются.",
+        "",
+        "Награда: За коллекцию шести базовых машин — материалы на большую мастерскую. Проверяется набор деталей, не её планировка.",
+        "",
+        "Рекомендуемый путь: 12.03 · Первые материалы мастерской; 12.06 · Первый латунный слиток. Порядок свободный."
+      ],
+      "icon": "create:water_wheel",
+      "x": 0.0,
+      "y": 12.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2CD7C1DDBD2EC8B1",
+          "type": "custom",
+          "title": "Разместить 6 типов: Water Wheel, Shaft, Mechanical Press, Millstone, Mechanical Mixer и Basin.",
+          "icon": "create:water_wheel",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C8EA4E6068CE319",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 128,
+          "claim_key": "H11.09/item/0",
+          "claim_reward_id": "2C8EA4E6068CE319",
+          "team_reward": false
+        },
+        {
+          "id": "2FB29D45A767FF6D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:iron_sheet",
+          "count": 64,
+          "claim_key": "H11.09/item/1",
+          "claim_reward_id": "2FB29D45A767FF6D",
+          "team_reward": false
+        },
+        {
+          "id": "25D07A1CF6EC35C8",
+          "type": "jem_advancements:quest_item",
+          "item": "create:copper_sheet",
+          "count": 64,
+          "claim_key": "H11.09/item/2",
+          "claim_reward_id": "25D07A1CF6EC35C8",
+          "team_reward": false
+        },
+        {
+          "id": "29A4F24240BB82ED",
+          "type": "jem_advancements:quest_xp",
+          "xp": 260,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H11.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:основа",
+      "order": -5,
+      "hover": [
+        "основа"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 3.7,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:обработка",
+      "order": -5,
+      "hover": [
+        "обработка"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 7.4,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:латунь",
+      "order": -5,
+      "hover": [
+        "латунь"
+      ]
+    },
+    {
+      "x": 0,
+      "y": 11.1,
+      "width": 5.8500000000000005,
+      "height": 1.15,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-label:финал",
+      "order": -5,
+      "hover": [
+        "финал"
+      ]
+    }
+  ],
+  "autofocus_id": "2E117E795BDE606A"
+}
