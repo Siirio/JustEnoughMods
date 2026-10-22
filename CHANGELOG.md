@@ -1,3 +1,11 @@
+## 2026-10-23 - Catalog installed GUI references for selective resource-pack work
+
+User request: put the GUI components available to `test jem` into Atlas as `GUI/mod-name (or vanilla) -> link + PNG`, to select parts for a later custom JEM resource pack.
+
+Implementation choices: add a non-canonical `Catalog/GUI` reference supplement and repeatable read-only exporter, because the shared Atlas GUI domain is unsupported. Resolve native AutoModpack's active generation 63 rather than its bootstrap-only top-level mods folder. Inventory vanilla, 285 managed mod JARs plus bootstrap, declared nested dependencies, selected resource-pack variants, KubeJS and FancyMenu assets. Export 10,837 original PNG variants across 10,688 resource paths, with dimensions/hashes/override targets, 74 metadata companions, per-group inline previews and a searchable local selection gallery. Separate 2,735 interface assets, 7,915 map/entity icons, 28 font sheets and 159 other UI-class texture references. Preserve 10,047 UI class candidates and 2,344 non-PNG resource entries; sheets stay whole and code-drawn controls/runtime reachability remain explicit gaps. Record one empty Xaero support-pack PNG without repairing it. Original PNG/gallery attachments remain local; publish the reproducible exporter, receipts and indexes.
+
+Catalog only. No gameplay source, Client/Server artifact, managed generation, profile, stable baseline or MineRENT mutation; no build, test, game launch or static code analysis. Existing ordinary local AutoModpack publication remains generation 63/published. The separate server Atlas verification reports its pre-existing live-input drift; this reference export does not promote that stale gameplay evidence.
+
 ## 2026-10-22 - Complete engineering v2 through E20 without tests
 
 - User request: complete the supplied engineering findings through E20, skipping any portion that requires writing tests; keep the existing no-tests policy.

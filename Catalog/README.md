@@ -1,5 +1,15 @@
 # JEM Registry Atlas
 
+The installed `test jem` GUI reference inventory is in [GUI/README.md](GUI/README.md):
+`GUI/<mod-or-namespace>/README.md` links every selected original PNG and embeds its
+preview. The local [searchable gallery](GUI/index.html) exports a selection for
+later resource-pack planning. `generator/export_gui_references.py` reads native
+AutoModpack's active installation, vanilla, declared nested JARs and selected pack
+overrides without modifying the profile. Original PNG attachments are local-only.
+This is a non-canonical reference supplement: the shared Atlas GUI adapter is
+unsupported; code-drawn controls, individual sheet UVs, runtime reachability and
+unresolved resource precedence are explicitly retained as coverage boundaries.
+
 Reviewed external native-mod mechanics live in `research/web-mechanics/`. This
 non-canonical research supplements the ownership chain below without overriding
 registry identities, JEM changes or effective behavior. See [research/README.md](research/README.md)
