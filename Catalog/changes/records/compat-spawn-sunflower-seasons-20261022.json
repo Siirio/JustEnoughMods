@@ -1,0 +1,151 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.spawn-sunflower-seasons-20261022",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "spawn:sunflower"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "Both spawn and sereneseasons loaded; exact supported Spawn 4.0.7 SunflowerBlock rotation/bonemeal contracts and native Serene Seasons public growth callback."
+    },
+    {
+      "delivery": "Integration in the full local pack is tracked in Mods/JEMCompat/seasons-delivery.json; native runtime and player acceptance remain separate."
+    }
+  ],
+  "precedence": {
+    "layer": "native_crop_growth_adapter",
+    "priority": 560,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Close the mature Spawn sunflower scheduled seed-growth bypass while preserving native sun tracking and using Serene Seasons as the single fertility owner.",
+    "modifiers": [
+      {
+        "property": "growth.serene_seasons.sunflower_seed_refill",
+        "operation": "derive",
+        "before": "Mature SunflowerBlock.tryAdvanceRotation is reached by random and scheduled ticks; dawn seed refill and performBonemeal have no native Serene Seasons block-tag gate. Tagging the mature block would still miss scheduled refill while suppressing sun tracking.",
+        "after": "Intercept only a false-to-true SEEDS transition and mature unseeded performBonemeal. Invoke native SeasonalCropGrowthHandler.onCropGrowth once using the tagged juvenile SUNFLOWER_PLANT state at the actual mature position. Apply the native admission result without duplicating calendar, fertility chance or greenhouse rules.",
+        "notes": "The mature block stays outside seasonal block tags; its real block item and sunflower_seeds tooltip use summer/autumn. Denied natural refill still advances rotation. Existing ripe seeds remain harvestable. A native removal or replacement during policy evaluation is never overwritten."
+      },
+      {
+        "property": "integration.optional_sunflower_seasons_adapter",
+        "operation": "allow",
+        "before": "No specific cross-mod adapter or compile-only native contracts.",
+        "after": "Separate required mixin config, guarded by both mod IDs before target resolution; exact required/allowed injection counts. Missing installed Spawn target class fails visibly. Compile-only existing Spawn/Serene Seasons pack JARs, with no new bundled runtime library.",
+        "notes": "Absent optional mods skip the adapter; an installed incompatible target is not silently treated as absent. No global modification of other optional mixin failure policy."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "isolated_native_growth_adapter",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/seasons/SpawnSunflowerSeasons.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.seasons.mixins.json",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+      "Mods/JEMCompat/SEASONS.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make mature sunflower seed production obey the same native seasonal owner without canceling visual rotation or leaving the scheduled route open.",
+    "decision_source": "User requested implementation of the supplied crop-compatibility patch on 2026-10-23; seasonal windows and adapter mechanics follow that supplied technical direction.",
+    "user_requested": "Implement all supplied Serene Seasons crop compatibility and coordinate with the parallel handbook/Hint/Jade chat.",
+    "implementation_choices": "Reuse the native public growth callback with the juvenile crop metadata; add only a seed-transition redirect and bonemeal injection, with narrow optional class detection.",
+    "artifact_evidence": [
+      {
+        "mod_id": "sereneseasons",
+        "version": "9.1.0.3",
+        "atlas_filename": "SereneSeasons-forge-1.20.1-9.1.0.3.jar",
+        "atlas_sha256": "650c35858d335d45adea5445ffaed25ccd433f5cbfe4936ac2694b250177b674"
+      },
+      {
+        "mod_id": "spawn",
+        "version": "4.0.7-1.20.1",
+        "atlas_filename": "spawn-4.0.7-1.20.1.jar",
+        "atlas_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf"
+      }
+    ],
+    "source_references": [
+      "https://cdn.modrinth.com/data/rex9wwpz/versions/zR1peDoK/spawn-4.0.7-1.20.1.jar",
+      "https://github.com/Glitchfiend/SereneSeasons/blob/61df18c2029d50e1294e7fc8d61824bbd6facb75/common/src/main/java/sereneseasons/season/SeasonalCropGrowthHandler.java"
+    ]
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "adapt_native_seed_refill",
+    "summary": "Delegate only mature sunflower seed-refill attempts to native Serene Seasons policy from both rotation and bonemeal routes, retaining rotation/harvest and optional dependency boundaries.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/seasons/SpawnSunflowerSeasons.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.seasons.mixins.json",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+      "Mods/JEMCompat/SEASONS.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "adapt_native_seed_refill",
+      "summary": "Delegate only mature sunflower seed-refill attempts to native Serene Seasons policy from both rotation and bonemeal routes, retaining rotation/harvest and optional dependency boundaries.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/seasons/SpawnSunflowerSeasons.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.seasons.mixins.json",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+        "Mods/JEMCompat/SEASONS.md"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "integrate_full_local_pack",
+      "summary": "Merge supplied policy with current source and parallel handbook build dependencies; inspect exact installed Spawn and Serene Seasons bytecode and retain native fertility authority. Delivery receipt records production and installation evidence."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "sunflower seed regrowth",
+      "native sun tracking",
+      "bonemeal",
+      "hamster food and seed supply",
+      "optional dependency loading",
+      "production build inputs"
+    ],
+    "relations": [
+      "Spawn native seed attempt -> JEMCompat adapter -> Serene Seasons native fertility",
+      "juvenile seasonal tag policy -> mature seed refill",
+      "sunflower seeds -> native harvest and downstream uses"
+    ],
+    "notes": [
+      "No additional state, saved data, tick scheduler, crop registry or client authority. Native scheduled/random calls converge on one narrow seed transition.",
+      "The juvenile perennial protection tag prevents destructive-mode removal for this metadata; the adapter additionally preserves any actual native position mutation.",
+      "Bonemeal uses the native fertility/probability gate but retains caller-owned consumption and feedback. A valid ordinary use consumes one bonemeal even on denial; success particles/result can remain because only performBonemeal is cancelled, unlike the native Serene Seasons player-event wrapper. Dispenser/direct callers retain their own item handling.",
+      "Exact installed Spawn 4.0.7 and Serene Seasons 9.1.0.3 SHA256 match the referenced Atlas artifacts; javap confirms tryAdvanceRotation/setBlock and performBonemeal descriptors and the public native fertility callback. Local fertility config remains enabled with behavior 0 and underground level 48."
+    ],
+    "unresolved": [
+      "Gameplay acceptance, greenhouse/biome conditions, dispenser/direct bonemeal and absent-mod JVM loading remain unexercised; no tests or client gameplay launches are authorized.",
+      "Other mod fertilizers, queued callbacks and direct automation are not universally intercepted; documented native exceptions remain deliberate."
+    ]
+  }
+}

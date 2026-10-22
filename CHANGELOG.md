@@ -1,3 +1,12 @@
+## 2026-10-23 - Implement supplied Serene Seasons crop compatibility (in testing)
+
+- User request: implement all changes in the supplied seasonal patch and notes, inspect the parallel session and notify it. Seasonal windows, optional tags and the sunflower adapter follow the supplied technical direction; local integration, merged build wiring and delivery evidence are implementation decisions.
+- Added 34 crop/fruit families and aligned Farm & Charm tomato/lettuce. Native additive tags now cover 76 growth-block IDs (+53) and 65 tooltip-item IDs (+44), including explicit year-round ecology and separate growth stages. Serene Seasons retains calendar, climate, greenhouse, underground and configured slow-growth authority. Shared mutation seeds, Vinery trellis and native queued-growth exceptions are documented in `Mods/JEMCompat/SEASONS.md`.
+- Bug / Both Sided / missing seasonal block/item memberships and mature Spawn sunflower refills bypassing the random-tick crop gate through scheduled sun tracking / in testing. Resolution mechanisms: native optional tag additions and a narrow adapter that delegates only new seed production and mature bonemeal to the installed native growth callback, preserving sun rotation and ripe harvest. Player acceptance remains pending.
+- Inspected exact installed Spawn 4.0.7 and Serene Seasons 9.1.0.3 bytecode and matching Atlas SHA256. Production `:JEMCompat:jar` plus `reobfJar` succeeded; packaged tags, optional required Mixin config and generated SRG refmap are present. No tests, static code analysis or gameplay launches were run.
+- Coordinated with parallel handbook/Hint/Jade work and preserved its source, Lionfish compile dependency and boss-help classes in the combined artifact. Separate Atlas records retain original registry ownership. Current Atlas and local Server/native AutoModpack state are recorded in `Mods/JEMCompat/seasons-delivery.json`; build/publication does not imply player acceptance. Stable profile, MineRENT and release baseline are unchanged.
+
+
 ## 2026-10-23 - Catalog installed GUI references for selective resource-pack work
 
 User request: put the GUI components available to `test jem` into Atlas as `GUI/mod-name (or vanilla) -> link + PNG`, to select parts for a later custom JEM resource pack.

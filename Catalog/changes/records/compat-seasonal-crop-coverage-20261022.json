@@ -1,0 +1,355 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.seasonal-crop-coverage-20261022",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "value": "sereneseasons:autumn_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "value": "sereneseasons:spring_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "value": "sereneseasons:summer_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "value": "sereneseasons:unbreakable_infertile_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "value": "sereneseasons:winter_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/winter_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "blocks",
+      "value": "sereneseasons:year_round_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "items",
+      "value": "sereneseasons:autumn_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "items",
+      "value": "sereneseasons:spring_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "items",
+      "value": "sereneseasons:summer_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "items",
+      "value": "sereneseasons:winter_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    },
+    {
+      "type": "source_set",
+      "registry": "items",
+      "value": "sereneseasons:year_round_crops",
+      "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json",
+      "records_field": "values",
+      "id_field": "id"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "Serene Seasons installed, native crop policy enabled, and the optional registry member present; native dimension, biome, greenhouse, underground and fertility configuration retain authority."
+    },
+    {
+      "delivery": "Integration in the full local pack is tracked in Mods/JEMCompat/seasons-delivery.json; native runtime and player acceptance remain separate."
+    }
+  ],
+  "precedence": {
+    "layer": "native_compatibility_tags",
+    "priority": 500,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Extend the existing native Serene Seasons tag policy to reviewed missing food crops and productive plant stages; retain one native fertility owner and matching tooltip windows.",
+    "modifiers": [
+      {
+        "property": "growth.serene_seasons.tag_policy",
+        "operation": "derive",
+        "before": {
+          "jem_unique_growth_blocks": 23,
+          "jem_unique_tooltip_items": 21,
+          "missing_reviewed_families": 34,
+          "source": "Existing JEMCompat tag files at 9c10424f3d0f3dc10db54098ef173f8556932aa1; same crop policy as e3fb8c01381520edd20dafb3c2b9f73acc5a607b. Native vanilla/Kaleidoscope coverage is additional and unchanged."
+        },
+        "after": {
+          "jem_unique_growth_blocks": 76,
+          "jem_unique_tooltip_items": 65,
+          "additional_unique_growth_blocks": 53,
+          "additional_unique_tooltip_items": 44,
+          "newly_covered_families": 34,
+          "aligned_existing_families": 2,
+          "seasons": "Read each matched source-set filename; an ID may belong to several seasons. year_round_crops is consumed by native seasonal tags. unbreakable_infertile_crops protects marked perennials only in native destructive mode."
+        },
+        "notes": "Actual growth-stage blocks and real seed/plant items only. All members optional and replace:false. This includes explicit year-round policy, not 53 new crop species or a claim that all crops are season-restricted."
+      },
+      {
+        "property": "growth.serene_seasons.same_crop_alignment",
+        "operation": "document",
+        "before": "Farm & Charm lettuce was autumn-only and tomato summer-only; corresponding Kaleidoscope Cookery crops already used spring/autumn and summer/autumn.",
+        "after": "Farm & Charm lettuce adds spring; tomato head/body and seed add autumn. All other pre-existing native/JEM windows remain."
+      },
+      {
+        "property": "growth.serene_seasons.native_route_limits",
+        "operation": "document",
+        "before": "Untagged custom growth routes were not proof of native seasonal integration.",
+        "after": "Tagged random ticks and native player-bonemeal policy govern supported routes. Shared Vinery trellis stays year-round; Unearthed Journey queued tree placement remains year-round; Nether mutation seed items retain their original terrestrial windows. Mature Spawn sunflower uses its separate exact-ID adapter record.",
+        "notes": "No broad scheduled-callback, machine-fertilizer or direct-growth interception is claimed. Harvesting ripe crops, recipes, food values, drops, worldgen, climate tags and dimension whitelist remain unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "native_sereneseasons_tag_extension",
+    "source_files": [
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/winter_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json",
+      "Mods/JEMCompat/SEASONS.md",
+      "Mods/JEMCompat/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide missing crop compatibility before the wider compatibility implementation prompt without duplicating seasonal state or replacing native growth.",
+    "decision_source": "User requested implementation of the supplied crop-compatibility patch on 2026-10-23; seasonal windows and adapter mechanics follow that supplied technical direction.",
+    "user_requested": "Implement all supplied Serene Seasons crop compatibility and coordinate with the parallel handbook/Hint/Jade chat.",
+    "implementation_choices": "Use exact registered stages and optional native tags; include productive food trees, protect perennials, align two existing crop families, and preserve explicit cave/Nether/End/aquatic and shared-trellis year-round exceptions. New season assignments are pack design choices.",
+    "atlas_snapshot": "bef54e985926d852fa0646938f88cba78acd0659",
+    "artifact_evidence": [
+      {
+        "mod_id": "alexscaves",
+        "version": "2.0.2",
+        "atlas_filename": "alexscaves-2.0.2.jar",
+        "atlas_sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      {
+        "mod_id": "beachparty",
+        "version": "2.0.3",
+        "atlas_filename": "letsdo-beachparty-forge-2.0.3.jar",
+        "atlas_sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef"
+      },
+      {
+        "mod_id": "blastfromthepast",
+        "version": "1.0.3",
+        "atlas_filename": "blastfromthepast-1.0.3+1.20.1.jar",
+        "atlas_sha256": "b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c"
+      },
+      {
+        "mod_id": "deep_dark_regrowth",
+        "version": "1.2.6.1",
+        "atlas_filename": "Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
+        "atlas_sha256": "3a2d487db40e1fe13307f8203ca69627787aede9bd332cf8bb2c29b41ec3fe88"
+      },
+      {
+        "mod_id": "farm_and_charm",
+        "version": "1.0.14",
+        "atlas_filename": "letsdo-farm_and_charm-forge-1.0.14.jar",
+        "atlas_sha256": "2311790589a58678640cb788de13bebd40efe3ed92f03e82a8fa871850a382eb"
+      },
+      {
+        "mod_id": "kaleidoscope_cookery",
+        "version": "1.4.1-forge+mc1.20.1",
+        "atlas_filename": "kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
+        "atlas_sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f"
+      },
+      {
+        "mod_id": "kaleidoscope_end",
+        "version": "1.0.14-forge+mc1.20.1",
+        "atlas_filename": "kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar",
+        "atlas_sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340"
+      },
+      {
+        "mod_id": "kaleidoscope_nether",
+        "version": "1.1.8-forge+mc1.20.1",
+        "atlas_filename": "kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar",
+        "atlas_sha256": "55a86fa55d381e918f3bb0fbc5fa17c73370076d752f8441b36a31758509e687"
+      },
+      {
+        "mod_id": "luminous_nether",
+        "version": "1.3.3",
+        "atlas_filename": "Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar",
+        "atlas_sha256": "6b3a02d00b8c7cd92718b968e123622b531f9b2272acc1b944d8a60c9c610a42"
+      },
+      {
+        "mod_id": "natures_spirit",
+        "version": "2.2.5-1.20.1",
+        "atlas_filename": "natures_spirit-2.2.5-1.20.1.jar",
+        "atlas_sha256": "07818dd985b100ae71b98c755961c135b07c3a08faf5d95afc87fab71a3b9e86"
+      },
+      {
+        "mod_id": "netherexp",
+        "version": "2.3.5",
+        "atlas_filename": "Jadens-Nether-Expansion-2.3.5.jar",
+        "atlas_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb"
+      },
+      {
+        "mod_id": "oceanicrealms",
+        "version": "1.0.7",
+        "atlas_filename": "oceanicrealms-1.0.7-last-laster-ver.jar",
+        "atlas_sha256": "8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321"
+      },
+      {
+        "mod_id": "primal",
+        "version": "1.1.6",
+        "atlas_filename": "primal-1.1.6%2B1.20.1.jar",
+        "atlas_sha256": "bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5"
+      },
+      {
+        "mod_id": "sereneseasons",
+        "version": "9.1.0.3",
+        "atlas_filename": "SereneSeasons-forge-1.20.1-9.1.0.3.jar",
+        "atlas_sha256": "650c35858d335d45adea5445ffaed25ccd433f5cbfe4936ac2694b250177b674"
+      },
+      {
+        "mod_id": "spawn",
+        "version": "4.0.7-1.20.1",
+        "atlas_filename": "spawn-4.0.7-1.20.1.jar",
+        "atlas_sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf"
+      },
+      {
+        "mod_id": "unearthed_journey",
+        "version": "2.2.3",
+        "atlas_filename": "unearthed_journey-2.2.3.jar",
+        "atlas_sha256": "e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6"
+      },
+      {
+        "mod_id": "vinery",
+        "version": "1.4.41",
+        "atlas_filename": "letsdo-vinery-forge-1.4.41.jar",
+        "atlas_sha256": "5d7e11f6e2218562ce75d60788fdcfc9ccf59e4532757c18bf37759d5fc739ee"
+      }
+    ],
+    "source_references": "Mods/JEMCompat/SEASONS.md links the release source commits and exact release archives used for registration/growth inspection; the hashes above identify original Atlas artifacts, not newly deployed outputs."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "extend_native_crop_tags",
+    "summary": "Add 34 reviewed growable food/fruit families (53 additional unique block IDs and 44 additional tooltip item IDs), align Farm & Charm tomato/lettuce, preserve existing native windows and document explicit year-round/native-route exceptions.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/winter_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json",
+      "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "extend_native_crop_tags",
+      "summary": "Add 34 reviewed growable food/fruit families (53 additional unique block IDs and 44 additional tooltip item IDs), align Farm & Charm tomato/lettuce, preserve existing native windows and document explicit year-round/native-route exceptions.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/winter_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json",
+        "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "integrate_full_local_pack",
+      "summary": "Merge supplied policy with current source and parallel handbook build dependencies; inspect exact installed Spawn and Serene Seasons bytecode and retain native fertility authority. Delivery receipt records production and installation evidence."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "crop growth",
+      "planting and seed tooltips",
+      "fruit regeneration",
+      "food supply and automation",
+      "perennial survival",
+      "greenhouses and underground farms",
+      "optional mod compatibility"
+    ],
+    "relations": [
+      "native crop tags -> Serene Seasons fertility -> random tick admission",
+      "item tags -> native fertile-season tooltips",
+      "productive leaves -> crop production and native leaf decay timing",
+      "crop availability -> downstream recipes and food economy without recipe or price edits"
+    ],
+    "notes": [
+      "Current pack mode 0 retains the native 1/6 infertile random-tick chance rather than stopping or destroying crops. Current Overworld-only policy, Y48 underground exemption and greenhouse handling remain native.",
+      "Desert turnip includes summer so native tropical-biome fertility does not make it permanently infertile. Climate-biome classifications are a separate pending compatibility task.",
+      "Psycho berry uses spring/winter. Cave, Nether/End and aquatic crops retain year-round ecology. Year-round membership does not override the native explicit infertile-biome rule.",
+      "Do not mark shared Kaleidoscope chili, vanilla pumpkin or torchflower seeds year-round. Do not season-tag the mature Spawn sunflower block; its unique seed-only adapter preserves rotation.",
+      "Vinery stem stores grape variants in one GRAPE property; this change deliberately retains its year-round behavior and does not claim per-variety equivalence to seasonal bushes.",
+      "Fruit-leaf random-tick gating can also slow leaf decay out of season. Nature Spirit coconut propagation is bonemeal-only. Unearthed Journey tree callbacks remain native and ungated under their year-round policy.",
+      "All 71 affected namespaced IDs, including the mature adapter target, were queried against canonical Atlas behavior; changed entries resolve in their actual block/item registries, with no prior native season membership or relevant season-rule conflicts.",
+      "Exact installed Spawn 4.0.7 and Serene Seasons 9.1.0.3 SHA256 match the referenced Atlas artifacts; javap confirms tryAdvanceRotation/setBlock and performBonemeal descriptors and the public native fertility callback. Local fertility config remains enabled with behavior 0 and underground level 48."
+    ],
+    "unresolved": [
+      "Gameplay acceptance, greenhouse/biome conditions, dispenser/direct bonemeal and absent-mod JVM loading remain unexercised; no tests or client gameplay launches are authorized.",
+      "Other mod fertilizers, queued callbacks and direct automation are not universally intercepted; documented native exceptions remain deliberate."
+    ]
+  }
+}

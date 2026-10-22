@@ -88,6 +88,8 @@ dependencies {
     compileOnly fg.deobf(files(installedMod('immersive_aircraft-*.jar')))
     compileOnly fg.deobf(files(installedMod('backpacked-forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('framework-forge-*.jar')))
+    compileOnly fg.deobf(files(installedMod('spawn-*.jar')))
+    compileOnly fg.deobf(files(installedMod('SereneSeasons-forge-*.jar')))
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
     compileOnly project(path: ':JEMAchievementGuide', configuration: 'jemCompile')
     compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
@@ -100,6 +102,7 @@ def mixinRefmapName = 'jemcompat.refmap.json'
 mixin {
     add sourceSets.main, mixinRefmapName
     config 'jemcompat.mixins.json'
+    config 'jemcompat.seasons.mixins.json'
 }
 
 tasks.named('compileJava', JavaCompile).configure {
@@ -139,7 +142,7 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Version': project.jar.archiveVersion,
                 'Implementation-Vendor': mod_authors,
                 'FMLAT': 'accesstransformer.cfg',
-                'MixinConfigs': 'jemcompat.mixins.json'
+                'MixinConfigs': 'jemcompat.mixins.json,jemcompat.seasons.mixins.json'
         ])
     }
     doLast {

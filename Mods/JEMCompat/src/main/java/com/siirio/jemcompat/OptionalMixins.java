@@ -1,5 +1,6 @@
 package com.siirio.jemcompat;
 
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +15,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
             Map.entry("com.siirio.jemcompat.mixin.guide.SpawnWithJourneyGuideProcedureMixin", List.of("spawn")),
+            Map.entry("com.siirio.jemcompat.mixin.seasons.SpawnSunflowerSeasonsMixin", List.of("spawn", "sereneseasons")),
             Map.entry("com.siirio.jemcompat.mixin.worldtier.EnhancedAiSpawningMixin", List.of("enhancedai", "jem_world_boss_tiers")),
             Map.entry("com.siirio.jemcompat.mixin.worldtier.KrakenStaggerMixin", List.of("block_factorys_bosses")),
             Map.entry("com.siirio.jemcompat.mixin.worldtier.SandwormStaggerMixin", List.of("block_factorys_bosses")),
@@ -71,8 +73,18 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("fabric_object_builder_api_v1")
                     && mod.getVersion().toString().equals("11.1.3+4bd998fa77"));
         }
-        return DEPENDENCIES.getOrDefault(mixinClassName, List.of()).stream()
+        boolean dependenciesPresent = DEPENDENCIES.getOrDefault(mixinClassName, List.of()).stream()
                 .allMatch(mod -> FMLLoader.getLoadingModList().getModFileById(mod) != null);
+        if (dependenciesPresent && mixinClassName.equals("com.siirio.jemcompat.mixin.seasons.SpawnSunflowerSeasonsMixin")) {
+            var spawn = FMLLoader.getLoadingModList().getModFileById("spawn");
+            // Mixin can merely warn about a missing target even in a required
+            // config. Inspect the installed mod file without loading its class.
+            if (!Files.isRegularFile(spawn.getFile().findResource(targetClassName.replace('.', '/') + ".class"))) {
+                throw new IllegalStateException("Installed Spawn is missing " + targetClassName
+                        + "; update the JEMCompat sunflower seasons adapter for this Spawn version.");
+            }
+        }
+        return dependenciesPresent;
     }
 
     @Override public void onLoad(String mixinPackage) { }

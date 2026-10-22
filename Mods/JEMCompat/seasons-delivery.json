@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-23",
+  "request": "Implement the supplied Serene Seasons crop patch and coordinate with the parallel handbook/Hint/Jade chat.",
+  "status": "production-built; coordinated shared runtime delivery pending",
+  "source_owner": "Mods/JEMCompat",
+  "parallel_chat": {
+    "title": "Implement server task",
+    "thread_id": "01a164b2-1dfc-7c02-b203-81964b8637df",
+    "notified": true,
+    "preserved": [
+      "Hint/Jade and JEI source",
+      "Lionfish API compile dependency",
+      "handbook/Guide source",
+      "DrillLifecycle and WorldBossTiers work"
+    ],
+    "runtime_delivery_owner": "parallel handbook chat; source chat waits to avoid concurrent Server/publication mutations"
+  },
+  "build": {
+    "command": ".\\gradlew.bat :JEMCompat:jar --console=plain",
+    "result": "BUILD SUCCESSFUL; reobfJar completed",
+    "artifact": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+    "sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+    "packaging": "11 native season tag JSON files, sunflower policy and Mixin, required optional config and SRG performBonemeal/setBlock refmap; parallel BossHelp classes retained"
+  },
+  "coverage": {
+    "growth_blocks": 76,
+    "tooltip_items": 65,
+    "additional_growth_block_ids": 53,
+    "additional_tooltip_item_ids": 44,
+    "added_families": 34,
+    "aligned_families": 2,
+    "missing_tag_registry_ids": []
+  },
+  "native_artifacts": {
+    "spawn": {
+      "version": "4.0.7-1.20.1",
+      "sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf"
+    },
+    "sereneseasons": {
+      "version": "9.1.0.3",
+      "sha256": "650c35858d335d45adea5445ffaed25ccd433f5cbfe4936ac2694b250177b674"
+    }
+  },
+  "atlas": {
+    "before_artifact_drift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "records": [
+      "compat.seasonal-crop-coverage-20261022",
+      "compat.spawn-sunflower-seasons-20261022"
+    ],
+    "maintenance": "rebuild, audit and validate completed successfully",
+    "validator": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12139,
+        "creative_tabs": 55,
+        "effects": 472,
+        "enchantments": 218,
+        "entities": 1608,
+        "items": 17162,
+        "structures": 520
+      },
+      "change_records": 128,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "task_uncovered_paths": [],
+    "whole_working_tree_uncovered_count": 575,
+    "scope": "Unrelated parallel/paused source coverage is preserved; no clean whole-workspace impact scan is claimed."
+  },
+  "local_server": {
+    "synchronized": false,
+    "status": "coordinated shared delivery pending; existing tax durability and development-ledger guards must not be bypassed"
+  },
+  "automodpack": {
+    "published_with_seasonal_artifact": false,
+    "installed_in_test_jem": false,
+    "previous_generation": 63
+  },
+  "limits": [
+    "No tests or static code analysis",
+    "No gameplay client launch or player acceptance",
+    "No stable profile/MineRENT/release-baseline mutation",
+    "Other fertilizer/direct/queued growth routes remain documented native exceptions"
+  ]
+}
