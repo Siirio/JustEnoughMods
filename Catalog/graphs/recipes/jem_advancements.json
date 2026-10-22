@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "1f76f323e9dacc9f0dc08ce817751f68506f04ce",
+  "generation": {
+    "generated_utc": "2026-10-22T20:22:33.380886+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "jem_advancements",
+    "name": "JEM Advancements",
+    "version": "${file.jarVersion}"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "jem_advancements:handbook",
+      "mod_id": "jem_advancements",
+      "mod_name": "JEM Advancements",
+      "mod_version": "${file.jarVersion}",
+      "recipe_type": "patchouli:shapeless_book_recipe",
+      "machine_id": "patchouli:shapeless_book_recipe",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "jem_advancements:just_enough_guide",
+        "minecraft:dirt",
+        "minecraft:stick",
+        "patchouli:shapeless_book_recipe"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "jem-advancements-5.1.0.jar:data/jem_advancements/recipes/handbook.json"
+      ]
+    }
+  ]
+}

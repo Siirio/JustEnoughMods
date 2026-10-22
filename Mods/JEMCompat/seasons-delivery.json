@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "request": "Implement the supplied Serene Seasons crop patch and coordinate with the parallel handbook/Hint/Jade chat.",
-  "status": "production-built; coordinated shared runtime delivery pending",
+  "status": "source-committed; combined production artifact synchronized; native publication/application blocked",
   "source_owner": "Mods/JEMCompat",
   "parallel_chat": {
     "title": "Implement server task",
@@ -70,21 +70,63 @@
     },
     "task_uncovered_paths": [],
     "whole_working_tree_uncovered_count": 575,
-    "scope": "Unrelated parallel/paused source coverage is preserved; no clean whole-workspace impact scan is claimed."
+    "scope": "Unrelated parallel/paused source coverage is preserved; no clean whole-workspace impact scan is claimed.",
+    "shared_final_validation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12139,
+        "creative_tabs": 55,
+        "effects": 472,
+        "enchantments": 219,
+        "entities": 1608,
+        "items": 17162,
+        "structures": 520
+      },
+      "change_records": 132,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "shared_final_artifact_drift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "shared_final_whole_working_tree_uncovered_count": 86
   },
   "local_server": {
-    "synchronized": false,
-    "status": "coordinated shared delivery pending; existing tax durability and development-ledger guards must not be bypassed"
+    "synchronized": true,
+    "sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+    "native_load": "UNOBSERVED; ordinary Server remains stopped after existing failures",
+    "blockers": [
+      "Existing Settlements TaxDurability ERROR_ACCESS_DENIED (5) replacing world/data/jem_settlements.dat; specific holder/ACL/transient cause remains unestablished.",
+      "Existing EconomySavedData development-ledger guard is frozen outside its paired local opt-in/account marker boundary."
+    ],
+    "world_ledger_optins_unchanged": true
   },
   "automodpack": {
+    "staged": true,
+    "staged_manifest_version": "1363dfe8f38050817f86bfe0badaef0beccaf1cb306136f61fc45d85a3deb420",
+    "publication_status": {
+      "published": false,
+      "journalSequence": 63,
+      "publishedManifestSha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+      "stagedManifestSha1": "5bd67314cb641619cfb0eeb1b19c70eda803271e"
+    },
     "published_with_seasonal_artifact": false,
-    "installed_in_test_jem": false,
-    "previous_generation": 63
+    "native_preview": "BLOCKED by existing ordinary Server failures",
+    "native_application": "BLOCKED: no newly published generation",
+    "test_jem_active_token": "ea5c8e10320356cce80c6bda1af5c992198ce954",
+    "pending_transaction": false,
+    "test_jem_generation": "63; earlier generation retained",
+    "raw_gameDir_copy": false
   },
   "limits": [
     "No tests or static code analysis",
     "No gameplay client launch or player acceptance",
     "No stable profile/MineRENT/release-baseline mutation",
     "Other fertilizer/direct/queued growth routes remain documented native exceptions"
-  ]
+  ],
+  "source_commit": "1f76f323",
+  "shared_delivery_receipt": "Docs/handbook/delivery.json"
 }

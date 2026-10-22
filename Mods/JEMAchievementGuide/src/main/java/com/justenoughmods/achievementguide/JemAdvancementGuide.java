@@ -13,6 +13,7 @@ public final class JemAdvancementGuide {
 
     public JemAdvancementGuide() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        com.justenoughmods.achievementguide.handbook.manuals.CommonManuals.register();
         modBus.addListener(JemCriteria::onCommonSetup);
         MinecraftForge.EVENT_BUS.register(JemCriteria.class);
         modBus.addListener(JemAdvancementGuide::registerPackCriteria);

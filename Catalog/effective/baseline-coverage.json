@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "1af065313a7d27f3fc2da4537cb940b06df5154ff8254ce463df11664bf02324",
+  "change_records_sha256": "9465f2756eef79d9d425d79559f6780379ddf522cb4b6bb61e20a86b179d965d",
   "totals": {
-    "watched": 3803,
-    "covered": 2011,
-    "unresolved": 1792
+    "watched": 4384,
+    "covered": 2604,
+    "unresolved": 1780
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1363,
-      "covered": 7,
-      "unresolved": 1356,
+      "watched": 1457,
+      "covered": 108,
+      "unresolved": 1349,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -246,13 +246,6 @@
         "Client/ManagedPack/config/forge-client.toml",
         "Client/ManagedPack/config/fpsbooster-client.toml",
         "Client/ManagedPack/config/fpsreducer/fpsreducer-client.toml",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/bosses_12_eyes.snbt",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/create.snbt",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/events.snbt",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/exploration.snbt",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
-        "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt",
         "Client/ManagedPack/config/fwa.json",
         "Client/ManagedPack/config/fzzy_config/keybinds.toml",
         "Client/ManagedPack/config/golemoverhaul.jsonc",
@@ -1388,8 +1381,8 @@
     },
     "Client/ManagedPack/kubejs": {
       "watched": 16,
-      "covered": 3,
-      "unresolved": 13,
+      "covered": 4,
+      "unresolved": 12,
       "unresolved_paths": [
         "Client/ManagedPack/kubejs/README.txt",
         "Client/ManagedPack/kubejs/assets/ftbquests/ftb_quests_theme.txt",
@@ -1399,7 +1392,6 @@
         "Client/ManagedPack/kubejs/config/client.properties",
         "Client/ManagedPack/kubejs/config/common.properties",
         "Client/ManagedPack/kubejs/data/jem/tags/items/valid_fishing_rods.json",
-        "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
         "Client/ManagedPack/kubejs/data/primal/tags/items/deer_antlers.json",
         "Client/ManagedPack/kubejs/data/snowyspirit/loot_tables/chests/present_villager.json",
         "Client/ManagedPack/kubejs/server_scripts/jem/workstation_recipes.js",
@@ -1415,8 +1407,8 @@
       ]
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 822,
-      "covered": 817,
+      "watched": 1300,
+      "covered": 1295,
       "unresolved": 5,
       "unresolved_paths": [
         "Mods/JEMAchievementGuide/gradle.properties",
@@ -1447,9 +1439,9 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 163,
-      "covered": 104,
-      "unresolved": 59,
+      "watched": 171,
+      "covered": 114,
+      "unresolved": 57,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
@@ -1457,11 +1449,9 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/SourceNameTooltipFilter.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/FrozenTintBufferSource.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingFoodCatalog.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingProvider.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingCatalog.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingDataLoader.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingProvider.java",
@@ -1514,15 +1504,14 @@
     },
     "Mods/JEMDrillLifecycle": {
       "watched": 26,
-      "covered": 1,
-      "unresolved": 25,
+      "covered": 3,
+      "unresolved": 23,
       "unresolved_paths": [
         "Mods/JEMDrillLifecycle/gradle.properties",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/JemDrillLifecycle.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/api/DrillAction.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/api/DrillLifecycleEvent.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/compat/jade/DrillWearJadePlugin.java",
-        "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/compat/jade/DrillWearProvider.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/drill/DrillWear.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/drill/DrillWearAccess.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/drill/DrillWearPolicy.java",
@@ -1539,14 +1528,13 @@
         "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/entries/engineering/drill_replaced.json",
         "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/entries/engineering/drill_service.json",
         "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/entries/engineering/drill_work.json",
-        "Mods/JEMDrillLifecycle/src/main/resources/data/jemcompat/patchouli_books/just_enough_guide/book.json",
         "Mods/JEMDrillLifecycle/src/main/resources/jem_drill_lifecycle.mixins.json",
         "Mods/JEMDrillLifecycle/src/main/resources/pack.mcmeta"
       ]
     },
     "Mods/JEMEconomy": {
-      "watched": 150,
-      "covered": 144,
+      "watched": 151,
+      "covered": 145,
       "unresolved": 6,
       "unresolved_paths": [
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/blockstates/shipping_box.json",

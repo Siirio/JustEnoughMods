@@ -1,0 +1,198 @@
+{
+  "schema_version": 2,
+  "change_id": "handbook.native-navigation",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "patchouli:guide_book"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "Owning JEM modules and the exact optional native mod are installed; native permissions, research, discovery and gameplay remain authoritative."
+    },
+    {
+      "delivery": "Docs/handbook/delivery.json records build, synchronization and native installation separately from source and acceptance."
+    }
+  ],
+  "precedence": {
+    "layer": "presentation_and_documentation",
+    "priority": 600,
+    "overrides": []
+  },
+  "change": {
+    "summary": "native-navigation",
+    "modifiers": [
+      {
+        "property": "handbook.native_book",
+        "operation": "document",
+        "before": "The generated guide was disabled and the historical custom item could redirect an ordinary vanilla book.",
+        "after": {
+          "item": "patchouli:guide_book",
+          "nbt": {
+            "patchouli:book": "jem_advancements:just_enough_guide"
+          },
+          "recipe": "One minecraft:dirt plus one minecraft:stick in any two crafting-grid slots, native patchouli:shapeless_book_recipe; no ordinary book required.",
+          "navigation": "Seven native icon ribbons, RU/EN entry/category aliases, configurable Alt+H, native history and return, no advancement awards."
+        }
+      },
+      {
+        "property": "handbook.native_manuals",
+        "operation": "document",
+        "before": "Native books existed separately.",
+        "after": "Eight general native families plus acquired Aquamirae NBT logbooks, preserving native knowledge. Fixed three-route server request protocol1 is read-only and requires the exact handbook."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide; isolated JEMCompat/DrillLifecycle/WorldBossTiers presentation adapters",
+    "kind": "native_handbook_extension",
+    "source_files": [
+      "Mods/JEMAchievementGuide/README.md",
+      "Mods/JEMAchievementGuide/tools/*.py",
+      "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/Handbook*.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/manuals/*.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/manuals/*.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbook*.java",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/**/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/start/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/manuals/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/mechanics/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/recipes/handbook.json",
+      "Mods/JEMDrillLifecycle/src/main/resources/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+      "Server/mods/jem-advancements-5.1.0.jar",
+      "Docs/handbook/README.md",
+      "Docs/handbook/manuals.md",
+      "Docs/handbook/delivery.json",
+      "Docs/DEVELOPMENT.md",
+      "Client/ManagedPack/jem-pack/manifest.json",
+      "tools/state/packSyncHost-sync.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make established pack mechanics discoverable through one native handbook and concise owner-backed help.",
+    "decision_source": "User requested implementation of the universal book brief, resumed after FTB commit 67d9f215, and required preservation of parallel work.",
+    "user_requested": "One dirt-and-stick handbook, seven sections, native manual access and return, bilingual search, enchantment/boss/item help, JEI and Jade integration.",
+    "implementation_choices": "Reuse Patchouli and existing assets; read native/domain state, cache resource text on reload, isolate optional integrations and keep explicit evidence gaps."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "implement_universal_handbook",
+    "summary": "native-navigation",
+    "source_files": [
+      "Mods/JEMAchievementGuide/README.md",
+      "Mods/JEMAchievementGuide/tools/*.py",
+      "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/Handbook*.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/manuals/*.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/manuals/*.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbook*.java",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/**/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/start/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/manuals/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/mechanics/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/recipes/handbook.json",
+      "Mods/JEMDrillLifecycle/src/main/resources/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+      "Server/mods/jem-advancements-5.1.0.jar",
+      "Docs/handbook/README.md",
+      "Docs/handbook/manuals.md",
+      "Docs/handbook/delivery.json",
+      "Docs/DEVELOPMENT.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "implement_universal_handbook",
+      "summary": "native-navigation",
+      "source_files": [
+        "Mods/JEMAchievementGuide/README.md",
+        "Mods/JEMAchievementGuide/tools/*.py",
+        "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
+        "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
+        "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/Handbook*.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/manuals/*.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/manuals/*.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbook*.java",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/**/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/start/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/manuals/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/mechanics/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/recipes/handbook.json",
+        "Mods/JEMDrillLifecycle/src/main/resources/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+        "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+        "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+        "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+        "Server/mods/jem-advancements-5.1.0.jar",
+        "Docs/handbook/README.md",
+        "Docs/handbook/manuals.md",
+        "Docs/handbook/delivery.json",
+        "Docs/DEVELOPMENT.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "handbook",
+      "tooltips",
+      "JEI",
+      "Jade",
+      "optional native manuals",
+      "local distribution"
+    ],
+    "relations": [
+      "native/domain state -> presentation adapter -> handbook or tooltip",
+      "canonical authored resources -> localized Patchouli pages and JEI information"
+    ],
+    "notes": [
+      "FTB progress bridge, chapter image Mixin, content and rewards from 67d9f215 remain intact.",
+      "No new textures, runtime dependency, gameplay balance or progression state. Native public APIs are preferred; three optional client Mixins extend search/history/category access.",
+      "The legacy DrillLifecycle/KubeJS guide remains hidden and no longer claims minecraft:book."
+    ],
+    "unresolved": [
+      "Actual GUI scale, focus, narration and composed visual acceptance are unobserved. No gameplay/client launch was performed.",
+      "Native publication/application may be blocked by the pre-existing ordinary Server failures recorded in Docs/quests/delivery.json."
+    ]
+  }
+}

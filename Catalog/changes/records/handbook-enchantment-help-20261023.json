@@ -1,0 +1,128 @@
+{
+  "schema_version": 2,
+  "change_id": "handbook.enchantment-help",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "enchantments",
+      "value": "jem:authored_enchantment_help",
+      "members_path": "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+      "records_field": "enchantments",
+      "id_field": "id"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "Owning JEM modules and the exact optional native mod are installed; native permissions, research, discovery and gameplay remain authoritative."
+    },
+    {
+      "delivery": "Docs/handbook/delivery.json records build, synchronization and native installation separately from source and acceptance."
+    }
+  ],
+  "precedence": {
+    "layer": "presentation_and_documentation",
+    "priority": 600,
+    "overrides": []
+  },
+  "change": {
+    "summary": "enchantment-help",
+    "modifiers": [
+      {
+        "property": "handbook.enchantment_help",
+        "operation": "document",
+        "before": "No shared explanation inventory for the confirmed non-vanilla enchantment registrations.",
+        "after": "85 exact confirmed enchantments have RU/EN pages and actual-level multi-enchantment tooltip descriptions; normal book tooltip names applicable items without requiring Shift. Native config/compatibility and HideFlags remain authoritative."
+      },
+      {
+        "property": "handbook.progression_labels",
+        "operation": "document",
+        "before": "Enchantment level I could be confused with required World Tier II or III.",
+        "after": "Labels explicitly distinguish enchantment I from native World Tier thresholds; existing snapshot, eligibility and mechanics are unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide; isolated JEMCompat/DrillLifecycle/WorldBossTiers presentation adapters",
+    "kind": "native_handbook_extension",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/templates/*.json",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/*.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/*.json",
+      "Docs/handbook/enchantments.md",
+      "Docs/handbook/enchantments-coverage.json",
+      "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make established pack mechanics discoverable through one native handbook and concise owner-backed help.",
+    "decision_source": "User requested implementation of the universal book brief, resumed after FTB commit 67d9f215, and required preservation of parallel work.",
+    "user_requested": "One dirt-and-stick handbook, seven sections, native manual access and return, bilingual search, enchantment/boss/item help, JEI and Jade integration.",
+    "implementation_choices": "Reuse Patchouli and existing assets; read native/domain state, cache resource text on reload, isolate optional integrations and keep explicit evidence gaps."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "implement_universal_handbook",
+    "summary": "enchantment-help",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/templates/*.json",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/*.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/*.json",
+      "Docs/handbook/enchantments.md",
+      "Docs/handbook/enchantments-coverage.json",
+      "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "implement_universal_handbook",
+      "summary": "enchantment-help",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/templates/*.json",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/*.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/*.json",
+        "Docs/handbook/enchantments.md",
+        "Docs/handbook/enchantments-coverage.json",
+        "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+        "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "handbook",
+      "tooltips",
+      "JEI",
+      "Jade",
+      "optional native manuals",
+      "local distribution"
+    ],
+    "relations": [
+      "native/domain state -> presentation adapter -> handbook or tooltip",
+      "canonical authored resources -> localized Patchouli pages and JEI information"
+    ],
+    "notes": [
+      "72 specialized target entries use native item icons. Source evidence is distinct from language-key candidates.",
+      "Three native defects are explained rather than repaired; acquisition unknowns are not presented as impossibility.",
+      "Player durations are Minecraft-day fractions; internal native units are unchanged."
+    ],
+    "unresolved": [
+      "Six Epic Fight Nightfall survival book acquisition paths remain unestablished; native live/world configuration and acceptance remain unobserved."
+    ]
+  }
+}

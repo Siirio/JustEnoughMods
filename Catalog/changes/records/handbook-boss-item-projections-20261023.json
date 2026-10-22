@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "change_id": "handbook.boss-item-projections",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "entities",
+      "value": "jem:authored_boss_help",
+      "members_path": "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "records_field": "entries",
+      "id_field": "subject"
+    },
+    {
+      "type": "source_set",
+      "registry": "items",
+      "value": "jem:authored_item_help",
+      "members_path": "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+      "records_field": "entries",
+      "id_field": "subject"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "Owning JEM modules and the exact optional native mod are installed; native permissions, research, discovery and gameplay remain authoritative."
+    },
+    {
+      "delivery": "Docs/handbook/delivery.json records build, synchronization and native installation separately from source and acceptance."
+    }
+  ],
+  "precedence": {
+    "layer": "presentation_and_documentation",
+    "priority": 600,
+    "overrides": []
+  },
+  "change": {
+    "summary": "boss-item-projections",
+    "modifiers": [
+      {
+        "property": "handbook.subject_help",
+        "operation": "document",
+        "before": "Existing advancements and native tooltips did not provide one shared set of source-reviewed boss tactics and difficult-item instructions.",
+        "after": "56 canonical boss profiles and 56 difficult items have distinct RU/EN guidance; authored item summaries feed tooltip and native JEI information. Boss Jade reads canonical server participant/waiting state and three exact native Cataclysm protection signals."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide; isolated JEMCompat/DrillLifecycle/WorldBossTiers presentation adapters",
+    "kind": "native_handbook_extension",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/items/**/*.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BossHelp*.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/CataclysmBossHelp.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/*.json",
+      "Mods/JEMCompat/build.gradle",
+      "Docs/handbook/bosses-coverage.json",
+      "Docs/handbook/items-coverage.json",
+      "Docs/handbook/items-reference-evidence.json",
+      "Docs/handbook/items-findings.md",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Server/mods/jemcompat-3.7.0.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make established pack mechanics discoverable through one native handbook and concise owner-backed help.",
+    "decision_source": "User requested implementation of the universal book brief, resumed after FTB commit 67d9f215, and required preservation of parallel work.",
+    "user_requested": "One dirt-and-stick handbook, seven sections, native manual access and return, bilingual search, enchantment/boss/item help, JEI and Jade integration.",
+    "implementation_choices": "Reuse Patchouli and existing assets; read native/domain state, cache resource text on reload, isolate optional integrations and keep explicit evidence gaps."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "implement_universal_handbook",
+    "summary": "boss-item-projections",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/items/**/*.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BossHelp*.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/CataclysmBossHelp.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/*.json",
+      "Mods/JEMCompat/build.gradle",
+      "Docs/handbook/bosses-coverage.json",
+      "Docs/handbook/items-coverage.json",
+      "Docs/handbook/items-reference-evidence.json",
+      "Docs/handbook/items-findings.md",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Server/mods/jemcompat-3.7.0.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "implement_universal_handbook",
+      "summary": "boss-item-projections",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+        "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/items/**/*.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BossHelp*.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/CataclysmBossHelp.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/*.json",
+        "Mods/JEMCompat/build.gradle",
+        "Docs/handbook/bosses-coverage.json",
+        "Docs/handbook/items-coverage.json",
+        "Docs/handbook/items-reference-evidence.json",
+        "Docs/handbook/items-findings.md",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Server/mods/jemcompat-3.7.0.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "handbook",
+      "tooltips",
+      "JEI",
+      "Jade",
+      "optional native manuals",
+      "local distribution"
+    ],
+    "relations": [
+      "native/domain state -> presentation adapter -> handbook or tooltip",
+      "canonical authored resources -> localized Patchouli pages and JEI information"
+    ],
+    "notes": [
+      "No client damage-admission model, new boss allowlist, combat modification or native GUI replacement.",
+      "Ignis shield is directional; Harbinger arrow immunity is conditional on powered state; Leviathan out-of-water protection reads the native config.",
+      "JEMCompat uses the already-installed Lionfish API only as a compile dependency. Combined JAR preserves coordinated seasonal changes, whose independent owners are their two seasonal Atlas records.",
+      "Rune of the Storm and Dead Sea Scroll are documented as installed relic/trophy implementations; unsupported Rune weapon-use wording in the separate FTB quest content is flagged without editing it."
+    ],
+    "unresolved": [
+      "Full per-boss phase/attack and damage-predicate inventory, live overrides and runtime acceptance are incomplete.",
+      "Backpacked unlock_token native spend is confirmed; survival acquisition remains unestablished. Whole-pack no-JEI and translation coverage is not claimed."
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "High-Sensitivity Color Film",
+  "icon": "exposure:high_sensitivity_color_film",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:exposure",
+  "jem_aliases": [
+    "Светочувствительная цветная плёнка",
+    "High-Sensitivity Color Film",
+    "exposure:high_sensitivity_color_film"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "exposure:high_sensitivity_color_film",
+      "text": "Load into the camera, expose frames and develop according to the stage shown by the roll tooltip."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Exposing",
+      "text": "Craft through JEI and load into camera attachments. After taking photos, remove that same roll: frame data belongs to it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Developing",
+      "text": "Craft the exposed roll with Awkward Potion, then Thick Potion, then Mundane Potion. Each step uses the special developing recipe; the roll tooltip shows the current stage. The result is developed color film."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Printing",
+      "text": "Place the developed film into a Lightroom, choose a frame and supply paper with the required dyes. Developed film is not yet a paper photograph."
+    }
+  ],
+  "jem_summary": "Load into the camera, expose frames and develop according to the stage shown by the roll tooltip."
+}

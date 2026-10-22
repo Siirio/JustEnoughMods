@@ -14,11 +14,13 @@ import snownee.jade.api.WailaPlugin;
 public final class JemJadePlugin implements IWailaPlugin {
     private static final TamingProvider TAMING = new TamingProvider();
     private static final BreedingProvider BREEDING = new BreedingProvider();
+    private static final BossHelpProvider BOSSES = new BossHelpProvider();
 
     @Override
     public void register(IWailaCommonRegistration registration) {
         registration.registerEntityDataProvider(TAMING, LivingEntity.class);
         registration.registerEntityDataProvider(BREEDING, LivingEntity.class);
+        registration.registerEntityDataProvider(BOSSES, LivingEntity.class);
     }
 
     @Override
@@ -34,5 +36,6 @@ public final class JemJadePlugin implements IWailaPlugin {
         });
         registration.registerEntityComponent(TAMING, LivingEntity.class);
         registration.registerEntityComponent(BREEDING, LivingEntity.class);
+        registration.registerEntityComponent(BOSSES, LivingEntity.class);
     }
 }

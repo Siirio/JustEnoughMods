@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "1af065313a7d27f3fc2da4537cb940b06df5154ff8254ce463df11664bf02324",
+  "change_records_sha256": "9465f2756eef79d9d425d79559f6780379ddf522cb4b6bb61e20a86b179d965d",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -43,7 +43,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32438
+      "potential_static_target_count": 32439
     },
     {
       "change_id": "backpack.augment-bay-and-workbench",
@@ -98,7 +98,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32438
+      "potential_static_target_count": 32439
     },
     {
       "change_id": "compat.narrator-and-shared-categories",
@@ -216,6 +216,119 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "compat.seasonal-crop-coverage-20261022",
+      "status": "conditional",
+      "summary": "Extend the existing native Serene Seasons tag policy to reviewed missing food crops and productive plant stages; retain one native fertility owner and matching tooltip windows.",
+      "record": "Catalog/changes/records/compat-seasonal-crop-coverage-20261022.json",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "blocks",
+          "value": "sereneseasons:autumn_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "blocks",
+          "value": "sereneseasons:spring_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "blocks",
+          "value": "sereneseasons:summer_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "blocks",
+          "value": "sereneseasons:unbreakable_infertile_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "blocks",
+          "value": "sereneseasons:winter_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/winter_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "blocks",
+          "value": "sereneseasons:year_round_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "items",
+          "value": "sereneseasons:autumn_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "items",
+          "value": "sereneseasons:spring_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "items",
+          "value": "sereneseasons:summer_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "items",
+          "value": "sereneseasons:winter_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        },
+        {
+          "type": "source_set",
+          "registry": "items",
+          "value": "sereneseasons:year_round_crops",
+          "members_path": "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json",
+          "records_field": "values",
+          "id_field": "id"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 141
+    },
+    {
+      "change_id": "compat.spawn-sunflower-seasons-20261022",
+      "status": "conditional",
+      "summary": "Close the mature Spawn sunflower scheduled seed-growth bypass while preserving native sun tracking and using Serene Seasons as the single fertility owner.",
+      "record": "Catalog/changes/records/compat-spawn-sunflower-seasons-20261022.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "spawn:sunflower"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "economy.building-supply-prohibitions",
@@ -683,6 +796,85 @@
           "type": "id",
           "registry": "items",
           "value": "naturescompass:naturescompass"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
+    },
+    {
+      "change_id": "handbook.boss-item-projections",
+      "status": "conditional",
+      "summary": "boss-item-projections",
+      "record": "Catalog/changes/records/handbook-boss-item-projections-20261023.json",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "entities",
+          "value": "jem:authored_boss_help",
+          "members_path": "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+          "records_field": "entries",
+          "id_field": "subject"
+        },
+        {
+          "type": "source_set",
+          "registry": "items",
+          "value": "jem:authored_item_help",
+          "members_path": "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+          "records_field": "entries",
+          "id_field": "subject"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 112
+    },
+    {
+      "change_id": "handbook.drill-help",
+      "status": "conditional",
+      "summary": "drill-help",
+      "record": "Catalog/changes/records/handbook-drill-help-20261023.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "create:mechanical_drill"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "create:mechanical_drill"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 2
+    },
+    {
+      "change_id": "handbook.enchantment-help",
+      "status": "conditional",
+      "summary": "enchantment-help",
+      "record": "Catalog/changes/records/handbook-enchantment-help-20261023.json",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "enchantments",
+          "value": "jem:authored_enchantment_help",
+          "members_path": "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+          "records_field": "enchantments",
+          "id_field": "id"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 85
+    },
+    {
+      "change_id": "handbook.native-navigation",
+      "status": "conditional",
+      "summary": "native-navigation",
+      "record": "Catalog/changes/records/handbook-native-navigation-20261023.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "patchouli:guide_book"
         }
       ],
       "exceptions": [],
@@ -2386,7 +2578,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32438
+      "potential_static_target_count": 32439
     },
     {
       "change_id": "universal-standalone.economy-world-policy-20261021",
@@ -2459,7 +2651,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32438
+      "potential_static_target_count": 32439
     },
     {
       "change_id": "universal-standalone.races-20261021",
@@ -2599,7 +2791,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 32438
+      "potential_static_target_count": 32439
     },
     {
       "change_id": "vinery.native-merchant-registered-ids",
@@ -2794,20 +2986,23 @@
     "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
+    "Client/ManagedPack/jem-pack/manifest.json": "043db95388838688ed04fad26950171637aaa0dcdb6e481c00e4bf4675e11aa1",
+    "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
     "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js": "fccc72987a34cd30e05e9f5cf1f506f788ab912fda83b5a7013c01050ac0d766",
     "Client/ManagedPack/kubejs/server_scripts/jem/twelve_eye_campaign.js": "52a3c865538a8b14b25eafa8b45e9f60d26bde62f7f439366cb92d1f5857a58a",
-    "Client/ManagedPack/mods/jem-advancements-5.1.0.jar": "a5c81bbae1ff2866e62b82b00ee8b7772af78317a5b101b1cb6cb75888400440",
+    "Client/ManagedPack/mods/jem-advancements-5.1.0.jar": "67628000ebf4aa2ce5474a9a31db9cae2a12e61fcda10c436d58fba8e15bd2b1",
     "Client/ManagedPack/mods/jem-bootstrap.jar": "75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8",
     "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "b87055924a910215a5844fbd4ec303e6e7c946221bf0c97bfd06b8d80d23a1a0",
     "Client/ManagedPack/mods/jem-races-2.0.0.jar": "c11ac4b978869a0e5eee4b01ff9138c199240a51244c12949fa5e86a4e986797",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "26de1d49135d03a90b341b5dcabc62b733b2be23d9580f7fd8de3aa4055c0614",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "df32538df5fc5357513d2e487b08170c9151bf1d91b2e9307e2b539f69f83e6e",
-    "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar": "8b75a823c4a725814e3a6012dd146d7f523ca9a785ac0db571a1562f45a15cab",
+    "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar": "18bee2c919df207fcc449dd92f43afb22b2d94f7b6eff3edc56026c8aa3d4174",
+    "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "3050548f28a35d64649c4d74aa0482fe6b5af8a0fbc39d430f24ed5e880b9bc9",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "f97b54e8038ba34035536b0323955fe3973934ec55b6a19754bf8cda7b6f4a3f",
-    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30",
+    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "d5a9149f0f254ba982474b3c7da6271e5e2984a062b84c94cdb303dc819c44ae",
+    "Docs/DEVELOPMENT.md": "8a16d49341b59ca60731bdfd44b7bec6479e74e5789702dea009cc1afe1fa84f",
     "Docs/SERVER_COMMANDS.md": "1530780beac042962a2718843df2006319a320f224fca2dbc06eece3ff2d9775",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -2822,6 +3017,15 @@
     "Docs/events/BOSS_RAID.md": "04d15865ed46c576e71b137326869d721d4049df6319092213fe67ebb8aac955",
     "Docs/gui-sandbox/README.md": "71775c921e2cbb7dda22ee07e603be62a045ea17aa78e9ba6f0bb4e1dc227d63",
     "Docs/gui-sandbox/delivery.json": "018431eef19b2f240853ba2d87ca271f38e7cd9ce3973fa7c2628c95fa44650b",
+    "Docs/handbook/README.md": "9b16cdae668c63b2d8da0ae458636b699c276cbed4f69e87d2ac0ff34b0e7054",
+    "Docs/handbook/bosses-coverage.json": "adcac2a9ed7c1c4b9b1bea6e98e773d72ca777f2fb922371dab82f0e9413f9f0",
+    "Docs/handbook/delivery.json": "f0b5b5ba320146a7d5bccdae4fd5714512fb7af4fc50af15f6f1fe67cf898433",
+    "Docs/handbook/enchantments-coverage.json": "00ab830cd81c92db91f494414653fd5a3708e1a8516e55b29a1222c6b86f335c",
+    "Docs/handbook/enchantments.md": "827c9c22063dfd561b7bb7802591459d4fb959330b778e4bceaca96162eb5323",
+    "Docs/handbook/items-coverage.json": "980d03640450e46b6d3f735a6b1228131c15dbfbeb8741121f8dacbb094b738f",
+    "Docs/handbook/items-findings.md": "68b684daac158eb4f0ed1b1bdf4826145dbd85120ad207e199bb129229609783",
+    "Docs/handbook/items-reference-evidence.json": "b0892502f5e51f1cd0f9185db9b32a9e0284fac9e05179286028fd51b6a668e1",
+    "Docs/handbook/manuals.md": "f6311cc9f05d2b057e21e399da6e34338341628d7b2047b163de8a6cc3cf3e75",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
     "Docs/power-system/Balance.md": "4a0a8fa5657acccd6038fe9530a939d061124638862f128b882af07042ebe0cc",
@@ -2848,7 +3052,7 @@
     "Docs/settlements/standalone/GUI_SPEC.md": "4e7d59b84c3214d5122ede400fefc13a0ba2c762566549c3040ae31b049c7605",
     "Docs/settlements/standalone/README.md": "521ad4062e3d8e2243ad8f9d2f2f648e8579378081a0e340598930839219e014",
     "Docs/smp-gui/README.md": "3f366068d08df08b1d1a9cd05aaf054898deb56ee3e734ce9178521b1e643355",
-    "Mods/JEMAchievementGuide/README.md": "1592c7049b70416a59c27309e7d0290e31ecf37ac813c6103c19490962b383f7",
+    "Mods/JEMAchievementGuide/README.md": "77e8a6d91b62c6bd45da644a8795bdf3579aa159ad415e24118dd2972e8dbc2a",
     "Mods/JEMAchievementGuide/build.gradle": "5811a65d872a141a02a9576bf5b4158aadc08177000c765a7216e06e1e734469",
     "Mods/JEMAchievementGuide/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMAchievementGuide/src/main/advancements/campaign-guide.json": "f7cfe6d3e6f2742dfaac2049ac85cef80d72e61a82e2f50f98e2067b9354328b",
@@ -2861,8 +3065,13 @@
     "Mods/JEMAchievementGuide/src/main/advancements/manifest.json": "7a36df6d195181fd6e427579352b78d4e6064ae60ff911cd5c4173335c4fd1e9",
     "Mods/JEMAchievementGuide/src/main/advancements/native-generated-files.json": "68021e07498d89d6707537c7fab273baffc40a035806d3031370a5e2376edbde",
     "Mods/JEMAchievementGuide/src/main/advancements/native-integrations.json": "a57aef99c6fa5bca90b5a4b00c9d694a1c648c631208daae4ee5b8d0825db2d2",
+    "Mods/JEMAchievementGuide/src/main/handbook/bosses.json": "3b50fe44a8099720c67b8f6c37b14ad9d0d1edf0c049c8a22135a4be4c1e8b4d",
+    "Mods/JEMAchievementGuide/src/main/handbook/items.json": "48f0214ebb5252b2e9f94acaa016d21ff64668d184f907c4cda8fcd701677f9f",
+    "Mods/JEMAchievementGuide/src/main/handbook/manuals.json": "1879920345db6fce080a67e833aef9c44e183f1417ec31e4843faacec63fce28",
+    "Mods/JEMAchievementGuide/src/main/handbook/navigation.json": "a4eeed0c295fe479da4cd72c366fd6d2d47f45fa0d4942476f754a9f202571e5",
+    "Mods/JEMAchievementGuide/src/main/handbook/translations.json": "cf4a770e259d88daa92e8f57721745fa45bd4ebb44d26112088486fca14d66eb",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java": "ae73f596f2b599e5fd2b6fd4eccd484c624754901f805e735a89b883e9a8b380",
-    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java": "f98c5a8d07ff76bb8fd4b396c8658bd160d7b851e562efd603275c93459d3adc",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java": "c65fc324eb648277790a79afcf945b3e74f648eb84b65d28b39b7803dbe35f0a",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/AdvancementScreenEvents.java": "4bba8119f23c6b8f563d3206ccbd6fffeee302475c0b9a1fd7a310d61b6cc3f2",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java": "9eddcde95101fdaadbd78a0055854283c71772382511887f95b339241c184a53",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/BookInformationScreen.java": "8a9452ea87b7d1adc943e9fdfd84f507e684c6772ea8fb47f34c850db9ee4002",
@@ -2896,16 +3105,17 @@
     "Mods/JEMAchievementGuide/src/main/resources/META-INF/licenses/TreeChop-MIT.txt": "d4b2f487f8836367e96992034447e7be460cbfb0f37c89dc01057811a3b5b783",
     "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml": "f59b1f4d91f1f9100a73e72a6abd0a88bb57378e9a30b5f41a17de94f9106b08",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json": "507793d537f7ff91a7eea68a894a06d3403350347d70f1d44b69ec079a4a3fc4",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json": "f9d5d9c01075f3300cceac7211e4cfa0f1d42bd3c70202eadd5e052130cc663a",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json": "6e7d7f2ebddb00271ebb9e53569b6665d3f5cb694c3ec5336c253ed12c996675",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/arsenal.json": "df80cbd6bfd555afe9e082c2d6b5193635d76740be645e964392671810d7245e",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/bosses.json": "0e5fb0b407faf0cc06d69431b096919a2cc18209c78b8cef326ff30c0dffed7f",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/building.json": "aad97ab7e10d113efa2a5fdf4cec5ae3e0ffe9df2931b7cd98ec3d920c5300d2",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/cool_stuff.json": "0476bed4f1c37a44a0efbad6dea8f70caf3837214a2107649daa2a1e7401f66d",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/engineering.json": "1d12b39703129bee93d682263b40487089af97d3a648dbbc216336a1b1c3ab94",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/fishing.json": "ab53d2238da8b798f6c7077a5cb63cef763487b927e2ca626154aca240ec5379",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/mobs.json": "aff761d5ee98481b3cab5c7ddbcadd21a91ebce46a63b5d97725379bd3ac2d8f",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/qol.json": "dbf482c73fdeff65d4f52d7b30b95f1e148d3c8bebeffa53c2e31cecf6174673",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json": "1f15e8c33707483c0f552ff58c0f7331ab452bf3657063c315689c6fd1da4c08",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json": "50c6ed58bd4dc345584ed1ba4f0280368d4f9cee131b630ee661fa87a76fbe8c",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json": "cb0c0857f166ba4afe11b77ab090f2adcece94da4abd049d49a47ccc612e5c5d",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/arsenal.json": "ecbbdc57688153002e7d8f1b417f86bb8fbd62d2b01311d8099e257846982b37",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/bosses.json": "c8aa805d3493eb9771c25e5b726971d3aff5262de85978edb1a649743367f390",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/building.json": "e991b835ed955d25a3b386b6b0a4f0fac940a948971c996a7695fc397d998fb8",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/cool_stuff.json": "5145440e66372eae43a76622db6a637f7c9e3e99a505a697415044b97f17ed99",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/engineering.json": "05efb41ba1d76f6721b39bfbfabdad316bef39dd9eef289228966e6976cd61a4",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/fishing.json": "421340a2cac327692b16563991ca7f76603dca8112cb273ed21c3ef680fb5880",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/mobs.json": "78b2dad5874a2e4d318b3370277ad4b16eee23e7baf50ea1e3bd588dfa1ad2c2",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/qol.json": "209adc8680156ace1585e66949bd8343b81032cc9417ec94c10ca3efa2dbde37",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/arsenal/ballista.json": "6384a905bde9133345074f1013cc011e496dea576a77867a91ef35cd25b6b908",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/arsenal/catapult.json": "6bd31c3f85ab3228e535383e76adef88781b312774307849197c22e6d0dc398a",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/arsenal/efn_armor.json": "20a29d9a177e2fea91b9c6e104a27d6f6a41c62da97dbc05d2d0ad508b9f1e62",
@@ -3579,6 +3789,7 @@
     "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json": "84f603cef9b0cf5550e317a36ee37d942383794f8210f6fcbaa819c93d99374f",
     "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json": "48ad39bd06be3f52ea95f91b2a3864a761f4cd040dd1c253732bd3327aa08e30",
     "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/rules.json": "e9763d057c286a4207c14df82968c39c5b19e08b63254f56f9433196d5bcd2cb",
+    "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/recipes/handbook.json": "e7ffa524c9d9c9411cf33afa32b17ed8ef4e97bd9cd14a8da0e17b7d16a857f5",
     "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/arsenal/ballista.json": "d9a577d13815cd191f2a0d94465ddafff8a8892fa5120bf8363b2c7c30d0c058",
     "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/arsenal/catapult.json": "6a00537efa0e2b64ca5a01fc59570b4ab131fafbf8c1574567058fb102feac99",
     "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/arsenal/efn_armor.json": "416205558c9f07ff42c883be612ea93f33067610f1312d512ad68ef74bf9b3e1",
@@ -3693,10 +3904,10 @@
     "Mods/JEMAchievementGuide/src/main/resources/data/tide/advancements/journal_halfway_completed.json": "ac13aa0a2ef34734410e26918149d09cb031d28feab6be8faf0bd051dd82e470",
     "Mods/JEMAchievementGuide/src/main/resources/data/tide/advancements/pull_crate.json": "7f7ce9fe38a5865934a3f0ae741273956df86d2ef048fab1dc562af432225f8f",
     "Mods/JEMAchievementGuide/src/main/resources/data/tide/advancements/release_pupfish.json": "13a870246f2c4510fa5e208e5639ca851a9b79285917a6e9a969bafcb6e11417",
-    "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json": "cac1eefabd156a5ffcc635a29cb0251efa210fe632d341924b643bc35ffe1190",
+    "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json": "15a85e6f88f7532e7fa46f4f02d24cbf0a1ff352fa1a6262a66c0832aacdef7c",
     "Mods/JEMAchievementGuide/tools/advancement_manifest.py": "45f54b97259b1730ba4415a2c2b4401a686360c4a699addf333109b9353b4066",
     "Mods/JEMAchievementGuide/tools/compile_questbook.py": "a6512ba27e8a1fa198ad862d6c92bccab2f8ba2d579ecd0e12b7d2926b412152",
-    "Mods/JEMAchievementGuide/tools/generate_resources.py": "553584dd6def4722d1e82f09f42e73ac9e50ea6d69802f7d252ed2f6efd62370",
+    "Mods/JEMAchievementGuide/tools/generate_resources.py": "d7ae499cd0ff27238def7311fa478a78178bcecbd63a86d35c7e7764ce76ab9f",
     "Mods/JEMAchievementGuide/tools/import_questbook.py": "2b4aaa24d517b656b62b36cd2e0575ba5406c3abf7290a82e97ffa14ae7e6ec9",
     "Mods/JEMAchievementGuide/tools/questbook/book.json": "015a06e0876eeb15c54c43a25fc0009d14c192cc928eee1b7db40b3868dc5ef2",
     "Mods/JEMAchievementGuide/tools/questbook/compiled-files.json": "5661df86fdebeec61550a75cdef44d63713425e01786006e0671c3e91b614d94",
@@ -3717,24 +3928,28 @@
     "Mods/JEMBootstrap/prepare.py": "e6603b1c5e326d6d012c47bb5524ab8df49851fad5f3cf2847aca06df341ff87",
     "Mods/JEMBootstrap/upstream.json": "10544c0e6226fdf1348eb24ef3edddeece638f33610abaccd8f0ab6a9a319daa",
     "Mods/JEMCompat/AGENTS.md": "e8fce56c93cb82de01125c3877968a9cfea6703617c5ca267efa5d5a17fb1a17",
-    "Mods/JEMCompat/README.md": "c8067ae9cadaee9e94778735cb573850fdb75572c5bb2a7b99d579dcb304cb61",
-    "Mods/JEMCompat/build.gradle": "22e83938f131407f0587a86209a64b93ff4c7d4ed3f33d9de8339c0d169709d7",
+    "Mods/JEMCompat/README.md": "c388e5f8e222a83b2d21413d9abd813f5e85278339384dd5996a42fa2b7c5d5f",
+    "Mods/JEMCompat/SEASONS.md": "2a722937421ab4ff9c9be2cdb2a168c4e45a6c3b1c03206ffee420878ade5ab3",
+    "Mods/JEMCompat/build.gradle": "8c6e3f931e859a11318bf516c47d37a231a37071825463e69f4b43aec8ce7ab3",
     "Mods/JEMCompat/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java": "5fbc572993a4a6953f9918e78670fe49e9480d10af28506132af1050fd2b1f7a",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "a78536b82326a71b42f4d830694a10a9e562828df76d0c991e79792f46eadb0c",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "2e2730da93622a28c386bad4f167710b8b40f3f080e828623221bfaccc4b33a9",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "52e8d713c9881ee1eadee81684a79754106fd3e70249b5697b79c810399d3ec4",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "1d8ab8cde2958f3fe72f3b120cf9fe07eca55b608b7ee54f81e636c7e3d29fbd",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/AdvancementScreenEvents.java": "08bda706303d9643b47f6195ccc55c5a56c5517fa576554d421e010c274260c6",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java": "202fee218ca234b2a73af58557aca26aa7b017f03d136081b7b2ffcbd3755d4c",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java": "d41af8d2a3e1e04f0d8e7ef6d7e5c2fed73324d26a08eb0bbf1c45775cf7d186",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "14bcf20eb72cb3c1319857d8392c892d7b2aa98e1c148adc0c643048806f66b8",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java": "ef4b4c328336fc714f970989ffabef982ebea2fa16742f65e0940291878a44b7",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java": "75d6aba4649c429a9203d8c5eeccdec620343e86855199363ff00dd040d2df9e",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java": "ab32c6f08e6f56e7ee3817ee2336729a46b8468a7fc86cec026a44d7408ab062",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java": "6c8371bdee0106e42fc776fe62280725b1f844ba6302f01b3776863796442369",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java": "49bbe53bcaa0ce884bd12871751547325193611f57493f61bc3c967ff3235ec3",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/equipment/EquipmentEligibility.java": "2debcd93cdc7344a2889fdeb9dc3b11ea42c72abc1bfb69310928592d05a3ce7",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/equipment/InfiniteEquipmentDurability.java": "985fc5a9f8a4e815c493f6fe66449c7568a24c22a17828d74bcef38a52d9157d",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java": "42ae5d9c5e107a5799ca6fe317628d55b8e09b075afa1197323dd57ba05b0030",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinPolicy.java": "c95c49bbb48cd10c469493169e49b4b8c8872876914bc131326b7ec89152f5a0",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/CataclysmBossHelp.java": "314041fbc3472054f7435d9d31eadb599f8489df9113ebba7f4c53a3641a1113",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java": "f0e814fd44b34c5d55f4a17b92a1fc532248c8b6f56ef5df708a8b3a7a9c4ac8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/login/TerminalSocketFailure.java": "0e09149740042f5ee17c67d1cfb37fb7d9d9e17ecf17ce79be5d077c4b8d6afc",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java": "18ee53919a7a66e1a09dbebb8fba8798cbdace36e2a3210f9b03cf4cdf967f4e",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java": "a2f5b523e5e88c5c721202875a8ceffc5baa6ae98e5969c84d8a088762faf882",
@@ -3756,6 +3971,7 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java": "1b0f75961dc62fc9945e44c1e3c79726be5fdea8933f08dc4f0f024b439340e9",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java": "ebad3683348bd61eb8a0e2265b962a065fd968d03e316aea8183d140ed9b9094",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationPattern.java": "1d77e04184eb6eeafe26e2f1f0d9ddeecdedf4c24f5affefe055b45276e08400",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/seasons/SpawnSunflowerSeasons.java": "9428cf10d4f21b1afc7f96fb1b60a4556dccc31835228de77b8669deced0e4b9",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawning/CreatureSpawnProbability.java": "381204a678812809d46753d7de8be23ba72d75678ed3556b8861c9bc16150945",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelInventory.java": "28fea99f59514523f86773d8910bdb13e852fb4efee674f09abbccf77a25bc3a",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelSlot.java": "c5cbec39ba34e1317b945e70b68933e142e3a9582895b0ffc050e6761b85fc37",
@@ -3780,6 +3996,7 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java": "507f6f38d5e11e7882bd5a0f41e34658a53eee92486494ed1048ebdb1bb3b164",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java": "ea9c3326e28a9ce40603c647b02e0a1e6272161d171281408dac02000c2df2df",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/TerminalConnectionFailureMixin.java": "1c8ddb802504484ca1ab1a926e3b9ad762c292ab84b51a59ae67f09820b91a78",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java": "ac68b028cb783409785bef7d51b04ad0c03507c951cf0ecafa665a28068b9005",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "329c1a2f95637a32aa883832f5aa7332a4994a2b64a8f04aefe9f2d2aebd7479",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java": "77ab1b2174a625d7947cd354370675b02751ebfad05767ea908c36fcae60bc29",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftInventoryMixin.java": "259b83f2d4fe9374569127edda2b7ee620b2dc158f74bc058388410f2e202d10",
@@ -3791,8 +4008,8 @@
     "Mods/JEMCompat/src/main/resources/assets/jem_pack_core/lang/en_us.json": "37f3b2a77eb0ed0ca47bc7eae89c33dec5e49901790ae692a1d17b4455261228",
     "Mods/JEMCompat/src/main/resources/assets/jem_pack_core/lang/ru_ru.json": "b8d9175ed8e07c61e466a39605a5dabf77215902b3e1de1c3ab7f328f0449d1f",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json": "f385912d9fbb5b409af89014decc9b72c1934184ae9d1381f0456076f1cd944f",
-    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json": "11f5bf8edb704c1bf320ec74607653bf9cf27fe04c56da46296067bec59a2a03",
-    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "2c5cce57390e9f59ec2c4bde025a192b66a467aa704e2f5ad858d92064540eac",
+    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json": "f63f341fc97ba3b425a9045df81df9695d58fb7cbcce0616f284665f9873aa02",
+    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "b6dd43f879dbbd040767c05c7063cac771cf5d82e07783f58edadec8b8b55416",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png": "26d524e4ba1670a58118f4b9f61f468f0a83322abc77be9967f130907f2cca65",
     "Mods/JEMCompat/src/main/resources/data/bountiful/bounty_decrees/bountiful/armorer.json": "31823a859886815c0e24a08d4c3fa89f628f89c76b86450045b1704b362eb797",
     "Mods/JEMCompat/src/main/resources/data/bountiful/bounty_decrees/bountiful/butcher.json": "31823a859886815c0e24a08d4c3fa89f628f89c76b86450045b1704b362eb797",
@@ -3819,18 +4036,23 @@
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/not_weapons.json": "d13cc69fb3743ad3269196e2cd5bf069839f27d46a1b0fbc1e621b0135483774",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/transport.json": "1ea394043ebae896ae18de5c6fae1e35cf9331c22eec25f5524ac1d0a71e0b6c",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/weapons.json": "791c253cbaa62fac3fe9603f9f3fc5d17976114caf370cc8f1d9003b263db714",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json": "5bb70a876ece84f91012e3a5f6a4ad017a62809bfc913b9e9103ac36bcc909e0",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json": "d52f1967bdb09f6afc4c53f5353dbcb5a6331c97554746357696cebe69e96bb2",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json": "2d4c356efdec97716f34cd916c675293b5d6e4276b5e78bdbff3c9438b829ad6",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json": "da67bc5ed0e2c2f4716b7332bb9e73a6ce6989c092225458a96563f6acf93a0a",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json": "759f645e6cd658c5fd863c6737adfb8c5c1f382f5ea2c46fc4f8194b9adccc35",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json": "e9b5fdadac762d6e32566e754b6bfb40a2d4148f47b6d4da151a0e8dc15e4224",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json": "feb8923be26e771b237d47d18900eb9b010a3c14a5867132ce29f1cb00a34ad6",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json": "a791b4596df38823df110d0ccae1b14202b7aea00d72720f3ed595ea2be205a1",
-    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json": "f5dcceabd479bf012853ba48ffb1f7e442863599a616666b9ddfb1b2725be0ea",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/autumn_crops.json": "0c0eb4bf7e06544181e6cbc739293089d23e21b2e133bf1f63d1aa8d00d02b81",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/spring_crops.json": "30f2ba2b3f765bfc4c7af5e270b9955e2f61e5e04a723068135807e97d94dd83",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/summer_crops.json": "fafdf0379fc8b6ac70b0c21bb92f559f353303855cc627cf57ac87f96a8884ee",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/unbreakable_infertile_crops.json": "a9fbbdad54cff539ddd0af664f2023e93be01038f014cf7b48d2f572964cc98f",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/winter_crops.json": "643572452a12915e952a7e09f025bc8f171ec2ccaa21f8b7d67bff3d0ce94ddb",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/blocks/year_round_crops.json": "a4e10d06d885171dde745cfaaba132e41b258284f7e871e89904a98c66f3c865",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/autumn_crops.json": "d4b216fbc8f5297921a7cfe8c8cc74d3eed8dd98b172a940ffe02c5175b4c81a",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/spring_crops.json": "089ab06106fb19a5c46f6128812958fc2467f551cecf7f7acfba2715c17d1ce2",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json": "fef999a464d549042d1a7bb24cc054cbf5e742904e7f3ee951dd58bc1b5ef4e6",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json": "78223b81169bcb75058bea74d3e1f52713f399a0a7bdb1f7302a6a57db534e5c",
+    "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json": "9d4539847fe380ce5c83950a6beedd381732e3d4724f7978f7778467fefe4cc9",
     "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "4ea94ca644133b4cf5fa2f2dab37646f8b04f17c4c98e381da88bf5929939c03",
+    "Mods/JEMCompat/src/main/resources/jemcompat.seasons.mixins.json": "071a6625ac7f9040b12ceae555aafc643f228130afb9ec71ef1600934ffd4c7f",
     "Mods/JEMDrillLifecycle/build.gradle": "9acab28e75605ab62f2379ea75b414ab8cfffe1e77a610edb63740827ca1cf36",
     "Mods/JEMDrillLifecycle/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
+    "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/compat/jade/DrillWearProvider.java": "446a7cb6c392e8c7ea652815413960cc433ac3054d086c7add5bdde38d458bb2",
+    "Mods/JEMDrillLifecycle/src/main/resources/data/jemcompat/patchouli_books/just_enough_guide/book.json": "9a58f014ff0f3559da8c8f33e580fe75c8227dc2ef470428df59c525e67fadb8",
     "Mods/JEMEconomy/build.gradle": "299e97f1c13645c85985241d94a31119aa5c22fbee7c5f3886aceb1daf9de065",
     "Mods/JEMEconomy/gradle.properties": "58a820524b1197f432cc0720f670689fa7f634b2fb68554c581b8685a7ae50fc",
     "Mods/JEMEconomy/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
@@ -4884,7 +5106,7 @@
     "Mods/JEMWorldBossTiers/README.md": "c92944c67bfd966c88317157b7362ae6717e94a3873e6d5d7380b75e052f629f",
     "Mods/JEMWorldBossTiers/build.gradle": "0a231d1620c77401b1c7af803d44bb292de63ba012635814f84e42049c1d2306",
     "Mods/JEMWorldBossTiers/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
-    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "1f2933381213a4844dd60ccc2ddb13b74aa95793aa7b5f8bfbec1ef9db8ce0bd",
+    "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java": "6ed2d8e868fbbb96f635ba9d466af716adb92e66f6b7bd1d94b3d1b21f0d538a",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java": "c122ce40c0d50932a1c078cead47bf25dfcb6ff01b3072878ab9cac527ee6ea4",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/ExperienceRewardApi.java": "2d9a6fa0f5491c24f9a2c9c939c91311d92221918a5657680efe015fb5e267a3",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java": "47b32cd38d61e905a4715fa5509b6dd6cab3d02c6091ea197dec9454d9464866",
@@ -4956,8 +5178,8 @@
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java": "ac823f24c6ed4a9f9da8faa4eaa2b4b47222f6ea1ab1e018beb11e7457731c3b",
     "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java": "9490105ac0f6d389b13dbac23025e2ef58ecfc1e0e84620d80981ad34c4108bc",
     "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml": "d922706f60a59726435875ae6c73b5c33a9733b59a10cce8b76331c4d108a323",
-    "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json": "b9a03c68b91372810592bcab4de39363ed59b9dd2d9faa080d2ff97fd6625e62",
-    "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/ru_ru.json": "7a6333de6271968a3f94c96fc9fe764449fa20bfaea70e829feedf78762f5712",
+    "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json": "868a0ce0e4db7671c417bd7bef8ef94ff53e8e00cf97bddf029d3124646b35b8",
+    "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/ru_ru.json": "9a52b1b155225536106d7b16c283e5d6cd7366090271bf6271fb3b980d625158",
     "Mods/JEMWorldBossTiers/src/main/resources/data/jem_server/jem/events/structures/campaigns.json": "283beb5155bbf1dd2e60290603500427a39d737c3a39908c8eaeeafdecf28162",
     "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json": "2b02c808187ad56cf375919ccccedc69250657a4f9a14a9fa8510ae4e8ca4cf2",
     "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json": "cdd24bac053a308319b742c25a44d23a117571d381c0d5245202459050e7265e",
@@ -4973,8 +5195,13 @@
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
     "Server/config/item_obliterator.json5": "91d0d15d2a500269c29990db48b0d8f29a44d6f5ade1047979fc2b8d023d181e",
     "Server/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
+    "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
     "Server/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
     "Server/kubejs/server_scripts/jem/recipe_replacements.js": "fccc72987a34cd30e05e9f5cf1f506f788ab912fda83b5a7013c01050ac0d766",
+    "Server/mods/jem-advancements-5.1.0.jar": "67628000ebf4aa2ce5474a9a31db9cae2a12e61fcda10c436d58fba8e15bd2b1",
+    "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "18bee2c919df207fcc449dd92f43afb22b2d94f7b6eff3edc56026c8aa3d4174",
+    "Server/mods/jem_drill_lifecycle-1.0.0.jar": "3050548f28a35d64649c4d74aa0482fe6b5af8a0fbc39d430f24ed5e880b9bc9",
+    "Server/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
     "Server/run.bat": "4d42c275b005814be58b8819283f79a108876923e51cf63557b27caba4352f2a",
     "build.gradle": "d8d74c350e725a7c3967578f9e895c45262500afdbe444e0c7e27c2d62062ea9",
     "config/QUALITY.md": "04df97d6ab1daec0e17ce6e66212697d9ef662ef3f9b2f9b5f801a2dc41cc574",
@@ -4987,7 +5214,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "be8945855fe5c94d6529128c1242d3ee084a4009cd751c7ae5ee78884b5d20ae",
-    "tools/state/packSyncHost-sync.json": "d010437650cc9665f340d9283584bc95f0c205e4d8c42d7a913f4a12bc9cf88b",
+    "tools/state/packSyncHost-sync.json": "7a3de1254683da25555d99617a1043e7f1cf1b5230887e375018f92372ddd65c",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

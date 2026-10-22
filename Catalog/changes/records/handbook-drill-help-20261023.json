@@ -1,0 +1,104 @@
+{
+  "schema_version": 2,
+  "change_id": "handbook.drill-help",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "create:mechanical_drill"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "create:mechanical_drill"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "requires": "Owning JEM modules and the exact optional native mod are installed; native permissions, research, discovery and gameplay remain authoritative."
+    },
+    {
+      "delivery": "Docs/handbook/delivery.json records build, synchronization and native installation separately from source and acceptance."
+    }
+  ],
+  "precedence": {
+    "layer": "presentation_and_documentation",
+    "priority": 600,
+    "overrides": []
+  },
+  "change": {
+    "summary": "drill-help",
+    "modifiers": [
+      {
+        "property": "handbook.drill_projection",
+        "operation": "document",
+        "before": "Drill wear help did not distinguish the actual running/service/replacement action clearly.",
+        "after": "Jade receives native running/wear state from the server and shows stop/service/replace. Handbook/JEI prose expands owner constants rather than adding a second wear policy."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide; isolated JEMCompat/DrillLifecycle/WorldBossTiers presentation adapters",
+    "kind": "native_handbook_extension",
+    "source_files": [
+      "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/compat/jade/DrillWearProvider.java",
+      "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/lang/*.json",
+      "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar",
+      "Server/mods/jem_drill_lifecycle-1.0.0.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make established pack mechanics discoverable through one native handbook and concise owner-backed help.",
+    "decision_source": "User requested implementation of the universal book brief, resumed after FTB commit 67d9f215, and required preservation of parallel work.",
+    "user_requested": "One dirt-and-stick handbook, seven sections, native manual access and return, bilingual search, enchantment/boss/item help, JEI and Jade integration.",
+    "implementation_choices": "Reuse Patchouli and existing assets; read native/domain state, cache resource text on reload, isolate optional integrations and keep explicit evidence gaps."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "implement_universal_handbook",
+    "summary": "drill-help",
+    "source_files": [
+      "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/compat/jade/DrillWearProvider.java",
+      "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/lang/*.json",
+      "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar",
+      "Server/mods/jem_drill_lifecycle-1.0.0.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "implement_universal_handbook",
+      "summary": "drill-help",
+      "source_files": [
+        "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/compat/jade/DrillWearProvider.java",
+        "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/lang/*.json",
+        "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar",
+        "Server/mods/jem_drill_lifecycle-1.0.0.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "handbook",
+      "tooltips",
+      "JEI",
+      "Jade",
+      "optional native manuals",
+      "local distribution"
+    ],
+    "relations": [
+      "native/domain state -> presentation adapter -> handbook or tooltip",
+      "canonical authored resources -> localized Patchouli pages and JEI information"
+    ],
+    "notes": [
+      "Stationary drills still wear; one service action may repair several drills with one ingot per drill. Native speed/charge/service/bedrock behavior remains unchanged."
+    ],
+    "unresolved": [
+      "Runtime interaction and player acceptance remain unobserved."
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Unlock Token",
+  "icon": "backpacked:unlock_token",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:backpacked",
+  "jem_aliases": [
+    "Жетон разблокировки",
+    "Unlock Token",
+    "backpacked:unlock_token"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "backpacked:unlock_token",
+      "text": "In your backpack menu, hold the token on the cursor and select a locked storage slot."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Spending",
+      "text": "Open your own backpack, move the token onto the cursor and select a locked storage slot. The native menu checks token permission and count; payment consumes tokens from the cursor. The unlock is stored on the backpack."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Different slots",
+      "text": "Current configuration files allow tokens for storage slots but disable them for augment bays and extra equipped-backpack slots. Those use their own menu costs. Putting a token into an ordinary inventory slot does not install an augment."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Normal payment",
+      "text": "Without a token, the native menu shows the experience unlock cost. Pay through that menu; this operation does not require a separate Augment Bay station."
+    }
+  ],
+  "jem_summary": "In your backpack menu, hold the token on the cursor and select a locked storage slot."
+}

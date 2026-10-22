@@ -1,0 +1,2055 @@
+{
+  "date_local": "2026-10-23",
+  "scope": "Handbook work accounting; not an independent gameplay registry. Original identities remain in Catalog/registries and JEM behavior in Catalog/changes/effective.",
+  "confirmed_non_vanilla_registration_count": 85,
+  "runtime_boundary": "Existing quest delivery recorded 124 total enchantments; its registry dump was not persisted or promoted. No runtime registry dump or game launch performed for this work.",
+  "localization_candidate_exclusions": [
+    {
+      "id": "netherexp:bloodshed",
+      "reason": "BloodshedEnchantment.class exists, but JNEEnchantments does not register it."
+    },
+    {
+      "id": "kaleidoscope_nether:blessing",
+      "reason": "KNEnchantments registers only lava_walker; blessing is a stale language string."
+    }
+  ],
+  "rows": [
+    {
+      "id": "alexscaves:field_extension",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + galena_gauntlet item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_field_extension",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:crystallization",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + galena_gauntlet item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_crystallization",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:ferrous_haste",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + galena_gauntlet item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_ferrous_haste",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:arrow_inducting",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + resistor_shield item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_arrow_inducting",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:heavy_slam",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + resistor_shield item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_heavy_slam",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:swiftwood",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + primitive_club item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_swiftwood",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:bonking",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + primitive_club item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_bonking",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:dazing_sweep",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + primitive_club item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_dazing_sweep",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:plummeting_flight",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + extinction_spear item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_plummeting_flight",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:herd_phalanx",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + extinction_spear item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_herd_phalanx",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:chomping_spirit",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + extinction_spear item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_chomping_spirit",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:energy_efficiency",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_energy_efficiency",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:solar",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_solar",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:x_ray",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_x_ray",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:gamma_ray",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_gamma_ray",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:second_wave",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_second_wave",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:flinging",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_flinging",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:sea_swing",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_sea_swing",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:tsunami",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_tsunami",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:charting_call",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + magic_conch item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_charting_call",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_defect_observed",
+      "runtime_verified": false,
+      "remaining": "The installed source defect is documented; no gameplay repair was made."
+    },
+    {
+      "id": "alexscaves:lasting_morale",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + magic_conch item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_lasting_morale",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:taxing_bellow",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + magic_conch item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_taxing_bellow",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:enveloping_bubble",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_enveloping_bubble",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:bouncing_bolt",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_bouncing_bolt",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:seapairing",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_seapairing",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:triple_splash",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_triple_splash",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:soak_seeking",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_soak_seeking",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:detonating_death",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_detonating_death",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:rapid_possession",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_rapid_possession",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:sightless",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_sightless",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:astral_transferring",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_astral_transferring",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:impending_stab",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + desolate_dagger item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_impending_stab",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:sated_blade",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + desolate_dagger item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_sated_blade",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:double_stab",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + desolate_dagger item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_double_stab",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:precise_volley",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_precise_volley",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:dark_nock",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_dark_nock",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:relentless_darkness",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_relentless_darkness",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:twilight_perfection",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_twilight_perfection",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:shaded_respite",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_shaded_respite",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:targeted_ricochet",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_targeted_ricochet",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:triple_split",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_triple_split",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:bouncy_ball",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_bouncy_ball",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:explosive_flavor",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_explosive_flavor",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:far_flung",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + candy_cane_hook item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_far_flung",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:sharp_cane",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + candy_cane_hook item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_sharp_cane",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:straight_hook",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + candy_cane_hook item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_straight_hook",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:spell_lasting",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_spell_lasting",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:peppermint_punting",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_peppermint_punting",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:humungous_hex",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_humungous_hex",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:multiple_mint",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_multiple_mint",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexscaves:seekcandy",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+        "sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexscaves_seekcandy",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexsmobs:straddle_jump",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/StraddleJumpEnchantment/EntityStraddleboard",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexsmobs-1.22.9.jar",
+        "sha256": "16bc5bcc19db9029c24f951346ec71098e6f5b0afef96e61894a2e9407aad37c"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexsmobs_straddle_jump",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexsmobs:lavawax",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/EntityStraddleboard",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexsmobs-1.22.9.jar",
+        "sha256": "16bc5bcc19db9029c24f951346ec71098e6f5b0afef96e61894a2e9407aad37c"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexsmobs_lavawax",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexsmobs:serpentfriend",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/EntityStraddleboard.shouldSerpentFriend",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexsmobs-1.22.9.jar",
+        "sha256": "16bc5bcc19db9029c24f951346ec71098e6f5b0afef96e61894a2e9407aad37c"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexsmobs_serpentfriend",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "alexsmobs:board_return",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/EntityStraddleboard",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/alexsmobs-1.22.9.jar",
+        "sha256": "16bc5bcc19db9029c24f951346ec71098e6f5b0afef96e61894a2e9407aad37c"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/alexsmobs_board_return",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "blastfromthepast:tar_marcher",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "blastfromthepast-1.0.3+1.20.1.jar:ModEnchantments/EntityHelper.canWalkOnTarBlocks",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar",
+        "sha256": "b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/blastfromthepast_tar_marcher",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "cnc:headhunter",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Critters n' Crawlers-2.2.5-mc1.20.1.jar:CncModEnchantments/HeadhunterEnchantment/HeadDropsProcedure",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar",
+        "sha256": "ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/cnc_headhunter",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "create:capacity",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "create-1.20.1-6.0.8.jar:AllEnchantments/CapacityEnchantment/BacktankUtil.maxAir",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/create-1.20.1-6.0.8.jar",
+        "sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/create_capacity",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "live_config_value",
+      "runtime_verified": false
+    },
+    {
+      "id": "create:potato_recovery",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "create-1.20.1-6.0.8.jar:AllEnchantments/PotatoRecoveryEnchantment/PotatoProjectileEntity",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/create-1.20.1-6.0.8.jar",
+        "sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/create_potato_recovery",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "gouge:grip",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "gouge-1.5.1-mc1.20.1-forge.jar:Gouge/GougeEnchantment/GougePhysics; Client/Server/config/gouge.toml",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/gouge-1.5.1-mc1.20.1-forge.jar",
+        "sha256": "d4c439d41ea90a206dd84257bee335c1121e9aa21db1560a08f441dfcc8c5cd1"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/gouge_grip",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "local_config_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "gouge:momentum",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "gouge-1.5.1-mc1.20.1-forge.jar:Gouge/GougeEnchantment/GougePhysics; Client/Server/config/gouge.toml",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/gouge-1.5.1-mc1.20.1-forge.jar",
+        "sha256": "d4c439d41ea90a206dd84257bee335c1121e9aa21db1560a08f441dfcc8c5cd1"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/gouge_momentum",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "local_config_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "jem_pack_core:excavation",
+      "type": "enchantment",
+      "registration": "confirmed_canonical_java_owner",
+      "mechanics_source": "Mods/JEMCompat:CoreEnchantments/ExcavationEnchantment/ExcavationEvents/ExcavationMining",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "sha256": "b98b75914a86c9d81de93a65b0d90ee7a85cafab7237f1a3522126cb04290a30"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/jem_pack_core_excavation",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "jem_world_boss_tiers:progression",
+      "type": "enchantment",
+      "registration": "confirmed_canonical_java_owner",
+      "mechanics_source": "Mods/JEMWorldBossTiers:ProgressionEnchantment/EquipmentScaler/ProgressionWeapons/ProgressionArmor/WeaponProtection/ProgressionBookLootModifier + progression_book.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+        "sha256": "8b75a823c4a725814e3a6012dd146d7f523ca9a785ac0db571a1562f45a15cab"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/jem_world_boss_tiers_progression",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "equipment": "Existing owner ClientTierState.tier() and ProgressionEnchantment eligibility; native component reused and deduplicated."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "kaleidoscope_nether:lava_walker",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "kaleidoscope_nether-1.1.8-forge+mc1.20.1.jar:KNEnchantments$1/LavaWalkerEventHandler",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar",
+        "sha256": "55a86fa55d381e918f3bb0fbc5fa17c73370076d752f8441b36a31758509e687"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/kaleidoscope_nether_lava_walker",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "luminous_nether:soul_cleave",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Luminous Nether V1.3.3 - Forge 1.20.1.jar:LuminousNetherModEnchantments/SoulCleaveEnchantment/SoulCleaveProcedureProcedure",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar",
+        "sha256": "6b3a02d00b8c7cd92718b968e123622b531f9b2272acc1b944d8a60c9c610a42"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/luminous_nether_soul_cleave",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "netherexp:cartridge",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Jadens-Nether-Expansion-2.3.5.jar:JNEEnchantments/CartridgeEnchantment/ShotgunFistItem/JackhammerFistItem/PumpChargeShotgunItem",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar",
+        "sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/netherexp_cartridge",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_defect_observed",
+      "runtime_verified": false,
+      "remaining": "The installed source defect is documented; no gameplay repair was made."
+    },
+    {
+      "id": "netherexp:recoil",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Jadens-Nether-Expansion-2.3.5.jar:JNEEnchantments/RecoilEnchantment/ShotgunFistItem/JackhammerFistItem/PumpChargeShotgunItem",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar",
+        "sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/netherexp_recoil",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "netherexp:barrage",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Jadens-Nether-Expansion-2.3.5.jar:JNEEnchantments/BarrageEnchantment/ShotgunFistItem/PumpChargeShotgunItem",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar",
+        "sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/netherexp_barrage",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "netherexp:artemis",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Jadens-Nether-Expansion-2.3.5.jar:ArtemisEnchantment/BowItemMixin/shotgun consumers; loot_modifiers/artemis_enchantment.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar",
+        "sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/netherexp_artemis",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_defect_observed",
+      "runtime_verified": false,
+      "remaining": "The installed source defect is documented; no gameplay repair was made."
+    },
+    {
+      "id": "netherexp:phantasm_hull",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Jadens-Nether-Expansion-2.3.5.jar:PhantasmHullEnchantment/ProjectileMixin; loot_tables/brazier_chest/{exposed,hidden}.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Jadens-Nether-Expansion-2.3.5.jar",
+        "sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/netherexp_phantasm_hull",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "trials:density",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Trials-2.3.3.jar:TrialsEnchantments/Mace*Enchantment/TrialsEvents/MaceItem + gameplay/vault_special_loot.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Trials-2.3.3.jar",
+        "sha256": "1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/trials_density",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "trials:breach",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Trials-2.3.3.jar:TrialsEnchantments/Mace*Enchantment/TrialsEvents/MaceItem + gameplay/vault_special_loot.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Trials-2.3.3.jar",
+        "sha256": "1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/trials_breach",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "trials:wind_burst",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "Trials-2.3.3.jar:TrialsEnchantments/Mace*Enchantment/TrialsEvents/MaceItem + gameplay/vault_special_loot.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/Trials-2.3.3.jar",
+        "sha256": "1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/trials_wind_burst",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "kaleidoscope_end:void_assault",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; EventHandler$GAME.LivingHurtEvent; EnchantmentMenuMixin + data/kaleidoscope_end/tags/enchantment/ke_enchantments.json",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar",
+        "sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/kaleidoscope_end_void_assault",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "kaleidoscope_end:void_echo",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; EventHandler$GAME.LivingHurtEvent",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar",
+        "sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/kaleidoscope_end_void_echo",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "kaleidoscope_end:void_shot",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; EventHandler$GAME.LivingHurtEvent",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar",
+        "sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/kaleidoscope_end_void_shot",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "kaleidoscope_end:void_walker",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; Mods/JEMCompat:feature/kaleidoscope/VoidWalkerEvents.java",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_end-1.0.14-forge%2Bmc1.20.1.jar",
+        "sha256": "6df18ab46d0f1c7d106f9c79d09b886aae88c90a5cc40f29410f5c1f93591340"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/kaleidoscope_end_void_walker",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID"
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "efn:yamato_summoned_sword",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_yamato_summoned_sword",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_gate_disabled_acquisition_partial",
+      "runtime_verified": false,
+      "remaining": "A concrete survival-book source is unconfirmed; table/discovery/trading flags are known. See enchantments.md. No route invented."
+    },
+    {
+      "id": "efn:yamato_summoned_sword_end",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_yamato_summoned_sword_end",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "acquisition_partial",
+      "runtime_verified": false,
+      "remaining": "A concrete survival-book source is unconfirmed; table/discovery/trading flags are known. See enchantments.md. No route invented."
+    },
+    {
+      "id": "efn:yamato_doppelganger",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_yamato_doppelganger",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_gate_disabled_acquisition_partial",
+      "runtime_verified": false,
+      "remaining": "A concrete survival-book source is unconfirmed; table/discovery/trading flags are known. See enchantments.md. No route invented."
+    },
+    {
+      "id": "efn:yamato_judgement_cut_end",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_yamato_judgement_cut_end",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_gate_disabled_acquisition_partial",
+      "runtime_verified": false,
+      "remaining": "A concrete survival-book source is unconfirmed; table/discovery/trading flags are known. See enchantments.md. No route invented."
+    },
+    {
+      "id": "efn:yamato_heavy_rain",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_yamato_heavy_rain",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "efn:yamato_guard",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_yamato_guard",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_gate_disabled_acquisition_partial",
+      "runtime_verified": false,
+      "remaining": "A concrete survival-book source is unconfirmed; table/discovery/trading flags are known. See enchantments.md. No route invented."
+    },
+    {
+      "id": "efn:scythe_enhance",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/ScytheEnhance/ScytheSkill/EFNVFXManagers/EFNLootTables",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_scythe_enhance",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "mechanics_verified",
+      "runtime_verified": false
+    },
+    {
+      "id": "efn:broad_blade_enhance",
+      "type": "enchantment",
+      "registration": "confirmed_installed_bytecode",
+      "mechanics_source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/BroadBladeEnhance/BroadBladeInnate; data/efn/skill_parameters native prerequisite flags=false",
+      "installed_artifact": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+        "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+      },
+      "locales": [
+        "ru_ru",
+        "en_us"
+      ],
+      "native_help": "native description when present; treated as a lead, not registration proof",
+      "change": "One shared explanation supplies tooltip and handbook processor; native gameplay remains authoritative.",
+      "routes": {
+        "book_entry": "jem_advancements:handbook/enchantments/efn_broad_blade_enhance",
+        "tooltip": "Brief effect + Applies to in the ordinary enchanted-book tooltip; each stored enchantment uses its actual level. Native enchantment/additional HideFlags suppress supplemental help and its action.",
+        "detail_action": "HandbookNavigation HELP_KEY on the hovered stack; search includes both names and registry ID",
+        "specialized_targets": "Native item icon/name pages from explicit source-confirmed item IDs; table and base anvil eligibility queried independently on each stack."
+      },
+      "status": "native_gate_disabled_acquisition_partial",
+      "runtime_verified": false,
+      "remaining": "A concrete survival-book source is unconfirmed; table/discovery/trading flags are known. See enchantments.md. No route invented."
+    }
+  ]
+}

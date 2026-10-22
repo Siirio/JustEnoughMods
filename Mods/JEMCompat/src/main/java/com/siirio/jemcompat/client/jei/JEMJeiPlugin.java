@@ -80,6 +80,32 @@ public final class JEMJeiPlugin implements IModPlugin {
     }
 
     @Override
+    public void registerRecipes(mezz.jei.api.registration.IRecipeRegistration registration) {
+        if (!net.minecraftforge.fml.ModList.get().isLoaded("jem_advancements")
+                || !net.minecraftforge.fml.ModList.get().isLoaded("patchouli")) return;
+        java.util.List<mezz.jei.api.recipe.vanilla.IJeiIngredientInfoRecipe> recipes = new java.util.ArrayList<>();
+        for (var info : com.justenoughmods.achievementguide.client.handbook.HandbookItemHelp.informationEntries()) {
+            var stack = info.stack();
+            var typed = registration.getIngredientManager().createTypedIngredient(mezz.jei.api.constants.VanillaTypes.ITEM_STACK, stack);
+            if (typed.isEmpty()) continue;
+            java.util.List<mezz.jei.api.ingredients.ITypedIngredient<?>> ingredients = java.util.List.of(typed.get());
+            recipes.add(new mezz.jei.api.recipe.vanilla.IJeiIngredientInfoRecipe() {
+                @Override
+                public java.util.List<mezz.jei.api.ingredients.ITypedIngredient<?>> getIngredients() {
+                    return ingredients;
+                }
+
+                @Override
+                public java.util.List<net.minecraft.network.chat.FormattedText> getDescription() {
+                    return com.justenoughmods.achievementguide.client.handbook.HandbookItemHelp.informationFor(stack)
+                            .stream().<net.minecraft.network.chat.FormattedText>map(component -> component).toList();
+                }
+            });
+        }
+        registration.addRecipes(mezz.jei.api.constants.RecipeTypes.INFORMATION, recipes);
+    }
+
+    @Override
     public void registerIngredientAliases(IIngredientAliasRegistration registration) {
         Map<String, String> aliases = readAliases();
         ForgeRegistries.ITEMS.getValues().forEach(item -> {

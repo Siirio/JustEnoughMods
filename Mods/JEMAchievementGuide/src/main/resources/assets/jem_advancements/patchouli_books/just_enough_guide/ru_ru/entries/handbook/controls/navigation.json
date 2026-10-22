@@ -1,0 +1,21 @@
+{
+  "name": "Текущие клавиши",
+  "category": "jem_advancements:handbook/controls",
+  "icon": "minecraft:lever",
+  "jem_aliases": [
+    "keybind keyboard mouse help controls",
+    "клавиши управление помощь"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Игра",
+      "text": "Использовать: $(jemkey:key.use)$(br)Атаковать: $(jemkey:key.attack)$(br)Инвентарь: $(jemkey:key.inventory)$(br)Красться: $(jemkey:key.sneak)$(br)Достижения: $(jemkey:key.advancements)$(br2)Значения берутся из ваших настроек управления, включая переназначения."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Справочная помощь",
+      "text": "Открыть подробности: $(jemkey:key.jem_advancements.handbook). Назначение меняется в настройках управления. Tab перемещает фокус между кнопками, Enter активирует кнопку. Кнопка возврата из нативного руководства возвращает к прежней странице JEM. Escape закрывает книгу обычным способом."
+    }
+  ]
+}

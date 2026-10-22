@@ -323,10 +323,11 @@ public final class JemWorldBossTiers {
 
     @SubscribeEvent
     public void addEquipmentTooltip(ItemTooltipEvent event) {
-        if (WeaponProtection.bossWeapon(event.getItemStack())) {
+        int hidden = event.getItemStack().hasTag() ? event.getItemStack().getTag().getInt("HideFlags") : 0;
+        if ((hidden & 32) == 0 && WeaponProtection.bossWeapon(event.getItemStack())) {
             event.getToolTip().add(Component.translatable("tooltip.jem_world_boss_tiers.protected_boss_weapon"));
         }
-        if (EnchantmentHelper.getEnchantments(event.getItemStack()).containsKey(TierEnchantments.PROGRESSION.get())
+        if ((hidden & 1) == 0 && EnchantmentHelper.getEnchantments(event.getItemStack()).containsKey(TierEnchantments.PROGRESSION.get())
                 && ProgressionEnchantment.isEligible(event.getItemStack())) {
             String type = ProgressionEnchantment.isArmorEligible(event.getItemStack()) ? "armor" : "weapon";
             event.getToolTip().add(Component.translatable(

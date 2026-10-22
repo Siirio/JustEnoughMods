@@ -147,8 +147,7 @@ public final class CuratedJeiOverlay {
             return;
         }
         RecipeIngredientRole role = event.getButton() == 1 ? RecipeIngredientRole.INPUT : RecipeIngredientRole.OUTPUT;
-        var focus = JEMJeiPlugin.runtime().getJeiHelpers().getFocusFactory().createFocus(role, VanillaTypes.ITEM_STACK, stack);
-        JEMJeiPlugin.runtime().getRecipesGui().show(focus);
+        showItemHelp(stack, role);
         event.setCanceled(true);
     }
 
@@ -172,9 +171,20 @@ public final class CuratedJeiOverlay {
         RecipeIngredientRole role = mappings.getShowRecipe().isActiveAndMatches(key) ? RecipeIngredientRole.OUTPUT
                 : mappings.getShowUses().isActiveAndMatches(key) ? RecipeIngredientRole.INPUT : null;
         if (role == null) return;
-        var focus = JEMJeiPlugin.runtime().getJeiHelpers().getFocusFactory().createFocus(role, VanillaTypes.ITEM_STACK, hovered);
-        JEMJeiPlugin.runtime().getRecipesGui().show(focus);
+        showItemHelp(hovered, role);
         event.setCanceled(true);
+    }
+
+    private static void showItemHelp(ItemStack stack, RecipeIngredientRole role) {
+        var runtime = JEMJeiPlugin.runtime();
+        var focus = runtime.getJeiHelpers().getFocusFactory().createFocus(role, VanillaTypes.ITEM_STACK, stack);
+        boolean hasNativeRoute = runtime.getRecipeManager().createRecipeCategoryLookup().limitFocus(List.of(focus)).get().findAny().isPresent();
+        if (!hasNativeRoute && net.minecraftforge.fml.ModList.get().isLoaded("jem_advancements")
+                && net.minecraftforge.fml.ModList.get().isLoaded("patchouli")) {
+            var entry = com.justenoughmods.achievementguide.client.handbook.HandbookNavigation.entryFor(stack);
+            if (entry != null && com.justenoughmods.achievementguide.client.handbook.HandbookNavigation.openEntry(entry)) return;
+        }
+        runtime.getRecipesGui().show(focus);
     }
 
     @SubscribeEvent

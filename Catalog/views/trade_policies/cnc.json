@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "b5c16f87a0bbf09ecb4393f3008695006dee33af",
+  "snapshot_sha": "1f76f323e9dacc9f0dc08ce817751f68506f04ce",
   "generation": {
-    "generated_utc": "2026-10-22T19:19:35.662885+00:00",
+    "generated_utc": "2026-10-22T20:22:33.380886+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -1640,17 +1640,21 @@
       "observed_in": [
         "assets/cnc/lang/en_us.json",
         "assets/cnc/models/item/field_guide.json",
+        "assets/jem_advancements/lang/en_us.json",
+        "assets/jem_advancements/lang/ru_ru.json",
         "data/cnc/recipes/field_guide.json"
       ],
       "display_name_en_us": "Field Guide",
-      "display_name_ru_ru": null,
+      "display_name_ru_ru": "Полевой справочник",
       "source_provenance": [
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/field_guide.json",
         "Critters n' Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/field_guide.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/lang/en_us.json",
         "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:assets/cnc/models/item/field_guide.json",
-        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/field_guide.json"
+        "Critters n_ Crawlers-2.2.5-mc1.20.1.jar:data/cnc/recipes/field_guide.json",
+        "jem-advancements-5.1.0.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.1.0.jar:assets/jem_advancements/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

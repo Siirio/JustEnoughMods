@@ -1,0 +1,35 @@
+{
+  "name": "Camera",
+  "icon": "exposure:camera",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:exposure",
+  "jem_aliases": [
+    "Фотоаппарат",
+    "Camera",
+    "exposure:camera"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "exposure:camera",
+      "text": "Load film through the attachments menu, expose frames, then remove the roll for developing."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Attachments",
+      "text": "Craft a Camera through JEI. Sneak-use it or right-click it in the inventory to open attachments. Insert film into its slot; lens, flash and filter have separate places."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Taking pictures",
+      "text": "Use the camera for its viewfinder and shutter through native controls. Watch the remaining frames. Identical film items may contain different photos; retain the actual roll."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "From frame to paper",
+      "text": "Remove the exposed roll through attachments. $(l:handbook/items/exposure/black_and_white_film)Developing$(/l) produces developed film, while the $(l:handbook/items/exposure/lightroom)Lightroom$(/l) prints a paper photograph."
+    }
+  ],
+  "jem_summary": "Load film through the attachments menu, expose frames, then remove the roll for developing."
+}

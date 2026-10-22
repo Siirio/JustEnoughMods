@@ -724,7 +724,12 @@ def main() -> None:
         legacy_guide_archive.unlink()
     safe_replace_dir(data_jem_guide, resources)
     safe_replace_dir(data_jem, resources)
-    safe_replace_dir(guide_assets, resources)
+    # The advancement generator owns only these entry trees, not handbook data,
+    # optional client resources or quest components sharing the same namespace.
+    for language in ("en_us", "ru_ru"):
+        for category in (*TAB_ICONS, "native"):
+            safe_remove_dir(guide_assets / "patchouli_books/just_enough_guide" / language / "entries" / category, resources)
+    guide_assets.mkdir(parents=True, exist_ok=True)
     safe_remove_dir(resources / "assets" / LEGACY_GUIDE_MOD_ID, resources)
     safe_remove_dir(resources / "data" / LEGACY_GUIDE_MOD_ID, resources)
 
@@ -732,13 +737,19 @@ def main() -> None:
     with zipfile.ZipFile(args.legacy_jar) as archive:
         rules_document = read_json(archive, "assets/jem_semantic_runtime/semantic_rules.json") or {"rules": []}
         rules = {rule["advancement"]: rule for rule in rules_document.get("rules", [])}
-        en: dict[str, str] = {
+        def retained_language(language):
+            path = guide_assets / "lang" / f"{language}.json"
+            values = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+            prefixes = ("jem_guide.advancement.", "jem_advancements.advancement_guide.", "jem_advancements.patchouli.")
+            return {key: value for key, value in values.items() if not key.startswith(prefixes)}
+
+        en: dict[str, str] = {**retained_language("en_us"),
             f"{GUIDE_MOD_ID}.patchouli.name": "Just Enough Mods Field Guide",
             f"{GUIDE_MOD_ID}.patchouli.subtitle": "A path to complete progression",
             f"{GUIDE_MOD_ID}.patchouli.landing_text": "Select a JEM advancement to open its exact field-guide entry.",
             f"{GUIDE_MOD_ID}.patchouli.open_failed": "This guide entry could not be opened. Advancement progression is unaffected.",
         }
-        ru: dict[str, str] = {
+        ru: dict[str, str] = {**retained_language("ru_ru"),
             f"{GUIDE_MOD_ID}.patchouli.name": "Полевой справочник Just Enough Mods",
             f"{GUIDE_MOD_ID}.patchouli.subtitle": "Путь к полному прохождению",
             f"{GUIDE_MOD_ID}.patchouli.landing_text": "Выберите достижение JEM, чтобы открыть точную инструкцию.",
@@ -838,16 +849,17 @@ def main() -> None:
             "landing_text": f"{GUIDE_MOD_ID}.patchouli.landing_text",
             "subtitle": f"{GUIDE_MOD_ID}.patchouli.subtitle",
             "icon": "minecraft:book",
-            "version": "4",
+            "version": "5",
             "use_resource_pack": True,
-            "dont_generate_book": True,
-            "custom_book_item": "minecraft:book",
+            "dont_generate_book": False,
             "show_progress": False,
             "show_toasts": False,
             "i18n": True,
             "pause_game": False,
         })
     write_json(native_index, {"files": [node["relative_path"] for node in native_nodes], "nodes": native_nodes})
+    from generate_handbook import generate_navigation
+    generate_navigation()
     print(json.dumps({"nodes": len(nodes), "native_nodes": len(native_nodes), "node_criteria": len(criteria_catalog), "upstream_or_vanilla": len(nodes) - len(criteria_catalog)}))
 
 

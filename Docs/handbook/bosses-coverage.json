@@ -1,0 +1,2433 @@
+{
+  "schema_version": 1,
+  "scope": "current canonical boss profile files, not every entity-language candidate",
+  "registered_profile_count": 56,
+  "entry_count": 56,
+  "status": "incomplete",
+  "records": [
+    {
+      "id": "alexscaves:luxtructosaurus",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/alexscaves/luxtructosaurus",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/alexscaves-2.0.2.jar",
+      "artifact_sha256": "131e205ce3eed384d701b336d8a0d4a671108ed56b6eff6014f0e407db2997f0",
+      "owner_classes": [
+        "com.github.alexmodguy.alexscaves.server.entity.living.LuxtructosaurusEntity",
+        "com.github.alexmodguy.alexscaves.server.entity.living.LuxtructosaurusEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "VolcanicCoreBlockEntity.tick / spawnBoss / lambda$new$0",
+        "data/alexscaves/recipes/ominous_catalyst.json",
+        "assets/alexscaves/books/en_us/primordial_caves/luxtructosaurus.txt",
+        "LuxtructosaurusEntity",
+        "data/alexscaves/loot_tables/entities/luxtructosaurus.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation",
+        "offering_consumption",
+        "environment_preparation",
+        "attack_cues",
+        "empowerment",
+        "shield_disable",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "aquamirae:captain_cornelia",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/aquamirae/captain_cornelia",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar",
+      "artifact_sha256": "720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba",
+      "owner_classes": [
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$WeaponOption",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$WeaponLoadout",
+        "dev.obscuria.aquamirae.common.entity.CaptainCorneliaBoss$LoadoutContext"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "CaptainCorneliaBoss.m_6075_ / rage",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/CaptainCorneliaHealingMixin.java",
+        "ShellHornItem.findValidSummonPos / m_7203_",
+        "FrozenChestBlock.m_6227_",
+        "data/aquamirae/loot_tables/entities/maze_captain.json",
+        "data/aquamirae/loot_tables/entities/captain_cornelia.json"
+      ],
+      "implemented_fields": [
+        "activation",
+        "weakness_healing_condition",
+        "levitation_healing",
+        "rage_threshold",
+        "key_consumption",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "block_factorys_bosses:infernal_dragon",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/block_factorys_bosses/infernal_dragon",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+      "artifact_sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$2",
+        "net.unusual.block_factorys_bosses.entity.boss.dragon.boss.InfernalDragonEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "InfernalDragonEntity.m_6469_ / spawnFireBreath",
+        "data/block_factorys_bosses/loot_tables/entities/infernal_dragon.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "state_or_source_defense",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "block_factorys_bosses:kraken",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/block_factorys_bosses/kraken",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+      "artifact_sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity$TentacleDefinition",
+        "net.unusual.block_factorys_bosses.entity.boss.kraken.KrakenEntity$TentacleRespawnTimer"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "KrakenEntity.m_6469_",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/KrakenStaggerMixin.java",
+        "data/block_factorys_bosses/loot_tables/entities/kraken.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "state_or_source_defense",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "block_factorys_bosses:sandworm",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/block_factorys_bosses/sandworm",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+      "artifact_sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$LineCollision",
+        "net.unusual.block_factorys_bosses.entity.boss.sandworm.SandwormEntity$PartCollision"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "SandwormEntity.hurt(SandwormEntityPart,DamageSource,float)",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/SandwormStaggerMixin.java",
+        "data/block_factorys_bosses/loot_tables/entities/sandworm.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "state_or_source_defense",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "block_factorys_bosses:underworld_knight",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/block_factorys_bosses/underworld_knight",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+      "artifact_sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.knight.UnderworldKnightEntity$2"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "UnderworldKnightEntity.processHurt / removeOneImmuneStack",
+        "data/block_factorys_bosses/loot_tables/entities/underworld_knight.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "state_or_source_defense",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "block_factorys_bosses:yeti",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/block_factorys_bosses/yeti",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+      "artifact_sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+      "owner_classes": [
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$1",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$YetiState",
+        "net.unusual.block_factorys_bosses.entity.boss.yeti.YetiEntity$YetiEvents"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "YetiEntity.m_6469_",
+        "data/block_factorys_bosses/loot_tables/entities/yeti.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "state_or_source_defense",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:ancient_remnant",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/ancient_remnant",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Ancient_Remnant.Ancient_Remnant_Entity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Ancient_Remnant_Entity.m_6071_ / Charge / TailAreaAttack",
+        "data/cataclysm/loot_tables/archaeology/cursed_pyramid_necklace.json",
+        "Ancient_Remnant_Entity.m_6469_",
+        "data/cataclysm/loot_tables/entities/ancient_remnant.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "state_conditional_arrow_immunity",
+        "sleep",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:clawdian",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/clawdian",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.AcropolisMonsters.Clawdian_Entity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Clawdian_Entity.HoldAttack / BlockSmashDamage / AreaAttack",
+        "data/cataclysm/loot_tables/entities/clawdian.json",
+        "Clawdian_Entity.m_6469_ / canBlockDamageSource",
+        "data/cataclysm/loot_tables/entities/clawdian.json"
+      ],
+      "implemented_fields": [
+        "activation_or_location",
+        "attack_response",
+        "directional_block",
+        "held_attacker_rejection",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/ender_golem",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity$AttackGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Golem_Entity$AwakenGoal"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Ender_Golem_Entity.EarthQuake",
+        "data/cataclysm/advancements/kill_ender_golem.json",
+        "data/cataclysm/loot_tables/entities/ender_golem.json",
+        "data/cataclysm/loot_tables/entities/ender_golem.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:ender_guardian",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/ender_guardian",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$HugmeGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ender_Guardian_Entity$RageUppercut"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Ender_Guardian_Entity.AreaAttack / MassDestruction / m_6469_",
+        "Ender_Guardian_Entity.m_6469_",
+        "data/cataclysm/loot_tables/entities/ender_guardian.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "conditional_arrow_immunity",
+        "phase_invulnerability",
+        "golem_reduction",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:ignis",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/ignis",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$Poked",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignis_Entity$Combo1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Ignis_Entity.m_6469_ / canBlockDamageSource / getShieldDurability / m_8107_",
+        "Ignis_Abyss_Fireball_Entity.m_6469_",
+        "AltarOfFire_Block_Entity",
+        "data/cataclysm/loot_tables/entities/ignited_revenant.json",
+        "data/cataclysm/loot_tables/entities/ignis.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation",
+        "directional_shield",
+        "reflected_abyss_projectile",
+        "phase_transition",
+        "attack_geometry",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:ignited_revenant",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/ignited_revenant",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity$ShootGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity$BoneStormGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.Ignited_Revenant_Entity$Ignited_Revenant_Goal"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Ignited_Revenant_Entity.m_6469_",
+        "data/cataclysm/loot_tables/entities/ignited_revenant.json",
+        "data/cataclysm/loot_tables/entities/ignited_revenant.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:maledictus",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/maledictus",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Maledictus.Maledictus_Entity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Cursed_Tombstone_Block.m_6227_",
+        "Cursed_tombstone_Entity",
+        "Maledictus_Entity.Rushattack / Grab / ComboAreaAttack",
+        "data/cataclysm/loot_tables/entities/maledictus.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:netherite_monstrosity",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/netherite_monstrosity",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.NewNetherite_Monstrosity.Netherite_Monstrosity_Entity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Netherite_Monstrosity_Entity.EarthQuake / m_8107_",
+        "native lava-consumption action",
+        "Netherite_Monstrosity_Entity.m_6469_",
+        "data/cataclysm/loot_tables/entities/netherite_monstrosity.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "state_invulnerability",
+        "golem_reduction",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:scylla",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/scylla",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$1",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$2",
+        "com.github.L_Ender.cataclysm.entity.InternalAnimationMonster.IABossMonsters.Scylla.Scylla_Entity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Scylla_Entity.m_6071_ / Whip / SpinDamage / LightningAttack",
+        "Scylla_Entity.m_6469_ / canBlockFaceSource / CanParryState",
+        "data/cataclysm/loot_tables/entities/scylla.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation_or_location",
+        "attack_response",
+        "directional_parry",
+        "state_invulnerability",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:the_harbinger",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/the_harbinger",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$AwakenGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$ChargeGoal",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Harbinger_Entity$LaunchGoal"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "The_Harbinger_Entity.m_6071_ / m_7090_ / m_6469_",
+        "EMP_Block_Entity",
+        "EMP_Block",
+        "data/cataclysm/loot_tables/entities/the_harbinger.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation",
+        "conditional_arrow_immunity",
+        "deactivation",
+        "emp",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "cataclysm:the_leviathan",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/cataclysm/the_leviathan",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+      "artifact_sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+      "owner_classes": [
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$AttackMode",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$BiteHitResult",
+        "com.github.L_Ender.cataclysm.entity.AnimationMonster.BossMonsters.The_Leviathan.The_Leviathan_Entity$LeviathanStunGoal"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "The_Leviathan_Entity.m_6469_ / biteattack / chargeDamage / TailWhips / TentacleHoldattack",
+        "AltarOfAbyss_Block_Entity",
+        "Client/ManagedPack/config/cataclysm-common.toml:mobs.leviathan.immune_out_of_water",
+        "data/cataclysm/loot_tables/entities/the_leviathan.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "activation",
+        "out_of_water_immunity",
+        "phase_transition",
+        "attack_geometry",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:ambusher",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/ambusher",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.AmbusherEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.AmbusherEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/ambusher.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:ancient_guardian",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/ancient_guardian",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.Ancient_GuardianEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/ancient_guardian.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:annihilation_pursuer",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/annihilation_pursuer",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.AnnihilationPursuer.AnnihilationPursuerEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/annihilation_pursuer.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:beheaded_knight",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/beheaded_knight",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.BeheadedKnight.BeheadedKnightEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/beheaded_knight.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:bomber",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/bomber",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.BomberEntity"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "BomberEntity.explodeCreeper / CurseEntities / m_8119_",
+        "data/legendary_monsters/loot_tables/entities/bomber.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:chorusling",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/chorusling",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.ChoruslingEntity"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/chorusling.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:cloud_golem",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/cloud_golem",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.CloudGolem.Cloud_GolemEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Cloud_GolemEntity.m_6469_ / canBreak / isBroken",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/cloud_golem.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "hit_invulnerability",
+        "damage_cap",
+        "axe_shell_break",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:dune_sentinel",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/dune_sentinel",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.DuneSentinelEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.RuinedPyramid.DuneSentinelEntity$Crackiness"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/dune_sentinel.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:endersent",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/endersent",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Chorusling.EndersentEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/endersent.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:flame_drifter",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/flame_drifter",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.FlameDrifter.FlameDrifterEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "FlameDrifterEntity projectile-construction method / SideAreaAttack / setupAnimationStates",
+        "data/legendary_monsters/loot_tables/entities/flame_drifter.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:flameborn_guard",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/flameborn_guard",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.Flameborn.FlamebornGuardEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/flameborn_guard.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:fractured",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/fractured",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "FracturedEntity.SideAreaAttack / setupAnimationStates",
+        "data/legendary_monsters/structures/collapsed_kingdom_dungeon1.nbt"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:fractured_apostle",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/fractured_apostle",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.Fractured.FracturedApostleEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "FracturedApostleEntity.UpdateWithAttack / SideAreaAttack",
+        "ThrownPhantomDaggerEntity.setReturnEntity / setReturnTick",
+        "data/legendary_monsters/loot_tables/entities/fractured_apostle.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:frostbitten_golem",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/frostbitten_golem",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Frostbitten_GolemEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Frostbitten_GolemEntity.m_6469_ / AreaAttack / attackTargets",
+        "Client/ManagedPack/config/legendary_monsters-common.toml:Frostbitten Golem Settings",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/FrostbittenDifficultyMixin.java",
+        "data/legendary_monsters/loot_tables/entities/frostbitten_golem.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "arrow_protection",
+        "direct_potion_cloud_protection",
+        "sleep",
+        "attack_geometry",
+        "jem_difficulty_correction",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:haunted_guard",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/haunted_guard",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedGuardEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/haunted_guard.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:haunted_knight",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/haunted_knight",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.HauntedKnightEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/haunted_knight.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:lava_eater",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/lava_eater",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/lava_eater.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:overgrown_colossus",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/overgrown_colossus",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Overgrown_colossusEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/overgrown_colossus.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:posessed_paladin",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/posessed_paladin",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.PosessedPaladinEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/posessed_paladin.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:resurrected_knight",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/resurrected_knight",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.CollapsedKingdom.ResurrectedKnight.ResurrectedKnightEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/resurrected_knight.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:shulker_mimic",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/shulker_mimic",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.ShulkerTower.Shulker_MimicEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/shulker_mimic.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:skeletosaurus",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/skeletosaurus",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SkeletosaurusEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/skeletosaurus.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:spiky_bug",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/spiky_bug",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.AncientStronghold.SpikebugEntity",
+        "net.miauczel.legendary_monsters.entity.ai.SpikeBugAttackGoal",
+        "net.miauczel.legendary_monsters.entity.animations.SpikebugAnimations",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Lava_eaterEntity"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/spiky_bug.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:the_obliterator",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/the_obliterator",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.IAnimatedBoss.TheObliterator.TheObliteratorEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/the_obliterator.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:wandering_eye",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/wandering_eye",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.SpaceStation.WanderingEyeEntity$2"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/wandering_eye.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:warped_fungussus",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/warped_fungussus",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Warped_FungussusEntity"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/warped_fungussus.json"
+      ],
+      "implemented_fields": [
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "legendary_monsters:withered_abomination",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/legendary_monsters/withered_abomination",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+      "artifact_sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+      "owner_classes": [
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$1",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$2",
+        "net.miauczel.legendary_monsters.entity.AnimatedMonster.Mobs.Withered_AbominationEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "exact installed owner m_6469_ and its referenced state predicates",
+        "Client/ManagedPack/config/legendary_monsters-common.toml",
+        "data/legendary_monsters/loot_tables/entities/withered_abomination.json"
+      ],
+      "implemented_fields": [
+        "location",
+        "inbound_damage_conditions",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:bone_stalker",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/bone_stalker",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.BoneStalkerEntity",
+        "net.mcreator.luminousbeasts.entity.BoneStalkerEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "BoneStalker1AttackProcedure.execute / delayed lambda",
+        "BoneStalkerOnEntityTickUpdateProcedure",
+        "data/luminous_beasts/loot_tables/entities/bone_stalker.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:golden_hermit_king",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/golden_hermit_king",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$1",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$2",
+        "net.mcreator.luminousbeasts.entity.GoldenHermitKingEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "RareHermitKingInvulerableProcedure.onEntityAttacked / execute",
+        "RareHermitKingAttacksProcedure"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:mummy",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/mummy",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.MummyEntity",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$1",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$2",
+        "net.mcreator.luminousbeasts.entity.MummyEntity$3"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Mummy1HurtProcedure delayed health-restoration lambdas",
+        "Mummy1AttacksProcedure",
+        "data/luminous_beasts/loot_tables/entities/mummy.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:piglin_executioner",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/piglin_executioner",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.PiglinExecutionerEntity",
+        "net.mcreator.luminousbeasts.entity.PiglinExecutionerEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "PiglinExecutionerEntity.m_6469_ / PiglinExecutionerHurtProcedure",
+        "data/luminous_beasts/loot_tables/entities/piglin_executioner.json"
+      ],
+      "implemented_fields": [
+        "specific_source_defense",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:sea_viper",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/sea_viper",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.SeaViperEntity",
+        "net.mcreator.luminousbeasts.entity.SeaViperEntity$1",
+        "net.mcreator.luminousbeasts.entity.SeaViperEntity$2"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "SeaViperEntity.m_6469_",
+        "SeaViperEntityIsHurtProcedure.execute",
+        "data/luminous_beasts/loot_tables/entities/sea_viper.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:the_furnace",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/the_furnace",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.TheFurnaceEntity",
+        "net.mcreator.luminousbeasts.entity.TheFurnaceEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "TheFurnaceEntity.m_6469_ / TheFurnaceEntityIsHurtProcedure",
+        "data/luminous_beasts/loot_tables/entities/the_furnace.json"
+      ],
+      "implemented_fields": [
+        "specific_source_defense",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:the_scarecrow",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/the_scarecrow",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.TheScarecrowEntity",
+        "net.mcreator.luminousbeasts.entity.TheScarecrowEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "TheScarecrowEntity.m_6469_ / ScarecrowHurtProcedure"
+      ],
+      "implemented_fields": [
+        "specific_source_defense",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:wind_phoenix",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/wind_phoenix",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity",
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity$1",
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity$2",
+        "net.mcreator.luminousbeasts.entity.WindPhoenixEntity$RangedAttackGoal"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "WindPhoenixEntity.m_6469_"
+      ],
+      "implemented_fields": [
+        "specific_source_defense",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_beasts:yeti",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_beasts/yeti",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/expanded_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3",
+      "owner_classes": [
+        "net.mcreator.luminousbeasts.entity.YetiEntity",
+        "net.mcreator.luminousbeasts.entity.YetiEntity$1",
+        "net.mcreator.luminousbeasts.entity.YetiEntity$2"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "Yeti1HurtProcedure / delayed projectile actions",
+        "Yeti1AttacksProcedure",
+        "data/luminous_beasts/loot_tables/entities/yeti.json"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile",
+        "native_loot_identity",
+        "campaign_role"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_nether:soul_furnace",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_nether/soul_furnace",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "6b3a02d00b8c7cd92718b968e123622b531f9b2272acc1b944d8a60c9c610a42",
+      "owner_classes": [
+        "net.mcreator.luminousnether.entity.SoulFurnaceEntity",
+        "net.mcreator.luminousnether.entity.SoulFurnaceEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "SoulFurnaceEntity.m_6469_ / SoulFurnaceEntityIsHurtProcedure"
+      ],
+      "implemented_fields": [
+        "specific_source_defense",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    },
+    {
+      "id": "luminous_nether:warped_mushlin_king",
+      "type": "registered_boss_profile",
+      "entry": "jem_advancements:handbook/bosses/luminous_nether/warped_mushlin_king",
+      "localizations": [
+        "ru_ru",
+        "en_us"
+      ],
+      "status": "incomplete",
+      "profile_owner": "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json",
+      "artifact": "Client/ManagedPack/mods/Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar",
+      "artifact_sha256": "6b3a02d00b8c7cd92718b968e123622b531f9b2272acc1b944d8a60c9c610a42",
+      "owner_classes": [
+        "net.mcreator.luminousnether.entity.WarpedMushlinKingEntity",
+        "net.mcreator.luminousnether.entity.WarpedMushlinKingEntity$1"
+      ],
+      "existing_help": "native advancement entries retained",
+      "sources": [
+        "WarpedSpewerAttacksProcedure / projectile lambda",
+        "WarpedSpewerOnEntityTickUpdateProcedure"
+      ],
+      "implemented_fields": [
+        "native_attack_cue",
+        "practical_response",
+        "dedicated_vs_integrated_start",
+        "world_tier_profile"
+      ],
+      "unresolved_fields": [
+        "complete_attack_timeline",
+        "all_native_defense_branches",
+        "live_server_config_and_player_acceptance"
+      ],
+      "ui_routes": [
+        "handbook boss category",
+        "handbook search"
+      ],
+      "exclusion": null,
+      "blocker": "Full delegated AI phases, all source-damage predicates and current live world configuration have not all been resolved; no blanket immunity-absence claim is published."
+    }
+  ]
+}

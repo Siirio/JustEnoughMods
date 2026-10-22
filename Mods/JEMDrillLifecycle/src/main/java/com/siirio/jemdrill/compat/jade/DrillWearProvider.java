@@ -21,12 +21,15 @@ final class DrillWearProvider implements IServerDataProvider<BlockAccessor>, IBl
         if (accessor.getBlockEntity() instanceof DrillWearAccess wear) {
             tag.putInt(DrillWearPolicy.WEAR_KEY, wear.jemcompat$getWear());
             tag.putInt(DrillWearPolicy.REPAIRS_KEY, wear.jemcompat$getRepairs());
+            tag.putBoolean("JemDrillRunning", accessor.getBlockEntity() instanceof com.simibubi.create.content.kinetics.drill.DrillBlockEntity drill
+                    && drill.getSpeed() != 0.0F);
         }
     }
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
         CompoundTag data = accessor.getServerData();
+        if (!data.contains(DrillWearPolicy.WEAR_KEY)) return;
         int wear = data.getInt(DrillWearPolicy.WEAR_KEY);
         int repairs = data.getInt(DrillWearPolicy.REPAIRS_KEY);
         float remaining = 1.0F - (float) wear / DrillWearPolicy.MAX_WEAR;
@@ -35,6 +38,10 @@ final class DrillWearProvider implements IServerDataProvider<BlockAccessor>, IBl
                 Component.translatable("jemcompat.drill.wear", wear, DrillWearPolicy.MAX_WEAR),
                 elements.progressStyle().color(0xFFCC3333, 0xFF3A3A3A), BoxStyle.DEFAULT, false));
         tooltip.add(Component.translatable("jemcompat.drill.repairs", repairs, DrillWearPolicy.MAX_REPAIRS));
+        if (wear > 0) {
+            tooltip.add(Component.translatable(repairs >= DrillWearPolicy.MAX_REPAIRS ? "jemcompat.drill.replace_hint"
+                    : data.getBoolean("JemDrillRunning") ? "jemcompat.drill.stop_hint" : "jemcompat.drill.service_hint"));
+        }
     }
 
     @Override

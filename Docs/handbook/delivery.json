@@ -1,0 +1,169 @@
+{
+  "date_local": "2026-10-23",
+  "timezone": "Asia/Yekaterinburg",
+  "branch": "main",
+  "commit": "SELF",
+  "status": "PRODUCTION_BUILT_AND_SYNCHRONIZED_NATIVE_DELIVERY_BLOCKED",
+  "source_base": "67d9f215",
+  "preserved": [
+    "FTB quest content, rewards, assets and progress bridge",
+    "GUI Atlas catalog",
+    "Season source commit 1f76f323 and combined Compat artifact",
+    "unrelated dirty sources and runtime data"
+  ],
+  "production_build": {
+    "tasks": [
+      ":JEMAchievementGuide:jar",
+      ":JEMCompat:jar",
+      ":JEMDrillLifecycle:jar",
+      ":JEMWorldBossTiers:jar"
+    ],
+    "result": "BUILD SUCCESSFUL",
+    "guide_final_repackage": "BUILD SUCCESSFUL in 1m 20s; reobfJar completed after final text/category-search changes",
+    "compat_final_build_owner": "coordinated seasonal session",
+    "artifacts": {
+      "jem-advancements-5.1.0.jar": {
+        "source": "Mods/JEMAchievementGuide/build/libs/jem-advancements-5.1.0.jar",
+        "sha256": "67628000ebf4aa2ce5474a9a31db9cae2a12e61fcda10c436d58fba8e15bd2b1",
+        "resource_inventory": "all source resources present and current; mods.toml uses native build expansion"
+      },
+      "jemcompat-3.7.0.jar": {
+        "source": "Mods/JEMCompat/build/libs/jemcompat-3.7.0.jar",
+        "sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+        "resource_inventory": "all source resources present and current; mods.toml uses native build expansion"
+      },
+      "jem_drill_lifecycle-1.0.0.jar": {
+        "source": "Mods/JEMDrillLifecycle/build/libs/jem_drill_lifecycle-1.0.0.jar",
+        "sha256": "3050548f28a35d64649c4d74aa0482fe6b5af8a0fbc39d430f24ed5e880b9bc9",
+        "resource_inventory": "all source resources present and current; mods.toml uses native build expansion"
+      },
+      "jem-world-boss-tiers-2.5.0-dev.jar": {
+        "source": "Mods/JEMWorldBossTiers/build/libs/jem-world-boss-tiers-2.5.0-dev.jar",
+        "sha256": "18bee2c919df207fcc449dd92f43afb22b2d94f7b6eff3edc56026c8aa3d4174",
+        "resource_inventory": "all source resources present and current; mods.toml uses native build expansion"
+      }
+    }
+  },
+  "ordinary_server": {
+    "synchronized": true,
+    "running": false,
+    "native_load_of_new_artifacts": "UNOBSERVED",
+    "blockers_source": "Docs/quests/delivery.json",
+    "blockers": [
+      "Existing Settlements TaxDurability ERROR_ACCESS_DENIED (5) replacing world/data/jem_settlements.dat; specific holder/ACL/transient cause remains unestablished.",
+      "Existing EconomySavedData development-ledger guard is frozen outside its paired local opt-in/account marker boundary."
+    ],
+    "action": "No restart into the known unhealthy world and no saved data, ACL, marker or money opt-in mutation to bypass the failures."
+  },
+  "automodpack": {
+    "staged": true,
+    "published_with_this_task": false,
+    "last_published_sequence": 63,
+    "last_published_manifest_sha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+    "test_jem_task_generation_applied": false,
+    "installed_generation": "previous generation 63; unchanged by this task",
+    "native_preview": "BLOCKED: ordinary Server is stopped after independent runtime failures",
+    "native_publish": "BLOCKED",
+    "native_application": "BLOCKED: no task-owned published generation",
+    "raw_managed_gameDir_copy": false,
+    "staged_paths": [
+      "mods/jem-advancements-5.1.0.jar",
+      "mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "mods/jem_drill_lifecycle-1.0.0.jar",
+      "mods/jemcompat-3.7.0.jar",
+      "kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "jem-pack/manifest.json"
+    ],
+    "deleted_paths": [],
+    "staged_files": 2844,
+    "manifest_version": "1363dfe8f38050817f86bfe0badaef0beccaf1cb306136f61fc45d85a3deb420",
+    "publication_status": {
+      "published": false,
+      "journalSequence": 63,
+      "publishedManifestSha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+      "stagedManifestSha1": "5bd67314cb641619cfb0eeb1b19c70eda803271e"
+    },
+    "test_jem_active_token": "ea5c8e10320356cce80c6bda1af5c992198ce954",
+    "test_jem_active_status": "ACTIVE",
+    "test_jem_pending_transaction": false,
+    "fresh_artifact_hashes_installed_in_test_jem": false,
+    "reason": "New staged manifest differs from last published generation63. No native preview, publish or application was attempted against the stopped unhealthy ordinary Server."
+  },
+  "atlas": {
+    "validation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12139,
+        "creative_tabs": 55,
+        "effects": 472,
+        "enchantments": 219,
+        "entities": 1608,
+        "items": 17162,
+        "structures": 520
+      },
+      "change_records": 132,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "static_artifact_refresh": {
+      "metadata_only_files_restored": 859,
+      "semantic_changed_paths": [
+        "Catalog/coverage.json",
+        "Catalog/graphs/item_lineage.json",
+        "Catalog/graphs/recipes/jem_advancements.json",
+        "Catalog/manifest.json",
+        "Catalog/registries/blocks/jemcompat.json",
+        "Catalog/registries/enchantments/jem_world_boss_tiers.json",
+        "Catalog/registries/enchantments/jemcompat.json",
+        "Catalog/registries/enchantments/kaleidoscope_end.json",
+        "Catalog/registries/items/blastfromthepast.json",
+        "Catalog/registries/items/cnc.json",
+        "Catalog/registries/items/jemcompat.json",
+        "Catalog/registries/items/luminous_beasts.json",
+        "Catalog/registries/items/unearthed_journey.json",
+        "Catalog/views/placeables/jemcompat.json",
+        "Catalog/views/trade_policies/blastfromthepast.json",
+        "Catalog/views/trade_policies/cnc.json",
+        "Catalog/views/trade_policies/jemcompat.json",
+        "Catalog/views/trade_policies/luminous_beasts.json",
+        "Catalog/views/trade_policies/unearthed_journey.json"
+      ],
+      "preexisting_economy_docs_preserved": [
+        "Docs/economy/registry-coverage.csv",
+        "Docs/economy/coverage-summary.md",
+        "Docs/economy/progression-chain-review.md"
+      ]
+    },
+    "installed_artifact_drift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "full_regeneration_required": false,
+    "task_uncovered_paths": [],
+    "whole_working_tree_uncovered_count": 86,
+    "scope": "The remaining uncovered sources are unrelated existing work; no clean whole-workspace impact scan is claimed.",
+    "registration_note": "One additional static enchantment identity void_shot is observed through the new localization and separately confirmed by installed bytecode in the enchantment evidence. Candidate counts are not new gameplay registrations or a runtime dump.",
+    "runtime_facts_promoted": false
+  },
+  "coverage": {
+    "confirmed_mod_enchantments": 85,
+    "canonical_boss_profiles_with_guidance": 56,
+    "authored_item_cards": 56,
+    "native_general_manual_families": 8,
+    "additional_manual_family": "acquired Aquamirae NBT logbook variants",
+    "remaining": [
+      "six EFN survival enchantment-book sources",
+      "Backpacked unlock_token survival acquisition",
+      "exhaustive per-boss phases/damage predicates/live overrides",
+      "whole-pack no-JEI item and translation census"
+    ]
+  },
+  "verification_limits": [
+    "No automated tests, fixtures, lint, static analysis, client launch or gameplay QA.",
+    "Actual GUI scale, focus, narration, visual acceptance and native runtime interaction are UNOBSERVED.",
+    "Stable profiles, MineRENT, release baseline and FTB content remain unchanged.",
+    "Compilation and packaging do not establish a healthy ordinary Server or a fresh installed client."
+  ]
+}

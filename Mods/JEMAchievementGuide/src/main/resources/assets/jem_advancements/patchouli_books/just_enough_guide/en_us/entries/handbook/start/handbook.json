@@ -1,0 +1,27 @@
+{
+  "name": "JEM Handbook: first steps",
+  "category": "jem_advancements:handbook/start",
+  "icon": "minecraft:book",
+  "jem_aliases": [
+    "JEM Handbook",
+    "Справочник JEM",
+    "dirt stick земля палка"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "jem_advancements:handbook",
+      "text": "One dirt and one stick in any two slots, including your inventory crafting grid. Craft another immediately if the book is lost."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "One handbook",
+      "text": "Use the handbook: $(jemkey:key.use). Seven colored ribbons on the left open its sections. Each has an icon and a hover label. Search is available in the complete index and section lists. Reading grants no rewards or research discoveries."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Quick help",
+      "text": "Hover an item and press $(jemkey:key.jem_advancements.handbook) when its tooltip offers help. The same key opens the entry for a boss you are looking at. The green ribbon opens the complete index. The native Back button retains the book's own history."
+    }
+  ]
+}

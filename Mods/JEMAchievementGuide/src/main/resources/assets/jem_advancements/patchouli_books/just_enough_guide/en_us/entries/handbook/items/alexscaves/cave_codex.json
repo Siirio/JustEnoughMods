@@ -1,0 +1,35 @@
+{
+  "name": "Cave Codex",
+  "icon": "alexscaves:cave_codex",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:alexscaves",
+  "jem_aliases": [
+    "Пещерный кодекс",
+    "Cave Codex",
+    "alexscaves:cave_codex"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "alexscaves:cave_codex",
+      "text": "Use a deciphered codex to unlock the next knowledge category for its cave biome."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Source",
+      "text": "A codex comes from successfully researching a tablet at the Spelunkery Table. Its stored biome matters: a Magnetic Caves codex does not reveal another biome’s knowledge."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Unlocking knowledge",
+      "text": "Hold and use the codex. If the biome has an available next category, it is added to your personal research and one codex is consumed outside creative. Once nothing remains to learn, the native message explains that condition."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Map or knowledge",
+      "text": "The codex also has a special Cave Map recipe. Inspect it in JEI before consuming the codex. Opening the native book through JEM does not grant research categories or automatically create a map."
+    }
+  ],
+  "jem_summary": "Use a deciphered codex to unlock the next knowledge category for its cave biome."
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Rune Etching: Pain",
+  "icon": "simplybows:upgrades/rune_etching_pain",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:simplybows",
+  "jem_aliases": [
+    "Рунная гравировка: Боль",
+    "Rune Etching: Pain",
+    "simplybows:upgrades/rune_etching_pain"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "simplybows:upgrades/rune_etching_pain",
+      "text": "Combine with a Simply Bows unique bow at an anvil; the component is consumed."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Source",
+      "text": "Search vanilla structure chests, such as shipwreck treasure and village chests. The native handler adds components to Minecraft chest loot tables. Ancient City rune loot has an additional pool; an individual chest need not contain your desired item."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Anvil",
+      "text": "Put a Simply Bows unique bow and this component into the two anvil inputs. Either input order is supported. Take the result and pay the displayed experience cost: the component is consumed and changes the unique bow ability to its Pain variant."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Limits",
+      "text": "A different etching replaces the previous rune; the old component is not returned. Inspect the expanded native ability tooltip for the particular bow before replacing it."
+    }
+  ],
+  "jem_summary": "Combine with a Simply Bows unique bow at an anvil; the component is consumed."
+}

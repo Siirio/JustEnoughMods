@@ -1,0 +1,35 @@
+{
+  "name": "Backpack Dock",
+  "icon": "backpacked:backpack_dock",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:backpacked",
+  "jem_aliases": [
+    "Стойка для рюкзака",
+    "Backpack Dock",
+    "backpacked:backpack_dock"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "backpacked:backpack_dock",
+      "text": "Place the dock and interact with its frame while holding a backpack, then open the docked pack."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Placing",
+      "text": "Craft the dock through JEI and place it. Hold a backpack and interact with the frame area to dock it. If no backpack is present, the menu explains that it is missing."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Opening and removing",
+      "text": "Interacting with the docked pack opens its native storage. The frame area handles insertion and removal separately. Contents belong to the backpack itself; the dock is not an augment-purchase station."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Where to configure",
+      "text": "Unlocks and augment configuration use the active Backpacked menus. The retired JEM Augment Bay station is not required for this dock or for token use."
+    }
+  ],
+  "jem_summary": "Place the dock and interact with its frame while holding a backpack, then open the docked pack."
+}

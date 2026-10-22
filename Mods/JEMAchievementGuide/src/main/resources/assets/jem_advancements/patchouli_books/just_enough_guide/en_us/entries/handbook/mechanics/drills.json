@@ -1,0 +1,13 @@
+{
+  "name": "Drills: wear and servicing",
+  "category": "jem_advancements:handbook/mechanics",
+  "icon": "create:mechanical_drill",
+  "flag": "mod:jem_drill_lifecycle",
+  "jem_aliases": ["drill wear service stationary contraption", "бур стационарный ремонт износ"],
+  "jem_summary": "Stop the machine and use iron ingots on a worn drill. Stationary drills wear too.",
+  "pages": [
+    {"type":"patchouli:spotlight", "item":"create:mechanical_drill", "title":"Wear", "text":"Drills wear on moving contraptions and when stationary. Jade shows a stationary drill's current condition. At $(jemdrill:dull) wear, speed halves; at $(jemdrill:wear), the drill breaks. Bedrock destroys it immediately."},
+    {"type":"patchouli:text", "title":"Service", "text":"Stop the contraption or stationary drill's rotation. Use iron ingots on the drill: one ingot per repaired drill. One interaction can service several worn drills on that contraption or kinetic network. Wear resets and the service count increases."},
+    {"type":"patchouli:text", "title":"Replacement", "text":"A drill allows $(jemdrill:repairs) services. After that it can keep working until maximum wear but cannot be serviced again. Stop the machine and replace it before it breaks. Service does nothing while rotating, without wear or after the service allowance is exhausted."}
+  ]
+}

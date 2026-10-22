@@ -1,0 +1,35 @@
+{
+  "name": "Nether Star: Harbinger",
+  "icon": "minecraft:nether_star",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:minecraft",
+  "jem_aliases": [
+    "Звезда Незера: Предвестник",
+    "Nether Star: Harbinger",
+    "minecraft:nether_star"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:nether_star",
+      "text": "In singleplayer use on an inactive Harbinger; one star is consumed."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Source and target",
+      "text": "The Nether Star is Wither loot. Harbinger activation is an entity interaction at the Ancient Factory, not a crafting-grid recipe."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Conditions",
+      "text": "In native singleplayer combat, use the star on a still-inactive Harbinger. Survival consumes one star, activates the boss and restores its health. An already-active boss does not repeat this awakening interaction."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Dedicated server",
+      "text": "Native awakening does not bypass hosted preparation: start through Start. $(l:handbook/bosses/cataclysm/the_harbinger)Arrow protection and EMP$(/l)."
+    }
+  ],
+  "jem_summary": "In singleplayer use on an inactive Harbinger; one star is consumed."
+}

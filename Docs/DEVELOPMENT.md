@@ -65,6 +65,8 @@ Changelog описывает только запрошенные player-visible 
 
 `JEMCurrencyCore` объединён в Economy, а `JEMVisualSandboxR3` больше не производит отдельный gameplay JAR: его developed race scope находится в JEMRoles. Pack Core удалён как source/build/runtime owner; его source/resources распределены по Guide, Compat, WorldTier, TwelveEyes и Server с сохранением content IDs. Menu Support runtime library удалена: требуемые native helper classes стали private source потребителей. Эти старые названия допустимы в неизменяемой истории и compatibility namespace, но не являются production dependencies.
 
+JEMAchievementGuide also owns the single physical [JEM Handbook](handbook/README.md), its native Patchouli recipe/navigation, optional native-manual adapters and shared explanatory data. Compat projects that help into existing JEI/Jade surfaces; domain owners retain gameplay and synchronized state. Handbook opening never awards quest progress, rewards or research. Its fixed native-manual menu channel requires the same fresh Guide artifact on both sides; the FTB book and progress bridge remain intact.
+
 Исторические sandbox receipts описывают прежние ограничения, а не текущий install path. Обычные production Economy/Races/Settlements работают на logical server без отдельной standalone ветки. Professions, Talking и Claims могут оставаться в разрешённой development-среде; это не разрешает их выпуск. Pufferfish's Skills остаётся владельцем profession state, если этот development domain установлен.
 
 Новый код идёт владельцу домена. Общий контракт появляется только у двух реальных потребителей. Потребитель получает immutable snapshot, query или event и не восстанавливает состояние из tooltip, display name, текста advancement или чужого NBT.

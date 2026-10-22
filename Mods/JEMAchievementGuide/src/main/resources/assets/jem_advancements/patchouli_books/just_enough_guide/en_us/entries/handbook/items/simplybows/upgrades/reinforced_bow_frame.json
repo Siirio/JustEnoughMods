@@ -1,0 +1,35 @@
+{
+  "name": "Reinforced Bow-Frame",
+  "icon": "simplybows:upgrades/reinforced_bow_frame",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:simplybows",
+  "jem_aliases": [
+    "Усиленная основа лука",
+    "Reinforced Bow-Frame",
+    "simplybows:upgrades/reinforced_bow_frame"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "simplybows:upgrades/reinforced_bow_frame",
+      "text": "Combine with a Simply Bows unique bow at an anvil; the component is consumed."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Source",
+      "text": "Search vanilla structure chests, such as shipwreck treasure and village chests. The native handler adds components to Minecraft chest loot tables. Ancient City rune loot has an additional pool; an individual chest need not contain your desired item."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Anvil",
+      "text": "Put a Simply Bows unique bow and this component into the two anvil inputs. Either input order is supported. Take the result and pay the displayed experience cost: the component is consumed and adds a Frame level, increasing the relevant ability damage."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Limits",
+      "text": "The bow has a combined slot cap and a per-type level cap. If a cap prevents changing its data, no result appears. Both limits are five in the current configuration file; the live menu shows the applicable state."
+    }
+  ],
+  "jem_summary": "Combine with a Simply Bows unique bow at an anvil; the component is consumed."
+}

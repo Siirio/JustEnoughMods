@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "b5c16f87a0bbf09ecb4393f3008695006dee33af",
+  "snapshot_sha": "1f76f323e9dacc9f0dc08ce817751f68506f04ce",
   "generation": {
-    "generated_utc": "2026-10-22T19:19:35.662885+00:00",
+    "generated_utc": "2026-10-22T20:22:33.380886+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -2478,14 +2478,18 @@
       "observed_in": [
         "assets/blastfromthepast/lang/en_us.json",
         "assets/blastfromthepast/models/item/glacial_guidebook.json",
+        "assets/jem_advancements/lang/en_us.json",
+        "assets/jem_advancements/lang/ru_ru.json",
         "data/blastfromthepast/recipes/glacial_guidebook.json"
       ],
       "display_name_en_us": "Glacial Guidebook",
-      "display_name_ru_ru": null,
+      "display_name_ru_ru": "Ледниковый справочник",
       "source_provenance": [
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/lang/en_us.json",
         "blastfromthepast-1.0.3+1.20.1.jar:assets/blastfromthepast/models/item/glacial_guidebook.json",
-        "blastfromthepast-1.0.3+1.20.1.jar:data/blastfromthepast/recipes/glacial_guidebook.json"
+        "blastfromthepast-1.0.3+1.20.1.jar:data/blastfromthepast/recipes/glacial_guidebook.json",
+        "jem-advancements-5.1.0.jar:assets/jem_advancements/lang/en_us.json",
+        "jem-advancements-5.1.0.jar:assets/jem_advancements/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

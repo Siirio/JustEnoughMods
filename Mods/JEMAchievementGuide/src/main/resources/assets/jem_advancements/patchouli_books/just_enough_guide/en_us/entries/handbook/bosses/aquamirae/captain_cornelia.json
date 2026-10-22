@@ -1,0 +1,49 @@
+{
+  "name": "Captain Cornelia",
+  "icon": "aquamirae:frozen_key",
+  "category": "jem_advancements:handbook/bosses",
+  "sortnum": 0,
+  "flag": "mod:aquamirae",
+  "jem_aliases": [
+    "Призрак капитана Корнелии",
+    "Captain Cornelia",
+    "aquamirae:captain_cornelia"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Locator search",
+      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Summoning",
+      "text": "Defeat a Maze Captain for a Shell Horn. Use it near suitable water inside the Ice Maze. Finding a valid spawn location consumes one horn; unsuitable terrain causes a failed summon. Prepare breathing supplies and an escape route toward shore."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Healing and Weakness",
+      "text": "Near low health Cornelia slowly heals while she lacks Weakness. JEM preserves the threshold ratio when maximum health changes: 1/15. Applying Weakness stops this emergency healing only. A separate healing branch while she has Levitation is much stronger; these are distinct conditions."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Phase and loot",
+      "text": "Below a quarter of maximum health she enters rage if it has not happened already and Levitation does not prevent it. Watch weapon changes instead of blindly continuing the same attack sequence. The Frozen Key obtained after victory opens a Frozen Chest in the maze and is consumed when unlocking it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Starting combat",
+      "text": "Waiting for Start on a dedicated server is separate preparation protection. $(l:handbook/mechanics/encounters)Starting combat$(/l). In singleplayer use native awakening; server parties and JEM Raid are unavailable there."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Loot and use",
+      "text": "Native loot for this encounter includes: Frozen Key, Salvager Helmet, Treasure Pouch. Inspect the obtained item’s uses in JEI to choose your next equipment. Possessing an item does not replace a recorded victory."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Next step",
+      "text": "This victory belongs to the branch for: The Leviathan. The other victories in that branch are also required. Sibling prerequisite encounters can be completed in any order."
+    }
+  ]
+}

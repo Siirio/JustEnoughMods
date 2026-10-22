@@ -1,0 +1,30 @@
+{
+  "name": "Photograph",
+  "icon": "exposure:photograph",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 0,
+  "flag": "mod:exposure",
+  "jem_aliases": [
+    "Фотография",
+    "Photograph",
+    "exposure:photograph"
+  ],
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "exposure:photograph",
+      "text": "Print a frame in the Lightroom, then place the photograph in an album or photograph frame."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Source",
+      "text": "Print a selected developed-film frame in the Lightroom. The item must retain image data; an empty photograph icon is not your actual picture."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Storage and copies",
+      "text": "Open a Photo Album to arrange prints, or use a Photograph Frame. The special copying recipe preserves the image and tracks copy generation; inspect the native tooltip and JEI before spending paper."
+    }
+  ],
+  "jem_summary": "Print a frame in the Lightroom, then place the photograph in an album or photograph frame."
+}

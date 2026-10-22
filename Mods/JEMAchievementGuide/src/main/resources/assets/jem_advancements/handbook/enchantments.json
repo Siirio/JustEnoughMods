@@ -1,0 +1,4208 @@
+{
+  "schema_version": 1,
+  "enchantments": [
+    {
+      "id": "alexscaves:field_extension",
+      "name": {
+        "ru_ru": "Электромагнитное расширение",
+        "en_us": "Field Extension"
+      },
+      "effect": {
+        "ru_ru": "Увеличивает дальность управления предметом на 5 блоков за уровень, от базовых 30.",
+        "en_us": "Adds 5 blocks per level to the base 30-block controlled-item range."
+      },
+      "applies": {
+        "ru_ru": "Галенитовая перчатка (alexscaves:galena_gauntlet)",
+        "en_us": "Galena Gauntlet (alexscaves:galena_gauntlet)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 4,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + galena_gauntlet item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Дальность: 35 блоков.",
+            "en_us": "Range: 35 blocks."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Дальность: 40 блоков.",
+            "en_us": "Range: 40 blocks."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Дальность: 45 блоков.",
+            "en_us": "Range: 45 blocks."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Дальность: 50 блоков.",
+            "en_us": "Range: 50 blocks."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Увеличивает дальность управления предметом на 5 блоков за уровень, от базовых 30.",
+        "en_us": "Adds 5 blocks per level to the base 30-block controlled-item range."
+      },
+      "applies_brief": {
+        "ru_ru": "Галенитовая перчатка (alexscaves:galena_gauntlet)",
+        "en_us": "Galena Gauntlet (alexscaves:galena_gauntlet)"
+      },
+      "targets": [
+        "alexscaves:galena_gauntlet"
+      ]
+    },
+    {
+      "id": "alexscaves:crystallization",
+      "name": {
+        "ru_ru": "Кристаллизация",
+        "en_us": "Crystallization"
+      },
+      "effect": {
+        "ru_ru": "Перчатка удерживает кристаллические инструменты из своей специальной группы, включая алмазные. Держите инструмент в другой руке.",
+        "en_us": "The gauntlet can use its crystal-item group, including diamond tools. Hold the tool in the other hand."
+      },
+      "applies": {
+        "ru_ru": "Галенитовая перчатка (alexscaves:galena_gauntlet)",
+        "en_us": "Galena Gauntlet (alexscaves:galena_gauntlet)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + galena_gauntlet item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Перчатка удерживает кристаллические инструменты из своей специальной группы, включая алмазные.",
+        "en_us": "The gauntlet can use its crystal-item group, including diamond tools."
+      },
+      "applies_brief": {
+        "ru_ru": "Галенитовая перчатка (alexscaves:galena_gauntlet)",
+        "en_us": "Galena Gauntlet (alexscaves:galena_gauntlet)"
+      },
+      "targets": [
+        "alexscaves:galena_gauntlet"
+      ]
+    },
+    {
+      "id": "alexscaves:ferrous_haste",
+      "name": {
+        "ru_ru": "Магнитная спешка",
+        "en_us": "Ferrous Haste"
+      },
+      "effect": {
+        "ru_ru": "Управляемое оружие чаще бьёт и быстрее добывает: задержка после удара 0,000125 дня, делитель прогресса добычи 8 вместо 10.",
+        "en_us": "Controlled weapons attack and mine faster: post-hit delay is 0.000125 days; mining progress divisor is 8 instead of 10."
+      },
+      "applies": {
+        "ru_ru": "Галенитовая перчатка (alexscaves:galena_gauntlet)",
+        "en_us": "Galena Gauntlet (alexscaves:galena_gauntlet)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + galena_gauntlet item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Управляемое оружие чаще бьёт и быстрее добывает: задержка после удара 0,000125 дня, делитель прогресса добычи 8 вместо 10.",
+        "en_us": "Controlled weapons attack and mine faster: post-hit delay is 0.000125 days; mining progress divisor is 8 instead of 10."
+      },
+      "applies_brief": {
+        "ru_ru": "Галенитовая перчатка (alexscaves:galena_gauntlet)",
+        "en_us": "Galena Gauntlet (alexscaves:galena_gauntlet)"
+      },
+      "targets": [
+        "alexscaves:galena_gauntlet"
+      ]
+    },
+    {
+      "id": "alexscaves:arrow_inducting",
+      "name": {
+        "ru_ru": "Намагничивание",
+        "en_us": "Arrow Inducting"
+      },
+      "effect": {
+        "ru_ru": "Блокируемая щитом обычная стрела становится самонаводящейся и летит обратно. Уже самонаводящиеся стрелы исключены.",
+        "en_us": "Blocking an ordinary arrow converts it into a seeking return arrow. Existing seeking arrows are excluded."
+      },
+      "applies": {
+        "ru_ru": "Щит сопротивления (alexscaves:resistor_shield)",
+        "en_us": "Resistor Shield (alexscaves:resistor_shield)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + resistor_shield item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Блокируемая щитом обычная стрела становится самонаводящейся и летит обратно.",
+        "en_us": "Blocking an ordinary arrow converts it into a seeking return arrow."
+      },
+      "applies_brief": {
+        "ru_ru": "Щит сопротивления (alexscaves:resistor_shield)",
+        "en_us": "Resistor Shield (alexscaves:resistor_shield)"
+      },
+      "targets": [
+        "alexscaves:resistor_shield"
+      ]
+    },
+    {
+      "id": "alexscaves:heavy_slam",
+      "name": {
+        "ru_ru": "Сильный удар",
+        "en_us": "Heavy Slam"
+      },
+      "effect": {
+        "ru_ru": "Первое попадание щитом: 6 + 3 за уровень урона. Последующие попадания: 2.",
+        "en_us": "First shield slam hit: 6 + 3 damage per level. Later hits: 2."
+      },
+      "applies": {
+        "ru_ru": "Щит сопротивления (alexscaves:resistor_shield)",
+        "en_us": "Resistor Shield (alexscaves:resistor_shield)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + resistor_shield item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Первый удар: 9 урона; последующие: 2.",
+            "en_us": "First hit: 9 damage; later hits: 2."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Первый удар: 12 урона; последующие: 2.",
+            "en_us": "First hit: 12 damage; later hits: 2."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Первый удар: 15 урона; последующие: 2.",
+            "en_us": "First hit: 15 damage; later hits: 2."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Первое попадание щитом: 6 + 3 за уровень урона.",
+        "en_us": "First shield slam hit: 6 + 3 damage per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Щит сопротивления (alexscaves:resistor_shield)",
+        "en_us": "Resistor Shield (alexscaves:resistor_shield)"
+      },
+      "targets": [
+        "alexscaves:resistor_shield"
+      ]
+    },
+    {
+      "id": "alexscaves:swiftwood",
+      "name": {
+        "ru_ru": "Удар сплеча",
+        "en_us": "Swiftwood"
+      },
+      "effect": {
+        "ru_ru": "Скорость атаки дубиной при стандартной базе игрока: 0,25 + 0,15 за уровень.",
+        "en_us": "Club attack speed with standard player base speed: 0.25 + 0.15 per level."
+      },
+      "applies": {
+        "ru_ru": "Первобытная дубина (alexscaves:primitive_club)",
+        "en_us": "Primitive Club (alexscaves:primitive_club)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + primitive_club item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Скорость атаки: 0.40 при стандартной базе.",
+            "en_us": "Attack speed: 0.40 at standard base."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Скорость атаки: 0.55 при стандартной базе.",
+            "en_us": "Attack speed: 0.55 at standard base."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Скорость атаки: 0.70 при стандартной базе.",
+            "en_us": "Attack speed: 0.70 at standard base."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Скорость атаки дубиной при стандартной базе игрока: 0,25 + 0,15 за уровень.",
+        "en_us": "Club attack speed with standard player base speed: 0.25 + 0.15 per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Первобытная дубина (alexscaves:primitive_club)",
+        "en_us": "Primitive Club (alexscaves:primitive_club)"
+      },
+      "targets": [
+        "alexscaves:primitive_club"
+      ]
+    },
+    {
+      "id": "alexscaves:bonking",
+      "name": {
+        "ru_ru": "Головорез",
+        "en_us": "Bonking"
+      },
+      "effect": {
+        "ru_ru": "При убийстве дубиной есть 33% шанс вызвать добычу головы как от заряженного крипера. Подходят только виды с такой добычей.",
+        "en_us": "Club kills have a 33% chance to trigger charged-creeper head drops. Only mobs with such drops qualify."
+      },
+      "applies": {
+        "ru_ru": "Первобытная дубина (alexscaves:primitive_club)",
+        "en_us": "Primitive Club (alexscaves:primitive_club)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + primitive_club item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При убийстве дубиной есть 33% шанс вызвать добычу головы как от заряженного крипера.",
+        "en_us": "Club kills have a 33% chance to trigger charged-creeper head drops."
+      },
+      "applies_brief": {
+        "ru_ru": "Первобытная дубина (alexscaves:primitive_club)",
+        "en_us": "Primitive Club (alexscaves:primitive_club)"
+      },
+      "targets": [
+        "alexscaves:primitive_club"
+      ]
+    },
+    {
+      "id": "alexscaves:dazing_sweep",
+      "name": {
+        "ru_ru": "Разящий дуб",
+        "en_us": "Dazing Sweep"
+      },
+      "effect": {
+        "ru_ru": "Успешное оглушение дубиной действует и на соседей в радиусе 1,2 + уровень блока, кроме союзников.",
+        "en_us": "Successful club stuns also affect eligible neighbours within 1.2 + level blocks, excluding allies."
+      },
+      "applies": {
+        "ru_ru": "Первобытная дубина (alexscaves:primitive_club)",
+        "en_us": "Primitive Club (alexscaves:primitive_club)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 2,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + primitive_club item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Радиус: 2.2 блока.",
+            "en_us": "Radius: 2.2 blocks."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Радиус: 3.2 блока.",
+            "en_us": "Radius: 3.2 blocks."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Успешное оглушение дубиной действует и на соседей в радиусе 1,2 + уровень блока, кроме союзников.",
+        "en_us": "Successful club stuns also affect eligible neighbours within 1.2 + level blocks, excluding allies."
+      },
+      "applies_brief": {
+        "ru_ru": "Первобытная дубина (alexscaves:primitive_club)",
+        "en_us": "Primitive Club (alexscaves:primitive_club)"
+      },
+      "targets": [
+        "alexscaves:primitive_club"
+      ]
+    },
+    {
+      "id": "alexscaves:plummeting_flight",
+      "name": {
+        "ru_ru": "Высокий полёт",
+        "en_us": "Plummeting Flight"
+      },
+      "effect": {
+        "ru_ru": "Дух субтерранодона переносит цель до 0,0016667 + 0,0002083 дня за уровень; вертикальная скорость растёт на 0,005 за уровень.",
+        "en_us": "The Subterranodon spirit carries its target for up to 0.0016667 + 0.0002083 days per level; vertical speed gains 0.005 per level."
+      },
+      "applies": {
+        "ru_ru": "Копьё вымирания (alexscaves:extinction_spear)",
+        "en_us": "Extinction Spear (alexscaves:extinction_spear)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + extinction_spear item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Предел переноса: 0.0018750 дня; вертикальное ускорение 0.035.",
+            "en_us": "Carry limit: 0.0018750 days; vertical acceleration 0.035."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Предел переноса: 0.0020833 дня; вертикальное ускорение 0.040.",
+            "en_us": "Carry limit: 0.0020833 days; vertical acceleration 0.040."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Предел переноса: 0.0022917 дня; вертикальное ускорение 0.045.",
+            "en_us": "Carry limit: 0.0022917 days; vertical acceleration 0.045."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Дух субтерранодона переносит цель до 0,0016667 + 0,0002083 дня за уровень; вертикальная скорость растёт на 0,005 за уровень.",
+        "en_us": "The Subterranodon spirit carries its target for up to 0.0016667 + 0.0002083 days per level; vertical speed gains 0.005 per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Копьё вымирания (alexscaves:extinction_spear)",
+        "en_us": "Extinction Spear (alexscaves:extinction_spear)"
+      },
+      "targets": [
+        "alexscaves:extinction_spear"
+      ]
+    },
+    {
+      "id": "alexscaves:herd_phalanx",
+      "name": {
+        "ru_ru": "Стадный инстинкт",
+        "en_us": "Herd Phalanx"
+      },
+      "effect": {
+        "ru_ru": "Защита копьём призывает 3 + уровень бронированных головы гроттоцератопса.",
+        "en_us": "Defensive spear use summons 3 + level armoured Grottoceratops heads."
+      },
+      "applies": {
+        "ru_ru": "Копьё вымирания (alexscaves:extinction_spear)",
+        "en_us": "Extinction Spear (alexscaves:extinction_spear)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + extinction_spear item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "4 бронированных головы.",
+            "en_us": "4 armoured heads."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "5 бронированных головы.",
+            "en_us": "5 armoured heads."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "6 бронированных головы.",
+            "en_us": "6 armoured heads."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Защита копьём призывает 3 + уровень бронированных головы гроттоцератопса.",
+        "en_us": "Defensive spear use summons 3 + level armoured Grottoceratops heads."
+      },
+      "applies_brief": {
+        "ru_ru": "Копьё вымирания (alexscaves:extinction_spear)",
+        "en_us": "Extinction Spear (alexscaves:extinction_spear)"
+      },
+      "targets": [
+        "alexscaves:extinction_spear"
+      ]
+    },
+    {
+      "id": "alexscaves:chomping_spirit",
+      "name": {
+        "ru_ru": "Грубая сила",
+        "en_us": "Chomping Spirit"
+      },
+      "effect": {
+        "ru_ru": "Укус духа треморзавра наносит 3 + 2 за уровень урона.",
+        "en_us": "The Tremorsaurus spirit bite deals 3 + 2 damage per level."
+      },
+      "applies": {
+        "ru_ru": "Копьё вымирания (alexscaves:extinction_spear)",
+        "en_us": "Extinction Spear (alexscaves:extinction_spear)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 2,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + extinction_spear item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Укус: 5 урона.",
+            "en_us": "Bite: 5 damage."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Укус: 7 урона.",
+            "en_us": "Bite: 7 damage."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Укус духа треморзавра наносит 3 + 2 за уровень урона.",
+        "en_us": "The Tremorsaurus spirit bite deals 3 + 2 damage per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Копьё вымирания (alexscaves:extinction_spear)",
+        "en_us": "Extinction Spear (alexscaves:extinction_spear)"
+      },
+      "targets": [
+        "alexscaves:extinction_spear"
+      ]
+    },
+    {
+      "id": "alexscaves:energy_efficiency",
+      "name": {
+        "ru_ru": "Энергоэффективность",
+        "en_us": "Energy Efficiency"
+      },
+      "effect": {
+        "ru_ru": "Полностью готовый луч медленнее расходует заряд. Точный интервал расхода для уровня приведён ниже.",
+        "en_us": "The fully active raygun beam spends charge less often. The exact interval for this level is shown below."
+      },
+      "applies": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Единица заряда раз в 0.0001250 майнкрафт-дня полного луча.",
+            "en_us": "One charge per 0.0001250 Minecraft days of fully active beam."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Единица заряда раз в 0.0002083 майнкрафт-дня полного луча.",
+            "en_us": "One charge per 0.0002083 Minecraft days of fully active beam."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Единица заряда раз в 0.0002500 майнкрафт-дня полного луча.",
+            "en_us": "One charge per 0.0002500 Minecraft days of fully active beam."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Полностью готовый луч медленнее расходует заряд.",
+        "en_us": "The fully active raygun beam spends charge less often."
+      },
+      "applies_brief": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "targets": [
+        "alexscaves:raygun"
+      ]
+    },
+    {
+      "id": "alexscaves:solar",
+      "name": {
+        "ru_ru": "Солнечная батарея",
+        "en_us": "Solar"
+      },
+      "effect": {
+        "ru_ru": "Неиспользуемая пушка в инвентаре восстанавливает заряд под открытым дневным солнцем: 2% шанс восстановления единицы за обновление.",
+        "en_us": "An unused raygun in the inventory recovers charge under open daytime sunlight: 2% chance to recover one charge per update."
+      },
+      "applies": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Неиспользуемая пушка в инвентаре восстанавливает заряд под открытым дневным солнцем: 2% шанс восстановления единицы за обновление.",
+        "en_us": "An unused raygun in the inventory recovers charge under open daytime sunlight: 2% chance to recover one charge per update."
+      },
+      "applies_brief": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "targets": [
+        "alexscaves:raygun"
+      ]
+    },
+    {
+      "id": "alexscaves:x_ray",
+      "name": {
+        "ru_ru": "Рентген",
+        "en_us": "X-Ray"
+      },
+      "effect": {
+        "ru_ru": "Луч проходит сквозь блоки; предельная дальность полностью готового луча остаётся 25 блоков.",
+        "en_us": "The beam passes through blocks; fully active beam range remains 25 blocks."
+      },
+      "applies": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Луч проходит сквозь блоки; предельная дальность полностью готового луча остаётся 25 блоков.",
+        "en_us": "The beam passes through blocks; fully active beam range remains 25 blocks."
+      },
+      "applies_brief": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "targets": [
+        "alexscaves:raygun"
+      ]
+    },
+    {
+      "id": "alexscaves:gamma_ray",
+      "name": {
+        "ru_ru": "Гамма-излучение",
+        "en_us": "Gamma Ray"
+      },
+      "effect": {
+        "ru_ru": "Луч наносит 2 урона вместо 1,5 и накладывает Облучение V на 0,0333333 майнкрафт-дня. Виды с устойчивостью к радиации не получают этот эффект.",
+        "en_us": "The beam deals 2 damage instead of 1.5 and applies Irradiated V for 0.0333333 Minecraft days. Radiation-resistant entity types do not receive that effect."
+      },
+      "applies": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + raygun item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Луч наносит 2 урона вместо 1,5 и накладывает Облучение V на 0,0333333 майнкрафт-дня.",
+        "en_us": "The beam deals 2 damage instead of 1.5 and applies Irradiated V for 0.0333333 Minecraft days."
+      },
+      "applies_brief": {
+        "ru_ru": "Излучатель (alexscaves:raygun)",
+        "en_us": "Raygun (alexscaves:raygun)"
+      },
+      "targets": [
+        "alexscaves:raygun"
+      ]
+    },
+    {
+      "id": "alexscaves:second_wave",
+      "name": {
+        "ru_ru": "Вторая волна",
+        "en_us": "Second Wave"
+      },
+      "effect": {
+        "ru_ru": "После рывка с подготовкой не меньше 0,0004167 дня добавляет вторую последовательность пар волн с задержкой 0,0003333 дня. При полном заряде: 22 дополнительные волны. Рывок снимает 1 прочность.",
+        "en_us": "After a launch charged for at least 0.0004167 days, adds a second sequence of wave pairs delayed by 0.0003333 days. At full charge it adds 22 waves. Launching costs 1 durability."
+      },
+      "applies": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "После рывка с подготовкой не меньше 0,0004167 дня добавляет вторую последовательность пар волн с задержкой 0,0003333 дня.",
+        "en_us": "After a launch charged for at least 0.0004167 days, adds a second sequence of wave pairs delayed by 0.0003333 days."
+      },
+      "applies_brief": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "targets": [
+        "alexscaves:ortholance"
+      ]
+    },
+    {
+      "id": "alexscaves:flinging",
+      "name": {
+        "ru_ru": "Размашистый рывок",
+        "en_us": "Flinging"
+      },
+      "effect": {
+        "ru_ru": "Добавляет 0,1 за уровень к импульсу заряженного рывка ортолансом. Остальная сила зависит от заряда.",
+        "en_us": "Adds 0.1 per level to the charged Ortholance launch impulse. Total force also depends on charge."
+      },
+      "applies": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Прибавка горизонтального параметра рывка: 0.1; дополнительный вертикальный импульс 0.1.",
+            "en_us": "Launch parameter bonus: 0.1; extra vertical impulse 0.1."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Прибавка горизонтального параметра рывка: 0.2; дополнительный вертикальный импульс 0.2.",
+            "en_us": "Launch parameter bonus: 0.2; extra vertical impulse 0.2."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Прибавка горизонтального параметра рывка: 0.3; дополнительный вертикальный импульс 0.3.",
+            "en_us": "Launch parameter bonus: 0.3; extra vertical impulse 0.3."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Добавляет 0,1 за уровень к импульсу заряженного рывка ортолансом.",
+        "en_us": "Adds 0.1 per level to the charged Ortholance launch impulse."
+      },
+      "applies_brief": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "targets": [
+        "alexscaves:ortholance"
+      ]
+    },
+    {
+      "id": "alexscaves:sea_swing",
+      "name": {
+        "ru_ru": "Морское мастерство",
+        "en_us": "Sea Swing"
+      },
+      "effect": {
+        "ru_ru": "Попадание ортолансом в ближнем бою создаёт одну волну вперёд.",
+        "en_us": "A melee Ortholance hit creates one forward wave."
+      },
+      "applies": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Попадание ортолансом в ближнем бою создаёт одну волну вперёд.",
+        "en_us": "A melee Ortholance hit creates one forward wave."
+      },
+      "applies_brief": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "targets": [
+        "alexscaves:ortholance"
+      ]
+    },
+    {
+      "id": "alexscaves:tsunami",
+      "name": {
+        "ru_ru": "Цунами",
+        "en_us": "Tsunami"
+      },
+      "effect": {
+        "ru_ru": "Вместо последовательности пар создаёт одну волну масштаба 5 с временем жизни 0,0008333 дня и задержкой 0,0000833 дня. Нужна подготовка рывка не меньше 0,0004167 дня; расход 1 прочности.",
+        "en_us": "Replaces the paired wave sequence with one scale-5 wave lasting 0.0008333 days after a 0.0000833-day delay. Charge the launch for at least 0.0004167 days; costs 1 durability."
+      },
+      "applies": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + ortholance item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Вместо последовательности пар создаёт одну волну масштаба 5 с временем жизни 0,0008333 дня и задержкой 0,0000833 дня.",
+        "en_us": "Replaces the paired wave sequence with one scale-5 wave lasting 0.0008333 days after a 0.0000833-day delay."
+      },
+      "applies_brief": {
+        "ru_ru": "Ортопикальность (alexscaves:ortholance)",
+        "en_us": "Ortholance (alexscaves:ortholance)"
+      },
+      "targets": [
+        "alexscaves:ortholance"
+      ]
+    },
+    {
+      "id": "alexscaves:charting_call",
+      "name": {
+        "ru_ru": "Гибкий график",
+        "en_us": "Charting Call"
+      },
+      "effect": {
+        "ru_ru": "Уровни I–III в установленной реализации не завершают призыв из-за нативной ошибки случайного выбора. На IV целевой состав: 3–5 обычных глубинных, 2–3 рыцаря и 1 маг; нужны подходящие места появления.",
+        "en_us": "Levels I–III cannot finish summoning in the installed implementation because of a native random-choice error. At IV the target group is 3–5 ordinary Deep Ones, 2–3 knights and 1 mage; valid spawn positions are still required."
+      },
+      "applies": {
+        "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
+        "en_us": "Magic Conch (alexscaves:magic_conch)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 4,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + magic_conch item/projectile consumers",
+      "coverage_status": "native_defect_observed",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Уровень 1: призыв прерывается нативной ошибкой; не полагайтесь на него.",
+            "en_us": "Level 1: summoning is interrupted by a native error; do not rely on it."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Уровень 2: призыв прерывается нативной ошибкой; не полагайтесь на него.",
+            "en_us": "Level 2: summoning is interrupted by a native error; do not rely on it."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Уровень 3: призыв прерывается нативной ошибкой; не полагайтесь на него.",
+            "en_us": "Level 3: summoning is interrupted by a native error; do not rely on it."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "IV: 3–5 обычных глубинных, 2–3 рыцаря, 1 маг при доступных местах.",
+            "en_us": "IV: 3–5 ordinary Deep Ones, 2–3 knights, 1 mage when positions are available."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 2,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Уровни I–III в установленной реализации не завершают призыв из-за нативной ошибки случайного выбора.",
+        "en_us": "Levels I–III cannot finish summoning in the installed implementation because of a native random-choice error."
+      },
+      "applies_brief": {
+        "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
+        "en_us": "Magic Conch (alexscaves:magic_conch)"
+      },
+      "targets": [
+        "alexscaves:magic_conch"
+      ]
+    },
+    {
+      "id": "alexscaves:lasting_morale",
+      "name": {
+        "ru_ru": "Сила духа",
+        "en_us": "Lasting Morale"
+      },
+      "effect": {
+        "ru_ru": "Призванные раковиной глубинные остаются 0,05 + уровень/60 майнкрафт-дня.",
+        "en_us": "Conch-summoned Deep Ones remain for 0.05 + level/60 Minecraft days."
+      },
+      "applies": {
+        "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
+        "en_us": "Magic Conch (alexscaves:magic_conch)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + magic_conch item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Призыв: 0.06667 майнкрафт-дня.",
+            "en_us": "Summon duration: 0.06667 Minecraft days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Призыв: 0.08333 майнкрафт-дня.",
+            "en_us": "Summon duration: 0.08333 Minecraft days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Призыв: 0.10000 майнкрафт-дня.",
+            "en_us": "Summon duration: 0.10000 Minecraft days."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Призванные раковиной глубинные остаются 0,05 + уровень/60 майнкрафт-дня.",
+        "en_us": "Conch-summoned Deep Ones remain for 0.05 + level/60 Minecraft days."
+      },
+      "applies_brief": {
+        "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
+        "en_us": "Magic Conch (alexscaves:magic_conch)"
+      },
+      "targets": [
+        "alexscaves:magic_conch"
+      ]
+    },
+    {
+      "id": "alexscaves:taxing_bellow",
+      "name": {
+        "ru_ru": "Подводная льгота",
+        "en_us": "Taxing Bellow"
+      },
+      "effect": {
+        "ru_ru": "Зов раковины расходует отношение глубинных вместо прочности. Падение отношений может сделать других глубинных враждебными.",
+        "en_us": "Conch use spends Deep One reputation instead of durability. Lower reputation can make other Deep Ones hostile."
+      },
+      "applies": {
+        "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
+        "en_us": "Magic Conch (alexscaves:magic_conch)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + magic_conch item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Зов раковины расходует отношение глубинных вместо прочности.",
+        "en_us": "Conch use spends Deep One reputation instead of durability."
+      },
+      "applies_brief": {
+        "ru_ru": "Волшебная ракушка (alexscaves:magic_conch)",
+        "en_us": "Magic Conch (alexscaves:magic_conch)"
+      },
+      "targets": [
+        "alexscaves:magic_conch"
+      ]
+    },
+    {
+      "id": "alexscaves:enveloping_bubble",
+      "name": {
+        "ru_ru": "Запузыривание",
+        "en_us": "Enveloping Bubble"
+      },
+      "effect": {
+        "ru_ru": "Каждый снаряд посоха имеет 50% шанс получить способность заключить поражённую цель в утопляющий пузырь.",
+        "en_us": "Each staff water bolt has a 50% chance to gain the drowning-bubble effect on its victim."
+      },
+      "applies": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Каждый снаряд посоха имеет 50% шанс получить способность заключить поражённую цель в утопляющий пузырь.",
+        "en_us": "Each staff water bolt has a 50% chance to gain the drowning-bubble effect on its victim."
+      },
+      "applies_brief": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "targets": [
+        "alexscaves:sea_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:bouncing_bolt",
+      "name": {
+        "ru_ru": "Океанический отскок",
+        "en_us": "Bouncing Bolt"
+      },
+      "effect": {
+        "ru_ru": "После прямого попадания водяной снаряд может отскочить к другой цели.",
+        "en_us": "After a direct hit, the water bolt can ricochet to another target."
+      },
+      "applies": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "После прямого попадания водяной снаряд может отскочить к другой цели.",
+        "en_us": "After a direct hit, the water bolt can ricochet to another target."
+      },
+      "applies_brief": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "targets": [
+        "alexscaves:sea_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:seapairing",
+      "name": {
+        "ru_ru": "Водяное восстановление",
+        "en_us": "Seapairing"
+      },
+      "effect": {
+        "ru_ru": "Неиспользуемый посох у погружённого в воду существа имеет 2% шанс восстановления за обновление. В установленной реализации успешное восстановление снимает весь износ.",
+        "en_us": "An unused staff carried by a submerged entity has a 2% repair chance per update. In this installed implementation success clears all wear."
+      },
+      "applies": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Неиспользуемый посох у погружённого в воду существа имеет 2% шанс восстановления за обновление.",
+        "en_us": "An unused staff carried by a submerged entity has a 2% repair chance per update."
+      },
+      "applies_brief": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "targets": [
+        "alexscaves:sea_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:triple_splash",
+      "name": {
+        "ru_ru": "Тройная угроза",
+        "en_us": "Triple Splash"
+      },
+      "effect": {
+        "ru_ru": "Посох выпускает 3 снаряда вместо 1: центральный и два боковых.",
+        "en_us": "The staff fires 3 bolts instead of 1: a central bolt and two side bolts."
+      },
+      "applies": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Посох выпускает 3 снаряда вместо 1: центральный и два боковых.",
+        "en_us": "The staff fires 3 bolts instead of 1: a central bolt and two side bolts."
+      },
+      "applies_brief": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "targets": [
+        "alexscaves:sea_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:soak_seeking",
+      "name": {
+        "ru_ru": "Надводное наведение",
+        "en_us": "Soak Seeking"
+      },
+      "effect": {
+        "ru_ru": "Сила наведения водяного снаряда равна 0,3 + 0,2 × уровень. Зачарованный снаряд начинает доворачивать сразу и может наводиться до 0,0016667 майнкрафт-дня после выстрела.",
+        "en_us": "Water-bolt steering strength is 0.3 + 0.2 × level. Enchanted bolts can steer immediately and continue for up to 0.0016667 Minecraft days after firing."
+      },
+      "applies": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sea_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Сила наведения: 0.5.",
+            "en_us": "Steering strength: 0.5."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Сила наведения: 0.7.",
+            "en_us": "Steering strength: 0.7."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Сила наведения: 0.9.",
+            "en_us": "Steering strength: 0.9."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Сила наведения водяного снаряда равна 0,3 + 0,2 × уровень.",
+        "en_us": "Water-bolt steering strength is 0.3 + 0.2 × level."
+      },
+      "applies_brief": {
+        "ru_ru": "Посох моря (alexscaves:sea_staff)",
+        "en_us": "Sea Staff (alexscaves:sea_staff)"
+      },
+      "targets": [
+        "alexscaves:sea_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:detonating_death",
+      "name": {
+        "ru_ru": "Взрывной финал",
+        "en_us": "Detonating Death"
+      },
+      "effect": {
+        "ru_ru": "Гибель подчинённого существа или исчерпание тотема вызывает взрыв силой 2 + floor(ширина существа). Блоки сохраняются.",
+        "en_us": "A controlled creature's death or an exhausted totem causes an explosion of strength 2 + floor(creature width), preserving blocks."
+      },
+      "applies": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Гибель подчинённого существа или исчерпание тотема вызывает взрыв силой 2 + floor(ширина существа).",
+        "en_us": "A controlled creature's death or an exhausted totem causes an explosion of strength 2 + floor(creature width), preserving blocks."
+      },
+      "applies_brief": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "targets": [
+        "alexscaves:totem_of_possession"
+      ]
+    },
+    {
+      "id": "alexscaves:rapid_possession",
+      "name": {
+        "ru_ru": "Скоростное овладевание",
+        "en_us": "Rapid Possession"
+      },
+      "effect": {
+        "ru_ru": "Множитель скорости навигации подчинённого моба при полном использовании: 1,25 + 0,35 за уровень.",
+        "en_us": "The controlled mob's navigation speed multiplier at full use is 1.25 + 0.35 per level."
+      },
+      "applies": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Множитель скорости навигации: 1.60.",
+            "en_us": "Navigation speed multiplier: 1.60."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Множитель скорости навигации: 1.95.",
+            "en_us": "Navigation speed multiplier: 1.95."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Множитель скорости навигации: 2.30.",
+            "en_us": "Navigation speed multiplier: 2.30."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Множитель скорости навигации подчинённого моба при полном использовании: 1,25 + 0,35 за уровень.",
+        "en_us": "The controlled mob's navigation speed multiplier at full use is 1.25 + 0.35 per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "targets": [
+        "alexscaves:totem_of_possession"
+      ]
+    },
+    {
+      "id": "alexscaves:sightless",
+      "name": {
+        "ru_ru": "Кругозор",
+        "en_us": "Sightless"
+      },
+      "effect": {
+        "ru_ru": "Управление уже привязанным существом не требует прямой видимости. Ограничения допустимых целей сохраняются.",
+        "en_us": "Controlling the bound creature no longer requires direct line of sight. Target eligibility restrictions remain."
+      },
+      "applies": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Управление уже привязанным существом не требует прямой видимости.",
+        "en_us": "Controlling the bound creature no longer requires direct line of sight."
+      },
+      "applies_brief": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "targets": [
+        "alexscaves:totem_of_possession"
+      ]
+    },
+    {
+      "id": "alexscaves:astral_transferring",
+      "name": {
+        "ru_ru": "Астральная телепортация",
+        "en_us": "Astral Transferring"
+      },
+      "effect": {
+        "ru_ru": "В бою управление может перейти на более здоровую цель подчинённого моба. Виды с защитой от тотема исключены.",
+        "en_us": "During combat possession can transfer to the controlled mob's healthier target. Totem-resistant types are excluded."
+      },
+      "applies": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + totem_of_possession item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "В бою управление может перейти на более здоровую цель подчинённого моба.",
+        "en_us": "During combat possession can transfer to the controlled mob's healthier target."
+      },
+      "applies_brief": {
+        "ru_ru": "Тотем одержимости (alexscaves:totem_of_possession)",
+        "en_us": "Totem of Possession (alexscaves:totem_of_possession)"
+      },
+      "targets": [
+        "alexscaves:totem_of_possession"
+      ]
+    },
+    {
+      "id": "alexscaves:impending_stab",
+      "name": {
+        "ru_ru": "Неотвратимый укол",
+        "en_us": "Impending Stab"
+      },
+      "effect": {
+        "ru_ru": "Призрачный кинжал наносит 2 + 2 за уровень урона и кружит перед ударом 0,0016667–0,0020417 дня.",
+        "en_us": "The ghost dagger deals 2 + 2 damage per level and orbits for 0.0016667–0.0020417 days before striking."
+      },
+      "applies": {
+        "ru_ru": "Безотрадный клинок (alexscaves:desolate_dagger)",
+        "en_us": "Desolate Dagger (alexscaves:desolate_dagger)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + desolate_dagger item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Отложенный кинжал: 4 урона.",
+            "en_us": "Delayed dagger: 4 damage."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Отложенный кинжал: 6 урона.",
+            "en_us": "Delayed dagger: 6 damage."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Отложенный кинжал: 8 урона.",
+            "en_us": "Delayed dagger: 8 damage."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Призрачный кинжал наносит 2 + 2 за уровень урона и кружит перед ударом 0,0016667–0,0020417 дня.",
+        "en_us": "The ghost dagger deals 2 + 2 damage per level and orbits for 0.0016667–0.0020417 days before striking."
+      },
+      "applies_brief": {
+        "ru_ru": "Безотрадный клинок (alexscaves:desolate_dagger)",
+        "en_us": "Desolate Dagger (alexscaves:desolate_dagger)"
+      },
+      "targets": [
+        "alexscaves:desolate_dagger"
+      ]
+    },
+    {
+      "id": "alexscaves:sated_blade",
+      "name": {
+        "ru_ru": "Лакомое лезвие",
+        "en_us": "Sated Blade"
+      },
+      "effect": {
+        "ru_ru": "Успешный удар призрачного кинжала даёт 0,1 насыщения за уровень, если насыщение ниже 5.",
+        "en_us": "A successful ghost-dagger hit grants 0.1 saturation per level while saturation is below 5."
+      },
+      "applies": {
+        "ru_ru": "Безотрадный клинок (alexscaves:desolate_dagger)",
+        "en_us": "Desolate Dagger (alexscaves:desolate_dagger)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 2,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + desolate_dagger item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "+0.1 насыщения при успешном ударе, пока оно ниже 5.",
+            "en_us": "+0.1 saturation on successful hits while below 5."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "+0.2 насыщения при успешном ударе, пока оно ниже 5.",
+            "en_us": "+0.2 saturation on successful hits while below 5."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Успешный удар призрачного кинжала даёт 0,1 насыщения за уровень, если насыщение ниже 5.",
+        "en_us": "A successful ghost-dagger hit grants 0.1 saturation per level while saturation is below 5."
+      },
+      "applies_brief": {
+        "ru_ru": "Безотрадный клинок (alexscaves:desolate_dagger)",
+        "en_us": "Desolate Dagger (alexscaves:desolate_dagger)"
+      },
+      "targets": [
+        "alexscaves:desolate_dagger"
+      ]
+    },
+    {
+      "id": "alexscaves:double_stab",
+      "name": {
+        "ru_ru": "Двойной укол",
+        "en_us": "Double Stab"
+      },
+      "effect": {
+        "ru_ru": "Попадание клинком создаёт 2 призрачных кинжала вместо 1.",
+        "en_us": "A successful blade hit creates 2 ghost daggers instead of 1."
+      },
+      "applies": {
+        "ru_ru": "Безотрадный клинок (alexscaves:desolate_dagger)",
+        "en_us": "Desolate Dagger (alexscaves:desolate_dagger)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + desolate_dagger item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Попадание клинком создаёт 2 призрачных кинжала вместо 1.",
+        "en_us": "A successful blade hit creates 2 ghost daggers instead of 1."
+      },
+      "applies_brief": {
+        "ru_ru": "Безотрадный клинок (alexscaves:desolate_dagger)",
+        "en_us": "Desolate Dagger (alexscaves:desolate_dagger)"
+      },
+      "targets": [
+        "alexscaves:desolate_dagger"
+      ]
+    },
+    {
+      "id": "alexscaves:precise_volley",
+      "name": {
+        "ru_ru": "Выверенный выстрел",
+        "en_us": "Precise Volley"
+      },
+      "effect": {
+        "ru_ru": "Убирает случайный разброс залпа лука ужаса. Урон теневой стрелы при этом становится 2 вместо 3; это улучшение точности с ценой по урону такой стрелы.",
+        "en_us": "Removes the Dreadbow volley random spread. Shadow-arrow damage becomes 2 instead of 3, trading shadow-arrow damage for accuracy."
+      },
+      "applies": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Убирает случайный разброс залпа лука ужаса.",
+        "en_us": "Removes the Dreadbow volley random spread."
+      },
+      "applies_brief": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "targets": [
+        "alexscaves:dreadbow"
+      ]
+    },
+    {
+      "id": "alexscaves:dark_nock",
+      "name": {
+        "ru_ru": "Тёмная тетива",
+        "en_us": "Dark Nock"
+      },
+      "effect": {
+        "ru_ru": "Время полного натяжения обычного залпа: 0,0016667 − 0,0003333 за уровень майнкрафт-дня.",
+        "en_us": "Full charge time for an ordinary volley: 0.0016667 − 0.0003333 per level Minecraft days."
+      },
+      "applies": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Полное натяжение: 0.0013333 дня.",
+            "en_us": "Full charge: 0.0013333 days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Полное натяжение: 0.0010000 дня.",
+            "en_us": "Full charge: 0.0010000 days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Полное натяжение: 0.0006667 дня.",
+            "en_us": "Full charge: 0.0006667 days."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Время полного натяжения обычного залпа: 0,0016667 − 0,0003333 за уровень майнкрафт-дня.",
+        "en_us": "Full charge time for an ordinary volley: 0.0016667 − 0.0003333 per level Minecraft days."
+      },
+      "applies_brief": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "targets": [
+        "alexscaves:dreadbow"
+      ]
+    },
+    {
+      "id": "alexscaves:relentless_darkness",
+      "name": {
+        "ru_ru": "Беспощадная тьма",
+        "en_us": "Relentless Darkness"
+      },
+      "effect": {
+        "ru_ru": "При удержании лук ужаса стреляет непрерывно прямо вперёд, с интервалом 0,000125 дня.",
+        "en_us": "While held, the Dreadbow fires a continuous forward stream at 0.000125-day intervals."
+      },
+      "applies": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При удержании лук ужаса стреляет непрерывно прямо вперёд, с интервалом 0,000125 дня.",
+        "en_us": "While held, the Dreadbow fires a continuous forward stream at 0.000125-day intervals."
+      },
+      "applies_brief": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "targets": [
+        "alexscaves:dreadbow"
+      ]
+    },
+    {
+      "id": "alexscaves:twilight_perfection",
+      "name": {
+        "ru_ru": "Сумеречное совершенство",
+        "en_us": "Twilight Perfection"
+      },
+      "effect": {
+        "ru_ru": "Отпускание сразу после полного натяжения удваивает урон стрел. Окно: 0,0001667 + 0,000125 за каждый уровень после I майнкрафт-дня. Уровень расширяет окно, а не множитель.",
+        "en_us": "Releasing just after full charge doubles arrow damage. The window lasts 0.0001667 Minecraft days plus 0.000125 for each level after I. Level widens the window, not the multiplier."
+      },
+      "applies": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Окно двойного урона: 0.0001667 дня.",
+            "en_us": "Double-damage window: 0.0001667 days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Окно двойного урона: 0.0002917 дня.",
+            "en_us": "Double-damage window: 0.0002917 days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Окно двойного урона: 0.0004167 дня.",
+            "en_us": "Double-damage window: 0.0004167 days."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Отпускание сразу после полного натяжения удваивает урон стрел.",
+        "en_us": "Releasing just after full charge doubles arrow damage."
+      },
+      "applies_brief": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "targets": [
+        "alexscaves:dreadbow"
+      ]
+    },
+    {
+      "id": "alexscaves:shaded_respite",
+      "name": {
+        "ru_ru": "Теневая завеса",
+        "en_us": "Shaded Respite"
+      },
+      "effect": {
+        "ru_ru": "В достаточно тёмном месте стрельба не расходует обычные стрелы и прочность. Особые стрелы не становятся бесплатными.",
+        "en_us": "In sufficiently dark surroundings firing consumes neither ordinary arrows nor durability. Special arrows are not made free."
+      },
+      "applies": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + dreadbow item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "В достаточно тёмном месте стрельба не расходует обычные стрелы и прочность.",
+        "en_us": "In sufficiently dark surroundings firing consumes neither ordinary arrows nor durability."
+      },
+      "applies_brief": {
+        "ru_ru": "Жуткий лук (alexscaves:dreadbow)",
+        "en_us": "Dreadbow (alexscaves:dreadbow)"
+      },
+      "targets": [
+        "alexscaves:dreadbow"
+      ]
+    },
+    {
+      "id": "alexscaves:targeted_ricochet",
+      "name": {
+        "ru_ru": "Направленный рикошет",
+        "en_us": "Targeted Ricochet"
+      },
+      "effect": {
+        "ru_ru": "После удара о блок или существо жвачка направляет следующий отскок к ближайшей подходящей цели.",
+        "en_us": "After hitting a block or entity the gumball aims its next bounce at the nearest eligible target."
+      },
+      "applies": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "После удара о блок или существо жвачка направляет следующий отскок к ближайшей подходящей цели.",
+        "en_us": "After hitting a block or entity the gumball aims its next bounce at the nearest eligible target."
+      },
+      "applies_brief": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "targets": [
+        "alexscaves:shot_gum"
+      ]
+    },
+    {
+      "id": "alexscaves:triple_split",
+      "name": {
+        "ru_ru": "Растроение",
+        "en_us": "Triple Split"
+      },
+      "effect": {
+        "ru_ru": "Первое попадание жвачки по цели создаёт 3 дополнительных снаряда.",
+        "en_us": "A gumball's first target hit creates 3 additional projectiles."
+      },
+      "applies": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Первое попадание жвачки по цели создаёт 3 дополнительных снаряда.",
+        "en_us": "A gumball's first target hit creates 3 additional projectiles."
+      },
+      "applies_brief": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "targets": [
+        "alexscaves:shot_gum"
+      ]
+    },
+    {
+      "id": "alexscaves:bouncy_ball",
+      "name": {
+        "ru_ru": "Отскакивающий снаряд",
+        "en_us": "Bouncy Ball"
+      },
+      "effect": {
+        "ru_ru": "Число допустимых отскоков жвачки: 4 + 2 за уровень.",
+        "en_us": "Gumball bounce allowance: 4 + 2 per level."
+      },
+      "applies": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "До 6 отскоков.",
+            "en_us": "Up to 6 bounces."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "До 8 отскоков.",
+            "en_us": "Up to 8 bounces."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "До 10 отскоков.",
+            "en_us": "Up to 10 bounces."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Число допустимых отскоков жвачки: 4 + 2 за уровень.",
+        "en_us": "Gumball bounce allowance: 4 + 2 per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "targets": [
+        "alexscaves:shot_gum"
+      ]
+    },
+    {
+      "id": "alexscaves:explosive_flavor",
+      "name": {
+        "ru_ru": "Взрывной аромат",
+        "en_us": "Explosive Flavor"
+      },
+      "effect": {
+        "ru_ru": "Жвачкомёт выпускает один медленный взрывной шарик вместо обычных.",
+        "en_us": "The Shot Gum fires one slow explosive gumball instead of its ordinary shots."
+      },
+      "applies": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + shot_gum item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Жвачкомёт выпускает один медленный взрывной шарик вместо обычных.",
+        "en_us": "The Shot Gum fires one slow explosive gumball instead of its ordinary shots."
+      },
+      "applies_brief": {
+        "ru_ru": "Жвачкострел (alexscaves:shot_gum)",
+        "en_us": "Shot Gum (alexscaves:shot_gum)"
+      },
+      "targets": [
+        "alexscaves:shot_gum"
+      ]
+    },
+    {
+      "id": "alexscaves:far_flung",
+      "name": {
+        "ru_ru": "Дальняя дистанция",
+        "en_us": "Far Flung"
+      },
+      "effect": {
+        "ru_ru": "Карамельный крюк получает параметр запуска 0,5 + 0,2 × уровень. Итоговая дальность зависит от направления и движения при броске, а не равна этому числу блоков.",
+        "en_us": "Candy Cane Hook launch parameter becomes 0.5 + 0.2 × level. Actual range also depends on launch direction and movement; this number is not a block distance."
+      },
+      "applies": {
+        "ru_ru": "Леденцовый крюк (alexscaves:candy_cane_hook)",
+        "en_us": "Candy Cane Hook (alexscaves:candy_cane_hook)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + candy_cane_hook item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Параметр запуска: 0.7.",
+            "en_us": "Launch parameter: 0.7."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Параметр запуска: 0.9.",
+            "en_us": "Launch parameter: 0.9."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Параметр запуска: 1.1.",
+            "en_us": "Launch parameter: 1.1."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Карамельный крюк получает параметр запуска 0,5 + 0,2 × уровень.",
+        "en_us": "Candy Cane Hook launch parameter becomes 0.5 + 0.2 × level."
+      },
+      "applies_brief": {
+        "ru_ru": "Леденцовый крюк (alexscaves:candy_cane_hook)",
+        "en_us": "Candy Cane Hook (alexscaves:candy_cane_hook)"
+      },
+      "targets": [
+        "alexscaves:candy_cane_hook"
+      ]
+    },
+    {
+      "id": "alexscaves:sharp_cane",
+      "name": {
+        "ru_ru": "Заострение трости",
+        "en_us": "Sharp Cane"
+      },
+      "effect": {
+        "ru_ru": "Попадание крюка по существу наносит 3 урона за уровень.",
+        "en_us": "Attaching the hook to an entity deals 3 damage per level."
+      },
+      "applies": {
+        "ru_ru": "Леденцовый крюк (alexscaves:candy_cane_hook)",
+        "en_us": "Candy Cane Hook (alexscaves:candy_cane_hook)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 2,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + candy_cane_hook item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Урон крюка: 3.",
+            "en_us": "Hook damage: 3."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Урон крюка: 6.",
+            "en_us": "Hook damage: 6."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Попадание крюка по существу наносит 3 урона за уровень.",
+        "en_us": "Attaching the hook to an entity deals 3 damage per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Леденцовый крюк (alexscaves:candy_cane_hook)",
+        "en_us": "Candy Cane Hook (alexscaves:candy_cane_hook)"
+      },
+      "targets": [
+        "alexscaves:candy_cane_hook"
+      ]
+    },
+    {
+      "id": "alexscaves:straight_hook",
+      "name": {
+        "ru_ru": "Прямое попадание",
+        "en_us": "Straight Hook"
+      },
+      "effect": {
+        "ru_ru": "Крюк летит прямо по направлению взгляда без отклонения силой тяжести.",
+        "en_us": "The hook flies along the aim direction without gravity deflection."
+      },
+      "applies": {
+        "ru_ru": "Леденцовый крюк (alexscaves:candy_cane_hook)",
+        "en_us": "Candy Cane Hook (alexscaves:candy_cane_hook)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + candy_cane_hook item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Крюк летит прямо по направлению взгляда без отклонения силой тяжести.",
+        "en_us": "The hook flies along the aim direction without gravity deflection."
+      },
+      "applies_brief": {
+        "ru_ru": "Леденцовый крюк (alexscaves:candy_cane_hook)",
+        "en_us": "Candy Cane Hook (alexscaves:candy_cane_hook)"
+      },
+      "targets": [
+        "alexscaves:candy_cane_hook"
+      ]
+    },
+    {
+      "id": "alexscaves:spell_lasting",
+      "name": {
+        "ru_ru": "Задержка заклинаний",
+        "en_us": "Spell Lasting"
+      },
+      "effect": {
+        "ru_ru": "Проклятие длится 0,0041667 + 0,0025 за уровень майнкрафт-дня.",
+        "en_us": "The hex lasts 0.0041667 + 0.0025 per level Minecraft days."
+      },
+      "applies": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 3,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Проклятие: 0.0066667 майнкрафт-дня.",
+            "en_us": "Hex: 0.0066667 Minecraft days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Проклятие: 0.0091667 майнкрафт-дня.",
+            "en_us": "Hex: 0.0091667 Minecraft days."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Проклятие: 0.0116667 майнкрафт-дня.",
+            "en_us": "Hex: 0.0116667 Minecraft days."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Проклятие длится 0,0041667 + 0,0025 за уровень майнкрафт-дня.",
+        "en_us": "The hex lasts 0.0041667 + 0.0025 per level Minecraft days."
+      },
+      "applies_brief": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "targets": [
+        "alexscaves:sugar_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:peppermint_punting",
+      "name": {
+        "ru_ru": "Мятный манёвр",
+        "en_us": "Peppermint Punting"
+      },
+      "effect": {
+        "ru_ru": "Мятные снаряды летят вперёд вместо вращения вокруг заклинателя.",
+        "en_us": "Peppermints travel forward instead of orbiting the caster."
+      },
+      "applies": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Мятные снаряды летят вперёд вместо вращения вокруг заклинателя.",
+        "en_us": "Peppermints travel forward instead of orbiting the caster."
+      },
+      "applies_brief": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "targets": [
+        "alexscaves:sugar_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:humungous_hex",
+      "name": {
+        "ru_ru": "Исполинская спираль",
+        "en_us": "Humungous Hex"
+      },
+      "effect": {
+        "ru_ru": "Масштаб проклятия сахарного посоха: 1 + 0,25 за уровень.",
+        "en_us": "Sugar Staff hex scale: 1 + 0.25 per level."
+      },
+      "applies": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 2,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Масштаб: 1.25.",
+            "en_us": "Scale: 1.25."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Масштаб: 1.50.",
+            "en_us": "Scale: 1.50."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Масштаб проклятия сахарного посоха: 1 + 0,25 за уровень.",
+        "en_us": "Sugar Staff hex scale: 1 + 0.25 per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "targets": [
+        "alexscaves:sugar_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:multiple_mint",
+      "name": {
+        "ru_ru": "Множество жвачки",
+        "en_us": "Multiple Mint"
+      },
+      "effect": {
+        "ru_ru": "Посох призывает 3 + уровень мятных снаряда.",
+        "en_us": "The staff summons 3 + level peppermints."
+      },
+      "applies": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 2,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "4 мятных снаряда.",
+            "en_us": "4 peppermints."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "5 мятных снаряда.",
+            "en_us": "5 peppermints."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Посох призывает 3 + уровень мятных снаряда.",
+        "en_us": "The staff summons 3 + level peppermints."
+      },
+      "applies_brief": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "targets": [
+        "alexscaves:sugar_staff"
+      ]
+    },
+    {
+      "id": "alexscaves:seekcandy",
+      "name": {
+        "ru_ru": "Конфетное наведение",
+        "en_us": "Seekcandy"
+      },
+      "effect": {
+        "ru_ru": "Мятные снаряды преследуют цель, выбранную взглядом при применении посоха.",
+        "en_us": "Peppermints pursue the entity targeted by the player's gaze when casting."
+      },
+      "applies": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте сам предмет на столе. В текущем паке обычные книги и случайная добыча этих чар отключены. Наковальня переносит уже существующую совместимую книгу, но не создаёт её.",
+        "en_us": "Enchant the equipment itself at a table. Current pack configuration disables ordinary books and random loot for these enchants. An anvil transfers an existing compatible book but cannot create one."
+      },
+      "max_level_pages": 1,
+      "source": "alexscaves-2.0.2.jar:ACEnchantmentRegistry/ACWeaponEnchantment + sugar_staff item/projectile consumers",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Мятные снаряды преследуют цель, выбранную взглядом при применении посоха.",
+        "en_us": "Peppermints pursue the entity targeted by the player's gaze when casting."
+      },
+      "applies_brief": {
+        "ru_ru": "Сахарный посох (alexscaves:sugar_staff)",
+        "en_us": "Sugar Staff (alexscaves:sugar_staff)"
+      },
+      "targets": [
+        "alexscaves:sugar_staff"
+      ]
+    },
+    {
+      "id": "alexsmobs:straddle_jump",
+      "name": {
+        "ru_ru": "Прыжок страддлера",
+        "en_us": "Straddle Jump"
+      },
+      "effect": {
+        "ru_ru": "Увеличивает длительность подъёмной фазы прыжка доски. Множитель заряда: 0,075 + 0,05 за уровень; высота также зависит от заряда прыжка.",
+        "en_us": "Extends the board jump ascent. Charge multiplier: 0.075 + 0.05 per level; height also depends on jump charge."
+      },
+      "applies": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard).",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 3,
+      "source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/StraddleJumpEnchantment/EntityStraddleboard",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Множитель длительности подъёма от заряда прыжка: 0.125.",
+            "en_us": "Jump-charge ascent-duration multiplier: 0.125."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Множитель длительности подъёма от заряда прыжка: 0.175.",
+            "en_us": "Jump-charge ascent-duration multiplier: 0.175."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Множитель длительности подъёма от заряда прыжка: 0.225.",
+            "en_us": "Jump-charge ascent-duration multiplier: 0.225."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Увеличивает длительность подъёмной фазы прыжка доски.",
+        "en_us": "Extends the board jump ascent."
+      },
+      "applies_brief": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard)",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)"
+      },
+      "targets": [
+        "alexsmobs:straddleboard"
+      ]
+    },
+    {
+      "id": "alexsmobs:lavawax",
+      "name": {
+        "ru_ru": "Лавовый воск",
+        "en_us": "Lavawaxed"
+      },
+      "effect": {
+        "ru_ru": "Во время езды обновляет Огнестойкость I на 0,0041667 дня раз в 0,0020833 дня.",
+        "en_us": "While riding, refreshes Fire Resistance I for 0.0041667 days every 0.0020833 days."
+      },
+      "applies": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard).",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/EntityStraddleboard",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Во время езды обновляет Огнестойкость I на 0,0041667 дня раз в 0,0020833 дня.",
+        "en_us": "While riding, refreshes Fire Resistance I for 0.0041667 days every 0.0020833 days."
+      },
+      "applies_brief": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard)",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)"
+      },
+      "targets": [
+        "alexsmobs:straddleboard"
+      ]
+    },
+    {
+      "id": "alexsmobs:serpentfriend",
+      "name": {
+        "ru_ru": "Друг костяных змеев",
+        "en_us": "Serpent Charmer"
+      },
+      "effect": {
+        "ru_ru": "Костяные змеи не выбирают всадника такой доски как обычную цель. Это не общая неуязвимость в лаве.",
+        "en_us": "Bone Serpents avoid selecting this board rider as their ordinary target. It is not general lava immunity."
+      },
+      "applies": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard).",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/EntityStraddleboard.shouldSerpentFriend",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Костяные змеи не выбирают всадника такой доски как обычную цель.",
+        "en_us": "Bone Serpents avoid selecting this board rider as their ordinary target."
+      },
+      "applies_brief": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard)",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)"
+      },
+      "targets": [
+        "alexsmobs:straddleboard"
+      ]
+    },
+    {
+      "id": "alexsmobs:board_return",
+      "name": {
+        "ru_ru": "Возвращение доски",
+        "en_us": "Returning Board"
+      },
+      "effect": {
+        "ru_ru": "При разрушении доска возвращается своему всаднику в инвентарь. Не защищает самого всадника от урона.",
+        "en_us": "On destruction the board returns to its rider inventory. It does not protect the rider from damage."
+      },
+      "applies": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard).",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "alexsmobs-1.22.9.jar:AMEnchantmentRegistry/EntityStraddleboard",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При разрушении доска возвращается своему всаднику в инвентарь.",
+        "en_us": "On destruction the board returns to its rider inventory."
+      },
+      "applies_brief": {
+        "ru_ru": "Только доска страддлера (alexsmobs:straddleboard)",
+        "en_us": "Straddleboard only (alexsmobs:straddleboard)"
+      },
+      "targets": [
+        "alexsmobs:straddleboard"
+      ]
+    },
+    {
+      "id": "blastfromthepast:tar_marcher",
+      "name": {
+        "ru_ru": "Хождение по смоле",
+        "en_us": "Tar Marcher"
+      },
+      "effect": {
+        "ru_ru": "Позволяет стоять и ходить по смоляным блокам благодаря зачарованию надетых ботинок.",
+        "en_us": "Enchanted worn boots let their wearer stand and walk on tar blocks."
+      },
+      "applies": {
+        "ru_ru": "Ботинки, включая модовые предметы категории обуви.",
+        "en_us": "Boots, including modded footwear in the native boots category."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "blastfromthepast-1.0.3+1.20.1.jar:ModEnchantments/EntityHelper.canWalkOnTarBlocks",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Позволяет стоять и ходить по смоляным блокам благодаря зачарованию надетых ботинок.",
+        "en_us": "Enchanted worn boots let their wearer stand and walk on tar blocks."
+      },
+      "applies_brief": {
+        "ru_ru": "Ботинки, включая модовые предметы категории обуви",
+        "en_us": "Boots, including modded footwear in the native boots category"
+      }
+    },
+    {
+      "id": "cnc:headhunter",
+      "name": {
+        "ru_ru": "Охотник за головами",
+        "en_us": "Headhunter"
+      },
+      "effect": {
+        "ru_ru": "Убийство игроком с зачарованным оружием в главной руке даёт голову поддерживаемого взрослого существа. Шанс в обработчике не разыгрывается. Детёныши исключены.",
+        "en_us": "A player kill with the enchanted weapon in the main hand drops a supported adult victim head. The handler does not make a chance roll. Babies are excluded."
+      },
+      "applies": {
+        "ru_ru": "Мечи и топоры из групп minecraft:swords и minecraft:axes через cnc:headhunter_enchantable. Поддерживается 14 взрослых видов Critters n' Crawlers и перечисленные в записи обычные головы.",
+        "en_us": "Swords and axes in minecraft:swords and minecraft:axes through cnc:headhunter_enchantable. Supports 14 adult Critters n' Crawlers animal types and the ordinary heads listed in this entry."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "Critters n' Crawlers-2.2.5-mc1.20.1.jar:CncModEnchantments/HeadhunterEnchantment/HeadDropsProcedure",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Убийство игроком с зачарованным оружием в главной руке даёт голову поддерживаемого взрослого существа.",
+        "en_us": "A player kill with the enchanted weapon in the main hand drops a supported adult victim head."
+      },
+      "applies_brief": {
+        "ru_ru": "Мечи и топоры из групп minecraft:swords и minecraft:axes через cnc:headhunter_enchantable",
+        "en_us": "Swords and axes in minecraft:swords and minecraft:axes through cnc:headhunter_enchantable"
+      }
+    },
+    {
+      "id": "create:capacity",
+      "name": {
+        "ru_ru": "Ёмкость",
+        "en_us": "Capacity"
+      },
+      "effect": {
+        "ru_ru": "Увеличивает запас воздуха баллона: базовая вместимость плюс серверная прибавка за каждый уровень. Зарядка по-прежнему требует вращения.",
+        "en_us": "Adds the server-configured capacity bonus for each level to a backtank base air capacity. Charging still requires rotation."
+      },
+      "applies": {
+        "ru_ru": "Воздушные баллоны Create и предметы нативного интерфейса CapacityEnchantable. Обычный нагрудник не подходит.",
+        "en_us": "Create backtanks and native CapacityEnchantable items. An ordinary chestplate does not qualify."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 3,
+      "source": "create-1.20.1-6.0.8.jar:AllEnchantments/CapacityEnchantment/BacktankUtil.maxAir",
+      "coverage_status": "live_config_value",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Увеличивает запас воздуха баллона: базовая вместимость плюс серверная прибавка за каждый уровень.",
+        "en_us": "Adds the server-configured capacity bonus for each level to a backtank base air capacity."
+      },
+      "applies_brief": {
+        "ru_ru": "Воздушные баллоны Create и предметы нативного интерфейса CapacityEnchantable",
+        "en_us": "Create backtanks and native CapacityEnchantable items"
+      },
+      "targets": [
+        "create:copper_backtank",
+        "create:netherite_backtank"
+      ]
+    },
+    {
+      "id": "create:potato_recovery",
+      "name": {
+        "ru_ru": "Возврат картофеля",
+        "en_us": "Potato Recovery"
+      },
+      "effect": {
+        "ru_ru": "Повышает вероятность вернуть выпущенный подходящий боеприпас после попадания. Шанс: 12,5% + 12,5% за уровень.",
+        "en_us": "Raises the chance to recover eligible fired ammunition after impact: 12.5% + 12.5% per level."
+      },
+      "applies": {
+        "ru_ru": "Картофельная пушка Create (create:potato_cannon); это не зачарование любого лука.",
+        "en_us": "Create Potato Cannon (create:potato_cannon); it is not an enchantment for every bow."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 3,
+      "source": "create-1.20.1-6.0.8.jar:AllEnchantments/PotatoRecoveryEnchantment/PotatoProjectileEntity",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Вероятность возврата: 25%.",
+            "en_us": "Recovery chance: 25%."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Вероятность возврата: 37.5%.",
+            "en_us": "Recovery chance: 37.5%."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Вероятность возврата: 50%.",
+            "en_us": "Recovery chance: 50%."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Повышает вероятность вернуть выпущенный подходящий боеприпас после попадания.",
+        "en_us": "Raises the chance to recover eligible fired ammunition after impact: 12.5% + 12.5% per level."
+      },
+      "applies_brief": {
+        "ru_ru": "Картофельная пушка Create (create:potato_cannon); это не зачарование любого лука",
+        "en_us": "Create Potato Cannon (create:potato_cannon); it is not an enchantment for every bow"
+      },
+      "targets": [
+        "create:potato_cannon"
+      ]
+    },
+    {
+      "id": "gouge:grip",
+      "name": {
+        "ru_ru": "Хватка",
+        "en_us": "Grip"
+      },
+      "effect": {
+        "ru_ru": "Удержание на стене длится дольше на 0,0016667 майнкрафт-дня за уровень при текущей настройке Gouge.",
+        "en_us": "Wall hanging gains 0.0016667 Minecraft days per level with the current Gouge setting."
+      },
+      "applies": {
+        "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания.",
+        "en_us": "Pickaxes; the pickaxe own stats also determine hang duration."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 3,
+      "source": "gouge-1.5.1-mc1.20.1-forge.jar:Gouge/GougeEnchantment/GougePhysics; Client/Server/config/gouge.toml",
+      "coverage_status": "local_config_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "+0.0016667 дня удержания.",
+            "en_us": "+0.0016667 days hanging."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "+0.0033333 дня удержания.",
+            "en_us": "+0.0033333 days hanging."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "+0.0050000 дня удержания.",
+            "en_us": "+0.0050000 days hanging."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "details": [
+        {
+          "text": {
+            "ru_ru": "Механика Gouge работает с киркой. Обычный выбор стола использует категорию копательных инструментов; наличие чар на другом инструменте не делает его киркой для Gouge.",
+            "en_us": "Gouge mechanics require a pickaxe. Ordinary table selection uses the digging-tool category; having the enchantment on another tool does not make it a Gouge pickaxe."
+          }
+        }
+      ],
+      "brief": {
+        "ru_ru": "Удержание на стене длится дольше на 0,0016667 майнкрафт-дня за уровень при текущей настройке Gouge.",
+        "en_us": "Wall hanging gains 0.0016667 Minecraft days per level with the current Gouge setting."
+      },
+      "applies_brief": {
+        "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания",
+        "en_us": "Pickaxes; the pickaxe own stats also determine hang duration"
+      }
+    },
+    {
+      "id": "gouge:momentum",
+      "name": {
+        "ru_ru": "Инерция",
+        "en_us": "Momentum"
+      },
+      "effect": {
+        "ru_ru": "Сокращает восстановление после соскальзывания на 0,0008333 майнкрафт-дня за уровень при текущей настройке Gouge, минимум до нуля.",
+        "en_us": "Reduces wall-slip recovery by 0.0008333 Minecraft days per level with the current Gouge setting, with a zero minimum."
+      },
+      "applies": {
+        "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания.",
+        "en_us": "Pickaxes; the pickaxe own stats also determine hang duration."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 3,
+      "source": "gouge-1.5.1-mc1.20.1-forge.jar:Gouge/GougeEnchantment/GougePhysics; Client/Server/config/gouge.toml",
+      "coverage_status": "local_config_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "−0.0008333 дня восстановления, минимум 0.",
+            "en_us": "−0.0008333 recovery days, minimum 0."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "−0.0016667 дня восстановления, минимум 0.",
+            "en_us": "−0.0016667 recovery days, minimum 0."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "−0.0025000 дня восстановления, минимум 0.",
+            "en_us": "−0.0025000 recovery days, minimum 0."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "details": [
+        {
+          "text": {
+            "ru_ru": "Механика Gouge работает с киркой. Обычный выбор стола использует категорию копательных инструментов; наличие чар на другом инструменте не делает его киркой для Gouge.",
+            "en_us": "Gouge mechanics require a pickaxe. Ordinary table selection uses the digging-tool category; having the enchantment on another tool does not make it a Gouge pickaxe."
+          }
+        }
+      ],
+      "brief": {
+        "ru_ru": "Сокращает восстановление после соскальзывания на 0,0008333 майнкрафт-дня за уровень при текущей настройке Gouge, минимум до нуля.",
+        "en_us": "Reduces wall-slip recovery by 0.0008333 Minecraft days per level with the current Gouge setting, with a zero minimum."
+      },
+      "applies_brief": {
+        "ru_ru": "Кирки; параметры самой кирки дополнительно определяют длительность удержания",
+        "en_us": "Pickaxes; the pickaxe own stats also determine hang duration"
+      }
+    },
+    {
+      "id": "jem_pack_core:excavation",
+      "name": {
+        "ru_ru": "Раскопка",
+        "en_us": "Excavation"
+      },
+      "effect": {
+        "ru_ru": "Разбивает область 3×3 в плоскости ударенной грани. Приседание временно оставляет один блок. Приседание и использование переключают сохранённое включённое состояние.",
+        "en_us": "Mines a 3×3 plane aligned with the struck face. Sneaking temporarily mines one block. Sneak-use toggles its saved enabled state."
+      },
+      "applies": {
+        "ru_ru": "Кирки, лопаты и топоры. Дополнительные блоки требуют подходящего инструмента и обычного разрешения на добычу.",
+        "en_us": "Pickaxes, shovels and axes. Extra blocks require the correct tool and native mining permission."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "Mods/JEMCompat:CoreEnchantments/ExcavationEnchantment/ExcavationEvents/ExcavationMining",
+      "coverage_status": "mechanics_verified",
+      "conditions": {
+        "ru_ru": "Полная область имеет бюджет до 4 обычных единиц износа; Неразрушимость I/II сохраняет обычные броски. При Неразрушимости III полный набор из 9 блоков расходует 0 или 1 единицу с равной вероятностью.",
+        "en_us": "A full plane has up to 4 ordinary wear requests; Unbreaking I/II retain native rolls. At Unbreaking III a full 9-block batch spends 0 or 1 durability with equal probability."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "details": [
+        {
+          "text": {
+            "ru_ru": "Перенос через наковальню допускает кирку, лопату или топор. Стол использует нативную применимость предмета к категории DIGGER; его набор может отличаться от переноса книг.",
+            "en_us": "Anvil transfer accepts pickaxes, shovels or axes. The table uses the item native eligibility for the DIGGER category; its set can differ from book transfer."
+          }
+        }
+      ],
+      "brief": {
+        "ru_ru": "Разбивает область 3×3 в плоскости ударенной грани.",
+        "en_us": "Mines a 3×3 plane aligned with the struck face."
+      },
+      "applies_brief": {
+        "ru_ru": "Кирки, лопаты и топоры",
+        "en_us": "Pickaxes, shovels and axes"
+      }
+    },
+    {
+      "id": "jem_world_boss_tiers:progression",
+      "name": {
+        "ru_ru": "Прогрессия",
+        "en_us": "Progression"
+      },
+      "effect": {
+        "ru_ru": "Снаряжение усиливается с мировым уровнем до III. Во II: ближний урон +1 и базовая скорость атаки +5%; в III: +2 и +10%. Броня и твёрдость: +5%/10% собственных значений. Обычные прочность, Починка и Неразрушимость сохраняются.",
+        "en_us": "Equipment scales with World Tier through III. At II: +1 melee damage and +5% base attack speed; at III: +2 and +10%. Armour and toughness gain 5%/10% of their own values. Normal durability, Mending and Unbreaking remain."
+      },
+      "applies": {
+        "ru_ru": "Совместимое оружие, инструменты, щиты, стрелковое оружие и броня. Предметы progression_excluded и not_weapons исключены; величина бонуса зависит от вида и мирового уровня, а не уровня чар.",
+        "en_us": "Eligible weapons, tools, shields, ranged weapons and armour. progression_excluded and not_weapons items are excluded; bonus depends on equipment kind and World Tier, not enchantment level."
+      },
+      "acquisition": {
+        "ru_ru": "Только книга и наковальня, не стол. Книга имеет 6% шанс добавиться в сундуки данжей, шахт, пирамид, храмов джунглей, библиотек крепостей, особняков, аванпостов и древних городов.",
+        "en_us": "Book and anvil only, never the table. A book has a 6% addition chance in dungeon, mineshaft, desert pyramid, jungle temple, stronghold library, mansion, outpost and ancient city chest loot."
+      },
+      "max_level_pages": 1,
+      "source": "Mods/JEMWorldBossTiers:ProgressionEnchantment/EquipmentScaler/ProgressionWeapons/ProgressionArmor/WeaponProtection/ProgressionBookLootModifier + progression_book.json",
+      "coverage_status": "mechanics_verified",
+      "conditions": {
+        "ru_ru": "IV и V больше не прибавляют силы. Предмет защищён от огня, исчезновения и потери в пустоте; это не отменяет износ. Дополнительные эффекты частей брони и стрелкового оружия описывает их собственная подсказка мирового уровня.",
+        "en_us": "IV and V add no further power. The item is protected from fire, despawn and void loss; wear still applies. Armour-piece and ranged bonuses are shown by their existing World Tier tooltip."
+      },
+      "details": [
+        {
+          "text": {
+            "ru_ru": "Поддерживаемые физические попадания оружием и стрелы из зачарованного стрелкового оружия получают ×1,05 урона на II мировом уровне",
+            "en_us": "Supported physical weapon hits and arrows from enchanted ranged weapons gain ×1.05 damage at World Tier II and ×1.10"
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "и ×1,10 на III+. На III+: 15% шанс дополнительного ×1,5. Для стрел берётся оружие при запуске, а не предмет в руке после выстрела.",
+            "en_us": "at III+. At III+: a 15% chance of an extra ×1.5. Arrows use their launch weapon, not the item held after firing."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Лук и арбалет: ускоренное использование с мирового уровня II. Стрелы сохраняют пробивание не ниже II на мировом",
+            "en_us": "Bow and crossbow: faster use from World Tier II. Arrow piercing is at least II at World Tier II and III"
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "II и III на мировом III+. Неизвестный сторонний запускатель не получает бонус по предмету, взятому позже.",
+            "en_us": "at World Tier III+. Unknown custom launchers do not gain bonuses from an item equipped afterwards."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шлем: урон снарядов −15% на II, −25% на III+. На III+ есть 20% шанс отменить попадание снаряда и вернуть атакующему половину урона, максимум 4.",
+            "en_us": "Helmet: projectile damage −15% at II, −25% at III+. At III+ a 20% chance cancels the projectile hit and reflects half its damage to the attacker, capped at 4."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Нагрудник: попадания от 8 урона ослабляются на 10% на II и 15% на III+. На III+ готовая защитная реакция добавляет",
+            "en_us": "Chestplate: hits of at least 8 damage are reduced by 10% at II and 15% at III+. At III+ a ready guard"
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "35% ослабления; восстановление 0,01 майнкрафт-дня. Реакция тратится при фактическом получении урона.",
+            "en_us": "adds 35% reduction; recovery is 0.01 Minecraft days. Guard is spent when damage is actually taken."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Поножи: после попадания Скорость I на II или II на III+ длится 0,0025 дня. На III+ также +15% итоговой скорости атаки на тот же срок.",
+            "en_us": "Leggings: after a hit, Speed I at II or Speed II at III+ lasts 0.0025 days. At III+ also gain 15% total attack speed for the same duration."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Ботинки: сопротивление отбрасыванию +0,15 на II и +0,25 на III+; урон падения −35%/60%. На III+ приземление даёт Скорость II на 0,0016667",
+            "en_us": "Boots: knockback resistance +0.15 at II and +0.25 at III+; fall damage −35%/60%. At III+ landing grants Speed II for 0.0016667"
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "дня. Несколько защит не складываются напрямую: сильнейшая полная, каждая следующая применяется с четвертью своей силы.",
+            "en_us": "days. Reductions do not add directly: the strongest is full, each additional reduction uses a quarter of its strength."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Если выброшенный защищённый предмет уходит ниже границы пустоты, сервер возвращает его к мировой точке появления. Это не возвращение в инвентарь и не защита от поломки из-за износа.",
+            "en_us": "If a protected dropped item passes below the void boundary, the server recreates it at world spawn. This is not an inventory return and does not prevent durability breakage."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 2,
+        "conditions": 2,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Снаряжение усиливается с мировым уровнем до III.",
+        "en_us": "Equipment scales with World Tier through III."
+      },
+      "applies_brief": {
+        "ru_ru": "Совместимое оружие, инструменты, щиты, стрелковое оружие и броня",
+        "en_us": "Eligible weapons, tools, shields, ranged weapons and armour"
+      }
+    },
+    {
+      "id": "kaleidoscope_nether:lava_walker",
+      "name": {
+        "ru_ru": "Лавоход",
+        "en_us": "Lava Walker"
+      },
+      "effect": {
+        "ru_ru": "Надетые зачарованные ботинки позволяют идти по поверхности лавы. Это не обещание защиты от всех источников огня.",
+        "en_us": "Worn enchanted boots let you walk on the lava surface. This does not promise protection from all fire damage."
+      },
+      "applies": {
+        "ru_ru": "Ботинки.",
+        "en_us": "Boots."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "kaleidoscope_nether-1.1.8-forge+mc1.20.1.jar:KNEnchantments$1/LavaWalkerEventHandler",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Надетые зачарованные ботинки позволяют идти по поверхности лавы.",
+        "en_us": "Worn enchanted boots let you walk on the lava surface."
+      },
+      "applies_brief": {
+        "ru_ru": "Ботинки",
+        "en_us": "Boots"
+      }
+    },
+    {
+      "id": "luminous_nether:soul_cleave",
+      "name": {
+        "ru_ru": "Рассечение души",
+        "en_us": "Soul Cleave"
+      },
+      "effect": {
+        "ru_ru": "При смерти жертвы чары в главной руке её убийцы дают шанс призрачной эссенции: I — 30%, II — 40%. Условие проверяет точный уровень I или II.",
+        "en_us": "When a victim dies, this enchantment in the killer main hand can drop Ghostly Essence: I — 30%, II — 40%. The condition checks exactly level I or II."
+      },
+      "applies": {
+        "ru_ru": "Предметы группы forge:tools/swords; нативные исключения совместимости сохраняются.",
+        "en_us": "Items in forge:tools/swords; native compatibility exclusions remain."
+      },
+      "acquisition": {
+        "ru_ru": "Книгу может предложить библиотекарь: торговля разрешена нативными правилами. Случайный выбор стола отключён. Переносите подходящую книгу на меч наковальней.",
+        "en_us": "A librarian can offer the book: native trading is enabled. Ordinary table selection is disabled. Transfer a compatible book to a sword with an anvil."
+      },
+      "max_level_pages": 2,
+      "source": "Luminous Nether V1.3.3 - Forge 1.20.1.jar:LuminousNetherModEnchantments/SoulCleaveEnchantment/SoulCleaveProcedureProcedure",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Шанс эссенции: 30%.",
+            "en_us": "Essence chance: 30%."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс эссенции: 40%.",
+            "en_us": "Essence chance: 40%."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При смерти жертвы чары в главной руке её убийцы дают шанс призрачной эссенции: I — 30%, II — 40%.",
+        "en_us": "When a victim dies, this enchantment in the killer main hand can drop Ghostly Essence: I — 30%, II — 40%."
+      },
+      "applies_brief": {
+        "ru_ru": "Предметы группы forge:tools/swords; нативные исключения совместимости сохраняются",
+        "en_us": "Items in forge:tools/swords; native compatibility exclusions remain"
+      }
+    },
+    {
+      "id": "netherexp:cartridge",
+      "name": {
+        "ru_ru": "Патронташ",
+        "en_us": "Cartridge"
+      },
+      "effect": {
+        "ru_ru": "В текущих Shotgun Fist, Jackhammer Fist и Pump Charge Shotgun обе ветви проверки чар расходуют боеприпас. Уровни I и II не дают обещанной экономии на этих трёх видах оружия.",
+        "en_us": "In the current Shotgun Fist, Jackhammer Fist and Pump Charge Shotgun, both enchantment check branches spend ammunition. Levels I and II do not provide the advertised conservation on these three weapons."
+      },
+      "applies": {
+        "ru_ru": "Дробовики из нативной группы netherexp:shotguns.",
+        "en_us": "Shotguns in the native netherexp:shotguns group."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 2,
+      "source": "Jadens-Nether-Expansion-2.3.5.jar:JNEEnchantments/CartridgeEnchantment/ShotgunFistItem/JackhammerFistItem/PumpChargeShotgunItem",
+      "coverage_status": "native_defect_observed",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Уровень 1: в трёх перечисленных дробовиках экономии боеприпаса нет.",
+            "en_us": "Level 1: no ammo conservation in the three listed shotguns."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Уровень 2: в трёх перечисленных дробовиках экономии боеприпаса нет.",
+            "en_us": "Level 2: no ammo conservation in the three listed shotguns."
+          }
+        }
+      ],
+      "conditions": {
+        "ru_ru": "В кулаке-дробовике наличие чар дополнительно заменяет число дробин на случайные 8–12 независимо от уровня, в том числе поверх Залпа.",
+        "en_us": "On Shotgun Fist this enchantment also replaces pellet count with a random 8–12 regardless of level, overriding Barrage."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "В текущих Shotgun Fist, Jackhammer Fist и Pump Charge Shotgun обе ветви проверки чар расходуют боеприпас.",
+        "en_us": "In the current Shotgun Fist, Jackhammer Fist and Pump Charge Shotgun, both enchantment check branches spend ammunition."
+      },
+      "applies_brief": {
+        "ru_ru": "Дробовики из нативной группы netherexp:shotguns",
+        "en_us": "Shotguns in the native netherexp:shotguns group"
+      },
+      "targets": [
+        "netherexp:shotgun_fist",
+        "netherexp:jackhammer_fist",
+        "netherexp:pump_charge_shotgun"
+      ]
+    },
+    {
+      "id": "netherexp:recoil",
+      "name": {
+        "ru_ru": "Отдача",
+        "en_us": "Recoil"
+      },
+      "effect": {
+        "ru_ru": "Увеличивает отбрасывание самого стрелка. В кулаках-дробовиках добавляет уровень/16 к величине обратного импульса.",
+        "en_us": "Increases the shooter own pushback. Shotgun fists add level/16 to backward impulse."
+      },
+      "applies": {
+        "ru_ru": "Дробовики из нативной группы netherexp:shotguns.",
+        "en_us": "Shotguns in the native netherexp:shotguns group."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 3,
+      "source": "Jadens-Nether-Expansion-2.3.5.jar:JNEEnchantments/RecoilEnchantment/ShotgunFistItem/JackhammerFistItem/PumpChargeShotgunItem",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Прибавка к обратному импульсу дробовика: 0.0625.",
+            "en_us": "Shotgun backward-impulse bonus: 0.0625."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Прибавка к обратному импульсу дробовика: 0.1250.",
+            "en_us": "Shotgun backward-impulse bonus: 0.1250."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Прибавка к обратному импульсу дробовика: 0.1875.",
+            "en_us": "Shotgun backward-impulse bonus: 0.1875."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Увеличивает отбрасывание самого стрелка.",
+        "en_us": "Increases the shooter own pushback."
+      },
+      "applies_brief": {
+        "ru_ru": "Дробовики из нативной группы netherexp:shotguns",
+        "en_us": "Shotguns in the native netherexp:shotguns group"
+      },
+      "targets": [
+        "netherexp:shotgun_fist",
+        "netherexp:jackhammer_fist",
+        "netherexp:pump_charge_shotgun"
+      ]
+    },
+    {
+      "id": "netherexp:barrage",
+      "name": {
+        "ru_ru": "Залп",
+        "en_us": "Barrage"
+      },
+      "effect": {
+        "ru_ru": "Добавляет дробины ценой увеличенной перезарядки. Для кулака-дробовика: +5 дробин за уровень и задержка 0,0016667 + 0,000625 за уровень дня. Боеприпас с собственным числом дробин может переопределять залп.",
+        "en_us": "Adds pellets at the cost of a longer cooldown. Shotgun Fist: +5 pellets per level and cooldown 0.0016667 + 0.000625 days per level. Ammo with its own pellet count can override the volley."
+      },
+      "applies": {
+        "ru_ru": "Дробовики из нативной группы netherexp:shotguns.",
+        "en_us": "Shotguns in the native netherexp:shotguns group."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 4,
+      "source": "Jadens-Nether-Expansion-2.3.5.jar:JNEEnchantments/BarrageEnchantment/ShotgunFistItem/PumpChargeShotgunItem",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Кулак-дробовик: +5 дробин, задержка 0.0022917 дня. Pump Charge: задержка 0.0010417 дня; число зависит и от накачки.",
+            "en_us": "Shotgun Fist: +5 pellets, cooldown 0.0022917 days. Pump Charge: cooldown 0.0010417 days; count also depends on pumping."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Кулак-дробовик: +10 дробин, задержка 0.0029167 дня. Pump Charge: задержка 0.0014583 дня; число зависит и от накачки.",
+            "en_us": "Shotgun Fist: +10 pellets, cooldown 0.0029167 days. Pump Charge: cooldown 0.0014583 days; count also depends on pumping."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Кулак-дробовик: +15 дробин, задержка 0.0035417 дня. Pump Charge: задержка 0.0018750 дня; число зависит и от накачки.",
+            "en_us": "Shotgun Fist: +15 pellets, cooldown 0.0035417 days. Pump Charge: cooldown 0.0018750 days; count also depends on pumping."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Кулак-дробовик: +20 дробин, задержка 0.0041667 дня. Pump Charge: задержка 0.0022917 дня; число зависит и от накачки.",
+            "en_us": "Shotgun Fist: +20 pellets, cooldown 0.0041667 days. Pump Charge: cooldown 0.0022917 days; count also depends on pumping."
+          }
+        }
+      ],
+      "conditions": {
+        "ru_ru": "Pump Charge получает +2 дробины за уровень сверх количества от накачки; кулак-дробовик — +5. В кулаке наличие Патронташа заменяет итоговые дробины случайными 8–12. Jackhammer не использует Залп.",
+        "en_us": "Pump Charge gains +2 pellets per level beyond its pumping count; Shotgun Fist gains +5. On Shotgun Fist, Cartridge overrides the final count with a random 8–12. Jackhammer does not use Barrage."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Добавляет дробины ценой увеличенной перезарядки.",
+        "en_us": "Adds pellets at the cost of a longer cooldown."
+      },
+      "applies_brief": {
+        "ru_ru": "Дробовики из нативной группы netherexp:shotguns",
+        "en_us": "Shotguns in the native netherexp:shotguns group"
+      },
+      "targets": [
+        "netherexp:shotgun_fist",
+        "netherexp:jackhammer_fist",
+        "netherexp:pump_charge_shotgun"
+      ]
+    },
+    {
+      "id": "netherexp:artemis",
+      "name": {
+        "ru_ru": "Артемида",
+        "en_us": "Artemis"
+      },
+      "effect": {
+        "ru_ru": "У обычного лука в главной руке увеличивает начальную скорость стрелы на уровень. У текущих дробовиков добавка дальности считает целочисленное уровень/5 и на законных I–II равна нулю.",
+        "en_us": "Adds the level to ordinary main-hand bow arrow velocity. Current shotguns use integer level/5 for the range bonus, which is zero at legal levels I–II."
+      },
+      "applies": {
+        "ru_ru": "Обычный лук и дробовики netherexp:shotguns. Не все модовые луки и арбалеты.",
+        "en_us": "The ordinary bow and netherexp:shotguns. Not every modded bow or crossbow."
+      },
+      "acquisition": {
+        "ru_ru": "Книга I–II добавляется с вероятностью 50% в сундук адской крепости. Наложение — наковальня; обычный стол и библиотекарь отключены.",
+        "en_us": "A level I–II book has a 50% addition chance in Nether Fortress chest loot. Transfer it with an anvil; ordinary table rolls and librarian offers are disabled."
+      },
+      "max_level_pages": 2,
+      "source": "Jadens-Nether-Expansion-2.3.5.jar:ArtemisEnchantment/BowItemMixin/shotgun consumers; loot_modifiers/artemis_enchantment.json",
+      "coverage_status": "native_defect_observed",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Обычный лук: +1 к начальной скорости стрелы. У дробовиков целочисленная прибавка уровень/5 на этом уровне равна 0.",
+            "en_us": "Ordinary bow: +1 initial arrow speed. The shotgun integer level/5 range bonus is 0 at this level."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Обычный лук: +2 к начальной скорости стрелы. У дробовиков целочисленная прибавка уровень/5 на этом уровне равна 0.",
+            "en_us": "Ordinary bow: +2 initial arrow speed. The shotgun integer level/5 range bonus is 0 at this level."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "У обычного лука в главной руке увеличивает начальную скорость стрелы на уровень.",
+        "en_us": "Adds the level to ordinary main-hand bow arrow velocity."
+      },
+      "applies_brief": {
+        "ru_ru": "Обычный лук и дробовики netherexp:shotguns",
+        "en_us": "The ordinary bow and netherexp:shotguns"
+      },
+      "targets": [
+        "minecraft:bow",
+        "netherexp:shotgun_fist",
+        "netherexp:jackhammer_fist",
+        "netherexp:pump_charge_shotgun"
+      ]
+    },
+    {
+      "id": "netherexp:phantasm_hull",
+      "name": {
+        "ru_ru": "Призрачная оболочка",
+        "en_us": "Phantasm Hull"
+      },
+      "effect": {
+        "ru_ru": "При приседании подходящие снаряды проходят сквозь носителя. Пробивающие стрелы и снаряды из нативной группы исключений остаются опасными. Каждый пропущенный снаряд имеет 50% шанс снять 1 прочность нагрудника.",
+        "en_us": "While sneaking, eligible projectiles pass through the wearer. Piercing arrows and native blacklist projectiles remain dangerous. Each phased projectile has a 50% chance to spend 1 chestplate durability."
+      },
+      "applies": {
+        "ru_ru": "Нагрудники; несовместимо со всеми видами Защиты и Починкой.",
+        "en_us": "Chest armour; incompatible with all Protection variants and Mending."
+      },
+      "acquisition": {
+        "ru_ru": "Книги встречаются среди добычи открытого и скрытого сундука жаровни Nether Expansion. Наложение — наковальня; обычный стол и библиотекарь отключены.",
+        "en_us": "Books appear in Nether Expansion exposed and hidden brazier chest loot. Transfer with an anvil; ordinary table rolls and librarian offers are disabled."
+      },
+      "max_level_pages": 1,
+      "source": "Jadens-Nether-Expansion-2.3.5.jar:PhantasmHullEnchantment/ProjectileMixin; loot_tables/brazier_chest/{exposed,hidden}.json",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При приседании подходящие снаряды проходят сквозь носителя.",
+        "en_us": "While sneaking, eligible projectiles pass through the wearer."
+      },
+      "applies_brief": {
+        "ru_ru": "Нагрудники; несовместимо со всеми видами Защиты и Починкой",
+        "en_us": "Chest armour; incompatible with all Protection variants and Mending"
+      }
+    },
+    {
+      "id": "trials:density",
+      "name": {
+        "ru_ru": "Плотность",
+        "en_us": "Density"
+      },
+      "effect": {
+        "ru_ru": "При критическом ударе после падения больше чем на один блок увеличивает прибавку критического множителя на 0,1 × (дальность падения − 1) × (уровень + 1).",
+        "en_us": "On a vanilla critical after falling more than one block, the critical modifier addition is 0.1 × (fall distance − 1) × (level + 1)."
+      },
+      "applies": {
+        "ru_ru": "Булава Trials. Несовместимо с чарами обычного дополнительного урона.",
+        "en_us": "Trials Mace. Incompatible with ordinary damage enchantments."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 5,
+      "source": "Trials-2.3.3.jar:TrialsEnchantments/Mace*Enchantment/TrialsEvents/MaceItem + gameplay/vault_special_loot.json",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Критическая прибавка: 0.2 × (дальность падения − 1), если падение больше блока.",
+            "en_us": "Critical modifier addition: 0.2 × (fall distance − 1), when falling more than one block."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Критическая прибавка: 0.3 × (дальность падения − 1), если падение больше блока.",
+            "en_us": "Critical modifier addition: 0.3 × (fall distance − 1), when falling more than one block."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Критическая прибавка: 0.4 × (дальность падения − 1), если падение больше блока.",
+            "en_us": "Critical modifier addition: 0.4 × (fall distance − 1), when falling more than one block."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Критическая прибавка: 0.5 × (дальность падения − 1), если падение больше блока.",
+            "en_us": "Critical modifier addition: 0.5 × (fall distance − 1), when falling more than one block."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Критическая прибавка: 0.6 × (дальность падения − 1), если падение больше блока.",
+            "en_us": "Critical modifier addition: 0.6 × (fall distance − 1), when falling more than one block."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При критическом ударе после падения больше чем на один блок увеличивает прибавку критического множителя на 0,1 × (дальность падения − 1) × (уровень + 1).",
+        "en_us": "On a vanilla critical after falling more than one block, the critical modifier addition is 0.1 × (fall distance − 1) × (level + 1)."
+      },
+      "applies_brief": {
+        "ru_ru": "Булава Trials",
+        "en_us": "Trials Mace"
+      },
+      "targets": [
+        "trials:mace"
+      ]
+    },
+    {
+      "id": "trials:breach",
+      "name": {
+        "ru_ru": "Пробитие",
+        "en_us": "Breach"
+      },
+      "effect": {
+        "ru_ru": "При попадании булавой обработчик расчёта урона учитывает броню и твёрдость цели с множителем 1 − 0,25 × уровень. Это не отключает эффекты Сопротивления и Защиты.",
+        "en_us": "The mace damage handler scales target armour and toughness by 1 − 0.25 × level. Resistance and Protection effects still apply."
+      },
+      "applies": {
+        "ru_ru": "Булава Trials.",
+        "en_us": "Trials Mace."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 4,
+      "source": "Trials-2.3.3.jar:TrialsEnchantments/Mace*Enchantment/TrialsEvents/MaceItem + gameplay/vault_special_loot.json",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Броня и твёрдость в расчёте булавы учитываются на 75% собственных значений.",
+            "en_us": "The mace calculation uses 75% of target armour and toughness."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Броня и твёрдость в расчёте булавы учитываются на 50% собственных значений.",
+            "en_us": "The mace calculation uses 50% of target armour and toughness."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Броня и твёрдость в расчёте булавы учитываются на 25% собственных значений.",
+            "en_us": "The mace calculation uses 25% of target armour and toughness."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Броня и твёрдость в расчёте булавы учитываются на 0% собственных значений.",
+            "en_us": "The mace calculation uses 0% of target armour and toughness."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При попадании булавой обработчик расчёта урона учитывает броню и твёрдость цели с множителем 1 − 0,25 × уровень.",
+        "en_us": "The mace damage handler scales target armour and toughness by 1 − 0.25 × level."
+      },
+      "applies_brief": {
+        "ru_ru": "Булава Trials",
+        "en_us": "Trials Mace"
+      },
+      "targets": [
+        "trials:mace"
+      ]
+    },
+    {
+      "id": "trials:wind_burst",
+      "name": {
+        "ru_ru": "Ветряной взрыв",
+        "en_us": "Wind Burst"
+      },
+      "effect": {
+        "ru_ru": "Критический удар создаёт отбрасывание рядом с игроком. Величина подъёма для самого игрока: 4 + 3 × уровень; для других целей учитывается дистанция.",
+        "en_us": "A critical mace hit produces nearby knockback. The player own upward impulse is 4 + 3 × level; other targets use distance falloff."
+      },
+      "applies": {
+        "ru_ru": "Булава Trials.",
+        "en_us": "Trials Mace."
+      },
+      "acquisition": {
+        "ru_ru": "Книгу можно найти среди специальной добычи зловещего хранилища Trials. Наложите на булаву наковальней; обычные предложения библиотекаря отключены.",
+        "en_us": "A book appears in Trials ominous-vault special loot. Transfer it to a mace with an anvil; ordinary librarian offers are disabled."
+      },
+      "max_level_pages": 3,
+      "source": "Trials-2.3.3.jar:TrialsEnchantments/Mace*Enchantment/TrialsEvents/MaceItem + gameplay/vault_special_loot.json",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Подъём самого игрока: 7; другие цели получают подъём с учётом расстояния.",
+            "en_us": "Player upward impulse: 7; other targets use distance-dependent lift."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Подъём самого игрока: 10; другие цели получают подъём с учётом расстояния.",
+            "en_us": "Player upward impulse: 10; other targets use distance-dependent lift."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Подъём самого игрока: 13; другие цели получают подъём с учётом расстояния.",
+            "en_us": "Player upward impulse: 13; other targets use distance-dependent lift."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Критический удар создаёт отбрасывание рядом с игроком.",
+        "en_us": "A critical mace hit produces nearby knockback."
+      },
+      "applies_brief": {
+        "ru_ru": "Булава Trials",
+        "en_us": "Trials Mace"
+      },
+      "targets": [
+        "trials:mace"
+      ]
+    },
+    {
+      "id": "kaleidoscope_end:void_assault",
+      "name": {
+        "ru_ru": "Пустотный натиск",
+        "en_us": "Void Assault"
+      },
+      "effect": {
+        "ru_ru": "С шансом 15% умножает урон на 1 + уровень. Чары проверяются на предмете, который атакующий держит в главной руке в момент попадания.",
+        "en_us": "Has a 15% chance to multiply damage by 1 + level. The enchantment is read from the attacker main-hand item at impact."
+      },
+      "applies": {
+        "ru_ru": "Мечи и топоры при соблюдении их нативной применимости.",
+        "en_us": "Swords and axes subject to native item eligibility."
+      },
+      "acquisition": {
+        "ru_ru": "На столе зачарований вставьте пустотную раковину kaleidoscope_end:void_conch вместо лазурита и подходящее оружие: появляется 60% попытка добавить чары нативной группы. Обычный выбор стола и библиотекарь их не дают. Полученную книгу переносит наковальня.",
+        "en_us": "At the enchanting table put kaleidoscope_end:void_conch in the lapis slot with eligible equipment: this enables a 60% attempt to add an enchantment from its native group. Ordinary table selection and librarian offers exclude it. Transfer an obtained book with an anvil."
+      },
+      "max_level_pages": 3,
+      "source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; EventHandler$GAME.LivingHurtEvent; EnchantmentMenuMixin + data/kaleidoscope_end/tags/enchantment/ke_enchantments.json",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×2.",
+            "en_us": "15% chance: damage ×2."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×3.",
+            "en_us": "15% chance: damage ×3."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×4.",
+            "en_us": "15% chance: damage ×4."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 2
+      },
+      "brief": {
+        "ru_ru": "С шансом 15% умножает урон на 1 + уровень.",
+        "en_us": "Has a 15% chance to multiply damage by 1 + level."
+      },
+      "applies_brief": {
+        "ru_ru": "Мечи и топоры при соблюдении их нативной применимости",
+        "en_us": "Swords and axes subject to native item eligibility"
+      }
+    },
+    {
+      "id": "kaleidoscope_end:void_echo",
+      "name": {
+        "ru_ru": "Эхо пустоты",
+        "en_us": "Void Echo"
+      },
+      "effect": {
+        "ru_ru": "При попадании есть 25% шанс поразить живых существ в коробке вокруг жертвы, расширенной на 4 блока: (40% + 15% × (уровень − 1)) от урона попадания + уровень + 1. Атакующий исключён; союзники автоматически не исключаются.",
+        "en_us": "Hits have a 25% chance to affect living entities inside the victim box expanded by 4 blocks: (40% + 15% × (level − 1)) of hit damage + level + 1. The attacker is excluded; allies are not automatically excluded."
+      },
+      "applies": {
+        "ru_ru": "Мечи и топоры при соблюдении их нативной применимости.",
+        "en_us": "Swords and axes subject to native item eligibility."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 4,
+      "source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; EventHandler$GAME.LivingHurtEvent",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Шанс 25%: 40% урона попадания + 2 по соседним существам.",
+            "en_us": "25% chance: 40% of hit damage + 2 to nearby entities."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 25%: 55% урона попадания + 3 по соседним существам.",
+            "en_us": "25% chance: 55% of hit damage + 3 to nearby entities."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 25%: 70% урона попадания + 4 по соседним существам.",
+            "en_us": "25% chance: 70% of hit damage + 4 to nearby entities."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 25%: 85% урона попадания + 5 по соседним существам.",
+            "en_us": "25% chance: 85% of hit damage + 5 to nearby entities."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 2,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При попадании есть 25% шанс поразить живых существ в коробке вокруг жертвы, расширенной на 4 блока: (40% + 15% × (уровень − 1)) от урона попадания + уровень + 1.",
+        "en_us": "Hits have a 25% chance to affect living entities inside the victim box expanded by 4 blocks: (40% + 15% × (level − 1)) of hit damage + level + 1."
+      },
+      "applies_brief": {
+        "ru_ru": "Мечи и топоры при соблюдении их нативной применимости",
+        "en_us": "Swords and axes subject to native item eligibility"
+      }
+    },
+    {
+      "id": "kaleidoscope_end:void_shot",
+      "name": {
+        "ru_ru": "Пустотный выстрел",
+        "en_us": "Void Shot"
+      },
+      "effect": {
+        "ru_ru": "Для попадания снарядом даёт 15% шанс умножить урон на 1 + уровень. При попадании атакующий должен всё ещё держать зачарованное оружие в главной руке.",
+        "en_us": "Projectile hits have a 15% chance to multiply damage by 1 + level. At impact the attacker must still hold the enchanted weapon in the main hand."
+      },
+      "applies": {
+        "ru_ru": "Луки и арбалеты при соблюдении их нативной применимости.",
+        "en_us": "Bows and crossbows subject to native item eligibility."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 4,
+      "source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; EventHandler$GAME.LivingHurtEvent",
+      "coverage_status": "mechanics_verified",
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×2.",
+            "en_us": "15% chance: damage ×2."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×3.",
+            "en_us": "15% chance: damage ×3."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×4.",
+            "en_us": "15% chance: damage ×4."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Шанс 15%: урон ×5.",
+            "en_us": "15% chance: damage ×5."
+          }
+        }
+      ],
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Для попадания снарядом даёт 15% шанс умножить урон на 1 + уровень.",
+        "en_us": "Projectile hits have a 15% chance to multiply damage by 1 + level."
+      },
+      "applies_brief": {
+        "ru_ru": "Луки и арбалеты при соблюдении их нативной применимости",
+        "en_us": "Bows and crossbows subject to native item eligibility"
+      }
+    },
+    {
+      "id": "kaleidoscope_end:void_walker",
+      "name": {
+        "ru_ru": "Хождение по пустоте",
+        "en_us": "Void Walker"
+      },
+      "effect": {
+        "ru_ru": "Без приседания воздух под ногами становится опорой; приседание позволяет спускаться. Прыжок над воздухом подавляется. JEM сбрасывает накопленную дальность падения только пока эта опора действительно держит игрока.",
+        "en_us": "Without sneaking, air underfoot provides support; sneaking lets you descend. Jumping over air is suppressed. JEM resets accumulated fall distance only while this support actually holds the player."
+      },
+      "applies": {
+        "ru_ru": "Ботинки, надетые в слот ног.",
+        "en_us": "Boots worn in the feet slot."
+      },
+      "acquisition": {
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
+        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+      },
+      "max_level_pages": 1,
+      "source": "kaleidoscope_end-1.0.14-forge+mc1.20.1.jar:KEEnchantments/Void*Enchantment/LivingEntityMixin/BlockBehaviourMixin; Mods/JEMCompat:feature/kaleidoscope/VoidWalkerEvents.java",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 2,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Без приседания воздух под ногами становится опорой; приседание позволяет спускаться.",
+        "en_us": "Without sneaking, air underfoot provides support; sneaking lets you descend."
+      },
+      "applies_brief": {
+        "ru_ru": "Ботинки, надетые в слот ног",
+        "en_us": "Boots worn in the feet slot"
+      }
+    },
+    {
+      "id": "efn:yamato_summoned_sword",
+      "name": {
+        "ru_ru": "Ямато: призванный меч",
+        "en_us": "Yamato: Summoned Sword"
+      },
+      "effect": {
+        "ru_ru": "Разрешает режим призванных мечей Ямато, когда нативный навык требует эти чары. Запуск расходует 5% максимальной выносливости; при её нехватке меч не вызывается.",
+        "en_us": "Permits Yamato summoned swords when the native skill requires this enchantment. Activation costs 5% maximum stamina; insufficient stamina blocks the summon."
+      },
+      "applies": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",
+        "en_us": "YamatoItem and its native variants only; not every sword."
+      },
+      "acquisition": {
+        "ru_ru": "Обычный стол и библиотекарь не дают эту книгу. Конкретный источник книги в текущей сборке пока не подтверждён. Уже имеющуюся книгу можно перенести на подходящее оружие наковальней.",
+        "en_us": "Ordinary tables and librarians do not provide this book. Its concrete survival source in the current pack is not yet confirmed. An existing book can be transferred to eligible equipment with an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "coverage_status": "native_gate_disabled_acquisition_partial",
+      "conditions": {
+        "ru_ru": "В текущих нативных данных навыка требование этих чар выключено. Нужное действие уже доступно без книги, если выполнены остальные условия навыка; наложение не добавляет второй бонус.",
+        "en_us": "The current native skill data disables this enchantment prerequisite. The action is already available without the book when other skill conditions hold; applying it adds no second bonus."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Разрешает режим призванных мечей Ямато, когда нативный навык требует эти чары.",
+        "en_us": "Permits Yamato summoned swords when the native skill requires this enchantment."
+      },
+      "applies_brief": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч",
+        "en_us": "YamatoItem and its native variants only; not every sword"
+      },
+      "targets": [
+        "efn:yamato_dmc",
+        "efn:yamato_dmc4",
+        "efn:yamato_dmc_in_sheath",
+        "efn:yamato_dmc4_in_sheath"
+      ]
+    },
+    {
+      "id": "efn:yamato_summoned_sword_end",
+      "name": {
+        "ru_ru": "Ямато: завершающие мечи",
+        "en_us": "Yamato: Summoned Sword End"
+      },
+      "effect": {
+        "ru_ru": "Добавляет автоматические призванные мечи в поддерживаемые события анимаций Ямато. Это не постоянная прибавка урона каждому удару.",
+        "en_us": "Adds automatic summoned swords to supported Yamato animation events. It is not a permanent damage bonus to every hit."
+      },
+      "applies": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",
+        "en_us": "YamatoItem and its native variants only; not every sword."
+      },
+      "acquisition": {
+        "ru_ru": "Обычный стол и библиотекарь не дают эту книгу. Конкретный источник книги в текущей сборке пока не подтверждён. Уже имеющуюся книгу можно перенести на подходящее оружие наковальней.",
+        "en_us": "Ordinary tables and librarians do not provide this book. Its concrete survival source in the current pack is not yet confirmed. An existing book can be transferred to eligible equipment with an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill",
+      "coverage_status": "acquisition_partial",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Добавляет автоматические призванные мечи в поддерживаемые события анимаций Ямато.",
+        "en_us": "Adds automatic summoned swords to supported Yamato animation events."
+      },
+      "applies_brief": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч",
+        "en_us": "YamatoItem and its native variants only; not every sword"
+      },
+      "targets": [
+        "efn:yamato_dmc",
+        "efn:yamato_dmc4",
+        "efn:yamato_dmc_in_sheath",
+        "efn:yamato_dmc4_in_sheath"
+      ]
+    },
+    {
+      "id": "efn:yamato_doppelganger",
+      "name": {
+        "ru_ru": "Ямато: двойник",
+        "en_us": "Yamato: Doppelganger"
+      },
+      "effect": {
+        "ru_ru": "Разрешает двойника, когда это требуется нативным навыком. Нужен хотя бы один заряд навыка; поддержание расходует его ресурс, а при исчерпании двойник исчезает.",
+        "en_us": "Permits the doppelganger when required by the native skill. At least one skill stack is required; upkeep drains skill resource and exhaustion dismisses it."
+      },
+      "applies": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",
+        "en_us": "YamatoItem and its native variants only; not every sword."
+      },
+      "acquisition": {
+        "ru_ru": "Обычный стол и библиотекарь не дают эту книгу. Конкретный источник книги в текущей сборке пока не подтверждён. Уже имеющуюся книгу можно перенести на подходящее оружие наковальней.",
+        "en_us": "Ordinary tables and librarians do not provide this book. Its concrete survival source in the current pack is not yet confirmed. An existing book can be transferred to eligible equipment with an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "coverage_status": "native_gate_disabled_acquisition_partial",
+      "conditions": {
+        "ru_ru": "В текущих нативных данных навыка требование этих чар выключено. Нужное действие уже доступно без книги, если выполнены остальные условия навыка; наложение не добавляет второй бонус.",
+        "en_us": "The current native skill data disables this enchantment prerequisite. The action is already available without the book when other skill conditions hold; applying it adds no second bonus."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Разрешает двойника, когда это требуется нативным навыком.",
+        "en_us": "Permits the doppelganger when required by the native skill."
+      },
+      "applies_brief": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч",
+        "en_us": "YamatoItem and its native variants only; not every sword"
+      },
+      "targets": [
+        "efn:yamato_dmc",
+        "efn:yamato_dmc4",
+        "efn:yamato_dmc_in_sheath",
+        "efn:yamato_dmc4_in_sheath"
+      ]
+    },
+    {
+      "id": "efn:yamato_judgement_cut_end",
+      "name": {
+        "ru_ru": "Ямато: последний разрез",
+        "en_us": "Yamato: Judgement Cut End"
+      },
+      "effect": {
+        "ru_ru": "Разрешает финальный приём нативного навыка, если он требует чары. Нужно стоять на земле с Ямато, иметь открытый навык и готовую перезарядку. Чары сами не открывают навык.",
+        "en_us": "Permits the native final art when it requires this enchantment. Stand on the ground holding Yamato, with the skill unlocked and its cooldown ready. The enchantment does not unlock the skill."
+      },
+      "applies": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",
+        "en_us": "YamatoItem and its native variants only; not every sword."
+      },
+      "acquisition": {
+        "ru_ru": "Обычный стол и библиотекарь не дают эту книгу. Конкретный источник книги в текущей сборке пока не подтверждён. Уже имеющуюся книгу можно перенести на подходящее оружие наковальней.",
+        "en_us": "Ordinary tables and librarians do not provide this book. Its concrete survival source in the current pack is not yet confirmed. An existing book can be transferred to eligible equipment with an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "coverage_status": "native_gate_disabled_acquisition_partial",
+      "conditions": {
+        "ru_ru": "В текущих нативных данных навыка требование этих чар выключено. Нужное действие уже доступно без книги, если выполнены остальные условия навыка; наложение не добавляет второй бонус.",
+        "en_us": "The current native skill data disables this enchantment prerequisite. The action is already available without the book when other skill conditions hold; applying it adds no second bonus."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Разрешает финальный приём нативного навыка, если он требует чары.",
+        "en_us": "Permits the native final art when it requires this enchantment."
+      },
+      "applies_brief": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч",
+        "en_us": "YamatoItem and its native variants only; not every sword"
+      },
+      "targets": [
+        "efn:yamato_dmc",
+        "efn:yamato_dmc4",
+        "efn:yamato_dmc_in_sheath",
+        "efn:yamato_dmc4_in_sheath"
+      ]
+    },
+    {
+      "id": "efn:yamato_heavy_rain",
+      "name": {
+        "ru_ru": "Ямато: тяжёлый дождь",
+        "en_us": "Yamato: Heavy Rain"
+      },
+      "effect": {
+        "ru_ru": "При сочетании призванного меча с приседанием заменяет спиральные мечи тяжёлым дождём. Требует 3 заряда; перезарядка 0,00125 майнкрафт-дня.",
+        "en_us": "Using summoned swords with sneak replaces spiral swords with Heavy Rain. Requires 3 skill stacks; cooldown is 0.00125 Minecraft days."
+      },
+      "applies": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",
+        "en_us": "YamatoItem and its native variants only; not every sword."
+      },
+      "acquisition": {
+        "ru_ru": "Крафт книги в верстаке: 4 аметистовых осколка, 2 мембраны фантома, 2 жемчужины Эндера и книга по рецепту JEI. Затем наковальня.",
+        "en_us": "Craft the book at a crafting table using the JEI pattern: 4 amethyst shards, 2 phantom membranes, 2 ender pearls and a book. Then use an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При сочетании призванного меча с приседанием заменяет спиральные мечи тяжёлым дождём.",
+        "en_us": "Using summoned swords with sneak replaces spiral swords with Heavy Rain."
+      },
+      "applies_brief": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч",
+        "en_us": "YamatoItem and its native variants only; not every sword"
+      },
+      "targets": [
+        "efn:yamato_dmc",
+        "efn:yamato_dmc4",
+        "efn:yamato_dmc_in_sheath",
+        "efn:yamato_dmc4_in_sheath"
+      ]
+    },
+    {
+      "id": "efn:yamato_guard",
+      "name": {
+        "ru_ru": "Ямато: защита",
+        "en_us": "Yamato: Guard"
+      },
+      "effect": {
+        "ru_ru": "Разрешает автоматическую защиту во время подходящих атак Ямато, когда её нативный навык требует эти чары. Это не постоянная неуязвимость.",
+        "en_us": "Permits automatic guarding during eligible Yamato attacks when its native skill requires this enchantment. It is not permanent invulnerability."
+      },
+      "applies": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч.",
+        "en_us": "YamatoItem and its native variants only; not every sword."
+      },
+      "acquisition": {
+        "ru_ru": "Обычный стол и библиотекарь не дают эту книгу. Конкретный источник книги в текущей сборке пока не подтверждён. Уже имеющуюся книгу можно перенести на подходящее оружие наковальней.",
+        "en_us": "Ordinary tables and librarians do not provide this book. Its concrete survival source in the current pack is not yet confirmed. An existing book can be transferred to eligible equipment with an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/Yamato* enchantment + YamatoInnate/YamatoPassive/TimeEvents/JudgmentCutEndSkill; data/efn/skill_parameters native prerequisite flags=false",
+      "coverage_status": "native_gate_disabled_acquisition_partial",
+      "conditions": {
+        "ru_ru": "В текущих нативных данных навыка требование этих чар выключено. Нужное действие уже доступно без книги, если выполнены остальные условия навыка; наложение не добавляет второй бонус.",
+        "en_us": "The current native skill data disables this enchantment prerequisite. The action is already available without the book when other skill conditions hold; applying it adds no second bonus."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Разрешает автоматическую защиту во время подходящих атак Ямато, когда её нативный навык требует эти чары.",
+        "en_us": "Permits automatic guarding during eligible Yamato attacks when its native skill requires this enchantment."
+      },
+      "applies_brief": {
+        "ru_ru": "Только YamatoItem и его нативные варианты; не любой меч",
+        "en_us": "YamatoItem and its native variants only; not every sword"
+      },
+      "targets": [
+        "efn:yamato_dmc",
+        "efn:yamato_dmc4",
+        "efn:yamato_dmc_in_sheath",
+        "efn:yamato_dmc4_in_sheath"
+      ]
+    },
+    {
+      "id": "efn:scythe_enhance",
+      "name": {
+        "ru_ru": "Кровавая луна: демонизация",
+        "en_us": "Crimson Moon: Demonized"
+      },
+      "effect": {
+        "ru_ru": "При максимальном запасе кровавой энергии косы добавляет кровавые разрезы к ударам. Условие проверяет ресурс нативного навыка косы.",
+        "en_us": "At maximum scythe blood energy, attacks gain blood cuts. The condition checks the native scythe skill resource."
+      },
+      "applies": {
+        "ru_ru": "Оружие ScytheItem семейства Crimson Moon.",
+        "en_us": "Crimson Moon ScytheItem weapons."
+      },
+      "acquisition": {
+        "ru_ru": "В сундуках адской крепости отдельная нативная добавка книги имеет 8% шанс. Наложите её на косу наковальней; стол и обычный библиотекарь не подходят.",
+        "en_us": "Nether Fortress chest loot has an independent 8% chance to add the book. Transfer it to a scythe with an anvil; ordinary tables and librarian offers are disabled."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/ScytheEnhance/ScytheSkill/EFNVFXManagers/EFNLootTables",
+      "coverage_status": "mechanics_verified",
+      "page_parts": {
+        "effect": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "При максимальном запасе кровавой энергии косы добавляет кровавые разрезы к ударам.",
+        "en_us": "At maximum scythe blood energy, attacks gain blood cuts."
+      },
+      "applies_brief": {
+        "ru_ru": "Оружие ScytheItem семейства Crimson Moon",
+        "en_us": "Crimson Moon ScytheItem weapons"
+      },
+      "targets": [
+        "efn:crimson_moon",
+        "efn:crimson_moon_e"
+      ]
+    },
+    {
+      "id": "efn:broad_blade_enhance",
+      "name": {
+        "ru_ru": "Широкий клинок: революция",
+        "en_us": "BroadBlade: Revolution"
+      },
+      "effect": {
+        "ru_ru": "Разрешает пассивную Революцию широкого клинка, если навык требует чары. Дополнительная атака имеет 30% шанс и не вызывает сама себя повторно.",
+        "en_us": "Permits BroadBlade Revolution when the skill requires the enchantment. Its extra attack has a 30% chance and cannot recursively trigger itself."
+      },
+      "applies": {
+        "ru_ru": "Только BroadBladeItem, не обычные широкие мечи других модов.",
+        "en_us": "BroadBladeItem only, not other mods ordinary greatswords."
+      },
+      "acquisition": {
+        "ru_ru": "Обычный стол и библиотекарь не дают эту книгу. Конкретный источник книги в текущей сборке пока не подтверждён. Уже имеющуюся книгу можно перенести на подходящее оружие наковальней.",
+        "en_us": "Ordinary tables and librarians do not provide this book. Its concrete survival source in the current pack is not yet confirmed. An existing book can be transferred to eligible equipment with an anvil."
+      },
+      "max_level_pages": 1,
+      "source": "EpicFight Nightfall-3.4.1-all.jar:EFNEnchantment/BroadBladeEnhance/BroadBladeInnate; data/efn/skill_parameters native prerequisite flags=false",
+      "coverage_status": "native_gate_disabled_acquisition_partial",
+      "conditions": {
+        "ru_ru": "В текущих нативных данных навыка требование этих чар выключено. Нужное действие уже доступно без книги, если выполнены остальные условия навыка; наложение не добавляет второй бонус.",
+        "en_us": "The current native skill data disables this enchantment prerequisite. The action is already available without the book when other skill conditions hold; applying it adds no second bonus."
+      },
+      "page_parts": {
+        "effect": 1,
+        "conditions": 1,
+        "application": 1,
+        "acquisition": 1
+      },
+      "brief": {
+        "ru_ru": "Разрешает пассивную Революцию широкого клинка, если навык требует чары.",
+        "en_us": "Permits BroadBlade Revolution when the skill requires the enchantment."
+      },
+      "applies_brief": {
+        "ru_ru": "Только BroadBladeItem, не обычные широкие мечи других модов",
+        "en_us": "BroadBladeItem only, not other mods ordinary greatswords"
+      },
+      "targets": [
+        "efn:broadblade"
+      ]
+    }
+  ],
+  "labels": {
+    "applies": {
+      "ru_ru": "Применяется к",
+      "en_us": "Applies to"
+    },
+    "maximum": {
+      "ru_ru": "Максимальный уровень",
+      "en_us": "Maximum level"
+    },
+    "incompatible": {
+      "ru_ru": "Несовместимость",
+      "en_us": "Incompatible with"
+    },
+    "none_incompatible": {
+      "ru_ru": "Другие зарегистрированные чары нативными правилами не запрещены; применимость предмета всё равно обязательна.",
+      "en_us": "No other registered enchantments are rejected by native compatibility rules; item eligibility still applies."
+    },
+    "level": {
+      "ru_ru": "Уровень",
+      "en_us": "Level"
+    },
+    "unavailable": {
+      "ru_ru": "Эти чары недоступны в текущем составе модов.",
+      "en_us": "This enchantment is unavailable in the current mod set."
+    },
+    "excavation_disabled": {
+      "ru_ru": "Раскопка сохранена, но выключена. Приседание + использование снова включает её.",
+      "en_us": "Excavation is stored but disabled. Sneak-use enables it again."
+    },
+    "capacity": {
+      "ru_ru": "Максимальный запас воздуха",
+      "en_us": "Maximum air supply"
+    },
+    "capacity_unavailable": {
+      "ru_ru": "Точное значение воздуха сейчас недоступно.",
+      "en_us": "The exact air value is currently unavailable."
+    },
+    "native_flags": {
+      "ru_ru": "Текущие флаги чар; не гарантия добычи:",
+      "en_us": "Current enchantment flags; not a loot guarantee:"
+    },
+    "treasure": {
+      "ru_ru": "Сокровищные",
+      "en_us": "Treasure"
+    },
+    "books": {
+      "ru_ru": "Разрешены на книгах",
+      "en_us": "Allowed on books"
+    },
+    "discovery": {
+      "ru_ru": "Обычный случайный выбор",
+      "en_us": "Ordinary random selection"
+    },
+    "trading": {
+      "ru_ru": "Разрешена торговля",
+      "en_us": "Trading allowed"
+    },
+    "yes": {
+      "ru_ru": "Да",
+      "en_us": "Yes"
+    },
+    "no": {
+      "ru_ru": "Нет",
+      "en_us": "No"
+    },
+    "target_table": {
+      "ru_ru": "Допуск предмета к столу",
+      "en_us": "Item table eligibility"
+    },
+    "target_anvil": {
+      "ru_ru": "Базовый допуск к наковальне",
+      "en_us": "Base anvil eligibility"
+    },
+    "target_conditions": {
+      "ru_ru": "Способ получения и конфликты проверяются отдельно.",
+      "en_us": "Acquisition and pair conflicts are checked separately."
+    },
+    "target_unavailable": {
+      "ru_ru": "Предмет сейчас недоступен.",
+      "en_us": "This item is currently unavailable."
+    }
+  },
+  "excluded_language_candidates": [
+    {
+      "id": "netherexp:bloodshed",
+      "reason": "BloodshedEnchantment.class exists, but JNEEnchantments does not register it."
+    },
+    {
+      "id": "kaleidoscope_nether:blessing",
+      "reason": "KNEnchantments registers only lava_walker; blessing is a stale language string."
+    }
+  ]
+}
