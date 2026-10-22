@@ -54,6 +54,12 @@
           "value": "same-directory temporary complete UTF-8 JSON followed by atomic os.replace"
         },
         "notes": "Repeated Windows EINVAL on direct opening of different existing generated JSON paths reproduced under Python3.14 and bundled3.12. Atomic publication avoids exposing partial snapshots; failures still propagate. The external filesystem condition remains unproven."
+      },
+      {
+        "property": "catalog.unresolved_evidence_order",
+        "operation": "replace",
+        "before": "Sorting unresolved artifact keys compares intentional None with str and aborts full generation.",
+        "after": "Stable explicit unknown-owner ordering plus source path; nullable evidence fields retained without fabrication."
       }
     ]
   },
@@ -96,6 +102,12 @@
       "source_files": [
         "Catalog/generator/build_atlas.py"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "fix_nullable_evidence_order",
+      "summary": "Full artifact refresh exposed Python comparison of source-only null artifact against installed artifact strings. Sort null owners explicitly and source paths deterministically; unresolved evidence remains null, no invented JAR."
     }
   ],
   "impacts": {

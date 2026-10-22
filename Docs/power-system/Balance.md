@@ -1,3 +1,80 @@
+# Combat balance
+
+Current source policy, 2026-10-22. Status: in testing; no gameplay acceptance is claimed.
+
+The user requested correction of damage provenance, repeated scaling, combat admission and effect lifetime before numerical balance. The implementation extends WorldBossTiers, Roles and Server at their existing owners. World Tier thresholds 0/3/10/18/32, the Progression Tier III cap, native rewards, durability, boss phases and save schemas remain unchanged.
+
+## Boss damage
+
+Supported native formulas compose `flat * profile * party * raid * 0.88 + nativePercent` in a hosted encounter. The tier-specific ATK already supplies Tier growth; it receives no second BossTierScaling boost. The profile multiplier applies in Raid too. Native percent operands and their native caps remain unchanged before target armor, Protection, resistance and absorption. Effective boss health retains EncounterScaler.healthAbsorption; incoming damage caps are a separate native owner.
+
+The generic hook consumes an invocation-specific marker once and skips its outgoing multipliers only for that adapted invocation. Native LivingEntity and Player hurt entry scopes distinguish nested hits, including earlier Forge attack callbacks. An entity/tick flag is not used. Fixed, configuration, projectile and periodic channels are not classified as ATK merely because their owner has that attribute; adapters and their exact pinned call sites define coverage. Unsupported channels retain their existing policy and remain explicit observation/research gaps.
+
+Cataclysm adapters are pinned to installed 3.31; Iron adapters to 1.20.1-3.15.6. Exact method lists are in the registered mixins and the Atlas change record, rather than a second maintained boss allowlist. Vanilla Mob.doHurtTarget is a separately proven flat ATK/enchantment channel.
+
+For the unchanged Ignis profile (Tier V ATK16.2, profile1.15), four players (party1.25), 20 max HP /20 armor /12 toughness /EPF16, the calculated physical accepted-hit losses are:
+
+| Attack | Ordinary hosted | Raid |
+| --- | ---: | ---: |
+| ATK +5% max HP |2.877909 HP|3.956633 HP|
+| 2 ATK +25% max HP |9.401363 HP|13.155571 HP|
+
+These are calculations, not measured combat. Guard, Resistance, absorption, racial modifiers, fire followups and accepted-hit frequency are excluded. The existing generator emits this reference directly from the current profile. It also calculates Tier I–V, solo/four-player, ordinary/Raid cases at16/20/30 max HP to expose low-HP racial risk. That matrix keeps the explicitly prepared20 armor/12 toughness/EPF16 anchor; it is not an early-game acquisition claim or a measured modded build.
+
+## Parameters and lifecycle
+
+| Owner / parameter | Before | Current source |
+| --- | --- | --- |
+| Raid damage default |2.5|1.25|
+| Raid health default |2.5|2.5|
+| Bloom/Sculk/Nether adverse climate |-8 max HP|-25% received healing under the same conditions|
+| Void passive | -6 HP | -4 HP |
+| Bloom fire vulnerability |2.0|1.25|
+| Boss Bloom root |whole native tick could pause for 0.0025 Minecraft days|0.000833 Minecraft days of control; native tick continues|
+| Shared boss root protection |none|0.006667 Minecraft days after release, shared by every caster|
+| Ordinary mob root |0.0025 Minecraft days|unchanged|
+| JEM lightning warning |0.000417 Minecraft days|0.001 Minecraft days|
+| Warning/hit radius |0.7 /1.75 blocks|one radius1.75 blocks|
+| Warning particles |10|24|
+| Life Chorus player heal |6 HP|6 HP before ordinary heal modifiers|
+| Life Chorus combat ally |full-health assignment|normal heal: min(missingHP,max(6,20% maxHP))|
+| Race guardian |invulnerable throughout lifetime|damageable, same encounter admission as owner|
+| Progression speed Tier II /III+ |+0.25 /+0.40|+5% /+10% native attribute base, before Epic Fight weighting/events|
+| Continuous Shredder Echo |one native entity per proc|merge proportional native contributions per attacker/target over0.000208 Minecraft days|
+| Incinerator percent on boss |per-zone2% accepted application|shared8% native max-HP-input budget per cast; flat6 and Brand retained|
+
+Climate penalties use one server LivingHealEvent path and remove only the obsolete race-owned HP UUIDs during normal refresh/login/death/dimension/race/environment reconciliation. Independent gear and positive Sculk modifiers remain owned by their original sources. Roots check encounter admission before damage and also require native damage acceptance before applying control; native invulnerable phases remain authoritative. Delayed racial hits retain their owner. Registered bosses keep effective-health normalization for poison rather than a later direct HP assignment.
+
+Weapon Progression uses the actual physical Player.attack scope, Epic Fight's recorded used item, or a native launch snapshot. Unknown/custom arrows are frozen without a bonus; loading or later hand changes cannot acquire it. Cursed Bow is an explicit pinned hybrid arrow contract. The primary continuous Meat Shredder action retains its lawful Progression multiplier/critical eligibility through its actual supplied ItemStack and native invocation token; its damage-type ID alone cannot borrow a held item. Spell/proc/periodic channels cannot borrow the current held weapon, including in PvP. Eligibility during ItemAttributeModifierEvent reads its original modifiers, avoiding recursive event dispatch.
+
+All four supported blood spells suppress early native healing and settle once from their own positive actual HP plus absorption loss, excluding nested child losses. Native shares remain Siphoning100%, Blood Needles25%, Blood Slash15%, Devour15%; normal healing events/modifiers still apply. Rejected, canceled, absorbed-only, mitigated and overkill cases use actual consumed resources; absorption is counted once.
+
+Echo merges the already formed native pre-mitigation contribution, so the native coefficient is not applied twice and no four-of-five contributions are discarded. It retains the first native echo's tracking, radius and detonation; later contributions can resolve up to0.000167 Minecraft days earlier than their separate echo. This bounded delay tradeoff reduces entity pressure without changing the base calculation or creating spell recursion. Moving-target/AoE acceptance still needs gameplay observation. Windows expire and clear on stop.
+
+## Admission and warning overlap
+
+HostedEncounterApi resolves native pets, Iron IMagicSummon, Recruits and the narrowly validated race guardian. Damage, support and control require the same encounter, living active owner and actual entity/owner full bounding boxes. Native AI can retain admitted allies. Server's existing EventSession supplies the corresponding event rule; player summons are never adopted into the hostile Blood Moon wave. Dead/eliminated owners and spectators remain ineligible. PvP/friendly-fire denial remains in damage handlers, allowing legitimate teammate healing.
+
+JEM lightning waits through confirmed Cataclysm Ignis forced riding or the native stun effect. A capture starting during a warning postpones impact and leaves a complete new warning interval after release.
+
+Blood Moon's individual post-defense caps remain30% max HP for wave3 and49% for wave5 (35%*1.40). They are not a series budget. Its authored three-step combo has a0.0025-Minecraft-day recovery gap and a0.001333-Minecraft-day warning before each next impact; their sum0.003833 exceeds Sculk Burial's0.003333 movement debuff. Thus the three scheduled attacks are separately telegraphed opportunities, not three proven unavoidable hits. Native followups, simultaneous hazards and actual avoidance remain a gameplay observation gap; no unsupported blanket series nerf was introduced.
+
+## Applying to existing worlds
+
+The Java Raid default does not overwrite a saved world SERVER config. On an intentionally stopped host, review `<world>/serverconfig/jem_world_boss_tiers-server.toml` and set raidDamageMultiplier1.25 if adopting the new default. Keep custom administrator values and profileOverrides intact; per-profile overrides still take precedence. Existing prepared/active encounters retain their frozen multipliers: finish/cancel them before starting a fresh encounter under the reviewed config. No automatic world rewrite is performed. The existing local world currently saves Raid health2.0 and damage2.0 with empty profileOverrides; both administrator overrides are preserved. The reference above deliberately uses the requested new damage1.25.
+
+Roles skills protocol is9 because the status payload gained the authoritative healing-penalty field. Install the exact matching new Roles, WorldBossTiers and Server artifacts together where those modules are installed. No new scheduled event activation is implied. The exact task-owned production artifacts are synchronized offline to Client/ManagedPack and the stopped ordinary local Server. Pack source is staged, but native preview/publication/application is pending because this request forbids client/server launches. Existing release baseline/stable profiles and MineRENT remain unchanged.
+
+## Evidence and deliberately unchanged proposals
+
+Installed source/bytecode establishes composition and reachable handlers; it does not measure Epic Fight DPS, accepted projectile counts or full-build power. No numerical nerf was made from Laser Gatling49*7, Withered Scythe's hypothetical41, Mossy Hammer's unproven dual invocation, Soul Rage registration alone, old Ban Sword values or max_strikes. Native late-reward unbreakability remains unchanged. Armor, Curios, consumables and acquisition evidence keep their native owners; unknown stacking/availability is not promoted to a balance fact.
+
+Production packaging, offline Atlas generation and manual source review are separate from runtime acceptance. Automated tests/fixtures, linters, gameplay, client/server launches and live deployment are excluded by the user's request. Injection application, reload/death/dimension transitions, native AI against summons, full accepted damage sequences and realistic solo/party builds still require authorized gameplay observation.
+
+---
+
+## Historical balance evidence (superseded where the current policy above differs)
+
 # Power system — applied corrections, 2026-10-20
 
 The Power System Revamp request authorizes source-verified implementation. The three October15 Drive documents remain proposals; their numerical pilots were not adopted as approved values. Baseline inspected: fetched GitHub `main` at `ff69ac30`. This is an implemented corrective batch, not a claim that every catalog candidate has been tuned or player-tested.
@@ -26,7 +103,7 @@ Removing Frost's blanket extra factor is a Codex balance choice under this overh
 
 ## Verification and remaining work
 
-`python tools/check_power_system.py` runs offline owner arithmetic/lifecycle and resource contracts: guard transactions, Siphoning cases, actual Frost injection handlers, capability declarations and extracted actual race methods. Hosted death source safety contracts are not simulated combat.
+The historical automated checker was retired under the no-tests project contract. It is not an available verification or acceptance path.
 
 The opt-in `/jemcombat` observer is documented in `Docs/SERVER_COMMANDS.md`. It separates native hurt calls, event-stage values and actual net HP/absorption loss; deduplicates nested hits; and suppresses rates from invalid callback captures. It cannot invent native cooldown, Curios or spell-stack evidence.
 

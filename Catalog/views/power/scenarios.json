@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "combat_scenarios",
-  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -154,7 +154,7 @@
       "exact_ids": [
         "minecraft:wither"
       ],
-      "expression": "native attack * boss tier * optional profile factor * party damage * raid x2.5 * hosted owned-attack x0.88; health uses corresponding health factors",
+      "expression": "supported native ATK flat * profile * party damage * raid damage default1.25 *0.88 + native percent; fixed unsupported channels retain tier boost; raid health default2.5",
       "result_status": "partial",
       "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"
     }

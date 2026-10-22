@@ -307,6 +307,8 @@ public final class RaceExperienceScreen extends Screen {
         }
         lines.add(Line.gap());
         lines.add(new Line(Component.translatable("jem.roles.weaknesses"), 0xE3A093));
+        if(status.selected() && status.race()==race && status.healingPenalty())
+            lines.add(new Line(text("Сейчас: получаемое лечение −25% (неблагоприятная среда)", "Active: incoming healing −25% (adverse environment)"),0xE3A093));
         for (int i = 1; i <= 2; i++) {
             lines.add(new Line(Component.literal("− ").append(tr("debuff." + i)), 0xE5C0B7));
             lines.add(new Line(tr("debuff.detail." + i), 0xB2B2B2));
@@ -384,8 +386,8 @@ public final class RaceExperienceScreen extends Screen {
         String ru="", en="";
         if(previewSlot==0) switch(race) {
             case 0 -> {
-                ru="Радиус "+RacePowerStages.chorusRadius(previewTier)+" блоков; игрокам +6 HP; мирные животные и ездовой питомец полностью исцеляются. Щиты: −25% входящего урона на "+days(100L)+" Minecraft-дн.";
-                en="Radius "+RacePowerStages.chorusRadius(previewTier)+" blocks; players +6 HP; peaceful animals and mount fully heal. Wards: −25% incoming damage for "+days(100L)+" Minecraft days.";
+                ru="Радиус "+RacePowerStages.chorusRadius(previewTier)+" блоков; игрокам +6 HP; боевым союзникам до max(6, 20% max HP), не выше недостающего здоровья. Щиты: −25% входящего урона на "+days(100L)+" Minecraft-дн.";
+                en="Radius "+RacePowerStages.chorusRadius(previewTier)+" blocks; players +6 HP; combat allies heal max(6, 20% max HP), capped by missing HP. Wards: −25% incoming damage for "+days(100L)+" Minecraft days.";
                 if(previewTier>=2){ru+=" Очищение отрицательных эффектов.";en+=" Cleanses harmful effects.";}
                 if(previewTier>=3){ru+=" При полном здоровье — поглощение.";en+=" At full health, grants absorption.";}
             }
@@ -438,7 +440,7 @@ public final class RaceExperienceScreen extends Screen {
     private int tier() { return RacePowerStages.clamp(status.tiers()[race]); }
     private int progress() { return Math.max(0, status.progress()[race]); }
     private Component tr(String suffix) {
-        if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, полностью исцеляет мирных животных и текущего ездового питомца. Четыре щита уменьшают входящий урон на 25% на "+days(100L)+" Minecraft-дн. Перезарядка: "+days(500L)+" Minecraft-дн.","A golden front restores 3 hearts to players and fully heals peaceful animals and your living mount. Four wards reduce incoming damage by 25% for "+days(100L)+" Minecraft days. Cooldown: "+days(500L)+" Minecraft days.");
+        if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, лечит боевых союзников на max(6, 20% max HP), не выше недостающего здоровья; мирных животных вне боя исцеляет полностью. Четыре щита уменьшают входящий урон на 25% на "+days(100L)+" Minecraft-дн. Перезарядка: "+days(500L)+" Minecraft-дн.","A golden front restores 3 hearts to players and heals combat allies for max(6, 20% max HP), capped by missing health; peaceful animals outside combat heal fully. Four wards reduce incoming damage by 25% for "+days(100L)+" Minecraft days. Cooldown: "+days(500L)+" Minecraft days.");
         if(race==0&&suffix.equals("tier.short.1"))return text("I · радиус Хора 16 блоков", "I · Chorus radius 16 blocks");
         if(race==0&&suffix.equals("tier.short.2"))return text("II · очищение", "II · cleanse");
         if(race==0&&suffix.equals("tier.short.3"))return text("III · поглощение при полном здоровье", "III · absorption at full health");
@@ -462,8 +464,8 @@ public final class RaceExperienceScreen extends Screen {
         if (race == 4 && suffix.equals("buff.detail.3")) return text("B выполняет три последовательных огненных рассечения с рывками вперёд.",
                 "B performs three successive fiery slashes with forward pulls.");
         if (race == 2) {
-            if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни удерживают врагов рядом на месте "+days(BloomMechanics.GRIP_TICKS)+" Minecraft-дн. Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. В базе цель может атаковать; I блокирует действия, II добавляет сжатие, III — яд после освобождения.",
-                    "Roots hold nearby enemies in place for "+days(BloomMechanics.GRIP_TICKS)+" Minecraft days. Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Base targets can attack; I locks actions, II adds constriction, III adds poison after release.");
+            if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни удерживают врагов рядом на месте "+days(BloomMechanics.GRIP_TICKS)+" Minecraft-дн. Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Босса удерживает "+days(20L)+" Minecraft-дн., затем защищает от повторных корней "+days(160L)+" Minecraft-дн. В базе цель может атаковать; I блокирует действия, II добавляет сжатие, III — яд после освобождения.",
+                    "Roots hold nearby enemies in place for "+days(BloomMechanics.GRIP_TICKS)+" Minecraft days. Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Bosses are held for "+days(20L)+" Minecraft days, followed by "+days(160L)+" Minecraft days of shared root protection. Base targets can attack; I locks actions, II adds constriction, III adds poison after release.");
             if (suffix.equals("tier.short.1")) return text("I · доступна блокировка действий", "I · action lock available");
             if (suffix.equals("tier.short.2")) return text("II · сжатие "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/с", "II · constriction "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/s");
             if (suffix.equals("tier.short.3")) return text("III · яд после освобождения", "III · poison after release");

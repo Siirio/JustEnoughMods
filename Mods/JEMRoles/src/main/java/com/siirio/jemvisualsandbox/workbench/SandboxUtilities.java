@@ -163,7 +163,7 @@ public final class SandboxUtilities {
             if(placed)break;
         }
         if(!placed)return;
-        golem.setPlayerCreated(true);golem.setInvulnerable(true);golem.setCustomName(Component.translatable("jem_visual_sandbox.entity.ancestral_guardian"));
+        golem.setPlayerCreated(true);golem.setInvulnerable(false);golem.setCustomName(Component.translatable("jem_visual_sandbox.entity.ancestral_guardian"));
         golem.getPersistentData().putLong("JemSandboxGuardianExpiry",p.server.overworld().getGameTime()+RacePowerStages.guardianTicks(RaceExperience.tier(p)));
         golem.getPersistentData().putUUID("JemSandboxGuardianOwner",p.getUUID());
         if(!p.level().addFreshEntity(golem))return;
@@ -177,9 +177,23 @@ public final class SandboxUtilities {
         SandboxNetwork.visual(p,0,p.position().add(direction.scale(1.3)),yaw+180);
         SandboxNetwork.effect(p,27,0,golem.position(),0,golem.getId());if(threat!=null)golem.setTarget(threat);
     }
+    /** Only the concrete race guardian contract exposes ownership to optional combat adapters. */
+    public static ServerPlayer guardianOwner(net.minecraft.world.entity.Entity entity) {
+        if (!(entity instanceof IronGolem golem) || entity.getServer() == null) return null;
+        var data = golem.getPersistentData();
+        if (!golem.isPlayerCreated() || !data.contains("JemSandboxGuardianExpiry") || !data.hasUUID("JemSandboxGuardianOwner")
+                || data.getLong("JemSandboxGuardianExpiry") <= entity.getServer().overworld().getGameTime()) return null;
+        ServerPlayer owner=entity.getServer().getPlayerList().getPlayer(data.getUUID("JemSandboxGuardianOwner"));
+        if(owner==null || !owner.getPersistentData().hasUUID("JemSandboxGuardian")
+                || !owner.getPersistentData().getUUID("JemSandboxGuardian").equals(golem.getUUID()))return null;
+        return owner;
+    }
     @SubscribeEvent public static void golem(LivingEvent.LivingTickEvent e) {
         if(!(e.getEntity() instanceof IronGolem g) || g.level().isClientSide || g.getServer()==null || !RaceExperience.serverActive(g.getServer()) || !g.getPersistentData().contains("JemSandboxGuardianExpiry"))return;
         if(g.getServer().overworld().getGameTime()>=g.getPersistentData().getLong("JemSandboxGuardianExpiry") || g.getServer().getPlayerList().getPlayer(g.getPersistentData().getUUID("JemSandboxGuardianOwner"))==null) { g.discard();return; }
+        g.setInvulnerable(false); // Migrate guardians saved by the former lifetime immunity policy.
+        ServerPlayer guardianOwner=guardianOwner(g);
+        if(guardianOwner==null || !guardianOwner.isAlive() || guardianOwner.isSpectator() || guardianOwner.level()!=g.level()) { g.discard();return; }
         if(g.tickCount%20==0) {
             ServerPlayer owner=g.getServer().getPlayerList().getPlayer(g.getPersistentData().getUUID("JemSandboxGuardianOwner"));
             g.setTarget(guardianThreat(owner,g));
@@ -188,7 +202,7 @@ public final class SandboxUtilities {
     private static boolean validGuardianTarget(ServerPlayer owner,IronGolem golem,LivingEntity target) {
         if(owner==null||target==null||target==owner||!target.isAlive()||target.isSpectator()
                 ||target.level()!=golem.level()||target.isInvulnerable()||owner.isAlliedTo(target)
-                ||!golem.canAttack(target)||golem.distanceToSqr(target)>32*32)return false;
+                ||!golem.canAttack(target)||!ProductionRaceBridge.canInteract(golem,target)||golem.distanceToSqr(target)>32*32)return false;
         return !(target instanceof net.minecraft.world.entity.player.Player player)
                 ||!player.isCreative()&&owner.server.isPvpAllowed()&&owner.canHarmPlayer(player);
     }

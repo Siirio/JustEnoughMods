@@ -587,7 +587,11 @@ class Atlas:
             {"type": "entity_semantics", "priority": "high", "reason": "Living status, AI roles, attributes, tame/ride contracts and boss relationships are not inferred from display names."},
             {"type": "villager_resourcepacks", "priority": "medium", "reason": "Canonical Client/ManagedPack has no resourcepacks directory entries to audit; private active-profile packs are diagnostic-only and were not copied."},
         ])
-        write_json(CATALOG / "unresolved.json", {"schema_version": SCHEMA, "snapshot_sha": self.head, "entries": sorted(self.unresolved, key=lambda row: (row.get("priority", ""), row.get("type", ""), row.get("artifact", "")))})
+        # Source-only registrations intentionally retain a null artifact owner.
+        # Order unknown evidence explicitly without inventing an installed JAR.
+        unresolved_order = lambda row: (row.get("priority", ""), row.get("type", ""),
+                                        row.get("artifact") is None, row.get("artifact") or "", row.get("source", ""))
+        write_json(CATALOG / "unresolved.json", {"schema_version": SCHEMA, "snapshot_sha": self.head, "entries": sorted(self.unresolved, key=unresolved_order)})
         trade_rows = [row for groups in views["trade_policies"].values() for row in groups]
         self._emit_economy_docs(trade_rows, generated)
         write_json(CATALOG / "reports" / "trade-policy-audit.json", {"schema_version": SCHEMA, "snapshot_sha": self.head, "registered_static_items": len(self.registries["items"]), "reviewed": sum(row["review_status"] == "reviewed" for row in trade_rows), "buy_and_sell": sum(row["trade_outcome"] == "BUY_AND_SELL" for row in trade_rows), "buy_only": sum(row["trade_outcome"] == "BUY_ONLY" for row in trade_rows), "sell_only": sum(row["trade_outcome"] == "SELL_ONLY" for row in trade_rows), "none": sum(row["trade_outcome"] == "NONE" for row in trade_rows), "unresolved": sum(row["review_status"] == "unresolved" for row in trade_rows), "denominator_note": "Observed canonical registry IDs from static artifacts; not JEI variants and not a runtime registry dump."})

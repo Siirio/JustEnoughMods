@@ -8,7 +8,7 @@ Ordinary solo/party Raid reuses the canonical hosted encounter on integrated and
 
 In testing; runtime acceptance, artifact delivery and MineRENT deployment pending. The user's barrier removal applies to ordinary bosses, Campaign and Raid only. Blood Moon and Resource Rush retain their contracts. Participant departure is allowed physically; an empty arena closes through the canonical hosted grace lifecycle. Damage/reward membership and immediate elimination on actual death remain enforced.
 
-`HostedRaidScaling` owns the preparation-time Raid boost and its persisted health/damage modifiers. It applies once before Start. Canonical Start freezes participant scaling without multiplying the prepared melee boost a second time; all damage routes use the hosted correction. Cancel/retry/reload/replacement restore the same preparation/lobby owner rather than stacking modifiers. These are source claims, not a runtime scaling measurement.
+`HostedRaidScaling` owns the preparation-time Raid boost and its persisted health/damage modifiers. It applies once before Start. Canonical Start freezes participant scaling without multiplying the prepared melee boost a second time; supported native formulas apply the hosted correction only to their flat component before native percent addition; generic fixed routes keep their existing separate owner. Cancel/retry/reload/replacement restore the same preparation/lobby owner rather than stacking modifiers. These are source claims, not a runtime scaling measurement.
 
 An attempted hit on a dormant registered boss opens the existing encounter GUI and does not damage it or start combat. Reload restores noAI/invulnerability/presentation hold until Start. Official server boss/event markers can invoke validated native Xaero travel; personal waypoints are unchanged. See [Boss Fight](BOSS_FIGHT.md) for the common source contract.
 
@@ -20,7 +20,7 @@ Boss Raid reuses the canonical registered arena, party, arrival/return flow and 
 
 Фактическая смерть остаётся elimination текущей Raid attempt, но inventory, armor, offhand и Curios участника сохраняются на respawn без grave, пока смерть произошла внутри активной структурной арены. Вне активного Raid обычная death/grave policy не меняется.
 
-Общие периодические эффекты hosted boss не дублируются raid-кодом: Magnetron, Scylla и Cloud Golem сохраняют «Любимчика Зевса» с семисекундным интервалом, полусекундным телеграфом зафиксированной позиции и возможностью увернуться до удара молнии.
+Raid reuses the ordinary shared Zeus effect: interval0.005833 Minecraft days, warning0.001 Minecraft days, shared warning/hit radius1.75 blocks and24 perimeter particles. Confirmed native forced capture defers the additional JEM lightning; Raid does not create a duplicate periodic hazard.
 
 Команда старта принимает любого зарегистрированного и уже побеждённого босса, который находится в разблокированной собственной структурной арене в том же измерении. Отдельного allowlist типов нет: raid eligibility и реальные границы рейда выводятся из canonical BossProfile и зарегистрированной структуры.
 
@@ -28,7 +28,7 @@ Individual reward содержит ровно два различных weighted
 
 Фактическое участие записывается persistent по player UUID и canonical arena ID при старте боя. Повторный Raid этой арены запрещён через любую другую Party; outsider не может наносить Raid boss damage или получить награду. После victory, defeat, forfeit или termination текущий Raid boss удаляется, online-участники немедленно перемещаются на ближайшую проверенную позицию за внешней плоскостью арены, offline-участники сохраняют обязательный выход до следующего входа, и на verified native anchor идемпотентно восстанавливается ровно один свежий normal boss без Raid scale, aggro и ownership. Если локальный safe exit временно недоступен, используется сохранённая безопасная pre-Raid return position. Pending replacement сохраняется через restart и завершается при следующей загрузке структуры.
 
-Accepted participants use shared safe arrival and encounter authorization. There is no closed Raid wall: ordinary entry/exit and teleports remain traversable, while damage, participation and reward eligibility remain authoritative. The hosted correction applies once to direct/projectile/effect/hardcoded boss damage after participant scaling.
+Accepted participants use shared safe arrival and encounter authorization. There is no closed Raid wall: ordinary entry/exit and teleports remain traversable, while damage, participation and reward eligibility remain authoritative. Supported native component adapters apply the hosted correction once to flat damage, preserving native percent operands/caps. Raid damage default is1.25 and health default remains2.5; saved world/admin/profile overrides and prepared encounter snapshots remain authoritative. See [combat balance](../power-system/Balance.md).
 
 Отмена host использует token текущей raid attempt и тот же terminal lifecycle, что defeat: stale chat action side-effect-free, а успешный запрос атомарно закрывает encounter, снимает encounter/participant state, выполняет safe exit и оставляет canonical replacement flow единственным владельцем восстановления normal boss.
 

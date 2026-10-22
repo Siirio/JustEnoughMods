@@ -1,13 +1,269 @@
 {
   "schema_version": 4,
   "view": "shared_modifiers",
-  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
     "deterministic": true
   },
   "records": [
+    {
+      "id": "combat.provenance-and-balance-20261022",
+      "status": "conditional",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        },
+        {
+          "type": "registry",
+          "registry": "items"
+        },
+        {
+          "type": "id",
+          "registry": "enchantments",
+          "value": "jem_world_boss_tiers:progression"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "combat.boss_native_component_policy",
+          "operation": "replace",
+          "before": "Tier boost multiplies tier ATK and native maxHP together; Raid skips profile",
+          "after": "ATK flat: profile*party*raid*.88; fixed flat additionally retains tier boost; native maxHP operand/cap unchanged; exact scoped call skips generic once"
+        },
+        {
+          "property": "combat.raid_default_damage",
+          "operation": "set",
+          "before": 2.5,
+          "after": 1.25
+        },
+        {
+          "property": "combat.progression_provenance",
+          "operation": "replace",
+          "before": "Held eligible stack plus directEntity==player; arrow can acquire enchantment at impact",
+          "after": "Physical Player.attack invocation or EpicFight usedItem only; vanilla/Cursed Bow native launch ItemStack+Tier snapshot including false; no spell/proc/periodic leakage; TierIII cap; native continuous MeatShredder remains a lawful primary weapon action through the exact supplied ItemStack+invocation-token contract, not a damage-type exception alone"
+        },
+        {
+          "property": "combat.progression_eligibility_attributes",
+          "operation": "replace",
+          "before": "Eligibility recursively queries stack attributes from ItemAttributeModifierEvent",
+          "after": "Event originalModifiers are the native eligibility evidence; other callers retain native main-hand contract"
+        },
+        {
+          "property": "combat.progression_attack_speed",
+          "operation": "replace",
+          "before": {
+            "II": 0.25,
+            "III_V": 0.4,
+            "operation": "ADDITION"
+          },
+          "after": {
+            "II": 0.05,
+            "III_V": 0.1,
+            "operation": "MULTIPLY_BASE",
+            "native_epicfight_path": "PlayerPatch.getAttackSpeed -> getModifiedAttackSpeed -> AttackAnimation.getPlaySpeed",
+            "measured_DPS": false
+          }
+        },
+        {
+          "property": "combat.ally_admission",
+          "operation": "replace",
+          "before": "Attacker ownership only; recipient and AI player-only; player summons can be adopted by BloodMoon",
+          "after": "One canonical hosted/event context for both actors, actual entity and owner full bbox, active living owner; native pets/IMagicSummon/Recruits/exact guardian contract; same-combat support allowed, damage friendly-fire denied; native event AI and ejection agree"
+        },
+        {
+          "property": "combat.progression_npc_bonus_expiry",
+          "operation": "replace",
+          "before": "PlayerTickEvent only",
+          "after": "LivingTickEvent for every LivingEntity, death/remove cleanup; NPC actual attack cadence unproved"
+        },
+        {
+          "property": "combat.race_climate_penalties",
+          "operation": "replace",
+          "before": {
+            "Bloom_barren": -8,
+            "Sculk_daylight": -8,
+            "Nether_cold": -8,
+            "unit": "maxHP"
+          },
+          "after": {
+            "healing_multiplier": 0.75,
+            "same_conditions": true,
+            "path": "one server LivingHealEvent",
+            "old_HP_UUIDs": "remove only owned modifiers"
+          }
+        },
+        {
+          "property": "combat.race_void_health",
+          "operation": "set",
+          "before": -6,
+          "after": -4
+        },
+        {
+          "property": "combat.race_bloom_fire",
+          "operation": "set",
+          "before": 2.0,
+          "after": 1.25
+        },
+        {
+          "property": "combat.race_roots",
+          "operation": "replace",
+          "before": {
+            "duration_ticks": 60,
+            "boss_tick": "paused",
+            "shared_protection": null
+          },
+          "after": {
+            "normal_ticks": 60,
+            "boss_ticks": 20,
+            "boss_repeat_protection_after_release_ticks": 160,
+            "admission": "before damage plus native acceptance, each delayed pulse owner-attributed indirectMagic",
+            "boss_native_tick": "continues",
+            "boss_poison": "native accepted effective-health path, no direct HP overwrite"
+          }
+        },
+        {
+          "property": "combat.race_guardian",
+          "operation": "replace",
+          "before": "Lifetime invulnerability",
+          "after": "Damageable including saved guardian reconciliation; narrow owner reverse binding; native lifetime/cooldown unchanged"
+        },
+        {
+          "property": "combat.life_chorus",
+          "operation": "replace",
+          "before": "Player6HP; other friendly namespace full maxHealth assignment",
+          "after": {
+            "player_nominal": 6,
+            "combat_ally": "min(missingHP,max(6,.20*maxHP)) via heal",
+            "support": "same battle/owner/friendliness before healing and cleansing",
+            "peaceful_unowned_animal": "normal heal to full retained"
+          }
+        },
+        {
+          "property": "combat.lightning_warning",
+          "operation": "replace",
+          "before": {
+            "delay_ticks": 10,
+            "particles": 10,
+            "visual_radius": 0.7,
+            "hit_radius": 1.75
+          },
+          "after": {
+            "delay_ticks": 24,
+            "particles": 24,
+            "shared_radius": 1.75,
+            "deferral": "Cataclysm3.31 native Ignis forced passenger or stun; capture during warning renews full interval after release"
+          }
+        },
+        {
+          "property": "combat.shredder_echo",
+          "operation": "replace",
+          "before": "One native echo entity per continuous shredder proc",
+          "after": {
+            "window_ticks": 5,
+            "key": "native attacker UUID + target UUID + ServerLevel",
+            "contribution": "sum native premitigation already-coefficient-applied echo damage into first echo",
+            "native_radius": 2,
+            "native_tracking_and_detonation_ticks": 20,
+            "timing_tradeoff": "later contributions up to4ticks earlier; moving-target/AoE runtime unobserved",
+            "recursion": "native spell exclusion unchanged",
+            "cleanup": "expired windows and server stop"
+          }
+        },
+        {
+          "property": "combat.incinerator_boss_percent_budget",
+          "operation": "replace",
+          "before": "Independent10zones may accept more than4 native 6+2%HP hits",
+          "after": {
+            "percent_budget": 0.08,
+            "scope": "one UUID shared by all zones of a cast, per boss target",
+            "flat": 6,
+            "brand": "native unchanged",
+            "rejection": "refund unless hurt accepted and actual positive HP/abs loss",
+            "nested_limit": "unrelated nested loss can conservatively spend reservation, never overflow",
+            "expiry": "zone and budget200worldticks; old unloaded zone cannot renew percentage budget",
+            "effective_health": "native displayed maxHP operand; existing final healthAbsorption retained"
+          }
+        },
+        {
+          "property": "network.roles_skills_payload",
+          "operation": "replace",
+          "before": {
+            "protocol": 8
+          },
+          "after": {
+            "protocol": 9,
+            "new_field": "server authoritative healingPenalty",
+            "matching_modules": "Roles, WorldBossTiers, Server exact fresh artifacts required"
+          }
+        }
+      ],
+      "owner": "JEMWorldBossTiers / JEMRoles / JEMServer at existing mechanic owners",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoon.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventSession.java",
+        "Mods/JEMWorldBossTiers/build.gradle",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/PowerMixins.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentScaler.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionArmor.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ProgressionWeapons.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/cataclysm/IncineratorBudget.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/cataclysm/NativeBossDamage.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/epicfight/ProgressionMelee.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/ContinuousEchoes.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/enchantment/ProgressionEnchantment.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPeriodicEffects.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedAllies.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmCursedBowMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmDamageScopeMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmDeathLaserDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmFlameStrikeMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmGuardianDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmHarbingerDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmIgnisAbyssDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmIgnisDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmIgnisFireballDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmIncineratorMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmLeviathanDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmMaledictusDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmMonstrosityDamageMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmPlayerDamageScopeMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsContinuousEchoMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/NativeMobMeleeMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionBowMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionCrossbowMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionGuardMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionMeleeMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/en_us.json",
+        "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/ru_ru.json",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json",
+        "Docs/events/BOSS_FIGHT.md",
+        "Docs/events/BOSS_RAID.md",
+        "Docs/events/BLOOD_MOON.md",
+        "Docs/power-system/Balance.md",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/CataclysmShredderMixin.java"
+      ]
+    },
     {
       "id": "economy.reviewed-item-policies",
       "status": "active",
@@ -481,14 +737,15 @@
           "property": "combat.siphoning.lifesteal",
           "operation": "replace",
           "before": "Native postHitEffects heals caster by LivingHurtEvent.amount * getLifestealPercent before final armor, Protection, absorption and cancellation.",
-          "after": "Suppress only Siphoning early heal; after one native hurt call, if accepted heal native caster by max(0, targetBeforeHealthAndAbsorption - targetAfterHealthAndAbsorption) * native getLifestealPercent through native LivingEntity.heal.",
-          "notes": "No damage, resistance, spell power, mana, cooldown, native heal modifier or persistent spell state changed. Default native share stays1.0."
+          "after": "Suppress early native heal for four pinned spells; after actuallyHurt settle native caster once from positive own actual HP loss plus absorption loss, subtracting nested child losses. Native shares1.0/.25/.15/.15 preserved; normal heal event modifiers apply.",
+          "notes": "No damage replay; canceled/zero loss heals0, overkill clamped, absorption once. Pinned Iron3.15.6 and optional absence remain safe."
         }
       ],
       "owner": "JEMWorldBossTiers optional native Iron integration",
       "source_files": [
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java"
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionGuardMixin.java"
       ]
     },
     {
@@ -1277,7 +1534,7 @@
     {
       "id": "jem.hosted-boss",
       "owner": "JEMWorldBossTiers",
-      "expression": "participant health 1/1.45/1.8/2.1/+0.2; damage 1/1.10/1.18/1.25/+0.05 capped1.45; raid defaults x2.5; owned attacks x0.88",
+      "expression": "participant health 1/1.45/1.8/2.1/+0.2; damage 1/1.10/1.18/1.25/+0.05 capped1.45; raid health x2.5, damage x1.25; supported native flat components x0.88, native percent unchanged; unsupported fixed channels keep tier boost",
       "source_files": [
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java"
@@ -1286,7 +1543,7 @@
     {
       "id": "jem.race-defense",
       "owner": "JEMRaces",
-      "expression": "Selected race 2 fire damage x2; race 3 fire damage x1.25; race 4 cancels fire attacks and damage, while the race runtime is enabled",
+      "expression": "Selected race 2 fire damage x1.25; race 3 fire damage x1.25; race 4 cancels fire attacks and damage, while the race runtime is enabled",
       "source_files": [
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java"
       ]

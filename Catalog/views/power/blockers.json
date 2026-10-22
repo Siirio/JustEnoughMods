@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_named_research_blockers",
-  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -26110,7 +26110,7 @@
         "net.miauczel.legendary_monsters.item.custom.MossyHammerItem"
       ],
       "candidate_methods": [],
-      "why_unresolved": "Both item method and Forge event subscribe to related right-click actions; a runtime event trace is required to prove whether one click can execute both 10-damage paths.",
+      "why_unresolved": "The second method formula exists; its active registration/reachable invocation must be established before counting it as an attack. A simultaneous accepted double hit is not proved.",
       "runtime_observation_required": true,
       "diagnostic": "Log one server-authoritative hurt event with weapon, target armor/effects, raw amount, accepted amount, projectile/entity UUID and game tick; no production combat mutation."
     },

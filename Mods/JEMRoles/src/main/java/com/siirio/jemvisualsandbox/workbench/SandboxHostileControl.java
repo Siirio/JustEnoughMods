@@ -20,26 +20,42 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid="jem_roles")
 public final class SandboxHostileControl {
     private static final String UNTIL="JemSandboxRootUntil";
-    private record Grip(java.util.UUID owner,java.util.UUID target,net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,long start,int stage) {}
+    private record Grip(java.util.UUID owner,java.util.UUID target,net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level> dimension,long start,int stage,int duration) {}
     private static final java.util.Map<java.util.UUID,Grip> GRIPS=new java.util.HashMap<>();
     private record PoisonHit(LivingEntity target,net.minecraft.world.damagesource.DamageSource source) {}
     private static final ThreadLocal<PoisonHit> POISON_HIT=new ThreadLocal<>();
     private SandboxHostileControl() {}
-    public static void bind(ServerPlayer owner, LivingEntity target) {
+    private static boolean admitted(ServerPlayer owner, LivingEntity target) {
+        return owner.isAlive() && !owner.isSpectator() && owner.level()==target.level()
+                && ProductionRaceBridge.canInteract(owner,target)
+                && !target.isInvulnerableTo(owner.damageSources().indirectMagic(owner,owner));
+    }
+    private static void bind(ServerPlayer owner, LivingEntity target) {
+        if(!admitted(owner,target))return;
+        long now=owner.server.overworld().getGameTime();
+        boolean boss=ProductionRaceBridge.registeredBoss(target);
+        if(boss && target.getPersistentData().getLong("JemSandboxRootProtectedUntil")>now)return;
+        int duration=boss?20:BloomMechanics.GRIP_TICKS;
         int upgrade=MainSkillProgression.level(owner,2);
         SandboxNetwork.effect(owner,upgrade==0?34:10,2,target.position(),0,target.getId());
         if(!(target instanceof Mob mob) || !(mob instanceof Enemy || mob.isAggressive() || mob.getTarget() instanceof net.minecraft.world.entity.player.Player))return;
-        var tag=mob.getPersistentData();tag.putUUID("JemSandboxRootOwner",owner.getUUID());tag.putLong(UNTIL,owner.server.overworld().getGameTime()+BloomMechanics.GRIP_TICKS);
+        var tag=mob.getPersistentData();tag.putUUID("JemSandboxRootOwner",owner.getUUID());tag.putLong(UNTIL,now+duration);
         tag.putDouble("JemRootX",mob.getX());tag.putDouble("JemRootY",mob.getY());tag.putDouble("JemRootZ",mob.getZ());
         mob.getNavigation().stop();if(upgrade>=1)mob.stopUsingItem();mob.setDeltaMovement(Vec3.ZERO);
-        GRIPS.put(mob.getUUID(),new Grip(owner.getUUID(),mob.getUUID(),owner.serverLevel().dimension(),owner.server.overworld().getGameTime(),upgrade));
+        if(boss)tag.putLong("JemSandboxRootProtectedUntil",now+duration+160);
+        GRIPS.put(mob.getUUID(),new Grip(owner.getUUID(),mob.getUUID(),owner.serverLevel().dimension(),now,upgrade,duration));
     }
     public static boolean cast(ServerPlayer owner) {
         if(!RaceExperience.canAct(owner))return false;
         int count=0;
         for(Mob mob:owner.serverLevel().getEntitiesOfClass(Mob.class,owner.getBoundingBox().inflate(10),m->m.isAlive() && (m instanceof Enemy || m.getTarget()==owner))) {
+            if(!admitted(owner,mob))continue;
+            if(ProductionRaceBridge.registeredBoss(mob) && mob.getPersistentData().getLong("JemSandboxRootProtectedUntil")>owner.server.overworld().getGameTime())continue;
+            // Encounter admission precedes damage; native hurt rejection additionally
+            // protects phase-specific immunity implemented inside a boss override.
+            if(!mob.hurt(owner.damageSources().indirectMagic(owner,owner),BloomMechanics.INITIAL_DAMAGE))continue;
             count++;
-            mob.hurt(owner.damageSources().playerAttack(owner),BloomMechanics.INITIAL_DAMAGE);if(mob.isAlive())bind(owner,mob);
+            if(mob.isAlive())bind(owner,mob);
         }
         if(count==0)owner.displayClientMessage(net.minecraft.network.chat.Component.translatable("jem_visual_sandbox.action.target_required"),true);
         return count>0;
@@ -50,13 +66,14 @@ public final class SandboxHostileControl {
         GRIPS.entrySet().removeIf(entry->{
             Grip grip=entry.getValue();var level=e.getServer().getLevel(grip.dimension);ServerPlayer owner=e.getServer().getPlayerList().getPlayer(grip.owner);
             var target=level==null?null:level.getEntity(grip.target);long age=now-grip.start;
-            if(owner==null || !owner.isAlive() || !(target instanceof LivingEntity mob) || !mob.isAlive() || age<0)return true;
-            if(age<BloomMechanics.GRIP_TICKS) {
-                if(grip.stage>=2 && age>0 && age%20==0)mob.hurt(owner.damageSources().magic(),BloomMechanics.SQUEEZE_DAMAGE);
+            if(!(target instanceof LivingEntity mob))return true;
+            if(owner==null || !mob.isAlive() || age<0 || !admitted(owner,mob)) { clearRoot(mob);return true; }
+            if(age<grip.duration) {
+                if(grip.stage>=2 && age>0 && age%20==0)mob.hurt(owner.damageSources().indirectMagic(owner,owner),BloomMechanics.SQUEEZE_DAMAGE);
                 return false;
             }
             clearRoot(mob);
-            long poisonAge=age-BloomMechanics.GRIP_TICKS;
+            long poisonAge=age-grip.duration;
             if(grip.stage<3 || poisonAge>=BloomMechanics.POISON_TICKS)return true;
             if(poisonAge>0 && poisonAge%20==0)poison(owner,mob);
             if(poisonAge%5==0)level.sendParticles(net.minecraft.core.particles.ParticleTypes.ENTITY_EFFECT,mob.getX(),mob.getY()+mob.getBbHeight()*.5,mob.getZ(),0,.25,.6,.1,1);
@@ -66,14 +83,15 @@ public final class SandboxHostileControl {
     private static void poison(ServerPlayer owner,LivingEntity mob) {
         float before=mob.getHealth();
         if(before<=1)return;
-        var source=owner.damageSources().magic();
+        var source=owner.damageSources().indirectMagic(owner,owner);
         if(mob.isInvulnerableTo(source))return;
-        // Accept native damage/cancellation and boss-phase gates first. Then make
-        // this explicitly universal poison a fixed health loss, even on witches.
+        // Native damage/cancellation, phase gates and boss effective-health
+        // normalization remain authoritative. Ordinary mobs retain universal poison.
         PoisonHit previous=POISON_HIT.get();
         POISON_HIT.set(new PoisonHit(mob,source));
         try {
-            if(mob.hurt(source,Math.min(BloomMechanics.POISON_DAMAGE,before-1)) && mob.isAlive() && mob.getHealth()<before)
+            if(mob.hurt(source,Math.min(BloomMechanics.POISON_DAMAGE,before-1)) && mob.isAlive() && mob.getHealth()<before
+                    && !ProductionRaceBridge.registeredBoss(mob))
                 mob.setHealth(Math.max(1,before-BloomMechanics.POISON_DAMAGE));
         } finally {
             if(previous==null)POISON_HIT.remove();else POISON_HIT.set(previous);
@@ -105,11 +123,12 @@ public final class SandboxHostileControl {
         if(until<=0)return false;
         Grip grip=GRIPS.get(entity.getUUID());
         var owner=grip==null?null:entity.getServer().getPlayerList().getPlayer(grip.owner);
-        if(owner!=null && owner.isAlive() && entity.getServer().overworld().getGameTime()<until)return true;
+        if(owner!=null && entity instanceof LivingEntity living && admitted(owner,living) && entity.getServer().overworld().getGameTime()<until)return true;
         clearRoot(entity);return false;
     }
     public static boolean pause(Entity entity) {
         if(!locked(entity))return false;
+        if(entity instanceof LivingEntity living && ProductionRaceBridge.registeredBoss(living))return false;
         // Native health, hurt cooldown, fire and potion clocks continue; AI and
         // subclass tick logic (fuses, spells, shots, teleport decisions) do not.
         entity.setOldPosAndRot();entity.tickCount++;entity.baseTick();

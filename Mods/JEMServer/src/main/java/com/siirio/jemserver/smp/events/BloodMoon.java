@@ -54,7 +54,8 @@ public final class BloodMoon {
             if(!row.getString("state").equals("ACTIVE") || !row.getString("activity").equals("BLOOD_MOON")
                     || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             Entity owner=EventSession.owner(mob);
-            if(owner instanceof net.minecraft.server.level.ServerPlayer player&&!new EventSession(row).accepted(player.getUUID())) return true;
+            // Player summons retain their native owner and never become hostile wave entries.
+            if(owner instanceof net.minecraft.server.level.ServerPlayer) return true;
             long active=row.getList("mobs",Tag.TAG_STRING).stream().map(Tag::getAsString).map(UUID::fromString).map(level::getEntity)
                     .filter(candidate->candidate instanceof Mob living&&living.isAlive()&&living.getPersistentData().getBoolean(SUMMONED)).count();
             if(active>=MAX_ACTIVE_SUMMONS) return false;
@@ -92,7 +93,7 @@ public final class BloodMoon {
         if(active.isEmpty()) {
             for(Tag tag:mobs) {
                 var entity=level.getEntity(UUID.fromString(tag.getAsString()));
-                if(entity instanceof Mob mob) clearInvalidTarget(mob,List.of());
+                if(entity instanceof Mob mob) clearInvalidTarget(mob);
             }
             return;
         }
@@ -108,11 +109,12 @@ public final class BloodMoon {
                 dirty=true;
                 continue;
             }
-            clearInvalidTarget(mob,active);
+            clearInvalidTarget(mob);
             var name=mob.getPersistentData().getString(CATEGORY);
             if(!name.isEmpty()) living.merge(BloodMoonWaves.Category.valueOf(name),1,Integer::sum);
-            if(mob.getTarget() instanceof net.minecraft.server.level.ServerPlayer player && active.contains(player))
-                targets.merge(player.getUUID(),1,Integer::sum);
+            if(mob.getTarget()!=null && canTarget(mob,mob.getTarget())
+                    && EventSession.owner(mob.getTarget()) instanceof net.minecraft.server.level.ServerPlayer player
+                    && active.contains(player)) targets.merge(player.getUUID(),1,Integer::sum);
             else {
                 var target=target(active,targets,mob);
                 mob.setTarget(target);
@@ -516,18 +518,19 @@ public final class BloodMoon {
         if(!data.hasUUID(EVENT_ID)||eventMob.getServer()==null) return true;
         var row=SmpData.get(eventMob.getServer()).find("events",data.getUUID(EVENT_ID));
         if(row==null||!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) return true;
-        return target instanceof net.minecraft.server.level.ServerPlayer player
-                &&new EventSession(row).accepted(player.getUUID())
-                &&player.isAlive()&&!player.isSpectator()
-                &&EventRegions.contains(row,player.serverLevel(),player.blockPosition());
+        return row.getBoolean("combatStarted") && eventMob instanceof LivingEntity actor
+                && target instanceof LivingEntity recipient
+                && EventSession.owner(recipient) instanceof net.minecraft.server.level.ServerPlayer
+                && EventSession.canInteract(actor,recipient);
     }
-    private static void clearInvalidTarget(Mob mob,List<net.minecraft.server.level.ServerPlayer> active) {
-        boolean validTarget=mob.getTarget()!=null&&active.contains(mob.getTarget());
+    private static void clearInvalidTarget(Mob mob) {
+        boolean validTarget=mob.getTarget()!=null&&canTarget(mob,mob.getTarget());
         if(mob.getTarget()!=null&&!validTarget) mob.setTarget(null);
         if(!(mob instanceof Warden warden)) return;
         var angry=warden.getEntityAngryAt().orElse(null);
-        if(validTarget||angry!=null&&canTarget(warden,angry)) return;
-        if(angry!=null) warden.clearAnger(angry);
+        boolean validAnger=angry!=null&&canTarget(warden,angry);
+        if(angry!=null&&!validAnger) warden.clearAnger(angry);
+        if(validTarget||validAnger) return;
         warden.getBrain().eraseMemory(MemoryModuleType.ATTACK_TARGET);
         warden.getBrain().eraseMemory(MemoryModuleType.ROAR_TARGET);
         warden.getBrain().eraseMemory(MemoryModuleType.DISTURBANCE_LOCATION);

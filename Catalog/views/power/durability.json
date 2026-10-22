@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_durability_audit",
-  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -446,15 +446,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "calls wear but item has no max damage",
         "special_wear": "calls wear but item has no max damage",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -468,15 +469,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -545,15 +547,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -608,15 +611,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": 0,
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -630,15 +634,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -652,15 +657,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -674,15 +680,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -696,15 +703,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "nominal_tier_uses": 2800,
         "mechanism": "Cataclysm_Tool_Item.isDamageable(ItemStack) returns false",
-        "repair": "cataclysm:monstrous_horn nominal tier ingredient"
+        "repair": "cataclysm:monstrous_horn nominal tier ingredient",
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -746,15 +754,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -768,15 +777,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": 0,
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -790,15 +800,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -812,15 +823,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -849,15 +861,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -871,15 +884,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": "cannot accumulate",
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -923,15 +937,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "normal_hit_wear": 0,
         "special_wear": "cannot accumulate",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -2141,15 +2156,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "nominal_tier_uses": 3000,
         "mechanism": "setDamage always delegates -1, defeating normal hit/block wear",
-        "repair": "legendary_monsters:void_gem nominal tier ingredient"
+        "repair": "legendary_monsters:void_gem nominal tier ingredient",
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -2403,15 +2419,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "nominal_tier_uses": 2350,
         "mechanism": "setDamage always delegates -1",
-        "repair": "minecraft:nether_star nominal tier ingredient"
+        "repair": "minecraft:nether_star nominal tier ingredient",
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {
@@ -2476,15 +2493,16 @@
         "unbreaking_expected_wear_probability": null,
         "mending_boundary": null
       },
-      "status": "verified_unbreakable_balance_issue",
+      "status": "verified_native_unbreakable",
       "unresolved_reason": null,
       "runtime_observation_required": false,
       "stage_3_5a": {
-        "status": "verified_unbreakable_balance_issue",
+        "status": "verified_native_unbreakable",
         "max_damage": null,
         "nominal_tier_uses": 2100,
         "mechanism": "setDamage always delegates -1",
-        "repair": null
+        "repair": null,
+        "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
       }
     },
     {

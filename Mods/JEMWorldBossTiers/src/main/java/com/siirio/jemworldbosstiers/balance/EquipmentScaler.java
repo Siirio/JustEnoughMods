@@ -29,7 +29,6 @@ public final class EquipmentScaler {
 
     private static void addProgressionContributions(ItemAttributeModifierEvent event) {
         if (EnchantmentHelper.getItemEnchantmentLevel(TierEnchantments.PROGRESSION.get(), event.getItemStack()) <= 0
-                || !ProgressionEnchantment.isEligible(event.getItemStack())
                 || currentTier() < 2) {
             return;
         }
@@ -39,13 +38,16 @@ public final class EquipmentScaler {
             return;
         }
         if (event.getSlotType() != EquipmentSlot.MAINHAND
+                || !ProgressionEnchantment.isWeaponEligible(event.getItemStack(), event.getOriginalModifiers())
                 || event.getItemStack().getItem() instanceof net.minecraft.world.item.ProjectileWeaponItem) {
             return;
         }
         double damage = tier >= 3 ? 2.0D : 1.0D;
-        double speed = tier >= 3 ? 0.40D : 0.25D;
         addProgressionContribution(event, Attributes.ATTACK_DAMAGE, damage);
-        addProgressionContribution(event, Attributes.ATTACK_SPEED, speed);
+        ResourceLocation speedId = BuiltInRegistries.ATTRIBUTE.getKey(Attributes.ATTACK_SPEED);
+        event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(
+                progressionModifierId(event.getSlotType(), speedId), "JEM progression tier",
+                tier >= 3 ? 0.10D : 0.05D, AttributeModifier.Operation.MULTIPLY_BASE));
     }
 
     private static void addArmorProgressionContributions(ItemAttributeModifierEvent event, int tier) {

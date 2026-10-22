@@ -19,7 +19,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import java.util.ArrayList;
@@ -110,16 +110,18 @@ public final class ProgressionArmor {
         if (tracker.isEmpty()) GUARD_HITS.remove();
     }
 
-    public static void tick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.player.level().isClientSide()) {
+    public static void tick(LivingEvent.LivingTickEvent event) {
+        LivingEntity wearer = event.getEntity();
+        if (wearer.level().isClientSide()) {
             return;
         }
-        AttributeInstance attackSpeed = event.player.getAttribute(Attributes.ATTACK_SPEED);
+        AttributeInstance attackSpeed = wearer.getAttribute(Attributes.ATTACK_SPEED);
         if (attackSpeed == null || attackSpeed.getModifier(ATTACK_SPEED_MODIFIER_ID) == null) {
             return;
         }
-        if (event.player.level().getGameTime() >= event.player.getPersistentData().getLong(ATTACK_SPEED_END)) {
+        if (wearer.level().getGameTime() >= wearer.getPersistentData().getLong(ATTACK_SPEED_END)) {
             attackSpeed.removeModifier(ATTACK_SPEED_MODIFIER_ID);
+            wearer.getPersistentData().remove(ATTACK_SPEED_END);
         }
     }
 

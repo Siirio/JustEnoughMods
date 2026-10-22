@@ -243,11 +243,43 @@ public final class HostedEncounters {
         return result;
     }
 
-    private static boolean inside(LivingEntity boss,ServerPlayer player) {
-        if(player.level()!=boss.level()) return false;
-        var bounds=data(boss).getIntArray("Bounds");
-        if(bounds.length==6) return new net.minecraft.world.level.levelgen.structure.BoundingBox(bounds[0],bounds[1],bounds[2],bounds[3],bounds[4],bounds[5]).isInside(player.blockPosition());
-        return player.distanceToSqr(boss)<=(double)data(boss).getInt("Radius")*data(boss).getInt("Radius");
+    private static boolean inside(LivingEntity boss, LivingEntity entity) {
+        if (entity.level() != boss.level()) return false;
+        var box = entity.getBoundingBox();
+        var bounds = data(boss).getIntArray("Bounds");
+        if (bounds.length == 6) return box.minX >= bounds[0] && box.minY >= bounds[1] && box.minZ >= bounds[2]
+                && box.maxX <= bounds[3] + 1D && box.maxY <= bounds[4] + 1D && box.maxZ <= bounds[5] + 1D;
+        double dx = Math.max(Math.abs(box.minX - boss.getX()), Math.abs(box.maxX - boss.getX()));
+        double dy = Math.max(Math.abs(box.minY - boss.getY()), Math.abs(box.maxY - boss.getY()));
+        double dz = Math.max(Math.abs(box.minZ - boss.getZ()), Math.abs(box.maxZ - boss.getZ()));
+        double radius = data(boss).getInt("Radius");
+        return dx * dx + dy * dy + dz * dz <= radius * radius;
+    }
+
+    private static LivingEntity combat(LivingEntity entity) {
+        Entity owner = HostedEncounterApi.damageOwner(entity);
+        if (owner instanceof ServerPlayer player) return encounter(player.getUUID());
+        if (owner instanceof LivingEntity living) {
+            if (isHosted(living)) return living;
+            LivingEntity group = HostedGroup.owner(living);
+            if (group != null && isHosted(group)) return group;
+        }
+        return null;
+    }
+
+    private static boolean admitted(LivingEntity boss, LivingEntity entity) {
+        if (!entity.isAlive() || !inside(boss, entity)) return false;
+        Entity owner = HostedEncounterApi.damageOwner(entity);
+        if (owner instanceof ServerPlayer player) return validTarget(boss, player);
+        return owner == boss || entity == boss || HostedGroup.owner(entity) == boss;
+    }
+
+    public static boolean canInteract(LivingEntity actor, LivingEntity target) {
+        if (actor.level().isClientSide || actor.level() != target.level() || !actor.isAlive() || !target.isAlive()) return false;
+        if (HostedLobby.held(actor) || HostedLobby.held(target)) return false;
+        LivingEntity sourceBoss = combat(actor), targetBoss = combat(target);
+        if (sourceBoss == null && targetBoss == null) return true;
+        return sourceBoss == targetBoss && admitted(sourceBoss, actor) && admitted(sourceBoss, target);
     }
 
     public static void contribute(ServerPlayer player, double amount) {
@@ -303,54 +335,23 @@ public final class HostedEncounters {
             event.setCanceled(true);
             return;
         }
-        LivingEntity boss = target instanceof ServerPlayer player ? encounter(player.getUUID()) : isHosted(target) ? target : null;
-        Entity resolved = HostedEncounterApi.damageOwner(event.getSource().getEntity());
-        if (resolved == null) resolved = HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
-        LivingEntity sourceBoss = resolved instanceof ServerPlayer sourcePlayer ? encounter(sourcePlayer.getUUID())
-                : resolved instanceof LivingEntity living && isHosted(living) ? living : null;
-        if (sourceBoss == null && resolved != null && resolved.level() instanceof ServerLevel level
-                && resolved.getPersistentData().hasUUID("JEMHostedBoss")
-                && level.getEntity(resolved.getPersistentData().getUUID("JEMHostedBoss")) instanceof LivingEntity owner
-                && isHosted(owner)) sourceBoss = owner;
-        if (boss == null && target.getPersistentData().hasUUID("JEMHostedBoss")
-                && target.level() instanceof ServerLevel level
-                && level.getEntity(target.getPersistentData().getUUID("JEMHostedBoss")) instanceof LivingEntity owner
-                && isHosted(owner)) boss = owner;
-        if (resolved != null && (boss != null || sourceBoss != null)) {
-            if (boss != sourceBoss || target instanceof ServerPlayer && resolved instanceof ServerPlayer) {
-                event.setCanceled(true);
-                return;
-            }
-            if (resolved instanceof ServerPlayer sourcePlayer && !inside(boss, sourcePlayer)
-                    || target instanceof ServerPlayer targetPlayer && !inside(boss, targetPlayer)) {
-                event.setCanceled(true);
-                return;
-            }
-        }
-        if (boss != null) {
-            Entity attacker = HostedEncounterApi.damageOwner(event.getSource().getEntity());
-            if (target instanceof ServerPlayer && attacker instanceof ServerPlayer teammate && players(boss).contains(teammate.getStringUUID())) {
-                event.setCanceled(true);
-                return;
-            }
-            if (target instanceof ServerPlayer player) {
-                CompoundTag entry = participant(boss, player.getUUID());
-                if (DOWNED.equals(entry.getString("State")) || now(boss) < entry.getLong("ImmuneUntil")) {
-                    event.setCanceled(true);
-                }
-            } else if (attacker instanceof ServerPlayer player && !ALIVE.equals(participant(boss, player.getUUID()).getString("State"))) {
-                event.setCanceled(true);
-            }
-        }
-        if (event.getSource().getEntity() instanceof ServerPlayer player) {
-            LivingEntity active = encounter(player.getUUID());
-            if (active != null && DOWNED.equals(participant(active, player.getUUID()).getString("State"))) {
-                event.setCanceled(true);
-            }
-        }
-        if (event.getSource().getEntity() instanceof LivingEntity attacker && isHosted(attacker) && target instanceof ServerPlayer player
-                && !ALIVE.equals(participant(attacker, player.getUUID()).getString("State"))) {
+        Entity source = event.getSource().getEntity();
+        if (source == null) source = HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
+        Entity owner = HostedEncounterApi.damageOwner(source);
+        if (!(source instanceof LivingEntity) && owner instanceof LivingEntity) source = owner;
+        if (source instanceof LivingEntity actor && !canInteract(actor, target)) {
             event.setCanceled(true);
+            return;
+        }
+        LivingEntity boss = combat(target);
+        if (boss != null && owner instanceof ServerPlayer attacker
+                && HostedEncounterApi.damageOwner(target) instanceof ServerPlayer) {
+            event.setCanceled(true);
+            return;
+        }
+        if (target instanceof ServerPlayer player && boss != null) {
+            CompoundTag entry = participant(boss, player.getUUID());
+            if (!ALIVE.equals(entry.getString("State")) || now(boss) < entry.getLong("ImmuneUntil")) event.setCanceled(true);
         }
     }
 
@@ -360,8 +361,7 @@ public final class HostedEncounters {
         var target = event.getNewTarget();
         var root = isHosted(mob) ? mob : HostedGroup.owner(mob);
         if (mob.level().isClientSide || root == null || !isHosted(root) || target == null) return;
-        if (!(target instanceof ServerPlayer player) || !ALIVE.equals(participant(root, player.getUUID()).getString("State"))
-                || !inside(root, player) || player.isSpectator()) event.setCanceled(true);
+        if (!canInteract(mob, target) || !(HostedEncounterApi.damageOwner(target) instanceof ServerPlayer)) event.setCanceled(true);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -517,7 +517,7 @@ public final class HostedEncounters {
     private static void maintainTarget(LivingEntity boss) {
         if (!(boss instanceof Mob mob) || mob.isNoAi()) return;
         LivingEntity current = mob.getTarget();
-        if (current instanceof ServerPlayer player && validTarget(boss, player)) return;
+        if (current != null && HostedEncounterApi.damageOwner(current) instanceof ServerPlayer && canInteract(boss, current)) return;
         if (current != null) mob.setTarget(null);
         players(boss).getAllKeys().stream().map(UUID::fromString)
                 .map(boss.getServer().getPlayerList()::getPlayer)

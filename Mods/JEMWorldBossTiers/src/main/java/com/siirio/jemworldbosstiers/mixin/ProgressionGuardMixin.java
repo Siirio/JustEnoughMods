@@ -1,6 +1,9 @@
 package com.siirio.jemworldbosstiers.mixin;
 
 import com.siirio.jemworldbosstiers.balance.ProgressionArmor;
+import com.siirio.jemworldbosstiers.balance.ProgressionWeapons;
+import com.siirio.jemworldbosstiers.compat.irons.SiphonHealing;
+import com.siirio.jemworldbosstiers.compat.cataclysm.NativeBossDamage;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,10 +27,27 @@ public abstract class ProgressionGuardMixin {
             return;
         }
         ProgressionArmor.beginHit(wearer, source, amount);
+        SiphonHealing.beginHit(wearer, source);
+        NativeBossDamage.beginResolution(wearer, source);
+        ProgressionWeapons.beginResolution(wearer, source);
+        boolean completed = false;
         try {
             actuallyHurt(source, amount);
+            completed = true;
         } finally {
-            ProgressionArmor.finishHit(wearer);
+            try {
+                ProgressionArmor.finishHit(wearer);
+            } finally {
+                try {
+                    SiphonHealing.finishHit(wearer, completed);
+                } finally {
+                    try {
+                        ProgressionWeapons.endResolution();
+                    } finally {
+                        NativeBossDamage.endResolution();
+                    }
+                }
+            }
         }
     }
 }

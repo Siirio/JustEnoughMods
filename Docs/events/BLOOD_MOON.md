@@ -62,3 +62,7 @@ Twin Creepers визуально и collision-scale достигают пятн�
 - Повторное tier/event scaling и post-armor damage floor отвергнуты: они создавали неизбежные one-shot атаки.
 - Teleport-back correction loop отвергнут: active participant endpoint проверяется до перемещения и при unsafe destination остаётся на проверенной внутренней позиции без повторных corrective teleports.
 
+
+## Ally and support admission — 2026-10-22
+
+The existing EventSession is the shared authority for damage, racial support/control, native targeting and startup/tick ejection. A supported player-owned ally remains an ally and is not adopted into the hostile wave. Both its own full collision box and its living active owner must satisfy the same event membership/position rule. Spectators, eliminated/dead owners and outside support remain excluded; Warden invalid spectator anger is cleared even while a valid target exists. This does not activate Events on integrated servers. Source status remains in testing; full sequence limitations are recorded in [combat balance](../power-system/Balance.md).

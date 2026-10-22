@@ -1,11 +1,14 @@
 package com.siirio.jemworldbosstiers.enchantment;
 
 import com.siirio.jemworldbosstiers.JemWorldBossTiers;
+import com.google.common.collect.Multimap;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
@@ -87,7 +90,13 @@ public final class ProgressionEnchantment extends Enchantment {
     }
 
     public static boolean isWeaponEligible(ItemStack stack) {
+        return isWeaponEligible(stack, null);
+    }
+
+    /** Attribute-event callers supply their native snapshot to avoid reentering that event. */
+    public static boolean isWeaponEligible(ItemStack stack, Multimap<Attribute, AttributeModifier> nativeModifiers) {
         if(excluded(stack)||stack.is(NON_WEAPONS)||stack.isEdible()) return false;
+        if(stack.getItem() instanceof ArmorItem) return false;
         if(stack.is(INCLUDED_WEAPONS)) return true;
         if(stack.getItem() instanceof net.minecraft.world.item.BlockItem) return false;
         ResourceLocation id=ForgeRegistries.ITEMS.getKey(stack.getItem());
@@ -100,14 +109,14 @@ public final class ProgressionEnchantment extends Enchantment {
                 || stack.getItem() instanceof ProjectileWeaponItem
                 || stack.getItem() instanceof TridentItem
                 || stack.getItem() instanceof ShieldItem
-                || hasMainHandDamage(stack)
+                || hasMainHandDamage(stack, nativeModifiers)
                 || hasCombatUse(stack)
                 || containsAny(path,"sword","blade","spear","javelin","dagger","katana","scythe","sickle","claw","mace",
                 "halberd","halbert","greatsword","battle_axe","shield","bow","crossbow","cannon");
     }
 
-    private static boolean hasMainHandDamage(ItemStack stack) {
-        return stack.getAttributeModifiers(EquipmentSlot.MAINHAND)
+    private static boolean hasMainHandDamage(ItemStack stack, Multimap<Attribute, AttributeModifier> nativeModifiers) {
+        return (nativeModifiers == null ? stack.getAttributeModifiers(EquipmentSlot.MAINHAND) : nativeModifiers)
                 .get(Attributes.ATTACK_DAMAGE)
                 .stream()
                 .anyMatch(modifier -> modifier.getAmount() > 0.0D);

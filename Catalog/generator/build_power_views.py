@@ -199,7 +199,8 @@ def attach_boss_reward_weapon_evidence(weapons: list[dict[str, Any]], evidence: 
             },
             "power_assessment": {
                 "boss_reward_suitability": "review_required",
-                "verified_balance_issue": durability.get("status") == "verified_unbreakable_balance_issue",
+                "verified_balance_issue": False,
+                "native_unbreakable_exception": durability.get("status") == "verified_native_unbreakable",
                 "confidence": "exact_static_components_with_named_runtime_boundaries",
             },
             "evidence": {
@@ -801,8 +802,8 @@ def modifier_records() -> list[dict[str, Any]]:
     changes.extend([
         {"id": "jem.progression-weapon", "owner": "JEMWorldBossTiers", "expression": "eligible progression weapon x1.00/x1.05/x1.10; Tier III+ 15% x1.5 critical", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java"]},
         {"id": "jem.spell-tier", "owner": "JEMWorldBossTiers", "expression": "non-PvP player spell x0.65/0.80/0.95/1.10/1.20; PvP x1.00", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SpellTierFactors.java"]},
-        {"id": "jem.hosted-boss", "owner": "JEMWorldBossTiers", "expression": "participant health 1/1.45/1.8/2.1/+0.2; damage 1/1.10/1.18/1.25/+0.05 capped1.45; raid defaults x2.5; owned attacks x0.88", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java", "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java"]},
-        {"id": "jem.race-defense", "owner": "JEMRaces", "expression": "Selected race 2 fire damage x2; race 3 fire damage x1.25; race 4 cancels fire attacks and damage, while the race runtime is enabled", "source_files": ["Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java"]},
+        {"id": "jem.hosted-boss", "owner": "JEMWorldBossTiers", "expression": "participant health 1/1.45/1.8/2.1/+0.2; damage 1/1.10/1.18/1.25/+0.05 capped1.45; raid health x2.5, damage x1.25; supported native flat components x0.88, native percent unchanged; unsupported fixed channels keep tier boost", "source_files": ["Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java", "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java"]},
+        {"id": "jem.race-defense", "owner": "JEMRaces", "expression": "Selected race 2 fire damage x1.25; race 3 fire damage x1.25; race 4 cancels fire attacks and damage, while the race runtime is enabled", "source_files": ["Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java"]},
         {"id": "jem.profession-defense", "owner": "JEMProfessions (development-only; absent from production)", "expression": "Only if separately installed and Miner stone_step is enabled: fall damage x0.90 while standing on Forge stone", "source_files": ["Mods/JEMProfessions/src/main/java/com/siirio/jemprofessions/progress/ProfessionGameplay.java"]}
     ])
     return changes
@@ -825,7 +826,7 @@ def scenarios() -> list[dict[str, Any]]:
         (13, "Iron's Spells mage", ["irons_spellbooks:ray_of_siphoning"], "native per-hit expression -> PvE tier factor -> school resistance"),
         (14, "Epic Fight melee", [], "requires exact weapon moveset, animation timings, stamina and target context from installed Nightfall/Epic Fight owners"),
         (15, "Heavy armor versus beam", ["irons_spellbooks:sunbeam", "irons_spellbooks:ray_of_siphoning"], "magic damage is not tagged bypasses_armor by Iron, but school resistance and actual armor integration must be measured separately"),
-        (16, "World Tier hosted raid boss", ["minecraft:wither"], "native attack * boss tier * optional profile factor * party damage * raid x2.5 * hosted owned-attack x0.88; health uses corresponding health factors")
+        (16, "World Tier hosted raid boss", ["minecraft:wither"], "supported native ATK flat * profile * party damage * raid damage default1.25 *0.88 + native percent; fixed unsupported channels retain tier boost; raid health default2.5")
     ]
     return [{"scenario": number, "name": name, "exact_ids": ids, "expression": expression, "result_status": "partial", "unresolved_policy": "unknown values remain symbolic and are never substituted with zero"} for number, name, ids, expression in definitions]
 
@@ -1054,6 +1055,59 @@ def hosted_factor(players: int, kind: str) -> float:
     return {1: 1.0, 2: 1.10, 3: 1.18, 4: 1.25}.get(players, min(1.45, 1.25 + 0.05 * (players - 4)))
 
 
+def hosted_default(name: str) -> float:
+    source = (ROOT / "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java").read_text(encoding="utf-8")
+    match = re.search(r'defineInRange\("' + re.escape(name) + r'",\s*([0-9.]+)', source)
+    if match is None:
+        raise ValueError("Missing authoritative hosted default: " + name)
+    return float(match.group(1))
+
+
+def ignis_reference_calculations() -> list[dict[str, Any]]:
+    profiles = load(ROOT / "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/jem_world_boss_tiers/bosses/major_bosses.json")
+    entries = profiles.get("bosses", profiles.get("profiles", [])) if isinstance(profiles, dict) else profiles
+    profile = next(row for row in entries if row["key"] == "cataclysm:ignis")
+    atk = profile["attributes"]["minecraft:generic.attack_damage"][4]
+    multiplier = profile["special_damage_multiplier"][4]
+    outcomes = []
+    for factor, percent in ((1, .05), (2, .25)):
+        for raid in (False, True):
+            raw = factor * atk * multiplier * hosted_factor(4, "damage") * (hosted_default("raidDamageMultiplier") if raid else 1) * .88 + 20 * percent
+            outcomes.append({"attack_atk_factor": factor, "native_max_hp_percent": percent,
+                             "raid": raid, "raw": round(raw, 6),
+                             "hp_loss": round(vanilla_post_mitigation(raw, 20, 12, 16), 6)})
+    return [{"id": "cataclysm:ignis", "kind": "normalized_native_reference",
+             "evidence_status": "calculation_from_source_not_runtime_observation",
+             "atk_tier_v": atk, "profile": multiplier, "party": 1.25,
+             "formula": "flat*profile*party*raid*.88 + nativePercent",
+             "target": {"max_hp": 20, "armor": 20, "toughness": 12, "epf": 16},
+             "excluded": ["Guard", "Resistance", "absorption", "racial defenses", "fire followups", "accepted hit frequency"],
+             "rows": outcomes}] + ignis_race_party_matrix(profile)
+
+
+def ignis_race_party_matrix(profile: dict[str, Any]) -> list[dict[str, Any]]:
+    outcomes = []
+    for tier in range(1, 6):
+        atk = profile["attributes"]["minecraft:generic.attack_damage"][tier - 1]
+        special = profile["special_damage_multiplier"][tier - 1]
+        for players in (1, 4):
+            for raid in (False, True):
+                factor = special * hosted_factor(players, "damage") * (hosted_default("raidDamageMultiplier") if raid else 1) * .88
+                for hp, context in ((16, "Void_without_other_HP_modifiers"), (20, "ordinary_or_adverse_climate_without_HP_gear"), (30, "Sculk_underground_without_other_HP_modifiers")):
+                    for coefficient, percent in ((1, .05), (2, .25)):
+                        raw = coefficient * atk * factor + hp * percent
+                        loss = vanilla_post_mitigation(raw, 20, 12, 16)
+                        outcomes.append({"tier": tier, "players": players, "raid": raid,
+                                         "max_hp": hp, "race_context": context, "atk_coefficient": coefficient,
+                                         "native_percent": percent, "raw": round(raw, 6),
+                                         "hp_loss": round(loss, 6), "fraction_of_target_hp": round(loss / hp, 6)})
+    return [{"id": "cataclysm:ignis", "kind": "normalized_native_race_party_matrix",
+             "evidence_status": "calculation_not_gameplay_observation",
+             "armor_anchor": {"armor": 20, "toughness": 12, "epf": 16},
+             "boundary": "Prepared physical-defense anchor at every Tier, not an acquisition or realistic early-game loadout claim. Real installed modded sets, native followups, other race powers, Guard, Resistance and consumables remain separate owners.",
+             "rows": outcomes}]
+
+
 def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, Any]]:
     records = []
     for boss in bosses:
@@ -1079,20 +1133,25 @@ def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, An
             )
             for players in range(1, 7):
                 for raid in (False, True):
-                    raid_factor = 2.5 if raid else 1.0
-                    applied_special = 1.0 if raid else special
-                    owned_attack_multiplier = tier_factor * applied_special * hosted_factor(players, "damage") * raid_factor * 0.88
+                    raid_factor = hosted_default("raidDamageMultiplier") if raid else 1.0
+                    raid_health_factor = hosted_default("raidHealthMultiplier") if raid else 1.0
+                    applied_special = special
+                    # Base Mob.doHurtTarget and explicit native formula adapters use tier ATK once.
+                    # Override-only unadapted native attacks remain separately unresolved.
+                    owned_attack_multiplier = applied_special * hosted_factor(players, "damage") * raid_factor * 0.88
                     effective_melee = round(base_melee * owned_attack_multiplier, 6) if base_melee is not None else None
                     rows.append({
                         "world_tier": tier,
                         "players": players,
                         "raid": raid,
-                        "tier_factor": round(tier_factor, 6),
+                        "tier_health_boost_factor": round(tier_factor, 6),
+                        "tier_damage_factor": 1.0,
                         "profile_special_damage_factor": round(applied_special, 6),
                         "hosted_health_factor": round(hosted_factor(players, "health"), 6),
                         "hosted_damage_factor": round(hosted_factor(players, "damage"), 6),
                         "raid_factor": raid_factor,
-                        "effective_health_multiplier_over_native": round(tier_factor * hosted_factor(players, "health") * raid_factor, 6),
+                        "raid_health_factor": raid_health_factor,
+                        "effective_health_multiplier_over_native": round(tier_factor * hosted_factor(players, "health") * raid_health_factor, 6),
                         "effective_owned_attack_multiplier_over_native": round(owned_attack_multiplier, 6),
                         "effective_owned_attack_multiplier_over_profile_or_native_base": round(owned_attack_multiplier, 6),
                         "base_melee_before_jem_scaling": base_melee,
@@ -1107,7 +1166,7 @@ def boss_numeric_calculations(bosses: list[dict[str, Any]]) -> list[dict[str, An
             "id": boss["id"],
             "kind": "registered_boss_scaling_table",
             "rows": rows,
-            "calculation_boundary": "Absolute melee rows use the tier-specific profile attack-damage attribute when supplied, otherwise the exact native attribute builder. Special/projectile formulas, accepted hit count, damage-type bypasses and non-owned environmental damage remain attached to their own owners.",
+            "calculation_boundary": "Calculated supported native base-melee channel, not every override: tier-specific profile ATK once, profile including Raid, party, Raid damage1.25 and hosted0.88. Health retains tier boost and Raid2.5. Fixed/config/projectile/periodic and unsupported mixed formulas keep separate explicit owners; these rows cannot prove them. Live config/profile overrides are not read here.",
             "evidence": boss["evidence"],
         })
     return records
@@ -1695,6 +1754,7 @@ def main() -> int:
         + accessory_numeric_calculations(accessories)
         + spell_method_calculations(spells)
         + spell_numeric_calculations(spells)
+        + ignis_reference_calculations()
         + boss_numeric_calculations(bosses)
         + boss_attack_calculations(bosses)
         + stage35c_defensive_calculations(armor, accessories, bosses)
@@ -1799,7 +1859,7 @@ def main() -> int:
             "stage_3_5a_sustained_dps_windows": sum(row.get("resolution", {}).get("sustained_window_count", 0) for row in calculations if row.get("kind") == "boss_reward_weapon_stage_3_5a_card"),
             "stage_3_5a_durability_profiles_closed": sum(
                 row.get("kind") == "boss_reward_weapon_stage_3_5a_card"
-                and row.get("durability", {}).get("status") in {"max_and_wear_traced", "max_and_normal_wear_traced", "max_and_normal_wear_traced_special_no_wear", "max_and_channel_wear_traced", "max_and_special_wear_traced", "max_and_consumption_traced", "verified_unbreakable_balance_issue"}
+                and row.get("durability", {}).get("status") in {"max_and_wear_traced", "max_and_normal_wear_traced", "max_and_normal_wear_traced_special_no_wear", "max_and_channel_wear_traced", "max_and_special_wear_traced", "max_and_consumption_traced", "verified_native_unbreakable"}
                 for row in calculations
             ),
             "stage_3_5a_runtime_blockers": sum(row.get("kind") == "boss_reward_weapon_stage_3_5a_blocker" and row.get("runtime_observation_required") for row in blockers),
@@ -1835,7 +1895,7 @@ def main() -> int:
                 row.get("status") in {
                     "max_and_consumption_traced", "verified_explicitly_unbreakable_armor",
                     "max_and_wear_traced", "max_and_normal_wear_traced", "max_and_normal_wear_traced_special_no_wear",
-                    "max_and_channel_wear_traced", "max_and_special_wear_traced", "verified_unbreakable_balance_issue",
+                    "max_and_channel_wear_traced", "max_and_special_wear_traced", "verified_native_unbreakable",
                 }
                 for row in durability
             ),

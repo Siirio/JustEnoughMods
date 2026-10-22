@@ -30,6 +30,33 @@ public final class ProductionRaceBridge {
         }
     }
 
+    /** Optional encounter authority is shared by controls, healing and damage. */
+    public static boolean canInteract(net.minecraft.world.entity.LivingEntity actor, net.minecraft.world.entity.LivingEntity target) {
+        if (!net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers")) return true;
+        try {
+            return (boolean)Class.forName("com.siirio.jemworldbosstiers.api.HostedEncounterApi")
+                    .getMethod("canInteract", net.minecraft.world.entity.LivingEntity.class, net.minecraft.world.entity.LivingEntity.class)
+                    .invoke(null, actor, target);
+        } catch (ReflectiveOperationException failure) {
+            throw new IllegalStateException("Hosted encounter interaction API", failure);
+        }
+    }
+
+    public static ServerPlayer damageOwner(net.minecraft.world.entity.Entity entity) {
+        if (entity instanceof ServerPlayer player) return player;
+        ServerPlayer guardian = SandboxUtilities.guardianOwner(entity);
+        if (guardian != null) return guardian;
+        if (entity instanceof net.minecraft.world.entity.TamableAnimal pet) return pet.getOwner() instanceof ServerPlayer player ? player : null;
+        if (!net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers")) return null;
+        try {
+            Object owner=Class.forName("com.siirio.jemworldbosstiers.api.HostedEncounterApi")
+                    .getMethod("damageOwner", net.minecraft.world.entity.Entity.class).invoke(null, entity);
+            return owner instanceof ServerPlayer player ? player : null;
+        } catch (ReflectiveOperationException failure) {
+            throw new IllegalStateException("Hosted encounter owner API", failure);
+        }
+    }
+
     public static CompoundTag data(ServerPlayer player) {
         RaceRecord record = RaceService.record(player).orElse(null);
         if (record == null) return new CompoundTag();

@@ -19,7 +19,12 @@
       "acceptance": "Manual gameplay acceptance pending.",
       "mod": "irons_spellbooks",
       "version": "1.20.1-3.15.6",
-      "native_spell_class": "io.redspace.ironsspellbooks.spells.blood.RayOfSiphoningSpell"
+      "native_spell_classes": [
+        "RayOfSiphoningSpell",
+        "BloodNeedlesSpell",
+        "BloodSlashSpell",
+        "DevourSpell"
+      ]
     }
   ],
   "precedence": {
@@ -27,14 +32,14 @@
     "priority": 570
   },
   "change": {
-    "summary": "Ray of Siphoning heals from accepted final target health-plus-absorption loss rather than pre-mitigation LivingHurtEvent damage.",
+    "summary": "All four native blood lifesteal paths settle one own accepted HP/absorption loss after defense, excluding nested child losses.",
     "modifiers": [
       {
         "property": "combat.siphoning.lifesteal",
         "operation": "replace",
         "before": "Native postHitEffects heals caster by LivingHurtEvent.amount * getLifestealPercent before final armor, Protection, absorption and cancellation.",
-        "after": "Suppress only Siphoning early heal; after one native hurt call, if accepted heal native caster by max(0, targetBeforeHealthAndAbsorption - targetAfterHealthAndAbsorption) * native getLifestealPercent through native LivingEntity.heal.",
-        "notes": "No damage, resistance, spell power, mana, cooldown, native heal modifier or persistent spell state changed. Default native share stays1.0."
+        "after": "Suppress early native heal for four pinned spells; after actuallyHurt settle native caster once from positive own actual HP loss plus absorption loss, subtracting nested child losses. Native shares1.0/.25/.15/.15 preserved; normal heal event modifiers apply.",
+        "notes": "No damage replay; canceled/zero loss heals0, overkill clamped, absorption once. Pinned Iron3.15.6 and optional absence remain safe."
       }
     ]
   },
@@ -43,7 +48,8 @@
     "kind": "premitigation_lifesteal_owner_order",
     "source_files": [
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/IronsSiphonHealingMixin.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java"
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealing.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ProgressionGuardMixin.java"
     ]
   },
   "rationale": {
@@ -100,6 +106,12 @@
       "source_files": [
         "Mods/JEMWorldBossTiers/src/test/java/com/siirio/jemworldbosstiers/compat/irons/SiphonHealingTest.java"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "All four native blood lifesteal paths settle one own accepted HP/absorption loss after defense, excluding nested child losses."
     }
   ],
   "impacts": {

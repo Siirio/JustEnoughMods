@@ -3,17 +3,31 @@
   "change_id": "atlas.power-system-analysis",
   "status": "active",
   "selectors": [
-    {"type": "id", "registry": "items", "value": "jem:power_system_analysis"}
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem:power_system_analysis"
+    }
   ],
-  "precedence": {"layer": "derived_analysis", "priority": 900, "overrides": []},
+  "precedence": {
+    "layer": "derived_analysis",
+    "priority": 900,
+    "overrides": []
+  },
   "change": {
     "summary": "Maintain a derived, non-runtime combat inventory with Stage 3.5A boss-reward weapons, Stage 3.5B boss combat, and Stage 3.5C exact armor, Curios, durability and defensive mitigation evidence plus registration factories, installed configuration evidence and numeric reference tables.",
     "modifiers": [
       {
         "property": "documentation.combat_power_expression",
         "operation": "document",
-        "before": {"value": null, "reason": "Combat evidence was distributed across registry partitions and owning sources."},
-        "after": {"model": "Original -> Modifiers -> JEM tweaks -> Effective -> Acquisition -> Assessment", "runtime_behavior_changed": false},
+        "before": {
+          "value": null,
+          "reason": "Combat evidence was distributed across registry partitions and owning sources."
+        },
+        "after": {
+          "model": "Original -> Modifiers -> JEM tweaks -> Effective -> Acquisition -> Assessment",
+          "runtime_behavior_changed": false
+        },
         "notes": "The generated view is evidence only. Unknown values stay unresolved and warnings never auto-balance gameplay."
       }
     ]
@@ -164,12 +178,38 @@
         "Docs/power-system/FORMULAS.md",
         "Docs/power-system/NUMERIC_TABLES.md"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "refresh_source_derived_balance",
+      "summary": "Update source generator for component-separated boss formulas, distinct Raid damage/health factors, race fire multiplier and current Ignis reference; no observed DPS claim."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "correct_native_evidence_assessment",
+      "summary": "Native unbreakability is an observed reward exception, not an automatic defect. Scythe41 is a scheduled wither attempt, Mossy alternate registration and Soul Rage activation remain unproved. No native mechanic nerf or dormant handler activation."
     }
   ],
   "impacts": {
-    "systems": ["combat", "progression", "boss_scaling", "pvp", "allies", "documentation"],
-    "relations": ["registry->power_view", "native_owner->effective_expression", "scenario->coverage", "warning->review_owner"],
-    "notes": ["No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."],
+    "systems": [
+      "combat",
+      "progression",
+      "boss_scaling",
+      "pvp",
+      "allies",
+      "documentation"
+    ],
+    "relations": [
+      "registry->power_view",
+      "native_owner->effective_expression",
+      "scenario->coverage",
+      "warning->review_owner"
+    ],
+    "notes": [
+      "No Java, Mixin, config, datapack, installed JAR or runtime behavior is changed."
+    ],
     "unresolved": [
       "For the 36 boss rewards, remaining gaps are named capability precedence, external/custom animation phases, projectile overlap, iframe acceptance and branched entity scheduling; 31 require controlled runtime observation that was not authorized in Stage 3.5A.",
       "For bosses, 133 special formulas, 61 AI/frequency fields and 5 base-melee fields remain named blockers; trigger ticks alone are not treated as accepted-hit frequency or sustained DPS.",

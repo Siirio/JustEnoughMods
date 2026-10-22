@@ -20,7 +20,7 @@ public final class HostedConfig {
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         RAID_HEALTH = builder.defineInRange("raidHealthMultiplier", 2.5, 1, 10);
-        RAID_DAMAGE = builder.defineInRange("raidDamageMultiplier", 2.5, 1, 10);
+        RAID_DAMAGE = builder.defineInRange("raidDamageMultiplier", 1.25, 1, 10);
         BLEEDOUT = builder.defineInRange("bleedoutTicks", 600, 20, 72000);
         REVIVE = builder.defineInRange("reviveHoldTicks", 100, 1, 1200);
         GRACE = builder.defineInRange("disconnectGraceTicks", 1800, 0, 72000);

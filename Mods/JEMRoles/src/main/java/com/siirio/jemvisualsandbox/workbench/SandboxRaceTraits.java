@@ -69,10 +69,9 @@ public final class SandboxRaceTraits {
         clearAttributes(p);
         if (!p.isAlive() || p.isSpectator()) return;
         ServerLevel level = p.serverLevel(); BlockPos pos = p.blockPosition();
-        if (race == 1) add(p, Attributes.MAX_HEALTH, VOID_HEALTH, -6, AttributeModifier.Operation.ADDITION);
+        if (race == 1) add(p, Attributes.MAX_HEALTH, VOID_HEALTH, -4, AttributeModifier.Operation.ADDITION);
         if (race == 2) {
-            if (!com.siirio.jemroles.trait.RaceEnvironment.green(level, pos)) add(p, Attributes.MAX_HEALTH, BLOOM_BARREN, -8, AttributeModifier.Operation.ADDITION);
-            else if (com.siirio.jemroles.trait.RaceEnvironment.naturalDaylight(level, pos)) {
+            if (com.siirio.jemroles.trait.RaceEnvironment.green(level, pos) && com.siirio.jemroles.trait.RaceEnvironment.naturalDaylight(level, pos)) {
                 p.heal(.5F);
                 p.getFoodData().setExhaustion(Math.max(0, p.getFoodData().getExhaustionLevel() - 1));
             }
@@ -82,10 +81,8 @@ public final class SandboxRaceTraits {
                 add(p, Attributes.MAX_HEALTH, SCULK_HEALTH, 10, AttributeModifier.Operation.ADDITION);
                 add(p, Attributes.ATTACK_DAMAGE, SCULK_ATTACK, .15, AttributeModifier.Operation.MULTIPLY_TOTAL);
             }
-            if (com.siirio.jemroles.trait.RaceEnvironment.naturalDaylight(level, pos)) add(p, Attributes.MAX_HEALTH, SCULK_SUN, -8, AttributeModifier.Operation.ADDITION);
         }
         if (race == 4) {
-            if (level.getBiome(pos).value().coldEnoughToSnow(pos)) add(p, Attributes.MAX_HEALTH, NETHER_FROZEN, -8, AttributeModifier.Operation.ADDITION);
             int old = p.getPersistentData().getInt("JemSandboxWaterExposure");
             int exposure = p.isInWater() && !p.isPassenger() ? Math.min(140, old + 20) : Math.max(0, old - 10);
             p.getPersistentData().putInt("JemSandboxWaterExposure", exposure);
@@ -94,6 +91,20 @@ public final class SandboxRaceTraits {
         if (race == 0) for (Raider raider : level.getEntitiesOfClass(Raider.class, p.getBoundingBox().inflate(48), Entity::isAlive))
             if (raider.getTarget() == null || raider.distanceToSqr(p) < raider.distanceToSqr(raider.getTarget())) raider.setTarget(p);
         if (p.getHealth() > p.getMaxHealth()) p.setHealth(p.getMaxHealth());
+    }
+    public static boolean healingPenalty(ServerPlayer p) {
+        if (!p.isAlive() || p.isSpectator() || !RaceExperience.selected(p)) return false;
+        var level = p.serverLevel(); var pos = p.blockPosition();
+        return switch (RaceExperience.race(p)) {
+            case 2 -> !com.siirio.jemroles.trait.RaceEnvironment.green(level, pos);
+            case 3 -> com.siirio.jemroles.trait.RaceEnvironment.naturalDaylight(level, pos);
+            case 4 -> level.getBiome(pos).value().coldEnoughToSnow(pos);
+            default -> false;
+        };
+    }
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void heal(net.minecraftforge.event.entity.living.LivingHealEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && healingPenalty(player)) event.setAmount(event.getAmount() * .75F);
     }
     private static void voidState(ServerPlayer p) {
         ServerLevel level = p.serverLevel(); var tag = p.getPersistentData();
@@ -135,7 +146,7 @@ public final class SandboxRaceTraits {
     }
     @SubscribeEvent(priority = EventPriority.HIGHEST) public static void hurt(LivingHurtEvent e) {
         if (!(e.getEntity() instanceof ServerPlayer p) || !owner(p) || !RaceExperience.selected(p) || !e.getSource().is(DamageTypeTags.IS_FIRE)) return;
-        switch (RaceExperience.race(p)) { case 2 -> e.setAmount(e.getAmount() * 2); case 3 -> e.setAmount(e.getAmount() * 1.25F); case 4 -> e.setCanceled(true); default -> { } }
+        switch (RaceExperience.race(p)) { case 2 -> e.setAmount(e.getAmount() * 1.25F); case 3 -> e.setAmount(e.getAmount() * 1.25F); case 4 -> e.setCanceled(true); default -> { } }
     }
     @SubscribeEvent(priority = EventPriority.HIGHEST) public static void death(LivingDeathEvent e) {
         if (e.getEntity() instanceof ServerPlayer p && hasRace(p, 2) && com.siirio.jemroles.trait.RaceEnvironment.green(p.serverLevel(), p.blockPosition())
@@ -176,6 +187,9 @@ public final class SandboxRaceTraits {
         p.sendMerchantOffers(menu.containerId, merchant.getOffers(), menu.getTraderLevel(), merchant.getVillagerXp(), merchant.showProgressBar(), merchant.canRestock());
     }
     @SubscribeEvent public static void containerClose(PlayerContainerEvent.Close e) { if (e.getEntity() instanceof ServerPlayer p && owner(p)) restoreMerchantDiscount(p); }
+    @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent e) { if (e.getEntity() instanceof ServerPlayer p) refresh(p); }
+    @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent e) { if (e.getEntity() instanceof ServerPlayer p) refresh(p); }
+    @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent e) { if (e.getEntity() instanceof ServerPlayer p) refresh(p); }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if (e.getEntity() instanceof ServerPlayer p && owner(p)) clear(p); }
     @SubscribeEvent public static void stopped(ServerStoppedEvent e) { if (RaceExperience.serverActive(e.getServer())) DISCOUNTS.clear(); }
     public static void clear(ServerPlayer p) {

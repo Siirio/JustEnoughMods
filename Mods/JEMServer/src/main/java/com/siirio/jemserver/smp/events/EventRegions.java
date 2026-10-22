@@ -116,7 +116,8 @@ public final class EventRegions {
         int minY = structure.length == 6 ? structure[1] : level.getMinBuildHeight();
         int maxY = structure.length == 6 ? structure[4] + 1 : level.getMaxBuildHeight();
         var bounds=new net.minecraft.world.phys.AABB(minX(event),minY,minZ(event),maxX(event)+1,maxY,maxZ(event)+1);
-        for(var mob:level.getEntitiesOfClass(Mob.class,bounds,candidate->!BloodMoon.belongs(event,candidate)&&!RaidEvent.belongs(event,candidate))) eject(mob,event);
+        for(var mob:level.getEntitiesOfClass(Mob.class,bounds,candidate->!BloodMoon.belongs(event,candidate)
+                &&!RaidEvent.belongs(event,candidate)&&!EventSession.admitted(event,candidate))) eject(mob,event);
     }
 
     public static boolean returnOrigin(ServerPlayer player, CompoundTag member) {

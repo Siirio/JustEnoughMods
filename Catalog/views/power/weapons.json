@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "weapons",
-  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
+  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -5106,6 +5106,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -6537,6 +6538,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -6610,6 +6612,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -7216,6 +7219,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -7291,6 +7295,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -7597,6 +7602,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -7908,6 +7914,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -8459,6 +8466,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -8534,6 +8542,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -9303,6 +9312,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -9607,7 +9617,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -10385,11 +10396,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "calls wear but item has no max damage",
           "special_wear": "calls wear but item has no max damage",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -10448,7 +10460,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -10528,7 +10541,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -11798,11 +11812,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -11861,7 +11876,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -12604,7 +12620,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -13828,11 +13845,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -13891,7 +13909,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -14780,7 +14799,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -15565,11 +15585,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": 0,
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -15628,7 +15649,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -15703,7 +15725,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -16264,11 +16287,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -16327,7 +16351,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -16400,7 +16425,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -16953,11 +16979,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -17016,7 +17043,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -17091,7 +17119,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -17501,11 +17530,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -17564,7 +17594,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -17637,7 +17668,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -18417,11 +18449,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "nominal_tier_uses": 2800,
           "mechanism": "Cataclysm_Tool_Item.isDamageable(ItemStack) returns false",
-          "repair": "cataclysm:monstrous_horn nominal tier ingredient"
+          "repair": "cataclysm:monstrous_horn nominal tier ingredient",
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -18480,7 +18513,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -18561,6 +18595,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -19257,6 +19292,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -19331,7 +19367,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -19750,11 +19787,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -19813,7 +19851,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -19891,7 +19930,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -20342,11 +20382,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": 0,
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -20405,7 +20446,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -20480,7 +20522,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -21459,11 +21502,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -21522,7 +21566,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -21602,7 +21647,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -22385,11 +22431,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -22448,7 +22495,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -22713,7 +22761,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -23823,11 +23872,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -23886,7 +23936,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -23964,7 +24015,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -24705,11 +24757,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": "cannot accumulate",
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -24768,7 +24821,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -25228,7 +25282,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -26162,11 +26217,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "normal_hit_wear": 0,
           "special_wear": "cannot accumulate",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -26225,7 +26281,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -61348,6 +61405,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -61970,6 +62028,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -62044,7 +62103,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -62717,11 +62777,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "nominal_tier_uses": 3000,
           "mechanism": "setDamage always delegates -1, defeating normal hit/block wear",
-          "repair": "legendary_monsters:void_gem nominal tier ingredient"
+          "repair": "legendary_monsters:void_gem nominal tier ingredient",
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -62780,7 +62841,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -62856,6 +62918,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -63297,6 +63360,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -63481,6 +63545,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -63903,6 +63968,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -63972,6 +64038,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -64407,6 +64474,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -64476,6 +64544,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -64776,6 +64845,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -64845,6 +64915,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -65487,6 +65558,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -65556,6 +65628,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -66063,7 +66136,7 @@
           {
             "name": "Forge right-click event AoE",
             "formula": "literal 10 within 4 blocks",
-            "status": "resolved_per_target_parallel_trigger_risk",
+            "status": "method_formula_resolved_reachable_registration_unproved",
             "per_hit_damage": 10.0,
             "range": 4.0,
             "cooldown_ticks": 30,
@@ -66138,6 +66211,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -66174,7 +66248,7 @@
           "unresolved_fields": [
             {
               "field": "dual_handler_activation",
-              "reason": "Both item method and Forge event subscribe to related right-click actions; a runtime event trace is required to prove whether one click can execute both 10-damage paths.",
+              "reason": "The second method formula exists; its active registration/reachable invocation must be established before counting it as an attack. A simultaneous accepted double hit is not proved.",
               "runtime_required": true
             }
           ]
@@ -66213,6 +66287,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -66575,6 +66650,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -66641,7 +66717,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -67402,8 +67479,8 @@
           },
           {
             "name": "Soul Rage",
-            "formula": "self buff for 200 ticks; downstream damage contribution requires effect implementation/loadout context",
-            "status": "effect_duration_resolved",
+            "formula": "Defined200tick effect duration; reachable activation and downstream damage contribution remain unproved by the effect definition alone.",
+            "status": "defined_effect_duration_activation_unresolved",
             "duration_ticks": 200,
             "cooldown_ticks": 280
           },
@@ -67416,11 +67493,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "nominal_tier_uses": 2350,
           "mechanism": "setDamage always delegates -1",
-          "repair": "minecraft:nether_star nominal tier ingredient"
+          "repair": "minecraft:nether_star nominal tier ingredient",
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -67479,7 +67557,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -67669,6 +67748,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -68233,6 +68313,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -68307,7 +68388,8 @@
       },
       "assessment": {
         "boss_reward_suitability": "review_required",
-        "verified_balance_issue": true,
+        "verified_balance_issue": false,
+        "native_unbreakable_exception": true,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -68873,11 +68955,12 @@
           }
         ],
         "durability": {
-          "status": "verified_unbreakable_balance_issue",
+          "status": "verified_native_unbreakable",
           "max_damage": null,
           "nominal_tier_uses": 2100,
           "mechanism": "setDamage always delegates -1",
-          "repair": null
+          "repair": null,
+          "assessment": "Native durability exception is a verified mechanic, not by itself a balance defect or permission to nerf the reward."
         },
         "world_tier": {
           "without_progression_enchantment": {
@@ -68936,7 +69019,8 @@
         },
         "power_assessment": {
           "boss_reward_suitability": "review_required",
-          "verified_balance_issue": true,
+          "verified_balance_issue": false,
+          "native_unbreakable_exception": true,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -69012,6 +69096,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -69272,6 +69357,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -69341,6 +69427,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -69669,6 +69756,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {
@@ -69744,6 +69832,7 @@
       "assessment": {
         "boss_reward_suitability": "review_required",
         "verified_balance_issue": false,
+        "native_unbreakable_exception": false,
         "confidence": "exact_static_components_with_named_runtime_boundaries"
       },
       "evidence": [
@@ -70363,10 +70452,12 @@
           },
           {
             "name": "undead delayed bonus",
-            "formula": "literal additional 41 damage after 2 ticks when target MobType is UNDEAD",
-            "status": "resolved_conditional_outlier",
+            "formula": "Schedules an attempted native wither damage41 after2ticks for an UNDEAD target; target immunity and hurt acceptance remain authoritative.",
+            "status": "resolved_scheduled_attempt_not_accepted_damage",
             "secondary_damage": 41.0,
-            "delay_ticks": 2
+            "delay_ticks": 2,
+            "native_damage_type": "minecraft:wither",
+            "accepted_damage": "unresolved per target; never guaranteed41"
           },
           {
             "name": "melee Wither proc",
@@ -70442,6 +70533,7 @@
         "power_assessment": {
           "boss_reward_suitability": "review_required",
           "verified_balance_issue": false,
+          "native_unbreakable_exception": false,
           "confidence": "exact_static_components_with_named_runtime_boundaries"
         },
         "evidence": {

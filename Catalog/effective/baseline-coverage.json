@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "c493cde26c5646dc267555414d2a4fb060f48ba4d68420b2e4600c2b8550628f",
+  "change_records_sha256": "fe2a3936e7841a2d68b8209e88776697ecede73fbc787f40b2e8d940c739576f",
   "totals": {
     "watched": 3741,
-    "covered": 1920,
-    "unresolved": 1821
+    "covered": 1924,
+    "unresolved": 1817
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1892,8 +1892,8 @@
     },
     "Mods/JEMWorldBossTiers": {
       "watched": 112,
-      "covered": 50,
-      "unresolved": 62,
+      "covered": 54,
+      "unresolved": 58,
       "unresolved_paths": [
         "Mods/JEMWorldBossTiers/gradle.properties",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossEffectApi.java",
@@ -1905,7 +1905,6 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossTierScaling.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EncounterScaler.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentRefreshPolicy.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/EquipmentScaler.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/ParsedBossData.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/RewardProfile.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/TierValues.java",
@@ -1913,12 +1912,9 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/IronsSpellCatalog.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/IronsSpellDamageAdapter.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SpellTierFactors.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/enchantment/ProgressionEnchantment.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/enchantment/TierEnchantments.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/BossPeriodicEffects.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterData.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterProvenance.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingHealthSync.java",

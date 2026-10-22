@@ -26,9 +26,8 @@ public final class BossPeriodicEffects {
     private static final String Y="ZeusY";
     private static final String Z="ZeusZ";
     private static final int INTERVAL_TICKS=140;
-    private static final int TELEGRAPH_TICKS=10;
-    private static final int TELEGRAPH_PARTICLES=10;
-    private static final double TELEGRAPH_RADIUS=.7D;
+    private static final int TELEGRAPH_TICKS=24;
+    private static final int TELEGRAPH_PARTICLES=24;
     private static final double STRIKE_RADIUS=1.75D;
     private static final float STRIKE_DAMAGE=8F;
 
@@ -44,17 +43,23 @@ public final class BossPeriodicEffects {
         CompoundTag data=data(boss);
         long now=now(boss);
         if(data.contains(IMPACT)) {
+            if (data.hasUUID("ZeusTarget") && level.getPlayerByUUID(data.getUUID("ZeusTarget")) instanceof ServerPlayer selected
+                    && forcedCapture(selected)) {
+                data.putLong(IMPACT, now + TELEGRAPH_TICKS);
+                return;
+            }
             telegraph(level,data);
             if(now>=data.getLong(IMPACT)) impact(level,boss,data,participants);
             return;
         }
         if(now<data.getLong(NEXT)) return;
         List<ServerPlayer> targets=participants.stream()
-                .filter(player->player.isAlive()&&!player.isSpectator()&&player.level()==boss.level())
+                .filter(player->player.isAlive()&&!player.isSpectator()&&player.level()==boss.level()&&!forcedCapture(player))
                 .toList();
         if(targets.isEmpty()) return;
         ServerPlayer target=targets.get(boss.getRandom().nextInt(targets.size()));
         Vec3 position=target.position();
+        data.putUUID("ZeusTarget",target.getUUID());
         data.putDouble(X,position.x);
         data.putDouble(Y,position.y);
         data.putDouble(Z,position.z);
@@ -72,7 +77,7 @@ public final class BossPeriodicEffects {
         double x=data.getDouble(X),y=data.getDouble(Y)+.08D,z=data.getDouble(Z);
         for(int index=0;index<TELEGRAPH_PARTICLES;index++) {
             double angle=Math.PI*2D*index/TELEGRAPH_PARTICLES;
-            level.sendParticles(ParticleTypes.ELECTRIC_SPARK,x+Math.cos(angle)*TELEGRAPH_RADIUS,y,z+Math.sin(angle)*TELEGRAPH_RADIUS,1,0,.02D,0,.01D);
+            level.sendParticles(ParticleTypes.ELECTRIC_SPARK,x+Math.cos(angle)*STRIKE_RADIUS,y,z+Math.sin(angle)*STRIKE_RADIUS,1,0,.02D,0,.01D);
         }
     }
 
@@ -93,6 +98,7 @@ public final class BossPeriodicEffects {
         data.remove(X);
         data.remove(Y);
         data.remove(Z);
+        data.remove("ZeusTarget");
         data.putLong(NEXT,now(boss)+INTERVAL_TICKS);
     }
 
@@ -104,6 +110,16 @@ public final class BossPeriodicEffects {
 
     private static long now(LivingEntity boss) {
         return boss.getServer().overworld().getGameTime();
+    }
+
+    private static boolean forcedCapture(ServerPlayer player) {
+        // Cataclysm 3.31 Poke force-mounts its accepted target on Ignis.
+        var vehicle = player.getVehicle();
+        if (vehicle != null && net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(vehicle.getType())
+                .equals(new ResourceLocation("cataclysm", "ignis"))) return true;
+        // Native EffectStun installs -0.5 movement speed; no invented entity tags.
+        var stun = net.minecraftforge.registries.ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation("cataclysm", "stun"));
+        return stun != null && player.hasEffect(stun);
     }
 
     private BossPeriodicEffects() {}

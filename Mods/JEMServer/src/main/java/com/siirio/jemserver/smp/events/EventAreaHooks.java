@@ -90,7 +90,7 @@ public final class EventAreaHooks {
             var row=EventScheduler.active(level.getServer(),type);
             if(row==null || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             boolean belongs=type.equals("BLOOD_MOON")?BloodMoon.belongs(row,mob):RaidEvent.belongs(row,mob);
-            if(!belongs) EventRegions.eject(mob,row);
+            if(!belongs && !EventSession.admitted(row,mob)) EventRegions.eject(mob,row);
             else if(mob.getNavigation().getTargetPos()!=null && !SolidBoundary.permitsTeleport(mob,level,Vec3.atBottomCenterOf(mob.getNavigation().getTargetPos())))
                 mob.getNavigation().stop();
             return;
@@ -121,14 +121,17 @@ public final class EventAreaHooks {
             event.setCanceled(true);
             return;
         }
-        if(!(target instanceof ServerPlayer player) || row==null || !new EventSession(row).accepted(player.getUUID()) || !player.isAlive() || player.isSpectator() || !EventRegions.contains(row,player.serverLevel(),player.blockPosition())) event.setCanceled(true);
+        if(row==null || !EventSession.canInteract(mob,target)) event.setCanceled(true);
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public static void damage(LivingAttackEvent event) {
         if(event.getEntity().level().isClientSide) return;
-        var attacker=EventSession.owner(event.getSource().getEntity());
-        if(attacker==null) attacker=EventSession.owner(event.getSource().getDirectEntity());
+        Entity sourceEntity=event.getSource().getEntity();
+        if(sourceEntity==null) sourceEntity=event.getSource().getDirectEntity();
+        var attacker=EventSession.owner(sourceEntity);
         var victim=event.getEntity();
         if(attacker==null) return;
+        LivingEntity actor=sourceEntity instanceof LivingEntity living ? living
+                : attacker instanceof LivingEntity living ? living : null;
         if (unavailableEventEntity(attacker) || unavailableEventEntity(victim)) return;
         if(attacker instanceof Mob && victim instanceof Mob
                 && attacker.getPersistentData().hasUUID(BloodMoon.EVENT_ID)
@@ -137,23 +140,15 @@ public final class EventAreaHooks {
             event.setCanceled(true);
             return;
         }
-        var sourceSession = attacker instanceof ServerPlayer sourcePlayer ? EventSession.combatForPlayer(sourcePlayer) : null;
-        var targetSession = victim instanceof ServerPlayer targetPlayer ? EventSession.combatForPlayer(targetPlayer) : null;
-        UUID sourceId = sourceSession != null && sourceSession.getBoolean("combatStarted") ? sourceSession.getUUID("id")
-                : attacker.getPersistentData().hasUUID(EventSession.SESSION) ? attacker.getPersistentData().getUUID(EventSession.SESSION)
-                : attacker.getPersistentData().hasUUID(RaidEvent.EVENT_ID) ? attacker.getPersistentData().getUUID(RaidEvent.EVENT_ID) : null;
-        UUID targetId = targetSession != null && targetSession.getBoolean("combatStarted") ? targetSession.getUUID("id")
-                : victim.getPersistentData().hasUUID(EventSession.SESSION) ? victim.getPersistentData().getUUID(EventSession.SESSION)
-                : victim.getPersistentData().hasUUID(RaidEvent.EVENT_ID) ? victim.getPersistentData().getUUID(RaidEvent.EVENT_ID) : null;
-        if ((sourceId != null || targetId != null) && (!Objects.equals(sourceId, targetId)
-                || attacker instanceof ServerPlayer && victim instanceof ServerPlayer)) {
+        if (actor != null && !EventSession.canInteract(actor,victim)) {
             event.setCanceled(true);
             return;
         }
-        var source=attacker.getPersistentData();var target=victim.getPersistentData();
-        if(source.hasUUID(EventSession.SESSION)) {
-            var row=SmpData.get(victim.getServer()).find("events",source.getUUID(EventSession.SESSION));
-            if(!(victim instanceof ServerPlayer player) || row==null || !new EventSession(row).accepted(player.getUUID()) || !EventRegions.contains(row,player.serverLevel(),player.blockPosition())) event.setCanceled(true);
+        var target=victim.getPersistentData();
+        if(EventSession.combatForEntity(victim)!=null && attacker instanceof ServerPlayer sourcePlayer
+                && EventSession.owner(victim) instanceof ServerPlayer targetPlayer && sourcePlayer!=targetPlayer) {
+            event.setCanceled(true);
+            return;
         }
         if(victim instanceof ServerPlayer player && attacker instanceof ServerPlayer other) {
             var row=EventSession.forPlayer(player);
@@ -167,14 +162,8 @@ public final class EventAreaHooks {
                 }
             }
         }
-        if(target.hasUUID(EventSession.SESSION) && attacker instanceof ServerPlayer player) {
-            var row=SmpData.get(player.server).find("events",target.getUUID(EventSession.SESSION));
-            if(row==null || !new EventSession(row).accepted(player.getUUID()) || !EventRegions.contains(row,player.serverLevel(),player.blockPosition())) {
-                event.setCanceled(true);
-                return;
-            }
-            if(victim instanceof Mob mob && target.hasUUID(BloodMoon.EVENT_ID)) mob.setTarget(player);
-        }
+        if(victim instanceof Mob mob && target.hasUUID(BloodMoon.EVENT_ID)
+                && attacker instanceof ServerPlayer && actor!=null) mob.setTarget(actor);
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void statistics(LivingDamageEvent event) {
         if (!EventRuntime.enabled(event.getEntity().getServer())) return;

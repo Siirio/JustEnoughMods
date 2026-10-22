@@ -28,7 +28,8 @@ public final class HostedEncounterApi {
                     : entity instanceof net.minecraft.world.entity.OwnableEntity owned ? owned.getOwner()
                     : entity instanceof net.minecraft.world.entity.item.PrimedTnt tnt ? tnt.getOwner()
                     : entity instanceof net.minecraft.world.entity.AreaEffectCloud cloud ? cloud.getOwner()
-                    : entity instanceof net.minecraft.world.entity.projectile.EvokerFangs fangs ? fangs.getOwner() : null;
+                    : entity instanceof net.minecraft.world.entity.projectile.EvokerFangs fangs ? fangs.getOwner()
+                    : com.siirio.jemworldbosstiers.encounter.HostedAllies.owner(entity);
             if(next==null) return entity;
             entity=next;
         }
@@ -38,6 +39,18 @@ public final class HostedEncounterApi {
     public static boolean canHost(LivingEntity boss) {
         return WorldTierApi.profile(boss).filter(com.siirio.jemworldbosstiers.balance.BossProfile::hostedEncounter).isPresent()
                 && !com.siirio.jemworldbosstiers.encounter.HostedGroup.member(boss);
+    }
+
+    /** Shared admission for control, support and damage; this does not bypass native immunity. */
+    public static boolean canInteract(LivingEntity actor, LivingEntity target) {
+        if (!HostedEncounters.canInteract(actor, target)) return false;
+        if (!net.minecraftforge.fml.ModList.get().isLoaded("jem_server")) return true;
+        try {
+            return (boolean) Class.forName("com.siirio.jemserver.smp.events.EventSession")
+                    .getMethod("canInteract", LivingEntity.class, LivingEntity.class).invoke(null, actor, target);
+        } catch (ReflectiveOperationException failure) {
+            throw new IllegalStateException("Installed event interaction contract failed", failure);
+        }
     }
 
     public static boolean hold(LivingEntity boss) { return com.siirio.jemworldbosstiers.encounter.HostedLobby.hold(boss); }

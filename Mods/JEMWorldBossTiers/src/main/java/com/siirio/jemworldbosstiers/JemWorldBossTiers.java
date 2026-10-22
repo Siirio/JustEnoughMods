@@ -66,7 +66,6 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 @Mod(JemWorldBossTiers.MOD_ID)
 public final class JemWorldBossTiers {
     public static final String MOD_ID = "jem_world_boss_tiers";
-    private static final String PROGRESSION_PROJECTILE = "JEMProgressionProjectile";
     private static final int CRITICAL_TIER = 3;
     private static final float CRITICAL_CHANCE = 0.15F;
     private static final float CRITICAL_MULTIPLIER = 1.5F;
@@ -87,8 +86,10 @@ public final class JemWorldBossTiers {
         MinecraftForge.EVENT_BUS.register(new RevivalService());
         MinecraftForge.EVENT_BUS.register(bossRespawns);
         MinecraftForge.EVENT_BUS.register(new WeaponProtection());
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.cataclysm.IncineratorBudget.class);
         if (ModList.get().isLoaded("irons_spellbooks")) {
             MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.irons.IronsSpellDamageAdapter.class);
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemworldbosstiers.compat.irons.ContinuousEchoes.class);
         }
     }
 
@@ -124,8 +125,10 @@ public final class JemWorldBossTiers {
             if (event.getSource().getEntity() instanceof ServerPlayer player) EncounterData.addParticipant(target.getPersistentData(), player.getUUID());
         });
         Entity attacker = event.getSource().getEntity();
-        if (attacker instanceof ServerPlayer player && isProgressionAttack(event, player)) {
-            int tier = WorldTierData.get(player.server).tier();
+        int weaponTier = attacker instanceof ServerPlayer player
+                ? com.siirio.jemworldbosstiers.balance.ProgressionWeapons.attackTier(target, event.getSource(), player) : 0;
+        if (attacker instanceof ServerPlayer player && weaponTier > 0) {
+            int tier = weaponTier;
             float amount = event.getAmount() * progressionMultiplier(tier);
             if (tier >= CRITICAL_TIER && player.getRandom().nextFloat() < CRITICAL_CHANCE) {
                 amount *= CRITICAL_MULTIPLIER;
@@ -145,12 +148,14 @@ public final class JemWorldBossTiers {
             }
             event.setAmount(amount);
         }
-        if (attacker instanceof LivingEntity livingAttacker && !eventOwned(livingAttacker)) {
+        boolean nativeScaled = com.siirio.jemworldbosstiers.compat.cataclysm.NativeBossDamage.consume(target, event.getSource());
+        Entity rootAttacker = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(attacker);
+        if (rootAttacker == null) rootAttacker = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
+        if (!nativeScaled && rootAttacker instanceof LivingEntity livingAttacker && !eventOwned(livingAttacker)) {
             boss(livingAttacker).ifPresent(profile -> {
                 int tier = EncounterScaler.ensureScaled(livingAttacker, profile);
                 double factor = profile.scalesWithWorldTier() ? com.siirio.jemworldbosstiers.balance.BossTierScaling.boost(tier) : 1;
-                if (profile.specialDamageMultiplier() != null
-                        && !com.siirio.jemworldbosstiers.api.HostedEncounterApi.isRaid(livingAttacker)) {
+                if (profile.specialDamageMultiplier() != null) {
                     factor *= profile.specialDamageMultiplier().valueAt(tier);
                 }
                 factor *= com.siirio.jemworldbosstiers.encounter.HostedEncounters.damageFactor(livingAttacker);
@@ -159,7 +164,7 @@ public final class JemWorldBossTiers {
         }
         Entity owner = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(attacker);
         if (owner == null) owner = com.siirio.jemworldbosstiers.api.HostedEncounterApi.damageOwner(event.getSource().getDirectEntity());
-        if (owner instanceof LivingEntity hostedBoss
+        if (!nativeScaled && owner instanceof LivingEntity hostedBoss
                 && com.siirio.jemworldbosstiers.encounter.HostedEncounters.isHosted(hostedBoss)) {
             event.setAmount(event.getAmount() * HOSTED_BOSS_DAMAGE_STRENGTH);
         }
@@ -169,7 +174,7 @@ public final class JemWorldBossTiers {
     @SubscribeEvent
     public void initializeEncounter(EntityJoinLevelEvent event) {
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof AbstractArrow arrow) {
-            applyProgressionArrow(arrow);
+            com.siirio.jemworldbosstiers.balance.ProgressionWeapons.freezeUncaptured(arrow);
         }
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof LivingEntity living && !eventOwned(living)) {
             boss(living).ifPresent(profile -> EncounterScaler.ensureScaled(living, profile));
@@ -189,13 +194,6 @@ public final class JemWorldBossTiers {
 
     private static boolean eventOwned(LivingEntity entity) {
         return entity.getPersistentData().getBoolean("jem:event_spawned");
-    }
-
-    @SubscribeEvent
-    public void prepareProgressionArrowImpact(ProjectileImpactEvent event) {
-        if (!event.getProjectile().level().isClientSide() && event.getProjectile() instanceof AbstractArrow arrow) {
-            applyProgressionArrow(arrow);
-        }
     }
 
     @SubscribeEvent
@@ -319,7 +317,7 @@ public final class JemWorldBossTiers {
     }
 
     @SubscribeEvent
-    public void expireProgressionArmorBoost(TickEvent.PlayerTickEvent event) {
+    public void expireProgressionArmorBoost(net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent event) {
         ProgressionArmor.tick(event);
     }
 
@@ -335,39 +333,6 @@ public final class JemWorldBossTiers {
                     "tooltip.jem_world_boss_tiers.progression." + type + "." + Math.min(CRITICAL_TIER, ClientTierState.tier())
             ));
         }
-    }
-
-    private static boolean isProgressionAttack(LivingHurtEvent event, ServerPlayer player) {
-        Entity direct = event.getSource().getDirectEntity();
-        if (direct instanceof AbstractArrow arrow) {
-            return arrow.getPersistentData().getBoolean(PROGRESSION_PROJECTILE);
-        }
-        return direct == player && progressionLevel(player.getMainHandItem()) > 0;
-    }
-
-    private static void applyProgressionArrow(AbstractArrow arrow) {
-        int tier = arrow.getPersistentData().getInt("JEMProgressionTier");
-        if (tier <= 0 && arrow.getOwner() instanceof ServerPlayer player
-                && progressionLevel(projectileWeapon(player)) > 0) {
-            tier = WorldTierData.get(player.server).tier();
-            arrow.getPersistentData().putBoolean(PROGRESSION_PROJECTILE, true);
-            arrow.getPersistentData().putInt("JEMProgressionTier", tier);
-        }
-        int piercing = tier >= 3 ? 3 : tier >= 2 ? 2 : 0;
-        if (piercing > arrow.getPierceLevel()) {
-            arrow.setPierceLevel((byte) piercing);
-        }
-    }
-
-    private static ItemStack projectileWeapon(ServerPlayer player) {
-        if (player.getMainHandItem().getItem() instanceof ProjectileWeaponItem
-                && progressionLevel(player.getMainHandItem()) > 0) {
-            return player.getMainHandItem();
-        }
-        if (player.getOffhandItem().getItem() instanceof ProjectileWeaponItem) {
-            return player.getOffhandItem();
-        }
-        return ItemStack.EMPTY;
     }
 
     private static int progressionLevel(ItemStack stack) {

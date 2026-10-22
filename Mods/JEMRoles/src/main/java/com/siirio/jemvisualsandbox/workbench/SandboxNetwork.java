@@ -18,9 +18,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 @Mod.EventBusSubscriber(modid="jem_roles", bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class SandboxNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "7",
-            v -> "7".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
-            v -> "7".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
+            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "9",
+            v -> "9".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
+            v -> "9".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
     public record Input(int action, int race,java.util.UUID nonce) {
         public Input(int action,int race){this(action,race,null);}
         static Input decode(FriendlyByteBuf buffer) { int action=buffer.readVarInt(),race=buffer.readVarInt();return new Input(action,race,action==0?buffer.readUUID():null); }
@@ -52,9 +52,9 @@ public final class SandboxNetwork {
             if(signature<0||secondary<0||bloom<0||bloom>3)throw new IllegalArgumentException("Invalid cooldown snapshot");
             long reselect=b.readVarLong();boolean test=b.readBoolean();java.util.UUID nonce=b.readUUID();
             if(reselect<0)throw new IllegalArgumentException("Invalid selection wait");
-            return new Status(new RaceExperience.Status(race,selected,tiers,progress,signature,secondary,developer,bloom,reselect,test,nonce));
+            return new Status(new RaceExperience.Status(race,selected,tiers,progress,signature,secondary,developer,bloom,reselect,test,nonce,b.readBoolean()));
         }
-        void encode(FriendlyByteBuf b){b.writeVarInt(value.race());b.writeBoolean(value.selected());for(int i=0;i<5;i++){b.writeVarInt(value.tiers()[i]);b.writeVarInt(value.progress()[i]);}b.writeVarLong(value.signatureRemaining());b.writeVarLong(value.secondaryRemaining());b.writeBoolean(value.developerMode());b.writeVarInt(value.bloomUpgrade());b.writeVarLong(value.reselectRemaining());b.writeBoolean(value.testProfile());b.writeUUID(value.nonce());}
+        void encode(FriendlyByteBuf b){b.writeVarInt(value.race());b.writeBoolean(value.selected());for(int i=0;i<5;i++){b.writeVarInt(value.tiers()[i]);b.writeVarInt(value.progress()[i]);}b.writeVarLong(value.signatureRemaining());b.writeVarLong(value.secondaryRemaining());b.writeBoolean(value.developerMode());b.writeVarInt(value.bloomUpgrade());b.writeVarLong(value.reselectRemaining());b.writeBoolean(value.testProfile());b.writeUUID(value.nonce());b.writeBoolean(value.healingPenalty());}
         void handle(Supplier<NetworkEvent.Context> supplier){var c=supplier.get();c.enqueueWork(()->{
             net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->{
                 com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.receive(value);

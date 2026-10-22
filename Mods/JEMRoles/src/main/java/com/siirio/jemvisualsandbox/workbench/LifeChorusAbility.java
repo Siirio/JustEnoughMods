@@ -52,14 +52,24 @@ public final class LifeChorusAbility {
     private static void repel(ServerPlayer p,Vec3 origin,double radius,Set<UUID> hit){
         var area=new net.minecraft.world.phys.AABB(origin,origin).inflate(radius,3,radius);
         for(Mob mob:p.serverLevel().getEntitiesOfClass(Mob.class,area,m->m.isAlive() && hostile(p,m))){
+            if(!ProductionRaceBridge.canInteract(p,mob))continue;
             if(mob.position().subtract(origin).multiply(1,0,1).lengthSqr()>radius*radius || !hit.add(mob.getUUID()))continue;
             double dx=origin.x-mob.getX(),dz=origin.z-mob.getZ();if(dx*dx+dz*dz<.0001){dx=1;dz=0;}
             mob.knockback(.9,dx,dz);mob.hurtMarked=true;
         }
     }
-    private static boolean friendly(LivingEntity e) {
-        if(e instanceof Player || e instanceof Animal || e instanceof AbstractVillager || e instanceof IronGolem)return true;
-        String namespace=net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(e.getType()).getNamespace();return namespace.equals("recruits") || namespace.equals("workers");
+    private static boolean friendly(ServerPlayer caster, LivingEntity target) {
+        if(!ProductionRaceBridge.canInteract(caster,target))return false;
+        if(target==caster)return true;
+        if(target instanceof Player player)return !player.isSpectator() && (caster.getTeam()==null && player.getTeam()==null || caster.isAlliedTo(player));
+        ServerPlayer owner=ProductionRaceBridge.damageOwner(target);
+        if(owner!=null)return owner.isAlive() && !owner.isSpectator() && (owner==caster || caster.getTeam()==null && owner.getTeam()==null || caster.isAlliedTo(owner));
+        if(target instanceof Mob mob && mob.getTarget()!=null)return false;
+        return target instanceof Animal || target instanceof AbstractVillager || target instanceof IronGolem;
+    }
+    private static boolean peacefulAnimal(LivingEntity target) {
+        return target instanceof Animal && ProductionRaceBridge.damageOwner(target)==null
+                && (!(target instanceof Mob mob) || mob.getTarget()==null);
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent e) {
         if(e.phase!=TickEvent.Phase.END || !RaceExperience.serverActive(e.getServer()))return;
@@ -76,9 +86,12 @@ public final class LifeChorusAbility {
             if(age==7)p.level().playSound(null,p.blockPosition(),net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_CHIME,net.minecraft.sounds.SoundSource.PLAYERS,.6F,1.15F);
             if(age>=7 && age<=18) {
                 double radius=RacePowerStages.chorusRadius(c.tier)*Math.min(1,(age-6)/(double)WAVE_TICKS);
-                for(LivingEntity target:p.serverLevel().getEntitiesOfClass(LivingEntity.class,p.getBoundingBox().move(c.origin.subtract(p.position())).inflate(radius,16,radius),v->v.isAlive() && (v==p.getVehicle() || friendly(v) && !(v instanceof Mob m && hostile(p,m))))) {
+                for(LivingEntity target:p.serverLevel().getEntitiesOfClass(LivingEntity.class,p.getBoundingBox().move(c.origin.subtract(p.position())).inflate(radius,16,radius),v->v.isAlive() && friendly(p,v))) {
                     if(target.position().subtract(c.origin).multiply(1,0,1).lengthSqr()>radius*radius || !c.answered.add(target.getUUID()))continue;
-                    if(target instanceof Player)target.heal(6);else target.setHealth(target.getMaxHealth());
+                    float missing=Math.max(0,target.getMaxHealth()-target.getHealth());
+                    float healing=target instanceof Player?6:Math.max(6,.20F*target.getMaxHealth());
+                    if(peacefulAnimal(target))healing=missing;
+                    target.heal(Math.min(missing,healing));
                     if(c.tier>=2)target.getActiveEffects().stream().filter(v->v.getEffect().getCategory()==MobEffectCategory.HARMFUL).map(MobEffectInstance::getEffect).toList().forEach(target::removeEffect);
                     // Retain the preceding canonical Life Chorus full-health ally boon.
                     if(c.tier>=3 && target.getHealth()>=target.getMaxHealth()){
