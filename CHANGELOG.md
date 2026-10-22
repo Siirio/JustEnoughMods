@@ -1,3 +1,15 @@
+## 2026-10-22 - Revise universal architecture for dedicated SMP and independent rewards
+
+User requirements: update the Forge 1.20.1 / Java 17 architecture plan only, without implementing code. The amendment supersedes integrated SMP/party/JEM Raid and preparation-time Raid scaling in the previous plan. Dedicated identity includes a one-player server; opening an integrated world to LAN does not enable SMP. Ordinary solo bosses retain a working combat path and independent difficulty/World Tier.
+
+The existing universal plan now specifies minimal combat/event parties, frozen participants, distinct idempotent Raid/party scaling, personal take-only item rewards to the left of inventory, lossless legacy migration, standard resource-pack-aware Minecraft controls, Economy-owned independent Market, and a shared first-choice/F6 race-model lifecycle. It preserves ordinary world loot, non-item rewards, player domain data and vanilla/third-party raids. Future manual acceptance covers the supplied scenarios and recovery boundaries; none is marked passed.
+
+Architectural choices proposed by Codex: an independent JEMRewards domain, stable per-source/attempt/recipient grant keys and durable claim/migration receipts. The user specified independence and behavior, not module/class names. Existing domain documents link to the amendment and distinguish planned behavior from the current implementation.
+
+Bug / Client / first mandatory race selection reportedly lacks the player model while F6 displays it; concrete root cause not established / investigation planned, not fixed. Compare actual readiness and screen/preview lifecycles, establish the owning cause and reproduce when authorized; no arbitrary delay is proposed.
+
+Documentation only: no Java/config/dependency, Atlas gameplay fact, Client/ManagedPack, Server artifact, native generation or release-baseline change. No build, automated test, static analysis or game/server launch. Required initial jem.py status completed: publication was already false (journal 59; staged and published manifest hashes differ); this unrelated pre-existing state is not repaired or represented as fresh by this plan update.
+
 ## 2026-10-22 - Correct combat damage provenance and balance
 
 User request: implement the supplied complete combat correction, comparing the e3fb8c01 audit against current sources; preserve World Tier thresholds, the Tier III enchantment cap, native late rewards, boss phases, saves and optional-module independence. No game/server launch or live deployment is authorized by this prompt. Existing upstream Atlas commits were fast-forwarded with concurrent local work preserved.

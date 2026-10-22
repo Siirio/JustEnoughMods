@@ -1,5 +1,7 @@
 # Complete economy overhaul — 2026-10-16
 
+> Planning amendment, 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) requires Economy-owned Market UI, operations and independent opening in integrated/dedicated worlds without SMP, party or player-profile dependencies. Economy off disables Market under the existing full-off contract. Shared item reward storage/UI remains independent of Economy. This amendment is not implemented by this documentation task.
+
 User specification: complete autonomous economy overhaul supplied 2026-10-16.
 The user explicitly authorizes design choices, builds, automated tests and local
 runtime validation for this task. No MineRENT deployment, world resets, stable

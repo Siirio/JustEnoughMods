@@ -1,5 +1,7 @@
 # Boss Fight
 
+> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) требует доступного обычного боя в integrated/LAN без SMP, пати, подтверждения состава и группового усиления. Босс не может оставаться заблокированным ожиданием отключённого SMP Start; World Tier, отдельная сложность и Campaign prerequisites сохраняются. На dedicated действует серверный lifecycle. Этот план ещё не реализован; ниже описан текущий код.
+
 ## Universal ownership — 2026-10-22
 
 The same logical-server encounter implementation serves integrated worlds and dedicated hosts. WorldBossTiers owns dormant native tick/presentation hold, canonical structure discovery, participation/scaling, rewards and revival. Without Server, its own solo admission opens on an attempted dormant-boss hit; with Server, the existing encounter/party UI owns that flow. Matching WorldTier protocol is 6. Server's scheduled/seasonal event switch does not gate ordinary boss Start or solo Raid. Strict TwelveEyes Start prerequisites remain independent from content-aware WorldTier progression; see the [module contracts](../universal/README.md). Runtime/player acceptance is still separate from source implementation.

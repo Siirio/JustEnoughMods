@@ -1,5 +1,7 @@
 # SMP GUI
 
+> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) заменяет будущий navigation contract: SMP/party только на dedicated, социальные профили и раздел "Награды" удаляются, предметы получаются слева от инвентаря без SMP, Market самостоятельно открывается через Economy. Это ещё не реализовано; описания текущих экранов ниже не являются разрешением сохранить противоречащие элементы при выполнении нового плана.
+
 ## Starter entitlement and authentication/race protection —2026-10-21
 
 Source implemented / **in testing**. No build, runtime delivery, protection check or deployment is claimed by this section.

@@ -1,5 +1,7 @@
 # JEM Races
 
+> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) фиксирует отсутствующую модель при первом обязательном выборе и видимую модель через F6. Причина пока не установлена. Предстоят сравнение lifecycle двух входов, разрешённое воспроизведение и общий путь подготовки модели со стандартной внешностью до загрузки скина. Исправление и игровая приёмка в этой задаче не выполнялись.
+
 ## Innate spells, guardian and Jade —2026-10-21
 
 Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.

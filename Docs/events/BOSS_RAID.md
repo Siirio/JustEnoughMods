@@ -1,5 +1,7 @@
 # Boss Raid
 
+> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) отменяет будущий solo/integrated JEM Raid: это dedicated-only событие JEMServer, включая восстановление сохранений. Raid scale применяется при старте рейда, party scale — при подтверждении/старте боя, каждый слой однократно; предметные награды переходят независимому владельцу. Ниже сохранено описание существующей реализации, включая прежнюю подготовку усиления; код по этому плану ещё не менялся.
+
 ## Universal ordinary Raid — 2026-10-22
 
 Ordinary solo/party Raid reuses the canonical hosted encounter on integrated and dedicated servers. It is distinct from scheduled/seasonal Events: those remain explicit dedicated opt-in, default off. WorldBossTiers offers solo admission without Server and owns the same preparation, full-collision-box admission, historical arena participation, rewards and durable normal-boss recovery. Server, when installed, provides the existing party/UI adapter and delegates structure discovery to StructureEncounterApi. No second Raid allowlist, scaling owner, barrier or reward ledger is introduced. Source behavior is not a completed gameplay/recovery acceptance claim. See [WorldTier](../../Mods/JEMWorldBossTiers/README.md).
