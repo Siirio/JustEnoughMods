@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "mod_id": "automodpack",
+  "installed_version": "5.0.0-rc.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/automodpack",
+      "publisher": "Skidam",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "automodpack:trust_and_download",
+      "kind": "interaction",
+      "title": "Approve a server pack and download it",
+      "player_action": "Connect with AutoModpack and review the server certificate fingerprint before trusting the pack.",
+      "outcome": "The client obtains the hash-indexed manifest and files, using Modrinth/CurseForge direct sources where available.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "JEM installs 5.0.0-rc.1 through jem-bootstrap.jar; the general project page may describe a later release.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Download completion, restart/application and a server join are different states. Upstream behavior must not be substituted for JEM's custom bootstrap/native generation owner; no operation was executed."
+    },
+    {
+      "key": "automodpack:native_activation",
+      "kind": "interaction",
+      "title": "Activate the downloaded pack",
+      "player_action": "Complete the native restart/application flow after initial download.",
+      "outcome": "The modpack becomes loadable after activation; a completed download by itself does not prove installed files are active.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Download completion, restart/application and a server join are different states. Upstream behavior must not be substituted for JEM's custom bootstrap/native generation owner; no operation was executed."
+    },
+    {
+      "key": "automodpack:launch_updates",
+      "kind": "integration",
+      "title": "Receive later pack changes",
+      "player_action": "Launch again or accept an update detected while already playing.",
+      "outcome": "Upstream checks for changes on subsequent launches; changes found during a running game can require a restart.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Follow JEM's canonical publication and application workflow rather than manually copying managed files.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Download completion, restart/application and a server join are different states. Upstream behavior must not be substituted for JEM's custom bootstrap/native generation owner; no operation was executed."
+    }
+  ]
+}

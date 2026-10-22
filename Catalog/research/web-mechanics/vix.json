@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "mod_id": "vix",
+  "installed_version": "1.0.9",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://github.com/Siirio/JustEnoughMods",
+      "publisher": "GuHao_",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar!/META-INF/jarjar/guhaos-vix-1531111-8258354.jar",
+        "sha256": "4f118543ec742d8e4aa1d5e3ebb26515613dee53628558be6bc82448ebee6f1e",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "vix:installed_role",
+      "kind": "compatibility",
+      "title": "VIX role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "The installed embedded library supplies shared utilities to its consuming addon; it is not a similarly named performance resource pack found by a broad web search.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 1.0.9"
+    }
+  ]
+}

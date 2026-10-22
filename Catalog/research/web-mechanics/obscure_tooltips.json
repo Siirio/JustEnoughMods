@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "mod_id": "obscure_tooltips",
+  "installed_version": "3.10.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/obscure-tooltips",
+      "publisher": "Obscuria",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "obscure_tooltips:gear_preview",
+      "kind": "interaction",
+      "title": "Inspect decorative tooltips and gear models",
+      "player_action": "Hover supported armor, tools or weapons in an inventory.",
+      "outcome": "The tooltip can show animated frames/particles and integrated 3D item previews.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "obscure_tooltips:long_tooltip",
+      "kind": "interaction",
+      "title": "Read oversized descriptions",
+      "player_action": "Keep a long or wide tooltip open.",
+      "outcome": "Automatic scrolling and wrapping help expose text that exceeds screen dimensions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "obscure_tooltips:forge_configuration",
+      "kind": "compatibility",
+      "title": "Configure the 1.20.1 tooltip presentation",
+      "player_action": "Edit config/obscuria/obscure_tooltips-client.toml or use a supported optional configuration-screen mod.",
+      "outcome": "Settings can be changed even without the newer release's built-in configuration screen.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Do not assume the 1.21.1 built-in settings path applies to installed 1.20.1.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "mod_id": "oceanicrealms",
+  "installed_version": "1.0.7",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/oceanic-realms",
+      "publisher": "leomard0_o / Min01",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "oceanicrealms:ocean_species",
+      "kind": "interaction",
+      "title": "Explore ocean-temperature-specific marine life",
+      "player_action": "Survey deep, warm and cold oceans for sharks and other marine life.",
+      "outcome": "The mod assigns different aquatic species to different ocean habitats.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "oceanicrealms:great_white_shark"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди морских животных в разных океанских биомах.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.7. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "oceanicrealms:shark_feeding",
+      "kind": "interaction",
+      "title": "Feed sharks rather than assuming universal hostility",
+      "player_action": "Offer suitable fish food to a shark and distinguish neutral predators from passive whale sharks.",
+      "outcome": "Sharks can eat prey drops and can also be fed by players.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Накорми акулу и изучи её поведение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.7. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "oceanicrealms:tuna_food",
+      "kind": "acquisition",
+      "title": "Catch tuna as an ocean food source",
+      "player_action": "Find tuna schools in the ocean and obtain their meat.",
+      "outcome": "Large fish add food acquisition to ocean exploration.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь тунца и приготовь морскую пищу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.7. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "oceanicrealms:unreleased_species",
+      "kind": "compatibility",
+      "title": "Exclude announced but unreleased species",
+      "player_action": "Check the author warning before adding a seagull or jackfish objective.",
+      "outcome": "Those two species are explicitly marked unreleased on the project page.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Author page may describe a different release than installed 1.0.7. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

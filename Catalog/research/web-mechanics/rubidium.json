@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "mod_id": "rubidium",
+  "installed_version": "0.7.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://github.com/FiniteReality/embeddium",
+      "publisher": "Installed mod author",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/embeddium-0.3.31+mc1.20.1.jar",
+        "sha256": "eed3d1325f2acc2fd4e69bb495e5ccb91d962126ac5330f0582ebc2a3daf47fb",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "rubidium:installed_role",
+      "kind": "compatibility",
+      "title": "Rubidium (Embeddium) role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "The installed Embeddium archive declares this as a compatibility stub for mods checking the Rubidium ID; it is not evidence of a second independently installed terrain renderer.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes.",
+        "User policy 2026-10-22: never install the standalone Rubidium mod; user reports it crashes this pack. The embedded Embeddium compatibility ID is not permission to add a Rubidium JAR."
+      ],
+      "source_ids": [
+        "installed_metadata"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 0.7.1 No standalone Rubidium artifact was installed or recommended during this research."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "mod_id": "creeperoverhaul",
+  "installed_version": "3.0.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/creeper-overhaul",
+      "publisher": "joosh_7889 / ThatGravyBoat",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "creeperoverhaul:biome_creeper_behavior",
+      "kind": "interaction",
+      "title": "Identify biome-specific creepers before engagement",
+      "player_action": "Explore several biomes and distinguish the local creeper types before approaching.",
+      "outcome": "Some variants are friendlier; visual variation does not imply every creeper has vanilla hostility.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "creeperoverhaul:mushroom_creeper"
+        },
+        {
+          "registry": "entities",
+          "id": "creeperoverhaul:desert_creeper"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди разных криперов и изучи их поведение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 3.0.2. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

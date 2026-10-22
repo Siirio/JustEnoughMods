@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "mod_id": "unearthed_journey",
+  "installed_version": "2.2.3",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/unearthed-journey",
+      "publisher": "Epoch_Studio",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/unearthed-journey",
+      "publisher": "Epoch_Studio",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/unearthed-journey",
+      "publisher": "Epoch_Studio; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/unearthed_journey-2.2.3.jar",
+        "sha256": "e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6",
+        "resource": "assets/unearthed_journey/lang/en_us.json",
+        "resources": [
+          "assets/unearthed_journey/lang/en_us.json",
+          "data/unearthed_journey/recipes/tipped_blow_dart_recipe.json",
+          "data/unearthed_journey/recipes/bituminous_rock_smelt_recipe.json"
+        ]
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "unearthed_journey:three_eras",
+      "kind": "metadata",
+      "title": "Three Cenozoic dimensions",
+      "player_action": "Explore Paleogene, Neogene and Pleistocene eras. Formations are biome-like regions within each dimension.",
+      "outcome": "Content scope is three dimensions, not two.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Начни путешествие по трём доисторическим эпохам.",
+        "detection": "manual"
+      }
+    },
+    {
+      "key": "unearthed_journey:temple",
+      "kind": "progression",
+      "title": "Find Methuselah temple",
+      "player_action": "Search jungle biomes for the Temple to Methuselah; explore its chambers to reach the boss.",
+      "outcome": "Entrance to the time-travel unlock path.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "unearthed_journey:temple_to_methuselah"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди храм Мафусаила в джунглях.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "unearthed_journey:methuselah_eye",
+      "kind": "progression",
+      "title": "Defeat Methuselah",
+      "player_action": "Defeat the Methuselah boss in the temple and collect its eye.",
+      "outcome": "Eye needed to activate a completed forgotten portal.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:methuselah_boss"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:eye_of_methuselah"
+        }
+      ],
+      "depends_on": [
+        "unearthed_journey:temple"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Мафусаила и получи его глаз.",
+        "detection": "inventory"
+      }
+    },
+    {
+      "key": "unearthed_journey:forgotten_portal",
+      "kind": "progression",
+      "title": "Restore a forgotten portal",
+      "player_action": "Find a forgotten portal, make its four portal corners correspond to the same era and complete the archstone pillars; activate it with the Eye of Methuselah.",
+      "outcome": "Travel to the selected Cenozoic dimension.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:eye_of_methuselah"
+        },
+        {
+          "registry": "blocks",
+          "id": "unearthed_journey:paleogene_portal_corner"
+        },
+        {
+          "registry": "blocks",
+          "id": "unearthed_journey:neogene_portal_corner"
+        },
+        {
+          "registry": "blocks",
+          "id": "unearthed_journey:pleistocene_portal_corner"
+        }
+      ],
+      "depends_on": [
+        "unearthed_journey:methuselah_eye"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Восстанови портал и впервые отправься в прошлое.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Portal corner combinations and server travel criteria need installed-version runtime verification."
+    },
+    {
+      "key": "unearthed_journey:peat_drying",
+      "kind": "interaction",
+      "title": "Make dried peat fuel",
+      "player_action": "Mine peat in Paleogene/Neogene, craft a peat pie, place it for roughly 20 minutes and collect the dried peat pie.",
+      "outcome": "Fuel usable in furnaces, smokers and blast furnaces.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:peat_pie"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:dried_peat_pie"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Высуши торфяную лепёшку и используй её как топливо.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "unearthed_journey:leptictidium",
+      "kind": "interaction",
+      "title": "Tame a Leptictidium",
+      "player_action": "In the Paleogene Messel Pit formation, use a seed pouch to tame a Leptictidium; shift-use a tamed one to trigger its digging behavior.",
+      "outcome": "Tamed creature unearths items with a documented two-minute cooldown.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:leptictidium"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:pouch_of_seeds"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи лептиктидия и попроси его раскопать предмет.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "unearthed_journey:manganese_gear",
+      "kind": "interaction",
+      "title": "Craft manganese steel",
+      "player_action": "Acquire manganese from the Pleistocene and process it with raw iron and silicate into manganese steel blend; smelt to ingot.",
+      "outcome": "Material for cold-resistant armor and utility gear.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:raw_manganese"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:manganese_steel_blend"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:manganese_steel_ingot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выплави первый слиток марганцевой стали.",
+        "detection": "inventory"
+      }
+    },
+    {
+      "key": "unearthed_journey:seed_pod_tree_farm",
+      "kind": "automation",
+      "title": "Grow small Platypodium trees from seed pods",
+      "player_action": "Harvest Platypodium seed pods in the Neogene and place them on ground.",
+      "outcome": "Small trees provide convenient wood farming despite non-decaying native leaves.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посади семенные коробочки для выращивания древних деревьев.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "unearthed_journey:herbivore_pouches",
+      "kind": "crafting",
+      "title": "Prepare food pouches for herbivore care",
+      "player_action": "Craft pelt-based grass or seed pouches and offer them to supported herbivores.",
+      "outcome": "Pouches support taming or breeding according to species.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:pouch_of_grass"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:pouch_of_seeds"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь кормовые мешочки для древних травоядных.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "unearthed_journey:portable_satchel",
+      "kind": "interaction",
+      "title": "Carry a native satchel",
+      "player_action": "Craft the native satchel using its material recipe.",
+      "outcome": "The guide describes in-inventory storage for long expeditions.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:hide_satchel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь сумку для длительной экспедиции.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry assets/unearthed_journey/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:carbonemys_companion",
+      "kind": "interaction",
+      "title": "Tame and equip a Carbonemys carrier",
+      "player_action": "Find Carbonemys in the Cerrejon formation, tame it with clams and equip a satchel; sneak-use opens inventory.",
+      "outcome": "The large turtle carries resources as a companion.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:carbonemys"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи древнюю черепаху и оснасти её сумкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry assets/unearthed_journey/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:gnatusuchus_digging",
+      "kind": "interaction",
+      "title": "Feed a Gnatusuchus for a digging companion",
+      "player_action": "Find Gnatusuchus in the Neogene Pebas formation and offer Raw Fillet.",
+      "outcome": "The native guide describes a tame that can dig up items.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "unearthed_journey:gnatusuchus"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи гнатозуха рыбным филе.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry assets/unearthed_journey/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:blowgun_darts",
+      "kind": "crafting",
+      "title": "Craft a blowgun and mushroom-tipped darts",
+      "player_action": "Follow the native Bamboo Blowgun and tipped dart recipes.",
+      "outcome": "The ranged tool supports poison-delivering tipped ammunition.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:bamboo_blowgun"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:tipped_blow_dart"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь духовую трубку и особые дротики.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry data/unearthed_journey/recipes/tipped_blow_dart_recipe.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "unearthed_journey:bituminous_processing",
+      "kind": "crafting",
+      "title": "Smelt Bituminous Rock into Powder",
+      "player_action": "Process Bituminous Rock using its installed smelting recipe.",
+      "outcome": "The powder becomes an input for other recipes.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "unearthed_journey:bituminous_rock"
+        },
+        {
+          "registry": "items",
+          "id": "unearthed_journey:bituminous_powder"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переплавь битумную породу в порошок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/unearthed_journey-2.2.3.jar; SHA256 e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6; entry data/unearthed_journey/recipes/bituminous_rock_smelt_recipe.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    }
+  ]
+}

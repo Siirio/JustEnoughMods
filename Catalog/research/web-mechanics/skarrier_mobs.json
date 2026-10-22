@@ -1,0 +1,912 @@
+{
+  "schema_version": 1,
+  "mod_id": "skarrier_mobs",
+  "installed_version": "1.1.1",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs",
+      "publisher": "Skarrier",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v111",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs/files/9161764",
+      "publisher": "Skarrier",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v108",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs/files/9012417",
+      "publisher": "Skarrier",
+      "scope": "historical_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs",
+      "publisher": "Skarrier",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs",
+      "publisher": "Skarrier; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+        "sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+        "resource": "assets/skarrier_mobs/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs",
+      "publisher": "Skarrier",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_ba63097947aa",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/skarrier-mobs",
+      "publisher": "Skarrier; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+        "sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+        "resource": "assets/skarrier_mobs/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "skarrier_mobs:breacher",
+      "kind": "combat",
+      "title": "Breacher timing and cover",
+      "player_action": "Avoid fighting beside weak cover; bait its heavy attack, then punish its stated three-second attack interval.",
+      "outcome": "Breacher may destroy weak blocks and disable a blocking shield for four seconds.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:breacher"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переживи удар Breacher и победи его.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:dragger",
+      "kind": "combat",
+      "title": "Dragger web control",
+      "player_action": "Avoid pillaring up without an escape path; its web snare can restrict movement and pull victims.",
+      "outcome": "Defeat an early-game crowd-control threat.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Одолей Dragger, не позволив поймать себя паутиной.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:bowlder",
+      "kind": "combat",
+      "title": "Bowlder counterplay",
+      "player_action": "After the Wither milestone, fight a Bowlder with a pickaxe to bypass its heavy damage reduction; avoid arrows.",
+      "outcome": "Pickaxe bypasses the project-described reduction; Bowlder inflicts Armor Crumbling.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:bowlder"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Wither defeat milestone (exact world-state trigger requires runtime check)"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй кирку против Bowlder.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author description gives 60% reduction; JEM World Tier modifiers can change effective numbers."
+    },
+    {
+      "key": "skarrier_mobs:tunnel_gore",
+      "kind": "combat",
+      "title": "Tunnel Gore environmental weakness",
+      "player_action": "Find its distinctive deep tunnel, avoid over-mining, and lure charges into netherite blocks.",
+      "outcome": "Author describes a three-charge vulnerability that opens access to lair rewards.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:tunnel_gore"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Заставь Tunnel Gore трижды столкнуться с незеритом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Do not turn this into a deterministic FTB objective until a reliable event signal is found."
+    },
+    {
+      "key": "skarrier_mobs:quake",
+      "kind": "interaction",
+      "title": "Ride a temporary Quake mount",
+      "player_action": "Feed cactus to a Quake in desert terrain and use its temporary riding ability.",
+      "outcome": "Mounted Quake can produce a powerful area attack.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:quake"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оседлай Quake после кормления кактусом.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:coatings",
+      "kind": "crafting",
+      "title": "Workshop coatings",
+      "player_action": "Use the Workshop to apply suitable coating items to compatible gear.",
+      "outcome": "Special coating effects on tools, armor and weapons.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "skarrier_mobs:workshop"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:workshop"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй мастерскую, чтобы нанести первое покрытие на снаряжение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Which coating works on which item is context/tooltip dependent; no fabricated universal compatibility."
+    },
+    {
+      "key": "skarrier_mobs:wretch_optional_alexscaves",
+      "kind": "compatibility",
+      "title": "Wretch depends on Alex's Caves",
+      "player_action": "Treat the Wretch content as survival-obtainable only when Alex's Caves is present.",
+      "outcome": "Conditional cross-mod creature and content.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "skarrier_mobs:wretch"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "requires mod alexscaves"
+      ],
+      "source_ids": [
+        "v108"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди Wretch в связке Skarrier Mobs и Alex’s Caves.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Verify biome/spawn criteria from installed config and code before generating a locate/kill quest."
+    },
+    {
+      "key": "skarrier_mobs:endorah",
+      "kind": "combat",
+      "title": "Endorah release addition",
+      "player_action": "Treat Endorah as a boss added in Skarrier Mobs 1.1.1; do not invent a summoning ritual from the release note.",
+      "outcome": "Adds boss encounter and related Voidrake, Frost, Freeze mobs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "v111"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди и одолей Endorah.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "The installed 1.1.1 predates the hotfix; author later fixed a Frost mob crash. Do not assume the hotfix is installed."
+    },
+    {
+      "key": "skarrier_mobs:raider_support",
+      "kind": "combat",
+      "title": "Skarrier illager support",
+      "player_action": "Focus the Sorcerer during raids before it buffs allied illagers with healing, speed or strength.",
+      "outcome": "More dangerous cross-mob interaction in raids.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выведи из боя Sorcerer во время рейда.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "skarrier_mobs:endorah_ritual",
+      "kind": "combat",
+      "title": "Prepare Endorah's stated ritual and target its heads",
+      "player_action": "Consult the author ritual using Void Scale blocks, dragon heads and a beacon; defeat both side heads before the main head.",
+      "outcome": "Side heads protect the main head and can regrow, creating a staged fight.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Разбери порядок поражения голов Эндоры.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "The author now documents this ritual, extending the older release-note-only observation without altering it. Exact structure layout and native/JEM admission require installed owner inspection."
+    },
+    {
+      "key": "skarrier_mobs:wretch_teeth",
+      "kind": "combat",
+      "title": "Block a Wretch bite to break its teeth",
+      "player_action": "Avoid alerting it through nearby eating; block its bite with a shield.",
+      "outcome": "Broken teeth improve fang collection and can remove its healing bite.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:wretched_fang"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отрази укус вреча щитом и добудь клык.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "skarrier_mobs:acid_ore_yield",
+      "kind": "acquisition",
+      "title": "Use Acidic Bile on ore",
+      "player_action": "Apply Acidic Bile to a supported ore.",
+      "outcome": "The native tooltip describes an increased-yield processing route.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:acidic_bile"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Обработай руду кислотной желчью.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "skarrier_mobs:ammonite_brush",
+      "kind": "interaction",
+      "title": "Coat a brush for gravel excavation",
+      "player_action": "Apply Ammonite Shell coating to a Brush and use it on gravel.",
+      "outcome": "The coated brush excavates loot until its limited coating wears out.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:ammonite_shell"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покрой кисть раковиной аммонита и исследуй гравий.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "skarrier_mobs:extinction_binding",
+      "kind": "combat",
+      "title": "Bind a Totem of Extinction to a mob type",
+      "player_action": "Right click a mob with the totem and hold it in the offhand.",
+      "outcome": "The bound type receives increased outgoing damage from the holder.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_extinction"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Привяжи тотем вымирания к типу противника.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "skarrier_mobs:melding_stats",
+      "kind": "interaction",
+      "title": "Transfer stored base stats with a Totem of Melding",
+      "player_action": "Use the totem on a source mob, then on another mob.",
+      "outcome": "Native text describes storing and transferring base statistics.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_melding"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи перенос базовых характеристик тотемом слияния.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "skarrier_mobs:durability_care",
+      "kind": "interaction",
+      "title": "Repair basic gear with Dragger Silk",
+      "player_action": "Hold silk in the main hand and a supported damaged item in the offhand, then use.",
+      "outcome": "The silk provides a native durability-repair interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:dragger_silk"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Почини подходящий предмет шёлком драггера.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "skarrier_mobs:coating_silk",
+      "kind": "interaction",
+      "title": "coating silk native mechanic",
+      "player_action": "Right-click Dragger Silk in the main hand onto a damageable offhand item.",
+      "outcome": "It repairs lower-tier equipment by a limited amount.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:dragger_silk"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:coating_armor",
+      "kind": "interaction",
+      "title": "coating armor native mechanic",
+      "player_action": "Left-click Trawler Shell onto offhand armor.",
+      "outcome": "The described coating grants temporary defense and Armor Crumbling immunity after a hit, but is explicitly marked WIP and cannot be treated as proven active gameplay.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:trawler_shell"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:coating_weapons",
+      "kind": "interaction",
+      "title": "coating weapons native mechanic",
+      "player_action": "Apply Bowlder Dust, Serrated Shred, Venom Sack or Wretched Fang to a weapon.",
+      "outcome": "Their finite-use coatings respectively support Armor Crumbling with durability cost, bleeding, venom or darkness-dependent damage/healing.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:bowlder_dust"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:serrated_shred"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:venom_sack"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:wretched_fang"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:coating_fire",
+      "kind": "interaction",
+      "title": "coating fire native mechanic",
+      "player_action": "Apply Magmadermis to a weapon or shield.",
+      "outcome": "Weapon damage improves against burning targets but falls against others; shield retaliation may ignite attackers with extra durability wear.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:magmadermis"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:coating_warden_scale",
+      "kind": "interaction",
+      "title": "coating warden scale native mechanic",
+      "player_action": "Apply Warden Vein to equipment or Wrought Scale to a shield.",
+      "outcome": "The former restores durability on kills; the latter may reduce blocking wear. Both have finite native-use limits.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:warden_vein"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:wrought_scale"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:resisteel_tradeoffs",
+      "kind": "interaction",
+      "title": "resisteel tradeoffs native mechanic",
+      "player_action": "Wear Resisteel armor or use its weapons/tools while meeting armor requirements.",
+      "outcome": "Armor stacks defense while slowing movement; sword gains damage from high armor, tools gain sneaking Haste with movement cost.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:deep_alloy",
+      "kind": "interaction",
+      "title": "deep alloy native mechanic",
+      "player_action": "Use Deep Alloy equipment in mining and combat.",
+      "outcome": "Tools grant experience on block work and repair on kills; armor also grants Warden's Might under Blindness and sword criticals can create a sonic boom.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:upgrade_chain",
+      "kind": "interaction",
+      "title": "upgrade chain native mechanic",
+      "player_action": "Upgrade Netherite with Invulnerite Chunk/template, then Invulnerite with Decayerite Ingot/template.",
+      "outcome": "Native text marks equipment unbreakable; Unbreaking instead improves Decayerite tool area or sword Decay criticals.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:decayerite_upgrade_template"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:totem_binding",
+      "kind": "interaction",
+      "title": "totem binding native mechanic",
+      "player_action": "Bind Totem of Extinction to a mob type, or store one creature's base stats with Totem of Melding then apply them to another.",
+      "outcome": "The first gives an offhand bonus against the bound type, the second transfers stored base stats.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_extinction"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_melding"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:totem_variants",
+      "kind": "interaction",
+      "title": "totem variants native mechanic",
+      "player_action": "Hold Freezing, Seething or Repulsion totems in the offhand.",
+      "outcome": "They provide freeze protection/Frostbite attacks, extra nearby burn damage, or attack-triggered wind blasts.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_freezing"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_seething"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:totem_of_repulsion"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:totem_empower",
+      "kind": "interaction",
+      "title": "totem empower native mechanic",
+      "player_action": "Apply Semi-living Flesh to a totem.",
+      "outcome": "Its effect improves at the cost of maximum health while held.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:semi_living_flesh"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:impact_equipment",
+      "kind": "interaction",
+      "title": "impact equipment native mechanic",
+      "player_action": "Sprint with Crushing Pauldron or land from a fall with Quake Boots.",
+      "outcome": "Pauldron adds armor and contact damage; boots create a shockwave scaled to fall distance.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:crushing_pauldron_chestplate"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:quake_boots_boots"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:serraxe_barrier",
+      "kind": "interaction",
+      "title": "serraxe barrier native mechanic",
+      "player_action": "Strike using Serraxe or block using Forlorn Barrier.",
+      "outcome": "Serraxe causes stronger bleeding against unarmored targets; the barrier fires armor-crushing piercing fangs and enters cooldown.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:serraxe"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:forlorn_barrier"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:consumables",
+      "kind": "interaction",
+      "title": "consumables native mechanic",
+      "player_action": "Apply Acidic Bile to ore, eat Leeching Sack or use Heart of Tranquility.",
+      "outcome": "These respectively improve ore yield, grant leeching with weakness, or grant Tranquility.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:acidic_bile"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:leeching_sack"
+        },
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:heart_of_tranquility"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "skarrier_mobs:infernal_crown",
+      "kind": "interaction",
+      "title": "infernal crown native mechanic",
+      "player_action": "Wear Infernal Crown while burning or in lava.",
+      "outcome": "Its native offensive bonus rises further in lava, with effective damage still owned by current server rules.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "skarrier_mobs:infernal_crown_helmet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_ba63097947aa"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особое свойство добычи Skarrier.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar; SHA256 8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc; entry assets/skarrier_mobs/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    }
+  ]
+}

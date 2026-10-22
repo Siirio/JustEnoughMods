@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Non-web research ownership routes",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "purpose", "pack_snapshot_sha", "reviewed_on", "entries"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "purpose": {"type": "string", "minLength": 10},
+    "pack_snapshot_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "reviewed_on": {"type": "string", "format": "date"},
+    "entries": {"type": "array", "items": {"$ref": "#/$defs/entry"}}
+  },
+  "$defs": {
+    "entry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["manifest_id", "classification", "reason", "evidence_paths", "research_requirement"],
+      "properties": {
+        "manifest_id": {"type": "string", "minLength": 1},
+        "classification": {"enum": ["canonical_pack_owner", "vanilla_base", "artifact_wrapper"]},
+        "reason": {"type": "string", "minLength": 10},
+        "evidence_paths": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "research_requirement": {"type": "string", "minLength": 10},
+        "source_snapshot": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "architecture_boundary": {"type": "string", "minLength": 10},
+        "artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "evidence_resources": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      },
+      "allOf": [{"if": {"properties": {"classification": {"const": "artifact_wrapper"}}}, "then": {"required": ["artifact_sha256", "evidence_resources"]}}]
+    }
+  }
+}

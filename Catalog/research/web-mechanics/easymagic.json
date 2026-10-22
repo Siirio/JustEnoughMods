@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "mod_id": "easymagic",
+  "installed_version": "8.0.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/easy-magic",
+      "publisher": "Fuzs",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "easymagic:table_storage",
+      "kind": "interaction",
+      "title": "Leave an item and lapis in the enchanting table",
+      "player_action": "Insert lapis and the target item, then close the interface.",
+      "outcome": "Inputs remain inside and appear floating around the table.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Read the chosen enchantment and actual result extraction from the owning menu/event. Inventory presence does not prove a reroll, preview or enchantment operation."
+    },
+    {
+      "key": "easymagic:reroll_offers",
+      "kind": "crafting",
+      "title": "Reroll enchanting offers",
+      "player_action": "Use the reroll control with its required lapis and experience available.",
+      "outcome": "The offered enchantments change for a configured lapis/experience-point cost.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Experience points and experience levels are different; do not substitute a level cost from memory.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Read the chosen enchantment and actual result extraction from the owning menu/event. Inventory presence does not prove a reroll, preview or enchantment operation."
+    },
+    {
+      "key": "easymagic:shelf_access",
+      "kind": "interaction",
+      "title": "Use transparent decorations near bookshelves",
+      "player_action": "Place non-colliding decorations between bookshelves and table and inspect available enchanting power.",
+      "outcome": "The author allows non-colliding blocks where vanilla expects air; required bookshelf count is configurable.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Read the chosen enchantment and actual result extraction from the owning menu/event. Inventory presence does not prove a reroll, preview or enchantment operation."
+    },
+    {
+      "key": "easymagic:enchanter_compatibility",
+      "kind": "compatibility",
+      "title": "Check other enchanting replacements before integration",
+      "player_action": "Compare installed enchanting mods against the author's Apotheosis/Quark matrix-enchanter warning.",
+      "outcome": "The warning identifies an integration boundary without proving those mods or conflicts exist in JEM.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Read the chosen enchantment and actual result extraction from the owning menu/event. Inventory presence does not prove a reroll, preview or enchantment operation."
+    }
+  ]
+}

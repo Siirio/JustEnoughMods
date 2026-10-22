@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "mod_id": "bettervillage",
+  "installed_version": "3.3.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/better-village-forge",
+      "publisher": "Better Villages authors",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "bettervillage:village_exploration",
+      "kind": "interaction",
+      "title": "Explore redesigned biome villages",
+      "player_action": "Visit an improved plains, snow, savanna, desert or taiga village.",
+      "outcome": "The mod changes village structures and exploration layouts.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посети обновлённые деревни разных биомов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 3.3.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "bettervillage:native_professions",
+      "kind": "integration",
+      "title": "Use native villagers within redesigned structures",
+      "player_action": "Interact with villagers in their redesigned settlement layout.",
+      "outcome": "The documented scope is building improvement; it does not establish a replacement profession or trading economy.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Author page may describe a different release than installed 3.3.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

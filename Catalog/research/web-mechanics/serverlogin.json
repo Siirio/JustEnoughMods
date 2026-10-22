@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "mod_id": "serverlogin",
+  "installed_version": "1.0.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/i-server-login",
+      "publisher": "IWOSS / iwosw",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "release_103",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/server-login/files/8661743",
+      "publisher": "IWOSS",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "serverlogin:register_authenticate",
+      "kind": "interaction",
+      "title": "Register and log into an offline server",
+      "player_action": "On first registration use login with the password repeated; later use login with one password. The documented l alias is available.",
+      "outcome": "The server authenticates the session through chat commands.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Authentication is a server-owned account/session state, not a quest or a client login-screen indicator. Do not expose real passwords or account data in research."
+    },
+    {
+      "key": "serverlogin:authentication_gate",
+      "kind": "integration",
+      "title": "Wait for authentication before gameplay actions",
+      "player_action": "Join and complete authentication before movement, chat, attack or container interaction.",
+      "outcome": "The fail-closed gate blocks ordinary actions until login without moving the player to a separate lobby.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "release_103"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Authentication is a server-owned account/session state, not a quest or a client login-screen indicator. Do not expose real passwords or account data in research."
+    },
+    {
+      "key": "serverlogin:account_management",
+      "kind": "interaction",
+      "title": "Change or end an authenticated session",
+      "player_action": "Use the supported changepassword or logout command.",
+      "outcome": "Players can manage their own authentication session; forgotten passwords need administrator reset rather than disclosure.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Authentication is a server-owned account/session state, not a quest or a client login-screen indicator. Do not expose real passwords or account data in research."
+    },
+    {
+      "key": "serverlogin:admin_localization",
+      "kind": "integration",
+      "title": "Manage registration and server messages",
+      "player_action": "An authorized administrator uses auth status/count/queue/remove/kick and the language/message configuration.",
+      "outcome": "Admin tools inspect/reset account state; 1.0.3 provides English/Russian messages and per-server overrides.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "No account, authentication config or live session was modified.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "release_103"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Authentication is a server-owned account/session state, not a quest or a client login-screen indicator. Do not expose real passwords or account data in research."
+    }
+  ]
+}

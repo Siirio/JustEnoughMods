@@ -1,0 +1,1017 @@
+{
+  "schema_version": 1,
+  "mod_id": "exposure",
+  "installed_version": "1.9.21",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/exposure",
+      "publisher": "mortuusars",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "historical_wiki",
+      "url": "https://github-wiki-see.page/m/mortuusars/Exposure/wiki/Content",
+      "publisher": "mortuusars wiki mirror",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "camera_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/camera",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "film_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/attachments/film",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "lightroom_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/lightroom",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "stand_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/camera_stand",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "frame_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/photograph_frame",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "album_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/photo_album",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "lens_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/attachments/lens",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "flash_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/attachments/flash",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "filter_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/attachments/filter",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "exposed_trigger_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/customization/triggers/frame_exposed_trigger",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "printed_trigger_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/customization/triggers/frame_printed_trigger",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "projector_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/interplanar_projector",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "photograph_docs",
+      "url": "https://moddedmc.wiki/en/project/exposure/latest/docs/content/photograph",
+      "publisher": "mortuusars author documentation",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "installed_1921",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/exposure",
+      "publisher": "mortuusars; exact installed artifact resource cross-check",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/exposure-forge-1.20.1-1.9.21.jar",
+        "sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616",
+        "resource": "assets/exposure/lang/en_us.json"
+      }
+    },
+    {
+      "id": "aarods_tutorial",
+      "url": "https://www.youtube.com/watch?v=jjjI6jD_RO4",
+      "publisher": "Aarods, Exposure guide; Spanish automatic captions",
+      "scope": "youtube_transcript",
+      "reviewed_on": "2026-10-22",
+      "video_evidence": {
+        "language": "es",
+        "caption_kind": "automatic",
+        "start_seconds": 115.479,
+        "end_seconds": 491.56,
+        "transcript_sha256": "5aab93349b11cd22febbdc0b0fe62430e00514e374414695a2078bfc56c42f03"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "exposure:camera_film",
+      "kind": "interaction",
+      "title": "Load camera film",
+      "player_action": "Insert a film roll into a camera via the sneak-use attachments UI, then enter the viewfinder.",
+      "outcome": "Camera can expose frames rather than merely taking screenshots.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:black_and_white_film"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери камеру и вставь в неё фотоплёнку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": " Raw recipe data owner: Catalog/graphs/recipes/exposure.json."
+    },
+    {
+      "key": "exposure:camera_controls",
+      "kind": "interaction",
+      "title": "Compose and expose a photograph",
+      "player_action": "While in the viewfinder, use camera controls for shutter speed, composition guides and installed flash.",
+      "outcome": "Capture a film frame with chosen settings.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сделай кадр с настроенной выдержкой.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:develop_and_print",
+      "kind": "progression",
+      "title": "Develop and print film",
+      "player_action": "Use the film-developing process and Lightroom to print photographs from film negatives.",
+      "outcome": "Physical photograph items available for display and albums.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:lightroom"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:developed_black_and_white_film"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_controls"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki",
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Прояви плёнку и напечатай первую фотографию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "A mere photograph item is not proof the player personally exposed and developed a frame."
+    },
+    {
+      "key": "exposure:album",
+      "kind": "interaction",
+      "title": "Archive photographs in an album",
+      "player_action": "Place printed photographs into a Photo Album; optionally sign the album to prevent editing.",
+      "outcome": "Archival/creative photography goal.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:album"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:signed_album"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери альбом из нескольких собственных фотографий.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:redstone_lightroom",
+      "kind": "automation",
+      "title": "Automate Lightroom printing",
+      "player_action": "Give the Lightroom a redstone pulse to start printing the selected frame and advance the film.",
+      "outcome": "Potential Create/redstone factory challenge; requires source-level integration verification.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "exposure:lightroom"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "historical_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Автоматизируй печать снимков импульсом редстоуна.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "exposure:exordium_issue",
+      "kind": "compatibility",
+      "title": "Exposure and Exordium viewfinder issue",
+      "player_action": "If Exordium is installed, investigate official author warning about viewfinder flicker.",
+      "outcome": "Compatibility watch, not proof of a current JEM defect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "only if exordium installed"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Manifest snapshot does not include Exordium; never report this as an active conflict."
+    },
+    {
+      "key": "exposure:visual_overhaul_issue",
+      "kind": "compatibility",
+      "title": "Exposure and Visual Overhaul camera controls",
+      "player_action": "If Visual Overhaul is installed, investigate official author warning about camera controls crash.",
+      "outcome": "Compatibility watch, not proof of a current JEM defect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "only if Visual Overhaul installed"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Manifest snapshot does not include Visual Overhaul; validate exact versions before reporting."
+    },
+    {
+      "key": "exposure:camera_attachments",
+      "kind": "interaction",
+      "title": "Swap camera attachments",
+      "player_action": "Sneak-use the Camera or right-click it in inventory, then choose film, flash, lens or filter.",
+      "outcome": "Configure attachments; the installed tooltip also documents quick swapping by item interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "camera_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Смените оснащение камеры.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:zoom_lens",
+      "kind": "interaction",
+      "title": "Compose with a lens",
+      "player_action": "Install a Spyglass lens and use the viewfinder scroll wheel.",
+      "outcome": "Change the camera's zoom range and framing.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "lens_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте приближение камеры.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:flash_auto",
+      "kind": "interaction",
+      "title": "Use automatic flash",
+      "player_action": "Install a supported flash such as a Redstone Lamp and choose Auto.",
+      "outcome": "Fire the flash in darkness according to the camera-position light threshold.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "flash_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте автоматическую вспышку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:timer_selfie",
+      "kind": "interaction",
+      "title": "Time a photograph",
+      "player_action": "Open camera controls, choose a self-timer and use F5 for handheld selfie framing.",
+      "outcome": "Delay exposure; nearby mobs may look toward the ticking camera.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "camera_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сделайте снимок по таймеру.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:film_types",
+      "kind": "progression",
+      "title": "Choose film sensitivity",
+      "player_action": "Load black-and-white, color or a high-sensitivity film roll.",
+      "outcome": "Choose color capability and the high-sensitivity brightness/noise tradeoff.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:black_and_white_film"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:color_film"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:high_sensitivity_black_and_white_film"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:high_sensitivity_color_film"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "film_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выберите светочувствительную плёнку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:film_label",
+      "kind": "interaction",
+      "title": "Label a film roll",
+      "player_action": "Use a film roll to open its renaming flow.",
+      "outcome": "Organize exposed rolls without an anvil experience cost; the label survives developing.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:black_and_white_film"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "film_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подпишите фотоплёнку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:develop_bw",
+      "kind": "crafting",
+      "title": "Develop black-and-white negatives",
+      "player_action": "Craft the exposed black-and-white roll with a Water Bottle.",
+      "outcome": "Make developed black-and-white film ready for Lightroom printing.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:black_and_white_film"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:developed_black_and_white_film"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_controls"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "film_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Проявите чёрно-белую плёнку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:develop_color",
+      "kind": "crafting",
+      "title": "Develop color negatives",
+      "player_action": "Process the exposed color roll with Awkward, Thick and Mundane potions.",
+      "outcome": "Make developed color film; installed crafting recipe confirms these potion kinds.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:color_film"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:developed_color_film"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_controls"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "film_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Проявите цветную плёнку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:printing_supplies",
+      "kind": "crafting",
+      "title": "Supply the Lightroom",
+      "player_action": "Insert developed film, paper and printing dyes; keep the space above the Lightroom sufficiently lit.",
+      "outcome": "Print selected negatives; color printing additionally needs cyan, magenta and yellow dyes.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:lightroom"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched.",
+        "Printing accepts an appropriate developed roll; black-and-white and color developing are alternative paths, not cumulative prerequisites."
+      ],
+      "source_ids": [
+        "lightroom_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Снабдите светокомнату материалами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:rgb_filters",
+      "kind": "interaction",
+      "title": "Expose separate color channels",
+      "player_action": "Photograph the subject through Red, Green and Blue glass-pane filters.",
+      "outcome": "Record stronger channel tints for chromatic reconstruction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "filter_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Снимите цветовые каналы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:chromatic_print",
+      "kind": "crafting",
+      "title": "Print a chromatic composite",
+      "player_action": "Place Tinted Glass above the Lightroom, select Chromatic mode and reuse its Chromatic Sheet through red, green and blue prints.",
+      "outcome": "Combine three printed channels into a Photograph.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:lightroom"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:chromatic_sheet"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        }
+      ],
+      "depends_on": [
+        "exposure:printing_supplies"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched.",
+        "Matching R/G/B-filtered exposures help reconstruct the intended colors, but are not required merely to run the chromatic printing mode."
+      ],
+      "source_ids": [
+        "lightroom_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Напечатайте составной снимок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:stand_remote",
+      "kind": "interaction",
+      "title": "Use a camera stand",
+      "player_action": "Install a Camera on the stand, position it and release the shutter with its timer or a redstone pulse.",
+      "outcome": "Take a remote photograph while a nearby player supplies the rendered view.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera_stand"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "stand_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Снимите фотографию со штатива.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:display_frame",
+      "kind": "interaction",
+      "title": "Display a photograph",
+      "player_action": "Put a photograph into a Photograph Frame on a wall, floor or ceiling; apply a Glow Ink Sac if desired.",
+      "outcome": "Display a sized photograph, with an optional glowing frame.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:photograph_frame"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "frame_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Повесьте фотографию в рамке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:sign_album",
+      "kind": "interaction",
+      "title": "Publish a signed album",
+      "player_action": "Add photographs and page text to an album, then sign and name it.",
+      "outcome": "Make the album uneditable; it can be displayed on a Lectern or stored in a Chiseled Bookshelf.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:album"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:signed_album"
+        }
+      ],
+      "depends_on": [
+        "exposure:album"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "album_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подпишите фотоальбом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:native_capture_signal",
+      "kind": "integration",
+      "title": "Design a photograph objective",
+      "player_action": "Use the native frame-exposed criterion to describe a real photographed subject instead of checking camera possession.",
+      "outcome": "Installed adventure/exposure advancement proves the frame_exposed trigger; family_portrait demonstrates entity predicates.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:camera"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_controls"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "exposed_trigger_docs",
+        "installed_1921"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сфотографируйте игрока с питомцами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:native_print_signal",
+      "kind": "integration",
+      "title": "Design a printing objective",
+      "player_action": "Use the native frame-printed criterion with the resulting Photograph requirement.",
+      "outcome": "Installed moment_in_time advancement demonstrates frame_printed and its item condition.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "printed_trigger_docs",
+        "installed_1921"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Напечатайте собственный снимок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:create_developing",
+      "kind": "integration",
+      "title": "Develop film on a Create line",
+      "player_action": "Run the installed developing sequence through fluid-filling steps: water for black-and-white or the three potion fluids for color.",
+      "outcome": "Automate developing using Exposure's bundled Create sequenced-assembly recipes.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:black_and_white_film"
+        },
+        {
+          "registry": "items",
+          "id": "exposure:color_film"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_controls",
+        "create:spout_fill"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "film_docs",
+        "installed_1921"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Автоматизируйте проявку плёнки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:project_image",
+      "kind": "interaction",
+      "title": "Project a supplied image",
+      "player_action": "Rename an Interplanar Projector to a supported image file path or URL, install it as a camera filter and expose a frame.",
+      "outcome": "Import the image subject to server configuration; the projector is consumed or breaks on failure.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:interplanar_projector"
+        }
+      ],
+      "depends_on": [
+        "exposure:camera_film"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "projector_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создайте кадр межпланарным проектором.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:stack_prints",
+      "kind": "interaction",
+      "title": "Organize printed photographs",
+      "player_action": "Right-click a Photograph or Stacked Photographs with another photograph.",
+      "outcome": "Combine prints into a stack.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:stacked_photographs"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "photograph_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сложите напечатанные фотографии.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:view_export",
+      "kind": "interaction",
+      "title": "Inspect an original photograph",
+      "player_action": "Use a photograph to open its detailed viewer.",
+      "outcome": "Zoom and inspect it; author-owned images can be exported to the instance's exposures folder.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "exposure:photograph"
+        }
+      ],
+      "depends_on": [
+        "exposure:develop_and_print"
+      ],
+      "conditions": [
+        "Existing document snapshot e5319721b683948860017b19113db7647452a890 is retained; these additions were reviewed against frozen installed snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938.",
+        "Installed exposure-forge-1.20.1-1.9.21.jar SHA-256 f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616; assets/exposure/lang/en_us.json, data/exposure/recipes and data/exposure/advancements/adventure were read directly.",
+        "Latest author docs may use newer data/component syntax. In installed family_portrait.json the capture condition is entities_in_frame; do not copy a newer singular entity_in_frame property without checking the 1.20.1 parser. No game was launched."
+      ],
+      "source_ids": [
+        "photograph_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Рассмотрите собственный снимок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "exposure:tutorial_workflow",
+      "kind": "interaction",
+      "title": "Follow a narrated photography workflow",
+      "player_action": "Load film, compose through the camera view, expose frames, develop the roll, then select and print a frame at the Lightroom.",
+      "outcome": "The tutorial corroborates this order and distinguishes black-and-white versus color supplies; it also demonstrates zoom, composition guides and camera attachments.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Automatic Spanish captions at 115.479–491.56 seconds were read, not video-description-only evidence. Tutorial spans several Minecraft versions and may predate installed Exposure1.9.21; captioned clicks, film capacity and timings are not promoted as current installed controls. Exact installed criteria remain owned by the existing native capture/printing observations.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "aarods_tutorial"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Снимите и напечатайте фотографию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

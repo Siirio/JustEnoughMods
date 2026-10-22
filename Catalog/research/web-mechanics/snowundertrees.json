@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "snowundertrees",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/snow-under-trees",
+      "publisher": "bl4ckscor3",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "snowundertrees:cold_canopy_snow",
+      "kind": "interaction",
+      "title": "Find snow beneath a cold-biome canopy",
+      "player_action": "Explore newly generated snowy-biome forest terrain or revisit it during snowfall.",
+      "outcome": "Snow may generate under trees; ordinary warm forests are unaffected by default.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "snowundertrees:generation_weather_switches",
+      "kind": "integration",
+      "title": "Control when under-tree snow appears",
+      "player_action": "Inspect enable_biome_feature, enable_when_snowing and filtered_biomes settings.",
+      "outcome": "Initial generation and snowfall deposition can be enabled independently and specific biome IDs excluded.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The author's Snow Real Magic/season-mod compatibility list is not proof of every installed-version combination.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

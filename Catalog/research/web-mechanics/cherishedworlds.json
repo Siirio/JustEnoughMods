@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "cherishedworlds",
+  "installed_version": "6.1.7+1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/cherished-worlds",
+      "publisher": "TheIllusiveC4",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "cherishedworlds:bookmark_world",
+      "kind": "interaction",
+      "title": "Pin a favorite world",
+      "player_action": "Click the empty star beside a world in the selection list.",
+      "outcome": "Bookmarked worlds stay at the top; multiple favorites retain ordering by last-played date.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "cherishedworlds:deletion_guard",
+      "kind": "interaction",
+      "title": "Unpin before deleting a favorite",
+      "player_action": "Remove the bookmark before using the world's delete control.",
+      "outcome": "The favorite protects the world from deletion through that screen until it is unmarked.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "This is client selection-screen behavior, not a backup or server-world protection system.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

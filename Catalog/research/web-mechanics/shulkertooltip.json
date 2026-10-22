@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "shulkertooltip",
+  "installed_version": "1.13.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/shulker-tooltip",
+      "publisher": "Shulker Tooltip authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "shulkertooltip:hover_contents",
+      "kind": "interaction",
+      "title": "Inspect a shulker without placing it",
+      "player_action": "Hover a shulker box and hold the configured tooltip key, documented as Left Alt.",
+      "outcome": "A client tooltip previews stored contents.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "shulkertooltip:toggle_preview",
+      "kind": "interaction",
+      "title": "Control the shulker preview",
+      "player_action": "Use the documented V toggle or inspect the experimental N contents-screen binding, unless remapped.",
+      "outcome": "The preview can be disabled or viewed through the experimental interface.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "An experimental client contents screen must not be assumed to authorize server inventory changes.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

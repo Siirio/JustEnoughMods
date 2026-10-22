@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "mod_id": "mmr",
+  "installed_version": "1.0.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author",
+      "publisher": "FinnDog / Moog's Mods",
+      "url": "https://github.com/FinnSetchell/MoogsMineshaftsReimagined",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "installed",
+      "publisher": "FinnDog / Moog's Mods",
+      "url": "https://github.com/FinnSetchell/MoogsMineshaftsReimagined",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/MoogsMineshaftsReimagined-1.20-1.0.2.jar",
+        "sha256": "02ac7c46666fcebf23cbd60569aa3bd84f1524605a24b612a4448ef1a21e1b4a",
+        "resource": "META-INF/mods.toml"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "mmr:exploration",
+      "kind": "acquisition",
+      "title": "Explore the reimagined mineshafts",
+      "player_action": "Search newly generated underground terrain and enter a generated mineshaft.",
+      "outcome": "Overhauled mineshafts provide exploration, enemies and loot using vanilla-style building elements.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Existing generated chunks are not assumed to regenerate structures.",
+        "Placement frequency and permitted biomes must be read from the exact installed worldgen data and pack overrides.",
+        "Author documentation can cover newer releases; installed version is 1.0.2."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Исследуй заброшенную шахту",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Exact quest criterion and world-state result were not exercised; a custom signal must observe the action, not a manual checkmark."
+    },
+    {
+      "key": "mmr:pack_integration",
+      "kind": "compatibility",
+      "title": "Native structure and loot ownership",
+      "player_action": "Use the installed structure definitions and JEM encounter registration when preparing an exploration objective.",
+      "outcome": "The mod's worldgen resources own placement and template content; an author project page is not proof of a live structure position or hosted boss eligibility.",
+      "registry_refs": [],
+      "depends_on": [
+        "mmr:exploration"
+      ],
+      "conditions": [
+        "Do not infer a manual boss allowlist, server marker or quest criterion from the structure's name.",
+        "No local world was loaded or regenerated.",
+        "Author documentation can cover newer releases; installed version is 1.0.2."
+      ],
+      "source_ids": [
+        "author",
+        "installed"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Exact quest criterion and world-state result were not exercised; a custom signal must observe the action, not a manual checkmark."
+    }
+  ]
+}

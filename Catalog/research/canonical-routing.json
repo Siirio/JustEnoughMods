@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "purpose": "Research routing only; does not delete or reinterpret canonical manifest entries",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "reviewed_on": "2026-10-21",
+  "entries": [
+    {
+      "manifest_id": "jem_adaptive_culling",
+      "classification": "canonical_pack_owner",
+      "reason": "Client rendering and culling integration",
+      "evidence_paths": [
+        "Mods/JEMAdaptiveCulling",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_advancements",
+      "classification": "canonical_pack_owner",
+      "reason": "Reusable advancement criteria and guide interactions",
+      "evidence_paths": [
+        "Mods/JEMAchievementGuide",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_currency_core",
+      "classification": "canonical_pack_owner",
+      "reason": "Currency runtime ownership and shared dependency contract",
+      "evidence_paths": [
+        "Docs/DEVELOPMENT.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_drill_lifecycle",
+      "classification": "canonical_pack_owner",
+      "reason": "Create drill wear, replacement and servicing",
+      "evidence_paths": [
+        "Mods/JEMDrillLifecycle",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_economy",
+      "classification": "canonical_pack_owner",
+      "reason": "Economy, native merchant settlement, shipping and market contracts",
+      "evidence_paths": [
+        "Docs/economy/native-trading-design.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_identity",
+      "classification": "canonical_pack_owner",
+      "reason": "Authenticated stable player identity",
+      "evidence_paths": [
+        "Mods/JEMIdentity",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_pack_core",
+      "classification": "canonical_pack_owner",
+      "reason": "Pack-specific data and integration policy",
+      "evidence_paths": [
+        "Mods/JEMPackCore",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_roles",
+      "classification": "canonical_pack_owner",
+      "reason": "Player race selection, traits and native adapters",
+      "evidence_paths": [
+        "Docs/races/README.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_server",
+      "classification": "canonical_pack_owner",
+      "reason": "SMP server UX, parties, shops and event delegation",
+      "evidence_paths": [
+        "Docs/smp-gui/README.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_settlements",
+      "classification": "canonical_pack_owner",
+      "reason": "Town and resident simulation and native operations",
+      "evidence_paths": [
+        "Docs/settlements/standalone/README.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_twelve_eyes",
+      "classification": "canonical_pack_owner",
+      "reason": "Campaign prerequisites, Eyes and locator state",
+      "evidence_paths": [
+        "Mods/JEMTwelveEyes",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_visual_sandbox",
+      "classification": "canonical_pack_owner",
+      "reason": "Installed race ability presentation integration",
+      "evidence_paths": [
+        "Docs/races/assets/elemental-vfx/BRIEF.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jem_world_boss_tiers",
+      "classification": "canonical_pack_owner",
+      "reason": "World Tier and canonical hosted boss encounters",
+      "evidence_paths": [
+        "Docs/events/BOSS_FIGHT.md",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "jemcompat",
+      "classification": "canonical_pack_owner",
+      "reason": "Isolated compatibility adapters",
+      "evidence_paths": [
+        "Mods/JEMCompat",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    },
+    {
+      "manifest_id": "kotlinforforge-4.12.0-all",
+      "classification": "artifact_wrapper",
+      "reason": "The outer Kotlin bundle has no mod descriptor. Its nested kotlinforforge mod is already researched; the filename-derived manifest entry is not a second Forge mod ID.",
+      "evidence_paths": [
+        "Client/ManagedPack/mods/kotlinforforge-4.12.0-all.jar",
+        "Catalog/manifest.json",
+        "Catalog/research/web-mechanics/kotlinforforge.json"
+      ],
+      "artifact_sha256": "6a66c6a68ec09f8717cdbf06883394f0ee24d7cd826b7134a0f81839e8e720ae",
+      "evidence_resources": [
+        "META-INF/jarjar/metadata.json",
+        "META-INF/jarjar/kffmod-4.12.0.jar"
+      ],
+      "research_requirement": "Inspect the actual language-provider module; do not fabricate a second survival mod or silently rewrite the canonical manifest."
+    },
+    {
+      "manifest_id": "minecraft",
+      "classification": "vanilla_base",
+      "reason": "Vanilla original registry and installed-version native data",
+      "evidence_paths": [
+        "Catalog/registries",
+        "Catalog/manifest.json",
+        "Catalog/changes",
+        "Catalog/effective"
+      ],
+      "research_requirement": "Read the existing canonical owner; do not create a competing external gameplay specification.",
+      "source_snapshot": "435e8b06f6d3e52eb6fd09f9b313007986d69cdc",
+      "architecture_boundary": "Concurrent module revamp may move implementations; resolve the current owning Docs/source before implementation."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "mod_id": "betteradvancements",
+  "installed_version": "0.6.0.73",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/better-advancements",
+      "publisher": "way2muchnoise",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "betteradvancements:browse_tree",
+      "kind": "interaction",
+      "title": "Browse advancements in a larger screen",
+      "player_action": "Open advancements and select a mod's tab.",
+      "outcome": "The expanded screen and tab title make the existing advancement tree easier to navigate.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "betteradvancements:read_and_style",
+      "kind": "interaction",
+      "title": "Read advancement descriptions and adjust appearance",
+      "player_action": "Hover an advancement and adjust the icon/background presentation settings.",
+      "outcome": "Larger descriptions and configurable icon colors/background fading improve readability without defining new advancement criteria.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

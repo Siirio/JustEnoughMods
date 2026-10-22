@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "chatanimation",
+  "installed_version": "1.3.0",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/chatanimation",
+      "publisher": "Ezzenix",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "chatanimation:message_motion",
+      "kind": "interaction",
+      "title": "Read animated chat",
+      "player_action": "Open chat and receive new messages.",
+      "outcome": "Chat transitions use smoother animations.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "chatanimation:indicator_option",
+      "kind": "interaction",
+      "title": "Control the message indicator",
+      "player_action": "Adjust the option that removes the indicator line to the left of messages.",
+      "outcome": "The indicator can be hidden independently of chat content.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The author documents Mod Menu access for Fabric; Forge configuration access must be checked in the installed release.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

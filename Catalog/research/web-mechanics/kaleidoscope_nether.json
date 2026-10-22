@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "mod_id": "kaleidoscope_nether",
+  "installed_version": "1.1.8-forge+mc1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/kaleidoscope-nether",
+      "publisher": "BmtUltra",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/kaleidoscope-nether",
+      "publisher": "BmtUltra",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar",
+        "sha256": "55a86fa55d381e918f3bb0fbc5fa17c73370076d752f8441b36a31758509e687",
+        "resource": "assets/kaleidoscope_nether/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "kaleidoscope_nether:fruit",
+      "kind": "acquisition",
+      "title": "Pick Nether fruit",
+      "player_action": "Search Crimson and Warped Forests for the addon's fruits.",
+      "outcome": "Gather Nether cooking ingredients.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите плоды Нижнего мира.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/kaleidoscope_nether.json."
+    },
+    {
+      "key": "kaleidoscope_nether:seed_bag",
+      "kind": "interaction",
+      "title": "Plant from a seed bag",
+      "player_action": "Fill the Seed Bag and use it to plant; sneak to use its area planting.",
+      "outcome": "Store picked-up seeds and plant from the bag.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Посадите семена из сумки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_nether:strider",
+      "kind": "interaction",
+      "title": "Feed a Nether Caterpillar",
+      "player_action": "Feed the addon's Nether Caterpillar to a young Strider.",
+      "outcome": "The author describes immediate growth.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите лавомерку гусеницей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_nether:return",
+      "kind": "interaction",
+      "title": "Return with Soul Return Rice",
+      "player_action": "Consume Soul Return Rice.",
+      "outcome": "Teleport to the player's death location according to the author.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте рис возвращения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_nether:nether_food_utilities",
+      "kind": "interaction",
+      "title": "Use special Nether meals",
+      "player_action": "Eat Everlasting Flame Steak, Star Stew or the documented fiery dish.",
+      "outcome": "Steak is retained when eaten, Star Stew can raise Star Blessing, and the fiery meal summons nearby blaze explosions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте особое блюдо Незера.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "kaleidoscope_nether:nether_food_effects",
+      "kind": "interaction",
+      "title": "Choose a Nether food buff",
+      "player_action": "Use Warped/Crimson, Ghost, Lava Walker, Blazing or Glowing food effects.",
+      "outcome": "Change specified mob hostility, Nether damage, wall-adjacent rising, movement, ignition/auto-smelting or experience gains.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Warped tooltip excludes attacks from ghasts, magma cubes, piglins and hoglins but explicitly retains magma-cube burning. Lava Walker effect description promises magma-block immunity, not universal lava-fluid immunity.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подберите эффект Незера.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "kaleidoscope_nether:ghast_pendant",
+      "kind": "interaction",
+      "title": "Wear a ghast pendant",
+      "player_action": "Equip Ghast Pendant in the chestplate or supported Curios slot.",
+      "outcome": "Keep Ghasts friendly according to the native tooltip.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "kaleidoscope_nether:ghast_pendant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наденьте кулон гаста.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    }
+  ]
+}

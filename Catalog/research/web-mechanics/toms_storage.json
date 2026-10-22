@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "mod_id": "toms_storage",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://github.com/tom5454/Toms-Storage",
+      "publisher": "tom5454",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/toms_storage-1.20-1.7.1.jar",
+        "sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+        "resource": "assets/toms_storage/lang/en_us.json"
+      }
+    },
+    {
+      "id": "native_lang",
+      "url": "https://github.com/tom5454/Toms-Storage",
+      "publisher": "tom5454",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/toms_storage-1.20-1.7.1.jar",
+        "sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b",
+        "resource": "assets/toms_storage/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "toms_storage:connect",
+      "kind": "automation",
+      "title": "Unify adjacent inventories",
+      "player_action": "Place an Inventory Connector touching inventories; use Trims across gaps.",
+      "outcome": "Expose the connected inventories as one storage network.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.inventory_connector"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read from installed toms_storage-1.20-1.7.1.jar!/assets/toms_storage/lang/en_us.json tooltip.toms_storage.*. Repository identifies the author project; live master is newer. Metadata unresolved ${file.jarVersion}; filename supplies 1.7.1 without rewriting original version metadata."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Объедините хранилища.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/toms_storage.json."
+    },
+    {
+      "key": "toms_storage:terminal",
+      "kind": "interaction",
+      "title": "Access network contents",
+      "player_action": "Attach a Storage Terminal or Crafting Terminal to the connected inventory network.",
+      "outcome": "Browse stored items; the crafting variant also provides a crafting grid.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.storage_terminal"
+        },
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.crafting_terminal"
+        }
+      ],
+      "depends_on": [
+        "toms_storage:connect"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read from installed toms_storage-1.20-1.7.1.jar!/assets/toms_storage/lang/en_us.json tooltip.toms_storage.*. Repository identifies the author project; live master is newer. Metadata unresolved ${file.jarVersion}; filename supplies 1.7.1 without rewriting original version metadata."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Откройте терминал хранения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "toms_storage:hopper",
+      "kind": "automation",
+      "title": "Filter network transfer",
+      "player_action": "Use an Inventory Hopper, set its filter with an item and clear it with empty-hand sneak interaction.",
+      "outcome": "Import or export selected items to the network.",
+      "registry_refs": [],
+      "depends_on": [
+        "toms_storage:connect"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read from installed toms_storage-1.20-1.7.1.jar!/assets/toms_storage/lang/en_us.json tooltip.toms_storage.*. Repository identifies the author project; live master is newer. Metadata unresolved ${file.jarVersion}; filename supplies 1.7.1 without rewriting original version metadata."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте фильтр передачи.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "toms_storage:wireless",
+      "kind": "progression",
+      "title": "Bind a wireless terminal",
+      "player_action": "Sneak-right-click a terminal with the Advanced Wireless Terminal.",
+      "outcome": "Bind remote access subject to configured range, loaded chunks and beacon extensions.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.adv_wireless_terminal"
+        }
+      ],
+      "depends_on": [
+        "toms_storage:terminal"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read from installed toms_storage-1.20-1.7.1.jar!/assets/toms_storage/lang/en_us.json tooltip.toms_storage.*. Repository identifies the author project; live master is newer. Metadata unresolved ${file.jarVersion}; filename supplies 1.7.1 without rewriting original version metadata."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Привяжите беспроводной терминал.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "toms_storage:open_crate",
+      "kind": "automation",
+      "title": "Export world items",
+      "player_action": "Use an Open Crate facing a block.",
+      "outcome": "Expose the front block as inventory interaction that creates item entities.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.open_crate"
+        }
+      ],
+      "depends_on": [
+        "toms_storage:connect"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Mechanics read from installed toms_storage-1.20-1.7.1.jar!/assets/toms_storage/lang/en_us.json tooltip.toms_storage.*. Repository identifies the author project; live master is newer. Metadata unresolved ${file.jarVersion}; filename supplies 1.7.1 without rewriting original version metadata."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выдайте предметы открытым ящиком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "toms_storage:cable_network",
+      "kind": "interaction",
+      "title": "Bridge distant inventories",
+      "player_action": "Run Inventory Cables between Cable Connectors attached to inventories and terminals.",
+      "outcome": "Connect distant inventories; the cable network must contain an Inventory Connector.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.inventory_cable"
+        },
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.inventory_cable_connector"
+        }
+      ],
+      "depends_on": [
+        "toms_storage:connect"
+      ],
+      "conditions": [
+        "Exact keys: tooltip.toms_storage.inventory_cable and inventory_cable_connector.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соедините удаленные сундуки кабелем.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "toms_storage:proxy",
+      "kind": "interaction",
+      "title": "Reach another inventory face",
+      "player_action": "Place an Inventory Proxy pointing toward the inventory face to expose.",
+      "outcome": "Use the proxy as an extension of that face.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.inventory_proxy"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подключите прокси инвентаря.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "toms_storage:filters",
+      "kind": "interaction",
+      "title": "Constrain item insertion",
+      "player_action": "Configure a multi-item filter for damage/NBT, a tag filter, or a polymorphic filter that accepts types already present.",
+      "outcome": "Select allow/reject behavior and inventory priorities; keep-last preserves a slot exemplar.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.item_filter"
+        },
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.tag_item_filter"
+        },
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.polymorphic_item_filter"
+        }
+      ],
+      "depends_on": [
+        "toms_storage:cable_network"
+      ],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте фильтр хранения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "toms_storage:remote_links",
+      "kind": "interaction",
+      "title": "Link separated storage networks",
+      "player_action": "Configure link ends to provide or access remote inventories and choose their private/public channel.",
+      "outcome": "Connect networks subject to both endpoint chunks being loaded; beacon extensions follow configured levels.",
+      "registry_refs": [],
+      "depends_on": [
+        "toms_storage:connect"
+      ],
+      "conditions": [
+        "tooltip.toms_storage.inventory_cable_connector_link and link_remote/link_public keys. Beacon levels are placeholders, not hardcoded installed values.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Свяжите два склада.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "toms_storage:stock_redstone",
+      "kind": "interaction",
+      "title": "Signal a stock threshold",
+      "player_action": "Set a Level Emitter to compare stored count against a threshold, choosing above or below.",
+      "outcome": "Emit redstone based on network contents.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "toms_storage:ts.level_emitter"
+        }
+      ],
+      "depends_on": [
+        "toms_storage:connect"
+      ],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получите сигнал о запасах.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "toms_storage:terminal_controls",
+      "kind": "interaction",
+      "title": "Choose storage transfer controls",
+      "player_action": "Select AE-style, Refined Storage-style or vanilla-style controls and use the matching pull-one/transfer-one gestures shown by the terminal.",
+      "outcome": "Change item transfer gestures; sorting, kept search text, synchronized search and player-inventory crafting pull are separate terminal settings.",
+      "registry_refs": [],
+      "depends_on": [
+        "toms_storage:terminal"
+      ],
+      "conditions": [
+        "tooltip.toms_storage.ctrlMode_0/1/2 document different gestures. Do not promise one gesture for every selected mode.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте управление терминалом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

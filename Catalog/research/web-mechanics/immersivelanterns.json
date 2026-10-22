@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "mod_id": "immersivelanterns",
+  "installed_version": "1.0.6",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/immersive-lanterns",
+      "publisher": "Toni",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "immersivelanterns:wear",
+      "kind": "interaction",
+      "title": "Wear a lantern",
+      "player_action": "Craft a lantern and crouch-right-click to equip it in a supported accessory slot.",
+      "outcome": "Carry a belt lantern while leaving the offhand available.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Current author page requires Accessories and Sodium/Embeddium Dynamic Lights; installed fork dependencies must be checked before claiming this exact equip path."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наденьте фонарь на пояс.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "immersivelanterns:light",
+      "kind": "integration",
+      "title": "Illuminate with a belt lantern",
+      "player_action": "Equip a lantern with the required accessory and dynamic-light integration installed.",
+      "outcome": "Get moving illumination and a swinging third-person lantern.",
+      "registry_refs": [],
+      "depends_on": [
+        "immersivelanterns:wear"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Current author page requires Accessories and Sodium/Embeddium Dynamic Lights; installed fork dependencies must be checked before claiming this exact equip path."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Осветите путь поясным фонарём.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

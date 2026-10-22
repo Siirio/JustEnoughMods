@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "mod_id": "betterdeserttemples",
+  "installed_version": "1.20-Forge-3.0.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/yungs-better-desert-temples",
+      "publisher": "YUNGNICKYOUNG",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "betterdeserttemples:temple_challenges",
+      "kind": "progression",
+      "title": "Navigate a redesigned desert temple",
+      "player_action": "Solve its puzzles, avoid traps and complete parkour routes.",
+      "outcome": "The temple has an exploration challenge and expanded loot.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Преодолей ловушки и загадки пустынного храма.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.20-Forge-3.0.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "betterdeserttemples:pharaoh_clear",
+      "kind": "combat",
+      "title": "Defeat the Pharaoh to clear temple fatigue",
+      "player_action": "Reach and defeat the temple's Pharaoh.",
+      "outcome": "By default, that temple permanently stops applying Mining Fatigue after clearance.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Temple Mining Fatigue can be disabled by config; its default is not asserted as JEM's effective setting."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи фараона и освободи храм от утомления.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.20-Forge-3.0.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

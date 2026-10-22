@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "mod_id": "trotting_wagons",
+  "installed_version": "1.0.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/trotting-wagons",
+      "publisher": "Favouriteless",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "trotting_wagons:hitch",
+      "kind": "interaction",
+      "title": "Hitch a wagon horse",
+      "player_action": "Leash a horse, then crouch-interact with the wagon.",
+      "outcome": "Attach the horse to pull the wagon.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Запрягите лошадь в повозку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/trotting_wagons.json."
+    },
+    {
+      "key": "trotting_wagons:drive",
+      "kind": "interaction",
+      "title": "Control a wagon",
+      "player_action": "Use the Horse Whip while driving to change speed; crouch-interact off-seat to switch direction.",
+      "outcome": "Drive or reverse the wagon.",
+      "registry_refs": [],
+      "depends_on": [
+        "trotting_wagons:hitch"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Проедьте на повозке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "trotting_wagons:passenger",
+      "kind": "interaction",
+      "title": "Load a mob passenger",
+      "player_action": "Crouch-interact with a leashed mob at the wagon or a mob beside a stationary wagon.",
+      "outcome": "Seat a mob for transport; crouch interaction also supports unloading.",
+      "registry_refs": [],
+      "depends_on": [
+        "trotting_wagons:hitch"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Перевезите животное в повозке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "trotting_wagons:maintain",
+      "kind": "interaction",
+      "title": "Maintain a wagon",
+      "player_action": "Apply Iron Ingots to repair it or crouch-click with wool to recolor it.",
+      "outcome": "Restore or recolor the wagon according to configured repair rules.",
+      "registry_refs": [],
+      "depends_on": [
+        "trotting_wagons:hitch"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отремонтируйте повозку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    }
+  ]
+}

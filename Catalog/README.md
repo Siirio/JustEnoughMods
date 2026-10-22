@@ -1,5 +1,10 @@
 # JEM Registry Atlas
 
+Reviewed external native-mod mechanics live in `research/web-mechanics/`. This
+non-canonical research supplements the ownership chain below without overriding
+registry identities, JEM changes or effective behavior. See [research/README.md](research/README.md)
+and query `python Catalog/generator/query_web_mechanics.py find <mod_id>` or `coverage`.
+
 This directory is the reusable, machine-readable inventory for the canonical Forge
 1.20.1 pack at the `snapshot_sha` recorded in every envelope. Canonical definitions
 live under `registries/`; `views/` and `graphs/` are derived indexes and must not

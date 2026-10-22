@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "mod_id": "tide",
+  "installed_version": "2.1.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/tide",
+      "publisher": "Lightning-64",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "bait",
+      "url": "https://lightning-64.github.io/tide-wiki/mechanics/bait-system/",
+      "publisher": "Lightning-64 author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "journal",
+      "url": "https://lightning-64.github.io/tide-wiki/mechanics/fishing-journal/",
+      "publisher": "Lightning-64 author wiki",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "table",
+      "url": "https://lightning-64.github.io/tide-wiki/items/angling-table/",
+      "publisher": "Lightning-64 author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/tide",
+      "publisher": "Lightning-64",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/tide-forge-1.20.1-2.1.1-hotfix.jar",
+        "sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
+        "resource": "assets/tide/lang/en_us.json"
+      }
+    },
+    {
+      "id": "native_habitat",
+      "url": "https://modrinth.com/mod/tide",
+      "publisher": "Lightning-64",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/tide-forge-1.20.1-2.1.1-hotfix.jar",
+        "sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
+        "resource": "data/tide/fishing/fish/freshwater/mooneye.json"
+      }
+    },
+    {
+      "id": "native_void",
+      "url": "https://modrinth.com/mod/tide",
+      "publisher": "Lightning-64",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/tide-forge-1.20.1-2.1.1-hotfix.jar",
+        "sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
+        "resource": "data/tide/fishing/fish/void/voidseeker.json"
+      }
+    },
+    {
+      "id": "native_crate",
+      "url": "https://modrinth.com/mod/tide",
+      "publisher": "Lightning-64",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/tide-forge-1.20.1-2.1.1-hotfix.jar",
+        "sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
+        "resource": "data/tide/fishing/crates/deep.json"
+      }
+    },
+    {
+      "id": "native_journal_trigger",
+      "url": "https://modrinth.com/mod/tide",
+      "publisher": "Lightning-64",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/tide-forge-1.20.1-2.1.1-hotfix.jar",
+        "sha256": "cac8ec3ee8772686ac8d3c35b86869399cede9ce1cc194cea925dc8d3b498a22",
+        "resource": "data/tide/advancements/journal_completed.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "tide:catch",
+      "kind": "acquisition",
+      "title": "Land a Tide fish",
+      "player_action": "Cast by holding and releasing right-click; complete the catch minigame by clicking in the colored region.",
+      "outcome": "Land a fish with species-specific movement and strength.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Поймайте рыбу Tide.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/tide.json."
+    },
+    {
+      "key": "tide:bait",
+      "kind": "interaction",
+      "title": "Equip fishing bait",
+      "player_action": "Right-click bait over a rod in inventory to fill an available bait slot.",
+      "outcome": "Apply the selected fishing-speed or special bait bonus.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "bait"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оснастите удочку наживкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "tide:journal",
+      "kind": "progression",
+      "title": "Record a fish discovery",
+      "player_action": "Pick up a fish and open the Fishing Journal.",
+      "outcome": "Track discoveries, first catch, total caught and smallest/largest catches; inspect native habitat requirements in the journal.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "tide:fishing_journal"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Current 2.1.1 journal.info.stats.*, newfish.toast.title and journal information keys corroborate the journal system beyond the historical wiki."
+      ],
+      "source_ids": [
+        "journal",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Запишите рыбу в журнал.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "tide:accessories",
+      "kind": "progression",
+      "title": "Customize a rod",
+      "player_action": "Use an Angling Table with supported rod accessories.",
+      "outcome": "Change a rod through native accessory customization.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "tide:angling_table"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "table"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Улучшите удочку на столе рыболова.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "tide:habitat_requirements",
+      "kind": "interaction",
+      "title": "Choose a fishing habitat",
+      "player_action": "Compare the journal habitat with dimension, fluid, depth, climate, time, weather, moon and seasonal requirements before choosing a fishing spot.",
+      "outcome": "Species selection depends on contextual conditions rather than one universal fishing pool.",
+      "registry_refs": [],
+      "depends_on": [
+        "tide:journal"
+      ],
+      "conditions": [
+        "Exact installed resource data/tide/fishing/fish/freshwater/mooneye.json requires Overworld freshwater water above Y40 and time ranges; temperature is a weighted modifier. Native journal labels expose other supported condition families; they are not universal requirements for every species.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang",
+        "native_habitat"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите подходящее место для рыбы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:lava_void",
+      "kind": "interaction",
+      "title": "Fish beyond water",
+      "player_action": "Use a lava-capable rod for lava; cast into a dimension's configured fishable void surface for void species.",
+      "outcome": "Unlock different fishing pools; Blazing rods additionally allow Nether fish in other lava.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "tide:netherite_fishing_rod"
+        },
+        {
+          "registry": "items",
+          "id": "tide:blazing_fishing_rod"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "text.tide.rod_tooltip.netherite_bonus/blazing_bonus and server.general.fishableVoidHeights. Installed data/tide/fishing/fish/void/voidseeker.json requires End+void; no universal void height is assumed.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang",
+        "native_void"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Порыбачьте в лаве или пустоте.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "tide:rod_bonuses",
+      "kind": "interaction",
+      "title": "Choose a specialized fishing rod",
+      "player_action": "Choose a Crystal rod for bite audio, Echo for hooked-fish identification, Diamond for extra experience, or a weather/light-sensitive rod for its stated bonus.",
+      "outcome": "Match rod behavior to the planned trip; Midas and Village rods add separate bonus-loot opportunities.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact text.tide.rod_tooltip.* keys define each bonus; recipe identities and ingredients remain in Catalog/graphs/recipes/tide.json.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте особую удочку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:crates",
+      "kind": "interaction",
+      "title": "Retrieve contextual fishing crates",
+      "player_action": "Fish in a context that qualifies for a native crate pool and open the resulting crate.",
+      "outcome": "Obtain context-specific chest loot; crate selection weight and luck scaling are configurable.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed data/tide/fishing/crates/deep.json: water+Overworld+below Y0, loot_table tide:chests/crates/deep. Other crate files own their own predicates. Weight is not a percentage.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang",
+        "native_crate"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выловите и откройте ящик.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:bucketable_fish",
+      "kind": "interaction",
+      "title": "Preserve a living catch",
+      "player_action": "Check a fish item's Bucketable indication and the configured menu-bucketing policy before putting it into a bucket.",
+      "outcome": "Keep supported living catches; policy distinguishes always, never and only-when-living.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "text.tide.fish.alive and server.items.bucketableFishItems. No universal right-click gesture is asserted from labels alone.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сохраните живой улов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:journal_signal",
+      "kind": "interaction",
+      "title": "Plan a journal completion objective",
+      "player_action": "Complete the native fishing journal and base a future adapter on the bundled journal completion trigger.",
+      "outcome": "Installed advancement data names tide:journal_complete; this is an adapter lead, not a working FTB integration.",
+      "registry_refs": [],
+      "depends_on": [
+        "tide:journal"
+      ],
+      "conditions": [
+        "Exact resource data/tide/advancements/journal_completed.json criteria.journal_completed.trigger. Runtime triggering is unverified.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang",
+        "native_journal_trigger"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Заполните рыболовный журнал.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:hook_accessories",
+      "kind": "interaction",
+      "title": "Change fishing access with a hook",
+      "player_action": "Fit Lavaproof or Depths hooks for lava/void access, Fiery/Permafrost hooks to shift water temperature, or Twilight to invert fish time preferences.",
+      "outcome": "Hooks change eligibility/context while line accessories reduce fish speed or catch difficulty.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Настройте крючок удочки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:fishing_instruments",
+      "kind": "interaction",
+      "title": "Read fishing conditions",
+      "player_action": "Use Climate Gauge, Depth Meter, Pocket Watch, Lunar Calendar, Fish Finder and Weather Radio for their respective information.",
+      "outcome": "Inspect biome temperature, depth, time, moon, fishing context and upcoming weather; the gauge explicitly ignores seasonal/weather changes.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Измерьте условия рыбалки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "tide:fish_satchel",
+      "kind": "interaction",
+      "title": "Collect fish in a satchel",
+      "player_action": "Right-click the held Fish Satchel to open it.",
+      "outcome": "Collect fish automatically while it remains open.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "tide:fish_satchel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите улов в сумку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "tide:special_fish_uses",
+      "kind": "interaction",
+      "title": "Use a special catch",
+      "player_action": "Eat Voidseeker to return to respawn, or use Chasm Eel on bedrock when the server permits its special behavior.",
+      "outcome": "Fish can provide utility beyond food; bedrock breaking has an explicit configuration switch.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "tide:voidseeker"
+        },
+        {
+          "registry": "items",
+          "id": "tide:chasm_eel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте необычный улов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "tide:fishing_equipment",
+      "kind": "interaction",
+      "title": "Use fishing-derived equipment",
+      "player_action": "Use Dragonfin Boots for a restored-on-landing extra jump, Jelly Torch underwater, or Enchanted Pocket Watch on an eligible mob.",
+      "outcome": "Gain mobility, underwater light or temporary time-freezing; watch targets can be blacklisted.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "tide:dragonfin_boots"
+        },
+        {
+          "registry": "items",
+          "id": "tide:jelly_torch"
+        },
+        {
+          "registry": "items",
+          "id": "tide:enchanted_pocket_watch"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте рыболовное снаряжение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    }
+  ]
+}

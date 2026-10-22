@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "mod_id": "golemoverhaul",
+  "installed_version": "1.1.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/golem-overhaul",
+      "publisher": "joosh_7889 / AlexNijjar",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/golem-overhaul",
+      "publisher": "joosh_7889 / AlexNijjar",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_2e139b5e092f",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/golem-overhaul",
+      "publisher": "joosh_7889 / AlexNijjar; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/golemoverhaul-forge-1.20.1-1.1.1.jar",
+        "sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+        "resource": "assets/golemoverhaul/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "golemoverhaul:hay_crops",
+      "kind": "interaction",
+      "title": "Protect crops with a Hay Golem",
+      "player_action": "Build or find a Hay Golem and keep it near farmland.",
+      "outcome": "Nearby crops receive protection from trampling.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "golemoverhaul:hay_golem"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Размести соломенного голема рядом с посевами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "golemoverhaul:netherite_mount",
+      "kind": "combat",
+      "title": "Ride and customize a Netherite Golem",
+      "player_action": "Mount the Netherite Golem and use jump to attack; gold ingots add piglin-neutral trim and lava unlocks coal summons.",
+      "outcome": "The mount gains specialized combat utilities; lava augmentation adds water vulnerability.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "golemoverhaul:netherite_golem"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оседлай незеритового голема и освой его атаку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "golemoverhaul:barrel_trade",
+      "kind": "acquisition",
+      "title": "Barter with a Barrel Golem",
+      "player_action": "Drop emeralds near a Barrel Golem found in a village.",
+      "outcome": "The golem exchanges them through its own loot table.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "golemoverhaul:barrel_golem"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Обменяй изумруд у бочкового голема.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "golemoverhaul:honey_harvest",
+      "kind": "acquisition",
+      "title": "Harvest honey from a Honey Golem",
+      "player_action": "Find a Honey Golem in a birch forest and collect its honey blobs.",
+      "outcome": "Its resident bees support the golem and produce throwable honey resources.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "golemoverhaul:honey_golem"
+        },
+        {
+          "registry": "items",
+          "id": "golemoverhaul:honey_blob"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи медовый сгусток от медового голема.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "golemoverhaul:terracotta_upgrade",
+      "kind": "interaction",
+      "title": "Awaken and improve a Terracotta Golem",
+      "player_action": "Place a statue near heat, then use cactus or a dead bush on the golem.",
+      "outcome": "The construct can gain an improved melee or ranged attack.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "golemoverhaul:terracotta_golem"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пробуди терракотового голема и улучши его.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.1.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "golemoverhaul:native_transformations",
+      "kind": "interaction",
+      "title": "native transformations native mechanic",
+      "player_action": "Right-click the Candle Golem item or melt a Clay Golem Statue like ice.",
+      "outcome": "The native tooltips specify transformation into Candle Golem or Terracotta Golem.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "golemoverhaul:clay_golem_statue"
+        },
+        {
+          "registry": "items",
+          "id": "golemoverhaul:candle_golem_block"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_2e139b5e092f"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Преобразуй глиняного или свечного голема.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/golemoverhaul-forge-1.20.1-1.1.1.jar; SHA256 115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90; entry assets/golemoverhaul/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

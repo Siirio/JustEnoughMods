@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "mod_id": "enhancedai",
+  "installed_version": "3.3.7.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/enhanced-ai",
+      "publisher": "Insane96",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v3_data",
+      "url": "https://github.com/Insane96/EnhancedAI/wiki/%5BVersion-3%5D-Data-Keys",
+      "publisher": "Insane96",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v3_tags",
+      "url": "https://github.com/Insane96/EnhancedAI/wiki/%5BVersion-3%5D-Tags",
+      "publisher": "Insane96",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "v3_json",
+      "url": "https://github.com/Insane96/EnhancedAI/wiki/%5BVersion-3%5D-JSON-Config",
+      "publisher": "Insane96",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "enhancedai:eligible_features",
+      "kind": "integration",
+      "title": "Determine which mobs receive a feature",
+      "player_action": "Inspect the v3 entity tags and effective configuration before treating a mob as enhanced.",
+      "outcome": "Feature eligibility is selected per behavior; the author cautions that modded mobs are not universally supported.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page",
+        "v3_tags"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Mob type alone does not prove an EAI ability. Match feature tags, per-entity data, effective config and native goal/action state; JEM spectator/dormancy rules remain authoritative."
+    },
+    {
+      "key": "enhancedai:miners_climbers",
+      "kind": "combat",
+      "title": "Account for enemies bypassing simple terrain barriers",
+      "player_action": "Plan against an eligible mob's mining/climbing/parkour data.",
+      "outcome": "Version 3 exposes mining timing/power and ladder/wall climbing as distinct configurable behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "A wiki capability does not prove it is enabled on every spawned zombie.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "v3_data",
+        "v3_tags"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Mob type alone does not prove an EAI ability. Match feature tags, per-entity data, effective config and native goal/action state; JEM spectator/dormancy rules remain authoritative."
+    },
+    {
+      "key": "enhancedai:fishing_pearls",
+      "kind": "combat",
+      "title": "React to equipped gap-closing mobs",
+      "player_action": "Inspect a mob's equipment and enabled fishing/pearl feature.",
+      "outcome": "Fisher data controls reeling, range and hand-item hooking, while pearl behavior is separately eligible.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "v3_data",
+        "v3_tags"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Mob type alone does not prove an EAI ability. Match feature tags, per-entity data, effective config and native goal/action state; JEM spectator/dormancy rules remain authoritative."
+    },
+    {
+      "key": "enhancedai:targeting_vehicle",
+      "kind": "combat",
+      "title": "Avoid assuming vehicles or walls neutralize enemies",
+      "player_action": "Inspect vehicle anti-cheese, targeting and teleport feature eligibility.",
+      "outcome": "Version 3 has separate controls for vehicle breaking/prevention, target switching and teleport behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "v3_tags",
+        "v3_data"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Mob type alone does not prove an EAI ability. Match feature tags, per-entity data, effective config and native goal/action state; JEM spectator/dormancy rules remain authoritative."
+    },
+    {
+      "key": "enhancedai:anger_shields",
+      "kind": "integration",
+      "title": "Configure contextual anger and shield blocking",
+      "player_action": "An administrator matches block/entity IDs or tags in break_anger_config and shield IDs/tags in shield_block_chance.",
+      "outcome": "Block breaking can provoke eligible mobs subject to range/line of sight; shield choices have configured block chances.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "v3_json"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Mob type alone does not prove an EAI ability. Match feature tags, per-entity data, effective config and native goal/action state; JEM spectator/dormancy rules remain authoritative."
+    },
+    {
+      "key": "enhancedai:version_scope",
+      "kind": "compatibility",
+      "title": "Separate historical feature lists from installed v3 behavior",
+      "player_action": "Compare the page's explicitly v2 feature section with the Version 3 wiki and installed 3.3.7.3.",
+      "outcome": "Old default mob lists and numerical bonuses remain historical evidence, not installed balance values.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page",
+        "v3_data"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Mob type alone does not prove an EAI ability. Match feature tags, per-entity data, effective config and native goal/action state; JEM spectator/dormancy rules remain authoritative."
+    }
+  ]
+}

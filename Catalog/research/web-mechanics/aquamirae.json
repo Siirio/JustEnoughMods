@@ -1,0 +1,566 @@
+{
+  "schema_version": 1,
+  "mod_id": "aquamirae",
+  "installed_version": "7.1.13",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/aquamirae",
+      "publisher": "Aquamirae authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/aquamirae",
+      "publisher": "Obscuria",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/aquamirae",
+      "publisher": "Obscuria; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar",
+        "sha256": "720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba",
+        "resource": "assets/aquamirae/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/aquamirae",
+      "publisher": "Obscuria",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_a97fbf06156b",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/aquamirae",
+      "publisher": "Obscuria; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar",
+        "sha256": "720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba",
+        "resource": "assets/aquamirae/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "aquamirae:ice_maze",
+      "kind": "progression",
+      "title": "Explore the Ice Maze",
+      "player_action": "Explore the frozen maze and its wreck-filled lower layers to find unique locations and loot.",
+      "outcome": "Environmental exploration quest chain.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Исследуй ледяной лабиринт и корабельные обломки.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "aquamirae:cornelia",
+      "kind": "combat",
+      "title": "Captain Cornelia encounter",
+      "player_action": "Locate and confront the ghostly Captain Cornelia in the ship graveyard.",
+      "outcome": "Boss/story reward tied to the Ice Maze.",
+      "registry_refs": [],
+      "depends_on": [
+        "aquamirae:ice_maze"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи капитана Корнелию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Actual entity ID and loot must be matched to Aquamirae 7.1.13 and JEM boss participation logic."
+    },
+    {
+      "key": "aquamirae:shell_horn_summon",
+      "kind": "progression",
+      "title": "Use a Shell Horn at the Ice Maze waters",
+      "player_action": "Find a Shell Horn in frozen pirate ships and use it near water inside the Ice Maze.",
+      "outcome": "Native documentation identifies it as the Cornelia summoning item.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:shell_horn"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди раковинный рог и подготовь вызов Корнелии.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. JEM hosted encounter admission and canonical Start may replace native immediate combat activation."
+    },
+    {
+      "key": "aquamirae:frozen_key_treasure",
+      "kind": "acquisition",
+      "title": "Recover the Frozen Key for a hidden chest",
+      "player_action": "Defeat Cornelia through canonical encounter rules and recover the Frozen Key.",
+      "outcome": "The key opens a chest hidden deep in the Ice Maze.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:frozen_key"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:frozen_chest"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи морозный ключ и отыщи спрятанный сундук.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "aquamirae:shellback_raising",
+      "kind": "interaction",
+      "title": "Raise a Scuttler into a Shellback mount",
+      "player_action": "Raise a Scuttler and use the native taming route for its Shellback stage.",
+      "outcome": "The installed advancement explicitly describes a raised, tamed mount.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "aquamirae:scuttler"
+        },
+        {
+          "registry": "entities",
+          "id": "aquamirae:shellback"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастить скаттлера и приручи панцирного ездового питомца.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "aquamirae:jellyfish_food",
+      "kind": "interaction",
+      "title": "Feed Jellyfish Jelly to Scuttlers",
+      "player_action": "Offer Jellyfish Jelly to a Scuttler.",
+      "outcome": "Its native tooltip identifies this as a favorite food.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:jellyfish_jelly"
+        },
+        {
+          "registry": "entities",
+          "id": "aquamirae:scuttler"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Угости скаттлера желе из медузы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "aquamirae:pirate_pouches",
+      "kind": "acquisition",
+      "title": "Open recovered Pirate and Treasure Pouches",
+      "player_action": "Find a pouch during Ice Maze exploration and right click to open it.",
+      "outcome": "The native item exposes a container-loot interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:pirate_pouch"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:treasure_pouch"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Открой найденный пиратский мешочек.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "aquamirae:echo_navigation",
+      "kind": "interaction",
+      "title": "Follow an Echo Compass to a graveyard echo",
+      "player_action": "Use the Echo Compass while searching for Ship Graveyard Echo.",
+      "outcome": "The compass resonates with the nearest echo resource.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:echo_compass"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:ship_graveyard_echo"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отыщи эхо кладбища кораблей с помощью компаса.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "aquamirae:void_squid_survival",
+      "kind": "interaction",
+      "title": "Understand hunger conversion before eating Void Squid",
+      "player_action": "Consume Void Squid while maintaining a food reserve.",
+      "outcome": "Its tooltip describes hits draining hunger instead of health, with danger when starving.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:void_squid"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй пустотного кальмара, контролируя запас сытости.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "aquamirae:smithing_templates",
+      "kind": "interaction",
+      "title": "smithing templates native mechanic",
+      "player_action": "Use Terrible template with Angler's Fang or Abyssal template with Abyssal Amethyst in armor smithing.",
+      "outcome": "Native slot descriptions identify distinct upgrade additions; they do not establish every effective recipe after pack overrides.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:terrible_upgrade_smithing_template"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:abyssal_upgrade_smithing_template"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:maze_weapons",
+      "kind": "interaction",
+      "title": "maze weapons native mechanic",
+      "player_action": "Use Remnant Saber, Shatterblade, Shatterspike or Tidepiercer in their favored combat situation.",
+      "outcome": "Native ability text links them to historical Ice Maze kills, temporary maximum-health reduction, armor reduction or deeper underwater damage.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:remnant_saber"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:shatterblade"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:shatterspike"
+        },
+        {
+          "registry": "items",
+          "id": "aquamirae:tidepiercer"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:dagger_greed",
+      "kind": "interaction",
+      "title": "dagger greed native mechanic",
+      "player_action": "Attack villagers or pillagers with Dagger of Greed only where current server rules permit.",
+      "outcome": "Its native ability can produce Emeralds but can also break the weapon; no JEM economy authorization or player objective is inferred.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:dagger_of_greed"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:tempest_chain",
+      "kind": "interaction",
+      "title": "tempest chain native mechanic",
+      "player_action": "Inflict Superconductor with Tempest Trident and strike affected enemies.",
+      "outcome": "Native ability text links affected targets through chain shocks and replicated lightning.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:tempest_trident"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:abyssal_armor",
+      "kind": "interaction",
+      "title": "abyssal armor native mechanic",
+      "player_action": "Wear the Abyssal armor combination and receive a negative effect.",
+      "outcome": "Native half-set text grants stacking Strength; tiara/full-set fatal-damage deferral is an upstream mechanic that must not override JEM event elimination.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:void_squid_food",
+      "kind": "interaction",
+      "title": "void squid food native mechanic",
+      "player_action": "Consume Void Squid while maintaining a food reserve.",
+      "outcome": "Incoming hits drain hunger instead of health, but starvation rapidly drains health.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:void_squid"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:scuttler_food",
+      "kind": "interaction",
+      "title": "scuttler food native mechanic",
+      "player_action": "Feed Jellyfish Jelly to a Scuttler while raising it toward a Shellback mount.",
+      "outcome": "Native food text and taming advancement support the care/maturation branch without supplying an exact maturity threshold.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:jellyfish_jelly"
+        },
+        {
+          "registry": "entities",
+          "id": "aquamirae:scuttler"
+        },
+        {
+          "registry": "entities",
+          "id": "aquamirae:shellback"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:luminescent_current",
+      "kind": "interaction",
+      "title": "luminescent current native mechanic",
+      "player_action": "Place Luminescent Bubble in an aquatic route.",
+      "outcome": "Its native tooltip accelerates nearby swimmers.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:luminescent_bubble"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "aquamirae:maelstrom_niveis",
+      "kind": "interaction",
+      "title": "maelstrom niveis native mechanic",
+      "player_action": "Distill Niveis Tear and stand in a Blizzard.",
+      "outcome": "Installed7.1.13 native tooltip/advancement explicitly describe being taken to Maelstrom; this is documented content, while actual dimension accessibility and JEM overrides need runtime confirmation.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "aquamirae:niveis_tear"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a97fbf06156b"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанную находку ледяного лабиринта.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar; SHA256 720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba; entry assets/aquamirae/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    }
+  ]
+}

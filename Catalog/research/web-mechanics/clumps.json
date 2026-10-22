@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "mod_id": "clumps",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/clumps",
+      "publisher": "Jaredlll08",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "clumps:merged_xp_pickup",
+      "kind": "interaction",
+      "title": "Collect merged experience orbs",
+      "player_action": "Approach experience drops clustered in a small area.",
+      "outcome": "Nearby XP orbs are grouped into fewer entities and are collected immediately on contact.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "For Minecraft 1.17 and newer the author specifies server-side installation; this does not imply an XP multiplier.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

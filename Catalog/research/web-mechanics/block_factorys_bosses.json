@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "mod_id": "block_factorys_bosses",
+  "installed_version": "2.1.2",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bossesrise",
+      "publisher": "blockfactorystudio",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "kraken_release",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bossesrise/files/8026585",
+      "publisher": "blockfactorystudio",
+      "scope": "historical_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "ashlord_fix",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bossesrise/files/8026563",
+      "publisher": "blockfactorystudio",
+      "scope": "historical_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bossesrise",
+      "publisher": "blockfactorystudio",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/bossesrise",
+      "publisher": "blockfactorystudio; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+        "sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc",
+        "resource": "data/block_factorys_bosses/advancements/kill_all_bosses.json",
+        "resources": [
+          "data/block_factorys_bosses/advancements/kill_all_bosses.json",
+          "assets/block_factorys_bosses/lang/en_us.json",
+          "data/block_factorys_bosses/recipes/kraken_trident.json",
+          "data/block_factorys_bosses/recipes/dragon_bones_chestplate.json"
+        ]
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "block_factorys_bosses:boss_encounters",
+      "kind": "progression",
+      "title": "Bosses Rise arena encounters",
+      "player_action": "Explore naturally generated boss structures and defeat multi-phase enemies by learning attack patterns.",
+      "outcome": "Distinct encounter progression across five bosses.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пройди первое многофазное испытание Bosses’Rise.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Do not create kill-completion quests without JEM hosted-boss ownership and exact entity IDs."
+    },
+    {
+      "key": "block_factorys_bosses:kraken_ship",
+      "kind": "progression",
+      "title": "Kraken cursed ship",
+      "player_action": "Search deep ocean biomes for the cursed ship added in the Kraken update; interact with its encounter.",
+      "outcome": "Kraken boss challenge and unique loot.",
+      "registry_refs": [],
+      "depends_on": [
+        "block_factorys_bosses:boss_encounters"
+      ],
+      "conditions": [],
+      "source_ids": [
+        "kraken_release"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди проклятый корабль и победи Кракена.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Worldgen biome tag #block_factorys_bosses:kraken_ship and JEM server changes require exact verification."
+    },
+    {
+      "key": "block_factorys_bosses:phase2_bug_history",
+      "kind": "compatibility",
+      "title": "Historical phase-two invisible dragon bug",
+      "player_action": "A 2.0.13 release note describes a fix for invisible phase-two Ashlord; do not presume this bug persists in installed 2.1.2.",
+      "outcome": "Regression watch only, not a present defect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "ashlord_fix"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Historical issue was patched before the installed version."
+    },
+    {
+      "key": "block_factorys_bosses:boss_roster",
+      "kind": "combat",
+      "title": "Complete the five native boss defeats",
+      "player_action": "Defeat the native dragon, kraken, sandworm, underworld knight and yeti through hosted encounter admission.",
+      "outcome": "The installed advancement defines an explicit boss challenge roster.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "block_factorys_bosses:infernal_dragon"
+        },
+        {
+          "registry": "entities",
+          "id": "block_factorys_bosses:kraken"
+        },
+        {
+          "registry": "entities",
+          "id": "block_factorys_bosses:sandworm"
+        },
+        {
+          "registry": "entities",
+          "id": "block_factorys_bosses:underworld_knight"
+        },
+        {
+          "registry": "entities",
+          "id": "block_factorys_bosses:yeti"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи пять разных боссов Bosses'Rise.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar; SHA256 8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc; entry data/block_factorys_bosses/advancements/kill_all_bosses.json. Native text/data is not runtime proof. Read the criteria rather than treating a rendered trophy icon as loot. JEM registered boss profiles remain canonical for raid eligibility."
+    },
+    {
+      "key": "block_factorys_bosses:undying_hook",
+      "kind": "interaction",
+      "title": "Use an Undying Tentacle as a grappling tool",
+      "player_action": "Use the Undying Tentacle on a block or entity.",
+      "outcome": "Native tooltip distinguishes pulling the player to blocks and entities toward the player.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "block_factorys_bosses:undying_tentacle"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Опробуй цепляющееся бессмертное щупальце.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar; SHA256 8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc; entry assets/block_factorys_bosses/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "block_factorys_bosses:kraken_weapon_recipe",
+      "kind": "crafting",
+      "title": "Craft a Kraken Trident from native materials",
+      "player_action": "Follow the installed Kraken Trident crafting recipe.",
+      "outcome": "The recipe converts Kraken-related materials into its weapon.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "block_factorys_bosses:kraken_trident"
+        },
+        {
+          "registry": "items",
+          "id": "block_factorys_bosses:kraken_tooth"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь трезубец кракена.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar; SHA256 8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc; entry data/block_factorys_bosses/recipes/kraken_trident.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "block_factorys_bosses:dragon_bone_armor",
+      "kind": "crafting",
+      "title": "Turn dragon materials into armor",
+      "player_action": "Use the installed Dragon Bones armor recipes after obtaining materials.",
+      "outcome": "The mod provides armor progression beyond collecting a boss trophy.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "block_factorys_bosses:dragon_bone"
+        },
+        {
+          "registry": "items",
+          "id": "block_factorys_bosses:dragon_bones_chestplate"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изготовь броню из костей дракона.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar; SHA256 8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc; entry data/block_factorys_bosses/recipes/dragon_bones_chestplate.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    }
+  ]
+}

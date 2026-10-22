@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "mod_id": "railways",
+  "installed_version": "1.7.3+forge-mc1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/create-steam-n-rails",
+      "publisher": "Steam 'n' Rails team",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/create-steam-n-rails",
+      "publisher": "Steam 'n' Rails team",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Steam_Rails-1.7.3%2Bforge-mc1.20.1.jar",
+        "sha256": "0e98b72472ff78464f6e69025bb47f942e7f66a976382fbb87ceff765a8b00cf",
+        "resource": "assets/railways/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "railways:crossing",
+      "kind": "interaction",
+      "title": "Make a grade crossing",
+      "player_action": "Right-click a compatible track with a slab.",
+      "outcome": "Form a grade crossing, including on supported slopes and turns.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создайте железнодорожный переезд.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/railways.json."
+    },
+    {
+      "key": "railways:conductor",
+      "kind": "automation",
+      "title": "Construct a conductor",
+      "player_action": "Create and equip a Conductor.",
+      "outcome": "Use its remote redstone operation and toolbox-carrying role.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Создайте проводника.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "railways:couple",
+      "kind": "automation",
+      "title": "Couple trains with redstone",
+      "player_action": "Power a Coupling Block beside the relevant train setup.",
+      "outcome": "Connect or disconnect trains.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соедините поезда сцепкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "railways:whistle",
+      "kind": "interaction",
+      "title": "Call a conductor train",
+      "player_action": "Use a Conductor Whistle with a conductor-driven train.",
+      "outcome": "Summon the train through the addon's native whistle mechanic.",
+      "registry_refs": [],
+      "depends_on": [
+        "railways:conductor"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вызовите поезд свистком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "railways:coupler_alignment",
+      "kind": "interaction",
+      "title": "Align a train coupler",
+      "player_action": "Occupy both coupler track points with bogey centers aligned and carriages facing the same direction; use a Wrench to reorient when needed.",
+      "outcome": "Make the selected coupling/decoupling action admissible.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed railways.tooltip.coupler.error.* explicitly documents missing train, alignment, orientation and disallowed-mode failures.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выровняйте вагоны для сцепки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "railways:automatic_assembly",
+      "kind": "interaction",
+      "title": "Assemble trains by deployer",
+      "player_action": "Have a Deployer holding a Wrench interact with the Train Station.",
+      "outcome": "Automate station assembly/disassembly.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите поезд автоматически.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "railways:bogey_gauge",
+      "kind": "interaction",
+      "title": "Choose a compatible bogey",
+      "player_action": "Open the native Bogey Menu while placing Train Casing and select a style compatible with the track gauge.",
+      "outcome": "Choose gauge-aware bogeys; Phantom Tracks accept all bogey types and are revealed while held.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подберите тележку поезда.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "railways:rail_customization",
+      "kind": "interaction",
+      "title": "Customize rail fixtures",
+      "player_action": "Use planks/dyes on headstocks or buffers, dye/soul materials on smokestacks, and a Wrench on boiler fronts.",
+      "outcome": "Change boards, color, smoke type and door style without changing train mechanics.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Украсьте поезд.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

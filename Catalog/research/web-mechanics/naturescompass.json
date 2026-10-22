@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "mod_id": "naturescompass",
+  "installed_version": "1.20.1-1.12.0-forge",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/natures-compass",
+      "publisher": "ChaosTheDude",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "naturescompass:locate",
+      "kind": "interaction",
+      "title": "Locate a biome",
+      "player_action": "Right-click Nature's Compass and choose a biome in its search menu.",
+      "outcome": "Find a registered vanilla or modded biome within configured search limits.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "naturescompass:naturescompass"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите биом компасом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/naturescompass.json."
+    },
+    {
+      "key": "naturescompass:reset",
+      "kind": "interaction",
+      "title": "Reset a biome search",
+      "player_action": "Shift-right-click Nature's Compass.",
+      "outcome": "Clear its search state; when not tracking a biome it points to world spawn.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "naturescompass:naturescompass"
+        }
+      ],
+      "depends_on": [
+        "naturescompass:locate"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сбросьте поиск компаса.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "mod_id": "p1nero_ec",
+  "installed_version": "20.14.0.9",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/p1neros-epic-x-cataclysm",
+      "publisher": "P1nero",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_source",
+      "url": "https://github.com/P1neapplell0/P1nero-s-Epic-Cataclysm",
+      "publisher": "P1nero",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "p1nero_ec:ceraunus_skills",
+      "kind": "combat",
+      "title": "Use Ceraunus's three special actions",
+      "player_action": "Use the addon controls numbered 1, 2 or 3 while wielding Ceraunus with sufficient skill points.",
+      "outcome": "The documented actions throw it, project a fan-shaped wave, or leap with lightning and waves; costs increase across those actions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The listed 1/2/3 actions refer to addon skill controls, not permission to replace hotbar keys. Detect native successful ability/resource consumption; owning a Cataclysm weapon is insufficient. Resolve overlap with epicfight_cataclysm before implementation."
+    },
+    {
+      "key": "p1nero_ec:soul_render_skills",
+      "kind": "combat",
+      "title": "Choose a Soul Render approach or area attack",
+      "player_action": "Use Soul Render's addon controls 1, 2 or 3 with the required points.",
+      "outcome": "They respectively dash leaving phantom halberds, slam/stun nearby targets, or summon surrounding phantom halberds.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The listed 1/2/3 actions refer to addon skill controls, not permission to replace hotbar keys. Detect native successful ability/resource consumption; owning a Cataclysm weapon is insufficient. Resolve overlap with epicfight_cataclysm before implementation."
+    },
+    {
+      "key": "p1nero_ec:desert_skills",
+      "kind": "combat",
+      "title": "Choose Wrath of the Desert's storm attack",
+      "player_action": "Use its normal/cursed storm control or the more costly continuous-storm action.",
+      "outcome": "The latter also calls falling Ancient Desert Steles.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The listed 1/2/3 actions refer to addon skill controls, not permission to replace hotbar keys. Detect native successful ability/resource consumption; owning a Cataclysm weapon is insufficient. Resolve overlap with epicfight_cataclysm before implementation."
+    },
+    {
+      "key": "p1nero_ec:tidal_incinerator",
+      "kind": "combat",
+      "title": "Use the Tidal Claw or Incinerator special attacks",
+      "player_action": "Use the weapon's second or third addon action with sufficient points.",
+      "outcome": "Tidal Claw provides dash/laser options; Incinerator provides charged fireballs or a forward Flame Soul Slash.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Precise costs, reach and damage must match installed 20.14.0.9 source rather than a web description.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The listed 1/2/3 actions refer to addon skill controls, not permission to replace hotbar keys. Detect native successful ability/resource consumption; owning a Cataclysm weapon is insufficient. Resolve overlap with epicfight_cataclysm before implementation."
+    },
+    {
+      "key": "p1nero_ec:animation_dependencies",
+      "kind": "compatibility",
+      "title": "Inspect the ability's animation and effect owners",
+      "player_action": "Compare the addon with installed Epic Fight, Nightfall, Invincible, Avalon and Cataclysm contracts.",
+      "outcome": "The author reuses Nightfall animation templates and invokes Cataclysm effects; a generic weapon-category patch is not equivalent to these abilities.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "The listed 1/2/3 actions refer to addon skill controls, not permission to replace hotbar keys. Detect native successful ability/resource consumption; owning a Cataclysm weapon is insufficient. Resolve overlap with epicfight_cataclysm before implementation."
+    }
+  ]
+}

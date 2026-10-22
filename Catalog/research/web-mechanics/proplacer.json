@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "proplacer",
+  "installed_version": "8.0.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/pro-placer",
+      "publisher": "Fuzs",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "proplacer:continuous_build_line",
+      "kind": "interaction",
+      "title": "Place a continuous line while holding use",
+      "player_action": "Hold the block-placement button while building in a direction.",
+      "outcome": "Placement is accelerated and locked to the chosen direction to reduce gaps and accidental off-line blocks.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "proplacer:air_extension",
+      "kind": "interaction",
+      "title": "Extend a build from an air target",
+      "player_action": "Aim at air along the currently locked building direction while continuing placement.",
+      "outcome": "The described placement logic supports extending roofs or flying creative builds without retargeting a solid face each time.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "This is client placement assistance; server validation and available inventory remain authoritative.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

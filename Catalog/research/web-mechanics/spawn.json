@@ -1,0 +1,885 @@
+{
+  "schema_version": 1,
+  "mod_id": "spawn",
+  "installed_version": "4.0.7-1.20.1",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/spawn-mod",
+      "publisher": "Ninnih",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "local_anglers",
+      "url": "https://github.com/Siirio/JustEnoughMods/blob/main/Catalog/registries/entities/spawn.json",
+      "publisher": "JEM installed-language scan",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar",
+        "sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+        "resource": "assets/spawn/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/spawn-mod",
+      "publisher": "Ninnih",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/spawn-mod",
+      "publisher": "Ninnih; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar",
+        "sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+        "resource": "assets/spawn/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/spawn-mod",
+      "publisher": "Ninnih",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_fa1ef8a60187",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/spawn-mod",
+      "publisher": "Ninnih; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar",
+        "sha256": "4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf",
+        "resource": "assets/spawn/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "spawn:biome_wilderness",
+      "kind": "metadata",
+      "title": "Overworld biodiversity",
+      "player_action": "Explore Spawn Overworld biomes, animals and ambient features.",
+      "outcome": "Mod-wide exploration activities beyond item collection.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи новую экосистему мода Spawn.",
+        "detection": "custom_criterion"
+      }
+    },
+    {
+      "key": "spawn:datapack_animals",
+      "kind": "compatibility",
+      "title": "Datapack-configurable animal spawn",
+      "player_action": "Use native Spawn config/datapack integrations to specify animal variants, spawns and selected recipe systems.",
+      "outcome": "Data-first extensibility instead of overriding AI everywhere.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Check 4.0.7 resource paths before authoring real datapack changes."
+    },
+    {
+      "key": "spawn:jei_recipes",
+      "kind": "integration",
+      "title": "Spawn recipe discovery via JEI",
+      "player_action": "Use JEI to discover special Spawn recipes where registered.",
+      "outcome": "Guide can teach the native recipe interface.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "requires JEI integration"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди специальный рецепт Spawn в JEI.",
+        "detection": "manual"
+      }
+    },
+    {
+      "key": "spawn:jade_support",
+      "kind": "integration",
+      "title": "Jade information support",
+      "player_action": "Jade integration supplies information for some specialized Spawn interactions such as stickbugs and octopus-locked chests.",
+      "outcome": "Potential in-game inspection tutorial.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "requires Jade"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Исследуй информацию Spawn через Jade.",
+        "detection": "manual"
+      }
+    },
+    {
+      "key": "spawn:angler_fish",
+      "kind": "interaction",
+      "title": "Angler fish utility lead",
+      "player_action": "The installed English localization describes feeding shiny items to an Angler Fish for Night Vision; it can be carried in a bucket.",
+      "outcome": "Possible noncombat animal-interaction quest.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:angler_fish"
+        },
+        {
+          "registry": "items",
+          "id": "spawn:angler_fish_bucket"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "local_anglers"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытай взаимодействие с удильщиком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "LOCALIZATION_ONLY: neither target-item tag nor AI event is proven; verify 4.0.7 code before offering concrete instructions."
+    },
+    {
+      "key": "spawn:farmer_delight_extension",
+      "kind": "integration",
+      "title": "Optional Farmer's Delight food additions",
+      "player_action": "Spawn project advertises new foods using animal drops when Farmer's Delight is installed.",
+      "outcome": "Only relevant when optional integration is present.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "requires farmersdelight (not in current manifest)"
+      ],
+      "source_ids": [
+        "official"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Do not generate quests for absent optional integrations."
+    },
+    {
+      "key": "spawn:hamster_storage",
+      "kind": "interaction",
+      "title": "Tame a hamster and access its cheek storage",
+      "player_action": "Offer Sunflower Seeds to a hamster and access its owner inventory.",
+      "outcome": "The tame collects items into cheek pouches; extreme temperatures are hazardous.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:hamster"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приручи хомяка и открой его защёчные запасы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:snail_mucus",
+      "kind": "acquisition",
+      "title": "Wet a snail to collect Mucus",
+      "player_action": "Keep a snail wet and collect its native mucus resource.",
+      "outcome": "Snails produce mucus under wet conditions; projectiles can remove their shell.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:snail"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи слизь от мокрой улитки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:ant_owner",
+      "kind": "interaction",
+      "title": "Hatch an Ant Pupa for an owned ant",
+      "player_action": "Hatch an Ant Pupa and raise the ant.",
+      "outcome": "Hatched ants follow/protect their owner and distinguish other abdomen colors.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:ant"
+        },
+        {
+          "registry": "items",
+          "id": "spawn:ant_pupa"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выведи муравья из куколки и вырасти помощника.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:sea_cow_resources",
+      "kind": "acquisition",
+      "title": "Milk and feed Sea Cows in Seagrass Meadows",
+      "player_action": "Milk a Sea Cow with a bucket and provide food before its Tall Seagrass foraging.",
+      "outcome": "It supplies milk and can uncover loot through its feeding behavior.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:sea_cow"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Позаботься о морской корове и собери её ресурсы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:iguana_cooking",
+      "kind": "interaction",
+      "title": "Help a young iguana shed and use its sunlight cooking",
+      "player_action": "Help a juvenile iguana shed to establish trust, then use its solar-cooking ability.",
+      "outcome": "A trusted Tropical Island creature can cook items using sunlight.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:iguana"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подружись с игуаной и приготовь пищу на солнце.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:seal_transport",
+      "kind": "interaction",
+      "title": "Pay a seal with live fish for a ride",
+      "player_action": "Find a seal near a Cold Island or Frozen Ocean and offer live fish.",
+      "outcome": "Native text describes a transport service from the animal.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:seal"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Угости тюленя живой рыбой и прокатись.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:capture_sizes",
+      "kind": "interaction",
+      "title": "Choose capture tools by species and age",
+      "player_action": "Use Casting Nets, buckets or a Nautilus Shell according to the native animal entry and growth stage.",
+      "outcome": "Large adults may reject buckets while certain smaller creatures fit.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "spawn:casting_net"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:octopus"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Поймай подходящее морское существо специальным инструментом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:dodo_breeding_boundary",
+      "kind": "compatibility",
+      "title": "Avoid impossible Dodo breeding objectives",
+      "player_action": "Use native Dodo documentation before proposing a breeding task.",
+      "outcome": "The installed text explicitly calls Dodos incapable of breeding and swimming.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:dodo"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "spawn:fish_breeding",
+      "kind": "interaction",
+      "title": "fish breeding native mechanic",
+      "player_action": "Breed Tuna or Sunfish and bucket only eligible young forms.",
+      "outcome": "Tuna eggs develop into babies; mature Tuna/Sunfish no longer fit a bucket.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:tuna"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:tuna_egg"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:sunfish"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:seahorse_disc",
+      "kind": "interaction",
+      "title": "seahorse disc native mechanic",
+      "player_action": "Defeat a baby Drowned riding a Seahorse.",
+      "outcome": "Native lore identifies this uncommon Music Disc Water Horse acquisition route.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "spawn:music_disc_water_horse"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:seahorse"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:marine_capture",
+      "kind": "interaction",
+      "title": "marine capture native mechanic",
+      "player_action": "Use Casting Net for compatible sea creatures, or capture an Octopus in Nautilus Shell.",
+      "outcome": "The native advancement recognizes multi-mob catches and shell housing; Clams may also be collected by hand.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "spawn:casting_net"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:octopus"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:clam"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:mucus_humidity",
+      "kind": "interaction",
+      "title": "mucus humidity native mechanic",
+      "player_action": "Wet Snails for Mucus and manipulate humidity around Mucus/Ghostly Mucus blocks.",
+      "outcome": "Ordinary mucus slows contact, ghostly mucus permits passage while soft, and humidity can solidify both.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:snail"
+        },
+        {
+          "registry": "blocks",
+          "id": "spawn:mucus_block"
+        },
+        {
+          "registry": "blocks",
+          "id": "spawn:ghostly_mucus_block"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:sunflower_seeds",
+      "kind": "interaction",
+      "title": "sunflower seeds native mechanic",
+      "player_action": "Harvest Sunflower Seeds and return after morning regrowth.",
+      "outcome": "The flower follows the sun and renews seeds for Hamster taming.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "spawn:sunflower_seeds"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:clam_appearance",
+      "kind": "interaction",
+      "title": "clam appearance native mechanic",
+      "player_action": "Use Clams and Prismarine to change a compatible mob's appearance.",
+      "outcome": "A native advancement explicitly recognizes this cosmetic interaction, separate from cooking clams.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:clam"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:flukeshroom",
+      "kind": "interaction",
+      "title": "flukeshroom native mechanic",
+      "player_action": "Milk Flukeshroom with a bowl and account for lightning transformation.",
+      "outcome": "The Mushroom Fields creature provides soup and changes form when struck.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:flukeshroom"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:schooling_fish",
+      "kind": "interaction",
+      "title": "schooling fish native mechanic",
+      "player_action": "Bucket Herring, Pilot Fish, Blenny or Seahorse in their documented habitats.",
+      "outcome": "Herring school, Pilot Fish circle larger creatures, Blenny flee in Tide Pools and Seahorses vary with habitat.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:herring"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:pilot_fish"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:blenny"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:seahorse"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:bluefish_frenzy",
+      "kind": "interaction",
+      "title": "bluefish frenzy native mechanic",
+      "player_action": "Avoid injuring nearby creatures around Bluefish.",
+      "outcome": "Nearby hurt mobs can provoke its feeding frenzy in ocean/cold-ocean habitats.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:bluefish"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:urchin_storage",
+      "kind": "interaction",
+      "title": "urchin storage native mechanic",
+      "player_action": "Keep a Sea Urchin underwater and place an item on its head.",
+      "outcome": "Native lore documents head-item carrying and Bundle stacking behavior; it dies outside water.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "spawn:sea_urchin"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:date_harvest",
+      "kind": "interaction",
+      "title": "date harvest native mechanic",
+      "player_action": "Collect Date bunches directly or knock them from island trees with projectiles.",
+      "outcome": "The native fieldguide supplies two harvesting methods.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "spawn:date_seed"
+        },
+        {
+          "registry": "items",
+          "id": "spawn:date_bunch"
+        },
+        {
+          "registry": "blocks",
+          "id": "spawn:date_sapling"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:crab_bubbles",
+      "kind": "interaction",
+      "title": "crab bubbles native mechanic",
+      "player_action": "Approach Coastal Crabs cautiously; account for Spider Crab climbing/jumping in cold oceans.",
+      "outcome": "Crab bubbles can carry entities and the cold variant fires frozen bubbles.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:coastal_crab"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:spider_crab"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:stranded_wax",
+      "kind": "interaction",
+      "title": "stranded wax native mechanic",
+      "player_action": "Wax a Stranded to switch its activity.",
+      "outcome": "The native description makes it retaliate against hostiles that bump into it and supports on/off control.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:stranded"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:barbed_disc",
+      "kind": "interaction",
+      "title": "barbed disc native mechanic",
+      "player_action": "Have a Barbed kill a Creeper.",
+      "outcome": "The native lore identifies Music Disc Barbaric as the uncommon result; Barbed attacks waterborne players with explosive barbs.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:barbed"
+        },
+        {
+          "registry": "items",
+          "id": "spawn:music_disc_barbaric"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "spawn:seal_booby_dodo",
+      "kind": "interaction",
+      "title": "seal booby dodo native mechanic",
+      "player_action": "Pay a Seal live fish for a ride, observe paired Booby mating, and protect Dodos from water.",
+      "outcome": "Native descriptions distinguish transport, lifelong pairing, and Dodo inability to breed or swim.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "spawn:seal"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:booby"
+        },
+        {
+          "registry": "entities",
+          "id": "spawn:dodo"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fa1ef8a60187"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выполни описанное взаимодействие с животным Spawn.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/spawn-4.0.7-1.20.1.jar; SHA256 4c2385dcb8058ff6549a68a482d145d7212aa609574697b0812db4336d212fcf; entry assets/spawn/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    }
+  ]
+}

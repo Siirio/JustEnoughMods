@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "mod_id": "trade_cycling",
+  "installed_version": "1.20.1-1.0.18",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/trade-cycling",
+      "publisher": "henkelmax",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "trade_cycling:reroll_untraded_offers",
+      "kind": "interaction",
+      "title": "Cycle a new villager's offers",
+      "player_action": "Open trading with a villager that has never been traded with and use the cycle button or documented C binding.",
+      "outcome": "Offers can be rerolled without repeatedly replacing its workstation or waiting for working hours.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "A villager already traded with is excluded; this extends the native trading interface.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "trade_cycling:button_position",
+      "kind": "interaction",
+      "title": "Move the offer-cycle control",
+      "player_action": "Adjust the configured trade-cycle button location.",
+      "outcome": "The control can fit the existing trade GUI without replacing its native offer list.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

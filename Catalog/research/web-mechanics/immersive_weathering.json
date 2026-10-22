@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "mod_id": "immersive_weathering",
+  "installed_version": "1.20.1-2.0.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/immersive-weathering",
+      "publisher": "Immersive Weathering authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "blocks_doc",
+      "url": "https://github.com/Silversmith-Mods/Immersive-Weathering/wiki/Blocks",
+      "publisher": "Immersive Weathering authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "items_doc",
+      "url": "https://github.com/Silversmith-Mods/Immersive-Weathering/wiki/Items",
+      "publisher": "Immersive Weathering authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "growth_doc",
+      "url": "https://github.com/Silversmith-Mods/Immersive-Weathering/wiki/Natural-Growth-Features",
+      "publisher": "Immersive Weathering authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "misc_doc",
+      "url": "https://github.com/Silversmith-Mods/Immersive-Weathering/wiki/Misc.-Features",
+      "publisher": "Immersive Weathering authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "world_doc",
+      "url": "https://github.com/Silversmith-Mods/Immersive-Weathering/wiki/World-Generation",
+      "publisher": "Immersive Weathering authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/immersive-weathering",
+      "publisher": "Immersive Weathering authors",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/immersive_weathering-1.20.1-2.0.5-forge.jar",
+        "sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba",
+        "resource": "assets/immersive_weathering/lang/en_us.json"
+      }
+    },
+    {
+      "id": "native_weeds",
+      "url": "https://modrinth.com/mod/immersive-weathering",
+      "publisher": "Immersive Weathering authors",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/immersive_weathering-1.20.1-2.0.5-forge.jar",
+        "sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba",
+        "resource": "data/immersive_weathering/block_growths/weeds.json"
+      }
+    },
+    {
+      "id": "native_lightning",
+      "url": "https://modrinth.com/mod/immersive-weathering",
+      "publisher": "Immersive Weathering authors",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/immersive_weathering-1.20.1-2.0.5-forge.jar",
+        "sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba",
+        "resource": "data/immersive_weathering/block_growths/lightning_magma_block.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "immersive_weathering:weather",
+      "kind": "interaction",
+      "title": "Observe natural weathering",
+      "player_action": "Expose iron to rain or place bricks near extreme heat.",
+      "outcome": "Observe rusting or cracking under the documented environmental systems.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите следы выветривания.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/immersive_weathering.json."
+    },
+    {
+      "key": "immersive_weathering:mortar",
+      "kind": "interaction",
+      "title": "Repair cracked bricks",
+      "player_action": "Apply mortar to cracked brickwork.",
+      "outcome": "Repair the cracked material.",
+      "registry_refs": [],
+      "depends_on": [
+        "immersive_weathering:weather"
+      ],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отремонтируйте потрескавшийся кирпич.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "immersive_weathering:moss",
+      "kind": "interaction",
+      "title": "Stop moss regrowth",
+      "player_action": "Burn moss away with Flint and Steel.",
+      "outcome": "Prevent its regrowth on the treated surface according to the author.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Удалите мох огнивом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "immersive_weathering:bark_restore",
+      "kind": "interaction",
+      "title": "Restore stripped logs",
+      "player_action": "Strip a log, save its bark, then apply matching bark to a stripped log.",
+      "outcome": "Recover the bark appearance; bark can also be used for fuel or compost.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "items_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Верните кору бревну.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:rust_control",
+      "kind": "interaction",
+      "title": "Manage iron rust",
+      "player_action": "Wax rustable iron with Honeycomb or Tallow; remove only early exposed rust in survival.",
+      "outcome": "Preserve a chosen stage; heavily rusted doors stay toggled instead of closing when unpowered.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Wiki excludes vanilla iron storage blocks. Steel Wool removes all stages but is Creative-only in the documented release.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "growth_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Защитите железо от ржавчины.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:leaf_layers",
+      "kind": "interaction",
+      "title": "Collect weathered leaf piles",
+      "player_action": "Collect leaf piles using Shears or Silk Touch; stack a full block and shear it for leaves.",
+      "outcome": "Recover decoration; tall conifer/deciduous piles form Podzol/Humus beneath.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Layer thresholds and growth rates are native data/config concerns; no rates copied.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "blocks_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите опавшую листву.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:ice_hazards",
+      "kind": "interaction",
+      "title": "Handle icicles and thin ice",
+      "player_action": "Use Silk Touch for icicles and Frost Walker or Feather Falling boots when crossing thin ice.",
+      "outcome": "Icicles can fall after vibrations/projectile impacts; light melts frost and ice decorations.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "blocks_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Безопасно соберите сосульку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:sand_weathering",
+      "kind": "interaction",
+      "title": "Remove deposited sand",
+      "player_action": "Shovel sandy blocks or apply sand to compatible stone.",
+      "outcome": "Recover sand layers; water over supported sandstone with room beneath can generate falling sand piles.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "blocks_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Очистите песчаный камень.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:fire_weathering",
+      "kind": "interaction",
+      "title": "Use charred wood and soot",
+      "player_action": "Expose wood to fire or place surfaces by campfire smoke.",
+      "outcome": "Charred wood resists further burning and is not furnace fuel; ash piles accumulate, while soot is decorative.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "blocks_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите следы огня.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:garden_regrowth",
+      "kind": "interaction",
+      "title": "Control garden regrowth",
+      "player_action": "Harvest mature crops and control nearby tall grass/sky exposure when tending farmland.",
+      "outcome": "Native weeds and biome-specific vegetation regrowth are configurable; 1.20.1 Mulch/Nulch are decorative, unlike their 1.19 farming behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed block_growths/weeds.json and weeds_spread.json own current predicates; do not promote the old wiki Mulch crop bonus.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "growth_doc",
+        "blocks_doc",
+        "native_lang",
+        "native_weeds"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Ухаживайте за огородом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:soil_water",
+      "kind": "interaction",
+      "title": "Collect pond water",
+      "player_action": "Use an empty Glass Bottle on hydrated Fluvisol or Silt.",
+      "outcome": "Collect Pond Water; cold and dry biomes instead supply Cryosol/Permafrost and Vertisol/Cracked Mud.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "items_doc",
+        "world_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наберите прудовую воду.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:plant_utilities",
+      "kind": "interaction",
+      "title": "Use environmental farming tools",
+      "player_action": "Use flint on grass/dirt, a shovel on a lit campfire, or plant Nether Wart on supported wart blocks.",
+      "outcome": "Obtain coarse ground or ash and use the expanded planting surfaces; Feather Falling prevents landing trampling.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "misc_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте природные материалы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_weathering:lightning_conversion",
+      "kind": "interaction",
+      "title": "Find lightning-made blocks",
+      "player_action": "Inspect sand after lightning and use documented lightning block conversions.",
+      "outcome": "Lightning can form Fulgurite/Vitrified Sand and convert obsidian to crying obsidian or stone through magma to lava.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed block_growths/lightning_{crying_obsidian,magma_block,lava,vitrified_sand}.json corroborate conversions; no lightning frequency assumed.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "world_doc",
+        "native_lang",
+        "native_lightning"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найдите следы молнии.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

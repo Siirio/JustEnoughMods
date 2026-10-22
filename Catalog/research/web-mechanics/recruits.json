@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "mod_id": "recruits",
+  "installed_version": "1.15.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://modrinth.com/mod/villager-recruits",
+      "publisher": "talhanation",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    }
+  ],
+  "observations": [
+    {
+      "key": "recruits:hire_army",
+      "kind": "progression",
+      "title": "Hire villagers with emeralds",
+      "player_action": "Spend emeralds to hire recruit villagers through the native interaction.",
+      "outcome": "The recruited units form a player-owned force.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найми первого рекрута за изумруды.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.15.2. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "recruits:group_orders",
+      "kind": "interaction",
+      "title": "Organize groups and issue orders",
+      "player_action": "Use native recruit management screens to assign groups and command them.",
+      "outcome": "Group orders coordinate several units rather than requiring per-unit control.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери отряд и отдай ему общий приказ.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.15.2. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "recruits:equipment_care",
+      "kind": "interaction",
+      "title": "Supply food, potions and shields",
+      "player_action": "Equip and provision recruited villagers with supported supplies.",
+      "outcome": "Native combat AI can eat, heal and block attacks.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Обеспечь рекрутов едой и защитным снаряжением.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.15.2. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "recruits:diplomacy",
+      "kind": "integration",
+      "title": "Coordinate native teams before faction combat",
+      "player_action": "Use the mod's team management for a multiplayer group before planning battles.",
+      "outcome": "The native system supports team/PvP relations; it does not imply Villager Workers is installed.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Организуй команду и настрой отношения своего отряда.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.15.2. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    }
+  ]
+}

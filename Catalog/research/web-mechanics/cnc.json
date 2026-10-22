@@ -1,0 +1,935 @@
+{
+  "schema_version": 1,
+  "mod_id": "cnc",
+  "installed_version": "2.2.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/critters-n-crawlers",
+      "publisher": "Fae_stricken_fool",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/critters-n-crawlers",
+      "publisher": "Fae_stricken_fool; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar",
+        "sha256": "ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca",
+        "resource": "assets/cnc/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/critters-n-crawlers",
+      "publisher": "Fae_stricken_fool",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_5e4af077dac2",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/critters-n-crawlers",
+      "publisher": "Fae_stricken_fool; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar",
+        "sha256": "ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca",
+        "resource": "assets/cnc/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "cnc:field_guide",
+      "kind": "interaction",
+      "title": "Read native critter behavior",
+      "player_action": "Use the Field Guide to identify temperate and cold biome animals and cryptids.",
+      "outcome": "The installed book supplies interaction hints; upstream warns its online wiki is unreliable.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cnc:field_guide"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи полевой справочник о животных и криптидах.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.5. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "cnc:mouse_transport",
+      "kind": "interaction",
+      "title": "Carry a mouse in a pot",
+      "player_action": "Find a mouse in forests or plains and use a pot for transport.",
+      "outcome": "Native guide text identifies pots as transport for mice.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:mouse"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:pot_of_mouse"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Перенеси мышь в горшке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cnc:squonk_cookie",
+      "kind": "interaction",
+      "title": "Offer a cookie to a Squonk",
+      "player_action": "Find a Squonk in a wet biome and feed it a cookie.",
+      "outcome": "The native Field Guide describes a returned present.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:squonk"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Угости сквонка печеньем и получи подарок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cnc:elk_hunt",
+      "kind": "combat",
+      "title": "Hunt elk while respecting retaliation",
+      "player_action": "Approach elk in forest or plains and hunt for venison; the animal can fight back.",
+      "outcome": "Elk provide food but are not harmless targets.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:elk"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:raw_venison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь оленину, пережив отпор вапити.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cnc:native_chapter_marmot",
+      "kind": "interaction",
+      "title": "marmot native guide",
+      "player_action": "Approach high mountain meadows quietly and offer dandelions.",
+      "outcome": "Marmots forage in small groups and flee perceived predators.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:marmot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми сурка одуванчиком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_marmot.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_black_bear",
+      "kind": "interaction",
+      "title": "black bear native guide",
+      "player_action": "Offer Sweet Berries to a forest Black Bear.",
+      "outcome": "The guide describes berries calming this otherwise unfriendly bear.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:black_bear"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Успокой чёрного медведя сладкими ягодами.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_black_bear.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_sasquatch",
+      "kind": "interaction",
+      "title": "sasquatch native guide",
+      "player_action": "Explore forests without provoking Sasquatch.",
+      "outcome": "It normally remains peaceful and knocks on trees while blending into the woodland.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:sasquatch"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наблюдай мирного сасквоча, не провоцируя его.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_sasquatch.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_goose",
+      "kind": "interaction",
+      "title": "goose native guide",
+      "player_action": "Use kelp around wet-biome geese while avoiding provocation.",
+      "outcome": "The guide distinguishes their apparent friendliness from retaliatory aggression.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:goose"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Предложи гусю ламинарию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_goose.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_cougar",
+      "kind": "interaction",
+      "title": "cougar native guide",
+      "player_action": "Feed Venison to a solitary cougar in forest or dry habitats.",
+      "outcome": "The predator may become friendly; the native guide does not quantify the chance.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:cougar"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:raw_venison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подружись с пумой, предлагая оленину.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_cougar.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_wechuge",
+      "kind": "interaction",
+      "title": "wechuge native guide",
+      "player_action": "Carry fireworks when exploring cold forests and use them against a Wechuge.",
+      "outcome": "Fireworks stun the powerful creature and provide an escape opportunity.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:wechuge"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Останови вечуге фейерверком и отступи.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_wechuge.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_turkey",
+      "kind": "interaction",
+      "title": "turkey native guide",
+      "player_action": "Offer Pumpkin Seeds to forest/plains turkeys or hunt and cook them.",
+      "outcome": "Turkeys flee predators and provide a distinct cooked-food route.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:turkey"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:cooked_turkey"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми индейку семенами тыквы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_turkey.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_pit_viper",
+      "kind": "interaction",
+      "title": "pit viper native guide",
+      "player_action": "Keep distance from wet-forest Pit Vipers; Raw Rabbit is their preferred food.",
+      "outcome": "Close approach risks a dangerous bite.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:pit_viper"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи гадюку, сохраняя безопасную дистанцию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_pit_viper.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_beaver",
+      "kind": "interaction",
+      "title": "beaver native guide",
+      "player_action": "Look for small numbers of beavers in wet habitats and offer apples.",
+      "outcome": "They periodically chew wood; the guide does not promise a player-controlled lumber operation.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:beaver"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми бобра яблоком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_beaver.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_elk",
+      "kind": "interaction",
+      "title": "elk native guide",
+      "player_action": "Feed wheat or hunt forest/plains elk with room to retreat.",
+      "outcome": "Elk may appear alone or in groups, fight back when threatened, and supply Venison.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:elk"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:raw_venison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь оленину после схватки с вапити.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_elk.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_ringtail",
+      "kind": "interaction",
+      "title": "ringtail native guide",
+      "player_action": "Catch up to a dry-biome Ringtail and feed it Glow Berries.",
+      "outcome": "The guide presents befriending it as a route to a mining companion.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:ringtail"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подружись с какомицли с помощью светящихся ягод.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_ringtail.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_snake",
+      "kind": "interaction",
+      "title": "snake native guide",
+      "player_action": "Find solitary snakes in forest/plains and offer Raw Rabbit.",
+      "outcome": "These ordinary snakes are peaceful and occur in multiple variants.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:snake"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми обычную змею сырым кроликом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_snake.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_whitetail",
+      "kind": "interaction",
+      "title": "whitetail native guide",
+      "player_action": "Offer wheat to White-tailed Deer or Mule Deer, approaching quietly.",
+      "outcome": "Wooded habitats favor White-tailed Deer; open dry habitats favor Mule Deer. Hunting supplies Venison, Buckskin and antlers.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:white_tailed_deer"
+        },
+        {
+          "registry": "entities",
+          "id": "cnc:mule_deer"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:buckskin"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:white_tailed_deer_antler"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми пшеницей одного из новых оленей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_whitetail.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_coyote",
+      "kind": "interaction",
+      "title": "coyote native guide",
+      "player_action": "Protect livestock from packs in forests and dry habitats; Rotten Flesh is the documented food.",
+      "outcome": "Coyotes hunt more effectively together and prey on wildlife and livestock.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:coyote"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переживи встречу со стаей койотов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_coyote.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_giant_boar",
+      "kind": "interaction",
+      "title": "giant boar native guide",
+      "player_action": "Offer red/brown mushrooms cautiously or fight a Giant Boar at range.",
+      "outcome": "These cold-forest foragers are violent up close and can drop tusks for weapons.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:giant_boar"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:giant_tusk"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:tusk_club"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь бивень гигантского кабана для оружия.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_giant_boar.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_squonk",
+      "kind": "interaction",
+      "title": "squonk native guide",
+      "player_action": "Feed cookies to a Squonk in a wet biome.",
+      "outcome": "It can give a present; proximity also carries the guide's sadness/crying interaction.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:squonk"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Получи подарок сквонка за печенье.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_squonk.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_skinwalker",
+      "kind": "interaction",
+      "title": "skinwalker native guide",
+      "player_action": "Use fireworks against a forest/dry-biome creature disguised as a Timber Wolf.",
+      "outcome": "The Skinwalker reveals itself through a lunge and scream; fireworks are documented as effective defense.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:skinwalker"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Защити себя от скинволкера фейерверком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_skinwalker.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_skunk",
+      "kind": "interaction",
+      "title": "skunk native guide",
+      "player_action": "Give eggs to a woodland Skunk and avoid pressuring it.",
+      "outcome": "It stands its ground with vapor that nauseates predators.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:skunk"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Предложи скунсу яйцо.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_skunk.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_timber_wolf",
+      "kind": "interaction",
+      "title": "timber wolf native guide",
+      "player_action": "Use Rotten Flesh around forest Timber Wolves and protect deer/elk herds.",
+      "outcome": "They hunt in packs and favor Elk and White-tailed Deer as prey.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:timber_wolf"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди стаю лесных волков.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_timber_wolf.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_greywolf",
+      "kind": "interaction",
+      "title": "greywolf native guide",
+      "player_action": "Offer Rotten Flesh to the forest wolf described by the separate greywolf guide keys.",
+      "outcome": "Its installed text duplicates the Timber Wolf pack-hunting description; this is recorded as an alias text, not proof of identical entity code.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:greywolf"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Изучи серого волка в лесу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_greywolf.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_rattlesnake",
+      "kind": "interaction",
+      "title": "rattlesnake native guide",
+      "player_action": "Avoid close approach to dry/forest/plains Rattlesnakes; Raw Rabbit is their preferred food.",
+      "outcome": "The guide distinguishes their dangerous bite from ordinary peaceful snakes.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:rattlesnake"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди гремучую змею, избегая укуса.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_rattlesnake.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_wolverine",
+      "kind": "interaction",
+      "title": "wolverine native guide",
+      "player_action": "Keep distance from cold-biome Wolverines or offer Raw Venison cautiously.",
+      "outcome": "They are strong despite their size and hunt wildlife and people.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:wolverine"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:raw_venison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Предложи росомахе сырую оленину.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_wolverine.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_mouse",
+      "kind": "interaction",
+      "title": "mouse native guide",
+      "player_action": "Use a pot to transport a mouse and offer Pumpkin Seeds.",
+      "outcome": "Mice otherwise flee quickly from threats in forests and plains.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:mouse"
+        },
+        {
+          "registry": "items",
+          "id": "cnc:pot_of_mouse"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Перенеси мышь в горшке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_mouse.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_caribou",
+      "kind": "interaction",
+      "title": "caribou native guide",
+      "player_action": "Feed Red Mushrooms to a cold/taiga Caribou, then equip a saddle.",
+      "outcome": "The documented route enables riding; wild herds can retaliate when attacked.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:caribou"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Покорми карибу красными грибами, оседлай и прокатись.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_caribou.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_howler",
+      "kind": "interaction",
+      "title": "howler native guide",
+      "player_action": "Explore wet forests with an escape route when a Howler hunts in darkness.",
+      "outcome": "Its attack can blind prey, creating a distinct visibility hazard.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:howler"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Переживи нападение ревуна в темноте.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_howler.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_chupacabra",
+      "kind": "interaction",
+      "title": "chupacabra native guide",
+      "player_action": "Protect livestock when exploring dry habitats occupied by Chupacabras.",
+      "outcome": "They prey on farm animals and players.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:chupacabra"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Защити скот от чупакабры.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_chupacabra.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    },
+    {
+      "key": "cnc:native_chapter_wendigo",
+      "kind": "interaction",
+      "title": "wendigo native guide",
+      "player_action": "Use fireworks to stop a Wendigo in cold forests, then retreat.",
+      "outcome": "The interruption is temporary; it otherwise hunts wildlife and villagers.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cnc:wendigo"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_5e4af077dac2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Временно останови вендиго фейерверком.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar; SHA256 ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca; entry assets/cnc/lang/en_us.json. Native text/data is not runtime proof. Native translation section gui.cnc.field_guide_wendigo.label_line_* read in full and paraphrased; exact runtime completion signal is unverified."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "purpose": "Evidence-led review leads; NOT fixes or proven runtime errors",
+  "findings": [
+    {
+      "id": "static-localization-exposure-album-tooltip",
+      "severity": "registry-identity-suspect",
+      "candidate": "exposure:album.tooltip.photos_count",
+      "catalog_path": "Catalog/registries/items/exposure.json",
+      "reason": "Looks like a localization/tooltip key and not a material item registration",
+      "check": "Compare the real Forge BuiltInRegistries.ITEM snapshot, not just assets/exposure/lang keys",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "static-localization-spawn-angler-description",
+      "severity": "registry-identity-suspect",
+      "candidate": "spawn:angler_fish.description",
+      "catalog_path": "Catalog/registries/entities/spawn.json",
+      "reason": "Contains descriptive prose for a creature, not a separately registered EntityType",
+      "check": "Compare the real Forge ENTITY_TYPE registry snapshot, not just lang keys",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "static-localization-skarrier-ammonite-description",
+      "severity": "registry-identity-suspect",
+      "candidate": "skarrier_mobs:ammonite_shell.description_1",
+      "catalog_path": "Catalog/registries/items/skarrier_mobs.json",
+      "reason": "Descriptive localization key surfaced in the item inventory",
+      "check": "Compare exact installed 1.1.1 ITEM registry IDs before changing the canonical generator",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "atlas-canonical-relationships-unpopulated",
+      "severity": "semantic-coverage-gap",
+      "candidate": "Catalog/generated/atlas/canonical/relationships.jsonl",
+      "catalog_path": "Catalog/generated/atlas/catalog-manifest.json",
+      "reason": "Current exported canonical relationship count is zero; recipe graphs and reviewed JEM impacts do exist separately",
+      "check": "Create a true source-to-runtime relationship adapter; do not equate web progression examples with verified universal relationships",
+      "status": "REVIEW_REQUIRED"
+    }
+  ]
+}

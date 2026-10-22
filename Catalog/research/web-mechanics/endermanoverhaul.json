@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "mod_id": "endermanoverhaul",
+  "installed_version": "1.0.4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/enderman-overhaul",
+      "publisher": "joosh_7889 / AlexNijjar",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/enderman-overhaul",
+      "publisher": "joosh_7889 / AlexNijjar",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_9c3d0af5089a",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/enderman-overhaul",
+      "publisher": "joosh_7889 / AlexNijjar; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar",
+        "sha256": "18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5",
+        "resource": "assets/endermanoverhaul/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "endermanoverhaul:soul_pearl",
+      "kind": "interaction",
+      "title": "Bind a Soul Pearl to transport a mob",
+      "player_action": "Acquire a Soul Pearl from a Soul Sand Valley Enderman and bind it to a mob.",
+      "outcome": "The bound target can be teleported remotely.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:soul_pearl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Привяжи жемчуг душ к существу и перемести его.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endermanoverhaul:ancient_pearl",
+      "kind": "interaction",
+      "title": "Summon a pet Enderman",
+      "player_action": "Use an Ancient Pearl obtained from an End Islands Enderman.",
+      "outcome": "A friendly Enderman fights for the player and can be recalled by right clicking.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:ancient_pearl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Призови союзного эндермена древним жемчугом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endermanoverhaul:combat_pearls",
+      "kind": "combat",
+      "title": "Choose pearl utility for the fight",
+      "player_action": "Use an Icy Pearl to freeze nearby enemies, or Crimson/Warped Pearls for their landing effects.",
+      "outcome": "Different pearls provide control or temporary combat benefits.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:icy_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:crimson_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:warped_pearl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особый жемчуг для контроля противника.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endermanoverhaul:hood",
+      "kind": "interaction",
+      "title": "Equip a hood before looking at Endermen",
+      "player_action": "Obtain a rare hood from a Badlands, Snowy or Savanna Enderman and equip it in the chest slot.",
+      "outcome": "The hood prevents stare-based provocation according to the author.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Надень капюшон и безопасно посмотри на эндермена.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.0.4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "endermanoverhaul:pearl_utility_modes",
+      "kind": "interaction",
+      "title": "pearl utility modes native mechanic",
+      "player_action": "Use Ancient Pearl, Bubble Pearl or Icy Pearl according to its native tooltip.",
+      "outcome": "They respectively summon a friendly fighter, travel without gravity and freeze nearby targets on impact.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:ancient_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:bubble_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:icy_pearl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_9c3d0af5089a"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй особые жемчужины Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar; SHA256 18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5; entry assets/endermanoverhaul/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "endermanoverhaul:pearl_target_modes",
+      "kind": "interaction",
+      "title": "pearl target modes native mechanic",
+      "player_action": "Bind an entity by shift-right-clicking Soul Pearl, then throw it; use Summoner Pearl near targets.",
+      "outcome": "Soul Pearl transports its bound entity to impact, while Summoner Pearl transports nearby targets.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:soul_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:summoner_pearl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_9c3d0af5089a"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Перемести связанное существо жемчужиной.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar; SHA256 18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5; entry assets/endermanoverhaul/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "endermanoverhaul:corrupted_equipment",
+      "kind": "interaction",
+      "title": "corrupted equipment native mechanic",
+      "player_action": "Use Corrupted Pearl, Corrupted Blade or Corrupted Shield.",
+      "outcome": "They teleport targets, struck entities or attackers to random locations, respectively.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:corrupted_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:corrupted_blade"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:corrupted_shield"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_9c3d0af5089a"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытай искажённое снаряжение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar; SHA256 18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5; entry assets/endermanoverhaul/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "endermanoverhaul:pearl_buffs_hood",
+      "kind": "interaction",
+      "title": "pearl buffs hood native mechanic",
+      "player_action": "Teleport with Crimson or Warped Pearl, or wear the Enderman hood.",
+      "outcome": "Pearls grant Strength or Resistance; the hood permits looking at Endermen without provoking them.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:crimson_pearl"
+        },
+        {
+          "registry": "items",
+          "id": "endermanoverhaul:warped_pearl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_9c3d0af5089a"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй усиление особой жемчужины.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar; SHA256 18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5; entry assets/endermanoverhaul/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

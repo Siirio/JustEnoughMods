@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "mod_id": "natures_spirit",
+  "installed_version": "2.2.5-1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/natures-spirit",
+      "publisher": "Team Nature's Spirit",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/natures-spirit",
+      "publisher": "Team Nature's Spirit",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_414f8a4eb4db",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/natures-spirit",
+      "publisher": "Team Nature's Spirit; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/natures_spirit-2.2.5-1.20.1.jar",
+        "sha256": "07818dd985b100ae71b98c755961c135b07c3a08faf5d95afc87fab71a3b9e86",
+        "resource": "assets/natures_spirit/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "natures_spirit:calcite_farm",
+      "kind": "automation",
+      "title": "Grow calcite from coral over a bubble column",
+      "player_action": "Place coral blocks above a bubble column, let buds mature and collect their shards.",
+      "outcome": "Shards provide a renewable route to calcite blocks.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выращивай кальцит под кораллами над пузырьковой колонной.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.5-1.20.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "natures_spirit:lotus_elevator",
+      "kind": "interaction",
+      "title": "Control a Lotus elevator",
+      "player_action": "Use bone meal to rise on lotus, crouch to descend and directly power the plant to stop movement.",
+      "outcome": "The plant forms a controllable vertical transport mechanism.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Построй подъёмник на лотосе и управляй движением.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.5-1.20.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "natures_spirit:deepslate_conversion",
+      "kind": "crafting",
+      "title": "Press stone into deepslate",
+      "player_action": "Place stone above magma and drop an anvil onto it.",
+      "outcome": "The native conversion produces deepslate.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Преврати камень в глубинный сланец падающей наковальней.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.5-1.20.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "natures_spirit:cheese_pizza",
+      "kind": "crafting",
+      "title": "Make cauldron cheese and pizza",
+      "player_action": "Put milk in a cauldron, use a brown mushroom, wait and collect cheese with a bucket; use cheese in pizza recipes.",
+      "outcome": "Cheese supports edible pizza blocks with multiple toppings.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовь сыр в котле и используй его для пиццы.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 2.2.5-1.20.1. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "natures_spirit:forage_roots",
+      "kind": "interaction",
+      "title": "forage roots native mechanic",
+      "player_action": "Follow Turnip Roots to their Turnip block and hit a Coconut with a projectile.",
+      "outcome": "Native advancements recognize underground foraging and ranged fruit harvesting.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_414f8a4eb4db"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди репу по корням и сбей кокос.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/natures_spirit-2.2.5-1.20.1.jar; SHA256 07818dd985b100ae71b98c755961c135b07c3a08faf5d95afc87fab71a3b9e86; entry assets/natures_spirit/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "natures_spirit:kaolin_weapon",
+      "kind": "interaction",
+      "title": "kaolin weapon native mechanic",
+      "player_action": "Kill a zombie using a Kaolin block.",
+      "outcome": "The installed adventure advancement establishes a specific environmental combat challenge.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_414f8a4eb4db"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи зомби с помощью каолина.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/natures_spirit-2.2.5-1.20.1.jar; SHA256 07818dd985b100ae71b98c755961c135b07c3a08faf5d95afc87fab71a3b9e86; entry assets/natures_spirit/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

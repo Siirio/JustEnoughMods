@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "mod_id": "mousetweaks",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/mouse-tweaks",
+      "publisher": "YaLTeR",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "mousetweaks:repeat_rmb_drag",
+      "kind": "interaction",
+      "title": "Distribute items with repeated drag passes",
+      "player_action": "Hold right mouse with a stack and drag repeatedly over crafting slots.",
+      "outcome": "Revisiting a slot can add another item rather than ignoring subsequent passes.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "mousetweaks:collect_matching_drag",
+      "kind": "interaction",
+      "title": "Collect or transfer matching stacks",
+      "player_action": "Hold left mouse with an item and drag across matching inventory stacks; add Shift to transfer matching stacks.",
+      "outcome": "Matching items can be gathered or shift-transferred along the drag path.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "mousetweaks:empty_shift_drag",
+      "kind": "interaction",
+      "title": "Transfer different stacks in one drag",
+      "player_action": "With an empty cursor, hold Shift and left mouse while dragging across inventory slots.",
+      "outcome": "Visited stacks are shift-clicked into the other inventory.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "mousetweaks:wheel_transfer",
+      "kind": "interaction",
+      "title": "Move items one at a time with the wheel",
+      "player_action": "Scroll over a stack in a supported inventory.",
+      "outcome": "The wheel pushes/pulls individual items between inventories; direction and search order are configurable.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Slot-handling compatibility matters in heavily customized containers.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

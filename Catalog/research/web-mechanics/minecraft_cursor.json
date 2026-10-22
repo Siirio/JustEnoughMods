@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "mod_id": "minecraft_cursor",
+  "installed_version": "3.11.3+1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_readme",
+      "url": "https://github.com/fishstiz/minecraft-cursor/blob/mc/1.21.6/README.md",
+      "publisher": "fishstiz",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "current_author_page",
+      "url": "https://modrinth.com/mod/minecraft-cursor",
+      "publisher": "fishstiz",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "minecraft_cursor:context_cursor",
+      "kind": "interaction",
+      "title": "Use Minecraft-themed menu cursors",
+      "player_action": "Move the pointer over supported interface elements and adjust cursor settings.",
+      "outcome": "The pointer can use context-specific textures and animations supplied by compatible resource packs.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Installed 3.11.3 is the old Minecraft Cursor generation; the project is now renamed Cursors Extended.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_readme"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "minecraft_cursor:resource_pack_generation",
+      "kind": "compatibility",
+      "title": "Match cursor packs to the mod generation",
+      "player_action": "Check whether a cursor resource pack targets v3 or v4 before enabling it.",
+      "outcome": "The author states packs across the 1.21.9 generation boundary are incompatible without conversion.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Newer settings paths and converter output must not be assumed appropriate for JEM's 1.20.1 release.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_readme"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "mod_id": "worldplaytime",
+  "installed_version": "1.2.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/world-play-time",
+      "publisher": "Khajiitos",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "worldplaytime:world_list_statistic",
+      "kind": "interaction",
+      "title": "Inspect a world's recorded play time",
+      "player_action": "Open the world selection list and read the top-right value on an entry.",
+      "outcome": "The client reads that world's existing Play Time statistic, including worlds created before installing the mod.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "This is a local-world statistic, not an authoritative multiplayer server session ledger.",
+        "Any newly authored JEM time label must follow the project's Minecraft-day presentation rule.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

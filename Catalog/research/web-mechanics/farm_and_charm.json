@@ -1,0 +1,662 @@
+{
+  "schema_version": 1,
+  "mod_id": "farm_and_charm",
+  "installed_version": "1.0.14",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "mincer",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/mincer/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "crafting_bowl",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/crafting-bowl/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "silo_copper",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/silo-copper/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "feeding_trough",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/feeding-trough/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "chicken_coop",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/chicken-coop/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "plow",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/plow/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "soil_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/fertilized-soil/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "farmland_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/fertilized-farmland/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "water_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/water-trough/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "sprinkler_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/water-sprinkler/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "pet_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/pet-bowl/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "cart_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/supply-cart/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "compost_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/compost/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "dungarees_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/dungarees/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "cat_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/cat-food/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "dog_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/dog-food/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "horse_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/horse-fodder/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "chicken_doc",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/chicken-feed/",
+      "publisher": "Let's Do author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://lets-do.ch/wiki/farm-and-charm/",
+      "publisher": "Let's Do author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/letsdo-farm_and_charm-forge-1.0.14.jar",
+        "sha256": "2311790589a58678640cb788de13bebd40efe3ed92f03e82a8fa871850a382eb",
+        "resource": "assets/farm_and_charm/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "farm_and_charm:stove",
+      "kind": "crafting",
+      "title": "Fuel the kitchen stove",
+      "player_action": "Supply a Stove with recipe ingredients and fuel.",
+      "outcome": "Cook food and provide heat for a pot or roaster placed above.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:stove"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте блюдо на плите.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. Raw recipe data owner: Catalog/graphs/recipes/farm_and_charm.json."
+    },
+    {
+      "key": "farm_and_charm:pot",
+      "kind": "crafting",
+      "title": "Cook over heat",
+      "player_action": "Place a Cooking Pot on a supported heat source and add recipe ingredients plus its serving container.",
+      "outcome": "Cook a meal; effect-bearing ingredients can contribute effects.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:cooking_pot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted.",
+        "Cooking Pot and Roaster require heat below plus the recipe container (bowl/bottle) in its dedicated slot; their ingredient slots are distinct from the container and output. Ingredient effects can carry into the meal. The lit flame icon and cooking particles/sounds indicate active processing."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте суп в кастрюле.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action."
+    },
+    {
+      "key": "farm_and_charm:crops",
+      "kind": "acquisition",
+      "title": "Raise kitchen crops",
+      "player_action": "Find wild crops and grow barley, oat, corn, tomatoes, lettuce, onions or strawberries.",
+      "outcome": "Supply ingredients to the shared Let's Do kitchen.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Live author wiki may include post-installed changes; recipes and numerical balance were not promoted."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите урожай для кухни.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "farm_and_charm:farm_tools",
+      "kind": "interaction",
+      "title": "Till with a plow",
+      "player_action": "Hitch a Plow to yourself or a tamed horse/donkey and lower it with sneak interaction.",
+      "outcome": "Till ground along the route while pulling.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:plow"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing."
+      ],
+      "source_ids": [
+        "plow"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вспашите поле плугом.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "farm_and_charm:mince",
+      "kind": "crafting",
+      "title": "Crank the mincer",
+      "player_action": "Insert an ingredient and hold right-click on the Mincer.",
+      "outcome": "Grind it and collect the output below.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:mincer"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing."
+      ],
+      "source_ids": [
+        "mincer"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Измельчите ингредиент.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "farm_and_charm:mix",
+      "kind": "crafting",
+      "title": "Stir the crafting bowl",
+      "player_action": "Add recipe ingredients and stir the Crafting Bowl empty-handed.",
+      "outcome": "Make dough, salad or animal feed without a crafting menu.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:crafting_bowl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing.",
+        "The author describes at most four inserted ingredients; stirring requires an empty hand."
+      ],
+      "source_ids": [
+        "crafting_bowl"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Смешайте ингредиенты в миске.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "farm_and_charm:dry",
+      "kind": "crafting",
+      "title": "Dry grain in a silo",
+      "player_action": "Fill a Silo with dryable grain and open its hatch when ready.",
+      "outcome": "Release dried ingredients for Brewery; Podzol is another supported drying input.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:silo_copper"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing."
+      ],
+      "source_ids": [
+        "silo_copper"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Высушите зерно в силосе.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "farm_and_charm:feed",
+      "kind": "automation",
+      "title": "Feed animals at a trough",
+      "player_action": "Fill a Feeding Trough with seeds.",
+      "outcome": "Nearby animals eat and become ready to breed.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:feeding_trough"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing.",
+        "Author Feeding Trough guide limits one filling to one seed kind; any seed is accepted for every supported animal. This is not an arbitrary mixed inventory."
+      ],
+      "source_ids": [
+        "feeding_trough"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наполните кормушку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "farm_and_charm:coop",
+      "kind": "automation",
+      "title": "Collect coop eggs",
+      "player_action": "Lead chickens into a coop and right-click it after they lay eggs.",
+      "outcome": "Collect stored eggs; a Pitchfork releases the chickens.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:chicken_coop"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Author documentation can describe later changes; compare installed recipes and configuration before implementing."
+      ],
+      "source_ids": [
+        "chicken_coop"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соберите яйца в курятнике.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action-based quest seed; native source and effective installed configuration require review before an executable quest. No runtime capture was made."
+    },
+    {
+      "key": "farm_and_charm:soil_care",
+      "kind": "interaction",
+      "title": "Spread fertilized soil",
+      "player_action": "Use a Pitchfork on Fertilized Soil for nearby crop growth, or hoe fresh soil into Fertilized Farmland.",
+      "outcome": "Nutrients have limited uses; the farmland grows crops faster and resists trampling.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:fertilized_soil"
+        },
+        {
+          "registry": "items",
+          "id": "farm_and_charm:fertilized_farmland"
+        },
+        {
+          "registry": "items",
+          "id": "farm_and_charm:pitchfork"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "soil_doc",
+        "farmland_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Улучшите землю на ферме.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:compost_crops",
+      "kind": "interaction",
+      "title": "Grow a larger crop",
+      "player_action": "Use Compost on crops rather than treating it as an ordinary consumed Bone Meal.",
+      "outcome": "Boost multiple nearby plants over repeated uses; onions and lettuce support enlarged forms.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:compost"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "compost_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите крупный урожай.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:sprinkler",
+      "kind": "interaction",
+      "title": "Water farmland without a pond",
+      "player_action": "Place a Water Sprinkler beside farmland.",
+      "outcome": "Hydrate nearby soil; its spray can also extinguish fire, campfires and candles and supports large onion/lettuce growth.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:water_sprinkler"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "sprinkler_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оросите грядки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:animal_water",
+      "kind": "interaction",
+      "title": "Offer animals drinking water",
+      "player_action": "Fill the Water Trough with a Water Bucket; remove its water with an empty bucket.",
+      "outcome": "Animals drink and shorten their breeding cooldown.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "water_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Напоите животных.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "farm_and_charm:pet_bowl",
+      "kind": "interaction",
+      "title": "Serve food in a pet bowl",
+      "player_action": "Right-click Cat Food or Dog Food into a Pet Bowl; attach a Name Tag for customization and sneak-right-click to open its screen.",
+      "outcome": "Feed pets and customize the bowl; Shears recover the Name Tag.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:pet_bowl"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "pet_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наполните миску питомца.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:animal_food",
+      "kind": "interaction",
+      "title": "Choose species-specific animal feed",
+      "player_action": "Feed cats Cat Food, wolves Dog Food, horses Horse Fodder and chickens Chicken Feed.",
+      "outcome": "The native tooltips distinguish cat taming support, wolf combat buffs, horse speed/jump buffs and increased chicken egg/feather output.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:cat_food"
+        },
+        {
+          "registry": "items",
+          "id": "farm_and_charm:dog_food"
+        },
+        {
+          "registry": "items",
+          "id": "farm_and_charm:horse_fodder"
+        },
+        {
+          "registry": "items",
+          "id": "farm_and_charm:chicken_feed"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Live overview and older detail pages disagree on some taming/duration details; the installed language only corroborates the effect families here, not guaranteed taming probabilities.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "cat_doc",
+        "dog_doc",
+        "horse_doc",
+        "chicken_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте корм для животных.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:supply_cart",
+      "kind": "interaction",
+      "title": "Move farm cargo",
+      "player_action": "Place the Supply Cart and right-click to pull it, or hitch it to a tamed horse/donkey; sneak-interact to access storage or unhitch.",
+      "outcome": "Transport inventory with a native pullable cart.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:supply_cart"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "cart_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Перевезите урожай в телеге.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:farm_workwear",
+      "kind": "interaction",
+      "title": "Inspect animal feeding levels",
+      "player_action": "Wear Dungarees in the leggings slot while tending animals and fields.",
+      "outcome": "See feeding levels and avoid trampling farmland.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "farm_and_charm:dungarees"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "dungarees_doc",
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наденьте фермерский комбинезон.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "farm_and_charm:meal_effects",
+      "kind": "interaction",
+      "title": "Use a meal for its effect",
+      "player_action": "Choose a meal carrying Sustenance, Satiation, Feast, Rested, Sweets or a blessing.",
+      "outcome": "Effects address hunger/health, exhaustion, experience, stackable combat/movement attributes or removal of negative effects.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact effect.farm_and_charm.*.description keys describe these families; food recipes and ingredient IDs remain in Catalog/graphs/recipes/farm_and_charm.json.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте полезный обед.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

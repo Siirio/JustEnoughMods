@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "mod_id": "epicfight",
+  "installed_version": "20.14.17",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/epic-fight",
+      "publisher": "Antikythera Studios",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "gameplay_wiki",
+      "url": "https://epicfight-docs.readthedocs.io/Misc/Gameplay/",
+      "publisher": "Epic Fight authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "skills_wiki",
+      "url": "https://epicfight-docs.readthedocs.io/Misc/Gameplay/skills/",
+      "publisher": "Epic Fight authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "books_wiki",
+      "url": "https://epicfight-docs.readthedocs.io/Compendium/Items/Skill_Book/",
+      "publisher": "Epic Fight authors",
+      "scope": "historical_wiki",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_skill_manager",
+      "url": "https://raw.githubusercontent.com/Antikythera-Studios/epicfight/9d25f19c121c5e51b1db9efe01833a563706eeee/src/main/java/yesman/epicfight/api/data/reloader/SkillManager.java",
+      "publisher": "Antikythera-Studios/epicfight",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_item_capabilities",
+      "url": "https://raw.githubusercontent.com/Antikythera-Studios/epicfight/9d25f19c121c5e51b1db9efe01833a563706eeee/src/main/java/yesman/epicfight/api/data/reloader/ItemCapabilityReloadListener.java",
+      "publisher": "Antikythera-Studios/epicfight",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_player_events",
+      "url": "https://raw.githubusercontent.com/Antikythera-Studios/epicfight/9d25f19c121c5e51b1db9efe01833a563706eeee/src/main/java/yesman/epicfight/world/entity/eventlistener/PlayerEventListener.java",
+      "publisher": "Antikythera-Studios/epicfight",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_skill_capability",
+      "url": "https://raw.githubusercontent.com/Antikythera-Studios/epicfight/9d25f19c121c5e51b1db9efe01833a563706eeee/src/main/java/yesman/epicfight/world/capabilities/skill/CapabilitySkill.java",
+      "publisher": "Antikythera-Studios/epicfight",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_skill_change",
+      "url": "https://raw.githubusercontent.com/Antikythera-Studios/epicfight/9d25f19c121c5e51b1db9efe01833a563706eeee/src/main/java/yesman/epicfight/network/client/CPChangeSkill.java",
+      "publisher": "Antikythera-Studios/epicfight",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_book_item",
+      "url": "https://raw.githubusercontent.com/Antikythera-Studios/epicfight/9d25f19c121c5e51b1db9efe01833a563706eeee/src/main/java/yesman/epicfight/world/item/SkillBookItem.java",
+      "publisher": "Antikythera-Studios/epicfight",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    }
+  ],
+  "observations": [
+    {
+      "key": "epicfight:combat_mode",
+      "kind": "combat",
+      "title": "Switch between building and combat controls",
+      "player_action": "Use the configured mode toggle, documented as R by default.",
+      "outcome": "Mining/building and battle modes apply different control/animation behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Mode switching and vanilla attacks can be limited by gamerules.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "gameplay_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:context_attacks",
+      "kind": "combat",
+      "title": "Change an attack through movement context",
+      "player_action": "Attack normally, while sprinting or while airborne with a supported weapon.",
+      "outcome": "Weapon animation and attack form can change with the movement context.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "gameplay_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:learn_skill_book",
+      "kind": "progression",
+      "title": "Distinguish a skill-bearing book from an empty base item",
+      "player_action": "Obtain a mob-dropped skill book and inspect its contained skill.",
+      "outcome": "The wiki describes skill-specific books; the bare item without a skill is not an ordinary survival acquisition.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Loot distribution can be overridden by installed data/configuration.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "books_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:dodge_choice",
+      "kind": "combat",
+      "title": "Choose and time a dodge",
+      "player_action": "Equip Roll or Step, move in a direction and use the dodge binding, documented as Left Alt.",
+      "outcome": "The equipped dodge provides its movement and physical-attack avoidance; armor weight affects its stamina/motion behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "skills_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:guard_prerequisite",
+      "kind": "combat",
+      "title": "Learn Guard before its advanced variants",
+      "player_action": "Use the item-use binding with a compatible weapon and learned Guard; then learn Parrying or Impact Guard when available.",
+      "outcome": "Advanced guards change timed blocking or blockable damage behavior and have weapon restrictions.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "skills_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:passive_synergy",
+      "kind": "progression",
+      "title": "Build a passive-skill combination",
+      "player_action": "Equip supported passives in their slots and combine them with their required action.",
+      "outcome": "Technician rewards timed dodges, Stamina Pillager rewards kills, and Death Harvest rewards innate-skill kills.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Slot counts and numeric bonuses in the web guide need installed-version confirmation.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "skills_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:mobility_revelation",
+      "kind": "combat",
+      "title": "Use a learned mobility or revelation skill",
+      "player_action": "Apply Phantom Ascent's extra jump, Demolition Leap's charge, or a compatible Meteor Slam/Revelation action.",
+      "outcome": "These add movement or conditional heavy attacks with their own costs and eligibility.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "skills_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:configuration_authority",
+      "kind": "integration",
+      "title": "Inspect combat configuration before balance assumptions",
+      "player_action": "Review weightPenalty, keepSkills, stiffComboAttacks and the relevant mode/UI configuration.",
+      "outcome": "Weight costs, skill retention and attack movement can differ from web defaults.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "A client setting is not permission to bypass server-owned action validation.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "gameplay_wiki"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use Epic Fight's actual learned/equipped skill and successful action/damage state. A skill-book item needs its skill payload; library presence and visual animation are insufficient. Installed 20.14.17 and JEM overrides require source matching."
+    },
+    {
+      "key": "epicfight:learned_vs_equipped",
+      "kind": "progression",
+      "title": "Separate learned skills from equipped skills",
+      "player_action": "Learn a skill with its native book screen, then choose a compatible skill slot.",
+      "outcome": "CapabilitySkill.hasLearned and isEquipping represent separate states; serialization retains learned categories, saved slots, replacement cooldowns and mode.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_skill_capability",
+        "native_skill_change"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native server player patch and capability for learned/equipped state, and server-side native combat events for actions. Client animations, key presses and item-use statistics alone do not establish successful learning, damage, dodge or skill execution. Source pinned to upstream 1.20.1 branch, not asserted identical to installed 20.14.17."
+    },
+    {
+      "key": "epicfight:book_use_not_learning",
+      "kind": "integration",
+      "title": "Detect learning after the native state change",
+      "player_action": "Open a skill book and complete the skill selection rather than merely using the item.",
+      "outcome": "SkillBookItem awards the vanilla item-use statistic when opening the screen. That statistic does not prove learning; the server skill-change path updates learned/equipped state.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_book_item",
+        "native_skill_change"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native server player patch and capability for learned/equipped state, and server-side native combat events for actions. Client animations, key presses and item-use statistics alone do not establish successful learning, damage, dodge or skill execution. Source pinned to upstream 1.20.1 branch, not asserted identical to installed 20.14.17."
+    },
+    {
+      "key": "epicfight:skill_parameter_extension",
+      "kind": "integration",
+      "title": "Tune registered skills through native data",
+      "player_action": "For a future integration, resolve the native skill registry and its skill_parameters resources.",
+      "outcome": "SkillManager applies parameter data only to existing registered skills and synchronizes parameters; SkillBuildEvent supplies registered skill implementations. A JSON file alone does not invent new executable skill behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_skill_manager"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native server player patch and capability for learned/equipped state, and server-side native combat events for actions. Client animations, key presses and item-use statistics alone do not establish successful learning, damage, dodge or skill execution. Source pinned to upstream 1.20.1 branch, not asserted identical to installed 20.14.17."
+    },
+    {
+      "key": "epicfight:weapon_armor_extension",
+      "kind": "compatibility",
+      "title": "Attach combat behavior to real installed items",
+      "player_action": "Use native capabilities/weapons or capabilities/armors data for a registered item.",
+      "outcome": "The loader distinguishes weapon types, styles, conditional variations and colliders from armor weight/stun armor; missing item identities are rejected. Resolve exact values from canonical installed evidence.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_item_capabilities"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native server player patch and capability for learned/equipped state, and server-side native combat events for actions. Client animations, key presses and item-use statistics alone do not establish successful learning, damage, dodge or skill execution. Source pinned to upstream 1.20.1 branch, not asserted identical to installed 20.14.17."
+    },
+    {
+      "key": "epicfight:native_combat_event_families",
+      "kind": "integration",
+      "title": "Choose the native action signal",
+      "player_action": "For a future criterion, select server-side skill, damage, dodge or attack-phase events matching the required result.",
+      "outcome": "PlayerEventListener distinguishes skill cast/cancel/consume, stamina consume, damage attack/hurt/damage phases, attack-animation end, dodge success and player kills. Listener side, cancellation and priority affect which callbacks execute.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "native_player_events"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Use the native server player patch and capability for learned/equipped state, and server-side native combat events for actions. Client animations, key presses and item-use statistics alone do not establish successful learning, damage, dodge or skill execution. Source pinned to upstream 1.20.1 branch, not asserted identical to installed 20.14.17."
+    }
+  ]
+}

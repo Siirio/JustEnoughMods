@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "mod_id": "particle_core",
+  "installed_version": "0.3.3+1.20.1+forge",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "installed_metadata",
+      "url": "https://modrinth.com/mod/particle-core",
+      "publisher": "fzzyhmstrs",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/particle_core-0.3.3+1.20.1+forge.jar",
+        "sha256": "bd4023e4618333f3e6020a7d6f4db3ae7e8fe41b39a43f47e6a1da4fbd80bc1b",
+        "resource": "META-INF/mods.toml"
+      }
+    },
+    {
+      "id": "author_project",
+      "url": "https://modrinth.com/mod/particle-core",
+      "publisher": "Particle Core project authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "particle_core:installed_role",
+      "kind": "compatibility",
+      "title": "Particle Core role and integration boundary",
+      "player_action": "Use the consuming mod's interface or feature; this component's own installation is not a survival objective.",
+      "outcome": "Optimizes particle rendering and provides configurable culling and particle reduction; particle visibility is client presentation, not proof that a server effect failed.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact installed artifact metadata was inspected; current author pages can cover newer versions.",
+        "No runtime behavior or benchmark was verified; do not change installed configuration from these research notes."
+      ],
+      "source_ids": [
+        "installed_metadata",
+        "author_project"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Installed static role is corroborated by the artifact/resource/SHA256 attached to the source. Public URL identifies the upstream project, not a claim that a missing web guide was read. Multiple packaged versions remain loader-resolution candidates: 0.3.3+1.20.1+forge"
+    }
+  ]
+}

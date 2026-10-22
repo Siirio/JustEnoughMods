@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "mod_id": "diagonalfences",
+  "installed_version": "8.1.5",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/diagonal-fences",
+      "publisher": "Fuzs",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "diagonalfences:diagonal_connection",
+      "kind": "interaction",
+      "title": "Build a diagonal fence line",
+      "player_action": "Place compatible fences at diagonally adjacent positions.",
+      "outcome": "Fences connect diagonally rather than requiring only cardinal connections.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Placement can be detected through native block-place/state data after confirming the exact static block and connection property; no new registry identity is assumed."
+    },
+    {
+      "key": "diagonalfences:compatibility_tag",
+      "kind": "compatibility",
+      "title": "Exclude an unsuitable fence from diagonal conversion",
+      "player_action": "Inspect the diagonalfences:non_diagonal_fences block tag when a modded fence should retain native behavior.",
+      "outcome": "The tag can opt blocks out; dynamic mod support is conditional rather than a guarantee for every fence.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Placement can be detected through native block-place/state data after confirming the exact static block and connection property; no new registry identity is assumed."
+    }
+  ]
+}

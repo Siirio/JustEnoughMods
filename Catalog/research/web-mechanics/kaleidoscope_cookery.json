@@ -1,0 +1,441 @@
+{
+  "schema_version": 1,
+  "mod_id": "kaleidoscope_cookery",
+  "installed_version": "1.4.1-forge+mc1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://github.com/KaleidoscopeMods/KaleidoscopeCookery/wiki/%E7%83%B9%E9%A5%AA%E6%B5%81%E7%A8%8B",
+      "publisher": "KaleidoscopeMods author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "ingredients",
+      "url": "https://github.com/KaleidoscopeMods/KaleidoscopeCookery/wiki/%E5%8E%9F%E6%96%99%E5%8A%A0%E5%B7%A5%E6%B5%81%E7%A8%8B",
+      "publisher": "KaleidoscopeMods author wiki",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://github.com/KaleidoscopeMods/KaleidoscopeCookery/wiki/%E7%83%B9%E9%A5%AA%E6%B5%81%E7%A8%8B",
+      "publisher": "KaleidoscopeMods author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
+        "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+        "resource": "assets/kaleidoscope_cookery/lang/en_us.json"
+      }
+    },
+    {
+      "id": "lunch_bag_141",
+      "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/ac19559dc1ae81ea32dfd3655af249f2ec1a0414/src/main/java/com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.java",
+      "publisher": "KaleidoscopeMods author wiki",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "version_141",
+      "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/ac19559dc1ae81ea32dfd3655af249f2ec1a0414/gradle.properties",
+      "publisher": "KaleidoscopeMods author wiki",
+      "scope": "source_code",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_lunch_bag_class",
+      "url": "https://raw.githubusercontent.com/KaleidoscopeMods/KaleidoscopeCookery/ac19559dc1ae81ea32dfd3655af249f2ec1a0414/src/main/java/com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.java",
+      "publisher": "KaleidoscopeMods author wiki",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
+        "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+        "resource": "com/github/ysbbbbbb/kaleidoscopecookery/item/TransmutationLunchBagItem.class"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "kaleidoscope_cookery:stir_fry",
+      "kind": "crafting",
+      "title": "Cook in a wok",
+      "player_action": "Heat the wok, add oil and ingredients, stir with a spatula, then serve promptly in the required container.",
+      "outcome": "Produce a stir-fried dish; wrong ingredients or overcooking can spoil the result.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте блюдо в воке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/kaleidoscope_cookery.json."
+    },
+    {
+      "key": "kaleidoscope_cookery:soup",
+      "kind": "crafting",
+      "title": "Simmer a soup",
+      "player_action": "Provide heat, a soup base and ingredients; cover the pot and wait before serving.",
+      "outcome": "Cook a covered stew or soup.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сварите суп под крышкой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:recipe_card",
+      "kind": "automation",
+      "title": "Record a cooking recipe",
+      "player_action": "Use a blank recipe on a loaded wok before stirring or a soup pot before covering.",
+      "outcome": "Record ingredients so a later use transfers them from inventory.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Запишите рецепт блюда.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:steamer",
+      "kind": "crafting",
+      "title": "Steam food",
+      "player_action": "Stack steamers above heat, load the food and close the upper lid.",
+      "outcome": "Steam a covered stack under the documented height limit.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте блюдо на пару.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:roast",
+      "kind": "crafting",
+      "title": "Power a roasting tower",
+      "player_action": "Place suitable smoker-recipe food on the tower and power it with redstone.",
+      "outcome": "Roast the loaded food; removing it while powered can burn the player.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте башню для жарки.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:cut",
+      "kind": "crafting",
+      "title": "Prepare meat and fat",
+      "player_action": "Use a kitchen knife with a cutting board; kill a pig-type mob using the knife to obtain fat.",
+      "outcome": "Prepare cooking ingredients and an oil source.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "ingredients"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подготовьте мясо и жир.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:mill",
+      "kind": "automation",
+      "title": "Drive the stone mill",
+      "player_action": "Move a supported animal over the stone mill's center and supply grindable material such as wheat.",
+      "outcome": "Run animal-powered ingredient processing and collect the output.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "ingredients"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Смелите пшеницу на мельнице.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:noodles",
+      "kind": "crafting",
+      "title": "Make noodles",
+      "player_action": "Hold and use dough to stretch it, or cut it on a board.",
+      "outcome": "Turn dough into noodles.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "ingredients"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сделайте лапшу.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "kaleidoscope_cookery:teapot",
+      "kind": "interaction",
+      "title": "Prepare a teapot in the right order",
+      "player_action": "Add a full supported fluid portion during preparation, then a matching ingredient and let the teapot process.",
+      "outcome": "Reject extra fluid/ingredients and unmatched recipes; fluid retrieval requires preparation with no ingredient, and processing prevents taking the pot.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:teapot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Exact tooltip.kaleidoscope_cookery.teapot.* explains stage and fluid/input restrictions; native fluid unit values remain in the installed data/recipe owner.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Заварите чайник.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "kaleidoscope_cookery:cook_failures",
+      "kind": "interaction",
+      "title": "Avoid a failed dish",
+      "player_action": "Follow wok ingredient/timing requirements; add broth and stockpot ingredients in order and keep the lid closed while cooking.",
+      "outcome": "Wrong wok inputs or delay fail cooking; opening a stockpot pauses it and wrong steps produce suspicious stew.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:pot"
+        },
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:stockpot"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Приготовьте блюдо без ошибок.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "kaleidoscope_cookery:kitchen_farm",
+      "kind": "interaction",
+      "title": "Obtain cooking crops",
+      "player_action": "Break grass while wearing the Straw Hat, harvest crops with the Sickle, and inspect lettuce for caterpillars.",
+      "outcome": "Obtain cooking seeds and remove weeds; Scarecrow protects nearby farmland and accepts decorative equipment.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:straw_hat"
+        },
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:sickle"
+        },
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:scarecrow"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вырастите ингредиенты кухни.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "kaleidoscope_cookery:food_storage",
+      "kind": "interaction",
+      "title": "Store kitchen supplies",
+      "player_action": "Store oil in an Enamel Basin and right-click it with the Kitchen Shovel to oil the tool; pack food in a Fruit Basket or Transmutation Lunch Bag.",
+      "outcome": "Keep portable food/oil stores; the lunch bag is eaten from through right-click and has native transmutation behavior.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:enamel_basin"
+        },
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:fruit_basket"
+        },
+        {
+          "registry": "items",
+          "id": "kaleidoscope_cookery:transmutation_lunch_bag"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime.",
+        "Version1.4.1 transmutation is separately described by lunch_bag_transmutation; it is effect combination, not an unspecified recipe converting one food into another."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Организуйте запасы кухни.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched."
+    },
+    {
+      "key": "kaleidoscope_cookery:meal_survival",
+      "kind": "interaction",
+      "title": "Use cooking survival effects",
+      "player_action": "Choose food for Tundra Strider, Warmth, Vigor, Preservation or Satiated Shield.",
+      "outcome": "Handle snow/powder snow, heal near heat, run without hunger drain, avoid specified unsafe-food debuffs or absorb damage with hunger.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подберите еду для выживания.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "kaleidoscope_cookery:meal_deterrence",
+      "kind": "interaction",
+      "title": "Use food to change encounters",
+      "player_action": "Use Sulfur or Mustard food effects near phantoms or creepers; sneak while Flatulence is active.",
+      "outcome": "Repel the corresponding mobs or gain elevation through the active effect.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Испытайте особое блюдо.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "kaleidoscope_cookery:lunch_bag_transmutation",
+      "kind": "interaction",
+      "title": "Combine stored meal effects",
+      "player_action": "Load supported edible items or ordinary potions into the Lunch Bag with secondary inventory-clicks, then use the bag.",
+      "outcome": "Version1.4.1 source consumes the first available item and samples up to three other stored effect lists; when an extra effect applies it consumes another random stored item.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Commit gradle.properties declares1.4.1-forge+mc1.20.1. Current main1.6.0 and Fabric port differ; their changed consumption/capacity are not substituted. The item has native container-in-container restrictions.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime.",
+        "Exact installed class inspected directly with javap: getItems allocates16slots; finishUsingItem (SRG m_5922_) extracts one initial food/potion, shuffles other effect lists, uses min(3,list.size), and conditionally removes one additional random stored item after an extra effect applies. This corroborates the1.4.1 source, not later24slot/all-consume behavior."
+      ],
+      "source_ids": [
+        "lunch_bag_141",
+        "version_141",
+        "native_lang",
+        "native_lunch_bag_class"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Смешайте эффекты еды в сумке.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

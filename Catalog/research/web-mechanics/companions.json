@@ -1,0 +1,648 @@
+{
+  "schema_version": 1,
+  "mod_id": "companions",
+  "installed_version": "1.3.3",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/companions-mod",
+      "publisher": "xylonity",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/companions-mod",
+      "publisher": "xylonity",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_06229fea6f04",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/companions-mod",
+      "publisher": "xylonity; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar",
+        "sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+        "resource": "assets/companions/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "companions:heal_states",
+      "kind": "interaction",
+      "title": "Heal and command a companion",
+      "player_action": "Use essence from hostile mobs to heal a companion and set it to sit, wander or follow.",
+      "outcome": "Spawned summons cannot be healed this way.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "companions:teddy"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Вылечи спутника и настрой его поведение.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "companions:chalice_grail",
+      "kind": "crafting",
+      "title": "Fill a grail through the Great Chalice",
+      "player_action": "Fill a Great Chalice with essence; use an empty grail when full.",
+      "outcome": "The filled grail is a recipe ingredient.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Наполни чашу эссенцией и получи полный грааль.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "companions:soul_furnace",
+      "kind": "progression",
+      "title": "Power a Soul Furnace",
+      "player_action": "Fuel a Soul Furnace through the chalice above it and process Big Bread.",
+      "outcome": "Soul processing produces a Croissant Egg.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:big_bread"
+        },
+        {
+          "registry": "items",
+          "id": "companions:soul_furnace_block"
+        },
+        {
+          "registry": "items",
+          "id": "companions:croissant_egg_block"
+        }
+      ],
+      "depends_on": [
+        "companions:chalice_grail"
+      ],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Проведи переработку хлеба в печи душ.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "companions:tesla_travel",
+      "kind": "automation",
+      "title": "Connect a Tesla Network for Recall Platform travel",
+      "player_action": "Connect Dinamo, Tesla components and two Recall Platforms with a Wrench.",
+      "outcome": "Travel works only within the same network.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:wrench"
+        },
+        {
+          "registry": "items",
+          "id": "companions:recall_platform_block"
+        },
+        {
+          "registry": "entities",
+          "id": "companions:dinamo"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Соедини платформы отзыва общей сетью Тесла.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "companions:croissant_hatching",
+      "kind": "progression",
+      "title": "Hatch the Soul Furnace's Croissant Egg",
+      "player_action": "Place the Croissant Egg on the ground.",
+      "outcome": "It hatches into a Croissant Dragon.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:croissant_egg_block"
+        },
+        {
+          "registry": "entities",
+          "id": "companions:croissant_dragon"
+        }
+      ],
+      "depends_on": [
+        "companions:soul_furnace"
+      ],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выведи круассанового дракона из яйца.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "companions:shade_summoning",
+      "kind": "interaction",
+      "title": "Link a Shadow Bell to a blood-fed Shade altar",
+      "player_action": "Fill a Shade altar with Crystallized Blood and link a Shadow Bell.",
+      "outcome": "The bell controls summons; full charge improves initial Shades.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:shade_maw_altar"
+        },
+        {
+          "registry": "items",
+          "id": "companions:shadow_bell"
+        },
+        {
+          "registry": "items",
+          "id": "companions:crystallized_blood"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Привяжи теневой колокол к алтарю с кровью.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 1.3.3. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "companions:dinamo_repair",
+      "kind": "interaction",
+      "title": "dinamo repair native mechanic",
+      "player_action": "Supply Oak Planks, Homunculus, Iron Ingots and Tesla Coil to Broken Dinamo, using Wrench at the requested stages.",
+      "outcome": "Native repair messages describe confirmation before consuming material stacks and a staged reconstruction route.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:wrench"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:network_rules",
+      "kind": "interaction",
+      "title": "network rules native mechanic",
+      "player_action": "Use Wrench to link Tesla nodes, select the top Voltaic Pillar and build equal-height pillar columns.",
+      "outcome": "Self-links and overlong connections are rejected; Voltaic Relay extends the connection chain.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:wrench"
+        },
+        {
+          "registry": "blocks",
+          "id": "companions:voltaic_pillar_block"
+        },
+        {
+          "registry": "blocks",
+          "id": "companions:voltaic_relay_block"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:electrical_utility",
+      "kind": "interaction",
+      "title": "electrical utility native mechanic",
+      "player_action": "Power Plasma Lamps through Tesla Coil and linked network blocks, or use Recall Platforms.",
+      "outcome": "The native tooltips distinguish lighting, continuous current and inter-platform teleportation.",
+      "registry_refs": [
+        {
+          "registry": "blocks",
+          "id": "companions:tesla_coil_block"
+        },
+        {
+          "registry": "blocks",
+          "id": "companions:plasma_lamp_block"
+        },
+        {
+          "registry": "blocks",
+          "id": "companions:recall_platform_block"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:minion_phase",
+      "kind": "interaction",
+      "title": "minion phase native mechanic",
+      "player_action": "Use a fully durable Hourglass on a tamed Antlion or activate a Respawn Totem.",
+      "outcome": "Hourglass cycles its phase; Netherite Chains lock phase shifting on a tamed minion.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:hourglass"
+        },
+        {
+          "registry": "items",
+          "id": "companions:netherite_chains"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:revival_variants",
+      "kind": "interaction",
+      "title": "revival variants native mechanic",
+      "player_action": "Apply Old Cloth or Relic Gold to a Respawn Totem.",
+      "outcome": "Native text identifies Cloak and Mankh as the respective summons; these companion mechanics do not imply player revival.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:old_cloth"
+        },
+        {
+          "registry": "items",
+          "id": "companions:relic_gold"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:shade_link",
+      "kind": "interaction",
+      "title": "shade link native mechanic",
+      "player_action": "Fuel a Shade Altar with Crystallized Blood, then link Shadow Bell to it.",
+      "outcome": "Sword, Maw and Bat altars support distinct summons; Bell use depends on a linked, nonempty altar with charges.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:crystallized_blood"
+        },
+        {
+          "registry": "items",
+          "id": "companions:shadow_bell"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:pottery_capture",
+      "kind": "interaction",
+      "title": "pottery capture native mechanic",
+      "player_action": "Use Holy Porcelain Pottery to contain a creature.",
+      "outcome": "Native messages enforce size and blacklist eligibility rather than unlimited entity capture.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:holy_porcelain_pottery"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:specific_taming",
+      "kind": "interaction",
+      "title": "specific taming native mechanic",
+      "player_action": "Use milk for Croissant Dragon, the required Mage gear for Golden Allay, or coins for hostile Imp.",
+      "outcome": "Native messages identify distinct taming prerequisites and prevent assuming a universal food.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:mage_staff"
+        },
+        {
+          "registry": "items",
+          "id": "companions:mage_coat"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:puppet_arms",
+      "kind": "interaction",
+      "title": "puppet arms native mechanic",
+      "player_action": "Use Mutant, Whip, Blade or Cannon arm attachments on the Puppet route.",
+      "outcome": "The native tooltips distinguish interchangeable arm attachments and a hostile-puppet Rock/Paper/Scissors interaction.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:mutant_arm"
+        },
+        {
+          "registry": "items",
+          "id": "companions:whip_arm"
+        },
+        {
+          "registry": "items",
+          "id": "companions:blade_arm"
+        },
+        {
+          "registry": "items",
+          "id": "companions:cannon_arm"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:blood_equipment",
+      "kind": "interaction",
+      "title": "blood equipment native mechanic",
+      "player_action": "Use Crystallized Blood Sword or Axe and wear their armor.",
+      "outcome": "Sword fires a piercing slash, axe produces surrounding vortices, and armor becomes more protective at low health.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:crystallized_blood_sword"
+        },
+        {
+          "registry": "items",
+          "id": "companions:crystallized_blood_axe"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:mage_equipment",
+      "kind": "interaction",
+      "title": "mage equipment native mechanic",
+      "player_action": "Wear Mage armor and use Magic Books.",
+      "outcome": "Native set text reduces incoming damage and Magic Book cooldown; exact percentages are substitution parameters, not fixed research values.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:holy_robes",
+      "kind": "interaction",
+      "title": "holy robes native mechanic",
+      "player_action": "Wear Holy Robe pieces during combat.",
+      "outcome": "Their native description reduces incoming damage and may create a defensive fire ring.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    },
+    {
+      "key": "companions:magic_books",
+      "kind": "interaction",
+      "title": "magic books native mechanic",
+      "player_action": "Choose Ice Shard, Ice Tornado, Fire Mark, Brace, Heal Ring, Stone Spikes, Magic Ray, Black Hole or Naginata Book.",
+      "outcome": "Books respectively provide piercing frost, tornado, mark, fire projectile, healing circle, ground spikes, beam, enemy pull and falling weapons; Naginata has a precision modifier key.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "companions:book_ice_shard"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_ice_tornado"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_fire_mark"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_brace"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_heal_ring"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_stone_spikes"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_magic_ray"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_black_hole"
+        },
+        {
+          "registry": "items",
+          "id": "companions:book_naginata"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_06229fea6f04"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Освой описанное взаимодействие спутников.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar; SHA256 5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5; entry assets/companions/lang/en_us.json. Native text/data is not runtime proof. Installed native English guide/tooltip text read and paraphrased; effective server overrides and event attribution remain unverified."
+    }
+  ]
+}

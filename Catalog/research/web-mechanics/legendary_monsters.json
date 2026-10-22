@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "mod_id": "legendary_monsters",
+  "installed_version": "1.20.1",
+  "pack_snapshot_sha": "e5319721b683948860017b19113db7647452a890",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "official",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/legendary-monsters",
+      "publisher": "miauczel",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "exact_download",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/legendary-monsters/files/8715502",
+      "publisher": "miauczel",
+      "scope": "installed_release",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/legendary-monsters",
+      "publisher": "miauczel",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/legendary-monsters",
+      "publisher": "miauczel; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar",
+        "sha256": "8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8",
+        "resource": "data/legendary_monsters/advancements/locate_mossy_temple.json",
+        "resources": [
+          "data/legendary_monsters/advancements/locate_mossy_temple.json",
+          "data/legendary_monsters/advancements/defeat_overgrown_colossus.json",
+          "data/legendary_monsters/advancements/defeat_skeletosaurus.json",
+          "data/legendary_monsters/advancements/defeat_haunted_duo.json"
+        ]
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "legendary_monsters:mid_late_bosses",
+      "kind": "progression",
+      "title": "Mid- and late-game boss discovery",
+      "player_action": "Discover native Legendary Monsters boss encounters and mini-bosses spread across the world.",
+      "outcome": "High-difficulty exploration and combat path.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [],
+      "source_ids": [
+        "official",
+        "exact_download"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Отыщи и победи одного из легендарных монстров.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Use Catalog/views/power/bosses.json and installed structure registries for exact enemy/structure mapping; public overview does not prove it."
+    },
+    {
+      "key": "legendary_monsters:native_compat_boundary",
+      "kind": "compatibility",
+      "title": "Keep native bosses separate from optional combat patches",
+      "player_action": "Identify the native boss encounter before selecting optional Epic Fight compatibility.",
+      "outcome": "An optional patch is a separate integration; an upstream recommendation does not prove installed compatibility.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Existing researched snapshot, release source and boss observation are retained unchanged. Current author page links combat compatibility separately; confirm the actual installed adapter before quest integration."
+    },
+    {
+      "key": "legendary_monsters:mossy_temple_location",
+      "kind": "progression",
+      "title": "Discover the Mossy Temple",
+      "player_action": "Enter the Mossy Temple structure.",
+      "outcome": "The installed advancement uses a native location condition.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "legendary_monsters:mossy_temple"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди замшелый храм.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar; SHA256 8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8; entry data/legendary_monsters/advancements/locate_mossy_temple.json. Native text/data is not runtime proof. Native trigger minecraft:location with structure legendary_monsters:mossy_temple. This is an adapter candidate; JEM encounter Start remains authoritative."
+    },
+    {
+      "key": "legendary_monsters:overgrown_colossus",
+      "kind": "combat",
+      "title": "Defeat the Overgrown Colossus",
+      "player_action": "Find and defeat the Overgrown Colossus through canonical encounter admission.",
+      "outcome": "Its installed defeat advancement follows Mossy Temple discovery.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "legendary_monsters:overgrown_colossus"
+        }
+      ],
+      "depends_on": [
+        "legendary_monsters:mossy_temple_location"
+      ],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи заросшего колосса в замшелом храме.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar; SHA256 8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8; entry data/legendary_monsters/advancements/defeat_overgrown_colossus.json. Native text/data is not runtime proof. Native criterion is minecraft:player_killed_entity for legendary_monsters:overgrown_colossus. Advancement icon mossy_hammer alone is not evidence that the boss drops it."
+    },
+    {
+      "key": "legendary_monsters:skeletosaurus",
+      "kind": "combat",
+      "title": "Find and defeat the Skeletosaurus",
+      "player_action": "Discover the nest and defeat its Skeletosaurus through the hosted lifecycle.",
+      "outcome": "The installed advancement links nest discovery to this boss kill.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "legendary_monsters:skeletosaurus"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди гнездо скелетозавра и победи его.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar; SHA256 8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8; entry data/legendary_monsters/advancements/defeat_skeletosaurus.json. Native text/data is not runtime proof. Native criterion minecraft:player_killed_entity for legendary_monsters:skeletosaurus; parent legendary_monsters:locate_skeletosaurus_nest. Advancement icon is not a loot guarantee."
+    },
+    {
+      "key": "legendary_monsters:haunted_duo",
+      "kind": "combat",
+      "title": "Complete both Haunted Duo defeats",
+      "player_action": "Defeat both the Beheaded Knight and Resurrected Knight.",
+      "outcome": "The installed challenge requires both kill criteria, rather than either enemy alone.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "legendary_monsters:beheaded_knight"
+        },
+        {
+          "registry": "entities",
+          "id": "legendary_monsters:resurrected_knight"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи обезглавленного и воскресшего рыцарей.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/legendarymonsters-2.2.2%20MC%201.20.1.jar; SHA256 8fc236e768acabe168c575f6ec76a3a587f0178a14f2706f6afa26dc470a69a8; entry data/legendary_monsters/advancements/defeat_haunted_duo.json. Native text/data is not runtime proof. Requirements are AND across separate minecraft:player_killed_entity criteria. Current JEM boss tiers and participant attribution need a server-owned adapter."
+    }
+  ]
+}

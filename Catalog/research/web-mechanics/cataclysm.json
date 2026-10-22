@@ -1,0 +1,2009 @@
+{
+  "schema_version": 1,
+  "mod_id": "cataclysm",
+  "installed_version": "3.31",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "altar_fire_owner",
+      "url": "https://raw.githubusercontent.com/lender544/new1.20.1/master/src/main/java/com/github/L_Ender/cataclysm/blockentities/AltarOfFire_Block_Entity.java",
+      "publisher": "L_Ender author source",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "altar_abyss_owner",
+      "url": "https://raw.githubusercontent.com/lender544/new1.20.1/master/src/main/java/com/github/L_Ender/cataclysm/blockentities/AltarOfAbyss_Block_Entity.java",
+      "publisher": "L_Ender author source",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "tombstone_owner",
+      "url": "https://raw.githubusercontent.com/lender544/new1.20.1/master/src/main/java/com/github/L_Ender/cataclysm/blocks/Cursed_Tombstone_Block.java",
+      "publisher": "L_Ender author source",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "tombstone_entity_owner",
+      "url": "https://raw.githubusercontent.com/lender544/new1.20.1/master/src/main/java/com/github/L_Ender/cataclysm/blockentities/Cursed_tombstone_Entity.java",
+      "publisher": "L_Ender author source",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "remnant_owner",
+      "url": "https://raw.githubusercontent.com/lender544/new1.20.1/master/src/main/java/com/github/L_Ender/cataclysm/entity/InternalAnimationMonster/IABossMonsters/Ancient_Remnant/Ancient_Remnant_Entity.java",
+      "publisher": "L_Ender author source",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "scylla_owner",
+      "url": "https://raw.githubusercontent.com/lender544/new1.20.1/master/src/main/java/com/github/L_Ender/cataclysm/entity/InternalAnimationMonster/IABossMonsters/Scylla/Scylla_Entity.java",
+      "publisher": "L_Ender author source",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "native_fb8f4eff43b2",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_ender_golem.json"
+      }
+    },
+    {
+      "id": "native_3d5edf501146",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_ender_guardian.json"
+      }
+    },
+    {
+      "id": "native_c1e57de5d7ca",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_monstrosity.json"
+      }
+    },
+    {
+      "id": "native_a4f870ad7f69",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_revenant.json"
+      }
+    },
+    {
+      "id": "native_b87dc4ea185c",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "com/github/L_Ender/cataclysm/blockentities/AltarOfFire_Block_Entity.class"
+      }
+    },
+    {
+      "id": "native_9a42695e7ead",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_harbinger.json"
+      }
+    },
+    {
+      "id": "native_6d34ac24a195",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/recipes/abyssal_sacrifice.json",
+        "resources": [
+          "data/cataclysm/recipes/abyssal_sacrifice.json",
+          "data/cataclysm/recipes/abyssal_sacrifice2.json"
+        ]
+      }
+    },
+    {
+      "id": "native_1a5004d4da03",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "com/github/L_Ender/cataclysm/blockentities/AltarOfAbyss_Block_Entity.class"
+      }
+    },
+    {
+      "id": "native_9297bf232f1e",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/loot_tables/archaeology/cursed_pyramid_necklace.json"
+      }
+    },
+    {
+      "id": "native_50e330de41a5",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "com/github/L_Ender/cataclysm/entity/InternalAnimationMonster/IABossMonsters/Ancient_Remnant/Ancient_Remnant_Entity.class"
+      }
+    },
+    {
+      "id": "native_b316b045e1a3",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "assets/cataclysm/lang/en_us.json"
+      }
+    },
+    {
+      "id": "native_f64ec71892d0",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "com/github/L_Ender/cataclysm/blocks/Cursed_Tombstone_Block.class",
+        "resources": [
+          "com/github/L_Ender/cataclysm/blocks/Cursed_Tombstone_Block.class",
+          "com/github/L_Ender/cataclysm/blockentities/Cursed_tombstone_Entity.class"
+        ]
+      }
+    },
+    {
+      "id": "native_c189c17a0690",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_clawdian.json"
+      }
+    },
+    {
+      "id": "native_3a853359f1e9",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "com/github/L_Ender/cataclysm/entity/InternalAnimationMonster/IABossMonsters/Scylla/Scylla_Entity.class"
+      }
+    },
+    {
+      "id": "native_3e9223695224",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/advancements/kill_all_bosses.json"
+      }
+    },
+    {
+      "id": "native_0b1e65c95a46",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_abyss_located.json"
+      }
+    },
+    {
+      "id": "native_fe187aa2f9d2",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_curse_located.json"
+      }
+    },
+    {
+      "id": "native_55c0f6bdc913",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_desert_located.json"
+      }
+    },
+    {
+      "id": "native_1af231232a48",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_flame_located.json"
+      }
+    },
+    {
+      "id": "native_865084520759",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_mech_located.json"
+      }
+    },
+    {
+      "id": "native_da1544676183",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_monstrous_located.json"
+      }
+    },
+    {
+      "id": "native_a04323a5a40f",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_ruined_located.json"
+      }
+    },
+    {
+      "id": "native_0be2305b052c",
+      "url": "https://www.curseforge.com/minecraft/mc-mods/lendercataclysm",
+      "publisher": "L_Ender; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar",
+        "sha256": "c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362",
+        "resource": "data/cataclysm/tags/worldgen/structure/eye_of_storm_located.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "cataclysm:ruined_citadel",
+      "kind": "combat",
+      "title": "Challenge the Ruined Citadel guardian",
+      "player_action": "Explore the Ruined Citadel and confront the Ender Guardian; adapt when its helmet breaks.",
+      "outcome": "A dungeon boss changes defensive state and uses void displacement attacks.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "cataclysm:ruined_citadel"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ender_guardian"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пройди разрушенную цитадель и победи её стража.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 3.31. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "cataclysm:revenant_ashes",
+      "kind": "progression",
+      "title": "Collect ashes and offer them at the altar",
+      "player_action": "Defeat Ignited Revenants, using critical axe attacks against their shields, then offer their ashes at the altar.",
+      "outcome": "The Burning Arena has an explicit offering-based boss progression.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:ignited_revenant"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:burning_ashes"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:altar_of_fire"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь пепел ревенанта для огненного алтаря.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 3.31. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "cataclysm:monstrosity_lava",
+      "kind": "combat",
+      "title": "Prevent the Monstrosity's lava recovery",
+      "player_action": "Pressure the Netherite Monstrosity while accounting for its lava recharge.",
+      "outcome": "Consuming lava restores its ranged capacity and health.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:netherite_monstrosity"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи незеритового монстра, учитывая восстановление лавой.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 3.31. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "cataclysm:harbinger_emp",
+      "kind": "combat",
+      "title": "Use the ancient factory EMP against the Harbinger",
+      "player_action": "In the native encounter, a Nether Star wakes the Harbinger; charge an unpowered EMP from its laser and trigger the EMP.",
+      "outcome": "EMP activation can damage and stun the boss outside its protected laser action.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:the_harbinger"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:ancient_factory"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Native upstream awakening differs from JEM hosted encounters: canonical admission and Start remain authoritative."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Предвестника, используя механизм ЭМИ.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 3.31. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "cataclysm:citadel_golem",
+      "kind": "combat",
+      "title": "Ruined Citadel sentry route",
+      "player_action": "Find the Ruined Citadel and defeat its Ender Golem before pursuing the Guardian branch.",
+      "outcome": "The installed advancement tree links Citadel discovery to Golem defeat, then Guardian defeat; tree parentage is guide order rather than an enforced combat lock.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "cataclysm:ruined_citadel"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ender_golem"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:void_core"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fb8f4eff43b2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи голема в разрушенной цитадели.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_ender_golem.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:citadel_guardian_signal",
+      "kind": "combat",
+      "title": "Guardian native completion",
+      "player_action": "Defeat an Ender Guardian after exploring the Citadel.",
+      "outcome": "The installed criterion is minecraft:player_killed_entity with cataclysm:ender_guardian, so direct player-kill advancement is documented; party/event attribution still needs a custom server criterion.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:ender_guardian"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:ruined_citadel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_3d5edf501146"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи хранителя Края.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_ender_guardian.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:forge_boss_route",
+      "kind": "combat",
+      "title": "Soul Forge route",
+      "player_action": "Locate the Soul Forge and defeat the Netherite Monstrosity.",
+      "outcome": "Its native boss advancement follows Soul Forge discovery; lava behavior is separately documented in the retained observation.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:netherite_monstrosity"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:soul_black_smith"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_c1e57de5d7ca"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи незеритового чудовища в кузнице.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_monstrosity.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:arena_revenant_route",
+      "kind": "combat",
+      "title": "Burning Arena sentry route",
+      "player_action": "Explore the Burning Arena and defeat an Ignited Revenant.",
+      "outcome": "The native advancement points toward Burning Ashes and precedes Ignis in the guide tree.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:ignited_revenant"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:burning_arena"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:burning_ashes"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a4f870ad7f69"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добудь пылающий пепел в арене.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_revenant.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:arena_ignis_offering",
+      "kind": "progression",
+      "title": "Ignis altar offering",
+      "player_action": "Place Burning Ashes in the Altar of Fire.",
+      "outcome": "Installed altar bytecode checks this exact item and summons Ignis; this is native acquisition research, while JEM hosted encounter admission/Start remains owned by JEM.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:ignis"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:altar_of_fire"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:burning_ashes"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b87dc4ea185c",
+        "altar_fire_owner"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Призови и победи Игниса.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry com/github/L_Ender/cataclysm/blockentities/AltarOfFire_Block_Entity.class. Native text/data is not runtime proof. Read-only javap of exact installed tick method matched BURNING_ASHES check and IGNIS construction; upstream source corroborates. JEM Start authority must be respected."
+    },
+    {
+      "key": "cataclysm:factory_harbinger_route",
+      "kind": "combat",
+      "title": "Ancient Factory route",
+      "player_action": "Find the Ancient Factory, awaken the Harbinger and defeat it.",
+      "outcome": "The native player-kill advancement follows factory discovery; Nether Star/EMP interactions are retained separately.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:the_harbinger"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:ancient_factory"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:emp"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_9a42695e7ead"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Предвестника в древней фабрике.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_harbinger.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:abyssal_sacrifice_recipe",
+      "kind": "crafting",
+      "title": "Leviathan offering preparation",
+      "player_action": "Combine Athame, crystallized coral, Nautilus Shell, Heart of the Sea and the five precious/material blocks in the native shapeless recipe.",
+      "outcome": "The recipe produces Abyssal Sacrifice for the Sunken City altar; a second native recipe permits Coral Chunk instead of crystallized coral.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:abyssal_sacrifice"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:athame"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:crystallized_coral"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:coral_chunk"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_6d34ac24a195"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подготовь жертву бездны.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/recipes/abyssal_sacrifice.json. Native text/data is not runtime proof. Also read data/cataclysm/recipes/abyssal_sacrifice2.json: coral replacement only. Blocks are diamond, emerald, iron, amethyst and gold. Native recipe may be overridden by pack data."
+    },
+    {
+      "key": "cataclysm:sunken_leviathan_offering",
+      "kind": "progression",
+      "title": "Sunken City summoning",
+      "player_action": "Place Abyssal Sacrifice in the Altar of Abyss at the Sunken City.",
+      "outcome": "Installed altar bytecode consumes the offering after successfully spawning the Leviathan; native boss advancement records its defeat.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:the_leviathan"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:sunken_city"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:abyssal_sacrifice"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:altar_of_abyss"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_1a5004d4da03",
+        "altar_abyss_owner"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Призови и победи Левиафана.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry com/github/L_Ender/cataclysm/blockentities/AltarOfAbyss_Block_Entity.class. Native text/data is not runtime proof. Exact installed tick method and author source reviewed; native summoning is not authority to bypass JEM hosted encounter Start."
+    },
+    {
+      "key": "cataclysm:pyramid_archaeology",
+      "kind": "progression",
+      "title": "Ancient Remnant archaeology",
+      "player_action": "Brush suspicious sand in the Cursed Pyramid for the Necklace of the Desert.",
+      "outcome": "The installed archaeology loot table provides the necklace; native advancement text explicitly connects excavation to awakening Ancient Remnant.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "cataclysm:cursed_pyramid"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:necklace_of_the_desert"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ancient_remnant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_9297bf232f1e"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди ожерелье в подозрительном песке пирамиды.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/loot_tables/archaeology/cursed_pyramid_necklace.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:remnant_necklace",
+      "kind": "interaction",
+      "title": "Ancient Remnant awakening",
+      "player_action": "Use Necklace of the Desert on a Remnant that lacks its necklace.",
+      "outcome": "Installed interaction bytecode consumes the necklace outside creative mode, restores its necklace state and enters awakening.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:necklace_of_the_desert"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ancient_remnant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_50e330de41a5",
+        "remnant_owner"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Разбуди древнего останка ожерельем.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry com/github/L_Ender/cataclysm/entity/InternalAnimationMonster/IABossMonsters/Ancient_Remnant/Ancient_Remnant_Entity.class. Native text/data is not runtime proof. Read exact installed m_6071_ method and author mobInteract; native route only, JEM Start authority is separate."
+    },
+    {
+      "key": "cataclysm:prison_seal",
+      "kind": "interaction",
+      "title": "Frosted Prison seal",
+      "player_action": "Obtain a Strange Key and open a Door of Seal in the Frosted Prison route.",
+      "outcome": "Native item text identifies the matching lock, while the advancement chain leads from prison discovery to Maledictus.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:strange_key"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:door_of_seal"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:frosted_prison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Открой печать ключом в морозной тюрьме.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:maledictus_tombstone",
+      "kind": "interaction",
+      "title": "Maledictus tombstone activation",
+      "player_action": "Interact with a fully charged Cursed Tombstone after exploring the Frosted Prison.",
+      "outcome": "Installed block interaction checks POWERED before setting LIT; the block entity then summons Maledictus. A weak tombstone reports that it is not ready.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:cursed_tombstone"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:maledictus"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:frosted_prison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_f64ec71892d0",
+        "tombstone_owner",
+        "tombstone_entity_owner"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Пробуди Маледиктуса у заряженного надгробия.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry com/github/L_Ender/cataclysm/blocks/Cursed_Tombstone_Block.class. Native text/data is not runtime proof. Both installed Cursed_Tombstone_Block.class and blockentities/Cursed_tombstone_Entity.class read, author code corroborates. Recharge duration is configuration-dependent; native route does not override JEM Start."
+    },
+    {
+      "key": "cataclysm:acropolis_clawdian",
+      "kind": "combat",
+      "title": "Acropolis Clawdian route",
+      "player_action": "Find the Acropolis and defeat Clawdian.",
+      "outcome": "Its native kill advancement follows Acropolis discovery and precedes the Scylla chapter; Chitin Claw is the displayed reward-theme icon, not independently proven guaranteed loot.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "cataclysm:acropolis"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:clawdian"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:chitin_claw"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_c189c17a0690"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Клодиана в акрополе.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_clawdian.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:acropolis_scylla",
+      "kind": "interaction",
+      "title": "Scylla native awakening",
+      "player_action": "Interact with inactive Scylla encountered in the Acropolis route.",
+      "outcome": "Exact installed interaction sets Act, home position, full health and player counter without an offering-item condition; the native advancement branch follows Clawdian.",
+      "registry_refs": [
+        {
+          "registry": "structures",
+          "id": "cataclysm:acropolis"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:scylla"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_3a853359f1e9",
+        "scylla_owner"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи Сциллу после исследования акрополя.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry com/github/L_Ender/cataclysm/entity/InternalAnimationMonster/IABossMonsters/Scylla/Scylla_Entity.class. Native text/data is not runtime proof. Read m_6071_ bytecode of installed3.31 and author mobInteract. Storm Eye is a locator/respawn item, not an initial interaction offering. JEM admission/Start remains canonical."
+    },
+    {
+      "key": "cataclysm:all_eight_bosses",
+      "kind": "progression",
+      "title": "Native eight-boss completion",
+      "player_action": "Defeat Ignis, Leviathan, Harbinger, Ender Guardian, Maledictus, Ancient Remnant, Netherite Monstrosity and Scylla.",
+      "outcome": "The installed challenge has eight separate AND requirements using player_killed_entity, establishing the native major-boss set rather than guessing from entity names.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:ignis"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:the_leviathan"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:the_harbinger"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ender_guardian"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:maledictus"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ancient_remnant"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:netherite_monstrosity"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:scylla"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_3e9223695224"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Победи восемь главных боссов Cataclysm.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/advancements/kill_all_bosses.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "cataclysm:native_tooltip_melee_positioning",
+      "kind": "interaction",
+      "title": "melee positioning native equipment",
+      "player_action": "Use Final Fractal against high-health targets or strike from behind with Zweiender.",
+      "outcome": "Native tooltips describe a maximum-health damage bonus and a separate rear-hit multiplier.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:final_fractal"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:zweiender"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_forge_weapons",
+      "kind": "interaction",
+      "title": "forge weapons native equipment",
+      "player_action": "Right-click a block with Infernal Forge or Void Forge; throw Brontes.",
+      "outcome": "These pickaxe weapons respectively produce an area hit, a fan of Void Runes, or a thrown tool.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:infernal_forge"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:void_forge"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:brontes"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_gauntlet_guard",
+      "kind": "interaction",
+      "title": "gauntlet guard native equipment",
+      "player_action": "Right-click with Gauntlet of Guard, Void Core or Gauntlet of Maelstrom.",
+      "outcome": "Their native actions respectively pull entities, summon Void Runes and create a Void Vortex.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:gauntlet_of_guard"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:void_core"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:gauntlet_of_maelstrom"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_monstrous_helm",
+      "kind": "interaction",
+      "title": "monstrous helm native equipment",
+      "player_action": "Wear Monstrous Helm and fall below half health.",
+      "outcome": "The native tooltip describes nearby knockback plus defensive, knockback-resistance and regeneration benefits.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:monstrous_helm"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_ignitium_gear",
+      "kind": "interaction",
+      "title": "ignitium gear native equipment",
+      "player_action": "Upgrade Netherite gear using the Ignitium template and ingot; activate helmet ability or combine the chestplate with Elytra.",
+      "outcome": "The armor documents Blazing Brand gaze, Flame Reflex and Lava Walker functions alongside Elytra integration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:ignitium_upgrade_smithing_template"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:ignitium_ingot"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:ignitium_helmet"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:ignitium_chestplate"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:ignitium_leggings"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:ignitium_boots"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_cursium_gear",
+      "kind": "interaction",
+      "title": "cursium gear native equipment",
+      "player_action": "Upgrade Netherite armor using Cursium template and ingot, then use its vision, dodge and movement abilities.",
+      "outcome": "Helmet highlights entities through walls, leggings may dodge attacks and boots reduce fall damage and permit a backstep. Chestplate native revival grants temporary protection followed by a revival-blocking debuff; JEM event death/elimination rules must be checked independently.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:cursium_upgrade_smithing_template"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:cursium_ingot"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:cursium_helmet"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:cursium_chestplate"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:cursium_leggings"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:cursium_boots"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_bulwark_charge",
+      "kind": "interaction",
+      "title": "bulwark charge native equipment",
+      "player_action": "Release Bulwark of the Flame while sneaking and drive a target toward a wall.",
+      "outcome": "The charge deals damage, with extra damage and a temporary stun when the target meets a wall.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:bulwark_of_the_flame"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_incinerator_charge",
+      "kind": "interaction",
+      "title": "incinerator charge native equipment",
+      "player_action": "Charge and release the Incinerator toward the target.",
+      "outcome": "A directed flame strike follows; its explosion can destroy dropped items, affecting loot recovery.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:the_incinerator"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_annihilator_charge",
+      "kind": "interaction",
+      "title": "annihilator charge native equipment",
+      "player_action": "Use the Annihilator with both hands and charge its attack.",
+      "outcome": "Its tooltip describes enhanced critical damage and a charged area attack.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:the_annihilator"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_immolator_brand",
+      "kind": "interaction",
+      "title": "immolator brand native equipment",
+      "player_action": "Use the Immolator against a target with Blazing Brand, or charge it with both hands.",
+      "outcome": "Brand enables critical-damage synergy and the charged move summons a flame strike.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:the_immolator"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:blazing_grips"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_soul_render",
+      "kind": "interaction",
+      "title": "soul render native equipment",
+      "player_action": "Use Soul Render normally or while sneaking.",
+      "outcome": "The normal rush and the sneaking spiral of Phantom Halberds form separate attack modes.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:soul_render"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_ranged_modes",
+      "kind": "interaction",
+      "title": "ranged modes native equipment",
+      "player_action": "Fire Cursed Bow or Wrath of the Desert.",
+      "outcome": "The bow releases three Phantom Arrows but two shots for special arrows; Wrath of the Desert releases three cursed sandstorms.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:cursed_bow"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:wrath_of_the_desert"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_shoulder_weapons",
+      "kind": "interaction",
+      "title": "shoulder weapons native equipment",
+      "player_action": "Right-click the Void Assault or Wither Assault shoulder weapon; sneak for the Wither weapon's alternate fire.",
+      "outcome": "Void launches howitzers; Wither changes missiles to howitzers while sneaking.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:void_assault_shoulder_weapon"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:wither_assault_shoulder_weapon"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_bulwark_gauntlet",
+      "kind": "interaction",
+      "title": "bulwark gauntlet native equipment",
+      "player_action": "Charge Gauntlet of Bulwark and release toward enemies.",
+      "outcome": "Charging pushes nearby entities and applies Blazing Brand; release performs a forward damaging rush.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:gauntlet_of_bulwark"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_tidal_claws",
+      "kind": "interaction",
+      "title": "tidal claws native equipment",
+      "player_action": "Right-click Tidal Claws for its grapple or left-click for a tentacle attack.",
+      "outcome": "The item combines traversal and ranged entity damage through different controls.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:tidal_claws"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_amethyst_equipment",
+      "kind": "interaction",
+      "title": "amethyst equipment native equipment",
+      "player_action": "Activate Bloom Stone Pauldrons and consume Blessed Amethyst Crab Meat when preparing for abyssal threats.",
+      "outcome": "Pauldrons fire surrounding amethyst projectiles; the food blessing protects against darkness, Abyssal Fear and Abyssal Burn.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:bloom_stone_pauldrons"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:blessed_amethyst_crab_meat"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_gatling_shredder",
+      "kind": "interaction",
+      "title": "gatling shredder native equipment",
+      "player_action": "Keep Redstone in inventory to reload Laser Gatling, or hold Meat Shredder against entities in front.",
+      "outcome": "The Gatling has an ammunition loop; the Shredder's native description explicitly says it ignores hurt invulnerability frames.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:laser_gatling"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:meat_shredder"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_storm_weapons",
+      "kind": "interaction",
+      "title": "storm weapons native equipment",
+      "player_action": "Throw Ceraunus or use it while sneaking; right-click Astrape.",
+      "outcome": "Ceraunus switches between anchor throw and a fan of waves, while Astrape launches a Lightning Spear.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:ceraunus"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:astrape"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_defensive_curios",
+      "kind": "interaction",
+      "title": "defensive curios native equipment",
+      "player_action": "Equip Unbreakable Skull, Sturdy Boots or Sticky Gloves for their respective threats.",
+      "outcome": "Native descriptions negate one stun per cooldown, allow powder-snow walking, and prevent Koboleton's item-looting behavior.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:unbreakable_skull"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:sturdy_boots"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:sticky_gloves"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_sandstorm_tools",
+      "kind": "interaction",
+      "title": "sandstorm tools native equipment",
+      "player_action": "Use Sandstorm in a Bottle or left-click Ancient Spear.",
+      "outcome": "The bottle summons two orbiting storms, while the spear shoots a sandstorm.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:sandstorm_in_a_bottle"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:ancient_spear"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_pet_remnant",
+      "kind": "interaction",
+      "title": "pet remnant native equipment",
+      "player_action": "Use Remnant Skull and tame the resulting Modern Remnant with a Sniffer Egg.",
+      "outcome": "The exact installed tooltip specifies Sniffer Egg rather than a guessed food or brushing ritual.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:remnant_skull"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:modern_remnant"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_pet_ministrosity",
+      "kind": "interaction",
+      "title": "pet ministrosity native equipment",
+      "player_action": "Use Netherite Effigy and tame the resulting Ministrosity with Lava Power Cell.",
+      "outcome": "The native tooltip supplies both the summon item and taming input.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:netherite_effigy"
+        },
+        {
+          "registry": "items",
+          "id": "cataclysm:lava_power_cell"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:netherite_ministrosity"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:native_tooltip_boss_world_unlocks",
+      "kind": "interaction",
+      "title": "boss world unlocks native equipment",
+      "player_action": "Defeat Ignis or Leviathan and watch for their native post-defeat world messages.",
+      "outcome": "The installed language describes Ignited Berserkers awakening in Nether Fortresses and Coral Golems appearing in oceans; actual JEM spawn-state enforcement is unverified.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "cataclysm:ignis"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:ignited_berserker"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:the_leviathan"
+        },
+        {
+          "registry": "entities",
+          "id": "cataclysm:coral_golem"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_b316b045e1a3"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используй описанную способность снаряжения.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry assets/cataclysm/lang/en_us.json. Native text/data is not runtime proof. All substantive native equipment tooltip and post-defeat message keys read, original concise summary. Text describes upstream behavior only; JEM death/elimination and override ownership remain separate. Numeric cooldown/damage values are not promoted to effective runtime facts."
+    },
+    {
+      "key": "cataclysm:locator_abyss",
+      "kind": "progression",
+      "title": "abyss eye locator",
+      "player_action": "Use the abyss eye to locate the sunken city route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:sunken_city; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:abyss_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:sunken_city"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_0b1e65c95a46"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_abyss_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_curse",
+      "kind": "progression",
+      "title": "cursed eye locator",
+      "player_action": "Use the cursed eye to locate the frosted prison route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:frosted_prison; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:cursed_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:frosted_prison"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_fe187aa2f9d2"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_curse_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_desert",
+      "kind": "progression",
+      "title": "desert eye locator",
+      "player_action": "Use the desert eye to locate the cursed pyramid route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:cursed_pyramid; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:desert_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:cursed_pyramid"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_55c0f6bdc913"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_desert_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_flame",
+      "kind": "progression",
+      "title": "flame eye locator",
+      "player_action": "Use the flame eye to locate the burning arena route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:burning_arena; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:flame_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:burning_arena"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_1af231232a48"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_flame_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_mech",
+      "kind": "progression",
+      "title": "mech eye locator",
+      "player_action": "Use the mech eye to locate the ancient factory route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:ancient_factory; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:mech_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:ancient_factory"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_865084520759"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_mech_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_monstrous",
+      "kind": "progression",
+      "title": "monstrous eye locator",
+      "player_action": "Use the monstrous eye to locate the soul black smith route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:soul_black_smith; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:monstrous_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:soul_black_smith"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_da1544676183"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_monstrous_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_ruined",
+      "kind": "progression",
+      "title": "void eye locator",
+      "player_action": "Use the void eye to locate the ruined citadel route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:ruined_citadel; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:void_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:ruined_citadel"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_a04323a5a40f"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_ruined_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    },
+    {
+      "key": "cataclysm:locator_storm",
+      "kind": "progression",
+      "title": "storm eye locator",
+      "player_action": "Use the storm eye to locate the acropolis route.",
+      "outcome": "The installed worldgen structure tag contains cataclysm:acropolis; position and generation availability depend on the world and server configuration.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "cataclysm:storm_eye"
+        },
+        {
+          "registry": "structures",
+          "id": "cataclysm:acropolis"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ."
+      ],
+      "source_ids": [
+        "native_0be2305b052c"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди арену с помощью соответствующего ока.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/L_Enders_Cataclysm-3.31.jar; SHA256 c29dcf940168208517b72f2d9965828b106a6b94cbea55d5001558c69a27b362; entry data/cataclysm/tags/worldgen/structure/eye_of_storm_located.json. Native text/data is not runtime proof. Exact native locator target tag reviewed. Locator item mapping follows author ModItems declaration; no runtime location or successful generation claimed."
+    }
+  ]
+}

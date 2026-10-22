@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "mod_id": "infinitybuttons",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/infinitybuttons",
+      "publisher": "Infinity Buttons authors",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/infinitybuttons",
+      "publisher": "Infinity Buttons authors",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/infinitybuttons-1.20.1-4.0.7.jar",
+        "sha256": "8b9c40ec3e2e8369d88cfddd19ee8844822a80987954ff3d2b31476f4314e319",
+        "resource": "assets/infinitybuttons/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "infinitybuttons:hidden",
+      "kind": "interaction",
+      "title": "Hide a redstone control",
+      "player_action": "Fit a Secret Button into a matching wall and press it.",
+      "outcome": "Activate a control disguised as a building material.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Спрячьте кнопку в стене.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/infinitybuttons.json."
+    },
+    {
+      "key": "infinitybuttons:lantern",
+      "kind": "interaction",
+      "title": "Send a lantern signal",
+      "player_action": "Activate a Lantern Button attached through a chain.",
+      "outcome": "Emit its redstone signal at the chain's top.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Подайте сигнал кнопкой-фонарём.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "infinitybuttons:alarm",
+      "kind": "interaction",
+      "title": "Sound an emergency alarm",
+      "player_action": "Press an Emergency Button.",
+      "outcome": "Trigger its alarm sound and button behavior.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Включите аварийную кнопку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "infinitybuttons:single_use",
+      "kind": "interaction",
+      "title": "Use a disposable button",
+      "player_action": "Press a Sand, Gravel or Concrete Powder Button.",
+      "outcome": "Use a button that the author describes as pressable only once.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте одноразовую кнопку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "infinitybuttons:button_types",
+      "kind": "interaction",
+      "title": "Choose a restricted button",
+      "player_action": "Shoot an Arrow Button, waterlog a Prismarine Button, or use Sticky Copper as a toggle.",
+      "outcome": "Different button types have distinct activation rules; Emerald has a variable pulse and Letter Buttons change character through sneak-click.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Используйте особую кнопку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

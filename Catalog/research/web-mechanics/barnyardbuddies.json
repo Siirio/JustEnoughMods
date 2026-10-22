@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "mod_id": "barnyardbuddies",
+  "installed_version": "0.6..4",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_20261021",
+      "url": "https://modrinth.com/mod/barnyard-buddies",
+      "publisher": "marioz170 / Redkoopa",
+      "reviewed_on": "2026-10-21",
+      "scope": "project_page"
+    },
+    {
+      "id": "installed_native_docs",
+      "url": "https://modrinth.com/mod/barnyard-buddies",
+      "publisher": "marioz170 / Redkoopa; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-21",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+        "sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+        "resource": "assets/barnyardbuddies/lang/en_us.json"
+      }
+    },
+    {
+      "id": "author_20261022",
+      "url": "https://modrinth.com/mod/barnyard-buddies",
+      "publisher": "marioz170 / Redkoopa",
+      "reviewed_on": "2026-10-22",
+      "scope": "project_page"
+    },
+    {
+      "id": "native_7e277f25a31f",
+      "url": "https://modrinth.com/mod/barnyard-buddies",
+      "publisher": "marioz170 / Redkoopa; installed native documentation",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar",
+        "sha256": "0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937",
+        "resource": "assets/barnyardbuddies/lang/en_us.json"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "key": "barnyardbuddies:breed_exploration",
+      "kind": "acquisition",
+      "title": "Find distinct farm breeds",
+      "player_action": "Explore biome-specific farm breeds, including Jacob's Sheep.",
+      "outcome": "Breeds are separate entities; Jacob's Sheep supply spotted wool.",
+      "registry_refs": [
+        {
+          "registry": "entities",
+          "id": "barnyardbuddies:jacobs_sheep"
+        },
+        {
+          "registry": "items",
+          "id": "barnyardbuddies:spotted_wool"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest records 0.6..4 literally; the outer artifact filename says V0.6.4. No silent version correction is made."
+      ],
+      "source_ids": [
+        "author_20261021"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Найди овцу Джейкоба и получи пятнистую шерсть.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Author page may describe a different release than installed 0.6..4. Confirm exact acquisition, recipes and server-authoritative completion signal before a quest is implemented."
+    },
+    {
+      "key": "barnyardbuddies:pet_care",
+      "kind": "interaction",
+      "title": "Heal farm pets with kibble",
+      "player_action": "Use pet kibble on Manx Cats or Great Pyrenees.",
+      "outcome": "The native tooltip identifies kibble as pet healing food.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "barnyardbuddies:pet_kibble"
+        },
+        {
+          "registry": "entities",
+          "id": "barnyardbuddies:manx_cat"
+        },
+        {
+          "registry": "entities",
+          "id": "barnyardbuddies:great_pyrenees_dog"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest records 0.6..4 literally; the outer artifact filename says V0.6.4. No silent version correction is made."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Позаботься о питомце с помощью корма.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar; SHA256 0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937; entry assets/barnyardbuddies/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "barnyardbuddies:pet_equipment",
+      "kind": "interaction",
+      "title": "Equip a Pyrenees protective vest",
+      "player_action": "Sneak and use the protective vest on a Great Pyrenees.",
+      "outcome": "The dog receives its native protective equipment.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "barnyardbuddies:pyrenees_protective_vest"
+        },
+        {
+          "registry": "entities",
+          "id": "barnyardbuddies:great_pyrenees_dog"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest records 0.6..4 literally; the outer artifact filename says V0.6.4. No silent version correction is made."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Надень защитный жилет на пиренейскую собаку.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar; SHA256 0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937; entry assets/barnyardbuddies/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "barnyardbuddies:horse_blankets",
+      "kind": "interaction",
+      "title": "Decorate a Clydesdale with a quilt",
+      "player_action": "Apply a supported quilt or quilt carpet as a Clydesdale blanket.",
+      "outcome": "Farm decoration items also serve as horse blankets.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "barnyardbuddies:spotted_quilt_rug"
+        },
+        {
+          "registry": "entities",
+          "id": "barnyardbuddies:clydesdale_horse"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest records 0.6..4 literally; the outer artifact filename says V0.6.4. No silent version correction is made."
+      ],
+      "source_ids": [
+        "installed_native_docs"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Укрась клейдесдальскую лошадь стёганой попоной.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar; SHA256 0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937; entry assets/barnyardbuddies/lang/en_us.json. Native text/data is not runtime proof. Confirm effective server behavior and completion signal before implementation."
+    },
+    {
+      "key": "barnyardbuddies:clydesdale_blanket",
+      "kind": "interaction",
+      "title": "clydesdale blanket native mechanic",
+      "player_action": "Tame a Clydesdale, gallop and equip Quilted Rug or Spotted Carpet.",
+      "outcome": "The native advancements describe both riding and blanket customization.",
+      "registry_refs": [
+        {
+          "registry": "items",
+          "id": "barnyardbuddies:spotted_carpet"
+        }
+      ],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest records 0.6..4 literally; the outer artifact filename says V0.6.4. No silent version correction is made."
+      ],
+      "source_ids": [
+        "native_7e277f25a31f"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Оседлай клейдесдаля и надень попону.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar; SHA256 0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937; entry assets/barnyardbuddies/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    },
+    {
+      "key": "barnyardbuddies:farm_harvest",
+      "kind": "interaction",
+      "title": "farm harvest native mechanic",
+      "player_action": "Shear Jacob's Sheep, obtain a Cochin Bantam Egg and wear a Silkie Chicken Cap.",
+      "outcome": "These are three distinct native husbandry milestones.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Upstream/native documentation is evidence, not a verified JEM gameplay rule; installed configuration and JEM overrides may differ.",
+        "Manifest records 0.6..4 literally; the outer artifact filename says V0.6.4. No silent version correction is made."
+      ],
+      "source_ids": [
+        "native_7e277f25a31f"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Собери продукты новых фермерских животных.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Installed bytes reviewed against frozen snapshot efd23bcffc6553f6f423cd4b5576e2732ad7e938 supply this mechanic; upstream HTTPS source identifies the author/project. Artifact Client/ManagedPack/mods/BarnyardBuddies_1.20.1Forge_V0.6.4.jar; SHA256 0de2fb3246fff6fc7e552cff94459cbe784daeb309799fd9c7894f56dc33d937; entry assets/barnyardbuddies/lang/en_us.json. Native text/data is not runtime proof. Installed English native mechanics/guide text read directly; original summary. Configuration-driven values, JEM overrides and completion event remain unverified."
+    }
+  ]
+}

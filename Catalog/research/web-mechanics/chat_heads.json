@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "mod_id": "chat_heads",
+  "installed_version": "0.15.7",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/chat-heads",
+      "publisher": "dzwdz",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "chat_heads:sender_portrait",
+      "kind": "interaction",
+      "title": "Identify a chat sender by portrait",
+      "player_action": "Read incoming player chat.",
+      "outcome": "The client places a player's head beside messages to make speakers easier to distinguish.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "chat_heads:sender_heuristic",
+      "kind": "compatibility",
+      "title": "Adjust sender detection for formatted chat",
+      "player_action": "If a server's formatting prevents sender detection, inspect the Heuristic only option in the settings.",
+      "outcome": "Heuristic detection can recover portraits but can also assign the wrong head to a message.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Cloth Config exposes settings; the mod otherwise uses defaults.",
+        "The upstream OptiFine warning is not proof of a conflict in the installed JEM environment.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

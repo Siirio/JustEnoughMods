@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "mod_id": "immersive_melodies",
+  "installed_version": "0.8.0+1.20.1",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-22",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "main",
+      "url": "https://modrinth.com/mod/immersive-melodies",
+      "publisher": "Conczin",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "native_lang",
+      "url": "https://modrinth.com/mod/immersive-melodies",
+      "publisher": "Conczin",
+      "scope": "installed_static",
+      "reviewed_on": "2026-10-22",
+      "artifact_evidence": {
+        "path": "Client/ManagedPack/mods/immersive_melodies-0.8.0%2B1.20.1-forge.jar",
+        "sha256": "bf330d4204723f824e6adddce95e02bed13270095dd6f0e28dbea39da5bfdf9e",
+        "resource": "assets/immersive_melodies/lang/en_us.json"
+      }
+    },
+    {
+      "id": "custom_melodies",
+      "url": "https://github.com/Luke100000/ImmersiveMelodies/wiki/Custom-Melodies",
+      "publisher": "Conczin",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    },
+    {
+      "id": "config_doc",
+      "url": "https://github.com/Luke100000/ImmersiveMelodies/wiki/Config",
+      "publisher": "Conczin",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-22"
+    }
+  ],
+  "observations": [
+    {
+      "key": "immersive_melodies:recipebook",
+      "kind": "acquisition",
+      "title": "Discover instrument recipes",
+      "player_action": "Collect a copper ingot.",
+      "outcome": "Unlock instrument recipes in the vanilla recipe book.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Откройте рецепты инструментов.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs. Raw recipe data owner: Catalog/graphs/recipes/immersive_melodies.json."
+    },
+    {
+      "key": "immersive_melodies:play",
+      "kind": "interaction",
+      "title": "Play an instrument",
+      "player_action": "Select and play a bundled song using one of the mod's instruments.",
+      "outcome": "Perform music in multiplayer.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation."
+      ],
+      "source_ids": [
+        "main"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сыграйте мелодию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "immersive_melodies:import",
+      "kind": "interaction",
+      "title": "Import a melody",
+      "player_action": "Drag supported MIDI or ABC files into the in-game import flow; use MIDI files for a datapack.",
+      "outcome": "Add a custom melody to the available repertoire.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External author documentation is not proof of effective JEM behavior; compare the installed version and configuration before implementation.",
+        "Author wiki requires an internet converter for ABC and accepts MIDI only in datapacks. Plain audio formats are not note data. Upload permission can be disabled by server owner."
+      ],
+      "source_ids": [
+        "main",
+        "custom_melodies"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Импортируйте свою мелодию.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Action completion requires a proven native signal; inventory possession alone does not prove this action. No exact static registry reference was selected; names in prose are not invented registry IDs."
+    },
+    {
+      "key": "immersive_melodies:free_play",
+      "kind": "interaction",
+      "title": "Play notes directly",
+      "player_action": "Switch the instrument screen to keyboard play rather than a stored melody.",
+      "outcome": "Play notes from the keyboard; bundled/native UI also supports search, favorites, track list and pause.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Сыграйте свою мелодию с клавиатуры.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_melodies:import_permissions",
+      "kind": "interaction",
+      "title": "Import a supported melody file",
+      "player_action": "Use the native drop zone for .midi/.abc files, or put files in the displayed melody directory and refresh.",
+      "outcome": "Parse supported melody data; the server may deny uploads according to permission.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Exact immersive_melodies.upload.*, error.unknown_file_type and error.upload.no_permission keys; no external upload or message was performed.",
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "native_lang",
+        "custom_melodies"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Добавьте музыкальный файл.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    },
+    {
+      "key": "immersive_melodies:select_tracks",
+      "kind": "interaction",
+      "title": "Choose the tracks in a melody",
+      "player_action": "Use the melody screen sheet/track control when an imported MIDI contains several instrumental tracks.",
+      "outcome": "Select the intended notes instead of relying on automatic track choice; other-player uploads and mob instrument pickup/spawns follow server configuration.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The linked native instructions describe behavior; effective JEM changes and successful action detection remain unverified at runtime."
+      ],
+      "source_ids": [
+        "custom_melodies",
+        "config_doc"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": {
+        "goal_ru": "Выберите дорожки мелодии.",
+        "detection": "custom_criterion"
+      },
+      "review_note": "Original paraphrase of the linked instructions. No game was launched. No exact canonical registry reference selected."
+    }
+  ]
+}

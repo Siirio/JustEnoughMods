@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "mod_id": "appleskin",
+  "installed_version": "${file.jarVersion}",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/appleskin",
+      "publisher": "squeek502",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "appleskin:food_tooltip",
+      "kind": "interaction",
+      "title": "Read a food's nutrition",
+      "player_action": "Hover a food stack in the inventory.",
+      "outcome": "The tooltip exposes hunger and saturation information that vanilla hides.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "appleskin:held_food_preview",
+      "kind": "interaction",
+      "title": "Preview a meal before eating",
+      "player_action": "Hold food and compare the hunger, saturation and potential healing overlays.",
+      "outcome": "The HUD previews what eating that food could restore; this presentation does not change food mechanics.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    },
+    {
+      "key": "appleskin:exhaustion_sync",
+      "kind": "integration",
+      "title": "Read current saturation and exhaustion",
+      "player_action": "Inspect the HUD or F3 hunger information while playing on a server supplying AppleSkin data.",
+      "outcome": "The client can display the synchronized saturation and exhaustion values.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The author requires server-side support for accurate saturation/exhaustion values.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Presentation/settings alone do not provide an inventory completion signal. Any quest would require a documented native action or explicit manual confirmation."
+    }
+  ]
+}

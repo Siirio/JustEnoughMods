@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "mod_id": "invincible",
+  "installed_version": "20.14.8.2",
+  "pack_snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "researched_on": "2026-10-21",
+  "data_class": "external_native_mechanics_evidence_not_canonical_gameplay",
+  "sources": [
+    {
+      "id": "author_page",
+      "url": "https://modrinth.com/mod/epic-fight-invincible-lib",
+      "publisher": "P1nero",
+      "scope": "project_page",
+      "reviewed_on": "2026-10-21"
+    }
+  ],
+  "observations": [
+    {
+      "key": "invincible:data_driven_innate",
+      "kind": "integration",
+      "title": "Define a weapon innate skill through supported data",
+      "player_action": "A pack developer uses the library's skill JSON format for animations, icons, stack size and configured command effects.",
+      "outcome": "A dependent weapon can expose a custom innate without rebuilding every shared component.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "Do not import a demo JSON from a different Epic Fight branch as a 20.14.8.2-compatible contract.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Invincible's name is not a promise of player invulnerability. The consuming addon/data defines the actual ability, cost and result; use that owner's execution signal."
+    },
+    {
+      "key": "invincible:conditional_combo",
+      "kind": "integration",
+      "title": "Define a conditional key-combination move",
+      "player_action": "A developer uses supported combo data/code with key combinations and conditions.",
+      "outcome": "Weapons can choose different combo branches; the library also exposes afterimage/ground-slam presentation facilities.",
+      "registry_refs": [],
+      "depends_on": [],
+      "conditions": [
+        "The actual combo belongs to its consuming addon; no generic library item acquisition is implied.",
+        "External documentation is not installed-runtime proof; inspect the installed artifact/configuration before relying on defaults or exact compatibility."
+      ],
+      "source_ids": [
+        "author_page"
+      ],
+      "verification": "EXTERNAL_SOURCE_ONLY",
+      "runtime_verified": false,
+      "quest_seed": null,
+      "review_note": "Invincible's name is not a promise of player invulnerability. The consuming addon/data defines the actual ability, cost and result; use that owner's execution signal."
+    }
+  ]
+}
