@@ -24,7 +24,7 @@ public final class OptionalRacePresentation {
         try{return bridge.getMethod(name,args).invoke(null,values);}catch(ReflectiveOperationException e){throw new IllegalStateException("Optional race presentation failed",e);}
     }
     public static void accept(RaceExperience.Status status){
-        int race=status.selected()?status.race():-1,tier=status.tiers()[Math.max(0,status.race())];
+        int race=status.selected()?status.race():-1,tier=status.tierAt(Math.max(0,status.race()));
         call("accept",new Class<?>[]{boolean.class,int.class,int.class},status.selected(),status.race(),tier);
         if(race!=lastRace||tier!=lastTier)call("refresh",new Class<?>[]{boolean.class},race!=lastRace);
         lastRace=race;lastTier=tier;

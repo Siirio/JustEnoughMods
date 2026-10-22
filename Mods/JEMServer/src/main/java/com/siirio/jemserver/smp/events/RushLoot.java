@@ -35,6 +35,14 @@ public final class RushLoot extends LootModifier {
     @Override
     protected ObjectArrayList<ItemStack> doApply(
             ObjectArrayList<ItemStack> loot, LootContext context) {
+        var serverForMutation = context.getLevel().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return doApplyInScope(loot, context); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> doApplyInScope(loot, context));
+    }
+
+    private ObjectArrayList<ItemStack> doApplyInScope(
+            ObjectArrayList<ItemStack> loot, LootContext context) {
         var actor = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         var origin = context.getParamOrNull(LootContextParams.ORIGIN);
         var state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
@@ -56,7 +64,7 @@ public final class RushLoot extends LootModifier {
         if (excluded.contains(key)) return loot;
         if (excluded.size() >= com.siirio.jemserver.smp.SmpConfig.RUSH_TRACKED_BLOCKS.get()) {
             event.putBoolean("rushTrackingFull", true);
-            SmpData.get(player.server).changed(event);
+
             return loot;
         }
         excluded.putBoolean(key, true);
@@ -67,7 +75,7 @@ public final class RushLoot extends LootModifier {
             event.put("rushParticipants", participants);
             com.siirio.jemserver.smp.Profiles.countEvent(player.server, player.getUUID(), "RESOURCE_RUSH");
         }
-        SmpData.get(player.server).changed(event);
+
         var tool=context.getParamOrNull(LootContextParams.TOOL);
         if(state.is(ORES) && tool!=null && net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.SILK_TOUCH,tool)>0) return loot;
         int size = loot.size();

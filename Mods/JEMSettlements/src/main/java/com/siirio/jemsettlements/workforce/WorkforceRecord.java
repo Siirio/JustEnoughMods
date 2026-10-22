@@ -150,7 +150,7 @@ public final class WorkforceRecord {
         // Untagged historical penalty state belongs exclusively to Coins.
         record.coinPayroll.load(tag.contains("CoinPayroll") ? tag.getCompound("CoinPayroll") : tag);
         if (tag.contains("EmeraldPayroll")) record.emeraldPayroll.load(tag.getCompound("EmeraldPayroll"));
-        try { record.loyalty = Loyalty.valueOf(tag.getString("Loyalty")); } catch (IllegalArgumentException ignored) { }
+        if (tag.contains("Loyalty")) record.loyalty = Loyalty.valueOf(tag.getString("Loyalty"));
         if (tag.contains("FoodHistory")) record.foodHistory = com.siirio.jemsettlements.resident.ResidentMood.load(tag.getCompound("FoodHistory"));
         record.lastWorkAreaId = tag.hasUUID("LastWorkArea") ? tag.getUUID("LastWorkArea") : null;
         record.lastWorkEvidenceGameTime = tag.contains("LastWorkEvidenceGameTime") ? tag.getLong("LastWorkEvidenceGameTime") : Long.MIN_VALUE; return record;

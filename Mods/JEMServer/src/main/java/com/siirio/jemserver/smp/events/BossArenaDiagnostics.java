@@ -46,9 +46,16 @@ public final class BossArenaDiagnostics {
     /** Replay only an already-confirmed exact removal if a crash retained the old entity chunk. */
     @net.minecraftforge.eventbus.api.SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
     public static void confirmedRemoval(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { confirmedRemovalInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> confirmedRemovalInScope(event));
+    }
+
+    private static void confirmedRemovalInScope(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
         if (!event.loadedFromDisk() || !(event.getLevel() instanceof ServerLevel level)
                 || !(event.getEntity() instanceof LivingEntity boss)) return;
-        CompoundTag row = SmpData.get(level.getServer()).find(ARCHIVE, boss.getUUID());
+        CompoundTag row = SmpData.get(level.getServer()).bossQuarantine().current( boss.getUUID());
         if (row == null || !row.getString("state").equals("QUARANTINED") || !row.hasUUID("keeper")
                 || !row.getString("dimension").equals(level.dimension().location().toString())) return;
         CompoundTag snapshot = row.getCompound("entity");
@@ -144,10 +151,17 @@ public final class BossArenaDiagnostics {
     }
 
     private static int plan(CommandSourceStack source, UUID keeper, UUID duplicate) {
+        var serverForMutation = source.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return planInScope(source, keeper, duplicate); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> planInScope(source, keeper, duplicate));
+    }
+
+    private static int planInScope(CommandSourceStack source, UUID keeper, UUID duplicate) {
         try {
             Pair pair = validate(source.getServer(), keeper, duplicate);
             var archive = SmpData.get(source.getServer());
-            if (archive.find(ARCHIVE, duplicate) != null) return reject(source, "A preserved record already exists for this UUID; inspect archive before any further action.");
+            if (archive.bossQuarantine().current( duplicate) != null) return reject(source, "A preserved record already exists for this UUID; inspect archive before any further action.");
             var plans = PLANS.computeIfAbsent(source.getServer(), ignored -> new LinkedHashMap<>());
             long now = source.getServer().overworld().getGameTime();
             plans.values().removeIf(plan -> plan.expires < now);
@@ -163,6 +177,13 @@ public final class BossArenaDiagnostics {
     }
 
     private static int confirm(CommandSourceStack source, UUID token, UUID keeper, UUID duplicate) {
+        var serverForMutation = source.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return confirmInScope(source, token, keeper, duplicate); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> confirmInScope(source, token, keeper, duplicate));
+    }
+
+    private static int confirmInScope(CommandSourceStack source, UUID token, UUID keeper, UUID duplicate) {
         var plans = PLANS.get(source.getServer());
         Plan plan = plans == null ? null : plans.remove(token);
         long now = source.getServer().overworld().getGameTime();
@@ -172,7 +193,7 @@ public final class BossArenaDiagnostics {
             Pair pair = validate(source.getServer(), keeper, duplicate);
             if (!pair.arena.id().equals(plan.arena)) return reject(source, "Arena changed; nothing removed.");
             SmpData data = SmpData.get(source.getServer());
-            if (data.find(ARCHIVE, duplicate) != null || data.all(ARCHIVE).size() >= ARCHIVE_LIMIT)
+            if (data.bossQuarantine().current( duplicate) != null || data.bossQuarantine().currentRows().size() >= ARCHIVE_LIMIT)
                 return reject(source, "Quarantine already contains this UUID or is full; nothing removed.");
             CompoundTag snapshot = new CompoundTag();
             if (!pair.duplicate.save(snapshot)) return reject(source, "Native entity refused complete serialization; nothing removed.");
@@ -184,7 +205,7 @@ public final class BossArenaDiagnostics {
             row.putString("arena", pair.arena.id()); row.putString("dimension", pair.arena.dimension());
             row.putString("operator", actor(source)); row.putLong("created", now); row.putString("state", "PRESERVED_BEFORE_REMOVAL");
             row.putUUID("previousCanonical", WorldTierData.get(source.getServer()).liveBoss(pair.arena.id()).orElseThrow());
-            row.put("entity", snapshot); data.put(ARCHIVE, row); data.flush(source.getServer());
+            row.put("entity", snapshot); data.bossQuarantine().put( row); data.flush(source.getServer());
             verifyArchive(source.getServer(), row);
             // Save is proven durable before the only destructive operation. Do not invoke kill/death callbacks.
             validate(source.getServer(), keeper, duplicate);
@@ -205,7 +226,7 @@ public final class BossArenaDiagnostics {
                 if (!world.flush(source.getServer())) throw new IllegalStateException("Duplicate is archived; identity retirement requires recovery before further repair");
             }
             row.putString("state", pair.duplicate.isRemoved() ? "QUARANTINED" : "REMOVAL_INCOMPLETE");
-            data.changed(row); data.flush(source.getServer());
+            data.flush(source.getServer());
             tell(source, "Quarantine=" + duplicate + "; keeper=" + keeper + "; ArenaId=" + pair.arena.id()
                     + "; state=" + row.getString("state") + ". Full original NBT remains in jem_smp_v2.dat table " + ARCHIVE + ".");
             return pair.duplicate.isRemoved() ? 1 : 0;
@@ -216,6 +237,13 @@ public final class BossArenaDiagnostics {
     }
 
     private static Pair validate(MinecraftServer server, UUID keeperId, UUID duplicateId) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return validateInScope(server, keeperId, duplicateId); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> validateInScope(server, keeperId, duplicateId));
+    }
+
+    private static Pair validateInScope(MinecraftServer server, UUID keeperId, UUID duplicateId) {
         if (!server.isDedicatedServer() || !server.isSameThread() || keeperId.equals(duplicateId)) throw new IllegalStateException("Dedicated server thread and two different UUIDs required.");
         LivingEntity keeper = loaded(server, keeperId), duplicate = loaded(server, duplicateId);
         if (keeper == null || duplicate == null || keeper.level() != duplicate.level() || keeper.getType() != duplicate.getType())
@@ -264,8 +292,8 @@ public final class BossArenaDiagnostics {
         }
         if (arena.activeEncounterId() != null && !arena.activeEncounterId().equals(keeperId) && !arena.activeEncounterId().equals(duplicateId))
             throw new IllegalStateException("A separate encounter/reservation still owns the arena; repair is unavailable.");
-        for (String table : List.of("parties", "events")) {
-            var rows = SmpData.get(server).all(table);
+        var smp = SmpData.get(server);
+        for (var rows : List.of(smp.parties().currentRows(), smp.events().currentRows())) {
             if (rows.size() > ENTITY_LIMIT) throw new IllegalStateException("Party/event registry exceeds bounded repair review; nothing removed.");
             for (CompoundTag row : rows) {
                 if (SmpData.closed(row)) continue;
@@ -292,7 +320,14 @@ public final class BossArenaDiagnostics {
         throw new IOException("Exact boss quarantine snapshot was not persisted");
     }
     private static int archive(CommandSourceStack source, UUID id) {
-        CompoundTag row = SmpData.get(source.getServer()).find(ARCHIVE, id);
+        var serverForMutation = source.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return archiveInScope(source, id); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> archiveInScope(source, id));
+    }
+
+    private static int archiveInScope(CommandSourceStack source, UUID id) {
+        CompoundTag row = SmpData.get(source.getServer()).bossQuarantine().current( id);
         if (row == null) return reject(source, "No quarantine snapshot for that UUID.");
         tell(source, "Quarantine=" + id + " keeper=" + row.getUUID("keeper") + " ArenaId=" + row.getString("arena")
                 + " dimension=" + row.getString("dimension") + " state=" + row.getString("state")

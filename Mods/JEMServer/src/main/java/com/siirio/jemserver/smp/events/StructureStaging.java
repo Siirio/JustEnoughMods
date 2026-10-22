@@ -56,7 +56,7 @@ public final class StructureStaging {
     private static final LinkedHashMap<UUID, Area> AREAS = new LinkedHashMap<>();
     private static final Map<UUID, UUID> INSIDE = new HashMap<>();
     private static final Map<UUID, UUID> NEAR = new HashMap<>();
-    private static final Map<UUID, Optional<CompoundTag>> PARTY_CACHE = new HashMap<>();
+    private static final Map<UUID, Optional<UUID>> PARTY_CACHE = new HashMap<>();
     private static final Map<UUID, Presence> PRESENCE = new HashMap<>();
     private static final LinkedHashMap<String, Optional<Area>> NATIVE_LOOKUPS = new LinkedHashMap<>();
 
@@ -79,13 +79,24 @@ public final class StructureStaging {
     }
 
     private static CompoundTag party(ServerLevel level, UUID id) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return partyInScope(level, id); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> partyInScope(level, id));
+    }
+
+    private static CompoundTag partyInScope(ServerLevel level, UUID id) {
         var cached = PARTY_CACHE.get(id);
-        if (cached != null && (cached.isEmpty() || !SmpData.closed(cached.get()))) return cached.orElse(null);
-        var row = SmpData.get(level.getServer()).all("parties").stream()
+        if (cached != null) {
+            if (cached.isEmpty()) return null;
+            var current = SmpData.get(level.getServer()).parties().current(cached.get());
+            if (current != null && !SmpData.closed(current)) return current;
+        }
+        var row = SmpData.get(level.getServer()).parties().currentRows().stream()
                 .filter(value -> value.hasUUID("structureId") && value.getUUID("structureId").equals(id) && !SmpData.closed(value))
                 .findFirst();
         if (PARTY_CACHE.size() >= AREA_LIMIT) PARTY_CACHE.clear();
-        PARTY_CACHE.put(id, row);
+        PARTY_CACHE.put(id, row.map(value -> value.getUUID("id")));
         return row.orElse(null);
     }
 
@@ -130,8 +141,15 @@ public final class StructureStaging {
     }
 
     public static boolean arenaAvailable(net.minecraft.server.MinecraftServer server,String id) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return arenaAvailableInScope(server, id); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> arenaAvailableInScope(server, id));
+    }
+
+    private static boolean arenaAvailableInScope(net.minecraft.server.MinecraftServer server,String id) {
         if (!SmpEnvironment.active(server)) return false;
-        return SmpData.get(server).all("parties").stream().noneMatch(row->row.hasUUID("structureId")
+        return SmpData.get(server).parties().currentRows().stream().noneMatch(row->row.hasUUID("structureId")
                 &&row.getUUID("structureId").toString().equals(id)&&!SmpData.closed(row));
     }
 
@@ -156,6 +174,13 @@ public final class StructureStaging {
     }
 
     public static void choose(ServerPlayer player, UUID id, String mode, boolean solo) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { chooseInScope(player, id, mode, solo); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> chooseInScope(player, id, mode, solo));
+    }
+
+    private static void chooseInScope(ServerPlayer player, UUID id, String mode, boolean solo) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         Area area = AREAS.get(id);
         SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
@@ -167,7 +192,7 @@ public final class StructureStaging {
             SmpRecords.require(raidAvailable(player, id), "raid_unavailable");
             boolean created = event == null;
             if (created) {
-                event = SmpData.get(player.server).create("events", player.getUUID());
+                event = SmpData.get(player.server).events().create(player.getUUID());
                 event.putString("slot", "manual:raid:" + event.getUUID("id"));
                 event.putString("activity", "BOSS_RAID");
                 event.putBoolean("ordinaryRaid", true);
@@ -181,8 +206,8 @@ public final class StructureStaging {
             }
             PARTY_CACHE.remove(id);
             EventParties.join(player, event, solo);
-            PARTY_CACHE.put(id, SmpData.get(player.server).all("parties").stream()
-                    .filter(value -> value.hasUUID("structureId") && value.getUUID("structureId").equals(id) && !SmpData.closed(value)).findFirst());
+            PARTY_CACHE.put(id, SmpData.get(player.server).parties().currentRows().stream()
+                    .filter(value -> value.hasUUID("structureId") && value.getUUID("structureId").equals(id) && !SmpData.closed(value)).map(value -> value.getUUID("id")).findFirst());
             return;
         }
         SmpRecords.require(mode.equals("BOSS_FIGHT"), "unavailable");
@@ -195,8 +220,8 @@ public final class StructureStaging {
                     Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), solo));
             attachArena(row,id,area.boss(),area.dimension(),area.center(),area.bounds());
             row.putBoolean("nativePending", true);
-            PARTY_CACHE.put(id, Optional.of(row));
-            SmpData.get(player.server).changed(row);
+            PARTY_CACHE.put(id, Optional.of(row.getUUID("id")));
+
         }
         if (solo) {
             Parties.makeSolo(player, row);
@@ -205,6 +230,13 @@ public final class StructureStaging {
     }
 
     public static boolean start(ServerPlayer host, CompoundTag row, List<UUID> ids) {
+        var serverForMutation = host.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return startInScope(host, row, ids); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> startInScope(host, store.parties().bind(row), ids));
+    }
+
+    private static boolean startInScope(ServerPlayer host, CompoundTag row, List<UUID> ids) {
         if (!SmpEnvironment.active(host)) return false;
         if (!row.getBoolean("nativePending")) return false;
         Area area = row.hasUUID("structureId") ? AREAS.get(row.getUUID("structureId")) : null;
@@ -213,7 +245,7 @@ public final class StructureStaging {
         SmpRecords.require(livingBoss(host.serverLevel(), area) != null, "boss_not_respawned");
         SmpRecords.require(blockers(host.serverLevel(), area, new HashSet<>(ids)).isEmpty(), "arena_occupied");
         row.putString("state", "ACTIVE");
-        SmpData.get(host.server).changed(row);
+
         bindExisting(host.serverLevel(), area, row, ids);
         host.sendSystemMessage(Component.translatable("jem.event.native_ritual_ready"));
         return true;
@@ -255,6 +287,13 @@ public final class StructureStaging {
     }
 
     private static void finishRaidParticipants(net.minecraft.server.MinecraftServer server, CompoundTag party) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishRaidParticipantsInScope(server, party); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishRaidParticipantsInScope(server, store.parties().bind(party)));
+    }
+
+    private static void finishRaidParticipantsInScope(net.minecraft.server.MinecraftServer server, CompoundTag party) {
         for (UUID id : SmpRecords.memberIds(party)) {
             if (!Parties.accepted(party, id)) continue;
             CompoundTag member = SmpRecords.members(party).getCompound(id.toString());
@@ -263,7 +302,7 @@ public final class StructureStaging {
             if (player != null) finishRaidExit(player, party, member);
         }
         clearRaidExitSession(party);
-        SmpData.get(server).changed(party);
+
     }
 
     private static boolean finishRaidExit(ServerPlayer player, CompoundTag party, CompoundTag member) {
@@ -273,13 +312,20 @@ public final class StructureStaging {
     }
 
     private static void finishPendingRaidExit(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishPendingRaidExitInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishPendingRaidExitInScope(player));
+    }
+
+    private static void finishPendingRaidExitInScope(ServerPlayer player) {
         SmpData data = SmpData.get(player.server);
-        for (CompoundTag party : data.all("parties")) {
+        for (CompoundTag party : data.parties().currentRows()) {
             CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
             if (!member.getBoolean(RAID_EXIT_PENDING)) continue;
             if (finishRaidExit(player, party, member)) {
                 clearRaidExitSession(party);
-                data.changed(party);
+
             }
         }
     }
@@ -413,6 +459,13 @@ public final class StructureStaging {
     }
 
     private static void bind(ServerLevel level, LivingEntity boss, CompoundTag row, List<UUID> ids) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { bindInScope(level, boss, row, ids); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> bindInScope(level, boss, store.parties().bind(row), ids));
+    }
+
+    private static void bindInScope(ServerLevel level, LivingEntity boss, CompoundTag row, List<UUID> ids) {
         if (row.hasUUID("bossEntity") || !row.getBoolean("nativePending") || HostedEncounterApi.isRaid(boss)) return;
         Area area = bossArea(level,boss);
         if (area == null || livingBoss(level, area) != boss) return;
@@ -421,7 +474,7 @@ public final class StructureStaging {
             row.putUUID("bossEntity", boss.getUUID());
             row.putBoolean("nativePending", false);
             Profiles.count(level.getServer(), row.getUUID("owner"), "bossesHosted");
-            SmpData.get(level.getServer()).changed(row);
+
         }
     }
 

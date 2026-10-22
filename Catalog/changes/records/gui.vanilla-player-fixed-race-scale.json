@@ -45,7 +45,6 @@
       "Mods/JEMRoles/build.gradle",
       "Mods/JEMServer/build.gradle",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/GuiPlayerFrameMixin.java",
@@ -170,6 +169,16 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/AbilityPreviewRenderer.java"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "engineering_v2_retire_source_owners",
+      "summary": "ENGINEERING v2 retired the inactive Roles UI/VFX graph and unused private menu copies after consumer inspection. Removed paths are preserved here as historical evidence, not current implementations. Existing active race presentation remains owned by RaceExperienceClient/RaceExperienceScreen where applicable; unused menu and VFX implementations have no replacement under their old rule. Prior behavior descriptions, precedence, status and history are preserved; this entry only corrects current source ownership.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java"
+      ],
+      "current_source_files": []
     }
   ],
   "impacts": {

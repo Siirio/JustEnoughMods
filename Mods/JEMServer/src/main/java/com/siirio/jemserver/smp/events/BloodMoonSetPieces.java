@@ -145,6 +145,13 @@ public final class BloodMoonSetPieces {
     }
 
     public static int beginWave(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return beginWaveInScope(level, row, players, wave, tier); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> beginWaveInScope(level, store.events().bind(row), players, wave, tier));
+    }
+
+    private static int beginWaveInScope(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
         Set<Scenario> pool=wave==3?WAVE_THREE_SCENARIOS:wave==BloodMoonWaves.WAVES?WAVE_FIVE_SCENARIOS:Set.of();
         if(pool.isEmpty()) return 0;
         row.put(SET_PIECE_MOBS,new ListTag());
@@ -177,17 +184,24 @@ public final class BloodMoonSetPieces {
         double initial=livingBosses(level,row).stream().mapToDouble(LivingEntity::getMaxHealth).sum();
         row.putDouble(INITIAL_HEALTH,Math.max(1,initial));
         initializeCooldowns(level,row,selected);
-        SmpData.get(level.getServer()).changed(row);
+
         return count;
     }
 
     public static int recoverMissingSpawn(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return recoverMissingSpawnInScope(level, row, players, wave, tier); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> recoverMissingSpawnInScope(level, store.events().bind(row), players, wave, tier));
+    }
+
+    private static int recoverMissingSpawnInScope(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
         if(wave!=3&&wave!=BloodMoonWaves.WAVES) return 0;
         String spawnedKey=spawnedKey(wave);
         if(row.getBoolean(spawnedKey)) return 0;
         if(!livingSetPieces(level,row).isEmpty()) {
             row.putBoolean(spawnedKey,true);
-            SmpData.get(level.getServer()).changed(row);
+
             return 0;
         }
         Scenario selected=current(row);
@@ -197,7 +211,7 @@ public final class BloodMoonSetPieces {
         row.putBoolean(spawnedKey,true);
         row.putDouble(INITIAL_HEALTH,Math.max(1,livingBosses(level,row).stream().mapToDouble(LivingEntity::getMaxHealth).sum()));
         initializeCooldowns(level,row,selected);
-        SmpData.get(level.getServer()).changed(row);
+
         return count;
     }
 
@@ -212,10 +226,17 @@ public final class BloodMoonSetPieces {
     }
 
     public static void finishWave(ServerLevel level,CompoundTag row,int wave) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishWaveInScope(level, row, wave); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishWaveInScope(level, store.events().bind(row), wave));
+    }
+
+    private static void finishWaveInScope(ServerLevel level,CompoundTag row,int wave) {
         if((wave==3||wave==BloodMoonWaves.WAVES)&&row.getInt(ARENA_WAVE)==wave) {
             row.putBoolean(RESTORING,true);
             resumeRestoration(level,row);
-            SmpData.get(level.getServer()).changed(row);
+
         }
     }
 
@@ -238,6 +259,13 @@ public final class BloodMoonSetPieces {
     }
 
     public static void placed(ServerLevel level,BlockEvent.EntityPlaceEvent event) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { placedInScope(level, event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> placedInScope(level, event));
+    }
+
+    private static void placedInScope(ServerLevel level,BlockEvent.EntityPlaceEvent event) {
         if(!(event.getEntity() instanceof ServerPlayer player)) return;
         CompoundTag row=EventSession.forPlayer(player);
         if(row==null||!EventRegions.contains(row,level,event.getPos())||!"RED_KNIGHTS".equals(row.getString(WAVE_THREE))) return;
@@ -246,19 +274,26 @@ public final class BloodMoonSetPieces {
             multiple.getReplacedBlockSnapshots().forEach(snapshot->cover.putBoolean(Long.toString(snapshot.getPos().asLong()),true));
         else cover.putBoolean(Long.toString(event.getPos().asLong()),true);
         row.put(COVER,cover);
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
+        var serverForMutation = event.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(event));
+    }
+
+    private static void tickInScope(TickEvent.ServerTickEvent event) {
         if(event.phase!=TickEvent.Phase.END) return;
         MinecraftServer server=event.getServer();
-        for(var row:SmpData.get(server).all("events")) {
+        for(var row:SmpData.get(server).events().currentRows()) {
             ServerLevel level=EventRegions.level(server,row);
             if(level==null) continue;
             if(row.getBoolean(RESTORING)&&(server.getTickCount()%20)==0) {
                 resumeRestoration(level,row);
-                SmpData.get(server).changed(row);
+
             }
             if(!EventRuntime.enabled(server)||!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) continue;
             Scenario selected=current(row);
@@ -430,6 +465,13 @@ public final class BloodMoonSetPieces {
     }
 
     private static void tickMechanics(ServerLevel level,CompoundTag row,Scenario scenario) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickMechanicsInScope(level, row, scenario); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickMechanicsInScope(level, store.events().bind(row), scenario));
+    }
+
+    private static void tickMechanicsInScope(ServerLevel level,CompoundTag row,Scenario scenario) {
         List<Mob> bosses=livingBosses(level,row);
         advanceArena(level,row,scenario,bosses);
         advanceIntroductions(level,row,bosses);
@@ -440,7 +482,7 @@ public final class BloodMoonSetPieces {
         long now=level.getGameTime();
         if(row.contains(ATTACK_BLOCKS_UNTIL)&&row.getLong(ATTACK_BLOCKS_UNTIL)<=now) {
             restoreAttackBlocks(level,row);
-            SmpData.get(level.getServer()).changed(row);
+
         }
         if(bosses.isEmpty()) return;
         if(bosses.stream().anyMatch(BloodMoonSetPieces::introducing)) return;
@@ -477,6 +519,13 @@ public final class BloodMoonSetPieces {
     }
 
     private static void start(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses,boolean combo) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { startInScope(level, row, scenario, attack, bosses, combo); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> startInScope(level, store.events().bind(row), scenario, attack, bosses, combo));
+    }
+
+    private static void startInScope(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses,boolean combo) {
         long telegraph=combo?COMBO_TELEGRAPH_TICKS:telegraphTicks(attack);
         row.putString(ATTACK,attack.name());
         row.putLong(ATTACK_START,level.getGameTime());
@@ -496,10 +545,17 @@ public final class BloodMoonSetPieces {
         AttackGeometry geometry=geometry(row,attack,bosses,0);
         new EventSession(row).active(level.getServer()).forEach(player->EventNetwork.telegraph(player,row.getUUID("id"),geometry,(int)telegraph,ATTACK_TELEGRAPH_COLOR));
         play(level,bosses.get(0).blockPosition(),warningSound(attack),SoundEvents.WARDEN_SONIC_CHARGE,1.4F,.85F);
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     private static void execute(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { executeInScope(level, row, scenario, attack, bosses); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> executeInScope(level, store.events().bind(row), scenario, attack, bosses));
+    }
+
+    private static void executeInScope(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses) {
         Mob source=bosses.get(0);
         AttackGeometry geometry=geometry(row,attack,bosses,1);
         boolean combo=row.getBoolean(COMBO_ACTIVE);
@@ -541,7 +597,7 @@ public final class BloodMoonSetPieces {
         row.remove(ATTACK);
         row.remove(IMPACT);
         row.remove("setPiecePhaseUntil");
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     private static void telegraph(ServerLevel level,CompoundTag row,Attack attack,long remaining,List<Mob> bosses) {
@@ -876,10 +932,17 @@ public final class BloodMoonSetPieces {
     }
 
     private static void finishCombo(ServerLevel level,CompoundTag row) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishComboInScope(level, row); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishComboInScope(level, store.events().bind(row)));
+    }
+
+    private static void finishComboInScope(ServerLevel level,CompoundTag row) {
         row.remove(COMBO_QUEUE);
         row.remove(COMBO_INDEX);
         row.remove(COMBO_ACTIVE);
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     private static void resetCombo(CompoundTag row) {
@@ -967,6 +1030,13 @@ public final class BloodMoonSetPieces {
     }
 
     private static void advanceArena(ServerLevel level,CompoundTag row,Scenario scenario,List<Mob> bosses) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { advanceArenaInScope(level, row, scenario, bosses); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> advanceArenaInScope(level, store.events().bind(row), scenario, bosses));
+    }
+
+    private static void advanceArenaInScope(ServerLevel level,CompoundTag row,Scenario scenario,List<Mob> bosses) {
         ListTag queue=row.getList(FLOOR_QUEUE,Tag.TAG_LONG);
         int index=row.getInt(FLOOR_INDEX);
         if(queue.isEmpty()||index>=queue.size()) return;
@@ -991,10 +1061,17 @@ public final class BloodMoonSetPieces {
             level.playSound(null,last,SoundEvents.SCULK_BLOCK_SPREAD,SoundSource.BLOCKS,.9F,.75F+level.random.nextFloat()*.2F);
             level.sendParticles(ParticleTypes.SCULK_SOUL,last.getX()+.5,last.getY()+1.1,last.getZ()+.5,3,.8,.1,.8,.02);
         }
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     private static void buildArena(ServerLevel level,CompoundTag row,Scenario scenario,int wave) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { buildArenaInScope(level, row, scenario, wave); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> buildArenaInScope(level, store.events().bind(row), scenario, wave));
+    }
+
+    private static void buildArenaInScope(ServerLevel level,CompoundTag row,Scenario scenario,int wave) {
         if(row.getInt(ARENA_WAVE)==wave&&!row.getCompound(TERRAIN).isEmpty()) return;
         if(pendingRestoration(row)) {
             row.putBoolean(RESTORING,true);
@@ -1016,7 +1093,7 @@ public final class BloodMoonSetPieces {
         row.put(FLOOR_QUEUE,queue);
         row.putInt(FLOOR_INDEX,0);
         row.putInt(ARENA_WAVE,wave);
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     private static BlockPos visibleFloor(ServerLevel level,int x,int z) {

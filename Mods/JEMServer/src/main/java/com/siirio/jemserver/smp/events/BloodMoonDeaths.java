@@ -26,6 +26,13 @@ public final class BloodMoonDeaths {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void death(LivingDeathEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { deathInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> deathInScope(event));
+    }
+
+    private static void deathInScope(LivingDeathEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player) || player.getPersistentData().getBoolean(RECORDED)) return;
         var row = EventSession.forPlayer(player);
         if (row == null) {
@@ -47,7 +54,7 @@ public final class BloodMoonDeaths {
         member.put("safeInventory", inventory);
         member.putBoolean("safeRespawn", true);
         if(deaths>=maximumLives) member.putBoolean("eliminated",true);
-        SmpData.get(player.server).changed(row);
+
         if(deaths>=maximumLives && SmpRecords.memberIds(row).stream().noneMatch(id->new EventSession(row).accepted(id))) BloodMoon.fail(player.server,row);
         SmpData.get(player.server).flush(player.server);
         if (member.getBoolean("safeRespawn")) player.getInventory().clearContent();
@@ -70,7 +77,14 @@ public final class BloodMoonDeaths {
     }
 
     private static CompoundTag recovery(ServerPlayer player) {
-        for (var row : SmpData.get(player.server).all("events")) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return recoveryInScope(player); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> recoveryInScope(player));
+    }
+
+    private static CompoundTag recoveryInScope(ServerPlayer player) {
+        for (var row : SmpData.get(player.server).events().currentRows()) {
             if (!row.getString("activity").equals("BLOOD_MOON")) continue;
             var member = SmpRecords.members(row).getCompound(player.getStringUUID());
             if (member.getBoolean("safeRespawn") || member.contains("safeInventory") || member.contains("safeDrops")) return row;
@@ -80,6 +94,13 @@ public final class BloodMoonDeaths {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void keepOtherDrops(LivingDropsEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { keepOtherDropsInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> keepOtherDropsInScope(event));
+    }
+
+    private static void keepOtherDropsInScope(LivingDropsEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         if (player.getPersistentData().contains(HOSTED_INVENTORY, Tag.TAG_LIST)) {
             event.getDrops().clear();
@@ -95,7 +116,7 @@ public final class BloodMoonDeaths {
         var items = member.getList("safeDrops", Tag.TAG_COMPOUND);
         event.getDrops().forEach(drop -> items.add(drop.getItem().save(new CompoundTag())));
         member.put("safeDrops", items);
-        SmpData.get(player.server).changed(row);
+
         SmpData.get(player.server).flush(player.server);
         event.getDrops().clear();
     }
@@ -112,6 +133,13 @@ public final class BloodMoonDeaths {
     }
 
     private static void restore(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { restoreInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> restoreInScope(player));
+    }
+
+    private static void restoreInScope(ServerPlayer player) {
         var row = recovery(player);
         if (row == null) return;
         var member = SmpRecords.members(row).getCompound(player.getStringUUID());
@@ -126,7 +154,7 @@ public final class BloodMoonDeaths {
         if (!extras.isEmpty())
             PendingRewardContainer.enqueue(player.server, player.getUUID(), "blood_moon_recovery:" + row.getUUID("id"), "jem.smp.blood_moon_recovery", extras);
         member.remove("safeDrops");
-        SmpData.get(player.server).changed(row);
+
     }
 
     @SubscribeEvent
@@ -140,6 +168,13 @@ public final class BloodMoonDeaths {
     }
 
     private static void finishRespawn(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishRespawnInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishRespawnInScope(player));
+    }
+
+    private static void finishRespawnInScope(ServerPlayer player) {
         player.getPersistentData().remove(RECORDED);
         var row = recovery(player);
         if (row == null) row = EventSession.forPlayer(player);
@@ -155,7 +190,7 @@ public final class BloodMoonDeaths {
             if(level!=null&&pos!=null) player.teleportTo(level, pos.getX() + .5, pos.getY(), pos.getZ() + .5, player.getYRot(), player.getXRot());
         }
         member.remove("safeRespawn");
-        SmpData.get(player.server).changed(row);
+
     }
 
     private BloodMoonDeaths() {}

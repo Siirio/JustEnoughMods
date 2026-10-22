@@ -292,7 +292,7 @@ public final class EventMobModifiers {
 
     private static boolean available(Mob mob) {
         if (mob.getServer() == null || !mob.getPersistentData().hasUUID(EventSession.SESSION)) return false;
-        var row = com.siirio.jemserver.smp.SmpData.get(mob.getServer()).find("events", mob.getPersistentData().getUUID(EventSession.SESSION));
+        var row = com.siirio.jemserver.smp.SmpData.get(mob.getServer()).events().snapshot(mob.getPersistentData().getUUID(EventSession.SESSION));
         return EventRuntime.available(mob.getServer(), row);
     }
 

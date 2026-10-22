@@ -18,8 +18,9 @@ public final class RaceSavedData extends SavedData {
         return server.overworld().getDataStorage().computeIfAbsent(RaceSavedData::load, RaceSavedData::new, NAME);
     }
 
-    public Optional<RaceRecord> find(UUID id) { return Optional.ofNullable(records.get(id)); }
-    public void put(UUID id, RaceRecord record) { records.put(id, record); setDirty(); }
+    public Optional<RaceRecord> find(UUID id) { return findOwned(id).map(RaceRecord::copy); }
+    Optional<RaceRecord> findOwned(UUID id) { return Optional.ofNullable(records.get(id)); }
+    public void put(UUID id, RaceRecord record) { records.put(id, record.copy()); setDirty(); }
     public void changed() { setDirty(); }
 
     @Override

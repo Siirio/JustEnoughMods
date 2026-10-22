@@ -1,9 +1,11 @@
-plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)'; id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' }
+plugins { id 'net.minecraftforge.gradle' version '6.0.54'; id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' }
 group = 'com.siirio.jemprofessions'
 version = '1.0.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
-repositories { flatDir { dirs '../../Server/mods' } }
+def developmentLibraries = providers.gradleProperty('jemDevelopmentLibraries')
+        .getOrElse(rootProject.file('.gradle/jem-development-libraries').absolutePath)
+repositories { flatDir { dirs '../../Server/mods', developmentLibraries } }
 
 // Sandbox packaging reuses the real profession owner, with a separate screen and entry point.
 def professionProfile = providers.gradleProperty('professionProfile').getOrElse('production')
@@ -47,12 +49,14 @@ if (professionProfile == 'sandbox') {
 }
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
-    compileOnly files('../JEMIdentity/build/classes/java/main')
-    compileOnly fg.deobf('local:irons_spellbooks:1.20.1-3.15.6')
-    compileOnly fg.deobf('local:puffish_skills:0.19.2-1.20-forge')
+    compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
+    compileOnly files('../../Server/mods/irons_spellbooks-1.20.1-3.15.6.jar')
+    // Development-only native API input; never copied to the managed pack.
+    compileOnly files("${developmentLibraries}/puffish_skills-0.19.2-1.20-forge.jar")
     if (professionProfile == 'sandbox') {
         annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-        compileOnly files('../JEMEconomy/build/classes/java/main', '../JEMSettlements/build/classes/java/main')
+        compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
+        compileOnly project(path: ':JEMSettlements', configuration: 'jemCompile')
         compileOnly fg.deobf('local:create:1.20.1-6.0.8')
         compileOnly fg.deobf('local:epic-fight:20.14.17-mc1.20.1-forge')
         compileOnly fg.deobf('local:PlayerRevive_FORGE_v2.0.31_mc1.20.1:installed')
@@ -76,7 +80,7 @@ jar {
 tasks.register('sandboxJar', GradleBuild) {
     buildName = 'jem-professions-sandbox'
     dir = projectDir
-    tasks = ['jar']
+    tasks = [':JEMProfessions:jar']
     startParameter.projectProperties = gradle.startParameter.projectProperties + [
         professionProfile: 'sandbox',
         professionProfileOutput: new File(projectDir, 'build/sandbox-profile').absolutePath

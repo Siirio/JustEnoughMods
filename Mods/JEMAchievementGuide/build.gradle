@@ -1,5 +1,5 @@
 plugins {
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.minecraftforge.gradle' version '6.0.54'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
@@ -18,7 +18,7 @@ minecraft {
 }
 
 dependencies {
-    compileOnly files('../JEMDrillLifecycle/build/classes/java/main')
+    compileOnly project(path: ':JEMDrillLifecycle', configuration: 'jemCompile')
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-quests-forge-2001.4.22.jar"))
     compileOnly fg.deobf(files("${jemRuntimeRoot}/mods/ftb-library-forge-2001.2.13.jar"))

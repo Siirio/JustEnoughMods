@@ -54,6 +54,7 @@ public final class SmpRuntime {
     @SubscribeEvent
     public void starting(net.minecraftforge.event.server.ServerStartingEvent event) {
         if (!SmpEnvironment.active(event.getServer())) return;
+        SmpServerSession.get(event.getServer());
         EventRuntime.starting(event.getServer());
     }
 
@@ -70,10 +71,15 @@ public final class SmpRuntime {
     }
 
     public static void host(ServerPlayer player, LivingEntity boss) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> hostOwned(player, boss));
+    }
+
+    private static void hostOwned(ServerPlayer player, LivingEntity boss) {
         if (!SmpEnvironment.active(player)) return;
         var data = SmpData.get(player.server);
         var existing =
-                data.all("parties").stream()
+                data.parties().currentRows().stream()
                         .filter(
                                 row ->
                                         row.hasUUID("bossEntity")
@@ -91,7 +97,7 @@ public final class SmpRuntime {
             row.putUUID("bossEntity", boss.getUUID());
             row.putString("bossType", net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString());
             row.putLong("position", boss.blockPosition().asLong());
-            data.changed(row);
+            
             SmpNetwork.open(player, "parties", row.getUUID("id"));
         } catch (IllegalArgumentException failure) {
             player.sendSystemMessage(
@@ -122,13 +128,20 @@ public final class SmpRuntime {
 
     @SubscribeEvent
     public void logout(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        SmpServerSession.logout(player);
+        if (!SmpEnvironment.active(player.server)) return;
+        var data = SmpData.get(player.server);
+        data.edit(() -> logoutOwned(event));
+    }
+
+    private void logoutOwned(PlayerEvent.PlayerLoggedOutEvent event) {
         if (event.getEntity() instanceof ServerPlayer p && SmpEnvironment.active(p)) {
             EventRuntime.logout(p);
             com.siirio.jemserver.smp.events.HostedBoundary.clear(p.getUUID());
             Parties.resetReady(p);
-            SmpNetwork.logout(p);
             Navigation.logout(p);
-            CombatNetwork.logout(p);
+            Profiles.captureProfessions(p);
             var profile = Profiles.get(p.server, p.getUUID());
             profile.putInt(
                     "playTicks",
@@ -142,7 +155,7 @@ public final class SmpRuntime {
                             .getValue(
                                     net.minecraft.stats.Stats.CUSTOM.get(
                                             net.minecraft.stats.Stats.MOB_KILLS)));
-            SmpData.get(p.server).changed(profile);
+            
         }
     }
 
@@ -165,10 +178,9 @@ public final class SmpRuntime {
     @SubscribeEvent
     public void stopped(ServerStoppedEvent event) {
         EventRuntime.stopped();
+        SmpServerSession.stop(event.getServer());
         if (!SmpEnvironment.active(event.getServer())) return;
         com.siirio.jemserver.smp.events.HostedBoundary.clear();
-        SmpNetwork.clear();
         Navigation.clear();
-        CombatNetwork.clear();
     }
 }

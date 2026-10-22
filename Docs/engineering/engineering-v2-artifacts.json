@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-22",
+  "artifacts": [
+    {
+      "module": "JEMEconomy",
+      "name": "jem-economy-1.3.0.jar",
+      "sha256": "099429836a765988c6d8f332c75049cf0729905394549560209e7ddb0f1edeb0",
+      "size": 2273560
+    },
+    {
+      "module": "JEMRoles",
+      "name": "jem-races-2.0.0.jar",
+      "sha256": "80c4df5fb18cddc52866a83d0c57a02e8c761ef0c191e3617522fedfb7ff965b",
+      "size": 7116507
+    },
+    {
+      "module": "JEMSettlements",
+      "name": "jem-settlements-2.1.0.jar",
+      "sha256": "8535a0263d250e82a0a36102d31d540c4d661c28b3216a48e11031f0aba28b8b",
+      "size": 708373
+    },
+    {
+      "module": "JEMServer",
+      "name": "jem-server-2.0.0-dev.jar",
+      "sha256": "69d576a82d7dbf2b490ba21dd4627a8a762224d1e3aff99d7c075b8a93c8b146",
+      "size": 20064447
+    },
+    {
+      "module": "JEMTwelveEyes",
+      "name": "jem_twelve_eyes-1.7.0-dev.jar",
+      "sha256": "f97b54e8038ba34035536b0323955fe3973934ec55b6a19754bf8cda7b6f4a3f",
+      "size": 290495
+    }
+  ],
+  "localServerSynchronized": true,
+  "managedPackSynchronized": true,
+  "testsRun": false,
+  "nativePublication": {
+    "published": true,
+    "journalSequence": 61,
+    "publishedManifestSha1": "f1c173bb6f67161e369ca0f41f65823c96b53a2e",
+    "stagedManifestSha1": "f1c173bb6f67161e369ca0f41f65823c96b53a2e"
+  },
+  "contentToken": "e01d5cb3a9267473721da770ae1f8b7abddfb67c",
+  "nativeApplication": {
+    "profile": "test jem",
+    "activeContentToken": "e01d5cb3a9267473721da770ae1f8b7abddfb67c",
+    "allTaskArtifactHashesMatch": true,
+    "pendingTransaction": false,
+    "clientLaunched": false
+  },
+  "ordinaryServer": "started for native publication; saved and stopped",
+  "completedLocal": "2026-10-22T15:39:23.341691+05:00",
+  "atlasValidation": {
+    "valid": true,
+    "canonical_counts": {
+      "biomes": 264,
+      "blocks": 12139,
+      "creative_tabs": 55,
+      "effects": 472,
+      "enchantments": 218,
+      "entities": 1608,
+      "items": 17162,
+      "structures": 520
+    },
+    "change_records": 125,
+    "effective_index": "Catalog/effective/index.json"
+  },
+  "limitations": [
+    "E01 retains NBT inside guarded internal command scopes; fully typed party/event aggregates remain incomplete.",
+    "E20 tests/CI rollout excluded by explicit user instruction.",
+    "Existing local development-currency ledger safety freeze preserved; no world or account markers modified.",
+    "No gameplay or player acceptance claimed."
+  ]
+}

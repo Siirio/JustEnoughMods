@@ -28,12 +28,19 @@ public record EventSession(CompoundTag data) {
         return server.getPlayerList().getPlayers().stream().filter(p -> accepted(p.getUUID()) && p.isAlive() && !p.isSpectator() && EventRegions.contains(data,p.serverLevel(),p.getBoundingBox())).toList();
     }
     public void accept(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { acceptInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> new EventSession(store.events().bind(data)).acceptInScope(player));
+    }
+
+    private void acceptInScope(ServerPlayer player) {
         var member=SmpRecords.members(data).getCompound(player.getStringUUID());
         member.putBoolean("accepted",true);
         member.putBoolean("eliminated",false);
         member.putString("name",player.getGameProfile().getName());
         SmpRecords.members(data).put(player.getStringUUID(),member);
-        SmpData.get(player.server).changed(data);
+
     }
     public void mark(Entity entity) {
         var tag=entity.getPersistentData();
@@ -61,7 +68,7 @@ public record EventSession(CompoundTag data) {
             row = combatForPlayer(player);
         } else {
             UUID id = eventId(root);
-            row = id == null || entity.getServer() == null ? null : SmpData.get(entity.getServer()).find("events", id);
+            row = id == null || entity.getServer() == null ? null : SmpData.get(entity.getServer()).events().snapshot(id);
         }
         return row != null && row.getString("state").equals("ACTIVE") && row.getBoolean("combatStarted")
                 && EventRuntime.available(entity.getServer(), row) ? row : null;
@@ -92,8 +99,15 @@ public record EventSession(CompoundTag data) {
     }
 
     public static CompoundTag forPlayer(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return forPlayerInScope(player); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> forPlayerInScope(player));
+    }
+
+    private static CompoundTag forPlayerInScope(ServerPlayer player) {
         if (!SmpEnvironment.active(player) || !EventRuntime.enabled(player.server)) return null;
-        for(var row:SmpData.get(player.server).all("events"))
+        for(var row:SmpData.get(player.server).events().currentRows())
             if(row.getString("activity").equals("BLOOD_MOON") && row.getString("state").equals("ACTIVE") && new EventSession(row).accepted(player.getUUID())) return row;
         return null;
     }

@@ -9,12 +9,9 @@ import java.util.List;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import org.joml.Quaternionf;
 import org.lwjgl.glfw.GLFW;
 
 /** A live skin in an unlit void, followed by an acknowledged, real-time 3D entry. */
@@ -52,6 +49,76 @@ public final class RaceExperienceScreen extends Screen {
     private Button developerTier;
     private Button bloomUnlock;
 
+    private record DescriptionKey(int width,int height,int race,int previewSlot,int previewTier,
+            int previewBloom,boolean progression,int tier,int progress,int selectedRace,
+            boolean selected,int bloomUpgrade,boolean healingPenalty,Object language) {}
+    private record WrappedRows(List<PreparedRow> rows,int endOffset) {}
+    private record PreparedRow(FormattedCharSequence text,int color,int offset) {}
+    private DescriptionKey descriptionKey;
+    private List<PreparedRow> descriptionRows=List.of(),cooldownRows=List.of();
+    private List<FormattedCharSequence> identityName=List.of(),identityLore=List.of();
+    private int staticContentHeight;
+    private long preparedSignature=-1,preparedSecondary=-1;
+    private Component heading;
+    private String preparedAbilityName;
+    private net.minecraft.resources.ResourceLocation abilityIcon;
+    private net.minecraft.world.item.ItemStack utilityIcon,identityIcon;
+
+    // LanguageManager replaces Language on resource reload, invalidating wrapped glyphs too.
+    private void prepareDescription() {
+        var key=new DescriptionKey(width,height,race,previewSlot,previewTier,previewBloom,progression,
+                tier(),progress(),status.race(),status.selected(),status.bloomUpgrade(),status.healingPenalty(),
+                net.minecraft.locale.Language.getInstance());
+        if(!key.equals(descriptionKey)) {
+            descriptionKey=key;
+            int available=Math.max(70,panelLeft()-40);
+            identityName=font.split(tr("name").copy().withStyle(net.minecraft.ChatFormatting.BOLD),(int)(available/1.35F));
+            identityLore=font.split(tr("lore"),available);
+            heading=text("ВЫБЕРИ СВОЁ ПРОИСХОЖДЕНИЕ","CHOOSE YOUR ORIGIN");
+            preparedAbilityName=font.plainSubstrByWidth(abilityName().getString(),Math.max(24,width-16-panelLeft()-38));
+            String[] icons={"life_chorus","rift_ambush","verdant_dominion","sculk_veins","infernal_eruption"};
+            abilityIcon=new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spell_icons/"+icons[race]+".png");
+            net.minecraft.world.item.Item[] utilities={net.minecraft.world.item.Items.IRON_GOLEM_SPAWN_EGG,net.minecraft.world.item.Items.ENDER_PEARL,
+                    net.minecraft.world.item.Items.OAK_LEAVES,net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
+            net.minecraft.world.item.Item[] identities={net.minecraft.world.item.Items.TOTEM_OF_UNDYING,net.minecraft.world.item.Items.ENDER_PEARL,
+                    net.minecraft.world.item.Items.OAK_SAPLING,net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
+            utilityIcon=new net.minecraft.world.item.ItemStack(utilities[race]);
+            identityIcon=new net.minecraft.world.item.ItemStack(identities[race]);
+            List<Line> lines=abilityLines();lines.add(Line.gap());
+            lines.addAll(progression?progressionLines():originLines());
+            WrappedRows wrapped=wrapRows(lines,0);
+            descriptionRows=wrapped.rows();
+            staticContentHeight=wrapped.endOffset();
+            preparedSignature=preparedSecondary=-1;
+        }
+        boolean showCooldowns=progression&&status.selected()&&status.race()==race;
+        long signature=showCooldowns?RaceExperienceClient.remaining(status.signatureRemaining()):0;
+        long secondary=showCooldowns?RaceExperienceClient.remaining(status.secondaryRemaining()):0;
+        if(signature!=preparedSignature||secondary!=preparedSecondary) {
+            preparedSignature=signature;preparedSecondary=secondary;
+            List<Line> lines=new ArrayList<>();
+            if(showCooldowns) {
+                lines.add(new Line(cooldown("V",status.signatureRemaining()),0xDEDEDE));
+                lines.add(new Line(cooldown("B",status.secondaryRemaining()),0xDEDEDE));
+            }
+            if(!previewVisible())lines.add(new Line(text("Уменьши масштаб GUI для 3D-просмотра","Reduce GUI scale to show the 3D preview"),0xD8BD8D));
+            WrappedRows wrapped=wrapRows(lines,staticContentHeight);
+            cooldownRows=wrapped.rows();
+            contentHeight=wrapped.endOffset();
+        }
+    }
+
+    private WrappedRows wrapRows(List<Line> lines,int offset) {
+        List<PreparedRow> rows=new ArrayList<>();
+        for(Line line:lines) {
+            if(line.text()==null){offset+=7;continue;}
+            for(FormattedCharSequence wrapped:font.split(line.text(),Math.max(30,width-16-panelLeft()-18))) {
+                rows.add(new PreparedRow(wrapped,line.color(),offset));offset+=11;
+            }
+            offset+=3;
+        }
+        return new WrappedRows(List.copyOf(rows),offset);
+    }
     RaceExperienceScreen(RaceExperience.Status status, boolean mandatory, boolean progression) {
         super(Component.translatable("jem.roles.screen.title"));
         this.status = status;
@@ -200,6 +267,7 @@ public final class RaceExperienceScreen extends Screen {
         } finally { g.pose().popPose(); }
     }
     private void renderFixed(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
+        prepareDescription();
         float entry = entryAt == 0 ? 0 : Mth.clamp(elapsed(entryAt) / (float) ENTRY_MS, 0, 1);
         float reveal = smooth((entry - .90F) / .10F);
         float opening=smooth(elapsed(openedAt)/450F);
@@ -211,18 +279,13 @@ public final class RaceExperienceScreen extends Screen {
 
         int left = panelLeft(), right = width - 16;
         int accent = ACCENTS[race];
-        g.drawCenteredString(font,text("ВЫБЕРИ СВОЁ ПРОИСХОЖДЕНИЕ", "CHOOSE YOUR ORIGIN"),panelLeft()/2,20,0xD9D6CE);
+        g.drawCenteredString(font,heading,panelLeft()/2,20,0xD9D6CE);
         renderRaceIdentity(g,left,accent);
         g.fill(left,49,left+1,height-42,0xFF282828);
 
-        String[] icons={"life_chorus","rift_ambush","verdant_dominion","sculk_veins","infernal_eruption"};
-        if(previewSlot==0) g.blit(new net.minecraft.resources.ResourceLocation("jem_visual_sandbox","textures/gui/spell_icons/"+icons[race]+".png"),left+12,52,0,0,16,16,16,16);
-        else {
-            net.minecraft.world.item.Item[] utilityIcons={net.minecraft.world.item.Items.IRON_GOLEM_SPAWN_EGG,net.minecraft.world.item.Items.ENDER_PEARL,
-                    net.minecraft.world.item.Items.OAK_LEAVES,net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
-            g.renderItem(new net.minecraft.world.item.ItemStack(utilityIcons[race]),left+12,52);
-        }
-        g.drawString(font,font.plainSubstrByWidth(abilityName().getString(),Math.max(24,right-left-38)),left+34,56,accent,false);
+        if(previewSlot==0)g.blit(abilityIcon,left+12,52,0,0,16,16,16,16);
+        else g.renderItem(utilityIcon,left+12,52);
+        g.drawString(font,preparedAbilityName,left+34,56,accent,false);
         int previewX=left+12, previewY=96, previewW=panelWidth()-24;
         if(previewVisible()) {
         g.fill(previewX,previewY,previewX+previewW,previewBottom(),0xFF08090C);
@@ -234,20 +297,14 @@ public final class RaceExperienceScreen extends Screen {
         double scissorScale = FIXED_GUI_SCALE / minecraft.getWindow().getGuiScale();
         g.enableScissor((int)Math.floor((left + 9) * scissorScale), (int)Math.floor(top * scissorScale),
                 (int)Math.ceil((right + 3) * scissorScale), (int)Math.ceil(bottom * scissorScale));
-        List<Line> lines = abilityLines();
-        lines.add(Line.gap());
-        lines.addAll(progression ? progressionLines() : originLines());
-        if(!previewVisible())lines.add(new Line(text("Уменьши масштаб GUI для 3D-просмотра", "Reduce GUI scale to show the 3D preview"),0xD8BD8D));
-        int y = top - scroll;
-        for (Line line : lines) {
-            if (line.text() == null) { y += 7; continue; }
-            for (FormattedCharSequence wrapped : font.split(line.text(), Math.max(30, right - left - 18))) {
-                g.drawString(font, wrapped, left + 12, y, line.color(), false);
-                y += 11;
-            }
-            y += 3;
+        for(PreparedRow row:descriptionRows) {
+            int y=top-scroll+row.offset();
+            if(y+11>=top&&y<bottom)g.drawString(font,row.text(),left+12,y,row.color(),false);
         }
-        contentHeight = y - top + scroll;
+        for(PreparedRow row:cooldownRows) {
+            int y=top-scroll+row.offset();
+            if(y+11>=top&&y<bottom)g.drawString(font,row.text(),left+12,y,row.color(),false);
+        }
         g.disableScissor();
         int viewport = Math.max(1, bottom - top);
         int maxScroll = Math.max(0, contentHeight - viewport);
@@ -275,15 +332,12 @@ public final class RaceExperienceScreen extends Screen {
     private void renderRaceIdentity(GuiGraphics graphics,int left,int accent) {
         int center=left/2, nameY=Math.max(64,height-80), available=Math.max(70,left-40);
         float titleScale=1.35F;
-        var name=font.split(tr("name").copy().withStyle(net.minecraft.ChatFormatting.BOLD),(int)(available/titleScale));
+        var name=identityName;
         graphics.pose().pushPose();
         try {
             graphics.pose().translate(center-12,nameY-30,0);
             graphics.pose().scale(1.5F,1.5F,1);
-            net.minecraft.world.item.Item[] icons={net.minecraft.world.item.Items.TOTEM_OF_UNDYING,
-                    net.minecraft.world.item.Items.ENDER_PEARL,net.minecraft.world.item.Items.OAK_SAPLING,
-                    net.minecraft.world.item.Items.ECHO_SHARD,net.minecraft.world.item.Items.BLAZE_POWDER};
-            graphics.renderFakeItem(new net.minecraft.world.item.ItemStack(icons[race]),0,0);
+            graphics.renderFakeItem(identityIcon,0,0);
         } finally { graphics.pose().popPose(); }
         graphics.pose().pushPose();
         try {
@@ -293,7 +347,7 @@ public final class RaceExperienceScreen extends Screen {
         } finally { graphics.pose().popPose(); }
         if(height>260) {
             int y=nameY+(int)Math.ceil(name.size()*11*titleScale)+4;
-            for(var line:font.split(tr("lore"),available)) { graphics.drawCenteredString(font,line,center,y,0xA9A9A9); y+=11; }
+            for(var line:identityLore) { graphics.drawCenteredString(font,line,center,y,0xA9A9A9); y+=11; }
         }
     }
 
@@ -345,8 +399,6 @@ public final class RaceExperienceScreen extends Screen {
         if (chosen) {
             lines.add(Line.gap());
             lines.add(new Line(text("ПЕРЕЗАРЯДКА", "COOLDOWNS"), ACCENTS[race]));
-            lines.add(new Line(cooldown("V", status.signatureRemaining()), 0xDEDEDE));
-            lines.add(new Line(cooldown("B", status.secondaryRemaining()), 0xDEDEDE));
         } else lines.add(new Line(text("Предпросмотр: эта раса сейчас не выбрана.", "Preview: this race is not currently selected."), 0xA5A5A5));
         return lines;
     }
@@ -438,8 +490,8 @@ public final class RaceExperienceScreen extends Screen {
                 : text(days(remaining)+" Minecraft-дн.", days(remaining)+" Minecraft days"));
     }
 
-    private int tier() { return RacePowerStages.clamp(status.tiers()[race]); }
-    private int progress() { return Math.max(0, status.progress()[race]); }
+    private int tier() { return RacePowerStages.clamp(status.tierAt(race)); }
+    private int progress() { return Math.max(0, status.progressAt(race)); }
     private Component tr(String suffix) {
         if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, лечит боевых союзников на max(6, 20% max HP), не выше недостающего здоровья; мирных животных вне боя исцеляет полностью. Четыре щита уменьшают входящий урон на 25% на "+days(100L)+" Minecraft-дн. Перезарядка: "+days(500L)+" Minecraft-дн.","A golden front restores 3 hearts to players and heals combat allies for max(6, 20% max HP), capped by missing health; peaceful animals outside combat heal fully. Four wards reduce incoming damage by 25% for "+days(100L)+" Minecraft days. Cooldown: "+days(500L)+" Minecraft days.");
         if(race==0&&suffix.equals("tier.short.1"))return text("I · радиус Хора 16 блоков", "I · Chorus radius 16 blocks");

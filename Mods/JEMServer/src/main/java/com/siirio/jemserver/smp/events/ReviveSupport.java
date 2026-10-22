@@ -28,17 +28,24 @@ public final class ReviveSupport {
         return Math.max(0,EventRules.DOWNED_SECONDS.get()*TICKS_PER_SECOND-elapsed);
     }
     public static UUID session(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return sessionInScope(player); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> sessionInScope(player));
+    }
+
+    private static UUID sessionInScope(ServerPlayer player) {
         if (player.isSpectator()) return null;
         var blood = EventSession.forPlayer(player);
         if (blood != null) return !blood.getBoolean("solo") && blood.getBoolean("combatStarted") ? blood.getUUID("id") : null;
         UUID hosted = HostedEncounters.participantSession(player);
         if (hosted != null) return hosted;
         var data = SmpData.get(player.server);
-        for (var party : data.all("parties")) {
+        for (var party : data.parties().currentRows()) {
             UUID saved = persistedSession(party, player.getUUID(), player.serverLevel().dimension().location().toString());
             if (saved == null) continue;
             if (party.hasUUID("eventId")) {
-                var event = data.find("events", party.getUUID("eventId"));
+                var event = data.events().current(party.getUUID("eventId"));
                 if (event == null || !event.getString("state").equals("ACTIVE")) continue;
             }
             boolean loaded = false;
@@ -50,11 +57,18 @@ public final class ReviveSupport {
         return null;
     }
     public static void enforce(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { enforceInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> enforceInScope(player));
+    }
+
+    private static void enforceInScope(ServerPlayer player) {
         var blood=EventSession.forPlayer(player);
         if(blood==null) return;
         var member=SmpRecords.members(blood).getCompound(player.getStringUUID());
         if(!downed(player)) {
-            if(member.contains("downedAt")) { member.remove("downedAt");SmpData.get(player.server).changed(blood); }
+            if(member.contains("downedAt")) { member.remove("downedAt"); }
             return;
         }
         if(blood.getBoolean("solo")) {
@@ -63,7 +77,7 @@ public final class ReviveSupport {
         }
         if(!member.contains("downedAt")) {
             member.putLong("downedAt",player.serverLevel().getGameTime());
-            SmpData.get(player.server).changed(blood);
+
             return;
         }
         if(player.serverLevel().getGameTime()-member.getLong("downedAt")>=EventRules.DOWNED_SECONDS.get()*TICKS_PER_SECOND)
@@ -82,6 +96,13 @@ public final class ReviveSupport {
         return first != second && session != null && session.equals(session(second));
     }
     public static void revived(ServerPlayer helper) {
+        var serverForMutation = helper.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { revivedInScope(helper); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> revivedInScope(helper));
+    }
+
+    private static void revivedInScope(ServerPlayer helper) {
         var blood = EventSession.forPlayer(helper);
         if (blood != null && !blood.getBoolean("solo") && blood.getBoolean("combatStarted")) {
             var members = SmpRecords.members(blood);
@@ -90,7 +111,7 @@ public final class ReviveSupport {
             member.putBoolean("supported", true);
             member.putInt("revives", member.getInt("revives") + 1);
             members.put(helper.getStringUUID(), member);
-            SmpData.get(helper.server).changed(blood);
+
         } else HostedEncounters.revived(helper);
     }
     public static void finish(MinecraftServer server, CompoundTag event) {

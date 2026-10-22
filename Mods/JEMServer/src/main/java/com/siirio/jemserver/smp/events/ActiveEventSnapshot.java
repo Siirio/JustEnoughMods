@@ -1,6 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
 import java.util.List;
-import net.minecraft.nbt.CompoundTag;
+import java.util.UUID;
 
-record ActiveEventSnapshot(int tick, List<CompoundTag> rows) {}
+/** Cache membership only; row state always comes from the current owning command. */
+record ActiveEventSnapshot(int tick, List<UUID> ids) {}

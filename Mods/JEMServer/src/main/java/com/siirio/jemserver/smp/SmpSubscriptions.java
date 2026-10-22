@@ -1,36 +1,32 @@
 package com.siirio.jemserver.smp;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 
 final class SmpSubscriptions {
-    private static final Map<UUID, SmpViewSession> VIEWS = new HashMap<>();
 
     static void query(ServerPlayer player, SmpQuery query) {
         if (!SmpEnvironment.active(player)) return;
         if (query.tab().isEmpty()) { close(player); return; }
         if (!SmpTable.viewable(query.tab())) return;
         if (query.page() < 0 || query.page() > SmpProtocol.MAX_PAGE) return;
-        VIEWS.computeIfAbsent(player.getUUID(), ignored -> new SmpViewSession(query)).select(query);
+        SmpServerSession.get(player.server).views.computeIfAbsent(player.getUUID(), ignored -> new SmpViewSession(query)).select(query);
     }
 
     static void open(ServerPlayer player, SmpQuery query) {
         if (!SmpEnvironment.active(player) || !SmpTable.viewable(query.tab())) return;
         LegacyRewards.migrate(player);
         query(player, query);
-        var session = VIEWS.get(player.getUUID());
+        var session = SmpServerSession.get(player.server).views.get(player.getUUID());
         if (session != null) publish(player, session, true, null, "");
     }
 
-    static void close(ServerPlayer player) { VIEWS.remove(player.getUUID()); }
-    static void clear() { VIEWS.clear(); }
+    static void close(ServerPlayer player) { SmpServerSession.get(player.server).views.remove(player.getUUID()); }
 
     static void shopRemoved(MinecraftServer server, UUID shopId) {
-        VIEWS.forEach((id, session) -> {
+        SmpServerSession.get(server).views.forEach((id, session) -> {
             var query = session.query;
             if (!query.tab().equals("shops")) return;
             if (shopId.equals(query.selected())) session.select(new SmpQuery(query.tab(), query.filter(), query.search(), query.page(), null));
@@ -42,7 +38,7 @@ final class SmpSubscriptions {
     static void tick(MinecraftServer server) {
         long tick = server.getTickCount();
         boolean refresh = tick % SmpConfig.REFRESH_TICKS.get() == 0;
-        VIEWS.forEach((id, session) -> {
+        SmpServerSession.get(server).views.forEach((id, session) -> {
             boolean requested = session.sent == null;
             if ((!requested && !refresh) || session.builtAt != Long.MIN_VALUE && tick - session.builtAt < SmpProtocol.QUERY_TICKS) return;
             var player = server.getPlayerList().getPlayer(id);
@@ -56,7 +52,7 @@ final class SmpSubscriptions {
     }
 
     static void reply(ServerPlayer player, UUID request, String error, boolean refresh) {
-        var session = VIEWS.get(player.getUUID());
+        var session = SmpServerSession.get(player.server).views.get(player.getUUID());
         if (session != null && refresh) publish(player, session, false, request, error);
         else SmpNetwork.send(player, new SmpUpdate(new CompoundTag(), false, request, error));
     }
@@ -69,7 +65,7 @@ final class SmpSubscriptions {
     }
 
     private static void publish(ServerPlayer player, SmpViewSession session, boolean open, UUID request, String error) {
-        SmpNetwork.send(player, session.update(build(player, session), open, request, error));
+        SmpData.get(player.server).afterEdit(() -> SmpNetwork.send(player, session.update(build(player, session), open, request, error)));
     }
 
     private SmpSubscriptions() {}

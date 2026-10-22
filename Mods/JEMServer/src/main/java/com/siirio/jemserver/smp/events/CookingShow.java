@@ -45,6 +45,13 @@ public final class CookingShow {
     }
 
     public static void progress(ServerPlayer player, ItemStack stack) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { progressInScope(player, stack); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> progressInScope(player, stack));
+    }
+
+    private static void progressInScope(ServerPlayer player, ItemStack stack) {
         if (player instanceof FakePlayer || stack.isEmpty()) return;
         var row = EventScheduler.active(player.server, "COOKING_SHOW");
         if (row == null || System.currentTimeMillis() >= row.getLong("ends")) return;
@@ -56,12 +63,12 @@ public final class CookingShow {
         if (!advance(requirements, score, item, stack.getCount())) return;
         scores.put(player.getStringUUID(), score);
         row.put("cookingScores", scores);
-        SmpData.get(player.server).changed(row);
+
         if (!requirements.getAllKeys().stream().allMatch(key -> score.getInt(key) >= requirements.getInt(key))) return;
         var loot = player.server.getLootData().getLootTable(new ResourceLocation(row.getString("cookingReward")));
         var params = new LootParams.Builder(player.serverLevel()).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.CHEST);
         score.putBoolean("rewarded", true);
-        SmpData.get(player.server).changed(row);
+
         Profiles.countEvent(player.server, player.getUUID(), "COOKING_SHOW");
         PendingRewardContainer.enqueue(player.server, player.getUUID(), row.getUUID("id").toString(), "jem.smp.COOKING_SHOW", loot.getRandomItems(params));
         player.sendSystemMessage(Component.translatable("jem.smp.cooking_complete").withStyle(ChatFormatting.GOLD));

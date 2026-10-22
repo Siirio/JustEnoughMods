@@ -10,21 +10,37 @@ import net.minecraft.world.entity.LivingEntity;
 import java.util.*;
 
 public final class Parties {
+    public CompoundTag bind(CompoundTag record) {
+        if (record == null) return null;
+        SmpRecords.require(record.hasUUID("id"), "unavailable");
+        CompoundTag current = current(record.getUUID("id"));
+        SmpRecords.require(current != null, "unavailable");
+        return current;
+    }
+    private final SmpData storage;
+    Parties(SmpData storage) { this.storage = storage; }
+    public net.minecraft.nbt.CompoundTag snapshot(UUID id) { return storage.snapshot("parties", id); }
+    public java.util.List<net.minecraft.nbt.CompoundTag> snapshots() { return storage.snapshots("parties"); }
+    public CompoundTag current(UUID id) { return storage.current("parties", id); }
+    public java.util.Collection<net.minecraft.nbt.CompoundTag> currentRows() { return storage.currentRows("parties"); }
+    public CompoundTag create(UUID owner) { return storage.create("parties", owner); }
+    public void prune() { storage.prune("parties", row -> com.siirio.jemserver.smp.events.StructureStaging.hasPendingRaidExit(row)); }
+
     public static final Set<String> ACTIVITIES =
             Set.of("BOSS", "CUSTOM");
 
     public static CompoundTag create(ServerPlayer player, SmpPartyRequest args) {
-        return create(player,args,true);
+        return SmpData.get(player.server).edit(() -> createOwned(player, args, true));
     }
 
-    public static CompoundTag createHosted(ServerPlayer player,SmpPartyRequest args) {
-        return create(player,args,false);
+    public static CompoundTag createHosted(ServerPlayer player, SmpPartyRequest args) {
+        return SmpData.get(player.server).edit(() -> createOwned(player, args, false));
     }
 
-    private static CompoundTag create(ServerPlayer player,SmpPartyRequest args,boolean posting) {
+    private static CompoundTag createOwned(ServerPlayer player,SmpPartyRequest args,boolean posting) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         if(posting) {
-            SmpRecords.require(SmpData.get(player.server).all("parties").stream()
+            SmpRecords.require(SmpData.get(player.server).parties().currentRows().stream()
                     .noneMatch(row -> !SmpData.closed(row) && accepted(row, player.getUUID())), "already_in_party");
             SmpRecords.posting(player, "parties");
         }
@@ -37,7 +53,7 @@ public final class Parties {
         String language = SmpRecords.text(args.language(), SmpProtocol.MAX_LANGUAGE);
         long scheduled = args.scheduled();
         var data = SmpData.get(player.server);
-        var row = data.create("parties", player.getUUID());
+        var row = data.parties().create(player.getUUID());
         row.putString("title", title);
         row.putString("activity", activity);
         row.putString("description", description);
@@ -49,26 +65,27 @@ public final class Parties {
         row.putBoolean("solo", args.solo());
         row.putString("state", "DRAFT");
         SmpRecords.locate(row, player);
-        join(player, row, !posting);
+        joinOwned(player, row, !posting);
         Profiles.count(player.server, player.getUUID(), "partiesHosted");
-        data.changed(row);
-        data.prune("parties");
+        
+        data.parties().prune();
         return row;
     }
 
     public static void join(ServerPlayer player, CompoundTag row) {
-        join(player, row, false);
+        var data = SmpData.get(player.server);
+        data.edit(() -> joinOwned(player, data.parties().bind(row), false));
     }
 
-    private static void join(ServerPlayer player, CompoundTag row, boolean hosted) {
+    private static void joinOwned(ServerPlayer player, CompoundTag row, boolean hosted) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         if (SmpRecords.member(row, player.getUUID())) return;
         SmpRecords.require(
-                !SmpData.closed(row) && !row.getString("state").equals("ACTIVE"), "combat_locked");
+                PartyAdmission.preparing(row), "combat_locked");
         boolean owner = row.getUUID("owner").equals(player.getUUID());
-        SmpRecords.require(owner || row.getString("state").equals("PUBLISHED"), "not_published");
-        SmpRecords.require(owner || !row.getBoolean("solo"), "solo");
-        if(!hosted) SmpRecords.require(SmpData.get(player.server).all("parties").stream()
+        SmpRecords.require(PartyAdmission.publishedFor(player, row), "not_published");
+        SmpRecords.require(PartyAdmission.multiplayerFor(player, row), "solo");
+        if(!hosted) SmpRecords.require(SmpData.get(player.server).parties().currentRows().stream()
                 .noneMatch(other -> other != row && !SmpData.closed(other) && accepted(other, player.getUUID())), "already_in_party");
         var members = SmpRecords.members(row);
         SmpRecords.require(
@@ -80,18 +97,23 @@ public final class Parties {
         member.putBoolean("ready", owner && row.getBoolean("solo"));
         row.getCompound("invitations").remove(player.getStringUUID());
         members.put(player.getUUID().toString(), member);
-        SmpData.get(player.server).changed(row);
+        
         Profiles.count(player.server, player.getUUID(), "partiesJoined");
     }
 
     public static void makeSolo(ServerPlayer player, CompoundTag party) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> makeSoloOwned(player, data.parties().bind(party)));
+    }
+
+    private static void makeSoloOwned(ServerPlayer player, CompoundTag party) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.owner(player, party);
-        SmpRecords.require(SmpRecords.members(party).size() == 1, "solo");
+        SmpRecords.require(PartyAdmission.canMakeSolo(player, party), "solo");
         party.putBoolean("solo", true);
         party.remove("invitations");
         SmpRecords.members(party).getCompound(player.getStringUUID()).putBoolean("ready", true);
-        SmpData.get(player.server).changed(party);
+        
     }
 
     public static boolean accepted(CompoundTag row, UUID player) {
@@ -100,6 +122,12 @@ public final class Parties {
     }
 
     public static void action(
+            ServerPlayer player, CompoundTag row, SmpActionKind action, SmpActionInput input) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> actionOwned(player, data.parties().bind(row), action, input));
+    }
+
+    private static void actionOwned(
             ServerPlayer player, CompoundTag row, SmpActionKind action, SmpActionInput input) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.require(!SmpData.closed(row), "closed");
@@ -120,13 +148,12 @@ public final class Parties {
             }
             case LEAVE -> {
                 SmpRecords.require(
-                        !row.getUUID("owner").equals(player.getUUID())
-                                && !row.getString("state").equals("ACTIVE"),
+                        PartyAdmission.canLeave(player, row),
                         "transfer_host_first");
                 members.remove(player.getUUID().toString());
             }
             case READY -> {
-                SmpRecords.require(!row.getString("state").equals("ACTIVE") && accepted(row, player.getUUID()), "combat_locked");
+                SmpRecords.require(PartyAdmission.canReady(player, row), "combat_locked");
                 var member = members.getCompound(player.getUUID().toString());
                 member.putBoolean("ready", !member.getBoolean("ready"));
             }
@@ -200,7 +227,7 @@ public final class Parties {
             }
             case CANCEL, DISSOLVE -> {
                 SmpRecords.owner(player, row);
-                if (action == SmpActionKind.CANCEL && row.getString("state").equals("ACTIVE") && row.getString("activity").equals("BOSS")) {
+                if (action == SmpActionKind.CANCEL && PartyAdmission.canCancelActive(player, row)) {
                     HostedParties.forfeit(player, row.getUUID("id"), com.siirio.jemserver.smp.events.HostedBoundary.actionToken(player.server, row));
                     return;
                 }
@@ -210,12 +237,12 @@ public final class Parties {
             }
             case START -> {
                 SmpRecords.owner(player, row);
-                SmpRecords.require(row.getString("activity").equals("BOSS"), "unavailable");
+                SmpRecords.require(PartyAdmission.canStart(player, row), "unavailable");
                 HostedParties.start(player, row);
             }
             default -> throw new SmpActionFailure("unknown_action");
         }
-        SmpData.get(player.server).changed(row);
+        
     }
 
     public static CompoundTag view(ServerPlayer player, CompoundTag row) {
@@ -275,7 +302,7 @@ public final class Parties {
         if (copy.getBoolean("leader") && !row.getBoolean("solo") && !row.getString("state").equals("ACTIVE") && !SmpData.closed(row)) {
             for (var target : player.server.getPlayerList().getPlayers()) {
                 if (SmpRecords.member(row, target.getUUID()) || target.isSpectator()
-                        || SmpData.get(player.server).all("parties").stream().anyMatch(other -> !SmpData.closed(other) && accepted(other, target.getUUID()))) continue;
+                        || SmpData.get(player.server).parties().snapshots().stream().anyMatch(other -> !SmpData.closed(other) && accepted(other, target.getUUID()))) continue;
                 var candidate = new CompoundTag();
                 candidate.putUUID("id", target.getUUID());
                 candidate.putString("name", target.getGameProfile().getName());
@@ -288,12 +315,17 @@ public final class Parties {
     }
 
     public static void invite(ServerPlayer player, CompoundTag row, UUID targetId) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> inviteOwned(player, data.parties().bind(row), targetId));
+    }
+
+    private static void inviteOwned(ServerPlayer player, CompoundTag row, UUID targetId) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.owner(player, row);
-        SmpRecords.require(!row.getBoolean("solo") && !SmpData.closed(row) && !row.getString("state").equals("ACTIVE"), "combat_locked");
+        SmpRecords.require(PartyAdmission.canInvite(player, row), "combat_locked");
         var target = player.server.getPlayerList().getPlayer(targetId);
         SmpRecords.require(target != null && !target.isSpectator(), "player_offline");
-        SmpRecords.require(!SmpRecords.member(row, targetId) && SmpData.get(player.server).all("parties").stream()
+        SmpRecords.require(!SmpRecords.member(row, targetId) && SmpData.get(player.server).parties().currentRows().stream()
                 .noneMatch(other -> !SmpData.closed(other) && accepted(other, targetId)), "already_in_party");
         var invitations = row.getCompound("invitations");
         if (invitations.contains(targetId.toString())) return;
@@ -301,18 +333,23 @@ public final class Parties {
         invitations.putLong(targetId.toString(), System.currentTimeMillis());
         row.put("invitations", invitations);
         row.putString("state", "PUBLISHED");
-        SmpData.get(player.server).changed(row);
+        
         Notifications.send(player.server, targetId, "party_invitation", "parties " + row.getUUID("id"));
     }
 
     public static void resetReady(ServerPlayer player) {
         var data = SmpData.get(player.server);
-        for (var row : data.all("parties")) {
+        data.edit(() -> resetReadyOwned(player));
+    }
+
+    private static void resetReadyOwned(ServerPlayer player) {
+        var data = SmpData.get(player.server);
+        for (var row : data.parties().currentRows()) {
             if (SmpData.closed(row) || row.getString("state").equals("ACTIVE") || !SmpRecords.member(row, player.getUUID())) continue;
             SmpRecords.members(row).getCompound(player.getStringUUID()).putBoolean("ready", false);
-            data.changed(row);
+            
         }
     }
 
-    private Parties() {}
+
 }

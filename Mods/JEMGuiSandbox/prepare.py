@@ -14,7 +14,7 @@ MODULE = Path(__file__).resolve().parent
 ROOT = MODULE.parent.parent
 SOURCES = {
     "JEMServer": {
-        "client/smp": "SmpScreen SmpHit SmpSidebar SmpIcons SmpGuiAssets BackNavigation SmpRoute EntityPreview PlayerPreviewWidget PreviewPlayerEntity ItemRewardStrip SmpActionButton EventRulesPanel EventEntryScreen ResultScreen",
+        "client/smp": "SmpScreen SmpViewState PartyLobbyPanel SmpHit SmpSidebar SmpIcons SmpGuiAssets BackNavigation SmpRoute EntityPreview PlayerPreviewWidget PreviewPlayerEntity ItemRewardStrip SmpActionButton EventRulesPanel EventEntryScreen ResultScreen",
         "client/ui": "JemPalette SmpRenderState JemMenuScreen",
         "smp": "SmpQuery SmpUpdate SmpActionFailure ViewDelta",
         "smp/events": "EventPrompt",
@@ -29,7 +29,7 @@ SOURCES = {
         "physical": "CoinDenomination CoinFormatter",
     },
     "JEMRoles": {
-        "client/races": "RaceExperienceScreen RaceStageRenderer RacePanelMaterials",
+        "client/races": "RaceExperienceScreen RaceStageRenderer PreviewRenderState RacePanelMaterials",
         "workbench": "RacePowerStages BloomMechanics",
     },
 }

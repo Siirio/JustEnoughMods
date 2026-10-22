@@ -27,7 +27,6 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL14;
 
 /** Bounded real-entity GUI stage. Entities are never added to, or ticked by, a level. */
 public final class AbilityPreviewRenderer {
@@ -143,36 +142,16 @@ public final class AbilityPreviewRenderer {
         Vec3 camera = new Vec3(.28, .25, .925).normalize().scale(distance).add(0, 1.7, 0);
         Matrix4f view = new Matrix4f().lookAt((float)camera.x, (float)camera.y, (float)camera.z, 0, 1.7F, 0, 0, 1, 0);
         Matrix4f projection = new Matrix4f().perspective((float)Math.toRadians(34), aspect, .01F, 128);
-        Matrix4f oldProjection = new Matrix4f(RenderSystem.getProjectionMatrix());
-        Matrix3f oldInverseView = new Matrix3f(RenderSystem.getInverseViewRotationMatrix());
-        var oldSorting = RenderSystem.getVertexSorting();
-        var oldShader = RenderSystem.getShader();
-        float[] oldColor = RenderSystem.getShaderColor().clone();
-        float oldFogStart = RenderSystem.getShaderFogStart(), oldFogEnd = RenderSystem.getShaderFogEnd();
-        int[] oldTextures = {RenderSystem.getShaderTexture(0), RenderSystem.getShaderTexture(1), RenderSystem.getShaderTexture(2)};
-        int[] viewport = new int[4], scissor = new int[4];
-        GL11.glGetIntegerv(GL11.GL_VIEWPORT, viewport);
-        GL11.glGetIntegerv(GL11.GL_SCISSOR_BOX, scissor);
-        boolean oldScissor = GL11.glIsEnabled(GL11.GL_SCISSOR_TEST);
-        boolean oldDepth = GL11.glIsEnabled(GL11.GL_DEPTH_TEST);
-        boolean oldDepthMask = GL11.glGetBoolean(GL11.GL_DEPTH_WRITEMASK);
-        int oldDepthFunc = GL11.glGetInteger(GL11.GL_DEPTH_FUNC);
-        boolean oldBlend = GL11.glIsEnabled(GL11.GL_BLEND);
-        boolean oldCull = GL11.glIsEnabled(GL11.GL_CULL_FACE);
-        int srcRgb = GL11.glGetInteger(GL14.GL_BLEND_SRC_RGB), dstRgb = GL11.glGetInteger(GL14.GL_BLEND_DST_RGB);
-        int srcAlpha = GL11.glGetInteger(GL14.GL_BLEND_SRC_ALPHA), dstAlpha = GL11.glGetInteger(GL14.GL_BLEND_DST_ALPHA);
         var dispatcher = client.getEntityRenderDispatcher();
-        Quaternionf oldCamera = new Quaternionf(dispatcher.cameraOrientation());
         var modelView = RenderSystem.getModelViewStack();
         var buffers = client.renderBuffers().bufferSource();
-        modelView.pushPose();
-        try {
+        try (var state = new PreviewRenderState(dispatcher)) {
             RenderSystem.viewport(vx, vy, vw, vh);
             int clipX = Math.max(0, vx), clipY = Math.max(0, vy);
             int clipRight = Math.min(client.getWindow().getWidth(), vx + vw), clipTop = Math.min(client.getWindow().getHeight(), vy + vh);
-            if (oldScissor) {
-                clipX = Math.max(clipX, scissor[0]); clipY = Math.max(clipY, scissor[1]);
-                clipRight = Math.min(clipRight, scissor[0] + scissor[2]); clipTop = Math.min(clipTop, scissor[1] + scissor[3]);
+            if (state.scissorEnabled()) {
+                clipX = Math.max(clipX, state.scissor(0)); clipY = Math.max(clipY, state.scissor(1));
+                clipRight = Math.min(clipRight, state.scissor(0) + state.scissor(2)); clipTop = Math.min(clipTop, state.scissor(1) + state.scissor(3));
             }
             RenderSystem.enableScissor(clipX, clipY, Math.max(0, clipRight - clipX), Math.max(0, clipTop - clipY));
             RenderSystem.enableDepthTest(); RenderSystem.depthMask(true); RenderSystem.depthFunc(GL11.GL_LEQUAL);
@@ -214,26 +193,6 @@ public final class AbilityPreviewRenderer {
             buffers.endBatch();
             presentation.render(new VisualRenderContext(poses, Vec3.ZERO, partialTick, true), race, slot, tier, bloomStage, age);
             buffers.endBatch();
-        } finally {
-            dispatcher.overrideCameraOrientation(oldCamera);
-            modelView.popPose();
-            RenderSystem.applyModelViewMatrix();
-            RenderSystem.setProjectionMatrix(oldProjection, oldSorting);
-            RenderSystem.setInverseViewRotationMatrix(oldInverseView);
-            RenderSystem.setShader(() -> oldShader);
-            RenderSystem.setShaderFogStart(oldFogStart);
-            RenderSystem.setShaderFogEnd(oldFogEnd);
-            for (int i = 0; i < oldTextures.length; i++) RenderSystem.setShaderTexture(i, oldTextures[i]);
-            RenderSystem.setShaderColor(oldColor[0], oldColor[1], oldColor[2], oldColor[3]);
-            RenderSystem.viewport(viewport[0], viewport[1], viewport[2], viewport[3]);
-            if (oldScissor) RenderSystem.enableScissor(scissor[0], scissor[1], scissor[2], scissor[3]);
-            else RenderSystem.disableScissor();
-            RenderSystem.depthMask(oldDepthMask);
-            RenderSystem.depthFunc(oldDepthFunc);
-            if (oldDepth) RenderSystem.enableDepthTest(); else RenderSystem.disableDepthTest();
-            RenderSystem.blendFuncSeparate(srcRgb, dstRgb, srcAlpha, dstAlpha);
-            if (oldBlend) RenderSystem.enableBlend(); else RenderSystem.disableBlend();
-            if (oldCull) RenderSystem.enableCull(); else RenderSystem.disableCull();
         }
         // These captions state the conditional beat; they do not claim a second cast or a world effect.
         String caption=caption(race,slot,tier,age);

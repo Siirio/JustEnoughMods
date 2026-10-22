@@ -5,21 +5,15 @@ import com.siirio.jemroles.JemRoles;
 import com.siirio.jemroles.api.RaceApi;
 import com.siirio.jemroles.race.RaceId;
 import com.siirio.jemroles.race.RaceService;
-import com.siirio.jemroles.race.RaceRules;
 import java.util.UUID;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class RolesNetwork {
@@ -53,8 +47,7 @@ public final class RolesNetwork {
         CHANNEL.messageBuilder(RaceStatusPacket.class, 1, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(RaceStatusPacket::encode).decoder(RaceStatusPacket::decode)
                 .consumerMainThread((packet, context) -> {
-                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-                            () -> () -> com.siirio.jemroles.client.RoleClientState.accept(packet));
+                    // Reserved v4 decoder: current status publication belongs to SandboxNetwork.
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(RaceActionPacket.class, 2, NetworkDirection.PLAY_TO_SERVER)
@@ -64,9 +57,9 @@ public final class RolesNetwork {
                     if (player != null) com.siirio.jemroles.trait.RaceAbilities.handle(player, packet.action());
                     context.get().setPacketHandled(true);
                 }).add();
-        CHANNEL.messageBuilder(RaceVfxPacket.class, 3, NetworkDirection.PLAY_TO_CLIENT)
-                .encoder(RaceVfxPacket::encode).decoder(RaceVfxPacket::decode)
-                .consumerNetworkThread(RaceVfxPacket::handle).add();
+        CHANNEL.messageBuilder(LegacyRaceVfxPacket.class, 3, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(LegacyRaceVfxPacket::encode).decoder(LegacyRaceVfxPacket::decode)
+                .consumerNetworkThread((packet, context) -> { context.get().setPacketHandled(true); }).add();
     }
 
     public static void choose(RaceId race, UUID nonce) {
@@ -75,13 +68,8 @@ public final class RolesNetwork {
 
     public static void action(RaceActionPacket.Action action) { CHANNEL.sendToServer(new RaceActionPacket(action)); }
 
-    public static void sendNear(ServerLevel level, Vec3 origin, RaceVfxPacket packet) {
-        CHANNEL.send(PacketDistributor.NEAR.with(() -> new PacketDistributor.TargetPoint(
-                origin.x, origin.y, origin.z, 96.0D, level.dimension())), packet);
-    }
-
     public static void sendStatus(ServerPlayer player, boolean open) {
-        RaceService.prepareTestChoice(player);
+        RaceService.initialize(player);
         if (open) com.siirio.jemvisualsandbox.workbench.RaceExperience.openScreen(player);
         else com.siirio.jemvisualsandbox.workbench.RaceExperience.snapshot(player);
     }

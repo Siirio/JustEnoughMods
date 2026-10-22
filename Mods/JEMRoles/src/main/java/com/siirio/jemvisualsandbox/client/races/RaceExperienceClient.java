@@ -70,16 +70,6 @@ public final class RaceExperienceClient {
     public static boolean active() {
         return Minecraft.getInstance().screen instanceof RaceExperienceScreen;
     }
-    @net.minecraftforge.eventbus.api.SubscribeEvent
-    public static void nativeMenu(net.minecraftforge.client.event.ScreenEvent.Opening event){
-        var c=Minecraft.getInstance();
-        if(event.getNewScreen()==null||!event.getNewScreen().getClass().getName().equals("com.siirio.jemroles.client.RaceSelectionScreen")
-                ||c.getConnection()==null||!SandboxNetwork.supported(c.getConnection().getConnection()))return;
-        if(c.screen instanceof RaceExperienceScreen current)event.setNewScreen(current);
-        else if(status!=null&&c.screen==null)event.setNewScreen(new RaceExperienceScreen(status,!status.selected(),false));
-        else {pendingView=1;pendingMandatory=true;event.setNewScreen(null);SandboxNetwork.sync();}
-    }
-
     public static RaceExperience.Status status(){return status;}
     public static long remaining(long serverTicks) {
         Minecraft client = Minecraft.getInstance();

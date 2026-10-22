@@ -84,16 +84,23 @@ public final class EventHooks {
     }
 
     private static void track(ServerLevel level, CompoundTag row, net.minecraft.core.BlockPos pos) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { trackInScope(level, row, pos); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> trackInScope(level, store.events().bind(row), pos));
+    }
+
+    private static void trackInScope(ServerLevel level, CompoundTag row, net.minecraft.core.BlockPos pos) {
         if (!EventRegions.contains(row, level, pos)) return;
         var placed = row.getCompound("placements");
         if (placed.size() >= SmpConfig.RUSH_TRACKED_BLOCKS.get()) {
             row.putBoolean("rushTrackingFull", true);
-            SmpData.get(level.getServer()).changed(row);
+
             return;
         }
         placed.putBoolean(Long.toString(pos.asLong()), true);
         row.put("placements", placed);
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     @SubscribeEvent
@@ -111,6 +118,13 @@ public final class EventHooks {
 
     @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
     public void entity(EntityJoinLevelEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { entityInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> entityInScope(event));
+    }
+
+    private void entityInScope(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
         if(EventRuntime.enabled(level.getServer()) && !BloodMoon.adoptSummon(level,event.getEntity())) {
             event.setCanceled(true);
@@ -120,7 +134,7 @@ public final class EventHooks {
         var tag = event.getEntity().getPersistentData();
         String key = tag.hasUUID(BloodMoon.EVENT_ID) ? BloodMoon.EVENT_ID : RaidEvent.EVENT_ID;
         if (!tag.hasUUID(key)) return;
-        var row = SmpData.get(level.getServer()).find("events", tag.getUUID(key));
+        var row = SmpData.get(level.getServer()).events().current(tag.getUUID(key));
         if (row != null ? !EventRuntime.available(level.getServer(), row) : !EventRuntime.enabled(level.getServer())) return;
         if (row == null || !row.getString("state").equals("ACTIVE")
                 || key.equals(BloodMoon.EVENT_ID) && !activeBloodMoonSpawn(level,event.getEntity())) {
@@ -134,10 +148,17 @@ public final class EventHooks {
     }
 
     static boolean activeBloodMoonSpawn(ServerLevel level,net.minecraft.world.entity.Entity entity) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return activeBloodMoonSpawnInScope(level, entity); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> activeBloodMoonSpawnInScope(level, entity));
+    }
+
+    static boolean activeBloodMoonSpawnInScope(ServerLevel level,net.minecraft.world.entity.Entity entity) {
         if (!EventRuntime.enabled(level.getServer())) return false;
         var tag=entity.getPersistentData();
         if(!tag.hasUUID(BloodMoon.EVENT_ID)) return false;
-        var row=SmpData.get(level.getServer()).find("events",tag.getUUID(BloodMoon.EVENT_ID));
+        var row=SmpData.get(level.getServer()).events().current(tag.getUUID(BloodMoon.EVENT_ID));
         return row!=null && row.getString("state").equals("ACTIVE") && BloodMoonLoot.activeAttempt(row,entity);
     }
 
@@ -149,6 +170,13 @@ public final class EventHooks {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void contribution(net.minecraftforge.event.entity.living.LivingDamageEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { contributionInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> contributionInScope(event));
+    }
+
+    private void contributionInScope(net.minecraftforge.event.entity.living.LivingDamageEvent event) {
         if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         net.minecraft.world.entity.Entity mob = event.getEntity();
         ServerPlayer player = null;
@@ -163,7 +191,7 @@ public final class EventHooks {
                 || event.getAmount() <= 0) return;
         var row =
                 SmpData.get(player.server)
-                        .find("events", mob.getPersistentData().getUUID(BloodMoon.EVENT_ID));
+                        .events().current(mob.getPersistentData().getUUID(BloodMoon.EVENT_ID));
         if (row == null
                 || !row.getString("state").equals("ACTIVE")
                 || !EventRegions.contains(row, player.serverLevel(), player.blockPosition()))
@@ -171,20 +199,25 @@ public final class EventHooks {
         var member = SmpRecords.members(row).getCompound(player.getStringUUID());
         member.putBoolean("contributed", true);
         SmpRecords.members(row).put(player.getStringUUID(), member);
-        SmpData.get(player.server).changed(row);
+
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void localCombat(net.minecraftforge.event.entity.living.LivingAttackEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { localCombatInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> localCombatInScope(event));
+    }
+
+    private void localCombatInScope(net.minecraftforge.event.entity.living.LivingAttackEvent event) {
         if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         var source = event.getSource().getEntity();
         if (source instanceof ServerPlayer player
                 && event.getEntity().getPersistentData().hasUUID(BloodMoon.EVENT_ID)) {
             var targetEvent =
                     SmpData.get(player.server)
-                            .find(
-                                    "events",
-                                    event.getEntity()
+                            .events().current(event.getEntity()
                                             .getPersistentData()
                                             .getUUID(BloodMoon.EVENT_ID));
             if (targetEvent == null
@@ -198,7 +231,7 @@ public final class EventHooks {
                 || !(event.getEntity().level() instanceof ServerLevel level)) return;
         var row =
                 SmpData.get(level.getServer())
-                        .find("events", source.getPersistentData().getUUID(BloodMoon.EVENT_ID));
+                        .events().current(source.getPersistentData().getUUID(BloodMoon.EVENT_ID));
         if (row == null
                 || !row.getString("state").equals("ACTIVE")
                 || !EventRegions.contains(row, level, event.getEntity().blockPosition()))

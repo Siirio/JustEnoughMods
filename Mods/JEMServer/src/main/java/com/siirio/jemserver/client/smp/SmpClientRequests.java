@@ -22,7 +22,7 @@ final class SmpClientRequests {
         } else if (kind.playerInput(table)) {
             input = new SmpPlayerRequest(UUID.fromString(SmpRecords.text(fields, "player", 36)));
         }
-        return new SmpAction(request, table, id, revision, kind, input);
+        return SmpAction.fromWire(request, table, id, revision, kind, input);
     }
 
     private SmpClientRequests() {}

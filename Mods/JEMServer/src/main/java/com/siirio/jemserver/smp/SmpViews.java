@@ -25,7 +25,7 @@ public final class SmpViews {
         if (query.tab().equals("recruits")) return com.siirio.jemserver.smp.recruits.RecruitProjection.view(player);
         if (query.tab().equals("shops")) return com.siirio.jemserver.smp.shops.ShopIndex.view(player, query);
         if (query.selected() == null) {
-        Collection<CompoundTag> candidates = data.all(query.tab());
+        Collection<CompoundTag> candidates = data.views(SmpTable.fromKey(query.tab()));
         String search = query.search().toLowerCase(Locale.ROOT);
         var matches =
                 candidates.stream()
@@ -54,7 +54,7 @@ public final class SmpViews {
         result.put("rows", rows);
         }
         if (query.selected() != null) {
-            CompoundTag row = data.find(query.tab(), query.selected());
+            CompoundTag row = data.view(SmpTable.fromKey(query.tab()), query.selected());
             if (row != null && authorized(player, query.tab(), row)) {
                 var detail =
                         query.tab().equals("parties")
@@ -62,7 +62,7 @@ public final class SmpViews {
                                         : detail(row);
                 if (query.tab().equals("parties")) {
                     organizer(player, row, detail);
-                    CompoundTag event = row.hasUUID("eventId") ? data.find("events", row.getUUID("eventId")) : null;
+                    CompoundTag event = row.hasUUID("eventId") ? data.events().snapshot(row.getUUID("eventId")) : null;
                     eventPresentation(player, event == null ? row : event, detail);
                     if (event != null) detail.putString("eventActivity", event.getString("activity"));
                     if (event != null && event.contains("dimension")) {
@@ -109,7 +109,7 @@ public final class SmpViews {
 
     private static void organizer(ServerPlayer player, CompoundTag row, CompoundTag result) {
         if (!row.hasUUID("owner")) return;
-        String name = Profiles.get(player.server, row.getUUID("owner")).getString("name");
+        String name = Profiles.snapshot(player.server, row.getUUID("owner")).getString("name");
         if (!name.isBlank()) result.putString("organizerName", name);
     }
 
@@ -221,32 +221,11 @@ public final class SmpViews {
 
     private static ListTag actions(ServerPlayer player, String table, CompoundTag row) {
         var result = new ListTag();
-        boolean owner = row.getUUID("owner").equals(player.getUUID()),
-                member = SmpRecords.member(row, player.getUUID());
-        boolean closed = SmpData.closed(row);
-        if (table.equals("parties") && !closed && owner && row.getString("state").equals("ACTIVE") && row.getString("activity").equals("BOSS")) add(result, "cancel");
-        if (!closed && table.equals("parties") && !row.getString("state").equals("ACTIVE")) {
-            if (owner) {
-                if(row.getString("activity").equals("BOSS")) add(result, "start");
-                add(result, "dissolve");
-                if (!row.getBoolean("solo")) add(result, "invite");
-            } else if (!member && !row.getBoolean("solo") && row.getString("state").equals("PUBLISHED")) add(result, "join");
-            else if (member) add(result, "leave");
-            if (row.getString("activity").equals("BOSS")&&Parties.accepted(row, player.getUUID())) add(result, "ready");
-            if (Parties.accepted(row, player.getUUID())) add(result, "arrive");
-        }
-        if (table.equals("events") && !closed && Set.of("BOSS_RAID", "BLOOD_MOON").contains(row.getString("activity"))
-                && !row.getBoolean("combatStarted") && !row.hasUUID("bossEntity")) {
-            var party = row.hasUUID("party") ? SmpData.get(player.server).find("parties", row.getUUID("party")) : null;
-            if (party == null || SmpData.closed(party) || !party.getBoolean("solo") || Parties.accepted(party, player.getUUID())) {
-                add(result, "create_party");
-                if (party == null || SmpData.closed(party) || party.getUUID("owner").equals(player.getUUID()) && SmpRecords.members(party).size() == 1) add(result, "solo");
-            }
-        }
-        boolean authorized = table.equals("events") || owner || table.equals("parties") && Parties.accepted(row, player.getUUID());
-        var location = row.hasUUID("eventId") ? SmpData.get(player.server).find("events", row.getUUID("eventId")) : row;
-        if(table.equals("events")&&!closed&&meaningfulLocation(row)&&Set.of("BLOOD_MOON","BOSS_RAID","RESOURCE_RUSH").contains(row.getString("activity"))) add(result,"teleport_event");
-        if (authorized && location != null && meaningfulLocation(location) && !closed) add(result, "navigate");
+        if (table.equals("parties")) result.addAll(PartyAdmission.actions(player, row));
+        if (table.equals("events")) result.addAll(EventAdmission.actions(player, row));
+        var location = row.hasUUID("eventId") ? SmpData.get(player.server).events().snapshot(row.getUUID("eventId")) : row;
+        if(SmpActions.canTeleportEvent(table, row)&&meaningfulLocation(row)&&Set.of("BLOOD_MOON","BOSS_RAID","RESOURCE_RUSH").contains(row.getString("activity"))) add(result,"teleport_event");
+        if (SmpActions.canNavigate(player, table, row, location) && meaningfulLocation(location)) add(result, "navigate");
         return result;
     }
 
@@ -259,15 +238,12 @@ public final class SmpViews {
         EventDescriptions.add(row, detail);
         detail.putBoolean("meaningfulLocation", meaningfulLocation(row));
         if (row.contains("bossType")) detail.putString("bossType", row.getString("bossType"));
-        String state = row.getString("state");
-        boolean combat = Set.of("BOSS_RAID", "BLOOD_MOON", "BOSS").contains(row.getString("activity"));
-        detail.putString("lifecycle", state.equals("PLANNED") ? "SCHEDULED"
-                : state.equals("ACTIVE") && combat && !row.getBoolean("combatStarted") && !row.hasUUID("bossEntity") && !row.getString("activity").equals("BOSS") ? "STAGING" : state);
+        detail.putString("lifecycle", EventAdmission.lifecycle(row));
     }
 
     private static void eventPresentation(ServerPlayer player, CompoundTag row, CompoundTag detail) {
         eventSummary(row, detail);
-        boolean combat = Set.of("BOSS_RAID", "BLOOD_MOON", "BOSS").contains(row.getString("activity"));
+        boolean combat = EventAdmission.combat(row);
         var rules = new ListTag();
         if (combat) {
             if (row.getString("activity").equals("BLOOD_MOON")) {

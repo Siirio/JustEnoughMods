@@ -1,0 +1,51 @@
+plugins { id 'base' }
+
+// Module properties belong to their source owner; the root supplies one task graph.
+subprojects {
+    pluginManager.withPlugin('java') {
+        configurations.create('jemCompile') {
+            canBeConsumed = true
+            canBeResolved = false
+        }
+        artifacts.add('jemCompile', tasks.named('compileJava').flatMap { it.destinationDirectory }) {
+            builtBy tasks.named('compileJava')
+            type = 'java-classes-directory'
+        }
+    }
+    def propertiesFile = file('gradle.properties')
+    if (propertiesFile.exists()) {
+        def defaults = new Properties()
+        propertiesFile.withInputStream { defaults.load(it) }
+        defaults.each { key, value ->
+            if (!key.startsWith('org.gradle.') && !gradle.startParameter.projectProperties.containsKey(key)) {
+                extensions.extraProperties.set(key, value)
+            }
+        }
+    }
+}
+
+def inventory = new groovy.json.JsonSlurper().parse(file('tools/module-inventory.json'))
+tasks.register('productionJars') {
+    group = 'build'
+    description = 'Build reobfuscated production domain artifacts without installing or publishing.'
+    dependsOn 'describeProductionArtifacts'
+}
+
+tasks.register('describeProductionArtifacts') {
+    description = 'Record exact Gradle archive paths for production staging; never guess from old build outputs.'
+    def destination = layout.buildDirectory.file('production-artifacts.json')
+    outputs.file(destination)
+    outputs.upToDateWhen { false }
+    dependsOn inventory.modules.findAll { it.java && it.status == 'production' }.collect { ":${it.name}:reobfJar" }
+    doLast {
+        def artifacts = inventory.modules.findAll { it.java && it.status == 'production' }.collect { module ->
+            def archive = project(":${module.name}").tasks.named('jar').get().archiveFile.get().asFile
+            if (!archive.isFile()) throw new GradleException("Build productionJars before staging: ${archive}")
+            [module: module.name, path: rootProject.relativePath(archive),
+             sha256: java.security.MessageDigest.getInstance('SHA-256').digest(archive.bytes).encodeHex().toString()]
+        }
+        def output = destination.get().asFile
+        output.parentFile.mkdirs()
+        output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(artifacts)) + '\n'
+    }
+}

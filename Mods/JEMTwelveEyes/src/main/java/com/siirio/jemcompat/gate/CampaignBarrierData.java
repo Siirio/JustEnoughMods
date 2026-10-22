@@ -30,7 +30,7 @@ public final class CampaignBarrierData extends SavedData {
             barriers.add(barrier);
             setDirty();
         }
-        removeLoaded(level,barrier);
+        removeLoadedLegacyCells(level,barrier);
     }
 
     public Barrier near(ServerPlayerView player) {
@@ -41,31 +41,29 @@ public final class CampaignBarrierData extends SavedData {
         for(Barrier barrier:barriers) {
             ServerLevel level=level(server,barrier.dimension());
             if(level==null) continue;
-            removeLoaded(level,barrier);
+            removeLoadedLegacyCells(level,barrier);
         }
     }
 
-    private static void removeLoaded(ServerLevel level,Barrier barrier) { visitShell(level,barrier,CampaignBarrierData::remove); }
-
-    private static void visitShell(ServerLevel level,Barrier barrier,CellAction action) {
+    private static void removeLoadedLegacyCells(ServerLevel level,Barrier barrier) {
         BoundingBox box=barrier.shell();
         for(int x=box.minX();x<=box.maxX();x++) for(int z=box.minZ();z<=box.maxZ();z++) {
-            action.apply(level,new BlockPos(x,box.minY(),z));
-            action.apply(level,new BlockPos(x,box.maxY(),z));
+            removeIfLegacyBarrier(level,new BlockPos(x,box.minY(),z));
+            removeIfLegacyBarrier(level,new BlockPos(x,box.maxY(),z));
         }
         for(int y=box.minY()+1;y<box.maxY();y++) {
             for(int x=box.minX();x<=box.maxX();x++) {
-                action.apply(level,new BlockPos(x,y,box.minZ()));
-                action.apply(level,new BlockPos(x,y,box.maxZ()));
+                removeIfLegacyBarrier(level,new BlockPos(x,y,box.minZ()));
+                removeIfLegacyBarrier(level,new BlockPos(x,y,box.maxZ()));
             }
             for(int z=box.minZ()+1;z<box.maxZ();z++) {
-                action.apply(level,new BlockPos(box.minX(),y,z));
-                action.apply(level,new BlockPos(box.maxX(),y,z));
+                removeIfLegacyBarrier(level,new BlockPos(box.minX(),y,z));
+                removeIfLegacyBarrier(level,new BlockPos(box.maxX(),y,z));
             }
         }
     }
 
-    private static void remove(ServerLevel level,BlockPos pos) {
+    private static void removeIfLegacyBarrier(ServerLevel level,BlockPos pos) {
         if(level.hasChunkAt(pos)&&level.getBlockState(pos).is(CampaignBlocks.LOCKED_BOSS_BARRIER.get())) level.removeBlock(pos,false);
     }
 
@@ -123,5 +121,4 @@ public final class CampaignBarrierData extends SavedData {
         }
     }
 
-    @FunctionalInterface private interface CellAction { void apply(ServerLevel level,BlockPos pos); }
 }

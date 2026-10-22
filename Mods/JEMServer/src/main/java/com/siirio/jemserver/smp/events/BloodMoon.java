@@ -47,10 +47,17 @@ public final class BloodMoon {
     private static final int MAX_ACTIVE_SUMMONS=3;
 
     public static boolean adoptSummon(ServerLevel level,Entity entity) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return adoptSummonInScope(level, entity); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> adoptSummonInScope(level, entity));
+    }
+
+    private static boolean adoptSummonInScope(ServerLevel level,Entity entity) {
         if(!(entity instanceof Mob mob) || !(mob instanceof Enemy)) return true;
         var data=mob.getPersistentData();
         if(data.hasUUID(EVENT_ID) || !MOB_SUMMONED.equals(data.getString(FORGE_SPAWN_TYPE))) return true;
-        for(var row:SmpData.get(level.getServer()).all("events")) {
+        for(var row:SmpData.get(level.getServer()).events().currentRows()) {
             if(!row.getString("state").equals("ACTIVE") || !row.getString("activity").equals("BLOOD_MOON")
                     || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             Entity owner=EventSession.owner(mob);
@@ -68,24 +75,31 @@ public final class BloodMoon {
             var mobs=row.getList("mobs",Tag.TAG_STRING);
             if(!mobs.contains(StringTag.valueOf(mob.getStringUUID()))) mobs.add(StringTag.valueOf(mob.getStringUUID()));
             row.put("mobs",mobs);
-            SmpData.get(level.getServer()).changed(row);
+
             return true;
         }
         return true;
     }
 
     public static void tick(MinecraftServer server, CompoundTag row) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(server, row); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(server, store.events().bind(row)));
+    }
+
+    private static void tickInScope(MinecraftServer server, CompoundTag row) {
         var level=EventRegions.level(server,row);
         if(level==null) return;
         protectWeather(level,row);
         var encounter=new EncounterContext(row);
-        if(!encounter.tickStartup(server)) { SmpData.get(server).changed(row); return; }
+        if(!encounter.tickStartup(server)) { return; }
         if(!row.getBoolean("combatStarted")) {
             if(!encounter.allParticipantsInside(server)) return;
             row.putBoolean("combatStarted",true);
             row.putLong("nextWave",System.currentTimeMillis());
             EventRegions.ejectOutsiders(level,row);
-            SmpData.get(server).changed(row);
+
         }
         if(BloodMoonVoting.active(row)) { BloodMoonVoting.tick(server,row); return; }
         var active=new EventSession(row).active(server);
@@ -218,11 +232,18 @@ public final class BloodMoon {
         }
         if(dirty) {
             row.put("mobs",mobs);
-            SmpData.get(server).changed(row);
+
         }
     }
 
     private static void protectWeather(ServerLevel level,CompoundTag row) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { protectWeatherInScope(level, row); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> protectWeatherInScope(level, store.events().bind(row)));
+    }
+
+    private static void protectWeatherInScope(ServerLevel level,CompoundTag row) {
         var server=level.getServer();
         var weather=server.getWorldData().overworldData();
         if(!row.contains(WEATHER,Tag.TAG_COMPOUND)) {
@@ -233,7 +254,7 @@ public final class BloodMoon {
             snapshot.putBoolean("raining",weather.isRaining());
             snapshot.putBoolean("thundering",weather.isThundering());
             row.put(WEATHER,snapshot);
-            SmpData.get(server).changed(row);
+
         }
         boolean changed=weather.isRaining()||weather.isThundering()||level.getRainLevel(1)>0||level.getThunderLevel(1)>0;
         level.setWeatherParameters(Integer.MAX_VALUE,0,false,false);
@@ -445,8 +466,15 @@ public final class BloodMoon {
     }
 
     public static void defeated(MinecraftServer server,LivingEntity entity) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { defeatedInScope(server, entity); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> defeatedInScope(server, entity));
+    }
+
+    private static void defeatedInScope(MinecraftServer server,LivingEntity entity) {
         if(!entity.getPersistentData().hasUUID(EVENT_ID)) return;
-        var row=SmpData.get(server).find("events",entity.getPersistentData().getUUID(EVENT_ID));
+        var row=SmpData.get(server).events().current(entity.getPersistentData().getUUID(EVENT_ID));
         if(row==null || !row.getString("state").equals("ACTIVE")) return;
         var mobs=row.getList("mobs",Tag.TAG_STRING);
         if(mobs.remove(StringTag.valueOf(entity.getStringUUID()))) {
@@ -459,34 +487,41 @@ public final class BloodMoon {
                 member.putInt("kills",member.getInt("kills")+1);
             }
         }
-        SmpData.get(server).changed(row);
+
     }
     public static void removed(MinecraftServer server, LivingEntity entity) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { removedInScope(server, entity); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> removedInScope(server, entity));
+    }
+
+    private static void removedInScope(MinecraftServer server, LivingEntity entity) {
         var reason = entity.getRemovalReason();
         if (reason == null || reason == Entity.RemovalReason.UNLOADED_TO_CHUNK
                 || reason == Entity.RemovalReason.UNLOADED_WITH_PLAYER) return;
         if (reason == Entity.RemovalReason.KILLED) { defeated(server, entity); return; }
         var data = entity.getPersistentData();
         if (!data.hasUUID(EVENT_ID)) return;
-        var row = SmpData.get(server).find("events", data.getUUID(EVENT_ID));
+        var row = SmpData.get(server).events().current(data.getUUID(EVENT_ID));
         if (row == null || !row.getString("state").equals("ACTIVE")) return;
         var mobs = row.getList("mobs", Tag.TAG_STRING);
         if (!mobs.remove(StringTag.valueOf(entity.getStringUUID()))) return;
         if (data.getBoolean(SUMMONED)) {
-            SmpData.get(server).changed(row);
+
             return;
         }
         String category = data.getString(CATEGORY);
         if(category.isEmpty()) {
             row.putInt("waveKilled",row.getInt("waveKilled")+1);
-            SmpData.get(server).changed(row);
+
             return;
         }
         var remaining = row.getCompound("remaining");
         remaining.putInt(category, remaining.getInt(category) + 1);
         row.put("remaining", remaining);
         row.putInt("waveSpawned", Math.max(0, row.getInt("waveSpawned") - 1));
-        SmpData.get(server).changed(row);
+
     }
 
     public static void cleanup(MinecraftServer server,CompoundTag row) {
@@ -516,7 +551,7 @@ public final class BloodMoon {
         if (!EventRuntime.enabled(eventMob.getServer())) return true;
         var data=eventMob.getPersistentData();
         if(!data.hasUUID(EVENT_ID)||eventMob.getServer()==null) return true;
-        var row=SmpData.get(eventMob.getServer()).find("events",data.getUUID(EVENT_ID));
+        var row=SmpData.get(eventMob.getServer()).events().snapshot(data.getUUID(EVENT_ID));
         if(row==null||!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) return true;
         return row.getBoolean("combatStarted") && eventMob instanceof LivingEntity actor
                 && target instanceof LivingEntity recipient

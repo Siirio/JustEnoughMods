@@ -43,6 +43,13 @@ public final class RaidEvent {
     private static final int[] STAGE_COUNTS={7,7,6};
 
     public static void adoptSummon(net.minecraft.server.level.ServerLevel level,net.minecraft.world.entity.Entity entity) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { adoptSummonInScope(level, entity); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> adoptSummonInScope(level, entity));
+    }
+
+    private static void adoptSummonInScope(net.minecraft.server.level.ServerLevel level,net.minecraft.world.entity.Entity entity) {
         if(!(entity instanceof Mob mob) || !(mob instanceof net.minecraft.world.entity.monster.Enemy)) return;
         var data=mob.getPersistentData();
         if(data.hasUUID(EVENT_ID) || !MOB_SUMMONED.equals(data.getString(FORGE_SPAWN_TYPE))) return;
@@ -56,7 +63,7 @@ public final class RaidEvent {
         allies.add(StringTag.valueOf(mob.getStringUUID()));
         event.put(ALLIES,allies);
         event.putInt("raidAlliesSpawned",event.getInt("raidAlliesSpawned")+1);
-        SmpData.get(level.getServer()).changed(event);
+
     }
 
     public static boolean belongs(CompoundTag event,net.minecraft.world.entity.Entity entity) {
@@ -65,6 +72,13 @@ public final class RaidEvent {
     }
 
     public static boolean prepare(MinecraftServer server, CompoundTag row) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return prepareInScope(server, row); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> prepareInScope(server, store.events().bind(row)));
+    }
+
+    private static boolean prepareInScope(MinecraftServer server, CompoundTag row) {
         if(!EventRuntime.available(server, row) || row.getBoolean("combatStarted")) return false;
         if(!row.hasUUID("targetBoss")&&!row.contains("raidArenaId")) {
             var arena=RaidArenaApi.availableArena(server,candidate->StructureStaging.arenaAvailable(server,candidate.id())).orElse(null);
@@ -90,11 +104,19 @@ public final class RaidEvent {
                 ||row.getLong("position")!=boss.blockPosition().asLong();
         row.putUUID("targetBoss",boss.getUUID());
         row.putLong("position",boss.blockPosition().asLong());
-        if(changed) SmpData.get(server).changed(row);
+        
         return true;
     }
 
     public static boolean claimArena(MinecraftServer server, CompoundTag event, String arenaId,
+                                     ResourceLocation bossType, String dimension, BlockPos center, BoundingBox bounds) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return claimArenaInScope(server, event, arenaId, bossType, dimension, center, bounds); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> claimArenaInScope(server, store.events().bind(event), arenaId, bossType, dimension, center, bounds));
+    }
+
+    private static boolean claimArenaInScope(MinecraftServer server, CompoundTag event, String arenaId,
                                      ResourceLocation bossType, String dimension, BlockPos center, BoundingBox bounds) {
         if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return false;
         if (event.getBoolean("combatStarted")) return false;
@@ -106,17 +128,24 @@ public final class RaidEvent {
         event.putString("raidArenaId", arena.id());
         event.putString("bossType", bossType.toString());
         StructureStaging.attachArena(event,UUID.fromString(arenaId),bossType,dimension,center,bounds);
-        SmpData.get(server).changed(event);
+
         prepare(server,event);
         return true;
     }
 
 
     public static void start(ServerPlayer host, CompoundTag party, Collection<UUID> agreed) {
+        var serverForMutation = host.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { startInScope(host, party, agreed); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> startInScope(host, store.parties().bind(party), agreed));
+    }
+
+    private static void startInScope(ServerPlayer host, CompoundTag party, Collection<UUID> agreed) {
         SmpRecords.require(com.siirio.jemserver.smp.SmpEnvironment.active(host), "unavailable");
         SmpRecords.require(party.hasUUID("eventId") && !party.hasUUID("bossEntity"), "unavailable");
         var data = SmpData.get(host.server);
-        var event = data.find("events", party.getUUID("eventId"));
+        var event = data.events().current(party.getUUID("eventId"));
         SmpRecords.require(event != null, "unavailable");
         requireActive(event);
         SmpRecords.require(
@@ -155,8 +184,8 @@ public final class RaidEvent {
             initializeReinforcements(event,boss);
             LivingEntity startedBoss=boss;
             level.players().forEach(player->EventNetwork.eventMob(player,startedBoss));
-            data.changed(party);
-            data.changed(event);
+
+
             if (event.contains("raidArenaId")) RaidArenaApi.recordParticipation(host.server, event.getString("raidArenaId"), agreed);
             started = true;
         } finally {
@@ -179,8 +208,15 @@ public final class RaidEvent {
 
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent tick) {
+        var serverForMutation = tick.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(tick); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(tick));
+    }
+
+    private static void tickInScope(TickEvent.ServerTickEvent tick) {
         if(tick.phase!=TickEvent.Phase.END||!com.siirio.jemserver.smp.SmpEnvironment.active(tick.getServer())||tick.getServer().getTickCount()%10!=0) return;
-        for(CompoundTag event:SmpData.get(tick.getServer()).all("events")) {
+        for(CompoundTag event:SmpData.get(tick.getServer()).events().currentRows()) {
             if (!EventRuntime.available(tick.getServer(), event)) continue;
             if(!event.getString("state").equals("ACTIVE")||!event.getString("activity").equals("BOSS_RAID")) continue;
             if(!event.getBoolean("combatStarted")) {prepare(tick.getServer(),event);continue;}
@@ -197,7 +233,7 @@ public final class RaidEvent {
                 spawnReinforcements(level,event,bosses.get(0),STAGE_COUNTS[stage]);
                 stage++;
                 event.putInt("raidReinforcementStage",stage);
-                SmpData.get(level.getServer()).changed(event);
+
             }
         }
     }
@@ -350,6 +386,13 @@ public final class RaidEvent {
 
     @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.LOWEST)
     public static void loaded(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { loadedInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> loadedInScope(event));
+    }
+
+    private static void loadedInScope(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity boss)
                 || !boss.getPersistentData().hasUUID(EVENT_ID) || WorldTierApi.profile(boss).isEmpty()) return;
         if (!com.siirio.jemserver.smp.SmpEnvironment.active(level.getServer())) {
@@ -358,7 +401,7 @@ public final class RaidEvent {
             boss.getPersistentData().remove(EVENT_ID);
             return;
         }
-        var row = SmpData.get(level.getServer()).find("events", boss.getPersistentData().getUUID(EVENT_ID));
+        var row = SmpData.get(level.getServer()).events().current(boss.getPersistentData().getUUID(EVENT_ID));
         if (EventRuntime.available(level.getServer(), row) && row.getString("state").equals("ACTIVE") && row.getLong("ends") > System.currentTimeMillis()) return;
         if(HostedEncounterApi.isRaid(boss)&&!HostedEncounterApi.wasNativeBeforeRaid(boss)) {
             String arenaId=WorldTierApi.encounter(boss).map(encounter->encounter.arenaId()).orElse(null);

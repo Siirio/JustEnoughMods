@@ -54,8 +54,6 @@
     "source_files": [
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceApi.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/api/RaceSnapshot.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RaceStatusPacket.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
@@ -195,6 +193,20 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
         "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/workbench/provenance.json",
         "Docs/races/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "engineering_v2_retire_source_owners",
+      "summary": "ENGINEERING v2 retired the inactive Roles UI/VFX graph and unused private menu copies after consumer inspection. Removed paths are preserved here as historical evidence, not current implementations. Existing active race presentation remains owned by RaceExperienceClient/RaceExperienceScreen where applicable; unused menu and VFX implementations have no replacement under their old rule. Prior behavior descriptions, precedence, status and history are preserved; this entry only corrects current source ownership.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RaceSelectionScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java"
+      ],
+      "current_source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java"
       ]
     }
   ],

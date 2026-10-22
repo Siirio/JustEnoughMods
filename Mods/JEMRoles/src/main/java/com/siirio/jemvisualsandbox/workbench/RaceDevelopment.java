@@ -10,7 +10,7 @@ final class RaceDevelopment {
     static boolean unlimitedSelection(ServerPlayer p){return false;}
     static int tier(ServerPlayer p,int race,int normal){return normal;}
     static int bloomUpgrade(ServerPlayer p,int normal){return normal;}
-    static void storeBloomUpgrade(ServerPlayer p,int next){RaceExperience.data(p).putInt("BloomUpgrade",next);}
+    static void storeBloomUpgrade(ServerPlayer p,int next){com.siirio.jemroles.race.RaceService.mutate(p, record -> record.bloomUpgrade(next));}
     static void request(int action,int value){}
     static void handle(ServerPlayer p,int action,int value){}
 }

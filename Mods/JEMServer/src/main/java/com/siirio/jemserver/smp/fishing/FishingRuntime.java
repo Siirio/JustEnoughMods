@@ -66,7 +66,7 @@ public final class FishingRuntime {
         score.putInt("fishingXp", score.getInt("fishingXp") + xp);
         scores.put(player.getUUID().toString(), score);
         row.put("scores", scores);
-        SmpData.get(player.server).changed(row);
+        
     }
     private FishingRuntime() {}
 }

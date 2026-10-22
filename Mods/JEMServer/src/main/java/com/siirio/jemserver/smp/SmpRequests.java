@@ -1,12 +1,9 @@
 package com.siirio.jemserver.smp;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import net.minecraft.server.level.ServerPlayer;
 
 public final class SmpRequests {
-    private static final Map<UUID, SmpActionSession> SESSIONS = new HashMap<>();
 
     static void handle(ServerPlayer player, SmpAction action) {
         var session = session(player);
@@ -49,10 +46,8 @@ public final class SmpRequests {
         com.siirio.jemworldbosstiers.api.HostedEncounterApi.revive(player, target);
     }
 
-    static void logout(ServerPlayer player) { SESSIONS.remove(player.getUUID()); }
-    static void clear() { SESSIONS.clear(); }
     private static SmpActionSession session(ServerPlayer player) {
-        return SESSIONS.computeIfAbsent(player.getUUID(), ignored -> new SmpActionSession());
+        return SmpServerSession.get(player.server).requests.computeIfAbsent(player.getUUID(), ignored -> new SmpActionSession());
     }
 
     private SmpRequests() {}

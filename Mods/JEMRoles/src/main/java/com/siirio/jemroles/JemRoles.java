@@ -17,8 +17,6 @@ public final class JemRoles {
         com.siirio.jemroles.loot.RaceLoot.register(modBus);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER,
                 com.siirio.jemroles.race.RaceRules.SPEC, "jem-races-server.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT,
-                com.siirio.jemroles.vfx.RaceVfxClientConfig.SPEC, "jem-races-vfx-client.toml");
         RolesNetwork.register();
         com.siirio.jemvisualsandbox.workbench.SandboxRaceLoot.register(modBus);
         com.siirio.jemvisualsandbox.workbench.SandboxOptionalIrons.register(modBus);

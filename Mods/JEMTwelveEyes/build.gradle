@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.minecraftforge.gradle' version '6.0.54'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
@@ -39,30 +39,21 @@ def installedMod = { String pattern ->
 def xaeroWorldMap = installedMod('xaeroworldmap-forge-*.jar')
 def xaeroMinimap = installedMod('xaerominimap-forge-*.jar')
 def tradeCycling = installedMod('trade-cycling-forge-*.jar')
-def xaeroLibName = zipTree(xaeroWorldMap).matching {
-    include 'META-INF/jarjar/xaerolib-forge-*.jar'
-}.singleFile.name
-def extractedXaeroLib = layout.buildDirectory.file("xaero-lib/${xaeroLibName}")
-def extractXaeroLib = tasks.register('extractXaeroLib', Copy) {
-    from zipTree(xaeroWorldMap)
-    include 'META-INF/jarjar/xaerolib-forge-*.jar'
-    eachFile { details -> details.path = details.name }
-    includeEmptyDirs = false
-    into layout.buildDirectory.dir('xaero-lib')
-}
+ext.jemXaeroWorldMap = xaeroWorldMap
+apply from: rootProject.file('gradle/xaero-library.gradle')
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly files(xaeroWorldMap)
     compileOnly files(xaeroMinimap)
     compileOnly files(tradeCycling)
-    compileOnly files(extractedXaeroLib)
-    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
+    compileOnly jemXaeroCompileLib
+    compileOnly project(path: ':JEMWorldBossTiers', configuration: 'jemCompile')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 tasks.named('compileJava').configure {
-    dependsOn extractXaeroLib
+    dependsOn 'extractXaeroLib'
 }
 
 mixin {

@@ -309,7 +309,7 @@ public final class Demo {
         },item.getHoverName(),Component.literal("Preview this destination? No teleport or payment is performed.")));
     }
     public static com.siirio.jemguisandbox.mirror.jemvisualsandbox.workbench.RaceExperience.Status raceStatus() {
-        return new com.siirio.jemguisandbox.mirror.jemvisualsandbox.workbench.RaceExperience.Status(selectedRace,true,new int[]{3,3,3,3,3},new int[]{30,30,30,30,30},0,0,true,3,0,true,UUID.randomUUID());
+        return new com.siirio.jemguisandbox.mirror.jemvisualsandbox.workbench.RaceExperience.Status(selectedRace,true,new int[]{3,3,3,3,3},new int[]{30,30,30,30,30},0,0,true,3,0,true,UUID.randomUUID(),false);
     }
     public static void selectRace(int race) {
         selectedRace=Math.max(0,Math.min(4,race));

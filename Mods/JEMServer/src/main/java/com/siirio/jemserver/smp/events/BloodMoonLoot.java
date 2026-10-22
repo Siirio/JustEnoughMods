@@ -104,9 +104,16 @@ public final class BloodMoonLoot {
     }
 
     private static boolean invalidated(MinecraftServer server, ItemStack stack) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return invalidatedInScope(server, stack); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> invalidatedInScope(server, stack));
+    }
+
+    private static boolean invalidatedInScope(MinecraftServer server, ItemStack stack) {
         if(stack.isEmpty() || !stack.hasTag() || !stack.getTag().hasUUID(EVENT)) return false;
         UUID attempt=stack.getTag().getUUID(EVENT);
-        for(var row:com.siirio.jemserver.smp.SmpData.get(server).all("events"))
+        for(var row:com.siirio.jemserver.smp.SmpData.get(server).events().currentRows())
             for(Tag tag:row.getList("invalidatedLoot",Tag.TAG_INT_ARRAY))
                 if(NbtUtils.loadUUID(tag).equals(attempt)) return true;
         return false;

@@ -81,7 +81,7 @@ public final class StarterWelcome {
         if (player.tickCount % 20 != 0 || !player.isAlive()) return;
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return;
-        try { StarterKitData.get(player.server).deliver(player, principal.get().accountId()); }
+        try { StarterKitDelivery.deliver(player, principal.get().accountId()); }
         catch (java.io.IOException | RuntimeException failure) {
             com.mojang.logging.LogUtils.getLogger().error("Starter kit delivery retained for account {}", principal.get().accountId(), failure);
             // Do not expose an inventory whose native receipt failed to persist to further interactions.
@@ -92,8 +92,8 @@ public final class StarterWelcome {
     @SubscribeEvent
     public static void clonePlayer(PlayerEvent.Clone event) {
         if (event.getOriginal() instanceof ServerPlayer original && event.getEntity() instanceof ServerPlayer replacement) {
-            var receipt = StarterKitData.persisted(original).getCompound(StarterKitData.RECEIPT);
-            if (!receipt.isEmpty()) StarterKitData.persisted(replacement).put(StarterKitData.RECEIPT, receipt.copy());
+            var receipt = StarterKitDelivery.persisted(original).getCompound(StarterKitDelivery.RECEIPT);
+            if (!receipt.isEmpty()) StarterKitDelivery.persisted(replacement).put(StarterKitDelivery.RECEIPT, receipt.copy());
         }
     }
 }

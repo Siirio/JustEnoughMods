@@ -15,7 +15,9 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "tools" / "workspace.json"
 PACK_SYNC_MANIFEST = "jem-pack/manifest.json"
-DEVELOPMENT_MOD_IDS = frozenset({"jem_professions", "jem_villager_talking", "jem_claims"})
+MODULE_INVENTORY = json.loads((ROOT / "tools/module-inventory.json").read_text(encoding="utf-8"))["modules"]
+DEVELOPMENT_MOD_IDS = frozenset(mod_id for module in MODULE_INVENTORY
+                                if module["status"] == "development" for mod_id in module["modIds"])
 
 
 def load_config():

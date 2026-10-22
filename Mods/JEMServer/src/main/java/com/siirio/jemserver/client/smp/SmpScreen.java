@@ -32,17 +32,6 @@ public final class SmpScreen extends Screen {
     private MultiLineEditBox messageBox;
     private String shopSort = "near";
     private int formScroll;
-    private int memberScroll;
-    private int memberMaxScroll;
-    private int memberListX;
-    private int memberListY;
-    private int memberListWidth;
-    private int memberListHeight;
-    private int partyRewardScroll;
-    private int partyRewardMaxScroll;
-    private int partyRewardX;
-    private int partyRewardY;
-    private int partyRewardWidth;
     private String expandedChoice = "";
     private final Map<String, List<String>> choices = new HashMap<>();
     private final BackNavigation navigation = new BackNavigation();
@@ -58,7 +47,10 @@ public final class SmpScreen extends Screen {
     private UUID pendingSettlementRemoval;
     private boolean pendingSettlementDelete;
     private UUID selected;
-    private UUID participant;
+    private final PartyLobbyPanel partyLobby = new PartyLobbyPanel();
+    private final List<SmpActionButton> lobbyButtons = new ArrayList<>();
+    private List<LobbyControl> lobbyControls = List.of();
+    private record LobbyControl(int x, int y, int width, String action, String label, boolean enabled) {}
     private int page,
             scroll,
             maxScroll,
@@ -70,10 +62,8 @@ public final class SmpScreen extends Screen {
             bodyY,
             bodyWidth,
             bodyBottom;
-    private long searchAt, lastSent, viewRevision, lastResync;
-    private UUID viewSession;
-    private SmpAction pending;
-    private boolean waiting;
+    private long searchAt;
+    private final SmpViewState view = new SmpViewState();
     private boolean clippingBody;
     private ItemStack hoveredItem = ItemStack.EMPTY;
     private Component hoveredLabel;
@@ -84,33 +74,18 @@ public final class SmpScreen extends Screen {
     }
 
     public void accept(SmpUpdate update) {
-        if (update.view() != null && !update.view().isEmpty()) {
-            boolean delta = update.view().getBoolean("__delta");
-            if (delta && (!Objects.equals(viewSession, update.session()) || viewRevision != update.baseRevision())) {
-                long now = System.currentTimeMillis();
-                if (now - lastResync >= com.siirio.jemserver.smp.SmpProtocol.RESYNC_MILLIS) {
-                    lastResync = now;
-                    SmpNetwork.query(new SmpQuery(tab, model.getString("filter"), model.getString("querySearch"), page, selected, true));
-                }
-                return;
-            }
-            if (update.session() != null) {
-                if (Objects.equals(viewSession, update.session()) && update.revision() <= viewRevision) return;
-                viewSession = update.session();
-                viewRevision = update.revision();
-            }
-            var incoming =
-                    update.view().getBoolean("__delta")
-                            ? com.siirio.jemserver.smp.ViewDelta.apply(model, update.view())
-                            : update.view().copy();
+        var reception = view.accept(update, System.currentTimeMillis());
+        if (reception.resync())
+            SmpNetwork.query(new SmpQuery(tab, model.getString("filter"), model.getString("querySearch"), page, selected, true));
+        if (reception.ignored()) return;
+        if (reception.view() != null) {
+            var incoming = reception.view();
             sidebar.features(incoming.getCompound("features"));
             String next = incoming.getString("tab");
             UUID nextId = incoming.contains("detail") && incoming.getCompound("detail").hasUUID("id") ? incoming.getCompound("detail").getUUID("id") : null;
             if (update.open() && (!next.equals(tab) || !Objects.equals(nextId, selected))) remember();
             if (update.open() && !Objects.equals(nextId, selected)) {
-                memberScroll = 0;
-                partyRewardScroll = 0;
-                participant = null;
+                partyLobby.reset();
             }
             if (update.open() && !next.equals(tab)) {
                 tab = next;
@@ -160,12 +135,9 @@ public final class SmpScreen extends Screen {
                 dissolvedLobby = !closeLobby;
             }
         }
-        if (update.request() != null
-                && pending != null
-                && update.request().equals(pending.request())) {
-            String action = pending.kind().key();
-            waiting = false;
-            pending = null;
+        SmpAction acknowledged = view.acknowledge(update);
+        if (acknowledged != null) {
+            String action = acknowledged.kind().key();
             error = update.error();
             if (error.isEmpty()) {
                 if (action.equals("start")) closeLobby = true;
@@ -194,6 +166,8 @@ public final class SmpScreen extends Screen {
     @Override
     protected void init() {
         com.siirio.jemserver.client.ui.SmpRenderState.restoreAfterScreen();
+        lobbyButtons.clear();
+        lobbyControls = List.of();
         String initial = model.getString("querySearch");
         String[] pair = initial.split("\u001f", -1);
         String value = search == null ? (tab.equals("shops") ? (pair.length > 1 ? pair[1] : "") : initial) : search.getValue();
@@ -307,7 +281,7 @@ public final class SmpScreen extends Screen {
         if (next.equals(tab) && Objects.equals(detail, selected)) return;
         remember();
         expandedRewards = false;
-        partyRewardScroll = 0;
+        partyLobby.resetRewards();
         tab = next;
         filter = "";
         page = 0;
@@ -352,6 +326,7 @@ public final class SmpScreen extends Screen {
 
     @Override
     public void render(GuiGraphics g, int mx, int my, float partial) {
+        for (var button : lobbyButtons) { button.visible = false; button.active = false; }
         com.siirio.jemserver.client.ui.SmpRenderState.restoreMainTarget();
         renderBackground(g);
         hits.clear();
@@ -413,7 +388,7 @@ public final class SmpScreen extends Screen {
         } else renderForm(g, mx, my, partial);
         String message = error.isEmpty() ? model.getString("message") : error;
         if (!message.isEmpty()) text(g, Component.translatable("jem.smp.error." + message), bodyX, top + panelHeight - 12, RED, bodyWidth);
-        if (waiting) text(g, Component.translatable("jem.smp.pending"), bodyX + bodyWidth / 2, top + 12, MUTED, bodyWidth / 2 - 30);
+        if (view.waiting()) text(g, Component.translatable("jem.smp.pending"), bodyX + bodyWidth / 2, top + 12, MUTED, bodyWidth / 2 - 30);
         renderSellerSuggestions(g, mx, my);
         if (!hoveredItem.isEmpty() && my >= bodyY && my < bodyBottom) g.renderTooltip(font, hoveredItem, mx, my);
         else if (hoveredLabel != null) g.renderTooltip(font, hoveredLabel, mx, my);
@@ -526,131 +501,47 @@ public final class SmpScreen extends Screen {
         var members = detail.getCompound("members");
         scroll = 0;
         maxScroll = 0;
-        text(g, Component.literal(detail.getString("title")), bodyX + 4, bodyY + 6, CREAM, bodyWidth - 8);
+        partyLobby.render(g, font, detail, new PartyLobbyPanel.Layout(bodyX, bodyY, bodyWidth, bodyBottom),
+                mx, my, bossPreview, new PartyLobbyPanel.Callbacks(hits::add, item -> hoveredItem = item,
+                () -> openForm("invite"), () -> restoreBodyScissor(g),
+                (graphics, x, y, width, action, mouseX, mouseY) -> button(graphics, x, y, width, 24, action, () -> invoke(action), mouseX, mouseY),
+                this::renderCompactLocation));
         var controls = new ArrayList<String>();
         for (String action : List.of("join", "arrive", "ready", "leave", "dissolve", "start", "cancel"))
             if (hasAction(actions, action)) controls.add(action);
         int buttonColumns = Math.max(1, controls.size());
         int buttonsY = bodyBottom + 9;
-        int contentTop = bodyY + 25;
-        if (!detail.getString("state").equals("ACTIVE") && detail.getBoolean("leader") && !detail.getBoolean("canStart") && !detail.getString("startReason").isEmpty()) {
-            var reason = font.split(Component.translatable("jem.smp.error." + detail.getString("startReason")), bodyWidth - 12);
-            for (var line : reason) {
-                g.drawString(font, line, bodyX + 5, contentTop, MUTED, false);
-                contentTop += 11;
-            }
-            contentTop += 4;
-        }
-        int contentBottom = bodyBottom;
-        var loot = detail.getList("reward", Tag.TAG_COMPOUND);
-        int rewardHeight = loot.isEmpty() ? 0 : 75;
-        int upperBottom = contentBottom - rewardHeight - (rewardHeight > 0 ? 7 : 0);
-        int leftWidth = Math.max(104, Math.min(172, bodyWidth / 3));
-        int memberX = bodyX + leftWidth + 8;
-        int memberWidth = bodyWidth - leftWidth - 8;
-        int previewHeight = Math.max(72, upperBottom - contentTop);
-        String activity = eventActivity(detail);
-        g.fill(bodyX, contentTop, bodyX + leftWidth, contentTop + previewHeight, INSET);
-        if (detail.getString("bossType").isEmpty()) SmpGuiAssets.cover(g, activity, bodyX + 3, contentTop + 3, leftWidth - 6, previewHeight - 6);
-        else SmpGuiAssets.coverBackground(g, activity, bodyX + 3, contentTop + 3, leftWidth - 6, previewHeight - 6);
-        SmpGuiAssets.frame(g, bodyX, contentTop, leftWidth, previewHeight, SmpGuiAssets.accent(activity));
-        if (!detail.getString("bossType").isEmpty()) {
-            bossPreview.render(g, detail.getString("bossType"), bodyX + 4, contentTop + 4, leftWidth - 8, previewHeight - 8, mx, my);
-            restoreBodyScissor(g);
-        }
-        else if (!Set.of("BOSS", "BOSS_RAID", "BLOOD_MOON", "RESOURCE_RUSH", "FISHING", "COOKING_SHOW").contains(activity)) SmpIcons.draw(g, activity, bodyX + leftWidth / 2 - 24, contentTop + previewHeight / 2 - 24, 48);
-        restoreBodyScissor(g);
-        text(g, Component.translatable("jem.smp.participants"), memberX + 4, contentTop + 4, PEACH, memberWidth - 8);
-        memberListX = memberX;
-        memberListY = contentTop + 22;
-        memberListWidth = memberWidth;
-        int locationHeight = detail.getBoolean("meaningfulLocation") ? 42 : 0;
-        CompoundTag selectedMember=participant!=null&&members.contains(participant.toString())?members.getCompound(participant.toString()):null;
-        boolean manage=detail.getBoolean("leader")&&selectedMember!=null
-                &&(selectedMember.getBoolean("canApprove")||selectedMember.getBoolean("canRemove")||selectedMember.getBoolean("canTransfer"));
-        int managementHeight=manage?31:0;
-        memberListHeight = Math.max(36, upperBottom - memberListY - (locationHeight > 0 ? locationHeight + 6 : 0) - (managementHeight > 0 ? managementHeight + 6 : 0));
-        int memberY = memberListY - memberScroll;
-        var memberIds = new ArrayList<>(members.getAllKeys());
-        memberIds.sort(Comparator.comparing((String id) -> !detail.hasUUID("owner") || !detail.getUUID("owner").toString().equals(id)).thenComparing(id -> members.getCompound(id).getString("name")));
-        boolean parentClipping = clippingBody;
-        clippingBody = true;
-        g.enableScissor(memberListX, memberListY, memberListX + memberListWidth, memberListY + memberListHeight);
-        try {
-            for (String raw : memberIds) {
-                var member = members.getCompound(raw);
-                UUID id;
-                try { id = UUID.fromString(raw); } catch (IllegalArgumentException invalid) { continue; }
-                if (memberY + 40 >= memberListY && memberY < memberListY + memberListHeight) {
-                    frame(g, memberX, memberY, memberWidth, 40, id.equals(participant)?HOVER:ROW);
-                    CombatHud.head(g, id, memberX + 7, memberY + 9, 22);
-                    String name = member.getString("name");
-                    text(g, Component.literal(name.isBlank() ? raw : name), memberX + 36, memberY + 7, CREAM, memberWidth - 42);
-                    String state = !member.getBoolean("online") ? "offline" : !member.getBoolean("accepted") ? "awaiting_approval" : member.getBoolean("ready") ? "ready" : "not_ready";
-                    Component status = Component.translatable("jem.smp." + state);
-                    if (detail.hasUUID("owner") && detail.getUUID("owner").equals(id)) status = Component.translatable("jem.smp.leader").append(" · ").append(status);
-                    text(g, status, memberX + 36, memberY + 23, member.getBoolean("ready") ? GREEN : MUTED, memberWidth - 42);
-                    hitWithin(memberX, memberY, memberWidth, 40, memberListX, memberListY, memberListWidth, memberListHeight, () -> participant=id);
-                }
-                memberY += 44;
-            }
-            if (hasAction(actions, "invite")) {
-                frame(g, memberX, memberY, memberWidth, 40, mx >= memberX && mx < memberX + memberWidth && my >= memberY && my < memberY + 40 ? HOVER : ROW);
-                text(g, Component.literal("+"), memberX + 12, memberY + 11, PEACH, 18);
-                text(g, Component.translatable("jem.smp.add_player"), memberX + 36, memberY + 15, CREAM, memberWidth - 42);
-                hitWithin(memberX, memberY, memberWidth, 40, memberListX, memberListY, memberListWidth, memberListHeight, () -> openForm("invite"));
-                memberY += 44;
-            }
-        } finally {
-            g.disableScissor();
-            clippingBody = parentClipping;
-            restoreBodyScissor(g);
-        }
-        memberMaxScroll = Math.max(0, memberY + memberScroll - memberListY - memberListHeight);
-        memberScroll = Math.max(0, Math.min(memberScroll, memberMaxScroll));
-        if(manage) {
-            var management=new ArrayList<String>();
-            if(selectedMember.getBoolean("canApprove")) management.add("approve");
-            if(selectedMember.getBoolean("canRemove")) management.add("remove");
-            if(selectedMember.getBoolean("canTransfer")) management.add("transfer");
-            int managementY=memberListY+memberListHeight+5;
-            int managementWidth=(memberWidth-(management.size()-1)*GAP)/management.size();
-            for(int index=0;index<management.size();index++) {
-                String action=management.get(index);
-                button(g,memberX+index*(managementWidth+GAP),managementY,managementWidth,24,action,()->invoke(action),mx,my);
-            }
-        }
-        if (locationHeight > 0) renderCompactLocation(g, detail, memberX, upperBottom - locationHeight, memberWidth, locationHeight, mx, my);
-        if (rewardHeight > 0) {
-            int rewardY = contentBottom - rewardHeight;
-            frame(g, bodyX, rewardY, bodyWidth, rewardHeight, ROW);
-            text(g, Component.translatable("jem.smp.possible_rewards"), bodyX + 8, rewardY + 7, PEACH, bodyWidth - 16);
-            partyRewardX = bodyX + 8;
-            partyRewardY = rewardY + 20;
-            partyRewardWidth = bodyWidth - 16;
-            partyRewardMaxScroll = Math.max(0, ItemRewardStrip.twoRowWidth(loot) - partyRewardWidth);
-            partyRewardScroll = Math.max(0, Math.min(partyRewardScroll, partyRewardMaxScroll));
-            ItemRewardStrip.renderTwoRows(g, loot, partyRewardX, partyRewardY, partyRewardWidth, partyRewardScroll, mx, my, item -> hoveredItem = item);
-            restoreBodyScissor(g);
-        } else {
-            partyRewardScroll = 0;
-            partyRewardMaxScroll = 0;
-            partyRewardWidth = 0;
-        }
         int bw = (bodyWidth - (buttonColumns - 1) * GAP) / buttonColumns;
+        var nextControls = new ArrayList<LobbyControl>();
+        for (int i = 0; i < controls.size(); i++) {
+            String action = controls.get(i);
+            String label = action.equals("cancel") ? "finish_encounter" : action.equals("dissolve") ? "leave" : action;
+            if (action.equals("ready") && model.hasUUID("viewer") && members.getCompound(model.getUUID("viewer").toString()).getBoolean("ready")) label = "unready";
+            nextControls.add(new LobbyControl(bodyX + i * (bw + GAP), buttonsY, bw, action, label,
+                    !view.waiting() && (!action.equals("start") || detail.getBoolean("canStart"))));
+        }
+        if (!nextControls.equals(lobbyControls)) {
+            lobbyButtons.forEach(this::removeWidget);
+            lobbyButtons.clear();
+            lobbyControls = List.copyOf(nextControls);
+            for (var control : lobbyControls) {
+                var button = new SmpActionButton(control.x(), control.y(), control.width(), 24,
+                        Component.translatable("jem.smp." + control.label()), buttonRole(control.label()), control.label(), ignored -> invoke(control.action()));
+                button.active = control.enabled();
+                if (!control.enabled() && control.action().equals("start") && !detail.getString("startReason").isEmpty())
+                    button.setTooltip(net.minecraft.client.gui.components.Tooltip.create(Component.translatable("jem.smp.error." + detail.getString("startReason"))));
+                lobbyButtons.add(addRenderableWidget(button));
+            }
+        }
         g.disableScissor();
-        clippingBody = false;
         try {
-            for (int i = 0; i < controls.size(); i++) {
-                String action = controls.get(i);
-                int bx = bodyX + i * (bw + GAP);
-                String label = action.equals("cancel") ? "finish_encounter" : action.equals("dissolve") ? "leave" : action;
-                if (action.equals("ready") && model.hasUUID("viewer") && members.getCompound(model.getUUID("viewer").toString()).getBoolean("ready")) label = "unready";
-                if (action.equals("start") && !detail.getBoolean("canStart")) disabledButton(g, bx, buttonsY, bw, "start", detail.getString("startReason"), mx, my);
-                else button(g, bx, buttonsY, bw, 24, label, () -> invoke(action), mx, my);
+            for (int i = 0; i < lobbyButtons.size(); i++) {
+                var button = lobbyButtons.get(i);
+                button.active = lobbyControls.get(i).enabled();
+                button.visible = true;
+                button.render(g, mx, my, 0);
             }
         } finally {
-            clippingBody = true;
             g.enableScissor(bodyX, bodyY, bodyX + bodyWidth, bodyBottom);
         }
     }
@@ -946,7 +837,7 @@ public final class SmpScreen extends Screen {
                             remember();
                             selected = id;
                             scroll = 0;
-                            memberScroll = 0;
+                            partyLobby.resetMembers();
                             query();
                         },
                         mx,
@@ -1276,9 +1167,9 @@ public final class SmpScreen extends Screen {
         if (action.equals("invite") && tab.equals("parties")) { openForm("invite"); return; }
         if (action.equals("dissolve")) { openForm("dissolve_confirm"); return; }
         if (action.equals("cancel") && tab.equals("parties") && model.getCompound("detail").getString("state").equals("ACTIVE")) { openForm("forfeit_confirm"); return; }
-        if (Set.of("approve", "remove", "transfer").contains(action) && participant != null) {
+        if (Set.of("approve", "remove", "transfer").contains(action) && partyLobby.participant() != null) {
             var args = new JsonObject();
-            args.addProperty("player", participant.toString());
+            args.addProperty("player", partyLobby.participant().toString());
             send(action, args);
         } else if (Set.of("message", "approve", "remove", "transfer").contains(action))
             openForm(action);
@@ -1286,7 +1177,7 @@ public final class SmpScreen extends Screen {
     }
 
     private void openForm(String action) {
-        if (waiting) return;
+        if (view.waiting()) return;
         clearForm();
         form = action;
         choices.clear();
@@ -1532,7 +1423,7 @@ public final class SmpScreen extends Screen {
     }
 
     private void send(String action, JsonObject args) {
-        if (waiting
+        if (view.waiting()
                 || selected != null
                         && !Set.of("create", "claims", "claim_rewards").contains(action)
                         && !currentDetail()) return;
@@ -1540,16 +1431,16 @@ public final class SmpScreen extends Screen {
     }
 
     private void sendFor(UUID target, int revision, String action, JsonObject args) {
-        if (waiting) return;
+        if (view.waiting()) return;
+        SmpAction request;
         try {
-            pending = SmpClientRequests.action(UUID.randomUUID(), tab, target, revision, action, args);
+            request = SmpClientRequests.action(UUID.randomUUID(), tab, target, revision, action, args);
         } catch (com.siirio.jemserver.smp.SmpActionFailure failure) {
             error = failure.code();
             return;
         }
-        waiting = true;
-        lastSent = System.currentTimeMillis();
-        SmpNetwork.action(pending);
+        view.begin(request);
+        SmpNetwork.action(request);
     }
 
     private void cyclePartyFilter() {
@@ -1581,6 +1472,15 @@ public final class SmpScreen extends Screen {
         hit(bodyX, y, bodyWidth, ROW_HEIGHT, action);
     }
 
+    private static String buttonRole(String key) {
+        return switch (key) {
+            case "start", "claim", "claim_all", "create", "create_party", "submit" -> "primary";
+            case "ready", "confirm", "approve", "buy" -> "confirm";
+            case "leave", "dissolve", "remove", "unregister", "delete_settlement" -> "danger";
+            default -> "secondary";
+        };
+    }
+
     private void button(
             GuiGraphics g,
             int x,
@@ -1592,13 +1492,8 @@ public final class SmpScreen extends Screen {
             int mx,
             int my) {
         boolean over = mx >= x && mx < x + w && my >= y && my < y + h;
-        String role = switch (key) {
-            case "start", "claim", "claim_all", "create", "create_party", "submit" -> "primary";
-            case "ready", "confirm", "approve", "buy" -> "confirm";
-            case "leave", "dissolve", "remove", "unregister", "delete_settlement" -> "danger";
-            default -> "secondary";
-        };
-        SmpGuiAssets.button(g, x, y, w, h, role, over, waiting && !key.equals("close"));
+        String role = buttonRole(key);
+        SmpGuiAssets.button(g, x, y, w, h, role, over, view.waiting() && !key.equals("close"));
         Component label = Component.translatable("jem.smp." + key);
         if (choices.containsKey("location"))
             for (Tag value : model.getList("locations", Tag.TAG_COMPOUND)) {
@@ -1614,17 +1509,17 @@ public final class SmpScreen extends Screen {
         int contentWidth = labelWidth + (icon ? 20 : 0);
         int contentX = x + Math.max(6, (w - contentWidth) / 2);
         if (icon) SmpIcons.draw(g, key, contentX, y + (h - 16) / 2, 16);
-        text(g, label, contentX + (icon ? 20 : 0), y + (h - 9) / 2, waiting ? MUTED : role.equals("primary") ? OUTLINE : CREAM, available);
+        text(g, label, contentX + (icon ? 20 : 0), y + (h - 9) / 2, view.waiting() ? MUTED : role.equals("primary") ? OUTLINE : CREAM, available);
         if (over && font.width(label) > w - (icon ? 30 : 12)) hoveredLabel = label;
-        if (!waiting || key.equals("retry") || key.equals("close")) hit(x, y, w, h, action);
+        if (!view.waiting() || key.equals("retry") || key.equals("close")) hit(x, y, w, h, action);
     }
 
     private void iconButton(GuiGraphics g, int x, int y, int w, int h, String key, Runnable action, int mx, int my) {
         boolean over = mx >= x && mx < x + w && my >= y && my < y + h;
-        SmpGuiAssets.button(g, x, y, w, h, key.equals("map") ? "map" : "secondary", over, waiting);
+        SmpGuiAssets.button(g, x, y, w, h, key.equals("map") ? "map" : "secondary", over, view.waiting());
         SmpIcons.draw(g, key, x + (w - 16) / 2, y + (h - 16) / 2, 16);
         if (over) hoveredLabel = Component.translatable("jem.smp." + key);
-        if (!waiting) hit(x, y, w, h, action);
+        if (!view.waiting()) hit(x, y, w, h, action);
     }
 
     private void hit(int x, int y, int w, int h, Runnable action) {
@@ -1678,18 +1573,7 @@ public final class SmpScreen extends Screen {
 
     @Override
     public boolean mouseScrolled(double x, double y, double delta) {
-        if (form.isEmpty() && selected != null && tab.equals("parties")
-                && x >= partyRewardX && x < partyRewardX + partyRewardWidth
-                && y >= partyRewardY && y < partyRewardY + ItemRewardStrip.CELL * 2) {
-            partyRewardScroll = Math.max(0, Math.min(partyRewardMaxScroll, partyRewardScroll - (int) (delta * ItemRewardStrip.CELL)));
-            return true;
-        }
-        if (form.isEmpty() && selected != null && tab.equals("parties")
-                && x >= memberListX && x < memberListX + memberListWidth
-                && y >= memberListY && y < memberListY + memberListHeight) {
-            memberScroll = Math.max(0, Math.min(memberMaxScroll, memberScroll - (int) (delta * 22)));
-            return true;
-        }
+        if (form.isEmpty() && selected != null && tab.equals("parties") && partyLobby.scroll(x, y, delta)) return true;
         if (messageBox != null && messageBox.isMouseOver(x, y)) return messageBox.mouseScrolled(x, y, delta);
         if (!form.isEmpty() && x >= bodyX && y >= bodyY && y < bodyBottom) {
             if (form.equals("invite")) {
@@ -1710,7 +1594,7 @@ public final class SmpScreen extends Screen {
         if (button != 0) return true;
         if (!hoveredItem.isEmpty() && Set.of("events", "parties").contains(tab) && JeiItemLink.open(hoveredItem)) return true;
         String sidebarTab = sidebar.at(x, y);
-        if (sidebarTab != null && !waiting) {
+        if (sidebarTab != null && !view.waiting()) {
             if (!SmpSidebar.openExternal(sidebarTab)) selectTab(sidebarTab);
             return true;
         }
@@ -1733,6 +1617,12 @@ public final class SmpScreen extends Screen {
                     setFocused(entry.getValue());
                     return true;
                 }
+        for (var control : lobbyButtons) {
+            if (control.mouseClicked(x, y, button)) {
+                setFocused(control);
+                return true;
+            }
+        }
         for (int i = hits.size() - 1; i >= 0; i--) {
             var hit = hits.get(i);
             if (hit.contains(x, y)) {
@@ -1761,6 +1651,6 @@ public final class SmpScreen extends Screen {
         com.siirio.jemserver.client.ui.SmpRenderState.restoreAfterScreen();
         super.resize(minecraft, width, height);
         scroll = Math.max(0, Math.min(scroll, maxScroll));
-        memberScroll = Math.max(0, Math.min(memberScroll, memberMaxScroll));
+        partyLobby.clamp();
     }
 }

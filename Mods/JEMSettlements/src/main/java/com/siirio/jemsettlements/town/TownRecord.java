@@ -129,9 +129,9 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
         town.nextStorageNumber = Math.max(1, tag.getInt("NextStorageNumber"));
         for (int i=0;i<town.storage.size();i++) { StorageLink link=town.storage.get(i); if(link.number()<=0) { link=link.numbered(town.nextStorageNumber++); town.storage.set(i,link); } town.nextStorageNumber=Math.max(town.nextStorageNumber,link.number()+1); }
         town.payrollEpoch = tag.getLong("PayrollEpoch"); town.nextPayrollGameTime = tag.getLong("NextPayrollGameTime"); town.nextPayrollIndex = tag.getLong("NextPayrollIndex"); town.consecutiveMissedPayrolls = tag.getInt("ConsecutiveMissedPayrolls"); town.emeraldMissedPayrolls = tag.getInt("EmeraldMissedPayrolls");
-        try { town.tier = TownTier.valueOf(tag.getString("Tier")); } catch (IllegalArgumentException ignored) { }
-        try { town.primarySpecialization = TownSpecialization.valueOf(tag.getString("PrimarySpecialization")); } catch (IllegalArgumentException ignored) { }
-        try { town.secondarySpecialization = TownSpecialization.valueOf(tag.getString("SecondarySpecialization")); } catch (IllegalArgumentException ignored) { }
+        if (tag.contains("Tier")) town.tier = TownTier.valueOf(tag.getString("Tier"));
+        if (tag.contains("PrimarySpecialization")) town.primarySpecialization = TownSpecialization.valueOf(tag.getString("PrimarySpecialization"));
+        if (tag.contains("SecondarySpecialization")) town.secondarySpecialization = TownSpecialization.valueOf(tag.getString("SecondarySpecialization"));
         town.lastSpecializationEvaluation = tag.getLong("LastSpecializationEvaluation"); if (tag.contains("HousingScore")) town.happinessEvidence(tag.getInt("HousingScore"), tag.getInt("FoodScore"), tag.getInt("SafetyScore"), tag.getInt("JobsScore"), tag.getInt("CommunityScore"), tag.getInt("DecorationScore"));
         if (tag.contains("TerritoryMinX")) town.territoryBounds(tag.getInt("TerritoryMinX"), tag.getInt("TerritoryMinZ"), tag.getInt("TerritoryMaxX"), tag.getInt("TerritoryMaxZ"));
         else if (tag.contains("TerritoryRadius")) town.territoryRadius(tag.getInt("TerritoryRadius"));

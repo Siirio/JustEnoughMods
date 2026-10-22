@@ -16,11 +16,58 @@ public final class RaceRecord {
     private int spellProgress;
     private final CompoundTag cooldowns = new CompoundTag();
     private final CompoundTag mechanics = new CompoundTag();
-    public CompoundTag mechanics() { return mechanics; }
     private int resonance;
     private int waterExposure;
     private int lavaExposure;
     private boolean livingPath;
+
+    /** Compatibility snapshot; callers cannot mutate saved mechanics. */
+    public CompoundTag mechanics() { return mechanics.copy(); }
+
+    public int uses(int raceIndex) {
+        int value = mechanics.getBoolean("Migrated") ? mechanics.getInt("Uses" + raceIndex)
+                : raceIndex == race.ordinal() ? spellProgress : 0;
+        return Math.max(0, Math.min(com.siirio.jemvisualsandbox.workbench.RacePowerStages.requiredUses(3), value));
+    }
+
+    public int bloomUpgrade() { return mechanics.getInt("BloomUpgrade"); }
+    public void bloomUpgrade(int next) { mechanics.putInt("BloomUpgrade", next); }
+    public long mechanicsCooldown(String ability) { return mechanics.getLong("Cooldown" + race.ordinal() + "_" + ability); }
+    public void mechanicsCooldown(String ability, long readyAt) { mechanics.putLong("Cooldown" + race.ordinal() + "_" + ability, readyAt); }
+    public void awardUtilityUse() {
+        mechanics.putInt("Uses" + race.ordinal(), Math.min(com.siirio.jemvisualsandbox.workbench.RacePowerStages.requiredUses(3), uses(race.ordinal()) + 1));
+    }
+    public int developmentTier(int raceIndex, int normal) {
+        String key = "DevelopmentTier" + raceIndex;
+        return mechanics.contains(key) ? mechanics.getInt(key) : normal;
+    }
+    public int developmentBloomUpgrade(int normal) {
+        return mechanics.contains("DevelopmentBloomUpgrade") ? mechanics.getInt("DevelopmentBloomUpgrade") : normal;
+    }
+    public void setDevelopmentTier(int raceIndex, int value) { mechanics.putInt("DevelopmentTier" + raceIndex, value); }
+    public void setDevelopmentBloomUpgrade(int value) { mechanics.putInt("DevelopmentBloomUpgrade", value); }
+
+    boolean mechanicsMigrated() { return mechanics.getBoolean("Migrated"); }
+
+    boolean initializeMechanics(long gameTime) {
+        boolean changed = false;
+        if (!mechanics.getBoolean("Migrated")) {
+            mechanics.putInt("Uses" + race.ordinal(), spellProgress);
+            for (String key : new String[]{"signature", "guardian", "gravity", "void_projectile", "lava_drink", "second_blossom"})
+                mechanics.putLong("Cooldown" + race.ordinal() + "_" + key, cooldown(key));
+            mechanics.putInt("BloomUpgrade", race.ordinal() == 2
+                    ? com.siirio.jemvisualsandbox.workbench.RacePowerStages.stageForUses(mechanics.getInt("Uses2")) : 0);
+            mechanics.putBoolean("Migrated", true);
+            changed = true;
+        }
+        if (!mechanics.getBoolean("GuardianCooldownV2")) {
+            long maximum = gameTime + RaceRules.GUARDIAN_COOLDOWN.get();
+            if (mechanics.getLong("Cooldown0_guardian") > maximum) mechanics.putLong("Cooldown0_guardian", maximum);
+            mechanics.putBoolean("GuardianCooldownV2", true);
+            changed = true;
+        }
+        return changed;
+    }
 
     public RaceRecord(RaceId race, long selectedAt) {
         this(race, selectedAt, 0L, false, 0L);
@@ -33,6 +80,27 @@ public final class RaceRecord {
         this.freeSwitchUsed = freeSwitchUsed;
         this.lastRespecAt = Math.max(0L, lastRespecAt);
     }
+
+    private RaceRecord(RaceRecord source) {
+        race = source.race;
+        selectedAt = source.selectedAt;
+        reselectReadyAt = source.reselectReadyAt;
+        testChoiceEpoch = source.testChoiceEpoch;
+        choiceRequired = source.choiceRequired;
+        activeTicks = source.activeTicks;
+        freeSwitchUsed = source.freeSwitchUsed;
+        lastRespecAt = source.lastRespecAt;
+        spellTier = source.spellTier;
+        spellProgress = source.spellProgress;
+        cooldowns.merge(source.cooldowns.copy());
+        mechanics.merge(source.mechanics.copy());
+        resonance = source.resonance;
+        waterExposure = source.waterExposure;
+        lavaExposure = source.lavaExposure;
+        livingPath = source.livingPath;
+    }
+
+    RaceRecord copy() { return new RaceRecord(this); }
 
     public RaceId race() { return race; }
     public long selectedAt() { return selectedAt; }

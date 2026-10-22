@@ -27,7 +27,7 @@ public final class EventCommands {
                 .then(Commands.literal("start").then(type))
                 .then(Commands.literal("stop").then(Commands.argument("id", UuidArgument.uuid())
                         .suggests((context, builder) -> SharedSuggestionProvider.suggest(
-                                SmpData.get(context.getSource().getServer()).all("events").stream()
+                                SmpData.get(context.getSource().getServer()).events().snapshots().stream()
                                         .filter(row -> !SmpData.closed(row) && row.hasUUID("id"))
                                         .map(row -> row.getUUID("id").toString()), builder))
                         .executes(context -> stopExact(context.getSource(), UuidArgument.getUuid(context, "id")))));
@@ -45,7 +45,14 @@ public final class EventCommands {
     }
 
     private static int stopExact(net.minecraft.commands.CommandSourceStack source, UUID id) {
-        var row = SmpData.get(source.getServer()).find("events", id);
+        var serverForMutation = source.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return stopExactInScope(source, id); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> stopExactInScope(source, id));
+    }
+
+    private static int stopExactInScope(net.minecraft.commands.CommandSourceStack source, UUID id) {
+        var row = SmpData.get(source.getServer()).events().current(id);
         if (row == null || SmpData.closed(row)) { source.sendFailure(Component.translatable("jem.smp.error.event_not_running")); return 0; }
         EventScheduler.finish(source.getServer(), row, "CANCELLED");
         source.sendSuccess(() -> Component.translatable("jem.smp.event_cancelled"), true);
@@ -74,20 +81,35 @@ public final class EventCommands {
     }
 
     private static boolean targeted(net.minecraft.server.MinecraftServer server,UUID boss) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return targetedInScope(server, boss); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> targetedInScope(server, boss));
+    }
+
+    private static boolean targetedInScope(net.minecraft.server.MinecraftServer server,UUID boss) {
         var data=SmpData.get(server);
-        return data.all("events").stream().anyMatch(row->!SmpData.closed(row)
+        return data.events().currentRows().stream().anyMatch(row->!SmpData.closed(row)
                 &&(row.hasUUID("targetBoss")&&row.getUUID("targetBoss").equals(boss)
                 ||row.hasUUID("bossEntity")&&row.getUUID("bossEntity").equals(boss)))
-                ||data.all("parties").stream().anyMatch(row->!SmpData.closed(row)&&row.hasUUID("bossEntity")&&row.getUUID("bossEntity").equals(boss));
+                ||data.parties().currentRows().stream().anyMatch(row->!SmpData.closed(row)&&row.hasUUID("bossEntity")&&row.getUUID("bossEntity").equals(boss));
     }
 
     private static int start(net.minecraft.commands.CommandSourceStack source,String type,BlockPos position,String waveThree,String waveFive,
                              net.minecraft.world.entity.LivingEntity targetBoss,StructureStaging.RaidTarget raid) {
+        var serverForMutation = source.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return startInScope(source, type, position, waveThree, waveFive, targetBoss, raid); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> startInScope(source, type, position, waveThree, waveFive, targetBoss, raid));
+    }
+
+    private static int startInScope(net.minecraft.commands.CommandSourceStack source,String type,BlockPos position,String waveThree,String waveFive,
+                             net.minecraft.world.entity.LivingEntity targetBoss,StructureStaging.RaidTarget raid) {
         var data=SmpData.get(source.getServer());
-        var row=data.create("events",new UUID(0,0));
+        var row=data.events().create(new UUID(0,0));
         if(type.equals("BLOOD_MOON")&&waveThree!=null&&!BloodMoonSetPieces.select(row,waveThree,waveFive)) {
             row.putString("state","CANCELLED");
-            data.changed(row);
+
             source.sendFailure(Component.translatable("jem.smp.error.blood_moon_variants"));
             return 0;
         }
@@ -125,7 +147,7 @@ public final class EventCommands {
             source.sendFailure(Component.translatable("jem.smp.error.raid_boss_unavailable"));
             return 0;
         }
-        data.prune("events");
+        data.events().prune();
         source.sendSuccess(()->Component.literal(row.getUUID("id").toString()),false);
         return 1;
     }

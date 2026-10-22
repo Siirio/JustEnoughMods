@@ -1,0 +1,20 @@
+// Native nested library is a declared build input, extracted only when compilation needs it.
+def output = layout.buildDirectory.file('xaero-lib/xaerolib.jar')
+def extract = tasks.register('extractXaeroLib') {
+    inputs.file(jemXaeroWorldMap)
+    outputs.file(output)
+    doLast {
+        new java.util.zip.ZipFile(jemXaeroWorldMap).withCloseable { archive ->
+            def entries = java.util.Collections.list(archive.entries()).findAll {
+                it.name.startsWith('META-INF/jarjar/xaerolib-forge-') && it.name.endsWith('.jar')
+            }
+            if (entries.size() != 1) throw new GradleException('Expected exactly one native Xaero library')
+            def target = output.get().asFile
+            target.parentFile.mkdirs()
+            archive.getInputStream(entries.first()).withCloseable { input ->
+                target.withOutputStream { it << input }
+            }
+        }
+    }
+}
+ext.jemXaeroCompileLib = files(output).builtBy(extract)

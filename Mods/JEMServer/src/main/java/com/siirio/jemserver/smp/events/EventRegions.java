@@ -183,6 +183,13 @@ public final class EventRegions {
     }
 
     public static boolean reserve(MinecraftServer server, CompoundTag event) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return reserveInScope(server, event); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> reserveInScope(server, store.events().bind(event)));
+    }
+
+    private static boolean reserveInScope(MinecraftServer server, CompoundTag event) {
         var level = server.overworld();
         int chunks = SmpConfig.EVENT_REGION_CHUNKS.get();
         int r = chunks * 8;
@@ -222,7 +229,7 @@ public final class EventRegions {
             if (!manual && distanceX * distanceX + distanceZ * distanceZ
                     < (long) SmpConfig.EVENT_DISTANCE.get() * SmpConfig.EVENT_DISTANCE.get())
                 continue;
-            if (SmpData.get(server).all("events").stream()
+            if (SmpData.get(server).events().currentRows().stream()
                     .anyMatch(
                             other ->
                                     other != event
@@ -250,6 +257,14 @@ public final class EventRegions {
 
     private static boolean reserveRequested(MinecraftServer server,CompoundTag event,ServerLevel level,BlockPos requested,
                                             int chunks) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return reserveRequestedInScope(server, event, level, requested, chunks); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> reserveRequestedInScope(server, store.events().bind(event), level, requested, chunks));
+    }
+
+    private static boolean reserveRequestedInScope(MinecraftServer server,CompoundTag event,ServerLevel level,BlockPos requested,
+                                            int chunks) {
         int size=chunks*16;
         int radius=size/2;
         int minX=requested.getX()-radius;
@@ -259,7 +274,7 @@ public final class EventRegions {
         BlockPos minimum=new BlockPos(minX,level.getMinBuildHeight(),minZ);
         BlockPos maximum=new BlockPos(maxX,level.getMaxBuildHeight()-1,maxZ);
         if(!level.getWorldBorder().isWithinBounds(minimum)||!level.getWorldBorder().isWithinBounds(maximum)) return false;
-        if(SmpData.get(server).all("events").stream().anyMatch(other->other!=event
+        if(SmpData.get(server).events().currentRows().stream().anyMatch(other->other!=event
                 &&other.getString("state").equals("ACTIVE")
                 &&other.getString("dimension").equals(level.dimension().location().toString())
                 &&minX<=maxX(other)&&maxX>=minX(other)&&minZ<=maxZ(other)&&maxZ>=minZ(other))) return false;

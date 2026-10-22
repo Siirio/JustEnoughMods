@@ -16,6 +16,8 @@ public final class SmpNetwork {
             .networkProtocolVersion(() -> SmpProtocol.VERSION)
             .clientAcceptedVersions(SmpProtocol.VERSION::equals).serverAcceptedVersions(SmpProtocol.VERSION::equals).simpleChannel();
 
+    private record ActionPacket(SmpAction action) {}
+
     public static void register() {
         CHANNEL.messageBuilder(SmpQuery.class, 0, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(SmpQuery::encode).decoder(SmpQuery::decode).consumerMainThread((packet, context) -> {
@@ -27,10 +29,10 @@ public final class SmpNetwork {
                     }
                     context.get().setPacketHandled(true);
                 }).add();
-        CHANNEL.messageBuilder(SmpAction.class, 1, NetworkDirection.PLAY_TO_SERVER)
-                .encoder(SmpAction::encode).decoder(SmpAction::decode).consumerMainThread((packet, context) -> {
+        CHANNEL.messageBuilder(ActionPacket.class, 1, NetworkDirection.PLAY_TO_SERVER)
+                .encoder((packet, buffer) -> packet.action().encode(buffer)).decoder(buffer -> new ActionPacket(SmpAction.decode(buffer))).consumerMainThread((packet, context) -> {
                     var player = context.get().getSender();
-                    if (player != null && SmpEnvironment.active(player)) SmpRequests.handle(player, packet);
+                    if (player != null && SmpEnvironment.active(player)) SmpRequests.handle(player, packet.action());
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(SmpUpdate.class, 2, NetworkDirection.PLAY_TO_CLIENT)
@@ -65,7 +67,7 @@ public final class SmpNetwork {
 
     public static void revive(UUID target) { CHANNEL.sendToServer(new SmpRevive(target)); }
     public static void query(SmpQuery query) { CHANNEL.sendToServer(query); }
-    public static void action(SmpAction action) { CHANNEL.sendToServer(action); }
+    public static void action(SmpAction action) { CHANNEL.sendToServer(new ActionPacket(action)); }
     public static void openModule(SmpModuleOpen.Module module) { CHANNEL.sendToServer(new SmpModuleOpen(module)); }
     public static void settlement(SettlementUiAction action) { CHANNEL.sendToServer(action); }
     public static void open(ServerPlayer player, String tab, UUID selected) { open(player, new SmpQuery(tab, "", "", 0, selected)); }
@@ -76,8 +78,6 @@ public final class SmpNetwork {
         } else SmpSubscriptions.open(player, query);
     }
     public static void close(ServerPlayer player) { SmpSubscriptions.close(player); }
-    public static void logout(ServerPlayer player) { close(player); SmpRequests.logout(player); }
-    public static void clear() { SmpSubscriptions.clear(); SmpRequests.clear(); }
     public static void shopRemoved(MinecraftServer server, UUID shopId) { SmpSubscriptions.shopRemoved(server, shopId); }
     public static void tick(MinecraftServer server) { SmpSubscriptions.tick(server); }
     static void homePreview(ServerPlayer player, net.minecraft.resources.ResourceLocation dimension, net.minecraft.core.BlockPos position) {

@@ -65,7 +65,6 @@
       "Docs/races/server-test-migration.json",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/JemRoles.java",
-      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/loot/PiglinFortuneLoot.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/network/RolesNetwork.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
@@ -254,6 +253,18 @@
         "Mods/JEMRoles/src/main/resources/jem_sandbox.mixins.json",
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java",
         "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/workbench/RaceDevelopment.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "engineering_v2_retire_source_owners",
+      "summary": "ENGINEERING v2 retired the inactive Roles UI/VFX graph and unused private menu copies after consumer inspection. Removed paths are preserved here as historical evidence, not current implementations. Existing active race presentation remains owned by RaceExperienceClient/RaceExperienceScreen where applicable; unused menu and VFX implementations have no replacement under their old rule. Prior behavior descriptions, precedence, status and history are preserved; this entry only corrects current source ownership.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/client/RoleClientState.java"
+      ],
+      "current_source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java"
       ]
     }
   ],

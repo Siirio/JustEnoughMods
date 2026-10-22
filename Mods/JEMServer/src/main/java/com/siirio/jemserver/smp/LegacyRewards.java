@@ -36,6 +36,11 @@ public final class LegacyRewards {
     }
 
     public static void migrate(ServerPlayer player) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> migrateOwned(player));
+    }
+
+    private static void migrateOwned(ServerPlayer player) {
         recover(player);
         var data = SmpData.get(player.server);
         var profile = Profiles.get(player.server, player.getUUID());
@@ -43,13 +48,13 @@ public final class LegacyRewards {
             if (profile.contains("rewardMigration", Tag.TAG_COMPOUND) || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
                 if (!profile.getString("rewardAvailability").equals("UNAVAILABLE_MISSING_REWARD_OWNER")) {
                     profile.putString("rewardAvailability", "UNAVAILABLE_MISSING_REWARD_OWNER");
-                    data.changed(profile); data.flush(player.server);
+                     data.flush(player.server);
                     player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.escrow_recovery_required"));
                 }
             }
             return;
         }
-        if (profile.contains("rewardAvailability")) { profile.remove("rewardAvailability"); data.changed(profile); data.flush(player.server); }
+        if (profile.contains("rewardAvailability")) { profile.remove("rewardAvailability");  data.flush(player.server); }
         while (profile.contains("rewardMigration", Tag.TAG_COMPOUND)
                 || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
             if (!profile.contains("rewardMigration", Tag.TAG_COMPOUND)) {
@@ -58,7 +63,7 @@ public final class LegacyRewards {
                 journal.put("items", profile.getList("deliveries", Tag.TAG_COMPOUND).copy());
                 profile.put("rewardMigration", journal);
                 profile.remove("deliveries");
-                data.changed(profile);
+                
                 data.flush(player.server);
             }
             var journal = profile.getCompound("rewardMigration");
@@ -66,17 +71,22 @@ public final class LegacyRewards {
                 RewardImports.importLegacy(
                         player, journal.getUUID("id"), journal.getList("items", Tag.TAG_COMPOUND));
                 journal.putBoolean("committed", true);
-                data.changed(profile);
+                
             }
             data.flush(player.server);
             RewardImports.finishLegacyImport(
                     player, journal.getUUID("id"));
             profile.remove("rewardMigration");
-            data.changed(profile);
+            
             data.flush(player.server);
         }
     }
     public static void recover(ServerPlayer player) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> recoverOwned(player));
+    }
+
+    private static void recoverOwned(ServerPlayer player) {
         var data = SmpData.get(player.server);
         var profile = Profiles.get(player.server, player.getUUID());
         if (player.getPersistentData().contains(DELIVERY_RECEIPT, Tag.TAG_COMPOUND)) {
@@ -84,12 +94,12 @@ public final class LegacyRewards {
                     player, profile, player.getPersistentData().getCompound(DELIVERY_RECEIPT));
         } else if (profile.contains("deliveryClaim", Tag.TAG_COMPOUND)) {
             profile.remove("deliveryClaim");
-            data.changed(profile);
+            
             data.flush(player.server);
         }
         var receipt = player.getPersistentData();
         var rows =
-                data.all("contracts").stream()
+                data.contracts().currentRows().stream()
                         .filter(
                                 row ->
                                         row.hasUUID("owner")
@@ -112,11 +122,11 @@ public final class LegacyRewards {
                 row.putString("legacyDisposition", "RETURNED_TO_OWNER");
             }
             row.putString("state", "CANCELLED");
-            data.changed(row);
+            
             data.flush(player.server);
         }
         if (receipt.hasUUID(DEPOSIT_RECEIPT)) {
-            var row = data.find("contracts", receipt.getUUID(DEPOSIT_RECEIPT));
+            var row = data.contracts().current(receipt.getUUID(DEPOSIT_RECEIPT));
             SmpRecords.require(row != null, "escrow_recovery_required");
             if (!row.getString("state").startsWith("FUNDING")
                     || row.contains("legacyDisposition")) {
@@ -130,6 +140,12 @@ public final class LegacyRewards {
     private static void finishDelivery(
             ServerPlayer player, CompoundTag profile, CompoundTag receipt) {
         var data = SmpData.get(player.server);
+        data.edit(() -> finishDeliveryOwned(player, data.profiles().bind(profile), receipt));
+    }
+
+    private static void finishDeliveryOwned(
+            ServerPlayer player, CompoundTag profile, CompoundTag receipt) {
+        var data = SmpData.get(player.server);
         if (profile.contains("deliveryClaim", Tag.TAG_COMPOUND)) {
             var journal = profile.getCompound("deliveryClaim");
             SmpRecords.require(
@@ -138,7 +154,7 @@ public final class LegacyRewards {
             persistPlayer(player);
             profile.put("deliveries", receipt.getList("remaining", Tag.TAG_COMPOUND).copy());
             profile.remove("deliveryClaim");
-            data.changed(profile);
+            
         }
         data.flush(player.server);
         player.getPersistentData().remove(DELIVERY_RECEIPT);
@@ -147,20 +163,9 @@ public final class LegacyRewards {
 
     private static void persistPlayer(ServerPlayer player) {
         CompoundTag expected = player.saveWithoutId(new CompoundTag());
-        ((com.siirio.jemserver.mixin.PlayerSaveAccess) player.server.getPlayerList())
-                .jem$save(player);
-        if (player.server.isSingleplayer()) player.server.saveEverything(false, true, true);
-        var file =
-                player.server
-                        .getWorldPath(
-                                net.minecraft.world.level.storage.LevelResource.PLAYER_DATA_DIR)
-                        .resolve(player.getUUID() + ".dat")
-                        .toFile();
         try {
-            CompoundTag saved = NbtIo.readCompressed(file);
-            boolean matches =
-                    expected.getList("Inventory", Tag.TAG_COMPOUND)
-                            .equals(saved.getList("Inventory", Tag.TAG_COMPOUND));
+            CompoundTag saved = NativePlayerFiles.saveAndVerifyInventory(player, true);
+            boolean matches = true;
             for (String key : List.of(DEPOSIT_RECEIPT, DELIVERY_RECEIPT))
                 matches &=
                         Objects.equals(

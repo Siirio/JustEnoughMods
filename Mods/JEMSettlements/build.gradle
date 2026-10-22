@@ -1,4 +1,4 @@
-plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)'; id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' }
+plugins { id 'net.minecraftforge.gradle' version '6.0.54'; id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' }
 group = 'com.siirio.jemsettlements'
 version = '2.1.0'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -21,8 +21,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly files(xaeroWorldMap)
     compileOnly files(xaeroLib)
-    compileOnly files('../JEMIdentity/build/classes/java/main')
-    compileOnly files('../JEMEconomy/build/classes/java/main')
+    compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
     compileOnly fg.deobf(files('../../Server/mods/Jade-1.20.1-Forge-11.13.3.jar'))
     compileOnly fg.deobf('local:recruits:1.20.1-1.15.2')
     compileOnly fg.deobf(files('../../Client/ManagedPack/mods/PatPat-1.3.1%2B1.20.1%2Bforge.jar'))

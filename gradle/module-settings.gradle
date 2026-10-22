@@ -1,0 +1,5 @@
+def inventory = new groovy.json.JsonSlurper().parse(new File(rootProject.projectDir, 'tools/module-inventory.json'))
+inventory.modules.findAll { it.java }.each { module ->
+    include(module.name)
+    project(":${module.name}").projectDir = new File(rootProject.projectDir, "Mods/${module.name}")
+}

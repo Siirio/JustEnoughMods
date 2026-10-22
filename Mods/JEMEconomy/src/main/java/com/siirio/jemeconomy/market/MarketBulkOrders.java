@@ -137,27 +137,7 @@ public final class MarketBulkOrders extends SavedData {
     }
     /** Same native NBT format and atomic replacement as the existing financial durability owner. */
     private static void persist(MinecraftServer server,SavedData data,String name) {
-        var path=server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT).resolve("data");
-        var target=path.resolve(name+".dat");var temporary=path.resolve(name+".bulk.tmp");
-        CompoundTag root=new CompoundTag();root.put("data",data.save(new CompoundTag()));NbtUtils.addCurrentDataVersion(root);
-        try {
-            java.nio.file.Files.createDirectories(path);NbtIo.writeCompressed(root,temporary.toFile());
-            try(var channel=java.nio.channels.FileChannel.open(temporary,java.nio.file.StandardOpenOption.WRITE)){channel.force(true);}
-            if (net.minecraft.Util.getPlatform() == net.minecraft.Util.OS.WINDOWS) {
-                // Same native replacement contract used by the installed tax durability owner.
-                // JDK atomic move ignores REPLACE_EXISTING on Windows; never delete the committed file first.
-                var windows = com.sun.jna.platform.win32.Kernel32.INSTANCE;
-                int flags = com.sun.jna.platform.win32.WinBase.MOVEFILE_REPLACE_EXISTING
-                        | com.sun.jna.platform.win32.WinBase.MOVEFILE_WRITE_THROUGH;
-                if (!windows.MoveFileEx(temporary.toAbsolutePath().toString(), target.toAbsolutePath().toString(),
-                        new com.sun.jna.platform.win32.WinDef.DWORD(flags)))
-                    throw new java.io.IOException("Native bulk journal replacement failed: " + windows.GetLastError());
-            } else {
-                java.nio.file.Files.move(temporary,target,java.nio.file.StandardCopyOption.ATOMIC_MOVE,java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-            }
-            if (!root.equals(NbtIo.readCompressed(target.toFile()))) throw new java.io.IOException("Bulk journal save mismatch: " + name);
-            data.setDirty(false);
-        }catch(java.io.IOException failure){data.setDirty();throw new IllegalStateException("Bulk journal durability failed; retain pending operation",failure);}
+        com.siirio.jemeconomy.persistence.NativeSavedDataCommit.save(server, data, name);
     }
     @Override public synchronized CompoundTag save(CompoundTag tag) {
         CompoundTag rows=new CompoundTag();orders.forEach(rows::put);tag.put("Orders",rows);return tag;

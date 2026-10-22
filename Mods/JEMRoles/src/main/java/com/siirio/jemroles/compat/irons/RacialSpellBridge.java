@@ -1,6 +1,6 @@
 package com.siirio.jemroles.compat.irons;
 
-import com.siirio.jemroles.client.RoleClientState;
+import com.siirio.jemvisualsandbox.client.races.RaceExperienceClient;
 import com.siirio.jemroles.race.RaceId;
 import com.siirio.jemroles.race.RaceService;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
@@ -16,12 +16,20 @@ public final class RacialSpellBridge {
     @SubscribeEvent public static void selection(SpellSelectionManager.SpellSelectionEvent event) {
         RaceId race = event.getEntity() instanceof ServerPlayer player
                 ? RaceService.snapshot(player).map(value -> value.race()).orElse(null)
-                : RoleClientState.race();
+                : clientRace();
         if (race == null) return;
         int tier = event.getEntity() instanceof ServerPlayer player
                 ? RaceService.snapshot(player).map(value -> value.spellTier()).orElse(1)
-                : RoleClientState.spellTier();
+                : clientTier();
         event.addSelectionOption(new SpellData(spell(race), Math.max(1, Math.min(3, tier))), SLOT, 0);
+    }
+    private static RaceId clientRace() {
+        var status=RaceExperienceClient.status();
+        return status!=null&&status.selected()?RaceId.values()[status.race()]:null;
+    }
+    private static int clientTier() {
+        var status=RaceExperienceClient.status();
+        return status==null?1:status.tierAt(Math.max(0,status.race()))+1;
     }
     public static AbstractSpell spell(RaceId race) { return switch (race) {
         case ANCESTORS -> RacialSpells.LIFE_CHORUS.get(); case VOID_WALKERS -> RacialSpells.RIFT_AMBUSH.get();
@@ -51,9 +59,9 @@ public final class RacialSpellBridge {
     }
     public static void refreshClient(boolean select) {
         io.redspace.ironsspellbooks.player.ClientMagicData.updateSpellSelectionManager();
-        if (!select || RoleClientState.race() == null) return;
+        if (!select || clientRace() == null) return;
         var manager = io.redspace.ironsspellbooks.player.ClientMagicData.getSpellSelectionManager();
-        var desired = spell(RoleClientState.race());
+        var desired = spell(clientRace());
         for (int i = 0; i < manager.getSpellCount(); i++) if (manager.getSpellData(i).getSpell().equals(desired)) { manager.makeSelection(i); break; }
     }
 

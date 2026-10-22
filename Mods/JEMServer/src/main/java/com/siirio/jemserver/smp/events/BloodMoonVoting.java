@@ -26,30 +26,51 @@ public final class BloodMoonVoting {
     }
 
     public static void open(MinecraftServer server, CompoundTag event, int wave) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { openInScope(server, event, wave); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> openInScope(server, store.events().bind(event), wave));
+    }
+
+    private static void openInScope(MinecraftServer server, CompoundTag event, int wave) {
         CompoundTag voting = new CompoundTag();
         voting.putInt("wave", wave);
         voting.putLong("ends", System.currentTimeMillis() + TIMEOUT_MILLIS);
         voting.putLong("remindAt",System.currentTimeMillis()+REMINDER_MILLIS);
         voting.put("votes", new CompoundTag());
         event.put(KEY, voting);
-        SmpData.get(server).changed(event);
+
         announce(server,event);
     }
 
     public static void vote(ServerPlayer player, UUID eventId, boolean continueBattle) {
-        CompoundTag event = SmpData.get(player.server).find("events", eventId);
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { voteInScope(player, eventId, continueBattle); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> voteInScope(player, eventId, continueBattle));
+    }
+
+    private static void voteInScope(ServerPlayer player, UUID eventId, boolean continueBattle) {
+        CompoundTag event = SmpData.get(player.server).events().current(eventId);
         if (event == null || !event.getString("state").equals("ACTIVE") || !active(event)) return;
         CompoundTag voting = event.getCompound(KEY);
         if (voting.getBoolean("resolved") || participants(player.server, event).stream().noneMatch(value -> value.getUUID().equals(player.getUUID()))) return;
         voting.getCompound("votes").putString(player.getStringUUID(), continueBattle ? CONTINUE : CASH_OUT);
         event.put(KEY, voting);
-        SmpData.get(player.server).changed(event);
+
         evaluate(player.server, event);
         announce(player.server,event);
         CombatNetwork.refreshBloodMoon(player.server, event);
     }
 
     public static void tick(MinecraftServer server, CompoundTag event) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(server, event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(server, store.events().bind(event)));
+    }
+
+    private static void tickInScope(MinecraftServer server, CompoundTag event) {
         if (!active(event)) return;
         CompoundTag voting = event.getCompound(KEY);
         long now = System.currentTimeMillis();
@@ -59,7 +80,7 @@ public final class BloodMoonVoting {
                 event.putInt("continuedWave",voting.getInt("wave"));
                 event.remove(KEY);
                 event.putLong("nextWave", now);
-                SmpData.get(server).changed(event);
+
                 CombatNetwork.refreshBloodMoon(server, event);
             } else {
                 BloodMoon.cashOut(server, event);
@@ -69,21 +90,28 @@ public final class BloodMoonVoting {
         if(now>=voting.getLong("remindAt")) {
             voting.putLong("remindAt",Long.MAX_VALUE);
             event.put(KEY,voting);
-            SmpData.get(server).changed(event);
+
             announce(server,event);
         }
         if (!evaluate(server, event) && now >= voting.getLong("ends")) resolve(server, event, CASH_OUT);
     }
 
     public static void disconnect(ServerPlayer player) {
-        for (CompoundTag event : SmpData.get(player.server).all("events")) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { disconnectInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> disconnectInScope(player));
+    }
+
+    private static void disconnectInScope(ServerPlayer player) {
+        for (CompoundTag event : SmpData.get(player.server).events().currentRows()) {
             if (!event.getString("state").equals("ACTIVE") || !active(event)
                     || !new EventSession(event).accepted(player.getUUID())) continue;
             event.getCompound(KEY).getCompound("votes").remove(player.getStringUUID());
             List<ServerPlayer> remaining = participants(player.server, event).stream()
                     .filter(value -> !value.getUUID().equals(player.getUUID())).toList();
             evaluate(player.server, event, remaining);
-            SmpData.get(player.server).changed(event);
+
             CombatNetwork.refreshBloodMoon(player.server, event);
         }
     }
@@ -109,13 +137,20 @@ public final class BloodMoonVoting {
     }
 
     private static void resolve(MinecraftServer server, CompoundTag event, String decision) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { resolveInScope(server, event, decision); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> resolveInScope(server, store.events().bind(event), decision));
+    }
+
+    private static void resolveInScope(MinecraftServer server, CompoundTag event, String decision) {
         CompoundTag voting = event.getCompound(KEY);
         if (voting.getBoolean("resolved")) return;
         voting.putBoolean("resolved", true);
         voting.putString("decision", decision);
         voting.putLong("decisionAt", System.currentTimeMillis() + DECISION_DISPLAY_MILLIS);
         event.put(KEY, voting);
-        SmpData.get(server).changed(event);
+
         announce(server,event);
         CombatNetwork.refreshBloodMoon(server, event);
     }

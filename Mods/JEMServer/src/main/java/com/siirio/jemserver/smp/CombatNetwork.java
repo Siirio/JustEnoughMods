@@ -25,8 +25,6 @@ public final class CombatNetwork {
     private static final String VERSION="4";
     private static final SimpleChannel CHANNEL=NetworkRegistry.ChannelBuilder.named(new ResourceLocation("jem_server","combat_v2"))
             .networkProtocolVersion(()->VERSION).clientAcceptedVersions(VERSION::equals).serverAcceptedVersions(VERSION::equals).simpleChannel();
-    private static final Map<UUID,CompoundTag> SENT=new HashMap<>();
-    private static final Map<UUID,CompoundTag> RESULTS=new HashMap<>();
     public record Update(CompoundTag data,boolean result) {}
     public record Claim(UUID result) {}
     public record Vote(UUID event,boolean continueBattle) {}
@@ -58,7 +56,7 @@ public final class CombatNetwork {
     public static void tick(MinecraftServer server) {
         if(server.getTickCount()%TICKS_PER_SECOND!=0) return;
         var visible=new HashSet<UUID>();
-        for(var party:SmpData.get(server).all("parties")) {
+        for(var party:SmpData.get(server).parties().snapshots()) {
             if(!party.getString("state").equals("ACTIVE") || !party.hasUUID("bossEntity")) continue;
             var dimension=ResourceLocation.tryParse(party.getString("dimension"));
             var level=dimension==null?null:server.getLevel(ResourceKey.create(Registries.DIMENSION,dimension));
@@ -67,7 +65,7 @@ public final class CombatNetwork {
             var snapshot=base(party,boss.getDisplayName().getString(),false);
             snapshot.putString("titleKey",boss.getType().getDescriptionId());
             if(party.hasUUID("eventId")) {
-                var event=SmpData.get(server).find("events",party.getUUID("eventId"));
+                var event=SmpData.get(server).events().snapshot(party.getUUID("eventId"));
                 if(event!=null) snapshot.putLong("ends",event.getLong("ends"));
             }
             var rows=new ListTag();
@@ -90,7 +88,7 @@ public final class CombatNetwork {
                 if(player!=null && player.level()==level && !player.isSpectator()) publish(player,snapshot,visible);
             }
         }
-        for(var event:SmpData.get(server).all("events")) {
+        for(var event:SmpData.get(server).events().snapshots()) {
             if(!event.getString("state").equals("ACTIVE") || !event.getString("activity").equals("BLOOD_MOON") || !event.getBoolean("combatStarted")) continue;
             var snapshot=bloodSnapshot(server,event);
             for(UUID id:SmpRecords.memberIds(event)) {
@@ -98,10 +96,10 @@ public final class CombatNetwork {
                 if(player!=null && new EventSession(event).accepted(id) && player.level().dimension().location().toString().equals(event.getString("dimension"))) publish(player,snapshot,visible);
             }
         }
-        for(UUID id:List.copyOf(SENT.keySet())) if(!visible.contains(id)) {
+        for(UUID id:List.copyOf(SmpServerSession.get(server).combat.keySet())) if(!visible.contains(id)) {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null) send(player,new Update(new CompoundTag(),false));
-            SENT.remove(id);
+            SmpServerSession.get(server).combat.remove(id);
         }
     }
 
@@ -112,7 +110,7 @@ public final class CombatNetwork {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null && new EventSession(event).accepted(id)) {
                 send(player,new Update(snapshot,false));
-                SENT.put(id,snapshot.copy());
+                SmpServerSession.get(server).combat.put(id,snapshot.copy());
             }
         }
     }
@@ -166,9 +164,9 @@ public final class CombatNetwork {
     }
     private static void publish(ServerPlayer player,CompoundTag snapshot,Set<UUID> visible) {
         if(!visible.add(player.getUUID())) return;
-        if(!snapshot.equals(SENT.get(player.getUUID()))) {
+        if(!snapshot.equals(SmpServerSession.get(player.server).combat.get(player.getUUID()))) {
             send(player,new Update(snapshot,false));
-            SENT.put(player.getUUID(),snapshot.copy());
+            SmpServerSession.get(player.server).combat.put(player.getUUID(),snapshot.copy());
         }
     }
     @SubscribeEvent public static void closed(HostedEncounterClosedEvent event) {
@@ -226,8 +224,7 @@ public final class CombatNetwork {
         }
     }
     private static void complete(ServerPlayer player,CompoundTag result) {
-        RESULTS.put(player.getUUID(),result.copy());
-        SENT.remove(player.getUUID());
+        SmpServerSession.get(player.server).combat.remove(player.getUUID());
         send(player,new Update(new CompoundTag(),false));
         sendResult(player,result);
     }
@@ -242,8 +239,9 @@ public final class CombatNetwork {
     private static void send(ServerPlayer player,Update packet) {
         if(CHANNEL.isRemotePresent(player.connection.connection)) CHANNEL.send(PacketDistributor.PLAYER.with(()->player),packet);
     }
-    @SubscribeEvent public static void dimension(net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent event) { SENT.remove(event.getEntity().getUUID()); }
-    public static void logout(ServerPlayer player) { SENT.remove(player.getUUID());RESULTS.remove(player.getUUID()); }
-    public static void clear() { SENT.clear();RESULTS.clear(); }
+    @SubscribeEvent public static void dimension(net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && SmpEnvironment.active(player))
+            SmpServerSession.get(player.server).combat.remove(player.getUUID());
+    }
     private CombatNetwork() {}
 }

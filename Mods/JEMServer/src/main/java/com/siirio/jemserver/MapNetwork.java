@@ -127,7 +127,7 @@ public final class MapNetwork {
     private static List<EventArea> eventAreas(ServerPlayer player) {
         long now = System.currentTimeMillis();
         var data = com.siirio.jemserver.smp.SmpData.get(player.server);
-        var areas = new java.util.ArrayList<>(data.all("events").stream()
+        var areas = new java.util.ArrayList<>(data.events().snapshots().stream()
                 .filter(row -> "ACTIVE".equals(row.getString("state")) && row.getLong("ends") > now
                         && row.hasUUID("id") && row.contains("position") && row.getInt("radius") > 0
                         && ResourceLocation.tryParse(row.getString("dimension")) != null)
@@ -136,7 +136,7 @@ public final class MapNetwork {
                         new ResourceLocation(row.getString("dimension")), BlockPos.of(row.getLong("position")),
                         com.siirio.jemserver.smp.events.EventRegions.minX(row), com.siirio.jemserver.smp.events.EventRegions.minZ(row),
                         com.siirio.jemserver.smp.events.EventRegions.maxX(row), com.siirio.jemserver.smp.events.EventRegions.maxZ(row))).toList());
-        data.all("parties").stream().filter(row -> "ACTIVE".equals(row.getString("state")) && row.hasUUID("structureId")
+        data.parties().snapshots().stream().filter(row -> "ACTIVE".equals(row.getString("state")) && row.hasUUID("structureId")
                         && row.contains("position") && row.getIntArray("structureBounds").length == 6
                         && ResourceLocation.tryParse(row.getString("dimension")) != null)
                 .map(row -> {

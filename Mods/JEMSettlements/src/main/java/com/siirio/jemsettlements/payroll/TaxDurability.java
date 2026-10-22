@@ -15,7 +15,7 @@ import net.minecraft.world.level.storage.LevelResource;
 public final class TaxDurability {
     private TaxDurability() { }
     public static void save(MinecraftServer server, SavedData data, String name) {
-        if (!name.equals("jem_settlements") && !name.equals("jem_economy") && !name.equals("jem_sandbox_civic") && !name.equals("jem_settlements_emeralds")) throw new IllegalArgumentException("Unknown tax storage owner");
+        if (!name.equals("jem_settlements") && !name.equals("jem_sandbox_civic") && !name.equals("jem_settlements_emeralds")) throw new IllegalArgumentException("Unknown tax storage owner");
         var directory = server.getWorldPath(LevelResource.ROOT).resolve("data");
         var target = directory.resolve(name + ".dat");
         var temporary = directory.resolve(name + ".tax.tmp");

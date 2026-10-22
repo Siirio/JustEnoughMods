@@ -39,12 +39,19 @@ public final class EventScheduler {
     }
 
     public static void tick(MinecraftServer server) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(server); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(server));
+    }
+
+    private static void tickInScope(MinecraftServer server) {
         if (!SmpEnvironment.active(server)) return;
         if (server.getTickCount() % 20 != 0) return;
         var data = SmpData.get(server);
         long now = System.currentTimeMillis();
         if (!EventRuntime.enabled(server)) {
-            for (var row : List.copyOf(data.all("events"))) {
+            for (var row : List.copyOf(data.events().currentRows())) {
                 if (!EventRuntime.ordinaryRaid(row) || !row.getString("state").equals("ACTIVE")) continue;
                 if (now >= row.getLong("ends")) finish(server, row, "FAILED");
                 else if (row.getBoolean("combatStarted")) new EncounterContext(row).expireDisconnected(server, now);
@@ -65,35 +72,35 @@ public final class EventScheduler {
                                 exception);
             }
             var scheduled = slots.stream().map(WeeklySchedule.Slot::id).collect(java.util.stream.Collectors.toSet());
-            for (var row : data.all("events")) {
+            for (var row : data.events().currentRows()) {
                 if (row.getLong("planned") < week && row.getString("state").equals("PLANNED")) {
                     row.putString("state", "SKIPPED");
-                    data.changed(row);
+
                 }
                 if (row.getString("state").equals("PLANNED")
                         && !row.getString("slot").startsWith("manual:")
                         && row.getLong("planned") >= week
                         && !scheduled.contains(row.getString("slot"))) {
                     row.putString("state", "SKIPPED");
-                    data.changed(row);
+
                 }
             }
             var known = new HashSet<String>();
-            data.all("events").forEach(row -> known.add(row.getString("slot")));
+            data.events().currentRows().forEach(row -> known.add(row.getString("slot")));
             for (var slot : slots)
                 if (!known.contains(slot.id())) {
-                    var row = data.create("events", SERVER);
+                    var row = data.events().create(SERVER);
                     row.putString("slot", slot.id());
                     row.putString("activity", slot.type());
                     row.putString("title", slot.type());
                     row.putLong("planned", slot.planned());
                     row.putString("state", "PLANNED");
-                    data.changed(row);
+
                 }
             checkedWeek = week;
-            data.prune("events");
+            data.events().prune();
         }
-        for (var row : data.all("events")) {
+        for (var row : data.events().currentRows()) {
             if (row.getString("state").equals("ACTIVE")) {
                 if (now >= row.getLong("ends")) {
                     finish(
@@ -110,7 +117,7 @@ public final class EventScheduler {
             String type = row.getString("activity");
             if (hasActive(data,type,row)) continue;
             long lastEnd =
-                    data.all("events").stream()
+                    data.events().currentRows().stream()
                             .filter(
                                     other ->
                                             other != row
@@ -125,25 +132,39 @@ public final class EventScheduler {
                 row.putLong(
                         "nextRegionAttempt",
                         now + SmpConfig.EVENT_REGION_RETRY_SECONDS.get() * 1000L);
-                data.changed(row);
+
             }
             start(server, row, now);
         }
     }
 
     public static boolean start(MinecraftServer server, CompoundTag row, long now) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return startInScope(server, row, now); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> startInScope(server, store.events().bind(row), now));
+    }
+
+    private static boolean startInScope(MinecraftServer server, CompoundTag row, long now) {
         if (!EventRuntime.enabled(server)) return false;
         String type = row.getString("activity");
         var data = SmpData.get(server);
         if (!row.getString("state").equals("PLANNED") || row.getBoolean(PREPARING) || hasActiveOrPreparing(data,type,row)) return false;
         row.putBoolean(PREPARING, true);
         row.putLong(PREPARATION_QUEUED, now);
-        data.changed(row);
+
         return true;
     }
 
     private static void prepareNext(MinecraftServer server, SmpData data, long now) {
-        var row = data.all("events").stream()
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { prepareNextInScope(server, data, now); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> prepareNextInScope(server, data, now));
+    }
+
+    private static void prepareNextInScope(MinecraftServer server, SmpData data, long now) {
+        var row = data.events().currentRows().stream()
                 .filter(event -> event.getString("state").equals("PLANNED") && event.getBoolean(PREPARING))
                 .min(Comparator.comparingLong(event -> event.getLong(PREPARATION_QUEUED)))
                 .orElse(null);
@@ -160,7 +181,7 @@ public final class EventScheduler {
         if (!prepared) {
             if (row.getString("slot").startsWith("manual:")) row.putString("state", "CANCELLED");
             else row.putLong("nextRegionAttempt", now + SmpConfig.EVENT_REGION_RETRY_SECONDS.get() * 1000L);
-            data.changed(row);
+
             return;
         }
         row.putString("state", "ACTIVE");
@@ -168,7 +189,7 @@ public final class EventScheduler {
         row.putLong("started", now);
         if (!type.equals("COOKING_SHOW")) row.putLong("ends", now + Math.min(type.equals("RESOURCE_RUSH") ? 2 : 3, SmpConfig.EVENT_HOURS.get()) * 3600000L);
         row.putBoolean("catchup", now - row.getLong("planned") > 60000);
-        data.changed(row);
+
         if (type.equals("BLOOD_MOON") && row.getString("slot").startsWith("manual:") && !BloodMoon.startManual(server, row)) {
             finish(server, row, "CANCELLED");
             return;
@@ -193,17 +214,33 @@ public final class EventScheduler {
     }
 
     public static List<CompoundTag> active(MinecraftServer server) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return activeInScope(server); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> activeInScope(server));
+    }
+
+    private static List<CompoundTag> activeInScope(MinecraftServer server) {
         if (!SmpEnvironment.active(server)) return List.of();
         int tick=server.getTickCount();
         ActiveEventSnapshot cached=ACTIVE_CACHE.get(server);
-        if(cached!=null&&cached.tick()==tick) return cached.rows();
-        List<CompoundTag> rows=SmpData.get(server).all("events").stream()
+        var records = SmpData.get(server).events();
+        if(cached!=null&&cached.tick()==tick)
+            return cached.ids().stream().map(records::current).filter(java.util.Objects::nonNull).toList();
+        List<CompoundTag> rows=records.currentRows().stream()
                 .filter(e -> EventRuntime.available(server, e) && e.getString("state").equals("ACTIVE")).toList();
-        ACTIVE_CACHE.put(server,new ActiveEventSnapshot(tick,rows));
+        ACTIVE_CACHE.put(server,new ActiveEventSnapshot(tick,rows.stream().map(row -> row.getUUID("id")).toList()));
         return rows;
     }
 
     public static void finish(MinecraftServer server, CompoundTag row, String state) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishInScope(server, row, state); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishInScope(server, store.events().bind(row), state));
+    }
+
+    private static void finishInScope(MinecraftServer server, CompoundTag row, String state) {
         announce(server,row,false,state);
         if(row.getBoolean("combatStarted")) new EncounterContext(row).complete(server,state.equals("COMPLETED"));
         row.putString("state", state);
@@ -218,10 +255,17 @@ public final class EventScheduler {
         row.remove("placements");
         BloodMoon.cleanup(server, row);
         RaidEvent.cleanup(server, row);
-        SmpData.get(server).changed(row);
+
     }
 
     public static void failAttempt(MinecraftServer server, CompoundTag row) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { failAttemptInScope(server, row); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> failAttemptInScope(server, store.events().bind(row)));
+    }
+
+    private static void failAttemptInScope(MinecraftServer server, CompoundTag row) {
         if (!row.getString("state").equals("ACTIVE") || !COMBAT_EVENTS.contains(row.getString("activity"))) return;
         announce(server,row,false,"FAILED");
         var encounter=new EncounterContext(row);
@@ -248,7 +292,7 @@ public final class EventScheduler {
         encounter.resetAttempt();
         ATTEMPT_FIELDS.forEach(row::remove);
         if(row.getString("activity").equals("BLOOD_MOON")) EventAreaHooks.releaseBloodMoon(server,row.getUUID("id"),true);
-        data.changed(row);
+
     }
 
     public static boolean cancelAttempt(MinecraftServer server, CompoundTag row, UUID actionToken) {
@@ -260,43 +304,74 @@ public final class EventScheduler {
     }
 
     private static void setPartyState(MinecraftServer server, CompoundTag event, String state) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { setPartyStateInScope(server, event, state); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> setPartyStateInScope(server, store.events().bind(event), state));
+    }
+
+    private static void setPartyStateInScope(MinecraftServer server, CompoundTag event, String state) {
         if (!event.hasUUID("party")) return;
         var data=SmpData.get(server);
-        var party=data.find("parties",event.getUUID("party"));
+        var party=data.parties().current(event.getUUID("party"));
         if(party!=null && !SmpData.closed(party)) {
             party.putString("state",state);
             HostedBoundary.clearParty(party);
-            data.changed(party);
+
         }
     }
 
     private static void finishPartyTeleport(MinecraftServer server,CompoundTag event) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishPartyTeleportInScope(server, event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishPartyTeleportInScope(server, store.events().bind(event)));
+    }
+
+    private static void finishPartyTeleportInScope(MinecraftServer server,CompoundTag event) {
         if(!event.hasUUID("party")) return;
-        CompoundTag party=SmpData.get(server).find("parties",event.getUUID("party"));
+        CompoundTag party=SmpData.get(server).parties().current(event.getUUID("party"));
         if(party==null) return;
         if(event.getString("activity").equals("BOSS_RAID")) StructureStaging.finish(server,party);
         else PartyTeleportFlow.finish(server,party);
     }
 
     private static boolean hasActive(SmpData data, String activity, CompoundTag excluded) {
-        return data.all("events").stream().anyMatch(event -> event != excluded
+        var store = data;
+        return store.edit(() -> hasActiveInScope(data, activity, store.events().bind(excluded)));
+    }
+
+    private static boolean hasActiveInScope(SmpData data, String activity, CompoundTag excluded) {
+        return data.events().currentRows().stream().anyMatch(event -> event != excluded
                 && event.getString("state").equals("ACTIVE")
                 && event.getString("activity").equals(activity));
     }
 
     private static boolean hasActiveOrPreparing(SmpData data, String activity, CompoundTag excluded) {
-        return data.all("events").stream().anyMatch(event -> event != excluded
+        var store = data;
+        return store.edit(() -> hasActiveOrPreparingInScope(data, activity, store.events().bind(excluded)));
+    }
+
+    private static boolean hasActiveOrPreparingInScope(SmpData data, String activity, CompoundTag excluded) {
+        return data.events().currentRows().stream().anyMatch(event -> event != excluded
                 && event.getString("activity").equals(activity)
                 && (event.getString("state").equals("ACTIVE") || event.getBoolean(PREPARING)));
     }
 
     public static void cancelPreparation(MinecraftServer server, CompoundTag row) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { cancelPreparationInScope(server, row); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> cancelPreparationInScope(server, store.events().bind(row)));
+    }
+
+    private static void cancelPreparationInScope(MinecraftServer server, CompoundTag row) {
         row.remove(PREPARING);
         row.remove(PREPARATION_QUEUED);
         row.putString("state", "CANCELLED");
         row.putLong("ends", System.currentTimeMillis());
         if(row.getString("activity").equals("BOSS_RAID")) RaidEvent.cleanup(server,row);
-        SmpData.get(server).changed(row);
+
     }
 
     private static void cleanupFailedBloodMoon(MinecraftServer server, CompoundTag event) {

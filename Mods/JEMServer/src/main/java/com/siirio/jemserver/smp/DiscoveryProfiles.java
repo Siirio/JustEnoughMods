@@ -16,6 +16,12 @@ public final class DiscoveryProfiles {
 
     @SubscribeEvent
     public static void explored(TickEvent.PlayerTickEvent event) {
+        if (!(event.player instanceof ServerPlayer)) return;
+        var data = SmpData.get(((ServerPlayer) event.player).server);
+        data.edit(() -> exploredOwned(event));
+    }
+
+    private static void exploredOwned(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END
                 || !(event.player instanceof ServerPlayer player)
                 || player instanceof FakePlayer
@@ -32,11 +38,17 @@ public final class DiscoveryProfiles {
         visited.putBoolean(id, true);
         profile.put("discoveredBiomes", visited);
         profile.putLong("biomesExplored", visited.size());
-        SmpData.get(player.server).changed(profile);
+        
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void tamed(AnimalTameEvent event) {
+        if (!(event.getTamer() instanceof ServerPlayer)) return;
+        var data = SmpData.get(((ServerPlayer) event.getTamer()).server);
+        data.edit(() -> tamedOwned(event));
+    }
+
+    private static void tamedOwned(AnimalTameEvent event) {
         if (!(event.getTamer() instanceof ServerPlayer player) || player instanceof FakePlayer)
             return;
         var entity = event.getAnimal();
@@ -51,7 +63,7 @@ public final class DiscoveryProfiles {
         profile.put("tamedSpecies", species);
         profile.putLong("tameSpecies", species.size());
         profile.putLong("animalsTamed", profile.getLong("animalsTamed") + 1);
-        SmpData.get(player.server).changed(profile);
+        
     }
 
     private DiscoveryProfiles() {}

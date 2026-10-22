@@ -5,6 +5,11 @@ import net.minecraft.server.level.ServerPlayer;
 
 public final class EventEntryActions {
     public static void choose(ServerPlayer player,EventChoice choice) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> chooseOwned(player, choice));
+    }
+
+    private static void chooseOwned(ServerPlayer player,EventChoice choice) {
         if (!SmpEnvironment.active(player) || !SmpRequests.allow(player)) return;
         try {
             if(choice.type()==EventEntryKind.BOSS_STRUCTURE) { StructureStaging.choose(player,choice.id(),choice.mode().name(),choice.solo());return; }
@@ -15,13 +20,13 @@ public final class EventEntryActions {
                 SmpRecords.require(BossHostingPrompt.canOffer(player,boss),"unavailable");
                 SmpRuntime.host(player,boss);
                 if(choice.solo()) {
-                    var party=SmpData.get(player.server).all("parties").stream().filter(p->p.hasUUID("bossEntity") && p.getUUID("bossEntity").equals(choice.id()) && p.getUUID("owner").equals(player.getUUID())).findFirst().orElseThrow();
+                    var party=SmpData.get(player.server).parties().currentRows().stream().filter(p->p.hasUUID("bossEntity") && p.getUUID("bossEntity").equals(choice.id()) && p.getUUID("owner").equals(player.getUUID())).findFirst().orElseThrow();
                     Parties.makeSolo(player,party);HostedParties.start(player,party);
                 }
                 return;
             }
             SmpRecords.require(EventRuntime.enabled(player.server),"unavailable");
-            var row=SmpData.get(player.server).find("events",choice.id());
+            var row=SmpData.get(player.server).events().current(choice.id());
             SmpRecords.require(row!=null && row.getString("activity").equals(choice.type().name()),"unavailable");
             SmpRecords.require(choice.type()==EventEntryKind.BLOOD_MOON || choice.type()==EventEntryKind.BOSS_RAID, "unavailable");
             EventParties.join(player,row,choice.solo());

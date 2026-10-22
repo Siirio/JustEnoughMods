@@ -91,7 +91,7 @@ public final class SmpRecords {
     public static void posting(ServerPlayer player, String table) {
         var data = SmpData.get(player.server);
         long count =
-                data.all(table).stream()
+                data.views(SmpTable.fromKey(table)).stream()
                         .filter(
                                 row ->
                                         row.getUUID("owner").equals(player.getUUID())
@@ -99,7 +99,7 @@ public final class SmpRecords {
                         .count();
         require(count < SmpConfig.MAX_ACTIVE.get(), "active_limit");
         long newest =
-                data.all(table).stream()
+                data.views(SmpTable.fromKey(table)).stream()
                         .filter(row -> row.getUUID("owner").equals(player.getUUID()))
                         .mapToLong(row -> row.getLong("created"))
                         .max()

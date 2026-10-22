@@ -86,6 +86,13 @@ public final class EncounterContext {
     }
 
     public void initialize(ServerPlayer host, EventParticipants snapshot) {
+        var serverForMutation = host.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { initializeInScope(host, snapshot); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> initializeInScope(host, snapshot));
+    }
+
+    private void initializeInScope(ServerPlayer host, EventParticipants snapshot) {
         var participants = snapshot.accepted();
         var stored = new ListTag();
         participants.forEach(id -> stored.add(StringTag.valueOf(id.toString())));
@@ -219,8 +226,15 @@ public final class EncounterContext {
     }
 
     public void stay(MinecraftServer server, UUID playerId) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { stayInScope(server, playerId); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> new EncounterContext(store.events().bind(data)).stayInScope(server, playerId));
+    }
+
+    private void stayInScope(MinecraftServer server, UUID playerId) {
         SmpRecords.members(data).getCompound(playerId.toString()).remove(RETURN_PENDING);
-        SmpData.get(server).changed(data);
+
     }
 
     public boolean returnPlayer(ServerPlayer player) {
@@ -230,6 +244,13 @@ public final class EncounterContext {
     }
 
     public boolean returnPlayerNow(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return returnPlayerNowInScope(player); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> new EncounterContext(store.events().bind(data)).returnPlayerNowInScope(player));
+    }
+
+    private boolean returnPlayerNowInScope(ServerPlayer player) {
         var member = SmpRecords.members(data).getCompound(player.getStringUUID());
         if (!member.contains(RETURN_DIMENSION)) return false;
         ResourceLocation dimension = ResourceLocation.tryParse(member.getString(RETURN_DIMENSION));
@@ -239,7 +260,7 @@ public final class EncounterContext {
         player.setDeltaMovement(Vec3.ZERO);
         player.fallDistance = 0;
         member.remove(RETURN_PENDING);
-        SmpData.get(player.server).changed(data);
+
         return true;
     }
 
@@ -288,20 +309,34 @@ public final class EncounterContext {
     }
 
     public void disconnected(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { disconnectedInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> new EncounterContext(store.events().bind(data)).disconnectedInScope(player));
+    }
+
+    private void disconnectedInScope(ServerPlayer player) {
         if (!data.getString("state").equals("ACTIVE") || !data.getBoolean("combatStarted")
                 || !isParticipant(player.getUUID()) || !new EventSession(data).accepted(player.getUUID())) return;
         SmpRecords.members(data).getCompound(player.getStringUUID()).putLong(DISCONNECTED_AT, System.currentTimeMillis());
-        SmpData.get(player.server).changed(data);
+
     }
 
     public void reconnected(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { reconnectedInScope(player); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> new EncounterContext(store.events().bind(data)).reconnectedInScope(player));
+    }
+
+    private void reconnectedInScope(ServerPlayer player) {
         if (!isParticipant(player.getUUID())) return;
         var member = SmpRecords.members(data).getCompound(player.getStringUUID());
         if (member.getBoolean(ABSENCE_DEFEAT_PENDING)) {
             member.remove(ABSENCE_DEFEAT_PENDING);
             notifyAbsenceDefeat(player);
             if (!returnPlayerNow(player)) EventRegions.eject(player, data);
-            SmpData.get(player.server).changed(data);
+
             return;
         }
         if (!member.contains(DISCONNECTED_AT)) return;
@@ -314,10 +349,17 @@ public final class EncounterContext {
         } else if (data.getBoolean("solo") && data.getString("state").equals("ACTIVE") && data.getBoolean("combatStarted")) {
             returnToArena(player);
         }
-        SmpData.get(player.server).changed(data);
+
     }
 
     public void expireDisconnected(MinecraftServer server, long now) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { expireDisconnectedInScope(server, now); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> new EncounterContext(store.events().bind(data)).expireDisconnectedInScope(server, now));
+    }
+
+    private void expireDisconnectedInScope(MinecraftServer server, long now) {
         if (!data.getString("state").equals("ACTIVE") || !data.getBoolean("combatStarted")) return;
         boolean changed = false;
         for (UUID id : participantIds()) {
@@ -330,19 +372,33 @@ public final class EncounterContext {
             member.putBoolean(ABSENCE_DEFEAT_PENDING, true);
             changed = true;
         }
-        if (changed) SmpData.get(server).changed(data);
+        
     }
 
     public static CompoundTag activeFor(ServerPlayer player) {
-        for (var row : SmpData.get(player.server).all("events"))
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return activeForInScope(player); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> activeForInScope(player));
+    }
+
+    private static CompoundTag activeForInScope(ServerPlayer player) {
+        for (var row : SmpData.get(player.server).events().currentRows())
             if (EventRuntime.available(player.server, row) && row.getString("state").equals("ACTIVE") && row.getBoolean("combatStarted")
                     && new EncounterContext(row).isParticipant(player.getUUID())) return row;
         return null;
     }
 
     public static CompoundTag reconnectFor(ServerPlayer player) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return reconnectForInScope(player); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> reconnectForInScope(player));
+    }
+
+    private static CompoundTag reconnectForInScope(ServerPlayer player) {
         CompoundTag latest = null;
-        for (var row : SmpData.get(player.server).all("events")) {
+        for (var row : SmpData.get(player.server).events().currentRows()) {
             if (!EventRuntime.available(player.server, row)) continue;
             if (!new EncounterContext(row).isParticipant(player.getUUID())) continue;
             var member = SmpRecords.members(row).getCompound(player.getStringUUID());

@@ -35,6 +35,13 @@ public final class PartyTeleportFlow {
     private static final int VERTICAL_SEARCH = 4;
 
     public static void begin(ServerPlayer host, CompoundTag party, Collection<UUID> participants) {
+        var serverForMutation = host.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { beginInScope(host, party, participants); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> beginInScope(host, store.parties().bind(party), participants));
+    }
+
+    private static void beginInScope(ServerPlayer host, CompoundTag party, Collection<UUID> participants) {
         clear(party);
         party.putUUID(SESSION, UUID.randomUUID());
         Set<BlockPos> occupied = new HashSet<>();
@@ -58,10 +65,17 @@ public final class PartyTeleportFlow {
             player.setDeltaMovement(Vec3.ZERO);
             player.fallDistance = 0;
         }
-        SmpData.get(host.server).changed(party);
+
     }
 
     public static void finish(MinecraftServer server, CompoundTag party) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { finishInScope(server, party); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> finishInScope(server, store.parties().bind(party)));
+    }
+
+    private static void finishInScope(MinecraftServer server, CompoundTag party) {
         if (!party.hasUUID(SESSION)) return;
         for (UUID id : SmpRecords.memberIds(party)) {
             if (!Parties.accepted(party, id)) continue;
@@ -72,7 +86,7 @@ public final class PartyTeleportFlow {
             ServerPlayer player = server.getPlayerList().getPlayer(id);
             if (player != null) prompt(player, party.getUUID("id"),party.getUUID(SESSION));
         }
-        SmpData.get(server).changed(party);
+
     }
 
     public static boolean pending(CompoundTag party, UUID playerId) {
@@ -80,22 +94,36 @@ public final class PartyTeleportFlow {
     }
 
     public static boolean choose(ServerPlayer player, CompoundTag party, UUID session, boolean returnBack) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return chooseInScope(player, party, session, returnBack); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> chooseInScope(player, store.parties().bind(party), session, returnBack));
+    }
+
+    private static boolean chooseInScope(ServerPlayer player, CompoundTag party, UUID session, boolean returnBack) {
         if (!party.hasUUID(SESSION)||!party.getUUID(SESSION).equals(session)||!pending(party, player.getUUID())) return false;
         CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
         boolean completed = !returnBack || teleportBack(player, member);
         if (!completed) return false;
         clearReturn(member);
         clearSessionIfResolved(party);
-        SmpData.get(player.server).changed(party);
+
         return true;
     }
 
     public static boolean returnNow(ServerPlayer player, CompoundTag party) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return returnNowInScope(player, party); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> returnNowInScope(player, store.parties().bind(party)));
+    }
+
+    private static boolean returnNowInScope(ServerPlayer player, CompoundTag party) {
         CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
         if (!member.contains(RETURN_DIMENSION) || !teleportBack(player, member)) return false;
         clearReturn(member);
         clearSessionIfResolved(party);
-        SmpData.get(player.server).changed(party);
+
         return true;
     }
 

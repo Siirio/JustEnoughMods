@@ -21,24 +21,79 @@ public final class SandboxNetwork {
             new ResourceLocation("jem_visual_sandbox", "skills"), () -> "9",
             v -> "9".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
             v -> "9".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
-    public record Input(int action, int race,java.util.UUID nonce) {
-        public Input(int action,int race){this(action,race,null);}
-        static Input decode(FriendlyByteBuf buffer) { int action=buffer.readVarInt(),race=buffer.readVarInt();return new Input(action,race,action==0?buffer.readUUID():null); }
-        void encode(FriendlyByteBuf buffer) { buffer.writeVarInt(action); buffer.writeVarInt(race);if(action==0)buffer.writeUUID(nonce); }
+    private sealed interface InputPayload permits ChooseRace, UnlockBloom, RaceControl, DevelopmentControl {
+        void apply(ServerPlayer player);
+    }
+    private record ChooseRace(com.siirio.jemroles.race.RaceId race, java.util.UUID nonce) implements InputPayload {
+        private ChooseRace { java.util.Objects.requireNonNull(race); java.util.Objects.requireNonNull(nonce); }
+        public void apply(ServerPlayer player) { RaceExperience.choose(player, race.ordinal(), nonce); }
+    }
+    private record UnlockBloom(int stage) implements InputPayload {
+        private UnlockBloom { if(stage<0||stage>3)throw new IllegalArgumentException("Invalid bloom stage"); }
+        public void apply(ServerPlayer player) { RaceExperience.upgrade(player, stage); }
+    }
+    private enum ControlAction { CAST, STATUS, PRESS, RELEASE, OPEN_SELECTION_SCENE, CLOSE_SELECTION_SCENE }
+    private record RaceControl(ControlAction action) implements InputPayload {
+        public void apply(ServerPlayer player) {
+            switch(action) {
+                case CAST -> RaceExperience.cast(player);
+                case STATUS -> status(player);
+                case PRESS -> RaceExperience.utility(player,true);
+                case RELEASE -> RaceExperience.utility(player,false);
+                case OPEN_SELECTION_SCENE -> RaceSelectionScene.setEnabled(player,true);
+                case CLOSE_SELECTION_SCENE -> RaceSelectionScene.setEnabled(player,false);
+            }
+        }
+    }
+    private record DevelopmentControl(int action,int value) implements InputPayload {
+        private DevelopmentControl {
+            if(action<7||action>9)throw new IllegalArgumentException("Invalid development action");
+        }
+        public void apply(ServerPlayer player) { RaceDevelopment.handle(player,action,value); }
+    }
+    /** The v9 wire layout and message ID remain unchanged; only this codec sees numeric actions. */
+    private record Input(InputPayload payload) {
+        static Input decode(FriendlyByteBuf buffer) {
+            int action=buffer.readVarInt(),value=buffer.readVarInt();
+            return new Input(switch(action) {
+                case 0 -> {
+                    if(value<0||value>=5)throw new IllegalArgumentException("Invalid race");
+                    yield new ChooseRace(com.siirio.jemroles.race.RaceId.values()[value],buffer.readUUID());
+                }
+                case 1 -> new RaceControl(ControlAction.CAST);
+                case 2 -> new RaceControl(ControlAction.STATUS);
+                case 3 -> new RaceControl(ControlAction.PRESS);
+                case 4 -> new RaceControl(ControlAction.RELEASE);
+                case 5 -> new UnlockBloom(value);
+                case 6 -> {
+                    if(value!=0&&value!=1)throw new IllegalArgumentException("Invalid scene control");
+                    yield new RaceControl(value==1?ControlAction.OPEN_SELECTION_SCENE:ControlAction.CLOSE_SELECTION_SCENE);
+                }
+                case 7,8,9 -> new DevelopmentControl(action,value);
+                default -> throw new IllegalArgumentException("Unknown race input");
+            });
+        }
+        void encode(FriendlyByteBuf buffer) {
+            if(payload instanceof ChooseRace choose) {
+                buffer.writeVarInt(0);buffer.writeVarInt(choose.race().ordinal());buffer.writeUUID(choose.nonce());
+            } else if(payload instanceof UnlockBloom unlock) {
+                buffer.writeVarInt(5);buffer.writeVarInt(unlock.stage());
+            } else if(payload instanceof DevelopmentControl development) {
+                buffer.writeVarInt(development.action());buffer.writeVarInt(development.value());
+            } else if(payload instanceof RaceControl control) {
+                int action=switch(control.action()) {
+                    case CAST -> 1; case STATUS -> 2; case PRESS -> 3; case RELEASE -> 4;
+                    case OPEN_SELECTION_SCENE,CLOSE_SELECTION_SCENE -> 6;
+                };
+                buffer.writeVarInt(action);
+                buffer.writeVarInt(control.action()==ControlAction.OPEN_SELECTION_SCENE?1:0);
+            }
+        }
         void handle(Supplier<NetworkEvent.Context> supplier) {
-            var context = supplier.get();
+            var context=supplier.get();
             context.enqueueWork(() -> {
-                ServerPlayer player = context.getSender();
-                if (player == null || !RaceExperience.allowed(player)) return;
-                if (action == 0 && race >= 0 && race < 5) {
-                    RaceExperience.choose(player,race,nonce);
-                } else if (action == 1) RaceExperience.cast(player);
-                else if (action == 3) RaceExperience.utility(player,true);
-                else if (action == 4) RaceExperience.utility(player,false);
-                else if (action == 2) status(player);
-                else if (action == 5) RaceExperience.upgrade(player,race);
-                else if (action == 6) RaceExperience.cinematic(player,race==1);
-                else RaceDevelopment.handle(player,action,race);
+                ServerPlayer player=context.getSender();
+                if(player!=null&&RaceExperience.allowed(player))payload.apply(player);
             });
             context.setPacketHandled(true);
         }
@@ -54,7 +109,7 @@ public final class SandboxNetwork {
             if(reselect<0)throw new IllegalArgumentException("Invalid selection wait");
             return new Status(new RaceExperience.Status(race,selected,tiers,progress,signature,secondary,developer,bloom,reselect,test,nonce,b.readBoolean()));
         }
-        void encode(FriendlyByteBuf b){b.writeVarInt(value.race());b.writeBoolean(value.selected());for(int i=0;i<5;i++){b.writeVarInt(value.tiers()[i]);b.writeVarInt(value.progress()[i]);}b.writeVarLong(value.signatureRemaining());b.writeVarLong(value.secondaryRemaining());b.writeBoolean(value.developerMode());b.writeVarInt(value.bloomUpgrade());b.writeVarLong(value.reselectRemaining());b.writeBoolean(value.testProfile());b.writeUUID(value.nonce());b.writeBoolean(value.healingPenalty());}
+        void encode(FriendlyByteBuf b){b.writeVarInt(value.race());b.writeBoolean(value.selected());for(int i=0;i<5;i++){b.writeVarInt(value.tierAt(i));b.writeVarInt(value.progressAt(i));}b.writeVarLong(value.signatureRemaining());b.writeVarLong(value.secondaryRemaining());b.writeBoolean(value.developerMode());b.writeVarInt(value.bloomUpgrade());b.writeVarLong(value.reselectRemaining());b.writeBoolean(value.testProfile());b.writeUUID(value.nonce());b.writeBoolean(value.healingPenalty());}
         void handle(Supplier<NetworkEvent.Context> supplier){var c=supplier.get();c.enqueueWork(()->{
             net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->{
                 com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.receive(value);
@@ -103,14 +158,14 @@ public final class SandboxNetwork {
             CHANNEL.messageBuilder(SculkScale.class,4,NetworkDirection.PLAY_TO_CLIENT).encoder(SculkScale::encode).decoder(SculkScale::decode).consumerMainThread(SculkScale::handle).add();
         });
     }
-    public static void select(int race,java.util.UUID nonce) { CHANNEL.sendToServer(new Input(0,race,nonce)); }
-    public static void sync() { CHANNEL.sendToServer(new Input(2,0)); }
-    public static void upgrade(int next) { CHANNEL.sendToServer(new Input(5,next)); }
-    public static void cinematic(boolean enabled){CHANNEL.sendToServer(new Input(6,enabled?1:0));}
+    public static void select(int race,java.util.UUID nonce) { CHANNEL.sendToServer(new Input(new ChooseRace(com.siirio.jemroles.race.RaceId.values()[race],nonce))); }
+    public static void sync() { CHANNEL.sendToServer(new Input(new RaceControl(ControlAction.STATUS))); }
+    public static void upgrade(int next) { CHANNEL.sendToServer(new Input(new UnlockBloom(next))); }
+    public static void cinematic(boolean enabled){CHANNEL.sendToServer(new Input(new RaceControl(enabled?ControlAction.OPEN_SELECTION_SCENE:ControlAction.CLOSE_SELECTION_SCENE)));}
     public static void developer(boolean enabled){RaceDevelopment.request(7,enabled?1:0);}
     public static void developerTier(int tier){RaceDevelopment.request(8,tier);}
     public static void developerReset(){RaceDevelopment.request(9,0);}
-    static void developmentInput(int action,int value){CHANNEL.sendToServer(new Input(action,value));}
+    static void developmentInput(int action,int value){CHANNEL.sendToServer(new Input(new DevelopmentControl(action,value)));}
     public static boolean supported(net.minecraft.network.Connection connection){return CHANNEL.isRemotePresent(connection);}
     static void sendStatus(ServerPlayer p,RaceExperience.Status value){
         if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Status(value));
@@ -121,9 +176,9 @@ public final class SandboxNetwork {
     public static void status(ServerPlayer p) {
         RaceExperience.snapshot(p);
     }
-    public static void cast() { CHANNEL.sendToServer(new Input(1,0)); }
-    public static void secondary() { CHANNEL.sendToServer(new Input(3,0)); }
-    public static void secondaryRelease() { CHANNEL.sendToServer(new Input(4,0)); }
+    public static void cast() { CHANNEL.sendToServer(new Input(new RaceControl(ControlAction.CAST))); }
+    public static void secondary() { CHANNEL.sendToServer(new Input(new RaceControl(ControlAction.PRESS))); }
+    public static void secondaryRelease() { CHANNEL.sendToServer(new Input(new RaceControl(ControlAction.RELEASE))); }
     public static void path(ServerPlayer player,int kind,java.util.List<Vec3> points) {
         if(points.size()>1)CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new Path(kind,points));
     }

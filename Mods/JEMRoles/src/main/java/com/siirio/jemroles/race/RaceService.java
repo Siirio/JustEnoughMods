@@ -12,6 +12,7 @@ import net.minecraftforge.common.MinecraftForge;
 import com.siirio.jemroles.api.RaceChangedEvent;
 import com.siirio.jemroles.api.RaceChosenEvent;
 
+@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_roles")
 public final class RaceService {
     public enum Result { CHOSEN, CHANGED, UNAUTHENTICATED, CHANGE_LOCKED, UNCHANGED }
     private static final Map<UUID, UUID> PENDING_NONCES = new ConcurrentHashMap<>();
@@ -26,16 +27,17 @@ public final class RaceService {
     public static Result choose(ServerPlayer player, RaceId next, UUID nonce) {
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return Result.UNAUTHENTICATED;
-        prepareTestChoice(player);
+        initialize(player);
         if (nonce != null && !nonce.equals(PENDING_NONCES.remove(player.getUUID()))) return Result.CHANGE_LOCKED;
         RaceSavedData data = RaceSavedData.get(player.getServer());
-        Optional<RaceRecord> existing = data.find(principal.get().accountId());
+        Optional<RaceRecord> existing = data.findOwned(principal.get().accountId());
         if (existing.isEmpty()) {
             RaceRecord created = new RaceRecord(next, System.currentTimeMillis());
             com.siirio.jemidentity.api.DedicatedTestProfile.binding(player.getServer()).ifPresent(binding -> {
                 created.prepareTestChoice(binding.saveIdentity()+":"+binding.epoch()); created.confirmChoice();
             });
             data.put(principal.get().accountId(), created);
+            initialize(player);
             MinecraftForge.EVENT_BUS.post(new RaceChosenEvent(player, next));
             return Result.CHOSEN;
         }
@@ -44,6 +46,7 @@ public final class RaceService {
             com.siirio.jemvisualsandbox.workbench.RaceExperience.selectionChanged(player);
             if (record.race() != next) record.change(next, false);
             record.confirmChoice(); data.changed();
+            initialize(player);
             MinecraftForge.EVENT_BUS.post(new RaceChosenEvent(player, next));
             return Result.CHOSEN;
         }
@@ -81,9 +84,10 @@ public final class RaceService {
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return Result.UNAUTHENTICATED;
         RaceSavedData data = RaceSavedData.get(player.getServer());
-        RaceRecord record = data.find(principal.get().accountId()).orElse(null);
+        RaceRecord record = data.findOwned(principal.get().accountId()).orElse(null);
         if (record == null) {
             data.put(principal.get().accountId(), new RaceRecord(next, System.currentTimeMillis()));
+            initialize(player);
             MinecraftForge.EVENT_BUS.post(new RaceChosenEvent(player, next));
             return Result.CHOSEN;
         }
@@ -99,9 +103,42 @@ public final class RaceService {
         return IdentityPolicy.resolve(player).flatMap(principal -> com.siirio.jemroles.api.RaceApi.get(player.getServer(), principal.accountId()));
     }
 
+    /** Detached value: modifying it cannot change the account or bypass dirty notification. */
     public static Optional<RaceRecord> record(ServerPlayer player) {
+        return ownedRecord(player).map(RaceRecord::copy);
+    }
+
+    private static Optional<RaceRecord> ownedRecord(ServerPlayer player) {
+        return IdentityPolicy.resolve(player).flatMap(principal -> RaceSavedData.get(player.getServer()).findOwned(principal.accountId())).filter(record -> !record.choiceRequired());
+    }
+
+    public static Optional<RaceId> selectedRace(ServerPlayer player) { return ownedRecord(player).map(RaceRecord::race); }
+    public static int uses(ServerPlayer player, int raceIndex) { return ownedRecord(player).map(record -> record.uses(raceIndex)).orElse(0); }
+    public static int bloomUpgrade(ServerPlayer player) { return ownedRecord(player).map(RaceRecord::bloomUpgrade).orElse(0); }
+    public static long mechanicsCooldown(ServerPlayer player, String ability) { return ownedRecord(player).map(record -> record.mechanicsCooldown(ability)).orElse(0L); }
+    public static long remainingReselectTicks(ServerPlayer player) { return ownedRecord(player).map(record -> record.remainingReselectTicks(player.server.overworld().getGameTime())).orElse(0L); }
+
+    /** Explicit lifecycle boundary: queries never prepare epochs or migrate saves. */
+    public static void initialize(ServerPlayer player) {
         prepareTestChoice(player);
-        return IdentityPolicy.resolve(player).flatMap(principal -> RaceSavedData.get(player.getServer()).find(principal.accountId())).filter(record -> !record.choiceRequired());
+        ownedRecord(player).ifPresent(record -> {
+            boolean migrateResonance = !record.mechanicsMigrated();
+            if (record.initializeMechanics(player.server.overworld().getGameTime())) {
+                if (migrateResonance) player.getPersistentData().putInt("JemSandboxResonance", record.resonance());
+                RaceSavedData.get(player.server).changed();
+            }
+        });
+    }
+
+    @net.minecraftforge.eventbus.api.SubscribeEvent(priority=net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
+    public static void login(net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) initialize(player);
+    }
+
+    @net.minecraftforge.eventbus.api.SubscribeEvent(priority=net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
+    public static void tick(net.minecraftforge.event.TickEvent.PlayerTickEvent event) {
+        if (event.phase == net.minecraftforge.event.TickEvent.Phase.END && event.player instanceof ServerPlayer player)
+            initialize(player);
     }
 
     public static void prepareTestChoice(ServerPlayer player) {
@@ -109,14 +146,14 @@ public final class RaceService {
         if (principal.isEmpty()) return;
         com.siirio.jemidentity.api.DedicatedTestProfile.binding(player.getServer()).ifPresent(binding -> {
             var data = RaceSavedData.get(player.getServer());
-            data.find(principal.get().accountId()).ifPresent(record -> {
+            data.findOwned(principal.get().accountId()).ifPresent(record -> {
                 if (record.prepareTestChoice(binding.saveIdentity()+":"+binding.epoch())) data.changed();
             });
         });
     }
 
     public static boolean mutate(ServerPlayer player, Consumer<RaceRecord> change) {
-        var record = record(player);
+        var record = ownedRecord(player);
         if (record.isEmpty()) return false;
         change.accept(record.get());
         RaceSavedData.get(player.getServer()).changed();

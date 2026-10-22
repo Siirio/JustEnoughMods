@@ -7,9 +7,16 @@ import java.util.UUID;
 
 public final class EventAttempts {
     public static boolean start(ServerPlayer host, UUID eventId, EventParticipants participants) {
+        var serverForMutation = host.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return startInScope(host, eventId, participants); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> startInScope(host, eventId, participants));
+    }
+
+    private static boolean startInScope(ServerPlayer host, UUID eventId, EventParticipants participants) {
         SmpRecords.require(host.getUUID().equals(participants.host()), "owner_required");
         var data = SmpData.get(host.server);
-        var event = data.find("events", eventId);
+        var event = data.events().current(eventId);
         SmpRecords.require(EventRuntime.available(host.server, event), "unavailable");
         SmpRecords.require(event != null && event.getString("state").equals("ACTIVE")
                 && EventRegions.near(event, host.serverLevel(), host.blockPosition()), "travel_to_arena");
@@ -22,7 +29,7 @@ public final class EventAttempts {
         prepared.putBoolean("solo", participants.solo());
         prepared.putUUID("attemptId", UUID.randomUUID());
         event.merge(prepared);
-        data.changed(event);
+
         return true;
     }
 

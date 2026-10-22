@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.minecraftforge.gradle' version '6.0.54'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
@@ -89,9 +89,9 @@ dependencies {
     compileOnly fg.deobf(files(installedMod('backpacked-forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('framework-forge-*.jar')))
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
-    compileOnly files('../JEMAchievementGuide/build/classes/java/main')
-    compileOnly files('../JEMIdentity/build/classes/java/main')
-    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
+    compileOnly project(path: ':JEMAchievementGuide', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMWorldBossTiers', configuration: 'jemCompile')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

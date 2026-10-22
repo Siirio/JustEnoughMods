@@ -103,16 +103,18 @@
     ]
   },
   "cause": {
-    "owner": "JEMServer StarterWelcome and StarterKitData; existing native player save accessor",
+    "owner": "JEMServer StarterWelcome and StarterEntitlements/StarterKitDelivery/NativePlayerFiles; existing native player save accessor",
     "kind": "user_requested_starter_and_protection",
     "source_files": [
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
       "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
       "Docs/smp-gui/README.md",
-      "Docs/DEVELOPMENT.md"
+      "Docs/DEVELOPMENT.md",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
     ]
   },
   "rationale": {
@@ -151,6 +153,21 @@
         "Docs/smp-gui/README.md",
         "Docs/DEVELOPMENT.md"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "engineering_v2_retire_source_owners",
+      "summary": "ENGINEERING v2 split the starter owner into persistent entitlement transitions, delivery/reconciliation and native player-file persistence. Current causes now name those exact owners; retired StarterKitData paths remain historical evidence. Entitlements, saved IDs, receipt/replay contracts and record status are unchanged.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java"
+      ],
+      "current_source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
+      ],
+      "previous_owner": "JEMServer StarterWelcome and StarterKitData; existing native player save accessor"
     }
   ],
   "impacts": {

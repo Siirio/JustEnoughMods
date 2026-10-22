@@ -26,6 +26,13 @@ public final class EventAreaHooks {
     private static final Map<UUID,Set<UUID>> PROMPTED=new HashMap<>();
     private static final Map<UUID,List<EventBoundary>> SENT=new HashMap<>();
     @SubscribeEvent public static void tick(TickEvent.PlayerTickEvent e) {
+        var serverForMutation = e.player.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(e); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(e));
+    }
+
+    private static void tickInScope(TickEvent.PlayerTickEvent e) {
         if(e.phase!=TickEvent.Phase.END || !(e.player instanceof ServerPlayer player)) return;
         ReviveSupport.enforce(player);
         if(player.tickCount%10!=0) return;
@@ -53,7 +60,7 @@ public final class EventAreaHooks {
             if(type.equals("BLOOD_MOON") && member && player.isAlive() && !player.isSpectator()) {
                 var entry=SmpRecords.members(row).getCompound(player.getStringUUID());
                 if(safelyWithin) {
-                    if(entry.getBoolean("awaitingReturn")) { entry.remove("awaitingReturn");SmpData.get(player.server).changed(row); }
+                    if(entry.getBoolean("awaitingReturn")) { entry.remove("awaitingReturn"); }
                     entry.putDouble("safeX",player.getX());entry.putDouble("safeY",player.getY());entry.putDouble("safeZ",player.getZ());
                 }
             }
@@ -75,7 +82,14 @@ public final class EventAreaHooks {
     }
 
     public static void prompt(ServerPlayer player, UUID id) {
-        CompoundTag row = SmpData.get(player.server).find("events", id);
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { promptInScope(player, id); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> promptInScope(player, id));
+    }
+
+    private static void promptInScope(ServerPlayer player, UUID id) {
+        CompoundTag row = SmpData.get(player.server).events().current(id);
         SmpRecords.require(EventRuntime.available(player.server, row), "unavailable");
         SmpRecords.require(row != null && row.getString("state").equals("ACTIVE") && !row.getBoolean("combatStarted"), "unavailable");
         String type = row.getString("activity");
@@ -111,11 +125,18 @@ public final class EventAreaHooks {
     }
 
     @SubscribeEvent(priority=EventPriority.HIGHEST) public static void target(LivingChangeTargetEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { targetInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> targetInScope(event));
+    }
+
+    private static void targetInScope(LivingChangeTargetEvent event) {
         var mob=event.getEntity();var tag=mob.getPersistentData();
         if(!tag.hasUUID(EventSession.SESSION) || mob.level().isClientSide) return;
         var target=event.getNewTarget();
         if(target==null) return;
-        var row=SmpData.get(mob.getServer()).find("events",tag.getUUID(EventSession.SESSION));
+        var row=SmpData.get(mob.getServer()).events().current(tag.getUUID(EventSession.SESSION));
         if (row != null ? !EventRuntime.available(mob.getServer(), row) : !EventRuntime.enabled(mob.getServer())) return;
         if(row!=null&&row.getString("activity").equals("BLOOD_MOON")&&!BloodMoon.canTarget(mob,target)) {
             event.setCanceled(true);
@@ -124,6 +145,13 @@ public final class EventAreaHooks {
         if(row==null || !EventSession.canInteract(mob,target)) event.setCanceled(true);
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public static void damage(LivingAttackEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { damageInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> damageInScope(event));
+    }
+
+    private static void damageInScope(LivingAttackEvent event) {
         if(event.getEntity().level().isClientSide) return;
         Entity sourceEntity=event.getSource().getEntity();
         if(sourceEntity==null) sourceEntity=event.getSource().getDirectEntity();
@@ -153,7 +181,7 @@ public final class EventAreaHooks {
         if(victim instanceof ServerPlayer player && attacker instanceof ServerPlayer other) {
             var row=EventSession.forPlayer(player);
             if(row!=null && new EventSession(row).accepted(other.getUUID())) event.setCanceled(true);
-            for(var party:SmpData.get(player.server).all("parties")) {
+            for(var party:SmpData.get(player.server).parties().currentRows()) {
                 if(party.getBoolean("nativePending") && party.getString("activity").equals("BOSS")
                         && party.getString("state").equals("ACTIVE") && Parties.accepted(party,player.getUUID())
                         && Parties.accepted(party,other.getUUID())) {
@@ -166,27 +194,41 @@ public final class EventAreaHooks {
                 && attacker instanceof ServerPlayer && actor!=null) mob.setTarget(actor);
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void statistics(LivingDamageEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { statisticsInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> statisticsInScope(event));
+    }
+
+    private static void statisticsInScope(LivingDamageEvent event) {
         if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         if(event.getEntity().level().isClientSide || event.getAmount()<=0) return;
         var owner=EventSession.owner(event.getSource().getEntity());
         if(owner==null) owner=EventSession.owner(event.getSource().getDirectEntity());
         if(!(owner instanceof ServerPlayer player) || !event.getEntity().getPersistentData().hasUUID(BloodMoon.EVENT_ID)) return;
-        var row=SmpData.get(player.server).find("events",event.getEntity().getPersistentData().getUUID(BloodMoon.EVENT_ID));
+        var row=SmpData.get(player.server).events().current(event.getEntity().getPersistentData().getUUID(BloodMoon.EVENT_ID));
         if(row==null || !row.getString("state").equals("ACTIVE") || !new EventSession(row).accepted(player.getUUID())) return;
         var member=SmpRecords.members(row).getCompound(player.getStringUUID());
         member.putBoolean("contributed",true);
         member.putDouble("damage",member.getDouble("damage")+Math.min(event.getAmount(),event.getEntity().getHealth()));
-        SmpData.get(player.server).changed(row);
+
     }
     @SubscribeEvent public static void removed(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {
         if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level && EventRuntime.enabled(level.getServer()) && event.getEntity() instanceof LivingEntity living)
             BloodMoon.removed(level.getServer(), living);
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public static void drops(LivingDropsEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { dropsInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> dropsInScope(event));
+    }
+
+    private static void dropsInScope(LivingDropsEvent event) {
         if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         if(!event.getEntity().getPersistentData().hasUUID(BloodMoon.EVENT_ID)) return;
         UUID eventId=event.getEntity().getPersistentData().getUUID(BloodMoon.EVENT_ID);
-        var row=SmpData.get(event.getEntity().getServer()).find("events",eventId);
+        var row=SmpData.get(event.getEntity().getServer()).events().current(eventId);
         if(row==null) return;
         UUID attemptId=BloodMoonLoot.attempt(row);
         for(var drop:event.getDrops()) {
@@ -194,11 +236,18 @@ public final class EventAreaHooks {
         }
     }
     @SubscribeEvent(priority=EventPriority.HIGHEST) public static void experience(LivingExperienceDropEvent event) {
+        var serverForMutation = event.getEntity().getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { experienceInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> experienceInScope(event));
+    }
+
+    private static void experienceInScope(LivingExperienceDropEvent event) {
         if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         var boss=event.getEntity();
         if(event.getDroppedExperience()<=0 || !boss.getPersistentData().hasUUID(BloodMoon.EVENT_ID)
                 || !EventMobModifiers.isSetPieceBoss(boss) || boss.getServer()==null) return;
-        var row=SmpData.get(boss.getServer()).find("events",boss.getPersistentData().getUUID(BloodMoon.EVENT_ID));
+        var row=SmpData.get(boss.getServer()).events().current(boss.getPersistentData().getUUID(BloodMoon.EVENT_ID));
         if(row==null) return;
         int experience=event.getDroppedExperience();
         new EventSession(row).active(boss.getServer()).forEach(player ->
@@ -213,7 +262,7 @@ public final class EventAreaHooks {
         var tag = entity.getPersistentData();
         String key = tag.hasUUID(EventSession.SESSION) ? EventSession.SESSION : RaidEvent.EVENT_ID;
         if (!tag.hasUUID(key)) return false;
-        var row = SmpData.get(entity.getServer()).find("events", tag.getUUID(key));
+        var row = SmpData.get(entity.getServer()).events().snapshot(tag.getUUID(key));
         return row != null ? !EventRuntime.available(entity.getServer(), row) : !EventRuntime.enabled(entity.getServer());
     }
 

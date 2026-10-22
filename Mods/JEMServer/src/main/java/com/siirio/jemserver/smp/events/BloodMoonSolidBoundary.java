@@ -26,7 +26,7 @@ public final class BloodMoonSolidBoundary {
     static List<EventBoundary> boundaries(Entity entity) {
         if(!(entity.level() instanceof ServerLevel level)||!EventRuntime.enabled(level.getServer())) return List.of();
         List<EventBoundary> boundaries=new ArrayList<>();
-        for(var row:SmpData.get(level.getServer()).all("events")) {
+        for(var row:SmpData.get(level.getServer()).events().snapshots()) {
             if(!row.getString("state").equals("ACTIVE")||!row.getString("dimension").equals(level.dimension().location().toString())) continue;
             String type=row.getString("activity");
             if(type.equals("BLOOD_MOON")) {
@@ -40,8 +40,15 @@ public final class BloodMoonSolidBoundary {
     }
 
     public static BossTeleportSafety.Decision validateTeleport(ServerPlayer player,ServerLevel level,Vec3 requested) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return validateTeleportInScope(player, level, requested); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> validateTeleportInScope(player, level, requested));
+    }
+
+    private static BossTeleportSafety.Decision validateTeleportInScope(ServerPlayer player,ServerLevel level,Vec3 requested) {
         if (!EventRuntime.enabled(player.server)) return BossTeleportSafety.Decision.unmatched();
-        for(var row:SmpData.get(player.server).all("events")) {
+        for(var row:SmpData.get(player.server).events().currentRows()) {
             if(!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")
                     ||!locked(player,row)) continue;
             if(validDestination(player,level,row,requested)) return BossTeleportSafety.Decision.allow(requested);

@@ -58,6 +58,13 @@ public final class BossDebuffController {
                     vanilla("glowing",()->MobEffects.GLOWING,200,0))));
 
     public static void initializeBoss(ServerLevel level,CompoundTag row,Mob boss,List<ServerPlayer> players) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { initializeBossInScope(level, row, boss, players); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> initializeBossInScope(level, store.events().bind(row), boss, players));
+    }
+
+    private static void initializeBossInScope(ServerLevel level,CompoundTag row,Mob boss,List<ServerPlayer> players) {
         if (!EventRuntime.enabled(level.getServer())) return;
         long now=level.getGameTime();
         int profile=Math.floorMod(row.getInt(PROFILE_CURSOR),PROFILES.size());
@@ -69,10 +76,17 @@ public final class BossDebuffController {
             cast(level,boss,PROFILES.get(profile),players);
             row.putLong(NEXT_CAST,nextCast(now,level.random));
         }
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     public static void tick(ServerLevel level,CompoundTag row,List<Mob> bosses) {
+        var serverForMutation = level.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(level, row, bosses); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(level, store.events().bind(row), bosses));
+    }
+
+    private static void tickInScope(ServerLevel level,CompoundTag row,List<Mob> bosses) {
         if (!EventRuntime.enabled(level.getServer())) return;
         long now=level.getGameTime();
         if(now<row.getLong(NEXT_CAST)) return;
@@ -84,7 +98,7 @@ public final class BossDebuffController {
         int profile=Math.floorMod(boss.getPersistentData().getInt(PROFILE),PROFILES.size());
         cast(level,boss,PROFILES.get(profile),players);
         row.putLong(NEXT_CAST,nextCast(now,level.random));
-        SmpData.get(level.getServer()).changed(row);
+
     }
 
     public static void reset(CompoundTag row) {

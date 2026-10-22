@@ -1,20 +1,11 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        maven {
-            name = 'MinecraftForge'
-            url = 'https://maven.minecraftforge.net/'
-        }
-        maven {
-            name = 'SpongePowered'
-            url = 'https://repo.spongepowered.org/repository/maven-public/'
-        }
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         mavenCentral()
     }
 }
-
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
-}
-
-rootProject.name = 'JEMAdaptiveCulling'
+rootProject.name = 'JustEnoughMods'
+rootProject.projectDir = file('../..')
+apply from: new File(rootProject.projectDir, 'gradle/module-settings.gradle')

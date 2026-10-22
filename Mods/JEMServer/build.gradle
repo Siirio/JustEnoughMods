@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.minecraftforge.gradle' version '6.0.54'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 version = '2.0.0-dev'
@@ -11,22 +11,21 @@ minecraft { mappings channel: 'official', version: '1.20.1' }
 
 def instancePath = providers.environmentVariable('JEM_INSTANCE').getOrElse(file('../../Client/ManagedPack').absolutePath)
 def xaeroWorldMap = file("${instancePath}/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar")
-def xaeroLibName = zipTree(xaeroWorldMap).matching {
-    include 'META-INF/jarjar/xaerolib-forge-*.jar'
-}.singleFile.name
-def extractedXaeroLib = file("../JEMTwelveEyes/build/xaero-lib/${xaeroLibName}")
+ext.jemXaeroWorldMap = xaeroWorldMap
+apply from: rootProject.file('gradle/xaero-library.gradle')
 repositories { mavenCentral(); flatDir { dirs "${instancePath}/mods" } }
 dependencies {
-    compileOnly files('../JEMRewards/build/classes/java/main')
+    compileOnly project(path: ':JEMRewards', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMProfessions', configuration: 'jemCompile')
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
     compileOnly fg.deobf('com.li64:tide-forge-1.20.1:2.1.1-hotfix')
     compileOnly files("${instancePath}/mods/PlayerRevive_FORGE_v2.0.31_mc1.20.1.jar")
-    compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
-    compileOnly files('../JEMTwelveEyes/build/classes/java/main')
-    compileOnly files('../JEMIdentity/build/classes/java/main')
-    compileOnly files('../JEMEconomy/build/classes/java/main')
-    compileOnly files('../JEMSettlements/build/classes/java/main')
-    compileOnly files('../JEMRoles/build/classes/java/main')
+    compileOnly project(path: ':JEMWorldBossTiers', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMTwelveEyes', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMEconomy', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMSettlements', configuration: 'jemCompile')
+    compileOnly project(path: ':JEMRoles', configuration: 'jemCompile')
     compileOnly files("${instancePath}/mods/xaerominimap-forge-1.20.1-26.4.2.jar")
     compileOnly files(xaeroWorldMap)
     compileOnly files("${instancePath}/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar")
@@ -35,7 +34,7 @@ dependencies {
     compileOnly files("${instancePath}/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar")
     compileOnly files("${instancePath}/mods/spudaciousshops-1.10.2-forge-1.20.1.jar")
     compileOnly fg.deobf(files("${instancePath}/mods/Pehkui-3.8.2+1.20.1-forge.jar"))
-    compileOnly files(extractedXaeroLib)
+    compileOnly jemXaeroCompileLib
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 mixin { add sourceSets.main, 'jem_server.refmap.json'; config 'jem_server.mixins.json'; config 'jem_server_shops.mixins.json'; config 'jem_server_fishing.mixins.json'; config 'jem_server_revive.mixins.json' }

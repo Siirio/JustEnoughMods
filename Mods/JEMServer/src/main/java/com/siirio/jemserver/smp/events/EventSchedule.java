@@ -30,32 +30,51 @@ public final class EventSchedule {
     }
 
     public static void replace(MinecraftServer server, List<String> definitions) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { replaceInScope(server, definitions); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> replaceInScope(server, definitions));
+    }
+
+    private static void replaceInScope(MinecraftServer server, List<String> definitions) {
         WeeklySchedule.slots(Instant.now(), definitions);
         var data = SmpData.get(server);
         var row = row(data);
         if (row == null) {
-            row = data.create(TABLE, SERVER);
+            row = data.settings().create( SERVER);
             row.putString("kind", KIND);
         }
         var entries = new ListTag();
         definitions.forEach(definition -> entries.add(StringTag.valueOf(definition)));
         row.put(ENTRIES, entries);
-        data.changed(row);
+
         EventScheduler.scheduleChanged();
     }
 
     public static void reset(MinecraftServer server) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { resetInScope(server); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> resetInScope(server));
+    }
+
+    private static void resetInScope(MinecraftServer server) {
         var data = SmpData.get(server);
         var row = row(data);
         if (row != null) {
             row.remove(ENTRIES);
-            data.changed(row);
+
         }
         EventScheduler.scheduleChanged();
     }
 
     private static CompoundTag row(SmpData data) {
-        return data.all(TABLE).stream()
+        var store = data;
+        return store.edit(() -> rowInScope(data));
+    }
+
+    private static CompoundTag rowInScope(SmpData data) {
+        return data.settings().currentRows().stream()
                 .filter(candidate -> candidate.getString("kind").equals(KIND))
                 .findFirst()
                 .orElse(null);

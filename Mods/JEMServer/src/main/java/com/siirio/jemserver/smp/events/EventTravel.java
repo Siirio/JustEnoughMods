@@ -27,8 +27,15 @@ public final class EventTravel {
     }
 
     public static void request(ServerPlayer player, UUID eventId, boolean inside) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { requestInScope(player, eventId, inside); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> requestInScope(player, eventId, inside));
+    }
+
+    private static void requestInScope(ServerPlayer player, UUID eventId, boolean inside) {
         if (!eligiblePlayer(player)) return;
-        var event = SmpData.get(player.server).find("events", eventId);
+        var event = SmpData.get(player.server).events().current(eventId);
         if (!eligibleEvent(player, event)) {
             player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_destination_unavailable"));
             return;
@@ -60,6 +67,13 @@ public final class EventTravel {
 
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
+        var serverForMutation = event.getServer();
+        if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(event); return; }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        store.edit(() -> tickInScope(event));
+    }
+
+    private static void tickInScope(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || PENDING.isEmpty()) return;
         Iterator<Map.Entry<UUID, PendingEventTravel>> iterator = PENDING.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -80,7 +94,7 @@ public final class EventTravel {
                 continue;
             }
             if (travel.type() != Destination.BOSS_STRUCTURE) {
-                var row = SmpData.get(event.getServer()).find("events", travel.destinationId());
+                var row = SmpData.get(event.getServer()).events().current(travel.destinationId());
                 if (!eligibleEvent(player, row) || EventRegions.level(event.getServer(), row) != travel.level()) {
                     travel.release();
                     iterator.remove();
@@ -105,12 +119,19 @@ public final class EventTravel {
     }
 
     private static BlockPos resolve(net.minecraft.server.MinecraftServer server, ServerPlayer player, PendingEventTravel travel) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return resolveInScope(server, player, travel); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> resolveInScope(server, player, travel));
+    }
+
+    private static BlockPos resolveInScope(net.minecraft.server.MinecraftServer server, ServerPlayer player, PendingEventTravel travel) {
         if (travel.type() == Destination.BOSS_STRUCTURE) {
             BossTarget target = bossTarget(player, travel.destinationId());
             if (target == null || target.level() != travel.level()) return null;
             return StructureStaging.safeOutside(player, target.level(), shell(target.arena().bounds()), travel.anchor());
         }
-        var row = SmpData.get(server).find("events", travel.destinationId());
+        var row = SmpData.get(server).events().current(travel.destinationId());
         if (row == null || SmpData.closed(row)) return null;
         if (travel.type() == Destination.RESOURCE_INSIDE)
             return EventRegions.safeInside(travel.level(), row, travel.anchor()).orElse(null);

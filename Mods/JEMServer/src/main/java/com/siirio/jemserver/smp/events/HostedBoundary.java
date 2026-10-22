@@ -9,11 +9,18 @@ import java.util.UUID;
 /** Session authorization only; boss arenas have no movement boundary. */
 public final class HostedBoundary {
     public static boolean authorized(ServerPlayer player, CompoundTag party) {
+        var serverForMutation = player.server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return authorizedInScope(player, party); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> authorizedInScope(player, store.parties().bind(party)));
+    }
+
+    private static boolean authorizedInScope(ServerPlayer player, CompoundTag party) {
         if (!party.getString("state").equals("ACTIVE") || !Parties.accepted(party, player.getUUID())) return false;
         CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
         if (member.getBoolean("eliminated")) return false;
         if (party.hasUUID("eventId")) {
-            CompoundTag event = SmpData.get(player.server).find("events", party.getUUID("eventId"));
+            CompoundTag event = SmpData.get(player.server).events().current(party.getUUID("eventId"));
             if (event == null || SmpRecords.members(event).getCompound(player.getStringUUID()).getBoolean("eliminated")) return false;
         }
         if (party.hasUUID("bossEntity") && player.serverLevel().getEntity(party.getUUID("bossEntity")) instanceof net.minecraft.world.entity.LivingEntity boss
@@ -23,8 +30,15 @@ public final class HostedBoundary {
     }
 
     public static UUID actionToken(MinecraftServer server, CompoundTag party) {
+        var serverForMutation = server;
+        if (serverForMutation == null || serverForMutation.overworld() == null) { return actionTokenInScope(server, party); }
+        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
+        return store.edit(() -> actionTokenInScope(server, store.parties().bind(party)));
+    }
+
+    private static UUID actionTokenInScope(MinecraftServer server, CompoundTag party) {
         if (party.hasUUID("eventId")) {
-            CompoundTag event = SmpData.get(server).find("events", party.getUUID("eventId"));
+            CompoundTag event = SmpData.get(server).events().current(party.getUUID("eventId"));
             if (event == null || !event.getString("state").equals("ACTIVE")) return null;
             return event.hasUUID("attemptId") ? event.getUUID("attemptId") : event.getUUID("id");
         }

@@ -99,7 +99,7 @@ public final class Navigation {
         var entries = ACTIVE.computeIfAbsent(player.getUUID(), key -> new LinkedHashMap<>());
         boolean changed = false;
         for (String table : List.of("parties"))
-            for (var row : SmpData.get(player.server).all(table)) {
+            for (var row : SmpData.get(player.server).views(SmpTable.fromKey(table))) {
                 if (SmpData.closed(row) || !row.contains("dimension")) continue;
                 boolean authorized =
                         row.getUUID("owner").equals(player.getUUID())
@@ -135,8 +135,8 @@ public final class Navigation {
 
                                                 var row =
                                                         SmpData.get(server)
-                                                                .find(
-                                                                        point.subsystem(),
+                                                                .view(
+                                                                        SmpTable.fromKey(point.subsystem()),
                                                                         point.id());
                                                 if (row == null || SmpData.closed(row)) return true;
                                                 return point.subsystem().equals("parties")

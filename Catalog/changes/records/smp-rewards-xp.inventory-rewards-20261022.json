@@ -49,10 +49,12 @@
       "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json",
       "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/LegacyRewards.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonDeaths.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java"
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
     ]
   },
   "rationale": {
@@ -71,6 +73,20 @@
       "commit": "SELF",
       "action": "implement",
       "summary": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged"
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "engineering_v2_retire_source_owners",
+      "summary": "ENGINEERING v2 split the starter owner into persistent entitlement transitions, delivery/reconciliation and native player-file persistence. Current causes now name those exact owners; retired StarterKitData paths remain historical evidence. Entitlements, saved IDs, receipt/replay contracts and record status are unchanged.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java"
+      ],
+      "current_source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
+      ]
     }
   ],
   "impacts": {
