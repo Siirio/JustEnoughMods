@@ -1,13 +1,3 @@
-## 2026-10-22 - Clarify SMP routing, solo events and shared XP baseline
-
-User clarifications: remove the SMP Rewards tab on dedicated servers as well; all migrated item rewards are claimed in the ordinary E inventory. SMP is a server routing window to independent domain interfaces, including Settlements and Market, which remain usable without SMP in singleplayer. Solo boss scaling uses World Tier without party scaling; dedicated retains World Tier plus the confirmed encounter-participant multiplier. All JEM events, not only Raid, are disabled in integrated/LAN worlds.
-
-User addition and explicit answer: apply one shared base x2 to ordinary Minecraft XP from every source in singleplayer and dedicated. Separate race/profession XP is excluded. Additional XP multipliers apply on top of the same x2, without duplicating it between client/server or replacing it with server settings.
-
-Planning choices: enumerate direct and orb-based XP paths and the existing server multiplier before selecting the owning implementation; preserve native XP distribution/Mending and distinguish newly earned XP from saved-balance recovery or transfers to avoid multiplying it again. Added manual acceptance criteria and clarified domain routing in the owning SMP document.
-
-Documentation only; no gameplay code, config, Atlas effective facts, Client/Server artifact, build, test or game launch. Local Server remains untouched. Initial jem.py status still reports pre-existing native publication false at journal 59; this plan does not change publication or the release baseline.
-
 ## 2026-10-22 - Revise universal architecture for dedicated SMP and independent rewards
 
 User requirements: update the Forge 1.20.1 / Java 17 architecture plan only, without implementing code. The amendment supersedes integrated SMP/party/JEM Raid and preparation-time Raid scaling in the previous plan. Dedicated identity includes a one-player server; opening an integrated world to LAN does not enable SMP. Ordinary solo bosses retain a working combat path and independent difficulty/World Tier.
