@@ -1,3 +1,11 @@
+## 2026-10-22 - Share bootstrap installer with complete shaderpacks
+
+User request: provide a shareable ZIP whose mods directory contains only Bootstrap, with a populated shaderpacks folder.
+
+Added shaderpacks to the existing installer seed paths. The standard package-full command now takes all shader files directly from Client/ManagedPack alongside its existing resource-pack/FancyMenu seeds; the installer template remains a single editable Bootstrap source. Updated distribution documentation and regenerated Client/JustEnoughMods.zip (184,640,050 bytes; SHA-256 ac48c9ad8ab11f628e6b0d305f4af71e28cbaa93f4482459d1cb9da935e94c14).
+
+Archive inspection confirms exactly mods/jem-bootstrap.jar, matching the canonical Bootstrap bytes, and all 958 shader files matching their canonical source. No saved-world files are included. No production mod/config, runtime profile, local Server, native generation 59, stable baseline or MineRENT deployment changed. The reported local singleplayer FPS issue was not investigated or modified.
+
 ## 2026-10-22 - Plan mandatory Twelve Eyes universal baseline
 
 User decision: make Twelve Eyes and all of its boss dependencies mandatory as the next stage of the universal plan; this prompt requests planning rather than implementation.
