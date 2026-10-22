@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "regression_warnings",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -18,7 +18,7 @@
       ],
       "context": "Reported easy-to-obtain unenchanted book/scroll removes about half of Nightfall-armored player health.",
       "original_expression": "Candidate-specific fixed or per-channel-hit expressions; none of the inspected candidates uses percentage-health damage.",
-      "jem_expression": "PvP x1.00; PvE x0.65/0.80/0.95/1.10/1.20, plus conditional Human direct-hit +1, then Iron resistance.",
+      "jem_expression": "PvP x1.00; PvE x0.65/0.80/0.95/1.10/1.20, then Iron resistance.",
       "effective_expression": "Cannot be made unique without spell ID, level and caster/target attributes from the observed ItemStack/context.",
       "suspicion": "Common continuous spells can accumulate several native hit applications and Ray of Siphoning also heals for post-event damage.",
       "evidence": [

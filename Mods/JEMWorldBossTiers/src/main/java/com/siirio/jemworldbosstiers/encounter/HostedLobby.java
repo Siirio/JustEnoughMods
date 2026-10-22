@@ -98,7 +98,12 @@ public final class HostedLobby {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void loaded(EntityJoinLevelEvent event) {
-        if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity boss && held(boss)) {
+        if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity boss) {
+            if (HostedEncounterApi.canHost(boss) && !HostedEncounters.isHosted(boss)) {
+                hold(boss);
+                return;
+            }
+            if (!held(boss)) return;
             if (!HostedEncounterApi.canHost(boss) && !HostedGroup.member(boss)
                     || HostedEncounters.isHosted(boss) && !retiringRaid(boss)) release(boss);
             else freeze(boss);

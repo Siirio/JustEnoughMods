@@ -62,12 +62,12 @@
     "owner": "JEMEconomy",
     "kind": "native_offer_owner_and_stock_correction",
     "source_files": [
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
-      "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+      "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
     ]
   },
   "rationale": {
@@ -163,6 +163,25 @@
         "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/BuyerTradeOffers.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
         "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/AbstractVillagerOffersAccessor.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/JemEconomyMixinPlugin.java",
+        "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/CoinMerchantRuntime.java"
       ]
     }
   ],

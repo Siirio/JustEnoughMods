@@ -43,6 +43,14 @@ public final class EventScheduler {
         if (server.getTickCount() % 20 != 0) return;
         var data = SmpData.get(server);
         long now = System.currentTimeMillis();
+        if (!EventRuntime.enabled(server)) {
+            for (var row : List.copyOf(data.all("events"))) {
+                if (!EventRuntime.ordinaryRaid(row) || !row.getString("state").equals("ACTIVE")) continue;
+                if (now >= row.getLong("ends")) finish(server, row, "FAILED");
+                else if (row.getBoolean("combatStarted")) new EncounterContext(row).expireDisconnected(server, now);
+            }
+            return;
+        }
         prepareNext(server, data, now);
         long week = WeeklySchedule.weekStart(Instant.ofEpochMilli(now));
         if (week != checkedWeek) {
@@ -124,7 +132,7 @@ public final class EventScheduler {
     }
 
     public static boolean start(MinecraftServer server, CompoundTag row, long now) {
-        if (!SmpEnvironment.active(server)) return false;
+        if (!EventRuntime.enabled(server)) return false;
         String type = row.getString("activity");
         var data = SmpData.get(server);
         if (!row.getString("state").equals("PLANNED") || row.getBoolean(PREPARING) || hasActiveOrPreparing(data,type,row)) return false;
@@ -169,6 +177,7 @@ public final class EventScheduler {
     }
 
     private static void announce(MinecraftServer server, CompoundTag row, boolean started, String state) {
+        if (EventRuntime.ordinaryRaid(row)) return;
         var border=Component.literal(CHAT_BORDER).withStyle(net.minecraft.ChatFormatting.DARK_GRAY);
         var title=Component.literal("  JEM SMP  ").withStyle(net.minecraft.ChatFormatting.GOLD,net.minecraft.ChatFormatting.BOLD)
                 .append(Component.translatable("jem.smp."+row.getString("activity")).withStyle(row.getString("activity").equals("BLOOD_MOON")?net.minecraft.ChatFormatting.RED:net.minecraft.ChatFormatting.GOLD));
@@ -188,7 +197,8 @@ public final class EventScheduler {
         int tick=server.getTickCount();
         ActiveEventSnapshot cached=ACTIVE_CACHE.get(server);
         if(cached!=null&&cached.tick()==tick) return cached.rows();
-        List<CompoundTag> rows=SmpData.get(server).all("events").stream().filter(e->e.getString("state").equals("ACTIVE")).toList();
+        List<CompoundTag> rows=SmpData.get(server).all("events").stream()
+                .filter(e -> EventRuntime.available(server, e) && e.getString("state").equals("ACTIVE")).toList();
         ACTIVE_CACHE.put(server,new ActiveEventSnapshot(tick,rows));
         return rows;
     }

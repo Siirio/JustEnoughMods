@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "phase_3_named_research_blockers",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -33575,6 +33575,959 @@
       "runtime_observation_required": false
     },
     {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "attack_speed",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "base_damage",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "effects",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "epic_fight_moveset",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "penetration",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "resource_cost",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "item_missing_field",
+      "missing_field": "special_attacks",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "attack_speed",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "base_damage",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "effects",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "effects still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "epic_fight_moveset",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "penetration",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "penetration still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "resource_cost",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "item_missing_field",
+      "missing_field": "special_attacks",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:infernal_crown_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:infernal_crown_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:invulnerite_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:invulnerite_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
       "id": "skarrier_mobs:invulnerite_sword",
       "kind": "durability_missing_field",
       "missing_field": "native_max_damage",
@@ -34301,6 +35254,346 @@
       ],
       "candidate_methods": [],
       "why_unresolved": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:resisteel_sword; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_boots",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_boots; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_chestplate",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_chestplate; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_helmet",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_helmet; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "durability_missing_field",
+      "missing_field": "native_max_damage",
+      "owner_classes": [],
+      "candidate_methods": [
+        "registration factory",
+        "hurtAndBreak",
+        "getMaxDamage"
+      ],
+      "why_unresolved": "Registration factory, inherited Item behavior, tags/NBT or active ability path still lacks one side of max-damage/consumption evidence.",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "actives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "actives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "armor",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "armor still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "cooldown",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "damage_type_reductions",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "damage_type_reductions still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "durability",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "knockback_resistance",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "knockback_resistance still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "passives",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "passives still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
+      "runtime_observation_required": false
+    },
+    {
+      "id": "skarrier_mobs:semi_living_flesh_armor_leggings",
+      "kind": "item_missing_field",
+      "missing_field": "toughness",
+      "owner_classes": [],
+      "candidate_methods": [],
+      "why_unresolved": "toughness still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:semi_living_flesh_armor_leggings; raw class constants are evidence, not assigned values",
       "runtime_observation_required": false
     },
     {

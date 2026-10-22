@@ -5,10 +5,10 @@ import java.util.UUID;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 
-/** Production is dedicated-only; the explicit standalone artifact also owns integrated gameplay. */
+/** Logical server authority shared by integrated and dedicated worlds. */
 public final class SettlementAuthority {
     private SettlementAuthority() { }
-    public static boolean active(MinecraftServer server) { return server != null && (server.isDedicatedServer() || com.siirio.jemsettlements.SettlementBuild.STANDALONE) && server.overworld() != null; }
+    public static boolean active(MinecraftServer server) { return server != null && server.overworld() != null; }
     public static boolean active(ServerPlayer player) { return player != null && active(player.getServer()) && principal(player).isPresent(); }
     public static Optional<UUID> principal(ServerPlayer player) {
         if (player == null || player.getServer() == null) return Optional.empty();

@@ -56,6 +56,11 @@ public final class CampaignDiscoveryEvents {
     }
 
     public static void refreshCartographerTrades(Villager villager) {
+        if (villager.getServer() == null) return;
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(villager.getServer())) {
+            removeLocatorTrades(villager);
+            return;
+        }
         if (villager.getVillagerData().getProfession() != VillagerProfession.CARTOGRAPHER) {
             return;
         }
@@ -78,6 +83,11 @@ public final class CampaignDiscoveryEvents {
     }
 
     private static void ensureWanderingTrades(WanderingTrader trader) {
+        if (trader.getServer() == null) return;
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(trader.getServer())) {
+            removeLocatorTrades(trader);
+            return;
+        }
         CompoundTag data = trader.getPersistentData();
         if (!data.contains(WANDERING_SELECTION, Tag.TAG_LIST)) {
             removeLocatorTrades(trader);

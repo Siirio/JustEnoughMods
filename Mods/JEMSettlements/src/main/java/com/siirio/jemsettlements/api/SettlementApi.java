@@ -54,10 +54,10 @@ public final class SettlementApi {
                 && town.territoryMinX() <= other.territoryMaxX() + 16 && town.territoryMaxX() >= other.territoryMinX() - 16
                 && town.territoryMinZ() <= other.territoryMaxZ() + 16 && town.territoryMaxZ() >= other.territoryMinZ() - 16) return Result.CONFLICT;
         var payment = com.siirio.jemsettlements.currency.SettlementCurrency.depositToAccount(player,
-                com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), com.siirio.jemsettlements.payroll.SettlementEconomyConfig.founding(), town.id());
-        if (payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
-        if (payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
-                && payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
+                com.siirio.jemsettlements.currency.SettlementAccounts.OPERATIONS.id(), com.siirio.jemsettlements.payroll.SettlementEconomyConfig.founding(), town.id());
+        if (payment.status() == com.siirio.jemsettlements.currency.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
+        if (payment.status() != com.siirio.jemsettlements.currency.TransferResult.Status.COMMITTED
+                && payment.status() != com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
         data.add(town);
         return Result.ACCEPTED;
     }
@@ -210,15 +210,15 @@ public final class SettlementApi {
             if (minX <= other.territoryMaxX() + 16 && maxX >= other.territoryMinX() - 16 && minZ <= other.territoryMaxZ() + 16 && maxZ >= other.territoryMinZ() - 16) return Result.CONFLICT;
         }
         var payment = com.siirio.jemsettlements.currency.SettlementCurrency.depositToAccount(player,
-                com.siirio.jemeconomy.ledger.SystemAccount.OPERATIONS.id(), added,
+                com.siirio.jemsettlements.currency.SettlementAccounts.OPERATIONS.id(), added,
                 UUID.nameUUIDFromBytes(("territory:" + townId + ":" + requestId + ":" + minX + ":" + minZ + ":" + maxX + ":" + maxZ).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
-        if (payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
-        if (payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
-                && payment.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
+        if (payment.status() == com.siirio.jemsettlements.currency.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.INSUFFICIENT_FUNDS;
+        if (payment.status() != com.siirio.jemsettlements.currency.TransferResult.Status.COMMITTED
+                && payment.status() != com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
         town.get().territoryBounds(minX, minZ, maxX, maxZ);
         town.get().recordExpansion(requestId);
         data.changed();
-        return payment.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED ? Result.REPLAYED : Result.ACCEPTED;
+        return payment.status() == com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED ? Result.REPLAYED : Result.ACCEPTED;
     }
 
     public static Result setTax(ServerPlayer player, UUID townId, int percent) {
@@ -250,10 +250,10 @@ public final class SettlementApi {
         if (balance > 0L) {
             var refund = com.siirio.jemsettlements.currency.SettlementCurrency.withdrawFromAccount(player,
                     com.siirio.jemsettlements.currency.SettlementCurrency.townAccount(townId), balance, requestId);
-            if (refund.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.CONFLICT;
-            if (refund.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
-                    && refund.status() != com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
-            replayed = refund.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED;
+            if (refund.status() == com.siirio.jemsettlements.currency.TransferResult.Status.INSUFFICIENT_FUNDS) return Result.CONFLICT;
+            if (refund.status() != com.siirio.jemsettlements.currency.TransferResult.Status.COMMITTED
+                    && refund.status() != com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED) return Result.UNAVAILABLE;
+            replayed = refund.status() == com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED;
         }
         SettlementSavedData.get(player.getServer()).removeTown(townId);
         if(com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.active(player.getServer()))com.siirio.jemsettlements.sandbox.SandboxCivicRuntime.afterDelete(player);

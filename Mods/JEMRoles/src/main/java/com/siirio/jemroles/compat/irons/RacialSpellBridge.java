@@ -30,14 +30,13 @@ public final class RacialSpellBridge {
     }; }
     /** Iron's cooldown capability is a presentation projection of the persisted race owner. */
     public static void syncCooldown(ServerPlayer player) {
-        if (!player.server.isDedicatedServer()) return;
         var record = RaceService.record(player).orElse(null);
         var cooldowns = io.redspace.ironsspellbooks.api.magic.MagicData.getPlayerMagicData(player).getPlayerCooldowns();
         boolean changed = false;
         for (RaceId race : RaceId.values()) {
             AbstractSpell spell = spell(race);
             int remaining = record != null && record.race() == race
-                    ? (int)Math.min(Integer.MAX_VALUE, record.remaining("signature", player.level().getGameTime())) : 0;
+                    ? (int)Math.min(Integer.MAX_VALUE, com.siirio.jemvisualsandbox.workbench.RaceExperience.remaining(player, "signature")) : 0;
             var current = cooldowns.getSpellCooldowns().get(spell.getSpellId());
             if (remaining == 0) changed |= cooldowns.removeCooldown(spell.getSpellId());
             else {

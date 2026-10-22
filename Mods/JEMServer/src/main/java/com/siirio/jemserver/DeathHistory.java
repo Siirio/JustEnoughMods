@@ -1,6 +1,6 @@
 package com.siirio.jemserver;
 
-import com.siirio.jemmenus.VanillaMenus;
+import com.siirio.jemserver.menus.VanillaMenus;
 
 import java.util.Comparator;
 import java.util.UUID;
@@ -27,7 +27,7 @@ public final class DeathHistory {
     private DeathHistory() {}
 
     public static void open(ServerPlayer player) {
-        if (com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isEmpty() || !player.server.isDedicatedServer()) return;
+        if (com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isEmpty()) return;
         var history = ServerData.get(player.server).deaths(player.getUUID());
         VanillaMenus.chest(player, JemServer.MOD_ID, "deaths", Component.translatable("jem.deaths.title"), menu -> {
             if (history.isEmpty()) menu.button(22, VanillaMenus.icon(Items.CLOCK, Component.translatable("jem.deaths.empty")), null);

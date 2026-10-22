@@ -38,7 +38,14 @@ public final class BalanceRegistry {
     }
 
     public static Set<ResourceLocation> activeQualifyingKeys() {
-        return bossesByKey.values().stream().filter(BossProfile::countsTowardWorldTier).map(BossProfile::key).collect(Collectors.toUnmodifiableSet());
+        return bossesByKey.values().stream().filter(BossProfile::countsTowardWorldTier)
+                .filter(profile -> profile.entityIds().stream().anyMatch(net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES::containsKey))
+                .map(BossProfile::key).collect(Collectors.toUnmodifiableSet());
+    }
+
+    public static Set<ResourceLocation> qualifyingKeys() {
+        return bossesByKey.values().stream().filter(BossProfile::countsTowardWorldTier)
+                .map(BossProfile::key).collect(Collectors.toUnmodifiableSet());
     }
 
     public static List<Integer> tierThresholds() {

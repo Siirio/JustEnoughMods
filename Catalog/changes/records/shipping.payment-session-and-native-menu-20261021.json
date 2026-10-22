@@ -16,7 +16,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+      "runtime": "Logical integrated or dedicated server; EconomyApi.isEnabled(server) is true; native session, exact registration/admission, canonical identity and authoritative quote/payment validation remain required. Client presentation uses matching protocol.",
+      "acceptance": "Manual gameplay acceptance pending; no automated tests or gameplay scenarios asserted."
     }
   ],
   "precedence": {
@@ -102,6 +103,28 @@
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
         "Client/ManagedPack/mods/jem-economy-1.3.0.jar"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-exchange.png",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/textures/gui/shipping/shipping-ui.png",
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Docs/releases/2026-10-21-shipping-market-repair.json"
       ]
     }
   ],

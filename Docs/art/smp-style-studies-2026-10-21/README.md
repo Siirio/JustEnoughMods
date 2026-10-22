@@ -1,5 +1,7 @@
 # Три Aseprite-варианта SMP
 
+Latest decision, 2026-10-22: **variant1 / USER_REJECTED**. The user explicitly rejects `01-trading-station-1x.png` together with the later `smp-cards-review.png`. Do not use variant1 as a new-work foundation or a source of frame/icons. The earlier selection below is historical and superseded. Originals remain unchanged as rejection evidence; variants2/3 receive no new approval.
+
 21.10.2026. **EDITABLE STYLE STUDIES / NOT INSTALLED / AWAITING USER CHOICE.**
 
 Пользователь просит сейчас использовать references и сделать три примера стиля SMP в Aseprite. Это отдельная визуальная задача после source-only плана, не разрешение реализовать весь план, менять runtime, публиковать пакет или запускать игру.

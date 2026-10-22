@@ -46,7 +46,7 @@ public final class CampaignGateEvents {
             return;
         }
         CampaignBoss boss = CampaignBoss.byEntity(RegistryIds.entity(event.getEntity())).orElse(null);
-        if (boss == null || CampaignSavedData.get(level.getServer()).unlocked(boss)) {
+        if (boss == null || !locked(level.getServer(), boss.entity())) {
             return;
         }
         event.setCanceled(true);
@@ -62,7 +62,7 @@ public final class CampaignGateEvents {
             return;
         }
         CampaignBoss boss = CampaignBoss.byEntity(RegistryIds.entity(event.getTarget())).orElse(null);
-        if (boss == null || CampaignSavedData.get(level.getServer()).unlocked(boss)) {
+        if (boss == null || !locked(level.getServer(), boss.entity())) {
             return;
         }
         event.setCanceled(true);
@@ -115,21 +115,25 @@ public final class CampaignGateEvents {
     }
 
     public static boolean unlocked(ServerPlayer player, net.minecraft.resources.ResourceLocation entity) {
-        CampaignBoss boss = CampaignBoss.byEntity(entity).orElse(null);
-        return boss == null || CampaignSavedData.get(player.server).unlocked(boss);
+        return !locked(player.server, entity);
     }
 
     public static boolean locked(net.minecraft.server.MinecraftServer server,net.minecraft.resources.ResourceLocation entity) {
         CampaignBoss boss=CampaignBoss.byEntity(entity).orElse(null);
-        return boss!=null&&!CampaignSavedData.get(server).unlocked(boss);
+        if (boss == null || !com.siirio.jemtwelveeyes.CampaignAvailability.gatesPortal(server)) return false;
+        return !com.siirio.jemtwelveeyes.CampaignAvailability.playable(server) || !CampaignSavedData.get(server).unlocked(boss);
     }
 
     public static void explainLocked(ServerPlayer player, net.minecraft.resources.ResourceLocation entity) {
         CampaignBoss boss = CampaignBoss.byEntity(entity).orElse(null);
-        if (boss != null && !CampaignSavedData.get(player.server).unlocked(boss)) explain(player, boss, true);
+        if (boss != null && locked(player.server, entity)) explain(player, boss, true);
     }
 
     private static void explain(ServerPlayer player, CampaignBoss boss, boolean fullScreen) {
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(player.server)) {
+            com.siirio.jemtwelveeyes.CampaignAvailability.explain(player);
+            return;
+        }
         long now = player.serverLevel().getGameTime();
         CampaignSavedData data = CampaignSavedData.get(player.server);
         List<CampaignPrerequisite> missing = boss.prerequisites().stream()

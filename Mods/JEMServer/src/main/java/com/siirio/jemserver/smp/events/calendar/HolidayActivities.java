@@ -10,6 +10,7 @@ public final class HolidayActivities {
     private static final String RETIRED_MOB_TAG = "jem_holiday_owner_";
 
     public static UUID offerGift(ServerPlayer sender, ServerPlayer target) {
+        if (!com.siirio.jemserver.smp.events.EventRuntime.enabled(sender.getServer())) return null;
         var senderPrincipal = IdentityPolicy.resolve(sender);
         var targetPrincipal = IdentityPolicy.resolve(target);
         CalendarEventData data = CalendarEventData.get(sender.getServer());

@@ -272,10 +272,6 @@ class Atlas:
         self._load_overlays()
 
     def _owner_for(self, artifact: Artifact, namespace: str) -> dict[str, Any]:
-        if namespace == "jem_economy" and any(mod["id"] == "jem_currency_core" for mod in artifact.mods):
-            if "source" in artifact.sides:
-                return self.owners["jem_currency_core"]
-            return {**next(mod for mod in artifact.mods if mod["id"] == "jem_currency_core"), "source_jar": artifact.source_name, "sha256": artifact.digest}
         if namespace in self.owners:
             return self.owners[namespace]
         if len(artifact.mods) == 1:
@@ -287,6 +283,13 @@ class Atlas:
             return
         namespace = registry_id.split(":", 1)[0]
         owner = self._owner_for(artifact, namespace)
+        concrete_owner = "/models/" in evidence or "/blockstates/" in evidence or "src/main" in evidence
+        if concrete_owner and len(artifact.mods) == 1:
+            # A relocated registration may retain another module's legacy namespace.
+            # The artifact/source containing the registration owns it today.
+            owner = {**artifact.mods[0]}
+            owner.setdefault("source_jar", artifact.source_name)
+            owner.setdefault("sha256", artifact.digest)
         row = self.registries[registry].setdefault(registry_id, {
             "registry_id": registry_id,
             "registry_type": REGISTRY_DIRS[registry],
@@ -316,7 +319,7 @@ class Atlas:
         row["observed_in"] = sorted(set(row["observed_in"]) | {evidence})
         # A shared translation file may mention another mod's items. Concrete model,
         # blockstate or source registration evidence supplies that object's owner.
-        if "/models/" in evidence or "/blockstates/" in evidence or ("src/main" in evidence and not row.get("source_sha256")):
+        if concrete_owner:
             row.update({"mod_id": owner["id"], "mod_name": owner["name"], "mod_version": owner["version"],
                         "source_jar": owner.get("source_jar"), "source_sha256": owner.get("sha256")})
         row["source_provenance"] = sorted(set(row["source_provenance"]) | {f"{artifact.source_name}:{evidence}"})
@@ -415,16 +418,25 @@ class Atlas:
         }
 
     def _scan_sources(self) -> None:
-        pattern = re.compile(r'\bregister\s*\(\s*"([a-z0-9_./-]+)"')
+        pattern = re.compile(r'\bregister\s*\(\s*"([a-z0-9_./-]+)"\s*,')
         for module in sorted((ROOT / "Mods").iterdir()):
             source = module / "src" / "main"
             if not source.exists():
                 continue
             toml = source / "resources" / "META-INF" / "mods.toml"
             mod_id = module.name.lower()
+            properties = module / "gradle.properties"
+            if properties.is_file():
+                for line in properties.read_text(encoding="utf-8-sig").splitlines():
+                    key, separator, value = line.partition("=")
+                    if separator and key.strip() == "mod_id" and re.fullmatch(r"[a-z0-9_]+", value.strip()):
+                        mod_id = value.strip()
             if toml.exists():
                 try:
-                    parsed = tomllib.loads(toml.read_text(encoding="utf-8"))
+                    # Source templates contain dependency table keys with this
+                    # exact Gradle property; parse the same native identity.
+                    template = toml.read_text(encoding="utf-8-sig").replace("${mod_id}", mod_id)
+                    parsed = tomllib.loads(template)
                     if parsed.get("mods"):
                         mod_id = parsed["mods"][0].get("modId", mod_id)
                 except tomllib.TOMLDecodeError:
@@ -447,6 +459,8 @@ class Atlas:
                     registry = "blocks"
                 elif "ENTITYTYPE" in upper and "DEFERREDREGISTER" in upper:
                     registry = "entities"
+                elif "FORGEREGISTRIES.ENCHANTMENTS" in upper:
+                    registry = "enchantments"
                 if not registry:
                     continue
                 namespace = mod_id
@@ -457,19 +471,22 @@ class Atlas:
                 pseudo = Artifact(java, {"source"}, "", [owner], {namespace})
                 for match in pattern.finditer(text):
                     self._observe(registry, f"{namespace}:{match.group(1)}", pseudo, str(java.relative_to(ROOT)).replace("\\", "/"))
-                dynamic = re.findall(r'\b\w+\.register\s*\(\s*([^"\s][^,;\n]*),', text)
+                dynamic = re.findall(r'\b\w+\.register\s*\(\s*([^"\s][^,;\n]*|"[a-z0-9_./-]+"\s*\+[^,;\n]*),', text)
                 if dynamic:
                     self.unresolved.append({"type": "dynamic_source_registration", "registry": registry,
                                             "artifact": owner.get("source_jar"), "source": str(java.relative_to(ROOT)).replace("\\", "/"),
                                             "expressions": sorted(set(value.strip() for value in dynamic)),
                                             "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"})
 
-    def _load_overlays(self) -> None:
-        for path in (ROOT / "Mods" / "JEMSettlements" / "src" / "main" / "resources" / "data" / "jem_settlements" / "happiness").glob("food_values.json"):
+    def _load_food_policies(self) -> None:
+        for path in sorted((ROOT / "Mods" / "JEMSettlements" / "src" / "main" / "resources" / "data" / "jem_settlements" / "happiness" / "food_values").glob("*.json")):
             raw = json.loads(path.read_text(encoding="utf-8"))
             for row in raw:
                 self.food_policies[row["item"]] = row
-        policy_path = ROOT / "Mods" / "JEMCurrencyCore" / "src" / "main" / "resources" / "data" / "jem_economy" / "economy" / "item_policies.json"
+
+    def _load_overlays(self) -> None:
+        self._load_food_policies()
+        policy_path = ROOT / "Mods" / "JEMEconomy" / "src" / "main" / "resources" / "data" / "jem_economy" / "economy" / "item_policies.json"
         if policy_path.exists():
             for row in json.loads(policy_path.read_text(encoding="utf-8")):
                 self.trade_policies[row["item"]] = row
@@ -529,22 +546,36 @@ class Atlas:
 
     def emit(self) -> None:
         generated = datetime.now(timezone.utc).isoformat()
+        partitions: set[Path] = set()
+
+        def write_partition(path: Path, payload: dict[str, Any]) -> None:
+            write_json(path, payload)
+            partitions.add(path)
+
         for registry, records in self.registries.items():
             grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
             for row in records.values():
                 grouped[row["mod_id"]].append(row)
             for mod_id, rows in grouped.items():
-                write_json(CATALOG / "registries" / registry / f"{mod_id}.json", self._envelope(registry, mod_id, rows, generated))
+                write_partition(CATALOG / "registries" / registry / f"{mod_id}.json", self._envelope(registry, mod_id, rows, generated))
         views = self.generate_views()
         for view in ("mobs", "mountables", "bosses", "boss_allies", "placeables", "foods", "weapons", "armor", "tools", "accessories", "containers", "villager_variants", "worldgen", "trade_policies"):
             groups = views.get(view, {})
             for mod_id, rows in groups.items():
-                write_json(CATALOG / "views" / view / f"{mod_id}.json", self._envelope(view, mod_id, rows, generated))
+                write_partition(CATALOG / "views" / view / f"{mod_id}.json", self._envelope(view, mod_id, rows, generated))
         recipes_by_mod: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for row in self.recipes.values():
             recipes_by_mod[row["mod_id"]].append(row)
         for mod_id, rows in recipes_by_mod.items():
-            write_json(CATALOG / "graphs" / "recipes" / f"{mod_id}.json", self._envelope("recipes", mod_id, rows, generated))
+            write_partition(CATALOG / "graphs" / "recipes" / f"{mod_id}.json", self._envelope("recipes", mod_id, rows, generated))
+        # These partitions are a snapshot of the current artifact/source inventory.
+        # Retaining an absent namespace would make retired mods appear installed.
+        for pattern in ("registries/*/*.json", "views/*/*.json", "graphs/recipes/*.json"):
+            for path in CATALOG.glob(pattern):
+                if path not in partitions:
+                    previous = json.loads(path.read_text(encoding="utf-8"))
+                    if previous.get("generation", {}).get("generator") == "Catalog/generator/build_atlas.py":
+                        path.unlink()
         write_json(CATALOG / "graphs" / "tag_membership.json", {"schema_version": SCHEMA, "snapshot_sha": self.head, "tags": {key: sorted(values) for key, values in sorted(self.tags.items())}})
         write_json(CATALOG / "graphs" / "progression.json", {"schema_version": SCHEMA, "snapshot_sha": self.head, "status": "source overlays required", "protected_endpoints": sorted(item for item, p in self.trade_policies.items() if p.get("outcome") == "NONE")})
         write_json(CATALOG / "graphs" / "item_lineage.json", {"schema_version": SCHEMA, "snapshot_sha": self.head, "status": "recipe edges generated; exclusive progression lineage requires reviewed overlay", "recipe_count": len(self.recipes)})

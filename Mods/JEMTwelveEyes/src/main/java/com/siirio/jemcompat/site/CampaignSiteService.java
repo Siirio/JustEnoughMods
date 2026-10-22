@@ -67,6 +67,7 @@ public final class CampaignSiteService {
             return;
         }
         CampaignSavedData data = CampaignSavedData.get(player.server);
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(player.server)) return;
         for (CampaignPrerequisite prerequisite : CampaignPrerequisite.values()) {
             if (!prerequisite.generatedSite()
                     || data.prerequisiteDefeated(prerequisite)

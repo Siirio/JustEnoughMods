@@ -10,7 +10,8 @@
   ],
   "conditions": [
     {
-      "expression": "Authenticated dedicated SMP; registered hosted boss near eligible player"
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -57,6 +58,25 @@
       "commit": "SELF",
       "action": "repair_chat_entry_transport",
       "summary": "Removed commands remained in both notification producers; replace with validated GUI request."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "expression": "Authenticated dedicated SMP; registered hosted boss near eligible player"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventPromptRequest.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/HostedFightChatLinkMixin.java",
+        "Mods/JEMServer/src/main/resources/jem_server.mixins.json"
+      ]
     }
   ],
   "impacts": {

@@ -15,7 +15,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import com.siirio.jemserver.smp.SmpEnvironment;
 
-@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_server", value = Dist.DEDICATED_SERVER)
+@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = "jem_server")
 public final class MapNetwork {
     private static final String VERSION = "8";
     private static final int MAX_EVENTS = 64;
@@ -99,9 +99,9 @@ public final class MapNetwork {
                 .encoder((packet, out) -> { out.writeUUID(packet.id()); out.writeInt(packet.targetX()); out.writeInt(packet.targetZ()); out.writeUUID(packet.request()); })
                 .decoder(in -> new SettlementExpand(in.readUUID(), in.readInt(), in.readInt(), in.readUUID()))
                 .consumerMainThread((packet, context) -> { var player = context.get().getSender(); if (player != null && SmpEnvironment.active(player)
-                        && com.siirio.jemserver.smp.SmpRequests.allow(player)) {
-                    var result = com.siirio.jemsettlements.api.SettlementApi.expandTerritory(player, packet.id(), packet.targetX(), packet.targetZ(), packet.request());
-                    player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.settlement.action." + result.name().toLowerCase(java.util.Locale.ROOT)), true);
+                        && com.siirio.jemserver.smp.SmpRequests.allow(player) && com.siirio.jemserver.smp.DomainFeatures.loaded("jem_settlements")) {
+                    String result = com.siirio.jemserver.compat.settlements.SettlementHostAdapter.expand(player, packet.id(), packet.targetX(), packet.targetZ(), packet.request());
+                    player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.settlement.action." + result.toLowerCase(java.util.Locale.ROOT)), true);
                     sync(player);
                 } context.get().setPacketHandled(true); }).add();
     }
@@ -181,9 +181,8 @@ public final class MapNetwork {
                                         .map(rectangle -> new ProjectRectangle(rectangle.minX(), rectangle.minZ(), rectangle.maxX(), rectangle.maxZ()))
                                         .toList()))
                         .toList();
-        var settlements = com.siirio.jemsettlements.town.SettlementSavedData.get(player.server).towns().stream().limit(256)
-                .map(town -> new SettlementArea(town.id(), town.name(), town.dimension(), town.center(), town.territoryMinX(), town.territoryMinZ(), town.territoryMaxX(), town.territoryMaxZ(),
-                        principal.isPresent() && town.owner().equals(principal.get().accountId()))).toList();
+        List<SettlementArea> settlements = com.siirio.jemserver.smp.DomainFeatures.loaded("jem_settlements")
+                ? com.siirio.jemserver.compat.settlements.SettlementHostAdapter.areas(player) : List.of();
         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new Snapshot(deaths, eventAreas(player), projects, settlements));
     }
 

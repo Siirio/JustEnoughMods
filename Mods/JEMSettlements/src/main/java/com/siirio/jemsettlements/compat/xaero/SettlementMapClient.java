@@ -100,7 +100,7 @@ public final class SettlementMapClient {
     public static Draft pending(ResourceLocation dim) {
         return state == TerritoryDragState.PREVIEW && draft != null && draft.area().dimension().equals(dim) && draft.quote().addedCopper() > 0L ? draft : null;
     }
-    public static Component price(Draft value) { return coins ? com.siirio.jemeconomy.physical.CoinFormatter.formatAll(value.quote().addedCopper()) : SettlementPriceRenderer.format(value.quote().addedCopper(), false); }
+    public static Component price(Draft value) { return coins ? SettlementPriceRenderer.formatAll(value.quote().addedCopper(), true) : SettlementPriceRenderer.format(value.quote().addedCopper(), false); }
     public static void confirm(Draft value) {
         if (state != TerritoryDragState.PREVIEW || draft != value || SettlementClientState.pending()) return;
         var a = value.area(); CompoundTag payload = new CompoundTag(); payload.putInt("X", value.x()); payload.putInt("Z", value.z());

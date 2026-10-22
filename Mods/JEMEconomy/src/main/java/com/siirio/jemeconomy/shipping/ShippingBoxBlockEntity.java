@@ -51,6 +51,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     private UUID seller() { return visitorAccount == null ? owner : visitorAccount; }
 
     public boolean acquire(ServerPlayer player) {
+        if (!com.siirio.jemeconomy.api.EconomyApi.isEnabled(player.getServer())) return false;
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty() || !(level instanceof ServerLevel serverLevel)) return false;
         refresh();
@@ -158,7 +159,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
 
     /** Recovery never starts a new sale; legacy in-flight payments keep their journal. */
     public void refresh() {
-        if (!(level instanceof ServerLevel serverLevel) || owner == null) return;
+        if (!(level instanceof ServerLevel serverLevel) || owner == null || !com.siirio.jemeconomy.api.EconomyApi.isEnabled(serverLevel.getServer())) return;
         if (paymentLocked() && visitorAccount != null) {
             // Forced close, death and restart retain the same seller's payment session.
             for (ServerPlayer active : serverLevel.getServer().getPlayerList().getPlayers()) {
@@ -186,7 +187,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     }
 
     public void sellAndCollect(ServerPlayer player) {
-        if (!(level instanceof ServerLevel serverLevel) || !serverLevel.getServer().isDedicatedServer()
+        if (!(level instanceof ServerLevel serverLevel) || !com.siirio.jemeconomy.api.EconomyApi.isEnabled(serverLevel.getServer())
                 || !stillValid(player) || !(player.containerMenu instanceof ShippingBoxMenu menu)
                 || menu.box() != this) return;
         refresh();
@@ -197,7 +198,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     }
 
     public void preview() {
-        if (!(level instanceof ServerLevel serverLevel) || owner == null) return;
+        if (!(level instanceof ServerLevel serverLevel) || owner == null || !com.siirio.jemeconomy.api.EconomyApi.isEnabled(serverLevel.getServer())) return;
         Quote quote = quote(serverLevel);
         previewPayout = quote.payout;
         if (!status.startsWith("paid:") && !status.startsWith("quarantined"))
@@ -389,7 +390,7 @@ public final class ShippingBoxBlockEntity extends BlockEntity implements Contain
     @Override public ItemStack removeItem(int slot, int amount) { ItemStack result = ContainerHelper.removeItem(items, slot, amount); if (!result.isEmpty()) setChanged(); return result; }
     @Override public ItemStack removeItemNoUpdate(int slot) { return ContainerHelper.takeItem(items, slot); }
     @Override public void setItem(int slot, ItemStack stack) { if (slot < INPUT_SLOTS && !stack.isEmpty() && !ItemPolicyRegistry.acceptsShipping(stack)) return; if (slot >= PAYOUT_START && !stack.isEmpty() && CoinProvenance.read(stack).isEmpty()) return; items.set(slot, stack); setChanged(); }
-    @Override public boolean stillValid(Player player) { return player.isAlive() && player.getUUID().equals(visitorPlayer) && player instanceof ServerPlayer serverPlayer && IdentityPolicy.resolve(serverPlayer).map(p -> p.accountId().equals(visitorAccount)).orElse(false) && level != null && level.getBlockEntity(worldPosition) == this && player.distanceToSqr(worldPosition.getX() + .5D, worldPosition.getY() + .5D, worldPosition.getZ() + .5D) <= 64D; }
+    @Override public boolean stillValid(Player player) { return player.isAlive() && player instanceof ServerPlayer authorized && com.siirio.jemeconomy.api.EconomyApi.isEnabled(authorized.getServer()) && player.getUUID().equals(visitorPlayer) && player instanceof ServerPlayer serverPlayer && IdentityPolicy.resolve(serverPlayer).map(p -> p.accountId().equals(visitorAccount)).orElse(false) && level != null && level.getBlockEntity(worldPosition) == this && player.distanceToSqr(worldPosition.getX() + .5D, worldPosition.getY() + .5D, worldPosition.getZ() + .5D) <= 64D; }
     @Override public void clearContent() { for (int slot = 0; slot < items.size(); slot++) items.set(slot, ItemStack.EMPTY); setChanged(); }
     private boolean automationUnlocked() { return visitorPlayer == null && visitorAccount == null && inventoryUnlocked(); }
     @Override public boolean canPlaceItem(int slot, ItemStack stack) { return automationUnlocked() && slot < INPUT_SLOTS && ItemPolicyRegistry.acceptsShipping(stack); }

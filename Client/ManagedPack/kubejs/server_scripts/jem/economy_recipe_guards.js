@@ -1,8 +1,8 @@
-// The shared-server economy must not change an integrated singleplayer game.
 ServerEvents.recipes(event => {
-  // Installed KubeJS exposes this physical-side check as a supported binding.
-  // FMLEnvironment is deliberately denied by its Java class filter.
-  if (Platform.isClientEnvironment()) return
+  if (!Platform.isLoaded('jem_economy')) return
+  // Record this recipe manager before returning, including the pre-world load.
+  const economyEnabled = Java.loadClass('com.siirio.jemeconomy.api.EconomyApi').recipePolicyEnabled()
+  if (!economyEnabled || !Platform.isLoaded('farm_and_charm')) return
   // One stone must not become two stones through the mincer and Create's fuel-free fan.
   // Keep the native mincer recipe/category; only remove its material duplication.
   event.remove({ id: 'farm_and_charm:mincer/cobblestone' })
@@ -12,5 +12,5 @@ ServerEvents.recipes(event => {
     recipe_type: 'STONE',
     result: { item: 'minecraft:cobblestone', count: 1 }
   }).id('farm_and_charm:mincer/cobblestone')
-  console.info('[JEM economy] Dedicated recipe guard registered: mincer stone -> cobblestone x1 (physicalClient=false)')
+  console.info('[JEM economy] Active world recipe guard: mincer stone -> cobblestone x1')
 })

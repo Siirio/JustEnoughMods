@@ -54,8 +54,8 @@ public final class TierCommands {
     private static int status(CommandSourceStack source) {
         WorldTierData data = WorldTierData.get(source.getServer());
         int count = data.activeDefeatCount();
-        int next = BalanceRegistry.tierThresholds().stream().filter(threshold -> threshold > count).findFirst().orElse(-1);
-        String defeated = data.defeatedBosses().stream().filter(BalanceRegistry.activeQualifyingKeys()::contains).sorted(Comparator.comparing(ResourceLocation::toString)).map(ResourceLocation::toString).collect(Collectors.joining(", "));
+        int next = data.tierThresholds().stream().filter(threshold -> threshold > count).findFirst().orElse(-1);
+        String defeated = data.defeatedBosses().stream().filter(data.progressionRoster()::contains).sorted(Comparator.comparing(ResourceLocation::toString)).map(ResourceLocation::toString).collect(Collectors.joining(", "));
         String sourceName=data.tierOverride().isPresent()?"manual":"progression";
         source.sendSuccess(() -> Component.translatable("jem.world_tier.command.status", data.tier(), sourceName, count,
                 next < 0 ? "MAX" : Integer.toString(next), defeated.isEmpty() ? "none" : defeated), false);

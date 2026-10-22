@@ -1,4 +1,6 @@
 ServerEvents.recipes(event => {
+  if (!Platform.isLoaded('jem_twelve_eyes')) return
+  if (!Java.loadClass('com.siirio.jemtwelveeyes.api.CampaignApi').hasRequiredContent()) return
   [
     'endrem:old_eye',
     'endrem:black_eye',

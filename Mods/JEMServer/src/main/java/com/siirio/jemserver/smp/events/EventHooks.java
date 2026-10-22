@@ -61,6 +61,7 @@ public final class EventHooks {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void placement(BlockEvent.EntityPlaceEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
+        if (!EventRuntime.enabled(level.getServer())) return;
         BloodMoonSetPieces.placed(level,event);
         if (event instanceof BlockEvent.EntityMultiPlaceEvent placements) placements.getReplacedBlockSnapshots().forEach(snapshot->ResourcePlacements.record(level,snapshot.getPos()));
         else ResourcePlacements.record(level,event.getPos());
@@ -76,6 +77,7 @@ public final class EventHooks {
             ServerLevel level,
             net.minecraft.core.BlockPos source,
             net.minecraft.core.BlockPos target) {
+        if (!EventRuntime.enabled(level.getServer())) return;
         ResourcePlacements.record(level,target);
         var event = EventScheduler.active(level.getServer(), "RESOURCE_RUSH");
         if (event != null) track(level, event, target);
@@ -110,7 +112,7 @@ public final class EventHooks {
     @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
     public void entity(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
-        if(!BloodMoon.adoptSummon(level,event.getEntity())) {
+        if(EventRuntime.enabled(level.getServer()) && !BloodMoon.adoptSummon(level,event.getEntity())) {
             event.setCanceled(true);
             return;
         }
@@ -119,6 +121,7 @@ public final class EventHooks {
         String key = tag.hasUUID(BloodMoon.EVENT_ID) ? BloodMoon.EVENT_ID : RaidEvent.EVENT_ID;
         if (!tag.hasUUID(key)) return;
         var row = SmpData.get(level.getServer()).find("events", tag.getUUID(key));
+        if (row != null ? !EventRuntime.available(level.getServer(), row) : !EventRuntime.enabled(level.getServer())) return;
         if (row == null || !row.getString("state").equals("ACTIVE")
                 || key.equals(BloodMoon.EVENT_ID) && !activeBloodMoonSpawn(level,event.getEntity())) {
             event.setCanceled(true);
@@ -131,6 +134,7 @@ public final class EventHooks {
     }
 
     static boolean activeBloodMoonSpawn(ServerLevel level,net.minecraft.world.entity.Entity entity) {
+        if (!EventRuntime.enabled(level.getServer())) return false;
         var tag=entity.getPersistentData();
         if(!tag.hasUUID(BloodMoon.EVENT_ID)) return false;
         var row=SmpData.get(level.getServer()).find("events",tag.getUUID(BloodMoon.EVENT_ID));
@@ -139,12 +143,13 @@ public final class EventHooks {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void defeated(net.minecraftforge.event.entity.living.LivingDeathEvent event) {
-        if (event.getEntity().level() instanceof ServerLevel level)
+        if (event.getEntity().level() instanceof ServerLevel level && EventRuntime.enabled(level.getServer()))
             BloodMoon.defeated(level.getServer(), event.getEntity());
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void contribution(net.minecraftforge.event.entity.living.LivingDamageEvent event) {
+        if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         net.minecraft.world.entity.Entity mob = event.getEntity();
         ServerPlayer player = null;
         if (event.getSource().getEntity() instanceof ServerPlayer attacker) player = attacker;
@@ -171,6 +176,7 @@ public final class EventHooks {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void localCombat(net.minecraftforge.event.entity.living.LivingAttackEvent event) {
+        if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         var source = event.getSource().getEntity();
         if (source instanceof ServerPlayer player
                 && event.getEntity().getPersistentData().hasUUID(BloodMoon.EVENT_ID)) {
@@ -201,6 +207,7 @@ public final class EventHooks {
 
     @SubscribeEvent
     public void explosion(net.minecraftforge.event.level.ExplosionEvent.Detonate event) {
+        if (!EventRuntime.enabled(event.getLevel().getServer())) return;
         net.minecraft.world.entity.Entity source = event.getExplosion().getIndirectSourceEntity();
         if (source == null) source = event.getExplosion().getDirectSourceEntity();
         if (source != null && source.getPersistentData().hasUUID(BloodMoon.EVENT_ID))

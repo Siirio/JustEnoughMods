@@ -2,7 +2,7 @@ package com.siirio.jemsettlements.payroll;
 
 import com.siirio.jemsettlements.runtime.SettlementAuthority;
 import com.siirio.jemsettlements.currency.SettlementCurrency;
-import com.siirio.jemeconomy.ledger.TransferResult;
+import com.siirio.jemsettlements.currency.TransferResult;
 import com.siirio.jemsettlements.compat.recruits.RecruitReadinessAdapter;
 import com.siirio.jemsettlements.town.SettlementSavedData;
 import com.siirio.jemsettlements.workforce.WorkforceRecord;
@@ -61,6 +61,7 @@ public final class PayrollService {
                     RecruitRank.of(value.nativeEntityType()).wage(), value.hireGeneration())).toList();
             PayrollPeriod period = new PayrollPeriod(book.nextPayrollIndex(), due, wages);
             book.schedule(period); roster.forEach(value -> value.scheduleWage(due));
+            data.changed(); TaxDurability.save(server, data, "jem_settlements");
             settle(server, data, account, book, personal, period);
         }
     }
@@ -75,7 +76,7 @@ public final class PayrollService {
             period.paid(result.receiptId());
             for (var wage : period.roster()) data.workforceEntity(wage.soldierId()).filter(value -> value.hireGeneration() == wage.generation())
                     .ifPresent(value -> value.paid(period.index()));
-            book.payrollRecovered(); return;
+            book.payrollRecovered(); data.changed(); TaxDurability.save(server, data, "jem_settlements"); return;
         }
         if (result.status() != TransferResult.Status.INSUFFICIENT_FUNDS) return;
         boolean newlyMissed = false;

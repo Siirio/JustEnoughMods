@@ -19,7 +19,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class BloodMoonDeaths {
     private static final String RECORDED = "jem:blood_moon_death_recorded";
     private static final String HOSTED_INVENTORY = "jem:hosted_inventory";
@@ -149,7 +149,7 @@ public final class BloodMoonDeaths {
         if (member.getBoolean("safeRespawn")) player.setHealth((float) (player.getMaxHealth() * EventRules.RESPAWN_HEALTH.get()));
         if(member.getBoolean("eliminated")) {
             if(!EventRegions.returnOrigin(player,member)) EventRegions.eject(player,row);
-        } else if (row.getString("state").equals("ACTIVE")) {
+        } else if (EventRuntime.enabled(player.server) && row.getString("state").equals("ACTIVE")) {
             var level=EventRegions.level(player.server,row);
             var pos=level==null?null:new EncounterContext(row).respawnPoint(level);
             if(level!=null&&pos!=null) player.teleportTo(level, pos.getX() + .5, pos.getY(), pos.getZ() + .5, player.getYRot(), player.getXRot());

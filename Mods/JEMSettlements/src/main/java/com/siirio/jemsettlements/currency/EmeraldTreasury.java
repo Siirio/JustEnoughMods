@@ -27,24 +27,7 @@ final class EmeraldTreasury extends SavedData {
         receipts.put(key, row); setDirty(); return receipt;
     }
     void flush(MinecraftServer server) {
-        var target = server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT).resolve("data/jem_settlements_emeralds.dat");
-        CompoundTag expected = save(new CompoundTag()); java.nio.file.Path temporary = null;
-        try {
-            java.nio.file.Files.createDirectories(target.getParent());
-            temporary = java.nio.file.Files.createTempFile(target.getParent(), "jem_settlements_emeralds-", ".dat.tmp");
-            // SavedData owns the native envelope/DataVersion. Never truncate the last durable intent file.
-            setDirty(); save(temporary.toFile());
-            if (!expected.equals(net.minecraft.nbt.NbtIo.readCompressed(temporary.toFile()).getCompound("data")))
-                throw new java.io.IOException("Emerald treasury temporary save mismatch");
-            try (var channel = java.nio.channels.FileChannel.open(temporary, java.nio.file.StandardOpenOption.WRITE)) { channel.force(true); }
-            java.nio.file.Files.move(temporary, target, java.nio.file.StandardCopyOption.ATOMIC_MOVE, java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-            if (!expected.equals(net.minecraft.nbt.NbtIo.readCompressed(target.toFile()).getCompound("data")))
-                throw new java.io.IOException("Emerald treasury save mismatch");
-        } catch (java.io.IOException failure) { setDirty(); throw new IllegalStateException("Emerald treasury storage unavailable", failure); }
-        finally {
-            if (temporary != null) try { java.nio.file.Files.deleteIfExists(temporary); }
-            catch (java.io.IOException failure) { com.mojang.logging.LogUtils.getLogger().warn("Could not remove emerald treasury temporary file", failure); }
-        }
+        com.siirio.jemsettlements.payroll.TaxDurability.save(server, this, "jem_settlements_emeralds");
     }
     boolean locked(UUID account) { return pending.values().stream().anyMatch(row -> row.getUUID("Account").equals(account)); }
     ListTag history(UUID account) {

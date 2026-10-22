@@ -1,12 +1,16 @@
 # Boss Fight
 
+## Universal ownership — 2026-10-22
+
+The same logical-server encounter implementation serves integrated worlds and dedicated hosts. WorldBossTiers owns dormant native tick/presentation hold, canonical structure discovery, participation/scaling, rewards and revival. Without Server, its own solo admission opens on an attempted dormant-boss hit; with Server, the existing encounter/party UI owns that flow. Matching WorldTier protocol is 6. Server's scheduled/seasonal event switch does not gate ordinary boss Start or solo Raid. Strict TwelveEyes Start prerequisites remain independent from content-aware WorldTier progression; see the [module contracts](../universal/README.md). Runtime/player acceptance is still separate from source implementation.
+
 ## Current source contract — 2026-10-21
 
 Status: source implementation / in testing. Runtime acceptance is unrun; artifact delivery, native AutoModpack installation and MineRENT deployment are pending.
 
 The user explicitly removes boss barriers entirely. Ordinary structural Boss Fight, Campaign and Boss Raid no longer create visible walls, collision shells, movement correction or teleport containment. Registered structure geometry still owns arena identity, discovery, safe positions, progression and encounter/reward classification; it is not a physical prison. Blood Moon and Resource Rush retain their separate approved walls and movement policies.
 
-Registered living bosses enter a persistent dormant lobby on entity join/reload. HostedLobby holds native AI/targets/movement and presentation until canonical Start and rejects damage/death of the held boss. The dedicated dispatcher hold also pauses mod-native custom combat/cinematic ticks. Reload reapplies the hold instead of releasing it, and there is no idle timeout that silently starts combat. Nearby players do not acquire general damage/death immunity merely by standing near a waiting boss.
+Registered living bosses enter a persistent dormant lobby on entity join/reload. HostedLobby holds native AI/targets/movement and presentation until canonical Start and rejects damage/death of the held boss. The logical-server dispatcher hold also pauses mod-native custom combat/cinematic ticks. Reload reapplies the hold instead of releasing it, and there is no idle timeout that silently starts combat. Nearby players do not acquire general damage/death immunity merely by standing near a waiting boss.
 
 An attempted player attack, including a resolved projectile owner, is cancelled against the dormant boss and opens the existing encounter choice/host GUI after current authority, proximity, prerequisite and availability checks. Proximity alone no longer prompts or starts combat. Start remains an explicit server-owned operation; it releases the lobby once and binds the canonical party/attempt. Cancellation/defeat of a surviving boss returns it to the same dormant owner. An empty active arena eventually closes through the existing grace lifecycle instead of remaining active forever.
 

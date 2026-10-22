@@ -12,6 +12,7 @@ public final class CalendarEventScheduler {
     }
 
     public static void tick(MinecraftServer server) {
+        if (!com.siirio.jemserver.smp.events.EventRuntime.enabled(server)) return;
         long gameTime = server.overworld().getGameTime();
         if (gameTime < nextTick) return;
         nextTick = gameTime + 1200L;
@@ -49,6 +50,7 @@ public final class CalendarEventScheduler {
     }
 
     public static void login(net.minecraft.server.level.ServerPlayer player) {
+        if (!com.siirio.jemserver.smp.events.EventRuntime.enabled(player.getServer())) return;
         if (HolidayCommands.muted(player)) return;
         CalendarEventData data = CalendarEventData.get(player.getServer());
         data.forcedEvent().or(() -> java.util.Arrays.stream(CalendarEvent.values())

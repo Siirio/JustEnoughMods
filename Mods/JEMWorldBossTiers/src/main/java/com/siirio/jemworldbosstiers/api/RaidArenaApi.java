@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.nio.charset.StandardCharsets;
 
-@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_world_boss_tiers",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid="jem_world_boss_tiers")
 public final class RaidArenaApi {
     private static AnchorMigrationHandler anchorMigrationHandler;
     private static final java.util.LinkedHashMap<String,PendingCompletion> COMPLETIONS=new java.util.LinkedHashMap<>();

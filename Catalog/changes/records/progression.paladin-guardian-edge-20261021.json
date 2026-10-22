@@ -22,7 +22,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -74,12 +75,16 @@
     "owner": "PackCore canonical campaigns.json",
     "kind": "approved_user_change",
     "source_files": [
-      "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/en_us.json",
-      "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Mods/JEMPackCore/src/main/resources/jem_twelve_eyes/campaigns.json",
+      "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+      "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json",
       "Docs/events/BOSS_FIGHT.md",
-      "Mods/JEMPackCore/build.gradle",
-      "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json"
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMTwelveEyes/build.gradle",
+      "Mods/JEMWorldBossTiers/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json"
     ]
   },
   "rationale": {
@@ -121,6 +126,52 @@
       "source_files": [
         "Mods/JEMPackCore/build.gradle",
         "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMPackCore/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMPackCore/src/main/resources/jem_twelve_eyes/campaigns.json",
+        "Mods/JEMPackCore/build.gradle",
+        "Mods/JEMPackCore/src/main/resources/jem_pack_core.mixins.json",
+        "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json",
+        "Docs/events/BOSS_FIGHT.md",
+        "Mods/JEMAchievementGuide/build.gradle",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMTwelveEyes/build.gradle",
+        "Mods/JEMWorldBossTiers/build.gradle",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Physically dedicated JEM server; module/profile and canonical registration/admission gates apply. New source is in testing; no deployment claim."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/en_us.json",
+        "Mods/JEMTwelveEyes/src/main/resources/assets/jemcompat/lang/ru_ru.json",
+        "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json",
+        "Docs/events/BOSS_FIGHT.md",
+        "Mods/JEMAchievementGuide/build.gradle",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMTwelveEyes/build.gradle",
+        "Mods/JEMWorldBossTiers/build.gradle",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json"
       ]
     }
   ],

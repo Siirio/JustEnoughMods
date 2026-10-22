@@ -92,13 +92,7 @@ final class SettlementViewDetails {
             storage.add(row);
         }
         view.put("Storage", storage);
-        ListTag transactions = new ListTag();
-        if (com.siirio.jemsettlements.currency.SettlementCurrency.coins()) for (var receipt : com.siirio.jemeconomy.ledger.EconomySavedData.get(player.getServer()).receiptHistory(com.siirio.jemeconomy.api.EconomyApi.townAccount(town.id()), 16)) {
-            CompoundTag row = new CompoundTag(); row.putUUID("Receipt", receipt.receipt()); row.putUUID("Source", receipt.source()); row.putUUID("Destination", receipt.destination());
-            row.putString("Kind", receipt.destination().equals(com.siirio.jemeconomy.api.EconomyApi.townAccount(town.id())) ? "incoming" : "outgoing");
-            row.putLong("Amount", receipt.amount()); row.putBoolean("Incoming", receipt.destination().equals(com.siirio.jemeconomy.api.EconomyApi.townAccount(town.id()))); transactions.add(row);
-        }
-        view.put("Transactions", com.siirio.jemsettlements.currency.SettlementCurrency.coins() ? transactions : com.siirio.jemsettlements.currency.SettlementCurrency.emeraldHistory(player.getServer(), town.id()));
+        view.put("Transactions", com.siirio.jemsettlements.currency.SettlementCurrency.history(player.getServer(), town.id()));
         ListTag territories = new ListTag();
         for (TownRecord other : data.towns().stream().filter(t -> t.dimension().equals(town.dimension())).limit(256).toList()) {
             CompoundTag row = new CompoundTag(); row.putUUID("Id", other.id()); row.putString("Name", other.name()); row.putString("Dimension", other.dimension().toString());

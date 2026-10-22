@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "blocks",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -21,7 +21,7 @@
       "mod_name": "JEM Economy",
       "mod_version": "1.3.0",
       "source_jar": "jem-economy-1.3.0.jar",
-      "source_sha256": "a61ea00e73eb1fb3b4f0a99d2c84bc7c4c8ef11014fd1fd35f88765e4ed604b4",
+      "source_sha256": "83941b8834a909e6770dd3a6cfe4b439b3f1c2da7ecb6a163afd86d62eff4cc4",
       "side_availability": [
         "client"
       ],
@@ -46,11 +46,9 @@
       "source_provenance": [
         "EconomyBlockEntities.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlockEntities.java",
         "EconomyBlocks.java:Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
-        "jem-currency-core-1.0.0.jar:assets/jem_economy/lang/en_us.json",
-        "jem-currency-core-1.0.0.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-currency-core-1.0.3.jar:assets/jem_economy/lang/en_us.json",
-        "jem-currency-core-1.0.3.jar:assets/jem_economy/lang/ru_ru.json",
-        "jem-economy-1.3.0.jar:assets/jem_economy/blockstates/shipping_box.json"
+        "jem-economy-1.3.0.jar:assets/jem_economy/blockstates/shipping_box.json",
+        "jem-economy-1.3.0.jar:assets/jem_economy/lang/en_us.json",
+        "jem-economy-1.3.0.jar:assets/jem_economy/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

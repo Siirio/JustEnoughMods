@@ -80,7 +80,7 @@ public final class TestProfileRuntime {
     }
 
     @SubscribeEvent public void started(net.minecraftforge.event.server.ServerStartedEvent event) {
-        if (active && com.siirio.jemeconomy.ledger.EconomySavedData.get(event.getServer()).frozen())
+        if (active && DomainFeatures.economy(event.getServer()) && com.siirio.jemserver.compat.economy.DevelopmentCurrency.frozen(event.getServer()))
             throw new IllegalStateException("Bound test ledger is frozen; reconcile its existing owner state before admitting testers");
     }
 
@@ -89,8 +89,8 @@ public final class TestProfileRuntime {
         for (ServerPlayer player : event.getServer().getPlayerList().getPlayers()) {
             var principal = IdentityPolicy.resolve(player);
             if (principal.isEmpty()) { revoke(player); continue; }
-            com.siirio.jemroles.race.RaceService.prepareTestChoice(player);
-            if (!com.siirio.jemeconomy.ledger.EconomySavedData.get(player.server).ensureTestGrant(player)) continue;
+            if (DomainFeatures.loaded("jem_roles")) TestRaces.prepare(player);
+            if (DomainFeatures.economy(player.server) && !com.siirio.jemserver.compat.economy.DevelopmentCurrency.grant(player)) continue;
             var binding = DedicatedTestProfile.binding(player.server).orElseThrow();
             String modeEpoch = binding.saveIdentity()+"/"+binding.epoch()+"/"+principal.get().accountId();
             // Forge preserves PlayerPersisted during native death/respawn cloning.
@@ -107,6 +107,10 @@ public final class TestProfileRuntime {
             player.server.getPlayerList().sendPlayerPermissionLevel(player);
             player.server.getCommands().sendCommands(player);
         }
+    }
+
+    private static final class TestRaces {
+        static void prepare(ServerPlayer player) { com.siirio.jemroles.race.RaceService.prepareTestChoice(player); }
     }
 
     @SubscribeEvent public void logout(PlayerEvent.PlayerLoggedOutEvent event) {

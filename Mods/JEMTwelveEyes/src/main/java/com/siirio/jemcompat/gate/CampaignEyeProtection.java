@@ -91,6 +91,13 @@ public final class CampaignEyeProtection {
         if (!(event.getEntity() instanceof ServerPlayer player) || !event.getLevel().getBlockState(event.getPos()).is(Blocks.END_PORTAL_FRAME)) {
             return;
         }
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.gatesPortal(player.server)) return;
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(player.server)) {
+            com.siirio.jemtwelveeyes.CampaignAvailability.explain(player);
+            event.setCanceled(true);
+            event.setCancellationResult(InteractionResult.FAIL);
+            return;
+        }
         if (event.getItemStack().is(Items.ENDER_EYE)) {
             player.displayClientMessage(Component.translatable("message.jemcompat.ender_eye_locator_only"), true);
             event.setCanceled(true);
@@ -129,6 +136,38 @@ public final class CampaignEyeProtection {
         }
         protectedItems.add(stack.copy());
         stack.setCount(0);
+    }
+
+    /** Native 1.20.1 frame operation, only for an inactive new-world campaign. */
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void inactiveVanillaFrame(PlayerInteractEvent.RightClickBlock event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || !event.getItemStack().is(Items.ENDER_EYE)
+                || com.siirio.jemtwelveeyes.CampaignAvailability.gatesPortal(player.server)
+                || !net.minecraftforge.fml.ModList.get().isLoaded("endrem")
+                || player.isSpectator() || event.getUseItem() == net.minecraftforge.eventbus.api.Event.Result.DENY
+                || event.getUseItem() != net.minecraftforge.eventbus.api.Event.Result.ALLOW
+                && player.getCooldowns().isOnCooldown(event.getItemStack().getItem())) return;
+        var level = player.serverLevel();
+        var position = event.getPos();
+        var state = level.getBlockState(position);
+        if (!state.is(Blocks.END_PORTAL_FRAME) || state.getValue(net.minecraft.world.level.block.EndPortalFrameBlock.HAS_EYE)
+                || !level.mayInteract(player, position) || !player.mayUseItemAt(position, event.getFace(), event.getItemStack())) return;
+        var filled = state.setValue(net.minecraft.world.level.block.EndPortalFrameBlock.HAS_EYE, true);
+        net.minecraft.world.level.block.Block.pushEntitiesUp(state, filled, level, position);
+        level.setBlock(position, filled, 2);
+        level.updateNeighbourForOutputSignal(position, Blocks.END_PORTAL_FRAME);
+        if (!player.isCreative()) event.getItemStack().shrink(1);
+        level.levelEvent(1503, position, 0);
+        var shape = net.minecraft.world.level.block.EndPortalFrameBlock.getOrCreatePortalShape().find(level, position);
+        if (shape != null) {
+            var origin = shape.getFrontTopLeft().offset(-3, 0, -3);
+            for (int x = 0; x < 3; x++) for (int z = 0; z < 3; z++) {
+                level.setBlock(origin.offset(x, 0, z), Blocks.END_PORTAL.defaultBlockState(), 2);
+            }
+            level.globalLevelEvent(1038, origin.offset(1, 0, 1), 0);
+        }
+        event.setCanceled(true);
+        event.setCancellationResult(InteractionResult.CONSUME);
     }
 
     private static boolean hasPortal(ServerLevel level, net.minecraft.core.BlockPos position) {

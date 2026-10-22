@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "hostile_and_damage_capable_candidates",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -40886,6 +40886,47 @@
       ]
     },
     {
+      "id": "skarrier_mobs:crimlin",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Crimlin",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "skarrier_mobs:dangle",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Dangle",
@@ -41091,7 +41132,130 @@
       ]
     },
     {
+      "id": "skarrier_mobs:endorah_energy_jaws",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Endorah Energy Jaws",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:endorah_energy_jaws_big",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Big Endorah Energy Jaws",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "skarrier_mobs:endorah_head_main",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Main Endorah Head",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:endorah_head_main_flying",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Main Endorah Head",
       "original": {
@@ -41173,7 +41337,89 @@
       ]
     },
     {
+      "id": "skarrier_mobs:endorah_head_melee_flying",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Endorah Head",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "skarrier_mobs:endorah_head_ranged",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Endorah Head",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:endorah_head_ranged_flying",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Endorah Head",
       "original": {
@@ -41255,9 +41501,706 @@
       ]
     },
     {
+      "id": "skarrier_mobs:freeze",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Freeze",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:frost",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Frost",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:gad_cloud",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Gad Cloud",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:gadlisk",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Gadlisk",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:glowin",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Glowin",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
       "id": "skarrier_mobs:gorger",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Gorger",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_construct",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Construct",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_construct_phase_melee",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Construct (Phase 2)",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_construct_phase_ranged",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Construct (Phase 2)",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_skull",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Skull",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_skull_big",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Skull",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_spike",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Spike",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_totem",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Totem",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_totem_melee",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Totem",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:grave_totem_ranged",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Grave Totem",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:healing_flesh",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Healing Flesh",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:hellamander",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Hellamander",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:istukan",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Istukan",
       "original": {
         "status": "unresolved",
         "expression": null,
@@ -41422,6 +42365,88 @@
       "id": "skarrier_mobs:rager",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Rager",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:roe",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Roe",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:semi_living_helmet_bite",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Semi Living Helmet Bite",
       "original": {
         "status": "unresolved",
         "expression": null,
@@ -41750,6 +42775,129 @@
       "id": "skarrier_mobs:tunnel_gore",
       "kind": "damage_capable_entity_candidate",
       "display_name": "Tunnel Gore",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:viruleon",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Viruleon",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:voidrake",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Voidrake",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "Entity is inventory-accounted; hostility, summon ownership and native attack expressions require class/config evidence."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/mobs/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "health",
+        "armor",
+        "attack channels",
+        "speed/range",
+        "AI uptime",
+        "owner scaling",
+        "cost/upkeep"
+      ]
+    },
+    {
+      "id": "skarrier_mobs:wretch",
+      "kind": "damage_capable_entity_candidate",
+      "display_name": "Wretch",
       "original": {
         "status": "unresolved",
         "expression": null,

@@ -6,6 +6,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tomllib
 import zipfile
 from datetime import datetime
 from pathlib import Path, PurePosixPath
@@ -14,6 +15,7 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "tools" / "workspace.json"
 PACK_SYNC_MANIFEST = "jem-pack/manifest.json"
+DEVELOPMENT_MOD_IDS = frozenset({"jem_professions", "jem_villager_talking", "jem_claims"})
 
 
 def load_config():
@@ -48,6 +50,22 @@ def inventory(root, excluded=()):
             continue
         files[relative] = {"sha256": digest(path), "size": path.stat().st_size}
     return files
+
+
+def production_inventory(source, files):
+    """Development domains never enter shared releases, even if a JAR is renamed."""
+    excluded = set()
+    for relative in files:
+        if not relative.startswith("mods/") or not relative.endswith(".jar"):
+            continue
+        with zipfile.ZipFile(source / relative) as archive:
+            if "META-INF/mods.toml" not in archive.namelist():
+                continue
+            metadata = tomllib.loads(archive.read("META-INF/mods.toml").decode("utf-8"))
+        ids = {entry.get("modId") for entry in metadata.get("mods", [])}
+        if ids & DEVELOPMENT_MOD_IDS:
+            excluded.add(relative)
+    return {path: value for path, value in files.items() if path not in excluded}
 
 
 def compare(left, right):
@@ -107,7 +125,7 @@ def release_inventory(config):
     installer = config["installerSource"]
     ensure_directory(source, "Client source")
     ensure_directory(installer, "Installer source")
-    source_files = inventory(source, config["releaseExcluded"])
+    source_files = production_inventory(source, inventory(source, config["releaseExcluded"]))
     bootstrap_path = "mods/jem-bootstrap.jar"
     source_bootstrap = source / bootstrap_path
     installer_bootstrap = installer / bootstrap_path
@@ -497,7 +515,7 @@ def pack_sync_inventory(config, extra_excluded=()):
     blocked_suffixes = {".tmp", ".disabled", ".bak"}
     return {
         path: metadata
-        for path, metadata in files.items()
+        for path, metadata in production_inventory(source, files).items()
         if not any(part.startswith(".") for part in Path(path).parts)
         and Path(path).suffix.lower() not in blocked_suffixes
     }
@@ -633,9 +651,42 @@ def package_full(config):
     }, ensure_ascii=False, indent=2))
 
 
+def package_universal(config):
+    """Complete, launcher-neutral files for a fresh Forge instance, without runtime state."""
+    source = config["clientSource"]
+    # Native publication excludes Bootstrap because it is the loader itself. A full pack includes it.
+    files = pack_sync_inventory(config)
+    bootstrap = "mods/jem-bootstrap.jar"
+    release = release_inventory(config)
+    files[bootstrap] = release[bootstrap]
+    files = dict(sorted(files.items()))
+    destination = ROOT / "Client" / "JustEnoughMods-universal.zip"
+    temporary = destination.with_suffix(".zip.tmp")
+    guide = (ROOT / "Docs" / "universal" / "INSTALL.md").read_text(encoding="utf-8")
+    manifest = {
+        "format": 1, "createdAt": datetime.now().astimezone().isoformat(),
+        "minecraft": "1.20.1", "forge": "47.4.10", "java": 17,
+        "platforms": ["windows", "linux", "macos"],
+        "files": files,
+    }
+    with zipfile.ZipFile(temporary, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
+        archive.writestr("INSTALL.md", guide)
+        archive.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
+        for relative in files:
+            archive.write(source / relative, "JustEnoughMods/" + relative)
+    temporary.replace(destination)
+    receipt = {
+        "archive": str(destination), "createdAt": manifest["createdAt"],
+        "sha256": digest(destination), "files": len(files), "bootstrapIncluded": True,
+        "platformRuntimeAcceptance": "not run",
+    }
+    write_json_atomic(config["state"] / "universal-package.json", receipt)
+    print(json.dumps(receipt, ensure_ascii=False, indent=2))
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("baseline", "promote-baseline", "status", "sync-stable", "sync-test", "stage-pack-sync", "recover-pack-sync", "package-update", "repackage-release", "package-full"))
+    parser.add_argument("action", choices=("baseline", "promote-baseline", "status", "sync-stable", "sync-test", "stage-pack-sync", "recover-pack-sync", "package-update", "repackage-release", "package-full", "package-universal"))
     parser.add_argument("--base-update", type=Path)
     parser.add_argument("--transaction", type=Path)
     args = parser.parse_args()
@@ -651,6 +702,7 @@ def main():
         "package-update": package_update,
         "repackage-release": lambda value: repackage_release(value, args.base_update),
         "package-full": package_full,
+        "package-universal": package_universal,
     }
     actions[args.action](config)
 

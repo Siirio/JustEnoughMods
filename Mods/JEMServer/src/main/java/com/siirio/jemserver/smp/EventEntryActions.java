@@ -20,6 +20,7 @@ public final class EventEntryActions {
                 }
                 return;
             }
+            SmpRecords.require(EventRuntime.enabled(player.server),"unavailable");
             var row=SmpData.get(player.server).find("events",choice.id());
             SmpRecords.require(row!=null && row.getString("activity").equals(choice.type().name()),"unavailable");
             SmpRecords.require(choice.type()==EventEntryKind.BLOOD_MOON || choice.type()==EventEntryKind.BOSS_RAID, "unavailable");

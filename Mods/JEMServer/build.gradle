@@ -9,7 +9,7 @@ base { archivesName = 'jem-server' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 minecraft { mappings channel: 'official', version: '1.20.1' }
 
-def instancePath = providers.environmentVariable('JEM_INSTANCE').get()
+def instancePath = providers.environmentVariable('JEM_INSTANCE').getOrElse(file('../../Client/ManagedPack').absolutePath)
 def xaeroWorldMap = file("${instancePath}/mods/xaeroworldmap-forge-1.20.1-1.46.0.jar")
 def xaeroLibName = zipTree(xaeroWorldMap).matching {
     include 'META-INF/jarjar/xaerolib-forge-*.jar'
@@ -24,10 +24,8 @@ dependencies {
     compileOnly files('../JEMTwelveEyes/build/classes/java/main')
     compileOnly files('../JEMIdentity/build/classes/java/main')
     compileOnly files('../JEMEconomy/build/classes/java/main')
-    compileOnly files('../JEMCurrencyCore/build/classes/java/main')
     compileOnly files('../JEMSettlements/build/classes/java/main')
     compileOnly files('../JEMRoles/build/classes/java/main')
-    compileOnly files('../JEMProfessions/build/classes/java/main')
     compileOnly files("${instancePath}/mods/xaerominimap-forge-1.20.1-26.4.2.jar")
     compileOnly files(xaeroWorldMap)
     compileOnly files("${instancePath}/mods/unified-xaero-worldmap-2.0.1+1.20.1-forge.jar")
@@ -43,6 +41,6 @@ mixin { add sourceSets.main, 'jem_server.refmap.json'; config 'jem_server.mixins
 jar { manifest { attributes 'MixinConfigs': 'jem_server.mixins.json,jem_server_shops.mixins.json,jem_server_fishing.mixins.json,jem_server_revive.mixins.json' }; finalizedBy 'reobfJar' }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 
-apply from: "../JEMMenuSupport/embed.gradle"
+
 
 tasks.withType(Test).configureEach { enabled = false }

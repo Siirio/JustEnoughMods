@@ -11,7 +11,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "requires": "dedicated JEM hosted structural boss arena registered by canonical RaidArenaApi/StructureStaging; every dimension, no entity allowlist"
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -93,6 +94,24 @@
       "source_files": [
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "requires": "dedicated JEM hosted structural boss arena registered by canonical RaidArenaApi/StructureStaging; every dimension, no entity allowlist"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java"
       ]
     }
   ],

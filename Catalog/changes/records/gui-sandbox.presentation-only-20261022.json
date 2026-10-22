@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "change_id": "gui-sandbox.presentation-only-20261022",
+  "status": "conditional",
+  "selectors": [{"type": "namespace", "registry": "items", "value": "jem_gui_sandbox"}],
+  "exceptions": [],
+  "conditions": [{"profile": "jem sandbox", "module": "jem_gui_sandbox", "production_distribution": false}],
+  "precedence": {"layer": "development_presentation", "priority": 1, "overrides": []},
+  "change": {
+    "summary": "Standalone development gallery reuses current JEM GUI source and native pixels while terminating its requests at local in-memory presentation transports.",
+    "modifiers": [
+      {"property": "sandbox.gui_gallery", "operation": "add", "before": null,
+       "after": {"routes": ["smp", "settlements", "death", "profile", "players", "parties", "shops", "market", "prizes", "encounter", "result", "races", "race-progression"], "authority": "presentation_only", "state": "ephemeral", "network_channels": []}},
+      {"property": "sandbox.display_items", "operation": "add", "before": null,
+       "after": {"namespace": "jem_gui_sandbox", "ids": ["copper_coin", "silver_coin", "gold_coin", "aether_coin", "arcane_coin"], "currency_capability": false, "recipes": [], "purpose": "native coin-face rendering only"}},
+      {"property": "production.gameplay", "operation": "document", "before": "Existing canonical production owners",
+       "after": "Unchanged. Gallery is excluded from ManagedPack, Server, test jem, shared production inventories and release baseline."}
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMGuiSandbox",
+    "kind": "development-only GUI packaging and isolated local view adapters",
+    "source_files": ["Mods/JEMGuiSandbox/**", "Docs/gui-sandbox/README.md", "Docs/gui-sandbox/delivery.json"]
+  },
+  "rationale": {
+    "purpose": "Browse and click the existing JEM screens in jem sandbox without gameplay outcomes; add exact native GUI mods and mandatory dependencies to that profile.",
+    "decision_source": "User requested clickable GUIs without logic and explicitly selected reproducing existing screens. Relocation, local snapshots, explicit source admission and native-renderer delegation are implementation choices."
+  },
+  "introduced": {"date": "2026-10-22", "commit": "SELF", "action": "add", "summary": "Add sandbox-only gallery and native GUI mod install boundary."},
+  "history": [{"date": "2026-10-22", "commit": "SELF", "action": "add", "summary": "Current domain presentation sources remain canonical; JEM actions have no production authority. Native third-party GUI mods retain their ordinary behavior."}],
+  "impacts": {
+    "systems": ["development GUI gallery", "native inventory presentation", "race preview", "profile dependencies"],
+    "relations": ["canonical domain screen -> relocated presentation artifact -> local demo transport", "exact installed native mod metadata -> sandbox-only dependency closure"],
+    "notes": ["No original registry facts, canonical balance, saved data or production dependencies are changed.", "Native mods are installed unmodified; their native gameplay is distinct from the inert JEM gallery.", "The existing sandbox race renderer is an explicit required presentation dependency."],
+    "unresolved": ["Runtime composition, full manual click coverage and player acceptance remain unobserved; no game or automated tests were launched."]
+  }
+}

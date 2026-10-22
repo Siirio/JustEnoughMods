@@ -25,14 +25,14 @@ public final class MarketRuntime {
     public static void unregister(ServerLevel level, BlockPos pos) { Set<BlockPos> set = LOADED.get(level); if (set != null) set.remove(pos); }
 
     @SubscribeEvent public static void started(net.minecraftforge.event.server.ServerStartedEvent event) {
-        if (!event.getServer().isDedicatedServer()) return;
+        if (!com.siirio.jemeconomy.api.EconomyApi.isEnabled(event.getServer())) return;
         for (String category : java.util.List.of("blocks","food","plants","resources","drops","building64"))
             com.siirio.jemeconomy.policy.MarketSupply.listings(event.getServer(),category);
     }
 
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0 || !event.getServer().isDedicatedServer()) return;
+        if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0 || !com.siirio.jemeconomy.api.EconomyApi.isEnabled(event.getServer())) return;
         synchronized (LOADED) {
             LOADED.forEach((level, positions) -> positions.removeIf(pos -> {
                 if (!level.isLoaded(pos)) return true;
@@ -44,7 +44,7 @@ public final class MarketRuntime {
 
     /** Retire only the synthetic trading role; native villager inventory and identity survive. */
     @SubscribeEvent public static void retireBuyer(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
-        if (event.getLevel().isClientSide || !event.getLevel().getServer().isDedicatedServer()
+        if (event.getLevel().isClientSide || !com.siirio.jemeconomy.api.EconomyApi.isEnabled(event.getLevel().getServer())
                 || !(event.getEntity() instanceof Villager villager) || !isBuyer(villager)) return;
         villager.removeTag(BUYER_TAG); villager.removeTag("jem_market_preview");
         villager.setInvulnerable(false); villager.setNoAi(false); villager.setCustomName(null); villager.setCustomNameVisible(false);

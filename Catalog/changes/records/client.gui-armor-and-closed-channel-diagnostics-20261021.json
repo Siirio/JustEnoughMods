@@ -36,14 +36,16 @@
     ]
   },
   "cause": {
-    "owner": "JEMMenuSupport GUI player renderer",
+    "owner": "JEMCompat / JEMRoles / JEMServer",
     "kind": "source_owned_correction",
     "source_files": [
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
-      "Mods/JEMMenuSupport/build.gradle",
-      "Mods/JEMMenuSupport/embed.gradle",
-      "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
       "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
       "Docs/releases/2026-10-21-shipping-market-repair.json"
@@ -82,6 +84,46 @@
         "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
         "Client/ManagedPack/mods/jemcompat-3.7.0.jar"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMMenuSupport/build.gradle",
+        "Mods/JEMMenuSupport/embed.gradle",
+        "Mods/JEMMenuSupport/src/main/java/com/siirio/jemmenus/client/VanillaGuiPlayers.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Docs/releases/2026-10-21-shipping-market-repair.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMMenuSupport GUI player renderer",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMRoles/build.gradle",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/internal/menu/client/VanillaGuiPlayers.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Docs/releases/2026-10-21-shipping-market-repair.json"
       ]
     }
   ],

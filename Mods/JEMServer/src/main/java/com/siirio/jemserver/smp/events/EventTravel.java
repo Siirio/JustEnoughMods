@@ -16,7 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class EventTravel {
     enum Destination { EVENT_OUTSIDE, RESOURCE_INSIDE, BOSS_STRUCTURE }
     static final int CHUNK_TICKET_RADIUS = 2;
@@ -176,7 +176,7 @@ public final class EventTravel {
     }
 
     private static boolean eligibleEvent(ServerPlayer player, net.minecraft.nbt.CompoundTag event) {
-        return event != null && "ACTIVE".equals(event.getString("state"))
+        return EventRuntime.available(player.server, event) && "ACTIVE".equals(event.getString("state"))
                 && event.getLong("ends") > System.currentTimeMillis() && event.contains("position")
                 && java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(event.getString("activity"))
                 && new EventSession(event).accepted(player.getUUID());

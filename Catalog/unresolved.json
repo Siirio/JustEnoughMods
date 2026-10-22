@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "entries": [
     {
       "type": "artifact_metadata",
@@ -154,14 +154,6 @@
       "artifacts": [
         "forge-mixinextras-forge-0.3.2.jar",
         "mixinextras-forge-0.3.5.jar"
-      ]
-    },
-    {
-      "type": "duplicate_mod_id",
-      "mod_id": "jem_currency_core",
-      "artifacts": [
-        "jem-currency-core-1.0.3.jar",
-        "jem-currency-core-1.0.0.jar"
       ]
     },
     {
@@ -327,10 +319,20 @@
     {
       "type": "dynamic_source_registration",
       "registry": "items",
-      "artifact": "jem-currency-core-1.0.3.jar",
-      "source": "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemcurrency/CurrencyItems.java",
+      "artifact": "jem-economy-1.3.0.jar",
+      "source": "Mods/JEMEconomy/src/main/java/com/siirio/jemcurrency/CurrencyItems.java",
       "expressions": [
         "denomination.id()"
+      ],
+      "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"
+    },
+    {
+      "type": "dynamic_source_registration",
+      "registry": "items",
+      "artifact": "jem_twelve_eyes-1.7.0-dev.jar",
+      "source": "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/discovery/CampaignItems.java",
+      "expressions": [
+        "\"boss_locator_\" + target.key()"
       ],
       "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"
     },
@@ -439,7 +441,7 @@
     },
     {
       "type": "parameterized_item_model",
-      "artifact": "jem-currency-core-1.0.0.jar",
+      "artifact": "jem-economy-1.3.0.jar",
       "model": "assets/jem_economy/models/item/coin_base.json",
       "unbound_texture_parameters": [
         "back",
@@ -450,7 +452,7 @@
     },
     {
       "type": "parameterized_item_model",
-      "artifact": "jem-currency-core-1.0.3.jar",
+      "artifact": "jem-economy-1.3.0.jar",
       "model": "assets/jem_economy/models/item/coin_base.json",
       "unbound_texture_parameters": [
         "back",

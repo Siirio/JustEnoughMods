@@ -1,17 +1,103 @@
 {
   "schema_version": 2,
   "change_id": "settlements.sandbox-build-boundary",
-  "status": "conditional",
-  "selectors": [{"type": "id", "registry": "blocks", "value": "minecraft:bell"}, {"type": "namespace", "registry": "entities", "value": "minecraft"}, {"type": "namespace", "registry": "entities", "value": "recruits"}],
-  "conditions": [{"build": "Explicit -PsettlementProfile=sandbox; production remains the default dedicated-only build"}],
-  "precedence": {"layer": "jem_settlements", "priority": 520},
+  "status": "superseded",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:bell"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "minecraft"
+    },
+    {
+      "type": "namespace",
+      "registry": "entities",
+      "value": "recruits"
+    }
+  ],
+  "conditions": [
+    {
+      "build": "Explicit -PsettlementProfile=sandbox; production remains the default dedicated-only build"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_settlements",
+    "priority": 520
+  },
   "change": {
     "summary": "Separate standalone Settlements artifact from dedicated-only production so sandbox bell placement reaches founding and existing emerald payment selection.",
-    "modifiers": [{"property": "settlements.sandbox_runtime_authority", "operation": "allow", "before": "Copied production artifact does not register gameplay listeners on the physical client and rejects integrated-server authority.", "after": "Explicit sandbox build registers existing listeners and enables logical integrated authority and native HOME/birth/pat hooks. Default production retains dedicated-only authority and hooks. Currency remains actual jem_economy detection, otherwise physical emeralds."}]
+    "modifiers": [
+      {
+        "property": "settlements.sandbox_runtime_authority",
+        "operation": "allow",
+        "before": "Copied production artifact does not register gameplay listeners on the physical client and rejects integrated-server authority.",
+        "after": "Explicit sandbox build registers existing listeners and enables logical integrated authority and native HOME/birth/pat hooks. Default production retains dedicated-only authority and hooks. Currency remains actual jem_economy detection, otherwise physical emeralds."
+      }
+    ]
   },
-  "cause": {"owner": "JEMSettlements build profile and runtime authority", "kind": "artifact_profile_mismatch", "source_files": ["Mods/JEMSettlements/build.gradle", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java", "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java", "Mods/JEMSettlements/src/production/java/com/siirio/jemsettlements/SettlementBuild.java", "Mods/JEMSettlements/src/sandbox/java/com/siirio/jemsettlements/SettlementBuild.java"]},
-  "rationale": {"purpose": "Make the explicitly requested sandbox Settlements copy usable without re-enabling SMP gameplay in ordinary singleplayer clients.", "decision_source": "User reports bell placement opens nothing after copying test jem Settlements into jem sandbox and reiterates emerald fallback requirement.", "codex_choices": "Separate compile-time source profiles and sandbox output/classifier; preserve canonical payment implementation and production distribution."},
-  "introduced": {"date": "2026-10-19", "commit": "SELF", "action": "split_runtime_build_profile", "summary": "Fix sandbox artifact boundary; gameplay acceptance pending."},
-  "history": [{"date": "2026-10-19", "commit": "SELF", "action": "split_runtime_build_profile", "summary": "Trace absent bell screen through missing physical-client listener registration and integrated authority rejection; currency selection is downstream and already supports emeralds."}],
-  "impacts": {"systems": ["settlements", "packaging", "currency", "identity", "villager_housing", "recruits"], "relations": [], "notes": ["Sandbox-only installation; no ManagedPack, ordinary Server, stable profile or baseline change required.", "Bundled Identity/Core are retained; Economy and Professions are not added."], "unresolved": ["User confirmation of founding screen and emerald purchases remains pending; no gameplay launch or automated tests."]}
+  "cause": {
+    "owner": "JEMSettlements build profile and runtime authority",
+    "kind": "artifact_profile_mismatch",
+    "source_files": [
+      "Mods/JEMSettlements/build.gradle",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the explicitly requested sandbox Settlements copy usable without re-enabling SMP gameplay in ordinary singleplayer clients.",
+    "decision_source": "User reports bell placement opens nothing after copying test jem Settlements into jem sandbox and reiterates emerald fallback requirement.",
+    "codex_choices": "Separate compile-time source profiles and sandbox output/classifier; preserve canonical payment implementation and production distribution."
+  },
+  "introduced": {
+    "date": "2026-10-19",
+    "commit": "SELF",
+    "action": "split_runtime_build_profile",
+    "summary": "Fix sandbox artifact boundary; gameplay acceptance pending."
+  },
+  "history": [
+    {
+      "date": "2026-10-19",
+      "commit": "SELF",
+      "action": "split_runtime_build_profile",
+      "summary": "Trace absent bell screen through missing physical-client listener registration and integrated authority rejection; currency selection is downstream and already supports emeralds."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMSettlements/src/production/java/com/siirio/jemsettlements/SettlementBuild.java",
+        "Mods/JEMSettlements/src/sandbox/java/com/siirio/jemsettlements/SettlementBuild.java",
+        "Mods/JEMSettlements/build.gradle",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementAuthority.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "settlements",
+      "packaging",
+      "currency",
+      "identity",
+      "villager_housing",
+      "recruits"
+    ],
+    "relations": [],
+    "notes": [
+      "Sandbox-only installation; no ManagedPack, ordinary Server, stable profile or baseline change required.",
+      "Bundled Identity/Core are retained; Economy and Professions are not added."
+    ],
+    "unresolved": [
+      "User confirmation of founding screen and emerald purchases remains pending; no gameplay launch or automated tests."
+    ]
+  }
 }

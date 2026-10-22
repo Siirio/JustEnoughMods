@@ -20,6 +20,9 @@ public final class JEMTwelveEyes {
 
     public JEMTwelveEyes() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        com.siirio.jemtwelveeyes.postend.PostEndItems.register(modBus);
+        com.siirio.jemtwelveeyes.postend.PostEndSounds.register(modBus);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemtwelveeyes.postend.PostEndEvents.class);
         CampaignNetwork.register();
         CampaignBlocks.register(modBus);
         CampaignItems.register(modBus);
@@ -28,6 +31,7 @@ public final class JEMTwelveEyes {
         MinecraftForge.EVENT_BUS.register(CampaignGateEvents.class);
         MinecraftForge.EVENT_BUS.register(CampaignDiscoveryEvents.class);
         MinecraftForge.EVENT_BUS.register(CampaignSiteService.class);
+        MinecraftForge.EVENT_BUS.register(CampaignAvailability.class);
     }
 
     private void addCreativeItems(BuildCreativeModeTabContentsEvent event) {

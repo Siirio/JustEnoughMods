@@ -21,7 +21,8 @@
   ],
   "conditions": [
     {
-      "scope": "JEM-owned SettlementScreen on compatible dedicated server; visual acceptance pending"
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -86,6 +87,37 @@
       "commit": "SELF",
       "action": "integrate_native_page_materials",
       "summary": "Bind Aseprite-native page materials and semantic icons to the real responsive Screen, preserving authoritative actions."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "scope": "JEM-owned SettlementScreen on compatible dedicated server; visual acceptance pending"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementDashboardArt.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPageArt.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-chest.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-comfort.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-community.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-happiness.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-housing.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-jobs.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-oak_stairs.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-red_bed.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-residents.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-safety.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-satiety.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-shield.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/icon-unhappy.png",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/textures/gui/pages/materials.png",
+        "Docs/settlements/standalone/GUI_SPEC.md"
+      ]
     }
   ],
   "impacts": {

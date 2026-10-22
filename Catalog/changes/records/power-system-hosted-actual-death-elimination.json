@@ -10,7 +10,8 @@
   ],
   "conditions": [
     {
-      "runtime": "dedicated server active hosted encounter player participants; uncanceled LivingDeathEvent"
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -33,8 +34,7 @@
     "owner": "JEMWorldBossTiers HostedEncounters#death",
     "kind": "hidden_life_on_accepted_death",
     "source_files": [
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
-      "tools/tests/test_hosted_death_contract.py"
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
     ]
   },
   "rationale": {
@@ -60,6 +60,30 @@
       "commit": "SELF",
       "action": "fix",
       "summary": "Remove hosted fallback death cancellation and one-HP hidden extra life; actual death immediately uses canonical elimination."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "dedicated server active hosted encounter player participants; uncanceled LivingDeathEvent"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "tools/tests/test_hosted_death_contract.py"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "retire_remaining_automated_fixtures",
+      "summary": "Root removed remaining automated fixtures/runner under the explicit no-retained-tests architecture contract. Historical references retained only here; no tests were run.",
+      "source_files": [
+        "tools/tests/test_hosted_death_contract.py"
+      ]
     }
   ],
   "impacts": {

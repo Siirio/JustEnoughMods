@@ -11,16 +11,14 @@ public record SmpModuleOpen(Module module) {
 
     void open(ServerPlayer player) {
         switch (module) {
-            case ROLES -> com.siirio.jemroles.api.RaceApi.openScreen(player);
+            case ROLES -> { if (DomainFeatures.loaded("jem_roles")) RacesAdapter.open(player); }
             case PROFESSIONS -> {
-                if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) ProfessionsAdapter.open(player);
+                if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) com.siirio.jemserver.compat.professions.ProfessionHostAdapter.open(player);
             }
         }
     }
 
-    private static final class ProfessionsAdapter {
-        private static void open(ServerPlayer player) {
-            com.siirio.jemprofessions.api.ProfessionApi.openScreen(player);
-        }
+    private static final class RacesAdapter {
+        static void open(ServerPlayer player) { com.siirio.jemroles.api.RaceApi.openScreen(player); }
     }
 }

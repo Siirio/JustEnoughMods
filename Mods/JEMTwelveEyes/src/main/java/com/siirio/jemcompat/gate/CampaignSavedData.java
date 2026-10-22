@@ -31,10 +31,18 @@ public final class CampaignSavedData extends SavedData {
     private final Set<ResourceLocation> postEndDefeats = new LinkedHashSet<>();
     private boolean postEndRevealed;
     private long gateRevision;
+    private boolean campaignActive;
 
     public static CampaignSavedData get(MinecraftServer server) {
-        return server.overworld().getDataStorage().computeIfAbsent(CampaignSavedData::load, CampaignSavedData::new, FILE_ID);
+        CampaignSavedData data = server.overworld().getDataStorage().computeIfAbsent(CampaignSavedData::load, CampaignSavedData::new, FILE_ID);
+        if (!data.campaignActive && com.siirio.jemtwelveeyes.CampaignAvailability.missing(server).isEmpty()) {
+            data.campaignActive = true;
+            data.setDirty();
+        }
+        return data;
     }
+
+    public boolean active() { return campaignActive; }
 
     public boolean recordDefeat(ResourceLocation boss) {
         boolean added = defeatedBosses.add(boss);
@@ -143,6 +151,7 @@ public final class CampaignSavedData extends SavedData {
 
     @Override
     public CompoundTag save(CompoundTag tag) {
+        tag.putBoolean("CampaignActive", campaignActive);
         ListTag defeats = new ListTag();
         defeatedBosses.forEach(id -> defeats.add(StringTag.valueOf(id.toString())));
         tag.put("DefeatedBosses", defeats);
@@ -199,6 +208,7 @@ public final class CampaignSavedData extends SavedData {
 
     private static CampaignSavedData load(CompoundTag tag) {
         CampaignSavedData data = new CampaignSavedData();
+        data.campaignActive = !tag.contains("CampaignActive", Tag.TAG_BYTE) || tag.getBoolean("CampaignActive");
         for (Tag value : tag.getList("DefeatedBosses", Tag.TAG_STRING)) {
             ResourceLocation id = ResourceLocation.tryParse(value.getAsString());
             if (id != null) {

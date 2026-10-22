@@ -22,8 +22,8 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
-      "confidence": "source"
+      "runtime": "Logical integrated or dedicated server; EconomyApi.isEnabled(server) is true; native session, exact registration/admission, canonical identity and authoritative quote/payment validation remain required. Client presentation uses matching protocol.",
+      "acceptance": "Manual gameplay acceptance pending; no automated tests or gameplay scenarios asserted."
     }
   ],
   "precedence": {
@@ -87,6 +87,22 @@
       "commit": "SELF",
       "action": "complete_economy_overhaul",
       "summary": "Correct two nonexistent Vinery seed references and remove the unregistered calendar from native merchant configuration.",
+      "source_files": [
+        "Client/ManagedPack/config/vinery.toml",
+        "Server/config/vinery.toml"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Authenticated dedicated SMP for economy and shared-server gameplay; compatible client only renders server quotes",
+          "confidence": "source"
+        }
+      ],
       "source_files": [
         "Client/ManagedPack/config/vinery.toml",
         "Server/config/vinery.toml"

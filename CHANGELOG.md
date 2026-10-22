@@ -1,3 +1,7 @@
+## 2026-10-22 - Merge Atlas research into current main
+
+User request: safely merge the existing Atlas research pull request into main. Merge resolution preserves both changelog histories and current architecture/instructions. Retained main's regenerated Atlas baseline coverage summary and digest instead of the PR's older snapshot; canonical changes and gameplay remain unchanged. Historical research snapshots and their applicability warnings remain explicit. No builds, tests, static analysis, game launches, runtime synchronization or deployment were performed for this merge.
+
 ## 2026-10-22 - Complete installed-pack Atlas research and provenance
 
 - User requests filling Atlas research through real web sources and YouTube guide transcripts, preserving the concurrent architecture revamp; game launches are excluded. The user separately prohibits installing standalone Rubidium because it crashes the pack.
@@ -16,6 +20,56 @@
 - Bug / Both Sided (offline catalog reader only) / the supplied audit omitted full schema validation and accepted missing research or manifest inputs as empty coverage; outer-artifact-only traversal omitted embedded mod IDs / in testing. Schema validation, explicit input errors and recursive manifest traversal repair those owning paths; no runtime behavior changes.
 - Validation: research audit with registry checks passes with zero errors/warnings on the PR snapshot; all five modes return the expected real-data results; the existing Atlas validator passes with canonical referenced sources and installed artifacts available. All 20 reviewed client/server JAR hashes match the working manifest. Unrelated concurrent catalog/index work is excluded rather than regenerated.
 - No Gradle build, automated tests, game/server launch, runtime verification, managed client/server synchronization, AutoModpack publication, stable-profile mutation, release-baseline promotion or MineRENT deployment.
+
+## 2026-10-22 - Share bootstrap installer with complete shaderpacks
+
+User request: provide a shareable ZIP whose mods directory contains only Bootstrap, with a populated shaderpacks folder.
+
+Added shaderpacks to the existing installer seed paths. The standard package-full command now takes all shader files directly from Client/ManagedPack alongside its existing resource-pack/FancyMenu seeds; the installer template remains a single editable Bootstrap source. Updated distribution documentation and regenerated Client/JustEnoughMods.zip (184,640,050 bytes; SHA-256 ac48c9ad8ab11f628e6b0d305f4af71e28cbaa93f4482459d1cb9da935e94c14).
+
+Archive inspection confirms exactly mods/jem-bootstrap.jar, matching the canonical Bootstrap bytes, and all 958 shader files matching their canonical source. No saved-world files are included. No production mod/config, runtime profile, local Server, native generation 59, stable baseline or MineRENT deployment changed. The reported local singleplayer FPS issue was not investigated or modified.
+
+## 2026-10-22 - Plan mandatory Twelve Eyes universal baseline
+
+User decision: make Twelve Eyes and all of its boss dependencies mandatory as the next stage of the universal plan; this prompt requests planning rather than implementation.
+
+Recorded the original twelve MAIN bosses, sixteen prerequisite entities, End Remastered Eyes, native structure/dimension requirements and full transitive dependency review in the existing universal implementation plan. Exact installed metadata supplies initial library requirements; undeclared native requirements and post-End closure remain explicit implementation work. Current optional-content availability behavior, production artifacts and generation 59 remain unchanged.
+
+Reviewed combat ownership against current source and the permanent Atlas: WorldTier ordinary-hostile/boss/party/Raid/Progression/Iron PvE layers; Server event, debuff and Phantom armor rules; Races traits/abilities; Compat elemental/transport extensions; Settlements recovery and native combat owners. This is a source-backed scope explanation, not a new balance change or runtime combat measurement. The shared Atlas engine reports uninitialized; the existing permanent Catalog queries and owning source were used, and no new audit or gameplay launch was run.
+
+## 2026-10-22 - Universal standalone production architecture (in testing)
+
+User decisions: execute the supplied universal standalone plan; combine Currency Core with Economy and all production races in one Races mod; distribute and retire Pack Core; remove Menu Support; keep Professions, Villager Talking and Claims development-only; include Bootstrap in a complete shareable Windows/Linux/macOS pack. Bootstrap ordinary consent is a file list, "Согласен с рисками" and "Скачать", without a countdown. The earlier dedicated-only non-event SMP restriction is superseded. Hosted scheduled/seasonal events still require explicit dedicated activation.
+
+Implementation choices: retained registry/save/principal IDs and canonical domain owners; private native GUI helpers replace the shared runtime library. Economy has a world SERVER switch, a host capability packet, native recipe-manager reconciliation and dormant transactions/UI. Settlements isolates optional Economy and preserves pending currency/day receipts with emerald fallback. Races uses one RaceService/RaceSavedData and one production JAR. World Tier persists an available-boss profile; Twelve Eyes retains exactly twelve original MAIN bosses, fresh-incomplete vanilla End access and existing-active fail-closed gates. Post-End adapters independently require their native targets. The native FTB book keeps archival IDs/completion and observes domain state through optional projection. Ordinary solo/party Raid reuses the existing saved encounter lifecycle independently of the event scheduler. Full distribution excludes launcher files, personal/runtime state and development module IDs, includes Bootstrap and SHA-256 manifests. Codex disables optional shaders by default because the selected Bloop End pass requires GLSL430 beyond native macOS OpenGL4.1; shaderpacks remain available for compatible hardware.
+
+Bug / Client / Bootstrap publication rejected paths using a legacy Win32/registry budget plus destination-derived temporary filename expansion; native Java NIO publication now uses its extended path budget and short independent temporary names without bypassing hashes, confined roots, trust or commit ownership / in testing. No affected friend's log or Linux/macOS runtime acceptance was available.
+
+Bug / Client / simplified confirmation initially required PREVIEWING for existing-install native reviews whose state is INACTIVE; the corrected screen checks WAITING only for first install and preserves the native current-attempt continuation / in testing.
+
+Bug / Both Sided / persisted synthetic NPC offers could execute as one-emerald trades after Economy OFF; new JEM extensions persist separately from untouched native offers, native generation/serialization retain their real list, and live currency screens close on host OFF / in testing. Old mixed offers have no reversible original provenance: their exact saved state is preserved, and ambiguous merchants are unavailable with an explanation while OFF; ON retains their existing stock.
+
+Bug / Server / independent Blood Moon handlers bypassed scheduler activation, and ordinary boss travel had only a physical-dedicated tick subscriber; per-row host gates stop inactive event mutations while logical-server travel/Raid processing and recovery remain reachable / in testing.
+
+Bug / Both Sided / absent post-End targets still produced locator/ending content, and inactive-campaign Eye insertion bypassed native item admission; target registry/structure availability now gates affected adapters and the Eye route respects Forge DENY, spectator, cooldown and Creative behavior / in testing.
+
+Bug / Client and Server bootstrap / cache replacement unnecessarily required renaming/deleting its directory; ordinary startup encountered a Windows directory lock whose historical holder could not be established. Publication now keeps the cache root, verifies all slices, atomically writes each JAR, verifies final hashes and writes the stamp last under the existing lock; real file/permission errors still propagate / in testing.
+
+Bug / Both Sided / migrated Guide building/7 used the old location-object predicate while Forge47.4.10 requires the location-check array, causing its parent and child advancement to be skipped. The source resource, canonical manifest and generator now use the native location-check wrapper while preserving IDs and the Chimes wind-chime block tag / in testing.
+
+Delivery: exact production artifacts are synchronized to ordinary Server/ManagedPack; native generation 59 is published and installed in closed test jem with matching active/head token, all nine exact artifact hashes and no pending transaction. Full archive has 2,750 SHA-256-verified case-unique files. Atlas validator/audit pass; the impact scan retains one excluded preexisting local provenance residual. Remaining baseline automated fixture files and their runner were removed under the standing architecture rule without executing them.
+
+Production JAR builds and pinned Bootstrap patch reproduction were completed on Windows. Local Server/ManagedPack synchronization, native generation/application and final delivery evidence are recorded in `Docs/universal/DELIVERY.json`. No automated tests, client/gameplay launch, Linux/macOS execution, MineRENT deployment, stable-profile mutation or release-baseline promotion is claimed.
+
+## 2026-10-22 - Native graphics sources, persistent references and PNG-first review
+
+User direction: rebuild JEM graphics production around precise game contours, persistent supplied references and approved sources, a consumer-specific native pixel grid, original alpha/layers, unchanged approved parts, constrained script use, real-size/light-dark/nearest-neighbour review and editable Blockbench/UV/PNG sources. Start with one finished asset and show PNG before integration or series. The user chooses SMP GUI as the example, then explicitly rejects the two old trading-station/card previews. Their prior selection/status is historical; neither supplies pixels to the new work.
+
+Implementation choices: update the canonical Taste Engine/Aseprite/visual-auditor and JEM production skills; link the project workflow from the existing art/SMP owners. Preserve 575 existing Minecraft reference/source files (126.61 MiB) inside Docs/art/reference-library/minecraft-2026-10-22, with original filenames/bytes, classifications, provenance and SHA-256. Original archive hashes match; selected concepts, native sources and user-approved production assets remain distinct.
+
+First art result: a new directly painted 160x224 Aseprite Blood Moon card with five layers, separate transparent artwork and live-label preview exports, native1x and nearest3x light/dark views. This is one component, not a delivered full SMP screen. C0/C1/C2 sources and findings are retained. Arm contacts improved, but broad flat character/material planes, a stiff shoulder and simple environment still fail the reference-level finish. Status: NEEDS_DIRECTION, not USER_APPROVED or finished production art. The two automatic correction rounds are exhausted; no integration or series proceeds.
+
+Only graphics workflow/evidence/candidate files changed in this task. No Java/game configuration, Client/ManagedPack, local Server artifacts, MineRENT, stable profile or release baseline was modified by it. No builds, tests, lint, static analysis or game launches ran. Requested artifact checks confirm native dimensions, preserved transparent RGBA edges and exact reference-copy hashes. A concurrent unrelated update has its own staged changes and currently unpublished native generation; that state is preserved, not published by this art task.
 
 ## 2026-10-21 — 3D-молоток, компактный tooltip Coins и список непроставленных цен
 
@@ -1605,3 +1659,12 @@ Built and installed the updated JEM Server artifact with Pehkui 3.8.2 into the l
 - Codex prepares the explicitly requested narrow SettlementScreen source removal: live search/name ordering retained; payroll remains accessible from debt-bearing roster and recruit detail using unchanged server requests. Matching conditional Atlas rule added. No new settlement/economy formulas or network schema.
 - Scope remains planning/external art plus prepared source: no production build, tests, game launch, Server/ManagedPack installation, native publication, MineRENT operation or baseline promotion. A production JAR would include unrelated unfinished changes in the same module, so none is presented as a clean task-only artifact. `jem.py status` cannot complete because stable inventory reading raises PermissionError; the stable profile/cache was not repaired or modified. Atlas schema validation passes; scan still reports the pre-existing unrelated uncovered source and bootstrap artifact drift, not a clean whole-workspace audit.
 
+
+
+## 2026-10-22 - Add clickable JEM GUI sandbox gallery
+
+User request: add the existing /smp, /settlements, /death and other JEM GUIs to the independent `jem sandbox` profile with fully clickable presentation and no gameplay logic; also add native GUI mods including Curios, Backpacked and TrashSlot. The user explicitly chose reproducing the existing screens.
+
+Implementation choices: add development-only `Mods/JEMGuiSandbox`, package relocated current domain screen sources and unchanged native pixels, and terminate JEM requests at ephemeral local view adapters. The F8 / /jemgui gallery covers SMP/profile/players/parties/shops/prizes, settlements/founding/guide/storage/treasury/residents, death/boss/landmark/home directories, market, encounter preparation, results/rewards and races/progression. Race miniature rendering delegates to the explicitly required existing sandbox renderer. No JEM gallery action changes actual player inventories, races, settlements, events, saved state or position. Native third-party mods retain their ordinary behavior.
+
+Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `jem sandbox`, with source/installed hashes in `Docs/gui-sandbox/delivery.json`. Production ManagedPack, local Server, test jem, stable profiles, AutoModpack publication and immutable release baseline remain unchanged. Production artifact build/reobfuscation passed; no tests, linters, static analyzers, Minecraft launches or gameplay scenarios ran. Runtime visual review, exhaustive manual click coverage and player acceptance remain unobserved. Atlas records/effective index were updated; the existing unrelated source-coverage gaps remain outside this prompt.

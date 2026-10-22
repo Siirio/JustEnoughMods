@@ -16,7 +16,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-DATA = ROOT / "Mods/JEMCurrencyCore/src/main/resources/data/jem_economy/economy"
+DATA = ROOT / "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy"
 FINAL = ROOT / "Docs/economy/FINAL_PRICE_LIST"
 
 
@@ -33,7 +33,7 @@ def write_csv(name, fields, rows):
 
 def author_prices(runtime):
     if any(row.get('schema',1)>=2 for row in read(DATA / "item_policies.json")):
-        raise SystemExit("Rational schema2 pricing is owned by JEMCurrencyCore/tools/author_shipping_economy.py; legacy integer authoring cannot overwrite it")
+        raise SystemExit("Rational schema2 pricing is owned by JEMEconomy/tools/author_shipping_economy.py; legacy integer authoring cannot overwrite it")
     existing = {row["item"]: row for row in read(DATA / "item_policies.json") if row.get("outcome") == "BUY_AND_SELL"}
     native = {row["item"]: row for name in ("native_item_prices.json", "profession_pools.json") for row in read(DATA / name)}
     items = {row["id"]: row for row in runtime["items"]}

@@ -48,7 +48,7 @@ public final class ShippingBoxBlock extends BaseEntityBlock {
     }
     @Override public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
-        if (!(player instanceof ServerPlayer serverPlayer) || !(level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box)) return InteractionResult.FAIL;
+        if (!(player instanceof ServerPlayer serverPlayer) || !com.siirio.jemeconomy.api.EconomyApi.isEnabled(serverPlayer.getServer()) || !(level.getBlockEntity(pos) instanceof ShippingBoxBlockEntity box)) return InteractionResult.FAIL;
         if (!box.acquire(serverPlayer)) { player.displayClientMessage(Component.translatable("jem.economy.shipping.busy"), true); return InteractionResult.CONSUME; }
         NetworkHooks.openScreen(serverPlayer, box, buffer -> buffer.writeBlockPos(pos));
         return InteractionResult.CONSUME;

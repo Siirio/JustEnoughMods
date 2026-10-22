@@ -22,23 +22,21 @@ public final class CampaignDefinition {
     }
 
     private static JsonObject load() {
+        JsonObject original;
+        try (var stream = CampaignDefinition.class.getResourceAsStream("/" + RESOURCE)) {
+            if (stream == null) throw new IllegalStateException("Missing original Twelve Eyes definition");
+            original = JsonParser.parseReader(new java.io.InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+        } catch (IOException exception) {
+            throw new IllegalStateException("Cannot read original Twelve Eyes definition", exception);
+        }
+        if (original.getAsJsonArray("bosses").size() != 12) {
+            throw new IllegalStateException("The campaign requires exactly twelve original MAIN bosses");
+        }
         Path config = FMLPaths.CONFIGDIR.get().resolve("jem_twelve_eyes-campaigns.json");
-        if (Files.isRegularFile(config)) {
-            return read(config);
+        if (Files.isRegularFile(config) && !original.equals(read(config))) {
+            throw new IllegalStateException("Twelve Eyes cannot replace its original bosses, Eyes or prerequisites: " + config);
         }
-        var definitions = ModList.get().getModFiles().stream()
-                .map(file -> file.getFile().findResource(RESOURCE))
-                .filter(Files::isRegularFile).toList();
-        if (definitions.size() > 1) {
-            throw new IllegalStateException("Multiple campaign definitions; select one in " + config);
-        }
-        if (!definitions.isEmpty()) {
-            return read(definitions.get(0));
-        }
-        var empty = new JsonObject();
-        empty.add("bosses", new JsonArray());
-        empty.add("prerequisites", new JsonArray());
-        return empty;
+        return original;
     }
 
     private static JsonObject read(Path path) {

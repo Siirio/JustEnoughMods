@@ -27,14 +27,28 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.startsWith(SHARED_MAP_MIXINS)) {
-            return FMLLoader.getLoadingModList().getModFileById(SHARED_MAP_MOD) != null;
+        if (mixinClassName.startsWith(SHARED_MAP_MIXINS)) return loaded(SHARED_MAP_MOD);
+        if (mixinClassName.startsWith(XAERO_MIXINS))
+            return loaded("xaeroworldmap") && (!mixinClassName.endsWith("OfficialWaypointTeleportMixin") || loaded("xaerominimap"));
+        if (mixinClassName.contains(".shops.")) return loaded("spudaciousshops");
+        if (mixinClassName.contains(".fishing.")) return loaded("tide");
+        if (mixinClassName.contains(".revive.")) return loaded("playerrevive");
+        if (targetClassName.startsWith("com.github.L_Ender.cataclysm.")) return loaded("cataclysm");
+        if (targetClassName.startsWith("net.unusual.block_factorys_bosses.")) return loaded("block_factorys_bosses");
+        if (targetClassName.startsWith("top.theillusivec4.curios.")) return loaded("curios");
+        if (targetClassName.startsWith("de.maxhenkel.gravestone.")) return loaded("gravestone");
+        if (targetClassName.startsWith("com.jack.gravestones.")) return loaded("jacksgravestones");
+        if (targetClassName.startsWith("net.mcreator.deepdarkregrowth.")) return loaded("deep_dark_regrowth");
+        if (targetClassName.startsWith("net.satisfy.")) {
+            String suffix = targetClassName.substring("net.satisfy.".length());
+            int separator = suffix.indexOf('.');
+            return separator > 0 && loaded(suffix.substring(0, separator));
         }
-        return FMLEnvironment.dist == Dist.DEDICATED_SERVER
-                || mixinClassName.startsWith(CLIENT_MIXINS)
-                || mixinClassName.startsWith(XAERO_MIXINS)
-                || mixinClassName.equals(SHARED_BOUNDARY_MIXIN)
-                || mixinClassName.equals(REMOTE_SHOP_CLIENT_MIXIN);
+        return true;
+    }
+
+    private static boolean loaded(String mod) {
+        return FMLLoader.getLoadingModList().getModFileById(mod) != null;
     }
 
     @Override

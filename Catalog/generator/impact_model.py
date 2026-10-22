@@ -396,6 +396,30 @@ def path_matches(path: str, pattern: str) -> bool:
     return fnmatch.fnmatchcase(path, pattern) or PurePosixPath(path).match(pattern)
 
 
+def source_coverage_index(sources: Iterable[tuple[str, str]]) -> tuple[dict[tuple[str, ...], set[str]], list[tuple[str, str]]]:
+    literal: dict[tuple[str, ...], set[str]] = defaultdict(set)
+    wildcard: list[tuple[str, str]] = []
+    for change_id, pattern in sources:
+        parts = PurePosixPath(pattern).parts
+        if parts and not any(character in pattern for character in "*?["):
+            literal[parts].add(change_id)
+        else:
+            wildcard.append((change_id, pattern))
+    return dict(literal), wildcard
+
+
+def covering_source_rules(path: str, index: tuple[dict[tuple[str, ...], set[str]], list[tuple[str, str]]]) -> list[str]:
+    literal, wildcard = index
+    parts = PurePosixPath(path).parts
+    covered: set[str] = set()
+    # PurePosixPath.match permits relative literal patterns to match a suffix;
+    # absolute patterns include their root part and therefore only match in full.
+    for offset in range(len(parts)):
+        covered.update(literal.get(parts[offset:], ()))
+    covered.update(change_id for change_id, pattern in wildcard if path_matches(path, pattern))
+    return sorted(covered)
+
+
 def changed_paths(base: str | None = None, head: str | None = None) -> list[str]:
     if base:
         target = head or "HEAD"
@@ -422,18 +446,18 @@ def scan_coverage(base: str | None = None, head: str | None = None) -> dict[str,
             watched.append({"path": path, "domains": sorted(set(matches))})
     changed_record_paths = {path for path in changed if path.startswith("Catalog/changes/records/") and path.endswith(".json")}
     changed_rules = [(path, rule) for path, rule in change_records() if relative(path) in changed_record_paths]
+    source_patterns = []
+    for _, rule in changed_rules:
+        sources = list(rule.get("cause", {}).get("source_files", []))
+        # Deleted sources are historical evidence, never a missing current cause.
+        # Existing/new code still needs a current cause in the same changed rule.
+        sources.extend(source for event in rule.get("history", [])
+                       for source in event.get("source_files", []) if not (ROOT / source).exists())
+        source_patterns.extend((rule["change_id"], source) for source in sources)
+    source_index = source_coverage_index(source_patterns)
     uncovered = []
     for entry in watched:
-        covering = []
-        for record_path, rule in changed_rules:
-            sources = list(rule.get("cause", {}).get("source_files", []))
-            # Deleted sources are historical evidence, never a missing current cause.
-            # Only absent changed paths can use history; existing/new code still needs
-            # a current cause reference in the same changed record.
-            sources.extend(source for event in rule.get("history", [])
-                           for source in event.get("source_files", []) if not (ROOT / source).exists())
-            if any(path_matches(entry["path"], source) for source in sources):
-                covering.append(rule["change_id"])
+        covering = covering_source_rules(entry["path"], source_index)
         if not covering:
             uncovered.append(entry)
         else:
@@ -449,6 +473,7 @@ def build_baseline_coverage() -> dict[str, Any]:
         ["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=False,
     ).stdout.splitlines()
     sources = [(rule["change_id"], source) for _, rule in change_records() for source in rule.get("cause", {}).get("source_files", [])]
+    source_index = source_coverage_index(sources)
     groups: dict[str, dict[str, Any]] = {}
     totals = {"watched": 0, "covered": 0, "unresolved": 0}
     for raw_path in sorted(set(tracked)):
@@ -459,7 +484,7 @@ def build_baseline_coverage() -> dict[str, Any]:
         parts = path.split("/")
         group_name = "/".join(parts[:2]) if parts[0] == "Mods" else "/".join(parts[:3])
         group = groups.setdefault(group_name, {"watched": 0, "covered": 0, "unresolved": 0, "unresolved_paths": []})
-        covering = sorted({change_id for change_id, pattern in sources if path_matches(path, pattern)})
+        covering = covering_source_rules(path, source_index)
         group["watched"] += 1
         totals["watched"] += 1
         if covering:

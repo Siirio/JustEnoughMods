@@ -41,7 +41,7 @@ public final class JemServer {
     private record PendingDeath(LivingEntity entity, UUID player, String playerName, ResourceLocation boss, ServerData.Death death) {}
 
     public JemServer() {
-        boolean dedicated = net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER;
+        boolean dedicated = true; // Non-event services run on every logical server.
         sleep = dedicated ? new SleepVote() : null;
         pendingDeaths = dedicated ? new HashMap<>() : null;
         if (dedicated) {

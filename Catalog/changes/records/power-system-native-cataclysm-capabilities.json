@@ -31,12 +31,13 @@
   ],
   "conditions": [
     {
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending.",
       "requires_mods": [
         "epicfight",
         "p1nero_ec",
         "cataclysm"
-      ],
-      "server": "dedicated JEM pack; external higher-priority datapacks may override"
+      ]
     }
   ],
   "precedence": {
@@ -116,16 +117,19 @@
     ]
   },
   "cause": {
-    "owner": "JEMPackCore",
+    "owner": "JEMAchievementGuide / JEMCompat / JEMServer / JEMTwelveEyes / JEMWorldBossTiers",
     "kind": "native_resource_precedence",
     "source_files": [
-      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
-      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
-      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
-      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
-      "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
-      "Mods/JEMPackCore/src/main/resources/META-INF/mods.toml",
-      "tools/tests/test_power_capabilities.py"
+      "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+      "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+      "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+      "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+      "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+      "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMTwelveEyes/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml"
     ]
   },
   "rationale": {
@@ -159,6 +163,89 @@
       "commit": "SELF",
       "action": "fix",
       "summary": "Select the installed dedicated Cataclysm weapon presets deterministically; preserve all native attributes and skills."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+        "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+        "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+        "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+        "Mods/JEMPackCore/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+        "Mods/JEMPackCore/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+        "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMTwelveEyes/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml",
+        "tools/tests/test_power_capabilities.py"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "requires_mods": [
+            "epicfight",
+            "p1nero_ec",
+            "cataclysm"
+          ],
+          "server": "dedicated JEM pack; external higher-priority datapacks may override"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+        "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMTwelveEyes/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml",
+        "tools/tests/test_power_capabilities.py"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMPackCore",
+      "source_files": [
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_annihilator.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/soul_render.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/cursed_bow.json",
+        "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json",
+        "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMCompat/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMTwelveEyes/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml",
+        "tools/tests/test_power_capabilities.py"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "retire_remaining_automated_fixtures",
+      "summary": "Root removed remaining automated fixtures/runner under the explicit no-retained-tests architecture contract. Historical references retained only here; no tests were run.",
+      "source_files": [
+        "tools/tests/test_power_capabilities.py"
+      ]
     }
   ],
   "impacts": {

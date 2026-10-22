@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "efd23bcffc6553f6f423cd4b5576e2732ad7e938",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
-    "generated_utc": "2026-10-21T18:01:30.417674+00:00",
+    "generated_utc": "2026-10-21T19:40:12.167574+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -13,6 +13,144 @@
     "version": "2.3.5"
   },
   "records": [
+    {
+      "item_id": "minecraft:crossbow",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/lang/en_us.json",
+        "assets/minecraft/models/item/crossbow.json",
+        "data/minecraft/recipes/crossbow.json"
+      ],
+      "display_name_en_us": "Crossbow",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/models/item/crossbow.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:assets/minecraft/lang/en_us.json",
+        "server-1.20.1-20230612.114412-unpacked.jar:data/minecraft/recipes/crossbow.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [
+        "minecraft:crossbow"
+      ],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:twisting_vines",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/twisting_vines.json"
+      ],
+      "display_name_en_us": "Twisting Vines",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/models/item/twisting_vines.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "minecraft:weeping_vines",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "netherexp",
+      "mod_name": "Jaden's Nether Expansion",
+      "mod_version": "2.3.5",
+      "source_jar": "Jadens-Nether-Expansion-2.3.5.jar",
+      "source_sha256": "97c9c1271c3f551663592b689771e45d63098e674899596d693641b82ecf5ccb",
+      "side_availability": [
+        "client"
+      ],
+      "observed_in": [
+        "assets/minecraft/models/item/weeping_vines.json"
+      ],
+      "display_name_en_us": "Weeping Vines",
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "Jadens-Nether-Expansion-2.3.5.jar:assets/minecraft/models/item/weeping_vines.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
     {
       "item_id": "netherexp:advancements/ssv_sub_biomes",
       "registry_type": "item_view",

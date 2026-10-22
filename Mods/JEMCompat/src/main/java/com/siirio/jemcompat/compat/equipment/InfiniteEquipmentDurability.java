@@ -1,6 +1,5 @@
 package com.siirio.jemcompat.compat.equipment;
 
-import com.siirio.jemworldbosstiers.enchantment.ProgressionEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ElytraItem;
@@ -48,6 +47,6 @@ public final class InfiniteEquipmentDurability {
     private static boolean isEquipment(ItemStack stack) {
         return stack.getItem() instanceof ArmorItem
                 || stack.getItem() instanceof ElytraItem
-                || ProgressionEnchantment.isWeaponEligible(stack);
+                || EquipmentEligibility.weapon(stack);
     }
 }

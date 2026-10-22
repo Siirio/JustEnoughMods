@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "weapons",
-  "snapshot_sha": "146fcbee566646e14098e664012a32b7c8acca5a",
+  "snapshot_sha": "bef54e985926d852fa0646938f88cba78acd0659",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -19189,7 +19189,7 @@
             "activation_seconds": 4.9,
             "cooldown_ticks": 20,
             "resource": "49 durability then 1 redstone reload",
-            "iframe_behavior": "beam sets target invulnerableTime to 5 before hurt; restores it only when hurt fails"
+            "iframe_behavior": "No iframe override: m_20094_ is getRemainingFireTicks, m_20254_(5) sets five seconds on fire, and m_7311_ restores previous fire ticks if hurt fails. Native target hurt acceptance remains in force."
           }
         ],
         "durability": {
@@ -27547,8 +27547,8 @@
       },
       "identity": {
         "source_mod": "Create",
-        "installed_version": "6.0.8",
-        "source_jar": "create-1.20.1-6.0.8.jar"
+        "installed_version": "6.0.8-291",
+        "source_jar": "create-1.20.1-6.0.8-291-slim.jar"
       }
     },
     {
@@ -70925,7 +70925,7 @@
       "evidence": [
         {
           "type": "atlas_static",
-          "source": "Catalog/views/weapons/minecraft.json",
+          "source": "Catalog/views/weapons/copperagebackport.json",
           "confidence": "inferred"
         }
       ],
@@ -70995,9 +70995,9 @@
         }
       },
       "identity": {
-        "source_mod": "Minecraft",
-        "installed_version": "1.20.1",
-        "source_jar": "server-1.20.1-20230612.114412-unpacked.jar"
+        "source_mod": "Copper-Age-Backport",
+        "installed_version": "0.1.4",
+        "source_jar": "copperagebackport-forge-1.20.1-0.1.4.jar"
       }
     },
     {
@@ -71036,7 +71036,7 @@
       "evidence": [
         {
           "type": "atlas_static",
-          "source": "Catalog/views/weapons/minecraft.json",
+          "source": "Catalog/views/weapons/netherexp.json",
           "confidence": "inferred"
         }
       ],
@@ -71401,9 +71401,9 @@
         }
       },
       "identity": {
-        "source_mod": "Minecraft",
-        "installed_version": "1.20.1",
-        "source_jar": "server-1.20.1-20230612.114412-unpacked.jar"
+        "source_mod": "Jaden's Nether Expansion",
+        "installed_version": "2.3.5",
+        "source_jar": "Jadens-Nether-Expansion-2.3.5.jar"
       }
     },
     {
@@ -87140,8 +87140,228 @@
       },
       "identity": {
         "source_mod": "Skarrier Mobs",
-        "installed_version": "1.0.6",
-        "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar"
+        "installed_version": "1.1.1",
+        "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar"
+      }
+    },
+    {
+      "id": "skarrier_mobs:decayerite_sword",
+      "kind": "weapon_candidate",
+      "display_name": "Decayerite Sword",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [
+        {
+          "condition": "progression enchantment conditional tier multiplier and critical",
+          "source": "JEMWorldBossTiers progression equipment rules"
+        }
+      ],
+      "effective": {
+        "status": "unresolved",
+        "expression": "native ItemStack expression; then progression enchantment conditional tier multiplier and critical when applicable"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": [],
+        "class": "unresolved",
+        "unresolved": "No static recipe/loot/acquisition route is linked to this registry ID."
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/weapons/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "attack speed",
+        "reach/range",
+        "area",
+        "cooldown",
+        "resource cost"
+      ],
+      "registration": {
+        "item_id": "skarrier_mobs:decayerite_sword",
+        "status": "language_named_registration_unresolved",
+        "unresolved_reason": "no literal item register call was extracted; the exact translation-backed candidate remains visible for dynamic/helper registration review"
+      },
+      "native_mechanics": {
+        "owner_artifact": null,
+        "owner_classes": [],
+        "delegated_classes": [],
+        "owner_status": "unresolved",
+        "observed_channels": [],
+        "numeric_constants": [],
+        "exact_numeric_mechanics": {},
+        "special_attack_methods": [],
+        "special_attack_coverage": {},
+        "better_combat": null,
+        "epic_fight": [],
+        "epic_fight_resolution": "not_observed",
+        "dimensions": {
+          "base_damage": {
+            "status": "unresolved",
+            "unresolved_reason": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "attack_speed": {
+            "status": "unresolved",
+            "unresolved_reason": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "epic_fight_moveset": {
+            "status": "unresolved",
+            "unresolved_reason": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "special_attacks": {
+            "status": "unresolved",
+            "unresolved_reason": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "effects": {
+            "status": "unresolved",
+            "unresolved_reason": "effects still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "cooldown": {
+            "status": "unresolved",
+            "unresolved_reason": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "resource_cost": {
+            "status": "unresolved",
+            "unresolved_reason": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "penetration": {
+            "status": "unresolved",
+            "unresolved_reason": "penetration still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          },
+          "durability": {
+            "status": "unresolved",
+            "unresolved_reason": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:decayerite_sword; raw class constants are evidence, not assigned values"
+          }
+        }
+      },
+      "identity": {
+        "source_mod": "Skarrier Mobs",
+        "installed_version": "1.1.1",
+        "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar"
+      }
+    },
+    {
+      "id": "skarrier_mobs:deep_alloy_sword",
+      "kind": "weapon_candidate",
+      "display_name": "Deep Alloy Sword",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [
+        {
+          "condition": "progression enchantment conditional tier multiplier and critical",
+          "source": "JEMWorldBossTiers progression equipment rules"
+        }
+      ],
+      "effective": {
+        "status": "unresolved",
+        "expression": "native ItemStack expression; then progression enchantment conditional tier multiplier and critical when applicable"
+      },
+      "acquisition": {
+        "status": "source_verified_partial",
+        "routes": [
+          "skarrier_mobs:deep_alloy_sword_recipe"
+        ],
+        "class": "normal_survival",
+        "unresolved": null
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/views/weapons/skarrier_mobs.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "attack speed",
+        "reach/range",
+        "area",
+        "cooldown",
+        "resource cost"
+      ],
+      "registration": {
+        "item_id": "skarrier_mobs:deep_alloy_sword",
+        "status": "language_named_registration_unresolved",
+        "unresolved_reason": "no literal item register call was extracted; the exact translation-backed candidate remains visible for dynamic/helper registration review"
+      },
+      "native_mechanics": {
+        "owner_artifact": null,
+        "owner_classes": [],
+        "delegated_classes": [],
+        "owner_status": "unresolved",
+        "observed_channels": [],
+        "numeric_constants": [],
+        "exact_numeric_mechanics": {},
+        "special_attack_methods": [],
+        "special_attack_coverage": {},
+        "better_combat": null,
+        "epic_fight": [],
+        "epic_fight_resolution": "not_observed",
+        "dimensions": {
+          "base_damage": {
+            "status": "unresolved",
+            "unresolved_reason": "base_damage still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "attack_speed": {
+            "status": "unresolved",
+            "unresolved_reason": "attack_speed still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "epic_fight_moveset": {
+            "status": "unresolved",
+            "unresolved_reason": "epic_fight_moveset still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "special_attacks": {
+            "status": "unresolved",
+            "unresolved_reason": "special_attacks still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "effects": {
+            "status": "unresolved",
+            "unresolved_reason": "effects still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "cooldown": {
+            "status": "unresolved",
+            "unresolved_reason": "cooldown still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "resource_cost": {
+            "status": "unresolved",
+            "unresolved_reason": "resource_cost still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "penetration": {
+            "status": "unresolved",
+            "unresolved_reason": "penetration still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          },
+          "durability": {
+            "status": "unresolved",
+            "unresolved_reason": "durability still requires a safely traced method expression or runtime ItemStack attributes for skarrier_mobs:deep_alloy_sword; raw class constants are evidence, not assigned values"
+          }
+        }
+      },
+      "identity": {
+        "source_mod": "Skarrier Mobs",
+        "installed_version": "1.1.1",
+        "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar"
       }
     },
     {
@@ -87337,8 +87557,8 @@
       },
       "identity": {
         "source_mod": "Skarrier Mobs",
-        "installed_version": "1.0.6",
-        "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar"
+        "installed_version": "1.1.1",
+        "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar"
       }
     },
     {
@@ -87532,8 +87752,8 @@
       },
       "identity": {
         "source_mod": "Skarrier Mobs",
-        "installed_version": "1.0.6",
-        "source_jar": "skarrier_mobs-1.0.6-forge-1.20.1.jar"
+        "installed_version": "1.1.1",
+        "source_jar": "skarrier_mobs-1.1.1-forge-1.20.1.jar"
       }
     },
     {

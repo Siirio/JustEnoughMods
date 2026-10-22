@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "change_id": "universal-standalone.bootstrap-native-acquisition-20261021",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "universal_standalone",
+    "priority": 1160,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Keep Bootstrap in the portable shareable pack and repair long-name native acquisition/consent without bypassing hash, trust or native generation ownership.",
+    "modifiers": [
+      {
+        "property": "bootstrap.native_acquisition",
+        "operation": "replace",
+        "before": "Native long-path acquisition/projection and repeated confirmation could fail or prevent update continuation",
+        "after": {
+          "acquisition": "Native NIO publication with independent short temporary names; expected file hashes, safe ownership and transaction commit preserved",
+          "consent": "One file list, risk consent and download action; first-install WAITING requirement applies only to first-install, ordinary existing preview keeps native continuation",
+          "distribution": "Bootstrap included; no raw-copy managed install/cache/active-pointer bypass, stable profile or MineRENT mutation",
+          "implementation_cache": "Publish implementation cache file-by-file and write the completion stamp last; do not rename the opened staging directory. Existing hash/ownership checks remain intact. Status in testing; historical Windows lock holder unknown."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM canonical domain owners",
+    "kind": "approved_universal_standalone",
+    "source_files": [
+      "Mods/JEMBootstrap/patches/reliable-updates.patch",
+      "Mods/JEMBootstrap/prepare.py",
+      "Mods/JEMBootstrap/upstream.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep Bootstrap in the portable shareable pack and repair long-name native acquisition/consent without bypassing hash, trust or native generation ownership.",
+    "decision_source": "User explicitly requested execution of the Universal Standalone plan on 2026-10-21, with repository plan amendments and Windows/Linux/macOS portability.",
+    "user_requested": "One shared production implementation for integrated/dedicated worlds, source-domain ownership, optional feature absence, Economy ON/OFF, preserved native IDs/saves/behavior, dedicated opt-in events, content-aware progression/quests, Bootstrap in shareable pack.",
+    "codex_choices": "Domain adapters, exact generation-bound recipe reconciliation, per-world frozen progression profile, native quest folder projection and source/resource routing implement that approved contract. No implicit player acceptance is asserted."
+  },
+  "introduced": {
+    "date": "2026-10-22",
+    "commit": "SELF",
+    "action": "implement_universal_standalone",
+    "summary": "Keep Bootstrap in the portable shareable pack and repair long-name native acquisition/consent without bypassing hash, trust or native generation ownership."
+  },
+  "history": [
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "implement_universal_standalone",
+      "summary": "Keep Bootstrap in the portable shareable pack and repair long-name native acquisition/consent without bypassing hash, trust or native generation ownership.",
+      "source_files": [
+        "Mods/JEMBootstrap/patches/reliable-updates.patch",
+        "Mods/JEMBootstrap/prepare.py",
+        "Mods/JEMBootstrap/upstream.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "portable_cache_file_publication",
+      "summary": "Bug / Both Sided / Windows locked impl-cache.staging directory prevented atomic directory rename; exact historical holder unknown / in testing. Native cache publication copies verified files and writes the stamp last, retaining trust/hash/ownership boundaries; no gameplay acceptance asserted.",
+      "source_files": [
+        "Mods/JEMBootstrap/prepare.py",
+        "Mods/JEMBootstrap/patches/reliable-updates.patch"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Bootstrap",
+      "native acquisition",
+      "filesystem paths",
+      "risk consent",
+      "native update transactions",
+      "offline installation"
+    ],
+    "relations": [
+      "canonical source owner -> shared production artifact -> logical-server authority -> synchronized client presentation"
+    ],
+    "notes": [
+      "Existing registry/resource/network namespace and saved-data identities are retained unless the explicitly recorded protocol version changes. No new price policy or copied gameplay state owner is introduced.",
+      "Controller produced and synchronized fresh production artifacts to ordinary Client/ManagedPack and Server; native publication/application and manual player acceptance are separate delivery evidence."
+    ],
+    "unresolved": [
+      "Fresh missing-mod/ON-OFF/restart/manual gameplay and visual acceptance on Windows/Linux/macOS remains unexercised. No automated tests or gameplay scenarios were run."
+    ]
+  }
+}

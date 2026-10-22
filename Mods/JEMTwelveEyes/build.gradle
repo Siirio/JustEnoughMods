@@ -25,13 +25,8 @@ repositories {
     mavenCentral()
 }
 
-def instancePath = providers.gradleProperty('jem_instance')
-        .orElse(providers.environmentVariable('JEM_INSTANCE'))
-        .orNull
-
-if (instancePath == null || instancePath.isBlank()) {
-    throw new GradleException('Set -Pjem_instance=<path> or JEM_INSTANCE before building JEM Twelve Eyes')
-}
+def instanceOverride = findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
+def instancePath = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')
 
 def installedMod = { String pattern ->
     def matches = fileTree(dir: file("${instancePath}/mods"), include: pattern).files

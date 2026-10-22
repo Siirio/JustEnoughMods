@@ -11,7 +11,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+      "runtime": "Canonical hosted boss/ordinary solo Raid and progression owner on logical integrated/dedicated servers; actual registered boss profiles/content/native state remain required. Scheduled SMP events remain dedicated-server opt-in. Ordinary hosted boss/Campaign/Raid have no containment walls/corrective teleport.",
+      "acceptance": "Manual gameplay acceptance pending."
     }
   ],
   "precedence": {
@@ -70,6 +71,25 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Dedicated server gameplay; matching client GUI artifacts. No game launch or automated tests. Player acceptance pending."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
+        "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
+        "Docs/releases/2026-10-21-shipping-market-repair.json"
       ]
     }
   ],

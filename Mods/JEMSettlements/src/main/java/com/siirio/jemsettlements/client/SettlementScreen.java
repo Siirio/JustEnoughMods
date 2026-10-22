@@ -1,7 +1,6 @@
 package com.siirio.jemsettlements.client;
 
 import com.siirio.jemsettlements.network.SettlementNetwork;
-import com.siirio.jemeconomy.physical.CoinDenomination;
 import java.util.*;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -33,7 +32,7 @@ public class SettlementScreen extends Screen {
     private UUID desiredEntity;
     private EditBox searchBox, nameBox, amountBox;
     private String editedName="", amount="1";
-    private CoinDenomination denomination=CoinDenomination.COPPER;
+    private int denomination;
     private final SettlementMap map=new SettlementMap();
     private int cityContentTop,cityScrollLimit;
     private int sidebarWidth, dashboardTop, dashboardLimit, residentScroll, detailScroll, detailTop, detailBottom;
@@ -211,7 +210,7 @@ public class SettlementScreen extends Screen {
         });
         y+=98;
         int quarter=Math.max(28,cw/4),moneyY=y;
-        Button unit=button(currencyItem().getHoverName(),cx,moneyY,quarter,()->{denomination=CoinDenomination.values()[(denomination.ordinal()+1)%CoinDenomination.values().length];rebuild();},false);
+        Button unit=button(currencyItem().getHoverName(),cx,moneyY,quarter,()->{denomination=(denomination+1)%SettlementPriceRenderer.units().size();rebuild();},false);
         unit.active=coinCurrency();unit.setTooltip(Tooltip.create(tr("coin_cycle")));
         amountBox=edit(cx+quarter+3,moneyY,quarter-3,amount,"amount",16);amountBox.setFilter(value->value.matches("[0-9]*"));amountBox.setResponder(value->amount=value);
         button(tr("deposit"),cx+quarter*2+3,moneyY,quarter-3,()->transfer("deposit"),true);
@@ -295,7 +294,7 @@ public class SettlementScreen extends Screen {
         button(tr("player"),cx+cw/3+2,bottom-46,Math.max(48,cw/3-2),()->{if(minecraft.player!=null&&minecraft.level!=null&&minecraft.level.dimension().location().toString().equals(town.getString("Dimension")))map.center(minecraft.player.blockPosition());},false);
         Button expand=button(tr("expand"),cx+cw*2/3+2,bottom-46,cw/3-2,()->{
             if (!map.preview()) return;long added=map.added(town);CompoundTag payload=map.payload(town);
-            Component fullPrice=coinCurrency()?com.siirio.jemeconomy.physical.CoinFormatter.formatAll(map.cost(town)):SettlementPriceRenderer.format(map.cost(town),false);
+            Component fullPrice=coinCurrency()?SettlementPriceRenderer.formatAll(map.cost(town), true):SettlementPriceRenderer.format(map.cost(town),false);
             ask(tr("expansion_confirmation",added).copy().append("\n").append(fullPrice),()->{if(SettlementClientState.action("mapexpand",town.getUUID("Id"),payload))map.committed();});
         },true);expand.active=map.preview()&&map.invalidReason(town).isEmpty()&&!SettlementClientState.pending();expand.setTooltip(Tooltip.create(tr(!map.invalidReason(town).isEmpty()?"map_invalid."+map.invalidReason(town):map.quoted()?"expansion_configured":"select_neighbor")));
         if(map.quoted()) {
@@ -579,7 +578,7 @@ public class SettlementScreen extends Screen {
     }
     private void transfer(String action) {
         try {
-            long total=Math.multiplyExact(Long.parseLong(amountBox.getValue()),coinCurrency()?denomination.value():1L);if(total<=0){notice="jem.settlements.reason.invalid";return;}
+            long total=Math.multiplyExact(Long.parseLong(amountBox.getValue()),coinCurrency()?SettlementPriceRenderer.units().get(denomination).value():1L);if(total<=0){notice="jem.settlements.reason.invalid";return;}
             CompoundTag payload=new CompoundTag();payload.putLong("Amount",total);ask(tr(action+"_confirm",amountBox.getValue(),currencyItem().getHoverName()),()->request(action,payload));
         } catch(NumberFormatException|ArithmeticException invalid) {notice="jem.settlements.reason.invalid";}
     }
@@ -690,7 +689,7 @@ public class SettlementScreen extends Screen {
         drawings.add(()->{graphics.fill(x,y,x+2,y+h,0x33292e35);graphics.fill(x,y+pos,x+2,y+pos+handle,0xffa18a66);});
     }
     private boolean coinCurrency() { return envelope.getBoolean("CoinCurrency"); }
-    private ItemStack currencyItem() { return coinCurrency()?item("jem_economy:"+denomination.id()):new ItemStack(Items.EMERALD); }
+    private ItemStack currencyItem() { return coinCurrency()?item("jem_economy:"+SettlementPriceRenderer.units().get(denomination).id()):new ItemStack(Items.EMERALD); }
     private void coins(long copper,int x,int y,int maxWidth) {
         SettlementPriceRenderer.draw(graphics,font,copper,x,y,maxWidth,INK,coinCurrency());
     }

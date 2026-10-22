@@ -28,7 +28,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-@Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "jem_server")
 public final class ShopIndex {
     static record Position(ResourceLocation dimension, BlockPos block) {
         UUID id() {
@@ -205,6 +205,11 @@ public final class ShopIndex {
     }
 
     public static CompoundTag view(ServerPlayer player, SmpQuery query) {
+        if (!com.siirio.jemserver.smp.DomainFeatures.economy(player.server)) {
+            CompoundTag result = new CompoundTag(); result.putString("tab", "shops");
+            result.put("rows", new ListTag()); result.putInt("total", 0); result.putString("message", "unavailable");
+            result.putString("moneyAvailability", com.siirio.jemserver.smp.DomainFeatures.economyAvailability(player.server)); return result;
+        }
         var loaded =
                 SmpData.get(player.server).all("shops").stream()
                         .map(ShopIndex::position)
@@ -461,6 +466,7 @@ public final class ShopIndex {
     }
 
     private static void buyWithCoins(ServerPlayer player, CompoundTag row, int expectedRevision, UUID requestId) {
+        SmpRecords.require(com.siirio.jemserver.smp.DomainFeatures.economy(player.server), "unavailable");
         SmpRecords.require(expectedRevision == row.getInt("revision"), "stale_revision");
         SmpRecords.require(!row.getBoolean("selectable"), "select_offer_at_shop");
         SmpRecords.require(row.hasUUID("owner") && !row.getUUID("owner").equals(player.getUUID()), "invalid_request");
@@ -480,24 +486,24 @@ public final class ShopIndex {
         SmpRecords.require(block instanceof ShopCoinAccess, "unavailable");
         var shop = (ShopCoinAccess) block;
 
-        var reserve = com.siirio.jemeconomy.api.EconomyApi.reserveMarketPayment(player, price, requestId);
-        if (reserve.status() == com.siirio.jemeconomy.api.EconomyApi.MarketStatus.REPLAYED) return;
-        SmpRecords.require(reserve.status() == com.siirio.jemeconomy.api.EconomyApi.MarketStatus.RESERVED,
-                reserve.status() == com.siirio.jemeconomy.api.EconomyApi.MarketStatus.INSUFFICIENT_FUNDS ? "insufficient_coins" : "unavailable");
+        var reserve = com.siirio.jemserver.compat.economy.CoinPayments.reserve(player, price, requestId);
+        if (reserve == com.siirio.jemserver.compat.economy.CoinPayments.Status.REPLAYED) return;
+        SmpRecords.require(reserve == com.siirio.jemserver.compat.economy.CoinPayments.Status.RESERVED,
+                reserve == com.siirio.jemserver.compat.economy.CoinPayments.Status.INSUFFICIENT_FUNDS ? "insufficient_coins" : "unavailable");
 
         ItemStack sold = shop.jemTakeCoinSale(expected, quantity);
         if (sold.isEmpty()) {
-            com.siirio.jemeconomy.api.EconomyApi.refundMarketPayment(player, price, requestId);
+            com.siirio.jemserver.compat.economy.CoinPayments.refund(player, price, requestId);
             throw new com.siirio.jemserver.smp.SmpActionFailure("out_of_stock");
         }
         if (!player.getInventory().add(sold) || !sold.isEmpty()) {
             shop.jemRestoreCoinSale(sold);
-            com.siirio.jemeconomy.api.EconomyApi.refundMarketPayment(player, price, requestId);
+            com.siirio.jemserver.compat.economy.CoinPayments.refund(player, price, requestId);
             throw new com.siirio.jemserver.smp.SmpActionFailure("inventory_full");
         }
-        var settled = com.siirio.jemeconomy.api.EconomyApi.settleMarketPayment(player, row.getUUID("owner"), price, requestId);
-        if (settled.status() != com.siirio.jemeconomy.api.EconomyApi.MarketStatus.COMMITTED
-                && settled.status() != com.siirio.jemeconomy.api.EconomyApi.MarketStatus.REPLAYED) {
+        var settled = com.siirio.jemserver.compat.economy.CoinPayments.settle(player, row.getUUID("owner"), price, requestId);
+        if (settled != com.siirio.jemserver.compat.economy.CoinPayments.Status.COMMITTED
+                && settled != com.siirio.jemserver.compat.economy.CoinPayments.Status.REPLAYED) {
             throw new com.siirio.jemserver.smp.SmpActionFailure("settlement_pending");
         }
         player.getInventory().setChanged();

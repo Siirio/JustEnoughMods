@@ -1,5 +1,7 @@
 # JEMCompat Project Rules
 
+- The retained `jem_pack_core:excavation` enchantment belongs to Compat and has exactly one level. It mines one 3x3 layer from the targeted block face and highlights the same nine blocks with a bright white outline.
+
 - Sirok is no longer campaign-gated; keep the Sandworm Nest's single native encounter and never create a second JEM-owned combat entity because the removed TNT replacement path caused duplicate solid bosses.
 - Preserve `com.siirio.jemcompat.client.AdvancementScreenEvents.directClick` as a compatibility shim because the installed BetterAdvancements bytecode directly invokes that exact binary name; removing it causes a click-time `NoClassDefFoundError` even though the real handler lives in JEMAchievementGuide.
 - Elemental ignition must use the explicit `jemcompat:igniting_impact_items` tag and never infer heat from block light emission, because redstone lights, closed lamps, glowstone, and enclosed lanterns are luminous without being exposed fire.

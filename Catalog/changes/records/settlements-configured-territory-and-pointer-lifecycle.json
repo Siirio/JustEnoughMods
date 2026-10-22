@@ -16,7 +16,8 @@
   ],
   "conditions": [
     {
-      "requires": "Dedicated server authority with matching fresh client/server artifacts; runtime acceptance pending"
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -91,6 +92,32 @@
       "commit": "SELF",
       "action": "replace",
       "summary": "User requested cheaper configurable expansion, complete price and terminal drag cleanup; Codex selected positive perblock/minimum defaults and existing server/journal ownership."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "requires": "Dedicated server authority with matching fresh client/server artifacts; runtime acceptance pending"
+        }
+      ],
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/TerritoryDragState.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementClientState.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementPriceRenderer.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/xaero/SettlementMapScreenMixin.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json"
+      ]
     }
   ],
   "impacts": {

@@ -31,7 +31,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid="jem_server",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid="jem_server")
 public final class EventMobModifiers {
     private static final String ARCHETYPE="jem:event_archetype";
     private static final String ELITE="jem:event_elite";
@@ -249,7 +249,7 @@ public final class EventMobModifiers {
         Entity direct=event.getSource().getDirectEntity();
         var source=EventSession.owner(event.getSource().getEntity());
         if(source==null) source=EventSession.owner(direct);
-        if(source instanceof Mob mob&&mob.getPersistentData().hasUUID(EventSession.SESSION)) {
+        if(source instanceof Mob mob&&available(mob)) {
             boolean signature=mob.getPersistentData().getBoolean(SET_PIECE_SIGNATURE)
                     || direct!=null&&direct.getPersistentData().getBoolean(SET_PIECE_SIGNATURE);
             if(mob.getPersistentData().hasUUID(BloodMoon.EVENT_ID) && !mob.getPersistentData().getBoolean(SET_PIECE_BOSS)) {
@@ -272,7 +272,7 @@ public final class EventMobModifiers {
                 event.setAmount((float)Math.min(event.getAmount(),victim.getMaxHealth()*cap));
             }
         }
-        if(victim instanceof Mob mob&&mob.getPersistentData().hasUUID(EventSession.SESSION)) {
+        if(victim instanceof Mob mob&&available(mob)) {
             String archetype=mob.getPersistentData().getString(ARCHETYPE);
             if(archetype.equals("DEFLECTOR")&&event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_PROJECTILE)) event.setAmount(event.getAmount()*.65F);
             if(archetype.equals("ARMORED")&&event.getSource().is(net.minecraft.tags.DamageTypeTags.IS_PROJECTILE)) event.setAmount(event.getAmount()*.90F);
@@ -282,12 +282,18 @@ public final class EventMobModifiers {
 
     @SubscribeEvent
     public static void tick(LivingEvent.LivingTickEvent event) {
-        if(!(event.getEntity() instanceof Mob mob)||mob.level().isClientSide||!mob.getPersistentData().hasUUID(EventSession.SESSION)) return;
+        if(!(event.getEntity() instanceof Mob mob)||mob.level().isClientSide||!available(mob)) return;
         if(mob.getPersistentData().hasUUID(BloodMoon.EVENT_ID)&&mob.level().isDay()&&mob.level().canSeeSky(mob.blockPosition())) mob.clearFire();
         if(mob.tickCount%10!=0||mob.getPersistentData().getBoolean(ENRAGED)||mob.getHealth()>=mob.getMaxHealth()*.30F) return;
         mob.getPersistentData().putBoolean(ENRAGED,true);
         multiply(mob,Attributes.MOVEMENT_SPEED,"enraged_speed",1.15);
         multiply(mob,Attributes.ATTACK_DAMAGE,"enraged_damage",1.10);
+    }
+
+    private static boolean available(Mob mob) {
+        if (mob.getServer() == null || !mob.getPersistentData().hasUUID(EventSession.SESSION)) return false;
+        var row = com.siirio.jemserver.smp.SmpData.get(mob.getServer()).find("events", mob.getPersistentData().getUUID(EventSession.SESSION));
+        return EventRuntime.available(mob.getServer(), row);
     }
 
     private static void multiply(Mob mob,Attribute attribute,String name,double factor) {

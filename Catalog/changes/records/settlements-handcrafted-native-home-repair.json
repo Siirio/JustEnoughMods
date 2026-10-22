@@ -21,7 +21,8 @@
   ],
   "conditions": [
     {
-      "runtime": "Physical dedicated server only; exact Handcrafted3.0.6 installed, actual registered handcrafted BedBlock HEAD states; native Forge1.20.1-47.4.10 mapping/POI lifecycle."
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     },
     {
       "acceptance": "Production source/build complete; publication/installed-generation evidence is recorded in the task delivery receipt. Real villager sleep/wake acceptance remains in testing; no game launch or automated test."
@@ -95,6 +96,31 @@
       "commit": "SELF",
       "action": "repair_native_handcrafted_home_lifecycle",
       "summary": "Complete existing HOME state APIs and use native ticket-preserving POI section refresh for loaded sections containing actual Handcrafted HEAD states; gameplay approval remains pending.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypeHomeMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiSectionStorageAccess.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiManagerBedRepairMixin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/SettlementMixinPlugin.java",
+        "Mods/JEMSettlements/src/main/resources/jem_settlements.mixins.json",
+        "Docs/settlements/standalone/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "runtime": "Physical dedicated server only; exact Handcrafted3.0.6 installed, actual registered handcrafted BedBlock HEAD states; native Forge1.20.1-47.4.10 mapping/POI lifecycle."
+        },
+        {
+          "acceptance": "Production source/build complete; publication/installed-generation evidence is recorded in the task delivery receipt. Real villager sleep/wake acceptance remains in testing; no game launch or automated test."
+        }
+      ],
       "source_files": [
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/NativeBedCompatibility.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/mixin/PoiTypesAccess.java",

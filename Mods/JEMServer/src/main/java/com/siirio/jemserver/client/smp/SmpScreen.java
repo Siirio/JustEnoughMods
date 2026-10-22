@@ -107,6 +107,7 @@ public final class SmpScreen extends Screen {
                     update.view().getBoolean("__delta")
                             ? com.siirio.jemserver.smp.ViewDelta.apply(model, update.view())
                             : update.view().copy();
+            sidebar.features(incoming.getCompound("features"));
             String next = incoming.getString("tab");
             UUID nextId = incoming.contains("detail") && incoming.getCompound("detail").hasUUID("id") ? incoming.getCompound("detail").getUUID("id") : null;
             if (update.open() && (!next.equals(tab) || !Objects.equals(nextId, selected))) remember();
@@ -349,7 +350,7 @@ public final class SmpScreen extends Screen {
     }
 
     private void selectTab(String next) {
-        if (next.equals("market")) { com.siirio.jemeconomy.client.MarketClientState.open(this); return; }
+        if (next.equals("market")) { if (model.getCompound("features").getBoolean("economy")) ServerCurrencyPresentation.openMarket(this); return; }
         if (next.equals("profile") && minecraft != null && minecraft.player != null) { visit("profiles", minecraft.player.getUUID()); return; }
         if (next.equals("players")) { visit("profiles", null); return; }
         if (!next.equals(tab) || selected != null) visit(next, null);
@@ -1127,7 +1128,6 @@ public final class SmpScreen extends Screen {
                 int tradeWidth = Math.max(94, actionX - tradeX - 9);
                 var offers = row.getList("offers", Tag.TAG_COMPOUND);
                 var firstOffer = offers.isEmpty() ? new CompoundTag() : offers.getCompound(0);
-                var payment = new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation("jem_economy", "copper_coin")));
                 var output = ItemStack.of(offers.isEmpty() ? row.getCompound("offer") : firstOffer.getCompound("output"));
                 if (offers.isEmpty() && !output.isEmpty()) output.setCount(Math.max(1, row.getInt("quantity")));
                 int available = offers.isEmpty() ? (row.getString("state").equals("OUT_OF_STOCK") ? 0 : -1) : firstOffer.getInt("availableTrades");
@@ -1136,7 +1136,7 @@ public final class SmpScreen extends Screen {
                 int iconSize = 30;
                 int paymentX = tradeX + 3;
                 int outputX = tradeX + Math.max(iconSize + 28, tradeWidth / 2 + 8);
-                com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getInt("price"), paymentX, y + 33, Math.max(24, outputX - paymentX - 25), CREAM);
+                ServerCurrencyPresentation.draw(g, font, row.getInt("price"), paymentX, y + 33, Math.max(24, outputX - paymentX - 25), CREAM, true);
                 int arrowX = Math.max(paymentX + iconSize + 7, outputX - 22);
                 text(g, Component.literal("→"), arrowX, y + 39, PEACH, 18);
                 renderShopTradeStack(g, output, outputX, y + 29, iconSize, mx, my);
@@ -1219,13 +1219,13 @@ public final class SmpScreen extends Screen {
             for (String score : scores) { text(g, Component.translatable("jem.smp.settlement.score." + score.toLowerCase(Locale.ROOT), row.getInt(score)), bodyX + 4, y, CREAM, bodyWidth - 8); y += 18; }
         } else if (settlementTab.equals("treasury")) {
             text(g, Component.translatable("jem.smp.settlement.tab.treasury"), bodyX + 4, y, PEACH, bodyWidth / 3);
-            com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getLong("Treasury"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, PEACH); y += 28;
+            ServerCurrencyPresentation.draw(g, font, row.getLong("Treasury"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, PEACH, row.getBoolean("CoinCurrency")); y += 28;
             button(g, bodyX, y, Math.max(70, bodyWidth / 2 - 4), 24, "treasury_deposit", () -> openForm("settlement_deposit"), mx, my);
             button(g, bodyX + bodyWidth / 2 + 4, y, Math.max(70, bodyWidth / 2 - 4), 24, "treasury_withdraw", () -> openForm("settlement_withdraw"), mx, my); y += 32;
             text(g, Component.translatable("jem.smp.settlement.payroll_label"), bodyX + 4, y, MUTED, bodyWidth / 3);
-            com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getLong("ProjectedPayroll"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM); y += 22;
+            ServerCurrencyPresentation.draw(g, font, row.getLong("ProjectedPayroll"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM, row.getBoolean("CoinCurrency")); y += 22;
             text(g, Component.translatable("jem.smp.settlement.unpaid_label"), bodyX + 4, y, MUTED, bodyWidth / 3);
-            com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getLong("UnpaidPayroll"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, RED); y += 22;
+            ServerCurrencyPresentation.draw(g, font, row.getLong("UnpaidPayroll"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, RED, row.getBoolean("CoinCurrency")); y += 22;
         } else {
             var pos = net.minecraft.core.BlockPos.of(row.getLong("position"));
             text(g, Component.literal(pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " · ").append(dimensionNameComponent(row.getString("dimension"))), bodyX + 4, y, PEACH, bodyWidth - 8); y += 24;
@@ -1235,7 +1235,7 @@ public final class SmpScreen extends Screen {
             text(g, Component.translatable("jem.smp.settlement.expand_hint"), bodyX + 4, y, MUTED, bodyWidth - 8); y += 26;
             if (row.contains("ExpansionCostPerBlock")) {
                 text(g, Component.translatable("jem.smp.settlement.expansion_price"), bodyX + 4, y, MUTED, bodyWidth / 2);
-                com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getLong("ExpansionCostPerBlock"), bodyX + bodyWidth / 2, y - 4, bodyWidth / 2 - 8, CREAM); y += 22;
+                ServerCurrencyPresentation.draw(g, font, row.getLong("ExpansionCostPerBlock"), bodyX + bodyWidth / 2, y - 4, bodyWidth / 2 - 8, CREAM, row.getBoolean("CoinCurrency")); y += 22;
             }
             if (pendingSettlementDelete) {
                 text(g, Component.translatable("jem.smp.settlement.delete_warning", row.getString("name")), bodyX + 4, y, RED, bodyWidth - 8); y += 28;
@@ -1267,11 +1267,11 @@ public final class SmpScreen extends Screen {
                     text(g, Component.translatable("jem.smp.settlement.loyalty." + person.getString("Loyalty").toLowerCase(Locale.ROOT)), bodyX + 36, y + 35, RED, bodyWidth - 126);
                 if (person.contains("Wage")) {
                     text(g, Component.translatable("jem.smp.settlement.payroll_label"), bodyX + 36, y + 50, MUTED, 78);
-                    com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, person.getLong("Wage"), bodyX + 116, y + 46, Math.max(32, bodyWidth - 206), CREAM);
+                    ServerCurrencyPresentation.draw(g, font, person.getLong("Wage"), bodyX + 116, y + 46, Math.max(32, bodyWidth - 206), CREAM, detail.getBoolean("CoinCurrency"));
                 }
                 if (person.getString("Loyalty").equals("DEFEATED") && person.contains("HireCost")) {
                     text(g, Component.translatable("jem.smp.buyback"), bodyX + 36, y + 67, MUTED, 78);
-                    com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, person.getLong("HireCost"), bodyX + 116, y + 63, Math.max(32, bodyWidth - 206), CREAM);
+                    ServerCurrencyPresentation.draw(g, font, person.getLong("HireCost"), bodyX + 116, y + 63, Math.max(32, bodyWidth - 206), CREAM, detail.getBoolean("CoinCurrency"));
                 }
             }
             int bx = bodyX + bodyWidth - 82;
@@ -1357,11 +1357,11 @@ public final class SmpScreen extends Screen {
         if (tab.equals("recruits")) {
             if (row.contains("HireCost")) {
                 text(g, Component.translatable("jem.smp.buyback"), bodyX + 4, y, MUTED, bodyWidth / 3);
-                com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getLong("HireCost"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM); y += 22;
+                ServerCurrencyPresentation.draw(g, font, row.getLong("HireCost"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM, row.getBoolean("CoinCurrency")); y += 22;
             }
             if (row.contains("Wage")) {
                 text(g, Component.translatable("jem.smp.settlement.payroll_label"), bodyX + 4, y, MUTED, bodyWidth / 3);
-                com.siirio.jemeconomy.client.CoinPriceRenderer.draw(g, font, row.getLong("Wage"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM); y += 22;
+                ServerCurrencyPresentation.draw(g, font, row.getLong("Wage"), bodyX + bodyWidth / 3, y - 4, bodyWidth * 2 / 3 - 8, CREAM, row.getBoolean("CoinCurrency")); y += 22;
             }
         }
         for (String key :

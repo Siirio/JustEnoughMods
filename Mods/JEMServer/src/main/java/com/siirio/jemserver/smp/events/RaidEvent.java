@@ -31,7 +31,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(modid="jem_server",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid="jem_server")
 public final class RaidEvent {
     public static final String EVENT_ID = "jem_smp_raid";
     private static final String FORGE_SPAWN_TYPE="forge:spawn_type";
@@ -65,7 +65,7 @@ public final class RaidEvent {
     }
 
     public static boolean prepare(MinecraftServer server, CompoundTag row) {
-        if(row.getBoolean("combatStarted")) return false;
+        if(!EventRuntime.available(server, row) || row.getBoolean("combatStarted")) return false;
         if(!row.hasUUID("targetBoss")&&!row.contains("raidArenaId")) {
             var arena=RaidArenaApi.availableArena(server,candidate->StructureStaging.arenaAvailable(server,candidate.id())).orElse(null);
             return arena==null||claimArena(server,row,arena.id(),arena.entityType(),
@@ -179,6 +179,7 @@ public final class RaidEvent {
     public static void tick(TickEvent.ServerTickEvent tick) {
         if(tick.phase!=TickEvent.Phase.END||!com.siirio.jemserver.smp.SmpEnvironment.active(tick.getServer())||tick.getServer().getTickCount()%10!=0) return;
         for(CompoundTag event:SmpData.get(tick.getServer()).all("events")) {
+            if (!EventRuntime.available(tick.getServer(), event)) continue;
             if(!event.getString("state").equals("ACTIVE")||!event.getString("activity").equals("BOSS_RAID")) continue;
             if(!event.getBoolean("combatStarted")) {prepare(tick.getServer(),event);continue;}
             ServerLevel level=EventRegions.level(tick.getServer(),event);
@@ -349,7 +350,7 @@ public final class RaidEvent {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity boss)
                 || !boss.getPersistentData().hasUUID(EVENT_ID) || WorldTierApi.profile(boss).isEmpty()) return;
         var row = SmpData.get(level.getServer()).find("events", boss.getPersistentData().getUUID(EVENT_ID));
-        if (row != null && row.getString("state").equals("ACTIVE") && row.getLong("ends") > System.currentTimeMillis()) return;
+        if (EventRuntime.available(level.getServer(), row) && row.getString("state").equals("ACTIVE") && row.getLong("ends") > System.currentTimeMillis()) return;
         if(HostedEncounterApi.isRaid(boss)&&!HostedEncounterApi.wasNativeBeforeRaid(boss)) {
             String arenaId=WorldTierApi.encounter(boss).map(encounter->encounter.arenaId()).orElse(null);
             if(arenaId!=null) RaidArenaApi.queueRaidCompletion(level.getServer(),arenaId,boss.getUUID(),BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()));

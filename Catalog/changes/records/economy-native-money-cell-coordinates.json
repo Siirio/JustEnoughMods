@@ -50,15 +50,15 @@
     ]
   },
   "cause": {
-    "owner": "JEMCurrencyCore native monetary presentation and existing guarded result preview",
+    "owner": "JEMEconomy",
     "kind": "user_requested_native_gui_bug_fix",
     "source_files": [
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantOfferTooltipMixin.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
-      "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
-      "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json"
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantOfferTooltipMixin.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+      "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json"
     ]
   },
   "rationale": {
@@ -77,6 +77,41 @@
       "commit": "SELF",
       "action": "replace",
       "summary": "Correct native monetary row origin19 instead20, cell ownership and Coin-only tooltips; user requests existing five denominations without replacing native trade UI."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/mixin/MerchantOfferTooltipMixin.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMCurrencyCore/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMCurrencyCore/src/main/resources/jem_currency_core.mixins.json",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantOfferTooltipMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMCurrencyCore native monetary presentation and existing guarded result preview",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantScreenMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/MerchantOfferTooltipMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/NativeTradeScreenAccess.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/CoinPriceRenderer.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java",
+        "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json"
+      ]
     }
   ],
   "impacts": {

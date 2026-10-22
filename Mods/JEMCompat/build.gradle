@@ -26,13 +26,8 @@ repositories {
     mavenCentral()
 }
 
-def instancePath = providers.gradleProperty('jem_instance')
-        .orElse(providers.environmentVariable('JEM_INSTANCE'))
-        .orNull
-
-if (instancePath == null || instancePath.isBlank()) {
-    throw new GradleException('Set -Pjem_instance=<path> or JEM_INSTANCE before building JEMCompat')
-}
+def instanceOverride = findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
+def instancePath = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')
 
 def installedMod = { String pattern ->
     def matches = fileTree(dir: file("${instancePath}/mods"), include: pattern).files
@@ -95,7 +90,6 @@ dependencies {
     compileOnly fg.deobf(files(installedMod('framework-forge-*.jar')))
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
     compileOnly files('../JEMAchievementGuide/build/classes/java/main')
-    compileOnly files('../JEMPackCore/build/classes/java/main')
     compileOnly files('../JEMIdentity/build/classes/java/main')
     compileOnly files('../JEMWorldBossTiers/build/classes/java/main')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
@@ -170,12 +164,3 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 tasks.withType(Test).configureEach { enabled = false }
-
-apply from: '../JEMMenuSupport/embed.gradle'
-
-// Explicit full-economy compatibility regression; does not start Minecraft.
-tasks.register('compatTradePolicyContractTest', JavaExec) {
-    dependsOn testClasses
-    classpath = sourceSets.test.runtimeClasspath
-    mainClass = 'com.siirio.jemcompat.compat.fabric.FabricTradeMixinPolicyTest'
-}

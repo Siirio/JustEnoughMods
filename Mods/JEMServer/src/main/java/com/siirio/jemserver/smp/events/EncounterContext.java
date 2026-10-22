@@ -335,7 +335,7 @@ public final class EncounterContext {
 
     public static CompoundTag activeFor(ServerPlayer player) {
         for (var row : SmpData.get(player.server).all("events"))
-            if (row.getString("state").equals("ACTIVE") && row.getBoolean("combatStarted")
+            if (EventRuntime.available(player.server, row) && row.getString("state").equals("ACTIVE") && row.getBoolean("combatStarted")
                     && new EncounterContext(row).isParticipant(player.getUUID())) return row;
         return null;
     }
@@ -343,6 +343,7 @@ public final class EncounterContext {
     public static CompoundTag reconnectFor(ServerPlayer player) {
         CompoundTag latest = null;
         for (var row : SmpData.get(player.server).all("events")) {
+            if (!EventRuntime.available(player.server, row)) continue;
             if (!new EncounterContext(row).isParticipant(player.getUUID())) continue;
             var member = SmpRecords.members(row).getCompound(player.getStringUUID());
             if (!member.contains(DISCONNECTED_AT) && !member.getBoolean(ABSENCE_DEFEAT_PENDING)) continue;

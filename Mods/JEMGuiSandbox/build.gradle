@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+group = 'com.siirio.jemguisandbox'
+version = '1.0.0'
+base { archivesName = 'jem-gui-sandbox' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: 'official', version: '1.20.1' }
+repositories { mavenCentral() }
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    // Existing sandbox's bounded, detached-entity preview renderer; no gameplay API.
+    compileOnly files("${System.getenv('APPDATA')}/.minecraft/versions/jem sandbox/mods/jem-races-1.1.0-sandbox.jar")
+}
+sourceSets.main.java.srcDir 'build/screen-sources'
+sourceSets.main.resources.srcDir 'build/screen-resources'
+tasks.register('prepareScreens', Exec) {
+    workingDir projectDir
+    commandLine 'python', 'prepare.py'
+}
+tasks.named('compileJava') { dependsOn 'prepareScreens' }
+tasks.named('processResources') { dependsOn 'prepareScreens' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(Test).configureEach { enabled = false }
+jar { finalizedBy 'reobfJar' }

@@ -26,13 +26,34 @@ public final class JemEconomy {
         EconomyMenus.MENUS.register(modBus);
         modBus.addListener(JemEconomy::addCreativeItems);
 
-        if (net.minecraftforge.fml.loading.FMLEnvironment.dist == net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER) {
+        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER,
+                com.siirio.jemeconomy.config.EconomyConfig.SPEC);
+        modBus.addListener(JemEconomy::configReloaded);
+        com.siirio.jemcurrency.CurrencyItems.ITEMS.register(modBus);
+        EconomyNetwork.register();
+        MinecraftForge.EVENT_BUS.register(EconomyNetwork.class);
+        MinecraftForge.EVENT_BUS.register(ItemPolicyRegistry.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.policy.EconomyRecipePolicy.class);
+        MinecraftForge.EVENT_BUS.register(CoinMerchantRuntime.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.physical.CoinMigration.class);
+        MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
+        MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.full.audit.EconomyRuntimeExport.class);
+    }
 
-
-            MinecraftForge.EVENT_BUS.register(MarketRuntime.class);
-
-            MinecraftForge.EVENT_BUS.register(com.siirio.jemeconomy.full.audit.EconomyRuntimeExport.class);
-        }
+    private static void configReloaded(net.minecraftforge.fml.event.config.ModConfigEvent.Reloading event) {
+        if (event.getConfig().getSpec() != com.siirio.jemeconomy.config.EconomyConfig.SPEC) return;
+        var server = net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
+        if (server == null) return;
+        server.execute(() -> {
+            com.siirio.jemeconomy.policy.EconomyRecipePolicy.reconcile(server);
+            boolean enabled = com.siirio.jemeconomy.api.EconomyApi.isEnabled(server);
+            for (var player : server.getPlayerList().getPlayers()) {
+                if (!enabled && (player.containerMenu instanceof com.siirio.jemeconomy.api.CurrencyContainerAccess
+                        || player.containerMenu instanceof com.siirio.jemeconomy.merchant.NativeMerchantAccess access && access.jem$session() != null))
+                    player.closeContainer();
+                EconomyNetwork.sendFeature(player);
+            }
+        });
     }
 
     private static void addCreativeItems(BuildCreativeModeTabContentsEvent event) {

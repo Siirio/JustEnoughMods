@@ -25,12 +25,12 @@
     ]
   },
   "cause": {
-    "owner": "JEMPackCore guide manifest",
+    "owner": "JEMAchievementGuide",
     "kind": "source",
     "source_files": [
-      "Mods/JEMPackCore/src/main/advancements/manifest.json",
-      "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
-      "Mods/JEMPackCore/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+      "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
     ]
   },
   "rationale": {
@@ -58,6 +58,32 @@
         "Mods/JEMPackCore/src/main/advancements/manifest.json",
         "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
         "Mods/JEMPackCore/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMPackCore/src/main/advancements/manifest.json",
+        "Mods/JEMPackCore/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+        "Mods/JEMPackCore/src/main/resources/assets/jem_advancements/advancement_guides/index.json",
+        "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "relocate_current_owner_label",
+      "summary": "Current source owner label follows the existing relocated module causes; prior label retained as historical evidence.",
+      "previous_owner": "JEMPackCore guide manifest",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
       ]
     }
   ],

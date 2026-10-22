@@ -16,6 +16,39 @@ public final class CampaignApi {
     private CampaignApi() {
     }
 
+    public static boolean isActive(MinecraftServer server) { return CampaignSavedData.get(server).active(); }
+    public static boolean hasRequiredContent() { return com.siirio.jemtwelveeyes.CampaignAvailability.missingRegistrations().isEmpty(); }
+    public static boolean isAvailable(MinecraftServer server) { return com.siirio.jemtwelveeyes.CampaignAvailability.playable(server); }
+    public static boolean mainDefeated(MinecraftServer server, ResourceLocation entity) {
+        return com.siirio.jemcompat.gate.CampaignBoss.byEntity(entity).isPresent() && CampaignSavedData.get(server).defeated(entity);
+    }
+    public static boolean complete(MinecraftServer server) {
+        return isAvailable(server) && java.util.Arrays.stream(com.siirio.jemcompat.gate.CampaignBoss.values())
+                .allMatch(boss -> CampaignSavedData.get(server).defeated(boss.entity()));
+    }
+
+    public static net.minecraft.network.chat.Component startBlockReason(MinecraftServer server, ResourceLocation entity) {
+        if (com.siirio.jemtwelveeyes.CampaignAvailability.gatesPortal(server)
+                && entity.equals(com.siirio.jemtwelveeyes.postend.PostEndTarget.OBLITERATOR.entity())
+                && !com.siirio.jemtwelveeyes.postend.PostEndEvents.ready(server)) {
+            return net.minecraft.network.chat.Component.translatable("message.jemcompat.post_end.required_bosses");
+        }
+        if (!locked(server, entity)) return null;
+        if (!com.siirio.jemtwelveeyes.CampaignAvailability.playable(server)) {
+            return net.minecraft.network.chat.Component.translatable("message.jemcompat.campaign.unavailable",
+                    String.join(", ", com.siirio.jemtwelveeyes.CampaignAvailability.missing(server)));
+        }
+        var data = CampaignSavedData.get(server);
+        var boss = com.siirio.jemcompat.gate.CampaignBoss.byEntity(entity).orElseThrow();
+        var names = net.minecraft.network.chat.Component.empty();
+        boss.prerequisites().stream().filter(value -> !data.prerequisiteDefeated(value)).forEach(value -> {
+            if (!names.getString().isEmpty()) names.append(", ");
+            names.append(net.minecraft.network.chat.Component.translatable(
+                    net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.get(value.entity()).getDescriptionId()));
+        });
+        return net.minecraft.network.chat.Component.translatable("message.jemcompat.campaign.required", names);
+    }
+
     public static boolean unlocked(ServerPlayer player, ResourceLocation entity) {
         return CampaignGateEvents.unlocked(player, entity);
     }

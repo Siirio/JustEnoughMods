@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="jem_gui_sandbox"
+version="1.0.0"
+displayName="JEM GUI Sandbox"
+displayTest="IGNORE_ALL_VERSION"
+description='''Existing JEM screens with isolated, in-memory demonstration data. Development profile only.'''
+[[dependencies.jem_gui_sandbox]]
+modId="forge"
+mandatory=true
+versionRange="[47.4,)"
+ordering="NONE"
+side="CLIENT"
+[[dependencies.jem_gui_sandbox]]
+modId="jem_visual_sandbox"
+mandatory=true
+versionRange="[1.1.0]"
+ordering="AFTER"
+side="CLIENT"
+[[dependencies.jem_gui_sandbox]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="CLIENT"

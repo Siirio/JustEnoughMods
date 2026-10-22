@@ -41,7 +41,7 @@ public final class RaceService {
         }
         RaceRecord record = existing.get();
         if (record.choiceRequired()) {
-            com.siirio.jemroles.trait.RaceAbilities.logout(player);
+            com.siirio.jemvisualsandbox.workbench.RaceExperience.selectionChanged(player);
             if (record.race() != next) record.change(next, false);
             record.confirmChoice(); data.changed();
             MinecraftForge.EVENT_BUS.post(new RaceChosenEvent(player, next));
@@ -51,7 +51,7 @@ public final class RaceService {
         boolean testOverride = testRaceReselect(player.getServer());
         long now = player.getServer().overworld().getGameTime();
         if (!testOverride && record.remainingReselectTicks(now) > 0L) return Result.CHANGE_LOCKED;
-        com.siirio.jemroles.trait.RaceAbilities.logout(player);
+        com.siirio.jemvisualsandbox.workbench.RaceExperience.selectionChanged(player);
         record.change(next, false);
         if (!testOverride) record.beginReselectWait(now);
         data.changed();
@@ -88,7 +88,7 @@ public final class RaceService {
             return Result.CHOSEN;
         }
         if (record.race() == next) return Result.UNCHANGED;
-        com.siirio.jemroles.trait.RaceAbilities.logout(player);
+        com.siirio.jemvisualsandbox.workbench.RaceExperience.selectionChanged(player);
         record.change(next, false);
         data.changed();
         MinecraftForge.EVENT_BUS.post(new RaceChangedEvent(player, next));

@@ -25,8 +25,6 @@ public final class AircraftPolicy {
     private AircraftPolicy() { }
 
     public static boolean enabled(Entity entity) {
-        if (!entity.level().isClientSide) return entity.getServer() != null && entity.getServer().isDedicatedServer();
-        // Remote clients predict native vehicle motion. An integrated server retains upstream behavior.
-        return ServerLifecycleHooks.getCurrentServer() == null;
+        return entity.level().isClientSide || entity.getServer() != null;
     }
 }

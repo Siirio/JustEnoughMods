@@ -220,6 +220,7 @@ public final class BloodMoonSetPieces {
     }
 
     public static boolean survivingTwin(Creeper creeper) {
+        if (!EventRuntime.enabled(creeper.getServer())) return false;
         var data=creeper.getPersistentData();
         if(!data.getBoolean(TWIN)) return false;
         int detonations=data.getInt(TWIN_DETONATIONS);
@@ -259,7 +260,7 @@ public final class BloodMoonSetPieces {
                 resumeRestoration(level,row);
                 SmpData.get(server).changed(row);
             }
-            if(!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) continue;
+            if(!EventRuntime.enabled(server)||!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) continue;
             Scenario selected=current(row);
             if(selected==null) continue;
             tickMechanics(level,row,selected);
@@ -268,6 +269,7 @@ public final class BloodMoonSetPieces {
 
     @SubscribeEvent
     public static void exposedDamage(LivingHurtEvent event) {
+        if (!EventRuntime.enabled(event.getEntity().getServer())) return;
         if(event.getEntity().level().isClientSide||event.getEntity().getPersistentData().getLong(EXPOSED_UNTIL)<event.getEntity().level().getGameTime()) return;
         event.setAmount(event.getAmount()*1.5F);
     }

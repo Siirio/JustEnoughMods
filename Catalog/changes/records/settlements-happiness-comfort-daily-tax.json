@@ -25,7 +25,8 @@
   ],
   "conditions": [
     {
-      "authority": "Production dedicated server, explicit standalone profile integrated logical server; native recruit morale remains upstream-owned. Local delivery requested for jem sandbox."
+      "runtime": "One universal Settlements implementation on logical integrated/dedicated servers; exact town/resident/native-content admission retained. Coin treasury only while optional Economy is enabled, otherwise independent EmeraldTreasury. Native optional Recruits/Xaero adapters require actual installed dependency; Workers excluded.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -125,6 +126,46 @@
       "commit": "SELF",
       "action": "implement",
       "summary": "Implement shared90 plus personal10 happiness, independent bed/roof/room complaints, occupied-street comfort, native golem/recruit guards, four-page settlement GUI and durable daily resident/comfort taxes.",
+      "source_files": [
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/HousingInspector.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/jade/SettlementJadePlugin.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/EmeraldTreasury.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/currency/SettlementCurrency.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortObservation.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityInspection.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/GuardObservationService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/HappinessService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentConditions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentialRooms.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementNetwork.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementViewDetails.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/SettlementEconomyConfig.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/TaxDurability.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/resident/ResidentMood.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/SettlementRuntime.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
+        "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "authority": "Production dedicated server, explicit standalone profile integrated logical server; native recruit morale remains upstream-owned. Local delivery requested for jem sandbox."
+        }
+      ],
       "source_files": [
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
         "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",

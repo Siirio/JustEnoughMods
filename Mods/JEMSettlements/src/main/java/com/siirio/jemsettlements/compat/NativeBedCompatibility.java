@@ -21,7 +21,6 @@ public final class NativeBedCompatibility {
     private static volatile Set<BlockState> supportedHeads=Set.of(),homeStates=Set.of();
     private NativeBedCompatibility() { }
     @SubscribeEvent public static void setup(FMLCommonSetupEvent event) {
-        if(!com.siirio.jemsettlements.SettlementBuild.STANDALONE&&net.minecraftforge.fml.loading.FMLEnvironment.dist!=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)return;
         event.enqueueWork(NativeBedCompatibility::extendNativeHome);
     }
     private static void extendNativeHome() {
@@ -51,7 +50,7 @@ public final class NativeBedCompatibility {
     public static final class ServerLifecycle {
         private ServerLifecycle() { }
         @SubscribeEvent public static void beforeStart(net.minecraftforge.event.server.ServerAboutToStartEvent event) {
-            if(com.siirio.jemsettlements.SettlementBuild.STANDALONE||event.getServer().isDedicatedServer())extendNativeHome();
+            extendNativeHome();
         }
     }
 }

@@ -11,7 +11,8 @@
   ],
   "conditions": [
     {
-      "scope": "Explicitly selected standalone jem sandbox profile and integrated solo world only; never canonical Client/ManagedPack or shared-server gameplay."
+      "runtime": "One universal Races production artifact on logical integrated/dedicated servers; RaceService saved-data identity and earned progression remain authoritative. Production development controls are inert; optional adapters require installed dependencies.",
+      "acceptance": "Manual gameplay/visual acceptance pending."
     }
   ],
   "precedence": {
@@ -37,15 +38,15 @@
       "Mods/JEMVisualSandboxR3/build.gradle",
       "Mods/JEMVisualSandboxR3/prepare.py",
       "Mods/JEMVisualSandboxR3/settings.gradle",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java",
-      "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bark.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bud.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json",
-      "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh"
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java",
+      "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/bark.png",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/bud.png",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json",
+      "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh"
     ]
   },
   "rationale": {
@@ -64,6 +65,62 @@
       "commit": "SELF",
       "action": "add",
       "summary": "R3 sandbox connection authorized; no production visual approval or gameplay change."
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_owner_relocation",
+      "summary": "User-approved universal source consolidation: current cause/selector paths now follow the actual domain owners. Deleted embedding/build-profile/test/source owners are retired; previous introduced/history entries remain exact historical evidence. This entry changes ownership references, not original item prices, balances, identities or earlier observations. Universal behavior is recorded by universal-standalone ownership/domain records.",
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java",
+        "Mods/JEMVisualSandboxR3/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bark.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/bud.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json",
+        "Mods/JEMVisualSandboxR3/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh",
+        "Mods/JEMVisualSandboxR3/bake.mjs",
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMVisualSandboxR3/prepare.py",
+        "Mods/JEMVisualSandboxR3/settings.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java",
+        "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/bark.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/bud.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh"
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "universal_runtime_activation",
+      "summary": "Update the current condition to the approved universal logical-server policy. Exact former conditions retained here as historical evidence; native formulas, identity and source histories remain unchanged.",
+      "previous_conditions": [
+        {
+          "scope": "Explicitly selected standalone jem sandbox profile and integrated solo world only; never canonical Client/ManagedPack or shared-server gameplay."
+        }
+      ],
+      "source_files": [
+        "Mods/JEMVisualSandboxR3/bake.mjs",
+        "Mods/JEMVisualSandboxR3/build.gradle",
+        "Mods/JEMVisualSandboxR3/prepare.py",
+        "Mods/JEMVisualSandboxR3/settings.gradle",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/r3/BloomR3Mesh.java",
+        "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/lang/ru_ru.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/bark.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/bud.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/foliage.png",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/provenance.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_visual_sandbox/r3/verdant_grasp.mesh"
+      ]
     }
   ],
   "impacts": {
