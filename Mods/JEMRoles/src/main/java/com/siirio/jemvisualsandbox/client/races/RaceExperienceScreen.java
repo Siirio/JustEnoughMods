@@ -19,6 +19,7 @@ import org.lwjgl.glfw.GLFW;
 
 /** A live skin in an unlit void, followed by an acknowledged, real-time 3D entry. */
 public final class RaceExperienceScreen extends Screen {
+    private final RaceStageRenderer stageRenderer = new RaceStageRenderer();
     private static final String[] RACES = {"ancestors", "void_walkers", "born_in_bloom", "infected_by_sculk", "nether_hearteds"};
     private static final int[] ACCENTS = {0xE6D29D, 0xBBA6EE, 0x9ED7A1, 0x7CD6D5, 0xF1AB76};
     private static final long ENTRY_MS = 3000;
@@ -267,7 +268,7 @@ public final class RaceExperienceScreen extends Screen {
     }
 
     private void renderSkin(GuiGraphics g, float entry, float reveal) {
-        RaceStageRenderer.render(g, width, height, panelLeft(), ACCENTS[race], entry, reveal,
+        stageRenderer.render(g, width, height, panelLeft(), ACCENTS[race], entry, reveal,
                 smooth(elapsed(switchedAt) / 340F), turnDirection);
     }
 
@@ -512,6 +513,7 @@ public final class RaceExperienceScreen extends Screen {
     @Override public void onClose() { if (shouldCloseOnEsc()) super.onClose(); }
     @Override public boolean isPauseScreen() { return false; }
     @Override public void removed() {
+        stageRenderer.dispose();
         abilityPreview.dispose();
         if (hudCaptured) minecraft.options.hideGui = hiddenHud;
         if (minecraft.player != null && minecraft.level != null) SandboxNetwork.cinematic(false);

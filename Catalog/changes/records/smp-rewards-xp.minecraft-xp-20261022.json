@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "change_id": "smp-rewards-xp.minecraft-xp-20261022",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:experience_orb"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:experience_bottle"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "user_requested_universal_amendment",
+    "priority": 1250,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Logical server x2 ordinary positive Minecraft XP: direct points and orb intake before Mending; remainder transfer not doubled twice; downstream modifiers retained; saved XP and race/profession XP excluded",
+    "modifiers": [
+      {
+        "property": "experience.minecraft_baseline",
+        "operation": "replace",
+        "before": "No shared universal x2 owner",
+        "after": "Logical server x2 ordinary positive Minecraft XP: direct points and orb intake before Mending; remainder transfer not doubled twice; downstream modifiers retained; saved XP and race/profession XP excluded"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMWorldBossTiers ExperienceRewardApi",
+    "kind": "approved_architecture_implementation",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/ExperienceRewardApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ExperienceOrbBaselineMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Logical server x2 ordinary positive Minecraft XP: direct points and orb intake before Mending; remainder transfer not doubled twice; downstream modifiers retained; saved XP and race/profession XP excluded",
+    "decision_source": "User authorized restoring abd0a4f9 and implementing amended plan on 2026-10-22; receipt protocol, native detached preview and quick-take slot transport are implementation decisions."
+  },
+  "introduced": {
+    "date": "2026-10-22",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Logical server x2 ordinary positive Minecraft XP: direct points and orb intake before Mending; remainder transfer not doubled twice; downstream modifiers retained; saved XP and race/profession XP excluded"
+  },
+  "history": [
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Logical server x2 ordinary positive Minecraft XP: direct points and orb intake before Mending; remainder transfer not doubled twice; downstream modifiers retained; saved XP and race/profession XP excluded"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "inventory",
+      "loot",
+      "progression",
+      "multiplayer",
+      "client_server_contract"
+    ],
+    "relations": [],
+    "notes": [
+      "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch."
+    ],
+    "unresolved": [
+      "Runtime GUI layout, first race screen and gameplay acceptance not observed."
+    ]
+  }
+}

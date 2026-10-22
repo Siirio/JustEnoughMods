@@ -35,6 +35,7 @@ public final class BossHostingPrompt {
     }
 
     public static void prompt(ServerPlayer player, UUID id) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         if (!(player.serverLevel().getEntity(id) instanceof LivingEntity boss)) throw new SmpActionFailure("unavailable");
         SmpRecords.require(HostedEncounterApi.canHost(boss), "unavailable");
         var raid = EventScheduler.active(player.server, "BOSS_RAID");

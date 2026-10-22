@@ -85,7 +85,6 @@ public final class RaidEvent {
         if(boss==null) return !row.hasUUID("targetBoss");
         if(!BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString().equals(row.getString("bossType"))
                 ||!HostedEncounterApi.prepareRaid(boss)) return false;
-        applyRaidScale(boss);
         boss.getPersistentData().putUUID(EVENT_ID,row.getUUID("id"));
         boolean changed=!row.hasUUID("targetBoss")||!row.getUUID("targetBoss").equals(boss.getUUID())
                 ||row.getLong("position")!=boss.blockPosition().asLong();
@@ -97,6 +96,7 @@ public final class RaidEvent {
 
     public static boolean claimArena(MinecraftServer server, CompoundTag event, String arenaId,
                                      ResourceLocation bossType, String dimension, BlockPos center, BoundingBox bounds) {
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return false;
         if (event.getBoolean("combatStarted")) return false;
         if(event.contains("raidArenaId")) return event.getString("raidArenaId").equals(arenaId)
                 &&prepare(server,event);
@@ -113,6 +113,7 @@ public final class RaidEvent {
 
 
     public static void start(ServerPlayer host, CompoundTag party, Collection<UUID> agreed) {
+        SmpRecords.require(com.siirio.jemserver.smp.SmpEnvironment.active(host), "unavailable");
         SmpRecords.require(party.hasUUID("eventId") && !party.hasUUID("bossEntity"), "unavailable");
         var data = SmpData.get(host.server);
         var event = data.find("events", party.getUUID("eventId"));
@@ -161,6 +162,7 @@ public final class RaidEvent {
         } finally {
             if (!started) {
                 HostedEncounterApi.cancel(boss);
+                restoreRaidScale(boss);
                 HostedEncounterApi.prepareRaid(boss);
                 HostedEncounterApi.hold(boss);
             }
@@ -320,6 +322,7 @@ public final class RaidEvent {
     }
 
     public static void resetAttempt(MinecraftServer server, CompoundTag event) {
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return;
         discardAllies(server,event);
         if (!event.hasUUID("bossEntity")) {
             return;
@@ -334,7 +337,7 @@ public final class RaidEvent {
         var level = EventRegions.level(server, event);
         var boss = level == null ? null : level.getEntity(bossId);
         if(event.hasUUID("targetBoss")) {
-            if(boss instanceof LivingEntity living&&living.isAlive()) {HostedEncounterApi.prepareRaid(living);applyRaidScale(living);HostedEncounterApi.hold(living);}
+            if(boss instanceof LivingEntity living&&living.isAlive()) {HostedEncounterApi.prepareRaid(living);restoreRaidScale(living);HostedEncounterApi.hold(living);}
             return;
         }
         if (boss != null) {
@@ -349,6 +352,12 @@ public final class RaidEvent {
     public static void loaded(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity boss)
                 || !boss.getPersistentData().hasUUID(EVENT_ID) || WorldTierApi.profile(boss).isEmpty()) return;
+        if (!com.siirio.jemserver.smp.SmpEnvironment.active(level.getServer())) {
+            restoreRaidScale(boss);
+            com.siirio.jemworldbosstiers.encounter.HostedEncounters.restoreNative(boss);
+            boss.getPersistentData().remove(EVENT_ID);
+            return;
+        }
         var row = SmpData.get(level.getServer()).find("events", boss.getPersistentData().getUUID(EVENT_ID));
         if (EventRuntime.available(level.getServer(), row) && row.getString("state").equals("ACTIVE") && row.getLong("ends") > System.currentTimeMillis()) return;
         if(HostedEncounterApi.isRaid(boss)&&!HostedEncounterApi.wasNativeBeforeRaid(boss)) {

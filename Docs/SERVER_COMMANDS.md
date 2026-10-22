@@ -10,7 +10,7 @@ Wallet actions move to Shipping's money tab; the older “Wallet” navigation d
 
 ## SMP and events
 
-`smp` — единственная публичная команда SMP: она открывает главную навигацию. Рынок, Кошелёк, профили, группы, события, магазины, поселения, рекруты, награды, голосование и выход из попытки доступны через серверно авторизованные действия GUI.
+`smp` is the dedicated-only SMP route to parties/events and independent domain screens. Profiles and Rewards tabs are retired. `/market` opens the Economy-owned market directly on either host type when Economy is enabled and identity is authorized. Personal item rewards are claimed through the normal inventory E panel, without a command or SMP dependency.
 
 - `jem event start <event> [x y z]` — запустить реальный тип из `WeeklySchedule.TYPES`; позиция разрешена только для Resource Rush и Blood Moon, а Boss Raid сам выбирает ближайшую допустимую зарегистрированную арену.
 - `jem event stop <uuid>` — остановить ровно один незавершённый event через общий cleanup; автодополнение показывает UUID активных событий.

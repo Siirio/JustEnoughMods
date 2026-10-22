@@ -24,7 +24,6 @@ public final class DomainFeatures {
         result.putBoolean("settlements", loaded("jem_settlements"));
         result.putBoolean("recruits", loaded("jem_settlements") && loaded("recruits"));
         result.putBoolean("events", com.siirio.jemserver.smp.events.EventRuntime.enabled(server));
-        result.putBoolean("prizes", loaded("jem_world_boss_tiers"));
         return result;
     }
 }

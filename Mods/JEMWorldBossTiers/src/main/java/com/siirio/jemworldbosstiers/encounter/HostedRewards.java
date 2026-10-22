@@ -37,22 +37,12 @@ public final class HostedRewards extends SavedData {
     }
 
     public void distribute(MinecraftServer server, List<UUID> recipients, List<ItemStack> loot, String sourceId) {
-        if (recipients.isEmpty()) return;
-        java.util.Map<UUID, java.util.ArrayList<ItemStack>> shares = new java.util.LinkedHashMap<>();
-        recipients.forEach(id -> shares.put(id, new java.util.ArrayList<>()));
-        int cursor = 0;
-        for (ItemStack stack : loot) {
-            int quotient = stack.getCount() / recipients.size();
-            int remainder = stack.getCount() % recipients.size();
-            for (int index = 0; index < recipients.size(); index++) {
-                int amount = quotient + (index < remainder ? 1 : 0);
-                if (amount > 0) shares.get(recipients.get((cursor + index) % recipients.size()))
-                        .add(stack.copyWithCount(amount));
-            }
-            cursor = (cursor + remainder) % recipients.size();
-        }
-        shares.forEach((id, items) -> PendingRewardContainer.enqueue(server, id,
-                sourceId, "reward.jem_world_boss_tiers.boss_loot", items));
+        var grants = new java.util.LinkedHashSet<>(recipients).stream()
+                .map(recipient -> new com.siirio.jemrewards.RewardGrant(recipient,
+                        "reward.jem_world_boss_tiers.boss_loot",
+                        List.of(new com.siirio.jemrewards.RewardGroup("reward.jem_world_boss_tiers.native_loot", loot))))
+                .toList();
+        com.siirio.jemrewards.PendingRewardContainer.enqueueBatch(server, sourceId, grants);
     }
 
     public void deliver(ServerPlayer player) {

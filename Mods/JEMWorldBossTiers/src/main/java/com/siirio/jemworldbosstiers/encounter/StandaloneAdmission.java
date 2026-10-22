@@ -32,7 +32,7 @@ public final class StandaloneAdmission {
 
     @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
     public static void attack(LivingAttackEvent event) {
-        if (!ownsAdmission() || !(event.getSource().getEntity() instanceof ServerPlayer player)
+        if (!ownsAdmission() || !HostedEncounterApi.enabled(event.getEntity().getServer()) || !(event.getSource().getEntity() instanceof ServerPlayer player)
                 || !HostedEncounterApi.canHost(event.getEntity()) || HostedEncounters.isHosted(event.getEntity())) return;
         event.setCanceled(true);
         LivingEntity boss = event.getEntity();
@@ -46,7 +46,7 @@ public final class StandaloneAdmission {
         PENDING.put(player.getUUID(), pending);
         Component reason = CampaignAdmission.blocked(player, boss);
         TierNetwork.openAdmission(player, pending.token(), boss.getDisplayName(), reason,
-                reason == null && raidAllowed(player, boss));
+                false);
     }
 
     private static boolean raidAllowed(ServerPlayer player, LivingEntity boss) {
@@ -62,7 +62,7 @@ public final class StandaloneAdmission {
     }
 
     public static void choose(ServerPlayer player, UUID token, int choice) {
-        if (!ownsAdmission()) return;
+        if (!ownsAdmission() || !HostedEncounterApi.enabled(player.server)) return;
         Pending pending = PENDING.get(player.getUUID());
         if (pending == null || !pending.token().equals(token)) return;
         PENDING.remove(player.getUUID());
@@ -73,16 +73,12 @@ public final class StandaloneAdmission {
                 || player.distanceToSqr(boss) > 256) return;
         Component blocked = CampaignAdmission.blocked(player, boss);
         if (blocked != null) { player.sendSystemMessage(blocked); return; }
-        boolean raid = choice == 2;
-        var arena = raid ? RaidArenaApi.arena(boss).orElse(null) : null;
-        if (raid && (!raidAllowed(player, boss) || !HostedEncounterApi.prepareRaid(boss))) return;
+        if (choice != 1) return;
         boss.getPersistentData().putBoolean("jem_solo", true);
-        if (!HostedEncounterApi.start(boss, List.of(player.getUUID()), raid, arena == null ? null : arena.bounds())) {
-            if (raid) HostedEncounterApi.restorePreparedRaid(boss);
+        if (!HostedEncounterApi.start(boss, List.of(player.getUUID()), false)) {
             HostedEncounterApi.hold(boss);
             return;
         }
-        if (raid) RaidArenaApi.recordParticipation(player.server, arena.id(), List.of(player.getUUID()));
         player.sendSystemMessage(Component.translatable("message.jem_world_boss_tiers.encounter.started"));
     }
 

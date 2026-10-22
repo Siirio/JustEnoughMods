@@ -20,7 +20,7 @@ public final class HostedLobby {
     private HostedLobby() {}
 
     public static boolean hold(LivingEntity boss) {
-        if (boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss) && !retiringRaid(boss)
+        if (!HostedEncounterApi.enabled(boss.getServer()) || boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss) && !retiringRaid(boss)
                 || !HostedEncounterApi.canHost(boss) && !HostedGroup.member(boss)) return false;
         if (held(boss)) {
             freeze(boss);
@@ -43,7 +43,7 @@ public final class HostedLobby {
         BossPresentation.suppress(boss);
     }
 
-    public static boolean held(LivingEntity boss) { return boss.getPersistentData().contains(ROOT); }
+    public static boolean held(LivingEntity boss) { return HostedEncounterApi.enabled(boss.getServer()) && boss.getPersistentData().contains(ROOT); }
 
     private static boolean retiringRaid(LivingEntity boss) {
         return boss.getServer() != null && WorldTierApi.encounter(boss)
@@ -53,7 +53,7 @@ public final class HostedLobby {
     }
 
     public static void release(LivingEntity boss) {
-        if (boss.level().isClientSide || !held(boss)) return;
+        if (boss.level().isClientSide || !boss.getPersistentData().contains(ROOT)) return;
         if (boss instanceof net.minecraft.world.entity.Mob mob) mob.setNoAi(false);
         BossPresentation.restore(boss);
         boss.getPersistentData().remove(ROOT);
@@ -99,6 +99,10 @@ public final class HostedLobby {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void loaded(EntityJoinLevelEvent event) {
         if (!event.getLevel().isClientSide && event.getEntity() instanceof LivingEntity boss) {
+            if (!HostedEncounterApi.enabled(boss.getServer())) {
+                HostedEncounters.restoreNative(boss);
+                return;
+            }
             if (HostedEncounterApi.canHost(boss) && !HostedEncounters.isHosted(boss)) {
                 hold(boss);
                 return;

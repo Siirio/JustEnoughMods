@@ -15,16 +15,14 @@ public final class ResultScreen extends Screen {
     private CompoundTag result;
     private int scroll;
     private int contentHeight;
-    private SmpActionButton claim;
-    private boolean claiming;
     public ResultScreen(CompoundTag result) {super(Component.translatable(result.getBoolean("success")?"jem.smp.result.victory":"jem.smp.result.failure"));this.result=result.copy();}
     public UUID resultId() {return result.getUUID("id");}
-    public void update(CompoundTag data) {result=data.copy();claiming=false;if(claim!=null) claim.active=!result.getList("bundles",Tag.TAG_COMPOUND).isEmpty();}
+    public void update(CompoundTag data) {result=data.copy();}
     @Override protected void init() {
-        claim=addRenderableWidget(new SmpActionButton(width/2-90,height-32,180,20,Component.translatable("jem.smp.result.claim"),"primary",button->{
-            claiming=true;button.active=false;CombatNetwork.claim(resultId());
+        addRenderableWidget(new SmpActionButton(width/2-90,height-32,180,20,Component.translatable("jem_rewards.open"),"primary",button -> {
+            if (minecraft != null && minecraft.player != null)
+                minecraft.setScreen(new net.minecraft.client.gui.screens.inventory.InventoryScreen(minecraft.player));
         }));
-        claim.active=!claiming && !result.getList("bundles",Tag.TAG_COMPOUND).isEmpty();
         addRenderableWidget(new SmpActionButton(width-30,8,20,20,Component.literal("×"),"danger",button->onClose()));
     }
     @Override public void render(GuiGraphics graphics,int mouseX,int mouseY,float partialTick) {

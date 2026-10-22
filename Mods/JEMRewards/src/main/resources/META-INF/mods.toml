@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="jem_rewards"
+version="1.0.0"
+displayName="JEM Rewards"
+authors="Siirio"
+description="Persistent item rewards and native inventory collection."
+[[dependencies.jem_rewards]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.jem_rewards]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"

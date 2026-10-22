@@ -63,8 +63,26 @@ public final class HostedEncounters {
     private HostedEncounters() {
     }
 
+    /** Remove only hosted-owned state when a world runs without dedicated hosting. */
+    public static void restoreNative(LivingEntity boss) {
+        ACTIVE.remove(boss.getUUID());
+        if (boss.getPersistentData().contains(ROOT)) {
+            BossPeriodicEffects.clear(boss);
+            applyScale(boss, Attributes.MAX_HEALTH, 1);
+            applyScale(boss, Attributes.ATTACK_DAMAGE, 1);
+            boss.getPersistentData().remove(ROOT);
+            boss.setHealth(Math.min(boss.getHealth(), boss.getMaxHealth()));
+        }
+        if (HostedEncounterApi.preservesRaidBoss(boss)) HostedEncounterApi.restorePreparedRaid(boss);
+        else HostedRaidScaling.restore(boss);
+        HostedLobby.release(boss);
+        HostedGroup.detach(boss);
+        boss.getPersistentData().remove("jem_solo");
+        boss.getPersistentData().remove(DOWNED_MARKER);
+    }
+
     public static boolean isHosted(LivingEntity boss) {
-        return boss.getPersistentData().contains(ROOT);
+        return HostedEncounterApi.enabled(boss.getServer()) && boss.getPersistentData().contains(ROOT);
     }
 
     private static CompoundTag data(LivingEntity boss) {
@@ -116,6 +134,7 @@ public final class HostedEncounters {
     }
 
     public static boolean start(LivingEntity boss, Collection<UUID> agreed, boolean raid, int radius, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        if (!HostedEncounterApi.enabled(boss.getServer()) || raid && !net.minecraftforge.fml.ModList.get().isLoaded("jem_server") || isHosted(boss)) return false;
         CompoundTag entries = new CompoundTag();
         for (UUID id : new LinkedHashSet<>(agreed)) {
             ServerPlayer player = boss.getServer().getPlayerList().getPlayer(id);
@@ -148,6 +167,7 @@ public final class HostedEncounters {
         double health = scaling.health();
         double damage = scaling.damage();
         CompoundTag state = new CompoundTag();
+        state.putUUID("Attempt", UUID.randomUUID());
         state.put("Players", entries);
         state.putInt("Radius", radius);
         if(bounds!=null) state.putIntArray("Bounds",new int[]{bounds.minX(),bounds.minY(),bounds.minZ(),bounds.maxX(),bounds.maxY(),bounds.maxZ()});
@@ -183,6 +203,12 @@ public final class HostedEncounters {
                     .ifPresent(mob::setTarget);
         }
         return true;
+    }
+
+    private static String rewardSource(LivingEntity boss) {
+        var state = data(boss);
+        if (!state.hasUUID("Attempt")) state.putUUID("Attempt", UUID.randomUUID());
+        return boss.getStringUUID() + ":" + state.getUUID("Attempt");
     }
 
     public static double damageFactor(LivingEntity boss) {
@@ -414,6 +440,8 @@ public final class HostedEncounters {
         boolean raid = HostedEncounterApi.isRaid(boss);
         if (raid) event.getDrops().removeIf(drop -> drop.getItem().is(FORBIDDEN));
         if (recipients.isEmpty()) {
+            event.getDrops().clear();
+            event.setCanceled(true);
             close(boss, true);
             return;
         }
@@ -425,19 +453,23 @@ public final class HostedEncounters {
             }
             loot.add(stack);
         }
-        if (raid) {
-            for (UUID recipient : recipients) {
-                List<RewardGroup> groups = new ArrayList<>();
-                if (!loot.isEmpty()) groups.add(new RewardGroup("reward.jem_world_boss_tiers.native_loot", loot));
-                groups.add(new RewardGroup("reward.jem_world_boss_tiers.raid_cache",
-                        RaidRewardPool.roll(level, WorldTierApi.currentTier(level.getServer()))));
-                PendingRewardContainer.enqueueGrouped(level.getServer(), recipient, boss.getStringUUID(),
-                        "reward.jem_world_boss_tiers.raid_loot", groups);
-            }
-        } else {
-            HostedRewards.get(level.getServer()).distribute(level.getServer(), recipients, loot, boss.getStringUUID());
-        }
+        // Once handed to Rewards these items may never return to native world drops.
         event.getDrops().clear();
+        event.setCanceled(true);
+        List<com.siirio.jemrewards.RewardGrant> grants = new ArrayList<>();
+        for (UUID recipient : recipients) {
+            List<com.siirio.jemrewards.RewardGroup> groups = new ArrayList<>();
+            if (!loot.isEmpty()) groups.add(new com.siirio.jemrewards.RewardGroup("reward.jem_world_boss_tiers.native_loot", loot));
+            if (raid) groups.add(new com.siirio.jemrewards.RewardGroup("reward.jem_world_boss_tiers.raid_cache",
+                    RaidRewardPool.roll(level, WorldTierApi.currentTier(level.getServer()))));
+            grants.add(new com.siirio.jemrewards.RewardGrant(recipient,
+                    raid ? "reward.jem_world_boss_tiers.raid_loot" : "reward.jem_world_boss_tiers.boss_loot", groups));
+        }
+        try {
+            com.siirio.jemrewards.PendingRewardContainer.enqueueBatch(level.getServer(), rewardSource(boss), grants);
+        } catch (RuntimeException failure) {
+            com.mojang.logging.LogUtils.getLogger().error("Boss reward batch {} retained for retry; storage must be restored before stopping the server", rewardSource(boss), failure);
+        }
         close(boss, true);
     }
 
@@ -453,7 +485,7 @@ public final class HostedEncounters {
 
     @SubscribeEvent
     public static void tick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) {
+        if (!HostedEncounterApi.enabled(event.getServer()) || event.phase != TickEvent.Phase.END) {
             return;
         }
         if (event.getServer().getTickCount() % HostedConfig.DELIVERY_INTERVAL.get() == 0) {

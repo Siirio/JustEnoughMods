@@ -7,6 +7,7 @@ import java.util.*;
 
 public final class SmpViews {
     public static CompoundTag build(ServerPlayer player, SmpQuery query) {
+        SmpRecords.require(SmpEnvironment.active(player) && SmpTable.viewable(query.tab()), "unavailable");
         CompoundTag result = buildView(player, query);
         result.put("features", DomainFeatures.snapshot(player.server));
         return result;
@@ -20,28 +21,11 @@ public final class SmpViews {
         result.putString("querySearch", query.search());
         result.putInt("page", query.page());
         result.putUUID("viewer", player.getUUID());
-        int pendingRewards = RewardsAdapter.count(player);
-        result.putInt("pendingRewards", pendingRewards);
         if (query.tab().equals("settlements")) return com.siirio.jemserver.smp.settlements.SettlementProjection.view(player, query.selected());
         if (query.tab().equals("recruits")) return com.siirio.jemserver.smp.recruits.RecruitProjection.view(player);
-        if (query.tab().equals("prizes")) {
-            int pageSize = SmpConfig.PAGE_SIZE.get();
-            var rewards = RewardsAdapter.bundles(player, query.page() * pageSize, pageSize);
-            result.put("rows", rewards);
-            result.putInt("total", pendingRewards);
-            result.putInt("totalItems", RewardsAdapter.totalItems(player));
-            result.putInt("pageSize", pageSize);
-            return result;
-        }
-        if (query.tab().equals("shops")) {
-            var shops = com.siirio.jemserver.smp.shops.ShopIndex.view(player, query);
-            shops.putInt("pendingRewards", pendingRewards);
-            return shops;
-        }
+        if (query.tab().equals("shops")) return com.siirio.jemserver.smp.shops.ShopIndex.view(player, query);
         if (query.selected() == null) {
-        Collection<CompoundTag> candidates;
-        if (query.tab().equals("profiles")) candidates = data.all("profiles");
-        else candidates = data.all(query.tab());
+        Collection<CompoundTag> candidates = data.all(query.tab());
         String search = query.search().toLowerCase(Locale.ROOT);
         var matches =
                 candidates.stream()
@@ -65,13 +49,6 @@ public final class SmpViews {
                             var summary = summary(row);
                             if (query.tab().equals("parties")) organizer(player, row, summary);
                             if (query.tab().equals("events")) eventSummary(row, summary);
-                            if (query.tab().equals("profiles"))
-                                summary.putString(
-                                        "state",
-                                        player.server.getPlayerList().getPlayer(row.getUUID("id"))
-                                                        == null
-                                                ? "OFFLINE"
-                                                : "ONLINE");
                             rows.add(summary);
                         });
         result.put("rows", rows);
@@ -80,9 +57,7 @@ public final class SmpViews {
             CompoundTag row = data.find(query.tab(), query.selected());
             if (row != null && authorized(player, query.tab(), row)) {
                 var detail =
-                        query.tab().equals("profiles")
-                                ? Profiles.view(player, query.selected())
-                                : query.tab().equals("parties")
+                        query.tab().equals("parties")
                                         ? Parties.view(player, row)
                                         : detail(row);
                 if (query.tab().equals("parties")) {
@@ -250,19 +225,6 @@ public final class SmpViews {
                 member = SmpRecords.member(row, player.getUUID());
         boolean closed = SmpData.closed(row);
         if (table.equals("parties") && !closed && owner && row.getString("state").equals("ACTIVE") && row.getString("activity").equals("BOSS")) add(result, "cancel");
-        if (table.equals("profiles")) {
-            if (owner) {
-                add(result, "death_history");
-                if (DomainFeatures.loaded("jem_settlements")) add(result, "settlements");
-                if (DomainFeatures.loaded("jem_roles")) add(result, "roles");
-                if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) add(result, "professions");
-            } else {
-                add(result, "message", "tpa", "invite");
-                if (DomainFeatures.economy(player.server)) add(result, "view_shops");
-                if (DomainFeatures.loaded("jem_settlements")) add(result, "settlements");
-            }
-            return result;
-        }
         if (!closed && table.equals("parties") && !row.getString("state").equals("ACTIVE")) {
             if (owner) {
                 if(row.getString("activity").equals("BOSS")) add(result, "start");

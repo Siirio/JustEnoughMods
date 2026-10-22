@@ -42,8 +42,7 @@ public final class CombatNetwork {
         CHANNEL.messageBuilder(Claim.class,1,NetworkDirection.PLAY_TO_SERVER)
                 .encoder((packet,buffer)->buffer.writeUUID(packet.result())).decoder(buffer->new Claim(buffer.readUUID()))
                 .consumerMainThread((packet,context)->{
-                    var player=context.get().getSender();
-                    if(player!=null&&SmpEnvironment.active(player)&&SmpRequests.allow(player)) claim(player,packet.result());
+                    // Reserved legacy discriminator: rewards are claimed only by jem_rewards.
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(Vote.class,2,NetworkDirection.PLAY_TO_SERVER)
@@ -55,20 +54,7 @@ public final class CombatNetwork {
                     context.get().setPacketHandled(true);
                 }).add();
     }
-    public static void claim(UUID result) { CHANNEL.sendToServer(new Claim(result)); }
     public static void vote(UUID event,boolean continueBattle) { CHANNEL.sendToServer(new Vote(event,continueBattle)); }
-    private static void claim(ServerPlayer player,UUID resultId) {
-        var result=RESULTS.get(player.getUUID());
-        if(result==null || !result.getUUID("id").equals(resultId)) return;
-        var ids=new ArrayList<UUID>();
-        for(var tag:bundles(player,result.getString("source"))) ids.add(((CompoundTag)tag).getUUID("id"));
-        if(!ids.isEmpty() && !PendingRewardContainer.claimBundles(player,ids))
-            result.putString("error","jem.smp.result.no_space");
-        result.putBoolean("refresh",true);
-        sendResult(player,result);
-        result.remove("error");
-        result.remove("refresh");
-    }
     public static void tick(MinecraftServer server) {
         if(server.getTickCount()%TICKS_PER_SECOND!=0) return;
         var visible=new HashSet<UUID>();

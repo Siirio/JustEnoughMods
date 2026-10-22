@@ -1,3 +1,25 @@
+## 2026-10-22 - Implement independent rewards and dedicated SMP boundaries
+
+User request: restore the clarifications from abd0a4f9 and implement the updated plan. Remove SMP Rewards/profiles, keep independent Economy/Settlements interfaces, disable SMP/parties/all JEM Events on integrated/LAN, retain ordinary boss World Tier/native combat, freeze dedicated participant/Raid scaling at Start, and apply one shared x2 to ordinary Minecraft XP only. The user clarified that old singleplayer-world migration is not a focus. The mandatory Twelve Eyes baseline stage remains separate.
+
+Implementation decisions by Codex: introduce JEMRewards with native inventory quick-take slots, paged server sessions/revisions, complete personal item snapshots, batch issue journals, inventory claim receipts and offline legacy imports. Preserve starter entitlement ownership with a durable recipient binding. Retire legacy SMP/combat claim routes; results open normal inventory. Raid preparation no longer applies strength/size; failed Start rolls size back. Economy owns /market. ExperienceRewardApi owns the x2 logical-server baseline before Mending and suppresses only the second baseline pass on the remainder.
+
+Bug / Client / the old race stage rendered the live camera player, which the installed Player Animator first-person pass can hide; the reported first-entry occurrence was not reproduced and its complete causal trigger remains unconfirmed / in testing. A screen-owned detached native RemotePlayer isolates that path, refreshes native skins and source-player identity, and preserves equipment. No arbitrary timing delay or custom player geometry was added.
+
+Production jar/reobf builds passed for Rewards, WorldBossTiers, Economy, Races and Server. Matching artifacts were synchronized to ordinary local Server and ManagedPack; generation60 was previewed and published through native AutoModpack. The local server reached startup, saved and stopped. Exact native test-jem application and universal archive evidence is recorded in Docs/releases/2026-10-22-smp-rewards-xp.json. Full Atlas regeneration/validation passed; coverage scan retains seven preexisting unrelated VFX/Settlements paths, with no uncovered task-owned source. Unrelated working changes remain excluded.
+
+No automated tests, linters, gameplay/client launch, MineRENT deployment, stable-profile mutation or release-baseline promotion. GUI Scale/recipe-book/JEI/resource-pack behavior, first-race-screen visibility and gameplay/crash acceptance remain unrun; source/build/native distribution evidence does not claim player approval.
+
+## 2026-10-22 - Clarify SMP routing, solo events and shared XP baseline
+
+User clarifications: remove the SMP Rewards tab on dedicated servers as well; all migrated item rewards are claimed in the ordinary E inventory. SMP is a server routing window to independent domain interfaces, including Settlements and Market, which remain usable without SMP in singleplayer. Solo boss scaling uses World Tier without party scaling; dedicated retains World Tier plus the confirmed encounter-participant multiplier. All JEM events, not only Raid, are disabled in integrated/LAN worlds.
+
+User addition and explicit answer: apply one shared base x2 to ordinary Minecraft XP from every source in singleplayer and dedicated. Separate race/profession XP is excluded. Additional XP multipliers apply on top of the same x2, without duplicating it between client/server or replacing it with server settings.
+
+Planning choices: enumerate direct and orb-based XP paths and the existing server multiplier before selecting the owning implementation; preserve native XP distribution/Mending and distinguish newly earned XP from saved-balance recovery or transfers to avoid multiplying it again. Added manual acceptance criteria and clarified domain routing in the owning SMP document.
+
+Documentation only; no gameplay code, config, Atlas effective facts, Client/Server artifact, build, test or game launch. Local Server remains untouched. Initial jem.py status still reports pre-existing native publication false at journal 59; this plan does not change publication or the release baseline.
+
 ## 2026-10-22 - Revise universal architecture for dedicated SMP and independent rewards
 
 User requirements: update the Forge 1.20.1 / Java 17 architecture plan only, without implementing code. The amendment supersedes integrated SMP/party/JEM Raid and preparation-time Raid scaling in the previous plan. Dedicated identity includes a one-player server; opening an integrated world to LAN does not enable SMP. Ordinary solo bosses retain a working combat path and independent difficulty/World Tier.

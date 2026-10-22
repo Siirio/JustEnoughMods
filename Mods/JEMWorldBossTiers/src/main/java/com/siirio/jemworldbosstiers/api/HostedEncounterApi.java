@@ -36,6 +36,14 @@ public final class HostedEncounterApi {
         return entity;
     }
 
+    public static boolean enabled(net.minecraft.server.MinecraftServer server) {
+        return server != null && server.isDedicatedServer();
+    }
+
+    private static boolean raidEnabled(net.minecraft.server.MinecraftServer server) {
+        return enabled(server) && net.minecraftforge.fml.ModList.get().isLoaded("jem_server");
+    }
+
     public static boolean canHost(LivingEntity boss) {
         return WorldTierApi.profile(boss).filter(com.siirio.jemworldbosstiers.balance.BossProfile::hostedEncounter).isPresent()
                 && !com.siirio.jemworldbosstiers.encounter.HostedGroup.member(boss);
@@ -43,6 +51,7 @@ public final class HostedEncounterApi {
 
     /** Shared admission for control, support and damage; this does not bypass native immunity. */
     public static boolean canInteract(LivingEntity actor, LivingEntity target) {
+        if (!enabled(target.getServer())) return true;
         if (!HostedEncounters.canInteract(actor, target)) return false;
         if (!net.minecraftforge.fml.ModList.get().isLoaded("jem_server")) return true;
         try {
@@ -59,11 +68,12 @@ public final class HostedEncounterApi {
     public static void release(LivingEntity boss) { com.siirio.jemworldbosstiers.encounter.HostedLobby.release(boss); }
 
     public static boolean prepareRaid(LivingEntity boss) {
+        if (!raidEnabled(boss.getServer())) return false;
         if(preservesRaidBoss(boss)) {
             if(boss.level().isClientSide||!boss.isAlive()||HostedEncounters.isHosted(boss)||!isRaid(boss)) return false;
             var profile=WorldTierApi.profile(boss).orElse(null);
             if(profile==null) return false;
-            HostedRaidScaling.prepare(boss,profile.key().toString());
+            HostedRaidScaling.restore(boss);
             return hold(boss);
         }
         if(!canPrepareRaid(boss)) return false;
@@ -74,13 +84,13 @@ public final class HostedEncounterApi {
         EncounterScaler.ensureScaled(boss,profile);
         com.siirio.jemworldbosstiers.encounter.EncounterData.convertToRaid(data);
         data.putBoolean(PRESERVE_RAID_BOSS,true);
-        HostedRaidScaling.prepare(boss,profile.key().toString());
+        HostedRaidScaling.restore(boss);
         hold(boss);
         return true;
     }
 
     public static boolean canPrepareRaid(LivingEntity boss) {
-        if(boss.level().isClientSide||!boss.isAlive()||HostedEncounters.isHosted(boss)||boss.getPersistentData().getBoolean(PRESERVE_RAID_BOSS)) return false;
+        if(!raidEnabled(boss.getServer())||boss.level().isClientSide||!boss.isAlive()||HostedEncounters.isHosted(boss)||boss.getPersistentData().getBoolean(PRESERVE_RAID_BOSS)) return false;
         var profile=WorldTierApi.profile(boss).orElse(null);
         return profile!=null&&WorldTierData.get(boss.getServer()).defeatedBosses().contains(profile.key())
                 &&RaidArenaApi.compatible(boss);
@@ -111,7 +121,7 @@ public final class HostedEncounterApi {
     }
 
     public static boolean start(LivingEntity boss, Collection<UUID> agreedPlayers, boolean raid, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
-        if (boss.level().isClientSide || !boss.isAlive() || !canHost(boss) || HostedEncounters.isHosted(boss)) {
+        if (!enabled(boss.getServer()) || raid && !raidEnabled(boss.getServer()) || boss.level().isClientSide || !boss.isAlive() || !canHost(boss) || HostedEncounters.isHosted(boss)) {
             return false;
         }
         var profile = WorldTierApi.profile(boss).orElse(null);

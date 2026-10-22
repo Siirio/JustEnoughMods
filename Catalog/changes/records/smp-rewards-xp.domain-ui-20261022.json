@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "change_id": "smp-rewards-xp.domain-ui-20261022",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_economy"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_roles"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "user_requested_universal_amendment",
+    "priority": 1250,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution",
+    "modifiers": [
+      {
+        "property": "domain.independent_presentation",
+        "operation": "replace",
+        "before": "Market lacks explicit independent command; race stage renders live camera player",
+        "after": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy / JEMRoles",
+    "kind": "approved_architecture_implementation",
+    "source_files": [
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution",
+    "decision_source": "User authorized restoring abd0a4f9 and implementing amended plan on 2026-10-22; receipt protocol, native detached preview and quick-take slot transport are implementation decisions."
+  },
+  "introduced": {
+    "date": "2026-10-22",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution"
+  },
+  "history": [
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "inventory",
+      "loot",
+      "progression",
+      "multiplayer",
+      "client_server_contract"
+    ],
+    "relations": [],
+    "notes": [
+      "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch."
+    ],
+    "unresolved": [
+      "Runtime GUI layout, first race screen and gameplay acceptance not observed."
+    ]
+  }
+}

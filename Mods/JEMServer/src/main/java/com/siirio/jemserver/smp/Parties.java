@@ -22,6 +22,7 @@ public final class Parties {
     }
 
     private static CompoundTag create(ServerPlayer player,SmpPartyRequest args,boolean posting) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         if(posting) {
             SmpRecords.require(SmpData.get(player.server).all("parties").stream()
                     .noneMatch(row -> !SmpData.closed(row) && accepted(row, player.getUUID())), "already_in_party");
@@ -60,6 +61,7 @@ public final class Parties {
     }
 
     private static void join(ServerPlayer player, CompoundTag row, boolean hosted) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         if (SmpRecords.member(row, player.getUUID())) return;
         SmpRecords.require(
                 !SmpData.closed(row) && !row.getString("state").equals("ACTIVE"), "combat_locked");
@@ -83,6 +85,7 @@ public final class Parties {
     }
 
     public static void makeSolo(ServerPlayer player, CompoundTag party) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.owner(player, party);
         SmpRecords.require(SmpRecords.members(party).size() == 1, "solo");
         party.putBoolean("solo", true);
@@ -98,6 +101,7 @@ public final class Parties {
 
     public static void action(
             ServerPlayer player, CompoundTag row, SmpActionKind action, SmpActionInput input) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.require(!SmpData.closed(row), "closed");
         var members = SmpRecords.members(row);
         switch (action) {
@@ -284,6 +288,7 @@ public final class Parties {
     }
 
     public static void invite(ServerPlayer player, CompoundTag row, UUID targetId) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.owner(player, row);
         SmpRecords.require(!row.getBoolean("solo") && !SmpData.closed(row) && !row.getString("state").equals("ACTIVE"), "combat_locked");
         var target = player.server.getPlayerList().getPlayer(targetId);

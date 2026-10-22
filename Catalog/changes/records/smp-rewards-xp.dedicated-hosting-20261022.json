@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "change_id": "smp-rewards-xp.dedicated-hosting-20261022",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "Hosted JEM boss/event flows; no change to native third-party events"
+    }
+  ],
+  "precedence": {
+    "layer": "user_requested_universal_amendment",
+    "priority": 1250,
+    "overrides": [
+      "universal-standalone.server-feature-activation-20261021"
+    ]
+  },
+  "change": {
+    "summary": "Dedicated-only SMP/parties/JEM events; ordinary integrated native boss combat preserves WorldTier; frozen participants and Raid strength at canonical Start; no SMP rewards/profile pages",
+    "modifiers": [
+      {
+        "property": "server.hosted_feature_activation",
+        "operation": "replace",
+        "before": "Integrated SMP/party and standalone Raid admission; preparation Raid scaling",
+        "after": "Dedicated-only SMP/parties/JEM events; ordinary integrated native boss combat preserves WorldTier; frozen participants and Raid strength at canonical Start; no SMP rewards/profile pages"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer / JEMWorldBossTiers",
+    "kind": "approved_architecture_implementation",
+    "source_files": [
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ResultScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/CombatNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/DomainFeatures.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpEnvironment.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMWorldBossTiers/build.gradle",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/StandaloneAdmission.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml"
+    ]
+  },
+  "rationale": {
+    "purpose": "Dedicated-only SMP/parties/JEM events; ordinary integrated native boss combat preserves WorldTier; frozen participants and Raid strength at canonical Start; no SMP rewards/profile pages",
+    "decision_source": "User authorized restoring abd0a4f9 and implementing amended plan on 2026-10-22; receipt protocol, native detached preview and quick-take slot transport are implementation decisions."
+  },
+  "introduced": {
+    "date": "2026-10-22",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Dedicated-only SMP/parties/JEM events; ordinary integrated native boss combat preserves WorldTier; frozen participants and Raid strength at canonical Start; no SMP rewards/profile pages"
+  },
+  "history": [
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Dedicated-only SMP/parties/JEM events; ordinary integrated native boss combat preserves WorldTier; frozen participants and Raid strength at canonical Start; no SMP rewards/profile pages"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "inventory",
+      "loot",
+      "progression",
+      "multiplayer",
+      "client_server_contract"
+    ],
+    "relations": [],
+    "notes": [
+      "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch."
+    ],
+    "unresolved": [
+      "Runtime GUI layout, first race screen and gameplay acceptance not observed."
+    ]
+  }
+}

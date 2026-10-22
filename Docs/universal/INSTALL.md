@@ -20,7 +20,7 @@ Keep its native update flow. Do not extract this full archive over an active Aut
 
 Economy defaults to enabled. Set `[economy] enabled=false` in the world's `serverconfig/jem_economy-server.toml` to make currency dormant while retaining its records; Settlements then uses its own emerald treasury. Existing legacy merchants whose synthetic/native offers cannot be safely distinguished remain blocked while Economy is off, with an explanatory notice; their saved data is retained.
 
-Events default to off. A dedicated host may explicitly set the top-level `enabled=true` in the world's `serverconfig/jem-events-server.toml`. Integrated singleplayer never schedules hosted events. Ordinary boss fights and Boss Raid remain available through their domain lifecycle.
+Events default to off. A dedicated host may explicitly set the top-level `enabled=true` in the world's `serverconfig/jem-events-server.toml`. Integrated/LAN has no SMP, parties or JEM Events, including Raid. Ordinary native boss combat and World Tier remain available. Dedicated Raid requires JEMServer; normal domain GUIs work independently. Claim personal item rewards through the normal E inventory panel; `/market` is Economy-owned. The pack supplies one shared x2 ordinary Minecraft XP baseline.
 
 Professions, Villager Talking and Claims are development modules and are excluded. Currency Core is part of Economy; all production races are in one Races JAR. Pack Core and Menu Support are retired. Do not add their old JARs alongside this pack.
 

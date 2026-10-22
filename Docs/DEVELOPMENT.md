@@ -1,6 +1,8 @@
 # Разработка JustEnoughMods
 
-> План следующего изменения, 2026-10-22: [дополнение universal-плана](plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) задаёт dedicated-only SMP/JEM Raid, независимые предметные награды, самостоятельный Market в Economy и исправление первого race preview. Оно заменяет конфликтующие требования для будущей реализации; таблицы текущих модулей ниже пока описывают существующий код. В этой задаче код, зависимости и runtime не менялись.
+> Amendment 2026-10-22 is implemented in source under the user request to restore `abd0a4f9` and implement the updated plan. See the implementation section below for current ownership and the delivery receipt for build/publication evidence. Historical conflicting screen/module descriptions do not override it.
+
+Current contract: SMP routes to independent Settlements/Market; Rewards are in normal inventory E on both host types. Integrated/LAN has no JEM Events or parties. Common ordinary Minecraft XP has one x2 baseline; other modifiers apply above it.
 
 ## Рабочие поверхности
 
@@ -544,3 +546,12 @@ Paxi4.0 required-pack activation. Only `bbb:hammer` model and its new texture ar
 overridden; no BBB gameplay code, native merchant layout or personal options are
 changed. Regenerate the ZIP with that folder's `build_resource_pack.py --output`
 then stage/publish/apply through the ordinary native AutoModpack lifecycle.
+
+
+## SMP/rewards/XP implementation — 2026-10-22
+
+The user restored the amended architecture and authorized implementation. JEMRewards is the independent mandatory item-entitlement owner consumed by WorldBossTiers and Server; build Rewards before WorldBossTiers, Economy before Races, then Server. Ship matching new `jem_rewards:main` protocol1 on both sides; existing clients cannot satisfy the channel with data/config alone. Rewards persist exact item snapshots, issue receipts and checked claim journals in `jem_rewards.dat`; offline old boss/SMP deliveries migrate without SMP classes. Existing non-item advancement/recovery state remains WorldBossTiers-owned.
+
+WorldBossTiers owns the shared logical-server x2 ordinary Minecraft XP baseline, including direct point awards and orb intake before Mending. A scoped transfer prevents a second baseline pass on the remainder; downstream XP modifiers remain active. Already-earned recovery and race/profession progress are separate. Economy owns `/market`, its enabled/auth guards and native market UI. SMP is dedicated-only; Raid preparation is provenance/lobby-only and combined strength freezes at Start. The independent native domain GUIs do not require SMP.
+
+No automated tests, linters, gameplay client or disposable server were run for this amendment. Ordinary local artifact installation/publication and native closed-profile application follow the standing delivery rule; runtime player acceptance and first-race-screen visual confirmation remain separate. The user clarified that old singleplayer-world migration is not a focus.

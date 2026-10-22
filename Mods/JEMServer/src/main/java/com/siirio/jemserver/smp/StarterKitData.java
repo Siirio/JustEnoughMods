@@ -24,6 +24,7 @@ final class StarterKitData extends SavedData {
     private static final String NAME = "jem_starter_kits";
     static final String RECEIPT = "jem_server:starter_kit";
     private final CompoundTag accounts;
+    private boolean persistenceUncertain;
 
     private StarterKitData() { this(new CompoundTag()); }
     private StarterKitData(CompoundTag accounts) { this.accounts = accounts; }
@@ -48,38 +49,31 @@ final class StarterKitData extends SavedData {
         }
         CompoundTag row = accounts.getCompound(key);
         if (row.contains("Pending", Tag.TAG_COMPOUND)) reconcile(player, account, row);
-        if (row.getBoolean("Complete") || player.containerMenu != player.inventoryMenu
-                || !player.inventoryMenu.getCarried().isEmpty()) return;
-        List<ItemStack> inventory = new ArrayList<>();
-        for (ItemStack stack : player.getInventory().items) inventory.add(stack.copy());
-        ListTag remaining = row.getList("Remaining", Tag.TAG_COMPOUND).copy();
-        boolean changed = false;
-        for (int index = 0; index < remaining.size(); index++) {
-            ItemStack stack = ItemStack.of(remaining.getCompound(index));
-            if (stack.isEmpty()) throw new IOException("Starter kit contains an unavailable saved item");
-            int before = stack.getCount();
-            insert(inventory, stack, player.getInventory().getMaxStackSize());
-            changed |= stack.getCount() != before;
-            if (stack.isEmpty()) { remaining.remove(index--); }
-            else remaining.set(index, stack.save(new CompoundTag()));
+        if (row.getBoolean("Complete")) {
+            if (persistenceUncertain) flush(player.server);
+            return;
         }
-        if (!changed) return;
-        UUID operation = UUID.randomUUID();
-        CompoundTag pending = new CompoundTag();
-        pending.putUUID("Operation", operation);
-        pending.putUUID("Player", player.getUUID());
-        pending.put("Remaining", remaining);
-        row.put("Pending", pending);
+        if (!row.contains("RewardTransfer", Tag.TAG_COMPOUND)) {
+            CompoundTag transfer = new CompoundTag();
+            transfer.putUUID("Player", player.getUUID());
+            transfer.put("Items", row.getList("Remaining", Tag.TAG_COMPOUND).copy());
+            row.put("RewardTransfer", transfer);
+        }
+        // Persist the bound recipient before any reward-owner operation, on every retry.
         flush(player.server);
-        for (int slot = 0; slot < inventory.size(); slot++) player.getInventory().items.set(slot, inventory.get(slot));
-        CompoundTag receipt = new CompoundTag();
-        receipt.putUUID("Account", account);
-        receipt.putUUID("Operation", operation);
-        persisted(player).put(RECEIPT, receipt);
-        player.getInventory().setChanged();
-        savePlayer(player, account, operation);
-        commit(player.server, row);
-        player.inventoryMenu.broadcastChanges();
+        CompoundTag transfer = row.getCompound("RewardTransfer");
+        List<ItemStack> remaining = new ArrayList<>();
+        for (Tag value : transfer.getList("Items", Tag.TAG_COMPOUND)) {
+            ItemStack stack = ItemStack.of((CompoundTag) value);
+            if (stack.isEmpty()) throw new IOException("Starter kit contains an unavailable saved item");
+            remaining.add(stack);
+        }
+        // Reward owner flushes the stable account entitlement before this owner retires it.
+        com.siirio.jemrewards.PendingRewardContainer.enqueue(player.server, transfer.getUUID("Player"),
+                "starter_kit:" + account, "jem_rewards.starter_kit", remaining);
+        row.put("Remaining", new ListTag());
+        row.putBoolean("Complete", true);
+        flush(player.server);
     }
 
     private void reconcile(ServerPlayer player, UUID account, CompoundTag row) throws IOException {
@@ -110,6 +104,7 @@ final class StarterKitData extends SavedData {
     }
 
     private void flush(MinecraftServer server) throws IOException {
+        persistenceUncertain = true;
         setDirty();
         var file = server.getWorldPath(LevelResource.ROOT).resolve("data").resolve(NAME + ".dat").toFile();
         save(file);
@@ -117,6 +112,7 @@ final class StarterKitData extends SavedData {
             setDirty();
             throw new IOException("Starter kit journal was not persisted");
         }
+        persistenceUncertain = false;
     }
 
     private static void savePlayer(ServerPlayer player, UUID account, UUID operation) throws IOException {

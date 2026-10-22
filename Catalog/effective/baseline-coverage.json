@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "fe2a3936e7841a2d68b8209e88776697ecede73fbc787f40b2e8d940c739576f",
+  "change_records_sha256": "f56016e5608898ee9ee5b494bf659453a99fbd0bcb6df20e1d5fca9ae2b7223e",
   "totals": {
-    "watched": 3741,
-    "covered": 1924,
-    "unresolved": 1817
+    "watched": 3767,
+    "covered": 1955,
+    "unresolved": 1812
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1589,8 +1589,8 @@
     },
     "Mods/JEMServer": {
       "watched": 464,
-      "covered": 254,
-      "unresolved": 210,
+      "covered": 256,
+      "unresolved": 208,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1613,7 +1613,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/FishingTooltips.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ItemRewardStrip.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PlayerPreviewWidget.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ResultScreen.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpClient.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpClientRequests.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpHit.java",
@@ -1668,7 +1667,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/CombatNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/DiscoveryProfiles.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventDescriptions.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventRewardPreview.java",
@@ -1891,14 +1889,13 @@
       "unresolved_paths": []
     },
     "Mods/JEMWorldBossTiers": {
-      "watched": 112,
-      "covered": 54,
-      "unresolved": 58,
+      "watched": 138,
+      "covered": 83,
+      "unresolved": 55,
       "unresolved_paths": [
         "Mods/JEMWorldBossTiers/gradle.properties",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossEffectApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossRevivalApi.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/ExperienceRewardApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/WorldTierApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataLoader.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossFrenzy.java",
@@ -1915,10 +1912,8 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/enchantment/TierEnchantments.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterData.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterProvenance.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingHealthSync.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/RaidRewardPool.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/RewardGroup.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/SpawnDecision.java",

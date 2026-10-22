@@ -124,7 +124,7 @@ public final class BloodMoonDeaths {
         if (!inventorySaved)
             for (var tag : member.getList("safeDrops", Tag.TAG_COMPOUND)) extras.add(ItemStack.of((CompoundTag) tag));
         if (!extras.isEmpty())
-            PendingRewardContainer.enqueue(player.server, player.getUUID(), "blood_moon_recovery", "jem.smp.blood_moon_recovery", extras);
+            PendingRewardContainer.enqueue(player.server, player.getUUID(), "blood_moon_recovery:" + row.getUUID("id"), "jem.smp.blood_moon_recovery", extras);
         member.remove("safeDrops");
         SmpData.get(player.server).changed(row);
     }

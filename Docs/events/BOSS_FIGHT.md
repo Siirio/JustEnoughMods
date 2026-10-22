@@ -1,10 +1,10 @@
 # Boss Fight
 
-> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) требует доступного обычного боя в integrated/LAN без SMP, пати, подтверждения состава и группового усиления. Босс не может оставаться заблокированным ожиданием отключённого SMP Start; World Tier, отдельная сложность и Campaign prerequisites сохраняются. На dedicated действует серверный lifecycle. Этот план ещё не реализован; ниже описан текущий код.
+> Current 2026-10-22 implementation: integrated/LAN ordinary bosses use native combat and World Tier without SMP, party confirmation or group scaling. Dedicated bosses retain the canonical hosted Start lifecycle. Campaign prerequisites remain owned by their existing progression guard. Gameplay acceptance remains unrun.
 
 ## Universal ownership — 2026-10-22
 
-The same logical-server encounter implementation serves integrated worlds and dedicated hosts. WorldBossTiers owns dormant native tick/presentation hold, canonical structure discovery, participation/scaling, rewards and revival. Without Server, its own solo admission opens on an attempted dormant-boss hit; with Server, the existing encounter/party UI owns that flow. Matching WorldTier protocol is 6. Server's scheduled/seasonal event switch does not gate ordinary boss Start or solo Raid. Strict TwelveEyes Start prerequisites remain independent from content-aware WorldTier progression; see the [module contracts](../universal/README.md). Runtime/player acceptance is still separate from source implementation.
+The same production domain JAR serves both host types. Dedicated WorldBossTiers owns dormant native hold, structure discovery and frozen participation/scaling; Server supplies its party/UI adapter. Without Server, dedicated ordinary solo admission remains available but Raid does not. Integrated bosses do not wait for the disabled hosted Start. Item rewards belong to JEMRewards; World Tier progression and Campaign prerequisites retain their existing owners.
 
 ## Current source contract — 2026-10-21
 

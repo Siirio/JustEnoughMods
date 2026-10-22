@@ -13,6 +13,7 @@ import java.util.*;
 
 public final class HostedParties {
     public static void start(ServerPlayer host, CompoundTag row) {
+        SmpRecords.require(SmpEnvironment.active(host), "unavailable");
         SmpRecords.owner(host, row);
         if (row.getString("state").equals("ACTIVE")) return;
         String reason = startReason(host, row);
@@ -118,6 +119,7 @@ public final class HostedParties {
     }
 
     public static void tick(net.minecraft.server.MinecraftServer server) {
+        if (!SmpEnvironment.active(server)) return;
         if (server.getTickCount() % 20 != 0) return;
         var data = SmpData.get(server);
         long now = System.currentTimeMillis();
@@ -138,6 +140,7 @@ public final class HostedParties {
     }
 
     public static void arrive(ServerPlayer player, CompoundTag row) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         SmpRecords.require(!row.getString("state").equals("ACTIVE") && !SmpData.closed(row), "combat_locked");
         SmpRecords.require(Parties.accepted(row,player.getUUID()),"not_member");
         if (row.getString("activity").equals("BOSS")&&com.siirio.jemserver.smp.events.StructureStaging.arrive(player, row)) return;
@@ -180,6 +183,7 @@ public final class HostedParties {
     }
 
     public static void forfeit(ServerPlayer player,UUID partyId,UUID actionToken) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         CompoundTag row=SmpData.get(player.server).find("parties",partyId);
         SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.getString("state").equals("ACTIVE")
                 &&row.getString("activity").equals("BOSS"),"unavailable");
@@ -203,6 +207,7 @@ public final class HostedParties {
     }
 
     public static void leaveEncounter(ServerPlayer player,UUID partyId) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         CompoundTag row=SmpData.get(player.server).find("parties",partyId);
         SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.getString("state").equals("ACTIVE")
                 &&row.getString("activity").equals("BOSS"),"unavailable");
@@ -225,6 +230,7 @@ public final class HostedParties {
     }
 
     public static String startReason(ServerPlayer viewer, CompoundTag row) {
+        if (!SmpEnvironment.active(viewer)) return "unavailable";
         if (!row.getUUID("owner").equals(viewer.getUUID())) return "host_only";
         if (SmpData.closed(row)) return "closed";
         if (row.getString("state").equals("ACTIVE")) return "combat_locked";

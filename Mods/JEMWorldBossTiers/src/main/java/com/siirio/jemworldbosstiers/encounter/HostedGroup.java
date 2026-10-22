@@ -32,6 +32,13 @@ public final class HostedGroup {
 
     private HostedGroup() {}
 
+    public static void detach(LivingEntity entity) {
+        HostedLobby.release(entity);
+        entity.getPersistentData().remove(ARENA);
+        entity.getPersistentData().remove(OWNER);
+        LOADED.remove(entity.getUUID());
+    }
+
     public static boolean member(LivingEntity entity) { return entity.getPersistentData().contains(ARENA); }
 
     private static boolean support(BossProfile profile, LivingEntity entity) {
@@ -61,7 +68,7 @@ public final class HostedGroup {
     }
 
     public static void stage(LivingEntity root) {
-        if (!(root.level() instanceof ServerLevel level)) return;
+        if (!(root.level() instanceof ServerLevel level) || !HostedEncounterApi.enabled(level.getServer())) return;
         var profile = WorldTierApi.profile(root).orElse(null);
         var encounter = WorldTierApi.encounter(root).orElse(null);
         if (profile == null || profile.allyTags().isEmpty() || encounter == null || encounter.arenaId() == null) return;
@@ -100,6 +107,7 @@ public final class HostedGroup {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void joined(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity entity)) return;
+        if (!HostedEncounterApi.enabled(level.getServer())) { detach(entity); return; }
         level.getServer().execute(() -> {
             if (entity.isRemoved()) return;
             if (member(entity)) { LOADED.put(entity.getUUID(), entity); synchronize(entity); return; }
@@ -113,7 +121,7 @@ public final class HostedGroup {
     }
 
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0) return;
+        if (!HostedEncounterApi.enabled(event.getServer()) || event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0) return;
         for (var entity : List.copyOf(LOADED.values())) if (!entity.isRemoved()) synchronize(entity);
     }
 

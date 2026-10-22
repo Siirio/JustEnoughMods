@@ -39,7 +39,7 @@ public final class LegacyRewards {
         recover(player);
         var data = SmpData.get(player.server);
         var profile = Profiles.get(player.server, player.getUUID());
-        if (!DomainFeatures.loaded("jem_world_boss_tiers")) {
+        if (!DomainFeatures.loaded("jem_rewards")) {
             if (profile.contains("rewardMigration", Tag.TAG_COMPOUND) || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
                 if (!profile.getString("rewardAvailability").equals("UNAVAILABLE_MISSING_REWARD_OWNER")) {
                     profile.putString("rewardAvailability", "UNAVAILABLE_MISSING_REWARD_OWNER");
@@ -54,7 +54,7 @@ public final class LegacyRewards {
                 || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
             if (!profile.contains("rewardMigration", Tag.TAG_COMPOUND)) {
                 var journal = new CompoundTag();
-                journal.putUUID("id", UUID.randomUUID());
+                journal.putUUID("id", UUID.nameUUIDFromBytes(("jem_smp_deliveries:" + player.getUUID()).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
                 journal.put("items", profile.getList("deliveries", Tag.TAG_COMPOUND).copy());
                 profile.put("rewardMigration", journal);
                 profile.remove("deliveries");
@@ -105,16 +105,9 @@ public final class LegacyRewards {
             if (row.getString("state").startsWith("FUNDING") && !deposited) {
                 row.putString("legacyDisposition", "NOT_DEBITED");
             } else {
-                var pending = profile.getList("deliveries", Tag.TAG_COMPOUND).copy();
-                try {
-                    for (Tag tag : row.getList("escrow", Tag.TAG_COMPOUND))
-                        enqueue(pending, ItemStack.of((CompoundTag) tag));
-                } catch (IllegalArgumentException full) {
-                    if ("delivery_queue_full".equals(full.getMessage())) break;
-                    throw full;
-                }
-                profile.put("deliveries", pending);
-                data.changed(profile);
+                UUID migrationId = UUID.nameUUIDFromBytes(("jem_smp_contract:" + row.getUUID("id")).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                com.siirio.jemrewards.PendingRewardContainer.importOffline(player.server, player.getUUID(), migrationId,
+                        row.getList("escrow", Tag.TAG_COMPOUND));
                 row.remove("escrow");
                 row.putString("legacyDisposition", "RETURNED_TO_OWNER");
             }
@@ -184,10 +177,10 @@ public final class LegacyRewards {
 
     private static final class RewardImports {
         static void importLegacy(ServerPlayer player, UUID id, ListTag items) {
-            com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.importLegacy(player, id, items);
+            com.siirio.jemrewards.PendingRewardContainer.importLegacy(player, id, items);
         }
         static void finishLegacyImport(ServerPlayer player, UUID id) {
-            com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.finishLegacyImport(player, id);
+            com.siirio.jemrewards.PendingRewardContainer.finishLegacyImport(player, id);
         }
     }
 

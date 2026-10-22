@@ -1,16 +1,16 @@
 # Boss Raid
 
-> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) отменяет будущий solo/integrated JEM Raid: это dedicated-only событие JEMServer, включая восстановление сохранений. Raid scale применяется при старте рейда, party scale — при подтверждении/старте боя, каждый слой однократно; предметные награды переходят независимому владельцу. Ниже сохранено описание существующей реализации, включая прежнюю подготовку усиления; код по этому плану ещё не менялся.
+> Current 2026-10-22 implementation: JEM Raid is dedicated-only and requires JEMServer. Preparation reserves provenance/lobby state; Raid and frozen participant strength apply once at canonical Start. JEMRewards owns full personal item copies. Gameplay acceptance remains unrun.
 
 ## Universal ordinary Raid — 2026-10-22
 
-Ordinary solo/party Raid reuses the canonical hosted encounter on integrated and dedicated servers. It is distinct from scheduled/seasonal Events: those remain explicit dedicated opt-in, default off. WorldBossTiers offers solo admission without Server and owns the same preparation, full-collision-box admission, historical arena participation, rewards and durable normal-boss recovery. Server, when installed, provides the existing party/UI adapter and delegates structure discovery to StructureEncounterApi. No second Raid allowlist, scaling owner, barrier or reward ledger is introduced. Source behavior is not a completed gameplay/recovery acceptance claim. See [WorldTier](../../Mods/JEMWorldBossTiers/README.md).
+Dedicated solo/party Raid reuses the canonical hosted encounter and registered structural arena. Integrated/LAN and domain-only installations do not admit JEM Raid. Ordinary native bosses and World Tier remain independent. Server owns event admission; WorldBossTiers owns the canonical arena, frozen combat scaling and ordinary boss recovery. No second allowlist or barrier is introduced.
 
 ## Source update —2026-10-21
 
 In testing; runtime acceptance, artifact delivery and MineRENT deployment pending. The user's barrier removal applies to ordinary bosses, Campaign and Raid only. Blood Moon and Resource Rush retain their contracts. Participant departure is allowed physically; an empty arena closes through the canonical hosted grace lifecycle. Damage/reward membership and immediate elimination on actual death remain enforced.
 
-`HostedRaidScaling` owns the preparation-time Raid boost and its persisted health/damage modifiers. It applies once before Start. Canonical Start freezes participant scaling without multiplying the prepared melee boost a second time; supported native formulas apply the hosted correction only to their flat component before native percent addition; generic fixed routes keep their existing separate owner. Cancel/retry/reload/replacement restore the same preparation/lobby owner rather than stacking modifiers. These are source claims, not a runtime scaling measurement.
+`HostedRaidScaling` removes its legacy preparation modifiers before deriving combined Raid/participant strength at Start. Preparation changes no stats or size. Retry removes exact owned modifiers; a failed Start restores its size change. Native percent-damage authority remains unchanged. These are source claims, not runtime measurements.
 
 An attempted hit on a dormant registered boss opens the existing encounter GUI and does not damage it or start combat. Reload restores noAI/invulnerability/presentation hold until Start. Official server boss/event markers can invoke validated native Xaero travel; personal waypoints are unchanged. See [Boss Fight](BOSS_FIGHT.md) for the common source contract.
 

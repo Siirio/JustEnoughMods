@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "change_id": "smp-rewards-xp.inventory-rewards-20261022",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "JEM-generated item entitlement only"
+    }
+  ],
+  "precedence": {
+    "layer": "user_requested_universal_amendment",
+    "priority": 1250,
+    "overrides": []
+  },
+  "change": {
+    "summary": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged",
+    "modifiers": [
+      {
+        "property": "reward.delivery",
+        "operation": "replace",
+        "before": "SMP and boss-owned delivery, split boss loot, legacy result claim routes",
+        "after": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMRewards",
+    "kind": "approved_architecture_implementation",
+    "source_files": [
+      "Mods/JEMRewards/build.gradle",
+      "Mods/JEMRewards/gradle.properties",
+      "Mods/JEMRewards/settings.gradle",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/JemRewards.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardGrant.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardGroup.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsNetwork.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/client/RewardsJei.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/client/RewardsPanel.java",
+      "Mods/JEMRewards/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json",
+      "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/LegacyRewards.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonDeaths.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged",
+    "decision_source": "User authorized restoring abd0a4f9 and implementing amended plan on 2026-10-22; receipt protocol, native detached preview and quick-take slot transport are implementation decisions."
+  },
+  "introduced": {
+    "date": "2026-10-22",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged"
+  },
+  "history": [
+    {
+      "date": "2026-10-22",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "inventory",
+      "loot",
+      "progression",
+      "multiplayer",
+      "client_server_contract"
+    ],
+    "relations": [],
+    "notes": [
+      "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch."
+    ],
+    "unresolved": [
+      "Runtime GUI layout, first race screen and gameplay acceptance not observed."
+    ]
+  }
+}

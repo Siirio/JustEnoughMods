@@ -94,17 +94,19 @@ public final class StructureStaging {
     }
 
     public static boolean allowNativeSpawn(Level level, BlockPos position) {
+        if (level instanceof ServerLevel nativeLevel && !SmpEnvironment.active(nativeLevel.getServer())) return true;
         if (!(level instanceof ServerLevel serverLevel) || !allowNative(level, position)) return !(level instanceof ServerLevel);
         Area area = discover(serverLevel, position);
         return area == null || livingBoss(serverLevel, area) == null;
     }
 
     public static boolean managed(LivingEntity boss) {
-        if (!(boss.level() instanceof ServerLevel level)) return false;
+        if (!(boss.level() instanceof ServerLevel level) || !SmpEnvironment.active(level.getServer())) return false;
         return bossArea(level,boss)!=null;
     }
 
     public static boolean prompt(ServerPlayer player,LivingEntity boss) {
+        if (!SmpEnvironment.active(player)) return false;
         Area area=bossArea(player.serverLevel(),boss);
         if(area==null) return false;
         prompt(player,area.id());
@@ -128,11 +130,13 @@ public final class StructureStaging {
     }
 
     public static boolean arenaAvailable(net.minecraft.server.MinecraftServer server,String id) {
+        if (!SmpEnvironment.active(server)) return false;
         return SmpData.get(server).all("parties").stream().noneMatch(row->row.hasUUID("structureId")
                 &&row.getUUID("structureId").toString().equals(id)&&!SmpData.closed(row));
     }
 
     public static boolean raidAvailable(ServerPlayer player, UUID id) {
+        if (!SmpEnvironment.active(player)) return false;
         Area area = AREAS.get(id);
         CompoundTag event = EventScheduler.active(player.server, "BOSS_RAID");
         if (area == null || !area.near(player.serverLevel(), player.position())
@@ -144,6 +148,7 @@ public final class StructureStaging {
     }
 
     public static RaidTarget availableRaid(ServerLevel level,BlockPos position) {
+        if (!SmpEnvironment.active(level.getServer())) return null;
         Area area=nearby(level,Vec3.atCenterOf(position));
         if(area==null||party(level,area.id())!=null||!RaidArenaApi.compatible(level.getServer(),area.id().toString(),area.boss())) return null;
         BlockPos center=RaidArenaApi.respawnPosition(level.getServer(),area.id().toString(),area.boss()).orElse(area.center());
@@ -151,6 +156,7 @@ public final class StructureStaging {
     }
 
     public static void choose(ServerPlayer player, UUID id, String mode, boolean solo) {
+        SmpRecords.require(SmpEnvironment.active(player), "unavailable");
         Area area = AREAS.get(id);
         SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
         SmpRecords.require(!locked(player, area), "unavailable");
@@ -199,6 +205,7 @@ public final class StructureStaging {
     }
 
     public static boolean start(ServerPlayer host, CompoundTag row, List<UUID> ids) {
+        if (!SmpEnvironment.active(host)) return false;
         if (!row.getBoolean("nativePending")) return false;
         Area area = row.hasUUID("structureId") ? AREAS.get(row.getUUID("structureId")) : null;
         SmpRecords.require(area != null, "unavailable");
@@ -213,6 +220,7 @@ public final class StructureStaging {
     }
 
     public static void prompt(ServerPlayer player, UUID id) {
+        if (!SmpEnvironment.active(player)) return;
         Area area = AREAS.get(id);
         SmpRecords.require(area != null && area.near(player.serverLevel(), player.position()), "travel_to_arena");
         SmpRecords.require(!physicallyLocked(player.serverLevel(), area) && !locked(player, area), "unavailable");
@@ -220,6 +228,7 @@ public final class StructureStaging {
     }
 
     public static boolean arrive(ServerPlayer player, CompoundTag row) {
+        if (!SmpEnvironment.active(player)) return false;
         if (!row.hasUUID("structureId")) return false;
         Area area = AREAS.get(row.getUUID("structureId"));
         SmpRecords.require(area != null, "unavailable");
@@ -426,7 +435,7 @@ public final class StructureStaging {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void spawned(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level) || !(event.getEntity() instanceof LivingEntity boss)
-                || WorldTierApi.profile(boss).isEmpty() || boss.getPersistentData().getBoolean(EventSession.SPAWNED)) return;
+                || !SmpEnvironment.active(level.getServer()) || WorldTierApi.profile(boss).isEmpty() || boss.getPersistentData().getBoolean(EventSession.SPAWNED)) return;
         Area area = bossArea(level,boss);
         if (area == null) return;
         PRESENCE.remove(area.id());
@@ -465,7 +474,7 @@ public final class StructureStaging {
     @SubscribeEvent
     public static void tick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)
-                || !player.isAlive() || player.isSpectator()) return;
+                || !SmpEnvironment.active(player) || !player.isAlive() || player.isSpectator()) return;
         if (player.tickCount % CHECK_INTERVAL != 0) return;
         finishPendingRaidExit(player);
         Area area = discover(player.serverLevel(), player.blockPosition());

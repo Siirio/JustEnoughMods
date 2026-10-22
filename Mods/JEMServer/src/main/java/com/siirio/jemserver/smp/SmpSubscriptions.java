@@ -11,6 +11,7 @@ final class SmpSubscriptions {
     private static final Map<UUID, SmpViewSession> VIEWS = new HashMap<>();
 
     static void query(ServerPlayer player, SmpQuery query) {
+        if (!SmpEnvironment.active(player)) return;
         if (query.tab().isEmpty()) { close(player); return; }
         if (!SmpTable.viewable(query.tab())) return;
         if (query.page() < 0 || query.page() > SmpProtocol.MAX_PAGE) return;
@@ -18,6 +19,7 @@ final class SmpSubscriptions {
     }
 
     static void open(ServerPlayer player, SmpQuery query) {
+        if (!SmpEnvironment.active(player) || !SmpTable.viewable(query.tab())) return;
         LegacyRewards.migrate(player);
         query(player, query);
         var session = VIEWS.get(player.getUUID());

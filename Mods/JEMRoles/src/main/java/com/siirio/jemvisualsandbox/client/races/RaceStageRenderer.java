@@ -14,12 +14,37 @@ import org.lwjgl.opengl.GL14;
 
 /** A perspective skin stage. Only its camera moves; the world player stays put. */
 final class RaceStageRenderer {
-    private RaceStageRenderer() {}
+    private net.minecraft.client.multiplayer.ClientLevel sourceLevel;
+    private net.minecraft.client.player.RemotePlayer preview;
+    private net.minecraft.client.player.LocalPlayer sourcePlayer;
 
-    static void render(GuiGraphics graphics, int screenWidth, int screenHeight, int stageWidth,
+    void dispose() { sourceLevel = null; sourcePlayer = null; preview = null; }
+
+    private net.minecraft.client.player.RemotePlayer prepare(Minecraft client) {
+        if (client.level == null || client.player == null) { dispose(); return null; }
+        var source = client.player;
+        if (sourceLevel != client.level || sourcePlayer != source || preview == null) {
+            sourceLevel = client.level;
+            sourcePlayer = source;
+            preview = new net.minecraft.client.player.RemotePlayer(sourceLevel, source.getGameProfile()) {
+                @Override public net.minecraft.resources.ResourceLocation getSkinTextureLocation() {
+                    return source.getSkinTextureLocation();
+                }
+                @Override public String getModelName() { return source.getModelName(); }
+                @Override public boolean isModelPartShown(net.minecraft.world.entity.player.PlayerModelPart part) {
+                    return source.isModelPartShown(part);
+                }
+            };
+        }
+        for (var slot : net.minecraft.world.entity.EquipmentSlot.values())
+            preview.setItemSlot(slot, source.getItemBySlot(slot).copy());
+        return preview;
+    }
+
+    void render(GuiGraphics graphics, int screenWidth, int screenHeight, int stageWidth,
                        int accent, float entry, float reveal, float switchProgress, float turnDirection) {
         var client = Minecraft.getInstance();
-        var player = client.player;
+        var player = prepare(client);
         if (player == null || reveal >= 1) return;
         graphics.flush();
 
@@ -94,7 +119,7 @@ final class RaceStageRenderer {
             poses.last().pose().set(view);
             poses.last().normal().set(new Matrix3f(view));
             poses.translate(0, Math.sin(System.nanoTime() / 1_000_000_000.0 * 1.7) * .009 * (1 - enter), 0);
-            // Resolve through the dispatcher, then render only the live entity.
+            // Use a detached native player so camera-player animation hooks cannot hide the preview.
             // Skipping dispatcher.render avoids world shadows, fire and hitboxes
             // without changing any of the dispatcher's corresponding flags.
             RenderSystem.runAsFancy(() -> dispatcher.getRenderer(player).render(player, 0, 0, poses, buffers, 15728880));

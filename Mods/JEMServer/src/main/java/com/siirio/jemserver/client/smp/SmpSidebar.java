@@ -7,7 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 public final class SmpSidebar {
-    private static final List<String> SMP_TABS = List.of("profile", "players", "parties", "events", "market", "settlements", "prizes", "roles", "professions");
+    private static final List<String> SMP_TABS = List.of("parties", "events", "market", "settlements", "roles", "professions");
     private int x, y, width, rowHeight, availableHeight;
     private List<String> tabs = SMP_TABS;
     private net.minecraft.nbt.CompoundTag features = new net.minecraft.nbt.CompoundTag();

@@ -5,7 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 
 public final class SmpEnvironment {
     public static boolean active(MinecraftServer server) {
-        return server != null && server.overworld() != null;
+        return server != null && server.isDedicatedServer() && server.overworld() != null;
     }
 
     public static boolean active(ServerPlayer player) {

@@ -1,6 +1,8 @@
 # SMP GUI
 
-> План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) заменяет будущий navigation contract: SMP/party только на dedicated, социальные профили и раздел "Награды" удаляются, предметы получаются слева от инвентаря без SMP, Market самостоятельно открывается через Economy. Это ещё не реализовано; описания текущих экранов ниже не являются разрешением сохранить противоречащие элементы при выполнении нового плана.
+> Amendment 2026-10-22 is implemented in source under the user request to restore `abd0a4f9` and implement the updated plan. See the implementation section below for current ownership and the delivery receipt for build/publication evidence. Historical conflicting screen/module descriptions do not override it.
+
+Current contract: SMP routes to independent Settlements/Market; Rewards are in normal inventory E on both host types. Integrated/LAN has no JEM Events or parties. Common ordinary Minecraft XP has one x2 baseline; other modifiers apply above it.
 
 ## Starter entitlement and authentication/race protection —2026-10-21
 
@@ -162,3 +164,12 @@ JEMMenuSupport1.1.2 adds vanilla HumanoidArmorLayer to the existing neutral GUI 
 ## Player preview ownership —2026-10-21
 
 User correction: custom player geometry is for the SMP GUI only. GuiPlayerRenderScope now activates only for SmpScreen; ordinary screens and inventories keep native renderers. The Quick Skin preview replacement is removed, and direct race-preview calls return to the native entity renderer. SMP controls, assets and server actions remain unchanged. Visual runtime acceptance is UNOBSERVED: no game was launched for this task and no new art was authored.
+
+
+## Implemented amendment — 2026-10-22
+
+SMP is dedicated-only, including a dedicated host with one player. Profiles and Rewards pages and their mutation routes are retired; existing UUID progression/history remains stored. Market opens the Economy screen; Settlements opens its existing domain screen. Ordinary inventory E owns the independent JEMRewards take-only panel, even when SMP/Economy is absent. Combat result opens inventory instead of claiming through the legacy combat packet. Reserved protocol enum/discriminator positions remain to avoid ordinal reuse.
+
+JEMRewards renders two columns of four native slots using the original inventory texture, native font and buttons, with paged server snapshots. Left-click transfers the selected stack into available inventory space; leftovers remain saved. It never owns a carried cursor stack or accepts insert/drop/hotbar/drag operations. Recipe-book width is respected; on narrow layouts a native Rewards button closes the book before revealing slots. JEI receives the occupied rectangle. Actual GUI Scale/resource-pack/extension acceptance remains unobserved; no gameplay launch was performed.
+
+Race selection uses one screen-owned detached RemotePlayer renderer for mandatory and F6 entry, native default/loaded skin resolution, source-player identity invalidation and native equipment copies. This isolates the installed camera-player animation hook; the original disappearance was not reproduced at runtime, so visual resolution remains in testing.

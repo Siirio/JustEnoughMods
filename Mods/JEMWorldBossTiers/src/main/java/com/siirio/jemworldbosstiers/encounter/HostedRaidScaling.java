@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 
-/** Raid-only strength is frozen during preparation; party strength is frozen at Start. */
+/** Legacy preparation cleanup; all Raid and party strength is frozen at Start. */
 public final class HostedRaidScaling {
     private static final String ROOT = "JEMPreparedRaidScaling";
 
@@ -18,28 +18,9 @@ public final class HostedRaidScaling {
         return boss.getPersistentData().contains(ROOT);
     }
 
-    public static void prepare(LivingEntity boss, String profile) {
-        if (prepared(boss)) return;
-        HostedScaling scaling = HostedConfig.scale(profile, 1, true);
-        CompoundTag state = new CompoundTag();
-        state.putDouble("Health", scaling.health());
-        state.putDouble("Damage", scaling.damage());
-        boss.getPersistentData().put(ROOT, state);
-        apply(boss, Attributes.MAX_HEALTH, scaling.health());
-        apply(boss, Attributes.ATTACK_DAMAGE, scaling.damage());
-        boss.setHealth(boss.getMaxHealth());
-        CompoundTag encounter = boss.getPersistentData().getCompound(EncounterData.ROOT_KEY);
-        if (encounter.getBoolean("HealthSyncPending")) encounter.putFloat("InitialHealth", boss.getMaxHealth());
-    }
-
     public static HostedScaling startScaling(LivingEntity boss, String profile, int participants) {
-        if (!prepared(boss)) return HostedConfig.scale(profile, participants, true);
-        HostedScaling party = HostedConfig.scale(profile, participants, false);
-        // Active hosted damage includes non-melee sources through its damage hook.
-        // Retaining the preparation attribute here would multiply melee damage twice.
-        apply(boss, Attributes.ATTACK_DAMAGE, 1);
-        return new HostedScaling(party.health(),
-                party.damage() * boss.getPersistentData().getCompound(ROOT).getDouble("Damage"));
+        restore(boss);
+        return HostedConfig.scale(profile, participants, true);
     }
 
     public static void restore(LivingEntity boss) {

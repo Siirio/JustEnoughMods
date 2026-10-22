@@ -189,6 +189,12 @@ public final class EconomyNetwork {
         sendStatus(player, false);
     }
 
+    public static void openMarket(ServerPlayer player) {
+        if (!fullMarket(player) || !CHANNEL.isRemotePresent(player.connection.connection)
+                || com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isEmpty()) return;
+        sendCatalog(player, true, "", "all", 0, "");
+    }
+
     private static void sendCatalog(ServerPlayer player, boolean open, String search, String category, int page, String error) {
         var snapshot = EconomyApi.marketCatalog(player, search, category, Math.max(0, Math.min(page, 10_000)));
         if (!error.isBlank()) snapshot = new com.siirio.jemeconomy.api.MarketCatalogSnapshot(snapshot.revision(), snapshot.page(), snapshot.pages(),

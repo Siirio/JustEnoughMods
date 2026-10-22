@@ -21,6 +21,16 @@ public final class MarketRuntime {
     public static boolean isBuyer(net.minecraft.world.entity.Entity entity) { return entity.getTags().contains(BUYER_TAG); }
     private static final Map<ServerLevel, Set<BlockPos>> LOADED = Collections.synchronizedMap(new WeakHashMap<>());
     private MarketRuntime() { }
+
+    @SubscribeEvent
+    public static void commands(net.minecraftforge.event.RegisterCommandsEvent event) {
+        event.getDispatcher().register(net.minecraft.commands.Commands.literal("market")
+                .requires(source -> com.siirio.jemeconomy.api.EconomyApi.isEnabled(source.getServer()))
+                .executes(context -> {
+                    com.siirio.jemeconomy.network.EconomyNetwork.openMarket(context.getSource().getPlayerOrException());
+                    return 1;
+                }));
+    }
     public static void register(ServerLevel level, BlockPos pos) { LOADED.computeIfAbsent(level, ignored -> new java.util.LinkedHashSet<>()).add(pos.immutable()); }
     public static void unregister(ServerLevel level, BlockPos pos) { Set<BlockPos> set = LOADED.get(level); if (set != null) set.remove(pos); }
 

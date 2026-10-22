@@ -59,12 +59,12 @@ public final class SmpRuntime {
 
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
-        if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED
-                && event.getCommandSelection() != Commands.CommandSelection.INTEGRATED) return;
+        if (event.getCommandSelection() != Commands.CommandSelection.DEDICATED) return;
         com.siirio.jemserver.smp.events.calendar.HolidayCommands.register(event.getDispatcher());
         com.siirio.jemserver.map.ProjectCommands.register(event.getDispatcher());
-        event.getDispatcher().register(Commands.literal("smp").executes(c -> {
-            SmpNetwork.open(c.getSource().getPlayerOrException(), EventRuntime.enabled(c.getSource().getServer()) ? "events" : "profiles", null);
+        event.getDispatcher().register(Commands.literal("smp")
+                .requires(source -> SmpEnvironment.active(source.getServer())).executes(c -> {
+            SmpNetwork.open(c.getSource().getPlayerOrException(), EventRuntime.enabled(c.getSource().getServer()) ? "events" : "parties", null);
             return 1;
         }));
     }

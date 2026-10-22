@@ -17,6 +17,7 @@ public enum SmpTable {
     }
 
     public static boolean viewable(String key) {
+        if (key.equals("profiles") || key.equals("prizes")) return false;
         if (READ_ONLY_ROUTES.contains(key)) return true;
         try {
             fromKey(key);

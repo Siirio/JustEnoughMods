@@ -53,11 +53,7 @@ public final class SmpScreen extends Screen {
     private boolean leaveAccepted;
     private boolean closeLobby;
     private boolean dissolvedLobby;
-    private final PlayerPreviewWidget playerPreview = new PlayerPreviewWidget();
-    private final Map<UUID, Integer> prizeOffsets = new HashMap<>();
-    private final Set<UUID> expandedPrizeGroups = new HashSet<>();
     private final LinkedHashSet<String> sellerSuggestions = new LinkedHashSet<>();
-    private UUID hoveredPrize;
     private String settlementTab = "residents";
     private UUID pendingSettlementRemoval;
     private boolean pendingSettlementDelete;
@@ -351,8 +347,6 @@ public final class SmpScreen extends Screen {
 
     private void selectTab(String next) {
         if (next.equals("market")) { if (model.getCompound("features").getBoolean("economy")) ServerCurrencyPresentation.openMarket(this); return; }
-        if (next.equals("profile") && minecraft != null && minecraft.player != null) { visit("profiles", minecraft.player.getUUID()); return; }
-        if (next.equals("players")) { visit("profiles", null); return; }
         if (!next.equals(tab) || selected != null) visit(next, null);
     }
 
@@ -369,13 +363,12 @@ public final class SmpScreen extends Screen {
         text(g, title, left + 36, top + 12, CREAM, bodyX - left - 40);
         text(g, Component.translatable("jem.smp." + tab), bodyX, top + 12, CREAM, bodyWidth - 30);
         button(g, left + panelWidth - 28, top + 7, 20, 20, "close", this::onClose, mx, my);
-        String activeSidebar = tab.equals("profiles") && selected != null && minecraft != null && minecraft.player != null
-                && selected.equals(minecraft.player.getUUID()) ? "profile" : tab.equals("profiles") ? "players" : tab;
+        String activeSidebar = tab;
         sidebar.render(g, activeSidebar, mx, my);
         if (navigation.available() || selected != null || !tab.equals("events") || !form.isEmpty())
             button(g, left + 8, top + panelHeight - 32, bodyX - left - 18, 22, "back", this::back, mx, my);
         bodyY = top + 66;
-        boolean toolbar = selected == null && !tab.equals("prizes") && form.isEmpty();
+        boolean toolbar = selected == null && form.isEmpty();
         search.setVisible(toolbar); search.active = toolbar;
         seller.setVisible(toolbar && tab.equals("shops")); seller.active = toolbar && tab.equals("shops");
         if (toolbar) {
@@ -400,8 +393,7 @@ public final class SmpScreen extends Screen {
             clippingBody = true;
             g.enableScissor(bodyX, bodyY, bodyX + bodyWidth, bodyBottom);
             try {
-                if (tab.equals("prizes")) renderPrizes(g, mx, my);
-                else if (selected != null) {
+                if (selected != null) {
                     if (currentDetail()) renderDetail(g, mx, my);
                     else text(g, Component.translatable("jem.smp.loading"), bodyX + 6, bodyY + 10, MUTED, bodyWidth - 12);
                 } else if (tab.equals("events")) renderEvents(g, mx, my);
@@ -418,8 +410,6 @@ public final class SmpScreen extends Screen {
                     button(g, bodyX + 36, bodyBottom + 9, 32, 22, "next", () -> { if ((page + 1) * size < model.getInt("total")) { page++; scroll = 0; query(); } }, mx, my);
                 }
             }
-            if (!tab.equals("prizes") && !tab.equals("profiles") && !(tab.equals("parties") && selected != null) && model.getInt("pendingRewards") > 0)
-                button(g, bodyX + Math.max(0, bodyWidth - 138), bodyBottom + 9, Math.min(138, bodyWidth), 22, "claim_rewards", () -> visit("prizes", null), mx, my);
         } else renderForm(g, mx, my, partial);
         String message = error.isEmpty() ? model.getString("message") : error;
         if (!message.isEmpty()) text(g, Component.translatable("jem.smp.error." + message), bodyX, top + panelHeight - 12, RED, bodyWidth);
@@ -499,87 +489,6 @@ public final class SmpScreen extends Screen {
         text(g, Component.translatable("jem.smp." + key), x + 6, y + (h - 9) / 2, MUTED, w - 12);
         if (!reason.isEmpty() && mx >= x && mx < x + w && my >= y && my < y + h)
             hoveredLabel = Component.translatable("jem.smp.error." + reason);
-    }
-
-    private void renderPrizes(GuiGraphics g, int mx, int my) {
-        var bundles = model.getList("rows", Tag.TAG_COMPOUND);
-        int y = bodyY - scroll;
-        hoveredPrize = null;
-        int claimWidth = Math.min(160, bodyWidth / 2);
-        if (bundles.isEmpty()) disabledButton(g, bodyX, y, claimWidth, "claim_all", "", mx, my);
-        else button(g, bodyX, y, claimWidth, 24, "claim_all", () -> claimReward(null), mx, my);
-        text(g, Component.translatable("jem.smp.available_items", model.getInt("totalItems")), bodyX + claimWidth + 10, y + 8, PEACH, bodyWidth - claimWidth - 10);
-        y += 34;
-        if (bundles.isEmpty()) {
-            SmpIcons.draw(g, "prizes", bodyX + 12, y + 7, 28);
-            text(g, Component.translatable("jem.smp.no_pending_rewards"), bodyX + 48, y + 16, MUTED, bodyWidth - 58);
-            maxScroll = 0; scroll = 0; return;
-        }
-        for (var value : bundles) {
-            var bundle = (CompoundTag) value;
-            if (!bundle.hasUUID("id")) continue;
-            var items = bundle.getList("items", Tag.TAG_COMPOUND);
-            var groups = bundle.getList("groups", Tag.TAG_COMPOUND);
-            UUID id = bundle.getUUID("id");
-            boolean expanded = !groups.isEmpty() && expandedPrizeGroups.contains(id);
-            int h = 68 + (expanded ? groups.size() * 48 : 0);
-            if (y + h < bodyY || y >= bodyBottom) { y += h + GAP; continue; }
-            frame(g, bodyX, y, bodyWidth, h, ROW);
-            SmpIcons.draw(g, rewardIcon(bundle), bodyX + 8, y + 8, 22);
-            int groupButtonWidth = groups.isEmpty() ? 0 : Math.min(108, bodyWidth / 5);
-            text(g, Component.translatable(bundle.getString("titleKey")), bodyX + 38, y + 8, CREAM, bodyWidth - 48 - groupButtonWidth);
-            Component date = bundle.getLong("createdAt") > 0 ? Component.literal(formatTime(bundle.getLong("createdAt"))) : Component.translatable("jem.smp.unknown_date");
-            text(g, date, bodyX + 38, y + 22, MUTED, bodyWidth - 48);
-            if (!groups.isEmpty()) {
-                int groupX = bodyX + bodyWidth - groupButtonWidth - 7;
-                SmpGuiAssets.button(g, groupX, y + 5, groupButtonWidth, 24, "secondary", mx >= groupX && mx < groupX + groupButtonWidth && my >= y + 5 && my < y + 29, false);
-                text(g, Component.translatable(expanded ? "jem.smp.reward.collapse" : "jem.smp.reward.expand", groups.size()), groupX + 7, y + 13, CREAM, groupButtonWidth - 14);
-                hitWithin(groupX, y + 5, groupButtonWidth, 24, bodyX, bodyY, bodyWidth, bodyBottom - bodyY, () -> {
-                    if (!expandedPrizeGroups.remove(id)) expandedPrizeGroups.add(id);
-                });
-            }
-            int buttonWidth = Math.min(104, Math.max(72, bodyWidth / 5));
-            int stripX = bodyX + 8, stripY = y + 37, stripWidth = Math.max(27, bodyWidth - buttonWidth - 22);
-            int maxOffset = Math.max(0, ItemRewardStrip.horizontalWidth(items) - stripWidth);
-            int offset = Math.min(maxOffset, prizeOffsets.getOrDefault(id, 0));
-            prizeOffsets.put(id, offset);
-            ItemRewardStrip.renderHorizontal(g, items, stripX, stripY, stripWidth, offset, mx, my, item -> hoveredItem = item);
-            restoreBodyScissor(g);
-            if (mx >= stripX && mx < stripX + stripWidth && my >= stripY && my < stripY + ItemRewardStrip.CELL) hoveredPrize = id;
-            button(g, bodyX + bodyWidth - buttonWidth - 7, stripY + 1, buttonWidth, 24, "claim", () -> claimReward(id), mx, my);
-            if (expanded) {
-                int groupY = y + 66;
-                for (Tag groupValue : groups) {
-                    var group = (CompoundTag) groupValue;
-                    frame(g, bodyX + 8, groupY, bodyWidth - 16, 44, INSET);
-                    text(g, Component.translatable(group.getString("titleKey")), bodyX + 15, groupY + 5, PEACH, bodyWidth - 30);
-                    var groupItems = group.getList("items", Tag.TAG_COMPOUND);
-                    int groupStripWidth = bodyWidth - 30;
-                    int groupOffset = Math.min(Math.max(0, ItemRewardStrip.horizontalWidth(groupItems) - groupStripWidth), prizeOffsets.getOrDefault(id, 0));
-                    ItemRewardStrip.renderHorizontal(g, groupItems, bodyX + 15, groupY + 16, groupStripWidth, groupOffset, mx, my, item -> hoveredItem = item);
-                    restoreBodyScissor(g);
-                    if (mx >= bodyX + 15 && mx < bodyX + 15 + groupStripWidth && my >= groupY + 16 && my < groupY + 16 + ItemRewardStrip.CELL) hoveredPrize = id;
-                    groupY += 48;
-                }
-            }
-            y += h + GAP;
-        }
-        maxScroll = Math.max(0, y + scroll - bodyBottom);
-        scroll = Math.min(scroll, maxScroll);
-    }
-
-    private void claimReward(UUID id) {
-        sendFor(id, 0, id == null ? "claim_all" : "claim", new JsonObject());
-    }
-
-    private String rewardIcon(CompoundTag bundle) {
-        String key = (bundle.getString("titleKey") + " " + bundle.getString("sourceId")).toUpperCase(Locale.ROOT);
-        if (key.contains("BLOOD")) return "BLOOD_MOON";
-        if (key.contains("FISH")) return "FISHING";
-        if (key.contains("COOK")) return "COOKING_SHOW";
-        if (key.contains("RUSH")) return "RESOURCE_RUSH";
-        if (key.contains("BOSS") || key.contains("RAID")) return "BOSS_RAID";
-        return "prizes";
     }
 
     private void renderInvites(GuiGraphics g, int mx, int my) {
@@ -760,64 +669,6 @@ public final class SmpScreen extends Screen {
         text(g, Component.literal(dimensionName(dimension.toString())), x + 31, y + 7, CREAM, width - 112);
         text(g, Component.literal(pos.getX() + ", " + pos.getY() + ", " + pos.getZ()), x + 31, y + 23, PEACH, width - 112);
         button(g, x + width - 77, y + 8, 70, 25, "map", () -> openLocation(detail), mx, my);
-    }
-
-    private void renderProfile(GuiGraphics g, CompoundTag row, int mx, int my) {
-        UUID id = row.getUUID("id");
-        int y = bodyY - scroll, portraitWidth = Math.max(90, Math.min(140, bodyWidth / 3));
-        int portraitHeight = 192;
-        frame(g, bodyX, y, portraitWidth, portraitHeight, INSET);
-        playerPreview.render(g, id, row.getString("name"), bodyX + 4, y + 4, portraitWidth - 8, portraitHeight - 29, mx, my);
-        restoreBodyScissor(g);
-        text(g, Component.translatable(row.getBoolean("online") ? "jem.smp.online" : "jem.smp.offline"), bodyX + 9, y + portraitHeight - 20, row.getBoolean("online") ? GREEN : MUTED, portraitWidth - 18);
-        int sx = bodyX + portraitWidth + 10, sw = bodyWidth - portraitWidth - 10;
-        text(g, Component.literal(row.getString("name")), sx, y + 8, CREAM, sw);
-        int identityY = y + 22;
-        if (row.contains("race")) { text(g, Component.translatable("jem.smp.profile.race", Component.translatable("jem.roles.race." + row.getString("race").toLowerCase(Locale.ROOT) + ".name")), sx, identityY, PEACH, sw); identityY += 14; }
-        if (row.contains("settlement")) { text(g, Component.translatable("jem.smp.profile.settlement", row.getString("settlement"), row.getString("settlementTier")), sx, identityY, MUTED, sw); identityY += 14; }
-        text(g, Component.translatable("jem.smp.profile.recruits", row.getLong("recruitCount")), sx, identityY, MUTED, sw); identityY += 14;
-        var professionRows = row.getList("professions", Tag.TAG_COMPOUND);
-        if (!professionRows.isEmpty()) {
-            String professionText = java.util.stream.IntStream.range(0, professionRows.size()).mapToObj(index -> {
-                var value = professionRows.getCompound(index);
-                return Component.translatable("jem.professions.name." + value.getString("id").toLowerCase(Locale.ROOT)).getString() + " " + value.getInt("level");
-            }).collect(java.util.stream.Collectors.joining(" · "));
-            text(g, Component.translatable("jem.smp.profile.professions", professionText), sx, identityY, MUTED, sw); identityY += 14;
-        }
-        var stats = new ArrayList<CompoundTag>();
-        var playTime = new CompoundTag();
-        playTime.putString("type", "playTicks");
-        playTime.putLong("count", row.getLong("playTicks"));
-        stats.add(playTime);
-        var mobs = new CompoundTag();
-        mobs.putString("type", "mobsKilled");
-        mobs.putLong("count", row.getLong("mobsKilled"));
-        stats.add(mobs);
-        for (Tag value : row.getList("eventStats", Tag.TAG_COMPOUND)) stats.add((CompoundTag) value);
-        int columns = sw >= 240 ? 2 : 1, cellWidth = sw / columns;
-        for (int i = 0; i < stats.size(); i++) {
-            var statistic = stats.get(i);
-            String key = statistic.getString("type");
-            int cx = sx + (i % columns) * cellWidth, cy = identityY + 5 + (i / columns) * 47;
-            frame(g, cx, cy, cellWidth - GAP, 43, ROW);
-            SmpIcons.draw(g, key, cx + 7, cy + 12, 20);
-            text(g, Component.translatable("jem.smp." + key), cx + 33, cy + 8, MUTED, cellWidth - 41);
-            String value = key.equals("playTicks") ? java.time.Duration.ofSeconds(statistic.getLong("count") / 20).toHours() + " h" : Long.toString(statistic.getLong("count"));
-            text(g, Component.literal(value), cx + 33, cy + 24, CREAM, cellWidth - 41);
-        }
-        int statsBottom = identityY + 5 + ((stats.size() + columns - 1) / columns) * 47;
-        var actions = row.getList("actions", Tag.TAG_STRING);
-        int actionColumns = Math.max(1, Math.min(3, sw / 100));
-        int actionWidth = (sw - (actionColumns - 1) * GAP) / actionColumns;
-        for (int index = 0; index < actions.size(); index++) {
-            String action = actions.getString(index);
-            int ax = sx + index % actionColumns * (actionWidth + GAP);
-            int ay = statsBottom + 6 + index / actionColumns * 29;
-            button(g, ax, ay, actionWidth, 24, action, () -> invoke(action), mx, my);
-        }
-        int contentHeight = Math.max(portraitHeight, statsBottom - y + 6 + ((actions.size() + actionColumns - 1) / actionColumns) * 29);
-        maxScroll = Math.max(0, contentHeight + 8 - (bodyBottom - bodyY));
-        scroll = Math.min(scroll, maxScroll);
     }
 
     private void eventFrame(GuiGraphics g, String activity, int x, int y, int w, int h, int fill) {
@@ -1345,7 +1196,6 @@ public final class SmpScreen extends Screen {
 
     private void renderDetailBody(GuiGraphics g, int mx, int my) {
         var row = model.getCompound("detail");
-        if (tab.equals("profiles")) { renderProfile(g, row, mx, my); return; }
         int y = bodyY - scroll;
         String title = row.getString("title");
         if (title.isBlank()) title = row.getString("name");
@@ -1840,11 +1690,6 @@ public final class SmpScreen extends Screen {
             memberScroll = Math.max(0, Math.min(memberMaxScroll, memberScroll - (int) (delta * 22)));
             return true;
         }
-        if (tab.equals("prizes") && hoveredPrize != null) {
-            int offset = Math.max(0, prizeOffsets.getOrDefault(hoveredPrize, 0) - (int) (delta * ItemRewardStrip.CELL));
-            prizeOffsets.put(hoveredPrize, offset);
-            return true;
-        }
         if (messageBox != null && messageBox.isMouseOver(x, y)) return messageBox.mouseScrolled(x, y, delta);
         if (!form.isEmpty() && x >= bodyX && y >= bodyY && y < bodyBottom) {
             if (form.equals("invite")) {
@@ -1863,7 +1708,7 @@ public final class SmpScreen extends Screen {
     @Override
     public boolean mouseClicked(double x, double y, int button) {
         if (button != 0) return true;
-        if (!hoveredItem.isEmpty() && Set.of("events", "parties", "prizes").contains(tab) && JeiItemLink.open(hoveredItem)) return true;
+        if (!hoveredItem.isEmpty() && Set.of("events", "parties").contains(tab) && JeiItemLink.open(hoveredItem)) return true;
         String sidebarTab = sidebar.at(x, y);
         if (sidebarTab != null && !waiting) {
             if (!SmpSidebar.openExternal(sidebarTab)) selectTab(sidebarTab);
