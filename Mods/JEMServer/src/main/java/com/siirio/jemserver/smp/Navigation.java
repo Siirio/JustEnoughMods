@@ -99,22 +99,22 @@ public final class Navigation {
         var entries = ACTIVE.computeIfAbsent(player.getUUID(), key -> new LinkedHashMap<>());
         boolean changed = false;
         for (String table : List.of("parties"))
-            for (var row : SmpData.get(player.server).views(SmpTable.fromKey(table))) {
-                if (SmpData.closed(row) || !row.contains("dimension")) continue;
+            for (var row : SmpData.get(player.server).parties().snapshots()) {
+                if (row.closed() || !row.hasDimension()) continue;
                 boolean authorized =
-                        row.getUUID("owner").equals(player.getUUID())
+                        row.owner().equals(player.getUUID())
                                 || Parties.accepted(row, player.getUUID());
-                String key = table + ":" + row.getUUID("id");
+                String key = table + ":" + row.id();
                 if (authorized && !entries.containsKey(key) && entries.size() < MAX_POINTS) {
-                    String label = row.getString("title");
+                    String label = row.title();
                     entries.put(
                             key,
                             new NavigationPoint(
                                     table,
-                                    row.getUUID("id"),
+                                    row.id(),
                                     label.length() > 80 ? label.substring(0, 80) : label,
-                                    new ResourceLocation(row.getString("dimension")),
-                                    BlockPos.of(row.getLong("position")),
+                                    new ResourceLocation(row.dimension()),
+                                    BlockPos.of(row.position()),
                                     Long.MAX_VALUE));
                     changed = true;
                 }
@@ -138,9 +138,9 @@ public final class Navigation {
                                                                 .view(
                                                                         SmpTable.fromKey(point.subsystem()),
                                                                         point.id());
-                                                if (row == null || SmpData.closed(row)) return true;
+                                                if (row == null || row.closed()) return true;
                                                 return point.subsystem().equals("parties")
-                                                        && !Parties.accepted(row, id);
+                                                        && row instanceof PartyState party && !Parties.accepted(party, id);
                                             });
                     if (changed) {
                         var player = server.getPlayerList().getPlayer(id);

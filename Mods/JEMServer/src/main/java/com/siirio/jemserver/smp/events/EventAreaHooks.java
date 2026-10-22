@@ -1,6 +1,8 @@
 package com.siirio.jemserver.smp.events;
 
 import com.siirio.jemserver.smp.*;
+
+import com.siirio.jemserver.smp.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.*;
 import net.minecraft.network.chat.Component;
@@ -42,8 +44,8 @@ public final class EventAreaHooks {
         var promptedBefore=PROMPTED.getOrDefault(player.getUUID(),Set.of());
         var zones=new ArrayList<EventBoundary>();
         for(var row:EventScheduler.active(player.server)) {
-            if(!row.contains("radius")) continue;
-            String type=row.getString("activity");UUID id=row.getUUID("id");
+            if(!row.hasRadius()) continue;
+            String type=row.activity();UUID id=row.id();
             boolean within=EventRegions.contains(row,player.serverLevel(),player.blockPosition());
             boolean safelyWithin=EventRegions.contains(row,player.serverLevel(),player.getBoundingBox())
                     &&player.serverLevel().noCollision(player,player.getBoundingBox());
@@ -52,19 +54,19 @@ public final class EventAreaHooks {
             if(near) prompted.add(id);
             if(type.equals("RESOURCE_RUSH") && within!=before.contains(id)) player.sendSystemMessage(Component.translatable(within?"jem.event.rush_enter":"jem.event.rush_leave"));
             boolean member=new EncounterContext(row).isParticipant(player.getUUID());
-            if(!row.getBoolean("combatStarted") && near && !promptedBefore.contains(id) && !member && (type.equals("BLOOD_MOON") || type.equals("BOSS_RAID")))
+            if(!row.combatStarted() && near && !promptedBefore.contains(id) && !member && (type.equals("BLOOD_MOON") || type.equals("BOSS_RAID")))
                 player.sendSystemMessage(Component.literal("▣ ").withStyle(ChatFormatting.GOLD)
                         .append(Component.translatable("jem.smp."+type)).append(" ")
                         .append(Component.translatable("jem.smp.open_event").withStyle(style -> style.withColor(ChatFormatting.GREEN).withBold(true)
                                 .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/smp event-open " + id)))));
             if(type.equals("BLOOD_MOON") && member && player.isAlive() && !player.isSpectator()) {
-                var entry=SmpRecords.members(row).getCompound(player.getStringUUID());
+                var entry=row.memberOrEmpty(player.getUUID());
                 if(safelyWithin) {
-                    if(entry.getBoolean("awaitingReturn")) { entry.remove("awaitingReturn"); }
-                    entry.putDouble("safeX",player.getX());entry.putDouble("safeY",player.getY());entry.putDouble("safeZ",player.getZ());
+                    if(entry.awaitingReturn()) { entry.clearAwaitingReturn(); }
+                    entry.safeX(player.getX());entry.safeY(player.getY());entry.safeZ(player.getZ());
                 }
             }
-            if(!type.equals("BOSS_RAID") && zones.size()<32 && row.getString("dimension").equals(player.level().dimension().location().toString())) {
+            if(!type.equals("BOSS_RAID") && zones.size()<32 && row.dimension().equals(player.level().dimension().location().toString())) {
                 double distance=Math.max(Math.max(EventRegions.minX(row)-player.getX(),player.getX()-EventRegions.maxX(row)),Math.max(EventRegions.minZ(row)-player.getZ(),player.getZ()-EventRegions.maxZ(row)));
                 if(distance<=EventRules.BOUNDARY_DISTANCE.get()) {
                     var encounter=new EncounterContext(row);
@@ -72,7 +74,7 @@ public final class EventAreaHooks {
                     boolean active=type.equals("BLOOD_MOON")&&!completed;
                     boolean locked=type.equals("BLOOD_MOON")&&BloodMoonSolidBoundary.locked(player,row);
                     boolean passable=type.equals("BLOOD_MOON")&&!locked;
-                    zones.add(new EventBoundary(id,row.getString("dimension"),type,EventRegions.minX(row),player.serverLevel().getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),player.serverLevel().getMaxBuildHeight()-1,EventRegions.maxZ(row),type.equals("BLOOD_MOON")?EventRules.BLOOD_COLOR.get():type.equals("RESOURCE_RUSH")?EventRules.RUSH_COLOR.get():EventRules.RAID_COLOR.get(),active,passable));
+                    zones.add(new EventBoundary(id,row.dimension(),type,EventRegions.minX(row),player.serverLevel().getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row),player.serverLevel().getMaxBuildHeight()-1,EventRegions.maxZ(row),type.equals("BLOOD_MOON")?EventRules.BLOOD_COLOR.get():type.equals("RESOURCE_RUSH")?EventRules.RUSH_COLOR.get():EventRules.RAID_COLOR.get(),active,passable));
                 }
             }
         }
@@ -89,10 +91,10 @@ public final class EventAreaHooks {
     }
 
     private static void promptInScope(ServerPlayer player, UUID id) {
-        CompoundTag row = SmpData.get(player.server).events().current(id);
+        EventState row = SmpData.get(player.server).events().current(id);
         SmpRecords.require(EventRuntime.available(player.server, row), "unavailable");
-        SmpRecords.require(row != null && row.getString("state").equals("ACTIVE") && !row.getBoolean("combatStarted"), "unavailable");
-        String type = row.getString("activity");
+        SmpRecords.require(row != null && row.state().equals("ACTIVE") && !row.combatStarted(), "unavailable");
+        String type = row.activity();
         SmpRecords.require((type.equals("BLOOD_MOON") || type.equals("BOSS_RAID")) && EventRegions.near(row, player.serverLevel(), player.blockPosition()), "travel_to_arena");
         EventNetwork.prompt(player, id, EventEntryKind.valueOf(type), Component.translatable("jem.smp." + type).getString(), "");
     }
@@ -102,7 +104,7 @@ public final class EventAreaHooks {
         if(!(event.getEntity() instanceof Mob mob) || !(mob.level() instanceof net.minecraft.server.level.ServerLevel level)) return;
         for(String type:List.of("BLOOD_MOON")) {
             var row=EventScheduler.active(level.getServer(),type);
-            if(row==null || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
+            if(row==null || !row.combatStarted() || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             boolean belongs=type.equals("BLOOD_MOON")?BloodMoon.belongs(row,mob):RaidEvent.belongs(row,mob);
             if(!belongs && !EventSession.admitted(row,mob)) EventRegions.eject(mob,row);
             else if(mob.getNavigation().getTargetPos()!=null && !SolidBoundary.permitsTeleport(mob,level,Vec3.atBottomCenterOf(mob.getNavigation().getTargetPos())))
@@ -138,7 +140,7 @@ public final class EventAreaHooks {
         if(target==null) return;
         var row=SmpData.get(mob.getServer()).events().current(tag.getUUID(EventSession.SESSION));
         if (row != null ? !EventRuntime.available(mob.getServer(), row) : !EventRuntime.enabled(mob.getServer())) return;
-        if(row!=null&&row.getString("activity").equals("BLOOD_MOON")&&!BloodMoon.canTarget(mob,target)) {
+        if(row!=null&&row.activity().equals("BLOOD_MOON")&&!BloodMoon.canTarget(mob,target)) {
             event.setCanceled(true);
             return;
         }
@@ -182,8 +184,8 @@ public final class EventAreaHooks {
             var row=EventSession.forPlayer(player);
             if(row!=null && new EventSession(row).accepted(other.getUUID())) event.setCanceled(true);
             for(var party:SmpData.get(player.server).parties().currentRows()) {
-                if(party.getBoolean("nativePending") && party.getString("activity").equals("BOSS")
-                        && party.getString("state").equals("ACTIVE") && Parties.accepted(party,player.getUUID())
+                if(party.nativePending() && party.activity().equals("BOSS")
+                        && party.state().equals("ACTIVE") && Parties.accepted(party,player.getUUID())
                         && Parties.accepted(party,other.getUUID())) {
                     event.setCanceled(true);
                     break;
@@ -207,10 +209,10 @@ public final class EventAreaHooks {
         if(owner==null) owner=EventSession.owner(event.getSource().getDirectEntity());
         if(!(owner instanceof ServerPlayer player) || !event.getEntity().getPersistentData().hasUUID(BloodMoon.EVENT_ID)) return;
         var row=SmpData.get(player.server).events().current(event.getEntity().getPersistentData().getUUID(BloodMoon.EVENT_ID));
-        if(row==null || !row.getString("state").equals("ACTIVE") || !new EventSession(row).accepted(player.getUUID())) return;
-        var member=SmpRecords.members(row).getCompound(player.getStringUUID());
-        member.putBoolean("contributed",true);
-        member.putDouble("damage",member.getDouble("damage")+Math.min(event.getAmount(),event.getEntity().getHealth()));
+        if(row==null || !row.state().equals("ACTIVE") || !new EventSession(row).accepted(player.getUUID())) return;
+        var member=row.memberOrEmpty(player.getUUID());
+        member.contributed(true);
+        member.damage(member.damage()+Math.min(event.getAmount(),event.getEntity().getHealth()));
 
     }
     @SubscribeEvent public static void removed(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {

@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -28,13 +30,13 @@ public final class EventRuntime {
         return server != null && server.isDedicatedServer() && EventRules.ENABLED.get();
     }
 
-    public static boolean available(MinecraftServer server, net.minecraft.nbt.CompoundTag row) {
+    public static boolean available(MinecraftServer server, EventState row) {
         return row != null && com.siirio.jemserver.smp.SmpEnvironment.active(server)
                 && (enabled(server) || ordinaryRaid(row));
     }
 
-    public static boolean ordinaryRaid(net.minecraft.nbt.CompoundTag row) {
-        return row != null && row.getBoolean("ordinaryRaid") && row.getString("activity").equals("BOSS_RAID");
+    public static boolean ordinaryRaid(EventState row) {
+        return row != null && row.ordinaryRaid() && row.activity().equals("BOSS_RAID");
     }
 
     public static void starting(MinecraftServer server) {

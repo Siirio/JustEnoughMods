@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -62,13 +64,13 @@ public final class EventMobModifiers {
     private static final double STRONGEST_WAVE_FOUR_HIT=14;
     private static final List<String> ARCHETYPES=List.of("BRUTE","HUNTER","ARMORED","BREAKER","DEFLECTOR","DUELIST","THROWER");
 
-    public static void resetWave(CompoundTag row) {
-        row.put(ELITE_TYPES,new CompoundTag());
-        row.putInt(SPECIAL_EQUIPPED,0);
-        row.putInt(FULL_EQUIPPED,0);
+    public static void resetWave(EventState row) {
+        row.eliteTypes(java.util.Map.of());
+        row.specialEquipped(0);
+        row.fullEquipped(0);
     }
 
-    public static void applyBloodMoon(Mob mob,CompoundTag row,int tier,int wave) {
+    public static void applyBloodMoon(Mob mob,EventState row,int tier,int wave) {
         applyTier(mob,tier);
         penetration(mob,BLOOD_MOON_ARMOR_PENETRATION);
         mob.getPersistentData().putDouble(BLOOD_MOON_ATTACK_PRESSURE,BloodMoonWaves.attackPressure(tier));
@@ -187,20 +189,20 @@ public final class EventMobModifiers {
         EventMobScale.apply(mob,1+scale);
     }
 
-    private static boolean claimElite(CompoundTag row,Mob mob) {
+    private static boolean claimElite(EventState row,Mob mob) {
         String type=BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType()).toString();
-        CompoundTag types=row.getCompound(ELITE_TYPES);
-        if(types.getBoolean(type)) return false;
-        types.putBoolean(type,true);
-        row.put(ELITE_TYPES,types);
+        var types=new java.util.LinkedHashMap<>(row.eliteTypes());
+        if(types.getOrDefault(type,false)) return false;
+        types.put(type,true);
+        row.eliteTypes(types);
         return true;
     }
 
-    private static void equip(Mob mob,CompoundTag row,int wave) {
+    private static void equip(Mob mob,EventState row,int wave) {
         if(wave!=1&&wave!=2&&wave!=4||!(mob instanceof Zombie||mob instanceof AbstractSkeleton||mob instanceof Pillager||mob instanceof Vindicator)) return;
-        boolean special=row.getInt(SPECIAL_EQUIPPED)<MAX_SPECIAL_EQUIPPED
+        boolean special=row.specialEquipped()<MAX_SPECIAL_EQUIPPED
                 && (mob.getPersistentData().getString(ARCHETYPE).equals("ARMORED")||mob.getRandom().nextDouble()<SPECIAL_EQUIPMENT_CHANCE);
-        boolean full=special&&row.getInt(FULL_EQUIPPED)<MAX_FULL_EQUIPPED&&mob.getRandom().nextDouble()<FULL_EQUIPMENT_CHANCE;
+        boolean full=special&&row.fullEquipped()<MAX_FULL_EQUIPPED&&mob.getRandom().nextDouble()<FULL_EQUIPMENT_CHANCE;
         int armorPieces=full?4:special?2+mob.getRandom().nextInt(2):mob.getRandom().nextInt(2);
         var armor=armor(wave);
         List<EquipmentSlot> slots=new java.util.ArrayList<>(List.of(EquipmentSlot.HEAD,EquipmentSlot.CHEST,EquipmentSlot.LEGS,EquipmentSlot.FEET));
@@ -208,8 +210,8 @@ public final class EventMobModifiers {
         for(int index=0;index<armorPieces;index++) set(mob,slots.get(index),enchanted(mob,new ItemStack(armor.get(slots.get(index))),wave));
         Item weapon=weapon(mob,wave);
         if(weapon!=Items.AIR) set(mob,EquipmentSlot.MAINHAND,enchanted(mob,new ItemStack(weapon),wave));
-        if(special) row.putInt(SPECIAL_EQUIPPED,row.getInt(SPECIAL_EQUIPPED)+1);
-        if(full) row.putInt(FULL_EQUIPPED,row.getInt(FULL_EQUIPPED)+1);
+        if(special) row.specialEquipped(row.specialEquipped()+1);
+        if(full) row.fullEquipped(row.fullEquipped()+1);
     }
 
     private static Map<EquipmentSlot,Item> armor(int wave) {

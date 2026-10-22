@@ -25,137 +25,159 @@ public sealed interface SmpAction {
     }
 
     sealed interface PartyCommand extends SmpAction {
+        void apply(ServerPlayer actor, PartyState party);
         default SmpTable table() { return SmpTable.PARTIES; }
         default void execute(ServerPlayer player) { SmpActions.party(player, this); }
     }
     sealed interface EventCommand extends SmpAction {
+        void apply(ServerPlayer actor, EventState event);
         default SmpTable table() { return SmpTable.EVENTS; }
         default void execute(ServerPlayer player) { SmpActions.event(player, this); }
     }
     sealed interface ShopCommand extends SmpAction {
         default SmpTable table() { return SmpTable.SHOPS; }
-        default void execute(ServerPlayer player) {
-            com.siirio.jemserver.smp.shops.ShopIndex.action(player, id(), revision(), kind().key(), request());
-        }
     }
 
     record NavigateParty(UUID request, UUID id, int revision) implements PartyCommand {
         public NavigateParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.NAVIGATE; }
+        public void apply(ServerPlayer actor, PartyState party) { SmpActions.navigateParty(actor, party); }
     }
 
     record SoloParty(UUID request, UUID id, int revision) implements PartyCommand {
         public SoloParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.SOLO; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.setSolo(actor, party, true); }
     }
 
     record MultiplayerParty(UUID request, UUID id, int revision) implements PartyCommand {
         public MultiplayerParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.MULTIPLAYER; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.setSolo(actor, party, false); }
     }
 
     record InviteParty(UUID request, UUID id, int revision, UUID player) implements PartyCommand {
         public InviteParty { Objects.requireNonNull(request); Objects.requireNonNull(id); Objects.requireNonNull(player); }
         public SmpActionKind kind() { return SmpActionKind.INVITE; }
         public SmpPlayerRequest input() { return new SmpPlayerRequest(player); }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.invite(actor, party, player); }
     }
 
     record JoinParty(UUID request, UUID id, int revision) implements PartyCommand {
         public JoinParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.JOIN; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.join(actor, party); }
     }
 
     record ArriveParty(UUID request, UUID id, int revision) implements PartyCommand {
         public ArriveParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.ARRIVE; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.arrive(actor, party); }
     }
 
     record LeaveParty(UUID request, UUID id, int revision) implements PartyCommand {
         public LeaveParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.LEAVE; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.leave(actor, party); }
     }
 
     record ReadyParty(UUID request, UUID id, int revision) implements PartyCommand {
         public ReadyParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.READY; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.ready(actor, party); }
     }
 
     record PublishParty(UUID request, UUID id, int revision) implements PartyCommand {
         public PublishParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.PUBLISH; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.publish(actor, party); }
     }
 
     record ApproveParty(UUID request, UUID id, int revision, UUID player) implements PartyCommand {
         public ApproveParty { Objects.requireNonNull(request); Objects.requireNonNull(id); Objects.requireNonNull(player); }
         public SmpActionKind kind() { return SmpActionKind.APPROVE; }
         public SmpPlayerRequest input() { return new SmpPlayerRequest(player); }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.approve(actor, party, player); }
     }
 
     record RemoveParty(UUID request, UUID id, int revision, UUID player) implements PartyCommand {
         public RemoveParty { Objects.requireNonNull(request); Objects.requireNonNull(id); Objects.requireNonNull(player); }
         public SmpActionKind kind() { return SmpActionKind.REMOVE; }
         public SmpPlayerRequest input() { return new SmpPlayerRequest(player); }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.remove(actor, party, player); }
     }
 
     record TransferParty(UUID request, UUID id, int revision, UUID player) implements PartyCommand {
         public TransferParty { Objects.requireNonNull(request); Objects.requireNonNull(id); Objects.requireNonNull(player); }
         public SmpActionKind kind() { return SmpActionKind.TRANSFER; }
         public SmpPlayerRequest input() { return new SmpPlayerRequest(player); }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.transfer(actor, party, player); }
     }
 
     record CancelParty(UUID request, UUID id, int revision) implements PartyCommand {
         public CancelParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.CANCEL; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.cancel(actor, party, false); }
     }
 
     record DissolveParty(UUID request, UUID id, int revision) implements PartyCommand {
         public DissolveParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.DISSOLVE; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.cancel(actor, party, true); }
     }
 
     record StartParty(UUID request, UUID id, int revision) implements PartyCommand {
         public StartParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.START; }
+        public void apply(ServerPlayer actor, PartyState party) { Parties.start(actor, party); }
     }
 
     record NavigateEvent(UUID request, UUID id, int revision) implements EventCommand {
         public NavigateEvent { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.NAVIGATE; }
+        public void apply(ServerPlayer actor, EventState event) { SmpActions.navigateEvent(actor, event); }
     }
 
     record TeleportToEvent(UUID request, UUID id, int revision) implements EventCommand {
         public TeleportToEvent { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.TELEPORT_EVENT; }
+        public void apply(ServerPlayer actor, EventState event) { SmpActions.teleportEvent(actor, event); }
     }
 
     record JoinRaidEvent(UUID request, UUID id, int revision) implements EventCommand {
         public JoinRaidEvent { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.JOIN_RAID; }
+        public void apply(ServerPlayer actor, EventState event) { SmpActions.joinEvent(actor, event, false); }
     }
 
     record CreatePartyEvent(UUID request, UUID id, int revision) implements EventCommand {
         public CreatePartyEvent { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.CREATE_PARTY; }
+        public void apply(ServerPlayer actor, EventState event) { SmpActions.joinEvent(actor, event, false); }
     }
 
     record SoloEvent(UUID request, UUID id, int revision) implements EventCommand {
         public SoloEvent { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.SOLO; }
+        public void apply(ServerPlayer actor, EventState event) { SmpActions.joinEvent(actor, event, true); }
     }
 
     record FavoriteShop(UUID request, UUID id, int revision) implements ShopCommand {
         public FavoriteShop { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.FAVORITE; }
+        public void execute(ServerPlayer player) { com.siirio.jemserver.smp.shops.ShopIndex.favorite(player, id); }
     }
 
     record BuyShop(UUID request, UUID id, int revision) implements ShopCommand {
         public BuyShop { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.BUY; }
+        public void execute(ServerPlayer player) { com.siirio.jemserver.smp.shops.ShopIndex.buy(player, id, revision, request); }
     }
 
     record NavigateShop(UUID request, UUID id, int revision) implements ShopCommand {
         public NavigateShop { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.NAVIGATE; }
+        public void execute(ServerPlayer player) { com.siirio.jemserver.smp.shops.ShopIndex.navigate(player, id); }
     }
 
     static SmpAction fromWire(UUID request, SmpTable table, UUID id, int revision,

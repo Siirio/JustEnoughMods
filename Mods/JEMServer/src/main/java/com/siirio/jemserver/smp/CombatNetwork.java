@@ -57,30 +57,30 @@ public final class CombatNetwork {
         if(server.getTickCount()%TICKS_PER_SECOND!=0) return;
         var visible=new HashSet<UUID>();
         for(var party:SmpData.get(server).parties().snapshots()) {
-            if(!party.getString("state").equals("ACTIVE") || !party.hasUUID("bossEntity")) continue;
-            var dimension=ResourceLocation.tryParse(party.getString("dimension"));
+            if(!party.state().equals("ACTIVE") || !party.hasBossEntity()) continue;
+            var dimension=ResourceLocation.tryParse(party.dimension());
             var level=dimension==null?null:server.getLevel(ResourceKey.create(Registries.DIMENSION,dimension));
-            if(level==null || !(level.getEntity(party.getUUID("bossEntity")) instanceof LivingEntity boss)) continue;
+            if(level==null || !(level.getEntity(party.bossEntity()) instanceof LivingEntity boss)) continue;
             var participants=HostedEncounterApi.status(boss);
-            var snapshot=base(party,boss.getDisplayName().getString(),false);
+            var snapshot=base(party.id(),party.dimension(),party.ends(),boss.getDisplayName().getString(),false);
             snapshot.putString("titleKey",boss.getType().getDescriptionId());
-            if(party.hasUUID("eventId")) {
-                var event=SmpData.get(server).events().snapshot(party.getUUID("eventId"));
-                if(event!=null) snapshot.putLong("ends",event.getLong("ends"));
+            if(party.hasEventId()) {
+                var event=SmpData.get(server).events().snapshot(party.eventId());
+                if(event!=null) snapshot.putLong("ends",event.ends());
             }
             var rows=new ListTag();
             var included=new HashSet<UUID>();
             for(var participant:participants) {
                 included.add(participant.playerId());
                 var player=server.getPlayerList().getPlayer(participant.playerId());
-                var member=SmpRecords.members(party).getCompound(participant.playerId().toString());
+                var member=party.member(participant.playerId());
                 var row=playerRow(participant.playerId(),member,player,participant.state());
                 if(!row.contains("remaining")) row.putLong("remaining",participant.remainingTicks()/TICKS_PER_SECOND);
                 rows.add(row);
             }
-            for(UUID id:SmpRecords.memberIds(party)) {
-                var member=SmpRecords.members(party).getCompound(id.toString());
-                if(!included.contains(id) && member.getBoolean("simulated")) rows.add(playerRow(id,member,null,"ALIVE"));
+            for(UUID id:party.members().keySet()) {
+                var member=party.member(id);
+                if(!included.contains(id) && member.simulated()) rows.add(playerRow(id,member,null,"ALIVE"));
             }
             snapshot.put("rows",rows);
             for(var participant:participants) {
@@ -89,40 +89,40 @@ public final class CombatNetwork {
             }
         }
         for(var event:SmpData.get(server).events().snapshots()) {
-            if(!event.getString("state").equals("ACTIVE") || !event.getString("activity").equals("BLOOD_MOON") || !event.getBoolean("combatStarted")) continue;
+            if(!event.state().equals("ACTIVE") || !event.activity().equals("BLOOD_MOON") || !event.combatStarted()) continue;
             var snapshot=bloodSnapshot(server,event);
-            for(UUID id:SmpRecords.memberIds(event)) {
+            for(UUID id:event.members().keySet()) {
                 var player=server.getPlayerList().getPlayer(id);
-                if(player!=null && new EventSession(event).accepted(id) && player.level().dimension().location().toString().equals(event.getString("dimension"))) publish(player,snapshot,visible);
+                if(player!=null && new EventSession(event).accepted(id) && player.level().dimension().location().toString().equals(event.dimension())) publish(player,snapshot,visible);
             }
         }
-        for(UUID id:List.copyOf(SmpServerSession.get(server).combat.keySet())) if(!visible.contains(id)) {
+        for(UUID id:SmpServerSession.get(server).combatPlayers()) if(!visible.contains(id)) {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null) send(player,new Update(new CompoundTag(),false));
-            SmpServerSession.get(server).combat.remove(id);
+            SmpServerSession.get(server).player(id).combat = null;
         }
     }
 
-    public static void refreshBloodMoon(MinecraftServer server,CompoundTag event) {
-        if(!event.getString("state").equals("ACTIVE")) return;
+    public static void refreshBloodMoon(MinecraftServer server,EventState event) {
+        if(!event.state().equals("ACTIVE")) return;
         CompoundTag snapshot=bloodSnapshot(server,event);
-        for(UUID id:SmpRecords.memberIds(event)) {
+        for(UUID id:event.members().keySet()) {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null && new EventSession(event).accepted(id)) {
                 send(player,new Update(snapshot,false));
-                SmpServerSession.get(server).combat.put(id,snapshot.copy());
+                SmpServerSession.get(server).player(id).combat = snapshot.copy();
             }
         }
     }
 
-    private static CompoundTag bloodSnapshot(MinecraftServer server,CompoundTag event) {
-        var snapshot=base(event,"",true);
-        snapshot.putInt("wave",event.getInt("wave"));
+    private static CompoundTag bloodSnapshot(MinecraftServer server,EventState event) {
+        var snapshot=base(event.id(),event.dimension(),event.ends(),"",true);
+        snapshot.putInt("wave",event.wave());
         snapshot.putInt("waves",BloodMoonWaves.WAVES);
-        snapshot.putInt("remainingMobs",Math.max(0,event.getInt("waveTotal")-event.getInt("waveKilled")));
+        snapshot.putInt("remainingMobs",Math.max(0,event.waveTotal()-event.waveKilled()));
         var eventLevel=EventRegions.level(server,event);
-        if(eventLevel!=null) for(var mobTag:event.getList("mobs",Tag.TAG_STRING)) {
-            var mob=eventLevel.getEntity(UUID.fromString(mobTag.getAsString()));
+        if(eventLevel!=null) for(UUID mobId:event.mobs()) {
+            var mob=eventLevel.getEntity(mobId);
             if(mob!=null && mob.getPersistentData().getString("jem:blood_category").equals("MINIBOSS")) {
                 snapshot.putString("miniboss",mob.getDisplayName().getString());
                 snapshot.putString("minibossKey",mob.getType().getDescriptionId());
@@ -130,43 +130,49 @@ public final class CombatNetwork {
             }
         }
         var rows=new ListTag();
-        for(UUID id:SmpRecords.memberIds(event)) {
-            var member=SmpRecords.members(event).getCompound(id.toString());
+        for(UUID id:event.members().keySet()) {
+            var member=event.member(id);
             var player=server.getPlayerList().getPlayer(id);
-            rows.add(playerRow(id,member,player,member.getBoolean("accepted")?"ALIVE":"ELIMINATED"));
+            rows.add(playerRow(id,member,player,member.accepted()?"ALIVE":"ELIMINATED"));
         }
         snapshot.put("rows",rows);
         BloodMoonVoting.snapshot(server,event,snapshot);
         return snapshot;
     }
-    private static CompoundTag base(CompoundTag source,String title,boolean blood) {
+    private static CompoundTag base(UUID id,String dimension,long ends,String title,boolean blood) {
         var result=new CompoundTag();
-        result.putUUID("id",source.getUUID("id"));
-        result.putString("dimension",source.getString("dimension"));
+        result.putUUID("id",id);
+        result.putString("dimension",dimension);
         result.putString("title",title);
         result.putBoolean("blood",blood);
-        result.putLong("ends",source.getLong("ends"));
+        result.putLong("ends",ends);
         return result;
     }
-    private static CompoundTag playerRow(UUID id,CompoundTag member,ServerPlayer player,String state) {
+    private static CompoundTag playerRow(UUID id,PartyMember member,ServerPlayer player,String state) {
+        return playerRow(id,member==null?"":member.name(),member!=null&&member.simulated(),
+                member==null?0F:member.hp(),member==null?0F:member.maxHp(),member==null?0:member.ping(),player,state);
+    }
+    private static CompoundTag playerRow(UUID id,EventMember member,ServerPlayer player,String state) {
+        return playerRow(id,member.name(),false,0F,0F,0,player,state);
+    }
+    private static CompoundTag playerRow(UUID id,String name,boolean simulated,float hp,float maxHp,int ping,ServerPlayer player,String state) {
         var row=new CompoundTag();
         row.putUUID("id",id);
-        row.putString("name",player==null?member.getString("name"):player.getGameProfile().getName());
-        boolean simulated=member.getBoolean("simulated");
+        row.putString("name",player==null?name:player.getGameProfile().getName());
         if(player==null && !simulated) state="DISCONNECTED";
         else if(player!=null && ReviveSupport.downed(player)) {state="DOWNED";row.putLong("remaining",ReviveSupport.remainingTicks(player)/TICKS_PER_SECOND);row.putBoolean("timerPaused",ReviveSupport.timerPaused(player));}
         else if(player!=null && (!player.isAlive() || player.isSpectator())) state="ELIMINATED";
         row.putString("state",state);
-        row.putFloat("hp",simulated?member.getFloat("hp"):player==null?0:player.getHealth());
-        row.putFloat("maxHp",simulated?member.getFloat("maxHp"):player==null?0:player.getMaxHealth());
-        if(simulated) row.putInt("ping",member.getInt("ping"));
+        row.putFloat("hp",simulated?hp:player==null?0:player.getHealth());
+        row.putFloat("maxHp",simulated?maxHp:player==null?0:player.getMaxHealth());
+        if(simulated) row.putInt("ping",ping);
         return row;
     }
     private static void publish(ServerPlayer player,CompoundTag snapshot,Set<UUID> visible) {
         if(!visible.add(player.getUUID())) return;
-        if(!snapshot.equals(SmpServerSession.get(player.server).combat.get(player.getUUID()))) {
+        if(!snapshot.equals(SmpServerSession.get(player.server).player(player.getUUID()).combat)) {
             send(player,new Update(snapshot,false));
-            SmpServerSession.get(player.server).combat.put(player.getUUID(),snapshot.copy());
+            SmpServerSession.get(player.server).player(player.getUUID()).combat = snapshot.copy();
         }
     }
     @SubscribeEvent public static void closed(HostedEncounterClosedEvent event) {
@@ -184,47 +190,57 @@ public final class CombatNetwork {
             if(player!=null) complete(player,result);
         }
     }
-    public static void completedBloodMoon(MinecraftServer server,CompoundTag event) {
-        var result=base(event,"",true);
+    public static void completedBloodMoon(MinecraftServer server,EventState event) {
+        var result=base(event.id(),event.dimension(),event.ends(),"",true);
         result.putBoolean("success",true);
-        result.putString("source",event.getUUID("id").toString());
+        result.putString("source",event.id().toString());
         var rows=new ListTag();
-        SmpRecords.memberIds(event).stream().sorted(Comparator
-                .comparingInt((UUID id)->SmpRecords.members(event).getCompound(id.toString()).getInt("kills")).reversed()
-                .thenComparing(Comparator.comparingDouble((UUID id)->SmpRecords.members(event).getCompound(id.toString()).getDouble("damage")).reversed())
+        event.members().keySet().stream().sorted(Comparator
+                .comparingInt((UUID id)->event.member(id).kills()).reversed()
+                .thenComparing(Comparator.comparingDouble((UUID id)->event.member(id).damage()).reversed())
                 .thenComparing(UUID::toString)).forEach(id->{
-            var row=SmpRecords.members(event).getCompound(id.toString()).copy();
+            var row=resultRow(event.member(id));
             row.putUUID("id",id);
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null) row.putString("name",player.getGameProfile().getName());
             rows.add(row);
         });
         result.put("rows",rows);
-        for(UUID id:SmpRecords.memberIds(event)) {
+        for(UUID id:event.members().keySet()) {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null) complete(player,result);
         }
     }
-    public static void failedBloodMoon(MinecraftServer server,CompoundTag event) {
-        var result=base(event,"",true);
+    public static void failedBloodMoon(MinecraftServer server,EventState event) {
+        var result=base(event.id(),event.dimension(),event.ends(),"",true);
         result.putBoolean("success",false);
-        result.putString("source",event.getUUID("id").toString());
+        result.putString("source",event.id().toString());
         var rows=new ListTag();
-        for(UUID id:SmpRecords.memberIds(event)) {
-            var row=SmpRecords.members(event).getCompound(id.toString()).copy();
+        for(UUID id:event.members().keySet()) {
+            var row=resultRow(event.member(id));
             row.putUUID("id",id);
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null) row.putString("name",player.getGameProfile().getName());
             rows.add(row);
         }
         result.put("rows",rows);
-        for(UUID id:SmpRecords.memberIds(event)) {
+        for(UUID id:event.members().keySet()) {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null) complete(player,result);
         }
     }
+    /** Explicit result-screen projection; persistent member metadata never enters the packet. */
+    private static CompoundTag resultRow(EventMember member) {
+        var row=new CompoundTag();
+        row.putString("name",member.name());
+        row.putInt("kills",member.kills());
+        row.putDouble("damage",member.damage());
+        row.putInt("revives",member.revives());
+        row.putInt("waves",member.waves());
+        return row;
+    }
     private static void complete(ServerPlayer player,CompoundTag result) {
-        SmpServerSession.get(player.server).combat.remove(player.getUUID());
+        SmpServerSession.get(player.server).player(player.getUUID()).combat = null;
         send(player,new Update(new CompoundTag(),false));
         sendResult(player,result);
     }
@@ -241,7 +257,7 @@ public final class CombatNetwork {
     }
     @SubscribeEvent public static void dimension(net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player && SmpEnvironment.active(player))
-            SmpServerSession.get(player.server).combat.remove(player.getUUID());
+            SmpServerSession.get(player.server).player(player.getUUID()).combat = null;
     }
     private CombatNetwork() {}
 }

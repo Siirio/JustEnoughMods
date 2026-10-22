@@ -1,3 +1,13 @@
+## 2026-10-22 - Complete engineering v2 through E20 without tests
+
+- User request: complete the supplied engineering findings through E20, skipping any portion that requires writing tests; keep the existing no-tests policy.
+- Implementation decisions: replaced the remaining SMP NBT domain records with typed party/profile/event/shop/schedule/legacy-contract/quarantine state and recursively immutable snapshots. Named operations dispatch typed commands; codecs preserve existing save keys, field presence, native payloads and recovery journals. Request/view/combat state now shares one player session under an explicit logical-server lifetime.
+- Completed the event, fishing, death-recovery, raid, reward and boss-arena consumers against their typed owners. Profile lifecycle capture and explicit shop refresh occur outside pure view projection. Unknown or unexpectedly undecodable saved data remains preserved and inaccessible instead of becoming an empty store.
+- Bug / Both Sided / unexpected saved-data decode exceptions could make native storage substitute an empty owner; deferred boss binding could read a stale party snapshot / in testing. Resolution mechanisms: retain the original blocked root and surface errors after native loading; resolve current party membership and ACTIVE state inside the delayed command. Player approval remains outstanding.
+- E20 non-test portion: pinned opt-in Spotless, Checkstyle, PMD, SpotBugs and CPD configuration, strict failure handling, shared module/source-profile inventory, and revision-correct metric scope. Test suites, ArchUnit, regression fixtures and test-dependent CI gates were skipped. No quality or metrics command was executed and no passing quality gate is claimed.
+- Production builds: Roles, Settlements and Server reobfuscated JARs succeeded, then exact outputs were synchronized to ordinary local Server and Client/ManagedPack. Atlas evidence and native AutoModpack delivery are recorded in `Docs/engineering/engineering-v2-artifacts.json`. No tests, automated code analyzers, formatters, gameplay client or disposable server were run.
+- Preserved unrelated working-tree edits, the stable profile, MineRENT deployment and immutable release baseline. This is an engineering/source delivery, not gameplay acceptance.
+
 ## 2026-10-22 - Refactor Java domain ownership and production build graph
 
 User request: implement the supplied JEM Java/Forge Engineering v2 archive in one pass, without questions. The user explicitly reaffirmed that no tests are to be added or run. The archive is technical direction; its sample prompts and proposed automated enforcement do not override the current project rules or the newer independent Rewards/dedicated SMP contracts.

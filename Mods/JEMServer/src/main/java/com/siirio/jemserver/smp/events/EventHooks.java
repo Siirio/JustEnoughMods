@@ -83,23 +83,23 @@ public final class EventHooks {
         if (event != null) track(level, event, target);
     }
 
-    private static void track(ServerLevel level, CompoundTag row, net.minecraft.core.BlockPos pos) {
+    private static void track(ServerLevel level, EventState row, net.minecraft.core.BlockPos pos) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { trackInScope(level, row, pos); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> trackInScope(level, store.events().bind(row), pos));
     }
 
-    private static void trackInScope(ServerLevel level, CompoundTag row, net.minecraft.core.BlockPos pos) {
+    private static void trackInScope(ServerLevel level, EventState row, net.minecraft.core.BlockPos pos) {
         if (!EventRegions.contains(row, level, pos)) return;
-        var placed = row.getCompound("placements");
+        var placed = new java.util.LinkedHashSet<>(row.placements());
         if (placed.size() >= SmpConfig.RUSH_TRACKED_BLOCKS.get()) {
-            row.putBoolean("rushTrackingFull", true);
+            row.rushTrackingFull( true);
 
             return;
         }
-        placed.putBoolean(Long.toString(pos.asLong()), true);
-        row.put("placements", placed);
+        placed.add(pos.asLong());
+        row.placements(placed);
 
     }
 
@@ -136,7 +136,7 @@ public final class EventHooks {
         if (!tag.hasUUID(key)) return;
         var row = SmpData.get(level.getServer()).events().current(tag.getUUID(key));
         if (row != null ? !EventRuntime.available(level.getServer(), row) : !EventRuntime.enabled(level.getServer())) return;
-        if (row == null || !row.getString("state").equals("ACTIVE")
+        if (row == null || !row.state().equals("ACTIVE")
                 || key.equals(BloodMoon.EVENT_ID) && !activeBloodMoonSpawn(level,event.getEntity())) {
             event.setCanceled(true);
             return;
@@ -159,7 +159,7 @@ public final class EventHooks {
         var tag=entity.getPersistentData();
         if(!tag.hasUUID(BloodMoon.EVENT_ID)) return false;
         var row=SmpData.get(level.getServer()).events().current(tag.getUUID(BloodMoon.EVENT_ID));
-        return row!=null && row.getString("state").equals("ACTIVE") && BloodMoonLoot.activeAttempt(row,entity);
+        return row!=null && row.state().equals("ACTIVE") && BloodMoonLoot.activeAttempt(row,entity);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -193,12 +193,13 @@ public final class EventHooks {
                 SmpData.get(player.server)
                         .events().current(mob.getPersistentData().getUUID(BloodMoon.EVENT_ID));
         if (row == null
-                || !row.getString("state").equals("ACTIVE")
+                || !row.state().equals("ACTIVE")
                 || !EventRegions.contains(row, player.serverLevel(), player.blockPosition()))
             return;
-        var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-        member.putBoolean("contributed", true);
-        SmpRecords.members(row).put(player.getStringUUID(), member);
+        var member = row.member(player.getUUID());
+        if (member == null) member = new EventMember();
+        member.contributed( true);
+        row.addMember(player.getUUID(), member);
 
     }
 
@@ -221,7 +222,7 @@ public final class EventHooks {
                                             .getPersistentData()
                                             .getUUID(BloodMoon.EVENT_ID));
             if (targetEvent == null
-                    || !targetEvent.getString("state").equals("ACTIVE")
+                    || !targetEvent.state().equals("ACTIVE")
                     || !EventRegions.contains(
                             targetEvent, player.serverLevel(), player.blockPosition()))
                 event.setCanceled(true);
@@ -233,7 +234,7 @@ public final class EventHooks {
                 SmpData.get(level.getServer())
                         .events().current(source.getPersistentData().getUUID(BloodMoon.EVENT_ID));
         if (row == null
-                || !row.getString("state").equals("ACTIVE")
+                || !row.state().equals("ACTIVE")
                 || !EventRegions.contains(row, level, event.getEntity().blockPosition()))
             event.setCanceled(true);
     }

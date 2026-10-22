@@ -1,5 +1,28 @@
 def inventory = new groovy.json.JsonSlurper().parse(new File(rootProject.projectDir, 'tools/module-inventory.json'))
-inventory.modules.findAll { it.java }.each { module ->
-    include(module.name)
-    project(":${module.name}").projectDir = new File(rootProject.projectDir, "Mods/${module.name}")
+def names = new HashSet<String>()
+def statuses = ['production', 'development', 'retired', 'upstream-patch']
+inventory.modules.each { module ->
+    if (!(module.name instanceof String) || !(module.name ==~ /JEM[A-Za-z0-9]+/)
+            || !names.add(module.name) || !statuses.contains(module.status)
+            || !(module.java instanceof Boolean) || !(module.modIds instanceof List)) {
+        throw new GradleException("Invalid or duplicate module inventory entry: ${module}")
+    }
+    if (module.java) {
+        if (!(module.status in ['production', 'development'])) {
+            throw new GradleException("Inactive/upstream module cannot enter the Java graph: ${module.name}")
+        }
+        def directory = new File(rootProject.projectDir, "Mods/${module.name}")
+        if (!new File(directory, 'build.gradle').isFile()) {
+            throw new GradleException("Missing declared Java build: ${module.name}")
+        }
+        include(module.name)
+        project(":${module.name}").projectDir = directory
+    }
+}
+
+// A newly added module must be classified before any root graph can omit it.
+new File(rootProject.projectDir, 'Mods').eachDir { directory ->
+    if (new File(directory, 'build.gradle').isFile() && !names.contains(directory.name)) {
+        throw new GradleException("Unclassified Java module: ${directory.name}; update tools/module-inventory.json")
+    }
 }

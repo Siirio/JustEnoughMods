@@ -10,7 +10,6 @@ import com.siirio.jemworldbosstiers.api.WorldTierApi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
@@ -78,25 +77,17 @@ public final class StructureStaging {
         return area;
     }
 
-    private static CompoundTag party(ServerLevel level, UUID id) {
-        var serverForMutation = level.getServer();
-        if (serverForMutation == null || serverForMutation.overworld() == null) { return partyInScope(level, id); }
-        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
-        return store.edit(() -> partyInScope(level, id));
-    }
-
-    private static CompoundTag partyInScope(ServerLevel level, UUID id) {
+    private static PartyState party(ServerLevel level, UUID id) {
         var cached = PARTY_CACHE.get(id);
         if (cached != null) {
             if (cached.isEmpty()) return null;
-            var current = SmpData.get(level.getServer()).parties().current(cached.get());
-            if (current != null && !SmpData.closed(current)) return current;
+            var current = SmpData.get(level.getServer()).parties().snapshot(cached.get());
+            if (current != null && !current.closed()) return current;
         }
-        var row = SmpData.get(level.getServer()).parties().currentRows().stream()
-                .filter(value -> value.hasUUID("structureId") && value.getUUID("structureId").equals(id) && !SmpData.closed(value))
-                .findFirst();
+        var row = SmpData.get(level.getServer()).parties().snapshots().stream()
+                .filter(value -> value.hasStructureId() && value.structureId().equals(id) && !value.closed()).findFirst();
         if (PARTY_CACHE.size() >= AREA_LIMIT) PARTY_CACHE.clear();
-        PARTY_CACHE.put(id, row.map(value -> value.getUUID("id")));
+        PARTY_CACHE.put(id, row.map(PartyState::id));
         return row.orElse(null);
     }
 
@@ -149,19 +140,19 @@ public final class StructureStaging {
 
     private static boolean arenaAvailableInScope(net.minecraft.server.MinecraftServer server,String id) {
         if (!SmpEnvironment.active(server)) return false;
-        return SmpData.get(server).parties().currentRows().stream().noneMatch(row->row.hasUUID("structureId")
-                &&row.getUUID("structureId").toString().equals(id)&&!SmpData.closed(row));
+        return SmpData.get(server).parties().currentRows().stream().noneMatch(row->row.hasStructureId()
+                &&row.structureId().toString().equals(id)&&!SmpData.closed(row));
     }
 
     public static boolean raidAvailable(ServerPlayer player, UUID id) {
         if (!SmpEnvironment.active(player)) return false;
         Area area = AREAS.get(id);
-        CompoundTag event = EventScheduler.active(player.server, "BOSS_RAID");
+        EventState event = EventScheduler.active(player.server, "BOSS_RAID");
         if (area == null || !area.near(player.serverLevel(), player.position())
                 || party(player.serverLevel(), id) != null) return false;
         if (event == null) return RaidArenaApi.compatible(player.server, id.toString(), area.boss());
-        if (event.getBoolean("combatStarted")) return false;
-        return event.contains("raidArenaId") ? event.getString("raidArenaId").equals(id.toString())
+        if (event.combatStarted()) return false;
+        return event.hasRaidArenaId() ? event.raidArenaId().equals(id.toString())
                 : RaidArenaApi.compatible(player.server, id.toString(), area.boss());
     }
 
@@ -188,17 +179,17 @@ public final class StructureStaging {
         SmpRecords.require(party(player.serverLevel(), id) == null, "arena_busy");
         SmpRecords.require(blockers(player.serverLevel(), area, Set.of(player.getUUID())).isEmpty(), "arena_occupied");
         if (mode.equals("BOSS_RAID")) {
-            CompoundTag event = EventScheduler.active(player.server, "BOSS_RAID");
+            EventState event = EventScheduler.active(player.server, "BOSS_RAID");
             SmpRecords.require(raidAvailable(player, id), "raid_unavailable");
             boolean created = event == null;
             if (created) {
                 event = SmpData.get(player.server).events().create(player.getUUID());
-                event.putString("slot", "manual:raid:" + event.getUUID("id"));
-                event.putString("activity", "BOSS_RAID");
-                event.putBoolean("ordinaryRaid", true);
-                event.putString("state", "ACTIVE");
-                event.putLong("started", System.currentTimeMillis());
-                event.putLong("ends", System.currentTimeMillis() + Math.min(3, SmpConfig.EVENT_HOURS.get()) * 3600000L);
+                event.slot("manual:raid:" + event.id());
+                event.activity("BOSS_RAID");
+                event.ordinaryRaid(true);
+                event.state("ACTIVE");
+                event.started(System.currentTimeMillis());
+                event.ends(System.currentTimeMillis() + Math.min(3, SmpConfig.EVENT_HOURS.get()) * 3600000L);
             }
             if (!RaidEvent.claimArena(player.server, event, id.toString(), area.boss(), area.dimension(), area.center(), area.bounds())) {
                 if (created) EventScheduler.cancelPreparation(player.server, event);
@@ -207,44 +198,44 @@ public final class StructureStaging {
             PARTY_CACHE.remove(id);
             EventParties.join(player, event, solo);
             PARTY_CACHE.put(id, SmpData.get(player.server).parties().currentRows().stream()
-                    .filter(value -> value.hasUUID("structureId") && value.getUUID("structureId").equals(id) && !SmpData.closed(value)).map(value -> value.getUUID("id")).findFirst());
+                    .filter(value -> value.hasStructureId() && value.structureId().equals(id) && !SmpData.closed(value)).map(value -> value.id()).findFirst());
             return;
         }
         SmpRecords.require(mode.equals("BOSS_FIGHT"), "unavailable");
-        CompoundTag activeRaid = EventScheduler.active(player.server, "BOSS_RAID");
-        SmpRecords.require(activeRaid == null || !activeRaid.getString("raidArenaId").equals(id.toString()), "raid_unavailable");
+        EventState activeRaid = EventScheduler.active(player.server, "BOSS_RAID");
+        SmpRecords.require(activeRaid == null || !activeRaid.raidArenaId().equals(id.toString()), "raid_unavailable");
         SmpRecords.require(livingBoss(player.serverLevel(), area) != null, "boss_not_respawned");
-        CompoundTag row = party(player.serverLevel(), id);
+        PartyState row = party(player.serverLevel(), id);
         if (row == null) {
             row = Parties.createHosted(player, SmpPartyRequest.hosted(
                     Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), solo));
             attachArena(row,id,area.boss(),area.dimension(),area.center(),area.bounds());
-            row.putBoolean("nativePending", true);
-            PARTY_CACHE.put(id, Optional.of(row.getUUID("id")));
+            row.nativePending(true);
+            PARTY_CACHE.put(id, Optional.of(row.id()));
 
         }
         if (solo) {
             Parties.makeSolo(player, row);
             HostedParties.start(player, row);
-        } else SmpNetwork.open(player, "parties", row.getUUID("id"));
+        } else SmpNetwork.open(player, "parties", row.id());
     }
 
-    public static boolean start(ServerPlayer host, CompoundTag row, List<UUID> ids) {
+    public static boolean start(ServerPlayer host, PartyState row, List<UUID> ids) {
         var serverForMutation = host.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { return startInScope(host, row, ids); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         return store.edit(() -> startInScope(host, store.parties().bind(row), ids));
     }
 
-    private static boolean startInScope(ServerPlayer host, CompoundTag row, List<UUID> ids) {
+    private static boolean startInScope(ServerPlayer host, PartyState row, List<UUID> ids) {
         if (!SmpEnvironment.active(host)) return false;
-        if (!row.getBoolean("nativePending")) return false;
-        Area area = row.hasUUID("structureId") ? AREAS.get(row.getUUID("structureId")) : null;
+        if (!row.nativePending()) return false;
+        Area area = row.hasStructureId() ? AREAS.get(row.structureId()) : null;
         SmpRecords.require(area != null, "unavailable");
         SmpRecords.require(!locked(host, area), "unavailable");
         SmpRecords.require(livingBoss(host.serverLevel(), area) != null, "boss_not_respawned");
         SmpRecords.require(blockers(host.serverLevel(), area, new HashSet<>(ids)).isEmpty(), "arena_occupied");
-        row.putString("state", "ACTIVE");
+        row.state("ACTIVE");
 
         bindExisting(host.serverLevel(), area, row, ids);
         host.sendSystemMessage(Component.translatable("jem.event.native_ritual_ready"));
@@ -259,10 +250,10 @@ public final class StructureStaging {
         EventNetwork.prompt(player, area.id(), EventEntryKind.BOSS_STRUCTURE, Component.translatable(BuiltInRegistries.ENTITY_TYPE.get(area.boss()).getDescriptionId()).getString(), area.boss().toString());
     }
 
-    public static boolean arrive(ServerPlayer player, CompoundTag row) {
+    public static boolean arrive(ServerPlayer player, PartyState row) {
         if (!SmpEnvironment.active(player)) return false;
-        if (!row.hasUUID("structureId")) return false;
-        Area area = AREAS.get(row.getUUID("structureId"));
+        if (!row.hasStructureId()) return false;
+        Area area = AREAS.get(row.structureId());
         SmpRecords.require(area != null, "unavailable");
         ServerLevel level = level(player.server, area);
         SmpRecords.require(level != null, "unavailable");
@@ -272,32 +263,32 @@ public final class StructureStaging {
         return true;
     }
 
-    public static void finish(net.minecraft.server.MinecraftServer server, CompoundTag row) {
+    public static void finish(net.minecraft.server.MinecraftServer server, PartyState row) {
         HostedBoundary.clearParty(row);
-        if (row.getBoolean("raid")) finishRaidParticipants(server, row);
+        if (row.raid()) finishRaidParticipants(server, row);
         else PartyTeleportFlow.finish(server,row);
-        if (!row.hasUUID("structureId")) {
+        if (!row.hasStructureId()) {
             return;
         }
-        Area area = AREAS.get(row.getUUID("structureId"));
+        Area area = AREAS.get(row.structureId());
         if (area == null) return;
         ServerLevel level = level(server, area);
         if (level == null) return;
         PARTY_CACHE.remove(area.id());
     }
 
-    private static void finishRaidParticipants(net.minecraft.server.MinecraftServer server, CompoundTag party) {
+    private static void finishRaidParticipants(net.minecraft.server.MinecraftServer server, PartyState party) {
         var serverForMutation = server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { finishRaidParticipantsInScope(server, party); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> finishRaidParticipantsInScope(server, store.parties().bind(party)));
     }
 
-    private static void finishRaidParticipantsInScope(net.minecraft.server.MinecraftServer server, CompoundTag party) {
+    private static void finishRaidParticipantsInScope(net.minecraft.server.MinecraftServer server, PartyState party) {
         for (UUID id : SmpRecords.memberIds(party)) {
             if (!Parties.accepted(party, id)) continue;
-            CompoundTag member = SmpRecords.members(party).getCompound(id.toString());
-            member.putBoolean(RAID_EXIT_PENDING, true);
+            PartyMember member = party.member(id);
+            member.raidArenaExitPending(true);
             ServerPlayer player = server.getPlayerList().getPlayer(id);
             if (player != null) finishRaidExit(player, party, member);
         }
@@ -305,8 +296,8 @@ public final class StructureStaging {
 
     }
 
-    private static boolean finishRaidExit(ServerPlayer player, CompoundTag party, CompoundTag member) {
-        member.remove(RAID_EXIT_PENDING);
+    private static boolean finishRaidExit(ServerPlayer player, PartyState party, PartyMember member) {
+        member.clearRaidArenaExitPending();
         PartyTeleportFlow.clearMember(party, player.getUUID());
         return true;
     }
@@ -320,9 +311,9 @@ public final class StructureStaging {
 
     private static void finishPendingRaidExitInScope(ServerPlayer player) {
         SmpData data = SmpData.get(player.server);
-        for (CompoundTag party : data.parties().currentRows()) {
-            CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
-            if (!member.getBoolean(RAID_EXIT_PENDING)) continue;
+        for (PartyState party : data.parties().currentRows()) {
+            PartyMember member = party.member(player.getUUID());
+            if (member == null || !member.raidArenaExitPending()) continue;
             if (finishRaidExit(player, party, member)) {
                 clearRaidExitSession(party);
 
@@ -330,34 +321,58 @@ public final class StructureStaging {
         }
     }
 
-    private static void clearRaidExitSession(CompoundTag party) {
+    private static void clearRaidExitSession(PartyState party) {
         if (!hasPendingRaidExit(party)) PartyTeleportFlow.clearSession(party);
     }
 
-    public static boolean hasPendingRaidExit(CompoundTag party) {
+    public static boolean hasPendingRaidExit(PartyState party) {
         return SmpRecords.memberIds(party).stream().anyMatch(id ->
-                SmpRecords.members(party).getCompound(id.toString()).getBoolean(RAID_EXIT_PENDING));
+                party.member(id).raidArenaExitPending());
     }
 
-    public static void attachArena(CompoundTag record,UUID id,ResourceLocation boss,String dimension,BlockPos center,BoundingBox bounds) {
-        record.putUUID("structureId",id);
-        record.putString("structureBoss",boss.toString());
-        record.putIntArray("structureBounds",new int[]{bounds.minX(),bounds.minY(),bounds.minZ(),bounds.maxX(),bounds.maxY(),bounds.maxZ()});
-        EventRegions.locate(record,dimension,center,bounds.minX(),bounds.minZ(),bounds.maxX(),bounds.maxZ());
-        record.putInt("minY",bounds.minY());
-        record.putInt("maxY",bounds.maxY());
+    public static boolean hasPendingRaidExit(EventState event) {
+        return event.members().values().stream().anyMatch(member -> member.raidArenaExitPending());
     }
 
-    public static BoundingBox prepareCombat(ServerLevel level,CompoundTag record,LivingEntity boss) {
-        Area area=record.hasUUID("structureId")?AREAS.get(record.getUUID("structureId")):null;
-        int[] saved=record.getIntArray("structureBounds");
-        BoundingBox bounds=area!=null?area.bounds():saved.length==6
-                ?new BoundingBox(saved[0],saved[1],saved[2],saved[3],saved[4],saved[5])
-                :BossStaging.bounds(boss);
-        if(area==null) {
-            EventRegions.locate(record,level,boss.blockPosition(),bounds.minX(),bounds.minZ(),bounds.maxX(),bounds.maxZ());
-            record.putInt("minY",bounds.minY());
-            record.putInt("maxY",bounds.maxY());
+    public static void attachArena(PartyState record, UUID id, ResourceLocation boss, String dimension, BlockPos center, BoundingBox bounds) {
+        record.structureId(id); record.structureBoss(boss.toString());
+        record.structureBounds(savedBounds(bounds));
+        EventRegions.locate(record, dimension, center, bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ());
+        record.minY(bounds.minY()); record.maxY(bounds.maxY());
+    }
+
+    public static void attachArena(EventState record, UUID id, ResourceLocation boss, String dimension, BlockPos center, BoundingBox bounds) {
+        record.structureId(id); record.structureBoss(boss.toString());
+        record.structureBounds(savedBounds(bounds));
+        EventRegions.locate(record, dimension, center, bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ());
+        record.minY(bounds.minY()); record.maxY(bounds.maxY());
+    }
+
+    private static StructureBounds savedBounds(BoundingBox bounds) {
+        return new StructureBounds(bounds.minX(), bounds.minY(), bounds.minZ(), bounds.maxX(), bounds.maxY(), bounds.maxZ());
+    }
+
+    private static BoundingBox combatBounds(Area area, StructureBounds saved, LivingEntity boss) {
+        return area != null ? area.bounds() : saved == null ? BossStaging.bounds(boss)
+                : new BoundingBox(saved.minX(), saved.minY(), saved.minZ(), saved.maxX(), saved.maxY(), saved.maxZ());
+    }
+
+    public static BoundingBox prepareCombat(ServerLevel level, PartyState record, LivingEntity boss) {
+        Area area = record.hasStructureId() ? AREAS.get(record.structureId()) : null;
+        var bounds = combatBounds(area, record.structureBounds(), boss);
+        if (area == null) {
+            EventRegions.locate(record, level.dimension().location().toString(), boss.blockPosition(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ());
+            record.minY(bounds.minY()); record.maxY(bounds.maxY());
+        }
+        return bounds;
+    }
+
+    public static BoundingBox prepareCombat(ServerLevel level, EventState record, LivingEntity boss) {
+        Area area = record.hasStructureId() ? AREAS.get(record.structureId()) : null;
+        var bounds = combatBounds(area, record.structureBounds(), boss);
+        if (area == null) {
+            EventRegions.locate(record, level, boss.blockPosition(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ());
+            record.minY(bounds.minY()); record.maxY(bounds.maxY());
         }
         return bounds;
     }
@@ -453,32 +468,32 @@ public final class StructureStaging {
         player.fallDistance = 0;
     }
 
-    private static void bindExisting(ServerLevel level, Area area, CompoundTag row, List<UUID> ids) {
+    private static void bindExisting(ServerLevel level, Area area, PartyState row, List<UUID> ids) {
         LivingEntity boss = livingBoss(level, area);
         if (boss != null) bind(level, boss, row, ids);
     }
 
-    private static void bind(ServerLevel level, LivingEntity boss, CompoundTag row, List<UUID> ids) {
+    private static void bind(ServerLevel level, LivingEntity boss, PartyState row, List<UUID> ids) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { bindInScope(level, boss, row, ids); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> bindInScope(level, boss, store.parties().bind(row), ids));
     }
 
-    private static void bindInScope(ServerLevel level, LivingEntity boss, CompoundTag row, List<UUID> ids) {
-        if (row.hasUUID("bossEntity") || !row.getBoolean("nativePending") || HostedEncounterApi.isRaid(boss)) return;
+    private static void bindInScope(ServerLevel level, LivingEntity boss, PartyState row, List<UUID> ids) {
+        if (row.hasBossEntity() || !row.nativePending() || HostedEncounterApi.isRaid(boss)) return;
         Area area = bossArea(level,boss);
         if (area == null || livingBoss(level, area) != boss) return;
-        boss.getPersistentData().putBoolean("jem_solo", row.getBoolean("solo"));
+        boss.getPersistentData().putBoolean("jem_solo", row.solo());
         if (HostedEncounterApi.start(boss, ids, false, prepareCombat(level,row,boss))) {
-            row.putUUID("bossEntity", boss.getUUID());
-            row.putBoolean("nativePending", false);
-            Profiles.count(level.getServer(), row.getUUID("owner"), "bossesHosted");
+            row.bossEntity(boss.getUUID());
+            row.nativePending(false);
+            Profiles.count(level.getServer(), row.owner(), ProfileCounter.BOSSES_HOSTED);
 
         }
     }
 
-    public static void stageBoss(ServerLevel level,CompoundTag record,LivingEntity boss) {
+    public static void stageBoss(ServerLevel level,SmpRecord record,LivingEntity boss) {
         if(!boss.isAlive()||boss.isRemoved()) return;
         HostedEncounterApi.hold(boss);
     }
@@ -516,11 +531,15 @@ public final class StructureStaging {
         com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
         HostedEncounterApi.hold(boss);
         if (encounter == null) return;
-        CompoundTag row = party(level, area.id());
-        if (row == null || !row.getString("state").equals("ACTIVE")) return;
+        PartyState row = party(level, area.id());
+        if (row == null || !row.state().equals("ACTIVE")) return;
         level.getServer().execute(() -> {
-            if (boss.isAlive() && !boss.isRemoved() && row.getString("state").equals("ACTIVE"))
-                bind(level, boss, row, SmpRecords.memberIds(row).stream().filter(id -> Parties.accepted(row, id)).toList());
+            var store = SmpData.get(level.getServer());
+            store.edit(() -> {
+                var current = store.parties().current(row.id());
+                if (boss.isAlive() && !boss.isRemoved() && current != null && current.state().equals("ACTIVE"))
+                    bind(level, boss, current, SmpRecords.memberIds(current).stream().filter(id -> Parties.accepted(current, id)).toList());
+            });
         });
     }
 
@@ -534,7 +553,7 @@ public final class StructureStaging {
         Area close = nearby(player.serverLevel(), player.position());
         if (close == null) NEAR.remove(player.getUUID());
         else if (!close.id().equals(NEAR.put(player.getUUID(), close.id()))) {
-            CompoundTag closeParty = party(player.serverLevel(), close.id());
+            PartyState closeParty = party(player.serverLevel(), close.id());
             if (closeParty == null || !HostedBoundary.authorized(player, closeParty)) {
                 if (physicallyLocked(player.serverLevel(), close) || locked(player, close))
                     com.siirio.jemtwelveeyes.api.CampaignApi.explainLocked(player, close.boss());
@@ -548,12 +567,12 @@ public final class StructureStaging {
                 .filter(candidate -> candidate.dimension().equals(player.level().dimension().location().toString()) && candidate.distance(player.position()) <= LANDMARK_RADIUS)
                 .forEach(candidate -> Landmarks.publishBoss(player.server, candidate.id(), candidate.boss(), player.level().dimension().location(), candidate.center(), candidate.bounds()));
         if (area == null) { INSIDE.remove(player.getUUID()); return; }
-        CompoundTag activeParty = party(player.serverLevel(), area.id());
+        PartyState activeParty = party(player.serverLevel(), area.id());
         UUID before = INSIDE.put(player.getUUID(), area.id());
         if (!area.id().equals(before)) {
-            CompoundTag row = party(player.serverLevel(), area.id());
+            PartyState row = party(player.serverLevel(), area.id());
             if (row != null) {
-                if (row.getString("state").equals("ACTIVE") && row.getBoolean("nativePending"))
+                if (row.state().equals("ACTIVE") && row.nativePending())
                     bindExisting(player.serverLevel(), area, row, SmpRecords.memberIds(row).stream().filter(id -> Parties.accepted(row, id)).toList());
             }
         }
@@ -565,16 +584,16 @@ public final class StructureStaging {
 
 
 
-    public static String startReason(ServerPlayer host, CompoundTag row, Collection<UUID> participants) {
-        if (!row.hasUUID("structureId")) return "";
-        Area area = AREAS.get(row.getUUID("structureId"));
+    public static String startReason(ServerPlayer host, PartyState row, Collection<UUID> participants) {
+        if (!row.hasStructureId()) return "";
+        Area area = AREAS.get(row.structureId());
         if (area == null) return "unavailable";
         return blockers(host.serverLevel(), area, new HashSet<>(participants)).isEmpty() ? "" : "arena_occupied";
     }
 
-    public static String nativeBossStartReason(ServerPlayer host, CompoundTag row) {
-        if (!row.hasUUID("structureId")) return "";
-        Area area=AREAS.get(row.getUUID("structureId"));
+    public static String nativeBossStartReason(ServerPlayer host, PartyState row) {
+        if (!row.hasStructureId()) return "";
+        Area area=AREAS.get(row.structureId());
         if(area==null) return "unavailable";
         return livingBoss(host.serverLevel(),area)==null?"boss_not_respawned":"";
     }
@@ -632,10 +651,10 @@ public final class StructureStaging {
     public static String arenaState(ServerPlayer player, UUID id) {
         Area area = AREAS.get(id);
         if (area == null) return "UNAVAILABLE";
-        CompoundTag row = party(player.serverLevel(), id);
+        PartyState row = party(player.serverLevel(), id);
         if (row != null) {
-            boolean raid = row.getBoolean("raid");
-            return row.getString("state").equals("ACTIVE") ? (raid ? "RAID_ACTIVE" : "BOSS_FIGHT_ACTIVE") : "STARTING";
+            boolean raid = row.raid();
+            return row.state().equals("ACTIVE") ? (raid ? "RAID_ACTIVE" : "BOSS_FIGHT_ACTIVE") : "STARTING";
         }
         return occupants(player, id).isEmpty() ? "FREE" : "OCCUPIED";
     }

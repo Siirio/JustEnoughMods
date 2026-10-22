@@ -10,20 +10,20 @@
     {
       "module": "JEMRoles",
       "name": "jem-races-2.0.0.jar",
-      "sha256": "80c4df5fb18cddc52866a83d0c57a02e8c761ef0c191e3617522fedfb7ff965b",
-      "size": 7116507
+      "sha256": "c11ac4b978869a0e5eee4b01ff9138c199240a51244c12949fa5e86a4e986797",
+      "size": 7116608
     },
     {
       "module": "JEMSettlements",
       "name": "jem-settlements-2.1.0.jar",
-      "sha256": "8535a0263d250e82a0a36102d31d540c4d661c28b3216a48e11031f0aba28b8b",
-      "size": 708373
+      "sha256": "829522e2b1feee27f887fb0391992912512c540c3a17f3fe4116c96365a685ac",
+      "size": 708558
     },
     {
       "module": "JEMServer",
       "name": "jem-server-2.0.0-dev.jar",
-      "sha256": "69d576a82d7dbf2b490ba21dd4627a8a762224d1e3aff99d7c075b8a93c8b146",
-      "size": 20064447
+      "sha256": "26de1d49135d03a90b341b5dcabc62b733b2be23d9580f7fd8de3aa4055c0614",
+      "size": 20195473
     },
     {
       "module": "JEMTwelveEyes",
@@ -37,20 +37,26 @@
   "testsRun": false,
   "nativePublication": {
     "published": true,
-    "journalSequence": 61,
-    "publishedManifestSha1": "f1c173bb6f67161e369ca0f41f65823c96b53a2e",
-    "stagedManifestSha1": "f1c173bb6f67161e369ca0f41f65823c96b53a2e"
+    "journalSequence": 62,
+    "publishedManifestSha1": "9ab1db2be958a87748d4524f19862d9ed67d0431",
+    "stagedManifestSha1": "9ab1db2be958a87748d4524f19862d9ed67d0431"
   },
-  "contentToken": "e01d5cb3a9267473721da770ae1f8b7abddfb67c",
   "nativeApplication": {
     "profile": "test jem",
-    "activeContentToken": "e01d5cb3a9267473721da770ae1f8b7abddfb67c",
+    "activeContentToken": "84b4758eaa19dfcea89c2c289f823c0a1f2284c4",
     "allTaskArtifactHashesMatch": true,
     "pendingTransaction": false,
     "clientLaunched": false
   },
+  "limitations": [
+    "Test-dependent E20 gates and CI excluded by explicit user instruction.",
+    "Opt-in quality configuration is unexecuted; no passing quality gate is claimed.",
+    "Existing local development-currency ledger safety freeze preserved; no world or account markers modified.",
+    "No gameplay or player acceptance claimed."
+  ],
+  "contentToken": "84b4758eaa19dfcea89c2c289f823c0a1f2284c4",
   "ordinaryServer": "started for native publication; saved and stopped",
-  "completedLocal": "2026-10-22T15:39:23.341691+05:00",
+  "completedLocal": "2026-10-22T16:45:43.484367+05:00",
   "atlasValidation": {
     "valid": true,
     "canonical_counts": {
@@ -66,10 +72,10 @@
     "change_records": 125,
     "effective_index": "Catalog/effective/index.json"
   },
-  "limitations": [
-    "E01 retains NBT inside guarded internal command scopes; fully typed party/event aggregates remain incomplete.",
-    "E20 tests/CI rollout excluded by explicit user instruction.",
-    "Existing local development-currency ledger safety freeze preserved; no world or account markers modified.",
-    "No gameplay or player acceptance claimed."
-  ]
+  "productionBuilds": [
+    "JEMRoles:reobfJar",
+    "JEMSettlements:reobfJar",
+    "JEMServer:reobfJar"
+  ],
+  "qualityToolsExecuted": false
 }

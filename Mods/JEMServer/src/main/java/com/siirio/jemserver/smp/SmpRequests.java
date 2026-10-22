@@ -47,7 +47,7 @@ public final class SmpRequests {
     }
 
     private static SmpActionSession session(ServerPlayer player) {
-        return SmpServerSession.get(player.server).requests.computeIfAbsent(player.getUUID(), ignored -> new SmpActionSession());
+        return SmpServerSession.get(player.server).player(player.getUUID()).actions;
     }
 
     private SmpRequests() {}

@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
 import com.siirio.jemserver.smp.SmpRecords;
 import net.minecraft.core.BlockPos;
@@ -51,15 +53,15 @@ public final class EncounterContext {
     private static final int INTRO_TICKS = 40;
     private static final int SEARCH_RADIUS = 24;
 
-    private final CompoundTag data;
+    private final EventState data;
 
-    public EncounterContext(CompoundTag data) {
+    public EncounterContext(EventState data) {
         this.data = data;
     }
 
     public State state() {
-        String value = data.getString(STATE);
-        if (value.isEmpty()) return data.getBoolean("combatStarted") ? State.ACTIVE : State.PREPARING;
+        String value = data.encounterState();
+        if (value.isEmpty()) return data.combatStarted() ? State.ACTIVE : State.PREPARING;
         try {
             return State.valueOf(value);
         } catch (IllegalArgumentException ignored) {
@@ -68,22 +70,9 @@ public final class EncounterContext {
     }
 
     public boolean isParticipant(UUID playerId) {
-        if (!data.contains(PARTICIPANTS, Tag.TAG_LIST)) return new EventSession(data).legacyAccepted(playerId);
-        for (Tag value : data.getList(PARTICIPANTS, Tag.TAG_STRING))
-            if (value.getAsString().equals(playerId.toString())) return true;
-        return false;
+        return data.hasEncounterParticipants() ? data.encounterParticipants().contains(playerId) : new EventSession(data).legacyAccepted(playerId);
     }
-
-    public Set<UUID> participantIds() {
-        var result = new LinkedHashSet<UUID>();
-        for (Tag value : data.getList(PARTICIPANTS, Tag.TAG_STRING)) {
-            try {
-                result.add(UUID.fromString(value.getAsString()));
-            } catch (IllegalArgumentException ignored) {
-            }
-        }
-        return Collections.unmodifiableSet(result);
-    }
+    public Set<UUID> participantIds() { return Collections.unmodifiableSet(new LinkedHashSet<>(data.encounterParticipants())); }
 
     public void initialize(ServerPlayer host, EventParticipants snapshot) {
         var serverForMutation = host.server;
@@ -94,19 +83,18 @@ public final class EncounterContext {
 
     private void initializeInScope(ServerPlayer host, EventParticipants snapshot) {
         var participants = snapshot.accepted();
-        var stored = new ListTag();
-        participants.forEach(id -> stored.add(StringTag.valueOf(id.toString())));
-        data.putUUID(HOST, host.getUUID());
-        data.put(PARTICIPANTS, stored);
+        var stored = List.copyOf(participants);
+        data.encounterHost( host.getUUID());
+        data.encounterParticipants(stored);
         for (UUID id : participants) {
             var player = host.server.getPlayerList().getPlayer(id);
-            var member = SmpRecords.members(data).getCompound(id.toString());
-            member.putBoolean("accepted", true);
-            member.putBoolean("eliminated", false);
+            var member = data.memberOrEmpty(id);
+            member.accepted( true);
+            member.eliminated( false);
             if (player != null) {
-                member.putString("name", player.getGameProfile().getName());
+                member.name( player.getGameProfile().getName());
             }
-            SmpRecords.members(data).put(id.toString(), member);
+            data.addMember(id, member);
         }
         transition(State.PREPARING, host.serverLevel().getGameTime());
     }
@@ -116,10 +104,10 @@ public final class EncounterContext {
         if (level == null) return false;
         for (int chunkX = EventRegions.minX(data) >> 4; chunkX <= EventRegions.maxX(data) >> 4; chunkX++)
             for (int chunkZ = EventRegions.minZ(data) >> 4; chunkZ <= EventRegions.maxZ(data) >> 4; chunkZ++) level.getChunk(chunkX, chunkZ);
-        BlockPos center = BlockPos.of(data.getLong("position"));
+        BlockPos center = BlockPos.of(data.position());
         BlockPos respawn = findSafe(level, center, Set.of());
         if (respawn == null) return false;
-        data.putLong(RESPAWN, respawn.asLong());
+        data.arenaRespawnPoint( respawn.asLong());
         var occupied = new LinkedHashSet<BlockPos>();
         occupied.add(respawn);
         int index = 0;
@@ -129,16 +117,16 @@ public final class EncounterContext {
             BlockPos preferred = index++ == 0 ? respawn : center.offset(slotOffset(index));
             BlockPos arrival = findSafe(level, preferred, occupied);
             if (arrival == null) {
-                if (id.equals(data.getUUID(HOST))) arrival = respawn;
+                if (id.equals(data.encounterHost())) arrival = respawn;
                 else continue;
             }
             occupied.add(arrival);
-            var member = SmpRecords.members(data).getCompound(id.toString());
-            member.putLong(ARRIVAL, arrival.asLong());
-            member.putBoolean(TELEPORTED, false);
-            SmpRecords.members(data).put(id.toString(), member);
+            var member = data.memberOrEmpty(id);
+            member.encounterArrival( arrival.asLong());
+            member.encounterTeleported( false);
+            data.addMember(id, member);
         }
-        return SmpRecords.members(data).getCompound(data.getUUID(HOST).toString()).contains(ARRIVAL);
+        return data.memberOrEmpty(data.encounterHost()).hasEncounterArrival();
     }
 
     public void teleportParticipants(MinecraftServer server) {
@@ -147,18 +135,18 @@ public final class EncounterContext {
         transition(State.TELEPORTING, level.getGameTime());
         for (UUID id : participantIds()) {
             ServerPlayer player = server.getPlayerList().getPlayer(id);
-            var member = SmpRecords.members(data).getCompound(id.toString());
-            if (player == null || member.getBoolean(TELEPORTED) || !member.contains(ARRIVAL)) continue;
-            BlockPos arrival = BlockPos.of(member.getLong(ARRIVAL));
+            var member = data.memberOrEmpty(id);
+            if (player == null || member.encounterTeleported() || !member.hasEncounterArrival()) continue;
+            BlockPos arrival = BlockPos.of(member.encounterArrival());
             player.teleportTo(level, arrival.getX() + .5, arrival.getY(), arrival.getZ() + .5, player.getYRot(), player.getXRot());
             player.setDeltaMovement(Vec3.ZERO);
             player.fallDistance = 0;
-            member.putBoolean(TELEPORTED, true);
+            member.encounterTeleported( true);
         }
     }
 
     public void awaitEntry(ServerLevel level) {
-        data.putBoolean(WALK_IN,true);
+        data.encounterWalkIn(true);
         transition(State.TELEPORTING,level.getGameTime());
     }
 
@@ -167,15 +155,15 @@ public final class EncounterContext {
         if (level == null) return false;
         long now = level.getGameTime();
         if (state() == State.TELEPORTING) {
-            if (data.getBoolean(WALK_IN)) {
+            if (data.encounterWalkIn()) {
                 if (allParticipantsInside(server)) transition(State.ARRIVED, now);
             } else {
                 boolean arrived = true;
                 for (UUID id : participantIds()) {
                     ServerPlayer player = server.getPlayerList().getPlayer(id);
                     if (player == null) continue;
-                    var member = SmpRecords.members(data).getCompound(id.toString());
-                    BlockPos expected = member.contains(ARRIVAL) ? BlockPos.of(member.getLong(ARRIVAL)) : null;
+                    var member = data.memberOrEmpty(id);
+                    BlockPos expected = member.hasEncounterArrival() ? BlockPos.of(member.encounterArrival()) : null;
                     if (expected == null || player.serverLevel() != level || !EventRegions.contains(data, level, player.blockPosition())
                             || player.distanceToSqr(Vec3.atBottomCenterOf(expected)) > 16) arrived = false;
                 }
@@ -184,9 +172,9 @@ public final class EncounterContext {
         }
         if (state() == State.ARRIVED) {
             transition(State.INTRO, now);
-            data.putLong("encounterIntroEnds", now + INTRO_TICKS);
+            data.encounterIntroEnds( now + INTRO_TICKS);
         }
-        if (state() == State.INTRO && now >= data.getLong("encounterIntroEnds")) transition(State.ACTIVE, now);
+        if (state() == State.INTRO && now >= data.encounterIntroEnds()) transition(State.ACTIVE, now);
         return state() == State.ACTIVE;
     }
 
@@ -207,10 +195,10 @@ public final class EncounterContext {
     }
 
     public BlockPos respawnPoint(ServerLevel level) {
-        BlockPos saved = data.contains(RESPAWN) ? BlockPos.of(data.getLong(RESPAWN)) : null;
+        BlockPos saved = data.hasArenaRespawnPoint() ? BlockPos.of(data.arenaRespawnPoint()) : null;
         if (saved != null && safe(level, saved, Set.of())) return saved;
-        BlockPos resolved = findSafe(level, BlockPos.of(data.getLong("position")), Set.of());
-        if (resolved != null) data.putLong(RESPAWN, resolved.asLong());
+        BlockPos resolved = findSafe(level, BlockPos.of(data.position()), Set.of());
+        if (resolved != null) data.arenaRespawnPoint( resolved.asLong());
         return resolved;
     }
 
@@ -222,7 +210,7 @@ public final class EncounterContext {
     }
 
     public boolean returnPending(UUID playerId) {
-        return isParticipant(playerId) && SmpRecords.members(data).getCompound(playerId.toString()).getBoolean(RETURN_PENDING);
+        return isParticipant(playerId) && data.memberOrEmpty(playerId).eventReturnPending();
     }
 
     public void stay(MinecraftServer server, UUID playerId) {
@@ -233,13 +221,13 @@ public final class EncounterContext {
     }
 
     private void stayInScope(MinecraftServer server, UUID playerId) {
-        SmpRecords.members(data).getCompound(playerId.toString()).remove(RETURN_PENDING);
+        data.memberOrEmpty(playerId).clearEventReturnPending();
 
     }
 
     public boolean returnPlayer(ServerPlayer player) {
-        var member = SmpRecords.members(data).getCompound(player.getStringUUID());
-        if (!member.getBoolean(RETURN_PENDING)) return false;
+        var member = data.memberOrEmpty(player.getUUID());
+        if (!member.eventReturnPending()) return false;
         return returnPlayerNow(player);
     }
 
@@ -251,15 +239,15 @@ public final class EncounterContext {
     }
 
     private boolean returnPlayerNowInScope(ServerPlayer player) {
-        var member = SmpRecords.members(data).getCompound(player.getStringUUID());
-        if (!member.contains(RETURN_DIMENSION)) return false;
-        ResourceLocation dimension = ResourceLocation.tryParse(member.getString(RETURN_DIMENSION));
+        var member = data.memberOrEmpty(player.getUUID());
+        if (!member.hasOriginDimension()) return false;
+        ResourceLocation dimension = ResourceLocation.tryParse(member.originDimension());
         ServerLevel level = dimension == null ? null : player.server.getLevel(ResourceKey.create(Registries.DIMENSION, dimension));
         if (level == null) return false;
-        player.teleportTo(level, member.getDouble(RETURN_X), member.getDouble(RETURN_Y), member.getDouble(RETURN_Z), member.getFloat(RETURN_YAW), member.getFloat(RETURN_PITCH));
+        player.teleportTo(level, member.originX(), member.originY(), member.originZ(), member.originYaw(), member.originPitch());
         player.setDeltaMovement(Vec3.ZERO);
         player.fallDistance = 0;
-        member.remove(RETURN_PENDING);
+        member.clearEventReturnPending();
 
         return true;
     }
@@ -272,39 +260,39 @@ public final class EncounterContext {
     }
 
     public void resetAttempt() {
-        data.remove(STATE);
-        data.remove(HOST);
-        data.remove(PARTICIPANTS);
-        data.remove(RESPAWN);
-        data.remove("encounterStateSince");
-        data.remove("encounterIntroEnds");
-        data.remove(WALK_IN);
-        for (String id : SmpRecords.members(data).getAllKeys()) {
-            CompoundTag member = SmpRecords.members(data).getCompound(id);
-            member.remove(ARRIVAL);
-            member.remove(TELEPORTED);
-            member.remove(RETURN_PENDING);
-            member.remove(RETURN_DIMENSION);
-            member.remove(RETURN_X);
-            member.remove(RETURN_Y);
-            member.remove(RETURN_Z);
-            member.remove(RETURN_YAW);
-            member.remove(RETURN_PITCH);
-            member.remove(DISCONNECTED_AT);
-            member.remove(ABSENCE_DEFEAT_PENDING);
+        data.clearEncounterState();
+        data.clearEncounterHost();
+        data.clearEncounterParticipants();
+        data.clearArenaRespawnPoint();
+        data.clearEncounterStateSince();
+        data.clearEncounterIntroEnds();
+        data.clearEncounterWalkIn();
+        for (UUID id : data.members().keySet()) {
+            EventMember member = data.memberOrEmpty(id);
+            member.clearEncounterArrival();
+            member.clearEncounterTeleported();
+            member.clearEventReturnPending();
+            member.clearOriginDimension();
+            member.clearOriginX();
+            member.clearOriginY();
+            member.clearOriginZ();
+            member.clearOriginYaw();
+            member.clearOriginPitch();
+            member.clearEventDisconnectedAt();
+            member.clearEventAbsenceDefeatPending();
         }
     }
 
     public void clearStartupData() {
-        data.remove(RESPAWN);
-        data.remove(WALK_IN);
-        data.remove("encounterIntroEnds");
-        for (String id : SmpRecords.members(data).getAllKeys()) {
-            CompoundTag member = SmpRecords.members(data).getCompound(id);
-            member.remove(ARRIVAL);
-            member.remove(TELEPORTED);
-            member.remove(DISCONNECTED_AT);
-            member.remove(ABSENCE_DEFEAT_PENDING);
+        data.clearArenaRespawnPoint();
+        data.clearEncounterWalkIn();
+        data.clearEncounterIntroEnds();
+        for (UUID id : data.members().keySet()) {
+            EventMember member = data.memberOrEmpty(id);
+            member.clearEncounterArrival();
+            member.clearEncounterTeleported();
+            member.clearEventDisconnectedAt();
+            member.clearEventAbsenceDefeatPending();
         }
     }
 
@@ -316,9 +304,9 @@ public final class EncounterContext {
     }
 
     private void disconnectedInScope(ServerPlayer player) {
-        if (!data.getString("state").equals("ACTIVE") || !data.getBoolean("combatStarted")
+        if (!data.state().equals("ACTIVE") || !data.combatStarted()
                 || !isParticipant(player.getUUID()) || !new EventSession(data).accepted(player.getUUID())) return;
-        SmpRecords.members(data).getCompound(player.getStringUUID()).putLong(DISCONNECTED_AT, System.currentTimeMillis());
+        data.memberOrEmpty(player.getUUID()).eventDisconnectedAt(System.currentTimeMillis());
 
     }
 
@@ -331,22 +319,22 @@ public final class EncounterContext {
 
     private void reconnectedInScope(ServerPlayer player) {
         if (!isParticipant(player.getUUID())) return;
-        var member = SmpRecords.members(data).getCompound(player.getStringUUID());
-        if (member.getBoolean(ABSENCE_DEFEAT_PENDING)) {
-            member.remove(ABSENCE_DEFEAT_PENDING);
+        var member = data.memberOrEmpty(player.getUUID());
+        if (member.eventAbsenceDefeatPending()) {
+            member.clearEventAbsenceDefeatPending();
             notifyAbsenceDefeat(player);
             if (!returnPlayerNow(player)) EventRegions.eject(player, data);
 
             return;
         }
-        if (!member.contains(DISCONNECTED_AT)) return;
-        long disconnectedAt = member.getLong(DISCONNECTED_AT);
-        member.remove(DISCONNECTED_AT);
+        if (!member.hasEventDisconnectedAt()) return;
+        long disconnectedAt = member.eventDisconnectedAt();
+        member.clearEventDisconnectedAt();
         if (System.currentTimeMillis() - disconnectedAt >= ABSENCE_DEFEAT_MILLIS) {
-            member.putBoolean("eliminated", true);
+            member.eliminated( true);
             notifyAbsenceDefeat(player);
             if (!returnPlayerNow(player)) EventRegions.eject(player, data);
-        } else if (data.getBoolean("solo") && data.getString("state").equals("ACTIVE") && data.getBoolean("combatStarted")) {
+        } else if (data.solo() && data.state().equals("ACTIVE") && data.combatStarted()) {
             returnToArena(player);
         }
 
@@ -360,57 +348,59 @@ public final class EncounterContext {
     }
 
     private void expireDisconnectedInScope(MinecraftServer server, long now) {
-        if (!data.getString("state").equals("ACTIVE") || !data.getBoolean("combatStarted")) return;
+        if (!data.state().equals("ACTIVE") || !data.combatStarted()) return;
         boolean changed = false;
         for (UUID id : participantIds()) {
-            var member = SmpRecords.members(data).getCompound(id.toString());
-            if (member.getBoolean("eliminated") || !member.contains(DISCONNECTED_AT)
+            var member = data.memberOrEmpty(id);
+            if (member.eliminated() || !member.hasEventDisconnectedAt()
                     || server.getPlayerList().getPlayer(id) != null
-                    || now - member.getLong(DISCONNECTED_AT) < ABSENCE_DEFEAT_MILLIS) continue;
-            member.remove(DISCONNECTED_AT);
-            member.putBoolean("eliminated", true);
-            member.putBoolean(ABSENCE_DEFEAT_PENDING, true);
+                    || now - member.eventDisconnectedAt() < ABSENCE_DEFEAT_MILLIS) continue;
+            member.clearEventDisconnectedAt();
+            member.eliminated( true);
+            member.eventAbsenceDefeatPending( true);
             changed = true;
         }
         
     }
 
-    public static CompoundTag activeFor(ServerPlayer player) {
+    public static EventState activeFor(ServerPlayer player) {
         var serverForMutation = player.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { return activeForInScope(player); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
-        return store.edit(() -> activeForInScope(player));
+        if (store.inCommand()) return activeForInScope(player);
+        return store.edit(() -> { var result = activeForInScope(player); return result == null ? null : result.snapshot(); });
     }
 
-    private static CompoundTag activeForInScope(ServerPlayer player) {
+    private static EventState activeForInScope(ServerPlayer player) {
         for (var row : SmpData.get(player.server).events().currentRows())
-            if (EventRuntime.available(player.server, row) && row.getString("state").equals("ACTIVE") && row.getBoolean("combatStarted")
+            if (EventRuntime.available(player.server, row) && row.state().equals("ACTIVE") && row.combatStarted()
                     && new EncounterContext(row).isParticipant(player.getUUID())) return row;
         return null;
     }
 
-    public static CompoundTag reconnectFor(ServerPlayer player) {
+    public static EventState reconnectFor(ServerPlayer player) {
         var serverForMutation = player.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { return reconnectForInScope(player); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
-        return store.edit(() -> reconnectForInScope(player));
+        if (store.inCommand()) return reconnectForInScope(player);
+        return store.edit(() -> { var result = reconnectForInScope(player); return result == null ? null : result.snapshot(); });
     }
 
-    private static CompoundTag reconnectForInScope(ServerPlayer player) {
-        CompoundTag latest = null;
+    private static EventState reconnectForInScope(ServerPlayer player) {
+        EventState latest = null;
         for (var row : SmpData.get(player.server).events().currentRows()) {
             if (!EventRuntime.available(player.server, row)) continue;
             if (!new EncounterContext(row).isParticipant(player.getUUID())) continue;
-            var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-            if (!member.contains(DISCONNECTED_AT) && !member.getBoolean(ABSENCE_DEFEAT_PENDING)) continue;
-            if (latest == null || row.getLong("created") > latest.getLong("created")) latest = row;
+            var member = row.memberOrEmpty(player.getUUID());
+            if (!member.hasEventDisconnectedAt() && !member.eventAbsenceDefeatPending()) continue;
+            if (latest == null || row.created() > latest.created()) latest = row;
         }
         return latest;
     }
 
     private void transition(State state, long tick) {
-        data.putString(STATE, state.name());
-        data.putLong("encounterStateSince", tick);
+        data.encounterState( state.name());
+        data.encounterStateSince( tick);
     }
 
     private void returnToArena(ServerPlayer player) {
@@ -424,8 +414,8 @@ public final class EncounterContext {
 
     private void clearDisconnectTimers() {
         for (UUID id : participantIds()) {
-            var member = SmpRecords.members(data).getCompound(id.toString());
-            member.remove(DISCONNECTED_AT);
+            var member = data.memberOrEmpty(id);
+            member.clearEventDisconnectedAt();
         }
     }
 
@@ -436,14 +426,14 @@ public final class EncounterContext {
                 .withStyle(net.minecraft.ChatFormatting.GOLD));
     }
 
-    private static void recordReturn(ServerPlayer player, CompoundTag member) {
-        if (member.contains(RETURN_DIMENSION)) return;
-        member.putString(RETURN_DIMENSION, player.serverLevel().dimension().location().toString());
-        member.putDouble(RETURN_X, player.getX());
-        member.putDouble(RETURN_Y, player.getY());
-        member.putDouble(RETURN_Z, player.getZ());
-        member.putFloat(RETURN_YAW, player.getYRot());
-        member.putFloat(RETURN_PITCH, player.getXRot());
+    private static void recordReturn(ServerPlayer player, EventMember member) {
+        if (member.hasOriginDimension()) return;
+        member.originDimension( player.serverLevel().dimension().location().toString());
+        member.originX( player.getX());
+        member.originY( player.getY());
+        member.originZ( player.getZ());
+        member.originYaw( player.getYRot());
+        member.originPitch( player.getXRot());
     }
 
     private BlockPos findSafe(ServerLevel level, BlockPos anchor, Set<BlockPos> occupied) {
@@ -452,10 +442,10 @@ public final class EncounterContext {
             for (int x = -radius; x <= radius; x++)
                 for (int z = -radius; z <= radius; z++)
                     if (radius == 0 || Math.abs(x) == radius || Math.abs(z) == radius) candidates.add(anchor.offset(x, 0, z));
-        int minY=data.contains("minY")?Math.max(level.getMinBuildHeight()+1,data.getInt("minY")):level.getMinBuildHeight()+1;
-        int maxY=data.contains("maxY")?Math.min(level.getMaxBuildHeight()-2,data.getInt("maxY")):level.getMaxBuildHeight()-2;
+        int minY=data.hasMinY()?Math.max(level.getMinBuildHeight()+1,data.minY()):level.getMinBuildHeight()+1;
+        int maxY=data.hasMaxY()?Math.min(level.getMaxBuildHeight()-2,data.maxY()):level.getMaxBuildHeight()-2;
         int anchorY=Math.max(minY,Math.min(maxY,anchor.getY()));
-        if(data.getString("activity").equals("BLOOD_MOON")) {
+        if(data.activity().equals("BLOOD_MOON")) {
             for(BlockPos column:candidates) {
                 int y=Math.max(minY,Math.min(maxY,level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,column.getX(),column.getZ())));
                 BlockPos position=new BlockPos(column.getX(),y,column.getZ());

@@ -39,8 +39,8 @@ public final class BossHostingPrompt {
         if (!(player.serverLevel().getEntity(id) instanceof LivingEntity boss)) throw new SmpActionFailure("unavailable");
         SmpRecords.require(HostedEncounterApi.canHost(boss), "unavailable");
         var raid = EventScheduler.active(player.server, "BOSS_RAID");
-        if (raid != null && raid.hasUUID("targetBoss") && raid.getUUID("targetBoss").equals(id)) {
-            EventAreaHooks.prompt(player, raid.getUUID("id"));
+        if (raid != null && raid.hasTargetBoss() && raid.targetBoss().equals(id)) {
+            EventAreaHooks.prompt(player, raid.id());
             return;
         }
         if (StructureStaging.prompt(player, boss)) return;

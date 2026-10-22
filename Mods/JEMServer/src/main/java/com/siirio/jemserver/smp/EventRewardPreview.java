@@ -17,15 +17,14 @@ import java.util.WeakHashMap;
 public final class EventRewardPreview {
     private static final Map<LootTable, ListTag> PREVIEWS = new WeakHashMap<>();
 
-    public static void add(ServerPlayer player, CompoundTag event, CompoundTag detail) {
-        String type = event.getString("activity");
-        String table =
-                switch (type) {
-                    case "COOKING_SHOW" -> event.getString("cookingReward");
-
-
-                    default -> "";
-                };
+    public static void add(ServerPlayer player, PartyState party, CompoundTag detail) {
+        add(player, party.activity(), "", party.bossEntity(), detail);
+    }
+    public static void add(ServerPlayer player, EventState event, CompoundTag detail) {
+        add(player, event.activity(), event.cookingReward(), event.bossEntity(), detail);
+    }
+    private static void add(ServerPlayer player, String type, String cookingReward, java.util.UUID bossId, CompoundTag detail) {
+        String table = type.equals("COOKING_SHOW") ? cookingReward : "";
         detail.putString(
                 "rewardMode",
                 type.equals("RESOURCE_RUSH") ? "DOUBLE_ELIGIBLE_DROPS" : "POSSIBLE_LOOT");
@@ -51,9 +50,9 @@ public final class EventRewardPreview {
             detail.putString("personalRewardMode", "TWO_DISTINCT_RESOURCES_AND_BOOK");
             return;
         }
-        if (type.equals("BOSS") && event.hasUUID("bossEntity")) {
+        if (type.equals("BOSS") && bossId != null) {
             for (var level : player.server.getAllLevels()) {
-                if (level.getEntity(event.getUUID("bossEntity")) instanceof net.minecraft.world.entity.Mob boss) {
+                if (level.getEntity(bossId) instanceof net.minecraft.world.entity.Mob boss) {
                     table = boss.getLootTable().toString();
                     break;
                 }

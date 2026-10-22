@@ -1,10 +1,10 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
-import com.siirio.jemserver.smp.SmpRecords;
 import com.siirio.jemworldbosstiers.encounter.HostedEncounters;
 import com.siirio.jemworldbosstiers.encounter.PendingRewardContainer;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -44,28 +44,26 @@ public final class BloodMoonDeaths {
             return;
         }
         player.getPersistentData().putBoolean(RECORDED, true);
-        var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-        int deaths = member.getInt("actualDeaths") + 1;
-        member.putInt("actualDeaths", deaths);
+        var member = row.member(player.getUUID());
+        int deaths = member.actualDeaths() + 1;
+        member.actualDeaths( deaths);
         int maximumLives=EventRules.FAILURE_DEATHS.get();
-        member.putBoolean("awaitingReturn", deaths >= maximumLives);
+        member.awaitingReturn( deaths >= maximumLives);
         var inventory = new ListTag();
         player.getInventory().save(inventory);
-        member.put("safeInventory", inventory);
-        member.putBoolean("safeRespawn", true);
-        if(deaths>=maximumLives) member.putBoolean("eliminated",true);
+        member.safeInventory(new NativeNbtPayload(inventory));
+        member.safeRespawn( true);
+        if(deaths>=maximumLives) member.eliminated(true);
 
-        if(deaths>=maximumLives && SmpRecords.memberIds(row).stream().noneMatch(id->new EventSession(row).accepted(id))) BloodMoon.fail(player.server,row);
+        if(deaths>=maximumLives && row.members().keySet().stream().noneMatch(id->new EventSession(row).accepted(id))) BloodMoon.fail(player.server,row);
         SmpData.get(player.server).flush(player.server);
-        if (member.getBoolean("safeRespawn")) player.getInventory().clearContent();
+        if (member.safeRespawn()) player.getInventory().clearContent();
     }
 
-    public static boolean hasRecovery(CompoundTag row) {
-        if (!row.getString("activity").equals("BLOOD_MOON")) return false;
-        var members = SmpRecords.members(row);
-        for (String id : members.getAllKeys()) {
-            var member = members.getCompound(id);
-            if (member.getBoolean("safeRespawn") || member.contains("safeInventory") || member.contains("safeDrops")) return true;
+    public static boolean hasRecovery(EventState row) {
+        if (!row.activity().equals("BLOOD_MOON")) return false;
+        for (var member : row.members().values()) {
+            if (member.safeRespawn() || member.hasSafeInventory() || member.hasSafeDrops()) return true;
         }
         return false;
     }
@@ -76,18 +74,19 @@ public final class BloodMoonDeaths {
                 || HostedEncounters.keepsInventory(serverPlayer) || recovery(serverPlayer) != null;
     }
 
-    private static CompoundTag recovery(ServerPlayer player) {
+    private static EventState recovery(ServerPlayer player) {
         var serverForMutation = player.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { return recoveryInScope(player); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         return store.edit(() -> recoveryInScope(player));
     }
 
-    private static CompoundTag recoveryInScope(ServerPlayer player) {
+    private static EventState recoveryInScope(ServerPlayer player) {
         for (var row : SmpData.get(player.server).events().currentRows()) {
-            if (!row.getString("activity").equals("BLOOD_MOON")) continue;
-            var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-            if (member.getBoolean("safeRespawn") || member.contains("safeInventory") || member.contains("safeDrops")) return row;
+            if (!row.activity().equals("BLOOD_MOON")) continue;
+            var member = row.member(player.getUUID());
+            if (member == null) continue;
+            if (member.safeRespawn() || member.hasSafeInventory() || member.hasSafeDrops()) return row;
         }
         return null;
     }
@@ -108,14 +107,14 @@ public final class BloodMoonDeaths {
         }
         var row = recovery(player);
         if (row == null || event.getDrops().isEmpty()) return;
-        var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-        if (member.contains("safeInventory")) {
+        var member = row.member(player.getUUID());
+        if (member.hasSafeInventory()) {
             event.getDrops().clear();
             return;
         }
-        var items = member.getList("safeDrops", Tag.TAG_COMPOUND);
+        var items = (member.hasSafeDrops() ? member.safeDrops().compoundList() : new ListTag());
         event.getDrops().forEach(drop -> items.add(drop.getItem().save(new CompoundTag())));
-        member.put("safeDrops", items);
+        member.safeDrops(new NativeNbtPayload(items));
 
         SmpData.get(player.server).flush(player.server);
         event.getDrops().clear();
@@ -142,18 +141,18 @@ public final class BloodMoonDeaths {
     private static void restoreInScope(ServerPlayer player) {
         var row = recovery(player);
         if (row == null) return;
-        var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-        boolean inventorySaved = member.contains("safeInventory");
+        var member = row.member(player.getUUID());
+        boolean inventorySaved = member.hasSafeInventory();
         if (inventorySaved) {
-            player.getInventory().load(member.getList("safeInventory", Tag.TAG_COMPOUND));
-            member.remove("safeInventory");
+            player.getInventory().load(member.safeInventory().compoundList());
+            member.clearSafeInventory();
         }
         var extras = new ArrayList<ItemStack>();
         if (!inventorySaved)
-            for (var tag : member.getList("safeDrops", Tag.TAG_COMPOUND)) extras.add(ItemStack.of((CompoundTag) tag));
+            for (var tag : (member.hasSafeDrops() ? member.safeDrops().compoundList() : new ListTag())) extras.add(ItemStack.of((CompoundTag) tag));
         if (!extras.isEmpty())
-            PendingRewardContainer.enqueue(player.server, player.getUUID(), "blood_moon_recovery:" + row.getUUID("id"), "jem.smp.blood_moon_recovery", extras);
-        member.remove("safeDrops");
+            PendingRewardContainer.enqueue(player.server, player.getUUID(), "blood_moon_recovery:" + row.id(), "jem.smp.blood_moon_recovery", extras);
+        member.clearSafeDrops();
 
     }
 
@@ -180,16 +179,16 @@ public final class BloodMoonDeaths {
         if (row == null) row = EventSession.forPlayer(player);
         if (row == null) return;
         restore(player);
-        var member = SmpRecords.members(row).getCompound(player.getStringUUID());
-        if (member.getBoolean("safeRespawn")) player.setHealth((float) (player.getMaxHealth() * EventRules.RESPAWN_HEALTH.get()));
-        if(member.getBoolean("eliminated")) {
+        var member = row.member(player.getUUID());
+        if (member.safeRespawn()) player.setHealth((float) (player.getMaxHealth() * EventRules.RESPAWN_HEALTH.get()));
+        if(member.eliminated()) {
             if(!EventRegions.returnOrigin(player,member)) EventRegions.eject(player,row);
-        } else if (EventRuntime.enabled(player.server) && row.getString("state").equals("ACTIVE")) {
+        } else if (EventRuntime.enabled(player.server) && row.state().equals("ACTIVE")) {
             var level=EventRegions.level(player.server,row);
             var pos=level==null?null:new EncounterContext(row).respawnPoint(level);
             if(level!=null&&pos!=null) player.teleportTo(level, pos.getX() + .5, pos.getY(), pos.getZ() + .5, player.getYRot(), player.getXRot());
         }
-        member.remove("safeRespawn");
+        member.clearSafeRespawn();
 
     }
 

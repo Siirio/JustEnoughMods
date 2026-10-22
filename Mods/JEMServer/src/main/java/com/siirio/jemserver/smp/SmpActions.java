@@ -1,12 +1,9 @@
 package com.siirio.jemserver.smp;
 
-
+import java.util.Set;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-
-import java.util.*;
 
 public final class SmpActions {
     public static void handle(ServerPlayer player, SmpAction request) {
@@ -16,84 +13,78 @@ public final class SmpActions {
 
     static void create(ServerPlayer player, SmpPartyRequest input) {
         var party = Parties.create(player, input);
-        SmpNetwork.open(player, "parties", party.getUUID("id"));
+        SmpNetwork.open(player, "parties", party.id());
         Navigation.accepted(player);
     }
 
     static void party(ServerPlayer player, SmpAction.PartyCommand request) {
-        existing(player, request);
+        var data = SmpData.get(player.server);
+        var party = data.parties().current(request.id());
+        SmpRecords.require(party != null, "unavailable");
+        var action = request.kind();
+        var event = party.hasEventId() ? data.events().current(party.eventId()) : null;
+        if (party.hasEventId()
+                && !Set.of(SmpActionKind.CANCEL, SmpActionKind.DISSOLVE, SmpActionKind.LEAVE).contains(action)) {
+            SmpRecords.require(com.siirio.jemserver.smp.events.EventRuntime.available(player.server, event), "unavailable");
+        }
+        if (action == SmpActionKind.START && party.state().equals("ACTIVE")) {
+            SmpRecords.owner(player, party);
+            return;
+        }
+        SmpRecords.require(party.revision() == request.revision(), "stale_revision");
+        request.apply(player, party);
+        for (var id : party.members().keySet()) {
+            var member = player.server.getPlayerList().getPlayer(id);
+            if (member != null) Navigation.accepted(member);
+        }
     }
 
     static void event(ServerPlayer player, SmpAction.EventCommand request) {
-        existing(player, request);
+        var event = SmpData.get(player.server).events().current(request.id());
+        SmpRecords.require(event != null, "unavailable");
+        SmpRecords.require(com.siirio.jemserver.smp.events.EventRuntime.available(player.server, event), "unavailable");
+        SmpRecords.require(event.revision() == request.revision(), "stale_revision");
+        request.apply(player, event);
     }
 
-    private static void existing(ServerPlayer player, SmpAction request) {
-        var input = request.input();
-        var action = request.kind();
-        String table = request.table().key();
-        CompoundTag row = request instanceof SmpAction.PartyCommand ? SmpData.get(player.server).parties().current(request.id()) : SmpData.get(player.server).events().current(request.id());
-        SmpRecords.require(row != null, "unavailable");
-        if ((table.equals("events") || row.hasUUID("eventId"))
-                && !Set.of(SmpActionKind.CANCEL, SmpActionKind.DISSOLVE, SmpActionKind.LEAVE).contains(action)) {
-            var event = table.equals("events") ? row : SmpData.get(player.server).events().current(row.getUUID("eventId"));
-            SmpRecords.require(com.siirio.jemserver.smp.events.EventRuntime.available(player.server, event), "unavailable");
-        }
-        if (table.equals("parties") && (action == SmpActionKind.START) && row.getString("state").equals("ACTIVE")) {
-            SmpRecords.owner(player, row);
-            return;
-        }
-        SmpRecords.require(row.getInt("revision") == request.revision(), "stale_revision");
-        switch (action) {
-            case NAVIGATE -> {
-                var location = row.hasUUID("eventId") ? SmpData.get(player.server).events().current(row.getUUID("eventId")) : row;
-                SmpRecords.require(canNavigate(player, table, row, location), "private");
-                Navigation.send(
-                        player,
-                        table,
-                        row.getUUID("id"),
-                        row.getString("title"),
-                        new ResourceLocation(location.getString("dimension")),
-                        BlockPos.of(location.getLong("position")),
-                        location.contains("ends") ? location.getLong("ends") : Long.MAX_VALUE);
-            }
-            case TELEPORT_EVENT -> {
-                SmpRecords.require(canTeleportEvent(table, row),"unavailable");
-                boolean inside=row.getString("activity").equals("RESOURCE_RUSH");
-                com.siirio.jemserver.smp.events.EventTravel.request(player,row.getUUID("id"),inside);
-            }
-            case JOIN_RAID, CREATE_PARTY, SOLO -> {
-                if (table.equals("parties")) Parties.action(player, row, action, input);
-                else {
-                    SmpRecords.require(table.equals("events") && EventAdmission.groupActivity(row), "unknown_action");
-                    EventParties.join(player, row, (action == SmpActionKind.SOLO));
-                }
-            }
-            case INVITE -> {
-                SmpRecords.require(table.equals("parties"), "unknown_action");
-                Parties.action(player, row, action, input);
-            }
-            default -> {
-                if (table.equals("parties")) Parties.action(player, row, action, input);
-                else throw new SmpActionFailure("unknown_action");
-            }
-        }
-        if (table.equals("parties"))
-            for (UUID id : SmpRecords.memberIds(row)) {
-                var member = player.server.getPlayerList().getPlayer(id);
-                if (member != null) Navigation.accepted(member);
-            }
+    static void navigateParty(ServerPlayer player, PartyState party) {
+        var event = party.hasEventId() ? SmpData.get(player.server).events().current(party.eventId()) : null;
+        SmpRecords.require(canNavigate(player, party, event), "private");
+        Navigation.send(player, "parties", party.id(), party.title(),
+                new ResourceLocation(event == null ? party.dimension() : event.dimension()),
+                BlockPos.of(event == null ? party.position() : event.position()),
+                event != null && event.hasEnds() ? event.ends() : Long.MAX_VALUE);
     }
 
-    static boolean canNavigate(ServerPlayer player, String table, CompoundTag row, CompoundTag location) {
-        boolean authorized=table.equals("events")||row.getUUID("owner").equals(player.getUUID())
-                ||table.equals("parties")&&Parties.accepted(row,player.getUUID());
-        return authorized&&!SmpData.closed(row)&&location!=null&&location.contains("dimension")&&location.contains("position");
+    static void navigateEvent(ServerPlayer player, EventState event) {
+        SmpRecords.require(canNavigate(event), "private");
+        Navigation.send(player, "events", event.id(), event.title(), new ResourceLocation(event.dimension()),
+                BlockPos.of(event.position()), event.hasEnds() ? event.ends() : Long.MAX_VALUE);
     }
 
-    static boolean canTeleportEvent(String table, CompoundTag row) {
-        return table.equals("events")&&!SmpData.closed(row)&&row.contains("dimension")&&row.contains("position");
+    static void teleportEvent(ServerPlayer player, EventState event) {
+        SmpRecords.require(canTeleportEvent(event), "unavailable");
+        com.siirio.jemserver.smp.events.EventTravel.request(player, event.id(), event.activity().equals("RESOURCE_RUSH"));
     }
+
+    static void joinEvent(ServerPlayer player, EventState event, boolean solo) {
+        SmpRecords.require(EventAdmission.groupActivity(event), "unknown_action");
+        EventParties.join(player, event, solo);
+    }
+
+    static boolean canNavigate(ServerPlayer player, PartyState party, EventState event) {
+        boolean authorized = party.owner().equals(player.getUUID()) || Parties.accepted(party, player.getUUID());
+        boolean located = party.hasEventId()
+                ? event != null && event.hasDimension() && event.hasPosition()
+                : party.hasDimension() && party.hasPosition();
+        return authorized && !party.closed() && located;
+    }
+
+    static boolean canNavigate(EventState event) {
+        return event != null && !event.closed() && event.hasDimension() && event.hasPosition();
+    }
+
+    static boolean canTeleportEvent(EventState event) { return canNavigate(event); }
 
     private SmpActions() {}
 }

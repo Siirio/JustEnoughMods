@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.Commands;
@@ -28,8 +30,8 @@ public final class EventCommands {
                 .then(Commands.literal("stop").then(Commands.argument("id", UuidArgument.uuid())
                         .suggests((context, builder) -> SharedSuggestionProvider.suggest(
                                 SmpData.get(context.getSource().getServer()).events().snapshots().stream()
-                                        .filter(row -> !SmpData.closed(row) && row.hasUUID("id"))
-                                        .map(row -> row.getUUID("id").toString()), builder))
+                                        .filter(row -> !SmpData.closed(row) && row.hasId())
+                                        .map(row -> row.id().toString()), builder))
                         .executes(context -> stopExact(context.getSource(), UuidArgument.getUuid(context, "id")))));
         event.getDispatcher().register(Commands.literal("jem").then(eventRoot));
     }
@@ -90,9 +92,9 @@ public final class EventCommands {
     private static boolean targetedInScope(net.minecraft.server.MinecraftServer server,UUID boss) {
         var data=SmpData.get(server);
         return data.events().currentRows().stream().anyMatch(row->!SmpData.closed(row)
-                &&(row.hasUUID("targetBoss")&&row.getUUID("targetBoss").equals(boss)
-                ||row.hasUUID("bossEntity")&&row.getUUID("bossEntity").equals(boss)))
-                ||data.parties().currentRows().stream().anyMatch(row->!SmpData.closed(row)&&row.hasUUID("bossEntity")&&row.getUUID("bossEntity").equals(boss));
+                &&(row.hasTargetBoss()&&row.targetBoss().equals(boss)
+                ||row.hasBossEntity()&&row.bossEntity().equals(boss)))
+                ||data.parties().currentRows().stream().anyMatch(row->!SmpData.closed(row)&&row.hasBossEntity()&&row.bossEntity().equals(boss));
     }
 
     private static int start(net.minecraft.commands.CommandSourceStack source,String type,BlockPos position,String waveThree,String waveFive,
@@ -108,18 +110,18 @@ public final class EventCommands {
         var data=SmpData.get(source.getServer());
         var row=data.events().create(new UUID(0,0));
         if(type.equals("BLOOD_MOON")&&waveThree!=null&&!BloodMoonSetPieces.select(row,waveThree,waveFive)) {
-            row.putString("state","CANCELLED");
+            row.state("CANCELLED");
 
             source.sendFailure(Component.translatable("jem.smp.error.blood_moon_variants"));
             return 0;
         }
         long now=System.currentTimeMillis();
-        row.putString("slot","manual:"+row.getUUID("id"));
-        row.putString("activity",type);
-        row.putString("title",type);
-        row.putString("state","PLANNED");
-        row.putLong("planned",now);
-        if(position!=null) row.putLong("requestedPosition",position.asLong());
+        row.slot("manual:"+row.id());
+        row.activity(type);
+        row.title(type);
+        row.state("PLANNED");
+        row.planned(now);
+        if(position!=null) row.requestedPosition(position.asLong());
         if(targetBoss!=null) {
             var arena=com.siirio.jemworldbosstiers.api.RaidArenaApi.arena(targetBoss).orElse(null);
             if(arena==null) {
@@ -129,8 +131,8 @@ public final class EventCommands {
             }
             var bounds=arena.bounds();
             StructureStaging.attachArena(row,UUID.fromString(arena.id()),arena.entityType(),arena.dimension().toString(),arena.center(),bounds);
-            row.putUUID("targetBoss",targetBoss.getUUID());
-            row.putString("bossType",arena.entityType().toString());
+            row.targetBoss(targetBoss.getUUID());
+            row.bossType(arena.entityType().toString());
         }
         if(raid!=null&&!RaidEvent.claimArena(source.getServer(),row,raid.id().toString(),raid.boss(),raid.dimension(),raid.center(),raid.bounds())) {
             EventScheduler.finish(source.getServer(),row,"CANCELLED");
@@ -148,7 +150,7 @@ public final class EventCommands {
             return 0;
         }
         data.events().prune();
-        source.sendSuccess(()->Component.literal(row.getUUID("id").toString()),false);
+        source.sendSuccess(()->Component.literal(row.id().toString()),false);
         return 1;
     }
 

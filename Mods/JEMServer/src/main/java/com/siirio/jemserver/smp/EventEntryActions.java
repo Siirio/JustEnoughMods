@@ -20,14 +20,14 @@ public final class EventEntryActions {
                 SmpRecords.require(BossHostingPrompt.canOffer(player,boss),"unavailable");
                 SmpRuntime.host(player,boss);
                 if(choice.solo()) {
-                    var party=SmpData.get(player.server).parties().currentRows().stream().filter(p->p.hasUUID("bossEntity") && p.getUUID("bossEntity").equals(choice.id()) && p.getUUID("owner").equals(player.getUUID())).findFirst().orElseThrow();
+                    var party=SmpData.get(player.server).parties().currentRows().stream().filter(p->p.hasBossEntity() && p.bossEntity().equals(choice.id()) && p.owner().equals(player.getUUID())).findFirst().orElseThrow();
                     Parties.makeSolo(player,party);HostedParties.start(player,party);
                 }
                 return;
             }
             SmpRecords.require(EventRuntime.enabled(player.server),"unavailable");
             var row=SmpData.get(player.server).events().current(choice.id());
-            SmpRecords.require(row!=null && row.getString("activity").equals(choice.type().name()),"unavailable");
+            SmpRecords.require(row!=null && row.activity().equals(choice.type().name()),"unavailable");
             SmpRecords.require(choice.type()==EventEntryKind.BLOOD_MOON || choice.type()==EventEntryKind.BOSS_RAID, "unavailable");
             EventParties.join(player,row,choice.solo());
         } catch(SmpActionFailure failure) {

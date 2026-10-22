@@ -3,13 +3,14 @@ package com.siirio.jemserver.smp.events;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.siirio.jemserver.smp.SmpRecords;
+import com.siirio.jemserver.smp.EventState;
+import com.siirio.jemserver.smp.EventRewardGroup;
+import com.siirio.jemserver.smp.NativeNbtPayload;
 import com.siirio.jemworldbosstiers.encounter.PendingRewardContainer;
 import com.siirio.jemworldbosstiers.encounter.RewardGroup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -34,7 +35,6 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class BloodMoonRewards extends SimpleJsonResourceReloadListener {
-    private static final String PENDING = "pendingWaveRewards";
     private static final double CONSOLATION_SHARE = .15;
     private static final double CONSOLATION_TYPE_SHARE = .25;
     private static Map<Integer, Wave> waves = Map.of();
@@ -89,22 +89,22 @@ public final class BloodMoonRewards extends SimpleJsonResourceReloadListener {
         return List.copyOf(result);
     }
 
-    public static void stage(ServerLevel level, CompoundTag event, List<net.minecraft.server.level.ServerPlayer> participants, int wave) {
+    public static void stage(ServerLevel level, EventState event, List<net.minecraft.server.level.ServerPlayer> participants, int wave) {
         Wave definition = requireWave(wave);
-        CompoundTag pending = event.getCompound(PENDING);
+        var pending = new LinkedHashMap<>(event.pendingWaveRewards());
         for (var player : participants) {
-            CompoundTag member = SmpRecords.members(event).getCompound(player.getStringUUID());
-            if (!member.getBoolean("contributed")) continue;
-            ListTag caches = pending.getList(player.getStringUUID(), Tag.TAG_COMPOUND);
-            if (caches.stream().map(tag -> (CompoundTag) tag).anyMatch(cache -> cache.getInt("wave") == wave)) continue;
-            CompoundTag cache = new CompoundTag();
-            cache.putInt("wave", wave);
-            cache.putString("titleKey", definition.titleKey());
-            cache.put("items", save(definition.roll(level, BloodMoonWaves.factor(wave))));
+            var member = event.member(player.getUUID());
+            if (member == null || !member.contributed()) continue;
+            var caches = new ArrayList<>(pending.getOrDefault(player.getUUID(), List.of()));
+            if (caches.stream().anyMatch(cache -> cache.wave() == wave)) continue;
+            var cache = new EventRewardGroup();
+            cache.wave(wave);
+            cache.titleKey(definition.titleKey());
+            cache.items(new NativeNbtPayload(save(definition.roll(level, BloodMoonWaves.factor(wave)))));
             caches.add(cache);
-            pending.put(player.getStringUUID(), caches);
+            pending.put(player.getUUID(), List.copyOf(caches));
         }
-        event.put(PENDING, pending);
+        event.pendingWaveRewards(pending);
     }
 
     public static CompoundTag previewWave(int wave) {
@@ -125,28 +125,25 @@ public final class BloodMoonRewards extends SimpleJsonResourceReloadListener {
         return result;
     }
 
-    public static void commit(MinecraftServer server, CompoundTag event, boolean fullCompletion) {
-        CompoundTag pending = event.getCompound(PENDING);
-        for (String playerId : pending.getAllKeys()) {
-            List<RewardGroup> groups = groups(pending.getList(playerId, Tag.TAG_COMPOUND));
-            if (!groups.isEmpty()) PendingRewardContainer.enqueueGrouped(server, UUID.fromString(playerId), event.getUUID("id").toString(),
+    public static void commit(MinecraftServer server, EventState event, boolean fullCompletion) {
+        for (var pending : event.pendingWaveRewards().entrySet()) {
+            List<RewardGroup> groups = groups(pending.getValue());
+            if (!groups.isEmpty()) PendingRewardContainer.enqueueGrouped(server, pending.getKey(), event.id().toString(),
                     fullCompletion ? "jem.smp.reward.blood_moon.full" : "jem.smp.reward.blood_moon.cash_out", groups);
         }
-        event.remove(PENDING);
+        event.clearPendingWaveRewards();
     }
 
-    public static void commitConsolation(MinecraftServer server, CompoundTag event) {
-        CompoundTag pending = event.getCompound(PENDING);
-        for (String playerId : pending.getAllKeys()) {
+    public static void commitConsolation(MinecraftServer server, EventState event) {
+        for (var pending : event.pendingWaveRewards().entrySet()) {
             List<ItemStack> accumulated = new ArrayList<>();
-            for (Tag value : pending.getList(playerId, Tag.TAG_COMPOUND))
-                ((CompoundTag) value).getList("items", Tag.TAG_COMPOUND).forEach(item -> accumulated.add(ItemStack.of((CompoundTag) item)));
-            UUID player = UUID.fromString(playerId);
-            List<ItemStack> consolation = consolation(accumulated, event.getUUID("id"), player);
-            if (!consolation.isEmpty()) PendingRewardContainer.enqueueGrouped(server, player, event.getUUID("id") + ":consolation",
+            for (EventRewardGroup group : pending.getValue()) accumulated.addAll(load(items(group)));
+            UUID player = pending.getKey();
+            List<ItemStack> consolation = consolation(accumulated, event.id(), player);
+            if (!consolation.isEmpty()) PendingRewardContainer.enqueueGrouped(server, player, event.id() + ":consolation",
                     "jem.smp.reward.blood_moon.failure", List.of(new RewardGroup("jem.smp.reward.blood_moon.consolation", consolation)));
         }
-        event.remove(PENDING);
+        event.clearPendingWaveRewards();
     }
 
     private static List<ItemStack> consolation(List<ItemStack> source, UUID event, UUID player) {
@@ -177,11 +174,17 @@ public final class BloodMoonRewards extends SimpleJsonResourceReloadListener {
         return 1;
     }
 
-    private static List<RewardGroup> groups(ListTag caches) {
+    private static List<RewardGroup> groups(List<EventRewardGroup> caches) {
         List<RewardGroup> groups = new ArrayList<>();
-        caches.stream().map(tag -> (CompoundTag) tag).sorted(Comparator.comparingInt(cache -> cache.getInt("wave")))
-                .forEach(cache -> groups.add(new RewardGroup(cache.getString("titleKey"), load(cache.getList("items", Tag.TAG_COMPOUND)))));
+        caches.stream().sorted(Comparator.comparingInt(EventRewardGroup::wave))
+                .forEach(cache -> groups.add(new RewardGroup(cache.titleKey(), load(items(cache)))));
         return groups;
+    }
+
+    /** Native item-list boundary retains the original getList compound-element contract. */
+    private static ListTag items(EventRewardGroup group) {
+        if (!group.hasItems()) return new ListTag();
+        return group.items().compoundList();
     }
 
     private static ListTag preview(List<Reward> rewards, double factor) {

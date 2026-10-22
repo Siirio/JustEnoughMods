@@ -1,0 +1,127 @@
+import com.diffplug.gradle.spotless.SpotlessPlugin
+import com.github.spotbugs.snom.SpotBugsPlugin
+import com.github.spotbugs.snom.Confidence
+import com.github.spotbugs.snom.Effort
+
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.diffplug.spotless:spotless-plugin-gradle:6.25.0'
+        classpath 'com.github.spotbugs.snom:spotbugs-gradle-plugin:6.0.26'
+    }
+}
+
+repositories { mavenCentral() }
+
+def qualityProjects = subprojects.sort { it.path }
+def sourceFiles = { owner ->
+    owner.files(owner.provider {
+        def excludedRoots = [owner.layout.buildDirectory.get().asFile, owner.file('src/generated')]
+                .collect { it.toPath().toAbsolutePath().normalize() }
+        owner.sourceSets.main.allJava.filter { source ->
+            def path = source.toPath().toAbsolutePath().normalize()
+            !excludedRoots.any { path.startsWith(it) }
+        }
+    })
+}
+
+qualityProjects.each { owner ->
+    owner.pluginManager.withPlugin('java') {
+        owner.repositories { mavenCentral() }
+        owner.apply plugin: SpotlessPlugin
+        owner.apply plugin: 'checkstyle'
+        owner.apply plugin: 'pmd'
+        owner.apply plugin: SpotBugsPlugin
+        def handwritten = sourceFiles(owner)
+        owner.spotless {
+            java {
+                target handwritten
+                googleJavaFormat('1.22.0').aosp().reorderImports(false)
+                trimTrailingWhitespace()
+                endWithNewline()
+            }
+        }
+        owner.checkstyle {
+            toolVersion = '10.17.0'
+            configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+            ignoreFailures = false
+            maxWarnings = 0
+        }
+        owner.pmd {
+            toolVersion = '7.7.0'
+            ruleSets = []
+            ruleSetFiles = rootProject.files('config/pmd/jem.xml')
+            consoleOutput = true
+            ignoreFailures = false
+        }
+        owner.spotbugs {
+            toolVersion = '4.8.6'
+            ignoreFailures = false
+            effort = Effort.MAX
+            reportLevel = Confidence.MEDIUM
+        }
+        owner.tasks.named('checkstyleMain') { setSource(handwritten) }
+        owner.tasks.named('pmdMain') { setSource(handwritten) }
+        owner.tasks.named('spotbugsMain') {
+            reports.maybeCreate('xml').required.set(true)
+            reports.maybeCreate('html').required.set(true)
+        }
+    }
+}
+
+def cpdTool = configurations.create('cpdTool') {
+    canBeConsumed = false
+    canBeResolved = true
+}
+dependencies {
+    add('cpdTool', 'net.sourceforge.pmd:pmd-cli:7.7.0')
+    add('cpdTool', 'net.sourceforge.pmd:pmd-java:7.7.0')
+}
+def cpdSources = files(qualityProjects.collect { sourceFiles(it) })
+def cpdReport = layout.buildDirectory.file('reports/cpd/cpd.xml')
+def cpdSourceList = layout.buildDirectory.file('reports/cpd/sources.txt')
+def minimumTokens = 100
+
+tasks.register('cpdCheck') {
+    group = 'verification'
+    description = 'Fail on token clones across active handwritten first-party Java.'
+    inputs.files(cpdSources).withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.files(cpdTool).withNormalizer(ClasspathNormalizer)
+    inputs.property('minimumTokens', minimumTokens)
+    outputs.file(cpdReport)
+    outputs.file(cpdSourceList)
+    notCompatibleWithConfigurationCache('Gradle 8.8 Project.javaexec task action')
+    doLast {
+        if (cpdSources.isEmpty()) throw new GradleException('CPD source selection is empty')
+        def sourceList = cpdSourceList.get().asFile
+        sourceList.parentFile.mkdirs()
+        sourceList.setText(cpdSources.files.collect { it.absolutePath }.sort().join('\n') + '\n', 'UTF-8')
+        def execution
+        cpdReport.get().asFile.withOutputStream { output ->
+            execution = project.javaexec {
+                classpath = cpdTool
+                mainClass.set('net.sourceforge.pmd.cli.PmdCli')
+                args 'cpd', '--minimum-tokens', minimumTokens.toString(), '--language', 'java',
+                        '--file-list', sourceList.absolutePath, '--format', 'xml'
+                standardOutput = output
+                ignoreExitValue = true
+            }
+        }
+        execution.rethrowFailure()
+        if (execution.exitValue != 0) {
+            throw new GradleException("CPD exited with ${execution.exitValue}; inspect ${cpdReport.get().asFile}")
+        }
+    }
+}
+
+tasks.register('qualityCheck') {
+    group = 'verification'
+    description = 'Strict non-test checks only; never installs, publishes, launches, or runs tests.'
+    dependsOn 'cpdCheck'
+    dependsOn qualityProjects.collectMany { owner ->
+        ['spotlessCheck', 'checkstyleMain', 'pmdMain', 'spotbugsMain'].collect { "${owner.path}:${it}" }
+    }
+}

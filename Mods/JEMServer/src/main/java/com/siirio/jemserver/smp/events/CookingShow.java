@@ -21,22 +21,22 @@ import java.util.*;
 
 @Mod.EventBusSubscriber(modid = "jem_server", value = net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class CookingShow {
-    public static void prepare(MinecraftServer server, CompoundTag row, long now) {
+    public static void prepare(MinecraftServer server, EventState row, long now) {
         var dishes = CookingRecipes.available(server);
         SmpRecords.require(!dishes.isEmpty(), "invalid_cooking_menu");
         int difficulty = server.overworld().random.nextInt(3);
         var pool = CookingRecipes.tier(dishes, difficulty);
-        var requirements = new CompoundTag();
+        var requirements = new LinkedHashMap<String, Integer>();
         int count = Math.min(SmpConfig.COOKING_DISH_COUNT.get(), pool.size());
         var choices = new ArrayList<>(pool);
         for (int index = 0; index < count; index++) {
             var dish = choices.remove(server.overworld().random.nextInt(choices.size()));
-            requirements.putInt(dish.item().toString(), SmpConfig.COOKING_DISH_QUANTITY.get());
+            requirements.put(dish.item().toString(), SmpConfig.COOKING_DISH_QUANTITY.get());
         }
-        row.put("cookingRequirements", requirements);
-        row.putString("cookingDifficulty", List.of("EASY", "MEDIUM", "HARD").get(difficulty));
-        row.putString("cookingReward", "jem_server:events/cooking_" + List.of("easy", "medium", "hard").get(difficulty));
-        row.putLong("ends", now + java.util.concurrent.TimeUnit.MINUTES.toMillis(SmpConfig.COOKING_MINUTES.get()));
+        row.cookingRequirements(requirements);
+        row.cookingDifficulty( List.of("EASY", "MEDIUM", "HARD").get(difficulty));
+        row.cookingReward( "jem_server:events/cooking_" + List.of("easy", "medium", "hard").get(difficulty));
+        row.ends( now + java.util.concurrent.TimeUnit.MINUTES.toMillis(SmpConfig.COOKING_MINUTES.get()));
     }
 
     @SubscribeEvent
@@ -54,38 +54,46 @@ public final class CookingShow {
     private static void progressInScope(ServerPlayer player, ItemStack stack) {
         if (player instanceof FakePlayer || stack.isEmpty()) return;
         var row = EventScheduler.active(player.server, "COOKING_SHOW");
-        if (row == null || System.currentTimeMillis() >= row.getLong("ends")) return;
+        if (row == null || System.currentTimeMillis() >= row.ends()) return;
         String item = ForgeRegistries.ITEMS.getKey(stack.getItem()).toString();
-        var requirements = row.getCompound("cookingRequirements");
-        if (!requirements.contains(item)) return;
-        var scores = row.getCompound("cookingScores");
-        var score = scores.getCompound(player.getStringUUID());
+        var requirements = row.cookingRequirements();
+        if (!requirements.containsKey(item)) return;
+        var scores = new LinkedHashMap<>(row.cookingScores());
+        var score = scores.getOrDefault(player.getUUID(), new EventCookingProgress());
         if (!advance(requirements, score, item, stack.getCount())) return;
-        scores.put(player.getStringUUID(), score);
-        row.put("cookingScores", scores);
+        scores.put(player.getUUID(), score);
+        row.cookingScores(scores);
 
-        if (!requirements.getAllKeys().stream().allMatch(key -> score.getInt(key) >= requirements.getInt(key))) return;
-        var loot = player.server.getLootData().getLootTable(new ResourceLocation(row.getString("cookingReward")));
+        if (!requirements.entrySet().stream().allMatch(entry -> score.quantities().getOrDefault(entry.getKey(), 0) >= entry.getValue())) return;
+        var loot = player.server.getLootData().getLootTable(new ResourceLocation(row.cookingReward()));
         var params = new LootParams.Builder(player.serverLevel()).withParameter(LootContextParams.ORIGIN, player.position()).create(LootContextParamSets.CHEST);
-        score.putBoolean("rewarded", true);
+        score.rewarded(true);
 
         Profiles.countEvent(player.server, player.getUUID(), "COOKING_SHOW");
-        PendingRewardContainer.enqueue(player.server, player.getUUID(), row.getUUID("id").toString(), "jem.smp.COOKING_SHOW", loot.getRandomItems(params));
+        PendingRewardContainer.enqueue(player.server, player.getUUID(), row.id().toString(), "jem.smp.COOKING_SHOW", loot.getRandomItems(params));
         player.sendSystemMessage(Component.translatable("jem.smp.cooking_complete").withStyle(ChatFormatting.GOLD));
     }
 
-    static boolean advance(CompoundTag requirements, CompoundTag score, String item, int count) {
-        if (count <= 0 || score.getBoolean("rewarded")) return false;
-        int required = requirements.getInt(item);
-        int previous = Math.max(0, score.getInt(item));
+    static boolean advance(Map<String, Integer> requirements, EventCookingProgress score, String item, int count) {
+        if (count <= 0 || score.rewarded()) return false;
+        int required = requirements.getOrDefault(item, 0);
+        int previous = Math.max(0, score.quantities().getOrDefault(item, 0));
         if (required <= previous) return false;
-        score.putInt(item, (int) Math.min(required, (long) previous + count));
+        var quantities = new LinkedHashMap<>(score.quantities());
+        quantities.put(item, (int) Math.min(required, (long) previous + count));
+        score.quantities(quantities);
         return true;
     }
 
-    public static void view(ServerPlayer player, CompoundTag row, CompoundTag detail) {
+    public static void view(ServerPlayer player, EventState row, CompoundTag detail) {
         detail.remove("cookingScores");
-        detail.put("cookingProgress", row.getCompound("cookingScores").getCompound(player.getStringUUID()).copy());
+        var progress = new CompoundTag();
+        var score = row.cookingScores().get(player.getUUID());
+        if (score != null) {
+            score.quantities().forEach(progress::putInt);
+            if (score.hasRewarded()) progress.putBoolean("rewarded", score.rewarded());
+        }
+        detail.put("cookingProgress", progress);
     }
 
     private CookingShow() {}

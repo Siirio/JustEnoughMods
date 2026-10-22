@@ -54,7 +54,7 @@ public final class SmpRuntime {
     @SubscribeEvent
     public void starting(net.minecraftforge.event.server.ServerStartingEvent event) {
         if (!SmpEnvironment.active(event.getServer())) return;
-        SmpServerSession.get(event.getServer());
+        SmpServerSession.start(event.getServer());
         EventRuntime.starting(event.getServer());
     }
 
@@ -82,23 +82,23 @@ public final class SmpRuntime {
                 data.parties().currentRows().stream()
                         .filter(
                                 row ->
-                                        row.hasUUID("bossEntity")
-                                                && row.getUUID("bossEntity").equals(boss.getUUID())
+                                        row.hasBossEntity()
+                                                && row.bossEntity().equals(boss.getUUID())
                                                 && !SmpData.closed(row))
                         .findFirst();
         if (existing.isPresent()) {
-            SmpNetwork.open(player, "parties", existing.get().getUUID("id"));
+            SmpNetwork.open(player, "parties", existing.get().id());
             return;
         }
         try {
             SmpRecords.require(BossHostingPrompt.canOffer(player, boss), "unavailable");
             var row = Parties.createHosted(player, SmpPartyRequest.hosted(boss.getDisplayName().getString(), false));
             SmpRecords.require(HostedEncounterApi.hold(boss), "unavailable");
-            row.putUUID("bossEntity", boss.getUUID());
-            row.putString("bossType", net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString());
-            row.putLong("position", boss.blockPosition().asLong());
+            row.bossEntity(boss.getUUID());
+            row.bossType(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString());
+            row.position(boss.blockPosition().asLong());
             
-            SmpNetwork.open(player, "parties", row.getUUID("id"));
+            SmpNetwork.open(player, "parties", row.id());
         } catch (IllegalArgumentException failure) {
             player.sendSystemMessage(
                     Component.translatable("jem.smp.error." + failure.getMessage()));
@@ -143,14 +143,12 @@ public final class SmpRuntime {
             Navigation.logout(p);
             Profiles.captureProfessions(p);
             var profile = Profiles.get(p.server, p.getUUID());
-            profile.putInt(
-                    "playTicks",
+            profile.playTicks(
                     p.getStats()
                             .getValue(
                                     net.minecraft.stats.Stats.CUSTOM.get(
                                             net.minecraft.stats.Stats.PLAY_TIME)));
-            profile.putInt(
-                    "mobsKilled",
+            profile.mobsKilled(
                     p.getStats()
                             .getValue(
                                     net.minecraft.stats.Stats.CUSTOM.get(

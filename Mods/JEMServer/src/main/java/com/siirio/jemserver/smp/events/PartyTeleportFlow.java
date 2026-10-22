@@ -1,13 +1,12 @@
 package com.siirio.jemserver.smp.events;
 
-import com.siirio.jemserver.smp.Parties;
+import com.siirio.jemserver.smp.*;
 import com.siirio.jemserver.smp.SmpData;
 import com.siirio.jemserver.smp.SmpRecords;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -23,35 +22,28 @@ import java.util.Set;
 import java.util.UUID;
 
 public final class PartyTeleportFlow {
-    private static final String SESSION = "partyTeleportSession";
-    private static final String RETURN_PENDING = "partyReturnPending";
-    private static final String RETURN_DIMENSION = "partyReturnDimension";
-    private static final String RETURN_X = "partyReturnX";
-    private static final String RETURN_Y = "partyReturnY";
-    private static final String RETURN_Z = "partyReturnZ";
-    private static final String RETURN_YAW = "partyReturnYaw";
-    private static final String RETURN_PITCH = "partyReturnPitch";
     private static final int SEARCH_RADIUS = 6;
     private static final int VERTICAL_SEARCH = 4;
 
-    public static void begin(ServerPlayer host, CompoundTag party, Collection<UUID> participants) {
+    public static void begin(ServerPlayer host, PartyState party, Collection<UUID> participants) {
         var serverForMutation = host.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { beginInScope(host, party, participants); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> beginInScope(host, store.parties().bind(party), participants));
     }
 
-    private static void beginInScope(ServerPlayer host, CompoundTag party, Collection<UUID> participants) {
+    private static void beginInScope(ServerPlayer host, PartyState party, Collection<UUID> participants) {
         clear(party);
-        party.putUUID(SESSION, UUID.randomUUID());
+        party.partyTeleportSession(UUID.randomUUID());
         Set<BlockPos> occupied = new HashSet<>();
         occupied.add(host.blockPosition());
         for (UUID id : participants) {
             ServerPlayer player = host.server.getPlayerList().getPlayer(id);
             if (player == null) continue;
-            CompoundTag member = SmpRecords.members(party).getCompound(id.toString());
+            PartyMember member = party.member(id);
+            if (member == null) member = new PartyMember();
             saveReturn(player, member);
-            SmpRecords.members(party).put(id.toString(), member);
+            party.addMember(id, member);
         }
         for (UUID id : participants) {
             if (id.equals(host.getUUID())) continue;
@@ -68,41 +60,41 @@ public final class PartyTeleportFlow {
 
     }
 
-    public static void finish(MinecraftServer server, CompoundTag party) {
+    public static void finish(MinecraftServer server, PartyState party) {
         var serverForMutation = server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { finishInScope(server, party); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> finishInScope(server, store.parties().bind(party)));
     }
 
-    private static void finishInScope(MinecraftServer server, CompoundTag party) {
-        if (!party.hasUUID(SESSION)) return;
+    private static void finishInScope(MinecraftServer server, PartyState party) {
+        if (!party.hasPartyTeleportSession()) return;
         for (UUID id : SmpRecords.memberIds(party)) {
             if (!Parties.accepted(party, id)) continue;
-            CompoundTag member = SmpRecords.members(party).getCompound(id.toString());
+            PartyMember member = party.member(id);
             clearArenaAccess(member);
-            if (!member.contains(RETURN_DIMENSION)) continue;
-            member.putBoolean(RETURN_PENDING, true);
+            if (member == null || member.returnPoint() == null) continue;
+            member.returnPending(true);
             ServerPlayer player = server.getPlayerList().getPlayer(id);
-            if (player != null) prompt(player, party.getUUID("id"),party.getUUID(SESSION));
+            if (player != null) prompt(player, party.id(),party.partyTeleportSession());
         }
 
     }
 
-    public static boolean pending(CompoundTag party, UUID playerId) {
-        return party.hasUUID(SESSION) && SmpRecords.members(party).getCompound(playerId.toString()).getBoolean(RETURN_PENDING);
+    public static boolean pending(PartyState party, UUID playerId) {
+        return party.hasPartyTeleportSession() && party.member(playerId) != null && party.member(playerId).returnPending();
     }
 
-    public static boolean choose(ServerPlayer player, CompoundTag party, UUID session, boolean returnBack) {
+    public static boolean choose(ServerPlayer player, PartyState party, UUID session, boolean returnBack) {
         var serverForMutation = player.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { return chooseInScope(player, party, session, returnBack); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         return store.edit(() -> chooseInScope(player, store.parties().bind(party), session, returnBack));
     }
 
-    private static boolean chooseInScope(ServerPlayer player, CompoundTag party, UUID session, boolean returnBack) {
-        if (!party.hasUUID(SESSION)||!party.getUUID(SESSION).equals(session)||!pending(party, player.getUUID())) return false;
-        CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
+    private static boolean chooseInScope(ServerPlayer player, PartyState party, UUID session, boolean returnBack) {
+        if (!party.hasPartyTeleportSession()||!party.partyTeleportSession().equals(session)||!pending(party, player.getUUID())) return false;
+        PartyMember member = party.member(player.getUUID());
         boolean completed = !returnBack || teleportBack(player, member);
         if (!completed) return false;
         clearReturn(member);
@@ -111,54 +103,49 @@ public final class PartyTeleportFlow {
         return true;
     }
 
-    public static boolean returnNow(ServerPlayer player, CompoundTag party) {
+    public static boolean returnNow(ServerPlayer player, PartyState party) {
         var serverForMutation = player.server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { return returnNowInScope(player, party); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         return store.edit(() -> returnNowInScope(player, store.parties().bind(party)));
     }
 
-    private static boolean returnNowInScope(ServerPlayer player, CompoundTag party) {
-        CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
-        if (!member.contains(RETURN_DIMENSION) || !teleportBack(player, member)) return false;
+    private static boolean returnNowInScope(ServerPlayer player, PartyState party) {
+        PartyMember member = party.member(player.getUUID());
+        if (member == null || member.returnPoint() == null || !teleportBack(player, member)) return false;
         clearReturn(member);
         clearSessionIfResolved(party);
 
         return true;
     }
 
-    public static boolean forceReturn(ServerPlayer player, CompoundTag party) {
-        CompoundTag member = SmpRecords.members(party).getCompound(player.getStringUUID());
-        return member.contains(RETURN_DIMENSION) && teleportBack(player, member);
+    public static boolean forceReturn(ServerPlayer player, PartyState party) {
+        PartyMember member = party.member(player.getUUID());
+        return member != null && member.returnPoint() != null && teleportBack(player, member);
     }
 
-    public static void clearMember(CompoundTag party, UUID playerId) {
-        CompoundTag member = SmpRecords.members(party).getCompound(playerId.toString());
+    public static void clearMember(PartyState party, UUID playerId) {
+        PartyMember member = party.member(playerId);
         clearReturn(member);
         clearArenaAccess(member);
     }
 
-    public static void clearSession(CompoundTag party) {
-        party.remove(SESSION);
+    public static void clearSession(PartyState party) {
+        party.clearPartyTeleportSession();
     }
 
-    public static void clear(CompoundTag party) {
-        party.remove(SESSION);
-        for (String id : SmpRecords.members(party).getAllKeys()) {
-            CompoundTag member = SmpRecords.members(party).getCompound(id);
+    public static void clear(PartyState party) {
+        party.clearPartyTeleportSession();
+        for (UUID id : party.members().keySet()) {
+            PartyMember member = party.member(id);
             clearReturn(member);
             clearArenaAccess(member);
         }
     }
 
-    private static void saveReturn(ServerPlayer player, CompoundTag member) {
+    private static void saveReturn(ServerPlayer player, PartyMember member) {
         Vec3 position = player.position();
-        member.putString(RETURN_DIMENSION, player.serverLevel().dimension().location().toString());
-        member.putDouble(RETURN_X, position.x);
-        member.putDouble(RETURN_Y, position.y);
-        member.putDouble(RETURN_Z, position.z);
-        member.putFloat(RETURN_YAW, player.getYRot());
-        member.putFloat(RETURN_PITCH, player.getXRot());
+        member.returnPoint(new WorldPosition(player.serverLevel().dimension().location(), position.x, position.y, position.z, player.getYRot(), player.getXRot()));
     }
 
     private static BlockPos findNearHost(ServerPlayer player, ServerPlayer host, Set<BlockPos> occupied) {
@@ -185,12 +172,13 @@ public final class PartyTeleportFlow {
                 position.getX() + .5, position.getY(), position.getZ() + .5));
     }
 
-    private static boolean teleportBack(ServerPlayer player, CompoundTag member) {
-        ResourceLocation dimension = ResourceLocation.tryParse(member.getString(RETURN_DIMENSION));
+    private static boolean teleportBack(ServerPlayer player, PartyMember member) {
+        if (member == null || member.returnPoint() == null) return false;
+        var point = member.returnPoint();
+        ResourceLocation dimension = point.dimension();
         ServerLevel level = dimension == null ? null : player.server.getLevel(ResourceKey.create(Registries.DIMENSION, dimension));
         if (level == null) return false;
-        player.teleportTo(level, member.getDouble(RETURN_X), member.getDouble(RETURN_Y), member.getDouble(RETURN_Z),
-                member.getFloat(RETURN_YAW), member.getFloat(RETURN_PITCH));
+        player.teleportTo(level, point.x(), point.y(), point.z(), point.yaw(), point.pitch());
         player.setDeltaMovement(Vec3.ZERO);
         player.fallDistance = 0;
         return true;
@@ -206,27 +194,19 @@ public final class PartyTeleportFlow {
                         .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/smp event-return " + partyId + " " + session + " stay")))));
     }
 
-    private static void clearReturn(CompoundTag member) {
-        member.remove(RETURN_PENDING);
-        member.remove(RETURN_DIMENSION);
-        member.remove(RETURN_X);
-        member.remove(RETURN_Y);
-        member.remove(RETURN_Z);
-        member.remove(RETURN_YAW);
-        member.remove(RETURN_PITCH);
+    private static void clearReturn(PartyMember member) {
+        if (member == null) return;
+        member.clearReturnPending(); member.clearReturnPoint();
     }
 
-    private static void clearArenaAccess(CompoundTag member) {
-        member.remove("arenaEntered");
-        member.remove("arenaInsideX");
-        member.remove("arenaInsideY");
-        member.remove("arenaInsideZ");
+    private static void clearArenaAccess(PartyMember member) {
+        if (member != null) member.clearLegacyArenaBoundary();
     }
 
-    private static void clearSessionIfResolved(CompoundTag party) {
+    private static void clearSessionIfResolved(PartyState party) {
         boolean pending = SmpRecords.memberIds(party).stream().anyMatch(id ->
-                SmpRecords.members(party).getCompound(id.toString()).getBoolean(RETURN_PENDING));
-        if (!pending) party.remove(SESSION);
+                party.member(id).returnPending());
+        if (!pending) party.clearPartyTeleportSession();
     }
 
     private PartyTeleportFlow() {}

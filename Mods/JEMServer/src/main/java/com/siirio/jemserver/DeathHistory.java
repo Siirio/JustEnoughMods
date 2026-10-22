@@ -72,7 +72,7 @@ public final class DeathHistory {
             return;
         }
         var encounter = com.siirio.jemserver.smp.events.EventSession.forPlayer(player);
-        if (encounter != null && encounter.getBoolean("combatStarted")) { message(player, "jem.home.arena"); return; }
+        if (encounter != null && encounter.combatStarted()) { message(player, "jem.home.arena"); return; }
         player.closeContainer();
         player.stopRiding();
         com.siirio.jemserver.smp.events.BossTeleportSafety.apply(player, level, target, death.yaw(), death.pitch());

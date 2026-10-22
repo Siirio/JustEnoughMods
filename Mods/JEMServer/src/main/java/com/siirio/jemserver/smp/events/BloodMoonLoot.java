@@ -1,12 +1,10 @@
 package com.siirio.jemserver.smp.events;
 
-import com.siirio.jemserver.smp.SmpRecords;
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemworldbosstiers.encounter.PendingRewardContainer;
 import java.util.UUID;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.Tag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.Entity;
@@ -24,9 +22,9 @@ public final class BloodMoonLoot {
     private static final String EVENT="jem:blood_moon_loot_event";
     public static final String ATTEMPT_ID="jem:blood_moon_attempt";
 
-    public static UUID attempt(CompoundTag row) {
-        if (!row.hasUUID("attemptId")) row.putUUID("attemptId", UUID.randomUUID());
-        return row.getUUID("attemptId");
+    public static UUID attempt(EventState row) {
+        if (!row.hasAttemptId()) row.attemptId( UUID.randomUUID());
+        return row.attemptId();
     }
 
     public static ItemStack mark(ItemStack stack, UUID event) {
@@ -38,18 +36,18 @@ public final class BloodMoonLoot {
         return !stack.isEmpty() && stack.hasTag() && stack.getTag().hasUUID(EVENT) && stack.getTag().getUUID(EVENT).equals(event);
     }
 
-    public static void discard(MinecraftServer server, CompoundTag row) {
+    public static void discard(MinecraftServer server, EventState row) {
         UUID event=attempt(row);
-        var invalidated=row.getList("invalidatedLoot",Tag.TAG_INT_ARRAY);
-        if (invalidated.stream().map(NbtUtils::loadUUID).noneMatch(event::equals)) invalidated.add(NbtUtils.createUUID(event));
-        row.put("invalidatedLoot",invalidated);
-        PendingRewardContainer.discardBySource(server,SmpRecords.memberIds(row),event.toString());
+        var invalidated=new java.util.ArrayList<>(row.invalidatedLoot());
+        if (!invalidated.contains(event)) invalidated.add(event);
+        row.invalidatedLoot(invalidated);
+        PendingRewardContainer.discardBySource(server,row.members().keySet(),event.toString());
         for(var player:server.getPlayerList().getPlayers()) {
             scrub(player.getInventory(),event);
             scrub(player.getEnderChestInventory(),event);
             player.inventoryMenu.broadcastChanges();
         }
-        scrubRecovery(row.getCompound("members"),event);
+        scrubRecovery(row,event);
         for(var level:server.getAllLevels()) {
             for(var item:level.getEntitiesOfClass(ItemEntity.class,new AABB(EventRegions.minX(row),level.getMinBuildHeight(),EventRegions.minZ(row),EventRegions.maxX(row)+1,level.getMaxBuildHeight(),EventRegions.maxZ(row)+1)))
                 if(belongsTo(item.getItem(),event)) item.discard();
@@ -104,37 +102,39 @@ public final class BloodMoonLoot {
     }
 
     private static boolean invalidated(MinecraftServer server, ItemStack stack) {
-        var serverForMutation = server;
-        if (serverForMutation == null || serverForMutation.overworld() == null) { return invalidatedInScope(server, stack); }
-        var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
-        return store.edit(() -> invalidatedInScope(server, stack));
-    }
-
-    private static boolean invalidatedInScope(MinecraftServer server, ItemStack stack) {
         if(stack.isEmpty() || !stack.hasTag() || !stack.getTag().hasUUID(EVENT)) return false;
         UUID attempt=stack.getTag().getUUID(EVENT);
-        for(var row:com.siirio.jemserver.smp.SmpData.get(server).events().currentRows())
-            for(Tag tag:row.getList("invalidatedLoot",Tag.TAG_INT_ARRAY))
-                if(NbtUtils.loadUUID(tag).equals(attempt)) return true;
+        for(var row:com.siirio.jemserver.smp.SmpData.get(server).events().snapshots())
+            if(row.invalidatedLoot().contains(attempt)) return true;
         return false;
     }
 
-    public static boolean activeAttempt(CompoundTag row, Entity entity) {
+    public static boolean activeAttempt(EventState row, Entity entity) {
         var data=entity.getPersistentData();
-        return row.getBoolean("combatStarted") && row.hasUUID("attemptId") && data.hasUUID(ATTEMPT_ID)
-                && row.getUUID("attemptId").equals(data.getUUID(ATTEMPT_ID));
+        return row.combatStarted() && row.hasAttemptId() && data.hasUUID(ATTEMPT_ID)
+                && row.attemptId().equals(data.getUUID(ATTEMPT_ID));
     }
 
-    private static void scrubRecovery(CompoundTag members, UUID event) {
-        for(String id:members.getAllKeys()) {
-            var member=members.getCompound(id);
-            scrubList(member.getList("safeInventory",Tag.TAG_COMPOUND),event);
-            scrubList(member.getList("safeDrops",Tag.TAG_COMPOUND),event);
+    private static void scrubRecovery(EventState row, UUID event) {
+        for (var member : row.members().values()) {
+            if (member.hasSafeInventory()) {
+                ListTag items = member.safeInventory().compoundList();
+                if (scrubList(items,event)) member.safeInventory(new NativeNbtPayload(items));
+            }
+            if (member.hasSafeDrops()) {
+                ListTag items = member.safeDrops().compoundList();
+                if (scrubList(items,event)) member.safeDrops(new NativeNbtPayload(items));
+            }
         }
     }
 
-    private static void scrubList(ListTag items, UUID event) {
-        for(int index=items.size()-1;index>=0;index--) if(belongsTo(ItemStack.of(items.getCompound(index)),event)) items.remove(index);
+    private static boolean scrubList(ListTag items, UUID event) {
+        boolean changed=false;
+        for(int index=items.size()-1;index>=0;index--) if(belongsTo(ItemStack.of(items.getCompound(index)),event)) {
+            items.remove(index);
+            changed=true;
+        }
+        return changed;
     }
 
     private BloodMoonLoot() {}

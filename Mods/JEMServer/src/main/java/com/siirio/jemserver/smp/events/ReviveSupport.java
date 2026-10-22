@@ -1,13 +1,13 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
-import com.siirio.jemserver.smp.SmpRecords;
 import com.siirio.jemserver.smp.Parties;
 import com.siirio.jemworldbosstiers.encounter.HostedEncounters;
 import java.util.UUID;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.nbt.CompoundTag;
 
 public final class ReviveSupport {
     private static final int TICKS_PER_SECOND=20;
@@ -23,8 +23,8 @@ public final class ReviveSupport {
         if (!downed(player)) return 0;
         var blood=EventSession.forPlayer(player);
         if(blood==null) return Math.max(0, team.creative.playerrevive.server.PlayerReviveServer.timeLeft(player));
-        var member=SmpRecords.members(blood).getCompound(player.getStringUUID());
-        long elapsed=Math.max(0,player.serverLevel().getGameTime()-member.getLong("downedAt"));
+        var member=blood.member(player.getUUID());
+        long elapsed=Math.max(0,player.serverLevel().getGameTime()-member.downedAt());
         return Math.max(0,EventRules.DOWNED_SECONDS.get()*TICKS_PER_SECOND-elapsed);
     }
     public static UUID session(ServerPlayer player) {
@@ -37,16 +37,16 @@ public final class ReviveSupport {
     private static UUID sessionInScope(ServerPlayer player) {
         if (player.isSpectator()) return null;
         var blood = EventSession.forPlayer(player);
-        if (blood != null) return !blood.getBoolean("solo") && blood.getBoolean("combatStarted") ? blood.getUUID("id") : null;
+        if (blood != null) return !blood.solo() && blood.combatStarted() ? blood.id() : null;
         UUID hosted = HostedEncounters.participantSession(player);
         if (hosted != null) return hosted;
         var data = SmpData.get(player.server);
         for (var party : data.parties().currentRows()) {
             UUID saved = persistedSession(party, player.getUUID(), player.serverLevel().dimension().location().toString());
             if (saved == null) continue;
-            if (party.hasUUID("eventId")) {
-                var event = data.events().current(party.getUUID("eventId"));
-                if (event == null || !event.getString("state").equals("ACTIVE")) continue;
+            if (party.hasEventId()) {
+                var event = data.events().current(party.eventId());
+                if (event == null || !event.state().equals("ACTIVE")) continue;
             }
             boolean loaded = false;
             for (var level : player.server.getAllLevels()) {
@@ -66,30 +66,30 @@ public final class ReviveSupport {
     private static void enforceInScope(ServerPlayer player) {
         var blood=EventSession.forPlayer(player);
         if(blood==null) return;
-        var member=SmpRecords.members(blood).getCompound(player.getStringUUID());
+        var member=blood.member(player.getUUID());
         if(!downed(player)) {
-            if(member.contains("downedAt")) { member.remove("downedAt"); }
+            if(member.hasDownedAt()) { member.clearDownedAt(); }
             return;
         }
-        if(blood.getBoolean("solo")) {
+        if(blood.solo()) {
             team.creative.playerrevive.server.PlayerReviveServer.kill(player);
             return;
         }
-        if(!member.contains("downedAt")) {
-            member.putLong("downedAt",player.serverLevel().getGameTime());
+        if(!member.hasDownedAt()) {
+            member.downedAt(player.serverLevel().getGameTime());
 
             return;
         }
-        if(player.serverLevel().getGameTime()-member.getLong("downedAt")>=EventRules.DOWNED_SECONDS.get()*TICKS_PER_SECOND)
+        if(player.serverLevel().getGameTime()-member.downedAt()>=EventRules.DOWNED_SECONDS.get()*TICKS_PER_SECOND)
             team.creative.playerrevive.server.PlayerReviveServer.kill(player);
     }
-    static UUID persistedSession(CompoundTag party, UUID player, String dimension) {
-        if (!party.getString("state").equals("ACTIVE") || !party.getString("activity").equals("BOSS")
-                || party.getBoolean("solo") || party.getBoolean("bloodMoon")
-                || (!party.hasUUID("bossEntity") && (!party.getBoolean("nativePending") || !party.hasUUID("id")))
-                || !party.getString("dimension").equals(dimension) || !Parties.accepted(party, player)) return null;
-        return SmpRecords.memberIds(party).stream().filter(id -> Parties.accepted(party, id)).limit(2).count() > 1
-                ? party.getUUID(party.hasUUID("bossEntity") ? "bossEntity" : "id") : null;
+    static UUID persistedSession(PartyState party, UUID player, String dimension) {
+        if (!party.state().equals("ACTIVE") || !party.activity().equals("BOSS")
+                || party.solo() || party.bloodMoon()
+                || (!party.hasBossEntity() && (!party.nativePending() || !party.hasId()))
+                || !party.dimension().equals(dimension) || !Parties.accepted(party, player)) return null;
+        return party.members().keySet().stream().filter(id -> Parties.accepted(party, id)).limit(2).count() > 1
+                ? (party.hasBossEntity() ? party.bossEntity() : party.id()) : null;
     }
     public static boolean sameSession(ServerPlayer first, ServerPlayer second) {
         UUID session = session(first);
@@ -104,19 +104,17 @@ public final class ReviveSupport {
 
     private static void revivedInScope(ServerPlayer helper) {
         var blood = EventSession.forPlayer(helper);
-        if (blood != null && !blood.getBoolean("solo") && blood.getBoolean("combatStarted")) {
-            var members = SmpRecords.members(blood);
-            var member = members.getCompound(helper.getStringUUID());
-            member.putBoolean("contributed", true);
-            member.putBoolean("supported", true);
-            member.putInt("revives", member.getInt("revives") + 1);
-            members.put(helper.getStringUUID(), member);
+        if (blood != null && !blood.solo() && blood.combatStarted()) {
+            var member = blood.member(helper.getUUID());
+            member.contributed( true);
+            member.supported( true);
+            member.revives( member.revives() + 1);
 
         } else HostedEncounters.revived(helper);
     }
-    public static void finish(MinecraftServer server, CompoundTag event) {
+    public static void finish(MinecraftServer server, EventState event) {
         if(!net.minecraftforge.fml.ModList.get().isLoaded("playerrevive")) return;
-        for(UUID id:SmpRecords.memberIds(event)) {
+        for(UUID id:event.members().keySet()) {
             var player=server.getPlayerList().getPlayer(id);
             if(player!=null && downed(player)) team.creative.playerrevive.server.PlayerReviveServer.kill(player);
         }

@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "2e9da16d0ea72a97d3181636a6c7a9c265603b1758e08195ba203583d7eb9b36",
+  "change_records_sha256": "b444b4f367c13b2204a5bb79852dbc7ec1e7159d795c6355d1d8a6711ae2018d",
   "totals": {
-    "watched": 3778,
-    "covered": 1985,
-    "unresolved": 1793
+    "watched": 3803,
+    "covered": 2015,
+    "unresolved": 1788
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1540,8 +1540,8 @@
       ]
     },
     "Mods/JEMEconomy": {
-      "watched": 148,
-      "covered": 142,
+      "watched": 150,
+      "covered": 144,
       "unresolved": 6,
       "unresolved_paths": [
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/blockstates/shipping_box.json",
@@ -1585,15 +1585,15 @@
       "unresolved_paths": []
     },
     "Mods/JEMRoles": {
-      "watched": 175,
-      "covered": 175,
+      "watched": 160,
+      "covered": 160,
       "unresolved": 0,
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 464,
-      "covered": 270,
-      "unresolved": 194,
+      "watched": 502,
+      "covered": 313,
+      "unresolved": 189,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1669,8 +1669,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventDescriptions.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventRewardPreview.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoint.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoints.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Notifications.java",
@@ -1688,13 +1686,10 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpUpdate.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViewRevision.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViewSession.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ViewDelta.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/compat/EpicFightDebuffBridge.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/compat/PhantomArmorAbility.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/ArenaSurfaceRules.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/AttackGeometry.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonRewards.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonSpawnGuard.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonWaves.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossStaging.java",

@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
 import com.siirio.jemserver.smp.SmpRecords;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,17 +20,17 @@ public final class EventAttempts {
         var data = SmpData.get(host.server);
         var event = data.events().current(eventId);
         SmpRecords.require(EventRuntime.available(host.server, event), "unavailable");
-        SmpRecords.require(event != null && event.getString("state").equals("ACTIVE")
+        SmpRecords.require(event != null && event.state().equals("ACTIVE")
                 && EventRegions.near(event, host.serverLevel(), host.blockPosition()), "travel_to_arena");
-        if (event.getBoolean("combatStarted")) return false;
+        if (event.combatStarted()) return false;
         var prepared = event.copy();
         var encounter = new EncounterContext(prepared);
         encounter.initialize(host, participants);
         SmpRecords.require(encounter.prepare(host.server), "no_safe_arrival");
         encounter.awaitEntry(EventRegions.level(host.server, event));
-        prepared.putBoolean("solo", participants.solo());
-        prepared.putUUID("attemptId", UUID.randomUUID());
-        event.merge(prepared);
+        prepared.solo( participants.solo());
+        prepared.attemptId( UUID.randomUUID());
+        data.events().replace(prepared);
 
         return true;
     }

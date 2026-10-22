@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,10 +42,10 @@ public final class EventTravel {
             player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.error.official_destination_unavailable"));
             return;
         }
-        inside=inside&&event.getString("activity").equals("RESOURCE_RUSH");
+        inside=inside&&event.activity().equals("RESOURCE_RUSH");
         ServerLevel level = EventRegions.level(player.server, event);
         if (level == null) return;
-        BlockPos anchor = inside ? BlockPos.of(event.getLong("position")) : outsideAnchor(event, player.blockPosition());
+        BlockPos anchor = inside ? BlockPos.of(event.position()) : outsideAnchor(event, player.blockPosition());
         queue(player, eventId, inside ? Destination.RESOURCE_INSIDE : Destination.EVENT_OUTSIDE, level, anchor);
     }
 
@@ -135,9 +137,9 @@ public final class EventTravel {
         if (row == null || SmpData.closed(row)) return null;
         if (travel.type() == Destination.RESOURCE_INSIDE)
             return EventRegions.safeInside(travel.level(), row, travel.anchor()).orElse(null);
-        int centerY = BlockPos.of(row.getLong("position")).getY();
-        int minY = row.contains("minY") ? row.getInt("minY") : centerY;
-        int maxY = row.contains("maxY") ? row.getInt("maxY") : centerY;
+        int centerY = BlockPos.of(row.position()).getY();
+        int minY = row.hasMinY() ? row.minY() : centerY;
+        int maxY = row.hasMaxY() ? row.maxY() : centerY;
         var bounds = new net.minecraft.world.level.levelgen.structure.BoundingBox(EventRegions.minX(row), minY, EventRegions.minZ(row),
                 EventRegions.maxX(row), maxY, EventRegions.maxZ(row));
         return StructureStaging.safeOutside(player, travel.level(), bounds, travel.anchor());
@@ -165,7 +167,7 @@ public final class EventTravel {
         PENDING.clear();
     }
 
-    private static BlockPos outsideAnchor(net.minecraft.nbt.CompoundTag event, BlockPos center) {
+    private static BlockPos outsideAnchor(EventState event, BlockPos center) {
         int left=Math.abs(center.getX()-EventRegions.minX(event));
         int right=Math.abs(EventRegions.maxX(event)-center.getX());
         int top=Math.abs(center.getZ()-EventRegions.minZ(event));
@@ -196,10 +198,10 @@ public final class EventTravel {
                 && !player.isSleeping() && com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isPresent();
     }
 
-    private static boolean eligibleEvent(ServerPlayer player, net.minecraft.nbt.CompoundTag event) {
-        return EventRuntime.available(player.server, event) && "ACTIVE".equals(event.getString("state"))
-                && event.getLong("ends") > System.currentTimeMillis() && event.contains("position")
-                && java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(event.getString("activity"))
+    private static boolean eligibleEvent(ServerPlayer player, EventState event) {
+        return EventRuntime.available(player.server, event) && "ACTIVE".equals(event.state())
+                && event.ends() > System.currentTimeMillis() && event.hasPosition()
+                && java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(event.activity())
                 && new EventSession(event).accepted(player.getUUID());
     }
 

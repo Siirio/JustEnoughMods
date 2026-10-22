@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemidentity.api.IdentityPolicy;
 import com.siirio.jemserver.DeathHistory;
 import net.minecraft.core.BlockPos;
@@ -30,7 +32,7 @@ public final class HomeTravel {
         long used = player.getPersistentData().getLong(LAST_USE);
         if (used > 0 && now - used < COOLDOWN_TICKS) return rejected(player, "jem.home.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(COOLDOWN_TICKS - now + used));
         var event = EventSession.forPlayer(player);
-        if (event != null && event.getBoolean("combatStarted")) return rejected(player, "jem.home.arena");
+        if (event != null && event.combatStarted()) return rejected(player, "jem.home.arena");
         return true;
     }
     static void used(ServerPlayer player) { player.getPersistentData().putLong(LAST_USE, player.server.overworld().getGameTime()); }

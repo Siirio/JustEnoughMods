@@ -128,21 +128,21 @@ public final class MapNetwork {
         long now = System.currentTimeMillis();
         var data = com.siirio.jemserver.smp.SmpData.get(player.server);
         var areas = new java.util.ArrayList<>(data.events().snapshots().stream()
-                .filter(row -> "ACTIVE".equals(row.getString("state")) && row.getLong("ends") > now
-                        && row.hasUUID("id") && row.contains("position") && row.getInt("radius") > 0
-                        && ResourceLocation.tryParse(row.getString("dimension")) != null)
-                .filter(row -> java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(row.getString("activity")))
-                .map(row -> new EventArea(row.getUUID("id"), row.getString("activity"),
-                        new ResourceLocation(row.getString("dimension")), BlockPos.of(row.getLong("position")),
+                .filter(row -> "ACTIVE".equals(row.state()) && row.ends() > now
+                        && row.hasId() && row.hasPosition() && row.radius() > 0
+                        && ResourceLocation.tryParse(row.dimension()) != null)
+                .filter(row -> java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(row.activity()))
+                .map(row -> new EventArea(row.id(), row.activity(),
+                        new ResourceLocation(row.dimension()), BlockPos.of(row.position()),
                         com.siirio.jemserver.smp.events.EventRegions.minX(row), com.siirio.jemserver.smp.events.EventRegions.minZ(row),
                         com.siirio.jemserver.smp.events.EventRegions.maxX(row), com.siirio.jemserver.smp.events.EventRegions.maxZ(row))).toList());
-        data.parties().snapshots().stream().filter(row -> "ACTIVE".equals(row.getString("state")) && row.hasUUID("structureId")
-                        && row.contains("position") && row.getIntArray("structureBounds").length == 6
-                        && ResourceLocation.tryParse(row.getString("dimension")) != null)
+        data.parties().snapshots().stream().filter(row -> "ACTIVE".equals(row.state()) && row.hasStructureId()
+                        && row.hasPosition() && row.hasStructureBounds()
+                        && ResourceLocation.tryParse(row.dimension()) != null)
                 .map(row -> {
-                    int[] bounds = row.getIntArray("structureBounds");
-                    return new EventArea(row.getUUID("structureId"), "BOSS_FIGHT", new ResourceLocation(row.getString("dimension")),
-                            BlockPos.of(row.getLong("position")), bounds[0] - 1, bounds[2] - 1, bounds[3] + 1, bounds[5] + 1);
+                    var bounds = row.structureBounds();
+                    return new EventArea(row.structureId(), "BOSS_FIGHT", new ResourceLocation(row.dimension()),
+                            BlockPos.of(row.position()), bounds.minX() - 1, bounds.minZ() - 1, bounds.maxX() + 1, bounds.maxZ() + 1);
                 }).forEach(areas::add);
         return areas.stream().distinct().limit(MAX_EVENTS).toList();
     }

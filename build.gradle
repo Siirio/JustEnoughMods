@@ -49,3 +49,8 @@ tasks.register('describeProductionArtifacts') {
         output.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(artifacts)) + '\n'
     }
 }
+
+// Quality tools are explicit opt-in: ordinary builds do not resolve or run them.
+if (providers.gradleProperty('jemQuality').map { it.toBoolean() }.getOrElse(false)) {
+    apply from: file('gradle/java-quality.gradle')
+}

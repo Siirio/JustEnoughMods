@@ -3,6 +3,9 @@ package com.siirio.jemserver.smp.events;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.siirio.jemserver.smp.SmpData;
+import com.siirio.jemserver.smp.BossQuarantineState;
+import com.siirio.jemserver.smp.PartyState;
+import com.siirio.jemserver.smp.EventState;
 import com.siirio.jemworldbosstiers.api.HostedEncounterApi;
 import com.siirio.jemworldbosstiers.api.RaidArenaApi;
 import com.siirio.jemworldbosstiers.api.WorldTierApi;
@@ -55,21 +58,21 @@ public final class BossArenaDiagnostics {
     private static void confirmedRemovalInScope(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
         if (!event.loadedFromDisk() || !(event.getLevel() instanceof ServerLevel level)
                 || !(event.getEntity() instanceof LivingEntity boss)) return;
-        CompoundTag row = SmpData.get(level.getServer()).bossQuarantine().current( boss.getUUID());
-        if (row == null || !row.getString("state").equals("QUARANTINED") || !row.hasUUID("keeper")
-                || !row.getString("dimension").equals(level.dimension().location().toString())) return;
-        CompoundTag snapshot = row.getCompound("entity");
+        BossQuarantineState row = SmpData.get(level.getServer()).bossQuarantine().current( boss.getUUID());
+        if (row == null || !row.state().equals("QUARANTINED") || !row.hasKeeper()
+                || !row.dimension().equals(level.dimension().location().toString())) return;
+        CompoundTag snapshot = row.entitySnapshot();
         if (!snapshot.hasUUID("UUID") || !snapshot.getUUID("UUID").equals(boss.getUUID())
                 || !snapshot.getString("id").equals(BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()).toString())) return;
         var data = WorldTierData.get(level.getServer());
         var encounter = WorldTierApi.encounter(boss).orElse(null);
         if (encounter == null || encounter.arenaId() == null
-                || !data.canonicalArenaId(encounter.arenaId()).equals(data.canonicalArenaId(row.getString("arena")))
-                || !data.liveBoss(row.getString("arena")).filter(row.getUUID("keeper")::equals).isPresent()) return;
+                || !data.canonicalArenaId(encounter.arenaId()).equals(data.canonicalArenaId(row.arena()))
+                || !data.liveBoss(row.arena()).filter(row.keeper()::equals).isPresent()) return;
         event.setCanceled(true);
-        data.clearLiveBoss(row.getString("arena"), boss.getUUID());
+        data.clearLiveBoss(row.arena(), boss.getUUID());
         com.mojang.logging.LogUtils.getLogger().warn("Replayed confirmed quarantined boss removal: UUID={}, keeper={}, arena={}",
-                boss.getUUID(), row.getUUID("keeper"), row.getString("arena"));
+                boss.getUUID(), row.keeper(), row.arena());
     }
 
     /** Register as a child of the existing /jem root on the dedicated dispatcher. */
@@ -200,13 +203,11 @@ public final class BossArenaDiagnostics {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             NbtIo.writeCompressed(snapshot, bytes);
             if (bytes.size() > SNAPSHOT_BYTES) return reject(source, "Snapshot exceeds the bounded quarantine size; nothing removed.");
-            CompoundTag row = new CompoundTag();
-            row.putUUID("id", duplicate); row.putUUID("keeper", keeper); row.putUUID("token", token);
-            row.putString("arena", pair.arena.id()); row.putString("dimension", pair.arena.dimension());
-            row.putString("operator", actor(source)); row.putLong("created", now); row.putString("state", "PRESERVED_BEFORE_REMOVAL");
-            row.putUUID("previousCanonical", WorldTierData.get(source.getServer()).liveBoss(pair.arena.id()).orElseThrow());
-            row.put("entity", snapshot); data.bossQuarantine().put( row); data.flush(source.getServer());
-            verifyArchive(source.getServer(), row);
+            var row = data.bossQuarantine().put(BossQuarantineState.preserve(
+                    duplicate, keeper, token, pair.arena.id(), pair.arena.dimension(), actor(source), now,
+                    WorldTierData.get(source.getServer()).liveBoss(pair.arena.id()).orElseThrow(), snapshot));
+            data.flush(source.getServer());
+            data.bossQuarantine().verifySaved(source.getServer(), row.id());
             // Save is proven durable before the only destructive operation. Do not invoke kill/death callbacks.
             validate(source.getServer(), keeper, duplicate);
             WorldTierData world = WorldTierData.get(source.getServer());
@@ -225,10 +226,10 @@ public final class BossArenaDiagnostics {
                 world.clearLiveBoss(pair.arena.id(), duplicate);
                 if (!world.flush(source.getServer())) throw new IllegalStateException("Duplicate is archived; identity retirement requires recovery before further repair");
             }
-            row.putString("state", pair.duplicate.isRemoved() ? "QUARANTINED" : "REMOVAL_INCOMPLETE");
+            row.state(pair.duplicate.isRemoved() ? "QUARANTINED" : "REMOVAL_INCOMPLETE");
             data.flush(source.getServer());
             tell(source, "Quarantine=" + duplicate + "; keeper=" + keeper + "; ArenaId=" + pair.arena.id()
-                    + "; state=" + row.getString("state") + ". Full original NBT remains in jem_smp_v2.dat table " + ARCHIVE + ".");
+                    + "; state=" + row.state() + ". Full original NBT remains in jem_smp_v2.dat table " + ARCHIVE + ".");
             return pair.duplicate.isRemoved() ? 1 : 0;
         } catch (RuntimeException | IOException failure) {
             com.mojang.logging.LogUtils.getLogger().error("Explicit boss quarantine failed token={} keeper={} duplicate={}", token, keeper, duplicate, failure);
@@ -293,15 +294,21 @@ public final class BossArenaDiagnostics {
         if (arena.activeEncounterId() != null && !arena.activeEncounterId().equals(keeperId) && !arena.activeEncounterId().equals(duplicateId))
             throw new IllegalStateException("A separate encounter/reservation still owns the arena; repair is unavailable.");
         var smp = SmpData.get(server);
-        for (var rows : List.of(smp.parties().currentRows(), smp.events().currentRows())) {
-            if (rows.size() > ENTITY_LIMIT) throw new IllegalStateException("Party/event registry exceeds bounded repair review; nothing removed.");
-            for (CompoundTag row : rows) {
-                if (SmpData.closed(row)) continue;
-                if (row.hasUUID("bossEntity") && (row.getUUID("bossEntity").equals(keeperId) || row.getUUID("bossEntity").equals(duplicateId))
-                        || data.canonicalArenaId(row.getString("raidArenaId")).equals(arena.id())
-                        || data.canonicalArenaId(row.getString("arenaId")).equals(arena.id()))
-                    throw new IllegalStateException("An open party/event owns this boss/arena; close it through the canonical lifecycle first.");
-            }
+        if (smp.parties().snapshots().size() > ENTITY_LIMIT || smp.events().snapshots().size() > ENTITY_LIMIT)
+            throw new IllegalStateException("Party/event registry exceeds bounded repair review; nothing removed.");
+        for (var party : smp.parties().snapshots()) {
+            if (!party.closed() && (party.hasBossEntity()
+                    && (party.bossEntity().equals(keeperId) || party.bossEntity().equals(duplicateId))
+                    || data.canonicalArenaId(party.raidArenaId()).equals(arena.id())
+                    || data.canonicalArenaId(party.arenaId()).equals(arena.id())))
+                throw new IllegalStateException("An open party/event owns this boss/arena; close it through the canonical lifecycle first.");
+        }
+        for (var event : smp.events().snapshots()) {
+            if (!event.closed() && (event.hasBossEntity()
+                    && (event.bossEntity().equals(keeperId) || event.bossEntity().equals(duplicateId))
+                    || data.canonicalArenaId(event.raidArenaId()).equals(arena.id())
+                    || data.canonicalArenaId(event.arenaId()).equals(arena.id())))
+                throw new IllegalStateException("An open party/event owns this boss/arena; close it through the canonical lifecycle first.");
         }
         return new Pair(keeper, duplicate, arena);
     }
@@ -309,15 +316,6 @@ public final class BossArenaDiagnostics {
     private static LivingEntity loaded(MinecraftServer server, UUID id) {
         for (ServerLevel level : server.getAllLevels()) if (level.getEntity(id) instanceof LivingEntity entity && entity.isAlive()) return entity;
         return null;
-    }
-    private static void verifyArchive(MinecraftServer server, CompoundTag expected) throws IOException {
-        var file = server.getWorldPath(LevelResource.ROOT).resolve("data/jem_smp_v2.dat").toFile();
-        var rows = NbtIo.readCompressed(file).getCompound("data").getCompound("tables").getList(ARCHIVE, Tag.TAG_COMPOUND);
-        for (int index = 0; index < rows.size(); index++) {
-            CompoundTag row = rows.getCompound(index);
-            if (row.equals(expected)) return;
-        }
-        throw new IOException("Exact boss quarantine snapshot was not persisted");
     }
     private static int archive(CommandSourceStack source, UUID id) {
         var serverForMutation = source.getServer();
@@ -327,10 +325,10 @@ public final class BossArenaDiagnostics {
     }
 
     private static int archiveInScope(CommandSourceStack source, UUID id) {
-        CompoundTag row = SmpData.get(source.getServer()).bossQuarantine().current( id);
+        BossQuarantineState row = SmpData.get(source.getServer()).bossQuarantine().current( id);
         if (row == null) return reject(source, "No quarantine snapshot for that UUID.");
-        tell(source, "Quarantine=" + id + " keeper=" + row.getUUID("keeper") + " ArenaId=" + row.getString("arena")
-                + " dimension=" + row.getString("dimension") + " state=" + row.getString("state")
+        tell(source, "Quarantine=" + id + " keeper=" + row.keeper() + " ArenaId=" + row.arena()
+                + " dimension=" + row.dimension() + " state=" + row.state()
                 + "; original full entity NBT is retained in jem_smp_v2.dat. Restoration requires separate reviewed recovery; this command never respawns duplicates.");
         return 1;
     }

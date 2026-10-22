@@ -2,8 +2,6 @@ package com.siirio.jemserver.compat.professions;
 
 import com.siirio.jemprofessions.api.ProfessionApi;
 import com.siirio.jemprofessions.progress.ProfessionId;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerPlayer;
 
 /** Loaded only after the optional jem_professions presence gate. */
@@ -12,17 +10,12 @@ public final class ProfessionHostAdapter {
 
     public static void open(ServerPlayer player) { ProfessionApi.openScreen(player); }
 
-    public static ListTag snapshot(ServerPlayer player) {
-        ListTag result = new ListTag();
+    public static java.util.List<com.siirio.jemserver.smp.ProfileState.ProfessionSnapshot> snapshot(ServerPlayer player) {
+        var result = new java.util.ArrayList<com.siirio.jemserver.smp.ProfileState.ProfessionSnapshot>();
         for (ProfessionId profession : ProfessionId.values()) {
             long xp = ProfessionApi.xp(player, profession);
-            if (xp <= 0L) continue;
-            CompoundTag row = new CompoundTag();
-            row.putString("id", profession.name());
-            row.putLong("xp", xp);
-            row.putInt("level", ProfessionApi.level(player, profession));
-            result.add(row);
+            if (xp > 0L) result.add(new com.siirio.jemserver.smp.ProfileState.ProfessionSnapshot(profession.name(), xp, ProfessionApi.level(player, profession)));
         }
-        return result;
+        return java.util.List.copyOf(result);
     }
 }

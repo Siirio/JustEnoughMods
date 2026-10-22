@@ -1,18 +1,15 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
-import com.siirio.jemserver.smp.SmpRecords;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.LongTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -66,12 +63,6 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid="jem_server",value=net.minecraftforge.api.distmarker.Dist.DEDICATED_SERVER)
 public final class BloodMoonSetPieces {
-    private static final String WAVE_THREE="wave3SetPiece";
-    private static final String WAVE_FIVE="wave5SetPiece";
-    private static final String WAVE_THREE_SPAWNED="wave3SetPieceSpawned";
-    private static final String WAVE_FIVE_SPAWNED="wave5SetPieceSpawned";
-    private static final String SET_PIECE_MOBS="setPieceMobs";
-    private static final String SET_PIECE_BOSSES="setPieceBosses";
     private static final String SET_PIECE="jem:setpiece";
     private static final String SET_PIECE_BOSS="jem:setpiece_boss";
     private static final String DORMANT="jem:setpiece_dormant";
@@ -79,28 +70,6 @@ public final class BloodMoonSetPieces {
     private static final String TWIN_DETONATIONS="jem:twin_detonations";
     private static final String EXPOSED_UNTIL="jem:setpiece_exposed_until";
     private static final String ATTACK="setPieceAttack";
-    private static final String IMPACT="setPieceImpact";
-    private static final String ATTACK_START="setPieceAttackStart";
-    private static final String COOLDOWNS="setPieceCooldowns";
-    private static final String INITIAL_HEALTH="setPieceInitialHealth";
-    private static final String LAST_ATTACK="setPieceLastAttack";
-    private static final String PREVIOUS_ATTACK="setPiecePreviousAttack";
-    private static final String RECOVERY_UNTIL="setPieceRecoveryUntil";
-    private static final String TERRAIN="setPieceTerrain";
-    private static final String ATTACK_BLOCKS="setPieceAttackBlocks";
-    private static final String ATTACK_TERRAIN="setPieceAttackTerrain";
-    private static final String ATTACK_BLOCKS_UNTIL="setPieceAttackBlocksUntil";
-    private static final String RESTORING="setPieceRestoring";
-    private static final String ORIGINAL="Original";
-    private static final String TEMPORARY="Temporary";
-    private static final String COVER="bloodMoonCover";
-    private static final String ARENA_WAVE="setPieceArenaWave";
-    private static final String FLOOR_QUEUE="setPieceFloorQueue";
-    private static final String FLOOR_INDEX="setPieceFloorIndex";
-    private static final String COMBO_QUEUE="setPieceComboQueue";
-    private static final String COMBO_INDEX="setPieceComboIndex";
-    private static final String COMBO_NEXT="setPieceComboNext";
-    private static final String COMBO_ACTIVE="setPieceComboActive";
     private static final int NORMAL_SPAWN_TELEGRAPH_TICKS=8;
     private static final int LARGE_SPAWN_TELEGRAPH_TICKS=20;
     private static final int FLOOR_BLOCKS_PER_TICK=12;
@@ -135,72 +104,70 @@ public final class BloodMoonSetPieces {
         return selections(WAVE_FIVE_SCENARIOS);
     }
 
-    public static boolean select(CompoundTag row,String waveThree,String waveFive) {
+    public static boolean select(EventState row,String waveThree,String waveFive) {
         Scenario third=scenario(waveThree.toUpperCase(Locale.ROOT));
         Scenario fifth=scenario(waveFive.toUpperCase(Locale.ROOT));
         if(!WAVE_THREE_SCENARIOS.contains(third)||!WAVE_FIVE_SCENARIOS.contains(fifth)) return false;
-        row.putString(WAVE_THREE,third.name());
-        row.putString(WAVE_FIVE,fifth.name());
+        row.wave3SetPiece(third.name());
+        row.wave5SetPiece(fifth.name());
         return true;
     }
 
-    public static int beginWave(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
+    public static int beginWave(ServerLevel level,EventState row,List<ServerPlayer> players,int wave,int tier) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { return beginWaveInScope(level, row, players, wave, tier); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         return store.edit(() -> beginWaveInScope(level, store.events().bind(row), players, wave, tier));
     }
 
-    private static int beginWaveInScope(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
+    private static int beginWaveInScope(ServerLevel level,EventState row,List<ServerPlayer> players,int wave,int tier) {
         Set<Scenario> pool=wave==3?WAVE_THREE_SCENARIOS:wave==BloodMoonWaves.WAVES?WAVE_FIVE_SCENARIOS:Set.of();
         if(pool.isEmpty()) return 0;
-        row.put(SET_PIECE_MOBS,new ListTag());
-        row.put(SET_PIECE_BOSSES,new ListTag());
-        row.remove(ATTACK);
-        row.remove(IMPACT);
-        row.remove(ATTACK_START);
-        row.remove(RECOVERY_UNTIL);
-        row.remove("setPieceAttackPhase");
-        row.remove("setPiecePhaseUntil");
-        row.remove(LAST_ATTACK);
-        row.remove(PREVIOUS_ATTACK);
-        row.remove("setPieceFinalUsed");
-        row.remove("setPieceCongregation");
-        row.remove(FLOOR_QUEUE);
-        row.remove(FLOOR_INDEX);
+        row.editSetPiece().mobs(List.of());
+        row.editSetPiece().bosses(List.of());
+        row.editSetPiece().clearAttack();
+        row.editSetPiece().clearImpact();
+        row.editSetPiece().clearAttackStart();
+        row.editSetPiece().clearRecoveryUntil();
+        row.editSetPiece().clearAttackPhase();
+        row.editSetPiece().clearPhaseUntil();
+        row.editSetPiece().clearLastAttack();
+        row.editSetPiece().clearPreviousAttack();
+        row.editSetPiece().clearFinalUsed();
+        row.editSetPiece().clearCongregation();
+        row.editSetPiece().clearFloorQueue();
+        row.editSetPiece().clearFloorIndex();
         resetCombo(row);
         BossDebuffController.reset(row);
-        String key=wave==3?WAVE_THREE:WAVE_FIVE;
-        Scenario selected=scenario(row.getString(key));
+        Scenario selected=scenario(wave==3?row.wave3SetPiece():row.wave5SetPiece());
         if(selected==null||!pool.contains(selected)||!compatible(selected)) {
             var compatible=pool.stream().filter(BloodMoonSetPieces::compatible).toList();
             if(compatible.isEmpty()) return 0;
             selected=compatible.get(level.random.nextInt(compatible.size()));
-            row.putString(key,selected.name());
+            if(wave==3) row.wave3SetPiece(selected.name()); else row.wave5SetPiece(selected.name());
         }
         buildArena(level,row,selected,wave);
         int count=spawnScenario(level,row,players,selected,tier,wave);
-        if(count>0) row.putBoolean(spawnedKey(wave),true);
+        if(count>0) markSpawned(row,wave);
         double initial=livingBosses(level,row).stream().mapToDouble(LivingEntity::getMaxHealth).sum();
-        row.putDouble(INITIAL_HEALTH,Math.max(1,initial));
+        row.editSetPiece().initialHealth(Math.max(1,initial));
         initializeCooldowns(level,row,selected);
 
         return count;
     }
 
-    public static int recoverMissingSpawn(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
+    public static int recoverMissingSpawn(ServerLevel level,EventState row,List<ServerPlayer> players,int wave,int tier) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { return recoverMissingSpawnInScope(level, row, players, wave, tier); }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         return store.edit(() -> recoverMissingSpawnInScope(level, store.events().bind(row), players, wave, tier));
     }
 
-    private static int recoverMissingSpawnInScope(ServerLevel level,CompoundTag row,List<ServerPlayer> players,int wave,int tier) {
+    private static int recoverMissingSpawnInScope(ServerLevel level,EventState row,List<ServerPlayer> players,int wave,int tier) {
         if(wave!=3&&wave!=BloodMoonWaves.WAVES) return 0;
-        String spawnedKey=spawnedKey(wave);
-        if(row.getBoolean(spawnedKey)) return 0;
+        if(wave==3?row.wave3SetPieceSpawned():row.wave5SetPieceSpawned()) return 0;
         if(!livingSetPieces(level,row).isEmpty()) {
-            row.putBoolean(spawnedKey,true);
+            markSpawned(row,wave);
 
             return 0;
         }
@@ -208,33 +175,33 @@ public final class BloodMoonSetPieces {
         if(selected==null) return 0;
         int count=spawnScenario(level,row,players,selected,tier,wave);
         if(count<=0) return 0;
-        row.putBoolean(spawnedKey,true);
-        row.putDouble(INITIAL_HEALTH,Math.max(1,livingBosses(level,row).stream().mapToDouble(LivingEntity::getMaxHealth).sum()));
+        markSpawned(row,wave);
+        row.editSetPiece().initialHealth(Math.max(1,livingBosses(level,row).stream().mapToDouble(LivingEntity::getMaxHealth).sum()));
         initializeCooldowns(level,row,selected);
 
         return count;
     }
 
-    public static void prepareSpawn(CompoundTag row,Mob mob,boolean large) {
+    public static void prepareSpawn(EventState row,Mob mob,boolean large) {
         int duration=large?LARGE_SPAWN_TELEGRAPH_TICKS:NORMAL_SPAWN_TELEGRAPH_TICKS;
         var position=mob.blockPosition();
         new EventSession(row).active(mob.getServer()).forEach(player->EventNetwork.beam(player,position,duration,mob.getBbWidth()));
     }
 
-    public static double ordinarySpawnPressure(ServerLevel level,CompoundTag row) {
+    public static double ordinarySpawnPressure(ServerLevel level,EventState row) {
         return 1;
     }
 
-    public static void finishWave(ServerLevel level,CompoundTag row,int wave) {
+    public static void finishWave(ServerLevel level,EventState row,int wave) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { finishWaveInScope(level, row, wave); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> finishWaveInScope(level, store.events().bind(row), wave));
     }
 
-    private static void finishWaveInScope(ServerLevel level,CompoundTag row,int wave) {
-        if((wave==3||wave==BloodMoonWaves.WAVES)&&row.getInt(ARENA_WAVE)==wave) {
-            row.putBoolean(RESTORING,true);
+    private static void finishWaveInScope(ServerLevel level,EventState row,int wave) {
+        if((wave==3||wave==BloodMoonWaves.WAVES)&&row.setPiece().arenaWave()==wave) {
+            row.editSetPiece().restoring(true);
             resumeRestoration(level,row);
 
         }
@@ -267,13 +234,13 @@ public final class BloodMoonSetPieces {
 
     private static void placedInScope(ServerLevel level,BlockEvent.EntityPlaceEvent event) {
         if(!(event.getEntity() instanceof ServerPlayer player)) return;
-        CompoundTag row=EventSession.forPlayer(player);
-        if(row==null||!EventRegions.contains(row,level,event.getPos())||!"RED_KNIGHTS".equals(row.getString(WAVE_THREE))) return;
-        CompoundTag cover=row.getCompound(COVER);
+        EventState row=EventSession.forPlayer(player);
+        if(row==null||!EventRegions.contains(row,level,event.getPos())||!"RED_KNIGHTS".equals(row.wave3SetPiece())) return;
+        var cover=new java.util.LinkedHashMap<>(row.bloodMoonCover());
         if(event instanceof BlockEvent.EntityMultiPlaceEvent multiple)
-            multiple.getReplacedBlockSnapshots().forEach(snapshot->cover.putBoolean(Long.toString(snapshot.getPos().asLong()),true));
-        else cover.putBoolean(Long.toString(event.getPos().asLong()),true);
-        row.put(COVER,cover);
+            multiple.getReplacedBlockSnapshots().forEach(snapshot->cover.put(snapshot.getPos().asLong(),true));
+        else cover.put(event.getPos().asLong(),true);
+        row.bloodMoonCover(cover);
 
     }
 
@@ -291,11 +258,11 @@ public final class BloodMoonSetPieces {
         for(var row:SmpData.get(server).events().currentRows()) {
             ServerLevel level=EventRegions.level(server,row);
             if(level==null) continue;
-            if(row.getBoolean(RESTORING)&&(server.getTickCount()%20)==0) {
+            if(row.setPiece().restoring()&&(server.getTickCount()%20)==0) {
                 resumeRestoration(level,row);
 
             }
-            if(!EventRuntime.enabled(server)||!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) continue;
+            if(!EventRuntime.enabled(server)||!row.state().equals("ACTIVE")||!row.activity().equals("BLOOD_MOON")) continue;
             Scenario selected=current(row);
             if(selected==null) continue;
             tickMechanics(level,row,selected);
@@ -309,45 +276,45 @@ public final class BloodMoonSetPieces {
         event.setAmount(event.getAmount()*1.5F);
     }
 
-    public static void cleanup(MinecraftServer server,CompoundTag row) {
+    public static void cleanup(MinecraftServer server,EventState row) {
         ServerLevel level=EventRegions.level(server,row);
         if(level!=null) {
             livingBosses(level,row).forEach(com.siirio.jemworldbosstiers.api.BossEffectApi::clear);
-            row.putBoolean(RESTORING,true);
+            row.editSetPiece().restoring(true);
             resumeRestoration(level,row);
         }
         if(!pendingRestoration(row)) {
-            row.remove(WAVE_THREE);
-            row.remove(WAVE_FIVE);
-            row.remove(RESTORING);
+            row.clearWave3SetPiece();
+            row.clearWave5SetPiece();
+            row.editSetPiece().clearRestoring();
         }
-        row.remove(SET_PIECE_MOBS);
-        row.remove(SET_PIECE_BOSSES);
-        row.remove(ATTACK);
-        row.remove(IMPACT);
-        row.remove(COOLDOWNS);
+        row.editSetPiece().clearMobs();
+        row.editSetPiece().clearBosses();
+        row.editSetPiece().clearAttack();
+        row.editSetPiece().clearImpact();
+        row.editSetPiece().clearCooldowns();
         BossDebuffController.reset(row);
-        row.remove(INITIAL_HEALTH);
-        row.remove(LAST_ATTACK);
-        row.remove(ATTACK_START);
-        row.remove(RECOVERY_UNTIL);
-        row.remove("setPieceAttackPhase");
-        row.remove("setPiecePhaseUntil");
-        row.remove(COVER);
-        row.remove(FLOOR_QUEUE);
-        row.remove(FLOOR_INDEX);
+        row.editSetPiece().clearInitialHealth();
+        row.editSetPiece().clearLastAttack();
+        row.editSetPiece().clearAttackStart();
+        row.editSetPiece().clearRecoveryUntil();
+        row.editSetPiece().clearAttackPhase();
+        row.editSetPiece().clearPhaseUntil();
+        row.clearBloodMoonCover();
+        row.editSetPiece().clearFloorQueue();
+        row.editSetPiece().clearFloorIndex();
         resetCombo(row);
-        row.remove("setPieceOriginX");
-        row.remove("setPieceOriginZ");
-        row.remove("setPieceSecondX");
-        row.remove("setPieceSecondZ");
-        row.remove("setPieceTargetX");
-        row.remove("setPieceTargetZ");
-        row.remove("setPieceFinalUsed");
-        row.remove("setPieceCongregation");
+        row.editSetPiece().clearOriginX();
+        row.editSetPiece().clearOriginZ();
+        row.editSetPiece().clearSecondX();
+        row.editSetPiece().clearSecondZ();
+        row.editSetPiece().clearTargetX();
+        row.editSetPiece().clearTargetZ();
+        row.editSetPiece().clearFinalUsed();
+        row.editSetPiece().clearCongregation();
     }
 
-    private static int spawnScenario(ServerLevel level,CompoundTag row,List<ServerPlayer> players,Scenario scenario,int tier,int wave) {
+    private static int spawnScenario(ServerLevel level,EventState row,List<ServerPlayer> players,Scenario scenario,int tier,int wave) {
         List<Spawn> spawns=spawns(scenario);
         int count=0;
         for(int index=0;index<spawns.size();index++) {
@@ -356,7 +323,7 @@ public final class BloodMoonSetPieces {
             Mob mob=create(level,spawn.id(),position,scenario);
             if(mob==null) continue;
             new EventSession(row).mark(mob);
-            mob.getPersistentData().putUUID(BloodMoon.EVENT_ID,row.getUUID("id"));
+            mob.getPersistentData().putUUID(BloodMoon.EVENT_ID,row.id());
             mob.getPersistentData().putUUID(BloodMoonLoot.ATTEMPT_ID,BloodMoonLoot.attempt(row));
             mob.getPersistentData().putString(SET_PIECE,scenario.name());
             mob.getPersistentData().putBoolean(SET_PIECE_BOSS,spawn.boss());
@@ -372,9 +339,9 @@ public final class BloodMoonSetPieces {
             scaleHealth(mob,healthFactor(row,wave,mob,spawn,spawns));
             mob.setPersistenceRequired();
             mob.setHealth(mob.getMaxHealth());
-            addUuid(row,"mobs",mob.getUUID());
+            row.mobs(append(row.mobs(),mob.getUUID()));
             if(!level.addFreshEntity(mob)) {
-                removeUuid(row,"mobs",mob.getUUID());
+                row.mobs(without(row.mobs(),mob.getUUID()));
                 continue;
             }
             if(spawn.boss()) {
@@ -385,8 +352,8 @@ public final class BloodMoonSetPieces {
                 ServerPlayer target=players.stream().min(Comparator.comparingDouble(mob::distanceToSqr)).orElse(null);
                 if(target!=null) mob.setTarget(target);
             }
-            addUuid(row,SET_PIECE_MOBS,mob.getUUID());
-            if(spawn.boss()) addUuid(row,SET_PIECE_BOSSES,mob.getUUID());
+            row.editSetPiece().mobs(append(row.setPiece().mobs(),mob.getUUID()));
+            if(spawn.boss()) row.editSetPiece().bosses(append(row.setPiece().bosses(),mob.getUUID()));
             count++;
         }
         return count;
@@ -400,20 +367,20 @@ public final class BloodMoonSetPieces {
         return mob;
     }
 
-    private static String spawnedKey(int wave) {
-        return wave==3?WAVE_THREE_SPAWNED:WAVE_FIVE_SPAWNED;
+    private static void markSpawned(EventState row,int wave) {
+        if(wave==3) row.wave3SetPieceSpawned(true); else row.wave5SetPieceSpawned(true);
     }
 
-    private static void addUuid(CompoundTag row,String key,UUID id) {
-        ListTag list=row.getList(key,Tag.TAG_STRING);
-        list.add(StringTag.valueOf(id.toString()));
-        row.put(key,list);
+    private static <T> List<T> append(List<T> values,T value) {
+        var result=new ArrayList<>(values);
+        result.add(value);
+        return result;
     }
 
-    private static void removeUuid(CompoundTag row,String key,UUID id) {
-        ListTag list=row.getList(key,Tag.TAG_STRING);
-        list.remove(StringTag.valueOf(id.toString()));
-        row.put(key,list);
+    private static <T> List<T> without(List<T> values,T value) {
+        var result=new ArrayList<>(values);
+        result.remove(value);
+        return result;
     }
 
     private static void scaleHealth(Mob mob,double factor) {
@@ -423,8 +390,8 @@ public final class BloodMoonSetPieces {
         health.addPermanentModifier(new AttributeModifier(HEALTH_SCALE,"JEM set-piece health",factor-1,AttributeModifier.Operation.MULTIPLY_TOTAL));
     }
 
-    private static double healthFactor(CompoundTag row,int wave,Mob mob,Spawn spawn,List<Spawn> spawns) {
-        double dps=row.getDouble("observedPartyDps");
+    private static double healthFactor(EventState row,int wave,Mob mob,Spawn spawn,List<Spawn> spawns) {
+        double dps=row.observedPartyDps();
         int bosses=(int)spawns.stream().filter(Spawn::boss).count();
         int allies=spawns.size()-bosses;
         if(dps<=0) return spawn.boss()?(bosses==1?2.5:1.8):.75;
@@ -435,7 +402,7 @@ public final class BloodMoonSetPieces {
         return spawn.boss()?Mth.clamp(factor,wave==BloodMoonWaves.WAVES?2:1.5,wave==BloodMoonWaves.WAVES?8:6):Mth.clamp(factor,.5,1.5);
     }
 
-    private static BlockPos spawnPosition(ServerLevel level,CompoundTag row,Scenario scenario,int index,int total) {
+    private static BlockPos spawnPosition(ServerLevel level,EventState row,Scenario scenario,int index,int total) {
         int centerX=(EventRegions.minX(row)+EventRegions.maxX(row))/2;
         int centerZ=(EventRegions.minZ(row)+EventRegions.maxZ(row))/2;
         int halfX=Math.max(8,(EventRegions.maxX(row)-EventRegions.minX(row))/2-8);
@@ -464,14 +431,14 @@ public final class BloodMoonSetPieces {
         creeper.thunderHit(level,lightning);
     }
 
-    private static void tickMechanics(ServerLevel level,CompoundTag row,Scenario scenario) {
+    private static void tickMechanics(ServerLevel level,EventState row,Scenario scenario) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { tickMechanicsInScope(level, row, scenario); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> tickMechanicsInScope(level, store.events().bind(row), scenario));
     }
 
-    private static void tickMechanicsInScope(ServerLevel level,CompoundTag row,Scenario scenario) {
+    private static void tickMechanicsInScope(ServerLevel level,EventState row,Scenario scenario) {
         List<Mob> bosses=livingBosses(level,row);
         advanceArena(level,row,scenario,bosses);
         advanceIntroductions(level,row,bosses);
@@ -480,87 +447,87 @@ public final class BloodMoonSetPieces {
         bosses.forEach(boss->com.siirio.jemworldbosstiers.api.BossEffectApi.tick(boss,participants));
         if(scenario==Scenario.BONE_CATHEDRAL) activateCongregation(level,row);
         long now=level.getGameTime();
-        if(row.contains(ATTACK_BLOCKS_UNTIL)&&row.getLong(ATTACK_BLOCKS_UNTIL)<=now) {
+        if(row.setPiece().hasAttackBlocksUntil()&&row.setPiece().attackBlocksUntil()<=now) {
             restoreAttackBlocks(level,row);
 
         }
         if(bosses.isEmpty()) return;
         if(bosses.stream().anyMatch(BloodMoonSetPieces::introducing)) return;
-        if(!row.getString(ATTACK).isEmpty()) {
-            Attack attack=Attack.valueOf(row.getString(ATTACK));
-            long impact=row.getLong(IMPACT);
-            long windupEnd=row.getLong("setPiecePhaseUntil");
-            String phase=row.getString("setPieceAttackPhase");
+        if(!row.setPiece().attack().isEmpty()) {
+            Attack attack=Attack.valueOf(row.setPiece().attack());
+            long impact=row.setPiece().impact();
+            long windupEnd=row.setPiece().phaseUntil();
+            String phase=row.setPiece().attackPhase();
             if(phase.equals("WINDUP")&&now>=windupEnd) {
-                row.putString("setPieceAttackPhase","TELEGRAPH");
-                row.putLong("setPiecePhaseUntil",impact-finalTelegraphLead(row,attack));
-            } else if(phase.equals("TELEGRAPH")&&now>=windupEnd) row.putString("setPieceAttackPhase","LOCKED_PATTERN");
+                row.editSetPiece().attackPhase("TELEGRAPH");
+                row.editSetPiece().phaseUntil(impact-finalTelegraphLead(row,attack));
+            } else if(phase.equals("TELEGRAPH")&&now>=windupEnd) row.editSetPiece().attackPhase("LOCKED_PATTERN");
             if(phase.equals("WINDUP")) windup(level,attack,bosses);
             else if((now&1)==0) telegraph(level,row,attack,impact-now,bosses);
             if(now>=impact) execute(level,row,scenario,attack,bosses);
             return;
         }
-        if(now<row.getLong(RECOVERY_UNTIL)) return;
+        if(now<row.setPiece().recoveryUntil()) return;
         double ratio=healthRatio(level,row);
-        if(row.getBoolean(COMBO_ACTIVE)) {
+        if(row.setPiece().comboActive()) {
             if(startNextCombo(level,row,scenario,bosses)) return;
             finishCombo(level,row);
-        } else if(now>=row.getLong(COMBO_NEXT)&&beginCombo(level,row,scenario,bosses,ratio)) {
+        } else if(now>=row.setPiece().comboNext()&&beginCombo(level,row,scenario,bosses,ratio)) {
             startNextCombo(level,row,scenario,bosses);
             return;
         }
         List<AttackSpec> available=attacks(scenario).stream()
                 .filter(spec->requirements(row,spec.attack(),bosses,ratio))
-                .filter(spec->row.getCompound(COOLDOWNS).getLong(spec.attack().name())<=now)
+                .filter(spec->row.setPiece().cooldowns().getOrDefault(spec.attack().name(),0L)<=now)
                 .toList();
         if(available.isEmpty()) return;
-        AttackSpec chosen=weighted(level,available,row.getString(LAST_ATTACK),row.getString(PREVIOUS_ATTACK));
+        AttackSpec chosen=weighted(level,available,row.setPiece().lastAttack(),row.setPiece().previousAttack());
         start(level,row,scenario,chosen.attack(),bosses,false);
     }
 
-    private static void start(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses,boolean combo) {
+    private static void start(ServerLevel level,EventState row,Scenario scenario,Attack attack,List<Mob> bosses,boolean combo) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { startInScope(level, row, scenario, attack, bosses, combo); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> startInScope(level, store.events().bind(row), scenario, attack, bosses, combo));
     }
 
-    private static void startInScope(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses,boolean combo) {
+    private static void startInScope(ServerLevel level,EventState row,Scenario scenario,Attack attack,List<Mob> bosses,boolean combo) {
         long telegraph=combo?COMBO_TELEGRAPH_TICKS:telegraphTicks(attack);
-        row.putString(ATTACK,attack.name());
-        row.putLong(ATTACK_START,level.getGameTime());
-        row.putLong(IMPACT,level.getGameTime()+telegraph);
-        row.putString("setPieceAttackPhase","WINDUP");
-        row.putLong("setPiecePhaseUntil",level.getGameTime()+(combo?Math.max(4,telegraph/4):Math.max(10,telegraph/4)));
+        row.editSetPiece().attack(attack.name());
+        row.editSetPiece().attackStart(level.getGameTime());
+        row.editSetPiece().impact(level.getGameTime()+telegraph);
+        row.editSetPiece().attackPhase("WINDUP");
+        row.editSetPiece().phaseUntil(level.getGameTime()+(combo?Math.max(4,telegraph/4):Math.max(10,telegraph/4)));
         stageGeometry(level,row,attack,bosses);
         bosses.forEach(mob->mob.getNavigation().stop());
         if(attack==Attack.CRIMSON_DIVIDE) new EventSession(row).active(level.getServer()).forEach(player->player.sendSystemMessage(Component.translatable("jem.event.blood_moon.crimson_divide")));
         if(attack==Attack.TWIN_CATACLYSM) bosses.forEach(mob->mob.setInvulnerable(true));
         if(attack==Attack.COLLISION_COURSE) stageCollision(level,row,bosses);
         if(attack==Attack.CROSS_BLAST||attack==Attack.HUNTER_LATTICE) chooseTwinPattern(level,row);
-        if(attack==Attack.ANCIENT_ROAR) row.putInt("setPieceCastParity",row.getInt("setPieceCastParity")+1);
+        if(attack==Attack.ANCIENT_ROAR) row.editSetPiece().castParity(row.setPiece().castParity()+1);
         if(attack==Attack.ANCIENT_ROAR&&bosses.get(0) instanceof Warden warden) warden.setPose(Pose.ROARING);
-        if(attack==Attack.RADIATION_SWEEP) row.putBoolean("setPieceReverse",level.random.nextBoolean());
+        if(attack==Attack.RADIATION_SWEEP) row.editSetPiece().reverse(level.random.nextBoolean());
         if(attack==Attack.END_COLLAPSE) chooseSafeQuarter(level,row);
         AttackGeometry geometry=geometry(row,attack,bosses,0);
-        new EventSession(row).active(level.getServer()).forEach(player->EventNetwork.telegraph(player,row.getUUID("id"),geometry,(int)telegraph,ATTACK_TELEGRAPH_COLOR));
+        new EventSession(row).active(level.getServer()).forEach(player->EventNetwork.telegraph(player,row.id(),geometry,(int)telegraph,ATTACK_TELEGRAPH_COLOR));
         play(level,bosses.get(0).blockPosition(),warningSound(attack),SoundEvents.WARDEN_SONIC_CHARGE,1.4F,.85F);
 
     }
 
-    private static void execute(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses) {
+    private static void execute(ServerLevel level,EventState row,Scenario scenario,Attack attack,List<Mob> bosses) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { executeInScope(level, row, scenario, attack, bosses); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> executeInScope(level, store.events().bind(row), scenario, attack, bosses));
     }
 
-    private static void executeInScope(ServerLevel level,CompoundTag row,Scenario scenario,Attack attack,List<Mob> bosses) {
+    private static void executeInScope(ServerLevel level,EventState row,Scenario scenario,Attack attack,List<Mob> bosses) {
         Mob source=bosses.get(0);
         AttackGeometry geometry=geometry(row,attack,bosses,1);
-        boolean combo=row.getBoolean(COMBO_ACTIVE);
+        boolean combo=row.setPiece().comboActive();
         int attackDuration=combo?COMBO_IMPACT_TICKS:attackVfxTicks(attack);
-        new EventSession(row).active(level.getServer()).forEach(player->EventNetwork.attackVfx(player,row.getUUID("id"),geometry,attackDuration,ATTACK_TELEGRAPH_COLOR));
+        new EventSession(row).active(level.getServer()).forEach(player->EventNetwork.attackVfx(player,row.id(),geometry,attackDuration,ATTACK_TELEGRAPH_COLOR));
         physicalImpact(level,row,source,attack,geometry);
         for(ServerPlayer player:new EventSession(row).active(level.getServer())) {
             if(!geometry.contains(player.getX(),player.getZ())) continue;
@@ -569,7 +536,7 @@ public final class BloodMoonSetPieces {
                 player.stopUsingItem();
                 player.getCooldowns().addCooldown(Items.SHIELD,100);
             }
-            float damage=EventMobModifiers.signatureDamage(row.getInt("worldTier"),row.getInt("wave"),damage(attack));
+            float damage=EventMobModifiers.signatureDamage(row.worldTier(),row.wave(),damage(attack));
             if(damage>0) EventMobModifiers.signature(source,()->player.hurt(level.damageSources().mobAttack(source),damage));
             applyMotion(geometry,attack,player);
             if(attack==Attack.SCULK_BURIAL) {
@@ -583,30 +550,30 @@ public final class BloodMoonSetPieces {
         livingSetPieces(level,row).stream().filter(mob->!mob.getPersistentData().getBoolean(DORMANT)).forEach(mob->mob.setInvulnerable(false));
         if(attack==Attack.TWIN_CATACLYSM) twinImpact(level,bosses);
         if(attack==Attack.ANCIENT_ROAR&&source instanceof Warden warden) warden.setPose(Pose.STANDING);
-        if(!row.getCompound(ATTACK_TERRAIN).isEmpty()) row.putLong(ATTACK_BLOCKS_UNTIL,level.getGameTime()+40);
+        if(!row.setPiece().attackTerrain().isEmpty()) row.editSetPiece().attackBlocksUntil(level.getGameTime()+40);
         double ratio=healthRatio(level,row);
         AttackSpec spec=attacks(scenario).stream().filter(value->value.attack()==attack).findFirst().orElse(new AttackSpec(attack,600,390,1));
-        CompoundTag cooldowns=row.getCompound(COOLDOWNS);
-        cooldowns.putLong(attack.name(),level.getGameTime()+attackCooldown(ratio<.5?spec.aggressive():spec.normal()));
-        row.put(COOLDOWNS,cooldowns);
-        row.putString(PREVIOUS_ATTACK,row.getString(LAST_ATTACK));
-        row.putString(LAST_ATTACK,attack.name());
-        row.putLong(RECOVERY_UNTIL,level.getGameTime()+(combo?COMBO_GAP_TICKS:recoveryTicks(attack)));
-        row.putString("setPieceAttackPhase","RECOVERY");
-        if(attack==Attack.FINAL_COUNTDOWN||attack==Attack.LAST_MASS) row.putBoolean("setPieceFinalUsed",true);
-        row.remove(ATTACK);
-        row.remove(IMPACT);
-        row.remove("setPiecePhaseUntil");
+        var cooldowns=new java.util.LinkedHashMap<>(row.setPiece().cooldowns());
+        cooldowns.put(attack.name(),level.getGameTime()+attackCooldown(ratio<.5?spec.aggressive():spec.normal()));
+        row.editSetPiece().cooldowns(cooldowns);
+        row.editSetPiece().previousAttack(row.setPiece().lastAttack());
+        row.editSetPiece().lastAttack(attack.name());
+        row.editSetPiece().recoveryUntil(level.getGameTime()+(combo?COMBO_GAP_TICKS:recoveryTicks(attack)));
+        row.editSetPiece().attackPhase("RECOVERY");
+        if(attack==Attack.FINAL_COUNTDOWN||attack==Attack.LAST_MASS) row.editSetPiece().finalUsed(true);
+        row.editSetPiece().clearAttack();
+        row.editSetPiece().clearImpact();
+        row.editSetPiece().clearPhaseUntil();
 
     }
 
-    private static void telegraph(ServerLevel level,CompoundTag row,Attack attack,long remaining,List<Mob> bosses) {
+    private static void telegraph(ServerLevel level,EventState row,Attack attack,long remaining,List<Mob> bosses) {
         long total=currentTelegraphTicks(row,attack);
         double progress=1-Mth.clamp(remaining/(double)total,0,1);
         AttackGeometry geometry=geometry(row,attack,bosses,progress);
         bosses.forEach(mob->face(mob,geometry.targetX(),geometry.targetZ(),12));
         if(attack==Attack.TENTACLE_CORRIDOR||attack==Attack.SCULK_BURIAL) rupture(level,row,geometry);
-        if(remaining==FINAL_WARNING_TICKS||remaining==10||remaining==5) play(level,BlockPos.of(row.getLong("position")),warningSound(attack),SoundEvents.NOTE_BLOCK_HAT.value(),1.1F,remaining==5?1.65F:1.25F);
+        if(remaining==FINAL_WARNING_TICKS||remaining==10||remaining==5) play(level,BlockPos.of(row.position()),warningSound(attack),SoundEvents.NOTE_BLOCK_HAT.value(),1.1F,remaining==5?1.65F:1.25F);
     }
 
     private static void windup(ServerLevel level,Attack attack,List<Mob> bosses) {
@@ -646,7 +613,7 @@ public final class BloodMoonSetPieces {
         level.playSound(null,position,sound,SoundSource.HOSTILE,volume,pitch);
     }
 
-    private static void physicalImpact(ServerLevel level,CompoundTag row,Mob source,Attack attack,AttackGeometry geometry) {
+    private static void physicalImpact(ServerLevel level,EventState row,Mob source,Attack attack,AttackGeometry geometry) {
         if(attack==Attack.ARROW_HEAVEN||attack==Attack.IMPALING_FORMATION||attack==Attack.BONE_SPEAR_CHOIR||attack==Attack.GRAVEFALL)
             projectiles(level,row,source,attack);
         int emitted=0;
@@ -715,23 +682,23 @@ public final class BloodMoonSetPieces {
         player.hurtMarked=true;
     }
 
-    private static boolean cover(ServerLevel level,CompoundTag row,Mob source,ServerPlayer player) {
+    private static boolean cover(ServerLevel level,EventState row,Mob source,ServerPlayer player) {
         Vec3 from=source.getEyePosition();
         Vec3 to=player.getEyePosition();
         BlockHitResult hit=level.clip(new ClipContext(from,to,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,source));
         if(hit.getType()!=HitResult.Type.BLOCK) return false;
         BlockPos pos=hit.getBlockPos();
         if(hit.getLocation().distanceToSqr(to)>=from.distanceToSqr(to)) return false;
-        CompoundTag tracked=row.getCompound(COVER);
-        String key=Long.toString(pos.asLong());
-        if(!tracked.getBoolean(key)||level.getBlockState(pos).getCollisionShape(level,pos).isEmpty()) return false;
+        var tracked=new java.util.LinkedHashMap<>(row.bloodMoonCover());
+        long key=pos.asLong();
+        if(!tracked.getOrDefault(key,false)||level.getBlockState(pos).getCollisionShape(level,pos).isEmpty()) return false;
         level.destroyBlock(pos,false,source);
         tracked.remove(key);
-        row.put(COVER,tracked);
+        row.bloodMoonCover(tracked);
         return true;
     }
 
-    private static void projectiles(ServerLevel level,CompoundTag row,Mob source,Attack attack) {
+    private static void projectiles(ServerLevel level,EventState row,Mob source,Attack attack) {
         int count=attack==Attack.ARROW_HEAVEN?24:16;
         AttackGeometry geometry=geometry(row,attack,List.of(source),1);
         if(attack==Attack.IMPALING_FORMATION) {
@@ -751,14 +718,14 @@ public final class BloodMoonSetPieces {
             Arrow arrow=new Arrow(level,source);
             arrow.setPos(x+.5,surface(level,x,z).getY()+14,z+.5);
             arrow.setDeltaMovement(0,-1.5,0);
-            arrow.setBaseDamage(EventMobModifiers.signatureDamage(row.getInt("worldTier"),row.getInt("wave"),6));
+            arrow.setBaseDamage(EventMobModifiers.signatureDamage(row.worldTier(),row.wave(),6));
             arrow.pickup=net.minecraft.world.entity.projectile.AbstractArrow.Pickup.DISALLOWED;
             EventMobModifiers.signature(arrow);
             level.addFreshEntity(arrow);
         }
     }
 
-    private static void stageCollision(ServerLevel level,CompoundTag row,List<Mob> bosses) {
+    private static void stageCollision(ServerLevel level,EventState row,List<Mob> bosses) {
         if(bosses.size()<2) return;
         int centerZ=(EventRegions.minZ(row)+EventRegions.maxZ(row))/2;
         BlockPos left=surface(level,EventRegions.minX(row)+6,centerZ-9);
@@ -767,21 +734,21 @@ public final class BloodMoonSetPieces {
         bosses.get(1).getNavigation().moveTo(right.getX()+.5,right.getY(),right.getZ()+.5,1.4);
     }
 
-    private static void chooseTwinPattern(ServerLevel level,CompoundTag row) {
-        int previous=row.getInt("setPieceTwinPattern");
+    private static void chooseTwinPattern(ServerLevel level,EventState row) {
+        int previous=row.setPiece().twinPattern();
         int next=level.random.nextInt(8);
         if(next==previous) next=(next+1+level.random.nextInt(7))%8;
-        row.putInt("setPieceTwinPattern",next);
+        row.editSetPiece().twinPattern(next);
     }
 
-    private static void chooseSafeQuarter(ServerLevel level,CompoundTag row) {
-        int previous=Math.floorMod(row.getInt("setPieceSafeQuarter"),4);
+    private static void chooseSafeQuarter(ServerLevel level,EventState row) {
+        int previous=Math.floorMod(row.setPiece().safeQuarter(),4);
         int next=level.random.nextInt(4);
         if(next==previous) next=(next+1+level.random.nextInt(3))%4;
-        row.putInt("setPieceSafeQuarter",next);
+        row.editSetPiece().safeQuarter(next);
     }
 
-    private static void stageGeometry(ServerLevel level,CompoundTag row,Attack attack,List<Mob> bosses) {
+    private static void stageGeometry(ServerLevel level,EventState row,Attack attack,List<Mob> bosses) {
         Mob source=bosses.get(0);
         Mob second=bosses.size()>1?bosses.get(1):source;
         ServerPlayer target=source.getTarget() instanceof ServerPlayer player?player:new EventSession(row).active(level.getServer()).stream().min(Comparator.comparingDouble(source::distanceToSqr)).orElse(null);
@@ -798,22 +765,22 @@ public final class BloodMoonSetPieces {
             targetX=source.getX()+direction.x*length;
             targetZ=source.getZ()+direction.z*length;
         }
-        row.putDouble("setPieceOriginX",source.getX());
-        row.putDouble("setPieceOriginZ",source.getZ());
-        row.putDouble("setPieceSecondX",second.getX());
-        row.putDouble("setPieceSecondZ",second.getZ());
-        row.putDouble("setPieceTargetX",targetX);
-        row.putDouble("setPieceTargetZ",targetZ);
+        row.editSetPiece().originX(source.getX());
+        row.editSetPiece().originZ(source.getZ());
+        row.editSetPiece().secondX(second.getX());
+        row.editSetPiece().secondZ(second.getZ());
+        row.editSetPiece().targetX(targetX);
+        row.editSetPiece().targetZ(targetZ);
     }
 
-    private static AttackGeometry geometry(CompoundTag row,Attack attack,List<Mob> bosses,double progress) {
-        double originX=row.contains("setPieceOriginX")?row.getDouble("setPieceOriginX"):bosses.get(0).getX();
-        double originZ=row.contains("setPieceOriginZ")?row.getDouble("setPieceOriginZ"):bosses.get(0).getZ();
-        double secondX=row.contains("setPieceSecondX")?row.getDouble("setPieceSecondX"):originX;
-        double secondZ=row.contains("setPieceSecondZ")?row.getDouble("setPieceSecondZ"):originZ;
-        double targetX=row.contains("setPieceTargetX")?row.getDouble("setPieceTargetX"):(EventRegions.minX(row)+EventRegions.maxX(row)+1)/2.0;
-        double targetZ=row.contains("setPieceTargetZ")?row.getDouble("setPieceTargetZ"):(EventRegions.minZ(row)+EventRegions.maxZ(row)+1)/2.0;
-        int variant=attack==Attack.END_COLLAPSE?row.getInt("setPieceSafeQuarter"):attack==Attack.ANCIENT_ROAR?row.getInt("setPieceCastParity"):row.getInt("setPieceTwinPattern");
+    private static AttackGeometry geometry(EventState row,Attack attack,List<Mob> bosses,double progress) {
+        double originX=row.setPiece().hasOriginX()?row.setPiece().originX():bosses.get(0).getX();
+        double originZ=row.setPiece().hasOriginZ()?row.setPiece().originZ():bosses.get(0).getZ();
+        double secondX=row.setPiece().hasSecondX()?row.setPiece().secondX():originX;
+        double secondZ=row.setPiece().hasSecondZ()?row.setPiece().secondZ():originZ;
+        double targetX=row.setPiece().hasTargetX()?row.setPiece().targetX():(EventRegions.minX(row)+EventRegions.maxX(row)+1)/2.0;
+        double targetZ=row.setPiece().hasTargetZ()?row.setPiece().targetZ():(EventRegions.minZ(row)+EventRegions.maxZ(row)+1)/2.0;
+        int variant=attack==Attack.END_COLLAPSE?row.setPiece().safeQuarter():attack==Attack.ANCIENT_ROAR?row.setPiece().castParity():row.setPiece().twinPattern();
         double directionX=targetX-originX,directionZ=targetZ-originZ;
         double length=Math.hypot(directionX,directionZ);
         double radius=Math.min(EventRegions.maxX(row)-EventRegions.minX(row),EventRegions.maxZ(row)-EventRegions.minZ(row))/2.0;
@@ -826,10 +793,10 @@ public final class BloodMoonSetPieces {
         long windup=currentTelegraphTicks(row,attack);
         return new AttackGeometry(AttackGeometry.Type.valueOf(attack.name()),EventRegions.minX(row)+3,EventRegions.maxX(row)-3,EventRegions.minZ(row)+3,EventRegions.maxZ(row)-3,
                 originX,originZ,secondX,secondZ,targetX,targetZ,directionX,directionZ,radius,width,length,-Math.PI,Math.PI,
-                row.getLong(ATTACK_START),windup,1,progress,variant,row.getBoolean("setPieceReverse"));
+                row.setPiece().attackStart(),windup,1,progress,variant,row.setPiece().reverse());
     }
 
-    private static void rupture(ServerLevel level,CompoundTag row,AttackGeometry geometry) {
+    private static void rupture(ServerLevel level,EventState row,AttackGeometry geometry) {
         Block block=block("deep_dark_regrowth:overloaded_sculk");
         for(int x=geometry.minX();x<=geometry.maxX();x++) for(int z=geometry.minZ();z<=geometry.maxZ();z++) {
             if(!geometry.front(x+.5,z+.5)) continue;
@@ -861,10 +828,10 @@ public final class BloodMoonSetPieces {
         bosses.forEach(mob->mob.hurtMarked=true);
     }
 
-    private static void activateCongregation(ServerLevel level,CompoundTag row) {
+    private static void activateCongregation(ServerLevel level,EventState row) {
         double ratio=healthRatio(level,row);
         int target=ratio<=.25?6:ratio<=.5?4:ratio<=.75?2:0;
-        int active=row.getInt("setPieceCongregation");
+        int active=row.setPiece().congregation();
         if(target<=active) return;
         int needed=target-active;
         for(Mob mob:livingSetPieces(level,row)) {
@@ -876,24 +843,24 @@ public final class BloodMoonSetPieces {
             mob.setInvulnerable(false);
             needed--;
         }
-        row.putInt("setPieceCongregation",target);
+        row.editSetPiece().congregation(target);
     }
 
-    private static void initializeCooldowns(ServerLevel level,CompoundTag row,Scenario scenario) {
-        CompoundTag cooldowns=new CompoundTag();
+    private static void initializeCooldowns(ServerLevel level,EventState row,Scenario scenario) {
+        Map<String,Long> cooldowns=new java.util.LinkedHashMap<>();
         long now=level.getGameTime();
-        attacks(scenario).forEach(spec->cooldowns.putLong(spec.attack().name(),now+attackCooldown(Math.max(80,spec.normal()/2))));
-        row.put(COOLDOWNS,cooldowns);
+        attacks(scenario).forEach(spec->cooldowns.put(spec.attack().name(),now+attackCooldown(Math.max(80,spec.normal()/2))));
+        row.editSetPiece().cooldowns(cooldowns);
         resetCombo(row);
-        row.putLong(COMBO_NEXT,now+comboInterval(level));
+        row.editSetPiece().comboNext(now+comboInterval(level));
     }
 
-    private static boolean beginCombo(ServerLevel level,CompoundTag row,Scenario scenario,List<Mob> bosses,double ratio) {
+    private static boolean beginCombo(ServerLevel level,EventState row,Scenario scenario,List<Mob> bosses,double ratio) {
         List<Attack> pool=new ArrayList<>(attacks(scenario).stream()
                 .map(AttackSpec::attack)
                 .filter(BloodMoonSetPieces::comboSafe)
                 .filter(attack->requirements(row,attack,bosses,ratio))
-                .filter(attack->!attack.name().equals(row.getString(LAST_ATTACK))&&!attack.name().equals(row.getString(PREVIOUS_ATTACK)))
+                .filter(attack->!attack.name().equals(row.setPiece().lastAttack())&&!attack.name().equals(row.setPiece().previousAttack()))
                 .toList());
         if(pool.size()<COMBO_ATTACK_COUNT) {
             pool=new ArrayList<>(attacks(scenario).stream()
@@ -903,7 +870,7 @@ public final class BloodMoonSetPieces {
                     .toList());
         }
         if(pool.size()<COMBO_ATTACK_COUNT) {
-            row.putLong(COMBO_NEXT,level.getGameTime()+comboInterval(level));
+            row.editSetPiece().comboNext(level.getGameTime()+comboInterval(level));
             return false;
         }
         for(int index=pool.size()-1;index>0;index--) {
@@ -912,44 +879,44 @@ public final class BloodMoonSetPieces {
             pool.set(index,pool.get(replacement));
             pool.set(replacement,attack);
         }
-        ListTag queue=new ListTag();
-        for(int index=0;index<COMBO_ATTACK_COUNT;index++) queue.add(StringTag.valueOf(pool.get(index).name()));
-        row.put(COMBO_QUEUE,queue);
-        row.putInt(COMBO_INDEX,0);
-        row.putBoolean(COMBO_ACTIVE,true);
-        row.putLong(COMBO_NEXT,level.getGameTime()+comboInterval(level));
+        List<String> queue=new ArrayList<>();
+        for(int index=0;index<COMBO_ATTACK_COUNT;index++) queue.add(pool.get(index).name());
+        row.editSetPiece().comboQueue(queue);
+        row.editSetPiece().comboIndex(0);
+        row.editSetPiece().comboActive(true);
+        row.editSetPiece().comboNext(level.getGameTime()+comboInterval(level));
         return true;
     }
 
-    private static boolean startNextCombo(ServerLevel level,CompoundTag row,Scenario scenario,List<Mob> bosses) {
-        ListTag queue=row.getList(COMBO_QUEUE,Tag.TAG_STRING);
-        int index=row.getInt(COMBO_INDEX);
+    private static boolean startNextCombo(ServerLevel level,EventState row,Scenario scenario,List<Mob> bosses) {
+        List<String> queue=row.setPiece().comboQueue();
+        int index=row.setPiece().comboIndex();
         if(index>=queue.size()) return false;
-        Attack attack=Attack.valueOf(queue.getString(index));
-        row.putInt(COMBO_INDEX,index+1);
+        Attack attack=Attack.valueOf(queue.get(index));
+        row.editSetPiece().comboIndex(index+1);
         start(level,row,scenario,attack,bosses,true);
         return true;
     }
 
-    private static void finishCombo(ServerLevel level,CompoundTag row) {
+    private static void finishCombo(ServerLevel level,EventState row) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { finishComboInScope(level, row); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> finishComboInScope(level, store.events().bind(row)));
     }
 
-    private static void finishComboInScope(ServerLevel level,CompoundTag row) {
-        row.remove(COMBO_QUEUE);
-        row.remove(COMBO_INDEX);
-        row.remove(COMBO_ACTIVE);
+    private static void finishComboInScope(ServerLevel level,EventState row) {
+        row.editSetPiece().clearComboQueue();
+        row.editSetPiece().clearComboIndex();
+        row.editSetPiece().clearComboActive();
 
     }
 
-    private static void resetCombo(CompoundTag row) {
-        row.remove(COMBO_QUEUE);
-        row.remove(COMBO_INDEX);
-        row.remove(COMBO_NEXT);
-        row.remove(COMBO_ACTIVE);
+    private static void resetCombo(EventState row) {
+        row.editSetPiece().clearComboQueue();
+        row.editSetPiece().clearComboIndex();
+        row.editSetPiece().clearComboNext();
+        row.editSetPiece().clearComboActive();
     }
 
     private static boolean comboSafe(Attack attack) {
@@ -961,18 +928,18 @@ public final class BloodMoonSetPieces {
         return COMBO_MIN_INTERVAL_TICKS+level.random.nextInt(COMBO_INTERVAL_VARIANCE_TICKS);
     }
 
-    private static long currentTelegraphTicks(CompoundTag row,Attack attack) {
-        if(row.contains(ATTACK_START)&&row.contains(IMPACT)) return Math.max(1,row.getLong(IMPACT)-row.getLong(ATTACK_START));
+    private static long currentTelegraphTicks(EventState row,Attack attack) {
+        if(row.setPiece().hasAttackStart()&&row.setPiece().hasImpact()) return Math.max(1,row.setPiece().impact()-row.setPiece().attackStart());
         return telegraphTicks(attack);
     }
 
-    private static long finalTelegraphLead(CompoundTag row,Attack attack) {
+    private static long finalTelegraphLead(EventState row,Attack attack) {
         return Math.max(4,Math.min(12,currentTelegraphTicks(row,attack)/3));
     }
 
-    private static boolean requirements(CompoundTag row,Attack attack,List<Mob> bosses,double ratio) {
+    private static boolean requirements(EventState row,Attack attack,List<Mob> bosses,double ratio) {
         if((attack==Attack.TRINITY_ASSAULT&&bosses.size()<3)||(attack==Attack.TWIN_CATACLYSM&&bosses.size()<2)) return false;
-        if((attack==Attack.FINAL_COUNTDOWN||attack==Attack.LAST_MASS)&&(ratio>=.25||row.getBoolean("setPieceFinalUsed"))) return false;
+        if((attack==Attack.FINAL_COUNTDOWN||attack==Attack.LAST_MASS)&&(ratio>=.25||row.setPiece().finalUsed())) return false;
         return true;
     }
 
@@ -989,30 +956,30 @@ public final class BloodMoonSetPieces {
         return pool.get(pool.size()-1);
     }
 
-    private static double healthRatio(ServerLevel level,CompoundTag row) {
-        double initial=row.getDouble(INITIAL_HEALTH);
+    private static double healthRatio(ServerLevel level,EventState row) {
+        double initial=row.setPiece().initialHealth();
         if(initial<=0) return 1;
         return Mth.clamp(livingBosses(level,row).stream().mapToDouble(LivingEntity::getHealth).sum()/initial,0,1);
     }
 
-    private static List<Mob> livingBosses(ServerLevel level,CompoundTag row) {
-        return entities(level,row.getList(SET_PIECE_BOSSES,Tag.TAG_STRING));
+    private static List<Mob> livingBosses(ServerLevel level,EventState row) {
+        return entities(level,row.setPiece().bosses());
     }
 
-    private static List<Mob> livingSetPieces(ServerLevel level,CompoundTag row) {
-        return entities(level,row.getList(SET_PIECE_MOBS,Tag.TAG_STRING));
+    private static List<Mob> livingSetPieces(ServerLevel level,EventState row) {
+        return entities(level,row.setPiece().mobs());
     }
 
-    private static List<Mob> entities(ServerLevel level,ListTag ids) {
+    private static List<Mob> entities(ServerLevel level,List<UUID> ids) {
         List<Mob> result=new ArrayList<>();
-        for(Tag tag:ids) {
-            Entity entity=level.getEntity(UUID.fromString(tag.getAsString()));
+        for(UUID id:ids) {
+            Entity entity=level.getEntity(id);
             if(entity instanceof Mob mob&&mob.isAlive()) result.add(mob);
         }
         return result;
     }
 
-    private static void advanceIntroductions(ServerLevel level,CompoundTag row,List<Mob> bosses) {
+    private static void advanceIntroductions(ServerLevel level,EventState row,List<Mob> bosses) {
         for(Mob boss:bosses) {
             ServerPlayer target=new EventSession(row).active(level.getServer()).stream().min(Comparator.comparingDouble(boss::distanceToSqr)).orElse(null);
             if(target!=null) face(boss,target.getX(),target.getZ(),8);
@@ -1029,16 +996,16 @@ public final class BloodMoonSetPieces {
         return SpawnPresentation.active(mob);
     }
 
-    private static void advanceArena(ServerLevel level,CompoundTag row,Scenario scenario,List<Mob> bosses) {
+    private static void advanceArena(ServerLevel level,EventState row,Scenario scenario,List<Mob> bosses) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { advanceArenaInScope(level, row, scenario, bosses); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> advanceArenaInScope(level, store.events().bind(row), scenario, bosses));
     }
 
-    private static void advanceArenaInScope(ServerLevel level,CompoundTag row,Scenario scenario,List<Mob> bosses) {
-        ListTag queue=row.getList(FLOOR_QUEUE,Tag.TAG_LONG);
-        int index=row.getInt(FLOOR_INDEX);
+    private static void advanceArenaInScope(ServerLevel level,EventState row,Scenario scenario,List<Mob> bosses) {
+        List<Long> queue=row.setPiece().floorQueue();
+        int index=row.setPiece().floorIndex();
         if(queue.isEmpty()||index>=queue.size()) return;
         FloorPalette palette=floorPalette(scenario);
         int centerX=(EventRegions.minX(row)+EventRegions.maxX(row))/2;
@@ -1047,7 +1014,7 @@ public final class BloodMoonSetPieces {
         int end=Math.min(queue.size(),index+FLOOR_BLOCKS_PER_TICK);
         BlockPos last=null;
         for(;index<end;index++) {
-            BlockPos floor=BlockPos.of(((LongTag)queue.get(index)).getAsLong());
+            BlockPos floor=BlockPos.of(queue.get(index));
             BlockPos cover=floor.above();
             if(thinCover(level.getBlockState(cover))) {
                 setTemporary(level,row,cover,Blocks.AIR.defaultBlockState());
@@ -1056,7 +1023,7 @@ public final class BloodMoonSetPieces {
             setTemporary(level,row,floor,(progress<=FLOOR_CENTER_RADIUS?palette.center():progress<=FLOOR_MIDDLE_RADIUS?palette.middle():palette.outer()).defaultBlockState());
             last=floor;
         }
-        row.putInt(FLOOR_INDEX,index);
+        row.editSetPiece().floorIndex(index);
         if(last!=null&&(level.getGameTime()&3)==0) {
             level.playSound(null,last,SoundEvents.SCULK_BLOCK_SPREAD,SoundSource.BLOCKS,.9F,.75F+level.random.nextFloat()*.2F);
             level.sendParticles(ParticleTypes.SCULK_SOUL,last.getX()+.5,last.getY()+1.1,last.getZ()+.5,3,.8,.1,.8,.02);
@@ -1064,17 +1031,17 @@ public final class BloodMoonSetPieces {
 
     }
 
-    private static void buildArena(ServerLevel level,CompoundTag row,Scenario scenario,int wave) {
+    private static void buildArena(ServerLevel level,EventState row,Scenario scenario,int wave) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { buildArenaInScope(level, row, scenario, wave); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> buildArenaInScope(level, store.events().bind(row), scenario, wave));
     }
 
-    private static void buildArenaInScope(ServerLevel level,CompoundTag row,Scenario scenario,int wave) {
-        if(row.getInt(ARENA_WAVE)==wave&&!row.getCompound(TERRAIN).isEmpty()) return;
+    private static void buildArenaInScope(ServerLevel level,EventState row,Scenario scenario,int wave) {
+        if(row.setPiece().arenaWave()==wave&&!row.setPiece().terrain().isEmpty()) return;
         if(pendingRestoration(row)) {
-            row.putBoolean(RESTORING,true);
+            row.editSetPiece().restoring(true);
             resumeRestoration(level,row);
             if(pendingRestoration(row)) return;
         }
@@ -1088,11 +1055,9 @@ public final class BloodMoonSetPieces {
             floorOrder.put(floor,Math.hypot(floor.getX()-centerX,floor.getZ()-centerZ)+level.random.nextDouble()*FLOOR_ORDER_JITTER);
         }
         floors.sort(Comparator.comparingDouble(floorOrder::get));
-        ListTag queue=new ListTag();
-        floors.forEach(pos->queue.add(LongTag.valueOf(pos.asLong())));
-        row.put(FLOOR_QUEUE,queue);
-        row.putInt(FLOOR_INDEX,0);
-        row.putInt(ARENA_WAVE,wave);
+        row.editSetPiece().floorQueue(floors.stream().map(BlockPos::asLong).toList());
+        row.editSetPiece().floorIndex(0);
+        row.editSetPiece().arenaWave(wave);
 
     }
 
@@ -1105,10 +1070,10 @@ public final class BloodMoonSetPieces {
         return state.getBlock() instanceof SnowLayerBlock||state.canBeReplaced()&&state.getFluidState().isEmpty()&&!state.isAir();
     }
 
-    private static void setTemporary(ServerLevel level,CompoundTag row,BlockPos pos,BlockState temporary) {
+    private static void setTemporary(ServerLevel level,EventState row,BlockPos pos,BlockState temporary) {
         BlockState current=level.getBlockState(pos);
         if(current.hasBlockEntity()||!current.getFluidState().isEmpty()||current.is(Blocks.BEDROCK)||current.is(Blocks.BARRIER)) return;
-        if(saveChange(level,row,TERRAIN,pos,current,temporary)) level.setBlock(pos,temporary,3);
+        if(saveChange(level,row,TerrainLayer.ARENA,pos,current,temporary)) level.setBlock(pos,temporary,3);
     }
 
     private static FloorPalette floorPalette(Scenario scenario) {
@@ -1142,101 +1107,109 @@ public final class BloodMoonSetPieces {
         return BuiltInRegistries.BLOCK.getOptional(new ResourceLocation(id)).orElseThrow(()->new IllegalStateException("Missing Blood Moon floor block: "+id));
     }
 
-    private static boolean saveChange(ServerLevel level,CompoundTag row,String field,BlockPos pos,BlockState original,BlockState temporary) {
-        CompoundTag snapshot=row.getCompound(field);
-        String key=Long.toString(pos.asLong());
-        CompoundTag saved=snapshot.getCompound(key);
-        if(!saved.isEmpty()) {
-            if(saved.contains(ORIGINAL,Tag.TAG_COMPOUND)) {
-                if(saved.contains(TEMPORARY,Tag.TAG_COMPOUND)
-                        &&!original.equals(NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved.getCompound(TEMPORARY)))) return false;
-            } else if(!legacyTemporary(row,field,original)) return false;
+    private enum TerrainLayer { ARENA, ATTACK }
+
+    private static Map<Long,EventTerrainChange> terrain(EventState row,TerrainLayer layer) {
+        return layer==TerrainLayer.ATTACK?row.setPiece().attackTerrain():row.setPiece().terrain();
+    }
+
+    private static void terrain(EventState row,TerrainLayer layer,Map<Long,EventTerrainChange> values) {
+        if(layer==TerrainLayer.ATTACK) row.editSetPiece().attackTerrain(values);
+        else row.editSetPiece().terrain(values);
+    }
+
+    private static BlockState blockState(ServerLevel level,NativeNbtPayload payload) {
+        CompoundTag encoded=payload==null?new CompoundTag():(CompoundTag)payload.copyNativeTag();
+        return NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),encoded);
+    }
+
+    private static boolean saveChange(ServerLevel level,EventState row,TerrainLayer layer,BlockPos pos,BlockState original,BlockState temporary) {
+        var snapshot=new java.util.LinkedHashMap<>(terrain(row,layer));
+        long key=pos.asLong();
+        EventTerrainChange saved=snapshot.get(key);
+        if(saved!=null) {
+            if(saved.hasOriginal()) {
+                if(saved.hasTemporary()&&!original.equals(blockState(level,saved.temporary()))) return false;
+            } else if(saved.hasLegacyOriginal()&&!legacyTemporary(row,layer,original)) return false;
         }
-        CompoundTag entry=new CompoundTag();
-        entry.put(ORIGINAL,saved.contains(ORIGINAL,Tag.TAG_COMPOUND)?saved.getCompound(ORIGINAL).copy()
-                :saved.isEmpty()?NbtUtils.writeBlockState(original):saved.copy());
-        entry.put(TEMPORARY,NbtUtils.writeBlockState(temporary));
+        EventTerrainChange entry=saved==null?new EventTerrainChange():saved.copy();
+        entry.original(saved!=null&&saved.hasOriginal()?saved.original()
+                :saved!=null&&saved.hasLegacyOriginal()?saved.legacyOriginal():new NativeNbtPayload(NbtUtils.writeBlockState(original)));
+        entry.temporary(new NativeNbtPayload(NbtUtils.writeBlockState(temporary)));
         snapshot.put(key,entry);
-        row.put(field,snapshot);
+        terrain(row,layer,snapshot);
         return true;
     }
 
-    private static void resumeRestoration(ServerLevel level,CompoundTag row) {
+    private static void resumeRestoration(ServerLevel level,EventState row) {
         restoreAttackBlocks(level,row);
-        if(row.getCompound(ATTACK_TERRAIN).isEmpty()) restoreTerrain(level,row);
+        if(row.setPiece().attackTerrain().isEmpty()) restoreTerrain(level,row);
         if(!pendingRestoration(row)) {
-            row.remove(RESTORING);
-            if(!row.getBoolean("combatStarted")||!row.getString("state").equals("ACTIVE")) {
-                row.remove(WAVE_THREE);
-                row.remove(WAVE_FIVE);
+            row.editSetPiece().clearRestoring();
+            if(!row.combatStarted()||!row.state().equals("ACTIVE")) {
+                row.clearWave3SetPiece();
+                row.clearWave5SetPiece();
             }
         }
     }
 
-    private static boolean pendingRestoration(CompoundTag row) {
-        return !row.getCompound(ATTACK_TERRAIN).isEmpty()||!row.getCompound(TERRAIN).isEmpty();
+    private static boolean pendingRestoration(EventState row) {
+        return !row.setPiece().attackTerrain().isEmpty()||!row.setPiece().terrain().isEmpty();
     }
 
-    private static void restoreSnapshot(ServerLevel level,CompoundTag row,String field) {
-        CompoundTag snapshot=row.getCompound(field);
-        for(String key:new ArrayList<>(snapshot.getAllKeys())) {
-            BlockPos pos=BlockPos.of(Long.parseLong(key));
+    private static void restoreSnapshot(ServerLevel level,EventState row,TerrainLayer layer) {
+        var snapshot=new java.util.LinkedHashMap<>(terrain(row,layer));
+        for(long key:new ArrayList<>(snapshot.keySet())) {
+            BlockPos pos=BlockPos.of(key);
             if(!level.hasChunkAt(pos)) continue;
-            CompoundTag saved=snapshot.getCompound(key);
-            BlockState original=saved.contains(ORIGINAL,Tag.TAG_COMPOUND)
-                    ?NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved.getCompound(ORIGINAL))
-                    :NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved);
+            EventTerrainChange saved=snapshot.get(key);
+            BlockState original=blockState(level,saved.hasOriginal()?saved.original():saved.legacyOriginal());
             BlockState current=level.getBlockState(pos);
-            boolean owned=saved.contains(TEMPORARY,Tag.TAG_COMPOUND)
-                    ?current.equals(NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),saved.getCompound(TEMPORARY)))
-                    :legacyTemporary(row,field,current);
+            boolean owned=saved.hasTemporary()?current.equals(blockState(level,saved.temporary())):legacyTemporary(row,layer,current);
             if(owned&&!current.equals(original)) level.setBlock(pos,original,3);
             snapshot.remove(key);
         }
-        row.put(field,snapshot);
+        terrain(row,layer,snapshot);
     }
 
-    private static boolean legacyTemporary(CompoundTag row,String field,BlockState current) {
-        if(field.equals(ATTACK_TERRAIN)) return current.is(block("deep_dark_regrowth:overloaded_sculk"));
+    private static boolean legacyTemporary(EventState row,TerrainLayer layer,BlockState current) {
+        if(layer==TerrainLayer.ATTACK) return current.is(block("deep_dark_regrowth:overloaded_sculk"));
         if(current.isAir()) return true;
-        int wave=row.getInt(ARENA_WAVE);
-        Scenario scenario=scenario(row.getString(wave==3?WAVE_THREE:WAVE_FIVE));
+        int wave=row.setPiece().arenaWave();
+        Scenario scenario=scenario(wave==3?row.wave3SetPiece():row.wave5SetPiece());
         if(scenario==null) return false;
         FloorPalette palette=floorPalette(scenario);
         return current.is(palette.outer())||current.is(palette.middle())||current.is(palette.center());
     }
 
-    private static void restoreTerrain(ServerLevel level,CompoundTag row) {
-        restoreSnapshot(level,row,TERRAIN);
-        if(row.getCompound(TERRAIN).isEmpty()) {
-            row.remove(TERRAIN);
-            row.remove(ARENA_WAVE);
-            row.remove(FLOOR_QUEUE);
-            row.remove(FLOOR_INDEX);
+    private static void restoreTerrain(ServerLevel level,EventState row) {
+        restoreSnapshot(level,row,TerrainLayer.ARENA);
+        if(row.setPiece().terrain().isEmpty()) {
+            row.editSetPiece().clearTerrain();
+            row.editSetPiece().clearArenaWave();
+            row.editSetPiece().clearFloorQueue();
+            row.editSetPiece().clearFloorIndex();
         }
     }
 
-    private static void restoreAttackBlocks(ServerLevel level,CompoundTag row) {
-        restoreSnapshot(level,row,ATTACK_TERRAIN);
-        if(row.getCompound(ATTACK_TERRAIN).isEmpty()) {
-            row.remove(ATTACK_TERRAIN);
-            row.remove(ATTACK_BLOCKS);
-            row.remove(ATTACK_BLOCKS_UNTIL);
+    private static void restoreAttackBlocks(ServerLevel level,EventState row) {
+        restoreSnapshot(level,row,TerrainLayer.ATTACK);
+        if(row.setPiece().attackTerrain().isEmpty()) {
+            row.editSetPiece().clearAttackTerrain();
+            row.editSetPiece().clearAttackBlocks();
+            row.editSetPiece().clearAttackBlocksUntil();
         }
     }
 
-    private static void setAttackTemporary(ServerLevel level,CompoundTag row,BlockPos pos,Block block) {
+    private static void setAttackTemporary(ServerLevel level,EventState row,BlockPos pos,Block block) {
         BlockState current=level.getBlockState(pos);
         if(current.hasBlockEntity()||!current.getFluidState().isEmpty()||current.is(Blocks.BEDROCK)||current.is(Blocks.BARRIER)) return;
         BlockState temporary=block.defaultBlockState();
-        CompoundTag terrain=row.getCompound(ATTACK_TERRAIN);
-        String key=Long.toString(pos.asLong());
-        boolean added=!terrain.contains(key);
-        if(saveChange(level,row,ATTACK_TERRAIN,pos,current,temporary)) {
+        var terrain=row.setPiece().attackTerrain();
+        boolean added=!terrain.containsKey(pos.asLong());
+        if(saveChange(level,row,TerrainLayer.ATTACK,pos,current,temporary)) {
             if(added) {
-                ListTag blocks=row.getList(ATTACK_BLOCKS,Tag.TAG_LONG);
-                blocks.add(LongTag.valueOf(pos.asLong()));
-                row.put(ATTACK_BLOCKS,blocks);
+                row.editSetPiece().attackBlocks(append(row.setPiece().attackBlocks(),pos.asLong()));
             }
             level.setBlock(pos,temporary,3);
         }
@@ -1272,9 +1245,9 @@ public final class BloodMoonSetPieces {
         return scenarios.stream().map(scenario->scenario.name().toLowerCase(Locale.ROOT)).toList();
     }
 
-    private static Scenario current(CompoundTag row) {
-        if(row.getInt("wave")==3) return scenario(row.getString(WAVE_THREE));
-        if(row.getInt("wave")==BloodMoonWaves.WAVES) return scenario(row.getString(WAVE_FIVE));
+    private static Scenario current(EventState row) {
+        if(row.wave()==3) return scenario(row.wave3SetPiece());
+        if(row.wave()==BloodMoonWaves.WAVES) return scenario(row.wave5SetPiece());
         return null;
     }
 

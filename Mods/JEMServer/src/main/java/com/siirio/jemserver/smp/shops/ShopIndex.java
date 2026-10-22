@@ -1,6 +1,7 @@
 package com.siirio.jemserver.smp.shops;
 
 import com.siirio.jemserver.smp.SmpQuery;
+import com.siirio.jemserver.smp.ShopState;
 import com.siirio.jemserver.smp.Navigation;
 import com.siirio.jemserver.smp.Profiles;
 import com.siirio.jemserver.smp.SmpConfig;
@@ -77,9 +78,9 @@ public final class ShopIndex {
                 key -> {
                     var index = new PositionIndex();
                     for (var row : SmpData.get(server).shops().snapshots()) {
-                        var dimension = ResourceLocation.tryParse(row.getString("dimension"));
-                        if (dimension != null && row.contains("position", Tag.TAG_LONG))
-                            index.add(new Position(dimension, BlockPos.of(row.getLong("position"))));
+                        var dimension = ResourceLocation.tryParse(row.dimension());
+                        if (dimension != null && row.hasPosition())
+                            index.add(new Position(dimension, BlockPos.of(row.position())));
                     }
                     return index;
                 });
@@ -149,21 +150,20 @@ public final class ShopIndex {
             remove(server, position);
             return;
         }
-        var row = shop.jemShopSnapshot();
-        if (!row.hasUUID("owner") || ItemStack.of(row.getCompound("offer")).isEmpty()) {
+        var captured = shop.jemShopSnapshot();
+        if (!captured.hasUUID("owner") || ItemStack.of(captured.getCompound("offer")).isEmpty()) {
             if (previous != null) remove(server, position);
             return;
         }
-        row.putUUID("id", position.id());
-        row.putString("dimension", position.dimension().toString());
-        row.putLong("position", position.block().asLong());
-        row.putInt("revision", previous == null ? 0 : previous.getInt("revision"));
-        row.putLong(
-                "created",
-                previous == null ? System.currentTimeMillis() : previous.getLong("created"));
+        captured.putUUID("id", position.id());
+        captured.putString("dimension", position.dimension().toString());
+        captured.putLong("position", position.block().asLong());
+        captured.putInt("revision", previous == null ? 0 : previous.revision());
+        captured.putLong("created", previous == null ? System.currentTimeMillis() : previous.created());
+        ShopState row = ShopState.read(captured);
         if (!row.equals(previous)) {
-            if (previous != null) row.putInt("revision", previous.getInt("revision") + 1);
-            data.shops().put( row);
+            if (previous != null) row.revision(previous.revision() + 1);
+            data.shops().put(row);
         }
         positions(server).add(position);
             });
@@ -182,10 +182,7 @@ public final class ShopIndex {
         positions(server).remove(position);
         if (removed == null) return false;
         for (var profile : data.profiles().currentRows()) {
-            var favorites = profile.getCompound("shopFavorites");
-            if (!favorites.contains(position.id().toString())) continue;
-            favorites.remove(position.id().toString());
-            profile.put("shopFavorites", favorites);
+            profile.favorite(position.id(), false);
             
         }
         SmpNetwork.shopRemoved(server, position.id());
@@ -193,14 +190,14 @@ public final class ShopIndex {
             });
     }
 
-    private static Position position(CompoundTag row) {
-        var dimension = ResourceLocation.tryParse(row.getString("dimension"));
-        return dimension == null || !row.contains("position", Tag.TAG_LONG)
+    private static Position position(ShopState row) {
+        var dimension = ResourceLocation.tryParse(row.dimension());
+        return dimension == null || !row.hasPosition()
                 ? null
-                : new Position(dimension, BlockPos.of(row.getLong("position")));
+                : new Position(dimension, BlockPos.of(row.position()));
     }
 
-    private static void validateLoaded(MinecraftServer server, CompoundTag row) {
+    private static void validateLoaded(MinecraftServer server, ShopState row) {
         var position = position(row);
         if (position == null) return;
         var level =
@@ -208,12 +205,9 @@ public final class ShopIndex {
         if (level != null && level.hasChunkAt(position.block())) refresh(server, position);
     }
 
-    public static CompoundTag view(ServerPlayer player, SmpQuery query) {
-        if (!com.siirio.jemserver.smp.DomainFeatures.economy(player.server)) {
-            CompoundTag result = new CompoundTag(); result.putString("tab", "shops");
-            result.put("rows", new ListTag()); result.putInt("total", 0); result.putString("message", "unavailable");
-            result.putString("moneyAvailability", com.siirio.jemserver.smp.DomainFeatures.economyAvailability(player.server)); return result;
-        }
+    /** Refresh native loaded shops explicitly before constructing a subscribed view. */
+    public static void refreshLoaded(ServerPlayer player) {
+        if (!com.siirio.jemserver.smp.DomainFeatures.economy(player.server)) return;
         var loaded =
                 SmpData.get(player.server).shops().snapshots().stream()
                         .map(ShopIndex::position)
@@ -229,6 +223,14 @@ public final class ShopIndex {
                                 })
                         .toList();
         loaded.forEach(position -> refresh(player.server, position));
+    }
+
+    public static CompoundTag view(ServerPlayer player, SmpQuery query) {
+        if (!com.siirio.jemserver.smp.DomainFeatures.economy(player.server)) {
+            CompoundTag result = new CompoundTag(); result.putString("tab", "shops");
+            result.put("rows", new ListTag()); result.putInt("total", 0); result.putString("message", "unavailable");
+            result.putString("moneyAvailability", com.siirio.jemserver.smp.DomainFeatures.economyAvailability(player.server)); return result;
+        }
         var result = new CompoundTag();
         result.putString("tab", "shops");
         result.putString("filter", query.filter());
@@ -237,7 +239,7 @@ public final class ShopIndex {
         result.putInt("pageSize", SmpConfig.PAGE_SIZE.get());
         String[] options = query.filter().split("\\|", 2);
         String section = options[0], sort = options.length > 1 ? options[1] : options[0];
-        var favorites = Profiles.snapshot(player.server, player.getUUID()).getCompound("shopFavorites");
+        var favorites = Profiles.snapshot(player.server, player.getUUID()).favorites();
         String search = query.search().toLowerCase(Locale.ROOT);
         var matches =
                 SmpData.get(player.server).shops().snapshots().stream()
@@ -245,49 +247,46 @@ public final class ShopIndex {
                                 row ->
                                         switch (section) {
                                             case "favorites" ->
-                                                    favorites.getBoolean(
-                                                            row.getUUID("id").toString());
+                                                    favorites.contains(row.id());
                                             case "mine" ->
-                                                    row.hasUUID("owner")
-                                                            && row.getUUID("owner")
+                                                    row.owner() != null
+                                                            && row.owner()
                                                                     .equals(player.getUUID());
                                             default -> true;
                                         })
                         .filter(row -> matches(row, search))
                         .collect(java.util.stream.Collectors.toCollection(ArrayList::new));
-        Comparator<CompoundTag> order = Comparator.comparing(row -> row.getUUID("id").toString());
+        Comparator<ShopState> order = Comparator.comparing(row -> row.id().toString());
         if (sort.equals("near"))
             order =
-                    Comparator.comparingDouble((CompoundTag row) -> distance(player, row))
+                    Comparator.comparingDouble((ShopState row) -> distance(player, row))
                             .thenComparing(order);
         if (sort.equals("price") && !matches.isEmpty()) {
-            var payment = ItemStack.of(matches.get(0).getCompound("payment"));
-            var offer = ItemStack.of(matches.get(0).getCompound("offer"));
+            var payment = ItemStack.of(matches.get(0).payment().tag());
+            var offer = ItemStack.of(matches.get(0).offer().tag());
             boolean comparable =
                     !payment.isEmpty()
                             && !offer.isEmpty()
                             && matches.stream()
                                     .allMatch(
                                             row ->
-                                                    !row.getBoolean("selectable")
-                                                            && row.getInt("quantity") > 0
+                                                    !row.selectable()
+                                                            && row.quantity() > 0
                                                             && ItemStack.isSameItemSameTags(
                                                                     payment,
                                                                     ItemStack.of(
-                                                                            row.getCompound(
-                                                                                    "payment")))
+                                                                            row.payment().tag()))
                                                             && ItemStack.isSameItemSameTags(
                                                                     offer,
                                                                     ItemStack.of(
-                                                                            row.getCompound(
-                                                                                    "offer"))));
+                                                                            row.offer().tag())));
             result.putBoolean("priceComparable", comparable);
             if (comparable)
                 order =
                         Comparator.comparingDouble(
-                                        (CompoundTag row) ->
-                                                (double) row.getInt("price")
-                                                        / row.getInt("quantity"))
+                                        (ShopState row) ->
+                                                (double) row.price()
+                                                        / row.quantity())
                                 .thenComparing(order);
             else result.putString("message", "incomparable_prices");
         }
@@ -301,14 +300,10 @@ public final class ShopIndex {
         result.put("rows", rows);
         if (query.selected() != null) {
             var selected = SmpData.get(player.server).shops().snapshot( query.selected());
-            if (selected != null) {
-                validateLoaded(player.server, selected);
-                selected = SmpData.get(player.server).shops().snapshot( query.selected());
-            }
             if (selected == null)
                 selected =
                         matches.stream()
-                                .filter(row -> row.getUUID("id").equals(query.selected()))
+                                .filter(row -> row.id().equals(query.selected()))
                                 .findFirst()
                                 .orElse(null);
             if (selected != null) {
@@ -317,14 +312,14 @@ public final class ShopIndex {
                 actions.add(StringTag.valueOf("favorite"));
                 actions.add(StringTag.valueOf("navigate"));
                 detail.put("actions", actions);
-                detail.putBoolean("favorite", favorites.getBoolean(query.selected().toString()));
+                detail.putBoolean("favorite", favorites.contains(query.selected()));
                 result.put("detail", detail);
             }
         }
         return result;
     }
 
-    private static boolean matches(CompoundTag row, String search) {
+    private static boolean matches(ShopState row, String search) {
         String seller = "", wanted = search.trim();
         if (search.contains("\u001f")) {
             String[] parts = search.split("\u001f", 2);
@@ -334,17 +329,18 @@ public final class ShopIndex {
             seller = search.substring("player:".length()).trim();
             wanted = "";
         } else if (search.startsWith("item:")) wanted = search.substring("item:".length()).trim();
-        if (!row.getString("name").toLowerCase(Locale.ROOT).contains(seller)) return false;
-        var item = ItemStack.of(row.getCompound("offer"));
-        String offered = row.getString("title") + " " + item.getHoverName().getString();
-        for (Tag value : row.getList("choices", Tag.TAG_COMPOUND)) {
-            var choice = ItemStack.of((CompoundTag) value);
+        if (!row.name().toLowerCase(Locale.ROOT).contains(seller)) return false;
+        var item = ItemStack.of(row.offer().tag());
+        String offered = row.title() + " " + item.getHoverName().getString();
+        for (ShopState.Stack value : row.choices()) {
+            var choice = ItemStack.of(value.tag());
             offered += " " + choice.getHoverName().getString();
         }
         return offered.toLowerCase(Locale.ROOT).contains(wanted);
     }
 
-    private static CompoundTag publicView(ServerPlayer player, CompoundTag row) {
+    private static CompoundTag publicView(ServerPlayer player, ShopState row) {
+        CompoundTag encoded = row.write();
         var result = new CompoundTag();
         for (String key :
                 List.of(
@@ -359,7 +355,7 @@ public final class ShopIndex {
                         "quantity",
                         "price",
                         "selectable")) {
-            if (row.contains(key)) result.put(key, row.get(key).copy());
+            if (encoded.contains(key)) result.put(key, encoded.get(key).copy());
         }
         for (String key : List.of("title", "name")) {
             String text = result.getString(key);
@@ -370,14 +366,14 @@ public final class ShopIndex {
         }
         int remaining = SmpConfig.SHOP_STACK_NBT_BYTES.get();
         for (String key : List.of("offer", "payment")) {
-            var stack = boundedStack(row.getCompound(key), remaining);
+            var stack = boundedStack(encoded.getCompound(key), remaining);
             remaining -= stack.sizeInBytes();
             result.put(key, stack);
-            if (!stack.equals(row.getCompound(key)))
+            if (!stack.equals(encoded.getCompound(key)))
                 result.putBoolean("itemDetailsTruncated", true);
         }
         var choices = new ListTag();
-        for (Tag value : row.getList("choices", Tag.TAG_COMPOUND)) {
+        for (Tag value : encoded.getList("choices", Tag.TAG_COMPOUND)) {
             var stack = boundedStack((CompoundTag) value, remaining);
             remaining -= stack.sizeInBytes();
             choices.add(stack);
@@ -385,7 +381,7 @@ public final class ShopIndex {
         }
         if (!choices.isEmpty()) result.put("choices", choices);
         var offers = new ListTag();
-        for (Tag value : row.getList("offers", Tag.TAG_COMPOUND)) {
+        for (Tag value : encoded.getList("offers", Tag.TAG_COMPOUND)) {
             var source = (CompoundTag) value;
             var offer = new CompoundTag();
             var payment = boundedStack(source.getCompound("payment"), remaining);
@@ -401,14 +397,14 @@ public final class ShopIndex {
             }
         }
         if (!offers.isEmpty()) result.put("offers", offers);
-        if (row.hasUUID("owner")) result.putBoolean("ownerOnline", player.server.getPlayerList().getPlayer(row.getUUID("owner")) != null);
-        if (!row.contains("dimension")) return result;
+        if (encoded.hasUUID("owner")) result.putBoolean("ownerOnline", player.server.getPlayerList().getPlayer(encoded.getUUID("owner")) != null);
+        if (!encoded.contains("dimension")) return result;
         var level =
                 player.server.getLevel(
                         ResourceKey.create(
                                 Registries.DIMENSION,
-                                new ResourceLocation(row.getString("dimension"))));
-        var block = BlockPos.of(row.getLong("position"));
+                                new ResourceLocation(encoded.getString("dimension"))));
+        var block = BlockPos.of(encoded.getLong("position"));
         boolean loaded = level != null && level.hasChunkAt(block);
         result.putBoolean("remoteAvailable", loaded && level.getBlockEntity(block) instanceof ShopSnapshot);
         double distance = distance(player, row);
@@ -424,65 +420,76 @@ public final class ShopIndex {
         return compact;
     }
 
-    private static double distance(ServerPlayer player, CompoundTag row) {
-        return player.level().dimension().location().toString().equals(row.getString("dimension"))
-                ? player.blockPosition().distSqr(BlockPos.of(row.getLong("position")))
+    private static double distance(ServerPlayer player, ShopState row) {
+        return player.level().dimension().location().toString().equals(row.dimension())
+                ? player.blockPosition().distSqr(BlockPos.of(row.position()))
                 : Double.POSITIVE_INFINITY;
     }
 
-    public static void action(ServerPlayer player, UUID id, int expectedRevision, String action, UUID requestId) {
+    public static void favorite(ServerPlayer player, UUID id) {
         var data = SmpData.get(player.server);
-        data.edit(() -> actionOwned(player, id, expectedRevision, action, requestId));
+        data.edit(() -> favoriteOwned(player, id));
     }
 
-    private static void actionOwned(ServerPlayer player, UUID id, int expectedRevision, String action, UUID requestId) {
+    private static void favoriteOwned(ServerPlayer player, UUID id) {
         var row = id == null ? null : SmpData.get(player.server).shops().snapshot( id);
         if (id == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
-        if (action.equals("favorite")) {
-            var profile = Profiles.get(player.server, player.getUUID());
-            var favorites = profile.getCompound("shopFavorites");
-            if (favorites.getBoolean(id.toString())) favorites.remove(id.toString());
-            else {
-                if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
-                if (favorites.size() >= SmpConfig.SHOP_FAVORITES_LIMIT.get())
-                    throw new com.siirio.jemserver.smp.SmpActionFailure("favorite_limit");
-                favorites.putBoolean(id.toString(), true);
-            }
-            profile.put("shopFavorites", favorites);
-            
-            return;
-        }
-        if (row != null && action.equals("buy")) {
-            validateLoaded(player.server, row);
-            row = SmpData.get(player.server).shops().snapshot( id);
+        var profile = Profiles.get(player.server, player.getUUID());
+        var favorites = profile.favorites();
+        if (favorites.contains(id)) profile.favorite(id, false);
+        else {
             if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
-            if (!net.minecraftforge.fml.ModList.get().isLoaded("spudaciousshops")) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
-            buyWithCoins(player, row, expectedRevision, requestId);
-            return;
+            if (favorites.size() >= SmpConfig.SHOP_FAVORITES_LIMIT.get())
+                throw new com.siirio.jemserver.smp.SmpActionFailure("favorite_limit");
+            profile.favorite(id, true);
         }
-        if (row == null || !action.equals("navigate"))
+    }
+
+    public static void buy(ServerPlayer player, UUID id, int expectedRevision, UUID requestId) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> buyOwned(player, id, expectedRevision, requestId));
+    }
+
+    private static void buyOwned(ServerPlayer player, UUID id, int expectedRevision, UUID requestId) {
+        var row = id == null ? null : SmpData.get(player.server).shops().snapshot(id);
+        if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
+        validateLoaded(player.server, row);
+        row = SmpData.get(player.server).shops().snapshot(id);
+        if (row == null) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
+        if (!net.minecraftforge.fml.ModList.get().isLoaded("spudaciousshops")) throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
+        buyWithCoins(player, row, expectedRevision, requestId);
+    }
+
+    public static void navigate(ServerPlayer player, UUID id) {
+        var data = SmpData.get(player.server);
+        data.edit(() -> navigateOwned(player, id));
+    }
+
+    private static void navigateOwned(ServerPlayer player, UUID id) {
+        var row = id == null ? null : SmpData.get(player.server).shops().snapshot(id);
+        if (row == null)
             throw new com.siirio.jemserver.smp.SmpActionFailure("unavailable");
         Navigation.send(
                 player,
                 "shops",
                 id,
-                row.getString("title"),
-                new ResourceLocation(row.getString("dimension")),
-                BlockPos.of(row.getLong("position")),
+                row.title(),
+                new ResourceLocation(row.dimension()),
+                BlockPos.of(row.position()),
                 System.currentTimeMillis()
                         + java.util.concurrent.TimeUnit.MINUTES.toMillis(
                                 SmpConfig.WAYPOINT_MINUTES.get()));
     }
 
-    private static void buyWithCoins(ServerPlayer player, CompoundTag row, int expectedRevision, UUID requestId) {
+    private static void buyWithCoins(ServerPlayer player, ShopState row, int expectedRevision, UUID requestId) {
         SmpRecords.require(com.siirio.jemserver.smp.DomainFeatures.economy(player.server), "unavailable");
-        SmpRecords.require(expectedRevision == row.getInt("revision"), "stale_revision");
-        SmpRecords.require(!row.getBoolean("selectable"), "select_offer_at_shop");
-        SmpRecords.require(row.hasUUID("owner") && !row.getUUID("owner").equals(player.getUUID()), "invalid_request");
-        SmpRecords.require(row.getString("state").equals("ACTIVE"), "unavailable");
-        int price = row.getInt("price");
-        int quantity = row.getInt("quantity");
-        ItemStack expected = ItemStack.of(row.getCompound("offer"));
+        SmpRecords.require(expectedRevision == row.revision(), "stale_revision");
+        SmpRecords.require(!row.selectable(), "select_offer_at_shop");
+        SmpRecords.require(row.owner() != null && !row.owner().equals(player.getUUID()), "invalid_request");
+        SmpRecords.require(row.state().equals("ACTIVE"), "unavailable");
+        int price = row.price();
+        int quantity = row.quantity();
+        ItemStack expected = ItemStack.of(row.offer().tag());
         SmpRecords.require(price > 0 && price <= 1_000_000_000 && quantity > 0 && quantity <= 64 && !expected.isEmpty(), "invalid_request");
         expected.setCount(quantity);
         SmpRecords.require(canAccept(player, expected), "inventory_full");
@@ -510,7 +517,7 @@ public final class ShopIndex {
             com.siirio.jemserver.compat.economy.CoinPayments.refund(player, price, requestId);
             throw new com.siirio.jemserver.smp.SmpActionFailure("inventory_full");
         }
-        var settled = com.siirio.jemserver.compat.economy.CoinPayments.settle(player, row.getUUID("owner"), price, requestId);
+        var settled = com.siirio.jemserver.compat.economy.CoinPayments.settle(player, row.owner(), price, requestId);
         if (settled != com.siirio.jemserver.compat.economy.CoinPayments.Status.COMMITTED
                 && settled != com.siirio.jemserver.compat.economy.CoinPayments.Status.REPLAYED) {
             throw new com.siirio.jemserver.smp.SmpActionFailure("settlement_pending");

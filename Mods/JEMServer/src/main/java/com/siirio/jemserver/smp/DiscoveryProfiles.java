@@ -1,6 +1,5 @@
 package com.siirio.jemserver.smp;
 
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.TickEvent;
@@ -32,12 +31,10 @@ public final class DiscoveryProfiles {
         var biome = player.serverLevel().getBiome(player.blockPosition()).unwrapKey();
         if (biome.isEmpty()) return;
         var profile = Profiles.get(player.server, player.getUUID());
-        var visited = profile.getCompound("discoveredBiomes");
+        var visited = profile.discoveredBiomes();
         String id = biome.get().location().toString();
-        if (visited.getBoolean(id)) return;
-        visited.putBoolean(id, true);
-        profile.put("discoveredBiomes", visited);
-        profile.putLong("biomesExplored", visited.size());
+        if (!profile.discoverBiome(id)) return;
+        profile.biomesExplored(profile.discoveredBiomes().size());
         
     }
 
@@ -58,11 +55,9 @@ public final class DiscoveryProfiles {
         if (type == null) return;
         receipt.putBoolean(TAME_RECEIPT, true);
         var profile = Profiles.get(player.server, player.getUUID());
-        CompoundTag species = profile.getCompound("tamedSpecies");
-        species.putBoolean(type.toString(), true);
-        profile.put("tamedSpecies", species);
-        profile.putLong("tameSpecies", species.size());
-        profile.putLong("animalsTamed", profile.getLong("animalsTamed") + 1);
+        profile.tameSpecies(type.toString());
+        profile.tameSpecies(profile.tamedSpecies().size());
+        profile.animalsTamed(profile.animalsTamed() + 1);
         
     }
 

@@ -8,7 +8,10 @@ import java.util.*;
 
 public final class SmpData extends SavedData {
     private static final String NAME = "jem_smp_v2";
-    private final Map<String, LinkedHashMap<UUID, CompoundTag>> tables = new HashMap<>();
+    private final CompoundTag unknownTables = new CompoundTag();
+    private final Set<String> presentTables = new HashSet<>();
+    private CompoundTag unreadableData;
+    private RuntimeException loadFailure;
     private long revision;
     private CompoundTag futureData;
     private MinecraftServer server;
@@ -19,6 +22,7 @@ public final class SmpData extends SavedData {
                         .getDataStorage()
                         .computeIfAbsent(SmpData::load, SmpData::new, NAME);
         if (data.futureData != null) throw new IllegalStateException("future_data_version");
+        if (data.loadFailure != null) throw new IllegalStateException("SMP saved data could not be decoded", data.loadFailure);
         data.server = server;
         return data;
     }
@@ -43,7 +47,7 @@ public final class SmpData extends SavedData {
         }
     }
 
-    private Map<String, LinkedHashMap<UUID, CompoundTag>> editing;
+    private boolean editing;
     private int editDepth;
     private final List<Runnable> afterEdit = new ArrayList<>();
     private final Parties parties = new Parties(this);
@@ -68,26 +72,30 @@ public final class SmpData extends SavedData {
     public <T> T edit(java.util.function.Supplier<T> operation) {
         if (server == null || !server.isSameThread()) throw new IllegalStateException("SMP commands require the server thread");
         boolean outer = editDepth++ == 0;
-        if (outer) editing = new HashMap<>();
-        try { return operation.get(); }
+        boolean initialized = false;
+        try {
+            if (outer) { editing = true; parties.beginEdit(); profiles.beginEdit(); events.beginEdit(); contracts.beginEdit(); shops.beginEdit(); settings.beginEdit(); bossQuarantine.beginEdit(); }
+            initialized = true;
+            return operation.get();
+        }
         finally {
             editDepth--;
             if (outer) {
                 var notifications = List.copyOf(afterEdit);
                 afterEdit.clear();
-                try { checkpoint(); }
-                finally { editing = null; }
+                try { if (initialized) checkpoint(); }
+                finally { parties.endEdit(); profiles.endEdit(); events.endEdit(); contracts.endEdit(); shops.endEdit(); settings.endEdit(); bossQuarantine.endEdit(); editing = false; }
                 notifications.forEach(Runnable::run);
             }
         }
     }
 
     public void afterEdit(Runnable notification) {
-        if (editing == null) notification.run();
+        if (!editing) notification.run();
         else afterEdit.add(notification);
     }
 
-    public CompoundTag view(SmpTable table, UUID id) {
+    public SmpRecord view(SmpTable table, UUID id) {
         return switch (table) {
             case PARTIES -> parties.snapshot(id);
             case EVENTS -> events.snapshot(id);
@@ -96,113 +104,19 @@ public final class SmpData extends SavedData {
         };
     }
 
-    public List<CompoundTag> views(SmpTable table) {
-        return switch (table) {
-            case PARTIES -> parties.snapshots();
-            case EVENTS -> events.snapshots();
-            case PROFILES -> profiles.snapshots();
-            default -> List.of();
-        };
-    }
-
-    CompoundTag snapshot(String table, UUID id) {
-        var rows = editing == null ? tables.get(table) : workingRows(table);
-        CompoundTag row = rows == null ? null : rows.get(id);
-        return row == null ? null : row.copy();
-    }
-
-    List<CompoundTag> snapshots(String table) {
-        var rows = editing == null ? tables.get(table) : workingRows(table);
-        return rows == null ? List.of() : rows.values().stream().map(CompoundTag::copy).toList();
-    }
-
-    CompoundTag current(String table, UUID id) {
-        requireEdit();
-        var rows = workingRows(table);
-        return rows == null ? null : rows.get(id);
-    }
-
-    Collection<CompoundTag> currentRows(String table) {
-        requireEdit();
-        var rows = workingRows(table);
-        return rows == null ? List.of() : List.copyOf(rows.values());
-    }
-
-    CompoundTag create(String table, UUID owner) {
-        requireEdit();
-        var row = new CompoundTag();
-        row.putUUID("id", UUID.randomUUID());
-        row.putUUID("owner", owner);
-        row.putInt("revision", 0);
-        row.putLong("created", System.currentTimeMillis());
-        row.putString("state", "DRAFT");
-        put(table, row);
-        return row;
-    }
-
-    void put(String table, CompoundTag row) {
-        requireEdit();
-        workingRows(table).put(row.getUUID("id"), row);
-    }
-
-    CompoundTag remove(String table, UUID id) {
-        requireEdit();
-        var rows = workingRows(table);
-        return rows == null ? null : rows.remove(id);
-    }
-
-    void prune(String table, java.util.function.Predicate<CompoundTag> retained) {
-        requireEdit();
-        var rows = workingRows(table);
-        if (rows == null) return;
-        int excess = rows.size() - SmpConfig.HISTORY.get();
-        var iterator = rows.values().iterator();
-        while (iterator.hasNext() && excess > 0) {
-            var row = iterator.next();
-            if (closed(row) && !retained.test(row)) { iterator.remove(); excess--; }
-        }
-    }
-
-    private LinkedHashMap<UUID, CompoundTag> workingRows(String table) {
-        requireEdit();
-        return editing.computeIfAbsent(table, name -> {
-            var copy = new LinkedHashMap<UUID, CompoundTag>();
-            var rows = tables.get(name);
-            if (rows != null) rows.forEach((id, row) -> copy.put(id, row.copy()));
-            return copy;
-        });
-    }
-
-    private void requireEdit() {
-        if (editing == null) throw new IllegalStateException("SMP mutation requires an owning command scope");
-    }
-
     private void checkpoint() {
-        if (editing == null) return;
-        for (var table : editing.entrySet()) {
-            if (table.getValue().isEmpty() && !tables.containsKey(table.getKey())) continue;
-            var saved = tables.computeIfAbsent(table.getKey(), ignored -> new LinkedHashMap<>());
-            for (var entry : table.getValue().entrySet()) {
-                var previous = saved.get(entry.getKey());
-                var row = entry.getValue();
-                if (row.equals(previous)) continue;
-                row.putInt("revision", previous == null ? Math.max(1, row.getInt("revision") + 1) : previous.getInt("revision") + 1);
-                saved.put(entry.getKey(), row.copy());
-                revision++;
-                setDirty();
-            }
-            for (UUID id : List.copyOf(saved.keySet())) {
-                if (!table.getValue().containsKey(id)) { saved.remove(id); revision++; setDirty(); }
-            }
-        }
+        if (!editing) return;
+        changed(parties.checkpoint()); changed(profiles.checkpoint()); changed(events.checkpoint());
+        changed(contracts.checkpoint()); changed(shops.checkpoint()); changed(settings.checkpoint()); changed(bossQuarantine.checkpoint());
     }
+
+    private void changed(int count) { if (count > 0) { revision += count; setDirty(); } }
+
+    public boolean inCommand() { return editing && editDepth > 0; }
 
     public long revision() { return revision; }
 
-    public static boolean closed(CompoundTag row) {
-        return Set.of("CLOSED", "CANCELLED", "COMPLETED", "FAILED", "SKIPPED")
-                .contains(row.getString("state"));
-    }
+    public static boolean closed(SmpRecord row) { return row.closed(); }
 
     private static SmpData load(CompoundTag root) {
         var data = new SmpData();
@@ -210,32 +124,38 @@ public final class SmpData extends SavedData {
             data.futureData = root.copy();
             return data;
         }
+        try {
         var tables = root.getCompound("tables");
-        for (String name : tables.getAllKeys())
-            for (Tag tag : tables.getList(name, Tag.TAG_COMPOUND)) {
-                var row = (CompoundTag) tag;
-                if (row.hasUUID("id"))
-                    data.tables
-                            .computeIfAbsent(name, key -> new LinkedHashMap<>())
-                            .put(row.getUUID("id"), row);
-            }
+        data.presentTables.addAll(tables.getAllKeys());
+        data.parties.read(tables.getList("parties", Tag.TAG_COMPOUND));
+        data.profiles.read(tables.getList("profiles", Tag.TAG_COMPOUND));
+        data.events.read(tables.getList("events", Tag.TAG_COMPOUND));
+        data.contracts.read(tables.getList("contracts", Tag.TAG_COMPOUND));
+        data.shops.read(tables.getList("shops", Tag.TAG_COMPOUND));
+        data.settings.read(tables.getList("settings", Tag.TAG_COMPOUND));
+        data.bossQuarantine.read(tables.getList("boss_quarantine", Tag.TAG_COMPOUND));
+        for (String key : tables.getAllKeys()) if (!Set.of("parties", "profiles", "events", "contracts", "shops", "settings", "boss_quarantine").contains(key)) data.unknownTables.put(key, tables.get(key).copy());
         data.revision = root.getLong("revision");
+        } catch (RuntimeException failure) { data.unreadableData = root.copy(); data.loadFailure = failure; }
         return data;
+    }
+
+    private void writeTable(CompoundTag out, String name, ListTag rows) {
+        if (presentTables.contains(name) || !rows.isEmpty()) { out.put(name, rows); presentTables.add(name); }
     }
 
     @Override
     public CompoundTag save(CompoundTag root) {
         if (futureData != null) return futureData.copy();
+        if (unreadableData != null) return unreadableData.copy();
         checkpoint();
         root.putInt("dataVersion", 1);
         root.putLong("revision", revision);
-        var out = new CompoundTag();
-        tables.forEach(
-                (name, rows) -> {
-                    var list = new ListTag();
-                    rows.values().forEach(row -> list.add(row.copy()));
-                    out.put(name, list);
-                });
+        var out = unknownTables.copy();
+        writeTable(out, "parties", parties.write()); writeTable(out, "profiles", profiles.write());
+        writeTable(out, "events", events.write()); writeTable(out, "contracts", contracts.write());
+        writeTable(out, "shops", shops.write()); writeTable(out, "settings", settings.write());
+        writeTable(out, "boss_quarantine", bossQuarantine.write());
         root.put("tables", out);
         return root;
     }

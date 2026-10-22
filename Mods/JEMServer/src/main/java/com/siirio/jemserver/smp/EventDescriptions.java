@@ -8,10 +8,16 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 
 public final class EventDescriptions {
-    public static void add(CompoundTag row, CompoundTag view) {
-        String activity = row.getString("activity");
-        if (!row.contains("planned") && !row.getString("description").isBlank()) return;
-        if (!row.contains("planned") && !activity.equals("BOSS")) {
+    public static void add(PartyState party, CompoundTag view) {
+        add(party.activity(), false, party.description(), java.util.Map.of(), view);
+    }
+    public static void add(EventState event, CompoundTag view) {
+        add(event.activity(), event.hasPlanned(), event.description(), event.cookingRequirements(), view);
+    }
+    private static void add(String activity, boolean planned, String description,
+            java.util.Map<String, Integer> requirements, CompoundTag view) {
+        if (!planned && !description.isBlank()) return;
+        if (!planned && !activity.equals("BOSS")) {
             view.putString("descriptionKey", "jem.smp.description.party");
             view.put("descriptionArgs", new ListTag());
             return;
@@ -23,12 +29,11 @@ public final class EventDescriptions {
                     range(FishingConfig.END_MIN.get(), FishingConfig.END_MAX.get(), false)};
             case "BLOOD_MOON" -> new Object[]{BloodMoonWaves.WAVES};
             case "COOKING_SHOW" -> {
-                var requirements = row.getCompound("cookingRequirements");
                 if (requirements.isEmpty()) {
                     key += "_planned";
                     yield new Object[]{SmpConfig.COOKING_MINUTES.get()};
                 }
-                yield new Object[]{requirements.getAllKeys().stream().mapToInt(requirements::getInt).sum(), requirements.size()};
+                yield new Object[]{requirements.values().stream().mapToInt(Integer::intValue).sum(), requirements.size()};
             }
             default -> new Object[]{};
         };

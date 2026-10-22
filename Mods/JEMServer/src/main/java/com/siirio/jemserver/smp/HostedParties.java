@@ -12,23 +12,23 @@ import net.minecraft.world.phys.AABB;
 import java.util.*;
 
 public final class HostedParties {
-    public static void start(ServerPlayer host, CompoundTag row) {
+    public static void start(ServerPlayer host, PartyState row) {
         var data = SmpData.get(host.server);
         data.edit(() -> startOwned(host, data.parties().bind(row)));
     }
 
-    private static void startOwned(ServerPlayer host, CompoundTag row) {
+    private static void startOwned(ServerPlayer host, PartyState row) {
         SmpRecords.require(SmpEnvironment.active(host), "unavailable");
         SmpRecords.owner(host, row);
-        if (row.getString("state").equals("ACTIVE")) return;
+        if (row.state().equals("ACTIVE")) return;
         String reason = startReason(host, row);
         SmpRecords.require(reason.isEmpty(), reason);
-        if (row.hasUUID("eventId")) {
-            var event = SmpData.get(host.server).events().current(row.getUUID("eventId"));
-            row.putString("dimension", event.getString("dimension"));
-            row.putLong("position", event.getLong("position"));
+        if (row.hasEventId()) {
+            var event = SmpData.get(host.server).events().current(row.eventId());
+            row.dimension(event.dimension());
+            row.position(event.position());
         }
-        SmpRecords.require(row.getString("activity").equals("BOSS"),"unavailable");
+        SmpRecords.require(row.activity().equals("BOSS"),"unavailable");
         var ids =
                 SmpRecords.memberIds(row).stream()
                         .filter(id -> Parties.accepted(row, id))
@@ -42,25 +42,25 @@ public final class HostedParties {
         String arenaReason = com.siirio.jemserver.smp.events.StructureStaging.startReason(host, row, ids);
         SmpRecords.require(arenaReason.isEmpty(), arenaReason);
         com.siirio.jemserver.smp.events.PartyTeleportFlow.begin(host,row,ids);
-        if(row.getBoolean("bloodMoon")) {
+        if(row.bloodMoon()) {
             EventParties.start(host,row,ids);
             return;
         }
-        if (row.getBoolean("raid")) {
+        if (row.raid()) {
             com.siirio.jemserver.smp.events.RaidEvent.start(host, row, ids);
-            row.putString("state", "ACTIVE");
-            Profiles.count(host.server, host.getUUID(), "bossesHosted");
+            row.state("ACTIVE");
+            Profiles.count(host.server, host.getUUID(), com.siirio.jemserver.smp.ProfileCounter.BOSSES_HOSTED);
             
             return;
         }
         if(com.siirio.jemserver.smp.events.StructureStaging.start(host,row,ids)) return;
         var level = host.serverLevel();
         LivingEntity boss = null;
-        if (row.hasUUID("bossEntity")
-                && level.getEntity(row.getUUID("bossEntity")) instanceof LivingEntity found)
+        if (row.hasBossEntity()
+                && level.getEntity(row.bossEntity()) instanceof LivingEntity found)
             boss = found;
         if (boss == null) {
-            var center = BlockPos.of(row.getLong("position"));
+            var center = BlockPos.of(row.position());
             var candidates =
                     level.getEntitiesOfClass(
                             LivingEntity.class,
@@ -72,12 +72,12 @@ public final class HostedParties {
         if (net.minecraftforge.fml.ModList.get().isLoaded("jem_twelve_eyes"))
             SmpRecords.require(com.siirio.jemtwelveeyes.api.CampaignApi.unlocked(host,
                     net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType())), "unavailable");
-        boss.getPersistentData().putBoolean("jem_solo", row.getBoolean("solo"));
+        boss.getPersistentData().putBoolean("jem_solo", row.solo());
         var bounds=com.siirio.jemserver.smp.events.StructureStaging.prepareCombat(level,row,boss);
         SmpRecords.require(HostedEncounterApi.start(boss, ids, false, bounds), "unavailable");
-        row.putUUID("bossEntity", boss.getUUID());
-        row.putString("state", "ACTIVE");
-        Profiles.count(host.server, host.getUUID(), "bossesHosted");
+        row.bossEntity(boss.getUUID());
+        row.state("ACTIVE");
+        Profiles.count(host.server, host.getUUID(), com.siirio.jemserver.smp.ProfileCounter.BOSSES_HOSTED);
         
     }
 
@@ -91,32 +91,32 @@ public final class HostedParties {
         if (server == null) return;
         var data = SmpData.get(server);
         for (var row : data.parties().currentRows())
-            if (row.hasUUID("bossEntity")
-                    && row.getUUID("bossEntity").equals(event.boss().getUUID())
+            if (row.hasBossEntity()
+                    && row.bossEntity().equals(event.boss().getUUID())
                     && !SmpData.closed(row)) {
                 if(!event.success()) notifyDefeat(server,row,event.raid());
-                row.putString("state", event.success() ? "COMPLETED" : "FAILED");
+                row.state(event.success() ? "COMPLETED" : "FAILED");
                 
                 com.siirio.jemserver.smp.events.StructureStaging.finish(server, row);
-                if(!event.success()&&!event.raid()&&row.hasUUID("structureId")) server.execute(()->{
+                if(!event.success()&&!event.raid()&&row.hasStructureId()) server.execute(()->{
                     if(event.boss().level() instanceof net.minecraft.server.level.ServerLevel level)
                         com.siirio.jemserver.smp.events.StructureStaging.stageBoss(level,row,event.boss());
                 });
             }
         if (event.success())
             for (UUID id : event.eligibleParticipants()) {
-                Profiles.count(server, id, event.raid() ? "raidsCompleted" : "bossAssists");
+                Profiles.count(server, id, event.raid() ? com.siirio.jemserver.smp.ProfileCounter.RAIDS_COMPLETED : com.siirio.jemserver.smp.ProfileCounter.BOSS_ASSISTS);
                 Profiles.countEvent(server, id, event.raid() ? "BOSS_RAID" : "BOSS");
             }
         for (var row : data.events().currentRows())
-            if (row.hasUUID("bossEntity")
-                    && row.getUUID("bossEntity").equals(event.boss().getUUID())
-                    && row.getString("state").equals("ACTIVE"))
+            if (row.hasBossEntity()
+                    && row.bossEntity().equals(event.boss().getUUID())
+                    && row.state().equals("ACTIVE"))
                 if(event.success()) com.siirio.jemserver.smp.events.EventScheduler.finish(server,row,"COMPLETED");
                 else com.siirio.jemserver.smp.events.EventScheduler.failAttempt(server,row);
     }
 
-    private static void notifyDefeat(net.minecraft.server.MinecraftServer server,CompoundTag party,boolean raid) {
+    private static void notifyDefeat(net.minecraft.server.MinecraftServer server,PartyState party,boolean raid) {
         for(UUID id:SmpRecords.memberIds(party)) {
             if(!Parties.accepted(party,id)) continue;
             var player=server.getPlayerList().getPlayer(id);
@@ -139,49 +139,49 @@ public final class HostedParties {
         var data = SmpData.get(server);
         long now = System.currentTimeMillis();
         for (var row : data.parties().currentRows()) {
-            if (SmpData.closed(row) || row.getString("state").equals("ACTIVE") || !row.hasUUID("bossEntity")) continue;
-            var level = server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, new net.minecraft.resources.ResourceLocation(row.getString("dimension"))));
-            if (level != null && level.getEntity(row.getUUID("bossEntity")) instanceof LivingEntity boss && boss.isAlive()) HostedEncounterApi.hold(boss);
+            if (SmpData.closed(row) || row.state().equals("ACTIVE") || !row.hasBossEntity()) continue;
+            var level = server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, new net.minecraft.resources.ResourceLocation(row.dimension())));
+            if (level != null && level.getEntity(row.bossEntity()) instanceof LivingEntity boss && boss.isAlive()) HostedEncounterApi.hold(boss);
         }
 
         for (var row : data.parties().currentRows())
             if (!SmpData.closed(row)
-                    && !row.getString("state").equals("ACTIVE")
-                    && now - row.getLong("created") > SmpConfig.PARTY_WAIT_MINUTES.get() * 60000L) {
+                    && !row.state().equals("ACTIVE")
+                    && now - row.created() > SmpConfig.PARTY_WAIT_MINUTES.get() * 60000L) {
                 release(server, row);
-                row.putString("state", "CLOSED");
+                row.state("CLOSED");
                 
             }
     }
 
-    public static void arrive(ServerPlayer player, CompoundTag row) {
+    public static void arrive(ServerPlayer player, PartyState row) {
         var data = SmpData.get(player.server);
         data.edit(() -> arriveOwned(player, data.parties().bind(row)));
     }
 
-    private static void arriveOwned(ServerPlayer player, CompoundTag row) {
+    private static void arriveOwned(ServerPlayer player, PartyState row) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
-        SmpRecords.require(!row.getString("state").equals("ACTIVE") && !SmpData.closed(row), "combat_locked");
+        SmpRecords.require(!row.state().equals("ACTIVE") && !SmpData.closed(row), "combat_locked");
         SmpRecords.require(Parties.accepted(row,player.getUUID()),"not_member");
-        if (row.getString("activity").equals("BOSS")&&com.siirio.jemserver.smp.events.StructureStaging.arrive(player, row)) return;
-        if(row.getBoolean("bloodMoon")&&row.hasUUID("eventId")) {
-            var event=SmpData.get(player.server).events().current(row.getUUID("eventId"));
+        if (row.activity().equals("BOSS")&&com.siirio.jemserver.smp.events.StructureStaging.arrive(player, row)) return;
+        if(row.bloodMoon()&&row.hasEventId()) {
+            var event=SmpData.get(player.server).events().current(row.eventId());
             SmpRecords.require(event!=null,"unavailable");
-            var targetDimension=net.minecraft.resources.ResourceLocation.tryParse(event.getString("dimension"));
+            var targetDimension=net.minecraft.resources.ResourceLocation.tryParse(event.dimension());
             var targetLevel=targetDimension==null?null:player.server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,targetDimension));
             SmpRecords.require(targetLevel!=null,"unavailable");
-            var outside=com.siirio.jemserver.smp.events.EventRegions.safeOutside(targetLevel,event,BlockPos.of(event.getLong("position"))).orElseThrow(()->new IllegalArgumentException("no_safe_arrival"));
+            var outside=com.siirio.jemserver.smp.events.EventRegions.safeOutside(targetLevel,event,BlockPos.of(event.position())).orElseThrow(()->new IllegalArgumentException("no_safe_arrival"));
             player.teleportTo(targetLevel,outside.getX()+.5,outside.getY(),outside.getZ()+.5,player.getYRot(),player.getXRot());
             player.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
             player.fallDistance=0;
             return;
         }
-        var host=player.server.getPlayerList().getPlayer(row.getUUID("owner"));
-        var dimension=net.minecraft.resources.ResourceLocation.tryParse(row.getString("activity").equals("BOSS")?row.getString("dimension")
+        var host=player.server.getPlayerList().getPlayer(row.owner());
+        var dimension=net.minecraft.resources.ResourceLocation.tryParse(row.activity().equals("BOSS")?row.dimension()
                 :host==null?"":host.serverLevel().dimension().location().toString());
         var level=dimension==null?null:player.server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,dimension));
         SmpRecords.require(level!=null,"unavailable");
-        var origin = row.getString("activity").equals("BOSS")?BlockPos.of(row.getLong("position")):host.blockPosition();
+        var origin = row.activity().equals("BOSS")?BlockPos.of(row.position()):host.blockPosition();
         for (var pos : BlockPos.betweenClosed(origin.offset(-2, -1, -2), origin.offset(2, 2, 2))) {
             double x = pos.getX() + 0.5, y = pos.getY(), z = pos.getZ() + 0.5;
             var box = player.getDimensions(player.getPose()).makeBoundingBox(x, y, z);
@@ -196,15 +196,15 @@ public final class HostedParties {
         throw new IllegalArgumentException("no_safe_arrival");
     }
 
-    public static void release(net.minecraft.server.MinecraftServer server, CompoundTag row) {
+    public static void release(net.minecraft.server.MinecraftServer server, PartyState row) {
         var data = SmpData.get(server);
         data.edit(() -> releaseOwned(server, data.parties().bind(row)));
     }
 
-    private static void releaseOwned(net.minecraft.server.MinecraftServer server, CompoundTag row) {
-        if (!row.hasUUID("bossEntity")) return;
-        var level = server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, new net.minecraft.resources.ResourceLocation(row.getString("dimension"))));
-        if (level != null && level.getEntity(row.getUUID("bossEntity")) instanceof LivingEntity boss) HostedEncounterApi.release(boss);
+    private static void releaseOwned(net.minecraft.server.MinecraftServer server, PartyState row) {
+        if (!row.hasBossEntity()) return;
+        var level = server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, new net.minecraft.resources.ResourceLocation(row.dimension())));
+        if (level != null && level.getEntity(row.bossEntity()) instanceof LivingEntity boss) HostedEncounterApi.release(boss);
     }
 
     public static void forfeit(ServerPlayer player,UUID partyId,UUID actionToken) {
@@ -214,23 +214,23 @@ public final class HostedParties {
 
     private static void forfeitOwned(ServerPlayer player,UUID partyId,UUID actionToken) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
-        CompoundTag row=SmpData.get(player.server).parties().current(partyId);
-        SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.getString("state").equals("ACTIVE")
-                &&row.getString("activity").equals("BOSS"),"unavailable");
+        PartyState row=SmpData.get(player.server).parties().current(partyId);
+        SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.state().equals("ACTIVE")
+                &&row.activity().equals("BOSS"),"unavailable");
         SmpRecords.owner(player,row);
         SmpRecords.require(com.siirio.jemserver.smp.events.HostedBoundary.matchesAction(player.server,row,actionToken),"unavailable");
-        if(row.hasUUID("eventId")) {
-            var event=SmpData.get(player.server).events().current(row.getUUID("eventId"));
+        if(row.hasEventId()) {
+            var event=SmpData.get(player.server).events().current(row.eventId());
             SmpRecords.require(event!=null&&com.siirio.jemserver.smp.events.EventScheduler.cancelAttempt(player.server,event,actionToken),"unavailable");
             return;
         }
-        var dimension=net.minecraft.resources.ResourceLocation.tryParse(row.getString("dimension"));
+        var dimension=net.minecraft.resources.ResourceLocation.tryParse(row.dimension());
         var level=dimension==null?null:player.server.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,dimension));
-        LivingEntity boss=level!=null&&row.hasUUID("bossEntity")&&level.getEntity(row.getUUID("bossEntity")) instanceof LivingEntity living?living:null;
+        LivingEntity boss=level!=null&&row.hasBossEntity()&&level.getEntity(row.bossEntity()) instanceof LivingEntity living?living:null;
         if(boss!=null&&HostedEncounterApi.cancel(boss)) return;
         if(boss!=null) HostedEncounterApi.release(boss);
-        notifyDefeat(player.server,row,row.getBoolean("raid"));
-        row.putString("state","FAILED");
+        notifyDefeat(player.server,row,row.raid());
+        row.state("FAILED");
         
         com.siirio.jemserver.smp.events.HostedBoundary.clearParty(row);
         com.siirio.jemserver.smp.events.StructureStaging.finish(player.server,row);
@@ -243,57 +243,57 @@ public final class HostedParties {
 
     private static void leaveEncounterOwned(ServerPlayer player,UUID partyId) {
         SmpRecords.require(SmpEnvironment.active(player), "unavailable");
-        CompoundTag row=SmpData.get(player.server).parties().current(partyId);
-        SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.getString("state").equals("ACTIVE")
-                &&row.getString("activity").equals("BOSS"),"unavailable");
+        PartyState row=SmpData.get(player.server).parties().current(partyId);
+        SmpRecords.require(row!=null&&!SmpData.closed(row)&&row.state().equals("ACTIVE")
+                &&row.activity().equals("BOSS"),"unavailable");
         SmpRecords.require(Parties.accepted(row,player.getUUID()),"not_member");
-        SmpRecords.require(!row.getUUID("owner").equals(player.getUUID()),"host_only");
+        SmpRecords.require(!row.owner().equals(player.getUUID()),"host_only");
         SmpRecords.require(com.siirio.jemserver.smp.events.HostedBoundary.canForfeit(player,row),"unavailable");
-        if(row.hasUUID("eventId")) {
-            var event=SmpData.get(player.server).events().current(row.getUUID("eventId"));
-            SmpRecords.require(event!=null&&event.getString("state").equals("ACTIVE"),"unavailable");
-            var member=SmpRecords.members(event).getCompound(player.getStringUUID());
-            member.putBoolean("eliminated",true);
+        if(row.hasEventId()) {
+            var event=SmpData.get(player.server).events().current(row.eventId());
+            SmpRecords.require(event!=null&&event.state().equals("ACTIVE"),"unavailable");
+            var member=event.member(player.getUUID());
+            if (member != null) member.eliminated(true);
             com.siirio.jemserver.smp.events.PartyTeleportFlow.returnNow(player,row);
             
             boolean remains=new com.siirio.jemserver.smp.events.EncounterContext(event).participantIds().stream()
-                    .anyMatch(id->!SmpRecords.members(event).getCompound(id.toString()).getBoolean("eliminated"));
+                    .anyMatch(id->event.member(id) == null || !event.member(id).eliminated());
             if(!remains) com.siirio.jemserver.smp.events.EventScheduler.failAttempt(player.server,event);
             return;
         }
         SmpRecords.require(HostedEncounterApi.leave(player),"unavailable");
     }
 
-    public static String startReason(ServerPlayer viewer, CompoundTag row) {
+    public static String startReason(ServerPlayer viewer, PartyState row) {
         if (!SmpEnvironment.active(viewer)) return "unavailable";
-        if (!row.getUUID("owner").equals(viewer.getUUID())) return "host_only";
+        if (!row.owner().equals(viewer.getUUID())) return "host_only";
         if (SmpData.closed(row)) return "closed";
-        if (row.getString("state").equals("ACTIVE")) return "combat_locked";
-        var host = viewer.server.getPlayerList().getPlayer(row.getUUID("owner"));
+        if (row.state().equals("ACTIVE")) return "combat_locked";
+        var host = viewer.server.getPlayerList().getPlayer(row.owner());
         if (host == null) return "host_must_be_present";
-        if (row.hasUUID("eventId")) {
-            var event = SmpData.get(viewer.server).events().snapshot(row.getUUID("eventId"));
+        if (row.hasEventId()) {
+            var event = SmpData.get(viewer.server).events().snapshot(row.eventId());
             if (event == null || SmpData.closed(event)) return "unavailable";
-            if (!event.getString("state").equals("ACTIVE")) return "event_not_started";
-            if (event.getBoolean("combatStarted") || event.hasUUID("bossEntity")) return "combat_locked";
+            if (!event.state().equals("ACTIVE")) return "event_not_started";
+            if (event.combatStarted() || event.hasBossEntity()) return "combat_locked";
         }
         for (UUID id : SmpRecords.memberIds(row)) {
             if (!Parties.accepted(row, id)) continue;
             var member = viewer.server.getPlayerList().getPlayer(id);
             if (member != null && (!member.isAlive() || member.isSpectator()
-                    || !SmpRecords.members(row).getCompound(id.toString()).getBoolean("ready"))) return "party_not_ready";
+                    || !row.member(id).ready())) return "party_not_ready";
         }
-        if (row.getString("activity").equals("BOSS") && !row.getBoolean("raid") && !row.getBoolean("bloodMoon") && !row.getBoolean("nativePending")) {
-            if (row.hasUUID("bossEntity")) {
-                if (!(host.serverLevel().getEntity(row.getUUID("bossEntity")) instanceof LivingEntity boss) || !boss.isAlive()) return "unavailable";
+        if (row.activity().equals("BOSS") && !row.raid() && !row.bloodMoon() && !row.nativePending()) {
+            if (row.hasBossEntity()) {
+                if (!(host.serverLevel().getEntity(row.bossEntity()) instanceof LivingEntity boss) || !boss.isAlive()) return "unavailable";
             } else {
                 var candidates = host.serverLevel().getEntitiesOfClass(LivingEntity.class,
-                        new AABB(BlockPos.of(row.getLong("position"))).inflate(SmpConfig.ENCOUNTER_RADIUS.get()),
+                        new AABB(BlockPos.of(row.position())).inflate(SmpConfig.ENCOUNTER_RADIUS.get()),
                         entity -> entity.isAlive() && WorldTierApi.profile(entity).isPresent());
                 if (candidates.size() != 1) return "one_awakened_boss_required";
             }
         }
-        if (row.getString("activity").equals("BOSS") && !row.getBoolean("raid") && row.getBoolean("nativePending")) {
+        if (row.activity().equals("BOSS") && !row.raid() && row.nativePending()) {
             String reason=com.siirio.jemserver.smp.events.StructureStaging.nativeBossStartReason(host,row);
             if(!reason.isEmpty()) return reason;
         }

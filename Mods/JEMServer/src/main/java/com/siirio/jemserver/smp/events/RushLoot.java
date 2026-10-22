@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.siirio.jemserver.smp.SmpData;
@@ -56,23 +58,22 @@ public final class RushLoot extends LootModifier {
         var event = EventScheduler.active(player.server, "RESOURCE_RUSH");
         var pos = BlockPos.containing(origin);
         if (event == null
-                || event.getBoolean("rushTrackingFull")
+                || event.rushTrackingFull()
                 || ResourcePlacements.excluded(player.serverLevel(),pos)
                 || !EventRegions.contains(event, player.serverLevel(), pos)) return loot;
-        var excluded = event.getCompound("placements");
-        String key = Long.toString(pos.asLong());
+        var excluded = new java.util.LinkedHashSet<>(event.placements());
+        long key = pos.asLong();
         if (excluded.contains(key)) return loot;
         if (excluded.size() >= com.siirio.jemserver.smp.SmpConfig.RUSH_TRACKED_BLOCKS.get()) {
-            event.putBoolean("rushTrackingFull", true);
+            event.rushTrackingFull( true);
 
             return loot;
         }
-        excluded.putBoolean(key, true);
-        event.put("placements", excluded);
-        var participants = event.getCompound("rushParticipants");
-        if (!participants.getBoolean(player.getStringUUID())) {
-            participants.putBoolean(player.getStringUUID(), true);
-            event.put("rushParticipants", participants);
+        excluded.add(key);
+        event.placements(excluded);
+        var participants = new java.util.LinkedHashSet<>(event.rushParticipants());
+        if (participants.add(player.getUUID())) {
+            event.rushParticipants(participants);
             com.siirio.jemserver.smp.Profiles.countEvent(player.server, player.getUUID(), "RESOURCE_RUSH");
         }
 

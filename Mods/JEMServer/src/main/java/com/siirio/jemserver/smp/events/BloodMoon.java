@@ -1,6 +1,8 @@
 package com.siirio.jemserver.smp.events;
 
 import com.siirio.jemserver.smp.*;
+
+import com.siirio.jemserver.smp.*;
 import com.siirio.jemworldbosstiers.api.WorldTierApi;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -40,7 +42,7 @@ public final class BloodMoon {
     private static final int SKIP_AFTER_FAILURES=24;
     private static final String WEATHER="bloodMoonWeather";
 
-    public static boolean startManual(MinecraftServer server, CompoundTag row) {
+    public static boolean startManual(MinecraftServer server, EventState row) {
         return true;
     }
 
@@ -58,55 +60,55 @@ public final class BloodMoon {
         var data=mob.getPersistentData();
         if(data.hasUUID(EVENT_ID) || !MOB_SUMMONED.equals(data.getString(FORGE_SPAWN_TYPE))) return true;
         for(var row:SmpData.get(level.getServer()).events().currentRows()) {
-            if(!row.getString("state").equals("ACTIVE") || !row.getString("activity").equals("BLOOD_MOON")
-                    || !row.getBoolean("combatStarted") || !EventRegions.contains(row,level,mob.blockPosition())) continue;
+            if(!row.state().equals("ACTIVE") || !row.activity().equals("BLOOD_MOON")
+                    || !row.combatStarted() || !EventRegions.contains(row,level,mob.blockPosition())) continue;
             Entity owner=EventSession.owner(mob);
             // Player summons retain their native owner and never become hostile wave entries.
             if(owner instanceof net.minecraft.server.level.ServerPlayer) return true;
-            long active=row.getList("mobs",Tag.TAG_STRING).stream().map(Tag::getAsString).map(UUID::fromString).map(level::getEntity)
+            long active=row.mobs().stream().map(level::getEntity)
                     .filter(candidate->candidate instanceof Mob living&&living.isAlive()&&living.getPersistentData().getBoolean(SUMMONED)).count();
             if(active>=MAX_ACTIVE_SUMMONS) return false;
             new EventSession(row).mark(mob);
-            data.putUUID(EVENT_ID,row.getUUID("id"));
+            data.putUUID(EVENT_ID,row.id());
             data.putUUID(BloodMoonLoot.ATTEMPT_ID,BloodMoonLoot.attempt(row));
             data.putBoolean(SUMMONED,true);
-            data.putInt(WAVE,row.getInt("wave"));
+            data.putInt(WAVE,row.wave());
             EventMobModifiers.applyBloodMoonSummon(mob);
-            var mobs=row.getList("mobs",Tag.TAG_STRING);
-            if(!mobs.contains(StringTag.valueOf(mob.getStringUUID()))) mobs.add(StringTag.valueOf(mob.getStringUUID()));
-            row.put("mobs",mobs);
+            var mobs=new ArrayList<>(row.mobs());
+            if(!mobs.contains(mob.getUUID())) mobs.add(mob.getUUID());
+            row.mobs(mobs);
 
             return true;
         }
         return true;
     }
 
-    public static void tick(MinecraftServer server, CompoundTag row) {
+    public static void tick(MinecraftServer server, EventState row) {
         var serverForMutation = server;
         if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(server, row); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> tickInScope(server, store.events().bind(row)));
     }
 
-    private static void tickInScope(MinecraftServer server, CompoundTag row) {
+    private static void tickInScope(MinecraftServer server, EventState row) {
         var level=EventRegions.level(server,row);
         if(level==null) return;
         protectWeather(level,row);
         var encounter=new EncounterContext(row);
         if(!encounter.tickStartup(server)) { return; }
-        if(!row.getBoolean("combatStarted")) {
+        if(!row.combatStarted()) {
             if(!encounter.allParticipantsInside(server)) return;
-            row.putBoolean("combatStarted",true);
-            row.putLong("nextWave",System.currentTimeMillis());
+            row.combatStarted(true);
+            row.nextWave(System.currentTimeMillis());
             EventRegions.ejectOutsiders(level,row);
 
         }
         if(BloodMoonVoting.active(row)) { BloodMoonVoting.tick(server,row); return; }
         var active=new EventSession(row).active(server);
-        var mobs=row.getList("mobs",Tag.TAG_STRING);
+        var mobs=new ArrayList<>(row.mobs());
         if(active.isEmpty()) {
-            for(Tag tag:mobs) {
-                var entity=level.getEntity(UUID.fromString(tag.getAsString()));
+            for(UUID tag:mobs) {
+                var entity=level.getEntity(tag);
                 if(entity instanceof Mob mob) clearInvalidTarget(mob);
             }
             return;
@@ -116,10 +118,10 @@ public final class BloodMoon {
         var living=new EnumMap<BloodMoonWaves.Category,Integer>(BloodMoonWaves.Category.class);
         boolean dirty=false;
         for(int index=mobs.size()-1;index>=0;index--) {
-            var entity=level.getEntity(UUID.fromString(mobs.getString(index)));
+            var entity=level.getEntity(mobs.get(index));
             if(!(entity instanceof Mob mob) || !mob.isAlive()) {
                 mobs.remove(index);
-                row.putInt("waveKilled",Math.min(row.getInt("waveTotal"),row.getInt("waveKilled")+1));
+                row.waveKilled(Math.min(row.waveTotal(),row.waveKilled()+1));
                 dirty=true;
                 continue;
             }
@@ -135,125 +137,131 @@ public final class BloodMoon {
                 targets.merge(target.getUUID(),1,Integer::sum);
             }
         }
-        int wave=row.getInt("wave");
+        int wave=row.wave();
         dirty|=reconcileWaveThree(row,mobs,wave);
-        int recovered=BloodMoonSetPieces.recoverMissingSpawn(level,row,active,wave,row.getInt("worldTier"));
+        row.mobs(mobs);
+        int recovered=BloodMoonSetPieces.recoverMissingSpawn(level,row,active,wave,row.worldTier());
+        mobs = new ArrayList<>(row.mobs());
         if(recovered>0) {
-            row.putInt("waveTotal",row.getInt("waveTotal")+recovered);
-            row.putInt("waveSpawned",row.getInt("waveSpawned")+recovered);
+            row.waveTotal(row.waveTotal()+recovered);
+            row.waveSpawned(row.waveSpawned()+recovered);
             dirty=true;
         }
         if(wave>0&&remaining(row)==0&&mobs.isEmpty()) {
             BloodMoonSetPieces.finishWave(level,row,wave);
-            if(row.getInt("rewardedWave")<wave) {
+            if(row.rewardedWave()<wave) {
                 for(var player:active) {
-                    var member=SmpRecords.members(row).getCompound(player.getStringUUID());
-                    member.putInt("waves",member.getInt("waves")+1);
+                    var member=row.memberOrEmpty(player.getUUID());
+                    member.waves(member.waves()+1);
                 }
                 BloodMoonRewards.stage(level,row,active,wave);
-                row.putInt("rewardedWave",wave);
+                row.rewardedWave(wave);
             }
             if(wave==BloodMoonWaves.WAVES) { complete(server,row); return; }
-            if(row.getInt("continuedWave")<wave) {
+            if(row.continuedWave()<wave) {
                 BloodMoonVoting.open(server,row,wave);
                 return;
             }
         }
-        if(wave==0 || row.getInt("continuedWave")==wave) {
-            if(System.currentTimeMillis()<row.getLong("nextWave")) return;
+        if(wave==0 || row.continuedWave()==wave) {
+            if(System.currentTimeMillis()<row.nextWave()) return;
             wave++;
             int tier=WorldTierApi.currentTier(server);
-            row.putInt("wave",wave);row.putInt("worldTier",tier);
+            row.wave(wave);row.worldTier(tier);
             recordWavePerformance(level,row);
             EventMobModifiers.resetWave(row);
             int setPieces=BloodMoonSetPieces.beginWave(level,row,active,wave,tier);
+            mobs = new ArrayList<>(row.mobs());
             int ordinaryTotal=BloodMoonWaves.ordinaryTotal(tier,wave,active.size(),setPieces);
-            row.putInt("waveTotal",ordinaryTotal);
-            row.putInt("waveSpawned",0);row.putInt("waveKilled",0);
-            row.putInt("batchSpawned",0);
-            row.putInt("batchNumber",1);
-            row.putInt("batchTarget",BloodMoonWaves.batchTarget(wave,active.size(),ordinaryTotal));
-            row.remove(SPAWN_FAILURES);
-            if(wave==3) row.putBoolean(SINGLE_BATCH_WAVE_THREE,true);
-            else row.remove(SINGLE_BATCH_WAVE_THREE);
-            var remaining=new CompoundTag();
+            row.waveTotal(ordinaryTotal);
+            row.waveSpawned(0);row.waveKilled(0);
+            row.batchSpawned(0);
+            row.batchNumber(1);
+            row.batchTarget(BloodMoonWaves.batchTarget(wave,active.size(),ordinaryTotal));
+            row.clearSpawnFailures();
+            if(wave==3) row.singleBatchWaveThree(true);
+            else row.clearSingleBatchWaveThree();
+            var remaining=new LinkedHashMap<String,Integer>();
             var composition=ordinaryTotal==0?Map.<BloodMoonWaves.Category,Integer>of():BloodMoonWaves.composition(wave,ordinaryTotal);
             int fallback=0;
             for(var entry:composition.entrySet()) {
                 if(entry.getValue()>0 && roster(entry.getKey(),wave,tier).isEmpty()) fallback+=entry.getValue();
-                else remaining.putInt(entry.getKey().name(),entry.getValue());
+                else remaining.put(entry.getKey().name(),entry.getValue());
             }
-            remaining.putInt(BloodMoonWaves.Category.HORDE.name(),remaining.getInt(BloodMoonWaves.Category.HORDE.name())+fallback);
-            row.put("remaining",remaining);
-            row.putInt("waveTotal",ordinaryTotal+setPieces);
-            row.putInt("waveSpawned",setPieces);
+            remaining.put(BloodMoonWaves.Category.HORDE.name(),remaining.getOrDefault(BloodMoonWaves.Category.HORDE.name(),0)+fallback);
+            row.remaining(remaining);
+            row.waveTotal(ordinaryTotal+setPieces);
+            row.waveSpawned(setPieces);
             dirty=true;
         }
-        var remaining=row.getCompound("remaining");
-        if(mobs.isEmpty()&&row.getInt("batchSpawned")>=row.getInt("batchTarget")&&remaining(row)>0) {
-            row.putInt("batchSpawned",0);
-            row.putInt("batchNumber",row.getInt("batchNumber")+1);
-            row.putInt("batchTarget",BloodMoonWaves.batchTarget(wave,active.size(),remaining(row)));
+        var remaining=new LinkedHashMap<>(row.remaining());
+        if(mobs.isEmpty()&&row.batchSpawned()>=row.batchTarget()&&remaining(row)>0) {
+            row.batchSpawned(0);
+            row.batchNumber(row.batchNumber()+1);
+            row.batchTarget(BloodMoonWaves.batchTarget(wave,active.size(),remaining(row)));
         }
-        int budget=Math.min(EventRules.SPAWN_BATCH.get(),Math.max(0,row.getInt("batchTarget")-row.getInt("batchSpawned")));
+        int budget=Math.min(EventRules.SPAWN_BATCH.get(),Math.max(0,row.batchTarget()-row.batchSpawned()));
         budget=(int)Math.ceil(budget*BloodMoonSetPieces.ordinarySpawnPressure(level,row));
         for(int i=0;i<budget;i++) {
             var available=new ArrayList<BloodMoonWaves.Category>();
             for(var kind:BloodMoonWaves.Category.values()) {
-                if(remaining.getInt(kind.name())<=0) continue;
+                if(remaining.getOrDefault(kind.name(),0)<=0) continue;
                 available.add(kind);
             }
             if(available.isEmpty()) break;
             var kind=available.get(level.random.nextInt(available.size()));
-            int failures=row.getCompound(SPAWN_FAILURES).getInt(kind.name());
-            Mob mob=spawn(level,row,kind,wave,row.getInt("worldTier"),active,failures>=FALLBACK_AFTER_FAILURES);
+            int failures=row.spawnFailures().getOrDefault(kind.name(),0);
+            Mob mob=spawn(level,row,kind,wave,row.worldTier(),active,failures>=FALLBACK_AFTER_FAILURES);
             if(mob==null) {
                 failedSpawn(row,remaining,kind);
                 continue;
             }
             var target=target(active,targets,mob);
             mob.setTarget(target);
-            var mobId=StringTag.valueOf(mob.getStringUUID());
+            var mobId=mob.getUUID();
             mobs.add(mobId);
-            row.put("mobs",mobs);
+            row.mobs(mobs);
             if(!mob.isAddedToWorld() && !level.addFreshEntity(mob)) {
                 mobs.remove(mobId);
+                row.mobs(mobs);
                 failedSpawn(row,remaining,kind);
                 continue;
             }
-            row.getCompound(SPAWN_FAILURES).remove(kind.name());
+            var failuresAfterSpawn = new LinkedHashMap<>(row.spawnFailures()); failuresAfterSpawn.remove(kind.name()); row.spawnFailures(failuresAfterSpawn);
             BloodMoonSetPieces.prepareSpawn(row,mob,mob.getPersistentData().getBoolean("jem:event_elite"));
             targets.merge(target.getUUID(),1,Integer::sum);
             living.merge(kind,1,Integer::sum);
-            remaining.putInt(kind.name(),remaining.getInt(kind.name())-1);
-            row.putInt("waveSpawned",row.getInt("waveSpawned")+1);
-            row.putInt("batchSpawned",row.getInt("batchSpawned")+1);
+            remaining.put(kind.name(),remaining.getOrDefault(kind.name(),0)-1);
+            row.waveSpawned(row.waveSpawned()+1);
+            row.batchSpawned(row.batchSpawned()+1);
             dirty=true;
         }
+        row.remaining(remaining);
+        row.mobs(mobs);
         if(dirty) {
-            row.put("mobs",mobs);
+            row.mobs(mobs);
 
         }
     }
 
-    private static void protectWeather(ServerLevel level,CompoundTag row) {
+    private static void protectWeather(ServerLevel level,EventState row) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { protectWeatherInScope(level, row); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> protectWeatherInScope(level, store.events().bind(row)));
     }
 
-    private static void protectWeatherInScope(ServerLevel level,CompoundTag row) {
+    private static void protectWeatherInScope(ServerLevel level,EventState row) {
         var server=level.getServer();
         var weather=server.getWorldData().overworldData();
-        if(!row.contains(WEATHER,Tag.TAG_COMPOUND)) {
-            var snapshot=new CompoundTag();
-            snapshot.putInt("clear",weather.getClearWeatherTime());
-            snapshot.putInt("rain",weather.getRainTime());
-            snapshot.putInt("thunder",weather.getThunderTime());
-            snapshot.putBoolean("raining",weather.isRaining());
-            snapshot.putBoolean("thundering",weather.isThundering());
-            row.put(WEATHER,snapshot);
+        if(!row.hasBloodMoonWeather()) {
+            var snapshot=new EventWeather();
+            snapshot.clear(weather.getClearWeatherTime());
+            snapshot.rain(weather.getRainTime());
+            snapshot.thunder(weather.getThunderTime());
+            snapshot.raining(weather.isRaining());
+            snapshot.thundering(weather.isThundering());
+            row.bloodMoonWeather(snapshot);
 
         }
         boolean changed=weather.isRaining()||weather.isThundering()||level.getRainLevel(1)>0||level.getThunderLevel(1)>0;
@@ -268,47 +276,47 @@ public final class BloodMoon {
         }
     }
 
-    private static void restoreWeather(MinecraftServer server,CompoundTag row) {
-        if(row.getString("state").equals("ACTIVE")||!row.contains(WEATHER,Tag.TAG_COMPOUND)) return;
-        var snapshot=row.getCompound(WEATHER);
+    private static void restoreWeather(MinecraftServer server,EventState row) {
+        if(row.state().equals("ACTIVE")||!row.hasBloodMoonWeather()) return;
+        var snapshot=row.bloodMoonWeather();
         var weather=server.getWorldData().overworldData();
-        weather.setClearWeatherTime(snapshot.getInt("clear"));
-        weather.setRainTime(snapshot.getInt("rain"));
-        weather.setThunderTime(snapshot.getInt("thunder"));
-        weather.setRaining(snapshot.getBoolean("raining"));
-        weather.setThundering(snapshot.getBoolean("thundering"));
-        row.remove(WEATHER);
+        weather.setClearWeatherTime(snapshot.clear());
+        weather.setRainTime(snapshot.rain());
+        weather.setThunderTime(snapshot.thunder());
+        weather.setRaining(snapshot.raining());
+        weather.setThundering(snapshot.thundering());
+        row.clearBloodMoonWeather();
     }
 
-    private static boolean reconcileWaveThree(CompoundTag row,ListTag mobs,int wave) {
-        if(wave!=3||row.getBoolean(SINGLE_BATCH_WAVE_THREE)) return false;
-        row.putBoolean(SINGLE_BATCH_WAVE_THREE,true);
-        row.put("remaining",new CompoundTag());
-        int total=row.getInt("waveKilled")+mobs.size();
-        row.putInt("waveTotal",total);
-        row.putInt("waveSpawned",total);
-        row.putInt("batchSpawned",mobs.size());
-        row.putInt("batchTarget",mobs.size());
+    private static boolean reconcileWaveThree(EventState row,List<UUID> mobs,int wave) {
+        if(wave!=3||row.singleBatchWaveThree()) return false;
+        row.singleBatchWaveThree(true);
+        row.remaining(Map.of());
+        int total=row.waveKilled()+mobs.size();
+        row.waveTotal(total);
+        row.waveSpawned(total);
+        row.batchSpawned(mobs.size());
+        row.batchTarget(mobs.size());
         return true;
     }
 
-    private static void recordWavePerformance(ServerLevel level,CompoundTag row) {
+    private static void recordWavePerformance(ServerLevel level,EventState row) {
         double damage=0;
-        for(String id:SmpRecords.members(row).getAllKeys()) damage+=SmpRecords.members(row).getCompound(id).getDouble("damage");
+        for(var member:row.members().values()) damage+=member.damage();
         long now=level.getGameTime();
-        long started=row.getLong("waveStartedTick");
+        long started=row.waveStartedTick();
         if(started>0&&now>started) {
-            double observed=(damage-row.getDouble("waveDamageStart"))/((now-started)/20D);
-            if(Double.isFinite(observed)&&observed>0) row.putDouble("observedPartyDps",observed);
+            double observed=(damage-row.waveDamageStart())/((now-started)/20D);
+            if(Double.isFinite(observed)&&observed>0) row.observedPartyDps(observed);
         }
-        row.putDouble("waveDamageStart",damage);
-        row.putLong("waveStartedTick",now);
+        row.waveDamageStart(damage);
+        row.waveStartedTick(now);
     }
 
-    private static int remaining(CompoundTag row) {
-        CompoundTag remaining=row.getCompound("remaining");
+    private static int remaining(EventState row) {
+        var remaining=row.remaining();
         int total=0;
-        for(var category:BloodMoonWaves.Category.values()) total+=Math.max(0,remaining.getInt(category.name()));
+        for(var category:BloodMoonWaves.Category.values()) total+=Math.max(0,remaining.getOrDefault(category.name(),0));
         return total;
     }
 
@@ -323,7 +331,7 @@ public final class BloodMoon {
                 .orElseThrow();
     }
 
-    private static Mob spawn(ServerLevel level,CompoundTag row,BloodMoonWaves.Category kind,int wave,int tier,List<net.minecraft.server.level.ServerPlayer> active,boolean fallback) {
+    private static Mob spawn(ServerLevel level,EventState row,BloodMoonWaves.Category kind,int wave,int tier,List<net.minecraft.server.level.ServerPlayer> active,boolean fallback) {
         var roster=fallback?List.<EntityType<?>>of(fallback(kind)):weightedRoster(level,row,kind,wave,tier);
         if(roster.isEmpty()) return null;
         int minX=EventRegions.minX(row),minZ=EventRegions.minZ(row),maxX=EventRegions.maxX(row),maxZ=EventRegions.maxZ(row);
@@ -352,7 +360,7 @@ public final class BloodMoon {
         return null;
     }
 
-    private static Mob createMob(ServerLevel level,CompoundTag row,List<EntityType<?>> roster,BloodMoonWaves.Category kind,int wave,int tier,int x,int z) {
+    private static Mob createMob(ServerLevel level,EventState row,List<EntityType<?>> roster,BloodMoonWaves.Category kind,int wave,int tier,int x,int z) {
         var column=new BlockPos(x,0,z);
         if(!level.hasChunkAt(column)) return null;
         var pos=level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,column);
@@ -362,7 +370,7 @@ public final class BloodMoon {
         mob.moveTo(x+.5,pos.getY(),z+.5,0,0);
         if(!level.noCollision(mob)) return null;
         new EventSession(row).mark(mob);
-        mob.getPersistentData().putUUID(EVENT_ID,row.getUUID("id"));
+        mob.getPersistentData().putUUID(EVENT_ID,row.id());
         mob.getPersistentData().putUUID(BloodMoonLoot.ATTEMPT_ID,BloodMoonLoot.attempt(row));
         mob.getPersistentData().putString(CATEGORY,kind.name());
         mob.getPersistentData().putInt(WAVE,wave);
@@ -391,22 +399,22 @@ public final class BloodMoon {
         };
     }
 
-    private static void failedSpawn(CompoundTag row,CompoundTag remaining,BloodMoonWaves.Category kind) {
-        var failures=row.getCompound(SPAWN_FAILURES);
-        int attempts=failures.getInt(kind.name())+1;
+    private static void failedSpawn(EventState row,Map<String,Integer> remaining,BloodMoonWaves.Category kind) {
+        var failures=new LinkedHashMap<>(row.spawnFailures());
+        int attempts=failures.getOrDefault(kind.name(),0)+1;
         if(attempts<SKIP_AFTER_FAILURES) {
-            failures.putInt(kind.name(),attempts);
-            row.put(SPAWN_FAILURES,failures);
+            failures.put(kind.name(),attempts);
+            row.spawnFailures(failures);
             return;
         }
         failures.remove(kind.name());
-        row.put(SPAWN_FAILURES,failures);
-        remaining.putInt(kind.name(),Math.max(0,remaining.getInt(kind.name())-1));
-        row.putInt("waveTotal",Math.max(row.getInt("waveKilled")+row.getList("mobs",Tag.TAG_STRING).size(),row.getInt("waveTotal")-1));
-        LOGGER.warn("Skipping unspawnable Blood Moon slot event={} wave={} category={}",row.getUUID("id"),row.getInt("wave"),kind);
+        row.spawnFailures(failures);
+        remaining.put(kind.name(),Math.max(0,remaining.getOrDefault(kind.name(),0)-1));
+        row.waveTotal(Math.max(row.waveKilled()+new ArrayList<>(row.mobs()).size(),row.waveTotal()-1));
+        LOGGER.warn("Skipping unspawnable Blood Moon slot event={} wave={} category={}",row.id(),row.wave(),kind);
     }
 
-    private static List<EntityType<?>> weightedRoster(ServerLevel level,CompoundTag row,BloodMoonWaves.Category kind,int wave,int tier) {
+    private static List<EntityType<?>> weightedRoster(ServerLevel level,EventState row,BloodMoonWaves.Category kind,int wave,int tier) {
         String fallback=rosterPath(kind,wave,tier);
         String variant=switch(kind) {
             case HORDE -> level.random.nextDouble()<HORDE_FILLER_CHANCE ? "horde/filler" : "horde/wave_"+wave;
@@ -416,7 +424,7 @@ public final class BloodMoon {
         };
         var selected=new ArrayList<>(types(variant));
         if(selected.isEmpty()) selected.addAll(types(fallback));
-        if(wave==2&&row.getInt("batchNumber")>=2&&kind==BloodMoonWaves.Category.HUNTER
+        if(wave==2&&row.batchNumber()>=2&&kind==BloodMoonWaves.Category.HUNTER
                 &&net.mcreator.skarriermobs.procedures.CarnagerEntitySpawningConditionProcedure.execute(level)) {
             EntityType<?> carnager=BuiltInRegistries.ENTITY_TYPE.get(new ResourceLocation("skarrier_mobs","carnager"));
             if(carnager!=EntityType.PIG) selected.add(carnager);
@@ -442,27 +450,27 @@ public final class BloodMoon {
         return BuiltInRegistries.ENTITY_TYPE.getTag(key).stream().flatMap(set->set.stream()).map(net.minecraft.core.Holder::value).toList();
     }
 
-    private static void complete(MinecraftServer server,CompoundTag row) {
+    private static void complete(MinecraftServer server,EventState row) {
         BloodMoonRewards.commit(server,row,true);
         finishSuccess(server,row);
     }
 
-    public static void cashOut(MinecraftServer server, CompoundTag row) {
+    public static void cashOut(MinecraftServer server, EventState row) {
         BloodMoonRewards.commit(server,row,false);
         finishSuccess(server,row);
     }
 
-    private static void finishSuccess(MinecraftServer server, CompoundTag row) {
-        for(var player:new EventSession(row).active(server)) if(SmpRecords.members(row).getCompound(player.getStringUUID()).getBoolean("contributed")) {
-            Profiles.count(server,player.getUUID(),"bloodMoonClears");
+    private static void finishSuccess(MinecraftServer server, EventState row) {
+        for(var player:new EventSession(row).active(server)) if(row.memberOrEmpty(player.getUUID()).contributed()) {
+            Profiles.count(server,player.getUUID(),ProfileCounter.BLOOD_MOON_CLEARS);
             Profiles.countEvent(server,player.getUUID(),"BLOOD_MOON");
         }
         CombatNetwork.completedBloodMoon(server,row);
         EventScheduler.finish(server,row,"COMPLETED");
     }
 
-    public static void fail(MinecraftServer server, CompoundTag row) {
-        if(row.getString("state").equals("ACTIVE")) EventScheduler.failAttempt(server,row);
+    public static void fail(MinecraftServer server, EventState row) {
+        if(row.state().equals("ACTIVE")) EventScheduler.failAttempt(server,row);
     }
 
     public static void defeated(MinecraftServer server,LivingEntity entity) {
@@ -475,16 +483,17 @@ public final class BloodMoon {
     private static void defeatedInScope(MinecraftServer server,LivingEntity entity) {
         if(!entity.getPersistentData().hasUUID(EVENT_ID)) return;
         var row=SmpData.get(server).events().current(entity.getPersistentData().getUUID(EVENT_ID));
-        if(row==null || !row.getString("state").equals("ACTIVE")) return;
-        var mobs=row.getList("mobs",Tag.TAG_STRING);
-        if(mobs.remove(StringTag.valueOf(entity.getStringUUID()))) {
-            if(!entity.getPersistentData().getBoolean(SUMMONED)) row.putInt("waveKilled",row.getInt("waveKilled")+1);
+        if(row==null || !row.state().equals("ACTIVE")) return;
+        var mobs=new ArrayList<>(row.mobs());
+        if(mobs.remove(entity.getUUID())) {
+            row.mobs(mobs);
+            if(!entity.getPersistentData().getBoolean(SUMMONED)) row.waveKilled(row.waveKilled()+1);
             var source=entity.getLastDamageSource();
             var owner=source==null?null:EventSession.owner(source.getEntity());
             if(owner==null && source!=null) owner=EventSession.owner(source.getDirectEntity());
             if(owner instanceof net.minecraft.server.level.ServerPlayer player && new EventSession(row).accepted(player.getUUID())) {
-                var member=SmpRecords.members(row).getCompound(player.getStringUUID());
-                member.putInt("kills",member.getInt("kills")+1);
+                var member=row.memberOrEmpty(player.getUUID());
+                member.kills(member.kills()+1);
             }
         }
 
@@ -504,56 +513,57 @@ public final class BloodMoon {
         var data = entity.getPersistentData();
         if (!data.hasUUID(EVENT_ID)) return;
         var row = SmpData.get(server).events().current(data.getUUID(EVENT_ID));
-        if (row == null || !row.getString("state").equals("ACTIVE")) return;
-        var mobs = row.getList("mobs", Tag.TAG_STRING);
-        if (!mobs.remove(StringTag.valueOf(entity.getStringUUID()))) return;
+        if (row == null || !row.state().equals("ACTIVE")) return;
+        var mobs = new ArrayList<>(row.mobs());
+        if (!mobs.remove(entity.getUUID())) return;
+        row.mobs(mobs);
         if (data.getBoolean(SUMMONED)) {
 
             return;
         }
         String category = data.getString(CATEGORY);
         if(category.isEmpty()) {
-            row.putInt("waveKilled",row.getInt("waveKilled")+1);
+            row.waveKilled(row.waveKilled()+1);
 
             return;
         }
-        var remaining = row.getCompound("remaining");
-        remaining.putInt(category, remaining.getInt(category) + 1);
-        row.put("remaining", remaining);
-        row.putInt("waveSpawned", Math.max(0, row.getInt("waveSpawned") - 1));
+        var remaining = new LinkedHashMap<>(row.remaining());
+        remaining.put(category, remaining.getOrDefault(category,0) + 1);
+        row.remaining(remaining);
+        row.waveSpawned( Math.max(0, row.waveSpawned() - 1));
 
     }
 
-    public static void cleanup(MinecraftServer server,CompoundTag row) {
+    public static void cleanup(MinecraftServer server,EventState row) {
         restoreWeather(server,row);
         BloodMoonSetPieces.cleanup(server,row);
         var level=EventRegions.level(server,row);
         if(level!=null) {
-            for(Tag tag:row.getList("mobs",Tag.TAG_STRING)) {
-                var entity=level.getEntity(UUID.fromString(tag.getAsString()));
+            for(UUID tag:row.mobs()) {
+                var entity=level.getEntity(tag);
                 discard(entity);
             }
             var bounds=new net.minecraft.world.phys.AABB(EventRegions.minX(row),level.getMinBuildHeight(),EventRegions.minZ(row),
                     EventRegions.maxX(row)+1,level.getMaxBuildHeight(),EventRegions.maxZ(row)+1);
             for(var entity:level.getEntities((Entity)null,bounds,candidate->candidate.getPersistentData().hasUUID(EVENT_ID)
-                    && candidate.getPersistentData().getUUID(EVENT_ID).equals(row.getUUID("id")))) discard(entity);
+                    && candidate.getPersistentData().getUUID(EVENT_ID).equals(row.id()))) discard(entity);
         }
-        row.remove("mobs");
+        row.clearMobs();
     }
-    public static boolean belongs(CompoundTag row,Entity entity) {
+    public static boolean belongs(EventState row,Entity entity) {
         var data=entity.getPersistentData();
-        return data.hasUUID(EVENT_ID)&&data.getUUID(EVENT_ID).equals(row.getUUID("id"));
+        return data.hasUUID(EVENT_ID)&&data.getUUID(EVENT_ID).equals(row.id());
     }
-    public static boolean tracked(CompoundTag row,Entity entity) {
-        return row.getList("mobs",Tag.TAG_STRING).contains(StringTag.valueOf(entity.getStringUUID()));
+    public static boolean tracked(EventState row,Entity entity) {
+        return new ArrayList<>(row.mobs()).contains(entity.getUUID());
     }
     public static boolean canTarget(Entity eventMob,Entity target) {
         if (!EventRuntime.enabled(eventMob.getServer())) return true;
         var data=eventMob.getPersistentData();
         if(!data.hasUUID(EVENT_ID)||eventMob.getServer()==null) return true;
         var row=SmpData.get(eventMob.getServer()).events().snapshot(data.getUUID(EVENT_ID));
-        if(row==null||!row.getString("state").equals("ACTIVE")||!row.getString("activity").equals("BLOOD_MOON")) return true;
-        return row.getBoolean("combatStarted") && eventMob instanceof LivingEntity actor
+        if(row==null||!row.state().equals("ACTIVE")||!row.activity().equals("BLOOD_MOON")) return true;
+        return row.combatStarted() && eventMob instanceof LivingEntity actor
                 && target instanceof LivingEntity recipient
                 && EventSession.owner(recipient) instanceof net.minecraft.server.level.ServerPlayer
                 && EventSession.canInteract(actor,recipient);

@@ -22,13 +22,14 @@ public final class SettlementSavedData extends SavedData {
     private final net.minecraft.nbt.ListTag quarantine = new net.minecraft.nbt.ListTag();
     private CompoundTag unknownRoot = new CompoundTag();
     private CompoundTag unsupportedRoot;
+    private RuntimeException loadFailure;
 
     public static SettlementSavedData get(MinecraftServer server) {
         SettlementSavedData data = server.overworld().getDataStorage().computeIfAbsent(
                 SettlementSavedData::load, SettlementSavedData::new, NAME);
         // Reject outside the native loader: its failure recovery must not substitute a fresh store.
         if (data.unsupportedRoot != null)
-            throw new IllegalStateException("Settlement storage format is unsupported; original data retained, settlement access disabled");
+            throw new IllegalStateException("Settlement storage cannot be decoded; original data retained, settlement access disabled", data.loadFailure);
         return data;
     }
 
@@ -147,6 +148,21 @@ public final class SettlementSavedData extends SavedData {
     /** Invalid rows stay lossless in Quarantine and never participate in gameplay. Unexpected
      * programming failures propagate instead of being misreported as bad user data. */
     private static SettlementSavedData load(CompoundTag tag) {
+        try {
+            return decode(tag);
+        } catch (RuntimeException failure) {
+            // Native DimensionDataStorage may replace a throwing loader with a fresh store.
+            // Cache a blocked owner instead, then surface the programming failure from get().
+            SettlementSavedData blocked = new SettlementSavedData();
+            blocked.unsupportedRoot = tag.copy();
+            blocked.loadFailure = failure;
+            com.mojang.logging.LogUtils.getLogger().error(
+                    "Settlement decode failed; original data retained, settlement access disabled", failure);
+            return blocked;
+        }
+    }
+
+    private static SettlementSavedData decode(CompoundTag tag) {
         SettlementSavedData data = new SettlementSavedData();
         if (tag.contains("FormatVersion") && tag.getInt("FormatVersion") != 1) {
             data.unsupportedRoot = tag.copy();

@@ -25,17 +25,21 @@ public final class SmpViews {
         if (query.tab().equals("recruits")) return com.siirio.jemserver.smp.recruits.RecruitProjection.view(player);
         if (query.tab().equals("shops")) return com.siirio.jemserver.smp.shops.ShopIndex.view(player, query);
         if (query.selected() == null) {
-        Collection<CompoundTag> candidates = data.views(SmpTable.fromKey(query.tab()));
+        Collection<? extends SmpRecord> candidates = switch (SmpTable.fromKey(query.tab())) {
+            case PARTIES -> data.parties().snapshots();
+            case EVENTS -> data.events().snapshots();
+            default -> List.of();
+        };
         String search = query.search().toLowerCase(Locale.ROOT);
         var matches =
-                candidates.stream()
-                        .filter(row -> visible(player, query, row))
-                        .filter(row -> searchable(row).contains(search))
+                candidates.stream().map(source -> new Projection(source, encode(source)))
+                        .filter(row -> visible(player, query, row.source(), row.wire()))
+                        .filter(row -> searchable(row.wire()).contains(search))
                         .sorted(
                                 query.tab().equals("events")
-                                        ? Comparator.comparingInt((CompoundTag row) -> row.getString("state").equals("ACTIVE") ? 0 : 1)
-                                                .thenComparingLong(row -> row.getLong("planned"))
-                                        : Comparator.comparingLong((CompoundTag row) -> row.getLong("created")).reversed())
+                                        ? Comparator.comparingInt((Projection row) -> row.source().state().equals("ACTIVE") ? 0 : 1)
+                                                .thenComparingLong(row -> row.wire().getLong("planned"))
+                                        : Comparator.comparingLong((Projection row) -> row.source().created()).reversed())
                         .toList();
         result.putInt("total", matches.size());
         result.putInt("pageSize", SmpConfig.PAGE_SIZE.get());
@@ -46,28 +50,29 @@ public final class SmpViews {
                 .limit(size)
                 .forEach(
                         row -> {
-                            var summary = summary(row);
-                            if (query.tab().equals("parties")) organizer(player, row, summary);
-                            if (query.tab().equals("events")) eventSummary(row, summary);
+                            var summary = summary(row.wire());
+                            if (query.tab().equals("parties")) organizer(player, row.source(), summary);
+                            if (query.tab().equals("events")) eventSummary(row.source(), summary);
                             rows.add(summary);
                         });
         result.put("rows", rows);
         }
         if (query.selected() != null) {
-            CompoundTag row = data.view(SmpTable.fromKey(query.tab()), query.selected());
-            if (row != null && authorized(player, query.tab(), row)) {
+            SmpRecord source = data.view(SmpTable.fromKey(query.tab()), query.selected());
+            CompoundTag row = source == null ? null : encode(source);
+            if (row != null && authorized(player, source)) {
                 var detail =
                         query.tab().equals("parties")
-                                        ? Parties.view(player, row)
+                                        ? partyView(player, (PartyState) source)
                                         : detail(row);
                 if (query.tab().equals("parties")) {
-                    organizer(player, row, detail);
-                    CompoundTag event = row.hasUUID("eventId") ? data.events().snapshot(row.getUUID("eventId")) : null;
-                    eventPresentation(player, event == null ? row : event, detail);
-                    if (event != null) detail.putString("eventActivity", event.getString("activity"));
-                    if (event != null && event.contains("dimension")) {
-                        detail.putString("dimension", event.getString("dimension"));
-                        detail.putLong("position", event.getLong("position"));
+                    organizer(player, source, detail);
+                    EventState event = row.hasUUID("eventId") ? data.events().snapshot(row.getUUID("eventId")) : null;
+                    eventPresentation(player, event == null ? source : event, detail);
+                    if (event != null) detail.putString("eventActivity", event.activity());
+                    if (event != null && event.hasDimension()) {
+                        detail.putString("dimension", event.dimension());
+                        detail.putLong("position", event.position());
                     }
                     if (!detail.contains("bossType") && row.contains("structureBoss")) detail.putString("bossType", row.getString("structureBoss"));
                     if (!detail.contains("bossType") && row.hasUUID("bossEntity")) {
@@ -78,7 +83,7 @@ public final class SmpViews {
                     }
                 }
                 boolean privateLocation =
-                        !query.tab().equals("parties") || Parties.accepted(row, player.getUUID());
+                        !query.tab().equals("parties") || Parties.accepted((PartyState) source, player.getUUID());
                 if (!privateLocation) {
                     detail.remove("dimension");
                     detail.remove("position");
@@ -97,19 +102,19 @@ public final class SmpViews {
                 if (row.contains("rewardPreview"))
                     detail.put("reward", row.getList("rewardPreview", Tag.TAG_COMPOUND).copy());
                 if (query.tab().equals("events")) {
-                    eventPresentation(player, row, detail);
-                    com.siirio.jemserver.smp.events.CookingShow.view(player, row, detail);
+                    eventPresentation(player, source, detail);
+                    com.siirio.jemserver.smp.events.CookingShow.view(player, (EventState) source, detail);
                 }
-                detail.put("actions", actions(player, query.tab(), row));
+                detail.put("actions", actions(player, source));
                 result.put("detail", detail);
             }
         }
         return result;
     }
 
-    private static void organizer(ServerPlayer player, CompoundTag row, CompoundTag result) {
-        if (!row.hasUUID("owner")) return;
-        String name = Profiles.snapshot(player.server, row.getUUID("owner")).getString("name");
+    private static void organizer(ServerPlayer player, SmpRecord row, CompoundTag result) {
+        if (row.owner() == null) return;
+        String name = Profiles.snapshot(player.server, row.owner()).name();
         if (!name.isBlank()) result.putString("organizerName", name);
     }
 
@@ -191,80 +196,101 @@ public final class SmpViews {
                 .toLowerCase(Locale.ROOT);
     }
 
-    private static boolean authorized(ServerPlayer player, String table, CompoundTag row) {
-        if (table.equals("parties")
-                && (row.getString("state").equals("DRAFT") || row.getBoolean("solo")))
-            return row.getUUID("owner").equals(player.getUUID())
-                    || SmpRecords.member(row, player.getUUID());
+    private static boolean authorized(ServerPlayer player, SmpRecord source) {
+        if (source instanceof PartyState party && (party.state().equals("DRAFT") || party.solo()))
+            return player.getUUID().equals(party.owner()) || party.members().containsKey(player.getUUID());
         return true;
     }
 
-    private static boolean visible(ServerPlayer player, SmpQuery query, CompoundTag row) {
-        boolean owner = row.hasUUID("owner") && row.getUUID("owner").equals(player.getUUID());
-        boolean member = SmpRecords.member(row, player.getUUID());
-        if (query.tab().equals("parties")
-                && (row.getString("state").equals("DRAFT") || row.getBoolean("solo"))
-                && !owner
-                && !member) return false;
+    private static boolean visible(ServerPlayer player, SmpQuery query, SmpRecord source, CompoundTag wire) {
+        boolean owner = player.getUUID().equals(source.owner());
+        boolean member = source instanceof PartyState party ? party.members().containsKey(player.getUUID())
+                : source instanceof EventState event && event.members().containsKey(player.getUUID());
+        if (!authorized(player, source)) return false;
         if (query.filter().startsWith("owner:"))
-            return row.hasUUID("owner")
-                    && row.getUUID("owner").toString().equals(query.filter().substring(6));
+            return source.owner() != null && source.owner().toString().equals(query.filter().substring(6));
         return switch (query.filter()) {
             case "mine" -> owner;
             case "accepted" -> member;
-            case "history", "past" -> SmpData.closed(row);
-            case "active" -> row.getString("state").equals("ACTIVE");
-            case "upcoming" -> row.getString("state").equals("PLANNED");
-            default -> !SmpData.closed(row);
+            case "history", "past" -> source.closed();
+            case "active" -> source.state().equals("ACTIVE");
+            case "upcoming" -> source.state().equals("PLANNED");
+            default -> !source.closed();
         };
     }
 
-    private static ListTag actions(ServerPlayer player, String table, CompoundTag row) {
+    private static ListTag actions(ServerPlayer player, SmpRecord source) {
         var result = new ListTag();
-        if (table.equals("parties")) result.addAll(PartyAdmission.actions(player, row));
-        if (table.equals("events")) result.addAll(EventAdmission.actions(player, row));
-        var location = row.hasUUID("eventId") ? SmpData.get(player.server).events().snapshot(row.getUUID("eventId")) : row;
-        if(SmpActions.canTeleportEvent(table, row)&&meaningfulLocation(row)&&Set.of("BLOOD_MOON","BOSS_RAID","RESOURCE_RUSH").contains(row.getString("activity"))) add(result,"teleport_event");
-        if (SmpActions.canNavigate(player, table, row, location) && meaningfulLocation(location)) add(result, "navigate");
+        if (source instanceof PartyState party) {
+            PartyAdmission.actions(player, party).forEach(action -> result.add(StringTag.valueOf(action)));
+            var event = party.hasEventId() ? SmpData.get(player.server).events().snapshot(party.eventId()) : null;
+            if (SmpActions.canNavigate(player, party, event) && meaningfulLocation(event == null ? party : event)) add(result, "navigate");
+        } else if (source instanceof EventState event) {
+            EventAdmission.actions(player, event).forEach(action -> result.add(StringTag.valueOf(action)));
+            if (SmpActions.canTeleportEvent(event) && meaningfulLocation(event)
+                    && Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(event.activity())) add(result, "teleport_event");
+            if (SmpActions.canNavigate(event) && meaningfulLocation(event)) add(result, "navigate");
+        }
         return result;
     }
 
-    private static boolean meaningfulLocation(CompoundTag row) {
-        return row.contains("dimension") && row.contains("position")
-                && !Set.of("FISHING", "COOKING_SHOW").contains(row.getString("activity"));
+    private static String activity(SmpRecord source) {
+        return source instanceof PartyState party ? party.activity() : ((EventState) source).activity();
     }
 
-    private static void eventSummary(CompoundTag row, CompoundTag detail) {
-        EventDescriptions.add(row, detail);
-        detail.putBoolean("meaningfulLocation", meaningfulLocation(row));
-        if (row.contains("bossType")) detail.putString("bossType", row.getString("bossType"));
-        detail.putString("lifecycle", EventAdmission.lifecycle(row));
+    private static boolean meaningfulLocation(SmpRecord source) {
+        if (source instanceof PartyState party) return party.hasDimension() && party.hasPosition()
+                && !Set.of("FISHING", "COOKING_SHOW").contains(party.activity());
+        if (source instanceof EventState event) return event.hasDimension() && event.hasPosition()
+                && !Set.of("FISHING", "COOKING_SHOW").contains(event.activity());
+        return false;
     }
 
-    private static void eventPresentation(ServerPlayer player, CompoundTag row, CompoundTag detail) {
-        eventSummary(row, detail);
-        boolean combat = EventAdmission.combat(row);
+    private static void eventSummary(SmpRecord source, CompoundTag detail) {
+        if (source instanceof PartyState party) {
+            EventDescriptions.add(party, detail);
+            if (party.hasBossType()) detail.putString("bossType", party.bossType());
+            detail.putString("lifecycle", party.state());
+        } else if (source instanceof EventState event) {
+            EventDescriptions.add(event, detail);
+            if (event.hasBossType()) detail.putString("bossType", event.bossType());
+            detail.putString("lifecycle", EventAdmission.lifecycle(event));
+        }
+        detail.putBoolean("meaningfulLocation", meaningfulLocation(source));
+    }
+
+    private static void eventPresentation(ServerPlayer player, SmpRecord source, CompoundTag detail) {
+        eventSummary(source, detail);
+        String activity = activity(source);
+        boolean combat = source instanceof PartyState ? activity.equals("BOSS") : EventAdmission.combat((EventState) source);
         var rules = new ListTag();
         if (combat) {
-            if (row.getString("activity").equals("BLOOD_MOON")) {
+            if (activity.equals("BLOOD_MOON")) {
                 rule(rules, "waves", com.siirio.jemserver.smp.events.BloodMoonWaves.WAVES);
                 rule(rules, "safe_deaths", com.siirio.jemserver.smp.events.EventRules.SAFE_DEATHS.get());
             } else rule(rules, "start");
             rule(rules, "no_late_join");
             rule(rules, "no_friendly_fire");
             rule(rules, "eligible_rewards");
-        } else if (row.getString("activity").equals("RESOURCE_RUSH")) {
+        } else if (activity.equals("RESOURCE_RUSH")) {
             rule(rules, "resource_rush");
             rule(rules, "rush_natural");
             rule(rules, "rush_silk_touch");
             rule(rules, "rush_animals");
             rule(rules, "rush_animal_boundary");
-            if (row.getBoolean("rushTrackingFull")) rule(rules, "rush_tracking_full");
-        }
-        else if (row.getString("activity").equals("FISHING")) EventDescriptions.fishingRules(rules);
-        else if (row.getString("activity").equals("COOKING_SHOW")) rule(rules, "cooking");
+            if (((EventState) source).rushTrackingFull()) rule(rules, "rush_tracking_full");
+        } else if (activity.equals("FISHING")) EventDescriptions.fishingRules(rules);
+        else if (activity.equals("COOKING_SHOW")) rule(rules, "cooking");
         detail.put("rules", rules);
-        EventRewardPreview.add(player, row, detail);
+        if (source instanceof PartyState party) EventRewardPreview.add(player, party, detail);
+        else EventRewardPreview.add(player, (EventState) source, detail);
+    }
+
+    private record Projection(SmpRecord source, CompoundTag wire) {}
+    private static CompoundTag encode(SmpRecord source) {
+        if (source instanceof PartyState party) return PartyStateNbtCodec.encode(party);
+        if (source instanceof EventState event) return EventNbtCodec.encode(event);
+        throw new IllegalArgumentException("Not an SMP view route");
     }
 
     private static void rule(ListTag rules, String key, Object... values) {
@@ -290,6 +316,156 @@ public final class SmpViews {
         static int totalItems(ServerPlayer player) { return com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.totalItems(player); }
         static ListTag bundles(ServerPlayer player, int start, int size) { return com.siirio.jemworldbosstiers.encounter.PendingRewardContainer.bundles(player, start, size); }
     }
+
+    private static CompoundTag partyView(ServerPlayer player, PartyState row) {
+        var copy = PartyStateNbtCodec.encode(row);
+        copy.remove("invitations");
+        int present = 0, ready = 0;
+        var members = copy.getCompound("members");
+        for (String key : members.getAllKeys()) {
+            var member = members.getCompound(key);
+            var online = player.server.getPlayerList().getPlayer(UUID.fromString(key));
+            boolean simulated=member.getBoolean("simulated");
+            member.putBoolean("online", online != null || simulated);
+            boolean here =
+                    member.getBoolean("accepted")
+                            && (simulated || online != null && SmpRecords.present(row, online));
+            member.putBoolean("present", here);
+            UUID memberId=UUID.fromString(key);
+            boolean leader=row.owner().equals(player.getUUID());
+            member.putBoolean("canApprove",leader&&!row.state().equals("ACTIVE")&&!member.getBoolean("accepted"));
+            member.putBoolean("canRemove",leader&&!row.state().equals("ACTIVE")&&!memberId.equals(player.getUUID()));
+            member.putBoolean("canTransfer",leader&&!row.state().equals("ACTIVE")&&member.getBoolean("accepted")&&!memberId.equals(player.getUUID()));
+            if (here) present++;
+            if (online == null && !simulated) member.putBoolean("ready", false);
+            if (member.getBoolean("ready") && member.getBoolean("accepted")) ready++;
+        }
+        copy.putInt("worldTier", com.siirio.jemworldbosstiers.api.WorldTierApi.currentTier(player.server));
+        if (row.hasBossEntity()) {
+            var level =
+                    player.server.getLevel(
+                            net.minecraft.resources.ResourceKey.create(
+                                    net.minecraft.core.registries.Registries.DIMENSION,
+                                    new net.minecraft.resources.ResourceLocation(
+                                            row.dimension())));
+            if (level != null
+                    && level.getEntity(row.bossEntity()) instanceof net.minecraft.world.entity.LivingEntity boss)
+                for (var status :
+                        com.siirio.jemworldbosstiers.api.HostedEncounterApi.status(boss)) {
+                    var member = members.getCompound(status.playerId().toString());
+                    member.putString("combatState", status.state());
+                    member.putBoolean("reviveAvailable", status.reviveAvailable());
+                    member.putLong("remainingTicks", status.remainingTicks());
+                }
+        }
+        if (row.activity().equals("BOSS") && !row.state().equals("ACTIVE")) {
+            var scaling = com.siirio.jemworldbosstiers.encounter.HostedScaling.calculate(Math.max(1, present), false, 1, 1);
+            copy.putInt("partyBonusPercent", (int) Math.round((scaling.health() - 1) * 100));
+        }
+        copy.putInt("present", present);
+        copy.putInt("readyCount", ready);
+        copy.putBoolean("leader", row.owner().equals(player.getUUID()));
+        String reason = HostedParties.startReason(player, row);
+        copy.putBoolean("canStart", reason.isEmpty());
+        copy.putString("startReason", reason);
+        copy.putBoolean("closeLobby", row.closed());
+        if (row.closed()) copy.putString("lobbyMessage", "party_dissolved");
+        var candidates = new net.minecraft.nbt.ListTag();
+        if (copy.getBoolean("leader") && !row.solo() && !row.state().equals("ACTIVE") && !row.closed()) {
+            for (var target : player.server.getPlayerList().getPlayers()) {
+                if (SmpRecords.member(row, target.getUUID()) || target.isSpectator()
+                        || SmpData.get(player.server).parties().snapshots().stream().anyMatch(other -> !other.closed() && Parties.accepted(other, target.getUUID()))) continue;
+                var candidate = new CompoundTag();
+                candidate.putUUID("id", target.getUUID());
+                candidate.putString("name", target.getGameProfile().getName());
+                candidate.putBoolean("pending", row.invitations().containsKey(target.getUUID()));
+                candidates.add(candidate);
+            }
+        }
+        copy.put("inviteCandidates", candidates);
+        return copy;
+    }
+
+    public static CompoundTag profile(ServerPlayer viewer, UUID id) {
+        var state = SmpData.get(viewer.server).profiles().snapshot(id);
+        var source = state == null ? null : ProfileStateNbtCodec.encode(state);
+        var row = new CompoundTag();
+        if (source == null) return row;
+        for (String key :
+                java.util.List.of(
+                        "id",
+                        "owner",
+                        "revision",
+                        "name",
+                        "firstJoin",
+                        "playTicks",
+                        "partiesHosted",
+                        "partiesJoined",
+                        "bossesHosted",
+                        "bossAssists",
+                        "raidsCompleted",
+                        "bloodMoonClears",
+                        "fishingEvents",
+                        "creaturesTamed",
+                        "landmarksCreated",
+                        "biomesExplored",
+                        "animalsTamed",
+                        "tameSpecies",
+                        "fishingMilestones",
+                        "rewardAvailability")) {
+            if (source.contains(key)) row.put(key, source.get(key).copy());
+        }
+        row.putInt("discoveredBiomes", source.getCompound("discoveredBiomes").size());
+        var statistics = new net.minecraft.nbt.ListTag();
+        var eventStats = source.getCompound("eventStats");
+        for (String type : eventStats.getAllKeys()) {
+            var statistic = new CompoundTag();
+            statistic.putString("type", type);
+            statistic.putLong("count", eventStats.getLong(type));
+            statistics.add(statistic);
+        }
+        statistics.sort(java.util.Comparator.comparing(value -> ((CompoundTag) value).getString("type")));
+        row.put("eventStats", statistics);
+        var player = viewer.server.getPlayerList().getPlayer(id);
+        row.putBoolean("online", player != null);
+        if (player != null)
+            row.putInt(
+                    "playTicks",
+                    player.getStats()
+                            .getValue(
+                                    net.minecraft.stats.Stats.CUSTOM.get(
+                                            net.minecraft.stats.Stats.PLAY_TIME)));
+        if (player != null)
+            row.putInt(
+                    "mobsKilled",
+                    player.getStats().getValue(net.minecraft.stats.Stats.CUSTOM.get(net.minecraft.stats.Stats.MOB_KILLS)));
+        else if (source.contains("mobsKilled")) row.putInt("mobsKilled", source.getInt("mobsKilled"));
+        if (DomainFeatures.loaded("jem_roles")) RacesAdapter.project(viewer, id, row);
+        var professions = new net.minecraft.nbt.ListTag();
+        if (net.minecraftforge.fml.ModList.get().isLoaded("jem_professions")) {
+            professions = source.getList("professions", net.minecraft.nbt.Tag.TAG_COMPOUND).copy();
+            if (player != null) {
+                professions = new ListTag();
+                for (var value : com.siirio.jemserver.compat.professions.ProfessionHostAdapter.snapshot(player)) {
+                    var profession = new CompoundTag();
+                    profession.putString("id", value.id());
+                    profession.putLong("xp", value.xp());
+                    profession.putInt("level", value.level());
+                    professions.add(profession);
+                }
+            }
+        }
+        row.put("professions", professions);
+        if (DomainFeatures.loaded("jem_settlements")) com.siirio.jemserver.compat.settlements.SettlementHostAdapter.profile(viewer, id, row);
+        return row;
+    }
+
+    private static final class RacesAdapter {
+        static void project(ServerPlayer viewer, UUID id, CompoundTag row) {
+            com.siirio.jemroles.api.RaceApi.get(viewer.server, id).ifPresent(race -> row.putString("race", race.race().name()));
+        }
+    }
+
 
     private SmpViews() {}
 }

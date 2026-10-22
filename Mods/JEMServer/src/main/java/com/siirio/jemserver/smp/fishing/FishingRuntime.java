@@ -34,6 +34,9 @@ public final class FishingRuntime {
     }
     public static void caught(TideFishingHook hook) {
         if (!(hook.getPlayerOwner() instanceof ServerPlayer player) || player instanceof FakePlayer || player.isCreative()) return;
+        SmpData.get(player.server).edit(() -> caughtOwned(hook, player));
+    }
+    private static void caughtOwned(TideFishingHook hook, ServerPlayer player) {
         if (hook.getCatchType() != TideFishingHook.CatchType.FISH) return;
         var row = EventScheduler.active(player.server, "FISHING");
         if (row == null || hook.getPersistentData().getBoolean("jem_fishing_rewarded")) return;
@@ -55,17 +58,17 @@ public final class FishingRuntime {
         if (catches == 0) return;
         hook.getPersistentData().putBoolean("jem_fishing_rewarded", true);
         com.siirio.jemworldbosstiers.api.ExperienceRewardApi.give(player, xp);
-        var scores = row.getCompound("scores");
-        var score = scores.getCompound(player.getUUID().toString());
-        if (score.getInt("catches") == 0) {
-            Profiles.count(player.server, player.getUUID(), "fishingEvents");
+        var scores = new java.util.LinkedHashMap<>(row.scores());
+        var score = scores.getOrDefault(player.getUUID(), new com.siirio.jemserver.smp.EventFishingScore());
+        if (score.catches() == 0) {
+            Profiles.count(player.server, player.getUUID(), com.siirio.jemserver.smp.ProfileCounter.FISHING_EVENTS);
             Profiles.countEvent(player.server, player.getUUID(), "FISHING");
         }
-        score.putInt("catches", score.getInt("catches") + catches);
-        score.putInt("points", score.getInt("points") + xp);
-        score.putInt("fishingXp", score.getInt("fishingXp") + xp);
-        scores.put(player.getUUID().toString(), score);
-        row.put("scores", scores);
+        score.catches( score.catches() + catches);
+        score.points( score.points() + xp);
+        score.fishingXp( score.fishingXp() + xp);
+        scores.put(player.getUUID(), score);
+        row.scores(scores);
         
     }
     private FishingRuntime() {}

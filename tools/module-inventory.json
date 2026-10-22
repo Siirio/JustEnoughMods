@@ -16,6 +16,9 @@
       "side": "client-only",
       "modIds": [
         "jem_adaptive_culling"
+      ],
+      "additionalSourceRoots": [
+        "src/generated/resources"
       ]
     },
     {
@@ -34,6 +37,9 @@
       "side": "client-and-server-required",
       "modIds": [
         "jemcompat"
+      ],
+      "additionalSourceRoots": [
+        "src/generated/resources"
       ]
     },
     {
@@ -43,6 +49,9 @@
       "side": "client-and-server-required",
       "modIds": [
         "jem_drill_lifecycle"
+      ],
+      "additionalSourceRoots": [
+        "src/generated/resources"
       ]
     },
     {
@@ -80,7 +89,15 @@
       "modIds": [
         "jem_professions",
         "jem_professions_sandbox"
-      ]
+      ],
+      "sourceProfile": {
+        "property": "professionProfile",
+        "default": "production",
+        "choices": [
+          "production",
+          "sandbox"
+        ]
+      }
     },
     {
       "name": "JEMRewards",
@@ -125,6 +142,9 @@
       "side": "client-and-server-required",
       "modIds": [
         "jem_twelve_eyes"
+      ],
+      "additionalSourceRoots": [
+        "src/generated/resources"
       ]
     },
     {

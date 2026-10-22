@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -75,7 +77,7 @@ public final class ArenaSurfaceRules {
 
     private static boolean insideArena(ServerLevel level, BlockPos pos) {
         return EventScheduler.active(level.getServer()).stream()
-                .filter(row -> row.contains("radius"))
+                .filter(row -> row.hasRadius())
                 .anyMatch(row -> EventRegions.contains(row, level, pos));
     }
 

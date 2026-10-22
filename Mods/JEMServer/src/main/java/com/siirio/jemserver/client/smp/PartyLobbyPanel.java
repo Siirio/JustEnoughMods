@@ -169,7 +169,7 @@ final class PartyLobbyPanel {
     }
     private static void text(GuiGraphics g, Font font, Component text, int x, int y, int color, int max) {
         String value = text.getString();
-        if (font.width(value) > max) value = font.plainSubstrByWidth(value, Math.max(0, max - 8)) + "…";
+        if (font.width(value) > max) value = font.plainSubstrByWidth(value, Math.max(0, max - 8)) + "\u2026";
         g.drawString(font, value, x, y, color, false);
     }
     private static void hitWithin(Consumer<SmpHit> hits, int x, int y, int w, int h,

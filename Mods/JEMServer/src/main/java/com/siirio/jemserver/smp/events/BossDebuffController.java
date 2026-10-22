@@ -1,5 +1,7 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.*;
+
 import com.siirio.jemserver.smp.SmpData;
 import java.util.List;
 import java.util.function.Supplier;
@@ -57,39 +59,39 @@ public final class BossDebuffController {
                     vanilla("unluck",()->MobEffects.UNLUCK,300,0),
                     vanilla("glowing",()->MobEffects.GLOWING,200,0))));
 
-    public static void initializeBoss(ServerLevel level,CompoundTag row,Mob boss,List<ServerPlayer> players) {
+    public static void initializeBoss(ServerLevel level,EventState row,Mob boss,List<ServerPlayer> players) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { initializeBossInScope(level, row, boss, players); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> initializeBossInScope(level, store.events().bind(row), boss, players));
     }
 
-    private static void initializeBossInScope(ServerLevel level,CompoundTag row,Mob boss,List<ServerPlayer> players) {
+    private static void initializeBossInScope(ServerLevel level,EventState row,Mob boss,List<ServerPlayer> players) {
         if (!EventRuntime.enabled(level.getServer())) return;
         long now=level.getGameTime();
-        int profile=Math.floorMod(row.getInt(PROFILE_CURSOR),PROFILES.size());
-        row.putInt(PROFILE_CURSOR,profile+1);
+        int profile=Math.floorMod(row.setPiece().debuffProfileCursor(),PROFILES.size());
+        row.editSetPiece().debuffProfileCursor(profile+1);
         CompoundTag data=boss.getPersistentData();
         data.putInt(PROFILE,profile);
         data.putLong(WINDOW_END,now+CAST_WINDOW_TICKS);
-        if(!row.contains(NEXT_CAST)) {
+        if(!row.setPiece().hasDebuffNextCast()) {
             cast(level,boss,PROFILES.get(profile),players);
-            row.putLong(NEXT_CAST,nextCast(now,level.random));
+            row.editSetPiece().debuffNextCast(nextCast(now,level.random));
         }
 
     }
 
-    public static void tick(ServerLevel level,CompoundTag row,List<Mob> bosses) {
+    public static void tick(ServerLevel level,EventState row,List<Mob> bosses) {
         var serverForMutation = level.getServer();
         if (serverForMutation == null || serverForMutation.overworld() == null) { tickInScope(level, row, bosses); return; }
         var store = com.siirio.jemserver.smp.SmpData.get(serverForMutation);
         store.edit(() -> tickInScope(level, store.events().bind(row), bosses));
     }
 
-    private static void tickInScope(ServerLevel level,CompoundTag row,List<Mob> bosses) {
+    private static void tickInScope(ServerLevel level,EventState row,List<Mob> bosses) {
         if (!EventRuntime.enabled(level.getServer())) return;
         long now=level.getGameTime();
-        if(now<row.getLong(NEXT_CAST)) return;
+        if(now<row.setPiece().debuffNextCast()) return;
         List<ServerPlayer> players=new EventSession(row).active(level.getServer());
         if(players.isEmpty()) return;
         List<Mob> casters=bosses.stream().filter(boss->boss.getPersistentData().contains(WINDOW_END)&&now<=boss.getPersistentData().getLong(WINDOW_END)).toList();
@@ -97,12 +99,12 @@ public final class BossDebuffController {
         Mob boss=casters.get(level.random.nextInt(casters.size()));
         int profile=Math.floorMod(boss.getPersistentData().getInt(PROFILE),PROFILES.size());
         cast(level,boss,PROFILES.get(profile),players);
-        row.putLong(NEXT_CAST,nextCast(now,level.random));
+        row.editSetPiece().debuffNextCast(nextCast(now,level.random));
 
     }
 
-    public static void reset(CompoundTag row) {
-        row.remove(NEXT_CAST);
+    public static void reset(EventState row) {
+        row.editSetPiece().clearDebuffNextCast();
     }
 
     @SubscribeEvent

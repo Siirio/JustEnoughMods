@@ -2,38 +2,12 @@ package com.siirio.jemserver.smp;
 
 import net.minecraft.nbt.*;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.*;
 
 public final class LegacyRewards {
     private static final String DEPOSIT_RECEIPT = "jem_smp_deposit_receipt";
     private static final String DELIVERY_RECEIPT = "jem_smp_delivery_receipt";
-
-    private static void enqueue(ListTag pending, ItemStack stack) {
-        for (int index = 0; index < pending.size() && !stack.isEmpty(); index++) {
-            ItemStack existing = ItemStack.of(pending.getCompound(index));
-            if (!ItemStack.isSameItemSameTags(existing, stack)) continue;
-            int count =
-                    Math.min(
-                            stack.getCount(),
-                            Math.max(0, existing.getMaxStackSize() - existing.getCount()));
-            if (count > 0) {
-                existing.grow(count);
-                stack.shrink(count);
-                pending.set(index, existing.save(new CompoundTag()));
-            }
-        }
-        while (!stack.isEmpty()) {
-            SmpRecords.require(
-                    pending.size() < SmpConfig.CONTRACT_DELIVERIES.get(), "delivery_queue_full");
-            int count = Math.min(stack.getCount(), stack.getMaxStackSize());
-            var next = stack.copy();
-            next.setCount(count);
-            pending.add(next.save(new CompoundTag()));
-            stack.shrink(count);
-        }
-    }
 
     public static void migrate(ServerPlayer player) {
         var data = SmpData.get(player.server);
@@ -45,38 +19,35 @@ public final class LegacyRewards {
         var data = SmpData.get(player.server);
         var profile = Profiles.get(player.server, player.getUUID());
         if (!DomainFeatures.loaded("jem_rewards")) {
-            if (profile.contains("rewardMigration", Tag.TAG_COMPOUND) || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
-                if (!profile.getString("rewardAvailability").equals("UNAVAILABLE_MISSING_REWARD_OWNER")) {
-                    profile.putString("rewardAvailability", "UNAVAILABLE_MISSING_REWARD_OWNER");
+            if (profile.rewardMigration() != null || !profile.deliveries().isEmpty()) {
+                if (!profile.rewardAvailability().equals("UNAVAILABLE_MISSING_REWARD_OWNER")) {
+                    profile.rewardAvailability("UNAVAILABLE_MISSING_REWARD_OWNER");
                      data.flush(player.server);
                     player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("jem.smp.escrow_recovery_required"));
                 }
             }
             return;
         }
-        if (profile.contains("rewardAvailability")) { profile.remove("rewardAvailability");  data.flush(player.server); }
-        while (profile.contains("rewardMigration", Tag.TAG_COMPOUND)
-                || !profile.getList("deliveries", Tag.TAG_COMPOUND).isEmpty()) {
-            if (!profile.contains("rewardMigration", Tag.TAG_COMPOUND)) {
-                var journal = new CompoundTag();
-                journal.putUUID("id", UUID.nameUUIDFromBytes(("jem_smp_deliveries:" + player.getUUID()).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
-                journal.put("items", profile.getList("deliveries", Tag.TAG_COMPOUND).copy());
-                profile.put("rewardMigration", journal);
-                profile.remove("deliveries");
-                
+        if (profile.hasRewardAvailability()) { profile.clearRewardAvailability();  data.flush(player.server); }
+        while (profile.rewardMigration() != null
+                || !profile.deliveries().isEmpty()) {
+            if (profile.rewardMigration() == null) {
+                UUID id = UUID.nameUUIDFromBytes(("jem_smp_deliveries:" + player.getUUID()).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                profile.rewardMigration(new ProfileState.RewardMigration(id, profile.deliveries(), false));
+                profile.clearDeliveries();
                 data.flush(player.server);
             }
-            var journal = profile.getCompound("rewardMigration");
-            if (!journal.getBoolean("committed")) {
+            var journal = profile.rewardMigration();
+            if (!journal.committed()) {
                 RewardImports.importLegacy(
-                        player, journal.getUUID("id"), journal.getList("items", Tag.TAG_COMPOUND));
-                journal.putBoolean("committed", true);
+                        player, journal.id(), journal.items().toNbt());
+                profile.rewardMigration(new ProfileState.RewardMigration(journal.id(), journal.items(), true));
                 
             }
             data.flush(player.server);
             RewardImports.finishLegacyImport(
-                    player, journal.getUUID("id"));
-            profile.remove("rewardMigration");
+                    player, journal.id());
+            profile.clearRewardMigration();
             
             data.flush(player.server);
         }
@@ -92,8 +63,8 @@ public final class LegacyRewards {
         if (player.getPersistentData().contains(DELIVERY_RECEIPT, Tag.TAG_COMPOUND)) {
             finishDelivery(
                     player, profile, player.getPersistentData().getCompound(DELIVERY_RECEIPT));
-        } else if (profile.contains("deliveryClaim", Tag.TAG_COMPOUND)) {
-            profile.remove("deliveryClaim");
+        } else if (profile.deliveryClaim() != null) {
+            profile.clearDeliveryClaim();
             
             data.flush(player.server);
         }
@@ -102,34 +73,34 @@ public final class LegacyRewards {
                 data.contracts().currentRows().stream()
                         .filter(
                                 row ->
-                                        row.hasUUID("owner")
-                                                && row.getUUID("owner").equals(player.getUUID())
-                                                && row.contains("escrow", Tag.TAG_LIST)
-                                                && !row.contains("legacyDisposition"))
+                                        row.hasOwner()
+                                                && row.owner().equals(player.getUUID())
+                                                && row.hasEscrow()
+                                                && !row.hasLegacyDisposition())
                         .limit(SmpConfig.DELIVERY_BATCH.get())
                         .toList();
         for (var row : rows) {
             boolean deposited =
                     receipt.hasUUID(DEPOSIT_RECEIPT)
-                            && receipt.getUUID(DEPOSIT_RECEIPT).equals(row.getUUID("id"));
-            if (row.getString("state").startsWith("FUNDING") && !deposited) {
-                row.putString("legacyDisposition", "NOT_DEBITED");
+                            && receipt.getUUID(DEPOSIT_RECEIPT).equals(row.id());
+            if (row.state().startsWith("FUNDING") && !deposited) {
+                row.legacyDisposition("NOT_DEBITED");
             } else {
-                UUID migrationId = UUID.nameUUIDFromBytes(("jem_smp_contract:" + row.getUUID("id")).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                UUID migrationId = UUID.nameUUIDFromBytes(("jem_smp_contract:" + row.id()).getBytes(java.nio.charset.StandardCharsets.UTF_8));
                 com.siirio.jemrewards.PendingRewardContainer.importOffline(player.server, player.getUUID(), migrationId,
-                        row.getList("escrow", Tag.TAG_COMPOUND));
-                row.remove("escrow");
-                row.putString("legacyDisposition", "RETURNED_TO_OWNER");
+                        row.escrow());
+                row.clearEscrow();
+                row.legacyDisposition("RETURNED_TO_OWNER");
             }
-            row.putString("state", "CANCELLED");
+            row.state("CANCELLED");
             
             data.flush(player.server);
         }
         if (receipt.hasUUID(DEPOSIT_RECEIPT)) {
             var row = data.contracts().current(receipt.getUUID(DEPOSIT_RECEIPT));
             SmpRecords.require(row != null, "escrow_recovery_required");
-            if (!row.getString("state").startsWith("FUNDING")
-                    || row.contains("legacyDisposition")) {
+            if (!row.state().startsWith("FUNDING")
+                    || row.hasLegacyDisposition()) {
                 data.flush(player.server);
                 receipt.remove(DEPOSIT_RECEIPT);
                 persistPlayer(player);
@@ -138,22 +109,22 @@ public final class LegacyRewards {
     }
 
     private static void finishDelivery(
-            ServerPlayer player, CompoundTag profile, CompoundTag receipt) {
+            ServerPlayer player, ProfileState profile, CompoundTag receipt) {
         var data = SmpData.get(player.server);
         data.edit(() -> finishDeliveryOwned(player, data.profiles().bind(profile), receipt));
     }
 
     private static void finishDeliveryOwned(
-            ServerPlayer player, CompoundTag profile, CompoundTag receipt) {
+            ServerPlayer player, ProfileState profile, CompoundTag receipt) {
         var data = SmpData.get(player.server);
-        if (profile.contains("deliveryClaim", Tag.TAG_COMPOUND)) {
-            var journal = profile.getCompound("deliveryClaim");
+        if (profile.deliveryClaim() != null) {
+            var journal = profile.deliveryClaim();
             SmpRecords.require(
-                    receipt.hasUUID("id") && receipt.getUUID("id").equals(journal.getUUID("id")),
+                    receipt.hasUUID("id") && receipt.getUUID("id").equals(journal.id()),
                     "escrow_recovery_required");
             persistPlayer(player);
-            profile.put("deliveries", receipt.getList("remaining", Tag.TAG_COMPOUND).copy());
-            profile.remove("deliveryClaim");
+            profile.deliveries(NativeItems.fromNbt(receipt.getList("remaining", Tag.TAG_COMPOUND)));
+            profile.clearDeliveryClaim();
             
         }
         data.flush(player.server);
