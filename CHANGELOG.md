@@ -1,3 +1,11 @@
+## 2026-10-23 - Match enchanting GUI slots to the vanilla Atlas texture
+
+User request: remake the complete enchanting GUI with the exact vanilla slot coordinates and dimensions, including equal-size upper inputs and inventory slots.
+
+Implementation choice: replace approximate generated geometry with a native 256x256 Aseprite candidate in Docs/art/enchanting-native-2026-10-23. Preserve the original layer and source slot topology, apply position-preserving material colors and separate native margin painting, and export the PNG directly. Image-coordinate inspection records all 38 frames as 18x18 with 16x16 interiors, zero palette-mapped slot mismatches, identical alpha, and unchanged pixels outside the main 176x166 panel. The candidate has simpler artwork than the generated concept and retains native option/state treatment; visual approval and runtime acceptance are outstanding.
+
+Art candidate only: no managed pack, game profile, local Server artifact, release baseline, build, gameplay test or launch. Native publication was already false at task start: journal 63 published hash differs from the staged hash due to parallel work; this task neither changes nor publishes that generation.
+
 ## 2026-10-23 - Add universal handbook and native Hint/Jade help (in testing)
 
 - User request: implement the supplied universal handbook brief, resume after FTB commit `67d9f215`, preserve quest/progress work and coordinate with the separate GUI Atlas session. The user then authorized continued implementation; parallel seasonal work was coordinated before shared artifact/Atlas delivery.
