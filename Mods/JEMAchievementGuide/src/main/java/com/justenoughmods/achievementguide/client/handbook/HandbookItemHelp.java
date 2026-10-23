@@ -94,12 +94,12 @@ public final class HandbookItemHelp extends SimplePreparableReloadListener<Map<S
     }
 
     private static void readLanguage(ResourceManager resources, String language, Map<String, JsonObject> result) {
-        String prefix = BOOK_ROOT + language + "/entries/";
+        String prefix = BOOK_ROOT + language + "/entries";
         resources.listResources(prefix, id -> id.getNamespace().equals("jem_advancements") && id.getPath().endsWith(".json"))
                 .forEach((id, resource) -> {
                     try (var reader = resource.openAsReader()) {
                         JsonObject entry = JsonParser.parseReader(reader).getAsJsonObject();
-                        String key = id.getPath().substring(prefix.length(), id.getPath().length() - 5);
+                        String key = id.getPath().substring(prefix.length() + 1, id.getPath().length() - 5);
                         // Locale replacement is per entry, exactly as the book's content is authored.
                         result.put(key, entry);
                     } catch (IOException | RuntimeException error) {

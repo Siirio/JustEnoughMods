@@ -1,3 +1,9 @@
+## 2026-10-23 - Repair handbook resource reload
+
+- User requested: investigate and repair hollow-square text and crashes entering a world, persisting after the save was deleted.
+- Bug / Client Sided / JEMAchievementGuide search and item-help listeners supplied three trailing-slash directory roots to Minecraft 1.20.1 `ResourceManager.listResources`, aborting initial resource reload before normal client setup / in testing. The earlier world-entry dynamic-lights null singleton follows that same failed startup; no save corruption is established. Font recovery and world entry await user acceptance.
+- Codex implementation: query `categories` and `entries` without trailing separators and adjust relative-ID extraction by one character, preserving existing handbook content, category IDs and item selectors. No save, native resource-pack choice or third-party mod is changed. Production reobfuscation passed; exact JAR synchronized to local Server and ManagedPack, native generation 65 published and applied to stopped `test jem` with matching hashes and no pending transaction. Evidence: `Docs/handbook/delivery.json` (`resource_reload_repair`).
+
 ## 2026-10-23 - Replace biome-bound resource-pack concepts with controlled style studies
 
 - User feedback: the first resource-pack boards focused on biome, dimension and palette changes instead of genuinely experimenting with textures and interface approaches. The user requires comparisons of actual craft systems rather than content themes.

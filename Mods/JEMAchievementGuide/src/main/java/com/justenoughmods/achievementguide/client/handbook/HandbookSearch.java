@@ -33,22 +33,22 @@ public final class HandbookSearch extends SimplePreparableReloadListener<Map<Res
         String base = "patchouli_books/just_enough_guide/";
         for (String language : List.of("en_us", "ru_ru")) {
             Map<ResourceLocation, JsonObject> categories = new HashMap<>();
-            String categoryPrefix = base + language + "/categories/";
+            String categoryPrefix = base + language + "/categories";
             resources.listResources(categoryPrefix, id -> "jem_advancements".equals(id.getNamespace()) && id.getPath().endsWith(".json"))
                     .forEach((id, resource) -> {
                         try (var reader = resource.openAsReader()) {
-                            String path = id.getPath().substring(categoryPrefix.length(), id.getPath().length() - 5);
+                            String path = id.getPath().substring(categoryPrefix.length() + 1, id.getPath().length() - 5);
                             categories.put(new ResourceLocation("jem_advancements", path), JsonParser.parseReader(reader).getAsJsonObject());
                         } catch (IOException | RuntimeException exception) {
                             throw new IllegalStateException("Invalid handbook search category: " + id, exception);
                         }
                     });
-            String prefix = base + language + "/entries/";
+            String prefix = base + language + "/entries";
             resources.listResources(prefix, id -> "jem_advancements".equals(id.getNamespace()) && id.getPath().endsWith(".json"))
                     .forEach((id, resource) -> {
                         try (var reader = resource.openAsReader()) {
                             var json = JsonParser.parseReader(reader).getAsJsonObject();
-                            String path = id.getPath().substring(prefix.length(), id.getPath().length() - 5);
+                            String path = id.getPath().substring(prefix.length() + 1, id.getPath().length() - 5);
                             ResourceLocation key = new ResourceLocation("jem_advancements", path);
                             String text = json.has("name") ? json.get("name").getAsString() : "";
                             if (json.has("jem_aliases")) for (var alias : json.getAsJsonArray("jem_aliases")) text += " " + alias.getAsString();

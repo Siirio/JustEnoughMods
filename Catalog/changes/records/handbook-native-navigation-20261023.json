@@ -44,6 +44,12 @@
         "operation": "document",
         "before": "Native books existed separately.",
         "after": "Eight general native families plus acquired Aquamirae NBT logbooks, preserving native knowledge. Fixed three-route server request protocol1 is read-only and requires the exact handbook."
+      },
+      {
+        "property": "handbook.resource_reload",
+        "operation": "document",
+        "before": "Search and item-help listeners queried categories/ and entries/ with trailing slashes. Minecraft 1.20.1 rejects these directories before reading resources, aborting initial resource reload.",
+        "after": "Query directory roots without a trailing slash and skip exactly the separating slash when deriving relative category/entry IDs. Bilingual search, category ancestry, item selectors and authored resources retain their existing identities."
       }
     ]
   },
@@ -170,6 +176,16 @@
         "Docs/handbook/delivery.json",
         "Docs/DEVELOPMENT.md"
       ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "repair_client_resource_reload",
+      "summary": "Fix all three invalid handbook directory queries after user reports hollow-square text and crashes before world entry; retain native resource failures rather than masking them.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSearch.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookItemHelp.java"
+      ]
     }
   ],
   "impacts": {
@@ -188,7 +204,8 @@
     "notes": [
       "FTB progress bridge, chapter image Mixin, content and rewards from 67d9f215 remain intact.",
       "No new textures, runtime dependency, gameplay balance or progression state. Native public APIs are preferred; three optional client Mixins extend search/history/category access.",
-      "The legacy DrillLifecycle/KubeJS guide remains hidden and no longer claims minecraft:book."
+      "The legacy DrillLifecycle/KubeJS guide remains hidden and no longer claims minecraft:book.",
+      "2026-10-23 resource-reload repair changes only client resource enumeration. No recipes, progression, registries, equipment, combat, economy, loot, AI, worldgen or saved data change. Initial reload recovery and skipped client setup explain the observed font failure and uninitialized dynamic-lights world-entry crash; post-repair gameplay acceptance remains pending. Delivery evidence: Docs/handbook/delivery.json resource_reload_repair."
     ],
     "unresolved": [
       "Actual GUI scale, focus, narration and composed visual acceptance are unobserved. No gameplay/client launch was performed.",

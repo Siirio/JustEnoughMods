@@ -209,5 +209,116 @@
     },
     "receipt": "Mods/JEMRewards/resource-metadata-delivery.json",
     "gameplay_acceptance": "in testing; user relaunch remains unobserved"
+  },
+  "resource_reload_repair": {
+    "date_local": "2026-10-23T15:13:09",
+    "timezone": "Asia/Yekaterinburg",
+    "status": "in testing",
+    "user_requested": "Repair hollow-square text and crashes on startup/world entry; deleting a save did not help.",
+    "root_cause": "JEMAchievementGuide passed three directory roots ending in / to Minecraft 1.20.1 ResourceManager.listResources, which rejects them before reading JSON and aborts initial client resource reload.",
+    "five_whys": [
+      "Client cannot finish normal startup; newest crash reports fail rendering the initial loading overlay, before world loading.",
+      "Initial resource reload aborts while preparing handbook search and item help.",
+      "Minecraft MultiPackResourceManager.checkTrailingDirectoryPath rejects the supplied category/entry roots.",
+      "Both handbook reload listeners use directory strings with trailing separators, mixing enumeration roots with relative-ID prefixes.",
+      "JEMAchievementGuide owns these calls and violated the native resource-directory contract; fix all three roots and preserve the exact relative-ID boundary."
+    ],
+    "secondary_symptoms": {
+      "font": "User-observed hollow squares are consistent with aborted resource reload; post-fix rendering is unobserved.",
+      "world_entry": "14:40 startup records the same reload failure and resource-pack recovery; no dynamic-lights initialization occurs before the 14:46 null-singleton crash. Installed SodiumDynamicLights assigns INSTANCE in onInitializeClient called by clientSetup. Incomplete initialization is the evidence-supported inference; no save corruption is established."
+    },
+    "mechanism": "Remove trailing slash from three listResources directory queries and add one to each corresponding relative-ID substring boundary. No catch/fallback, null guard, save change or resource-pack reset.",
+    "production_build": {
+      "command": ".\\gradlew.bat :JEMAchievementGuide:jar --console=plain",
+      "result": "BUILD SUCCESSFUL; reobfJar completed",
+      "sha256": "9d1645e44ebcdc4029d8fcb295c3cb0d63f2bda94cc8ec08cd317c898cd56aaf",
+      "packaging": {
+        "sha256": "9d1645e44ebcdc4029d8fcb295c3cb0d63f2bda94cc8ec08cd317c898cd56aaf",
+        "changed_zip_entries": [
+          "com/justenoughmods/achievementguide/client/handbook/HandbookItemHelp.class",
+          "com/justenoughmods/achievementguide/client/handbook/HandbookSearch.class"
+        ],
+        "added": [],
+        "removed": [],
+        "unchanged_entry_count": 1501
+      }
+    },
+    "server_synchronized": true,
+    "native_published": true,
+    "test_jem_applied": true,
+    "acceptance": "Pending user relaunch; no client/gameplay launch, tests, lint or static analysis.",
+    "managed_pack_synchronized": true,
+    "publication": {
+      "journal_sequence": 65,
+      "content_token": "2849d1a81de031af437a39f910b221da3c4f1635",
+      "preview_diff": {
+        "added": 0,
+        "changed": 2,
+        "removed": 0
+      },
+      "changed_paths": [
+        "jem-pack/manifest.json",
+        "mods/jem-advancements-5.1.0.jar"
+      ],
+      "status": {
+        "published": true,
+        "journalSequence": 65,
+        "publishedManifestSha1": "98b21167e7045a49b9245b5d83858572eb1bdc81",
+        "stagedManifestSha1": "98b21167e7045a49b9245b5d83858572eb1bdc81"
+      }
+    },
+    "atlas_refresh": {
+      "restored_semantically_unchanged_files": 422,
+      "semantic_changed_paths": [
+        "Catalog/manifest.json"
+      ],
+      "note": "Full Atlas build completed; restored only HEAD-equivalent generated JSON. No generated JSON had pre-prompt uncommitted changes. Independent economy documents preserved by initial wrapper."
+    },
+    "ordinary_server": {
+      "initial_state": "stopped",
+      "started_for": "Install the repaired production Guide JAR and perform mandatory native preview/publication.",
+      "startup": "ModernFix Dedicated server took 209.982 seconds to load",
+      "preview": "READY; exactly two expected changed paths",
+      "publish": "PUBLISHED; generation 65",
+      "shutdown": "save-all flush and stop completed; JVM exited",
+      "known_unrelated_limit": "Existing development currency ledger guard remains frozen; no bypass or saved-data edits."
+    },
+    "native_application": {
+      "mechanism": "Reviewed native UpdateSession.approve and ModpackUpdater.commitFlow; no raw managed copy, active-pointer mutation, trust bypass or Minecraft launch.",
+      "content_token": "2849d1a81de031af437a39f910b221da3c4f1635",
+      "status": "ACTIVE",
+      "pending_transaction": false,
+      "restart_reasons": [],
+      "review_sha256": "8ae513e7308ebca68bb7283bd672b86a6efe59c6f7de3d1e3ebcd6edd20fd590",
+      "installed_guide_sha256": "9d1645e44ebcdc4029d8fcb295c3cb0d63f2bda94cc8ec08cd317c898cd56aaf",
+      "operations": [
+        {
+          "root": "PROJECTION",
+          "relativePath": "jem-pack/manifest.json",
+          "operation": "INSTALL_OBJECT",
+          "expectedObjectHash": "98b21167e7045a49b9245b5d83858572eb1bdc81",
+          "expectedSize": 600125
+        },
+        {
+          "root": "PROJECTION",
+          "relativePath": "mods/jem-advancements-5.1.0.jar",
+          "operation": "INSTALL_OBJECT",
+          "expectedObjectHash": "6be2b03e6e9ccef85342022b9f097aab85b7268f",
+          "expectedSize": 1242217
+        },
+        {
+          "root": "GAME_DIR",
+          "relativePath": "jem-pack/manifest.json",
+          "operation": "INSTALL_OBJECT",
+          "expectedObjectHash": "98b21167e7045a49b9245b5d83858572eb1bdc81",
+          "expectedSize": 600125,
+          "expectedExistingHash": "703d3ee35f4449a765aeae4d602473593a5514e6"
+        }
+      ],
+      "conflicts": [],
+      "generated_copies": [],
+      "preserved_outside": "Existing Create Immersive Aircrafts resource pack remains untouched; native plan has no operation for it.",
+      "user_acceptance": "in testing; fonts and world entry after repair are unobserved"
+    }
   }
 }
