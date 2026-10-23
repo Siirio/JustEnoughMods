@@ -1,3 +1,9 @@
+## 2026-10-23 - Explore vanilla resource-pack style families
+
+- User request: begin a real JEM resource pack in `jem sandbox` with three vanilla-facing layers: FancyMenu/main title, buttons/player interface and block interfaces. Produce three PNG boards per layer with nine styles on each board, using a first round without Gemini. Prefer custom semantic icons over text-heavy or space-consuming controls and continue proposing icon-first alternatives in later prompts.
+- Implementation choice: use the required JEM resource-pack references plus the exact GUI, background and title-emblem Taste Engine pairs to generate nine labelled concept sheets with the built-in OpenAI image generator. Separate material, biome/mood and structural/interaction boards so selection can combine a background, title, control language and block-interface material family instead of forcing one monolithic theme.
+- Art status: concept selection only. C0 inspection confirms nine numbered alternatives per sheet and recognizable menu, player-HUD and crafting/furnace/storage purposes. Generated slot geometry and pixels are not runtime-ready; selected operational GUI, button and icon art must be reconstructed at exact vanilla/installed consumer dimensions in layered Aseprite. No resource pack, `jem sandbox` profile, managed client generation, Server runtime, stable profile, release baseline or MineRENT state changed.
+
 ## 2026-10-23 - Repair JEMRewards resource metadata (in testing)
 
 - User report: Forge displays a resource-pack metadata warning for the installed `test jem` JEMRewards JAR. The screenshot identifies the affected artifact; it does not establish a game crash.
