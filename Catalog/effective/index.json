@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "9465f2756eef79d9d425d79559f6780379ddf522cb4b6bb61e20a86b179d965d",
+  "change_records_sha256": "b20de23dc54bdeea6b985b1a49891b1754537d7f6ba9055b535c0b3e0edbf049",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1565,6 +1565,21 @@
       "potential_static_target_count": 11
     },
     {
+      "change_id": "rewards.resource-metadata-20261023",
+      "status": "active",
+      "summary": "Provide JEMRewards native pack.mcmeta so Forge can construct the mod resource-pack metadata instead of showing fml.modloading.brokenresources.",
+      "record": "Catalog/changes/records/rewards-resource-metadata-20261023.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*",
+          "value": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32439
+    },
+    {
       "change_id": "sandbox-ancients-pearl-vfx",
       "status": "conditional",
       "summary": "Selected pearl afterfire and enlarged Ancients shields; guardian dome now uses one connected mesh after the user rejected smooth glass and then overlapping separate plaques.",
@@ -2986,7 +3001,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "043db95388838688ed04fad26950171637aaa0dcdb6e481c00e4bf4675e11aa1",
+    "Client/ManagedPack/jem-pack/manifest.json": "9a4ae70abdb5a972849e93847f08e13bf4e281f42903a0601c52ce2f722189a2",
     "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
     "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js": "fccc72987a34cd30e05e9f5cf1f506f788ab912fda83b5a7013c01050ac0d766",
@@ -3017,9 +3032,9 @@
     "Docs/events/BOSS_RAID.md": "04d15865ed46c576e71b137326869d721d4049df6319092213fe67ebb8aac955",
     "Docs/gui-sandbox/README.md": "71775c921e2cbb7dda22ee07e603be62a045ea17aa78e9ba6f0bb4e1dc227d63",
     "Docs/gui-sandbox/delivery.json": "018431eef19b2f240853ba2d87ca271f38e7cd9ce3973fa7c2628c95fa44650b",
-    "Docs/handbook/README.md": "9b16cdae668c63b2d8da0ae458636b699c276cbed4f69e87d2ac0ff34b0e7054",
+    "Docs/handbook/README.md": "f55db57eb159908dd5f2b2cc0f2de56b6b29be9283d1e07f7d1352098f9caaec",
     "Docs/handbook/bosses-coverage.json": "adcac2a9ed7c1c4b9b1bea6e98e773d72ca777f2fb922371dab82f0e9413f9f0",
-    "Docs/handbook/delivery.json": "f0b5b5ba320146a7d5bccdae4fd5714512fb7af4fc50af15f6f1fe67cf898433",
+    "Docs/handbook/delivery.json": "e2a3295f5f999d962b6dfff9254cdbe567a62287c82bf6d0ed5f87807dc58633",
     "Docs/handbook/enchantments-coverage.json": "00ab830cd81c92db91f494414653fd5a3708e1a8516e55b29a1222c6b86f335c",
     "Docs/handbook/enchantments.md": "827c9c22063dfd561b7bb7802591459d4fb959330b778e4bceaca96162eb5323",
     "Docs/handbook/items-coverage.json": "980d03640450e46b6d3f735a6b1228131c15dbfbeb8741121f8dacbb094b738f",
@@ -4284,6 +4299,7 @@
     "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/en_us.json": "36263e443df0f855a092a732874590bcd21d17bcce6cca6ddf52ed5c9c61985b",
     "Mods/JEMProfessions/src/sandbox/resources/assets/jem_professions_sandbox/lang/ru_ru.json": "43a789b3c7c2574bf746ee3cfc93feb75f7537612b0763345dcd9229c1d3c606",
     "Mods/JEMProfessions/src/sandbox/resources/jem_professions_sandbox.mixins.json": "4f4af31321e03e7edd15104f4b05e386fcfc649bf4d32de0d0e69bf8cb65b073",
+    "Mods/JEMRewards/README.md": "4c4390dbf067e584e3cb9fa01f7d35c930aa36ba715c24bd10f1dee6677a3c63",
     "Mods/JEMRewards/build.gradle": "46b132fcb23ce7686dca2b7347ca73cb236e8c58301beae6f803380ca9d76265",
     "Mods/JEMRewards/gradle.properties": "c17b9488252f67803109d359427e6775a4d85f3c805fb42edcb0bd9d540fd695",
     "Mods/JEMRewards/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
@@ -4298,6 +4314,7 @@
     "Mods/JEMRewards/src/main/resources/META-INF/mods.toml": "5d1c00d3ae8b71878c4be05056d05340427cb866c36207c2582dd780af5dbba9",
     "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json": "1b395e5726ab76d9bc12a91501c6212eb8bbf41098e5d59e6d504a18c5259e18",
     "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json": "9fa752567580e8fd48c9809e577c8fc6c2f350b4f9268b40bec1e8b1f985db6f",
+    "Mods/JEMRewards/src/main/resources/pack.mcmeta": "82cf63aceb32d293f6649066ab9d0f8833909c5c3d84f12c8fcf663f55750710",
     "Mods/JEMRoles/build.gradle": "25b5a0bed2a2fba2f2cdd3d694f56d7926d4b312b2af2315a817e917e42a8c00",
     "Mods/JEMRoles/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMRoles/src/development/java/com/siirio/jemvisualsandbox/r3/BloomR3Preview.java": "dd9f358675e1c6b61c59f084a60745b5c9fc7506be16305cf5b4201a2817b792",
@@ -5214,7 +5231,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "be8945855fe5c94d6529128c1242d3ee084a4009cd751c7ae5ee78884b5d20ae",
-    "tools/state/packSyncHost-sync.json": "7a3de1254683da25555d99617a1043e7f1cf1b5230887e375018f92372ddd65c",
+    "tools/state/packSyncHost-sync.json": "67c581702dd826973f2e1a467a0a363ca6e661fb70dd20bda55057ac346e349b",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

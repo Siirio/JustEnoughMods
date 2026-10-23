@@ -3,7 +3,7 @@
   "timezone": "Asia/Yekaterinburg",
   "branch": "main",
   "commit": "SELF",
-  "status": "PRODUCTION_BUILT_AND_SYNCHRONIZED_NATIVE_DELIVERY_BLOCKED",
+  "status": "GENERATION_64_INSTALLED_ACCEPTANCE_PENDING",
   "source_base": "67d9f215",
   "preserved": [
     "FTB quest content, rewards, assets and progress bridge",
@@ -57,37 +57,24 @@
   },
   "automodpack": {
     "staged": true,
-    "published_with_this_task": false,
-    "last_published_sequence": 63,
-    "last_published_manifest_sha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
-    "test_jem_task_generation_applied": false,
-    "installed_generation": "previous generation 63; unchanged by this task",
-    "native_preview": "BLOCKED: ordinary Server is stopped after independent runtime failures",
-    "native_publish": "BLOCKED",
-    "native_application": "BLOCKED: no task-owned published generation",
-    "raw_managed_gameDir_copy": false,
-    "staged_paths": [
-      "mods/jem-advancements-5.1.0.jar",
-      "mods/jem-world-boss-tiers-2.5.0-dev.jar",
-      "mods/jem_drill_lifecycle-1.0.0.jar",
-      "mods/jemcompat-3.7.0.jar",
-      "kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
-      "jem-pack/manifest.json"
-    ],
-    "deleted_paths": [],
-    "staged_files": 2844,
-    "manifest_version": "1363dfe8f38050817f86bfe0badaef0beccaf1cb306136f61fc45d85a3deb420",
     "publication_status": {
-      "published": false,
-      "journalSequence": 63,
-      "publishedManifestSha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
-      "stagedManifestSha1": "5bd67314cb641619cfb0eeb1b19c70eda803271e"
+      "published": true,
+      "journalSequence": 64,
+      "publishedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6",
+      "stagedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6"
     },
-    "test_jem_active_token": "ea5c8e10320356cce80c6bda1af5c992198ce954",
-    "test_jem_active_status": "ACTIVE",
-    "test_jem_pending_transaction": false,
-    "fresh_artifact_hashes_installed_in_test_jem": false,
-    "reason": "New staged manifest differs from last published generation63. No native preview, publish or application was attempted against the stopped unhealthy ordinary Server."
+    "published_with_this_task": true,
+    "published_with_seasonal_artifact": true,
+    "installed_in_test_jem": true,
+    "test_jem_task_generation_applied": true,
+    "last_published_sequence": 64,
+    "content_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "test_jem_active_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "pending_transaction": false,
+    "native_preview": "COMPLETE",
+    "native_publish": "COMPLETE",
+    "native_application": "COMPLETE; gameplay acceptance pending",
+    "raw_gameDir_copy": false
   },
   "atlas": {
     "validation": {
@@ -165,5 +152,62 @@
     "Actual GUI scale, focus, narration, visual acceptance and native runtime interaction are UNOBSERVED.",
     "Stable profiles, MineRENT, release baseline and FTB content remain unchanged.",
     "Compilation and packaging do not establish a healthy ordinary Server or a fresh installed client."
-  ]
+  ],
+  "delivery_before_generation64": {
+    "staged": true,
+    "published_with_this_task": false,
+    "last_published_sequence": 63,
+    "last_published_manifest_sha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+    "test_jem_task_generation_applied": false,
+    "installed_generation": "previous generation 63; unchanged by this task",
+    "native_preview": "BLOCKED: ordinary Server is stopped after independent runtime failures",
+    "native_publish": "BLOCKED",
+    "native_application": "BLOCKED: no task-owned published generation",
+    "raw_managed_gameDir_copy": false,
+    "staged_paths": [
+      "mods/jem-advancements-5.1.0.jar",
+      "mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "mods/jem_drill_lifecycle-1.0.0.jar",
+      "mods/jemcompat-3.7.0.jar",
+      "kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
+      "jem-pack/manifest.json"
+    ],
+    "deleted_paths": [],
+    "staged_files": 2844,
+    "manifest_version": "1363dfe8f38050817f86bfe0badaef0beccaf1cb306136f61fc45d85a3deb420",
+    "publication_status": {
+      "published": false,
+      "journalSequence": 63,
+      "publishedManifestSha1": "31e57da5dd76240e2bd8f4bfc476e81d684442cb",
+      "stagedManifestSha1": "5bd67314cb641619cfb0eeb1b19c70eda803271e"
+    },
+    "test_jem_active_token": "ea5c8e10320356cce80c6bda1af5c992198ce954",
+    "test_jem_active_status": "ACTIVE",
+    "test_jem_pending_transaction": false,
+    "fresh_artifact_hashes_installed_in_test_jem": false,
+    "reason": "New staged manifest differs from last published generation63. No native preview, publish or application was attempted against the stopped unhealthy ordinary Server."
+  },
+  "delivery_followup": {
+    "date": "2026-10-23",
+    "mechanism": "Native jempack preview/publish plus reviewed AutoModpack UpdateSession/commitFlow; no client launch, raw managed copy, active-state edit or trust-gate weakening.",
+    "journal_sequence": 64,
+    "content_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "publication_status": {
+      "published": true,
+      "journalSequence": 64,
+      "publishedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6",
+      "stagedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6"
+    },
+    "installed_active_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "pending_transaction": false,
+    "installed_jars_sha256": {
+      "jem-rewards-1.0.0.jar": "0880b8e1ee24e409f6576a549ccb573973391764939271088c28da506dfd07e8",
+      "jem-advancements-5.1.0.jar": "67628000ebf4aa2ce5474a9a31db9cae2a12e61fcda10c436d58fba8e15bd2b1",
+      "jem-world-boss-tiers-2.5.0-dev.jar": "18bee2c919df207fcc449dd92f43afb22b2d94f7b6eff3edc56026c8aa3d4174",
+      "jem_drill_lifecycle-1.0.0.jar": "3050548f28a35d64649c4d74aa0482fe6b5af8a0fbc39d430f24ed5e880b9bc9",
+      "jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794"
+    },
+    "receipt": "Mods/JEMRewards/resource-metadata-delivery.json",
+    "gameplay_acceptance": "in testing; user relaunch remains unobserved"
+  }
 }

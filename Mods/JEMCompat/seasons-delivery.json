@@ -1,7 +1,7 @@
 {
   "date": "2026-10-23",
   "request": "Implement the supplied Serene Seasons crop patch and coordinate with the parallel handbook/Hint/Jade chat.",
-  "status": "source-committed; combined production artifact synchronized; native publication/application blocked",
+  "status": "GENERATION_64_INSTALLED_ACCEPTANCE_PENDING",
   "source_owner": "Mods/JEMCompat",
   "parallel_chat": {
     "title": "Implement server task",
@@ -106,6 +106,35 @@
   },
   "automodpack": {
     "staged": true,
+    "publication_status": {
+      "published": true,
+      "journalSequence": 64,
+      "publishedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6",
+      "stagedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6"
+    },
+    "published_with_this_task": true,
+    "published_with_seasonal_artifact": true,
+    "installed_in_test_jem": true,
+    "test_jem_task_generation_applied": true,
+    "last_published_sequence": 64,
+    "content_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "test_jem_active_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "pending_transaction": false,
+    "native_preview": "COMPLETE",
+    "native_publish": "COMPLETE",
+    "native_application": "COMPLETE; gameplay acceptance pending",
+    "raw_gameDir_copy": false
+  },
+  "limits": [
+    "No tests or static code analysis",
+    "No gameplay client launch or player acceptance",
+    "No stable profile/MineRENT/release-baseline mutation",
+    "Other fertilizer/direct/queued growth routes remain documented native exceptions"
+  ],
+  "source_commit": "1f76f323",
+  "shared_delivery_receipt": "Docs/handbook/delivery.json",
+  "delivery_before_generation64": {
+    "staged": true,
     "staged_manifest_version": "1363dfe8f38050817f86bfe0badaef0beccaf1cb306136f61fc45d85a3deb420",
     "publication_status": {
       "published": false,
@@ -121,12 +150,27 @@
     "test_jem_generation": "63; earlier generation retained",
     "raw_gameDir_copy": false
   },
-  "limits": [
-    "No tests or static code analysis",
-    "No gameplay client launch or player acceptance",
-    "No stable profile/MineRENT/release-baseline mutation",
-    "Other fertilizer/direct/queued growth routes remain documented native exceptions"
-  ],
-  "source_commit": "1f76f323",
-  "shared_delivery_receipt": "Docs/handbook/delivery.json"
+  "delivery_followup": {
+    "date": "2026-10-23",
+    "mechanism": "Native jempack preview/publish plus reviewed AutoModpack UpdateSession/commitFlow; no client launch, raw managed copy, active-state edit or trust-gate weakening.",
+    "journal_sequence": 64,
+    "content_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "publication_status": {
+      "published": true,
+      "journalSequence": 64,
+      "publishedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6",
+      "stagedManifestSha1": "703d3ee35f4449a765aeae4d602473593a5514e6"
+    },
+    "installed_active_token": "67fc09b2f39f78f12d8f0d568f6f91c429d4432b",
+    "pending_transaction": false,
+    "installed_jars_sha256": {
+      "jem-rewards-1.0.0.jar": "0880b8e1ee24e409f6576a549ccb573973391764939271088c28da506dfd07e8",
+      "jem-advancements-5.1.0.jar": "67628000ebf4aa2ce5474a9a31db9cae2a12e61fcda10c436d58fba8e15bd2b1",
+      "jem-world-boss-tiers-2.5.0-dev.jar": "18bee2c919df207fcc449dd92f43afb22b2d94f7b6eff3edc56026c8aa3d4174",
+      "jem_drill_lifecycle-1.0.0.jar": "3050548f28a35d64649c4d74aa0482fe6b5af8a0fbc39d430f24ed5e880b9bc9",
+      "jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794"
+    },
+    "receipt": "Mods/JEMRewards/resource-metadata-delivery.json",
+    "gameplay_acceptance": "in testing; user relaunch remains unobserved"
+  }
 }

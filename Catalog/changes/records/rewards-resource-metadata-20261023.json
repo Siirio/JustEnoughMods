@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "change_id": "rewards.resource-metadata-20261023",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "Forge discovery of the JEMRewards resource pack only; no registry or gameplay mutation"
+    }
+  ],
+  "precedence": {
+    "layer": "resource_pack_metadata",
+    "priority": 10,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Provide JEMRewards native pack.mcmeta so Forge can construct the mod resource-pack metadata instead of showing fml.modloading.brokenresources.",
+    "modifiers": [
+      {
+        "property": "jem_rewards.resource_pack_metadata",
+        "operation": "add",
+        "before": "No root pack.mcmeta in source, deployed or installed JEMRewards JAR; Forge cannot create Pack metadata.",
+        "after": {
+          "pack_format": 15,
+          "description": "JEM Rewards resources",
+          "source": "Mods/JEMRewards/src/main/resources/pack.mcmeta"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMRewards",
+    "kind": "missing_native_resource_metadata",
+    "source_files": [
+      "Mods/JEMRewards/src/main/resources/pack.mcmeta",
+      "Mods/JEMRewards/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Repair the Forge resource metadata warning shown by the user.",
+    "decision_source": "User supplied the test jem Forge warning screenshot on 2026-10-23.",
+    "user_requested": "Investigate and repair the displayed warning.",
+    "implementation_choices": "Add only native pack.mcmeta; retain resource contents, rewards Java, protocol and saved-data ownership.",
+    "delivery_evidence": "Mods/JEMRewards/resource-metadata-delivery.json"
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "add_missing_metadata",
+    "summary": "Add Minecraft 1.20.1 pack metadata to the canonical JEMRewards resource source."
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "add_missing_metadata",
+      "summary": "Forge 47.4.10 ClientModLoader adds brokenresources warning when Pack construction returns null; installed JEMRewards archive and canonical resource source both lack pack.mcmeta. Add native metadata in the owner and deliver the fresh artifact."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Forge client resource discovery",
+      "Forge server data-pack discovery",
+      "native mod translations",
+      "production packaging",
+      "AutoModpack delivery"
+    ],
+    "relations": [
+      "JEMRewards source resources -> processResources -> production JAR -> Forge Pack metadata -> resource inclusion"
+    ],
+    "notes": [
+      "No rewards gameplay, Java classes, loot, recipes, networking or persistence semantics are intentionally changed.",
+      "The screenshot is warning evidence, not a crash report. A later successful relaunch is user acceptance, not implied by packaging."
+    ],
+    "unresolved": [
+      "Native client relaunch and disappearance of the warning remain in testing; no gameplay launch or automated tests requested."
+    ]
+  }
+}

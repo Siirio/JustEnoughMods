@@ -1,3 +1,11 @@
+## 2026-10-23 - Repair JEMRewards resource metadata (in testing)
+
+- User report: Forge displays a resource-pack metadata warning for the installed `test jem` JEMRewards JAR. The screenshot identifies the affected artifact; it does not establish a game crash.
+- Bug / Both Sided / JEMRewards canonical resource source and shipped JAR omit root `pack.mcmeta`, so native Forge Pack discovery cannot read the pack description and emits `fml.modloading.brokenresources` / in testing. Resolution mechanism: add native Minecraft 1.20.1 pack format 15 metadata in JEMRewards and rebuild the production artifact. No warning suppression or gameplay change.
+- Implementation choice: preserve rewards Java, protocol, saved data and existing resource entries; use ordinary production build/synchronization and native AutoModpack delivery. Evidence and any delivery blockers are recorded in `Mods/JEMRewards/resource-metadata-delivery.json`. No automated tests, static code analysis, gameplay client launch, stable-profile/MineRENT change or baseline promotion is included.
+
+- Delivery: production JAR differs only by the added metadata; exact hashes match local Server, ManagedPack and the native installed projection. Generation 64 is published and fully applied to `test jem`, including the previously staged handbook/Hint/Jade/season changes, with matching active/head token and no pending transaction. The ordinary Server started, saved and stopped normally; the independent development-ledger guard remains frozen and was not bypassed. Atlas validates with 133 records and no artifact drift. Client relaunch acceptance remains pending.
+
 ## 2026-10-23 - Match enchanting GUI slots to the vanilla Atlas texture
 
 User request: remake the complete enchanting GUI with the exact vanilla slot coordinates and dimensions, including equal-size upper inputs and inventory slots.
