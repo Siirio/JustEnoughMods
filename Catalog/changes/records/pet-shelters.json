@@ -92,6 +92,12 @@
         "operation": "add",
         "before": "Only five native-owned classes admitted",
         "after": "Exact installed vanilla/Alex/pack classes use native owner first, ownerless mounts require current controlling-rider Bind custody. Living summons retain native secondary player owner, current native age and true expiry, with no reset or new permanence"
+      },
+      {
+        "property": "companions.recruits_eligibility",
+        "operation": "set",
+        "before": "12 owned Recruits NPC classes admitted",
+        "after": "All recruits namespace entities excluded from shelter discovery, binding and recovery. Native ownership, recruitment, death and teleport behavior remain native"
       }
     ]
   },
@@ -147,13 +153,9 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronLivingSummonOwnerMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonExpirationAccessor.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonLifetimeMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/MessengerOwnerTeleportMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackFollowOwnerTeleportMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackSummonAgeMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitInventoryDeathMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitMembershipDeathMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitOwnerAccessMixin.java",
       "Mods/JEMCompat/src/main/resources/data/jemcompat/advancements/recipes/animal_homes.json",
       "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json",
       "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
@@ -162,7 +164,7 @@
   },
   "rationale": {
     "purpose": "Implement the user's two-size, mandatory-GUI, any-size-pet shelter recovery contract without inventing pet progression, duplicating native mod resurrection or forcing chunk loads.",
-    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode"
+    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode. User then explicitly excludes Recruits from homes. Codex removes shelter adapters and retires legacy assignments without deleting captured native payloads"
   },
   "introduced": {
     "date": "2026-10-23",
@@ -179,11 +181,23 @@
     },
     {
       "date": "2026-10-23",
-      "commit": "SELF",
+      "commit": "9cc61a46fc488c5809147f4c0f8e8e34f9c4a0de",
       "action": "extend",
       "summary": "Replace five-species/capability restrictions with all audited installed companion/mount contracts and complete synchronous native persistence. Icons/models explicitly excluded. No gameplay tests or runtime acceptance",
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/VanillaCompanions.java"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "exclude",
+      "summary": "User explicitly excludes all Recruits from homes and recovery. Remove shelter-specific native hooks and retire old assignments while retaining archived native payloads",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/MessengerOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitInventoryDeathMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitMembershipDeathMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitOwnerAccessMixin.java"
       ]
     }
   ],
@@ -204,14 +218,14 @@
       "Native owner identity -> one durable pet journal -> one controller binding -> safe loaded recovery -> latest native entity IO commit"
     ],
     "notes": [
-      "Applied source set lists134 registered parent identities:14 vanilla,34 Alex,86 other installed pack classes. Habitat and full native multipart geometry never affect Bind eligibility. Exact native registry evidence supersedes stale asset-name guesses without rewriting base records"
+      "Source selection contains122 candidate entries:14 vanilla,34 Alex and74 other pack entries after removing12 Recruits classes. This is not a verified pet count. Recruits namespace is explicitly excluded, including legacy journal rows"
     ],
     "unresolved": [
       "User-owned small/large bbmodels and production resources, geometry reconciliation and accepted day/season icons",
       "Source paths not player accepted or runtime crash-tested",
       "Unloaded or natively lost Gum Worm parts require natural source loads or genuine native data recovery, never fabricated body generation",
       "Claims-specific animal spawn APIs absent in inspected pack, unknown installed claim mod blocks recovery until a verified adapter exists",
-      "Historical original Atlas candidates omit native recruits:patrol_leader and recruits:villager_noble. Applied compatibility uses verified installed EntityFactory registrations, base candidates are preserved instead of silently rewritten outside the shared registry extraction engine"
+      "Prior source audit identified four overbroad candidates still requiring correction: alexscaves:luxtructosaurus, alexscaves:grottoceratops, alexscaves:relicheirus and alexsmobs:orca. This Recruits amendment does not change their selection"
     ]
   }
 }

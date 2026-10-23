@@ -55,6 +55,7 @@ public final class ShelterEvents {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void joined(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
+        if (CompanionAdapters.excluded(BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()).toString())) return;
         Entity entity = event.getEntity(); CompanionData data = CompanionData.get(level); CompanionData.Pet pet = data.pet(entity.getUUID());
         if (pet != null && pet.restoring && pet.pending != null && !ShelterRecovery.admitting(entity)) {
             // No restored entity was released to simulation before its first synchronous native commit.

@@ -44,14 +44,14 @@ public final class CompanionData extends SavedData {
     public Pet pet(UUID id) { return pets.get(id); }
     public Pet ensure(UUID id) { return pets.computeIfAbsent(id, Pet::new); }
     public List<Pet> owned(UUID owner) {
-        return pets.values().stream().filter(p -> owner.equals(p.owner))
+        return pets.values().stream().filter(p -> owner.equals(p.owner) && !CompanionAdapters.excluded(p.species))
                 .sorted(Comparator.comparing((Pet p) -> p.name).thenComparing(p -> p.species).thenComparing(p -> p.id)).toList();
     }
     public Pet occupant(String dimension, BlockPos home) {
-        return pets.values().stream().filter(p -> p.assigned(dimension, home)).findFirst().orElse(null);
+        return pets.values().stream().filter(p -> !CompanionAdapters.excluded(p.species) && p.assigned(dimension, home)).findFirst().orElse(null);
     }
     public List<Pet> pendingHomes(String dimension) {
-        return pets.values().stream().filter(p -> p.pending != null && p.home != null && p.homeDimension.equals(dimension)).toList();
+        return pets.values().stream().filter(p -> !CompanionAdapters.excluded(p.species) && p.pending != null && p.home != null && p.homeDimension.equals(dimension)).toList();
     }
     public void removeHome(String dimension, BlockPos home) {
         Pet pet = occupant(dimension, home);
@@ -99,6 +99,12 @@ public final class CompanionData extends SavedData {
             pet.epoch = tag.getLong("Epoch"); pet.blocked = tag.getString("Blocked"); pet.restoring = tag.getBoolean("Restoring");
             if (tag.contains("Home", Tag.TAG_LONG)) { pet.home = BlockPos.of(tag.getLong("Home")); pet.homeDimension = tag.getString("HomeDimension"); }
             if (tag.contains("Pending", Tag.TAG_COMPOUND)) pet.pending = tag.getCompound("Pending").copy();
+            if (CompanionAdapters.excluded(pet.species)) {
+                // Retire old shelter assignments without destroying an already captured native payload.
+                if (pet.home != null || pet.supported || pet.restoring || pet.custodian || pet.provisional) data.setDirty();
+                pet.home = null; pet.homeDimension = ""; pet.supported = false; pet.restoring = false;
+                pet.custodian = false; pet.provisional = false;
+            }
             if (data.pets.put(pet.id, pet) != null) throw new IllegalStateException("Duplicate JEM companion identity");
         }
         return data;

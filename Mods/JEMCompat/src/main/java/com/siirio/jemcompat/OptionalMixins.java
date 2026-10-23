@@ -48,7 +48,6 @@ public final class OptionalMixins implements IMixinConfigPlugin {
                     : targetClassName.startsWith("com.hm.efn.") ? "efn"
                     : targetClassName.startsWith("org.primal.") ? "primal"
                     : targetClassName.startsWith("com.ninni.spawn.") ? "spawn"
-                    : targetClassName.startsWith("com.talhanation.recruits.") ? "recruits"
                     : targetClassName.startsWith("tech.alexnijjar.endermanoverhaul.") ? "endermanoverhaul"
                     : targetClassName.startsWith("com.github.L_Ender.cataclysm.") ? "cataclysm"
                     : targetClassName.startsWith("net.imasillylittleguy.cnc.") ? "cnc" : "";

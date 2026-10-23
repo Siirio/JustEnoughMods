@@ -19,8 +19,10 @@ public final class CompanionAdapters {
     public enum Habitat { GROUND, AMPHIBIOUS, AQUATIC, FLYING, LAVA }
     public static final String CUSTODIAN = "JemShelterCustodian";
     private CompanionAdapters() { }
+    public static boolean excluded(String species) { return species.startsWith("recruits:"); }
     public static Entity canonical(Entity entity) { return AlexCompanionAdapter.canonical(entity); }
     public static boolean supported(Entity entity) {
+        if (excluded(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString())) return false;
         boolean vanilla = entity.getClass().getName().startsWith("net.minecraft.");
         return entity instanceof LivingEntity && ((vanilla && (entity instanceof TamableAnimal || entity instanceof AbstractHorse
                 || entity instanceof Camel || entity instanceof Pig || entity instanceof Strider
@@ -28,6 +30,7 @@ public final class CompanionAdapters {
                 || AlexCompanionAdapter.handles(entity) || PackCompanionAdapter.handles(entity));
     }
     public static UUID nativeOwner(Entity entity) {
+        if (excluded(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString())) return null;
         if (entity instanceof net.minecraft.world.entity.animal.allay.Allay allay)
             return allay.getBrain().getMemory(net.minecraft.world.entity.ai.memory.MemoryModuleType.LIKED_PLAYER).orElse(null);
         UUID specific = PackCompanionAdapter.owner(entity);

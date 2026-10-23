@@ -77,7 +77,7 @@ public final class ShelterMenu extends AbstractContainerMenu {
     public void action(ShelterNetwork.Action request) {
         if (viewer == null || viewer.containerMenu != this || !nonce.equals(request.nonce()) || revision != request.revision() || !stillValid(viewer)) return;
         CompanionData data = CompanionData.get(viewer.serverLevel()); CompanionData.Pet pet = data.pet(request.pet());
-        if (pet == null || !viewer.getUUID().equals(pet.owner)) return;
+        if (pet == null || CompanionAdapters.excluded(pet.species) || !viewer.getUUID().equals(pet.owner)) return;
         Entity nativePet = loaded(viewer, pet);
         if (nativePet != null && (!viewer.getUUID().equals(CompanionAdapters.owner(nativePet)) || !pet.species.equals(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(nativePet.getType()).toString()))) return;
         String dimension = viewer.serverLevel().dimension().location().toString();

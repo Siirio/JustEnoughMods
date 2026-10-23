@@ -4,7 +4,7 @@ Derived implementation evidence, canonical applied selection belongs to `Catalog
 
 ## Measured inspection scope
 
-Installed JAR inspection read 71,355 class headers. Tameable/horse/Ownable hierarchy and native owner-method signals identified 143 candidate class nodes across 26 JARs, a further 71 rider/base-class signal nodes were inspected. These include abstract bases, goals, mixins, projectiles, boss grabs and vehicles, not 214 animal species. Pack admission implements 86 concrete classes with 86 native registration IDs. EntityFactory constructors, registration literals and native builder dimensions were read using javap bytecode inspection. No namespace-wide wildcard admission is used.
+Installed JAR inspection read 71,355 class headers. Tameable/horse/Ownable hierarchy and native owner-method signals identified 143 candidate class nodes across 26 JARs, a further 71 rider/base-class signal nodes were inspected. These include abstract bases, goals, mixins, projectiles, boss grabs and vehicles, not 214 animal species. Pack admission implements 74 concrete classes with 74 native registration IDs after the user explicitly excluded all Recruits. EntityFactory constructors, registration literals and native builder dimensions were read using javap bytecode inspection. No namespace-wide wildcard admission is used.
 
 Dimensions below are native registered base width x height in blocks, runtime age, pose, phase and scale remain native. Actual restored collision bounds govern recovery clearance. All rows are implemented with runtime acceptance not performed.
 
@@ -57,18 +57,6 @@ Dimensions below are native registered base width x height in blocks, runtime ag
 | `primal:lion` | `org.primal.entity.animal.LionEntity` | 1.5 x 1.75 | GROUND | yes |
 | `primal:snake` | `org.primal.entity.animal.SnakeEntity` | 0.9375 x 0.75 | GROUND | yes |
 | `primal:walrus` | `org.primal.entity.animal.WalrusEntity` | 1.85 x 1.85 | AMPHIBIOUS | no |
-| `recruits:bowman` | `com.talhanation.recruits.entities.BowmanEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:captain` | `com.talhanation.recruits.entities.CaptainEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:crossbowman` | `com.talhanation.recruits.entities.CrossBowmanEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:horseman` | `com.talhanation.recruits.entities.HorsemanEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:messenger` | `com.talhanation.recruits.entities.MessengerEntity` | 0.6 x 1.95 | GROUND | yes |
-| `recruits:nomad` | `com.talhanation.recruits.entities.NomadEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:patrol_leader` | `com.talhanation.recruits.entities.CommanderEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:recruit` | `com.talhanation.recruits.entities.RecruitEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:recruit_shieldman` | `com.talhanation.recruits.entities.RecruitShieldmanEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:scout` | `com.talhanation.recruits.entities.ScoutEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:siege_engineer` | `com.talhanation.recruits.entities.SiegeEngineerEntity` | 0.6 x 1.95 | GROUND | no |
-| `recruits:villager_noble` | `com.talhanation.recruits.entities.VillagerNobleEntity` | 0.6 x 1.95 | GROUND | no |
 | `rottencreatures:hunter_wolf` | `com.github.teamfusion.rottencreatures.common.level.entities.living.glacialhunter.HunterWolf` | 0.7 x 1.0 | GROUND | no |
 | `skarrier_mobs:glowin` | `net.mcreator.skarriermobs.entity.GlowinEntity` | 0.6 x 0.6 | GROUND | yes |
 | `skarrier_mobs:quake` | `net.mcreator.skarriermobs.entity.QuakeEntity` | 2.2 x 3.2 | GROUND | no |
@@ -84,7 +72,7 @@ Dimensions below are native registered base width x height in blocks, runtime ag
 | `vinery:mule` | `net.satisfy.vinery.core.entity.TraderMuleEntity` | 0.9 x 1.87 | GROUND | no |
 | `whaleborne:hullback` | `com.fruityspikes.whaleborne.server.entities.HullbackEntity` | 2 x 2 | AQUATIC | no |
 
-Every row preserves native save/load, owner/tame state, variants, inventories and capability NBT. Ownership resolves through native APIs (native Recruit owner bridge where needed), genuinely ownerless controllable mounts use the actual controlling player at bind. This adds no new taming mechanic. Both shelter shapes use the same species support contract.
+Every row preserves native save/load, owner/tame state, variants, inventories and capability NBT. Ownership resolves through native APIs, genuinely ownerless controllable mounts use the actual controlling player at bind. This adds no new taming mechanic. Both shelter shapes use the same species support contract.
 
 ## Installed evidence inputs
 
@@ -116,10 +104,10 @@ Every row preserves native save/load, owner/tame state, variants, inventories an
 ## Exact native lifecycle decisions
 
 - Companions 1.3.3: skip its Knightlib LivingDeathEvent Respawn Totem listener while canonical JEM recovery owns the dying entity. Native totem position/dimension/configuration survives Unbind. Its listener snapshots the current dying pet and strips UUID before queue insertion. Preexisting native queues remain native-managed, guessing identity for old UUID-less queue entries would be unsafe
-- Owner follow: suppress only teleport branches during the canonical post-recovery follow hold. Shared vanilla hook covers vanilla-derived goals, custom hooks cover Companions generic/heavy goals, EndermanOverhaul, Cataclysm aquatic goal, Primal shouldTryTeleportToOwner and Recruit Messenger teleportNearOwner. Ordinary movement/combat/work remains native
+- Owner follow: suppress only teleport branches during the canonical post-recovery follow hold. Shared vanilla hook covers vanilla-derived goals, custom hooks cover Companions generic/heavy goals, EndermanOverhaul, Cataclysm aquatic goal, Primal shouldTryTeleportToOwner. Ordinary movement/combat/work remains native
 - Spawn Hamster: native drying serializes the pet into a block before lethal damage. Bound pets receive the exact native spawn:dry_up source without producing the duplicate block. Canceled death remains respected. Recovery resets only Hydration, HasEatenTnt, TntTimer, InWheel and WheelCooldown to native constructor defaults (hydration20), owner/inventory/variant are retained
 - Critters n' Crawlers actual mods.toml ID is cnc. Caribou direct saddle ItemEntity emission occurs after the superclass death capture, suppress only that trailing procedure for captured deaths
-- Recruit death: skip the post-superclass corpse/direct inventory drops and native faction/group/unit membership removal for captured recoverable deaths. Native serializer remains the inventory owner and the stable recruited identity retains its memberships
+- Recruits: explicitly excluded from homes by the user. No shelter ownership, inventory/corpse, membership or messenger teleport hooks remain
 - Hullback retains native hull/inventory configuration, auxiliary walkable platform entities are native-derived geometry recreated by its own lifecycle. Shelter introduces no chunk forcing
 
 ## Registration identity and candidate exclusions
@@ -132,7 +120,7 @@ No builds, automated tests, launches or static-analysis jobs were run by this ad
 
 ## Owned living summon extension
 
-The explicit all-mountables scope additionally includes 13 living summons, bringing pack support to 86 concrete classes. Native removal/expiry wins. This does not turn summons permanent. Mechanical entities, projectiles, VFX swords and boss-owned attack tentacles remain outside companion recovery.
+The explicit all-mountables scope additionally includes 13 living summons, bringing pack support to 74 concrete classes. Native removal/expiry wins. This does not turn summons permanent. Mechanical entities, projectiles, VFX swords and boss-owned attack tentacles remain outside companion recovery.
 
 | Native ID | Native implementation | Base width × height |
 |---|---|---|
@@ -161,3 +149,5 @@ Additional narrow mixins: CompanionSummonOwnerMixin, EmberPoleTransientMixin, Ir
 Additional installed native evidence:
 - `irons_spellbooks-1.20.1-3.15.6.jar` SHA-256 `61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7`
 - `EpicFight%20Nightfall-3.4.1-all.jar` SHA-256 `cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a`
+
+Recruits registration and JAR observations above are historical inspection evidence only. No Recruits class is part of the active shelter selection

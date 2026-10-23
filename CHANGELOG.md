@@ -1,3 +1,11 @@
+## 2026-10-23 - Exclude Recruits from animal homes
+
+User request: Recruits must not receive animal homes or shelter recovery
+
+Implementation: removed the 12 Recruits selection entries and four shelter-specific native hooks. Reject the complete Recruits namespace in discovery, ownership and menu actions. Retire old assignments without deleting captured native payloads. Native hiring, commands, inventory/death and messenger teleport behavior remain unchanged. Corrected documentation to describe the remaining 122 entries as candidates, with the four previously identified Alex audit gaps still open
+
+Delivery: production JAR rebuilt separately. No automated tests or gameplay launches. Local Server and ManagedPack remain on the existing artifact because the combined feature still lacks the user-owned shelter models and accepted HUD icons
+
 ## 2026-10-23 - Expand shelter recovery to installed companions and mounts
 
 - User requested support for all installed mountables, tameables and companions, actual continued use of local Gemini, and completion of the non-art work while leaving clock/season icons and shelter models to the user

@@ -8,7 +8,7 @@ The 2026-10-23 user amendment requires installed mountables, tameables and compa
 
 ## Ownership and discovery
 
-`CompanionAdapters` selects exact installed adapters before native vanilla ownership. Native tame ownership always takes precedence. Companions secondary player ownership and Recruits ownership use verified native signals. Inventories, equipment, variants, commands and serialized Forge capabilities remain native data, without the old blanket capability rejection
+`CompanionAdapters` selects exact installed adapters before native vanilla ownership. Native tame ownership always takes precedence. Companions secondary player ownership uses verified native signals. Inventories, equipment, variants, commands and serialized Forge capabilities remain native data, without the old blanket capability rejection
 
 Vanilla cats, wolves, parrots, native horse variants, llamas, camel, pig, strider and Allay use their corresponding native contracts. Allay ownership comes from `LIKED_PLAYER` brain memory, including native removal when its item is returned. Its inventory uses native writeInventoryToTag/readInventoryFromTag and captured native equipment drops
 
@@ -18,7 +18,9 @@ Discovery observes joins, taming, interactions and already-loaded entities when 
 
 Installed class/registry evidence and precise exceptions live in [Alex evidence](alex-evidence.md) and [pack evidence](pack-evidence.md). Actual local Gemini review and recommendation dispositions live in [Gemini review](GEMINI_REVIEW.md)
 
-The applied source set contains 134 concrete registered parent identities: 14 vanilla, 34 Alex and 86 other installed classes. Living temporary summons are included. Their native active-entity age, secondary player ownership and explosion state remain intact. Iron's native SummonManager owner and earliest expiration queue entry are persisted as an adapter receipt and restored through the same native manager with only the remaining duration. Expired summons stay expired. Individual legacy summons whose native owner or deadline was already lost remain visibly blocked, rather than gaining an invented lifetime. Accepted native disk joins are reconciled after actual admission, while cancelled and stale copies cannot register another native summon
+The source selection contains 122 candidate entries: 14 vanilla, 34 Alex and 74 other installed classes. This is not a verified pet count. The preceding audit identified four overbroad candidates still requiring correction: `alexscaves:luxtructosaurus`, `alexscaves:grottoceratops`, `alexscaves:relicheirus` and `alexsmobs:orca`. Living temporary summons are included. Their native active-entity age, secondary player ownership and explosion state remain intact. Iron's native SummonManager owner and earliest expiration queue entry are persisted as an adapter receipt and restored through the same native manager with only the remaining duration. Expired summons stay expired. Individual legacy summons whose native owner or deadline was already lost remain visibly blocked, rather than gaining an invented lifetime. Accepted native disk joins are reconciled after actual admission, while cancelled and stale copies cannot register another native summon
+
+All `recruits:*` NPCs are excluded by the explicit user amendment. They cannot be discovered, bound or recovered through homes. Shelter-specific Recruits owner, death, membership and messenger teleport hooks are removed. Legacy journal assignments are retired and no longer occupy homes. Any captured native payload remains archived, without automatic recovery or deletion. Native hiring, commands, ownership and death handling remain unchanged
 
 ## Homes and GUI
 
@@ -36,7 +38,7 @@ One pet has one home and one home has one pet. Rebinding moves the assignment wi
 
 `data/jem_companions.dat` is the single overworld journal. Schema 2 reads schema 1 and adds provisional-rider and explicit-custodian fields. Corrupt identities and unknown schemas fail visibly. Writes use a forced read-back-verified temporary file and atomic same-directory replacement. Failed commits preserve dirty state and the previous in-memory payload
 
-Confirmed death is captured after Forge cancellation, before the dead flag and native equipment/loot processing. Native snapshot and advanced epoch are persisted before suppressing captured drops, XP and wither roses. Narrow adapters cover out-of-band elephant inventory, caribou saddles, recruit inventory/corpses and Luxtructosaurus loot. Bound Hamster drying retains the native death source without emitting another serialized dried-pet block
+Confirmed death is captured after Forge cancellation, before the dead flag and native equipment/loot processing. Native snapshot and advanced epoch are persisted before suppressing captured drops, XP and wither roses. Narrow adapters cover out-of-band elephant inventory, caribou saddles and the still-selected Luxtructosaurus candidate loot. Bound Hamster drying retains the native death source without emitting another serialized dried-pet block
 
 For bound pets, the Companions native respawn listener is bypassed before totem lookup and queue insertion. Native totem configuration and charges remain untouched. Living unbind restores normal future-death handling. Existing native queued dead pets are not guessed or migrated by proximity
 
