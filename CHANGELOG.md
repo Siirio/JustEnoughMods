@@ -1,3 +1,9 @@
+## 2026-10-23 - Replace biome-bound resource-pack concepts with controlled style studies
+
+- User feedback: the first resource-pack boards focused on biome, dimension and palette changes instead of genuinely experimenting with textures and interface approaches. The user requires comparisons of actual craft systems rather than content themes.
+- Implementation choice: retain R1 only as superseded rejection history and add nine R2 sheets. Each R2 board fixes its subject, camera, information and base palette while isolating one comparison axis: texture grammar, physical title construction, diegetic menu model, slot construction, icon language, HUD architecture, material recipe, interface-as-object model, or depth/state treatment. Icon-first navigation remains the default where a symbol is clearer than text.
+- Art status: R2 C0 inspection confirms controlled subjects and nine distinct construction variants per sheet. These remain generated concepts, not production pixels; exact Atlas geometry and native layered Aseprite work begin only after the user selects or combines directions. No resource pack, `jem sandbox` profile, managed client generation, Server runtime, stable profile, release baseline or MineRENT state changed.
+
 ## 2026-10-23 - Explore vanilla resource-pack style families
 
 - User request: begin a real JEM resource pack in `jem sandbox` with three vanilla-facing layers: FancyMenu/main title, buttons/player interface and block interfaces. Produce three PNG boards per layer with nine styles on each board, using a first round without Gemini. Prefer custom semantic icons over text-heavy or space-consuming controls and continue proposing icon-first alternatives in later prompts.

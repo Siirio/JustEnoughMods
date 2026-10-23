@@ -3,8 +3,9 @@
   "status": "concept-selection-only",
   "generator": "built-in OpenAI image generation",
   "generator_reason": "The user explicitly requested the first round without Gemini.",
+  "r2_correction": "R1 biome and palette swaps were rejected as insufficient style exploration. R2 holds content constant and varies texture grammar, physical construction, icon language, depth and interaction treatment.",
   "production_boundary": "Generated pixels are not Minecraft-ready GUI, button, icon, HUD or block-interface assets. Rebuild the selected operational art at exact consumer size in layered Aseprite.",
-  "outputs": {
+  "r1_superseded_outputs": {
     "01-menu-a-grounded-worlds.png": "F20BDED4CCCC9CB58D3AC40A0072AFAB9E6AE3CCA20FBF7E7D3F2BBEC3580CDA",
     "01-menu-b-dimensions-moods.png": "82597D42594488E6C8D00D6A589A73961B2A86387B9037FBAA29958F7ADE5651",
     "01-menu-c-title-systems.png": "44B7B17BB6C0E41ABC65653279722073FABFC6E6652ADDA3CD71E80780CB0F79",
@@ -14,6 +15,17 @@
     "03-blocks-a-materials.png": "1A377C36B12B6655EA3B043948E5F49F6ACFC94D498CE51F43BEAE6724689AE1",
     "03-blocks-b-environments.png": "CF590343CDF7E95EA2A86498314DA96D6A04CCD6E049BA855915AC610C0A9659",
     "03-blocks-c-layout-systems.png": "D9D6F00CCE2DF67DADB21DC2AD8C45BEA94B19BFACEA670F8A280B3E21338A7D"
+  },
+  "r2_corrected_outputs": {
+    "r2-01-menu-a-texture-grammars.png": "BCF68571097F9F53E3CC0A2704F91EB484D01674D91FEE9EE70E9B19E89A51DC",
+    "r2-01-menu-b-title-construction.png": "AE1EB1EDE9566CA7463E199AF5C9FC57BCA6219A3E3B33F714EA37AD84C22731",
+    "r2-01-menu-c-menu-models.png": "74E6D0609C46ABF4965E400ACBC119D70D5651DA44DB491A437959DB58493D36",
+    "r2-02-player-a-slot-construction.png": "97D7FBEFD3A01C0EAFA109352A015CA23901AF9746045E098DF19E84B3B497CA",
+    "r2-02-player-b-icon-languages.png": "A44422650E2E4747C2791DC97CCB155745CBDF6BF5574B649162FFD88924D0A9",
+    "r2-02-player-c-hud-systems.png": "FA6F5CBCAD771812A25C12FE165BBBFABD7BE7B5477BD1792675F9073FBE9D6C",
+    "r2-03-blocks-a-material-recipes.png": "2F007FEF7022E15FBA345863FA30F3947095957540CE6AF42D09EBAE9F5F9CB2",
+    "r2-03-blocks-b-object-models.png": "B41BAA88BF590169A307A38DFAD1ACD1E5E7759059319191C9863A6428981A44",
+    "r2-03-blocks-c-depth-and-states.png": "65484A3F435ED9315C6A189BB7358FB871BEAB60666E9FB4E6AD9DFCF1D3B5B3"
   },
   "required_reference_root": "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack",
   "reference_roles": [

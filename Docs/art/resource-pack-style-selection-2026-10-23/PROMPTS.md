@@ -2,6 +2,31 @@
 
 Generator: built-in OpenAI image generation, explicitly used for the user's requested first round without Gemini.
 
+## R2 correction
+
+User feedback: R1 focused on biome-bound decoration instead of real texture and
+approach variation. R2 uses a controlled-comparison clause: keep the subject,
+camera, information, base palette and representative geometry the same, then vary
+only the named craft axis.
+
+### R2 Menu
+
+- Board A: broad clusters, localized fine clusters, limited-palette planes, dark contours, outline-free chromatic clusters, engraved directional marks, clean cel clusters, contact-edge weathering and authored mosaic shapes.
+- Board B: carved oak, chiseled stone, stitched leather, hammered metal, ceramic mosaic, glass/water inlay, illuminated parchment, enamel sign and dark luminous inlay.
+- Board C: workshop sign, architectural gate, folio, backpack, map board, drawer cabinet, notice cards, borderless icon rail and radial medallion.
+
+### R2 Player interface
+
+- Board A: carved wood, water-cut stone, stitched leather, riveted iron, ceramic cells, layered parchment, clipped glass, toolbelt loops and flat dark clusters.
+- Board B: solid silhouettes, outlined sprites, engraved glyphs, isometric miniatures, heraldic badges, frame-breaking tool icons, cut-paper symbols, luminous inlays and a primary/secondary hybrid.
+- Board C: vanilla-plus rail, toolbelt, open backpack, modular cards, shield status, book tabs, equipment rack, borderless minimal system and mechanical cockpit.
+
+### R2 Block interfaces
+
+- Board A: clean and rough oak, dressed stone, stitched leather, hammered iron, ceramic, parchment, clipped glass and flat dark material recipes.
+- Board B: workbench, backpack, cabinet, altar, folio, machine console, market counter, card trays and minimal workspace.
+- Board C: inset/raised depth, flat print, outer silhouette, hinged modules, continuous sculpted panel, projecting tabs, object-shaped containers, icon-only flow and a restrained mixed system.
+
 Shared constraints across all sheets:
 
 - one landscape PNG with exactly nine equal previews in a strict 3x3 grid;
