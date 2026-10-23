@@ -1,21 +1,26 @@
 {
-  "status": "source_snapshot_not_installable_pending_art",
+  "status": "non_art_source_complete_pending_user_assets",
   "module": "JEMCompat",
   "production_jar": "Mods\\JEMCompat\\build\\libs\\jemcompat-3.7.0.jar",
-  "production_jar_sha256": "de5cbb5df6c1ab329bde04088cd821da637cccfef832156c982347217440d1a3",
-  "production_build": "jar and reobfJar successful; no tests/check/launch tasks",
+  "production_jar_sha256": "e2045dba6758b3b68b794da6811236ee70e047d0e99fc31110d5837f11e49e00",
+  "production_build": "jar and reobfJar successful after final134-type source integration, no tests/check/launch tasks",
   "build_command": "gradlew.bat :JEMCompat:jar --console=plain --no-watch-fs -Dorg.gradle.internal.instrumentation.agent=false",
   "build_failures_before_success": [
     "Gradle8.8 immutable Groovy workspace move AccessDenied; deeper Windows lock owner not established. Two invocation-only flags permitted progress; no shared cache was deleted.",
     "Native Serene Seasons config extends GlitchCore Config; added exact installed GlitchCore0.0.1.1 compile-only.",
-    "One subsequent processResources stale-output cleanup failure; diagnostic rerun succeeded."
+    "One subsequent processResources stale-output cleanup failure; diagnostic rerun succeeded.",
+    "New typed Alex API required already-installed Citadel2.6.3 compile-only, added without installing any runtime library. Final build successful"
   ],
   "source_checks": "manual independent source/bytecode reviews; no automated tests or static-analysis jobs",
   "atlas": {
     "validation": true,
     "task_owned_uncovered_paths": [],
     "preexisting_uncovered_paths": 86,
-    "artifact_drift": false
+    "artifact_drift": false,
+    "original_candidate_gaps": [
+      "recruits:patrol_leader",
+      "recruits:villager_noble"
+    ]
   },
   "art": {
     "approved": false,
@@ -32,21 +37,53 @@
     "minerent_changed": false,
     "existing_publication": {
       "published": true,
-      "journalSequence": 65,
-      "publishedManifestSha1": "98b21167e7045a49b9245b5d83858572eb1bdc81",
-      "stagedManifestSha1": "98b21167e7045a49b9245b5d83858572eb1bdc81"
+      "journalSequence": 66,
+      "publishedManifestSha1": "5a091d4a5983f2ff2a5a2a40f41fc5937585c119",
+      "stagedManifestSha1": "5a091d4a5983f2ff2a5a2a40f41fc5937585c119"
     }
   },
   "runtime_artifact_sha256": {
     "Server/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794"
   },
-  "known_recovery_gap": "Ambiguous crash after restoring intent but before native entity persistence retains snapshot and blocks automatic retry; manual reconciliation currently required. No complete automatic exactly-once crash-recovery claim.",
+  "known_recovery_gap": "Previous permanent ambiguous-restoration stall replaced by fresh-attempt epoch and synchronous checked native writes/flush before simulation and WAL clear. Runtime crash/player acceptance remains unperformed. Missing original multipart data and already-lost native summon metadata cannot be fabricated",
   "source_commit": "SELF",
-  "production_jar_bytes": 529340,
+  "production_jar_bytes": 592796,
   "packaging_inspection": {
     "canonical_food_projection_exact": true,
     "required_refmap_present": true,
-    "new_art_installed": false
+    "new_art_installed": false,
+    "shelter_mixins": 31,
+    "native_dependency_classes_bundled": false
+  },
+  "previous_source_snapshot": {
+    "commit": "a6181bed865e5bec88473ed51bceac3d473dcce0",
+    "production_jar_sha256": "de5cbb5df6c1ab329bde04088cd821da637cccfef832156c982347217440d1a3"
+  },
+  "companion_coverage": {
+    "registered_parent_identities": 134,
+    "vanilla": 14,
+    "alex": 34,
+    "other_pack": 86,
+    "assignment": "Catalog/changes/companion-recovery-species.json",
+    "exact_id_evidence": [
+      "Docs/companions/README.md",
+      "Docs/companions/alex-evidence.md",
+      "Docs/companions/pack-evidence.md"
+    ],
+    "native_temporary_lifetimes_preserved": true,
+    "specific_instances_blocked": "Unrecoverable original multipart data, unsafe loaded clearance or Iron native owner/deadline already lost. Visible localized status, durable payload retained",
+    "original_atlas_candidate_gaps": [
+      "recruits:patrol_leader",
+      "recruits:villager_noble"
+    ]
+  },
+  "gemini": {
+    "used": true,
+    "application": "Installed Gemini1.16.0 Windows app",
+    "conversation": "https://gemini.google.com/app/3c8af4714029384a",
+    "reviews": 2,
+    "report": "Docs/companions/GEMINI_REVIEW.md",
+    "art_generated": false
   }
 }

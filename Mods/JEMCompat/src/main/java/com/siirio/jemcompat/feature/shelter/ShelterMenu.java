@@ -15,7 +15,7 @@ import net.minecraft.world.item.ItemStack;
 /** No inventory slots: the nonce, revision and stable pet UUID are the complete action contract. */
 public final class ShelterMenu extends AbstractContainerMenu {
     public record Row(UUID id, String species, String name, int flags, String blocked) { }
-    public static final int SUPPORTED = 1, HERE = 2, ELSEWHERE = 4, PENDING = 8, UNLOADED = 16;
+    public static final int SUPPORTED = 1, HERE = 2, ELSEWHERE = 4, PENDING = 8, UNLOADED = 16, BIND_READY = 32;
     public final BlockPos anchor;
     public final UUID nonce;
     private final ServerPlayer viewer;
@@ -61,9 +61,14 @@ public final class ShelterMenu extends AbstractContainerMenu {
     private static Row row(ServerPlayer player, CompanionData.Pet pet, String dimension, BlockPos anchor) {
         int flags = pet.supported ? SUPPORTED : 0;
         if (pet.home != null) flags |= pet.assigned(dimension, anchor) ? HERE : ELSEWHERE;
-        if (pet.pending != null && !pet.restoring) flags |= PENDING;
-        if (loaded(player, pet) == null) flags |= UNLOADED;
-        return new Row(pet.id, pet.species, pet.name, flags, pet.blocked);
+        if (pet.pending != null) flags |= PENDING;
+        Entity entity = loaded(player, pet); String blocked = pet.blocked;
+        if (entity == null) flags |= UNLOADED;
+        if (pet.provisional && (entity == null || !player.getUUID().equals(CompanionAdapters.rider(entity)))) blocked = "mount_to_bind";
+        else if (entity != null && !entity.isAlive() && pet.pending == null) blocked = "native_death_pending";
+        else if (entity != null && !CompanionAdapters.ready(entity)) blocked = CompanionAdapters.readinessReason(entity);
+        else flags |= BIND_READY;
+        return new Row(pet.id, pet.species, pet.name, flags, blocked);
     }
     private static Entity loaded(ServerPlayer player, CompanionData.Pet pet) {
         for (ServerLevel level : player.server.getAllLevels()) { Entity found = level.getEntity(pet.id); if (found != null) return found; }
@@ -74,12 +79,18 @@ public final class ShelterMenu extends AbstractContainerMenu {
         CompanionData data = CompanionData.get(viewer.serverLevel()); CompanionData.Pet pet = data.pet(request.pet());
         if (pet == null || !viewer.getUUID().equals(pet.owner)) return;
         Entity nativePet = loaded(viewer, pet);
-        if (nativePet != null && (!viewer.getUUID().equals(VanillaCompanions.owner(nativePet)) || !pet.species.equals(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(nativePet.getType()).toString()))) return;
+        if (nativePet != null && (!viewer.getUUID().equals(CompanionAdapters.owner(nativePet)) || !pet.species.equals(net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(nativePet.getType()).toString()))) return;
         String dimension = viewer.serverLevel().dimension().location().toString();
         if (request.bind()) {
-            if (!pet.supported || (nativePet != null && !VanillaCompanions.supported(nativePet))) return;
+            if (!pet.supported || (nativePet != null && !CompanionAdapters.supported(nativePet))) return;
+            if (nativePet != null && !CompanionAdapters.ready(nativePet)) return;
+            if (nativePet != null && !nativePet.isAlive() && pet.pending == null) return;
+            if (pet.provisional && (nativePet == null || !viewer.getUUID().equals(CompanionAdapters.rider(nativePet)))) return;
             CompanionData.Pet occupant = data.occupant(dimension, anchor);
             if (occupant != null && occupant != pet) return;
+            if (nativePet != null && CompanionAdapters.provisional(nativePet)) {
+                nativePet.getPersistentData().putUUID(CompanionAdapters.CUSTODIAN, viewer.getUUID()); pet.provisional = false; pet.custodian = true;
+            }
             // Reassignment is a single server-thread mutation. Hitbox and house size never enter admission.
             pet.home = anchor; pet.homeDimension = dimension; pet.blocked = "";
         } else {

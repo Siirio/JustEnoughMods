@@ -24,41 +24,23 @@
       "value": "jemcompat:large_animal_home"
     },
     {
-      "type": "id",
+      "type": "source_set",
       "registry": "entities",
-      "value": "minecraft:cat"
-    },
-    {
-      "type": "id",
-      "registry": "entities",
-      "value": "minecraft:wolf"
-    },
-    {
-      "type": "id",
-      "registry": "entities",
-      "value": "minecraft:horse"
-    },
-    {
-      "type": "id",
-      "registry": "entities",
-      "value": "minecraft:donkey"
-    },
-    {
-      "type": "id",
-      "registry": "entities",
-      "value": "minecraft:mule"
+      "members_path": "Catalog/changes/companion-recovery-species.json",
+      "records_field": "entities",
+      "id_field": "id"
     }
   ],
   "exceptions": [],
   "conditions": [
     {
-      "description": "Only exact native Cat, Wolf, Horse, Donkey and Mule classes with legitimate native tame owner and no unknown nonempty serialized ForgeCaps are restorable; arbitrary TamableAnimal subclasses are not admitted."
+      "description": "Exact installed native classes in the applied compatibility source set, legitimate native player owner or explicitly rider-confirmed JEM custody. Native inventories and serialized Forge capabilities retained without the old blanket exclusion."
     },
     {
-      "description": "All supported types bind to either home regardless of size. Recovery requires intact loaded anchor, nearby player within32 blocks, authenticated online owner for native spawn protection and safe already-loaded full-AABB standing space."
+      "description": "Either home accepts every supported species regardless of size. Safe recovery requires intact loaded home, nearby player within32 blocks, authenticated owner and loaded full-body collision/habitat/protection clearance."
     },
     {
-      "description": "Actual production models await user-supplied Gemini bbmodels; source geometry and static registrations do not claim completed asset/runtime acceptance."
+      "description": "Icons and models explicitly deferred by the user. Production assets and runtime acceptance remain absent, so this combined source artifact is withheld from local Server and ManagedPack."
     }
   ],
   "precedence": {
@@ -67,7 +49,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Add exactly two multiblock home sizes, owner-validated searchable binding GUI, one-to-one durable identity assignments and native no-loot recovery with external/above-buried-home safety search.",
+    "summary": "Extend both size-independent shelter homes and binding GUI to installed mountables/tameables/companions, native habitats and multipart data, with synchronous crash-safe first native commit",
     "modifiers": [
       {
         "property": "companions.home_assignment",
@@ -79,19 +61,19 @@
         "property": "companions.recovery",
         "operation": "add",
         "before": "Native ordinary death and conventional loot; no JEM shelter recovery",
-        "after": "Confirmed native death snapshot/epoch journal before loot, captured drops/XP/witherrose suppressed, same UUID restored only once; snapshot retained until latest successful exact native entity IO acknowledgment"
+        "after": "Confirmed death native snapshot/epoch journal before loot, narrow exceptional byproduct and competing-respawn adapters, same UUID/whole multipart chain recovered, pending retained until every real native chunk write and flush completes before ordinary simulation resumes"
       },
       {
         "property": "companions.safe_spawn",
         "operation": "derive",
         "before": "No shelter spawn search",
-        "after": "Interior first only if safe; same shared8-horizontal/32-up/8-down loaded surface search for both sizes, above dirt-covered home allowed, full collision dimensions/fluids/hazards/support/native protection checked; blocked snapshot remains durable"
+        "after": "Shared interior/external/above-buried loaded-only8-horizontal/32-up/8-down search checks complete native body bounds, ground support or native water/lava/air habitat and protections, with no size eligibility gate"
       },
       {
         "property": "companions.owner_teleport",
         "operation": "set",
         "before": "Native cats/wolves can teleport to owner",
-        "after": "Only post-recovery native owner teleport paused until first owner rightclick; native pathfollowing/combat remains; horses/donkeys/mules gain no lock"
+        "after": "Only native post-recovery owner teleport seams pause until first owner interaction, ordinary navigation/AI/combat/mount control remains native"
       },
       {
         "property": "companions.shelter_recipe",
@@ -103,7 +85,13 @@
         "property": "companions.crash_reconciliation",
         "operation": "document",
         "before": null,
-        "after": "Ambiguous process crash between restoration intent and native entity write retains native snapshot and blocks automatic respawn until native reconciliation; no automatic admin repair is claimed"
+        "after": "Fresh epoch per attempt, interrupted native head/segment disk copies rejected, synchronous acknowledged native loaded-chunk serialization/flush precedes journal clear and simulation. Failure discards attempted live body while retaining durable native payload"
+      },
+      {
+        "property": "companions.native_custody",
+        "operation": "add",
+        "before": "Only five native-owned classes admitted",
+        "after": "Exact installed vanilla/Alex/pack classes use native owner first, ownerless mounts require current controlling-rider Bind custody. Living summons retain native secondary player owner, current native age and true expiry, with no reset or new permanence"
       }
     ]
   },
@@ -111,6 +99,16 @@
     "owner": "JEMCompat",
     "kind": "source_and_data",
     "source_files": [
+      "Catalog/changes/companion-recovery-species.json",
+      "Docs/companions/GEMINI_REVIEW.md",
+      "Docs/companions/README.md",
+      "Docs/companions/alex-evidence.md",
+      "Docs/companions/pack-evidence.md",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/shelter/ShelterScreen.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionAdapters.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionData.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterBlock.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java",
@@ -119,38 +117,74 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterGeometry.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterMenu.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterPersistence.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterProtection.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecipe.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecovery.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/VanillaCompanions.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/shelter/ShelterScreen.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterNativeSaveMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/compat/AlexCompanionAdapter.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/compat/PackCompanionAdapter.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterDeathByproductMixin.java",
-      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
-      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterEntityManagerAccess.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterLevelAccess.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterNativeSaveMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterStorageAccess.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexCosmawPickupTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexCrowOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexElephantDeathMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexLuxtructosaurusLootMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexMantisOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexSharedOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexSubterranodonTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexToadOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexTremorzillaTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CaribouDeathSaddleMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionSummonOwnerMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionsHeavyOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionsRespawnOwnerMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/EmberPoleTransientMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/HamsterDryingRecoveryMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronLivingSummonOwnerMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonExpirationAccessor.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonLifetimeMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/MessengerOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackFollowOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackSummonAgeMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitInventoryDeathMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitMembershipDeathMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitOwnerAccessMixin.java",
       "Mods/JEMCompat/src/main/resources/data/jemcompat/advancements/recipes/animal_homes.json",
-      "Docs/companions/README.md",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
   },
   "rationale": {
     "purpose": "Implement the user's two-size, mandatory-GUI, any-size-pet shelter recovery contract without inventing pet progression, duplicating native mod resurrection or forcing chunk loads.",
-    "decision_source": "User JEM_Food_PetShelters_SeasonalHUD_FINAL_v2.md plus current explicit implementation request2026-10-23; Codex chose exact native whitelist, vanilla GUI reuse, epoch/IO journal and conservative ambiguous-crash blocking."
+    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode"
   },
   "introduced": {
     "date": "2026-10-23",
-    "commit": "SELF",
+    "commit": "a6181bed865e5bec88473ed51bceac3d473dcce0",
     "action": "add",
     "summary": "Add source shelter lifecycle and supported native recovery subset; actual shelter model integration/runtime acceptance pending."
   },
   "history": [
     {
       "date": "2026-10-23",
-      "commit": "SELF",
+      "commit": "a6181bed865e5bec88473ed51bceac3d473dcce0",
       "action": "add",
       "summary": "Source implementation of any-size binding and safe external/above-buried recovery; no QA launch or automated test claimed."
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "extend",
+      "summary": "Replace five-species/capability restrictions with all audited installed companion/mount contracts and complete synchronous native persistence. Icons/models explicitly excluded. No gameplay tests or runtime acceptance",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/VanillaCompanions.java"
+      ]
     }
   ],
   "impacts": {
@@ -170,15 +204,14 @@
       "Native owner identity -> one durable pet journal -> one controller binding -> safe loaded recovery -> latest native entity IO commit"
     ],
     "notes": [
-      "Five exact native entity types supported conditionally; all may bind either size. Third-party tameability is not recovery proof. Vanilla models/items/GUI texture reuse never proves actual shelter art or runtime acceptance."
+      "Applied source set lists134 registered parent identities:14 vanilla,34 Alex,86 other installed pack classes. Habitat and full native multipart geometry never affect Bind eligibility. Exact native registry evidence supersedes stale asset-name guesses without rewriting base records"
     ],
     "unresolved": [
-      "Actual user-authored small/large bbmodels and geometry reconciliation",
-      "Source-only paths not player accepted",
-      "Ambiguous process crash restoration intent needs matching native reload/write; no automatic repair UI",
-      "Companions native RespawnTotem and third-party inventory/habitat/teleport adapters unavailable",
-      "Unknown nonempty serialized ForgeCaps are not recoverable",
-      "Claims-specific animal spawn API absent in inspected pack; installing known claim mods fails recovery closed until adapter exists"
+      "User-owned small/large bbmodels and production resources, geometry reconciliation and accepted day/season icons",
+      "Source paths not player accepted or runtime crash-tested",
+      "Unloaded or natively lost Gum Worm parts require natural source loads or genuine native data recovery, never fabricated body generation",
+      "Claims-specific animal spawn APIs absent in inspected pack, unknown installed claim mod blocks recovery until a verified adapter exists",
+      "Historical original Atlas candidates omit native recruits:patrol_leader and recruits:villager_noble. Applied compatibility uses verified installed EntityFactory registrations, base candidates are preserved instead of silently rewritten outside the shared registry extraction engine"
     ]
   }
 }

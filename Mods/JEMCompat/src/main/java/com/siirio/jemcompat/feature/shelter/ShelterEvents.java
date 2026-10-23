@@ -37,24 +37,34 @@ public final class ShelterEvents {
     static void discover(ServerPlayer player) {
         // First-use discovery deliberately visits only actual already-loaded entities, never chunk storage.
         for (ServerLevel level : player.server.getAllLevels()) for (Entity entity : level.getAllEntities()) {
-            if (player.getUUID().equals(VanillaCompanions.owner(entity))) observe(entity);
+            if (player.getUUID().equals(CompanionAdapters.owner(entity))) observe(entity);
         }
     }
     private static void observe(Entity entity) {
+        entity = CompanionAdapters.canonical(entity);
         if (!(entity.level() instanceof ServerLevel level) || !entity.isAlive()) return;
-        UUID owner = VanillaCompanions.owner(entity); if (owner == null) return;
+        UUID owner = CompanionAdapters.owner(entity); if (owner == null) return;
         CompanionData data = CompanionData.get(level); CompanionData.Pet pet = data.ensure(entity.getUUID());
-        if (pet.owner != null && !pet.owner.equals(owner)) { pet.home = null; pet.homeDimension = ""; }
+        if (pet.owner != null && !pet.owner.equals(owner)) { pet.home = null; pet.homeDimension = ""; pet.custodian = false; }
         pet.owner = owner; pet.species = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString();
         pet.name = entity.hasCustomName() ? entity.getCustomName().getString() : "";
         if (pet.name.length() > 256) pet.name = pet.name.substring(0, 256);
         pet.dimension = level.dimension().location().toString(); pet.lastPosition = entity.blockPosition();
-        pet.supported = VanillaCompanions.supported(entity); data.setDirty();
+        pet.supported = CompanionAdapters.supported(entity); pet.provisional = CompanionAdapters.provisional(entity); data.setDirty();
     }
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void joined(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
         Entity entity = event.getEntity(); CompanionData data = CompanionData.get(level); CompanionData.Pet pet = data.pet(entity.getUUID());
+        if (pet != null && pet.restoring && pet.pending != null && !ShelterRecovery.admitting(entity)) {
+            // No restored entity was released to simulation before its first synchronous native commit.
+            // An interrupted attempt is replayed with a new epoch, never resumed from an uncertain disk copy.
+            event.setCanceled(true); DUE_LEVELS.add(level); return;
+        }
+        if (pet != null) for (ServerLevel other : level.getServer().getAllLevels()) {
+            Entity existing = other.getEntity(entity.getUUID());
+            if (existing != null && existing != entity) { event.setCanceled(true); return; }
+        }
         if (pet != null && pet.epoch > 0 && entity.getPersistentData().getLong(CompanionData.ENTITY_EPOCH) != pet.epoch) {
             // A pre-death chunk copy cannot become a second native inventory after journaled restoration.
             event.setCanceled(true); return;
@@ -82,8 +92,9 @@ public final class ShelterEvents {
             try { data.flush(level); }
             catch (RuntimeException failure) { pet.pending = previous; pet.restoring = true; data.setDirty(); throw failure; }
         }
-        if (pet == null || pet.home == null || (pet.pending != null && !pet.restoring) || !pet.owner.equals(VanillaCompanions.owner(entity)) || !VanillaCompanions.supported(entity)) return;
+        if (pet == null || pet.home == null || (pet.pending != null && !pet.restoring) || !CompanionAdapters.bound(entity)) return;
         CompoundTag nativeData = entity.saveWithoutId(new CompoundTag());
+        CompanionAdapters.snapshot(entity, nativeData);
         nativeData.putString("id", pet.species); nativeData.remove("Passengers"); nativeData.remove("Leash");
         long oldEpoch = pet.epoch; CompoundTag oldPending = pet.pending; boolean oldRestoring = pet.restoring; String oldBlocked = pet.blocked;
         pet.epoch++; pet.pending = nativeData; pet.restoring = false; pet.blocked = "";
@@ -101,12 +112,25 @@ public final class ShelterEvents {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void interact(PlayerInteractEvent.EntityInteract event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        Entity entity = event.getTarget(); observe(entity);
-        if (player.getUUID().equals(VanillaCompanions.owner(entity)) && VanillaCompanions.nativeOwnerTeleport(entity)
-                && entity.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) {
-            entity.getPersistentData().remove(CompanionData.FOLLOW_HOLD);
+        if (acknowledge(player, event.getTarget())) {
             event.setCancellationResult(InteractionResult.SUCCESS); event.setCanceled(true);
         }
+    }
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void interactPart(PlayerInteractEvent.EntityInteractSpecific event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (acknowledge(player, event.getTarget())) {
+            event.setCancellationResult(InteractionResult.SUCCESS); event.setCanceled(true);
+        }
+    }
+    private static boolean acknowledge(ServerPlayer player, Entity target) {
+        Entity entity = CompanionAdapters.canonical(target); observe(entity);
+        if (player.getUUID().equals(CompanionAdapters.owner(entity)) && CompanionAdapters.nativeOwnerTeleport(entity)
+                && entity.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) {
+            entity.getPersistentData().remove(CompanionData.FOLLOW_HOLD);
+            return true;
+        }
+        return false;
     }
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void breaking(BlockEvent.BreakEvent event) {

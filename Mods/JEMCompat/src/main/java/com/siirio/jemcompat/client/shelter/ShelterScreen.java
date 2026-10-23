@@ -64,10 +64,11 @@ public final class ShelterScreen extends AbstractContainerScreen<ShelterMenu> {
     private void updateButtons() {
         if (bind == null || unbind == null) return;
         ShelterMenu.Row row = selected();
-        bind.active = row != null && has(row, ShelterMenu.SUPPORTED) && !has(row, ShelterMenu.HERE) && !occupied;
+        bind.active = row != null && has(row, ShelterMenu.SUPPORTED) && has(row, ShelterMenu.BIND_READY) && !has(row, ShelterMenu.HERE) && !occupied;
         unbind.active = has(row, ShelterMenu.HERE);
         String reason = row == null ? "select_pet" : !has(row, ShelterMenu.SUPPORTED) ? "unsupported_reason" : has(row, ShelterMenu.HERE) ? "already_bound" : occupied ? "occupied_reason" : "bind_help";
-        bind.setTooltip(Tooltip.create(Component.translatable("jemcompat.shelter." + reason)));
+        bind.setTooltip(Tooltip.create(row != null && !has(row, ShelterMenu.BIND_READY) && !row.blocked().isEmpty()
+                ? Component.translatable("jemcompat.shelter.blocked." + row.blocked()) : Component.translatable("jemcompat.shelter." + reason)));
         unbind.setTooltip(Tooltip.create(Component.translatable("jemcompat.shelter." + (unbind.active ? "unbind_help" : "not_bound_here"))));
     }
     private void send(boolean bindAction) {

@@ -1,3 +1,11 @@
+## 2026-10-23 - Expand shelter recovery to installed companions and mounts
+
+- User requested support for all installed mountables, tameables and companions, actual continued use of local Gemini, and completion of the non-art work while leaving clock/season icons and shelter models to the user
+- Implementation choice: replace the five-species and blanket Forge-capability restriction with verified native vanilla, Alex and pack adapters. Native ownership, inventories, commands, summon lifetimes and ordinary AI remain authoritative. Native ownerless animal mounts gain explicit JEM custody only when the real controlling rider confirms Bind
+- Bug / Both Sided / the earlier five-class admission and ground-only placement excluded installed companions, while asynchronous first-save acknowledgment left interrupted recoveries permanently ambiguous / in testing. Exact native owner/death/byproduct/teleport adapters, habitat-aware complete-body placement, durable native multipart identities, fresh-attempt epochs and synchronous acknowledged native entity writes replace those limitations
+- Local Gemini was used through its installed Windows application for two concrete persistence reviews. Recommendations were accepted or rejected against the exact installed Forge bytecode, with no AI/movement freeze or invented API
+- Source and production artifact completion are recorded in Docs/food/delivery.json. Models and accepted HUD graphics remain explicitly deferred, so the combined Compat artifact is not installed into ManagedPack or local Server and no task AutoModpack generation is published. No tests, gameplay launches, stable-profile changes, MineRENT deployment or release-baseline promotion
+
 ## 2026-10-23 - Handbook content loading and JEI discovery repair
 
 - User reported inactive handbook tabs, missing entries and no physical handbook in JEI in `test jem`, and asked to notify the parallel session

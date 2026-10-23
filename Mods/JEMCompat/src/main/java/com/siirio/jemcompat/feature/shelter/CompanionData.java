@@ -26,7 +26,7 @@ public final class CompanionData extends SavedData {
         public String species = "", name = "", dimension = "", homeDimension = "", blocked = "";
         public BlockPos lastPosition = BlockPos.ZERO, home;
         public long epoch;
-        public boolean supported, restoring;
+        public boolean supported, restoring, provisional, custodian;
         public CompoundTag pending;
         public Pet(UUID id) { this.id = id; }
         public boolean assigned(String dimension, BlockPos anchor) { return home != null && home.equals(anchor) && homeDimension.equals(dimension); }
@@ -86,8 +86,7 @@ public final class CompanionData extends SavedData {
     }
     private static CompanionData load(CompoundTag root) {
         CompanionData data = new CompanionData();
-        // Version 1 is the initial schema. Unknown versions are refused instead of deleting pending native data.
-        if (root.getInt("Version") != 1) throw new IllegalStateException("Unsupported JEM companion journal version");
+        if (root.getInt("Version") != 1 && root.getInt("Version") != 2) throw new IllegalStateException("Unsupported JEM companion journal version");
         ListTag rows = root.getList("Pets", Tag.TAG_COMPOUND);
         for (Tag row : rows) {
             CompoundTag tag = (CompoundTag) row;
@@ -95,6 +94,8 @@ public final class CompanionData extends SavedData {
             Pet pet = new Pet(tag.getUUID("Id")); pet.owner = tag.getUUID("Owner");
             pet.species = tag.getString("Species"); pet.name = tag.getString("Name"); pet.dimension = tag.getString("Dimension");
             pet.lastPosition = BlockPos.of(tag.getLong("LastPosition")); pet.supported = tag.getBoolean("Supported");
+            pet.provisional = tag.getBoolean("Provisional");
+            pet.custodian = tag.getBoolean("Custodian");
             pet.epoch = tag.getLong("Epoch"); pet.blocked = tag.getString("Blocked"); pet.restoring = tag.getBoolean("Restoring");
             if (tag.contains("Home", Tag.TAG_LONG)) { pet.home = BlockPos.of(tag.getLong("Home")); pet.homeDimension = tag.getString("HomeDimension"); }
             if (tag.contains("Pending", Tag.TAG_COMPOUND)) pet.pending = tag.getCompound("Pending").copy();
@@ -103,12 +104,14 @@ public final class CompanionData extends SavedData {
         return data;
     }
     @Override public CompoundTag save(CompoundTag root) {
-        root.putInt("Version", 1); ListTag rows = new ListTag();
+        root.putInt("Version", 2); ListTag rows = new ListTag();
         for (Pet pet : new ArrayList<>(pets.values())) {
             if (pet.owner == null) continue;
             CompoundTag tag = new CompoundTag(); tag.putUUID("Id", pet.id); tag.putUUID("Owner", pet.owner);
             tag.putString("Species", pet.species); tag.putString("Name", pet.name); tag.putString("Dimension", pet.dimension);
             tag.putLong("LastPosition", pet.lastPosition.asLong()); tag.putBoolean("Supported", pet.supported);
+            tag.putBoolean("Provisional", pet.provisional);
+            tag.putBoolean("Custodian", pet.custodian);
             tag.putLong("Epoch", pet.epoch); tag.putString("Blocked", pet.blocked); tag.putBoolean("Restoring", pet.restoring);
             if (pet.home != null) { tag.putLong("Home", pet.home.asLong()); tag.putString("HomeDimension", pet.homeDimension); }
             if (pet.pending != null) tag.put("Pending", pet.pending.copy()); rows.add(tag);
