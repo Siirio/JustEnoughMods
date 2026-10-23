@@ -6,12 +6,22 @@ public final class JEMClientConfig {
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.BooleanValue SHOW_MOD_NAMES;
     public static final ForgeConfigSpec.BooleanValue VARIED_VILLAGER_OUTFITS;
+    public static final ForgeConfigSpec.BooleanValue SHOW_TIME_HUD;
+    public static final ForgeConfigSpec.BooleanValue SHOW_SEASON_HUD;
+    public static final ForgeConfigSpec.IntValue TIME_HUD_OFFSET_X;
+    public static final ForgeConfigSpec.IntValue TIME_HUD_OFFSET_Y;
 
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
         SHOW_MOD_NAMES = builder.define("showModNames", false);
         VARIED_VILLAGER_OUTFITS = builder.comment("Show all seven native villager outfit types in every biome. Appearance only; professions, trades and saved villager types stay native.")
                 .define("variedVillagerOutfits", true);
+        builder.push("timeHud");
+        SHOW_TIME_HUD = builder.define("showDayNight", true);
+        SHOW_SEASON_HUD = builder.define("showSeasons", true);
+        TIME_HUD_OFFSET_X = builder.defineInRange("horizontalOffset", 8, 0, 4096);
+        TIME_HUD_OFFSET_Y = builder.defineInRange("verticalOffset", 8, 0, 4096);
+        builder.pop();
         SPEC = builder.build();
     }
 

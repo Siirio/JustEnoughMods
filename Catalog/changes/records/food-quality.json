@@ -1,0 +1,188 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.food-quality-and-dietary-variety-20261023",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "items",
+      "members_path": "Catalog/changes/food-quality-assignments.json",
+      "records_field": "assignments",
+      "id_field": "item"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Actual completed consumption of assigned edible item or successful native Cookery FoodBiteBlock portion; server player only",
+      "confidence": "installed_source_and_source_review"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_gameplay",
+    "priority": 140,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Curated per-item tiers/families use exact approved utility matrix; one native food contribution bundle and five-ID dietary movement bonus.",
+    "modifiers": [
+      {
+        "property": "food.quality_bundle",
+        "operation": "derive",
+        "before": {
+          "value": "Native food properties/effects only; no JEM quality bundle"
+        },
+        "after": {
+          "authority": "Catalog/changes/food-quality-assignments.json",
+          "records_field": "assignments",
+          "mapping": "Each exact item stores tier, family, exact vanilla effect IDs/amplifiers and native duration; 1/2/3 components; atomically replaces prior food contributions."
+        }
+      },
+      {
+        "property": "food.dietary_variety",
+        "operation": "add",
+        "before": {
+          "value": null,
+          "reason": "No JEM variety bonus"
+        },
+        "after": {
+          "distinct_prepared_ids": 5,
+          "window_active_server_ticks": 72000,
+          "movement_speed_base_fraction": 0.05,
+          "modifier_uuid": "766d2410-48f2-4223-bc78-d23860a9e004",
+          "stacking": false,
+          "time_source": "overworld.getGameTime; does not follow dayTime, sleep or /time set"
+        }
+      },
+      {
+        "property": "food.independent_effect_ownership",
+        "operation": "document",
+        "before": {
+          "value": "Vanilla stores one native active instance per effect ID and a source-blind hidden chain"
+        },
+        "after": {
+          "strategy": "Existing independent same-ID effect wins until natural expiry; narrow pre-add native hook detaches only exact owned instance before external merge. Never snapshots/restores independent effects. Native direct forceAddEffect/map writes/raw absorption changes are unsupported source-ownership bypasses."
+        }
+      },
+      {
+        "property": "food.absorption_replacement_budget",
+        "operation": "derive",
+        "before": {
+          "value": "Native repeated effect insertion grants full absorption capacity"
+        },
+        "after": {
+          "value": "Persistent spent absorption and active native budget window carry across bundle replacement, intervening nonabsorption dish, logout and death; insertion only grants unspent allowance. Raw absorption with no effect defers insertion."
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat.feature.food",
+    "kind": "user_requested_food_quality_and_dietary_variety",
+    "source_files": [
+      "Catalog/changes/food-quality-assignments.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/food/FoodTooltips.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/FoodEffectOwnershipMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/KaleidoscopeFoodBiteMixin.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/ru_ru.json",
+      "Docs/food/README.md",
+      "Docs/food/COVERAGE.md",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Catalog/generator/export_food_quality_report.py",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Reward deliberate cooking and variety while preserving vanilla staples, independent native sources and boss combat balance.",
+    "decision_source": "User JEM_Food_PetShelters_SeasonalHUD_FINAL_v2.md sections 1-1.4, 2026-10-23",
+    "user_requested": "User supplied tier durations/effect matrix, one-bundle policy, independent-effect preservation and five distinct IDs/+5% movement rule.",
+    "codex_choices": "Exact recipe-backed assignments, conservative independent-effect precedence, pre-add ownership Mixin, native Cookery successful-bite adapter and persisted absorption debt are implementation choices. No recipes or native food properties changed."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "implement_food_quality_and_dietary_variety",
+    "summary": "Exact recipe-backed food assignments, one attributable native effect bundle and persistent active-server-time variety.",
+    "source_files": [
+      "Catalog/changes/food-quality-assignments.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/food/FoodTooltips.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/FoodEffectOwnershipMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/KaleidoscopeFoodBiteMixin.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/ru_ru.json",
+      "Docs/food/README.md",
+      "Docs/food/COVERAGE.md",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Catalog/generator/export_food_quality_report.py"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "implement_food_quality_and_dietary_variety",
+      "summary": "Exact recipe-backed food assignments, one attributable native effect bundle and persistent active-server-time variety.",
+      "source_files": [
+        "Catalog/changes/food-quality-assignments.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodCatalog.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodNetwork.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/food/FoodTooltips.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/FoodEffectOwnershipMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/KaleidoscopeFoodBiteMixin.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/en_us.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/ru_ru.json",
+        "Docs/food/README.md",
+        "Docs/food/COVERAGE.md",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Catalog/generator/export_food_quality_report.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "food",
+      "movement_speed",
+      "native_effects",
+      "absorption",
+      "player_persistence",
+      "client_tooltips",
+      "singleplayer",
+      "dedicated_server",
+      "cooking_progression"
+    ],
+    "relations": [
+      "Original installed recipe facts are preserved as evidence in the change-owned assignment set; no competing registry is introduced.",
+      "Catalog/changes/food-quality-assignments.json is the single assignment authority, projected unchanged into JAR data/jemcompat/food_quality.json.",
+      "Tooltip localization is client-side, effect insertion and dietary timestamps are server-side.",
+      "Native quality NBT, hunger/saturation, recipes, containers and remainder behavior remain owned by installed mods."
+    ],
+    "notes": [
+      "123 exact classified IDs across six measured cooking modules; 129 exclusions and unresolved native recipe outputs listed in Docs/food/COVERAGE.md.",
+      "All player-facing durations use Minecraft days while internal native units remain unchanged.",
+      "Food bundle clears on actual death; dietary timestamps and spent absorption debt survive clone."
+    ],
+    "unresolved": [
+      "Player acceptance/runtime behavior remains unverified; no tests or gameplay launches requested.",
+      "Same-ID external source temporarily replaces food contribution even if weaker/shorter; food resumes only within remaining lifetime.",
+      "Direct third-party forceAddEffect, native effect-map writes and raw absorption changes while food owns absorption bypass the audited pre-add route and cannot provide general source ownership.",
+      "Generic third-party placed cakes/portion routes and other pack namespaces are not exhaustively classified."
+    ]
+  }
+}

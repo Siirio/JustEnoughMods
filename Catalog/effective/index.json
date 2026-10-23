@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "bf6d5cc6628a85026830f03246cdd37b1510a44ce82eb5622b8c36ae96e73f5a",
+  "change_records_sha256": "01fd121ac0ad51097cfcb74fe50d4914c1aaeddd65514c1ed5dc28488d4ced7c",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -692,6 +692,23 @@
       "potential_static_target_count": 0
     },
     {
+      "change_id": "compat.food-quality-and-dietary-variety-20261023",
+      "status": "conditional",
+      "summary": "Curated per-item tiers/families use exact approved utility matrix; one native food contribution bundle and five-ID dietary movement bonus.",
+      "record": "Catalog/changes/records/food-quality.json",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "items",
+          "members_path": "Catalog/changes/food-quality-assignments.json",
+          "records_field": "assignments",
+          "id_field": "item"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 123
+    },
+    {
       "change_id": "ftb-authored-adventure-book-20261022",
       "status": "active",
       "summary": "Replace the small universal quest guide with all 596 supplied cards in 32 chapters, without locking independent paths or copying campaign/race/economy state.",
@@ -1087,6 +1104,61 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1
+    },
+    {
+      "change_id": "companions.shelter-bound-native-recovery",
+      "status": "conditional",
+      "summary": "Add exactly two multiblock home sizes, owner-validated searchable binding GUI, one-to-one durable identity assignments and native no-loot recovery with external/above-buried-home safety search.",
+      "record": "Catalog/changes/records/pet-shelters.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "jemcompat:small_animal_home"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "jemcompat:large_animal_home"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "jemcompat:small_animal_home"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "jemcompat:large_animal_home"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:cat"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:wolf"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:horse"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:donkey"
+        },
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:mule"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 5
     },
     {
       "change_id": "power.bloom-registered-boss-targeting",
@@ -1653,6 +1725,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "season-hud",
+      "status": "conditional",
+      "summary": "Render two small day/season indicators from native synchronized time and Serene Seasons state; change no gameplay calendars.",
+      "record": "Catalog/changes/records/season-hud.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "sereneseasons"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 23
     },
     {
       "change_id": "server.bound-test-profile-20261020",
@@ -2876,10 +2963,12 @@
     }
   ],
   "source_fingerprints": {
+    "Catalog/changes/food-quality-assignments.json": "c2bee7863aad898e6f0b132fe82f83409ad0d4cf3d1e9337a40080e545c4c457",
     "Catalog/changes/sets/ftb-questbook-reward-subjects.json": "2e461b79e984381cc9a363f122400e880111c8c00252d594a4c227390c4efbf1",
     "Catalog/changes/sets/settlements-decor-coverage.json": "8d6348bda5a0f4577dba81665988a683f436667d2d648ae873074e77d4b922f2",
     "Catalog/generator/build_atlas.py": "ba4fb5fbea7eccce9d534529cfc27b569415b1eddd816cb8b27766ec9a2e54b5",
     "Catalog/generator/build_power_views.py": "73c76286a27c124ebfa19bb7bc3764f1c0817f26b277d2765616a02a70d7f2ee",
+    "Catalog/generator/export_food_quality_report.py": "dbdb388372ef47081985eb8499f2af7da798deb42266e62cf039f437a2d9217d",
     "Catalog/generator/extract_defense_mechanics.py": "7b40b6095e74b7f55d364889f2598c0b70e0516ed16a8f71bf6029262d5d9c22",
     "Catalog/generator/extract_power_mechanics.py": "e86152d5914f2d1dd1dddb56bc57bd52826f0eceb678790940bddb7d9e88e477",
     "Catalog/generator/impact_model.py": "edeb1ced95af77cacb2804ac476c65fa7cb24afd27dabf9a447b0b019c45d4df",
@@ -3017,7 +3106,7 @@
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "f97b54e8038ba34035536b0323955fe3973934ec55b6a19754bf8cda7b6f4a3f",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "8a16d49341b59ca60731bdfd44b7bec6479e74e5789702dea009cc1afe1fa84f",
+    "Docs/DEVELOPMENT.md": "6b3f1c08c2077bf5d08d8ed031f662a67da1732f60b56fc84fc9653c9dbadb85",
     "Docs/SERVER_COMMANDS.md": "1530780beac042962a2718843df2006319a320f224fca2dbc06eece3ff2d9775",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
@@ -3026,10 +3115,13 @@
     "Docs/art/bbb-hammer-2026-10-21/hammer.png": "e53ad0acf66af651b834387a8e355e3e378b7b48c7b137b6522afd9777935173",
     "Docs/art/crafted-gui-2026-10-20/README.md": "ccddecf9df5801ec42bf606563a07b5d6e591fc4c81f2690335b119c884fd07b",
     "Docs/art/shipping-station-2026-10-20/model/README.md": "94b651d5ae7ee9b17162cd7ba1456a2402879215bc2f7bfd1cf1aa8f70acf103",
+    "Docs/companions/README.md": "90aff7922fc65434b595fe01ff4333e127f6fe203922aaa19de10be22e43a7c9",
     "Docs/economy/native-trading-design.md": "d1328493bbac31e57485604c6699cf9a8b70e5880f5f2bce37086bfadf2cc1f7",
     "Docs/events/BLOOD_MOON.md": "59953d6950b993e0bdf1c617d888c97d4a1ffef38132efcbdd24204d0996d8df",
     "Docs/events/BOSS_FIGHT.md": "ae43321e050f8c63a90533c503536940fb24035ec47febc102349cacb5596b0e",
     "Docs/events/BOSS_RAID.md": "04d15865ed46c576e71b137326869d721d4049df6319092213fe67ebb8aac955",
+    "Docs/food/COVERAGE.md": "5cdd3b02b333364835760cd77fbd99289e6158bcc0d386d5c951a60d682d1844",
+    "Docs/food/README.md": "5fe05415711cb95ac54dea72ce5c6c8edff6787f332b0a69af435003028da37e",
     "Docs/gui-sandbox/README.md": "71775c921e2cbb7dda22ee07e603be62a045ea17aa78e9ba6f0bb4e1dc227d63",
     "Docs/gui-sandbox/delivery.json": "018431eef19b2f240853ba2d87ca271f38e7cd9ce3973fa7c2628c95fa44650b",
     "Docs/handbook/README.md": "9a20ef2f5cebc570d636d03a5fc1ff4097b4279f1df8789251d3db80087137f2",
@@ -3060,6 +3152,7 @@
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/races/server-test-migration.json": "666c4642ce4b177eea8a20f7a9dfc2269e2fec05ab5f2d68c049395aca188f1a",
     "Docs/releases/2026-10-21-shipping-market-repair.json": "a6f88bf08933b6c5c79407657add4e86379d6548faaf7e810ada29ce1c92bd27",
+    "Docs/season-hud/README.md": "03c743fae588d0b677f600716221a6a0650608208b7a54f4c79941d3745c796a",
     "Docs/settlements/DESIGN_JOURNAL.md": "440abcac8af594a5b41e177da3b36049d47b7b95435431730eb3f4aee08b62bd",
     "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py": "98fa13c327c20af73c3b9d6d341967f069b18c1367768155b6867f755ab928d8",
     "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora": "15729a822314845f271a79782977b7c8572d6572d28b32387804848f28210931",
@@ -3945,20 +4038,24 @@
     "Mods/JEMCompat/AGENTS.md": "e8fce56c93cb82de01125c3877968a9cfea6703617c5ca267efa5d5a17fb1a17",
     "Mods/JEMCompat/README.md": "c388e5f8e222a83b2d21413d9abd813f5e85278339384dd5996a42fa2b7c5d5f",
     "Mods/JEMCompat/SEASONS.md": "2a722937421ab4ff9c9be2cdb2a168c4e45a6c3b1c03206ffee420878ade5ab3",
-    "Mods/JEMCompat/build.gradle": "8c6e3f931e859a11318bf516c47d37a231a37071825463e69f4b43aec8ce7ab3",
+    "Mods/JEMCompat/build.gradle": "ae14e70f41c603749fe0f812a968e54c3b4db9c2fdfd62cb51d0b3b2652cc0f7",
     "Mods/JEMCompat/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java": "5fbc572993a4a6953f9918e78670fe49e9480d10af28506132af1050fd2b1f7a",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "2e2730da93622a28c386bad4f167710b8b40f3f080e828623221bfaccc4b33a9",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java": "9d8bcccc379e5b35a944252997930cb6a872b4a335f7f32e75753d3643720c9d",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "991b8185cbd92711e26f310e787f9c30f3b226d3bb1c7519132aa577bdb6cfec",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/CuriosEquipment.java": "52e8d713c9881ee1eadee81684a79754106fd3e70249b5697b79c810399d3ec4",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java": "1d8ab8cde2958f3fe72f3b120cf9fe07eca55b608b7ee54f81e636c7e3d29fbd",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/AdvancementScreenEvents.java": "08bda706303d9643b47f6195ccc55c5a56c5517fa576554d421e010c274260c6",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java": "202fee218ca234b2a73af58557aca26aa7b017f03d136081b7b2ffcbd3755d4c",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java": "d41af8d2a3e1e04f0d8e7ef6d7e5c2fed73324d26a08eb0bbf1c45775cf7d186",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/food/FoodTooltips.java": "e61200e393aa673d5f81047df2c31f9c325faaee1b91ab759269009f6378aaaf",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java": "14bcf20eb72cb3c1319857d8392c892d7b2aa98e1c148adc0c643048806f66b8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java": "75d6aba4649c429a9203d8c5eeccdec620343e86855199363ff00dd040d2df9e",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java": "ab32c6f08e6f56e7ee3817ee2336729a46b8468a7fc86cec026a44d7408ab062",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java": "6c8371bdee0106e42fc776fe62280725b1f844ba6302f01b3776863796442369",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/GuiPlayerRenderScope.java": "49bbe53bcaa0ce884bd12871751547325193611f57493f61bc3c967ff3235ec3",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/shelter/ShelterScreen.java": "d72df228e6389d630235351dbe24a4ec1f421141cd0a2b204e4572f3178bbbba",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/SeasonHudState.java": "32652e4e2b4c99155864e76badbc2ccf54aec699f4201412008d413139731482",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/TimeSeasonHud.java": "7aee1a0e21d175ec9157ada8343c658ccf388a12467f8b47d9833352e1f682d7",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/equipment/EquipmentEligibility.java": "2debcd93cdc7344a2889fdeb9dc3b11ea42c72abc1bfb69310928592d05a3ce7",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/equipment/InfiniteEquipmentDurability.java": "985fc5a9f8a4e815c493f6fe66449c7568a24c22a17828d74bcef38a52d9157d",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/fabric/FabricTradeMixinCanceller.java": "42ae5d9c5e107a5799ca6fe317628d55b8e09b075afa1197323dd57ba05b0030",
@@ -3966,7 +4063,8 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/CataclysmBossHelp.java": "314041fbc3472054f7435d9d31eadb599f8489df9113ebba7f4c53a3641a1113",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java": "f0e814fd44b34c5d55f4a17b92a1fc532248c8b6f56ef5df708a8b3a7a9c4ac8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/login/TerminalSocketFailure.java": "0e09149740042f5ee17c67d1cfb37fb7d9d9e17ecf17ce79be5d077c4b8d6afc",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java": "18ee53919a7a66e1a09dbebb8fba8798cbdace36e2a3210f9b03cf4cdf967f4e",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java": "00d80fcea8e403a388e9fda85e079d9bb8152e3af636b81b872abe582adebd7f",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java": "c66b13f0793b75d85de319353417c8ad2ecbee164f5b05c0ca469322f7322689",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java": "a2f5b523e5e88c5c721202875a8ceffc5baa6ae98e5969c84d8a088762faf882",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AutoFeedAugment.java": "ddcc28beaab1bd5dd6bdaa9cee48925a6d370c5d7a53098b0af6df9e380793d3",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAuthority.java": "5a5b1060bbe4bac79159a2839031b2f4a98d3cc5b4efb8648cc3088867d56e3d",
@@ -3986,7 +4084,22 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java": "1b0f75961dc62fc9945e44c1e3c79726be5fdea8933f08dc4f0f024b439340e9",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java": "ebad3683348bd61eb8a0e2265b962a065fd968d03e316aea8183d140ed9b9094",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationPattern.java": "1d77e04184eb6eeafe26e2f1f0d9ddeecdedf4c24f5affefe055b45276e08400",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodCatalog.java": "6231320636d80ceed2521b5c8c99f6a5bfb04035dc041678f038b02bbf9e47fe",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodEvents.java": "b37fa618cede6c32e4ea285ed61b95ff83b26c25dd370cf945434948261b1229",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodNetwork.java": "7599c615faca283d6455e6271aafc6450b5cd9d2988b2fc19f20b26951432299",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/seasons/SpawnSunflowerSeasons.java": "9428cf10d4f21b1afc7f96fb1b60a4556dccc31835228de77b8669deced0e4b9",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionData.java": "387c4cffff71076d8898e26949ecf75cc6730d0b89174f0600addf988cff79ed",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterBlock.java": "18b5dc4d660302c48698dd7f064968b15d996bde295a0a71553e6fdb25ce2810",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java": "0b09eaee85fd2c1fcd18c6fef5e46ff5421568d20ac84bb548123958fcbb9837",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterController.java": "10be2398060d4a5dbe5881841aa7e53b3005033efd359ac270d804d0a89d6a4d",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterEvents.java": "c6950c0db1d7af50ff442169d46e122134c11296df205a9a0638c716540ea504",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterGeometry.java": "37025e99134914b1145946de9208ee4a1cad2ccae200c4af5c43cf3c6b22cf7d",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterMenu.java": "842d597202313e8a1393df119ce40d387d31d7b0d67ff1905a8b4fbe4b811f64",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterNetwork.java": "a1254c74bd0fa76197f385e113671b3f6552333ea57eec26db4f0f417347e6e3",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterProtection.java": "744a7ad411d0decee4c883f386a192c8308fb7d977e98b258d7efd081b5cad8c",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecipe.java": "290181546c74f5527f4e39d999200183874c7a6141fd3f52b7f259c461934d99",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecovery.java": "278e9449a70c76de965eceeb0f5267b5ed2a5a09834ec5228372edb489317616",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/VanillaCompanions.java": "9e301ee15844675fb219099fd6219ace424abd11d3a2ea93fc878b73d6f4a669",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawning/CreatureSpawnProbability.java": "381204a678812809d46753d7de8be23ba72d75678ed3556b8861c9bc16150945",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelInventory.java": "28fea99f59514523f86773d8910bdb13e852fb4efee674f09abbccf77a25bc3a",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/AircraftFuelSlot.java": "c5cbec39ba34e1317b945e70b68933e142e3a9582895b0ffc050e6761b85fc37",
@@ -4005,6 +4118,8 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationDiggerItemMixin.java": "4b835998355e66829dbe54b5c64a62792ae87658bb1ed9ddbad77ea0fdc64bc5",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationGameModeMixin.java": "6b51852360501eb93bbe3b3bfbc6b182f1fa6583f71e40b133a9eb738d4791e7",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationItemStackMixin.java": "6855ff35a7f052fff0a01e167ef65fcf533fd3164ab81603a26647776138b99e",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/FoodEffectOwnershipMixin.java": "5292511ccb661efc542f91e2f691695539c4c7e2023789942804b0b02a36af72",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/KaleidoscopeFoodBiteMixin.java": "3c8fcaa5da079b76e54d23c62ec35ce1041db8611b492ff9526bed9c9629e1bc",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/grave/LegacyGraveCreationMixin.java": "6aa735df346bbd66faf9d6e59c3b59a8b4d8bb7fc336e7d0f59c1f727e96e7a5",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java": "da54837470a855cdefb8767df722a75e0f30674c5a622f56da33d9904fc09dd8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ConnectivityTerminalSocketMixin.java": "c810c8223a32dadf701f4f24a153e0f481b7c0982bf2efc0137b1414e09725c8",
@@ -4012,6 +4127,9 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java": "ea9c3326e28a9ce40603c647b02e0a1e6272161d171281408dac02000c2df2df",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/TerminalConnectionFailureMixin.java": "1c8ddb802504484ca1ab1a926e3b9ad762c292ab84b51a59ae67f09820b91a78",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java": "ac68b028cb783409785bef7d51b04ad0c03507c951cf0ecafa665a28068b9005",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterDeathByproductMixin.java": "c133f0e94b7d013279795e01fa0f72a616cd8e639ff8ac0bc3ecb9a1ff523afc",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterNativeSaveMixin.java": "e43d14f26cda0593aaff5e9b766d600eaec91d289b4bbe4422aaec95007e7ac7",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterOwnerTeleportMixin.java": "6bb2d9cf4486da00e26391386ae86c2877103687778972be1358b29bdf3c82d5",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/trading/FabricTypeAwareTradeMixin.java": "329c1a2f95637a32aa883832f5aa7332a4994a2b64a8f04aefe9f2d2aebd7479",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftFuelSlotMixin.java": "77ab1b2174a625d7947cd354370675b02751ebfad05767ea908c36fcae60bc29",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/AircraftInventoryMixin.java": "259b83f2d4fe9374569127edda2b7ee620b2dc158f74bc058388410f2e202d10",
@@ -4023,9 +4141,11 @@
     "Mods/JEMCompat/src/main/resources/assets/jem_pack_core/lang/en_us.json": "37f3b2a77eb0ed0ca47bc7eae89c33dec5e49901790ae692a1d17b4455261228",
     "Mods/JEMCompat/src/main/resources/assets/jem_pack_core/lang/ru_ru.json": "b8d9175ed8e07c61e466a39605a5dabf77215902b3e1de1c3ab7f328f0449d1f",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json": "f385912d9fbb5b409af89014decc9b72c1934184ae9d1381f0456076f1cd944f",
-    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json": "f63f341fc97ba3b425a9045df81df9695d58fb7cbcce0616f284665f9873aa02",
-    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "b6dd43f879dbbd040767c05c7063cac771cf5d82e07783f58edadec8b8b55416",
+    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json": "6185fe011c8fb704e0f158ab7f5dda4bfbe9ff34b533440050d8ec6bd3319899",
+    "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json": "0dd03d21d41d772667e05a996975be8ecc16932f199d75289c3544cb073a3a03",
     "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/augment/furnace.png": "26d524e4ba1670a58118f4b9f61f468f0a83322abc77be9967f130907f2cca65",
+    "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/en_us.json": "93e7038399b9fc217ed650318086d4d7b358c3427da9de83003ed8eb1ceafbdc",
+    "Mods/JEMCompat/src/main/resources/assets/jemfood/lang/ru_ru.json": "675a80201e6c266f9ec76b05a24631ee76d9d11104ae13bef113a00e0e4e714c",
     "Mods/JEMCompat/src/main/resources/data/bountiful/bounty_decrees/bountiful/armorer.json": "31823a859886815c0e24a08d4c3fa89f628f89c76b86450045b1704b362eb797",
     "Mods/JEMCompat/src/main/resources/data/bountiful/bounty_decrees/bountiful/butcher.json": "31823a859886815c0e24a08d4c3fa89f628f89c76b86450045b1704b362eb797",
     "Mods/JEMCompat/src/main/resources/data/bountiful/bounty_decrees/bountiful/cleric.json": "31823a859886815c0e24a08d4c3fa89f628f89c76b86450045b1704b362eb797",
@@ -4046,6 +4166,9 @@
     "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/the_incinerator.json": "245e2abee528963c6fd06d4c58834931ef1f35d2f251eb7f99dcd2c2e5911724",
     "Mods/JEMCompat/src/main/resources/data/cataclysm/capabilities/weapons/wrath_of_the_desert.json": "476863f6df99d6e62de962b542a632b4babb31e5225f1f4b370cae9e37a6fcf6",
     "Mods/JEMCompat/src/main/resources/data/jem_pack_core/forge/biome_modifier/frostbite_probability.json": "443ae233267d5c8f614873a192e6d7e19246eab05b3f965168028f7fb50592d6",
+    "Mods/JEMCompat/src/main/resources/data/jemcompat/advancements/recipes/animal_homes.json": "0c5347dcea084a0a591159a79c11c6c1ed535f5dcfb00238641ea54fdc531e39",
+    "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json": "13929fc39a36391efc2b66ac52629aa073682eb22eb7f0412da257c41a7cdf5d",
+    "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json": "ec69be02b9ee716e887db9dd28e335020cbc108960040470fb0f3aeb4de53409",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/cooking_catalysts.json": "5a7463634353f887ac45675092f022f3b37590d34ff472e31d6e344e24c3ed9e",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/fishing.json": "dfc9a1768002bcd258fe1000d62bf576c0b7b7dded44038b02ececb209609afa",
     "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/not_weapons.json": "d13cc69fb3743ad3269196e2cd5bf069839f27d46a1b0fbc1e621b0135483774",
@@ -4062,7 +4185,7 @@
     "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/summer_crops.json": "fef999a464d549042d1a7bb24cc054cbf5e742904e7f3ee951dd58bc1b5ef4e6",
     "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/winter_crops.json": "78223b81169bcb75058bea74d3e1f52713f399a0a7bdb1f7302a6a57db534e5c",
     "Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/items/year_round_crops.json": "9d4539847fe380ce5c83950a6beedd381732e3d4724f7978f7778467fefe4cc9",
-    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "4ea94ca644133b4cf5fa2f2dab37646f8b04f17c4c98e381da88bf5929939c03",
+    "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json": "f96754e6402c72280c1f3908d3d28c87eed198f5d994ba96b94d00472305b356",
     "Mods/JEMCompat/src/main/resources/jemcompat.seasons.mixins.json": "071a6625ac7f9040b12ceae555aafc643f228130afb9ec71ef1600934ffd4c7f",
     "Mods/JEMDrillLifecycle/build.gradle": "9acab28e75605ab62f2379ea75b414ab8cfffe1e77a610edb63740827ca1cf36",
     "Mods/JEMDrillLifecycle/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",

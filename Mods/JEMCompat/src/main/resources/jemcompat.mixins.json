@@ -5,6 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "jemcompat.refmap.json",
   "mixins": [
+    "food.FoodEffectOwnershipMixin",
+    "food.KaleidoscopeFoodBiteMixin",
+    "shelter.ShelterOwnerTeleportMixin",
+    "shelter.ShelterNativeSaveMixin",
+    "shelter.ShelterDeathByproductMixin",
     "login.TerminalConnectionFailureMixin",
     "login.ConnectivityTerminalSocketMixin",
     "login.ServerLoginRespawnPacketMixin",

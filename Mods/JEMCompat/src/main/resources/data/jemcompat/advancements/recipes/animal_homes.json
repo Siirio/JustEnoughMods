@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"tag": "minecraft:logs"}]}
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {"recipe": "jemcompat:small_animal_home"}
+    }
+  },
+  "requirements": [["has_log", "has_the_recipe"]],
+  "rewards": {"recipes": ["jemcompat:small_animal_home", "jemcompat:large_animal_home"]}
+}

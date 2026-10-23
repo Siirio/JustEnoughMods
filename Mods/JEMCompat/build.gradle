@@ -91,6 +91,7 @@ dependencies {
     compileOnly fg.deobf(files(installedMod('framework-forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('spawn-*.jar')))
     compileOnly fg.deobf(files(installedMod('SereneSeasons-forge-*.jar')))
+    compileOnly fg.deobf(files(installedMod('GlitchCore-forge-*.jar')))
     compileOnly files(installedMod('BetterAdvancements-*.jar'))
     compileOnly project(path: ':JEMAchievementGuide', configuration: 'jemCompile')
     compileOnly project(path: ':JEMIdentity', configuration: 'jemCompile')
@@ -114,6 +115,10 @@ tasks.named('compileJava', JavaCompile).configure {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 tasks.named('processResources', ProcessResources).configure {
+    from('../../Catalog/changes/food-quality-assignments.json') {
+        into 'data/jemcompat'
+        rename { 'food_quality.json' }
+    }
     def replaceProperties = [
             minecraft_version: minecraft_version,
             minecraft_version_range: minecraft_version_range,

@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "change_id": "season-hud",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "sereneseasons"
+    }
+  ],
+  "conditions": [
+    {
+      "side": "client",
+      "optional_mod": "sereneseasons",
+      "lifecycle": "native initialized client season state and native dimension whitelist"
+    },
+    {
+      "production_resources": "Awaiting user/Gemini art; not installed or published"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_requested_update",
+    "priority": 850
+  },
+  "change": {
+    "summary": "Render two small day/season indicators from native synchronized time and Serene Seasons state; change no gameplay calendars.",
+    "modifiers": [
+      {
+        "property": "client.time_season_hud",
+        "operation": "add",
+        "before": "No JEM day/season HUD indicator in JEMCompat; native Minecraft and Serene Seasons calendar remain owners.",
+        "after": "Optional 24x24 day and season indicators at GUI position8,8 with gap4, configurable position/toggles, F1 hide and hover text in chat/container screens. Seasonal pointer and progress use native ISeasonState/config. Nonseasonal dimensions show neutral presentation; absent Serene Seasons hides that indicator. No time mutation or independent calendar."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat client.time and isolated compat.seasons adapter",
+    "kind": "client_native_state_presentation",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/TimeSeasonHud.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/SeasonHudState.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+      "Docs/season-hud/README.md",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "The user requests implementation of section4 of the final v2 brief while preserving existing architecture and source authority.",
+    "decision_source": "User specified indicator size, layout, native synchronization, optional-mod behavior and presentation-only scope. Codex chose Forge client event hooks, an isolated optional adapter and native calendar API reuse."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Add presentation-only native day/season HUD source.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/TimeSeasonHud.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/SeasonHudState.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+      "Docs/season-hud/README.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Add native day/season HUD source without changing native calendar mechanics.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/TimeSeasonHud.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/SeasonHudState.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+        "Docs/season-hud/README.md"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_hud",
+      "native_time_presentation",
+      "serene_seasons_calendar"
+    ],
+    "relations": [],
+    "notes": "Installed API/bytecode9.1.0.3 and local config inspected. Existing day and season rules remain unchanged. Presentation only; no original registry fact is overwritten.",
+    "unresolved": [
+      "Approved native HUD PNGs are absent; previous candidates rejected.",
+      "Runtime gameplay/optional-mod matrix remains unobserved."
+    ]
+  }
+}

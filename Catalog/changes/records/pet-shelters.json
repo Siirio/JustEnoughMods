@@ -1,0 +1,184 @@
+{
+  "schema_version": 2,
+  "change_id": "companions.shelter-bound-native-recovery",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jemcompat:small_animal_home"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jemcompat:large_animal_home"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "jemcompat:small_animal_home"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "jemcompat:large_animal_home"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:cat"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:wolf"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:horse"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:donkey"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:mule"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "description": "Only exact native Cat, Wolf, Horse, Donkey and Mule classes with legitimate native tame owner and no unknown nonempty serialized ForgeCaps are restorable; arbitrary TamableAnimal subclasses are not admitted."
+    },
+    {
+      "description": "All supported types bind to either home regardless of size. Recovery requires intact loaded anchor, nearby player within32 blocks, authenticated online owner for native spawn protection and safe already-loaded full-AABB standing space."
+    },
+    {
+      "description": "Actual production models await user-supplied Gemini bbmodels; source geometry and static registrations do not claim completed asset/runtime acceptance."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_companions",
+    "priority": 120,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add exactly two multiblock home sizes, owner-validated searchable binding GUI, one-to-one durable identity assignments and native no-loot recovery with external/above-buried-home safety search.",
+    "modifiers": [
+      {
+        "property": "companions.home_assignment",
+        "operation": "add",
+        "before": "No JEM shelter owner or companion assignment",
+        "after": "One pet per home and one home per pet; atomic reassignment, no size eligibility gate, no silent occupant eviction; unbind/removal retains dead pet native snapshot"
+      },
+      {
+        "property": "companions.recovery",
+        "operation": "add",
+        "before": "Native ordinary death and conventional loot; no JEM shelter recovery",
+        "after": "Confirmed native death snapshot/epoch journal before loot, captured drops/XP/witherrose suppressed, same UUID restored only once; snapshot retained until latest successful exact native entity IO acknowledgment"
+      },
+      {
+        "property": "companions.safe_spawn",
+        "operation": "derive",
+        "before": "No shelter spawn search",
+        "after": "Interior first only if safe; same shared8-horizontal/32-up/8-down loaded surface search for both sizes, above dirt-covered home allowed, full collision dimensions/fluids/hazards/support/native protection checked; blocked snapshot remains durable"
+      },
+      {
+        "property": "companions.owner_teleport",
+        "operation": "set",
+        "before": "Native cats/wolves can teleport to owner",
+        "after": "Only post-recovery native owner teleport paused until first owner rightclick; native pathfollowing/combat remains; horses/donkeys/mules gain no lock"
+      },
+      {
+        "property": "companions.shelter_recipe",
+        "operation": "add",
+        "before": "No shelter recipes",
+        "after": "Small PSP/L L/PPP; large LRL/L L/PPP; vanilla tags plus shared shaped serializer validates same vanilla wood family, no upstream recipe mutation"
+      },
+      {
+        "property": "companions.crash_reconciliation",
+        "operation": "document",
+        "before": null,
+        "after": "Ambiguous process crash between restoration intent and native entity write retains native snapshot and blocks automatic respawn until native reconciliation; no automatic admin repair is claimed"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "source_and_data",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionData.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterBlock.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterController.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterGeometry.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterMenu.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterProtection.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecipe.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecovery.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/VanillaCompanions.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/shelter/ShelterScreen.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterOwnerTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterNativeSaveMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterDeathByproductMixin.java",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json",
+      "Mods/JEMCompat/src/main/resources/data/jemcompat/advancements/recipes/animal_homes.json",
+      "Docs/companions/README.md",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Implement the user's two-size, mandatory-GUI, any-size-pet shelter recovery contract without inventing pet progression, duplicating native mod resurrection or forcing chunk loads.",
+    "decision_source": "User JEM_Food_PetShelters_SeasonalHUD_FINAL_v2.md plus current explicit implementation request2026-10-23; Codex chose exact native whitelist, vanilla GUI reuse, epoch/IO journal and conservative ambiguous-crash blocking."
+  },
+  "introduced": {
+    "date": "2026-10-23",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Add source shelter lifecycle and supported native recovery subset; actual shelter model integration/runtime acceptance pending."
+  },
+  "history": [
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Source implementation of any-size binding and safe external/above-buried recovery; no QA launch or automated test claimed."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "companions",
+      "native_death",
+      "loot",
+      "saved_data",
+      "native_entity_storage",
+      "recipes",
+      "gui",
+      "network_compatibility",
+      "singleplayer",
+      "dedicated_server"
+    ],
+    "relations": [
+      "Native owner identity -> one durable pet journal -> one controller binding -> safe loaded recovery -> latest native entity IO commit"
+    ],
+    "notes": [
+      "Five exact native entity types supported conditionally; all may bind either size. Third-party tameability is not recovery proof. Vanilla models/items/GUI texture reuse never proves actual shelter art or runtime acceptance."
+    ],
+    "unresolved": [
+      "Actual user-authored small/large bbmodels and geometry reconciliation",
+      "Source-only paths not player accepted",
+      "Ambiguous process crash restoration intent needs matching native reload/write; no automatic repair UI",
+      "Companions native RespawnTotem and third-party inventory/habitat/teleport adapters unavailable",
+      "Unknown nonempty serialized ForgeCaps are not recoverable",
+      "Claims-specific animal spawn API absent in inspected pack; installing known claim mods fails recovery closed until adapter exists"
+    ]
+  }
+}

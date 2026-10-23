@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
+            Map.entry("com.siirio.jemcompat.mixin.food.KaleidoscopeFoodBiteMixin", List.of("kaleidoscope_cookery")),
             Map.entry("com.siirio.jemcompat.mixin.grave.LegacyGraveCreationMixin", List.of("jacksgravestones", "gravestone")),
             Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
