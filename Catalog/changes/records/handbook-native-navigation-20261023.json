@@ -50,6 +50,12 @@
         "operation": "document",
         "before": "Search and item-help listeners queried categories/ and entries/ with trailing slashes. Minecraft 1.20.1 rejects these directories before reading resources, aborting initial resource reload.",
         "after": "Query directory roots without a trailing slash and skip exactly the separating slash when deriving relative category/entry IDs. Bilingual search, category ancestry, item selectors and authored resources retain their existing identities."
+      },
+      {
+        "property": "handbook.creative_inventory",
+        "operation": "replace",
+        "before": "No creative_tab, so Patchouli contributes this book variant only to the native Search tab.",
+        "after": "Native minecraft:tools_and_utilities also contains the exact generated handbook variant, making it available to JEI ingredient enumeration and its curated Books consumer."
       }
     ]
   },
@@ -185,6 +191,15 @@
       "source_files": [
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSearch.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookItemHelp.java"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "restore_native_jei_book_inventory",
+      "summary": "Assign the generated handbook to native minecraft:tools_and_utilities. Patchouli85 otherwise adds it only to Search, which JEI15.49 does not enumerate as an ordinary category. Keep the existing dirt/stick recipe and exact book NBT.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json"
       ]
     }
   ],

@@ -320,5 +320,65 @@
       "preserved_outside": "Existing Create Immersive Aircrafts resource pack remains untouched; native plan has no operation for it.",
       "user_acceptance": "in testing; fonts and world entry after repair are unobserved"
     }
+  },
+  "empty_book_repair": {
+    "date": "2026-10-23",
+    "status": "in testing",
+    "user_requested": "Repair inactive tabs, absent entries and missing physical handbook in JEI in test jem. Notify parallel work.",
+    "five_whys": [
+      "Ribbons resolve category maps that are empty.",
+      "Patchouli replaces the complete failed BookContents with empty contents.",
+      "The first enchantment page cannot resolve jem_advancements:enchantment.",
+      "The template is outside the en_us directory required by Patchouli85 discovery.",
+      "JEMAchievementGuide resource placement violated its installed dependency contract. Move both templates into en_us/templates, preserving native language fallback."
+    ],
+    "jei_cause": "Patchouli85 book without creative_tab appears only in Search. JEI15.49 enumerates CATEGORY tabs. Set native minecraft:tools_and_utilities.",
+    "build": {
+      "command": ".\\gradlew.bat :JEMAchievementGuide:jar --console=plain",
+      "result": "BUILD SUCCESSFUL in 44s",
+      "reobfJar": "COMPLETE",
+      "tests": "NOT RUN",
+      "gameplay_launch": "NOT RUN"
+    },
+    "jar_sha256": "c06e582e5034f2662722a43a0c1d4e8b0743d7c4dac7ea40ce14c13b6ab855cf",
+    "synchronized": [
+      "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+      "Server/mods/jem-advancements-5.1.0.jar"
+    ],
+    "native_publication": {
+      "complete": true,
+      "journal_sequence": 66,
+      "content_token": "ec96b6d809109af97342aa167884f4d506047216",
+      "staged_manifest_sha1": "5a091d4a5983f2ff2a5a2a40f41fc5937585c119",
+      "published_manifest_sha1": "5a091d4a5983f2ff2a5a2a40f41fc5937585c119",
+      "preview": {
+        "added": 0,
+        "changed": [
+          "jem-pack/manifest.json",
+          "mods/jem-advancements-5.1.0.jar"
+        ],
+        "deleted": 0
+      }
+    },
+    "native_application": {
+      "complete": true,
+      "content_token": "ec96b6d809109af97342aa167884f4d506047216",
+      "review_sha256": "7036a2dc2806e0ccb53cd59523926744216b61b0be6be4bcbf3e71ce5bc2435b",
+      "pending_transaction": false,
+      "installed_guide_sha256": "c06e582e5034f2662722a43a0c1d4e8b0743d7c4dac7ea40ce14c13b6ab855cf",
+      "mechanism": "Reviewed native UpdateSession.approve and ModpackUpdater.commitFlow after explicit user closure. Exact operation list, no conflicts or preservations. No raw managed copy, active-state edit, trust bypass or gameplay launch."
+    },
+    "player_acceptance": "UNOBSERVED",
+    "minerent_changed": false,
+    "stable_profile_changed": false,
+    "release_baseline_promoted": false,
+    "server": "Synchronized matching Guide, started solely for publication, saved and stopped cleanly.",
+    "atlas": {
+      "valid": true,
+      "records": 136,
+      "task_owned_uncovered_paths": [],
+      "preexisting_unrelated_uncovered_paths": 86,
+      "full_refresh_note": "Updated exact Guide artifact hashes. Kept prior installed jemcompat registry and derived counts, because the full generator additionally inferred uninstalled parallel shelter declarations from source. No deployment of source-only Compat is implied."
+    }
   }
 }

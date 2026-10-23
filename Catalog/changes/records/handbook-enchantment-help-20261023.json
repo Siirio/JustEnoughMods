@@ -40,6 +40,12 @@
         "operation": "document",
         "before": "Enchantment level I could be confused with required World Tier II or III.",
         "after": "Labels explicitly distinguish enchantment I from native World Tier thresholds; existing snapshot, eligibility and mechanics are unchanged."
+      },
+      {
+        "property": "handbook.template_discovery",
+        "operation": "replace",
+        "before": "Templates placed outside the language directory are ignored by Patchouli85, aborting book compilation with missing jem_advancements:enchantment and replacing all contents with empty maps.",
+        "after": "Both templates live in en_us/templates and use native language fallback for RU/EN pages. No exception suppression or synthetic category state."
       }
     ]
   },
@@ -49,7 +55,7 @@
     "source_files": [
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/templates/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/*.json",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/*.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
       "Mods/JEMWorldBossTiers/src/main/resources/assets/jem_world_boss_tiers/lang/*.json",
@@ -100,6 +106,16 @@
         "Docs/handbook/enchantments-coverage.json",
         "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
         "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "commit": "SELF",
+      "action": "repair_patchouli_template_discovery",
+      "summary": "Patchouli85 loads templates through the same en_us folder contract as entries. Move both unchanged templates into en_us/templates so the first enchantment page no longer aborts the whole handbook. Native localized fallback, page IDs and gameplay remain unchanged.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/templates/*.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/*.json"
       ]
     }
   ],

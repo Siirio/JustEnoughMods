@@ -1,3 +1,12 @@
+## 2026-10-23 - Handbook content loading and JEI discovery repair
+
+- User reported inactive handbook tabs, missing entries and no physical handbook in JEI in `test jem`, and asked to notify the parallel session
+- Bug / Client / Patchouli85 ignored both enchantment templates outside its required language directory, then discarded the whole book after the first unresolved template / in testing
+- Implementation choice: move both unchanged templates into `en_us/templates` and keep native language fallback, page IDs, category locks, content, manual routes and book recipe intact
+- Bug / Client / the generated book had no ordinary creative category, so Patchouli contributed it only to Search and JEI15.49 skipped that tab type / in testing
+- Implementation choice: assign the existing book to native `minecraft:tools_and_utilities`, allowing normal JEI enumeration without global visibility changes or custom item injection
+- Production Guide compilation and reobfuscation passed, with matching outputs synchronized to ManagedPack and ordinary Server. Native generation66 contains only Guide and the manifest and was fully applied to stopped `test jem`, with matching active token and Guide hash and no pending transaction. Server saved and stopped cleanly. Gameplay acceptance remains pending in `Docs/handbook/delivery.json`
+
 ## 2026-10-23 - Prepared food, shelter recovery and native time HUD source
 
 - User requested implementation of `JEM_Food_PetShelters_SeasonalHUD_FINAL_v2.md`: three prepared-food quality tiers, dietary variety, two shelter sizes with Bind/Unbind GUI, size-independent pet eligibility, safe recovery outside and above buried homes, and native day/season indicators. Later user direction rejects the authored HUD candidates, delegates graphics to local Gemini/manual drawing and takes creation of both shelter models. Exact model prompts are in `Docs/art/food-pets-season-hud-2026-10-23`
