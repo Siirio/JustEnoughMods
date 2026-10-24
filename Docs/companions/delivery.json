@@ -1,0 +1,47 @@
+{
+  "module": "MobHome",
+  "display_name": "Mob Home",
+  "mod_id": "mobhome",
+  "status": "development_art_pending",
+  "jar": "Mods/MobHome/build/libs/mobhome-1.0.0.jar",
+  "bytes": 132499,
+  "sha256": "06daff2164b96e17d0449bbfa585619c32ba95a9d28a01a3c562041d68fddb8f",
+  "build": "Independent Gradle jar and reobfJar successful. No tests/check/launch tasks",
+  "required_runtime": [
+    "minecraft1.20.1",
+    "forge47.4.10+"
+  ],
+  "required_jem_modules": [],
+  "optional_dependencies_bundled": false,
+  "optional_mixins": 26,
+  "singleplayer": "integrated server uses same gameplay owner",
+  "multiplayer": "matching Mob Home required on client and server",
+  "runtime_exercised": false,
+  "models_received": false,
+  "model_handoff": "C:/Users/user/Downloads/Mob_Home_Antigravity_Models.zip",
+  "model_dispatch": "User requested manual Antigravity transfer. No observed remote production",
+  "model_choice": "Argon",
+  "gemini_mode": "Work",
+  "ordinary_server_changed": false,
+  "managed_pack_changed": false,
+  "new_pack_generation": false,
+  "stable_or_minerent_changed": false,
+  "registry_source_entries": 118,
+  "recruits_supported": false,
+  "source_commit": "SELF",
+  "atlas": {
+    "validation": true,
+    "task_uncovered": [],
+    "unrelated_uncovered_count": 86,
+    "unrelated_artifact_drift": {
+      "added": [
+        "Client/ManagedPack/mods/mapsyncer-1.0.3-forge-1.20.1.jar"
+      ],
+      "removed": [],
+      "changed": [
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
+      ],
+      "unresolved": []
+    }
+  }
+}

@@ -2,10 +2,10 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "d3e7862732204e51ee4efa72a3582c12313fb509220aa5c8e56c86f6ebd631cb",
+  "change_records_sha256": "997864283969904b6ccc561a52ea49db21fe3e9e182d53642de9e4d30a8631ab",
   "totals": {
-    "watched": 4419,
-    "covered": 2648,
+    "watched": 4424,
+    "covered": 2653,
     "unresolved": 1771
   },
   "groups": {
@@ -1434,8 +1434,8 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 203,
-      "covered": 150,
+      "watched": 157,
+      "covered": 104,
       "unresolved": 53,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
@@ -1914,6 +1914,12 @@
         "Mods/JEMWorldBossTiers/src/main/resources/data/jem_world_boss_tiers/tags/entity_types/boss_frenzy_excluded.json",
         "Mods/JEMWorldBossTiers/src/main/resources/pack.mcmeta"
       ]
+    },
+    "Mods/MobHome": {
+      "watched": 51,
+      "covered": 51,
+      "unresolved": 0,
+      "unresolved_paths": []
     }
   }
 }

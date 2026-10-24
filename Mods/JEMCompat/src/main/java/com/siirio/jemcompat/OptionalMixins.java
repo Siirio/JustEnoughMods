@@ -33,22 +33,6 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.startsWith("com.siirio.jemcompat.mixin.shelter.alex.")) {
-            String owner = targetClassName.startsWith("com.github.alexthe666.alexsmobs.") ? "alexsmobs" : "alexscaves";
-            return FMLLoader.getLoadingModList().getModFileById(owner) != null;
-        }
-        if (mixinClassName.startsWith("com.siirio.jemcompat.mixin.shelter.pack.")) {
-            if (mixinClassName.endsWith(".PackSummonAgeMixin")) return true;
-            String owner = targetClassName.startsWith("dev.xylonity.companions.") ? "companions"
-                    : targetClassName.startsWith("io.redspace.ironsspellbooks.") ? "irons_spellbooks"
-                    : targetClassName.startsWith("com.hm.efn.") ? "efn"
-                    : targetClassName.startsWith("org.primal.") ? "primal"
-                    : targetClassName.startsWith("com.ninni.spawn.") ? "spawn"
-                    : targetClassName.startsWith("tech.alexnijjar.endermanoverhaul.") ? "endermanoverhaul"
-                    : targetClassName.startsWith("com.github.L_Ender.cataclysm.") ? "cataclysm"
-                    : targetClassName.startsWith("net.imasillylittleguy.cnc.") ? "cnc" : "";
-            return !owner.isEmpty() && FMLLoader.getLoadingModList().getModFileById(owner) != null;
-        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginPublicChatMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("serverlogin");
             return FMLLoader.getDist().isDedicatedServer() && file != null && file.getMods().stream()

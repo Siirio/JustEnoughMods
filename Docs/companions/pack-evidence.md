@@ -151,3 +151,5 @@ Additional installed native evidence:
 - `EpicFight%20Nightfall-3.4.1-all.jar` SHA-256 `cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a`
 
 Recruits registration and JAR observations above are historical inspection evidence only. No Recruits class is part of the active shelter selection
+
+2026-10-24: active implementation moved intact to standalone `Mods/MobHome`, mod ID `mobhome`. Optional target Mixins are guarded per owning mod. Neither this evidence table nor a compile-only API requires the full pack at runtime

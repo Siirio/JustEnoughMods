@@ -1,6 +1,8 @@
 # Shelter-bound companions
 
-Source owner: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter`
+Display name: **Mob Home**, mod ID `mobhome`, Forge 1.20.1 / Java 17
+
+Source owner: `Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter`
 
 Canonical gameplay record: `Catalog/changes/records/pet-shelters.json`
 
@@ -18,13 +20,13 @@ Discovery observes joins, taming, interactions and already-loaded entities when 
 
 Installed class/registry evidence and precise exceptions live in [Alex evidence](alex-evidence.md) and [pack evidence](pack-evidence.md). Actual local Gemini review and recommendation dispositions live in [Gemini review](GEMINI_REVIEW.md)
 
-The source selection contains 122 candidate entries: 14 vanilla, 34 Alex and 74 other installed classes. This is not a verified pet count. The preceding audit identified four overbroad candidates still requiring correction: `alexscaves:luxtructosaurus`, `alexscaves:grottoceratops`, `alexscaves:relicheirus` and `alexsmobs:orca`. Living temporary summons are included. Their native active-entity age, secondary player ownership and explosion state remain intact. Iron's native SummonManager owner and earliest expiration queue entry are persisted as an adapter receipt and restored through the same native manager with only the remaining duration. Expired summons stay expired. Individual legacy summons whose native owner or deadline was already lost remain visibly blocked, rather than gaining an invented lifetime. Accepted native disk joins are reconciled after actual admission, while cancelled and stale copies cannot register another native summon
+The current source selection contains 118 entries: 14 vanilla, 30 Alex and 74 other installed classes. The prior native-source audit identified four overbroad candidates, now removed: `alexscaves:luxtructosaurus`, `alexscaves:grottoceratops`, `alexscaves:relicheirus` and `alexsmobs:orca`. This source selection is not runtime acceptance evidence. Living temporary summons are included. Their native active-entity age, secondary player ownership and explosion state remain intact. Iron's native SummonManager owner and earliest expiration queue entry are persisted as an adapter receipt and restored through the same native manager with only the remaining duration. Expired summons stay expired. Individual legacy summons whose native owner or deadline was already lost remain visibly blocked, rather than gaining an invented lifetime. Accepted native disk joins are reconciled after actual admission, while cancelled and stale copies cannot register another native summon
 
 All `recruits:*` NPCs are excluded by the explicit user amendment. They cannot be discovered, bound or recovered through homes. Shelter-specific Recruits owner, death, membership and messenger teleport hooks are removed. Legacy journal assignments are retired and no longer occupy homes. Any captured native payload remains archived, without automatic recovery or deletion. Native hiring, commands, ownership and death handling remain unchanged
 
 ## Homes and GUI
 
-Exactly two items, `jemcompat:small_animal_home` (2 x 2 x 2) and `jemcompat:large_animal_home` (3 x 3 x 3), construct their whole four-way rotated multiblocks. Cell zero owns the sole controller, without a ticker or renderer. Per-cell selection/collision geometry awaits reconciliation with accepted final models
+Exactly two items, `mobhome:small_animal_home` (2 x 2 x 2) and `mobhome:large_animal_home` (3 x 3 x 3), construct their whole four-way rotated multiblocks. Cell zero owns the sole controller, without a ticker or renderer. Per-cell selection/collision geometry awaits reconciliation with accepted final models
 
 Placement checks loaded empty cells, support, fluids, bounds, entity obstruction and native permissions. Forge multi-placement rollback is preserved. Breaking checks ownership/operator permission and native protections for every cell. Dismantling yields at most one survival item. Destruction removes only the assignment and preserves pending data
 
@@ -38,7 +40,7 @@ One pet has one home and one home has one pet. Rebinding moves the assignment wi
 
 `data/jem_companions.dat` is the single overworld journal. Schema 2 reads schema 1 and adds provisional-rider and explicit-custodian fields. Corrupt identities and unknown schemas fail visibly. Writes use a forced read-back-verified temporary file and atomic same-directory replacement. Failed commits preserve dirty state and the previous in-memory payload
 
-Confirmed death is captured after Forge cancellation, before the dead flag and native equipment/loot processing. Native snapshot and advanced epoch are persisted before suppressing captured drops, XP and wither roses. Narrow adapters cover out-of-band elephant inventory, caribou saddles and the still-selected Luxtructosaurus candidate loot. Bound Hamster drying retains the native death source without emitting another serialized dried-pet block
+Confirmed death is captured after Forge cancellation, before the dead flag and native equipment/loot processing. Native snapshot and advanced epoch are persisted before suppressing captured drops, XP and wither roses. Narrow adapters cover out-of-band elephant inventory, caribou saddles. Bound Hamster drying retains the native death source without emitting another serialized dried-pet block
 
 For bound pets, the Companions native respawn listener is bypassed before totem lookup and queue insertion. Native totem configuration and charges remain untouched. Living unbind restores normal future-death handling. Existing native queued dead pets are not guessed or migrated by proximity
 
@@ -81,4 +83,16 @@ Native vanilla registration dimensions were read from the installed Forge47.4.10
 
 ## Delivery boundary
 
-Food and day/season data/rendering source remain in their existing owners. This amendment extends companion compatibility and completes native persistence. Icons/models are explicitly deferred. No tests, fixtures, game launches, stable-profile changes, MineRENT release or baseline promotion were performed. The combined artifact is withheld from ManagedPack and local Server while production models are absent, rather than installing missing-model gameplay entries
+Mob Home is the standalone owner. Food and day/season data/rendering stay in JEMCompat. Clock/season icons are not a dependency of Mob Home. House models and external native textures remain pending Antigravity production. No tests, fixtures, game launches, stable-profile changes, MineRENT release or baseline promotion were performed. Mob Home is a development module and is withheld from ManagedPack and local Server while production models are absent
+
+## Standalone installation and compatibility boundary
+
+Required runtime dependencies are Minecraft1.20.1 and Forge47.4.10+. No JEM mod, Alex mod, Companions, Iron spell mod or complete modpack is required. The same artifact owns ordinary singleplayer/integrated and dedicated-server gameplay. Multiplayer requires matching Mob Home on the server and clients because `mobhome:shelters` and custom blocks are not a client-only overlay
+
+Vanilla contracts are always available. Exact-class Alex and pack adapters are isolated behind native ownership/class checks. Optional Mixins select each target only when its owning mod is loaded, before linking upstream APIs. The Companions death hook also requires KnightLib. No optional JAR or native class is bundled. Compatibility refers to the inspected upstream versions, not arbitrary future versions
+
+The extraction moves the whole GUI, EN/RU localization, shaped recipes, serialization, events, safe geometry search and synchronous native save transaction. It removes the old JEMCompat registrations, channel and shelter Mixins. `jem_companions` and legacy durable NBT keys intentionally remain the journal format, without requiring JEM
+
+Build independently from `Mods/MobHome` with `gradlew.bat jar`. Compile-only native API JARs are taken from the existing ManagedPack by default. A source checkout outside JEM supplies `-PmobhomeCompatDir=<directory>` containing the exact audited APIs listed in build.gradle. Those build inputs are not runtime dependencies. Packaging does not establish gameplay or visual acceptance
+
+The Antigravity model handoff is in the user Downloads ZIP `Mob_Home_Antigravity_Models.zip`. Argon and Work mode are explicitly selected. User requested manual transfer, so this receipt does not claim a remote task was dispatched. Final models must match the geometry before installation. No weak replacement models have been invented

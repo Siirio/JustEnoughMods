@@ -597,3 +597,11 @@ The 2026-10-23 user amendment explicitly excludes every `recruits:*` NPC from an
 ## Backpacked saved-content cutover - 2026-10-24
 
 The user requires the next MineRENT update to preserve old bag contents. JEMServer owns a raw-NBT dedicated-world migration before Forge loads chunks or players. The exact preservation, native inventory format, barrel conversion, Rewards fallback and recovery contract live in [backpack/README.md](backpack/README.md#saved-content-migration-for-the-next-release). Keep a full pre-removal production backup before the first startup with Backpacked absent. Install matching release artifacts together, retain the world migration archive and permanent Rewards receipts, and require successful migration/import/startup before admission. A migration error blocks startup and must be resolved from its exact source evidence. Local completion never establishes MineRENT delivery or gameplay acceptance.
+
+## Standalone Mob Home ownership - 2026-10-24
+
+The user requested a standalone Mob Home mod with vanilla singleplayer support and optional installed-mod integrations. `Mods/MobHome` is the only shelter gameplay owner, with mod ID/resource/channel namespace `mobhome`. It owns the complete home GUI, EN/RU localization, recipes, native companion journal, recovery transaction and isolated optional Mixins. JEMCompat retains food/HUD and other compatibility domains, and no longer registers shelters. The legacy `jem_companions` journal filename/fields are retained as persistence format, not as a JEM dependency
+
+Only Forge and Minecraft are mandatory runtime dependencies. Multiplayer requires the matching artifact on clients and server. The module has an independent Gradle settings/wrapper and explicit compile-only native API inputs, and is classified development until the user/Antigravity model outputs are reviewed and integrated. Optional mods need not all be installed. Four previously audited false pet candidates were removed, all Recruits remain excluded
+
+The model ZIP supplied for manual Antigravity transfer contains the original stone2x2 and log3x3 references and two Argon Work briefs. This is a handoff, not a model delivery or an observed Gemini production result. No ordinary runtime, stable profile, MineRENT release or immutable baseline is changed by source extraction while models are missing

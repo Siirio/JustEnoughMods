@@ -33,8 +33,6 @@ public final class JEMCompat {
         TransportContent.register(modBus);
         com.siirio.jemcompat.feature.food.FoodNetwork.register();
         MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.food.FoodEvents.class);
-        com.siirio.jemcompat.feature.shelter.ShelterContent.register(modBus);
-        com.siirio.jemcompat.feature.shelter.ShelterNetwork.register();
         modBus.addListener(JEMCompat::creativeTabs);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEMClientConfig.SPEC);
         MinecraftForge.EVENT_BUS.register(this);
@@ -48,10 +46,6 @@ public final class JEMCompat {
     }
 
     private static void creativeTabs(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            event.accept(com.siirio.jemcompat.feature.shelter.ShelterContent.SMALL_ITEM);
-            event.accept(com.siirio.jemcompat.feature.shelter.ShelterContent.LARGE_ITEM);
-        }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS || event.getTabKey() == CreativeModeTabs.SEARCH) {
             event.accept(TransportContent.AIRCRAFT_FUEL);
         }

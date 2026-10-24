@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"tag": "minecraft:logs"}]}
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {"recipe": "mobhome:small_animal_home"}
+    }
+  },
+  "requirements": [["has_log", "has_the_recipe"]],
+  "rewards": {"recipes": ["mobhome:small_animal_home", "mobhome:large_animal_home"]}
+}

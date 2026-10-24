@@ -2,8 +2,8 @@
   "status": "non_art_source_complete_pending_user_assets",
   "module": "JEMCompat",
   "production_jar": "Mods\\JEMCompat\\build\\libs\\jemcompat-3.7.0.jar",
-  "production_jar_sha256": "bc82b6f35477ad660e6e9e9e95e131c18300d0b2875e8e51f02acac5f48ed35c",
-  "production_build": "jar and reobfJar successful after explicit Recruits exclusion. No tests/check/launch tasks",
+  "production_jar_sha256": "194475c37d19a2f43173eab17a69f280a743777f88b791c94722df25869a0e5c",
+  "production_build": "jar and reobfJar successful after complete shelter extraction to standalone MobHome. No tests/check/launch tasks",
   "build_command": "gradlew.bat :JEMCompat:jar --console=plain --no-watch-fs -Dorg.gradle.internal.instrumentation.agent=false",
   "build_failures_before_success": [
     "Gradle8.8 immutable Groovy workspace move AccessDenied; deeper Windows lock owner not established. Two invocation-only flags permitted progress; no shared cache was deleted.",
@@ -44,23 +44,23 @@
   },
   "known_recovery_gap": "Previous permanent ambiguous-restoration stall replaced by fresh-attempt epoch and synchronous checked native writes/flush before simulation and WAL clear. Runtime crash/player acceptance remains unperformed. Missing original multipart data and already-lost native summon metadata cannot be fabricated",
   "source_commit": "SELF",
-  "production_jar_bytes": 588897,
+  "production_jar_bytes": 415825,
   "packaging_inspection": {
     "canonical_food_projection_exact": true,
     "required_refmap_present": true,
     "new_art_installed": false,
-    "shelter_mixins": 27,
+    "shelter_mixins": 0,
     "native_dependency_classes_bundled": false,
     "removed_recruits_shelter_hooks_absent": true,
     "native_recruits_client_pose_compat_preserved": true
   },
   "previous_source_snapshot": {
-    "commit": "9cc61a46fc488c5809147f4c0f8e8e34f9c4a0de",
-    "production_jar_sha256": "e2045dba6758b3b68b794da6811236ee70e047d0e99fc31110d5837f11e49e00"
+    "commit": "e455405c1a6485759f702322a67a524e87ecba22",
+    "production_jar_sha256": "bc82b6f35477ad660e6e9e9e95e131c18300d0b2875e8e51f02acac5f48ed35c"
   },
   "companion_coverage": {
     "vanilla": 14,
-    "alex": 34,
+    "alex": 30,
     "other_pack": 74,
     "assignment": "Catalog/changes/companion-recovery-species.json",
     "exact_id_evidence": [
@@ -70,11 +70,12 @@
     ],
     "native_temporary_lifetimes_preserved": true,
     "specific_instances_blocked": "Unrecoverable original multipart data, unsafe loaded clearance or Iron native owner/deadline already lost. Visible localized status, durable payload retained",
-    "source_set_entries": 122,
+    "source_set_entries": 118,
     "verified_supported_pet_count": null,
     "excluded_recruits_entries": 12,
     "excluded_namespace": "recruits",
-    "known_overbroad_candidates": [
+    "known_overbroad_candidates": [],
+    "removed_overbroad_candidates": [
       "alexscaves:luxtructosaurus",
       "alexscaves:grottoceratops",
       "alexscaves:relicheirus",
@@ -88,5 +89,10 @@
     "reviews": 2,
     "report": "Docs/companions/GEMINI_REVIEW.md",
     "art_generated": false
+  },
+  "companion_extraction": {
+    "module": "MobHome",
+    "receipt": "Docs/companions/delivery.json",
+    "status": "development_art_pending"
   }
 }

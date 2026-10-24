@@ -1,0 +1,39 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.mobhome.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mobhome.refmap.json",
+  "mixins": [
+    "shelter.ShelterOwnerTeleportMixin",
+    "shelter.ShelterNativeSaveMixin",
+    "shelter.ShelterDeathByproductMixin",
+    "shelter.ShelterLevelAccess",
+    "shelter.ShelterEntityManagerAccess",
+    "shelter.ShelterStorageAccess",
+    "shelter.alex.AlexCosmawPickupTeleportMixin",
+    "shelter.alex.AlexCrowOwnerTeleportMixin",
+    "shelter.alex.AlexElephantDeathMixin",
+    "shelter.alex.AlexMantisOwnerTeleportMixin",
+    "shelter.alex.AlexSharedOwnerTeleportMixin",
+    "shelter.alex.AlexSubterranodonTeleportMixin",
+    "shelter.alex.AlexToadOwnerTeleportMixin",
+    "shelter.alex.AlexTremorzillaTeleportMixin",
+    "shelter.pack.CaribouDeathSaddleMixin",
+    "shelter.pack.CompanionsHeavyOwnerTeleportMixin",
+    "shelter.pack.CompanionsRespawnOwnerMixin",
+    "shelter.pack.HamsterDryingRecoveryMixin",
+    "shelter.pack.PackFollowOwnerTeleportMixin",
+    "shelter.pack.PrimalOwnerTeleportMixin",
+    "shelter.pack.CompanionSummonOwnerMixin",
+    "shelter.pack.EmberPoleTransientMixin",
+    "shelter.pack.IronLivingSummonOwnerMixin",
+    "shelter.pack.IronSummonExpirationAccessor",
+    "shelter.pack.IronSummonLifetimeMixin",
+    "shelter.pack.PackSummonAgeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "com.siirio.mobhome.OptionalMixins"
+}

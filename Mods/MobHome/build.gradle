@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+// Own properties also work when this module is built outside the JEM graph.
+version = mod_version
+group = mod_group_id
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+}
+repositories { mavenCentral() }
+// These exact upstream APIs are compile-only. They are never bundled or required at runtime.
+def apiDirectory = file(findProperty('mobhomeCompatDir') ?: '../../Client/ManagedPack/mods')
+def nativeApi = { String pattern ->
+    def candidates = fileTree(dir: apiDirectory, include: pattern).files
+    if (candidates.size() != 1) throw new GradleException("Provide the audited compile-only API directory with -PmobhomeCompatDir: expected one ${pattern}, found ${candidates.size()}")
+    candidates.first()
+}
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    compileOnly fg.deobf(files(nativeApi('alexsmobs-1.22.9*.jar')))
+    compileOnly fg.deobf(files(nativeApi('alexscaves-2.0.2*.jar')))
+    compileOnly fg.deobf(files(nativeApi('citadel-2.6.3*.jar')))
+    compileOnly fg.deobf(files(nativeApi('irons_spellbooks-*.jar')))
+    compileOnly files(nativeApi('knightlib-forge-*.jar'))
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+mixin {
+    add sourceSets.main, 'mobhome.refmap.json'
+    config 'mobhome.mixins.json'
+}
+tasks.named('processResources', ProcessResources).configure {
+    def properties = [minecraft_version_range: minecraft_version_range,
+        forge_version_range: forge_version_range, loader_version_range: loader_version_range,
+        mod_id: mod_id, mod_name: mod_name, mod_version: mod_version,
+        mod_license: mod_license, mod_authors: mod_authors, mod_description: mod_description]
+    inputs.properties properties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) { expand properties }
+}
+tasks.named('jar', Jar).configure {
+    manifest { attributes('MixinConfigs': 'mobhome.mixins.json') }
+    doLast {
+        new java.util.zip.ZipFile(archiveFile.get().asFile).withCloseable { jar ->
+            if (jar.getEntry('mobhome.refmap.json') == null) throw new GradleException('Missing Mob Home refmap')
+        }
+    }
+    finalizedBy 'reobfJar'
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.incremental = false
+}

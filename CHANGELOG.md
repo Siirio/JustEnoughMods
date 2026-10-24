@@ -1,3 +1,11 @@
+## 2026-10-24 - Extract standalone Mob Home
+
+User request: prepare independent Mob Home with complete singleplayer support, vanilla Forge baseline and optional installed-mod integrations. Supply a ZIP for manual Antigravity model production using selected Argon Work
+
+Implementation: move the complete shelter domain out of JEMCompat into Mods/MobHome, including GUI, networking, EN/RU text, recipes, durable native recovery and optional native Mixins. Only Forge and Minecraft are mandatory at runtime. Retain native journal format, Recruits exclusion, inventories, multipart state and summon lifetimes. Remove four previously audited false pet candidates. Register an independent development module and standalone Gradle entry point. Model ZIP contains both original references and separate briefs
+
+Delivery: production jar/reobfuscation packaging only, no automated tests or game launches. Actual model/texture output and collision reconciliation remain pending. No ordinary Server/ManagedPack installation or new AutoModpack publication while art is absent. Standalone singleplayer capability is an implementation contract, not a claimed runtime playthrough
+
 ## 2026-10-24 - Try generated shiny inventory in the GUI sandbox
 
 - User requested packaging the generated texture and inserting it into `jem sandbox`, explicitly without Aseprite

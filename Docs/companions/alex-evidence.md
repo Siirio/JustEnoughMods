@@ -34,7 +34,6 @@ Native registration dimensions below are clearance evidence only, never a bindin
 | `alexsmobs:mantis_shrimp` | `EntityMantisShrimp` | 1.25 x 1.2 | aquatic | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
 | `alexsmobs:mimic_octopus` | `EntityMimicOctopus` | 0.9 x 0.6 | aquatic | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
 | `alexsmobs:mudskipper` | `EntityMudskipper` | 0.7 x 0.44 | amphibious | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
-| `alexsmobs:orca` | `EntityOrca` | 3.75 x 1.75 | aquatic | Native tame+owner UUID | No native owner teleport added | Native variant/command and base held/equipment state |
 | `alexsmobs:raccoon` | `EntityRaccoon` | 0.8 x 0.9 | ground | Native tame+owner UUID | Yes, native goal seam | Carpet + native held/equipment |
 | `alexsmobs:sugar_glider` | `EntitySugarGlider` | 0.8 x 0.45 | flying | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
 | `alexsmobs:tarantula_hawk` | `EntityTarantulaHawk` | 1.2 x 0.9 | flying | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
@@ -42,11 +41,8 @@ Native registration dimensions below are clearance evidence only, never a bindin
 | `alexsmobs:warped_toad` | `EntityWarpedToad` | 0.9 x 1.4 | amphibious | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
 | `alexscaves:atlatitan` | `AtlatitanEntity` | 5.0 x 8.0 | ground | Native tame owner when present, native temporary rider otherwise -> explicit custodian | No native owner teleport added | Native variant/command and base held/equipment state |
 | `alexscaves:candicorn` | `CandicornEntity` | 1.7 x 2.25 | ground | Native tame+owner UUID | Yes, native goal seam | Saddle + native command |
-| `alexscaves:grottoceratops` | `GrottoceratopsEntity` | 2.3 x 2.5 | ground | Native tame+owner UUID | No native owner teleport added | Native variant/command and base held/equipment state |
 | `alexscaves:gum_worm` | `GumWormEntity` | 3.5 x 2.7 | ground | Current controlling rider -> explicit JEM custodian, native owner wins | No native owner teleport added | Complete native stable-UUID segment chain, links/index, native parent only carries RidingSegmentUUID |
-| `alexscaves:luxtructosaurus` | `LuxtructosaurusEntity` | 6.0 x 8.5 | ground | Native tame+owner UUID | No native owner teleport added | Native state, separate delayed death-loot buffer guarded |
 | `alexscaves:raycat` | `RaycatEntity` | 0.85 x 0.6 | ground | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
-| `alexscaves:relicheirus` | `RelicheirusEntity` | 2.65 x 5.9 | ground | Native tame+owner UUID | No native owner teleport added | Native variant/command and base held/equipment state |
 | `alexscaves:subterranodon` | `SubterranodonEntity` | 1.75 x 1.2 | flying | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
 | `alexscaves:tremorsaurus` | `TremorsaurusEntity` | 2.5 x 3.85 | ground | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
 | `alexscaves:tremorzilla` | `TremorzillaEntity` | 4.5 x 11.0 | amphibious | Native tame+owner UUID | Yes, native goal seam | Native variant/command and base held/equipment state |
@@ -85,3 +81,5 @@ The adapter's bounds include the actual full multipart geometry recorded at deat
 Straddleboard is a nonliving vehicle/item, not an animal companion, its native vehicle lifecycle is unchanged. Straddler has no native player ownership/mount admission. Underzealot's controlling passenger is a ritual victim, not a player-owned animal mount, it is not converted into a pet. Multipart hit proxies are canonicalized to their parent, not separately bound. Unowned wild species are not assigned fabricated owners. No bosses gain new taming, combat balance or drops through this adapter.
 
 All behavior above was inspected in source/binary form. No tests, fixtures, static-analysis jobs, client launch, gameplay QA or server launch were created or run by this subtask. Compilation, final common wiring and distribution are handled by the owning task. Runtime/player acceptance remains explicit.
+
+2026-10-24 standalone Mob Home extraction: removed Orca, Grottoceratops, Luxtructosaurus and Relicheirus from admission following the recorded native-source audit. Their inheritance did not establish a native pet contract. Luxtructosaurus shelter loot hook is removed. Earlier inspection observations remain historical evidence, not active admission

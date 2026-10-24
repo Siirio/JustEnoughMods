@@ -6,22 +6,22 @@
     {
       "type": "id",
       "registry": "items",
-      "value": "jemcompat:small_animal_home"
+      "value": "mobhome:small_animal_home"
     },
     {
       "type": "id",
       "registry": "items",
-      "value": "jemcompat:large_animal_home"
+      "value": "mobhome:large_animal_home"
     },
     {
       "type": "id",
       "registry": "blocks",
-      "value": "jemcompat:small_animal_home"
+      "value": "mobhome:small_animal_home"
     },
     {
       "type": "id",
       "registry": "blocks",
-      "value": "jemcompat:large_animal_home"
+      "value": "mobhome:large_animal_home"
     },
     {
       "type": "source_set",
@@ -40,7 +40,7 @@
       "description": "Either home accepts every supported species regardless of size. Safe recovery requires intact loaded home, nearby player within32 blocks, authenticated owner and loaded full-body collision/habitat/protection clearance."
     },
     {
-      "description": "Icons and models explicitly deferred by the user. Production assets and runtime acceptance remain absent, so this combined source artifact is withheld from local Server and ManagedPack."
+      "description": "Standalone source/build is prepared, but final Gemini/Antigravity house models, native textures and geometry reconciliation are pending. Mob Home is development-only and withheld from ordinary runtime staging"
     }
   ],
   "precedence": {
@@ -49,7 +49,7 @@
     "overrides": []
   },
   "change": {
-    "summary": "Extend both size-independent shelter homes and binding GUI to installed mountables/tameables/companions, native habitats and multipart data, with synchronous crash-safe first native commit",
+    "summary": "Standalone Mob Home owns two size-independent homes and native recovery, with no required JEM/content mods",
     "modifiers": [
       {
         "property": "companions.home_assignment",
@@ -98,73 +98,89 @@
         "operation": "set",
         "before": "12 owned Recruits NPC classes admitted",
         "after": "All recruits namespace entities excluded from shelter discovery, binding and recovery. Native ownership, recruitment, death and teleport behavior remain native"
+      },
+      {
+        "property": "companions.module_owner",
+        "operation": "set",
+        "before": "Shelter lifecycle and channel embedded in JEMCompat",
+        "after": "Independent mobhome Forge mod, own registrations, GUI, recipes, channel and mixins. Required runtime dependencies only Forge and Minecraft. Vanilla and each installed compatible adapter work independently. Recruits excluded"
       }
     ]
   },
   "cause": {
-    "owner": "JEMCompat",
+    "owner": "MobHome",
     "kind": "source_and_data",
     "source_files": [
       "Catalog/changes/companion-recovery-species.json",
-      "Docs/companions/GEMINI_REVIEW.md",
       "Docs/companions/README.md",
       "Docs/companions/alex-evidence.md",
       "Docs/companions/pack-evidence.md",
       "Mods/JEMCompat/build.gradle",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/shelter/ShelterScreen.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionAdapters.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionData.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterBlock.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterController.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterEvents.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterGeometry.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterMenu.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterNetwork.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterPersistence.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterProtection.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecipe.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecovery.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/compat/AlexCompanionAdapter.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/compat/PackCompanionAdapter.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterDeathByproductMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterEntityManagerAccess.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterLevelAccess.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterNativeSaveMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterStorageAccess.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexCosmawPickupTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexCrowOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexElephantDeathMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexLuxtructosaurusLootMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexMantisOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexSharedOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexSubterranodonTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexToadOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexTremorzillaTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CaribouDeathSaddleMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionSummonOwnerMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionsHeavyOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionsRespawnOwnerMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/EmberPoleTransientMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/HamsterDryingRecoveryMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronLivingSummonOwnerMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonExpirationAccessor.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonLifetimeMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackFollowOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackSummonAgeMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
-      "Mods/JEMCompat/src/main/resources/data/jemcompat/advancements/recipes/animal_homes.json",
-      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json",
-      "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
-      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/MobHome/build.gradle",
+      "Mods/MobHome/gradle.properties",
+      "Mods/MobHome/settings.gradle",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/MobHome.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/OptionalMixins.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/client/shelter/ShelterScreen.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/CompanionAdapters.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/CompanionData.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterBlock.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterController.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterEvents.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterGeometry.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterMenu.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterNetwork.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterPersistence.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterProtection.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterRecipe.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterRecovery.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/compat/AlexCompanionAdapter.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/compat/PackCompanionAdapter.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/ShelterDeathByproductMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/ShelterEntityManagerAccess.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/ShelterLevelAccess.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/ShelterNativeSaveMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/ShelterOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/ShelterStorageAccess.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexCosmawPickupTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexCrowOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexElephantDeathMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexMantisOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexSharedOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexSubterranodonTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexToadOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexTremorzillaTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/CaribouDeathSaddleMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/CompanionSummonOwnerMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/CompanionsHeavyOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/CompanionsRespawnOwnerMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/EmberPoleTransientMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/HamsterDryingRecoveryMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/IronLivingSummonOwnerMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/IronSummonExpirationAccessor.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/IronSummonLifetimeMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PackFollowOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PackSummonAgeMixin.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
+      "Mods/MobHome/src/main/resources/META-INF/mods.toml",
+      "Mods/MobHome/src/main/resources/assets/mobhome/lang/en_us.json",
+      "Mods/MobHome/src/main/resources/assets/mobhome/lang/ru_ru.json",
+      "Mods/MobHome/src/main/resources/data/mobhome/advancements/recipes/animal_homes.json",
+      "Mods/MobHome/src/main/resources/data/mobhome/recipes/large_animal_home.json",
+      "Mods/MobHome/src/main/resources/data/mobhome/recipes/small_animal_home.json",
+      "Mods/MobHome/src/main/resources/mobhome.mixins.json",
+      "Mods/MobHome/src/main/resources/pack.mcmeta",
+      "gradle/module-settings.gradle",
+      "tools/module-inventory.json"
     ]
   },
   "rationale": {
     "purpose": "Implement the user's two-size, mandatory-GUI, any-size-pet shelter recovery contract without inventing pet progression, duplicating native mod resurrection or forcing chunk loads.",
-    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode. User then explicitly excludes Recruits from homes. Codex removes shelter adapters and retires legacy assignments without deleting captured native payloads"
+    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode. User then explicitly excludes Recruits from homes. Codex removes shelter adapters and retires legacy assignments without deleting captured native payloads; User2026-10-24 requires standalone Mob Home and optional integrations, then requests a ZIP for manual Antigravity model production. Codex chose a complete single-owner extraction and retained native journal keys for durable data compatibility"
   },
   "introduced": {
     "date": "2026-10-23",
@@ -190,7 +206,7 @@
     },
     {
       "date": "2026-10-23",
-      "commit": "SELF",
+      "commit": "e455405c1a6485759f702322a67a524e87ecba22",
       "action": "exclude",
       "summary": "User explicitly excludes all Recruits from homes and recovery. Remove shelter-specific native hooks and retire old assignments while retaining archived native payloads",
       "source_files": [
@@ -198,6 +214,69 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitInventoryDeathMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitMembershipDeathMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/RecruitOwnerAccessMixin.java"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "extract",
+      "summary": "User requires standalone Mob Home, vanilla Forge singleplayer and optional installed-mod adapters. Move complete shelter owner out of Compat, remove four previously audited non-pet candidates. Models remain user/Antigravity owned",
+      "source_files": [
+        "Catalog/changes/companion-recovery-species.json",
+        "Docs/companions/GEMINI_REVIEW.md",
+        "Docs/companions/README.md",
+        "Docs/companions/alex-evidence.md",
+        "Docs/companions/pack-evidence.md",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/shelter/ShelterScreen.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionAdapters.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/CompanionData.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterBlock.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterController.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterGeometry.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterMenu.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterNetwork.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterPersistence.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterProtection.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecipe.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterRecovery.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/compat/AlexCompanionAdapter.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/compat/PackCompanionAdapter.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterDeathByproductMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterEntityManagerAccess.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterLevelAccess.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterNativeSaveMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/ShelterStorageAccess.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexCosmawPickupTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexCrowOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexElephantDeathMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexLuxtructosaurusLootMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexMantisOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexSharedOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexSubterranodonTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexToadOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/alex/AlexTremorzillaTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CaribouDeathSaddleMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionSummonOwnerMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionsHeavyOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/CompanionsRespawnOwnerMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/EmberPoleTransientMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/HamsterDryingRecoveryMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronLivingSummonOwnerMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonExpirationAccessor.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/IronSummonLifetimeMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackFollowOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PackSummonAgeMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/advancements/recipes/animal_homes.json",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/large_animal_home.json",
+        "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
     }
   ],
@@ -218,14 +297,14 @@
       "Native owner identity -> one durable pet journal -> one controller binding -> safe loaded recovery -> latest native entity IO commit"
     ],
     "notes": [
-      "Source selection contains122 candidate entries:14 vanilla,34 Alex and74 other pack entries after removing12 Recruits classes. This is not a verified pet count. Recruits namespace is explicitly excluded, including legacy journal rows"
+      "118 source entries:14 vanilla,30 Alex and74 other pack entries. Recruits explicitly excluded. Four overbroad candidates identified by the prior audit removed. Mod-presence gating happens before optional Mixin API linking, common adapters use native types and exact class-name strings only",
+      "Registry/channel namespace now mobhome. Legacy jem_companions journal filename and serialized fields intentionally retained, without a JEM dependency. No JEM shelter runtime was previously installed in this task"
     ],
     "unresolved": [
       "User-owned small/large bbmodels and production resources, geometry reconciliation and accepted day/season icons",
       "Source paths not player accepted or runtime crash-tested",
       "Unloaded or natively lost Gum Worm parts require natural source loads or genuine native data recovery, never fabricated body generation",
-      "Claims-specific animal spawn APIs absent in inspected pack, unknown installed claim mod blocks recovery until a verified adapter exists",
-      "Prior source audit identified four overbroad candidates still requiring correction: alexscaves:luxtructosaurus, alexscaves:grottoceratops, alexscaves:relicheirus and alexsmobs:orca. This Recruits amendment does not change their selection"
+      "Claims-specific animal spawn APIs absent in inspected pack, unknown installed claim mod blocks recovery until a verified adapter exists"
     ]
   }
 }
