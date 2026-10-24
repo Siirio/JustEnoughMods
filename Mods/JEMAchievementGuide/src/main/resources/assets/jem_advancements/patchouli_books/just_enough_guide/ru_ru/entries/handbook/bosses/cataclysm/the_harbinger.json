@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:the_harbinger",
+      "name": "Предвестник",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Древняя фабрика."
+      "text": "Ищите место встречи: Древняя фабрика.",
+      "drops": [
+        "cataclysm:music_disc_the_harbinger",
+        "cataclysm:witherite_block"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

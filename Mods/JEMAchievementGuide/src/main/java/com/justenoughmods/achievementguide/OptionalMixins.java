@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
+            Map.entry("com.justenoughmods.achievementguide.mixin.FtbChapterGroupDefaultsMixin", List.of("ftbquests")),
             Map.entry("com.justenoughmods.achievementguide.mixin.PatchouliHandbookCategoryAccess", List.of("patchouli")),
             Map.entry("com.justenoughmods.achievementguide.mixin.QuestChapterImageMixin", List.of("ftbquests")),
             Map.entry("com.justenoughmods.achievementguide.mixin.PatchouliHandbookSearchMixin", List.of("patchouli")),

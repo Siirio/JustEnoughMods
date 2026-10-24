@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:the_obliterator",
+      "name": "The Obliterator",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Space Station."
+      "text": "Look for the encounter at: Space Station.",
+      "drops": [
+        "legendary_monsters:portal_shard"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

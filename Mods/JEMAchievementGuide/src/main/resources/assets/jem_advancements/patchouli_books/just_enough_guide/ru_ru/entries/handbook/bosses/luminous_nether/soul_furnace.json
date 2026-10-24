@@ -11,9 +11,27 @@
   ],
   "pages": [
     {
+      "type": "patchouli:entity",
+      "entity": "luminous_nether:soul_furnace",
+      "name": "Печь душ",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
+      "title": "Защита от источников",
+      "text": "Печь душ отклоняет стрелы, контакт с огнём и обычный тип explosion. Не путайте её с Печью из Luminous Beasts: у них разные профили, несмотря на похожие условия",
+      "drops": [
+        "luminous_nether:furnace_disk",
+        "luminous_nether:molten_coal",
+        "luminous_nether:soul_furnace_trophy"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
+    },
+    {
       "type": "patchouli:text",
       "title": "Защита от источников",
-      "text": "Печь душ отклоняет стрелы, контакт с огнём и обычный тип explosion. Не путайте её с Печью из Luminous Beasts: у них разные профили, несмотря на похожие условия защиты. Подготовьте прямое оружие и место для отхода после ответного действия."
+      "text": "защиты. Подготовьте прямое оружие и место для отхода после ответного действия."
     },
     {
       "type": "patchouli:text",

@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:frostbitten_golem",
+      "name": "Frostbitten Golem",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Frostbitten Temple."
+      "text": "Look for the encounter at: Frostbitten Temple.",
+      "drops": [
+        "legendary_monsters:frozen_rune"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

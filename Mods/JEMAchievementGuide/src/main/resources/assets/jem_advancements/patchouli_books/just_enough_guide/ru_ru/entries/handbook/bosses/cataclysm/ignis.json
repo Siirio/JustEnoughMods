@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:ignis",
+      "name": "Игнис",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Горящая арена."
+      "text": "Ищите место встречи: Горящая арена.",
+      "drops": [
+        "cataclysm:ignitium_ingot",
+        "cataclysm:music_disc_ignis"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

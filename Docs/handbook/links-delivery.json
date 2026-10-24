@@ -1,0 +1,116 @@
+{
+  "date_local": "2026-10-24",
+  "timezone": "Asia/Yekaterinburg",
+  "branch": "main",
+  "commit": "SELF",
+  "status": "SOURCE_AND_PACKAGING_REVIEWED_NATIVE_DELIVERY_PENDING",
+  "requested_behavior": [
+    "Remove the Controls handbook section",
+    "Open native JEI recipes or uses for the exact enchanted book and applicable equipment",
+    "Keep five equipment slots fixed and cycle remaining equipment through the sixth slot",
+    "Initialize native nondefault FTB quest chapter groups collapsed",
+    "Show a rotating native boss entity opposite its description and possible-drop links"
+  ],
+  "production_build": {
+    "module": "Mods/JEMAchievementGuide",
+    "artifact": "Mods/JEMAchievementGuide/build/libs/jem-advancements-5.1.0.jar",
+    "sha256": "7978cbc7211caeaf800de0b548082c1bc24a11dd6d500d814e9979360af1e3bd",
+    "result": "Previously completed production compilation and reobfuscation, artifact inspected again during completion review",
+    "rerun_during_completion_review": false,
+    "build_history": [
+      "Initial JVM invocation failed on native memory allocation",
+      "Production retry used bounded heap, processor count and worker count",
+      "Missing compile-only JEI dependency was added to the owning module",
+      "Four obsolete generated Controls resources were removed from build output before the final artifact was produced"
+    ]
+  },
+  "packaging_inspection": {
+    "method": "Read-only ZIP inventory and comparison with current source JSON resources",
+    "source_json_resources_compared": 1237,
+    "source_json_resource_differences": [],
+    "controls_resources_present": false,
+    "localized_boss_entry_counts": {
+      "en_us": 56,
+      "ru_ru": 56
+    },
+    "all_boss_entries_begin_with_native_entity_page": true,
+    "localized_enchantment_link_entry_counts": {
+      "en_us": 85,
+      "ru_ru": 85
+    },
+    "templates_present": [
+      "en_us/templates/enchantment_links.json",
+      "en_us/templates/boss_description.json"
+    ],
+    "classes_present": [
+      "com.justenoughmods.achievementguide.client.handbook.HandbookItemLinks",
+      "com.justenoughmods.achievementguide.client.handbook.jei.HandbookJeiLinks",
+      "com.justenoughmods.achievementguide.mixin.FtbChapterGroupDefaultsMixin"
+    ],
+    "chapter_group_mixin_registered_in_client_list": true
+  },
+  "source_review": {
+    "scope": "Native Patchouli components and generated pages, enchantment applicability and cache lifecycle, optional JEI focus bridge, FTB client constructor Mixin and optional-mod gating",
+    "concrete_additional_defect_established": false,
+    "production_source_changed_during_completion_review": false,
+    "observed_contracts": [
+      "JEI focus receives a copy of the displayed ItemStack including StoredEnchantments NBT",
+      "Native canEnchant and canApplyAtEnchantingTable predicates determine candidate equipment without replacing gameplay decisions",
+      "Applicability cache clears on resource reload",
+      "The sixth equipment slot cycles only overflow items and holds the displayed item while hovered",
+      "Boss model rendering uses native Patchouli entity pages and preserves later authored tactics pages",
+      "Quest collapse initialization is client-only and retains native subsequent toggles"
+    ]
+  },
+  "boss_drop_evidence": {
+    "provenance": "Docs/handbook/boss-drop-links.json",
+    "authored_profiles": 56,
+    "profiles_with_confirmed_possible_item_links": 55,
+    "unconfirmed_profiles": [
+      "legendary_monsters:fractured"
+    ],
+    "boundary": "Primary installed native loot tables and five reviewed native death-drop procedures establish possible item identities only. Native conditions and probabilities remain authoritative, arbitrary world or datapack loot modifications are unobserved"
+  },
+  "local_artifact_synchronization": {
+    "sha256_match_observed": true,
+    "paths": [
+      "Mods/JEMAchievementGuide/build/libs/jem-advancements-5.1.0.jar",
+      "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+      "Server/mods/jem-advancements-5.1.0.jar"
+    ],
+    "native_generation_publication": "Deferred by user on2026-10-24, no publication in this completion turn",
+    "test_jem_native_application": "Not applied, user selected sources/JAR/ZIP only"
+  },
+  "acceptance": {
+    "status": "in testing",
+    "automated_tests": "Not run",
+    "linters_formatters_static_analysis": "Not run",
+    "gameplay_launch": "Not run",
+    "visual_review": "UNOBSERVED",
+    "player_approval": "Pending",
+    "remaining_runtime_observations": [
+      "Book contents and Controls removal in the actual client",
+      "Left and right clicks on exact enchanted books, fixed equipment slots and hovered overflow items",
+      "Native boss renderers, rotation, fitting and facing-page text clearance at actual GUI scales",
+      "Possible-drop links and native JEI return behavior",
+      "Initial quest chapter-group collapse and native user expansion",
+      "Frame rate and resource-reload behavior during actual play"
+    ]
+  },
+  "atlas": {
+    "validation": true,
+    "task_owned_uncovered_paths": [],
+    "preexisting_uncovered_paths": 86,
+    "artifact_drift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "full_regeneration_performed": true,
+    "source": "Catalog/generator/build_atlas.py",
+    "note": "Full canonical regeneration and validation passed. Unrelated working-tree coverage remains outside this task. Production MobHome and newCompat are built, not installed by explicit user deferral",
+    "staged_task_record_validation": true,
+    "source_registry_correction": "Source inference now records two MobHome items and two blocks, no menus or recipe serializers as items"
+  }
+}

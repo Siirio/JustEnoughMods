@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "block_factorys_bosses:kraken",
+      "name": "Неракисс, кракен",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Корабль кракена."
+      "text": "Ищите место встречи: Корабль кракена.",
+      "drops": [
+        "block_factorys_bosses:kraken_tooth"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

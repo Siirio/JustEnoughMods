@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:lava_eater",
+      "name": "Пожиратель лавы",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Логово пожирателя лавы."
+      "text": "Ищите место встречи: Логово пожирателя лавы.",
+      "drops": [
+        "legendary_monsters:lava_eaters_skin"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

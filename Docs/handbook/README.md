@@ -5,7 +5,7 @@ Implementation owner: JEMAchievementGuide. Product brief: the user's universal h
 ## Implementation plan
 
 - [x] Restore native Patchouli book identity and its inventory-grid shapeless recipe.
-- [x] Extend the native book screen with seven localized, keyboard-accessible ribbon sections, search and scoped return from native manuals. Reuse native resources; no replacement book GUI or new runtime library.
+- [x] Extend the native book screen with six localized, keyboard-accessible ribbon sections, search and scoped return from native manuals. Reuse native resources; no replacement book GUI or new runtime library.
 - [x] Inventory installed native manuals, inspect their actual opening contracts and preserve native research/player state.
 - [x] Trace confirmed enchantment registrations and add owner-backed explanations, per-level multi-enchantment tooltips and handbook navigation. Acquisition gaps remain explicit below.
 - [x] Trace boss profiles, summon/use chains and actual defenses; publish only established instructions and record unresolved fields honestly.
@@ -76,3 +76,19 @@ The missing JEI item has a separate data cause. Without `creative_tab`, Patchoul
 This is a resource-contract repair with no new artwork or layout change. Production build and local installation are recorded in `delivery.json`. Status remains **in testing** until the user confirms book contents, ribbon navigation and JEI discovery in game.
 
 Native generation **66** was previewed, published and applied to stopped `test jem` after the user closed Minecraft. Its active token matches `ec96b6d809109af97342aa167884f4d506047216`. The installed Guide SHA-256 matches ManagedPack and ordinary Server, and no native update transaction remains pending. The server saved and stopped cleanly. Actual book contents, tab clicks and JEI discovery still require player acceptance.
+
+## Item links, native boss models and compact groups - 2026-10-24
+
+User requested removal of Controls, JEI links for enchanted books and applicable items, five fixed target slots plus a cycling sixth slot, collapsed quest groups, and facing boss model/description/drop pages. The Controls category, entry and ribbon are removed from their actual source owners. Key bindings and native manual controls retain their behavior
+
+The optional JEI bridge opens the exact rendered stack, including StoredEnchantments NBT for a real enchanted book. Left click requests recipes and right click uses. Native canEnchant/canApplyAtEnchantingTable predicates enumerate available equipment once per enchantment, cached until resource reload. Five equipment slots are stable. The sixth cycles through every remaining item and freezes while hovered, with clicks following the actually displayed stack. Existing detailed application/level text remains intact
+
+Each of 56 authored boss entries begins with Patchouli 85's real entity page, fitted by the native maximum-dimension renderer, and a facing native description template with actual drop items. Existing detailed tactics continue on later pages. Introductory text is split at word boundaries while retaining whole hyperlinks to leave the footer clear. Possible drop identities come from the exact installed primary tables and five reviewed native death-drop procedures. Conditions and probabilities stay native. 55 profiles have item links, Fractured remains explicitly unconfirmed rather than receiving invented rewards. Provenance is in [boss-drop-links.json](boss-drop-links.json). Dynamic world loot overrides are not simulated
+
+Bug / Client / native FTB ChapterGroup constructor sets guiCollapsed=false, and the authored chapter-group file has no collapsed-default property / in testing. A client-only constructor Mixin initializes nondefault groups collapsed, retaining native toggles for that object and preserving server quest definitions/progress
+
+Production compilation and reobfuscation completed. The first JVM attempt failed on native memory allocation, so the retry used a smaller heap and worker count. The first new source build omitted its JEI compile-only dependency, corrected in the owner. Packaging inspection also caught four stale deleted Controls outputs and removed those exact generated files. Completion review found no additional concrete source defect requiring a rebuild
+
+Read-only packaging inspection confirmed all 1,237 source JSON resources match the production JAR, no Controls resources remain, all 56 boss entries per language begin with a native entity page, and all 85 enchantment entries per language begin with their item-link page. The required templates, component classes and client Mixin registration are packaged. The build, ManagedPack and ordinary Server artifacts have the same SHA-256, `7978cbc7211caeaf800de0b548082c1bc24a11dd6d500d814e9979360af1e3bd`
+
+No automated tests, static analysis, gameplay launch, FPS measurement or player acceptance is claimed. Packaging and local JAR synchronization do not establish native generation publication or installation in `test jem`. Exact evidence and remaining runtime limits are recorded separately in [links-delivery.json](links-delivery.json)

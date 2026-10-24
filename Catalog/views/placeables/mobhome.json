@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "registry_type": "placeables",
+  "snapshot_sha": "ea802bac1fc6c369001dc24024fef31646be1a62",
+  "generation": {
+    "generated_utc": "2026-10-24T12:06:45.648362+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "mobhome",
+    "name": "MobHome",
+    "version": "source"
+  },
+  "records": [
+    {
+      "item_id": "mobhome:large_animal_home",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "mobhome",
+      "mod_name": "MobHome",
+      "mod_version": "source",
+      "source_jar": null,
+      "source_sha256": null,
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ShelterContent.java:Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "mobhome:large_animal_home",
+      "placed_registry_ids": [
+        "mobhome:large_animal_home"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    },
+    {
+      "item_id": "mobhome:small_animal_home",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "mobhome",
+      "mod_name": "MobHome",
+      "mod_version": "source",
+      "source_jar": null,
+      "source_sha256": null,
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ShelterContent.java:Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "source_item_id": "mobhome:small_animal_home",
+      "placed_registry_ids": [
+        "mobhome:small_animal_home"
+      ],
+      "place_action": "BlockItem inferred by matching installed item/block IDs",
+      "placement_conditions": null,
+      "dimensions": null,
+      "blockstate_or_entity_variants": null,
+      "consumed_on_place": true,
+      "break_drops": null,
+      "permissions": "native Forge placement checks",
+      "acquisition_routes": []
+    }
+  ]
+}

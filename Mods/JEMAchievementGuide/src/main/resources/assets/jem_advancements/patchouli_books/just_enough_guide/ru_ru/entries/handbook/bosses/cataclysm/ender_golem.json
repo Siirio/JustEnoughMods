@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:ender_golem",
+      "name": "Эндер-голем",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Разрушенная цитадель."
+      "text": "Ищите место встречи: Разрушенная цитадель.",
+      "drops": [
+        "cataclysm:void_core"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

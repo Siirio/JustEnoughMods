@@ -1,0 +1,48 @@
+{
+  "user_request": "Preserve appearance, reduce geometry and close board gaps",
+  "source_counts": {
+    "small_before": {
+      "path": "Docs\\art\\mobhome-20261024\\small-stone-c1.bbmodel",
+      "sha256": "f09a305589ec82ed329413c096ad52445968f8cdbb137967dc5a55890de628e2",
+      "elements": 57,
+      "enabled_faces": 299
+    },
+    "small_after": {
+      "path": "Docs\\art\\mobhome-20261024\\small-stone-optimized.bbmodel",
+      "sha256": "47963980a4a357ef57cbee88cf247eff37735446893f0113666209f8efdebf27",
+      "elements": 44,
+      "enabled_faces": 211
+    },
+    "large_before": {
+      "path": "Docs\\art\\mobhome-20261024\\large-log-c0.bbmodel",
+      "sha256": "2e6d5c4cf0aecff9fab59599828e1679f80fae258421ff80b76e92957b540c43",
+      "elements": 67,
+      "enabled_faces": 402
+    },
+    "large_after": {
+      "path": "Docs\\art\\mobhome-20261024\\large-log-optimized.bbmodel",
+      "sha256": "f056a6f31d5774247fa6146489adc1d595268a57a24ed99e24599e503a976c75",
+      "elements": 47,
+      "enabled_faces": 217
+    }
+  },
+  "runtime_counts": {
+    "small_animal_home": {
+      "cell_models": 8,
+      "runtime_elements": 88,
+      "runtime_quads": 330
+    },
+    "large_animal_home": {
+      "cell_models": 27,
+      "runtime_elements": 122,
+      "runtime_quads": 395
+    }
+  },
+  "atlas_per_house": [
+    128,
+    64
+  ],
+  "runtime_fps_measured": false,
+  "player_acceptance": "unobserved",
+  "native_baked_reassembly_review": "Actual packaged cell elements, positions and cropped face UVs reassembled through Blockbench MCP and rendered for both houses, no gameplay launch"
+}

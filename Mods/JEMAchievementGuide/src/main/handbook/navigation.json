@@ -1,71 +1,295 @@
 {
   "sections": [
-    {"id":"start", "icon":"minecraft:oak_sapling", "color":"6ebe4b", "ru_ru":{"name":"Начало", "description":"Оглавление, первые шаги и поиск. Зелёная лента открывает общий поиск по справочнику."}, "en_us":{"name":"Getting started", "description":"Contents, first steps and search. The green ribbon opens the complete handbook index."}},
-    {"id":"bosses", "icon":"minecraft:nether_star", "color":"d95855", "ru_ru":{"name":"Боссы", "description":"Поиск, подготовка, атаки и условия защиты. Эти сведения доступны до победы."}, "en_us":{"name":"Bosses", "description":"Finding, preparing for and fighting bosses, including their conditional defenses. Available before a first victory."}},
-    {"id":"enchantments", "icon":"minecraft:enchanted_book", "color":"b775d6", "ru_ru":{"name":"Зачарования", "description":"Эффекты, уровни, снаряжение и совместимость. Зачарования входят в этот же справочник."}, "en_us":{"name":"Enchantments", "description":"Effects, levels, equipment and compatibility. Enchantments belong to this same handbook."}},
-    {"id":"items", "icon":"minecraft:chest", "color":"e9ae45", "ru_ru":{"name":"Предметы", "description":"Где взять, к чему применить и что сделать дальше."}, "en_us":{"name":"Items", "description":"Where to obtain an item, how to use it and what to do next."}},
-    {"id":"mechanics", "icon":"minecraft:comparator", "color":"4ebeb4", "ru_ru":{"name":"Механики", "description":"Системы мира и причины, по которым действие пока недоступно."}, "en_us":{"name":"Mechanics", "description":"World systems and the reasons an action may currently be unavailable."}},
-    {"id":"manuals", "icon":"minecraft:writable_book", "color":"6298da", "ru_ru":{"name":"Книги модов", "description":"Синяя лента открывает доступные настоящие руководства. Исследования и личные записи остаются у их владельцев."}, "en_us":{"name":"Mod manuals", "description":"The blue ribbon opens the available native manuals. Research and personal records remain with their original owners."}},
-    {"id":"controls", "icon":"minecraft:lever", "color":"a7abb1", "ru_ru":{"name":"Управление", "description":"Текущие назначения клавиш и навигация по интерфейсу."}, "en_us":{"name":"Controls", "description":"Current key bindings and interface navigation."}}
+    {
+      "id": "start",
+      "icon": "minecraft:oak_sapling",
+      "color": "6ebe4b",
+      "ru_ru": {
+        "name": "Начало",
+        "description": "Оглавление, первые шаги и поиск. Зелёная лента открывает общий поиск по справочнику."
+      },
+      "en_us": {
+        "name": "Getting started",
+        "description": "Contents, first steps and search. The green ribbon opens the complete handbook index."
+      }
+    },
+    {
+      "id": "bosses",
+      "icon": "minecraft:nether_star",
+      "color": "d95855",
+      "ru_ru": {
+        "name": "Боссы",
+        "description": "Поиск, подготовка, атаки и условия защиты. Эти сведения доступны до победы."
+      },
+      "en_us": {
+        "name": "Bosses",
+        "description": "Finding, preparing for and fighting bosses, including their conditional defenses. Available before a first victory."
+      }
+    },
+    {
+      "id": "enchantments",
+      "icon": "minecraft:enchanted_book",
+      "color": "b775d6",
+      "ru_ru": {
+        "name": "Зачарования",
+        "description": "Эффекты, уровни, снаряжение и совместимость. Зачарования входят в этот же справочник."
+      },
+      "en_us": {
+        "name": "Enchantments",
+        "description": "Effects, levels, equipment and compatibility. Enchantments belong to this same handbook."
+      }
+    },
+    {
+      "id": "items",
+      "icon": "minecraft:chest",
+      "color": "e9ae45",
+      "ru_ru": {
+        "name": "Предметы",
+        "description": "Где взять, к чему применить и что сделать дальше."
+      },
+      "en_us": {
+        "name": "Items",
+        "description": "Where to obtain an item, how to use it and what to do next."
+      }
+    },
+    {
+      "id": "mechanics",
+      "icon": "minecraft:comparator",
+      "color": "4ebeb4",
+      "ru_ru": {
+        "name": "Механики",
+        "description": "Системы мира и причины, по которым действие пока недоступно."
+      },
+      "en_us": {
+        "name": "Mechanics",
+        "description": "World systems and the reasons an action may currently be unavailable."
+      }
+    },
+    {
+      "id": "manuals",
+      "icon": "minecraft:writable_book",
+      "color": "6298da",
+      "ru_ru": {
+        "name": "Книги модов",
+        "description": "Синяя лента открывает доступные настоящие руководства. Исследования и личные записи остаются у их владельцев."
+      },
+      "en_us": {
+        "name": "Mod manuals",
+        "description": "The blue ribbon opens the available native manuals. Research and personal records remain with their original owners."
+      }
+    }
   ],
-  "legacy_sections": {"bosses":"bosses", "arsenal":"items", "qol":"mechanics", "mobs":"mechanics", "engineering":"mechanics", "fishing":"items", "building":"items", "cool_stuff":"items"},
+  "legacy_sections": {
+    "bosses": "bosses",
+    "arsenal": "items",
+    "qol": "mechanics",
+    "mobs": "mechanics",
+    "engineering": "mechanics",
+    "fishing": "items",
+    "building": "items",
+    "cool_stuff": "items"
+  },
   "legacy_titles": {
-    "bosses":{"ru_ru":"Достижения боссов", "en_us":"Boss advancement notes"},
-    "arsenal":{"ru_ru":"Арсенал", "en_us":"Arsenal"},
-    "qol":{"ru_ru":"Удобства", "en_us":"Conveniences"},
-    "mobs":{"ru_ru":"Животные и существа", "en_us":"Animals and creatures"},
-    "engineering":{"ru_ru":"Инженерия", "en_us":"Engineering"},
-    "fishing":{"ru_ru":"Рыбалка", "en_us":"Fishing"},
-    "building":{"ru_ru":"Строительство", "en_us":"Building"},
-    "cool_stuff":{"ru_ru":"Открытия", "en_us":"Discoveries"}
+    "bosses": {
+      "ru_ru": "Достижения боссов",
+      "en_us": "Boss advancement notes"
+    },
+    "arsenal": {
+      "ru_ru": "Арсенал",
+      "en_us": "Arsenal"
+    },
+    "qol": {
+      "ru_ru": "Удобства",
+      "en_us": "Conveniences"
+    },
+    "mobs": {
+      "ru_ru": "Животные и существа",
+      "en_us": "Animals and creatures"
+    },
+    "engineering": {
+      "ru_ru": "Инженерия",
+      "en_us": "Engineering"
+    },
+    "fishing": {
+      "ru_ru": "Рыбалка",
+      "en_us": "Fishing"
+    },
+    "building": {
+      "ru_ru": "Строительство",
+      "en_us": "Building"
+    },
+    "cool_stuff": {
+      "ru_ru": "Открытия",
+      "en_us": "Discoveries"
+    }
   },
   "entries": [
-    {"id":"start/handbook", "section":"start", "icon":"minecraft:book", "aliases":["JEM Handbook", "Справочник JEM", "dirt stick земля палка"],
-      "ru_ru":{"name":"Справочник JEM: первые шаги", "pages":[
-        {"type":"patchouli:crafting", "recipe":"jem_advancements:handbook", "text":"Одна земля и одна палка в любых двух ячейках, даже в сетке инвентаря. Потерянную книгу можно сразу сделать снова."},
-        {"type":"patchouli:text", "title":"Одна книга", "text":"Используйте справочник: $(jemkey:key.use). Семь цветных лент слева открывают разделы. Иконка и подпись при наведении помогают различать их без цвета. Поиск находится в общем оглавлении и разделах. Чтение не выдаёт наград и не открывает исследования."},
-        {"type":"patchouli:text", "title":"Быстрая помощь", "text":"Наведите курсор на предмет и нажмите $(jemkey:key.jem_advancements.handbook), если его подсказка предлагает справку. Эта же клавиша открывает запись видимого босса. Зелёная лента ведёт к общему поиску; стандартная кнопка Назад сохраняет историю книги."}
-      ]},
-      "en_us":{"name":"JEM Handbook: first steps", "pages":[
-        {"type":"patchouli:crafting", "recipe":"jem_advancements:handbook", "text":"One dirt and one stick in any two slots, including your inventory crafting grid. Craft another immediately if the book is lost."},
-        {"type":"patchouli:text", "title":"One handbook", "text":"Use the handbook: $(jemkey:key.use). Seven colored ribbons on the left open its sections. Each has an icon and a hover label. Search is available in the complete index and section lists. Reading grants no rewards or research discoveries."},
-        {"type":"patchouli:text", "title":"Quick help", "text":"Hover an item and press $(jemkey:key.jem_advancements.handbook) when its tooltip offers help. The same key opens the entry for a boss you are looking at. The green ribbon opens the complete index. The native Back button retains the book's own history."}
-      ]}},
-    {"id":"mechanics/encounters", "section":"mechanics", "icon":"minecraft:shield", "aliases":["Start immunity invulnerability singleplayer dedicated", "начало бой защита одиночная сервер"],
-      "ru_ru":{"name":"Почему босс не получает урон", "pages":[
-        {"type":"patchouli:text", "title":"До начала боя", "text":"На выделенном сервере зарегистрированный структурный босс ожидает начала. Попытка атаковать открывает подготовку, не наносит урон и не начинает бой. Сначала выполните нативную активацию, если она нужна, затем подтвердите начало в интерфейсе встречи. Покой до начала не является видовым иммунитетом."},
-        {"type":"patchouli:text", "title":"Одиночная игра", "text":"В одиночной игре и LAN обычные боссы используют нативную активацию и бой с World Tier. Подготовка через SMP, партии и Boss Raid здесь недоступны. Обычные боссы и рейды JEM не удерживают игроков барьерами; у Кровавой луны и Ресурсной лихорадки свои правила."},
-        {"type":"patchouli:text", "title":"Во время боя", "text":"Если бой уже начался, проверьте запись конкретного босса: направление щита, фазу, расстояние и условие уязвимости. Уменьшение урона, предел одного удара и полный иммунитет — разные защиты. Во время серверной встречи атаковать могут её действующие участники. Смерть исключает участника из боя."}
-      ]},
-      "en_us":{"name":"Why a boss takes no damage", "pages":[
-        {"type":"patchouli:text", "title":"Before Start", "text":"On a dedicated host, a registered structural boss waits for Start. An attempted attack opens preparation without damage or combat. Complete its native activation when required, then confirm Start in the encounter interface. The waiting state is separate from a species immunity."},
-        {"type":"patchouli:text", "title":"Singleplayer", "text":"In singleplayer and LAN, ordinary bosses use native activation and combat with World Tier. SMP preparation, parties and JEM Boss Raid are unavailable. Ordinary bosses and JEM raids have no containment barriers. Blood Moon and Resource Rush retain their own rules."},
-        {"type":"patchouli:text", "title":"During combat", "text":"After Start, check that boss's entry: shield direction, phase, distance and vulnerability condition. Damage reduction, a per-hit cap and complete immunity are different defenses. Only active participants may attack during a hosted encounter. A participant's death eliminates them."}
-      ]}},
-    {"id":"mechanics/rewards", "section":"mechanics", "icon":"minecraft:chest", "aliases":["reward claim inventory", "награды получить инвентарь"],
-      "ru_ru":{"name":"Где забрать предметные награды", "pages":[
-        {"type":"patchouli:text", "title":"Инвентарь", "text":"Откройте инвентарь: $(jemkey:key.inventory). Полученные предметные награды находятся в слотах слева. Из них можно только забирать предметы; когда наград нет, область исчезает. Справочник ничего не выдаёт. У нативных квестов сохраняется собственная кнопка получения заслуженной награды."}
-      ]},
-      "en_us":{"name":"Collecting item rewards", "pages":[
-        {"type":"patchouli:text", "title":"Inventory", "text":"Open your inventory: $(jemkey:key.inventory). Earned item rewards appear in the slots on the left. These slots allow extraction only and disappear when empty. The handbook grants nothing. Native quests retain their own claim action for earned quest rewards."}
-      ]}},
-    {"id":"mechanics/economy", "section":"mechanics", "icon":"minecraft:gold_nugget", "aliases":["wallet shipping box market money", "кошелёк ящик отправки рынок монеты"],
-      "ru_ru":{"name":"Монеты, рынок и отключённая экономика", "pages":[
-        {"type":"patchouli:text", "title":"Продажа товара", "text":"Ящик отправки продаёт допустимые товары по явному действию в его интерфейсе. Ждать рассвета не нужно. Деньги от продажи и снятие физических монет — разные действия. Не всякий предмет пригоден для продажи: повреждение, произвольные данные и содержимое упакованного хранилища могут мешать приёму."},
-        {"type":"patchouli:text", "title":"Доступ к рынку", "text":"Рынок и кошелёк принадлежат системе экономики. Если хозяин мира отключил её, денежные действия недоступны; имеющиеся балансы и монеты сохраняются. Поселения при отсутствии экономики используют свой нативный изумрудный расчёт. Справочник не включает экономику и не проводит платежи."}
-      ]},
-      "en_us":{"name":"Coins, market and disabled Economy", "pages":[
-        {"type":"patchouli:text", "title":"Selling goods", "text":"The Shipping Box sells eligible goods through an explicit action in its interface. There is no need to wait for dawn. Sale proceeds and withdrawing physical Coins are separate actions. Damaged items, arbitrary item data and packaged storage contents can make goods ineligible."},
-        {"type":"patchouli:text", "title":"Market access", "text":"The market and wallet belong to Economy. If the host disables it, monetary actions are unavailable while balances and Coins remain saved. Settlements use their native emerald contract without Economy. The handbook never enables the economy or makes a payment."}
-      ]}},
-    {"id":"controls/navigation", "section":"controls", "icon":"minecraft:lever", "aliases":["keybind keyboard mouse help controls", "клавиши управление помощь"],
-      "ru_ru":{"name":"Текущие клавиши", "pages":[
-        {"type":"patchouli:text", "title":"Игра", "text":"Использовать: $(jemkey:key.use)$(br)Атаковать: $(jemkey:key.attack)$(br)Инвентарь: $(jemkey:key.inventory)$(br)Красться: $(jemkey:key.sneak)$(br)Достижения: $(jemkey:key.advancements)$(br2)Значения берутся из ваших настроек управления, включая переназначения."},
-        {"type":"patchouli:text", "title":"Справочная помощь", "text":"Открыть подробности: $(jemkey:key.jem_advancements.handbook). Назначение меняется в настройках управления. Tab перемещает фокус между кнопками, Enter активирует кнопку. Кнопка возврата из нативного руководства возвращает к прежней странице JEM. Escape закрывает книгу обычным способом."}
-      ]},
-      "en_us":{"name":"Current key bindings", "pages":[
-        {"type":"patchouli:text", "title":"Gameplay", "text":"Use: $(jemkey:key.use)$(br)Attack: $(jemkey:key.attack)$(br)Inventory: $(jemkey:key.inventory)$(br)Sneak: $(jemkey:key.sneak)$(br)Advancements: $(jemkey:key.advancements)$(br2)These values come from your current controls, including remapped keys."},
-        {"type":"patchouli:text", "title":"Handbook help", "text":"Open details: $(jemkey:key.jem_advancements.handbook). Change this binding in Controls. Tab moves keyboard focus and Enter activates a button. The return button in a native manual restores the previous JEM page. Escape closes the book normally."}
-      ]}}
+    {
+      "id": "start/handbook",
+      "section": "start",
+      "icon": "minecraft:book",
+      "aliases": [
+        "JEM Handbook",
+        "Справочник JEM",
+        "dirt stick земля палка"
+      ],
+      "ru_ru": {
+        "name": "Справочник JEM: первые шаги",
+        "pages": [
+          {
+            "type": "patchouli:crafting",
+            "recipe": "jem_advancements:handbook",
+            "text": "Одна земля и одна палка в любых двух ячейках, даже в сетке инвентаря. Потерянную книгу можно сразу сделать снова."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Одна книга",
+            "text": "Используйте справочник: $(jemkey:key.use). Семь цветных лент слева открывают разделы. Иконка и подпись при наведении помогают различать их без цвета. Поиск находится в общем оглавлении и разделах. Чтение не выдаёт наград и не открывает исследования."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Быстрая помощь",
+            "text": "Наведите курсор на предмет и нажмите $(jemkey:key.jem_advancements.handbook), если его подсказка предлагает справку. Эта же клавиша открывает запись видимого босса. Зелёная лента ведёт к общему поиску; стандартная кнопка Назад сохраняет историю книги."
+          }
+        ]
+      },
+      "en_us": {
+        "name": "JEM Handbook: first steps",
+        "pages": [
+          {
+            "type": "patchouli:crafting",
+            "recipe": "jem_advancements:handbook",
+            "text": "One dirt and one stick in any two slots, including your inventory crafting grid. Craft another immediately if the book is lost."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "One handbook",
+            "text": "Use the handbook: $(jemkey:key.use). Seven colored ribbons on the left open its sections. Each has an icon and a hover label. Search is available in the complete index and section lists. Reading grants no rewards or research discoveries."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Quick help",
+            "text": "Hover an item and press $(jemkey:key.jem_advancements.handbook) when its tooltip offers help. The same key opens the entry for a boss you are looking at. The green ribbon opens the complete index. The native Back button retains the book's own history."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mechanics/encounters",
+      "section": "mechanics",
+      "icon": "minecraft:shield",
+      "aliases": [
+        "Start immunity invulnerability singleplayer dedicated",
+        "начало бой защита одиночная сервер"
+      ],
+      "ru_ru": {
+        "name": "Почему босс не получает урон",
+        "pages": [
+          {
+            "type": "patchouli:text",
+            "title": "До начала боя",
+            "text": "На выделенном сервере зарегистрированный структурный босс ожидает начала. Попытка атаковать открывает подготовку, не наносит урон и не начинает бой. Сначала выполните нативную активацию, если она нужна, затем подтвердите начало в интерфейсе встречи. Покой до начала не является видовым иммунитетом."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Одиночная игра",
+            "text": "В одиночной игре и LAN обычные боссы используют нативную активацию и бой с World Tier. Подготовка через SMP, партии и Boss Raid здесь недоступны. Обычные боссы и рейды JEM не удерживают игроков барьерами; у Кровавой луны и Ресурсной лихорадки свои правила."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Во время боя",
+            "text": "Если бой уже начался, проверьте запись конкретного босса: направление щита, фазу, расстояние и условие уязвимости. Уменьшение урона, предел одного удара и полный иммунитет — разные защиты. Во время серверной встречи атаковать могут её действующие участники. Смерть исключает участника из боя."
+          }
+        ]
+      },
+      "en_us": {
+        "name": "Why a boss takes no damage",
+        "pages": [
+          {
+            "type": "patchouli:text",
+            "title": "Before Start",
+            "text": "On a dedicated host, a registered structural boss waits for Start. An attempted attack opens preparation without damage or combat. Complete its native activation when required, then confirm Start in the encounter interface. The waiting state is separate from a species immunity."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Singleplayer",
+            "text": "In singleplayer and LAN, ordinary bosses use native activation and combat with World Tier. SMP preparation, parties and JEM Boss Raid are unavailable. Ordinary bosses and JEM raids have no containment barriers. Blood Moon and Resource Rush retain their own rules."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "During combat",
+            "text": "After Start, check that boss's entry: shield direction, phase, distance and vulnerability condition. Damage reduction, a per-hit cap and complete immunity are different defenses. Only active participants may attack during a hosted encounter. A participant's death eliminates them."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mechanics/rewards",
+      "section": "mechanics",
+      "icon": "minecraft:chest",
+      "aliases": [
+        "reward claim inventory",
+        "награды получить инвентарь"
+      ],
+      "ru_ru": {
+        "name": "Где забрать предметные награды",
+        "pages": [
+          {
+            "type": "patchouli:text",
+            "title": "Инвентарь",
+            "text": "Откройте инвентарь: $(jemkey:key.inventory). Полученные предметные награды находятся в слотах слева. Из них можно только забирать предметы; когда наград нет, область исчезает. Справочник ничего не выдаёт. У нативных квестов сохраняется собственная кнопка получения заслуженной награды."
+          }
+        ]
+      },
+      "en_us": {
+        "name": "Collecting item rewards",
+        "pages": [
+          {
+            "type": "patchouli:text",
+            "title": "Inventory",
+            "text": "Open your inventory: $(jemkey:key.inventory). Earned item rewards appear in the slots on the left. These slots allow extraction only and disappear when empty. The handbook grants nothing. Native quests retain their own claim action for earned quest rewards."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mechanics/economy",
+      "section": "mechanics",
+      "icon": "minecraft:gold_nugget",
+      "aliases": [
+        "wallet shipping box market money",
+        "кошелёк ящик отправки рынок монеты"
+      ],
+      "ru_ru": {
+        "name": "Монеты, рынок и отключённая экономика",
+        "pages": [
+          {
+            "type": "patchouli:text",
+            "title": "Продажа товара",
+            "text": "Ящик отправки продаёт допустимые товары по явному действию в его интерфейсе. Ждать рассвета не нужно. Деньги от продажи и снятие физических монет — разные действия. Не всякий предмет пригоден для продажи: повреждение, произвольные данные и содержимое упакованного хранилища могут мешать приёму."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Доступ к рынку",
+            "text": "Рынок и кошелёк принадлежат системе экономики. Если хозяин мира отключил её, денежные действия недоступны; имеющиеся балансы и монеты сохраняются. Поселения при отсутствии экономики используют свой нативный изумрудный расчёт. Справочник не включает экономику и не проводит платежи."
+          }
+        ]
+      },
+      "en_us": {
+        "name": "Coins, market and disabled Economy",
+        "pages": [
+          {
+            "type": "patchouli:text",
+            "title": "Selling goods",
+            "text": "The Shipping Box sells eligible goods through an explicit action in its interface. There is no need to wait for dawn. Sale proceeds and withdrawing physical Coins are separate actions. Damaged items, arbitrary item data and packaged storage contents can make goods ineligible."
+          },
+          {
+            "type": "patchouli:text",
+            "title": "Market access",
+            "text": "The market and wallet belong to Economy. If the host disables it, monetary actions are unavailable while balances and Coins remain saved. Settlements use their native emerald contract without Economy. The handbook never enables the economy or makes a payment."
+          }
+        ]
+      }
+    }
   ]
 }

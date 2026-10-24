@@ -14,14 +14,23 @@ is introduced here.
 - `client/time/SeasonHudState.java` is a presentation-only snapshot.
 - `compat/seasons/SeasonHudAdapter.java` is the only new class referencing Serene
   Seasons. It is invoked only after the client checks the native mod ID.
-- `config/JEMClientConfig.java` owns `showTimeHud`, `showSeasonHud`,
-  `timeHudOffsetX`, and `timeHudOffsetY`. Both indicators default enabled, at
+- `config/JEMClientConfig.java` owns `timeHud.showDayNight`, `timeHud.showSeasons`,
+  `timeHud.horizontalOffset`, and `timeHud.verticalOffset`. Both indicators default disabled while the user's approved textures are missing. When enabled they render at
   (8, 8) GUI pixels with a 4-pixel gap. If one is hidden, the remaining indicator
   takes the first position. Configured positions are clamped to the GUI viewport.
 - Resource contract: `assets/jemcompat/textures/gui/time/day_cycle.png` and
   `season_cycle.png`, each exactly 24x24 with transparency. Spring is centered
   upward, summer rightward, autumn downward, winter leftward; quarter boundaries
   run diagonally. Production art is subject to the project visual approval gate.
+
+The rejected clock and season candidates are excluded from production. The user
+reserved those icons for their own authoring. Food and existing seasonal gameplay
+can be delivered without enabling this unfinished HUD. Supply each approved PNG
+at the exact resource path above before enabling its toggle in
+`config/jemcompat-client.toml`. Existing profiles with previously enabled toggles
+must set both toggles to `false` until those resources are supplied. Default changes
+do not override an existing Forge configuration. No replacement art, native-icon
+substitute, silent missing-resource guard or new visual design is introduced.
 
 F1 hides both indicators. They render on the ordinary HUD and above chat and
 container screens, where a real mouse pointer permits native tooltips. Full-screen
@@ -77,4 +86,4 @@ does not claim them complete.
 
 ## Task-wide packaging and art handoff
 
-Production Java compilation/reobfuscation succeeded during the parent task after adding the already-installed GlitchCore0.0.1.1 as compile-only: the native Serene Seasons config inherits its Config class. A later final packaging receipt records the newest aggregate result. No runtime launch or player acceptance is implied. The two exact HUD textures are not yet approved/supplied. The user rejected the authored day/night candidates and chose local Gemini/manual drawing; no rejected PNG was copied into module resources. See the [visual handoff](../art/food-pets-season-hud-2026-10-23/README.md). Installation/publication remains pending actual production art.
+Production Java compilation/reobfuscation succeeded during the parent task after adding the already-installed GlitchCore0.0.1.1 as compile-only: the native Serene Seasons config inherits its Config class. A later final packaging receipt records the newest aggregate result. No runtime launch or player acceptance is implied. The two exact HUD textures are not yet approved/supplied. The user rejected the authored day/night candidates and chose local Gemini/manual drawing; no rejected PNG was copied into module resources. See the [visual handoff](../art/food-pets-season-hud-2026-10-23/README.md). HUD activation remains pending actual production art. Food and existing seasonal gameplay may be installed and published with both optional indicators explicitly disabled.

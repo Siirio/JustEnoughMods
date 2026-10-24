@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "block_factorys_bosses:underworld_knight",
+      "name": "Хельвар, рыцарь преисподней",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Арена преисподней."
+      "text": "Ищите место встречи: Арена преисподней.",
+      "drops": [
+        "block_factorys_bosses:knight_sword"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

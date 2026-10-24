@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "change_id": "atlas.source-registration-receivers-20261024",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "catalog_provenance",
+    "priority": 20,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Bind static source registration evidence to the actual DeferredRegister receiver and its native registry kind, preserving source inference boundaries",
+    "modifiers": [
+      {
+        "property": "catalog.source_registration.registry_identity",
+        "operation": "replace",
+        "before": "One registry classification for an entire Java source file, then every register literal promoted into that registry. MobHome ShelterContent incorrectly yielded four unique item IDs including menu/block-entity animal_home and recipe matching_wood_shelter, without a block partition",
+        "after": "Each declared DeferredRegister variable supplies its own supported native ForgeRegistries kind and literal or source-constant namespace. Only that known receiver can contribute literal IDs. MobHome source proves exactly two item IDs and two block IDs: small_animal_home and large_animal_home. Unsupported menu, block-entity and recipe registries and unknown helper receivers are not promoted. Unresolved namespace or dynamic IDs remain unresolved",
+        "notes": "Static source/artifact evidence only. No gameplay registration changes or runtime validation claim"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Atlas static generator",
+    "kind": "source_registry_identity_correction",
+    "source_files": [
+      "Catalog/generator/build_atlas.py",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/MobHome.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent fabricated item identities and missing source-backed block registrations during final standalone MobHome Atlas delivery",
+    "decision_source": "User requests completion and preservation of canonical Atlas ownership. The final packaging review directly exposed incorrect MobHome registry inference. Codex chose receiver-scoped native registry declaration binding as the smallest owner correction",
+    "user_requested": "Complete outstanding systems and maintain trustworthy installed-mod/source evidence",
+    "codex_choices": "Replace file-wide first-registry guessing with per-receiver declarations. Leave unknown registry kinds and dynamic identities unresolved instead of inventing entries"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "correct_source_registry_binding",
+    "summary": "Correct static source classification after mixed-register MobHome declaration evidence exposed fabricated item IDs"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "correct_source_registry_binding",
+      "summary": "Cause chain: ShelterContent contains separate BLOCKS, ITEMS, ENTITIES, MENUS and RECIPES DeferredRegisters. File-wide ITEMS detection won, then a receiver-blind register regex promoted literals from all five declarations. Bind receiver to its own native Forge registry and resolved namespace. Direct source establishes two items plus two blocks, not four items. Full generator and derived validation are coordinated by delivery owner"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "atlas",
+      "registry_identity",
+      "source_provenance",
+      "derived_views",
+      "recipe_relations"
+    ],
+    "relations": [
+      "DeferredRegister declaration -> exact receiver.register literal -> native registry partition -> derived views"
+    ],
+    "notes": [
+      "Installed runtime behavior is unchanged",
+      "No tests, static-analysis jobs or full generation executed by this focused correction worker",
+      "Existing generated partitions are refreshed separately from final installed artifacts"
+    ],
+    "unresolved": [
+      "Dynamic registration expressions and unresolved namespace constants remain explicit",
+      "Static evidence does not establish live Forge registry bootstrap or gameplay acceptance"
+    ]
+  }
+}

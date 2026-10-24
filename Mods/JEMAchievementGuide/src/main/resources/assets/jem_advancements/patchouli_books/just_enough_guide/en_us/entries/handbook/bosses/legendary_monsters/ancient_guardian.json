@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:ancient_guardian",
+      "name": "Ancient Guardian",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Ancient Tower Remains."
+      "text": "Look for the encounter at: Ancient Tower Remains.",
+      "drops": [
+        "legendary_monsters:anchor_handle"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

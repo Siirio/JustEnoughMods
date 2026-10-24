@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:overgrown_colossus",
+      "name": "Заросший колосс",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Замшелый храм."
+      "text": "Ищите место встречи: Замшелый храм.",
+      "drops": [
+        "legendary_monsters:nature_crystal"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

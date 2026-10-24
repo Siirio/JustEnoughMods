@@ -1,27 +1,38 @@
 {
-  "status": "non_art_source_complete_pending_user_assets",
+  "status": "source_and_artifact_complete_optional_hud_art_and_publication_deferred",
   "module": "JEMCompat",
-  "production_jar": "Mods\\JEMCompat\\build\\libs\\jemcompat-3.7.0.jar",
-  "production_jar_sha256": "194475c37d19a2f43173eab17a69f280a743777f88b791c94722df25869a0e5c",
-  "production_build": "jar and reobfJar successful after complete shelter extraction to standalone MobHome. No tests/check/launch tasks",
-  "build_command": "gradlew.bat :JEMCompat:jar --console=plain --no-watch-fs -Dorg.gradle.internal.instrumentation.agent=false",
+  "production_jar": "Server/local/mobhome-finish-20261024/delivery/jemcompat-3.7.0.jar",
+  "production_jar_sha256": "02648b3b1dec20bd5a75ea2dfcd5b3e1cb74b9324db731283abebb08f55ca535",
+  "production_build": "Isolated exact HEAD source plus task-owned HUD defaults, production jar and reobfJar successful",
+  "build_command": "gradlew.bat :JEMCompat:jar --init-script Server/local/mobhome-finish-20261024/compat-source.init.gradle -Pjem_instance=<absolute Client/ManagedPack>, bounded JVM and one worker",
   "build_failures_before_success": [
     "Gradle8.8 immutable Groovy workspace move AccessDenied; deeper Windows lock owner not established. Two invocation-only flags permitted progress; no shared cache was deleted.",
     "Native Serene Seasons config extends GlitchCore Config; added exact installed GlitchCore0.0.1.1 compile-only.",
     "One subsequent processResources stale-output cleanup failure; diagnostic rerun succeeded.",
-    "New typed Alex API required already-installed Citadel2.6.3 compile-only, added without installing any runtime library. Final build successful"
+    "New typed Alex API required already-installed Citadel2.6.3 compile-only, added without installing any runtime library. Final build successful",
+    "Isolated build first lacked external canonical food projection. Packaging inspection rejected it. Copied exact source projection into isolated snapshot and rebuilt successfully"
   ],
   "source_checks": "manual independent source/bytecode reviews; no automated tests or static-analysis jobs",
   "atlas": {
     "validation": true,
     "task_owned_uncovered_paths": [],
     "preexisting_uncovered_paths": 86,
-    "artifact_drift": false
+    "artifact_drift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "full_regeneration_performed": true,
+    "source": "Catalog/generator/build_atlas.py",
+    "note": "Full canonical regeneration and validation passed. Unrelated working-tree coverage remains outside this task. Production MobHome and newCompat are built, not installed by explicit user deferral",
+    "staged_task_record_validation": true,
+    "source_registry_correction": "Source inference now records two MobHome items and two blocks, no menus or recipe serializers as items"
   },
   "art": {
     "approved": false,
-    "models": "user/Gemini-owned; actual bbmodels and baked per-cell models absent",
-    "hud": "previous candidates rejected; native24x24 day and season textures absent",
+    "models": "Standalone MobHome now owns shelter models and delivery receipt. Food and HUD delivery no longer depend on shelter art.",
+    "hud": "Rejected candidates excluded. Approved user-owned 24x24 day_cycle.png and season_cycle.png remain absent. Both indicators default disabled. Existing enabled Forge settings must be disabled until assets are supplied.",
     "gui": "actual vanilla parchment region/native widgets reused; runtime acceptance unobserved"
   },
   "native_runtime": {
@@ -36,7 +47,8 @@
       "journalSequence": 66,
       "publishedManifestSha1": "5a091d4a5983f2ff2a5a2a40f41fc5937585c119",
       "stagedManifestSha1": "5a091d4a5983f2ff2a5a2a40f41fc5937585c119"
-    }
+    },
+    "publication": "User selected sources, JAR and ZIP only, no publication"
   },
   "runtime_artifact_sha256": {
     "Server/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
@@ -44,7 +56,7 @@
   },
   "known_recovery_gap": "Previous permanent ambiguous-restoration stall replaced by fresh-attempt epoch and synchronous checked native writes/flush before simulation and WAL clear. Runtime crash/player acceptance remains unperformed. Missing original multipart data and already-lost native summon metadata cannot be fabricated",
   "source_commit": "SELF",
-  "production_jar_bytes": 415825,
+  "production_jar_bytes": 415951,
   "packaging_inspection": {
     "canonical_food_projection_exact": true,
     "required_refmap_present": true,
@@ -52,7 +64,8 @@
     "shelter_mixins": 0,
     "native_dependency_classes_bundled": false,
     "removed_recruits_shelter_hooks_absent": true,
-    "native_recruits_client_pose_compat_preserved": true
+    "native_recruits_client_pose_compat_preserved": true,
+    "hud_art_installed": false
   },
   "previous_source_snapshot": {
     "commit": "e455405c1a6485759f702322a67a524e87ecba22",
@@ -93,6 +106,30 @@
   "companion_extraction": {
     "module": "MobHome",
     "receipt": "Docs/companions/delivery.json",
-    "status": "development_art_pending"
-  }
+    "status": "standalone_models_and_artifact_complete_publication_deferred"
+  },
+  "current_preparation": {
+    "date": "2026-10-24",
+    "food_assignments": 123,
+    "tier_counts": {
+      "1": 61,
+      "2": 60,
+      "3": 2
+    },
+    "food_coverage_namespaces": [
+      "bakery",
+      "brewery",
+      "farm_and_charm",
+      "kaleidoscope_cookery",
+      "kaleidoscope_end",
+      "kaleidoscope_nether"
+    ],
+    "unresolved_or_excluded_recipe_outputs": 129,
+    "hud_delivery_scope": "Both optional indicators explicitly default disabled pending user-owned approved PNGs. No substitute art or missing-resource fallback. Existing seasonal gameplay unchanged.",
+    "build_status": "BUILD SUCCESSFUL in 1m 40s, jar and reobfJar",
+    "runtime_delivery_owner": "Parent task, not performed by food/HUD worker",
+    "acceptance": "Source inspection only. No automated tests, static-analysis jobs or game launches"
+  },
+  "canonical_source": "Mods/JEMCompat, current task staged snapshot only",
+  "artifact_isolation": "Concurrent worldgen task replaced shared build output. Exact committed source plus task config change and canonical food projection were rebuilt in an isolated source snapshot. No worldgen changes included, other task source and JAR preserved"
 }

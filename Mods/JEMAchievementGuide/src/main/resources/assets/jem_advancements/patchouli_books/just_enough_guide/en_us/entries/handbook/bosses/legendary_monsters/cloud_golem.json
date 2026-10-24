@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:cloud_golem",
+      "name": "Cumulonimbus",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Cloudy Temple."
+      "text": "Look for the encounter at: Cloudy Temple.",
+      "drops": [
+        "legendary_monsters:air_rune",
+        "legendary_monsters:atmospheric_boots"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

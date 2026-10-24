@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:ender_guardian",
+      "name": "Ender Guardian",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Ruined Citadel."
+      "text": "Look for the encounter at: Ruined Citadel.",
+      "drops": [
+        "cataclysm:gauntlet_of_guard",
+        "cataclysm:music_disc_ender_guardian"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

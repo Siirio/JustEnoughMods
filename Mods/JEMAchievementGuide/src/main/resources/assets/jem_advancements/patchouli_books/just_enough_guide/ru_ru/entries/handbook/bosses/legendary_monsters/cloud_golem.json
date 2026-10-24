@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:cloud_golem",
+      "name": "Кумулонимбус",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Облачный храм."
+      "text": "Ищите место встречи: Облачный храм.",
+      "drops": [
+        "legendary_monsters:air_rune",
+        "legendary_monsters:atmospheric_boots"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

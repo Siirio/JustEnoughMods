@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:the_harbinger",
+      "name": "The Harbinger",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Ancient Factory."
+      "text": "Look for the encounter at: Ancient Factory.",
+      "drops": [
+        "cataclysm:music_disc_the_harbinger",
+        "cataclysm:witherite_block"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

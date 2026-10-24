@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "block_factorys_bosses:sandworm",
+      "name": "Sirok, The Sandworm",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Sandworm Nest."
+      "text": "Look for the encounter at: Sandworm Nest.",
+      "drops": [
+        "block_factorys_bosses:sandworm_gauntlet"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

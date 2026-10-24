@@ -1,0 +1,56 @@
+{
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "material": "mobhome:block/large_materials",
+    "particle": "mobhome:block/large_materials"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        3
+      ],
+      "to": [
+        14,
+        12,
+        3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            10.0,
+            10.0,
+            11.272727272727273,
+            12.114537444933921
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        7
+      ],
+      "to": [
+        14,
+        12,
+        7
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            12.727272727272727,
+            10.0,
+            14.0,
+            12.114537444933921
+          ],
+          "texture": "#material"
+        }
+      }
+    }
+  ]
+}

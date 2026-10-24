@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "change_id": "handbook.item-links-and-boss-models",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "patchouli:guide_book"
+    },
+    {
+      "type": "registry",
+      "registry": "enchantments"
+    },
+    {
+      "type": "source_set",
+      "registry": "entities",
+      "members_path": "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "records_field": "entries",
+      "id_field": "subject"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "description": "Presentation only. Existing gameplay, quest progress, permissions, loot conditions and native enchantment rules remain authoritative"
+    },
+    {
+      "description": "Exact Patchouli85, FTBQuests2001.4.22 and optional JEI15.49 APIs. Player visual/interaction acceptance remains unobserved"
+    }
+  ],
+  "precedence": {
+    "layer": "presentation_and_documentation",
+    "priority": 601,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Remove Controls, add exact book/equipment JEI links and boss model spreads, initialize native quest groups collapsed",
+    "modifiers": [
+      {
+        "property": "handbook.sections",
+        "operation": "set",
+        "before": "Seven ribbons including Controls",
+        "after": "Six ribbons. Remove Controls category/entry and source navigation section, preserve ordinary key bindings and native manual access"
+      },
+      {
+        "property": "handbook.enchantment_links",
+        "operation": "add",
+        "before": "Text-only descriptions, example equipment lists and nonlinked target icons",
+        "after": "A dedicated native link page contains the actual max-level enchanted book NBT and runtime native-applicable item stacks. Five stable equipment slots plus one cyclic overflow slot, frozen on hover. Left click recipes, right click uses through optional JEI"
+      },
+      {
+        "property": "handbook.boss_spread",
+        "operation": "add",
+        "before": "Text-only boss entries",
+        "after": "Every authored boss entry begins with a fitted native rotating entity page and facing description/possible-drop JEI links. Long introductory text continues without deleting authored tactics. Native primary loot tables and five reviewed native death-drop procedures supply item identities, native conditions remain in force"
+      },
+      {
+        "property": "quests.chapter_groups_initial_state",
+        "operation": "set",
+        "before": "Native ChapterGroup constructor initializes guiCollapsed=false",
+        "after": "Client ChapterGroup constructor initializes nondefault groups collapsed. Native per-object user toggles remain unchanged, no progress or server definition mutation"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide",
+    "kind": "native_presentation_extension",
+    "source_files": [
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSection.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookItemLinks.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/EnchantmentHelp.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/jei/HandbookJeiLinks.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbChapterGroupDefaultsMixin.java",
+      "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/categories/handbook/controls.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/controls/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/enchantments/*.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/boss_description.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/enchantment_links.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/*.json",
+      "Mods/JEMAchievementGuide/tools/generate_handbook.py",
+      "Docs/handbook/boss-drop-links.json",
+      "Docs/handbook/links-delivery.json",
+      "Docs/handbook/README.md",
+      "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+      "Server/mods/jem-advancements-5.1.0.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Provide the user-requested native handbook links, boss model viewing and compact quest navigation",
+    "decision_source": "User explicitly requested removing Controls, JEI links for books and compatible equipment with five fixed slots and sixth-slot overflow, collapsed subquest groups and a boss model/description/drop spread. Codex chose native Patchouli custom components and entity pages, JEI focus with exact stack NBT, native applicability caching and one client constructor Mixin"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Native handbook presentation extension, no gameplay changes or automated tests"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Implement user requested sections, links, boss spreads and client quest group defaults"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "handbook",
+      "client_gui",
+      "jei",
+      "native_entity_rendering",
+      "quest_presentation",
+      "localization"
+    ],
+    "relations": [
+      "Authoring sources -> materialized native book pages -> client native item/renderer API -> optional JEI focus. Native quest progress remains FTB owned"
+    ],
+    "notes": [
+      "55 of 56 authored boss profiles have confirmed possible-item links from primary native tables or reviewed death procedures. Fractured has no confirmed native drop source in the inspected evidence, so no item is invented",
+      "Build/reobf completed after correcting missing compile-only JEI. First build hit host native-memory exhaustion, subsequent invocation bounded memory and worker count. Exact packaging inspection found stale deleted Controls resources in build output, cleared those four specific generated files before rebuilding",
+      "Completion review found no additional concrete source defect. All 1237 source JSON resources match the production JAR, and the build, ManagedPack and Server Guide artifact SHA-256 values match. Native publication, client installation and visual acceptance are separate delivery evidence"
+    ],
+    "unresolved": [
+      "legendary_monsters:fractured native item drops not confirmed",
+      "Player visual and interaction acceptance, actual in-game boss renderer compatibility and arbitrary world/datapack loot changes unobserved"
+    ]
+  }
+}

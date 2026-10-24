@@ -11,9 +11,23 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:netherite_monstrosity",
+      "name": "Незеритовое чудовище",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Кузница душ."
+      "text": "Ищите место встречи: Кузница душ.",
+      "drops": [
+        "cataclysm:infernal_forge",
+        "cataclysm:lava_power_cell",
+        "cataclysm:monstrous_horn",
+        "cataclysm:music_disc_netherite_monstrosity"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

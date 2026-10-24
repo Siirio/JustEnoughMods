@@ -11,9 +11,26 @@
   ],
   "pages": [
     {
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:bomber",
+      "name": "Bomber",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
+      "title": "Cue and response",
+      "text": "The Bomber uses a fused explosion. Retreat during the fuse before returning to strike. Detonation also invokes a separate area of Pharaoh’s Curse around it;",
+      "drops": [
+        "legendary_monsters:ancient_sandstone_shard",
+        "minecraft:gunpowder"
+      ],
+      "drop_status": "Native loot conditions still apply"
+    },
+    {
       "type": "patchouli:text",
       "title": "Cue and response",
-      "text": "The Bomber uses a fused explosion. Retreat during the fuse before returning to strike. Detonation also invokes a separate area of Pharaoh’s Curse around it; surviving the blast does not imply avoiding that additional effect. Avoid letting it approach in a narrow passage."
+      "text": "surviving the blast does not imply avoiding that additional effect. Avoid letting it approach in a narrow passage."
     },
     {
       "type": "patchouli:text",

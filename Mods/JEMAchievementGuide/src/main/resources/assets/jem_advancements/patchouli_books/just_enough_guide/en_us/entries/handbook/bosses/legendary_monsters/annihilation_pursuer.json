@@ -11,9 +11,26 @@
   ],
   "pages": [
     {
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:annihilation_pursuer",
+      "name": "Annihilation Pursuer",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
+      "title": "Defense and response",
+      "text": "A projectile-tagged hit triggers teleportation and is rejected while the enemy is awake. Normal damage is also rejected during teleportation and sleep.",
+      "drops": [
+        "legendary_monsters:enderitium_gem",
+        "legendary_monsters:eye_crystal"
+      ],
+      "drop_status": "Native loot conditions still apply"
+    },
+    {
       "type": "patchouli:text",
       "title": "Defense and response",
-      "text": "A projectile-tagged hit triggers teleportation and is rejected while the enemy is awake. Normal damage is also rejected during teleportation and sleep. Reacquire its new position before continuing a melee sequence."
+      "text": "Reacquire its new position before continuing a melee sequence."
     },
     {
       "type": "patchouli:text",

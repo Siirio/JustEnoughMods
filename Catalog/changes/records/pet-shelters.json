@@ -40,7 +40,7 @@
       "description": "Either home accepts every supported species regardless of size. Safe recovery requires intact loaded home, nearby player within32 blocks, authenticated owner and loaded full-body collision/habitat/protection clearance."
     },
     {
-      "description": "Standalone source/build is prepared, but final Gemini/Antigravity house models, native textures and geometry reconciliation are pending. Mob Home is development-only and withheld from ordinary runtime staging"
+      "description": "Ordinary delivery requires both final model exports, per-cell baked resources, shared collision data and matching MobHome on both sides. Current model work is source-reviewed, with user runtime acceptance unobserved. Optional food/HUD art is outside this shelter owner."
     }
   ],
   "precedence": {
@@ -104,6 +104,12 @@
         "operation": "set",
         "before": "Shelter lifecycle and channel embedded in JEMCompat",
         "after": "Independent mobhome Forge mod, own registrations, GUI, recipes, channel and mixins. Required runtime dependencies only Forge and Minecraft. Vanilla and each installed compatible adapter work independently. Recruits excluded"
+      },
+      {
+        "property": "companions.shelter_model_geometry",
+        "operation": "set",
+        "before": "Two functional shelter registrations without final integrated house art or exported collision resource",
+        "after": "Two native editable houses with44/47 cuboids, one128x64 atlas each, static baked cell models and model-derived collision. Continuous walls close board gaps. Native Java UVs and legal single-axis roof rotations retained. Solid slopes and triangular gables use conservative two-model-unit collision stairs. Production JAR and reobfuscation succeeded. User explicitly deferred local publication/application, runtime and performance acceptance remain unobserved"
       }
     ]
   },
@@ -175,12 +181,25 @@
       "Mods/MobHome/src/main/resources/mobhome.mixins.json",
       "Mods/MobHome/src/main/resources/pack.mcmeta",
       "gradle/module-settings.gradle",
-      "tools/module-inventory.json"
+      "tools/module-inventory.json",
+      "Mods/MobHome/tools/package_native_models.py",
+      "Mods/MobHome/tools/README.md",
+      "Docs/art/mobhome-20261024/README.md",
+      "Docs/art/mobhome-20261024/small-stone-optimized.bbmodel",
+      "Docs/art/mobhome-20261024/small-stone-optimized.json",
+      "Docs/art/mobhome-20261024/small-materials-runtime.aseprite",
+      "Docs/art/mobhome-20261024/small-materials-runtime.png",
+      "Docs/art/mobhome-20261024/large-log-optimized.bbmodel",
+      "Docs/art/mobhome-20261024/large-log-optimized.json",
+      "Docs/art/mobhome-20261024/large-materials.aseprite",
+      "Docs/art/mobhome-20261024/large-materials.png",
+      "Mods/MobHome/src/main/resources/assets/mobhome/**",
+      "Mods/MobHome/src/main/resources/data/mobhome/**"
     ]
   },
   "rationale": {
     "purpose": "Implement the user's two-size, mandatory-GUI, any-size-pet shelter recovery contract without inventing pet progression, duplicating native mod resurrection or forcing chunk loads.",
-    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode. User then explicitly excludes Recruits from homes. Codex removes shelter adapters and retires legacy assignments without deleting captured native payloads; User2026-10-24 requires standalone Mob Home and optional integrations, then requests a ZIP for manual Antigravity model production. Codex chose a complete single-owner extraction and retained native journal keys for durable data compatibility"
+    "decision_source": "User2026-10-23 explicitly requires all installed mountables/tameables/companions, actual local Gemini use, and non-art completion excluding clock/season icons and models. Codex chose exact installed adapters, rider-confirmed custody and synchronous native write/flush with fresh epoch retries. Gemini advice was checked against installed bytecode. User then explicitly excludes Recruits from homes. Codex removes shelter adapters and retires legacy assignments without deleting captured native payloads; User2026-10-24 requires standalone Mob Home and optional integrations, then requests a ZIP for manual Antigravity model production. Codex chose a complete single-owner extraction and retained native journal keys for durable data compatibility. User2026-10-24 rejected script-generated Antigravity models, explicitly authorized Codex visual production, selected the small stone-house direction, and then asked to optimize both houses while preserving appearance and removing board gaps. Codex chose editable native Blockbench/Aseprite sources, static baked per-cell packaging and cached collision from those same native exports. Exact task-owned outputs and runtime acceptance remain distinct."
   },
   "introduced": {
     "date": "2026-10-23",
@@ -278,6 +297,33 @@
         "Mods/JEMCompat/src/main/resources/data/jemcompat/recipes/small_animal_home.json",
         "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "integrate_native_shelter_model_exports",
+      "summary": "User requested optimize both houses, preserve their look and remove board gaps. Add the native model packaging owner and align physical geometry with the same exports. Historical extraction changes registrations and channel namespace from jemcompat to mobhome, while durable jem_companions journal keys stay compatible. Final runtime install/publication and player acceptance are recorded by the delivery owner.",
+      "source_files": [
+        "Mods/MobHome/tools/package_native_models.py",
+        "Mods/MobHome/tools/README.md",
+        "Docs/art/mobhome-20261024/README.md",
+        "Docs/art/mobhome-20261024/small-stone-optimized.bbmodel",
+        "Docs/art/mobhome-20261024/small-stone-optimized.json",
+        "Docs/art/mobhome-20261024/small-materials-runtime.aseprite",
+        "Docs/art/mobhome-20261024/small-materials-runtime.png",
+        "Docs/art/mobhome-20261024/large-log-optimized.bbmodel",
+        "Docs/art/mobhome-20261024/large-log-optimized.json",
+        "Docs/art/mobhome-20261024/large-materials.aseprite",
+        "Docs/art/mobhome-20261024/large-materials.png",
+        "Mods/MobHome/src/main/resources/assets/mobhome/**",
+        "Mods/MobHome/src/main/resources/data/mobhome/**"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "document",
+      "summary": "Completed native model packaging and production artifact. User selected source/JAR/ZIP only without local publication or activation"
     }
   ],
   "impacts": {
@@ -294,14 +340,16 @@
       "dedicated_server"
     ],
     "relations": [
-      "Native owner identity -> one durable pet journal -> one controller binding -> safe loaded recovery -> latest native entity IO commit"
+      "Native owner identity -> one durable pet journal -> one controller binding -> safe loaded recovery -> latest native entity IO commit",
+      "Editable native Blockbench exports -> single per-cell baked render partition plus shared collision resource -> cached four-facing server-owned shelter geometry"
     ],
     "notes": [
       "118 source entries:14 vanilla,30 Alex and74 other pack entries. Recruits explicitly excluded. Four overbroad candidates identified by the prior audit removed. Mod-presence gating happens before optional Mixin API linking, common adapters use native types and exact class-name strings only",
-      "Registry/channel namespace now mobhome. Legacy jem_companions journal filename and serialized fields intentionally retained, without a JEM dependency. No JEM shelter runtime was previously installed in this task"
+      "Registry/channel namespace now mobhome. Legacy jem_companions journal filename and serialized fields intentionally retained, without a JEM dependency. No JEM shelter runtime was previously installed in this task",
+      "Old jemcompat shelter registry partitions are historical source evidence, not aliases or newly registered mobhome facts. Refresh static Atlas from final installed artifacts and actual source registrations. Do not fabricate dynamic registration or runtime acceptance."
     ],
     "unresolved": [
-      "User-owned small/large bbmodels and production resources, geometry reconciliation and accepted day/season icons",
+      "Final model packaging, both-side artifact installation and native publication must finish before delivery is recorded. Day/season icons remain independently user-owned and default disabled in JEMCompat, outside this shelter owner",
       "Source paths not player accepted or runtime crash-tested",
       "Unloaded or natively lost Gum Worm parts require natural source loads or genuine native data recovery, never fabricated body generation",
       "Claims-specific animal spawn APIs absent in inspected pack, unknown installed claim mod blocks recovery until a verified adapter exists"

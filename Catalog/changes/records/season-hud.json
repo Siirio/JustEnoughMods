@@ -16,7 +16,7 @@
       "lifecycle": "native initialized client season state and native dimension whitelist"
     },
     {
-      "production_resources": "Awaiting user/Gemini art; not installed or published"
+      "production_resources": "User-owned approved day_cycle.png and season_cycle.png absent. Both client toggles default disabled. Existing enabled profile settings require explicit disable until approved assets are installed."
     }
   ],
   "precedence": {
@@ -30,7 +30,7 @@
         "property": "client.time_season_hud",
         "operation": "add",
         "before": "No JEM day/season HUD indicator in JEMCompat; native Minecraft and Serene Seasons calendar remain owners.",
-        "after": "Optional 24x24 day and season indicators at GUI position8,8 with gap4, configurable position/toggles, F1 hide and hover text in chat/container screens. Seasonal pointer and progress use native ISeasonState/config. Nonseasonal dimensions show neutral presentation; absent Serene Seasons hides that indicator. No time mutation or independent calendar."
+        "after": "Optional 24x24 day and season indicators at GUI position8,8 with gap4, configurable position/toggles, F1 hide and hover text in chat/container screens. Seasonal pointer and progress use native ISeasonState/config. Nonseasonal dimensions show neutral presentation; absent Serene Seasons hides that indicator. No time mutation or independent calendar. Both toggles default disabled pending user-owned approved textures. Existing seasonal gameplay and food remain independent."
       }
     ]
   },
@@ -50,7 +50,7 @@
   },
   "rationale": {
     "purpose": "The user requests implementation of section4 of the final v2 brief while preserving existing architecture and source authority.",
-    "decision_source": "User specified indicator size, layout, native synchronization, optional-mod behavior and presentation-only scope. Codex chose Forge client event hooks, an isolated optional adapter and native calendar API reuse."
+    "decision_source": "User specified indicator size, layout, native synchronization, optional-mod behavior and presentation-only scope. Codex chose Forge client event hooks, an isolated optional adapter and native calendar API reuse. User later rejected candidate icons and reserved icon authoring. Codex selected explicit default-off delivery to permit independent food shipment without fabricating art."
   },
   "introduced": {
     "date": "2026-10-23",
@@ -77,6 +77,17 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
         "Docs/season-hud/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "disable_unfinished_hud_defaults",
+      "summary": "User excluded rejected clock and season art and reserved authoring. Delivery now explicitly defaults both unfinished indicators off while preserving their opt-in renderer and native calendar ownership. No substitute or silent missing-resource guard.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+        "Docs/season-hud/README.md",
+        "Docs/food/README.md"
       ]
     }
   ],

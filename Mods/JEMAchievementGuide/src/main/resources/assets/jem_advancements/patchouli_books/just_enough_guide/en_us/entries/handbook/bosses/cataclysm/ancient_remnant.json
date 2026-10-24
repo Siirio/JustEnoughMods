@@ -11,9 +11,23 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:ancient_remnant",
+      "name": "Ancient Remnant",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Cursed Pyramid."
+      "text": "Look for the encounter at: Cursed Pyramid.",
+      "drops": [
+        "cataclysm:ancient_metal_block",
+        "cataclysm:music_disc_ancient_remnant",
+        "cataclysm:remnant_skull",
+        "cataclysm:sandstorm_in_a_bottle"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

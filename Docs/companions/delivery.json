@@ -2,11 +2,11 @@
   "module": "MobHome",
   "display_name": "Mob Home",
   "mod_id": "mobhome",
-  "status": "development_art_pending",
+  "status": "source_and_production_artifact_complete_publication_deferred_by_user",
   "jar": "Mods/MobHome/build/libs/mobhome-1.0.0.jar",
-  "bytes": 132499,
-  "sha256": "06daff2164b96e17d0449bbfa585619c32ba95a9d28a01a3c562041d68fddb8f",
-  "build": "Independent Gradle jar and reobfJar successful. No tests/check/launch tasks",
+  "bytes": 177898,
+  "sha256": "ce3a9872820a7acf1d3be55abcb08eca381a29aa5aee2e59fde18bc25214cdbb",
+  "build": "Independent production jar and reobfJar successful,25s. No tests/check/launch tasks",
   "required_runtime": [
     "minecraft1.20.1",
     "forge47.4.10+"
@@ -17,10 +17,10 @@
   "singleplayer": "integrated server uses same gameplay owner",
   "multiplayer": "matching Mob Home required on client and server",
   "runtime_exercised": false,
-  "models_received": false,
+  "models_received": true,
   "model_handoff": "C:/Users/user/Downloads/Mob_Home_Antigravity_Models.zip",
-  "model_dispatch": "User requested manual Antigravity transfer. No observed remote production",
-  "model_choice": "Argon",
+  "model_dispatch": "User rejected external output and explicitly requested direct native Blockbench/Aseprite authoring",
+  "model_choice": "Direct native production requested by user",
   "gemini_mode": "Work",
   "ordinary_server_changed": false,
   "managed_pack_changed": false,
@@ -31,17 +31,46 @@
   "source_commit": "SELF",
   "atlas": {
     "validation": true,
-    "task_uncovered": [],
-    "unrelated_uncovered_count": 86,
-    "unrelated_artifact_drift": {
-      "added": [
-        "Client/ManagedPack/mods/mapsyncer-1.0.3-forge-1.20.1.jar"
-      ],
+    "task_owned_uncovered_paths": [],
+    "preexisting_uncovered_paths": 86,
+    "artifact_drift": {
+      "added": [],
       "removed": [],
-      "changed": [
-        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar"
-      ],
+      "changed": [],
       "unresolved": []
-    }
-  }
+    },
+    "full_regeneration_performed": true,
+    "source": "Catalog/generator/build_atlas.py",
+    "note": "Full canonical regeneration and validation passed. Unrelated working-tree coverage remains outside this task. Production MobHome and newCompat are built, not installed by explicit user deferral",
+    "staged_task_record_validation": true,
+    "source_registry_correction": "Source inference now records two MobHome items and two blocks, no menus or recipe serializers as items"
+  },
+  "external_models_rejected": true,
+  "models": "Docs/art/mobhome-20261024/optimization.json",
+  "model_user_acceptance": "Small direction selected, optimized final models and runtime unaccepted",
+  "publication": "User explicitly selected source, JAR and ZIP only without publication on2026-10-24",
+  "source_build_failures": [
+    "First invocation failed because PowerShell parsed an unquoted JVM flag as a task name. Quoted argument retry succeeded without source/cache changes"
+  ],
+  "model_export": {
+    "small_master_cuboids": 44,
+    "large_master_cuboids": 47,
+    "small_baked_elements": 88,
+    "large_baked_elements": 122,
+    "small_baked_quads": 330,
+    "large_baked_quads": 395,
+    "static_cell_models": 36,
+    "atlases": 2,
+    "atlas_dimensions": [
+      128,
+      64
+    ],
+    "block_entity_renderers": 0,
+    "collision": "Exact unrotated solids plus conservative two-model-unit roof and triangular-gable stairs",
+    "runtime_fps": "unmeasured"
+  },
+  "artifacts": [
+    "C:/Users/user/Downloads/Mob_Home_1.0.0.zip",
+    "C:/Users/user/Downloads/mobhome-1.0.0.jar"
+  ]
 }

@@ -33,6 +33,13 @@ The read-only `jemcompat:food` channel sends only dietary count changes, login a
 
 ## Evidence and verification limits
 
+Food delivery is independent of the unfinished optional day/season HUD. Its two
+toggles now default disabled because the user rejected the earlier icons and
+reserved their replacement for their own authoring. See
+[the HUD owner](../season-hud/README.md) for the exact PNG and configuration
+contract. Existing seasonal crop behavior is unchanged. Matching food-capable
+JEMCompat artifacts are still required on client and server.
+
 Installed recipe JSON and item registration bytecode were inspected for Bakery 2.0.6, Farm & Charm 1.0.14, Brewery 2.0.6, Kaleidoscope Cookery 1.4.1, Kaleidoscope Nether 1.1.8 and Kaleidoscope End 1.0.14. Other inspected cooking modules and coverage boundaries are identified in the report. Cookery native `FoodBiteRegistry`, `CommonRegistry`, `FoodBiteBlock.eat`, `BowlFoodBlockItem`, Forge 47.4.10 effect events, mapped `LivingEntity.addEffect` and native absorption modifier bytecode establish the extension seams. Exact-ID Atlas/research queries supplement those installed sources; Atlas's static inference is not described as live Forge registration proof.
 
 No automated tests, gameplay launches, linters or static-analysis jobs were added or run for this feature. Source review is not player acceptance. Production packaging, ordinary local synchronization, Atlas rebuild/validation and native AutoModpack publication are coordinated by the parent task under the repository's standing delivery rules. A new client-facing network channel requires matching fresh JEMCompat on both logical sides; do not call this a server-only update.

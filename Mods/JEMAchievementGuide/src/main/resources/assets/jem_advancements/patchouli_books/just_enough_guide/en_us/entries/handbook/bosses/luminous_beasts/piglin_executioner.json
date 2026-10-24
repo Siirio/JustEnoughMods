@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "luminous_beasts:piglin_executioner",
+      "name": "Piglin Executioner",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Locator search",
-      "text": "Use this encounter’s locator in the Nether. It marks the site on your map; the locator itself does not begin combat."
+      "text": "Use this encounter’s locator in the Nether. It marks the site on your map; the locator itself does not begin combat.",
+      "drops": [
+        "luminous_beasts:executioner_disc",
+        "luminous_beasts:executioner_trophy"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

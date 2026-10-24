@@ -11,9 +11,27 @@
   ],
   "pages": [
     {
+      "type": "patchouli:entity",
+      "entity": "luminous_beasts:the_scarecrow",
+      "name": "The Scarecrow",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
+      "title": "Preparation and defense",
+      "text": "The Scarecrow rejects fire contact, fall damage and the ordinary explosion type. Do not rely on dropping or simply igniting it to finish the fight. Your hit",
+      "drops": [
+        "luminous_beasts:headsman_disc",
+        "luminous_beasts:pumpkin_helmet_helmet",
+        "luminous_beasts:scarecrow_trophy"
+      ],
+      "drop_status": "Native loot conditions still apply"
+    },
+    {
       "type": "patchouli:text",
       "title": "Preparation and defense",
-      "text": "The Scarecrow rejects fire contact, fall damage and the ordinary explosion type. Do not rely on dropping or simply igniting it to finish the fight. Your hit invokes a separate response action; leave room to retreat rather than staying unnecessarily close."
+      "text": "invokes a separate response action; leave room to retreat rather than staying unnecessarily close."
     },
     {
       "type": "patchouli:text",

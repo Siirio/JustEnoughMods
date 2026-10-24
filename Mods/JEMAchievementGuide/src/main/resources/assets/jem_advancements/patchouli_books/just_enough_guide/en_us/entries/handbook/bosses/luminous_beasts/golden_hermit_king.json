@@ -11,9 +11,22 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "luminous_beasts:golden_hermit_king",
+      "name": "Golden Hermit King",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat.",
+      "drops": [
+        "luminous_beasts:hermit_king_disc",
+        "luminous_beasts:rare_hermit_king_trophy",
+        "luminous_beasts:shellmet_helmet"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

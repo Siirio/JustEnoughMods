@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:skeletosaurus",
+      "name": "Skeletosaurus",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Skeletosaurus Nest."
+      "text": "Look for the encounter at: Skeletosaurus Nest.",
+      "drops": [
+        "legendary_monsters:dinosaur_bone"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

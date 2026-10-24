@@ -11,9 +11,23 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:ancient_remnant",
+      "name": "Древний останец",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Проклятая пирамида."
+      "text": "Ищите место встречи: Проклятая пирамида.",
+      "drops": [
+        "cataclysm:ancient_metal_block",
+        "cataclysm:music_disc_ancient_remnant",
+        "cataclysm:remnant_skull",
+        "cataclysm:sandstorm_in_a_bottle"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

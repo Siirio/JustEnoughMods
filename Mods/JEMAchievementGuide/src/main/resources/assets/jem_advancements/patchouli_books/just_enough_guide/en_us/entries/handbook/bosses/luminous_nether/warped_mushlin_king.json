@@ -11,9 +11,27 @@
   ],
   "pages": [
     {
+      "type": "patchouli:entity",
+      "entity": "luminous_nether:warped_mushlin_king",
+      "name": "Warped Mushlin King",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
+      "title": "Cue and response",
+      "text": "The Warped Mushlin King uses a separate shooting state. A spit sound and appearance change accompany the projectile launch: move across the line, then retaliate",
+      "drops": [
+        "luminous_nether:music_disc_sunset_at_glengrom",
+        "luminous_nether:spore_bundle",
+        "luminous_nether:warped_spewer_trophy"
+      ],
+      "drop_status": "Native loot conditions still apply"
+    },
+    {
       "type": "patchouli:text",
       "title": "Cue and response",
-      "text": "The Warped Mushlin King uses a separate shooting state. A spit sound and appearance change accompany the projectile launch: move across the line, then retaliate in the pause. Shooting completion and movement recovery are tracked separately, so avoid waiting directly in front of it."
+      "text": "in the pause. Shooting completion and movement recovery are tracked separately, so avoid waiting directly in front of it."
     },
     {
       "type": "patchouli:text",

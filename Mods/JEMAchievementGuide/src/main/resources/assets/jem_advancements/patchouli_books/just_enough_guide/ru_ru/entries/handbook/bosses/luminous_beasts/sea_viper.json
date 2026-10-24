@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "luminous_beasts:sea_viper",
+      "name": "Морская гадюка",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Поиск по указателю",
-      "text": "Указатель этой встречи используйте в обычном мире. Он отмечает место на карте; сам указатель не начинает бой."
+      "text": "Указатель этой встречи используйте в обычном мире. Он отмечает место на карте; сам указатель не начинает бой.",
+      "drops": [
+        "luminous_beasts:sea_viper_disc",
+        "luminous_beasts:viper_trophy"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

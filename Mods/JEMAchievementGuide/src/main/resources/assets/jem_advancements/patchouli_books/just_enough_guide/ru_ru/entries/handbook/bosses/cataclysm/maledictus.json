@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:maledictus",
+      "name": "Маледиктус",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Замёрзшая тюрьма."
+      "text": "Ищите место встречи: Замёрзшая тюрьма.",
+      "drops": [
+        "cataclysm:cursium_ingot",
+        "cataclysm:music_disc_maledictus"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

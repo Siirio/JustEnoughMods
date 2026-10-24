@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:ender_guardian",
+      "name": "Эндер-страж",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Разрушенная цитадель."
+      "text": "Ищите место встречи: Разрушенная цитадель.",
+      "drops": [
+        "cataclysm:gauntlet_of_guard",
+        "cataclysm:music_disc_ender_guardian"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

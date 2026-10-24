@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:posessed_paladin",
+      "name": "Одержимый паладин",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Где искать",
-      "text": "Ищите место встречи: Павшее королевство."
+      "text": "Ищите место встречи: Павшее королевство.",
+      "drops": [
+        "legendary_monsters:corrupted_soul",
+        "legendary_monsters:soul_great_sword"
+      ],
+      "drop_status": "Нативные условия добычи сохраняются"
     },
     {
       "type": "patchouli:text",

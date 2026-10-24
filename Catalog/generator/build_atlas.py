@@ -418,7 +418,13 @@ class Atlas:
         }
 
     def _scan_sources(self) -> None:
-        pattern = re.compile(r'\bregister\s*\(\s*"([a-z0-9_./-]+)"\s*,')
+        registry_kinds = {"ITEMS": "items", "BLOCKS": "blocks",
+                          "ENTITY_TYPES": "entities", "ENCHANTMENTS": "enchantments"}
+        declarations = re.compile(
+            r'\bDeferredRegister\s*<[^;=]+>\s+(\w+)\s*=\s*'
+            r'DeferredRegister\s*\.\s*create\s*\(\s*ForgeRegistries\s*\.\s*(\w+)\s*,\s*'
+            r'("[a-z0-9_.-]+"|[\w.]+)\s*\)')
+        registrations = re.compile(r'(?<![\w.])(\w+)\s*\.\s*register\s*\(\s*([^,;\n]+)\s*,')
         for module in sorted((ROOT / "Mods").iterdir()):
             source = module / "src" / "main"
             if not source.exists():
@@ -449,33 +455,39 @@ class Atlas:
                          for java, text in java_sources.items()
                          for match in re.finditer(r'\bstatic\s+final\s+String\s+(\w+)\s*=\s*"([a-z0-9_.-]+)"', text)}
             for java, text in java_sources.items():
-                registry = None
-                upper = text.upper()
-                if not re.search(r'\bDeferredRegister\s*\.\s*create\s*\(', text):
-                    continue  # Registry lookups and Set.of(...) strings never register objects.
-                if "DEFERREDREGISTER<ITEM" in upper or "FORGEREGISTRIES.ITEMS" in upper:
-                    registry = "items"
-                elif "DEFERREDREGISTER<BLOCK" in upper or "FORGEREGISTRIES.BLOCKS" in upper:
-                    registry = "blocks"
-                elif "ENTITYTYPE" in upper and "DEFERREDREGISTER" in upper:
-                    registry = "entities"
-                elif "FORGEREGISTRIES.ENCHANTMENTS" in upper:
-                    registry = "enchantments"
-                if not registry:
-                    continue
-                namespace = mod_id
-                declared = re.search(r'DeferredRegister\.create\([^,]+,\s*("[a-z0-9_.-]+"|[\w.]+)\s*\)', text)
-                if declared:
-                    token = declared.group(1)
-                    namespace = token.strip('"') if token.startswith('"') else constants.get(token, mod_id)
-                pseudo = Artifact(java, {"source"}, "", [owner], {namespace})
-                for match in pattern.finditer(text):
-                    self._observe(registry, f"{namespace}:{match.group(1)}", pseudo, str(java.relative_to(ROOT)).replace("\\", "/"))
-                dynamic = re.findall(r'\b\w+\.register\s*\(\s*([^"\s][^,;\n]*|"[a-z0-9_./-]+"\s*\+[^,;\n]*),', text)
-                if dynamic:
+                receivers = {}
+                for declared in declarations.finditer(text):
+                    receiver, kind, token = declared.groups()
+                    registry = registry_kinds.get(kind)
+                    if registry is None:
+                        continue  # Menus, block entities and serializers are not item registrations.
+                    namespace = (token.strip('"') if token.startswith('"') else
+                                 constants.get(token, constants.get(f"{java.stem}.{token}")))
+                    if namespace is None:
+                        self.unresolved.append({"type": "source_registration_namespace",
+                                                "registry": registry, "source": str(java.relative_to(ROOT)).replace("\\", "/"),
+                                                "expression": token,
+                                                "reason": "DeferredRegister namespace is not a verified literal or source constant"})
+                        continue
+                    receivers[receiver] = (registry, namespace)
+                dynamic = defaultdict(set)
+                for registration in registrations.finditer(text):
+                    receiver, expression = registration.groups()
+                    if receiver not in receivers:
+                        continue  # Unknown helper receivers never prove a registry identity.
+                    registry, namespace = receivers[receiver]
+                    literal = re.fullmatch(r'"([a-z0-9_./-]+)"', expression.strip())
+                    if literal is not None:
+                        pseudo = Artifact(java, {"source"}, "", [owner], {namespace})
+                        self._observe(registry, f"{namespace}:{literal.group(1)}", pseudo,
+                                      str(java.relative_to(ROOT)).replace("\\", "/"))
+                    else:
+                        dynamic[registry, namespace].add(expression.strip())
+                for (registry, namespace), expressions in dynamic.items():
                     self.unresolved.append({"type": "dynamic_source_registration", "registry": registry,
+                                            "namespace": namespace,
                                             "artifact": owner.get("source_jar"), "source": str(java.relative_to(ROOT)).replace("\\", "/"),
-                                            "expressions": sorted(set(value.strip() for value in dynamic)),
+                                            "expressions": sorted(expressions),
                                             "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"})
 
     def _load_food_policies(self) -> None:

@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "luminous_beasts:sea_viper",
+      "name": "Sea Viper",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Locator search",
-      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat."
+      "text": "Use this encounter’s locator in the Overworld. It marks the site on your map; the locator itself does not begin combat.",
+      "drops": [
+        "luminous_beasts:sea_viper_disc",
+        "luminous_beasts:viper_trophy"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

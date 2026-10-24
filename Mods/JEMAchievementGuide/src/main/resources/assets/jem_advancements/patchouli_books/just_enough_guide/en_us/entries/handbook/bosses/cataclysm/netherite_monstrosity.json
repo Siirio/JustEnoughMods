@@ -11,9 +11,23 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:netherite_monstrosity",
+      "name": "Netherite Monstrosity",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Soul Forge."
+      "text": "Look for the encounter at: Soul Forge.",
+      "drops": [
+        "cataclysm:infernal_forge",
+        "cataclysm:lava_power_cell",
+        "cataclysm:monstrous_horn",
+        "cataclysm:music_disc_netherite_monstrosity"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

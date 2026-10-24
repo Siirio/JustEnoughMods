@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "997864283969904b6ccc561a52ea49db21fe3e9e182d53642de9e4d30a8631ab",
+  "change_records_sha256": "50842c84cf367bd4f9cdc04a6b8909d80ee79b2923f82b9cf06ef0644bc0e9d3",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -29,6 +29,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 48
+    },
+    {
+      "change_id": "atlas.source-registration-receivers-20261024",
+      "status": "active",
+      "summary": "Bind static source registration evidence to the actual DeferredRegister receiver and its native registry kind, preserving source inference boundaries",
+      "record": "Catalog/changes/records/atlas-source-registration-receivers-20261024.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*",
+          "value": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32887
     },
     {
       "change_id": "atlas.static-snapshot-provenance",
@@ -189,7 +204,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17545
+      "potential_static_target_count": 17543
     },
     {
       "change_id": "client.preferences-and-carryon-removal",
@@ -262,7 +277,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 19154
+      "potential_static_target_count": 19152
     },
     {
       "change_id": "compat.ffapi-forge-native-villager-trades",
@@ -716,7 +731,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17545
+      "potential_static_target_count": 17543
     },
     {
       "change_id": "jem.engineering-v2-20261022",
@@ -828,7 +843,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 776
+      "potential_static_target_count": 775
     },
     {
       "change_id": "gui.crafted-settlements-smp-20261020",
@@ -983,6 +998,32 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 85
+    },
+    {
+      "change_id": "handbook.item-links-and-boss-models",
+      "status": "conditional",
+      "summary": "Remove Controls, add exact book/equipment JEI links and boss model spreads, initialize native quest groups collapsed",
+      "record": "Catalog/changes/records/handbook-item-links-and-boss-models.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "patchouli:guide_book"
+        },
+        {
+          "type": "registry",
+          "registry": "enchantments"
+        },
+        {
+          "type": "source_set",
+          "registry": "entities",
+          "members_path": "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+          "records_field": "entries",
+          "id_field": "subject"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 276
     },
     {
       "change_id": "handbook.native-navigation",
@@ -1260,7 +1301,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 116
+      "potential_static_target_count": 120
     },
     {
       "change_id": "power.bloom-registered-boss-targeting",
@@ -1318,7 +1359,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17545
+      "potential_static_target_count": 17543
     },
     {
       "change_id": "power.race-cinematic-reentry",
@@ -2028,7 +2069,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 13812
+      "potential_static_target_count": 13814
     },
     {
       "change_id": "settlements.fed-recovery-readable-native-ui",
@@ -2102,7 +2143,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12217
+      "potential_static_target_count": 12219
     },
     {
       "change_id": "settlements.isometry-local-host-masking",
@@ -2116,7 +2157,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12204
+      "potential_static_target_count": 12206
     },
     {
       "change_id": "settlements.migration-completeness",
@@ -2205,7 +2246,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 12216
+      "potential_static_target_count": 12218
     },
     {
       "change_id": "settlements.recruit-needs-camera-cutaway-hire-gui",
@@ -2329,7 +2370,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17557
+      "potential_static_target_count": 17555
     },
     {
       "change_id": "settlements.sandbox-build-boundary",
@@ -2672,7 +2713,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 17545
+      "potential_static_target_count": 17543
     },
     {
       "change_id": "smp-rewards-xp.minecraft-xp-20261022",
@@ -2840,7 +2881,7 @@
         }
       ],
       "exceptions": [],
-      "potential_static_target_count": 2214
+      "potential_static_target_count": 2210
     },
     {
       "change_id": "universal-standalone.quest-projection-20261021",
@@ -3069,7 +3110,7 @@
     "Catalog/changes/food-quality-assignments.json": "c2bee7863aad898e6f0b132fe82f83409ad0d4cf3d1e9337a40080e545c4c457",
     "Catalog/changes/sets/ftb-questbook-reward-subjects.json": "be0308f39b82a6788038cfffc409732d9db15641b9943f62c05d18c940a04057",
     "Catalog/changes/sets/settlements-decor-coverage.json": "8d6348bda5a0f4577dba81665988a683f436667d2d648ae873074e77d4b922f2",
-    "Catalog/generator/build_atlas.py": "ba4fb5fbea7eccce9d534529cfc27b569415b1eddd816cb8b27766ec9a2e54b5",
+    "Catalog/generator/build_atlas.py": "46738ce703c7ba09d7eb049b8545513525759a20217fc6da565bb3333e0fc66a",
     "Catalog/generator/build_power_views.py": "73c76286a27c124ebfa19bb7bc3764f1c0817f26b277d2765616a02a70d7f2ee",
     "Catalog/generator/export_food_quality_report.py": "dbdb388372ef47081985eb8499f2af7da798deb42266e62cf039f437a2d9217d",
     "Catalog/generator/extract_defense_mechanics.py": "7b40b6095e74b7f55d364889f2598c0b70e0516ed16a8f71bf6029262d5d9c22",
@@ -3212,7 +3253,7 @@
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "44457fc347ea0d90518af50dd498921231503690b6685ecbb2e2c8f300848b0c",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "480e49c416df7dfa7a15c6bc850cfab651f7e247dd19fa0779966d148237c43b",
+    "Docs/DEVELOPMENT.md": "2d866ff463a3ef0d7241e56c968be312b786e669918cc9ac032b6db939b63783",
     "Docs/MODS.md": "136e8dae7c359ed76530220cb863f51fe37fa9040ba63aecd4e4fd0012b4e504",
     "Docs/SERVER_COMMANDS.md": "91c5d5d2755e1d75d0ed91591beb95131388970e9ec4ddb89e6a6eed4060edea",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -3221,9 +3262,18 @@
     "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite": "79155e144f5b7045626fd525ccf1f41d71035ec4adc1ccf333850c3916968a08",
     "Docs/art/bbb-hammer-2026-10-21/hammer.png": "e53ad0acf66af651b834387a8e355e3e378b7b48c7b137b6522afd9777935173",
     "Docs/art/crafted-gui-2026-10-20/README.md": "ccddecf9df5801ec42bf606563a07b5d6e591fc4c81f2690335b119c884fd07b",
+    "Docs/art/mobhome-20261024/README.md": "4d1824c4f890a8b73f7a7e3ff005663db25addfb16a1ef2a166d326862f06530",
+    "Docs/art/mobhome-20261024/large-log-optimized.bbmodel": "f056a6f31d5774247fa6146489adc1d595268a57a24ed99e24599e503a976c75",
+    "Docs/art/mobhome-20261024/large-log-optimized.json": "54ef3bf5a99b2015c85339ab43805bf4bf46bc8d121b9a52be45d42c4798beb5",
+    "Docs/art/mobhome-20261024/large-materials.aseprite": "2dd03b4f02fee3e4f8662d30c23127b368fe841fa50bd1612f40a117840bc2f1",
+    "Docs/art/mobhome-20261024/large-materials.png": "4768bb112a779cad532c3d805be11eb36b0fa482e4342705da73bb36e6f9d57b",
+    "Docs/art/mobhome-20261024/small-materials-runtime.aseprite": "c5315b6084af5fb12fca823f2f74c8aab50185cf8e790174c7f10138437fdacd",
+    "Docs/art/mobhome-20261024/small-materials-runtime.png": "c29a1bb7c3efad89d6670ae999af9fca5304aa518f0f8e3d7600a529c830fcbf",
+    "Docs/art/mobhome-20261024/small-stone-optimized.bbmodel": "47963980a4a357ef57cbee88cf247eff37735446893f0113666209f8efdebf27",
+    "Docs/art/mobhome-20261024/small-stone-optimized.json": "92ee733870ee8652c1483d89db6784d0bc7d568917683d3185bd684f6b6c7351",
     "Docs/art/shipping-station-2026-10-20/model/README.md": "94b651d5ae7ee9b17162cd7ba1456a2402879215bc2f7bfd1cf1aa8f70acf103",
     "Docs/backpack/README.md": "6937214d3fc6c1a2ebb6a990fe45f8fa89ec7c1b67a58557a3b4857c55a98664",
-    "Docs/companions/README.md": "e0c92323d5cc2f9b10a08f97ba3a4d0d14064fa2e8834648d54e89bfa6db64ab",
+    "Docs/companions/README.md": "ebf79fea7147e50ee545a5973b349a83ded1050bf23b40476722f6cadec18c85",
     "Docs/companions/alex-evidence.md": "038186ef54b0dd5bc108a34a49a124866ea15127849b0319ceb8a6dcafc3e64c",
     "Docs/companions/pack-evidence.md": "f711ad5cde3d92dbfd9b9185e981a347219f4962eaa1e0eec5f1cfe87d21910d",
     "Docs/economy/native-trading-design.md": "d1328493bbac31e57485604c6699cf9a8b70e5880f5f2bce37086bfadf2cc1f7",
@@ -3231,10 +3281,11 @@
     "Docs/events/BOSS_FIGHT.md": "39b32c0ab7e48820d45d0315b749eb8ffa7ba2dffa025054e85b8766e54b2041",
     "Docs/events/BOSS_RAID.md": "525fa2b768cdc067dd584785a152765e921e7635f6f42542bce73fa689598da3",
     "Docs/food/COVERAGE.md": "5cdd3b02b333364835760cd77fbd99289e6158bcc0d386d5c951a60d682d1844",
-    "Docs/food/README.md": "5fe05415711cb95ac54dea72ce5c6c8edff6787f332b0a69af435003028da37e",
+    "Docs/food/README.md": "0b1b2d3a477ef10d739a1f67d40cd733e98ba09fbaec2e0fb2ddee4612004df8",
     "Docs/gui-sandbox/README.md": "71775c921e2cbb7dda22ee07e603be62a045ea17aa78e9ba6f0bb4e1dc227d63",
     "Docs/gui-sandbox/delivery.json": "018431eef19b2f240853ba2d87ca271f38e7cd9ce3973fa7c2628c95fa44650b",
-    "Docs/handbook/README.md": "c6dea7f22aedeaa7a3542db4f2a3795b5033001cfabdb3ef3b18b1acb52eb424",
+    "Docs/handbook/README.md": "57aa10425bf98f991ba7bf8cf586e1bf885d8efaa4933355f3ab4022246f24f2",
+    "Docs/handbook/boss-drop-links.json": "b80da928090b2e993a157eaa12c3c31a633072dcc9b8c795040c27578b919d37",
     "Docs/handbook/bosses-coverage.json": "adcac2a9ed7c1c4b9b1bea6e98e773d72ca777f2fb922371dab82f0e9413f9f0",
     "Docs/handbook/delivery.json": "c6884b76608298742fc9146d9ae1d26daa30952cec39118a2367c893a7afe081",
     "Docs/handbook/enchantments-coverage.json": "00ab830cd81c92db91f494414653fd5a3708e1a8516e55b29a1222c6b86f335c",
@@ -3242,6 +3293,7 @@
     "Docs/handbook/items-coverage.json": "980d03640450e46b6d3f735a6b1228131c15dbfbeb8741121f8dacbb094b738f",
     "Docs/handbook/items-findings.md": "68b684daac158eb4f0ed1b1bdf4826145dbd85120ad207e199bb129229609783",
     "Docs/handbook/items-reference-evidence.json": "b0892502f5e51f1cd0f9185db9b32a9e0284fac9e05179286028fd51b6a668e1",
+    "Docs/handbook/links-delivery.json": "ed167d5e7a869155f80abec88bbc618a2aa3e259f85bf07e0130506e46555f78",
     "Docs/handbook/manuals.md": "f6311cc9f05d2b057e21e399da6e34338341628d7b2047b163de8a6cc3cf3e75",
     "Docs/power-system/Allies.md": "829e010d57941891c31134a0707b3e74f2f6d943f9c57325f4f903c341ed9875",
     "Docs/power-system/Armor.md": "168c85fba7fcd6362c52085f9ba8aae13454548bce1a55c6d7caf15180608f12",
@@ -3264,7 +3316,7 @@
     "Docs/releases/2026-10-21-shipping-market-repair.json": "a6f88bf08933b6c5c79407657add4e86379d6548faaf7e810ada29ce1c92bd27",
     "Docs/releases/2026-10-24-backpack-content-migration/receipt.json": "c72c8311bb7380fcb30e0cf6f6da9a787507e6d0cef62be9acdf0367c449c208",
     "Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json": "1303f551dcdafee43280730b0af1f6191097edec1747c4c9fe5bf4901f45932d",
-    "Docs/season-hud/README.md": "03c743fae588d0b677f600716221a6a0650608208b7a54f4c79941d3745c796a",
+    "Docs/season-hud/README.md": "d18d14af5fb18c0e100ad715cbcbc940bdb2a0287817783be40ef31620a03b8b",
     "Docs/settlements/DESIGN_JOURNAL.md": "440abcac8af594a5b41e177da3b36049d47b7b95435431730eb3f4aee08b62bd",
     "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py": "98fa13c327c20af73c3b9d6d341967f069b18c1367768155b6867f755ab928d8",
     "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora": "15729a822314845f271a79782977b7c8572d6572d28b32387804848f28210931",
@@ -3273,7 +3325,7 @@
     "Docs/settlements/standalone/README.md": "521ad4062e3d8e2243ad8f9d2f2f648e8579378081a0e340598930839219e014",
     "Docs/smp-gui/README.md": "29b58a8cd1d65e634fb84c7210a4914b570f7056546890ea7cb698d1e64e0bb5",
     "Mods/JEMAchievementGuide/README.md": "77e8a6d91b62c6bd45da644a8795bdf3579aa159ad415e24118dd2972e8dbc2a",
-    "Mods/JEMAchievementGuide/build.gradle": "4858cc0d84615a147c07dfdb1a4a27eda23a3db4f7bdf455fa523ccf0aac4f64",
+    "Mods/JEMAchievementGuide/build.gradle": "9bdf279e13a3b99107aee354b03d2ada16b4e793a4f05dd1088bd4b4ce5dc667",
     "Mods/JEMAchievementGuide/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
     "Mods/JEMAchievementGuide/src/main/advancements/campaign-guide.json": "f7cfe6d3e6f2742dfaac2049ac85cef80d72e61a82e2f50f98e2067b9354328b",
     "Mods/JEMAchievementGuide/src/main/advancements/create_6.0.8_baseline/conductor.json": "8d4269162f8d9708b42955d374e6537a026e22e47247d9701e1b80e576bb9388",
@@ -3285,15 +3337,19 @@
     "Mods/JEMAchievementGuide/src/main/advancements/manifest.json": "15fcc5c81f30cd8ce68eeaa6a5243dd318a79f77824de4577adcc190a2fec901",
     "Mods/JEMAchievementGuide/src/main/advancements/native-generated-files.json": "68021e07498d89d6707537c7fab273baffc40a035806d3031370a5e2376edbde",
     "Mods/JEMAchievementGuide/src/main/advancements/native-integrations.json": "a57aef99c6fa5bca90b5a4b00c9d694a1c648c631208daae4ee5b8d0825db2d2",
-    "Mods/JEMAchievementGuide/src/main/handbook/bosses.json": "3b50fe44a8099720c67b8f6c37b14ad9d0d1edf0c049c8a22135a4be4c1e8b4d",
+    "Mods/JEMAchievementGuide/src/main/handbook/bosses.json": "28df0c306295ae8b10fa55d5f16f991e659206a55d8d342f151ccce11696cbb2",
     "Mods/JEMAchievementGuide/src/main/handbook/items.json": "2d57248fdc3a274dcd1906ca3b46f0dbb5f6cfbf2e0759290de534a6e38e62a4",
     "Mods/JEMAchievementGuide/src/main/handbook/manuals.json": "1879920345db6fce080a67e833aef9c44e183f1417ec31e4843faacec63fce28",
-    "Mods/JEMAchievementGuide/src/main/handbook/navigation.json": "a4eeed0c295fe479da4cd72c366fd6d2d47f45fa0d4942476f754a9f202571e5",
+    "Mods/JEMAchievementGuide/src/main/handbook/navigation.json": "c73eaa1ca6b71409bb9a98ad2ae5cba6d0205d267887b180f91c4aa4df5171a5",
     "Mods/JEMAchievementGuide/src/main/handbook/translations.json": "cf4a770e259d88daa92e8f57721745fa45bd4ebb44d26112088486fca14d66eb",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java": "ae73f596f2b599e5fd2b6fd4eccd484c624754901f805e735a89b883e9a8b380",
-    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java": "4f397c81cf7801bfc07ea9405412c7a7f6dce34023c0457a0d2b338d73ecb75b",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java": "15e27514b09b93f742f346a83b63453f8462733b72e0f584e5cdb29448fbeb50",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/AdvancementScreenEvents.java": "4bba8119f23c6b8f563d3206ccbd6fffeee302475c0b9a1fd7a310d61b6cc3f2",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java": "9eddcde95101fdaadbd78a0055854283c71772382511887f95b339241c184a53",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookItemLinks.java": "c1fb29149b9dc35dfeb1a6d0e280f1a03e30d943d3409c38adec9e9896e0499d",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSection.java": "4b06242ea8d63b71d696bb5a386d072cababbf970f6605e4bb071f1ed2f27aa8",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/enchantment/EnchantmentHelp.java": "73d3f41288d5dd90b473b3058ef72d24ec44ccf38152ec7835cb8f6d78c2df52",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/jei/HandbookJeiLinks.java": "eb9d8480015a614146da2f91454f83c2459fd397f13fb107034fb7745fc289af",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/BookInformationScreen.java": "8a9452ea87b7d1adc943e9fdfd84f507e684c6772ea8fb47f34c850db9ee4002",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookCollections.java": "af91297003e428110a6c0689ee9ab6803f220a433856b215115d9b8ffe875c90",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookEconomyEvents.java": "aad7c127dfcd9fe1f99119533260235653447930754c9d41e7eebb90a1eb965c",
@@ -3313,6 +3369,7 @@
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/treechop/TreeChopIntegration.java": "b6b0af0d7feb5e7bba074bcb067cff0c986b52c7a764b9fe2aae7a8519957b4c",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BetterAdvancementsScreenMixin.java": "96c1cf8312034bc7587be444949a6027745bd01d26ef778e1a381c03f9061f13",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CastingNetItemMixin.java": "d187cfcffb7b8b5b59405029dc49ee5265ec9838823bef27c99b29656f24c277",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbChapterGroupDefaultsMixin.java": "5660af351592dac51d7aaaaa5b1e58f6e110cd06440a0ed6b474951b2a0a5ddf",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbQuestFileMixin.java": "744a1aac199c3ab61e7198caf390f8271aca2bbd635217a1612d6f6fdf8dde9d",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ImmersiveMelodiesMixin.java": "b1243ed9c29a255cd72923814ec5f8d6dbc8ddac97c731bbd92228b461b9032b",
     "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/LivingEntityMixin.java": "9149cf602a0d4ffb79a75f533ecfaf02c5ff927a4e135acb69dde1b10cc6d3c4",
@@ -3324,8 +3381,8 @@
     "Mods/JEMAchievementGuide/src/main/resources/META-INF/mods.toml": "f59b1f4d91f1f9100a73e72a6abd0a88bb57378e9a30b5f41a17de94f9106b08",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json": "507793d537f7ff91a7eea68a894a06d3403350347d70f1d44b69ec079a4a3fc4",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json": "1f15e8c33707483c0f552ff58c0f7331ab452bf3657063c315689c6fd1da4c08",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json": "50c6ed58bd4dc345584ed1ba4f0280368d4f9cee131b630ee661fa87a76fbe8c",
-    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json": "cb0c0857f166ba4afe11b77ab090f2adcece94da4abd049d49a47ccc612e5c5d",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json": "566bd1a4b0b1fa40400ae089f0e201079b3078ae9b24f10c335d2d91a9007a17",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json": "f14d23957b66f45478f2538287aaf26d580ea8717427c5006d391a9bd2631106",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/arsenal.json": "ecbbdc57688153002e7d8f1b417f86bb8fbd62d2b01311d8099e257846982b37",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/bosses.json": "c8aa805d3493eb9771c25e5b726971d3aff5262de85978edb1a649743367f390",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/categories/building.json": "e991b835ed955d25a3b386b6b0a4f0fac940a948971c996a7695fc397d998fb8",
@@ -3717,6 +3774,8 @@
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/natures_compass.json": "8e6bfb6e84ad45e0244297247189d17bd2f2413825dee4632a6330804033b168",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/root.json": "0f8ec2ea40c63250efb7fc88d0f090e0d6e5cb532adc2d4f92b8ee667ca3649e",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/universal_leash.json": "04e0b39f6e4b099f312d6b49003794a480318b58a94b37ace4c5cf90cf8ebd56",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/boss_description.json": "d81a67f62396d96128634a6b0ecc3169d6e9a00414a4d59ad14297ae6542f8a9",
+    "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/templates/enchantment_links.json": "8612be2c3926a83c52bd66b88af3c22f203c4e80a7a6a5bd9a30756e1b3e4535",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/sophisticatedbackpacks/backpack.json": "a5b318e167a6374431cddc59d7d6c0e7e77176d6c2630d8688feb5cad4b8eed4",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/native/jemcompat/campaign/all_eyes.json": "97ae253a5d2737d469453f0495be1dedd4634dcee6ac3a4e2c209430ff400742",
     "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/native/jemcompat/campaign/branches/ancient_remnant/dune_sentinel.json": "3b834df2b8a275f0153746c33e5760d010d4c7561a3f1e670090f9cb3ac30aa0",
@@ -4118,9 +4177,10 @@
     "Mods/JEMAchievementGuide/src/main/resources/data/tide/advancements/journal_halfway_completed.json": "ac13aa0a2ef34734410e26918149d09cb031d28feab6be8faf0bd051dd82e470",
     "Mods/JEMAchievementGuide/src/main/resources/data/tide/advancements/pull_crate.json": "7f7ce9fe38a5865934a3f0ae741273956df86d2ef048fab1dc562af432225f8f",
     "Mods/JEMAchievementGuide/src/main/resources/data/tide/advancements/release_pupfish.json": "13a870246f2c4510fa5e208e5639ca851a9b79285917a6e9a969bafcb6e11417",
-    "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json": "86918a3a55e50554a38de2dedb1d1a958b38b1ccb0b94921dfb2785b2c6bc33a",
+    "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json": "2b7b8204e0c2098d3853fdf89b49beb1f810e059d84bad1ccdf7e6380d440844",
     "Mods/JEMAchievementGuide/tools/advancement_manifest.py": "45f54b97259b1730ba4415a2c2b4401a686360c4a699addf333109b9353b4066",
     "Mods/JEMAchievementGuide/tools/compile_questbook.py": "a6512ba27e8a1fa198ad862d6c92bccab2f8ba2d579ecd0e12b7d2926b412152",
+    "Mods/JEMAchievementGuide/tools/generate_handbook.py": "6994a8c7b799060a7efabbb78814bc819778374ca05416784ea05c34964092f1",
     "Mods/JEMAchievementGuide/tools/generate_resources.py": "35ee1fc48405c4080fb99031e9885ae81c5c60a8c51e5182532f9cc280855aa7",
     "Mods/JEMAchievementGuide/tools/import_questbook.py": "2b4aaa24d517b656b62b36cd2e0575ba5406c3abf7290a82e97ffa14ae7e6ec9",
     "Mods/JEMAchievementGuide/tools/questbook/book.json": "a8c93798358e6e3385af01867a0ebb2c9ad70cdb7d4f8c58b7154caf111774e2",
@@ -4169,7 +4229,7 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/JemJadePlugin.java": "f0e814fd44b34c5d55f4a17b92a1fc532248c8b6f56ef5df708a8b3a7a9c4ac8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/login/TerminalSocketFailure.java": "0e09149740042f5ee17c67d1cfb37fb7d9d9e17ecf17ce79be5d077c4b8d6afc",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java": "00d80fcea8e403a388e9fda85e079d9bb8152e3af636b81b872abe582adebd7f",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java": "c66b13f0793b75d85de319353417c8ad2ecbee164f5b05c0ca469322f7322689",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java": "73c4a23afec98d0ebd44a24f90cff69616d2a74684c6538a7af5b585ec730a59",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/CoreEnchantments.java": "cd68e109e2b5a1adbe33f8a184f83476176699cbf87286e1eba2445eb0f9964c",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEnchantment.java": "e90edaa230fea0eee1736163fe5b383f02eefc27bdb7ae00577a4c37bda2f45f",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java": "1b0f75961dc62fc9945e44c1e3c79726be5fdea8933f08dc4f0f024b439340e9",
@@ -5429,7 +5489,7 @@
     "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java": "d71b335e1abc2404827c738e9d1bc97480ef5bbec3684ac7b62e85cf9c8aa284",
     "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterController.java": "49d1370d044ddb812a6375f88023a34a779bb45aca3982aba1a77e7440f2f6d1",
     "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterEvents.java": "2f783e5659cb0f0231e0aa99cd77ce6ca48f2a28b6b870fe6944ffec2d4e14a4",
-    "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterGeometry.java": "c752e970f9fb371bd738e832608b0d9ddbfb45d6a360b83ee04f8e48ae836821",
+    "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterGeometry.java": "a05dd80625184ff904bd8b93a663159d1449b6fd82a69e40e6b10769aff757d9",
     "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterMenu.java": "1446def5facde0cfa9b664db571a87fdf9cdfe2d72fb0fc02275e99dc7793594",
     "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterNetwork.java": "faaa4e7e569e933f221835ab73da320ef6592bc33d4d7d7570b4bf531fa8c31f",
     "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterPersistence.java": "f34cec7c658713fe8d6b9ef5e443fe35505bed52c24fa391e5eca2c56c6d4a46",
@@ -5472,6 +5532,8 @@
     "Mods/MobHome/src/main/resources/data/mobhome/recipes/small_animal_home.json": "8bd27e7ae0d8daa2532af9249d62331034e2e519d9ab652ca5bf5d3172ceca02",
     "Mods/MobHome/src/main/resources/mobhome.mixins.json": "76760ddc12083bcc2d209fb4345c96d06cad545863fd5ecc86ec0792cd0c754c",
     "Mods/MobHome/src/main/resources/pack.mcmeta": "8d3f57c7791e52c85c2e197314a661d7aef0463ec03632c634a6037847705f57",
+    "Mods/MobHome/tools/README.md": "4d904c4c64d022632035ac02d54a0ab20a4c530c1a709fbdbbfeec923bf69de4",
+    "Mods/MobHome/tools/package_native_models.py": "447489490ef4819928c98b4479ce9d20e8e93b1722b6c7295be9f9df2a2ad9fd",
     "Server/automodpack/server.conf": "9f6f18c2187c4610c93b85e03b8c208265865a2a2258b504899d86ee09180d6a",
     "Server/config/item_obliterator.json5": "91d0d15d2a500269c29990db48b0d8f29a44d6f5ade1047979fc2b8d023d181e",
     "Server/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
@@ -5495,7 +5557,7 @@
     "tools/architecture_metrics.py": "4006c7376bb006881c5ebaa1424ab3a703d4014b9e1ea1dff6dcdf8713742a3f",
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
-    "tools/module-inventory.json": "277dbe1333176f17aa22b63d7f0916b986d5643a9ea439f33c42666e8e5c18f9",
+    "tools/module-inventory.json": "d0d7880a67120ca27d8a946daa454533610d61551aca23c19a8491d02fe0e38c",
     "tools/state/packSyncHost-sync.json": "d01943629dd0067037c0401d5ecee628c4c7714e5fb287acac3b31469330fbfe",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }

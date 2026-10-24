@@ -10,8 +10,7 @@ enum HandbookSection {
     ENCHANTMENTS("enchantments", 0xB775D6, Items.ENCHANTED_BOOK),
     ITEMS("items", 0xE9AE45, Items.CHEST),
     MECHANICS("mechanics", 0x4EBEB4, Items.COMPARATOR),
-    MANUALS("manuals", 0x6298DA, Items.WRITABLE_BOOK),
-    CONTROLS("controls", 0xA7ABB1, Items.LEVER);
+    MANUALS("manuals", 0x6298DA, Items.WRITABLE_BOOK);
 
     final String path;
     final int color;

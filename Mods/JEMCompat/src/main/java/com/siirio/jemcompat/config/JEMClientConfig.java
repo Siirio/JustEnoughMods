@@ -17,8 +17,10 @@ public final class JEMClientConfig {
         VARIED_VILLAGER_OUTFITS = builder.comment("Show all seven native villager outfit types in every biome. Appearance only; professions, trades and saved villager types stay native.")
                 .define("variedVillagerOutfits", true);
         builder.push("timeHud");
-        SHOW_TIME_HUD = builder.define("showDayNight", true);
-        SHOW_SEASON_HUD = builder.define("showSeasons", true);
+        SHOW_TIME_HUD = builder.comment("Unfinished presentation: enable only after installing the user-approved 24x24 day_cycle.png texture.")
+                .define("showDayNight", false);
+        SHOW_SEASON_HUD = builder.comment("Unfinished presentation: enable only after installing the user-approved 24x24 season_cycle.png texture.")
+                .define("showSeasons", false);
         TIME_HUD_OFFSET_X = builder.defineInRange("horizontalOffset", 8, 0, 4096);
         TIME_HUD_OFFSET_Y = builder.defineInRange("verticalOffset", 8, 0, 4096);
         builder.pop();

@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "block_factorys_bosses:kraken",
+      "name": "Nerakyss, The Kraken",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Kraken Ship."
+      "text": "Look for the encounter at: Kraken Ship.",
+      "drops": [
+        "block_factorys_bosses:kraken_tooth"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

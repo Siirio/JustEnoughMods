@@ -1,11 +1,15 @@
 package com.siirio.mobhome.feature.shelter;
 
+import com.google.gson.JsonParser;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-/** Exact controller-local model geometry, clipped to each occupied cell before rotation. */
+/** Native exported solids, clipped per cell. Sloped roof collision uses conservative two-unit stairs. */
 public final class ShelterGeometry {
+    private static final java.util.Map<Integer, double[][]> BOXES = load();
     private static final java.util.Map<Integer, VoxelShape> SHAPES = cache();
     private ShelterGeometry() {}
 
@@ -38,24 +42,26 @@ public final class ShelterGeometry {
         return result;
     }
 
-    /** Native model units; these same boxes are the baked-model export authority. */
-    public static double[][] boxes(int size) {
-        if (size == 2) return new double[][] {
-            {2,0,2,30,2,30}, {3,2,3,6,24,6}, {26,2,3,29,24,6},
-            {3,2,26,6,24,29}, {26,2,26,29,24,29},
-            {3,2,6,5,9,26}, {27,2,6,29,9,26},
-            {3,14,6,5,24,26}, {27,14,6,29,24,26},
-            {6,2,3,26,9,5}, {6,14,3,26,24,5},
-            {0,24,0,32,26,32}, {4,26,0,28,28,32},
-            {8,28,0,24,30,32}, {12,30,0,20,32,32}
-        };
-        return new double[][] {
-            {2,0,2,46,2,46}, {3,2,3,6,41,6}, {42,2,3,45,41,6},
-            {3,2,42,6,41,45}, {42,2,42,45,41,45},
-            {3,2,6,5,14,42}, {43,2,6,45,14,42},
-            {3,24,6,5,41,42}, {43,24,6,45,41,42},
-            {6,2,3,42,14,5}, {6,24,3,42,41,5},
-            {0,41,0,48,43,48}, {8,43,0,40,45,48}, {16,45,0,32,48,48}
-        };
+    private static double[][] boxes(int size) { return BOXES.get(size); }
+
+    private static java.util.Map<Integer, double[][]> load() {
+        var result = new java.util.HashMap<Integer, double[][]>();
+        try (var stream = ShelterGeometry.class.getResourceAsStream("/data/mobhome/shelter_geometry.json")) {
+            if (stream == null) throw new IllegalStateException("Missing native shelter collision export");
+            var data = JsonParser.parseReader(new InputStreamReader(stream, StandardCharsets.UTF_8)).getAsJsonObject();
+            for (int size : new int[] {2, 3}) {
+                var source = data.getAsJsonArray(Integer.toString(size));
+                double[][] boxes = new double[source.size()][6];
+                for (int index = 0; index < source.size(); index++) {
+                    var box = source.get(index).getAsJsonArray();
+                    if (box.size() != 6) throw new IllegalStateException("Invalid native shelter collision box");
+                    for (int coordinate = 0; coordinate < 6; coordinate++) boxes[index][coordinate] = box.get(coordinate).getAsDouble();
+                }
+                result.put(size, boxes);
+            }
+        } catch (java.io.IOException failure) {
+            throw new IllegalStateException("Cannot read native shelter collision export", failure);
+        }
+        return java.util.Map.copyOf(result);
     }
 }

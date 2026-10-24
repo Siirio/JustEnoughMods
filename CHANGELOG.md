@@ -1,3 +1,23 @@
+## 2026-10-24 - Optimize Mob Home models and finish feature delivery
+
+- User request: simplify both houses without losing the selected appearance, remove real gaps between boards and finish the outstanding shelter, food and handbook work
+- Implementation choice: preserve art masters, replace log-course geometry with continuous walls, move shallow details into native layered textures, simplify gables and lanterns, and package static cell models plus collision from the same native exports
+- Model evidence: small 57 to 44 cuboids and 299 to 211 enabled faces, large 67 to 47 and 402 to 217. Each house uses one 128x64 atlas. These are editor/source counts, not FPS measurements or runtime acceptance
+- Handbook: remove Controls, add exact enchanted-book and applicable equipment JEI links with five fixed slots and one cycling overflow slot, initialize native quest groups collapsed, and pair56 native boss models with description/drop pages. Native possible drops confirmed for 55 profiles, Fractured remains unconfirmed
+- Food: deliver the existing 123 explicit quality assignments and native effect ownership. Clock/season icons remain user-owned and absent, so both unfinished HUD indicators explicitly default disabled without substitute art
+- Bug / Both Sided / shelter collision still described the earlier box-roof prototype and the log cabin used separately spaced courses / in testing. Replace collision from the native model export and close wall geometry, retaining openings and native gameplay ownership
+- Delivery evidence: Docs/companions/delivery.json, Docs/food/delivery.json and Docs/handbook/links-delivery.json record actual build, synchronization and native publication state. No tests, gameplay launch, MineRENT release, stable-profile mutation or baseline promotion
+- User delivery decision: finish sources, production JARs and ZIPs only. Do not publish/apply AutoModpack or start the server. Preserve unrelated prepared worldgen changes in place
+- Bug / Catalog / file-wide source registry guessing classified block-entity and recipe IDs as items / in testing. Bind every registration to its own typed DeferredRegister receiver. Mob Home contributes exactly two items and two blocks, with native runtime registration still unobserved
+
+## 2026-10-24 - Add handbook item links and native boss models
+
+User request: remove Controls, link enchanted books and compatible equipment in JEI, show five fixed equipment slots and cycle further entries in the sixth, collapse quest groups by default, and pair boss3D models with descriptions and drop links
+
+Implementation: extend native Patchouli pages/components and optional JEI focus with exact book NBT. Resolve equipment through native enchantment predicates, preserve existing detailed explanations and boss tactics, and add native entity rendering for56 profiles. Possible-drop links have installed table/death-procedure evidence for55 profiles, Fractured remains unconfirmed. Keep server-owned gameplay, loot conditions and native quest progress unchanged
+
+Bug / Client / native ChapterGroup initializes guiCollapsed=false and no authored collapsed default exists / in testing. Initialize only new client groups collapsed, preserving native user toggles. Production JAR/reobfuscation passed after a bounded-memory retry and adding the exact compile-only JEI API. No tests or gameplay launch
+
 ## 2026-10-24 - Extract standalone Mob Home
 
 User request: prepare independent Mob Home with complete singleplayer support, vanilla Forge baseline and optional installed-mod integrations. Supply a ZIP for manual Antigravity model production using selected Argon Work

@@ -1,6 +1,7 @@
 """Materialize authored navigation; no registry inference or gameplay execution."""
 from pathlib import Path
 import json
+import re
 
 MODULE = Path(__file__).resolve().parents[1]
 RESOURCES = MODULE / "src/main/resources"
@@ -11,6 +12,17 @@ BOOK = ASSETS / "patchouli_books/just_enough_guide"
 def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def intro_parts(text):
+    # Keep hyperlinks whole and leave a dedicated footer for the real item links.
+    parts, current = [], ""
+    for word in re.findall(r"\$\(l:[^)]*\).*?\$\(/l\)|\S+", text):
+        if current and len(current) + len(word) + 1 > 160:
+            parts.append(current)
+            current = ""
+        current += (" " if current else "") + word
+    return [*parts, current] if current else parts
 
 
 def generate_navigation():
@@ -77,8 +89,34 @@ def generate_authored_content():
                          "jem_aliases": entry["jem_aliases"], "pages": localized["pages"]}
                 if "summary" in localized:
                     value["jem_summary"] = localized["summary"]
+                if section == "bosses":
+                    first, *remaining = localized["pages"]
+                    intro, *continuation = intro_parts(first.get("text", "")) or [""]
+                    value["pages"] = [
+                        {"type": "patchouli:entity", "entity": entry["subject"],
+                         "name": localized["name"], "rotate": True, "text": ""},
+                        {"type": "jem_advancements:boss_description", "title": first.get("title", localized["name"]),
+                         "text": intro, "drops": entry.get("drops", []),
+                         "drop_status": ("Список добычи не подтверждён" if language == "ru_ru" else "Drop list is not confirmed")
+                         if entry.get("drop_unresolved") else
+                         ("Нативные условия добычи сохраняются" if language == "ru_ru" else "Native loot conditions still apply")},
+                        *[{**first, "text": text} for text in continuation], *remaining]
                 write(BOOK / language / "entries" / (entry["id"] + ".json"), value)
+
+
+def generate_enchantment_links():
+    # Existing authored effect/level/application pages stay intact. Add one native link page.
+    for language in ("ru_ru", "en_us"):
+        for path in (BOOK / language / "entries/handbook/enchantments").glob("*.json"):
+            value = json.loads(path.read_text(encoding="utf-8"))
+            pages = [page for page in value["pages"] if page.get("type") != "jem_advancements:enchantment_links"]
+            enchantment = next((page["enchantment"] for page in pages if "enchantment" in page), None)
+            if enchantment:
+                value["pages"] = [{"type": "jem_advancements:enchantment_links", "title": value["name"],
+                                   "enchantment": enchantment}, *pages]
+                write(path, value)
 
 
 if __name__ == "__main__":
     generate_navigation()
+    generate_enchantment_links()

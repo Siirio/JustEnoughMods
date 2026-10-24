@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:dune_sentinel",
+      "name": "Dune Sentinel",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Ruined Pyramid."
+      "text": "Look for the encounter at: Ruined Pyramid.",
+      "drops": [
+        "legendary_monsters:crystal_of_sandstorm"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

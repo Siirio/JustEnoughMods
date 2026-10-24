@@ -11,9 +11,21 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "cataclysm:maledictus",
+      "name": "Maledictus",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Frosted Prison."
+      "text": "Look for the encounter at: Frosted Prison.",
+      "drops": [
+        "cataclysm:cursium_ingot",
+        "cataclysm:music_disc_maledictus"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",

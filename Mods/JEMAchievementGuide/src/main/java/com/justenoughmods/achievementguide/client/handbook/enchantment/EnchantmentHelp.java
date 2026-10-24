@@ -28,6 +28,30 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 /** Presentation only. Native enchantments retain all application and gameplay decisions. */
 public final class EnchantmentHelp {
+    private static final Map<ResourceLocation, List<ItemStack>> APPLICATION_ITEMS = new java.util.HashMap<>();
+
+    public static List<ItemStack> applicationItems(ResourceLocation id) {
+        ensureLoaded();
+        return APPLICATION_ITEMS.computeIfAbsent(id, key -> {
+            Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(key);
+            if (enchantment == null) return List.of();
+            List<ItemStack> result = new ArrayList<>();
+            for (var item : ForgeRegistries.ITEMS.getValues()) {
+                ItemStack stack = item.getDefaultInstance();
+                if (!stack.isEmpty() && !(item instanceof EnchantedBookItem)
+                        && item != net.minecraft.world.item.Items.BOOK
+                        && (enchantment.canEnchant(stack) || enchantment.canApplyAtEnchantingTable(stack))) result.add(stack);
+            }
+            result.sort(java.util.Comparator.comparing(stack -> ForgeRegistries.ITEMS.getKey(stack.getItem()).toString()));
+            return List.copyOf(result);
+        });
+    }
+
+    public static ItemStack enchantedBook(ResourceLocation id) {
+        Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(id);
+        return enchantment == null ? ItemStack.EMPTY : EnchantedBookItem.createForEnchantment(
+                new net.minecraft.world.item.enchantment.EnchantmentInstance(enchantment, enchantment.getMaxLevel()));
+    }
     private static final ResourceLocation DATA = new ResourceLocation("jem_advancements", "handbook/enchantments.json");
     private static Map<ResourceLocation, JsonObject> records = Map.of();
     private static JsonObject labels = new JsonObject();
@@ -46,6 +70,7 @@ public final class EnchantmentHelp {
     }
 
     private static void reload(ResourceManager manager) {
+        APPLICATION_ITEMS.clear();
         Map<ResourceLocation, JsonObject> replacement = new LinkedHashMap<>();
         try (var reader = manager.getResourceOrThrow(DATA).openAsReader()) {
             JsonObject data = JsonParser.parseReader(reader).getAsJsonObject();

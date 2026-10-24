@@ -6,7 +6,7 @@ Source owner: `Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter`
 
 Canonical gameplay record: `Catalog/changes/records/pet-shelters.json`
 
-The 2026-10-23 user amendment requires installed mountables, tameables and companions, replacing the previous five-species restriction. Clock/season artwork and shelter models are explicitly excluded from this implementation phase and remain user/Gemini-owned. Missing models still prevent installation of the combined production artifact. Source compilation does not establish player acceptance
+The 2026-10-23 user amendment requires installed mountables, tameables and companions, replacing the previous five-species restriction. The user rejected the external house models and requested direct replacement production, then selected the stone-house direction and requested both models be optimized without board gaps. Native model and texture sources are retained in [the model record](../art/mobhome-20261024/README.md). Clock/season artwork remains outside this model task. Source compilation does not establish player acceptance
 
 ## Ownership and discovery
 
@@ -26,7 +26,7 @@ All `recruits:*` NPCs are excluded by the explicit user amendment. They cannot b
 
 ## Homes and GUI
 
-Exactly two items, `mobhome:small_animal_home` (2 x 2 x 2) and `mobhome:large_animal_home` (3 x 3 x 3), construct their whole four-way rotated multiblocks. Cell zero owns the sole controller, without a ticker or renderer. Per-cell selection/collision geometry awaits reconciliation with accepted final models
+Exactly two items, `mobhome:small_animal_home` (2 x 2 x 2) and `mobhome:large_animal_home` (3 x 3 x 3), construct their whole four-way rotated multiblocks. Cell zero owns the sole controller, without a ticker or renderer. Static baked models are partitioned from native exports. Selection/collision reads the same exported solid geometry with conservative two-unit stair strips for slopes and triangular gables, preserving actual entrances and windows
 
 Placement checks loaded empty cells, support, fluids, bounds, entity obstruction and native permissions. Forge multi-placement rollback is preserved. Breaking checks ownership/operator permission and native protections for every cell. Dismantling yields at most one survival item. Destruction removes only the assignment and preserves pending data
 
@@ -83,7 +83,7 @@ Native vanilla registration dimensions were read from the installed Forge47.4.10
 
 ## Delivery boundary
 
-Mob Home is the standalone owner. Food and day/season data/rendering stay in JEMCompat. Clock/season icons are not a dependency of Mob Home. House models and external native textures remain pending Antigravity production. No tests, fixtures, game launches, stable-profile changes, MineRENT release or baseline promotion were performed. Mob Home is a development module and is withheld from ManagedPack and local Server while production models are absent
+Mob Home is the standalone owner. Food and day/season data/rendering stay in JEMCompat. Clock/season icons are not a dependency of Mob Home. The replacement houses use native Blockbench geometry and external layered Aseprite painting. Exact artifact, local Server/ManagedPack synchronization and native AutoModpack state are recorded in [the delivery receipt](delivery.json). No tests, fixtures, game launches, stable-profile changes, MineRENT release or baseline promotion are implied by editor or build evidence
 
 ## Standalone installation and compatibility boundary
 

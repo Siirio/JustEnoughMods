@@ -11,9 +11,20 @@
   ],
   "pages": [
     {
-      "type": "patchouli:text",
+      "type": "patchouli:entity",
+      "entity": "legendary_monsters:lava_eater",
+      "name": "Lava Eater",
+      "rotate": true,
+      "text": ""
+    },
+    {
+      "type": "jem_advancements:boss_description",
       "title": "Where to look",
-      "text": "Look for the encounter at: Lava Eater Lair."
+      "text": "Look for the encounter at: Lava Eater Lair.",
+      "drops": [
+        "legendary_monsters:lava_eaters_skin"
+      ],
+      "drop_status": "Native loot conditions still apply"
     },
     {
       "type": "patchouli:text",
