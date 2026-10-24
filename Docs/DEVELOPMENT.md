@@ -50,8 +50,10 @@ Changelog описывает только запрошенные player-visible 
 | `JEMAchievementGuide` | Advancement criteria/providers, curated native placements, RU/EN guide resources и optional Better Advancements/Patchouli; content-aware FTB book projection наблюдает domain APIs, не владеет progression |
 | `JEMWorldBossTiers` | Global World Tier и сохранённый roster/threshold profile, boss profiles, hosted encounters, ordinary solo Raid, canonical native structure identity/anchor, revival и pending rewards |
 | `JEMTwelveEyes` | Строгие двенадцать original MAIN, prerequisites, Eyes, locators/sites, post-End и ending; сохраняет `jemcompat` namespace и `jemcompat_main_campaign` SavedData |
-| `JEMCompat` | Изолированные native compatibility adapters, single-level Excavation и biome codec с сохранёнными `jem_pack_core:*` IDs; ordinary prepared-food quality/diversity (`feature.food`), companion home/recovery (`feature.shelter`) и native time/season presentation (`client.time`); drill lifecycle остаётся отдельным addon |
+| `JEMCompat` | Изолированные native compatibility adapters, single-level Excavation и biome codec с сохранёнными `jem_pack_core:*` IDs; native time/season presentation (`client.time`), food belongs to standalone JEMFood and homes to standalone MobHome; drill lifecycle остаётся отдельным addon |
 | `JEMDrillLifecycle` | Moving/stationary Create drill wear, replacement, servicing и optional Jade; Create остаётся обязательной native dependency |
+| `JEMFood` | Standalone food quality, one Food Blessing, thirty talents, dietary variety, native consumption receipts and food presentation |
+| `MobHome` | Standalone native companion homes, binding GUI, recovery journal and optional native adapters |
 | `JEMIdentity` | Verified principal для integrated sessions, online dedicated session или unlocked Server Login; offline username не заменяет authentication |
 | `JEMRoles` / JEM Races | Единственный production Races JAR: пять разработанных рас, canonical `jem_roles` saves, powers, progression, presentation и сохранённые legacy resource/registry/network IDs |
 | `JEMEconomy` | Единственный runtime owner `jem_economy` Coins, Wallet/physical ledger, provenance/escrow/receipts, funded native merchants, market и Shipping Box; world SERVER config `[economy] enabled=true` |
@@ -605,3 +607,52 @@ The user requested a standalone Mob Home mod with vanilla singleplayer support a
 Only Forge and Minecraft are mandatory runtime dependencies. Multiplayer requires the matching artifact on clients and server. The module has an independent Gradle settings/wrapper and explicit compile-only native API inputs. The user rejected the external models and requested direct replacement production and optimization. Editable models, layered textures and review evidence live in `Docs/art/mobhome-20261024`. `Mods/MobHome/tools/package_native_models.py` partitions native codec exports into static baked cell models and derives collision, without a block-entity renderer. Optional mods need not all be installed. Four previously audited false pet candidates were removed, all Recruits remain excluded
 
 The earlier Argon Work handoff remains historical. The replacement `Mob_Home_1.0.0.zip` contains the standalone production JAR, editable native models/textures and source. The user explicitly selected source, JAR and ZIP completion without native publication on2026-10-24. Mob Home and the newly rebuilt JEMCompat are withheld from ordinary Server/ManagedPack activation in this completion step. Guide's earlier matching local JAR synchronization remains unpublished. Stable profiles, MineRENT and the immutable release baseline remain unchanged
+
+## Oceanic Realms template generation bounds - 2026-10-24
+
+The user reported far-chunk errors and freezes during new chunk generation and requested a thorough fix. Installed Oceanic Realms 1.0.7 has SHA-256 `8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321`, identical in ManagedPack and Server. The supplied fragment contains 26 rejected writes from `oceanicrealms:reef_rock_beach` in one second. Chunky was already slow before this batch, so this evidence does not attribute all delay to the rejected writes
+
+The source owner is `Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety`. Paxi loads ordinary pack data on integrated and dedicated logical servers. Native resource IDs override the installed configured/placed features without modifying the third-party JAR, world saves, loot or templates. Catalog rule: `worldgen.oceanic-template-write-bounds`
+
+Installed 1.20.1 FEATURES generation permits writes in the generating chunk and its immediate neighbors. Along either horizontal axis that is [-16,31] relative to the generating chunk origin. Native in_square selects [0,15] and random_patch adds [-spread,spread]. Template rotations and mirrors use the unchanged zero pivot
+
+| Feature | Largest X/Z template size | Native scatter | Corrected scatter | Horizontal extent after correction |
+| --- | --- | --- | --- | --- |
+| reef_rock_beach | 4 | 16 | 12 | [-16,31], including one block for native shape updates |
+| reef_rock_deep | 7 | 16 | 10 | [-16,31] |
+| reef_rock_shallow | 5 | 16 | 12 | [-16,31] |
+| sandstone_pillar | 3 | 16 | 14 | [-16,31] |
+| sandstone_arch | 18 | inner scatter 1 | inner scatter 1, outer origin [2,13] | [-16,31] |
+
+Codex selected these placement bounds after inspecting all 31 native templates and their exact placement code. Beach uses StructureTemplate.placeInWorld, whose edge shape update can also write one adjacent block. The other four use processBlockInfos plus BulkSectionAccess and do not run that neighbor update pass. Arch replaces only outer in_square with the native random_offset uniform provider, retaining the original inner patch
+
+All original template variants, rotations, mirrors, heightmaps, biome and fluid predicates, internal probability gates and patch attempt counts remain intact. Exact local positions intentionally change, so unchanged realized density is not claimed. Single-block decoration, kelp, sandstone disks and unrelated mods retain native data. Existing chunks are not rebuilt. Future changes to the Oceanic Realms JAR or template sizes require recalculation
+
+Status: in testing. Source inspection and geometric bounds do not establish gameplay acceptance or measured performance. No automated tests, gameplay launches, Gradle tasks or MineRENT deployment form part of this data-only change. The six datapack resources are mirrored into ordinary Server/config and staged in the local host-pack source. Native preview reports those six additions and the manifest, alongside the pre-existing unrelated Handbook JAR update. The user explicitly requested preparation only, so no generation was published, no client installation was applied, no runtime was restarted and no commit/push was performed. Standalone datapack ZIP is an installation artifact, not a cumulative friend point-update or a MineRENT release
+
+## Prepared Oceanic Realms and Deep Dark Regrowth worldgen patch - 2026-10-24
+
+User scope: prepare the Deep Dark Regrowth correction together with the existing Oceanic Realms patch, generate complete fossils without rejected far-chunk writes, do not publish and do not touch the local Server. This preparation does not install into ManagedPack or any active AutoModpack profile, restart a runtime, mutate saves, promote a baseline, commit or push
+
+JEMCompat owns the isolated native fossil adapter in `mixin/worldgen/DeepDarkAncientFossilPlacementMixin`. Its separate required `jemcompat.worldgen.mixins.json` is registered by the production manifest. OptionalMixins enables it only for installed `deep_dark_regrowth`1.2.6.1. No compile-only DDR dependency or runtime library is introduced
+
+The installed artifact SHA-256 is `3a2d487db40e1fe13307f8203ca69627787aede9bd332cf8bb2c29b41ec3fe88`. Native placed_feature `ancient_fossil` has no modifiers. The native Java feature initializes its template, performs its10percent chance and one-attempt gates, draws X and Z with nextInt16, then checks height/material and places the native rotated/mirrored template. The template is18x9x9 with zero rotation pivot. Coordinates0..15 plus a rotated17-block extent and one shape-update neighbor can exceed the FEATURES write envelope[-16,31]
+
+The adapter redirects exactly the two coordinate draws between the first16constant and the OCEAN_FLOOR_WG heightmap query. Required/expected/allowed injection counts are all2. It derives `margin=max(0,max(sizeX,sizeZ)-16)` from the already initialized native template and chooses `margin+nextInt(16-2*margin)`. The installed template yields independent uniform anchors[2,13], with the entire possible write envelope inside[-16,31]. Template initialization, chance, attempt count, height selection, base blocks, additional height condition, palette, rotation/mirror choices and placement flags retain their native owners. Geometry is never cropped or replaced with skipped writes. A replacement template too large for this native pivot/anchor contract fails explicitly rather than generating a partial fossil
+
+The supported native empty placed-feature modifier list and valid in-template block coordinates remain required. Future DDR versions, added outer placement offsets or changed structure conventions require reinspection. Positions and realized terrain-dependent density can differ, while probability gates and attempt counts remain native. Existing chunks are not regenerated. Lithostitched's separate invalid jigsaw pool references are outside this fix
+
+The combined preparation is under `PreparedPatches/2026-10-24-worldgen`: one complete source-built JEMCompat production artifact and the six existing Oceanic datapack resources. Full JEMCompat is a replacement domain artifact, not a patch applied to a third-party JAR. It also contains the current module's pre-existing HUD-default configuration edits, preserved in place, so the receipt distinguishes the complete module snapshot from this prompt's four changed source paths. No Handbook/Guide artifact is distributed in this patch. No tests, gameplay launches or runtime Mixin application are authorized or claimed. Atlas rule: `worldgen.deep-dark-ancient-fossil-bounds`
+
+Preparation receipt: `PreparedPatches/2026-10-24-worldgen/receipt.json`. Final production `:JEMCompat:jar` and its `reobfJar` passed. Combined ZIP: `PreparedPatches/JEM-Worldgen-Oceanic-DeepDark-2026-10-24.zip`, SHA-256 `45ea7f3a9484040e53e4c8f4d1229d7d7e18234bb8257cc8ed63a08d442c58c5`. JEMCompat SHA-256 `a1ef52f66848f854a1aa4b99547c6caa6b4545e59469783440cd7bfebb9be244`. Payload contains one replacement domain JAR and six unchanged Oceanic resources. Required config, adapter, plugin, refmap, remapped handler calls and archived hashes were inspected. Native injection/application and actual generation remain unverified. No installed file, host-pack generation or Server runtime was changed by this preparation
+
+
+## Standalone JEMFood and local backlog publication, 2026-10-24
+
+The user supplied JEMFood v3 and requested a standalone food mod extracted from Compat, followed by native application of every ready local update to test jem. `Mods/JEMFood` owns food quality, thirty data-defined talents, one Food Blessing, dietary variety, migration, EN/RU presentation and read-only protocol `jemfood:food` version 2. Minecraft and Forge are the only mandatory dependencies. Its independent wrapper and source export require no other JEM or cooking-mod project. The supplied PNG is integrated unchanged, no visual authoring is performed
+
+This supersedes the earlier Compat food ownership and channel described in the historical 2026-10-23 section. Compat no longer packages its food classes, Mixins, projection or translations. Native food properties, quality NBT, containers, recipes and independent effects retain their upstream owners. MobHome is included as its own complete production artifact, with no old Compat shelter implementation
+
+The local synchronization includes the prepared Oceanic safety datapack, the fresh Compat Deep Dark fossil adapter, MobHome and all current production module outputs, including local Blood Moon materialized-loot handling. Runtime files remain targets. Full managed publication still originates exclusively in Client/ManagedPack. Client culling stays client-only. No development-only Professions, Villager Talking or Workers artifact is introduced
+
+The source and user-authored contract are documented in food/README.md and food/v3-input. food/delivery-v3.json records actual packaging, exact hashes, publication and native installation. The ordinary dedicated server may run only to load the fresh artifacts and perform native preview/publication, then stop cleanly. No gameplay client, automated tests, MineRENT deployment, stable-profile update or release-baseline promotion is part of this delivery

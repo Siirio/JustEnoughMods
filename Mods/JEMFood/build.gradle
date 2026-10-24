@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+version = mod_version
+group = mod_group_id
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: mapping_channel, version: mapping_version }
+repositories { mavenCentral() }
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+mixin {
+    add sourceSets.main, 'jemfood.refmap.json'
+    config 'jemfood.mixins.json'
+}
+// The standalone checkout contains the same authority at catalog/food-quality-assignments.json.
+def authority = file(findProperty('jemFoodAssignments') ?: '../../Catalog/changes/food-quality-assignments.json')
+if (!authority.isFile()) authority = file('catalog/food-quality-assignments.json')
+tasks.named('processResources', ProcessResources).configure {
+    from(authority) { into 'data/jemfood'; rename { 'food_quality.json' } }
+    def properties = [minecraft_version_range: minecraft_version_range,
+        forge_version_range: forge_version_range, loader_version_range: loader_version_range,
+        mod_id: mod_id, mod_name: mod_name, mod_version: mod_version,
+        mod_license: mod_license, mod_authors: mod_authors, mod_description: mod_description]
+    inputs.properties properties
+    filesMatching('META-INF/mods.toml') { expand properties }
+}
+tasks.named('jar', Jar).configure {
+    manifest { attributes('MixinConfigs': 'jemfood.mixins.json') }
+    finalizedBy 'reobfJar'
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.register('exportStandaloneSource', Zip) {
+    archiveFileName = 'JEMFood-standalone-source-1.0.0.zip'
+    destinationDirectory = layout.buildDirectory.dir('distributions')
+    from(projectDir) { include 'src/**', 'gradle/**', 'gradlew', 'gradlew.bat', 'build.gradle', 'settings.gradle', 'gradle.properties', 'README.md' }
+    from(authority) { into 'catalog'; rename { 'food-quality-assignments.json' } }
+}

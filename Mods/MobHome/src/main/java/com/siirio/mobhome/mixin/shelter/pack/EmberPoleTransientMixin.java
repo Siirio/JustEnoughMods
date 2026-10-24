@@ -9,9 +9,9 @@ import org.spongepowered.asm.mixin.Shadow;
 @Pseudo
 @Mixin(targets = "dev.xylonity.companions.common.entity.summon.EmberPoleEntity", remap = false)
 public abstract class EmberPoleTransientMixin implements PackCompanionAdapter.NativeTransient {
-    @Shadow private int explodeCounter;
-    @Shadow public abstract boolean isExploding();
-    @Shadow public abstract void setIsExploding(boolean value);
+    @Shadow(remap = false) private int explodeCounter;
+    @Shadow(remap = false) public abstract boolean isExploding();
+    @Shadow(remap = false) public abstract void setIsExploding(boolean value);
     @Override public void jemShelterWriteTransient(CompoundTag tag) {
         tag.putInt("jemShelterEmberCounter", explodeCounter);
         tag.putBoolean("jemShelterEmberExploding", isExploding());

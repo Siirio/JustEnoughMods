@@ -31,8 +31,6 @@ public final class JEMCompat {
         com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.excavation.ExcavationEvents.class);
         TransportContent.register(modBus);
-        com.siirio.jemcompat.feature.food.FoodNetwork.register();
-        MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.food.FoodEvents.class);
         modBus.addListener(JEMCompat::creativeTabs);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEMClientConfig.SPEC);
         MinecraftForge.EVENT_BUS.register(this);

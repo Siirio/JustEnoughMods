@@ -96,3 +96,8 @@ The extraction moves the whole GUI, EN/RU localization, shaped recipes, serializ
 Build independently from `Mods/MobHome` with `gradlew.bat jar`. Compile-only native API JARs are taken from the existing ManagedPack by default. A source checkout outside JEM supplies `-PmobhomeCompatDir=<directory>` containing the exact audited APIs listed in build.gradle. Those build inputs are not runtime dependencies. Packaging does not establish gameplay or visual acceptance
 
 The Antigravity model handoff is in the user Downloads ZIP `Mob_Home_Antigravity_Models.zip`. Argon and Work mode are explicitly selected. User requested manual transfer, so this receipt does not claim a remote task was dispatched. Final models must match the geometry before installation. No weak replacement models have been invented
+
+
+## Optional native Mixin loading, 2026-10-24
+
+The first local combined-publication startup exposed remappable Shadow annotations inside Pseudo targets. Mixin 0.8.5 runtime validates these declarations before applying the optional native adapters, even though their target class is marked remap=false. Explicit remap=false now belongs to each native Shadow member in the eight affected Alex, Companions and Ember Pole adapters. The upstream member names and behavior are unchanged. Production packaging and startup evidence belong to Docs/food/delivery-v3.json. Player acceptance remains in testing

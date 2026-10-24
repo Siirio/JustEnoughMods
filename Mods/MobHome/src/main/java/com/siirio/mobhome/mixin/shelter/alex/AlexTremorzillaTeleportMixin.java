@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Pseudo
 @Mixin(targets = "com.github.alexmodguy.alexscaves.server.entity.ai.TremorzillaFollowOwnerGoal", remap = false)
 public abstract class AlexTremorzillaTeleportMixin {
-    @Shadow @Final private TremorzillaEntity tremorzilla;
+    @Shadow(remap = false) @Final private TremorzillaEntity tremorzilla;
     @Inject(method = "teleportToOwner", at = @At("HEAD"), cancellable = true)
     private void jemcompat$holdOwnerTeleport(CallbackInfo ci) {
         if (tremorzilla.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) ci.cancel();

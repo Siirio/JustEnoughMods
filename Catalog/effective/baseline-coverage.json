@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "50842c84cf367bd4f9cdc04a6b8909d80ee79b2923f82b9cf06ef0644bc0e9d3",
+  "change_records_sha256": "1ff6e77f0af866b473273d91a136861ce84411eef8751a52f17d589f1d0e7422",
   "totals": {
     "watched": 4468,
-    "covered": 2697,
-    "unresolved": 1771
+    "covered": 2691,
+    "unresolved": 1777
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1435,13 +1435,14 @@
     },
     "Mods/JEMCompat": {
       "watched": 157,
-      "covered": 104,
-      "unresolved": 53,
+      "covered": 98,
+      "unresolved": 59,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/SourceNameTooltipFilter.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/food/FoodTooltips.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/FrozenTintBufferSource.java",
@@ -1452,6 +1453,9 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingProvider.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/blastfromthepast/FrostbiteSpawnSupport.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/elements/ElementalImpactEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodCatalog.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/food/FoodNetwork.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/kaleidoscope/VoidWalkerEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/leash/UniversalLeashEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/transport/TransportEvents.java",
@@ -1465,6 +1469,8 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/IngredientListOverlayAccessor.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/StorageTerminalFocusMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/events/LuminousEventVictoryMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/FoodEffectOwnershipMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/food/KaleidoscopeFoodBiteMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/guide/SpawnWithJourneyGuideProcedureMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/DonkeyInventoryMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/transport/EntityStuckSpeedAccessor.java",

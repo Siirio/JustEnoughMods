@@ -118,6 +118,16 @@
     "kind": "source_and_data",
     "source_files": [
       "Catalog/changes/companion-recovery-species.json",
+      "Client/ManagedPack/mods/mobhome-1.0.0.jar",
+      "Docs/art/mobhome-20261024/README.md",
+      "Docs/art/mobhome-20261024/large-log-optimized.bbmodel",
+      "Docs/art/mobhome-20261024/large-log-optimized.json",
+      "Docs/art/mobhome-20261024/large-materials.aseprite",
+      "Docs/art/mobhome-20261024/large-materials.png",
+      "Docs/art/mobhome-20261024/small-materials-runtime.aseprite",
+      "Docs/art/mobhome-20261024/small-materials-runtime.png",
+      "Docs/art/mobhome-20261024/small-stone-optimized.bbmodel",
+      "Docs/art/mobhome-20261024/small-stone-optimized.json",
       "Docs/companions/README.md",
       "Docs/companions/alex-evidence.md",
       "Docs/companions/pack-evidence.md",
@@ -173,28 +183,19 @@
       "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PackSummonAgeMixin.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/PrimalOwnerTeleportMixin.java",
       "Mods/MobHome/src/main/resources/META-INF/mods.toml",
+      "Mods/MobHome/src/main/resources/assets/mobhome/**",
       "Mods/MobHome/src/main/resources/assets/mobhome/lang/en_us.json",
       "Mods/MobHome/src/main/resources/assets/mobhome/lang/ru_ru.json",
+      "Mods/MobHome/src/main/resources/data/mobhome/**",
       "Mods/MobHome/src/main/resources/data/mobhome/advancements/recipes/animal_homes.json",
       "Mods/MobHome/src/main/resources/data/mobhome/recipes/large_animal_home.json",
       "Mods/MobHome/src/main/resources/data/mobhome/recipes/small_animal_home.json",
       "Mods/MobHome/src/main/resources/mobhome.mixins.json",
       "Mods/MobHome/src/main/resources/pack.mcmeta",
-      "gradle/module-settings.gradle",
-      "tools/module-inventory.json",
-      "Mods/MobHome/tools/package_native_models.py",
       "Mods/MobHome/tools/README.md",
-      "Docs/art/mobhome-20261024/README.md",
-      "Docs/art/mobhome-20261024/small-stone-optimized.bbmodel",
-      "Docs/art/mobhome-20261024/small-stone-optimized.json",
-      "Docs/art/mobhome-20261024/small-materials-runtime.aseprite",
-      "Docs/art/mobhome-20261024/small-materials-runtime.png",
-      "Docs/art/mobhome-20261024/large-log-optimized.bbmodel",
-      "Docs/art/mobhome-20261024/large-log-optimized.json",
-      "Docs/art/mobhome-20261024/large-materials.aseprite",
-      "Docs/art/mobhome-20261024/large-materials.png",
-      "Mods/MobHome/src/main/resources/assets/mobhome/**",
-      "Mods/MobHome/src/main/resources/data/mobhome/**"
+      "Mods/MobHome/tools/package_native_models.py",
+      "gradle/module-settings.gradle",
+      "tools/module-inventory.json"
     ]
   },
   "rationale": {
@@ -324,6 +325,23 @@
       "commit": "SELF",
       "action": "document",
       "summary": "Completed native model packaging and production artifact. User selected source/JAR/ZIP only without local publication or activation"
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "fix_optional_pseudo_shadow_mapping",
+      "summary": "Explicitly disable remapping on native optional-mod Shadow members because Mixin runtime validation rejects remappable shadows in Pseudo targets",
+      "source_files": [
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexCrowOwnerTeleportMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexMantisOwnerTeleportMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexSharedOwnerTeleportMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexSubterranodonTeleportMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexToadOwnerTeleportMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/alex/AlexTremorzillaTeleportMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/CompanionSummonOwnerMixin.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/EmberPoleTransientMixin.java",
+        "Client/ManagedPack/mods/mobhome-1.0.0.jar"
+      ]
     }
   ],
   "impacts": {

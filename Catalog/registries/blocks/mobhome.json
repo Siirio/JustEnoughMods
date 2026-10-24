@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
   "registry_type": "blocks",
-  "snapshot_sha": "ea802bac1fc6c369001dc24024fef31646be1a62",
+  "snapshot_sha": "dfedbbde65e1292f095a5e53cfcee48370b55cb1",
   "generation": {
-    "generated_utc": "2026-10-24T12:06:45.648362+00:00",
+    "generated_utc": "2026-10-24T14:33:50.541437+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
   "mod": {
     "id": "mobhome",
-    "name": "MobHome",
-    "version": "source"
+    "name": "Mob Home",
+    "version": "1.0.0"
   },
   "records": [
     {
@@ -18,18 +18,21 @@
       "registry_type": "block",
       "schema_version": 1,
       "mod_id": "mobhome",
-      "mod_name": "MobHome",
-      "mod_version": "source",
-      "source_jar": null,
-      "source_sha256": null,
+      "mod_name": "Mob Home",
+      "mod_version": "1.0.0",
+      "source_jar": "mobhome-1.0.0.jar",
+      "source_sha256": "e140aa8d8c03f7be5ca01343653b9f665f62030e6b0e864fcff1e6fa87bef885",
       "side_availability": [
-        "source"
+        "client"
       ],
       "observed_in": [
-        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java",
+        "assets/mobhome/blockstates/large_animal_home.json",
+        "assets/mobhome/lang/en_us.json",
+        "assets/mobhome/lang/ru_ru.json"
       ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
+      "display_name_en_us": "Large Animal Home",
+      "display_name_ru_ru": "Большой домик для животных",
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [],
@@ -38,7 +41,10 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "ShelterContent.java:Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+        "ShelterContent.java:Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java",
+        "mobhome-1.0.0.jar:assets/mobhome/blockstates/large_animal_home.json",
+        "mobhome-1.0.0.jar:assets/mobhome/lang/en_us.json",
+        "mobhome-1.0.0.jar:assets/mobhome/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
@@ -54,18 +60,21 @@
       "registry_type": "block",
       "schema_version": 1,
       "mod_id": "mobhome",
-      "mod_name": "MobHome",
-      "mod_version": "source",
-      "source_jar": null,
-      "source_sha256": null,
+      "mod_name": "Mob Home",
+      "mod_version": "1.0.0",
+      "source_jar": "mobhome-1.0.0.jar",
+      "source_sha256": "e140aa8d8c03f7be5ca01343653b9f665f62030e6b0e864fcff1e6fa87bef885",
       "side_availability": [
-        "source"
+        "client"
       ],
       "observed_in": [
-        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java",
+        "assets/mobhome/blockstates/small_animal_home.json",
+        "assets/mobhome/lang/en_us.json",
+        "assets/mobhome/lang/ru_ru.json"
       ],
-      "display_name_en_us": null,
-      "display_name_ru_ru": null,
+      "display_name_en_us": "Small Animal Home",
+      "display_name_ru_ru": "Малый домик для животных",
       "java_registry_class": null,
       "implementation_class": null,
       "tags": [],
@@ -74,7 +83,10 @@
       "survival_source_evidence": [],
       "acquisition_class": "unresolved",
       "source_provenance": [
-        "ShelterContent.java:Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java"
+        "ShelterContent.java:Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterContent.java",
+        "mobhome-1.0.0.jar:assets/mobhome/blockstates/small_animal_home.json",
+        "mobhome-1.0.0.jar:assets/mobhome/lang/en_us.json",
+        "mobhome-1.0.0.jar:assets/mobhome/lang/ru_ru.json"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "change_id": "worldgen.deep-dark-ancient-fossil-bounds",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "deep_dark_regrowth"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Deep Dark Regrowth 1.2.6.1, native AncientFossilFeature and its unmodified empty placed-feature modifier list. Exact audited artifact SHA256 3a2d487db40e1fe13307f8203ca69627787aede9bd332cf8bb2c29b41ec3fe88. Prepared JEMCompat artifact is not installed"
+    }
+  ],
+  "precedence": {
+    "layer": "native_worldgen_compatibility",
+    "priority": 80
+  },
+  "change": {
+    "summary": "Choose safe internal fossil anchors before native terrain checks and whole-template placement",
+    "modifiers": [
+      {
+        "property": "worldgen.ancient_fossil.horizontal_anchor",
+        "operation": "replace",
+        "before": "AncientFossilFeature chooses X and Z offsets independently with nextInt(16). Its 18x9x9 template extends up to 17 blocks from the zero rotation pivot and places without a write-envelope admission check",
+        "after": "Redirect exactly the two coordinate draws before OCEAN_FLOOR_WG. Derive margin=max(0,max(template.sizeX,template.sizeZ)-16), then select margin+nextInt(16-2*margin). Native template yields uniform offsets [2,13], containing the complete template and one-block shape-update envelope within [-16,31]",
+        "notes": "Do not crop, suppress block writes, expand worldgen permissions, retry, force-load chunks or change the chance/height/biome/material/rotation/mirror owners. Exact two-call injection counts are required. Unsupported oversized replacement templates fail explicitly before placement"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat optional Deep Dark Regrowth worldgen adapter",
+    "kind": "exact_version_scoped_native_coordinate_admission",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldgen/DeepDarkAncientFossilPlacementMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.worldgen.mixins.json",
+      "Mods/JEMCompat/build.gradle"
+    ]
+  },
+  "rationale": {
+    "purpose": "Generate complete native ancient fossils without far-chunk writes while preserving native content and admission chance",
+    "decision_source": "User supplied the ancient_fossil failure log, then requested a combined prepared patch with Oceanic Realms and explicitly prohibited publication and Server mutation. Codex selected the narrow Java coordinate seam because the installed feature has empty JSON config and internal hardcoded draws. Loaded template size supplies the margin, retaining native placement and all content"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Prepare native ancient fossil coordinate admission inside JEMCompat without runtime installation or publication"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Prepare native ancient fossil coordinate admission inside JEMCompat without runtime installation or publication"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "new_chunk_generation",
+      "Deep Dark Regrowth ancient fossils",
+      "integrated and dedicated logical server",
+      "JEMCompat artifact packaging"
+    ],
+    "relations": [
+      {
+        "related_change_id": "worldgen.oceanic-template-write-bounds",
+        "relationship": "combined_prepared_delivery"
+      }
+    ],
+    "notes": [
+      "Source inspection confirms template initialization precedes both coordinate draws, and the original origin is the chunk minimum because placed_feature has no modifiers",
+      "One random draw remains per coordinate. The native 10 percent initial gate, attempt count, height calculation, base-block and additional height condition, template/palette, mirror, rotation and placement flags remain unchanged",
+      "Local anchor distribution intentionally changes. Exact seeded positions and realized terrain-dependent density are not claimed identical",
+      "The separate required worldgen Mixin config prevents a required injection-count failure from silently skipping the correction on the audited version. The plugin skips this optional adapter when DDR is absent or its advertised version differs",
+      "Five Whys: rejected far-chunk writes -> rotated fossil exceeds permitted neighborhood -> coordinate draw ignores template size and shape-update neighbor -> hardcoded native choice cannot be fixed by xz_spread JSON -> constrain only the two native coordinate draws before terrain checks and whole-template placement",
+      "Existing generated chunks are not rebuilt. Lithostitched invalid jigsaw pool references are a separate issue and outside this patch"
+    ],
+    "unresolved": [
+      "No gameplay launch, automated test or runtime Mixin application is authorized. Artifact build/packaging and player acceptance are distinct",
+      "User requested preparation only. No Server/client installation, stage-pack-sync, publication, commit, push or MineRENT deployment is performed for this prompt"
+    ]
+  }
+}

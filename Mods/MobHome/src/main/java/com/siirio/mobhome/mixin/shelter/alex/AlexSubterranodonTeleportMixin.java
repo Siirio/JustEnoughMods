@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Pseudo
 @Mixin(targets = "com.github.alexmodguy.alexscaves.server.entity.ai.SubterranodonFollowOwnerGoal", remap = false)
 public abstract class AlexSubterranodonTeleportMixin {
-    @Shadow @Final private SubterranodonEntity subterranodon;
+    @Shadow(remap = false) @Final private SubterranodonEntity subterranodon;
     @Inject(method = "tryToTeleportNearEntity", at = @At("HEAD"), cancellable = true)
     private void jemcompat$holdOwnerTeleport(CallbackInfo ci) {
         if (subterranodon.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) ci.cancel();

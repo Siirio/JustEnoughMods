@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Pseudo
 @Mixin(targets = "dev.xylonity.companions.common.entity.CompanionSummonEntity", remap = false)
 public abstract class CompanionSummonOwnerMixin implements PackCompanionAdapter.NativeOwner {
-    @Shadow public abstract UUID getSecondOwnerUUID();
+    @Shadow(remap = false) public abstract UUID getSecondOwnerUUID();
     @Override public UUID jemShelterNativeOwner() {
         UUID second = getSecondOwnerUUID();
         return second != null ? second : ((TamableAnimal) (Object) this).getOwnerUUID();

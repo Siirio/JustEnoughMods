@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
     private static final Map<String, List<String>> DEPENDENCIES = Map.ofEntries(
-            Map.entry("com.siirio.jemcompat.mixin.food.KaleidoscopeFoodBiteMixin", List.of("kaleidoscope_cookery")),
             Map.entry("com.siirio.jemcompat.mixin.grave.LegacyGraveCreationMixin", List.of("jacksgravestones", "gravestone")),
             Map.entry("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin", List.of("fabric_object_builder_api_v1")),
             Map.entry("com.siirio.jemcompat.mixin.events.LuminousEventVictoryMixin", List.of("luminous_beasts")),
@@ -33,6 +32,16 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.worldgen.DeepDarkAncientFossilPlacementMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("deep_dark_regrowth");
+            boolean supported = file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("deep_dark_regrowth")
+                    && mod.getVersion().toString().equals("1.2.6.1"));
+            if (supported && !Files.isRegularFile(file.getFile().findResource(targetClassName.replace('.', '/') + ".class"))) {
+                throw new IllegalStateException("Installed Deep Dark Regrowth is missing " + targetClassName
+                        + "; update the JEMCompat fossil adapter for this artifact.");
+            }
+            return supported;
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginPublicChatMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("serverlogin");
             return FMLLoader.getDist().isDedicatedServer() && file != null && file.getMods().stream()

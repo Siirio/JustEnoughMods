@@ -1,0 +1,89 @@
+{
+  "schema_version": 2,
+  "change_id": "blood-moon.materialized-loot-only",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "blocks"
+    },
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Dedicated server BloodMoonLoot cleanup of objects implementing Container"
+    }
+  ],
+  "precedence": {
+    "layer": "integration",
+    "priority": 120,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Blood Moon invalidation inspects only materialized inventory and never opens pending native loot tables during chunk/entity loading",
+    "modifiers": [
+      {
+        "property": "blood_moon.invalidated_loot.container_access",
+        "operation": "replace",
+        "before": {
+          "value": "Every chunk/entity container is read slot by slot, including pending native loot tables and worlds without invalidation history"
+        },
+        "after": {
+          "value": "Invalidation requires recorded invalidated attempts, pending native block/vehicle loot tables stay lazy, already materialized marked items retain existing removal rules"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer BloodMoonLoot",
+    "kind": "runtime_watchdog_owner_fix",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonLoot.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep Chunky pregeneration and normal chunk loading from materializing structure loot through unrelated event cleanup",
+    "decision_source": "User requested Chunky-generated shared Xaero terrain and a local test jem trial. The exact cleanup guards are a Codex implementation decision based on crash-2026-10-24_14.06.21-server.txt and native 1.20.1 container contracts."
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "preserve_lazy_loot_during_chunk_loading",
+    "summary": "Requested local Chunky/Xaero compatibility trial exposed a watchdog crash from BloodMoonLoot reading pending chest loot. Codex selected an invalidation-work guard and native pending-loot detection. Player acceptance remains in testing.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonLoot.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "preserve_lazy_loot_during_chunk_loading",
+      "summary": "Requested local Chunky/Xaero compatibility trial exposed a watchdog crash from BloodMoonLoot reading pending chest loot. Codex selected an invalidation-work guard and native pending-loot detection. Player acceptance remains in testing.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonLoot.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "blood_moon",
+      "chunk_generation",
+      "native_loot_tables",
+      "containers",
+      "shared_map_preparation"
+    ],
+    "relations": [
+      "ChunkEvent.Load -> BloodMoonLoot.scrubInvalid -> Container.getItem -> native loot generation"
+    ],
+    "notes": [
+      "Pending native loot tables cannot contain materialized event-marked loot. Player inventories, existing container contents, rewards and attempt invalidation ownership are retained. No watchdog timeout or upstream loot rule is changed."
+    ],
+    "unresolved": [
+      "Fresh artifact/runtime and user acceptance remain in testing until observed separately. MapSyncer 1.0.3 has a separate observed AIR reflection error and is only a local trial candidate."
+    ]
+  }
+}

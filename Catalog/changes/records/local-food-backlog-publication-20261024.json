@@ -1,0 +1,130 @@
+{
+  "schema_version": 2,
+  "change_id": "distribution.food-and-ready-local-backlog-20261024",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Ordinary local Server and native test jem installation only, no stable or MineRENT release"
+    }
+  ],
+  "precedence": {
+    "layer": "local_distribution",
+    "priority": 10
+  },
+  "change": {
+    "summary": "Synchronize the complete current production module outputs and ready local worldgen/home patches",
+    "modifiers": [
+      {
+        "property": "distribution.local_food_backlog_snapshot",
+        "operation": "document",
+        "before": {
+          "publication": 70,
+          "native_client": "Older native generation, no standalone JEMFood or MobHome"
+        },
+        "after": {
+          "artifact_receipt": "Docs/food/delivery-v3.json",
+          "gameplay_owners": "Existing owning records and canonical source",
+          "scope": "14 production modules, client-only culling excluded from dedicated runtime, six Oceanic resources",
+          "release_baseline": "unchanged",
+          "stable_profile": "unchanged"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Client/ManagedPack native AutoModpack source",
+    "kind": "user_requested_complete_local_update",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Client/ManagedPack/mods/jem-identity-1.0.0.jar",
+      "Client/ManagedPack/mods/jem-races-2.0.0.jar",
+      "Client/ManagedPack/mods/jem-rewards-1.0.0.jar",
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+      "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+      "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+      "Client/ManagedPack/mods/jem_adaptive_culling-1.4.1.jar",
+      "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar",
+      "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Client/ManagedPack/mods/jemfood-1.0.0.jar",
+      "Client/ManagedPack/mods/mobhome-1.0.0.jar",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_beach.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_deep.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_shallow.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/sandstone_pillar.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/placed_feature/sandstone_arch.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/pack.mcmeta"
+    ]
+  },
+  "rationale": {
+    "purpose": "Deliver the standalone mod together with all ready local changes the user named",
+    "decision_source": "Direct user request on 2026-10-24",
+    "user_requested": "Standalone JEMFood, Oceanic and Deep Dark patches, MobHome and other ready local updates in test jem",
+    "codex_choices": "Fresh production builds, client/server hash synchronization and native preview/publication/application"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "publish_local_backlog",
+    "summary": "Stage complete ready local production artifacts without a stable release"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "publish_local_backlog",
+      "summary": "Stage complete ready local production artifacts without a stable release",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-advancements-5.1.0.jar",
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Client/ManagedPack/mods/jem-identity-1.0.0.jar",
+        "Client/ManagedPack/mods/jem-races-2.0.0.jar",
+        "Client/ManagedPack/mods/jem-rewards-1.0.0.jar",
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+        "Client/ManagedPack/mods/jem-settlements-2.1.0.jar",
+        "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+        "Client/ManagedPack/mods/jem_adaptive_culling-1.4.1.jar",
+        "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar",
+        "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Client/ManagedPack/mods/jemfood-1.0.0.jar",
+        "Client/ManagedPack/mods/mobhome-1.0.0.jar",
+        "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_beach.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_deep.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_shallow.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/sandstone_pillar.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/placed_feature/sandstone_arch.json",
+        "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/pack.mcmeta"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "local_distribution",
+      "network_version_matching",
+      "worldgen",
+      "food",
+      "companion_homes"
+    ],
+    "relations": [
+      "All current module channels receive the exact matching client/server artifact",
+      "AutoModpack remains the sole managed installation and transaction owner",
+      "World saves, private runtime state and stable profiles are not pack inputs"
+    ],
+    "notes": [
+      "Ordinary local server startup is only for loading artifacts and native publication"
+    ],
+    "unresolved": [
+      "Player acceptance and integrated/optional-mod gameplay matrix are unobserved"
+    ]
+  }
+}

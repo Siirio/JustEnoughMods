@@ -66,3 +66,10 @@ Twin Creepers визуально и collision-scale достигают пятн�
 ## Ally and support admission — 2026-10-22
 
 The existing EventSession is the shared authority for damage, racial support/control, native targeting and startup/tick ejection. A supported player-owned ally remains an ally and is not adopted into the hostile wave. Both its own full collision box and its living active owner must satisfy the same event membership/position rule. Spectators, eliminated/dead owners and outside support remain excluded; Warden invalid spectator anger is cleared even while a valid target exists. This does not activate Events on integrated servers. Source status remains in testing; full sequence limitations are recorded in [combat balance](../power-system/Balance.md).
+
+
+## Native loot remains lazy during cleanup - 2026-10-24
+
+BloodMoonLoot only reads invalidation candidates when the saved event history contains invalidated attempts. A native block or vehicle container with a pending loot table is skipped before any slot read, including direct attempt discard. Such a table has no materialized event-marked inventory. Existing materialized items retain the original attempt-tag checks and removal rules. Native block-container serialization and vehicle loot-table access determine this state without unpacking the table.
+
+The local Chunky/Xaero trial reached the watchdog in BloodMoonLoot.scrubInvalid through a structure chest getItem and native loot generation. This owner fix does not alter structure loot, disable the watchdog, or claim player acceptance. Status: in testing.

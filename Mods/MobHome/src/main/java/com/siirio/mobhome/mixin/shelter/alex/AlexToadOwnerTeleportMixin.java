@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Pseudo
 @Mixin(targets = "com.github.alexthe666.alexsmobs.entity.EntityWarpedToad$FollowOwner", remap = false)
 public abstract class AlexToadOwnerTeleportMixin {
-    @Shadow @Final private EntityWarpedToad tameable;
+    @Shadow(remap = false) @Final private EntityWarpedToad tameable;
     @Inject(method = "tryToTeleportNearEntity", at = @At("HEAD"), cancellable = true)
     private void jemcompat$holdOwnerTeleport(CallbackInfo ci) {
         if (tameable.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) ci.cancel();

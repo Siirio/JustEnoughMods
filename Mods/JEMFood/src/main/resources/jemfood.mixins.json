@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.siirio.jemfood.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "jemfood.refmap.json",
+  "mixins": ["LivingEffectMixin", "GameModeMixin", "FoodDataMixin", "ExhaustionMixin", "FishingMixin", "PoisonMixin"],
+  "client": ["EffectScreenMixin"],
+  "injectors": {"defaultRequire": 1}
+}

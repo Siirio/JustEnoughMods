@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Pseudo
 @Mixin(targets = "com.github.alexthe666.alexsmobs.entity.ai.CrowAIFollowOwner", remap = false)
 public abstract class AlexCrowOwnerTeleportMixin {
-    @Shadow @Final private EntityCrow crow;
+    @Shadow(remap = false) @Final private EntityCrow crow;
     @Inject(method = "tryToTeleportNearEntity", at = @At("HEAD"), cancellable = true)
     private void jemcompat$holdOwnerTeleport(CallbackInfo ci) {
         if (crow.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) ci.cancel();

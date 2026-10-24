@@ -5,11 +5,14 @@ import com.siirio.jemserver.smp.*;
 import com.siirio.jemworldbosstiers.encounter.PendingRewardContainer;
 import java.util.UUID;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.vehicle.ContainerEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -84,6 +87,7 @@ public final class BloodMoonLoot {
     }
 
     private static void scrub(Container container, UUID event) {
+        if(hasPendingLoot(container)) return;
         boolean changed=false;
         for(int slot=0;slot<container.getContainerSize();slot++) if(belongsTo(container.getItem(slot),event)) {
             container.setItem(slot,ItemStack.EMPTY);
@@ -93,12 +97,27 @@ public final class BloodMoonLoot {
     }
 
     private static void scrubInvalid(Container container, MinecraftServer server) {
+        if(!hasInvalidatedLoot(server) || hasPendingLoot(container)) return;
         boolean changed=false;
         for(int slot=0;slot<container.getContainerSize();slot++) if(invalidated(server,container.getItem(slot))) {
             container.setItem(slot,ItemStack.EMPTY);
             changed=true;
         }
         if(changed) container.setChanged();
+    }
+
+    private static boolean hasInvalidatedLoot(MinecraftServer server) {
+        for(var row:com.siirio.jemserver.smp.SmpData.get(server).events().snapshots())
+            if(!row.invalidatedLoot().isEmpty()) return true;
+        return false;
+    }
+
+    private static boolean hasPendingLoot(Container container) {
+        // A pending native table has no materialized event loot to invalidate.
+        // Reading its slots would generate ordinary loot during chunk/entity loading.
+        if(container instanceof RandomizableContainerBlockEntity blockEntity)
+            return blockEntity.saveWithoutMetadata().contains(RandomizableContainerBlockEntity.LOOT_TABLE_TAG,Tag.TAG_STRING);
+        return container instanceof ContainerEntity entity && entity.getLootTable()!=null;
     }
 
     private static boolean invalidated(MinecraftServer server, ItemStack stack) {

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "dfedbbde65e1292f095a5e53cfcee48370b55cb1",
+  "generation": {
+    "generated_utc": "2026-10-24T14:33:50.541437+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "mobhome",
+    "name": "Mob Home",
+    "version": "1.0.0"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "mobhome:animal_homes",
+      "mod_id": "mobhome",
+      "mod_name": "Mob Home",
+      "mod_version": "1.0.0",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "minecraft:inventory_changed",
+        "minecraft:logs",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "mobhome:large_animal_home",
+        "mobhome:small_animal_home"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "mobhome-1.0.0.jar:data/mobhome/advancements/recipes/animal_homes.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "mobhome:large_animal_home",
+      "mod_id": "mobhome",
+      "mod_name": "Mob Home",
+      "mod_version": "1.0.0",
+      "recipe_type": "mobhome:matching_wood_shelter",
+      "machine_id": "mobhome:matching_wood_shelter",
+      "ingredient_groups": [
+        "minecraft:logs",
+        "minecraft:planks",
+        "minecraft:wooden_stairs",
+        "mobhome:matching_wood_shelter"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "mobhome:large_animal_home"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "mobhome-1.0.0.jar:data/mobhome/recipes/large_animal_home.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "mobhome:small_animal_home",
+      "mod_id": "mobhome",
+      "mod_name": "Mob Home",
+      "mod_version": "1.0.0",
+      "recipe_type": "mobhome:matching_wood_shelter",
+      "machine_id": "mobhome:matching_wood_shelter",
+      "ingredient_groups": [
+        "minecraft:logs",
+        "minecraft:planks",
+        "minecraft:wooden_slabs",
+        "mobhome:matching_wood_shelter"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "mobhome:small_animal_home"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "mobhome-1.0.0.jar:data/mobhome/recipes/small_animal_home.json"
+      ]
+    }
+  ]
+}

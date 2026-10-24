@@ -103,6 +103,7 @@ mixin {
     add sourceSets.main, mixinRefmapName
     config 'jemcompat.mixins.json'
     config 'jemcompat.seasons.mixins.json'
+    config 'jemcompat.worldgen.mixins.json'
 }
 
 tasks.named('compileJava', JavaCompile).configure {
@@ -113,10 +114,6 @@ tasks.named('compileJava', JavaCompile).configure {
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
 tasks.named('processResources', ProcessResources).configure {
-    from('../../Catalog/changes/food-quality-assignments.json') {
-        into 'data/jemcompat'
-        rename { 'food_quality.json' }
-    }
     def replaceProperties = [
             minecraft_version: minecraft_version,
             minecraft_version_range: minecraft_version_range,
@@ -146,7 +143,7 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Version': project.jar.archiveVersion,
                 'Implementation-Vendor': mod_authors,
                 'FMLAT': 'accesstransformer.cfg',
-                'MixinConfigs': 'jemcompat.mixins.json,jemcompat.seasons.mixins.json'
+                'MixinConfigs': 'jemcompat.mixins.json,jemcompat.seasons.mixins.json,jemcompat.worldgen.mixins.json'
         ])
     }
     doLast {

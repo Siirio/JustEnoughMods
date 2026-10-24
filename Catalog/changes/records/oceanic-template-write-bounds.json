@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "change_id": "worldgen.oceanic-template-write-bounds",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "oceanicrealms"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Oceanic Realms 1.0.7 artifact SHA256 8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321 and enabled Paxi jem-oceanic-worldgen-safety datapack"
+    }
+  ],
+  "precedence": {
+    "layer": "pack_worldgen_data",
+    "priority": 80
+  },
+  "change": {
+    "summary": "Keep Oceanic Realms multi-block templates inside the native FEATURES write neighborhood",
+    "modifiers": [
+      {
+        "property": "worldgen.configured_feature.horizontal_patch_spread",
+        "operation": "replace",
+        "before": {
+          "reef_rock_beach": 16,
+          "reef_rock_deep": 16,
+          "reef_rock_shallow": 16,
+          "sandstone_pillar": 16
+        },
+        "after": {
+          "reef_rock_beach": 12,
+          "reef_rock_deep": 10,
+          "reef_rock_shallow": 12,
+          "sandstone_pillar": 14
+        },
+        "notes": "Template X/Z maximum offsets are 3, 6, 4 and 2 respectively. Beach reserves one additional block for native StructureTemplate edge shape updates. Other three use processBlockInfos plus BulkSectionAccess with no template neighbor update pass."
+      },
+      {
+        "property": "worldgen.sandstone_arch.outer_horizontal_origin",
+        "operation": "replace",
+        "before": "Native in_square chooses each horizontal coordinate in [0,15]; inner patch adds [-1,1]; maximum template offset is 17",
+        "after": "Native random_offset independently chooses X and Z uniformly in [2,13]; inner patch remains [-1,1], keeping the complete rotated/mirrored template in [-16,31] relative to the generating chunk origin",
+        "notes": "Retain all three native templates, all rotations/mirrors, biome and water predicates, heightmap and native one-attempt patch. Other Oceanic Realms features remain native."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety",
+    "kind": "installed_geometry_bounded_data_override",
+    "source_files": [
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_beach.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_deep.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_shallow.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/sandstone_pillar.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/placed_feature/sandstone_arch.json",
+      "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/pack.mcmeta"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent invalid far-chunk block writes and partial template placement without hiding logs, disabling content, increasing chunk write permissions or modifying third-party JARs",
+    "decision_source": "User reported generation errors and freezes, then requested a thorough fix. Codex chose geometry-specific native datapack placement bounds after inspecting installed 1.0.7 bytecode, all 31 structure templates and Minecraft 1.20.1 placement/shape-update code"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Bound Oceanic Realms template placement using installed geometry while retaining native content and attempt counts"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Bound Oceanic Realms template placement using installed geometry while retaining native content and attempt counts"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "chunk_generation",
+      "Oceanic Realms coastal and ocean decoration",
+      "Paxi datapack loading",
+      "native AutoModpack delivery"
+    ],
+    "relations": [],
+    "notes": [
+      "Same code path applies to player-driven new chunk generation and Chunky",
+      "No registry IDs, models, templates, loot, biome memberships, patch attempt counts or internal probability gates change",
+      "Local placement distributions intentionally change. Exact realized decoration density depends on terrain and is not claimed identical",
+      "Existing chunks are not regenerated or repaired. Deep Dark Regrowth is outside this fix",
+      "Five Whys: error logged per block -> template reaches a non-writable chunk -> patch scatter plus template geometry exceeds FEATURES radius -> native mod data has no geometry margin and placer has no admission check -> pack data now supplies explicit template-specific safe admission coordinates"
+    ],
+    "unresolved": [
+      "User requested preparation only on 2026-10-24. Native publication, client application and runtime activation are intentionally pending",
+      "Player acceptance and performance measurement remain unproven. The supplied fragment does not attribute all observed slowdown to this error"
+    ]
+  }
+}

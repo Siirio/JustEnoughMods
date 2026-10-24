@@ -1,3 +1,27 @@
+## 2026-10-24 - Bound Oceanic Realms chunk decoration
+
+- User request: investigate chunk-generation errors and freezes, then prepare a thorough correction for the supplied Oceanic Realms failure
+- Bug / Both Sided / Oceanic Realms 1.0.7 scatter plus rotated multi-block template extents can exceed the native FEATURES write neighborhood, rejecting blocks and producing repeated errors / in testing. Use geometry-specific native datapack placement bounds for beach, deep and shallow reef rocks, sandstone pillars and arches, including the beach neighbor-update margin
+- Implementation choice: preserve native templates, biome rules, internal chances and attempt counts. Change only unsafe horizontal placement bounds, with no third-party JAR patch, hidden logging filter, forced chunk load or regenerated existing terrain
+- User delivery restriction: prepare only this patch. No native publication, client application, runtime restart, commit, push or MineRENT deployment. Full freeze attribution and player acceptance remain pending
+
+## 2026-10-24 - Standalone JEMFood v3 and complete local client update
+
+- User requested a standalone food mod extracted from JEMCompat using JEMFood_Codex_Ready_v3.zip, then native application of all ready local changes to test jem, including Oceanic, Deep Dark Regrowth and MobHome
+- User-supplied behavior: 848 exact food assignments in four fixed tiers, 30 talents under one visible Food Blessing, 517 blessing meals, 11 elevated native-only meals, 569 variety IDs, persistent cooldowns and migration from the previous food state
+- Implementation choices: a Forge-only standalone module, a generic native hunger-plus-portion receipt for placed eating, one server state owner, stable transient attributes, read-only protocol 2 and identity-scoped hidden backend rendering. JEMCompat food code and resources are removed, preferred optional effects use the explicitly specified Minecraft fallback until audited
+- Local delivery includes fresh production module outputs and the existing Oceanic/Deep Dark and Blood Moon patches, plus the complete standalone MobHome artifact. Exact hashes and native generation/application evidence belong to Docs/food/delivery-v3.json
+- Bug / Both Sided / MobHome optional Pseudo targets retained default remappable Shadow annotations, so Mixin runtime rejected native-member adapters / in testing. Explicit remap=false on the eight native optional adapters preserves their exact upstream names and allows runtime validation, player acceptance remains pending
+- Production jar/reobf packaging and Atlas maintenance are distinct from player acceptance. Automated tests and gameplay/client launches are not run under the project rules. The original client, MineRENT and immutable release baseline remain unchanged
+
+## 2026-10-24 - Prepare combined Oceanic and Deep Dark worldgen patch
+
+- Production JEMCompat jar/reobfJar passed. Prepared ZIP contains only the complete current JEMCompat domain artifact and the six existing Oceanic resources, with exact hashes and preserved pre-existing HUD-default edits recorded in PreparedPatches/2026-10-24-worldgen/receipt.json
+- User request: prepare the Deep Dark ancient-fossil fix together with the existing Oceanic patch, without publication or any local Server changes
+- Bug / Both Sided / Deep Dark Regrowth1.2.6.1 chooses internal0..15 anchors without allowing for its18x9x9 rotated fossil and shape-update neighbors, causing rejected far-chunk writes and partial placement / in testing. JEMCompat redirects only the two coordinate draws and derives safe anchors[2,13] from the initialized native template
+- Implementation choice: retain native fossils, chance, attempt count, material/height conditions, rotations, mirrors and complete placement. Register a separate required worldgen Mixin config with exact-version gating and two required sites, without a new runtime dependency
+- Delivery is preparation only. No Server/client installation, native staging/publication/application, restart, tests, gameplay launch, commit, push or MineRENT deployment. Performance and runtime acceptance remain pending
+
 ## 2026-10-24 - Optimize Mob Home models and finish feature delivery
 
 - User request: simplify both houses without losing the selected appearance, remove real gaps between boards and finish the outstanding shelter, food and handbook work
