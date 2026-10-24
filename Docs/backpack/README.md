@@ -1,6 +1,20 @@
 # Backpack replacement —2026-10-24
 
-The user replaced Backpacked with Sophisticated Backpacks, Sophisticated Storage and Sophisticated Core. Their native interfaces and upgrades own current backpack/storage behavior. JEM no longer registers the former Workbench, Furnace or Auto Feed augments or Backpacked mixins. Starter supplies now use `sophisticatedbackpacks:backpack`. Existing Backpacked inventories and augment NBT are not converted. The following records describe retired implementation history.
+The user replaced Backpacked with Sophisticated Backpacks, Sophisticated Storage and Sophisticated Core. Their native interfaces and upgrades own current backpack/storage behavior. JEM no longer registers the former Workbench, Furnace or Auto Feed augments or Backpacked mixins. Starter supplies now use `sophisticatedbackpacks:backpack`. The subsequent user request adds the saved-content migration below. The remaining sections describe retired implementation history.
+
+## Saved-content migration for the next release
+
+The user requires existing players to receive Sophisticated bags containing their old belongings. `JEMServer/migration/backpack/BackpackMigration` owns the dedicated-server cutover before world loading and player admission. It reads raw saved NBT without installing Backpacked again. The inspected source is Backpacked3.0.9 with Sophisticated Backpacks3.26.14.2226 and Core1.5.15.2427. A different target format stops an uncompleted cutover instead of guessing.
+
+The converter preserves each independently owned current or legacy equipped bag, Slot200 bag, inventory/container/entity stack, placed shelf/dock bag, native recall queue and pending Farmhand seed stack in every standard/custom dimension. Active Rewards and its not-yet-imported legacy sources are included. Consumed reward history and unissued starter declarations retain their existing owners. Identical NBT in independently owned bags represents separate items. Only the inspected duplicate shelf serialization is collapsed.
+
+Recovered bags use the native leather backpack with enough custom storage slots for the previous capacity and any stored Workbench ingredients or Furnace input, fuel and output. Existing item count, tag and Forge capabilities are retained. Native inline inventory conversion allocates its own content UUID when the new bag is opened. Old augments are not translated into Sophisticated upgrades, and furnace progress/recipe XP are retained only in the original archive. Native Sophisticated interfaces own subsequent bag behavior.
+
+An equipped bag enters a free normal player inventory slot. If that inventory is full, the existing Rewards owner delivers it through a permanent import receipt. Recall bags and Farmhand seeds also use Rewards. Placed old shelves and docks become vanilla barrels containing their recovered bag. Their chunk block palette and block entity are changed together, including external chunk storage. These placement and delivery details are Codex implementation choices for the user's preservation requirement.
+
+All source files are inspected before any live replacement. `.jem-migrations/backpacked-v1` inside the world retains complete original byte backups, staged replacements, hashes and a durable transaction journal. Interrupted commits resume before world loading. Unknown item identities, ambiguous live storage, malformed records or changed source hashes stop startup with the original data retained. Never delete the journal to bypass failure or restore only one side of a partially committed migration. Backups and permanent Rewards import receipts must survive later restarts.
+
+For the eventual MineRENT release, stop the server cleanly and retain a complete pre-update world backup before the first startup without Backpacked. Install the matching prepared production JARs and requested Sophisticated dependencies together. Admission may resume only after migration, native Rewards import and ordinary server startup succeed. If a previous startup without Backpacked has already overwritten a player's capability, migration cannot recreate those erased bytes, so use the pre-removal backup as the recovery source. Do not restore test-player saves into MineRENT. This preparation does not authorize deployment or establish player acceptance.
 
 # Backpacked: direct Workbench augment
 

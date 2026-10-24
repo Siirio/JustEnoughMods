@@ -186,3 +186,10 @@ Shipping Box sales use the owner-authorized native container button, without a s
 ### Ordinary public chat —2026-10-21
 
 ServerLogin 1.0.3 previously intercepted ordinary OP2 chat and sent `[local]` system messages only to players in the same dimension within its configured radius (100 blocks in the inspected config). This also removed the normal player-chat sender context used by Chat Heads. The next-update dedicated compatibility adapter keeps LoginEvents authentication checks and lets default chat continue through the native public player-chat path. Explicit admin-chat commands remain native. This is a local candidate; it has not been installed on MineRENT.
+
+
+## Local metadata recovery during backpack preparation - 2026-10-24
+
+The ordinary restart stopped before ServerAboutToStart or migration because both saved metadata files again contained Nether surface-rule depth518, beyond the native512 limit. The deepest path is the documented repeated sequence/merged chain. Its source is previously persisted WorldGenSettings, not backpack content or a migration write. This recurrence still lacks evidence identifying the upstream wrapping owner, so prevention remains unresolved. No Server thread existed when the failed JVM was stopped.
+
+Recovery retained both original files under ignored `Server/local/backpack-content-migration-20261024/metadata-recovery`. It flattened206 directly nested `minecraft:sequence` wrappers inside only the Nether surface_rule, preserving child order and every rule. Result depth352, with decompressed prefix/suffix unchanged, was atomically installed as current level.dat. Original SHA-256 `50bf4f30a744047ecb6283296e92584e97ffd42813667d59b8d45d505b2fcb0e`, replacement `69d52ff649d83d12b06f324e659f12c7d7b0ca25623d5621d52bb1d159f8d34f`. This is local recovery, not recurrence prevention, world rollback or a change to the native depth limit.

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "cd6391881e1b76f02b4aea723e5d701ffde2a511b00467dbdc29546e45e6b598",
+  "change_records_sha256": "d3e7862732204e51ee4efa72a3582c12313fb509220aa5c8e56c86f6ebd631cb",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -65,6 +65,31 @@
           "type": "id",
           "registry": "blocks",
           "value": "jemcompat:augment_bay"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 2
+    },
+    {
+      "change_id": "backpack.saved-content-cutover-20261024",
+      "status": "conditional",
+      "summary": "Preserve existing independently owned Backpacked belongings through a pre-world-load native Sophisticated inventory cutover.",
+      "record": "Catalog/changes/records/backpack.saved-content-cutover-20261024.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "sophisticatedbackpacks:backpack"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "backpacked"
+        },
+        {
+          "type": "id",
+          "registry": "blocks",
+          "value": "minecraft:barrel"
         }
       ],
       "exceptions": [],
@@ -3169,7 +3194,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "6ae0edb45590508a6b9fb158c4216666997eb9d492fb2a201c06f36a96cfd9c2",
+    "Client/ManagedPack/jem-pack/manifest.json": "32ec75e00b9a95714e962047e1036664bc2028812ced2a1e3a505e80a0b314d3",
     "Client/ManagedPack/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json": "0c2f19322b3f385388a186f899d7443007fabb476766e857f0d0cd99aba3b419",
     "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json": "3e305a680de6018ce89ac8ff3bdbcd8049478fa86bdb22b022741b8e4dcbd238",
     "Client/ManagedPack/kubejs/server_scripts/jem/economy_recipe_guards.js": "ab1c775eab767a11173b98599cf245610ba63d6a447c0da3a376189ab0b41e35",
@@ -3180,16 +3205,16 @@
     "Client/ManagedPack/mods/jem-bootstrap.jar": "75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8",
     "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "80ad31605cd2072e11aa52325551d0e944f9e78c968f5a2790f00d50071d1596",
     "Client/ManagedPack/mods/jem-races-2.0.0.jar": "c11ac4b978869a0e5eee4b01ff9138c199240a51244c12949fa5e86a4e986797",
-    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "358dd04119f297719901d8414542459deb8c9dd3247e58dc57d696bdbd5c36c2",
+    "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "1d1b187dfe6eb98d1e452552856ed6128a1cc8565e3fe93fe7c85237383b8cfd",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "df32538df5fc5357513d2e487b08170c9151bf1d91b2e9307e2b539f69f83e6e",
     "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar": "18bee2c919df207fcc449dd92f43afb22b2d94f7b6eff3edc56026c8aa3d4174",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "3050548f28a35d64649c4d74aa0482fe6b5af8a0fbc39d430f24ed5e880b9bc9",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "44457fc347ea0d90518af50dd498921231503690b6685ecbb2e2c8f300848b0c",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "39543a6eb68b41cbffb7a678c652d81c41900584aad42977ed54966555bdcdb7",
+    "Docs/DEVELOPMENT.md": "7dc098f6c2d0b55be7c039d406544df2e90acff3351568cafddce63e77a1f4cc",
     "Docs/MODS.md": "136e8dae7c359ed76530220cb863f51fe37fa9040ba63aecd4e4fd0012b4e504",
-    "Docs/SERVER_COMMANDS.md": "1530780beac042962a2718843df2006319a320f224fca2dbc06eece3ff2d9775",
+    "Docs/SERVER_COMMANDS.md": "91c5d5d2755e1d75d0ed91591beb95131388970e9ec4ddb89e6a6eed4060edea",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.json": "4b8389a357a71cf49f4b3a3359d674f74d3ceee98d5f5405299be9ccbbc07583",
@@ -3197,7 +3222,7 @@
     "Docs/art/bbb-hammer-2026-10-21/hammer.png": "e53ad0acf66af651b834387a8e355e3e378b7b48c7b137b6522afd9777935173",
     "Docs/art/crafted-gui-2026-10-20/README.md": "ccddecf9df5801ec42bf606563a07b5d6e591fc4c81f2690335b119c884fd07b",
     "Docs/art/shipping-station-2026-10-20/model/README.md": "94b651d5ae7ee9b17162cd7ba1456a2402879215bc2f7bfd1cf1aa8f70acf103",
-    "Docs/backpack/README.md": "cfc3ce1f7af5732bb9b76410257dc438ce755bfb902669cab63698b8343e9628",
+    "Docs/backpack/README.md": "6937214d3fc6c1a2ebb6a990fe45f8fa89ec7c1b67a58557a3b4857c55a98664",
     "Docs/companions/GEMINI_REVIEW.md": "706b99452e61a90abdb3fb6e4f5b8a9120bd957681e9b5416b73725360e2b31f",
     "Docs/companions/README.md": "35940f5fdac7ada064ad3b3a4cd7b26952f9b200293e1f012ee4bcb43c110a1b",
     "Docs/companions/alex-evidence.md": "c014eea595c42e348affa753ae7e7f01c49d8abfcaeb4da9295fb7b2eeb0ebdf",
@@ -3238,7 +3263,8 @@
     "Docs/races/assets/guardian-dome/guardian-dome.bbmodel": "3f56200e6a08a5209e730fa901313907cd67a72429c27389df3945c5c525e080",
     "Docs/races/server-test-migration.json": "666c4642ce4b177eea8a20f7a9dfc2269e2fec05ab5f2d68c049395aca188f1a",
     "Docs/releases/2026-10-21-shipping-market-repair.json": "a6f88bf08933b6c5c79407657add4e86379d6548faaf7e810ada29ce1c92bd27",
-    "Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json": "75780962469c781b040478a07ae2092bfb893120807d3e138aab87992d04a7b5",
+    "Docs/releases/2026-10-24-backpack-content-migration/receipt.json": "c72c8311bb7380fcb30e0cf6f6da9a787507e6d0cef62be9acdf0367c449c208",
+    "Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json": "1303f551dcdafee43280730b0af1f6191097edec1747c4c9fe5bf4901f45932d",
     "Docs/season-hud/README.md": "03c743fae588d0b677f600716221a6a0650608208b7a54f4c79941d3745c796a",
     "Docs/settlements/DESIGN_JOURNAL.md": "440abcac8af594a5b41e177da3b36049d47b7b95435431730eb3f4aee08b62bd",
     "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py": "98fa13c327c20af73c3b9d6d341967f069b18c1367768155b6867f755ab928d8",
@@ -4729,6 +4755,10 @@
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/menus/TextInput.java": "36121266c53c427e28897c209b5e9340cefdb3d0de897d2f54c8eeee01b6528e",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/menus/VanillaMenus.java": "e0e3fb2dedd15fea83c74332e7cda8222d47b8d576a080fba2c9d1632ae162f7",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/menus/client/VanillaGuiPlayers.java": "4736642dbf0f693294fd1869d67510e0fd1d6ead6f3f2e14edf6ca7f633c6e08",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/BackpackMigration.java": "0100bf26220ae8dcae4062fd5a0f0170cd64aba0a7d14137137d6b89ebaf2526",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/BackpackMigrationFiles.java": "82359130e66bba8711ea1cdc170145165b2d1232a6a5fd6d8485489cc4ddcf52",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/LegacyBackpackConverter.java": "b1c42c1f4c08fca6dcafb8283b98766978b7105101f37442279d594d2dc73ca5",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/LegacyBackpackRegions.java": "4271b1f3a81092dcc6ccaf136490776a517504fd4ef4187e188d5dafead65c88",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java": "17555d103d571ffac003113621abc4d30fc17c8d4ba6132dbb5d8a553e821af0",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java": "11fdc91b1be2a02b15beeef828496ee8449aee62a9c32863ce1b278efe941f96",
     "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/HostedFightChatLinkMixin.java": "2820da2933805c69d1e1ce0e9d8fd3191ea1ccf5fb57db764898498cf16925ce",
@@ -5458,7 +5488,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "be8945855fe5c94d6529128c1242d3ee084a4009cd751c7ae5ee78884b5d20ae",
-    "tools/state/packSyncHost-sync.json": "0bca0784e3243b526040d26ff2fbf1cabfca3556268700c43dd28e2fef1a55a3",
+    "tools/state/packSyncHost-sync.json": "d01943629dd0067037c0401d5ecee628c4c7714e5fb287acac3b31469330fbfe",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "change_id": "backpack.saved-content-cutover-20261024",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "sophisticatedbackpacks:backpack"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "backpacked"
+    },
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:barrel"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "Dedicated server only, Backpacked absent, Sophisticated Backpacks 3.26.14.2226 and Core 1.5.15.2427, world cutover not completed"
+    },
+    {
+      "legacy_source_only": "Only actual legacy Backpacked stacks and holders. Existing Sophisticated bags and ordinary barrels retain native behavior."
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 110,
+    "overrides": [
+      "backpack.sophisticated-native-replacement-20261024"
+    ]
+  },
+  "change": {
+    "summary": "Preserve existing independently owned Backpacked belongings through a pre-world-load native Sophisticated inventory cutover.",
+    "modifiers": [
+      {
+        "property": "backpack.saved_content_migration",
+        "operation": "derive",
+        "before": {
+          "migration": "none",
+          "legacy_format": "Exact Backpacked 3.0.9 and retired JEM augment NBT, confirmed from retained JAR bytecode and owning source"
+        },
+        "after": {
+          "owner": "JEMServer migration/backpack",
+          "storage": "Native inline Sophisticated leather bag with original capacity plus actual auxiliary stacks, no preassigned contentsUuid",
+          "equipped": "Free player inventory slot or permanent Rewards import receipt",
+          "placed": "Vanilla barrel with recovered bag in slot 0, palette and block entity updated together",
+          "queues": "Recall bags and Farmhand seeds imported into Rewards once",
+          "scope": "Player saves, chunk and entity regions including external chunks, all dimensions, active Rewards and not-yet-imported legacy reward obligations",
+          "persistence": "Full original byte backups, preflight of every input before replacement, hash-bound durable journal and restart recovery before world loading",
+          "failure": "Abort before admission for unknown or ambiguous live items or invalid records",
+          "augment_functions": "Retired, ingredients/furnace stacks retained, processing state only archived"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer BackpackMigration, native Sophisticated storage and JEMRewards import receipts",
+    "kind": "user_requested_saved_content_preservation",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/BackpackMigration.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/BackpackMigrationFiles.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/LegacyBackpackConverter.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/migration/backpack/LegacyBackpackRegions.java",
+      "Docs/backpack/README.md",
+      "Docs/DEVELOPMENT.md",
+      "Docs/releases/2026-10-24-backpack-content-migration/receipt.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prepare the next update so existing players receive their saved belongings without requiring Backpacked at startup.",
+    "decision_source": "User requires preservation for MineRENT. Codex chooses pre-load transactional migration, native leather capacity, barrel holder replacement and existing Rewards fallback."
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Add automatic raw saved-content cutover for the future authorized release."
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "User extends native mod replacement with preservation of existing bags and contents."
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "correct_native_region_bounds",
+      "summary": "Real local region payload reaches EOF exactly with partial final-sector padding. Match native sector accounting while requiring all compressed payload bytes to exist. First attempt aborted before journal commit or live replacement."
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "limit_live_native_paths",
+      "summary": "Select only native coordinate region names and exact UUID player-data names. Ignore manual archive copies that Minecraft never opens, preserving their bytes and avoiding duplicate ownership."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "offline players",
+      "item inventories",
+      "chunk palettes",
+      "external chunk storage",
+      "placed storage",
+      "reward import receipts",
+      "native Sophisticated inventory persistence",
+      "release recovery"
+    ],
+    "relations": [],
+    "notes": [
+      "Does not reinstall Backpacked or deploy MineRENT.",
+      "Does not revive consumed reward history or grant enhanced unissued starter kits.",
+      "Native APIs and inline migration verified against exact installed JARs.",
+      "Already erased player capability bytes require the pre-removal backup."
+    ],
+    "unresolved": [
+      "Runtime gameplay and player acceptance are not established by source or compilation."
+    ]
+  }
+}

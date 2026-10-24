@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-24",
+  "status": "local_delivery_complete_player_acceptance_unrun",
+  "requestedBehavior": "Preserve old Backpacked belongings in Sophisticated bags for the next MineRENT release",
+  "productionBuild": {
+    "task": ":JEMServer:jar including reobfJar",
+    "result": "BUILD SUCCESSFUL",
+    "java": "17",
+    "artifact": "jem-server-2.0.0-dev.jar",
+    "sha256": "1d1b187dfe6eb98d1e452552856ed6128a1cc8565e3fe93fe7c85237383b8cfd"
+  },
+  "localServer": {
+    "synchronized": true,
+    "startup": "Done (191.550s)",
+    "saveAndStop": "All dimensions saved, Framework configs unloaded",
+    "migration": {
+      "phase": "COMPLETE",
+      "inputFiles": 992,
+      "backpacks": 17,
+      "replacedFiles": 18,
+      "playerFiles": 17,
+      "regionFiles": 1,
+      "refundObligations": 0,
+      "archive": "world/.jem-migrations/backpacked-v1",
+      "worldDataExcludedFromGit": true
+    }
+  },
+  "nativePublication": {
+    "generation": 68,
+    "contentToken": "827e10bbefd9fba5952ce7822fec639e9341add3",
+    "manifestVersion": "f85550ce8f47590966c8cedd11ce105f0b4952efd508852513d774f654ab7d99",
+    "preview": {
+      "added": 0,
+      "changed": [
+        "main/jem-pack/manifest.json",
+        "main/mods/jem-server-2.0.0-dev.jar"
+      ],
+      "removed": 0
+    },
+    "published": true,
+    "publishedManifestSha1": "7dab1b4f4e1898cb63b123dbecfbfda60dfd73e8"
+  },
+  "nativeTestJemApplication": {
+    "status": "Applied through native reviewed updater with client stopped",
+    "contentToken": "827e10bbefd9fba5952ce7822fec639e9341add3",
+    "reviewSha256": "ce035ce28069c5ec76e1cbdb1787910b4f15fd57205702fc41d1dffb9af89fdf",
+    "pendingTransaction": false,
+    "restartReasons": [],
+    "installedServerJarSha256": "1d1b187dfe6eb98d1e452552856ed6128a1cc8565e3fe93fe7c85237383b8cfd"
+  },
+  "atlas": {
+    "fullRegeneration": "Completed after final artifact replacement",
+    "validation": "Valid after final delivery receipt refresh"
+  },
+  "recovery": {
+    "localMetadata": "Original level.dat and level.dat_old archived. Flattened206 associative Nether sequence wrappers, depth518 to352, unchanged decompressed surrounding bytes. Recurrence prevention unresolved.",
+    "scannerCorrections": "Native final-sector padding and live coordinate/UUID path selection. Earlier attempts stopped before journal commit or live replacement."
+  },
+  "boundaries": {
+    "mineRENT": "Not deployed. Future release requires a complete pre-removal world backup and successful migration before player admission.",
+    "stableProfile": "Unchanged",
+    "releaseBaseline": "Unchanged",
+    "automatedTests": "Not run",
+    "gameplayClientLaunch": "Not run",
+    "playerAcceptance": "Not run",
+    "erasedLegacyData": "Already overwritten legacy bytes require a pre-removal backup",
+    "augmentFunctions": "Not translated. Stored ingredients and Furnace stacks retained, processing state archived only"
+  }
+}

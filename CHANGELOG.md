@@ -1,3 +1,14 @@
+## 2026-10-24 - Preserve Backpacked belongings in the upcoming update
+
+- User requested automatic transfer of old Backpacked belongings into Sophisticated bags for MineRENT players and then asked Codex to continue without reinstalling Backpacked
+- Implementation choice: a dedicated-server raw-NBT cutover before world load preserves independently owned equipped and stored bags, placed shelves/docks, recall queues, Farmhand seeds and active reward deliveries across dimensions
+- Native leather bags retain previous capacity and actual contents, including Workbench ingredients and Furnace stacks. Equipped bags enter free player inventory slots, with permanent Rewards delivery when full. Placed legacy holders become vanilla barrels containing the recovered bag
+- Original files, staged replacements and a durable hash-bound journal remain in the world migration archive. All inputs are inspected before commit, interrupted commits resume, and unknown or ambiguous live data stops startup before it can be discarded
+- Old augment functions and furnace processing progress are not translated into new upgrades. Complete original NBT remains archived. Data overwritten by an earlier startup without Backpacked requires its pre-removal backup
+- Bug / Server / repeated persisted Nether surface-rule sequence wrappers exceeded native NBT depth512 before migration startup / in testing. Local metadata recovery flattens206 associative wrappers with original backups and exact unchanged surrounding bytes. Upstream recurrence prevention remains unresolved
+- Bug / Server / the migration scanner initially required unused final-sector padding that native region writers omit / in testing. Match native sector rounding and validate the complete compressed payload. The first migration attempt stopped before journal commit or live replacement
+- Production build and local delivery evidence belong to Docs/releases/2026-10-24-backpack-content-migration/receipt.json. MineRENT, stable profiles and release baseline remain unchanged. No automated tests or gameplay client launch
+
 ## 2026-10-24 - Sophisticated storage, Campaign Eyes and restored boss barriers
 
 - User requested continuation of the unreleased update: replace Backpacked with Sophisticated Backpacks, Sophisticated Storage and Sophisticated Core

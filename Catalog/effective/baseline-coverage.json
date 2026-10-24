@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "be36a4b772cc0a656897545d7e541ceef233522efee6d17699762444ee37a2ac",
+  "change_records_sha256": "d3e7862732204e51ee4efa72a3582c12313fb509220aa5c8e56c86f6ebd631cb",
   "totals": {
-    "watched": 4440,
-    "covered": 2660,
-    "unresolved": 1780
+    "watched": 4419,
+    "covered": 2648,
+    "unresolved": 1771
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1457,
-      "covered": 108,
-      "unresolved": 1349,
+      "watched": 1453,
+      "covered": 109,
+      "unresolved": 1344,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -121,10 +121,6 @@
         "Client/ManagedPack/config/alexsmobs/warped_mosco_spawns.json",
         "Client/ManagedPack/config/alexsmobs/warped_toad_spawns.json",
         "Client/ManagedPack/config/appleskin-client.toml",
-        "Client/ManagedPack/config/backpacked.augments.toml",
-        "Client/ManagedPack/config/backpacked.backpack.toml",
-        "Client/ManagedPack/config/backpacked.client.toml",
-        "Client/ManagedPack/config/backpacked.server.toml",
         "Client/ManagedPack/config/badoptimizations.txt",
         "Client/ManagedPack/config/bakery.toml",
         "Client/ManagedPack/config/bbb.json",
@@ -157,7 +153,6 @@
         "Client/ManagedPack/config/companions.toml",
         "Client/ManagedPack/config/connectiblechains.toml",
         "Client/ManagedPack/config/connectivity.json",
-        "Client/ManagedPack/config/copperagebackport.json",
         "Client/ManagedPack/config/cosycritters.json",
         "Client/ManagedPack/config/create-client.toml",
         "Client/ManagedPack/config/create-common.toml",
@@ -1380,8 +1375,8 @@
       ]
     },
     "Client/ManagedPack/kubejs": {
-      "watched": 16,
-      "covered": 4,
+      "watched": 17,
+      "covered": 5,
       "unresolved": 12,
       "unresolved_paths": [
         "Client/ManagedPack/kubejs/README.txt",
@@ -1407,8 +1402,8 @@
       ]
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 1300,
-      "covered": 1295,
+      "watched": 1288,
+      "covered": 1283,
       "unresolved": 5,
       "unresolved_paths": [
         "Mods/JEMAchievementGuide/gradle.properties",
@@ -1439,9 +1434,9 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 226,
-      "covered": 169,
-      "unresolved": 57,
+      "watched": 203,
+      "covered": 150,
+      "unresolved": 53,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
@@ -1483,17 +1478,13 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/KrakenStaggerMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldtier/SandwormStaggerMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/worldtier/BossMechanicPolicy.java",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/blockstates/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/jei_english_aliases.json",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/block/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/aircraft_fuel.json",
-        "Mods/JEMCompat/src/main/resources/assets/jemcompat/models/item/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_front.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_side.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_top.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/item/aircraft_fuel.png",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/jemcompat/taming/current_pack.json",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/loot_tables/blocks/augment_bay.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/freezing_impact_items.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/igniting_impact_items.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/create_redstone.json",
@@ -1584,8 +1575,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 502,
-      "covered": 313,
+      "watched": 506,
+      "covered": 317,
       "unresolved": 189,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
@@ -1801,8 +1792,8 @@
       ]
     },
     "Mods/JEMTwelveEyes": {
-      "watched": 148,
-      "covered": 120,
+      "watched": 161,
+      "covered": 133,
       "unresolved": 28,
       "unresolved_paths": [
         "Mods/JEMTwelveEyes/gradle.properties",
