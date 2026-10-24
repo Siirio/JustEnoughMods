@@ -28,7 +28,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 public final class EncounterContext {
     public enum State { PREPARING, TELEPORTING, ARRIVED, INTRO, ACTIVE, COMPLETED, FAILED }
@@ -49,7 +48,6 @@ public final class EncounterContext {
     private static final String RETURN_PITCH = "originPitch";
     private static final String DISCONNECTED_AT = "eventDisconnectedAt";
     private static final String ABSENCE_DEFEAT_PENDING = "eventAbsenceDefeatPending";
-    private static final long ABSENCE_DEFEAT_MILLIS = TimeUnit.MINUTES.toMillis(5);
     private static final int INTRO_TICKS = 40;
     private static final int SEARCH_RADIUS = 24;
 
@@ -82,7 +80,13 @@ public final class EncounterContext {
     }
 
     private void initializeInScope(ServerPlayer host, EventParticipants snapshot) {
+        SmpRecords.require(!data.hasEncounterParticipants() && !data.combatStarted(), "combat_locked");
         var participants = snapshot.accepted();
+        for (UUID id : participants) {
+            var player = host.server.getPlayerList().getPlayer(id);
+            SmpRecords.require(player != null && player.isAlive() && !player.isSpectator()
+                    && !data.memberOrEmpty(id).eliminated(), "party_not_ready");
+        }
         var stored = List.copyOf(participants);
         data.encounterHost( host.getUUID());
         data.encounterParticipants(stored);
@@ -113,13 +117,13 @@ public final class EncounterContext {
         int index = 0;
         for (UUID id : participantIds()) {
             ServerPlayer player = server.getPlayerList().getPlayer(id);
-            if (player == null) continue;
+            if (player == null || !player.isAlive() || player.isSpectator()
+                    || data.memberOrEmpty(id).eliminated()) return false;
             BlockPos preferred = index++ == 0 ? respawn : center.offset(slotOffset(index));
             BlockPos arrival = findSafe(level, preferred, occupied);
-            if (arrival == null) {
-                if (id.equals(data.encounterHost())) arrival = respawn;
-                else continue;
-            }
+            if (arrival == null || !PartyTeleportFlow.safeDestination(player, level, Vec3.atBottomCenterOf(arrival))
+                    || !EventRegions.contains(data, level, player.getDimensions(player.getPose()).makeBoundingBox(
+                    arrival.getX() + .5, arrival.getY(), arrival.getZ() + .5))) return false;
             occupied.add(arrival);
             var member = data.memberOrEmpty(id);
             member.encounterArrival( arrival.asLong());
@@ -130,19 +134,45 @@ public final class EncounterContext {
     }
 
     public void teleportParticipants(MinecraftServer server) {
+        var store = SmpData.get(server);
+        store.edit(() -> new EncounterContext(store.events().bind(data)).teleportParticipantsInScope(server));
+    }
+
+    private void teleportParticipantsInScope(MinecraftServer server) {
         ServerLevel level = EventRegions.level(server, data);
-        if (level == null) return;
-        transition(State.TELEPORTING, level.getGameTime());
+        SmpRecords.require(level != null, "no_safe_arrival");
+        var targets = new java.util.LinkedHashMap<ServerPlayer, Vec3>();
+        var occupied = new java.util.ArrayList<AABB>();
         for (UUID id : participantIds()) {
             ServerPlayer player = server.getPlayerList().getPlayer(id);
             var member = data.memberOrEmpty(id);
-            if (player == null || member.encounterTeleported() || !member.hasEncounterArrival()) continue;
-            BlockPos arrival = BlockPos.of(member.encounterArrival());
-            player.teleportTo(level, arrival.getX() + .5, arrival.getY(), arrival.getZ() + .5, player.getYRot(), player.getXRot());
-            player.setDeltaMovement(Vec3.ZERO);
-            player.fallDistance = 0;
-            member.encounterTeleported( true);
+            SmpRecords.require(player != null && !member.eliminated() && member.hasEncounterArrival(), "party_not_ready");
+            if (member.encounterTeleported()) continue;
+            Vec3 target = Vec3.atBottomCenterOf(BlockPos.of(member.encounterArrival()));
+            var box = player.getDimensions(player.getPose()).makeBoundingBox(target.x, target.y, target.z);
+            SmpRecords.require(PartyTeleportFlow.safeDestination(player, level, target)
+                    && EventRegions.contains(data, level, box) && occupied.stream().noneMatch(box::intersects), "no_safe_arrival");
+            occupied.add(box); targets.put(player, target);
         }
+        for (var player : targets.keySet()) {
+            var member = data.memberOrEmpty(player.getUUID());
+            recordReturn(player, member); member.eventReturnPending(true);
+        }
+        transition(State.TELEPORTING, level.getGameTime());
+        SmpData.get(server).flush(server);
+        var moves = new java.util.ArrayList<Runnable>();
+        var restores = new java.util.ArrayList<Runnable>();
+        for (var entry : targets.entrySet()) {
+            var player = entry.getKey(); var target = entry.getValue();
+            moves.add(() -> {
+                BossTeleportSafety.apply(player, level, target, player.getYRot(), player.getXRot());
+                SmpRecords.require(player.serverLevel() == level && player.position().distanceToSqr(target) < .01, "transfer_rejected");
+                data.memberOrEmpty(player.getUUID()).encounterTeleported(true);
+            });
+            restores.add(() -> SmpRecords.require(returnPlayerNow(player), "return_pending"));
+        }
+        PartyTeleportFlow.transferAll(moves, restores);
+        SmpData.get(server).flush(server);
     }
 
     public void awaitEntry(ServerLevel level) {
@@ -161,10 +191,11 @@ public final class EncounterContext {
                 boolean arrived = true;
                 for (UUID id : participantIds()) {
                     ServerPlayer player = server.getPlayerList().getPlayer(id);
-                    if (player == null) continue;
+                    if (player == null || !player.isAlive() || player.isSpectator()
+                            || data.memberOrEmpty(id).eliminated()) { arrived = false; continue; }
                     var member = data.memberOrEmpty(id);
                     BlockPos expected = member.hasEncounterArrival() ? BlockPos.of(member.encounterArrival()) : null;
-                    if (expected == null || player.serverLevel() != level || !EventRegions.contains(data, level, player.blockPosition())
+                    if (expected == null || player.serverLevel() != level || !EventRegions.contains(data, level, player.getBoundingBox())
                             || player.distanceToSqr(Vec3.atBottomCenterOf(expected)) > 16) arrived = false;
                 }
                 if (arrived) transition(State.ARRIVED, now);
@@ -210,7 +241,7 @@ public final class EncounterContext {
     }
 
     public boolean returnPending(UUID playerId) {
-        return isParticipant(playerId) && data.memberOrEmpty(playerId).eventReturnPending();
+        return data.memberOrEmpty(playerId).eventReturnPending();
     }
 
     public void stay(MinecraftServer server, UUID playerId) {
@@ -244,11 +275,16 @@ public final class EncounterContext {
         ResourceLocation dimension = ResourceLocation.tryParse(member.originDimension());
         ServerLevel level = dimension == null ? null : player.server.getLevel(ResourceKey.create(Registries.DIMENSION, dimension));
         if (level == null) return false;
-        player.teleportTo(level, member.originX(), member.originY(), member.originZ(), member.originYaw(), member.originPitch());
-        player.setDeltaMovement(Vec3.ZERO);
-        player.fallDistance = 0;
+        var target = new Vec3(member.originX(), member.originY(), member.originZ());
+        if (!PartyTeleportFlow.safeDestination(player, level, target)) return false;
+        member.eventReturnPending(true);
+        SmpData.get(player.server).flush(player.server);
+        BossTeleportSafety.apply(player, level, target, member.originYaw(), member.originPitch());
+        if (player.serverLevel() != level || player.position().distanceToSqr(target) > .01) return false;
+        SmpData.flushPlayerPosition(player);
         member.clearEventReturnPending();
-
+        try { SmpData.get(player.server).flush(player.server); }
+        catch (RuntimeException failure) { member.eventReturnPending(true); throw failure; }
         return true;
     }
 
@@ -271,13 +307,10 @@ public final class EncounterContext {
             EventMember member = data.memberOrEmpty(id);
             member.clearEncounterArrival();
             member.clearEncounterTeleported();
-            member.clearEventReturnPending();
-            member.clearOriginDimension();
-            member.clearOriginX();
-            member.clearOriginY();
-            member.clearOriginZ();
-            member.clearOriginYaw();
-            member.clearOriginPitch();
+            if (!member.eventReturnPending()) {
+                member.clearOriginDimension(); member.clearOriginX(); member.clearOriginY(); member.clearOriginZ();
+                member.clearOriginYaw(); member.clearOriginPitch();
+            }
             member.clearEventDisconnectedAt();
             member.clearEventAbsenceDefeatPending();
         }
@@ -318,8 +351,26 @@ public final class EncounterContext {
     }
 
     private void reconnectedInScope(ServerPlayer player) {
-        if (!isParticipant(player.getUUID())) return;
         var member = data.memberOrEmpty(player.getUUID());
+        if (!isParticipant(player.getUUID()) && !member.eventReturnPending()) return;
+        if (member.eliminated()) {
+            if (data.activity().equals("BOSS_RAID") && !member.nativeDeath() && member.eventAbsenceDefeatPending()
+                    && host(player.server, player.getUUID())) {
+                SmpData.get(player.server).flush(player.server);
+                EventScheduler.failAttempt(player.server, data);
+                return;
+            }
+            member.clearEventDisconnectedAt();
+            member.clearEventAbsenceDefeatPending();
+            if (member.nativeDeath()) member.clearEventReturnPending();
+            else if (member.eventReturnPending()) returnPlayerNow(player);
+            SmpData.get(player.server).flush(player.server);
+            return;
+        }
+        if (member.eventReturnPending() && (!data.state().equals("ACTIVE") || !data.hasEncounterParticipants())) {
+            returnPlayerNow(player);
+            return;
+        }
         if (member.eventAbsenceDefeatPending()) {
             member.clearEventAbsenceDefeatPending();
             notifyAbsenceDefeat(player);
@@ -330,12 +381,16 @@ public final class EncounterContext {
         if (!member.hasEventDisconnectedAt()) return;
         long disconnectedAt = member.eventDisconnectedAt();
         member.clearEventDisconnectedAt();
-        if (System.currentTimeMillis() - disconnectedAt >= ABSENCE_DEFEAT_MILLIS) {
-            member.eliminated( true);
+        if (System.currentTimeMillis() - disconnectedAt >= com.siirio.jemworldbosstiers.api.HostedEncounterApi.disconnectGraceMillis()) {
+            if (canonicalNativeDeath(player.server, player.getUUID())) { member.nativeDeath(true); member.eliminated(true); SmpData.get(player.server).flush(player.server); return; }
+            member.eliminated(true); member.eventAbsenceDefeatPending(true);
+            SmpData.get(player.server).flush(player.server);
+            if (data.activity().equals("BOSS_RAID") && host(player.server, player.getUUID())) {
+                EventScheduler.failAttempt(player.server, data);
+                return;
+            }
             notifyAbsenceDefeat(player);
             if (!returnPlayerNow(player)) EventRegions.eject(player, data);
-        } else if (data.solo() && data.state().equals("ACTIVE") && data.combatStarted()) {
-            returnToArena(player);
         }
 
     }
@@ -350,17 +405,42 @@ public final class EncounterContext {
     private void expireDisconnectedInScope(MinecraftServer server, long now) {
         if (!data.state().equals("ACTIVE") || !data.combatStarted()) return;
         boolean changed = false;
+        boolean absentHost = false;
         for (UUID id : participantIds()) {
             var member = data.memberOrEmpty(id);
+            if (member.eventAbsenceDefeatPending() && !member.nativeDeath() && host(server, id)) absentHost = true;
             if (member.eliminated() || !member.hasEventDisconnectedAt()
                     || server.getPlayerList().getPlayer(id) != null
-                    || now - member.eventDisconnectedAt() < ABSENCE_DEFEAT_MILLIS) continue;
+                    || now - member.eventDisconnectedAt() < com.siirio.jemworldbosstiers.api.HostedEncounterApi.disconnectGraceMillis()) continue;
             member.clearEventDisconnectedAt();
-            member.eliminated( true);
-            member.eventAbsenceDefeatPending( true);
+            member.eliminated(true);
+            if (canonicalNativeDeath(server, id)) member.nativeDeath(true);
+            else { member.eventAbsenceDefeatPending(true); absentHost |= host(server, id); }
             changed = true;
         }
-        
+        if (changed) SmpData.get(server).flush(server);
+        if (data.activity().equals("BOSS_RAID") && (absentHost || !participantIds().isEmpty()
+                && participantIds().stream().allMatch(id -> data.memberOrEmpty(id).eliminated())))
+            EventScheduler.failAttempt(server, data);
+    }
+
+    private boolean host(MinecraftServer server, UUID playerId) {
+        var party = data.hasParty() ? SmpData.get(server).parties().current(data.party()) : null;
+        return party != null ? playerId.equals(party.owner()) : playerId.equals(data.encounterHost());
+    }
+
+    private boolean canonicalNativeDeath(MinecraftServer server, UUID playerId) {
+        var level = EventRegions.level(server, data);
+        if (!data.hasBossEntity() || level == null || !(level.getEntity(data.bossEntity()) instanceof net.minecraft.world.entity.LivingEntity boss)) {
+            var snapshot = data.hasAttemptId() ? com.siirio.jemworldbosstiers.progression.WorldTierData.get(server)
+                    .hostedAttempts().get(data.attemptId()) : null;
+            if (snapshot != null && data.hasBossEntity() && snapshot.getUUID("Boss").equals(data.bossEntity()))
+                return snapshot.getCompound("State").getCompound("Players").getCompound(playerId.toString()).getBoolean("NativeDeath");
+            return data.memberOrEmpty(playerId).nativeDeath();
+        }
+        if (data.hasAttemptId() && !data.attemptId().equals(com.siirio.jemworldbosstiers.api.HostedEncounterApi.attemptId(boss))) return false;
+        return boss.getPersistentData().getCompound("JEMHostedEncounter").getCompound("Players")
+                .getCompound(playerId.toString()).getBoolean("NativeDeath");
     }
 
     public static EventState activeFor(ServerPlayer player) {
@@ -390,9 +470,9 @@ public final class EncounterContext {
         EventState latest = null;
         for (var row : SmpData.get(player.server).events().currentRows()) {
             if (!EventRuntime.available(player.server, row)) continue;
-            if (!new EncounterContext(row).isParticipant(player.getUUID())) continue;
             var member = row.memberOrEmpty(player.getUUID());
-            if (!member.hasEventDisconnectedAt() && !member.eventAbsenceDefeatPending()) continue;
+            if (!new EncounterContext(row).isParticipant(player.getUUID()) && !member.eventReturnPending()) continue;
+            if (!member.hasEventDisconnectedAt() && !member.eventAbsenceDefeatPending() && !member.eventReturnPending()) continue;
             if (latest == null || row.created() > latest.created()) latest = row;
         }
         return latest;

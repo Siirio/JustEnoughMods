@@ -36,6 +36,20 @@ public final class HomeTravel {
         return true;
     }
     static void used(ServerPlayer player) { player.getPersistentData().putLong(LAST_USE, player.server.overworld().getGameTime()); }
+    /** Encounter return is separate from the player's saved pre-fight origin and command cooldown. */
+    static WorldPosition configuredReturn(ServerPlayer player) {
+        BlockPos respawn = player.getRespawnPosition();
+        ServerLevel level = player.server.getLevel(player.getRespawnDimension());
+        if (respawn == null || level == null || !level.hasChunkAt(respawn)) return null;
+        var state = level.getBlockState(respawn);
+        if (!(state.getBlock() instanceof BedBlock) && !(state.getBlock() instanceof RespawnAnchorBlock
+                && state.getValue(RespawnAnchorBlock.CHARGE) > 0) && !player.isRespawnForced()) return null;
+        Vec3 target = DeathHistory.nearestSafe(player, level, respawn, 3);
+        if (target == null || !PartyTeleportFlow.safeDestination(player, level, target)) return null;
+        return new WorldPosition(level.dimension().location(), target.x, target.y, target.z,
+                player.getRespawnAngle(), player.getXRot());
+    }
+
     public static int execute(ServerPlayer player) { return execute(player, false); }
     public static int execute(ServerPlayer player, boolean all) {
         if (!ready(player)) return 0;

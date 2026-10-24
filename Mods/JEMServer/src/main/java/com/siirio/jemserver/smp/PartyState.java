@@ -5,6 +5,14 @@ import java.util.*;
 /** Typed state; snapshots reject mutation, including nested values. */
 public final class PartyState implements SmpRecord {
     private boolean frozen;
+    private String pendingOutcome = "";
+    public String pendingOutcome() { return pendingOutcome; }
+    public void pendingOutcome(String value) { requireMutable(); pendingOutcome = java.util.Objects.requireNonNull(value); }
+    private UUID hostedAttempt, closedAttempt;
+    public UUID hostedAttempt() { return hostedAttempt; }
+    public void hostedAttempt(UUID value) { requireMutable(); hostedAttempt = value; }
+    public UUID closedAttempt() { return closedAttempt; }
+    public void closedAttempt(UUID value) { requireMutable(); closedAttempt = value; }
     private PartyStateNbtCodec.Source source = new PartyStateNbtCodec.Source();
     private long ends;
     private boolean endsPresent, endsChanged;
@@ -238,6 +246,7 @@ public final class PartyState implements SmpRecord {
     private void requireMutable() { if (frozen) throw new IllegalStateException("Cannot mutate an SMP snapshot"); }
     public PartyState copy() {
         var copy = new PartyState();
+        copy.hostedAttempt = hostedAttempt; copy.closedAttempt = closedAttempt; copy.pendingOutcome = pendingOutcome;
         copy.source = source;
         copy.maxZ = maxZ; copy.maxZPresent = maxZPresent; copy.maxZChanged = maxZChanged;
         copy.maxY = maxY; copy.maxYPresent = maxYPresent; copy.maxYChanged = maxYChanged;
@@ -339,6 +348,9 @@ public final class PartyState implements SmpRecord {
     static final class Codec {
     static PartyState decode(net.minecraft.nbt.CompoundTag tag) {
         var value = new PartyState();
+        value.pendingOutcome = tag.getString("pendingOutcome");
+        value.hostedAttempt = tag.hasUUID("hostedAttempt") ? tag.getUUID("hostedAttempt") : null;
+        value.closedAttempt = tag.hasUUID("closedAttempt") ? tag.getUUID("closedAttempt") : null;
         value.source = new PartyStateNbtCodec.Source(tag);
         value.maxZ = tag.getInt("maxZ"); value.maxZPresent = tag.contains("maxZ");
         value.maxY = tag.getInt("maxY"); value.maxYPresent = tag.contains("maxY");
@@ -411,6 +423,9 @@ public final class PartyState implements SmpRecord {
     }
     static net.minecraft.nbt.CompoundTag encode(PartyState value) {
         var tag = value.source.copy();
+        if (value.pendingOutcome.isEmpty()) tag.remove("pendingOutcome"); else tag.putString("pendingOutcome", value.pendingOutcome);
+        if (value.hostedAttempt != null) tag.putUUID("hostedAttempt", value.hostedAttempt); else tag.remove("hostedAttempt");
+        if (value.closedAttempt != null) tag.putUUID("closedAttempt", value.closedAttempt); else tag.remove("closedAttempt");
         if (value.maxZChanged) { if (value.maxZPresent) tag.putInt("maxZ", value.maxZ); else tag.remove("maxZ"); }
         if (value.maxYChanged) { if (value.maxYPresent) tag.putInt("maxY", value.maxY); else tag.remove("maxY"); }
         if (value.maxXChanged) { if (value.maxXPresent) tag.putInt("maxX", value.maxX); else tag.remove("maxX"); }

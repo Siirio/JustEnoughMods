@@ -41,7 +41,7 @@ public final class SmpRuntime {
     private static void registerBossHooks() {
         MinecraftForge.EVENT_BUS.addListener(
                 (com.siirio.jemworldbosstiers.event.HostedEncounterClosedEvent event) -> {
-                    var server = event.boss().getServer();
+                    var server = event.server();
                     if (server != null && SmpEnvironment.active(server)) HostedParties.closed(event);
                 });
         MinecraftForge.EVENT_BUS.addListener(
@@ -67,7 +67,32 @@ public final class SmpRuntime {
                 .requires(source -> SmpEnvironment.active(source.getServer())).executes(c -> {
             SmpNetwork.open(c.getSource().getPlayerOrException(), EventRuntime.enabled(c.getSource().getServer()) ? "events" : "parties", null);
             return 1;
-        }));
+        }).then(Commands.literal("event-return")
+                .then(Commands.argument("party", UuidArgument.uuid())
+                        .then(Commands.argument("session", UuidArgument.uuid())
+                                .then(Commands.literal("return").executes(c -> chooseReturn(c, true)))
+                                .then(Commands.literal("stay").executes(c -> chooseReturn(c, false)))))));
+        event.getDispatcher().register(Commands.literal("smp")
+                .requires(source -> SmpEnvironment.active(source.getServer()))
+                .then(Commands.literal("forfeit").then(Commands.argument("party", UuidArgument.uuid())
+                        .then(Commands.argument("attempt", UuidArgument.uuid()).executes(c -> {
+                            HostedParties.forfeit(c.getSource().getPlayerOrException(), UuidArgument.getUuid(c, "party"),
+                                    UuidArgument.getUuid(c, "attempt"));
+                            return 1;
+                        }))))
+                .then(Commands.literal("encounter-leave").then(Commands.argument("party", UuidArgument.uuid()).executes(c -> {
+                    HostedParties.leaveEncounter(c.getSource().getPlayerOrException(), UuidArgument.getUuid(c, "party"));
+                    return 1;
+                }))));
+    }
+
+    private static int chooseReturn(com.mojang.brigadier.context.CommandContext<net.minecraft.commands.CommandSourceStack> context, boolean returnBack)
+            throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        var player = context.getSource().getPlayerOrException();
+        var store = SmpData.get(player.server);
+        var party = store.parties().snapshot(UuidArgument.getUuid(context, "party"));
+        if (party == null) return 0;
+        return PartyTeleportFlow.choose(player, party, UuidArgument.getUuid(context, "session"), returnBack) ? 1 : 0;
     }
 
     public static void host(ServerPlayer player, LivingEntity boss) {
@@ -123,6 +148,7 @@ public final class SmpRuntime {
             Parties.resetReady(p);
             Navigation.accepted(p);
             EventRuntime.login(p);
+            PartyTeleportFlow.login(p);
         }
     }
 

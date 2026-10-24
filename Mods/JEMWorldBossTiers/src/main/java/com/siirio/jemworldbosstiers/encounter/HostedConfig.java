@@ -23,7 +23,7 @@ public final class HostedConfig {
         RAID_DAMAGE = builder.defineInRange("raidDamageMultiplier", 1.25, 1, 10);
         BLEEDOUT = builder.defineInRange("bleedoutTicks", 600, 20, 72000);
         REVIVE = builder.defineInRange("reviveHoldTicks", 100, 1, 1200);
-        GRACE = builder.defineInRange("disconnectGraceTicks", 1800, 0, 72000);
+        GRACE = builder.defineInRange("disconnectGraceTicks", 6000, 0, 72000);
         IMMUNITY = builder.defineInRange("reviveImmunityTicks", 60, 0, 1200);
         REVIVE_HEALTH = builder.defineInRange("reviveHealthFraction", 0.4, 0.01, 1);
         REVIVE_DISTANCE = builder.defineInRange("reviveDistance", 3.0, 1, 8);

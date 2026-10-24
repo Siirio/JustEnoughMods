@@ -1,0 +1,17 @@
+// This opt-in suite is scoped to the user's 2026-10-25 encounter integrity request.
+gradle.projectsEvaluated {
+    ['JEMRewards', 'JEMWorldBossTiers', 'JEMServer'].each { name ->
+        def owner = project(":${name}")
+        owner.dependencies.add('testImplementation', owner.dependencies.platform('org.junit:junit-bom:5.11.4'))
+        owner.dependencies.add('testImplementation', 'org.junit.jupiter:junit-jupiter')
+        owner.dependencies.add('testImplementation', 'org.mockito:mockito-core:5.14.2')
+        owner.dependencies.add('testRuntimeOnly', 'org.junit.platform:junit-platform-launcher')
+        owner.configurations.testImplementation.extendsFrom(owner.configurations.compileOnly)
+        owner.tasks.named('test', Test).configure {
+            enabled = true
+            useJUnitPlatform()
+            classpath += owner.sourceSets.main.compileClasspath
+            testLogging { events 'passed', 'skipped', 'failed' }
+        }
+    }
+}

@@ -85,10 +85,11 @@ public final class StandaloneAdmission {
     @SubscribeEvent
     public static void closed(HostedEncounterClosedEvent event) {
         if (!ownsAdmission() || !event.raid()) return;
-        var boss = event.boss();
-        WorldTierApi.encounter(boss).filter(value -> value.arenaId() != null).ifPresent(value ->
-                RaidArenaApi.queueRaidCompletion(boss.getServer(), value.arenaId(), boss.getUUID(),
-                        net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType())));
+        var nativeData = event.frozenState().getCompound("NativeEncounter");
+        var type = net.minecraft.resources.ResourceLocation.tryParse(event.frozenState().getString("EntityType"));
+        if (type != null && nativeData.contains("ArenaId") && !RaidArenaApi.queueRaidCompletion(
+                event.server(), nativeData.getString("ArenaId"), event.bossId(), type))
+            throw new IllegalStateException("Raid completion was not persisted");
     }
 
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { PENDING.remove(event.getEntity().getUUID()); }

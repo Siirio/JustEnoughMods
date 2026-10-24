@@ -20,13 +20,16 @@ public final class HostedLobby {
     private HostedLobby() {}
 
     public static boolean hold(LivingEntity boss) {
-        if (!HostedEncounterApi.enabled(boss.getServer()) || boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss) && !retiringRaid(boss)
+        var encounter = boss.getPersistentData().getCompound("JEMHostedEncounter");
+        boolean terminal = encounter.getBoolean("FailureClosing") || encounter.getBoolean("LinkPending") || encounter.contains("VictoryAt");
+        if (!HostedEncounterApi.enabled(boss.getServer()) || boss.level().isClientSide || !boss.isAlive() || HostedEncounters.isHosted(boss) && !retiringRaid(boss) && !terminal
                 || !HostedEncounterApi.canHost(boss) && !HostedGroup.member(boss)) return false;
         if (held(boss)) {
             freeze(boss);
             return true;
         }
         CompoundTag state = new CompoundTag();
+        if (boss instanceof net.minecraft.world.entity.Mob mob) state.putBoolean("NativeNoAi", mob.isNoAi());
         boss.getPersistentData().put(ROOT, state);
         freeze(boss);
         if (!HostedGroup.member(boss)) HostedGroup.stage(boss);
@@ -43,7 +46,10 @@ public final class HostedLobby {
         BossPresentation.suppress(boss);
     }
 
-    public static boolean held(LivingEntity boss) { return HostedEncounterApi.enabled(boss.getServer()) && boss.getPersistentData().contains(ROOT); }
+    public static boolean held(LivingEntity boss) {
+        return com.siirio.jemworldbosstiers.revival.NativeBossStorage.pending(boss)
+                || HostedEncounterApi.enabled(boss.getServer()) && boss.getPersistentData().contains(ROOT);
+    }
 
     private static boolean retiringRaid(LivingEntity boss) {
         return boss.getServer() != null && WorldTierApi.encounter(boss)
@@ -54,7 +60,8 @@ public final class HostedLobby {
 
     public static void release(LivingEntity boss) {
         if (boss.level().isClientSide || !boss.getPersistentData().contains(ROOT)) return;
-        if (boss instanceof net.minecraft.world.entity.Mob mob) mob.setNoAi(false);
+        if (boss instanceof net.minecraft.world.entity.Mob mob)
+            mob.setNoAi(boss.getPersistentData().getCompound(ROOT).getBoolean("NativeNoAi"));
         BossPresentation.restore(boss);
         boss.getPersistentData().remove(ROOT);
         if (!HostedGroup.member(boss)) HostedGroup.release(boss);

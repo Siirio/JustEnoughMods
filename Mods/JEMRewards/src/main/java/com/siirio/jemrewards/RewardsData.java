@@ -13,8 +13,13 @@ public final class RewardsData extends SavedData {
     private static final String NAME = "jem_rewards";
     static final String RECEIPT = "jem_rewards:claim";
     private final CompoundTag pending;
+    private final Set<String> durableBatches = new HashSet<>();
     private long revision;
-    private RewardsData(CompoundTag root) { pending = root; revision = root.getLong("Revision"); }
+    RewardsData(CompoundTag root) {
+        pending = root.copy();
+        revision = root.getLong("Revision");
+        durableBatches.addAll(root.getCompound("BatchReceipts").getAllKeys());
+    }
     public static RewardsData get(MinecraftServer server) {
         RewardsData data = server.overworld().getDataStorage().computeIfAbsent(RewardsData::new, () -> new RewardsData(new CompoundTag()), NAME);
         data.migrate(server);
@@ -40,10 +45,12 @@ public final class RewardsData extends SavedData {
             net.minecraft.Util.safeReplaceFile(target, temporary, target.resolveSibling(file.getName() + "_old"));
             if (!pending.equals(NbtIo.readCompressed(file).getCompound("data")))
                 throw new java.io.IOException("Reward journal replacement not persisted");
+            durableBatches.clear();
+            durableBatches.addAll(pending.getCompound("BatchReceipts").getAllKeys());
             super.setDirty(false);
         } catch (java.io.IOException failure) {
             super.setDirty();
-            throw new IllegalStateException("storage_unavailable", failure);
+            com.mojang.logging.LogUtils.getLogger().error("Reward journal remains dirty after native save failure", failure);
         } finally {
             if (temporary != null) try { Files.deleteIfExists(temporary); }
             catch (java.io.IOException failure) { com.mojang.logging.LogUtils.getLogger().warn("Could not remove prepared reward journal {}", temporary, failure); }
@@ -52,6 +59,7 @@ public final class RewardsData extends SavedData {
     void flush(MinecraftServer server) {
         setDirty();
         save(server.getWorldPath(LevelResource.ROOT).resolve("data").resolve(NAME + ".dat").toFile());
+        if (isDirty()) throw new IllegalStateException("storage_unavailable");
     }
     boolean issued(UUID player, String source) { return pending.getCompound("Issued").getBoolean(player + ":" + source); }
     void markIssued(UUID player, String source) {
@@ -118,6 +126,7 @@ public final class RewardsData extends SavedData {
         flush(server);
         finishBatch(server, source);
     }
+    boolean batchCommitted(String source) { return durableBatches.contains(source); }
     private void finishBatch(MinecraftServer server, String source) {
         String key = "Batch:" + source;
         ListTag grants = pending.getList(key, Tag.TAG_COMPOUND);

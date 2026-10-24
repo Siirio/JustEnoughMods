@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "4f4c075ee2b77400dc0cd2f1559eee23a7d9c4add2044f6844799a9bf87593ae",
+  "change_records_sha256": "c6dedd4ff8fb5f72aa810e33d6169e6b3306f23b3066b34e052d73c4d5a5252a",
   "totals": {
-    "watched": 4049,
-    "covered": 2278,
-    "unresolved": 1771
+    "watched": 4050,
+    "covered": 2281,
+    "unresolved": 1769
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1575,15 +1575,15 @@
       "unresolved_paths": []
     },
     "Mods/JEMRoles": {
-      "watched": 160,
-      "covered": 160,
+      "watched": 161,
+      "covered": 161,
       "unresolved": 0,
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
       "watched": 508,
-      "covered": 319,
-      "unresolved": 189,
+      "covered": 320,
+      "unresolved": 188,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1622,7 +1622,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionPalette.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/map/RegionPermissions.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/SleepStatusVoteMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/SolidBoundaryMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/BloodMoonMoonMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/BloodMoonSkyMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/compat/DeepDarkRegrowthSpecialAbilityMixin.java",
@@ -1640,7 +1639,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/death/SafeLegacyGraveMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/events/BloodMoonTwinCreeperMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/events/BloodMoonWardenTargetMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/events/SolidBoundaryMovementValidationMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/fishing/TideFishDataMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/fishing/TideFishingHookMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/revive/PlayerReviveActivationMixin.java",
@@ -1654,8 +1652,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/FireAltarStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/KrakenSpawnerStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/VoidAltarStagingMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/MobBoundaryTeleportMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/ServerPlayerTeleportMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveLayerPolicyMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/FullCaveMapLayerMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/xaero/shared/SharedMapSyncMixin.java",
@@ -1766,6 +1762,9 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/loot_tables/events/cooking_medium.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/blocks/rush_block_drops.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/blocks/rush_resources.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/mummy.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/end_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/nether_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/rare_ingredients.json",
@@ -1861,8 +1860,8 @@
     },
     "Mods/JEMWorldBossTiers": {
       "watched": 139,
-      "covered": 84,
-      "unresolved": 55,
+      "covered": 85,
+      "unresolved": 54,
       "unresolved_paths": [
         "Mods/JEMWorldBossTiers/gradle.properties",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossEffectApi.java",
@@ -1890,7 +1889,6 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/SpawnDecision.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/SpawnProvenanceRules.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/event/HostedEncounterAvailableEvent.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/event/HostedEncounterClosedEvent.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/event/WorldTierChangedEvent.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/loot/ProgressionBookLootModifier.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/loot/TierLoot.java",

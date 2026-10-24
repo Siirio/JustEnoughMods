@@ -64,6 +64,24 @@ public final class StructureEncounterApi {
     public static boolean activationBlock(ResourceLocation id) { return activationBlocks.contains(id); }
     public static boolean activationItem(ResourceLocation id) { return activationItems.contains(id); }
 
+    /** Saved canonical geometry is authoritative even before a player discovers the arena. */
+    public static List<Arena> registeredArenas(net.minecraft.server.MinecraftServer server, ResourceLocation dimension) {
+        if (server == null || server.overworld() == null) return List.of();
+        return com.siirio.jemworldbosstiers.progression.WorldTierData.get(server).arenas().stream()
+                .filter(arena -> arena.structureArena() && arena.dimension().equals(dimension.toString()))
+                .map(arena -> RaidArenaApi.arena(server, arena.id())).flatMap(Optional::stream)
+                .map(arena -> new Arena(canonicalId(arena.id()), arena.dimension().toString(),
+                        arena.entityType(), arena.bounds()))
+                .toList();
+    }
+
+    private static UUID canonicalId(String id) {
+        try { return UUID.fromString(id); }
+        catch (IllegalArgumentException namedLegacyArena) {
+            return UUID.nameUUIDFromBytes(id.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        }
+    }
+
     public static Optional<Arena> discover(ServerLevel level, BlockPos position) {
         return discoverAll(level, position).stream().filter(arena -> arena.bounds().isInside(position)).findFirst();
     }

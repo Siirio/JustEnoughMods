@@ -10,7 +10,8 @@ final class PartyAdmission {
         return party.owner().equals(player.getUUID());
     }
     static boolean preparing(PartyState party) {
-        return !SmpData.closed(party) && !party.state().equals("ACTIVE");
+        return party.pendingOutcome().isEmpty() && !party.hasPartyTeleportSession()
+                && !SmpData.closed(party) && !party.state().equals("ACTIVE");
     }
     static boolean canInvite(ServerPlayer player, PartyState party) {
         return owner(player, party) && preparing(party) && !party.solo();

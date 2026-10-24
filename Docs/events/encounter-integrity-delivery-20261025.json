@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "branch": "main",
+  "implementation_status": "Implemented, automated regressions and production packaging passed, ordinary local Server synchronized and native generation applied to test jem. Multiplayer acceptance remains unrun",
+  "multiplayer_acceptance": "not run, all 26 scenarios remain unverified despite successful automated tests and local server startup",
+  "baseline_commit": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
+  "user_direction": "Attached Final Integration Plan plus mandatory party outcomes and reward transaction integrity. Explicit focused regression authorization overrides the former blanket test ban for this task only",
+  "issues": [
+    {
+      "issue": "Reward write failure finalized victory",
+      "root_cause": "drops() logged enqueue failure then closed success",
+      "fix": "Frozen immutable WorldTierData settlement, verified JEMRewards and XP before terminal cleanup",
+      "files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Repeated reward source and unsafe claims",
+      "root_cause": "Retry had no explicit durable complete-batch acknowledgment and native inventory save can fail",
+      "fix": "Permanent batch/recipient receipts, native player claim journal readback, Creative full sync and pending full inventories",
+      "files": [
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Lost or reopened participant outcomes",
+      "root_cause": "Start and terminal party/event/attempt state were committed separately, and elimination did not retain its reason",
+      "fix": "Frozen pre-release durable link, exact attempt tokens, monotonic native death/absence, earned support and contribution retained",
+      "files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EncounterContext.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Partial movement and unsafe return completion",
+      "root_cause": "Per-player movement and terminal updates could clear origin before successful persisted transfer",
+      "fix": "Whole-roster destination preflight, durable origins, rollback pending recovery and native position readback",
+      "files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/PartyTeleportFlow.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Incomplete physical shell and restart authority",
+      "root_cause": "Old collision did not cover all swept-volume and six-face cases and derived arena cache was incomplete",
+      "fix": "Saved canonical registered bounds, floor and ceiling rendering, complete body and mount-family crossing guards",
+      "files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Unsafe duplicate boss recovery",
+      "root_cause": "Unacknowledged native entity insertion/removal and older chunk saves could disagree with live claims",
+      "fix": "Exact native creation intent and IOWorker acknowledgment, alias migration and permanent retired UUID rejection",
+      "files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/NativeBossStorage.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Cooldown reset and Raid coupling",
+      "root_cause": "Duplicate death callbacks could replace due time, Raid acquisition canceled ordinary schedule",
+      "fix": "Death-specific immutable due time and independent Raid restoration, unchanged three-Minecraft-day delay",
+      "files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Authored Raid mechanics conflicted with requested native combat",
+      "root_cause": "Raid spawned custom reinforcement waves and modified those mobs",
+      "fix": "Remove wave routines/counters/ally tags/stat layer, keep native summons and one safe combined Start scaling",
+      "files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobModifiers.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Native spell provenance and stale effect permission",
+      "root_cause": "Some mod attacks carry no standard source owner and an old effect can survive attempt changes",
+      "fix": "Exact synchronous source UUID/dimension/attempt provenance with native player ownership precedence and no proximity enrollment",
+      "files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/NativeEncounterSource.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Retired Raid body readmitted",
+      "root_cause": "LOWEST join callback could undo canonical retired UUID cancellation for an ACTIVE event",
+      "fix": "Check canonical retired UUID before adoption and uncancel logic",
+      "files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventHooks.java"
+      ],
+      "player_status": "in testing"
+    },
+    {
+      "issue": "Repeated or invalid native death callback",
+      "root_cause": "A repeated death event could overwrite the pre-settlement timestamp and a drop callback did not explicitly require confirmed death",
+      "fix": "Require an actually dying canonical boss, freeze the first native death time once, require that confirmation for captured loot and XP",
+      "files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java"
+      ],
+      "player_status": "in testing"
+    }
+  ],
+  "normal_flow": [
+    "Dormant registered boss holds native combat until explicit Start",
+    "Validate accepted-ready-online-authorized frozen roster and safe destinations, persist origins and exact canonical attempt/Server link before AI release",
+    "Keep six structure faces sealed, native attacks filter by exact participant/source identity, actual death eliminates without reactivation",
+    "Legitimate death freezes earned UUIDs and native loot once, durable verified personal item and XP batches precede victory and cleanup",
+    "Offer safe Return/Stay, retain offline return/rewards and restore ordinary boss only after three Minecraft days from legitimate death"
+  ],
+  "raid_flow": [
+    "Reserve compatible previously defeated registered boss arena without an entity allowlist",
+    "Reuse one living canonical boss or safely create exact native identity after loading, preserve ordinary cooldown",
+    "Prepare without stat or size changes, Start once with frozen party scale, 2.5 health and 1.25 damage and up to safe 1.35 size",
+    "Native attacks/phases/summons only, no authored Raid waves",
+    "After verified victory or acknowledged defeat/cancel, eject survivors safely and preserve pending return, restore one normal dormant boss without resetting ordinary cooldown"
+  ],
+  "automated": {
+    "status": "passed",
+    "command": ".\\gradlew.bat -PjemEncounterRegression=true :JEMRewards:test :JEMWorldBossTiers:test :JEMServer:test --continue --no-watch-fs --console=plain",
+    "scope": "Real owner logic with persistence fixtures and mocked server/entity boundaries, not an in-game multiplayer session",
+    "build_command": ".\\gradlew.bat -PjemEncounterRegression=true :JEMRewards:test :JEMWorldBossTiers:test :JEMServer:test :JEMRewards:jar :JEMWorldBossTiers:jar :JEMServer:jar --no-watch-fs --console=plain",
+    "test_harness": "Vanilla registries are real, only launch-only NetworkHooks.init is stubbed during Bootstrap. Native provenance exercises real HostedEncounters token state, with server/entity/native-mod adapter boundaries mocked. Assertions are not disabled",
+    "tests": 76,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "module": "JEMRewards",
+        "suite": "com.siirio.jemrewards.RewardClaimsRegressionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "playerWriteFailureLeavesRecoverableClaimAndCannotDuplicateOnRetry()",
+          "fullInventoryKeepsRewardPendingAndDoesNotStartAClaim()",
+          "creativeClaimAndDuplicatePacketTransferOnlyOnceAndSendNativeContents()"
+        ]
+      },
+      {
+        "module": "JEMRewards",
+        "suite": "com.siirio.jemrewards.RewardsDataRegressionTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "restartAndDuplicateCallbackCannotIssueASecondPersonalGrant()",
+          "offlineRecipientsReceiveIndependentFullContainers()",
+          "ordinaryAutosaveIoFailureRemainsDirtyWithoutKillingRetryProcess()",
+          "firstWriteFailureRetainsExactRollAndNeverAcknowledgesDurability()"
+        ]
+      },
+      {
+        "module": "JEMWorldBossTiers",
+        "suite": "com.siirio.jemworldbosstiers.encounter.HostedExperienceRegressionTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "nativeAutosaveFailureRetainsXpJournalAndDoesNotAbortServer()",
+          "restartPreservesOfflineXpAndDuplicateCaptureCannotReplaceAmount()",
+          "initialWriteFailureRetainsOriginalPersonalExperienceForRetry()",
+          "preparedOfflineXpReplaysWithoutAStillLoadedBossOrSettlementCallback()"
+        ]
+      },
+      {
+        "module": "JEMWorldBossTiers",
+        "suite": "com.siirio.jemworldbosstiers.encounter.HostedSettlementRegressionTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "onlyActualDeathConsumesNativeRespawnReturnAndLaterExitCannotEraseIt()",
+          "partyRecoveryMergesOnlyMonotonicEliminationWithoutLateRecipientsOrChangedContribution()",
+          "reconnectAfterGraceKeepsAbsenceCauseAndCannotReclassifyNativeDeathOrVoluntaryExit()",
+          "partyLinkFailureCannotReleaseNativeCombat()",
+          "terminalFailureRetainsPendingSettlement()",
+          "missingStartingHealthDoesNotQualifyIdleMembership()",
+          "supportNeedsDistinctActiveFrozenPlayersAndRealRecipientCombat()",
+          "eliminatedContributorsAndGenuineSupportKeepEarnedRewardsButIdlePlayersDoNot()",
+          "failedAttemptAcknowledgmentNeverInvokesPartyOrNativeRelease()",
+          "rewardFailureCannotPublishTerminalSuccessOrCleanup()",
+          "nativeCombatReleasesOnlyAfterBothOwnersAcknowledgeStart()"
+        ]
+      },
+      {
+        "module": "JEMWorldBossTiers",
+        "suite": "com.siirio.jemworldbosstiers.encounter.NativeEncounterSourceTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "heldBossAndLivingSupportRemainDormantButTransientNativeEffectsKeepTheirLifetime()",
+          "nestedNativeScopesRestoreOuterOwnerAndCleanUpExceptions()",
+          "playerOwnedNestedTickMasksBossScopeAndCannotBeCapturedAsHostile()",
+          "onlyFreshUnownedNativeSpawnIsCapturedAndConflictingMarkerIsPreserved()",
+          "unownedScriptedDamageUsesExactScopeWhileExplicitPlayerProjectileAlwaysWins()",
+          "previousAttemptEffectCannotInheritNewTokenForSameBossOrRetagItsChildren()",
+          "unresolvedMarkedEffectKeepsNativeLifetimeButCannotProvideDamagePermissionUntilOwnerLoads()",
+          "exactNativeCrossDimensionSpawnResolvesOnlyItsPersistedSourceDimensionWithoutLoadingChunks()",
+          "duplicateNativeDeathCannotMoveTheFrozenVictoryTimeAndLivingBossCannotSettle()"
+        ]
+      },
+      {
+        "module": "JEMWorldBossTiers",
+        "suite": "com.siirio.jemworldbosstiers.progression.WorldTierEncounterPersistenceTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "legacyAliasMigratesCreationIntentAndCanClearItWithoutLaterReplay()",
+          "unresolvedCanonicalBossClaimCannotBeReplacedByAnotherUuid()",
+          "preparedCreationKeepsExactNativeIdentityAcrossRestartAndRejectsAnotherSpawn()",
+          "failedAttemptCannotRejoinOrSettleVictoryAfterRestart()",
+          "duplicateAttemptCannotResetCooldownButLaterLegitimateDeathHasItsOwnDueTime()",
+          "duplicateDeathKeepsFirstExactThreeDayDueTime()",
+          "retiredMovingBossCannotReclaimArenaFromAnOlderNativeChunkSave()",
+          "canonicalCloseReceiptPrecedesFinalRewardCleanupAndSurvivesRetry()",
+          "failedStartRollbackCannotEraseAnotherAttemptsRaidParticipation()",
+          "pendingAndCompletedSettlementSurviveReloadWithoutAliasing()"
+        ]
+      },
+      {
+        "module": "JEMWorldBossTiers",
+        "suite": "com.siirio.jemworldbosstiers.revival.NativeBossStorageTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "retirementRequiresSerializedAbsenceIncludingPassengers()",
+          "missingUuidCannotBeAcknowledgedAsCreated()",
+          "failedNativeWriteCannotAcknowledgeSpawn()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.BossTeleportScopeRegressionTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "internalEjectionBypassesOnlyItsOwnCallAndFailureNeverLeaksPermission()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.EventAdmissionRegressionTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "eliminatedMemberCannotBeAcceptedAgain()",
+          "frozenSnapshotRejectsBothLateJoinAndExistingMemberReacceptance()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.HostedBoundaryAdmissionRegressionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "terminalPartiesAndDeadPlayersNeverReceiveAdmission()",
+          "oldAttemptTokenCannotForfeitANewAttemptUsingTheSameBoss()",
+          "entryIsSingleUseAndEliminationNeverReopensIt()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.NativeRaidSummonRegressionTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "terminalCleanupPreservesEveryNativeSummonIncludingBeyondTheRetiredCap()",
+          "cleanupDoesNotEraseAnUnrelatedEventSession()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.PartyTeleportFlowRegressionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "failedRollbackDoesNotSuppressOtherRestorationOrOriginalFailure()",
+          "failedSecondTransferRollsBackFirstAndFailingTransfer()",
+          "livingOfflineEliminationRetainsReturnButActualDeathDiscardsIt()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.RaidForfeitOrderingRegressionTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "hostRaidForfeitClosesCanonicalCombatBeforeReplacementAndEventReset()",
+          "failedOrNewerCanonicalAttemptCannotBeResetOrReplaced()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.RaidGeometryRegressionTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "unsafeNativeBaselineNeverGetsEnlarged()",
+          "ceilingLimitsSizeBeforeCollisionOrSuffocation()",
+          "fullWidthAndNativeBlockCollisionBothConstrainEnlargement()",
+          "approvedEnlargementIsTheMaximumEvenWithUnlimitedSpace()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.RetiredRaidAdmissionRegressionTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "canceledRetiredBossCannotBeReadmittedByAnActiveRaid()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.events.SolidBoundaryRegressionTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "doesNotRejectDiagonalMotionThatMissesTheCorner()",
+          "protectsEveryFaceOfTheNativeVolume()",
+          "undergroundArenaDoesNotBlockTheColumnAboveIt()",
+          "authorizedEntryOpensOnlyTheApproachedFaceAndKeepsFarFaceSolid()",
+          "detectsCornerAndVerticalPassageWithCompleteBody()",
+          "detectsHighSpeedPassageWithBothEndpointsOutside()",
+          "rejectsPartialBodyContainment()",
+          "fullVehicleFamilyIncludesAllPassengersAndSiblings()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.HostDisconnectOutcomeRegressionTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "onlyExpiredLivingHostAbsenceFailsTheWholeAttempt()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.HostedStartRecoveryRegressionTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "exactPreparedLinkIsRecoverableWithoutRevivingEliminatedMembers()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.PartyReturnPersistenceRegressionTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "nativeDeathReasonIsPersistedSeparatelyFromElimination()",
+          "pendingOfflineReturnAndEliminationSurvivePartySerialization()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.PartyTerminalPersistenceRegressionTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "failedTerminalWriteRetainsRetryIntentAndAttemptAcknowledgment()"
+        ]
+      },
+      {
+        "module": "JEMServer",
+        "suite": "com.siirio.jemserver.smp.RetiredRaidStateRegressionTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "cases": [
+          "legacyReinforcementStateCannotReviveWavesAndUnrelatedDataSurvives()"
+        ]
+      }
+    ],
+    "production": "All three production jar and reobfJar tasks successful",
+    "log_sha256": "eea0e9c0924da9587a529a70a887428750aa0dda0bf461d54144fe3d4ae9652c"
+  },
+  "multiplayer_scenarios": [
+    {
+      "id": 1,
+      "scenario": "Dormant boss invulnerability and zero combat",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 2,
+      "scenario": "Dormant attack including player projectile opens native admission GUI",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 3,
+      "scenario": "Two-player Start and frozen scaling",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 4,
+      "scenario": "Native AI, phases, summons and attacks after Start",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 5,
+      "scenario": "Solid shell before and during Start",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 6,
+      "scenario": "Outsiders, mobs, mounts and teleports rejected",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 7,
+      "scenario": "Single-use accepted entry and no eliminated readmission",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 8,
+      "scenario": "Immediate member death elimination and normal respawn",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 9,
+      "scenario": "Whole-party defeat and safe cleanup",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 10,
+      "scenario": "Host forfeit and nonhost voluntary exit",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 11,
+      "scenario": "Ordinary victory independent exactly-once personal rewards",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 12,
+      "scenario": "Full inventory, offline recipient and duplicate claim safety",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 13,
+      "scenario": "Ordinary revival after three Minecraft days",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 14,
+      "scenario": "No revival before ordinary cooldown expiry",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 15,
+      "scenario": "Raid acquisition during ordinary cooldown with one identity",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 16,
+      "scenario": "Raid victory restores one dormant normal boss",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 17,
+      "scenario": "Raid failure restores attributes, size and hold",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 18,
+      "scenario": "No authored Raid reinforcement waves",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 19,
+      "scenario": "Restart during ordinary ACTIVE combat",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 20,
+      "scenario": "Restart during Raid replacement",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 21,
+      "scenario": "Unloaded canonical UUID blocks duplicate creation",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 22,
+      "scenario": "Two parties racing for same arena",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 23,
+      "scenario": "Partial Party teleport rollback",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 24,
+      "scenario": "Failed reward persistence retry without duplication",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 25,
+      "scenario": "Campaign locked and unlocked admission",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    },
+    {
+      "id": 26,
+      "scenario": "Underground arena leaves unrelated surface column open",
+      "status": "not run",
+      "required_evidence": "Authorized observed dedicated multiplayer session, including installed mod compatibility where applicable"
+    }
+  ],
+  "compatibility_and_persistence_risks": [
+    "An initial write that never reaches any durable journal cannot survive process loss. In-process exact retry is retained and the failure is reported explicitly",
+    "SavedData and exact native entity writes are synchronously acknowledged at critical transitions, which can expose slow or failing disks as pending recovery",
+    "Unknown or unloaded canonical identities intentionally block replacement until actual loading and persistence resolve",
+    "Forge Mixin binding, mod-specific scripted attacks/teleports/multipart bodies and real crash windows require actual runtime acceptance",
+    "Mounted Start rejects the complete family before movement, while native mounted boundary/return safety remains subject to runtime acceptance",
+    "Receipt/tombstone sets intentionally persist for replay safety and are not automatically pruned",
+    "Truly asynchronous mod damage with neither native ownership nor captured synchronous provenance requires a specific audited native adapter. It is not guessed from proximity"
+  ],
+  "deliberately_not_changed": [
+    "Ordinary three-Minecraft-day cooldown",
+    "Native boss formulas, AI, abilities, attacks and summons",
+    "Dedicated-only SMP/parties/Raid and integrated native boss policy",
+    "Blood Moon and Resource Rush boundary contracts",
+    "Native GUI layout, private Xaero waypoints and controls",
+    "World saves, personal runtime data and unrelated map-trial state",
+    "MineRENT, original stable JustEnoughMods profile and immutable release baseline"
+  ],
+  "artifacts": [
+    {
+      "module": "JEMRewards",
+      "file": "jem-rewards-1.0.0.jar",
+      "sha256": "221192c752c8935712d21ecddab399c3bfe65d6721ed5ece20a1dda59017582a",
+      "size": 39865,
+      "source": "Mods/JEMRewards/build/libs/jem-rewards-1.0.0.jar",
+      "synchronized_targets": [
+        "Client/ManagedPack/mods/jem-rewards-1.0.0.jar",
+        "Server/mods/jem-rewards-1.0.0.jar"
+      ],
+      "reobfuscated": true,
+      "test_libraries_packaged": false,
+      "native_installed_sha256": "221192c752c8935712d21ecddab399c3bfe65d6721ed5ece20a1dda59017582a",
+      "native_installed_verified": true
+    },
+    {
+      "module": "JEMWorldBossTiers",
+      "file": "jem-world-boss-tiers-2.5.0-dev.jar",
+      "sha256": "a18154f9cb492ca94519e7b27fe105e4a81d9f4062fa872f02ee9951bd22664e",
+      "size": 398822,
+      "source": "Mods/JEMWorldBossTiers/build/libs/jem-world-boss-tiers-2.5.0-dev.jar",
+      "synchronized_targets": [
+        "Client/ManagedPack/mods/jem-world-boss-tiers-2.5.0-dev.jar",
+        "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar"
+      ],
+      "reobfuscated": true,
+      "test_libraries_packaged": false,
+      "native_installed_sha256": "a18154f9cb492ca94519e7b27fe105e4a81d9f4062fa872f02ee9951bd22664e",
+      "native_installed_verified": true
+    },
+    {
+      "module": "JEMServer",
+      "file": "jem-server-2.0.0-dev.jar",
+      "sha256": "75d407370e68df41477487ad38014d571587414e89c05c4c9809dad87e136ffa",
+      "size": 20270861,
+      "source": "Mods/JEMServer/build/libs/jem-server-2.0.0-dev.jar",
+      "synchronized_targets": [
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+        "Server/mods/jem-server-2.0.0-dev.jar"
+      ],
+      "reobfuscated": true,
+      "test_libraries_packaged": false,
+      "native_installed_sha256": "75d407370e68df41477487ad38014d571587414e89c05c4c9809dad87e136ffa",
+      "native_installed_verified": true
+    }
+  ],
+  "native_publication": {
+    "status": "published",
+    "expected_changes": [
+      "main/jem-pack/manifest.json",
+      "main/mods/jem-rewards-1.0.0.jar",
+      "main/mods/jem-server-2.0.0-dev.jar",
+      "main/mods/jem-world-boss-tiers-2.5.0-dev.jar"
+    ],
+    "additions": 0,
+    "changes": 4,
+    "deletions": 0,
+    "published": true,
+    "journalSequence": 74,
+    "publishedManifestSha1": "e50e5f0c75cc6ff0ab52ec30360bd35989cab25b",
+    "stagedManifestSha1": "e50e5f0c75cc6ff0ab52ec30360bd35989cab25b",
+    "content_token": "c6c236b93d08730da549632ed2c2820fabb4f582",
+    "policy_sha1": "daedfad77a86dc9cfb1fd67c740d37899a52cfaf"
+  },
+  "native_application": {
+    "profile": "test jem",
+    "status": "applied and verified",
+    "content_token": "c6c236b93d08730da549632ed2c2820fabb4f582",
+    "pending_transaction": false,
+    "pending_repair": false,
+    "detached": false,
+    "review_sha256": "d3d39e45067d22a22d154a477ea3ce891d7aa20a8fa1317922f549167afa1ffd",
+    "applied_receipt_sha256": "cb704b09b85a79b176b6f395bd8cee28a7d4c92436108ed939f00922baafc8f4",
+    "client_launch": "not performed",
+    "native_restart_reasons": []
+  },
+  "atlas": {
+    "status": "passed full regeneration, effective rebuild, audit, source impact scan, power views and final validation",
+    "impact_scan_valid": true,
+    "uncovered": [],
+    "artifact_drift": false,
+    "change_record": "Catalog/changes/records/hosted.encounter-integrity-20261025.json",
+    "validation": {
+      "valid": true,
+      "canonical_counts": {
+        "biomes": 264,
+        "blocks": 12205,
+        "creative_tabs": 55,
+        "effects": 473,
+        "enchantments": 219,
+        "entities": 1608,
+        "items": 17542,
+        "structures": 520
+      },
+      "change_records": 151,
+      "effective_index": "Catalog/effective/index.json"
+    },
+    "full_regeneration_log_sha256": "3c0f1626523196d64bab5dd7467ec9c82126f6f700e3867c6a48b01b68db295e"
+  },
+  "remaining_deployment": "MineRENT not deployed, separate release authorization and multiplayer acceptance remain required",
+  "commit": "SELF",
+  "local_server_sync": "Exact three fresh reobfuscated production artifacts synchronized and loaded on ordinary local dedicated server. Native startup and publication completed, server retained running as it was before restart",
+  "operational_incidents": [
+    {
+      "incident": "Older ordinary server was still running when its runtime JARs were replaced",
+      "effect": "Old process reported ClassNotFoundException during shutdown callbacks. Native stop completed and every dimension was saved",
+      "recovery": "Restarted ordinary server PID 35524 from the exact fresh verified artifacts. Native preview succeeded after ServerStarted, showing only three JARs and manifest",
+      "world_data_deleted": false,
+      "forced_termination": false
+    },
+    {
+      "incident": "First preview reached the command dispatcher while a startup recipe reload was still running",
+      "effect": "Existing Recruits listener had not received server initialization yet and rejected that command with null server",
+      "recovery": "Waited for native ServerStarted and retried the same read-only preview successfully, without changing the third-party mod"
+    }
+  ],
+  "completed_at_local": "2026-10-25T02:27:56.911679+05:00"
+}

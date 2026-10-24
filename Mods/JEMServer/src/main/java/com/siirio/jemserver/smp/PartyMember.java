@@ -4,6 +4,9 @@ import java.util.*;
 
 /** Typed state; snapshots reject mutation, including nested values. */
 public final class PartyMember {
+    private boolean nativeDeath;
+    public boolean nativeDeath() { return nativeDeath; }
+    public void nativeDeath(boolean value) { requireMutable(); nativeDeath = value; }
     private boolean frozen;
     private boolean eliminated, eliminatedPresent, eliminatedChanged;
     public boolean eliminated() { return eliminated; }
@@ -80,7 +83,7 @@ public final class PartyMember {
     public void clearPing() { requireMutable(); ping = 0; pingPresent = false; pingChanged = true; }
     private void requireMutable() { if (frozen) throw new IllegalStateException("Cannot mutate an SMP snapshot"); }
     public PartyMember copy() {
-        var copy = new PartyMember();
+        var copy = new PartyMember(); copy.nativeDeath = nativeDeath;
         copy.source = source;
         copy.eliminated = eliminated; copy.eliminatedPresent = eliminatedPresent; copy.eliminatedChanged = eliminatedChanged;
         copy.legacyArenaBoundaryCleared = legacyArenaBoundaryCleared;
@@ -123,7 +126,7 @@ public final class PartyMember {
     /** Serialization boundary, nested solely for private state access. */
     static final class Codec {
     static PartyMember decode(net.minecraft.nbt.CompoundTag tag) {
-        var value = new PartyMember();
+        var value = new PartyMember(); value.nativeDeath = tag.getBoolean("nativeDeath");
         value.source = new PartyMemberNbtCodec.Source(tag);
         value.arenaEntered = tag.getBoolean("arenaEntered") && tag.getBoolean("arenaVolumeEntry");
         value.eliminated = tag.getBoolean("eliminated"); value.eliminatedPresent = tag.contains("eliminated");
@@ -151,6 +154,7 @@ public final class PartyMember {
     }
     static net.minecraft.nbt.CompoundTag encode(PartyMember value) {
         var tag = value.source.copy();
+        if (value.nativeDeath) tag.putBoolean("nativeDeath", true); else tag.remove("nativeDeath");
         if (value.eliminatedChanged) tag.putBoolean("eliminated", value.eliminated);
         if (value.legacyArenaBoundaryCleared) for (String key : List.of("arenaEntered", "arenaVolumeEntry", "arenaInsideX", "arenaInsideY", "arenaInsideZ")) tag.remove(key);
         if (value.arenaEnteredChanged) { tag.putBoolean("arenaEntered", value.arenaEntered); tag.putBoolean("arenaVolumeEntry", value.arenaEntered); }

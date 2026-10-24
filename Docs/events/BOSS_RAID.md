@@ -1,55 +1,46 @@
 # Boss Raid
 
-> Current 2026-10-22 implementation: JEM Raid is dedicated-only and requires JEMServer. Preparation reserves provenance/lobby state; Raid and frozen participant strength apply once at canonical Start. JEMRewards owns full personal item copies. Gameplay acceptance remains unrun.
+Current contract, 2026-10-25: Raid is a dedicated-only variation of the existing hosted Boss Fight lifecycle. It requires JEMServer. The current integration supersedes historical barrier-free, reinforcement-wave and source-only delivery descriptions. Exact build, regression and native-installation evidence is recorded in `encounter-integrity-delivery-20261025.json`.
 
-## Universal ordinary Raid — 2026-10-22
+Raid eligibility derives from a compatible registered BossProfile, historical legitimate defeat and the boss's unlocked registered structure arena. There is no manual Raid boss-type allowlist. One party reserves an arena through WorldTierData/RaidArenaApi. Ordinary manual Raid remains available independently of scheduled-event opt-in, while integrated/LAN never enables Raid.
 
-Dedicated solo/party Raid reuses the canonical hosted encounter and registered structural arena. Integrated/LAN and domain-only installations do not admit JEM Raid. Ordinary native bosses and World Tier remain independent. Server owns event admission; WorldBossTiers owns the canonical arena, frozen combat scaling and ordinary boss recovery. No second allowlist is introduced. The explicit 2026-10-24 restoration reuses the ordinary shared structure-volume barrier
+Preparation holds native combat and records provenance/reservation only. It does not apply Raid attributes or model size. Start validates all accepted, ready, online and authorized participants and destinations. EncounterContext freezes the same member UUIDs as WorldBossTiers. The party, event, canonical attempt and participation receipts become durable before native combat releases. Failed Start reverses movement, reservation, participation changes and Raid modifiers, retaining retry intent on storage failure.
 
-## Source update —2026-10-21
+| Component | Raid behavior |
+| --- | --- |
+| Health | Existing default multiplier 2.5 over the frozen participant/native World Tier profile |
+| Damage | Existing default multiplier 1.25 over frozen participant factors, preserving native component formulas |
+| Size | Intended multiplier 1.35 applied once at Start, bounded by registered volume and actual collision |
+| Native mechanics | Original attacks, abilities, phases, projectiles and summons remain owned by the installed boss mod |
+| JEM mechanics | No authored Raid reinforcement waves, extra Raid attacks or reinforcement stat layer |
+| Barrier | The same six-face physical structure-volume shell as Boss Fight, solid throughout combat |
+| Participation | Once per player UUID/canonical arena, committed with the exact Start attempt |
 
-In testing; runtime acceptance, artifact delivery and MineRENT deployment pending. The user explicitly restores old visible walls, collision and teleport restrictions for ordinary bosses, Campaign and Raid on 2026-10-24. Blood Moon and Resource Rush retain their contracts. Active participants enter once and leave through the existing leave/forfeit or terminal safe-exit flow. An empty arena still closes through the canonical hosted grace lifecycle. Damage/reward membership and immediate elimination on actual death remain enforced.
+If the enlarged body cannot safely fit, use only a verified collision-safe scale. Never clip or suffocate the boss, and do not substitute a relocated roof spawn. Complete prior Pehkui state and attributes are restored after failure or termination. Native summoned entities have no JEM Raid count cap and are never discarded merely for exceeding the removed wave budget. Player-owned or conflicting entities are not adopted as boss summons. Legacy wave counters are retired without deleting native entities.
 
-`HostedRaidScaling` removes its legacy preparation modifiers before deriving combined Raid/participant strength at Start. Preparation changes no stats or size. Retry removes exact owned modifiers; a failed Start restores its size change. Native percent-damage authority remains unchanged. These are source claims, not runtime measurements.
+The shared combat owner enforces accepted frozen participants, outsider damage/target denial, earned contribution/support eligibility and immediate actual-death elimination. A member's voluntary exit forfeits only that member. Host forfeit or expired host absence fails the whole attempt. Actual host death alone does not cancel remaining members. Both disconnect owners use the same configured grace. Reconnect cannot reactivate eliminated members or erase an expired absence outcome.
 
-An attempted hit on a dormant registered boss opens the existing encounter GUI and does not damage it or start combat. Reload restores noAI/invulnerability/presentation hold until Start. Official server boss/event markers can invoke validated native Xaero travel; personal waypoints are unchanged. See [Boss Fight](BOSS_FIGHT.md) for the common source contract.
+Each eligible recipient receives a full independent copy of captured native loot through JEMRewards. Raid retains the existing tagged-resource multiplier and personal cache: two distinct weighted resources and one enchanted book. No skill books or fractional shared pool. Frozen batch storage must be durably verified before victory and cleanup finalize. Offline/full-inventory rewards and pending XP survive independently. Full details and first-write failure limits are owned by [Boss Fight](BOSS_FIGHT.md#failure-safe-personal-settlement).
 
-Authored Raid reinforcements are associated with the canonical hosted boss for damage authority, preserving outsider denial without a second participant owner. On load, a closed orphaned Raid boss restores normal dormant hold. Canonical Start independently rechecks Campaign prerequisites; barrier admission does not grant awakening or damage authorization. Legacy block cleanup is limited to exact retired JEM barrier IDs in known owned shell cells; no wider old-world migration is introduced.
+Raid may acquire one boss immediately while ordinary cooldown is pending. Reuse the legitimate living normal boss when available. Otherwise require a verified anchor, canonical ownership and complete saved-entity loading before creating one exact native identity. Pending creation records native NBT/UUID before insertion and acknowledges the native entity write. Unknown or unloaded saved UUIDs block replacement.
 
-## Primary state
+After victory, defeat, timeout or cancellation, preserve durable retirement/replacement intent, restore normal attributes/model size and converge to one dormant normal boss. An existing surviving converted normal boss may be restored in place. A legitimately dead or explicitly retired Raid UUID receives a durable retirement receipt before replacement. A stale saved copy of that UUID cannot become a new live claim. Recovery can wait for entity loading or storage repair, but it never treats unknown identity as death or reports unresolved cleanup as settled.
 
-Boss Raid reuses the canonical registered arena, party, arrival/return flow and verified native spawn anchor with the restored shared visual, collision and teleport barrier. A legitimate living boss remains in place; an absent Raid boss may be restored only at its verified native anchor. Missing anchor evidence causes explicit refusal.
+Ordinary cooldown remains a separate existing ScheduledRespawns record. Raid acquisition/restoration does not cancel, shorten or restart it. A later ordinary legitimate death owns its own three-Minecraft-day due time. Retry and restart preserve the original death identity and due time.
 
-Фактическая смерть остаётся elimination текущей Raid attempt, но inventory, armor, offhand и Curios участника сохраняются на respawn без grave, пока смерть произошла внутри активной структурной арены. Вне активного Raid обычная death/grave policy не меняется.
+Surviving online members are safely ejected outside the sealed arena through a scoped server operation before the approved return/home flow. Offline living members retain ejection/return intent until login. A failed teleport or player save retains RECOVERY rather than clearing origins. NativeDeath follows normal bed/world-spawn respawn and never rejoins the attempt. Official Xaero markers retain native controls/privacy and share the canonical structure layer rather than a second Raid rectangle.
 
-Raid reuses the ordinary shared Zeus effect: interval0.005833 Minecraft days, warning0.001 Minecraft days, shared warning/hit radius1.75 blocks and24 perimeter particles. Confirmed native forced capture defers the additional JEM lightning; Raid does not create a duplicate periodic hazard.
+## Acceptance and exclusions
 
-Команда старта принимает любого зарегистрированного и уже побеждённого босса, который находится в разблокированной собственной структурной арене в том же измерении. Отдельного allowlist типов нет: raid eligibility и реальные границы рейда выводятся из canonical BossProfile и зарегистрированной структуры.
+- Focused opt-in regressions are explicitly authorized by the current task, with exact results in the delivery receipt
+- Source inspection and a successful production build do not prove multiplayer behavior
+- Actual installed-mod native attacks, portals, multipart bodies, mounts, crash/restart recovery and two-player outcomes remain unverified until observed in an authorized runtime session
+- No gameplay client launch, MineRENT deployment, stable profile update or release-baseline promotion is implied
+- No new GUI design, boss-type allowlist, replacement native AI or independent arena/reward owner is introduced
 
-Individual reward содержит ровно два различных weighted resources и одну enchanted book. Skill books не выдаются. Победа, поражение, cleanup и retry проходят через один event instance; system-created party не расходует public posting cooldown.
+## Historical notes
 
-Фактическое участие записывается persistent по player UUID и canonical arena ID при старте боя. Повторный Raid этой арены запрещён через любую другую Party; outsider не может наносить Raid boss damage или получить награду. После victory, defeat, forfeit или termination текущий Raid boss удаляется, online-участники немедленно перемещаются на ближайшую проверенную позицию за внешней плоскостью арены, offline-участники сохраняют обязательный выход до следующего входа, и на verified native anchor идемпотентно восстанавливается ровно один свежий normal boss без Raid scale, aggro и ownership. Если локальный safe exit временно недоступен, используется сохранённая безопасная pre-Raid return position. Pending replacement сохраняется через restart и завершается при следующей загрузке структуры.
-
-Accepted participants use shared safe arrival and encounter authorization. There is no closed Raid wall: ordinary entry/exit and teleports remain traversable, while damage, participation and reward eligibility remain authoritative. Supported native component adapters apply the hosted correction once to flat damage, preserving native percent operands/caps. Raid damage default is1.25 and health default remains2.5; saved world/admin/profile overrides and prepared encounter snapshots remain authoritative. See [combat balance](../power-system/Balance.md).
-
-Отмена host использует token текущей raid attempt и тот же terminal lifecycle, что defeat: stale chat action side-effect-free, а успешный запрос атомарно закрывает encounter, снимает encounter/participant state, выполняет safe exit и оставляет canonical replacement flow единственным владельцем восстановления normal boss.
-
-Disconnect использует общий event-instance participant lifecycle: момент выхода сохраняется сервером, reconnect раньше пяти минут отменяет ожидание поражения, а solo возвращается на проверенную arena respawn-точку. Пять минут непрерывного отсутствия помечают только этого участника `eliminated`; при следующем входе он получает поражение и возвращается к сохранённой исходной позиции, но raid instance, boss и остальные участники продолжают бой.
-
-При активации боя общий hosted lifecycle включает AI босса и назначает ближайшего живого участника начальной целью, поэтому временный lobby hold не может оставить модового босса без target. После завершения безопасный выход ищется возле вертикального диапазона структуры и никогда не выводится из dimension heightmap, чтобы Nether roof не мог стать точкой выхода.
-
-Xaero не создаёт отдельную Raid-территорию: active Raid использует тот же необязательный canonical structure layer, что и обычный Boss Fight, без наложения второго прямоугольника.
-
-Пока encounter активен, существующий bounded encounter tick восстанавливает ближайшую допустимую живую цель только после потери прежней; он не переопределяет native goals, attack patterns или `NoAI` каждый tick. Reload активного hosted boss один раз восстанавливает combat AI state.
-
-## Rejected
-
-- Отдельный raid participant registry отвергнут: он расходился с Party и recovery.
-- Ручной allowlist raid boss entity types отвергнут: он дублировал BossProfile и структуру, поэтому новые структурные боссы молча не проходили запуск.
-- Безлимитные reinforcement batches отвергнуты: они ломали pacing и нагрузку.
-- Skill books в наградах отвергнуты решением от 2026-09-28.
-- Activities/feed как журнал боя отвергнут: остаются encounter messages и native reward delivery.
-
+The following sections describe earlier investigations. Their distribution and barrier statements are superseded by the current contract above.
 
 ## Hosted lifecycle repair — 2026-10-19
 

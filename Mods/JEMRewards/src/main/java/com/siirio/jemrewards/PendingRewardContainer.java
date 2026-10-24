@@ -60,6 +60,12 @@ public final class PendingRewardContainer {
 
     /** Persist all rolls before touching any recipient; retry never reconstructs this snapshot. */
     public static void enqueueBatch(MinecraftServer server, String sourceId, List<RewardGrant> grants) {
+        enqueueFrozenBatch(server, sourceId, freezeBatch(sourceId, grants));
+    }
+
+    /** The encounter persists this immutable serialization, rather than rerolling on recovery. */
+    public static ListTag freezeBatch(String sourceId, List<RewardGrant> grants) {
+        if (sourceId == null || sourceId.isBlank()) throw new IllegalArgumentException("Missing reward source");
         ListTag snapshot = new ListTag();
         Set<UUID> recipients = new HashSet<>();
         for (RewardGrant grant : grants) {
@@ -84,7 +90,21 @@ public final class PendingRewardContainer {
             row.put("Container", container);
             snapshot.add(row);
         }
-        RewardsData.get(server).enqueueBatch(server, sourceId, snapshot);
+        return snapshot;
+    }
+
+    /** Returns only after the complete personal batch and permanent receipts are read back. */
+    public static void enqueueFrozenBatch(MinecraftServer server, String sourceId, ListTag snapshot) {
+        Set<UUID> recipients = new HashSet<>();
+        for (Tag value : snapshot) {
+            CompoundTag row = (CompoundTag) value;
+            if (!row.hasUUID("Player") || !recipients.add(row.getUUID("Player"))
+                    || !sourceId.equals(row.getCompound("Container").getString("SourceId")))
+                throw new IllegalArgumentException("Invalid frozen reward batch");
+        }
+        RewardsData storage = RewardsData.get(server);
+        storage.enqueueBatch(server, sourceId, snapshot);
+        if (!storage.batchCommitted(sourceId)) throw new IllegalStateException("storage_unavailable");
     }
 
     private static ListTag saveItems(List<ItemStack> items) {

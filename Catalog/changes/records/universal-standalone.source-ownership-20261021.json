@@ -918,9 +918,6 @@
       "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/blood_moon/ranged/primary.json",
       "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/blood_moon/support.json",
       "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/blood_moon/teleporter.json",
-      "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/mummy.json",
-      "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
-      "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json",
       "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
       "Mods/JEMSettlements/build.gradle",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/JemSettlements.java",
@@ -4535,6 +4532,17 @@
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/native/jemcompat/post_end/the_end.json",
         "Mods/JEMAchievementGuide/tools/validate_campaign_guide.py"
       ]
+    },
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "retire_authored_raid_wave_tags",
+      "summary": "User final encounter integration removes authored Raid reinforcement waves. Preserve former source paths as history, current shared lifecycle source remains authoritative",
+      "source_files": [
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/mummy.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json"
+      ]
     }
   ],
   "impacts": {
@@ -4552,7 +4560,8 @@
     "notes": [
       "Existing registry/resource/network namespace and saved-data identities are retained unless the explicitly recorded protocol version changes. No new price policy or copied gameplay state owner is introduced.",
       "Controller produced and synchronized fresh production artifacts to ordinary Client/ManagedPack and Server; native publication/application and manual player acceptance are separate delivery evidence.",
-      "Book advancement presentation sources retired on 2026-10-24 under handbook.reference-only-book-20261024, underlying advancement and quest behavior is preserved"
+      "Book advancement presentation sources retired on 2026-10-24 under handbook.reference-only-book-20261024, underlying advancement and quest behavior is preserved",
+      "The 2026-10-25 hosted.encounter-integrity rule supersedes authored Raid wave behavior. Native summons and unrelated module behavior remain preserved"
     ],
     "unresolved": [
       "Fresh missing-mod/ON-OFF/restart/manual gameplay and visual acceptance on Windows/Linux/macOS remains unexercised. No automated tests or gameplay scenarios were run."

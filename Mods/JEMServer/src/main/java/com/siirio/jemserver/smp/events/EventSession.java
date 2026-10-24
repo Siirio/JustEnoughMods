@@ -38,12 +38,17 @@ public record EventSession(EventState data) {
 
     private void acceptInScope(ServerPlayer player) {
         var member=data.memberOrEmpty(player.getUUID());
+        SmpRecords.require(canAccept(data, player.getUUID()), "combat_locked");
         member.accepted(true);
-        member.eliminated(false);
         member.name(player.getGameProfile().getName());
         data.addMember(player.getUUID(),member);
 
     }
+    static boolean canAccept(EventState event, UUID playerId) {
+        return event.pendingOutcome().isEmpty() && !event.hasEncounterParticipants() && !event.combatStarted()
+                && !event.memberOrEmpty(playerId).eliminated();
+    }
+
     public void mark(Entity entity) {
         var tag=entity.getPersistentData();
         tag.putUUID(SESSION,id()); tag.putBoolean(SPAWNED,true);

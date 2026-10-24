@@ -40,6 +40,15 @@ public final class EventScheduler {
         if (server.getTickCount() % 20 != 0) return;
         var data = SmpData.get(server);
         long now = System.currentTimeMillis();
+        for (var row : data.events().currentRows()) {
+            if (row.pendingOutcome().isEmpty()) continue;
+            try {
+                if (row.pendingOutcome().equals("FAILED_ATTEMPT")) failAttempt(server, row);
+                else finish(server, row, row.pendingOutcome());
+            } catch (RuntimeException recovery) {
+                com.mojang.logging.LogUtils.getLogger().error("Encounter terminal cleanup remains pending for {}", row.id(), recovery);
+            }
+        }
         if (!EventRuntime.enabled(server)) {
             for (var row : List.copyOf(data.events().currentRows())) {
                 if (!EventRuntime.ordinaryRaid(row) || !row.state().equals("ACTIVE")) continue;
@@ -227,9 +236,12 @@ public final class EventScheduler {
     }
 
     private static void finishInScope(MinecraftServer server, EventState row, String state) {
-        announce(server,row,false,state);
+        if (row.closed() && row.pendingOutcome().isEmpty()) { SmpData.get(server).flush(server); return; }
+        row.pendingOutcome(state);
+        SmpData.get(server).flush(server);
+        if (row.activity().equals("BOSS_RAID") && !state.equals("COMPLETED")) RaidEvent.closeHostedAttempt(server, row);
         if(row.combatStarted()) new EncounterContext(row).complete(server,state.equals("COMPLETED"));
-        row.state( state);
+        row.state("RECOVERY");
         ACTIVE_CACHE.remove(server);
         if(row.activity().equals("BLOOD_MOON")) EventAreaHooks.releaseBloodMoon(server,row.id(),false);
         if(row.activity().equals("BLOOD_MOON") && !state.equals("COMPLETED")) {
@@ -241,7 +253,8 @@ public final class EventScheduler {
         row.clearPlacements();
         BloodMoon.cleanup(server, row);
         RaidEvent.cleanup(server, row);
-
+        acknowledgeTerminal(server, row, state, false);
+        announce(server, row, false, state);
     }
 
     public static void failAttempt(MinecraftServer server, EventState row) {
@@ -252,8 +265,11 @@ public final class EventScheduler {
     }
 
     private static void failAttemptInScope(MinecraftServer server, EventState row) {
-        if (!row.state().equals("ACTIVE") || !COMBAT_EVENTS.contains(row.activity())) return;
-        announce(server,row,false,"FAILED");
+        if ((!row.state().equals("ACTIVE") && !row.pendingOutcome().equals("FAILED_ATTEMPT"))
+                || !COMBAT_EVENTS.contains(row.activity())) return;
+        row.pendingOutcome("FAILED_ATTEMPT");
+        SmpData.get(server).flush(server);
+        if (row.activity().equals("BOSS_RAID")) RaidEvent.closeHostedAttempt(server, row);
         var encounter=new EncounterContext(row);
         encounter.complete(server,false);
         var data=SmpData.get(server);
@@ -266,6 +282,8 @@ public final class EventScheduler {
         finishPartyTeleport(server,row);
         for (var member : row.members().values()) {
             member.clearAccepted();
+            member.eliminated(false);
+            member.nativeDeath(false);
             member.clearReady();
             member.clearActualDeaths();
             member.clearAwaitingReturn();
@@ -276,7 +294,26 @@ public final class EventScheduler {
         encounter.resetAttempt();
         resetAttemptFields(row);
         if(row.activity().equals("BLOOD_MOON")) EventAreaHooks.releaseBloodMoon(server,row.id(),true);
+        acknowledgeTerminal(server, row, "FAILED", true);
+        announce(server, row, false, "FAILED");
+    }
 
+    private static void acknowledgeTerminal(MinecraftServer server, EventState event, String state, boolean retryable) {
+        var store = SmpData.get(server);
+        var party = event.hasParty() ? store.parties().current(event.party()) : null;
+        // failAttempt reset clears the event party pointer, but the existing party carries its own intent.
+        var pendingParties = party == null ? store.parties().currentRows().stream()
+                .filter(row -> row.hasEventId() && row.eventId().equals(event.id()) && !row.pendingOutcome().isEmpty()).toList()
+                : java.util.List.of(party);
+        for (var row : pendingParties) { row.state(state); row.pendingOutcome(""); }
+        event.state(retryable ? "ACTIVE" : state);
+        event.clearPendingOutcome();
+        try { store.flush(server); }
+        catch (RuntimeException failure) {
+            event.pendingOutcome(retryable ? "FAILED_ATTEMPT" : state); event.state("RECOVERY");
+            for (var row : pendingParties) { row.pendingOutcome(state); row.state("RECOVERY"); }
+            throw failure;
+        }
     }
 
     public static boolean cancelAttempt(MinecraftServer server, EventState row, UUID actionToken) {
@@ -299,7 +336,8 @@ public final class EventScheduler {
         var data=SmpData.get(server);
         var party=data.parties().current(event.party());
         if(party!=null && !SmpData.closed(party)) {
-            party.state(state);
+            party.pendingOutcome(state);
+            party.state("RECOVERY");
             HostedBoundary.clearParty(party);
 
         }
@@ -422,10 +460,6 @@ public final class EventScheduler {
         row.clearEliteTypes();
         row.clearSpecialEquipped();
         row.clearFullEquipped();
-        row.clearRaidReinforcementStage();
-        row.clearRaidAlliesSpawned();
-        row.clearRaidAllies();
-        row.clearRaidBossInitialHealth();
         row.setPiece(setPiece);
     }
 

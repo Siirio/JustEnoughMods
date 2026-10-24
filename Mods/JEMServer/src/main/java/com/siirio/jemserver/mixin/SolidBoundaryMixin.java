@@ -15,6 +15,11 @@ import java.util.List;
 
 @Mixin(Entity.class)
 public abstract class SolidBoundaryMixin {
+    @ModifyVariable(method = "move", at = @At("HEAD"), argsOnly = true)
+    private Vec3 jem$completeVehicleBoundary(Vec3 movement) {
+        return SolidBoundary.limitMovement((Entity) (Object) this, movement);
+    }
+
     @ModifyVariable(method = "collideBoundingBox", at = @At("HEAD"), argsOnly = true)
     private static List<VoxelShape> jem$solidBoundary(List<VoxelShape> collisions, Entity entity, Vec3 movement, AABB box, Level level) {
         if (entity == null) return collisions;

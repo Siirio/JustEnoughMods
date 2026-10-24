@@ -16,6 +16,10 @@ public final class EventState implements SmpRecord {
     boolean descriptionChanged;
     private Map<UUID,EventFishingScore> scores;
     boolean scoresChanged;
+    private String pendingOutcome = "";
+    public String pendingOutcome() { return pendingOutcome; }
+    public void pendingOutcome(String value) { requireMutable(); pendingOutcome = java.util.Objects.requireNonNull(value); }
+    public void clearPendingOutcome() { pendingOutcome(""); }
     private boolean frozen;
     EventNbtCodec.Source source = new EventNbtCodec.Source();
     private UUID id;
@@ -88,10 +92,6 @@ public final class EventState implements SmpRecord {
     boolean minZChanged;
     private Integer radius;
     boolean radiusChanged;
-    private Integer raidAlliesSpawned;
-    boolean raidAlliesSpawnedChanged;
-    private Integer raidReinforcementStage;
-    boolean raidReinforcementStageChanged;
     private Integer rewardedWave;
     boolean rewardedWaveChanged;
     private Integer specialEquipped;
@@ -170,8 +170,6 @@ public final class EventState implements SmpRecord {
     boolean encounterParticipantsChanged;
     private List<UUID> invalidatedLoot;
     boolean invalidatedLootChanged;
-    private List<UUID> raidAllies;
-    boolean raidAlliesChanged;
     private List<UUID> raidBosses;
     boolean raidBossesChanged;
     private Map<String, Integer> remaining;
@@ -180,8 +178,6 @@ public final class EventState implements SmpRecord {
     boolean spawnFailuresChanged;
     private Map<String, Boolean> eliteTypes;
     boolean eliteTypesChanged;
-    private Map<UUID, Double> raidBossInitialHealth;
-    boolean raidBossInitialHealthChanged;
     private Set<Long> placements;
     boolean placementsChanged;
     private Set<UUID> rushParticipants;
@@ -200,6 +196,7 @@ public final class EventState implements SmpRecord {
     private void requireMutable() { if (frozen) throw new IllegalStateException("Immutable event snapshot"); }
     public EventState copy() {
         var copy = new EventState();
+        copy.pendingOutcome = pendingOutcome;
         copy.source = source.copy();
         if (scores != null) { var values = new LinkedHashMap<UUID,EventFishingScore>(); scores.forEach((id,value) -> values.put(id,value.copy())); copy.scores = Collections.unmodifiableMap(values); }
         copy.scoresChanged = scoresChanged;
@@ -278,10 +275,6 @@ public final class EventState implements SmpRecord {
         copy.minZChanged = minZChanged;
         copy.radius = radius;
         copy.radiusChanged = radiusChanged;
-        copy.raidAlliesSpawned = raidAlliesSpawned;
-        copy.raidAlliesSpawnedChanged = raidAlliesSpawnedChanged;
-        copy.raidReinforcementStage = raidReinforcementStage;
-        copy.raidReinforcementStageChanged = raidReinforcementStageChanged;
         copy.rewardedWave = rewardedWave;
         copy.rewardedWaveChanged = rewardedWaveChanged;
         copy.specialEquipped = specialEquipped;
@@ -364,8 +357,6 @@ public final class EventState implements SmpRecord {
         copy.encounterParticipantsChanged = encounterParticipantsChanged;
         copy.invalidatedLoot = invalidatedLoot;
         copy.invalidatedLootChanged = invalidatedLootChanged;
-        copy.raidAllies = raidAllies;
-        copy.raidAlliesChanged = raidAlliesChanged;
         copy.raidBosses = raidBosses;
         copy.raidBossesChanged = raidBossesChanged;
         copy.remaining = remaining;
@@ -374,8 +365,6 @@ public final class EventState implements SmpRecord {
         copy.spawnFailuresChanged = spawnFailuresChanged;
         copy.eliteTypes = eliteTypes;
         copy.eliteTypesChanged = eliteTypesChanged;
-        copy.raidBossInitialHealth = raidBossInitialHealth;
-        copy.raidBossInitialHealthChanged = raidBossInitialHealthChanged;
         copy.placements = placements;
         copy.placementsChanged = placementsChanged;
         copy.rushParticipants = rushParticipants;
@@ -552,14 +541,6 @@ public final class EventState implements SmpRecord {
     public void radius(int value) { requireMutable(); radiusChanged = true; radius = value; }
     public boolean hasRadius() { return radius != null; }
     public void clearRadius() { requireMutable(); radiusChanged = true; radius = null; }
-    public int raidAlliesSpawned() { return raidAlliesSpawned == null ? 0 : raidAlliesSpawned; }
-    public void raidAlliesSpawned(int value) { requireMutable(); raidAlliesSpawnedChanged = true; raidAlliesSpawned = value; }
-    public boolean hasRaidAlliesSpawned() { return raidAlliesSpawned != null; }
-    public void clearRaidAlliesSpawned() { requireMutable(); raidAlliesSpawnedChanged = true; raidAlliesSpawned = null; }
-    public int raidReinforcementStage() { return raidReinforcementStage == null ? 0 : raidReinforcementStage; }
-    public void raidReinforcementStage(int value) { requireMutable(); raidReinforcementStageChanged = true; raidReinforcementStage = value; }
-    public boolean hasRaidReinforcementStage() { return raidReinforcementStage != null; }
-    public void clearRaidReinforcementStage() { requireMutable(); raidReinforcementStageChanged = true; raidReinforcementStage = null; }
     public int rewardedWave() { return rewardedWave == null ? 0 : rewardedWave; }
     public void rewardedWave(int value) { requireMutable(); rewardedWaveChanged = true; rewardedWave = value; }
     public boolean hasRewardedWave() { return rewardedWave != null; }
@@ -717,10 +698,6 @@ public final class EventState implements SmpRecord {
     public void invalidatedLoot(List<UUID> value) { requireMutable(); invalidatedLootChanged = true; invalidatedLoot = List.copyOf(value); }
     public boolean hasInvalidatedLoot() { return invalidatedLoot != null; }
     public void clearInvalidatedLoot() { requireMutable(); invalidatedLootChanged = true; invalidatedLoot = null; }
-    public List<UUID> raidAllies() { return raidAllies == null ? List.of() : raidAllies; }
-    public void raidAllies(List<UUID> value) { requireMutable(); raidAlliesChanged = true; raidAllies = List.copyOf(value); }
-    public boolean hasRaidAllies() { return raidAllies != null; }
-    public void clearRaidAllies() { requireMutable(); raidAlliesChanged = true; raidAllies = null; }
     public List<UUID> raidBosses() { return raidBosses == null ? List.of() : raidBosses; }
     public void raidBosses(List<UUID> value) { requireMutable(); raidBossesChanged = true; raidBosses = List.copyOf(value); }
     public boolean hasRaidBosses() { return raidBosses != null; }
@@ -737,10 +714,6 @@ public final class EventState implements SmpRecord {
     public void eliteTypes(Map<String, Boolean> value) { requireMutable(); eliteTypesChanged = true; eliteTypes = Collections.unmodifiableMap(new LinkedHashMap<>(value)); }
     public boolean hasEliteTypes() { return eliteTypes != null; }
     public void clearEliteTypes() { requireMutable(); eliteTypesChanged = true; eliteTypes = null; }
-    public Map<UUID, Double> raidBossInitialHealth() { return raidBossInitialHealth == null ? Map.of() : raidBossInitialHealth; }
-    public void raidBossInitialHealth(Map<UUID, Double> value) { requireMutable(); raidBossInitialHealthChanged = true; raidBossInitialHealth = Collections.unmodifiableMap(new LinkedHashMap<>(value)); }
-    public boolean hasRaidBossInitialHealth() { return raidBossInitialHealth != null; }
-    public void clearRaidBossInitialHealth() { requireMutable(); raidBossInitialHealthChanged = true; raidBossInitialHealth = null; }
     public Set<Long> placements() { return placements == null ? Set.of() : placements; }
     public void placements(Set<Long> value) { requireMutable(); placementsChanged = true; placements = Collections.unmodifiableSet(new LinkedHashSet<>(value)); }
     public boolean hasPlacements() { return placements != null; }

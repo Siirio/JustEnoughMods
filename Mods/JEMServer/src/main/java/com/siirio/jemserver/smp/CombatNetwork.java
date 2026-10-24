@@ -176,20 +176,31 @@ public final class CombatNetwork {
         }
     }
     @SubscribeEvent public static void closed(HostedEncounterClosedEvent event) {
-        var boss=event.boss();
-        if(!SmpEnvironment.active(boss.getServer())) return;
-        var result=new CompoundTag();
-        result.putUUID("id",boss.getUUID());
-        result.putString("source",boss.getStringUUID());
-        result.putString("title",boss.getDisplayName().getString());
-        result.putString("titleKey",boss.getType().getDescriptionId());
-        result.putBoolean("success",event.success());
-        result.put("rows",HostedEncounters.results(boss));
-        for(var participant:HostedEncounterApi.status(boss)) {
-            var player=boss.getServer().getPlayerList().getPlayer(participant.playerId());
-            if(player!=null) complete(player,result);
+        if (!SmpEnvironment.active(event.server())) return;
+        var result = new CompoundTag();
+        result.putUUID("id", event.bossId());
+        result.putString("source", event.bossId().toString());
+        var boss = event.boss();
+        result.putString("title", boss == null ? "" : boss.getDisplayName().getString());
+        result.putString("titleKey", boss == null ? "" : boss.getType().getDescriptionId());
+        result.putBoolean("success", event.success());
+        var rows = new ListTag();
+        var players = event.frozenState().getCompound("Players");
+        for (String id : players.getAllKeys()) {
+            var entry = players.getCompound(id);
+            var row = new CompoundTag();
+            row.putUUID("id", UUID.fromString(id)); row.putString("name", entry.getString("Name"));
+            row.putDouble("damage", entry.getDouble("BossDamage"));
+            row.putInt("revives", entry.getInt("Revives")); row.putInt("downs", entry.getInt("Downs"));
+            rows.add(row);
+        }
+        result.put("rows", rows);
+        for (String id : players.getAllKeys()) {
+            var player = event.server().getPlayerList().getPlayer(UUID.fromString(id));
+            if (player != null) complete(player, result);
         }
     }
+
     public static void completedBloodMoon(MinecraftServer server,EventState event) {
         var result=base(event.id(),event.dimension(),event.ends(),"",true);
         result.putBoolean("success",true);

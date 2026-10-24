@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
   "view": "enchantments",
-  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
+  "snapshot_sha": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
@@ -5555,6 +5555,45 @@
       "id": "kaleidoscope_end:void_echo.desc",
       "kind": "enchantment",
       "display_name": "Based on enchantment level, has a chance to deal area damage",
+      "original": {
+        "status": "unresolved",
+        "expression": null,
+        "known_dimensions": {},
+        "unknown_is_zero": false
+      },
+      "modifiers": [],
+      "jem_tweaks": [],
+      "effective": {
+        "status": "unresolved",
+        "expression": "original (partially unresolved) composed with only applicable documented modifiers"
+      },
+      "acquisition": {
+        "status": "unresolved",
+        "routes": []
+      },
+      "assessment": {
+        "status": "unverified",
+        "reason": "A registry candidate is accounted for, but static registry evidence does not prove its runtime combat expression."
+      },
+      "evidence": [
+        {
+          "type": "atlas_static",
+          "source": "Catalog/registries/enchantments/kaleidoscope_end.json",
+          "confidence": "inferred"
+        }
+      ],
+      "power_dimensions": [
+        "damage",
+        "mitigation",
+        "utility",
+        "resource cost",
+        "compatibility"
+      ]
+    },
+    {
+      "id": "kaleidoscope_end:void_shot",
+      "kind": "enchantment",
+      "display_name": "Void Shot",
       "original": {
         "status": "unresolved",
         "expression": null,

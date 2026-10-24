@@ -141,19 +141,6 @@ public final class EventMobModifiers {
         return damage;
     }
 
-    public static void applyRaidMob(Mob mob,int tier,int players) {
-        multiply(mob,Attributes.MAX_HEALTH,"raid_health",1.50);
-        multiply(mob,Attributes.ATTACK_DAMAGE,"raid_damage",1.50);
-        mob.getPersistentData().putDouble(PENETRATION,.20);
-        applyTier(mob,tier);
-        if(mob.getRandom().nextDouble()<.35) applyArchetype(mob,ARCHETYPES.get(mob.getRandom().nextInt(ARCHETYPES.size())),tier);
-        double playerHealth=players<=1?1:1+.20*(Math.min(5,players)-1);
-        double playerDamage=players<=1?1:Math.min(1.45,1+.05*(Math.min(10,players)-1));
-        multiply(mob,Attributes.MAX_HEALTH,"raid_players_health",playerHealth);
-        multiply(mob,Attributes.ATTACK_DAMAGE,"raid_players_damage",playerDamage);
-        mob.setHealth(mob.getMaxHealth());
-    }
-
     private static void applyTier(Mob mob,int tier) {
         double health=1,damage=1,speed=1;
         if(tier>=2) {health*=1.10;damage*=1.10;}
@@ -295,7 +282,7 @@ public final class EventMobModifiers {
     private static boolean available(Mob mob) {
         if (mob.getServer() == null || !mob.getPersistentData().hasUUID(EventSession.SESSION)) return false;
         var row = com.siirio.jemserver.smp.SmpData.get(mob.getServer()).events().snapshot(mob.getPersistentData().getUUID(EventSession.SESSION));
-        return EventRuntime.available(mob.getServer(), row);
+        return row != null && row.activity().equals("BLOOD_MOON") && EventRuntime.available(mob.getServer(), row);
     }
 
     private static void multiply(Mob mob,Attribute attribute,String name,double factor) {

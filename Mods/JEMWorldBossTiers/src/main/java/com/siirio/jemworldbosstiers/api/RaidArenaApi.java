@@ -6,6 +6,7 @@ import com.siirio.jemworldbosstiers.encounter.EncounterProvenance;
 import com.siirio.jemworldbosstiers.progression.WorldTierData;
 import com.siirio.jemworldbosstiers.revival.ArenaRecord;
 import com.siirio.jemworldbosstiers.revival.ArenaService;
+import com.siirio.jemworldbosstiers.revival.NativeBossStorage;
 import com.siirio.jemworldbosstiers.revival.NativeAnchorMigration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -62,7 +63,8 @@ public final class RaidArenaApi {
         WorldTierData data = WorldTierData.get(server);
         ArenaRecord arena = data.arena(arenaId).orElse(null);
         var profile = BalanceRegistry.boss(entityType).orElse(null);
-        return arena != null && arena.structureArena() && profile != null && arena.profileKey().equals(profile.key()) && arena.unlocked()
+        return arena != null && !data.raidReplacementPending(arena.id()) && !data.hostedSettlementPending(arena.id())
+                && arena.structureArena() && profile != null && arena.profileKey().equals(profile.key()) && arena.unlocked()
                 && (arena.activeEncounterId() == null&&data.liveBoss(arena.id()).isEmpty() || dormantNativeBoss(server,arena))
                 && data.defeatedBosses().contains(profile.key());
     }
@@ -185,7 +187,6 @@ public final class RaidArenaApi {
             data.putArena(arena.withRespawnPosition(boss.blockPosition()));
             data.verifyNativeAnchor(arenaId);
         }
-        data.cancelRespawn(arenaId);
     }
 
     public static void installAnchorMigrationHandler(AnchorMigrationHandler handler) {
@@ -255,8 +256,7 @@ public final class RaidArenaApi {
             created.moveTo(arena.respawnPosition().getX() + .5D, arena.respawnPosition().getY(), arena.respawnPosition().getZ() + .5D, 0, 0);
             if (!level.noCollision(created)) return Optional.empty();
             EncounterScaler.initialize(created, profile, EncounterProvenance.RAID_EVENT, false, true, arenaId);
-            if(!data.recordLiveBoss(arena.id(),created)) return Optional.empty();
-            if(!data.flush(server)) {data.clearLiveBoss(arena.id(),created.getUUID());return Optional.empty();}
+            if (!NativeBossStorage.prepareCreation(level, arena, created)) return Optional.empty();
             if (!level.addFreshEntity(created)) {
                 data.clearLiveBoss(arena.id(),created.getUUID());data.flush(server);return Optional.empty();
             }
@@ -265,9 +265,9 @@ public final class RaidArenaApi {
             observeNativeBoss(server, arenaId, boss);
             arena = data.arena(arenaId).orElse(arena);
         }
-        data.cancelRespawn(arenaId);
         if(!data.recordLiveBoss(arena.id(),boss)) return Optional.empty();
         data.putArena(arena.release(reservationId).recover(boss.getUUID(), level.getGameTime()));
+        if (!NativeBossStorage.finishCreation(level, arena, boss) || !data.flush(server)) return Optional.empty();
         return Optional.of(boss);
     }
 
@@ -278,11 +278,21 @@ public final class RaidArenaApi {
         if (arena == null||profile==null||!arena.profileKey().equals(profile.key())
                 ||data.liveBoss(arena.id()).filter(owner->!owner.equals(raidBossId)).isPresent()
                 ||arena.activeEncounterId()!=null&&!arena.activeEncounterId().equals(raidBossId)) return;
-        if(!queueRaidCompletion(server,arena.id(),raidBossId,entityType)) return;
+        if(!queueRaidCompletion(server,arena.id(),raidBossId,entityType)) throw new IllegalStateException("storage_unavailable");
         ResourceLocation dimension = ResourceLocation.tryParse(arena.dimension());
         ServerLevel level = dimension == null ? null : server.getLevel(ResourceKey.create(Registries.DIMENSION, dimension));
         if(level==null) return;
         if(!(level.getEntity(raidBossId) instanceof LivingEntity raidBoss)) {
+            var retirement = data.raidRetirement(arena.id()).orElse(null);
+            if (retirement != null && retirement.getUUID("Boss").equals(raidBossId)) {
+                var position = BlockPos.of(retirement.getLong("Position"));
+                if (!ArenaService.entitiesLoaded(level, arena) || !NativeBossStorage.commit(level,
+                        new net.minecraft.world.level.ChunkPos(position), raidBossId, false)) return;
+                data.clearLiveBoss(arena.id(), raidBossId);
+                data.putArena(arena.release(raidBossId));
+                if (!data.flush(server)) throw new IllegalStateException("storage_unavailable");
+                arena = data.arena(arena.id()).orElseThrow();
+            }
             if(data.liveBoss(arena.id()).isEmpty()&&arena.activeEncounterId()==null) restoreNormalBoss(server,arena,entityType);
             return;
         }
@@ -294,21 +304,30 @@ public final class RaidArenaApi {
             }
             data.recordLiveBoss(arena.id(),raidBoss);
             data.putArena(arena.recover(raidBoss.getUUID(),level.getGameTime()));
-            data.cancelRespawn(arena.id());
+            if (!NativeBossStorage.commit(raidBoss) || !data.flush(server)) return;
             data.clearRaidReplacement(arena.id());
+            if (!data.flush(server)) throw new IllegalStateException("storage_unavailable");
             return;
         }
         if(!HostedEncounterApi.isRaid(raidBoss)) {
             data.putArena(arena.recover(raidBoss.getUUID(),level.getGameTime()));
+            if (!NativeBossStorage.commit(raidBoss) || !data.flush(server)) return;
             data.clearRaidReplacement(arena.id());
+            if (!data.flush(server)) throw new IllegalStateException("storage_unavailable");
             return;
         }
         // Only the exact recorded raid entity may be retired. A missing UUID is
         // unresolved ownership, not permission to replace a saved entity.
+        HostedEncounterApi.hold(raidBoss);
+        data.beginRaidRetirement(arena.id(), raidBossId, raidBoss.blockPosition());
+        data.retireBossIdentity(arena.id(), raidBossId);
+        if (!data.flush(server)) throw new IllegalStateException("storage_unavailable");
+        var retiredChunk = raidBoss.chunkPosition();
         raidBoss.discard();
+        if (!NativeBossStorage.commit(level, retiredChunk, raidBossId, false)) return;
         data.clearLiveBoss(arena.id(),raidBossId);
         data.putArena(arena.release(raidBossId));
-        data.cancelRespawn(arena.id());
+        if (!data.flush(server)) throw new IllegalStateException("storage_unavailable");
         restoreNormalBoss(server, data.arena(arena.id()).orElse(arena), entityType);
     }
 
@@ -350,8 +369,12 @@ public final class RaidArenaApi {
             COMPLETIONS.put(arena.id(),new PendingCompletion(arena.id(),pending.boss(),pending.type(),server.getTickCount()+200L));
             return;
         }
-        if(pending.boss()!=null) completeRaid(server,arena.id(),pending.boss(),pending.type());
-        else restoreNormalBoss(server,arena,pending.type());
+        try {
+            if(pending.boss()!=null) completeRaid(server,arena.id(),pending.boss(),pending.type());
+            else restoreNormalBoss(server,arena,pending.type());
+        } catch (RuntimeException failure) {
+            com.mojang.logging.LogUtils.getLogger().error("Raid recovery remains pending for {}", arena.id(), failure);
+        }
         if(data.raidReplacementPending(arena.id())) COMPLETIONS.put(arena.id(),new PendingCompletion(
                 arena.id(),pending.boss(),pending.type(),server.getTickCount()+200L));
     }
@@ -374,10 +397,10 @@ public final class RaidArenaApi {
                 return !data.raidReplacementPending(arena.id());
             }
             if(!data.recordLiveBoss(arena.id(),existing)) return false;
-            data.cancelRespawn(arena.id());
-            data.clearRaidReplacement(arena.id());
             data.putArena(arena.recover(existing.getUUID(),level.getGameTime()));
-            return true;
+            if (!NativeBossStorage.finishCreation(level, arena, existing) || !data.flush(server)) return false;
+            data.clearRaidReplacement(arena.id());
+            return data.flush(server);
         }
         if(data.liveBoss(arena.id()).isPresent()||arena.activeEncounterId()!=null||!ArenaService.entitiesLoaded(level,arena)) return false;
         EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.getOptional(entityType).orElse(null);
@@ -385,17 +408,18 @@ public final class RaidArenaApi {
         boss.moveTo(arena.respawnPosition().getX() + .5D, arena.respawnPosition().getY(), arena.respawnPosition().getZ() + .5D, 0, 0);
         if (!level.noCollision(boss)) return false;
         WorldTierApi.markStructureEncounter(boss, arena.id());
-        if(!data.recordLiveBoss(arena.id(),boss)) return false;
+        if (!NativeBossStorage.prepareCreation(level, arena, boss)) return false;
         ArenaRecord claimed=arena.recover(boss.getUUID(),level.getGameTime());
         data.putArena(claimed);
         if(!data.flush(server)) {data.clearLiveBoss(arena.id(),boss.getUUID());data.putArena(arena);return false;}
         if (!level.addFreshEntity(boss)) {
             data.clearLiveBoss(arena.id(),boss.getUUID());data.putArena(arena);data.flush(server);return false;
         }
-        data.cancelRespawn(arena.id());
-        data.clearRaidReplacement(arena.id());
+        if (!NativeBossStorage.finishCreation(level, arena, boss)) return false;
         data.putArena(claimed);
-        return true;
+        if (!data.flush(server)) return false;
+        data.clearRaidReplacement(arena.id());
+        return data.flush(server);
     }
 
     private static Optional<LivingEntity> livingBoss(ServerLevel level, ArenaRecord arena, java.util.List<ResourceLocation> entityTypes,boolean raidReservation) {
@@ -438,6 +462,7 @@ public final class RaidArenaApi {
         ArenaRecord reserved = arena.activate(reservationId, server.overworld().getGameTime()).orElse(null);
         if (reserved == null) return Optional.empty();
         data.putArena(reserved);
+        if (!data.flush(server)) { data.putArena(arena); return Optional.empty(); }
         return Optional.of(new Arena(reserved.id(), entityType, ResourceLocation.tryParse(reserved.dimension()),
                 reserved.respawnPosition(), reserved.bounds()));
     }

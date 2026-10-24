@@ -22,7 +22,7 @@ public final class EventAttempts {
         SmpRecords.require(EventRuntime.available(host.server, event), "unavailable");
         SmpRecords.require(event != null && event.state().equals("ACTIVE")
                 && EventRegions.near(event, host.serverLevel(), host.blockPosition()), "travel_to_arena");
-        if (event.combatStarted()) return false;
+        if (event.combatStarted() || !event.pendingOutcome().isEmpty()) return false;
         var prepared = event.copy();
         var encounter = new EncounterContext(prepared);
         encounter.initialize(host, participants);

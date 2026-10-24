@@ -15,16 +15,16 @@ public final class HostedBoundary {
     }
 
     private static boolean authorizedInScope(ServerPlayer player, PartyState party) {
-        if (!party.state().equals("ACTIVE") || !Parties.accepted(party, player.getUUID())) return false;
+        if (!party.state().equals("ACTIVE") || !player.isAlive() || player.isSpectator() || !Parties.accepted(party, player.getUUID())) return false;
         PartyMember member = party.member(player.getUUID());
         if (member.eliminated()) return false;
         if (party.hasEventId()) {
             EventState event = SmpData.get(player.server).events().current(party.eventId());
-            if (event == null || event.member(player.getUUID()) != null && event.member(player.getUUID()).eliminated()) return false;
+            if (event == null || !event.pendingOutcome().isEmpty() || !new EventSession(event).accepted(player.getUUID())) return false;
         }
         if (party.hasBossEntity() && player.serverLevel().getEntity(party.bossEntity()) instanceof net.minecraft.world.entity.LivingEntity boss
                 && com.siirio.jemworldbosstiers.api.HostedEncounterApi.status(boss).stream()
-                .anyMatch(status -> status.playerId().equals(player.getUUID()) && status.state().equals("ELIMINATED"))) return false;
+                .noneMatch(status -> status.playerId().equals(player.getUUID()) && !status.state().equals("ELIMINATED"))) return false;
         return true;
     }
 
@@ -36,12 +36,13 @@ public final class HostedBoundary {
     }
 
     private static UUID actionTokenInScope(MinecraftServer server, PartyState party) {
+        if (party.hostedAttempt() != null) return party.hostedAttempt();
         if (party.hasEventId()) {
             EventState event = SmpData.get(server).events().current(party.eventId());
             if (event == null || !event.state().equals("ACTIVE")) return null;
             return event.hasAttemptId() ? event.attemptId() : event.id();
         }
-        return party.hasBossEntity() ? party.bossEntity() : party.id();
+        return party.hostedAttempt() != null ? party.hostedAttempt() : party.hasBossEntity() ? party.bossEntity() : party.id();
     }
 
     public static boolean matchesAction(MinecraftServer server, PartyState party, UUID token) {
@@ -61,13 +62,15 @@ public final class HostedBoundary {
         if (!authorized(player, party)) return;
         var box = SolidBoundary.movementBox(player);
         if (box.minX < bounds.minX() || box.maxX > bounds.maxX()+1D
-                || box.minY < bounds.minY() || box.maxY > bounds.maxY()+1D
+                || box.minY < bounds.minY()+SolidBoundary.WALL_THICKNESS || box.maxY > bounds.maxY()+1D-SolidBoundary.WALL_THICKNESS
                 || box.minZ < bounds.minZ() || box.maxZ > bounds.maxZ()+1D) return;
-        var store = SmpData.get(player.server);
-        store.edit(() -> {
-            var current = store.parties().bind(party);
-            current.member(player.getUUID()).arenaEntered(true);
-        });
+        if (!party.member(player.getUUID()).arenaEntered()) {
+            var store = SmpData.get(player.server);
+            store.edit(() -> {
+                var current = store.parties().bind(party);
+                current.member(player.getUUID()).arenaEntered(true);
+            });
+        }
         prompt(player, party, bounds);
     }
 

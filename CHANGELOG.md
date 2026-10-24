@@ -1,3 +1,18 @@
+## 2026-10-25 - Boss encounter lifecycle and reward integrity
+
+- User supplied the final Boss Barriers and Encounter Lifecycle integration plan and mandatory party, reward and canonical identity invariants, including focused regression tests for this task
+- User direction: preserve native boss combat, seal all six registered structure faces during combat, freeze Start membership and scaling, make each earned reward a complete personal copy, preserve ordinary three-Minecraft-day revival and make Raid restoration independent of its cooldown
+- Implementation choices: extend existing WorldTierData, SmpData, HostedRewards and JEMRewards save owners with immutable pending settlement, native creation/retirement intent and monotonic phase receipts, acknowledge actual native entity writes, and use a task-scoped test-only Gradle opt-in
+- Bug / Server / HostedEncounters.drops caught reward enqueue failure then still closed victory, losing the only loot owner / in testing, frozen boss-independent settlement now retries and verifies the complete JEMRewards batch before successful cleanup
+- Bug / Both Sided / Restored structural walls lacked floor/ceiling presentation, complete swept-volume movement and immediate saved-arena authority after restart / in testing, shared six-face geometry and full entity/vehicle collision and teleport checks retain sealed ACTIVE combat
+- Bug / Server / Cross-owner Start and partial travel could release combat before party/event linkage or clear return state before verified player persistence / in testing, whole-roster preflight, durable origins, pre-release acknowledgment and pending terminal recovery preserve safe outcomes
+- Bug / Server / Elimination alone erased living offline returns and could hide earned contribution while host Raid forfeit left native combat active / in testing, native death is distinct, earned eligibility survives, and exact canonical terminal acknowledgment precedes replacement
+- Bug / Server / Entity creation/removal claims and repeated death callbacks could lose native identity or reset revival timing / in testing, exact native NBT intents, actual storage acknowledgment, retired UUID tombstones and death-specific cooldown receipts preserve one canonical boss
+- User direction removes authored Raid reinforcement waves and their counters/tags while retaining native summons, phases and attacks. Existing 2.5 health, 1.25 damage and safely bounded 1.35 size apply once at Start with frozen participant scaling
+- Native effect provenance uses exact synchronous source identity, dimension and attempt rather than proximity adoption. Native player ownership wins and unresolved effects cannot gain encounter damage permission
+- Initial never-durable writes remain recoverable only in the running process and are reported explicitly. No claim of recovery after process loss is made for that boundary
+- Local build, regression, Atlas, artifact synchronization and native publication/application evidence belongs to Docs/events/encounter-integrity-delivery-20261025.json. Real multiplayer acceptance remains unrun. No MineRENT deployment, stable-profile mutation or release-baseline promotion is included
+
 ## 2026-10-25 - Save pending project work
 
 - User requested committing and pushing all remaining project work on the current branch

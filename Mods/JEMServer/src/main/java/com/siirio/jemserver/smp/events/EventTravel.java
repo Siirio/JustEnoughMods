@@ -195,11 +195,11 @@ public final class EventTravel {
 
     private static boolean eligiblePlayer(ServerPlayer player) {
         return com.siirio.jemserver.smp.SmpEnvironment.active(player) && player.isAlive() && !player.isSpectator()
-                && !player.isSleeping() && com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isPresent();
+                && !player.isSleeping() && !player.isPassenger() && !player.isVehicle() && com.siirio.jemidentity.api.IdentityPolicy.resolve(player).isPresent();
     }
 
     private static boolean eligibleEvent(ServerPlayer player, EventState event) {
-        return EventRuntime.available(player.server, event) && "ACTIVE".equals(event.state())
+        return EventRuntime.available(player.server, event) && event.pendingOutcome().isEmpty() && "ACTIVE".equals(event.state())
                 && event.ends() > System.currentTimeMillis() && event.hasPosition()
                 && java.util.Set.of("BLOOD_MOON", "BOSS_RAID", "RESOURCE_RUSH").contains(event.activity())
                 && new EventSession(event).accepted(player.getUUID());

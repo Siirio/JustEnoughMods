@@ -4,29 +4,21 @@ import com.siirio.jemserver.smp.*;
 import com.siirio.jemworldbosstiers.api.*;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid="jem_server")
@@ -36,9 +28,7 @@ public final class RaidEvent {
     private static final String MOB_SUMMONED="MOB_SUMMONED";
     private static final String ORIGINAL_SCALE="jem:raid_original_scale";
     private static final String ORIGINAL_SCALE_PRESENT="jem:raid_original_scale_present";
-    private static final String ALLIES="raidAllies";
-    private static final int MAX_ALLIES=20;
-    private static final int[] STAGE_COUNTS={7,7,6};
+    private static final String ORIGINAL_PEHKUI="jem:raid_original_pehkui";
 
     public static void adoptSummon(net.minecraft.server.level.ServerLevel level,net.minecraft.world.entity.Entity entity) {
         var serverForMutation = level.getServer();
@@ -51,22 +41,39 @@ public final class RaidEvent {
         if(!(entity instanceof Mob mob) || !(mob instanceof net.minecraft.world.entity.monster.Enemy)) return;
         var data=mob.getPersistentData();
         if(data.hasUUID(EVENT_ID) || !MOB_SUMMONED.equals(data.getString(FORGE_SPAWN_TYPE))) return;
+        if(HostedEncounterApi.damageOwner(mob) instanceof ServerPlayer) return;
         var event=EventScheduler.active(level.getServer(),"BOSS_RAID");
-        if(event==null || !event.combatStarted() || !EventRegions.contains(event,level,mob.blockPosition())) return;
-        if(event.raidAlliesSpawned()>=MAX_ALLIES) {mob.discard();return;}
+        if(event==null || !event.combatStarted() || !event.hasBossEntity() || !EventRegions.contains(event,level,mob.getBoundingBox())) return;
+        if(data.hasUUID("JEMHostedBoss") && !data.getUUID("JEMHostedBoss").equals(event.bossEntity())) return;
         new EventSession(event).mark(mob);
         data.putUUID(EVENT_ID,event.id());
         if(event.hasBossEntity()) data.putUUID("JEMHostedBoss",event.bossEntity());
-        var allies = new ArrayList<>(event.raidAllies());
-        allies.add(mob.getUUID());
-        event.raidAllies(allies);
-        event.raidAlliesSpawned(event.raidAlliesSpawned()+1);
 
     }
 
     public static boolean belongs(EventState event,net.minecraft.world.entity.Entity entity) {
         var data=entity.getPersistentData();
         return data.hasUUID(EVENT_ID)&&data.getUUID(EVENT_ID).equals(event.id());
+    }
+
+    /** Native summons survive terminal/reload cleanup. Only JEM attempt markers are retired. */
+    public static boolean clearNativeSummon(Entity entity) {
+        var tag=entity.getPersistentData();
+        if(!tag.hasUUID(EVENT_ID)||!MOB_SUMMONED.equals(tag.getString(FORGE_SPAWN_TYPE))) return false;
+        UUID event=tag.getUUID(EVENT_ID);
+        if(tag.hasUUID(EventSession.SESSION)&&event.equals(tag.getUUID(EventSession.SESSION))) {
+            tag.remove(EventSession.SESSION); tag.remove(EventSession.SPAWNED); tag.remove(EventSession.TYPE);
+        }
+        tag.remove(EVENT_ID);
+        return true;
+    }
+
+    private static void clearNativeSummons(MinecraftServer server,EventState event) {
+        var level=EventRegions.level(server,event);
+        var bounds=event.structureBounds();
+        if(level==null||bounds==null) return;
+        var volume=new net.minecraft.world.phys.AABB(bounds.minX(),bounds.minY(),bounds.minZ(),bounds.maxX()+1D,bounds.maxY()+1D,bounds.maxZ()+1D);
+        for(var mob:level.getEntitiesOfClass(Mob.class,volume,candidate->belongs(event,candidate))) clearNativeSummon(mob);
     }
 
     public static boolean prepare(MinecraftServer server, EventState row) {
@@ -77,7 +84,7 @@ public final class RaidEvent {
     }
 
     private static boolean prepareInScope(MinecraftServer server, EventState row) {
-        if(!EventRuntime.available(server, row) || row.combatStarted()) return false;
+        if(!EventRuntime.available(server, row) || row.combatStarted() || !row.pendingOutcome().isEmpty()) return false;
         if(!row.hasTargetBoss()&&!row.hasRaidArenaId()) {
             var arena=RaidArenaApi.availableArena(server,candidate->StructureStaging.arenaAvailable(server,candidate.id())).orElse(null);
             return arena==null||claimArena(server,row,arena.id(),arena.entityType(),
@@ -117,7 +124,7 @@ public final class RaidEvent {
     private static boolean claimArenaInScope(MinecraftServer server, EventState event, String arenaId,
                                      ResourceLocation bossType, String dimension, BlockPos center, BoundingBox bounds) {
         if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return false;
-        if (event.combatStarted()) return false;
+        if (event.combatStarted() || !event.pendingOutcome().isEmpty()) return false;
         if(event.hasRaidArenaId()) return event.raidArenaId().equals(arenaId)
                 &&prepare(server,event);
         var arena = RaidArenaApi.reserve(server, arenaId, bossType, event.id(),
@@ -166,32 +173,47 @@ public final class RaidEvent {
         SmpRecords.require(entity instanceof LivingEntity&&entity.isAlive(),"unavailable");
         LivingEntity boss=(LivingEntity)entity;
         boolean started = false;
+        var previousEvent = event.copy();
         try {
+            var snapshot = new EventParticipants(host.getUUID(), java.util.List.copyOf(agreed), party.solo());
+            new EncounterContext(event).initialize(host, snapshot);
+            data.flush(host.server);
             SmpRecords.require(HostedEncounterApi.prepareRaid(boss),"unavailable");
             pos=boss.blockPosition();
             event.position( pos.asLong());
             boss.getPersistentData().putBoolean("jem_solo", party.solo());
-            applyRaidScale(boss);
             boss.getPersistentData().putUUID(EVENT_ID, event.id());
             BoundingBox bounds=StructureStaging.prepareCombat(level,event,boss);
-            SmpRecords.require(HostedEncounterApi.start(boss, agreed, true, bounds), "unavailable");
+            SmpRecords.require(StructureStaging.ejectUnrelated(level, bounds, boss, agreed), "arena_occupied");
+            applyRaidScale(boss, bounds);
+            SmpRecords.require(HostedEncounterApi.start(boss, agreed, true, bounds, party.id(),
+                    attempt -> HostedParties.commitHostedStart(host.server, party, boss, attempt)), "unavailable");
             party.bossEntity(boss.getUUID());
+            party.hostedAttempt(HostedEncounterApi.attemptId(boss));
             event.bossEntity( boss.getUUID());
             event.solo( party.solo());
             event.combatStarted( true);
-            initializeReinforcements(event,boss);
             LivingEntity startedBoss=boss;
             level.players().forEach(player->EventNetwork.eventMob(player,startedBoss));
 
 
-            if (event.hasRaidArenaId()) RaidArenaApi.recordParticipation(host.server, event.raidArenaId(), agreed);
             started = true;
         } finally {
             if (!started) {
+                boolean participationAcknowledged = true;
+                var failedAttempt = party.hostedAttempt();
+                if (failedAttempt != null && event.hasRaidArenaId()) {
+                    var world = com.siirio.jemworldbosstiers.progression.WorldTierData.get(host.server);
+                    world.rollbackRaidParticipation(event.raidArenaId(), failedAttempt, agreed);
+                    participationAcknowledged = world.flush(host.server);
+                }
+                data.events().replace(previousEvent);
                 HostedEncounterApi.cancel(boss);
                 restoreRaidScale(boss);
                 HostedEncounterApi.prepareRaid(boss);
                 HostedEncounterApi.hold(boss);
+                data.flush(host.server);
+                SmpRecords.require(participationAcknowledged, "storage_unavailable");
             }
         }
     }
@@ -199,6 +221,7 @@ public final class RaidEvent {
     private static void requireActive(EventState event) {
         SmpRecords.require(
                 event.state().equals("ACTIVE")
+                        && event.pendingOutcome().isEmpty()
                         && event.activity().equals("BOSS_RAID")
                         && event.ends() > System.currentTimeMillis(),
                 "unavailable");
@@ -218,112 +241,74 @@ public final class RaidEvent {
             if (!EventRuntime.available(tick.getServer(), event)) continue;
             if(!event.state().equals("ACTIVE")||!event.activity().equals("BOSS_RAID")) continue;
             if(!event.combatStarted()) {prepare(tick.getServer(),event);continue;}
-            ServerLevel level=EventRegions.level(tick.getServer(),event);
-            if(level==null) continue;
-            List<LivingEntity> bosses=livingBosses(level,event);
-            if(bosses.isEmpty()) continue;
-            double initialHealth = event.raidBossInitialHealth().values().stream().mapToDouble(Double::doubleValue).sum();
-            if(initialHealth<=0) continue;
-            double ratio=bosses.stream().mapToDouble(LivingEntity::getHealth).sum()/initialHealth;
-            int stage=event.raidReinforcementStage();
-            while(stage<3&&(stage==0||stage==1&&ratio<=.5||stage==2&&ratio<=.25)) {
-                spawnReinforcements(level,event,bosses.get(0),STAGE_COUNTS[stage]);
-                stage++;
-                event.raidReinforcementStage(stage);
-
-            }
         }
     }
 
-    private static void initializeReinforcements(EventState event,LivingEntity boss) {
-        event.raidReinforcementStage(0);
-        event.raidAlliesSpawned(0);
-        event.raidAllies(List.of());
-        event.raidBossInitialHealth(Map.of(boss.getUUID(), (double) boss.getMaxHealth()));
-    }
-
-    private static List<LivingEntity> livingBosses(ServerLevel level,EventState event) {
-        List<LivingEntity> bosses=new ArrayList<>();
-        if(event.hasBossEntity()) {
-            Entity entity=level.getEntity(event.bossEntity());
-            if(entity instanceof LivingEntity living&&living.isAlive()) bosses.add(living);
-        }
-        for(UUID value : event.raidBosses()) {
-            Entity entity=level.getEntity(value);
-            if(entity instanceof LivingEntity living&&living.isAlive()&&!bosses.contains(living)) bosses.add(living);
-        }
-        return bosses;
-    }
-
-    private static void spawnReinforcements(ServerLevel level,EventState event,LivingEntity boss,int requested) {
-        List<EntityType<?>> pool=reinforcementPool(boss.getType());
-        int remaining=Math.min(requested,MAX_ALLIES-event.raidAlliesSpawned());
-        if(pool.isEmpty()||remaining<=0) return;
-        List<ServerPlayer> targets=new EventSession(event).active(level.getServer());
-        for(int index=0;index<remaining;index++) {
-            EntityType<?> type=pool.get(level.random.nextInt(pool.size()));
-            Entity entity=type.create(level);
-            if(!(entity instanceof Mob mob)) continue;
-            double angle=Math.PI*2*index/Math.max(1,remaining);
-            int distance=8+level.random.nextInt(7);
-            int x=(int)Math.round(boss.getX()+Math.cos(angle)*distance);
-            int z=(int)Math.round(boss.getZ()+Math.sin(angle)*distance);
-            BlockPos position=EventRegions.safeInside(level,event,new BlockPos(x,boss.blockPosition().getY(),z)).orElse(null);
-            if(position==null) continue;
-            mob.moveTo(position.getX()+.5,position.getY(),position.getZ()+.5,0,0);
-            mob.finalizeSpawn(level,level.getCurrentDifficultyAt(position),MobSpawnType.EVENT,null,null);
-            new EventSession(event).mark(mob);
-            mob.getPersistentData().putUUID(EVENT_ID,event.id());
-            mob.getPersistentData().putUUID("JEMHostedBoss",boss.getUUID());
-            EventMobModifiers.applyRaidMob(mob,event.worldTier(),Math.max(1,targets.size()));
-            if(!level.noCollision(mob)||!level.addFreshEntity(mob)) continue;
-            if(!targets.isEmpty()) mob.setTarget(targets.get(level.random.nextInt(targets.size())));
-            var allies = new ArrayList<>(event.raidAllies());
-            allies.add(mob.getUUID());
-            event.raidAllies(allies);
-            event.raidAlliesSpawned(event.raidAlliesSpawned()+1);
-        }
-    }
-
-    private static List<EntityType<?>> reinforcementPool(EntityType<?> bossType) {
-        ResourceLocation id=BuiltInRegistries.ENTITY_TYPE.getKey(bossType);
-        String path=id.equals(new ResourceLocation("minecraft","wither"))?"wither":id.equals(new ResourceLocation("luminous_beasts","mummy"))?"mummy":id.equals(new ResourceLocation("luminous_beasts","yeti"))?"yeti":"";
-        if(path.isEmpty()) return List.of();
-        TagKey<EntityType<?>> tag=TagKey.create(Registries.ENTITY_TYPE,new ResourceLocation("jem_server","raid_allies/"+path));
-        return BuiltInRegistries.ENTITY_TYPE.getTag(tag).stream().flatMap(set->set.stream()).map(Holder::value).toList();
-    }
-
-    private static void applyRaidScale(LivingEntity boss) {
+    private static void applyRaidScale(LivingEntity boss, BoundingBox bounds) {
         CompoundTag data=boss.getPersistentData();
         if(data.contains(ORIGINAL_SCALE_PRESENT)) return;
         float original=data.getFloat(EventMobScale.KEY);
         data.putBoolean(ORIGINAL_SCALE_PRESENT,data.contains(EventMobScale.KEY));
         data.putFloat(ORIGINAL_SCALE,original);
-        float current=Math.max(1,original);
-        float baseHeight=boss.getBbHeight()/current;
-        EventMobScale.apply(boss,Math.min(current*1.35F,20/Math.max(.01F,baseHeight)));
+        var nativeScale=virtuoel.pehkui.api.ScaleTypes.BASE.getScaleData(boss);
+        data.put(ORIGINAL_PEHKUI,nativeScale.writeNbt(new CompoundTag()));
+        float current=nativeScale.getBaseScale();
+        if(!Float.isFinite(current)||current<=0) return;
+        var originalBox=boss.getBoundingBox();
+        var interior=new net.minecraft.world.phys.AABB(bounds.minX(),bounds.minY()+SolidBoundary.WALL_THICKNESS,bounds.minZ(),
+                bounds.maxX()+1D,bounds.maxY()+1D-SolidBoundary.WALL_THICKNESS,bounds.maxZ()+1D);
+        double factor=safeScaleFactor(originalBox,boss.position(),interior,
+                box -> boss.level().noCollision(boss,box));
+        float scaled=(float)Math.min(EventMobScale.MAX_SCALE,current*factor);
+        // Tiny native bosses retain their native baseline if the presentation transport cannot encode it.
+        if(factor<=1 || scaled<=current || !EventMobScale.supported(scaled)) return;
+        EventMobScale.apply(boss,scaled);
+        boss.refreshDimensions();
+        if(!fits(boss.getBoundingBox(),interior)||!boss.level().noCollision(boss,boss.getBoundingBox())) {
+            restoreRaidScale(boss);
+        }
+    }
+
+    static double safeScaleFactor(net.minecraft.world.phys.AABB box, net.minecraft.world.phys.Vec3 origin,
+                                  net.minecraft.world.phys.AABB interior, java.util.function.Predicate<net.minecraft.world.phys.AABB> clear) {
+        if(!fits(box,interior)||!clear.test(box)) return 1D;
+        double low=1D,high=1.35D;
+        for(int step=0;step<16;step++) {
+            double factor=(low+high)/2D;
+            var scaled=scaledBox(box,origin,factor);
+            if(fits(scaled,interior)&&clear.test(scaled)) low=factor;
+            else high=factor;
+        }
+        return low;
+    }
+
+    private static net.minecraft.world.phys.AABB scaledBox(net.minecraft.world.phys.AABB box,net.minecraft.world.phys.Vec3 origin,double factor) {
+        return new net.minecraft.world.phys.AABB(origin.x+(box.minX-origin.x)*factor,origin.y+(box.minY-origin.y)*factor,origin.z+(box.minZ-origin.z)*factor,
+                origin.x+(box.maxX-origin.x)*factor,origin.y+(box.maxY-origin.y)*factor,origin.z+(box.maxZ-origin.z)*factor);
+    }
+
+    private static boolean fits(net.minecraft.world.phys.AABB box,net.minecraft.world.phys.AABB interior) {
+        return box.minX>=interior.minX&&box.minY>=interior.minY&&box.minZ>=interior.minZ
+                &&box.maxX<=interior.maxX&&box.maxY<=interior.maxY&&box.maxZ<=interior.maxZ;
     }
 
     private static void restoreRaidScale(LivingEntity boss) {
         CompoundTag data=boss.getPersistentData();
         if(!data.contains(ORIGINAL_SCALE_PRESENT)) return;
-        if(data.getBoolean(ORIGINAL_SCALE_PRESENT)) EventMobScale.apply(boss,data.getFloat(ORIGINAL_SCALE));
+        if(data.contains(ORIGINAL_PEHKUI,net.minecraft.nbt.Tag.TAG_COMPOUND)) {
+            virtuoel.pehkui.api.ScaleTypes.BASE.getScaleData(boss).readNbt(data.getCompound(ORIGINAL_PEHKUI));
+            if(data.getBoolean(ORIGINAL_SCALE_PRESENT)) data.putFloat(EventMobScale.KEY,data.getFloat(ORIGINAL_SCALE));
+            else data.remove(EventMobScale.KEY);
+            boss.refreshDimensions();
+        } else if(data.getBoolean(ORIGINAL_SCALE_PRESENT)) EventMobScale.apply(boss,data.getFloat(ORIGINAL_SCALE));
         else EventMobScale.clear(boss);
         data.remove(ORIGINAL_SCALE);
         data.remove(ORIGINAL_SCALE_PRESENT);
-    }
-
-    private static void discardAllies(MinecraftServer server,EventState event) {
-        ServerLevel level=EventRegions.level(server,event);
-        if(level!=null) for(UUID value : event.raidAllies()) {
-            Entity entity=level.getEntity(value);
-            if(entity!=null) entity.discard();
-        }
-        event.clearRaidAllies();
+        data.remove(ORIGINAL_PEHKUI);
     }
 
     public static void cleanup(MinecraftServer server, EventState event) {
-        discardAllies(server,event);
+        clearNativeSummons(server,event);
         UUID bossId=event.hasBossEntity()?event.bossEntity():event.hasTargetBoss()?event.targetBoss():null;
         if(bossId!=null&&event.hasRaidArenaId()) {
             var level = EventRegions.level(server, event);
@@ -354,11 +339,39 @@ public final class RaidEvent {
 
     public static void resetAttempt(MinecraftServer server, EventState event) {
         if (!com.siirio.jemserver.smp.SmpEnvironment.active(server)) return;
-        discardAllies(server,event);
+        closeBeforeReset(() -> closeHostedAttempt(server, event), () -> resetClosedAttempt(server, event));
+    }
+
+    /** A reset cannot retire or replace the boss while its canonical combat owner remains active. */
+    static void closeBeforeReset(Runnable closeCanonical, Runnable reset) {
+        closeCanonical.run();
+        reset.run();
+    }
+
+    static void closeHostedAttempt(MinecraftServer server, EventState event) {
+        if (!event.activity().equals("BOSS_RAID") || !event.hasBossEntity()) return;
+        SmpRecords.require(event.hasAttemptId(), "encounter_recovery_pending");
+        var attempt = event.attemptId();
+        var world = com.siirio.jemworldbosstiers.progression.WorldTierData.get(server);
+        var level = EventRegions.level(server, event);
+        var entity = level == null ? null : level.getEntity(event.bossEntity());
+        if (entity instanceof LivingEntity boss) {
+            UUID current = HostedEncounterApi.attemptId(boss);
+            SmpRecords.require(current == null || current.equals(attempt), "combat_locked");
+            if (current != null) SmpRecords.require(HostedEncounterApi.cancel(boss), "encounter_recovery_pending");
+        }
+        SmpRecords.require(!world.hostedAttempts().containsKey(attempt)
+                && !world.hostedSettlements().containsKey(attempt), "encounter_recovery_pending");
+    }
+
+    private static void resetClosedAttempt(MinecraftServer server, EventState event) {
+        clearNativeSummons(server,event);
         if (!event.hasBossEntity()) {
             return;
         }
         UUID bossId = event.bossEntity();
+        var scaleLevel=EventRegions.level(server,event);
+        if(scaleLevel!=null&&scaleLevel.getEntity(bossId) instanceof LivingEntity living) restoreRaidScale(living);
         if (event.hasRaidArenaId()) {
             RaidArenaApi.completeRaid(server,event.raidArenaId(),bossId,new ResourceLocation(event.bossType()));
             event.clearTargetBoss();
@@ -398,6 +411,7 @@ public final class RaidEvent {
         }
         var row = SmpData.get(level.getServer()).events().current(boss.getPersistentData().getUUID(EVENT_ID));
         if (EventRuntime.available(level.getServer(), row) && row.state().equals("ACTIVE") && row.ends() > System.currentTimeMillis()) return;
+        restoreRaidScale(boss);
         if(HostedEncounterApi.isRaid(boss)&&!HostedEncounterApi.wasNativeBeforeRaid(boss)) {
             String arenaId=WorldTierApi.encounter(boss).map(encounter->encounter.arenaId()).orElse(null);
             if(arenaId!=null) RaidArenaApi.queueRaidCompletion(level.getServer(),arenaId,boss.getUUID(),BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType()));

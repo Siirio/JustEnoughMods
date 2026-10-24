@@ -12,7 +12,7 @@ public final class EventParties {
 
     private static void joinOwned(ServerPlayer player, EventState event, boolean solo) {
         SmpRecords.require(EventRuntime.available(player.server, event), "unavailable");
-        SmpRecords.require(!SmpData.closed(event), "unavailable");
+        SmpRecords.require(!SmpData.closed(event) && event.pendingOutcome().isEmpty(), "unavailable");
         if (event.activity().equals("BOSS_RAID") && event.hasRaidArenaId())
             SmpRecords.require(!com.siirio.jemworldbosstiers.api.RaidArenaApi.participated(player.server, event.raidArenaId(), player.getUUID()), "raid_already_participated");
         var data = SmpData.get(player.server);
@@ -67,7 +67,7 @@ public final class EventParties {
 
     private static void startOwned(ServerPlayer host, PartyState party, Collection<UUID> accepted) {
         var participants = new EventParticipants(host.getUUID(), List.copyOf(accepted), party.solo());
-        if (!EventAttempts.start(host, party.eventId(), participants)) return;
+        SmpRecords.require(EventAttempts.start(host, party.eventId(), participants), "combat_locked");
         party.state("ACTIVE");
         
     }

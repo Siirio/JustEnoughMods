@@ -11,7 +11,8 @@ final class EventAdmission {
         return Set.of("BOSS_RAID", "BLOOD_MOON").contains(event.activity());
     }
     static boolean staging(EventState event) {
-        return !event.combatStarted() && !event.hasBossEntity();
+        return event.pendingOutcome().isEmpty() && !event.hasEncounterParticipants()
+                && !event.combatStarted() && !event.hasBossEntity();
     }
     static boolean combat(EventState event) {
         return groupActivity(event) || event.activity().equals("BOSS");

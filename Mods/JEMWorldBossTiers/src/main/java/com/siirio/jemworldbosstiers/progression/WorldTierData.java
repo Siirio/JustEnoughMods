@@ -35,10 +35,19 @@ public final class WorldTierData extends SavedData {
     private final Map<String, RespawnState> respawns = new LinkedHashMap<>();
     private final Set<String> verifiedAnchors = new LinkedHashSet<>();
     private final Map<String, Set<java.util.UUID>> raidParticipation = new LinkedHashMap<>();
+    private final Map<String, Map<java.util.UUID, java.util.UUID>> raidParticipationAttempts = new LinkedHashMap<>();
     private final Set<String> pendingRaidReplacements = new LinkedHashSet<>();
     private final Map<String, java.util.UUID> liveBosses = new LinkedHashMap<>();
     private final Map<String, Set<java.util.UUID>> conflictingBosses = new LinkedHashMap<>();
     private final Map<String, String> arenaAliases = new LinkedHashMap<>();
+    private final Map<java.util.UUID, CompoundTag> hostedSettlements = new LinkedHashMap<>();
+    private final Map<java.util.UUID, CompoundTag> hostedAttempts = new LinkedHashMap<>();
+    private final Set<java.util.UUID> completedHostedSettlements = new LinkedHashSet<>();
+    private final Set<java.util.UUID> canonicalHostedClosures = new LinkedHashSet<>();
+    private final Set<java.util.UUID> failedHostedAttempts = new LinkedHashSet<>();
+    private final Map<String, CompoundTag> raidRetirements = new LinkedHashMap<>();
+    private final Map<String, CompoundTag> pendingBossCreations = new LinkedHashMap<>();
+    private final Map<java.util.UUID, String> retiredBossIdentities = new LinkedHashMap<>();
     private Integer tierOverride;
     private final Set<ResourceLocation> progressionRoster = new LinkedHashSet<>();
     private List<Integer> progressionThresholds = List.of();
@@ -140,6 +149,7 @@ public final class WorldTierData extends SavedData {
     }
 
     public boolean recordLiveBoss(String arenaId, java.util.UUID bossId) {
+        if (bossIdentityRetired(bossId)) return false;
         String id = canonicalArenaId(arenaId);
         java.util.UUID current = liveBoss(id).orElse(null);
         if (current != null) return current.equals(bossId);
@@ -214,7 +224,23 @@ public final class WorldTierData extends SavedData {
         if (previous != null && (current == null || previous.dueTime() < current.dueTime())) respawns.put(to, previous);
         var participants = raidParticipation.get(from);
         if (participants != null) raidParticipation.computeIfAbsent(to, ignored -> new LinkedHashSet<>()).addAll(participants);
+        var participationAttempts = raidParticipationAttempts.remove(from);
+        if (participationAttempts != null)
+            participationAttempts.forEach((player, attempt) -> raidParticipationAttempts
+                    .computeIfAbsent(to, ignored -> new LinkedHashMap<>()).putIfAbsent(player, attempt));
         if (pendingRaidReplacements.remove(from)) pendingRaidReplacements.add(to);
+        CompoundTag retirement = raidRetirements.remove(from);
+        if (retirement != null) {
+            CompoundTag conflicting = raidRetirements.putIfAbsent(to, retirement);
+            if (conflicting != null && !conflicting.equals(retirement))
+                throw new IllegalStateException("Conflicting legacy Raid retirement evidence");
+        }
+        CompoundTag creation = pendingBossCreations.remove(from);
+        if (creation != null) {
+            CompoundTag conflicting = pendingBossCreations.putIfAbsent(to, creation);
+            if (conflicting != null && !conflicting.getUUID("UUID").equals(creation.getUUID("UUID")))
+                throw new IllegalStateException("Conflicting legacy boss creation identity");
+        }
         setDirty();
     }
 
@@ -222,13 +248,13 @@ public final class WorldTierData extends SavedData {
     public boolean flush(MinecraftServer server) {
         CompoundTag expected = save(new CompoundTag());
         setDirty();
-        server.overworld().getDataStorage().save();
-        var path = server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT)
-                .resolve("data").resolve(FILE_ID + ".dat").toFile();
         try {
+            server.overworld().getDataStorage().save();
+            var path = server.getWorldPath(net.minecraft.world.level.storage.LevelResource.ROOT)
+                    .resolve("data").resolve(FILE_ID + ".dat").toFile();
             CompoundTag persisted = net.minecraft.nbt.NbtIo.readCompressed(path);
             if (persisted.getCompound("data").equals(expected)) return true;
-        } catch (java.io.IOException error) {
+        } catch (java.io.IOException | RuntimeException error) {
             com.mojang.logging.LogUtils.getLogger().error("Boss identity storage acknowledgement failed", error);
         }
         setDirty();
@@ -246,8 +272,14 @@ public final class WorldTierData extends SavedData {
     }
 
     public void scheduleRespawn(String arenaId, ResourceLocation entityType, long dueTime) {
+        scheduleRespawn(arenaId, entityType, dueTime, null);
+    }
+
+    public void scheduleRespawn(String arenaId, ResourceLocation entityType, long dueTime, java.util.UUID deathId) {
         arenaId = canonicalArenaId(arenaId);
-        respawns.put(arenaId, new RespawnState(entityType, dueTime));
+        RespawnState previous = respawns.get(arenaId);
+        if (previous != null && (deathId == null || java.util.Objects.equals(previous.deathId(), deathId))) return;
+        respawns.put(arenaId, new RespawnState(entityType, dueTime, deathId));
         setDirty();
     }
 
@@ -275,6 +307,24 @@ public final class WorldTierData extends SavedData {
         if (raidParticipation.computeIfAbsent(arenaId, ignored -> new LinkedHashSet<>()).addAll(players)) setDirty();
     }
 
+    public void recordRaidParticipation(String arenaId, Collection<java.util.UUID> players, java.util.UUID attempt) {
+        arenaId = canonicalArenaId(arenaId);
+        var participants = raidParticipation.computeIfAbsent(arenaId, ignored -> new LinkedHashSet<>());
+        var attempts = raidParticipationAttempts.computeIfAbsent(arenaId, ignored -> new LinkedHashMap<>());
+        for (java.util.UUID player : players) {
+            if (participants.add(player)) { attempts.put(player, attempt); setDirty(); }
+            else if (!attempt.equals(attempts.get(player))) throw new IllegalStateException("Raid participation belongs to another attempt");
+        }
+    }
+
+    public void rollbackRaidParticipation(String arenaId, java.util.UUID attempt, Collection<java.util.UUID> players) {
+        arenaId = canonicalArenaId(arenaId);
+        var attempts = raidParticipationAttempts.get(arenaId);
+        var participants = raidParticipation.get(arenaId);
+        if (attempts == null || participants == null) return;
+        for (java.util.UUID player : players) if (attempts.remove(player, attempt)) { participants.remove(player); setDirty(); }
+    }
+
     public boolean raidReplacementPending(String arenaId) {
         arenaId = canonicalArenaId(arenaId); return pendingRaidReplacements.contains(arenaId); }
 
@@ -285,7 +335,150 @@ public final class WorldTierData extends SavedData {
 
     public void clearRaidReplacement(String arenaId) {
         arenaId = canonicalArenaId(arenaId);
+        if (raidRetirements.remove(arenaId) != null) setDirty();
         if (pendingRaidReplacements.remove(arenaId)) setDirty();
+    }
+
+    public void beginRaidRetirement(String arenaId, java.util.UUID boss, net.minecraft.core.BlockPos position) {
+        arenaId = canonicalArenaId(arenaId);
+        CompoundTag previous = raidRetirements.get(arenaId);
+        if (previous != null) {
+            if (!previous.getUUID("Boss").equals(boss)) throw new IllegalStateException("Conflicting Raid retirement identity");
+            return;
+        }
+        CompoundTag intent = new CompoundTag();
+        intent.putUUID("Boss", boss);
+        intent.putLong("Position", position.asLong());
+        raidRetirements.put(arenaId, intent);
+        markRaidReplacement(arenaId);
+    }
+
+    public Optional<CompoundTag> raidRetirement(String arenaId) {
+        CompoundTag intent = raidRetirements.get(canonicalArenaId(arenaId));
+        return Optional.ofNullable(intent == null ? null : intent.copy());
+    }
+
+    public boolean canonicalHostedClosed(java.util.UUID attempt) { return canonicalHostedClosures.contains(attempt); }
+
+    public void markCanonicalHostedClosed(java.util.UUID attempt) {
+        if (canonicalHostedClosures.add(attempt)) setDirty();
+    }
+
+    public void beginBossCreation(String arenaId, CompoundTag entity) {
+        if (!entity.hasUUID("UUID") || !entity.contains("id", Tag.TAG_STRING))
+            throw new IllegalStateException("Boss creation requires exact native identity and type");
+        arenaId = canonicalArenaId(arenaId);
+        CompoundTag previous = pendingBossCreations.putIfAbsent(arenaId, entity.copy());
+        if (previous != null && !previous.getUUID("UUID").equals(entity.getUUID("UUID")))
+            throw new IllegalStateException("A different boss creation is unresolved");
+        if (previous == null) setDirty();
+    }
+
+    public Map<String, CompoundTag> pendingBossCreations() {
+        Map<String, CompoundTag> snapshots = new LinkedHashMap<>();
+        pendingBossCreations.forEach((arena, entity) -> snapshots.put(arena, entity.copy()));
+        return java.util.Collections.unmodifiableMap(snapshots);
+    }
+
+    public void clearBossCreation(String arenaId, java.util.UUID boss) {
+        arenaId = canonicalArenaId(arenaId);
+        CompoundTag current = pendingBossCreations.get(arenaId);
+        if (current != null && current.getUUID("UUID").equals(boss)) {
+            pendingBossCreations.remove(arenaId);
+            setDirty();
+        }
+    }
+
+    public void retireBossIdentity(String arenaId, java.util.UUID boss) {
+        String canonical = canonicalArenaId(arenaId);
+        String previous = retiredBossIdentities.putIfAbsent(boss, canonical);
+        if (previous == null) setDirty();
+        else if (!canonicalArenaId(previous).equals(canonical))
+            throw new IllegalStateException("Retired boss identity belongs to another arena");
+    }
+
+    public boolean bossIdentityRetired(java.util.UUID boss) { return retiredBossIdentities.containsKey(boss); }
+
+    /** Frozen attempt evidence must outlive removal of its dead boss entity. */
+    public void putHostedSettlement(java.util.UUID attempt, CompoundTag snapshot) {
+        if (completedHostedSettlements.contains(attempt) || failedHostedAttempts.contains(attempt)) return;
+        CompoundTag previous = hostedSettlements.putIfAbsent(attempt, snapshot.copy());
+        if (previous == null) setDirty();
+        else if (!previous.equals(snapshot)) throw new IllegalStateException("Hosted settlement is immutable: " + attempt);
+    }
+
+    public void putHostedAttempt(java.util.UUID attempt, CompoundTag snapshot) {
+        if (completedHostedSettlements.contains(attempt) || failedHostedAttempts.contains(attempt)
+                || hostedSettlements.containsKey(attempt)) return;
+        CompoundTag previous = hostedAttempts.get(attempt);
+        if (previous != null && previous.hasUUID("Boss") && snapshot.hasUUID("Boss")
+                && !previous.getUUID("Boss").equals(snapshot.getUUID("Boss")))
+            throw new IllegalStateException("Hosted attempt changed its boss identity");
+        hostedAttempts.put(attempt, snapshot.copy());
+        setDirty();
+    }
+
+    public Map<java.util.UUID, CompoundTag> hostedAttempts() {
+        Map<java.util.UUID, CompoundTag> snapshots = new LinkedHashMap<>();
+        hostedAttempts.forEach((attempt, snapshot) -> snapshots.put(attempt, snapshot.copy()));
+        return java.util.Collections.unmodifiableMap(snapshots);
+    }
+
+    public void removeHostedAttempt(java.util.UUID attempt) {
+        if (hostedAttempts.remove(attempt) != null) setDirty();
+    }
+
+    public boolean hostedAttemptFailed(java.util.UUID attempt) { return failedHostedAttempts.contains(attempt); }
+
+    public void failHostedAttempt(java.util.UUID attempt) {
+        if (hostedSettlements.containsKey(attempt) || completedHostedSettlements.contains(attempt))
+            throw new IllegalStateException("Victory settlement cannot become a failed attempt");
+        boolean changed = failedHostedAttempts.add(attempt);
+        changed |= hostedAttempts.remove(attempt) != null;
+        if (changed) setDirty();
+    }
+
+    public void restoreHostedAttempt(java.util.UUID attempt, CompoundTag snapshot) {
+        if (completedHostedSettlements.contains(attempt) || hostedSettlements.containsKey(attempt))
+            throw new IllegalStateException("Terminal victory cannot be reactivated");
+        failedHostedAttempts.remove(attempt);
+        hostedAttempts.put(attempt, snapshot.copy());
+        setDirty();
+    }
+
+    public Map<java.util.UUID, CompoundTag> hostedSettlements() {
+        Map<java.util.UUID, CompoundTag> snapshots = new LinkedHashMap<>();
+        hostedSettlements.forEach((attempt, snapshot) -> snapshots.put(attempt, snapshot.copy()));
+        return java.util.Collections.unmodifiableMap(snapshots);
+    }
+
+    public boolean hostedSettlementCompleted(java.util.UUID attempt) {
+        return completedHostedSettlements.contains(attempt);
+    }
+
+    public boolean hostedSettlementPending(String arenaId) {
+        String canonical = canonicalArenaId(arenaId);
+        return hostedSettlements.values().stream().anyMatch(snapshot -> canonical.equals(canonicalArenaId(
+                snapshot.getCompound("State").getCompound("NativeEncounter").getString("ArenaId"))));
+    }
+
+    public void removeHostedSettlement(java.util.UUID attempt) {
+        if (hostedSettlements.remove(attempt) != null) setDirty();
+    }
+
+    public void completeHostedSettlement(java.util.UUID attempt) {
+        if (failedHostedAttempts.contains(attempt)) throw new IllegalStateException("A failed attempt cannot settle victory");
+        boolean changed = completedHostedSettlements.add(attempt);
+        changed |= hostedSettlements.remove(attempt) != null;
+        changed |= hostedAttempts.remove(attempt) != null;
+        if (changed) setDirty();
+    }
+
+    /** Only the failed durable-completion transaction may undo its in-memory marker. */
+    public void restoreHostedSettlement(java.util.UUID attempt, CompoundTag snapshot) {
+        completedHostedSettlements.remove(attempt);
+        hostedSettlements.put(attempt, snapshot.copy());
+        setDirty();
     }
 
     @Override
@@ -310,6 +503,7 @@ public final class WorldTierData extends SavedData {
             value.putString("Arena", arenaId);
             value.putString("Entity", state.entityType().toString());
             value.putLong("Due", state.dueTime());
+            if (state.deathId() != null) value.putUUID("DeathId", state.deathId());
             respawnValues.add(value);
         });
         tag.put(RESPAWNS, respawnValues);
@@ -323,12 +517,28 @@ public final class WorldTierData extends SavedData {
             ListTag ids = new ListTag();
             players.forEach(id -> ids.add(StringTag.valueOf(id.toString())));
             value.put("Players", ids);
+            ListTag attempts = new ListTag();
+            raidParticipationAttempts.getOrDefault(arenaId, Map.of()).forEach((player, attempt) -> {
+                CompoundTag receipt = new CompoundTag(); receipt.putUUID("Player", player); receipt.putUUID("Attempt", attempt); attempts.add(receipt);
+            });
+            value.put("Attempts", attempts);
             participation.add(value);
         });
         tag.put(RAID_PARTICIPATION, participation);
         ListTag replacements = new ListTag();
         pendingRaidReplacements.forEach(id -> replacements.add(StringTag.valueOf(id)));
         tag.put(RAID_REPLACEMENTS, replacements);
+        CompoundTag retirements = new CompoundTag();
+        raidRetirements.forEach((arena, intent) -> retirements.put(arena, intent.copy()));
+        tag.put("RaidRetirements", retirements);
+        CompoundTag creations = new CompoundTag();
+        pendingBossCreations.forEach((arena, entity) -> creations.put(arena, entity.copy()));
+        tag.put("PendingBossCreations", creations);
+        ListTag retired = new ListTag();
+        retiredBossIdentities.forEach((boss, arena) -> {
+            CompoundTag row = new CompoundTag(); row.putUUID("Boss", boss); row.putString("Arena", arena); retired.add(row);
+        });
+        tag.put("RetiredBossIdentities", retired);
         ListTag claims = new ListTag();
         liveBosses.forEach((arena, uuid) -> { CompoundTag claim = new CompoundTag(); claim.putString("Arena", arena); claim.putUUID("Boss", uuid); claims.add(claim); });
         tag.put("LiveBossIdentities", claims);
@@ -338,6 +548,31 @@ public final class WorldTierData extends SavedData {
         ListTag aliases = new ListTag();
         arenaAliases.forEach((from, to) -> { CompoundTag alias = new CompoundTag(); alias.putString("From", from); alias.putString("To", to); aliases.add(alias); });
         tag.put("ArenaAliases", aliases);
+        ListTag settlements = new ListTag();
+        hostedSettlements.forEach((attempt, snapshot) -> {
+            CompoundTag row = new CompoundTag();
+            row.putUUID("Attempt", attempt);
+            row.put("Snapshot", snapshot.copy());
+            settlements.add(row);
+        });
+        tag.put("PendingHostedSettlements", settlements);
+        ListTag activeAttempts = new ListTag();
+        hostedAttempts.forEach((attempt, snapshot) -> {
+            CompoundTag row = new CompoundTag();
+            row.putUUID("Attempt", attempt);
+            row.put("Snapshot", snapshot.copy());
+            activeAttempts.add(row);
+        });
+        tag.put("HostedAttempts", activeAttempts);
+        ListTag completed = new ListTag();
+        completedHostedSettlements.forEach(attempt -> completed.add(StringTag.valueOf(attempt.toString())));
+        tag.put("CompletedHostedSettlements", completed);
+        ListTag canonicalClosures = new ListTag();
+        canonicalHostedClosures.forEach(attempt -> canonicalClosures.add(StringTag.valueOf(attempt.toString())));
+        tag.put("CanonicalHostedClosures", canonicalClosures);
+        ListTag failedAttempts = new ListTag();
+        failedHostedAttempts.forEach(attempt -> failedAttempts.add(StringTag.valueOf(attempt.toString())));
+        tag.put("FailedHostedAttempts", failedAttempts);
         return tag;
     }
 
@@ -371,7 +606,8 @@ public final class WorldTierData extends SavedData {
             CompoundTag state = (CompoundTag) value;
             ResourceLocation entity = ResourceLocation.tryParse(state.getString("Entity"));
             if (!state.getString("Arena").isBlank() && entity != null && state.getLong("Due") > 0)
-                data.respawns.put(state.getString("Arena"), new RespawnState(entity, state.getLong("Due")));
+                data.respawns.put(state.getString("Arena"), new RespawnState(entity, state.getLong("Due"),
+                        state.hasUUID("DeathId") ? state.getUUID("DeathId") : null));
         }
         for (Tag value : tag.getList(VERIFIED_ANCHORS, Tag.TAG_STRING)) data.verifiedAnchors.add(value.getAsString());
         for (Tag value : tag.getList(RAID_PARTICIPATION, Tag.TAG_COMPOUND)) {
@@ -379,8 +615,34 @@ public final class WorldTierData extends SavedData {
             Set<java.util.UUID> players = new LinkedHashSet<>();
             for (Tag id : entry.getList("Players", Tag.TAG_STRING)) try { players.add(java.util.UUID.fromString(id.getAsString())); } catch (IllegalArgumentException ignored) {}
             if (!entry.getString("Arena").isBlank()) data.raidParticipation.put(entry.getString("Arena"), players);
+            for (Tag receiptTag : entry.getList("Attempts", Tag.TAG_COMPOUND)) {
+                CompoundTag receipt = (CompoundTag) receiptTag;
+                if (receipt.hasUUID("Player") && receipt.hasUUID("Attempt") && players.contains(receipt.getUUID("Player")))
+                    data.raidParticipationAttempts.computeIfAbsent(entry.getString("Arena"), ignored -> new LinkedHashMap<>())
+                            .put(receipt.getUUID("Player"), receipt.getUUID("Attempt"));
+            }
         }
         for (Tag value : tag.getList(RAID_REPLACEMENTS, Tag.TAG_STRING)) data.pendingRaidReplacements.add(value.getAsString());
+        CompoundTag retirements = tag.getCompound("RaidRetirements");
+        for (String arena : retirements.getAllKeys()) {
+            CompoundTag intent = retirements.getCompound(arena);
+            if (!intent.hasUUID("Boss")) throw new IllegalStateException("Malformed Raid retirement identity");
+            data.raidRetirements.put(arena, intent.copy());
+            data.pendingRaidReplacements.add(arena);
+        }
+        CompoundTag creations = tag.getCompound("PendingBossCreations");
+        for (String arena : creations.getAllKeys()) {
+            CompoundTag entity = creations.getCompound(arena);
+            if (!entity.hasUUID("UUID") || !entity.contains("id", Tag.TAG_STRING))
+                throw new IllegalStateException("Malformed pending boss creation");
+            data.pendingBossCreations.put(arena, entity.copy());
+        }
+        for (Tag value : tag.getList("RetiredBossIdentities", Tag.TAG_COMPOUND)) {
+            CompoundTag row = (CompoundTag) value;
+            if (!row.hasUUID("Boss") || row.getString("Arena").isBlank())
+                throw new IllegalStateException("Malformed retired boss identity");
+            data.retiredBossIdentities.put(row.getUUID("Boss"), row.getString("Arena"));
+        }
         for (Tag value : tag.getList("LiveBossIdentities", Tag.TAG_COMPOUND)) {
             CompoundTag claim = (CompoundTag)value;
             if (claim.hasUUID("Boss") && !claim.getString("Arena").isBlank()) data.liveBosses.put(claim.getString("Arena"), claim.getUUID("Boss"));
@@ -395,8 +657,51 @@ public final class WorldTierData extends SavedData {
             if (claim.hasUUID("Boss") && !claim.getString("Arena").isBlank())
                 data.conflictingBosses.computeIfAbsent(data.canonicalArenaId(claim.getString("Arena")), ignored -> new LinkedHashSet<>()).add(claim.getUUID("Boss"));
         }
+        for (Tag value : tag.getList("PendingHostedSettlements", Tag.TAG_COMPOUND)) {
+            CompoundTag row = (CompoundTag) value;
+            if (!row.hasUUID("Attempt") || !row.contains("Snapshot", Tag.TAG_COMPOUND))
+                throw new IllegalStateException("Malformed pending hosted settlement");
+            data.hostedSettlements.put(row.getUUID("Attempt"), row.getCompound("Snapshot").copy());
+        }
+        for (Tag value : tag.getList("HostedAttempts", Tag.TAG_COMPOUND)) {
+            CompoundTag row = (CompoundTag) value;
+            if (!row.hasUUID("Attempt") || !row.contains("Snapshot", Tag.TAG_COMPOUND))
+                throw new IllegalStateException("Malformed hosted attempt");
+            data.hostedAttempts.put(row.getUUID("Attempt"), row.getCompound("Snapshot").copy());
+        }
+        for (Tag value : tag.getList("CompletedHostedSettlements", Tag.TAG_STRING))
+            data.completedHostedSettlements.add(java.util.UUID.fromString(value.getAsString()));
+        data.completedHostedSettlements.forEach(data.hostedSettlements::remove);
+        data.completedHostedSettlements.forEach(data.hostedAttempts::remove);
+        for (String former : List.copyOf(data.pendingBossCreations.keySet())) {
+            String canonical = data.canonicalArenaId(former);
+            if (former.equals(canonical)) continue;
+            CompoundTag intent = data.pendingBossCreations.remove(former);
+            CompoundTag conflict = data.pendingBossCreations.putIfAbsent(canonical, intent);
+            if (conflict != null && !conflict.getUUID("UUID").equals(intent.getUUID("UUID")))
+                throw new IllegalStateException("Conflicting aliased boss creation identity");
+        }
+        for (String former : List.copyOf(data.raidRetirements.keySet())) {
+            String canonical = data.canonicalArenaId(former);
+            if (former.equals(canonical)) continue;
+            CompoundTag intent = data.raidRetirements.remove(former);
+            CompoundTag conflict = data.raidRetirements.putIfAbsent(canonical, intent);
+            if (conflict != null && !conflict.getUUID("Boss").equals(intent.getUUID("Boss")))
+                throw new IllegalStateException("Conflicting aliased Raid retirement identity");
+        }
+        for (Tag value : tag.getList("CanonicalHostedClosures", Tag.TAG_STRING))
+            data.canonicalHostedClosures.add(java.util.UUID.fromString(value.getAsString()));
+        for (Tag value : tag.getList("FailedHostedAttempts", Tag.TAG_STRING))
+            data.failedHostedAttempts.add(java.util.UUID.fromString(value.getAsString()));
+        for (java.util.UUID failed : data.failedHostedAttempts) {
+            if (data.hostedSettlements.containsKey(failed) || data.completedHostedSettlements.contains(failed))
+                throw new IllegalStateException("Conflicting persisted hosted attempt outcomes");
+            data.hostedAttempts.remove(failed);
+        }
         return data;
     }
 
-    public record RespawnState(ResourceLocation entityType, long dueTime) {}
+    public record RespawnState(ResourceLocation entityType, long dueTime, java.util.UUID deathId) {
+        public RespawnState(ResourceLocation entityType, long dueTime) { this(entityType, dueTime, null); }
+    }
 }

@@ -47,6 +47,20 @@ public final class SmpData extends SavedData {
         }
     }
 
+    /** Return metadata may be cleared only after the native player position is acknowledged. */
+    public static void flushPlayerPosition(net.minecraft.server.level.ServerPlayer player) {
+        var expected = player.saveWithoutId(new CompoundTag());
+        player.server.getPlayerList().saveAll();
+        var file = player.server.getWorldPath(net.minecraft.world.level.storage.LevelResource.PLAYER_DATA_DIR)
+                .resolve(player.getUUID() + ".dat").toFile();
+        try {
+            var saved = NbtIo.readCompressed(file);
+            if (!expected.getList("Pos", Tag.TAG_DOUBLE).equals(saved.getList("Pos", Tag.TAG_DOUBLE))
+                    || !expected.getString("Dimension").equals(saved.getString("Dimension")))
+                throw new java.io.IOException("Returned player position not persisted");
+        } catch (java.io.IOException failure) { throw new IllegalStateException("storage_unavailable", failure); }
+    }
+
     private boolean editing;
     private int editDepth;
     private final List<Runnable> afterEdit = new ArrayList<>();

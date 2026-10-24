@@ -1,0 +1,186 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.encounter-integrity-20261025",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    },
+    {
+      "type": "registry",
+      "registry": "structures"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Dedicated hosted registered Boss Fight, Campaign and Raid only. Item claim integrity applies to existing JEMRewards on both host types. Integrated ordinary native combat, Blood Moon and Resource Rush retain their owning contracts",
+      "acceptance": "Focused regressions and local production delivery are recorded separately. Real multiplayer acceptance remains unrun"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1500,
+    "overrides": [
+      "hosted.structural-barrier-restoration-20261024"
+    ]
+  },
+  "change": {
+    "summary": "Harden shared native hosted encounter integrity without a second arena or reward owner",
+    "modifiers": [
+      {
+        "property": "hosted.structural_boss_admission_and_barriers",
+        "operation": "replace",
+        "before": "Restored virtual structure shell lacked complete six-face movement, restart authority and terminal recovery guarantees",
+        "after": "Saved canonical 3D arena supplies all six solid faces during ACTIVE, swept complete entity/vehicle geometry, one-use authorized entry, portal/teleport validation and retryable safe terminal exit"
+      },
+      {
+        "property": "hosted.victory_settlement",
+        "operation": "replace",
+        "before": "HostedEncounters.drops logged failed enqueue then still closed success, and entity-local loot could be lost on removal",
+        "after": "Freeze legitimate canonical attempt recipients and exact native loot once, persist immutable pending settlement in existing WorldTierData, verify JEMRewards batch and XP intent before terminal victory, retain retry intent with permanent source/recipient/phase receipts. First never-durable write survives only within the running process"
+      },
+      {
+        "property": "hosted.participant_outcomes",
+        "operation": "replace",
+        "before": "Cross-owner Start, partial movement and reason-agnostic elimination could leave incomplete linkage or discard pending living returns",
+        "after": "Validate whole accepted-ready-online-authorized roster/destinations, durable origins and frozen attempt/party/event link before AI, monotonic elimination and native death distinction, host/nonhost forfeit, absence grace, independent earned personal rewards and verified pending return completion"
+      },
+      {
+        "property": "hosted.canonical_boss_recovery",
+        "operation": "replace",
+        "before": "Creation/removal ownership and cooldown callbacks lacked exact native persistence and retired UUID replay protection",
+        "after": "One exact canonical live identity, native UUID/NBT creation intent before insertion, actual entity-write acknowledgment, durable retirement before removal, aliases and unknown loading preserved. Ordinary cooldown remains 72000 game-time units from legitimate death and Raid restoration never resets or consumes it"
+      },
+      {
+        "property": "hosted.raid_native_combat",
+        "operation": "replace",
+        "before": "Raid combined native combat with JEM reinforcement wave state",
+        "after": {
+          "health": 2.5,
+          "damage": 1.25,
+          "size_maximum": 1.35,
+          "scale_policy": "One final frozen participant/Raid layer at canonical Start, actual safe body/structure collision constrains enlargement, complete rollback and restore",
+          "waves": "No authored Raid reinforcement waves, counters, allowlist tags or reinforcement stat layer",
+          "native": "Native AI, valid targets, phases, spells and summons preserved. Exact synchronous native effect UUID/dimension/attempt provenance protects encounter filtering without proximity adoption. Stale effects retain native lifetime but cannot inherit a newer attempt"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "WorldBossTiers canonical boss/attempt/progression, JEMServer party/travel/boundary, JEMRewards item transactions",
+    "kind": "explicit_user_integration_and_verified_defects",
+    "source_files": [
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java",
+      "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/SolidBoundaryMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/events/SolidBoundaryMovementValidationMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/MobBoundaryTeleportMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/ServerPlayerTeleportMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/CombatNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventAdmission.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventMember.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventNbtCodec.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventState.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/PartyAdmission.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/PartyMember.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/PartyState.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EncounterContext.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAttempts.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventMobModifiers.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventScheduler.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventSession.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HomeTravel.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/PartyTeleportFlow.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/StructureEncounterApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedConfig.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedSettlement.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/NativeEncounterSource.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/StandaloneAdmission.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/event/HostedEncounterClosedEvent.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/EntityStorageAccessor.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/InstantHealingSupportMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/NativeBossWriteAckMixin.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/PersistentEntityStorageAccessor.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/BossRespawnScheduler.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/NativeBossStorage.java",
+      "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent lost or duplicate rewards, stale live boss identities, reopened entry and stranded members while preserving native encounter mechanics",
+    "decision_source": "User supplied final integration plan and mandatory party/reward invariants on 2026-10-25, explicitly requested focused regression tests",
+    "implementation_choices": "Extend existing SavedData owners, use native entity IOWorker acknowledgment and bounded retry, immutable serialized grants, phase receipts, synchronous native provenance, scoped travel bypass and test-only Gradle opt-in"
+  },
+  "introduced": {
+    "date": "2026-10-25",
+    "commit": "SELF",
+    "action": "integrate_failure_safe_hosted_lifecycle",
+    "summary": "User-approved barrier, native combat, canonical identity, party outcome and personal settlement integration with focused opt-in regressions"
+  },
+  "history": [
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "integrate_failure_safe_hosted_lifecycle",
+      "summary": "User-approved barrier, native combat, canonical identity, party outcome and personal settlement integration with focused opt-in regressions",
+      "source_files": [
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/mummy.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Boss Fight",
+      "Campaign",
+      "Boss Raid",
+      "JEMRewards claims",
+      "native boss AI and effects",
+      "canonical entity persistence",
+      "ordinary revival",
+      "party travel and return",
+      "physical boundary rendering and authority"
+    ],
+    "relations": [
+      "Legitimate boss death -> frozen WorldTierData settlement -> verified Rewards/XP -> idempotent canonical and party close",
+      "Frozen Start -> durable canonical attempt -> matching Server party/event/participation -> native AI release",
+      "Canonical native creation/retirement -> actual chunk write -> live identity transition",
+      "Terminal outcome -> safe exterior ejection/return -> verified native player position -> clear pending return"
+    ],
+    "notes": [
+      "Original registry facts and legacy identity/quarantine evidence are preserved",
+      "Deleted legacy Raid ally wave tags are retired behavior, native summons are preserved",
+      "Three Minecraft days remains the ordinary respawn duration, internal game-time units are unchanged",
+      "No MineRENT deployment, stable profile mutation, client launch or release baseline promotion"
+    ],
+    "unresolved": [
+      "Real multiplayer, installed-mod native attacks and teleports, process-loss fault injection and visual acceptance require an authorized observed runtime session",
+      "Initial failed write before any durable journal cannot guarantee recovery after process loss"
+    ]
+  }
+}

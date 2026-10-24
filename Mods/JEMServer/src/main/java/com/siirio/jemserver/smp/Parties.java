@@ -50,7 +50,7 @@ public final class Parties {
         var iterator = working().values().iterator();
         while (iterator.hasNext() && excess > 0) {
             var row = iterator.next();
-            if (row.closed() && !com.siirio.jemserver.smp.events.StructureStaging.hasPendingRaidExit(row)) { iterator.remove(); excess--; }
+            if (row.closed() && !row.hasPartyTeleportSession() && !com.siirio.jemserver.smp.events.StructureStaging.hasPendingRaidExit(row)) { iterator.remove(); excess--; }
         }
     }
 

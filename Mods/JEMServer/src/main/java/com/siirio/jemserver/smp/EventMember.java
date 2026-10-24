@@ -8,6 +8,9 @@ public final class EventMember {
     boolean wavesChanged;
     private Boolean raidArenaExitPending;
     boolean raidArenaExitPendingChanged;
+    private boolean nativeDeath;
+    public boolean nativeDeath() { return nativeDeath; }
+    public void nativeDeath(boolean value) { requireMutable(); nativeDeath = value; }
     private boolean frozen;
     EventNbtCodec.Source source = new EventNbtCodec.Source();
     private String name;
@@ -73,7 +76,7 @@ public final class EventMember {
 
     private void requireMutable() { if (frozen) throw new IllegalStateException("Immutable event snapshot"); }
     public EventMember copy() {
-        var copy = new EventMember();
+        var copy = new EventMember(); copy.nativeDeath = nativeDeath;
         copy.source = source.copy();
         copy.raidArenaExitPending = raidArenaExitPending; copy.raidArenaExitPendingChanged = raidArenaExitPendingChanged;
         copy.waves = waves; copy.wavesChanged = wavesChanged;

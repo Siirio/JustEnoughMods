@@ -1,38 +1,74 @@
 # Boss Fight
 
-> Current 2026-10-22 implementation: integrated/LAN ordinary bosses use native combat and World Tier without SMP, party confirmation or group scaling. Dedicated bosses retain the canonical hosted Start lifecycle. Campaign prerequisites remain owned by their existing progression guard. Gameplay acceptance remains unrun.
+Current contract, 2026-10-25: server-authoritative dedicated encounter integration. This supersedes earlier source-only delivery labels and barrier-free descriptions below. Multiplayer acceptance remains separate from automated regressions, packaging and native installation. Exact evidence belongs to `encounter-integrity-delivery-20261025.json` beside this document.
 
-## Universal ownership — 2026-10-22
+WorldBossTiers owns boss profiles, canonical arena/live UUID, dormant combat, frozen attempts, ordinary cooldown and progression. JEMServer adapts parties, admission, travel and the six-face structure barrier. TwelveEyes owns Campaign prerequisites. JEMRewards is the only item-entitlement owner. HostedRewards retains existing non-item advancement/XP recovery.
 
-The same production domain JAR serves both host types. Dedicated WorldBossTiers owns dormant native hold, structure discovery and frozen participation/scaling; Server supplies its party/UI adapter. Without Server, dedicated ordinary solo admission remains available but Raid does not. Integrated bosses do not wait for the disabled hosted Start. Item rewards belong to JEMRewards; World Tier progression and Campaign prerequisites retain their existing owners.
+| Logical phase | Existing owner and behavior |
+| --- | --- |
+| DORMANT | Native boss/support held, protected from damage, targeting, movement and custom combat ticks |
+| PREPARING | Existing Solo/Party GUI, prerequisite and ready-member checks, one arena reservation |
+| ACTIVE | Frozen accepted/ready/online UUIDs and scale, durable party link before native AI release |
+| VICTORY | Legitimate death and attempt frozen, native loot captured once, durable settlement before terminal success |
+| DEFEAT | Irreversible member elimination, retryable return and cleanup, same surviving ordinary boss restored dormant |
+| RECOVERY | Existing journals reconcile incomplete writes, party links, native creation/retirement and pending returns |
+| COOLDOWN | Ordinary respawn due exactly three Minecraft days after legitimate death, persistent across restart |
 
-## Current source contract — 2026-10-24
+An eligible attack on a dormant boss opens the existing encounter interface without applying damage or starting combat. Explicit Start validates every member and full destination before movement. Origins persist before transfer. Failed admission or partial teleport rolls back moved members, retaining a pending return when rollback cannot complete. Mounted/passenger admission is rejected before travel rather than splitting a vehicle family.
 
-Status: source implementation / in testing. Runtime acceptance is unrun; artifact delivery, native AutoModpack installation and MineRENT deployment are pending.
+The canonical Start operation persists one attempt UUID and frozen participant state in WorldTierData, then acknowledges the matching Server party/event record before releasing native combat. No late joining, ready-state filtering, eliminated reactivation or scaling recalculation occurs after Start. Stale party actions use the canonical attempt token, including retries using the same boss UUID.
 
-The user explicitly restores the old barriers for all ordinary structural Boss Fight, Campaign and Boss Raid encounters, including visible walls, physical collision and teleport restrictions. The shared StructureStaging adapter reuses the proven virtual shell and filled-quad renderer with registered three-dimensional structure geometry. Authorized active participants can enter once, then the server persists full-body entry and prevents crossing out until the existing leave/forfeit or terminal flow. Locked MAIN Campaign structures retain prerequisite feedback and deny admission. Blood Moon and Resource Rush retain their separate approved walls and movement policies. Integrated/LAN ordinary bosses remain native and receive no dedicated hosted wall.
+Registered structure geometry supplies the shared translucent physical shell: four sides, floor and ceiling, native minimum/maximum Y with the existing horizontal margin. Server collision comes from saved canonical arenas rather than player discovery or renderer caches. Complete entity/vehicle boxes and swept movement guard corners and high speed. Authorized participants enter once, then containment remains solid during ACTIVE. Native player/mob teleports and portals receive authority checks. Blood Moon and Resource Rush retain their own boundary policies.
 
-Registered living bosses enter a persistent dormant lobby on entity join/reload. HostedLobby holds native AI/targets/movement and presentation until canonical Start and rejects damage/death of the held boss. The logical-server dispatcher hold also pauses mod-native custom combat/cinematic ticks. Reload reapplies the hold instead of releasing it, and there is no idle timeout that silently starts combat. Nearby players do not acquire general damage/death immunity merely by standing near a waiting boss.
+Native AI, phases, attacks and summons remain upstream-owned. Waiting ticks resume only after canonical Start and durable party recovery. Preserve original/current native NoAI and valid native targets, rather than imposing a nearest-player target every tick. Damage/control filters recognize frozen participants and proven owners without granting outsiders membership.
 
-An attempted player attack, including a resolved projectile owner, is cancelled against the dormant boss and opens the existing encounter choice/host GUI after current authority, proximity, prerequisite and availability checks. Proximity alone no longer prompts or starts combat. Start remains an explicit server-owned operation; it releases the lobby once and binds the canonical party/attempt. Cancellation/defeat of a surviving boss returns it to the same dormant owner. An empty active arena eventually closes through the existing grace lifecycle instead of remaining active forever.
+Actual death immediately records ELIMINATED plus NativeDeath, preserving normal respawn and existing inventory/armor/offhand/Curios retention inside an active structural encounter. Voluntary exit and disconnect elimination are different reasons and retain safe return information. Nonhost exit affects only that member. Token-valid host forfeit, or host absence beyond configured grace, fails the whole attempt. Death of the host alone is ordinary participant elimination. All members eliminated fails the attempt. The shared grace configuration defaults to five minutes, with explicit existing world overrides honored by both owners.
 
-HostedScaling freezes native participant factors: health1/1.45/1.80/2.10 then+0.20 per additional participant; damage1/1.10/1.18/1.25 then+0.05 capped1.45. Gear score does not scale damage. Supported native ATK formulas apply tier-specific ATK once, then profile*party*0.88 only to the flat component; native max-HP operands/caps keep their own formula. Fixed native components retain the separate Tier boost. Exact pinned adapters, calculation boundaries and migration are documented in [combat balance](../power-system/Balance.md).
+Ordinary victory offers Return/Stay only after durable settlement and safe terminal admission. Ordinary defeat prefers a validated configured home/bed where available, otherwise the preserved pre-fight origin. Offline living members keep pending returns until login. Player position persistence is verified before return metadata is cleared. NativeDeath never teleports a player back into the fight or replaces native respawn.
 
-Смерть участника является окончательной для текущей попытки: JEM помечает его eliminated, но не отменяет `LivingDeathEvent`, не выдаёт скрытые дополнительные жизни, половину здоровья или post-death immunity и не переносит игрока к боссу. При фактической смерти внутри активной структурной арены обычный inventory, armor, offhand и Curios сохраняются на respawn без grave; это не отменяет elimination и не действует вне активного Boss Fight/Boss Raid. Групповое downed/revive состояние может существовать только до фактической смерти через установленный revive lifecycle.
+## Failure-safe personal settlement
 
-Tagged thematic bosses, including Magnetron, Scylla and Cloud Golem, use the shared Zeus effect every0.005833 Minecraft days. Warning and hit share radius1.75 blocks;24 particles outline it for0.001 Minecraft days. Confirmed Ignis forced riding and native Cataclysm stun defer the added lightning; a capture during the warning leaves a full warning interval after release. The player can leave the marked area before impact.
+1. Confirm legitimate death and current canonical attempt
+2. Freeze eligible UUIDs and exact personal entitlements, preserving earned contribution/support even after elimination
+3. Capture native loot once and serialize one immutable batch under boss UUID plus attempt UUID
+4. Retain the frozen settlement in existing WorldTierData, independently of the removable boss entity
+5. Persist and verify the complete JEMRewards batch and existing personal XP intent
+6. Only then commit canonical victory, ordinary cooldown, party outcome and cleanup, with separate idempotent phase receipts
+7. Deliver each recipient's complete personal copy independently through pending reward slots
 
-Verified native anchor записывается только при первом допустимом наблюдении native boss и после этого остаётся неизменным. Смерть, текущая позиция переместившегося босса, revive command и encounter cleanup не могут заменить его координатой смерти или передвинуть живую entity обратно к anchor.
+Enqueue errors never call successful close. Only an actual uncanceled native death freezes the first victory time, and loot/XP capture requires that confirmed dying identity. A repeated death callback cannot move the frozen time. Retry uses the frozen roll and recipients, not a new loot evaluation. Per-source and per-recipient receipts survive duplicate callbacks/reconnects. Full inventories leave items pending. Claims remain take-only and server-authoritative, including Creative inventory synchronization. Native XP is suppressed only into the captured personal XP owner, avoiding simultaneous orbs plus direct grants. Revive, tanking, attributed useful buffs and actual attributed instant healing preserve genuine support credit, excluding self/proximity/idle awards.
 
-Операторский revive является восстановлением структуры, а не rematch unlock: зарегистрированной структуры и отсутствия живого босса достаточно даже до первой победы. Не найденный среди загруженных entity UUID остаётся неизвестным/возможно выгруженным: это не доказательство смерти и не разрешение очистить canonical claim или создать замену. После доказанного освобождения identity первая последующая легитимная победа сохраняет право прогрессировать World Tier, а Raid остаётся закрытым до этой победы.
+An initial write that never reaches durable storage remains recoverable only in the running process. Logs explicitly identify this limit, and native autosave failure retains dirty intent rather than killing the recovery process. No crash-durability claim is made until verification succeeds.
 
-Start of an ordinary fight requires the existing legitimate live boss and does not spawn or move it. Safe arrival/exit validates full collision boxes, loaded geometry, world border and dimension, preferring sheltered in-structure floors over exposed roofs. Restored movement and teleport restrictions use the full player/vehicle collision box and the structure-volume shell, with safe terminal Raid ejection. Actual death remains elimination and never triggers boss recovery teleport. Other event restrictions and actual world collision remain authoritative.
+The ordinary delay remains `72_000` Overworld game-time units. Duplicate callbacks preserve the original death ID/due time. A later legitimate death has its own new due time. Native saved-entity loading must finish before absence is usable. Pending creation stores the exact native UUID/NBT before insertion, writes through native entity storage with actual future acknowledgment, and replays only that never-released identity after loading. Known retired UUIDs are rejected on later joins so an older saved chunk cannot resurrect a moving defeated boss. Unknown UUIDs remain unresolved, never presumed dead.
 
-Host cancellation is bound to Party ID and current attempt token; stale or replayed actions cannot close a newer attempt. Actual participant death is immediate elimination; inventory retention and progression remain owned by the active encounter lifecycle. Registered bosses retain their canonical shared arena/revival identity and native anchor.
+Integrated/LAN ordinary bosses retain native combat and World Tier/Campaign rules. SMP, parties and Raid stay dedicated-only. No MineRENT deployment, stable-profile mutation or baseline promotion follows this integration.
 
-Official discovered boss and active event markers may expose native Xaero teleport actions. Only server-projected object identities receive this adapter; the server resolves the boss arena/event ID anew, checks availability/eligibility and safe arrival, and never trusts client coordinates. Personal/home/base/death waypoints remain creator-private and retain native controls; forged or stale IDs fail. No replacement map screen is introduced.
+## Verification scope
 
-Campaign prerequisites again gate structure access through the shared barrier and independently gate canonical Start. Per the user's correction, only ancient_guardian is removed from the posessed_paladin prerequisite list; bone_stalker and overgrown_colossus remain. Coppermincer and other progression edges remain. The registered ancient_guardian/ancient_tower_remains association is corrected to The End; this is not a fabricated defeat or worldgen retrofit. Legacy barrier registry IDs remain inert save compatibility and known legacy cells retain migration cleanup.
+The current user explicitly requested focused regressions for this task, superseding the older blanket test restriction only within this scope. Run the opt-in suite from the project root:
+
+```powershell
+.\gradlew.bat -PjemEncounterRegression=true :JEMRewards:test :JEMWorldBossTiers:test :JEMServer:test --no-watch-fs
+```
+
+Ordinary production builds do not enable these tests. Regression results and exact artifact hashes belong to the delivery receipt. Native Mixin binding, mod-specific projectiles/teleports, multiplayer reconnects, mounted movement and real disk/process-loss scenarios remain runtime acceptance until actually observed. Compilation and mock-based tests do not establish multiplayer acceptance.
+
+## Integration findings
+
+| Issue and concrete cause | Correction | Source owners |
+| --- | --- | --- |
+| Failed enqueue still closed victory, leaving loot on a removable entity | Immutable independent settlement, verified personal batches before successful cleanup | HostedEncounters, HostedSettlement, RewardsData |
+| Inventory transfer and reward removal could receive different persistence outcomes | Recoverable claim receipt, verified native player save, full-inventory pending and Creative synchronization | PendingRewardContainer, RewardsData |
+| Separate Start commits and partial movement could release AI or lose origins too soon | Whole-roster preflight, durable origins, rollback and pre-release party/event acknowledgment | HostedParties, PartyTeleportFlow, SmpData |
+| Reason-agnostic elimination could erase living offline returns or reopen participation | Monotonic elimination, distinct native death/absence, exact attempt tokens and verified pending returns | HostedEncounters, EncounterContext, PartyMember, EventMember |
+| Host Raid forfeit reset the event while canonical combat remained active | Exact hosted close acknowledgment before replacement/reset, retry intent prevents recursive callbacks | HostedParties, EventScheduler, RaidEvent |
+| Incomplete shell geometry and discovery caches could allow passage or block surface columns | Saved canonical bounds, six faces, swept complete bodies, vehicle families and scoped safe travel | StructureStaging, SolidBoundary, EventBoundaryRenderer, teleport Mixins |
+| Native creation/removal could disagree with saved live claims or replay an older body | Exact native UUID/NBT intent, actual entity-write acknowledgment, retirement tombstones and alias migration | NativeBossStorage, WorldTierData, RaidArenaApi, EventHooks |
+| Repeated death callbacks could move the first death time or reset revival | Actual dying identity required, frozen first death time and death-specific persistent due time | HostedEncounters, BossRespawnScheduler, WorldTierData |
+| Authored Raid waves and stale/native effect provenance conflicted with native combat | Remove authored waves, preserve upstream combat, apply safe frozen scale once, bind proven effects to source/dimension/attempt | RaidEvent, HostedRaidScaling, NativeEncounterSource, HostedBossTickMixin |
+
+The delivery receipt includes all executable test cases, the 26 still-unrun multiplayer scenarios, artifact/publication/application evidence and operational incidents. These findings remain in testing until player acceptance.
 
 ## Preserved exclusions
 

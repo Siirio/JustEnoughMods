@@ -44,6 +44,11 @@ public final class BossRespawnScheduler {
     private MinecraftServer activeServer;
 
     public void scheduleAfterDeath(ServerLevel level, BossProfile profile, ArenaRecord arena, ResourceLocation entityId, BlockPos deathPosition) {
+        scheduleAfterDeath(level, profile, arena, entityId, deathPosition, null, level.getServer().overworld().getGameTime());
+    }
+
+    public void scheduleAfterDeath(ServerLevel level, BossProfile profile, ArenaRecord arena, ResourceLocation entityId,
+                                   BlockPos deathPosition, java.util.UUID deathId, long deathGameTime) {
         if (!RespawnOwnership.usesJemScheduler(profile.revivalStrategy())) {
             return;
         }
@@ -53,8 +58,9 @@ public final class BossRespawnScheduler {
         if (arena.structureArena() && !data.nativeAnchorVerified(arena.id())) {
             return;
         }
-        long dueTime = server.overworld().getGameTime() + RESPAWN_DELAY;
-        data.scheduleRespawn(arena.id(), entityId, dueTime);
+        long dueTime = deathGameTime + RESPAWN_DELAY;
+        data.scheduleRespawn(arena.id(), entityId, dueTime, deathId);
+        dueTime = data.respawn(arena.id()).orElseThrow().dueTime();
         schedule(new ScheduledRespawn(
                 arena.id(),
                 profile.key(),
@@ -233,11 +239,19 @@ public final class BossRespawnScheduler {
             // A raid or a native observation may have canceled this persisted
             // task while its old in-memory entry was waiting for a chunk.
             if(data.respawn(arena.id()).isEmpty()) {scheduledByArena.remove(task.arenaId(),task);return false;}
+            var due = data.respawn(arena.id()).orElseThrow();
+            if (server.overworld().getGameTime() < due.dueTime()
+                    || data.raidReplacementPending(arena.id()) || data.hostedSettlementPending(arena.id())) {
+                retry(server, task);
+                return false;
+            }
             LivingEntity existing=livingBoss(level,arena,profile);
             if (existing!=null) {
                 if(!data.recordLiveBoss(arena.id(),existing)) {retry(server,task);return false;}
                 data.putArena(arena.recover(existing.getUUID(),level.getGameTime()));
+                if (!NativeBossStorage.finishCreation(level, arena, existing) || !data.flush(server)) { retry(server, task); return false; }
                 data.cancelRespawn(task.arenaId());
+                if (!data.flush(server)) { retry(server, task); return false; }
                 scheduledByArena.remove(task.arenaId(), task);
                 return false;
             }
@@ -268,12 +282,10 @@ public final class BossRespawnScheduler {
             ArenaRecord active = arena.recover(boss.getUUID(), level.getGameTime());
             if (data.defeatedBosses().contains(profile.key())) WorldTierApi.markRevivalEncounter(boss, arena.id());
             else WorldTierApi.markStructureEncounter(boss, arena.id());
-            if(!data.recordLiveBoss(arena.id(),boss)) {retry(server,task);return false;}
             data.putArena(active);
-            if(!data.flush(server)) {
-                data.clearLiveBoss(arena.id(),boss.getUUID());
-                data.putArena(arena);
-                retry(server,task);return false;
+            if (!NativeBossStorage.prepareCreation(level, arena, boss)) {
+                retry(server, task);
+                return false;
             }
             if (!level.addFreshEntity(boss)) {
                 data.clearLiveBoss(arena.id(),boss.getUUID());
@@ -283,7 +295,9 @@ public final class BossRespawnScheduler {
             }
             data.putArena(active);
             data.verifyNativeAnchor(arena.id());
+            if (!NativeBossStorage.finishCreation(level, arena, boss) || !data.flush(server)) { retry(server, task); return false; }
             data.cancelRespawn(arena.id());
+            if (!data.flush(server)) { retry(server, task); return false; }
             scheduledByArena.remove(task.arenaId(), task);
             return true;
         } catch (RuntimeException error) {

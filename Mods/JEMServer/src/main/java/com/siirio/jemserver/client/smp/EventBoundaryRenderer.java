@@ -90,6 +90,17 @@ public final class EventBoundaryRenderer {
         wall(consumer,pose,x1,z2,x2,z2,y1,y1,y2-y1,zone.color(),fillAlpha);
         wall(consumer,pose,x1,z1,x1,z2,y1,y1,y2-y1,zone.color(),fillAlpha);
         wall(consumer,pose,x2,z1,x2,z2,y1,y1,y2-y1,zone.color(),fillAlpha);
+        if(zone.type().equals("BOSS_FIGHT")) {
+            horizontal(consumer,pose,x1,z1,x2,z2,y1,zone.color(),fillAlpha);
+            horizontal(consumer,pose,x1,z1,x2,z2,y2,zone.color(),fillAlpha);
+        }
+    }
+
+    private static void horizontal(VertexConsumer consumer,PoseStack.Pose pose,float x1,float z1,float x2,float z2,float y,int color,int alpha) {
+        vertex(consumer,pose,x1,y,z1,color,alpha);
+        vertex(consumer,pose,x2,y,z1,color,alpha);
+        vertex(consumer,pose,x2,y,z2,color,alpha);
+        vertex(consumer,pose,x1,y,z2,color,alpha);
     }
 
     private static void wall(VertexConsumer consumer,PoseStack.Pose pose,float x1,float z1,float x2,float z2,float y1,float y2,float height,int color,int alpha) {

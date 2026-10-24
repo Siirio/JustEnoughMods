@@ -12,6 +12,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 
 public final class HostedEncounterApi {
+    /** Canonical immutable Start token, absent until the hosted encounter actually starts. */
+    public static java.util.UUID attemptId(LivingEntity boss) {
+        return com.siirio.jemworldbosstiers.encounter.HostedEncounters.attemptId(boss);
+    }
+
     private static final String ORIGINAL_RAID_ENCOUNTER="jem:original_raid_encounter";
     private static final String PRESERVE_RAID_BOSS="jem:preserve_raid_boss";
     public record ParticipantView(UUID playerId, String state, boolean reviveAvailable, long remainingTicks,
@@ -24,20 +29,34 @@ public final class HostedEncounterApi {
     public static net.minecraft.world.entity.Entity damageOwner(net.minecraft.world.entity.Entity entity) {
         var seen=new java.util.HashSet<UUID>();
         for(int depth=0;entity!=null && depth<8 && seen.add(entity.getUUID());depth++) {
+            if (entity instanceof net.minecraft.world.entity.player.Player) return entity;
             net.minecraft.world.entity.Entity next=entity instanceof net.minecraft.world.entity.projectile.Projectile p ? p.getOwner()
                     : entity instanceof net.minecraft.world.entity.OwnableEntity owned ? owned.getOwner()
                     : entity instanceof net.minecraft.world.entity.item.PrimedTnt tnt ? tnt.getOwner()
                     : entity instanceof net.minecraft.world.entity.AreaEffectCloud cloud ? cloud.getOwner()
-                    : entity instanceof net.minecraft.world.entity.projectile.EvokerFangs fangs ? fangs.getOwner()
-                    : com.siirio.jemworldbosstiers.encounter.HostedAllies.owner(entity);
+                    : entity instanceof net.minecraft.world.entity.projectile.EvokerFangs fangs ? fangs.getOwner() : null;
+            if (next == null && entity instanceof net.minecraft.world.entity.OwnableEntity owned && owned.getOwnerUUID() != null) return entity;
+            if (next == null) next = com.siirio.jemworldbosstiers.encounter.HostedAllies.owner(entity);
+            if (next == null) next = com.siirio.jemworldbosstiers.encounter.NativeEncounterSource.owner(entity);
             if(next==null) return entity;
             entity=next;
         }
         return entity;
     }
 
+    /** A native tick scope is used only when the damage source has no explicit entity. */
+    public static net.minecraft.world.entity.Entity damageOwner(net.minecraft.world.damagesource.DamageSource source) {
+        if (source.getEntity() != null) return damageOwner(source.getEntity());
+        if (source.getDirectEntity() != null) return damageOwner(source.getDirectEntity());
+        return com.siirio.jemworldbosstiers.encounter.NativeEncounterSource.current();
+    }
+
     public static boolean enabled(net.minecraft.server.MinecraftServer server) {
         return server != null && server.isDedicatedServer();
+    }
+
+    public static long disconnectGraceMillis() {
+        return com.siirio.jemworldbosstiers.encounter.HostedConfig.GRACE.get() * 50L;
     }
 
     private static boolean raidEnabled(net.minecraft.server.MinecraftServer server) {
@@ -68,6 +87,7 @@ public final class HostedEncounterApi {
     public static void release(LivingEntity boss) { com.siirio.jemworldbosstiers.encounter.HostedLobby.release(boss); }
 
     public static boolean prepareRaid(LivingEntity boss) {
+        if (com.siirio.jemworldbosstiers.revival.NativeBossStorage.pending(boss)) return false;
         if (!raidEnabled(boss.getServer())) return false;
         if(preservesRaidBoss(boss)) {
             if(boss.level().isClientSide||!boss.isAlive()||HostedEncounters.isHosted(boss)||!isRaid(boss)) return false;
@@ -90,6 +110,7 @@ public final class HostedEncounterApi {
     }
 
     public static boolean canPrepareRaid(LivingEntity boss) {
+        if (com.siirio.jemworldbosstiers.revival.NativeBossStorage.pending(boss)) return false;
         if(!raidEnabled(boss.getServer())||boss.level().isClientSide||!boss.isAlive()||HostedEncounters.isHosted(boss)||boss.getPersistentData().getBoolean(PRESERVE_RAID_BOSS)) return false;
         var profile=WorldTierApi.profile(boss).orElse(null);
         return profile!=null&&WorldTierData.get(boss.getServer()).defeatedBosses().contains(profile.key())
@@ -121,6 +142,13 @@ public final class HostedEncounterApi {
     }
 
     public static boolean start(LivingEntity boss, Collection<UUID> agreedPlayers, boolean raid, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        return start(boss, agreedPlayers, raid, bounds, null, attempt -> {});
+    }
+
+    public static boolean start(LivingEntity boss, Collection<UUID> agreedPlayers, boolean raid,
+                                net.minecraft.world.level.levelgen.structure.BoundingBox bounds, UUID partyId,
+                                java.util.function.Consumer<UUID> beforeRelease) {
+        if (com.siirio.jemworldbosstiers.revival.NativeBossStorage.pending(boss)) return false;
         if (!enabled(boss.getServer()) || raid && !raidEnabled(boss.getServer()) || boss.level().isClientSide || !boss.isAlive() || !canHost(boss) || HostedEncounters.isHosted(boss)) {
             return false;
         }
@@ -138,7 +166,7 @@ public final class HostedEncounterApi {
         String spawnType = boss.getPersistentData().getString("forge:spawn_type");
         if (!spawnType.equals("SPAWN_EGG") && !spawnType.equals("COMMAND") && encounter != null && encounter.arenaId() != null
                 && WorldTierData.get(boss.getServer()).liveBoss(encounter.arenaId()).filter(id -> !id.equals(boss.getUUID())).isPresent()) return false;
-        return HostedEncounters.start(boss, agreedPlayers, raid, profile.arenaRadius(), bounds);
+        return HostedEncounters.start(boss, agreedPlayers, raid, profile.arenaRadius(), bounds, partyId, beforeRelease);
     }
 
     public static boolean isRaid(LivingEntity boss) {
@@ -165,6 +193,11 @@ public final class HostedEncounterApi {
         if (Double.isFinite(amount) && amount > 0) {
             HostedEncounters.contribute(player, amount);
         }
+    }
+
+    /** Called only after a native source-attributed heal has actually increased health. */
+    public static void supportHealing(net.minecraft.world.entity.Entity healer, LivingEntity target, float actualHealing) {
+        HostedEncounters.supportHealing(healer, target, actualHealing);
     }
 
     public static java.util.Set<UUID> eligibleParticipants(LivingEntity boss) {

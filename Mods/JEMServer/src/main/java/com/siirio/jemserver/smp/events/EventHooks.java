@@ -126,6 +126,12 @@ public final class EventHooks {
 
     private void entityInScope(EntityJoinLevelEvent event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
+        // The canonical retirement tombstone outranks event-local spawn admission.
+        if (com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer())
+                .bossIdentityRetired(event.getEntity().getUUID())) {
+            event.setCanceled(true);
+            return;
+        }
         if(EventRuntime.enabled(level.getServer()) && !BloodMoon.adoptSummon(level,event.getEntity())) {
             event.setCanceled(true);
             return;
@@ -138,6 +144,7 @@ public final class EventHooks {
         if (row != null ? !EventRuntime.available(level.getServer(), row) : !EventRuntime.enabled(level.getServer())) return;
         if (row == null || !row.state().equals("ACTIVE")
                 || key.equals(BloodMoon.EVENT_ID) && !activeBloodMoonSpawn(level,event.getEntity())) {
+            if(key.equals(RaidEvent.EVENT_ID) && RaidEvent.clearNativeSummon(event.getEntity())) return;
             event.setCanceled(true);
             return;
         }

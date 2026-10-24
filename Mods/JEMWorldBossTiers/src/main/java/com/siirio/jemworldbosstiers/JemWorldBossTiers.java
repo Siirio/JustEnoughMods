@@ -238,6 +238,9 @@ public final class JemWorldBossTiers {
             return;
         }
         if (living.getPersistentData().getBoolean("JEMQuarantinedDuplicate")) return;
+        // A removed dead entity is not a committed victory. Its durable settlement
+        // retains canonical ownership until all personal rewards are acknowledged.
+        if (com.siirio.jemworldbosstiers.encounter.HostedEncounters.isHosted(living)) return;
         Entity.RemovalReason reason = living.getRemovalReason();
         if (reason == null || reason == Entity.RemovalReason.UNLOADED_TO_CHUNK || reason == Entity.RemovalReason.CHANGED_DIMENSION) {
             return;
@@ -255,6 +258,7 @@ public final class JemWorldBossTiers {
         if (profile == null) {
             return;
         }
+        if (com.siirio.jemworldbosstiers.encounter.HostedEncounters.isHosted(event.getEntity())) return;
         if (event.getEntity().getPersistentData().getBoolean("jem:event_spawned") || com.siirio.jemworldbosstiers.api.HostedEncounterApi.isRaid(event.getEntity())) {
             return;
         }
@@ -263,6 +267,7 @@ public final class JemWorldBossTiers {
         if (encounter != null && encounter.arenaId() != null) {
             if (data.liveBoss(encounter.arenaId()).filter(id -> !id.equals(event.getEntity().getUUID())).isPresent()) return;
             if (event.getEntity().getPersistentData().getString("forge:spawn_type").equals("SPAWN_EGG")) return;
+            data.retireBossIdentity(encounter.arenaId(), event.getEntity().getUUID());
             data.clearLiveBoss(encounter.arenaId(), event.getEntity().getUUID());
         }
         ArenaRecord arena = encounter != null && encounter.arenaId() != null
@@ -276,7 +281,7 @@ public final class JemWorldBossTiers {
                 profile,
                 released,
                 BuiltInRegistries.ENTITY_TYPE.getKey(event.getEntity().getType()),
-                event.getEntity().blockPosition()
+                event.getEntity().blockPosition(), event.getEntity().getUUID(), level.getServer().overworld().getGameTime()
         );
         if (encounter == null) {
             return;
@@ -291,9 +296,71 @@ public final class JemWorldBossTiers {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
+        if (com.siirio.jemworldbosstiers.api.HostedEncounterApi.participating(player)) return;
         BalanceRegistry.bossByVictoryAdvancement(event.getAdvancement().getId())
                 .filter(com.siirio.jemworldbosstiers.balance.BossProfile::countsTowardWorldTier)
                 .ifPresent(profile -> recordVictory(player.server, profile));
+    }
+
+    @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
+    public void settledHostedEncounter(com.siirio.jemworldbosstiers.event.HostedEncounterClosedEvent event) {
+        if (!event.success()) return;
+        var frozen = event.frozenState();
+        var nativeTag = new net.minecraft.nbt.CompoundTag();
+        nativeTag.put(EncounterData.ROOT_KEY, frozen.getCompound("NativeEncounter"));
+        var encounter = EncounterData.read(nativeTag).orElseThrow(() -> new IllegalStateException("Missing settled encounter provenance"));
+        var profile = BalanceRegistry.bossByKey(encounter.profileKey())
+                .orElseThrow(() -> new IllegalStateException("Missing settled boss profile"));
+        var server = event.server();
+        var data = WorldTierData.get(server);
+        if (data.canonicalHostedClosed(event.attemptId())) {
+            if (!data.flush(server)) throw new IllegalStateException("Canonical close receipt was not acknowledged");
+            return;
+        }
+        if (encounter.arenaId() != null) {
+            var arena = data.arena(encounter.arenaId()).orElseThrow(() -> new IllegalStateException("Missing settled arena"));
+            if (data.liveBoss(arena.id()).filter(id -> !id.equals(event.bossId())).isPresent())
+                throw new IllegalStateException("Settled attempt conflicts with the canonical living boss");
+            data.retireBossIdentity(arena.id(), event.bossId());
+            if (!data.flush(server)) throw new IllegalStateException("Boss retirement identity was not acknowledged");
+            var dimension = server.getLevel(net.minecraft.resources.ResourceKey.create(
+                    net.minecraft.core.registries.Registries.DIMENSION, event.dimension()));
+            if (dimension == null) throw new IllegalStateException("Settled encounter dimension is unavailable");
+            var deathPosition = net.minecraft.core.BlockPos.of(frozen.getLong("DeathPosition"));
+            var staleBody = dimension.getEntity(event.bossId());
+            if (staleBody instanceof LivingEntity body) {
+                var bodyEncounter = WorldTierApi.encounter(body).orElse(null);
+                if (bodyEncounter == null || bodyEncounter.arenaId() == null
+                        || !data.canonicalArenaId(bodyEncounter.arenaId()).equals(data.canonicalArenaId(arena.id()))
+                        || !bodyEncounter.profileKey().equals(profile.key()))
+                    throw new IllegalStateException("Recovered body does not match the durable victory identity");
+                // The immutable journal proves this exact death even when the last
+                // native entity save preceded it. Retire only that UUID after rewards persist.
+                var staleChunk = body.chunkPosition();
+                body.discard();
+                if (!com.siirio.jemworldbosstiers.revival.NativeBossStorage.commit(dimension, staleChunk, event.bossId(), false))
+                    throw new IllegalStateException("Recovered native boss retirement is not acknowledged");
+            }
+            if (!com.siirio.jemworldbosstiers.revival.NativeBossStorage.commit(dimension,
+                    new net.minecraft.world.level.ChunkPos(deathPosition), event.bossId(), false))
+                throw new IllegalStateException("Native boss removal has not been acknowledged");
+            data.clearLiveBoss(arena.id(), event.bossId());
+            var released = arena.unlock().release(event.bossId());
+            data.putArena(released);
+            var type = ResourceLocation.tryParse(frozen.getString("EntityType"));
+            if (type == null) throw new IllegalStateException("Missing settled entity type");
+            if (event.raid()) {
+                if (!com.siirio.jemworldbosstiers.api.RaidArenaApi.queueRaidCompletion(server, arena.id(), event.bossId(), type))
+                    throw new IllegalStateException("Raid replacement intent was not acknowledged");
+            } else {
+                bossRespawns.scheduleAfterDeath(dimension, profile, released, type,
+                        deathPosition, event.bossId(), frozen.getLong("VictoryAt"));
+            }
+        }
+        if (!event.raid() && profile.countsTowardWorldTier()
+                && BossDefeatPolicy.canProgress(encounter, frozen.getBoolean("DeathByGenericKill"))) recordVictory(server, profile);
+        data.markCanonicalHostedClosed(event.attemptId());
+        if (!data.flush(server)) throw new IllegalStateException("Settled canonical boss state was not acknowledged");
     }
 
     @SubscribeEvent

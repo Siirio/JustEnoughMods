@@ -22,21 +22,50 @@ public final class BossTeleportSafety {
 
     public static boolean permitsDimensionChange(Entity entity, ServerLevel level) {
         if (APPLYING.get() || entity instanceof ServerPlayer player && player.hasPermissions(2)) return true;
-        if (entity instanceof ServerPlayer player) {
-            Decision decision = validate(player, level, player.position());
-            return !decision.matched() || player.position().equals(decision.destination());
-        }
         return !SolidBoundary.contained(entity);
     }
 
+    public static Decision validatePosition(Entity entity,ServerLevel level,Vec3 requested) {
+        if(APPLYING.get() || entity instanceof ServerPlayer player && player.hasPermissions(2)
+                || StructureStaging.canonicalPlacement(entity,level,requested)) return Decision.allow(requested);
+        var source=SolidBoundary.movementBox(entity);
+        var target=SolidBoundary.destinationBox(entity,requested);
+        return SolidBoundary.permitsMovement(entity,source,target) ? Decision.allow(requested) : Decision.redirect(null);
+    }
+
     public static void apply(ServerPlayer player, ServerLevel level, Vec3 destination, float yaw, float pitch) {
+        boolean previous=APPLYING.get();
         APPLYING.set(true);
         try {
+            if(player.isPassenger()) player.stopRiding();
+            if(player.isVehicle()) player.ejectPassengers();
             player.teleportTo(level, destination.x, destination.y, destination.z, yaw, pitch);
             player.setDeltaMovement(Vec3.ZERO);
             player.fallDistance = 0;
         } finally {
-            APPLYING.remove();
+            if(previous) APPLYING.set(true); else APPLYING.remove();
+        }
+    }
+
+    /** Server-internal same-dimension ejection. Preserve the entire existing passenger family. */
+    static boolean apply(Entity entity,ServerLevel level,Vec3 destination) {
+        if(entity.level()!=level || !level.noCollision(entity,SolidBoundary.destinationBox(entity,destination))) return false;
+        Entity root=entity.getRootVehicle();
+        var family=root.getSelfAndPassengers().toList();
+        Vec3 delta=destination.subtract(entity.position());
+        boolean previous=APPLYING.get();
+        APPLYING.set(true);
+        try {
+            for(Entity member:family) {
+                Vec3 target=member.position().add(delta);
+                if(member instanceof ServerPlayer player) player.connection.teleport(target.x,target.y,target.z,player.getYRot(),player.getXRot());
+                else member.teleportTo(target.x,target.y,target.z);
+                member.setDeltaMovement(Vec3.ZERO);
+                member.fallDistance=0;
+            }
+            return entity.position().distanceToSqr(destination)<1.0E-6;
+        } finally {
+            if(previous) APPLYING.set(true); else APPLYING.remove();
         }
     }
 

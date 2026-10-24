@@ -12,6 +12,7 @@ final class EventNbtCodec {
     }
     static EventState decodeEventState(CompoundTag tag) {
         var value = new EventState();
+        value.pendingOutcome(tag.getString("pendingOutcome"));
         if (tag.contains("scores", Tag.TAG_COMPOUND)) value.scores(map(tag.getCompound("scores"), UUID::fromString, item -> decodeFishingScore((CompoundTag)item)));
         value.scoresChanged = false;
         if (tag.contains("description")) value.description(tag.getString("description"));
@@ -91,10 +92,6 @@ final class EventNbtCodec {
         value.minZChanged = false;
         if (tag.contains("radius")) value.radius(tag.getInt("radius"));
         value.radiusChanged = false;
-        if (tag.contains("raidAlliesSpawned")) value.raidAlliesSpawned(tag.getInt("raidAlliesSpawned"));
-        value.raidAlliesSpawnedChanged = false;
-        if (tag.contains("raidReinforcementStage")) value.raidReinforcementStage(tag.getInt("raidReinforcementStage"));
-        value.raidReinforcementStageChanged = false;
         if (tag.contains("rewardedWave")) value.rewardedWave(tag.getInt("rewardedWave"));
         value.rewardedWaveChanged = false;
         if (tag.contains("specialEquipped")) value.specialEquipped(tag.getInt("specialEquipped"));
@@ -177,8 +174,6 @@ final class EventNbtCodec {
         value.encounterParticipantsChanged = false;
         if (tag.contains("invalidatedLoot", Tag.TAG_LIST)) value.invalidatedLoot(uuidArrayList(tag.getList("invalidatedLoot", Tag.TAG_INT_ARRAY)));
         value.invalidatedLootChanged = false;
-        if (tag.contains("raidAllies", Tag.TAG_LIST)) value.raidAllies(stringList(tag.get("raidAllies"), UUID::fromString));
-        value.raidAlliesChanged = false;
         if (tag.contains("raidBosses", Tag.TAG_LIST)) value.raidBosses(stringList(tag.get("raidBosses"), UUID::fromString));
         value.raidBossesChanged = false;
         if (tag.contains("remaining", Tag.TAG_COMPOUND)) value.remaining(map(tag.getCompound("remaining"), Function.identity(), item -> ((NumericTag)item).getAsInt()));
@@ -187,8 +182,6 @@ final class EventNbtCodec {
         value.spawnFailuresChanged = false;
         if (tag.contains("eliteTypes", Tag.TAG_COMPOUND)) value.eliteTypes(map(tag.getCompound("eliteTypes"), Function.identity(), item -> ((NumericTag)item).getAsByte() != 0));
         value.eliteTypesChanged = false;
-        if (tag.contains("raidBossInitialHealth", Tag.TAG_COMPOUND)) value.raidBossInitialHealth(map(tag.getCompound("raidBossInitialHealth"), UUID::fromString, item -> ((NumericTag)item).getAsDouble()));
-        value.raidBossInitialHealthChanged = false;
         if (tag.contains("placements", Tag.TAG_COMPOUND)) value.placements(longKeys(tag.getCompound("placements")));
         value.placementsChanged = false;
         if (tag.contains("rushParticipants", Tag.TAG_COMPOUND)) value.rushParticipants(uuidKeys(tag.getCompound("rushParticipants")));
@@ -207,6 +200,12 @@ final class EventNbtCodec {
     }
     static CompoundTag encode(EventState value) {
         var tag = value.source.original.copy();
+        if (value.pendingOutcome().isEmpty()) tag.remove("pendingOutcome"); else tag.putString("pendingOutcome", value.pendingOutcome());
+        // Retired Raid wave counters are not revived by legacy saves. Native summons remain native.
+        tag.remove("raidAlliesSpawned");
+        tag.remove("raidReinforcementStage");
+        tag.remove("raidBossInitialHealth");
+        tag.remove("raidAllies");
         if (value.scoresChanged || value.hasScores()) { if (value.hasScores()) tag.put("scores", map(value.scores(), EventNbtCodec::encode, value.source.original.getCompound("scores"))); else tag.remove("scores"); }
         if (value.descriptionChanged) { if (value.hasDescription()) tag.putString("description",value.description()); else tag.remove("description"); }
         if (value.nextBloodSpawnChanged) { if (value.hasNextBloodSpawn()) tag.putLong("nextBloodSpawn",value.nextBloodSpawn()); else tag.remove("nextBloodSpawn"); }
@@ -246,8 +245,6 @@ final class EventNbtCodec {
         if (value.minYChanged) { if (value.hasMinY()) tag.putInt("minY", value.minY()); else tag.remove("minY"); }
         if (value.minZChanged) { if (value.hasMinZ()) tag.putInt("minZ", value.minZ()); else tag.remove("minZ"); }
         if (value.radiusChanged) { if (value.hasRadius()) tag.putInt("radius", value.radius()); else tag.remove("radius"); }
-        if (value.raidAlliesSpawnedChanged) { if (value.hasRaidAlliesSpawned()) tag.putInt("raidAlliesSpawned", value.raidAlliesSpawned()); else tag.remove("raidAlliesSpawned"); }
-        if (value.raidReinforcementStageChanged) { if (value.hasRaidReinforcementStage()) tag.putInt("raidReinforcementStage", value.raidReinforcementStage()); else tag.remove("raidReinforcementStage"); }
         if (value.rewardedWaveChanged) { if (value.hasRewardedWave()) tag.putInt("rewardedWave", value.rewardedWave()); else tag.remove("rewardedWave"); }
         if (value.specialEquippedChanged) { if (value.hasSpecialEquipped()) tag.putInt("specialEquipped", value.specialEquipped()); else tag.remove("specialEquipped"); }
         if (value.waveChanged) { if (value.hasWave()) tag.putInt("wave", value.wave()); else tag.remove("wave"); }
@@ -291,12 +288,10 @@ final class EventNbtCodec {
         if (value.mobsChanged) { if (value.hasMobs()) tag.put("mobs", list(value.mobs(), item -> StringTag.valueOf(item.toString()))); else tag.remove("mobs"); }
         if (value.encounterParticipantsChanged) { if (value.hasEncounterParticipants()) tag.put("encounterParticipants", list(value.encounterParticipants(), item -> StringTag.valueOf(item.toString()))); else tag.remove("encounterParticipants"); }
         if (value.invalidatedLootChanged) { if (value.hasInvalidatedLoot()) tag.put("invalidatedLoot", list(value.invalidatedLoot(), NbtUtils::createUUID)); else tag.remove("invalidatedLoot"); }
-        if (value.raidAlliesChanged) { if (value.hasRaidAllies()) tag.put("raidAllies", list(value.raidAllies(), item -> StringTag.valueOf(item.toString()))); else tag.remove("raidAllies"); }
         if (value.raidBossesChanged) { if (value.hasRaidBosses()) tag.put("raidBosses", list(value.raidBosses(), item -> StringTag.valueOf(item.toString()))); else tag.remove("raidBosses"); }
         if (value.remainingChanged) { if (value.hasRemaining()) tag.put("remaining", map(value.remaining(), IntTag::valueOf, value.source.original.getCompound("remaining"))); else tag.remove("remaining"); }
         if (value.spawnFailuresChanged) { if (value.hasSpawnFailures()) tag.put("spawnFailures", map(value.spawnFailures(), IntTag::valueOf, value.source.original.getCompound("spawnFailures"))); else tag.remove("spawnFailures"); }
         if (value.eliteTypesChanged) { if (value.hasEliteTypes()) tag.put("eliteTypes", map(value.eliteTypes(), ByteTag::valueOf, value.source.original.getCompound("eliteTypes"))); else tag.remove("eliteTypes"); }
-        if (value.raidBossInitialHealthChanged) { if (value.hasRaidBossInitialHealth()) tag.put("raidBossInitialHealth", map(value.raidBossInitialHealth(), DoubleTag::valueOf, value.source.original.getCompound("raidBossInitialHealth"))); else tag.remove("raidBossInitialHealth"); }
         if (value.placementsChanged) { if (value.hasPlacements()) tag.put("placements", set(value.placements(), value.source.original.getCompound("placements"), false)); else tag.remove("placements"); }
         if (value.rushParticipantsChanged) { if (value.hasRushParticipants()) tag.put("rushParticipants", set(value.rushParticipants(), value.source.original.getCompound("rushParticipants"), true)); else tag.remove("rushParticipants"); }
         if (value.cookingRequirementsChanged) { if (value.hasCookingRequirements()) tag.put("cookingRequirements", map(value.cookingRequirements(), IntTag::valueOf, value.source.original.getCompound("cookingRequirements"))); else tag.remove("cookingRequirements"); }
@@ -430,7 +425,7 @@ final class EventNbtCodec {
         return tag;
     }
     static EventMember decodeEventMember(CompoundTag tag) {
-        var value = new EventMember();
+        var value = new EventMember(); value.nativeDeath(tag.getBoolean("nativeDeath"));
         if (tag.contains("raidArenaExitPending")) value.raidArenaExitPending(tag.getBoolean("raidArenaExitPending"));
         value.raidArenaExitPendingChanged = false;
         value.source = new Source(tag);
@@ -500,6 +495,7 @@ final class EventNbtCodec {
     }
     static CompoundTag encode(EventMember value) {
         var tag = value.source.original.copy();
+        if (value.nativeDeath()) tag.putBoolean("nativeDeath", true); else tag.remove("nativeDeath");
         if (value.raidArenaExitPendingChanged) { if (value.hasRaidArenaExitPending()) tag.putBoolean("raidArenaExitPending",value.raidArenaExitPending()); else tag.remove("raidArenaExitPending"); }
         if (value.nameChanged) { if (value.hasName()) tag.putString("name", value.name()); else tag.remove("name"); }
         if (value.originDimensionChanged) { if (value.hasOriginDimension()) tag.putString("originDimension", value.originDimension()); else tag.remove("originDimension"); }

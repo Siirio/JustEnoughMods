@@ -58,23 +58,34 @@ public final class StructureStaging {
     private static final Map<UUID, Optional<UUID>> PARTY_CACHE = new HashMap<>();
     private static final Map<UUID, Presence> PRESENCE = new HashMap<>();
     private static final LinkedHashMap<String, Optional<Area>> NATIVE_LOOKUPS = new LinkedHashMap<>();
+    private static final Map<String, Long> REGISTERED_AT = new HashMap<>();
 
     private StructureStaging() {}
 
     @SubscribeEvent
     public static void reload(AddReloadListenerEvent event) {
-        AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear();
+        AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); REGISTERED_AT.clear();
     }
 
     private static Area discover(ServerLevel level, BlockPos position) {
+        refreshAreas(level);
         for (Area area : AREAS.values()) if (area.contains(level, position)) return area;
         var discovered = com.siirio.jemworldbosstiers.api.StructureEncounterApi.discover(level, position);
         if (discovered.isEmpty()) return null;
         var nativeArena = discovered.get();
         var area = new Area(nativeArena.id(), nativeArena.dimension(), nativeArena.boss(), nativeArena.bounds());
-        if (!AREAS.containsKey(area.id()) && AREAS.size() >= AREA_LIMIT) AREAS.remove(AREAS.keySet().iterator().next());
         AREAS.put(area.id(), area);
         return area;
+    }
+
+    /** Projection only: persisted WorldTierData owns registration, geometry and identity. */
+    private static void refreshAreas(ServerLevel level) {
+        String dimension=level.dimension().location().toString();
+        long tick=level.getGameTime();
+        if(Objects.equals(REGISTERED_AT.put(dimension,tick),tick)) return;
+        for (var arena : com.siirio.jemworldbosstiers.api.StructureEncounterApi.registeredArenas(
+                level.getServer(), level.dimension().location()))
+            AREAS.put(arena.id(), new Area(arena.id(), arena.dimension(), arena.boss(), arena.bounds()));
     }
 
     private static PartyState party(ServerLevel level, UUID id) {
@@ -118,7 +129,6 @@ public final class StructureStaging {
     private static Area bossArea(ServerLevel level,LivingEntity boss) {
         com.siirio.jemworldbosstiers.api.StructureEncounterApi.bind(boss).ifPresent(nativeArena -> {
             var area = new Area(nativeArena.id(), nativeArena.dimension(), nativeArena.boss(), nativeArena.bounds());
-            if (!AREAS.containsKey(area.id()) && AREAS.size() >= AREA_LIMIT) AREAS.remove(AREAS.keySet().iterator().next());
             AREAS.put(area.id(), area);
         });
         ResourceLocation bossType=BuiltInRegistries.ENTITY_TYPE.getKey(boss.getType());
@@ -232,12 +242,14 @@ public final class StructureStaging {
         if (!row.nativePending()) return false;
         Area area = row.hasStructureId() ? AREAS.get(row.structureId()) : null;
         SmpRecords.require(area != null, "unavailable");
+        requireParticipants(host, row, ids, area);
         SmpRecords.require(!locked(host, area), "unavailable");
         SmpRecords.require(livingBoss(host.serverLevel(), area) != null, "boss_not_respawned");
         SmpRecords.require(blockers(host.serverLevel(), area, new HashSet<>(ids)).isEmpty(), "arena_occupied");
         row.state("ACTIVE");
 
         bindExisting(host.serverLevel(), area, row, ids);
+        SmpRecords.require(row.hasBossEntity() && !row.nativePending(), "unavailable");
         host.sendSystemMessage(Component.translatable("jem.event.native_ritual_ready"));
         return true;
     }
@@ -289,10 +301,15 @@ public final class StructureStaging {
             if (!Parties.accepted(party, id)) continue;
             PartyMember member = party.member(id);
             member.raidArenaExitPending(true);
-            ServerPlayer player = server.getPlayerList().getPlayer(id);
-            if (player != null) finishRaidExit(player, party, member);
         }
-        clearRaidExitSession(party);
+        SmpData.get(server).flush(server);
+        for (UUID id : SmpRecords.memberIds(party)) {
+            PartyMember member=party.member(id);
+            if(!member.raidArenaExitPending()) continue;
+            ServerPlayer player = server.getPlayerList().getPlayer(id);
+            if (player != null && player.isAlive() && !finishRaidExit(player, party, member)) throw new IllegalStateException("return_pending");
+        }
+        PartyTeleportFlow.finish(server, party);
 
     }
 
@@ -313,8 +330,8 @@ public final class StructureStaging {
                 else if (!PartyTeleportFlow.forceReturn(player, party)) return false;
             }
         }
+        SmpData.flushPlayerPosition(player);
         member.clearRaidArenaExitPending();
-        PartyTeleportFlow.clearMember(party, player.getUUID());
         return true;
     }
 
@@ -330,15 +347,25 @@ public final class StructureStaging {
         for (PartyState party : data.parties().currentRows()) {
             PartyMember member = party.member(player.getUUID());
             if (member == null || !member.raidArenaExitPending()) continue;
-            if (finishRaidExit(player, party, member)) {
-                clearRaidExitSession(party);
-
-            }
+            finishRaidExit(player, party, member);
         }
     }
 
-    private static void clearRaidExitSession(PartyState party) {
-        if (!hasPendingRaidExit(party)) PartyTeleportFlow.clearSession(party);
+    /** Terminal choice must not leave a survivor sealed behind the next dormant boss. */
+    public static boolean safeTerminalExit(ServerPlayer player, PartyState party) {
+        if (!party.hasStructureBounds() || !party.dimension().equals(player.level().dimension().location().toString())) return true;
+        refreshAreas(player.serverLevel());
+        Area registered=party.hasStructureId()?AREAS.get(party.structureId()):null;
+        if(!party.raid() && (registered==null || !guarded(player.serverLevel(),registered))) return true;
+        var saved = party.structureBounds();
+        var bounds = arenaShell(new BoundingBox(saved.minX(), saved.minY(), saved.minZ(), saved.maxX(), saved.maxY(), saved.maxZ()));
+        var arena = new AABB(bounds.minX() - SolidBoundary.WALL_THICKNESS, bounds.minY(), bounds.minZ() - SolidBoundary.WALL_THICKNESS,
+                bounds.maxX() + 1D + SolidBoundary.WALL_THICKNESS, bounds.maxY() + 1D, bounds.maxZ() + 1D + SolidBoundary.WALL_THICKNESS);
+        if (!SolidBoundary.movementBox(player).intersects(arena)) return true;
+        BlockPos destination = safeOutside(player, player.serverLevel(), bounds, player.blockPosition());
+        if (destination == null) return false;
+        teleport(player, player.serverLevel(), destination);
+        return !SolidBoundary.movementBox(player).intersects(arena);
     }
 
     public static boolean hasPendingRaidExit(PartyState party) {
@@ -404,7 +431,7 @@ public final class StructureStaging {
                 || !level.getFluidState(position).isEmpty() || !level.getFluidState(position.above()).isEmpty()
                 || dangerous(level.getBlockState(position.below())) || dangerous(level.getBlockState(position))
                 || dangerous(level.getBlockState(position.above()))) return false;
-        return level.noCollision(player, player.getDimensions(player.getPose()).makeBoundingBox(position.getX() + .5, position.getY(), position.getZ() + .5));
+        return safeBody(player,level,position);
     }
 
     private static boolean dangerous(net.minecraft.world.level.block.state.BlockState state) {
@@ -420,7 +447,17 @@ public final class StructureStaging {
         if(!level.hasChunkAt(position)||!level.getWorldBorder().isWithinBounds(position)
                 ||!level.getBlockState(position.below()).isFaceSturdy(level,position.below(),net.minecraft.core.Direction.UP)
                 ||!level.getFluidState(position).isEmpty()||!level.getFluidState(position.above()).isEmpty()) return false;
-        return level.noCollision(mob,mob.getDimensions(mob.getPose()).makeBoundingBox(position.getX()+.5,position.getY(),position.getZ()+.5));
+        return safeBody(mob,level,position);
+    }
+
+    private static boolean safeBody(net.minecraft.world.entity.Entity entity,ServerLevel level,BlockPos position) {
+        AABB box=SolidBoundary.destinationBox(entity,Vec3.atBottomCenterOf(position));
+        if(box.minY<level.getMinBuildHeight() || box.maxY>=level.getMaxBuildHeight()
+                || !level.getWorldBorder().isWithinBounds(box)) return false;
+        for(BlockPos occupied:BlockPos.betweenClosed(BlockPos.containing(box.minX,box.minY,box.minZ),
+                BlockPos.containing(box.maxX-1.0E-7,box.maxY-1.0E-7,box.maxZ-1.0E-7)))
+            if(!level.hasChunkAt(occupied)||!level.getFluidState(occupied).isEmpty()||dangerous(level.getBlockState(occupied))) return false;
+        return level.noCollision(entity,box);
     }
 
     private static BlockPos safeExit(ServerPlayer player, ServerLevel level, Area area) {
@@ -432,7 +469,39 @@ public final class StructureStaging {
     }
 
     private static BlockPos safeExit(Mob mob,ServerLevel level,Area area) {
-        return safeExit(level,area.shell(),mob.blockPosition(),position->safe(mob,level,position));
+        return safeExit(mob,level,area.shell());
+    }
+
+    private static BlockPos safeExit(Mob mob,ServerLevel level,BoundingBox bounds) {
+        AABB volume=new AABB(bounds.minX()-SolidBoundary.WALL_THICKNESS,bounds.minY(),bounds.minZ()-SolidBoundary.WALL_THICKNESS,
+                bounds.maxX()+1D+SolidBoundary.WALL_THICKNESS,bounds.maxY()+1D,bounds.maxZ()+1D+SolidBoundary.WALL_THICKNESS);
+        return safeExit(level,bounds,mob.blockPosition(),position->!SolidBoundary.destinationBox(mob,Vec3.atBottomCenterOf(position)).intersects(volume)
+                &&safe(mob,level,position));
+    }
+
+    /** One activation preflight, not a tick scan. No valid boss/support/pet is removed. */
+    static boolean ejectUnrelated(ServerLevel level,BoundingBox bounds,LivingEntity boss,Collection<UUID> participants) {
+        com.siirio.jemworldbosstiers.encounter.HostedGroup.stage(boss);
+        var shell=arenaShell(bounds);
+        var volume=new AABB(shell.minX(),shell.minY(),shell.minZ(),shell.maxX()+1D,shell.maxY()+1D,shell.maxZ()+1D);
+        Map<Mob,BlockPos> exits=new LinkedHashMap<>();
+        for(Mob mob:level.getEntitiesOfClass(Mob.class,volume,entity->entity.isAlive()&&entity!=boss)) {
+            if(com.siirio.jemworldbosstiers.encounter.HostedGroup.owner(mob)==boss) continue;
+            var owner=HostedEncounterApi.damageOwner(mob);
+            if(owner instanceof ServerPlayer player&&participants.contains(player.getUUID())) continue;
+            // A neighboring registered boss is never collateral cleanup.
+            if(WorldTierApi.profile(mob).isPresent() || !SolidBoundary.players(mob).isEmpty()) return false;
+            var exit=safeExit(mob,level,shell);
+            if(exit==null) return false;
+            exits.put(mob,exit);
+        }
+        for(var exit:exits.entrySet()) {
+            Mob mob=exit.getKey();
+            if(!BossTeleportSafety.apply(mob,level,Vec3.atBottomCenterOf(exit.getValue()))) return false;
+            mob.getNavigation().stop();
+            mob.setTarget(null);
+        }
+        return true;
     }
 
     static BlockPos safeOutside(ServerPlayer player,ServerLevel level,BoundingBox bounds,BlockPos origin) {
@@ -484,8 +553,11 @@ public final class StructureStaging {
     }
 
     private static void teleport(ServerPlayer player, ServerLevel level, BlockPos position) {
-        player.teleportTo(level, position.getX() + .5, position.getY(), position.getZ() + .5, player.getYRot(), player.getXRot());
-        player.fallDistance = 0;
+        if(player.serverLevel()==level && (player.isPassenger() || player.isVehicle())) {
+            SmpRecords.require(BossTeleportSafety.apply((net.minecraft.world.entity.Entity)player,level,Vec3.atBottomCenterOf(position)), "no_safe_arrival");
+            return;
+        }
+        BossTeleportSafety.apply(player, level, Vec3.atBottomCenterOf(position), player.getYRot(), player.getXRot());
     }
 
     private static void bindExisting(ServerLevel level, Area area, PartyState row, List<UUID> ids) {
@@ -504,12 +576,18 @@ public final class StructureStaging {
         if (row.hasBossEntity() || !row.nativePending() || HostedEncounterApi.isRaid(boss)) return;
         Area area = bossArea(level,boss);
         if (area == null || livingBoss(level, area) != boss) return;
+        SmpRecords.require(ejectUnrelated(level,area.bounds(),boss,ids), "arena_occupied");
         boss.getPersistentData().putBoolean("jem_solo", row.solo());
-        if (HostedEncounterApi.start(boss, ids, false, prepareCombat(level,row,boss))) {
+        if (HostedEncounterApi.start(boss, ids, false, prepareCombat(level,row,boss), row.id(),
+                attempt -> HostedParties.commitHostedStart(level.getServer(), row, boss, attempt))) {
+            row.hostedAttempt(HostedEncounterApi.attemptId(boss));
             row.bossEntity(boss.getUUID());
             row.nativePending(false);
             Profiles.count(level.getServer(), row.owner(), ProfileCounter.BOSSES_HOSTED);
 
+        } else if (HostedEncounterApi.status(boss).isEmpty()) {
+            row.clearBossEntity(); row.hostedAttempt(null); row.nativePending(true);
+            SmpData.get(level.getServer()).flush(level.getServer());
         }
     }
 
@@ -609,7 +687,19 @@ public final class StructureStaging {
         if (!row.hasStructureId()) return "";
         Area area = AREAS.get(row.structureId());
         if (area == null) return "unavailable";
+        try { requireParticipants(host, row, participants, area); }
+        catch (IllegalArgumentException invalid) { return invalid.getMessage(); }
         return blockers(host.serverLevel(), area, new HashSet<>(participants)).isEmpty() ? "" : "arena_occupied";
+    }
+
+    private static void requireParticipants(ServerPlayer host, PartyState row, Collection<UUID> participants, Area area) {
+        SmpRecords.require(!participants.isEmpty() && participants.contains(host.getUUID()), "host_must_be_present");
+        for (UUID id : participants) {
+            ServerPlayer player = host.server.getPlayerList().getPlayer(id);
+            SmpRecords.require(player != null && player.isAlive() && !player.isSpectator()
+                    && Parties.accepted(row, id) && row.member(id) != null && !row.member(id).eliminated(), "unavailable");
+            SmpRecords.require(!locked(player, area), "unavailable");
+        }
     }
 
     public static String nativeBossStartReason(ServerPlayer host, PartyState row) {
@@ -650,6 +740,10 @@ public final class StructureStaging {
 
     private static boolean guarded(ServerLevel level, Area area) {
         if (party(level, area.id()) != null || physicallyLocked(level, area)) return true;
+        // An unloaded canonical identity is unresolved, never proof that the boss is dead.
+        var ownership=com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer());
+        if (ownership.liveBoss(area.id().toString()).isPresent()
+                || ownership.arena(area.id().toString()).map(arena->arena.activeEncounterId()!=null).orElse(false)) return true;
         Presence presence = PRESENCE.get(area.id());
         long tick = level.getGameTime();
         if (presence == null || presence.tick() != tick) {
@@ -711,6 +805,33 @@ public final class StructureStaging {
 
     static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity, AABB query) {
         if (!(entity.level() instanceof ServerLevel level) || !SmpEnvironment.active(level.getServer()) || entity.isSpectator()) return List.of();
+        refreshAreas(level);
+        return solidBoundaries(entity, level, query, true);
+    }
+
+    static List<EventBoundary> destinationBoundaries(net.minecraft.world.entity.Entity entity, ServerLevel level, Vec3 destination) {
+        if (!SmpEnvironment.active(level.getServer()) || entity.isSpectator()) return List.of();
+        refreshAreas(level);
+        return solidBoundaries(entity, level, SolidBoundary.destinationBox(entity, destination), false);
+    }
+
+    /** Only the exact held canonical boss may be restored at its verified native anchor. */
+    static boolean canonicalPlacement(net.minecraft.world.entity.Entity entity,ServerLevel level,Vec3 destination) {
+        if(!(entity instanceof LivingEntity boss) || !HostedEncounterApi.held(boss) || entity.level()!=level) return false;
+        var encounter=WorldTierApi.encounter(boss).orElse(null);
+        if(encounter==null || encounter.arenaId()==null) return false;
+        var data=com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer());
+        var arena=data.arena(encounter.arenaId()).orElse(null);
+        if(arena==null || !arena.structureArena() || !data.nativeAnchorVerified(arena.id())
+                || data.liveBoss(arena.id()).filter(boss.getUUID()::equals).isEmpty()
+                || Vec3.atBottomCenterOf(arena.respawnPosition()).distanceToSqr(destination)>1.0E-6) return false;
+        var shell=arenaShell(arena.bounds());
+        var boundary=SolidBoundary.boundary(boss.getUUID(),arena.dimension(),shell.minX(),shell.minZ(),shell.maxX(),shell.maxZ(),shell.minY(),shell.maxY(),0,false);
+        var box=SolidBoundary.destinationBox(entity,destination);
+        return SolidBoundary.contains(box,boundary)&&!SolidBoundary.intersectsWall(box,boundary)&&level.noCollision(entity,box);
+    }
+
+    private static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity, ServerLevel level, AABB query, boolean admission) {
         List<EventBoundary> result = new ArrayList<>();
         for (Area area : AREAS.values()) {
             if (!area.dimension().equals(level.dimension().location().toString())) continue;
@@ -721,9 +842,10 @@ public final class StructureStaging {
             if (!guarded(level, area)) continue;
             List<ServerPlayer> players = SolidBoundary.players(entity);
             PartyState row = party(level, area.id());
-            boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
-            if (!passable) result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
-                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), false));
+            if (admission && row != null) players.forEach(player -> HostedBoundary.observe(player, row, bounds));
+            boolean passable = admission && row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
+            result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
+                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
         }
         return result;
     }
@@ -802,6 +924,7 @@ public final class StructureStaging {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void chunkLoaded(net.minecraftforge.event.level.ChunkEvent.Load event) {
         if (!(event.getLevel() instanceof ServerLevel level)) return;
+        REGISTERED_AT.remove(level.dimension().location().toString());
         NATIVE_LOOKUPS.clear();
         ChunkPos chunk = event.getChunk().getPos();
         BlockPos center=chunk.getMiddleBlockPosition(level.getSeaLevel());
@@ -839,7 +962,7 @@ public final class StructureStaging {
     public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { UUID id = event.getEntity().getUUID(); INSIDE.remove(id); NEAR.remove(id); }
 
     @SubscribeEvent
-    public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); }
+    public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); REGISTERED_AT.clear(); }
 
     static BoundingBox arenaShell(BoundingBox bounds) {
         return new BoundingBox(bounds.minX()-1,bounds.minY(),bounds.minZ()-1,bounds.maxX()+1,bounds.maxY(),bounds.maxZ()+1);

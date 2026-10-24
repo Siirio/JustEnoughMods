@@ -97,6 +97,13 @@ public final class HostedGroup {
 
     public static void finish(LivingEntity root) {
         for (var entity : List.copyOf(LOADED.values())) if (belongs(entity, root)) {
+            if (member(entity)) {
+                // Native arena support follows the canonical replacement/respawn
+                // owner and remains dormant while that owner is unavailable.
+                entity.getPersistentData().remove(OWNER);
+                HostedLobby.hold(entity);
+                continue;
+            }
             HostedLobby.release(entity);
             entity.getPersistentData().remove(ARENA);
             entity.getPersistentData().remove(OWNER);

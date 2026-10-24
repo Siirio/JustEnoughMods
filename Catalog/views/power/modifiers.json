@@ -1,13 +1,63 @@
 {
   "schema_version": 4,
   "view": "shared_modifiers",
-  "snapshot_sha": "9c10424f3d0f3dc10db54098ef173f8556932aa1",
+  "snapshot_sha": "a20a47aa2f8fc8948cd5d8f86ab72da20ded20e1",
   "generation": {
     "generator": "Catalog/generator/build_power_views.py",
     "method": "offline derived evidence",
     "deterministic": true
   },
   "records": [
+    {
+      "id": "campaign.twelve-eyes-exclusive-awards-20261024",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "source_set",
+          "registry": "items",
+          "members_path": "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json",
+          "records_field": "bosses",
+          "id_field": "eye"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "acquisition.survival_sources",
+          "operation": "replace",
+          "before": {
+            "native_loot": "EndRem 5.3.3 injects ten of the twelve Eyes through thirteen chest/entity loot tables",
+            "crafting": "KubeJS removed sixteen Eye recipe outputs only while the complete required content roster was registered",
+            "npc_trading": "No permanent exact Eye restriction in the shared NPC result/public supply admission owner"
+          },
+          "after": {
+            "awards": "Existing CampaignCoordinator -> CampaignEyeService.deliver for the exact configured MAIN boss",
+            "recovery": "Existing CampaignEyeService.recover still requires the matching world-global boss defeat",
+            "loot": "Thirteen EndRem-only injected loot tables have empty pools without altering vanilla/other-mod tables or the three unrelated EndRem injections",
+            "crafting": "Existing sixteen-output recipe ban remains active whenever JEMTwelveEyes is installed, even with incomplete content",
+            "npc_trading": "All twelve exact Campaign Eye IDs are denied by shared TradeRestrictions for native offer presentation/settlement and public supply"
+          },
+          "notes": "Creative/admin operations, existing awarded stacks, player transfer, protected death drops, invulnerability, lifetime and void recovery remain unchanged"
+        }
+      ],
+      "owner": "JEMTwelveEyes acquisition policy with existing KubeJS recipe and JEMEconomy NPC restriction adapters",
+      "source_files": [
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/abandoned_mineshaft.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/bastion_treasure.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/buried_treasure.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/desert_pyramid.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/igloo_chest.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/nether_bridge.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/pillager_outpost.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/shipwreck_treasure.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/simple_dungeon.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/woodland_mansion.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/entities/elder_guardian.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/entities/evoker.json",
+        "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/entities/wither.json",
+        "Client/ManagedPack/kubejs/server_scripts/jem/twelve_eye_campaign.js",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json"
+      ]
+    },
     {
       "id": "combat.provenance-and-balance-20261022",
       "status": "conditional",
@@ -1365,6 +1415,162 @@
       ]
     },
     {
+      "id": "smp-rewards-xp.dedicated-hosting-20261022",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "entities"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "server.hosted_feature_activation",
+          "operation": "replace",
+          "before": "Integrated SMP/party and standalone Raid admission; preparation Raid scaling",
+          "after": "Dedicated-only SMP/parties/JEM events; ordinary integrated native boss combat preserves WorldTier; frozen participants and Raid strength at canonical Start; no SMP rewards/profile pages"
+        }
+      ],
+      "owner": "JEMServer / JEMWorldBossTiers",
+      "source_files": [
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/ResultScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/CombatNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/DomainFeatures.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/HostedParties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpEnvironment.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpRuntime.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RaidEvent.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+        "Mods/JEMServer/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMWorldBossTiers/build.gradle",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/HostedEncounterApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedEncounters.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedGroup.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedLobby.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRaidScaling.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/StandaloneAdmission.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/META-INF/mods.toml"
+      ]
+    },
+    {
+      "id": "smp-rewards-xp.domain-ui-20261022",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_economy"
+        },
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "jem_roles"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "domain.independent_presentation",
+          "operation": "replace",
+          "before": "Market lacks explicit independent command; race stage renders live camera player",
+          "after": "Economy-owned /market obeys enabled/auth guards; race first/repeated screens share detached native preview with immediate default skin and live skin resolution"
+        }
+      ],
+      "owner": "JEMEconomy / JEMRoles",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceStageRenderer.java"
+      ]
+    },
+    {
+      "id": "smp-rewards-xp.inventory-rewards-20261022",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "items"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "reward.delivery",
+          "operation": "replace",
+          "before": "SMP and boss-owned delivery, split boss loot, legacy result claim routes",
+          "after": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged"
+        },
+        {
+          "property": "reward.creative_inventory_collection",
+          "operation": "replace",
+          "before": "Panel attached to InventoryScreen only, native E screen redirects Creative to a different class",
+          "after": "Same take-only receipt-backed panel and JEI reservation on ordinary and Creative screens, committed Creative claims send native full inventory content because category tabs ignore normal set-slot. No automatic/duplicate issue or world drops"
+        }
+      ],
+      "owner": "JEMRewards",
+      "source_files": [
+        "Mods/JEMRewards/build.gradle",
+        "Mods/JEMRewards/gradle.properties",
+        "Mods/JEMRewards/settings.gradle",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/JemRewards.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardGrant.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardGroup.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsNetwork.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/client/RewardsJei.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/client/RewardsPanel.java",
+        "Mods/JEMRewards/src/main/resources/META-INF/mods.toml",
+        "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json",
+        "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/LegacyRewards.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonDeaths.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java"
+      ]
+    },
+    {
+      "id": "smp-rewards-xp.minecraft-xp-20261022",
+      "status": "active",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "entities",
+          "value": "minecraft:experience_orb"
+        },
+        {
+          "type": "id",
+          "registry": "items",
+          "value": "minecraft:experience_bottle"
+        }
+      ],
+      "modifiers": [
+        {
+          "property": "experience.minecraft_baseline",
+          "operation": "replace",
+          "before": "No shared universal x2 owner",
+          "after": "Logical server x2 ordinary positive Minecraft XP: direct points and orb intake before Mending; remainder transfer not doubled twice; downstream modifiers retained; saved XP and race/profession XP excluded"
+        }
+      ],
+      "owner": "JEMWorldBossTiers ExperienceRewardApi",
+      "source_files": [
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/ExperienceRewardApi.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/ExperienceOrbBaselineMixin.java",
+        "Mods/JEMWorldBossTiers/src/main/resources/jem_world_boss_tiers.mixins.json"
+      ]
+    },
+    {
       "id": "smp.starter-kit-and-prechoice-protection-20261021",
       "status": "active",
       "selectors": [
@@ -1401,7 +1607,7 @@
         {
           "type": "id",
           "registry": "items",
-          "value": "backpacked:backpack"
+          "value": "sophisticatedbackpacks:backpack"
         },
         {
           "type": "id",
@@ -1427,15 +1633,16 @@
               "minecraft:leather_chestplate": 1,
               "minecraft:leather_leggings": 1,
               "minecraft:leather_boots": 1,
-              "backpacked:backpack": 1,
-              "naturescompass:naturescompass": 1
+              "naturescompass:naturescompass": 1,
+              "sophisticatedbackpacks:backpack": 1
             },
             "scope": "Once per canonical verified account including existing players; no race wait after authentication.",
             "currency": "Existing20Gold grant, finite funding and receipt unchanged; no money regrant.",
             "delivery": "Inventory-first bounded insertion; undelivered remainder remains journaled, never drops or equips over worn items.",
             "durability": "Pending account operation -> native inventory+persisted player account/operation receipt save and exact readback -> remaining entitlement commit. Reconcile interrupted pending operations and copy receipt on death clone.",
             "failure": "Missing required native item/storage failure refuses completion; disconnect on unacknowledged inventory persistence failure.",
-            "status": "in testing; no runtime/delivery claimed"
+            "status": "in testing; no runtime/delivery claimed",
+            "backpack_replacement": "Exact empty unissued starter backpack NBT IDs are replaced before reward transfer. Delivered/custom-data inventories are not converted."
           }
         },
         {
@@ -1452,15 +1659,17 @@
           }
         }
       ],
-      "owner": "JEMServer StarterWelcome and StarterKitData; existing native player save accessor",
+      "owner": "JEMServer StarterWelcome and StarterEntitlements/StarterKitDelivery/NativePlayerFiles; existing native player save accessor",
       "source_files": [
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterWelcome.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitData.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/PlayerSaveAccess.java",
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/en_us.json",
         "Mods/JEMServer/src/main/resources/assets/jem_server/lang/ru_ru.json",
         "Docs/smp-gui/README.md",
-        "Docs/DEVELOPMENT.md"
+        "Docs/DEVELOPMENT.md",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
       ]
     },
     {

@@ -54,3 +54,8 @@ tasks.register('describeProductionArtifacts') {
 if (providers.gradleProperty('jemQuality').map { it.toBoolean() }.getOrElse(false)) {
     apply from: file('gradle/java-quality.gradle')
 }
+
+// Explicitly requested encounter regressions never join ordinary production builds.
+if (providers.gradleProperty('jemEncounterRegression').map { it.toBoolean() }.getOrElse(false)) {
+    apply from: file('gradle/encounter-regressions.gradle')
+}

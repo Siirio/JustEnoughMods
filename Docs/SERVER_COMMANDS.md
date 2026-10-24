@@ -16,7 +16,15 @@ Wallet actions move to Shipping's money tab; the older “Wallet” navigation d
 - `jem event stop <uuid>` — остановить ровно один незавершённый event через общий cleanup; автодополнение показывает UUID активных событий.
 - `jem boss revive` — восстановить босса ближайшей зарегистрированной арены через `BossRevivalApi`, не выдавая победу и не обходя progression.
 
-Все три управляющие операции требуют permission 2. Старые `smp event ...`, `smp boss ...`, `smp arena ...`, `smp event-open`, `smp event-return`, `smp vote`, `smp forfeit` и `smp encounter-leave` больше не регистрируются.
+Все три управляющие операции требуют permission 2. Старые `smp event ...`, `smp boss ...`, `smp arena ...`, `smp event-open` и `smp vote` больше не регистрируются.
+
+The 2026-10-25 encounter integration restores the existing authenticated chat-action routes on dedicated hosts:
+
+- `/smp event-return <partyUUID> <sessionUUID> return|stay` resolves the caller's pending safe return choice against the exact saved session
+- `/smp forfeit <partyUUID> <attemptUUID>` validates the host and current canonical attempt before failing the whole party
+- `/smp encounter-leave <partyUUID>` forfeits only the calling nonhost member, or follows the validated host failure path
+
+These commands reuse Server-owned party authorization, pending return state and safe travel. They cannot accept client coordinates or revive eliminated participants. Offline living members retain pending return until login. Actual death uses normal respawn. Current behavior and delivery evidence are in [Boss Fight](events/BOSS_FIGHT.md).
 
 Boss «Открыть бой» chat actions use typed GUI prompt requests, without a public command. Updated clients consume reserved `/jem-ui arena|boss <uuid>` click markers and old `/smp arena|boss <uuid>` scrollback links. Markers are not commands to type or register. Server authentication, throttle, proximity/progression and availability remain canonical; opening the screen does not start combat.
 
