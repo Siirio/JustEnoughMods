@@ -27,6 +27,12 @@
         "operation": "replace",
         "before": "SMP and boss-owned delivery, split boss loot, legacy result claim routes",
         "after": "JEMRewards owns personal take-only inventory panel, full loot copy per eligible participant, persisted issue/claim receipts, exact offline legacy transfer; ordinary native world loot unchanged"
+      },
+      {
+        "property": "reward.creative_inventory_collection",
+        "operation": "replace",
+        "before": "Panel attached to InventoryScreen only, native E screen redirects Creative to a different class",
+        "after": "Same take-only receipt-backed panel and JEI reservation on ordinary and Creative screens, committed Creative claims send native full inventory content because category tabs ignore normal set-slot. No automatic/duplicate issue or world drops"
       }
     ]
   },
@@ -49,12 +55,12 @@
       "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/en_us.json",
       "Mods/JEMRewards/src/main/resources/assets/jem_rewards/lang/ru_ru.json",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/LegacyRewards.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonDeaths.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BloodMoonDeaths.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedRewards.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingRewardContainer.java"
     ]
   },
   "rationale": {
@@ -87,6 +93,17 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "player_feedback_20261024",
+      "summary": "Creative inventory can expose and collect existing personal entitlements using the same server validation, capacity and receipt owner",
+      "source_files": [
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/client/RewardsPanel.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/client/RewardsJei.java",
+        "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java"
+      ]
     }
   ],
   "impacts": {
@@ -99,7 +116,8 @@
     ],
     "relations": [],
     "notes": [
-      "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch."
+      "Production source/build evidence is separate from gameplay acceptance. No automated tests or gameplay launch.",
+      "2026-10-24 player feedback: Creative inventory can expose and collect existing personal entitlements using the same server validation, capacity and receipt owner Player acceptance remains in testing"
     ],
     "unresolved": [
       "Runtime GUI layout, first race screen and gameplay acceptance not observed."

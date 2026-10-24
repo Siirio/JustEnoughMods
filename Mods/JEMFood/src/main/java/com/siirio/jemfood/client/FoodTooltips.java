@@ -3,6 +3,7 @@ package com.siirio.jemfood.client;
 import com.siirio.jemfood.FoodCatalog;
 import com.siirio.jemfood.FoodNetwork;
 import com.siirio.jemfood.JEMFood;
+import com.siirio.jemfood.mixin.SuspiciousStewAccessor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -10,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.SuspiciousStewItem;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.ScreenEvent;
@@ -20,7 +22,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -54,9 +55,31 @@ public final class FoodTooltips {
         if (snapshot.remaining() <= now() - received) return 0;
         return snapshot.traits().stream().filter(t -> t.trait().equals(name)).mapToDouble(FoodNetwork.Detail::power).findFirst().orElse(0);
     }
-    public static MutableComponent days(int nativeDuration) {
-        String value = BigDecimal.valueOf(Math.max(0, nativeDuration)).divide(BigDecimal.valueOf(24000), 5, RoundingMode.CEILING).stripTrailingZeros().toPlainString();
-        return Component.translatable("tooltip.jemfood.days", value);
+    private static String number(double value) { return BigDecimal.valueOf(value).setScale(3, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString(); }
+    private static MutableComponent description(String name, double value) {
+        var trait = FoodCatalog.trait(name);
+        Object power = trait.units().equals("ticks") ? FoodTime.duration((int) value)
+                : number(trait.units().equals("fraction") ? value * 100 : value);
+        Object[] arguments = switch (name) {
+            case "fleet", "swimmer", "reserve" -> new Object[]{power, FoodTime.duration(1200)};
+            case "stonehide" -> new Object[]{power, FoodTime.duration(2400)};
+            case "harvester" -> new Object[]{power, FoodTime.duration(200)};
+            case "angler" -> new Object[]{power, FoodTime.duration(600)};
+            case "hearth" -> new Object[]{power, FoodTime.duration(300)};
+            case "secondwind" -> new Object[]{power, FoodTime.duration(100), FoodTime.duration(1200)};
+            default -> new Object[]{power};
+        };
+        return Component.translatable("trait.jemfood." + name + ".description", arguments);
+    }
+    private static void nativeEffect(List<Component> lines, MobEffectInstance instance, float probability) {
+        if (probability <= 0) return;
+        MutableComponent name = instance.getEffect().getDisplayName().copy();
+        if (instance.getAmplifier() > 0) name.append(" ").append(Component.translatable("potion.potency." + instance.getAmplifier()));
+        var line = Component.translatable("tooltip.jemfood.native_effect", name);
+        if (!instance.getEffect().isInstantenous()) line.append(Component.translatable("tooltip.jemfood.native_effect_duration",
+                instance.isInfiniteDuration() ? Component.translatable("effect.duration.infinite") : FoodTime.duration(instance.getDuration())));
+        if (probability < 1) line.append(Component.translatable("tooltip.jemfood.native_effect_chance", number(probability * 100)));
+        lines.add(line.withStyle(instance.getEffect().getCategory().getTooltipFormatting()));
     }
     private static MutableComponent quality(int tier) {
         return Component.translatable("tooltip.jemfood.quality." + tier).withStyle(style -> style.withColor(COLORS[tier]));
@@ -76,25 +99,26 @@ public final class FoodTooltips {
     }
     @SubscribeEvent
     public static void item(ItemTooltipEvent event) {
-        var dish = FoodCatalog.find(ForgeRegistries.ITEMS.getKey(event.getItemStack().getItem()));
-        if (dish == null) return;
         var lines = event.getToolTip();
-        lines.add(quality(dish.tier()));
+        var stack = event.getItemStack();
+        var nativeLines = new ArrayList<Component>();
+        var food = stack.getFoodProperties(event.getEntity());
+        if (food != null) for (var effect : food.getEffects()) nativeEffect(nativeLines, effect.getFirst(), effect.getSecond());
+        if (stack.getItem() instanceof SuspiciousStewItem)
+            SuspiciousStewAccessor.jemfood$listEffects(stack, effect -> nativeEffect(nativeLines, effect, 1));
+        var dish = FoodCatalog.find(ForgeRegistries.ITEMS.getKey(event.getItemStack().getItem()));
+        if (dish == null) { lines.addAll(nativeLines); return; }
+        lines.add(Component.translatable("tooltip.jemfood.quality", quality(dish.tier())));
         if (dish.policy().equals("native_only")) lines.add(Component.translatable("tooltip.jemfood.native_only").withStyle(ChatFormatting.GOLD));
         for (String name : dish.traits()) {
             var trait = FoodCatalog.trait(name);
-            lines.add(Component.translatable("trait.jemfood." + name + ".name").withStyle(ChatFormatting.AQUA));
-            if (trait.bridge()) {
-                var preferred = ForgeRegistries.MOB_EFFECTS.getValue(trait.preferred());
-                if (preferred != null) lines.add(Component.translatable("tooltip.jemfood.preferred", preferred.getDisplayName()).withStyle(ChatFormatting.GRAY));
-                var fallback = ForgeRegistries.MOB_EFFECTS.getValue(trait.fallback());
-                if (fallback != null) lines.add(Component.translatable("tooltip.jemfood.fallback", fallback.getDisplayName()).withStyle(ChatFormatting.GRAY));
-            }
+            lines.add(Component.translatable("tooltip.jemfood.blessing", Component.translatable("trait.jemfood." + name + ".name")).withStyle(ChatFormatting.AQUA));
+            lines.add(description(name, trait.value(dish.tier())).withStyle(ChatFormatting.GRAY));
         }
         if (!dish.traits().isEmpty()) {
-            lines.add(Component.translatable("tooltip.jemfood.duration", days(dish.duration())).withStyle(ChatFormatting.GRAY));
-            lines.add(Component.translatable("tooltip.jemfood.blessing_replaced").withStyle(ChatFormatting.GRAY));
+            lines.add(Component.translatable("tooltip.jemfood.duration", FoodTime.duration(dish.duration())).withStyle(ChatFormatting.GRAY));
         }
+        lines.addAll(nativeLines);
         if (dish.variety()) {
             lines.add(Component.translatable("tooltip.jemfood.variety", snapshot.variety()).withStyle(ChatFormatting.GRAY));
             if (snapshot.variety() >= 5) lines.add(Component.translatable("tooltip.jemfood.variety_active").withStyle(ChatFormatting.GREEN));
@@ -118,22 +142,19 @@ public final class FoodTooltips {
             if (block != null) lines.add(Component.translatable("tooltip.jemfood.food_source", block.getName()));
         }
         lines.add(Component.translatable("tooltip.jemfood.quality", quality(snapshot.tier())));
-        lines.add(Component.translatable("tooltip.jemfood.remaining", days(snapshot.remaining() - elapsed)));
+        lines.add(Component.translatable("tooltip.jemfood.remaining", FoodTime.duration(snapshot.remaining() - elapsed)));
         for (var detail : snapshot.traits()) {
             lines.add(Component.empty());
-            lines.add(Component.translatable("trait.jemfood." + detail.trait() + ".name").withStyle(ChatFormatting.AQUA));
-            lines.add(Component.translatable("trait.jemfood." + detail.trait() + ".description").withStyle(ChatFormatting.GRAY));
-            var trait = FoodCatalog.trait(detail.trait());
-            Object power = trait.units().equals("ticks") ? days((int) detail.power()) : detail.power();
-            lines.add(Component.translatable("tooltip.jemfood.current_strength", power).withStyle(ChatFormatting.GRAY));
+            lines.add(Component.translatable("tooltip.jemfood.blessing", Component.translatable("trait.jemfood." + detail.trait() + ".name")).withStyle(ChatFormatting.AQUA));
+            lines.add(description(detail.trait(), detail.power()).withStyle(ChatFormatting.GRAY));
             if (!detail.effect().isEmpty()) {
                 var effect = ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation(detail.effect()));
-                if (effect != null) lines.add(Component.translatable("tooltip.jemfood.fallback", effect.getDisplayName()));
+                if (effect != null) lines.add(Component.translatable("tooltip.jemfood.native_effect", effect.getDisplayName()));
             }
             if (detail.waiting()) lines.add(Component.translatable("tooltip.jemfood.effect_waiting").withStyle(ChatFormatting.YELLOW));
-            else if (detail.remaining() > elapsed) lines.add(Component.translatable("tooltip.jemfood.remaining", days(detail.remaining() - elapsed)));
+            else if (detail.remaining() > elapsed) lines.add(Component.translatable("tooltip.jemfood.remaining", FoodTime.duration(detail.remaining() - elapsed)));
             else if (!detail.effect().isEmpty() || detail.trait().equals("secondwind")) lines.add(Component.translatable("tooltip.jemfood.effect_suspended").withStyle(ChatFormatting.GRAY));
-            if (detail.cooldown() > elapsed) lines.add(Component.translatable("tooltip.jemfood.cooldown", days(detail.cooldown() - elapsed)));
+            if (detail.cooldown() > elapsed) lines.add(Component.translatable("tooltip.jemfood.cooldown", FoodTime.duration(detail.cooldown() - elapsed)));
         }
         var font = Minecraft.getInstance().font;
         var wrapped = lines.stream().flatMap(line -> font.split(line, Math.min(280, Math.max(100, event.getScreen().width - 24))).stream()).toList();

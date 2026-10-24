@@ -260,7 +260,9 @@ public final class PendingRewardContainer {
         if (!transferred || remaining != null && !remaining.isEmpty()) return false;
         // Retain completed rows as permanent issue/import receipts.
         storage.commitClaim(player, containers, inventory);
-        player.inventoryMenu.broadcastChanges();
+        // Creative category tabs ignore ordinary non-hotbar slot packets, but accept native full contents.
+        if (player.isCreative()) player.inventoryMenu.sendAllDataToRemote();
+        else player.inventoryMenu.broadcastChanges();
         return true;
     }
 

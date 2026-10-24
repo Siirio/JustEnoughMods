@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.entity.EntityType;
 
 public final class BossLeaderboard {
     private static final int PAGE_SIZE = 45;
@@ -50,12 +51,21 @@ public final class BossLeaderboard {
         VanillaMenus.chest(player, JemServer.MOD_ID, "boss_details", Component.literal(hunter.name()), menu -> {
             for (int index = page * PAGE_SIZE; index < Math.min(entries.size(), (page + 1) * PAGE_SIZE); index++) {
                 var entry = entries.get(index);
-                String name = BalanceRegistry.bossByKey(entry.getKey()).map(profile -> profile.displayName()).orElse(entry.getKey().getPath());
-                menu.button(index % PAGE_SIZE, VanillaMenus.icon(Items.IRON_SWORD, Component.literal(name), Component.translatable("jem.bosses.victories", entry.getValue())), null);
+                menu.button(index % PAGE_SIZE, VanillaMenus.icon(Items.IRON_SWORD, bossName(entry.getKey()), Component.translatable("jem.bosses.victories", entry.getValue())), null);
             }
             if (page > 0) menu.button(45, VanillaMenus.icon(Items.ARROW, Component.translatable("jem.ui.back")), () -> details(player, id, page - 1));
             menu.button(49, VanillaMenus.icon(Items.BOOK, Component.translatable("jem.bosses.overall")), () -> open(player, 0));
             if ((page + 1) * PAGE_SIZE < entries.size()) menu.button(53, VanillaMenus.icon(Items.ARROW, Component.translatable("jem.ui.next")), () -> details(player, id, page + 1));
         });
+    }
+
+    private static Component bossName(ResourceLocation key) {
+        var profile = BalanceRegistry.bossByKey(key).orElse(null);
+        if (profile == null) return Component.literal(key.getPath());
+        for (var id : profile.entityIds()) {
+            var type = EntityType.byString(id.toString());
+            if (type.isPresent()) return Component.translatable(type.get().getDescriptionId());
+        }
+        return Component.literal(profile.displayName());
     }
 }

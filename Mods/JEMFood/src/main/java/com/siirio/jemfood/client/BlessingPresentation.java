@@ -20,7 +20,7 @@ public final class BlessingPresentation implements IClientMobEffectExtensions {
                                        GuiGraphics graphics, int x, int y, int blitOffset) {
         var font = Minecraft.getInstance().font;
         graphics.drawString(font, Component.translatable("effect.jemfood.food_blessing"), x + 28, y + 6, 0xFFFFFF);
-        graphics.drawString(font, FoodTooltips.days(effect.getDuration()), x + 28, y + 16, 0x7F7F7F);
+        graphics.drawString(font, FoodTime.duration(effect.getDuration()), x + 28, y + 16, 0x7F7F7F);
         return true;
     }
 }

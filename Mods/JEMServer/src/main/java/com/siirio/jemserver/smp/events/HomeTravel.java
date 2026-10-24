@@ -28,9 +28,9 @@ public final class HomeTravel {
         if (!player.isAlive() || player.isSpectator()) return rejected(player, "jem.home.unavailable");
         long now = player.server.overworld().getGameTime();
         long damaged = player.getPersistentData().getLong(LAST_DAMAGE);
-        if (damaged > 0 && now - damaged < COMBAT_TICKS) return rejected(player, "jem.home.combat", com.siirio.jemidentity.api.MinecraftDays.format(COMBAT_TICKS - now + damaged));
+        if (damaged > 0 && now - damaged < COMBAT_TICKS) return rejected(player, "jem.home.combat", com.siirio.jemidentity.api.MinecraftDays.duration(COMBAT_TICKS - now + damaged));
         long used = player.getPersistentData().getLong(LAST_USE);
-        if (used > 0 && now - used < COOLDOWN_TICKS) return rejected(player, "jem.home.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(COOLDOWN_TICKS - now + used));
+        if (used > 0 && now - used < COOLDOWN_TICKS) return rejected(player, "jem.home.cooldown", com.siirio.jemidentity.api.MinecraftDays.duration(COOLDOWN_TICKS - now + used));
         var event = EventSession.forPlayer(player);
         if (event != null && event.combatStarted()) return rejected(player, "jem.home.arena");
         return true;

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +18,7 @@ public final class Buttons extends ChestMenu {
     private final SimpleContainer contents;
     private final String owner;
 
-    void populate(String kind, String title, Consumer<Buttons> populate) {
+    void populate(String kind, Component title, Consumer<Buttons> populate) {
         actions.clear();
         contents.clearContent();
         populate.accept(this);
@@ -25,7 +26,7 @@ public final class Buttons extends ChestMenu {
             ItemStack item = contents.getItem(slot);
             if (item.isEmpty()) continue;
             item.getOrCreateTag().putString("jem_ui_kind", kind);
-            item.getOrCreateTag().putString("jem_ui_title", title);
+            MenuTitles.write(item.getOrCreateTag(), title);
         }
     }
 

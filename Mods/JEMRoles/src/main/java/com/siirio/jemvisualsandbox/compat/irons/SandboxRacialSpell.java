@@ -50,7 +50,7 @@ public final class SandboxRacialSpell extends AbstractSpell {
         SandboxIronsBridge.sync(player);
         long remaining = RaceExperience.remaining(player, "signature");
         if (remaining > 0) return new CastResult(CastResult.Type.FAILURE,
-                Component.translatable("jem.sandbox.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(remaining)));
+                Component.translatable("jem.sandbox.cooldown", com.siirio.jemidentity.api.MinecraftDays.duration(remaining)));
         return super.canBeCastedBy(level, source, data, entity);
     }
 

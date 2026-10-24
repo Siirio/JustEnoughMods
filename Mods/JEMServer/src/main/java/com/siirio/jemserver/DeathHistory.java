@@ -43,7 +43,7 @@ public final class DeathHistory {
     private static Component age(long timestamp) {
         long elapsedTicks = Math.max(0L, (System.currentTimeMillis() - timestamp) / 50L);
         if (elapsedTicks == 0L) return Component.translatable("jem.deaths.just_now");
-        return Component.translatable("jem.deaths.days_ago", com.siirio.jemidentity.api.MinecraftDays.format(elapsedTicks));
+        return Component.translatable("jem.deaths.days_ago", com.siirio.jemidentity.api.MinecraftDays.duration(elapsedTicks));
     }
 
     public static void teleport(ServerPlayer player, UUID id) {

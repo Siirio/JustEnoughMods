@@ -60,7 +60,7 @@ public final class FoodState {
     }
 
     public void consume(ServerPlayer player, ResourceLocation id) {
-        if (!player.isAlive() || player.isCreative() || player.isSpectator()) return;
+        if (!player.isAlive() || player.isSpectator()) return;
         long now = now(player);
         var next = FoodCatalog.find(id);
         long carriedWindUntil = windUntil;

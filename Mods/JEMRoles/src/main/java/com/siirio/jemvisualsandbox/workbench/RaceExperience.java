@@ -88,7 +88,7 @@ public final class RaceExperience {
     }
     public static boolean requireReady(ServerPlayer p,String key){
         long time=remaining(p,key);if(time==0)return true;
-        p.displayClientMessage(Component.translatable("jem.sandbox.cooldown",com.siirio.jemidentity.api.MinecraftDays.format(time)),true);snapshot(p);return false;
+        p.displayClientMessage(Component.translatable("jem.sandbox.cooldown",com.siirio.jemidentity.api.MinecraftDays.duration(time)),true);snapshot(p);return false;
     }
     public static boolean canAct(ServerPlayer p){return allowed(p)&&selected(p)&&p.isAlive()&&!p.isSpectator()&&!RaceSelectionScene.locked(p);}
     public static void utility(ServerPlayer p,boolean pressed){

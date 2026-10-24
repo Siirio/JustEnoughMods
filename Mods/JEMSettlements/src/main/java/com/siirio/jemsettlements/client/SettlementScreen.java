@@ -513,7 +513,7 @@ public class SettlementScreen extends Screen {
         } else {
             drawWrapped(Component.translatable("jem.settlements.gui.loyalty."+detail.getString("Loyalty").toLowerCase(Locale.ROOT)),tx,py,tw,INK);
             drawWrapped(tr("missed",detail.getInt("MissedPayrolls")),tx,py+20,tw,MUTED);
-            drawWrapped(tr("due_in",String.format(Locale.ROOT,"%.1f",Math.max(0,detail.getLong("NextPayroll")-envelope.getLong("GameTime"))/24000.0)),tx,py+42,tw,MUTED);
+            drawWrapped(tr("due_in",com.siirio.jemidentity.api.MinecraftDays.duration(Math.max(0,detail.getLong("NextPayroll")-envelope.getLong("GameTime")))),tx,py+42,tw,MUTED);
             drawLine(tr("wage"),tx,py+66,MUTED);drawings.add(()->coins(detail.getLong("Wage"),tx,py+78,tw));
         }
         listTop=py+112;listBottom=bottom-(isRecruit?73:48);

@@ -151,7 +151,7 @@ public final class Landmarks {
             open(player, 0, management);
             return;
         }
-        VanillaMenus.chest(player, JemServer.MOD_ID, "confirm", Component.literal(landmark.name()), menu -> {
+        VanillaMenus.chest(player, JemServer.MOD_ID, "confirm", displayName(landmark), menu -> {
             menu.button(4, locationIcon(landmark), null);
             if (!isBoss(landmark) && landmark.creator().equals(player.getUUID()))
                 menu.button(22, VanillaMenus.icon(Items.BARRIER, Component.translatable("jem.landmarks.delete"), Component.translatable("jem.landmarks.delete_hint")), () -> remove(player, id));
@@ -177,11 +177,16 @@ public final class Landmarks {
     }
 
     private static net.minecraft.world.item.ItemStack locationIcon(ServerData.Landmark landmark) {
-        var icon = VanillaMenus.icon(Items.COMPASS, Component.literal(landmark.name()), categoryTitle(landmark.category()), Component.literal(landmark.dimension().toString()),
+        var icon = VanillaMenus.icon(Items.COMPASS, displayName(landmark), categoryTitle(landmark.category()), DimensionNames.name(landmark.dimension()),
                 Component.translatable("jem.landmarks.coordinates", landmark.position().getX(), landmark.position().getY(), landmark.position().getZ()), Component.translatable("jem.landmarks.author", landmark.creatorName()));
         icon.getOrCreateTag().putString("jem_ui_dimension", landmark.dimension().toString());
         icon.getOrCreateTag().putLong("jem_ui_position", landmark.position().asLong());
         return icon;
+    }
+
+    private static Component displayName(ServerData.Landmark landmark) {
+        return isBoss(landmark) && !landmark.nameKey().isEmpty()
+                ? Component.translatable(landmark.nameKey()) : Component.literal(landmark.name());
     }
 
     private static Component categoryTitle(String id) {

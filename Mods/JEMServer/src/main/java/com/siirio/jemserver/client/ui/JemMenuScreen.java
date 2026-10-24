@@ -4,6 +4,8 @@ import static com.siirio.jemserver.client.ui.JemPalette.*;
 
 import com.siirio.jemserver.client.smp.SmpGuiAssets;
 import com.siirio.jemserver.client.smp.SmpSidebar;
+import com.siirio.jemserver.menus.MenuTitles;
+import com.siirio.jemserver.DimensionNames;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
     private final SmpSidebar sidebar = new SmpSidebar();
     private boolean claimsContext;
     private String kind;
-    private String displayTitle;
+    private Component displayTitle;
     private final List<Hit> hits = new ArrayList<>();
     private int scroll;
     private int maxScroll;
@@ -64,7 +66,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
         super(menu, inventory, title);
         this.kind = kind;
         claimsContext = false;
-        this.displayTitle = title.getString();
+        this.displayTitle = title;
     }
 
     @Override
@@ -123,7 +125,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
         frame(graphics, leftPos, topPos, imageWidth, imageHeight, PANEL);
         graphics.fill(leftPos + 3, topPos + 3, leftPos + imageWidth - 3, topPos + HEADER_HEIGHT, INSET);
         emblem(graphics, leftPos + 14, topPos + 13);
-        text(graphics, displayTitle, leftPos + 37, topPos + 15, imageWidth - 74, CREAM);
+        text(graphics, displayTitle.getString(), leftPos + 37, topPos + 15, imageWidth - 74, CREAM);
         button(graphics, -1, leftPos + imageWidth - 27, topPos + 10, 17, 18, "×", false, mouseX, mouseY);
         graphics.fill(leftPos + 8, topPos + HEADER_HEIGHT, leftPos + imageWidth - 8, topPos + HEADER_HEIGHT + 1, EDGE);
         if (claimsContext) sidebar.render(graphics, "claims", mouseX, mouseY);
@@ -208,7 +210,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
                     var position = net.minecraft.core.BlockPos.of(mapLocation.getLong("jem_ui_position"));
                     frame(graphics, mapX, contentY, mapWidth, 82, INSET);
                     graphics.renderItem(new ItemStack(net.minecraft.world.item.Items.FILLED_MAP), mapX + 8, contentY + 9);
-                    String dimensionName = dimension.getPath();
+                    String dimensionName = DimensionNames.name(dimension).getString();
                     text(graphics, dimensionName, mapX + 30, contentY + 9, mapWidth - 38, CREAM);
                     text(graphics, position.getX() + ", " + position.getY() + ", " + position.getZ(), mapX + 8, contentY + 31, mapWidth - 16, PEACH);
                     button(graphics, MAP_ACTION, mapX + 6, contentY + 52, mapWidth - 12, 24, Component.translatable("jem.smp.map").getString(), false, mouseX, mouseY);
@@ -390,7 +392,7 @@ public final class JemMenuScreen extends AbstractContainerScreen<AbstractContain
             ItemStack item = menu.getSlot(slot).getItem();
             if (!item.hasTag() || !item.getTag().contains("jem_ui_kind")) continue;
             String nextKind = item.getTag().getString("jem_ui_kind");
-            String nextTitle = item.getTag().getString("jem_ui_title");
+            Component nextTitle = MenuTitles.read(item.getTag());
             if (!kind.equals(nextKind) || !displayTitle.equals(nextTitle)) {
                 previewSlot = -1;
                 kind = nextKind;

@@ -99,14 +99,20 @@ public final class ShelterRecovery {
         List<BlockPos> footprint = block.cells(anchor, facing).stream().filter(p -> p.getY() == anchor.getY()).toList();
         double centerX = footprint.stream().mapToDouble(p -> p.getX() + .5).average().orElse(anchor.getX() + .5);
         double centerZ = footprint.stream().mapToDouble(p -> p.getZ() + .5).average().orElse(anchor.getZ() + .5);
+        AABB home = new AABB(footprint.stream().mapToInt(BlockPos::getX).min().orElseThrow(), anchor.getY(),
+                footprint.stream().mapToInt(BlockPos::getZ).min().orElseThrow(),
+                footprint.stream().mapToInt(p -> p.getX() + 1).max().orElseThrow(), anchor.getY() + block.size(),
+                footprint.stream().mapToInt(p -> p.getZ() + 1).max().orElseThrow());
+        AABB nativeBounds = CompanionAdapters.bounds(animal);
+        boolean outsideOnly = nativeBounds.maxY - nativeBounds.minY > 1.0;
         List<Candidate> candidates = new ArrayList<>();
         CompanionAdapters.Habitat habitat = CompanionAdapters.habitat(animal);
         // The authored floor top is two model units above the anchor floor.
-        candidates.add(new Candidate(new Vec3(centerX, anchor.getY() + 2.0 / 16, centerZ), true, 0, 0));
+        if (!outsideOnly) candidates.add(new Candidate(new Vec3(centerX, anchor.getY() + 2.0 / 16, centerZ), true, 0, 0));
         for (int x = -8; x <= block.size() + 7; x++) for (int z = -8; z <= block.size() + 7; z++) {
             BlockPos column = anchor.relative(facing.getCounterClockWise(), x).relative(facing, z);
             int horizontal = Math.max(0, -x) + Math.max(0, x - block.size() + 1) + Math.max(0, -z) + Math.max(0, z - block.size() + 1);
-            if (horizontal > 8) continue;
+            if (horizontal > 8 || (outsideOnly && horizontal == 0)) continue;
             if (!level.hasChunksAt(column.offset(-1, -1, -1), column.offset(1, 1, 1))) continue;
             for (int y = -8; y <= 32; y++) {
                 BlockPos support = new BlockPos(column.getX(), anchor.getY() + y - 1, column.getZ());
@@ -128,12 +134,15 @@ public final class ShelterRecovery {
         candidates.sort(Comparator.comparing((Candidate c) -> !c.interior).thenComparingDouble(c -> Math.floor(Math.sqrt(c.distance)))
                 .thenComparingInt(Candidate::projection).thenComparingDouble(Candidate::distance)
                 .thenComparingDouble(c -> c.feet.y).thenComparingDouble(c -> c.feet.x).thenComparingDouble(c -> c.feet.z));
-        for (Candidate candidate : candidates) if (safe(level, animal, candidate.feet, owner)) return animal.position();
+        for (Candidate candidate : candidates) if (safe(level, animal, candidate.feet, owner, outsideOnly ? home : null)) return animal.position();
         return null;
     }
-    private static boolean safe(ServerLevel level, LivingEntity animal, Vec3 feet, java.util.UUID owner) {
+    private static boolean safe(ServerLevel level, LivingEntity animal, Vec3 feet, java.util.UUID owner, AABB outsideHome) {
         double bottomOffset = CompanionAdapters.bounds(animal).minY - animal.getY();
         animal.moveTo(feet.x, feet.y - bottomOffset, feet.z, animal.getYRot(), 0); AABB box = CompanionAdapters.bounds(animal);
+        // Tall pets must stand beside the whole home, including multipart clearance, never inside or on its roof.
+        if (outsideHome != null && box.minX < outsideHome.maxX && box.maxX > outsideHome.minX
+                && box.minZ < outsideHome.maxZ && box.maxZ > outsideHome.minZ) return false;
         CompanionAdapters.Habitat habitat = CompanionAdapters.habitat(animal);
         if (box.minY < level.getMinBuildHeight() || box.maxY >= level.getMaxBuildHeight() || !level.getWorldBorder().isWithinBounds(box)) return false;
         // hasChunksAt precedes collision/fluid calls: those vanilla calls may otherwise fetch missing chunks.

@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "change_id": "experience.bottle-native-roll-triple-20261024",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:experience_bottle"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "Current local managed production source, runtime player acceptance unobserved"
+    }
+  ],
+  "precedence": {
+    "layer": "explicit_player_feedback",
+    "priority": 1300,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Triple only the thrown experience bottle item native experience roll",
+    "modifiers": [
+      {
+        "property": "experience.bottle_native_roll",
+        "operation": "multiply_total",
+        "before": {
+          "formula": "3+random.nextInt(5)+random.nextInt(5)",
+          "range": [
+            3,
+            11
+          ]
+        },
+        "after": {
+          "formula": "3*(3+random.nextInt(5)+random.nextInt(5))",
+          "range": [
+            9,
+            33
+          ],
+          "guard": "ThrownExperienceBottle.getItem().is(Items.EXPERIENCE_BOTTLE)",
+          "other_experience": "unchanged"
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Canonical source modules and KubeJS language resources",
+    "kind": "user_requested_player_feedback",
+    "source_files": [
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/experience/ExperienceBottleExperienceMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Triple only the thrown experience bottle item native experience roll",
+    "decision_source": "Direct user request2026-10-24",
+    "codex_choices": "Native producer seams, localized resource components and existing native transactional publication"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Triple only the thrown experience bottle item native experience roll"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Triple only the thrown experience bottle item native experience roll",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/experience/ExperienceBottleExperienceMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_presentation",
+      "server_authority",
+      "local_distribution"
+    ],
+    "relations": [
+      "Native source authority and existing protocol/save units preserved",
+      "No stable release, MineRENT or baseline promotion"
+    ],
+    "notes": [
+      "Production packaging and local native delivery are distinct from player acceptance"
+    ],
+    "unresolved": [
+      "Gameplay and visual acceptance remain in testing"
+    ]
+  }
+}

@@ -34,13 +34,13 @@ public final class VanillaMenus {
 
     public static void chest(ServerPlayer player, String owner, String kind, Component title, Consumer<Buttons> populate) {
         if (player.containerMenu instanceof Buttons existing && existing.belongsTo(owner)) {
-            existing.populate(kind, title.getString(), populate);
+            existing.populate(kind, title, populate);
             existing.sendAllDataToRemote();
             return;
         }
         player.openMenu(new SimpleMenuProvider((id, inventory, user) -> {
             Buttons buttons = new Buttons(id, inventory, owner);
-            buttons.populate(kind, title.getString(), populate);
+            buttons.populate(kind, title, populate);
             return buttons;
         }, title));
     }

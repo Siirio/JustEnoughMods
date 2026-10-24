@@ -54,7 +54,9 @@ These are source/native-save guarantees, not hardware transactions across arbitr
 
 Death removal, natural chunk loads, terrain changes and changed player approach positions trigger bounded recovery. It requires an intact loaded home, nearby player within 32 blocks and authenticated online owner for native protection checks. No ingredient, cost or resurrection cooldown
 
-Both sizes share the eight-block horizontal, eight-downward, 32-upward search. The actual interior is preferred when safe. Actual support-shape tops include surfaces above dirt-covered homes. Large creatures are never scaled or forced inside
+Both sizes share the eight-block horizontal, eight-downward, 32-upward search. Under the 2026-10-24 user amendment, creatures whose actual complete native body bounds exceed one block in height recover beside the home. Their whole horizontal body footprint must clear the rotated home footprint, including multipart clearance, so neither the interior nor the roof can be selected. Creatures at most one block tall retain the safe-interior preference. Actual support-shape tops include surfaces above dirt-covered homes for smaller creatures. Large creatures are never scaled or forced inside
+
+The shared `ShelterRecovery.safePoint` owner enforces this placement rule for every recovery trigger and retry. If no external candidate satisfies the existing body, habitat, loaded-chunk and protection checks, the native payload stays pending with `no_safe_space`. No entity, inventory or assignment is deleted to make room. This source correction remains in testing until player acceptance
 
 Candidates check full native body bounds, loaded neighbors before collision queries, entity obstruction, world limits, native hazards and protection. Ground requires full foot support. Aquatic creatures require complete water coverage, amphibious creatures can use water or stable ground, lava mounts can use native lava habitat, and flying creatures can use safe air. Blocked space retains the snapshot and visible reason until a natural retry
 

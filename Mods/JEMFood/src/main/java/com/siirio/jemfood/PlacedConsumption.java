@@ -27,7 +27,7 @@ public final class PlacedConsumption {
     }
     public static InteractionResult use(BlockState state, Level level, Player player, InteractionHand hand, BlockHitResult hit) {
         var id = ForgeRegistries.BLOCKS.getKey(state.getBlock());
-        if (!(player instanceof ServerPlayer server) || server.isCreative() || server.isSpectator() || FoodCatalog.find(id) == null)
+        if (!(player instanceof ServerPlayer server) || server.isSpectator() || FoodCatalog.find(id) == null)
             return state.use(level, player, hand, hit);
         Receipt previous = CURRENT.get();
         Receipt receipt = new Receipt(server);

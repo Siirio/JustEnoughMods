@@ -1,3 +1,15 @@
+## 2026-10-24 - Player feedback, readable food effects and Russian client resources
+
+- User requested explicit food categories and each blessing description, all native food effects, working Creative blessings/rewards, tall companion recovery beside homes, triple XP only from the experience bottle item and adaptive seconds/minutes/whole Minecraft days
+- User requested Russian interfaces and item text with Russian selected, and confirmed Minecraft closed for the final native update of "test jem"
+- Codex implementation choices: source-owned consumption admission, live Forge food properties and native stew decoder, existing take-only reward panel on both native inventory classes with committed full Creative inventory synchronization, full-body exterior placement, one exact bottle award Mixin and language resource overlays
+- Bug / Both Sided / Creative food admission returned before blessing and visible status creation, while a separate placed-food guard skipped its receipt / in testing, both actual-consumption guards corrected and existing icon retained
+- Bug / Both Sided / Creative redirects around the ordinary inventory-only reward panel and ignores normal non-hotbar slot updates on category tabs / in testing, shared panel and committed native full-inventory synchronization added, narrow-window compact controls also functional
+- Bug / Server / Shared home recovery preferred interior for every body size and had no exterior-footprint policy / in testing, bodies higher than one block require full horizontal clearance outside the rotated house, including its roof
+- Bug / Client / Installed WorldMap lacked Russian resources and many other current mod keys fell back to English / in testing, exact resource keys receive authored Russian overrides while English selection and native UI ownership remain intact
+- Bug / Both Sided / Server menu metadata flattened translated components into server-language strings before client rendering / in testing, bounded components now cross the metadata boundary intact and native boss, official marker and dimension labels resolve on the client
+- Existing native food, reward conservation, recovery payloads, internal time units, private waypoints, stable profile and release baseline are preserved. Local delivery receipt records the production artifacts, normal server publication and stopped-profile native application
+
 ## 2026-10-24 - Remove advancement notes and Mechanics from the JEM handbook
 
 - User requested all advancements removed from the JEM book and the Mechanics tab removed

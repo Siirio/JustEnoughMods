@@ -7,6 +7,7 @@ import static com.siirio.jemserver.client.ui.JemPalette.*;
 
 import com.google.gson.JsonObject;
 import com.siirio.jemserver.smp.SmpNetwork;
+import com.siirio.jemserver.DimensionNames;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
@@ -557,7 +558,7 @@ public final class SmpScreen extends Screen {
         var pos = net.minecraft.core.BlockPos.of(detail.getLong("position"));
         frame(g, x, y, width, height, INSET);
         SmpIcons.draw(g, "map", x + 7, y + 11, 18);
-        text(g, Component.literal(dimensionName(dimension.toString())), x + 31, y + 7, CREAM, width - 112);
+        text(g, DimensionNames.name(dimension), x + 31, y + 7, CREAM, width - 112);
         text(g, Component.literal(pos.getX() + ", " + pos.getY() + ", " + pos.getZ()), x + 31, y + 23, PEACH, width - 112);
         button(g, x + width - 77, y + 8, 70, 25, "map", () -> openLocation(detail), mx, my);
     }
@@ -861,8 +862,8 @@ public final class SmpScreen extends Screen {
                 if (row.hasUUID("owner")) SmpIcons.face(g, row.getUUID("owner"), bodyX + 8, y + 18, 32);
                 int sellerWidth = Math.max(104, Math.min(150, bodyWidth / 4));
                 text(g, Component.literal(row.getString("name")), bodyX + 46, y + 18, CREAM, sellerWidth - 48);
-                String location = row.contains("distance") ? Math.round(row.getDouble("distance")) + " m" : dimensionName(row.getString("dimension"));
-                text(g, Component.literal(location), bodyX + 46, y + 37, MUTED, sellerWidth - 48);
+                Component location = row.contains("distance") ? Component.translatable("jem.ui.distance_meters", Math.round(row.getDouble("distance"))) : DimensionNames.name(row.getString("dimension"));
+                text(g, location, bodyX + 46, y + 37, MUTED, sellerWidth - 48);
                 int actionWidth = Math.min(76, Math.max(58, bodyWidth / 10));
                 int mapWidth = actionWidth;
                 int actionX = bodyX + bodyWidth - actionWidth - mapWidth - 12;
@@ -906,13 +907,8 @@ public final class SmpScreen extends Screen {
         if (mx >= x && mx < x + size && my >= y && my < y + size) hoveredItem = stack;
     }
 
-    private String dimensionName(String value) {
-        int separator = value.indexOf(':');
-        return separator >= 0 ? value.substring(separator + 1) : value;
-    }
     private Component dimensionNameComponent(String value) {
-        ResourceLocation id = ResourceLocation.tryParse(value);
-        return id == null ? Component.literal(value) : Component.translatable("dimension." + id.getNamespace() + "." + id.getPath());
+        return DimensionNames.name(value);
     }
 
     private String shopUnavailableReason(CompoundTag row) {

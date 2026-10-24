@@ -217,8 +217,8 @@ public final class RaceExperienceScreen extends Screen {
                 && RaceExperienceClient.remaining(status.reselectRemaining()) > 0L;
         confirm.active = !busy && !waiting;
         confirm.setMessage(requested >= 0 ? text("Сервер подтверждает…", "Waiting for server…")
-                : waiting ? text("Смена через "+days(RaceExperienceClient.remaining(status.reselectRemaining()))+" Minecraft-дн.",
-                        "Change in "+days(RaceExperienceClient.remaining(status.reselectRemaining()))+" Minecraft days")
+                : waiting ? text("Смена через "+days(RaceExperienceClient.remaining(status.reselectRemaining()))+"",
+                        "Change in "+days(RaceExperienceClient.remaining(status.reselectRemaining()))+"")
                 : rejected ? text("Не подтверждено · повторить", "Not confirmed · retry")
                 : status.selected() && status.race() == race ? text("Вернуться в мир", "Enter world")
                 : status.developerMode() && status.selected() ? text("Сменить расу", "Switch Race")
@@ -240,9 +240,7 @@ public final class RaceExperienceScreen extends Screen {
     }
 
     private static String days(long ticks) {
-        if(ticks<=0L)return "0";
-        if(ticks<24L)return "<0.001";
-        return java.math.BigDecimal.valueOf(ticks).divide(java.math.BigDecimal.valueOf(24000L),3,java.math.RoundingMode.CEILING).stripTrailingZeros().toPlainString();
+        return com.siirio.jemidentity.api.MinecraftDays.duration(ticks).getString();
     }
 
     @Override public void tick() {
@@ -439,38 +437,38 @@ public final class RaceExperienceScreen extends Screen {
         String ru="", en="";
         if(previewSlot==0) switch(race) {
             case 0 -> {
-                ru="Радиус "+RacePowerStages.chorusRadius(previewTier)+" блоков; игрокам +6 HP; боевым союзникам до max(6, 20% max HP), не выше недостающего здоровья. Щиты: −25% входящего урона на "+days(100L)+" Minecraft-дн.";
-                en="Radius "+RacePowerStages.chorusRadius(previewTier)+" blocks; players +6 HP; combat allies heal max(6, 20% max HP), capped by missing HP. Wards: −25% incoming damage for "+days(100L)+" Minecraft days.";
+                ru="Радиус "+RacePowerStages.chorusRadius(previewTier)+" блоков; игрокам +6 HP; боевым союзникам до max(6, 20% max HP), не выше недостающего здоровья. Щиты: −25% входящего урона на "+days(100L)+"";
+                en="Radius "+RacePowerStages.chorusRadius(previewTier)+" blocks; players +6 HP; combat allies heal max(6, 20% max HP), capped by missing HP. Wards: −25% incoming damage for "+days(100L)+".";
                 if(previewTier>=2){ru+=" Очищение отрицательных эффектов.";en+=" Cleanses harmful effects.";}
                 if(previewTier>=3){ru+=" При полном здоровье — поглощение.";en+=" At full health, grants absorption.";}
             }
             case 1 -> {
                 ru="Дальность разлома "+RacePowerStages.riftRange(previewTier)+" блока; телепортация и настоящий удар ближнего боя.";
                 en="Rift reach "+RacePowerStages.riftRange(previewTier)+" blocks; teleport and an actual melee strike.";
-                if(previewTier>=2){ru+=" Замедление у места прибытия: "+days(RacePowerStages.riftSlowTicks(previewTier))+" Minecraft-дн., радиус "+RacePowerStages.riftSlowRadius(previewTier)+" блоков.";en+=" Arrival slow: "+days(RacePowerStages.riftSlowTicks(previewTier))+" Minecraft days, radius "+RacePowerStages.riftSlowRadius(previewTier)+" blocks.";}
+                if(previewTier>=2){ru+=" Замедление у места прибытия: "+days(RacePowerStages.riftSlowTicks(previewTier))+", радиус "+RacePowerStages.riftSlowRadius(previewTier)+" блоков.";en+=" Arrival slow: "+days(RacePowerStages.riftSlowTicks(previewTier))+", radius "+RacePowerStages.riftSlowRadius(previewTier)+" blocks.";}
             }
             case 2 -> {
-                ru="Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Захват на "+days(BloomMechanics.GRIP_TICKS)+" Minecraft-дн.: цель стоит на месте, но в базе может атаковать.";en="Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. "+days(BloomMechanics.GRIP_TICKS)+" Minecraft days of grip: holds the target in place; base targets can still attack.";
+                ru="Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Захват на "+days(BloomMechanics.GRIP_TICKS)+": цель стоит на месте, но в базе может атаковать.";en="Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. "+days(BloomMechanics.GRIP_TICKS)+" of grip: holds the target in place; base targets can still attack.";
                 if(previewTier>=1){ru+=" Блокировка действий.";en+=" Action lock.";}
                 if(previewTier>=2){ru+=" Сжатие: "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/с.";en+=" Constriction: "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/s.";}
-                if(previewTier>=3){ru+=" После освобождения: яд 1 HP/с на "+days(BloomMechanics.POISON_TICKS)+" Minecraft-дн., включая невосприимчивых к обычному яду мобов; оставляет 1 HP.";en+=" After release: poison 1 HP/s for "+days(BloomMechanics.POISON_TICKS)+" Minecraft days, including normally poison-immune mobs; leaves 1 HP.";}
+                if(previewTier>=3){ru+=" После освобождения: яд 1 HP/с на "+days(BloomMechanics.POISON_TICKS)+", включая невосприимчивых к обычному яду мобов; оставляет 1 HP.";en+=" After release: poison 1 HP/s for "+days(BloomMechanics.POISON_TICKS)+", including normally poison-immune mobs; leaves 1 HP.";}
             }
             case 3 -> {
                 ru="12 HP; радиус 8 блоков; один удар по цели.";en="12 HP; 8-block radius; one hit per target.";
                 if(previewTier>=1){ru+=" Отбрасывание.";en+=" Knockback.";}
-                if(previewTier>=2){ru+=" Тьма на "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DARKNESS_TICKS)+" Minecraft-дн. для игроков и мобов; дезориентация мобов без неуязвимости и заморозки.";en+=" Darkness for "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DARKNESS_TICKS)+" Minecraft days for players and mobs; mob disorientation without invulnerability or freezing.";}
-                if(previewTier>=3){ru+=" Временный скалк: радиус 16, "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DOMAIN_TICKS)+" Minecraft-дн. Пока владелец внутри: размер и атака ×1,15.";en+=" Temporary sculk: radius 16, "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DOMAIN_TICKS)+" Minecraft days. While owner stays inside: size and attack ×1.15.";}
+                if(previewTier>=2){ru+=" Тьма на "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DARKNESS_TICKS)+" для игроков и мобов; дезориентация мобов без неуязвимости и заморозки.";en+=" Darkness for "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DARKNESS_TICKS)+" for players and mobs; mob disorientation without invulnerability or freezing.";}
+                if(previewTier>=3){ru+=" Временный скалк: радиус 16, "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DOMAIN_TICKS)+" Пока владелец внутри: размер и атака ×1,15.";en+=" Temporary sculk: radius 16, "+days(com.siirio.jemvisualsandbox.workbench.SonicWaveAbility.DOMAIN_TICKS)+". While owner stays inside: size and attack ×1.15.";}
             }
             case 4 -> {
-                ru="Пять извержений на каждом этапе. Урон одного: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; огонь "+days(RacePowerStages.fireSeconds(previewTier)*20L)+" Minecraft-дн.";
-                en="Five eruptions at every stage. Damage per eruption: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; fire "+days(RacePowerStages.fireSeconds(previewTier)*20L)+" Minecraft days.";
+                ru="Пять извержений на каждом этапе. Урон одного: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; огонь "+days(RacePowerStages.fireSeconds(previewTier)*20L)+"";
+                en="Five eruptions at every stage. Damage per eruption: "+number(RacePowerStages.eruptionDamage(previewTier))+" HP; fire "+days(RacePowerStages.fireSeconds(previewTier)*20L)+".";
             }
         } else switch(race) {
-            case 0 -> {ru="Автоматический страж появляется при здоровье ниже 40%; срок жизни "+days(RacePowerStages.guardianTicks(previewTier))+" Minecraft-дн. B не является атакой.";en="Automatic guardian appears below 40% health; lifetime "+days(RacePowerStages.guardianTicks(previewTier))+" Minecraft days. B is not an attack.";}
-            case 1 -> {ru="Удерживай B "+days(10L)+" Minecraft-дн.: жемчуг с настоящей траекторией. Shift+B: отрицание гравитации на "+days(RacePowerStages.gravityTicks(previewTier))+" Minecraft-дн.";en="Hold B for "+days(10L)+" Minecraft days: pearl with its real trajectory. Shift+B: gravity denial for "+days(RacePowerStages.gravityTicks(previewTier))+" Minecraft days.";}
-            case 2 -> {ru="B включает/выключает временный лиственный мост: "+days(RacePowerStages.bridgeTicks(previewTier))+" Minecraft-дн., "+RacePowerStages.bridgeForward(previewTier)+" блоков вперёд.";en="B toggles a temporary leaf bridge: "+days(RacePowerStages.bridgeTicks(previewTier))+" Minecraft days, "+RacePowerStages.bridgeForward(previewTier)+" blocks forward.";}
-            case 3 -> {ru="Без 25 резонанса: эхо-зрение в радиусе "+RacePowerStages.echoRadius(previewTier)+" блоков. При 25 резонанса: восстановление +"+RacePowerStages.recoveryHeal(previewTier)+" HP; весь резонанс сбрасывается в 0; поглощение на "+days(RacePowerStages.absorptionTicks(previewTier))+" Minecraft-дн. Это разные контекстные действия.";en="Below 25 resonance: echo vision within "+RacePowerStages.echoRadius(previewTier)+" blocks. At 25 resonance: recover +"+RacePowerStages.recoveryHeal(previewTier)+" HP; all resonance resets to 0; absorption for "+days(RacePowerStages.absorptionTicks(previewTier))+" Minecraft days. These are distinct contextual actions.";}
-            case 4 -> {ru="Всегда три последовательных огненных рассечения. Урон каждого: "+number(RacePowerStages.slashDamage(previewTier))+" HP; огонь "+days(RacePowerStages.fireSeconds(previewTier)*20L)+" Minecraft-дн.";en="Always three successive fiery slashes. Each deals "+number(RacePowerStages.slashDamage(previewTier))+" HP; fire "+days(RacePowerStages.fireSeconds(previewTier)*20L)+" Minecraft days.";}
+            case 0 -> {ru="Автоматический страж появляется при здоровье ниже 40%; срок жизни "+days(RacePowerStages.guardianTicks(previewTier))+" B не является атакой.";en="Automatic guardian appears below 40% health; lifetime "+days(RacePowerStages.guardianTicks(previewTier))+". B is not an attack.";}
+            case 1 -> {ru="Удерживай B "+days(10L)+": жемчуг с настоящей траекторией. Shift+B: отрицание гравитации на "+days(RacePowerStages.gravityTicks(previewTier))+"";en="Hold B for "+days(10L)+": pearl with its real trajectory. Shift+B: gravity denial for "+days(RacePowerStages.gravityTicks(previewTier))+".";}
+            case 2 -> {ru="B включает/выключает временный лиственный мост: "+days(RacePowerStages.bridgeTicks(previewTier))+", "+RacePowerStages.bridgeForward(previewTier)+" блоков вперёд.";en="B toggles a temporary leaf bridge: "+days(RacePowerStages.bridgeTicks(previewTier))+", "+RacePowerStages.bridgeForward(previewTier)+" blocks forward.";}
+            case 3 -> {ru="Без 25 резонанса: эхо-зрение в радиусе "+RacePowerStages.echoRadius(previewTier)+" блоков. При 25 резонанса: восстановление +"+RacePowerStages.recoveryHeal(previewTier)+" HP; весь резонанс сбрасывается в 0; поглощение на "+days(RacePowerStages.absorptionTicks(previewTier))+" Это разные контекстные действия.";en="Below 25 resonance: echo vision within "+RacePowerStages.echoRadius(previewTier)+" blocks. At 25 resonance: recover +"+RacePowerStages.recoveryHeal(previewTier)+" HP; all resonance resets to 0; absorption for "+days(RacePowerStages.absorptionTicks(previewTier))+". These are distinct contextual actions.";}
+            case 4 -> {ru="Всегда три последовательных огненных рассечения. Урон каждого: "+number(RacePowerStages.slashDamage(previewTier))+" HP; огонь "+days(RacePowerStages.fireSeconds(previewTier)*20L)+"";en="Always three successive fiery slashes. Each deals "+number(RacePowerStages.slashDamage(previewTier))+" HP; fire "+days(RacePowerStages.fireSeconds(previewTier)*20L)+".";}
         }
         lines.add(new Line(text(ru,en),0xE5E5E5));
 
@@ -487,13 +485,13 @@ public final class RaceExperienceScreen extends Screen {
     private Component cooldown(String key, long ticks) {
         long remaining = RaceExperienceClient.remaining(ticks);
         return Component.literal(key + " · ").append(remaining == 0 ? text("готово", "ready")
-                : text(days(remaining)+" Minecraft-дн.", days(remaining)+" Minecraft days"));
+                : text(days(remaining)+"", days(remaining)+""));
     }
 
     private int tier() { return RacePowerStages.clamp(status.tierAt(race)); }
     private int progress() { return Math.max(0, status.progressAt(race)); }
     private Component tr(String suffix) {
-        if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, лечит боевых союзников на max(6, 20% max HP), не выше недостающего здоровья; мирных животных вне боя исцеляет полностью. Четыре щита уменьшают входящий урон на 25% на "+days(100L)+" Minecraft-дн. Перезарядка: "+days(500L)+" Minecraft-дн.","A golden front restores 3 hearts to players and heals combat allies for max(6, 20% max HP), capped by missing health; peaceful animals outside combat heal fully. Four wards reduce incoming damage by 25% for "+days(100L)+" Minecraft days. Cooldown: "+days(500L)+" Minecraft days.");
+        if(race==0&&suffix.equals("spell.detail"))return text("Золотой фронт восстанавливает игрокам 3 сердца, лечит боевых союзников на max(6, 20% max HP), не выше недостающего здоровья; мирных животных вне боя исцеляет полностью. Четыре щита уменьшают входящий урон на 25% на "+days(100L)+" Перезарядка: "+days(500L)+"","A golden front restores 3 hearts to players and heals combat allies for max(6, 20% max HP), capped by missing health; peaceful animals outside combat heal fully. Four wards reduce incoming damage by 25% for "+days(100L)+". Cooldown: "+days(500L)+".");
         if(race==0&&suffix.equals("tier.short.1"))return text("I · радиус Хора 16 блоков", "I · Chorus radius 16 blocks");
         if(race==0&&suffix.equals("tier.short.2"))return text("II · очищение", "II · cleanse");
         if(race==0&&suffix.equals("tier.short.3"))return text("III · поглощение при полном здоровье", "III · absorption at full health");
@@ -509,16 +507,16 @@ public final class RaceExperienceScreen extends Screen {
 
         }
         if (race == 4 && suffix.equals("buff.3")) return text("Огненные рассечения [B]", "Fiery slashes [B]");
-        if(race==4&&suffix.equals("spell.detail"))return text("Пять извержений идут вперёд по поверхности; перезарядка V — "+days(1200L)+" Minecraft-дн. B — сохранённая цепочка трёх рассечений.","Five eruptions advance along the surface; V cooldown is "+days(1200L)+" Minecraft days. B uses the preserved three-slash combo.");
-        if(race==4&&suffix.startsWith("tier.short.")){int t=suffix.charAt(suffix.length()-1)-'0';return text("Уровень "+t+": "+number(RacePowerStages.eruptionDamage(t))+" урона, огонь "+days(RacePowerStages.fireSeconds(t)*20L)+" Minecraft-дн.", "Tier "+t+": "+number(RacePowerStages.eruptionDamage(t))+" damage, "+days(RacePowerStages.fireSeconds(t)*20L)+" Minecraft days of fire");}
+        if(race==4&&suffix.equals("spell.detail"))return text("Пять извержений идут вперёд по поверхности; перезарядка V — "+days(1200L)+" B — сохранённая цепочка трёх рассечений.","Five eruptions advance along the surface; V cooldown is "+days(1200L)+". B uses the preserved three-slash combo.");
+        if(race==4&&suffix.startsWith("tier.short.")){int t=suffix.charAt(suffix.length()-1)-'0';return text("Уровень "+t+": "+number(RacePowerStages.eruptionDamage(t))+" урона, огонь "+days(RacePowerStages.fireSeconds(t)*20L)+"", "Tier "+t+": "+number(RacePowerStages.eruptionDamage(t))+" damage, "+days(RacePowerStages.fireSeconds(t)*20L)+" of fire");}
         if(race==1&&suffix.equals("tier.short.1"))return text("I · дальность разлома 32 блока", "I · rift reach 32 blocks");
-        if(race==1&&suffix.equals("tier.short.2"))return text("II · замедление "+days(RacePowerStages.riftSlowTicks(2))+" Minecraft-дн., радиус 4", "II · slow "+days(RacePowerStages.riftSlowTicks(2))+" Minecraft days, radius 4");
-        if(race==1&&suffix.equals("tier.short.3"))return text("III · замедление "+days(RacePowerStages.riftSlowTicks(3))+" Minecraft-дн., радиус 8", "III · slow "+days(RacePowerStages.riftSlowTicks(3))+" Minecraft days, radius 8");
+        if(race==1&&suffix.equals("tier.short.2"))return text("II · замедление "+days(RacePowerStages.riftSlowTicks(2))+", радиус 4", "II · slow "+days(RacePowerStages.riftSlowTicks(2))+", radius 4");
+        if(race==1&&suffix.equals("tier.short.3"))return text("III · замедление "+days(RacePowerStages.riftSlowTicks(3))+", радиус 8", "III · slow "+days(RacePowerStages.riftSlowTicks(3))+", radius 8");
         if (race == 4 && suffix.equals("buff.detail.3")) return text("B выполняет три последовательных огненных рассечения с рывками вперёд.",
                 "B performs three successive fiery slashes with forward pulls.");
         if (race == 2) {
-            if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни удерживают врагов рядом на месте "+days(BloomMechanics.GRIP_TICKS)+" Minecraft-дн. Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Босса удерживает "+days(20L)+" Minecraft-дн., затем защищает от повторных корней "+days(160L)+" Minecraft-дн. В базе цель может атаковать; I блокирует действия, II добавляет сжатие, III — яд после освобождения.",
-                    "Roots hold nearby enemies in place for "+days(BloomMechanics.GRIP_TICKS)+" Minecraft days. Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Bosses are held for "+days(20L)+" Minecraft days, followed by "+days(160L)+" Minecraft days of shared root protection. Base targets can attack; I locks actions, II adds constriction, III adds poison after release.");
+            if (suffix.equals("spell.detail") || suffix.equals("buff.detail.1")) return text("Корни удерживают врагов рядом на месте "+days(BloomMechanics.GRIP_TICKS)+" Первое попадание: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Босса удерживает "+days(20L)+", затем защищает от повторных корней "+days(160L)+" В базе цель может атаковать; I блокирует действия, II добавляет сжатие, III — яд после освобождения.",
+                    "Roots hold nearby enemies in place for "+days(BloomMechanics.GRIP_TICKS)+". Initial hit: "+number(BloomMechanics.INITIAL_DAMAGE)+" HP. Bosses are held for "+days(20L)+", followed by "+days(160L)+" of shared root protection. Base targets can attack; I locks actions, II adds constriction, III adds poison after release.");
             if (suffix.equals("tier.short.1")) return text("I · доступна блокировка действий", "I · action lock available");
             if (suffix.equals("tier.short.2")) return text("II · сжатие "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/с", "II · constriction "+number(BloomMechanics.SQUEEZE_DAMAGE)+" HP/s");
             if (suffix.equals("tier.short.3")) return text("III · яд после освобождения", "III · poison after release");

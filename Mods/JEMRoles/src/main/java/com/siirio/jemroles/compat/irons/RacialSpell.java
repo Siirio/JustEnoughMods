@@ -49,7 +49,7 @@ public final class RacialSpell extends AbstractSpell {
         RacialSpellBridge.syncCooldown(player);
         long remaining = com.siirio.jemvisualsandbox.workbench.RaceExperience.remaining(player, "signature");
         if (remaining > 0) return new CastResult(CastResult.Type.FAILURE,
-                Component.translatable("jem.roles.cooldown", com.siirio.jemidentity.api.MinecraftDays.format(remaining)));
+                Component.translatable("jem.roles.cooldown", com.siirio.jemidentity.api.MinecraftDays.duration(remaining)));
         return super.canBeCastedBy(spellLevel, source, data, entity);
     }
 

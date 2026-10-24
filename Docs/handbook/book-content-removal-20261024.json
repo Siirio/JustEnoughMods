@@ -3,7 +3,7 @@
   "timezone": "Asia/Yekaterinburg",
   "request": "Remove all advancement content from the JEM book and remove Mechanics tab",
   "scope": "Patchouli JEM handbook only, independent FTB quests and gameplay advancements preserved",
-  "status": "source_built_synchronized_and_published_client_application_deferred",
+  "status": "source_built_synchronized_published_and_native_client_application_complete",
   "user_requested": [
     "Remove book advancements",
     "Remove Mechanics tab"
@@ -73,12 +73,15 @@
     "deleted": 0
   },
   "test_jem": {
-    "installed_token_at_receipt": "87e9a3eab4e59c1817ee975aa8f46c4b8f1469cc",
-    "matches_published_head": false,
-    "application_status": "deferred_until_user_closes_running_Minecraft",
-    "user_response": "Will close later",
+    "installed_token_at_receipt": "6328a55f85073a49345df2cae284626ee190fba9",
+    "matches_published_head": true,
+    "application_status": "applied_with_player_feedback_generation_73",
+    "user_response": "Minecraft closed, user requested final update",
     "native_application_attempted_while_running": false,
-    "ready_with_new_book": false
+    "ready_with_new_book": true,
+    "previous_application_status": "deferred_until_user_closes_running_Minecraft",
+    "applied_publication_sequence": 73,
+    "pendingTransaction": false
   },
   "atlas": {
     "full_regeneration": true,

@@ -64,12 +64,6 @@
         "after": "Confirmed death native snapshot/epoch journal before loot, narrow exceptional byproduct and competing-respawn adapters, same UUID/whole multipart chain recovered, pending retained until every real native chunk write and flush completes before ordinary simulation resumes"
       },
       {
-        "property": "companions.safe_spawn",
-        "operation": "derive",
-        "before": "No shelter spawn search",
-        "after": "Shared interior/external/above-buried loaded-only8-horizontal/32-up/8-down search checks complete native body bounds, ground support or native water/lava/air habitat and protections, with no size eligibility gate"
-      },
-      {
         "property": "companions.owner_teleport",
         "operation": "set",
         "before": "Native cats/wolves can teleport to owner",
@@ -110,6 +104,12 @@
         "operation": "set",
         "before": "Two functional shelter registrations without final integrated house art or exported collision resource",
         "after": "Two native editable houses with44/47 cuboids, one128x64 atlas each, static baked cell models and model-derived collision. Continuous walls close board gaps. Native Java UVs and legal single-axis roof rotations retained. Solid slopes and triangular gables use conservative two-model-unit collision stairs. Production JAR and reobfuscation succeeded. User explicitly deferred local publication/application, runtime and performance acceptance remain unobserved"
+      },
+      {
+        "property": "companions.safe_spawn",
+        "operation": "replace",
+        "before": "Interior preferred for every size whenever full native collision permits",
+        "after": "Body height above1 block requires entire relocated body horizontally disjoint from the whole rotated home footprint, including roof columns. Small pets retain interior-first. Shared loaded-only full-body habitat/support/claims8-horizontal32-up8-down search and pending payload retained"
       }
     ]
   },
@@ -342,6 +342,15 @@
         "Mods/MobHome/src/main/java/com/siirio/mobhome/mixin/shelter/pack/EmberPoleTransientMixin.java",
         "Client/ManagedPack/mods/mobhome-1.0.0.jar"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "player_feedback_20261024",
+      "summary": "All recovery triggers and retries place tall pets next to the home, with full native clearance and durable recovery preserved",
+      "source_files": [
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterRecovery.java"
+      ]
     }
   ],
   "impacts": {
@@ -364,7 +373,8 @@
     "notes": [
       "118 source entries:14 vanilla,30 Alex and74 other pack entries. Recruits explicitly excluded. Four overbroad candidates identified by the prior audit removed. Mod-presence gating happens before optional Mixin API linking, common adapters use native types and exact class-name strings only",
       "Registry/channel namespace now mobhome. Legacy jem_companions journal filename and serialized fields intentionally retained, without a JEM dependency. No JEM shelter runtime was previously installed in this task",
-      "Old jemcompat shelter registry partitions are historical source evidence, not aliases or newly registered mobhome facts. Refresh static Atlas from final installed artifacts and actual source registrations. Do not fabricate dynamic registration or runtime acceptance."
+      "Old jemcompat shelter registry partitions are historical source evidence, not aliases or newly registered mobhome facts. Refresh static Atlas from final installed artifacts and actual source registrations. Do not fabricate dynamic registration or runtime acceptance.",
+      "2026-10-24 player feedback: All recovery triggers and retries place tall pets next to the home, with full native clearance and durable recovery preserved Player acceptance remains in testing"
     ],
     "unresolved": [
       "Final model packaging, both-side artifact installation and native publication must finish before delivery is recorded. Day/season icons remain independently user-owned and default disabled in JEMCompat, outside this shelter owner",

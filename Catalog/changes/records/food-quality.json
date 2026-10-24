@@ -21,7 +21,7 @@
   "exceptions": [],
   "conditions": [
     {
-      "runtime": "Logical server, confirmed native edible consumption or scoped hunger-plus-portion receipt, no creative/spectator award",
+      "runtime": "Logical server, confirmed native edible consumption or scoped hunger-plus-portion receipt in Survival or Creative, no spectator award",
       "confidence": "source_review_and_production_packaging_not_player_acceptance"
     }
   ],
@@ -67,6 +67,18 @@
           "preferred_bridges": "unverified, explicit vanilla fallback",
           "lifecycle": "clear blessing, preserve dietary timestamps and cooldowns"
         }
+      },
+      {
+        "property": "food.creative_completed_consumption",
+        "operation": "replace",
+        "before": "Creative rejected before blessing creation",
+        "after": "Creative and Survival genuine native completed consumption admitted, spectators rejected, placed-food receipt unchanged, creative XP anti-farming unchanged"
+      },
+      {
+        "property": "food.tooltip_presentation",
+        "operation": "replace",
+        "before": "Bare category/trait names, dormant preferred bridge, replacement warning, fractional-day display",
+        "after": "Explicit category and each blessing name with actual tier-specific explanation, native live FoodProperties and stew NBT effects with amplifier/chance/adaptive duration, no replacement warning"
       }
     ]
   },
@@ -94,6 +106,7 @@
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/JEMFood.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/PlacedConsumption.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/BlessingPresentation.java",
+      "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTooltips.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/EffectScreenMixin.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/ExhaustionMixin.java",
@@ -102,6 +115,7 @@
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/GameModeMixin.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/LivingEffectMixin.java",
       "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/PoisonMixin.java",
+      "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/SuspiciousStewAccessor.java",
       "Mods/JEMFood/src/main/resources/META-INF/mods.toml",
       "Mods/JEMFood/src/main/resources/assets/jemfood/lang/en_us.json",
       "Mods/JEMFood/src/main/resources/assets/jemfood/lang/ru_ru.json",
@@ -218,6 +232,23 @@
         "Mods/JEMFood/src/main/resources/pack.mcmeta",
         "tools/module-inventory.json"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "player_feedback_20261024",
+      "summary": "Creative completed consumption now creates Food Blessing using its existing icon, all authored/native food effect details shown",
+      "source_files": [
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodState.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/PlacedConsumption.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTooltips.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/BlessingPresentation.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/mixin/SuspiciousStewAccessor.java",
+        "Mods/JEMFood/src/main/resources/jemfood.mixins.json",
+        "Mods/JEMFood/src/main/resources/assets/jemfood/lang/ru_ru.json",
+        "Mods/JEMFood/src/main/resources/assets/jemfood/lang/en_us.json"
+      ]
     }
   ],
   "impacts": {
@@ -244,7 +275,8 @@
     "notes": [
       "Five most recent eligible IDs suffice for threshold state",
       "Native Resistance is a separate short-lived bridge as explicitly specified",
-      "One already-earned Second Wind proc may outlive elevated-meal replacement without stacking"
+      "One already-earned Second Wind proc may outlive elevated-meal replacement without stacking",
+      "2026-10-24 player feedback: Creative completed consumption now creates Food Blessing using its existing icon, all authored/native food effect details shown Player acceptance remains in testing"
     ],
     "unresolved": [
       "No automated tests or gameplay/client launches under project policy",
