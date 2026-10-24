@@ -5,7 +5,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import java.util.UUID;
 
-/** Session authorization only; boss arenas have no movement boundary. */
+/** Server-owned participant admission and arena containment. */
 public final class HostedBoundary {
     public static boolean authorized(ServerPlayer player, PartyState party) {
         var serverForMutation = player.server;
@@ -49,12 +49,71 @@ public final class HostedBoundary {
         return token != null && current != null && current.equals(token);
     }
 
-    public static boolean canForfeit(ServerPlayer player, PartyState party) {
-        return authorized(player, party);
+    public static boolean passable(ServerPlayer player, PartyState party) {
+        return authorized(player, party) && !party.member(player.getUUID()).arenaEntered();
     }
 
-    public static void clearParty(PartyState party) {}
-    public static void clear(UUID player) {}
-    public static void clear() {}
+    static boolean locked(ServerPlayer player, PartyState party) {
+        return authorized(player, party) && party.member(player.getUUID()).arenaEntered();
+    }
+
+    public static void observe(ServerPlayer player, PartyState party, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        if (!authorized(player, party)) return;
+        var box = SolidBoundary.movementBox(player);
+        if (box.minX < bounds.minX() || box.maxX > bounds.maxX()+1D
+                || box.minY < bounds.minY() || box.maxY > bounds.maxY()+1D
+                || box.minZ < bounds.minZ() || box.maxZ > bounds.maxZ()+1D) return;
+        var store = SmpData.get(player.server);
+        store.edit(() -> {
+            var current = store.parties().bind(party);
+            current.member(player.getUUID()).arenaEntered(true);
+        });
+        prompt(player, party, bounds);
+    }
+
+    private static final java.util.Map<UUID, Long> NEXT_PROMPT = new java.util.HashMap<>();
+    private static final java.util.Map<UUID, Long> FORFEIT_UNTIL = new java.util.HashMap<>();
+
+    private static void prompt(ServerPlayer player, PartyState party, net.minecraft.world.level.levelgen.structure.BoundingBox bounds) {
+        if (distanceToEdge(bounds, player.position()) > 4D) return;
+        long now = player.serverLevel().getGameTime();
+        if (now < NEXT_PROMPT.getOrDefault(player.getUUID(), 0L)) return;
+        boolean leader = party.owner().equals(player.getUUID());
+        UUID token = actionToken(player.server, party);
+        if (leader && token == null) return;
+        String command = leader ? "/smp forfeit " + party.id() + " " + token : "/smp encounter-leave " + party.id();
+        player.sendSystemMessage(net.minecraft.network.chat.Component.translatable(leader ? "jem.event.boundary_forfeit_question" : "jem.event.boundary_leave_question")
+                .withStyle(net.minecraft.ChatFormatting.GOLD).append(" ")
+                .append(net.minecraft.network.chat.Component.translatable(leader ? "jem.event.boundary_forfeit_confirm" : "jem.event.boundary_leave_confirm")
+                        .withStyle(style -> style.withColor(net.minecraft.ChatFormatting.RED).withBold(true)
+                                .withClickEvent(new net.minecraft.network.chat.ClickEvent(net.minecraft.network.chat.ClickEvent.Action.RUN_COMMAND, command))
+                                .withHoverEvent(new net.minecraft.network.chat.HoverEvent(net.minecraft.network.chat.HoverEvent.Action.SHOW_TEXT,
+                                        net.minecraft.network.chat.Component.translatable(leader ? "jem.event.boundary_forfeit_warning" : "jem.event.boundary_leave_warning"))))));
+        NEXT_PROMPT.put(player.getUUID(), now + 60L);
+        FORFEIT_UNTIL.put(player.getUUID(), now + 100L);
+    }
+
+    private static double distanceToEdge(net.minecraft.world.level.levelgen.structure.BoundingBox bounds, net.minecraft.world.phys.Vec3 position) {
+        return Math.min(Math.min(position.x - bounds.minX(), bounds.maxX()+1D-position.x),
+                Math.min(position.z-bounds.minZ(), bounds.maxZ()+1D-position.z));
+    }
+
+    public static boolean canForfeit(ServerPlayer player, PartyState party) {
+        if (!locked(player, party) || !party.hasStructureBounds()
+                || !party.dimension().equals(player.level().dimension().location().toString())) return false;
+        var saved = party.structureBounds();
+        var bounds = StructureStaging.arenaShell(new net.minecraft.world.level.levelgen.structure.BoundingBox(
+                saved.minX(), saved.minY(), saved.minZ(), saved.maxX(), saved.maxY(), saved.maxZ()));
+        var box = SolidBoundary.movementBox(player);
+        if (box.minX < bounds.minX() || box.maxX > bounds.maxX()+1D
+                || box.minY < bounds.minY() || box.maxY > bounds.maxY()+1D
+                || box.minZ < bounds.minZ() || box.maxZ > bounds.maxZ()+1D) return false;
+        return distanceToEdge(bounds, player.position()) <= 4D
+                || player.serverLevel().getGameTime() <= FORFEIT_UNTIL.getOrDefault(player.getUUID(), 0L);
+    }
+
+    public static void clearParty(PartyState party) { SmpRecords.memberIds(party).forEach(HostedBoundary::clear); }
+    public static void clear(UUID player) { NEXT_PROMPT.remove(player); FORFEIT_UNTIL.remove(player); }
+    public static void clear() { NEXT_PROMPT.clear(); FORFEIT_UNTIL.clear(); }
     private HostedBoundary() {}
 }

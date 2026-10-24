@@ -297,6 +297,22 @@ public final class StructureStaging {
     }
 
     private static boolean finishRaidExit(ServerPlayer player, PartyState party, PartyMember member) {
+        if (!player.isAlive()) return false;
+        ResourceLocation dimension = ResourceLocation.tryParse(party.dimension());
+        ServerLevel level = dimension == null ? null : player.server.getLevel(net.minecraft.resources.ResourceKey.create(Registries.DIMENSION, dimension));
+        var saved = party.structureBounds();
+        if (level == null || saved == null) {
+            if (!PartyTeleportFlow.forceReturn(player, party)) return false;
+        } else {
+            BoundingBox shell = arenaShell(new BoundingBox(saved.minX(), saved.minY(), saved.minZ(), saved.maxX(), saved.maxY(), saved.maxZ()));
+            boolean insideArena = player.serverLevel() == level && SolidBoundary.movementBox(player).intersects(
+                    new AABB(shell.minX(), shell.minY(), shell.minZ(), shell.maxX()+1D, shell.maxY()+1D, shell.maxZ()+1D));
+            if (insideArena) {
+                BlockPos destination = safeOutside(player, level, shell, player.blockPosition());
+                if (destination != null) teleport(player, level, destination);
+                else if (!PartyTeleportFlow.forceReturn(player, party)) return false;
+            }
+        }
         member.clearRaidArenaExitPending();
         PartyTeleportFlow.clearMember(party, player.getUUID());
         return true;
@@ -420,7 +436,11 @@ public final class StructureStaging {
     }
 
     static BlockPos safeOutside(ServerPlayer player,ServerLevel level,BoundingBox bounds,BlockPos origin) {
-        return safeExit(level,bounds,origin,position->safeOutside(player,level,position));
+        return safeExit(level,bounds,origin,position -> {
+            AABB target = SolidBoundary.destinationBox(player, Vec3.atBottomCenterOf(position));
+            AABB arena = new AABB(bounds.minX()-.25D, bounds.minY(), bounds.minZ()-.25D, bounds.maxX()+1.25D, bounds.maxY()+1D, bounds.maxZ()+1.25D);
+            return !target.intersects(arena) && safeOutside(player,level,position);
+        });
     }
 
     static BlockPos outsideAnchor(BoundingBox bounds, BlockPos origin) {
@@ -568,6 +588,7 @@ public final class StructureStaging {
                 .forEach(candidate -> Landmarks.publishBoss(player.server, candidate.id(), candidate.boss(), player.level().dimension().location(), candidate.center(), candidate.bounds()));
         if (area == null) { INSIDE.remove(player.getUUID()); return; }
         PartyState activeParty = party(player.serverLevel(), area.id());
+        if (activeParty != null) HostedBoundary.observe(player, activeParty, area.shell());
         UUID before = INSIDE.put(player.getUUID(), area.id());
         if (!area.id().equals(before)) {
             PartyState row = party(player.serverLevel(), area.id());
@@ -628,7 +649,7 @@ public final class StructureStaging {
     }
 
     private static boolean guarded(ServerLevel level, Area area) {
-        if (party(level, area.id()) != null) return true;
+        if (party(level, area.id()) != null || physicallyLocked(level, area)) return true;
         Presence presence = PRESENCE.get(area.id());
         long tick = level.getGameTime();
         if (presence == null || presence.tick() != tick) {
@@ -660,14 +681,88 @@ public final class StructureStaging {
     }
 
     private static List<ServerPlayer> blockers(ServerLevel level, Area area, Set<UUID> participants) {
-        return List.of();
+        return level.players().stream()
+                .filter(player -> player.isAlive() && !player.isSpectator() && !player.hasPermissions(2))
+                .filter(player -> !participants.contains(player.getUUID()) && SolidBoundary.movementBox(player).intersects(
+                        new AABB(area.bounds().minX(), area.bounds().minY(), area.bounds().minZ(), area.bounds().maxX()+1D, area.bounds().maxY()+1D, area.bounds().maxZ()+1D)))
+                .toList();
     }
 
+    public static List<EventBoundary> boundaries(ServerPlayer player) {
+        List<EventBoundary> result = new ArrayList<>();
+        if (!SmpEnvironment.active(player)) return result;
+        for (Area area : AREAS.values()) {
+            if (!area.dimension().equals(player.level().dimension().location().toString())) continue;
+            var bounds = area.shell();
+            double distance = area.distance(player.position());
+            if (distance > EventRules.BOUNDARY_DISTANCE.get() || !guarded(player.serverLevel(), area)) continue;
+            PartyState row = party(player.serverLevel(), area.id());
+            boolean passable = row != null && HostedBoundary.passable(player, row);
+            result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
+                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), passable));
+            if (result.size() >= BOUNDARY_LIMIT) break;
+        }
+        return result;
+    }
 
+    public static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity) {
+        return solidBoundaries(entity, null);
+    }
 
+    static List<EventBoundary> solidBoundaries(net.minecraft.world.entity.Entity entity, AABB query) {
+        if (!(entity.level() instanceof ServerLevel level) || !SmpEnvironment.active(level.getServer()) || entity.isSpectator()) return List.of();
+        List<EventBoundary> result = new ArrayList<>();
+        for (Area area : AREAS.values()) {
+            if (!area.dimension().equals(level.dimension().location().toString())) continue;
+            BoundingBox bounds = area.shell();
+            if (query != null && (query.maxX < bounds.minX() - SolidBoundary.WALL_THICKNESS || query.minX > bounds.maxX() + 1D + SolidBoundary.WALL_THICKNESS
+                    || query.maxZ < bounds.minZ() - SolidBoundary.WALL_THICKNESS || query.minZ > bounds.maxZ() + 1D + SolidBoundary.WALL_THICKNESS
+                    || query.maxY < bounds.minY() || query.minY > bounds.maxY() + 1D)) continue;
+            if (!guarded(level, area)) continue;
+            List<ServerPlayer> players = SolidBoundary.players(entity);
+            PartyState row = party(level, area.id());
+            boolean passable = row != null && !players.isEmpty() && players.stream().allMatch(player -> HostedBoundary.passable(player, row));
+            if (!passable) result.add(SolidBoundary.boundary(area.id(), area.dimension(), bounds.minX(), bounds.minZ(), bounds.maxX(), bounds.maxZ(),
+                    bounds.minY(), bounds.maxY(), EventRules.RAID_COLOR.get(), false));
+        }
+        return result;
+    }
 
-
-
+    static BossTeleportSafety.Decision safeTeleport(ServerPlayer player, ServerLevel level, Vec3 requested) {
+        if (!SmpEnvironment.active(player)) return BossTeleportSafety.Decision.unmatched();
+        discover(level, BlockPos.containing(requested));
+        AABB source = SolidBoundary.movementBox(player);
+        AABB destination = SolidBoundary.destinationBox(player, requested);
+        for (Area area : AREAS.values()) {
+            ServerLevel areaLevel = level(player.server, area);
+            if (areaLevel == null) continue;
+            BoundingBox shell = area.shell();
+            EventBoundary boundary = SolidBoundary.boundary(area.id(), area.dimension(), shell.minX(), shell.minZ(), shell.maxX(), shell.maxZ(),
+                    shell.minY(), shell.maxY(), EventRules.RAID_COLOR.get(), false);
+            boolean sourceInside = player.serverLevel() == areaLevel && SolidBoundary.contains(source, boundary);
+            boolean destinationInside = level == areaLevel && SolidBoundary.contains(destination, boundary);
+            boolean destinationWall = level == areaLevel && SolidBoundary.intersectsWall(destination, boundary);
+            PartyState row = party(areaLevel, area.id());
+            if (!sourceInside && !destinationInside && !destinationWall && (row == null || !HostedBoundary.locked(player, row))) continue;
+            if (!guarded(areaLevel, area)) continue;
+            if (row != null && HostedBoundary.locked(player, row)) {
+                if (level != areaLevel) return BossTeleportSafety.Decision.redirect(null);
+                if (destinationInside && !destinationWall && level.noCollision(player, destination)) continue;
+                if (sourceInside && !SolidBoundary.intersectsWall(source, boundary) && areaLevel.noCollision(player, source))
+                    return BossTeleportSafety.Decision.redirect(player.position());
+                BlockPos respawn = RaidArenaApi.respawnPosition(player.server, area.id().toString(), area.boss()).orElse(null);
+                Vec3 recovery = respawn == null ? null : Vec3.atBottomCenterOf(respawn);
+                AABB recoveryBox = recovery == null ? null : SolidBoundary.destinationBox(player, recovery);
+                return BossTeleportSafety.Decision.redirect(recoveryBox != null && SolidBoundary.contains(recoveryBox, boundary)
+                        && !SolidBoundary.intersectsWall(recoveryBox, boundary) && areaLevel.noCollision(player, recoveryBox) ? recovery : null);
+            }
+            if (!destinationInside && !destinationWall) continue;
+            if (!destinationWall && row != null && HostedBoundary.authorized(player, row) && level.noCollision(player, destination)) continue;
+            BlockPos safe = safeExit(player, areaLevel, area, BlockPos.containing(requested));
+            return BossTeleportSafety.Decision.redirect(safe == null ? null : Vec3.atBottomCenterOf(safe));
+        }
+        return BossTeleportSafety.Decision.unmatched();
+    }
 
     private static boolean physicallyLocked(ServerLevel level, Area area) {
         return ModList.get().isLoaded("jem_twelve_eyes")&&com.siirio.jemtwelveeyes.api.CampaignApi.locked(level.getServer(),area.boss());
@@ -746,7 +841,7 @@ public final class StructureStaging {
     @SubscribeEvent
     public static void stopped(ServerStoppedEvent event) { AREAS.clear(); INSIDE.clear(); NEAR.clear(); PARTY_CACHE.clear(); PRESENCE.clear(); NATIVE_LOOKUPS.clear(); }
 
-    private static BoundingBox arenaShell(BoundingBox bounds) {
+    static BoundingBox arenaShell(BoundingBox bounds) {
         return new BoundingBox(bounds.minX()-1,bounds.minY(),bounds.minZ()-1,bounds.maxX()+1,bounds.maxY(),bounds.maxZ()+1);
     }
 

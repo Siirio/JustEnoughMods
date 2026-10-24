@@ -1,3 +1,7 @@
+# Backpack replacement —2026-10-24
+
+The user replaced Backpacked with Sophisticated Backpacks, Sophisticated Storage and Sophisticated Core. Their native interfaces and upgrades own current backpack/storage behavior. JEM no longer registers the former Workbench, Furnace or Auto Feed augments or Backpacked mixins. Starter supplies now use `sophisticatedbackpacks:backpack`. Existing Backpacked inventories and augment NBT are not converted. The following records describe retired implementation history.
+
 # Backpacked: direct Workbench augment
 
 Owner: JEMCompat feature/backpack and narrow mixin/backpack adapters around installed Backpacked3.0.9 / Framework0.8.0. No patched third-party JAR or replacement screen.

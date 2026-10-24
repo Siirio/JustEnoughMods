@@ -19,7 +19,9 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Aquamirae | `7.1.13` | Client + server |  |
 | Architectury | `9.2.14` | Client + server |  |
 | AutoModpack | `5.0.0-rc.1` | Client + server | Tweaked |
-| Backpacked | `3.0.9` | Client + server |  |
+| Sophisticated Backpacks | `3.26.14.2226` | Client + server | Native backpack replacement |
+| Sophisticated Storage | `1.5.9.2197` | Client + server | Native storage |
+| Sophisticated Core | `1.5.15.2427` | Client + server | Shared dependency |
 | BackToBed | `1.1.0` | Server | Removal pending the later release staging; absent from canonical managed client |
 | BadOptimizations | `2.4.1` | Client |  |
 | BaguetteLib | `2.0.5` | Client + server |  |

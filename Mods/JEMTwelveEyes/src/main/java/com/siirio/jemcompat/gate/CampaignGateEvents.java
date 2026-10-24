@@ -94,6 +94,38 @@ public final class CampaignGateEvents {
     }
 
     @SubscribeEvent
+    public static void blockLockedStructureEntry(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)
+                || player.level().isClientSide()
+                || player.tickCount % BARRIER_CHECK_INTERVAL != 0) {
+            return;
+        }
+        if (!player.server.isDedicatedServer() || !com.siirio.jemtwelveeyes.CampaignAvailability.gatesPortal(player.server)) return;
+        CampaignSavedData data = CampaignSavedData.get(player.server);
+        CampaignBarrierData barriers=CampaignBarrierData.get(player.server);
+        CampaignBarrierData.Barrier nearby=barriers.near(new CampaignBarrierData.ServerPlayerView(
+                player.level().dimension().location(),player.getX(),player.getY(),player.getZ()));
+        if(nearby!=null&&!data.unlocked(nearby.boss())) {
+            explain(player,nearby.boss(),true);
+            return;
+        }
+        for (CampaignBoss boss : CampaignBoss.values()) {
+            if (boss.prerequisites().isEmpty()
+                    || data.unlocked(boss)
+                    || !boss.dimension().equals(player.level().dimension().location())) {
+                continue;
+            }
+            TagKey<Structure> structures = TagKey.create(Registries.STRUCTURE, boss.structureTag());
+            StructureStart start = player.serverLevel().structureManager().getStructureWithPieceAt(player.blockPosition(), structures);
+            if (!start.isValid()) {
+                continue;
+            }
+            explain(player,boss,true);
+            return;
+        }
+    }
+
+    @SubscribeEvent
     public static void installLockedStructureBarrier(ChunkEvent.Load event) {
         if (!(event.getLevel() instanceof ServerLevel level)) {
             return;

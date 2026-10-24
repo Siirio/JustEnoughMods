@@ -1,11 +1,19 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "b5c16f87a0bbf09ecb4393f3008695006dee33af",
+  "snapshot_sha": "e455405c1a6485759f702322a67a524e87ecba22",
   "tags": {
     "accessories:item/belt": [
       "minecraft:lantern",
       "minecraft:soul_lantern",
       "minecraft:spyglass"
+    ],
+    "accessories:items/back": [
+      "sophisticatedbackpacks:backpack",
+      "sophisticatedbackpacks:copper_backpack",
+      "sophisticatedbackpacks:diamond_backpack",
+      "sophisticatedbackpacks:gold_backpack",
+      "sophisticatedbackpacks:iron_backpack",
+      "sophisticatedbackpacks:netherite_backpack"
     ],
     "accessories:items/belt": [
       "minecraft:lantern",
@@ -6283,6 +6291,13 @@
     "candlelight:items/white_effect": [
       "#vinery:white_wine"
     ],
+    "carryon:blocks/block_blacklist": [
+      "sophisticatedbackpacks:backpack",
+      "sophisticatedbackpacks:diamond_backpack",
+      "sophisticatedbackpacks:gold_backpack",
+      "sophisticatedbackpacks:iron_backpack",
+      "sophisticatedbackpacks:netherite_backpack"
+    ],
     "cataclysm:blocks/altar_destroy_immune": [
       "cataclysm:altar_of_abyss",
       "cataclysm:altar_of_amethyst",
@@ -9970,6 +9985,14 @@
       "minecraft:lantern",
       "minecraft:soul_lantern"
     ],
+    "curios:items/back": [
+      "sophisticatedbackpacks:backpack",
+      "sophisticatedbackpacks:copper_backpack",
+      "sophisticatedbackpacks:diamond_backpack",
+      "sophisticatedbackpacks:gold_backpack",
+      "sophisticatedbackpacks:iron_backpack",
+      "sophisticatedbackpacks:netherite_backpack"
+    ],
     "curios:items/belt": [
       "beachparty:bikini",
       "beachparty:rubber_ring_axolotl",
@@ -11920,7 +11943,16 @@
     ],
     "forge:blocks/barrels": [
       "alexscaves:metal_barrel",
-      "alexscaves:rusty_barrel"
+      "alexscaves:rusty_barrel",
+      "sophisticatedstorage:barrel",
+      "sophisticatedstorage:copper_barrel",
+      "sophisticatedstorage:diamond_barrel",
+      "sophisticatedstorage:gold_barrel",
+      "sophisticatedstorage:iron_barrel",
+      "sophisticatedstorage:netherite_barrel"
+    ],
+    "forge:blocks/barrels/wooden": [
+      "sophisticatedstorage:barrel"
     ],
     "forge:blocks/bookshelves": [
       "#blueprint:wooden_bookshelves",
@@ -12006,6 +12038,14 @@
       "minecraft:warped_fungus",
       "minecraft:warped_pressure_plate",
       "minecraft:white_tulip"
+    ],
+    "forge:blocks/chests": [
+      "sophisticatedstorage:chest",
+      "sophisticatedstorage:copper_chest",
+      "sophisticatedstorage:diamond_chest",
+      "sophisticatedstorage:gold_chest",
+      "sophisticatedstorage:iron_chest",
+      "sophisticatedstorage:netherite_chest"
     ],
     "forge:blocks/chests/trapped": [
       "#blueprint:wooden_trapped_chests"
@@ -12336,6 +12376,9 @@
       "create:chocolate",
       "create:flowing_chocolate"
     ],
+    "forge:fluids/experience": [
+      "sophisticatedcore:xp_still"
+    ],
     "forge:fluids/honey": [
       "create:flowing_honey",
       "create:honey"
@@ -12450,6 +12493,17 @@
       "skarrier_mobs:invulnerite_axe",
       "skarrier_mobs:resisteel_axe"
     ],
+    "forge:items/barrels": [
+      "sophisticatedstorage:barrel",
+      "sophisticatedstorage:copper_barrel",
+      "sophisticatedstorage:diamond_barrel",
+      "sophisticatedstorage:gold_barrel",
+      "sophisticatedstorage:iron_barrel",
+      "sophisticatedstorage:netherite_barrel"
+    ],
+    "forge:items/barrels/wooden": [
+      "sophisticatedstorage:barrel"
+    ],
     "forge:items/berries": [
       "kaleidoscope_end:dream_berry",
       "minecraft:glow_berries",
@@ -12492,6 +12546,14 @@
     ],
     "forge:items/butter": [
       "farm_and_charm:butter"
+    ],
+    "forge:items/chests": [
+      "sophisticatedstorage:chest",
+      "sophisticatedstorage:copper_chest",
+      "sophisticatedstorage:diamond_chest",
+      "sophisticatedstorage:gold_chest",
+      "sophisticatedstorage:iron_chest",
+      "sophisticatedstorage:netherite_chest"
     ],
     "forge:items/chests/trapped": [
       "#blueprint:wooden_trapped_chests"
@@ -22574,7 +22636,49 @@
       "minecraft:gilded_blackstone",
       "minecraft:gold_block",
       "minecraft:raw_gold_block",
-      "minecraft:trapped_chest"
+      "minecraft:trapped_chest",
+      "sophisticatedstorage:barrel",
+      "sophisticatedstorage:chest",
+      "sophisticatedstorage:copper_barrel",
+      "sophisticatedstorage:copper_chest",
+      "sophisticatedstorage:copper_shulker_box",
+      "sophisticatedstorage:diamond_barrel",
+      "sophisticatedstorage:diamond_chest",
+      "sophisticatedstorage:diamond_shulker_box",
+      "sophisticatedstorage:gold_barrel",
+      "sophisticatedstorage:gold_chest",
+      "sophisticatedstorage:gold_shulker_box",
+      "sophisticatedstorage:iron_barrel",
+      "sophisticatedstorage:iron_chest",
+      "sophisticatedstorage:iron_shulker_box",
+      "sophisticatedstorage:limited_barrel_1",
+      "sophisticatedstorage:limited_barrel_2",
+      "sophisticatedstorage:limited_barrel_3",
+      "sophisticatedstorage:limited_barrel_4",
+      "sophisticatedstorage:limited_copper_barrel_1",
+      "sophisticatedstorage:limited_copper_barrel_2",
+      "sophisticatedstorage:limited_copper_barrel_3",
+      "sophisticatedstorage:limited_copper_barrel_4",
+      "sophisticatedstorage:limited_diamond_barrel_1",
+      "sophisticatedstorage:limited_diamond_barrel_2",
+      "sophisticatedstorage:limited_diamond_barrel_3",
+      "sophisticatedstorage:limited_diamond_barrel_4",
+      "sophisticatedstorage:limited_gold_barrel_1",
+      "sophisticatedstorage:limited_gold_barrel_2",
+      "sophisticatedstorage:limited_gold_barrel_3",
+      "sophisticatedstorage:limited_gold_barrel_4",
+      "sophisticatedstorage:limited_iron_barrel_1",
+      "sophisticatedstorage:limited_iron_barrel_2",
+      "sophisticatedstorage:limited_iron_barrel_3",
+      "sophisticatedstorage:limited_iron_barrel_4",
+      "sophisticatedstorage:limited_netherite_barrel_1",
+      "sophisticatedstorage:limited_netherite_barrel_2",
+      "sophisticatedstorage:limited_netherite_barrel_3",
+      "sophisticatedstorage:limited_netherite_barrel_4",
+      "sophisticatedstorage:netherite_barrel",
+      "sophisticatedstorage:netherite_chest",
+      "sophisticatedstorage:netherite_shulker_box",
+      "sophisticatedstorage:shulker_box"
     ],
     "minecraft:blocks/hanging_signs": [
       "vinery:dark_cherry_hanging_sign"
@@ -23277,15 +23381,6 @@
       "aquamirae:painting_oxyhelium",
       "aquamirae:painting_tortured_soul",
       "aquamirae:wisteria_niveis",
-      "backpacked:acacia_backpack_shelf",
-      "backpacked:backpack_dock",
-      "backpacked:birch_backpack_shelf",
-      "backpacked:crimson_backpack_shelf",
-      "backpacked:dark_oak_backpack_shelf",
-      "backpacked:jungle_backpack_shelf",
-      "backpacked:oak_backpack_shelf",
-      "backpacked:spruce_backpack_shelf",
-      "backpacked:warped_backpack_shelf",
       "bakery:breadbox",
       "bakery:cabinet",
       "bakery:drawer",
@@ -24128,6 +24223,54 @@
       "snowyspirit:gingerbread_stairs",
       "snowyspirit:gingerbread_trapdoor",
       "somemoreblocks:carved_mushroom_stem",
+      "sophisticatedstorage:acacia_storage_connector",
+      "sophisticatedstorage:bamboo_storage_connector",
+      "sophisticatedstorage:barrel",
+      "sophisticatedstorage:birch_storage_connector",
+      "sophisticatedstorage:cherry_storage_connector",
+      "sophisticatedstorage:chest",
+      "sophisticatedstorage:copper_barrel",
+      "sophisticatedstorage:copper_chest",
+      "sophisticatedstorage:crimson_storage_connector",
+      "sophisticatedstorage:dark_oak_storage_connector",
+      "sophisticatedstorage:decoration_table",
+      "sophisticatedstorage:diamond_barrel",
+      "sophisticatedstorage:diamond_chest",
+      "sophisticatedstorage:gold_barrel",
+      "sophisticatedstorage:gold_chest",
+      "sophisticatedstorage:iron_barrel",
+      "sophisticatedstorage:iron_chest",
+      "sophisticatedstorage:jungle_storage_connector",
+      "sophisticatedstorage:limited_barrel_1",
+      "sophisticatedstorage:limited_barrel_2",
+      "sophisticatedstorage:limited_barrel_3",
+      "sophisticatedstorage:limited_barrel_4",
+      "sophisticatedstorage:limited_copper_barrel_1",
+      "sophisticatedstorage:limited_copper_barrel_2",
+      "sophisticatedstorage:limited_copper_barrel_3",
+      "sophisticatedstorage:limited_copper_barrel_4",
+      "sophisticatedstorage:limited_diamond_barrel_1",
+      "sophisticatedstorage:limited_diamond_barrel_2",
+      "sophisticatedstorage:limited_diamond_barrel_3",
+      "sophisticatedstorage:limited_diamond_barrel_4",
+      "sophisticatedstorage:limited_gold_barrel_1",
+      "sophisticatedstorage:limited_gold_barrel_2",
+      "sophisticatedstorage:limited_gold_barrel_3",
+      "sophisticatedstorage:limited_gold_barrel_4",
+      "sophisticatedstorage:limited_iron_barrel_1",
+      "sophisticatedstorage:limited_iron_barrel_2",
+      "sophisticatedstorage:limited_iron_barrel_3",
+      "sophisticatedstorage:limited_iron_barrel_4",
+      "sophisticatedstorage:limited_netherite_barrel_1",
+      "sophisticatedstorage:limited_netherite_barrel_2",
+      "sophisticatedstorage:limited_netherite_barrel_3",
+      "sophisticatedstorage:limited_netherite_barrel_4",
+      "sophisticatedstorage:mangrove_storage_connector",
+      "sophisticatedstorage:netherite_barrel",
+      "sophisticatedstorage:netherite_chest",
+      "sophisticatedstorage:oak_storage_connector",
+      "sophisticatedstorage:spruce_storage_connector",
+      "sophisticatedstorage:warped_storage_connector",
       "spawn:broad_grass",
       "spawn:date_sapling",
       "spawn:hamster_wheel",
@@ -28649,6 +28792,17 @@
       "sootychimneys:mud_brick_chimney",
       "sootychimneys:stone_brick_chimney",
       "sootychimneys:terracotta_chimney",
+      "sophisticatedstorage:controller",
+      "sophisticatedstorage:copper_shulker_box",
+      "sophisticatedstorage:diamond_shulker_box",
+      "sophisticatedstorage:gold_shulker_box",
+      "sophisticatedstorage:iron_shulker_box",
+      "sophisticatedstorage:netherite_shulker_box",
+      "sophisticatedstorage:shulker_box",
+      "sophisticatedstorage:storage_input",
+      "sophisticatedstorage:storage_io",
+      "sophisticatedstorage:storage_link",
+      "sophisticatedstorage:storage_output",
       "spawn:algal_reefstone",
       "spawn:algal_reefstone_slab",
       "spawn:algal_reefstone_stairs",
@@ -46487,6 +46641,54 @@
       "sootychimneys:dirty_mud_brick_chimney",
       "sootychimneys:dirty_stone_brick_chimney",
       "sootychimneys:dirty_terracotta_chimney"
+    ],
+    "sophisticatedstorage:items/all_storage": [
+      "sophisticatedstorage:barrel",
+      "sophisticatedstorage:chest",
+      "sophisticatedstorage:copper_barrel",
+      "sophisticatedstorage:copper_chest",
+      "sophisticatedstorage:copper_shulker_box",
+      "sophisticatedstorage:diamond_barrel",
+      "sophisticatedstorage:diamond_chest",
+      "sophisticatedstorage:diamond_shulker_box",
+      "sophisticatedstorage:gold_barrel",
+      "sophisticatedstorage:gold_chest",
+      "sophisticatedstorage:gold_shulker_box",
+      "sophisticatedstorage:iron_barrel",
+      "sophisticatedstorage:iron_chest",
+      "sophisticatedstorage:iron_shulker_box",
+      "sophisticatedstorage:limited_barrel_1",
+      "sophisticatedstorage:limited_barrel_2",
+      "sophisticatedstorage:limited_barrel_3",
+      "sophisticatedstorage:limited_barrel_4",
+      "sophisticatedstorage:limited_copper_barrel_1",
+      "sophisticatedstorage:limited_copper_barrel_2",
+      "sophisticatedstorage:limited_copper_barrel_3",
+      "sophisticatedstorage:limited_copper_barrel_4",
+      "sophisticatedstorage:limited_diamond_barrel_1",
+      "sophisticatedstorage:limited_diamond_barrel_2",
+      "sophisticatedstorage:limited_diamond_barrel_3",
+      "sophisticatedstorage:limited_diamond_barrel_4",
+      "sophisticatedstorage:limited_gold_barrel_1",
+      "sophisticatedstorage:limited_gold_barrel_2",
+      "sophisticatedstorage:limited_gold_barrel_3",
+      "sophisticatedstorage:limited_gold_barrel_4",
+      "sophisticatedstorage:limited_iron_barrel_1",
+      "sophisticatedstorage:limited_iron_barrel_2",
+      "sophisticatedstorage:limited_iron_barrel_3",
+      "sophisticatedstorage:limited_iron_barrel_4",
+      "sophisticatedstorage:limited_netherite_barrel_1",
+      "sophisticatedstorage:limited_netherite_barrel_2",
+      "sophisticatedstorage:limited_netherite_barrel_3",
+      "sophisticatedstorage:limited_netherite_barrel_4",
+      "sophisticatedstorage:netherite_barrel",
+      "sophisticatedstorage:netherite_chest",
+      "sophisticatedstorage:netherite_shulker_box",
+      "sophisticatedstorage:shulker_box"
+    ],
+    "sophisticatedstorage:items/base_tier_wooden_storage": [
+      "sophisticatedstorage:barrel",
+      "sophisticatedstorage:chest"
     ],
     "spawn:blocks/ant_resource": [
       "minecraft:dead_bush",

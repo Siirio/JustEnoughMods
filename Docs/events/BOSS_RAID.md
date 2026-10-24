@@ -4,21 +4,21 @@
 
 ## Universal ordinary Raid — 2026-10-22
 
-Dedicated solo/party Raid reuses the canonical hosted encounter and registered structural arena. Integrated/LAN and domain-only installations do not admit JEM Raid. Ordinary native bosses and World Tier remain independent. Server owns event admission; WorldBossTiers owns the canonical arena, frozen combat scaling and ordinary boss recovery. No second allowlist or barrier is introduced.
+Dedicated solo/party Raid reuses the canonical hosted encounter and registered structural arena. Integrated/LAN and domain-only installations do not admit JEM Raid. Ordinary native bosses and World Tier remain independent. Server owns event admission; WorldBossTiers owns the canonical arena, frozen combat scaling and ordinary boss recovery. No second allowlist is introduced. The explicit 2026-10-24 restoration reuses the ordinary shared structure-volume barrier
 
 ## Source update —2026-10-21
 
-In testing; runtime acceptance, artifact delivery and MineRENT deployment pending. The user's barrier removal applies to ordinary bosses, Campaign and Raid only. Blood Moon and Resource Rush retain their contracts. Participant departure is allowed physically; an empty arena closes through the canonical hosted grace lifecycle. Damage/reward membership and immediate elimination on actual death remain enforced.
+In testing; runtime acceptance, artifact delivery and MineRENT deployment pending. The user explicitly restores old visible walls, collision and teleport restrictions for ordinary bosses, Campaign and Raid on 2026-10-24. Blood Moon and Resource Rush retain their contracts. Active participants enter once and leave through the existing leave/forfeit or terminal safe-exit flow. An empty arena still closes through the canonical hosted grace lifecycle. Damage/reward membership and immediate elimination on actual death remain enforced.
 
 `HostedRaidScaling` removes its legacy preparation modifiers before deriving combined Raid/participant strength at Start. Preparation changes no stats or size. Retry removes exact owned modifiers; a failed Start restores its size change. Native percent-damage authority remains unchanged. These are source claims, not runtime measurements.
 
 An attempted hit on a dormant registered boss opens the existing encounter GUI and does not damage it or start combat. Reload restores noAI/invulnerability/presentation hold until Start. Official server boss/event markers can invoke validated native Xaero travel; personal waypoints are unchanged. See [Boss Fight](BOSS_FIGHT.md) for the common source contract.
 
-Authored Raid reinforcements are associated with the canonical hosted boss for damage authority, preserving outsider denial without a second participant owner. On load, a closed orphaned Raid boss restores normal dormant hold. Canonical Start independently rechecks Campaign prerequisites; free structure entry does not grant awakening or damage authorization. Legacy block cleanup is limited to exact retired JEM barrier IDs in known owned shell cells; no wider old-world migration is introduced.
+Authored Raid reinforcements are associated with the canonical hosted boss for damage authority, preserving outsider denial without a second participant owner. On load, a closed orphaned Raid boss restores normal dormant hold. Canonical Start independently rechecks Campaign prerequisites; barrier admission does not grant awakening or damage authorization. Legacy block cleanup is limited to exact retired JEM barrier IDs in known owned shell cells; no wider old-world migration is introduced.
 
 ## Primary state
 
-Boss Raid reuses the canonical registered arena, party, arrival/return flow and verified native spawn anchor without a visual, collision or teleport barrier. A legitimate living boss remains in place; an absent Raid boss may be restored only at its verified native anchor. Missing anchor evidence causes explicit refusal.
+Boss Raid reuses the canonical registered arena, party, arrival/return flow and verified native spawn anchor with the restored shared visual, collision and teleport barrier. A legitimate living boss remains in place; an absent Raid boss may be restored only at its verified native anchor. Missing anchor evidence causes explicit refusal.
 
 Фактическая смерть остаётся elimination текущей Raid attempt, но inventory, armor, offhand и Curios участника сохраняются на respawn без grave, пока смерть произошла внутри активной структурной арены. Вне активного Raid обычная death/grave policy не меняется.
 
@@ -53,7 +53,7 @@ Xaero не создаёт отдельную Raid-территорию: active R
 
 ## Hosted lifecycle repair — 2026-10-19
 
-Historical note: before2026-10-21, the shared boundary presence predicate controlled a boss virtual wall. That boss-wall policy is now superseded entirely; arena/revival identity remains canonical. Blood Moon/Resource Rush geometry is unchanged.
+Historical note: before2026-10-21, the shared boundary presence predicate controlled a boss virtual wall. That proven boss-wall policy is restored by the explicit 2026-10-24 request with the current typed state and ownership architecture, arena/revival identity remains canonical. Blood Moon/Resource Rush geometry is unchanged.
 
 Waiting-area immunity never applies to an ALIVE participant of another active hosted encounter. HostedEncounters owns that classification, preventing overlapping waiting bosses from canceling active boss damage. Held bosses skip their whole native entity tick at the physically dedicated ServerLevel dispatcher: NoAI alone cannot pause Bosses Rise custom combat/cinematics/bar/music. Start clears the existing hold marker and resumes native behavior; tracking still suppresses dormant bars. That 2026-10-19 source checkpoint excluded integrated singleplayer through JemServerMixinPlugin; the 2026-10-22 universal ownership section supersedes that distribution gate. Native phases, damage values, rewards and progression are unchanged.
 
@@ -61,6 +61,6 @@ The supplied crab crash is an obsolete BOSS prompt passed to EventEntryKind.valu
 
 ## Structural arena volume — 2026-10-19
 
-Historical geometry note: the2026-10-19 correction restricted structural boss walls to the native3D structure bounds. On2026-10-21 the user removed those boss walls entirely. Native structure bounds still classify arenas and safe positions; ordinary Blood Moon/Resource Rush walls remain full height.
+Historical geometry note: the2026-10-19 correction restricted structural boss walls to the native3D structure bounds. On 2026-10-21 the user removed those boss walls, then explicitly restored the prior logic on 2026-10-24. Native structure bounds still classify arenas and safe positions; ordinary Blood Moon/Resource Rush walls remain full height.
 
-Historical arenaEntered containment is superseded for structural bosses. Legacy entry flags must not restore a boss collision or teleport lock. Membership, progression, reward eligibility, native full-column boss lookup and revival retain their canonical owners.
+Restored arenaEntered containment is typed and persisted in PartyMember. Entry is accepted only after the complete player/vehicle box is inside the native three-dimensional structure. Old entry flags lacking the full-volume marker do not silently trap surface players. Membership, progression, reward eligibility, native full-column boss lookup and revival retain their canonical owners.

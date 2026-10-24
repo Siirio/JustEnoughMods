@@ -25,7 +25,7 @@ public final class EventBoundaryRenderer {
     private static boolean insideBloodMoon;
     private static List<EventBoundary> zones=List.of();
     public static void accept(EventZones packet) {
-        zones=packet.bounds().stream().filter(zone -> !zone.type().equals("BOSS_FIGHT") && !zone.type().equals("BOSS_RAID")).toList();
+        zones=List.copyOf(packet.bounds());
         com.siirio.jemserver.smp.events.SolidBoundary.clientZones(zones);
     }
     public static boolean bloodMoon() {

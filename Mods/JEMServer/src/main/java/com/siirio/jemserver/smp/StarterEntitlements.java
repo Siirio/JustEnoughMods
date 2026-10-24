@@ -55,8 +55,20 @@ final class StarterEntitlements extends SavedData {
             transfer.put("Items", row.getList("Remaining", Tag.TAG_COMPOUND).copy());
             row.put("RewardTransfer", transfer);
         }
+        replaceUnissuedBackpacks(row.getList("Remaining", Tag.TAG_COMPOUND));
+        replaceUnissuedBackpacks(row.getCompound("RewardTransfer").getList("Items", Tag.TAG_COMPOUND));
         flush(server);
         return row.getCompound("RewardTransfer").copy();
+    }
+
+    private static void replaceUnissuedBackpacks(ListTag items) {
+        for (Tag value : items) {
+            CompoundTag item = (CompoundTag) value;
+            if (item.getString("id").equals("backpacked:backpack")
+                    && (!item.contains("tag") || item.getCompound("tag").isEmpty())) {
+                item.putString("id", "sophisticatedbackpacks:backpack");
+            }
+        }
     }
 
     void completeTransfer(MinecraftServer server, UUID account) throws IOException {

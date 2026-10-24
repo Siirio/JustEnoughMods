@@ -35,7 +35,6 @@ public final class JEMCompat {
         MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.food.FoodEvents.class);
         com.siirio.jemcompat.feature.shelter.ShelterContent.register(modBus);
         com.siirio.jemcompat.feature.shelter.ShelterNetwork.register();
-        if (ModList.get().isLoaded("backpacked")) com.siirio.jemcompat.feature.backpack.BackpackContent.register(modBus);
         modBus.addListener(JEMCompat::creativeTabs);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JEMClientConfig.SPEC);
         MinecraftForge.EVENT_BUS.register(this);

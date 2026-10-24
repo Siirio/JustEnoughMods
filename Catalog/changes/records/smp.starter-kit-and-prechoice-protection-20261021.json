@@ -36,7 +36,7 @@
     {
       "type": "id",
       "registry": "items",
-      "value": "backpacked:backpack"
+      "value": "sophisticatedbackpacks:backpack"
     },
     {
       "type": "id",
@@ -76,15 +76,16 @@
             "minecraft:leather_chestplate": 1,
             "minecraft:leather_leggings": 1,
             "minecraft:leather_boots": 1,
-            "backpacked:backpack": 1,
-            "naturescompass:naturescompass": 1
+            "naturescompass:naturescompass": 1,
+            "sophisticatedbackpacks:backpack": 1
           },
           "scope": "Once per canonical verified account including existing players; no race wait after authentication.",
           "currency": "Existing20Gold grant, finite funding and receipt unchanged; no money regrant.",
           "delivery": "Inventory-first bounded insertion; undelivered remainder remains journaled, never drops or equips over worn items.",
           "durability": "Pending account operation -> native inventory+persisted player account/operation receipt save and exact readback -> remaining entitlement commit. Reconcile interrupted pending operations and copy receipt on death clone.",
           "failure": "Missing required native item/storage failure refuses completion; disconnect on unacknowledged inventory persistence failure.",
-          "status": "in testing; no runtime/delivery claimed"
+          "status": "in testing; no runtime/delivery claimed",
+          "backpack_replacement": "Exact empty unissued starter backpack NBT IDs are replaced before reward transfer. Delivered/custom-data inventories are not converted."
         }
       },
       {
@@ -168,6 +169,16 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NativePlayerFiles.java"
       ],
       "previous_owner": "JEMServer StarterWelcome and StarterKitData; existing native player save accessor"
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User replaces Backpacked with native Sophisticated Backpacks. Preserve once-only account quantity and receipts, substitute the unissued empty starter backpack only.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java"
+      ]
     }
   ],
   "impacts": {

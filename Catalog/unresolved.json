@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "b5c16f87a0bbf09ecb4393f3008695006dee33af",
+  "snapshot_sha": "e455405c1a6485759f702322a67a524e87ecba22",
   "entries": [
     {
       "type": "artifact_metadata",
@@ -339,19 +339,6 @@
     {
       "type": "dynamic_source_registration",
       "registry": "items",
-      "artifact": "jemcompat-3.7.0.jar",
-      "source": "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
-      "expressions": [
-        "AutoFeedAugment.TYPE.id()",
-        "FurnaceAugment.TYPE.id()",
-        "ModRegistries.AUGMENT_TYPES.getKey()",
-        "WorkbenchAugment.TYPE.id()"
-      ],
-      "reason": "Nonliteral registration IDs require their enum/helper/runtime evidence; source strings are not promoted as IDs"
-    },
-    {
-      "type": "dynamic_source_registration",
-      "registry": "items",
       "artifact": null,
       "source": "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/mirror/jemcurrency/CurrencyItems.java",
       "expressions": [
@@ -486,6 +473,28 @@
       "model": "assets/legendary_monsters/models/item/falling_cloud.json",
       "unbound_texture_parameters": [
         "1"
+      ],
+      "reason": "Parent template alone cannot prove an item registration"
+    },
+    {
+      "type": "parameterized_item_model",
+      "artifact": "sophisticatedstorage-1.20.1-1.5.9.2197.jar",
+      "model": "assets/sophisticatedstorage/models/item/storage_link.json",
+      "unbound_texture_parameters": [
+        "bottom",
+        "side",
+        "top"
+      ],
+      "reason": "Parent template alone cannot prove an item registration"
+    },
+    {
+      "type": "parameterized_item_model",
+      "artifact": "sophisticatedstorage-1.20.1-1.5.9.2197.jar",
+      "model": "assets/sophisticatedstorage/models/item/storage_link.json",
+      "unbound_texture_parameters": [
+        "bottom",
+        "side",
+        "top"
       ],
       "reason": "Parent template alone cannot prove an item registration"
     },

@@ -6,7 +6,7 @@
     "Когда: При первых запасах. Доступ к модулям рюкзака остаётся у его нативной системы.",
     "Рекомендуемый порядок свободный; награда соседа не требуется."
   ],
-  "icon": "backpacked:backpack",
+  "icon": "sophisticatedbackpacks:backpack",
   "group": "2EB54FCECCD0C28A",
   "order_index": 8,
   "default_quest_shape": "circle",
@@ -346,133 +346,6 @@
       "jem_required_mods": [],
       "jem_economy": false,
       "jem_dedicated_event": false
-    },
-    {
-      "id": "203CCE79C4E1E75C",
-      "title": "09.06 · Рюкзак растёт с тобой",
-      "subtitle": "Получить 1 рюкзак Backpacked.",
-      "description": [
-        "Что сделать: Получить 1 рюкзак Backpacked.",
-        "",
-        "Зачем: Native unlocks слотов/augment bays; без второго квестового XP-трека.",
-        "",
-        "Совет: Носи рюкзак и смотри родные задания/доступные bays. Прогресс, XP и выбор улучшений остаются у Backpacked; FTB их не начисляет.",
-        "",
-        "Награда: Новый рюкзак получает полезную домашнюю базу и место для хранения снаряжения."
-      ],
-      "icon": "backpacked:backpack",
-      "x": 2.52,
-      "y": 1.7,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "283C3604CA81661F",
-          "type": "item",
-          "item": "backpacked:backpack",
-          "count": 1,
-          "consume_items": false
-        }
-      ],
-      "rewards": [
-        {
-          "id": "267C9FD531239529",
-          "type": "jem_advancements:quest_item",
-          "item": "backpacked:backpack_dock",
-          "count": 1,
-          "claim_key": "H07.06/item/0",
-          "claim_reward_id": "267C9FD531239529",
-          "team_reward": false
-        },
-        {
-          "id": "2E333EBEE257A69B",
-          "type": "jem_advancements:quest_item",
-          "item": "backpacked:oak_backpack_shelf",
-          "count": 8,
-          "claim_key": "H07.06/item/1",
-          "claim_reward_id": "2E333EBEE257A69B",
-          "team_reward": false
-        },
-        {
-          "id": "2FBFCDB12987CCD7",
-          "type": "jem_advancements:quest_xp",
-          "xp": 32,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "H07.06",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "27B5144202AE253B",
-      "title": "09.11 · Док для рюкзака",
-      "subtitle": "Поставить 1 Backpack Dock.",
-      "description": [
-        "Что сделать: Поставить 1 Backpack Dock.",
-        "",
-        "Зачем: Интеграция рюкзака с хозяйственной логистикой.",
-        "",
-        "Совет: Док помогает соединить рюкзак с логистикой. Hopper Bridge на надетом рюкзаке изучай отдельно. Передача вещей и содержимое рюкзака не проверяются.",
-        "",
-        "Награда: Док получает второй походный набор для смены роли или товарища и запас провианта.",
-        "",
-        "Рекомендуемый путь: 09.06 · Рюкзак растёт с тобой. Порядок свободный."
-      ],
-      "icon": "backpacked:backpack_dock",
-      "x": 5.3,
-      "y": 3.55,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2263B13455620A8E",
-          "type": "custom",
-          "title": "Поставить 1 Backpack Dock.",
-          "icon": "backpacked:backpack_dock",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2BF624F29F64FFB6",
-          "type": "jem_advancements:quest_item",
-          "item": "backpacked:backpack",
-          "count": 1,
-          "claim_key": "H07.11/item/0",
-          "claim_reward_id": "2BF624F29F64FFB6",
-          "team_reward": false
-        },
-        {
-          "id": "2D683DB7CD5370D4",
-          "type": "jem_advancements:quest_item",
-          "item": "backpacked:spruce_backpack_shelf",
-          "count": 8,
-          "claim_key": "H07.11/item/1",
-          "claim_reward_id": "2D683DB7CD5370D4",
-          "team_reward": false
-        },
-        {
-          "id": "2A56211488B9D2ED",
-          "type": "jem_advancements:quest_item",
-          "item": "bakery:grilled_bacon_sandwich",
-          "count": 24,
-          "claim_key": "H07.11/item/2",
-          "claim_reward_id": "2A56211488B9D2ED",
-          "team_reward": false
-        },
-        {
-          "id": "2F6F97A2CE710E25",
-          "type": "jem_advancements:quest_xp",
-          "xp": 40,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "H07.11",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
     }
   ],
   "images": [
@@ -499,71 +372,6 @@
       "hover": [
         "рюкзак"
       ]
-    },
-    {
-      "x": 4.38,
-      "y": 1.7,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:H07.07",
-      "hover": [
-        "09.07 · Выбор улучшения: памятка",
-        "Справка: без награды и процента завершения"
-      ],
-      "order": 20
-    },
-    {
-      "x": 6.22,
-      "y": 1.7,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:H07.08",
-      "hover": [
-        "09.08 · Переносная мастерская: памятка",
-        "Справка: без награды и процента завершения"
-      ],
-      "order": 20
-    },
-    {
-      "x": 8.07,
-      "y": 1.7,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:H07.09",
-      "hover": [
-        "09.09 · Печь за спиной: памятка",
-        "Справка: без награды и процента завершения"
-      ],
-      "order": 20
-    },
-    {
-      "x": 3.45,
-      "y": 3.55,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:H07.10",
-      "hover": [
-        "09.10 · Еда в дороге: памятка",
-        "Справка: без награды и процента завершения"
-      ],
-      "order": 20
-    },
-    {
-      "x": 7.15,
-      "y": 3.55,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:H07.12",
-      "hover": [
-        "09.12 · Набор под своё занятие: памятка",
-        "Справка: без награды и процента завершения"
-      ],
-      "order": 20
     }
   ],
   "autofocus_id": "2B94EFD2AFAD5541"

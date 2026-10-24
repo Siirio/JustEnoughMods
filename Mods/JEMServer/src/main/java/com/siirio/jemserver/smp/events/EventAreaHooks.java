@@ -42,7 +42,7 @@ public final class EventAreaHooks {
         var before=INSIDE.getOrDefault(player.getUUID(),Set.of());
         var prompted=new HashSet<UUID>();
         var promptedBefore=PROMPTED.getOrDefault(player.getUUID(),Set.of());
-        var zones=new ArrayList<EventBoundary>();
+        var zones=new ArrayList<EventBoundary>(StructureStaging.boundaries(player));
         for(var row:EventScheduler.active(player.server)) {
             if(!row.hasRadius()) continue;
             String type=row.activity();UUID id=row.id();

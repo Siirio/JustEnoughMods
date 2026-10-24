@@ -6,11 +6,11 @@
 
 The same production domain JAR serves both host types. Dedicated WorldBossTiers owns dormant native hold, structure discovery and frozen participation/scaling; Server supplies its party/UI adapter. Without Server, dedicated ordinary solo admission remains available but Raid does not. Integrated bosses do not wait for the disabled hosted Start. Item rewards belong to JEMRewards; World Tier progression and Campaign prerequisites retain their existing owners.
 
-## Current source contract — 2026-10-21
+## Current source contract — 2026-10-24
 
 Status: source implementation / in testing. Runtime acceptance is unrun; artifact delivery, native AutoModpack installation and MineRENT deployment are pending.
 
-The user explicitly removes boss barriers entirely. Ordinary structural Boss Fight, Campaign and Boss Raid no longer create visible walls, collision shells, movement correction or teleport containment. Registered structure geometry still owns arena identity, discovery, safe positions, progression and encounter/reward classification; it is not a physical prison. Blood Moon and Resource Rush retain their separate approved walls and movement policies.
+The user explicitly restores the old barriers for all ordinary structural Boss Fight, Campaign and Boss Raid encounters, including visible walls, physical collision and teleport restrictions. The shared StructureStaging adapter reuses the proven virtual shell and filled-quad renderer with registered three-dimensional structure geometry. Authorized active participants can enter once, then the server persists full-body entry and prevents crossing out until the existing leave/forfeit or terminal flow. Locked MAIN Campaign structures retain prerequisite feedback and deny admission. Blood Moon and Resource Rush retain their separate approved walls and movement policies. Integrated/LAN ordinary bosses remain native and receive no dedicated hosted wall.
 
 Registered living bosses enter a persistent dormant lobby on entity join/reload. HostedLobby holds native AI/targets/movement and presentation until canonical Start and rejects damage/death of the held boss. The logical-server dispatcher hold also pauses mod-native custom combat/cinematic ticks. Reload reapplies the hold instead of releasing it, and there is no idle timeout that silently starts combat. Nearby players do not acquire general damage/death immunity merely by standing near a waiting boss.
 
@@ -26,13 +26,13 @@ Verified native anchor записывается только при первом
 
 Операторский revive является восстановлением структуры, а не rematch unlock: зарегистрированной структуры и отсутствия живого босса достаточно даже до первой победы. Не найденный среди загруженных entity UUID остаётся неизвестным/возможно выгруженным: это не доказательство смерти и не разрешение очистить canonical claim или создать замену. После доказанного освобождения identity первая последующая легитимная победа сохраняет право прогрессировать World Tier, а Raid остаётся закрытым до этой победы.
 
-Start of an ordinary fight requires the existing legitimate live boss and does not spawn or move it. Safe arrival/exit validates full collision boxes, loaded geometry, world border and dimension, preferring sheltered in-structure floors over exposed roofs. With barriers removed, ordinary movement and teleport do not use a boss wall or arenaEntered lock. Other event restrictions and actual world collision remain authoritative.
+Start of an ordinary fight requires the existing legitimate live boss and does not spawn or move it. Safe arrival/exit validates full collision boxes, loaded geometry, world border and dimension, preferring sheltered in-structure floors over exposed roofs. Restored movement and teleport restrictions use the full player/vehicle collision box and the structure-volume shell, with safe terminal Raid ejection. Actual death remains elimination and never triggers boss recovery teleport. Other event restrictions and actual world collision remain authoritative.
 
 Host cancellation is bound to Party ID and current attempt token; stale or replayed actions cannot close a newer attempt. Actual participant death is immediate elimination; inventory retention and progression remain owned by the active encounter lifecycle. Registered bosses retain their canonical shared arena/revival identity and native anchor.
 
 Official discovered boss and active event markers may expose native Xaero teleport actions. Only server-projected object identities receive this adapter; the server resolves the boss arena/event ID anew, checks availability/eligibility and safe arrival, and never trusts client coordinates. Personal/home/base/death waypoints remain creator-private and retain native controls; forged or stale IDs fail. No replacement map screen is introduced.
 
-Campaign prerequisites gate Start, not access to structure terrain. Per the user's correction, only ancient_guardian is removed from the posessed_paladin prerequisite list; bone_stalker and overgrown_colossus remain. Coppermincer and other progression edges remain. The registered ancient_guardian/ancient_tower_remains association is corrected to The End; this is not a fabricated defeat or worldgen retrofit. Legacy barrier registry IDs remain inert save compatibility and known legacy cells retain migration cleanup.
+Campaign prerequisites again gate structure access through the shared barrier and independently gate canonical Start. Per the user's correction, only ancient_guardian is removed from the posessed_paladin prerequisite list; bone_stalker and overgrown_colossus remain. Coppermincer and other progression edges remain. The registered ancient_guardian/ancient_tower_remains association is corrected to The End; this is not a fabricated defeat or worldgen retrofit. Legacy barrier registry IDs remain inert save compatibility and known legacy cells retain migration cleanup.
 
 ## Preserved exclusions
 

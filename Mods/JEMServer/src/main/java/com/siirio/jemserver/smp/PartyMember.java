@@ -9,8 +9,11 @@ public final class PartyMember {
     public boolean eliminated() { return eliminated; }
     public void eliminated(boolean value) { requireMutable(); eliminated = value; eliminatedPresent = true; eliminatedChanged = true; }
 
+    private boolean arenaEntered, arenaEnteredChanged;
+    public boolean arenaEntered() { return arenaEntered; }
+    public void arenaEntered(boolean value) { requireMutable(); arenaEntered = value; arenaEnteredChanged = true; }
     private boolean legacyArenaBoundaryCleared;
-    public void clearLegacyArenaBoundary() { requireMutable(); legacyArenaBoundaryCleared = true; }
+    public void clearLegacyArenaBoundary() { requireMutable(); legacyArenaBoundaryCleared = true; arenaEntered(false); }
     private PartyMemberNbtCodec.Source source = new PartyMemberNbtCodec.Source();
     private String name = "";
     private boolean namePresent, nameChanged;
@@ -81,6 +84,7 @@ public final class PartyMember {
         copy.source = source;
         copy.eliminated = eliminated; copy.eliminatedPresent = eliminatedPresent; copy.eliminatedChanged = eliminatedChanged;
         copy.legacyArenaBoundaryCleared = legacyArenaBoundaryCleared;
+        copy.arenaEntered = arenaEntered; copy.arenaEnteredChanged = arenaEnteredChanged;
         copy.name = name;
         copy.namePresent = namePresent;
         copy.nameChanged = nameChanged;
@@ -121,6 +125,7 @@ public final class PartyMember {
     static PartyMember decode(net.minecraft.nbt.CompoundTag tag) {
         var value = new PartyMember();
         value.source = new PartyMemberNbtCodec.Source(tag);
+        value.arenaEntered = tag.getBoolean("arenaEntered") && tag.getBoolean("arenaVolumeEntry");
         value.eliminated = tag.getBoolean("eliminated"); value.eliminatedPresent = tag.contains("eliminated");
             value.namePresent = tag.contains("name");
             value.name = tag.getString("name");
@@ -147,7 +152,8 @@ public final class PartyMember {
     static net.minecraft.nbt.CompoundTag encode(PartyMember value) {
         var tag = value.source.copy();
         if (value.eliminatedChanged) tag.putBoolean("eliminated", value.eliminated);
-        if (value.legacyArenaBoundaryCleared) for (String key : List.of("arenaEntered", "arenaInsideX", "arenaInsideY", "arenaInsideZ")) tag.remove(key);
+        if (value.legacyArenaBoundaryCleared) for (String key : List.of("arenaEntered", "arenaVolumeEntry", "arenaInsideX", "arenaInsideY", "arenaInsideZ")) tag.remove(key);
+        if (value.arenaEnteredChanged) { tag.putBoolean("arenaEntered", value.arenaEntered); tag.putBoolean("arenaVolumeEntry", value.arenaEntered); }
             if (value.nameChanged) { if (value.namePresent) tag.putString("name", value.name); else tag.remove("name"); }
             if (value.joinedAtChanged) { if (value.joinedAtPresent) tag.putLong("joinedAt", value.joinedAt); else tag.remove("joinedAt"); }
             if (value.acceptedChanged) { if (value.acceptedPresent) tag.putBoolean("accepted", value.accepted); else tag.remove("accepted"); }

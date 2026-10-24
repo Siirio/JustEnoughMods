@@ -1,3 +1,14 @@
+## 2026-10-24 - Sophisticated storage, Campaign Eyes and restored boss barriers
+
+- User requested continuation of the unreleased update: replace Backpacked with Sophisticated Backpacks, Sophisticated Storage and Sophisticated Core
+- User confirmed that all twelve Campaign Eyes must come only from their configured Campaign bosses and that previous Boss Fight, Campaign and Raid barriers must return
+- Implementation: install Forge 1.20.1 Core 1.5.15.2427, Backpacks 3.26.14.2226 and Storage 1.5.9.2197. Replace the starter backpack and exact empty unissued starter entitlement, retire Backpacked-only guide content and source adapters. Existing delivered backpack inventories are not converted
+- Bug / Both Sided / EndRem supplemental loot still supplied Campaign Eyes and recipe restriction returned early when required content was incomplete / in testing. Thirteen exact supplemental loot overrides, unconditional existing recipe-output restriction and the twelve-ID shared NPC/public-supply prohibition close the inspected survival bypasses while retaining canonical boss awards and recovery
+- Implementation: restore the previous shared structure-height filled walls, collision and teleport containment using current typed state and full player collision boxes. Preserve dormant bosses until Start, actual-death elimination, Start-only Raid scaling and Blood Moon/Resource Rush contracts
+- Distribution: existing runtime Compat stays installed because its optional Backpacked gates are inert without that mod and its newer combined food/shelter/HUD artifact remains held for user assets. Stable profile, MineRENT and immutable release baseline remain unchanged
+- Bug / Both Sided / Copper Age Backport0.1.4 eagerly initialized Sophisticated networking before Core supplied its protocol / in testing. Use official Forge0.1.5 with declared AFTER dependencies on Core and Storage, preserving native integration instead of disabling either requested mod
+- Production delivery and native publication/application evidence: Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json. No automated tests, gameplay client launch or player acceptance
+
 ## 2026-10-23 - Exclude Recruits from animal homes
 
 User request: Recruits must not receive animal homes or shelter recovery

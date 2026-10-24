@@ -17,7 +17,7 @@ import tomllib
 MODULE=Path(__file__).resolve().parent
 ROOT=MODULE.parent.parent
 PROFILE=Path(os.environ["APPDATA"])/".minecraft/versions/jem sandbox"
-NATIVE=("curios","backpacked","trashslot","jei","betteradvancements","ftbquests","spudaciousshops","patchouli")
+NATIVE=("curios","sophisticatedbackpacks","sophisticatedcore","sophisticatedstorage","trashslot","jei","betteradvancements","ftbquests","spudaciousshops","patchouli")
 
 
 def sha(path):

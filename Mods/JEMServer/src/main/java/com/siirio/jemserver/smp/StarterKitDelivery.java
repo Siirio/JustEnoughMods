@@ -71,7 +71,7 @@ final class StarterKitDelivery {
         List<ItemStack> items = List.of(new ItemStack(Items.COOKED_BEEF, 64), new ItemStack(Items.IRON_INGOT, 10),
                 new ItemStack(Items.LEATHER_HELMET), new ItemStack(Items.LEATHER_CHESTPLATE),
                 new ItemStack(Items.LEATHER_LEGGINGS), new ItemStack(Items.LEATHER_BOOTS),
-                nativeItem("backpacked:backpack"), nativeItem("naturescompass:naturescompass"));
+                nativeItem("sophisticatedbackpacks:backpack"), nativeItem("naturescompass:naturescompass"));
         ListTag result = new ListTag();
         for (ItemStack item : items) result.add(item.save(new CompoundTag()));
         return result;

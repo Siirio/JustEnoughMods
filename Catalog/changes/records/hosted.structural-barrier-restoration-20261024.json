@@ -1,0 +1,112 @@
+{
+  "schema_version": 2,
+  "change_id": "hosted.structural-barrier-restoration-20261024",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    },
+    {
+      "type": "registry",
+      "registry": "structures"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Dedicated JEMServer registered Boss Fight/Campaign/Raid structures only. Integrated/LAN ordinary native boss policy and Blood Moon/Resource Rush remain unchanged",
+      "acceptance": "Source restoration, manual gameplay acceptance unrun"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1400,
+    "overrides": [
+      "hosted.barrier-free-attack-admission-official-travel-20261021"
+    ]
+  },
+  "change": {
+    "summary": "Restore the explicitly requested old Boss Fight, Campaign and Raid visible walls, collision and teleport restrictions",
+    "modifiers": [
+      {
+        "property": "hosted.structural_boss_admission_and_barriers",
+        "operation": "replace",
+        "before": "Ordinary structural Boss Fight/Campaign/Raid barrier generation, rendering, collision and teleport containment removed",
+        "after": {
+          "boss_barriers": "Shared proven structure-volume virtual shell, filled translucent quad presentation, physical collision and full player/vehicle-box teleport admission",
+          "participant_entry": "Authorized active participants enter once. Typed PartyMember persists arenaEntered plus arenaVolumeEntry. Existing leave/forfeit and safe terminal Raid ejection release participants",
+          "campaign_start": "MAIN prerequisites guard structure admission and canonical Start with existing missing-prerequisite feedback",
+          "preserved": "Persistent dormant hold until Start, attack-to-GUI with no hit, death elimination without resurrection, Raid scaling only at Start, canonical live identity and sheltered placement"
+        }
+      },
+      {
+        "property": "hosted.structural_boundary_height",
+        "operation": "derive",
+        "before": "No ordinary structural boundary",
+        "after": "Registered 3D structure Y bounds and horizontal-only margin, no full-column underground blockage"
+      },
+      {
+        "property": "hosted.legacy_entry_migration",
+        "operation": "derive",
+        "before": "Legacy retired entry flags never contain players",
+        "after": "Typed persisted entry requires volume-proof flag. Session cleanup clears both flags. Full collision-box observation owns new entry"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer shared arena lifecycle and TwelveEyes campaign feedback",
+    "kind": "explicit_user_restoration",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/PartyMember.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/HostedBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventAreaHooks.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventBoundaryRenderer.java",
+      "Mods/JEMTwelveEyes/src/main/java/com/siirio/jemcompat/gate/CampaignGateEvents.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore the exact prior barrier behavior requested by the user without rolling back the newer architecture or unrelated combat fixes",
+    "decision_source": "User explicitly confirmed restoring old visible walls, physical collision and teleport restrictions for all ordinary Boss Fight, Campaign and Raid on 2026-10-24",
+    "implementation_choices": "Targeted transplant from 884f5de50 parent, adapt persistence to typed PartyMember, reuse existing renderer and collision seams. No new artwork or physical block shell"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "restore_proven_structural_barriers",
+    "summary": "Restore pre-884f5de50 virtual arena walls, collision, participant entry containment and teleport admission within current typed owners"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "restore_proven_structural_barriers",
+      "summary": "Restore pre-884f5de50 virtual arena walls, collision, participant entry containment and teleport admission within current typed owners"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "boss admission",
+      "Campaign prerequisites",
+      "Boss Raid",
+      "server movement and teleport authority",
+      "client boundary presentation",
+      "typed SMP persistence",
+      "safe terminal exit"
+    ],
+    "relations": [
+      "Registered canonical structure -> StructureStaging -> EventZones -> existing renderer and client collision",
+      "Server shared shell -> movement/teleport seams -> authoritative participant lock"
+    ],
+    "notes": [
+      "Old physical barrier blocks remain inert and exact legacy cleanup continues. Restored wall is the proven virtual shell",
+      "No gameplay launch, test or acceptance claim. Build and native distribution are parent-owned"
+    ],
+    "unresolved": [
+      "Manual gameplay acceptance remains unrun"
+    ]
+  }
+}

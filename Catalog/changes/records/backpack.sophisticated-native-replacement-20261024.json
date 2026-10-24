@@ -1,0 +1,260 @@
+{
+  "schema_version": 2,
+  "change_id": "backpack.sophisticated-native-replacement-20261024",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "backpacked"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "sophisticatedbackpacks"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "sophisticatedstorage"
+    },
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "sophisticatedcore"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jemcompat:augment_bay"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "Source retirement applies to future Compat builds. Existing held runtime Compat remains unchanged and its Backpacked optional gates stay inactive without Backpacked."
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 100,
+    "overrides": [
+      "backpack.augment-bay-and-workbench"
+    ]
+  },
+  "change": {
+    "summary": "Use native Sophisticated backpacks/storage and retire Backpacked-specific integration, impossible guide goals and removed-item rewards. Starter entitlement receipt semantics remain unchanged.",
+    "modifiers": [
+      {
+        "property": "pack.native_backpack_owner",
+        "operation": "replace",
+        "before": {
+          "mod": "backpacked",
+          "version": "3.0.9",
+          "extensions": [
+            "jemcompat:workbench",
+            "jemcompat:furnace",
+            "jemcompat:auto_feed"
+          ]
+        },
+        "after": {
+          "backpacks": "sophisticatedbackpacks:3.26.14.2226",
+          "storage": "sophisticatedstorage:1.5.9.2197",
+          "core": "sophisticatedcore:1.5.15.2427",
+          "interface_and_upgrades": "native",
+          "inventory_conversion": "none"
+        }
+      },
+      {
+        "property": "guide.backpacked_content",
+        "operation": "deny",
+        "before": {
+          "advancements": [
+            "jem_guide:qol/7",
+            "jem_guide:qol/7_1",
+            "jem_guide:qol/7_3"
+          ],
+          "quest_cards": [
+            "H07.06",
+            "H07.07",
+            "H07.08",
+            "H07.09",
+            "H07.10",
+            "H07.11",
+            "H07.12"
+          ]
+        },
+        "after": "Retired identities, removed Backpacked-specific handbook entries and shelf rewards. Basic replacement item has a bilingual native-interface handbook entry."
+      },
+      {
+        "property": "backpack.open_key",
+        "operation": "replace",
+        "before": "key.backpack Ctrl+B",
+        "after": "key.sophisticatedbackpacks.open_backpack Ctrl+B in source default key profile"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Native Sophisticated mods, JEMCompat, JEMAchievementGuide, JEMServer",
+    "kind": "user_requested_dependency_replacement",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+      "Docs/backpack/README.md",
+      "Docs/MODS.md",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_01.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_09.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_11.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_18.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_19.snbt",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/sophisticatedbackpacks/backpack.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/sophisticatedbackpacks/backpack.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/rules.json",
+      "Client/ManagedPack/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json",
+      "Server/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Complete explicit replacement without preserving unreachable old-mod hooks or inventing inventory conversion.",
+    "decision_source": "User requests replacement and selected mod family. Codex chooses removal of obsolete hooks/content and exact empty unissued starter substitution to preserve delivery."
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "User replaces Backpacked with Sophisticated Backpacks, Storage and Core. Retire removed native integration/content and substitute unissued empty starter supplies.",
+    "source_files": [
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Mods/JEMAchievementGuide/build.gradle",
+      "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
+      "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+      "Docs/backpack/README.md",
+      "Docs/MODS.md"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User replaces Backpacked with Sophisticated Backpacks, Storage and Core. Retire removed native integration/content and substitute unissued empty starter supplies.",
+      "source_files": [
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+        "Mods/JEMAchievementGuide/build.gradle",
+        "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
+        "Mods/JEMAchievementGuide/src/main/handbook/items.json",
+        "Mods/JEMAchievementGuide/tools/questbook/book.json",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+        "Docs/backpack/README.md",
+        "Docs/MODS.md"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "retire_distribution_and_content",
+      "summary": "Remove Backpacked distribution files and retired source extensions. Regenerate the seven native FTB chapters with current backpack rewards and without impossible retired content.",
+      "source_files": [
+        "Client/ManagedPack/config/backpacked.augments.toml",
+        "Client/ManagedPack/config/backpacked.backpack.toml",
+        "Client/ManagedPack/config/backpacked.client.toml",
+        "Client/ManagedPack/config/backpacked.server.toml",
+        "Client/ManagedPack/kubejs/assets/backpacked/lang/ru_ru.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AugmentBayBlock.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/AutoFeedAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAuthority.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackAutoFeed.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackClient.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackCraftingGrid.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnace.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackFurnaceAccess.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackWorkbench.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/FurnaceAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/NativeItemAugmentIcon.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchAugment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/WorkbenchIcon.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackAugmentAdmissionMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackInventoryProcessMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchMenuMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/backpack/BackpackWorkbenchScreenMixin.java",
+        "Server/config/backpacked.augments.toml",
+        "Server/config/backpacked.backpack.toml",
+        "Server/config/backpacked.client.toml",
+        "Server/config/backpacked.server.toml",
+        "Server/kubejs/assets/backpacked/lang/ru_ru.json",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_01.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_09.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_11.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_18.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_19.snbt"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "retire_handbook_and_refresh_quest_rules",
+      "summary": "Remove six localized retired Backpacked handbook resources, publish the native replacement item in both supported languages and regenerate the quest information/rules from the authored book.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/backpacked/backpack.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/backpacked/backpack_dock.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/backpacked/unlock_token.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/backpacked/backpack.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/backpacked/backpack_dock.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/backpacked/unlock_token.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/sophisticatedbackpacks/backpack.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/sophisticatedbackpacks/backpack.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/rules.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "distribution",
+      "native storage",
+      "starter entitlement",
+      "guide",
+      "FTB quests",
+      "key profile",
+      "compile dependencies"
+    ],
+    "relations": [
+      "smp.starter-kit-and-prechoice-protection-20261021",
+      "backpack.augment-bay-and-workbench"
+    ],
+    "notes": [
+      "Already delivered Backpacked inventories/custom NBT remain outside migration scope.",
+      "Source compile dependencies no longer require Backpacked or Framework. Runtime Framework remains governed by actual other mod dependencies.",
+      "Existing held runtime Compat is not rebuilt or shipped by this source-only retirement.",
+      "Held runtime Compat retains the retired augment_bay loot resource without its optional item registration. An exact empty loot override retires that obsolete table until the held source artifact can ship."
+    ],
+    "unresolved": [
+      "No gameplay launch or player acceptance performed.",
+      "New native backpack death behavior is not asserted equivalent to removed Backpacked keep-on-death."
+    ]
+  }
+}

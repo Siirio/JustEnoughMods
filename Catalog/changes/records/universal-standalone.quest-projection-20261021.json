@@ -62,8 +62,6 @@
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/ModCompatibilityEvents.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/treechop/TreeChopAwards.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/treechop/TreeChopIntegration.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackedMixin.java",
-      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackedServerPlayHandlerMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BetterAdvancementsScreenMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CastingNetItemMixin.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbQuestFileMixin.java",
@@ -462,9 +460,6 @@
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/13_3_1.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/13_3_1_1_1.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/13_3_1_1_2.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/7.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/7_1.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/7_3.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/8.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/8_3.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/natures_compass.json",
@@ -801,9 +796,6 @@
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/13_3_1.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/13_3_1_1_1.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/13_3_1_1_2.json",
-      "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/7.json",
-      "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/7_1.json",
-      "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/7_3.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/8.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/8_3.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
@@ -1761,6 +1753,24 @@
         "Client/ManagedPack/config/ftbquests/quests/chapters/getting_started.snbt",
         "Client/ManagedPack/config/ftbquests/quests/chapters/living_world.snbt",
         "Client/ManagedPack/config/ftbquests/quests/chapters/races.snbt"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "retire_source_references",
+      "summary": "Backpacked replacement retires these source/resources. Current cause references retain only existing owners, while these exact deleted paths preserve historical provenance.",
+      "source_files": [
+        "Catalog/changes/records/backpack.sophisticated-native-replacement-20261024.json",
+        "Docs/backpack/README.md",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackedMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackedServerPlayHandlerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/7.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/7_1.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/qol/7_3.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/7.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/7_1.json",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/7_3.json"
       ]
     }
   ],

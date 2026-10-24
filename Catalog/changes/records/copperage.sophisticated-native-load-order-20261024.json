@@ -1,0 +1,149 @@
+{
+  "schema_version": 2,
+  "change_id": "copperage.sophisticated-native-load-order-20261024",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "copperagebackport"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:pale_oak_shelf"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "minecraft:stripped_pale_oak_log"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "installed_mod_integration",
+    "priority": 1410,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Replace native Copper Age Backport 0.1.4 with 0.1.5 to fix Sophisticated constructor ordering, including the upstream visual-config and Pale Oak recipe/tag changes",
+    "modifiers": [
+      {
+        "property": "integration.sophisticated_load_order",
+        "operation": "replace",
+        "before": {
+          "artifact": "copperagebackport-forge-1.20.1-0.1.4.jar",
+          "sha256": "6da361b513d9d31768bc73334f721ce8e12c9a4284acda312eb3fb673b4449a3",
+          "behavior": "No Sophisticated dependency ordering. Copper constructor eagerly initializes StoragePacketHandler through Class.forName, initializing Core PacketHandler before SophisticatedCore constructor assigns its protocol version. Null protocol crashes PacketHandler construction"
+        },
+        "after": {
+          "artifact": "copperagebackport-forge-1.20.1-0.1.5.jar",
+          "sha256": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
+          "version_id": "6ij7gZ3z",
+          "source": "https://cdn.modrinth.com/data/a1llHwl4/versions/6ij7gZ3z/copperagebackport-forge-1.20.1-0.1.5.jar",
+          "behavior": "Native metadata declares optional BOTH-side AFTER dependencies on sophisticatedcore and sophisticatedstorage. Existing compatibility code and gameplay registrations remain byte-identical"
+        },
+        "notes": "Native upstream dependency-order correction, no disabled Copper features, no custom compatibility shim and no Sophisticated removal"
+      },
+      {
+        "property": "presentation.end_flash_config",
+        "operation": "add",
+        "before": "End sky flash always enabled in End client level",
+        "after": {
+          "option": "endFlashEnabled",
+          "native_default": true,
+          "missing_key": "Existing six-key configuration retains true without changing its other values",
+          "effect": "New native visual config page/group/toggle and tooltip keys in 32 existing Minecraft-namespace locale resources. Client level creates its EndFlashState only when enabled, changed setting takes effect on world rejoin"
+        },
+        "notes": "Native upstream ancillary feature. Existing behavior is preserved by the true default"
+      },
+      {
+        "property": "recipes.pale_oak_shelf_compatibility",
+        "operation": "replace",
+        "before": {
+          "recipe_id": "copperagebackport:pale_oak_shelf_from_vanilliabackports",
+          "condition_modid": "vanillabackports",
+          "tag_member": "vanillabackport:stripped_pale_oak_log"
+        },
+        "after": {
+          "recipe_id": "copperagebackport:pale_oak_shelf_from_vanillabackport",
+          "condition_modid": "vanillabackport",
+          "tag_member": "minecraft:stripped_pale_oak_log",
+          "tag_resources": [
+            "data/copperagebackport/tags/items/stripped_pale_oak_log.json",
+            "data/minecraft/tags/items/stripped_pale_oak_log.json"
+          ],
+          "recipe": "Existing shaped six stripped Pale Oak logs to six minecraft:pale_oak_shelf result retained. Native palegardenbackport recipe unchanged"
+        },
+        "notes": "Both optional tag members remain required=false and replace=false. Corrected recipe remains conditional on the exact native mod ID"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Native Copper Age Backport upstream dependency metadata, configuration and resources",
+    "kind": "upstream_compatibility_fix",
+    "source_files": [
+      "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+      "Server/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+      "Client/ManagedPack/config/copperagebackport.json",
+      "Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Allow the user-requested Sophisticated Backpacks/Storage/Core installation to coexist with every installed Copper feature",
+    "decision_source": "User requested Sophisticated migration while preserving existing pack behavior. Implementation selects the smallest official fixed native release 0.1.5 instead of custom patching or disabling compatibility"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "upstream_compatibility_update",
+    "summary": "Use native Copper Age Backport 0.1.5 fix #98 to load after Sophisticated Core/Storage while retaining native Copper content and existing settings"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "upstream_compatibility_update",
+      "summary": "Use native Copper Age Backport 0.1.5 fix #98 to load after Sophisticated Core/Storage while retaining native Copper content and existing settings"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "mod_loading",
+      "network_compatibility",
+      "native_mod_integration",
+      "configuration",
+      "recipes",
+      "tags",
+      "client_presentation",
+      "localization",
+      "distribution"
+    ],
+    "relations": [
+      {
+        "type": "loads_after",
+        "from": "copperagebackport",
+        "to": "sophisticatedcore"
+      },
+      {
+        "type": "loads_after",
+        "from": "copperagebackport",
+        "to": "sophisticatedstorage"
+      }
+    ],
+    "notes": [
+      "Installed new JAR metadata confirms BOTH-side optional AFTER dependencies with unrestricted versionRange. Official release notes: https://modrinth.com/mod/backport-copper-age/version/6ij7gZ3z",
+      "Exact upstream version is a beta release. No automatic promotion or broader version upgrade is implied",
+      "Observed failed ordinary-server startup evidence: Server/local/sophisticated-update-20261024/publication.out.log at Copper compat init107 and Core PacketHandler constructor42",
+      "JAR entry comparison proves no class/resource removal except the renamed misspelled compatibility recipe. Gameplay registry, AI, chest/storage compatibility implementation, sounds and textures are byte-identical",
+      "Existing configuration retains golem spawning/buttons enabled, button chance5 percent, transport stack16 and native weathering21 to23 Minecraft days. New native missing-key default preserves End flash enabled",
+      "Release receipt owns artifact provenance and later delivery evidence. Stable profiles, MineRENT and immutable release baseline remain outside this update"
+    ],
+    "unresolved": [
+      "Successful ordinary-server restart and native AutoModpack publication/application require separate delivery evidence",
+      "Gameplay/client visual acceptance and every possible cross-mod runtime path are not proven by bytecode/resource inspection",
+      "Pale Oak recipe condition applies only when vanillabackport is actually present. Existing palegardenbackport path is unchanged"
+    ]
+  }
+}

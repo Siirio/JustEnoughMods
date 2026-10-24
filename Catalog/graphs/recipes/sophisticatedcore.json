@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "registry_type": "recipes",
+  "snapshot_sha": "e455405c1a6485759f702322a67a524e87ecba22",
+  "generation": {
+    "generated_utc": "2026-10-24T05:27:41.037928+00:00",
+    "generator": "Catalog/generator/build_atlas.py",
+    "method": "offline_static_evidence"
+  },
+  "mod": {
+    "id": "sophisticatedcore",
+    "name": "Sophisticated Core",
+    "version": "1.5.15.2427"
+  },
+  "records": [
+    {
+      "schema_version": 1,
+      "recipe_id": "sophisticatedcore:ender_linker",
+      "mod_id": "sophisticatedcore",
+      "mod_name": "Sophisticated Core",
+      "mod_version": "1.5.15.2427",
+      "recipe_type": "minecraft:crafting_shaped",
+      "machine_id": "minecraft:crafting_shaped",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "forge:or",
+        "minecraft:blaze_rod",
+        "minecraft:crafting_shaped",
+        "minecraft:ender_pearl",
+        "minecraft:obsidian",
+        "sophisticatedcore:item_enabled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [
+        "sophisticatedcore:ender_linker"
+      ],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sophisticatedcore-1.20.1-1.5.15.2427.jar:data/sophisticatedcore/recipes/ender_linker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sophisticatedcore:ender_linker_clear",
+      "mod_id": "sophisticatedcore",
+      "mod_name": "Sophisticated Core",
+      "mod_version": "1.5.15.2427",
+      "recipe_type": "sophisticatedcore:ender_linker_clear",
+      "machine_id": "sophisticatedcore:ender_linker_clear",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "forge:or",
+        "sophisticatedcore:ender_linker_clear"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sophisticatedcore-1.20.1-1.5.15.2427.jar:data/sophisticatedcore/recipes/ender_linker_clear.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sophisticatedcore:ender_linker_endpoint",
+      "mod_id": "sophisticatedcore",
+      "mod_name": "Sophisticated Core",
+      "mod_version": "1.5.15.2427",
+      "recipe_type": "sophisticatedcore:ender_linker_endpoint",
+      "machine_id": "sophisticatedcore:ender_linker_endpoint",
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "forge:or",
+        "sophisticatedcore:ender_linker_endpoint"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sophisticatedcore-1.20.1-1.5.15.2427.jar:data/sophisticatedcore/recipes/ender_linker_endpoint.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sophisticatedcore:misc/ender_linker",
+      "mod_id": "sophisticatedcore",
+      "mod_name": "Sophisticated Core",
+      "mod_version": "1.5.15.2427",
+      "recipe_type": null,
+      "machine_id": null,
+      "ingredient_groups": [
+        "forge:mod_loaded",
+        "forge:or",
+        "minecraft:ender_pearl",
+        "minecraft:inventory_changed",
+        "minecraft:recipe_unlocked",
+        "minecraft:recipes/root",
+        "sophisticatedcore:ender_linker",
+        "sophisticatedcore:item_enabled"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sophisticatedcore-1.20.1-1.5.15.2427.jar:data/sophisticatedcore/advancements/recipes/misc/ender_linker.json"
+      ]
+    },
+    {
+      "schema_version": 1,
+      "recipe_id": "sophisticatedcore:upgrade_clear",
+      "mod_id": "sophisticatedcore",
+      "mod_name": "Sophisticated Core",
+      "mod_version": "1.5.15.2427",
+      "recipe_type": "sophisticatedcore:upgrade_clear",
+      "machine_id": "sophisticatedcore:upgrade_clear",
+      "ingredient_groups": [
+        "sophisticatedcore:upgrade_clear"
+      ],
+      "tag_inputs": [],
+      "expanded_ingredient_ids": [],
+      "outputs": [],
+      "byproducts": [],
+      "conditional_requirements": null,
+      "source_provenance": [
+        "sophisticatedcore-1.20.1-1.5.15.2427.jar:data/sophisticatedcore/recipes/upgrade_clear.json"
+      ]
+    }
+  ]
+}

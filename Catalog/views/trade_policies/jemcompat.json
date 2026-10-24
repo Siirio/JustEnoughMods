@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "registry_type": "trade_policies",
-  "snapshot_sha": "1f76f323e9dacc9f0dc08ce817751f68506f04ce",
+  "snapshot_sha": "e455405c1a6485759f702322a67a524e87ecba22",
   "generation": {
-    "generated_utc": "2026-10-22T20:22:33.380886+00:00",
+    "generated_utc": "2026-10-24T05:27:41.037928+00:00",
     "generator": "Catalog/generator/build_atlas.py",
     "method": "offline_static_evidence"
   },
@@ -64,6 +64,50 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "jemcompat:animal_home",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.7.0",
+      "source_jar": "jemcompat-3.7.0.jar",
+      "source_sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ShelterContent.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "jemcompat:augment_bay",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -76,13 +120,11 @@
         "client"
       ],
       "observed_in": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
         "assets/jemcompat/models/item/augment_bay.json"
       ],
       "display_name_en_us": "Augment Bay",
       "display_name_ru_ru": "Мастерская улучшений",
       "source_provenance": [
-        "BackpackContent.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/backpack/BackpackContent.java",
         "jemcompat-3.7.0.jar:assets/jemcompat/models/item/augment_bay.json"
       ],
       "confidence": "inferred",
@@ -1996,6 +2038,94 @@
       "review_status": "unresolved"
     },
     {
+      "item_id": "jemcompat:large_animal_home",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.7.0",
+      "source_jar": "jemcompat-3.7.0.jar",
+      "source_sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ShelterContent.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "jemcompat:matching_wood_shelter",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.7.0",
+      "source_jar": "jemcompat-3.7.0.jar",
+      "source_sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ShelterContent.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
       "item_id": "jemcompat:post_end_locator.ender_guardian",
       "registry_type": "item_view",
       "schema_version": 1,
@@ -2108,6 +2238,50 @@
       "source_provenance": [
         "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/en_us.json",
         "jem_twelve_eyes-1.7.0-dev.jar:assets/jemcompat/lang/ru_ru.json"
+      ],
+      "confidence": "inferred",
+      "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",
+      "unresolved_reason": "Runtime registration and dynamic properties not observed",
+      "trade_outcome": "NONE",
+      "reason": "unreviewed_static_registry_entry",
+      "progression_protected": false,
+      "protection_source_ids": [],
+      "independent_ordinary_routes": [],
+      "recipe_dependency_evidence": [],
+      "buy_copper": null,
+      "sell_copper": null,
+      "buy_denominator": null,
+      "sell_denominator": null,
+      "quota_family": null,
+      "quota_units": null,
+      "bulk_1024": null,
+      "price_rounding": "buy=ceil(full order); sell=floor(full sale plus ledger-backed account residue)",
+      "daily_player_units": 0,
+      "daily_global_units": 0,
+      "demand_group": "",
+      "price_basis": null,
+      "arbitrage_risk": "unresolved",
+      "review_status": "unresolved"
+    },
+    {
+      "item_id": "jemcompat:small_animal_home",
+      "registry_type": "item_view",
+      "schema_version": 1,
+      "mod_id": "jemcompat",
+      "mod_name": "JustEnoughMods Compatibility",
+      "mod_version": "3.7.0",
+      "source_jar": "jemcompat-3.7.0.jar",
+      "source_sha256": "433df41c3bc153e5f4444fb6131bcc140beef80db0a96db9f8309ccff6962794",
+      "side_availability": [
+        "source"
+      ],
+      "observed_in": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
+      ],
+      "display_name_en_us": null,
+      "display_name_ru_ru": null,
+      "source_provenance": [
+        "ShelterContent.java:Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/shelter/ShelterContent.java"
       ],
       "confidence": "inferred",
       "confidence_reason": "Observed in installed static artifact; final Forge registry bootstrap not run",

@@ -1665,192 +1665,6 @@
       }
     },
     {
-      "id": "handbook/items/backpacked/unlock_token",
-      "subject": "backpacked:unlock_token",
-      "icon": "backpacked:unlock_token",
-      "jem_aliases": [
-        "Жетон разблокировки",
-        "Unlock Token",
-        "backpacked:unlock_token"
-      ],
-      "ru_ru": {
-        "name": "Жетон разблокировки",
-        "summary": "В меню своего рюкзака возьмите жетон на курсор и выберите закрытый слот хранения.",
-        "pages": [
-          {
-            "type": "patchouli:spotlight",
-            "item": "backpacked:unlock_token",
-            "text": "В меню своего рюкзака возьмите жетон на курсор и выберите закрытый слот хранения."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Где тратить",
-            "text": "Откройте собственный рюкзак, перенесите жетон на курсор и выберите закрытый слот хранения. Нативное меню проверяет разрешение жетонов и их количество; оплата расходует жетоны с курсора. Разблокировка сохраняется в рюкзаке."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Разные виды слотов",
-            "text": "В текущих файлах настроек жетоны разрешены для слотов хранения, но выключены для ячеек улучшений и дополнительных надетых рюкзаков. Там действует собственная цена меню. Не пытайтесь вставить жетон в обычный слот как улучшение."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Обычная оплата",
-            "text": "Если жетона нет, нативное меню показывает стоимость разблокировки опытом. Платите только через это меню; отдельная мастерская улучшений для этой операции не нужна."
-          }
-        ]
-      },
-      "en_us": {
-        "name": "Unlock Token",
-        "summary": "In your backpack menu, hold the token on the cursor and select a locked storage slot.",
-        "pages": [
-          {
-            "type": "patchouli:spotlight",
-            "item": "backpacked:unlock_token",
-            "text": "In your backpack menu, hold the token on the cursor and select a locked storage slot."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Spending",
-            "text": "Open your own backpack, move the token onto the cursor and select a locked storage slot. The native menu checks token permission and count; payment consumes tokens from the cursor. The unlock is stored on the backpack."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Different slots",
-            "text": "Current configuration files allow tokens for storage slots but disable them for augment bays and extra equipped-backpack slots. Those use their own menu costs. Putting a token into an ordinary inventory slot does not install an augment."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Normal payment",
-            "text": "Without a token, the native menu shows the experience unlock cost. Pay through that menu; this operation does not require a separate Augment Bay station."
-          }
-        ]
-      }
-    },
-    {
-      "id": "handbook/items/backpacked/backpack_dock",
-      "subject": "backpacked:backpack_dock",
-      "icon": "backpacked:backpack_dock",
-      "jem_aliases": [
-        "Стойка для рюкзака",
-        "Backpack Dock",
-        "backpacked:backpack_dock"
-      ],
-      "ru_ru": {
-        "name": "Стойка для рюкзака",
-        "summary": "Установите стойку и взаимодействуйте с её рамкой, держа рюкзак; затем откройте его на стойке.",
-        "pages": [
-          {
-            "type": "patchouli:spotlight",
-            "item": "backpacked:backpack_dock",
-            "text": "Установите стойку и взаимодействуйте с её рамкой, держа рюкзак; затем откройте его на стойке."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Установка",
-            "text": "Создайте стойку по рецепту JEI и поставьте её. Держа рюкзак, взаимодействуйте с областью рамки, чтобы закрепить его. Пока рюкзака нет, меню сообщает, что он отсутствует."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Открытие и снятие",
-            "text": "Взаимодействие с установленным рюкзаком открывает его нативное хранилище. Область рамки обрабатывает установку и снятие отдельно. Содержимое принадлежит самому рюкзаку; стойка не является станцией покупки улучшений."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Что не искать",
-            "text": "Разблокировки и настройка улучшений выполняются в действующих меню Backpacked. Удалённую JEM-мастерскую Augment Bay не нужно создавать для доступа к стойке или жетонам."
-          }
-        ]
-      },
-      "en_us": {
-        "name": "Backpack Dock",
-        "summary": "Place the dock and interact with its frame while holding a backpack, then open the docked pack.",
-        "pages": [
-          {
-            "type": "patchouli:spotlight",
-            "item": "backpacked:backpack_dock",
-            "text": "Place the dock and interact with its frame while holding a backpack, then open the docked pack."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Placing",
-            "text": "Craft the dock through JEI and place it. Hold a backpack and interact with the frame area to dock it. If no backpack is present, the menu explains that it is missing."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Opening and removing",
-            "text": "Interacting with the docked pack opens its native storage. The frame area handles insertion and removal separately. Contents belong to the backpack itself; the dock is not an augment-purchase station."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Where to configure",
-            "text": "Unlocks and augment configuration use the active Backpacked menus. The retired JEM Augment Bay station is not required for this dock or for token use."
-          }
-        ]
-      }
-    },
-    {
-      "id": "handbook/items/backpacked/backpack",
-      "subject": "backpacked:backpack",
-      "icon": "backpacked:backpack",
-      "jem_aliases": [
-        "Рюкзак Backpacked",
-        "Backpacked Backpack",
-        "backpacked:backpack"
-      ],
-      "ru_ru": {
-        "name": "Рюкзак Backpacked",
-        "summary": "Наденьте рюкзак и откройте его назначенной клавишей рюкзака; настройки и слоты остаются нативными.",
-        "pages": [
-          {
-            "type": "patchouli:spotlight",
-            "item": "backpacked:backpack",
-            "text": "Наденьте рюкзак и откройте его назначенной клавишей рюкзака; настройки и слоты остаются нативными."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Ношение",
-            "text": "Создайте рюкзак по рецепту JEI, наденьте его через нативное управление и откройте назначенной клавишей рюкзака. Актуальную клавишу смотрите в разделе управления; она может быть переназначена."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Слоты и улучшения",
-            "text": "Закрытые слоты показывают стоимость в самом меню. Жетоны для хранения используйте с курсора. Ячейки улучшений, выбор модели и дополнительные надетые рюкзаки имеют отдельные правила и стоимость; их не заменяет один жетон."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Размещение",
-            "text": "Чтобы разместить наполненный рюкзак, используйте его нативную полку или стойку. Содержимое и прогресс сохраняются на рюкзаке; перед обменом проверяйте, какой именно экземпляр открыт."
-          }
-        ]
-      },
-      "en_us": {
-        "name": "Backpacked Backpack",
-        "summary": "Equip and open with your current backpack key; slots and configuration remain native.",
-        "pages": [
-          {
-            "type": "patchouli:spotlight",
-            "item": "backpacked:backpack",
-            "text": "Equip and open with your current backpack key; slots and configuration remain native."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Carrying",
-            "text": "Craft through JEI, equip through native controls and use your currently assigned backpack key. Consult Controls for the current binding; it may have been changed."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Slots and augments",
-            "text": "Locked slots show costs in the menu. Spend storage tokens from the cursor. Augment bays, model selection and extra equipped-backpack slots have separate rules and costs; one token does not replace them all."
-          },
-          {
-            "type": "patchouli:text",
-            "title": "Placing",
-            "text": "Use a native shelf or dock to place a filled backpack. Its contents and progress stay on the backpack; check which particular pack is open before exchanging it."
-          }
-        ]
-      }
-    },
-    {
       "id": "handbook/items/exposure/camera",
       "subject": "exposure:camera",
       "icon": "exposure:camera",
@@ -3270,6 +3084,38 @@
             "type": "patchouli:text",
             "title": "World mode",
             "text": "The campaign must be active with its required registrations. A new world with an inactive campaign retains the vanilla portal route. $(l:handbook/bosses/block_factorys_bosses/underworld_knight)Boss conditions and preparation$(/l)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "handbook/items/sophisticatedbackpacks/backpack",
+      "subject": "sophisticatedbackpacks:backpack",
+      "icon": "sophisticatedbackpacks:backpack",
+      "jem_aliases": [
+        "Рюкзак",
+        "Backpack",
+        "sophisticatedbackpacks:backpack"
+      ],
+      "ru_ru": {
+        "name": "Рюкзак",
+        "summary": "Базовый рюкзак входит в стартовый набор. Используй родной интерфейс рюкзака для хранения предметов и настройки улучшений.",
+        "pages": [
+          {
+            "type": "patchouli:spotlight",
+            "item": "sophisticatedbackpacks:backpack",
+            "text": "Базовый рюкзак входит в стартовый набор. Используй родной интерфейс рюкзака для хранения предметов и настройки улучшений."
+          }
+        ]
+      },
+      "en_us": {
+        "name": "Backpack",
+        "summary": "The basic backpack is included in starter supplies. Use its native interface for item storage and upgrade configuration.",
+        "pages": [
+          {
+            "type": "patchouli:spotlight",
+            "item": "sophisticatedbackpacks:backpack",
+            "text": "The basic backpack is included in starter supplies. Use its native interface for item storage and upgrade configuration."
           }
         ]
       }

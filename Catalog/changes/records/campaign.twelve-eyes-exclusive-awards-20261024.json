@@ -1,0 +1,168 @@
+{
+  "schema_version": 2,
+  "change_id": "campaign.twelve-eyes-exclusive-awards-20261024",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "items",
+      "members_path": "Mods/JEMTwelveEyes/src/main/resources/jem_twelve_eyes/campaigns.json",
+      "records_field": "bosses",
+      "id_field": "eye"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [],
+  "precedence": {
+    "layer": "campaign_acquisition",
+    "priority": 1400,
+    "overrides": []
+  },
+  "change": {
+    "summary": "The twelve canonical Campaign Eyes have no survival recipe, generated loot or NPC trade acquisition route",
+    "modifiers": [
+      {
+        "property": "acquisition.survival_sources",
+        "operation": "replace",
+        "before": {
+          "native_loot": "EndRem 5.3.3 injects ten of the twelve Eyes through thirteen chest/entity loot tables",
+          "crafting": "KubeJS removed sixteen Eye recipe outputs only while the complete required content roster was registered",
+          "npc_trading": "No permanent exact Eye restriction in the shared NPC result/public supply admission owner"
+        },
+        "after": {
+          "awards": "Existing CampaignCoordinator -> CampaignEyeService.deliver for the exact configured MAIN boss",
+          "recovery": "Existing CampaignEyeService.recover still requires the matching world-global boss defeat",
+          "loot": "Thirteen EndRem-only injected loot tables have empty pools without altering vanilla/other-mod tables or the three unrelated EndRem injections",
+          "crafting": "Existing sixteen-output recipe ban remains active whenever JEMTwelveEyes is installed, even with incomplete content",
+          "npc_trading": "All twelve exact Campaign Eye IDs are denied by shared TradeRestrictions for native offer presentation/settlement and public supply"
+        },
+        "notes": "Creative/admin operations, existing awarded stacks, player transfer, protected death drops, invulnerability, lifetime and void recovery remain unchanged"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMTwelveEyes acquisition policy with existing KubeJS recipe and JEMEconomy NPC restriction adapters",
+    "kind": "user_requested_campaign_only_acquisition",
+    "source_files": [
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/abandoned_mineshaft.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/bastion_treasure.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/buried_treasure.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/desert_pyramid.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/igloo_chest.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/nether_bridge.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/pillager_outpost.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/shipwreck_treasure.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/simple_dungeon.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/chests/woodland_mansion.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/entities/elder_guardian.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/entities/evoker.json",
+      "Mods/JEMTwelveEyes/src/main/resources/data/endrem/loot_tables/minecraft/entities/wither.json",
+      "Client/ManagedPack/kubejs/server_scripts/jem/twelve_eye_campaign.js",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/trade_restrictions.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent native EndRem acquisition from bypassing the twelve canonical MAIN boss awards",
+    "decision_source": "Explicit user request: exactly twelve Campaign Eyes obtainable only from Campaign bosses. Implementation chose native data overrides and the existing recipe/trade admission owners"
+  },
+  "introduced": {
+    "date": "2026-10-24",
+    "commit": "SELF",
+    "action": "restrict_acquisition",
+    "summary": "User requires the twelve Campaign Eyes exclusively from their canonical MAIN boss rewards and existing defeat-backed recovery"
+  },
+  "history": [
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "restrict_acquisition",
+      "summary": "User requires the twelve Campaign Eyes exclusively from their canonical MAIN boss rewards and existing defeat-backed recovery"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "campaign",
+      "progression",
+      "loot",
+      "recipes",
+      "native_merchants",
+      "market",
+      "inventory",
+      "recovery"
+    ],
+    "relations": [
+      {
+        "type": "awarded_by",
+        "from": "endrem:old_eye",
+        "to": "cataclysm:ancient_remnant"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:corrupted_eye",
+        "to": "legendary_monsters:posessed_paladin"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:guardian_eye",
+        "to": "cataclysm:the_leviathan"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:cold_eye",
+        "to": "cataclysm:maledictus"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:black_eye",
+        "to": "block_factorys_bosses:sandworm"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:exotic_eye",
+        "to": "alexscaves:luxtructosaurus"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:magical_eye",
+        "to": "legendary_monsters:cloud_golem"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:nether_eye",
+        "to": "cataclysm:netherite_monstrosity"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:lost_eye",
+        "to": "cataclysm:the_harbinger"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:cursed_eye",
+        "to": "cataclysm:scylla"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:wither_eye",
+        "to": "block_factorys_bosses:infernal_dragon"
+      },
+      {
+        "type": "awarded_by",
+        "from": "endrem:undead_eye",
+        "to": "block_factorys_bosses:underworld_knight"
+      }
+    ],
+    "notes": [
+      "Exact installed artifact: endrem_forge-5.3.3-R-1.20.1.jar, SHA256 19295ca4a798f2e813f359fa376f586bc57fadacd78b7e32440257f9f8bf2557",
+      "Installed JAR loot JSON investigation found no other installed-mod loot tables referencing endrem items",
+      "Evil/Cryptic/Rogue/Witch Eyes are outside the twelve-Eye selector. Native Evil/Cryptic config and Rogue loot remain unchanged. Existing broader sixteen-Eye recipe ban is preserved",
+      "Installed FTB quest configuration contains no endrem reward or task references. eyes_XX reward tables award equipment rather than Eyes",
+      "EndRem optional dependency ordering AFTER already exists in JEMTwelveEyes metadata, so its data overrides are ordered after the native resources"
+    ],
+    "unresolved": [
+      "Runtime native loot reload and trader interaction were not exercised under the no-gameplay-test policy",
+      "Existing world loot/inventories are not scanned or purged. Previously generated/awarded stacks and player-to-player transfers retain their existing behavior",
+      "Future datapacks or third-party runtime acquisition producers require review. No speculative universal inventory scrubber is added"
+    ]
+  }
+}

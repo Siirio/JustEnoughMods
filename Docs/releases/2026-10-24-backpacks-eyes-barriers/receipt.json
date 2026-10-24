@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-24",
+  "status": "local_delivery_complete_player_acceptance_pending",
+  "requested_by_user": [
+    "Continue unreleased update",
+    "Remove Backpacked and add Sophisticated Backpacks, Storage and Core",
+    "Campaign twelve Eyes only from canonical campaign boss awards",
+    "Restore previous barriers for Boss Fight, Campaign and Raid"
+  ],
+  "new_upstream_artifacts": [
+    {
+      "project": "sophisticated-core",
+      "version_id": "kflpbKPn",
+      "version": "1.20.1-1.5.15.2427",
+      "source": "https://cdn.modrinth.com/data/nmoqTijg/versions/kflpbKPn/sophisticatedcore-1.20.1-1.5.15.2427.jar",
+      "filename": "sophisticatedcore-1.20.1-1.5.15.2427.jar",
+      "sha256": "10947a5807e453ddc8ed3467ff98e91ca989c436d0263bff0f6e580d79277592",
+      "sha512": "96d1ca37baa486e367665ae9d3d715c747d1ab4df37b97a02d12631a24c2788b255210b465d531229b38d73270bf5b22930973360eaf9246c95130cb2e404b79"
+    },
+    {
+      "project": "sophisticated-backpacks",
+      "version_id": "HEEmP5R4",
+      "version": "1.20.1-3.26.14.2226",
+      "source": "https://cdn.modrinth.com/data/TyCTlI4b/versions/HEEmP5R4/sophisticatedbackpacks-1.20.1-3.26.14.2226.jar",
+      "filename": "sophisticatedbackpacks-1.20.1-3.26.14.2226.jar",
+      "sha256": "07479d3f03904bbfcd21e8d7c96277336c790e994cafc2c5bb13cccb5dfb8524",
+      "sha512": "d6c01154540ec77ebb45f14e982ec0c2706b5796784c4c2585e7eb09f5d0d6888e3b0beb5305cee9c13eaa937f1cfdb53b0081ade9fb60073733e3b9fdea1b7b"
+    },
+    {
+      "project": "sophisticated-storage",
+      "version_id": "vi7RxjKP",
+      "version": "1.20.1-1.5.9.2197",
+      "source": "https://cdn.modrinth.com/data/hMlaZH8f/versions/vi7RxjKP/sophisticatedstorage-1.20.1-1.5.9.2197.jar",
+      "filename": "sophisticatedstorage-1.20.1-1.5.9.2197.jar",
+      "sha256": "c3e99010c7296e81fde6acc3e04ef4d2d44244814582ac8434bf7d902e6cf73c",
+      "sha512": "7873b38e880008d6612ec607d81d15ddcefbd96eff2f3d9e10f3bd641ad04656a5fc78d9148e89afa025b700a0bdd936d602d65e08220467981677ad5ace5ab8"
+    }
+  ],
+  "preserved": [
+    "MineRENT",
+    "stable JustEnoughMods profile",
+    "release baseline",
+    "Framework library",
+    "deferred Compat food/shelter/HUD artifact hold"
+  ],
+  "runtime_acceptance": "not_run",
+  "production_artifacts": [
+    {
+      "module": "JEMTwelveEyes",
+      "filename": "jem_twelve_eyes-1.7.0-dev.jar",
+      "sha256": "44457fc347ea0d90518af50dd498921231503690b6685ecbb2e2c8f300848b0c"
+    },
+    {
+      "module": "JEMEconomy",
+      "filename": "jem-economy-1.3.0.jar",
+      "sha256": "80ad31605cd2072e11aa52325551d0e944f9e78c968f5a2790f00d50071d1596"
+    },
+    {
+      "module": "JEMAchievementGuide",
+      "filename": "jem-advancements-5.1.0.jar",
+      "sha256": "3deca60ea0a011f5915bde6a0edbd3e2d7e6052452c1d80772f43b264c9a20c3"
+    },
+    {
+      "module": "JEMServer",
+      "filename": "jem-server-2.0.0-dev.jar",
+      "sha256": "358dd04119f297719901d8414542459deb8c9dd3247e58dc57d696bdbd5c36c2"
+    }
+  ],
+  "production_builds": {
+    "status": "passed",
+    "modules": [
+      "JEMTwelveEyes",
+      "JEMEconomy",
+      "JEMAchievementGuide",
+      "JEMServer"
+    ],
+    "guide_clean_rebuild": true,
+    "tests": "not_run",
+    "analysis_tools": "not_run"
+  },
+  "server_synchronization": "matching four fresh JEM artifacts and three upstream Sophisticated JARs installed, retired Backpacked JAR/configuration removed, task KubeJS/quests synchronized",
+  "compatibility_fix": {
+    "project": "backport-copper-age",
+    "version_id": "6ij7gZ3z",
+    "version": "1.20.1-0.1.5",
+    "filename": "copperagebackport-forge-1.20.1-0.1.5.jar",
+    "sha256": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
+    "sha512": "cb524578ecc3e7b5fded4eef925cc39ebae33c03df08ac9665a7a150990b8f8eb1f1e1ed2ecd4f48bbe0da6b5e1f12f6a2d7024a20c79bbe3b65d03c31052add",
+    "source": "https://cdn.modrinth.com/data/a1llHwl4/versions/6ij7gZ3z/copperagebackport-forge-1.20.1-0.1.5.jar",
+    "reason": "Official fix #98 orders native compatibility after Sophisticated Core and Storage",
+    "additional_upstream_changes": [
+      "Pale Oak Shelf recipe and stripped-pale-oak tag namespace corrections",
+      "End sky flash toggle defaults true preserving existing configuration",
+      "Native localization updates"
+    ]
+  },
+  "startup_attempts": [
+    {
+      "result": "failed_before_world_load",
+      "cause": "Copper Age Backport0.1.4 eagerly initialized Sophisticated Core networking before its mod constructor",
+      "normal_stop": "native stop refused No active server, terminated failed JVM",
+      "resolution": "official Copper Age Backport0.1.5 AFTER dependency fix #98"
+    }
+  ],
+  "ordinary_server": {
+    "startup": "Done (5.046s)",
+    "state": "saved_all_dimensions_and_stopped_cleanly",
+    "gameplay_qa": "not_run"
+  },
+  "native_publication": {
+    "published": true,
+    "generation": 67,
+    "content_token": "427fef0dfdb3ad22eb357cc55d08baf3ffe9284e",
+    "manifest_sha1": "05f09fac9360408893ef8ce03e4ae91168ecba8f",
+    "preview": {
+      "added": 5,
+      "changed": 13,
+      "removed": 7
+    }
+  },
+  "native_application": {
+    "profile": "test jem",
+    "active_content_token": "427fef0dfdb3ad22eb357cc55d08baf3ffe9284e",
+    "pending_transaction": false,
+    "review_sha256": "472a99acff4dc8f28254482682c9ea82698e5789019f2848e7b649dbe5fd0f5e",
+    "conflicts": 0,
+    "verified_installed_jars_sha256": {
+      "sophisticatedcore-1.20.1-1.5.15.2427.jar": "10947a5807e453ddc8ed3467ff98e91ca989c436d0263bff0f6e580d79277592",
+      "sophisticatedbackpacks-1.20.1-3.26.14.2226.jar": "07479d3f03904bbfcd21e8d7c96277336c790e994cafc2c5bb13cccb5dfb8524",
+      "sophisticatedstorage-1.20.1-1.5.9.2197.jar": "c3e99010c7296e81fde6acc3e04ef4d2d44244814582ac8434bf7d902e6cf73c",
+      "jem_twelve_eyes-1.7.0-dev.jar": "44457fc347ea0d90518af50dd498921231503690b6685ecbb2e2c8f300848b0c",
+      "jem-economy-1.3.0.jar": "80ad31605cd2072e11aa52325551d0e944f9e78c968f5a2790f00d50071d1596",
+      "jem-advancements-5.1.0.jar": "3deca60ea0a011f5915bde6a0edbd3e2d7e6052452c1d80772f43b264c9a20c3",
+      "jem-server-2.0.0-dev.jar": "358dd04119f297719901d8414542459deb8c9dd3247e58dc57d696bdbd5c36c2",
+      "copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1"
+    }
+  },
+  "atlas": {
+    "validation": "passed",
+    "records": 140,
+    "artifact_drift": false,
+    "representative_effective_queries": "replacement backpack and old_eye return new policy without conflicts",
+    "existing_unrelated_working_tree_coverage_gaps": "preserved outside task"
+  },
+  "branch": "main"
+}

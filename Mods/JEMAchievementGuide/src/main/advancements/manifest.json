@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "expected_counts": {
-    "qol": 15,
+    "qol": 12,
     "mobs": 2,
     "arsenal": 7,
     "fishing": 4,
@@ -249,113 +249,6 @@
       ],
       "provider": "SimpleBargainMixin#afterBargain",
       "icon": "minecraft:rabbit_foot"
-    },
-    {
-      "advancement_id": "jem_guide:qol/7",
-      "number": "7",
-      "tab": "qol",
-      "parent": "jem_guide:qol/root",
-      "title_ru": "Что у тебя за спиной?",
-      "title_en": "What's On Your Back?",
-      "short_ru": "Надень свой первый настоящий рюкзак.",
-      "short_en": "Equip your first real backpack.",
-      "exact_ru": "Надень рюкзак через систему систему рюкзаков. Просто носить его в инвентаре недостаточно.",
-      "exact_en": "Equip a backpack through Backpacked. Simply carrying it in your inventory is not enough.",
-      "flags": [],
-      "mechanics": "Backpacked",
-      "implementation": "",
-      "technical_metadata": "",
-      "resource_ids": [],
-      "strategy": "VANILLA_JSON",
-      "authoritative_source": "Minecraft advancement criteria",
-      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
-      "stateful": false,
-      "test": "Validate jem_guide:qol/7 positive action and nearest negative proxy",
-      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
-      "criteria": {
-        "completion": {
-          "trigger": "jem_advancements:node/jem_guide/qol/7"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "BackpackedMixin#onEquipBackpack",
-      "icon": "minecraft:bundle"
-    },
-    {
-      "advancement_id": "jem_guide:qol/7_1",
-      "number": "7.1",
-      "tab": "qol",
-      "parent": "jem_guide:qol/7",
-      "title_ru": "Места много не бывает",
-      "title_en": "Never Enough Room",
-      "short_ru": "Потрать опыт рюкзака на первое полезное улучшение.",
-      "short_en": "Spend earned backpack experience on your first useful unlock.",
-      "exact_ru": "Заработай опыт рюкзака и потрать его на любое первое улучшение.",
-      "exact_en": "Earn backpack experience and spend it on any first upgrade.",
-      "flags": [],
-      "mechanics": "Backpacked",
-      "implementation": "",
-      "technical_metadata": "",
-      "resource_ids": [],
-      "strategy": "MOD_API_EVENT",
-      "authoritative_source": "Backpacked",
-      "hook": "Backpacked",
-      "stateful": false,
-      "test": "Validate jem_guide:qol/7_1 positive action and nearest negative proxy",
-      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
-      "criteria": {
-        "completion": {
-          "trigger": "jem_advancements:node/jem_guide/qol/7_1"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "BackpackedServerPlayHandlerMixin#onChangeAugment",
-      "icon": "minecraft:chest"
-    },
-    {
-      "advancement_id": "jem_guide:qol/7_3",
-      "number": "7.3",
-      "tab": "qol",
-      "parent": "jem_guide:qol/7",
-      "title_ru": "Ещё один?!",
-      "title_en": "Another One?!",
-      "short_ru": "Надень сразу два рюкзака.",
-      "short_en": "Wear two backpacks at once.",
-      "exact_ru": "Открой дополнительное место для рюкзака и надень два рюкзака одновременно.",
-      "exact_en": "Unlock another backpack slot and wear two backpacks at the same time.",
-      "flags": [
-        "FUN"
-      ],
-      "mechanics": "Backpacked",
-      "implementation": "",
-      "technical_metadata": "",
-      "resource_ids": [],
-      "strategy": "VANILLA_JSON",
-      "authoritative_source": "Minecraft advancement criteria",
-      "hook": "Data-driven criterion derived from the exact mechanic and verified IDs",
-      "stateful": false,
-      "test": "Validate jem_guide:qol/7_3 positive action and nearest negative proxy",
-      "source_file": "JEM_QoL_Achievement_Tree_v6_technical_pruned.md",
-      "criteria": {
-        "completion": {
-          "trigger": "jem_advancements:node/jem_guide/qol/7_3"
-        }
-      },
-      "requirements": [
-        [
-          "completion"
-        ]
-      ],
-      "provider": "BackpackedMixin#onEquipBackpack",
-      "icon": "minecraft:ender_chest"
     },
     {
       "advancement_id": "jem_guide:qol/8",
