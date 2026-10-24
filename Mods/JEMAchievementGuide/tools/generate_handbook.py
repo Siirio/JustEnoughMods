@@ -25,32 +25,28 @@ def intro_parts(text):
     return [*parts, current] if current else parts
 
 
-def generate_navigation():
+def generate_navigation(resources=RESOURCES):
+    assets = resources / "assets/jem_advancements"
+    book = assets / "patchouli_books/just_enough_guide"
+    (assets / "advancement_guides/index.json").unlink(missing_ok=True)
     source = json.loads((MODULE / "src/main/handbook/navigation.json").read_text(encoding="utf-8"))
     translations = json.loads((MODULE / "src/main/handbook/translations.json").read_text(encoding="utf-8"))
     manuals = json.loads((MODULE / "src/main/handbook/manuals.json").read_text(encoding="utf-8"))
+    sections = {section["id"] for section in source["sections"]}
     for language in ("ru_ru", "en_us"):
+        # The handbook owns reference pages only. Prune retired notes and sections on regeneration.
+        for kind in ("categories", "entries"):
+            base = book / language / kind
+            for path in base.rglob("*.json"):
+                parts = path.relative_to(base).with_suffix("").parts
+                if len(parts) < 2 or parts[0] != "handbook" or parts[1] not in sections:
+                    path.unlink()
         for index, section in enumerate(source["sections"]):
-            write(BOOK / language / "categories/handbook" / (section["id"] + ".json"), {
+            write(book / language / "categories/handbook" / (section["id"] + ".json"), {
                 **section[language], "icon": section["icon"], "sortnum": index})
-        for old, parent in source["legacy_sections"].items():
-            path = BOOK / language / "categories" / (old + ".json")
-            # Existing advancement entry IDs and categories remain intact.
-            if not path.exists():
-                fallback = BOOK / "en_us/categories" / (old + ".json")
-                if not fallback.exists():
-                    continue
-                value = json.loads(fallback.read_text(encoding="utf-8"))
-            else:
-                value = json.loads(path.read_text(encoding="utf-8"))
-            value["parent"] = "jem_advancements:handbook/" + parent
-            value["name"] = source["legacy_titles"][old][language]
-            value["description"] = ("Достижения и связанные полевые заметки." if language == "ru_ru"
-                                    else "Advancements and related field notes.")
-            write(path, value)
         for entry in source["entries"]:
             content = entry[language]
-            write(BOOK / language / "entries/handbook" / (entry["id"] + ".json"), {
+            write(book / language / "entries/handbook" / (entry["id"] + ".json"), {
                 "name": content["name"], "category": "jem_advancements:handbook/" + entry["section"],
                 "icon": entry["icon"], "jem_aliases": entry["aliases"], "pages": content["pages"]})
         for manual in manuals:
@@ -60,21 +56,22 @@ def generate_navigation():
                     if language == "ru_ru" else
                     "Use the button below to open the native manual. The blue ribbon lists all available books. "
                     "The return button in a manual restores this page.")
-            write(BOOK / language / "entries/handbook/manuals" / (manual["id"] + ".json"), {
+            write(book / language / "entries/handbook/manuals" / (manual["id"] + ".json"), {
                 "name": manual[language], "category": "jem_advancements:handbook/manuals",
                 "icon": manual["icon"], "flag": "mod:" + manual["id"], "jem_aliases": manual["aliases"],
                 "pages": [{"type": "patchouli:text", "title": manual[language], "text": text},
                           {"type": "patchouli:text", "title": "Доступ" if language == "ru_ru" else "Access", "text": status}]})
-        lang_path = ASSETS / "lang" / (language + ".json")
+        lang_path = assets / "lang" / (language + ".json")
         lang = json.loads(lang_path.read_text(encoding="utf-8"))
+        lang.pop("jem_advancements.handbook.section.mechanics", None)
         lang.update(translations[language])
         for section in source["sections"]:
             lang["jem_advancements.handbook.section." + section["id"]] = section[language]["name"]
         write(lang_path, lang)
-    generate_authored_content()
+    generate_authored_content(book)
 
 
-def generate_authored_content():
+def generate_authored_content(book=BOOK):
     for section in ("bosses", "items"):
         path = MODULE / "src/main/handbook" / (section + ".json")
         if not path.exists():
@@ -101,7 +98,7 @@ def generate_authored_content():
                          if entry.get("drop_unresolved") else
                          ("Нативные условия добычи сохраняются" if language == "ru_ru" else "Native loot conditions still apply")},
                         *[{**first, "text": text} for text in continuation], *remaining]
-                write(BOOK / language / "entries" / (entry["id"] + ".json"), value)
+                write(book / language / "entries" / (entry["id"] + ".json"), value)
 
 
 def generate_enchantment_links():

@@ -29,8 +29,7 @@
     "kind": "source",
     "source_files": [
       "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
-      "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
-      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json"
     ]
   },
   "rationale": {
@@ -85,6 +84,15 @@
         "Mods/JEMAchievementGuide/src/main/resources/data/jem_guide/advancements/qol/natures_compass.json",
         "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "retire_book_presentation_sources",
+      "summary": "User removed book advancement notes and Mechanics, retained original gameplay/quest semantics. Current presentation is owned by handbook.reference-only-book-20261024",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/advancement_guides/index.json"
+      ]
     }
   ],
   "impacts": {
@@ -95,7 +103,8 @@
     ],
     "relations": [],
     "notes": [
-      "Exact installed-source inspection and same-task Atlas lookup/scan precede implementation."
+      "Exact installed-source inspection and same-task Atlas lookup/scan precede implementation.",
+      "Book advancement presentation sources retired on 2026-10-24 under handbook.reference-only-book-20261024, underlying advancement and quest behavior is preserved"
     ],
     "unresolved": [
       "Player-reported missing creative item symptom remains unproven; native active Compass JAR exists and hash matches canonical ManagedPack."

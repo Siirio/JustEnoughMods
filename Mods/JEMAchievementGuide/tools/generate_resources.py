@@ -85,12 +85,6 @@ def key_base(node: dict) -> str:
     return f"{node['advancement_id'].split(':', 1)[0]}.advancement.{tab}.{leaf.replace('/', '.')}"
 
 
-def guide_key(node: dict) -> str:
-    path = node["advancement_id"].split(":", 1)[1]
-    tab, leaf = path.split("/", 1)
-    return f"{GUIDE_MOD_ID}.advancement_guide.entry.{tab}.{leaf.replace('/', '.').replace('_', '.')}"
-
-
 def node_trigger(node: dict) -> str:
     namespace, path = node["advancement_id"].split(":", 1)
     return f"{MOD_ID}:node/{namespace}/{path}"
@@ -562,8 +556,8 @@ NATIVE_BACKGROUND_OVERRIDES = {
 }
 
 
-def native_guide_entries(native_nodes: list[dict], resources: Path, guide_assets: Path, en: dict[str, str], ru: dict[str, str], index_entries: list[dict]) -> None:
-    for sortnum, node in enumerate(native_nodes, start=1000):
+def native_advancement_translations(native_nodes: list[dict], resources: Path, en: dict[str, str], ru: dict[str, str]) -> None:
+    for node in native_nodes:
         if node["proof"] != "NATIVE_CRITERIA_UNCHANGED":
             continue
         source_path = resources / node["relative_path"]
@@ -579,21 +573,6 @@ def native_guide_entries(native_nodes: list[dict], resources: Path, guide_assets
         en[description_key] = component_text(display.get("description", "Native advancement."), en_translations)
         ru[title_key] = component_text(display.get("title", path), ru_translations) or en[title_key]
         ru[description_key] = component_text(display.get("description", "Родное достижение."), ru_translations) or en[description_key]
-        icon = NATIVE_ICON_OVERRIDES.get(node["advancement_id"], (display.get("icon") or {}).get("item", "minecraft:paper"))
-        entry = {
-            "name": title_key,
-            "category": f"{GUIDE_MOD_ID}:{node['guide_tab']}",
-            "icon": icon,
-            "pages": [
-                {"type": "patchouli:text", "title": title_key, "text": description_key},
-                {"type": "patchouli:spotlight", "item": icon, "text": ""},
-            ],
-            "read_by_default": True,
-            "sortnum": sortnum,
-        }
-        entry_path = guide_assets / "patchouli_books" / "just_enough_guide" / "en_us" / "entries" / "native" / namespace / f"{path}.json"
-        write_json(entry_path, entry)
-        index_entries.append({"id": node["advancement_id"], "guide": description_key, "subject": title_key, "itemRefs": [icon]})
 
 
 def write_native_integrations(document: dict, mods_dir: Path, resources: Path, custom_ids: set[str]) -> list[dict]:
@@ -674,23 +653,6 @@ def write_native_integrations(document: dict, mods_dir: Path, resources: Path, c
     return generated
 
 
-def campaign_guide_entries(document, guide_assets):
-    for node in document["entries"]:
-        namespace, path = node["id"].split(":", 1)
-        for language, text in node["text"].items():
-            entry = {
-                "name": text["name"],
-                "category": node["category"],
-                "icon": node["item"],
-                "pages": [
-                    {"type": "patchouli:text", "title": text["name"], "text": text["hint"]},
-                    {"type": "patchouli:spotlight", "item": node["item"], "text": text["reference"]},
-                ],
-                "read_by_default": True,
-            }
-            write_json(guide_assets / "patchouli_books" / "just_enough_guide" / language / "entries" / "native" / namespace / f"{path}.json", entry)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, required=True)
@@ -752,9 +714,8 @@ def main() -> None:
             f"{GUIDE_MOD_ID}.patchouli.landing_text": "Выберите достижение JEM, чтобы открыть точную инструкцию.",
             f"{GUIDE_MOD_ID}.patchouli.open_failed": "Не удалось открыть запись справочника. Достижения продолжают работать.",
         }
-        index_entries = []
         criteria_catalog = []
-        for sort_index, node in enumerate(nodes):
+        for node in nodes:
             namespace, path = node["advancement_id"].split(":", 1)
             legacy = read_json(archive, f"data/{namespace}/advancements/{path}.json")
             criteria, requirements, provider = criterion_for(node, legacy, rules.get(node["advancement_id"]), names)
@@ -768,32 +729,10 @@ def main() -> None:
             output = resources / "data" / namespace / "advancements" / f"{path}.json"
             write_json(output, advancement)
             base = key_base(node)
-            guide = guide_key(node)
             en[f"{base}.title"] = node["title_en"]
             en[f"{base}.description"] = node["short_en"]
-            en[f"{guide}.guide"] = node["exact_en"]
-            en[f"{guide}.subject"] = node["mechanics"]
             ru[f"{base}.title"] = node["title_ru"]
             ru[f"{base}.description"] = node["short_ru"]
-            ru[f"{guide}.guide"] = node["exact_ru"]
-            ru[f"{guide}.subject"] = node["mechanics"]
-            item_refs = [value for value in node["resource_ids"] if not value.startswith(("jem_guide:", "jem:"))]
-            icon = advancement["display"]["icon"].get("item", TAB_ICONS[node["tab"]])
-            pages = [{"type": "patchouli:text", "title": f"{base}.title", "text": f"{guide}.guide"}]
-            spotlight = icon
-            if spotlight:
-                pages.append({"type": "patchouli:spotlight", "item": spotlight, "text": ""})
-            entry = {
-                "name": f"{base}.title",
-                "category": f"{GUIDE_MOD_ID}:{node['tab']}",
-                "icon": icon,
-                "pages": pages,
-                "read_by_default": True,
-                "sortnum": sort_index,
-            }
-            entry_path = guide_assets / "patchouli_books" / "just_enough_guide" / "en_us" / "entries" / node["tab"] / f"{path.split('/', 1)[-1]}.json"
-            write_json(entry_path, entry)
-            index_entries.append({"id": node["advancement_id"], "guide": f"{guide}.guide", "subject": f"{guide}.subject", "itemRefs": item_refs})
             for criterion in criteria.values():
                 trigger = criterion["trigger"]
                 if trigger.startswith(f"{MOD_ID}:node/"):
@@ -802,17 +741,8 @@ def main() -> None:
             if node["criterion_provider"].startswith(f"{MOD_ID}:node/") and node["advancement_id"] not in EXACT_JAVA_CALLERS:
                 raise ValueError(f"Custom node has no authoritative caller: {node['advancement_id']}")
 
-        native_guide_entries(native_nodes, resources, guide_assets, en, ru, index_entries)
-        campaign_guide_entries(json.loads((args.manifest.parent / "campaign-guide.json").read_text(encoding="utf-8")), guide_assets)
+        native_advancement_translations(native_nodes, resources, en, ru)
 
-        for tab, icon in TAB_ICONS.items():
-            write_json(guide_assets / "patchouli_books" / "just_enough_guide" / "en_us" / "categories" / f"{tab}.json", {
-                "name": tab.replace("_", " ").title(),
-                "description": f"JEM {tab.replace('_', ' ').title()} advancements",
-                "icon": icon,
-                "sortnum": list(TAB_ICONS).index(tab),
-            })
-        write_json(guide_assets / "advancement_guides" / "index.json", {"entries": index_entries})
         text_overrides = json.loads((args.manifest.parent / "guide-text-overrides.json").read_text(encoding="utf-8"))
         en.update(text_overrides["en_us"])
         ru.update(text_overrides["ru_ru"])
@@ -856,7 +786,7 @@ def main() -> None:
         })
     write_json(native_index, {"files": [node["relative_path"] for node in native_nodes], "nodes": native_nodes})
     from generate_handbook import generate_navigation
-    generate_navigation()
+    generate_navigation(resources)
     print(json.dumps({"nodes": len(nodes), "native_nodes": len(native_nodes), "node_criteria": len(criteria_catalog), "upstream_or_vanilla": len(nodes) - len(criteria_catalog)}))
 
 

@@ -1,3 +1,11 @@
+## 2026-10-24 - Remove advancement notes and Mechanics from the JEM handbook
+
+- User requested all advancements removed from the JEM book and the Mechanics tab removed
+- The reference book retains five sections: Getting started, Bosses, Enchantments, Items and Mod manuals, with 205 entries in each language
+- Implementation choice: remove legacy custom/native/campaign book notes and their generation, prune retired categories on handbook regeneration, and retire advancement-to-book click handling while retaining its required binary compatibility method
+- Actual gameplay advancements, saved completion, criteria, rewards and the separate FTB quest book are unchanged. No new artwork, automated tests or client/gameplay launch is introduced
+- Local packaging and native AutoModpack delivery status: Docs/handbook/book-content-removal-20261024.json
+
 ## 2026-10-24 - Bound Oceanic Realms chunk decoration
 
 - User request: investigate chunk-generation errors and freezes, then prepare a thorough correction for the supplied Oceanic Realms failure

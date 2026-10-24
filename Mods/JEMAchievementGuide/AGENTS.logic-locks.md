@@ -13,12 +13,13 @@
 - Protected direction: absent-mod and proxy-triggered nodes stay removed; native criteria remain unchanged; retained custom descriptions never promise more than their proof.
 - Created: 2026-09-13; runtime confirmation pending
 
-## LOCKED: Patchouli advancement descriptions
+## Superseded: Patchouli advancement descriptions
 - Scope: AdvancementScreenEvents click mapping and Patchouli book namespace jem_advancements:just_enough_guide
 - Approved signal: patchouli работает
-- Protected behavior: Clicking a mapped advancement in Better Advancements opens its Patchouli description entry
+- Historical behavior: Clicking a mapped advancement in Better Advancements opened its Patchouli description entry
 - Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
 - Allowed changes: Guide text and localization content may change without changing registration, namespace, click mapping, or screen-opening behavior
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-09-13
+- Superseded: The user explicitly requested all advancement content removed from the JEM book on 2026-10-24. Retire book entries and click routing while preserving actual advancement IDs/progress and the installed binary directClick compatibility entry point
 

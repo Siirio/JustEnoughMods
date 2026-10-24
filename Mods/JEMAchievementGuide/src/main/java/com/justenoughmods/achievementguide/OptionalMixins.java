@@ -19,8 +19,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.justenoughmods.achievementguide.mixin.CastingNetItemMixin", List.of("spawn")),
             Map.entry("com.justenoughmods.achievementguide.mixin.ImmersiveMelodiesMixin", List.of("immersive_melodies")),
             Map.entry("com.justenoughmods.achievementguide.mixin.SimpleBargainMixin", List.of("paraglider")),
-            Map.entry("com.justenoughmods.achievementguide.mixin.ZiplineLogicMixin", List.of("zipline")),
-            Map.entry("com.justenoughmods.achievementguide.mixin.BetterAdvancementsScreenMixin", List.of("betteradvancements", "patchouli"))
+            Map.entry("com.justenoughmods.achievementguide.mixin.ZiplineLogicMixin", List.of("zipline"))
     );
 
     @Override

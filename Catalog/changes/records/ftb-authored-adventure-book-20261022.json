@@ -210,7 +210,6 @@
       "Mods/JEMAchievementGuide/tools/questbook/legacy/races.snbt",
       "Mods/JEMAchievementGuide/tools/rebuild_curated_manifest.py",
       "Mods/JEMAchievementGuide/tools/sync_paxi_advancements.py",
-      "Mods/JEMAchievementGuide/tools/validate_campaign_guide.py",
       "Mods/JEMAchievementGuide/tools/validate_release.py",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyOperationEvent.java",
@@ -261,6 +260,15 @@
       "commit": "SELF",
       "action": "deliver_local_generation_63",
       "summary": "Production task-owned artifacts built, synchronized and loaded by ordinary Server; all 102 book files and 3 JARs natively applied to test jem at ea5c8e10320356cce80c6bda1af5c992198ce954 with no pending transaction. Static Atlas regenerated against the same owned source snapshot and installed artifacts; registry identity sets unchanged. Visual scenes/title exports and player acceptance remain incomplete."
+    },
+    {
+      "date": "2026-10-24",
+      "commit": "SELF",
+      "action": "retire_book_presentation_sources",
+      "summary": "User removed book advancement notes and Mechanics, retained original gameplay/quest semantics. Current presentation is owned by handbook.reference-only-book-20261024",
+      "source_files": [
+        "Mods/JEMAchievementGuide/tools/validate_campaign_guide.py"
+      ]
     }
   ],
   "impacts": {
@@ -287,7 +295,8 @@
       "All 784 originally specified reward types were checked against the ordinary local server registry. Five absent types are replaced explicitly; original REWARDS.json remains immutable.",
       "Supplied title JPGs are retained as references; transparent title exports and real HUD-free scenes are unresolved. Native GUI screenshot/interaction acceptance is unobserved.",
       "Native console dumps are diagnostic evidence only; no VERIFIED_RUNTIME registry facts were promoted.",
-      "Static artifact refresh used the canonical Atlas generator with HEAD plus task-owned source, identical to the production build. It preserved all registry ID sets and unrelated notes; no paused Handbook registrations or source changes were promoted."
+      "Static artifact refresh used the canonical Atlas generator with HEAD plus task-owned source, identical to the production build. It preserved all registry ID sets and unrelated notes; no paused Handbook registrations or source changes were promoted.",
+      "Book advancement presentation sources retired on 2026-10-24 under handbook.reference-only-book-20261024, underlying advancement and quest behavior is preserved"
     ],
     "unresolved": [
       "Real gameplay chapter backgrounds and clean transparent title exports.",

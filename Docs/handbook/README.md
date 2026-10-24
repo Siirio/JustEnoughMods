@@ -1,11 +1,11 @@
 # JEM Handbook
 
-Implementation owner: JEMAchievementGuide. Product brief: the user's universal handbook request of 2026-10-22, resumed after FTB delivery `67d9f215` on 2026-10-23. The physical item is Patchouli's native `patchouli:guide_book` with `patchouli:book=jem_advancements:just_enough_guide`. One dirt plus one stick crafts one handbook in any two slots, including the inventory grid. Vanilla books retain their normal behavior. Existing advancement entry IDs and click routing remain intact; reading awards no progression, discoveries, items or permissions.
+Implementation owner: JEMAchievementGuide. Product brief: the user's universal handbook request of 2026-10-22, resumed after FTB delivery `67d9f215` on 2026-10-23. The physical item is Patchouli's native `patchouli:guide_book` with `patchouli:book=jem_advancements:just_enough_guide`. One dirt plus one stick crafts one handbook in any two slots, including the inventory grid. Vanilla books retain their normal behavior. The 2026-10-24 amendment removes all book advancement notes and their click routing, while actual gameplay advancement IDs and progress remain intact, reading awards no progression, discoveries, items or permissions.
 
 ## Implementation plan
 
 - [x] Restore native Patchouli book identity and its inventory-grid shapeless recipe.
-- [x] Extend the native book screen with six localized, keyboard-accessible ribbon sections, search and scoped return from native manuals. Reuse native resources; no replacement book GUI or new runtime library.
+- [x] Extend the native book screen with five localized, keyboard-accessible ribbon sections, search and scoped return from native manuals. Reuse native resources; no replacement book GUI or new runtime library.
 - [x] Inventory installed native manuals, inspect their actual opening contracts and preserve native research/player state.
 - [x] Trace confirmed enchantment registrations and add owner-backed explanations, per-level multi-enchantment tooltips and handbook navigation. Acquisition gaps remain explicit below.
 - [x] Trace boss profiles, summon/use chains and actual defenses; publish only established instructions and record unresolved fields honestly.
@@ -24,7 +24,7 @@ Coverage files in this directory track evidence and implementation status; they 
 
 | Surface | Implemented source scope | Evidence and limits |
 | --- | --- | --- |
-| Navigation | Getting started, Bosses, Enchantments, Items, Mechanics, Mod manuals, Controls | Native Patchouli spreads/history/search; seven left-edge icon ribbons; original right-edge bookmarks remain native. GUI acceptance is unobserved. |
+| Navigation | Getting started, Bosses, Enchantments, Items, Mod manuals | Native Patchouli spreads/history/search; five left-edge icon ribbons; original right-edge bookmarks remain native. GUI acceptance is unobserved. |
 | Native manuals | Eight general manual families; acquired Aquamirae NBT variants | [Exact API/version/condition ledger](manuals.md). No discovery fabrication; MCreator read-only menus use a fixed, throttled server request and require the handbook in inventory. |
 | Enchantments | 85 confirmed non-vanilla registrations, both languages, actual stored levels; target icons for 72 specialized entries | [Coverage](enchantments-coverage.json), [mechanics and remaining acquisition gaps](enchantments.md). Six EFN book sources remain unestablished. |
 | Bosses | All 56 current canonical boss profiles have distinct source-backed tactical guidance | [Per-field coverage](bosses-coverage.json). Complete native phase/attack catalogs, every damage predicate and live world overrides are not claimed. |
@@ -33,7 +33,7 @@ Coverage files in this directory track evidence and implementation status; they 
 
 ## Content and projection ownership
 
-`src/main/handbook/{navigation,manuals,translations,bosses,items}.json` owns authored navigation and boss/item prose. `tools/generate_handbook.py` materializes its localized Patchouli resources. The advancement generator invokes that materializer and prunes only its own advancement entry trees, preserving handbook data and other components in the same namespace. It does not run as a build side effect.
+`src/main/handbook/{navigation,manuals,translations,bosses,items}.json` owns authored navigation and boss/item prose. `tools/generate_handbook.py` materializes its localized Patchouli resources. The advancement generator retains gameplay definitions and their translations. Its final handbook materializer prunes retired book advancement entries, their categories and removed sections before writing the five current reference sections. It does not run as a build side effect.
 
 `assets/jem_advancements/handbook/enchantments.json` owns enchantment explanations. Patchouli processors and tooltip providers read the same resource; native APIs supply current maximum level, compatibility and relevant synchronized configuration. Table applicability, anvil eligibility and item-specific rules remain distinct. Progression equipment text reuses the existing World Tier snapshot/provider; its enchantment level I is distinct from World Tier II/III. HideFlags and native lore are preserved.
 
@@ -92,3 +92,14 @@ Production compilation and reobfuscation completed. The first JVM attempt failed
 Read-only packaging inspection confirmed all 1,237 source JSON resources match the production JAR, no Controls resources remain, all 56 boss entries per language begin with a native entity page, and all 85 enchantment entries per language begin with their item-link page. The required templates, component classes and client Mixin registration are packaged. The build, ManagedPack and ordinary Server artifacts have the same SHA-256, `7978cbc7211caeaf800de0b548082c1bc24a11dd6d500d814e9979360af1e3bd`
 
 No automated tests, static analysis, gameplay launch, FPS measurement or player acceptance is claimed. Packaging and local JAR synchronization do not establish native generation publication or installation in `test jem`. Exact evidence and remaining runtime limits are recorded separately in [links-delivery.json](links-delivery.json)
+
+
+## Reference-only book, 2026-10-24
+
+The user requested every advancement removed from the JEM book and the Mechanics tab removed. The book now contains only Getting started, Bosses, Enchantments, Items and Mod manuals, with 205 reference entries and five categories in each language. Old custom/native/campaign advancement notes and Mechanics pages are removed from resources and their generators. The independent FTB quest book is unchanged
+
+Actual advancement definitions, IDs, criteria, translations, saved progress and rewards are unchanged. Boss reference pages remain available independently of achievements. Better Advancements no longer opens old book descriptions. The legacy directClick binary entry point remains as an inert compatibility method because an installed caller reaches it through JEMCompat. The earlier click-to-description lock is superseded by this explicit user removal
+
+Canonical authoring no longer contains the Mechanics section, its pages or legacy advancement category mappings. Handbook regeneration prunes retired pages before writing current content, and the advancement generator no longer writes book notes. The obsolete campaign-book validator and unused advancement guide index are retired. No texture, native manual API, FTB quest logic, tooltip/JEI item help or recipe is redesigned
+
+Production packaging, Atlas and native publication/application status are recorded in book-content-removal-20261024.json. Client closure is required before native application. No automated tests, gameplay launch or visual acceptance is claimed

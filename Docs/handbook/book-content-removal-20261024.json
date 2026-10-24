@@ -1,0 +1,101 @@
+{
+  "date_local": "2026-10-24T21:38:27+05:00",
+  "timezone": "Asia/Yekaterinburg",
+  "request": "Remove all advancement content from the JEM book and remove Mechanics tab",
+  "scope": "Patchouli JEM handbook only, independent FTB quests and gameplay advancements preserved",
+  "status": "source_built_synchronized_and_published_client_application_deferred",
+  "user_requested": [
+    "Remove book advancements",
+    "Remove Mechanics tab"
+  ],
+  "implementation_choices": [
+    "Remove retired resources and their generator branches",
+    "Prune inactive book sections on regeneration",
+    "Retain inert directClick binary compatibility method for the installed Compat caller",
+    "Replace boss links into retired Mechanics pages with inline encounter guidance",
+    "Pass alternate resource output through to the handbook materializer"
+  ],
+  "book": {
+    "sections": [
+      "start",
+      "bosses",
+      "enchantments",
+      "items",
+      "manuals"
+    ],
+    "before": {
+      "en_us": 591,
+      "ru_ru": 246
+    },
+    "after": {
+      "en_us": {
+        "entries": 205,
+        "categories": 5
+      },
+      "ru_ru": {
+        "entries": 205,
+        "categories": 5
+      }
+    },
+    "retired_links_replaced": {
+      "handbook/mechanics/encounters": 64
+    },
+    "old_advancement_book_index_and_click_mixin": "removed",
+    "actual_achievement_definitions_saved_progress_rewards_and_FTB": "unchanged"
+  },
+  "preservation": {
+    "native_data_and_FTB_source_files_byte_identical": 382,
+    "source_preservation_map": ".superpowers/jem-book-content-removal/preserved-before.json",
+    "stable_profile_and_release_baseline_fingerprints_unchanged": true
+  },
+  "production_build": {
+    "command": "gradlew.bat :JEMAchievementGuide:clean :JEMAchievementGuide:jar, then :JEMAchievementGuide:jar after regenerated links",
+    "result": "BUILD SUCCESSFUL, jar and reobfJar",
+    "tests_linters_formatters_static_analysis_gameplay_or_client_launches": "NOT RUN",
+    "jar": "Mods/JEMAchievementGuide/build/libs/jem-advancements-5.1.0.jar",
+    "sha256": "ee8b1053524fb1ac1796869796a69e7c77889a0f80a7093f4c3ec1cb43700189",
+    "packaging": "205 reference entries and five categories in each language, retired advancement/Mechanics resources and old click Mixin absent"
+  },
+  "server": {
+    "jar_sha256": "ee8b1053524fb1ac1796869796a69e7c77889a0f80a7093f4c3ec1cb43700189",
+    "startup": "Done observed",
+    "loaded_advancements": 1872,
+    "state": "saved and stopped after publication"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 72,
+    "publishedManifestSha1": "f45fa89e1da042dac8f153875662c99dd9182415",
+    "stagedManifestSha1": "f45fa89e1da042dac8f153875662c99dd9182415",
+    "contentToken": "1c1ccb1149a43d9f7d37c98c19b3131c0d4d1ca0",
+    "added": 0,
+    "changed": 2,
+    "deleted": 0
+  },
+  "test_jem": {
+    "installed_token_at_receipt": "87e9a3eab4e59c1817ee975aa8f46c4b8f1469cc",
+    "matches_published_head": false,
+    "application_status": "deferred_until_user_closes_running_Minecraft",
+    "user_response": "Will close later",
+    "native_application_attempted_while_running": false,
+    "ready_with_new_book": false
+  },
+  "atlas": {
+    "full_regeneration": true,
+    "validation": true,
+    "change_records": 148,
+    "working_tree_uncovered": [
+      "Unrelated pre-existing JEMRoles sandbox provenance source"
+    ],
+    "commit_scope_scan": "recorded after commit"
+  },
+  "review": {
+    "independent_source_review": "One output-root finding fixed, no other independent issues",
+    "runtime_book_rendering_search_and_click_acceptance": "UNOBSERVED"
+  },
+  "external_delivery": {
+    "MineRENT": "not accessed",
+    "stable_profile": "not modified",
+    "release_baseline": "not promoted"
+  }
+}
