@@ -1,0 +1,411 @@
+{
+  "project": "jem-three-guis-2026-10-24",
+  "minecraft_version": "1.20.1",
+  "forge_version": "47.4.10",
+  "pack_format": 15,
+  "runtime_status": "UNOBSERVED (static bytecode + UV + pixel verification only; Minecraft not launched)",
+  "shared_inventory_master": {
+    "source_aseprite": "sources/shared_inventory_master.aseprite",
+    "candidate_png": "candidates/shared_inventory_master.png",
+    "lower_slice_png": "candidates/shared_inventory_lower_176x86.png",
+    "master_dimensions": [
+      176,
+      96
+    ],
+    "lower_module_slice_in_master": {
+      "x": 0,
+      "y": 10,
+      "w": 176,
+      "h": 86
+    },
+    "inventory_plaque_slice_in_master": {
+      "x": 6,
+      "y": 0,
+      "w": 64,
+      "h": 10
+    },
+    "destination_regions": {
+      "inventory.png": {
+        "lower_module": [
+          0,
+          80,
+          176,
+          86
+        ],
+        "inventory_plaque": null
+      },
+      "anvil.png": {
+        "lower_module": [
+          0,
+          80,
+          176,
+          86
+        ],
+        "inventory_plaque": [
+          6,
+          70,
+          64,
+          10
+        ]
+      },
+      "villager2.png": {
+        "lower_module": [
+          100,
+          80,
+          176,
+          86
+        ],
+        "inventory_plaque": [
+          105,
+          70,
+          64,
+          10
+        ]
+      }
+    },
+    "pixel_equality_verified": {
+      "lower_176x86_inventory_eq_anvil": true,
+      "lower_176x86_inventory_eq_villager2": true,
+      "lower_176x86_all_eq_master": true,
+      "plaque_64x10_anvil_eq_villager2": true,
+      "plaque_64x10_all_eq_master": true
+    }
+  },
+  "assets": {
+    "inventory.png": {
+      "target_resource_path": "assets/minecraft/textures/gui/container/inventory.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_sha256": "1952f9978a96e15197ad58d998a40840a86f41b1c8cd4323e04fd8eeff9f7337",
+      "candidate_sha256": "3b53d67877ba3070beb7bbe79cf45cd3f8654b31d041dcfccc780874d45e3a6f",
+      "main_panel_bounds": [
+        0,
+        0,
+        176,
+        166
+      ],
+      "armor_slot_frames_18x18": [
+        [
+          7,
+          7
+        ],
+        [
+          7,
+          25
+        ],
+        [
+          7,
+          43
+        ],
+        [
+          7,
+          61
+        ]
+      ],
+      "player_preview_recess": [
+        25,
+        7,
+        51,
+        72
+      ],
+      "offhand_slot_frame_18x18": [
+        76,
+        61,
+        18,
+        18
+      ],
+      "crafting_2x2_frames_18x18": [
+        [
+          97,
+          17
+        ],
+        [
+          115,
+          17
+        ],
+        [
+          97,
+          35
+        ],
+        [
+          115,
+          35
+        ]
+      ],
+      "crafting_arrow_bounds": [
+        135,
+        29,
+        15,
+        9
+      ],
+      "crafting_result_frame_18x18": [
+        153,
+        27,
+        18,
+        18
+      ],
+      "dynamic_recipe_button_bounds": [
+        104,
+        61,
+        20,
+        18
+      ],
+      "dynamic_title_label": {
+        "text": "Crafting",
+        "x": 97,
+        "y": 6,
+        "color": "#404040"
+      },
+      "jem_rewards_slot_blit_compatibility": {
+        "uv": [
+          7,
+          83,
+          18,
+          18
+        ],
+        "owner": "JEMRewards RewardsPanel.java"
+      },
+      "protected_auxiliary_regions_byte_identical": true,
+      "alpha_delta_pixels_vs_original": 0
+    },
+    "anvil.png": {
+      "target_resource_path": "assets/minecraft/textures/gui/container/anvil.png",
+      "dimensions": [
+        256,
+        256
+      ],
+      "original_sha256": "5582fc1c55927663b45a2e28bd0b2ddaa733e7fe546a85e64f6410c92d91e9a1",
+      "candidate_sha256": "23a7deb2c762486fba62a43ac63bd083904aafcd90189ccb2583e8eb88314c36",
+      "main_panel_bounds": [
+        0,
+        0,
+        176,
+        166
+      ],
+      "dynamic_title_label": {
+        "text": "Repair & Name",
+        "x": 60,
+        "y": 6,
+        "color": "#404040"
+      },
+      "dynamic_inventory_label": {
+        "text": "Inventory",
+        "x": 8,
+        "y": 72,
+        "color": "#404040"
+      },
+      "rename_field_blit_target": [
+        59,
+        20,
+        110,
+        16
+      ],
+      "rename_editbox_text_bounds": [
+        62,
+        24,
+        103,
+        12
+      ],
+      "input_slot_0_frame_18x18": [
+        26,
+        46,
+        18,
+        18
+      ],
+      "input_slot_1_frame_18x18": [
+        75,
+        46,
+        18,
+        18
+      ],
+      "result_slot_2_frame_18x18": [
+        133,
+        46,
+        18,
+        18
+      ],
+      "error_overlay_blit_target": [
+        99,
+        45,
+        28,
+        21
+      ],
+      "auxiliary_sprites": {
+        "rename_field_active": [
+          0,
+          166,
+          110,
+          16
+        ],
+        "rename_field_disabled": [
+          0,
+          182,
+          110,
+          16
+        ],
+        "error_cross": [
+          176,
+          0,
+          28,
+          21
+        ]
+      },
+      "alpha_delta_pixels_vs_original": 0
+    },
+    "villager2.png": {
+      "target_resource_path": "assets/minecraft/textures/gui/container/villager2.png (HELD OUTSIDE ACTIVE PACK - global villager blocker)",
+      "dimensions": [
+        512,
+        256
+      ],
+      "original_sha256": "9b919d3d58576f015f26bfe4e40da384b390812d0a8c23b252c271244a189e47",
+      "candidate_sha256": "3de30ab419d16e2906c3e4eb50180b6f08699c1cecc28f42163c363959b5266f",
+      "main_panel_bounds": [
+        0,
+        0,
+        276,
+        166
+      ],
+      "dynamic_trades_label_center": {
+        "x": 53,
+        "y": 6,
+        "color": "#404040"
+      },
+      "dynamic_merchant_title_center": {
+        "x": 187,
+        "y": 6,
+        "color": "#404040"
+      },
+      "dynamic_inventory_label": {
+        "text": "Inventory",
+        "x": 107,
+        "y": 72,
+        "color": "#404040"
+      },
+      "xp_bar_blit_target": [
+        136,
+        16,
+        102,
+        5
+      ],
+      "trade_offer_list_bounds": [
+        5,
+        18,
+        88,
+        140
+      ],
+      "scroller_blit_track": [
+        94,
+        18,
+        6,
+        139
+      ],
+      "payment_slot_0_frame_18x18": [
+        135,
+        36,
+        18,
+        18
+      ],
+      "payment_slot_1_frame_18x18": [
+        161,
+        36,
+        18,
+        18
+      ],
+      "result_slot_2_showcase_frame_26x26": [
+        215,
+        32,
+        26,
+        26
+      ],
+      "result_slot_2_frame_18x18": [
+        219,
+        36,
+        18,
+        18
+      ],
+      "out_of_stock_cross_blit_target": [
+        182,
+        35,
+        28,
+        21
+      ],
+      "jem_economy_coin_price_line_bounds": [
+        108,
+        59,
+        160,
+        12
+      ],
+      "auxiliary_sprites": {
+        "out_of_stock_cross_big": [
+          311,
+          0,
+          28,
+          21
+        ],
+        "trade_arrow_available": [
+          15,
+          171,
+          10,
+          9
+        ],
+        "trade_arrow_out_of_stock": [
+          25,
+          171,
+          10,
+          9
+        ],
+        "discount_strikethrough": [
+          0,
+          176,
+          9,
+          2
+        ],
+        "xp_level_bar_fills": [
+          0,
+          181,
+          102,
+          15
+        ],
+        "scroller_enabled": [
+          0,
+          199,
+          6,
+          27
+        ],
+        "scroller_disabled": [
+          6,
+          199,
+          6,
+          27
+        ],
+        "legacy_trade_button_backplate_frame_only": [
+          279,
+          73,
+          88,
+          27
+        ]
+      },
+      "alpha_delta_vs_original": {
+        "total_changed_pixels": 2156,
+        "intentional_legacy_button_interior_transparent_280_365_74_98": 2150,
+        "intentional_shared_inventory_bottom_left_rounded_corner_100_102_163_165": 6,
+        "unexplained_alpha_delta_pixels": 0
+      },
+      "integration_blockers": {
+        "profession_selector_blocker": "Vanilla MerchantScreen hardcodes textures/gui/container/villager2.png for all villager professions and no OptiGUI/OptiFine or custom selector mixin exists in JEM. Kept outside active candidate pack ZIP so non-librarian villagers are not given a librarian bookshop GUI.",
+        "trade_offer_button_opaque_fill_owner": "In Forge 1.20.1 (47.4.10), MerchantScreen$TradeOfferButton extends Button -> AbstractButton, whose renderWidget draws GuiGraphics.blitNineSliced(AbstractWidget.WIDGETS_LOCATION, ..., 88, 20, 20, 4, 200, 20, 0, 46 + i * 20) from textures/gui/widgets.png rather than sampling villager2.png (279, 73). Removing the opaque per-offer button fill at runtime requires a small MerchantScreen/TradeOfferButton render mixin in JEM rather than PNG alpha alone."
+      }
+    }
+  },
+  "contrast_checks": {
+    "shared_inventory_label_plaque_min_contrast": 1.76,
+    "inventory_crafting_plaque_min_contrast": 1.54,
+    "anvil_repair_plaque_min_contrast": 1.98,
+    "villager2_trades_plaque_min_contrast": 2.39,
+    "villager2_librarian_plaque_min_contrast": 1.22,
+    "villager2_jem_coin_counter_apron_min_contrast": 1.0
+  }
+}

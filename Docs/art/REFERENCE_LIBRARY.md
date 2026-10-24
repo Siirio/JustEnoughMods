@@ -2,6 +2,28 @@
 
 Current JEM storage/handoff: [ASSET_WORKFLOW.md](ASSET_WORKFLOW.md). The [persistent original archive](reference-library/minecraft-2026-10-22/README.md) and [source/hash manifest](reference-library/minecraft-2026-10-22/manifest.json) preserve the existing Minecraft reference collections inside this project. Search them before asking for repeat uploads. Later corrections override historical choices below.
 
+## Research-pack target mapping — 2026-10-22
+
+The supplied `JEM_Art_Research_Pack.zip` has an incomplete ZIP tail, but its provenance manifest is readable. All13 declared target originals already exist below `reference-library/minecraft-2026-10-22/originals/`; each actual file was independently checked against the package's full SHA-256. No second image library was created. The table resolves package IDs, not a new classification or production approval. Existing owning README/Pair scope and the latest explicit user feedback still apply. Source receipt, study limits and implemented procedures: [ASSET_WORKFLOW.md](ASSET_WORKFLOW.md#research-pack-integration--2026-10-22).
+
+| Package ID | Existing original under the prefix above | SHA-256 prefix |
+| --- | --- | --- |
+| target_01 | `GUI/Reference/I_like/Снимок экрана 2026-10-20 214725.png` | `25eb4ff5ecaa` |
+| target_02 | `GUI/Reference/I_like/Снимок экрана 2026-10-16 181100.png` | `2d896b5961d2` |
+| target_03 | `GUI/Reference/I_like/Снимок экрана 2026-10-20 214703.png` | `a845b1eb1a3a` |
+| target_04 | `Models/Reference/REF14_antlered_small_creature.png` | `3f18c093cd4a` |
+| target_05 | `Models/Reference/REF20_painted_green_dinosaur.png` | `b92ecee80c48` |
+| target_06 | `Models/Reference/Снимок экрана 2026-10-16 181406.png` | `77e8434a41f0` |
+| target_07 | `Models/Reference/REF07_chained_red_chest.png` | `34e3bd14b8a7` |
+| target_08 | `Icons/I_like/Снимок экрана 2026-10-16 181238.png` | `050f3ceaedc6` |
+| target_09 | `Icons/I_like/Снимок экрана 2026-10-16 181258.png` | `887e999df30e` |
+| target_10 | `Icons/I_like/Снимок экрана 2026-10-20 215010.png` | `37946680431e` |
+| target_11 | `Icons/I_like/Снимок экрана 2026-10-16 181029.png` | `06d1beffee00` |
+| target_12 | `Icons/I_like/Снимок экрана 2026-10-16 181225.png` | `d07299411823` |
+| target_13 | `Models/Reference/Снимок экрана 2026-10-17 202933.png` | `a5e04b8796a7` |
+
+The unavailable `references/user_process/shrike_transcript.txt`, `shrike_uv.png` and `templates/*` were not read or reconstructed. Their summaries/path declarations are not original evidence. Public examples from the pack are technical study material and are not promoted into this positive-reference collection.
+
 2026-10-22: the user explicitly rejects the first two previews shown in the graphics-process task: `smp-style-studies-2026-10-21/01-trading-station-1x.png` and `smp-trading-cards-2026-10-21/smp-cards-review.png`. Neither may be a target or a source of reusable parts for the new SMP example. Positive card reference originals remain references, not cutout textures.
 
 User's supplied quality contract: [QUALITY_ENGINE_SOURCE.md](QUALITY_ENGINE_SOURCE.md), copied without changing its bytes on 2026-10-17. Canonical execution workflow is the global `taste-engine` skill; this library stores evidence and classifications, not a competing skill.

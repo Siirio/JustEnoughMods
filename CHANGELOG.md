@@ -1,3 +1,11 @@
+## 2026-10-25 - Save pending project work
+
+- User requested committing and pushing all remaining project work on the current branch
+- Publication includes existing art sources and candidate previews, research workflow notes, quest and economy catalog reports, prepared worldgen patch records, map-trial documentation and non-personal server configuration
+- Implementation choice: preserve candidates and prepared patches with their existing approval and delivery limits, without promoting them into a production release or changing managed client artifacts
+- Local Atlas caches, temporary diagnostics, backup archives, player teleport data, Chunky progress, map caches and machine-local Rhino metadata remain local under the project privacy and runtime-state rules
+- No build, automated test, static-analysis job, gameplay launch, native publication, stable-profile mutation, MineRENT deployment or release-baseline promotion was performed for this repository snapshot
+
 ## 2026-10-24 - Player feedback, readable food effects and Russian client resources
 
 - User requested explicit food categories and each blessing description, all native food effects, working Creative blessings/rewards, tall companion recovery beside homes, triple XP only from the experience bottle item and adaptive seconds/minutes/whole Minecraft days
@@ -18,12 +26,13 @@
 - Actual gameplay advancements, saved completion, criteria, rewards and the separate FTB quest book are unchanged. No new artwork, automated tests or client/gameplay launch is introduced
 - Local packaging and native AutoModpack delivery status: Docs/handbook/book-content-removal-20261024.json
 
-## 2026-10-24 - Bound Oceanic Realms chunk decoration
+## 2026-10-24 - Prepare combined Oceanic and Deep Dark worldgen patch
 
-- User request: investigate chunk-generation errors and freezes, then prepare a thorough correction for the supplied Oceanic Realms failure
-- Bug / Both Sided / Oceanic Realms 1.0.7 scatter plus rotated multi-block template extents can exceed the native FEATURES write neighborhood, rejecting blocks and producing repeated errors / in testing. Use geometry-specific native datapack placement bounds for beach, deep and shallow reef rocks, sandstone pillars and arches, including the beach neighbor-update margin
-- Implementation choice: preserve native templates, biome rules, internal chances and attempt counts. Change only unsafe horizontal placement bounds, with no third-party JAR patch, hidden logging filter, forced chunk load or regenerated existing terrain
-- User delivery restriction: prepare only this patch. No native publication, client application, runtime restart, commit, push or MineRENT deployment. Full freeze attribution and player acceptance remain pending
+- Production JEMCompat jar/reobfJar passed. Prepared ZIP contains only the complete current JEMCompat domain artifact and the six existing Oceanic resources, with exact hashes and preserved pre-existing HUD-default edits recorded in PreparedPatches/2026-10-24-worldgen/receipt.json
+- User request: prepare the Deep Dark ancient-fossil fix together with the existing Oceanic patch, without publication or any local Server changes
+- Bug / Both Sided / Deep Dark Regrowth1.2.6.1 chooses internal0..15 anchors without allowing for its18x9x9 rotated fossil and shape-update neighbors, causing rejected far-chunk writes and partial placement / in testing. JEMCompat redirects only the two coordinate draws and derives safe anchors[2,13] from the initialized native template
+- Implementation choice: retain native fossils, chance, attempt count, material/height conditions, rotations, mirrors and complete placement. Register a separate required worldgen Mixin config with exact-version gating and two required sites, without a new runtime dependency
+- Delivery is preparation only. No Server/client installation, native staging/publication/application, restart, tests, gameplay launch, commit, push or MineRENT deployment. Performance and runtime acceptance remain pending
 
 ## 2026-10-24 - Standalone JEMFood v3 and complete local client update
 
@@ -33,14 +42,6 @@
 - Local delivery includes fresh production module outputs and the existing Oceanic/Deep Dark and Blood Moon patches, plus the complete standalone MobHome artifact. Exact hashes and native generation/application evidence belong to Docs/food/delivery-v3.json
 - Bug / Both Sided / MobHome optional Pseudo targets retained default remappable Shadow annotations, so Mixin runtime rejected native-member adapters / in testing. Explicit remap=false on the eight native optional adapters preserves their exact upstream names and allows runtime validation, player acceptance remains pending
 - Production jar/reobf packaging and Atlas maintenance are distinct from player acceptance. Automated tests and gameplay/client launches are not run under the project rules. The original client, MineRENT and immutable release baseline remain unchanged
-
-## 2026-10-24 - Prepare combined Oceanic and Deep Dark worldgen patch
-
-- Production JEMCompat jar/reobfJar passed. Prepared ZIP contains only the complete current JEMCompat domain artifact and the six existing Oceanic resources, with exact hashes and preserved pre-existing HUD-default edits recorded in PreparedPatches/2026-10-24-worldgen/receipt.json
-- User request: prepare the Deep Dark ancient-fossil fix together with the existing Oceanic patch, without publication or any local Server changes
-- Bug / Both Sided / Deep Dark Regrowth1.2.6.1 chooses internal0..15 anchors without allowing for its18x9x9 rotated fossil and shape-update neighbors, causing rejected far-chunk writes and partial placement / in testing. JEMCompat redirects only the two coordinate draws and derives safe anchors[2,13] from the initialized native template
-- Implementation choice: retain native fossils, chance, attempt count, material/height conditions, rotations, mirrors and complete placement. Register a separate required worldgen Mixin config with exact-version gating and two required sites, without a new runtime dependency
-- Delivery is preparation only. No Server/client installation, native staging/publication/application, restart, tests, gameplay launch, commit, push or MineRENT deployment. Performance and runtime acceptance remain pending
 
 ## 2026-10-24 - Optimize Mob Home models and finish feature delivery
 
@@ -54,6 +55,13 @@
 - User delivery decision: finish sources, production JARs and ZIPs only. Do not publish/apply AutoModpack or start the server. Preserve unrelated prepared worldgen changes in place
 - Bug / Catalog / file-wide source registry guessing classified block-entity and recipe IDs as items / in testing. Bind every registration to its own typed DeferredRegister receiver. Mob Home contributes exactly two items and two blocks, with native runtime registration still unobserved
 
+## 2026-10-24 - Bound Oceanic Realms chunk decoration
+
+- User request: investigate chunk-generation errors and freezes, then prepare a thorough correction for the supplied Oceanic Realms failure
+- Bug / Both Sided / Oceanic Realms 1.0.7 scatter plus rotated multi-block template extents can exceed the native FEATURES write neighborhood, rejecting blocks and producing repeated errors / in testing. Use geometry-specific native datapack placement bounds for beach, deep and shallow reef rocks, sandstone pillars and arches, including the beach neighbor-update margin
+- Implementation choice: preserve native templates, biome rules, internal chances and attempt counts. Change only unsafe horizontal placement bounds, with no third-party JAR patch, hidden logging filter, forced chunk load or regenerated existing terrain
+- User delivery restriction: prepare only this patch. No native publication, client application, runtime restart, commit, push or MineRENT deployment. Full freeze attribution and player acceptance remain pending
+
 ## 2026-10-24 - Add handbook item links and native boss models
 
 User request: remove Controls, link enchanted books and compatible equipment in JEI, show five fixed equipment slots and cycle further entries in the sixth, collapse quest groups by default, and pair boss3D models with descriptions and drop links
@@ -61,6 +69,15 @@ User request: remove Controls, link enchanted books and compatible equipment in 
 Implementation: extend native Patchouli pages/components and optional JEI focus with exact book NBT. Resolve equipment through native enchantment predicates, preserve existing detailed explanations and boss tactics, and add native entity rendering for56 profiles. Possible-drop links have installed table/death-procedure evidence for55 profiles, Fractured remains unconfirmed. Keep server-owned gameplay, loot conditions and native quest progress unchanged
 
 Bug / Client / native ChapterGroup initializes guiCollapsed=false and no authored collapsed default exists / in testing. Initialize only new client groups collapsed, preserving native user toggles. Production JAR/reobfuscation passed after a bounded-memory retry and adding the exact compile-only JEI API. No tests or gameplay launch
+
+## 2026-10-24 - Trial Chunky terrain in shared Xaero maps
+
+- User requested a MineRENT Chunky radius of 20000 blocks around X -7228 and Z -1380, then requested that generated terrain also fill every player's Xaero map
+- User chose a local `test jem` compatibility trial before deployment and will operate the Minecraft client manually
+- Implementation choice: trial official MapSyncer 1.0.3 for Forge 1.20.1 alongside existing Unified Xaero Worldmap 2.0.1, using a separate local world and native AutoModpack. This candidate is not a MineRENT release or an approved replacement for the shared-map owner
+- Bug / Server / BloodMoonLoot read every loaded container slot even without invalidated attempts and unpacked pending native chest loot during Chunky generation, reaching the watchdog / in testing. Require invalidation history and skip pending native block/vehicle loot tables before slot reads, preserving cleanup of materialized tagged items
+- Observed limitation: MapSyncer 1.0.3 reports `NoSuchFieldException: AIR` in its reflective placeholder BlockGetter. A created region file alone does not establish correct map rendering or safe coexistence with Unified
+- Evidence and manual acceptance status: `Docs/playtests/2026-10-24-xaero-pregeneration.md`. MineRENT map integration, stable profiles and immutable release baseline remain unchanged
 
 ## 2026-10-24 - Extract standalone Mob Home
 
@@ -183,7 +200,6 @@ Art candidate only: no managed pack, game profile, local Server artifact, releas
 - Inspected exact installed Spawn 4.0.7 and Serene Seasons 9.1.0.3 bytecode and matching Atlas SHA256. Production `:JEMCompat:jar` plus `reobfJar` succeeded; packaged tags, optional required Mixin config and generated SRG refmap are present. No tests, static code analysis or gameplay launches were run.
 - Coordinated with parallel handbook/Hint/Jade work and preserved its source, Lionfish compile dependency and boss-help classes in the combined artifact. Separate Atlas records retain original registry ownership. Current Atlas and local Server/native AutoModpack state are recorded in `Mods/JEMCompat/seasons-delivery.json`; build/publication does not imply player acceptance. Stable profile, MineRENT and release baseline are unchanged.
 
-
 ## 2026-10-23 - Catalog installed GUI references for selective resource-pack work
 
 User request: put the GUI components available to `test jem` into Atlas as `GUI/mod-name (or vanilla) -> link + PNG`, to select parts for a later custom JEM resource pack.
@@ -268,29 +284,6 @@ Verification: production jar/reobfJar tasks succeeded for WorldBossTiers, Roles 
 
 Offline delivery: exact fresh JARs synchronized to clean ManagedPack and stopped ordinary local Server, then stage-pack-sync copied the three JARs and manifest. Native preview/publish and application to test jem were not run because this prompt forbids server/client launches; publication remains false (previous published journal59 is not this staged head). No tests/fixtures, linters/static analyzers, gameplay QA, stable-profile changes, MineRENT deployment or release-baseline promotion occurred. Actual Mixin application, reload/death/dimension behavior, native ally AI, moving-target echo AoE and full accepted damage sequences still require authorized gameplay observation. See Docs/power-system/Balance.md for parameters, boundaries and existing-world application.
 
-## 2026-10-22 - Merge Atlas research into current main
-
-User request: safely merge the existing Atlas research pull request into main. Merge resolution preserves both changelog histories and current architecture/instructions. Retained main's regenerated Atlas baseline coverage summary and digest instead of the PR's older snapshot; canonical changes and gameplay remain unchanged. Historical research snapshots and their applicability warnings remain explicit. No builds, tests, static analysis, game launches, runtime synchronization or deployment were performed for this merge.
-
-## 2026-10-22 - Complete installed-pack Atlas research and provenance
-
-- User requests filling Atlas research through real web sources and YouTube guide transcripts, preserving the concurrent architecture revamp; game launches are excluded. The user separately prohibits installing standalone Rubidium because it crashes the pack.
-- Expanded the supplied research to 333 external profiles, 1441 source-backed observations, 776 source declarations and 148 prerequisite edges. All 349 IDs in the committed-main manifest are accounted for by research or 16 explicit existing-owner/archive routes; no third-party mod is hidden behind a JEM-owner exemption. A separate audit of the concurrent 346-ID working manifest also has zero unassessed IDs.
-- Implementation decisions: inspect native guidebooks, bestiaries, recipes, advancements, tooltips and exact version-dependent classes; use author pages/source and three actual caption transcripts as corroboration. Preserve release caveats, historical snapshots, custom quest-signal requirements and runtime exclusions. 289 installed-static source declarations carry exact archive SHA256 and resource evidence; captions carry chapter ranges and sequence digests. Do not redistribute full transcripts or duplicate canonical gameplay owners.
-- Persisted the standalone Rubidium ban in AGENTS.md and its research profile; the existing Embeddium compatibility ID is explicitly distinguished from a separate Rubidium JAR. No renderer or runtime dependency was installed or changed by this task.
-- Bug / Both Sided (offline Atlas only) / stale baseline source-coverage digest no longer matched the existing Catalog/changes index / in testing. Regenerated the derived audit on committed main and changed only its digest; historical coverage totals and gameplay facts are unchanged.
-- Validation: strict research audit with schema, coverage, prerequisite, registry and actual archive/resource checks passes with zero errors; one retained warning describes the older imported snapshot. The canonical Atlas validator passes on the committed source scope with its installed prerequisites. All five reader modes return actual-data results. Independent read-only code review has no actionable findings.
-- Delivery uses the existing Atlas PR with a separate temporary Git index. Concurrent staged architecture changes, updated manifest, native domain rules and unrelated changelog entries are preserved and excluded. No gameplay edits, Gradle build, tests/fixtures, game/server launch, runtime verification, Client/Server artifact synchronization, AutoModpack publication, stable-profile mutation, baseline promotion or MineRENT deployment is performed by this task.
-
-## 2026-10-21 - Integrate source-backed Atlas mechanics research
-
-- User requests integration of the supplied research ZIP, validation, issue repair and a PR against main, preserving Atlas architecture and excluding gameplay and MineRENT changes.
-- Imported 52 external observations, 20 prerequisite edges and 23 source declarations for 10 mods under Catalog/research. Canonical registries, JEM changes and effective behavior retain ownership; every observation remains EXTERNAL_SOURCE_ONLY and runtime_verified false.
-- Integration decisions: adapt the three documentation links to the current files, enforce the supplied JSON Schema using a declared offline jsonschema dependency, include embedded mod IDs in coverage, retain source/version/condition provenance on graph edges, and report snapshot drift without relabeling research. Coverage is 10 researched of 349 installed IDs, with 339 explicit gaps.
-- Bug / Both Sided (offline catalog reader only) / the supplied audit omitted full schema validation and accepted missing research or manifest inputs as empty coverage; outer-artifact-only traversal omitted embedded mod IDs / in testing. Schema validation, explicit input errors and recursive manifest traversal repair those owning paths; no runtime behavior changes.
-- Validation: research audit with registry checks passes with zero errors/warnings on the PR snapshot; all five modes return the expected real-data results; the existing Atlas validator passes with canonical referenced sources and installed artifacts available. All 20 reviewed client/server JAR hashes match the working manifest. Unrelated concurrent catalog/index work is excluded rather than regenerated.
-- No Gradle build, automated tests, game/server launch, runtime verification, managed client/server synchronization, AutoModpack publication, stable-profile mutation, release-baseline promotion or MineRENT deployment.
-
 ## 2026-10-22 - Share bootstrap installer with complete shaderpacks
 
 User request: provide a shareable ZIP whose mods directory contains only Bootstrap, with a populated shaderpacks folder.
@@ -306,6 +299,38 @@ User decision: make Twelve Eyes and all of its boss dependencies mandatory as th
 Recorded the original twelve MAIN bosses, sixteen prerequisite entities, End Remastered Eyes, native structure/dimension requirements and full transitive dependency review in the existing universal implementation plan. Exact installed metadata supplies initial library requirements; undeclared native requirements and post-End closure remain explicit implementation work. Current optional-content availability behavior, production artifacts and generation 59 remain unchanged.
 
 Reviewed combat ownership against current source and the permanent Atlas: WorldTier ordinary-hostile/boss/party/Raid/Progression/Iron PvE layers; Server event, debuff and Phantom armor rules; Races traits/abilities; Compat elemental/transport extensions; Settlements recovery and native combat owners. This is a source-backed scope explanation, not a new balance change or runtime combat measurement. The shared Atlas engine reports uninitialized; the existing permanent Catalog queries and owning source were used, and no new audit or gameplay launch was run.
+
+## 2026-10-22 - Apply art research to existing production workflows
+
+User request: study JEM_Art_Research_Pack.zip and implement useful findings, while creating nothing. This overrides the package's internal instructions to continue a pilot/chest/current asset; no images, models, textures, sample atlases, templates, scripts or new reference copies were created in this pass.
+
+Implementation choices: update the existing canonical art contract, texture recipes, GUI/VFX technical workflows, Aseprite tool assessment and visual auditor with staged form/color/material/detail work, material-aware UV masks, separate surface/physical-edge/contact passes, pose-aware shade, GUI joins/states, renderer-specific alpha and cold before/after comparison. Aseprite remains the pixel source and Blockbench the geometry/UV/preview owner; paid generators and optional plugins remain researched candidates, not installed or approved production routes. No artwork improvement or successful pilot is claimed.
+
+The supplied 75,330,969-byte ZIP has no central directory/end record. Read 417 complete local entries in memory with matching CRC, including all seven main Markdown documents; 35 manifest-listed payload members are unavailable. All 13 target-image hashes nevertheless match actual originals already preserved in the project; their ID/path mapping is added to Docs/art/REFERENCE_LIBRARY.md. Missing Shrike originals/templates were not invented, and vendor examples do not become user-approved taste. Source SHA-256 and study limits are recorded in the existing Docs/art/ASSET_WORKFLOW.md.
+
+No gameplay/source module, Client/ManagedPack, local Server artifact, distribution or release baseline changed in this task. No builds, tests, game launches, service installations or paid calls were performed. The earlier instruction to stop committing remains respected: this follow-up changes existing guidance locally without a new commit or push.
+
+## 2026-10-22 - Complete installed-pack Atlas research and provenance
+
+- User requests filling Atlas research through real web sources and YouTube guide transcripts, preserving the concurrent architecture revamp; game launches are excluded. The user separately prohibits installing standalone Rubidium because it crashes the pack.
+- Expanded the supplied research to 333 external profiles, 1441 source-backed observations, 776 source declarations and 148 prerequisite edges. All 349 IDs in the committed-main manifest are accounted for by research or 16 explicit existing-owner/archive routes; no third-party mod is hidden behind a JEM-owner exemption. A separate audit of the concurrent 346-ID working manifest also has zero unassessed IDs.
+- Implementation decisions: inspect native guidebooks, bestiaries, recipes, advancements, tooltips and exact version-dependent classes; use author pages/source and three actual caption transcripts as corroboration. Preserve release caveats, historical snapshots, custom quest-signal requirements and runtime exclusions. 289 installed-static source declarations carry exact archive SHA256 and resource evidence; captions carry chapter ranges and sequence digests. Do not redistribute full transcripts or duplicate canonical gameplay owners.
+- Persisted the standalone Rubidium ban in AGENTS.md and its research profile; the existing Embeddium compatibility ID is explicitly distinguished from a separate Rubidium JAR. No renderer or runtime dependency was installed or changed by this task.
+- Bug / Both Sided (offline Atlas only) / stale baseline source-coverage digest no longer matched the existing Catalog/changes index / in testing. Regenerated the derived audit on committed main and changed only its digest; historical coverage totals and gameplay facts are unchanged.
+- Validation: strict research audit with schema, coverage, prerequisite, registry and actual archive/resource checks passes with zero errors; one retained warning describes the older imported snapshot. The canonical Atlas validator passes on the committed source scope with its installed prerequisites. All five reader modes return actual-data results. Independent read-only code review has no actionable findings.
+- Delivery uses the existing Atlas PR with a separate temporary Git index. Concurrent staged architecture changes, updated manifest, native domain rules and unrelated changelog entries are preserved and excluded. No gameplay edits, Gradle build, tests/fixtures, game/server launch, runtime verification, Client/Server artifact synchronization, AutoModpack publication, stable-profile mutation, baseline promotion or MineRENT deployment is performed by this task.
+
+## 2026-10-22 - Native graphics sources, persistent references and PNG-first review
+
+User direction: rebuild JEM graphics production around precise game contours, persistent supplied references and approved sources, a consumer-specific native pixel grid, original alpha/layers, unchanged approved parts, constrained script use, real-size/light-dark/nearest-neighbour review and editable Blockbench/UV/PNG sources. Start with one finished asset and show PNG before integration or series. The user chooses SMP GUI as the example, then explicitly rejects the two old trading-station/card previews. Their prior selection/status is historical; neither supplies pixels to the new work.
+
+Implementation choices: update the canonical Taste Engine/Aseprite/visual-auditor and JEM production skills; link the project workflow from the existing art/SMP owners. Preserve 575 existing Minecraft reference/source files (126.61 MiB) inside Docs/art/reference-library/minecraft-2026-10-22, with original filenames/bytes, classifications, provenance and SHA-256. Original archive hashes match; selected concepts, native sources and user-approved production assets remain distinct.
+
+First art result: a new directly painted 160x224 Aseprite Blood Moon card with five layers, separate transparent artwork and live-label preview exports, native1x and nearest3x light/dark views. This is one component, not a delivered full SMP screen. C0/C1/C2 sources and findings are retained. Arm contacts improved, but broad flat character/material planes, a stiff shoulder and simple environment still fail the reference-level finish. Status: NEEDS_DIRECTION, not USER_APPROVED or finished production art. The two automatic correction rounds are exhausted; no integration or series proceeds.
+
+Only graphics workflow/evidence/candidate files changed in this task. No Java/game configuration, Client/ManagedPack, local Server artifacts, MineRENT, stable profile or release baseline was modified by it. No builds, tests, lint, static analysis or game launches ran. Requested artifact checks confirm native dimensions, preserved transparent RGBA edges and exact reference-copy hashes. A concurrent unrelated update has its own staged changes and currently unpublished native generation; that state is preserved, not published by this art task.
+
+## 2026-10-21 — 3D-молоток, компактный tooltip Coins и список непроставленных цен
 
 ## 2026-10-22 - Universal standalone production architecture (in testing)
 
@@ -331,17 +356,6 @@ Delivery: exact production artifacts are synchronized to ordinary Server/Managed
 
 Production JAR builds and pinned Bootstrap patch reproduction were completed on Windows. Local Server/ManagedPack synchronization, native generation/application and final delivery evidence are recorded in `Docs/universal/DELIVERY.json`. No automated tests, client/gameplay launch, Linux/macOS execution, MineRENT deployment, stable-profile mutation or release-baseline promotion is claimed.
 
-## 2026-10-22 - Native graphics sources, persistent references and PNG-first review
-
-User direction: rebuild JEM graphics production around precise game contours, persistent supplied references and approved sources, a consumer-specific native pixel grid, original alpha/layers, unchanged approved parts, constrained script use, real-size/light-dark/nearest-neighbour review and editable Blockbench/UV/PNG sources. Start with one finished asset and show PNG before integration or series. The user chooses SMP GUI as the example, then explicitly rejects the two old trading-station/card previews. Their prior selection/status is historical; neither supplies pixels to the new work.
-
-Implementation choices: update the canonical Taste Engine/Aseprite/visual-auditor and JEM production skills; link the project workflow from the existing art/SMP owners. Preserve 575 existing Minecraft reference/source files (126.61 MiB) inside Docs/art/reference-library/minecraft-2026-10-22, with original filenames/bytes, classifications, provenance and SHA-256. Original archive hashes match; selected concepts, native sources and user-approved production assets remain distinct.
-
-First art result: a new directly painted 160x224 Aseprite Blood Moon card with five layers, separate transparent artwork and live-label preview exports, native1x and nearest3x light/dark views. This is one component, not a delivered full SMP screen. C0/C1/C2 sources and findings are retained. Arm contacts improved, but broad flat character/material planes, a stiff shoulder and simple environment still fail the reference-level finish. Status: NEEDS_DIRECTION, not USER_APPROVED or finished production art. The two automatic correction rounds are exhausted; no integration or series proceeds.
-
-Only graphics workflow/evidence/candidate files changed in this task. No Java/game configuration, Client/ManagedPack, local Server artifacts, MineRENT, stable profile or release baseline was modified by it. No builds, tests, lint, static analysis or game launches ran. Requested artifact checks confirm native dimensions, preserved transparent RGBA edges and exact reference-copy hashes. A concurrent unrelated update has its own staged changes and currently unpublished native generation; that state is preserved, not published by this art task.
-
-## 2026-10-21 — 3D-молоток, компактный tooltip Coins и список непроставленных цен
 
 - Пользователь запросил объёмную Blockbench-модель `bbb:hammer` вместо плоской2D через ресурс-пак. Выполнена отдельная7-кубоидная Java1.20.1 модель с32×32 текстурой, нарисованной и экспортированной в Aseprite. Technical choice Codex: required Paxi ZIP, отдельные UV-острова и native item display transforms; native source, PNG, JSON, exporter и реальные editor captures сохранены в `Docs/art/bbb-hammer-2026-10-21`. Рецепт и работа молотка прежние. Art reviewed; game runtime и user visual approval не заявлены.
 - Пользователь окончательно попросил сохранить текущую покупку кожи за1серебро+2меди: canonical buy12Copper/sell3Copper сохранены, новая цена продажи12Copper не вводилась.
@@ -358,6 +372,15 @@ Only graphics workflow/evidence/candidate files changed in this task. No Java/ga
 - Bug / Server / ServerLogin 1.0.3 intercepted ordinary OP2 chat into same-dimension 100-block system messages, causing `[local]`, distant non-delivery and missing player sender context / in testing; exact-version adapter preserves authentication and native public chat.
 - User final prices: rotten flesh 0.5 Copper each and leather 3 Copper each; earlier 1/4 prices are superseded. Implementation uses rational 1/2, preserves existing leather3, demand/quotas and bumps shared CurrencyCore to1.0.2.
 - User explicitly holds MineRENT and treats this as a new local update. Stable client and immutable release baseline remain unchanged. No tests, gameplay launch or player acceptance are claimed. Local artifact/publication receipt is recorded separately when completed.
+## 2026-10-21 - Integrate source-backed Atlas mechanics research
+
+- User requests integration of the supplied research ZIP, validation, issue repair and a PR against main, preserving Atlas architecture and excluding gameplay and MineRENT changes.
+- Imported 52 external observations, 20 prerequisite edges and 23 source declarations for 10 mods under Catalog/research. Canonical registries, JEM changes and effective behavior retain ownership; every observation remains EXTERNAL_SOURCE_ONLY and runtime_verified false.
+- Integration decisions: adapt the three documentation links to the current files, enforce the supplied JSON Schema using a declared offline jsonschema dependency, include embedded mod IDs in coverage, retain source/version/condition provenance on graph edges, and report snapshot drift without relabeling research. Coverage is 10 researched of 349 installed IDs, with 339 explicit gaps.
+- Bug / Both Sided (offline catalog reader only) / the supplied audit omitted full schema validation and accepted missing research or manifest inputs as empty coverage; outer-artifact-only traversal omitted embedded mod IDs / in testing. Schema validation, explicit input errors and recursive manifest traversal repair those owning paths; no runtime behavior changes.
+- Validation: research audit with registry checks passes with zero errors/warnings on the PR snapshot; all five modes return the expected real-data results; the existing Atlas validator passes with canonical referenced sources and installed artifacts available. All 20 reviewed client/server JAR hashes match the working manifest. Unrelated concurrent catalog/index work is excluded rather than regenerated.
+- No Gradle build, automated tests, game/server launch, runtime verification, managed client/server synchronization, AutoModpack publication, stable-profile mutation, release-baseline promotion or MineRENT deployment.
+
 ## 2026-10-21 - Repair shipping payments, market loading and active boss-party controls
 
 - User requests smooth shipping with a visible quote, physical Coins in "Оплата", no normal closing until collection, exclusive pending payment, no breaking/explosions/burning; adds market JEI, buy-only music discs for1Arcane, hidden unusable entries, rarity-priced Tide sales and easier rare catches. Codex implements persistent forced-close seller recovery, bounded native client/server projections and cache/request ownership without a second ledger.
@@ -370,6 +393,13 @@ Only graphics workflow/evidence/candidate files changed in this task. No Java/ga
 - Codex-selected Tide settings:101 native fish, buyback1/3/8/20/50Copper by rarity; relative native weights x0.9/x1.1/x1.25/x1.5/x1.75 in a physically dedicated-only built-in pack. Native FishLength/IsBucketable are admitted without arbitrary NBT or size premium. Native habitats, rods and singleplayer remain authoritative. Music discs are buy-only10000Copper as explicitly approved by user.
 - Bug / Server / Server Login1.0.3 injected repeated closed-channel diagnostics ahead of vanilla's closed-state guard / in testing. The optional dedicated adapter preserves the first report and suppresses only repeats for that already-closed connection. The original disconnect cause remains unproven.
 - Production reobfJarJar builds for Economy, Compat and Server passed; full Atlas regeneration/validation passed with six unrelated uncovered sources preserved. Local generation56 is installed in closed test jem. MineRENT published the same token43f6ddb at16:41:24+05:00 after preserving the current world backup archive-2026-10-21T142313+0300.tar.zst; backup integrity was not checked per user instruction. Matching artifacts, native stable installation and baseline evidence are tracked in Docs/releases/2026-10-21-shipping-market-repair.json. No automated tests or gameplay launches. User subsequently explicitly authorizes this exact native generation for JustEnoughMods and ForeverSMP current world; final release and installation evidence is in that receipt.
+
+## 2026-10-21 - Rebuild Candy King as a GeckoLib-ready pumpkin skeleton
+
+- User replaces the earlier low crawling Phase 1 direction with an exact tall pumpkin-skeleton reference and requests a GeckoLib animation-ready reconstruction. Codex preserves the earlier study and all unrelated work, then creates a separate sandbox-only `geckolib_model` source under `Docs/art/halloween-darkness-geckolib-2026-10-21`.
+- The editable model contains 22 articulated bones, 102 cuboids, a layered native 128 x 128 Aseprite atlas and three authored clips: looping idle, looping alternating walk and one-shot abdominal-maw bite. Front/side/back/three-quarter neutral renders and sampled motion poses accompany the source.
+- Visual-auditor status is NEEDS_DIRECTION after C0 plus two correction rounds: the defining anatomy and animation hierarchy read, but the stepped upper branches and rectangular side profile of the maw are not yet literal 1:1 matches. User approval and any further revision remain separate.
+- External sandbox art only. No gameplay source, registry, Atlas, Client/ManagedPack, local Server, MineRENT, AutoModpack generation, stable profile or release baseline changed. No build, automated test, validator, linter, static analysis or game launch ran.
 
 ## 2026-10-21 — Replace broken friend-update instructions with native recovery
 

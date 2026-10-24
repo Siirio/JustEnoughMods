@@ -1,0 +1,71 @@
+{
+  "status": "prepared_only_not_installed_or_published",
+  "date": "2026-10-24",
+  "minecraft": "1.20.1",
+  "forge": "47.4.10",
+  "scope": [
+    "Oceanic Realms native datapack bounds",
+    "JEMCompat Deep Dark Regrowth ancient fossil coordinate admission"
+  ],
+  "audited_inputs": {
+    "Deep Dark Regrowth 1.2.6.1": "3a2d487db40e1fe13307f8203ca69627787aede9bd332cf8bb2c29b41ec3fe88",
+    "Oceanic Realms 1.0.7": "8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321"
+  },
+  "production_build": {
+    "command": "gradlew.bat :JEMCompat:jar --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx2G",
+    "result": "BUILD SUCCESSFUL",
+    "reobfJar": true,
+    "tests_or_gameplay_launches": false
+  },
+  "files": {
+    "config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_beach.json": {
+      "sha256": "7abf422c41f30956f52e5583505f8e38bccc981fe284548b94165a8eb42171be",
+      "size": 801
+    },
+    "config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_deep.json": {
+      "sha256": "873bf5c35481ac6bcaf71b7b1d4d24e4666ecff0f34ca1d63b62e84e092c56ad",
+      "size": 751
+    },
+    "config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/reef_rock_shallow.json": {
+      "sha256": "24b79f7e77e9c4f1a9a2347242bd470f02a21d4671b00ef219a31d32c14d91ca",
+      "size": 864
+    },
+    "config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/configured_feature/sandstone_pillar.json": {
+      "sha256": "c04c3c8d703323817167910fae636354c57cb0c03553582a0a1928bbe6931486",
+      "size": 1197
+    },
+    "config/paxi/datapacks/jem-oceanic-worldgen-safety/data/oceanicrealms/worldgen/placed_feature/sandstone_arch.json": {
+      "sha256": "00f0c68dfbcf4b0f45090ac8a01c2aaca8c1570d8e008364eebd80de94cfaa44",
+      "size": 630
+    },
+    "config/paxi/datapacks/jem-oceanic-worldgen-safety/pack.mcmeta": {
+      "sha256": "8653140c810c87d2af75fce751331fac84a87b5b094c7a084968df08078f0ff8",
+      "size": 114
+    },
+    "mods/jemcompat-3.7.0.jar": {
+      "sha256": "a1ef52f66848f854a1aa4b99547c6caa6b4545e59469783440cd7bfebb9be244",
+      "size": 418388
+    }
+  },
+  "source_fingerprints": {
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/worldgen/DeepDarkAncientFossilPlacementMixin.java": "080064db4b0c9ff15ded8fc1d5bd15b5b79426de4b8dcb0f010a747b07d00129",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java": "e7e2fbb1cd9b5423659bbb03c808ce27a33a4434aea391c18e49ba1e70e6e4f3",
+    "Mods/JEMCompat/src/main/resources/jemcompat.worldgen.mixins.json": "5baaabf20f96d88b38cde73b9c25b59a39a15d91dc02fed26128264dcf8888ce",
+    "Mods/JEMCompat/build.gradle": "baf068edb7cce8f34a8dada93e619e74e3ab04e6bd99d032b36be3ac092648f2",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java": "73c4a23afec98d0ebd44a24f90cff69616d2a74684c6538a7af5b585ec730a59"
+  },
+  "preserved_preexisting_module_changes": [
+    "JEMClientConfig.java: unfinished day/night and season HUD defaults disabled. This is a complete current module build, not an isolated class overlay"
+  ],
+  "oceanic_component": "byte-identical to prior prepared datapack",
+  "exclusions": [
+    "Handbook/Guide JAR",
+    "Deep Dark Regrowth third-party JAR",
+    "Oceanic Realms third-party JAR",
+    "world saves",
+    "personal runtime data",
+    "AutoModpack state or journal",
+    "Lithostitched pool-reference fixes"
+  ],
+  "activation": "Not performed. Native Mixin application, loaded worldgen registry precedence, performance and player acceptance remain unverified"
+}

@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-21T08:50:55.284705+00:00` for `e5319721b683948860017b19113db7647452a890`.
+Generated from Atlas schema 1 at `2026-10-24T17:30:23.339694+00:00` for `5d918b2de5b6b634e76a131a38a3a7cbd90febba`.
 
-Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,542 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -10,7 +10,6 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | alexsmobs | 321 | 23 | 298 | 2 | 298 |
 | animal_feeding_trough | 1 | 0 | 1 | 0 | 1 |
 | aquamirae | 88 | 15 | 73 | 1 | 73 |
-| backpacked | 12 | 0 | 12 | 0 | 12 |
 | baguettelib | 1 | 0 | 1 | 0 | 1 |
 | bakery | 84 | 35 | 49 | 0 | 49 |
 | barnyardbuddies | 59 | 1 | 58 | 0 | 58 |
@@ -22,12 +21,12 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | blueprint | 1 | 0 | 1 | 0 | 1 |
 | brewery | 72 | 31 | 41 | 6 | 41 |
 | casualswing | 32 | 0 | 32 | 0 | 32 |
-| cataclysm | 386 | 18 | 368 | 0 | 368 |
+| cataclysm | 385 | 18 | 367 | 0 | 367 |
 | chimes | 7 | 0 | 7 | 0 | 7 |
 | citadel | 5 | 0 | 5 | 0 | 5 |
 | cnc | 103 | 14 | 89 | 5 | 89 |
 | companions | 81 | 5 | 76 | 0 | 76 |
-| copperagebackport | 8 | 0 | 8 | 0 | 8 |
+| copperagebackport | 120 | 0 | 120 | 0 | 120 |
 | create | 903 | 87 | 816 | 6 | 816 |
 | create_train_parts | 16 | 0 | 16 | 0 | 16 |
 | createrailwaysnavigator | 10 | 0 | 10 | 0 | 10 |
@@ -63,12 +62,11 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | irons_lib | 4 | 0 | 4 | 0 | 4 |
 | irons_spellbooks | 410 | 3 | 407 | 0 | 407 |
 | jacksgravestones | 1 | 0 | 1 | 0 | 1 |
-| jem_currency_core | 5 | 0 | 5 | 0 | 5 |
-| jem_economy | 1 | 0 | 1 | 0 | 1 |
-| jem_pack_core | 4 | 0 | 4 | 0 | 4 |
-| jemcompat | 79 | 0 | 79 | 0 | 79 |
-| kaleidoscope_compat | 218 | 0 | 218 | 0 | 218 |
-| kaleidoscope_cookery | 224 | 99 | 125 | 7 | 126 |
+| jem_economy | 6 | 0 | 6 | 0 | 6 |
+| jem_twelve_eyes | 32 | 0 | 32 | 0 | 32 |
+| jemcompat | 45 | 0 | 45 | 0 | 45 |
+| kaleidoscope_compat | 229 | 0 | 229 | 0 | 229 |
+| kaleidoscope_cookery | 213 | 99 | 114 | 7 | 115 |
 | kaleidoscope_doll | 705 | 0 | 705 | 0 | 705 |
 | kaleidoscope_end | 81 | 39 | 42 | 0 | 42 |
 | kaleidoscope_nether | 166 | 83 | 83 | 0 | 83 |
@@ -81,14 +79,17 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | luminous_beasts | 183 | 14 | 169 | 0 | 169 |
 | luminous_nether | 205 | 8 | 197 | 0 | 197 |
 | luminoustag | 1 | 0 | 1 | 0 | 1 |
-| minecraft | 1702 | 327 | 1375 | 82 | 1378 |
+| minecraft | 1456 | 321 | 1135 | 82 | 1138 |
 | moa_decor_holidays | 151 | 0 | 151 | 0 | 151 |
+| mobhome | 2 | 0 | 2 | 0 | 2 |
+| modefite | 2 | 0 | 2 | 0 | 2 |
 | moonlight | 1 | 0 | 1 | 0 | 1 |
 | moretotems | 7 | 0 | 7 | 0 | 7 |
 | natures_spirit | 717 | 189 | 528 | 58 | 528 |
 | naturescompass | 32 | 0 | 32 | 0 | 32 |
-| netherexp | 394 | 16 | 378 | 0 | 378 |
+| netherexp | 397 | 16 | 381 | 0 | 381 |
 | oceanicrealms | 43 | 9 | 34 | 4 | 34 |
+| p1nero_ec | 1 | 0 | 1 | 0 | 1 |
 | paraglider | 14 | 0 | 14 | 0 | 14 |
 | patchouli | 13 | 0 | 13 | 0 | 13 |
 | primal | 104 | 13 | 91 | 4 | 91 |
@@ -106,16 +107,19 @@ Static evidence observed 17,167 canonical item IDs. This is not a Forge runtime 
 | snowyspirit | 73 | 6 | 67 | 2 | 67 |
 | somemoreblocks | 663 | 281 | 382 | 0 | 382 |
 | sootychimneys | 14 | 0 | 14 | 0 | 14 |
+| sophisticatedbackpacks | 146 | 0 | 146 | 0 | 146 |
+| sophisticatedcore | 20 | 0 | 20 | 0 | 20 |
+| sophisticatedstorage | 225 | 0 | 225 | 0 | 225 |
 | spawn | 311 | 42 | 269 | 3 | 269 |
 | spider_overhaul | 20 | 2 | 18 | 0 | 18 |
 | spudaciousshops | 229 | 0 | 229 | 0 | 229 |
-| tide | 446 | 108 | 338 | 25 | 338 |
+| tide | 446 | 110 | 336 | 25 | 336 |
 | tinyinv | 2 | 0 | 2 | 0 | 2 |
 | toms_storage | 20 | 0 | 20 | 0 | 20 |
 | trials | 82 | 13 | 69 | 0 | 69 |
 | trotting_wagons | 5 | 0 | 5 | 0 | 5 |
 | unearthed_journey | 413 | 22 | 391 | 5 | 391 |
-| vanillabackport | 96 | 0 | 96 | 0 | 96 |
+| vanillabackport | 225 | 6 | 219 | 0 | 219 |
 | vinery | 171 | 60 | 111 | 23 | 111 |
 | whaleborne | 10 | 1 | 9 | 0 | 9 |
 | xtraarrows | 104 | 0 | 104 | 0 | 104 |
