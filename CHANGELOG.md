@@ -1,3 +1,10 @@
+## 2026-10-24 - Try generated shiny inventory in the GUI sandbox
+
+- User requested packaging the generated texture and inserting it into `jem sandbox`, explicitly without Aseprite
+- Implementation choice: preserve the generated 1254x1254 PNG byte-for-byte in an experimental inventory-only resource pack, install it only in the sandbox and append it to the existing pack selection after backing up options
+- This is a sandbox visual trial with unverified alpha and slot UVs, not the completed three-GUI pack. Anvil and librarian artwork are absent. No game launch, build, test, managed-client change, Server synchronization or AutoModpack publication was performed
+- Source and installation hashes are recorded in `Docs/art/generated-inventory-sandbox-2026-10-24/delivery.json`
+
 ## 2026-10-24 - Preserve Backpacked belongings in the upcoming update
 
 - User requested automatic transfer of old Backpacked belongings into Sophisticated bags for MineRENT players and then asked Codex to continue without reinstalling Backpacked
