@@ -98,30 +98,26 @@
     "owner": "Native Sophisticated mods, JEMCompat, JEMAchievementGuide, JEMServer",
     "kind": "user_requested_dependency_replacement",
     "source_files": [
-      "Mods/JEMCompat/build.gradle",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
-      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
-      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
+      "Client/ManagedPack/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json",
+      "Docs/MODS.md",
+      "Docs/backpack/README.md",
       "Mods/JEMAchievementGuide/build.gradle",
       "Mods/JEMAchievementGuide/src/main/advancements/manifest.json",
       "Mods/JEMAchievementGuide/src/main/handbook/items.json",
-      "Mods/JEMAchievementGuide/tools/questbook/book.json",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
-      "Docs/backpack/README.md",
-      "Docs/MODS.md",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_01.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_09.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_11.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_18.snbt",
-      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_19.snbt",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/items/sophisticatedbackpacks/backpack.json",
       "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/items/sophisticatedbackpacks/backpack.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json",
       "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/rules.json",
-      "Client/ManagedPack/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterEntitlements.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/StarterKitDelivery.java",
       "Server/kubejs/data/jemcompat/loot_tables/blocks/augment_bay.json"
     ]
   },
@@ -236,6 +232,19 @@
       "commit": "SELF",
       "action": "extend_preservation",
       "summary": "The subsequent user request adds saved-content conversion under backpack.saved-content-cutover-20261024. Original replacement delivery remains historical."
+    },
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "migrate_presentation_owner",
+      "summary": "UI Rescue v3 supersedes the hub/subchapter presentation. Existing cards and progress contracts move into seven real canvases. Source references follow the surviving chapter files. No backpack acquisition, gameplay or reward rule changes.",
+      "source_files": [
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_01.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_09.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_11.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_18.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_19.snbt"
+      ]
     }
   ],
   "impacts": {

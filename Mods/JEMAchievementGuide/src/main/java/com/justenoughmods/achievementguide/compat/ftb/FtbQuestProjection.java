@@ -105,6 +105,11 @@ public final class FtbQuestProjection {
             for (var entry : definitions.entrySet()) {
                 if (!entry.getKey().startsWith("chapters/")) continue;
                 CompoundTag chapter = entry.getValue();
+                if (!features.events) {
+                    ListTag images = chapter.getList("images", Tag.TAG_COMPOUND);
+                    images.removeIf(raw -> ((CompoundTag)raw).getString("click").startsWith("jem-info:events_"));
+                    chapter.put("images", images);
+                }
                 ListTag visible = new ListTag();
                 List<CompoundTag> blocked = new ArrayList<>();
                 for (Tag raw : chapter.getList("quests", Tag.TAG_COMPOUND)) {
@@ -115,7 +120,8 @@ public final class FtbQuestProjection {
                             dormantTasks.put(Long.parseUnsignedLong(task.getString("id"), 16), Math.max(1L, Math.max(task.getLong("count"), task.getLong("value"))));
                         }
                         blocked.add(dormant(quest));
-                        if (authoredBook && !chapter.getBoolean("jem_archive")) {
+                        if (authoredBook && !chapter.getBoolean("jem_archive")
+                                && !(quest.getBoolean("jem_dedicated_event") && !features.events)) {
                             ListTag images = chapter.getList("images", Tag.TAG_COMPOUND);
                             CompoundTag information = new CompoundTag();
                             information.putDouble("x", quest.getDouble("x"));

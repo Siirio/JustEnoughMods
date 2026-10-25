@@ -22,15 +22,24 @@ public abstract class QuestChapterImageMixin {
     @Inject(method = "draw", at = @At("HEAD"), cancellable = true, remap = false)
     private void jem$caption(GuiGraphics graphics, Theme theme, int x, int y, int w, int h, CallbackInfo callback) {
         String click = chapterImage.getClick();
-        if (!click.startsWith("jem-label:")) return;
+        boolean title = click.startsWith("jem-title:");
+        if (!title && !click.startsWith("jem-label:")) return;
         var font = Minecraft.getInstance().font;
         String label = click.substring("jem-label:".length());
-        var lines = font.split(dev.ftb.mods.ftbquests.util.TextUtils.parseRawText(label), Math.max(1, w));
-        int lineY = y + (h - Math.min(lines.size(), 2) * 10) / 2;
+        float scale = title ? 1.35F : 1F;
+        var text = dev.ftb.mods.ftbquests.util.TextUtils.parseRawText(label);
+        // Keep a real phrase together. At most two intentional lines, never narrow fragments.
+        scale = Math.min(scale, Math.max(.85F, w / (float)Math.max(1, font.width(text))));
+        var lines = font.split(text, Math.max(1, (int)(w / scale)));
+        graphics.pose().pushPose();
+        graphics.pose().translate(x, y, 0);
+        graphics.pose().scale(scale, scale, 1);
+        int lineY = ((int)(h / scale) - Math.min(lines.size(), 2) * 10) / 2;
         for (int i = 0; i < Math.min(lines.size(), 2); i++) {
             var line = lines.get(i);
-            graphics.drawString(font, line, x + (w - font.width(line)) / 2, lineY + i * 10, 0xFFE6BF, true);
+            graphics.drawString(font, line, ((int)(w / scale) - font.width(line)) / 2, lineY + i * 10, 0xFFE6BF, true);
         }
+        graphics.pose().popPose();
         callback.cancel();
     }
 
@@ -41,6 +50,6 @@ public abstract class QuestChapterImageMixin {
         if (click.startsWith("jem-info:")) {
             BookInformationScreen.open(click.substring("jem-info:".length()));
             callback.cancel();
-        } else if (click.startsWith("jem-label:")) callback.cancel();
+        } else if (click.startsWith("jem-label:") || click.startsWith("jem-title:")) callback.cancel();
     }
 }

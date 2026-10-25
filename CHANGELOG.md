@@ -1,3 +1,13 @@
+## 2026-10-25 - FTB Quests UI Rescue v3
+
+- User supplied UI Rescue v3 as the authoritative replacement brief and requested exactly seven visible chapters, larger readable content, a complete position recalculation and preserved progression, followed by a PR with real Minecraft evidence
+- User then chose to check Minecraft manually and authorized coordination with the concurrent Guide handbook chat
+- Implementation choices: migrate all 602 authored cards into seven real native canvases, retire hub/portal groups, pack local topic zones, fold production routes and keep twelve authentic campaign paths in Boss Busters
+- Bug / Client / the previous compiler emitted real subchapters and oversized coordinate/art envelopes, while native edit mode exposed invisible archives and an invalid unnumbered compass texture was used for navigation / in testing, seven-canvas compilation, a marked-book sidebar filter, native entry-camera/spacing correction and removal of obsolete portal resources address the owning causes
+- Native inventories preserve all 619 quest IDs, 755 task definitions, 2,197 rewards, 61 choice tables and 30 dependency edges, with no quest, task, reward or unlock-rule exceptions
+- Production Guide and coordinated Compat artifacts are built and synchronized locally. Native publication/application is recorded in Docs/quests/rescue-v3/delivery.json
+- NOT VISUALLY VERIFIED: manual screenshots A-G remain pending, supplied title originals remain opaque and a dedicated Boss Busters banner is unavailable. No new artwork, automated tests, client launch, MineRENT deployment or release-baseline promotion is claimed
+
 ## 2026-10-25 - Handbook boss visibility and inventory HUD
 
 - User requested hiding Nether/End bosses while their dimensions are closed and excluding non-boss allies from JEM Guide, then explicitly selected server-wide dimension opening

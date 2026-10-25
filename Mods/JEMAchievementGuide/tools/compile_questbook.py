@@ -91,7 +91,7 @@ class Localization:
         for language, values in self.values.items():
             path = RESOURCES / "assets/jem_advancements/lang" / (language + ".json")
             old = json.loads(path.read_text("utf-8")) if path.exists() else {}
-            old = {key: value for key, value in old.items() if not key.startswith("jem.atlas.")}
+            # Moved chapters and existing saves may still refer to old locale keys.
             dump(path, dict(old, **shared[language], **values))
 
 
@@ -120,7 +120,6 @@ def compile_book(*, emit_reward_selector=True):
                "icon": group["icon"]} for group in book["navigation_groups"]]
     dump(BOOK / "chapter_groups.snbt", {"chapter_groups": groups})
     chapter_by_key = {chapter["id"]: chapter for chapter in book["chapters"]}
-    hub = chapter_by_key[book["hub"]]
     reference_hint = language.plain_key("reference.hint", "Reference only - no reward or completion", "Справка без награды и процента завершения")
     free_order = language.text("free_order", "Follow your own route. Nearby rewards are never prerequisites.", "Выбирай свой путь. Награда соседа никогда не становится условием.")
     choice_title = language.text("choice", "Choose one", "Один предмет на выбор")
@@ -129,33 +128,24 @@ def compile_book(*, emit_reward_selector=True):
         images = list(chapter.get("images", []))
         chapter_text = chapter["localization"]
         chapter_title = language.text("chapter." + chapter["id"], chapter_text["en_us"]["title"], chapter_text["ru_ru"]["title"])
-        images.append({**chapter.get("title_caption", {"x": 0, "y": 0, "width": 12, "height": 5}),
-                       "image": "ftblibrary:textures/icons/blank.png", "click": "jem-label:" + chapter_title, "order": 30})
-        if chapter.get("background"):
-            images.insert(0, dict(chapter["background"], order=-100))
-        routes = chapter.get("routes", [])
-        if chapter["id"] != hub["id"]:
-            routes = [{"chapter": hub["id"], "position": chapter.get("back_position", [-20, -15]), "back": True}] + routes
-        for route in routes:
-            destination = chapter_by_key[route["chapter"]]
-            x, y = route["position"]
-            label = language.text("route." + destination["id"],
-                                  destination["localization"]["en_us"]["title"], destination["localization"]["ru_ru"]["title"])
-            hint = language.plain_key("route_hint." + destination["id"],
-                                     "Open: " + destination["localization"]["en_us"]["title"],
-                                     "Открыть: " + destination["localization"]["ru_ru"]["title"])
-            icon = "minecraft:textures/item/compass.png" if route.get("back") else destination.get("portal_image", "minecraft:textures/item/book.png")
-            images.append({"x": x, "y": y, "width": 1.25, "height": 1.25,
-                           "image": icon, "click": "#" + destination["ftb_id"], "hover": [hint], "order": 20})
-            images.append({"x": x, "y": y + 1.5, "width": 5.2, "height": 1.3,
-                           "image": "ftblibrary:textures/icons/blank.png", "click": "jem-label:" + label, "order": 21})
-        for route in chapter.get("quest_routes", []):
-            destination = rows[route["quest"]]
-            x, y = route["position"]
-            hint = language.plain_key("quest_route." + chapter["id"] + "." + destination["id"], route["en_us"], route["ru_ru"])
-            images.append({"x": x, "y": y, "width": .8, "height": .8,
-                           "image": "minecraft:textures/item/filled_map.png", "click": "#" + destination["ftb_id"],
-                           "hover": [hint], "order": 20})
+        images.append({**chapter["title_caption"], "image": "none",
+                       "click": "jem-title:" + chapter_title, "order": 30})
+        theme = chapter["theme"]
+        if theme != "bosses":
+            images.insert(0, {"x": 0, "y": 0, "width": 44, "height": 29.333333,
+                              "image": f"jem_advancements:textures/questbook/atlas/background-{theme}.png", "order": -100})
+            hero = dict(chapter["hero"])
+            # The original supplied art has an opaque matching-colour backplate.
+            # Preserve its pixels instead of guessing a destructive alpha mask.
+            hero["height"] = hero["width"] * (1792 / 2398 if theme == "companions" else 1536 / 2752)
+            images.append({**hero, "image": f"jem_advancements:textures/questbook/atlas/identity-{theme}.jpg", "order": -50})
+        else:
+            images.append({"x":0,"y":-1,"width":3.4,"height":3.4,
+                           "image":"minecraft:textures/item/ender_eye.png","order":-20})
+        for section in chapter.get("section_labels", []):
+            title = language.text("section." + chapter["id"] + "." + section["id"], section["en_us"], section["ru_ru"])
+            images.append({key:section[key] for key in ("x","y","width","height")} | {
+                "image":"none", "click":"jem-label:" + title, "order":30})
         for card in chapter["cards"]:
             localized = card["localization"]
             text = {key: language.text("card." + card["id"] + "." + key,
@@ -203,10 +193,12 @@ def compile_book(*, emit_reward_selector=True):
             mapping.append([card["id"], chapter["id"], card["ftb_id"], card["condition"], reward_summary + f"; XP {reward['xp']}", "adapted" if card.get("adaptation") else "active", card.get("implementation_difference", card.get("adaptation", ""))])
         definition = {"id": chapter["ftb_id"], "filename": chapter["filename"], "title": chapter_title,
                       "subtitle": [language.text("intro." + chapter["id"], chapter_text["en_us"]["intro"], chapter_text["ru_ru"]["intro"]), free_order] + references,
-                      "icon": chapter["icon"], "group": groups[chapter["group"]]["id"], "order_index": chapter["order"],
+                      "icon": chapter["icon"], "order_index": chapter["order"],
                       "default_quest_shape": "circle", "default_hide_dependency_lines": True,
+                      "default_quest_size": 1.0, "autofocus_id": chapter["autofocus_id"],
+                      "tags": ["jem_rescue_v3"],
                       "progression_mode": "flexible", "quests": quests, "images": images,
-                      "jem_atlas_hub": chapter["id"] == hub["id"]}
+                      "jem_rescue_entry_bounds": chapter["entry_bounds"]}
         target = BOOK / "chapters" / (chapter["filename"] + ".snbt")
         dump(target, definition); generated.append(str(target.relative_to(BOOK)))
     dump(RESOURCES / "data/jem_advancements/questbook/rules.json", all_rules)
@@ -219,7 +211,7 @@ def compile_book(*, emit_reward_selector=True):
                     if card["conditions"] and card.get("status", "active") == "active"
                     for item in card["reward"]["items"] + card["reward"]["choice"]})]})
     language.write()
-    data = {"version": 13, "jem_universal_book": True, "jem_questbook_revision": 4,
+    data = {"version": 13, "jem_universal_book": True, "jem_questbook_revision": 5,
             "default_autoclaim_rewards": "disabled", "default_consume_items": False,
             "default_quest_disable_jei": False, "default_reward_team": False, "detection_delay": 20,
             "disable_gui": False, "drop_book_on_death": False, "drop_loot_crates": False,

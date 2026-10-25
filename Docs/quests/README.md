@@ -1,8 +1,8 @@
 # JEM Adventure Atlas
 
-The 2026-10-25 redesign keeps one central native FTB chapter with ten theme portals. Each opens a real content chapter, with further real chapters for substantial topics. Every content chapter has a native route back to the index. Navigation images have no tasks, rewards or progress to complete
+The [UI Rescue v3 specification](rescue-v3/specification.md) supersedes the earlier index and subchapter redesign. The native sidebar now contains exactly seven real chapters, without named chapter groups or a mandatory hub. Existing cards move into those canvases
 
-The authored book contains 602 cards in 39 visible chapters, including the index. There are 577 objectives and 25 informational cards. All 589 cards present before this redesign remain. Seven invisible legacy chapters retain retired quest and task identities without reusing them for a different mechanic
+The authored book contains 602 cards in seven visible chapters. There are 577 objectives and 25 informational cards. Seven invisible historical archives preserve retired identities. The complete native inventory remains 619 quests, 755 tasks, 2,197 rewards including choice options, 61 reward tables and 30 dependency edges
 
 The earlier figure of 596 cards described an older revision. The immutable [baseline inventory](baseline-20261025.json) captures the actual 589-card source and native output before this redesign
 
@@ -10,7 +10,9 @@ The earlier figure of 596 cards described an older revision. The immutable [base
 
 - `Mods/JEMAchievementGuide/tools/questbook/book.json` owns exact bindings, stable identities, rewards, both languages, chapter membership, saved geometry and image declarations
 - `python Mods/JEMAchievementGuide/tools/compile_questbook.py` emits native SNBT into `Client/ManagedPack/config/ftbquests/quests`, indexed rules, reference resources, localization keys, [card-mapping.csv](card-mapping.csv), the compiled-file manifest and the canonical Atlas reward selector
-- `python Mods/JEMAchievementGuide/tools/questbook/audit_book.py` inventories authored/native data against the immutable baseline and writes [layout-audit-20261025.json](layout-audit-20261025.json) and [chapter-migration-20261025.csv](chapter-migration-20261025.csv)
+- `python Mods/JEMAchievementGuide/tools/questbook/rescue_v3.py` previews deterministic migration without writing, and `--apply` stores the seven-canvas geometry
+- `python Mods/JEMAchievementGuide/tools/questbook/audit_rescue_v3.py` writes the requested before/after preservation, image/model lookup and geometry receipts under [rescue-v3](rescue-v3)
+- The earlier `audit_book.py`, [layout-audit-20261025.json](layout-audit-20261025.json) and migration CSV describe the superseded redesign, not current visual acceptance
 - This audit is an offline content inventory. It does not launch Minecraft or create automated tests, fixtures or gameplay scenarios
 - `tools/questbook/legacy` retains the original seven chapters byte for byte, with retired identities remaining invisible and optional in native output
 - The old HTML importer is historical input tooling, never a compilation or runtime dependency
@@ -27,16 +29,13 @@ The compiler reads saved positions. It does not regenerate geometry, turn recomm
 | Farm 'n Food | `tab-03` | Seasonal plots and kitchen paths |
 | Cogs & Trains | `tab-12` | Kinetic spine, factory sidings and railway subroutes |
 | Secrets of Magic | `tab-26` | Asymmetric schools and enchanting branches |
-| Boss Busters | `tab-25` | Preparation trails and retained encounters |
-| Power System | `tab-02` | Existing choice and five independent race paths |
-| Nightfall | `nightfall-gear` | Acquisition lane and genuine combat exercises |
-| The Twelve Eyes | `tab-28` | Exactly twelve MAIN leaves in a mirrored bracket |
+| Boss Busters | `tab-25` | Combat preparation, power/survival, weapon exercises and twelve authentic campaign leaves |
 
 The storage wing retains five existing network objectives and adds five backpack and five fixed-storage objectives. Upgrade acquisition is explicitly preparation, without falsely detecting an installed capability or operating network. Exact installed recipes, native controls and registry IDs ground the additions
 
-Engineering retains 41 mechanical objectives. Three compact links open existing button, seasonal sensor and copper-helper objectives in their own chapters. Those links never duplicate progress or rewards. The mechanical source share is 41 of these 44 destinations, approximately 93 percent
+Engineering retains its 41 mechanical objectives in short folded production and railway lanes. Native dependencies remain unchanged. The unused portal and cross-chapter image-link layer is retired
 
-The campaign reads twelve canonical MAIN profiles and corresponding eyes from `JEMTwelveEyes`. All fifteen retained SUB objectives live in the preparation chapter. Six prep links beside the relevant leaves open genuine retained objectives. Bracket rails are decorative images without invented dependencies or intermediate rounds
+The campaign reads twelve canonical MAIN profiles and corresponding eyes from `JEMTwelveEyes`. All fifteen retained SUB objectives now live in a separate preparation zone inside Boss Busters. Bracket rails are decorative images without invented dependencies or intermediate objectives
 
 Installed Nightfall 3.4.1 has no verified hostile challenge boss. Its guardian and doppelganger are invulnerable owner-bound summons. The atlas retains nine weapon exercises, adds three exact native acquisition milestones and links real combat chapters. It does not invent boss kills to satisfy a theme label
 
@@ -44,11 +43,11 @@ Installed Nightfall 3.4.1 has no verified hostile challenge boss. Its guardian a
 
 Installed FTB Quests 2001.4.22, Library 2001.2.13 and Teams 2001.3.2 remain the UI, team-progress, save and synchronization owners. Chapter image `click: "#<hex ID>"` opens an existing chapter or quest object. No unsupported `change_page` convention or reward-bearing entry quest is used
 
-The hub is the earliest chapter in the first group. Native fresh selection reaches it. Saved chapter, zoom and scroll remain respected on reopening. Persistent navigation state is never erased to force the index
+Native selection opens the last surviving chapter, otherwise the exploration chapter. The existing chapter-group client adapter filters historical technical archives even in native edit mode, which otherwise ignores `always_invisible`. The narrow `QuestbookViewportMixin` applies only to chapters tagged `jem_rescue_v3`. It evaluates the real panel and visible sidebar, initializes native zoom using the current theme spacing and uses native widget geometry for both drawing and clicks. Each chapter's camera-only snapshot is retained within the connected book session, without restoring sidebar state or overriding native search targets. A new session gets an entrance suited to the repaired layout, rather than restoring the obsolete giant-canvas camera
 
 Titles, descriptions and subtitles use native serialized translatable components. Image hover text uses plain localization keys. Existing caption and reference adapters use the same native text parser. English and Russian player prose excludes implementation namespaces and source-mod branding. Real translated item and boss names remain intact
 
-Captions and navigation hit areas have separate bounds. Header routes sit beyond authored card extents. Backgrounds, original identity images and gallery backplates have no click action
+Captions use native localized text, one complete line where it fits and at most two lines. They reference the native empty icon instead of a dummy image resource. Backgrounds and identity images have no click action
 
 ## Progress, signals and rewards
 
@@ -66,14 +65,14 @@ Original reward quantities and substitutions remain unchanged. The thirteen new 
 
 ## Artwork and acceptance boundary
 
-The latest user amendment uses six supplied images as page identity emblems over extended matching backgrounds. Full original JPGs remain uncut. Six background declarations preserve the 3072 by 2048 export ratio and include actual canvas content plus margins. The hub reuses the exploration background
+Rescue v3 separates existing hero images from background bounds. The original six emblems are displayed at 13.8 quest units wide, independently of the tightly framed matching background. No new images are generated
 
 Originals and extensions belong to [art-20261025](art-20261025). Native paths are `jem_advancements:textures/questbook/atlas/identity-{theme}.jpg` and `jem_advancements:textures/questbook/atlas/background-{theme}.png`. Missing exports remain explicit until real reviewed files are copied
 
 A background is a finite native chapter image. Panning far enough can move beyond its edges. This implementation does not replace the canvas or install a repeating custom renderer
 
-No gameplay client was launched for this redesign. Actual clicks, both GUI scales, text wrapping, saved completion, detection and reward claims remain unexercised. A content inventory or successful production build does not establish runtime acceptance
+**NOT VISUALLY VERIFIED**. The user chose to check Minecraft manually. The available emblem sources are opaque JPGs, so clean transparent exports remain unavailable. Boss Busters currently uses native eye artwork and a large localized heading because no separate approved banner exists. These are explicit acceptance limits, not passed artwork gates. Screenshots A-G and user acceptance remain pending
 
 ## Local delivery
 
-[delivery.json](delivery.json) owns actual artifact hashes, local synchronization, native publication and installed development generation when recorded. Compilation alone does not publish or apply a generation. Stable profiles, MineRENT and the immutable client release baseline remain outside this delivery
+[The rescue delivery receipt](rescue-v3/delivery.json) owns current artifact hashes, local synchronization, native publication and installed development generation. Older delivery files are historical receipts. Compilation alone does not publish or apply a generation. Stable profiles, MineRENT and the immutable client release baseline remain outside this delivery

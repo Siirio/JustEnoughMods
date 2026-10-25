@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-25T14:18:01.741947+05:00",
+  "status": "CANDIDATE_INSTALLED_NOT_VISUALLY_VERIFIED",
+  "commit": "SELF",
+  "scope": "Local ordinary Server and native test jem only",
+  "artifacts": [
+    {
+      "module": "JEMAchievementGuide",
+      "name": "jem-advancements-5.1.0.jar",
+      "sha256": "96f39377fb9c96f24e0a7068edf1679878ad5453d6d10237a8feff7b1b287274",
+      "size": 14885986
+    },
+    {
+      "module": "JEMCompat",
+      "name": "jemcompat-3.7.0.jar",
+      "sha256": "d8a209753074343ca1b63714fef781cd99bc1aaf4cb43ca7a00f659560d7c284",
+      "size": 383663
+    }
+  ],
+  "publication": {
+    "sequence": 79,
+    "contentToken": "dc827abada14ef266daca2b3d8ea39b7af2c8299",
+    "published": true,
+    "manifestSha1": "10981a855a6b5bb8a0640cf9fc5a7dbda76bf628",
+    "stagedAndPublishedManifestMatch": true,
+    "finalDiff": {
+      "added": 0,
+      "changed": 3,
+      "removed": 0
+    },
+    "priorMigrationDiff": {
+      "added": 0,
+      "changed": 12,
+      "removed": 32
+    }
+  },
+  "installation": {
+    "sequence": 79,
+    "contentToken": "dc827abada14ef266daca2b3d8ea39b7af2c8299",
+    "pendingTransaction": false,
+    "activeJarHashesMatch": true,
+    "questConfigsMatchManagedSource": true,
+    "method": "Native journal mirror, verified object cache, reviewed UpdateAttempt approve and commit, no raw managed-file copies",
+    "gameDirQuestConfigsMatchManagedSource": true,
+    "detached": false
+  },
+  "server": {
+    "synchronized": true,
+    "running": false,
+    "allDimensionsSaved": true,
+    "finalClientOnlyNavigationJarInstalledAfterStop": true,
+    "shutdownNote": "Existing MapSyncer AIR reflection teardown error occurred after all dimensions were saved"
+  },
+  "preservation": {
+    "quests": 619,
+    "tasks": 755,
+    "rewardsIncludingChoiceOptions": 2197,
+    "rewardTables": 61,
+    "dependencyEdges": 30,
+    "changedContracts": 0
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "auditPassed": true,
+    "scanPassed": true,
+    "validationPassed": true,
+    "uncovered": [],
+    "installedArtifactDrift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "runtimeRegistryDump": false
+  },
+  "visualAcceptance": {
+    "status": "PENDING_USER_MANUAL_MINECRAFT_CHECK",
+    "screenshotsAthroughG": false,
+    "clientLaunchedByAgent": false,
+    "assetLimits": [
+      "Six existing title emblems are opaque original JPGs, no clean transparent source is available",
+      "Dedicated Boss Busters title artwork is unavailable, native eye and localized heading remain"
+    ]
+  },
+  "unchangedBoundaries": [
+    "MineRENT",
+    "stable JustEnoughMods profile",
+    "immutable release baseline",
+    "friend release packages"
+  ],
+  "codeReview": {
+    "findingsCorrected": 3,
+    "finalActionableFindings": 0,
+    "runtimeMixinApplication": "UNVERIFIED"
+  }
+}
