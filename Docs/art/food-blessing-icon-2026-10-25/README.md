@@ -1,6 +1,6 @@
 # Food Blessing icon candidate
 
-Status: C1 CANDIDATE, preview requested before integration
+Status: C1 USER APPROVED, installed locally through native AutoModpack generation 80
 
 The user requested the golden chalice, purple grapes and raised roast drumstick shown in user-reference.png, authored in Aseprite and shown first. This is the selected composition reference, not an approved production export
 
@@ -19,6 +19,8 @@ Original references inspected:
 
 Pixels are painted directly in Aseprite through native draw_grid and pixel operations. No reference-image extraction, tracing, downsampling or generated production pixels are used. The layered source and PNG remain together. Enlarged renders are review evidence only
 
-This is an art preview only. No resource, gameplay code, installed JAR, managed pack or active client file is changed
+The initial preview left runtime resources unchanged. The subsequent explicit user approval authorized installation of the exact C1 PNG. See delivery.json for the completed local native application
 
-Current editable source: food-blessing-c1.aseprite. Native export: food-blessing-c1.png. C0 remains preserved for comparison. The user rejected C0 because the grapes were outside the cup. C1 redraws the bunch inside the bowl width and places the front rim over the lower fruit pixels. User approval is pending
+Current editable source: food-blessing-c1.aseprite. Native export: food-blessing-c1.png. C0 remains preserved for comparison. The user rejected C0 because the grapes were outside the cup. C1 redraws the bunch inside the bowl width and places the front rim over the lower fruit pixels. C1 user approval is recorded below
+
+The user explicitly approved C1 on 2026-10-25 with "yeah use that one and redeploy". The exact PNG is now the JEMFood source resource at Mods/JEMFood/src/main/resources/assets/jemfood/textures/mob_effect/food_blessing.png. Native delivery evidence belongs to delivery.json

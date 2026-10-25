@@ -1,3 +1,10 @@
+## 2026-10-25 - Approved Food Blessing icon installation
+
+- User approved the revised Aseprite icon with grapes inside the cup and requested redeployment
+- Implementation choices: install the exact approved 18 by 18 PNG in the existing JEMFood native effect resource and package the matching production JAR for ordinary local Server and Client/ManagedPack
+- Production build succeeded with only the approved icon changed inside the JAR. Ordinary local Server is synchronized and running, native AutoModpack generation 80 is published and fully applied to test jem with matching installed token/hash and no pending transaction. In-game appearance remains unobserved
+- Preserve effect identity, food mechanics, native tooltip/hover behavior and player progression. Stable profiles, MineRENT and release baseline remain unchanged
+
 ## 2026-10-25 - Food Blessing grapes inside the cup
 
 - User corrected the icon preview because the grapes were outside the cup

@@ -39,3 +39,9 @@ Actual C1 native 18px, 4x dark/light and 16x dark/light exports were inspected. 
 | User approval | OPEN | Revised preview must still be reviewed by the user |
 
 Correction round 1. No game installation, launch or runtime acceptance is claimed
+
+# Explicit C1 acceptance
+
+User approved the shown C1 PNG on 2026-10-25: "yeah use that one and redeploy". This crosses the art integration gate. It does not establish in-game observation. Install the exact approved pixels with native rendering and gameplay contracts preserved
+
+Local delivery completed through production JEMFood packaging and native generation 80. The installed active token and JAR hash match the publication, with no pending transaction. In-game composed appearance remains unobserved, no client launch was performed

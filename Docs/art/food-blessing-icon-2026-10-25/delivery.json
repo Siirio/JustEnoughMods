@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-10-25T18:35:35.290312+05:00",
+  "status": "USER_APPROVED_ICON_INSTALLED_LOCAL",
+  "commit": "SELF",
+  "scope": "Ordinary local Server and native test jem, no MineRENT or stable deployment",
+  "approval": {
+    "candidate": "C1",
+    "signal": "yeah use that one and redeploy"
+  },
+  "artifact": {
+    "name": "jemfood-1.0.0.jar",
+    "sha256": "7ec489066c825f7981bae356684db7672da746f1f6d6f6f97dca9a10fca854a9",
+    "size": 100138,
+    "changedJarEntries": [
+      "assets/jemfood/textures/mob_effect/food_blessing.png"
+    ],
+    "approvedPngSha256": "04a220ca9be01ed047c6d17fb2808ec5de252a608edc0f4a8501099606b94f53"
+  },
+  "build": {
+    "task": ":JEMFood:jar",
+    "reobfJar": true,
+    "result": "BUILD SUCCESSFUL",
+    "automatedTests": false
+  },
+  "server": {
+    "synchronized": true,
+    "running": true,
+    "address": "localhost:31604"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 80,
+    "publishedManifestSha1": "db555f66b7f57c8836130a69712695ed0986bd81",
+    "stagedManifestSha1": "db555f66b7f57c8836130a69712695ed0986bd81"
+  },
+  "installation": {
+    "generation": 80,
+    "contentToken": "eb148924dca907cfd42873a06ad13625146611d7",
+    "pending": false,
+    "detached": false,
+    "artifacts": [
+      {
+        "name": "jemfood-1.0.0.jar",
+        "sha256": "7ec489066c825f7981bae356684db7672da746f1f6d6f6f97dca9a10fca854a9"
+      }
+    ],
+    "method": "Native AutoModpack prepared plan, exact path/hash review, approve and commit, no raw managed file copies",
+    "clientLaunched": false
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "auditCompleted": true,
+    "scanValid": true,
+    "uncovered": [],
+    "artifactDrift": false,
+    "validationValid": true
+  },
+  "visual": {
+    "approvedNativeSprite": true,
+    "exactApprovedBytesInJar": true,
+    "gameplayClientLaunched": false,
+    "inGameAppearanceObserved": false
+  },
+  "preservation": {
+    "jarPayloadChangeOnly": "assets/jemfood/textures/mob_effect/food_blessing.png",
+    "effectId": "jemfood:food_blessing",
+    "dimensions": [
+      18,
+      18
+    ],
+    "foodGameplayAndProgression": "Unchanged JAR class/data entries",
+    "stableProfileChanged": false,
+    "baselinePromoted": false
+  }
+}

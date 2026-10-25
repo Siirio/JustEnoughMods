@@ -1,5 +1,5 @@
 {
-  "status": "CANDIDATE_AWAITING_USER_REVIEW",
+  "status": "USER_APPROVED_INSTALLED_LOCAL",
   "native_dimensions": [
     18,
     18
@@ -29,10 +29,16 @@
   "reference_sha256": "060c77b11a9527299d5d3bce9ebffd94c37bc139f98cc6271651eeb2f4df646c",
   "png_sha256": "04a220ca9be01ed047c6d17fb2808ec5de252a608edc0f4a8501099606b94f53",
   "source_sha256": "2c98013a2834eb632aa6dd7b2bc173294ce6f89d6cfc8e2a1bbb39ba31f8a972",
-  "integrated": false,
+  "integrated": true,
   "runtime_verified": false,
   "review": "C1 correction requested by user: grapes belong inside the cup. Native-painted fruit is within the bowl width and the separate front rim occludes its bottom. Actual native, 4x and 16x renders inspected on dark and light backgrounds. C0 retained as rejected placement. User acceptance pending",
   "previous_candidate": "food-blessing-c0.aseprite",
   "previous_candidate_status": "USER_REJECTED_GRAPES_OUTSIDE_CUP",
-  "correction_round": 1
+  "correction_round": 1,
+  "user_approval": {
+    "date": "2026-10-25",
+    "candidate": "C1",
+    "signal": "yeah use that one and redeploy"
+  },
+  "delivery": "delivery.json"
 }

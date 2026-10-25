@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "change_id": "food.blessing-icon-20261025",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "effects",
+      "value": "jemfood:food_blessing"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "side": "Client presentation, native 18 by 18 effect sprite"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_presentation",
+    "priority": 1500,
+    "overrides": []
+  },
+  "change": {
+    "summary": "User-approved native Aseprite Food Blessing chalice, grapes inside cup and raised roast icon",
+    "modifiers": [
+      {
+        "property": "presentation.effect_icon",
+        "operation": "replace",
+        "before": {
+          "resource": "jemfood:textures/mob_effect/food_blessing.png",
+          "appearance": "Previous golden soup/chalice icon"
+        },
+        "after": {
+          "resource": "jemfood:textures/mob_effect/food_blessing.png",
+          "dimensions": [
+            18,
+            18
+          ],
+          "candidate": "C1",
+          "png_sha256": "04a220ca9be01ed047c6d17fb2808ec5de252a608edc0f4a8501099606b94f53",
+          "source": "Docs/art/food-blessing-icon-2026-10-25/food-blessing-c1.aseprite"
+        },
+        "notes": "Resource-only replacement. Effect registration, native rectangle, protocol, server authority, talents, rewards and progression unchanged"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMFood",
+    "kind": "approved_native_sprite_replacement",
+    "source_files": [
+      "Mods/JEMFood/src/main/resources/assets/jemfood/textures/mob_effect/food_blessing.png",
+      "Client/ManagedPack/mods/jemfood-1.0.0.jar",
+      "Docs/art/food-blessing-icon-2026-10-25/food-blessing-c1.aseprite"
+    ]
+  },
+  "rationale": {
+    "purpose": "Install the selected Food Blessing icon with grapes inside the cup",
+    "decision_source": "User 2026-10-25: yeah use that one and redeploy",
+    "implementation": "Reuse exact approved PNG bytes through the existing native effect resource"
+  },
+  "introduced": {
+    "date": "2026-10-25",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Install approved C1 effect icon"
+  },
+  "history": [
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "User approved C1 preview and requested redeployment through ordinary local Server and native AutoModpack"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_presentation",
+      "food",
+      "local_distribution"
+    ],
+    "relations": [],
+    "notes": [
+      "Matching JEMFood production artifacts for canonical managed source and ordinary Server",
+      "Existing native effect icon rendering and hover ownership retained"
+    ],
+    "unresolved": [
+      "In-game composed appearance remains unobserved"
+    ]
+  }
+}

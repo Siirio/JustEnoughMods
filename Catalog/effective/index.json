@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "f7297efb1cae419b97141ee21a839e97338b26c9e257572a8d64814701765e65",
+  "change_records_sha256": "8c3c47e58128356aa5dd7bc9509d1b970e7932c245b24a90eefc9b41362260bb",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -884,6 +884,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 0
+    },
+    {
+      "change_id": "food.blessing-icon-20261025",
+      "status": "active",
+      "summary": "User-approved native Aseprite Food Blessing chalice, grapes inside cup and raised roast icon",
+      "record": "Catalog/changes/records/food-blessing-icon-20261025.json",
+      "selectors": [
+        {
+          "type": "id",
+          "registry": "effects",
+          "value": "jemfood:food_blessing"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 1
     },
     {
       "change_id": "compat.food-quality-and-dietary-variety-20261023",
@@ -3301,9 +3316,9 @@
     "Catalog/power-sources/defense-mechanics-stage35c.json": "554fbf1489a2de2f524b3f516e13776eb4e32bb6887a1d6697d9a9131def13f1",
     "Catalog/power-sources/irons-spellbooks-3.15.6.json": "879cdad98ec1ec3f29030ed8673a79fc57629f33887c55d449ee1375b8545b3c",
     "Catalog/power-sources/native-mechanics-phase3.json": "94f9dea2e557dffe2812134af68b724ab150741527ad713c1e6da14dcd5485bd",
-    "Catalog/views/power/blockers.json": "8239625884b4df83ea0df5f6c54b6a6ddfcced4030ff534ee477e2624138f57e",
-    "Catalog/views/power/durability.json": "7e55c0bbee3f19b29961e3c92c53269874593f0e8afc8a11474431081e620596",
-    "Catalog/views/power/power-ladder.json": "b10518db7fe1020275e73fcd8df68acb380ca6f7dc4c4faf236bfe6e77e0050a",
+    "Catalog/views/power/blockers.json": "678fae825b8cd6153fdff8dc775767a9024a82e0d487ce6deb6333690df9ca98",
+    "Catalog/views/power/durability.json": "e5c9ff225e1472b6ab4c3043d975bce29972abb9dbfef35d2690bc6c30521f61",
+    "Catalog/views/power/power-ladder.json": "a0e18c693bb1df150e424d421ebeb48292bcf6b36096e3afaf9f7676c6b5c3e2",
     "Client/ManagedPack/config/copperagebackport.json": "410faae183c6b92b8b2abb0b61928b35705f01fea5c1c2ba395a2458e11f8325",
     "Client/ManagedPack/config/ftbquests/quests/chapter_groups.snbt": "dcefa23f7441409db799365bac250dc2418800a7b7468b15984c2c866f0cb4cd",
     "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_bosses_12_eyes.snbt": "3d2597ef2afe479defbab85cf240781aad4a3fcb51050423fc31af43d848086b",
@@ -3395,7 +3410,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "8de8785b713fe8b7ab742be0433974c39b76712505f297d4348de533babff24c",
+    "Client/ManagedPack/jem-pack/manifest.json": "67f43ca2904408c1f79810a8db3f92a9947bcf930d7f9f86831774c8d3b2765c",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -3588,7 +3603,7 @@
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "af2ab18ccd40f72222b2a00031dfb7c00aa0519d696058f351ff8ee7adbcc6af",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "467db4e13c9ebb84c095d3b8e1dbfaf6a84ab559a1c37458c36f9e6042bcdbfa",
     "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "d8a209753074343ca1b63714fef781cd99bc1aaf4cb43ca7a00f659560d7c284",
-    "Client/ManagedPack/mods/jemfood-1.0.0.jar": "f8e53e9c469d26beddee2ce0f07804c802c956c804c36cfad6b5544262b9118f",
+    "Client/ManagedPack/mods/jemfood-1.0.0.jar": "7ec489066c825f7981bae356684db7672da746f1f6d6f6f97dca9a10fca854a9",
     "Client/ManagedPack/mods/mobhome-1.0.0.jar": "e0488bc39f1160f76b1ae61a07167a516f5c775b36155f3799721b4538150f07",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
     "Docs/DEVELOPMENT.md": "c104b749dcb9c1169643d29099f42e293480ae414cf5332cda82a7c14e3a52f9",
@@ -3600,6 +3615,7 @@
     "Docs/art/bbb-hammer-2026-10-21/hammer.aseprite": "79155e144f5b7045626fd525ccf1f41d71035ec4adc1ccf333850c3916968a08",
     "Docs/art/bbb-hammer-2026-10-21/hammer.png": "e53ad0acf66af651b834387a8e355e3e378b7b48c7b137b6522afd9777935173",
     "Docs/art/crafted-gui-2026-10-20/README.md": "ccddecf9df5801ec42bf606563a07b5d6e591fc4c81f2690335b119c884fd07b",
+    "Docs/art/food-blessing-icon-2026-10-25/food-blessing-c1.aseprite": "2c98013a2834eb632aa6dd7b2bc173294ce6f89d6cfc8e2a1bbb39ba31f8a972",
     "Docs/art/inventory-season-hud-2026-10-25/README.md": "6da9b78133d74f1674a18f7a5eecb3a4585f3d8156dd706c0f7e29d0774bc9f7",
     "Docs/art/mobhome-20261024/README.md": "4d1824c4f890a8b73f7a7e3ff005663db25addfb16a1ef2a166d326862f06530",
     "Docs/art/mobhome-20261024/large-log-optimized.bbmodel": "f056a6f31d5774247fa6146489adc1d595268a57a24ed99e24599e503a976c75",
@@ -3620,10 +3636,10 @@
     "Docs/events/BOSS_FIGHT.md": "bc6e82614cfbce5b70745428d018f1487746ff7ad248514049d628aafeae6464",
     "Docs/events/BOSS_RAID.md": "91c54edb14296a76ada7438245a05329a49b8b88246981135b568a1430171300",
     "Docs/food/COVERAGE.md": "4bff2662cb081d6bdc70ab895e711c6b6c4ee874f59291b1f51f85dfce167f13",
-    "Docs/food/README.md": "1f1ac13518931ee87738fbf148b2f646045eb8f7037f2fc05bdd88c338a7d5ad",
+    "Docs/food/README.md": "ab9771b48cf4f2500cd43d77738f1e59ce634cbdac299ecacb480b55a47e23a0",
     "Docs/gui-sandbox/README.md": "71775c921e2cbb7dda22ee07e603be62a045ea17aa78e9ba6f0bb4e1dc227d63",
     "Docs/gui-sandbox/delivery.json": "018431eef19b2f240853ba2d87ca271f38e7cd9ce3973fa7c2628c95fa44650b",
-    "Docs/handbook/README.md": "d790f616da7182c68146a275adb0a135f97930a1e3594fe3f66567fbb0ce65b9",
+    "Docs/handbook/README.md": "64f3cdba43997df9bd50ee6104914bfc328d649aed9b1ac72dd973b9bf09d8ee",
     "Docs/handbook/boss-drop-links.json": "b80da928090b2e993a157eaa12c3c31a633072dcc9b8c795040c27578b919d37",
     "Docs/handbook/bosses-coverage.json": "0aa60e1117058fd49080718ff2516ad6462a6a6692dabd7e6aeff94c1efb81ac",
     "Docs/handbook/delivery.json": "c6884b76608298742fc9146d9ae1d26daa30952cec39118a2367c893a7afe081",
@@ -3657,7 +3673,7 @@
     "Docs/releases/2026-10-21-shipping-market-repair.json": "a6f88bf08933b6c5c79407657add4e86379d6548faaf7e810ada29ce1c92bd27",
     "Docs/releases/2026-10-24-backpack-content-migration/receipt.json": "c72c8311bb7380fcb30e0cf6f6da9a787507e6d0cef62be9acdf0367c449c208",
     "Docs/releases/2026-10-24-backpacks-eyes-barriers/receipt.json": "1303f551dcdafee43280730b0af1f6191097edec1747c4c9fe5bf4901f45932d",
-    "Docs/season-hud/README.md": "2852a11df472146a1685939dc034159bb9e028448fedae5967298051364a1933",
+    "Docs/season-hud/README.md": "96596c69f6c66d7a7957197b04e01e3d6df3cc27d2f227e8f515e3a672d0b5c8",
     "Docs/settlements/DESIGN_JOURNAL.md": "440abcac8af594a5b41e177da3b36049d47b7b95435431730eb3f4aee08b62bd",
     "Docs/settlements/assets/source/dashboard-r2/author_dashboard.py": "98fa13c327c20af73c3b9d6d341967f069b18c1367768155b6867f755ab928d8",
     "Docs/settlements/assets/source/dashboard-r2/dashboard-r2.ora": "15729a822314845f271a79782977b7c8572d6572d28b32387804848f28210931",
@@ -4492,7 +4508,7 @@
     "Mods/JEMFood/src/main/resources/META-INF/mods.toml": "b387cd1b5f8c44fb3017bae87aec920f69326ee41e0b3f02119397b7821697d0",
     "Mods/JEMFood/src/main/resources/assets/jemfood/lang/en_us.json": "25af6024d8dd3cdbafef618c51a738dc3adbee3c8767a1b7bab5b973fc778541",
     "Mods/JEMFood/src/main/resources/assets/jemfood/lang/ru_ru.json": "0d0895f46ca27b39e131ea33f2c47f102f9226c6edce0849d8d6decbbc549b5f",
-    "Mods/JEMFood/src/main/resources/assets/jemfood/textures/mob_effect/food_blessing.png": "65d8125277665aeccec1c77458f3bad57633bc9d0993182d966d66fc260485c9",
+    "Mods/JEMFood/src/main/resources/assets/jemfood/textures/mob_effect/food_blessing.png": "04a220ca9be01ed047c6d17fb2808ec5de252a608edc0f4a8501099606b94f53",
     "Mods/JEMFood/src/main/resources/data/jemfood/tags/entity_types/bosses.json": "2dd589f0a4050a0ead92f65e533f7fa5e6f95518450fab9a0f3fa7193ea499ac",
     "Mods/JEMFood/src/main/resources/jemfood.mixins.json": "b0c47310335aa5d1c13fa339b9deb4cf682cab80e76df2736eaceca76a5d2c51",
     "Mods/JEMFood/src/main/resources/pack.mcmeta": "434cb8a4bf4f88dfe0a3e84ac68015050d8fa72a7d43a8cdb288915dbbfd5635",
@@ -5597,7 +5613,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "d272516b438e2ed9be11e28f97109c078718c03a014a9885d403a35800775750",
-    "tools/state/packSyncHost-sync.json": "ce6dcc24110a58ed3a703690b7b414d01ce9e332bb50db7f54a84a78fe037811",
+    "tools/state/packSyncHost-sync.json": "5317c5ccc7754878ea5474390b6b2b7fdf73257235216fa9d8ee0b3bf545865c",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }
