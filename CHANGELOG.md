@@ -1,3 +1,10 @@
+## 2026-10-25 - Food Blessing icon preview
+
+- User requested the supplied golden cup, grapes and roast drumstick composition for Food Blessing, explicitly asking for an Aseprite source and preview before integration
+- Implementation choices: draw directly on the existing18 by18 effect-icon grid in four named Aseprite layers, keep transparent margins and export the native PNG plus separate nearest-neighbour light/dark review images
+- The source, supplied reference provenance and C0 review are preserved under Docs/art/food-blessing-icon-2026-10-25. User acceptance remains pending
+- Art preview only. Existing Food Blessing resources, gameplay, managed pack, installed JARs and native publication remain unchanged
+
 ## 2026-10-25 - FTB Quests UI Rescue v3
 
 - User supplied UI Rescue v3 as the authoritative replacement brief and requested exactly seven visible chapters, larger readable content, a complete position recalculation and preserved progression, followed by a PR with real Minecraft evidence
