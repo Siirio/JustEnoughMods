@@ -6,9 +6,11 @@ The user requested the two indicators only while player inventory is open, at th
 
 The existing 24x24 footprint, four-pixel gap, native calendar reads and tooltips remain. Horizontal offset now measures the right margin, vertical offset the top margin. With defaults, the day dial begins at `screenWidth - 60, 8` and the season dial at `screenWidth - 32, 8`. A single enabled dial uses the rightmost position. Offsets remain clamped to the viewport. No native inventory slots or controls move
 
-Both toggles remain disabled while approved native artwork is absent. Gemini was given the original positive/negative references and exact geometry in [the live HUD conversation](https://gemini.google.com/app/a4a276d879dc9732). Its first result reused the negative screenshot and failed isolated-asset, orientation and export requirements, so it is rejected. Actual native pixels and visual acceptance remain separate from placement source
+The user selected4 Argon in Work, reviewed the final native pair and explicitly approved activation. The approved original24px layer grids were painted through the local Aseprite MCP and exported directly. [Editable source, native previews and visual-auditor evidence](../art/inventory-season-hud-2026-10-25/README.md) retain the actual provenance. Earlier rejected Chat candidates remain excluded
 
-The earlier top-left and general-HUD description below is historical and superseded by this explicit placement request
+`timeHud.showInventoryDayNight` and `timeHud.showInventorySeasons` now default true. The inventory-specific keys replace the unfinished HUD's old false-default switches, so existing profiles gain this explicitly approved inventory feature through normal Forge config loading. Existing right/top offset values retain their keys. No raw profile config copy or state-pointer edit is used. Both indicators can be disabled separately through their native client configuration
+
+The earlier top-left, general-HUD and missing-art/default-off descriptions below are historical and superseded by this explicit placement and activation request
 
 The user requested two circular, native pixel HUD indicators in the 2026-10-23
 Food/Pet Shelters/Seasonal HUD v2 specification. JEMCompat owns client rendering;

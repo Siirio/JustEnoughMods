@@ -16,7 +16,7 @@
       "lifecycle": "native initialized client season state and native dimension whitelist"
     },
     {
-      "production_resources": "User-owned approved day_cycle.png and season_cycle.png absent. Both client toggles default disabled. Existing enabled profile settings require explicit disable until approved assets are installed."
+      "production_resources": "User explicitly approved the4Argon Work native24px pair on2026-10-25. Original pixel grids painted through local Aseprite MCP and directly exported. Inventory-specific true-default keys replace retired unfinished toggles"
     }
   ],
   "precedence": {
@@ -30,7 +30,7 @@
         "property": "client.time_season_hud",
         "operation": "add",
         "before": "No JEM day/season HUD indicator in JEMCompat; native Minecraft and Serene Seasons calendar remain owners.",
-        "after": "Optional 24x24 circular day and season indicators render only in survival/creative player inventory, top-right margin8 with gap4. Native synchronized Minecraft and Serene Seasons state, tooltips, individual toggles and F1 behavior remain. Rejected/missing art keeps both toggles disabled. Gemini concept/export and acceptance are separate gates"
+        "after": "Approved24x24 day and season dials render only in survival/creative player inventory at right/top margin8 and gap4. Native clocks/calendars, F1 hide, tooltips and optional Serene Seasons boundary remain. New timeHud.showInventoryDayNight/showInventorySeasons keys default true, offsets retain existing keys. No raw profile mutation"
       }
     ]
   },
@@ -46,7 +46,9 @@
       "Mods/JEMCompat/build.gradle",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/en_us.json",
       "Mods/JEMCompat/src/main/resources/assets/jemcompat/lang/ru_ru.json",
-      "Docs/art/inventory-season-hud-2026-10-25/README.md"
+      "Docs/art/inventory-season-hud-2026-10-25/README.md",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/time/*.png",
+      "Docs/art/inventory-season-hud-2026-10-25/approved/*"
     ]
   },
   "rationale": {
@@ -101,6 +103,18 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
         "Docs/season-hud/README.md"
       ]
+    },
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "activate_user_approved_inventory_dials",
+      "summary": "User selected4Argon Work, authorized additional visual attempt and explicitly approved exact pair. Native Aseprite layer painting/direct PNG exports installed, inventory-specific default-on keys preserve native config ownership and existing offsets",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/time/*.png",
+        "Docs/art/inventory-season-hud-2026-10-25/approved/*",
+        "Docs/season-hud/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -112,8 +126,7 @@
     "relations": [],
     "notes": "Installed API/bytecode9.1.0.3 and local config inspected. Existing day and season rules remain unchanged. Presentation only; no original registry fact is overwritten.",
     "unresolved": [
-      "Approved native HUD PNGs are absent; previous candidates rejected.",
-      "Runtime gameplay/optional-mod matrix remains unobserved."
+      "Runtime inventory rendering, pointer motion, tooltips and optional-mod matrix await user gameplay acceptance"
     ]
   }
 }

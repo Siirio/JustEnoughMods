@@ -4,7 +4,7 @@
 - User requested season and daytime HUD at the top right of the open inventory and selected circular Gemini icons
 - Implementation choices: project the existing JEMServer DimensionProgress through a two-boolean Guide snapshot, use native Patchouli visibility/lock checks, retain 44 boss/miniboss pages and prune 12 ordinary/allied mob pages without changing gameplay profiles
 - Bug / Both Sided / Guide treated every World Tier profile as a handbook boss and checked only mod installation, exposing closed-dimension entries and ordinary mobs / in testing, authored presentation roles and server-owned dimension discovery now filter native book routes
-- HUD screen admission and anchor now cover survival/creative inventory only with right/top offsets. Both indicators remain disabled pending accepted native artwork. Native calendars remain unchanged
+- HUD screen admission and anchor now cover survival/creative inventory only with right/top offsets. User selected4 Argon in Work and explicitly approved the resulting native24px pair. Its original pixel grids were painted and exported through local Aseprite, then installed as Compat resources. Inventory-specific true-default keys replace the old unfinished false-default switches while preserving offsets and native calendars
 - No automated tests, gameplay launch or player acceptance is claimed. Combined Guide build and local publication are coordinated with the concurrent FTB Quests UI session
 
 ## 2026-10-25 - Boss encounter lifecycle and reward integrity

@@ -1,6 +1,16 @@
 # Inventory time and season HUD
 
-User direction on 2026-10-25: circular icons through Gemini, shown at the top right when player inventory is open. Source placement is implemented in the existing JEMCompat TimeSeasonHud. Artwork is not accepted or installed
+User direction on 2026-10-25: circular icons through Gemini, shown at the top right when player inventory is open. Source placement is implemented in the existing JEMCompat TimeSeasonHud. The user subsequently selected4 Argon in Work, authorized an additional attempt, reviewed the actual native pair and explicitly said "Да, включить эту пару"
+
+## Accepted native pair
+
+The approved pair is shown in [dark](approved/pair-review-dark.png) and [light](approved/pair-review-light.png)4x review views, with a separate [native-size pair](approved/pair-native.png). The game's actual dial exports are `Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/time/day_cycle.png` and `season_cycle.png`, each24x24 RGBA
+
+Gemini Work/Task with4 Argon authored the explicit native pixel layers in [this task](https://gemini.google.com/app/58e095170e88f4e2). Its VM lacked Aseprite and honestly disclosed its custom binary exports. Those VM exports are not the production PNG source. The original [grid handoff](approved/aseprite_handoff_grids.json) was replayed unchanged through the local Aseprite MCP, four layers per dial, then exported directly by Aseprite. Editable native sources are [day](approved/day_cycle.aseprite) and [season](approved/season_cycle.aseprite). No image generation, trace, cutout, resizing or downsampling supplied production pixels
+
+Visual-auditor C3: AGENT_PASS for the inspected native pixel pair, geometry, connected semantic silhouettes, alpha, matching frame construction, cardinal seasons and light/dark contour readability. The six-pixel square sun and connected crescent are legible at native scale. Spring flower is top, summer sun right, autumn leaf bottom and winter crystal left. No text or pointer is baked. Runtime screen composition, motion and tooltips are UNOBSERVED because no client launch was authorized. The user's explicit visual acceptance authorizes integration of this exact pair
+
+Activation uses new `timeHud.showInventoryDayNight` and `timeHud.showInventorySeasons` keys with true defaults. This replaces the retired unfinished HUD's false defaults while preserving existing offset keys and all other client preferences. Forge owns native config correction on load, no managed profile file is copied or patched manually
 
 Exact Pair: `C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Forge-1.20.1-jem-gui-and-icon-asset-production`, both taste and technical read. Taste remains provisional. Global Minecraft art and Aseprite production contracts apply
 
@@ -30,6 +40,6 @@ C1: REJECTED. The isolated concept improved seasonal orientation and sun/moon pr
 
 C2: BLOCKED. The final attempt requested original native pixel grids for direct Aseprite painting, with no image generation, trace or resizing. The exact response is retained in `gemini-c2-rejected.json`. Rows have inconsistent lengths, including26px, and the season symbols form a vertical stack rather than the required cardinal arrangement. No valid native candidate was created, so native export and composed runtime quality are UNOBSERVED
 
-The initial candidate and two automatic correction rounds are exhausted under visual-auditor. No fourth attempt, manual substitute, generated-image cutout or downsampled production asset is installed. `showDayNight` and `showSeasons` remain false by default. To complete activation, supply accepted native24x24 `day_cycle.png` and `season_cycle.png` with the required editable source, or give a new explicit direction for further visual work
+The initial candidate and two automatic correction rounds stopped at this point. The user then explicitly authorized one additional Work attempt with4 Argon. Its C3 handoff and the actual accepted Aseprite exports are recorded above. Earlier rejected candidates remain excluded
 
 No gameplay client was launched. This record establishes the actual failed visual attempts and the remaining production blocker
