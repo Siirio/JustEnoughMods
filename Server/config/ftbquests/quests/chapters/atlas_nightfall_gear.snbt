@@ -1,0 +1,860 @@
+{
+  "id": "227509504F880CAB",
+  "filename": "atlas_nightfall_gear",
+  "title": "{\"translate\":\"jem.atlas.chapter.nightfall-gear\"}",
+  "subtitle": [
+    "{\"translate\":\"jem.atlas.intro.nightfall-gear\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
+  ],
+  "icon": "minecraft:wither_skeleton_skull",
+  "group": "2C241DF2A2EAB8F0",
+  "order_index": 0,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "20F973557C9E161A",
+      "title": "{\"translate\":\"jem.atlas.card.combat_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_06.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:ruinsgreatsword",
+      "x": -16.0,
+      "y": 7.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2352F286842213A7",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_06.condition\"}",
+          "icon": "efn:ruinsgreatsword",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E6D2AB7B982A859",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_gravity_arrow",
+          "count": 32,
+          "claim_key": "combat_06/item/0",
+          "claim_reward_id": "2E6D2AB7B982A859",
+          "team_reward": false
+        },
+        {
+          "id": "22850EEF667E5764",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 6,
+          "claim_key": "combat_06/item/1",
+          "claim_reward_id": "22850EEF667E5764",
+          "team_reward": false
+        },
+        {
+          "id": "22503E6C7F113F38",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_06/item/2",
+          "claim_reward_id": "22503E6C7F113F38",
+          "team_reward": false
+        },
+        {
+          "id": "28D5D16E7A6117B3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F733E91618C1837",
+      "title": "{\"translate\":\"jem.atlas.card.combat_07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_07.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:meen_spear",
+      "x": -10.8,
+      "y": 7.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25AF67728DD76005",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_07.condition\"}",
+          "icon": "efn:meen_spear",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "228D5E88BADC426A",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_freezing_arrow",
+          "count": 32,
+          "claim_key": "combat_07/item/0",
+          "claim_reward_id": "228D5E88BADC426A",
+          "team_reward": false
+        },
+        {
+          "id": "26A2B1B6C6C7B9D6",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 6,
+          "claim_key": "combat_07/item/1",
+          "claim_reward_id": "26A2B1B6C6C7B9D6",
+          "team_reward": false
+        },
+        {
+          "id": "29371F35256FB579",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_07/item/2",
+          "claim_reward_id": "29371F35256FB579",
+          "team_reward": false
+        },
+        {
+          "id": "28C7ECEC3218E295",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "291EE29A2CACF71C",
+      "title": "{\"translate\":\"jem.atlas.card.combat_08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_08.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:nf_dual_sword",
+      "x": -5.6,
+      "y": 7.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C305E4AC0E2361E",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_08.condition\"}",
+          "icon": "efn:nf_dual_sword",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2636682789A4CCDE",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_tracking_arrow",
+          "count": 32,
+          "claim_key": "combat_08/item/0",
+          "claim_reward_id": "2636682789A4CCDE",
+          "team_reward": false
+        },
+        {
+          "id": "2D554CA992931DD6",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 6,
+          "claim_key": "combat_08/item/1",
+          "claim_reward_id": "2D554CA992931DD6",
+          "team_reward": false
+        },
+        {
+          "id": "2B974637406A2528",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_08/item/2",
+          "claim_reward_id": "2B974637406A2528",
+          "team_reward": false
+        },
+        {
+          "id": "2C1D2C6CBFEA75C7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27C75B3748DB6DA8",
+      "title": "{\"translate\":\"jem.atlas.card.combat_09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_09.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:sword_of_pioneer",
+      "x": -0.4,
+      "y": 7.75,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C77828055831D9D",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_09.condition\"}",
+          "icon": "efn:sword_of_pioneer",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29A485BEE2D2250B",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_lantern_arrow",
+          "count": 32,
+          "claim_key": "combat_09/item/0",
+          "claim_reward_id": "29A485BEE2D2250B",
+          "team_reward": false
+        },
+        {
+          "id": "2E332E0867344401",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:invisibility_elixir",
+          "count": 6,
+          "claim_key": "combat_09/item/1",
+          "claim_reward_id": "2E332E0867344401",
+          "team_reward": false
+        },
+        {
+          "id": "2F6E5E1C9687D8F7",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_09/item/2",
+          "claim_reward_id": "2F6E5E1C9687D8F7",
+          "team_reward": false
+        },
+        {
+          "id": "29543861B599C698",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "222A9E3C7FF64214",
+      "title": "{\"translate\":\"jem.atlas.card.combat_10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_10.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:exsiliumgladius",
+      "x": 4.8,
+      "y": 8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "268589188CFE696F",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_10.condition\"}",
+          "icon": "efn:exsiliumgladius",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A24585BC4D5970F",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_lightning_arrow",
+          "count": 32,
+          "claim_key": "combat_10/item/0",
+          "claim_reward_id": "2A24585BC4D5970F",
+          "team_reward": false
+        },
+        {
+          "id": "273E1BEA0B76FB22",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 6,
+          "claim_key": "combat_10/item/1",
+          "claim_reward_id": "273E1BEA0B76FB22",
+          "team_reward": false
+        },
+        {
+          "id": "27C3E9FBBD5EA357",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_10/item/2",
+          "claim_reward_id": "27C3E9FBBD5EA357",
+          "team_reward": false
+        },
+        {
+          "id": "2AC1998225A41232",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "226D8F4A77C483A8",
+      "title": "{\"translate\":\"jem.atlas.card.combat_11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_11.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_11.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_11.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_11.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_11.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:nf_shortsword",
+      "x": 10.0,
+      "y": 8.25,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2629E37AAAE193C2",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_11.condition\"}",
+          "icon": "efn:nf_shortsword",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "230E520C7229F321",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_slime_arrow",
+          "count": 32,
+          "claim_key": "combat_11/item/0",
+          "claim_reward_id": "230E520C7229F321",
+          "team_reward": false
+        },
+        {
+          "id": "27CABA00A9153A3D",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 6,
+          "claim_key": "combat_11/item/1",
+          "claim_reward_id": "27CABA00A9153A3D",
+          "team_reward": false
+        },
+        {
+          "id": "20B9905009733C0F",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_11/item/2",
+          "claim_reward_id": "20B9905009733C0F",
+          "team_reward": false
+        },
+        {
+          "id": "2823DB37E759EC10",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26549A6CF3D647AE",
+      "title": "{\"translate\":\"jem.atlas.card.combat_12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_12.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_12.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_12.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_12.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_12.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:nf_claw",
+      "x": 15.2,
+      "y": 8.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D3B519611AC6050",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_12.condition\"}",
+          "icon": "efn:nf_claw",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29A9070E73E090A6",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_life_steal_arrow",
+          "count": 32,
+          "claim_key": "combat_12/item/0",
+          "claim_reward_id": "29A9070E73E090A6",
+          "team_reward": false
+        },
+        {
+          "id": "240E0DE9BCAAC2DF",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 6,
+          "claim_key": "combat_12/item/1",
+          "claim_reward_id": "240E0DE9BCAAC2DF",
+          "team_reward": false
+        },
+        {
+          "id": "25020BC0F0DEAA48",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_12/item/2",
+          "claim_reward_id": "25020BC0F0DEAA48",
+          "team_reward": false
+        },
+        {
+          "id": "2D57A010DF483EF9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "281D80577E825454",
+      "title": "{\"translate\":\"jem.atlas.card.combat_13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_13.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_13.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_13.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_13.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_13.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:air_tachi",
+      "x": -16.0,
+      "y": 11.1,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2ED6A6449BF4AA77",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_13.condition\"}",
+          "icon": "efn:air_tachi",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "257AFB7974A990CD",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_ender_arrow",
+          "count": 32,
+          "claim_key": "combat_13/item/0",
+          "claim_reward_id": "257AFB7974A990CD",
+          "team_reward": false
+        },
+        {
+          "id": "269D6CC50D821261",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:invisibility_elixir",
+          "count": 6,
+          "claim_key": "combat_13/item/1",
+          "claim_reward_id": "269D6CC50D821261",
+          "team_reward": false
+        },
+        {
+          "id": "2BB6F11BB8B70A59",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_13/item/2",
+          "claim_reward_id": "2BB6F11BB8B70A59",
+          "team_reward": false
+        },
+        {
+          "id": "2456F4663BD5761A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CAF3A52E5F211B4",
+      "title": "{\"translate\":\"jem.atlas.card.combat_14.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.combat_14.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.combat_14.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_14.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_14.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.combat_14.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "efn:yamato_dmc_in_sheath",
+      "x": -10.8,
+      "y": 11.35,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FA633FE5EDC7949",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.combat_14.condition\"}",
+          "icon": "efn:yamato_dmc_in_sheath",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20CAD5E32495BFB7",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:diamond_tracking_arrow",
+          "count": 32,
+          "claim_key": "combat_14/item/0",
+          "claim_reward_id": "20CAD5E32495BFB7",
+          "team_reward": false
+        },
+        {
+          "id": "28D5A3E6D457C69C",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 6,
+          "claim_key": "combat_14/item/1",
+          "claim_reward_id": "28D5A3E6D457C69C",
+          "team_reward": false
+        },
+        {
+          "id": "2492C1E352B6BE77",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:chicken_wrapped_in_bacon",
+          "count": 12,
+          "claim_key": "combat_14/item/2",
+          "claim_reward_id": "2492C1E352B6BE77",
+          "team_reward": false
+        },
+        {
+          "id": "242E72603F3655DF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 160,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "combat_14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B0BD9958882AB34",
+      "title": "{\"translate\":\"jem.atlas.card.nightfall_acquire_1.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.nightfall_acquire_1.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_1.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_1.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_1.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_1.reward\"}"
+      ],
+      "icon": "efn:ruinsgreatsword",
+      "x": -10,
+      "y": -8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F99E179D78B31E4",
+          "type": "advancement",
+          "advancement": "efn:ruinsgreatsword"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28CFD7A5742CB2A9",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:cooked_beef",
+          "count": 4,
+          "claim_key": "nightfall_acquire_1/item/0",
+          "claim_reward_id": "28CFD7A5742CB2A9",
+          "team_reward": false
+        },
+        {
+          "id": "22AF6481466A720C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 18,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "nightfall_acquire_1",
+      "jem_required_mods": [
+        "efn"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2075E368EBB229D4",
+      "title": "{\"translate\":\"jem.atlas.card.nightfall_acquire_2.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.nightfall_acquire_2.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_2.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_2.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_2.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_2.reward\"}"
+      ],
+      "icon": "efn:yamato_dmc_in_sheath",
+      "x": -5,
+      "y": -7.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23DE969A58F32C46",
+          "type": "advancement",
+          "advancement": "efn:yamato_dmc_in_sheath"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2553123B9C8A4FD7",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:cooked_beef",
+          "count": 4,
+          "claim_key": "nightfall_acquire_2/item/0",
+          "claim_reward_id": "2553123B9C8A4FD7",
+          "team_reward": false
+        },
+        {
+          "id": "202B14FEE0CF7E34",
+          "type": "jem_advancements:quest_xp",
+          "xp": 18,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "nightfall_acquire_2",
+      "jem_required_mods": [
+        "efn"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EA06BAE45046EF8",
+      "title": "{\"translate\":\"jem.atlas.card.nightfall_acquire_3.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.nightfall_acquire_3.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_3.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_3.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_3.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.nightfall_acquire_3.reward\"}"
+      ],
+      "icon": "efn:air_tachi",
+      "x": 0,
+      "y": -7.3,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20BAC5CDDF2256BF",
+          "type": "advancement",
+          "advancement": "efn:air_tachi"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CD4FAC257663959",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:cooked_beef",
+          "count": 4,
+          "claim_key": "nightfall_acquire_3/item/0",
+          "claim_reward_id": "2CD4FAC257663959",
+          "team_reward": false
+        },
+        {
+          "id": "2634EF00FA474573",
+          "type": "jem_advancements:quest_xp",
+          "xp": 18,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "nightfall_acquire_3",
+      "jem_required_mods": [
+        "efn"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.nightfall-gear\"}",
+      "order": 30
+    },
+    {
+      "x": -20,
+      "y": -15,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
+      "hover": [
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
+    },
+    {
+      "x": -20,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
+    },
+    {
+      "x": -11.0,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/nether_star.png",
+      "click": "#1000000000000003",
+      "hover": [
+        "jem.atlas.route_hint.tab-02"
+      ],
+      "order": 20
+    },
+    {
+      "x": -11.0,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-02\"}",
+      "order": 21
+    },
+    {
+      "x": -4.8,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/iron_sword.png",
+      "click": "#2115706BBC5F781B",
+      "hover": [
+        "jem.atlas.route_hint.tab-25"
+      ],
+      "order": 20
+    },
+    {
+      "x": -4.8,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-25\"}",
+      "order": 21
+    }
+  ],
+  "jem_atlas_hub": false
+}

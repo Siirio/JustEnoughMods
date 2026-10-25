@@ -23,7 +23,7 @@ public final class BookInformationScreen extends Screen {
     private int left, top, contentWidth, contentHeight;
 
     private BookInformationScreen(Screen parent, JsonObject card) {
-        super(Component.literal(card.get("title").getAsString()));
+        super(dev.ftb.mods.ftbquests.util.TextUtils.parseRawText(card.get("title").getAsString()));
         this.parent = parent;
         paragraphs = new ArrayList<>();
         card.getAsJsonArray("paragraphs").forEach(value -> paragraphs.add(value.getAsString()));
@@ -48,7 +48,7 @@ public final class BookInformationScreen extends Screen {
         top = 48;
         lines.clear();
         for (String paragraph : paragraphs) {
-            lines.addAll(font.split(Component.literal(paragraph), contentWidth - 24));
+            lines.addAll(font.split(dev.ftb.mods.ftbquests.util.TextUtils.parseRawText(paragraph), contentWidth - 24));
             lines.add(FormattedCharSequence.EMPTY);
         }
         addRenderableWidget(Button.builder(Component.translatable("gui.back"), button -> onClose())

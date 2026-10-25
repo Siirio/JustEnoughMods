@@ -25,7 +25,7 @@ public abstract class QuestChapterImageMixin {
         if (!click.startsWith("jem-label:")) return;
         var font = Minecraft.getInstance().font;
         String label = click.substring("jem-label:".length());
-        var lines = font.split(net.minecraft.network.chat.Component.literal(label), Math.max(1, w));
+        var lines = font.split(dev.ftb.mods.ftbquests.util.TextUtils.parseRawText(label), Math.max(1, w));
         int lineY = y + (h - Math.min(lines.size(), 2) * 10) / 2;
         for (int i = 0; i < Math.min(lines.size(), 2); i++) {
             var line = lines.get(i);

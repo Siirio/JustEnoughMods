@@ -17,6 +17,7 @@ public final class BalanceRegistry {
     private static volatile Map<ResourceLocation, BossProfile> bossesByVictoryAdvancement = Map.of();
     private static volatile Map<ResourceLocation, RewardProfile> rewardsByItem = Map.of();
     private static volatile List<Integer> tierThresholds = List.of(0);
+    private static volatile long bossRevision;
 
     private BalanceRegistry() {
     }
@@ -36,6 +37,8 @@ public final class BalanceRegistry {
     public static Optional<BossProfile> bossByKey(ResourceLocation key) {
         return Optional.ofNullable(bossesByKey.get(key));
     }
+
+    public static long bossRevision() { return bossRevision; }
 
     public static Set<ResourceLocation> activeQualifyingKeys() {
         return bossesByKey.values().stream().filter(BossProfile::countsTowardWorldTier)
@@ -94,6 +97,7 @@ public final class BalanceRegistry {
         bossesByKey = Map.copyOf(keyed);
         bossesByVictoryAdvancement = Map.copyOf(indexedAdvancements);
         tierThresholds = List.copyOf(thresholds);
+        bossRevision++;
     }
 
     public static void replaceRewards(Collection<RewardProfile> profiles) {

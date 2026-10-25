@@ -177,7 +177,10 @@ public final class JemWorldBossTiers {
             com.siirio.jemworldbosstiers.balance.ProgressionWeapons.freezeUncaptured(arrow);
         }
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof LivingEntity living && !eventOwned(living)) {
-            boss(living).ifPresent(profile -> EncounterScaler.ensureScaled(living, profile));
+            boss(living).ifPresent(profile -> {
+                if (!profile.ownsExclusiveArena()) EncounterData.detachArena(living.getPersistentData());
+                EncounterScaler.ensureScaled(living, profile);
+            });
             EncounterData.read(living.getPersistentData()).filter(encounter -> encounter.arenaId() != null)
                     .filter(encounter -> encounter.provenance() != EncounterProvenance.UNVERIFIED)
                     .filter(encounter -> !living.getPersistentData().getString("forge:spawn_type").equals("SPAWN_EGG"))
@@ -264,6 +267,13 @@ public final class JemWorldBossTiers {
         }
         EncounterData encounter = EncounterData.read(event.getEntity().getPersistentData()).orElse(null);
         WorldTierData data = WorldTierData.get(level.getServer());
+        if (!profile.ownsExclusiveArena()) {
+            EncounterData.detachArena(event.getEntity().getPersistentData());
+            if (encounter != null && profile.countsTowardWorldTier()
+                    && BossDefeatPolicy.canProgress(encounter, event.getSource().is(DamageTypes.GENERIC_KILL)))
+                recordVictory(level.getServer(), profile);
+            return;
+        }
         if (encounter != null && encounter.arenaId() != null) {
             if (data.liveBoss(encounter.arenaId()).filter(id -> !id.equals(event.getEntity().getUUID())).isPresent()) return;
             if (event.getEntity().getPersistentData().getString("forge:spawn_type").equals("SPAWN_EGG")) return;

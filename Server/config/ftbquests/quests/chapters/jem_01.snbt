@@ -1,41 +1,41 @@
 {
   "id": "1000000000000001",
   "filename": "jem_01",
-  "title": "Первые часы и полевой набор",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-01\"}",
   "subtitle": [
-    "Когда: Сразу; редкие инструменты проверяются только после их обычного получения.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-01\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
   "icon": "minecraft:compass",
-  "group": "2FAB9DA418A66ECD",
-  "order_index": 0,
+  "group": "2D3C906F447384BD",
+  "order_index": 1,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
       "id": "258B0E23340F9AC2",
-      "title": "01.01 · Один нужный рецепт",
-      "subtitle": "Сделать 1 хлеб или 1 деревянную кирку.",
+      "title": "{\"translate\":\"jem.atlas.card.start_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.start_01.condition\"}",
       "description": [
-        "Что сделать: Сделать 1 хлеб или 1 деревянную кирку.",
+        "{\"translate\":\"jem.atlas.card.start_01.condition\"}",
         "",
-        "Зачем: Поиск рецептов и применений; ветки дома, исследований и приключений.",
+        "{\"translate\":\"jem.atlas.card.start_01.purpose\"}",
         "",
-        "Совет: Найди рецепт и применения в JEI. Клавишу рецептов смотри в своих настройках; открытие каталога не проверяется.",
+        "{\"translate\":\"jem.atlas.card.start_01.tip\"}",
         "",
-        "Награда: Первые припасы и освещение для ночёвки: полноценный дорожный запас вместо нескольких факелов."
+        "{\"translate\":\"jem.atlas.card.start_01.reward\"}"
       ],
       "icon": "minecraft:bread",
-      "x": -8.07,
-      "y": 1.7,
+      "x": -11.0,
+      "y": -7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2BE61FEEF57B03BE",
           "type": "custom",
-          "title": "Сделать 1 хлеб или 1 деревянную кирку.",
+          "title": "{\"translate\":\"jem.atlas.card.start_01.condition\"}",
           "icon": "minecraft:bread",
           "count": 1
         }
@@ -73,29 +73,29 @@
     },
     {
       "id": "2B4E01D0F217D313",
-      "title": "01.02 · Место для первой ночи",
-      "subtitle": "Поставить 1 кровать и 1 факел.",
+      "title": "{\"translate\":\"jem.atlas.card.start_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.start_02.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 кровать и 1 факел.",
+        "{\"translate\":\"jem.atlas.card.start_02.condition\"}",
         "",
-        "Зачем: Дом, кухня, ферма; ранняя самостоятельность.",
+        "{\"translate\":\"jem.atlas.card.start_02.purpose\"}",
         "",
-        "Совет: Кровать, свет и еда помогут пережить первую ночь. Квест проверяет только два размещения, без оценки дома и ожидания утра.",
+        "{\"translate\":\"jem.atlas.card.start_02.tip\"}",
         "",
-        "Награда: Обустройство первого безопасного дома: мебель, хранение и мягкие сиденья.",
+        "{\"translate\":\"jem.atlas.card.start_02.reward\"}",
         "",
-        "Рекомендуемый путь: 01.01 · Один нужный рецепт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "minecraft:torch",
-      "x": -6.22,
-      "y": 1.7,
+      "x": 10.0,
+      "y": -7.66,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "27320407A1D57ACE",
           "type": "custom",
-          "title": "Поставить 1 кровать и 1 факел.",
+          "title": "{\"translate\":\"jem.atlas.card.start_02.condition\"}",
           "icon": "minecraft:torch",
           "count": 2
         }
@@ -142,27 +142,27 @@
     },
     {
       "id": "2020DC5042BBEF2E",
-      "title": "01.07 · Компас для нового маршрута",
-      "subtitle": "Нажать ПКМ в воздухе с Nature’s Compass.",
+      "title": "{\"translate\":\"jem.atlas.card.field_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_01.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ в воздухе с Nature’s Compass.",
+        "{\"translate\":\"jem.atlas.card.field_01.condition\"}",
         "",
-        "Зачем: Осмысленный поиск биомов; тематические экспедиции.",
+        "{\"translate\":\"jem.atlas.card.field_01.purpose\"}",
         "",
-        "Совет: Выбери биом с нужным материалом. Поиск, местоположение и возвращение домой не являются условиями.",
+        "{\"translate\":\"jem.atlas.card.field_01.tip\"}",
         "",
-        "Награда: Компас ведёт в экспедицию; рюкзак и еда сразу делают её удобнее."
+        "{\"translate\":\"jem.atlas.card.field_01.reward\"}"
       ],
       "icon": "naturescompass:naturescompass",
-      "x": -2.52,
-      "y": 1.7,
+      "x": 25.55,
+      "y": -17.38,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2EE65C41BD9D53EF",
           "type": "custom",
-          "title": "Нажать ПКМ в воздухе с Nature’s Compass.",
+          "title": "{\"translate\":\"jem.atlas.card.field_01.condition\"}",
           "icon": "naturescompass:naturescompass",
           "count": 1
         }
@@ -200,29 +200,29 @@
     },
     {
       "id": "22863EB08F001F8B",
-      "title": "01.09 · Посмотреть вдаль",
-      "subtitle": "Нажать ПКМ в воздухе с подзорной трубой.",
+      "title": "{\"translate\":\"jem.atlas.card.field_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_03.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ в воздухе с подзорной трубой.",
+        "{\"translate\":\"jem.atlas.card.field_03.condition\"}",
         "",
-        "Зачем: Рельеф, ориентиры и подготовка подхода к структуре.",
+        "{\"translate\":\"jem.atlas.card.field_03.purpose\"}",
         "",
-        "Совет: Подзорная труба помогает выбрать путь, а 3D Maps — рассмотреть рельеф. Сам маршрут и клиентская карта не проверяются.",
+        "{\"translate\":\"jem.atlas.card.field_03.tip\"}",
         "",
-        "Награда: Наблюдения получают практическое продолжение: камера с запасом плёнки для путевого журнала.",
+        "{\"translate\":\"jem.atlas.card.field_03.reward\"}",
         "",
-        "Рекомендуемый путь: 01.07 · Компас для нового маршрута. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "minecraft:spyglass",
-      "x": -6.22,
-      "y": 3.55,
+      "x": 31.55,
+      "y": -20.48,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2C2F97BAD39E1183",
           "type": "custom",
-          "title": "Нажать ПКМ в воздухе с подзорной трубой.",
+          "title": "{\"translate\":\"jem.atlas.card.field_03.condition\"}",
           "icon": "minecraft:spyglass",
           "count": 1
         }
@@ -260,22 +260,22 @@
     },
     {
       "id": "27E6FF1E793B638C",
-      "title": "01.10 · Свет с собой",
-      "subtitle": "Получить 1 фонарь Flashier Flashlights.",
+      "title": "{\"translate\":\"jem.atlas.card.field_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_04.condition\"}",
       "description": [
-        "Что сделать: Получить 1 фонарь Flashier Flashlights.",
+        "{\"translate\":\"jem.atlas.card.field_04.condition\"}",
         "",
-        "Зачем: Исследование пещер и ночные фотосъёмки.",
+        "{\"translate\":\"jem.atlas.card.field_04.purpose\"}",
         "",
-        "Совет: Настрой свет и проверь питание в интерфейсе/рецепте своей версии. Не требуется искать тёмную область или проходить маршрут.",
+        "{\"translate\":\"jem.atlas.card.field_04.tip\"}",
         "",
-        "Награда: Освещение постоянного лагеря и запас еды для длинной вылазки с фонарём.",
+        "{\"translate\":\"jem.atlas.card.field_04.reward\"}",
         "",
-        "Рекомендуемый путь: 01.07 · Компас для нового маршрута. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "flashlightmod:flashlight",
-      "x": -4.38,
-      "y": 3.55,
+      "x": 34.0,
+      "y": -22.04,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -320,29 +320,29 @@
     },
     {
       "id": "27117D84CA01444A",
-      "title": "01.11 · Кирка и стена",
-      "subtitle": "Нажать ПКМ железной киркой по камню.",
+      "title": "{\"translate\":\"jem.atlas.card.field_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_05.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ железной киркой по камню.",
+        "{\"translate\":\"jem.atlas.card.field_05.condition\"}",
         "",
-        "Зачем: Gouge: удержание, скольжение, расход прочности и прыжок от стены.",
+        "{\"translate\":\"jem.atlas.card.field_05.purpose\"}",
         "",
-        "Совет: Это знакомство с управлением Gouge. На невысокой стене попробуй зацеп, скольжение и отскок; успешное движение не проверяется.",
+        "{\"translate\":\"jem.atlas.card.field_05.tip\"}",
         "",
-        "Награда: После знакомства с инструментом — рабочий ключ и материал для первых технических приспособлений.",
+        "{\"translate\":\"jem.atlas.card.field_05.reward\"}",
         "",
-        "Рекомендуемый путь: 01.09 · Посмотреть вдаль. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "minecraft:stone",
-      "x": -2.52,
-      "y": 3.55,
+      "x": 37.55,
+      "y": -23.82,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "25FC3ACEB1A033F7",
           "type": "custom",
-          "title": "Нажать ПКМ железной киркой по камню.",
+          "title": "{\"translate\":\"jem.atlas.card.field_05.condition\"}",
           "icon": "minecraft:stone",
           "count": 1
         }
@@ -380,29 +380,29 @@
     },
     {
       "id": "20F9323ADBAE827B",
-      "title": "01.12 · Один блок или девять",
-      "subtitle": "Получить кирку с зачарованием «Копатель».",
+      "title": "{\"translate\":\"jem.atlas.card.field_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_06.condition\"}",
       "description": [
-        "Что сделать: Получить кирку с зачарованием «Копатель».",
+        "{\"translate\":\"jem.atlas.card.field_06.condition\"}",
         "",
-        "Зачем: Управляемая массовая добыча; подготовка к шахтам и стройке.",
+        "{\"translate\":\"jem.atlas.card.field_06.purpose\"}",
         "",
-        "Совет: Обычно зачарование позволяет добывать 3×3. Shift оставляет один блок, Shift+ПКМ переключает режим. Не требуется доказывать добычу девяти блоков.",
+        "{\"translate\":\"jem.atlas.card.field_06.tip\"}",
         "",
-        "Награда: Чары уже получены самостоятельно; опыт и материал поддерживают обслуживание инструмента и следующий проект.",
+        "{\"translate\":\"jem.atlas.card.field_06.reward\"}",
         "",
-        "Рекомендуемый путь: 01.11 · Кирка и стена. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:experience_nugget",
-      "x": -6.22,
-      "y": 9.1,
+      "x": 40.0,
+      "y": -25.84,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "23AC6EC1390836D0",
           "type": "custom",
-          "title": "Получить кирку с зачарованием «Копатель».",
+          "title": "{\"translate\":\"jem.atlas.card.field_06.condition\"}",
           "icon": "create:experience_nugget",
           "count": 1
         }
@@ -440,29 +440,29 @@
     },
     {
       "id": "2EBFF2A3460B6275",
-      "title": "01.13 · Прочная кирка",
-      "subtitle": "Получить кирку, на которой одновременно есть «Копатель» и «Прочность III».",
+      "title": "{\"translate\":\"jem.atlas.card.field_07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_07.condition\"}",
       "description": [
-        "Что сделать: Получить кирку, на которой одновременно есть «Копатель» и «Прочность III».",
+        "{\"translate\":\"jem.atlas.card.field_07.condition\"}",
         "",
-        "Зачем: Экономия прочности и планирование больших работ.",
+        "{\"translate\":\"jem.atlas.card.field_07.purpose\"}",
         "",
-        "Совет: При массовой добыче JEM учитывает Прочность по своему алгоритму. Случайный расход и ремонт этим заданием не измеряются.",
+        "{\"translate\":\"jem.atlas.card.field_07.tip\"}",
         "",
-        "Награда: Кирка с двумя нужными чарами заслуживает полноценного полезного инструмента на выбор.",
+        "{\"translate\":\"jem.atlas.card.field_07.reward\"}",
         "",
-        "Рекомендуемый путь: 01.12 · Один блок или девять. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:experience_nugget",
-      "x": -4.38,
-      "y": 9.1,
+      "x": 43.55,
+      "y": -27.95,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2526395BA34F08ED",
           "type": "custom",
-          "title": "Получить кирку, на которой одновременно есть «Копатель» и «Прочность III».",
+          "title": "{\"translate\":\"jem.atlas.card.field_07.condition\"}",
           "icon": "create:experience_nugget",
           "count": 1
         }
@@ -497,36 +497,36 @@
     },
     {
       "id": "22BE1831879F0877",
-      "title": "01.14 · Дрова и формы",
-      "subtitle": "Сломать 4 бревна и получить 4 деревянные ступеньки.",
+      "title": "{\"translate\":\"jem.atlas.card.field_08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
       "description": [
-        "Что сделать: Сломать 4 бревна и получить 4 деревянные ступеньки.",
+        "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
         "",
-        "Зачем: Лесозаготовка и строительные варианты без отдельных квестов на каждую ступеньку.",
+        "{\"translate\":\"jem.atlas.card.field_08.purpose\"}",
         "",
-        "Совет: TreeChop облегчает рубку, а JEM добавляет деревянные формы в камнерез. Происхождение ступенек и единый цикл обработки не проверяются.",
+        "{\"translate\":\"jem.atlas.card.field_08.tip\"}",
         "",
-        "Награда: Лесозаготовка превращается в ощутимый запас дерева для первой постройки.",
+        "{\"translate\":\"jem.atlas.card.field_08.reward\"}",
         "",
-        "Рекомендуемый путь: 01.07 · Компас для нового маршрута. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "natures_spirit:cypress_planks",
-      "x": -5.3,
-      "y": 5.4,
+      "x": 46.0,
+      "y": -29.97,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2624CB8629612539",
           "type": "custom",
-          "title": "Сломать 4 бревна и получить 4 деревянные ступеньки.",
+          "title": "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
           "icon": "natures_spirit:cypress_planks",
           "count": 4
         },
         {
           "id": "2A43EFF951FFC9F3",
           "type": "custom",
-          "title": "Сломать 4 бревна и получить 4 деревянные ступеньки.",
+          "title": "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
           "icon": "natures_spirit:cypress_planks",
           "count": 4
         }
@@ -564,29 +564,29 @@
     },
     {
       "id": "29F156CE13A1F437",
-      "title": "01.16 · Пробная стена",
-      "subtitle": "Поставить 8 каменных кирпичей.",
+      "title": "{\"translate\":\"jem.atlas.card.field_10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_10.condition\"}",
       "description": [
-        "Что сделать: Поставить 8 каменных кирпичей.",
+        "{\"translate\":\"jem.atlas.card.field_10.condition\"}",
         "",
-        "Зачем: Планирование большого строительства.",
+        "{\"translate\":\"jem.atlas.card.field_10.purpose\"}",
         "",
-        "Совет: Попробуй Pro Placer на повторяющемся участке. LitematicaTool используй только в пределах разрешённых функций текущего профиля; точность схемы не оценивается.",
+        "{\"translate\":\"jem.atlas.card.field_10.tip\"}",
         "",
-        "Награда: Материала хватает продолжить стену и дорожки, а не поставить только демонстрационный угол.",
+        "{\"translate\":\"jem.atlas.card.field_10.reward\"}",
         "",
-        "Рекомендуемый путь: 01.14 · Дрова и формы. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "minecraft:stone_bricks",
-      "x": -5.3,
-      "y": 12.8,
+      "x": 52.0,
+      "y": -33.34,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "27990324973ABCA7",
           "type": "custom",
-          "title": "Поставить 8 каменных кирпичей.",
+          "title": "{\"translate\":\"jem.atlas.card.field_10.condition\"}",
           "icon": "minecraft:stone_bricks",
           "count": 8
         }
@@ -625,155 +625,134 @@
   ],
   "images": [
     {
-      "x": -5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Основная линия",
-      "order": -5,
-      "hover": [
-        "Основная линия"
-      ]
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-01\"}",
+      "order": 30
     },
     {
-      "x": 5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Справочник",
-      "order": -5,
+      "x": -20,
+      "y": -37.54,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "Справочник"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
     },
     {
-      "x": 5.3,
-      "y": 3.7,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Кооператив",
-      "order": -5,
-      "hover": [
-        "Кооператив"
-      ]
+      "x": -20,
+      "y": -36.04,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
     },
     {
-      "x": -5.3,
-      "y": 7.4,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Улучшение инструмента",
-      "order": -5,
+      "x": -11.0,
+      "y": -37.54,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#1000000000000004",
       "hover": [
-        "Улучшение инструмента"
-      ]
+        "jem.atlas.route_hint.tab-16"
+      ],
+      "order": 20
     },
     {
-      "x": 5.3,
-      "y": 7.4,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:После неудачи",
-      "order": -5,
-      "hover": [
-        "После неудачи"
-      ]
+      "x": -11.0,
+      "y": -36.04,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-16\"}",
+      "order": 21
     },
     {
-      "x": -5.3,
-      "y": 11.1,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Строителям",
-      "order": -5,
-      "hover": [
-        "Строителям"
-      ]
-    },
-    {
-      "x": 4.38,
-      "y": 1.7,
+      "x": 13.55,
+      "y": -9.41,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:start_03",
       "hover": [
-        "01.03 · Прочитай то, на что смотришь",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.start_03.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     },
     {
-      "x": -4.38,
-      "y": 1.7,
+      "x": 16.0,
+      "y": -11.39,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:start_04",
       "hover": [
-        "01.04 · Выбери занятие",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.start_04.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     },
     {
-      "x": 5.3,
-      "y": 5.4,
+      "x": 19.55,
+      "y": -13.5,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:start_05",
       "hover": [
-        "01.05 · Партия и книга — разные вещи",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.start_05.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     },
     {
-      "x": 6.22,
-      "y": 1.7,
+      "x": 22.0,
+      "y": -15.55,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:start_06",
       "hover": [
-        "01.06 · Совпали рецепты",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.start_06.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     },
     {
-      "x": -8.07,
-      "y": 3.55,
+      "x": 28.0,
+      "y": -18.99,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:field_02",
       "hover": [
-        "01.08 · Своя карта",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.field_02.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     },
     {
-      "x": 5.3,
-      "y": 9.1,
+      "x": 49.55,
+      "y": -31.77,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:field_09",
       "hover": [
-        "01.15 · Вернуть вещи",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.field_09.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     }
   ],
-  "autofocus_id": "258B0E23340F9AC2"
+  "jem_atlas_hub": false
 }

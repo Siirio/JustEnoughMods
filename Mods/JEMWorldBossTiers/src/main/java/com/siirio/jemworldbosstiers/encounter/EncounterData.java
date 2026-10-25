@@ -133,6 +133,11 @@ public record EncounterData(
         return Optional.of(new EncounterData(profileKey, tag.getInt(TIER_KEY), provenance, tag.getBoolean(ELIGIBLE_KEY), tag.getBoolean(REMATCH_KEY), arenaId, readParticipants(tag)));
     }
 
+    /** Keep the entity's frozen tier, provenance, participants and progression flags. */
+    public static void detachArena(CompoundTag entityData) {
+        if (entityData.contains(ROOT_KEY, Tag.TAG_COMPOUND)) entityData.getCompound(ROOT_KEY).remove(ARENA_KEY);
+    }
+
     private static Set<UUID> readParticipants(CompoundTag tag) {
         Set<UUID> participants = new LinkedHashSet<>();
         ListTag values = tag.getList(PARTICIPANTS_KEY, Tag.TAG_STRING);

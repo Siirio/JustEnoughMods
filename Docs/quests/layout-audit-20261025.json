@@ -1,0 +1,199 @@
+{
+  "schema": 1,
+  "baseline": "Docs/quests/baseline-20261025.json",
+  "before": {
+    "source_cards": 589,
+    "chapters": 39,
+    "quests": 606,
+    "tasks": 742,
+    "rewards_including_choice_options": 2171,
+    "reward_tables": 61,
+    "dependency_edges": 30,
+    "active_cards": 564,
+    "reference_cards": 25
+  },
+  "after": {
+    "source_cards": 602,
+    "chapters": 46,
+    "quests": 619,
+    "tasks": 755,
+    "rewards_including_choice_options": 2197,
+    "reward_tables": 61,
+    "dependency_edges": 30,
+    "active_cards": 577,
+    "reference_cards": 25
+  },
+  "preservation": {
+    "cards": {
+      "missing": [],
+      "changed_contracts": [],
+      "added": [
+        "bag_01",
+        "bag_02",
+        "bag_03",
+        "bag_04",
+        "bag_05",
+        "nightfall_acquire_1",
+        "nightfall_acquire_2",
+        "nightfall_acquire_3",
+        "store_01",
+        "store_02",
+        "store_03",
+        "store_04",
+        "store_05"
+      ],
+      "preserved": 589
+    },
+    "quests": {
+      "missing": [],
+      "changed_contracts": [],
+      "added": [
+        "2075E368EBB229D4",
+        "217ADA4B1CFF6C7B",
+        "22604CEB1A5939EA",
+        "23BB48F00D112709",
+        "24003706BA9CAEA3",
+        "27CA40B72D746241",
+        "284ECC70DC4A7807",
+        "2B0BD9958882AB34",
+        "2BB4E4D2195BBBE3",
+        "2BEB2F7008C4F843",
+        "2DFFD3EA8A2219F7",
+        "2E19F4D085572CE7",
+        "2EA06BAE45046EF8"
+      ],
+      "preserved": 606
+    },
+    "tasks": {
+      "missing": [],
+      "changed_contracts": [],
+      "added": [
+        "20BAC5CDDF2256BF",
+        "23A95DC0693077BA",
+        "23DE969A58F32C46",
+        "24DA3C41795CF93B",
+        "24EECAAFF5A24E67",
+        "25C253FB709A75D6",
+        "263B10E46B1E27B9",
+        "299FA1C5F845B57B",
+        "2D5038F500C05DC0",
+        "2E0B9B12C9A5B83B",
+        "2E4D586CECE7D8B3",
+        "2E7C432823B8E64B",
+        "2F99E179D78B31E4"
+      ],
+      "preserved": 742
+    },
+    "rewards": {
+      "missing": [],
+      "changed_contracts": [],
+      "added": [
+        "202B14FEE0CF7E34",
+        "20455569EAAE0F19",
+        "20F873596B9AB0A0",
+        "214A240B93EC758B",
+        "226F6C26A8463DB8",
+        "22AF6481466A720C",
+        "22F65595E5A75A49",
+        "23306300207C8525",
+        "2553123B9C8A4FD7",
+        "26042DE56CDADE63",
+        "260E9714C70DDD56",
+        "2634EF00FA474573",
+        "26C579627A6A38FC",
+        "28CFD7A5742CB2A9",
+        "291716C2061526DE",
+        "2935830A5560836F",
+        "29E075E2ED5E0B62",
+        "2A0D14079E342B3A",
+        "2B1176D0571ACA29",
+        "2CA3FDD11E8196DB",
+        "2CD4FAC257663959",
+        "2DB5DAEB614132F4",
+        "2ECA1164E4810760",
+        "2EF472FC1EB5EE79",
+        "2EF801D6D1B47AC5",
+        "2FFA4B0F188069EF"
+      ],
+      "preserved": 2171
+    },
+    "reward_tables": {
+      "missing": [],
+      "changed_contracts": [],
+      "added": [],
+      "preserved": 61
+    }
+  },
+  "missing_dependency_edges": [],
+  "legacy_sources_unchanged": true,
+  "duplicate_ids": [],
+  "navigation_links": 170,
+  "broken_navigation": [],
+  "unreachable_chapters": [],
+  "invalid_dependencies": [],
+  "node_collisions": [],
+  "title_zone_intrusions": [],
+  "image_node_overlaps": [],
+  "interactive_image_overlaps": [],
+  "missing_authored_resources": [],
+  "dependency_cycles": [],
+  "maximum_dependency_rank": 4,
+  "missing_translations": {
+    "en_us": [],
+    "ru_ru": []
+  },
+  "player_visible_provenance": [],
+  "atlas_unresolved_objective_targets": [
+    {
+      "card": "wd12",
+      "registry": "items",
+      "target": "minecraft:iron_ore",
+      "new_objective": false
+    },
+    {
+      "card": "nether_extra_04",
+      "registry": "items",
+      "target": "minecraft:crying_obsidian",
+      "new_objective": false
+    },
+    {
+      "card": "end_extra_01",
+      "registry": "items",
+      "target": "minecraft:end_stone",
+      "new_objective": false
+    }
+  ],
+  "new_native_acquisition_hooks": [
+    {
+      "card": "nightfall_acquire_1",
+      "resource": "data/efn/advancements/ruinsgreatsword.json",
+      "exists": true
+    },
+    {
+      "card": "nightfall_acquire_2",
+      "resource": "data/efn/advancements/yamato_dmc_in_sheath.json",
+      "exists": true
+    },
+    {
+      "card": "nightfall_acquire_3",
+      "resource": "data/efn/advancements/air_tachi.json",
+      "exists": true
+    }
+  ],
+  "canonical_campaign_main_leaves": [
+    "eyes_07",
+    "eyes_09",
+    "eyes_10",
+    "eyes_11",
+    "eyes_12",
+    "eyes_14",
+    "eyes_03",
+    "eyes_04",
+    "eyes_05",
+    "eyes_06",
+    "eyes_13",
+    "eyes_08"
+  ],
+  "runtime_acceptance": "UNEXERCISED: no client launch, gameplay scenario or screenshot capture authorized",
+  "registry_acceptance": "Exact installed resources and canonical Atlas records inspected. Live registry/runtime detection not rerun."
+}

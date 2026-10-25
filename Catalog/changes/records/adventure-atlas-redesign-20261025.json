@@ -1,0 +1,217 @@
+{
+  "schema_version": 2,
+  "change_id": "guide.adventure-atlas-redesign-20261025",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*"
+    }
+  ],
+  "conditions": [
+    {
+      "consumer": "Marked JEM native FTB quest book with installed content projection"
+    }
+  ],
+  "precedence": {
+    "layer": "authored_native_questbook",
+    "priority": 1610
+  },
+  "change": {
+    "summary": "Reorganize the existing native book into a central adventure atlas, preserve saved quest contracts and add verified storage and weapon-acquisition objectives",
+    "modifiers": [
+      {
+        "property": "quests.authored_navigation",
+        "operation": "replace",
+        "before": "Fragmented chapter navigation and repeated stock layout",
+        "after": "One ten-category native chapter index, real thematic subchapters, explicit return links and localized captions with six supplied identity images and matching Gemini background extensions"
+      },
+      {
+        "property": "quests.saved_contracts",
+        "operation": "set",
+        "before": "Existing native quest, task, reward and dependency identities",
+        "after": "Existing IDs, task predicates, reward payloads and prerequisites remain. Rearrangement changes chapter membership, coordinates and explanatory presentation without resetting team progress or introducing a second reward owner"
+      },
+      {
+        "property": "quests.verified_additions",
+        "operation": "add",
+        "before": null,
+        "after": "Ten installed backpack/storage item objectives and three native Nightfall weapon-acquisition advancements. No invented Nightfall boss encounters, free legendary weapons or synthetic campaign dependencies"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide",
+    "kind": "requested_questbook_redesign",
+    "source_files": [
+      "Catalog/changes/sets/ftb-questbook-reward-subjects.json",
+      "Client/ManagedPack/config/ftbquests/quests/chapter_groups.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_atlas_index.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_campaign_gates.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_enchanted_tools.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_end_wilds.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_nightfall_gear.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_sea_friends.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/atlas_sky_roads.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_01.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_02.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_03.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_04.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_06.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_08.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_09.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_10.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_11.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_12.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_13.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_14.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_15.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_16.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_17.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_18.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_19.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_20.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_21.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_22.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_23.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_24.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_25.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_26.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_27.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_28.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_29.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_30.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_31.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_32.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/data.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/ac15.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/ac32.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/after_end_01.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/after_end_03.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/after_end_06.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/aquamirae_03.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/aquamirae_05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_01.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_02.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_08.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/cp05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/cp06.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/cp09.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_03.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_04.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_06.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_08.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_09.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_10.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_11.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_12.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_13.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_14.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_15.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/field_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/guard_03.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h02_13.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h03_05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h03_14.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h03_16.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h04_08.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h04_12.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h05_12.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h06_09.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h06_10.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h08_08.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/h12_12.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/hostiles_04.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/hostiles_08.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/mg10.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/mg11.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/mg14.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/nether_life_11.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/project_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/races_13.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk14.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk15.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk17.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk18.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/trade_05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/uj14.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/vanilla_07.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/wd13.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/wf05.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/wo20.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws28.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws34.snbt",
+      "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws37.snbt",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/BookInformationScreen.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestProjection.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestChapterImageMixin.java",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/background-biomes.png",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/background-companions.png",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/background-engineering.png",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/background-food.png",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/background-home.png",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/background-magic.png",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/identity-biomes.jpg",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/identity-companions.jpg",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/identity-engineering.jpg",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/identity-food.jpg",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/identity-home.jpg",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/textures/questbook/atlas/identity-magic.jpg",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json",
+      "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/rules.json",
+      "Mods/JEMAchievementGuide/tools/compile_questbook.py",
+      "Mods/JEMAchievementGuide/tools/questbook/audit_book.py",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the existing quest progression navigable and readable while preserving native completion and reward claims",
+    "decision_source": "User requested the supplied redesign brief after the ownership fix, supplied six category images, authorized Gemini to finish missing backgrounds and limited installation to test jem",
+    "implementation_choice": "Reuse exact installed FTB 2001.4.22 chapter-image navigation, native JSON text parsing, immutable ID baseline and verified installed acquisition predicates",
+    "final_art_direction": "User supplied a final Farm n Food PNG after rejecting sparkle background traces. Preserve the supplied pixels and select it through Docs/quests/art-20261025/selected-exports.json. The companion page uses the later lived-in sanctuary export"
+  },
+  "introduced": {
+    "date": "2026-10-25",
+    "commit": "SELF",
+    "action": "reorganize",
+    "summary": "Rebuild authored native chapter navigation and presentation with preserved progression contracts"
+  },
+  "history": [
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "reorganize",
+      "summary": "Reconcile the supplied design brief with installed content and protected native progression"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "quests",
+      "native_team_progress",
+      "native_rewards",
+      "localization",
+      "guide_presentation",
+      "campaign",
+      "storage"
+    ],
+    "relations": [
+      "Authored book -> native compiler -> canonical managed quest data -> optional content projection",
+      "Native chapter captions and reference pages parse client-localized components"
+    ],
+    "notes": [
+      "World Tier, race choice, power limits, campaign completion and JEMRewards remain owned by their domains",
+      "The installed Nightfall artifact exposes acquisition advancements and temporary summons, not verified boss encounters",
+      "The original profile, MineRENT and immutable release baseline are outside this delivery"
+    ],
+    "unresolved": [
+      "Client gameplay, native click paths at both GUI scales and visual player acceptance remain unrun under the project launch restriction"
+    ]
+  }
+}

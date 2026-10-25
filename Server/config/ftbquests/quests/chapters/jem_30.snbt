@@ -1,491 +1,34 @@
 {
   "id": "2B38E44379FDD722",
   "filename": "jem_30",
-  "title": "Энд и путь после титров",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-30\"}",
   "subtitle": [
-    "Когда: Предметные ветки — по доступу к Энд-контенту; скрытые вехи раскрывает сама кампания JEM.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-30\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
   "icon": "minecraft:chorus_fruit",
-  "group": "2ED93FC997095853",
-  "order_index": 29,
+  "group": "214331B8F092EBF6",
+  "order_index": 2,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
-      "id": "262DD25E33D7EB87",
-      "title": "30.01 · Оседлать Endergrade",
-      "subtitle": "Сесть верхом на Endergrade.",
-      "description": [
-        "Что сделать: Сесть верхом на Endergrade.",
-        "",
-        "Зачем: Летающий ездовой зверь End.",
-        "",
-        "Совет: Совет, не условие зачёта: Поставить седло Endergrade и управлять им предметом с Chorus Fruit; пройти безопасный маршрут между площадками.",
-        "",
-        "Награда: Первая езда в Энде дает материал островной базы и большой походный рацион.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве."
-      ],
-      "icon": "cataclysm:chorus_planks",
-      "x": -8.07,
-      "y": 1.7,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "231C43EF3E810644",
-          "type": "custom",
-          "title": "Сесть верхом на Endergrade.",
-          "icon": "cataclysm:chorus_planks",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "221626A45F5F258B",
-          "type": "jem_advancements:quest_item",
-          "item": "cataclysm:chorus_planks",
-          "count": 128,
-          "claim_key": "we01/item/0",
-          "claim_reward_id": "221626A45F5F258B",
-          "team_reward": false
-        },
-        {
-          "id": "28DC5ED860D9C896",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:chorus_pasta",
-          "count": 24,
-          "claim_key": "we01/item/1",
-          "claim_reward_id": "28DC5ED860D9C896",
-          "team_reward": false
-        },
-        {
-          "id": "285671E228ED5E07",
-          "type": "jem_advancements:quest_xp",
-          "xp": 140,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we01",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "2E905B0609BC6014",
-      "title": "30.02 · Спасатель Cosmaw",
-      "subtitle": "Нажать ПКМ по Cosmaw с Cosmic Cod в основной руке.",
-      "description": [
-        "Что сделать: Нажать ПКМ по Cosmaw с Cosmic Cod в основной руке.",
-        "",
-        "Зачем: Спутник, способный подхватить владельца при падении.",
-        "",
-        "Совет: Совет, не условие зачёта: Приручить Cosmaw с помощью Cosmic Cod; проверить следование и защитное поведение над безопасной площадкой. Специально прыгать в пустоту не требуется.",
-        "",
-        "Награда: Освоенное кормление Cosmaw дает запас уже использованной рыбы и местной еды."
-      ],
-      "icon": "alexsmobs:cosmic_cod",
-      "x": -6.22,
-      "y": 1.7,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2280D0DDC2FFB450",
-          "type": "custom",
-          "title": "Нажать ПКМ по Cosmaw с Cosmic Cod в основной руке.",
-          "icon": "alexsmobs:cosmic_cod",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "278850CC779346A8",
-          "type": "jem_advancements:quest_item",
-          "item": "alexsmobs:cosmic_cod",
-          "count": 24,
-          "claim_key": "we02/item/0",
-          "claim_reward_id": "278850CC779346A8",
-          "team_reward": false
-        },
-        {
-          "id": "2FEFEA927F0C9069",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:end_salad",
-          "count": 24,
-          "claim_key": "we02/item/1",
-          "claim_reward_id": "2FEFEA927F0C9069",
-          "team_reward": false
-        },
-        {
-          "id": "2C3C57088E763751",
-          "type": "jem_advancements:quest_xp",
-          "xp": 120,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we02",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "2C95DFF2ED1D7678",
-      "title": "30.03 · Капсида и превращение",
-      "subtitle": "Поставить Enderiophage Capsid; получить Cosmic Cod и Mysterious Worm.",
-      "description": [
-        "Что сделать: Поставить Enderiophage Capsid; получить Cosmic Cod и Mysterious Worm.",
-        "",
-        "Зачем: Предметный лифт и трансмутация; материал для поздней встречи.",
-        "",
-        "Совет: Совет, не условие зачёта: Создать Enderiophage Capsid и передать предмет по вертикали; отдельно превратить обычную треску в Cosmic Cod и личинку в Mysterious Worm по родной процедуре.",
-        "",
-        "Награда: Собственная капсида и находки Энда дают расширение мастерской и строительный запас.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве."
-      ],
-      "icon": "alexsmobs:capsid",
-      "x": -4.38,
-      "y": 1.7,
-      "shape": "hexagon",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "22332B6D4E4E37F7",
-          "type": "custom",
-          "title": "Поставить Enderiophage Capsid; получить Cosmic Cod и Mysterious Worm.",
-          "icon": "alexsmobs:capsid",
-          "count": 1
-        },
-        {
-          "id": "2F44647D7E284FE2",
-          "type": "item",
-          "item": "alexsmobs:cosmic_cod",
-          "count": 1,
-          "consume_items": false
-        },
-        {
-          "id": "2E41427E8132855A",
-          "type": "item",
-          "item": "alexsmobs:mysterious_worm",
-          "count": 1,
-          "consume_items": false
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2FA28264DA1E8927",
-          "type": "jem_advancements:quest_item",
-          "item": "alexsmobs:capsid",
-          "count": 2,
-          "claim_key": "we03/item/0",
-          "claim_reward_id": "2FA28264DA1E8927",
-          "team_reward": false
-        },
-        {
-          "id": "2B49CE8897EDE43A",
-          "type": "jem_advancements:quest_item",
-          "item": "cataclysm:chorus_planks",
-          "count": 128,
-          "claim_key": "we03/item/1",
-          "claim_reward_id": "2B49CE8897EDE43A",
-          "team_reward": false
-        },
-        {
-          "id": "251BBD4B58B5AFEF",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:chorus_flower_soup",
-          "count": 24,
-          "claim_key": "we03/item/2",
-          "claim_reward_id": "251BBD4B58B5AFEF",
-          "team_reward": false
-        },
-        {
-          "id": "27C5214F57541AEA",
-          "type": "jem_advancements:quest_xp",
-          "xp": 200,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we03",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "2D3DFD1F9A145C1F",
-      "title": "30.04 · Материал для зеркального снаряжения",
-      "subtitle": "Получить 8 Mimicream.",
-      "description": [
-        "Что сделать: Получить 8 Mimicream.",
-        "",
-        "Зачем: Копирование с ограничениями и ремонт; это не выдача бесплатного готового топового предмета.",
-        "",
-        "Совет: Совет, не условие зачёта: Победить Mimicube, учитывая копирование снаряжения; использовать Mimicream для допустимого предмета и починить копию с нулевой прочностью.",
-        "",
-        "Награда: Самостоятельно добытый Mimicream возвращается в количестве для нескольких практических применений."
-      ],
-      "icon": "alexsmobs:mimicream",
-      "x": -2.52,
-      "y": 1.7,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2D3DBD1FE82C687D",
-          "type": "item",
-          "item": "alexsmobs:mimicream",
-          "count": 8,
-          "consume_items": false
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2031C9FF6FBB1F7C",
-          "type": "jem_advancements:quest_item",
-          "item": "alexsmobs:mimicream",
-          "count": 32,
-          "claim_key": "we04/item/0",
-          "claim_reward_id": "2031C9FF6FBB1F7C",
-          "team_reward": false
-        },
-        {
-          "id": "2372EFBD4AA71522",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:ender_mint_tea",
-          "count": 24,
-          "claim_key": "we04/item/1",
-          "claim_reward_id": "2372EFBD4AA71522",
-          "team_reward": false
-        },
-        {
-          "id": "2ACA5C91B018F250",
-          "type": "jem_advancements:quest_xp",
-          "xp": 170,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we04",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "26B6643A789F7B92",
-      "title": "30.05 · Попутный Spectre",
-      "subtitle": "Нажать ПКМ по Spectre с поводком в основной руке.",
-      "description": [
-        "Что сделать: Нажать ПКМ по Spectre с поводком в основной руке.",
-        "",
-        "Зачем: Необычный воздушный попутчик.",
-        "",
-        "Совет: Совет, не условие зачёта: Зацепить Spectre поводком и испытать короткое перемещение над подготовленной площадкой, учитывая его собственное направление движения.",
-        "",
-        "Награда: Встреча со Spectre дает расходники для будущих путешествий и съемки Энда."
-      ],
-      "icon": "alexsmobs:enderiophage_rocket",
-      "x": -7.15,
-      "y": 3.55,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2B6C5EBB661DD1B8",
-          "type": "custom",
-          "title": "Нажать ПКМ по Spectre с поводком в основной руке.",
-          "icon": "alexsmobs:enderiophage_rocket",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2267ABFC410D8E91",
-          "type": "jem_advancements:quest_item",
-          "item": "alexsmobs:enderiophage_rocket",
-          "count": 48,
-          "claim_key": "we05/item/0",
-          "claim_reward_id": "2267ABFC410D8E91",
-          "team_reward": false
-        },
-        {
-          "id": "22270A49B3320CBE",
-          "type": "jem_advancements:quest_item",
-          "item": "exposure:color_film",
-          "count": 8,
-          "claim_key": "we05/item/1",
-          "claim_reward_id": "22270A49B3320CBE",
-          "team_reward": false
-        },
-        {
-          "id": "22764FBDB09553E3",
-          "type": "jem_advancements:quest_xp",
-          "xp": 120,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we05",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "237446F4C590A663",
-      "title": "30.06 · Червь между мирами",
-      "subtitle": "Нажать ПКМ в воздухе с Dimensional Carver.",
-      "description": [
-        "Что сделать: Нажать ПКМ в воздухе с Dimensional Carver.",
-        "",
-        "Зачем: Поздний босс и инструмент межточечного перемещения.",
-        "",
-        "Совет: Совет, не условие зачёта: Бросить Mysterious Worm в пустоту родным способом, победить Void Worm и создать Dimensional Carver; применить полученный портал.",
-        "",
-        "Награда: Испытанный собственный Dimensional Carver получает большой ресурсный комплект для продолжения путешествия.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 30.03 · Капсида и превращение. Порядок свободный."
-      ],
-      "icon": "alexsmobs:dimensional_carver",
-      "x": -5.3,
-      "y": 3.55,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2A9C42E23B67C251",
-          "type": "custom",
-          "title": "Нажать ПКМ в воздухе с Dimensional Carver.",
-          "icon": "alexsmobs:dimensional_carver",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2C197578A659BC0E",
-          "type": "jem_advancements:quest_item",
-          "item": "alexsmobs:ender_residue",
-          "count": 64,
-          "claim_key": "we06/item/0",
-          "claim_reward_id": "2C197578A659BC0E",
-          "team_reward": false
-        },
-        {
-          "id": "2E8C1D6496BD9737",
-          "type": "jem_advancements:quest_item",
-          "item": "cataclysm:chorus_planks",
-          "count": 128,
-          "claim_key": "we06/item/1",
-          "claim_reward_id": "2E8C1D6496BD9737",
-          "team_reward": false
-        },
-        {
-          "id": "209A4EB66BE6551E",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:void_conch_noodle_soup",
-          "count": 24,
-          "claim_key": "we06/item/2",
-          "claim_reward_id": "209A4EB66BE6551E",
-          "team_reward": false
-        },
-        {
-          "id": "2E9E44768158AF7A",
-          "type": "jem_advancements:quest_xp",
-          "xp": 160,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we06",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "24697E96DE5CE43D",
-      "title": "30.07 · Граница реальности",
-      "subtitle": "Нажать ПКМ пустой основной рукой по Transmutation Table Alex’s Mobs.",
-      "description": [
-        "Что сделать: Нажать ПКМ пустой основной рукой по Transmutation Table Alex’s Mobs.",
-        "",
-        "Зачем: Поздняя трансмутация и расходование обычного опыта.",
-        "",
-        "Совет: Совет, не условие зачёта: При доступной встрече с Farseer получить материал для Transmutation Table и выполнить обмен с затратой опыта. Не требовать путешествие к далёкой границе мира в основной линии.",
-        "",
-        "Награда: Знакомство со столом трансмутации дополняется большой палитрой для эндовой мастерской; дубликат стола не выдается.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве. В этой версии вместо пиратской двери Энда выдаются потайные пурпурные двери, в том же количестве."
-      ],
-      "icon": "alexsmobs:transmutation_table",
-      "x": -3.45,
-      "y": 3.55,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "29582D1220044E92",
-          "type": "custom",
-          "title": "Нажать ПКМ пустой основной рукой по Transmutation Table Alex’s Mobs.",
-          "icon": "alexsmobs:transmutation_table",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "29D1EA1FACBAB29C",
-          "type": "jem_advancements:quest_item",
-          "item": "cataclysm:chorus_planks",
-          "count": 128,
-          "claim_key": "we07/item/0",
-          "claim_reward_id": "29D1EA1FACBAB29C",
-          "team_reward": false
-        },
-        {
-          "id": "216946393755B0B0",
-          "type": "jem_advancements:quest_item",
-          "item": "secretdoors:secret_purpur_door",
-          "count": 16,
-          "claim_key": "we07/item/1",
-          "claim_reward_id": "216946393755B0B0",
-          "team_reward": false
-        },
-        {
-          "id": "283609C346DF1F28",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:ender_mint_candy",
-          "count": 32,
-          "claim_key": "we07/item/2",
-          "claim_reward_id": "283609C346DF1F28",
-          "team_reward": false
-        },
-        {
-          "id": "222C819137504447",
-          "type": "jem_advancements:quest_xp",
-          "xp": 150,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "we07",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
       "id": "2F3D93FCEB72D6B0",
-      "title": "30.08 · Первый дракон",
-      "subtitle": "Получить существующую веху JEM «post_end/dragon», отмечающую победу над драконом в текущем мире.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_01.condition\"}",
       "description": [
-        "Что сделать: Получить существующую веху JEM «post_end/dragon», отмечающую победу над драконом в текущем мире.",
+        "{\"translate\":\"jem.atlas.card.after_end_01.condition\"}",
         "",
-        "Зачем: Пост-End последовательность; не спойлерить заранее.",
+        "{\"translate\":\"jem.atlas.card.after_end_01.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: Пройти фактический бой с текущим True Ending и получить канонический зачёт победы.",
+        "{\"translate\":\"jem.atlas.card.after_end_01.tip\"}",
         "",
-        "Награда: Настоящая победа над драконом дает редкое средство путешествия на выбор, большой запас ракет и заслуженную драконью еду."
+        "{\"translate\":\"jem.atlas.card.after_end_01.reward\"}"
       ],
       "icon": "alexsmobs:enderiophage_rocket",
-      "x": 3.45,
-      "y": 1.7,
+      "x": -18.0,
+      "y": -8.0,
       "shape": "diamond",
       "size": 1.25,
       "tasks": [
@@ -535,178 +78,28 @@
       "jem_dedicated_event": false
     },
     {
-      "id": "290624FD62EA6760",
-      "title": "30.09 · Материалы островов Nullscape",
-      "subtitle": "Получить эндерняк, пурпурный блок и плод хоруса.",
-      "description": [
-        "Что сделать: Получить эндерняк, пурпурный блок и плод хоруса.",
-        "",
-        "Зачем: Рельеф Энда, навигация и осмысленное применение транспорта.",
-        "",
-        "Совет: Совет, не условие зачёта: Nullscape изменяет форму и высоту островов. Ездовые существа и подготовленная точка возвращения помогают в путешествии. Здесь проверяются три материала; высота, посещение островов и маршрут не входят в зачёт.",
-        "",
-        "Награда: Три самостоятельно найденных материала дают заметный комплект для эндового аванпоста.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве. В этой версии вместо пиратского флага Энда выдаются фиолетовые флаги, в том же количестве."
-      ],
-      "icon": "minecraft:purpur_block",
-      "x": 3.45,
-      "y": 5.4,
-      "shape": "hexagon",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "244B1F193C0D5FBE",
-          "type": "item",
-          "item": "minecraft:end_stone",
-          "count": 1,
-          "consume_items": false
-        },
-        {
-          "id": "2767E46BBF1D063A",
-          "type": "item",
-          "item": "minecraft:purpur_block",
-          "count": 1,
-          "consume_items": false
-        },
-        {
-          "id": "2E10F94054D3BB3D",
-          "type": "item",
-          "item": "minecraft:chorus_fruit",
-          "count": 1,
-          "consume_items": false
-        }
-      ],
-      "rewards": [
-        {
-          "id": "23C4FA914FE1D07F",
-          "type": "jem_advancements:quest_item",
-          "item": "cataclysm:chorus_planks",
-          "count": 128,
-          "claim_key": "end_extra_01/item/0",
-          "claim_reward_id": "23C4FA914FE1D07F",
-          "team_reward": false
-        },
-        {
-          "id": "2500A11F07D213B5",
-          "type": "jem_advancements:quest_item",
-          "item": "minecraft:purple_banner",
-          "count": 8,
-          "claim_key": "end_extra_01/item/1",
-          "claim_reward_id": "2500A11F07D213B5",
-          "team_reward": false
-        },
-        {
-          "id": "293CED6FA17A7B9C",
-          "type": "jem_advancements:quest_xp",
-          "xp": 110,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "end_extra_01",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "20EAF8D46779A7F2",
-      "title": "30.10 · Сад на краю мира",
-      "subtitle": "Получить Dream Berries и Ender Mint.",
-      "description": [
-        "Что сделать: Получить Dream Berries и Ender Mint.",
-        "",
-        "Зачем: Возобновляемые культуры Kaleidoscope End и кухня после открытия измерения.",
-        "",
-        "Совет: Совет, не условие зачёта: Добыть Dream Berries и Ender Mint, вырастить собственный урожай и приготовить одно подходящее блюдо из главы кухни.",
-        "",
-        "Награда: Оба найденных растения теперь есть в количестве для местной кухни и дальнейшего хозяйства."
-      ],
-      "icon": "kaleidoscope_end:dream_berry",
-      "x": 5.3,
-      "y": 5.4,
-      "shape": "hexagon",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "269AA18DCAD3D2E9",
-          "type": "item",
-          "item": "kaleidoscope_end:dream_berry",
-          "count": 1,
-          "consume_items": false
-        },
-        {
-          "id": "20990A3D50DB3D88",
-          "type": "item",
-          "item": "kaleidoscope_end:ender_mint",
-          "count": 1,
-          "consume_items": false
-        }
-      ],
-      "rewards": [
-        {
-          "id": "28952BEB7CA877A9",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:dream_berry",
-          "count": 32,
-          "claim_key": "end_extra_02/item/0",
-          "claim_reward_id": "28952BEB7CA877A9",
-          "team_reward": false
-        },
-        {
-          "id": "2930C009BCFD3374",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:ender_mint",
-          "count": 32,
-          "claim_key": "end_extra_02/item/1",
-          "claim_reward_id": "2930C009BCFD3374",
-          "team_reward": false
-        },
-        {
-          "id": "25F99139448B23A5",
-          "type": "jem_advancements:quest_item",
-          "item": "kaleidoscope_end:ender_mint_tea",
-          "count": 24,
-          "claim_key": "end_extra_02/item/2",
-          "claim_reward_id": "25F99139448B23A5",
-          "team_reward": false
-        },
-        {
-          "id": "2C6C9AF430733E61",
-          "type": "jem_advancements:quest_xp",
-          "xp": 120,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "end_extra_02",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
       "id": "2B7B69F7E17CBF86",
-      "title": "30.12 · Неизвестный указатель",
-      "subtitle": "Получить раскрытие пост-End маршрута в кампании мира.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_02.condition\"}",
       "description": [
-        "Что сделать: Получить раскрытие пост-End маршрута в кампании мира.",
+        "{\"translate\":\"jem.atlas.card.after_end_02.condition\"}",
         "",
-        "Зачем: Раскрытие скрытой станции/пост-End маршрута; FTB не выдаёт второй указатель.",
+        "{\"translate\":\"jem.atlas.card.after_end_02.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: После штатной сцены/титров использовать полученный владельцем прогресса Mystery Locator.",
+        "{\"translate\":\"jem.atlas.card.after_end_02.tip\"}",
         "",
-        "Награда: Открытие следующего этапа получает комплект для базы и провизию, без дорогой награды за сюжетный флаг.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве. В этой версии вместо пиратского флага Энда выдаются фиолетовые флаги, в том же количестве."
+        "{\"translate\":\"jem.atlas.card.after_end_02.reward\"}"
       ],
       "icon": "cataclysm:chorus_planks",
-      "x": 5.3,
-      "y": 1.7,
+      "x": -6.8,
+      "y": -7.31,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2275EE2AF5F7B4E4",
           "type": "custom",
-          "title": "Получить раскрытие пост-End маршрута в кампании мира.",
+          "title": "{\"translate\":\"jem.atlas.card.after_end_02.condition\"}",
           "icon": "cataclysm:chorus_planks",
           "count": 1
         }
@@ -755,27 +148,27 @@
     },
     {
       "id": "22221DBB7B101267",
-      "title": "30.13 · Ender Guardian",
-      "subtitle": "Зафиксировать победу над Ender Guardian в пост-End кампании мира.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_03.condition\"}",
       "description": [
-        "Что сделать: Зафиксировать победу над Ender Guardian в пост-End кампании мира.",
+        "{\"translate\":\"jem.atlas.card.after_end_03.condition\"}",
         "",
-        "Зачем: Одна из трёх канонических побед для финальной встречи.",
+        "{\"translate\":\"jem.atlas.card.after_end_03.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: После раскрытия маршрута найти и победить Ender Guardian; указатель покупать у штатного доступного торговца.",
+        "{\"translate\":\"jem.atlas.card.after_end_03.tip\"}",
         "",
-        "Награда: Нативная победа над Ender Guardian заслуживает дорогого материала и редкой части защитного снаряжения на выбор."
+        "{\"translate\":\"jem.atlas.card.after_end_03.reward\"}"
       ],
       "icon": "netherexp:netherite_plating",
-      "x": -5.3,
-      "y": 7.25,
+      "x": -1.2,
+      "y": -7.4,
       "shape": "diamond",
       "size": 1.25,
       "tasks": [
         {
           "id": "2BB4C14259E70881",
           "type": "custom",
-          "title": "Зафиксировать победу над Ender Guardian в пост-End кампании мира.",
+          "title": "{\"translate\":\"jem.atlas.card.after_end_03.condition\"}",
           "icon": "netherexp:netherite_plating",
           "count": 1
         }
@@ -821,27 +214,27 @@
     },
     {
       "id": "2E81C51CE8CC65AB",
-      "title": "30.14 · Endersent",
-      "subtitle": "Зафиксировать победу над Endersent в пост-End кампании мира.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_04.condition\"}",
       "description": [
-        "Что сделать: Зафиксировать победу над Endersent в пост-End кампании мира.",
+        "{\"translate\":\"jem.atlas.card.after_end_04.condition\"}",
         "",
-        "Зачем: Одна из трёх канонических побед для финальной встречи.",
+        "{\"translate\":\"jem.atlas.card.after_end_04.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: После раскрытия маршрута найти и победить Endersent; указатель покупать у штатного доступного торговца.",
+        "{\"translate\":\"jem.atlas.card.after_end_04.tip\"}",
         "",
-        "Награда: Настоящая победа над Endersent дает редкую рыболовную оснастку и большой запас наживки для дальнейших открытий."
+        "{\"translate\":\"jem.atlas.card.after_end_04.reward\"}"
       ],
       "icon": "tide:void_hook",
-      "x": 5.3,
-      "y": 9.1,
+      "x": 4.4,
+      "y": -7.77,
       "shape": "diamond",
       "size": 1.25,
       "tasks": [
         {
           "id": "28027C6137BDB711",
           "type": "custom",
-          "title": "Зафиксировать победу над Endersent в пост-End кампании мира.",
+          "title": "{\"translate\":\"jem.atlas.card.after_end_04.condition\"}",
           "icon": "tide:void_hook",
           "count": 1
         }
@@ -899,27 +292,27 @@
     },
     {
       "id": "27D4614ABBF2B36C",
-      "title": "30.15 · Shulker Mimic",
-      "subtitle": "Зафиксировать победу над Shulker Mimic в пост-End кампании мира.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_05.condition\"}",
       "description": [
-        "Что сделать: Зафиксировать победу над Shulker Mimic в пост-End кампании мира.",
+        "{\"translate\":\"jem.atlas.card.after_end_05.condition\"}",
         "",
-        "Зачем: Одна из трёх канонических побед для финальной встречи.",
+        "{\"translate\":\"jem.atlas.card.after_end_05.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: После раскрытия маршрута найти и победить Shulker Mimic; указатель покупать у штатного доступного торговца.",
+        "{\"translate\":\"jem.atlas.card.after_end_05.tip\"}",
         "",
-        "Награда: Победа над Shulker Mimic приносит редкую пищевую утилиту, большой складской комплект и дорогую еду."
+        "{\"translate\":\"jem.atlas.card.after_end_05.reward\"}"
       ],
       "icon": "alexscaves:sack_of_sating",
-      "x": -5.3,
-      "y": 10.95,
+      "x": 10.0,
+      "y": -8.25,
       "shape": "diamond",
       "size": 1.25,
       "tasks": [
         {
           "id": "2ADFD21CC819E748",
           "type": "custom",
-          "title": "Зафиксировать победу над Shulker Mimic в пост-End кампании мира.",
+          "title": "{\"translate\":\"jem.atlas.card.after_end_05.condition\"}",
           "icon": "alexscaves:sack_of_sating",
           "count": 1
         }
@@ -968,27 +361,27 @@
     },
     {
       "id": "23BA6ED518A7A6BE",
-      "title": "30.16 · Последняя станция",
-      "subtitle": "Зафиксировать победу над The Obliterator в пост-End кампании мира.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_06.condition\"}",
       "description": [
-        "Что сделать: Зафиксировать победу над The Obliterator в пост-End кампании мира.",
+        "{\"translate\":\"jem.atlas.card.after_end_06.condition\"}",
         "",
-        "Зачем: Канонический финал post_end/the_end; не подменять обычным убийством любой похожей сущности.",
+        "{\"translate\":\"jem.atlas.card.after_end_06.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: После всех трёх подтверждённых побед пройти The Obliterator.",
+        "{\"translate\":\"jem.atlas.card.after_end_06.tip\"}",
         "",
-        "Награда: Нативная победа над Obliterator дает редкую пищевую утилиту, еще один сильный инструмент на выбор и большой экспедиционный запас."
+        "{\"translate\":\"jem.atlas.card.after_end_06.reward\"}"
       ],
       "icon": "alexscaves:sack_of_sating",
-      "x": 7.15,
-      "y": 1.7,
+      "x": 15.6,
+      "y": -8.61,
       "shape": "diamond",
       "size": 1.25,
       "tasks": [
         {
           "id": "23811BC6ADBA2E39",
           "type": "custom",
-          "title": "Зафиксировать победу над The Obliterator в пост-End кампании мира.",
+          "title": "{\"translate\":\"jem.atlas.card.after_end_06.condition\"}",
           "icon": "alexscaves:sack_of_sating",
           "count": 1
         }
@@ -1043,29 +436,27 @@
     },
     {
       "id": "2F6D3F8A602B0BEA",
-      "title": "30.17 · Контакт с древним стражем",
-      "subtitle": "Нанести один удар Ancient Guardian Legendary Monsters.",
+      "title": "{\"translate\":\"jem.atlas.card.after_end_07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.after_end_07.condition\"}",
       "description": [
-        "Что сделать: Нанести один удар Ancient Guardian Legendary Monsters.",
+        "{\"translate\":\"jem.atlas.card.after_end_07.condition\"}",
         "",
-        "Зачем: Дополнительный End-контент; Ancient Guardian не преграждает Paladin.",
+        "{\"translate\":\"jem.atlas.card.after_end_07.purpose\"}",
         "",
-        "Совет: Совет, не условие зачёта: Исследовать Ancient Guardian и другие доступные End-встречи как отдельные приключения; испытать добытое оружие.",
+        "{\"translate\":\"jem.atlas.card.after_end_07.tip\"}",
         "",
-        "Награда: Первый контакт с Ancient Guardian поддерживает следующий поход материалом и провизией.",
-        "",
-        "В этой версии вместо пурпурных досок выдаются доски хоруса, в том же количестве."
+        "{\"translate\":\"jem.atlas.card.after_end_07.reward\"}"
       ],
       "icon": "legendary_monsters:ancient_guardian_spawn_egg",
-      "x": 5.3,
-      "y": 12.8,
+      "x": -18.0,
+      "y": 7.93,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2E359DFC6D8059BB",
           "type": "custom",
-          "title": "Нанести один удар Ancient Guardian Legendary Monsters.",
+          "title": "{\"translate\":\"jem.atlas.card.after_end_07.condition\"}",
           "icon": "legendary_monsters:ancient_guardian_spawn_egg",
           "count": 1
         }
@@ -1104,102 +495,90 @@
   ],
   "images": [
     {
-      "x": -5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Живой Энд",
-      "order": -5,
-      "hover": [
-        "Живой Энд"
-      ]
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-30\"}",
+      "order": 30
     },
     {
-      "x": 5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Основной маршрут",
-      "order": -5,
+      "x": -20,
+      "y": -15,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "Основной маршрут"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
     },
     {
-      "x": 5.3,
-      "y": 3.7,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Основная линия",
-      "order": -5,
-      "hover": [
-        "Основная линия"
-      ]
+      "x": -20,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
     },
     {
-      "x": -5.3,
-      "y": 5.55,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Путь Ender Guardian",
-      "order": -5,
+      "x": -11.0,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/ender_eye.png",
+      "click": "#1000000000000005",
       "hover": [
-        "Путь Ender Guardian"
-      ]
+        "jem.atlas.route_hint.tab-28"
+      ],
+      "order": 20
     },
     {
-      "x": 5.3,
-      "y": 7.4,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Путь Endersent",
-      "order": -5,
-      "hover": [
-        "Путь Endersent"
-      ]
+      "x": -11.0,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-28\"}",
+      "order": 21
     },
     {
-      "x": -5.3,
-      "y": 9.25,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Путь Shulker Mimic",
-      "order": -5,
+      "x": -4.8,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/ender_eye.png",
+      "click": "#2633B4B62761FB44",
       "hover": [
-        "Путь Shulker Mimic"
-      ]
+        "jem.atlas.route_hint.campaign-gates"
+      ],
+      "order": 20
     },
     {
-      "x": 5.3,
-      "y": 11.1,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Дополнительная встреча",
-      "order": -5,
-      "hover": [
-        "Дополнительная встреча"
-      ]
+      "x": -4.8,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.campaign-gates\"}",
+      "order": 21
     },
     {
-      "x": 7.15,
-      "y": 5.4,
+      "x": -12.4,
+      "y": -7.55,
       "width": 0.9,
       "height": 0.9,
       "image": "minecraft:textures/item/book.png",
       "click": "jem-info:end_extra_03",
       "hover": [
-        "30.11 · Тайна яйца: резерв после проверки",
-        "Справка: без награды и процента завершения"
+        "jem.atlas.card.end_extra_03.title",
+        "jem.atlas.reference.hint"
       ],
       "order": 20
     }
   ],
-  "autofocus_id": "262DD25E33D7EB87"
+  "jem_atlas_hub": false
 }

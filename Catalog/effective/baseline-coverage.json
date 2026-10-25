@@ -2,11 +2,11 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "c6dedd4ff8fb5f72aa810e33d6169e6b3306f23b3066b34e052d73c4d5a5252a",
+  "change_records_sha256": "a43c01522087e8d36b444164a55cd8dcb2623dc76c2aac1fa0e70cdda04bb229",
   "totals": {
-    "watched": 4050,
-    "covered": 2281,
-    "unresolved": 1769
+    "watched": 4054,
+    "covered": 2290,
+    "unresolved": 1764
   },
   "groups": {
     "Client/ManagedPack/config": {
@@ -1581,9 +1581,9 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 508,
+      "watched": 505,
       "covered": 320,
-      "unresolved": 188,
+      "unresolved": 185,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1762,9 +1762,6 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/loot_tables/events/cooking_medium.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/blocks/rush_block_drops.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/blocks/rush_resources.json",
-        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/mummy.json",
-        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
-        "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/end_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/nether_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/rare_ingredients.json",
@@ -1859,14 +1856,13 @@
       "unresolved_paths": []
     },
     "Mods/JEMWorldBossTiers": {
-      "watched": 139,
-      "covered": 85,
-      "unresolved": 54,
+      "watched": 146,
+      "covered": 94,
+      "unresolved": 52,
       "unresolved_paths": [
         "Mods/JEMWorldBossTiers/gradle.properties",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossEffectApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/BossRevivalApi.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/WorldTierApi.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceDataLoader.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossFrenzy.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossTierScaling.java",
@@ -1880,7 +1876,6 @@
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/IronsSpellDamageAdapter.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/compat/irons/SpellTierFactors.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/enchantment/TierEnchantments.java",
-        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterData.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterProvenance.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/HostedScaling.java",
         "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/PendingHealthSync.java",

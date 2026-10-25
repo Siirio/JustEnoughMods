@@ -1,41 +1,41 @@
 {
   "id": "2AFD12751D70EF71",
   "filename": "jem_26",
-  "title": "Школа заклинаний",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-26\"}",
   "subtitle": [
-    "Когда: По обычному доступу к предметам; редкие знания и боссы не заменяются FTB-наградами.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-26\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
-  "icon": "irons_spellbooks:scroll",
-  "group": "29D4F15F9E0A87A2",
-  "order_index": 25,
+  "icon": "minecraft:enchanted_book",
+  "group": "267C3348421ABE9D",
+  "order_index": 0,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
       "id": "23F877D7CF654E6B",
-      "title": "26.01 · Первый свиток",
-      "subtitle": "Собрать свиток Iron’s Spells и Arcane Essence.",
+      "title": "{\"translate\":\"jem.atlas.card.mg01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg01.condition\"}",
       "description": [
-        "Что сделать: Собрать свиток Iron’s Spells и Arcane Essence.",
+        "{\"translate\":\"jem.atlas.card.mg01.condition\"}",
         "",
-        "Зачем: Понимание магических предметов и первые варианты заклинаний.",
+        "{\"translate\":\"jem.atlas.card.mg01.purpose\"}",
         "",
-        "Совет: В подсказке свитка посмотрите школу, уровень, ману и восстановление. Получение из конкретного сундука или существа не проверяется.",
+        "{\"translate\":\"jem.atlas.card.mg01.tip\"}",
         "",
-        "Награда: Начальный письменный запас после первого свитка и сущности."
+        "{\"translate\":\"jem.atlas.card.mg01.reward\"}"
       ],
       "icon": "irons_spellbooks:scroll",
-      "x": -8.07,
-      "y": 1.7,
+      "x": -17.0,
+      "y": -8.0,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "21138543EF3CC003",
           "type": "custom",
-          "title": "Собрать свиток Iron’s Spells и Arcane Essence.",
+          "title": "{\"translate\":\"jem.atlas.card.mg01.condition\"}",
           "icon": "irons_spellbooks:scroll",
           "count": 2
         }
@@ -82,38 +82,36 @@
     },
     {
       "id": "2F43CD88E92AD6FA",
-      "title": "26.02 · Записать заклинание",
-      "subtitle": "Поставить Inscription Table и получить Spell Book.",
+      "title": "{\"translate\":\"jem.atlas.card.mg02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
       "description": [
-        "Что сделать: Поставить Inscription Table и получить Spell Book.",
+        "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
         "",
-        "Зачем: Многократное применение заклинаний, слоты и управление маной.",
+        "{\"translate\":\"jem.atlas.card.mg02.purpose\"}",
         "",
-        "Совет: Запишите найденный свиток в книгу, назначьте слот и произнесите заклинание. Квест проверяет станцию и книгу, а не содержимое слотов или успешный каст.",
+        "{\"translate\":\"jem.atlas.card.mg02.tip\"}",
         "",
-        "Награда: Ресурсы на несколько записей в уже полученную книгу заклинаний.",
+        "{\"translate\":\"jem.atlas.card.mg02.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.01 · Первый свиток. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:inscription_table",
-      "x": -6.22,
-      "y": 1.7,
+      "x": -11.3,
+      "y": -7.55,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2C9DFD3A06582B99",
           "type": "custom",
-          "title": "Поставить Inscription Table и получить Spell Book.",
+          "title": "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
           "icon": "irons_spellbooks:inscription_table",
           "count": 1
         },
         {
           "id": "221907B2046D6E5F",
           "type": "custom",
-          "title": "Поставить Inscription Table и получить Spell Book.",
+          "title": "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
           "icon": "irons_spellbooks:inscription_table",
           "count": 1
         }
@@ -160,31 +158,29 @@
     },
     {
       "id": "26112A5D3076EBF7",
-      "title": "26.03 · Магия решает разные задачи",
-      "subtitle": "Нажать ПКМ в воздухе с одним свитком Iron’s Spells.",
+      "title": "{\"translate\":\"jem.atlas.card.mg03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg03.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ в воздухе с одним свитком Iron’s Spells.",
+        "{\"translate\":\"jem.atlas.card.mg03.condition\"}",
         "",
-        "Зачем: Разные роли магии, сочетания и собственная панель заклинаний.",
+        "{\"translate\":\"jem.atlas.card.mg03.purpose\"}",
         "",
-        "Совет: Попробуйте заклинания трёх ролей: урон, защита/лечение и перемещение/утилита. Достаточно доступных свитков. ПКМ засчитывается отдельно от успеха заклинания.",
+        "{\"translate\":\"jem.atlas.card.mg03.tip\"}",
         "",
-        "Награда: Расходники для продолжения практики; одно использование свитка не выдаёт редкий артефакт.",
+        "{\"translate\":\"jem.atlas.card.mg03.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.02 · Записать заклинание. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:scroll",
-      "x": -4.38,
-      "y": 1.7,
+      "x": -5.6,
+      "y": -7.31,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "26D4625E79122BDD",
           "type": "custom",
-          "title": "Нажать ПКМ в воздухе с одним свитком Iron’s Spells.",
+          "title": "{\"translate\":\"jem.atlas.card.mg03.condition\"}",
           "icon": "irons_spellbooks:scroll",
           "count": 1
         }
@@ -222,31 +218,29 @@
     },
     {
       "id": "29AFEA83EC1F6A38",
-      "title": "26.04 · Все школы на выбор",
-      "subtitle": "Собрать три разных школьных фокуса или руны из восьми обычных школ.",
+      "title": "{\"translate\":\"jem.atlas.card.mg04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg04.condition\"}",
       "description": [
-        "Что сделать: Собрать три разных школьных фокуса или руны из восьми обычных школ.",
+        "{\"translate\":\"jem.atlas.card.mg04.condition\"}",
         "",
-        "Зачем: Весь спектр установленных школ без обязательного изготовления каждого свитка; призыв — роль внутри доступных школ.",
+        "{\"translate\":\"jem.atlas.card.mg04.purpose\"}",
         "",
-        "Совет: Каждая карточка школы объясняет свои сильные стороны. Сравните Fire, Ice, Lightning, Holy, Ender, Blood, Evocation и Nature; Eldritch находится дальше. Не требуется изготовить все свитки.",
+        "{\"translate\":\"jem.atlas.card.mg04.tip\"}",
         "",
-        "Награда: Свободные заготовки для развития выбранных школ после знакомства с тремя направлениями.",
+        "{\"translate\":\"jem.atlas.card.mg04.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.02 · Записать заклинание. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:fire_rune",
-      "x": -2.52,
-      "y": 1.7,
+      "x": 0.1,
+      "y": -7.4,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2E67201C5FF14F96",
           "type": "custom",
-          "title": "Собрать три разных школьных фокуса или руны из восьми обычных школ.",
+          "title": "{\"translate\":\"jem.atlas.card.mg04.condition\"}",
           "icon": "irons_spellbooks:fire_rune",
           "count": 3
         }
@@ -293,29 +287,29 @@
     },
     {
       "id": "2FA8CB035117201E",
-      "title": "26.05 · Своя кузница свитков",
-      "subtitle": "Поставить Scroll Forge.",
+      "title": "{\"translate\":\"jem.atlas.card.mg05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg05.condition\"}",
       "description": [
-        "Что сделать: Поставить Scroll Forge.",
+        "{\"translate\":\"jem.atlas.card.mg05.condition\"}",
         "",
-        "Зачем: Контролируемое получение магии вместо одного случайного лута.",
+        "{\"translate\":\"jem.atlas.card.mg05.purpose\"}",
         "",
-        "Совет: Подберите чернила и школьный фокус по JEI и создайте нужный свиток. Квест не отслеживает внутренний цикл станка или происхождение его результата.",
+        "{\"translate\":\"jem.atlas.card.mg05.tip\"}",
         "",
-        "Награда: Щедрый рабочий запас для уже установленной кузницы свитков.",
+        "{\"translate\":\"jem.atlas.card.mg05.reward\"}",
         "",
-        "Рекомендуемый путь: 26.02 · Записать заклинание. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:scroll_forge",
-      "x": 2.52,
-      "y": 1.7,
+      "x": 5.8,
+      "y": -7.77,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "290CDD1CEACD297B",
           "type": "custom",
-          "title": "Поставить Scroll Forge.",
+          "title": "{\"translate\":\"jem.atlas.card.mg05.condition\"}",
           "icon": "irons_spellbooks:scroll_forge",
           "count": 1
         }
@@ -362,22 +356,22 @@
     },
     {
       "id": "2535CCD044AF7F0E",
-      "title": "26.06 · Чернила следующего качества",
-      "subtitle": "Собрать Uncommon Ink и Rare Ink.",
+      "title": "{\"translate\":\"jem.atlas.card.mg06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg06.condition\"}",
       "description": [
-        "Что сделать: Собрать Uncommon Ink и Rare Ink.",
+        "{\"translate\":\"jem.atlas.card.mg06.condition\"}",
         "",
-        "Зачем: Редкость, максимальный уровень и стоимость сильных заклинаний.",
+        "{\"translate\":\"jem.atlas.card.mg06.purpose\"}",
         "",
-        "Совет: Сравните уровни доступных свитков и затраты чернил. Epic/Legendary и другие доступные качества остаются продолжением по JEI, без требования собирать всё сразу.",
+        "{\"translate\":\"jem.atlas.card.mg06.tip\"}",
         "",
-        "Награда: Следующая ступень чернил и большой запас знакомого материала; готового заклинания нет.",
+        "{\"translate\":\"jem.atlas.card.mg06.reward\"}",
         "",
-        "Рекомендуемый путь: 26.05 · Своя кузница свитков. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:uncommon_ink",
-      "x": 4.38,
-      "y": 1.7,
+      "x": 11.5,
+      "y": -8.25,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
@@ -438,31 +432,29 @@
     },
     {
       "id": "222539A0D01316AA",
-      "title": "26.07 · Арканная наковальня",
-      "subtitle": "Поставить Arcane Anvil.",
+      "title": "{\"translate\":\"jem.atlas.card.mg07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg07.condition\"}",
       "description": [
-        "Что сделать: Поставить Arcane Anvil.",
+        "{\"translate\":\"jem.atlas.card.mg07.condition\"}",
         "",
-        "Зачем: Повышение силы свитков и переход к улучшению снаряжения.",
+        "{\"translate\":\"jem.atlas.card.mg07.purpose\"}",
         "",
-        "Совет: Объедините совместимые свитки и посмотрите изменившийся уровень. Карточка проверяет размещение станции; предметные требования самой операции остаются нативными.",
+        "{\"translate\":\"jem.atlas.card.mg07.tip\"}",
         "",
-        "Награда: Материалы для улучшений на уже установленной магической наковальне.",
+        "{\"translate\":\"jem.atlas.card.mg07.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.05 · Своя кузница свитков. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:arcane_anvil",
-      "x": 6.22,
-      "y": 1.7,
+      "x": 17.2,
+      "y": -8.61,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "25FC73C5C05DB26F",
           "type": "custom",
-          "title": "Поставить Arcane Anvil.",
+          "title": "{\"translate\":\"jem.atlas.card.mg07.condition\"}",
           "icon": "irons_spellbooks:arcane_anvil",
           "count": 1
         }
@@ -500,22 +492,22 @@
     },
     {
       "id": "2F97518169FC0248",
-      "title": "26.08 · Подготовиться к записи в оружие",
-      "subtitle": "Получить Shriving Stone и обычный алмазный меч.",
+      "title": "{\"translate\":\"jem.atlas.card.mg08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg08.condition\"}",
       "description": [
-        "Что сделать: Получить Shriving Stone и обычный алмазный меч.",
+        "{\"translate\":\"jem.atlas.card.mg08.condition\"}",
         "",
-        "Зачем: Материалы для изучения зачарованного оружия и очистки заклинания.",
+        "{\"translate\":\"jem.atlas.card.mg08.purpose\"}",
         "",
-        "Совет: В Arcane Anvil проверьте допустимую запись заклинания на выбранное оружие и снятие через Shriving Stone. Квест не заявляет, что эти действия уже выполнены.",
+        "{\"translate\":\"jem.atlas.card.mg08.tip\"}",
         "",
-        "Награда: Магические материалы и защита для опытов со своим оружием.",
+        "{\"translate\":\"jem.atlas.card.mg08.reward\"}",
         "",
-        "Рекомендуемый путь: 26.07 · Арканная наковальня. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:shriving_stone",
-      "x": 8.07,
-      "y": 1.7,
+      "x": -17.0,
+      "y": 7.84,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
@@ -576,29 +568,29 @@
     },
     {
       "id": "21FA3ACB8E36F9E2",
-      "title": "26.09 · Одежда выбранной школы",
-      "subtitle": "Надеть одну часть школьной брони Iron’s Spells.",
+      "title": "{\"translate\":\"jem.atlas.card.mg09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg09.condition\"}",
       "description": [
-        "Что сделать: Надеть одну часть школьной брони Iron’s Spells.",
+        "{\"translate\":\"jem.atlas.card.mg09.condition\"}",
         "",
-        "Зачем: Специализация; решение между защитой, маной и усилением школы.",
+        "{\"translate\":\"jem.atlas.card.mg09.purpose\"}",
         "",
-        "Совет: Сравните защиту, ману и усиление своей школы с прежним комплектом. Изменение параметров и эффективность конкретного заклинания не проверяются.",
+        "{\"translate\":\"jem.atlas.card.mg09.tip\"}",
         "",
-        "Награда: Ресурсы для развития уже выбранного комплекта школы без выдачи готового полного сета.",
+        "{\"translate\":\"jem.atlas.card.mg09.reward\"}",
         "",
-        "Рекомендуемый путь: 26.05 · Своя кузница свитков. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:archevoker_boots",
-      "x": 4.38,
-      "y": 3.55,
+      "x": -11.3,
+      "y": 7.91,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "254946218A17CB14",
           "type": "custom",
-          "title": "Надеть одну часть школьной брони Iron’s Spells.",
+          "title": "{\"translate\":\"jem.atlas.card.mg09.condition\"}",
           "icon": "irons_spellbooks:archevoker_boots",
           "count": 1
         }
@@ -636,29 +628,29 @@
     },
     {
       "id": "2E7BBA03B1C82A0F",
-      "title": "26.10 · Материал для усилений",
-      "subtitle": "Получить один доступный Upgrade Orb.",
+      "title": "{\"translate\":\"jem.atlas.card.mg10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg10.condition\"}",
       "description": [
-        "Что сделать: Получить один доступный Upgrade Orb.",
+        "{\"translate\":\"jem.atlas.card.mg10.condition\"}",
         "",
-        "Зачем: Поздние улучшения силы, маны, восстановления и защиты.",
+        "{\"translate\":\"jem.atlas.card.mg10.purpose\"}",
         "",
-        "Совет: По JEI пройдите цепь Arcane Debris/Mithril или Cinder Essence установленной версии и примените сферу к совместимой книге/броне. Проверяется сам предмет, без дублирования его в награде.",
+        "{\"translate\":\"jem.atlas.card.mg10.tip\"}",
         "",
-        "Награда: После первого орба игрок сам выбирает полезное направление следующего улучшения.",
+        "{\"translate\":\"jem.atlas.card.mg10.reward\"}",
         "",
-        "Рекомендуемый путь: 26.07 · Арканная наковальня. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:blood_upgrade_orb",
-      "x": 6.22,
-      "y": 3.55,
+      "x": -5.6,
+      "y": 7.14,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "265AF03B1C82949B",
           "type": "custom",
-          "title": "Получить один доступный Upgrade Orb.",
+          "title": "{\"translate\":\"jem.atlas.card.mg10.condition\"}",
           "icon": "irons_spellbooks:blood_upgrade_orb",
           "count": 1
         }
@@ -702,31 +694,29 @@
     },
     {
       "id": "29587EF124291797",
-      "title": "26.11 · Магический аксессуар",
-      "subtitle": "Получить один магический амулет или кольцо Iron’s Spells.",
+      "title": "{\"translate\":\"jem.atlas.card.mg11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg11.condition\"}",
       "description": [
-        "Что сделать: Получить один магический амулет или кольцо Iron’s Spells.",
+        "{\"translate\":\"jem.atlas.card.mg11.condition\"}",
         "",
-        "Зачем: Curios и настройка мага по задаче.",
+        "{\"translate\":\"jem.atlas.card.mg11.purpose\"}",
         "",
-        "Совет: Поместите аксессуар в подходящий Curios-слот и оцените защиту, восстановление, скрытность или призыв. Curios-экипировка и изменение атрибутов не входят в детектор.",
+        "{\"translate\":\"jem.atlas.card.mg11.tip\"}",
         "",
-        "Награда: Осмысленный выбор аксессуара после получения первого кольца или амулета.",
+        "{\"translate\":\"jem.atlas.card.mg11.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.02 · Записать заклинание. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:affinity_ring",
-      "x": -8.07,
-      "y": 5.4,
+      "x": 0.1,
+      "y": 6.24,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2CB963D9718B7397",
           "type": "custom",
-          "title": "Получить один магический амулет или кольцо Iron’s Spells.",
+          "title": "{\"translate\":\"jem.atlas.card.mg11.condition\"}",
           "icon": "irons_spellbooks:affinity_ring",
           "count": 1
         }
@@ -770,29 +760,29 @@
     },
     {
       "id": "2932DE394091B599",
-      "title": "26.12 · Алхимический стол мага",
-      "subtitle": "Поставить Alchemist Cauldron.",
+      "title": "{\"translate\":\"jem.atlas.card.mg12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg12.condition\"}",
       "description": [
-        "Что сделать: Поставить Alchemist Cauldron.",
+        "{\"translate\":\"jem.atlas.card.mg12.condition\"}",
         "",
-        "Зачем: Алхимия Iron’s Spells и вторичная переработка редкой добычи.",
+        "{\"translate\":\"jem.atlas.card.mg12.purpose\"}",
         "",
-        "Совет: Приготовьте доступный эликсир/чай по JEI. Отдельно изучите доступную в 3.15.6 переработку лишних Curios через Arcane Salvage/Mithril Scrap; точные рецепты не выводить из новой wiki.",
+        "{\"translate\":\"jem.atlas.card.mg12.tip\"}",
         "",
-        "Награда: Пробный набор трёх полезных эликсиров для уже установленного алхимического котла.",
+        "{\"translate\":\"jem.atlas.card.mg12.reward\"}",
         "",
-        "Рекомендуемый путь: 26.05 · Своя кузница свитков. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:alchemist_cauldron",
-      "x": -6.22,
-      "y": 5.4,
+      "x": 5.8,
+      "y": 6.04,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2FC3CB668BA15FAF",
           "type": "custom",
-          "title": "Поставить Alchemist Cauldron.",
+          "title": "{\"translate\":\"jem.atlas.card.mg12.condition\"}",
           "icon": "irons_spellbooks:alchemist_cauldron",
           "count": 1
         }
@@ -839,22 +829,22 @@
     },
     {
       "id": "2BB6648F77E59D07",
-      "title": "26.13 · Картография магических руин",
-      "subtitle": "Получить Wayward Compass.",
+      "title": "{\"translate\":\"jem.atlas.card.mg13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg13.condition\"}",
       "description": [
-        "Что сделать: Получить Wayward Compass.",
+        "{\"translate\":\"jem.atlas.card.mg13.condition\"}",
         "",
-        "Зачем: Полная исследовательская ветка мода и способы находить её содержимое.",
+        "{\"translate\":\"jem.atlas.card.mg13.purpose\"}",
         "",
-        "Совет: Используйте компас и нативные карты для башен, Evoker Fort, Ancient Battleground, Catacombs и других реально доступных структур. Территории и посещения квест не сканирует.",
+        "{\"translate\":\"jem.atlas.card.mg13.tip\"}",
         "",
-        "Награда: Снабжение для поиска по уже добытому компасу; новые ключи и указатели не выдаются.",
+        "{\"translate\":\"jem.atlas.card.mg13.reward\"}",
         "",
-        "Рекомендуемый путь: 26.02 · Записать заклинание. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:wayward_compass",
-      "x": -4.38,
-      "y": 5.4,
+      "x": 11.5,
+      "y": 6.72,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -908,22 +898,22 @@
     },
     {
       "id": "2B54B620C0D075CF",
-      "title": "26.14 · Dead King",
-      "subtitle": "Победить Dead King.",
+      "title": "{\"translate\":\"jem.atlas.card.mg14.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg14.condition\"}",
       "description": [
-        "Что сделать: Победить Dead King.",
+        "{\"translate\":\"jem.atlas.card.mg14.condition\"}",
         "",
-        "Зачем: Главный поздний источник магических материалов и особого оружия.",
+        "{\"translate\":\"jem.atlas.card.mg14.purpose\"}",
         "",
-        "Совет: Найдите Catacombs по Wayward Compass, соблюдайте нативные правила встречи и JEM Start, если встреча проходит через него. Примените добытый магический трофей. Dead King не относится к 12 MAIN.",
+        "{\"translate\":\"jem.atlas.card.mg14.tip\"}",
         "",
-        "Награда: Победа над Dead King даёт настоящий редкий приз на выбор и материалы высокого класса.",
+        "{\"translate\":\"jem.atlas.card.mg14.reward\"}",
         "",
-        "Рекомендуемый путь: 26.07 · Арканная наковальня. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:legendary_ink",
-      "x": -2.52,
-      "y": 5.4,
+      "x": 17.2,
+      "y": 7.66,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -982,31 +972,29 @@
     },
     {
       "id": "20B5E710139CEB7B",
-      "title": "26.15 · Запретное знание",
-      "subtitle": "Нажать ПКМ в воздухе с Eldritch Manuscript.",
+      "title": "{\"translate\":\"jem.atlas.card.mg15.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg15.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ в воздухе с Eldritch Manuscript.",
+        "{\"translate\":\"jem.atlas.card.mg15.condition\"}",
         "",
-        "Зачем: Особая школа, действительно требующая знания самого мода.",
+        "{\"translate\":\"jem.atlas.card.mg15.purpose\"}",
         "",
-        "Совет: Получите рукопись нативным способом и откройте её знание; затем найдите и примените Eldritch-заклинание. Зачёт ПКМ не выдаёт знание и не доказывает успешный каст.",
+        "{\"translate\":\"jem.atlas.card.mg15.tip\"}",
         "",
-        "Награда: Запас для экспериментов после использования уже добытой рукописи, без повторной выдачи босса или ключа.",
+        "{\"translate\":\"jem.atlas.card.mg15.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.07 · Арканная наковальня. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:eldritch_manuscript",
-      "x": -7.15,
-      "y": 7.25,
+      "x": -17.0,
+      "y": -12.36,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2091934FA8F5488B",
           "type": "custom",
-          "title": "Нажать ПКМ в воздухе с Eldritch Manuscript.",
+          "title": "{\"translate\":\"jem.atlas.card.mg15.condition\"}",
           "icon": "irons_spellbooks:eldritch_manuscript",
           "count": 1
         }
@@ -1053,29 +1041,29 @@
     },
     {
       "id": "2BED97D634301DEA",
-      "title": "26.16 · Портал и поздние инструменты",
-      "subtitle": "Получить Hither-Thither Wand или Portal Frame.",
+      "title": "{\"translate\":\"jem.atlas.card.mg16.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg16.condition\"}",
       "description": [
-        "Что сделать: Получить Hither-Thither Wand или Portal Frame.",
+        "{\"translate\":\"jem.atlas.card.mg16.condition\"}",
         "",
-        "Зачем: Магическое перемещение и уникальное оружие; энциклопедия остальных предметных семейств.",
+        "{\"translate\":\"jem.atlas.card.mg16.purpose\"}",
         "",
-        "Совет: Примените доступный инструмент магического перемещения по его подсказке. Особые посохи/клинки изучайте отдельными примерами; dev_staff, example_scroll и model-only записи не включать.",
+        "{\"translate\":\"jem.atlas.card.mg16.tip\"}",
         "",
-        "Награда: Сырьё и расходники для развития уже полученного портального инструмента.",
+        "{\"translate\":\"jem.atlas.card.mg16.reward\"}",
         "",
-        "Рекомендуемый путь: 26.07 · Арканная наковальня. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:hither_thither_wand",
-      "x": -5.3,
-      "y": 7.25,
+      "x": -11.3,
+      "y": -12.7,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "246CB062915484D0",
           "type": "custom",
-          "title": "Получить Hither-Thither Wand или Portal Frame.",
+          "title": "{\"translate\":\"jem.atlas.card.mg16.condition\"}",
           "icon": "irons_spellbooks:hither_thither_wand",
           "count": 1
         }
@@ -1122,31 +1110,29 @@
     },
     {
       "id": "285C49D545D40B2A",
-      "title": "26.17 · Магическое оружие в Epic Fight",
-      "subtitle": "Нанести 3 удара любым боевым посохом или клинком Iron’s Spells.",
+      "title": "{\"translate\":\"jem.atlas.card.mg17.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.mg17.condition\"}",
       "description": [
-        "Что сделать: Нанести 3 удара любым боевым посохом или клинком Iron’s Spells.",
+        "{\"translate\":\"jem.atlas.card.mg17.condition\"}",
         "",
-        "Зачем: Собственная механика навыка efs_iss; efiscompat отдельно отвечает за совместимость анимаций.",
+        "{\"translate\":\"jem.atlas.card.mg17.purpose\"}",
         "",
-        "Совет: Исследуйте установленный efs_iss и его нативный навык; конкретные ID и источник изучения сверить в игре. efiscompat отвечает за совместимость анимаций. Эта карточка не заявляет изучение/активацию навыка и не выдаёт случайную skill book.",
+        "{\"translate\":\"jem.atlas.card.mg17.tip\"}",
         "",
-        "Награда: Боевые расходники за короткую практику уже полученным посохом или клинком.",
+        "{\"translate\":\"jem.atlas.card.mg17.reward\"}",
         "",
-        "В этой версии вместо чая мага выдаются эликсиры дубовой кожи, в том же количестве.",
-        "",
-        "Рекомендуемый путь: 26.03 · Магия решает разные задачи. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:arcane_ingot",
-      "x": -3.45,
-      "y": 7.25,
+      "x": -5.6,
+      "y": -13.18,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "22A0660830BD7E3B",
           "type": "custom",
-          "title": "Нанести 3 удара любым боевым посохом или клинком Iron’s Spells.",
+          "title": "{\"translate\":\"jem.atlas.card.mg17.condition\"}",
           "icon": "irons_spellbooks:arcane_ingot",
           "count": 3
         }
@@ -1194,41 +1180,73 @@
   ],
   "images": [
     {
-      "x": -5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Первые заклинания",
-      "order": -5,
-      "hover": [
-        "Первые заклинания"
-      ]
+      "x": 0,
+      "y": 0,
+      "width": 73.14,
+      "height": 48.76,
+      "image": "jem_advancements:textures/questbook/atlas/background-magic.png",
+      "order": -100
     },
     {
-      "x": 5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Магическая мастерская",
-      "order": -5,
-      "hover": [
-        "Магическая мастерская"
-      ]
+      "x": 0,
+      "y": -1,
+      "width": 30,
+      "height": 16.74,
+      "image": "jem_advancements:textures/questbook/atlas/identity-magic.jpg",
+      "order": -50,
+      "jem_identity": true
     },
     {
-      "x": -5.3,
-      "y": 3.7,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Снаряжение и древняя магия",
-      "order": -5,
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-26\"}",
+      "order": 30
+    },
+    {
+      "x": -20,
+      "y": -17.38,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "Снаряжение и древняя магия"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
+    },
+    {
+      "x": -20,
+      "y": -15.879999999999999,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
+    },
+    {
+      "x": -11.0,
+      "y": -17.38,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/enchanted_book.png",
+      "click": "#2BCCF63D6FE23EFE",
+      "hover": [
+        "jem.atlas.route_hint.enchanted-tools"
+      ],
+      "order": 20
+    },
+    {
+      "x": -11.0,
+      "y": -15.879999999999999,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.enchanted-tools\"}",
+      "order": 21
     }
   ],
-  "autofocus_id": "23F877D7CF654E6B"
+  "jem_atlas_hub": false
 }

@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-25",
+  "branch": "main",
+  "commit": "SELF",
+  "scope": "Development client test jem, canonical source, ManagedPack and ordinary local Server only",
+  "status": "Final generation 77 installed, production artifacts and source complete, player acceptance unrun",
+  "artifacts": [
+    {
+      "module": "JEMAchievementGuide",
+      "name": "jem-advancements-5.1.0.jar",
+      "sha256": "e923a5fd6b490a0bc1f9a74fdf7aedb55ebcdd26e1557cd7f2be8870907470d8",
+      "size": 14896254
+    },
+    {
+      "module": "JEMWorldBossTiers",
+      "name": "jem-world-boss-tiers-2.5.0-dev.jar",
+      "sha256": "1efed38b4db6c5f1df418a9139b282563c51d42d57a15d89e8044b8ec64a2179",
+      "size": 402267
+    }
+  ],
+  "publication": {
+    "sequence": 77,
+    "contentToken": "9bc90fe77470fd3d7d786e5dabe5019c3ecee1f0",
+    "published": true,
+    "manifestSha1": "c1277d98428f75a47a726e2effbbfced1232d846",
+    "reviewedInitialDiff": {
+      "added": 7,
+      "changed": 98,
+      "removed": 0
+    },
+    "reviewedFinalDiff": {
+      "added": 0,
+      "changed": 2,
+      "removed": 0
+    },
+    "finalReadyPreview": "Native preview confirmed the published token with +0 ~0 -0, subsequent publish returned NO_CHANGES"
+  },
+  "questInventory": {
+    "before": {
+      "source_cards": 589,
+      "chapters": 39,
+      "quests": 606,
+      "tasks": 742,
+      "rewards_including_choice_options": 2171,
+      "reward_tables": 61,
+      "dependency_edges": 30,
+      "active_cards": 564,
+      "reference_cards": 25
+    },
+    "after": {
+      "source_cards": 602,
+      "chapters": 46,
+      "quests": 619,
+      "tasks": 755,
+      "rewards_including_choice_options": 2197,
+      "reward_tables": 61,
+      "dependency_edges": 30,
+      "active_cards": 577,
+      "reference_cards": 25
+    },
+    "originalContractsPreserved": true,
+    "nativeRoutes": 170,
+    "runtimeAcceptance": "UNEXERCISED"
+  },
+  "art": {
+    "source": "Docs/quests/art-20261025/sources.json",
+    "geminiReceipt": "Docs/quests/art-20261025/generated/result.json",
+    "review": "Docs/quests/art-20261025/review.md",
+    "wholeOriginalsPreserved": true,
+    "laterCompanionRevisionIncluded": true,
+    "selectedExports": "Docs/quests/art-20261025/selected-exports.json",
+    "userSuppliedFoodFinalIncluded": true,
+    "finalFoodSourceSha256": "6a0abf80a10d5c7a0ac071b05a76eeab1522b8551a4c6dfa82816ffcf5e51899"
+  },
+  "server": {
+    "synchronized": true,
+    "running": false,
+    "world": "local/xaero-pregen-20261024/world",
+    "startup": "Final production artifacts and native quest projection loaded",
+    "shutdown": "Native stop command, all dimensions reported saved. Existing MapSyncer 1.0.3 teardown logged NoSuchFieldException AIR after world saving"
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "validationPassed": true,
+    "uncoveredSourceChanges": [],
+    "installedArtifactDrift": [],
+    "runtimeRegistryDumpPerformed": false
+  },
+  "limitations": [
+    "No automated tests, gameplay launch, client GUI screenshot or reward claim",
+    "Existing development world records migrate through the updated save owner on next normal world load",
+    "Three original static item-view coverage gaps remain explicit, no added objective has an unresolved installed target",
+    "Agent art review is not user approval"
+  ],
+  "unchangedBoundaries": [
+    "Original JustEnoughMods client profile",
+    "MineRENT",
+    "Release baseline",
+    "Friend update packages"
+  ],
+  "nativeInstallation": {
+    "generation": 77,
+    "contentToken": "9bc90fe77470fd3d7d786e5dabe5019c3ecee1f0",
+    "pending": false,
+    "detached": false,
+    "artifacts": [
+      {
+        "name": "jem-advancements-5.1.0.jar",
+        "sha256": "e923a5fd6b490a0bc1f9a74fdf7aedb55ebcdd26e1557cd7f2be8870907470d8"
+      },
+      {
+        "name": "jem-world-boss-tiers-2.5.0-dev.jar",
+        "sha256": "1efed38b4db6c5f1df418a9139b282563c51d42d57a15d89e8044b8ec64a2179"
+      }
+    ],
+    "method": "Native AutoModpack prepared plan, exact path/hash review, approve and commit, no raw managed file copies",
+    "clientLaunched": false
+  },
+  "finalArtifactVerification": {
+    "serverManagedPackAndActiveProfileHashesMatch": true,
+    "installedFoodPngMatchesExactUserSource": true,
+    "pendingTransaction": false,
+    "detached": false
+  }
+}

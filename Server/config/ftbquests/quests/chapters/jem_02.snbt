@@ -1,41 +1,41 @@
 {
   "id": "1000000000000003",
   "filename": "jem_02",
-  "title": "Своя природа",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-02\"}",
   "subtitle": [
-    "Когда: Сразу. Видны все описания; выполнять ветви других рас не требуется.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-02\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
-  "icon": "minecraft:totem_of_undying",
-  "group": "2FAB9DA418A66ECD",
-  "order_index": 1,
+  "icon": "minecraft:nether_star",
+  "group": "2B40292F34C6DDCC",
+  "order_index": 0,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
       "id": "1100000000000093",
-      "title": "02.01 · Кто ты?",
-      "subtitle": "Выбрать расу через штатный экран JEM.",
+      "title": "{\"translate\":\"jem.atlas.card.races_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_01.condition\"}",
       "description": [
-        "Что сделать: Выбрать расу через штатный экран JEM.",
+        "{\"translate\":\"jem.atlas.card.races_01.condition\"}",
         "",
-        "Зачем: Собственная ветка способностей; главы других занятий доступны независимо от расы.",
+        "{\"translate\":\"jem.atlas.card.races_01.purpose\"}",
         "",
-        "Совет: У каждой расы свой стиль. Выбор не закрывает ферму, технику, исследования и другие занятия.",
+        "{\"translate\":\"jem.atlas.card.races_01.tip\"}",
         "",
-        "Награда: Стартовый походный паёк после выбора природы персонажа."
+        "{\"translate\":\"jem.atlas.card.races_01.reward\"}"
       ],
       "icon": "bakery:vegetable_sandwich",
-      "x": -0.93,
-      "y": -2.3,
+      "x": -15.0,
+      "y": 0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "1110000000000093",
           "type": "custom",
-          "title": "Выбрать расу через штатный экран JEM.",
+          "title": "{\"translate\":\"jem.atlas.card.races_01.condition\"}",
           "icon": "bakery:vegetable_sandwich",
           "count": 1
         }
@@ -66,29 +66,29 @@
     },
     {
       "id": "292F32C6F9A5FBA9",
-      "title": "02.02 · Первый опыт",
-      "subtitle": "Получить 1 успешное применение в нативном счётчике мастерства выбранной расы.",
+      "title": "{\"translate\":\"jem.atlas.card.races_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_02.condition\"}",
       "description": [
-        "Что сделать: Получить 1 успешное применение в нативном счётчике мастерства выбранной расы.",
+        "{\"translate\":\"jem.atlas.card.races_02.condition\"}",
         "",
-        "Зачем: Сигнатурная способность, дополнительное умение, ограничения и ступени Base/I/II/III.",
+        "{\"translate\":\"jem.atlas.card.races_02.purpose\"}",
         "",
-        "Совет: Прочитай условия умения в расовом экране. Сервер сам отличает полезное применение от пустой попытки.",
+        "{\"translate\":\"jem.atlas.card.races_02.tip\"}",
         "",
-        "Награда: Первое успешное применение отмечается опытом и расходным запасом, без выдачи редкой экипировки.",
+        "{\"translate\":\"jem.atlas.card.races_02.reward\"}",
         "",
-        "Рекомендуемый путь: 02.01 · Кто ты?. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:experience_nugget",
-      "x": 0.93,
-      "y": -2.3,
+      "x": -11.8,
+      "y": 0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2F90DEAA8EACE8E0",
           "type": "custom",
-          "title": "Получить 1 успешное применение в нативном счётчике мастерства выбранной расы.",
+          "title": "{\"translate\":\"jem.atlas.card.races_02.condition\"}",
           "icon": "create:experience_nugget",
           "count": 1
         }
@@ -128,29 +128,29 @@
     },
     {
       "id": "2A9E448F2B03CF1E",
-      "title": "02.03 · Предки: полевая помощь",
-      "subtitle": "Засчитать 2 успешных применения способностей Предков.",
+      "title": "{\"translate\":\"jem.atlas.card.races_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_03.condition\"}",
       "description": [
-        "Что сделать: Засчитать 2 успешных применения способностей Предков.",
+        "{\"translate\":\"jem.atlas.card.races_03.condition\"}",
         "",
-        "Зачем: Лечение отряда/ездовых животных; защитная сторона способности.",
+        "{\"translate\":\"jem.atlas.card.races_03.purpose\"}",
         "",
-        "Совет: Лечение помогает раненым игрокам и подходящим мирным животным/маунтам; после него действует защитное окно. Проверяется общий счётчик Предков, а не отдельный факт лечения.",
+        "{\"translate\":\"jem.atlas.card.races_03.tip\"}",
         "",
-        "Награда: Практичный инструмент и материалы подходят мастерскому характеру Предков.",
+        "{\"translate\":\"jem.atlas.card.races_03.reward\"}",
         "",
-        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "handcrafted:hammer",
-      "x": -9.6,
-      "y": 3.2,
+      "x": -15.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2C18766A571F377B",
           "type": "custom",
-          "title": "Засчитать 2 успешных применения способностей Предков.",
+          "title": "{\"translate\":\"jem.atlas.card.races_03.condition\"}",
           "icon": "handcrafted:hammer",
           "count": 2
         }
@@ -190,29 +190,29 @@
     },
     {
       "id": "2286981633C9E6B3",
-      "title": "02.04 · Предки: защитник",
-      "subtitle": "Засчитать 3 успешных применения способностей Предков.",
+      "title": "{\"translate\":\"jem.atlas.card.races_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_04.condition\"}",
       "description": [
-        "Что сделать: Засчитать 3 успешных применения способностей Предков.",
+        "{\"translate\":\"jem.atlas.card.races_04.condition\"}",
         "",
-        "Зачем: Автоматический хранитель и его условия.",
+        "{\"translate\":\"jem.atlas.card.races_04.purpose\"}",
         "",
-        "Совет: Автоматический хранитель появляется при нативных условиях опасности. Узнай его ограничения; намеренно ранить себя не нужно. Появление и бой хранителя не входят в проверку.",
+        "{\"translate\":\"jem.atlas.card.races_04.tip\"}",
         "",
-        "Награда: Небольшой запас для работы и чар за ещё одно подтверждённое применение.",
+        "{\"translate\":\"jem.atlas.card.races_04.reward\"}",
         "",
-        "Рекомендуемый путь: 02.03 · Предки: полевая помощь. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "bbb:stone_brick_layer",
-      "x": -9.6,
-      "y": 5.1,
+      "x": -15.0,
+      "y": 10.2,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "270287D3B34BF45B",
           "type": "custom",
-          "title": "Засчитать 3 успешных применения способностей Предков.",
+          "title": "{\"translate\":\"jem.atlas.card.races_04.condition\"}",
           "icon": "bbb:stone_brick_layer",
           "count": 3
         }
@@ -252,29 +252,29 @@
     },
     {
       "id": "2255A956F85E54F0",
-      "title": "02.05 · Пустота: точка прибытия",
-      "subtitle": "Засчитать 2 успешных применения способностей Пустоты.",
+      "title": "{\"translate\":\"jem.atlas.card.races_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_05.condition\"}",
       "description": [
-        "Что сделать: Засчитать 2 успешных применения способностей Пустоты.",
+        "{\"translate\":\"jem.atlas.card.races_05.condition\"}",
         "",
-        "Зачем: Дуга/точка телепорта, рифт, безопасное перемещение и атака.",
+        "{\"translate\":\"jem.atlas.card.races_05.purpose\"}",
         "",
-        "Совет: Изучи прицеливание жемчужины и Rift Ambush. Общий счётчик не доказывает конкретную связку телепорта с ударом.",
+        "{\"translate\":\"jem.atlas.card.races_05.tip\"}",
         "",
-        "Награда: Плёнка для творческих экспериментов и оформление собственного убежища; два применения не приравниваются к редкому подвигу.",
+        "{\"translate\":\"jem.atlas.card.races_05.reward\"}",
         "",
-        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "exposure:high_sensitivity_black_and_white_film",
-      "x": -4.8,
-      "y": 3.2,
+      "x": -7.5,
+      "y": 7.5,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "268709E80A1BDB10",
           "type": "custom",
-          "title": "Засчитать 2 успешных применения способностей Пустоты.",
+          "title": "{\"translate\":\"jem.atlas.card.races_05.condition\"}",
           "icon": "exposure:high_sensitivity_black_and_white_film",
           "count": 2
         }
@@ -314,29 +314,29 @@
     },
     {
       "id": "24DDD72D224596A7",
-      "title": "02.06 · Пустота: свой вес",
-      "subtitle": "Засчитать 3 успешных применения способностей Пустоты.",
+      "title": "{\"translate\":\"jem.atlas.card.races_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_06.condition\"}",
       "description": [
-        "Что сделать: Засчитать 3 успешных применения способностей Пустоты.",
+        "{\"translate\":\"jem.atlas.card.races_06.condition\"}",
         "",
-        "Зачем: Гравитационная utility-способность и ограничения расы.",
+        "{\"translate\":\"jem.atlas.card.races_06.purpose\"}",
         "",
-        "Совет: Shift+B управляет гравитацией; учитывай водную слабость. Пройденный путь, время режима и переключение назад не отслеживаются.",
+        "{\"translate\":\"jem.atlas.card.races_06.tip\"}",
         "",
-        "Награда: Полезный творческий инструмент и угощение за освоение базового ритма Пустоты.",
+        "{\"translate\":\"jem.atlas.card.races_06.reward\"}",
         "",
-        "Рекомендуемый путь: 02.05 · Пустота: точка прибытия. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "exposure:camera",
-      "x": -4.8,
-      "y": 5.1,
+      "x": -7.5,
+      "y": 10.7,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "296C37952797FCCE",
           "type": "custom",
-          "title": "Засчитать 3 успешных применения способностей Пустоты.",
+          "title": "{\"translate\":\"jem.atlas.card.races_06.condition\"}",
           "icon": "exposure:camera",
           "count": 3
         }
@@ -376,29 +376,29 @@
     },
     {
       "id": "221215ED94F7C755",
-      "title": "02.07 · Цветение: живой проход",
-      "subtitle": "Засчитать 2 успешных применения способностей Цветения.",
+      "title": "{\"translate\":\"jem.atlas.card.races_07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_07.condition\"}",
       "description": [
-        "Что сделать: Засчитать 2 успешных применения способностей Цветения.",
+        "{\"translate\":\"jem.atlas.card.races_07.condition\"}",
         "",
-        "Зачем: Временный мост; время жизни растёт со ступенью.",
+        "{\"translate\":\"jem.atlas.card.races_07.purpose\"}",
         "",
-        "Совет: Leaf Bridge создаёт временный проход. Проверь его на небольшой высоте; переход через разрыв не является условием.",
+        "{\"translate\":\"jem.atlas.card.races_07.tip\"}",
         "",
-        "Награда: Цветение получает ощутимый запас для собственного огорода.",
+        "{\"translate\":\"jem.atlas.card.races_07.reward\"}",
         "",
-        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "farm_and_charm:fertilizer",
       "x": 0.0,
-      "y": 3.2,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "242D1A84DDCCB2F1",
           "type": "custom",
-          "title": "Засчитать 2 успешных применения способностей Цветения.",
+          "title": "{\"translate\":\"jem.atlas.card.races_07.condition\"}",
           "icon": "farm_and_charm:fertilizer",
           "count": 2
         }
@@ -438,29 +438,29 @@
     },
     {
       "id": "2004CC941F6B3CA6",
-      "title": "02.08 · Цветение: удержать врага",
-      "subtitle": "Засчитать 3 успешных применения способностей Цветения.",
+      "title": "{\"translate\":\"jem.atlas.card.races_08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_08.condition\"}",
       "description": [
-        "Что сделать: Засчитать 3 успешных применения способностей Цветения.",
+        "{\"translate\":\"jem.atlas.card.races_08.condition\"}",
         "",
-        "Зачем: Контроль; позднее сдавливание и яд.",
+        "{\"translate\":\"jem.atlas.card.races_08.purpose\"}",
         "",
-        "Совет: Лозы контролируют цель, поздние ступени усиливают эффект. Конкретный статус противника и продолжение боя не проверяются.",
+        "{\"translate\":\"jem.atlas.card.races_08.tip\"}",
         "",
-        "Награда: Полезная фермерская экипировка и узнаваемый внешний вид вместо редкого боевого предмета за три применения.",
+        "{\"translate\":\"jem.atlas.card.races_08.reward\"}",
         "",
-        "Рекомендуемый путь: 02.07 · Цветение: живой проход. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_cookery:farmer_boots",
       "x": 0.0,
-      "y": 5.1,
+      "y": 10.2,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "28C8E5162B546119",
           "type": "custom",
-          "title": "Засчитать 3 успешных применения способностей Цветения.",
+          "title": "{\"translate\":\"jem.atlas.card.races_08.condition\"}",
           "icon": "kaleidoscope_cookery:farmer_boots",
           "count": 3
         }
@@ -500,29 +500,29 @@
     },
     {
       "id": "26E933FD377E1BAB",
-      "title": "02.09 · Скалк: услышать и ответить",
-      "subtitle": "Засчитать 2 успешных применения способностей Скалка.",
+      "title": "{\"translate\":\"jem.atlas.card.races_09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_09.condition\"}",
       "description": [
-        "Что сделать: Засчитать 2 успешных применения способностей Скалка.",
+        "{\"translate\":\"jem.atlas.card.races_09.condition\"}",
         "",
-        "Зачем: Две ситуации применения: поиск и бой.",
+        "{\"translate\":\"jem.atlas.card.races_09.purpose\"}",
         "",
-        "Совет: Эхо помогает обнаруживать, волна — сражаться. Квест читает уже сохранённое мастерство, без проверки радиуса и поражённых целей.",
+        "{\"translate\":\"jem.atlas.card.races_09.tip\"}",
         "",
-        "Награда: Звуковой декор и плёнка поддерживают исследовательский стиль Скалка.",
+        "{\"translate\":\"jem.atlas.card.races_09.reward\"}",
         "",
-        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "chimes:amethyst_chimes",
-      "x": 4.8,
-      "y": 3.2,
+      "x": 7.5,
+      "y": 7.5,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2F2AD5D0DEF67B3A",
           "type": "custom",
-          "title": "Засчитать 2 успешных применения способностей Скалка.",
+          "title": "{\"translate\":\"jem.atlas.card.races_09.condition\"}",
           "icon": "chimes:amethyst_chimes",
           "count": 2
         }
@@ -562,29 +562,29 @@
     },
     {
       "id": "28D1F90243FF0CF5",
-      "title": "02.10 · Скалк: резонанс",
-      "subtitle": "Засчитать 3 успешных применения способностей Скалка.",
+      "title": "{\"translate\":\"jem.atlas.card.races_10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_10.condition\"}",
       "description": [
-        "Что сделать: Засчитать 3 успешных применения способностей Скалка.",
+        "{\"translate\":\"jem.atlas.card.races_10.condition\"}",
         "",
-        "Зачем: Восстановление/поглощение и выбор между эхом и расходом резонанса.",
+        "{\"translate\":\"jem.atlas.card.races_10.purpose\"}",
         "",
-        "Совет: Резонанс можно тратить на восстановление и поглощение. Изменения ресурса внутри одной связки отдельно не отслеживаются.",
+        "{\"translate\":\"jem.atlas.card.races_10.tip\"}",
         "",
-        "Награда: Музыкальный инструмент и походный запас дают ощутимую награду без скачка боевой силы.",
+        "{\"translate\":\"jem.atlas.card.races_10.reward\"}",
         "",
-        "Рекомендуемый путь: 02.09 · Скалк: услышать и ответить. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "immersive_melodies:didgeridoo",
-      "x": 4.8,
-      "y": 5.1,
+      "x": 7.5,
+      "y": 10.7,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "265DE6E3E4E6EB9D",
           "type": "custom",
-          "title": "Засчитать 3 успешных применения способностей Скалка.",
+          "title": "{\"translate\":\"jem.atlas.card.races_10.condition\"}",
           "icon": "immersive_melodies:didgeridoo",
           "count": 3
         }
@@ -624,29 +624,29 @@
     },
     {
       "id": "27386C2B99B69175",
-      "title": "02.11 · Сердце Незера: огненная связка",
-      "subtitle": "Засчитать 2 успешных применения способностей Сердца Незера.",
+      "title": "{\"translate\":\"jem.atlas.card.races_11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_11.condition\"}",
       "description": [
-        "Что сделать: Засчитать 2 успешных применения способностей Сердца Незера.",
+        "{\"translate\":\"jem.atlas.card.races_11.condition\"}",
         "",
-        "Зачем: Извержения и последовательность ударов.",
+        "{\"translate\":\"jem.atlas.card.races_11.purpose\"}",
         "",
-        "Совет: Огненные извержения и серия ударов — разные приёмы расы. Требуется только общий сохранённый счётчик этой расы.",
+        "{\"translate\":\"jem.atlas.card.races_11.tip\"}",
         "",
-        "Награда: Дымоход для тёплого дома и провиант: бытовая награда за раннее применение способности.",
+        "{\"translate\":\"jem.atlas.card.races_11.reward\"}",
         "",
-        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "sootychimneys:brick_chimney",
-      "x": 9.6,
-      "y": 3.2,
+      "x": 15.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2E2258FC9D61F48E",
           "type": "custom",
-          "title": "Засчитать 2 успешных применения способностей Сердца Незера.",
+          "title": "{\"translate\":\"jem.atlas.card.races_11.condition\"}",
           "icon": "sootychimneys:brick_chimney",
           "count": 2
         }
@@ -686,29 +686,29 @@
     },
     {
       "id": "231F72E83258BDE9",
-      "title": "02.12 · Сердце Незера: питание лавой",
-      "subtitle": "Нажать ПКМ в воздухе с ведром лавы, играя Сердцем Незера.",
+      "title": "{\"translate\":\"jem.atlas.card.races_12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_12.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ в воздухе с ведром лавы, играя Сердцем Незера.",
+        "{\"translate\":\"jem.atlas.card.races_12.condition\"}",
         "",
-        "Зачем: Контекстное взаимодействие с лавой.",
+        "{\"translate\":\"jem.atlas.card.races_12.purpose\"}",
         "",
-        "Совет: Раса умеет пить лаву; с приседанием ведро используется иначе. Проверяется нажатие и текущий выбор расы, а не результат питья.",
+        "{\"translate\":\"jem.atlas.card.races_12.tip\"}",
         "",
-        "Награда: Лавовая практика награждается собственной кухонной печью и готовой едой.",
+        "{\"translate\":\"jem.atlas.card.races_12.reward\"}",
         "",
-        "Рекомендуемый путь: 02.11 · Сердце Незера: огненная связка. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "minecraft:lava_bucket",
-      "x": 9.6,
-      "y": 5.1,
+      "x": 15.0,
+      "y": 10.2,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "28B43331657F55CC",
           "type": "custom",
-          "title": "Нажать ПКМ в воздухе с ведром лавы, играя Сердцем Незера.",
+          "title": "{\"translate\":\"jem.atlas.card.races_12.condition\"}",
           "icon": "minecraft:lava_bucket",
           "count": 1
         }
@@ -748,29 +748,29 @@
     },
     {
       "id": "23C537118BD7A826",
-      "title": "02.13 · Полное мастерство",
-      "subtitle": "Достигнуть III ступени мастерства выбранной расы.",
+      "title": "{\"translate\":\"jem.atlas.card.races_13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.races_13.condition\"}",
       "description": [
-        "Что сделать: Достигнуть III ступени мастерства выбранной расы.",
+        "{\"translate\":\"jem.atlas.card.races_13.condition\"}",
         "",
-        "Зачем: Развитие выбранной расы. Книга не выдаёт mastery и не требует менять расу.",
+        "{\"translate\":\"jem.atlas.card.races_13.purpose\"}",
         "",
-        "Совет: Промежуточные ступени открываются нативно после 10 и 20 успешных применений, III — после 30. Не требуется менять расу или отдельно доказывать улучшенный эффект.",
+        "{\"translate\":\"jem.atlas.card.races_13.tip\"}",
         "",
-        "Награда: III ступень нативного мастерства даёт один полезный предмет под выбранный стиль игры.",
+        "{\"translate\":\"jem.atlas.card.races_13.reward\"}",
         "",
-        "Рекомендуемый путь: 02.02 · Первый опыт. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:experience_nugget",
-      "x": 0.0,
-      "y": 9.7,
+      "x": 0,
+      "y": 12,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2CC0E51E7B0488B7",
           "type": "custom",
-          "title": "Достигнуть III ступени мастерства выбранной расы.",
+          "title": "{\"translate\":\"jem.atlas.card.races_13.condition\"}",
           "icon": "create:experience_nugget",
           "count": 3
         }
@@ -809,88 +809,55 @@
   "images": [
     {
       "x": 0,
-      "y": -4,
-      "width": 4.0,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Выбор и справочник",
-      "order": -5,
-      "hover": [
-        "Выбор и справочник"
-      ]
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-02\"}",
+      "order": 30
     },
     {
-      "x": -9.6,
-      "y": 1.4,
-      "width": 4.4,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Ancestors",
-      "order": -5,
+      "x": -20,
+      "y": -15,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "Ancestors"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
     },
     {
-      "x": -4.8,
-      "y": 1.4,
-      "width": 4.4,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Void Walkers",
-      "order": -5,
-      "hover": [
-        "Void Walkers"
-      ]
+      "x": -20,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
     },
     {
-      "x": 0.0,
-      "y": 1.4,
-      "width": 4.4,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Born in Bloom",
-      "order": -5,
+      "x": -11.0,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/iron_sword.png",
+      "click": "#2115706BBC5F781B",
       "hover": [
-        "Born in Bloom"
-      ]
+        "jem.atlas.route_hint.tab-25"
+      ],
+      "order": 20
     },
     {
-      "x": 4.8,
-      "y": 1.4,
-      "width": 4.4,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Infected by Sculk",
-      "order": -5,
-      "hover": [
-        "Infected by Sculk"
-      ]
-    },
-    {
-      "x": 9.6,
-      "y": 1.4,
-      "width": 4.4,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Nether Hearteds",
-      "order": -5,
-      "hover": [
-        "Nether Hearteds"
-      ]
-    },
-    {
-      "x": 0,
-      "y": 8,
-      "width": 2.15,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Развитие своей расы",
-      "order": -5,
-      "hover": [
-        "Развитие своей расы"
-      ]
+      "x": -11.0,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-25\"}",
+      "order": 21
     }
   ],
-  "autofocus_id": "1100000000000093"
+  "jem_atlas_hub": false
 }

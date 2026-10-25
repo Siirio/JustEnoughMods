@@ -1,0 +1,440 @@
+{
+  "id": "2AC0A4E65BD122FD",
+  "filename": "atlas_sky_roads",
+  "title": "{\"translate\":\"jem.atlas.chapter.sky-roads\"}",
+  "subtitle": [
+    "{\"translate\":\"jem.atlas.intro.sky-roads\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
+  ],
+  "icon": "minecraft:elytra",
+  "group": "2D3C906F447384BD",
+  "order_index": 6,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2D28DFE597CBCDFB",
+      "title": "{\"translate\":\"jem.atlas.card.H09.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H09.01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H09.01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.01.reward\"}"
+      ],
+      "icon": "paraglider:paraglider",
+      "x": -11.0,
+      "y": -7.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "297BDEC9A5BB4422",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H09.01.condition\"}",
+          "icon": "paraglider:paraglider",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23833C7DCB0140F2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:roadrunner_boots",
+          "count": 1,
+          "claim_key": "H09.01/item/0",
+          "claim_reward_id": "23833C7DCB0140F2",
+          "team_reward": false
+        },
+        {
+          "id": "2757FCD02DF93B11",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_salmon_sandwich",
+          "count": 16,
+          "claim_key": "H09.01/item/1",
+          "claim_reward_id": "2757FCD02DF93B11",
+          "team_reward": false
+        },
+        {
+          "id": "2A32D14E9A650296",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E3272260E29DC14",
+      "title": "{\"translate\":\"jem.atlas.card.H09.03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H09.03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H09.03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "paraglider:spirit_orb",
+      "x": 13.55,
+      "y": -9.41,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DEDD58A886279DD",
+          "type": "item",
+          "item": "paraglider:spirit_orb",
+          "count": 4,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A730522FF36645F",
+          "type": "jem_advancements:quest_item",
+          "item": "paraglider:spirit_orb",
+          "count": 4,
+          "claim_key": "H09.03/item/0",
+          "claim_reward_id": "2A730522FF36645F",
+          "team_reward": false
+        },
+        {
+          "id": "29567DB7926FA00F",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 24,
+          "claim_key": "H09.03/item/1",
+          "claim_reward_id": "29567DB7926FA00F",
+          "team_reward": false
+        },
+        {
+          "id": "2AFD6800BC3D0F47",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21E2F05DE03344BA",
+      "title": "{\"translate\":\"jem.atlas.card.H09.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H09.04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H09.04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.04.reward\"}"
+      ],
+      "icon": "minecraft:chain",
+      "x": 16.0,
+      "y": -11.39,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24E7366A0746655E",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H09.04.condition\"}",
+          "icon": "minecraft:chain",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29D40DFCD4837761",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:chain",
+          "count": 64,
+          "claim_key": "H09.04/item/0",
+          "claim_reward_id": "29D40DFCD4837761",
+          "team_reward": false
+        },
+        {
+          "id": "2694F75F1958C7D6",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:rope",
+          "count": 32,
+          "claim_key": "H09.04/item/1",
+          "claim_reward_id": "2694F75F1958C7D6",
+          "team_reward": false
+        },
+        {
+          "id": "205A1F616605440F",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:hammer",
+          "count": 1,
+          "claim_key": "H09.04/item/2",
+          "claim_reward_id": "205A1F616605440F",
+          "team_reward": false
+        },
+        {
+          "id": "2329DB3214DB0AB4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C0181074EE1FFB9",
+      "title": "{\"translate\":\"jem.atlas.card.H09.06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H09.06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H09.06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.06.reward\"}"
+      ],
+      "icon": "immersive_aircraft:biplane",
+      "x": 22.0,
+      "y": -15.55,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "256DFAD92413F80C",
+          "type": "item",
+          "item": "immersive_aircraft:biplane",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26D571B687ADA72B",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_aircraft:engine",
+          "count": 2,
+          "claim_key": "H09.06/item/0",
+          "claim_reward_id": "26D571B687ADA72B",
+          "team_reward": false
+        },
+        {
+          "id": "211A8FDC6F92169A",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_aircraft:propeller",
+          "count": 2,
+          "claim_key": "H09.06/item/1",
+          "claim_reward_id": "211A8FDC6F92169A",
+          "team_reward": false
+        },
+        {
+          "id": "2A37F45D8D2FA2AA",
+          "type": "jem_advancements:quest_item",
+          "item": "immersive_aircraft:hull",
+          "count": 8,
+          "claim_key": "H09.06/item/2",
+          "claim_reward_id": "2A37F45D8D2FA2AA",
+          "team_reward": false
+        },
+        {
+          "id": "2EF9721EC0B3E671",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:coal",
+          "count": 64,
+          "claim_key": "H09.06/item/3",
+          "claim_reward_id": "2EF9721EC0B3E671",
+          "team_reward": false
+        },
+        {
+          "id": "2DD2F1743DBFAB85",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2449CDAE40D73C71",
+      "title": "{\"translate\":\"jem.atlas.card.H09.07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H09.07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H09.07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H09.07.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "immersive_aircraft:biplane",
+      "x": 25.55,
+      "y": -17.38,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "290D5D8145B888C4",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H09.07.condition\"}",
+          "icon": "immersive_aircraft:biplane",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "212E7D8A3A6FC3BC",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:camera",
+          "count": 1,
+          "claim_key": "H09.07/item/0",
+          "claim_reward_id": "212E7D8A3A6FC3BC",
+          "team_reward": false
+        },
+        {
+          "id": "252A5A0AA717B99C",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 8,
+          "claim_key": "H09.07/item/1",
+          "claim_reward_id": "252A5A0AA717B99C",
+          "team_reward": false
+        },
+        {
+          "id": "23D7356C5536A10D",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 16,
+          "claim_key": "H09.07/item/2",
+          "claim_reward_id": "23D7356C5536A10D",
+          "team_reward": false
+        },
+        {
+          "id": "22A9A878BEB33449",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H09.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.sky-roads\"}",
+      "order": 30
+    },
+    {
+      "x": -20,
+      "y": -23.19,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
+      "hover": [
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
+    },
+    {
+      "x": -20,
+      "y": -21.69,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
+    },
+    {
+      "x": -11.0,
+      "y": -23.19,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#1000000000000004",
+      "hover": [
+        "jem.atlas.route_hint.tab-16"
+      ],
+      "order": 20
+    },
+    {
+      "x": -11.0,
+      "y": -21.69,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-16\"}",
+      "order": 21
+    },
+    {
+      "x": 10.0,
+      "y": -7.66,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H09.02",
+      "hover": [
+        "jem.atlas.card.H09.02.title",
+        "jem.atlas.reference.hint"
+      ],
+      "order": 20
+    },
+    {
+      "x": 19.55,
+      "y": -13.5,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H09.05",
+      "hover": [
+        "jem.atlas.card.H09.05.title",
+        "jem.atlas.reference.hint"
+      ],
+      "order": 20
+    },
+    {
+      "x": 28.0,
+      "y": -18.99,
+      "width": 0.9,
+      "height": 0.9,
+      "image": "minecraft:textures/item/book.png",
+      "click": "jem-info:H09.08",
+      "hover": [
+        "jem.atlas.card.H09.08.title",
+        "jem.atlas.reference.hint"
+      ],
+      "order": 20
+    }
+  ],
+  "jem_atlas_hub": false
+}

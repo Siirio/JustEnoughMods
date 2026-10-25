@@ -1,46 +1,79 @@
-# JEM adventure quest book
+# JEM Adventure Atlas
 
-The user supplied `JEM_FTB_Quests_Implementation_Pack` on 2026-10-22 and explicitly corrected the six JPGs to **title artwork above real gameplay backgrounds**. The original pack is preserved byte-for-byte in [reference/implementation-pack-2026-10-22](reference/implementation-pack-2026-10-22/START_HERE.md).
+The 2026-10-25 redesign keeps one central native FTB chapter with ten theme portals. Each opens a real content chapter, with further real chapters for substantial topics. Every content chapter has a native route back to the index. Navigation images have no tasks, rewards or progress to complete
 
-The functional book contains all 596 source cards in 32 chapters: 566 authored objectives and 30 informational elements. This includes the original 27 references and three unavailable subjects (Loot Journal item, Companions Essence/Great Chalice, Nether Seed Bag). Informational elements have no task, reward, manual completion or contribution to completion. Disabled host Events/Raid become reference elements in that world's native projection. The ordinary local host currently has Events disabled; four additional objectives are therefore unavailable there.
+The authored book contains 602 cards in 39 visible chapters, including the index. There are 577 objectives and 25 informational cards. All 589 cards present before this redesign remain. Seven invisible legacy chapters retain retired quest and task identities without reusing them for a different mechanic
 
-## Canonical authoring and generation
+The earlier figure of 596 cards described an older revision. The immutable [baseline inventory](baseline-20261025.json) captures the actual 589-card source and native output before this redesign
 
-- `Mods/JEMAchievementGuide/tools/questbook/book.json` owns prose, conditions, exact bindings, native identities, rewards and coordinates. Edit this source when making lasting changes.
-- `python Mods/JEMAchievementGuide/tools/compile_questbook.py` emits native SNBT into `Client/ManagedPack/config/ftbquests/quests`, the indexed predicate and reference-card resources, [card-mapping.csv](card-mapping.csv), the compiled-file manifest and the Atlas reward selector set. It preserves authored coordinates and refuses impossible collection cardinalities. It does not reimport the HTML or assign a new layout.
-- `tools/import_questbook.py` is a one-time importer, refuses an existing authored book, and is not a build/runtime dependency. Python/BeautifulSoup are authoring tools only.
-- `tools/questbook/legacy` retains the original seven chapters. Retired quest/task IDs remain in invisible optional native archives; they are not reassigned to changed meanings. The exact confirmed-race and complete-campaign identities remain usable. World-local projections are immutable load products, not editable source.
+## Canonical source and generation
 
-`card-mapping.csv` maps every HTML ID to its native quest ID or reference element, conditions, reward and explicit difference. Original REWARDS.json is unchanged. All 784 originally specified reward types were checked against the ordinary loaded local server's item registry. Five absent types were replaced explicitly, retaining quantities: Caster's Tea -> Oakskin Elixir; fictional Alex's Mobs purpur planks -> Cataclysm Chorus Planks; End pirate door -> Secret Purpur Door; End pirate flag -> Purple Banner; unavailable violet Nether Expansion bricks -> Netherrack Bricks. Exact per-card differences remain in the authoring source and CSV. This is not permission to add removed items or loosen Item Obliterator.
+- `Mods/JEMAchievementGuide/tools/questbook/book.json` owns exact bindings, stable identities, rewards, both languages, chapter membership, saved geometry and image declarations
+- `python Mods/JEMAchievementGuide/tools/compile_questbook.py` emits native SNBT into `Client/ManagedPack/config/ftbquests/quests`, indexed rules, reference resources, localization keys, [card-mapping.csv](card-mapping.csv), the compiled-file manifest and the canonical Atlas reward selector
+- `python Mods/JEMAchievementGuide/tools/questbook/audit_book.py` inventories authored/native data against the immutable baseline and writes [layout-audit-20261025.json](layout-audit-20261025.json) and [chapter-migration-20261025.csv](chapter-migration-20261025.csv)
+- This audit is an offline content inventory. It does not launch Minecraft or create automated tests, fixtures or gameplay scenarios
+- `tools/questbook/legacy` retains the original seven chapters byte for byte, with retired identities remaining invisible and optional in native output
+- The old HTML importer is historical input tooling, never a compilation or runtime dependency
 
-The reward review found 19 direct reward-to-inventory-objective overlaps in the supplied specification; each is a one-hop, once-only overlap. None of the destination cards leads to another such edge, and no repeatable reward loop is introduced. Quantities and the guaranteed-plus-one-choice contract remain specified, with only the unavailable-item substitutions above. There are 61 native choice tables, never a random substitute. No boss weapon, ready Nightfall loadout, campaign Eye/key shortcut or new market currency is added.
+The compiler reads saved positions. It does not regenerate geometry, turn recommended `after` paths into dependencies or create quests merely to make navigation buttons
 
-## Ownership and exact signals
+## Themes and geometry
 
-Native FTB Quests 2001.4.22 / Library 2001.2.13 / Teams 2001.3.2 owns progress, team membership, synchronization, quest cards and ordinary item tooltips. Exact simple inventory, dimension, advancement and kill conditions use native tasks. Small `CustomTask` predicates cover native ItemStack variants, distinct groups and existing domain snapshots. Forge notifications are indexed by kind and registry ID; there is no full-book scan per hit and no extra inventory tick loop. Native CustomTask scheduling performs the necessary special inventory/domain reads.
+| Theme | Main source | Canvas language |
+| --- | --- | --- |
+| Very Many Biomes | `tab-16` | Irregular regional continuations and isolated discoveries |
+| Acompany | `tab-17` | Unequal care, husbandry, wildlife and aquatic tributaries |
+| Cozy Home | `tab-07` | Source-grounded gallery islands with at most three cards |
+| Farm 'n Food | `tab-03` | Seasonal plots and kitchen paths |
+| Cogs & Trains | `tab-12` | Kinetic spine, factory sidings and railway subroutes |
+| Secrets of Magic | `tab-26` | Asymmetric schools and enchanting branches |
+| Boss Busters | `tab-25` | Preparation trails and retained encounters |
+| Power System | `tab-02` | Existing choice and five independent race paths |
+| Nightfall | `nightfall-gear` | Acquisition lane and genuine combat exercises |
+| The Twelve Eyes | `tab-28` | Exactly twelve MAIN leaves in a mirrored bracket |
 
-`BookCollections` stores only seen identities for a team/task; FTB stores the count. Main/off-hand, paired held-item filters, mature crop, direct positive melee damage, native food acceptance, finished consumption, actual mounts and successful fishing drops retain separate meanings. Generic and precise entity-interaction events are normalized; multi-block bed/door placement counts one action. Forge fake players cannot generate indexed action progress. Tide's exact installed fishing hook posts native ItemFishedEvent, so no new Tide injection is required.
+The storage wing retains five existing network objectives and adds five backpack and five fixed-storage objectives. Upgrade acquisition is explicitly preparation, without falsely detecting an installed capability or operating network. Exact installed recipes, native controls and registry IDs ground the additions
 
-Races read the current RaceApi snapshot. Campaign MAIN, SUB, completion and post-End read their canonical APIs/saved prerequisite state; all twelve original MAIN and fifteen SUB are retained. World victory is labelled world progress, not invented personal participation. Settlements reads authenticated owned towns/residents and the existing mount collection count; the residents threshold can be met in any one owned town. Events read existing typed ProfileState snapshots only on an explicitly enabled dedicated host. No replacement Profiles, ledger, campaign allowlist or domain save is created.
+Engineering retains 41 mechanical objectives. Three compact links open existing button, seasonal sensor and copper-helper objectives in their own chapters. Those links never duplicate progress or rewards. The mechanical source share is 41 of these 44 destinations, approximately 93 percent
 
-Economy publishes immutable notifications after committed shipping sale, withdrawal, native villager purchase and ordinary market delivery. These one-shot quest flags cannot increment again during recovery. Quotes, cash validation, ledger conservation, inventory delivery and existing transaction owners retain authority.
+The campaign reads twelve canonical MAIN profiles and corresponding eyes from `JEMTwelveEyes`. All fifteen retained SUB objectives live in the preparation chapter. Six prep links beside the relevant leaves open genuine retained objectives. Bracket rails are decorative images without invented dependencies or intermediate rounds
 
-Item rewards extend native ItemReward presentation and enter existing JEMRewards take-only containers, split to native stack sizes. Durable source keys distinguish guaranteed entitlements and bind all options of one choice to the same personal once-only key, including after an FTB team change. An enqueue exception reopens the exact native parent claim. XP uses native XPReward behavior plus a player-persistent personal receipt copied on clone; XP and that receipt follow normal player saves, not a new crash-proof journal. Item delivery uses the existing synchronized JEMRewards channel and requires matching already-installed Rewards on both sides; no new Forge channel is introduced here.
+Installed Nightfall 3.4.1 has no verified hostile challenge boss. Its guardian and doppelganger are invulnerable owner-bound summons. The atlas retains nine weapon exercises, adds three exact native acquisition milestones and links real combat chapters. It does not invent boss kills to satisfy a theme label
 
-Installed native data identifies Alex's Caves codex biome, Exposure photo identifier, Iron's actual spell-container contents, Aquamirae logbook topic and HerbalBrews filled-flask effects. Upgrade Orb rewards run the installed mod's own default-NBT initializer. Model/localization names are not treated as proof of registration. The native projection checks required targets and every reward before parsing, and exposes an explicit unavailable reference instead of an impossible rewarded objective.
+## Native navigation and localization
 
-## Layout and visual boundary
+Installed FTB Quests 2001.4.22, Library 2001.2.13 and Teams 2001.3.2 remain the UI, team-progress, save and synchronization owners. Chapter image `click: "#<hex ID>"` opens an existing chapter or quest object. No unsupported `change_page` convention or reward-bearing entry quest is used
 
-The native FTB screen is extended, not replaced. The source stores distinct thematic shelves, workshop/railway lanes, five parallel race paths, six cave branches and twelve campaign branches derived from canonical campaign data. Placement, numbering and short prose suggest order; no artificial dependency gates or decorative dependency edges are added. Collections, ordinary objectives, milestones and informational elements use distinct native shapes/size or book imagery. Native assets are reused for subjects. One narrow optional client Mixin draws authored shelf captions and opens non-progress reference text; it leaves ordinary native image rendering, quest interactions and editor modifiers intact.
+The hub is the earliest chapter in the first group. Native fresh selection reaches it. Saved chapter, zoom and scroll remain respected on reopening. Persistent navigation state is never erased to force the index
 
-Visual status is **NEEDS_DIRECTION / incomplete**. No opaque generated JPG has been misused as a gameplay background or cut into new operational pixel controls. The six supplied originals and four Homestead references are retained. [visual-assets.json](visual-assets.json) records title roles, missing scenes and the layered resource contract. Clean transparent title exports and actual HUD-free JEM scenes are still required. No invented placeholder background or copied Homestead interface is installed.
+Titles, descriptions and subtitles use native serialized translatable components. Image hover text uses plain localization keys. Existing caption and reference adapters use the same native text parser. English and Russian player prose excludes implementation namespaces and source-mod branding. Real translated item and boss names remain intact
 
-Actual composed-screen review at 1920x1080 and 1366x768, hover/card/item tooltip, long Russian text, completion/unclaimed reward, progress actions and claim/relogin acceptance remain unobserved. A successful production build or server load is not player acceptance. No gameplay client was launched and no automated test/scenario/fixture was created or run. Native server console registration dumps are diagnostic evidence only, not promoted VERIFIED_RUNTIME Atlas facts.
+Captions and navigation hit areas have separate bounds. Header routes sit beyond authored card extents. Backgrounds, original identity images and gallery backplates have no click action
+
+## Progress, signals and rewards
+
+Every original native quest, task, reward and choice-table identity survives once. Task configuration, binding filters, quantities, claim keys, consume behavior, dependency edges and authored rewards are unchanged. Presentation, chapter membership and geometry intentionally change. [The layout report](ftb-quests-layout-report.md) records exact counts and limits
+
+Native inventory, dimension, advancement and kill tasks handle supported simple conditions. Indexed custom predicates retain exact variants, distinct groups, mature crops, positive melee damage, consumption, mounts, fishing and domain snapshots. Fake players cannot create action progress. Recommended paths remain recommendations
+
+Race and campaign progress come from canonical owners. World victories remain world history without pretending to prove personal participation. No quest grants a race, power, encounter admission or eye. Dedicated events remain unavailable when their host feature is disabled and never gate integrated-world progression
+
+Economy publishes immutable notifications after committed sales, withdrawals, villager purchases and market deliveries. Quotes, validation, conservation, recovery and inventory delivery retain their existing owners
+
+Item rewards enter existing take-only reward containers through native reward presentation. Durable personal claim keys preserve guaranteed entitlements and one-of-choice semantics across team changes. Experience retains its existing native reward and personal receipt behavior. There are still 61 native choice tables
+
+Original reward quantities and substitutions remain unchanged. The thirteen new objectives grant only small supplies and experience. No boss weapon, ready endgame arsenal, power, eye or progression key is added as a reward
+
+## Artwork and acceptance boundary
+
+The latest user amendment uses six supplied images as page identity emblems over extended matching backgrounds. Full original JPGs remain uncut. Six background declarations preserve the 3072 by 2048 export ratio and include actual canvas content plus margins. The hub reuses the exploration background
+
+Originals and extensions belong to [art-20261025](art-20261025). Native paths are `jem_advancements:textures/questbook/atlas/identity-{theme}.jpg` and `jem_advancements:textures/questbook/atlas/background-{theme}.png`. Missing exports remain explicit until real reviewed files are copied
+
+A background is a finite native chapter image. Panning far enough can move beyond its edges. This implementation does not replace the canvas or install a repeating custom renderer
+
+No gameplay client was launched for this redesign. Actual clicks, both GUI scales, text wrapping, saved completion, detection and reward claims remain unexercised. A content inventory or successful production build does not establish runtime acceptance
 
 ## Local delivery
 
-[delivery.json](delivery.json) records the exact built artifacts, loaded projection, native publication and installed development-client generation when completed. Stable profiles, MineRENT, friend ZIPs and the immutable release baseline remain outside this delivery.
-
-The shared checkout contains paused unrelated work. To avoid shipping its unfinished Guide/Settlements changes, the production build reads a temporary source snapshot of HEAD plus only this task's exact source paths. It does not change branch/worktree or overwrite those files. Shared OptionalMixins/mixin-registration additions are staged separately. A clean checkout of this commit builds the same task-owned source through the ordinary root Gradle tasks; the runtime artifact excludes the paused Handbook implementation. The other session should retain its working changes and rebuild its own final combined artifact when it resumes.
-
-The final ordinary server stopped on an unchanged Settlements tax persistence error: Windows native file replacement returned access denied (5). The ledger also reports existing development issuance without the required local JVM opt-in. The exact TaxDurability and EconomySavedData class bytes match publication62; these are separate from the new quest callbacks. The specific file holder/ACL cause remains unestablished. No wallet reset, permission change, tax suppression or ledger unfreeze is applied. Local gameplay-server readiness remains blocked; see delivery.json.
+[delivery.json](delivery.json) owns actual artifact hashes, local synchronization, native publication and installed development generation when recorded. Compilation alone does not publish or apply a generation. Stable profiles, MineRENT and the immutable client release baseline remain outside this delivery

@@ -1,43 +1,43 @@
 {
   "id": "2A24AB61A2E490C8",
   "filename": "jem_14",
-  "title": "Create 6: заказы и снабжение",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-14\"}",
   "subtitle": [
-    "Когда: После обычного открытия латунных/точных компонентов. Создавать действующую сеть для зачёта не нужно.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-14\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
   "icon": "create:packager",
-  "group": "28AF004A3850C67C",
-  "order_index": 13,
+  "group": "294A1D1F3DB2CD43",
+  "order_index": 2,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
       "id": "2185CA853BD80F2F",
-      "title": "14.01 · Упаковщик",
-      "subtitle": "Поставить 1 Packager Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.01.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 Packager Create.",
+        "{\"translate\":\"jem.atlas.card.H13.01.condition\"}",
         "",
-        "Зачем: Физические packages Create6.",
+        "{\"translate\":\"jem.atlas.card.H13.01.purpose\"}",
         "",
-        "Совет: Из Cardboard получаются упаковочные компоненты. Packager взаимодействует с реальным складом и создаёт физические посылки; наличие подключённого инвентаря и выпуска посылки не проверяется.",
+        "{\"translate\":\"jem.atlas.card.H13.01.tip\"}",
         "",
-        "Награда: Набор отправки для нескольких складов после установки первого упаковщика.",
+        "{\"translate\":\"jem.atlas.card.H13.01.reward\"}",
         "",
-        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:packager",
-      "x": -1.85,
-      "y": 1.7,
+      "x": -18.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2797C3727E1CFEB4",
           "type": "custom",
-          "title": "Поставить 1 Packager Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.01.condition\"}",
           "icon": "create:packager",
           "count": 1
         }
@@ -84,29 +84,29 @@
     },
     {
       "id": "2A73A6CCFC7C2476",
-      "title": "14.02 · Посылка в руках",
-      "subtitle": "Получить 1 посылку Create любого размера.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.02.condition\"}",
       "description": [
-        "Что сделать: Получить 1 посылку Create любого размера.",
+        "{\"translate\":\"jem.atlas.card.H13.02.condition\"}",
         "",
-        "Зачем: Адресация и доставка.",
+        "{\"translate\":\"jem.atlas.card.H13.02.purpose\"}",
         "",
-        "Совет: Адрес направляет посылку к нужной точке. Попробуй упаковку и распаковку на собственном складе; доставка между двумя местами не отслеживается.",
+        "{\"translate\":\"jem.atlas.card.H13.02.tip\"}",
         "",
-        "Награда: Расходники и фильтры для следующей партии отправлений; пустые коробки с неизвестным содержимым не выдаются.",
+        "{\"translate\":\"jem.atlas.card.H13.02.reward\"}",
         "",
-        "Рекомендуемый путь: 14.01 · Упаковщик. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:rare_creeper_package",
-      "x": 0.0,
-      "y": 1.7,
+      "x": -12.5,
+      "y": 7.5,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2879602F726392B4",
           "type": "custom",
-          "title": "Получить 1 посылку Create любого размера.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.02.condition\"}",
           "icon": "create:rare_creeper_package",
           "count": 1
         }
@@ -144,29 +144,29 @@
     },
     {
       "id": "2D5D4860A00D2929",
-      "title": "14.03 · Подвесная доставка: детали",
-      "subtitle": "Разместить Chain Conveyor, Frogport и Postbox Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.03.condition\"}",
       "description": [
-        "Что сделать: Разместить Chain Conveyor, Frogport и Postbox Create.",
+        "{\"translate\":\"jem.atlas.card.H13.03.condition\"}",
         "",
-        "Зачем: Транспорт packages; chain conveyor отличается от Zipline цепей.",
+        "{\"translate\":\"jem.atlas.card.H13.03.purpose\"}",
         "",
-        "Совет: Соедини конвейер с точками отправления и приёма. Это транспорт посылок Create 6; он отличается от Zipline. Длина, соединение и приезд груза не проверяются.",
+        "{\"translate\":\"jem.atlas.card.H13.03.tip\"}",
         "",
-        "Награда: Можно расширить транспортную линию между несколькими точками. Конфигурация реальной сети не входит в зачёт.",
+        "{\"translate\":\"jem.atlas.card.H13.03.reward\"}",
         "",
-        "Рекомендуемый путь: 14.02 · Посылка в руках. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:chain_conveyor",
-      "x": 1.85,
-      "y": 1.7,
+      "x": -7.0,
+      "y": 7.0,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2669D945CF5ABDFC",
           "type": "custom",
-          "title": "Разместить Chain Conveyor, Frogport и Postbox Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.03.condition\"}",
           "icon": "create:chain_conveyor",
           "count": 3
         }
@@ -213,29 +213,29 @@
     },
     {
       "id": "22F8994E87173E59",
-      "title": "14.04 · Компоненты сети запасов",
-      "subtitle": "Разместить Stock Link и Stock Ticker Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.04.condition\"}",
       "description": [
-        "Что сделать: Разместить Stock Link и Stock Ticker Create.",
+        "{\"translate\":\"jem.atlas.card.H13.04.condition\"}",
         "",
-        "Зачем: Сеть запасов без выдачи бесплатных предметов.",
+        "{\"translate\":\"jem.atlas.card.H13.04.purpose\"}",
         "",
-        "Совет: Stock Link связывает склад с сетью, Stock Ticker показывает запасы и позволяет заказывать. Настрой сеть по Ponder; её состав, принадлежность и реальные остатки не являются условиями.",
+        "{\"translate\":\"jem.atlas.card.H13.04.tip\"}",
         "",
-        "Награда: Запас связей склада и дополнительных терминалов заказов.",
+        "{\"translate\":\"jem.atlas.card.H13.04.reward\"}",
         "",
-        "Рекомендуемый путь: 14.01 · Упаковщик. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:stock_link",
-      "x": -1.85,
-      "y": 5.4,
+      "x": -1.5,
+      "y": 7.5,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "201E9EBDEF5B218E",
           "type": "custom",
-          "title": "Разместить Stock Link и Stock Ticker Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.04.condition\"}",
           "icon": "create:stock_link",
           "count": 2
         }
@@ -282,29 +282,29 @@
     },
     {
       "id": "2BCCD90D19B20CBA",
-      "title": "14.05 · Знакомство с заказами",
-      "subtitle": "Нажать ПКМ по Stock Ticker Create пустой основной рукой.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.05.condition\"}",
       "description": [
-        "Что сделать: Нажать ПКМ по Stock Ticker Create пустой основной рукой.",
+        "{\"translate\":\"jem.atlas.card.H13.05.condition\"}",
         "",
-        "Зачем: Заказ ресурсов через Stock Ticker и снабжение по запросу.",
+        "{\"translate\":\"jem.atlas.card.H13.05.purpose\"}",
         "",
-        "Совет: Через интерфейс можно заказать ингредиенты к производственной станции. Зачёт даётся за обращение к блоку: открытие окна, оформление и получение заказа не требуются.",
+        "{\"translate\":\"jem.atlas.card.H13.05.tip\"}",
         "",
-        "Награда: Полезное пополнение логистического набора за знакомство с интерфейсом; ПКМ не считается доказательством выполненного заказа.",
+        "{\"translate\":\"jem.atlas.card.H13.05.reward\"}",
         "",
-        "Рекомендуемый путь: 14.04 · Компоненты сети запасов. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:stock_ticker",
-      "x": 0.0,
-      "y": 5.4,
+      "x": 4.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "25C1DAF3A7A92FFC",
           "type": "custom",
-          "title": "Нажать ПКМ по Stock Ticker Create пустой основной рукой.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.05.condition\"}",
           "icon": "create:stock_ticker",
           "count": 1
         }
@@ -342,29 +342,29 @@
     },
     {
       "id": "2D50C184CF50D72B",
-      "title": "14.06 · Запрос от редстоуна",
-      "subtitle": "Разместить Redstone Requester Create и обычный рычаг.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.06.condition\"}",
       "description": [
-        "Что сделать: Разместить Redstone Requester Create и обычный рычаг.",
+        "{\"translate\":\"jem.atlas.card.H13.06.condition\"}",
         "",
-        "Зачем: Заказы от схем/механизмов.",
+        "{\"translate\":\"jem.atlas.card.H13.06.purpose\"}",
         "",
-        "Совет: Настрой состав запроса и подай сигнал. Для зачёта достаточно двух типов размещений; соединение, сигнал и выполненный заказ не проверяются.",
+        "{\"translate\":\"jem.atlas.card.H13.06.tip\"}",
         "",
-        "Награда: Дополнительные запросчики и электроника для нескольких независимых потребителей.",
+        "{\"translate\":\"jem.atlas.card.H13.06.reward\"}",
         "",
-        "Рекомендуемый путь: 14.05 · Знакомство с заказами. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:redstone_requester",
-      "x": 1.85,
-      "y": 5.4,
+      "x": 9.5,
+      "y": 7.5,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "271AC33420642E75",
           "type": "custom",
-          "title": "Разместить Redstone Requester Create и обычный рычаг.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.06.condition\"}",
           "icon": "create:redstone_requester",
           "count": 2
         }
@@ -402,29 +402,29 @@
     },
     {
       "id": "2A1C16AF92E8323C",
-      "title": "14.07 · Контроль целевого запаса",
-      "subtitle": "Поставить 1 Factory Gauge Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.07.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 Factory Gauge Create.",
+        "{\"translate\":\"jem.atlas.card.H13.07.condition\"}",
         "",
-        "Зачем: Автоматическое поддержание stock; не бесконечный ручной craft.",
+        "{\"translate\":\"jem.atlas.card.H13.07.purpose\"}",
         "",
-        "Совет: Задай небольшой целевой запас, свяжи нужные узлы и посмотри, как снабжение реагирует на расход. Книга не ждёт пополнения и не сравнивает состояние склада во времени.",
+        "{\"translate\":\"jem.atlas.card.H13.07.tip\"}",
         "",
-        "Награда: Можно вывести несколько производственных показателей после первого установленного измерителя.",
+        "{\"translate\":\"jem.atlas.card.H13.07.reward\"}",
         "",
-        "Рекомендуемый путь: 14.06 · Запрос от редстоуна. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:factory_gauge",
-      "x": -0.93,
-      "y": 9.1,
+      "x": 15.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "228D120D2C353746",
           "type": "custom",
-          "title": "Поставить 1 Factory Gauge Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.07.condition\"}",
           "icon": "create:factory_gauge",
           "count": 1
         }
@@ -462,29 +462,29 @@
     },
     {
       "id": "2655439F8163579B",
-      "title": "14.08 · Переупаковщик",
-      "subtitle": "Поставить 1 Re-packager Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.08.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 Re-packager Create.",
+        "{\"translate\":\"jem.atlas.card.H13.08.condition\"}",
         "",
-        "Зачем: Составные поставки и согласование частей.",
+        "{\"translate\":\"jem.atlas.card.H13.08.purpose\"}",
         "",
-        "Совет: Когда части заказа приходят разными посылками, Re-packager помогает собрать их дальше. Номера заказов, происхождение частей и дальнейшая доставка не хранятся в квесте.",
+        "{\"translate\":\"jem.atlas.card.H13.08.tip\"}",
         "",
-        "Награда: Запас упаковки и распределителей для объединения отправлений.",
+        "{\"translate\":\"jem.atlas.card.H13.08.reward\"}",
         "",
-        "Рекомендуемый путь: 14.02 · Посылка в руках. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:repackager",
-      "x": 0.93,
-      "y": 9.1,
+      "x": -18.0,
+      "y": 10.4,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2DE6427362DF2B16",
           "type": "custom",
-          "title": "Поставить 1 Re-packager Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.08.condition\"}",
           "icon": "create:repackager",
           "count": 1
         }
@@ -531,29 +531,29 @@
     },
     {
       "id": "218B78DF2979B3B9",
-      "title": "14.09 · Коллекция снабжения",
-      "subtitle": "Разместить 6 типов: Packager, Re-packager, Stock Link, Stock Ticker, Redstone Requester и Factory Gauge.",
+      "title": "{\"translate\":\"jem.atlas.card.H13.09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H13.09.condition\"}",
       "description": [
-        "Что сделать: Разместить 6 типов: Packager, Re-packager, Stock Link, Stock Ticker, Redstone Requester и Factory Gauge.",
+        "{\"translate\":\"jem.atlas.card.H13.09.condition\"}",
         "",
-        "Зачем: Полный набор инструментов заказов и снабжения Create 6.",
+        "{\"translate\":\"jem.atlas.card.H13.09.purpose\"}",
         "",
-        "Совет: Из освоенных компонентов можно организовать снабжение мастерских, стройки и экспедиций. Зачёт — набор размещённых типов; общая рабочая сеть и выполненный заказ не нужны.",
+        "{\"translate\":\"jem.atlas.card.H13.09.tip\"}",
         "",
-        "Награда: Коллекция шести разных логистических устройств оплачивается большим запасом точной механики и полезным строительным инструментом. Работоспособность фабрики не утверждается.",
+        "{\"translate\":\"jem.atlas.card.H13.09.reward\"}",
         "",
-        "Рекомендуемый путь: 14.04 · Компоненты сети запасов; 14.08 · Переупаковщик. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:packager",
-      "x": 0.0,
-      "y": 12.8,
+      "x": -12.5,
+      "y": 10.9,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2A25D3C3A06DAA59",
           "type": "custom",
-          "title": "Разместить 6 типов: Packager, Re-packager, Stock Link, Stock Ticker, Redstone Requester и Factory Gauge.",
+          "title": "{\"translate\":\"jem.atlas.card.H13.09.condition\"}",
           "icon": "create:packager",
           "count": 6
         }
@@ -611,52 +611,97 @@
   "images": [
     {
       "x": 0,
-      "y": 0,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:логистика",
-      "order": -5,
-      "hover": [
-        "логистика"
-      ]
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-14\"}",
+      "order": 30
     },
     {
-      "x": 0,
-      "y": 3.7,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:заказы",
-      "order": -5,
+      "x": -20,
+      "y": -15,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "заказы"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
     },
     {
-      "x": 0,
-      "y": 7.4,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:производство",
-      "order": -5,
-      "hover": [
-        "производство"
-      ]
+      "x": -20,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
     },
     {
-      "x": 0,
-      "y": 11.1,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:финал",
-      "order": -5,
+      "x": -11.0,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/minecart.png",
+      "click": "#1000000000000002",
       "hover": [
-        "финал"
-      ]
+        "jem.atlas.route_hint.tab-12"
+      ],
+      "order": 20
+    },
+    {
+      "x": -11.0,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-12\"}",
+      "order": 21
+    },
+    {
+      "x": -4.8,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/minecart.png",
+      "click": "#2877DEC4C9A8899A",
+      "hover": [
+        "jem.atlas.route_hint.tab-13"
+      ],
+      "order": 20
+    },
+    {
+      "x": -4.8,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-13\"}",
+      "order": 21
+    },
+    {
+      "x": 1.4,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/minecart.png",
+      "click": "#216D654740F71FDF",
+      "hover": [
+        "jem.atlas.route_hint.tab-15"
+      ],
+      "order": 20
+    },
+    {
+      "x": 1.4,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-15\"}",
+      "order": 21
     }
   ],
-  "autofocus_id": "2185CA853BD80F2F"
+  "jem_atlas_hub": false
 }

@@ -34,6 +34,12 @@ public final class WorldTierApi {
 
     public static void markNativeEncounter(LivingEntity entity, String arenaId) {
         profile(entity).ifPresent(profile -> {
+            if (!profile.ownsExclusiveArena()) {
+                EncounterData.detachArena(entity.getPersistentData());
+                EncounterScaler.initialize(entity, profile, EncounterProvenance.NATIVE, true, false, null);
+                EncounterData.verify(entity.getPersistentData(), EncounterProvenance.NATIVE, null);
+                return;
+            }
             EncounterScaler.initialize(entity, profile, EncounterProvenance.NATIVE, true, false, arenaId);
             EncounterData.verify(entity.getPersistentData(), EncounterProvenance.NATIVE, arenaId);
         });
@@ -41,13 +47,23 @@ public final class WorldTierApi {
 
     public static void markStructureEncounter(LivingEntity entity, String arenaId) {
         profile(entity).ifPresent(profile -> {
+            if (!profile.ownsExclusiveArena()) {
+                EncounterData.detachArena(entity.getPersistentData());
+                EncounterScaler.initialize(entity, profile, EncounterProvenance.STRUCTURE, true, false, null);
+                EncounterData.verify(entity.getPersistentData(), EncounterProvenance.STRUCTURE, null);
+                return;
+            }
             EncounterScaler.initialize(entity, profile, EncounterProvenance.STRUCTURE, true, false, arenaId);
             EncounterData.verify(entity.getPersistentData(), EncounterProvenance.STRUCTURE, arenaId);
         });
     }
 
     public static void markRevivalEncounter(LivingEntity entity, String arenaId) {
-        profile(entity).ifPresent(profile -> EncounterScaler.initialize(entity, profile, EncounterProvenance.REVIVAL, false, true, arenaId));
+        profile(entity).ifPresent(profile -> {
+            if (!profile.ownsExclusiveArena()) EncounterData.detachArena(entity.getPersistentData());
+            EncounterScaler.initialize(entity, profile, EncounterProvenance.REVIVAL, false, true,
+                    profile.ownsExclusiveArena() ? arenaId : null);
+        });
     }
 
     public static void finalizeNativeSpawn(LivingEntity entity, String spawnType) {
@@ -61,8 +77,14 @@ public final class WorldTierApi {
             if (!decision.progressionEligible() && !decision.rematch()) {
                 return;
             }
-            ArenaRecord arena = ArenaService.findOrRegister(entity, profile);
             EncounterProvenance provenance = decision.rematch() ? EncounterProvenance.REVIVAL : EncounterProvenance.NATIVE;
+            if (!profile.ownsExclusiveArena()) {
+                EncounterData.detachArena(entity.getPersistentData());
+                EncounterScaler.initialize(entity, profile, provenance, decision.progressionEligible(), decision.rematch(), null);
+                if (decision.progressionEligible()) EncounterData.verify(entity.getPersistentData(), provenance, null);
+                return;
+            }
+            ArenaRecord arena = ArenaService.findOrRegister(entity, profile);
             EncounterScaler.initialize(entity, profile, provenance, decision.progressionEligible(), decision.rematch(), arena.id());
             if (decision.progressionEligible()) {
                 EncounterData.verify(entity.getPersistentData(), provenance, arena.id());

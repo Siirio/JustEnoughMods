@@ -1,0 +1,1591 @@
+{
+  "id": "263866D2AD6BC9C8",
+  "filename": "atlas_sea_friends",
+  "title": "{\"translate\":\"jem.atlas.chapter.sea-friends\"}",
+  "subtitle": [
+    "{\"translate\":\"jem.atlas.intro.sea-friends\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
+  ],
+  "icon": "minecraft:nautilus_shell",
+  "group": "2F32D4CF99F89C79",
+  "order_index": 3,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "2476815E759E47D0",
+      "title": "{\"translate\":\"jem.atlas.card.wo01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo01.reward\"}"
+      ],
+      "icon": "spawn:casting_net",
+      "x": -18.0,
+      "y": -7.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22006729569F2C34",
+          "type": "item",
+          "item": "spawn:casting_net",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21048BD70D27AE23",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:bait",
+          "count": 48,
+          "claim_key": "wo01/item/0",
+          "claim_reward_id": "21048BD70D27AE23",
+          "team_reward": false
+        },
+        {
+          "id": "25CCE566E2500B0C",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:fishing_hook",
+          "count": 2,
+          "claim_key": "wo01/item/1",
+          "claim_reward_id": "25CCE566E2500B0C",
+          "team_reward": false
+        },
+        {
+          "id": "2C22589C03FCAFFE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2973F53D444BDBF7",
+      "title": "{\"translate\":\"jem.atlas.card.wo02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "spawn:blenny_spawn_egg",
+      "x": -12.03,
+      "y": -6.61,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FA329C3B4BFB910",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo02.condition\"}",
+          "icon": "spawn:blenny_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "226F914419D6155D",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reefstone",
+          "count": 64,
+          "claim_key": "wo02/item/0",
+          "claim_reward_id": "226F914419D6155D",
+          "team_reward": false
+        },
+        {
+          "id": "273F52CBA99327FF",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:heart_coral_block",
+          "count": 24,
+          "claim_key": "wo02/item/1",
+          "claim_reward_id": "273F52CBA99327FF",
+          "team_reward": false
+        },
+        {
+          "id": "2CBA6EC8375A4114",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reed_coral_block",
+          "count": 24,
+          "claim_key": "wo02/item/2",
+          "claim_reward_id": "2CBA6EC8375A4114",
+          "team_reward": false
+        },
+        {
+          "id": "261F99B7E9C6CC44",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A66DE9E625EF488",
+      "title": "{\"translate\":\"jem.atlas.card.wo03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo03.reward\"}"
+      ],
+      "icon": "spawn:tuna_egg_bucket",
+      "x": -6.35,
+      "y": -6.51,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D3C39C0E01ADA9F",
+          "type": "item",
+          "item": "spawn:tuna_egg_bucket",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23869BCDCD988636",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:tuna_sandwich",
+          "count": 24,
+          "claim_key": "wo03/item/0",
+          "claim_reward_id": "23869BCDCD988636",
+          "team_reward": false
+        },
+        {
+          "id": "265D48D924934C2A",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:wax_coral_block",
+          "count": 32,
+          "claim_key": "wo03/item/1",
+          "claim_reward_id": "265D48D924934C2A",
+          "team_reward": false
+        },
+        {
+          "id": "2C4355932A4AB4EC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 105,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EF56A044E1DFFF7",
+      "title": "{\"translate\":\"jem.atlas.card.wo04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo04.reward\"}"
+      ],
+      "icon": "spawn:sea_cow_spawn_egg",
+      "x": -1.06,
+      "y": -6.79,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27D5E1B93E4A3363",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo04.condition\"}",
+          "icon": "spawn:sea_cow_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EC28930B7A80A31",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:crab_boil",
+          "count": 16,
+          "claim_key": "wo04/item/0",
+          "claim_reward_id": "2EC28930B7A80A31",
+          "team_reward": false
+        },
+        {
+          "id": "20D460030B30AE8C",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:big_sea_pickle",
+          "count": 16,
+          "claim_key": "wo04/item/1",
+          "claim_reward_id": "20D460030B30AE8C",
+          "team_reward": false
+        },
+        {
+          "id": "2D9DF30B3837BB25",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20B0F39D7E9B5A1D",
+      "title": "{\"translate\":\"jem.atlas.card.wo05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo05.reward\"}"
+      ],
+      "icon": "spawn:angler_fish",
+      "x": 3.96,
+      "y": -7.22,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A28635B9C100B15",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo05.condition\"}",
+          "icon": "spawn:angler_fish",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "292062557D053086",
+          "type": "jem_advancements:quest_item",
+          "item": "aquamirae:luminescent_lamp",
+          "count": 16,
+          "claim_key": "wo05/item/0",
+          "claim_reward_id": "292062557D053086",
+          "team_reward": false
+        },
+        {
+          "id": "25B91F510D769B9A",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reefstone_tiles",
+          "count": 48,
+          "claim_key": "wo05/item/1",
+          "claim_reward_id": "25B91F510D769B9A",
+          "team_reward": false
+        },
+        {
+          "id": "2E96D32B39F73A7D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CC700CFDD9EB7C3",
+      "title": "{\"translate\":\"jem.atlas.card.wo06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo06.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "spawn:clam",
+      "x": 9.01,
+      "y": -7.49,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C7A8AC9AD297AAE",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo06.condition\"}",
+          "icon": "spawn:clam",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20229FC59F1E7C88",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:blue_footed_boots",
+          "count": 1,
+          "claim_key": "wo06/item/0",
+          "claim_reward_id": "20229FC59F1E7C88",
+          "team_reward": false
+        },
+        {
+          "id": "288A7E3F5A7A0D88",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:crab_boil",
+          "count": 24,
+          "claim_key": "wo06/item/1",
+          "claim_reward_id": "288A7E3F5A7A0D88",
+          "team_reward": false
+        },
+        {
+          "id": "204177C57C306370",
+          "type": "jem_advancements:quest_xp",
+          "xp": 135,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "217016662377B51C",
+      "title": "{\"translate\":\"jem.atlas.card.wo07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo07.reward\"}"
+      ],
+      "icon": "spawn:stranded_spawn_egg",
+      "x": -18.0,
+      "y": -10.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2ED757558CB3B768",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo07.condition\"}",
+          "icon": "spawn:stranded_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20D3661175DD9CD7",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:cracked_rotten_planks",
+          "count": 64,
+          "claim_key": "wo07/item/0",
+          "claim_reward_id": "20D3661175DD9CD7",
+          "team_reward": false
+        },
+        {
+          "id": "2EDCCDD4577A6ECE",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:music_disc_rot",
+          "count": 1,
+          "claim_key": "wo07/item/1",
+          "claim_reward_id": "2EDCCDD4577A6ECE",
+          "team_reward": false
+        },
+        {
+          "id": "2AEEE6B7DFE634E9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 70,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D222A1D1E2B5DF1",
+      "title": "{\"translate\":\"jem.atlas.card.wo08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo08.reward\"}"
+      ],
+      "icon": "spawn:barbed_spawn_egg",
+      "x": -12.03,
+      "y": -10.41,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2994EAACB26C9891",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo08.condition\"}",
+          "icon": "spawn:barbed_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "25AFBD4B66FABAE9",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:heliostone",
+          "count": 32,
+          "claim_key": "wo08/item/0",
+          "claim_reward_id": "25AFBD4B66FABAE9",
+          "team_reward": false
+        },
+        {
+          "id": "2E9F753E47CB678C",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:clam_chowder",
+          "count": 16,
+          "claim_key": "wo08/item/1",
+          "claim_reward_id": "2E9F753E47CB678C",
+          "team_reward": false
+        },
+        {
+          "id": "273304F8C423D069",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2FFCA576BA673FE2",
+      "title": "{\"translate\":\"jem.atlas.card.wo09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo09.reward\"}"
+      ],
+      "icon": "alexsmobs:fish_oil",
+      "x": -17.53,
+      "y": 7.42,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EE0A336D4AD5A5A",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo09.condition\"}",
+          "icon": "alexsmobs:fish_oil",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2556F88B29DAAFB0",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:fish_oil",
+          "count": 16,
+          "claim_key": "wo09/item/0",
+          "claim_reward_id": "2556F88B29DAAFB0",
+          "team_reward": false
+        },
+        {
+          "id": "204A2BCD0F3E68F1",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shrimp_fried_rice",
+          "count": 16,
+          "claim_key": "wo09/item/1",
+          "claim_reward_id": "204A2BCD0F3E68F1",
+          "team_reward": false
+        },
+        {
+          "id": "211C5B7FB2C7B32D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AF1A1AB4247BDC6",
+      "title": "{\"translate\":\"jem.atlas.card.wo10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo10.reward\"}"
+      ],
+      "icon": "alexsmobs:lobster_tail",
+      "x": -11.85,
+      "y": 7.47,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21D37B5EE452826A",
+          "type": "item",
+          "item": "alexsmobs:lobster_tail",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2A0860457A95CB2D",
+          "type": "item",
+          "item": "minecraft:filled_map",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21EE8F625C82F61B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:cooked_lobster_tail",
+          "count": 24,
+          "claim_key": "wo10/item/0",
+          "claim_reward_id": "21EE8F625C82F61B",
+          "team_reward": false
+        },
+        {
+          "id": "27FB39D702EAE98F",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:magnetic_bait",
+          "count": 32,
+          "claim_key": "wo10/item/1",
+          "claim_reward_id": "27FB39D702EAE98F",
+          "team_reward": false
+        },
+        {
+          "id": "22600D458F0E0FD2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "21212BD70CC2FCC9",
+      "title": "{\"translate\":\"jem.atlas.card.wo11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo11.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo11.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo11.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo11.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo11.reward\"}"
+      ],
+      "icon": "tide:lucky_bait",
+      "x": -6.56,
+      "y": 7.17,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AFB3C1C729D39EC",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo11.condition\"}",
+          "icon": "tide:lucky_bait",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2780AD71AE4375D6",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 16,
+          "claim_key": "wo11/item/0",
+          "claim_reward_id": "2780AD71AE4375D6",
+          "team_reward": false
+        },
+        {
+          "id": "21FB2666C386AD09",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shrimp_fried_rice",
+          "count": 16,
+          "claim_key": "wo11/item/1",
+          "claim_reward_id": "21FB2666C386AD09",
+          "team_reward": false
+        },
+        {
+          "id": "2099159EF0EE28CF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23B091DA2085B464",
+      "title": "{\"translate\":\"jem.atlas.card.wo12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo12.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo12.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo12.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo12.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo12.reward\"}"
+      ],
+      "icon": "alexsmobs:fish_oil",
+      "x": -1.54,
+      "y": 6.74,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DF1340AA6BED4CF",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo12.condition\"}",
+          "icon": "alexsmobs:fish_oil",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B45C0CC80D84ED6",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:fish_oil",
+          "count": 16,
+          "claim_key": "wo12/item/0",
+          "claim_reward_id": "2B45C0CC80D84ED6",
+          "team_reward": false
+        },
+        {
+          "id": "20FC102706FC280C",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reefstone_tiles",
+          "count": 64,
+          "claim_key": "wo12/item/1",
+          "claim_reward_id": "20FC102706FC280C",
+          "team_reward": false
+        },
+        {
+          "id": "247F39AF3DF5EA85",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B9607EC62DC1E48",
+      "title": "{\"translate\":\"jem.atlas.card.wo13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo13.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo13.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo13.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo13.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo13.reward\"}"
+      ],
+      "icon": "alexsmobs:rainbow_jelly",
+      "x": 3.51,
+      "y": 6.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27CC3EFEF3B17BDF",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo13.condition\"}",
+          "icon": "alexsmobs:rainbow_jelly",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "263DBF28D3D858E7",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:rainbow_jelly",
+          "count": 16,
+          "claim_key": "wo13/item/0",
+          "claim_reward_id": "263DBF28D3D858E7",
+          "team_reward": false
+        },
+        {
+          "id": "2CD23A0088B67E37",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:snail_shell_tiles",
+          "count": 64,
+          "claim_key": "wo13/item/1",
+          "claim_reward_id": "2CD23A0088B67E37",
+          "team_reward": false
+        },
+        {
+          "id": "2AE6D62B89B8AE5A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "299D8E1E597138F0",
+      "title": "{\"translate\":\"jem.atlas.card.wo14.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo14.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo14.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo14.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo14.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo14.reward\"}"
+      ],
+      "icon": "alexsmobs:cooked_catfish",
+      "x": 8.85,
+      "y": 6.65,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F21E95A407D7B55",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo14.condition\"}",
+          "icon": "alexsmobs:cooked_catfish",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EF6BA0812F6C9D9",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:cooked_catfish",
+          "count": 24,
+          "claim_key": "wo14/item/0",
+          "claim_reward_id": "2EF6BA0812F6C9D9",
+          "team_reward": false
+        },
+        {
+          "id": "27D1164151BD2E9B",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:algal_reefstone",
+          "count": 64,
+          "claim_key": "wo14/item/1",
+          "claim_reward_id": "27D1164151BD2E9B",
+          "team_reward": false
+        },
+        {
+          "id": "2C17A7415C115E7E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo14",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2993B6C0761875D0",
+      "title": "{\"translate\":\"jem.atlas.card.wo15.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo15.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo15.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo15.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo15.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo15.reward\"}"
+      ],
+      "icon": "alexsmobs:fish_oil",
+      "x": -17.53,
+      "y": 11.22,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EEF27F1DF54A1A4",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo15.condition\"}",
+          "icon": "alexsmobs:fish_oil",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2178C1303DA18E8E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:fish_oil",
+          "count": 16,
+          "claim_key": "wo15/item/0",
+          "claim_reward_id": "2178C1303DA18E8E",
+          "team_reward": false
+        },
+        {
+          "id": "2B786848857FDB7E",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:cooked_catfish",
+          "count": 24,
+          "claim_key": "wo15/item/1",
+          "claim_reward_id": "2B786848857FDB7E",
+          "team_reward": false
+        },
+        {
+          "id": "2D8B2CAD15812ADA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 75,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo15",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29B4DCCABA9011F2",
+      "title": "{\"translate\":\"jem.atlas.card.wo16.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo16.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo16.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo16.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo16.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo16.reward\"}"
+      ],
+      "icon": "alexsmobs:triops_eggs",
+      "x": -11.85,
+      "y": 11.27,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2440A9A6F62BE217",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo16.condition\"}",
+          "icon": "alexsmobs:triops_eggs",
+          "count": 1
+        },
+        {
+          "id": "2297AAC87FBA838A",
+          "type": "item",
+          "item": "alexsmobs:triops_eggs",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "213821AF4311BAE5",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:spiked_turtle_shell",
+          "count": 1,
+          "claim_key": "wo16/item/0",
+          "claim_reward_id": "213821AF4311BAE5",
+          "team_reward": false
+        },
+        {
+          "id": "2EE616230BC4AFC1",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shrimp_fried_rice",
+          "count": 24,
+          "claim_key": "wo16/item/1",
+          "claim_reward_id": "2EE616230BC4AFC1",
+          "team_reward": false
+        },
+        {
+          "id": "2B0D3FAE318391DC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo16",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28F351D2E6D4AED0",
+      "title": "{\"translate\":\"jem.atlas.card.wo17.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo17.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo17.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo17.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo17.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo17.reward\"}"
+      ],
+      "icon": "alexsmobs:rainbow_jelly",
+      "x": -6.56,
+      "y": 10.97,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24FFE99728212B75",
+          "type": "item",
+          "item": "alexsmobs:rainbow_jelly",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "28AFA7E3804F707F",
+          "type": "item",
+          "item": "alexsmobs:flying_fish_boots",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24E04EC8026A46E2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:squid_grapple",
+          "count": 1,
+          "claim_key": "wo17/item/0",
+          "claim_reward_id": "24E04EC8026A46E2",
+          "team_reward": false
+        },
+        {
+          "id": "21063E912EE80AE3",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:rainbow_jelly",
+          "count": 24,
+          "claim_key": "wo17/item/1",
+          "claim_reward_id": "21063E912EE80AE3",
+          "team_reward": false
+        },
+        {
+          "id": "2202843780A07303",
+          "type": "jem_advancements:quest_xp",
+          "xp": 180,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo17",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "209F79B2B71E9F03",
+      "title": "{\"translate\":\"jem.atlas.card.wo18.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo18.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo18.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo18.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo18.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo18.reward\"}"
+      ],
+      "icon": "alexsmobs:ambergris",
+      "x": -1.54,
+      "y": 10.54,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20D219D4E7E5D839",
+          "type": "item",
+          "item": "alexsmobs:ambergris",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2A119A0EA054D412",
+          "type": "item",
+          "item": "alexsmobs:echolocator",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C11B36ACC90F80E",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:diamond_line",
+          "count": 1,
+          "claim_key": "wo18/item/0",
+          "claim_reward_id": "2C11B36ACC90F80E",
+          "team_reward": false
+        },
+        {
+          "id": "23000C8BB1D03649",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 32,
+          "claim_key": "wo18/item/1",
+          "claim_reward_id": "23000C8BB1D03649",
+          "team_reward": false
+        },
+        {
+          "id": "27289D9416666ACC",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:cooked_lobster_tail",
+          "count": 24,
+          "claim_key": "wo18/item/2",
+          "claim_reward_id": "27289D9416666ACC",
+          "team_reward": false
+        },
+        {
+          "id": "2B6245F9AD3A31F6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo18",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "297CD33255EBD45F",
+      "title": "{\"translate\":\"jem.atlas.card.wo19.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo19.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo19.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo19.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo19.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo19.reward\"}"
+      ],
+      "icon": "alexsmobs:shark_tooth",
+      "x": 3.51,
+      "y": 10.3,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2691879CD5B3E4A7",
+          "type": "item",
+          "item": "alexsmobs:shark_tooth",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "21CA389C853046FC",
+          "type": "item",
+          "item": "alexsmobs:lost_tentacle",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2046BB001B774180",
+          "type": "item",
+          "item": "alexsmobs:shark_tooth_arrow",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D0BC6A4C8434AE2",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shield_of_the_deep",
+          "count": 1,
+          "claim_key": "wo19/item/0",
+          "claim_reward_id": "2D0BC6A4C8434AE2",
+          "team_reward": false
+        },
+        {
+          "id": "259922833116A206",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:shark_tooth_arrow",
+          "count": 64,
+          "claim_key": "wo19/item/1",
+          "claim_reward_id": "259922833116A206",
+          "team_reward": false
+        },
+        {
+          "id": "24017147908D459D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 165,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo19",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A88390135F1A33D",
+      "title": "{\"translate\":\"jem.atlas.card.wo20.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo20.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo20.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo20.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo20.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo20.reward\"}"
+      ],
+      "icon": "alexsmobs:pupfish_locator",
+      "x": 8.85,
+      "y": 10.45,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D9367FC6F4338B1",
+          "type": "item",
+          "item": "alexsmobs:pupfish_locator",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2EA941B5852FD6D0",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo20.condition\"}",
+          "icon": "alexsmobs:pupfish_locator",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20749CF3E6A58411",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:lucky_bait",
+          "count": 32,
+          "claim_key": "wo20/item/0",
+          "claim_reward_id": "20749CF3E6A58411",
+          "team_reward": false
+        },
+        {
+          "id": "28815F8FF089E400",
+          "type": "jem_advancements:quest_xp",
+          "xp": 170,
+          "team_reward": false
+        },
+        {
+          "id": "20CD0FCB3FD5B64F",
+          "type": "choice",
+          "table_id": 2408685441199960966L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo20",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26E81A9282555CD1",
+      "title": "{\"translate\":\"jem.atlas.card.wo21.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo21.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo21.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo21.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo21.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo21.reward\"}"
+      ],
+      "icon": "oceanicrealms:great_white_shark_spawn_egg",
+      "x": -17.35,
+      "y": -14.15,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22CDA990381B882B",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo21.condition\"}",
+          "icon": "oceanicrealms:great_white_shark_spawn_egg",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F6D0ECE7817F959",
+          "type": "jem_advancements:quest_item",
+          "item": "aquamirae:salvager_boots",
+          "count": 1,
+          "claim_key": "wo21/item/0",
+          "claim_reward_id": "2F6D0ECE7817F959",
+          "team_reward": false
+        },
+        {
+          "id": "2A9B19A12103F3E0",
+          "type": "jem_advancements:quest_item",
+          "item": "aquamirae:sea_casserole",
+          "count": 16,
+          "claim_key": "wo21/item/1",
+          "claim_reward_id": "2A9B19A12103F3E0",
+          "team_reward": false
+        },
+        {
+          "id": "2F8DAE38AC9B5459",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo21",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23B106F3D866A611",
+      "title": "{\"translate\":\"jem.atlas.card.wo22.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo22.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo22.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo22.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo22.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo22.reward\"}"
+      ],
+      "icon": "primal:walrus_spawn_egg",
+      "x": -6.35,
+      "y": -10.31,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2029A7ADBE94F0C1",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo22.condition\"}",
+          "icon": "primal:walrus_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "250A77BC216F1358",
+          "type": "jem_advancements:quest_item",
+          "item": "blastfromthepast:glazed_beast_chops",
+          "count": 16,
+          "claim_key": "wo22/item/0",
+          "claim_reward_id": "250A77BC216F1358",
+          "team_reward": false
+        },
+        {
+          "id": "230FBDB0F99276CB",
+          "type": "jem_advancements:quest_item",
+          "item": "primal:cold_seashells",
+          "count": 48,
+          "claim_key": "wo22/item/1",
+          "claim_reward_id": "230FBDB0F99276CB",
+          "team_reward": false
+        },
+        {
+          "id": "251AFB54E7235236",
+          "type": "jem_advancements:quest_xp",
+          "xp": 90,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo22",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C1DCC725FB40ED5",
+      "title": "{\"translate\":\"jem.atlas.card.wo23.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo23.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo23.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo23.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo23.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo23.reward\"}"
+      ],
+      "icon": "whaleborne:hullback_spawn_egg",
+      "x": -1.06,
+      "y": -10.59,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C881BF85AD92AC2",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo23.condition\"}",
+          "icon": "whaleborne:hullback_spawn_egg",
+          "count": 1
+        },
+        {
+          "id": "20322036CA1AF958",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo23.condition\"}",
+          "icon": "whaleborne:hullback_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E186B99E2E58EB1",
+          "type": "jem_advancements:quest_item",
+          "item": "whaleborne:barnacle",
+          "count": 32,
+          "claim_key": "wo23/item/0",
+          "claim_reward_id": "2E186B99E2E58EB1",
+          "team_reward": false
+        },
+        {
+          "id": "2EA3B4661DA9FB99",
+          "type": "jem_advancements:quest_item",
+          "item": "whaleborne:rough_barnacle",
+          "count": 32,
+          "claim_key": "wo23/item/1",
+          "claim_reward_id": "2EA3B4661DA9FB99",
+          "team_reward": false
+        },
+        {
+          "id": "2574FB023C6A0579",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:reefstone_tiles",
+          "count": 64,
+          "claim_key": "wo23/item/2",
+          "claim_reward_id": "2574FB023C6A0579",
+          "team_reward": false
+        },
+        {
+          "id": "2E1320821D8371CF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 85,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo23",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "251691726259DEEB",
+      "title": "{\"translate\":\"jem.atlas.card.wo24.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.wo24.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.wo24.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo24.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo24.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.wo24.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "whaleborne:hullback_spawn_egg",
+      "x": 3.96,
+      "y": -11.02,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C3C817F925538F5",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.wo24.condition\"}",
+          "icon": "whaleborne:hullback_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26C881867824A6FA",
+          "type": "jem_advancements:quest_item",
+          "item": "whaleborne:helm",
+          "count": 1,
+          "claim_key": "wo24/item/0",
+          "claim_reward_id": "26C881867824A6FA",
+          "team_reward": false
+        },
+        {
+          "id": "25FD133868D5497E",
+          "type": "jem_advancements:quest_item",
+          "item": "spawn:tuna_sandwich",
+          "count": 24,
+          "claim_key": "wo24/item/1",
+          "claim_reward_id": "25FD133868D5497E",
+          "team_reward": false
+        },
+        {
+          "id": "29D2D84562E5A69F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "wo24",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.sea-friends\"}",
+      "order": 30
+    },
+    {
+      "x": -20,
+      "y": -18.35,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
+      "hover": [
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
+    },
+    {
+      "x": -20,
+      "y": -16.85,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
+    },
+    {
+      "x": -11.0,
+      "y": -18.35,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/lead.png",
+      "click": "#2C26B9F14FB19A74",
+      "hover": [
+        "jem.atlas.route_hint.tab-17"
+      ],
+      "order": 20
+    },
+    {
+      "x": -11.0,
+      "y": -16.85,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-17\"}",
+      "order": 21
+    },
+    {
+      "x": -4.8,
+      "y": -18.35,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/lead.png",
+      "click": "#20C0F34F330D9588",
+      "hover": [
+        "jem.atlas.route_hint.tab-18"
+      ],
+      "order": 20
+    },
+    {
+      "x": -4.8,
+      "y": -16.85,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-18\"}",
+      "order": 21
+    },
+    {
+      "x": 1.4,
+      "y": -18.35,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/lead.png",
+      "click": "#2B42D36659B244D8",
+      "hover": [
+        "jem.atlas.route_hint.tab-11"
+      ],
+      "order": 20
+    },
+    {
+      "x": 1.4,
+      "y": -16.85,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-11\"}",
+      "order": 21
+    }
+  ],
+  "jem_atlas_hub": false
+}

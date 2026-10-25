@@ -600,6 +600,17 @@ Production JAR builds and pinned Bootstrap patch reproduction were completed on 
 
 # Changelog
 
+## 2026-10-25 - Ordinary-mob ownership repair and Adventure Atlas
+
+- User requested a deep investigation of 119 original-profile identity warnings, correction and migration before the supplied quest redesign, preservation of World Tier and the Paladin support group, and installation only into "test jem"
+- Bug / Both Sided / World Tier enrollment incorrectly allocated exclusive arena claims for profiles with no hosted arena and native revival, so legitimate multi-mob templates competed for one UUID and direct death progression reused that gate / in testing, a shared profile ownership predicate separates per-entity progress and a save-owner migration archives obsolete claims without deleting mobs or resetting defeats
+- Read-only evidence confirmed the same defect in development generation 74. Its saved nonexclusive Frostbitten Golem arena is reconciled by the updated owner on the next world load. The original profile and its world files are unchanged
+- User supplied the redesign brief and six identity images, requested matching surrounding backgrounds and authorized Gemini to finish missing art without questions. Implementation retains original artwork and native FTB progress, tasks, reward claims and genuine prerequisites while reorganizing the central index and thematic chapters
+- User then generated and supplied the final Farm n Food background after identifying sparkle streaks in the draft. The exact supplied PNG is retained and selected for the final artifact, alongside the revised lived-in companion sanctuary
+- Implementation choice: native FTB 2001.4.22 chapter portals and localized components, verified storage item objectives and Nightfall acquisition advancements. Installed Nightfall 3.4.1 supplies temporary player summons and weapon advancements, with no verified boss encounters to quest
+- Production jar/reobfuscation builds passed. Local Server and ManagedPack are synchronized, native generation 77 is published with matching manifest hashes and fully installed into the stopped "test jem" profile with exact JAR hashes, the supplied food PNG and no pending transaction. The local server is stopped after world saving. Delivery evidence: Docs/quests/delivery-20261025.json
+- Gameplay migration, GUI clicks and visual player acceptance remain unrun. No automated tests, gameplay client launch, stable-profile update, MineRENT deployment or release-baseline promotion is claimed
+
 ## 2026-10-19 — Restructure Settlements around the selected Minecraft dashboard references
 
 - User selects three town/residents/happiness references and requests frontend taste for information design followed by the chosen Minecraft GUI style. Extracted a consistent stone sidebar, blue selection, wood/cloth/lantern header, parchment content, meaningful dark inserts, summary cards and persistent roster/detail hierarchy. Reference values and assignment buttons are visual examples, not requests for new mechanics.

@@ -52,11 +52,98 @@ public final class WorldTierData extends SavedData {
     private final Set<ResourceLocation> progressionRoster = new LinkedHashSet<>();
     private List<Integer> progressionThresholds = List.of();
     private boolean legacyProfile;
+    private long ownershipRevision;
+    private CompoundTag nonExclusiveArenaHistory = new CompoundTag();
 
     public static WorldTierData get(MinecraftServer server) {
         WorldTierData data = server.overworld().getDataStorage().computeIfAbsent(WorldTierData::load, WorldTierData::new, FILE_ID);
         data.initializeProgressionProfile();
+        data.migrateNonExclusiveArenaIdentities(server);
         return data;
+    }
+
+    /** Reconcile after profiles load or reload, never from an incomplete registry. */
+    private void migrateNonExclusiveArenaIdentities(MinecraftServer server) {
+        long revision = BalanceRegistry.bossRevision();
+        if (revision == 0 || revision == ownershipRevision) return;
+        ownershipRevision = revision;
+        for (ArenaRecord arena : List.copyOf(arenas.values())) {
+            var profile = BalanceRegistry.bossByKey(arena.profileKey()).orElse(null);
+            if (profile == null || profile.ownsExclusiveArena()) continue;
+            String id = arena.id();
+            Set<java.util.UUID> loadedIdentities = new LinkedHashSet<>();
+            CompoundTag archived = nonExclusiveArenaHistory.getCompound(id);
+            boolean changed = false;
+            if (arena.activeEncounterId() != null) {
+                loadedIdentities.add(arena.activeEncounterId());
+                archived.put("Arena", arena.save());
+                arenas.put(id, arena.release(arena.activeEncounterId()));
+                changed = true;
+            }
+            java.util.UUID keeper = liveBosses.remove(id);
+            if (keeper != null) { loadedIdentities.add(keeper); archived.putUUID("LiveBoss", keeper); changed = true; }
+            var conflicts = conflictingBosses.remove(id);
+            if (conflicts != null && !conflicts.isEmpty()) {
+                loadedIdentities.addAll(conflicts);
+                ListTag previous = archived.getList("ConflictingBosses", Tag.TAG_COMPOUND);
+                for (var uuid : conflicts) {
+                    CompoundTag row = new CompoundTag(); row.putUUID("Boss", uuid); previous.add(row);
+                }
+                archived.put("ConflictingBosses", previous);
+                changed = true;
+            }
+            RespawnState respawn = respawns.remove(id);
+            if (respawn != null) {
+                CompoundTag row = new CompoundTag(); row.putString("Entity", respawn.entityType().toString());
+                row.putLong("Due", respawn.dueTime());
+                if (respawn.deathId() != null) row.putUUID("DeathId", respawn.deathId());
+                archived.put("ScheduledRespawn", row); changed = true;
+            }
+            CompoundTag creation = pendingBossCreations.remove(id), retirement = raidRetirements.remove(id);
+            if (creation != null) {
+                archived.put("PendingCreation", creation); changed = true;
+                if (creation.hasUUID("UUID")) loadedIdentities.add(creation.getUUID("UUID"));
+            }
+            if (retirement != null) { archived.put("RaidRetirement", retirement); changed = true; }
+            if (pendingRaidReplacements.remove(id)) { archived.putBoolean("RaidReplacement", true); changed = true; }
+            if (verifiedAnchors.remove(id)) { archived.putBoolean("VerifiedAnchor", true); changed = true; }
+            for (var uuid : loadedIdentities) releaseNonExclusiveEntity(server, arena, uuid);
+            if (changed) {
+                if (!archived.contains("Arena")) archived.put("Arena", arena.save());
+                nonExclusiveArenaHistory.put(id, archived);
+                setDirty();
+            }
+        }
+        // One pass over tombstones, rather than a full scan for every saved arena.
+        var retiredEntries = retiredBossIdentities.entrySet().iterator();
+        while (retiredEntries.hasNext()) {
+            var entry = retiredEntries.next();
+            ArenaRecord arena = arenas.get(canonicalArenaId(entry.getValue()));
+            var profile = arena == null ? null : BalanceRegistry.bossByKey(arena.profileKey()).orElse(null);
+            if (profile == null || profile.ownsExclusiveArena()) continue;
+            CompoundTag archived = nonExclusiveArenaHistory.getCompound(arena.id());
+            if (!archived.contains("Arena")) archived.put("Arena", arena.save());
+            ListTag retired = archived.getList("RetiredBosses", Tag.TAG_COMPOUND);
+            CompoundTag row = new CompoundTag(); row.putUUID("Boss", entry.getKey()); retired.add(row);
+            archived.put("RetiredBosses", retired);
+            nonExclusiveArenaHistory.put(arena.id(), archived);
+            releaseNonExclusiveEntity(server, arena, entry.getKey());
+            retiredEntries.remove(); setDirty();
+        }
+    }
+
+    private static void releaseNonExclusiveEntity(MinecraftServer server, ArenaRecord arena, java.util.UUID uuid) {
+        var dimension = ResourceLocation.tryParse(arena.dimension());
+        var level = dimension == null ? null : server.getLevel(net.minecraft.resources.ResourceKey.create(
+                net.minecraft.core.registries.Registries.DIMENSION, dimension));
+        if (level == null || !(level.getEntity(uuid) instanceof net.minecraft.world.entity.LivingEntity living)
+                || com.siirio.jemworldbosstiers.api.WorldTierApi.profile(living)
+                .filter(profile -> !profile.ownsExclusiveArena()).isEmpty()) return;
+        com.siirio.jemworldbosstiers.encounter.EncounterData.detachArena(living.getPersistentData());
+        com.siirio.jemworldbosstiers.revival.NativeBossStorage.releaseNonExclusiveCreation(living);
+        if (!com.siirio.jemworldbosstiers.encounter.HostedGroup.member(living)
+                && !com.siirio.jemworldbosstiers.encounter.HostedEncounters.isHosted(living))
+            com.siirio.jemworldbosstiers.encounter.HostedLobby.release(living);
     }
 
     public int tier() {
@@ -129,11 +216,15 @@ public final class WorldTierData extends SavedData {
     }
 
     public Optional<ArenaRecord> arena(String id) {
-        return Optional.ofNullable(arenas.get(canonicalArenaId(id)));
+        return Optional.ofNullable(arenas.get(canonicalArenaId(id)))
+                .filter(arena -> BalanceRegistry.bossByKey(arena.profileKey())
+                        .map(com.siirio.jemworldbosstiers.balance.BossProfile::ownsExclusiveArena).orElse(true));
     }
 
     public Collection<ArenaRecord> arenas() {
-        return arenas.values().stream().filter(arena -> !arenaAliases.containsKey(arena.id())).toList();
+        return arenas.values().stream().filter(arena -> !arenaAliases.containsKey(arena.id()))
+                .filter(arena -> BalanceRegistry.bossByKey(arena.profileKey())
+                        .map(com.siirio.jemworldbosstiers.balance.BossProfile::ownsExclusiveArena).orElse(true)).toList();
     }
 
     public String canonicalArenaId(String id) {
@@ -149,6 +240,8 @@ public final class WorldTierData extends SavedData {
     }
 
     public boolean recordLiveBoss(String arenaId, java.util.UUID bossId) {
+        if (arena(arenaId).flatMap(arena -> BalanceRegistry.bossByKey(arena.profileKey()))
+                .filter(com.siirio.jemworldbosstiers.balance.BossProfile::ownsExclusiveArena).isEmpty()) return false;
         if (bossIdentityRetired(bossId)) return false;
         String id = canonicalArenaId(arenaId);
         java.util.UUID current = liveBoss(id).orElse(null);
@@ -186,7 +279,7 @@ public final class WorldTierData extends SavedData {
         var owner = arena(arenaId).orElse(null);
         var profile = com.siirio.jemworldbosstiers.api.WorldTierApi.profile(boss).orElse(null);
         var encounter = com.siirio.jemworldbosstiers.api.WorldTierApi.encounter(boss).orElse(null);
-        if (owner == null || profile == null || encounter == null || encounter.arenaId() == null
+        if (owner == null || profile == null || !profile.ownsExclusiveArena() || encounter == null || encounter.arenaId() == null
                 || !owner.profileKey().equals(profile.key()) || !owner.dimension().equals(boss.level().dimension().location().toString())
                 || !canonicalArenaId(arenaId).equals(canonicalArenaId(encounter.arenaId()))) return false;
         if (recordLiveBoss(arenaId, boss)) return true;
@@ -483,6 +576,7 @@ public final class WorldTierData extends SavedData {
 
     @Override
     public CompoundTag save(CompoundTag tag) {
+        tag.put("NonExclusiveArenaHistory", nonExclusiveArenaHistory.copy());
         tag.putInt(SCHEMA_VERSION, CURRENT_SCHEMA_VERSION);
         if (!progressionThresholds.isEmpty()) {
             ListTag roster = new ListTag();
@@ -581,6 +675,7 @@ public final class WorldTierData extends SavedData {
         if (tag.getInt(SCHEMA_VERSION) != CURRENT_SCHEMA_VERSION) {
             return data;
         }
+        data.nonExclusiveArenaHistory = tag.getCompound("NonExclusiveArenaHistory").copy();
         data.legacyProfile = !tag.contains("ProgressionThresholds", Tag.TAG_INT_ARRAY);
         if (!data.legacyProfile) {
             data.progressionThresholds = java.util.Arrays.stream(tag.getIntArray("ProgressionThresholds")).boxed().toList();

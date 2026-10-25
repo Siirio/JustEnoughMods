@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.0",
+  "project": "JustEnoughMods",
+  "task": "Quest Atlas background extension production (art-20261025)",
+  "generated_at": "2026-10-25T11:58:00+05:00",
+  "review_status": "AGENT_PASS",
+  "approval_note": "All six 3072x2048 extension PNGs passed visual-auditor agent inspection (AGENT_PASS). Final visual approval belongs exclusively to the user (never claimed as USER_APPROVED).",
+  "integration_architecture": {
+    "target_consumer": "FTB Quests 2001.4.22 chapter images",
+    "unit_scale_default_zoom_gui_px": 24,
+    "pan_zoom_constraint": "FTB Quests native pan/zoom intentionally extends past chapter content bounds; these finite 3072x2048 PNGs cover the active chapter canvas (~36x24 to 48x32 quest units) and must not be described as infinite pan coverage.",
+    "layering_model": {
+      "background_extension_layer": {
+        "dimensions_px": [3072, 2048],
+        "aspect_ratio": "3:2",
+        "x": 0.0,
+        "y": 0.0,
+        "rotation": 0.0,
+        "recommended_width_quest_units": 42.0,
+        "recommended_height_quest_units": 28.0,
+        "order": -2,
+        "notes": "Quiet full-page pixel-art extension with zero duplicated title emblem. The central >85% field is locked to the exact outer border RGB of the corresponding original JPG."
+      },
+      "original_identity_panel_layer": {
+        "source_preservation": "Retained byte-for-byte from supplied original JPG as a separate compact chapter image layer above the background extension.",
+        "recommended_width_quest_units": 12.0,
+        "recommended_height_quest_units": 6.7,
+        "companions_recommended_size_quest_units": [12.0, 9.0],
+        "x": 0.0,
+        "y": -7.5,
+        "rotation": 0.0,
+        "order": -1,
+        "blend_method": "Exact outer-border RGB match between the original JPG rectangle and the extension PNG quiet central field; no cutout, blur, fake pixelation, or black rectangle."
+      }
+    }
+  },
+  "taste_engine_references": {
+    "pairs_consulted": [
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/ART_DIRECTION.md",
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Background Images/gemini-pixel-environment-backgrounds/TASTE.md",
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Background Images/gemini-pixel-environment-backgrounds/TECHNICAL.md",
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Background Images/gemini-pixel-environment-backgrounds/PROMPT_TEMPLATE.md",
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Logos/gemini-minecraft-pixel-title-emblems/TASTE.md",
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Logos/gemini-minecraft-pixel-title-emblems/TECHNICAL.md",
+      "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/Logos/gemini-minecraft-pixel-title-emblems/PROMPT_TEMPLATE.md"
+    ],
+    "positive_exemplars_inspected": [
+      "C:/Users/user/Desktop/I_like/Background Images/pixel-cottagecore-reading-nook-rainy-window.jpg",
+      "C:/Users/user/Desktop/I_like/Background Images/pixel-lush-cave-amethyst-waterfall-sanctuary.jpg",
+      "C:/Users/user/Desktop/I_like/Background Images/pixel-autumn-forest-stream-stepping-stones.jpg",
+      "C:/Users/user/Desktop/I_like/Background Images/pixel-sunlit-library-study-nook-floating-dust.jpg",
+      "C:/Users/user/Desktop/I_like/Logos/very-many-biomes-stacked-biome-title.jpg",
+      "C:/Users/user/Desktop/I_like/Logos/acompany-pixel-companion-creatures-title.jpg",
+      "C:/Users/user/Desktop/I_like/Logos/home-sweet-home-cozy-lantern-title.jpg",
+      "C:/Users/user/Desktop/I_like/Logos/farm-n-food-pancake-barn-title.jpg",
+      "C:/Users/user/Desktop/I_like/Logos/cogs-and-trains-steampunk-locomotive-title.jpg",
+      "C:/Users/user/Desktop/I_like/Logos/secrets-of-magic-black-hole-script-title.jpg"
+    ]
+  },
+  "deliverables": {
+    "home": {
+      "final_png": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/home.png",
+      "dimensions": [3072, 2048],
+      "color_mode": "RGB",
+      "original_source_jpg": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/originals/home.jpg",
+      "original_dimensions": [2752, 1536],
+      "matched_outer_border_rgb": [29, 31, 43],
+      "matched_outer_border_hex": "#1d1f2b",
+      "exact_background_field_fraction": 0.8914,
+      "selected_candidate": "C2",
+      "candidates": [
+        {
+          "round": "C0",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/home-extension-c0.png",
+          "combined_review_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/home-combined-c0.png",
+          "status": "REJECTED",
+          "defects_fixed": "Removed wooden ceiling rafter border, bottom corner L-brackets, central warm brown radial gradient, and redrawn combined title."
+        },
+        {
+          "round": "C1",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/home-extension-c1.png",
+          "status": "REJECTED",
+          "defects_fixed": "Removed ungrounded mid-air wooden shelves/benches and cold dungeon stone corner arches."
+        },
+        {
+          "round": "C2",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/home-extension-c2.png",
+          "status": "SELECTED_AND_CALIBRATED",
+          "notes": "Open unframed #1d1f2b field (89.1% exact RGB match) with grounded lower-wall dark slate courses, bottom-rooted creeping ivy with tiny warm blossoms, and sparse 4-pixel warm gold cross sparkles."
+        }
+      ],
+      "remaining_defects": "None observed at 3072x2048 inspection."
+    },
+    "biomes": {
+      "final_png": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/biomes.png",
+      "dimensions": [3072, 2048],
+      "color_mode": "RGB",
+      "original_source_jpg": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/originals/biomes.jpg",
+      "original_dimensions": [2752, 1536],
+      "matched_outer_border_rgb": [15, 21, 34],
+      "matched_outer_border_hex": "#0f1522",
+      "exact_background_field_fraction": 0.8822,
+      "selected_candidate": "C1",
+      "candidates": [
+        {
+          "round": "C0",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/biomes-extension-c0.png",
+          "status": "ARCHIVED_RAW",
+          "defects_fixed": "Calibrated center/upper field from raw median RGB(13, 21, 34) to exact RGB(15, 21, 34) (#0f1522) and removed subtle JPEG macroblock noise."
+        },
+        {
+          "round": "C1",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/biomes-extension-c1.png",
+          "status": "SELECTED_AND_CALIBRATED",
+          "notes": "Open unframed #0f1522 field (88.2% exact RGB match) with grounded bottom-edge mossy slate stonework, small ferns/vines with tiny pink blossoms, stepped cyan water basin at bottom-right, and small amethyst crystals tucked into lower stone steps."
+        }
+      ],
+      "remaining_defects": "None observed at 3072x2048 inspection."
+    },
+    "companions": {
+      "final_png": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/companions.png",
+      "dimensions": [3072, 2048],
+      "color_mode": "RGB",
+      "original_source_jpg": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/originals/companions.jpg",
+      "original_dimensions": [2398, 1792],
+      "matched_outer_border_rgb": [142, 139, 146],
+      "matched_outer_border_hex": "#8e8b92",
+      "exact_background_field_fraction": 0.7859,
+      "selected_candidate": "C2",
+      "candidates": [
+        {
+          "round": "C0",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/companions-extension-c0.png",
+          "status": "REJECTED",
+          "defects_fixed": "Replaced river pebbles, water ripples, and greenery/vines per user direction to feature companion entities' items and lived-in traces instead of greenery."
+        },
+        {
+          "round": "C1",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/companions-extension-c1.png",
+          "status": "REJECTED",
+          "defects_fixed": "Replaced isolated 2D item row along the bottom with an organic, cozy, lived-in companion sanctuary where every entity rested comfortably and left traces."
+        },
+        {
+          "round": "C2",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/companions-extension-c2.png",
+          "status": "SELECTED_AND_CALIBRATED",
+          "notes": "Preserves exact warm dove-lilac gray #8e8b92 across the open central/upper field with zero greenery, anchored at the lower periphery by an organic lived-in companion habitat: woven blue-and-gold carpet with bolsters/cushions, crate table with spellbook/lantern/leaning green-orb staff, purple wizard hat on cushion, pawprint floor trails with mat and pet bowl, wooden chest with red X-goggles and honey jar, warm straw nest with patchwork quilt and speckled egg, and miniature tea stool with teacup, spectacles, and leaning walking cane."
+        }
+      ],
+      "remaining_defects": "None observed at 3072x2048 inspection."
+    },
+    "food": {
+      "final_png": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/food.png",
+      "dimensions": [3072, 2048],
+      "color_mode": "RGB",
+      "original_source_jpg": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/originals/food.jpg",
+      "original_dimensions": [2752, 1536],
+      "matched_outer_border_rgb": [14, 37, 48],
+      "matched_outer_border_hex": "#0e2530",
+      "exact_background_field_fraction": 0.6244,
+      "selected_candidate": "C2",
+      "candidates": [
+        {
+          "round": "C0",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/food-extension-c0.png",
+          "status": "REJECTED",
+          "defects_fixed": "Replaced dim teal-slate ledges and muted corner sprigs per user direction."
+        },
+        {
+          "round": "C1",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/food-extension-c1.png",
+          "status": "REJECTED",
+          "defects_fixed": "Replaced dark stone planter ledges with a warm, sunlit farmstead where crops grow, animals graze on fresh grass, and dishes are prepared at an outdoor kitchen."
+        },
+        {
+          "round": "C2",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/food-extension-c2.png",
+          "status": "SELECTED_AND_CALIBRATED",
+          "notes": "Preserves exact #0e2530 deep petrol-teal across the open upper/central field (with stars above the left fence removed for a clean fence silhouette and intact right brick chimney), anchored along the bottom periphery by a sunlit farmstead: wooden-fenced wheat/carrot/cabbage/tomato crop rows, golden haystack, lush green grazing pasture with grass-filled feeding trough and wildflowers, sunny dirt path, glowing brick hearth oven with simmering copper pot, and wooden dish-prep table with chopped vegetables, mixing bowl with whisk, stacked golden butter-and-syrup pancakes, berry bowls, and citrus pitcher."
+        }
+      ],
+      "remaining_defects": "None observed at 3072x2048 inspection."
+    },
+    "engineering": {
+      "final_png": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/engineering.png",
+      "dimensions": [3072, 2048],
+      "color_mode": "RGB",
+      "original_source_jpg": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/originals/engineering.jpg",
+      "original_dimensions": [2752, 1536],
+      "matched_outer_border_rgb": [30, 30, 40],
+      "matched_outer_border_hex": "#1e1e28",
+      "exact_background_field_fraction": 0.8596,
+      "selected_candidate": "C1",
+      "candidates": [
+        {
+          "round": "C0",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/engineering-extension-c0.png",
+          "status": "ARCHIVED_RAW",
+          "defects_fixed": "Calibrated quiet field from raw median RGB(28, 30, 42) to exact RGB(30, 30, 40) (#1e1e28) and eliminated JPEG noise."
+        },
+        {
+          "round": "C1",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/engineering-extension-c1.png",
+          "status": "SELECTED_AND_CALIBRATED",
+          "notes": "Open unframed #1e1e28 industrial iron-charcoal field (86.0% exact RGB match) with grounded weathered brown-slate cobble stonework along the bottom edge, low brick courses, iron track segments, riveted corner plate, and small pixel steam puffs."
+        }
+      ],
+      "remaining_defects": "None observed at 3072x2048 inspection."
+    },
+    "magic": {
+      "final_png": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/magic.png",
+      "dimensions": [3072, 2048],
+      "color_mode": "RGB",
+      "original_source_jpg": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/originals/magic.jpg",
+      "original_dimensions": [2752, 1536],
+      "matched_outer_border_rgb": [10, 9, 15],
+      "matched_outer_border_hex": "#0a090f",
+      "exact_background_field_fraction": 0.9851,
+      "selected_candidate": "C1",
+      "candidates": [
+        {
+          "round": "C0",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/magic-extension-c0.png",
+          "status": "ARCHIVED_RAW",
+          "defects_fixed": "Locked background field and central title zone to exact RGB(10, 9, 15) (#0a090f) and snapped peripheral star clusters to crisp solid rectangular pixel blocks free of JPEG halos."
+        },
+        {
+          "round": "C1",
+          "extension_path": "C:/MyProjects/Minecraft/JustEnoughMods/Docs/quests/art-20261025/generated/candidates/magic-extension-c1.png",
+          "status": "SELECTED_AND_CALIBRATED",
+          "notes": "Open unframed #0a090f deep cosmic indigo field (98.5% exact RGB match) with sparse low-contrast indigo/violet rectangular pixel stars (#141224 to #251f42) around the outer periphery and a completely clear central zone for magic.jpg."
+        }
+      ],
+      "remaining_defects": "None observed at 3072x2048 inspection."
+    }
+  },
+  "native_layout_art_direction": {
+    "hard_rule": "Never invent gameplay dependency edges; all layouts below position existing quest nodes spatially without adding synthetic prerequisite lines.",
+    "illustrated_chapters": {
+      "biomes": {
+        "pattern": "Raw Biome Constellation",
+        "title_placement": "Compact original biomes.jpg centered at (x: 0.0, y: -7.5), ~12.0x6.7 quest units.",
+        "node_layout": "Arrange independent biome discovery nodes in an organic multi-lobe constellation arc across y: -2.0 to +8.5, x: -15.0 to +15.0 over the quiet #0f1522 field, grouped by temperature/elevation (icy/alpine left, temperate/lush center-left, arid/mesa center-right, aquatic/deep-cave right above the cyan basin)."
+      },
+      "companions": {
+        "pattern": "Companions River Delta",
+        "title_placement": "Compact original companions.jpg centered at (x: 0.0, y: -6.5), ~12.0x9.0 quest units on the #8e8b92 field.",
+        "node_layout": "Arrange tameable/companion creature nodes along three gentle diverging delta channels flowing downward and outward from y: -1.0 to +8.0 toward the bottom-left and bottom-right pebble/ripple corners, keeping >=2.0 quest units between channels."
+      },
+      "home": {
+        "pattern": "1-3-Node Home Gallery Islands",
+        "title_placement": "Compact original home.jpg centered at (x: 0.0, y: -7.5), ~12.0x6.7 quest units on the #1d1f2b field.",
+        "node_layout": "Group furniture, lighting, storage, and decorative block quests into compact 1-to-3-node gallery islands spaced on a calm staggered grid (x: -14.0 to +14.0, y: -2.0 to +7.5) with generous 2.5-to-3.5-unit breathing room between islands above the bottom brick/ivy wainscot."
+      },
+      "food": {
+        "pattern": "Four-Plot Culinary Terrace Clusters",
+        "title_placement": "Compact original food.jpg centered at (x: 0.0, y: -7.5), ~12.0x6.7 quest units on the #0e2530 field.",
+        "node_layout": "Organize crop, livestock, cooking, and beverage/feast quests into four balanced orchard/kitchen plots across the quiet #0e2530 mid-field (x: -14.0 to +14.0, y: -2.0 to +7.0) above the bottom planter ledges."
+      },
+      "engineering": {
+        "pattern": "Kinetic Rail Spine",
+        "title_placement": "Compact original engineering.jpg centered at (x: 0.0, y: -7.0), ~12.0x6.7 quest units on the #1e1e28 field.",
+        "node_layout": "Align primary Create/kinetic progression along a horizontal rail spine across y: +1.0 to +3.5 (x: -16.0 to +16.0), with short perpendicular sidings/spurs (y: -2.0 and y: +6.0) for contraptions, logistics, and steam/train upgrades above the bottom cobble/track bed."
+      },
+      "magic": {
+        "pattern": "Arcane Astral Ring & Constellation Spurs",
+        "title_placement": "Compact original magic.jpg centered at (x: 0.0, y: 0.0 or y: -6.5), ~12.0x6.7 quest units on the #0a090f field.",
+        "node_layout": "Place schools/traditions of magic in radial constellation lobes across the #0a090f central void so quest icons read like bright stars against the muted peripheral #141224-#251f42 pixel starfield."
+      }
+    },
+    "native_icon_localized_title_chapters": {
+      "route_policy": "Use existing in-game item/effect icons and native localized FTB Quests chapter titles/subtitles. Do not generate substitute item icons or fake boss portraits.",
+      "Boss Busters": {
+        "palette_guidance": {
+          "canvas_tint_hex": "#181218",
+          "accent_frame_hex": "#b84a39",
+          "secondary_accent_hex": "#d99b43"
+        },
+        "layout_direction": "Bilateral trophy-hall gauntlet columns or tiered arena rings using each boss's authentic in-game spawn item, trophy, or drop icon and native localized title. Maintain >=2.5 quest units between boss encounters with zero invented dependency lines."
+      },
+      "Power System": {
+        "palette_guidance": {
+          "canvas_tint_hex": "#141c24",
+          "accent_frame_hex": "#3ea8b5",
+          "secondary_accent_hex": "#e08a3c"
+        },
+        "layout_direction": "Clean bus-bar grid: generation sources on the left column, storage/transfer capacitors along a central horizontal bus, and machine consumers on the right column, using native block/item icons and localized headers."
+      },
+      "Nightfall": {
+        "palette_guidance": {
+          "canvas_tint_hex": "#0d101c",
+          "accent_frame_hex": "#5a4fcf",
+          "secondary_accent_hex": "#7088b8"
+        },
+        "layout_direction": "Crescent dusk-to-midnight arc across the canvas using authentic nocturnal mob/event/equipment game icons and localized titles, spaced as independent night-watch stations."
+      },
+      "Twelve Eyes": {
+        "pattern": "Twelve-Leaf Tournament Bracket / End Portal Convergence",
+        "palette_guidance": {
+          "canvas_tint_hex": "#0e191a",
+          "accent_frame_hex": "#45b59b",
+          "secondary_accent_hex": "#c7a94b"
+        },
+        "layout_direction": "Symmetrical twelve-leaf tournament bracket (six authentic End Remastered eye icons on the left wing, six on the right wing) converging inward toward the central End Portal frame / Stronghold objective using only genuine in-game eye item icons and localized names without inventing prerequisite edges between independent eyes."
+      }
+    }
+  }
+}

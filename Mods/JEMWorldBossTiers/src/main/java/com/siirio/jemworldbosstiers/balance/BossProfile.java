@@ -35,4 +35,10 @@ public record BossProfile(
         victoryAdvancementIds = List.copyOf(victoryAdvancementIds);
         attributes = Map.copyOf(attributes);
     }
+
+    /** Progression enrollment alone never gives a mob exclusive arena ownership. */
+    public boolean ownsExclusiveArena() {
+        return hostedEncounter || !"none".equals(arenaStrategy)
+                || com.siirio.jemworldbosstiers.revival.RespawnOwnership.usesJemScheduler(revivalStrategy);
+    }
 }

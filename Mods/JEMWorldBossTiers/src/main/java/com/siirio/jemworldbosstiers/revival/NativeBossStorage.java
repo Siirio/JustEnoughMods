@@ -101,6 +101,8 @@ public final class NativeBossStorage {
     }
 
     public static boolean prepareCreation(ServerLevel level, ArenaRecord arena, net.minecraft.world.entity.LivingEntity boss) {
+        if (com.siirio.jemworldbosstiers.api.WorldTierApi.profile(boss)
+                .filter(com.siirio.jemworldbosstiers.balance.BossProfile::ownsExclusiveArena).isEmpty()) return false;
         var data = com.siirio.jemworldbosstiers.progression.WorldTierData.get(level.getServer());
         if (data.liveBoss(arena.id()).filter(id -> !id.equals(boss.getUUID())).isPresent()) return false;
         var flags = boss.getPersistentData();
@@ -134,6 +136,12 @@ public final class NativeBossStorage {
     }
 
     public static boolean pending(Entity entity) { return entity.getPersistentData().getBoolean(CREATION); }
+
+    /** Profile migration releases only the obsolete creation hold, never support membership. */
+    public static void releaseNonExclusiveCreation(net.minecraft.world.entity.LivingEntity boss) {
+        if (com.siirio.jemworldbosstiers.api.WorldTierApi.profile(boss)
+                .filter(profile -> !profile.ownsExclusiveArena()).isPresent()) releaseCreationHold(boss);
+    }
 
     private static void releaseCreationHold(net.minecraft.world.entity.LivingEntity boss) {
         var flags = boss.getPersistentData();

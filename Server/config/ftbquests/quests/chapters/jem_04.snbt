@@ -1,41 +1,41 @@
 {
   "id": "2D4B317AFF92A661",
   "filename": "jem_04",
-  "title": "Кухня и пекарня",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-04\"}",
   "subtitle": [
-    "Когда: С первым урожаем; блюда других измерений доступны после обычного получения их сырья.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-04\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
   "icon": "bakery:croissant",
-  "group": "2EB54FCECCD0C28A",
-  "order_index": 3,
+  "group": "2CEF8EB3CA2D59F8",
+  "order_index": 1,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
       "id": "2DD9DF9DBE41651C",
-      "title": "04.01 · Стол подготовки продуктов",
-      "subtitle": "Поставить Mincer и Crafting Bowl Farm & Charm.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.01.condition\"}",
       "description": [
-        "Что сделать: Поставить Mincer и Crafting Bowl Farm & Charm.",
+        "{\"translate\":\"jem.atlas.card.H02.01.condition\"}",
         "",
-        "Зачем: Мука/нарезка/смешивание; основа выпечки и фермерской кухни.",
+        "{\"translate\":\"jem.atlas.card.H02.01.purpose\"}",
         "",
-        "Совет: Эти подтверждённые станции готовят ингредиенты и смеси. Помол/переработку смотри в текущих рецептах; отдельный непроверенный Grinder не требуется.",
+        "{\"translate\":\"jem.atlas.card.H02.01.tip\"}",
         "",
-        "Награда: Две рабочие станции получают настоящие кухонные инструменты и запас муки."
+        "{\"translate\":\"jem.atlas.card.H02.01.reward\"}"
       ],
       "icon": "farm_and_charm:mincer",
-      "x": -6.22,
-      "y": 1.7,
+      "x": -17.0,
+      "y": -8.0,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "25A400C326F01430",
           "type": "custom",
-          "title": "Поставить Mincer и Crafting Bowl Farm & Charm.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.01.condition\"}",
           "icon": "farm_and_charm:mincer",
           "count": 2
         }
@@ -82,29 +82,29 @@
     },
     {
       "id": "25E0A9326C743193",
-      "title": "04.02 · Горячие станции",
-      "subtitle": "Поставить Cooking Pot и Roaster Farm & Charm.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.02.condition\"}",
       "description": [
-        "Что сделать: Поставить Cooking Pot и Roaster Farm & Charm.",
+        "{\"translate\":\"jem.atlas.card.H02.02.condition\"}",
         "",
-        "Зачем: Жаркое/супы; нагрев и контейнеры.",
+        "{\"translate\":\"jem.atlas.card.H02.02.purpose\"}",
         "",
-        "Совет: Для готовки важны тепло, ингредиенты и тара. Квест проверяет две станции, без определения нагрева и готового процесса.",
+        "{\"translate\":\"jem.atlas.card.H02.02.tip\"}",
         "",
-        "Награда: Горячая кухня даёт полноценный походный паёк и место для инструмента.",
+        "{\"translate\":\"jem.atlas.card.H02.02.reward\"}",
         "",
-        "Рекомендуемый путь: 04.01 · Стол подготовки продуктов. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "farm_and_charm:cooking_pot",
-      "x": -4.38,
-      "y": 1.7,
+      "x": -11.5,
+      "y": -7.55,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2AEBC8C8258F62E2",
           "type": "custom",
-          "title": "Поставить Cooking Pot и Roaster Farm & Charm.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.02.condition\"}",
           "icon": "farm_and_charm:cooking_pot",
           "count": 2
         }
@@ -151,22 +151,22 @@
     },
     {
       "id": "2E3011DCDD9B08F4",
-      "title": "04.03 · Своя булочная",
-      "subtitle": "Получить 4 хлеба Bakery.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.03.condition\"}",
       "description": [
-        "Что сделать: Получить 4 хлеба Bakery.",
+        "{\"translate\":\"jem.atlas.card.H02.03.condition\"}",
         "",
-        "Зачем: Цепочка зерно → переработка → выпечка → подача.",
+        "{\"translate\":\"jem.atlas.card.H02.03.purpose\"}",
         "",
-        "Совет: Зерно проходит через муку и тесто к выпечке. Выставить хлеб на прилавке можно по желанию; происхождение ингредиентов не проверяется.",
+        "{\"translate\":\"jem.atlas.card.H02.03.tip\"}",
         "",
-        "Награда: Первые хлеба открывают оборудованную хлебницу и сытную выпечку на дорогу.",
+        "{\"translate\":\"jem.atlas.card.H02.03.reward\"}",
         "",
-        "Рекомендуемый путь: 04.02 · Горячие станции. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "bakery:bread",
-      "x": 4.38,
-      "y": 1.7,
+      "x": -6.0,
+      "y": -7.31,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -211,29 +211,29 @@
     },
     {
       "id": "2CE78CC9A0D08846",
-      "title": "04.04 · Торт для стола",
-      "subtitle": "Поставить 1 торт или пирог Bakery.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.04.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 торт или пирог Bakery.",
+        "{\"translate\":\"jem.atlas.card.H02.04.condition\"}",
         "",
-        "Зачем: Порционные блюда, витрины и вывески Bakery.",
+        "{\"translate\":\"jem.atlas.card.H02.04.purpose\"}",
         "",
-        "Совет: Порционные изделия можно подавать на стол; рядом пригодятся витрины и вывески. Декор и съеденную порцию квест не оценивает.",
+        "{\"translate\":\"jem.atlas.card.H02.04.tip\"}",
         "",
-        "Награда: Торт получает витрину и сервировку; сладостей хватает угостить группу.",
+        "{\"translate\":\"jem.atlas.card.H02.04.reward\"}",
         "",
-        "Рекомендуемый путь: 04.03 · Своя булочная. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "bakery:apple_pie",
-      "x": 6.22,
-      "y": 1.7,
+      "x": -0.5,
+      "y": -7.4,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "24F8471C00F8CF5D",
           "type": "custom",
-          "title": "Поставить 1 торт или пирог Bakery.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.04.condition\"}",
           "icon": "bakery:apple_pie",
           "count": 1
         }
@@ -280,36 +280,34 @@
     },
     {
       "id": "283093A193FF667F",
-      "title": "04.05 · Первый вок",
-      "subtitle": "Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.05.condition\"}",
       "description": [
-        "Что сделать: Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+        "{\"translate\":\"jem.atlas.card.H02.05.condition\"}",
         "",
-        "Зачем: Ручная готовка Kaleidoscope: тепло, масло, помешивание, подача.",
+        "{\"translate\":\"jem.atlas.card.H02.05.purpose\"}",
         "",
-        "Совет: Для настоящей готовки нужны огонь, масло, ингредиенты, помешивание и подача. Проверяются размещение и нажатие; готовое блюдо не требуется.",
+        "{\"translate\":\"jem.atlas.card.H02.05.tip\"}",
         "",
-        "Награда: Проверенный вок снабжается расходным маслом и готовой партией еды.",
-        "",
-        "Нативная лопатка этой версии Cookery называется Kitchen Shovel."
+        "{\"translate\":\"jem.atlas.card.H02.05.reward\"}"
       ],
       "icon": "kaleidoscope_cookery:pot",
-      "x": -8.07,
-      "y": 5.4,
+      "x": 5.0,
+      "y": -7.77,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "29D6909B474D4F03",
           "type": "custom",
-          "title": "Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.05.condition\"}",
           "icon": "kaleidoscope_cookery:pot",
           "count": 1
         },
         {
           "id": "2807C8B1B1C82B33",
           "type": "custom",
-          "title": "Поставить Wok Cookery и нажать по нему ПКМ лопаткой Spatula.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.05.condition\"}",
           "icon": "kaleidoscope_cookery:pot",
           "count": 1
         }
@@ -347,22 +345,22 @@
     },
     {
       "id": "2BA2DB804B8A5647",
-      "title": "04.06 · Закрыть крышку",
-      "subtitle": "Получить Stockpot и подходящую крышку Cookery.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.06.condition\"}",
       "description": [
-        "Что сделать: Получить Stockpot и подходящую крышку Cookery.",
+        "{\"translate\":\"jem.atlas.card.H02.06.condition\"}",
         "",
-        "Зачем: Супы и тушение; крышка имеет также защитное применение.",
+        "{\"translate\":\"jem.atlas.card.H02.06.purpose\"}",
         "",
-        "Совет: Супы и тушение используют нагрев, основу, ингредиенты и крышку; у крышки есть и защитное применение. Сборка станции и цикл готовки не отслеживаются.",
+        "{\"translate\":\"jem.atlas.card.H02.06.tip\"}",
         "",
-        "Награда: Кастрюля с крышкой дополняется печью и двумя готовыми блюдами.",
+        "{\"translate\":\"jem.atlas.card.H02.06.reward\"}",
         "",
-        "Рекомендуемый путь: 04.05 · Первый вок. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_cookery:stockpot",
-      "x": -6.22,
-      "y": 5.4,
+      "x": 10.5,
+      "y": -8.25,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
@@ -423,31 +421,29 @@
     },
     {
       "id": "2CD2F3D44643AEED",
-      "title": "04.07 · Рецепт запомнен",
-      "subtitle": "Нажать Recipe Book Cookery правой кнопкой по Wok или Stockpot.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.07.condition\"}",
       "description": [
-        "Что сделать: Нажать Recipe Book Cookery правой кнопкой по Wok или Stockpot.",
+        "{\"translate\":\"jem.atlas.card.H02.07.condition\"}",
         "",
-        "Зачем: Повторение собственных блюд без ручного перекладывания.",
+        "{\"translate\":\"jem.atlas.card.H02.07.purpose\"}",
         "",
-        "Совет: Книга помогает записать сочетание и повторять загрузку станции. Зачёт даётся за ПКМ, без проверки записи или переноса ингредиентов.",
+        "{\"translate\":\"jem.atlas.card.H02.07.tip\"}",
         "",
-        "Награда: Книга рецептов сразу получает материал для следующих кухонных опытов.",
+        "{\"translate\":\"jem.atlas.card.H02.07.reward\"}",
         "",
-        "Используется нативный предмет рецепта установленной Cookery.",
-        "",
-        "Рекомендуемый путь: 04.06 · Закрыть крышку. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_cookery:pot",
-      "x": -4.38,
-      "y": 5.4,
+      "x": 16.0,
+      "y": -8.61,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "200A1ADBCC21CE9F",
           "type": "custom",
-          "title": "Нажать Recipe Book Cookery правой кнопкой по Wok или Stockpot.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.07.condition\"}",
           "icon": "kaleidoscope_cookery:pot",
           "count": 1
         }
@@ -485,29 +481,29 @@
     },
     {
       "id": "2166F25117A3A42F",
-      "title": "04.08 · Паровая кухня",
-      "subtitle": "Поставить 2 секции Steamer.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.08.condition\"}",
       "description": [
-        "Что сделать: Поставить 2 секции Steamer.",
+        "{\"translate\":\"jem.atlas.card.H02.08.condition\"}",
         "",
-        "Зачем: Многоярусная готовка одной печью.",
+        "{\"translate\":\"jem.atlas.card.H02.08.purpose\"}",
         "",
-        "Совет: Пароварку можно собирать ярусами над подходящим нагревом и закрывать сверху. Правильность сборки и продукты в ярусах не проверяются.",
+        "{\"translate\":\"jem.atlas.card.H02.08.tip\"}",
         "",
-        "Награда: Больше секций и большая партия еды делают пароварку полезным производством.",
+        "{\"translate\":\"jem.atlas.card.H02.08.reward\"}",
         "",
-        "Рекомендуемый путь: 04.07 · Рецепт запомнен. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_cookery:steamer",
-      "x": -2.52,
-      "y": 5.4,
+      "x": -17.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2DD8F7399C06BEBD",
           "type": "custom",
-          "title": "Поставить 2 секции Steamer.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.08.condition\"}",
           "icon": "kaleidoscope_cookery:steamer",
           "count": 2
         }
@@ -545,29 +541,29 @@
     },
     {
       "id": "26DE638FEBCE5FA4",
-      "title": "04.09 · Жарка и выключатель",
-      "subtitle": "Поставить Rotisserie и рычаг.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.09.condition\"}",
       "description": [
-        "Что сделать: Поставить Rotisserie и рычаг.",
+        "{\"translate\":\"jem.atlas.card.H02.09.condition\"}",
         "",
-        "Зачем: Готовка по сигналу; мясо не нужно снимать руками при работе.",
+        "{\"translate\":\"jem.atlas.card.H02.09.purpose\"}",
         "",
-        "Совет: Редстоун управляет жаркой. Сначала останови устройство, затем забирай мясо. Квест не оценивает подключение и приготовление.",
+        "{\"translate\":\"jem.atlas.card.H02.09.tip\"}",
         "",
-        "Награда: Гриль награждает готовой едой и узнаваемым кухонно-фермерским нарядом.",
+        "{\"translate\":\"jem.atlas.card.H02.09.reward\"}",
         "",
-        "Рекомендуемый путь: 04.08 · Паровая кухня. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_cookery:shawarma_spit",
-      "x": -6.22,
-      "y": 7.25,
+      "x": -11.5,
+      "y": 7.55,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "282ABE06925C8698",
           "type": "custom",
-          "title": "Поставить Rotisserie и рычаг.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.09.condition\"}",
           "icon": "kaleidoscope_cookery:shawarma_spit",
           "count": 2
         }
@@ -605,22 +601,22 @@
     },
     {
       "id": "22D5AAB9B60DB45F",
-      "title": "04.10 · Масло для кухни",
-      "subtitle": "Получить 1 масло Kaleidoscope Cookery.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.10.condition\"}",
       "description": [
-        "Что сделать: Получить 1 масло Kaleidoscope Cookery.",
+        "{\"translate\":\"jem.atlas.card.H02.10.condition\"}",
         "",
-        "Зачем: Внутренняя переработка Cookery и масло.",
+        "{\"translate\":\"jem.atlas.card.H02.10.purpose\"}",
         "",
-        "Совет: Посмотри в JEI путь нарезки/измельчения и получения масла. Получить ингредиент достаточно; все операции по порядку не отслеживаются.",
+        "{\"translate\":\"jem.atlas.card.H02.10.tip\"}",
         "",
-        "Награда: Освоенное масло выдаётся большим запасом вместе с блюдом для дальнейших вылазок.",
+        "{\"translate\":\"jem.atlas.card.H02.10.reward\"}",
         "",
-        "Рекомендуемый путь: 04.09 · Жарка и выключатель. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_cookery:oil",
-      "x": -4.38,
-      "y": 7.25,
+      "x": -6.0,
+      "y": 7.68,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -665,29 +661,29 @@
     },
     {
       "id": "27079217290C4692",
-      "title": "04.11 · Обед из Незера",
-      "subtitle": "Съесть 1 готовое блюдо Kaleidoscope Nether.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.11.condition\"}",
       "description": [
-        "Что сделать: Съесть 1 готовое блюдо Kaleidoscope Nether.",
+        "{\"translate\":\"jem.atlas.card.H02.11.condition\"}",
         "",
-        "Зачем: Dimension-food Nether: выращивание/добыча местного сырья, новые блюда.",
+        "{\"translate\":\"jem.atlas.card.H02.11.purpose\"}",
         "",
-        "Совет: Особые блюда используют ресурсы Незера. Место добычи и вся цепочка производства не входят в условие.",
+        "{\"translate\":\"jem.atlas.card.H02.11.tip\"}",
         "",
-        "Награда: Знакомство с кухней Незера получает две ощутимые партии уже доступной еды; ингредиенты боссов не выдаются.",
+        "{\"translate\":\"jem.atlas.card.H02.11.reward\"}",
         "",
-        "Рекомендуемый путь: 04.05 · Первый вок. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_nether:black_apple_salad",
-      "x": 4.38,
-      "y": 5.4,
+      "x": -0.5,
+      "y": 7.3,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2FB9091F1C123729",
           "type": "custom",
-          "title": "Съесть 1 готовое блюдо Kaleidoscope Nether.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.11.condition\"}",
           "icon": "kaleidoscope_nether:black_apple_salad",
           "count": 1
         }
@@ -725,29 +721,29 @@
     },
     {
       "id": "29B9141A764727FB",
-      "title": "04.12 · Вкус Края",
-      "subtitle": "Съесть 1 готовое блюдо Kaleidoscope End.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.12.condition\"}",
       "description": [
-        "Что сделать: Съесть 1 готовое блюдо Kaleidoscope End.",
+        "{\"translate\":\"jem.atlas.card.H02.12.condition\"}",
         "",
-        "Зачем: Dimension-food End; самостоятельный кулинарный эпилог.",
+        "{\"translate\":\"jem.atlas.card.H02.12.purpose\"}",
         "",
-        "Совет: Сырьё приходит из доступного игроку Края. Доступ к измерению сохраняет нативную кампанию; квест еды не создаёт дополнительной блокировки.",
+        "{\"translate\":\"jem.atlas.card.H02.12.tip\"}",
         "",
-        "Награда: Кухня Края продолжается меню из двух блюд, без драконьих инструментов и ключей.",
+        "{\"translate\":\"jem.atlas.card.H02.12.reward\"}",
         "",
-        "Рекомендуемый путь: 04.05 · Первый вок. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "kaleidoscope_end:chorus_pasta",
-      "x": 6.22,
-      "y": 5.4,
+      "x": 5.0,
+      "y": 6.69,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "285CCC170D0E136B",
           "type": "custom",
-          "title": "Съесть 1 готовое блюдо Kaleidoscope End.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.12.condition\"}",
           "icon": "kaleidoscope_end:chorus_pasta",
           "count": 1
         }
@@ -785,29 +781,29 @@
     },
     {
       "id": "21560F9CDB8E7FCE",
-      "title": "04.13 · Ужин перед дорогой",
-      "subtitle": "Съесть круассан Bakery, картофельный суп Farm & Charm и яичницу Cookery.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.13.condition\"}",
       "description": [
-        "Что сделать: Съесть круассан Bakery, картофельный суп Farm & Charm и яичницу Cookery.",
+        "{\"translate\":\"jem.atlas.card.H02.13.condition\"}",
         "",
-        "Зачем: Собственная кухня снабжает остальные приключения.",
+        "{\"translate\":\"jem.atlas.card.H02.13.purpose\"}",
         "",
-        "Совет: Это небольшая коллекция готовой еды. Место употребления, собственный урожай и вся производственная история не проверяются.",
+        "{\"translate\":\"jem.atlas.card.H02.13.tip\"}",
         "",
-        "Награда: Три разных блюда заслуживают оборудования для любимого направления и угощения на компанию.",
+        "{\"translate\":\"jem.atlas.card.H02.13.reward\"}",
         "",
-        "Рекомендуемый путь: 04.03 · Своя булочная; 04.07 · Рецепт запомнен. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "bakery:croissant",
-      "x": 5.3,
-      "y": 9.1,
+      "x": 10.5,
+      "y": 6.32,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "25B42AF841DE2F84",
           "type": "custom",
-          "title": "Съесть круассан Bakery, картофельный суп Farm & Charm и яичницу Cookery.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.13.condition\"}",
           "icon": "bakery:croissant",
           "count": 3
         }
@@ -851,20 +847,20 @@
     },
     {
       "id": "27E2A0180FAA4F37",
-      "title": "04.14 · Сыр в котле",
-      "subtitle": "Получить 1 сыр Nature’s Spirit.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.14.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.14.condition\"}",
       "description": [
-        "Что сделать: Получить 1 сыр Nature’s Spirit.",
+        "{\"translate\":\"jem.atlas.card.H02.14.condition\"}",
         "",
-        "Зачем: Отдельная пищевая цепочка Nature's Spirit.",
+        "{\"translate\":\"jem.atlas.card.H02.14.purpose\"}",
         "",
-        "Совет: Нативная цепочка: молоко в котле, коричневый гриб, выдержка и сбор ведром. Квест не измеряет время и не восстанавливает историю превращения.",
+        "{\"translate\":\"jem.atlas.card.H02.14.tip\"}",
         "",
-        "Награда: Сыр получает необычное практическое применение и готовые бутерброды."
+        "{\"translate\":\"jem.atlas.card.H02.14.reward\"}"
       ],
       "icon": "natures_spirit:cheese_bucket",
-      "x": -6.22,
-      "y": 10.95,
+      "x": 16.0,
+      "y": 6.46,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -909,29 +905,29 @@
     },
     {
       "id": "284F845A6BCDF04F",
-      "title": "04.15 · Пицца на свой вкус",
-      "subtitle": "Поставить 1 пиццу Nature’s Spirit.",
+      "title": "{\"translate\":\"jem.atlas.card.H02.15.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H02.15.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 пиццу Nature’s Spirit.",
+        "{\"translate\":\"jem.atlas.card.H02.15.condition\"}",
         "",
-        "Зачем: Размещаемая еда и до четырёх начинок; Cheese Arrow — ссылка на боевую ветку после проверки эффекта.",
+        "{\"translate\":\"jem.atlas.card.H02.15.purpose\"}",
         "",
-        "Совет: Добавляй разрешённые начинки и пробуй порции; доступно до четырёх начинок. Cheese Arrow относится к необязательной боевой ветке. Добавки и употребление здесь не проверяются.",
+        "{\"translate\":\"jem.atlas.card.H02.15.tip\"}",
         "",
-        "Награда: После пиццы можно оборудовать собственную террасу для совместной еды.",
+        "{\"translate\":\"jem.atlas.card.H02.15.reward\"}",
         "",
-        "Рекомендуемый путь: 04.14 · Сыр в котле. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "natures_spirit:cypress_planks",
-      "x": -4.38,
-      "y": 10.95,
+      "x": -17.0,
+      "y": -12.36,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "20F5DBAF35E96A2F",
           "type": "custom",
-          "title": "Поставить 1 пиццу Nature’s Spirit.",
+          "title": "{\"translate\":\"jem.atlas.card.H02.15.condition\"}",
           "icon": "natures_spirit:cypress_planks",
           "count": 1
         }
@@ -979,77 +975,98 @@
   ],
   "images": [
     {
-      "x": -5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Farm & Charm",
-      "order": -5,
-      "hover": [
-        "Farm & Charm"
-      ]
+      "x": 0,
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-04\"}",
+      "order": 30
     },
     {
-      "x": 5.3,
-      "y": 0.0,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Bakery",
-      "order": -5,
+      "x": -20,
+      "y": -16.56,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "Bakery"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
     },
     {
-      "x": -5.3,
-      "y": 3.7,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:Cookery",
-      "order": -5,
-      "hover": [
-        "Cookery"
-      ]
+      "x": -20,
+      "y": -15.059999999999999,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
     },
     {
-      "x": 5.3,
-      "y": 3.7,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:измерения",
-      "order": -5,
+      "x": -11.0,
+      "y": -16.56,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/wheat.png",
+      "click": "#2737629454E291BB",
       "hover": [
-        "измерения"
-      ]
+        "jem.atlas.route_hint.tab-03"
+      ],
+      "order": 20
     },
     {
-      "x": 5.3,
-      "y": 7.4,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:финал",
-      "order": -5,
-      "hover": [
-        "финал"
-      ]
+      "x": -11.0,
+      "y": -15.059999999999999,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-03\"}",
+      "order": 21
     },
     {
-      "x": -5.3,
-      "y": 9.25,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:сыроварня",
-      "order": -5,
+      "x": -4.8,
+      "y": -16.56,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/wheat.png",
+      "click": "#2AF22E408691796E",
       "hover": [
-        "сыроварня"
-      ]
+        "jem.atlas.route_hint.tab-05"
+      ],
+      "order": 20
+    },
+    {
+      "x": -4.8,
+      "y": -15.059999999999999,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-05\"}",
+      "order": 21
+    },
+    {
+      "x": 1.4,
+      "y": -16.56,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/wheat.png",
+      "click": "#2412AD6A695F5897",
+      "hover": [
+        "jem.atlas.route_hint.tab-06"
+      ],
+      "order": 20
+    },
+    {
+      "x": 1.4,
+      "y": -15.059999999999999,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-06\"}",
+      "order": 21
     }
   ],
-  "autofocus_id": "2DD9DF9DBE41651C"
+  "jem_atlas_hub": false
 }

@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "change_id": "world-tier.nonexclusive-arena-ownership-20261025",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "entities"
+    }
+  ],
+  "conditions": [
+    {
+      "profile": "Non-hosted profiles with arena_strategy none and native revival do not own exclusive arenas"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_ownership_correction",
+    "priority": 1600
+  },
+  "change": {
+    "summary": "Separate per-entity World Tier enrollment from exclusive arena identity and archive inappropriate legacy ownership without deleting mobs or progression",
+    "modifiers": [
+      {
+        "property": "encounter.exclusive_arena_ownership",
+        "operation": "replace",
+        "before": "Every verified arena-bound progression entity competed for one saved living UUID",
+        "after": "Exclusive identity applies only to a hosted, explicitly arena-owned or JEM-scheduled profile. Other enrolled mobs retain independent encounter snapshots and progression without an arena claim"
+      },
+      {
+        "property": "encounter.nonexclusive_legacy_migration",
+        "operation": "replace",
+        "before": "Legacy ordinary-mob claims and conflicts persist and can suppress direct death progression",
+        "after": "After profile load or reload, archive nonexclusive active claims, conflicts, retirement and creation intent in existing SchemaVersion 2 WorldTierData. Preserve historical arena geometry, defeats, thresholds, entities and Paladin support ownership. Loaded ordinary entities detach only the inappropriate arena binding"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMWorldBossTiers",
+    "kind": "root_cause_fix",
+    "source_files": [
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BossProfile.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/balance/BalanceRegistry.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/EncounterData.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/WorldTierApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/JemWorldBossTiers.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/NativeBossStorage.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Allow legitimate multi-mob populations while preserving World Tier progression and the Paladin's canonical support group",
+    "decision_source": "User explicitly requested fixing ownership and migrating existing conflicting records before the quest redesign, with development-profile delivery only",
+    "implementation_choice": "One profile-owned predicate, deferred save-owner migration after registry readiness, retained archival NBT and per-entity arena detachment"
+  },
+  "introduced": {
+    "date": "2026-10-25",
+    "commit": "SELF",
+    "action": "fix",
+    "summary": "Correct exclusive ownership and preserve inappropriate legacy claims as inactive history"
+  },
+  "history": [
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "fix",
+      "summary": "Original-profile diagnostics and active development JAR confirm the same defect. Preserve original profile and all legitimate entities"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "world_tier",
+      "entity_lifecycle",
+      "save_migration",
+      "hosted_encounters",
+      "paladin_support"
+    ],
+    "relations": [
+      "BossProfile ownership -> spawn/load/death admission -> WorldTierData claim migration",
+      "Paladin support continues to follow its canonical structural boss arena"
+    ],
+    "notes": [
+      "No registered entity, scaling curve, defeat threshold, native loot, support tag or campaign boss roster changes",
+      "No live or offline world NBT is manually patched"
+    ],
+    "unresolved": [
+      "Player acceptance is unrun. Runtime migration applies when the updated artifact loads an existing world"
+    ]
+  }
+}

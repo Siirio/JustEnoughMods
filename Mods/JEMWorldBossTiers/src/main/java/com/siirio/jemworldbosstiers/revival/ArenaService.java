@@ -32,6 +32,7 @@ public final class ArenaService {
     }
 
     public static ArenaRecord findOrRegister(LivingEntity entity, BossProfile profile) {
+        if (!profile.ownsExclusiveArena()) throw new IllegalArgumentException("Profile does not own an exclusive arena: " + profile.key());
         ServerLevel level = (ServerLevel) entity.level();
         WorldTierData data = WorldTierData.get(level.getServer());
         String dimension = level.dimension().location().toString();

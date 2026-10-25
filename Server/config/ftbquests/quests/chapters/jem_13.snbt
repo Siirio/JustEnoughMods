@@ -1,43 +1,43 @@
 {
   "id": "2877DEC4C9A8899A",
   "filename": "jem_13",
-  "title": "Create: фабрика и подвижные машины",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-13\"}",
   "subtitle": [
-    "Когда: После обычного получения компонентов Create. Ветки независимы; работоспособность всей фабрики не проверяется.",
-    "Рекомендуемый порядок свободный; награда соседа не требуется."
+    "{\"translate\":\"jem.atlas.intro.tab-13\"}",
+    "{\"translate\":\"jem.atlas.free_order\"}"
   ],
   "icon": "create:precision_mechanism",
-  "group": "28AF004A3850C67C",
-  "order_index": 12,
+  "group": "294A1D1F3DB2CD43",
+  "order_index": 1,
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "progression_mode": "flexible",
   "quests": [
     {
       "id": "2DB7BA6BA9191344",
-      "title": "13.01 · Два пути к мощности",
-      "subtitle": "Получить Windmill Bearing или Steam Engine Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.01.condition\"}",
       "description": [
-        "Что сделать: Получить Windmill Bearing или Steam Engine Create.",
+        "{\"translate\":\"jem.atlas.card.H12.01.condition\"}",
         "",
-        "Зачем: Windmill/Steam Engine; выбирать под задачу.",
+        "{\"translate\":\"jem.atlas.card.H12.01.purpose\"}",
         "",
-        "Совет: Выбери ветряк или пар под свою задачу. Выработку и stress видно через штатные инструменты Create. Квест проверяет лишь наличие одного компонента.",
+        "{\"translate\":\"jem.atlas.card.H12.01.tip\"}",
         "",
-        "Награда: Паруса и шасси приглашают попробовать ветряную конструкцию даже при старте с парового двигателя; валы пригодятся обоим источникам мощности.",
+        "{\"translate\":\"jem.atlas.card.H12.01.reward\"}",
         "",
-        "Рекомендуемый путь: 12.06 · Первый латунный слиток. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:windmill_bearing",
-      "x": -0.93,
-      "y": 1.7,
+      "x": -18.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "272AE7472DD73FF1",
           "type": "custom",
-          "title": "Получить Windmill Bearing или Steam Engine Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.01.condition\"}",
           "icon": "create:windmill_bearing",
           "count": 1
         }
@@ -84,29 +84,29 @@
     },
     {
       "id": "2E33BCA5FFF1FC6E",
-      "title": "13.02 · Детали паровой установки",
-      "subtitle": "Разместить Fluid Tank, Steam Engine, Blaze Burner и Mechanical Pump Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.02.condition\"}",
       "description": [
-        "Что сделать: Разместить Fluid Tank, Steam Engine, Blaze Burner и Mechanical Pump Create.",
+        "{\"translate\":\"jem.atlas.card.H12.02.condition\"}",
         "",
-        "Зачем: Котёл и стабильность энергоснабжения.",
+        "{\"translate\":\"jem.atlas.card.H12.02.purpose\"}",
         "",
-        "Совет: Котёл работает благодаря объёму резервуара, воде и нагреву. Сравни уровень пара при изменении снабжения; взаимное расположение и стабильность квест не оценивает.",
+        "{\"translate\":\"jem.atlas.card.H12.02.tip\"}",
         "",
-        "Награда: После знакомства с четырьмя узлами паровой системы — запас для её масштабирования.",
+        "{\"translate\":\"jem.atlas.card.H12.02.reward\"}",
         "",
-        "Рекомендуемый путь: 13.01 · Два пути к мощности. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:fluid_tank",
-      "x": 0.93,
-      "y": 1.7,
+      "x": -12.5,
+      "y": 7.5,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "25E331FB682BD14A",
           "type": "custom",
-          "title": "Разместить Fluid Tank, Steam Engine, Blaze Burner и Mechanical Pump Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.02.condition\"}",
           "icon": "create:fluid_tank",
           "count": 4
         }
@@ -153,27 +153,27 @@
     },
     {
       "id": "210590826702DBCC",
-      "title": "13.03 · Коллекция жидкостных компонентов",
-      "subtitle": "Разместить Fluid Pipe, Mechanical Pump, Fluid Tank, Spout и Item Drain Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.03.condition\"}",
       "description": [
-        "Что сделать: Разместить Fluid Pipe, Mechanical Pump, Fluid Tank, Spout и Item Drain Create.",
+        "{\"translate\":\"jem.atlas.card.H12.03.condition\"}",
         "",
-        "Зачем: Трубы, насосы, ёмкости и жидкостные рецепты.",
+        "{\"translate\":\"jem.atlas.card.H12.03.purpose\"}",
         "",
-        "Совет: Трубы и насос перемещают жидкость, Spout наполняет предметы, Item Drain извлекает содержимое. Собери небольшой опыт по Ponder; наличие потока не требуется.",
+        "{\"translate\":\"jem.atlas.card.H12.03.tip\"}",
         "",
-        "Награда: Реальный монтажный комплект жидкостной линии: трубы, помпы, ёмкости и дозаторы."
+        "{\"translate\":\"jem.atlas.card.H12.03.reward\"}"
       ],
       "icon": "create:fluid_pipe",
-      "x": 0.0,
-      "y": 5.4,
+      "x": -7.0,
+      "y": 7.0,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "21F06B0F2C1E0DD0",
           "type": "custom",
-          "title": "Разместить Fluid Pipe, Mechanical Pump, Fluid Tank, Spout и Item Drain Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.03.condition\"}",
           "icon": "create:fluid_pipe",
           "count": 5
         }
@@ -229,22 +229,22 @@
     },
     {
       "id": "21B5608325D83435",
-      "title": "13.04 · Точный механизм",
-      "subtitle": "Получить 1 Precision Mechanism Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.04.condition\"}",
       "description": [
-        "Что сделать: Получить 1 Precision Mechanism Create.",
+        "{\"translate\":\"jem.atlas.card.H12.04.condition\"}",
         "",
-        "Зачем: Многошаговая обработка и компоненты автоматики.",
+        "{\"translate\":\"jem.atlas.card.H12.04.purpose\"}",
         "",
-        "Совет: Изучи Sequenced Assembly: одна заготовка проходит повторяемые шаги Deployers и обработки. Происхождение предмета и связь шагов квест не хранит.",
+        "{\"translate\":\"jem.atlas.card.H12.04.tip\"}",
         "",
-        "Награда: Первый механизм точности приносит запас на новые устройства; автоматизированная линия в зачёте не требуется.",
+        "{\"translate\":\"jem.atlas.card.H12.04.reward\"}",
         "",
-        "Рекомендуемый путь: 12.08 · Полированный кварц. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:precision_mechanism",
-      "x": -1.85,
-      "y": 9.1,
+      "x": -1.5,
+      "y": 7.5,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
@@ -289,29 +289,29 @@
     },
     {
       "id": "29A02214D3D0C3DC",
-      "title": "13.05 · Расширенный верстак",
-      "subtitle": "Поставить 3 блока Mechanical Crafter Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.05.condition\"}",
       "description": [
-        "Что сделать: Поставить 3 блока Mechanical Crafter Create.",
+        "{\"translate\":\"jem.atlas.card.H12.05.condition\"}",
         "",
-        "Зачем: Крупная механическая сборка.",
+        "{\"translate\":\"jem.atlas.card.H12.05.purpose\"}",
         "",
-        "Совет: Механические крафтеры складываются в сетку рецепта; стрелки задают сборку и вывод. Здесь учитываются три размещения, без проверки геометрии или готового изделия.",
+        "{\"translate\":\"jem.atlas.card.H12.05.tip\"}",
         "",
-        "Награда: Позволяет увеличить матрицу крафта после первых трёх сборщиков и попробовать крупные рецепты.",
+        "{\"translate\":\"jem.atlas.card.H12.05.reward\"}",
         "",
-        "Рекомендуемый путь: 13.04 · Точный механизм. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:mechanical_crafter",
-      "x": 0.0,
-      "y": 9.1,
+      "x": 4.0,
+      "y": 7.0,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2A8001A0EAD6475B",
           "type": "custom",
-          "title": "Поставить 3 блока Mechanical Crafter Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.05.condition\"}",
           "icon": "create:mechanical_crafter",
           "count": 3
         }
@@ -349,29 +349,29 @@
     },
     {
       "id": "23897209AC18142A",
-      "title": "13.06 · Механическая рука",
-      "subtitle": "Поставить 1 Mechanical Arm Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.06.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 Mechanical Arm Create.",
+        "{\"translate\":\"jem.atlas.card.H12.06.condition\"}",
         "",
-        "Зачем: Точная логистика нескольких станков.",
+        "{\"translate\":\"jem.atlas.card.H12.06.purpose\"}",
         "",
-        "Совет: До размещения можно назначить точки ввода и вывода, затем запитать руку вращением. Попробуй снабжать несколько станков; квест не проверяет настройки и переносы.",
+        "{\"translate\":\"jem.atlas.card.H12.06.tip\"}",
         "",
-        "Награда: Дополнительные руки и автономные активаторы для нескольких рабочих операций.",
+        "{\"translate\":\"jem.atlas.card.H12.06.reward\"}",
         "",
-        "Рекомендуемый путь: 13.05 · Расширенный верстак. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:mechanical_arm",
-      "x": 1.85,
-      "y": 9.1,
+      "x": 9.5,
+      "y": 7.5,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2392A7517B2E9389",
           "type": "custom",
-          "title": "Поставить 1 Mechanical Arm Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.06.condition\"}",
           "icon": "create:mechanical_arm",
           "count": 1
         }
@@ -418,27 +418,27 @@
     },
     {
       "id": "24542641FFD1F29F",
-      "title": "13.07 · Три механизма движения",
-      "subtitle": "Разместить Mechanical Bearing, Mechanical Piston и Gantry Carriage Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.07.condition\"}",
       "description": [
-        "Что сделать: Разместить Mechanical Bearing, Mechanical Piston и Gantry Carriage Create.",
+        "{\"translate\":\"jem.atlas.card.H12.07.condition\"}",
         "",
-        "Зачем: Moving contraptions и actors.",
+        "{\"translate\":\"jem.atlas.card.H12.07.purpose\"}",
         "",
-        "Совет: Подшипник вращает, поршень выдвигает, каретка движется по валу. Клей и сборка определяют подвижную конструкцию. Движение, остановка и разборка остаются самостоятельными опытами.",
+        "{\"translate\":\"jem.atlas.card.H12.07.tip\"}",
         "",
-        "Награда: Крупный комплект для подвижных конструкций после знакомства с тремя типами привода."
+        "{\"translate\":\"jem.atlas.card.H12.07.reward\"}"
       ],
       "icon": "create:mechanical_bearing",
-      "x": -2.78,
-      "y": 12.8,
+      "x": 15.0,
+      "y": 7.0,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2B76AE0475884FBA",
           "type": "custom",
-          "title": "Разместить Mechanical Bearing, Mechanical Piston и Gantry Carriage Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.07.condition\"}",
           "icon": "create:mechanical_bearing",
           "count": 3
         }
@@ -494,29 +494,29 @@
     },
     {
       "id": "27F6D505056719B0",
-      "title": "13.08 · Инструменты механической фермы",
-      "subtitle": "Разместить Mechanical Harvester и Mechanical Saw Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.08.condition\"}",
       "description": [
-        "Что сделать: Разместить Mechanical Harvester и Mechanical Saw Create.",
+        "{\"translate\":\"jem.atlas.card.H12.08.condition\"}",
         "",
-        "Зачем: Автоматический сбор; сохраняется native семантика Harvester.",
+        "{\"translate\":\"jem.atlas.card.H12.08.purpose\"}",
         "",
-        "Совет: Эти рабочие блоки собирают разрешённые культуры и древесину на подвижной конструкции. Проверь нативные правила Harvester; урожай, склад и принадлежность поля квесту не нужны.",
+        "{\"translate\":\"jem.atlas.card.H12.08.tip\"}",
         "",
-        "Награда: Можно собрать широкую жатку и несколько лесозаготовительных модулей.",
+        "{\"translate\":\"jem.atlas.card.H12.08.reward\"}",
         "",
-        "Рекомендуемый путь: 13.07 · Три механизма движения. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:mechanical_harvester",
-      "x": -0.93,
-      "y": 12.8,
+      "x": -18.0,
+      "y": 10.4,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "22B983F1EBB783B8",
           "type": "custom",
-          "title": "Разместить Mechanical Harvester и Mechanical Saw Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.08.condition\"}",
           "icon": "create:mechanical_harvester",
           "count": 2
         }
@@ -563,29 +563,29 @@
     },
     {
       "id": "2FBA84E96B8D1FF5",
-      "title": "13.09 · Бур и обслуживание",
-      "subtitle": "Поставить 1 Mechanical Drill Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.09.condition\"}",
       "description": [
-        "Что сделать: Поставить 1 Mechanical Drill Create.",
+        "{\"translate\":\"jem.atlas.card.H12.09.condition\"}",
         "",
-        "Зачем: JEM drill lifecycle, сервис и предел повторных ремонтов.",
+        "{\"translate\":\"jem.atlas.card.H12.09.purpose\"}",
         "",
-        "Совет: JEM добавляет буру износ и обслуживание. Следи за wear через Jade, перед ремонтом останови механизм и посмотри допустимый способ сервиса. Цикл износа/ремонта не отслеживается.",
+        "{\"translate\":\"jem.atlas.card.H12.09.tip\"}",
         "",
-        "Награда: Достаточно буров для компактной проходческой головы; длина выкопанного тоннеля не проверяется.",
+        "{\"translate\":\"jem.atlas.card.H12.09.reward\"}",
         "",
-        "Рекомендуемый путь: 13.07 · Три механизма движения. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:mechanical_drill",
-      "x": 0.93,
-      "y": 12.8,
+      "x": -12.5,
+      "y": 10.9,
       "shape": "circle",
       "size": 1.0,
       "tasks": [
         {
           "id": "2EAA82DD71CA429B",
           "type": "custom",
-          "title": "Поставить 1 Mechanical Drill Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.09.condition\"}",
           "icon": "create:mechanical_drill",
           "count": 1
         }
@@ -623,29 +623,29 @@
     },
     {
       "id": "2DCA4C9DB2143125",
-      "title": "13.10 · Компоненты лифта",
-      "subtitle": "Разместить Elevator Pulley и Elevator Contact Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.10.condition\"}",
       "description": [
-        "Что сделать: Разместить Elevator Pulley и Elevator Contact Create.",
+        "{\"translate\":\"jem.atlas.card.H12.10.condition\"}",
         "",
-        "Зачем: Лифты, остановки и практическая архитектура подвижных конструкций.",
+        "{\"translate\":\"jem.atlas.card.H12.10.purpose\"}",
         "",
-        "Совет: По Ponder собери кабину и этажные остановки; подвижный мост можно построить на поршне или каретке. Книга проверяет только детали, без маршрута, пассажиров и работающих остановок.",
+        "{\"translate\":\"jem.atlas.card.H12.10.tip\"}",
         "",
-        "Награда: Материалы для дополнительных остановок и оформления шахты лифта.",
+        "{\"translate\":\"jem.atlas.card.H12.10.reward\"}",
         "",
-        "Рекомендуемый путь: 13.07 · Три механизма движения. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:elevator_pulley",
-      "x": 2.78,
-      "y": 12.8,
+      "x": -7.0,
+      "y": 10.4,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2F74A0784432BB1F",
           "type": "custom",
-          "title": "Разместить Elevator Pulley и Elevator Contact Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.10.condition\"}",
           "icon": "create:elevator_pulley",
           "count": 2
         }
@@ -692,29 +692,29 @@
     },
     {
       "id": "2350E8A8B879DC89",
-      "title": "13.11 · Строительство по чертежам",
-      "subtitle": "Разместить Schematic Table и Schematicannon Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.11.condition\"}",
       "description": [
-        "Что сделать: Разместить Schematic Table и Schematicannon Create.",
+        "{\"translate\":\"jem.atlas.card.H12.11.condition\"}",
         "",
-        "Зачем: Копирование собственных построек с оплатой ресурсами.",
+        "{\"translate\":\"jem.atlas.card.H12.11.purpose\"}",
         "",
-        "Совет: Schematic and Quill сохраняет область выбранной постройки, стол готовит чертеж, пушка строит за предоставленные ресурсы. Квест сам не читает область, не сравнивает постройки и не проверяет работу пушки.",
+        "{\"translate\":\"jem.atlas.card.H12.11.tip\"}",
         "",
-        "Награда: Запас схем, строительных корпусов и топлива для серийного переноса собственных построек.",
+        "{\"translate\":\"jem.atlas.card.H12.11.reward\"}",
         "",
-        "Рекомендуемый путь: 13.05 · Расширенный верстак. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:schematic_table",
-      "x": 0.0,
-      "y": 16.5,
+      "x": -1.5,
+      "y": 10.9,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
         {
           "id": "2E203146439C399B",
           "type": "custom",
-          "title": "Разместить Schematic Table и Schematicannon Create.",
+          "title": "{\"translate\":\"jem.atlas.card.H12.11.condition\"}",
           "icon": "create:schematic_table",
           "count": 2
         }
@@ -761,22 +761,22 @@
     },
     {
       "id": "2A6CEA56CAC77005",
-      "title": "13.12 · Снаряжение инженера",
-      "subtitle": "Собрать Copper Backtank, Copper Diving Helmet, Copper Diving Boots, Extendo Grip и Potato Cannon Create.",
+      "title": "{\"translate\":\"jem.atlas.card.H12.12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H12.12.condition\"}",
       "description": [
-        "Что сделать: Собрать Copper Backtank, Copper Diving Helmet, Copper Diving Boots, Extendo Grip и Potato Cannon Create.",
+        "{\"translate\":\"jem.atlas.card.H12.12.condition\"}",
         "",
-        "Зачем: Утилитарное снаряжение Create вне фабрики.",
+        "{\"translate\":\"jem.atlas.card.H12.12.purpose\"}",
         "",
-        "Совет: Резервуар воздуха и водолазное снаряжение помогают под водой, Extendo Grip расширяет взаимодействие, Potato Cannon использует подходящие боеприпасы. Зарядку, погружение и применение не связываем в один сценарий.",
+        "{\"translate\":\"jem.atlas.card.H12.12.tip\"}",
         "",
-        "Награда: Собраны пять дорогих инженерных предметов: заслуженная модернизация одного слота и материалы на дальнейшую механику.",
+        "{\"translate\":\"jem.atlas.card.H12.12.reward\"}",
         "",
-        "Рекомендуемый путь: 13.04 · Точный механизм. Порядок свободный."
+        "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "create:copper_backtank",
-      "x": 0.0,
-      "y": 20.2,
+      "x": 4.0,
+      "y": 10.4,
       "shape": "hexagon",
       "size": 1.0,
       "tasks": [
@@ -866,76 +866,97 @@
   "images": [
     {
       "x": 0,
-      "y": 0,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:энергия",
-      "order": -5,
-      "hover": [
-        "энергия"
-      ]
+      "y": 4.7,
+      "width": 12,
+      "height": 1.2,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.chapter.tab-13\"}",
+      "order": 30
     },
     {
-      "x": 0,
-      "y": 3.7,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:жидкости",
-      "order": -5,
+      "x": -20,
+      "y": -15,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/compass.png",
+      "click": "#206B78C01296754D",
       "hover": [
-        "жидкости"
-      ]
+        "jem.atlas.route_hint.atlas-index"
+      ],
+      "order": 20
     },
     {
-      "x": 0,
-      "y": 7.4,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:сборка",
-      "order": -5,
-      "hover": [
-        "сборка"
-      ]
+      "x": -20,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.atlas-index\"}",
+      "order": 21
     },
     {
-      "x": 0,
-      "y": 11.1,
-      "width": 7.7,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:механизмы",
-      "order": -5,
+      "x": -11.0,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/minecart.png",
+      "click": "#1000000000000002",
       "hover": [
-        "механизмы"
-      ]
+        "jem.atlas.route_hint.tab-12"
+      ],
+      "order": 20
     },
     {
-      "x": 0,
-      "y": 14.8,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:строительство",
-      "order": -5,
-      "hover": [
-        "строительство"
-      ]
+      "x": -11.0,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-12\"}",
+      "order": 21
     },
     {
-      "x": 0,
-      "y": 18.5,
-      "width": 5.8500000000000005,
-      "height": 1.15,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-label:снаряжение",
-      "order": -5,
+      "x": -4.8,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/minecart.png",
+      "click": "#2A24AB61A2E490C8",
       "hover": [
-        "снаряжение"
-      ]
+        "jem.atlas.route_hint.tab-14"
+      ],
+      "order": 20
+    },
+    {
+      "x": -4.8,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-14\"}",
+      "order": 21
+    },
+    {
+      "x": 1.4,
+      "y": -15.0,
+      "width": 1.25,
+      "height": 1.25,
+      "image": "minecraft:textures/item/minecart.png",
+      "click": "#216D654740F71FDF",
+      "hover": [
+        "jem.atlas.route_hint.tab-15"
+      ],
+      "order": 20
+    },
+    {
+      "x": 1.4,
+      "y": -13.5,
+      "width": 5.2,
+      "height": 1.3,
+      "image": "ftblibrary:textures/icons/blank.png",
+      "click": "jem-label:{\"translate\":\"jem.atlas.route.tab-15\"}",
+      "order": 21
     }
   ],
-  "autofocus_id": "2DB7BA6BA9191344"
+  "jem_atlas_hub": false
 }

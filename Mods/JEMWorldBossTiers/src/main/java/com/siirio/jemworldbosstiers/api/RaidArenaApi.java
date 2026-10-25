@@ -38,7 +38,7 @@ public final class RaidArenaApi {
     public static void register(MinecraftServer server, String id, ResourceLocation entityType,
                                 ResourceLocation dimension, BoundingBox bounds) {
         var profile = BalanceRegistry.boss(entityType).orElse(null);
-        if (profile == null) return;
+        if (profile == null || !profile.ownsExclusiveArena()) return;
         WorldTierData data = WorldTierData.get(server);
         ArenaRecord current = data.arena(id).orElse(null);
         if (current != null && current.profileKey().equals(profile.key()) && current.dimension().equals(dimension.toString())
@@ -64,7 +64,8 @@ public final class RaidArenaApi {
         ArenaRecord arena = data.arena(arenaId).orElse(null);
         var profile = BalanceRegistry.boss(entityType).orElse(null);
         return arena != null && !data.raidReplacementPending(arena.id()) && !data.hostedSettlementPending(arena.id())
-                && arena.structureArena() && profile != null && arena.profileKey().equals(profile.key()) && arena.unlocked()
+                && arena.structureArena() && profile != null && profile.ownsExclusiveArena()
+                && arena.profileKey().equals(profile.key()) && arena.unlocked()
                 && (arena.activeEncounterId() == null&&data.liveBoss(arena.id()).isEmpty() || dormantNativeBoss(server,arena))
                 && data.defeatedBosses().contains(profile.key());
     }
@@ -175,7 +176,7 @@ public final class RaidArenaApi {
         WorldTierData data = WorldTierData.get(server);
         ArenaRecord arena = data.arena(arenaId).orElse(null);
         var profile = WorldTierApi.profile(boss).orElse(null);
-        if (arena == null || profile == null || !arena.profileKey().equals(profile.key())
+        if (arena == null || profile == null || !profile.ownsExclusiveArena() || !arena.profileKey().equals(profile.key())
                 || !arena.dimension().equals(boss.level().dimension().location().toString())
                 || !arena.bounds().isInside(boss.blockPosition())) return;
         var encounter=WorldTierApi.encounter(boss).orElse(null);

@@ -6,6 +6,7 @@ new coordinates to existing cards and never imports over manual edits.
 from __future__ import annotations
 
 import csv
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -68,9 +69,36 @@ def item_reward(card, index, reward, choice=False):
             "team_reward": False}
 
 
-def compile_book():
+class Localization:
+    def __init__(self):
+        self.values = {"en_us": {}, "ru_ru": {}}
+
+    def text(self, key, english, russian):
+        key = "jem.atlas." + key
+        self.values["en_us"][key] = english
+        self.values["ru_ru"][key] = russian
+        return json.dumps({"translate": key}, ensure_ascii=False, separators=(",", ":"))
+
+    def plain_key(self, key, english, russian):
+        self.text(key, english, russian)
+        return "jem.atlas." + key
+
+    def write(self):
+        shared = {
+            "en_us": {"jem.questbook.unavailable.hover": "Unavailable here - reference only", "jem.questbook.unavailable.reason": "Required content or feature is unavailable in this world", "jem.questbook.unavailable.summary": "%s: %s"},
+            "ru_ru": {"jem.questbook.unavailable.hover": "Недоступно здесь - только справка", "jem.questbook.unavailable.reason": "Нужное содержимое или возможность недоступны в этом мире", "jem.questbook.unavailable.summary": "%s: %s"},
+        }
+        for language, values in self.values.items():
+            path = RESOURCES / "assets/jem_advancements/lang" / (language + ".json")
+            old = json.loads(path.read_text("utf-8")) if path.exists() else {}
+            old = {key: value for key, value in old.items() if not key.startswith("jem.atlas.")}
+            dump(path, dict(old, **shared[language], **values))
+
+
+def compile_book(*, emit_reward_selector=True):
     book = json.loads((SOURCE / "book.json").read_text(encoding="utf-8"))
     all_rules, mapping, generated, information = [], [], [], {}
+    language = Localization()
     rows = {card["id"]: card for chapter in book["chapters"] for card in chapter["cards"]}
     if len(rows) != sum(len(chapter["cards"]) for chapter in book["chapters"]):
         raise ValueError("Duplicate source card identity")
@@ -87,43 +115,80 @@ def compile_book():
                 raise ValueError(f"Not enough named groups: {card['id']}")
             if binding.get("distinctById") and all(target["ids"] for target in targets) and len({item for target in targets for item in target["ids"]}) < binding["distinct"]:
                 raise ValueError(f"Not enough distinct identities: {card['id']}")
-    groups = [{"id": identity("group", name), "title": name, "icon": icon} for name, icon in (
-        ("Освоиться", "minecraft:compass"), ("Свой дом", "minecraft:oak_door"),
-        ("Мастерская и пути", "create:cogwheel"), ("Живой мир", "minecraft:oak_sapling"),
-        ("Приключения", "minecraft:iron_sword"), ("Кампания и дальние цели", "minecraft:ender_eye"))]
+    groups = [{"id": identity("group", group["id"]),
+               "title": language.text("group." + group["id"], group["en_us"], group["ru_ru"]),
+               "icon": group["icon"]} for group in book["navigation_groups"]]
     dump(BOOK / "chapter_groups.snbt", {"chapter_groups": groups})
+    chapter_by_key = {chapter["id"]: chapter for chapter in book["chapters"]}
+    hub = chapter_by_key[book["hub"]]
+    reference_hint = language.plain_key("reference.hint", "Reference only - no reward or completion", "Справка без награды и процента завершения")
+    free_order = language.text("free_order", "Follow your own route. Nearby rewards are never prerequisites.", "Выбирай свой путь. Награда соседа никогда не становится условием.")
+    choice_title = language.text("choice", "Choose one", "Один предмет на выбор")
     for chapter in book["chapters"]:
         quests, references = [], []
         images = list(chapter.get("images", []))
+        chapter_text = chapter["localization"]
+        chapter_title = language.text("chapter." + chapter["id"], chapter_text["en_us"]["title"], chapter_text["ru_ru"]["title"])
+        images.append({**chapter.get("title_caption", {"x": 0, "y": 0, "width": 12, "height": 5}),
+                       "image": "ftblibrary:textures/icons/blank.png", "click": "jem-label:" + chapter_title, "order": 30})
+        if chapter.get("background"):
+            images.insert(0, dict(chapter["background"], order=-100))
+        routes = chapter.get("routes", [])
+        if chapter["id"] != hub["id"]:
+            routes = [{"chapter": hub["id"], "position": chapter.get("back_position", [-20, -15]), "back": True}] + routes
+        for route in routes:
+            destination = chapter_by_key[route["chapter"]]
+            x, y = route["position"]
+            label = language.text("route." + destination["id"],
+                                  destination["localization"]["en_us"]["title"], destination["localization"]["ru_ru"]["title"])
+            hint = language.plain_key("route_hint." + destination["id"],
+                                     "Open: " + destination["localization"]["en_us"]["title"],
+                                     "Открыть: " + destination["localization"]["ru_ru"]["title"])
+            icon = "minecraft:textures/item/compass.png" if route.get("back") else destination.get("portal_image", "minecraft:textures/item/book.png")
+            images.append({"x": x, "y": y, "width": 1.25, "height": 1.25,
+                           "image": icon, "click": "#" + destination["ftb_id"], "hover": [hint], "order": 20})
+            images.append({"x": x, "y": y + 1.5, "width": 5.2, "height": 1.3,
+                           "image": "ftblibrary:textures/icons/blank.png", "click": "jem-label:" + label, "order": 21})
+        for route in chapter.get("quest_routes", []):
+            destination = rows[route["quest"]]
+            x, y = route["position"]
+            hint = language.plain_key("quest_route." + chapter["id"] + "." + destination["id"], route["en_us"], route["ru_ru"])
+            images.append({"x": x, "y": y, "width": .8, "height": .8,
+                           "image": "minecraft:textures/item/filled_map.png", "click": "#" + destination["ftb_id"],
+                           "hover": [hint], "order": 20})
         for card in chapter["cards"]:
-            information[card["id"]] = {"title": card["number"] + " · " + card["title"],
-                                       "paragraphs": [card["condition"], card["purpose"], card["tip"]]
-                                        + ([card["adaptation"]] if card.get("adaptation") else [])}
+            localized = card["localization"]
+            text = {key: language.text("card." + card["id"] + "." + key,
+                                      localized["en_us"][key], localized["ru_ru"][key])
+                    for key in ("title", "condition", "purpose", "tip", "reward")}
+            information[card["id"]] = {"title": text["title"], "paragraphs": [text["condition"], text["purpose"], text["tip"]]}
             status = card.get("status", "active") if card["conditions"] else "reference"
             if status != "active":
                 images.append({"x": card["position"][0], "y": card["position"][1], "width": 0.9, "height": 0.9,
                                "image": "minecraft:textures/item/book.png", "click": "jem-info:" + card["id"],
-                               "hover": [f"{card['number']} · {card['title']}", "Справка: без награды и процента завершения"], "order": 20})
+                               "hover": ["jem.atlas.card." + card["id"] + ".title", reference_hint], "order": 20})
                 mapping.append([card["id"], chapter["id"], "chapter image: jem-info:" + card["id"], card["condition"], "Нет", status, card.get("implementation_difference", card.get("adaptation", ""))])
                 continue
             tasks, rules = task_definitions(card)
+            for task in tasks:
+                if "title" in task:
+                    task["title"] = text["condition"]
             all_rules.extend(rules)
-            description = ["Что сделать: " + card["condition"], "", "Зачем: " + card["purpose"], "", "Совет: " + card["tip"], "", "Награда: " + card["reward"]["reason"]]
-            if card.get("adaptation"): description.extend(["", card["adaptation"]])
+            description = [text["condition"], "", text["purpose"], "", text["tip"], "", text["reward"]]
             if card["after"]:
-                description.extend(["", "Рекомендуемый путь: " + "; ".join(rows[key]["number"] + " · " + rows[key]["title"] for key in card["after"] if key in rows) + ". Порядок свободный."])
+                description.extend(["", free_order])
             reward = card["reward"]
             rewards = [item_reward(card, i, item) for i, item in enumerate(reward["items"])]
             if reward["xp"]:
                 rewards.append({"id": identity("xp", card["id"]), "type": "jem_advancements:quest_xp", "xp": reward["xp"], "team_reward": False})
             if reward["choice"]:
                 table_id = identity("choice_table", card["id"])
-                table = {"id": table_id, "title": "Один предмет на выбор", "use_title": True, "loot_size": 1,
+                table = {"id": table_id, "title": choice_title, "use_title": True, "loot_size": 1,
                          "rewards": [item_reward(card, i, item, True) for i, item in enumerate(reward["choice"])]}
                 table_path = BOOK / "reward_tables" / (card["id"].lower().replace(".", "_") + ".snbt")
                 dump(table_path, table); generated.append(str(table_path.relative_to(BOOK)))
                 rewards.append({"id": identity("choice", card["id"]), "type": "choice", "table_id": table_id, "team_reward": False})
-            quest = {"id": card["ftb_id"], "title": card["number"] + " · " + card["title"], "subtitle": card["condition"],
+            quest = {"id": card["ftb_id"], "title": text["title"], "subtitle": text["condition"],
                      "description": description, "icon": card["icon"], "x": card["position"][0], "y": card["position"][1],
                      "shape": "diamond" if reward["tier"] == "capstone" else "hexagon" if card["collection"] else "circle",
                      "size": 1.25 if reward["tier"] == "capstone" else 1.0,
@@ -131,27 +196,30 @@ def compile_book():
                      "jem_required_mods": card.get("required_mods", []),
                      "jem_economy": any(rule["kind"] == "operation" for rule in rules),
                      "jem_dedicated_event": any(rule.get("dedicated") for rule in rules)}
+            quest.update(card.get("native_options", {}))
             quests.append(quest)
             reward_summary = "; ".join(f"{item['count']}x {item['id']}" for item in reward["items"])
             if reward["choice"]: reward_summary += "; один на выбор: " + ", ".join(f"{item['count']}x {item['id']}" for item in reward["choice"])
             mapping.append([card["id"], chapter["id"], card["ftb_id"], card["condition"], reward_summary + f"; XP {reward['xp']}", "adapted" if card.get("adaptation") else "active", card.get("implementation_difference", card.get("adaptation", ""))])
-        definition = {"id": chapter["ftb_id"], "filename": chapter["filename"], "title": chapter["title"],
-                      "subtitle": [chapter["intro"][0], "Рекомендуемый порядок свободный; награда соседа не требуется."] + references,
+        definition = {"id": chapter["ftb_id"], "filename": chapter["filename"], "title": chapter_title,
+                      "subtitle": [language.text("intro." + chapter["id"], chapter_text["en_us"]["intro"], chapter_text["ru_ru"]["intro"]), free_order] + references,
                       "icon": chapter["icon"], "group": groups[chapter["group"]]["id"], "order_index": chapter["order"],
                       "default_quest_shape": "circle", "default_hide_dependency_lines": True,
                       "progression_mode": "flexible", "quests": quests, "images": images,
-                      "autofocus_id": quests[0]["id"] if quests else ""}
+                      "jem_atlas_hub": chapter["id"] == hub["id"]}
         target = BOOK / "chapters" / (chapter["filename"] + ".snbt")
         dump(target, definition); generated.append(str(target.relative_to(BOOK)))
     dump(RESOURCES / "data/jem_advancements/questbook/rules.json", all_rules)
     dump(RESOURCES / "data/jem_advancements/questbook/information.json", information)
-    dump(ROOT / "Catalog/changes/sets/ftb-questbook-reward-subjects.json", {
+    if emit_reward_selector:
+        dump(ROOT / "Catalog/changes/sets/ftb-questbook-reward-subjects.json", {
         "source": "Mods/JEMAchievementGuide/tools/questbook/book.json",
         "purpose": "Selector membership only; quantities and entitlement semantics remain in the authored book and JEMRewards.",
         "records": [{"id": item} for item in sorted({item["id"] for card in rows.values()
                     if card["conditions"] and card.get("status", "active") == "active"
                     for item in card["reward"]["items"] + card["reward"]["choice"]})]})
-    data = {"version": 13, "jem_universal_book": True, "jem_questbook_revision": 3,
+    language.write()
+    data = {"version": 13, "jem_universal_book": True, "jem_questbook_revision": 4,
             "default_autoclaim_rewards": "disabled", "default_consume_items": False,
             "default_quest_disable_jei": False, "default_reward_team": False, "detection_delay": 20,
             "disable_gui": False, "drop_book_on_death": False, "drop_loot_crates": False,
@@ -187,4 +255,7 @@ def compile_book():
 
 
 if __name__ == "__main__":
-    compile_book()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--without-reward-selector", action="store_true", help="Leave the Atlas selector to its active owner during parallel authoring")
+    arguments = parser.parse_args()
+    compile_book(emit_reward_selector=not arguments.without_reward_selector)
