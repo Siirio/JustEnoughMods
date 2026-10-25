@@ -1,3 +1,10 @@
+## 2026-10-25 - Food Blessing grapes inside the cup
+
+- User corrected the icon preview because the grapes were outside the cup
+- Implementation choices: repaint the native grape cluster inside the chalice width and add an editable front-rim layer to cover the lower fruit pixels
+- Preserve C0 as rejected placement and show C1 with its Aseprite source, native PNG and inspected light/dark review exports. User approval remains pending
+- Preview only. No resource installation, gameplay, Server artifact or AutoModpack generation change
+
 ## 2026-10-25 - Food Blessing icon preview
 
 - User requested the supplied golden cup, grapes and roast drumstick composition for Food Blessing, explicitly asking for an Aseprite source and preview before integration

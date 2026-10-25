@@ -1,4 +1,4 @@
-# C0 visual review
+# C0 visual review, superseded by user correction
 
 Asset preview only, user acceptance pending
 
@@ -19,3 +19,23 @@ The current user-reference.png was opened directly. The inspected reference qual
 | User approval | OPEN | The user asked to see the Aseprite result first |
 
 No automatic correction round was needed for this first candidate. No AGENT_PASS can establish user approval or in-game acceptance. The PNG is a proposal and the existing game resource remains unchanged
+
+
+# C1 placement correction
+
+The user rejected C0: "grape is not in the cup". The earlier composition PASS did not establish acceptance and missed the intended containment. C0 source, exports and receipt remain preserved
+
+C1 paints a compact bunch inside the left half of the cup and adds a fifth editable foreground-rim layer. Fruit spans x7 to x10, inside the bowl width x6 to x13. Its lower pixel at y9 is occluded by the front gold rim. The roast, stem, foot and restrained sparkle retain their existing forms
+
+Actual C1 native 18px, 4x dark/light and 16x dark/light exports were inspected. The purple cluster now rises from behind the gold lip rather than hanging outside the left wall. At native size the fruit reads as a purple cluster, with individual grapes clearer in the enlarged evidence
+
+| Axis | C1 result | Evidence |
+| --- | --- | --- |
+| User correction | ADDRESSED, acceptance pending | Fruit within cup width and front-rim occlusion |
+| Native provenance | PASS | Five editable Aseprite layers and direct 18 by 18 PNG export |
+| Alpha and bounds | PASS | Binary alpha and transparent canvas margins recorded in receipt.json |
+| Actual output inspection | PASS for isolated preview | Native, 4x and 16x exports inspected on light/dark backgrounds |
+| Runtime UI and interaction | UNOBSERVED | Preview only, existing runtime resource unchanged |
+| User approval | OPEN | Revised preview must still be reviewed by the user |
+
+Correction round 1. No game installation, launch or runtime acceptance is claimed
