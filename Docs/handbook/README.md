@@ -12,6 +12,8 @@ Bug / Both Sided / the handbook projected every World Tier profile as a boss and
 
 Production packaging and native publication/application are coordinated with the concurrent FTB Quests UI rescue. Source inspection does not establish runtime acceptance
 
+Final local delivery: generation79 is published and natively installed in closed `test jem`, with matching active/head token and exact Guide/Compat hashes. No update transaction remains. Ordinary Server contains the same final artifacts and is stopped after saving all dimensions. HUD artwork was explicitly approved and its inventory-specific defaults are enabled. Exact evidence is in [the delivery receipt](world-boss-visibility-20261025.json). Book behavior and live inventory rendering remain pending the user's gameplay check
+
 Implementation owner: JEMAchievementGuide. Product brief: the user's universal handbook request of 2026-10-22, resumed after FTB delivery `67d9f215` on 2026-10-23. The physical item is Patchouli's native `patchouli:guide_book` with `patchouli:book=jem_advancements:just_enough_guide`. One dirt plus one stick crafts one handbook in any two slots, including the inventory grid. Vanilla books retain their normal behavior. The 2026-10-24 amendment removes all book advancement notes and their click routing, while actual gameplay advancement IDs and progress remain intact, reading awards no progression, discoveries, items or permissions.
 
 ## Implementation plan

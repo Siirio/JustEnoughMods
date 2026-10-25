@@ -10,6 +10,8 @@ The user selected4 Argon in Work, reviewed the final native pair and explicitly 
 
 `timeHud.showInventoryDayNight` and `timeHud.showInventorySeasons` now default true. The inventory-specific keys replace the unfinished HUD's old false-default switches, so existing profiles gain this explicitly approved inventory feature through normal Forge config loading. Existing right/top offset values retain their keys. No raw profile config copy or state-pointer edit is used. Both indicators can be disabled separately through their native client configuration
 
+The final production Compat JAR is synchronized to ordinary Server/ManagedPack and installed through native AutoModpack generation79 in `test jem`. Active generation/head and artifact hashes match, with no pending transaction. The user-approved native art and configured behavior are delivered, while live inventory rendering and tooltips await the user's game check. [Delivery receipt](../handbook/world-boss-visibility-20261025.json)
+
 The earlier top-left, general-HUD and missing-art/default-off descriptions below are historical and superseded by this explicit placement and activation request
 
 The user requested two circular, native pixel HUD indicators in the 2026-10-23

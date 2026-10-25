@@ -3,7 +3,7 @@
   "timezone": "Asia/Yekaterinburg",
   "branch": "main",
   "commit": "SELF",
-  "status": "APPROVED_HUD_BUILT_FINAL_GENERATION_PENDING",
+  "status": "INSTALLED_USER_GAMEPLAY_ACCEPTANCE_PENDING",
   "boss_entries_per_language": 44,
   "excluded_ordinary_and_allied_profiles": 12,
   "gated_entries": {
@@ -20,9 +20,10 @@
       ":JEMCompat:jar"
     ],
     "result": "BUILD SUCCESSFUL in 1m18s, both reobfJar tasks completed, no tests",
-    "guide_sha256": "62b5aa61ac895c3868f8ed32504a67426008e58884c80937828ed4c1457543d8",
+    "guide_sha256": "96f39377fb9c96f24e0a7068edf1679878ad5453d6d10237a8feff7b1b287274",
     "compat_sha256": "d8a209753074343ca1b63714fef781cd99bc1aaf4cb43ca7a00f659560d7c284",
-    "approved_hud_followup": ":JEMCompat:jar and reobfJar, BUILD SUCCESSFUL in1m1s"
+    "approved_hud_followup": ":JEMCompat:jar and reobfJar, BUILD SUCCESSFUL in1m1s",
+    "final_guide_followup": "Guide-only clean jar and reobfJar, BUILD SUCCESSFUL in1m14s, includes coordinated camera fixes"
   },
   "packaging_inspection": {
     "guide_contains_44_boss_pages_per_language": true,
@@ -30,7 +31,21 @@
     "fresh_guide_and_compat_synchronized_to_managed_pack_and_server": true
   },
   "native_publication": {
-    "status": "PENDING_FINAL_SHARED_GENERATION_79"
+    "sequence": 79,
+    "contentToken": "dc827abada14ef266daca2b3d8ea39b7af2c8299",
+    "published": true,
+    "manifestSha1": "10981a855a6b5bb8a0640cf9fc5a7dbda76bf628",
+    "stagedAndPublishedManifestMatch": true,
+    "finalDiff": {
+      "added": 0,
+      "changed": 3,
+      "removed": 0
+    },
+    "priorMigrationDiff": {
+      "added": 0,
+      "changed": 12,
+      "removed": 32
+    }
   },
   "inventory_hud": {
     "placement": "Survival/creative inventory only, top-right8px, 24px dials, 4px gap",
@@ -38,7 +53,7 @@
     "art_status": "USER_APPROVED_NATIVE_ASEPRITE_EXPORTS",
     "source": "Docs/art/inventory-season-hud-2026-10-25/README.md",
     "work_task": "https://gemini.google.com/app/58e095170e88f4e2",
-    "configuration": "timeHud.showInventoryDayNight/showInventorySeasons default true, existing offsets preserved"
+    "configuration": "timeHud.showInventoryDayNight/showInventorySeasons default true through native Forge config loading, existing offsets preserved"
   },
   "not_claimed": [
     "Gameplay acceptance",
@@ -46,5 +61,38 @@
     "MineRENT deployment",
     "Stable profile update",
     "Release baseline promotion"
-  ]
+  ],
+  "atlas_representatives": [
+    "legendary_monsters:haunted_guard and cataclysm:ender_guardian return the current handbook filter rule"
+  ],
+  "installation": {
+    "sequence": 79,
+    "contentToken": "dc827abada14ef266daca2b3d8ea39b7af2c8299",
+    "pendingTransaction": false,
+    "activeJarHashesMatch": true,
+    "questConfigsMatchManagedSource": true,
+    "method": "Native journal mirror, verified object cache, reviewed UpdateAttempt approve and commit, no raw managed-file copies"
+  },
+  "server": {
+    "synchronized": true,
+    "running": false,
+    "allDimensionsSaved": true,
+    "finalClientOnlyNavigationJarInstalledAfterStop": true,
+    "shutdownNote": "Existing MapSyncer AIR reflection teardown error occurred after all dimensions were saved"
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "auditPassed": true,
+    "scanPassed": true,
+    "validationPassed": true,
+    "uncovered": [],
+    "installedArtifactDrift": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "unresolved": []
+    },
+    "runtimeRegistryDump": false
+  },
+  "atlas_delivery_owner": "Shared generated catalog changes are coordinated with the concurrent quest review, unrelated source changes are not pushed to main by this task"
 }
