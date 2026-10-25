@@ -1,5 +1,17 @@
 # JEM Handbook
 
+## Boss visibility, 2026-10-25
+
+User requested hiding bosses from closed Nether/End and removing ordinary boss allies from the book, then explicitly selected server-wide opening rather than personal discovery
+
+The book reads the existing JEMServer `DimensionProgress` flags. These record the first server-wide entry or native entry advancement, persist in the existing save owner and remain independent of personal book progress. Guide sends only the two booleans on its `jem_advancements:handbook_access` protocol1 channel when changed. Clients clear the snapshot on disconnect. Native Patchouli `shouldHide` and `isLocked` use the authored dimension projection, covering category lists, search and direct entry routes. An already-open book rebuilds its current screen when the shared flags change. This does not change portal access or invent a second saved progression. Standalone Guide without JEMServer has no shared discovery restriction
+
+The authored handbook keeps 44 bosses and minibosses. Twelve ordinary Legendary Monsters mobs and allies are excluded from generated RU/EN pages. The installed superclass hierarchy and `annihilation_team` / `possessed_armor_team` tags establish the distinction. Native minibosses and canonical campaign/post-End targets such as Dune Sentinel and Endersent remain. Existing World Tier profiles, campaign requirements, native AI, drops and rewards are unchanged. `bosses-coverage.json` retains the excluded profile evidence with no book route. Regeneration prunes their old page files
+
+Bug / Both Sided / the handbook projected every World Tier profile as a boss and applied only an installed-mod flag, without world dimension discovery / in testing, explicit authored presentation roles and synchronized existing world discovery now govern native Patchouli visibility
+
+Production packaging and native publication/application are coordinated with the concurrent FTB Quests UI rescue. Source inspection does not establish runtime acceptance
+
 Implementation owner: JEMAchievementGuide. Product brief: the user's universal handbook request of 2026-10-22, resumed after FTB delivery `67d9f215` on 2026-10-23. The physical item is Patchouli's native `patchouli:guide_book` with `patchouli:book=jem_advancements:just_enough_guide`. One dirt plus one stick crafts one handbook in any two slots, including the inventory grid. Vanilla books retain their normal behavior. The 2026-10-24 amendment removes all book advancement notes and their click routing, while actual gameplay advancement IDs and progress remain intact, reading awards no progression, discoveries, items or permissions.
 
 ## Implementation plan

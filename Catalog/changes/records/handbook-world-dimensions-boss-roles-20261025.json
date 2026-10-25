@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "change_id": "handbook.world-dimensions-and-boss-roles-20261025",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "source_set",
+      "registry": "entities",
+      "value": "jem:authored_boss_help",
+      "members_path": "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "records_field": "entries",
+      "id_field": "subject"
+    }
+  ],
+  "precedence": {
+    "layer": "presentation_and_documentation",
+    "priority": 610
+  },
+  "change": {
+    "summary": "Hide Nether and End boss entries until existing world-global DimensionProgress opens their dimension, exclude 12 native ordinary mobs/allies from the handbook only",
+    "modifiers": [
+      {
+        "property": "handbook.boss_visibility",
+        "operation": "replace",
+        "before": "All 56 World Tier profiles are handbook bosses, gated only by installed mod",
+        "after": "44 boss/miniboss projections remain. 12 native ordinary mobs/allies are excluded. Nether and End entries use the existing server-wide DimensionProgress discovery flags, including search and direct entry opening. No World Tier enrollment, campaign prerequisite, AI or reward changes"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide handbook projection, JEMServer DimensionProgress remains discovery authority",
+    "kind": "presentation_filter",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "Mods/JEMAchievementGuide/tools/generate_handbook.py",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/HandbookWorldAccess.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookWorldVisibility.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbookVisibilityMixin.java",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+      "Docs/handbook/README.md",
+      "Docs/handbook/bosses-coverage.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove closed-dimension spoilers and ordinary allied mobs from the boss handbook",
+    "decision_source": "User requested both filters and explicitly selected server-wide unlocking on 2026-10-25",
+    "user_requested": "Hide bosses of closed Nether/End and remove non-boss allies",
+    "implementation_choices": "Read the existing DimensionProgress flags, publish bounded two-boolean S2C snapshots when changed, gate native Patchouli shouldHide/isLocked, classify authored projection roles using installed Legendary Monsters superclass/team evidence. Keep canonical campaign/post-End targets including Dune Sentinel and Endersent"
+  },
+  "introduced": {
+    "date": "2026-10-25",
+    "commit": "SELF",
+    "action": "filter_handbook_boss_projections",
+    "summary": "Hide Nether and End boss entries until existing world-global DimensionProgress opens their dimension, exclude 12 native ordinary mobs/allies from the handbook only",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+      "Mods/JEMAchievementGuide/tools/generate_handbook.py",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/HandbookWorldAccess.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookWorldVisibility.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbookVisibilityMixin.java",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+      "Docs/handbook/README.md",
+      "Docs/handbook/bosses-coverage.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-25",
+      "commit": "SELF",
+      "action": "filter_handbook_boss_projections",
+      "summary": "Hide Nether and End boss entries until existing world-global DimensionProgress opens their dimension, exclude 12 native ordinary mobs/allies from the handbook only",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/handbook/bosses.json",
+        "Mods/JEMAchievementGuide/tools/generate_handbook.py",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/HandbookWorldAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookWorldVisibility.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PatchouliHandbookVisibilityMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/*/entries/handbook/bosses/**/*.json",
+        "Docs/handbook/README.md",
+        "Docs/handbook/bosses-coverage.json"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "world_unlock": "Existing JEMServer DimensionProgress flags become true on recorded dimension entry or completed native entry advancement. The handbook does not create a separate portal gate"
+    },
+    {
+      "standalone": "Without JEMServer there is no shared JEM discovery restriction, so the standalone Guide keeps dimensions visible"
+    },
+    {
+      "network": "Matching Guide artifact on both sides required for jem_advancements:handbook_access protocol1"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "handbook",
+      "search",
+      "boss models",
+      "native AutoModpack"
+    ],
+    "relations": [
+      "DimensionProgress -> server snapshot -> Patchouli visibility"
+    ],
+    "notes": [
+      "Installed Legendary Monsters 2.2.2 classes and annihilation_team/possessed_armor_team tags inspected. Native miniboss classes and canonical campaign/post-End targets retained",
+      "Authored dimension annotations are presentation projections of Campaign definitions, PostEndTarget and native worldgen locations",
+      "Excluded profiles remain registered with World Tier. Handbook generator removes stale localized projections on regeneration",
+      "No new artwork or book layout change"
+    ],
+    "unresolved": [
+      "Runtime book refresh and player acceptance remain unobserved until user checks the installed generation"
+    ]
+  }
+}

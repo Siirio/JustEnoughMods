@@ -1,5 +1,15 @@
 # Time and seasons HUD
 
+## Current inventory placement, 2026-10-25
+
+The user requested the two indicators only while player inventory is open, at the top right, and explicitly selected circular icons through Gemini. Survival and creative player inventory share this presentation. Other screens and the ordinary gameplay HUD no longer draw the pair
+
+The existing 24x24 footprint, four-pixel gap, native calendar reads and tooltips remain. Horizontal offset now measures the right margin, vertical offset the top margin. With defaults, the day dial begins at `screenWidth - 60, 8` and the season dial at `screenWidth - 32, 8`. A single enabled dial uses the rightmost position. Offsets remain clamped to the viewport. No native inventory slots or controls move
+
+Both toggles remain disabled while approved native artwork is absent. Gemini was given the original positive/negative references and exact geometry in [the live HUD conversation](https://gemini.google.com/app/a4a276d879dc9732). Its first result reused the negative screenshot and failed isolated-asset, orientation and export requirements, so it is rejected. Actual native pixels and visual acceptance remain separate from placement source
+
+The earlier top-left and general-HUD description below is historical and superseded by this explicit placement request
+
 The user requested two circular, native pixel HUD indicators in the 2026-10-23
 Food/Pet Shelters/Seasonal HUD v2 specification. JEMCompat owns client rendering;
 Minecraft owns synchronized day time, and Serene Seasons owns seasonal state and

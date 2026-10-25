@@ -21,8 +21,10 @@ public final class JEMClientConfig {
                 .define("showDayNight", false);
         SHOW_SEASON_HUD = builder.comment("Unfinished presentation: enable only after installing the user-approved 24x24 season_cycle.png texture.")
                 .define("showSeasons", false);
-        TIME_HUD_OFFSET_X = builder.defineInRange("horizontalOffset", 8, 0, 4096);
-        TIME_HUD_OFFSET_Y = builder.defineInRange("verticalOffset", 8, 0, 4096);
+        TIME_HUD_OFFSET_X = builder.comment("Distance from the right edge of the open player inventory screen, in GUI pixels.")
+                .defineInRange("horizontalOffset", 8, 0, 4096);
+        TIME_HUD_OFFSET_Y = builder.comment("Distance from the top edge of the open player inventory screen, in GUI pixels.")
+                .defineInRange("verticalOffset", 8, 0, 4096);
         builder.pop();
         SPEC = builder.build();
     }

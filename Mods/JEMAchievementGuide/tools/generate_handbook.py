@@ -77,7 +77,16 @@ def generate_authored_content(book=BOOK):
         if not path.exists():
             continue
         authored = json.loads(path.read_text(encoding="utf-8"))
+        if section == "bosses":
+            # Remove retired projections in both languages, including stale prior output.
+            retained = {entry["id"] for entry in authored["entries"] if entry.get("handbook_role", "boss") == "boss"}
+            for language in ("ru_ru", "en_us"):
+                for old in (book / language / "entries/handbook/bosses").rglob("*.json"):
+                    if old.relative_to(book / language / "entries").with_suffix("").as_posix() not in retained:
+                        old.unlink()
         for entry in authored["entries"]:
+            if section == "bosses" and entry.get("handbook_role", "boss") != "boss":
+                continue
             for language in ("ru_ru", "en_us"):
                 localized = entry[language]
                 value = {"name": localized["name"], "icon": entry["icon"],
@@ -87,6 +96,8 @@ def generate_authored_content(book=BOOK):
                 if "summary" in localized:
                     value["jem_summary"] = localized["summary"]
                 if section == "bosses":
+                    if "dimension" in entry:
+                        value["jem_dimension"] = entry["dimension"]
                     first, *remaining = localized["pages"]
                     intro, *continuation = intro_parts(first.get("text", "")) or [""]
                     value["pages"] = [

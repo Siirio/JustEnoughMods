@@ -1,0 +1,32 @@
+{
+  "date_local": "2026-10-25",
+  "timezone": "Asia/Yekaterinburg",
+  "branch": "main",
+  "commit": "SELF",
+  "status": "BUILT_AND_SYNCHRONIZED_NATIVE_PUBLICATION_PENDING",
+  "boss_entries_per_language": 44,
+  "excluded_ordinary_and_allied_profiles": 12,
+  "gated_entries": {"minecraft:the_nether": 11, "minecraft:the_end": 7},
+  "discovery_owner": "JEMServer DimensionProgress, world-global flags",
+  "network": "jem_advancements:handbook_access protocol1, S2C two booleans",
+  "production_build": {
+    "coordinator": "Concurrent FTB Quests UI rescue session",
+    "tasks": [":JEMAchievementGuide:clean", ":JEMAchievementGuide:jar", ":JEMCompat:jar"],
+    "result": "BUILD SUCCESSFUL in 1m18s, both reobfJar tasks completed, no tests",
+    "guide_sha256": "010aaedbf2bc37b62a195c1028d758ea4637a68e24dbc09d9db1a45218df989f",
+    "compat_sha256": "4adf762ec4db1b727600673263906c3c8f9251424b1e4d25ccfd76210f9ea04e"
+  },
+  "packaging_inspection": {
+    "guide_contains_44_boss_pages_per_language": true,
+    "visibility_mixin_class_and_registration_present": true,
+    "fresh_guide_and_compat_synchronized_to_managed_pack_and_server": true
+  },
+  "native_publication": {"status": "PENDING_SHARED_COORDINATOR"},
+  "inventory_hud": {
+    "placement": "Survival/creative inventory only, top-right8px, 24px dials, 4px gap",
+    "enabled": false,
+    "art_status": "Earlier Chat candidates rejected, user authorized one additional Work attempt with4 Argon",
+    "source": "Docs/art/inventory-season-hud-2026-10-25/README.md"
+  },
+  "not_claimed": ["Gameplay acceptance", "HUD artwork approval", "Automated tests", "MineRENT deployment", "Stable profile update", "Release baseline promotion"]
+}

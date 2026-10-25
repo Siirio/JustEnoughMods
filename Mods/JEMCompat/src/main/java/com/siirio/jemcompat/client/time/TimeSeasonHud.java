@@ -5,12 +5,11 @@ import com.siirio.jemcompat.compat.seasons.SeasonHudAdapter;
 import com.siirio.jemcompat.config.JEMClientConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.ChatScreen;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -19,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 import java.util.Locale;
 
-/** Native synchronized values only: no calendar, tick counter, packet or gameplay state. */
+/** Player-inventory presentation of native synchronized values, with no separate calendar. */
 @Mod.EventBusSubscriber(modid = JEMCompat.MOD_ID, value = Dist.CLIENT)
 public final class TimeSeasonHud {
     private static final ResourceLocation DAY = new ResourceLocation(JEMCompat.MOD_ID, "textures/gui/time/day_cycle.png");
@@ -29,13 +28,8 @@ public final class TimeSeasonHud {
     private TimeSeasonHud() {}
 
     @SubscribeEvent
-    public static void renderHud(RenderGuiEvent.Post event) {
-        if (Minecraft.getInstance().screen == null) draw(event.getGuiGraphics(), -1, -1, event.getPartialTick());
-    }
-
-    @SubscribeEvent
     public static void renderScreen(ScreenEvent.Render.Post event) {
-        if (event.getScreen() instanceof ChatScreen || event.getScreen() instanceof AbstractContainerScreen<?>) {
+        if (event.getScreen() instanceof InventoryScreen || event.getScreen() instanceof CreativeModeInventoryScreen) {
             draw(event.getGuiGraphics(), event.getMouseX(), event.getMouseY(), event.getPartialTick());
         }
     }
@@ -45,8 +39,9 @@ public final class TimeSeasonHud {
         if (mc.level == null || mc.player == null || mc.options.hideGui) return;
         boolean day = JEMClientConfig.SHOW_TIME_HUD.get();
         boolean season = JEMClientConfig.SHOW_SEASON_HUD.get() && ModList.get().isLoaded("sereneseasons");
+        if (!day && !season) return;
         int width = day && season ? SIZE * 2 + 4 : SIZE;
-        int x = Math.max(0, Math.min(JEMClientConfig.TIME_HUD_OFFSET_X.get(), graphics.guiWidth() - width));
+        int x = Math.max(0, graphics.guiWidth() - width - JEMClientConfig.TIME_HUD_OFFSET_X.get());
         int y = Math.max(0, Math.min(JEMClientConfig.TIME_HUD_OFFSET_Y.get(), graphics.guiHeight() - SIZE));
         List<Component> tooltip = List.of();
         if (day) {

@@ -14,6 +14,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.justenoughmods.achievementguide.mixin.PatchouliHandbookCategoryAccess", List.of("patchouli")),
             Map.entry("com.justenoughmods.achievementguide.mixin.QuestChapterImageMixin", List.of("ftbquests")),
             Map.entry("com.justenoughmods.achievementguide.mixin.PatchouliHandbookSearchMixin", List.of("patchouli")),
+            Map.entry("com.justenoughmods.achievementguide.mixin.PatchouliHandbookVisibilityMixin", List.of("patchouli")),
             Map.entry("com.justenoughmods.achievementguide.mixin.PatchouliHandbookReadingMixin", List.of("patchouli")),
             Map.entry("com.justenoughmods.achievementguide.mixin.FtbQuestFileMixin", List.of("ftbquests")),
             Map.entry("com.justenoughmods.achievementguide.mixin.CastingNetItemMixin", List.of("spawn")),

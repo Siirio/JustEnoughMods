@@ -43,6 +43,7 @@ public final class HandbookNavigation {
 
     public static void register() {
         MinecraftForge.EVENT_BUS.register(HandbookNavigation.class);
+        MinecraftForge.EVENT_BUS.register(HandbookWorldVisibility.class);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(HandbookNavigation::keys);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(HandbookSearch::reloadListeners);
         EnchantmentHelp.register();
