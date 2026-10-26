@@ -18,10 +18,21 @@ public final class PhysicalCoinService {
     }
 
     public static WithdrawResult withdraw(ServerPlayer player, long amount, UUID requestId) {
+        return withdraw(player, amount, requestId, decompose(amount), null, 0);
+    }
+
+    public static WithdrawResult withdrawExact(ServerPlayer player, CoinDenomination denomination, int count, UUID requestId) {
+        if (denomination == null || count <= 0 || count > 4_096)
+            return new WithdrawResult(Status.INVALID, 0L, Map.of());
+        return withdraw(player, denomination.value() * count, requestId,
+                Map.of(denomination, (long) count), denomination, count);
+    }
+
+    private static WithdrawResult withdraw(ServerPlayer player, long amount, UUID requestId,
+            Map<CoinDenomination, Long> breakdown, CoinDenomination exact, int count) {
         if (!CurrencyAuthority.active(player)) return new WithdrawResult(Status.UNAVAILABLE, 0L, Map.of());
         var principal = IdentityPolicy.resolve(player);
         if (principal.isEmpty()) return new WithdrawResult(Status.UNAUTHENTICATED, 0L, Map.of());
-        Map<CoinDenomination, Long> breakdown = decompose(amount);
         if (breakdown.isEmpty()) return new WithdrawResult(Status.INVALID, 0L, Map.of());
         EconomySavedData data = EconomySavedData.get(player.getServer());
         player.getInventory().items.forEach(data::normalizeCoin);
@@ -30,14 +41,16 @@ public final class PhysicalCoinService {
         for (var entry : breakdown.entrySet()) {
             long remaining = entry.getValue();
             while (remaining > 0) {
-                int count = (int) Math.min(64L, remaining);
-                if (!insertSimulated(simulated, data.coinTemplate(entry.getKey(), count)))
+                int stackCount = (int) Math.min(64L, remaining);
+                if (!insertSimulated(simulated, data.coinTemplate(entry.getKey(), stackCount)))
                     return new WithdrawResult(Status.NO_SPACE, 0L, breakdown);
-                remaining -= count;
+                remaining -= stackCount;
             }
         }
 
-        EconomySavedData.WithdrawLedgerResult plan = data.prepareWithdraw(principal.get().accountId(), amount, requestId);
+        EconomySavedData.WithdrawLedgerResult plan = exact == null
+                ? data.prepareWithdraw(principal.get().accountId(), amount, requestId)
+                : data.prepareWithdrawExact(principal.get().accountId(), exact, count, requestId);
         if (plan.status() == EconomySavedData.PhysicalStatus.INSUFFICIENT_FUNDS) {
             return new WithdrawResult(Status.INSUFFICIENT_FUNDS, 0L, breakdown);
         }
@@ -100,6 +113,54 @@ public final class PhysicalCoinService {
         player.getInventory().setChanged();
         player.containerMenu.broadcastChanges();
         return new DepositResult(Status.COMMITTED, reservation.value(), accepted, stamped - accepted);
+    }
+
+    public static DepositResult depositExact(ServerPlayer player, CoinDenomination denomination, int count, UUID requestId) {
+        if (!CurrencyAuthority.active(player)) return new DepositResult(Status.UNAVAILABLE, 0L, 0, 0);
+        var principal = IdentityPolicy.resolve(player);
+        if (principal.isEmpty()) return new DepositResult(Status.UNAUTHENTICATED, 0L, 0, 0);
+        if (denomination == null || count <= 0 || count > 4_096 || requestId == null)
+            return new DepositResult(Status.INVALID, 0L, 0, 0);
+        EconomySavedData data = EconomySavedData.get(player.getServer());
+        List<EconomySavedData.DepositCandidate> candidates = new ArrayList<>();
+        Map<UUID, Integer> selectedByLot = new LinkedHashMap<>();
+        int remaining = count;
+        for (int slot = 0; slot < player.getInventory().getContainerSize() && remaining > 0; slot++) {
+            ItemStack stack = player.getInventory().getItem(slot);
+            var stamp = CoinProvenance.read(stack);
+            if (stamp.isEmpty() || stamp.get().denomination() != denomination) continue;
+            int already = selectedByLot.getOrDefault(stamp.get().lotId(), 0);
+            int backed = Math.min(stack.getCount(), Math.max(0, data.redeemable(stamp.get().lotId(), denomination) - already));
+            int take = Math.min(backed, remaining);
+            if (take <= 0) continue;
+            candidates.add(new EconomySavedData.DepositCandidate(slot, stamp.get().lotId(), denomination, take));
+            selectedByLot.put(stamp.get().lotId(), already + take);
+            remaining -= take;
+        }
+        if (remaining != 0) return new DepositResult(Status.NO_VALID_COINS, 0L, 0, count);
+        EconomySavedData.DepositReservation reservation = data.prepareDeposit(principal.get().accountId(), candidates, requestId);
+        if (reservation.status() != EconomySavedData.PhysicalStatus.PREPARED)
+            return new DepositResult(reservation.status() == EconomySavedData.PhysicalStatus.REPLAYED ? Status.REPLAYED : Status.NO_VALID_COINS,
+                    0L, 0, count);
+        int accepted = reservation.selections().stream().mapToInt(EconomySavedData.DepositSelection::accepted).sum();
+        if (accepted != count || reservation.value() != denomination.value() * count) {
+            data.cancelDeposit(requestId);
+            return new DepositResult(Status.NO_VALID_COINS, 0L, 0, count);
+        }
+        for (EconomySavedData.DepositSelection selection : reservation.selections()) {
+            ItemStack current = player.getInventory().getItem(selection.slot());
+            var stamp = CoinProvenance.read(current);
+            if (stamp.isEmpty() || !stamp.get().lotId().equals(selection.lotId())
+                    || stamp.get().denomination() != denomination || current.getCount() < selection.accepted()) {
+                data.cancelDeposit(requestId);
+                return new DepositResult(Status.INVENTORY_CHANGED, 0L, 0, count);
+            }
+        }
+        reservation.selections().forEach(selection -> player.getInventory().getItem(selection.slot()).shrink(selection.accepted()));
+        if (!data.commitDeposit(requestId)) return new DepositResult(Status.QUARANTINED, 0L, count, 0);
+        player.getInventory().setChanged();
+        player.containerMenu.broadcastChanges();
+        return new DepositResult(Status.COMMITTED, reservation.value(), count, 0);
     }
 
     /** Redeems exactly one backed Gold Coin and moves its value to the central reserve. */
@@ -286,13 +347,21 @@ public final class PhysicalCoinService {
     }
 
     public static HeldSummary heldSummary(ServerPlayer player) {
+        return heldSummary(player, player.getInventory().getContainerSize());
+    }
+
+    public static HeldSummary exchangeableSummary(ServerPlayer player) {
+        return heldSummary(player, player.getInventory().items.size());
+    }
+
+    private static HeldSummary heldSummary(ServerPlayer player, int slotCount) {
         if (!CurrencyAuthority.active(player)) return new HeldSummary(0L, Map.of(), 0);
         EconomySavedData data = EconomySavedData.get(player.getServer());
         Map<CoinDenomination, Integer> counts = new EnumMap<>(CoinDenomination.class);
         long value = 0L;
         int invalid = 0;
         Map<UUID, Integer> seenByLot = new LinkedHashMap<>();
-        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+        for (int slot = 0; slot < slotCount; slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
             var stamp = CoinProvenance.read(stack);
             if (stamp.isEmpty()) continue;

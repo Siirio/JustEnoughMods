@@ -20,7 +20,7 @@ public final class SmpSidebar {
         rowHeight = Math.max(18, Math.min(38, availableHeight / tabs.size()));
     }
     private boolean available(String tab) {
-        String feature = tab.equals("market") || tab.equals("shops") ? "economy" : tab;
+        String feature = tab.equals("market") ? "economy" : tab;
         return !java.util.Set.of("economy", "roles", "professions", "settlements", "recruits", "events", "prizes").contains(feature)
                 || features.getBoolean(feature);
     }

@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-10-26T15:54:11+05:00",
+  "status": "LOCAL_DELIVERY_COMPLETE_PLAYER_ACCEPTANCE_PENDING",
+  "commit": "SELF",
+  "scope": "Ordinary local Server, canonical ManagedPack and native test jem. MineRENT, stable profile, friend installations and release baseline unchanged",
+  "requested": {
+    "jei": "One category-only search at the bottom, glass and light leaves, building material, container and decoration corrections",
+    "spud": "Remove Spud's Shops and its dependent JEM integration",
+    "plan": "Native merchant result, paid-XP grindstone extraction and exact Shipping Box coin actions",
+    "friendUpdates": "Diagnose only the local source-to-publication chain"
+  },
+  "build": {
+    "productionTasks": [":JEMCompat:jar", ":JEMEconomy:jar", ":JEMServer:jar"],
+    "finalEconomyRebuild": true,
+    "reobfJarCompleted": true,
+    "automatedTests": false,
+    "clientLaunched": false
+  },
+  "artifacts": [
+    {
+      "module": "JEMCompat",
+      "name": "jemcompat-3.7.0.jar",
+      "sha256": "d091121e3e7f4b459ab39c33401fb6f29fa01df552182419661af0038d2a3814",
+      "size": 405487
+    },
+    {
+      "module": "JEMEconomy",
+      "name": "jem-economy-1.3.0.jar",
+      "sha256": "2ffb69470040b02f1744473e33807a0fcf307e57ae2136cf342ab8c32d8c8be6",
+      "size": 2280878
+    },
+    {
+      "module": "JEMServer",
+      "name": "jem-server-2.0.0-dev.jar",
+      "sha256": "c185de263be4d2d73d8cc0a950f5f1aa5fa422d4985a6203f9130b3867b33454",
+      "size": 20214778
+    }
+  ],
+  "server": {
+    "synchronized": true,
+    "startupDone": true,
+    "startupTimeLocal": "2026-10-26T15:34:21+05:00",
+    "address": "127.0.0.1:31604"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 83,
+    "contentToken": "097c60ae534e93f5b71a9e769931c580b79eaf3a",
+    "publishedManifestSha1": "8a49781527555d93af160a520bef784d9512658f",
+    "stagedManifestSha1": "8a49781527555d93af160a520bef784d9512658f",
+    "nativePreviewDiff": "+0 ~2 -0 from the previous publication, Economy JAR and manifest only"
+  },
+  "installation": {
+    "profile": "test jem",
+    "method": "Native AutoModpack prepare, exact path/hash review, approval and commit",
+    "generation": 83,
+    "contentToken": "097c60ae534e93f5b71a9e769931c580b79eaf3a",
+    "status": "ACTIVE",
+    "detached": false,
+    "pendingTransaction": false,
+    "reviewSha256": "4a223ec0f6cda264fa579fd0953c1b4c4927af7b36094f0870b827ea316e38ab",
+    "jarsMatchServerAndManagedPack": true,
+    "spudJarAndConfigAbsent": true,
+    "clientLaunched": false
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "auditCompleted": true,
+    "scanValid": true,
+    "validationValid": true,
+    "preexistingPowerViewChangesPreserved": true
+  },
+  "limits": {
+    "fullJemStatus": "PermissionError reading a locked file in the open stable profile. Targeted publication check confirmed staged and published manifest hashes",
+    "friendInstallation": "Not inspected under the user's local-chain-only direction",
+    "shaderFailure": "Not diagnosed without a concrete friend log or path",
+    "manualGameplayAcceptance": false,
+    "stableAndMineRentDeployment": false,
+    "unverifiedStakeFamily": "No exact installed registry IDs established"
+  }
+}

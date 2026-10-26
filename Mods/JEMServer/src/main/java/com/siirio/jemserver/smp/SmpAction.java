@@ -34,10 +34,6 @@ public sealed interface SmpAction {
         default SmpTable table() { return SmpTable.EVENTS; }
         default void execute(ServerPlayer player) { SmpActions.event(player, this); }
     }
-    sealed interface ShopCommand extends SmpAction {
-        default SmpTable table() { return SmpTable.SHOPS; }
-    }
-
     record NavigateParty(UUID request, UUID id, int revision) implements PartyCommand {
         public NavigateParty { Objects.requireNonNull(request); Objects.requireNonNull(id); }
         public SmpActionKind kind() { return SmpActionKind.NAVIGATE; }
@@ -162,24 +158,6 @@ public sealed interface SmpAction {
         public void apply(ServerPlayer actor, EventState event) { SmpActions.joinEvent(actor, event, true); }
     }
 
-    record FavoriteShop(UUID request, UUID id, int revision) implements ShopCommand {
-        public FavoriteShop { Objects.requireNonNull(request); Objects.requireNonNull(id); }
-        public SmpActionKind kind() { return SmpActionKind.FAVORITE; }
-        public void execute(ServerPlayer player) { com.siirio.jemserver.smp.shops.ShopIndex.favorite(player, id); }
-    }
-
-    record BuyShop(UUID request, UUID id, int revision) implements ShopCommand {
-        public BuyShop { Objects.requireNonNull(request); Objects.requireNonNull(id); }
-        public SmpActionKind kind() { return SmpActionKind.BUY; }
-        public void execute(ServerPlayer player) { com.siirio.jemserver.smp.shops.ShopIndex.buy(player, id, revision, request); }
-    }
-
-    record NavigateShop(UUID request, UUID id, int revision) implements ShopCommand {
-        public NavigateShop { Objects.requireNonNull(request); Objects.requireNonNull(id); }
-        public SmpActionKind kind() { return SmpActionKind.NAVIGATE; }
-        public void execute(ServerPlayer player) { com.siirio.jemserver.smp.shops.ShopIndex.navigate(player, id); }
-    }
-
     static SmpAction fromWire(UUID request, SmpTable table, UUID id, int revision,
                               SmpActionKind kind, SmpActionInput input) {
         if (table == SmpTable.PARTIES && kind == SmpActionKind.CREATE && input instanceof SmpPartyRequest party) {
@@ -215,12 +193,6 @@ public sealed interface SmpAction {
                 case JOIN_RAID -> new JoinRaidEvent(request, id, revision);
                 case CREATE_PARTY -> new CreatePartyEvent(request, id, revision);
                 case SOLO -> new SoloEvent(request, id, revision);
-                default -> throw new IllegalArgumentException("Unsupported operation");
-            };
-            case SHOPS -> switch (kind) {
-                case FAVORITE -> new FavoriteShop(request, id, revision);
-                case BUY -> new BuyShop(request, id, revision);
-                case NAVIGATE -> new NavigateShop(request, id, revision);
                 default -> throw new IllegalArgumentException("Unsupported operation");
             };
             default -> throw new IllegalArgumentException("Unsupported operation domain");

@@ -71,8 +71,22 @@ public final class EconomyApi {
         return PhysicalCoinService.withdraw(player, amount, requestId);
     }
 
+    public static PhysicalCoinService.WithdrawResult withdrawExact(ServerPlayer player,
+            com.siirio.jemeconomy.physical.CoinDenomination denomination, int count, UUID requestId) {
+        var principal = IdentityPolicy.resolve(player);
+        if (!CurrencyAuthority.active(player)) return new PhysicalCoinService.WithdrawResult(PhysicalCoinService.Status.UNAVAILABLE, 0L, java.util.Map.of());
+        if (principal.isEmpty()) return new PhysicalCoinService.WithdrawResult(PhysicalCoinService.Status.UNAUTHENTICATED, 0L, java.util.Map.of());
+        ensureStarter(player, principal.get().accountId());
+        return PhysicalCoinService.withdrawExact(player, denomination, count, requestId);
+    }
+
     public static PhysicalCoinService.DepositResult depositAll(ServerPlayer player, UUID requestId) {
         return PhysicalCoinService.depositAll(player, requestId);
+    }
+
+    public static PhysicalCoinService.DepositResult depositExact(ServerPlayer player,
+            com.siirio.jemeconomy.physical.CoinDenomination denomination, int count, UUID requestId) {
+        return PhysicalCoinService.depositExact(player, denomination, count, requestId);
     }
 
     public static PhysicalCoinService.Status spendOneGold(ServerPlayer player, UUID requestId) {

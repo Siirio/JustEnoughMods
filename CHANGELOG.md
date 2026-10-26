@@ -1,3 +1,22 @@
+## 2026-10-26 - JEI categories, Spud retirement and trading plan implementation
+
+- User requested one category-only JEI search at the bottom, new glass and light sections, material/container/decor corrections, and complete removal of Spud's Shops from the active pack
+- User also requested implementation of the trading, grindstone, Shipping Box and friend-update plan, then limited the friend-update investigation to the local publication chain
+- User confirmed 70% of XP points actually spent, even division across enchantments from one operation, no processing of old items without cost history, curse extraction as separate books and no Shift + right click action on enchanted books
+- Implementation choices: classify each ItemStack in one JEI leaf by verified block traits and exact exceptions, preserve the server-owned merchant result against client-only vanilla payment recalculation, record tokenized enchantment costs at table/anvil acquisition, and allow exact denomination/count operations through the existing Economy ledger
+- Bug / Client / vanilla MerchantContainer recalculates the output from physical input slots that do not contain virtual coin payment, hiding an otherwise available server quote / in testing, a client-side monetary-quote guard preserves server slot synchronization without changing native barter or take authorization
+- Bug / Both Sided / Shipping Box previously deposited all held coins and coupled its controls to one amount rather than a selected denomination and count / in testing, exact server operations and synchronized wallet, held and exchange-eligible counts now back the revised controls
+- Bug / Both Sided / the staged ManagedPack can differ from the last AutoModpack journal generation and the installed client active token / in testing, local source, host manifest, published journal 83 and native `test jem` installation now match, with no friend's installation inspected
+- Spud's Shops JAR and config were removed from the ordinary local Server and ManagedPack, while JEM shop routes, Mixins, dependency and active documentation were retired and opaque legacy save data was preserved
+- Production `:JEMCompat:jar`, `:JEMEconomy:jar` and `:JEMServer:jar` builds succeeded, including the final Economy UI correction, and exact outputs match ordinary Server, ManagedPack and native `test jem` by SHA-256. Atlas rebuild, audit, scan and validation passed. Ordinary local Server reached `Done`, native preview and publication produced generation 83 with matching staged/published manifest SHA-1, and native application left `test jem` active at its published token with no pending transaction
+- Full `jem.py status` cannot read one locked file in the running stable profile, even with elevated read access. The targeted publication check and native receipt confirm the local delivery. No automated tests, client gameplay launch, MineRENT deployment, stable-profile mutation, friend installation or release-baseline promotion is claimed. Local evidence is in `Docs/releases/jei-trading-grindstone-coins-20261026.json`
+
+## 2026-10-26 - Trading, grindstone, coins and friend-update plan
+
+- User requested only a Markdown plan for an invisible available merchant result, ordered Shift-right-click enchantment extraction with a book drop and 70% XP refund, denomination/count-based Shipping Box currency controls, shader long-path failures and missing whole-pack updates for friends
+- Planning choices: trace native result synchronization before assigning a root cause, preserve the financial ledger and native update ownership, separate long-path acquisition from shader crashes and end-to-end release delivery, and explicitly leave historical XP attribution and proposed coin-remainder behavior for review
+- Plan: Docs/superpowers/plans/2026-10-26-trading-grindstone-coins-and-friend-updates.md. No implementation, production configuration/artifact changes, builds, tests, runtime launches or pack publication were performed. Initial status read encountered PermissionError in the stable profile and was not repaired
+
 ## 2026-10-26 - Local AutoModpack login timeout
 
 - User reports repeated "Timed out" joins to the ordinary local server, including attempts on 2026-10-25 and 2026-10-26

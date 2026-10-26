@@ -4,15 +4,11 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class SmpConfig {
     public static final ForgeConfigSpec SPEC;
-    public static final ForgeConfigSpec.IntValue SHOP_BATCH,
-            SHOP_LIMIT,
-            SHOP_FAVORITES_LIMIT,
-            WAYPOINT_MINUTES,
+    public static final ForgeConfigSpec.IntValue WAYPOINT_MINUTES,
             RUSH_TRACKED_BLOCKS,
             CONTRACT_DELIVERIES,
             DELIVERY_BATCH,
             EVENT_REGION_RETRY_SECONDS,
-            SHOP_STACK_NBT_BYTES,
             DISCOVERY_INTERVAL;
     public static final ForgeConfigSpec.IntValue MAX_ACTIVE,
             HISTORY,
@@ -37,14 +33,10 @@ public final class SmpConfig {
         var b = new ForgeConfigSpec.Builder();
         DISCOVERY_INTERVAL = b.defineInRange("discoveryIntervalTicks", 200, 20, 1200);
         EVENT_REGION_RETRY_SECONDS = b.defineInRange("eventRegionRetrySeconds", 60, 1, 3600);
-        SHOP_STACK_NBT_BYTES = b.defineInRange("shopStackNbtBytes", 8192, 256, 65536);
         CONTRACT_DELIVERIES = b.defineInRange("pendingServiceRewardStacks", 256, 9, 4096);
         DELIVERY_BATCH = b.defineInRange("deliveryStacksPerRequest", 36, 1, 256);
-        SHOP_LIMIT = b.defineInRange("shopIndexLimit", 65536, 256, 262144);
-        SHOP_FAVORITES_LIMIT = b.defineInRange("shopFavoritesLimit", 256, 8, 1024);
         WAYPOINT_MINUTES = b.defineInRange("temporaryWaypointMinutes", 60, 5, 1440);
         RUSH_TRACKED_BLOCKS = b.defineInRange("rushTrackedBlocks", 262144, 1024, 1048576);
-        SHOP_BATCH = b.defineInRange("shopIndexUpdatesPerTick", 64, 1, 1024);
         MAX_ACTIVE = b.defineInRange("activeRecordsPerPlayer", 8, 1, 64);
         HISTORY = b.defineInRange("retainedHistory", 512, 32, 8192);
         POST_COOLDOWN = b.defineInRange("publishCooldownSeconds", 60, 1, 3600);

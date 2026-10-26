@@ -1,0 +1,117 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.grindstone-paid-enchantment-extraction-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:grindstone"
+    },
+    {
+      "type": "registry",
+      "registry": "enchantments"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Server-side Shift + right click with a non-book enchanted main-hand item; every enchantment on the item must carry a valid recorded paid-XP history; normal interaction remains native."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_integration",
+    "priority": 1120,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Remove the top listed enchantment per Shift + right click, drop a matching book and refund 70% of its actual recorded XP once.",
+    "modifiers": [
+      {
+        "property": "jemcompat.enchantment_paid_xp_history",
+        "operation": "add",
+        "before": "No per-enchantment paid XP history exists for existing items or new enchantment operations.",
+        "after": "Actual XP points deducted by supported table/anvil operations are divided evenly among enchantments added or changed together and carried by tokenized item NBT. Existing items without history are ineligible until a separate user decision."
+      },
+      {
+        "property": "minecraft.grindstone.shift_use_extraction",
+        "operation": "add",
+        "before": "Native grindstone screen opens; no one-by-one extraction or paid-cost refund exists.",
+        "after": "Each eligible main-hand Shift + right click removes the first NBT/tooltip-order enchantment including curses, drops one enchanted book of that level at the block and refunds floor(70% of its recorded paid XP). Enchanted books are excluded; native ordinary right click is unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "server_owned_enchantment_cost_provenance",
+    "source_files": [
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentCostHistory.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentRefundData.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/AnvilMenuCostMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/AnvilQuickMoveCostMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/EnchantmentMenuCostMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Use actual paid XP and a redeemed-token journal to prevent invented costs or repeated compensation while preserving native enchanting and grindstone behavior.",
+    "decision_source": "User confirmed actual spent XP points, even division, old-item exclusion, curse extraction from gear and no enchanted-book action on 2026-10-26. Exact Forge 47.4.10 and installed EasyMagic/EasyAnvils call paths informed the adapters."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "add_recorded_extraction",
+    "summary": "Remove the top listed enchantment per Shift + right click, drop a matching book and refund 70% of its actual recorded XP once.",
+    "source_files": [
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentCostHistory.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentRefundData.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/AnvilMenuCostMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/AnvilQuickMoveCostMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/EnchantmentMenuCostMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "add_recorded_extraction",
+      "summary": "Remove the top listed enchantment per Shift + right click, drop a matching book and refund 70% of its actual recorded XP once.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentCostHistory.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/EnchantmentRefundData.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/AnvilMenuCostMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/AnvilQuickMoveCostMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/enchanting/EnchantmentMenuCostMixin.java",
+        "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "enchantments",
+      "grindstone",
+      "anvil",
+      "enchanting_table",
+      "XP",
+      "item_NBT",
+      "world_drops",
+      "network"
+    ],
+    "relations": [
+      "Table/anvil paid XP becomes per-enchantment provenance on the resulting ItemStack.",
+      "One extraction consumes the matching credit tokens in server SavedData before later operations can refund them again.",
+      "WorldBossTiers XP transfer bypasses general reward multiplication."
+    ],
+    "notes": [
+      "Existing enchanted items remain excluded until the user makes a separate decision.",
+      "Forge runtime interaction and modded tooltip ordering remain unobserved without a game launch."
+    ]
+  }
+}

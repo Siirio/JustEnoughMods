@@ -6,27 +6,24 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.LinkedHashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 
 public final class CuratedJeiCatalog {
     private static final List<CatalogCategory> TOP_LEVEL = List.of(CatalogCategory.WEAPONS, CatalogCategory.WEARABLE, CatalogCategory.FOOD,
             CatalogCategory.CREATE_REDSTONE, CatalogCategory.BUILDING, CatalogCategory.FISHING, CatalogCategory.BOOKS,
             CatalogCategory.POTIONS, CatalogCategory.TRANSPORT, CatalogCategory.SPAWN_EGGS, CatalogCategory.OTHER);
-    private static final List<CatalogCategory> BUILDING = List.of(CatalogCategory.FURNITURE, CatalogCategory.NATURE, CatalogCategory.CONTAINERS,
-            CatalogCategory.HOLIDAY, CatalogCategory.BUILDING_BLOCKS);
+    private static final List<CatalogCategory> BUILDING = List.of(CatalogCategory.BUILDING_BLOCKS, CatalogCategory.GLASS,
+            CatalogCategory.LIGHT, CatalogCategory.FURNITURE, CatalogCategory.CONTAINERS, CatalogCategory.NATURE,
+            CatalogCategory.HOLIDAY);
     private static final EnumMap<CatalogCategory, List<ItemStack>> STACKS = new EnumMap<>(CatalogCategory.class);
     private static final Set<Item> COOKING_CATALYSTS = new HashSet<>();
-    private static List<ItemStack> allStacks = List.of();
 
     private CuratedJeiCatalog() {
     }
@@ -39,23 +36,19 @@ public final class CuratedJeiCatalog {
                         .get(VanillaTypes.ITEM_STACK)
                         .map(ItemStack::getItem)
                         .forEach(COOKING_CATALYSTS::add));
-        Map<ResourceLocation, ItemStack> unique = new LinkedHashMap<>();
         runtime.getIngredientManager().getAllIngredients(VanillaTypes.ITEM_STACK).forEach(stack -> {
             ItemStack preview = stack.copy();
             if (preview.isDamageableItem()) preview.setDamageValue(0);
             CatalogCategory primary = classify(preview);
             STACKS.computeIfAbsent(primary, ignored -> new ArrayList<>()).add(preview);
-            ResourceLocation id = ForgeRegistries.ITEMS.getKey(preview.getItem());
-            if (id != null) unique.putIfAbsent(id, preview);
         });
         STACKS.replaceAll((category, stacks) -> Collections.unmodifiableList(stacks));
-        allStacks = List.copyOf(unique.values());
     }
 
     public static void clear() {
         STACKS.clear();
         COOKING_CATALYSTS.clear();
-        allStacks = List.of();
+        com.siirio.jemcompat.catalog.JemCatalogCategories.clearCaches();
     }
 
     public static List<CatalogCategory> topLevel(boolean creative) {
@@ -74,14 +67,6 @@ public final class CuratedJeiCatalog {
             return STACKS.getOrDefault(category, List.of());
         }
         return BUILDING.stream().flatMap(child -> STACKS.getOrDefault(child, List.of()).stream()).toList();
-    }
-
-    public static List<ItemStack> allStacks() {
-        return allStacks;
-    }
-
-    public static CatalogCategory category(ItemStack stack) {
-        return classify(stack);
     }
 
     private static CatalogCategory classify(ItemStack stack) {

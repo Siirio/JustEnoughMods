@@ -18,7 +18,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class EconomyNetwork {
-    private static final String VERSION = "7";
+    private static final String VERSION = "8";
     private static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(JemCurrencyCore.LEGACY_NAMESPACE, "wallet"))
             .networkProtocolVersion(() -> VERSION).clientAcceptedVersions(EconomyNetwork::acceptVersion)
             .serverAcceptedVersions(EconomyNetwork::acceptVersion).simpleChannel();
@@ -48,29 +48,36 @@ public final class EconomyNetwork {
                             && access.permitsCurrencyAction(player)) {
                         String result = "";
                         if (packet.action() == ContainerCurrencyPacket.Action.WITHDRAW) {
-                            var outcome = EconomyApi.withdraw(player, packet.amount(), packet.requestId());
+                            var outcome = EconomyApi.withdrawExact(player, packet.cashDenomination(), packet.cashCount(), packet.requestId());
                             result = "jem.economy.exchange." + outcome.status().name().toLowerCase(java.util.Locale.ROOT);
                         } else if (packet.action() == ContainerCurrencyPacket.Action.EXCHANGE) {
                             var outcome = EconomyApi.exchangePhysical(player, packet.source(), packet.count(), packet.target(), packet.requestId());
                             result = "jem.economy.exchange." + outcome.status().name().toLowerCase(java.util.Locale.ROOT);
                         }
                         if (packet.action() == ContainerCurrencyPacket.Action.DEPOSIT) {
-                            var outcome = EconomyApi.depositAll(player, packet.requestId());
+                            var outcome = EconomyApi.depositExact(player, packet.cashDenomination(), packet.cashCount(), packet.requestId());
                             result = "jem.economy.exchange." + outcome.status().name().toLowerCase(java.util.Locale.ROOT);
                         }
                         if (packet.action() == ContainerCurrencyPacket.Action.SEND) {
                             var recipient = player.server.getPlayerList().getPlayerByName(packet.recipient());
                             var account = recipient == null ? java.util.Optional.<com.siirio.jemidentity.api.VerifiedPrincipal>empty() : com.siirio.jemidentity.api.IdentityPolicy.resolve(recipient);
                             result = "jem.economy.invalid";
-                            if (account.isPresent() && recipient != player && packet.amount() > 0 && packet.amount() <= 1_000_000_000L) {
-                                var sent = EconomyApi.send(player, account.get().accountId(), packet.amount(), packet.requestId());
+                            long amount = packet.cashCount() > 0 && packet.cashCount() <= 4_096
+                                    ? packet.cashDenomination().value() * packet.cashCount() : 0L;
+                            if (account.isPresent() && recipient != player && amount > 0L && amount <= 1_000_000_000L) {
+                                var sent = EconomyApi.send(player, account.get().accountId(), amount, packet.requestId());
                                 result = sent.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.COMMITTED
                                         || sent.status() == com.siirio.jemeconomy.ledger.TransferResult.Status.REPLAYED ? "jem.economy.exchange.committed" : "jem.economy.insufficient";
                             }
                         }
                         player.inventoryMenu.broadcastChanges(); player.containerMenu.broadcastChanges();
+                        var held = EconomyApi.heldCash(player).counts();
+                        var counts = java.util.Arrays.stream(CoinDenomination.values()).map(coin -> held.getOrDefault(coin, 0)).toList();
+                        var exchangeable = com.siirio.jemeconomy.physical.PhysicalCoinService.exchangeableSummary(player).counts();
+                        var exchangeCounts = java.util.Arrays.stream(CoinDenomination.values())
+                                .map(coin -> exchangeable.getOrDefault(coin, 0)).toList();
                         CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new ContainerCurrencyStatusPacket(
-                                packet.containerId(), packet.requestId(), EconomyApi.balance(player), result));
+                                packet.containerId(), packet.requestId(), EconomyApi.balance(player), result, counts, exchangeCounts));
                     }
                     context.get().setPacketHandled(true);
                 }).add();

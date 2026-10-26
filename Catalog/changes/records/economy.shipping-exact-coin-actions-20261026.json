@@ -1,0 +1,133 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.shipping-exact-coin-actions-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:copper_coin"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:silver_coin"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:gold_coin"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:aether_coin"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "jem_economy:arcane_coin"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Authenticated player in an open permitted Shipping Box or other explicitly permitted currency container; matching Economy network protocol and sufficient ledger-backed coins/balance."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_integration",
+    "priority": 1130,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Shipping Box left exchange accepts an exact source count with whole-group conversion, while right deposit and withdrawal use one selected denomination and exact coin count.",
+    "modifiers": [
+      {
+        "property": "economy.physical_exchange",
+        "operation": "replace",
+        "before": "Separate redundant controls and a whole-request divisibility check could reject a partial whole-group conversion.",
+        "after": "Source field defaults to exchangeable backed inventory count; floor whole conversion groups are consumed, remainder stays, target count is derived, and server rechecks provenance, space and ledger reservation."
+      },
+      {
+        "property": "economy.shipping_deposit_withdraw",
+        "operation": "replace",
+        "before": "Deposit action swept all eligible inventory coins; withdrawal decomposed requested value into mixed denominations.",
+        "after": "Deposit consumes exactly the selected denomination and count; withdrawal debits the exact value and issues exactly that denomination/count; wallet transfer uses selected count times denomination."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy",
+    "kind": "user_requested_exact_physical_coin_actions",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make displayed coin quantities match exact ledger-backed physical exchange, deposit and withdrawal while preserving total money and replay protection.",
+    "decision_source": "User requested the Shipping Box changes in the 2026-10-26 plan. Codex chose whole-group conversion that leaves an unconvertible remainder, as stated in the plan."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "replace_shipping_coin_controls",
+    "summary": "Shipping Box left exchange accepts an exact source count with whole-group conversion, while right deposit and withdrawal use one selected denomination and exact coin count.",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "replace_shipping_coin_controls",
+      "summary": "Shipping Box left exchange accepts an exact source count with whole-group conversion, while right deposit and withdrawal use one selected denomination and exact coin count.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/ledger/EconomySavedData.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "coins",
+      "shipping_box",
+      "wallet",
+      "ledger",
+      "inventory",
+      "network",
+      "market"
+    ],
+    "relations": [
+      "Client receives authoritative balance plus total backed counts and counts eligible for exchange from ordinary inventory slots.",
+      "Ledger reserves, validates and commits exact physical actions; other depositAll consumers remain."
+    ],
+    "notes": [
+      "Screen layout at different GUI scales and a native interaction are unobserved without a gameplay launch."
+    ]
+  }
+}

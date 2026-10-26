@@ -10,7 +10,7 @@ public final class GalleryScreen extends Screen {
     private static final String[][] ROUTES={
         {"smp","SMP / Events"},{"profile","Player profile"},{"players","Players"},{"parties","Parties / Lobbies"},
         {"settlements","Settlement dashboard"},{"settlement-directory","Settlement directory"},{"founding","Found settlement"},{"settlement-guide","Settlement guide"},
-        {"death","Death history"},{"market","Market"},{"shops","Player shops"},{"prizes","Prizes"},
+        {"death","Death history"},{"market","Market"},{"prizes","Prizes"},
         {"encounter","Boss / Raid preparation"},{"busy-arena","Occupied arena"},{"result","Victory / Rewards"},{"defeat","Defeat"},
         {"bosses","Boss directory"},{"landmarks","Landmarks"},{"homes","Homes"},{"empty-events","Empty event list"},
         {"races","Race selection"},{"race-progression","Race progression / Powers"},{"inventory","Native mod inventory"},{"reset","Reset demo data"}

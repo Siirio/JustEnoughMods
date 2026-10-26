@@ -78,7 +78,6 @@ public final class SmpNetwork {
         } else SmpSubscriptions.open(player, query);
     }
     public static void close(ServerPlayer player) { SmpSubscriptions.close(player); }
-    public static void shopRemoved(MinecraftServer server, UUID shopId) { SmpSubscriptions.shopRemoved(server, shopId); }
     public static void tick(MinecraftServer server) { SmpSubscriptions.tick(server); }
     static void homePreview(ServerPlayer player, net.minecraft.resources.ResourceLocation dimension, net.minecraft.core.BlockPos position) {
         if (CHANNEL.isRemotePresent(player.connection.connection))

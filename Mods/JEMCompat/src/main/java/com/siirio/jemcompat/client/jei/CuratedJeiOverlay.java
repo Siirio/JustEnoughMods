@@ -25,13 +25,12 @@ public final class CuratedJeiOverlay {
     private static final int SEARCH_HEIGHT = 18;
     private static final int NAVIGATION_HEIGHT = 24;
     private static CatalogCategory selected = CatalogCategory.WEAPONS;
-    private static CatalogCategory building = CatalogCategory.FURNITURE;
+    private static CatalogCategory building = CatalogCategory.BUILDING_BLOCKS;
     private static int page;
+    private static int categoryRailOffset;
+    private static int buildingRailOffset;
     private static Screen owner;
-    private static EditBox globalSearch;
     private static EditBox categorySearch;
-    private static ResourceLocation highlighted;
-    private static long highlightUntil;
     private static int lastMouseX;
     private static int lastMouseY;
 
@@ -43,8 +42,7 @@ public final class CuratedJeiOverlay {
         if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen) || JEMJeiPlugin.runtime() == null) return;
         owner = screen;
         CatalogLayout layout = layout(screen);
-        globalSearch = searchBox(layout.searchX(), layout.top(), layout.searchWidth(), "gui.jemcompat.jei.search_all");
-        categorySearch = searchBox(layout.searchX(), layout.top() + SEARCH_HEIGHT + 3, layout.searchWidth(), "gui.jemcompat.jei.search_category");
+        categorySearch = searchBox(layout.searchX(), layout.searchY(), layout.searchWidth(), "gui.jemcompat.jei.search_category");
     }
 
     @SubscribeEvent
@@ -56,10 +54,12 @@ public final class CuratedJeiOverlay {
 
     static void clear() {
         owner = null;
-        globalSearch = null;
         categorySearch = null;
-        highlighted = null;
-        highlightUntil = 0;
+    }
+
+    static boolean hasSearchFocus() {
+        return owner == Minecraft.getInstance().screen && categorySearch != null && categorySearch.isFocused()
+                && !JEMJeiPlugin.isNativeOverlayVisible();
     }
 
     @SubscribeEvent
@@ -74,7 +74,6 @@ public final class CuratedJeiOverlay {
         if (JEMJeiPlugin.isNativeOverlayVisible()) return;
         renderCategories(graphics, layout, event.getMouseX(), event.getMouseY());
         positionSearch(layout);
-        globalSearch.render(graphics, event.getMouseX(), event.getMouseY(), event.getPartialTick());
         categorySearch.render(graphics, event.getMouseX(), event.getMouseY(), event.getPartialTick());
         renderGrid(graphics, layout, event.getMouseX(), event.getMouseY());
     }
@@ -93,16 +92,15 @@ public final class CuratedJeiOverlay {
         }
         if (JEMJeiPlugin.isNativeOverlayVisible()) return;
         positionSearch(layout);
-        if (globalSearch.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton())
-                || categorySearch.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton())) {
+        if (categorySearch.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton())) {
             event.setCanceled(true);
             return;
         }
-        globalSearch.setFocused(false);
         categorySearch.setFocused(false);
         List<CatalogCategory> categories = categories();
-        for (int index = 0; index < categories.size(); index++) {
-            if (inside(mouseX, mouseY, layout.railX(), layout.top() + index * BUTTON, BUTTON, BUTTON)) {
+        int categoryStart = railStart(categories, layout, false);
+        for (int index = categoryStart; index < Math.min(categories.size(), categoryStart + layout.railSlots()); index++) {
+            if (inside(mouseX, mouseY, layout.railX(), layout.top() + (index - categoryStart) * BUTTON, BUTTON, BUTTON)) {
                 select(categories.get(index));
                 event.setCanceled(true);
                 return;
@@ -110,8 +108,9 @@ public final class CuratedJeiOverlay {
         }
         if (selected == CatalogCategory.BUILDING) {
             List<CatalogCategory> children = CuratedJeiCatalog.building();
-            for (int index = 0; index < children.size(); index++) {
-                if (inside(mouseX, mouseY, layout.subRailX(), layout.top() + index * BUTTON, BUTTON, BUTTON)) {
+            int childStart = railStart(children, layout, true);
+            for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
+                if (inside(mouseX, mouseY, layout.subRailX(), layout.top() + (index - childStart) * BUTTON, BUTTON, BUTTON)) {
                     building = children.get(index);
                     categorySearch.setValue("");
                     page = 0;
@@ -121,14 +120,15 @@ public final class CuratedJeiOverlay {
             }
         }
         if (lastPage(layout) > 0) {
-            int navigationY = navigationY(layout);
-            if (inside(mouseX, mouseY, layout.gridX(), navigationY, BUTTON, BUTTON)) {
+            int navigationY = layout.navigationY();
+            int navigationButtonWidth = navigationButtonWidth(layout);
+            if (inside(mouseX, mouseY, layout.gridX(), navigationY, navigationButtonWidth, BUTTON)) {
                 movePage(layout,-1);
                 event.setCanceled(true);
                 return;
             }
-            int nextX = layout.gridX() + layout.columns() * CELL - BUTTON;
-            if (inside(mouseX, mouseY, nextX, navigationY, BUTTON, BUTTON)) {
+            int nextX = layout.gridX() + layout.columns() * CELL - navigationButtonWidth;
+            if (inside(mouseX, mouseY, nextX, navigationY, navigationButtonWidth, BUTTON)) {
                 movePage(layout,1);
                 event.setCanceled(true);
                 return;
@@ -141,11 +141,6 @@ public final class CuratedJeiOverlay {
         List<ItemStack> stacks = visibleStacks();
         if (stackIndex >= stacks.size()) return;
         ItemStack stack = stacks.get(stackIndex);
-        if (!globalSearch.getValue().isBlank()) {
-            openSearchResult(stack, layout);
-            event.setCanceled(true);
-            return;
-        }
         RecipeIngredientRole role = event.getButton() == 1 ? RecipeIngredientRole.INPUT : RecipeIngredientRole.OUTPUT;
         showItemHelp(stack, role);
         event.setCanceled(true);
@@ -154,12 +149,12 @@ public final class CuratedJeiOverlay {
     @SubscribeEvent
     public static void keyPressed(ScreenEvent.KeyPressed.Pre event) {
         if (event.getScreen() != owner || JEMJeiPlugin.runtime() == null || JEMJeiPlugin.isNativeOverlayVisible()) return;
-        boolean handled = globalSearch != null && globalSearch.isFocused()
-                && globalSearch.keyPressed(event.getKeyCode(), event.getScanCode(), event.getModifiers());
-        handled |= categorySearch != null && categorySearch.isFocused()
-                && categorySearch.keyPressed(event.getKeyCode(), event.getScanCode(), event.getModifiers());
-        if (handled) {
-            page = 0;
+        if (categorySearch != null && categorySearch.isFocused()) {
+            if (event.getKeyCode() == 256) {
+                categorySearch.setFocused(false);
+            } else {
+                categorySearch.keyPressed(event.getKeyCode(), event.getScanCode(), event.getModifiers());
+            }
             event.setCanceled(true);
             return;
         }
@@ -190,12 +185,8 @@ public final class CuratedJeiOverlay {
     @SubscribeEvent
     public static void characterTyped(ScreenEvent.CharacterTyped.Pre event) {
         if (event.getScreen() != owner || JEMJeiPlugin.isNativeOverlayVisible()) return;
-        boolean handled = globalSearch != null && globalSearch.isFocused()
-                && globalSearch.charTyped(event.getCodePoint(), event.getModifiers());
-        handled |= categorySearch != null && categorySearch.isFocused()
-                && categorySearch.charTyped(event.getCodePoint(), event.getModifiers());
-        if (handled) {
-            page = 0;
+        if (categorySearch != null && categorySearch.isFocused()) {
+            categorySearch.charTyped(event.getCodePoint(), event.getModifiers());
             event.setCanceled(true);
         }
     }
@@ -205,6 +196,26 @@ public final class CuratedJeiOverlay {
         if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen) || JEMJeiPlugin.runtime() == null
                 || JEMJeiPlugin.isNativeOverlayVisible()) return;
         CatalogLayout layout = layout(screen);
+        int mouseX = (int) event.getMouseX();
+        int mouseY = (int) event.getMouseY();
+        int railHeight = layout.railSlots() * BUTTON;
+        if (inside(mouseX, mouseY, layout.railX(), layout.top(), BUTTON, railHeight)) {
+            if (event.getScrollDelta() != 0) {
+                categoryRailOffset = scrollRail(categoryRailOffset, categories().size(), layout,
+                        event.getScrollDelta() < 0 ? 1 : -1);
+                event.setCanceled(true);
+            }
+            return;
+        }
+        if (selected == CatalogCategory.BUILDING
+                && inside(mouseX, mouseY, layout.subRailX(), layout.top(), BUTTON, railHeight)) {
+            if (event.getScrollDelta() != 0) {
+                buildingRailOffset = scrollRail(buildingRailOffset, CuratedJeiCatalog.building().size(), layout,
+                        event.getScrollDelta() < 0 ? 1 : -1);
+                event.setCanceled(true);
+            }
+            return;
+        }
         if (!inside((int) event.getMouseX(), (int) event.getMouseY(), layout.gridX(), layout.contentTop(), layout.columns() * CELL, layout.rows() * CELL)) return;
         if(event.getScrollDelta()==0) return;
         movePage(layout,event.getScrollDelta() < 0 ? 1 : -1);
@@ -220,20 +231,16 @@ public final class CuratedJeiOverlay {
     }
 
     private static void ensureSearch(AbstractContainerScreen<?> screen) {
-        if (owner != screen || globalSearch == null || categorySearch == null) {
+        if (owner != screen || categorySearch == null) {
             owner = screen;
             CatalogLayout layout = layout(screen);
-            globalSearch = searchBox(layout.searchX(), layout.top(), layout.searchWidth(), "gui.jemcompat.jei.search_all");
-            categorySearch = searchBox(layout.searchX(), layout.top() + SEARCH_HEIGHT + 3, layout.searchWidth(), "gui.jemcompat.jei.search_category");
+            categorySearch = searchBox(layout.searchX(), layout.searchY(), layout.searchWidth(), "gui.jemcompat.jei.search_category");
         }
     }
 
     private static void positionSearch(CatalogLayout layout) {
-        globalSearch.setX(layout.searchX());
-        globalSearch.setY(layout.top());
-        globalSearch.setWidth(layout.searchWidth());
         categorySearch.setX(layout.searchX());
-        categorySearch.setY(layout.top() + SEARCH_HEIGHT + 3);
+        categorySearch.setY(layout.searchY());
         categorySearch.setWidth(layout.searchWidth());
     }
 
@@ -244,22 +251,39 @@ public final class CuratedJeiOverlay {
 
     private static void renderCategories(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY) {
         List<CatalogCategory> categories = categories();
-        for (int index = 0; index < categories.size(); index++) {
+        int categoryStart = railStart(categories, layout, false);
+        for (int index = categoryStart; index < Math.min(categories.size(), categoryStart + layout.railSlots()); index++) {
             CatalogCategory category = categories.get(index);
-            renderButton(graphics, category.icon(), layout.railX(), layout.top() + index * BUTTON, category == selected);
-            renderLabel(graphics, category.translationKey(), layout.railX(), layout.top() + index * BUTTON, mouseX, mouseY);
+            int y = layout.top() + (index - categoryStart) * BUTTON;
+            renderButton(graphics, category.icon(), layout.railX(), y, category == selected);
+            renderLabel(graphics, category.translationKey(), layout.railX(), y, mouseX, mouseY);
         }
         if (selected == CatalogCategory.BUILDING) {
             List<CatalogCategory> children = CuratedJeiCatalog.building();
-            for (int index = 0; index < children.size(); index++) {
+            int childStart = railStart(children, layout, true);
+            for (int index = childStart; index < Math.min(children.size(), childStart + layout.railSlots()); index++) {
                 CatalogCategory category = children.get(index);
-                renderButton(graphics, category.icon(), layout.subRailX(), layout.top() + index * BUTTON, category == building);
-                renderLabel(graphics, category.translationKey(), layout.subRailX(), layout.top() + index * BUTTON, mouseX, mouseY);
+                int y = layout.top() + (index - childStart) * BUTTON;
+                renderButton(graphics, category.icon(), layout.subRailX(), y, category == building);
+                renderLabel(graphics, category.translationKey(), layout.subRailX(), y, mouseX, mouseY);
             }
         }
     }
 
+    private static int railStart(List<CatalogCategory> categories, CatalogLayout layout, boolean children) {
+        int offset = children ? buildingRailOffset : categoryRailOffset;
+        int clamped = Math.min(offset, Math.max(0, categories.size() - layout.railSlots()));
+        if (children) buildingRailOffset = clamped;
+        else categoryRailOffset = clamped;
+        return clamped;
+    }
+
+    private static int scrollRail(int offset, int count, CatalogLayout layout, int delta) {
+        return Math.max(0, Math.min(Math.max(0, count - layout.railSlots()), offset + delta));
+    }
+
     private static void renderGrid(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY) {
+        if (layout.rows() == 0) return;
         int width = layout.columns() * CELL;
         int height = layout.rows() * CELL;
         graphics.fill(layout.gridX() - 3, layout.contentTop() - 3, layout.gridX() + width + 3, layout.contentTop() + height + 3, 0xB0101010);
@@ -272,10 +296,7 @@ public final class CuratedJeiOverlay {
             int x = layout.gridX() + visible % layout.columns() * CELL;
             int y = layout.contentTop() + visible / layout.columns() * CELL;
             ItemStack stack = stacks.get(index);
-            ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
             if (inside(mouseX, mouseY, x, y, CELL, CELL)) graphics.fill(x, y, x + CELL, y + CELL, 0x80FFFFFF);
-            if (id != null && id.equals(highlighted) && System.currentTimeMillis() < highlightUntil
-                    && System.currentTimeMillis() / 180 % 2 == 0) graphics.fill(x, y, x + CELL, y + CELL, 0xC0FF7A00);
             graphics.renderItem(stack, x + 2, y + 2);
             if (inside(mouseX, mouseY, x, y, CELL, CELL)) graphics.renderTooltip(Minecraft.getInstance().font, stack, mouseX, mouseY);
         }
@@ -284,8 +305,23 @@ public final class CuratedJeiOverlay {
 
     private static void renderNavigation(GuiGraphics graphics, CatalogLayout layout, int mouseX, int mouseY, int stackCount) {
         int pages = Math.max(1, (stackCount + layout.capacity() - 1) / layout.capacity());
-        int y = navigationY(layout);
+        int y = layout.navigationY();
         int width = layout.columns() * CELL;
+        if (width < 80) {
+            if (width >= 40 || pages <= 1) {
+                graphics.drawCenteredString(Minecraft.getInstance().font, Integer.toString(page + 1),
+                        layout.gridX() + width / 2, y + 7, 0xFFFFFF);
+            }
+            if (pages > 1) {
+                graphics.drawString(Minecraft.getInstance().font, "<", layout.gridX() + 2, y + 7, 0xFFFFFF);
+                graphics.drawString(Minecraft.getInstance().font, ">", layout.gridX() + width - 7, y + 7, 0xFFFFFF);
+            }
+            if (inside(mouseX, mouseY, layout.gridX(), y, width, BUTTON)) {
+                graphics.renderTooltip(Minecraft.getInstance().font,
+                        Component.translatable("gui.jemcompat.jei.page", page + 1, pages), mouseX, mouseY);
+            }
+            return;
+        }
         graphics.drawCenteredString(Minecraft.getInstance().font,
                 Component.translatable("gui.jemcompat.jei.page", page + 1, pages), layout.gridX() + width / 2, y + 7, 0xFFFFFF);
         if (pages <= 1) return;
@@ -300,12 +336,12 @@ public final class CuratedJeiOverlay {
             graphics.renderTooltip(Minecraft.getInstance().font, Component.translatable("gui.jemcompat.jei.next_page"), mouseX, mouseY);
     }
 
-    private static int navigationY(CatalogLayout layout) {
-        return layout.contentTop() + layout.rows() * CELL + 4;
-    }
-
     private static int lastPage(CatalogLayout layout) {
         return Math.max(0, (visibleStacks().size() - 1) / layout.capacity());
+    }
+
+    private static int navigationButtonWidth(CatalogLayout layout) {
+        return layout.columns() * CELL >= 80 ? BUTTON : Math.min(BUTTON, Math.max(8, layout.columns() * CELL / 3));
     }
 
     private static void movePage(CatalogLayout layout,int delta) {
@@ -313,9 +349,8 @@ public final class CuratedJeiOverlay {
     }
 
     private static List<ItemStack> visibleStacks() {
-        String global = globalSearch == null ? "" : globalSearch.getValue().trim();
-        List<ItemStack> source = global.isEmpty() ? activeStacks() : CuratedJeiCatalog.allStacks();
-        String query = global.isEmpty() && categorySearch != null ? categorySearch.getValue().trim() : global;
+        List<ItemStack> source = activeStacks();
+        String query = categorySearch == null ? "" : categorySearch.getValue().trim();
         if (query.isEmpty()) return source;
         String needle = query.toLowerCase(Locale.ROOT);
         return source.stream().filter(stack -> matches(stack, needle)).toList();
@@ -332,23 +367,6 @@ public final class CuratedJeiOverlay {
         int index = page * layout.capacity() + (mouseY - layout.contentTop()) / CELL * layout.columns() + (mouseX - layout.gridX()) / CELL;
         List<ItemStack> stacks = visibleStacks();
         return index < stacks.size() ? stacks.get(index) : ItemStack.EMPTY;
-    }
-
-    private static void openSearchResult(ItemStack stack, CatalogLayout layout) {
-        CatalogCategory category = CuratedJeiCatalog.category(stack);
-        if (CuratedJeiCatalog.building().contains(category)) {
-            selected = CatalogCategory.BUILDING;
-            building = category;
-        } else selected = category;
-        globalSearch.setValue("");
-        categorySearch.setValue("");
-        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
-        List<ItemStack> stacks = activeStacks();
-        int index = 0;
-        for (; index < stacks.size(); index++) if (ItemStack.isSameItemSameTags(stacks.get(index), stack)) break;
-        page = index >= stacks.size() ? 0 : index / layout.capacity();
-        highlighted = id;
-        highlightUntil = System.currentTimeMillis() + 3000;
     }
 
     private static void renderButton(GuiGraphics graphics, ItemStack icon, int x, int y, boolean selectedButton) {
@@ -383,15 +401,22 @@ public final class CuratedJeiOverlay {
         int subRailX = railX - BUTTON - 4;
         int top = MARGIN;
         int right = selected == CatalogCategory.BUILDING ? subRailX - MARGIN : railX - MARGIN;
-        int gridX = screen.getGuiLeft() + screen.getXSize() + MARGIN;
+        int rightGridX = screen.getGuiLeft() + screen.getXSize() + MARGIN;
+        int leftAvailable = screen.getGuiLeft() - MARGIN * 2;
+        int rightAvailable = right - rightGridX;
+        int gridX = rightAvailable >= CELL ? rightGridX : MARGIN;
+        int available = Math.max(CELL, gridX == rightGridX ? rightAvailable : leftAvailable);
         int toggleX = gridX;
-        int searchX = toggleX + BUTTON + 4;
-        int available = Math.max(CELL * 4, right - gridX);
-        int columns = Math.max(4, available / CELL);
-        int searchWidth = Math.max(60, right - searchX);
-        int contentTop = top + SEARCH_HEIGHT * 2 + 8;
-        int rows = Math.max(4, Math.min(12, (screen.height - contentTop - MARGIN - NAVIGATION_HEIGHT) / CELL));
-        return new CatalogLayout(gridX, railX, subRailX, top, contentTop, columns, rows, toggleX, searchX, searchWidth);
+        int columns = Math.max(1, available / CELL);
+        int searchX = gridX;
+        int searchWidth = columns * CELL;
+        int searchY = Math.max(MARGIN, screen.height - MARGIN - SEARCH_HEIGHT);
+        int navigationY = searchY - NAVIGATION_HEIGHT;
+        int contentTop = top + BUTTON + 4;
+        int rows = Math.max(0, Math.min(12, (navigationY - contentTop - 4) / CELL));
+        int railSlots = Math.max(1, (screen.height - MARGIN * 2) / BUTTON);
+        return new CatalogLayout(gridX, railX, subRailX, top, contentTop, columns, rows,
+                toggleX, searchX, searchY, searchWidth, navigationY, railSlots);
     }
 
     private static boolean inside(int mouseX, int mouseY, int x, int y, int width, int height) {

@@ -434,6 +434,17 @@ public final class EconomySavedData extends SavedData {
     }
 
     public synchronized WithdrawLedgerResult prepareWithdraw(UUID accountId, long amount, UUID operationId) {
+        return prepareWithdraw(accountId, amount, null, operationId);
+    }
+
+    public synchronized WithdrawLedgerResult prepareWithdrawExact(UUID accountId, CoinDenomination denomination,
+            int count, UUID operationId) {
+        if (denomination == null || count <= 0 || count > 4_096)
+            return new WithdrawLedgerResult(PhysicalStatus.INVALID, operationId, 0L, List.of());
+        return prepareWithdraw(accountId, denomination.value() * count, denomination, operationId);
+    }
+
+    private WithdrawLedgerResult prepareWithdraw(UUID accountId, long amount, CoinDenomination exact, UUID operationId) {
         if (frozen() || accountId == null || operationId == null || amount <= 0L || amount > 1_000_000_000L) {
             return new WithdrawLedgerResult(PhysicalStatus.INVALID, operationId, 0L, List.of());
         }
@@ -454,7 +465,7 @@ public final class EconomySavedData extends SavedData {
         List<CoinLot> created = new ArrayList<>();
         Map<UUID, Integer> quantities = new LinkedHashMap<>();
         int sequence = 0;
-        for (CoinDenomination denomination : CoinDenomination.descending()) {
+        for (CoinDenomination denomination : exact == null ? CoinDenomination.descending() : new CoinDenomination[]{exact}) {
             long units = remainder / denomination.value();
             remainder %= denomination.value();
             while (units > 0L) {
@@ -581,12 +592,24 @@ public final class EconomySavedData extends SavedData {
             return new ExchangeReservation(replay.phase() == PhysicalCoinOperation.Phase.QUARANTINED ? PhysicalStatus.QUARANTINED : PhysicalStatus.REPLAYED,
                     operationId, replay.value(), List.of(), replayOutputs);
         }
-        long value;
-        try { value = Math.multiplyExact((long) sourceCount, source.value()); }
-        catch (ArithmeticException overflow) { return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of()); }
-        if (value % target.value() != 0L || value / target.value() <= 0L || value / target.value() > 4_096L)
+        CoinDenomination.Conversion conversion = source.conversionTo(target, sourceCount);
+        if (!conversion.possible())
             return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of());
-        int remaining = sourceCount;
+        Map<UUID, Integer> observed = new LinkedHashMap<>();
+        long available = 0L;
+        for (DepositCandidate candidate : candidates) {
+            CoinLot lot = lots.get(candidate.lotId());
+            if (candidate.count() <= 0 || lot == null || lot.denomination() != source || candidate.denomination() != source) continue;
+            int already = observed.getOrDefault(lot.id(), 0);
+            int backed = Math.min(candidate.count(), Math.max(0, lot.available() - already));
+            observed.put(lot.id(), already + backed);
+            available += backed;
+            if (available >= sourceCount) break;
+        }
+        if (available < sourceCount)
+            return new ExchangeReservation(PhysicalStatus.INVALID, operationId, 0L, List.of(), List.of());
+        long value = conversion.value();
+        int remaining = conversion.sourceCount();
         Map<UUID, Integer> allocated = new LinkedHashMap<>();
         List<DepositSelection> selections = new ArrayList<>();
         for (DepositCandidate candidate : candidates) {
@@ -604,7 +627,7 @@ public final class EconomySavedData extends SavedData {
         allocated.forEach((lotId, count) -> lots.computeIfPresent(lotId, (ignored, lot) -> lot.reserve(count)));
         Map<UUID, Integer> outputQuantities = new LinkedHashMap<>();
         List<CoinLot> outputs = new ArrayList<>();
-        long units = value / target.value();
+        long units = conversion.targetCount();
         int sequence = 0;
         while (units > 0L) {
             int count = (int) Math.min(64L, units);

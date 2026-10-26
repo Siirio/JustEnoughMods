@@ -27,17 +27,6 @@ final class SmpSubscriptions {
 
     static void close(ServerPlayer player) { SmpServerSession.get(player.server).player(player.getUUID()).view = null; }
 
-    static void shopRemoved(MinecraftServer server, UUID shopId) {
-        if (!SmpEnvironment.active(server)) return;
-        SmpServerSession.get(server).views((id, session) -> {
-            var query = session.query;
-            if (!query.tab().equals("shops")) return;
-            if (shopId.equals(query.selected())) session.select(new SmpQuery(query.tab(), query.filter(), query.search(), query.page(), null));
-            var player = server.getPlayerList().getPlayer(id);
-            if (player != null) publish(player, session, false, null, "");
-        });
-    }
-
     static void tick(MinecraftServer server) {
         long tick = server.getTickCount();
         boolean refresh = tick % SmpConfig.REFRESH_TICKS.get() == 0;
@@ -61,9 +50,6 @@ final class SmpSubscriptions {
     }
 
     private static CompoundTag build(ServerPlayer player, SmpViewSession session) {
-        if (session.query.tab().equals("shops")) {
-            com.siirio.jemserver.smp.shops.ShopIndex.refreshLoaded(player);
-        }
         var next = SmpViews.build(player, session.query);
         session.owners = SmpViewRevision.current(player);
         session.builtAt = player.server.getTickCount();

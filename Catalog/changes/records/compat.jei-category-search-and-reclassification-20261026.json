@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.jei-category-search-and-reclassification-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Curated JEM JEI catalog only; one server-safe leaf assignment per ItemStack; native JEI recipes and separate standard JEI entry remain."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_integration",
+    "priority": 1110,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Replace the cross-category search with one bottom search in the selected category and assign reviewed materials, glass, lights, containers and display pieces to their semantic leaves.",
+    "modifiers": [
+      {
+        "property": "jemcompat.jei_search_scope",
+        "operation": "replace",
+        "before": "Global category search and category search both visible.",
+        "after": "One search field at the bottom filters the active category only; global search is removed."
+      },
+      {
+        "property": "jemcompat.jei_leaf_assignment",
+        "operation": "derive",
+        "before": "Broad furniture/decor and building heuristics placed materials, glass, light sources, storage and display objects in inappropriate leaves.",
+        "after": "Materials include bricks, blocks, slabs, stairs, cushion block variants and snow/sandstone; separate Glass and Light leaves; clam cases are containers; antler displays, stakes, dolls, skulls, trophies and reviewed Beachparty display pieces are decor; food, ores, dynamite, resin, shells, buckets and resource stones are excluded from construction according to their semantic owner."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "user_requested_curated_jei_taxonomy",
+    "source_files": [
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the requested category search and item placement match the user's examples without changing JEI recipe authority.",
+    "decision_source": "User request and screenshots on 2026-10-26; attached category addendum is supporting evidence, not an independent instruction. JEMCompat classifier and installed registry IDs determine exact membership."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "curate_category_navigation",
+    "summary": "Replace the cross-category search with one bottom search in the selected category and assign reviewed materials, glass, lights, containers and display pieces to their semantic leaves.",
+    "source_files": [
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "curate_category_navigation",
+      "summary": "Replace the cross-category search with one bottom search in the selected category and assign reviewed materials, glass, lights, containers and display pieces to their semantic leaves.",
+      "source_files": [
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/catalog/JemCatalogCategories.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogCategory.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CatalogLayout.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiCatalog.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/CuratedJeiOverlay.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEI",
+      "client_catalog",
+      "economy_purchase_admission",
+      "recipes",
+      "modded_blocks"
+    ],
+    "relations": [
+      "Common JemCatalogCategories remains the only category assignment owner for client catalog and Economy purchase admission.",
+      "Light emission is derived from block states and applies before furniture/material fallback."
+    ],
+    "notes": [
+      "Unverified runtime dynamic ItemStack variants and possible unidentified decorative stakes need in-game observation.",
+      "No game launch or player acceptance was authorized for this task."
+    ]
+  }
+}

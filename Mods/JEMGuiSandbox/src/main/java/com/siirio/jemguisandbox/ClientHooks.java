@@ -19,7 +19,7 @@ public final class ClientHooks {
         dispatcher.register(net.minecraft.commands.Commands.literal("jemgui")
             .executes(c->schedule("hub"))
             .then(net.minecraft.commands.Commands.argument("screen",StringArgumentType.word())
-                .suggests((c,b)->net.minecraft.commands.SharedSuggestionProvider.suggest(java.util.List.of("smp","settlements","death","profile","players","parties","market","shops","prizes","encounter","result","defeat","founding","settlement-directory","settlement-guide","bosses","landmarks","homes","reset"),b))
+                .suggests((c,b)->net.minecraft.commands.SharedSuggestionProvider.suggest(java.util.List.of("smp","settlements","death","profile","players","parties","market","prizes","encounter","result","defeat","founding","settlement-directory","settlement-guide","bosses","landmarks","homes","reset"),b))
                 .executes(c->schedule(StringArgumentType.getString(c,"screen")))));
         for(String route:java.util.List.of("smp","settlements","death"))
             dispatcher.register(net.minecraft.commands.Commands.literal(route).executes(c->schedule(route)));

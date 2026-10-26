@@ -53,7 +53,8 @@ public final class JEMJeiPlugin implements IModPlugin {
     }
 
     public static boolean hasSearchFocus() {
-        return runtime != null && runtime.getIngredientListOverlay().hasKeyboardFocus();
+        return runtime != null && (runtime.getIngredientListOverlay().hasKeyboardFocus()
+                || CuratedJeiOverlay.hasSearchFocus());
     }
 
     public static IJeiRuntime runtime() {

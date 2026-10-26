@@ -1,8 +1,8 @@
 # Economy registry coverage
 
-Generated from Atlas schema 1 at `2026-10-25T09:10:45.036045+00:00` for `b27e19bc04ed329047d18f7d972523fd6611fe2d`.
+Generated from Atlas schema 1 at `2026-10-26T10:24:31.273118+00:00` for `b5c6c042eb5dd5acde597aa6f244e6a7eabb36cc`.
 
-Static evidence observed 17,542 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
+Static evidence observed 17,313 canonical item IDs. This is not a Forge runtime registry dump or a JEI subtype count; the user's ~19.2k/~19.5k observation therefore has a different denominator. Unreviewed entries remain `NONE` and are not falsely called survival-untradeable.
 
 | Mod | Registered | Reviewed | Unknown | BUY_AND_SELL | NONE |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -112,7 +112,6 @@ Static evidence observed 17,542 canonical item IDs. This is not a Forge runtime 
 | sophisticatedstorage | 225 | 0 | 225 | 0 | 225 |
 | spawn | 311 | 42 | 269 | 3 | 269 |
 | spider_overhaul | 20 | 2 | 18 | 0 | 18 |
-| spudaciousshops | 229 | 0 | 229 | 0 | 229 |
 | tide | 446 | 110 | 336 | 25 | 336 |
 | tinyinv | 2 | 0 | 2 | 0 | 2 |
 | toms_storage | 20 | 0 | 20 | 0 | 20 |

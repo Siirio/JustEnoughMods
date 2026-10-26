@@ -1,7 +1,7 @@
 package com.siirio.jemserver.smp;
 
 public final class SmpProtocol {
-    public static final String VERSION = "5";
+    public static final String VERSION = "6";
     public static final int MAX_REQUEST_BYTES = 4096;
     public static final int MAX_VIEW_BYTES = 1048576;
     public static final int MAX_FILTER = 64;

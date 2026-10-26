@@ -15,7 +15,6 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
     private static final String SHARED_MAP_MIXINS = XAERO_MIXINS + "shared.";
     private static final String SHARED_MAP_MOD = "unified_xaero_worldmap";
     private static final String SHARED_BOUNDARY_MIXIN = "com.siirio.jemserver.mixin.SolidBoundaryMixin";
-    private static final String REMOTE_SHOP_CLIENT_MIXIN = "com.siirio.jemserver.mixin.shops.RemoteShopClientMixin";
 
     @Override
     public void onLoad(String mixinPackage) {}
@@ -30,7 +29,6 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.startsWith(SHARED_MAP_MIXINS)) return loaded(SHARED_MAP_MOD);
         if (mixinClassName.startsWith(XAERO_MIXINS))
             return loaded("xaeroworldmap") && (!mixinClassName.endsWith("OfficialWaypointTeleportMixin") || loaded("xaerominimap"));
-        if (mixinClassName.contains(".shops.")) return loaded("spudaciousshops");
         if (mixinClassName.contains(".fishing.")) return loaded("tide");
         if (mixinClassName.contains(".revive.")) return loaded("playerrevive");
         if (targetClassName.startsWith("com.github.L_Ender.cataclysm.")) return loaded("cataclysm");

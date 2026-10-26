@@ -16,6 +16,8 @@ enum CatalogCategory {
     CONTAINERS("gui.jemcompat.jei.containers", "minecraft:chest"),
     HOLIDAY("gui.jemcompat.jei.holiday", "minecraft:snowball"),
     BUILDING_BLOCKS("gui.jemcompat.jei.building_blocks", "minecraft:bricks"),
+    GLASS("gui.jemcompat.jei.glass", "minecraft:glass"),
+    LIGHT("gui.jemcompat.jei.light", "minecraft:lantern"),
     FISHING("gui.jemcompat.jei.fishing", "tide:fish_display"),
     BOOKS("gui.jemcompat.jei.books", "minecraft:written_book"),
     POTIONS("gui.jemcompat.jei.potions", "minecraft:potion"),
@@ -49,6 +51,8 @@ enum CatalogCategory {
             case CONTAINERS -> net.minecraft.world.item.Items.CHEST;
             case HOLIDAY -> net.minecraft.world.item.Items.SNOWBALL;
             case BUILDING_BLOCKS -> net.minecraft.world.item.Items.BRICKS;
+            case GLASS -> net.minecraft.world.item.Items.GLASS;
+            case LIGHT -> net.minecraft.world.item.Items.LANTERN;
             case FISHING -> net.minecraft.world.item.Items.FISHING_ROD;
             case BOOKS -> net.minecraft.world.item.Items.WRITTEN_BOOK;
             case POTIONS -> net.minecraft.world.item.Items.POTION;

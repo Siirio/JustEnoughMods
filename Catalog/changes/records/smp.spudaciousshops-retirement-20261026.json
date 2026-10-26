@@ -1,0 +1,187 @@
+{
+  "schema_version": 2,
+  "change_id": "smp.spudaciousshops-retirement-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "spudaciousshops"
+    },
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "smp_shop_integration"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Spud's Shops is absent from managed client and ordinary local server; former JEMServer shop routes and native dependency are retired."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_integration",
+    "priority": 1140,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Remove Spud's Shops and its JEM integrations, shop UI/network paths, economy price references and pack configuration.",
+    "modifiers": [
+      {
+        "property": "smp.spudaciousshops_runtime",
+        "operation": "replace",
+        "before": "Third-party shop JAR and JEMServer remote-shop UI, SMP actions, Mixins and records active in the pack.",
+        "after": "Spud's Shops JAR/config absent from managed client and local Server; related production adapters, dependencies, GUI entries, ingredient references and price/search aliases removed."
+      },
+      {
+        "property": "smp.shop_legacy_data",
+        "operation": "document",
+        "before": "Existing world shop records and profile favorites stored in historical NBT.",
+        "after": "Opaque historical shop data is preserved without active shop routes or rendering; no world-save mutation is performed."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer/JEMEconomy/ManagedPack",
+    "kind": "user_requested_dependency_and_integration_removal",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+      "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpRoute.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/TemporaryWaypoints.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ProfileState.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpAction.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpConfig.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/world_ingredients.json",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/ClientHooks.java",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/Demo.java",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/GalleryScreen.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove the rejected mod and all active integrations without discarding unrelated world data or shared localization.",
+    "decision_source": "User explicitly requested deletion of Spud's Shops and everything tied to it on 2026-10-26."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "retire_spudaciousshops",
+    "summary": "Remove Spud's Shops and its JEM integrations, shop UI/network paths, economy price references and pack configuration.",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+      "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpRoute.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/TemporaryWaypoints.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ProfileState.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpAction.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpConfig.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+      "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/world_ingredients.json",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/ClientHooks.java",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/Demo.java",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/GalleryScreen.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "retire_spudaciousshops",
+      "summary": "Remove Spud's Shops and its JEM integrations, shop UI/network paths, economy price references and pack configuration.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+        "Client/ManagedPack/config/jei/ingredient-list-mod-sort-order.ini",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+        "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json",
+        "Mods/JEMServer/build.gradle",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpIcons.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpRoute.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpScreen.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpSidebar.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/TemporaryWaypoints.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ProfileState.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpAction.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionKind.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpConfig.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpNetwork.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpProtocol.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpSubscriptions.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpTable.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpViews.java",
+        "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/world_ingredients.json",
+        "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/ClientHooks.java",
+        "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/Demo.java",
+        "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/GalleryScreen.java",
+        "Client/ManagedPack/config/spudaciousshops.toml",
+        "Client/ManagedPack/mods/spudaciousshops-1.10.2-forge-1.20.1.jar",
+        "Server/config/spudaciousshops.toml",
+        "Server/mods/spudaciousshops-1.10.2-forge-1.20.1.jar",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/RemoteShopClientMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopEntityMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopInventoryMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopRemovalMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopRecords.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopState.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/RemoteShop.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopCoinAccess.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopSnapshot.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopStock.java",
+        "Mods/JEMServer/src/main/resources/assets/spudaciousshops/lang/ru_ru.json",
+        "Mods/JEMServer/src/main/resources/jem_server_shops.mixins.json",
+        "Mods/JEMGuiSandbox/install.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "mod_dependency",
+      "smp_protocol",
+      "GUI",
+      "coin_shops",
+      "market_prices",
+      "cooking_tags",
+      "AutoModpack",
+      "world_saved_data"
+    ],
+    "relations": [
+      "JEMServer SMP protocol increments to 6 because serialized action/table enum positions changed.",
+      "ManagedPack and ordinary local Server must publish the same Spud-free contract.",
+      "Historical opaque NBT is retained."
+    ],
+    "notes": [
+      "Existing remote worlds and friends are not modified by this local implementation; native publication and player acceptance remain separate."
+    ],
+    "unresolved": []
+  }
+}

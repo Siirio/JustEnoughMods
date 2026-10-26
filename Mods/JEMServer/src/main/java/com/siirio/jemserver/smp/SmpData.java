@@ -68,7 +68,6 @@ public final class SmpData extends SavedData {
     private final Profiles profiles = new Profiles(this);
     private final EventRecords events = new EventRecords(this);
     private final LegacyContractRecords contracts = new LegacyContractRecords(this);
-    private final ShopRecords shops = new ShopRecords(this);
     private final EventSettingsRecords settings = new EventSettingsRecords(this);
     private final BossQuarantineRecords bossQuarantine = new BossQuarantineRecords(this);
 
@@ -76,7 +75,6 @@ public final class SmpData extends SavedData {
     public Profiles profiles() { return profiles; }
     public EventRecords events() { return events; }
     public LegacyContractRecords contracts() { return contracts; }
-    public ShopRecords shops() { return shops; }
     public EventSettingsRecords settings() { return settings; }
     public BossQuarantineRecords bossQuarantine() { return bossQuarantine; }
 
@@ -88,7 +86,7 @@ public final class SmpData extends SavedData {
         boolean outer = editDepth++ == 0;
         boolean initialized = false;
         try {
-            if (outer) { editing = true; parties.beginEdit(); profiles.beginEdit(); events.beginEdit(); contracts.beginEdit(); shops.beginEdit(); settings.beginEdit(); bossQuarantine.beginEdit(); }
+            if (outer) { editing = true; parties.beginEdit(); profiles.beginEdit(); events.beginEdit(); contracts.beginEdit(); settings.beginEdit(); bossQuarantine.beginEdit(); }
             initialized = true;
             return operation.get();
         }
@@ -98,7 +96,7 @@ public final class SmpData extends SavedData {
                 var notifications = List.copyOf(afterEdit);
                 afterEdit.clear();
                 try { if (initialized) checkpoint(); }
-                finally { parties.endEdit(); profiles.endEdit(); events.endEdit(); contracts.endEdit(); shops.endEdit(); settings.endEdit(); bossQuarantine.endEdit(); editing = false; }
+                finally { parties.endEdit(); profiles.endEdit(); events.endEdit(); contracts.endEdit(); settings.endEdit(); bossQuarantine.endEdit(); editing = false; }
                 notifications.forEach(Runnable::run);
             }
         }
@@ -121,7 +119,7 @@ public final class SmpData extends SavedData {
     private void checkpoint() {
         if (!editing) return;
         changed(parties.checkpoint()); changed(profiles.checkpoint()); changed(events.checkpoint());
-        changed(contracts.checkpoint()); changed(shops.checkpoint()); changed(settings.checkpoint()); changed(bossQuarantine.checkpoint());
+        changed(contracts.checkpoint()); changed(settings.checkpoint()); changed(bossQuarantine.checkpoint());
     }
 
     private void changed(int count) { if (count > 0) { revision += count; setDirty(); } }
@@ -145,10 +143,9 @@ public final class SmpData extends SavedData {
         data.profiles.read(tables.getList("profiles", Tag.TAG_COMPOUND));
         data.events.read(tables.getList("events", Tag.TAG_COMPOUND));
         data.contracts.read(tables.getList("contracts", Tag.TAG_COMPOUND));
-        data.shops.read(tables.getList("shops", Tag.TAG_COMPOUND));
         data.settings.read(tables.getList("settings", Tag.TAG_COMPOUND));
         data.bossQuarantine.read(tables.getList("boss_quarantine", Tag.TAG_COMPOUND));
-        for (String key : tables.getAllKeys()) if (!Set.of("parties", "profiles", "events", "contracts", "shops", "settings", "boss_quarantine").contains(key)) data.unknownTables.put(key, tables.get(key).copy());
+        for (String key : tables.getAllKeys()) if (!Set.of("parties", "profiles", "events", "contracts", "settings", "boss_quarantine").contains(key)) data.unknownTables.put(key, tables.get(key).copy());
         data.revision = root.getLong("revision");
         } catch (RuntimeException failure) { data.unreadableData = root.copy(); data.loadFailure = failure; }
         return data;
@@ -168,7 +165,7 @@ public final class SmpData extends SavedData {
         var out = unknownTables.copy();
         writeTable(out, "parties", parties.write()); writeTable(out, "profiles", profiles.write());
         writeTable(out, "events", events.write()); writeTable(out, "contracts", contracts.write());
-        writeTable(out, "shops", shops.write()); writeTable(out, "settings", settings.write());
+        writeTable(out, "settings", settings.write());
         writeTable(out, "boss_quarantine", bossQuarantine.write());
         root.put("tables", out);
         return root;

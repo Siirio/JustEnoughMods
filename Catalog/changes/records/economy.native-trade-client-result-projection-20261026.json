@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "change_id": "economy.native-trade-client-result-projection-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:villager"
+    },
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:wandering_trader"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "Native merchant session with a current server-backed non-barter monetary quote and matching client/server JEMEconomy protocol."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_integration",
+    "priority": 1130,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Preserve the server's real quoted output ItemStack in the native merchant result slot when the client updates virtual monetary inputs.",
+    "modifiers": [
+      {
+        "property": "economy.native_trade_result_visibility",
+        "operation": "replace",
+        "before": "Server creates the real result, then the client vanilla MerchantContainer recalculates against absent physical emerald payment and clears its local result.",
+        "after": "Client skips only the vanilla monetary result recomputation while the authoritative non-barter quote is active; server slot synchronization projects the real stack, count and NBT, and existing settlement/stock guards still control taking it."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMEconomy",
+    "kind": "native_merchant_projection_bug_fix",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/ClientMerchantContainerMixin.java",
+      "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Show the exact purchasable item without replacing native merchant slots or weakening server-side payment validation.",
+    "decision_source": "User reported invisible available goods on 2026-10-26. Forge 47.4.10 mapped MerchantContainer.updateSellItem and JEMEconomy server projection establish the causal chain."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "fix_client_result_projection",
+    "summary": "Preserve the server's real quoted output ItemStack in the native merchant result slot when the client updates virtual monetary inputs.",
+    "source_files": [
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/ClientMerchantContainerMixin.java",
+      "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "fix_client_result_projection",
+      "summary": "Preserve the server's real quoted output ItemStack in the native merchant result slot when the client updates virtual monetary inputs.",
+      "source_files": [
+        "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/mixin/ClientMerchantContainerMixin.java",
+        "Mods/JEMEconomy/src/main/resources/jem_currency_core.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "villager_trading",
+      "native_merchant_gui",
+      "economy",
+      "client_server_sync",
+      "item_NBT"
+    ],
+    "relations": [
+      "NativeTradeSession remains authoritative for quote and guarded settlement.",
+      "Client projection does not synthesize goods or payment.",
+      "Standard barter remains native."
+    ],
+    "notes": [
+      "Runtime result rendering and offer changes require player observation."
+    ]
+  }
+}

@@ -95,9 +95,6 @@ public final class Demo {
         for(int i=0;i<5;i++)prizes.add(tag("id",id("prize"+i),"titleKey","jem.smp.BOSS_RAID","createdAt",System.currentTimeMillis(),
                 "items",list(stack(Items.DIAMOND,3),stack(Items.EMERALD,24),stack(Items.GOLD_INGOT,8)),"groups",new ListTag()));
         TABLES.put("prizes",prizes);
-        TABLES.put("shops",List.of(tag("id",id("shop"),"owner",id("shopOwner"),"name","Sandbox shop","state","ACTIVE","selectable",false,"remoteAvailable",true,
-                "dimension","minecraft:overworld","distance",32.0,"meaningfulLocation",true,"position",new BlockPos(128,64,96).asLong(),"revision",1,"price",10,"quantity",16,
-                "offers",list(tag("output",stack(Items.OAK_LOG,16),"availableTrades",32)))));
         town=makeTown();
     }
     private static void ensure() { if(town==null)reset(); }

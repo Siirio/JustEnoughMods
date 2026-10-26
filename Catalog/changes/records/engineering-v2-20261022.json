@@ -161,8 +161,6 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ProfileState.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ProfileStateNbtCodec.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Profiles.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopRecords.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopState.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpAction.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActions.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpData.java",
@@ -211,7 +209,6 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RushLoot.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/fishing/FishingRuntime.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java",
       "Mods/JEMSettlements/build.gradle",
       "Mods/JEMSettlements/settings.gradle",
       "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/economy/CoinCurrencyProvider.java",
@@ -672,6 +669,17 @@
         "tools/module-inventory.json",
         "tools/state/packSyncHost-sync.json"
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "retire_spud_shop_owners",
+      "summary": "The user removed Spud's Shops and its SMP integration; typed shop owners are no longer current causes of this engineering rule, while their original source history remains intact.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopRecords.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopState.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java"
+      ]
     }
   ],
   "impacts": {
@@ -686,7 +694,7 @@
     ],
     "relations": [],
     "notes": [
-      "Typed party, profile, event, shop, schedule, legacy reward and quarantine state owns domain changes; NBT is confined to codec, native payload and wire boundaries.",
+      "Typed party, profile, event, schedule, legacy reward and quarantine state owns current domain changes; the former shop owner is historical after the 2026-10-26 Spud's Shops retirement. NBT is confined to codec, native payload and wire boundaries.",
       "Build compilation and native local publication do not establish runtime gameplay acceptance.",
       "Professions remains development-only; its native compile API input is not distributed."
     ],

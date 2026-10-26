@@ -1,5 +1,11 @@
 # Current native economy contract — 2026-10-16
 
+## Видимый результат нативной сделки — 2026-10-26
+
+Пользователь сообщил, что оплачиваемый товар выдавался по нажатию, но оставался невидимым в выходном слоте. Установленная по исходникам причина: клиентский `MerchantContainer.updateSellItem()` выполнял обычный пересчёт по предметам входных слотов после серверной проекции денежной котировки, хотя денежная оплата виртуальна. JEMEconomy сохраняет полученную от сервера проекцию для денежной сделки на клиенте. Выбор предложения не очищает локальный слот заранее, поскольку два предложения с одинаковым результатом могут не породить повторного slot packet. Native barter продолжает обычный пересчёт. Только серверная сессия разрешает получение результата, списывает Coins и учитывает stock/restock. Источник исправления — `mixin/ClientMerchantContainerMixin.java`, версия согласованного сетевого JAR обновляется вместе с клиентом и сервером
+
+Статус: `in testing`. Исходный дефект и механизм исправления подтверждены чтением Forge 47.4.10 и JEM Economy. Появление товара в живом клиенте и принятие игроком ещё не подтверждены
+
 ## Current source contract — 2026-10-21
 
 Source implementation / in testing. Runtime acceptance is unrun; production artifact delivery, native AutoModpack application and MineRENT deployment remain pending. This section does not claim a completed release.

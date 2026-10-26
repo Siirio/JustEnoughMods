@@ -14,7 +14,7 @@ restores the initial in-memory sample; leaving the world also resets it.
 
 | Route | Native presentation reused |
 | --- | --- |
-| `smp`, `profile`, `players`, `parties`, `shops`, `prizes` | JEM Server's SMP screens, sidebar, forms, search, details, lists and lobby controls |
+| `smp`, `profile`, `players`, `parties`, `prizes` | JEM Server's SMP screens, sidebar, forms, search, details, lists and lobby controls |
 | `settlements`, `settlement-directory`, `founding`, `settlement-guide` | JEM Settlements' dashboard, resident details, happiness, storage, treasury, territory, founding and guide pages |
 | `death`, `bosses`, `landmarks`, `homes` | JEM Server's native menu renderer with local destination entries and an inert confirmation |
 | `market` | JEM Economy's native storefront, category/search/quantity controls and price cells |
@@ -32,7 +32,7 @@ events, change the actual race or save player/world state. Location controls sho
 a destination inspection sheet; they do not replace Xaero's real map.
 
 The separately installed native mods retain their normal behavior: Curios,
-Backpacked, TrashSlot, JEI, Better Advancements, FTB Quests and Spudacious Shops,
+Backpacked, TrashSlot, JEI, Better Advancements and FTB Quests,
 with Framework, Balm, Architectury, FTB Library, FTB Teams and Patchouli. Use their
 native inventory controls, key bindings, books and blocks. Existing Recruits,
 Tom's Storage, Sophisticated Storage and Xaero mods remain in the sandbox. These

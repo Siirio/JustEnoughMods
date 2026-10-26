@@ -272,7 +272,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Sounds | `2.2.1+1.20.1+forge` | Client |  |
 | Spawn | `4.0.7-1.20.1` | Client + server |  |
 | Spider Overhaul | `0.0.6-Forge-v1.20` | Client + server |  |
-| Spud's Shops | `1.10.2-forge-1.20.1` | Client + server |  |
 | Spyglass Improvements | `1.5.12b` | Client |  |
 | Status Effect Bars | `1.0.3` | Client + server |  |
 | StreamsReflowing | `2.13.1` | Client + server |  |

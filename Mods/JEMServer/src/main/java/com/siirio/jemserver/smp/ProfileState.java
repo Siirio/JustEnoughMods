@@ -53,15 +53,13 @@ public final class ProfileState implements SmpRecord {
     private long fishingMilestones = 0;
     private boolean fishingMilestonesPresent, fishingMilestonesChanged;
     private final Set<String> discoveredBiomes = new LinkedHashSet<>(), tamedSpecies = new LinkedHashSet<>();
-    private final Set<UUID> favorites = new LinkedHashSet<>();
     private final Map<String, Long> eventStats = new LinkedHashMap<>();
     private List<ProfessionSnapshot> professions = List.of();
     private NativeItems deliveries = NativeItems.empty();
     private boolean deliveriesPresent;
-    private final Set<UUID> favoriteChanges = new LinkedHashSet<>();
     private DeliveryClaim deliveryClaim;
     private RewardMigration rewardMigration;
-    private boolean discoveriesChanged, speciesChanged, favoritesChanged, eventStatsChanged, professionsChanged, deliveriesChanged, deliveryClaimChanged, rewardMigrationChanged;
+    private boolean discoveriesChanged, speciesChanged, eventStatsChanged, professionsChanged, deliveriesChanged, deliveryClaimChanged, rewardMigrationChanged;
     public record ProfessionSnapshot(String id, long xp, int level) {}
     public record DeliveryClaim(UUID id, NativeItems remaining) {}
     public record RewardMigration(UUID id, NativeItems items, boolean committed) {}
@@ -69,8 +67,6 @@ public final class ProfileState implements SmpRecord {
     public boolean discoverBiome(String id) { requireMutable(); boolean added = discoveredBiomes.add(id); discoveriesChanged |= added; return added; }
     public Set<String> tamedSpecies() { return Collections.unmodifiableSet(tamedSpecies); }
     public void tameSpecies(String id) { requireMutable(); speciesChanged |= tamedSpecies.add(id); }
-    public Set<UUID> favorites() { return Collections.unmodifiableSet(favorites); }
-    public void favorite(UUID id, boolean value) { requireMutable(); if (value) favorites.add(id); else favorites.remove(id); favoritesChanged = true; favoriteChanges.add(id); }
     public Map<String, Long> eventStats() { return Collections.unmodifiableMap(eventStats); }
     public void countEvent(String activity) { requireMutable(); eventStats.merge(activity, 1L, Long::sum); eventStatsChanged = true; }
     public List<ProfessionSnapshot> professions() { return professions; }
@@ -252,19 +248,17 @@ public final class ProfileState implements SmpRecord {
         copy.fishingMilestonesChanged = fishingMilestonesChanged;
         copy.professions = professions;
         copy.deliveries = deliveries; copy.deliveriesPresent = deliveriesPresent;
-        copy.favoriteChanges.addAll(favoriteChanges);
         copy.deliveryClaim = deliveryClaim;
         copy.rewardMigration = rewardMigration;
         copy.discoveriesChanged = discoveriesChanged;
         copy.speciesChanged = speciesChanged;
-        copy.favoritesChanged = favoritesChanged;
         copy.eventStatsChanged = eventStatsChanged;
         copy.professionsChanged = professionsChanged;
         copy.deliveriesChanged = deliveriesChanged;
         copy.deliveryClaimChanged = deliveryClaimChanged;
         copy.rewardMigrationChanged = rewardMigrationChanged;
         copy.discoveredBiomes.addAll(discoveredBiomes); copy.tamedSpecies.addAll(tamedSpecies);
-        copy.favorites.addAll(favorites); copy.eventStats.putAll(eventStats);
+        copy.eventStats.putAll(eventStats);
         return copy;
     }
     public ProfileState snapshot() { var copy = copy(); copy.frozen = true;  return copy; }
@@ -324,8 +318,6 @@ public final class ProfileState implements SmpRecord {
         for (String id : biomes.getAllKeys()) if (biomes.getBoolean(id)) value.discoveredBiomes.add(id);
         var species = tag.getCompound("tamedSpecies");
         for (String id : species.getAllKeys()) if (species.getBoolean(id)) value.tamedSpecies.add(id);
-        var favorites = tag.getCompound("shopFavorites");
-        for (String id : favorites.getAllKeys()) if (favorites.getBoolean(id)) value.favorites.add(UUID.fromString(id));
         var stats = tag.getCompound("eventStats");
         for (String activity : stats.getAllKeys()) value.eventStats.put(activity, stats.getLong(activity));
         var professions = new ArrayList<ProfileState.ProfessionSnapshot>();
@@ -364,7 +356,6 @@ public final class ProfileState implements SmpRecord {
             if (value.fishingMilestonesChanged) { if (value.fishingMilestonesPresent) tag.putLong("fishingMilestones", value.fishingMilestones); else tag.remove("fishingMilestones"); }
         if (value.discoveriesChanged) { var rows = tag.getCompound("discoveredBiomes"); value.discoveredBiomes.forEach(id -> { if (!rows.getBoolean(id)) rows.putBoolean(id, true); }); tag.put("discoveredBiomes", rows); }
         if (value.speciesChanged) { var rows = tag.getCompound("tamedSpecies"); value.tamedSpecies.forEach(id -> { if (!rows.getBoolean(id)) rows.putBoolean(id, true); }); tag.put("tamedSpecies", rows); }
-        if (value.favoritesChanged) { var rows = tag.getCompound("shopFavorites"); value.favoriteChanges.forEach(id -> { if (value.favorites.contains(id)) rows.putBoolean(id.toString(), true); else rows.remove(id.toString()); }); tag.put("shopFavorites", rows); }
         if (value.eventStatsChanged) { var rows = tag.getCompound("eventStats"); value.eventStats.forEach((key, count) -> { if (rows.getLong(key) != count || !rows.contains(key)) rows.putLong(key, count); }); tag.put("eventStats", rows); }
         if (value.professionsChanged) { var rows = new net.minecraft.nbt.ListTag(); for (var profession : value.professions) { var row = new net.minecraft.nbt.CompoundTag(); row.putString("id", profession.id()); row.putLong("xp", profession.xp()); row.putInt("level", profession.level()); rows.add(row); } tag.put("professions", rows); }
         if (value.deliveriesChanged) { if (!value.deliveriesPresent) tag.remove("deliveries"); else tag.put("deliveries", value.deliveries.toNbt()); }

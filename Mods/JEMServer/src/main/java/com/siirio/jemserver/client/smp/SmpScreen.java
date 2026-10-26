@@ -29,9 +29,7 @@ public final class SmpScreen extends Screen {
     private final LinkedHashMap<String, EditBox> fields = new LinkedHashMap<>();
     private String tab = "events", filter = "", form = "", error = "";
     private EditBox search;
-    private EditBox seller;
     private MultiLineEditBox messageBox;
-    private String shopSort = "near";
     private int formScroll;
     private String expandedChoice = "";
     private final Map<String, List<String>> choices = new HashMap<>();
@@ -43,7 +41,6 @@ public final class SmpScreen extends Screen {
     private boolean leaveAccepted;
     private boolean closeLobby;
     private boolean dissolvedLobby;
-    private final LinkedHashSet<String> sellerSuggestions = new LinkedHashSet<>();
     private String settlementTab = "residents";
     private UUID pendingSettlementRemoval;
     private boolean pendingSettlementDelete;
@@ -100,36 +97,16 @@ public final class SmpScreen extends Screen {
             if (!update.open() && next.equals("settlements") && next.equals(tab) && selected == null
                     && incoming.getInt("total") == 1 && incoming.contains("detail") && incoming.getCompound("detail").hasUUID("id"))
                 selected = incoming.getCompound("detail").getUUID("id");
-            if (next.equals("shops")) {
-                for (Tag value : incoming.getList("rows", Tag.TAG_COMPOUND)) {
-                    String name = ((CompoundTag) value).getString("name");
-                    if (!name.isBlank()) sellerSuggestions.add(name);
-                }
-            }
-            if (!update.open()
-                    && next.equals(tab)
-                    && tab.equals("shops")
-                    && selected != null
-                    && (!incoming.contains("detail")
-                            || !incoming.getCompound("detail").hasUUID("id")
-                            || !selected.equals(incoming.getCompound("detail").getUUID("id"))))
-                selected = null;
             if (update.open()) {
                 tab = next;
                 String rawFilter = model.getString("filter");
-                filter = tab.equals("events") || tab.equals("shops") ? "" : rawFilter;
+                filter = tab.equals("events") ? "" : rawFilter;
                 if (search != null) {
-                    String value = model.getString("querySearch");
-                    if (tab.equals("shops")) {
-                        String[] pair = value.split("\u001f", -1);
-                        seller.setValue(pair[0]);
-                        search.setValue(pair.length > 1 ? pair[1] : "");
-                    } else search.setValue(value);
+                    search.setValue(model.getString("querySearch"));
                     searchAt = 0;
                 }
                 selected =
                         model.contains("detail") && model.getCompound("detail").hasUUID("id") ? model.getCompound("detail").getUUID("id") : null;
-                if (tab.equals("shops")) selected = null;
             }
             if (tab.equals("parties") && selected != null && currentDetail() && model.getCompound("detail").getBoolean("closeLobby")) {
                 closeLobby = model.getCompound("detail").getString("state").equals("ACTIVE");
@@ -170,9 +147,7 @@ public final class SmpScreen extends Screen {
         lobbyButtons.clear();
         lobbyControls = List.of();
         String initial = model.getString("querySearch");
-        String[] pair = initial.split("\u001f", -1);
-        String value = search == null ? (tab.equals("shops") ? (pair.length > 1 ? pair[1] : "") : initial) : search.getValue();
-        String sellerValue = seller == null ? (tab.equals("shops") ? pair[0] : "") : seller.getValue();
+        String value = search == null ? initial : search.getValue();
         left = 10;
         top = 10;
         panelWidth = width - 20;
@@ -200,19 +175,6 @@ public final class SmpScreen extends Screen {
                     searchAt = System.currentTimeMillis() + 300;
                 });
         addWidget(search);
-        seller =
-                new EditBox(
-                        font,
-                        bodyX,
-                        top + 37,
-                        Math.max(60, bodyWidth / 2 - 8),
-                        20,
-                        Component.translatable("jem.smp.seller"));
-        seller.setMaxLength(16);
-        seller.setValue(sellerValue);
-        seller.setHint(Component.translatable("jem.smp.seller"));
-        seller.setResponder(text -> searchAt = System.currentTimeMillis() + 300);
-        addWidget(seller);
         int index = 0;
         for (var field : fields.values()) {
             positionField(field, index++);
@@ -240,7 +202,6 @@ public final class SmpScreen extends Screen {
             if (dissolved) error = "party_dissolved";
         }
         search.tick();
-        seller.tick();
         fields.values().forEach(EditBox::tick);
         if (messageBox != null) messageBox.tick();
         if (searchAt != 0 && System.currentTimeMillis() >= searchAt) {
@@ -255,18 +216,14 @@ public final class SmpScreen extends Screen {
         SmpNetwork.query(
                 new SmpQuery(
                         tab,
-                        tab.equals("shops")
-                                ? "search|near"
-                                : tab.equals("events") ? "" : filter,
-                        tab.equals("shops")
-                                ? seller.getValue() + "\u001f" + search.getValue()
-                                : search == null ? "" : search.getValue(),
+                        tab.equals("events") ? "" : filter,
+                        search == null ? "" : search.getValue(),
                         page,
                         selected));
     }
 
     private void remember() {
-        if (search != null) navigation.remember(new SmpRoute(tab, filter, selected, page, scroll, search.getValue(), seller.getValue(), shopSort, model.copy()));
+        if (search != null) navigation.remember(new SmpRoute(tab, filter, selected, page, scroll, search.getValue(), model.copy()));
     }
 
     public static void openRoute(String route, UUID detail) {
@@ -287,11 +244,10 @@ public final class SmpScreen extends Screen {
         filter = "";
         page = 0;
         scroll = 0;
-        selected = next.equals("shops") ? null : detail;
+        selected = detail;
         clearForm();
         error = "";
         search.setValue("");
-        seller.setValue("");
         searchAt = 0;
         query();
     }
@@ -308,13 +264,10 @@ public final class SmpScreen extends Screen {
         tab = previous.tab();
         filter = tab.equals("events") ? "" : previous.filter();
         selected = previous.selected();
-        if (tab.equals("shops")) selected = null;
         page = previous.page();
         scroll = previous.scroll();
-        shopSort = previous.sort();
         model = previous.model();
         search.setValue(previous.search());
-        seller.setValue(previous.seller());
         searchAt = 0;
         error = "";
         query();
@@ -346,23 +299,13 @@ public final class SmpScreen extends Screen {
         bodyY = top + 66;
         boolean toolbar = selected == null && form.isEmpty();
         search.setVisible(toolbar); search.active = toolbar;
-        seller.setVisible(toolbar && tab.equals("shops")); seller.active = toolbar && tab.equals("shops");
         if (toolbar) {
             boolean showFilter = tab.equals("parties");
             int reserve = tab.equals("parties") ? 138 : 0;
             search.setX(bodyX); search.setY(top + 37); search.setWidth(Math.max(30, bodyWidth - reserve));
             search.setHint(Component.translatable("jem.smp.search"));
-            if (tab.equals("shops")) {
-                int half = Math.max(30, (bodyWidth - 8) / 2);
-                seller.setX(bodyX); seller.setY(top + 37); seller.setWidth(half);
-                search.setX(bodyX + half + 8); search.setWidth(half);
-                seller.setHint(Component.translatable("jem.smp.seller"));
-                search.setHint(Component.translatable("jem.smp.item_search"));
-                seller.render(g, mx, my, partial);
-            } else {
-                if (showFilter) button(g, bodyX + bodyWidth - 66, top + 37, 66, 20, "filter", this::cyclePartyFilter, mx, my);
-                if (tab.equals("parties")) button(g, bodyX + bodyWidth - 134, top + 37, 64, 20, "create", () -> openForm("create"), mx, my);
-            }
+            if (showFilter) button(g, bodyX + bodyWidth - 66, top + 37, 66, 20, "filter", this::cyclePartyFilter, mx, my);
+            if (tab.equals("parties")) button(g, bodyX + bodyWidth - 134, top + 37, 64, 20, "create", () -> openForm("create"), mx, my);
             search.render(g, mx, my, partial);
         } else bodyY = top + 42;
         if (form.isEmpty()) {
@@ -390,7 +333,6 @@ public final class SmpScreen extends Screen {
         String message = error.isEmpty() ? model.getString("message") : error;
         if (!message.isEmpty()) text(g, Component.translatable("jem.smp.error." + message), bodyX, top + panelHeight - 12, RED, bodyWidth);
         if (view.waiting()) text(g, Component.translatable("jem.smp.pending"), bodyX + bodyWidth / 2, top + 12, MUTED, bodyWidth / 2 - 30);
-        renderSellerSuggestions(g, mx, my);
         if (!hoveredItem.isEmpty() && my >= bodyY && my < bodyBottom) g.renderTooltip(font, hoveredItem, mx, my);
         else if (hoveredLabel != null) g.renderTooltip(font, hoveredLabel, mx, my);
     }
@@ -420,32 +362,6 @@ public final class SmpScreen extends Screen {
             y += height + GAP;
         }
         maxScroll = Math.max(0, y + scroll - bodyBottom); scroll = Math.max(0, Math.min(scroll, maxScroll));
-    }
-
-    private void renderSellerSuggestions(GuiGraphics g, int mx, int my) {
-        if (!form.isEmpty() || selected != null || !tab.equals("shops") || !seller.isVisible() || !seller.isFocused()) return;
-        String query = seller.getValue().trim().toLowerCase(Locale.ROOT);
-        var matches = sellerSuggestions.stream()
-                .filter(name -> query.isEmpty() || name.toLowerCase(Locale.ROOT).contains(query))
-                .filter(name -> !name.equalsIgnoreCase(seller.getValue()))
-                .limit(6)
-                .toList();
-        if (matches.isEmpty()) return;
-        int x = seller.getX(), y = seller.getY() + seller.getHeight(), width = seller.getWidth();
-        g.pose().pushPose();
-        g.pose().translate(0, 0, 300);
-        for (int index = 0; index < matches.size(); index++) {
-            String name = matches.get(index);
-            int rowY = y + index * 20;
-            boolean hovered = mx >= x && mx < x + width && my >= rowY && my < rowY + 20;
-            frame(g, x, rowY, width, 20, hovered ? HOVER : INSET);
-            text(g, Component.literal(name), x + 7, rowY + 6, CREAM, width - 14);
-            hits.add(new SmpHit(x, rowY, width, 20, () -> {
-                seller.setValue(name);
-                setFocused(search);
-            }));
-        }
-        g.pose().popPose();
     }
 
     private static int stateColor(String state) {
@@ -809,10 +725,6 @@ public final class SmpScreen extends Screen {
             maxScroll = 0;
             return;
         }
-        if (tab.equals("shops")) {
-            renderShopRows(g, mx, my);
-            return;
-        }
         for (Tag tag : model.getList("rows", Tag.TAG_COMPOUND)) {
                 var row = (CompoundTag) tag;
                 if (!row.hasUUID("id")) continue;
@@ -851,73 +763,8 @@ public final class SmpScreen extends Screen {
         scroll = Math.max(0, Math.min(scroll, maxScroll));
     }
 
-    private void renderShopRows(GuiGraphics g, int mx, int my) {
-        int rowHeight = 70;
-        int y = bodyY - scroll;
-        for (Tag value : model.getList("rows", Tag.TAG_COMPOUND)) {
-            var row = (CompoundTag) value;
-            if (!row.hasUUID("id")) continue;
-            if (y + rowHeight >= bodyY && y < bodyBottom) {
-                frame(g, bodyX, y, bodyWidth, rowHeight, ROW);
-                if (row.hasUUID("owner")) SmpIcons.face(g, row.getUUID("owner"), bodyX + 8, y + 18, 32);
-                int sellerWidth = Math.max(104, Math.min(150, bodyWidth / 4));
-                text(g, Component.literal(row.getString("name")), bodyX + 46, y + 18, CREAM, sellerWidth - 48);
-                Component location = row.contains("distance") ? Component.translatable("jem.ui.distance_meters", Math.round(row.getDouble("distance"))) : DimensionNames.name(row.getString("dimension"));
-                text(g, location, bodyX + 46, y + 37, MUTED, sellerWidth - 48);
-                int actionWidth = Math.min(76, Math.max(58, bodyWidth / 10));
-                int mapWidth = actionWidth;
-                int actionX = bodyX + bodyWidth - actionWidth - mapWidth - 12;
-                int tradeX = bodyX + sellerWidth;
-                int tradeWidth = Math.max(94, actionX - tradeX - 9);
-                var offers = row.getList("offers", Tag.TAG_COMPOUND);
-                var firstOffer = offers.isEmpty() ? new CompoundTag() : offers.getCompound(0);
-                var output = ItemStack.of(offers.isEmpty() ? row.getCompound("offer") : firstOffer.getCompound("output"));
-                if (offers.isEmpty() && !output.isEmpty()) output.setCount(Math.max(1, row.getInt("quantity")));
-                int available = offers.isEmpty() ? (row.getString("state").equals("OUT_OF_STOCK") ? 0 : -1) : firstOffer.getInt("availableTrades");
-                Component stock = available == 0 ? Component.translatable("jem.smp.out_of_stock") : available < 0 ? Component.translatable("jem.smp.unlimited_stock") : Component.translatable("jem.smp.available_stock", available * Math.max(1, output.getCount()));
-                text(g, stock, tradeX, y + 7, available == 0 ? RED : MUTED, tradeWidth);
-                int iconSize = 30;
-                int paymentX = tradeX + 3;
-                int outputX = tradeX + Math.max(iconSize + 28, tradeWidth / 2 + 8);
-                ServerCurrencyPresentation.draw(g, font, row.getInt("price"), paymentX, y + 33, Math.max(24, outputX - paymentX - 25), CREAM, true);
-                int arrowX = Math.max(paymentX + iconSize + 7, outputX - 22);
-                text(g, Component.literal("→"), arrowX, y + 39, PEACH, 18);
-                renderShopTradeStack(g, output, outputX, y + 29, iconSize, mx, my);
-                UUID shop = row.getUUID("id");
-                if (row.getBoolean("remoteAvailable") && row.getString("state").equals("ACTIVE") && !row.getBoolean("selectable"))
-                    button(g, actionX, y + 20, actionWidth, 30, "buy", () -> sendFor(shop, row.getInt("revision"), "buy", new JsonObject()), mx, my);
-                else disabledButton(g, actionX, y + 20, actionWidth, 30, "buy", row.getBoolean("selectable") ? "select_offer_at_shop" : shopUnavailableReason(row), mx, my);
-                iconButton(g, actionX + actionWidth + 4, y + 20, mapWidth, 30, "map", () -> navigateShop(row), mx, my);
-            }
-            y += rowHeight + GAP;
-        }
-        maxScroll = Math.max(0, y + scroll - bodyBottom);
-        scroll = Math.max(0, Math.min(scroll, maxScroll));
-    }
-
-    private void renderShopTradeStack(GuiGraphics g, ItemStack stack, int x, int y, int size, int mx, int my) {
-        if (stack.isEmpty()) return;
-        float scale = size / 16f;
-        g.pose().pushPose();
-        g.pose().translate(x, y, 0);
-        g.pose().scale(scale, scale, 1);
-        g.renderItem(stack, 0, 0);
-        g.renderItemDecorations(font, stack, 0, 0);
-        g.pose().popPose();
-        if (mx >= x && mx < x + size && my >= y && my < y + size) hoveredItem = stack;
-    }
-
     private Component dimensionNameComponent(String value) {
         return DimensionNames.name(value);
-    }
-
-    private String shopUnavailableReason(CompoundTag row) {
-        if (!row.getBoolean("remoteAvailable")) return "shop_unloaded";
-        return switch (row.getString("state")) {
-            case "OUT_OF_STOCK" -> "out_of_stock";
-            case "PAYMENT_FULL" -> "shop_payment_full";
-            default -> "shop_unconfigured";
-        };
     }
 
     private void renderDetail(GuiGraphics g, int mx, int my) {
@@ -1075,10 +922,6 @@ public final class SmpScreen extends Screen {
                     Component.translatable("jem.smp.map"), Component.translatable("jem.smp.map_fallback", coordinates)));
         }
         return opened;
-    }
-
-    private void navigateShop(CompoundTag row) {
-        openLocation(row);
     }
 
     private void renderDetailBody(GuiGraphics g, int mx, int my) {
@@ -1471,7 +1314,7 @@ public final class SmpScreen extends Screen {
     private static String buttonRole(String key) {
         return switch (key) {
             case "start", "claim", "claim_all", "create", "create_party", "submit" -> "primary";
-            case "ready", "confirm", "approve", "buy" -> "confirm";
+            case "ready", "confirm", "approve" -> "confirm";
             case "leave", "dissolve", "remove", "unregister", "delete_settlement" -> "danger";
             default -> "secondary";
         };
@@ -1595,10 +1438,6 @@ public final class SmpScreen extends Screen {
             return true;
         }
         if (form.isEmpty() && selected == null) {
-            if (tab.equals("shops") && seller.mouseClicked(x, y, button)) {
-                setFocused(seller);
-                return true;
-            }
             if (search.mouseClicked(x, y, button)) {
                 setFocused(search);
                 return true;

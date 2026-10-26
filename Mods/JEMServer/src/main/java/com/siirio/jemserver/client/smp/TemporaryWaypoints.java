@@ -30,7 +30,7 @@ public final class TemporaryWaypoints {
     }
 
     public static void showPreview(UUID id, String label, ResourceLocation dimension, net.minecraft.core.BlockPos position) {
-        localPoint = new NavigationPoint("shops", id, label, dimension, position, Long.MAX_VALUE);
+        localPoint = new NavigationPoint("temporary", id, label, dimension, position, Long.MAX_VALUE);
         localMapOpened = false;
         revision++;
     }

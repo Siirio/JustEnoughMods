@@ -3,7 +3,7 @@ package com.siirio.jemserver.smp;
 import java.util.Locale;
 
 public enum SmpTable {
-    PARTIES, SHOPS, EVENTS, PROFILES, PRIZES;
+    PARTIES, EVENTS, PROFILES, PRIZES;
 
     private static final java.util.Set<String> READ_ONLY_ROUTES =
             java.util.Set.of("settlements");

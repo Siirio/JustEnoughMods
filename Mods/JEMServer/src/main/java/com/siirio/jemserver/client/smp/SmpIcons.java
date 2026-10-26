@@ -29,11 +29,10 @@ final class SmpIcons {
             case "home" -> Items.COMPASS;
             case "BOSS", "BOSS_RAID" -> Items.DIAMOND_SWORD;
             case "COOKING_SHOW" -> Items.CAKE;
-            case "buy" -> Items.EMERALD;
             case "FISHING", "fishingEvents", "fishingMilestones" -> Items.FISHING_ROD;
             case "RESOURCE_RUSH" -> Items.DIAMOND_PICKAXE;
             case "BLOOD_MOON", "bloodMoonClears" -> Items.ZOMBIE_HEAD;
-            case "shops", "market", "TRADING" -> Items.EMERALD;
+            case "market", "TRADING" -> Items.EMERALD;
             case "death_history" -> Items.RECOVERY_COMPASS;
             case "treasury_deposit", "treasury_withdraw" -> Items.GOLD_INGOT;
             case "roles" -> Items.TOTEM_OF_UNDYING;
@@ -53,7 +52,6 @@ final class SmpIcons {
             case "leave" -> Items.OAK_DOOR;
             case "false", "cancel", "remove", "close" -> Items.BARRIER;
             case "prizes", "claim_rewards", "claim", "claim_all" -> Items.ENDER_CHEST;
-            case "favorite" -> Items.GOLD_INGOT;
             case "playTicks", "planned", "started", "ends", "calendar" -> Items.CLOCK;
             case "mobsKilled" -> Items.IRON_SWORD;
             case "bossesHosted", "bossAssists", "raidsCompleted" -> Items.WITHER_SKELETON_SKULL;

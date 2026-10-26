@@ -60,7 +60,6 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/menus/VanillaMenus.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/menus/client/VanillaGuiPlayers.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopEntityMixin.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/BossHostingPrompt.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/DomainFeatures.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventEntryActions.java",
@@ -105,7 +104,6 @@
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/fishing/FishingProfiles.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/recruits/RecruitProjection.java",
       "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/settlements/SettlementProjection.java",
-      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java",
       "Mods/JEMServer/src/main/resources/data/jem_pack_core/jem/events/blood_moon_rewards/default.json",
       "Mods/JEMServer/src/main/resources/data/jem_server/loot_tables/events/fishing_cache.json",
       "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/blood_moon/arachnid.json",
@@ -287,6 +285,16 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/mummy.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "retire_spud_shop_owners",
+      "summary": "Remove the retired Spud's Shops adapter and shop index from current source ownership, retaining their original paths in historical entries.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopEntityMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java"
       ]
     }
   ],

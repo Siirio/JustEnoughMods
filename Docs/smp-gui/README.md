@@ -37,7 +37,7 @@ Player-hosted Party является социальной группой, а н�
 ## Interaction ownership
 
 - Client владеет layout, hover, scroll, cursor, skin/entity preview и visual accents.
-- Server владеет доступностью actions, shop state, party membership, event state и mutation result.
+- Server владеет доступностью actions, party membership, event state и mutation result
 - Client не предсказывает удаление slot item для menu buttons.
 - Refresh обновляет содержимое in place и не открывает container заново.
 - Player preview использует preview-only `RemotePlayer`; live entity не передаётся в vanilla inventory renderer.
@@ -45,20 +45,15 @@ Player-hosted Party является социальной группой, а н�
 
 ## SMP domain projection
 
-GUI не создаёт вторую модель SMP state: shops отражают physical Spud shop block, Market отражает JEM Economy policy/quotes, Settlements отображает и изменяет состояние только через его authoritative API, parties/events отражают authoritative server instance.
+GUI не создаёт вторую модель SMP state: Market отражает JEM Economy policy/quotes, Settlements отображает и изменяет состояние только через его authoritative API, parties/events отражают authoritative server instance. После удаления Spud's Shops маршрут `shops` и удалённый каталог покупок не доступны. Старые записи магазинов сохраняются только как непрозрачные данные мира и не создают действующие предложения.
 
 - Server-hosted Events и player-hosted Party визуально и текстово различаются; Activities, inbox storage и activity-feed queries отсутствуют полностью.
 - Profile показывает full-body skin без recent achievements, reward actions, work contracts и UUID.
-- Shops toolbar содержит только seller и purchasable-item search; seller даёт live suggestions. Trade card явно показывает input и output.
-- Remote catalog открывает native Spud customer menu, если server chunk магазина загружен; seller может быть offline, а buyer client не обязан загружать chunk.
-- Разрушенный или заменённый Spud BlockEntity немедленно удаляет catalog record; `CLOSED` и `STALE` записи не существуют.
-- Spud trade сохраняет native management/stock protections и не зависит от удалённой системы обычных claims.
 - Building Projects remain server metadata only and never grant or deny world interaction; JEM does not draw or edit them through Xaero's native screen.
 - FTB Quests is a guide projection: it may explain Roles, Professions, Coins, towns, bosses and events, but it never becomes their state or reward owner.
 - Shipping Box and Coin merchant screens are Economy projections: item policy is only `BUY_AND_SELL` or `NONE`, the server re-quotes every transaction, and the client never owns demand, quotas, offer use, inventory consumption or money mutation.
 - Settlements route first selects a town only when the authenticated account owns more than one. Its current internal sections are Settlement, Residents, Happiness and Chests; treasury/development remain content within the settlement section. Residents, workers and recruits share one list with role/profession; Overview, Workforce and Defense tabs do not exist. Rename, treasury and unregister actions always carry the stable town UUID and are re-authorized by the server.
 - The SMP sidebar adds Roles, Professions, Wallet and Town only when their modules are loaded. Professions opens one JEM-owned radial screen where all ten roots and all 78 balanced parent-child nodes remain visible together; wheel zoom and drag pan preserve readability while Pufferfish still owns category XP, levels, points and unlocked nodes. JEMProfessions validates gain signals, migrates legacy progress once and applies effects for actually unlocked skills. These buttons execute the real server-validated screen action and never print a dead command hint.
-- Shop rows display a numeric Coin price. A remote non-selectable purchase reserves one Wallet/cash-funded amount, rechecks the loaded physical Spud stock, delivers the real stack and credits the authenticated owner. Selectable Spud shops require choosing the exact item at their physical block until a bounded selection DTO is available.
 - Sleep vote длится девять секунд, показывает каждого eligible player и его выбор, sleepers считаются автоматически, большинство решает, tie сохраняет ночь.
 - Глобальная карта Xaero содержит общее исследование terrain, подтверждённые открытия boss locations и полупрозрачные информационные области поселений с контуром. Обычные native waypoints, home/base, names/colors/groups/settings и death points остаются личными; редактор Xaero не публикует их на сервер.
 - Старые обычные Landmarks/Pending записи сохраняются в прежнем SavedData, но доступны только creator, включая /landmarks и map snapshot. Creator удаляет только свою сохранённую запись. Global boss discoveries не удаляются через чужой UI; локальная visibility/delete настройка third-party marker принадлежит native Xaero и не меняет серверное открытие. Обычные claims и их контуры удалены. Event/project geometry остаётся в JEM-owned event and planning flows and is not injected into Xaero's screen.

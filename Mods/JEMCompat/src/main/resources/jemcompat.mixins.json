@@ -5,6 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "jemcompat.refmap.json",
   "mixins": [
+    "enchanting.EnchantmentMenuCostMixin",
+    "enchanting.AnvilMenuCostMixin",
+    "enchanting.AnvilQuickMoveCostMixin",
     "login.TerminalConnectionFailureMixin",
     "login.ConnectivityTerminalSocketMixin",
     "login.ServerLoginRespawnPacketMixin",
