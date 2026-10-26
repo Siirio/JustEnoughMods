@@ -1,0 +1,67 @@
+{
+  "captured_at": "2026-10-26T17:05:22+05:00",
+  "timezone": "Asia/Yekaterinburg",
+  "source_commit": "3b7ed42da0a82abfd462815c173937f491cda041",
+  "source_worktree_dirty": true,
+  "purpose": "Historical original controls and current development component inventory",
+  "original_profile": "JustEnoughMods",
+  "original_managed_source": "automodpack/client/active",
+  "original_active_token": "43f6ddb2930f8a59a6e61fde5c033078b4a29b31",
+  "original_active_status": "ACTIVE",
+  "original_options_sha256": "04f53b1093ef44e557afe3a885b99cf0f46204740c39e8e5d26bab92fb55cf0e",
+  "original_options_last_saved": "2026-10-26T16:55:35+05:00",
+  "original_keybind_count": 250,
+  "original_keybinds_sha256": "325ead76ad9c48ee8c2e3b69cb07a22a098d7a7d72097bfa1e88bc88813fe64c",
+  "auxiliary_keybind_files": [
+    {
+      "source": "config/fzzy_config/keybinds.toml",
+      "snapshot": "original-keybind-config/config/fzzy_config/keybinds.toml",
+      "sha256": "26ac5810c9b5dc5c1968827357f0a58c58ac2b6f7b082630960228e16585062f"
+    },
+    {
+      "source": "config/punchy/triggerable-keybindings.json",
+      "snapshot": "original-keybind-config/config/punchy/triggerable-keybindings.json",
+      "sha256": "cd463d95ffba7bd39ca61dcb37fc3b47ac1a5c85fa9d97581c62889406ce3fa9"
+    }
+  ],
+  "errors": [],
+  "backpack_policy": "Keep Backpacked and every original keybind until the MineRENT release cutover. This historical snapshot is immutable even after future cleanup.",
+  "counts": {
+    "original-active": {
+      "top_level_jars": 286,
+      "mod_entries": 549,
+      "packs": 79
+    },
+    "development-managed": {
+      "top_level_jars": 289,
+      "mod_entries": 545,
+      "packs": 82
+    },
+    "local-server": {
+      "top_level_jars": 247,
+      "mod_entries": 443,
+      "packs": 10
+    },
+    "original-bootstrap": {
+      "top_level_jars": 1,
+      "mod_entries": 1,
+      "packs": 0
+    },
+    "original-profile-packs": {
+      "top_level_jars": 0,
+      "mod_entries": 0,
+      "packs": 80
+    }
+  },
+  "limitations": [
+    "Keybinds are the saved options.txt values, including unknown and unassigned entries",
+    "Inventory describes files present, not proof that every optional pack is enabled",
+    "pack_format is a Minecraft compatibility format, never the pack version",
+    "Versions inferred from filenames are explicitly labelled",
+    "Missing declared versions remain not declared and have content SHA-256 identifiers",
+    "Source worktree contains unrelated uncommitted work, recorded source module metadata is not a source-code backup",
+    "Default mod data and resource contents are covered by their owning mod version and JAR hash",
+    "World saves and personal runtime data are excluded"
+  ],
+  "snapshot_keybind_newlines": "LF, original keybind row values and order unchanged"
+}

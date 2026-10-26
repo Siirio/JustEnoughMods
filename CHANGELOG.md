@@ -1,3 +1,12 @@
+## 2026-10-26 - Original controls and development version snapshot
+
+- User requested a GitHub main snapshot of the original JustEnoughMods keybinds and current development mod, resource-pack and datapack names and versions
+- User explicitly requires Backpacked and its existing original keybinds to remain until the MineRENT update. This historical snapshot remains unchanged after a future active-preset cleanup
+- Snapshot preserves all 250 saved original keybind rows, Fzzy Config and Punchy keybind files, original resource-pack order and the original native active inventory containing Backpacked 3.0.9
+- Implementation choices: separate original active files, development ManagedPack, ordinary local Server and JEM source-module metadata, include embedded dependencies, shader packs and KubeJS virtual packs, and record SHA-256 identities with explicit version provenance or "not declared"
+- Documentation and metadata only. No managed client files, local Server artifacts, original profile, MineRENT deployment or release baseline changed. The pre-existing local AutoModpack staged manifest differs from published generation 83 and was left unchanged
+- Snapshot: Docs/releases/2026-10-26-original-controls-development-inventory/README.md
+
 ## 2026-10-26 - JEI categories, Spud retirement and trading plan implementation
 
 - User requested one category-only JEI search at the bottom, new glass and light sections, material/container/decor corrections, and complete removal of Spud's Shops from the active pack
