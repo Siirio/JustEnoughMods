@@ -87,15 +87,25 @@ public final class SculkDomain {
         for(ServerLevel level:owner.server.getAllLevels())Store.get(level).restoreOwner(level,owner.getUUID());
     }
 
-    private static void setScale(ServerPlayer player,boolean enlarged){
+    static boolean enlarged(ServerPlayer player){
+        return player.getPersistentData().getBoolean(SCALE_KEY);
+    }
+
+    static void synchronize(ServerPlayer player){
+        if(!RaceExperience.allowed(player))return;
+        if(!setScale(player,empowered(player)))SandboxNetwork.sculkScale(player,player,enlarged(player));
+    }
+
+    private static boolean setScale(ServerPlayer player,boolean enlarged){
         var data=player.getPersistentData();
-        if(data.getBoolean(SCALE_KEY)==enlarged)return;
+        if(data.getBoolean(SCALE_KEY)==enlarged)return false;
         if(enlarged){
             var normal=player.getDimensions(player.getPose());
-            if(!player.serverLevel().noCollision(player,normal.scale(1.15F).makeBoundingBox(player.position())))return;
+            if(!player.serverLevel().noCollision(player,normal.scale(1.15F).makeBoundingBox(player.position())))return false;
         }
         data.putBoolean(SCALE_KEY,enlarged);player.refreshDimensions();
         SandboxNetwork.sculkScale(player,enlarged);
+        return true;
     }
 
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent event){

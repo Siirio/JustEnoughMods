@@ -2843,28 +2843,42 @@
     {
       "id": "jem_pack_core:excavation",
       "name": {
-        "ru_ru": "Раскопка",
-        "en_us": "Excavation"
+        "ru_ru": "Копатель",
+        "en_us": "Digger"
       },
       "effect": {
-        "ru_ru": "Разбивает область 3×3 в плоскости ударенной грани. Приседание временно оставляет один блок. Приседание и использование переключают сохранённое включённое состояние.",
-        "en_us": "Mines a 3×3 plane aligned with the struck face. Sneaking temporarily mines one block. Sneak-use toggles its saved enabled state."
+        "ru_ru": "Копатель I разбивает плоскость 3×3, а Копатель II — 7×7 относительно ударенной грани. Приседание временно оставляет один блок. Приседание и использование переключают сохранённое включённое состояние.",
+        "en_us": "Digger I mines a 3×3 plane, while Digger II mines 7×7, aligned with the struck face. Sneaking temporarily mines one block. Sneak-use toggles its saved enabled state."
       },
       "applies": {
         "ru_ru": "Кирки, лопаты и топоры. Дополнительные блоки требуют подходящего инструмента и обычного разрешения на добычу.",
         "en_us": "Pickaxes, shovels and axes. Extra blocks require the correct tool and native mining permission."
       },
       "acquisition": {
-        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе; книгу перенесите на предмет наковальней. Возможность случайной добычи и торговли определяется нативными правилами чар.",
-        "en_us": "Enchant eligible equipment or a book at a table; transfer the book with an anvil. Random loot and trading still follow native enchantment rules."
+        "ru_ru": "Зачаровывайте подходящий предмет или книгу на столе. Две книги или вещи с Копателем I можно совместить на наковальне до II. Случайная добыча и торговля следуют нативным правилам чар.",
+        "en_us": "Enchant eligible equipment or a book at a table. Combine two Digger I books or items on an anvil to reach II. Random loot and trading follow native enchantment rules."
       },
-      "max_level_pages": 1,
+      "max_level_pages": 2,
       "source": "Mods/JEMCompat:CoreEnchantments/ExcavationEnchantment/ExcavationEvents/ExcavationMining",
       "coverage_status": "mechanics_verified",
       "conditions": {
-        "ru_ru": "Полная область имеет бюджет до 4 обычных единиц износа; Неразрушимость I/II сохраняет обычные броски. При Неразрушимости III полный набор из 9 блоков расходует 0 или 1 единицу с равной вероятностью.",
-        "en_us": "A full plane has up to 4 ordinary wear requests; Unbreaking I/II retain native rolls. At Unbreaking III a full 9-block batch spends 0 or 1 durability with equal probability."
+        "ru_ru": "Износ учитывается только при успешной добыче с прежней частотой 4 из 9 обычных запросов. Неразрушимость I/II сохраняет нативные броски, а III использует частоту 1 из 18. Увеличенная область не получает фиксированный бюджет 3×3.",
+        "en_us": "Only successful breaks incur wear at the existing rate of 4 per 9 normal wear requests. Unbreaking I/II keep native rolls, while III uses a 1-per-18 rate. The larger plane does not share one fixed 3×3 budget."
       },
+      "levels": [
+        {
+          "text": {
+            "ru_ru": "Копатель I: 3×3, до 9 блоков. Полная область даёт 4 обычных единицы износа до бросков Неразрушимости I/II или 0–1 при Неразрушимости III.",
+            "en_us": "Digger I: 3×3, up to 9 blocks. A full plane incurs 4 ordinary wear requests before Unbreaking I/II rolls, or 0–1 with Unbreaking III."
+          }
+        },
+        {
+          "text": {
+            "ru_ru": "Копатель II: 7×7, до 49 блоков. Полная область даёт 21–22 обычные единицы износа до бросков Неразрушимости I/II или 2–3 при Неразрушимости III.",
+            "en_us": "Digger II: 7×7, up to 49 blocks. A full plane incurs 21–22 ordinary wear requests before Unbreaking I/II rolls, or 2–3 with Unbreaking III."
+          }
+        }
+      ],
       "page_parts": {
         "effect": 1,
         "conditions": 1,
@@ -2880,8 +2894,8 @@
         }
       ],
       "brief": {
-        "ru_ru": "Разбивает область 3×3 в плоскости ударенной грани.",
-        "en_us": "Mines a 3×3 plane aligned with the struck face."
+        "ru_ru": "Разбивает плоскость 3×3 на I или 7×7 на II в направлении ударенной грани.",
+        "en_us": "Mines a 3×3 plane at I or 7×7 at II, aligned with the struck face."
       },
       "applies_brief": {
         "ru_ru": "Кирки, лопаты и топоры",

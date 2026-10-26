@@ -26,7 +26,8 @@ public final class ExcavationHighlight {
         var origin = event.getTarget().getBlockPos();
         var camera = event.getCamera().getPosition();
         var consumer = event.getMultiBufferSource().getBuffer(RenderType.lines());
-        for (var pos : ExcavationPattern.positions(origin, event.getTarget().getDirection().getAxis())) {
+        for (var pos : ExcavationPattern.positions(origin, event.getTarget().getDirection().getAxis(),
+                ExcavationEvents.activeLevel(player))) {
             if (!level.hasChunkAt(pos)) continue;
             var state = level.getBlockState(pos);
             if (state.isAir() || state.getDestroySpeed(level, pos) < 0 || !player.getMainHandItem().isCorrectToolForDrops(state)) continue;

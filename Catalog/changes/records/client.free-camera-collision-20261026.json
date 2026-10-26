@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "change_id": "client.free-camera-collision-20261026",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 41
+  },
+  "change": {
+    "summary": "Add a client-owned free camera with block collision while the real player remains server-owned.",
+    "modifiers": [
+      {
+        "property": "jemcompat.client_free_camera",
+        "operation": "add",
+        "before": "No JEM-owned free camera action or separate camera entity.",
+        "after": "Remappable F4 toggles a separate client camera. WASD and mouse move the view, jump and sneak move vertically, voxel shapes and unloaded client chunks stop travel, and body movement and world actions are suppressed until return."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat client",
+    "kind": "user_requested_client_camera",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraPlayerTurnMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightCameraMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightInputMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Allow collision-bound visual exploration without moving the player, extending reach, or altering server authority.",
+    "decision_source": "User request on 2026-10-26. The attached addendum supplies supporting implementation detail. Native Forge 47.4.10 and installed CameraOverhaul 2.1.1 bytecode were inspected for integration points."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "add_client_free_camera",
+    "summary": "Add F4 free camera with swept voxel collision, native input isolation, and lifecycle restoration.",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraPlayerTurnMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightCameraMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightInputMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "add_client_free_camera",
+      "summary": "Add F4 free camera with swept voxel collision, native input isolation, and lifecycle restoration.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraPlayerTurnMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightCameraMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightInputMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_camera",
+      "client_input",
+      "voxel_collision",
+      "client_chunk_availability",
+      "CameraOverhaul",
+      "EpicFight"
+    ],
+    "relations": [
+      "Only Minecraft.cameraEntity and temporary camera type change. The player entity remains server-owned and keeps native physics and damage.",
+      "The installed CameraOverhaul render mixins remain active. Epic Fight 20.14.17 direct combat and movement skill polling is suppressed only while freecam is active, without replacing its normal input owner."
+    ],
+    "notes": [
+      "No 600-block or other distance limit was introduced.",
+      "The camera does not request or generate more client chunks."
+    ],
+    "unresolved": [
+      "No client launch was run during this source edit. In-game collision and camera-mod coexistence remain pending local client review."
+    ]
+  }
+}

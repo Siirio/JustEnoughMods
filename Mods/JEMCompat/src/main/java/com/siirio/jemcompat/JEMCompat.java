@@ -8,6 +8,7 @@ import com.siirio.jemcompat.feature.elements.ElementalImpactEvents;
 import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerEvents;
 import com.siirio.jemcompat.feature.transport.TransportContent;
 import com.siirio.jemcompat.feature.transport.TransportEvents;
+import com.siirio.jemcompat.feature.inventory.InventoryDeleteNetwork;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,6 +27,7 @@ public final class JEMCompat {
     public static final String MOD_ID = "jemcompat";
 
     public JEMCompat() {
+        InventoryDeleteNetwork.register();
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
         com.siirio.jemcompat.feature.excavation.CoreEnchantments.register(modBus);
         com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);

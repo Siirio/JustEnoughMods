@@ -205,7 +205,6 @@
       "Client/ManagedPack/kubejs/assets/tinyinv/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/toms_storage/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/tpa/lang/ru_ru.json",
-      "Client/ManagedPack/kubejs/assets/trashslot/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/treechop/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/trials/lang/ru_ru.json",
       "Client/ManagedPack/kubejs/assets/trotting_wagons/lang/ru_ru.json",
@@ -485,6 +484,15 @@
         "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/en_us.json",
         "Mods/JEMSettlements/src/main/resources/assets/jem_settlements/lang/ru_ru.json",
         "tools/state/packSyncHost-sync.json"
+      ]
+    },
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "retire_removed_mod_translation",
+      "summary": "Remove TrashSlot's current Russian overlay when the user retires the installed mod; retain its 2026-10-24 source path in historical evidence.",
+      "source_files": [
+        "Client/ManagedPack/kubejs/assets/trashslot/lang/ru_ru.json"
       ]
     }
   ],

@@ -1,5 +1,9 @@
 # JEM Races
 
+## Quiet race health changes — 2026-10-26
+
+The user requested that race-owned heart changes not shake the camera or flash the player red. Vanilla `LocalPlayer.hurtTo` treats an ordinary server health decrease as a hit even when the cause was a race's maximum-health adjustment. JEM Races now pre-synchronizes the final health value to the affected player for race-owned max-health clamps, Born in Bloom's daylight regeneration, Life Chorus player healing, Sculk resonance recovery, and Nether lava drinking. The Void water-contact penalty still uses native drowning damage, preserving absorption, invulnerability, totems, Forge damage hooks and death behavior. A short server-marked packet window suppresses only that particular drowning damage event on the affected player and its tracking clients; the final health is then pre-synchronized to the owner. Combat hits, hostile race abilities and unrelated damage still use native damage presentation. Leaving a green biome only stops Born in Bloom's regeneration and applies its existing healing penalty; it does not itself subtract health. This is source behavior pending local player acceptance.
+
 > План от 2026-10-22: [universal amendments](../plans/2026-10-21-universal-standalone-implementation.md#актуальное-дополнение-smp-награды-market-и-первый-выбор-расы--2026-10-22) фиксирует отсутствующую модель при первом обязательном выборе и видимую модель через F6. Причина пока не установлена. Предстоят сравнение lifecycle двух входов, разрешённое воспроизведение и общий путь подготовки модели со стандартной внешностью до загрузки скина. Исправление и игровая приёмка в этой задаче не выполнялись.
 
 ## Innate spells, guardian and Jade —2026-10-21

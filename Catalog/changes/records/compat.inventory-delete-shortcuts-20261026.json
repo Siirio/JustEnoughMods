@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.inventory-delete-shortcuts-20261026",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "items"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "JEMCompat protocol 1 is present on both peers; a player-inventory slot, native vanilla storage-menu slot, or physical storage cell of the reviewed Sophisticated Backpacks/Storage menus is hovered and neither a native EditBox nor JEI/JEM search owns focus"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_integration",
+    "priority": 1120
+  },
+  "change": {
+    "summary": "Retire TrashSlot and use server-validated Delete shortcuts on the one hovered storage slot.",
+    "modifiers": [
+      {
+        "property": "inventory.hovered_slot_delete",
+        "operation": "replace",
+        "before": "Installed TrashSlot 15.1.5 Delete removed a whole hovered stack and Shift+Delete removed the hovered stack plus matching stacks elsewhere in the open menu.",
+        "after": "Delete removes one item from the hovered player-inventory, vanilla storage-menu, or reviewed Sophisticated physical storage slot. Shift+Delete removes that slot's complete current stack, regardless of count. Neither action traverses other slots or drops removed items. The server verifies menu ID and state, live slot, stack identity/count, pickup/modification permission and empty cursor before native safeTake. The Sophisticated adapter accepts exact installed menu/Core versions and only accessible, finite storage-handler cells, excluding upgrades. Focused native EditBox and JEI/JEM search, as well as crafting/result/unreviewed third-party virtual slots, retain their native key behavior."
+      },
+      {
+        "property": "inventory.trashslot_installation",
+        "operation": "deny",
+        "before": "TrashSlot JAR, config, Russian overlay and preset keys were installed in the managed client and local server.",
+        "after": "TrashSlot JAR, config, Russian overlay and preset key rows are absent from the managed client and local server; shared Balm remains installed. The independent GUI sandbox's future native dependency list no longer requests TrashSlot."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat inventory Delete input and server packet",
+    "kind": "user_requested_native_mod_retirement",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/InventoryDeleteKeys.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/InventoryDeleteNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/SophisticatedStorageDelete.java",
+      "Mods/JEMCompat/build.gradle",
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Mods/JEMGuiSandbox/install.py"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make item deletion precise to one slot and preserve server authority without the native TrashSlot's broader matching-item sweep.",
+    "decision_source": "The user explicitly requested removing Trash Slot and assigned Delete to one item and Shift+Delete to the hovered slot's full count on 2026-10-26. Codex selected a bounded JEMCompat packet and native Slot.safeTake after inspecting installed TrashSlot 15.1.5 bytecode and Forge 1.20.1 mappings. The Sophisticated storage extension was selected after inspecting the exact installed SophisticatedCore, Backpacks and Storage menu bytecode."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "replace_trashslot",
+    "summary": "Remove TrashSlot and add one-slot Delete and Shift+Delete actions."
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "replace_trashslot",
+      "summary": "Remove the old client/server artifacts and implement server-validated hovered-slot deletion.",
+      "source_files": [
+        "Client/ManagedPack/mods/trashslot-forge-1.20.1-15.1.5.jar",
+        "Server/mods/trashslot-forge-1.20.1-15.1.5.jar",
+        "Client/ManagedPack/config/trashslot-common.toml",
+        "Server/config/trashslot-common.toml",
+        "Client/ManagedPack/kubejs/assets/trashslot/lang/ru_ru.json",
+        "Server/kubejs/assets/trashslot/lang/ru_ru.json",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/InventoryDeleteKeys.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/InventoryDeleteNetwork.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/SophisticatedStorageDelete.java",
+        "Mods/JEMCompat/build.gradle",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+        "Mods/JEMGuiSandbox/install.py"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "inventory",
+      "client_input",
+      "server_authority",
+      "network_version_matching",
+      "AutoModpack delivery",
+      "native mod dependencies"
+    ],
+    "relations": [
+      "Balm is a shared dependency of other installed mods and remains installed",
+      "One packet refers to one currently open menu and one reviewed storage slot only",
+      "SophisticatedCore 1.5.15.2427 creates handler slots first in matching menu-index order for Backpacks 3.26.14.2226 and Storage 1.5.9.2197; the adapter checks the common handler and native accessible/infinite flags",
+      "No matching-item inventory sweep or TrashSlot undo buffer remains"
+    ],
+    "notes": [
+      "The historical TrashSlot research and GUI sandbox delivery receipt remain historical evidence, not production dependency declarations.",
+      "JEMCompat has a new required protocol 1 inventory-delete channel; client and server JARs must match before the local AutoModpack generation is published."
+    ],
+    "unresolved": [
+      "Actual keyboard focus and slot acceptance have not been observed in a launched client under the project launch restriction.",
+      "Other third-party virtual/result slot handlers are intentionally excluded until their native take semantics are inspected. Tom's Storage terminal entries are virtual SlotStorage objects outside menu.slots, and Backpacked is absent from the installed pack."
+    ]
+  }
+}

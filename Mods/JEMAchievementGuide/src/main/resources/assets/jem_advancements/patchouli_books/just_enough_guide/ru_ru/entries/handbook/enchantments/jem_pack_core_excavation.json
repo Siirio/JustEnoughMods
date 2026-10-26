@@ -1,10 +1,12 @@
 {
-  "name": "Раскопка",
+  "name": "Копатель",
   "icon": "minecraft:enchanted_book",
   "category": "jem_advancements:handbook/enchantments",
   "flag": "mod:jemcompat",
   "jem_aliases": [
+    "Копатель",
     "Раскопка",
+    "Digger",
     "Excavation",
     "jem_pack_core:excavation",
     "excavation"
@@ -12,7 +14,7 @@
   "pages": [
     {
       "type": "jem_advancements:enchantment_links",
-      "title": "Раскопка",
+      "title": "Копатель",
       "enchantment": "jem_pack_core:excavation"
     },
     {
@@ -56,6 +58,18 @@
       "enchantment": "jem_pack_core:excavation",
       "section": "details",
       "page": 0
+    },
+    {
+      "type": "jem_advancements:enchantment",
+      "enchantment": "jem_pack_core:excavation",
+      "section": "levels",
+      "page": 0
+    },
+    {
+      "type": "jem_advancements:enchantment",
+      "enchantment": "jem_pack_core:excavation",
+      "section": "levels",
+      "page": 1
     }
   ]
 }

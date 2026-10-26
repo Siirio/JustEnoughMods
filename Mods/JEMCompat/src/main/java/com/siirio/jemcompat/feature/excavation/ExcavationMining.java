@@ -19,13 +19,14 @@ public final class ExcavationMining {
         if (ACTIVE.get() != null || !ExcavationEvents.isAreaActive(player)) {
             return player.gameMode.destroyBlock(origin);
         }
+        int level = ExcavationEvents.activeLevel(player);
         var normal = ExcavationEvents.normalAxis(player, origin);
         Batch batch = new Batch(player, tool);
         ACTIVE.set(batch);
         try {
             boolean result = batch.breakOne(origin);
             if (!batch.removed) return result;
-            for (BlockPos target : ExcavationPattern.positions(origin, normal)) {
+            for (BlockPos target : ExcavationPattern.positions(origin, normal, level)) {
                 if (!batch.hasTool()) break;
                 if (target.equals(origin) || !player.serverLevel().hasChunkAt(target)) continue;
                 var state = player.serverLevel().getBlockState(target);
@@ -55,8 +56,8 @@ public final class ExcavationMining {
         if (batch == null || batch.player != player || !pos.equals(batch.target)) return;
         batch.removed = removed;
         if (!removed || batch.wear == null || !batch.hasTool()) return;
-        // Distribute a four-point budget over successful native wear requests only.
-        // I/II retain vanilla Unbreaking rolls; III instead has one exact 0/1 batch result.
+        // Keep the established 4/9 or 1/18 wear-request frequency for each successful removal.
+        // Unbreaking I/II retain vanilla rolls; III bypasses them for its exact frequency.
         int total = batch.unbreaking >= 3
                 ? (++batch.blocks + batch.offset) / 18
                 : (4 * ++batch.blocks + batch.offset) / 9;

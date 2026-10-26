@@ -1,0 +1,11 @@
+# Player appearance synchronization
+
+Quick Skin owns the selected skin, cape, Classic/Slim model, local uploads, and texture transfer. JEMRoles does not copy or persist these choices. The canonical client and local server currently contain the same Quick Skin Forge 1.20.1 version 2.6.2.4 bytes, SHA-256 `59508bb8d87a8bc8f5ad768fce86a12466fab11c512ba434834aa37a45598af9`.
+
+On an offline dedicated server with ServerLogin, the pre-auth gate continues to allow only its existing namespaces. Once `IdentityPolicy` admits a player, JEMRoles asks the installed Quick Skin client to replay its own appearance and the installed Quick Skin server to resend its roster and config. This calls verified public methods in Quick Skin 2.6.2.4 and leaves personal configuration, uploads, account identity, and skin caches with the native mod. The adapter can also restart the native 3.1.1 handshake if that version is legitimately installed later.
+
+Sculk's temporary 1.15 player size remains server-owned in `SculkDomain`. JEMRoles now sends size changes to the owner and players tracking that entity, and sends the current flag when tracking starts, after admission, and after respawn or dimension changes. These packets do not determine the skin texture or player model.
+
+The official Quick Skin 3.1.1 Forge 1.20.1 release JAR was verified at 5,489,545 bytes and SHA-256 `31bc672952eb2dd3f76ea48bab8ffcc2a845f8b17cda1f95c236349908a3d7be`. Its Forge metadata requires Minecraft 1.20.1, Forge 47+, and Architectury 9.2.14+. Its published license is All Rights Reserved, and the upstream README forbids redistributing the mod. JEM AutoModpack would serve the binary to friends, so this release is not installed in `Client/ManagedPack` or `Server/mods`. The current 2.6.2.4 version still lacks upstream fixes for late Forge channel detection and offline UUID mismatches.
+
+Player-to-player skins, model selection, auth timing, tracking distance, and size after reconnect remain unobserved in gameplay. Multi-client acceptance requires a separately authorized launch. Menu preview rendering has its own owners in `Docs/smp-gui/README.md` and `Docs/races/README.md`.

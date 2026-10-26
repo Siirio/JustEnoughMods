@@ -60,11 +60,19 @@ public final class ExcavationEvents {
     }
 
     public static boolean isEnabled(ItemStack stack) {
-        return EnchantmentHelper.getItemEnchantmentLevel(CoreEnchantments.EXCAVATION.get(), stack) > 0;
+        return activeLevel(stack) > 0;
     }
 
     public static boolean isAreaActive(Player player) {
-        return !player.isShiftKeyDown() && isEnabled(player.getMainHandItem());
+        return !player.isShiftKeyDown() && activeLevel(player) > 0;
+    }
+
+    public static int activeLevel(Player player) {
+        return activeLevel(player.getMainHandItem());
+    }
+
+    private static int activeLevel(ItemStack stack) {
+        return Math.max(0, Math.min(2, EnchantmentHelper.getItemEnchantmentLevel(CoreEnchantments.EXCAVATION.get(), stack)));
     }
 
     static net.minecraft.core.Direction.Axis normalAxis(ServerPlayer player, BlockPos origin) {

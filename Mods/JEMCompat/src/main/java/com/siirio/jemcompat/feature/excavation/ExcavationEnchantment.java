@@ -15,7 +15,7 @@ final class ExcavationEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 2;
     }
 
     @Override

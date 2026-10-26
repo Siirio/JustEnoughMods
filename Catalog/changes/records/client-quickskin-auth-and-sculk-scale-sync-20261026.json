@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "change_id": "client.quickskin-auth-and-sculk-scale-sync-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "JEMRoles protocol 10 on both peers; server-owned Sculk scale and installed native Quick Skin appearance ownership",
+      "acceptance": "Multiple-client skin and size observation remains unrun"
+    }
+  ],
+  "precedence": {
+    "layer": "jem",
+    "priority": 161
+  },
+  "change": {
+    "summary": "Deliver the server's temporary Sculk player size to tracking viewers and re-enter native Quick Skin synchronization after ServerLogin authentication.",
+    "modifiers": [
+      {
+        "property": "races.sculk.temporary_player_scale_delivery",
+        "operation": "replace",
+        "before": "SculkScale was sent only to the owner when the server scale flag changed; tracking viewers and reconnecting clients could miss the current size.",
+        "after": "The owner and current tracking viewers receive scale transitions. A newly tracking viewer receives the current server flag after pairing; login, first authenticated tick, respawn and dimension change resynchronize the owner. A reset sends false. The server remains authoritative for collision and scale."
+      },
+      {
+        "property": "client.quickskin.post_authentication_sync",
+        "operation": "allow",
+        "before": "Quick Skin 2.6.2.4 attempted its native join appearance exchange before ServerLogin necessarily admitted the player; a missed exchange had no JEM post-auth replay.",
+        "after": "At the first identity-policy admission of an offline dedicated ServerLogin player, JEM requests the installed Quick Skin 2.6.2.4 client to replay its own native appearance and asks the installed Quick Skin server to resend its native roster/config. No pre-auth Quick Skin channel is opened and no personal skin bytes or selection are owned by JEM. A verified 3.1.1 native handshake restart path is present for a future authorized installation."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Mods/JEMRoles SculkDomain and post-auth Quick Skin adapter",
+    "kind": "network_delivery_and_auth_lifecycle_fix",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkDomain.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkScaleSync.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/QuickSkinAuthReplay.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinSessionResume.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep a single native skin owner while closing the confirmed owner-only Sculk scale delivery gap and the offline login timing gap.",
+    "decision_source": "User requested consistent player appearance. Codex selected tracking lifecycle replay and native Quick Skin public methods after inspecting both installed 2.6.2.4 JARs and official 3.1.1 release/source."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "add",
+    "summary": "Synchronize Sculk size to trackers and replay native Quick Skin exchange after authentication."
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "add",
+      "summary": "Add race scale tracking/login/respawn delivery and native Quick Skin post-auth replay without repackaging personal skins."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "race_player_dimensions",
+      "player_tracking",
+      "native_quickskin_synchronization",
+      "serverlogin_authentication"
+    ],
+    "relations": [
+      "SculkDomain remains the only authority for temporary player size and server collision",
+      "Quick Skin 2.6.2.4 remains the installed skin, model and texture owner on both sides",
+      "IdentityPolicy admission is required before the post-auth native appearance replay"
+    ],
+    "notes": [
+      "Official Quick Skin 3.1.1 Forge 1.20.1 JAR was inspected at 5489545 bytes, SHA-256 31bc672952eb2dd3f76ea48bab8ffcc2a845f8b17cda1f95c236349908a3d7be, with Architectury 9.2.14+ and Forge 47+ metadata.",
+      "The 3.1.1 binary was not placed in ManagedPack or Server mods: its All Rights Reserved license and official redistribution restriction conflict with serving it through JEM AutoModpack. Both installed 2.6.2.4 JARs remain SHA-256 59508bb8d87a8bc8f5ad768fce86a12466fab11c512ba434834aa37a45598af9.",
+      "The new JEMRoles wire message IDs require protocol 10 on both peers, avoiding an unknown-packet decode on older protocol 9 clients."
+    ],
+    "unresolved": [
+      "Quick Skin 2.6.2.4 still lacks its upstream late-channel detection and offline UUID fixes; this source adapter cannot prove all player skin mismatches resolved.",
+      "No multi-client login, skin change, dimension, respawn, or scale observation was run under the project launch restriction.",
+      "A future 3.1.1 pack update needs explicit redistribution permission or a verified original-host acquisition route."
+    ]
+  }
+}

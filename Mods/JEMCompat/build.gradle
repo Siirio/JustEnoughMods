@@ -73,6 +73,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly fg.deobf(files(installedMod('Jade-*.jar')))
     compileOnly fg.deobf(files(installedMod('jei-*.jar')))
+    compileOnly fg.deobf(files(installedMod('sophisticatedcore-1.20.1-1.5.15.2427.jar')))
     compileOnly fg.deobf(files(installedMod('curios-forge-*.jar')))
     compileOnly fg.deobf(files(installedMod('enhancedai-*.jar')))
     compileOnly fg.deobf(files(installedMod('insanelib-*.jar')))

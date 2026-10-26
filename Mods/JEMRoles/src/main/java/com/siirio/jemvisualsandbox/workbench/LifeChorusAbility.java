@@ -91,7 +91,9 @@ public final class LifeChorusAbility {
                     float missing=Math.max(0,target.getMaxHealth()-target.getHealth());
                     float healing=target instanceof Player?6:Math.max(6,.20F*target.getMaxHealth());
                     if(peacefulAnimal(target))healing=missing;
+                    float previousHealth=target.getHealth();
                     target.heal(Math.min(missing,healing));
+                    if(target instanceof ServerPlayer healedPlayer)SandboxRaceTraits.syncHealthChange(healedPlayer,previousHealth);
                     if(c.tier>=2)target.getActiveEffects().stream().filter(v->v.getEffect().getCategory()==MobEffectCategory.HARMFUL).map(MobEffectInstance::getEffect).toList().forEach(target::removeEffect);
                     // Retain the preceding canonical Life Chorus full-health ally boon.
                     if(c.tier>=3 && target.getHealth()>=target.getMaxHealth()){

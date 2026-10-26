@@ -1,6 +1,6 @@
 # JEMCompat Project Rules
 
-- The retained `jem_pack_core:excavation` enchantment belongs to Compat and has exactly one level. It mines one 3x3 layer from the targeted block face and highlights the same nine blocks with a bright white outline.
+- The retained `jem_pack_core:excavation` enchantment belongs to Compat. Level I mines one 3x3 plane and level II one 7x7 plane from the targeted block face, with matching bright white outlines. The native mining, protection, tool-wear and saved enable/disable contracts apply to both levels
 
 - Sirok is no longer campaign-gated; keep the Sandworm Nest's single native encounter and never create a second JEM-owned combat entity because the removed TNT replacement path caused duplicate solid bosses.
 - Preserve `com.siirio.jemcompat.client.AdvancementScreenEvents.directClick` as a compatibility shim because the installed BetterAdvancements bytecode directly invokes that exact binary name; removing it causes a click-time `NoClassDefFoundError` even though the real handler lives in JEMAchievementGuide.

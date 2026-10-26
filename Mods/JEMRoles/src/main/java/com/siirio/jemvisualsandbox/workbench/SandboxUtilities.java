@@ -72,7 +72,7 @@ public final class SandboxUtilities {
             }
             case 3 -> {
                 int resonance=p.getPersistentData().getInt("JemSandboxResonance");
-                if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",0);p.heal(RacePowerStages.recoveryHeal(RaceExperience.tier(p)));RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.ABSORPTION,RacePowerStages.absorptionTicks(RaceExperience.tier(p)),1));cue(p,25);RaceExperience.finishUtility(p); }
+                if(resonance>=25) { p.getPersistentData().putInt("JemSandboxResonance",0);SandboxRaceTraits.healSilently(p,RacePowerStages.recoveryHeal(RaceExperience.tier(p)));RaceOwnedEffects.grant(p,new MobEffectInstance(MobEffects.ABSORPTION,RacePowerStages.absorptionTicks(RaceExperience.tier(p)),1));cue(p,25);RaceExperience.finishUtility(p); }
                 else if(RaceExperience.requireReady(p,"echo")) {
                     if(p.serverLevel().getEntitiesOfClass(net.minecraft.world.entity.LivingEntity.class,p.getBoundingBox().inflate(RacePowerStages.echoRadius(RaceExperience.tier(p))),e->e!=p&&e.isAlive()).isEmpty()){p.displayClientMessage(Component.translatable("jem_visual_sandbox.action.no_living_creatures"),true);return;}
                     SandboxSkills.echoVision(p);RaceExperience.cooldown(p,"echo",160);RaceExperience.finishUtility(p);
@@ -226,7 +226,7 @@ public final class SandboxUtilities {
     @SubscribeEvent public static void lava(LivingEntityUseItemEvent.Finish e) {
         if(!(e.getEntity() instanceof ServerPlayer p) || !allowed(p) || race(p)!=4 || !p.getPersistentData().getBoolean("JemSandboxDrinking") || !e.getItem().is(Items.LAVA_BUCKET))return;
         if(!RaceExperience.ready(p,"lava_drink")){p.getPersistentData().remove("JemSandboxDrinking");return;}
-        p.getPersistentData().remove("JemSandboxDrinking");e.setResultStack(new ItemStack(Items.BUCKET));p.heal(5);
+        p.getPersistentData().remove("JemSandboxDrinking");e.setResultStack(new ItemStack(Items.BUCKET));SandboxRaceTraits.healSilently(p,5);
         RaceExperience.cooldown(p,"lava_drink",com.siirio.jemroles.race.RaceRules.LAVA_DRINK_COOLDOWN.get());RaceExperience.snapshot(p);
         p.level().playSound(null,p.blockPosition(),net.minecraft.sounds.SoundEvents.GENERIC_DRINK,net.minecraft.sounds.SoundSource.PLAYERS,.8F,.8F);
     }

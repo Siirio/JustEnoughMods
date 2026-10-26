@@ -18,9 +18,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 @Mod.EventBusSubscriber(modid="jem_roles", bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class SandboxNetwork {
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "9",
-            v -> "9".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
-            v -> "9".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
+            new ResourceLocation("jem_visual_sandbox", "skills"), () -> "10",
+            v -> "10".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v),
+            v -> "10".equals(v) || NetworkRegistry.ABSENT.equals(v) || NetworkRegistry.ACCEPTVANILLA.equals(v));
     private sealed interface InputPayload permits ChooseRace, UnlockBloom, RaceControl, DevelopmentControl {
         void apply(ServerPlayer player);
     }
@@ -144,6 +144,44 @@ public final class SandboxNetwork {
             var context=supplier.get();context.enqueueWork(()->com.siirio.jemvisualsandbox.client.races.SculkScaleClient.receive(this));context.setPacketHandled(true);
         }
     }
+    public record SilentRaceHealth(float health) {
+        static SilentRaceHealth decode(FriendlyByteBuf b){
+            float health=b.readFloat();
+            if(!Float.isFinite(health)||health<0)throw new IllegalArgumentException("Invalid race health");
+            return new SilentRaceHealth(health);
+        }
+        void encode(FriendlyByteBuf b){b.writeFloat(health);}
+        void handle(Supplier<NetworkEvent.Context> supplier){
+            var context=supplier.get();
+            context.enqueueWork(()->net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->{
+                var player=net.minecraft.client.Minecraft.getInstance().player;
+                if(player!=null)player.setHealth(health);
+            }));
+            context.setPacketHandled(true);
+        }
+    }
+    public record RaceDamageWindow(int entityId,boolean active) {
+        static RaceDamageWindow decode(FriendlyByteBuf b){
+            int entityId=b.readVarInt();
+            if(entityId<0)throw new IllegalArgumentException("Invalid race damage entity");
+            return new RaceDamageWindow(entityId,b.readBoolean());
+        }
+        void encode(FriendlyByteBuf b){b.writeVarInt(entityId);b.writeBoolean(active);}
+        void handle(Supplier<NetworkEvent.Context> supplier){
+            var context=supplier.get();
+            context.enqueueWork(()->net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,
+                    ()->()->com.siirio.jemvisualsandbox.client.races.RaceDamagePresentation.receive(active,entityId)));
+            context.setPacketHandled(true);
+        }
+    }
+    public record QuickSkinAuthReady() {
+        void handle(Supplier<NetworkEvent.Context> supplier){
+            var context=supplier.get();
+            context.enqueueWork(()->net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,
+                    ()->()->com.siirio.jemvisualsandbox.client.races.QuickSkinSessionResume.resume()));
+            context.setPacketHandled(true);
+        }
+    }
     public record Open() {
         void handle(Supplier<NetworkEvent.Context> supplier){var c=supplier.get();c.enqueueWork(()->com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.openSelection(false));c.setPacketHandled(true);}
     }
@@ -156,6 +194,9 @@ public final class SandboxNetwork {
             CHANNEL.messageBuilder(Path.class,2,NetworkDirection.PLAY_TO_CLIENT).encoder(Path::encode).decoder(Path::decode).consumerMainThread(Path::handle).add();
             CHANNEL.messageBuilder(Status.class,3,NetworkDirection.PLAY_TO_CLIENT).encoder(Status::encode).decoder(Status::decode).consumerMainThread(Status::handle).add();
             CHANNEL.messageBuilder(SculkScale.class,4,NetworkDirection.PLAY_TO_CLIENT).encoder(SculkScale::encode).decoder(SculkScale::decode).consumerMainThread(SculkScale::handle).add();
+            CHANNEL.messageBuilder(SilentRaceHealth.class,6,NetworkDirection.PLAY_TO_CLIENT).encoder(SilentRaceHealth::encode).decoder(SilentRaceHealth::decode).consumerMainThread(SilentRaceHealth::handle).add();
+            CHANNEL.messageBuilder(QuickSkinAuthReady.class,7,NetworkDirection.PLAY_TO_CLIENT).encoder((p,b)->{}).decoder(b->new QuickSkinAuthReady()).consumerMainThread(QuickSkinAuthReady::handle).add();
+            CHANNEL.messageBuilder(RaceDamageWindow.class,8,NetworkDirection.PLAY_TO_CLIENT).encoder(RaceDamageWindow::encode).decoder(RaceDamageWindow::decode).consumerMainThread(RaceDamageWindow::handle).add();
         });
     }
     public static void select(int race,java.util.UUID nonce) { CHANNEL.sendToServer(new Input(new ChooseRace(com.siirio.jemroles.race.RaceId.values()[race],nonce))); }
@@ -171,7 +212,27 @@ public final class SandboxNetwork {
         if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Status(value));
     }
     static void sculkScale(ServerPlayer p,boolean enlarged){
-        if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new SculkScale(p.getId(),enlarged));
+        SculkScaleSync.changed(p,enlarged);
+    }
+    static void sculkScale(ServerPlayer viewer,ServerPlayer target,boolean enlarged){
+        if(CHANNEL.isRemotePresent(viewer.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->viewer),new SculkScale(target.getId(),enlarged));
+    }
+    static void silentHealth(ServerPlayer p){
+        if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new SilentRaceHealth(p.getHealth()));
+    }
+    static void raceDamageWindow(ServerPlayer p,boolean active){
+        RaceDamageWindow marker=new RaceDamageWindow(p.getId(),active);
+        if(CHANNEL.isRemotePresent(p.connection.connection))CHANNEL.send(PacketDistributor.PLAYER.with(()->p),marker);
+        for(ServerPlayer viewer:SculkScaleSync.trackingViewers(p))
+            CHANNEL.send(PacketDistributor.PLAYER.with(()->viewer),marker);
+    }
+    static void quickSkinAuthReady(ServerPlayer p){
+        if(p.server.isDedicatedServer()&&!p.server.usesAuthentication()
+                &&net.minecraftforge.fml.ModList.get().isLoaded("serverlogin")
+                &&CHANNEL.isRemotePresent(p.connection.connection)){
+            CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new QuickSkinAuthReady());
+            QuickSkinAuthReplay.replayLegacyRoster(p);
+        }
     }
     public static void status(ServerPlayer p) {
         RaceExperience.snapshot(p);

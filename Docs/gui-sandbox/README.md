@@ -2,8 +2,8 @@
 
 User request, 2026-10-22: put fully clickable copies of the existing JEM GUIs in
 `jem sandbox`, with no underlying gameplay logic; add native GUI mods including
-Curios, Backpacked and TrashSlot. The user explicitly selected reproducing the
-existing screens rather than redesigning them.
+Curios, Backpacked and the then-installed TrashSlot. The user explicitly selected
+reproducing the existing screens rather than redesigning them.
 
 Open **F8**, **/jemgui**, **/smp**, **/settlements** or **/death** in a sandbox world.
 `/jemgui <screen>` opens an individual view; the gallery has pagination on smaller
@@ -32,12 +32,16 @@ events, change the actual race or save player/world state. Location controls sho
 a destination inspection sheet; they do not replace Xaero's real map.
 
 The separately installed native mods retain their normal behavior: Curios,
-Backpacked, TrashSlot, JEI, Better Advancements and FTB Quests,
+Backpacked, JEI, Better Advancements and FTB Quests,
 with Framework, Balm, Architectury, FTB Library, FTB Teams and Patchouli. Use their
 native inventory controls, key bindings, books and blocks. Existing Recruits,
 Tom's Storage, Sophisticated Storage and Xaero mods remain in the sandbox. These
 native mods are not claimed to be inert JEM mockups. Production quest progress and
 test-world data are not copied into the sandbox.
+
+The later 2026-10-26 request removed TrashSlot from the production pack and from
+future sandbox installer inputs. A previously installed sandbox copy is historical
+profile state and is not modified by this installer source change.
 
 ## Source and installation
 

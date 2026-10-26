@@ -9,6 +9,7 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -17,6 +18,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.PlayerModelPart;
 
 /** Neutral vanilla GUI geometry with native equipped armor; no world animation setup. */
 public final class VanillaGuiPlayers {
@@ -26,13 +28,15 @@ public final class VanillaGuiPlayers {
     private static final PlayerModel<AbstractClientPlayer> CLASSIC_MODEL = new PlayerModel<>(CLASSIC, false), SLIM_MODEL = new PlayerModel<>(SLIM, true);
     private static net.minecraft.client.resources.model.ModelManager armorManager;
     private static HumanoidArmorLayer<AbstractClientPlayer, PlayerModel<AbstractClientPlayer>, HumanoidModel<AbstractClientPlayer>> classicArmor, slimArmor;
+    private static final CapeLayer CLASSIC_CAPE = new CapeLayer(parent(CLASSIC_MODEL));
+    private static final CapeLayer SLIM_CAPE = new CapeLayer(parent(SLIM_MODEL));
     private VanillaGuiPlayers() { }
     private static ModelPart mesh(boolean slim) {
         return LayerDefinition.create(PlayerModel.createMesh(CubeDeformation.NONE, slim), 64, 64).bakeRoot();
     }
     public static void render(AbstractClientPlayer player, float yaw, PoseStack poses, MultiBufferSource buffers, int light) {
         // InventoryScreen sets the body's GUI orientation; the dispatcher yaw argument is zero there.
-        render(player.getSkinTextureLocation(), "slim".equals(player.getModelName()), player.yBodyRot, poses, buffers, light);
+        render(player.getSkinTextureLocation(), "slim".equals(player.getModelName()), player.yBodyRot, poses, buffers, light, player);
         var manager = Minecraft.getInstance().getModelManager();
         if (armorManager != manager) {
             classicArmor = armor(CLASSIC_MODEL, manager); slimArmor = armor(SLIM_MODEL, manager); armorManager = manager;
@@ -41,19 +45,27 @@ public final class VanillaGuiPlayers {
         try {
             poses.mulPose(Axis.YP.rotationDegrees(180-player.yBodyRot)); poses.scale(-1,-1,1); poses.translate(0,-1.501,0);
             ("slim".equals(player.getModelName()) ? slimArmor : classicArmor).render(poses,buffers,light,player,0,0,0,0,0,0);
+            if (player.isModelPartShown(PlayerModelPart.CAPE))
+                ("slim".equals(player.getModelName()) ? SLIM_CAPE : CLASSIC_CAPE).render(poses,buffers,light,player,0,0,0,0,0,0);
         } finally { poses.popPose(); }
     }
-    private static HumanoidArmorLayer<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>,HumanoidModel<AbstractClientPlayer>> armor(
-            PlayerModel<AbstractClientPlayer> model, net.minecraft.client.resources.model.ModelManager manager) {
-        RenderLayerParent<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>> parent = new RenderLayerParent<>() {
+    private static RenderLayerParent<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>> parent(PlayerModel<AbstractClientPlayer> model) {
+        return new RenderLayerParent<>() {
             @Override public PlayerModel<AbstractClientPlayer> getModel() { return model; }
             @Override public ResourceLocation getTextureLocation(AbstractClientPlayer player) { return player.getSkinTextureLocation(); }
         };
+    }
+    private static HumanoidArmorLayer<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>,HumanoidModel<AbstractClientPlayer>> armor(
+            PlayerModel<AbstractClientPlayer> model, net.minecraft.client.resources.model.ModelManager manager) {
         var inner = new HumanoidModel<AbstractClientPlayer>(LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(.5F),0),64,32).bakeRoot());
         var outer = new HumanoidModel<AbstractClientPlayer>(LayerDefinition.create(HumanoidModel.createMesh(new CubeDeformation(1F),0),64,32).bakeRoot());
-        return new HumanoidArmorLayer<>(parent,inner,outer,manager);
+        return new HumanoidArmorLayer<>(parent(model),inner,outer,manager);
     }
     public static void render(ResourceLocation skin, boolean slim, float yaw, PoseStack poses, MultiBufferSource buffers, int light) {
+        render(skin, slim, yaw, poses, buffers, light, null);
+    }
+    private static void render(ResourceLocation skin, boolean slim, float yaw, PoseStack poses, MultiBufferSource buffers,
+                               int light, AbstractClientPlayer player) {
         ModelPart root = slim ? SLIM : CLASSIC;
         root.getAllParts().forEach(ModelPart::resetPose);
         poses.pushPose();
@@ -62,8 +74,23 @@ public final class VanillaGuiPlayers {
             poses.scale(-1, -1, 1);
             poses.translate(0, -1.501, 0);
             var vertices = buffers.getBuffer(RenderType.entityTranslucent(skin));
-            for (String part : PARTS) root.getChild(part).render(poses, vertices, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            for (String part : PARTS) {
+                if (player != null && !visible(player, part)) continue;
+                root.getChild(part).render(poses, vertices, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            }
         } finally { poses.popPose(); }
+    }
+    private static boolean visible(AbstractClientPlayer player, String part) {
+        PlayerModelPart setting = switch (part) {
+            case "hat" -> PlayerModelPart.HAT;
+            case "jacket" -> PlayerModelPart.JACKET;
+            case "right_sleeve" -> PlayerModelPart.RIGHT_SLEEVE;
+            case "left_sleeve" -> PlayerModelPart.LEFT_SLEEVE;
+            case "right_pants" -> PlayerModelPart.RIGHT_PANTS_LEG;
+            case "left_pants" -> PlayerModelPart.LEFT_PANTS_LEG;
+            default -> null;
+        };
+        return setting == null || player.isModelPartShown(setting);
     }
     public static void renderQuickSkin(GuiGraphics graphics, int x, int y, float scale, float rotation,
                                        ResourceLocation skin, boolean slim) {

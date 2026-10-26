@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "change_id": "races-quiet-heart-adjustments-20261026",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Authenticated player with a selected JEM race and matching JEM Races network protocol; only race-owned health adjustments are pre-synchronized."
+    }
+  ],
+  "precedence": {
+    "layer": "jem_race_health_presentation",
+    "priority": 390
+  },
+  "change": {
+    "summary": "Race-owned heart adjustments are synchronized to the affected client without vanilla hit flash or camera shake, while real hits retain native presentation.",
+    "modifiers": [
+      {
+        "property": "race.health_change.client_presentation",
+        "operation": "replace",
+        "before": "The ordinary health packet invokes LocalPlayer.hurtTo; even a noncombat reduction from losing temporary race maximum health starts hurtTime, red overlay and camera shake.",
+        "after": "After a race-owned max-health clamp, player heal or Void water damage, the server sends the final health to that player's matching client for direct setHealth before vanilla health synchronization. Native health, food, attributes and real combat damage remain server-authoritative."
+      },
+      {
+        "property": "race.void_water_contact.health_adjustment",
+        "operation": "replace",
+        "before": "Initial unprotected water contact applies one drowning damage through LivingEntity.hurt, producing native hit feedback and respecting damage pipeline checks.",
+        "after": "Initial unprotected water contact still applies one native drowning damage, with absorption, invulnerability, totems, Forge hooks and death rules intact. A paired client packet arms only that entity's matching drowning damage event for suppression on the owner and tracking viewers; the arm is removed after the server damage call even when damage is canceled. The owner's resulting health is silently pre-synchronized only when it changed. Dry-surface escape and the contact latch are unchanged."
+      },
+      {
+        "property": "race.healing.health_adjustment",
+        "operation": "document",
+        "before": "Bloom daylight regeneration, Life Chorus player healing, Sculk resonance recovery and Nether lava drinking used native heal and ordinary health synchronization.",
+        "after": "These heals continue to use native heal and its Forge modifiers, then pre-synchronize only when the final player health changed. Healing amounts, cooldowns, eligibility, absorption and ability effects are unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMRoles final race mechanics and SandboxNetwork owner-only presentation adapter",
+    "kind": "race_noncombat_health_feedback_fix",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkScaleSync.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceDamagePresentation.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceDamageEventMixin.java",
+      "Mods/JEMRoles/src/main/resources/jem_sandbox.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove false hurt visuals from race-caused heart changes without muting ordinary combat hits or moving health authority to the client.",
+    "decision_source": "The user requested quiet health removal and addition for all racial trait transitions on 2026-10-26, explicitly including Sculk leaving underground areas and Bloom biome transitions. The owner-only final-health packet and the narrow server-marked drowning-event presentation window are Codex implementation choices based on the installed 1.20.1 client hurtTo and handleDamageEvent paths.",
+    "scope_note": "Current Bloom source does not subtract health when leaving a green biome; it stops daylight regeneration and applies its existing healing penalty. No new Bloom damage was invented."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "quiet_race_health_presentation",
+    "summary": "Pre-synchronize final race-owned heart changes for the affected player and suppress only server-marked Void drowning hit presentation while preserving native damage semantics.",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkScaleSync.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceDamagePresentation.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceDamageEventMixin.java",
+      "Mods/JEMRoles/src/main/resources/jem_sandbox.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "quiet_race_health_presentation",
+      "summary": "Pre-synchronize final race-owned heart changes for the affected player and suppress only server-marked Void drowning hit presentation while preserving native damage semantics.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxNetwork.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SculkScaleSync.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceDamagePresentation.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/mixin/RaceDamageEventMixin.java",
+        "Mods/JEMRoles/src/main/resources/jem_sandbox.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "race_passives",
+      "health",
+      "combat_feedback",
+      "multiplayer_networking",
+      "client_presentation"
+    ],
+    "relations": [
+      "SandboxRaceTraits.refresh and voidState -> SandboxNetwork.silentHealth -> owning LocalPlayer.setHealth -> native health packet hurtTo",
+      "SandboxRaceTraits.voidState -> native LivingEntity.hurt -> server-marked race damage window -> client handleDamageEvent suppression only for matching entity and DROWN source",
+      "SculkScaleSync.trackingViewers -> owner plus registered tracking clients receive matching arm/disarm markers in connection order",
+      "Race healing call sites -> native LivingEntity.heal and Forge heal modifiers -> final owner-only silent health pre-sync"
+    ],
+    "notes": [
+      "The race packet changes client presentation only; server health and max-health attributes remain authoritative. Matching client and server JARs are required by the incremented JEM Races protocol.",
+      "Void water retains the exact native damage and death pipeline for every health value; only the marked damage packet's hit presentation is suppressed on matching clients. A finally block always disarms the packet window.",
+      "True external hits and race abilities damaging other players still use the native damage event and ordinary hit feedback."
+    ],
+    "unresolved": [
+      "In-game acceptance of mixed same-tick combat and race healing, tracked-viewer presentation, and native first-login client packet ordering remains pending."
+    ]
+  }
+}

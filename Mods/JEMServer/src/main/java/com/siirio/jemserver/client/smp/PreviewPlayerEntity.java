@@ -10,6 +10,7 @@ import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.PlayerModelPart;
+import net.minecraftforge.fml.ModList;
 
 final class PreviewPlayerEntity extends RemotePlayer {
     private ResourceLocation skin;
@@ -43,6 +44,12 @@ final class PreviewPlayerEntity extends RemotePlayer {
         return entity instanceof AbstractClientPlayer player && player != this ? player : null;
     }
 
+    /** Only the inspected native 2.6.2.4 API is called, and only after its mod is present. */
+    private static boolean nativeQuickSkinAvailable() {
+        return ModList.get().getModContainerById("quickskin")
+                .map(mod -> "2.6.2.4".equals(mod.getModInfo().getVersion().toString())).orElse(false);
+    }
+
     @Override
     protected PlayerInfo getPlayerInfo() {
         return null;
@@ -51,25 +58,38 @@ final class PreviewPlayerEntity extends RemotePlayer {
     @Override
     public ResourceLocation getSkinTextureLocation() {
         var source = appearanceSource();
-        return source == null ? skin : source.getSkinTextureLocation();
+        if (source != null) return source.getSkinTextureLocation();
+        if (nativeQuickSkinAvailable()) {
+            var nativeSkin = QuickSkinPreviewBridge.skin(getUUID());
+            if (nativeSkin != null) return nativeSkin;
+        }
+        return skin;
     }
 
     @Override
     public ResourceLocation getCloakTextureLocation() {
         var source = appearanceSource();
-        return source == null ? cape : source.getCloakTextureLocation();
+        if (source != null) return source.getCloakTextureLocation();
+        if (nativeQuickSkinAvailable() && QuickSkinPreviewBridge.hasCapeChoice(getUUID()))
+            return QuickSkinPreviewBridge.cape(getUUID());
+        return cape;
     }
 
     @Override
     public boolean isCapeLoaded() {
         var source = appearanceSource();
-        return source == null ? cape != null : source.isCapeLoaded();
+        return source == null ? getCloakTextureLocation() != null : source.isCapeLoaded();
     }
 
     @Override
     public String getModelName() {
         var source = appearanceSource();
-        return source == null ? model : source.getModelName();
+        if (source != null) return source.getModelName();
+        if (nativeQuickSkinAvailable()) {
+            var nativeModel = QuickSkinPreviewBridge.model(getUUID());
+            if (nativeModel != null) return nativeModel;
+        }
+        return model;
     }
 
     @Override
@@ -79,6 +99,7 @@ final class PreviewPlayerEntity extends RemotePlayer {
 
     @Override
     public boolean isModelPartShown(PlayerModelPart part) {
-        return true;
+        var source = appearanceSource();
+        return source == null ? super.isModelPartShown(part) : source.isModelPartShown(part);
     }
 }

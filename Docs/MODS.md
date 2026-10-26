@@ -285,7 +285,6 @@ Generated from the canonical `Client/ManagedPack/mods` and local `Server/mods` i
 | Tom's Simple Storage Mod | `1.7.1` | Client + server |  |
 | TPA | `2.0.0` | Client + server |  |
 | Trade Cycling | `1.20.1-1.0.18` | Client + server |  |
-| TrashSlot | `15.1.5` | Client |  |
 | Trek | `1-B0.6.2` | Server |  |
 | Trek | `1-B0.6.2` | Client |  |
 | Trials Chambers | `2.3.3` | Client + server |  |

@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "change_id": "client.smp-preview-native-appearance-20261026",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "SMP screen client preview, installed Quick Skin 2.6.2.4 for native detached appearance, loaded player UUID when present"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_client_preview",
+    "priority": 163
+  },
+  "change": {
+    "summary": "Use the installed native appearance source for detached SMP player previews while preserving the approved neutral vanilla model.",
+    "modifiers": [
+      {
+        "property": "client.gui.smp_preview_appearance",
+        "operation": "replace",
+        "before": "An unloaded detached preview bypassed Quick Skin's AbstractClientPlayer hooks and used vanilla SkinManager fallback for skin, model and cape. Loaded previews also ignored hidden skin parts, and the neutral renderer omitted capes.",
+        "after": "A loaded preview delegates appearance and visible parts to its real UUID-matched player. An unloaded preview reads active skin, model and cape through the installed Quick Skin 2.6.2.4 service, including an explicit no-cape choice, and falls back to vanilla data when no native choice exists. The SMP neutral model respects skin-part flags and renders native CapeLayer without restoring animation or arbitrary third-party model layers."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer SMP detached player preview and JEMCompat neutral GUI player renderer",
+    "kind": "client_preview_native_appearance_adapter",
+    "source_files": [
+      "Mods/JEMServer/build.gradle",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/PreviewPlayerEntity.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/QuickSkinPreviewBridge.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/menu/VanillaGuiPlayers.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the SMP menu use the same UUID-scoped native appearance selection as the world while retaining the user's previously requested neutral preview geometry.",
+    "decision_source": "User requested consistent player skins and appearance. Codex chose the installed Quick Skin 2.6.2.4 public client API and native CapeLayer after inspecting the exact local JAR and Forge 1.20.1 mapped methods."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "add_smp_native_appearance_adapter",
+    "summary": "Resolve detached SMP preview skin, model and cape from the installed native provider and respect visible player parts."
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "add_smp_native_appearance_adapter",
+      "summary": "Extend only the protected neutral SMP preview path with native appearance and cape rendering."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "SMP player previews",
+      "Quick Skin native appearance",
+      "player model-part visibility",
+      "native CapeLayer"
+    ],
+    "relations": [
+      "A real loaded player remains the first appearance source by UUID.",
+      "The optional exact-version Quick Skin bridge owns no texture bytes, selection, cache or network state.",
+      "The SMP PlayerRenderer cancellation remains scoped to SmpScreen, protecting its neutral geometry from Epic Fight and animation-model preview changes."
+    ],
+    "notes": [
+      "Quick Skin 2.6.2.4 public PlayerAppearanceService and CapeLayer Mixin methods were verified from the installed JAR; Forge 1.20.1 mapped CapeLayer and PlayerModelPart APIs were checked.",
+      "No change to the Quick Skin JAR, personal selection, authentication or world player renderer."
+    ],
+    "unresolved": [
+      "Arbitrary third-party player layers are still intentionally absent from the neutral SMP preview.",
+      "An unloaded player's skin-part preferences are not derivable from UUID alone, so only loaded players' part flags are mirrored.",
+      "No gameplay client launch or multi-client appearance observation was performed."
+    ]
+  }
+}

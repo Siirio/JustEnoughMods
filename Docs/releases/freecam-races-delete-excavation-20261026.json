@@ -1,0 +1,82 @@
+{
+  "timestamp": "2026-10-26T17:30:38+05:00",
+  "status": "LOCAL_DELIVERY_COMPLETE_PLAYER_ACCEPTANCE_PENDING_EFFICIENCY_INVESTIGATING",
+  "commit": "SELF",
+  "scope": "Ordinary local Server, canonical ManagedPack and native test jem. Stable profile, MineRENT, friend installations and release baseline unchanged",
+  "requested": {
+    "addendum": "F4 colliding free camera, consistent player appearance, native shovel Efficiency diagnosis and Excavation II 7x7",
+    "races": "Silently synchronize all race-owned maximum-health changes, including Enderman/Void selection, and suppress marked racial hit presentation",
+    "inventory": "Remove Trash Slot and make Delete take one hovered item and Shift+Delete take the hovered full stack"
+  },
+  "build": {
+    "productionTasks": [
+      ":JEMAchievementGuide:jar",
+      ":JEMRoles:jar",
+      ":JEMCompat:jar",
+      ":JEMServer:jar"
+    ],
+    "reobfJarCompleted": true,
+    "automatedTests": false,
+    "clientLaunched": false
+  },
+  "artifacts": [
+    {
+      "name": "jem-advancements-5.1.0.jar",
+      "sha256": "2e07c6052ab93bcee1d071874dd8dcd70c09bed1617bcc464dbe765c3047ba8b"
+    },
+    {
+      "name": "jem-races-2.0.0.jar",
+      "sha256": "e9827399017b585f1fcbdcf56a14ad918b26c8b73eb32676fdf4626febf623c3"
+    },
+    {
+      "name": "jem-server-2.0.0-dev.jar",
+      "sha256": "cc5fa98b3841ab472a1ba987f706623cf5294cb18311463f3f3b9b74f0c4e85e"
+    },
+    {
+      "name": "jemcompat-3.7.0.jar",
+      "sha256": "e3e9cabcc9d0c3b99a0a9c7813801ec315f338aa09005a71e0bc696e2641b80b"
+    }
+  ],
+  "server": {
+    "synchronized": true,
+    "startupDone": true,
+    "startupTimeLocal": "2026-10-26T17:11:45+05:00",
+    "address": "127.0.0.1:31604"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 84,
+    "contentToken": "68824ee25da36ce8ff995169e8c700e8716d1f25",
+    "publishedManifestSha1": "92a33257bcfb8faa0f610349829133d73278d632",
+    "stagedManifestSha1": "92a33257bcfb8faa0f610349829133d73278d632",
+    "nativePreviewDiff": "+0 ~5 -3: four JEM JARs and manifest replaced, Trash Slot JAR/config/localization removed"
+  },
+  "installation": {
+    "profile": "test jem",
+    "method": "Native AutoModpack prepare, exact operation/hash review, approval and commit",
+    "generation": 84,
+    "contentToken": "68824ee25da36ce8ff995169e8c700e8716d1f25",
+    "status": "ACTIVE",
+    "pendingTransaction": false,
+    "reviewSha256": "098b2e3ed83c19da94af6b57dd43baba5b2a54946f9faf160c40bdefd25e2e62",
+    "reviewOperations": 11,
+    "reviewConflicts": 0,
+    "jarsMatchServerAndManagedPack": true,
+    "trashSlotAbsentFromProjectedState": true,
+    "clientLaunched": false
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "auditCompleted": true,
+    "scanValid": true,
+    "validationValid": true,
+    "changeRecords": 166
+  },
+  "limits": {
+    "efficiency": "No confirmed owner for the reported minecraft:grass_block slowdown. Installed native shovel tag and speed rules already include this block. No speculative speed override was added",
+    "quickSkin": "Installed 2.6.2.4 retained; native authentication replay and preview bridge are implemented. Multi-client visual acceptance remains unobserved",
+    "delete": "Virtual Tom's Storage terminal entries are excluded because they are not physical menu slots. Ordinary Sophisticated Backpacks and Storage cells are supported through their installed native API",
+    "manualGameplayAcceptance": false,
+    "stableAndMineRentDeployment": false
+  }
+}

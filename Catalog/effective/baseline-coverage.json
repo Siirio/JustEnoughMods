@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "840331773d77eb0b337c53af12471cb062ba86c5eebc6f3bc759af263fd00c33",
+  "change_records_sha256": "babc5ed8ac56d4dafbe7f474461911a35649bb051da5dd43efef8a187119a8cb",
   "totals": {
-    "watched": 4025,
-    "covered": 2264,
-    "unresolved": 1761
+    "watched": 4019,
+    "covered": 2271,
+    "unresolved": 1748
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1434,
+      "watched": 1433,
       "covered": 91,
-      "unresolved": 1343,
+      "unresolved": 1342,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -1253,7 +1253,6 @@
         "Client/ManagedPack/config/sounds/world.json",
         "Client/ManagedPack/config/spawn-client.toml",
         "Client/ManagedPack/config/spawn-server.toml",
-        "Client/ManagedPack/config/spudaciousshops.toml",
         "Client/ManagedPack/config/spyglass-improvements/settings.json",
         "Client/ManagedPack/config/stalapi-client.toml",
         "Client/ManagedPack/config/statuseffectbars-client.toml",
@@ -1433,8 +1432,8 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 156,
-      "covered": 105,
+      "watched": 162,
+      "covered": 111,
       "unresolved": 51,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
@@ -1521,8 +1520,8 @@
       ]
     },
     "Mods/JEMEconomy": {
-      "watched": 151,
-      "covered": 145,
+      "watched": 152,
+      "covered": 146,
       "unresolved": 6,
       "unresolved_paths": [
         "Mods/JEMEconomy/src/main/resources/assets/jem_economy/blockstates/shipping_box.json",
@@ -1578,9 +1577,9 @@
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 505,
+      "watched": 493,
       "covered": 320,
-      "unresolved": 185,
+      "unresolved": 173,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1638,10 +1637,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/fishing/TideFishingHookMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/revive/PlayerReviveActivationMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/revive/PlayerReviveCompletionMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/RemoteShopClientMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopEntityMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopInventoryMixin.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/shops/ShopRemovalMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/AbyssAltarStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/BossSpawnerStagingMixin.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/staging/CataclysmSpawnerStagingMixin.java",
@@ -1654,8 +1649,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoint.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/NavigationPoints.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Notifications.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopRecords.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/ShopState.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionFailure.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionInput.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/SmpActionSession.java",
@@ -1701,11 +1694,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/fishing/FishingConfig.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/fishing/FishingOddsNetwork.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/fishing/FishingXp.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/RemoteShop.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopCoinAccess.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopIndex.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopSnapshot.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/shops/ShopStock.java",
         "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/smp/blood_moon.png",
         "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/smp/boss.png",
         "Mods/JEMServer/src/main/resources/assets/jem_server/textures/gui/smp/buttons.png",
@@ -1765,7 +1753,6 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/rare_ingredients.json",
         "Mods/JEMServer/src/main/resources/jem_server_fishing.mixins.json",
         "Mods/JEMServer/src/main/resources/jem_server_revive.mixins.json",
-        "Mods/JEMServer/src/main/resources/jem_server_shops.mixins.json",
         "Mods/JEMServer/src/main/resources/pack.mcmeta"
       ]
     },

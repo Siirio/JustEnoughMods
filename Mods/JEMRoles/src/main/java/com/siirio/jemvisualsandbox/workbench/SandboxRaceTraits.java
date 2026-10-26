@@ -65,6 +65,7 @@ public final class SandboxRaceTraits {
     }
     static void refresh(ServerPlayer p) {
         if(!owner(p))return;
+        float previousHealth=p.getHealth();
         int race=RaceExperience.selected(p)?RaceExperience.race(p):-1;
         clearAttributes(p);
         if (!p.isAlive() || p.isSpectator()) return;
@@ -91,6 +92,15 @@ public final class SandboxRaceTraits {
         if (race == 0) for (Raider raider : level.getEntitiesOfClass(Raider.class, p.getBoundingBox().inflate(48), Entity::isAlive))
             if (raider.getTarget() == null || raider.distanceToSqr(p) < raider.distanceToSqr(raider.getTarget())) raider.setTarget(p);
         if (p.getHealth() > p.getMaxHealth()) p.setHealth(p.getMaxHealth());
+        syncHealthChange(p,previousHealth);
+    }
+    static void syncHealthChange(ServerPlayer p,float previousHealth) {
+        if(p.getHealth()!=previousHealth)SandboxNetwork.silentHealth(p);
+    }
+    static void healSilently(ServerPlayer p,float amount) {
+        float previousHealth=p.getHealth();
+        p.heal(amount);
+        syncHealthChange(p,previousHealth);
     }
     public static boolean healingPenalty(ServerPlayer p) {
         if (!p.isAlive() || p.isSpectator() || !RaceExperience.selected(p)) return false;
@@ -114,7 +124,11 @@ public final class SandboxRaceTraits {
         if (p.getY() < level.getMinBuildHeight() + 1 && saved != null && com.siirio.jemroles.trait.RaceEnvironment.safe(p, level, saved)) teleport(p, saved);
         boolean exposed = p.isInWater() && !waterProtected(p);
         if (exposed && !tag.getBoolean("JemSandboxWaterContact")) {
-            p.hurt(p.damageSources().drown(), 1);
+            float previousHealth=p.getHealth();
+            SandboxNetwork.raceDamageWindow(p,true);
+            try { p.hurt(p.damageSources().drown(),1); }
+            finally { SandboxNetwork.raceDamageWindow(p,false); }
+            syncHealthChange(p,previousHealth);
             BlockPos dry = saved;
             if (dry == null || !dry.closerToCenterThan(p.position(), 100) || !com.siirio.jemroles.trait.RaceEnvironment.safe(p, level, dry))
                 dry = com.siirio.jemroles.trait.RaceEnvironment.nearestDrySurface(p, level, p.blockPosition(), 32)

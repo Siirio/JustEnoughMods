@@ -12,7 +12,7 @@
   "conditions": [
     {
       "active": "enchantment present and player not holding Shift",
-      "partial_plane": "Wear proportional to successful native mining-wear requests; requested exact totals apply to nine requests."
+      "partial_plane": "Wear proportional to successful native mining-wear requests across either level; the established 4/9 or Unbreaking III 1/18 frequency is unchanged."
     }
   ],
   "precedence": {
@@ -20,35 +20,46 @@
     "priority": 830
   },
   "change": {
-    "summary": "Digger keeps one native 3x3 mining batch with a four-point full-plane wear budget, exact 0/1 wear with Unbreaking III, and shared server/client Shift gating.",
+    "summary": "Digger I keeps its native 3x3 mining plane, Digger II uses one 7x7 plane, and both retain native permission, shared highlight, saved toggle and per-success wear frequency.",
     "modifiers": [
+      {
+        "property": "excavation.levels",
+        "operation": "replace",
+        "before": "Only level I was legal and every active batch and highlight used radius 1.",
+        "after": "The retained enchantment has two legal levels: I mines and highlights one 3x3 plane, II one 7x7 plane. Vanilla table/book/anvil acquisition can produce II, including I plus I on an anvil; no World Tier gate or third level is added."
+      },
       {
         "property": "excavation.activation",
         "operation": "replace",
         "before": "BreakEvent recursively mines neighbors whenever enchantment exists, without Shift suppression.",
-        "after": "One native player mining entry captures a batch; active enchantment and no held Shift enable 3x3; Shift or disabled enchantment uses ordinary 1x1 native mining."
+        "after": "One native player mining entry captures a batch using active enchantment level I or II; held Shift or disabled enchantment uses ordinary 1x1 native mining. Saved disabled level II re-enables at II."
       },
       {
         "property": "excavation.durability",
         "operation": "replace",
         "before": "Each native block destroy incurs ordinary tool mining wear, potentially nine for a full 3x3 plane.",
-        "after": "Intercept only normal DiggerItem mining wear on successful removals for this exact player/tool/batch; a complete nine-wear-request plane costs4 without Unbreaking, while Unbreaking III+ costs0 or1 with equal probability (mean0.5). I/II apply vanilla Unbreaking to four-point full-plane budget. Other damage and 1x1 remain vanilla; failed/protected removals do not consume batch mining wear."
+        "after": "Intercept only normal DiggerItem mining wear on successful removals for this exact player/tool/batch. Level I retains four normal requests across nine successful blocks or 0-1 with Unbreaking III; a full level II plane costs 21-22 across 49 successful blocks or 2-3 with Unbreaking III. Unbreaking I/II keep vanilla rolls. Other damage and 1x1 remain vanilla; failed/protected removals do not consume batch mining wear."
       },
       {
         "property": "excavation.highlight",
         "operation": "replace",
         "before": "Checks enchantment but does not share Shift state with server area mining.",
-        "after": "Uses same isAreaActive(player) predicate as server: enabled enchantment and no held Shift. Enabled state stays on native item enchantment/NBT synchronization; no new packet or parallel toggle state."
+        "after": "Uses the same active level and face-normal pattern as server mining, with the same Shift gate. Enabled state stays on native item enchantment/NBT synchronization; no new packet or parallel toggle state."
       }
     ]
   },
   "cause": {
-    "owner": "JEMAchievementGuide / JEMCompat",
+    "owner": "JEMCompat ExcavationMining with narrow native mining Mixins",
     "kind": "bugfix_native_mining_batch",
     "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEnchantment.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationPattern.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/enchantments/jem_pack_core_excavation.json",
+      "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/enchantments/jem_pack_core_excavation.json",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationGameModeMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationDiggerItemMixin.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/ExcavationItemStackMixin.java",
@@ -57,8 +68,8 @@
     ]
   },
   "rationale": {
-    "purpose": "Requested 3x3 wear and accurate preview without duplicate mining or durability systems.",
-    "decision_source": "User requested this behavior, initially preparation only; subsequent user authorization requests actual local Server and Client application. Implementation seams chosen by Codex."
+    "purpose": "Preserve native mining and level I behavior while extending the same bounded plane and successful-block wear to level II.",
+    "decision_source": "The user requested implementation of the new addendum features on 2026-10-26. Level II 7x7 and the existing toggle/wear contract are supplied in that brief; the shared level-aware pattern is the implementation choice."
   },
   "introduced": {
     "date": "2026-10-20",
@@ -133,6 +144,29 @@
         "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json",
         "Mods/JEMCompat/build.gradle"
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "extend_to_level_ii",
+      "summary": "Keep Digger I at 3x3 and add level II 7x7 through the existing native batch, exact enabled-level NBT, shared server/client plane and proportional successful-block wear.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEnchantment.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationPattern.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationEvents.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/ExcavationMining.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/handbook/enchantments.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/ru_ru/entries/handbook/enchantments/jem_pack_core_excavation.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/patchouli_books/just_enough_guide/en_us/entries/handbook/enchantments/jem_pack_core_excavation.json",
+        "Mods/JEMAchievementGuide/tools/questbook/book.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/ru_ru.json",
+        "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/lang/en_us.json",
+        "Mods/JEMCompat/AGENTS.md",
+        "Mods/JEMCompat/README.md",
+        "Docs/DEVELOPMENT.md",
+        "Docs/handbook/enchantments.md"
+      ]
     }
   ],
   "impacts": {
@@ -144,7 +178,10 @@
       "drops",
       "tool_break_lifecycle",
       "client_highlight",
-      "native_itemstack_sync"
+      "native_itemstack_sync",
+      "enchantment_acquisition",
+      "anvil_combination",
+      "guidebook"
     ],
     "relations": [],
     "notes": "Local development distribution only. Stable profile, MineRENT and immutable release baseline are unchanged. Runtime player acceptance remains pending.",

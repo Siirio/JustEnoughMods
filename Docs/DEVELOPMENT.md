@@ -50,7 +50,7 @@ Changelog описывает только запрошенные player-visible 
 | `JEMAchievementGuide` | Advancement criteria/providers, curated native placements, RU/EN guide resources и optional Better Advancements/Patchouli; content-aware FTB book projection наблюдает domain APIs, не владеет progression |
 | `JEMWorldBossTiers` | Global World Tier и сохранённый roster/threshold profile, boss profiles, hosted encounters, ordinary solo Raid, canonical native structure identity/anchor, revival и pending rewards |
 | `JEMTwelveEyes` | Строгие двенадцать original MAIN, prerequisites, Eyes, locators/sites, post-End и ending; сохраняет `jemcompat` namespace и `jemcompat_main_campaign` SavedData |
-| `JEMCompat` | Изолированные native compatibility adapters, single-level Excavation и biome codec с сохранёнными `jem_pack_core:*` IDs; native time/season presentation (`client.time`), food belongs to standalone JEMFood and homes to standalone MobHome; drill lifecycle остаётся отдельным addon |
+| `JEMCompat` | Изолированные native compatibility adapters, Excavation I 3×3 и II 7×7 и biome codec с сохранёнными `jem_pack_core:*` IDs; native time/season presentation (`client.time`), food belongs to standalone JEMFood and homes to standalone MobHome; drill lifecycle остаётся отдельным addon |
 | `JEMDrillLifecycle` | Moving/stationary Create drill wear, replacement, servicing и optional Jade; Create остаётся обязательной native dependency |
 | `JEMFood` | Standalone food quality, one Food Blessing, thirty talents, dietary variety, native consumption receipts and food presentation |
 | `MobHome` | Standalone native companion homes, binding GUI, recovery journal and optional native adapters |
