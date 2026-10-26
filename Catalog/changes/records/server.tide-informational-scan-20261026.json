@@ -1,0 +1,100 @@
+{
+  "schema_version": 2,
+  "change_id": "server.tide-informational-scan-20261026",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "tag",
+      "registry": "blocks",
+      "value": "tide:blocks/informational"
+    }
+  ],
+  "conditions": [
+    {
+      "installed_tide_version": "2.1.1",
+      "side": "logical_server",
+      "scope": "Tide FishingInfoManager nearby placed informational block scan"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 66
+  },
+  "change": {
+    "summary": "Read nearby Tide informational blocks only from already loaded chunks during the server tick.",
+    "modifiers": [
+      {
+        "property": "tide.nearby_informational_blocks.chunk_access",
+        "operation": "replace",
+        "before": {
+          "scan": "Tide calls ServerLevel.getBlockState at each of 13 by 7 by 13 nearby positions when the player's informational data refreshes.",
+          "missing_chunk": "The server may synchronously load or generate an absent chunk and block its tick thread."
+        },
+        "after": {
+          "loaded_chunk": "Confirm the full chunk is already loaded, then use the original ServerLevel block-state read and keep Tide's native informational-block result.",
+          "missing_chunk": "Treat the scanned position as AIR for this refresh without requesting or generating a chunk. A later refresh can observe it after normal loading."
+        },
+        "notes": "The guard changes only the block read inside Tide's installed nearby informational scan. It does not alter registered blocks, fishing items, recipes, world data or ordinary block queries."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMServer Tide fishing adapter",
+    "kind": "version_gated_server_mixin",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/fishing/TideInformationalBlockScanMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/src/main/resources/jem_server_fishing.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent Tide's periodic informational scan from blocking the server tick on chunk generation while preserving its results for loaded blocks.",
+    "decision_source": "User reported inability to join on 2026-10-26. The local 18:05 watchdog crash trace and the exact installed Tide 2.1.1 bytecode identify the unguarded block read. The installed Tide server config has no switch for this scan."
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "guard_unloaded_tide_info_scan",
+    "summary": "Add a version-gated, nonblocking loaded-chunk read to Tide's nearby informational-block scan.",
+    "source_files": [
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/fishing/TideInformationalBlockScanMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+      "Mods/JEMServer/src/main/resources/jem_server_fishing.mixins.json"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "guard_unloaded_tide_info_scan",
+      "summary": "Keep the installed Tide 2.1.1 scan inside loaded chunks after its synchronous chunk request caused a local watchdog crash.",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/fishing/TideInformationalBlockScanMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/JemServerMixinPlugin.java",
+        "Mods/JEMServer/src/main/resources/jem_server_fishing.mixins.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "Tide informational blocks",
+      "server_tick",
+      "loaded_chunk_reads",
+      "world_generation",
+      "fishing_information",
+      "player_join_availability"
+    ],
+    "relations": [
+      "tide:blocks/informational -> nearby Tide informational effects",
+      "Loaded informational blocks keep the native Tide result",
+      "Missing chunks remain on Minecraft's normal loading path and can be observed on a later Tide refresh"
+    ],
+    "notes": [
+      "The installed informational block tag contains tide:lunar_calendar and tide:weather_radio.",
+      "The original static registry facts and Tide's recipe graph remain unchanged."
+    ],
+    "unresolved": [
+      "Player rejoin and sustained server uptime after this source change remain unobserved under the project's gameplay-test restriction."
+    ]
+  }
+}

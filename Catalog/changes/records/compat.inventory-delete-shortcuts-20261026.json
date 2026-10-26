@@ -77,6 +77,16 @@
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
         "Mods/JEMGuiSandbox/install.py"
       ]
+    },
+    {
+      "date": "2026-10-27",
+      "commit": "SELF",
+      "action": "creative_inventory_delete_mapping",
+      "summary": "Keep Delete and Shift+Delete without a new trash slot, mapping only real creative-inventory player slots to the server-owned InventoryMenu.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/InventoryDeleteKeys.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/InventoryDeleteNetwork.java"
+      ]
     }
   ],
   "impacts": {

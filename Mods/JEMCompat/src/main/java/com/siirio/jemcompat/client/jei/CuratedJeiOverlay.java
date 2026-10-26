@@ -31,6 +31,7 @@ public final class CuratedJeiOverlay {
     private static int buildingRailOffset;
     private static Screen owner;
     private static EditBox categorySearch;
+    private static boolean nativeSearchInput;
     private static int lastMouseX;
     private static int lastMouseY;
 
@@ -43,6 +44,8 @@ public final class CuratedJeiOverlay {
         owner = screen;
         CatalogLayout layout = layout(screen);
         categorySearch = searchBox(layout.searchX(), layout.searchY(), layout.searchWidth(), "gui.jemcompat.jei.search_category");
+        event.addListener(categorySearch);
+        nativeSearchInput = true;
     }
 
     @SubscribeEvent
@@ -55,6 +58,7 @@ public final class CuratedJeiOverlay {
     static void clear() {
         owner = null;
         categorySearch = null;
+        nativeSearchInput = false;
     }
 
     static boolean hasSearchFocus() {
@@ -93,10 +97,12 @@ public final class CuratedJeiOverlay {
         if (JEMJeiPlugin.isNativeOverlayVisible()) return;
         positionSearch(layout);
         if (categorySearch.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton())) {
+            if (nativeSearchInput) screen.setFocused(categorySearch);
             event.setCanceled(true);
             return;
         }
         categorySearch.setFocused(false);
+        if (nativeSearchInput && screen.getFocused() == categorySearch) screen.setFocused(null);
         List<CatalogCategory> categories = categories();
         int categoryStart = railStart(categories, layout, false);
         for (int index = categoryStart; index < Math.min(categories.size(), categoryStart + layout.railSlots()); index++) {
@@ -152,10 +158,12 @@ public final class CuratedJeiOverlay {
         if (categorySearch != null && categorySearch.isFocused()) {
             if (event.getKeyCode() == 256) {
                 categorySearch.setFocused(false);
-            } else {
+                if (nativeSearchInput) owner.setFocused(null);
+                event.setCanceled(true);
+            } else if (!nativeSearchInput) {
                 categorySearch.keyPressed(event.getKeyCode(), event.getScanCode(), event.getModifiers());
+                event.setCanceled(true);
             }
-            event.setCanceled(true);
             return;
         }
         if (!(owner instanceof AbstractContainerScreen<?> screen)) return;
@@ -185,7 +193,7 @@ public final class CuratedJeiOverlay {
     @SubscribeEvent
     public static void characterTyped(ScreenEvent.CharacterTyped.Pre event) {
         if (event.getScreen() != owner || JEMJeiPlugin.isNativeOverlayVisible()) return;
-        if (categorySearch != null && categorySearch.isFocused()) {
+        if (!nativeSearchInput && categorySearch != null && categorySearch.isFocused()) {
             categorySearch.charTyped(event.getCodePoint(), event.getModifiers());
             event.setCanceled(true);
         }
@@ -235,6 +243,7 @@ public final class CuratedJeiOverlay {
             owner = screen;
             CatalogLayout layout = layout(screen);
             categorySearch = searchBox(layout.searchX(), layout.searchY(), layout.searchWidth(), "gui.jemcompat.jei.search_category");
+            nativeSearchInput = false;
         }
     }
 

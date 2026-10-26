@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="in_chat_ftb"
+version="${file.jarVersion}"
+displayName="In chat FTB"
+authors="Just Enough Mods"
+description='''Shows completed FTB Quests in local chat with links to their quest pages.'''
+displayTest="IGNORE_SERVER_VERSION"
+
+[[dependencies.in_chat_ftb]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.10,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.in_chat_ftb]]
+modId="ftbquests"
+mandatory=true
+versionRange="[2001.4.22,2001.4.23)"
+ordering="AFTER"
+side="CLIENT"

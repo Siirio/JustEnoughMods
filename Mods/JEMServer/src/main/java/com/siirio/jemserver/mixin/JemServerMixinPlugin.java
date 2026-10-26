@@ -26,6 +26,14 @@ public final class JemServerMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (mixinClassName.equals("com.siirio.jemserver.mixin.fishing.TideInformationalBlockScanMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("tide");
+            if (file == null) return false;
+            boolean supported = file.getMods().stream().anyMatch(mod -> mod.getModId().equals("tide")
+                    && mod.getVersion().toString().equals("2.1.1"));
+            if (!supported) throw new IllegalStateException("JEM Tide chunk scan adapter requires review for installed Tide version");
+            return true;
+        }
         if (mixinClassName.startsWith(SHARED_MAP_MIXINS)) return loaded(SHARED_MAP_MOD);
         if (mixinClassName.startsWith(XAERO_MIXINS))
             return loaded("xaeroworldmap") && (!mixinClassName.endsWith("OfficialWaypointTeleportMixin") || loaded("xaerominimap"));

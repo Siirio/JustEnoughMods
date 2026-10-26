@@ -41,7 +41,8 @@ public final class TimeSeasonHud {
         boolean season = JEMClientConfig.SHOW_SEASON_HUD.get() && ModList.get().isLoaded("sereneseasons");
         if (!day && !season) return;
         int width = day && season ? SIZE * 2 + 4 : SIZE;
-        int x = Math.max(0, graphics.guiWidth() - width - JEMClientConfig.TIME_HUD_OFFSET_X.get());
+        int x = Math.max(0, Math.min(graphics.guiWidth() - width,
+                (graphics.guiWidth() - width) / 2 + JEMClientConfig.TIME_HUD_OFFSET_X.get()));
         int y = Math.max(0, Math.min(JEMClientConfig.TIME_HUD_OFFSET_Y.get(), graphics.guiHeight() - SIZE));
         List<Component> tooltip = List.of();
         if (day) {

@@ -21,7 +21,7 @@ public final class JEMClientConfig {
                 .define("showInventoryDayNight", true);
         SHOW_SEASON_HUD = builder.comment("Show the approved native seasonal dial while player inventory is open, when Serene Seasons is installed.")
                 .define("showInventorySeasons", true);
-        TIME_HUD_OFFSET_X = builder.comment("Distance from the right edge of the open player inventory screen, in GUI pixels.")
+        TIME_HUD_OFFSET_X = builder.comment("Horizontal offset from the top center of the open player inventory screen, in GUI pixels.")
                 .defineInRange("horizontalOffset", 8, 0, 4096);
         TIME_HUD_OFFSET_Y = builder.comment("Distance from the top edge of the open player inventory screen, in GUI pixels.")
                 .defineInRange("verticalOffset", 8, 0, 4096);

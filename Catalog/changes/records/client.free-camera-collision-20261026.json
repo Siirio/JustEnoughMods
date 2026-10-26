@@ -21,6 +21,12 @@
         "operation": "add",
         "before": "No JEM-owned free camera action or separate camera entity.",
         "after": "Remappable F4 toggles a separate client camera. WASD and mouse move the view, jump and sneak move vertically, voxel shapes and unloaded client chunks stop travel, and body movement and world actions are suppressed until return."
+      },
+      {
+        "property": "client.requested_2026_10_27_refinement",
+        "operation": "replace",
+        "before": "Previous presentation or binding behavior",
+        "after": "Render the local free-camera anchor as a translucent player head and allow native F5 perspective cycling on that anchor."
       }
     ]
   },
@@ -72,6 +78,15 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "commit": "SELF",
+      "action": "refine_requested_behavior",
+      "summary": "Render the local free-camera anchor as a translucent player head and allow native F5 perspective cycling on that anchor.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java"
       ]
     }
   ],

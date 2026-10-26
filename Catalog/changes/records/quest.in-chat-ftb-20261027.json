@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "change_id": "quest.in-chat-ftb-20261027",
+  "status": "conditional",
+  "selectors": [ { "type": "registry", "registry": "*" } ],
+  "conditions": [
+    { "runtime": "Client-side FTB Quests 2001.4.22 completion presentation only; native quest, task, reward and progress ownership remains in FTB Quests and JEMAchievementGuide." }
+  ],
+  "precedence": { "layer": "jem_presentation", "priority": 1150 },
+  "change": {
+    "summary": "Present completed FTB quests in chat through the client-only In chat FTB mod and remove non-objective guide cards from visible tabs.",
+    "modifiers": [
+      {
+        "property": "ftbquests.completion_presentation",
+        "operation": "replace",
+        "before": "FTB's native toast announces a completed quest without a direct chat link.",
+        "after": "The client-only in_chat_ftb mod posts one local chat line with a cyan underlined quest title that opens that exact quest in the native FTB book. The native quest panel still refreshes; server progress and reward logic are unchanged."
+      },
+      {
+        "property": "jem_advancements.visible_reference_cards",
+        "operation": "deny",
+        "before": "Informational reference cards, chapter captions and free-standing tab text are visible around authored objectives.",
+        "after": "Reference cards and free-standing captions are omitted from visible chapters while authored source history, stable objective identities, tasks, rewards and quest-page descriptions remain."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "In chat FTB client presentation and JEMAchievementGuide quest projection",
+    "kind": "client_only_native_ftb_adapter",
+    "source_files": [
+      "Mods/JEMInChatFTB/build.gradle",
+      "Mods/JEMInChatFTB/src/main/java/com/justenoughmods/inchatftb/InChatFTB.java",
+      "Mods/JEMInChatFTB/src/main/java/com/justenoughmods/inchatftb/mixin/FTBQuestCompletionMixin.java",
+      "Mods/JEMInChatFTB/src/main/resources/in_chat_ftb.mixins.json",
+      "Mods/JEMInChatFTB/src/main/resources/pack.mcmeta",
+      "Mods/JEMAchievementGuide/tools/compile_questbook.py",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestProjection.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep quest completion readable and navigable without changing native quest state or introducing a second gameplay authority.",
+    "decision_source": "User requested cyan clickable completed-quest titles in chat, removal of all FTb guide cards and tab text, then specified a standalone client-only mod named In chat FTB."
+  },
+  "introduced": {
+    "date": "2026-10-27", "commit": "SELF", "action": "move_quest_completion_to_chat",
+    "summary": "Add client-only In chat FTB and simplify the visible questbook presentation."
+  },
+  "history": [
+    {
+      "date": "2026-10-27", "commit": "SELF", "action": "move_quest_completion_to_chat",
+      "summary": "Retire old information-screen and chapter-caption sources while retaining authored objective and reward data.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/BookInformationScreen.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestChapterImageMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["FTB Quests", "client_chat", "quest_navigation", "questbook_presentation", "AutoModpack"],
+    "relations": ["Native FTB Quest ID -> local clickable chat title -> native FTB quest page", "JEMAchievementGuide source objectives -> visible native quests with stable progress and rewards"],
+    "notes": ["In chat FTB is installed only on clients and declares an exact installed FTB Quests dependency."],
+    "unresolved": ["The rendered chat link and quest-page opening remain unobserved until the user runs the updated test jem client."]
+  }
+}

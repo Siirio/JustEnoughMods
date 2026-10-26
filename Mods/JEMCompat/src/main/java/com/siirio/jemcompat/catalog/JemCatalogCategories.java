@@ -79,6 +79,14 @@ public final class JemCatalogCategories {
         String path = id == null ? "" : id.getPath();
         String identity = id == null ? "" : id.toString();
         if (NON_BUILDING_RESOURCES.contains(identity) || isOre(stack, path)) return Kind.OTHER;
+        if (namespace.equals("infinitybuttons")) return Kind.CREATE_REDSTONE;
+        if (namespace.equals("xtraarrows")) return Kind.WEAPONS;
+        if (isDoll(namespace, path)) return Kind.WEARABLE;
+        if (Set.of("toms_storage", "sophisticatedbackpacks", "sophisticatedstorage", "mobhome").contains(namespace)
+                || identity.equals("jem_economy:shipping_box") || path.equals("backpack")) return Kind.CONTAINERS;
+        if (isFoodMod(namespace) || isFoodWorkstation(stack, path)) return Kind.FOOD;
+        if (Set.of("casualswing", "shutterup", "chimes", "secretdoors").contains(namespace))
+            return Kind.FURNITURE;
         if (identity.equals("minecraft:tnt")) return Kind.CREATE_REDSTONE;
         if (identity.equals("animal_feeding_trough:feeding_trough") || isPlacedFood(stack, path)) return Kind.FOOD;
         if (isDisplayDecor(stack, namespace, path)) return Kind.FURNITURE;
@@ -120,7 +128,7 @@ public final class JemCatalogCategories {
         if (isCreateOrRedstone(stack, namespace, path)) {
             return Kind.CREATE_REDSTONE;
         }
-        if (isFurniture(namespace, path)) return Kind.FURNITURE;
+        if (isFurniture(namespace, path) || namespace.equals("beachparty")) return Kind.FURNITURE;
         if (stack.is(NATURE) || isNature(stack, path)) return Kind.NATURE;
         if (isHoliday(namespace, path)) return Kind.HOLIDAY;
         if (isBuildingMaterial(stack, namespace, path)) return Kind.BUILDING_BLOCKS;
@@ -203,6 +211,22 @@ public final class JemCatalogCategories {
         return stack.getItem() instanceof BlockItem && (path.equals("cake") || path.endsWith("_cake"));
     }
 
+    private static boolean isFoodMod(String namespace) {
+        return namespace.startsWith("kaleidoscope_") || namespace.equals("bakery") || namespace.equals("herbalbrews");
+    }
+
+    private static boolean isFoodWorkstation(ItemStack stack, String path) {
+        return stack.getItem() instanceof BlockItem && (Set.of("furnace", "blast_furnace", "smoker", "cauldron",
+                "water_cauldron", "lava_cauldron", "powder_snow_cauldron", "cooking_pot", "stove", "oven",
+                "grill", "spit", "smokehouse", "kitchen_furnace").contains(path)
+                || hasWord(path, "cookstove", "cooking_stove", "kitchen_stove", "kitchen_oven", "roasting_spit"));
+    }
+
+    private static boolean isDoll(String namespace, String path) {
+        return path.endsWith("_doll") || namespace.equals("kaleidoscope_doll") && (path.equals("custom_doll")
+                || path.equals("doll_entity_item") || path.matches("doll_[0-9]+"));
+    }
+
     private static boolean isDisplayDecor(ItemStack stack, String namespace, String path) {
         if (path.endsWith("_trophy") || path.endsWith("_skull") || path.endsWith("_skull_block")
                 || namespace.equals("infinitybuttons") && path.equals("hoglin_mount_button")) return true;
@@ -210,10 +234,6 @@ public final class JemCatalogCategories {
         if (namespace.equals("blastfromthepast") && Set.of("antler_display", "broad_antler_display",
                 "curly_antler_display", "spikey_antler_display").contains(path)) return true;
         if (namespace.equals("dustydecorations") && path.equals("displayed_oars")) return true;
-        if (namespace.equals("kaleidoscope_doll")) {
-            return path.equals("custom_doll") || path.equals("doll_entity_item") || path.matches("doll_[0-9]+")
-                    || path.endsWith("_doll");
-        }
         return namespace.equals("beachparty") && BEACH_FURNITURE.contains(path);
     }
 
@@ -280,16 +300,9 @@ public final class JemCatalogCategories {
         if (namespace.equals("dustydecorations") && (path.endsWith("_cushion")
                 || path.endsWith("_cushion_slab") || path.endsWith("_cushion_stairs"))) return true;
         if (block instanceof EntityBlock) return false;
-        return Set.of("stone", "dirt", "cobblestone", "granite", "diorite", "andesite", "sand", "gravel",
-                "clay", "bedrock", "obsidian", "netherrack", "end_stone", "packed_ice", "blue_ice",
-                "bricks", "prismarine", "basalt", "smooth_basalt", "deepslate", "calcite", "tuff",
-                "blackstone", "soul_sand", "soul_soil", "purpur_block", "thatch", "sandwaves",
-                "terracotta", "scaffolding", "snow").contains(path)
-                || containsAny(path, "sandstone", "_brick", "brick_", "_tile", "tile_", "_slab", "_stairs",
-                        "_wall", "_pillar", "_column", "_planks", "_log", "_wood", "_stone", "_snow",
-                        "snow_", "_concrete", "_terracotta", "_wool", "_block", "_floorboard",
-                "_thatch", "thatch_", "_frame", "_moulding", "_layer", "_fence", "_roof", "_casing",
-                "_door", "_trapdoor");
+        // Every remaining ordinary placeable block is a construction material. Functional block entities
+        // retain their earlier dedicated or miscellaneous routes.
+        return true;
     }
 
     private static boolean hasWord(String value, String... words) {

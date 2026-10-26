@@ -70,6 +70,13 @@
         "after": "Only native post-recovery owner teleport seams pause until first owner interaction, ordinary navigation/AI/combat/mount control remains native"
       },
       {
+        "property": "companions.bound_home_hold",
+        "operation": "add",
+        "before": "Binding assigns a home but the loaded animal can remain elsewhere and move away before owner interaction.",
+        "after": "On Bind, a loaded same-dimension animal moves immediately to a collision-safe point inside or beside its home and remains there with native AI movement paused. The owner's first right click releases the hold. A missing safe loaded point rejects the Bind, and unbinding restores the original AI state.",
+        "notes": "The hold flag and previous NoAI state persist on the entity. Recovery and load reuse the same placement and release contract without forcing chunks."
+      },
+      {
         "property": "companions.shelter_recipe",
         "operation": "add",
         "before": "No shelter recipes",
@@ -148,6 +155,7 @@
       "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterController.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterEvents.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterGeometry.java",
+      "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterHold.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterMenu.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterNetwork.java",
       "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterPersistence.java",
@@ -350,6 +358,18 @@
       "summary": "All recovery triggers and retries place tall pets next to the home, with full native clearance and durable recovery preserved",
       "source_files": [
         "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterRecovery.java"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "commit": "SELF",
+      "action": "hold_bound_pets_at_home",
+      "summary": "Place loaded pets beside or inside the bound home immediately and hold them until owner interaction.",
+      "source_files": [
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterHold.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterMenu.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterRecovery.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/ShelterEvents.java"
       ]
     }
   ],

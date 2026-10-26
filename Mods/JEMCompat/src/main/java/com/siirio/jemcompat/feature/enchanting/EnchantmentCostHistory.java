@@ -41,6 +41,10 @@ public final class EnchantmentCostHistory {
         return (int) Math.max(0, Math.min(Integer.MAX_VALUE, paid));
     }
 
+    public static int pointsForLevelsFromZero(int levels) {
+        return (int) Math.min(Integer.MAX_VALUE, points(levels, 0));
+    }
+
     private static long points(int level, float progress) {
         int safeLevel = Math.max(0, level);
         long complete = 0;

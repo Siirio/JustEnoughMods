@@ -41,6 +41,13 @@ public final class JEMJeiPlugin implements IModPlugin {
                     mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
                     java.util.List.of(new net.minecraft.world.item.ItemStack(retiredStation)));
         }
+        var legacyHammer = ForgeRegistries.ITEMS.getValue(new ResourceLocation("handcrafted", "hammer"));
+        if (legacyHammer != null && legacyHammer != net.minecraft.world.item.Items.AIR
+                && net.minecraftforge.fml.ModList.get().isLoaded("bbb")) {
+            availableRuntime.getIngredientManager().removeIngredientsAtRuntime(
+                    mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
+                    java.util.List.of(new net.minecraft.world.item.ItemStack(legacyHammer)));
+        }
         CuratedJeiCatalog.rebuild(availableRuntime);
         setNativeOverlayVisible(false);
     }

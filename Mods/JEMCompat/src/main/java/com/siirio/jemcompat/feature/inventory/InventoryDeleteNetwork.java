@@ -17,7 +17,7 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-/** A Delete press is a request to remove items from one real inventory slot. */
+/** A Delete press requests removal from one real inventory slot. */
 public final class InventoryDeleteNetwork {
     private static final String PROTOCOL = "1";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(

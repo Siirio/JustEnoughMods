@@ -7,6 +7,8 @@ import net.minecraft.client.CameraType;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.player.Input;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +18,12 @@ import net.minecraft.world.entity.Marker;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.entity.player.PlayerModelPart;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.InputEvent;
@@ -43,6 +51,7 @@ public final class FreeCameraController {
     private static CameraType previousType;
     private static float previousYaw;
     private static float previousPitch;
+    private static PlayerModel<LocalPlayer> ghostHead;
 
     private FreeCameraController() { }
 
@@ -120,6 +129,34 @@ public final class FreeCameraController {
         if (camera != null) close(false);
     }
 
+    @SubscribeEvent
+    public static void renderHead(RenderLevelStageEvent event) {
+        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_ENTITIES || camera == null
+                || Minecraft.getInstance().options.getCameraType() == CameraType.FIRST_PERSON
+                || Minecraft.getInstance().player != ownerPlayer) return;
+        Minecraft minecraft = Minecraft.getInstance();
+        if (ghostHead == null) ghostHead = new PlayerModel<>(minecraft.getEntityModels().bakeLayer(ModelLayers.PLAYER), false);
+        ghostHead.head.xRot = camera.getXRot() * ((float) Math.PI / 180F);
+        ghostHead.hat.copyFrom(ghostHead.head);
+        Vec3 view = event.getCamera().getPosition();
+        Vec3 body = camera.position();
+        PoseStack poses = event.getPoseStack();
+        poses.pushPose();
+        poses.translate(body.x - view.x, body.y - view.y, body.z - view.z);
+        poses.mulPose(Axis.YP.rotationDegrees(180F - camera.getYRot()));
+        poses.scale(-1F, -1F, 1F);
+        poses.translate(0, -1.501, 0);
+        var skin = ownerPlayer.getSkinTextureLocation();
+        var buffers = minecraft.renderBuffers().bufferSource();
+        var vertices = buffers.getBuffer(RenderType.entityTranslucent(skin));
+        int light = 0x00F000F0;
+        ghostHead.head.render(poses, vertices, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 0.38F);
+        if (ownerPlayer.isModelPartShown(PlayerModelPart.HAT))
+            ghostHead.hat.render(poses, vertices, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 0.38F);
+        poses.popPose();
+        buffers.endBatch(RenderType.entityTranslucent(skin));
+    }
+
     private static void open(Minecraft minecraft) {
         LocalPlayer player = minecraft.player;
         ClientLevel level = minecraft.level;
@@ -167,10 +204,6 @@ public final class FreeCameraController {
     }
 
     private static void move(Minecraft minecraft) {
-        // Keep the temporary POV stable if vanilla's perspective binding was pressed.
-        if (minecraft.options.getCameraType() != CameraType.FIRST_PERSON) {
-            minecraft.options.setCameraType(CameraType.FIRST_PERSON);
-        }
         double forwardInput = (minecraft.options.keyUp.isDown() ? 1 : 0)
                 - (minecraft.options.keyDown.isDown() ? 1 : 0);
         double rightInput = (minecraft.options.keyRight.isDown() ? 1 : 0)

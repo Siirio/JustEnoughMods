@@ -29,6 +29,16 @@ public final class ShelterRecovery {
         for (CompanionData.Pet pet : data.pendingHomes(level.dimension().location().toString())) {
             if (pet.home.distToCenterSqr(player.position()) <= 32 * 32 && level.hasChunkAt(pet.home)) restore(level, data, pet);
         }
+        for (CompanionData.Pet pet : data.owned(player.getUUID())) {
+            if (pet.home == null || pet.pending != null || !pet.homeDimension.equals(level.dimension().location().toString())
+                    || pet.home.distToCenterSqr(player.position()) > 32 * 32 || !level.hasChunkAt(pet.home)) continue;
+            Entity entity = level.getEntity(pet.id);
+            if (entity instanceof LivingEntity animal && !ShelterHold.isHeld(animal) && !ShelterHold.isReleased(animal)
+                    && ShelterHold.place(level, animal, pet.home, pet.owner)) {
+                pet.blocked = "";
+                data.setDirty();
+            }
+        }
     }
     public static boolean homeValid(ServerLevel level, CompanionData.Pet pet) {
         if (pet.home == null || !level.hasChunkAt(pet.home)) return false;
@@ -73,7 +83,7 @@ public final class ShelterRecovery {
         // The synchronous first write below returns before this entity can tick or expose an inventory.
         long previousEpoch = pet.epoch; pet.epoch++;
         animal.getPersistentData().putLong(CompanionData.ENTITY_EPOCH, pet.epoch);
-        if (CompanionAdapters.nativeOwnerTeleport(animal)) animal.getPersistentData().putBoolean(CompanionData.FOLLOW_HOLD, true);
+        ShelterHold.hold(animal);
         pet.restoring = true; pet.blocked = ""; pet.dimension = level.dimension().location().toString(); pet.lastPosition = animal.blockPosition();
         try { data.flush(level); }
         catch (RuntimeException failure) { pet.epoch = previousEpoch; pet.restoring = false; data.setDirty(); throw failure; }

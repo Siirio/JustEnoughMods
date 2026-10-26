@@ -23,6 +23,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 /** One sneaking main-hand click extracts the first displayed enchantment. */
 @Mod.EventBusSubscriber(modid = JEMCompat.MOD_ID)
 public final class GrindstoneExtraction {
+    private static final String LEGACY_REFUND_TOKEN = "jemcompat_legacy_enchantment_refund";
     @SubscribeEvent
     public static void use(PlayerInteractEvent.RightClickBlock event) {
         if (event.getHand() != InteractionHand.MAIN_HAND || !event.getEntity().isShiftKeyDown()
@@ -41,7 +42,6 @@ public final class GrindstoneExtraction {
             CompoundTag entry = enchantments.getCompound(index);
             List<EnchantmentCostHistory.Credit> credits = EnchantmentCostHistory.credits(held,
                     entry.getString("id"), entry.getInt("lvl"));
-            if (credits.isEmpty()) return; // Existing untracked equipment retains its normal behavior.
             allCredits.add(credits);
         }
 
@@ -51,7 +51,15 @@ public final class GrindstoneExtraction {
         int levelValue = first.getInt("lvl");
         if (enchantment == null || levelValue <= 0) return;
         EnchantmentRefundData refunds = EnchantmentRefundData.get(player.server);
-        for (var credits : allCredits) if (!refunds.canRedeem(credits)) return;
+        for (var credits : allCredits) if (!credits.isEmpty() && !refunds.canRedeem(credits)) return;
+
+        List<EnchantmentCostHistory.Credit> credits = allCredits.get(0);
+        boolean legacy = credits.isEmpty();
+        java.util.UUID legacyToken = legacy && tag.hasUUID(LEGACY_REFUND_TOKEN)
+                ? tag.getUUID(LEGACY_REFUND_TOKEN) : java.util.UUID.randomUUID();
+        List<EnchantmentCostHistory.Credit> legacyCredit = List.of(new EnchantmentCostHistory.Credit(legacyToken, 0));
+        boolean legacyReward = legacy && !tag.hasUUID(LEGACY_REFUND_TOKEN)
+                || legacy && refunds.canRedeem(legacyCredit);
 
         ItemStack book = new ItemStack(Items.ENCHANTED_BOOK);
         EnchantedBookItem.addEnchantment(book, new EnchantmentInstance(enchantment, levelValue));
@@ -59,8 +67,11 @@ public final class GrindstoneExtraction {
                 event.getPos().getY() + 1.0, event.getPos().getZ() + 0.5, book);
         if (!level.addFreshEntity(dropped)) return;
 
-        List<EnchantmentCostHistory.Credit> credits = allCredits.get(0);
-        refunds.redeem(credits);
+        if (!legacy) refunds.redeem(credits);
+        else {
+            tag.putUUID(LEGACY_REFUND_TOKEN, legacyToken);
+            if (legacyReward) refunds.redeem(legacyCredit);
+        }
         enchantments.remove(0);
         if (enchantments.isEmpty()) tag.remove("Enchantments");
         else tag.put("Enchantments", enchantments);
@@ -69,7 +80,8 @@ public final class GrindstoneExtraction {
         player.inventoryMenu.broadcastChanges();
 
         long paid = credits.stream().mapToLong(EnchantmentCostHistory.Credit::paidXp).sum();
-        int returned = (int) Math.min(Integer.MAX_VALUE, paid * 70L / 100L);
+        int returned = legacy ? legacyReward ? EnchantmentCostHistory.pointsForLevelsFromZero(3) : 0
+                : (int) Math.min(Integer.MAX_VALUE, paid * 70L / 100L);
         if (returned > 0) {
             if (net.minecraftforge.fml.ModList.get().isLoaded("jem_world_boss_tiers"))
                 com.siirio.jemworldbosstiers.api.ExperienceRewardApi.transfer(player, returned);

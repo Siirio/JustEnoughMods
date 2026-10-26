@@ -1,0 +1,39 @@
+{
+  "dateLocal": "2026-10-27 00:53 +05:00",
+  "scope": "ordinary local Server and test jem only",
+  "server": {
+    "address": "127.0.0.1:31604",
+    "state": "running",
+    "productionArtifacts": {
+      "jem-server-2.0.0-dev.jar": "439be97302ca6dbae1cd50dc6b44f71b11982392cf4d8b56070cbbe6d053df3b",
+      "jemcompat-3.7.0.jar": "c21611ba050a7d0f4297f1c56c4bfbdbb777c2ae8389ba4ab32c350480401321",
+      "jem-advancements-5.1.0.jar": "d77a4d49581b5c81d556e034f1f1dd8802c2ff6d39f9f34082a09ac13fd96b54",
+      "jem-economy-1.3.0.jar": "f25ce0e1eeef4ee156d77f325d6f1700c7ed7c6c356c311ac0767283bece4ad7",
+      "mobhome-1.0.0.jar": "863d719b7bfbe86248987c662cba100329da74303fadb852ede206592c711144"
+    }
+  },
+  "nativeAutoModpack": {
+    "journalSequence": 86,
+    "contentToken": "646e48ae3aa5019bda290aa0b9353247536c4288",
+    "stagedManifestSha1": "eabf27a23c524b9d7d9e0900fdd47b3577516309",
+    "publishedManifestSha1": "eabf27a23c524b9d7d9e0900fdd47b3577516309",
+    "preview": "+1 ~13 -0",
+    "testJem": {
+      "applied": true,
+      "activeTokenMatchesPublished": true,
+      "pendingTransaction": false,
+      "sixAffectedJarHashesMatchManagedPack": true,
+      "clientOnlyJar": {
+        "name": "in-chat-ftb-1.0.0.jar",
+        "sha256": "39c3927f5aa60241dea2413c7f9bd9610043530397a01396d56e524092d2bd6d"
+      }
+    }
+  },
+  "atlas": {
+    "rebuild": "passed",
+    "audit": "passed",
+    "impactScan": "passed, zero uncovered paths",
+    "validation": "passed"
+  },
+  "acceptance": "in testing; no gameplay client launch or automated tests"
+}

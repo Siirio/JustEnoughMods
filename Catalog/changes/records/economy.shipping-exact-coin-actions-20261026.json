@@ -54,6 +54,12 @@
         "operation": "replace",
         "before": "Deposit action swept all eligible inventory coins; withdrawal decomposed requested value into mixed denominations.",
         "after": "Deposit consumes exactly the selected denomination and count; withdrawal debits the exact value and issues exactly that denomination/count; wallet transfer uses selected count times denomination."
+      },
+      {
+        "property": "client.requested_2026_10_27_refinement",
+        "operation": "replace",
+        "before": "Previous presentation or binding behavior",
+        "after": "Raise the denomination dropdown above all coin controls so its opaque background occludes the controls beneath it."
       }
     ]
   },
@@ -109,6 +115,15 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/EconomyNetwork.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/CoinDenomination.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "commit": "SELF",
+      "action": "refine_requested_behavior",
+      "summary": "Raise the denomination dropdown above all coin controls so its opaque background occludes the controls beneath it.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java"
       ]
     }
   ],

@@ -18,16 +18,12 @@ import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.storage.LevelResource;
@@ -105,11 +101,6 @@ public final class FtbQuestProjection {
             for (var entry : definitions.entrySet()) {
                 if (!entry.getKey().startsWith("chapters/")) continue;
                 CompoundTag chapter = entry.getValue();
-                if (!features.events) {
-                    ListTag images = chapter.getList("images", Tag.TAG_COMPOUND);
-                    images.removeIf(raw -> ((CompoundTag)raw).getString("click").startsWith("jem-info:events_"));
-                    chapter.put("images", images);
-                }
                 ListTag visible = new ListTag();
                 List<CompoundTag> blocked = new ArrayList<>();
                 for (Tag raw : chapter.getList("quests", Tag.TAG_COMPOUND)) {
@@ -120,30 +111,6 @@ public final class FtbQuestProjection {
                             dormantTasks.put(Long.parseUnsignedLong(task.getString("id"), 16), Math.max(1L, Math.max(task.getLong("count"), task.getLong("value"))));
                         }
                         blocked.add(dormant(quest));
-                        if (authoredBook && !chapter.getBoolean("jem_archive")
-                                && !(quest.getBoolean("jem_dedicated_event") && !features.events)) {
-                            ListTag images = chapter.getList("images", Tag.TAG_COMPOUND);
-                            CompoundTag information = new CompoundTag();
-                            information.putDouble("x", quest.getDouble("x"));
-                            information.putDouble("y", quest.getDouble("y"));
-                            information.putDouble("width", 0.9);
-                            information.putDouble("height", 0.9);
-                            information.putString("image", "minecraft:textures/item/book.png");
-                            information.putString("click", "jem-info:" + quest.getString("jem_source_id"));
-                            ListTag hover = new ListTag();
-                            var title = titleComponent(quest.getString("title"));
-                            hover.add(StringTag.valueOf(title.getContents() instanceof TranslatableContents translated
-                                    ? translated.getKey() : title.getString()));
-                            hover.add(StringTag.valueOf("jem.questbook.unavailable.hover"));
-                            information.put("hover", hover);
-                            images.add(information);
-                            chapter.put("images", images);
-                            ListTag subtitle = chapter.getList("subtitle", Tag.TAG_STRING);
-                            subtitle.add(StringTag.valueOf(Component.Serializer.toJson(
-                                    Component.translatable("jem.questbook.unavailable.summary", title,
-                                            Component.translatable("jem.questbook.unavailable.reason")))));
-                            chapter.put("subtitle", subtitle);
-                        }
                     } else {
                         visible.add(quest);
                         active.add(Long.parseUnsignedLong(quest.getString("id"), 16));
@@ -179,14 +146,6 @@ public final class FtbQuestProjection {
         } catch (IOException failure) {
             throw new IllegalStateException("Cannot prepare the world's authored FTB quest projection", failure);
         }
-    }
-
-    private static Component titleComponent(String raw) {
-        String text = raw.stripLeading();
-        if (text.startsWith("{") || text.startsWith("[") || text.startsWith("\"")) {
-            return Objects.requireNonNull(Component.Serializer.fromJson(raw), "Authored title component");
-        }
-        return Component.literal(raw);
     }
 
     private static Map<String, CompoundTag> read(Path root) throws IOException {

@@ -88,6 +88,13 @@ public final class ShelterMenu extends AbstractContainerMenu {
             if (pet.provisional && (nativePet == null || !viewer.getUUID().equals(CompanionAdapters.rider(nativePet)))) return;
             CompanionData.Pet occupant = data.occupant(dimension, anchor);
             if (occupant != null && occupant != pet) return;
+            if (nativePet instanceof net.minecraft.world.entity.LivingEntity animal
+                    && nativePet.level() == viewer.serverLevel()
+                    && !ShelterHold.place(viewer.serverLevel(), animal, anchor, viewer.getUUID())) {
+                pet.blocked = "no_safe_space";
+                data.flush(viewer.serverLevel()); refresh(true);
+                return;
+            }
             if (nativePet != null && CompanionAdapters.provisional(nativePet)) {
                 nativePet.getPersistentData().putUUID(CompanionAdapters.CUSTODIAN, viewer.getUUID()); pet.provisional = false; pet.custodian = true;
             }
@@ -95,6 +102,7 @@ public final class ShelterMenu extends AbstractContainerMenu {
             pet.home = anchor; pet.homeDimension = dimension; pet.blocked = "";
         } else {
             if (!pet.assigned(dimension, anchor)) return;
+            if (nativePet != null) ShelterHold.release(nativePet);
             pet.home = null; pet.homeDimension = ""; pet.blocked = "";
             // Pending is deliberately retained when unbinding a dead animal or removing its house.
         }

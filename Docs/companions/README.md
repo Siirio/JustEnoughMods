@@ -36,6 +36,8 @@ The owner's searchable scrollable GUI uses exactly two pet actions, Bind and Unb
 
 One pet has one home and one home has one pet. Rebinding moves the assignment without evicting occupants. Unbind never kills or teleports a living pet or deletes pending recovery. The compact screen uses native parchment, widgets, font and spawn eggs, without fabricated production art
 
+Binding an already loaded pet in the same dimension immediately places it at a collision-safe point inside or beside its home. The bound pet stays there with AI movement paused until its owner right-clicks it, including after a load or recovery. That interaction releases the hold. If no safe loaded point exists, binding is refused without assigning the pet
+
 ## Death and persistence
 
 `data/jem_companions.dat` is the single overworld journal. Schema 2 reads schema 1 and adds provisional-rider and explicit-custodian fields. Corrupt identities and unknown schemas fail visibly. Writes use a forced read-back-verified temporary file and atomic same-directory replacement. Failed commits preserve dirty state and the previous in-memory payload
@@ -60,7 +62,7 @@ The shared `ShelterRecovery.safePoint` owner enforces this placement rule for ev
 
 Candidates check full native body bounds, loaded neighbors before collision queries, entity obstruction, world limits, native hazards and protection. Ground requires full foot support. Aquatic creatures require complete water coverage, amphibious creatures can use water or stable ground, lava mounts can use native lava habitat, and flying creatures can use safe air. Blocked space retains the snapshot and visible reason until a natural retry
 
-Post-recovery owner teleport is paused through native goal/custom teleport seams until the owner's first interaction. Native walking, flight, combat, sitting and mount controls remain intact. The first interaction acknowledges the hold and is consumed, with later interactions native
+While bound at a home, owner teleport is paused through native goal/custom teleport seams and the sit-like hold pauses AI movement until the owner's first interaction. The first interaction releases the hold and is consumed; later interactions resume native behavior. Outside that bound hold, ordinary walking, flight, combat, sitting and mount controls remain native
 
 ## Vanilla evidence
 

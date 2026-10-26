@@ -2,7 +2,9 @@
 
 The [UI Rescue v3 specification](rescue-v3/specification.md) supersedes the earlier index and subchapter redesign. The native sidebar now contains exactly seven real chapters, without named chapter groups or a mandatory hub. Existing cards move into those canvases
 
-The authored book contains 602 cards in seven visible chapters. There are 577 objectives and 25 informational cards. Seven invisible historical archives preserve retired identities. The complete native inventory remains 619 quests, 755 tasks, 2,197 rewards including choice options, 61 reward tables and 30 dependency edges
+The authored book contains 602 cards: 577 objectives remain visible across seven chapters, while 25 informational cards stay in source history and are not displayed. Seven invisible historical archives preserve retired identities. Existing objective, task and reward IDs remain stable
+
+The client-only **In chat FTB** mod (`in_chat_ftb`) replaces FTB's completed-quest toast with a local chat line. The quest title is cyan, underlined and clickable, and opens that quest in the native FTB book. Chapter captions, separate guide cards and free-standing tab text are not shown; objective details, tasks and rewards remain available on their quest pages
 
 The earlier figure of 596 cards described an older revision. The immutable [baseline inventory](baseline-20261025.json) captures the actual 589-card source and native output before this redesign
 

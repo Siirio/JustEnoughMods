@@ -21,6 +21,12 @@
         "operation": "replace",
         "before": "Native defaults and user key_ rows; no JEM preset consumer.",
         "after": "Only real registered actions are applied from source-owned curated key map; no non-key profile settings. Existing profiles require /jemkeys preview/apply. Separate local receipt prevents update resets."
+      },
+      {
+        "property": "client.requested_2026_10_27_refinement",
+        "operation": "replace",
+        "before": "Previous presentation or binding behavior",
+        "after": "Apply newly added default bindings on the next managed-client generation only where the player has not customized that binding; retire TrashSlot and old backpack bindings."
       }
     ]
   },
@@ -58,6 +64,15 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "commit": "SELF",
+      "action": "refine_requested_behavior",
+      "summary": "Apply newly added default bindings on the next managed-client generation only where the player has not customized that binding; retire TrashSlot and old backpack bindings.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java"
       ]
     }
   ],

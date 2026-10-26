@@ -1,0 +1,61 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+group = 'com.justenoughmods'
+version = '1.0.0'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/ftb-quests-forge-2001.4.22.jar'))
+    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/ftb-library-forge-2001.2.13.jar'))
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'in_chat_ftb.refmap.json'
+    config 'in_chat_ftb.mixins.json'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+    options.incremental = false
+}
+
+afterEvaluate {
+    tasks.withType(JavaCompile).configureEach {
+        ['refMapFile', 'outTsrgFile'].each { name ->
+            if (extensions.extraProperties.has(name)) outputs.file(extensions.extraProperties.get(name))
+        }
+    }
+}
+
+jar {
+    archiveBaseName = 'in-chat-ftb'
+    manifest {
+        attributes([
+            'Specification-Title': 'In chat FTB',
+            'Specification-Version': project.version,
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'MixinConfigs': 'in_chat_ftb.mixins.json'
+        ])
+    }
+    finalizedBy 'reobfJar'
+    doFirst {
+        def refmap = tasks.named('compileJava').get().extensions.extraProperties.get('refMapFile')
+        if (!file(refmap).isFile()) throw new GradleException('Generated In chat FTB Mixin refmap is missing')
+    }
+}
+
+tasks.withType(Test).configureEach { enabled = false }

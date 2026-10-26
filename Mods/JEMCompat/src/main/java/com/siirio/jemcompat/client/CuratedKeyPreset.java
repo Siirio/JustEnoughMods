@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -24,10 +25,14 @@ import net.minecraft.commands.Commands;
 @Mod.EventBusSubscriber(modid = "jemcompat", value = Dist.CLIENT)
 public final class CuratedKeyPreset {
     private static final String REVISION = "2026-10-20";
+    // Compared with the GitHub original-controls snapshot. TrashSlot and Backpacked were retired.
+    private static final Set<String> NEW_SINCE_ORIGINAL = Set.of(
+            "key.jemcompat.free_camera", "key.puffish_skills.open", "key.sophisticatedbackpacks.open_backpack");
     private static boolean cleanOptions, initialized;
     private CuratedKeyPreset() { }
     public static void observeOptions(Path file) { if (!Files.exists(file)) cleanOptions = true; }
     private static Path marker() { return Minecraft.getInstance().gameDirectory.toPath().resolve("config/jemcompat-key-preset.applied"); }
+    private static Path upgradeMarker() { return Minecraft.getInstance().gameDirectory.toPath().resolve("config/jemcompat-new-keybinds-2026-10-27.applied"); }
     private static Map<String, String> desired() {
         try (var stream = CuratedKeyPreset.class.getResourceAsStream("/assets/jemcompat/input/default_keys.json")) {
             if (stream == null) throw new java.io.IOException("Missing curated key resource");
@@ -52,7 +57,7 @@ public final class CuratedKeyPreset {
         if (Files.exists(marker())) { feedback(source, Component.translatable("gui.jemcompat.keys.applied")); return 0; }
         var changes = changes();
         feedback(source, Component.translatable("gui.jemcompat.keys.preview", changes.size()));
-        changes.forEach((mapping, value) -> feedback(source, Component.translatable(mapping.getName()).append(": " + serialized(mapping) + " РІвЂ вЂ™ " + value)));
+        changes.forEach((mapping, value) -> feedback(source, Component.translatable(mapping.getName()).append(": " + serialized(mapping) + " -> " + value)));
         feedback(source, Component.translatable("gui.jemcompat.keys.confirm").withStyle(style -> style.withUnderlined(true)
                 .withClickEvent(new net.minecraft.network.chat.ClickEvent(net.minecraft.network.chat.ClickEvent.Action.RUN_COMMAND, "/jemkeys apply"))));
         return changes.size();
@@ -73,6 +78,31 @@ public final class CuratedKeyPreset {
         Minecraft.getInstance().options.save();
         return changes.size();
     }
+    private static void applyNewDefaults() {
+        if (Files.exists(upgradeMarker())) return;
+        Map<String, String> desired = desired();
+        int changed = 0;
+        for (KeyMapping mapping : Minecraft.getInstance().options.keyMappings) {
+            if (!NEW_SINCE_ORIGINAL.contains(mapping.getName()) || !desired.containsKey(mapping.getName())) continue;
+            if (!mapping.getKey().equals(mapping.getDefaultKey())
+                    || mapping.getKeyModifier() != mapping.getDefaultKeyModifier()) continue;
+            String[] parts = desired.get(mapping.getName()).split(":", 2);
+            mapping.setKeyModifierAndCode(parts.length == 1 ? KeyModifier.NONE : KeyModifier.valueOf(parts[1]),
+                    InputConstants.getKey(parts[0]));
+            changed++;
+        }
+        if (changed > 0) {
+            KeyMapping.resetMapping();
+            Minecraft.getInstance().options.save();
+        }
+        try {
+            Files.createDirectories(upgradeMarker().getParent());
+            Files.writeString(upgradeMarker(), "2026-10-27\n", StandardCharsets.UTF_8,
+                    java.nio.file.StandardOpenOption.CREATE_NEW);
+        } catch (java.io.IOException failure) {
+            throw new IllegalStateException("Cannot record new JEM key defaults", failure);
+        }
+    }
     @SubscribeEvent public static void commands(RegisterClientCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("jemkeys")
                 .executes(context -> preview(context.getSource()))
@@ -87,5 +117,6 @@ public final class CuratedKeyPreset {
         if (event.phase != TickEvent.Phase.END || initialized || Minecraft.getInstance().options == null) return;
         initialized = true;
         if (cleanOptions) apply();
+        applyNewDefaults();
     }
 }

@@ -43,6 +43,8 @@ public final class JEMCompat {
         MinecraftForge.EVENT_BUS.register(ElementalImpactEvents.class);
         MinecraftForge.EVENT_BUS.register(TransportEvents.class);
         if (ModList.get().isLoaded("kaleidoscope_end")) MinecraftForge.EVENT_BUS.register(VoidWalkerEvents.class);
+        if (ModList.get().isLoaded("handcrafted") && ModList.get().isLoaded("bbb"))
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.compat.handcrafted.UnifiedHammer.class);
     }
 
     private static void creativeTabs(BuildCreativeModeTabContentsEvent event) {

@@ -19,6 +19,7 @@ import net.minecraftforge.event.entity.living.AnimalTameEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.ChunkEvent;
@@ -73,6 +74,11 @@ public final class ShelterEvents {
         // A disk join proves data exists but can still be cancelled by another listener; keep the WAL until
         // the accepted entity participates in a successful native storage write.
         observe(entity);
+        if (pet != null && pet.home != null && pet.pending == null
+                && pet.homeDimension.equals(level.dimension().location().toString())
+                && entity instanceof net.minecraft.world.entity.LivingEntity animal
+                && level.hasChunkAt(pet.home) && !ShelterHold.isHeld(animal) && !ShelterHold.isReleased(animal))
+            ShelterHold.place(level, animal, pet.home, pet.owner);
     }
     @SubscribeEvent public static void tamed(AnimalTameEvent event) {
         if (event.getAnimal().level() instanceof ServerLevel) DUE_OBSERVATIONS.add(event.getAnimal());
@@ -126,12 +132,23 @@ public final class ShelterEvents {
     }
     private static boolean acknowledge(ServerPlayer player, Entity target) {
         Entity entity = CompanionAdapters.canonical(target); observe(entity);
-        if (player.getUUID().equals(CompanionAdapters.owner(entity)) && CompanionAdapters.nativeOwnerTeleport(entity)
-                && entity.getPersistentData().getBoolean(CompanionData.FOLLOW_HOLD)) {
-            entity.getPersistentData().remove(CompanionData.FOLLOW_HOLD);
+        if (player.getUUID().equals(CompanionAdapters.owner(entity)) && ShelterHold.isHeld(entity)) {
+            ShelterHold.follow(entity);
             return true;
         }
         return false;
+    }
+    @SubscribeEvent
+    public static void keepHeld(LivingEvent.LivingTickEvent event) {
+        Entity entity = event.getEntity();
+        if (!(entity.level() instanceof ServerLevel level) || !ShelterHold.isHeld(entity)) return;
+        CompanionData.Pet pet = CompanionData.get(level).pet(entity.getUUID());
+        if (pet == null || pet.home == null || !pet.owner.equals(CompanionAdapters.owner(entity))) {
+            ShelterHold.release(entity);
+            return;
+        }
+        if (entity instanceof net.minecraft.world.entity.Mob mob) mob.setNoAi(true);
+        entity.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
     }
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void breaking(BlockEvent.BreakEvent event) {

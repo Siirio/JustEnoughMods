@@ -1,0 +1,67 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.unified-building-hammer-20261027",
+  "status": "conditional",
+  "selectors": [
+    { "type": "id", "registry": "items", "value": "bbb:hammer" },
+    { "type": "id", "registry": "items", "value": "handcrafted:hammer" }
+  ],
+  "conditions": [
+    { "runtime": "Both installed Building But Better and Handcrafted are present; a player uses bbb:hammer on a block implementing Handcrafted's native Hammerable interface." }
+  ],
+  "precedence": { "layer": "jem_integration", "priority": 1125 },
+  "change": {
+    "summary": "Use the existing 3D BBB hammer for both native BBB and Handcrafted hammer interactions.",
+    "modifiers": [
+      {
+        "property": "bbb.hammer.handcrafted_interaction",
+        "operation": "add",
+        "before": "The BBB hammer and Handcrafted hammer trigger separate native actions.",
+        "after": "Using bbb:hammer on a Handcrafted Hammerable block calls that installed block's native onHammer action. BBB's own hammer behavior remains on its existing path."
+      },
+      {
+        "property": "handcrafted.hammer.acquisition",
+        "operation": "deny",
+        "before": "The Handcrafted hammer has a craft recipe, JEI catalog entry, quest references and a JEM trade listing.",
+        "after": "New Handcrafted-hammer crafting, curated JEI display, authored quest references and JEM trade listing are removed in favor of bbb:hammer. The old registered item remains loadable in existing saves."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat Handcrafted adapter and JEM-authored acquisition data",
+    "kind": "installed_native_interface_adapter",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
+      "Mods/JEMAchievementGuide/tools/questbook/book.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/profession_pools.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Give players one existing 3D construction hammer without replacing either installed mod's block implementation or deleting legacy item data.",
+    "decision_source": "User requested one hammer for the Handcrafted and Building But Better actions. Codex inspected exact installed Handcrafted Hammerable bytecode and BBB hammer behavior, then selected a Forge event adapter and author-owned acquisition edits."
+  },
+  "introduced": {
+    "date": "2026-10-27", "commit": "SELF", "action": "unify_building_hammers",
+    "summary": "Route Handcrafted's native hammerable action through bbb:hammer and retire new Handcrafted-hammer acquisition."
+  },
+  "history": [
+    {
+      "date": "2026-10-27", "commit": "SELF", "action": "unify_building_hammers",
+      "summary": "Keep both installed mods and old save item IDs while assigning new acquisition and interactions to the existing BBB hammer.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java",
+        "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
+        "Mods/JEMAchievementGuide/tools/questbook/book.json"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["Handcrafted", "Building But Better", "recipes", "JEI", "quests", "trades", "legacy_save_items"],
+    "relations": ["bbb:hammer -> Handcrafted Hammerable.onHammer", "Legacy handcrafted:hammer remains a registered item for old inventory compatibility"],
+    "notes": ["The adapter is active only when both installed mods are present and does not add a runtime library."],
+    "unresolved": ["Player interaction with installed Handcrafted blocks remains unobserved under the project's client-launch restriction."]
+  }
+}

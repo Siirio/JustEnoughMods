@@ -31,6 +31,12 @@
         "operation": "add",
         "before": "No JEM day/season HUD indicator in JEMCompat; native Minecraft and Serene Seasons calendar remain owners.",
         "after": "Approved24x24 day and season dials render only in survival/creative player inventory at right/top margin8 and gap4. Native clocks/calendars, F1 hide, tooltips and optional Serene Seasons boundary remain. New timeHud.showInventoryDayNight/showInventorySeasons keys default true, offsets retain existing keys. No raw profile mutation"
+      },
+      {
+        "property": "client.requested_2026_10_27_refinement",
+        "operation": "replace",
+        "before": "Previous presentation or binding behavior",
+        "after": "Move the season and day-time indicators to the requested top-center position in inventory views without changing calendar calculations."
       }
     ]
   },
@@ -114,6 +120,16 @@
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/gui/time/*.png",
         "Docs/art/inventory-season-hud-2026-10-25/approved/*",
         "Docs/season-hud/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "commit": "SELF",
+      "action": "refine_requested_behavior",
+      "summary": "Move the season and day-time indicators to the requested top-center position in inventory views without changing calendar calculations.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/TimeSeasonHud.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java"
       ]
     }
   ],

@@ -2,10 +2,7 @@
   "id": "2115706BBC5F781B",
   "filename": "jem_25",
   "title": "{\"translate\":\"jem.atlas.chapter.tab-25\"}",
-  "subtitle": [
-    "{\"translate\":\"jem.atlas.intro.tab-25\"}",
-    "{\"translate\":\"jem.atlas.free_order\"}"
-  ],
+  "subtitle": [],
   "icon": "minecraft:iron_sword",
   "order_index": 6,
   "default_quest_shape": "circle",
@@ -145,7 +142,7 @@
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "handcrafted:hammer",
+      "icon": "bbb:hammer",
       "x": -0.294,
       "y": 7.0,
       "shape": "circle",
@@ -155,7 +152,7 @@
           "id": "2C18766A571F377B",
           "type": "custom",
           "title": "{\"translate\":\"jem.atlas.card.races_03.condition\"}",
-          "icon": "handcrafted:hammer",
+          "icon": "bbb:hammer",
           "count": 2
         }
       ],
@@ -163,7 +160,7 @@
         {
           "id": "225B2898D2C04599",
           "type": "jem_advancements:quest_item",
-          "item": "handcrafted:hammer",
+          "item": "bbb:hammer",
           "count": 1,
           "claim_key": "races_03/item/0",
           "claim_reward_id": "225B2898D2C04599",
@@ -9100,166 +9097,11 @@
     },
     {
       "x": 0,
-      "y": 4.351162790697675,
-      "width": 18,
-      "height": 1.3,
-      "image": "none",
-      "click": "jem-title:{\"translate\":\"jem.atlas.chapter.tab-25\"}",
-      "order": 30
-    },
-    {
-      "x": 0,
       "y": -1,
       "width": 3.4,
       "height": 3.4,
       "image": "minecraft:textures/item/ender_eye.png",
       "order": -20
-    },
-    {
-      "x": 0.0,
-      "y": -8,
-      "width": 17.64,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.eyes\"}",
-      "order": 30
-    },
-    {
-      "x": -4.997999999999999,
-      "y": -12.5,
-      "width": 8.82,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.first_arms\"}",
-      "order": 30
-    },
-    {
-      "x": 5.292,
-      "y": -12.5,
-      "width": 9.8,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.night_blades\"}",
-      "order": 30
-    },
-    {
-      "x": 0.0,
-      "y": 5.3,
-      "width": 17.64,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.first_power\"}",
-      "order": 30
-    },
-    {
-      "x": -5.316499999999999,
-      "y": -21.6,
-      "width": 23.03,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.arms\"}",
-      "order": 30
-    },
-    {
-      "x": -7.6195,
-      "y": 13.4,
-      "width": 18.424,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.hunt\"}",
-      "order": 30
-    },
-    {
-      "x": -5.316499999999999,
-      "y": 25.4,
-      "width": 23.03,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.depth\"}",
-      "order": 30
-    },
-    {
-      "x": -5.316499999999999,
-      "y": 36.4,
-      "width": 23.03,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.gates\"}",
-      "order": 30
-    },
-    {
-      "x": -8.770999999999999,
-      "y": 47.4,
-      "width": 16.121,
-      "height": 1.1,
-      "image": "none",
-      "click": "jem-label:{\"translate\":\"jem.atlas.section.tab-25.events\"}",
-      "order": 30
-    },
-    {
-      "x": -1.862,
-      "y": -20.0,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:coop_revive",
-      "hover": [
-        "jem.atlas.card.coop_revive.title",
-        "jem.atlas.reference.hint"
-      ],
-      "order": 20
-    },
-    {
-      "x": 3.92,
-      "y": -5.8,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:eyes_02",
-      "hover": [
-        "jem.atlas.card.eyes_02.title",
-        "jem.atlas.reference.hint"
-      ],
-      "order": 20
-    },
-    {
-      "x": -8.771,
-      "y": 40.5,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:end_extra_03",
-      "hover": [
-        "jem.atlas.card.end_extra_03.title",
-        "jem.atlas.reference.hint"
-      ],
-      "order": 20
-    },
-    {
-      "x": -15.68,
-      "y": 49.0,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:events_01",
-      "hover": [
-        "jem.atlas.card.events_01.title",
-        "jem.atlas.reference.hint"
-      ],
-      "order": 20
-    },
-    {
-      "x": -6.468,
-      "y": 49.0,
-      "width": 0.9,
-      "height": 0.9,
-      "image": "minecraft:textures/item/book.png",
-      "click": "jem-info:events_05",
-      "hover": [
-        "jem.atlas.card.events_05.title",
-        "jem.atlas.reference.hint"
-      ],
-      "order": 20
     }
   ],
   "jem_rescue_entry_bounds": [

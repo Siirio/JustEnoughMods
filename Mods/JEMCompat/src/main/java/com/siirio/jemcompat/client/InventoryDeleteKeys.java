@@ -6,6 +6,10 @@ import com.siirio.jemcompat.feature.inventory.InventoryDeleteNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -19,7 +23,7 @@ import org.lwjgl.glfw.GLFW;
 public final class InventoryDeleteKeys {
     private InventoryDeleteKeys() {}
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void pressed(ScreenEvent.KeyPressed.Pre event) {
         if (event.getKeyCode() != GLFW.GLFW_KEY_DELETE
                 || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)
@@ -27,15 +31,35 @@ public final class InventoryDeleteKeys {
                 || (ModList.get().isLoaded("jei") && JEMJeiPlugin.hasSearchFocus())) return;
 
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.player == null || minecraft.player.containerMenu != screen.getMenu()
-                || !screen.getMenu().getCarried().isEmpty()) return;
+        if (minecraft.player == null || !screen.getMenu().getCarried().isEmpty()) return;
         var slot = screen.getSlotUnderMouse();
         if (slot == null || !slot.isActive() || !slot.hasItem()) return;
-        int slotIndex = screen.getMenu().slots.indexOf(slot);
+        AbstractContainerMenu menu = minecraft.player.containerMenu;
+        int slotIndex;
+        if (screen instanceof CreativeModeInventoryScreen) {
+            // Creative's ItemPickerMenu is client-side and wraps real inventory slots. Send the
+            // matching player InventoryMenu index, never an infinite catalog or destroy slot.
+            if (menu != minecraft.player.inventoryMenu || slot.container != minecraft.player.getInventory()) return;
+            slotIndex = inventorySlot(menu, slot);
+        } else {
+            if (menu != screen.getMenu()) return;
+            slotIndex = menu.slots.indexOf(slot);
+        }
         if (slotIndex < 0) return;
 
         boolean all = (event.getModifiers() & GLFW.GLFW_MOD_SHIFT) != 0;
-        InventoryDeleteNetwork.request(screen.getMenu(), slotIndex, all, slot.getItem());
+        InventoryDeleteNetwork.request(menu, slotIndex, all, slot.getItem());
         event.setCanceled(true);
+    }
+
+    private static int inventorySlot(AbstractContainerMenu menu, Slot visible) {
+        ItemStack expected = visible.getItem();
+        for (int index = 0; index < menu.slots.size(); index++) {
+            Slot actual = menu.getSlot(index);
+            if (actual.container == visible.container && actual.getSlotIndex() == visible.getSlotIndex()
+                    && actual.getItem().getCount() == expected.getCount()
+                    && ItemStack.isSameItemSameTags(actual.getItem(), expected)) return index;
+        }
+        return -1;
     }
 }

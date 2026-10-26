@@ -168,6 +168,8 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
             g.renderItem(new ItemStack(CurrencyItems.item(target)),leftPos+128,topPos+52);
             g.renderItem(new ItemStack(CurrencyItems.item(cash)),leftPos+198,topPos+93);
             if (dropdown!=0) {
+                // Item rendering uses its own Z lift. Raise the menu above the chooser coins as well.
+                g.pose().pushPose(); g.pose().translate(0,0,250);
                 int x=leftPos+(dropdown==1?16:dropdown==2?98:194), y=topPos+(dropdown==3?88:74);
                 for (var denomination : CoinDenomination.values()) {
                     int row=y+denomination.ordinal()*18;
@@ -175,6 +177,7 @@ public final class ShippingBoxScreen extends AbstractContainerScreen<ShippingBox
                     g.renderItem(new ItemStack(CurrencyItems.item(denomination)),x+3,row+1);
                     g.drawString(font,Long.toString(denomination.value()),x+23,row+5,0xFFF3E6CD,false);
                 }
+                g.pose().popPose();
             }
             g.pose().popPose();
         }

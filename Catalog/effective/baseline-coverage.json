@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "babc5ed8ac56d4dafbe7f474461911a35649bb051da5dd43efef8a187119a8cb",
+  "change_records_sha256": "fa26fd040fa67677b0c1cd2c0f753ddf475836b31a030d3c5eaf834057c74b05",
   "totals": {
-    "watched": 4019,
-    "covered": 2271,
-    "unresolved": 1748
+    "watched": 4033,
+    "covered": 2284,
+    "unresolved": 1749
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1433,
+      "watched": 1432,
       "covered": 91,
-      "unresolved": 1342,
+      "unresolved": 1341,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -1317,7 +1317,6 @@
         "Client/ManagedPack/config/tinyinv-client.toml",
         "Client/ManagedPack/config/toms_storage-common.toml",
         "Client/ManagedPack/config/trade_cycling-client.toml",
-        "Client/ManagedPack/config/trashslot-common.toml",
         "Client/ManagedPack/config/treechop-client.toml",
         "Client/ManagedPack/config/treechop-common.toml",
         "Client/ManagedPack/config/tumbleweed-common.toml",
@@ -1401,13 +1400,16 @@
     },
     "Mods/JEMAchievementGuide": {
       "watched": 836,
-      "covered": 831,
-      "unresolved": 5,
+      "covered": 828,
+      "unresolved": 8,
       "unresolved_paths": [
         "Mods/JEMAchievementGuide/gradle.properties",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/BookInformationScreen.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/JemCriteria.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/NodeCriterion.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/UpstreamAdvancementCriterion.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestChapterImageMixin.java",
+        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json",
         "Mods/JEMAchievementGuide/src/main/resources/pack.mcmeta"
       ]
     },
@@ -1432,8 +1434,8 @@
       ]
     },
     "Mods/JEMCompat": {
-      "watched": 162,
-      "covered": 111,
+      "watched": 171,
+      "covered": 120,
       "unresolved": 51,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
@@ -1571,15 +1573,15 @@
       "unresolved_paths": []
     },
     "Mods/JEMRoles": {
-      "watched": 161,
-      "covered": 161,
+      "watched": 166,
+      "covered": 166,
       "unresolved": 0,
       "unresolved_paths": []
     },
     "Mods/JEMServer": {
-      "watched": 493,
-      "covered": 320,
-      "unresolved": 173,
+      "watched": 494,
+      "covered": 322,
+      "unresolved": 172,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1751,7 +1753,6 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/end_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/nether_ingredients.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/items/cooking/rare_ingredients.json",
-        "Mods/JEMServer/src/main/resources/jem_server_fishing.mixins.json",
         "Mods/JEMServer/src/main/resources/jem_server_revive.mixins.json",
         "Mods/JEMServer/src/main/resources/pack.mcmeta"
       ]
