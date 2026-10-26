@@ -13190,3 +13190,81 @@ diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/re
 +	"jem.bootstrap.download": "Скачать",
 +	"jem.bootstrap.remove": "Удалить:"
 +}
+
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
+@@ -25,21 +25,25 @@
+ public class ModpackUtils {
+ 
+ 	// Modpack may require update even if there's no files to update, because some files may need to be deleted
+-	public record UpdateCheckResult(boolean requiresUpdate, Set<ModpackJsons.ModpackContentFields.ModpackContentItem> filesToUpdate) {}
++	public record UpdateCheckResult(boolean requiresUpdate, Set<ModpackJsons.ModpackContentFields.ModpackContentItem> filesToUpdate, Set<String> verifiedPaths) {}
+ 
+ 	// Checks if the modpack is up to date without modifying anything on disk
+ 	public static UpdateCheckResult isUpdate(ModpackJsons.ModpackContentFields serverModpackContent, ClientStorage storage) throws IOException {
+ 		if (serverModpackContent == null || serverModpackContent.list == null) throw new IllegalArgumentException("Server modpack content list is null");
+-		if (verificationCannotDecide(serverModpackContent, storage)) return new UpdateCheckResult(true, serverModpackContent.list);
++		if (verificationCannotDecide(serverModpackContent, storage)) return new UpdateCheckResult(true, serverModpackContent.list, Set.of());
+ 
+ 		LOGGER.info("Verifying content against server list...");
+ 		var start = System.currentTimeMillis();
+ 
+ 		Set<ModpackJsons.ModpackContentFields.ModpackContentItem> filesToUpdate = new HashSet<>();
++		Set<String> verifiedPaths = new HashSet<>();
+ 		try (var cache = FileCache.open(storage.fileCacheDirectory())) {
+ 			Map<String, UpdatePlan.FileState> live = ClientProjectionView.open(storage).liveFiles(cache);
+ 			for (var serverItem : serverModpackContent.list) {
+-				if (verifyActiveItem(serverItem, LogicalPath.normalize(serverItem.file), live) == FileVerification.MISMATCH) filesToUpdate.add(serverItem);
++				String relative = LogicalPath.normalize(serverItem.file);
++				FileVerification verification = verifyActiveItem(serverItem, relative, live);
++				if (verification == FileVerification.MISMATCH) filesToUpdate.add(serverItem);
++				else if (verification == FileVerification.MATCH) verifiedPaths.add(relative);
+ 			}
+ 
+ 			if (filesToUpdate.isEmpty()) {
+@@ -48,22 +52,28 @@
+ 				for (String relative : live.keySet()) {
+ 					if (!serverFileSet.contains(relative)) {
+ 						LOGGER.info("Found projected file marked for deletion: {}", relative);
+-						return new UpdateCheckResult(true, Set.of());
++						return new UpdateCheckResult(true, Set.of(), Set.copyOf(verifiedPaths));
+ 					}
+ 				}
+ 			}
+ 		} catch (Exception e) {
+ 			LOGGER.error("Error during update check", e);
+-			return new UpdateCheckResult(true, serverModpackContent.list);
++			return new UpdateCheckResult(true, serverModpackContent.list, Set.of());
+ 		}
+ 
+ 		if (!filesToUpdate.isEmpty()) {
+ 			LOGGER.info("Active projection requires update! Took {} ms", System.currentTimeMillis() - start);
+-			return new UpdateCheckResult(true, filesToUpdate);
++			return new UpdateCheckResult(true, filesToUpdate, Set.copyOf(verifiedPaths));
+ 		}
+ 
+ 		LOGGER.info("Active projection is up to date! Took {} ms", System.currentTimeMillis() - start);
+-		return new UpdateCheckResult(false, Set.of());
++		return new UpdateCheckResult(false, Set.of(), Set.copyOf(verifiedPaths));
++	}
++
++	// Reuses the same verified snapshot during login, avoiding a second full projection scan before the server times out.
++	public static void reprotectVerifiedFiles(ModpackJsons.ModpackContentFields serverModpackContent, ClientStorage storage, UpdateCheckResult result) throws IOException {
++		if (new ClientGenerationStore(storage).isDetached(serverModpackContent.modpackId)) return;
++		for (String relative : result.verifiedPaths()) ImmutableFiles.protect(storage.activePath(relative));
+ 	}
+ 
+ 	// Re-applies the filesystem's immutability to active files that already match the server content; the update verdict above stays read-only
+diff --git a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
+--- a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
++++ b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
+@@ -244,7 +244,7 @@
+ 			SelectedModpackTarget selectedTarget, boolean alreadyDisconnected) throws Exception {
+ 		ModpackJsons.ModpackContentFields serverModpackContent = selectedTarget.flatTarget();
+ 		ModpackUtils.UpdateCheckResult updateCheckResult = ModpackUtils.isUpdate(serverModpackContent, storage);
+-		ModpackUtils.reprotectActiveFiles(serverModpackContent, storage);
++		ModpackUtils.reprotectVerifiedFiles(serverModpackContent, storage, updateCheckResult);
+ 		if (!updater.requiresUpdateBeforeLogin(updateCheckResult)) {
+ 			updater.close();
+ 			if (alreadyDisconnected) ScreenImpl.multiplayer();

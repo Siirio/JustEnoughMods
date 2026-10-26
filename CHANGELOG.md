@@ -1,3 +1,9 @@
+## 2026-10-26 - Local AutoModpack login timeout
+
+- User reports repeated "Timed out" joins to the ordinary local server, including attempts on 2026-10-25 and 2026-10-26
+- Bug / Both Sided / AutoModpack checks the full active projection, then repeats that scan to restore file protection before answering the server's login query, allowing the 60-second network timeout to expire / in testing, the native bootstrap source patch reuses the first scan's verified paths for protection
+- The production `jem.10` bootstrap build succeeded. SHA-256 `5e02d07f8bf30da5e6a1d7c4b9308d2f6979b76b4387892127e7044d5956e1f1` matches the ordinary local Server, canonical ManagedPack, clean installer template and closed `test jem` bootstrap. The server saved and restarted cleanly, then reached `Done` on port 31604. Native preview showed `+0 ~0 -0`, so published generation 81 remains current. Player join acceptance remains untested under the project's no-client-launch rule
+
 ## 2026-10-26 - Public chat and minimum villager payout
 
 - User requires ordinary messages in global chat for everyone, including OP, without dispatching them to ServerLogin local chat
