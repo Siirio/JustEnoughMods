@@ -1,3 +1,12 @@
+## 2026-10-26 - Public chat and minimum villager payout
+
+- User requires ordinary messages in global chat for everyone, including OP, without dispatching them to ServerLogin local chat
+- User revised the villager request: keep the affected small sales and pay at least one Copper instead of hiding their offers. Shaders remain outside this task
+- Implementation choices: redirect the exact ServerLogin 1.0.3 local-manager call after authentication, and use one native sale-price helper for both displayed quote and actual funded settlement
+- Bug / Server / ServerLogin routes ordinary OP2 messages into a same-dimension radius channel / in testing, skip the local-manager invocation while preserving authentication and public sender identity
+- Bug / Both Sided / positive fractional native sale prices can produce zero whole-Copper quotes and an empty monetary cell / in testing, the native trade now has a real minimum one-Copper price shared by quote and ledger settlement
+- Preserve native offers, stock, restocking, item counts and NBT, existing fractional claims, funded NPC payments and all unrelated Market/Shipping prices. Production builds and ordinary Server startup completed. Native generation 81 is published and fully applied to test jem with matching token/JAR hashes and no pending transaction. Shader settings are unchanged. Local delivery evidence belongs to Docs/releases/chat-villager-20261026.json
+
 ## 2026-10-25 - Approved Food Blessing icon installation
 
 - User approved the revised Aseprite icon with grapes inside the cup and requested redeployment

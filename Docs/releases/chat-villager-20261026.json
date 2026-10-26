@@ -1,0 +1,91 @@
+{
+  "timestamp": "2026-10-26T08:20:26.890375+05:00",
+  "status": "LOCAL_DELIVERY_COMPLETE_PLAYER_ACCEPTANCE_PENDING",
+  "commit": "SELF",
+  "scope": "Ordinary local Server and native test jem, MineRENT/stable/baseline unchanged",
+  "requested": {
+    "chat": "Ordinary messages bypass ServerLogin local manager, including OP",
+    "villagers": "Keep small positively priced sales, real minimum one-Copper complete trade instead of hiding offers",
+    "shaders": "No changes"
+  },
+  "implementation": {
+    "chat": "Exact LoginEvents.onChat call-site redirect of AdminChatManager.handleDefaultChat, auth input retained",
+    "price": "NativeTradePricing.salePrice shared by native quote and funded MerchantContainer settlement"
+  },
+  "artifacts": [
+    {
+      "module": "JEMCompat",
+      "name": "jemcompat-3.7.0.jar",
+      "sha256": "3c121f64b4e4975823ac9549516f338d631f97ba331125dd41e781f59319e4f7",
+      "size": 383588,
+      "changedJarEntries": [
+        "com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.class"
+      ]
+    },
+    {
+      "module": "JEMEconomy",
+      "name": "jem-economy-1.3.0.jar",
+      "sha256": "348183ed7a261fb5a077fc11c45b32932348d737225a942cc277add75dbe848d",
+      "size": 2276429,
+      "changedJarEntries": [
+        "com/siirio/jemeconomy/api/EconomyApi.class",
+        "com/siirio/jemeconomy/merchant/NativeTradePricing.class"
+      ]
+    }
+  ],
+  "build": {
+    "tasks": [
+      ":JEMCompat:jar",
+      ":JEMEconomy:jar"
+    ],
+    "reobfJarCompleted": true,
+    "automatedTests": false
+  },
+  "server": {
+    "synchronized": true,
+    "startupDone": true,
+    "startupTimeLocal": "2026-10-26T08:12:09+05:00",
+    "address": "localhost:31604"
+  },
+  "publication": {
+    "published": true,
+    "journalSequence": 81,
+    "publishedManifestSha1": "44fb0b87df392db5274170b6c40a7affc1e4dce8",
+    "stagedManifestSha1": "44fb0b87df392db5274170b6c40a7affc1e4dce8"
+  },
+  "installation": {
+    "generation": 81,
+    "contentToken": "effd37ba1f869e266de14688c10606ed95c13d24",
+    "pending": false,
+    "detached": false,
+    "artifacts": [
+      {
+        "name": "jemcompat-3.7.0.jar",
+        "sha256": "3c121f64b4e4975823ac9549516f338d631f97ba331125dd41e781f59319e4f7"
+      },
+      {
+        "name": "jem-economy-1.3.0.jar",
+        "sha256": "348183ed7a261fb5a077fc11c45b32932348d737225a942cc277add75dbe848d"
+      }
+    ],
+    "method": "Native AutoModpack prepared plan, exact path/hash review, approve and commit, no raw managed file copies",
+    "clientLaunched": false
+  },
+  "atlas": {
+    "fullRegenerationCompleted": true,
+    "auditCompleted": true,
+    "scanValid": true,
+    "uncovered": [],
+    "validationValid": true,
+    "preexistingPowerWorkPreserved": true
+  },
+  "preservation": {
+    "nativeOffersStockRestockCountsAndNbt": "Unchanged source owners and packets",
+    "unknownAndProhibitedItems": "Admission unchanged",
+    "marketAndShippingPrices": "Unchanged rational prices",
+    "existingFractionalClaims": "Preserved, native minimum passes through existing funded ledger",
+    "shaderSettingFilesVerifiedUnchanged": 17,
+    "clientLaunched": false,
+    "runtimePlayerChecks": false
+  }
+}

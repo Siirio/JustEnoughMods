@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "change_id": "chat-public-villager-minimum-copper-20261026",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "runtime": "ServerLogin 1.0.3 dedicated chat adapter, Economy enabled for native merchant prices",
+      "acceptance": "Production packaging and local native installation, player acceptance pending"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_user_override",
+    "priority": 1550,
+    "overrides": [
+      "hosted.native-support-public-chat-smp-render-20261021"
+    ]
+  },
+  "change": {
+    "summary": "Skip ServerLogin local-chat dispatch for ordinary authenticated chat, and pay at least one Copper for a positively priced complete villager sale",
+    "modifiers": [
+      {
+        "property": "server.chat.default",
+        "operation": "replace",
+        "before": "ServerLogin routes OP2 ordinary messages to same-dimension radius chat. Prior local adapter canceled inside the manager method",
+        "after": "Exact LoginEvents.onChat call-site redirect does not invoke AdminChatManager.handleDefaultChat, native public player-chat continues for every authenticated sender including OP. Authentication input and explicit commands retain their own owners"
+      },
+      {
+        "property": "economy.native_villager.minimum_sale_price",
+        "operation": "set",
+        "before": "A positive fractional native sale can quote a zero whole-Copper payout and its renderer draws no price",
+        "after": {
+          "minimum_positive_complete_trade_copper": 1,
+          "owner": "NativeTradePricing.salePrice",
+          "consumers": [
+            "NativeTradePricing.quote",
+            "EconomyApi.settleNpcContainerSale"
+          ],
+          "scope": "Native MerchantContainer sales only",
+          "unchanged": [
+            "Unknown/prohibited/unsellable admission",
+            "Larger native sale prices",
+            "Global Market and Shipping Box fractional prices",
+            "Native stock, counts, NBT and restocking",
+            "Funded NPC_MARKET settlement and existing fractional claims"
+          ]
+        }
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat chat adapter and JEMEconomy native merchant pricing",
+    "kind": "user_requested_chat_routing_and_native_price_override",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java",
+      "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java",
+      "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+      "Client/ManagedPack/mods/jem-economy-1.3.0.jar",
+      "Docs/SERVER_COMMANDS.md",
+      "Docs/economy/native-trading-design.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Ordinary messages reach public chat and villagers no longer offer a blank payout for positively priced small sales",
+    "decision_source": "User 2026-10-26 explicitly removes ServerLogin local dispatch even for OP, then replaces the earlier hide-offers request with one Copper for these villager trades",
+    "implementation": "Skip the one exact admin/local call after authentication checks and share one transaction-price minimum between quote and actual funded sale"
+  },
+  "introduced": {
+    "date": "2026-10-26",
+    "commit": "SELF",
+    "action": "implement",
+    "summary": "Public chat call-site exclusion and minimum one-Copper native sale"
+  },
+  "history": [
+    {
+      "date": "2026-10-26",
+      "commit": "SELF",
+      "action": "implement",
+      "summary": "Latest user correction retains small positively priced villager offers with one-Copper minimum instead of removing them. Shader work explicitly excluded"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "native player chat",
+      "native merchant trade",
+      "funded economy",
+      "client presentation",
+      "local_distribution"
+    ],
+    "relations": [],
+    "notes": [
+      "No new offer list, no prices for unknown goods and no renderer error placeholder",
+      "Screenshot server artifact/version was not proven, local source fix and deployment are reported separately"
+    ],
+    "unresolved": [
+      "Player observation of public chat and villager prices remains pending"
+    ]
+  }
+}

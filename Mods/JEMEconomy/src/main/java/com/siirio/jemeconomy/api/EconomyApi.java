@@ -386,7 +386,7 @@ public final class EconomyApi {
         MarketSavedData market = MarketSavedData.get(seller.getServer());
         var canonical = ItemPolicyRegistry.policy(offered).filter(p -> p.sellable());
         var ledger = EconomySavedData.get(seller.getServer());
-        var raw = com.siirio.jemeconomy.merchant.NativeItemPricing.salePrice(offered,quantity,market.multiplier(seller.getServer(),policy.demandGroup()));
+        var raw = com.siirio.jemeconomy.merchant.NativeTradePricing.salePrice(offered,quantity,market.multiplier(seller.getServer(),policy.demandGroup()));
         long payout = raw != null ? ledger.quoteSale(principal.get().accountId(),raw.numerator(),raw.denominator()).payout()
                 : com.siirio.jemeconomy.merchant.NativeItemPricing.saleCopper(offered,quantity,market.multiplier(seller.getServer(),policy.demandGroup()));
         var allowed = market.allowanceExactTrade(seller.getServer(), principal.get().accountId(), policy, quantity, payout);

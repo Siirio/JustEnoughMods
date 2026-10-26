@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "8c3c47e58128356aa5dd7bc9509d1b970e7932c245b24a90eefc9b41362260bb",
+  "change_records_sha256": "f2a2d2fb38b4efc89e8b932e6e6d2b8bc309109a6c6b38a50bf4b90cdd60e8b5",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -208,6 +208,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 12
+    },
+    {
+      "change_id": "chat-public-villager-minimum-copper-20261026",
+      "status": "active",
+      "summary": "Skip ServerLogin local-chat dispatch for ordinary authenticated chat, and pay at least one Copper for a positively priced complete villager sale",
+      "record": "Catalog/changes/records/chat-public-villager-minimum-copper-20261026.json",
+      "selectors": [
+        {
+          "type": "registry",
+          "registry": "*",
+          "value": "*"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 32886
     },
     {
       "change_id": "smp.claims-flan-removal",
@@ -3410,7 +3425,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "67f43ca2904408c1f79810a8db3f92a9947bcf930d7f9f86831774c8d3b2765c",
+    "Client/ManagedPack/jem-pack/manifest.json": "6e4c8e1cce59d256113ebcc8891f01e015f9847ab2c65703fb7d3fc3fcc5fda7",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -3592,7 +3607,7 @@
     "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1",
     "Client/ManagedPack/mods/jem-advancements-5.1.0.jar": "96f39377fb9c96f24e0a7068edf1679878ad5453d6d10237a8feff7b1b287274",
     "Client/ManagedPack/mods/jem-bootstrap.jar": "75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8",
-    "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "31dc3635df490986d4e042cac869f7c5f37ffa1fe427de7cc5b3ecd95802e3a6",
+    "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "348183ed7a261fb5a077fc11c45b32932348d737225a942cc277add75dbe848d",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
     "Client/ManagedPack/mods/jem-races-2.0.0.jar": "926e4eeefe12001bfa7a545007c48fd13a4194d4492d2fec28fc47fb56e45ffd",
     "Client/ManagedPack/mods/jem-rewards-1.0.0.jar": "221192c752c8935712d21ecddab399c3bfe65d6721ed5ece20a1dda59017582a",
@@ -3602,13 +3617,13 @@
     "Client/ManagedPack/mods/jem_adaptive_culling-1.4.1.jar": "f33e7ccd74e67028fdcad9b835ca4f6d4803273da9eb7d4a01e725e22a621b1f",
     "Client/ManagedPack/mods/jem_drill_lifecycle-1.0.0.jar": "af2ab18ccd40f72222b2a00031dfb7c00aa0519d696058f351ff8ee7adbcc6af",
     "Client/ManagedPack/mods/jem_twelve_eyes-1.7.0-dev.jar": "467db4e13c9ebb84c095d3b8e1dbfaf6a84ab559a1c37458c36f9e6042bcdbfa",
-    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "d8a209753074343ca1b63714fef781cd99bc1aaf4cb43ca7a00f659560d7c284",
+    "Client/ManagedPack/mods/jemcompat-3.7.0.jar": "3c121f64b4e4975823ac9549516f338d631f97ba331125dd41e781f59319e4f7",
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "7ec489066c825f7981bae356684db7672da746f1f6d6f6f97dca9a10fca854a9",
     "Client/ManagedPack/mods/mobhome-1.0.0.jar": "e0488bc39f1160f76b1ae61a07167a516f5c775b36155f3799721b4538150f07",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
     "Docs/DEVELOPMENT.md": "c104b749dcb9c1169643d29099f42e293480ae414cf5332cda82a7c14e3a52f9",
     "Docs/MODS.md": "136e8dae7c359ed76530220cb863f51fe37fa9040ba63aecd4e4fd0012b4e504",
-    "Docs/SERVER_COMMANDS.md": "730caba0dc818b94d5701f4150b9849394e33f21a808836702af8d2fbb78c0a2",
+    "Docs/SERVER_COMMANDS.md": "96f2302450f0577b3bd171d6ae7806bccea6b4895a64f2fa54fb7c56cf9af58c",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.bbmodel": "355052ad524b756bad6dee1c53479f6ce5df8f3c0e59d9be8bda942911a13d77",
     "Docs/art/bbb-hammer-2026-10-21/hammer-final.json": "4b8389a357a71cf49f4b3a3359d674f74d3ceee98d5f5405299be9ccbbc07583",
@@ -3631,7 +3646,7 @@
     "Docs/companions/README.md": "a340a4e624c94554601f9ea48f2ad056d7787c2d261347c3bfdc96658f9cb363",
     "Docs/companions/alex-evidence.md": "038186ef54b0dd5bc108a34a49a124866ea15127849b0319ceb8a6dcafc3e64c",
     "Docs/companions/pack-evidence.md": "f711ad5cde3d92dbfd9b9185e981a347219f4962eaa1e0eec5f1cfe87d21910d",
-    "Docs/economy/native-trading-design.md": "d1328493bbac31e57485604c6699cf9a8b70e5880f5f2bce37086bfadf2cc1f7",
+    "Docs/economy/native-trading-design.md": "2258f798808254cd5f43a60941f9c6782c27840434d88bf28d65cf50bca16d7e",
     "Docs/events/BLOOD_MOON.md": "a18703349f7fd1d6f933ff5c32875f7d60e0a93f0203fed6f6ff7d11ec975686",
     "Docs/events/BOSS_FIGHT.md": "bc6e82614cfbce5b70745428d018f1487746ff7ad248514049d628aafeae6464",
     "Docs/events/BOSS_RAID.md": "91c54edb14296a76ada7438245a05329a49b8b88246981135b568a1430171300",
@@ -4271,7 +4286,7 @@
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/grave/LegacyGraveCreationMixin.java": "6aa735df346bbd66faf9d6e59c3b59a8b4d8bb7fc336e7d0f59c1f727e96e7a5",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ClosedConnectionErrorMixin.java": "da54837470a855cdefb8767df722a75e0f30674c5a622f56da33d9904fc09dd8",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ConnectivityTerminalSocketMixin.java": "c810c8223a32dadf701f4f24a153e0f481b7c0982bf2efc0137b1414e09725c8",
-    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java": "507f6f38d5e11e7882bd5a0f41e34658a53eee92486494ed1048ebdb1bb3b164",
+    "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginPublicChatMixin.java": "96648b646d39d54d72f0d50aba9680684f257749d30814d34ef639b118a5c910",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/ServerLoginRespawnPacketMixin.java": "ea9c3326e28a9ce40603c647b02e0a1e6272161d171281408dac02000c2df2df",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/login/TerminalConnectionFailureMixin.java": "1c8ddb802504484ca1ab1a926e3b9ad762c292ab84b51a59ae67f09820b91a78",
     "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java": "ac68b028cb783409785bef7d51b04ad0c03507c951cf0ecafa665a28068b9005",
@@ -4342,7 +4357,7 @@
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradeContext.java": "3c189083f0f5cb275c3b7e17383eeb25c427085886702c6bebc21c52481ce51c",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CoinTradePriceEvent.java": "0eae829d75e3c974b3c7a5d6d1c47b46d9aa00322d873b1506f0a32455def615",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/CurrencyContainerAccess.java": "f96bc314160be3e076b8a208e3e8dc1c0d59a08ca1b482c597da433985129cdf",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "4b5bd45993d8aa328b6599f0253dbb8c6d996d736b2068cad071d24a88be7366",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyApi.java": "f29c7595675fd8265ed1906278dd9f0aa286de7dd93c665550cf64737a9cb015",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/EconomyOperationEvent.java": "8ded3792110af74e3e0f887f7135c3e95d89a75ab08a71c3c8bd8fa3978343d7",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketCatalogSnapshot.java": "35f09a7e5144ffb6a9e9c7cc4ad00b7d99ae33195c328cfe27ade76489f0e3f8",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/api/MarketItemSnapshot.java": "bf3660d3dd54aa63539598fd67b255fdc435a99991a13d78e3086d72afea5e9c",
@@ -4379,7 +4394,7 @@
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativePriceMath.java": "d6134080ee7603f176183b4f1b1b7f0e0b85a7d408b6d0e96b9d6d09ef43d5b0",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeCatalog.java": "8cca25e83e717166e49d3867a294193ff0d8c5201fe74cdf5c84470f792805a8",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeContainer.java": "c795a53ff6e7d942db4aa44d1e46af7f881e9c33ee37fb3b3593886dd09e72b1",
-    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java": "48b569d1e6b45233dc67f04582b3b41d6a07da89ae9b2ee024643bf7bfea448d",
+    "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradePricing.java": "72625e643ab3585c20b6a95d9ae127211004b855ea1bc761d303a27c0e5dc5b9",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeQuote.java": "aa07b0dd97b1e030d0412147d365bf794a85ad828e98f3649c55e62a9785cf6f",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSession.java": "4311e87a0a2b570aa173b8d7f7065483b5c9b552b906cc64f6f0a8cbc3cdb8c5",
     "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/merchant/NativeTradeSettlement.java": "c8303f059fbf581a2b2f7aafc5178b4e5127b968f832e4da4926006e5a5699a6",
@@ -5600,7 +5615,7 @@
     "Server/mods/jem-advancements-5.1.0.jar": "96f39377fb9c96f24e0a7068edf1679878ad5453d6d10237a8feff7b1b287274",
     "Server/mods/jem-world-boss-tiers-2.5.0-dev.jar": "1efed38b4db6c5f1df418a9139b282563c51d42d57a15d89e8044b8ec64a2179",
     "Server/mods/jem_drill_lifecycle-1.0.0.jar": "af2ab18ccd40f72222b2a00031dfb7c00aa0519d696058f351ff8ee7adbcc6af",
-    "Server/mods/jemcompat-3.7.0.jar": "d8a209753074343ca1b63714fef781cd99bc1aaf4cb43ca7a00f659560d7c284",
+    "Server/mods/jemcompat-3.7.0.jar": "3c121f64b4e4975823ac9549516f338d631f97ba331125dd41e781f59319e4f7",
     "Server/run.bat": "4d42c275b005814be58b8819283f79a108876923e51cf63557b27caba4352f2a",
     "build.gradle": "8b6bbf0cbdc6cfe46e299b22b1a7aa31fd064b3c627aca69be654d144e4f9752",
     "config/QUALITY.md": "04df97d6ab1daec0e17ce6e66212697d9ef662ef3f9b2f9b5f801a2dc41cc574",
@@ -5613,7 +5628,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "d272516b438e2ed9be11e28f97109c078718c03a014a9885d403a35800775750",
-    "tools/state/packSyncHost-sync.json": "5317c5ccc7754878ea5474390b6b2b7fdf73257235216fa9d8ee0b3bf545865c",
+    "tools/state/packSyncHost-sync.json": "7db348e2353535a73fee518a257cdd97e0503c636c3967185407274fbf56ef65",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

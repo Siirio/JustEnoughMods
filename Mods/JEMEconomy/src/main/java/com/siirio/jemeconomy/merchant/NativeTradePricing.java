@@ -16,6 +16,13 @@ import static com.siirio.jemeconomy.merchant.NativeTradeQuote.Direction.*;
 
 public final class NativeTradePricing {
     private NativeTradePricing() {}
+
+    /** User-selected minimum for a complete villager sale, shared by quote and funded settlement. */
+    public static com.siirio.jemeconomy.policy.RationalPrice salePrice(ItemStack goods, int quantity, int multiplier) {
+        var price = NativeItemPricing.salePrice(goods, quantity, multiplier);
+        return price.numerator() > 0 && price.floor() == 0
+                ? new com.siirio.jemeconomy.policy.RationalPrice(1, 1) : price;
+    }
     public static boolean monetary(MerchantOffer offer) {
         return offer.getCostA().is(Items.EMERALD) || offer.getCostB().is(Items.EMERALD) || offer.getResult().is(Items.EMERALD);
     }
@@ -34,7 +41,7 @@ public final class NativeTradePricing {
                 var market = MarketSavedData.get(player.getServer());
                 var demand = market.demand(player.getServer());
                 var p = policy.get();
-                var raw = NativeItemPricing.salePrice(offer.getCostA(),offer.getCostA().getCount(),market.multiplier(player.getServer(),p.demandGroup()));
+                var raw = salePrice(offer.getCostA(),offer.getCostA().getCount(),market.multiplier(player.getServer(),p.demandGroup()));
                 var saleQuote = EconomySavedData.get(player.getServer()).quoteSale(IdentityPolicy.resolve(player).orElseThrow().accountId(),raw.numerator(),raw.denominator());
                 long copper = saleQuote.payout();
                 var principal = IdentityPolicy.resolve(player).orElseThrow();
