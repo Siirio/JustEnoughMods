@@ -8,6 +8,8 @@
 - Production JAR SHA-256 is `90ec00093086dc502a890512e0f76921832f84746b476a4afaab3088544ac080`. Native AutoModpack publication 87 and closed-profile `test jem` application completed with content token `db321f5516c49e61267c840c74ed54d8c60c1ae3`, exact preview `+1 ~1 -0`, matching installed JAR and no pending transaction
 - Bug / Server / the one-use local native application adapter passed the live server journal to AutoModpack's consuming mirror replacement API, moving the journal out of its server owner / in testing, the exact authoritative 87-entry client mirror was restored, its terminal token was verified and the ordinary server restarted successfully with publication hashes matching
 - Ordinary local Server is running after native publication recovery. No gameplay client launch, automated tests, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed. Runtime screen composition and shader reload remain in testing pending player acceptance
+- User follow-up requested the same required graphics files in the isolated `jem sandbox` profile. The exact active `test jem` copies of JEM Luxium, Oculus, Sodium Dynamic Lights and the Luxium archive were installed, the differing JEM Adaptive Culling artifact was aligned, and already matching Embeddium, More Culling and Sodium Extras artifacts were retained
+- The prior sandbox-only Luxium 2.8.4 mod and differing culling JAR remain recoverable under `backups/luxium-install-2026-10-27`. Sandbox options, Oculus config, Luxium config and resource-pack order remained byte-identical. Source, ManagedPack, local Server and AutoModpack publication were unchanged, and no client was launched
 
 ## 2026-10-27 - Quest chat, category cleanup and local client update
 
