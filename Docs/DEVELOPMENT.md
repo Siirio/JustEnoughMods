@@ -47,6 +47,7 @@ Changelog описывает только запрошенные player-visible 
 | Модуль | Единственная ответственность |
 | --- | --- |
 | `JEMAdaptiveCulling` | Client rendering performance и только culling; dedicated server не нужен |
+| `JEMLuxium` | Client-only Embeddium page for reversible Luxium selection through the exact Oculus owner, dedicated server не нужен |
 | `JEMAchievementGuide` | Advancement criteria/providers, curated native placements, RU/EN guide resources и optional Better Advancements/Patchouli; content-aware FTB book projection наблюдает domain APIs, не владеет progression |
 | `JEMWorldBossTiers` | Global World Tier и сохранённый roster/threshold profile, boss profiles, hosted encounters, ordinary solo Raid, canonical native structure identity/anchor, revival и pending rewards |
 | `JEMTwelveEyes` | Строгие двенадцать original MAIN, prerequisites, Eyes, locators/sites, post-End и ending; сохраняет `jemcompat` namespace и `jemcompat_main_campaign` SavedData |

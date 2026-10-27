@@ -1,0 +1,32 @@
+{
+  "dateLocal": "2026-10-27 22:37 +05:00",
+  "scope": "ordinary local Server and test jem only",
+  "server": {
+    "address": "127.0.0.1:31604",
+    "state": "running after exact journal restoration and successful restart"
+  },
+  "artifact": {
+    "name": "jem_luxium-1.0.0.jar",
+    "side": "client only",
+    "sha256": "90ec00093086dc502a890512e0f76921832f84746b476a4afaab3088544ac080"
+  },
+  "nativeAutoModpack": {
+    "journalSequence": 87,
+    "contentToken": "db321f5516c49e61267c840c74ed54d8c60c1ae3",
+    "stagedManifestSha1": "bb7ca0872d8cf6e4745a4e7ef1daa4314b89ff5d",
+    "publishedManifestSha1": "bb7ca0872d8cf6e4745a4e7ef1daa4314b89ff5d",
+    "preview": "+1 ~1 -0",
+    "serverJournal": {
+      "entries": 87,
+      "terminalTokenMatchesPublished": true,
+      "restoredFromAuthoritativeClientMirrorAfterConsumingLocalAdapter": true
+    },
+    "testJem": {
+      "applied": true,
+      "activeTokenMatchesPublished": true,
+      "installedJarHashMatchesManagedPack": true,
+      "pendingTransaction": false
+    }
+  },
+  "acceptance": "in testing; no gameplay client launch or automated tests"
+}

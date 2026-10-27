@@ -1,3 +1,14 @@
+## 2026-10-27 - Native Luxium shader switch in graphics settings
+
+- User requested a Luxium section beside the installed Embeddium, More Culling, Sodium Extras and Oculus graphics controls, with an on/off switch and ordinary Oculus behavior when off
+- Added the client-only `jem_luxium` owner instead of restoring shader-preset responsibility to JEMAdaptiveCulling, whose approved scope remains culling only
+- The native Embeddium page uses its standard checkbox and Apply lifecycle, while the exact installed Oculus 1.8.0 API remains the only shader loader
+- Enabling discovers the installed valid `Luxium ` shader archive, remembers the current Oculus shader name and enabled state, then selects Luxium. Disabling restores both remembered values, or disables shaders when no earlier state exists
+- No shader archive, Oculus source, Embeddium source, rendering pipeline, gameplay state or dedicated-server module is replaced
+- Production JAR SHA-256 is `90ec00093086dc502a890512e0f76921832f84746b476a4afaab3088544ac080`. Native AutoModpack publication 87 and closed-profile `test jem` application completed with content token `db321f5516c49e61267c840c74ed54d8c60c1ae3`, exact preview `+1 ~1 -0`, matching installed JAR and no pending transaction
+- Bug / Server / the one-use local native application adapter passed the live server journal to AutoModpack's consuming mirror replacement API, moving the journal out of its server owner / in testing, the exact authoritative 87-entry client mirror was restored, its terminal token was verified and the ordinary server restarted successfully with publication hashes matching
+- Ordinary local Server is running after native publication recovery. No gameplay client launch, automated tests, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed. Runtime screen composition and shader reload remain in testing pending player acceptance
+
 ## 2026-10-27 - Quest chat, category cleanup and local client update
 
 - User request: show completed FTB quests in chat with cyan clickable names, remove visible guide cards and free-standing tab text, and package that chat behavior as a client-only mod named "In chat FTB"
