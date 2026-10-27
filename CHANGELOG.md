@@ -10,6 +10,7 @@
 - Ordinary local Server is running after native publication recovery. No gameplay client launch, automated tests, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed. Runtime screen composition and shader reload remain in testing pending player acceptance
 - User follow-up requested the same required graphics files in the isolated `jem sandbox` profile. The exact active `test jem` copies of JEM Luxium, Oculus, Sodium Dynamic Lights and the Luxium archive were installed, the differing JEM Adaptive Culling artifact was aligned, and already matching Embeddium, More Culling and Sodium Extras artifacts were retained
 - The prior sandbox-only Luxium 2.8.4 mod and differing culling JAR remain recoverable under `backups/luxium-install-2026-10-27`. Sandbox options, Oculus config, Luxium config and resource-pack order remained byte-identical. Source, ManagedPack, local Server and AutoModpack publication were unchanged, and no client was launched
+- Bug / Client / TLauncher still registered the separate Luxium 2.8.4 Forge mod as active and restored its JAR on launch, where Luxium's own `NOoculus` guard deliberately replaced the normal screen with "REMOVE OCULUS" / in testing, removed that exact TLauncher project entry and moved the restored mod JAR into the existing backup while retaining Oculus, JEM Luxium and the Luxium shader archive
 
 ## 2026-10-27 - Quest chat, category cleanup and local client update
 
