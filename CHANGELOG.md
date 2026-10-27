@@ -1,5 +1,10 @@
 ## 2026-10-27 - Native Luxium shader switch in graphics settings
 
+- User clarified that the Luxium control must always be available, Oculus must remain the default when it is off, the vanilla recipe book must be removed in favor of JEI, and Shift plus right-button cursor sweeps must quick-transfer stacks through every integrated container in both directions
+- Bug / Client / JEM Luxium treated the installed Luxium 2.8.0 Forge renderer as an Oculus shader-pack archive, so Oculus rejected it as invalid and the integration disabled its own checkbox / in testing, Luxium 2.8.0 is now installed as a required mod, defaults off, and the always-active Embeddium option switches renderer ownership while preserving the prior Oculus enabled state
+- Added the sandbox-only `jem_cinematic_interactions` owner, which closes and removes the vanilla recipe-book control while retaining the existing JEI right-side ingredient list and left-side bookmarks
+- The Shift plus right-button sweep now sends each newly crossed stack through the open menu's native `QUICK_MOVE` contract, preserving bidirectional vanilla and modded-machine insertion restrictions
+- JEM Luxium 1.0.1 and JEM Cinematic Interactions 1.0.0 production builds completed with tests disabled by project policy, and their exact artifacts were installed into the closed `jem sandbox` profile without launching Minecraft
 - User requested a Luxium section beside the installed Embeddium, More Culling, Sodium Extras and Oculus graphics controls, with an on/off switch and ordinary Oculus behavior when off
 - Added the client-only `jem_luxium` owner instead of restoring shader-preset responsibility to JEMAdaptiveCulling, whose approved scope remains culling only
 - The native Embeddium page uses its standard checkbox and Apply lifecycle, while the exact installed Oculus 1.8.0 API remains the only shader loader

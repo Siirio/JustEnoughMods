@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="jem_cinematic_interactions"
+version="1.0.0"
+displayName="JEM Cinematic Interactions"
+authors="Siirio"
+displayTest="IGNORE_ALL_VERSION"
+description='''Sandbox client integration for a clean JEI-first recipe layout and sweep quick-transfer controls.'''
+
+[[dependencies.jem_cinematic_interactions]]
+modId="forge"
+mandatory=true
+versionRange="[47.4,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jem_cinematic_interactions]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="CLIENT"

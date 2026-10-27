@@ -41,6 +41,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly fg.deobf(files(installedMod('embeddium-0.3.31+mc1.20.1.jar')))
     compileOnly fg.deobf(files(installedMod('oculus-mc1.20.1-1.8.0.jar')))
+    compileOnly fg.deobf(files(installedMod('Luxium Let there be light-2.8.0-pre-alpha.jar')))
 }
 
 tasks.named('processResources', ProcessResources).configure {

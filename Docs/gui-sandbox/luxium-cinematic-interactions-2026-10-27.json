@@ -1,0 +1,48 @@
+{
+  "profile": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox",
+  "date": "2026-10-27",
+  "user_request": [
+    "Keep the Luxium graphics toggle available and restore Oculus when it is off",
+    "Remove the vanilla recipe-book UI while retaining JEI ingredients on the right and bookmarks on the left",
+    "Make Shift plus right-button cursor sweeps quick-transfer stacks in both directions for every integrated container"
+  ],
+  "root_causes": [
+    "JEM Luxium incorrectly searched for an Oculus shader pack although Luxium 2.8.0 is a Forge renderer mod",
+    "The vanilla recipe-book toggle remained registered beside the requested JEI-first layout",
+    "Mouse Tweaks did not provide the requested Shift plus right-button bidirectional sweep gesture across the active container menu"
+  ],
+  "installed": [
+    {
+      "path": "mods/jem_luxium-1.0.1.jar",
+      "sha256": "30e976c5026b10630c7654a5dfbf77a37772da9dd5292c197203e52c0648afcd"
+    },
+    {
+      "path": "mods/Luxium Let there be light-2.8.0-pre-alpha.jar",
+      "sha256": "0530b80481b233d865ed0be55e9558562893fb48edec176d730d4789a9369469"
+    },
+    {
+      "path": "mods/jem-cinematic-interactions-1.0.0.jar",
+      "sha256": "0abbb94a98ff762a8ef70c60a688332f0110879df774e78573df010b7de3720a"
+    },
+    {
+      "path": "config/luxium-client.toml",
+      "sha256": "f4b24c603d1383d73cb73c1e24a343f3ba446a243d7d059c98cc5f48057f7043"
+    }
+  ],
+  "layout": {
+    "vanilla_recipe_book": "hidden and its toggle removed",
+    "jei_ingredients": "right",
+    "jei_bookmarks": "left"
+  },
+  "quick_transfer": {
+    "gesture": "hold Shift and right mouse button, then sweep across stacks",
+    "directions": [
+      "container to player inventory",
+      "player inventory to container"
+    ],
+    "routing": "the active menu's native QUICK_MOVE implementation"
+  },
+  "backup": "backups/cinematic-luxium-2026-10-27",
+  "game_launched_by_codex": false,
+  "runtime_recheck": "pending player launch"
+}

@@ -43,6 +43,19 @@ The later 2026-10-26 request removed TrashSlot from the production pack and from
 future sandbox installer inputs. A previously installed sandbox copy is historical
 profile state and is not modified by this installer source change.
 
+## Cinematic container interactions
+
+`JEMCinematicInteractions` is a separate sandbox-only owner so the behavior does
+not depend on the gallery's copied screens. In every recipe-aware container it
+closes and removes the vanilla recipe-book control, leaving the installed JEI
+ingredient list on the right and bookmarks on the left.
+
+Hold Shift and the right mouse button, then sweep across item stacks. Every newly
+crossed stack uses the active menu's native `QUICK_MOVE` action, so the gesture
+works from block or machine to player inventory and from player inventory back to
+the container. Vanilla and modded menus retain their own legal input, output and
+filter rules.
+
 ## Source and installation
 
 `Mods/JEMGuiSandbox` owns the gallery, local demo transports and build packaging.

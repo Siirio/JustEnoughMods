@@ -3,6 +3,7 @@ package com.siirio.jemluxium.client;
 import com.google.common.collect.ImmutableList;
 import com.siirio.jemluxium.JEMLuxium;
 import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
+import me.jellysquid.mods.sodium.client.gui.options.OptionFlag;
 import me.jellysquid.mods.sodium.client.gui.options.OptionImpact;
 import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
 import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
@@ -33,7 +34,7 @@ final class LuxiumOptionPage extends OptionPage {
                         .setTooltip(Component.translatable("jem_luxium.options.enabled.tooltip"))
                         .setControl(TickBoxControl::new)
                         .setBinding((state, enabled) -> state.enabled = enabled, state -> state.enabled)
-                        .setEnabledPredicate(LuxiumShaderController::isLuxiumInstalled)
+                        .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                         .setImpact(OptionImpact.HIGH)
                         .build())
                 .build());
