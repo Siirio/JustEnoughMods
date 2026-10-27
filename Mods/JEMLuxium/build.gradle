@@ -63,6 +63,7 @@ tasks.named('processResources', ProcessResources).configure {
 }
 
 tasks.named('jar', Jar).configure {
+    manifest.attributes('MixinConfigs': 'jem_luxium.mixins.json')
     manifest {
         attributes([
                 'Specification-Title': mod_id,

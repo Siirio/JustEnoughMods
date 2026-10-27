@@ -4,11 +4,25 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="jem_cinematic_interactions"
-version="1.0.0"
+version="1.0.1"
 displayName="JEM Cinematic Interactions"
 authors="Siirio"
 displayTest="IGNORE_ALL_VERSION"
 description='''Sandbox client integration for a clean JEI-first recipe layout and sweep quick-transfer controls.'''
+
+[[dependencies.jem_cinematic_interactions]]
+modId="cinematic"
+mandatory=true
+versionRange="[0.18.11]"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.jem_cinematic_interactions]]
+modId="jei"
+mandatory=true
+versionRange="[15.49.0.194]"
+ordering="AFTER"
+side="CLIENT"
 
 [[dependencies.jem_cinematic_interactions]]
 modId="forge"

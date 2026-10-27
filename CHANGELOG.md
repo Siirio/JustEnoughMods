@@ -1,3 +1,20 @@
+## 2026-10-28 - Luxium/Oculus exclusivity and shulker crash repair
+
+- User corrected the shulker implementation: colored shulker interfaces must remain resource-pack-owned and must not use a Java screen-opening hook
+- Bug / Client / `JEMGuiSandbox.ShulkerGuiColors` called the development-mapped `ClientLevel.getBlockState` signature from a production client, causing `NoSuchMethodError` whenever a shulker screen opened / in testing, the complete shulker event listener and screen Mixin were removed from the rebuilt sandbox JAR, leaving the existing JEM Release resource-pack textures as the only presentation owner
+- User required Luxium and Oculus to be mutually exclusive without Luxium's Oculus-removal complaint, and reported Luxium sunlight without visible shadows
+- Bug / Client / Luxium 2.8.0 cached `OCULUS_LOADED=true` and `NeoSkyCelestia.canRun()` rejected the complete Sun/Moon shadow cascade whenever the Oculus JAR existed, even with Oculus shaders disabled / in testing, JEM Luxium narrowly removes that installed-JAR guard for the mutually exclusive integration, keeps Oculus shaders disabled while Luxium owns rendering, and disables Luxium when Oculus is enabled directly
+- Bug / Client / JEM Luxium 1.0.3 called `SodiumWorldRenderer.reload()` directly from Embeddium's Apply-button mouse callback, outside Embeddium's managed OpenGL context, causing `IllegalStateException: Tried to access device from unmanaged context` / in testing, JEM Luxium 1.0.4 requests the same rebuild through `LevelRenderer.allChanged()`, whose Embeddium integration owns managed-context entry and exit
+- The exact Luxium 2.8.0 build without the later `NOoculus` blocking screen remains installed. Oculus 1.8.0 remains installed and is the default owner whenever Luxium is off
+- Production builds were performed with project tests disabled by policy. Runtime shulker opening, shadows and both switch directions remain unobserved pending player acceptance
+
+## 2026-10-28 - Cinematic scene uses ordinary JEI side overlays
+
+- User reported that Cinematic Interactions still rendered its own left recipe panel, right Field Guide and toggle buttons instead of the ordinary JEI bookmarks and ingredient list shown in normal inventory screens
+- Bug / Client / the earlier adapter removed only vanilla `RecipeBookComponent` controls, while the visible panels belonged to `TableRecipeBook` and `FieldGuide` inside Cinematic Interactions' plain `SceneScreen` / in testing, the two native cinematic side panels and their input regions are suppressed and the scene is registered through JEI's native screen-handler API so bookmarks remain on the left and ingredients on the right
+- User corrected the fast-transfer gesture from Shift plus right mouse button to Shift plus left mouse button. The native `QUICK_MOVE` routing and bidirectional container restrictions are unchanged
+- Runtime layout and sweep behavior remain unobserved pending player acceptance
+
 ## 2026-10-27 - Native Luxium shader switch in graphics settings
 
 - User clarified that the Luxium control must always be available, Oculus must remain the default when it is off, the vanilla recipe book must be removed in favor of JEI, and Shift plus right-button cursor sweeps must quick-transfer stacks through every integrated container in both directions

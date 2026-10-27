@@ -14,8 +14,10 @@ MODULE = Path(__file__).resolve().parent
 ROOT = MODULE.parent.parent
 SOURCES = {
     "JEMServer": {
+        "": "DimensionNames",
         "client/smp": "SmpScreen SmpViewState PartyLobbyPanel SmpHit SmpSidebar SmpIcons SmpGuiAssets BackNavigation SmpRoute EntityPreview PlayerPreviewWidget PreviewPlayerEntity ItemRewardStrip SmpActionButton EventRulesPanel EventEntryScreen ResultScreen",
         "client/ui": "JemPalette SmpRenderState JemMenuScreen",
+        "menus": "MenuTitles",
         "smp": "SmpQuery SmpUpdate SmpActionFailure ViewDelta",
         "smp/events": "EventPrompt",
     },
@@ -32,6 +34,9 @@ SOURCES = {
         "client/races": "RaceExperienceScreen RaceStageRenderer PreviewRenderState RacePanelMaterials",
         "workbench": "RacePowerStages BloomMechanics",
     },
+    "JEMIdentity": {
+        "api": "MinecraftDays",
+    },
 }
 PREFIX = "com.siirio.jemguisandbox.mirror."
 ASSETS = {"jem_server": "jem_gui_demo_server", "jem_settlements": "jem_gui_demo_settlements", "jem_economy": "jem_gui_demo_economy",
@@ -39,7 +44,7 @@ ASSETS = {"jem_server": "jem_gui_demo_server", "jem_settlements": "jem_gui_demo_
 
 
 def relocate(text):
-    text = re.sub(r"com\.siirio\.(jemserver|jemsettlements|jemeconomy|jemcurrency|jemvisualsandbox)(?=[.\"])",
+    text = re.sub(r"com\.siirio\.(jemserver|jemsettlements|jemeconomy|jemcurrency|jemvisualsandbox|jemidentity)",
                   lambda m: PREFIX + m[1], text)
     for old, new in ASSETS.items():
         text = text.replace('"' + old + '"', '"' + new + '"').replace('"' + old + ':', '"' + new + ':')
@@ -76,6 +81,16 @@ def main():
                 if name == "SmpSidebar":
                     text = replace_method(text, "public static boolean openExternal(",
                         '        return com.siirio.jemguisandbox.Demo.openExternal(route);')
+                if name == "PreviewPlayerEntity":
+                    text = replace_method(text, "public ResourceLocation getSkinTextureLocation()",
+                        '''        var source = appearanceSource();
+        return source == null ? skin : source.getSkinTextureLocation();''')
+                    text = replace_method(text, "public ResourceLocation getCloakTextureLocation()",
+                        '''        var source = appearanceSource();
+        return source == null ? cape : source.getCloakTextureLocation();''')
+                    text = replace_method(text, "public String getModelName()",
+                        '''        var source = appearanceSource();
+        return source == null ? model : source.getModelName();''')
                 if name == "JemMenuScreen":
                     text = replace_method(text, "private void activate(",
                         '''        if (slot == MAP_ACTION && mapLocation != null) {

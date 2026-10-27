@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.siirio.jemcinematicinteractions'
-version = '1.0.0'
+version = '1.0.1'
 base { archivesName = 'jem-cinematic-interactions' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -14,7 +14,15 @@ minecraft {
 }
 
 repositories { mavenCentral() }
-dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.4.10' }
+def sandboxMods = file("${System.getenv('APPDATA')}/.minecraft/versions/jem sandbox/mods")
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    compileOnly fg.deobf(files(new File(sandboxMods, 'Cinematic.Interaction-Forge-1.20.1-0.18.11.jar')))
+    compileOnly fg.deobf(files(new File(sandboxMods, 'jei-1.20.1-forge-15.49.0.194.jar')))
+}
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 tasks.withType(Test).configureEach { enabled = false }
-jar { finalizedBy 'reobfJar' }
+jar {
+    manifest { attributes 'MixinConfigs': 'jem_cinematic_interactions.mixins.json' }
+    finalizedBy 'reobfJar'
+}

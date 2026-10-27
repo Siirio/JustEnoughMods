@@ -1,0 +1,38 @@
+{
+  "profile": "C:\\Users\\user\\AppData\\Roaming\\.minecraft\\versions\\jem sandbox",
+  "date": "2026-10-28",
+  "root_causes": {
+    "shulker_crash": "ShulkerGuiColors called the development-mapped ClientLevel.getBlockState signature from the production client",
+    "missing_luxium_shadows": "NeoSkyCelestia rejected its shadow pipeline whenever the Oculus mod ID was installed, even while Oculus shaders were disabled",
+    "one_way_switch": "Only the JEM Luxium option observed renderer ownership, so enabling Oculus directly did not clear Luxium",
+    "luxium_toggle_crash": "JEM Luxium 1.0.3 called SodiumWorldRenderer.reload directly from the Apply-button mouse callback outside Embeddium's managed OpenGL context"
+  },
+  "installed": [
+    {
+      "path": "mods/jem-gui-sandbox-1.0.0.jar",
+      "sha256": "06fb1c3d46278e8c8dc3b94eefaa724ac6f9fb7e73a780c3d474693dbc70eb3e",
+      "shulker_runtime_hook": false
+    },
+    {
+      "path": "mods/jem_luxium-1.0.4.jar",
+      "sha256": "af08a63c427758a16a2726c72bf22db890f6499a5124a40b2b838ab54179d39f"
+    },
+    {
+      "path": "mods/jem-cinematic-interactions-1.0.1.jar",
+      "sha256": "8dcef9758074954ccf93a8509ee461efbad667d0163acab3af91be106e55af33"
+    }
+  ],
+  "renderer_contract": {
+    "enable_luxium": "disable Oculus shaders, enable Luxium, request an Embeddium rebuild through LevelRenderer.allChanged",
+    "enable_oculus": "disable Luxium, clear the temporary restore marker, request an Embeddium rebuild through LevelRenderer.allChanged",
+    "disable_luxium": "restore the remembered Oculus state and request an Embeddium rebuild through LevelRenderer.allChanged"
+  },
+  "cinematic_contract": {
+    "side_panels": "disable Cinematic Interaction recipe-book and field-guide panels and expose the ordinary JEI left and right overlays",
+    "quick_transfer": "hold Shift and left mouse button while sweeping slots in either direction between an integrated Cinematic container and inventory"
+  },
+  "shulker_owner": "JEM Release resource pack only",
+  "backup": "backups/luxium-cinematic-fix-2026-10-28",
+  "game_launched_by_codex": false,
+  "runtime_recheck": "pending player launch"
+}

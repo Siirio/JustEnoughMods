@@ -48,7 +48,7 @@ public final class JemCinematicInteractions {
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void beginQuickMove(ScreenEvent.MouseButtonPressed.Pre event) {
-            if (event.getButton() != GLFW.GLFW_MOUSE_BUTTON_RIGHT || !Screen.hasShiftDown()
+            if (event.getButton() != GLFW.GLFW_MOUSE_BUTTON_LEFT || !Screen.hasShiftDown()
                     || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
                 return;
             }
@@ -61,7 +61,7 @@ public final class JemCinematicInteractions {
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void continueQuickMove(ScreenEvent.MouseDragged.Pre event) {
-            if (!quickMoveGesture || event.getMouseButton() != GLFW.GLFW_MOUSE_BUTTON_RIGHT
+            if (!quickMoveGesture || event.getMouseButton() != GLFW.GLFW_MOUSE_BUTTON_LEFT
                     || !Screen.hasShiftDown()
                     || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
                 return;
@@ -73,7 +73,7 @@ public final class JemCinematicInteractions {
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void finishQuickMove(ScreenEvent.MouseButtonReleased.Pre event) {
-            if (event.getButton() == GLFW.GLFW_MOUSE_BUTTON_RIGHT) {
+            if (event.getButton() == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
                 resetQuickMove();
             }
         }
