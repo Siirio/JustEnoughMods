@@ -1,3 +1,12 @@
+## 2026-10-28 - Open Embeddium directly and move Luxium controls into its tab
+
+- User requested removal of Luxium's intermediate graphics-settings hub so Video Settings opens Embeddium immediately, with Luxium's full-settings button on the second row of the existing Luxium tab and the Vinlanx YouTube artwork below it
+- Bug / Client / installed Luxium 2.8.0 wraps the already-correct Embeddium video-screen supplier in `VideoSettingsHubScreen`, while JEM Luxium previously added only the renderer toggle to Embeddium and left that wrapper active / in testing, JEM Luxium 1.0.5 replaces only the final Luxium wrapper with Embeddium's native screen and rehomes the official Luxium configuration action and YouTube resource inside the Luxium page
+- The scoped production build completed successfully without tests. The resulting `jem_luxium-1.0.5.jar` has SHA-256 `16616a13cbfd7d970ac757f4f15d7a30631e428bc4194b9188473930a622ce9f`
+- Published native AutoModpack generation 94 with exact preview `+1 ~1 -1`, content token `847faab03f891bbd8c32a1bda889a01e3a058402` and matching staged/published manifest SHA-1 `38158342a66f10af49bbfe07f27017189c4ff758`. The closed `test jem` profile has the exact active token and JAR hash with no pending transaction, and the ordinary local server stopped cleanly after publication
+- The Registry Atlas was fully regenerated for the changed installed JAR, its impact scan reports no uncovered paths or artifact drift, and validation passes
+- The Luxium/Oculus mutual-exclusion state, remembered Oculus restoration, native Embeddium Apply lifecycle and official unmodified Luxium JAR remain unchanged. Runtime layout and navigation remain unobserved pending player confirmation
+
 ## 2026-10-28 - Use the approved pastoral scene as the FancyMenu background
 
 - User selected the final hand-painted landscape revision as the FancyMenu main-menu background

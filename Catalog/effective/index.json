@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "c83b0e62ba1e7b88b2c3ce3bcc6348343534554479daed78830f65776048c639",
+  "change_records_sha256": "3d7995d176338d980b4b459ebcd1a364f6f946dccbbe7495b59721cddaa7071e",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -1552,6 +1552,21 @@
       ],
       "exceptions": [],
       "potential_static_target_count": 1
+    },
+    {
+      "change_id": "luxium.embeddium-settings-route",
+      "status": "conditional",
+      "summary": "Route Video Settings directly to Embeddium and keep Luxium-owned actions inside the existing Luxium page.",
+      "record": "Catalog/changes/records/luxium-embeddium-settings-route-20261028.json",
+      "selectors": [
+        {
+          "type": "namespace",
+          "registry": "*",
+          "value": "luxium"
+        }
+      ],
+      "exceptions": [],
+      "potential_static_target_count": 0
     },
     {
       "change_id": "smp.market-reference-storefront",
@@ -3610,7 +3625,7 @@
     "Catalog/views/power/durability.json": "e5c9ff225e1472b6ab4c3043d975bce29972abb9dbfef35d2690bc6c30521f61",
     "Catalog/views/power/power-ladder.json": "a0e18c693bb1df150e424d421ebeb48292bcf6b36096e3afaf9f7676c6b5c3e2",
     "Client/ManagedPack/config/copperagebackport.json": "410faae183c6b92b8b2abb0b61928b35705f01fea5c1c2ba395a2458e11f8325",
-    "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png": "9d250ea8dc75ec0df65b719d0a86473d73805e8bf43e4750955fd74cb168f591",
+    "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png": "e22f02d8e2c13005af1be4b2f8eede26188ca8c2270ab477babd17bf06df0184",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_title.png": "30a2d47abb2ba7ffdf9e0ebf2347a907191ce6a064b65e0c69f4354a9c0a47f6",
     "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt": "0cea7ff6ead16d8894d323eec08798c83d5ccddf0fd40ddb1afd6abab725bcff",
     "Client/ManagedPack/config/ftbquests/quests/chapter_groups.snbt": "dcefa23f7441409db799365bac250dc2418800a7b7468b15984c2c866f0cb4cd",
@@ -3646,7 +3661,7 @@
     "Client/ManagedPack/config/quickskin-client.json": "fd93d6b4048850fa3b615d90e4314926e8a7eab6a1b49a2258eeb6cc69b0bb51",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "1cda996bc66ca269f612105a15e9a928c2508282d694175b2cb17f3aca481b8e",
+    "Client/ManagedPack/jem-pack/manifest.json": "3d2ccec18ef507051e0dbb0623cdb111abaa2f5787865345682b4601109eb51b",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -3841,7 +3856,7 @@
     "Client/ManagedPack/mods/jemfood-1.0.0.jar": "c3887841900ae110cde3f5c2ff57bae1877e756f0037746c6c072e518be15361",
     "Client/ManagedPack/mods/mobhome-1.0.0.jar": "dd351cb0d37ab60ae35a61de99a96d42f97aae2e09e20bd141b1e47e3354fbd4",
     "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
-    "Docs/DEVELOPMENT.md": "1bccb720bb4a6ac7df96ccd262846c6db90f224f4fd05210c4ec6dd6129320f5",
+    "Docs/DEVELOPMENT.md": "975981608b6622347f824e2e5f0004abf4ce1922f76d0d6b3fa1bc58ac66dc0f",
     "Docs/MODS.md": "cf734c220e4875be5877ec42e6d57ea9bef6b7bb7cf08ff74125385477073813",
     "Docs/SERVER_COMMANDS.md": "cd526c47aabf51339d2a6b8489c561ac8933b5714360d3c9768f0ccdd023e1be",
     "Docs/art/bbb-hammer-2026-10-21/build_resource_pack.py": "44f503fb4ed7d78120df1b68bfafb66c89894b8a54e0926c0f53df6b4a55fe9d",
@@ -7908,7 +7923,15 @@
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/client/InventoryDeleteKeys.java": "a742d2e56fa4c7ffb474265086ae11d432fce939ccf2565c43c11024b245206c",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/InventoryDeleteNetwork.java": "b24883c2a0a7b058c440305b2cde73ae3c32680888bb94f288359e018feb84d0",
     "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/feature/inventory/SophisticatedStorageDelete.java": "15b0de2c1f8cc81156aa02f84017b4840916e04a8f1e1f1391d57261d68e64d9",
-    "Mods/JEMLuxium/gradle.properties": "51a7183c112aac1a2bc1c7ab30a94c1c690b211ce9bf9dcfa2a3b03f79cd967d",
+    "Mods/JEMLuxium/gradle.properties": "de6c0d19d001ad79fd686b4a3dfca6b39276feeaa38fc67b3f1c45f440a0d0ba",
+    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java": "63175bbff6fbfc4dbc75a93daaee5edd50ee699c7069c6744d88862f917448ca",
+    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java": "5539d984d36aa41129e6cfd976b8ae15df373677dedcc4d556d8d3c49fe522ba",
+    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumYouTubeButton.java": "0ab8e4c2125ecfba441e66de7f3284b79a0e98f185c735721783e41e95d51cde",
+    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/OptionsScreenDirectEmbeddiumMixin.java": "ee4e7f8b1ec2ba18019ab983cae450bcab5a4bcd30e60f7ceb8761195e7e880b",
+    "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/SodiumOptionsGuiLuxiumMixin.java": "9e1102feec68de977d938d0d786e2bbdcd23124855fbc2d08493bf2d58c0a28a",
+    "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json": "0a7635fbe8d055ac1ca6386d65316235ea34b0f84b27c0ad3f93b8a427f4fde2",
+    "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json": "9f2b71ffcb20fc1f798134e7680ed14ce18dceacc4aca19c7eb9446cf400cc5a",
+    "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json": "0e2dbedba77bc8150a16fa8bad1a54ef41c85361355cfbb91ed070dcb2ade761",
     "Mods/JEMProfessions/build.gradle": "9b29be7716cf004436fbd9e54e1e7917eb1d30b070a247beab6a72a3c38c6ad3",
     "Mods/JEMProfessions/prepare-sandbox-data.py": "53329ec0252d0bea01093ccc9c1c51067297209dc8ab3e2c56cb44a5fcc62778",
     "Mods/JEMProfessions/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
@@ -9018,7 +9041,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "b3a7f380e2ff8e33195c3703348a3e6f6c4c6be4bac7e1a3fcb4ff05321b57db",
-    "tools/state/packSyncHost-sync.json": "c9d959ad26d11029ba30b0d73d38d5756dad28d28f4ae4b8c6c6ab259b8f013c",
+    "tools/state/packSyncHost-sync.json": "24821b6b56355750d83e3708c7f6b20aaedcb177188f46b2ab714a4dd10f65fa",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

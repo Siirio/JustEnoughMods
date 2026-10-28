@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "change_id": "luxium.embeddium-settings-route",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "luxium"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "scope": "Client-only presentation for the exact installed Luxium 2.8.0-pre-alpha, Embeddium 0.3.31 and Oculus 1.8.0 integration. No registry, rendering algorithm or gameplay authority change."
+    }
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 150,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Route Video Settings directly to Embeddium and keep Luxium-owned actions inside the existing Luxium page.",
+    "modifiers": [
+      {
+        "property": "luxium.video_settings_route",
+        "operation": "replace",
+        "before": "Luxium wraps Embeddium's selected video screen in a separate VideoSettingsHubScreen.",
+        "after": "Video Settings opens Embeddium directly and the existing Luxium page contains the renderer toggle, full Luxium settings action and upstream YouTube artwork."
+      },
+      {
+        "property": "luxium.renderer_ownership",
+        "operation": "document",
+        "before": "JEM Luxium owns reversible Luxium and Oculus selection through Embeddium Apply.",
+        "after": "Renderer ownership and Apply behavior remain unchanged while only navigation and control placement change."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMLuxium.client",
+    "kind": "client_gui_compatibility",
+    "source_files": [
+      "Mods/JEMLuxium/gradle.properties",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumActionControl.java",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumYouTubeButton.java",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/OptionsScreenDirectEmbeddiumMixin.java",
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/SodiumOptionsGuiLuxiumMixin.java",
+      "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/en_us.json",
+      "Mods/JEMLuxium/src/main/resources/assets/jem_luxium/lang/ru_ru.json",
+      "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove one redundant navigation page while preserving native Embeddium and Luxium interfaces.",
+    "decision_source": "User request dated 2026-10-28 based on the supplied current Luxium hub screenshot.",
+    "user_requested": "Open Embeddium immediately and place the Luxium settings button on the second row with the YouTube artwork below.",
+    "codex_choices": "Use a lower-priority narrow OptionsScreen argument adapter, Embeddium's native option row contract and the official Luxium configuration class and texture from the installed JAR."
+  },
+  "introduced": {
+    "date": "2026-10-28",
+    "commit": "SELF",
+    "action": "replace_navigation_route",
+    "summary": "Bypass the Luxium hub after Embeddium selection and rehome the upstream actions inside the Luxium page."
+  },
+  "history": [
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "replace_navigation_route",
+      "summary": "Open Embeddium directly, place full Luxium settings on row two and render the official YouTube artwork below.",
+      "source_files": [
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/OptionsScreenDirectEmbeddiumMixin.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/SodiumOptionsGuiLuxiumMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_gui",
+      "video_settings_navigation",
+      "embeddium_options",
+      "luxium_configuration",
+      "accessibility_narration"
+    ],
+    "relations": [
+      "Vanilla Options video action -> direct Embeddium screen",
+      "Embeddium Luxium tab -> renderer toggle -> native Apply lifecycle",
+      "Embeddium Luxium tab second row -> official LuxiumConfigScreen",
+      "Embeddium Luxium tab lower action -> official Luxium YouTube resource -> confirmation screen"
+    ],
+    "notes": [
+      "The official Luxium JAR remains unmodified and supplies the complete settings screen and YouTube texture.",
+      "Luxium and Oculus mutual exclusion, shader restoration and managed-context renderer reload remain unchanged."
+    ],
+    "unresolved": [
+      "Runtime navigation, row layout, focus order and link confirmation remain unobserved until authorized player testing."
+    ]
+  }
+}

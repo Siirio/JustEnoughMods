@@ -2,6 +2,8 @@
 
 Adds a reversible native Embeddium switch between the official unmodified Luxium renderer and Oculus
 
+Video Settings opens Embeddium directly. The Luxium tab keeps the renderer switch on its first row, opens Luxium's complete official settings on the second row and retains the Vinlanx YouTube artwork below
+
 This is unofficial compatability mod - credits to the author of Luxium for an insanely optimized shaders
 
 This project is not affiliated with or endorsed by Luxium or Vinlanx. Install the official unmodified [Luxium project](https://www.curseforge.com/minecraft/mc-mods/luxium) separately. No Luxium code, shaders, assets, branding, or JAR content are bundled or redistributed
