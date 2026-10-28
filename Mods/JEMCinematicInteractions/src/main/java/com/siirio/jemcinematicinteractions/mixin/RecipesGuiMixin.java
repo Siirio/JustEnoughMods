@@ -1,6 +1,9 @@
 package com.siirio.jemcinematicinteractions.mixin;
 
+import com.siirio.jemcinematicinteractions.CinematicCraftingTransferMenu;
+import dev.dyslexic.cinematic.client.Scene;
 import dev.dyslexic.cinematic.client.SceneScreen;
+import dev.dyslexic.cinematic.client.TableStation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -36,6 +39,11 @@ public abstract class RecipesGuiMixin {
             CallbackInfoReturnable<AbstractContainerMenu> callback
     ) {
         if (callback.getReturnValue() != null || !(parentScreen instanceof SceneScreen)) {
+            return;
+        }
+
+        if (Scene.station instanceof TableStation) {
+            callback.setReturnValue(CinematicCraftingTransferMenu.INSTANCE);
             return;
         }
 

@@ -3,8 +3,10 @@ package com.siirio.jemcinematicinteractions;
 import dev.dyslexic.cinematic.client.SceneScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.gui.handlers.IGuiProperties;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 
@@ -21,6 +23,14 @@ public final class CinematicJeiLayoutPlugin implements IModPlugin {
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
         registration.addGuiScreenHandler(SceneScreen.class, CinematicJeiLayoutPlugin::properties);
+    }
+
+    @Override
+    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        registration.addRecipeTransferHandler(
+                new CinematicCraftingTransferHandler(registration.getTransferHelper()),
+                RecipeTypes.CRAFTING
+        );
     }
 
     private static IGuiProperties properties(SceneScreen screen) {

@@ -1,3 +1,9 @@
+## 2026-10-28 - Route JEI transfer to the Cinematic 3x3 table
+
+- User demonstrated that the visible JEI `+` still identified the active Cinematic crafting table as the player's 2x2 inventory grid and rejected the 3x3 diamond-shovel recipe
+- Bug / Client / the first transfer bridge returned `player.containerMenu`, which remains `InventoryMenu` during the dedicated Cinematic table scene, so JEI correctly selected its ordinary 2x2 player transfer handler instead of the block's 3x3 owner / in testing, Cinematic tables now expose a dedicated marker menu whose JEI handler selects the exact recipe in Cinematic Interactions' installed `TableRecipeBook` and invokes its native `TableStation` layout queue
+- Ordinary inventory crafting, other JEI menu handlers, the scene consultation lifecycle, Mouse Tweaks and the Cinematic-only Shift plus left-button sweep remain unchanged
+- JEM Cinematic Interactions 1.0.4 built successfully with tests disabled by project policy and was installed into the closed `jem sandbox` profile. The prior 1.0.3 JAR is recoverable under `visual-backups/2026-10-28-cinematic-3x3-transfer`; runtime transfer and player acceptance remain pending
 ## 2026-10-28 - Restore native JEI transfer and scene-only sweep transfer
 
 - User clarified that JEI's native recipe-transfer `+` must appear in the Cinematic recipe view, that Shift plus left-button cursor sweep must quick-move every crossed stack without individual clicks, and that this custom sweep belongs only to Cinematic block interactions

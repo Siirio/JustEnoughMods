@@ -16,7 +16,7 @@
       {"property": "production.gameplay", "operation": "document", "before": "Existing canonical production owners",
        "after": "Unchanged. Gallery and Cinematic adapter are excluded from ManagedPack, Server, test jem, shared production inventories and release baseline."},
       {"property": "sandbox.cinematic.jei_recipe_transfer", "operation": "bridge", "before": "JEI could not discover a container menu behind Cinematic Interactions SceneScreen",
-       "after": "Only while JEI was opened from SceneScreen, its native transfer lookup receives the player's active block menu and retains JEI's own transfer-handler eligibility rules."},
+       "after": "Only while JEI was opened from a Cinematic TableStation, its native transfer lookup receives a dedicated 3x3 marker contract whose handler delegates recipe selection and layout to TableRecipeBook and TableStation. It never reuses the player's 2x2 InventoryMenu."},
       {"property": "sandbox.cinematic.sweep_quick_move", "operation": "scope", "before": "Global AbstractContainerScreen interception replaced normal Shift + left-click behavior but could not operate SceneScreen",
        "after": "Only SceneScreen consumes Shift + left-button drag and delegates every crossed player or station slot to Cinematic Interactions' native quick-transfer path. Ordinary containers and Creative inventory remain untouched."}
     ]
@@ -33,11 +33,12 @@
   "introduced": {"date": "2026-10-22", "commit": "SELF", "action": "add", "summary": "Add sandbox-only gallery and native GUI mod install boundary."},
   "history": [
     {"date": "2026-10-22", "commit": "SELF", "action": "add", "summary": "Current domain presentation sources remain canonical; JEM actions have no production authority. Native third-party GUI mods retain their ordinary behavior."},
-    {"date": "2026-10-28", "commit": "SELF", "action": "fix", "summary": "Expose the active SceneScreen block menu to native JEI transfer discovery and confine Shift + left-drag quick movement to Cinematic block scenes."}
+    {"date": "2026-10-28", "commit": "SELF", "action": "fix", "summary": "Expose the active SceneScreen block menu to native JEI transfer discovery and confine Shift + left-drag quick movement to Cinematic block scenes."},
+    {"date": "2026-10-28", "commit": "SELF", "action": "correct", "summary": "Replace the incorrect player InventoryMenu transfer bridge with a dedicated 3x3 Cinematic crafting handler that invokes the installed TableRecipeBook layout owner."}
   ],
   "impacts": {
     "systems": ["development GUI gallery", "native inventory presentation", "Cinematic block interaction", "JEI recipe transfer", "race preview", "profile dependencies"],
-    "relations": ["canonical domain screen -> relocated presentation artifact -> local demo transport", "SceneScreen -> active vanilla menu -> native JEI recipe transfer handler", "SceneScreen hovered slot -> Cinematic native quick-transfer path", "exact installed native mod metadata -> sandbox-only dependency closure"],
+    "relations": ["canonical domain screen -> relocated presentation artifact -> local demo transport", "SceneScreen plus TableStation -> dedicated 3x3 JEI transfer marker -> TableRecipeBook selection and layout -> TableStation native action queue", "SceneScreen hovered slot -> Cinematic native quick-transfer path", "exact installed native mod metadata -> sandbox-only dependency closure"],
     "notes": ["No original registry facts, canonical balance, saved data or production dependencies are changed.", "Native mods are installed unmodified; their native gameplay is distinct from the inert JEM gallery.", "Ordinary container and Creative inventory input remains owned by Minecraft and Mouse Tweaks.", "The existing sandbox race renderer is an explicit required presentation dependency."],
     "unresolved": ["Runtime JEI transfer-button visibility, bidirectional sweep coverage and player acceptance remain unobserved; no game or automated tests were launched."]
   }

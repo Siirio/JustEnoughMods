@@ -54,9 +54,11 @@ Opening a recipe from either JEI overlay enters Cinematic Interactions' native
 consultation lifecycle. Closing JEI restores the same active scene instead of
 leaving the scene active behind a missing screen with movement still suppressed.
 
-JEI receives the active Cinematic block menu while its recipe screen is open, so
-JEI's native recipe-transfer `+` button appears whenever that menu has a matching
-transfer handler and the shown recipe can be transferred.
+At a Cinematic crafting table, JEI receives a dedicated 3x3 transfer contract
+instead of the player's ordinary 2x2 `InventoryMenu`. The native recipe-transfer
+`+` therefore delegates to Cinematic Interactions' existing recipe guide and table
+layout queue. A normal click lays out one available set and Shift-click uses the
+native maximum-layout calculation. Other screens retain their own JEI handlers.
 
 Inside the Cinematic interaction, hold Shift and the left mouse button, then
 sweep across item stacks. Every crossed slot is quick-moved through Cinematic

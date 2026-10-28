@@ -1,5 +1,6 @@
 package com.siirio.jemcinematicinteractions;
 
+import com.mojang.logging.LogUtils;
 import com.siirio.jemcinematicinteractions.mixin.SceneScreenAccess;
 import dev.dyslexic.cinematic.client.Scene;
 import dev.dyslexic.cinematic.client.SceneScreen;
@@ -12,6 +13,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
+import org.slf4j.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +21,7 @@ import java.util.Set;
 @Mod(JemCinematicInteractions.MOD_ID)
 public final class JemCinematicInteractions {
     public static final String MOD_ID = "jem_cinematic_interactions";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     @Mod.EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static final class ClientEvents {
