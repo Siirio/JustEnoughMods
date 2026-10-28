@@ -1,3 +1,13 @@
+## 2026-10-28 - Implement public JEM standalone project foundations
+
+- User requested implementation of the eleven-project public standalone plan, corrected every public "GEM" name to "JEM", and made this standalone baseline the priority that other active sessions must extend
+- Codex implementation: extracted Animal Hints, Excavation, Freecam, Seasons HUD and Inventory Shortcuts from JEM Compat into independent Forge 1.20.1 owners, preserved existing identities and integration contracts, removed duplicate JEM Compat owners, and bridged the Achievement Guide to the standalone Excavation owner
+- Prepared independent build metadata, source licenses, changelogs, CurseForge descriptions, metadata records, artifact manifests and private release-readiness gates for all eleven projects. Unofficial Luxium Compatibility alone carries the required unofficial Vinlanx attribution and redistribution prohibition
+- All eleven production artifacts built successfully with project tests disabled by policy. JEM Compat and JEM Achievement Guide were rebuilt against the extraction, the combined ordinary local dedicated server reached `Done`, and its world was saved before clean shutdown
+- Published combined native AutoModpack generation 90 with token `b29cb2a39211dcf82d6c83c11f76657f3ba655fe`, then applied it to the closed `test jem` profile. The installed active token and all relevant JAR hashes match `Client/ManagedPack`, with no pending transaction
+- The Registry Atlas was fully regenerated for the changed installed JAR set, its impact scan reports no uncovered paths or artifact drift, and validation passes. CurseForge projects remain private because isolated clean-instance matrices, gameplay observation, approved public media and upload authorization remain outstanding
+- No CurseForge upload, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
+
 ## 2026-10-28 - Route JEI transfer to the Cinematic 3x3 table
 
 - User demonstrated that the visible JEI `+` still identified the active Cinematic crafting table as the player's 2x2 inventory grid and rejected the 3x3 diamond-shovel recipe
@@ -19,7 +29,7 @@
 
 ## 2026-10-28 - Plan public standalone CurseForge projects
 
-- User approved eleven independent Forge 1.20.1 release candidates and corrected the public attribution policy: Gem Animal Hints, Gem Drill Durability, In Chat FTB, Gem Seasons HUD and Gem Adaptive Culling declare upstream projects as dependencies without separate credit obligations
+- User approved eleven independent Forge 1.20.1 release candidates and corrected the public attribution policy: JEM Animal Hints, JEM Drill Durability, In Chat FTB, JEM Seasons HUD and JEM Adaptive Culling declare upstream projects as dependencies without separate credit obligations
 - Unofficial Luxium Compatibility alone receives the explicit unofficial disclaimer and Vinlanx attribution, links to the official Luxium project and never bundles or redistributes Luxium content
 - Added a planning-only implementation and release-gate sequence covering extraction, reproducible builds, identity migration, duplicate-owner removal, clean-instance verification and separately authorized CurseForge submission. No implementation, build, profile change or upload was performed
 
