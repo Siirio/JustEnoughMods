@@ -17,6 +17,8 @@ This folder preserves the user-supplied visual sources and the deterministic Ase
 - `prepare_fancymenu_layout.ps1` deterministically applies the approved right-side text-only layout to the current tracked FancyMenu title-screen file
 The captured FancyMenu widget identifiers correspond to Quick Skin's text action, player preview, rotation control and animation controls. FancyMenu leaves only the Change Skin text action visible directly below the player and suppresses every icon-sized control plus the JEM resource-pack button backgrounds. Quick Skin's native client configuration owns the actual rendered model position and size. The production values are 25 percent size, X offset -422 and Y offset 119 for the user-marked lower-left area. JEMRoles initializes the optional title-screen widget at -20 degrees yaw so the default pose faces into the composition. Personal skin hashes and appearance choices remain user-owned
 
+The user-designated source of truth for `main_menu_background.png` alone is the copy in the closed `jem sandbox` profile. Before a future MineRENT release, that PNG must be synchronized from sandbox into ManagedPack and the release projection if its hash differs. This ownership does not extend to the title, FancyMenu layouts, button placement, Quick Skin configuration or either resource-pack profile
+
 ## Resource-pack profile routing
 
 - The approved pastoral Quick Skin composition is the `JEM Release` title layout and loads only while `file/JEM Release v0.3.zip` is enabled
