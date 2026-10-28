@@ -5,6 +5,13 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "jem_freecam.refmap.json",
   "mixins": [],
-  "client": [],
-  "injectors": {"defaultRequire": 1}
+  "client": [
+    "FreeCameraPlayerTurnMixin",
+    "FreeCameraEpicFightCameraMixin",
+    "FreeCameraEpicFightInputMixin",
+    "FreeCameraInteractionMixin",
+    "FreeCameraTeleportMixin"
+  ],
+  "injectors": {"defaultRequire": 1},
+  "plugin": "com.siirio.jemfreecam.FreecamMixinPlugin"
 }

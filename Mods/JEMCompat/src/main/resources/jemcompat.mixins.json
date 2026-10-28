@@ -37,9 +37,6 @@
     "transport.TrottingWagonClydesdaleMixin",
     "trading.FabricTypeAwareTradeMixin",
     "login.ClosedConnectionErrorMixin",
-    "excavation.ExcavationGameModeMixin",
-    "excavation.ExcavationDiggerItemMixin",
-    "excavation.ExcavationItemStackMixin",
     "grave.LegacyGraveCreationMixin"
   ],
   "client": [
@@ -50,12 +47,7 @@
     "client.EntityRenderDispatcherFrozenTintMixin",
     "client.IngredientListOverlayAccessor",
     "client.StorageTerminalFocusMixin",
-    "client.OptionsKeyRetentionMixin",
-    "freecam.FreeCameraPlayerTurnMixin",
-    "freecam.FreeCameraEpicFightCameraMixin",
-    "freecam.FreeCameraEpicFightInputMixin",
-    "freecam.FreeCameraInteractionMixin",
-    "freecam.FreeCameraTeleportMixin"
+    "client.OptionsKeyRetentionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

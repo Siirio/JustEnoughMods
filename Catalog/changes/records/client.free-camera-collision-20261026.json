@@ -31,18 +31,18 @@
     ]
   },
   "cause": {
-    "owner": "JEMCompat client",
+    "owner": "JEM Freecam client",
     "kind": "user_requested_client_camera",
     "source_files": [
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraPlayerTurnMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightCameraMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightInputMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
-      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
-      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/client/FreeCameraController.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraPlayerTurnMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightCameraMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightInputMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraInteractionMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraTeleportMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/FreecamMixinPlugin.java",
+      "Mods/JEMFreecam/src/main/resources/jem_freecam.mixins.json",
+      "Mods/JEMFreecam/src/main/resources/assets/jemcompat/input/default_keys.json"
     ]
   },
   "rationale": {
@@ -55,13 +55,13 @@
     "action": "add_client_free_camera",
     "summary": "Add F4 free camera with swept voxel collision, native input isolation, and lifecycle restoration.",
     "source_files": [
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraPlayerTurnMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightCameraMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightInputMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
-      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/client/FreeCameraController.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraPlayerTurnMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightCameraMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightInputMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraInteractionMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraTeleportMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/FreecamMixinPlugin.java"
     ]
   },
   "history": [
@@ -71,13 +71,13 @@
       "action": "add_client_free_camera",
       "summary": "Add F4 free camera with swept voxel collision, native input isolation, and lifecycle restoration.",
       "source_files": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraPlayerTurnMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightCameraMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraEpicFightInputMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraInteractionMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/FreeCameraTeleportMixin.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java"
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/client/FreeCameraController.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraPlayerTurnMixin.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightCameraMixin.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightInputMixin.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraInteractionMixin.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraTeleportMixin.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/FreecamMixinPlugin.java"
       ]
     },
     {
@@ -86,7 +86,7 @@
       "action": "refine_requested_behavior",
       "summary": "Render the local free-camera anchor as a translucent player head and allow native F5 perspective cycling on that anchor.",
       "source_files": [
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java"
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/client/FreeCameraController.java"
       ]
     }
   ],

@@ -1,6 +1,8 @@
 # JEM Excavation
 
-JEM Excavation is a Forge 1.20.1 project for permission-safe 3x3 and 7x7 mining. The scaffold is public-build ready, while the enchantment and mining implementation remain in migration from JEMCompat
+JEM Excavation adds toggleable, permission-safe area mining for Forge 1.20.1. Level I mines a 3x3 plane and level II mines a 7x7 plane while retaining native tool suitability, durability and Unbreaking behavior
+
+The enchantment remains registered as `jem_pack_core:excavation`, and the disabled-level item tag remains `JEMExcavationDisabledLevel`, so existing enchanted tools keep their identity and toggle state
 
 ## Build
 

@@ -1,0 +1,120 @@
+{
+  "schema_version": 2,
+  "change_id": "public-mods.standalone-owner-extraction",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "enchantments",
+      "value": "jem_pack_core:excavation"
+    }
+  ],
+  "exceptions": [],
+  "conditions": [
+    {
+      "description": "JEM Excavation replaces the former JEMCompat owner in every JEM distribution before the old handler is removed from a runtime pack. Existing enchanted ItemStacks retain the same registry ID and disabled-level NBT key."
+    }
+  ],
+  "precedence": {
+    "layer": "public_standalone_modules",
+    "priority": 120,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Focused standalone modules replace selected JEMCompat feature owners without changing established gameplay identities",
+    "modifiers": [
+      {
+        "property": "excavation.runtime_owner",
+        "operation": "replace",
+        "before": "JEMCompat registers the enchantment, events, preview and mining Mixins",
+        "after": "JEM Excavation exclusively registers the same enchantment ID, events, preview and mining Mixins"
+      },
+      {
+        "property": "excavation.enchantment_identity",
+        "operation": "retain",
+        "before": "jem_pack_core:excavation with levels 1 and 2",
+        "after": "jem_pack_core:excavation with levels 1 and 2"
+      },
+      {
+        "property": "excavation.item_state",
+        "operation": "retain",
+        "before": "JEMExcavationDisabledLevel stores a temporarily disabled enchantment level",
+        "after": "JEMExcavationDisabledLevel stores a temporarily disabled enchantment level"
+      },
+      {
+        "property": "freecam.runtime_owner",
+        "operation": "replace",
+        "before": "JEMCompat owns the client controller and camera integration Mixins",
+        "after": "JEM Freecam exclusively owns the same controller, key identity and camera integration Mixins"
+      },
+      {
+        "property": "season_hud.runtime_owner",
+        "operation": "replace",
+        "before": "JEMCompat owns day and season inventory presentation",
+        "after": "JEM Seasons HUD exclusively owns the same config keys, localization, textures and native calendar presentation"
+      },
+      {
+        "property": "inventory_delete.runtime_owner",
+        "operation": "replace",
+        "before": "JEMCompat owns the Delete key handler and jemcompat:inventory_delete channel",
+        "after": "JEM Inventory Shortcuts exclusively owns the same key behavior and jemcompat:inventory_delete protocol 1 channel"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM public standalone extraction",
+    "kind": "owner_boundary_change",
+    "source_files": [
+      "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/**",
+      "Mods/JEMExcavation/src/main/resources/jem_excavation.mixins.json",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/**",
+      "Mods/JEMFreecam/src/main/resources/jem_freecam.mixins.json",
+      "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/**",
+      "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/**",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the approved feature independently installable without JEMCompat while preventing duplicate behavior in JEM distributions.",
+    "decision_source": "User-approved public CurseForge standalone mod plan dated 2026-10-28.",
+    "user_requested": "Prepare eleven independent Forge 1.20.1 projects and preserve established identities.",
+    "codex_choices": "Retain the legacy enchantment namespace, item NBT, config keys, translations and network channel while moving each complete owner together."
+  },
+  "introduced": {
+    "date": "2026-10-28",
+    "commit": "SELF",
+    "source_files": [
+      "Docs/plans/2026-10-28-public-curseforge-standalone-mods.md",
+      "Docs/public-mods/release-matrix.md"
+    ]
+  },
+  "revisions": [],
+  "impacts": {
+    "systems": [
+      "enchantments",
+      "mining",
+      "durability",
+      "permissions",
+      "client_preview",
+      "client_camera",
+      "client_hud",
+      "inventory_shortcuts",
+      "network_protocol",
+      "singleplayer",
+      "dedicated_server"
+    ],
+    "relations": [
+      "Existing enchanted tool -> unchanged jem_pack_core:excavation identity -> standalone mining owner",
+      "Native block admission -> server-owned batch mining -> native removal and durability callbacks",
+      "Delete key -> legacy protocol 1 request -> server validates one physical slot",
+      "Native time and optional season state -> standalone client HUD -> unchanged presentation"
+    ],
+    "notes": [
+      "Level I remains 3x3 and level II remains 7x7. The original block, tool, permission, removal, Unbreaking and preview code moved without gameplay-rule changes.",
+      "Freecam remains client-authoritative presentation only. Inventory deletion remains server validated and rejects unreviewed virtual slots."
+    ],
+    "unresolved": [
+      "Existing enchanted-item migration and protected-block behavior require player runtime acceptance in an authorized clean instance."
+    ]
+  }
+}

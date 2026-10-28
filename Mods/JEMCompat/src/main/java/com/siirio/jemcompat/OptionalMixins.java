@@ -27,22 +27,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.transport.RoyalWagonInventoryMixin", List.of("trotting_wagons")),
             Map.entry("com.siirio.jemcompat.mixin.transport.TrottingWagonClydesdaleMixin", List.of("trotting_wagons", "barnyardbuddies")),
             Map.entry("com.siirio.jemcompat.mixin.client.IngredientListOverlayAccessor", List.of("jei")),
-            Map.entry("com.siirio.jemcompat.mixin.client.StorageTerminalFocusMixin", List.of("toms_storage")),
-            Map.entry("com.siirio.jemcompat.mixin.freecam.FreeCameraEpicFightCameraMixin", List.of("epicfight")),
-            Map.entry("com.siirio.jemcompat.mixin.freecam.FreeCameraEpicFightInputMixin", List.of("epicfight"))
+            Map.entry("com.siirio.jemcompat.mixin.client.StorageTerminalFocusMixin", List.of("toms_storage"))
     );
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.equals("com.siirio.jemcompat.mixin.freecam.FreeCameraEpicFightCameraMixin")
-                || mixinClassName.equals("com.siirio.jemcompat.mixin.freecam.FreeCameraEpicFightInputMixin")) {
-            var file = FMLLoader.getLoadingModList().getModFileById("epicfight");
-            if (file == null) return false;
-            boolean supported = file.getMods().stream().anyMatch(mod -> mod.getModId().equals("epicfight")
-                    && mod.getVersion().toString().equals("20.14.17"));
-            if (!supported) throw new IllegalStateException("JEM free camera requires an input adapter review for installed Epic Fight version");
-            return true;
-        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.worldgen.DeepDarkAncientFossilPlacementMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("deep_dark_regrowth");
             boolean supported = file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("deep_dark_regrowth")
