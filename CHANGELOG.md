@@ -1,3 +1,15 @@
+## 2026-10-28 - Refine freecam and restore native GUI ownership
+
+- User requested an F4 freecam that hides the complete HUD and held item, renders the camera as a translucent flying head, fits through head-sized gaps and blocks Alt dodge or roll actions while active
+- User reported a layered dark panel below ordinary JEI search and Immersive Interfaces taking over Cosmetic Armor when the JEM Release pack is active. User also requested a "Tavern" route beside Sale and Coin Exchange in the Shipping Box, owned by the standalone Economy client
+- Bug / Client / freecam forced first-person camera mode, which made its own head-render path return without drawing, did not set the vanilla hide-GUI state and suppressed only Epic Fight's dodge key while the separately registered Block Factory's Bosses roll remained active / in testing, enter third-person camera mode with the existing translucent head renderer, preserve and restore the prior hide-GUI state, retain the existing 0.48-block swept camera clearance and drain both exact dodge mappings while freecam is active
+- Bug / Client / the high-priority Immersive Interfaces layer inside JEM Release supplied fixed JEI search and ingredient-list panels larger than JEI's responsive runtime rectangles and also replaced Cosmetic Armor's native inventory texture / in testing, exclude the complete `assets/jei` and `assets/cosmeticarmorreworked` namespaces from the Immersive merge so both installed mods retain their native resource contracts
+- JEM Economy 1.3.1 adds a compact third Shipping Box button named "Tavern". It calls the existing `MarketClientState` and server-authoritative market query rather than duplicating tavern data or state
+- Production builds for JEM Freecam 1.0.1 and JEM Economy 1.3.1 completed successfully without tests. The Registry Atlas was regenerated for the final artifacts and validates successfully
+- Published native AutoModpack generation 100 with reviewed delta `+2 ~2 -2`, content token `1085b485feefdf6829f95d76db143e7ddfdfd030` and matching staged/published manifest SHA-1 `8851aa48c49bef1bd15bbf859fc848f893b48291`. The ordinary local server saved all dimensions and stopped after publication
+- Applied generation 100 natively to the closed `test jem` profile. Its active token matches the published head, both installed JAR hashes and the JEM Release archive match `Client/ManagedPack`, both retired JARs are absent and no transaction remains pending
+- Static resource ownership and archive validation pass. Runtime freecam, JEI, Cosmetic Armor and Shipping Box acceptance remain unobserved because the client was not launched
+
 ## 2026-10-28 - Establish develop delivery and finish the test jem presentation update
 
 - User defined the repository model: `main` represents the confirmed MineRENT and stable `JustEnoughMods` production snapshot, `develop` represents `test jem`, and temporary `sandbox/<purpose>` branches exist only while sandbox work is active. `AGENTS.md` and `Docs/DEVELOPMENT.md` now preserve that pipeline

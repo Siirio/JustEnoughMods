@@ -49,6 +49,7 @@ public final class FreeCameraController {
     private static ClientLevel ownerLevel;
     private static LocalPlayer ownerPlayer;
     private static CameraType previousType;
+    private static boolean previousHideGui;
     private static float previousYaw;
     private static float previousPitch;
     private static PlayerModel<LocalPlayer> ghostHead;
@@ -175,11 +176,13 @@ public final class FreeCameraController {
         ownerPlayer = player;
         ownerLevel = level;
         previousType = minecraft.options.getCameraType();
+        previousHideGui = minecraft.options.hideGui;
         previousYaw = player.getYRot();
         previousPitch = player.getXRot();
         camera = next;
         minecraft.gameMode.stopDestroyBlock();
-        minecraft.options.setCameraType(CameraType.FIRST_PERSON);
+        minecraft.options.hideGui = true;
+        minecraft.options.setCameraType(CameraType.THIRD_PERSON_BACK);
         minecraft.setCameraEntity(next);
     }
 
@@ -195,6 +198,7 @@ public final class FreeCameraController {
         previousType = null;
         if (minecraft.getCameraEntity() == oldCamera) minecraft.setCameraEntity(minecraft.player);
         if (oldType != null) minecraft.options.setCameraType(oldType);
+        minecraft.options.hideGui = previousHideGui;
         if (restoreLook && minecraft.player == oldPlayer && minecraft.level == oldLevel && oldPlayer != null) {
             oldPlayer.setYRot(previousYaw);
             oldPlayer.setXRot(previousPitch);

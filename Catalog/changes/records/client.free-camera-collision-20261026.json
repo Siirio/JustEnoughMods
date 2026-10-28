@@ -27,6 +27,12 @@
         "operation": "replace",
         "before": "Previous presentation or binding behavior",
         "after": "Render the local free-camera anchor as a translucent player head and allow native F5 perspective cycling on that anchor."
+      },
+      {
+        "property": "client.requested_2026_10_28_presentation_and_input",
+        "operation": "replace",
+        "before": "The forced first-person camera prevented the translucent head from rendering, ordinary HUD layers remained visible, and the Block Factory's Bosses Alt dodge mapping remained active.",
+        "after": "F4 enters a head-visible third-person camera, temporarily applies the native F1 hide-GUI state, keeps the existing 0.48-block swept collision cube, and blocks both Epic Fight and Block Factory's Bosses dodge mappings until exit. Prior perspective and hide-GUI state are restored exactly."
       }
     ]
   },
@@ -38,10 +44,12 @@
       "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraPlayerTurnMixin.java",
       "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightCameraMixin.java",
       "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraEpicFightInputMixin.java",
+      "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraKeyMappingMixin.java",
       "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraInteractionMixin.java",
       "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraTeleportMixin.java",
       "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/FreecamMixinPlugin.java",
       "Mods/JEMFreecam/src/main/resources/jem_freecam.mixins.json",
+      "Mods/JEMFreecam/gradle.properties",
       "Mods/JEMFreecam/src/main/resources/assets/jemcompat/input/default_keys.json"
     ]
   },
@@ -88,6 +96,18 @@
       "source_files": [
         "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/client/FreeCameraController.java"
       ]
+    },
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "repair_head_hud_and_dodge_isolation",
+      "summary": "Make the translucent head visible, hide all HUD presentation with native F1 semantics, preserve head-sized collision and block both installed Alt dodge owners while freecam is active.",
+      "source_files": [
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/client/FreeCameraController.java",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/mixin/FreeCameraKeyMappingMixin.java",
+        "Mods/JEMFreecam/src/main/resources/jem_freecam.mixins.json"
+        ,"Mods/JEMFreecam/gradle.properties"
+      ]
     }
   ],
   "impacts": {
@@ -98,6 +118,7 @@
       "client_chunk_availability",
       "CameraOverhaul",
       "EpicFight"
+      ,"Block Factory's Bosses"
     ],
     "relations": [
       "Only Minecraft.cameraEntity and temporary camera type change. The player entity remains server-owned and keeps native physics and damage.",
@@ -106,6 +127,7 @@
     "notes": [
       "No 600-block or other distance limit was introduced.",
       "The camera does not request or generate more client chunks."
+      ,"The camera's swept collision cube is 0.48 blocks on every axis, smaller than a one-block opening."
     ],
     "unresolved": [
       "No client launch was run during this source edit. In-game collision and camera-mod coexistence remain pending local client review."

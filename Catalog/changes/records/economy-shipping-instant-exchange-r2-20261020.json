@@ -50,6 +50,12 @@
         "operation": "replace",
         "before": "Earlier block/item presentation; no approved weighing-station native display renderer/body-derived collision.",
         "after": "Approved R2 body JSON/native atlas plus12 authored anchors rendered with actual ItemRenderer FIXED native models:4diamonds,4fish,4oak logs. Decoration adds no inventory/drop authority. Facing rotates body/anchors; ShippingStationShape derives collision/outline from same axis-aligned body cuboids and rejects unsupported body rotations. Shared ShippingBoxLayout owns real slot geometry; accepted native merchant/Market family retained."
+      },
+      {
+        "property": "shipping.container.tavern_entry",
+        "operation": "add",
+        "before": "The Shipping Box exposed only Sale and Coin Exchange tabs.",
+        "after": "A third Tavern action opens the existing Economy MarketScreen through MarketClientState and its server-authoritative market query. The standalone Economy client owns only the navigation control and never duplicates catalog, quote or transaction authority."
       }
     ]
   },
@@ -58,6 +64,8 @@
     "kind": "source_owned_implementation",
     "source_files": [
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlock.java",
+      "Mods/JEMEconomy/build.gradle",
+      "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxBlockEntity.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxMenu.java",
       "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingBoxLayout.java",
@@ -135,6 +143,8 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/shipping/ShippingStationShape.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/EconomyClient.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/build.gradle",
+        "Mods/JEMEconomy/src/main/resources/META-INF/mods.toml",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxRenderer.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/market/MarketRuntime.java",
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/registry/EconomyBlocks.java",
@@ -190,6 +200,18 @@
         "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/network/ContainerCurrencyStatusPacket.java",
         "Docs/economy/native-trading-design.md",
         "Docs/art/shipping-station-2026-10-20/model/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "add_shipping_tavern_entry",
+      "summary": "Add a compact Tavern action beside Sale and Coin Exchange that reuses the existing standalone Economy market screen and network authority.",
+      "source_files": [
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/full/client/ShippingBoxScreen.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/client/MarketClientState.java",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/ru_ru.json",
+        "Mods/JEMEconomy/src/main/resources/assets/jem_economy/lang/en_us.json"
       ]
     },
     {

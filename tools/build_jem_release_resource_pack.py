@@ -70,6 +70,19 @@ def assets_only(path: str) -> bool:
     return path.startswith("assets/")
 
 
+def immersive_interfaces_entry(path: str) -> bool:
+    lowered = path.lower()
+    if not lowered.startswith("assets/"):
+        return False
+    # JEI owns its responsive search/ingredient-list sprites. Immersive's fixed
+    # panels are larger than JEI's runtime rectangles and visibly stack below them.
+    if lowered.startswith("assets/jei/"):
+        return False
+    # Cosmetic Armor keeps its native inventory contract instead of inheriting
+    # Immersive Interfaces merely because the composite pack has higher priority.
+    return not lowered.startswith("assets/cosmeticarmorreworked/")
+
+
 def icons_pack_entry(path: str) -> bool:
     lowered = path.lower()
     return (
@@ -372,7 +385,7 @@ def main() -> int:
     selected_counts["immersive_interfaces"] = merge_archive(
         source_paths["immersive_interfaces"],
         "immersive_interfaces",
-        assets_only,
+        immersive_interfaces_entry,
         files,
         owners,
         collisions,

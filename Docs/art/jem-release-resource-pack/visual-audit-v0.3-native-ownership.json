@@ -1,0 +1,32 @@
+{
+  "candidate": "Client/ManagedPack/resourcepacks/JEM Release v0.3.zip",
+  "review_scope": [
+    "ordinary JEI search and ingredient-list surfaces",
+    "Cosmetic Armor inventory surface"
+  ],
+  "reference_contract": {
+    "jei": "The installed JEI mod owns responsive search and ingredient-list sprites sized by its runtime layout",
+    "cosmetic_armor": "The installed Cosmetic Armor mod owns its inventory texture and slot geometry"
+  },
+  "findings": [
+    {
+      "surface": "JEI",
+      "cause": "Immersive Interfaces supplied fixed panels under assets/jei that exceeded JEI runtime rectangles and visibly stacked below them",
+      "resolution": "Exclude the complete assets/jei namespace from the Immersive Interfaces merge"
+    },
+    {
+      "surface": "Cosmetic Armor",
+      "cause": "Immersive Interfaces replaced the native Cosmetic Armor inventory texture because the composite JEM Release archive had higher resource priority",
+      "resolution": "Exclude the complete assets/cosmeticarmorreworked namespace from the Immersive Interfaces merge"
+    }
+  ],
+  "static_checks": {
+    "excluded_jei_entries_present": false,
+    "excluded_cosmetic_armor_entries_present": false,
+    "archive_validation": "pass",
+    "native_resource_ownership_restored": true
+  },
+  "result": "pass_static_ownership",
+  "runtime_verified": false,
+  "user_approved": false
+}
