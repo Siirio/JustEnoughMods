@@ -8,4 +8,6 @@ Build inside this repository with `gradlew.bat :JEMFood:jar`. The module's own w
 
 One Food Blessing holds the authored talents. Food properties, native effects, recipes and containers remain upstream-owned. Native Resistance is separate from the custom protection budget, with the short authored duration and cooldown. Preferred optional effects remain disabled until their actual semantics are proved, using the explicit Minecraft fallback
 
+All player-facing durations use ceiling-rounded whole seconds or whole minutes below one Minecraft day. Simulation, synchronization, effects and cooldowns remain in native ticks
+
 See [food documentation](../../Docs/food/README.md) for migration, native consumption receipts and verification limits

@@ -2,7 +2,6 @@ package com.siirio.jemfood.client;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import java.math.BigDecimal;
 
 /** Presentation units only. Simulation and network durations remain native. */
 public final class FoodTime {
@@ -16,10 +15,11 @@ public final class FoodTime {
             var result = Component.translatable("tooltip.jemfood.time.day." + (days == 1 ? "single" : form), days);
             return remaining % 24000 == 0 ? result : result.append(" +");
         }
-        long minutes = remaining / 1200;
-        String seconds = BigDecimal.valueOf(remaining % 1200).divide(BigDecimal.valueOf(20)).stripTrailingZeros().toPlainString();
+        long wholeSeconds = (remaining + 19) / 20;
+        long minutes = wholeSeconds / 60;
+        long seconds = wholeSeconds % 60;
         if (minutes == 0) return Component.translatable("tooltip.jemfood.time.seconds", seconds);
-        if (remaining % 1200 == 0) return Component.translatable("tooltip.jemfood.time.minutes", minutes);
+        if (seconds == 0) return Component.translatable("tooltip.jemfood.time.minutes", minutes);
         return Component.translatable("tooltip.jemfood.time.minutes_seconds", minutes, seconds);
     }
 }
