@@ -44,6 +44,8 @@ Changelog описывает только запрошенные player-visible 
 
 Текущий universal contract принят пользователем 2026-10-21 и уточнён при реализации 2026-10-22. Одна production-реализация обслуживает integrated singleplayer и dedicated host; client отвечает за presentation, logical server — за результат. Полный список JEM-модов, точные обязательные зависимости из metadata и границы установки находятся в [universal inventory](universal/README.md).
 
+The approved public Forge 1.20.1 extraction scope is frozen in the [public release matrix](public-mods/release-matrix.md). That matrix owns public names, technical mod IDs, side declarations, dependency and attribution policy, preserved identities, and migration sources for exactly eleven standalone projects. `tools/module-inventory.json.publicProjects` is the machine-readable project list, while `modules` remains the active Gradle and distribution inventory. New extracted modules enter the active inventory only when their independent source trees exist
+
 | Модуль | Единственная ответственность |
 | --- | --- |
 | `JEMAdaptiveCulling` | Client rendering performance и только culling; dedicated server не нужен |
