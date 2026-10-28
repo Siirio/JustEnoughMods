@@ -3,12 +3,19 @@ package com.siirio.jemcinematicinteractions.mixin;
 import dev.dyslexic.cinematic.client.SceneScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(targets = "mezz.jei.gui.recipes.RecipesGui", remap = false)
 public abstract class RecipesGuiMixin {
+    @Shadow
+    private Screen parentScreen;
+
     @Redirect(
             method = "open",
             at = @At(
@@ -22,5 +29,19 @@ public abstract class RecipesGuiMixin {
             return;
         }
         minecraft.setScreen(nextScreen);
+    }
+
+    @Inject(method = "getParentContainerMenu", at = @At("RETURN"), cancellable = true)
+    private void jemCinematicInteractions$exposeSceneMenu(
+            CallbackInfoReturnable<AbstractContainerMenu> callback
+    ) {
+        if (callback.getReturnValue() != null || !(parentScreen instanceof SceneScreen)) {
+            return;
+        }
+
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.player != null) {
+            callback.setReturnValue(minecraft.player.containerMenu);
+        }
     }
 }

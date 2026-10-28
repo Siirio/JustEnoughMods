@@ -1,12 +1,11 @@
 package com.siirio.jemcinematicinteractions;
 
-import net.minecraft.client.Minecraft;
+import com.siirio.jemcinematicinteractions.mixin.SceneScreenAccess;
+import dev.dyslexic.cinematic.client.Scene;
+import dev.dyslexic.cinematic.client.SceneScreen;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeUpdateListener;
-import net.minecraft.world.inventory.ClickType;
-import net.minecraft.world.inventory.Slot;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -49,21 +48,19 @@ public final class JemCinematicInteractions {
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void beginQuickMove(ScreenEvent.MouseButtonPressed.Pre event) {
             if (event.getButton() != GLFW.GLFW_MOUSE_BUTTON_LEFT || !Screen.hasShiftDown()
-                    || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
+                    || !(event.getScreen() instanceof SceneScreen)) {
                 return;
             }
 
             quickMoveGesture = true;
             QUICK_MOVED_SLOTS.clear();
-            quickMove(screen, event.getMouseX(), event.getMouseY());
-            event.setCanceled(true);
         }
 
         @SubscribeEvent(priority = EventPriority.HIGHEST)
         public static void continueQuickMove(ScreenEvent.MouseDragged.Pre event) {
             if (!quickMoveGesture || event.getMouseButton() != GLFW.GLFW_MOUSE_BUTTON_LEFT
                     || !Screen.hasShiftDown()
-                    || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
+                    || !(event.getScreen() instanceof SceneScreen screen)) {
                 return;
             }
 
@@ -83,37 +80,19 @@ public final class JemCinematicInteractions {
             resetQuickMove();
         }
 
-        private static void quickMove(AbstractContainerScreen<?> screen, double mouseX, double mouseY) {
-            Minecraft minecraft = Minecraft.getInstance();
-            if (minecraft.gameMode == null || minecraft.player == null) {
-                return;
-            }
-
-            Slot slot = findSlot(screen, mouseX, mouseY);
-            if (slot == null || !slot.hasItem() || !QUICK_MOVED_SLOTS.add(slot.index)) {
-                return;
-            }
-
-            minecraft.gameMode.handleInventoryMouseClick(
-                    screen.getMenu().containerId,
-                    slot.index,
-                    0,
-                    ClickType.QUICK_MOVE,
-                    minecraft.player
-            );
-        }
-
-        private static Slot findSlot(AbstractContainerScreen<?> screen, double mouseX, double mouseY) {
-            int left = screen.getGuiLeft();
-            int top = screen.getGuiTop();
-            for (Slot slot : screen.getMenu().slots) {
-                if (slot.isActive()
-                        && mouseX >= left + slot.x && mouseX < left + slot.x + 16
-                        && mouseY >= top + slot.y && mouseY < top + slot.y + 16) {
-                    return slot;
+        private static void quickMove(SceneScreen screen, double mouseX, double mouseY) {
+            SceneScreenAccess access = (SceneScreenAccess) (Object) screen;
+            if (access.jemCinematicInteractions$overPanel(mouseX, mouseY)) {
+                int slot = access.jemCinematicInteractions$slotAt(mouseX, mouseY);
+                if (slot >= 0 && QUICK_MOVED_SLOTS.add(slot)) {
+                    access.jemCinematicInteractions$panelClick(slot, GLFW.GLFW_MOUSE_BUTTON_LEFT, true);
                 }
+                return;
             }
-            return null;
+
+            if (Scene.station != null) {
+                Scene.station.click(GLFW.GLFW_MOUSE_BUTTON_LEFT, true);
+            }
         }
 
         private static void resetQuickMove() {

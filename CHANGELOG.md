@@ -1,3 +1,9 @@
+## 2026-10-28 - Restore native JEI transfer and scene-only sweep transfer
+
+- User clarified that JEI's native recipe-transfer `+` must appear in the Cinematic recipe view, that Shift plus left-button cursor sweep must quick-move every crossed stack without individual clicks, and that this custom sweep belongs only to Cinematic block interactions
+- Bug / Client / JEI's `RecipesGui` only discovers a parent menu when its parent is an `AbstractContainerScreen`, while Cinematic Interactions uses a plain `SceneScreen`, so JEI had no active menu from which to resolve its native recipe-transfer handler and hid the `+` control / in testing, the adapter exposes the player's existing active block menu only when the JEI parent is `SceneScreen`, preserving JEI's native transfer eligibility and execution
+- Bug / Client / the earlier sweep adapter intercepted Shift plus left click on every `AbstractContainerScreen`, replacing normal Creative and Mouse Tweaks behavior, yet could not see Cinematic Interactions' non-container `SceneScreen` / in testing, gesture ownership is confined to `SceneScreen` and every crossed player or block slot delegates to Cinematic Interactions' native quick-transfer path
+- Source and documentation now describe Shift plus left-button sweep and its Cinematic-only boundary. JEM Cinematic Interactions 1.0.3 built successfully with tests disabled by project policy and was installed into the closed `jem sandbox` profile. Runtime visibility of the JEI `+`, bidirectional sweep behavior and player acceptance remain pending
 ## 2026-10-28 - Preserve cinematic scene across JEI lookup
 
 - User reported that clicking a JEI ingredient or bookmark during Cinematic Interactions removed the cinematic interface while the player remained movement-locked, and explicitly requested this lifecycle defect before the missing JEI recipe-transfer "+" control

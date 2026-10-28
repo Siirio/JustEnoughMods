@@ -54,11 +54,17 @@ Opening a recipe from either JEI overlay enters Cinematic Interactions' native
 consultation lifecycle. Closing JEI restores the same active scene instead of
 leaving the scene active behind a missing screen with movement still suppressed.
 
-Hold Shift and the right mouse button, then sweep across item stacks. Every newly
-crossed stack uses the active menu's native `QUICK_MOVE` action, so the gesture
-works from block or machine to player inventory and from player inventory back to
-the container. Vanilla and modded menus retain their own legal input, output and
-filter rules.
+JEI receives the active Cinematic block menu while its recipe screen is open, so
+JEI's native recipe-transfer `+` button appears whenever that menu has a matching
+transfer handler and the shown recipe can be transferred.
+
+Inside the Cinematic interaction, hold Shift and the left mouse button, then
+sweep across item stacks. Every crossed slot is quick-moved through Cinematic
+Interactions' own transfer path. The same gesture works from the block or machine
+to the player and from the player inventory back to the block. Invalid destination
+slots remain protected by the owning menu. This sweep is intentionally unavailable
+in Creative inventory and ordinary container screens, where Mouse Tweaks keeps its
+native behavior.
 
 ## Source and installation
 
