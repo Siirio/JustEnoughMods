@@ -1,3 +1,9 @@
+## 2026-10-28 - Plan public standalone CurseForge projects
+
+- User approved eleven independent Forge 1.20.1 release candidates and corrected the public attribution policy: Gem Animal Hints, Gem Drill Durability, In Chat FTB, Gem Seasons HUD and Gem Adaptive Culling declare upstream projects as dependencies without separate credit obligations
+- Unofficial Luxium Compatibility alone receives the explicit unofficial disclaimer and Vinlanx attribution, links to the official Luxium project and never bundles or redistributes Luxium content
+- Added a planning-only implementation and release-gate sequence covering extraction, reproducible builds, identity migration, duplicate-owner removal, clean-instance verification and separately authorized CurseForge submission. No implementation, build, profile change or upload was performed
+
 ## 2026-10-28 - Luxium/Oculus exclusivity and shulker crash repair
 
 - User corrected the shulker implementation: colored shulker interfaces must remain resource-pack-owned and must not use a Java screen-opening hook
