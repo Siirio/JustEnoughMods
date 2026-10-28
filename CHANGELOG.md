@@ -8,6 +8,15 @@
 - The Registry Atlas was fully regenerated for the changed installed JAR set, its impact scan reports no uncovered paths or artifact drift, and validation passes. CurseForge projects remain private because isolated clean-instance matrices, gameplay observation, approved public media and upload authorization remain outstanding
 - No CurseForge upload, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
 
+## 2026-10-28 - Quick Skin title-screen composition
+
+- User requested Quick Skin on the main menu, supplied the landscape and title images, prohibited Gemini for title extraction, required text-only transparent actions on the right, and then supplied exact red placement boxes for the upper-center title and narrow lower-left player model
+- Codex implementation: retain the installed Quick Skin 2.6.2.4 as the native skin/model/cape owner, use FancyMenu to place its native player widget at x 8 and y 258 in the 640 by 360 base layout, retain only "Change Skin" as text, hide icon-sized Quick Skin and menu widgets, force transparent navigation backgrounds, and keep Language and Accessibility reachable through Options
+- The supplied landscape is preserved as the full background. The white brush title was deterministically alpha-extracted and saved as editable Aseprite plus production PNG without Gemini or generative editing, then fitted at x -147, y -169, width 294 and height 101 around the user's marked upper-center area
+- The corrected composition passed source-grounded static visual review. Client launch, click behavior and player acceptance remain unobserved under the project launch restriction
+- Quick Skin 2.6.2.4 and all three FancyMenu files were published inside combined native AutoModpack generation 90 with content token `b29cb2a39211dcf82d6c83c11f76657f3ba655fe`. The closed `test jem` profile is attached to that exact active token, the installed menu files match `Client/ManagedPack` byte for byte, and no client transaction remains pending
+- The ordinary local Server loaded the combined generation and was stopped cleanly. No client launch, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
+
 ## 2026-10-28 - Route JEI transfer to the Cinematic 3x3 table
 
 - User demonstrated that the visible JEI `+` still identified the active Cinematic crafting table as the player's 2x2 inventory grid and rejected the 3x3 diamond-shovel recipe

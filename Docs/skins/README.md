@@ -2,6 +2,12 @@
 
 Quick Skin owns the selected skin, cape, Classic/Slim model, local uploads, and texture transfer. JEMRoles does not copy or persist these choices. The canonical client and local server currently contain the same Quick Skin Forge 1.20.1 version 2.6.2.4 bytes, SHA-256 `59508bb8d87a8bc8f5ad768fce86a12466fab11c512ba434834aa37a45598af9`.
 
+## Main-menu presentation
+
+FancyMenu owns only the title-screen composition. Its 640 by 360 base layout places Quick Skin's native player widget at x 8 and y 258 so the rendered model occupies the user's narrow lower-left placement box. The native "Change Skin" action remains in the right-side navigation column as transparent text. Quick Skin's rotate and animation icon controls are hidden on this screen, and the JEM GUI resource pack cannot add button plates or icons to the overridden title-screen actions. The Quick Skin preference file remains native editable state and is not used as a layout owner.
+
+The title screen uses the two user-supplied 2026-10-28 images preserved under `Docs/art/quickskin-main-menu-20261028`. The landscape remains the full-screen background. The white title was alpha-extracted locally without Gemini or generative editing and fitted to the user's upper-center placement box. In-game visual and click acceptance remain unobserved because no client launch was authorized.
+
 On an offline dedicated server with ServerLogin, the pre-auth gate continues to allow only its existing namespaces. Once `IdentityPolicy` admits a player, JEMRoles asks the installed Quick Skin client to replay its own appearance and the installed Quick Skin server to resend its roster and config. This calls verified public methods in Quick Skin 2.6.2.4 and leaves personal configuration, uploads, account identity, and skin caches with the native mod. The adapter can also restart the native 3.1.1 handshake if that version is legitimately installed later.
 
 Sculk's temporary 1.15 player size remains server-owned in `SculkDomain`. JEMRoles now sends size changes to the owner and players tracking that entity, and sends the current flag when tracking starts, after admission, and after respawn or dimension changes. These packets do not determine the skin texture or player model.

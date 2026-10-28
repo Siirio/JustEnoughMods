@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "change_id": "client.quickskin-main-menu-presentation-20261028",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Installed Quick Skin Forge 1.20.1-2.6.2.4 and FancyMenu 3.9.12 title-screen layout"
+    }
+  ],
+  "precedence": {
+    "layer": "native_client_presentation",
+    "priority": 92
+  },
+  "change": {
+    "summary": "Present the native Quick Skin player preview in the user-outlined lower-left box while keeping every main-menu action as transparent text on the right.",
+    "modifiers": [
+      {
+        "property": "client.quickskin.title_screen_preview",
+        "operation": "replace",
+        "before": "Quick Skin derives its title-screen preview from the native button cluster.",
+        "after": "Quick Skin retains native skin, model, cape and interaction ownership. FancyMenu places its native title-screen widget at x 8 and y 258 in the 640 by 360 base layout so the rendered player occupies the user-outlined lower-left box. Change Skin remains in the right-side text column, and the editable Quick Skin preference file remains user-owned."
+      },
+      {
+        "property": "client.main_menu.navigation_presentation",
+        "operation": "replace",
+        "before": "The FancyMenu title screen mixes centered JEM resource-pack button plates with icon-only controls and notification widgets.",
+        "after": "Singleplayer, Multiplayer, Realms, Mods, Options, Quit Game and Change Skin form one right-side column. FancyMenu forces transparent backgrounds and label shadows, hides icon-sized widgets and retains text-only hover underlines. Language and accessibility remain reachable through Options."
+      },
+      {
+        "property": "client.main_menu.visual_sources",
+        "operation": "replace",
+        "before": "The title screen uses the previous 2djem and 2djembg assets plus a falling-leaves overlay.",
+        "after": "The exact user-supplied landscape is the full-screen background. The white title is deterministically alpha-extracted without Gemini or generative editing and placed in the user-outlined upper-center box. The falling-leaves overlay is disabled."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Client FancyMenu layout and native Quick Skin presentation",
+    "kind": "user_requested_client_presentation",
+    "source_files": [
+      "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_title.png",
+      "Docs/art/quickskin-main-menu-20261028/provenance.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Show the native Quick Skin character clearly without allowing the release resource pack to restyle navigation as icon or plate buttons.",
+    "decision_source": "The user supplied both images, prohibited Gemini for the title cutout, required text-only right-side buttons, and supplied red placement boxes for the upper-center title and narrow lower-left Quick Skin model. Codex translated those boxes into exact FancyMenu coordinates and preserved Quick Skin's editable native preferences."
+  },
+  "introduced": {
+    "date": "2026-10-28",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Replace the title-screen art and navigation layout and place the native Quick Skin preview in the user-outlined lower-left box."
+  },
+  "history": [
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Use the supplied background and transparent title, suppress button plates and icons, and retain Quick Skin as the native appearance owner."
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_presentation",
+      "FancyMenu",
+      "Quick Skin",
+      "native_quickskin_restore",
+      "native_editable_preferences"
+    ],
+    "relations": [
+      "Quick Skin 2.6.2.4 remains the only owner of selected skin, model, cape and local appearance assets",
+      "FancyMenu owns title-screen positioning and transparent text-only navigation",
+      "The JEM resource pack cannot reintroduce title-screen button backgrounds through these FancyMenu overrides"
+    ],
+    "notes": [
+      "The exact installed Quick Skin bytecode was inspected before positioning its native widget.",
+      "The captured FancyMenu widget set includes the native Quick Skin action, player preview, rotate button and animation controls. Only Change Skin remains visible as a text action.",
+      "The title cutout and final red-box composition passed source-grounded visual review after the user's placement correction."
+    ],
+    "unresolved": [
+      "In-game visual and click acceptance remain unobserved because the project rules prohibit launching the client without explicit authorization."
+    ]
+  }
+}

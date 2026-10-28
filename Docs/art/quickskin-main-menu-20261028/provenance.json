@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-28",
+  "purpose": "FancyMenu background and transparent title for the Quick Skin main-menu layout",
+  "sources": [
+    {
+      "path": "references/title-source.jpg",
+      "origin": "User-supplied attachment",
+      "sourcePath": "C:/Users/user/Downloads/Gemini_Generated_Image_ukbhdgukbhdgukbh.jpg",
+      "sha256": "df8946a304bcbd9ffed2b658927fd2ffcd9cffb96f9b71d888367f8eee5ca461"
+    },
+    {
+      "path": "references/background-source.jpg",
+      "origin": "User-supplied attachment",
+      "sourcePath": "C:/Users/user/Downloads/Gemini_Generated_Image_mpt90gmpt90gmpt9.jpg",
+      "sha256": "1034bb8c616ea944b2eee0dce75d93db13f6dab3ce1b2bb4d041e6f6b1fb4f64"
+    }
+  ],
+  "process": {
+    "tool": "Deterministic System.Drawing extraction with Aseprite 1.3.18.6 authoring and export",
+    "script": "extract_title.ps1",
+    "generativeEditing": false,
+    "notes": "The background is losslessly decoded to PNG. The title is isolated with a neutral-white alpha matte and stored as both PNG and editable Aseprite source"
+  }
+}
