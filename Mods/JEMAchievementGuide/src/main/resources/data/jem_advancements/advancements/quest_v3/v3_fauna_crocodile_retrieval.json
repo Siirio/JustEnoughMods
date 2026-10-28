@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_crocodile_retrieval"
+      }
+    },
+    "clock": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_crocodile_retrieval_clock"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "clock"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

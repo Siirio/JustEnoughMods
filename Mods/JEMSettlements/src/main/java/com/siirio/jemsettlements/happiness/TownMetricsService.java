@@ -47,6 +47,7 @@ public final class TownMetricsService {
         var creditedJobs=new java.util.HashSet<Long>();
         CompoundTag reasons=new CompoundTag(),metrics=town.metrics();
         for(var resident:residents) {
+            boolean housingVerifiedNow = false, workplaceVerifiedNow = false;
             var prior=resident.needObservation();var observation=prior.copy();
             var entity=level.getEntity(resident.villagerId());
             if(entity==null)for(var other:level.getServer().getAllLevels())if(other!=level&&other.getEntity(resident.villagerId())!=null){entity=other.getEntity(resident.villagerId());break;}
@@ -69,11 +70,13 @@ public final class TownMetricsService {
                     else {
                         boolean bed=inside&&normalized!=null&&!access.equals("unreachable")&&usedBeds.add(normalized);
                         boolean roof=bed&&roofed(level,normalized.pos());
+                        housingVerifiedNow = roof && access.equals("reachable");
                         observation.putBoolean("HasBed",bed);observation.putBoolean("Roofed",roof);
                         observation.putDouble("Housing",bed?(roof?100:50):0);
                     }
                 }
                 String reason=!inside?"outside":villager.isBaby()?"child":!observation.getBoolean("Adult")?"not_workforce":employment(level,town,villager,resident.workplace().orElse(null),usedJobs);
+                workplaceVerifiedNow = reason.equals("employed");
                 if(reason.equals("unavailable")||reason.equals("pending")) {
                     boolean sameWork=resident.workplace().isPresent()&&prior.contains("WorkPos")&&prior.getLong("WorkPos")==resident.workplace().get().pos().asLong();
                     if(!sameWork) { observation.remove("Employed");jobsUnknown=true; }
@@ -106,6 +109,10 @@ public final class TownMetricsService {
                 }
             }
             if(observation.getBoolean("Present"))present++;
+            if (housingVerifiedNow && workplaceVerifiedNow && observation.getBoolean("Employed")) {
+                com.siirio.jemsettlements.api.SettlementOperationEvent.publishOwner(level.getServer(), town,
+                        com.siirio.jemsettlements.api.SettlementOperationEvent.Kind.ROOF_AND_WORK_CONFIRMED);
+            }
             housing+=observation.getDouble("Housing");food+=.75*resident.satiety()+5*resident.mealQuality(now);
             if(observation.getBoolean("Adult")){adults++;if(observation.getBoolean("Employed"))employed++;}
         }

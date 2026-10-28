@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_totem_shapes"
+      }
+    },
+    "mankh": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_totem_shapes_mankh"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed",
+      "mankh"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

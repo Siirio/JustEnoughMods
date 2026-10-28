@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_book_and_robes"
+      }
+    },
+    "support": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_book_and_robes_support"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "support"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,42 @@
+{
+  "criteria": {
+    "action_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_press_iron_sheet"
+      }
+    },
+    "action_2": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_mill_flour"
+      }
+    },
+    "action_3": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_fan_wash"
+      }
+    },
+    "action_4": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_mix_brass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "action_1"
+    ],
+    [
+      "action_2"
+    ],
+    [
+      "action_3"
+    ],
+    [
+      "action_4"
+    ]
+  ]
+}

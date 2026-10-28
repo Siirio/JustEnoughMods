@@ -1,0 +1,52 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_renewable_harvest"
+      }
+    },
+    "scute": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_renewable_harvest_scute"
+      }
+    },
+    "antler": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_renewable_harvest_antler"
+      }
+    },
+    "skin": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_renewable_harvest_skin"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed",
+      "scute",
+      "antler"
+    ],
+    [
+      "completed",
+      "scute",
+      "skin"
+    ],
+    [
+      "completed",
+      "antler",
+      "skin"
+    ],
+    [
+      "scute",
+      "antler",
+      "skin"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_fritter_and_thorns"
+      }
+    },
+    "tree": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_fritter_tree"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "tree"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

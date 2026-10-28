@@ -14,9 +14,11 @@ public final class RewardsData extends SavedData {
     static final String RECEIPT = "jem_rewards:claim";
     private final CompoundTag pending;
     private final Set<String> durableBatches = new HashSet<>();
+    private CompoundTag durableIssued;
     private long revision;
     RewardsData(CompoundTag root) {
         pending = root.copy();
+        durableIssued = root.getCompound("Issued").copy();
         revision = root.getLong("Revision");
         durableBatches.addAll(root.getCompound("BatchReceipts").getAllKeys());
     }
@@ -47,6 +49,7 @@ public final class RewardsData extends SavedData {
                 throw new java.io.IOException("Reward journal replacement not persisted");
             durableBatches.clear();
             durableBatches.addAll(pending.getCompound("BatchReceipts").getAllKeys());
+            durableIssued = pending.getCompound("Issued").copy();
             super.setDirty(false);
         } catch (java.io.IOException failure) {
             super.setDirty();
@@ -62,6 +65,7 @@ public final class RewardsData extends SavedData {
         if (isDirty()) throw new IllegalStateException("storage_unavailable");
     }
     boolean issued(UUID player, String source) { return pending.getCompound("Issued").getBoolean(player + ":" + source); }
+    boolean issuedDurably(UUID player, String source) { return durableIssued.getBoolean(player + ":" + source); }
     void markIssued(UUID player, String source) {
         var receipts = pending.getCompound("Issued"); receipts.putBoolean(player + ":" + source, true); pending.put("Issued", receipts);
     }
@@ -166,6 +170,13 @@ public final class RewardsData extends SavedData {
     }
 
     static CompoundTag savedPlayer(MinecraftServer server, UUID owner) {
+        var host = server.getSingleplayerProfile();
+        if (host != null && owner.equals(host.getId()) && server.isSingleplayerOwner(host)) {
+            Path file = server.getWorldPath(LevelResource.LEVEL_DATA_FILE);
+            if (!Files.exists(file)) return new CompoundTag();
+            try { return NbtIo.readCompressed(file.toFile()).getCompound("Data").getCompound("Player"); }
+            catch (java.io.IOException failure) { throw new IllegalStateException("storage_unavailable", failure); }
+        }
         Path file = server.getWorldPath(LevelResource.PLAYER_DATA_DIR).resolve(owner + ".dat");
         if (!Files.exists(file)) return new CompoundTag();
         try { return NbtIo.readCompressed(file.toFile()); }
@@ -174,7 +185,7 @@ public final class RewardsData extends SavedData {
     static void savePlayer(ServerPlayer player) {
         CompoundTag expected = player.saveWithoutId(new CompoundTag());
         player.server.getPlayerList().saveAll();
-        if (player.server.isSingleplayer()) player.server.saveEverything(false, true, true);
+        if (player.server.isSingleplayerOwner(player.getGameProfile())) player.server.saveEverything(false, true, true);
         CompoundTag actual = savedPlayer(player.server, player.getUUID());
         if (!expected.getList("Inventory", Tag.TAG_COMPOUND).equals(actual.getList("Inventory", Tag.TAG_COMPOUND))
                 || !Objects.equals(expected.getCompound("ForgeData").get(RECEIPT), actual.getCompound("ForgeData").get(RECEIPT)))

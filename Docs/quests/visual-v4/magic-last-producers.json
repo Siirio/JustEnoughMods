@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "producer_scope": "Seven fixed MagicLast cards, source only awaiting parent overall review/build",
+  "runtime_observed": false,
+  "independent_reviewed": false,
+  "standalone_contract": "Integrated logical server and dedicated server, no JEMServer or other producer family dependency",
+  "artifacts": [
+    {
+      "mod": "irons_spellbooks",
+      "path": "Client/ManagedPack/mods/irons_spellbooks-1.20.1-3.15.6.jar",
+      "sha256": "61996bb3cdb9601d83376f81295967f19a6f036563bb5a0e0f672967344a6fa7"
+    },
+    {
+      "mod": "efs_iss",
+      "path": "Client/ManagedPack/mods/efs_iss-1.0.3.jar",
+      "sha256": "d7f7a0405ff5b1c859513ff4baf54238b18542fb43d7d3a84a1629f4ec328aca"
+    },
+    {
+      "mod": "epicfight",
+      "path": "Client/ManagedPack/mods/epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73"
+    }
+  ],
+  "bounds": {
+    "native_scope_depth": 16,
+    "cauldron_input_and_fluid_rows": 4,
+    "cauldron_handler_owner_cache": 256,
+    "heated_blood_stock_cells_per_world": 256,
+    "active_cast_generations": 256,
+    "per_cast_projectiles": 16,
+    "native_chain_victims": 16,
+    "pending_lightning_events": 64,
+    "menu_slots": 256,
+    "output_receipts_per_menu": 16,
+    "world_reads": "Exact native argument positions and actual owner lookup only, no scan/proximity attribution or forced chunk. World mutation snapshot requires loaded chunk",
+    "lifecycle": "ServerStopped clears runtime contexts/maps. Ordinary native advancement criteria persist achieved stages"
+  },
+  "native_gaps": [
+    "Blood into Mana actual mana-gain option absent in installed EFS1.0.3, native health-for-mana-debit substitution remains unchanged",
+    "Heated Blood Cauldron and nonheated Alchemist Cauldron are distinct native routes, literal original heated-Alchemist wording unchanged for parent review",
+    "Atlas canonical explain returns NOT_AUDITED for both mod subjects. No prerequisite audit performed, parent owns Atlas"
+  ],
+  "native_api_receipt": "build/questbook-v4-magic-last-native-api.txt",
+  "registration_request": "build/questbook-v4-magic-last-registration.json",
+  "research": [
+    "build/magic-last-native/irons_spellbooks/research.json",
+    "build/magic-last-native/efs_iss/research.json",
+    "build/questbook-v4-magic-last-atlas-irons_spellbooks.json",
+    "build/questbook-v4-magic-last-atlas-efs_iss.json"
+  ],
+  "native_cache": [
+    "build/magic-last-native/irons_spellbooks/source",
+    "build/magic-last-native/irons_spellbooks/extra/source",
+    "build/magic-last-native/irons_spellbooks/casting/source",
+    "build/magic-last-native/efs_iss/source"
+  ],
+  "current_pack_source_scopes": [
+    "Client/ManagedPack/kubejs/server_scripts",
+    "Client/ManagedPack/kubejs/startup_scripts",
+    "Client/ManagedPack/config/paxi",
+    "Client/ManagedPack/config/item_obliterator.json5",
+    "Client/ManagedPack/config/incontrol",
+    "Mods/JEMCompat/src/main/java"
+  ],
+  "current_pack_findings": [
+    "No selected namespace/arcane/blood/lightning literal references found in searched canonical server/startup scripts, Paxi JSON, selected InControl/ItemObliterator or JEMCompat source",
+    "Only irons_spellbooks-client.toml found under current ManagedPack, no canonical server TOML at searched defaultconfigs path. Actual native runtime configs remain authority, no heat/grief/cost predicates invented"
+  ],
+  "preservation": "Original gameplay methods execute once with original arguments/returns. No native mechanics/recipes/tuning/AI/config/costs/cooldowns/protection altered. Only proof metadata and native criteria. All old source families remain frozen",
+  "producers": [
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v2_mag_cauldron",
+      "action": "spell_cauldron_brew",
+      "emitted_actions": [
+        "spell_cauldron_native_brew",
+        "spell_cauldron_brew"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastCauldronProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastBloodCauldronQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastCauldronFluidQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastCauldronQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastNativeSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastOutputQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_mag_cauldron.json"
+      ],
+      "native_evidence": "Original actor input insertion/debit, exact native BrewAlchemistCauldronRecipe result and consumed reagent establish produced elixir fluid. Same actor later uses original bottle transaction with actual fluid/bottle debits and actual drink inventory receipt or native accepted dropped output later picked up",
+      "unsupported_paths": [
+        "Native isBoiling is fluid amount>=1, no heat rule invented",
+        "Ink/scroll recycling, hopper insertion or externally piped elixir is not an authored elixir brew",
+        "Mixed unknown/native certified stock conserves portions and fails closed until the bottle contains certified actor stock"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_cauldron"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v3_magic_focus_lightning",
+      "action": "v3_magic_focus_lightning",
+      "emitted_actions": [
+        "v3_magic_focus_lightning"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastFocusProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastLightningFocusQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastNativeSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastOutputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastFinalEventQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_magic_focus_lightning.json"
+      ],
+      "native_evidence": "Original ServerPlayerEvents.useOnEntityEvent on charged Creeper and glass bottle, actual bottle1 debit and Lightning Bottle1 inventory/drop receipt. Native successful cancellation result must survive final EventBus.post return",
+      "unsupported_paths": [
+        "Native exchange intentionally cancels with successful interaction result, distinguish from final failed/changed dispatch",
+        "Ordinary Creeper, raw click, ownership/gift and rejected output do not qualify"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_focus_lightning"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v3_magic_focus_blood",
+      "action": "v3_magic_focus_blood",
+      "emitted_actions": [
+        "v3_magic_focus_blood"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastBloodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastBloodCauldronQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastNativeSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastOutputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastWorldProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastWorldResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_magic_focus_blood.json"
+      ],
+      "native_evidence": "Original BloodCauldronBlock.attemptCookEntity lit-campfire/allowed creature/native accepted cauldron damage/random committed production increases actual native blood level. Same exact observed native stock later native bottle lambda consumes one bottle and level and yields actual blood vial inventory/drop receipt",
+      "unsupported_paths": [
+        "Heated route is native AbstractCauldron/BloodCauldron over a lit campfire. Native AlchemistCauldron entityInside needs no heat. Literal heated-Alchemist wording is preserved as explicit native/content distinction for parent review",
+        "Arbitrary preplaced blood cauldron, spawned vial, unobserved production before session and bounded stock eviction receive no proof"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_focus_blood"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v3_magic_arcane_resources",
+      "action": "v3_magic_arcane_resources",
+      "emitted_actions": [
+        "v3_magic_arcane_resources_mined",
+        "v3_magic_arcane_resources"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastResourceProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastResourceMiningQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastResourceReplaceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastResourceSmeltQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastResourceTakeQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_magic_arcane_resources.json"
+      ],
+      "native_evidence": "Actual Arcane Debris Block.playerDestroy with original native correct-tool snapshot and real block removal establishes mined criterion. Exact native mithril_scrap_from_salvage blasting debits Arcane Salvage1, creates Mithril Scrap, actual actor native output take conserves certified furnace portions",
+      "unsupported_paths": [
+        "Native ordinary Debris loot is Arcane Salvage, Silk Touch returns Debris. Optional Debris-to-Salvage blasting is separate from actual Salvage-to-Mithril-Scrap completion",
+        "Arbitrary output insertion invalidates generation, hopper output extraction loses certificate"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_arcane_resources"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v3_magic_fire_ice",
+      "action": "v3_magic_fire_ice",
+      "emitted_actions": [
+        "v3_magic_fire_ice"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastSpellProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastFireballImpactQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastCastResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastCastStateQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastChainConnectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastDamageResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastEffectResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastNativeSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastPlayerTeleportResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastTeleportResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastWorldResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_magic_fire_ice.json"
+      ],
+      "native_evidence": "Real native initiateCast generation reaches actual AbstractSpell.castSpell completion. Original owned projectile spawn commits only after cast returns. Exact native MagicFireball.onHit accepted burst damage, actual Ray of Frost accepted damage and living fully-frozen state increase, or exact ChainLightning.doHurt with two distinct successful victims completes one named outcome",
+      "unsupported_paths": [
+        "Native terrain Explosion depends on SPELL_GREIFING, original Fireball burst damage remains valid with terrain grief disabled",
+        "Visual/empty impact, block-only frost ray, freeze-immune or failed damage and one lightning victim do not complete",
+        "Cancelled/reset native generation and uncommitted native spawn receive no proof"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_fire_ice"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v3_magic_blade_cast",
+      "action": "v3_magic_blade_cast",
+      "emitted_actions": [
+        "v3_magic_blade_cast"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastSpellProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastBladeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastCastResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastCastStateQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastChainConnectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastDamageResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastEffectResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastNativeSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastPlayerTeleportResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastTeleportResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastWorldResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_magic_blade_cast.json"
+      ],
+      "native_evidence": "Exact MagicSwordSkill ATTACK_PHASE_END native EFSISSUtils invocation executes once. Actual MagicData.initiateCast mints actor/spell/positive level/source generation. New initiation replaces it, native reset invalidates it. Eventual same-generation cast must achieve actual damage/heal/effect/teleport/world change/accepted summon or a committed same-cast projectile later achieves native accepted spell damage",
+      "unsupported_paths": [
+        "Native registry skill id is efs_iss:magic_sword, original Magic Blade player text preserved",
+        "MagicData.getCastingSpell creates a new SpellData each time, no object identity binding",
+        "Nonpositive reduced level, original preflight deny/cancel/reset, raw swing, cast event or projectile launch alone is insufficient",
+        "Exotic selected spells that bypass actual observed native result seams fail closed, no new spell mechanics fabricated"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_blade_cast"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "source_implemented": true,
+      "quest": "v3_magic_mana_trade",
+      "action": "v3_magic_mana_trade",
+      "emitted_actions": [
+        "v3_magic_mana_trade"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastAutoHealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/magiclast/MagicLastProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicLastAutoHealQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_magic_mana_trade.json"
+      ],
+      "native_evidence": "Original equipped AutoHealSkill.updateContainer executes original MagicData.addMana and ServerPlayer.heal once, actual resource debit, accepted positive native heal and net health gain required",
+      "unsupported_paths": [
+        "Installed BloodIntoManaSkill has no mana-gain update. ForgeEvent.changeMana substitutes health cost for attempted mana decrease by cancelling ChangeManaEvent, no mana increase",
+        "Blood into Mana gain option is explicitly unavailable/unreviewed, fixed card unchanged and valid Auto Heal alternative implemented",
+        "Clamped/cancelled/no-gain healing, no actual payment or passive ownership cannot complete"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_mana_trade"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 7
+}

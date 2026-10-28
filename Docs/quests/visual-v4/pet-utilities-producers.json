@@ -1,0 +1,458 @@
+{
+  "schema": 1,
+  "status": "SOURCE_IMPLEMENTED_FROZEN_PENDING_PARENT_OVERALL_REVIEW",
+  "source_of_contract": "build/questbook-v4-pet-utilities-cards.json exact13",
+  "installed_artifacts": [
+    {
+      "filename": "golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "path": "Client/ManagedPack/mods/golemoverhaul-forge-1.20.1-1.1.1.jar",
+      "sha256": "115df3a7517b3cf8329ab35a00664d48e76282648c98843c8225ba2b5755cf90",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "horseman-1.20.1-1.3.17-forge.jar",
+      "path": "Client/ManagedPack/mods/horseman-1.20.1-1.3.17-forge.jar",
+      "sha256": "51ed74329bce5091bbb7969d08156190d590290d9caff2999ed167a146458af0",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "trotting_wagons-1.0.4.jar",
+      "path": "Client/ManagedPack/mods/trotting_wagons-1.0.4.jar",
+      "sha256": "0c5a99131a2ebe7a4bda783be38a5ca4059820a86a8a604a58f42882cd15b839",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "whaleborne-1.20.1-1.2.4b.jar",
+      "path": "Client/ManagedPack/mods/whaleborne-1.20.1-1.2.4b.jar",
+      "sha256": "adc04902ba12f238397c58dafe80592ac50dbc2fe73b342854ee4e8909a45658",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "Ribbits-1.20.1-Forge-3.0.5.jar",
+      "path": "Client/ManagedPack/mods/Ribbits-1.20.1-Forge-3.0.5.jar",
+      "sha256": "e04aa665df7e96844fe8833f29cc343feefac8ad7b949399d7b4a60475123e2b",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "snowyspirit-1.20-3.0.10.jar",
+      "path": "Client/ManagedPack/mods/snowyspirit-1.20-3.0.10.jar",
+      "sha256": "7de7c0b4b397b5675279c9c7bae630e27eb3dc4754ae7a268c59d3f24eb58138",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "recruits-1.20.1-1.15.2.jar",
+      "path": "Client/ManagedPack/mods/recruits-1.20.1-1.15.2.jar",
+      "sha256": "4b53c1b752e886ba10985aad2df30d668971810230eb77867e07428a21d1af7f",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "architectury-9.2.14-forge.jar",
+      "path": "Client/ManagedPack/mods/architectury-9.2.14-forge.jar",
+      "sha256": "218b471d0b8a1f6cda14cfc1beb9eeb0df54304500acc6c5613d9b88ec65d9af",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "moonlight-1.20-2.16.35-forge.jar",
+      "path": "Client/ManagedPack/mods/moonlight-1.20-2.16.35-forge.jar",
+      "sha256": "55e60e041318c5fabcb02d41e989db2c8b784ba7a991525fa461c6522a67719e",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "geckolib-forge-1.20.1-4.8.4.jar",
+      "path": "Client/ManagedPack/mods/geckolib-forge-1.20.1-4.8.4.jar",
+      "sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "YungsApi-1.20-Forge-4.0.6.jar",
+      "path": "Client/ManagedPack/mods/YungsApi-1.20-Forge-4.0.6.jar",
+      "sha256": "101c30d01d0cf9d86190f578eb1e43bd06b64092e95662a00ef52946f472c7b1",
+      "configuration": "compileOnly fg.deobf"
+    }
+  ],
+  "source_flags": {
+    "manual_family_source_pass": true,
+    "independent_review_run": false,
+    "automated_verification_run": false,
+    "build_run": false,
+    "runtime_application_observed": false
+  },
+  "runtime_observed": false,
+  "standalone_logical_server": true,
+  "producers": [
+    {
+      "card_id": "v3_pet_warm_clay",
+      "advancement": "jem_advancements:quest_v3/v3_pet_warm_clay",
+      "original_action": "v3_pet_warm_clay",
+      "emitted_actions": [
+        "v3_pet_warm_clay"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestPlacement.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestBlockOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestChunkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestClayMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestTerracottaMixin.java"
+      ],
+      "original_contract": "Native heat transition of actor-placed clay statue spawns Terracotta Golem, then actor commits a native cactus/dead-bush combat upgrade on that construct. No held ingredient or cosmetic click proof.",
+      "native_success_observation": "Paid statue placement and accepted native heat birth, then same actor/native entity NORMAL to CACTUS/DEAD_BUSH upgrade with real debit1",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_trailcraft",
+      "advancement": "jem_advancements:quest_v3/v3_pet_trailcraft",
+      "original_action": "v3_pet_trailcraft",
+      "emitted_actions": [
+        "v3_pet_trailcraft",
+        "v4_pet_horse_hitched"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestHorseman.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestDrops.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHorseAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHorseInteractionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestFenceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestKnotMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestSpawnMixin.java"
+      ],
+      "original_contract": "Native Horseman mounted hitch commits horse leash holder=fence with lead retained in its intended slot; separate native shears operation changes eligible donkey/mule/llama chest=true->false and produces intended drops. Raw clicks insufficient.",
+      "native_success_observation": "Mounted native fence hitch with retained actual special-slot lead AND eligible native shears chest true to false with accepted intended drops",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_fresh_wheels",
+      "advancement": "jem_advancements:quest_v3/v3_pet_fresh_wheels",
+      "original_action": "v3_pet_fresh_wheels",
+      "emitted_actions": [
+        "v3_pet_fresh_wheels"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWagon.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWagonAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestWagonMixin.java"
+      ],
+      "original_contract": "Native wagon wool recoloring commits different color with ingredient consumption OR native iron repair increases genuinely missing durability. Honor installed repair configuration; raw item interaction insufficient.",
+      "native_success_observation": "Configured native iron repair consumes1 and restores actual missing wagon health. Native recolor has no paid branch",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_whale_widgets",
+      "advancement": "jem_advancements:quest_v3/v3_pet_whale_widgets",
+      "original_action": "v3_pet_whale_widgets",
+      "emitted_actions": [
+        "v3_pet_whale_widgets"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWhale.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWhaleLoot.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestWhaleLootMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestWhaleLootMenuMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHullbackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHelmMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestCannonMixin.java"
+      ],
+      "original_contract": "Real actor loots native whaleborne Widget from shipwreck/buried treasure; native installation commits it to actor-used Hullback; native cannon consumes gunpowder and fires actual projectile OR anchor changes deployed state through authenticated Helm control. No inventory-only module proof.",
+      "native_success_observation": "Exact chest loot-table origin and conserved physical actor withdrawal -> native paid install on this Hullback -> actual Helm anchor transition OR native fuel/ammo debit and accepted actor-owned Projectile",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_swamp_market",
+      "advancement": "jem_advancements:quest_v3/v3_pet_swamp_market",
+      "original_action": "v3_pet_swamp_market",
+      "emitted_actions": [
+        "v3_pet_swamp_market"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestRibbitTrade.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestMerchantAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestTradeMenuMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestTradeResultMixin.java"
+      ],
+      "original_contract": "Native ribbits merchant/fisher transaction commits real output and authorized payment for actor. Opening trade or holding emerald alone is insufficient.",
+      "native_success_observation": "Native merchant/fisherman offer uses+1, exact native input debit and conserved actual output transfer",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_swamp_neighbors",
+      "advancement": "jem_advancements:quest_v3/v3_pet_swamp_neighbors",
+      "original_action": "v3_pet_swamp_neighbors",
+      "emitted_actions": [
+        "v3_pet_swamp_neighbors",
+        "v4_pet_ribbit_home"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestPlacement.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestBlockOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestChunkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRibbitHomeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRibbitWaterMixin.java"
+      ],
+      "original_contract": "Native Ribbit home-position field commits different valid position through actor amethyst interaction; native gardener successfully waters an actor-prepared nearby crop. Observe native crop state/action; no mere farmland/emptyhand click.",
+      "native_success_observation": "Native paid amethyst home change AND native gardener actual crop-age increase on actor-planted crop",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_swamp_band",
+      "advancement": "jem_advancements:quest_v3/v3_pet_swamp_band",
+      "original_action": "v3_pet_swamp_band",
+      "emitted_actions": [
+        "v3_pet_swamp_band"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestInstrumentAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRibbitBandMixin.java"
+      ],
+      "original_contract": "Native ribbits:maraca use commits sound/performance for real actor within native hearing range of active native Ribbit music-group state. Do not infer gathering from arbitrary mob proximity.",
+      "native_success_observation": "Actual native live master/member band, native hearing audience and active maraca performer after actual native audience dispatch",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_golem_jobs",
+      "advancement": "jem_advancements:quest_v3/v3_pet_golem_jobs",
+      "original_action": "v3_pet_golem_jobs",
+      "emitted_actions": [
+        "v3_pet_golem_jobs",
+        "v4_pet_hay_protection"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestPlacement.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestBlockOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestChunkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestHay.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestDrops.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestGolemEventsAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestGolemEventsMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHayBirthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHayLeadMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestBarrelMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHoneyPickupMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestSpawnMixin.java"
+      ],
+      "original_contract": "Actual native Barrel Golem trade commits accepted authorized payment and reward OR native Honey Golem honey output collected by actor; additionally actor establishes live Hay Golem within its real crop-protection range of planted farmland, queried from native effect owner. No crop damage required.",
+      "native_success_observation": "Paid Barrel response accepted physical reward OR native full Honey shear output accepted and collected by its actor, AND installed pure native farmland protection callback returns actor-established live Hay within its computed range",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_wagon_service",
+      "advancement": "jem_advancements:quest_v3/v3_pet_wagon_service",
+      "original_action": "v3_pet_wagon_service",
+      "emitted_actions": [
+        "v3_pet_wagon_service"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestVehicle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestJourney.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestVehiclePacketMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWagon.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWagonAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestWagonMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestUnloadedMixin.java"
+      ],
+      "original_contract": "Native wagon hitch links actor-held horse; a real nonplayer passenger mounts, wagon moves >=2 blocks due to legitimate native drive input, then actor unloads it alive onto safe ground. Minimum movement only distinguishes real transport, not grind; no extra path/AI authority.",
+      "native_success_observation": "Exact native actor-held horse hitch -> real Mob passenger -> accepted native driven displacement >=2 blocks -> same actor native unload alive on safe ground",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_sled_team",
+      "advancement": "jem_advancements:quest_v3/v3_pet_sled_team",
+      "original_action": "v3_pet_sled_team",
+      "emitted_actions": [
+        "v3_pet_sled_team"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestVehicle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestJourney.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestVehiclePacketMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestSnowContact.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestSledMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestSnowSurfaceMixin.java"
+      ],
+      "original_contract": "Native sled state commits actor-owned wolf hitch and compatible nonempty cargo container; actor rides sled across >=2 blocks with native snow/ice contact. No arbitrary winter wait or passenger requirement.",
+      "native_success_observation": "Native hitch of actor-owned Wolf, compatible actual nonempty cargo, authenticated rider input and accepted displacement >=2 blocks on native computed snow or colliding native ice samples",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_whale_helm",
+      "advancement": "jem_advancements:quest_v3/v3_pet_whale_helm",
+      "original_action": "v3_pet_whale_helm",
+      "emitted_actions": [
+        "v3_pet_whale_helm"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestVehicle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestJourney.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestVehiclePacketMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestWhale.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestHullbackMixin.java"
+      ],
+      "original_contract": "Same live Hullback has completed native cleaning/debt state, native saddle and plank armor; authenticated rider’s Helm input produces actual native heading/movement change. No vehicle teleport or mount-only proof.",
+      "native_success_observation": "Same Hullback native clean finish, actual paid saddle and plank armor, real Helm actor input and actual native heading/movement",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_first_recruit",
+      "advancement": "jem_advancements:quest_v3/v3_pet_first_recruit",
+      "original_action": "v3_pet_first_recruit",
+      "emitted_actions": [
+        "v3_pet_first_recruit",
+        "v4_pet_recruit_hired"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestRecruit.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestRecruitPayment.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestRecruitMenu.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRecruitHireMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRecruitCommandMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRecruitMenuMixin.java"
+      ],
+      "original_contract": "Native recruit hiring commits canonical owner=authenticated player after actual authorized payment; native recruit inventory receives acceptable food and shield equipment. Do not bypass Economy quotes or spawn a unit as reward.",
+      "native_success_observation": "Canonical paid JEM hire generation advance OR native configured currency debit and real owner transition, then actual conserved acceptable-food and native shield slot transfers by this actor on this unit",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_clear_orders",
+      "advancement": "jem_advancements:quest_v3/v3_pet_clear_orders",
+      "original_action": "v3_pet_clear_orders",
+      "emitted_actions": [
+        "v3_pet_clear_orders",
+        "v4_pet_recruit_group_saved"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestRecruit.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/petutilities/PetUtilityQuestRecruitPayment.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRecruitCommandMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestRecruitGroupsMixin.java"
+      ],
+      "original_contract": "Native group membership save commits >=1 actor-owned recruit to a native group; authenticated native command is accepted and changes at least one owned unit’s order state. No GUI opening-only or fabricated party authority.",
+      "native_success_observation": "Actual saved group with live actor-owned native group member AND native authenticated movement command changes >=1 actor-owned affected order state",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "native_gaps": [
+    {
+      "card_id": "v3_pet_fresh_wheels",
+      "kind": "UNSUPPORTED_NATIVE_ALTERNATIVE",
+      "route": "paid wool recolor",
+      "evidence": "AbstractWagon.m_6096_ DYE_ITEMS branch only sets color and never consumes input in installed1.0.4",
+      "valid_original_or_route": "configured native iron repair",
+      "changed_gameplay": false,
+      "producer_code_reviewed": false,
+      "runtime_observed": false
+    },
+    {
+      "card_id": "v3_pet_whale_widgets",
+      "kind": "UNSUPPORTED_NATIVE_ALTERNATIVE",
+      "route": "buried treasure widgets",
+      "evidence": "Installed global modifiers lists add_treasure_widgets but that JSON is absent. No corresponding KubeJS override located. shipwreck_supply modifier exists",
+      "valid_original_or_route": "real shipwreck_supply loot lineage",
+      "changed_gameplay": false,
+      "producer_code_reviewed": false,
+      "runtime_observed": false
+    }
+  ],
+  "whole_card_native_gaps": [],
+  "evidence_paths": [
+    "build/questbook-v4-pet-utilities-research.json",
+    "build/questbook-v4-pet-utilities-atlas.json",
+    "build/questbook-v4-pet-utilities-native-evidence.json",
+    "build/questbook-v4-audit/pet-utilities-source"
+  ],
+  "blueprint_changes": [
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_trailcraft.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_swamp_neighbors.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_golem_jobs.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_clear_orders.json"
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 13
+}

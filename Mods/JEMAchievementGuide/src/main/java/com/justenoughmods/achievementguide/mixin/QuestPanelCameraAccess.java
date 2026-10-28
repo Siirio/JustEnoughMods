@@ -7,6 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 /** The same native camera coordinates read by QuestScreen.PersistedData. */
 @Mixin(value = QuestPanel.class, remap = false)
 public interface QuestPanelCameraAccess {
+    @Accessor("questMinX") double jem$getMinX();
+    @Accessor("questMinY") double jem$getMinY();
     @Accessor("centerQuestX") double jem$getCenterX();
     @Accessor("centerQuestY") double jem$getCenterY();
     @Accessor("centerQuestX") void jem$setCenterX(double value);

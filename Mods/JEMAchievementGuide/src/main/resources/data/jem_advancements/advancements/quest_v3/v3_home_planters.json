@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_home_planters"
+      }
+    },
+    "urn": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_home_planters_urn"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "urn"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

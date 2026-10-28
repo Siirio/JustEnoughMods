@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_trailcraft"
+      }
+    },
+    "native_mounted_hitch": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v4_pet_horse_hitched"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_mounted_hitch"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

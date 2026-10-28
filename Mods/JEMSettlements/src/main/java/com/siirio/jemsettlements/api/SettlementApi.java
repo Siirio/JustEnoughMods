@@ -176,7 +176,16 @@ public final class SettlementApi {
         if (!SettlementAuthority.active(player) || position == null) return Result.INVALID;
         var town = ownedTown(player, townId); if (town.isEmpty()) return Result.UNAUTHENTICATED;
         StorageLink link = new StorageLink(player.serverLevel().dimension().location(), position);
-        if (!town.get().setStorageFeed(link, true)) return Result.INVALID; SettlementSavedData.get(player.getServer()).changed(); return Result.ACCEPTED;
+        if (!town.get().setStorageFeed(link, true)) return Result.INVALID;
+        SettlementSavedData.get(player.getServer()).changed();
+        if (player.serverLevel().hasChunkAt(position)) {
+            var container = player.serverLevel().getBlockEntity(position);
+            if (container != null && container.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent()) {
+                net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new SettlementOperationEvent(
+                        player, townId, SettlementOperationEvent.Kind.FOOD_STORAGE_ENABLED));
+            }
+        }
+        return Result.ACCEPTED;
     }
 
     public static Result setTerritoryRadius(ServerPlayer player, int radius) {
@@ -223,6 +232,10 @@ public final class SettlementApi {
         town.get().territoryBounds(minX, minZ, maxX, maxZ);
         town.get().recordExpansion(requestId);
         data.changed();
+        if (payment.status() == com.siirio.jemsettlements.currency.TransferResult.Status.COMMITTED) {
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new SettlementOperationEvent(
+                    player, townId, SettlementOperationEvent.Kind.TERRITORY_EXPANDED));
+        }
         return payment.status() == com.siirio.jemsettlements.currency.TransferResult.Status.REPLAYED ? Result.REPLAYED : Result.ACCEPTED;
     }
 

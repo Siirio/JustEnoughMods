@@ -1,0 +1,42 @@
+{
+  "criteria": {
+    "brew_wood": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food/first_brew"
+      }
+    },
+    "brew_copper": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food/copper_whiskey"
+      }
+    },
+    "drink": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_brewery_drink_finished"
+      }
+    },
+    "measured": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_breathalyzer_measured"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "brew_wood",
+      "brew_copper"
+    ],
+    [
+      "drink"
+    ],
+    [
+      "measured"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

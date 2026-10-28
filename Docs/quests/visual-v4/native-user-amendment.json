@@ -1,0 +1,1231 @@
+{
+  "schema": 1,
+  "date": "2026-10-27",
+  "classification": "Explicit direct user answer: apply complete consolidated native decision list",
+  "input_book_sha256": "3140743121121e592fd9666e5572e115944be1c6038c9a25dd70c839fd5458df",
+  "output_book_sha256": "d7770ab32937c55b9682e6913beda9007c16e8a68ffede6b37e43d43d7bdb3fb",
+  "before": {
+    "cards": 614,
+    "groups": 76,
+    "visual_edges": 512
+  },
+  "after": {
+    "cards": 606,
+    "groups": 76,
+    "visual_edges": 506
+  },
+  "removed_cards": [
+    {
+      "id": "v3_cave_remote_work",
+      "number": "v3_cave_remote_work",
+      "chapter_id": "tab-12",
+      "title": "Руки заняты — руки свободны",
+      "condition": "Добудь подходящий блок перчаткой и покажи записанное существо проектором.",
+      "purpose": "Дистанционный инструмент и проекция расширяют работу на расстоянии.",
+      "tip": "Перчатка находится во второй руке, металлический инструмент — в основной. Голокодером запиши существо и вставь запись в проектор; телеядра пригодятся для ремонта.",
+      "branch": "tab-12",
+      "after": [
+        "v3_cave_magnet_workshop"
+      ],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Mine a suitable block with the Gauntlet and project a recorded creature.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_cave_remote_work"
+        }
+      ],
+      "ftb_id": "3B1A5DCBA365F181",
+      "position": [
+        8.05,
+        5.8
+      ],
+      "required_mods": [
+        "alexscaves"
+      ],
+      "icon": "alexscaves:telecore",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "alexscaves:telecore",
+            "count": 4,
+            "name": "Telecore"
+          },
+          {
+            "id": "alexscaves:magnetic_light",
+            "count": 4,
+            "name": "Magnetic Light"
+          }
+        ],
+        "choice": [],
+        "xp": 120,
+        "claim": "once",
+        "reason": "Telecores maintain the gauntlet while Magnetic Lights start a larger installation.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Руки заняты — руки свободны",
+          "condition": "Добудь подходящий блок перчаткой и покажи записанное существо проектором.",
+          "purpose": "Дистанционный инструмент и проекция расширяют работу на расстоянии.",
+          "tip": "Перчатка находится во второй руке, металлический инструмент — в основной. Голокодером запиши существо и вставь запись в проектор; телеядра пригодятся для ремонта.",
+          "reward": "4 × Телеядро; 4 × Магнитный фонарь; 120 опыта."
+        },
+        "en_us": {
+          "title": "A Hand Elsewhere",
+          "condition": "Mine a suitable block with the Gauntlet and project a recorded creature.",
+          "purpose": "Remote tools and projection extend your working reach.",
+          "tip": "Hold Gauntlet offhand and a magnetic tool mainhand. Record a creature with Holocoder and insert the record into a projector; Telecores maintain the tool.",
+          "reward": "4 × Telecore; 4 × Magnetic Light; 120 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Remote tools and projection extend your working reach.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "Telecores maintain the gauntlet while Magnetic Lights start a larger installation.",
+        "visual_route": "cave_magnetism",
+        "coverage_keys": [
+          "alexscaves:compendium_magnetic_caves_utilities",
+          "alexscaves:utility_magnetic_caves_holocoder_lights",
+          "alexscaves:utility_magnetic_caves_telecore_tools"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_cave_remote_work",
+          "action": "v3_cave_remote_work",
+          "success_condition": "Native gauntlet-owned remote tool successfully breaks eligible block with player attribution; native projector resolves a bound Holocoder entity identity and renders active projection after insertion by player. Both events required.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "visual_group": "magnetism"
+      },
+      "mechanic_sections": [
+        {
+          "keys": [
+            "alexscaves:compendium_magnetic_caves_utilities",
+            "alexscaves:utility_magnetic_caves_telecore_tools",
+            "alexscaves:utility_magnetic_caves_holocoder_lights"
+          ],
+          "title_ru": "Практическая заметка",
+          "title_en": "Practical note",
+          "text_ru": "Добудь подходящий блок перчаткой и покажи записанное существо проектором. Перчатка находится во второй руке, металлический инструмент — в основной. Голокодером запиши существо и вставь запись в проектор; телеядра пригодятся для ремонта.",
+          "text_en": "Mine a suitable block with the Gauntlet and project a recorded creature. Hold Gauntlet offhand and a magnetic tool mainhand. Record a creature with Holocoder and insert the record into a projector; Telecores maintain the tool."
+        },
+        {
+          "keys": [
+            "alexscaves:compendium_magnetic_caves_utilities"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Добудь подходящий блок перчаткой и покажи записанное существо проектором. Перчатка находится во второй руке, металлический инструмент — в основной. Голокодером запиши существо и вставь запись в проектор; телеядра пригодятся для ремонта.",
+          "text_en": "Mine a suitable block with the Gauntlet and project a recorded creature. Hold Gauntlet offhand and a magnetic tool mainhand. Record a creature with Holocoder and insert the record into a projector; Telecores maintain the tool."
+        },
+        {
+          "keys": [
+            "alexscaves:utility_magnetic_caves_telecore_tools"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Добудь подходящий блок перчаткой и покажи записанное существо проектором. Перчатка находится во второй руке, металлический инструмент — в основной. Голокодером запиши существо и вставь запись в проектор; телеядра пригодятся для ремонта.",
+          "text_en": "Mine a suitable block with the Gauntlet and project a recorded creature. Hold Gauntlet offhand and a magnetic tool mainhand. Record a creature with Holocoder and insert the record into a projector; Telecores maintain the tool."
+        },
+        {
+          "keys": [
+            "alexscaves:utility_magnetic_caves_holocoder_lights"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Добудь подходящий блок перчаткой и покажи записанное существо проектором. Перчатка находится во второй руке, металлический инструмент — в основной. Голокодером запиши существо и вставь запись в проектор; телеядра пригодятся для ремонта.",
+          "text_en": "Mine a suitable block with the Gauntlet and project a recorded creature. Hold Gauntlet offhand and a magnetic tool mainhand. Record a creature with Holocoder and insert the record into a projector; Telecores maintain the tool."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_combat_beast_watch",
+      "number": "v3_combat_beast_watch",
+      "chapter_id": "tab-25",
+      "title": "Кто-то рядом",
+      "condition": "Получи настоящий сигнал обнаружения зверя от тотема и поставь звериную яму в подходящем биоме.",
+      "purpose": "Соедини знание места обитания с действительным обнаружением зверя.",
+      "tip": "Прочти бестиарий перед походом. Nether Beast Totem добывается в сундуках крепостей и подсвечивает глаза рядом со зверем. Beast Pit может привлечь местного зверя с шансом: ждать гарантированного появления или сезонного Gilded Bundle не нужно.",
+      "branch": "tab-25",
+      "after": [],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Receive an actual beast-detection signal from the totem and place a beast pit in a suitable biome.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_combat_beast_watch"
+        }
+      ],
+      "ftb_id": "3DB3B24E65799C57",
+      "position": [
+        17.6,
+        10.9
+      ],
+      "required_mods": [
+        "luminous_beasts"
+      ],
+      "icon": "irons_spellbooks:invisibility_elixir",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "irons_spellbooks:invisibility_elixir",
+            "count": 3,
+            "name": "Invisibility Elixir"
+          },
+          {
+            "id": "xtraarrows:iron_torch_arrow",
+            "count": 24,
+            "name": "Torch Iron Arrow"
+          }
+        ],
+        "choice": [],
+        "xp": 80,
+        "claim": "once",
+        "reason": "3 × Invisibility Elixir; 24 × Torch Iron Arrow. Connect habitat knowledge with actual beast detection.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Кто-то рядом",
+          "condition": "Получи настоящий сигнал обнаружения зверя от тотема и поставь звериную яму в подходящем биоме.",
+          "purpose": "Соедини знание места обитания с действительным обнаружением зверя.",
+          "tip": "Прочти бестиарий перед походом. Nether Beast Totem добывается в сундуках крепостей и подсвечивает глаза рядом со зверем. Beast Pit может привлечь местного зверя с шансом: ждать гарантированного появления или сезонного Gilded Bundle не нужно.",
+          "reward": "3 × Эликсир невидимости; 24 × Torch Iron Arrow; 80 опыта."
+        },
+        "en_us": {
+          "title": "Something Is Near",
+          "condition": "Receive an actual beast-detection signal from the totem and place a beast pit in a suitable biome.",
+          "purpose": "Connect habitat knowledge with actual beast detection.",
+          "tip": "Read the bestiary before leaving. Nether Beast Totem comes from fortress chests and lights its eyes near a beast. Beast Pit may attract a local beast by chance: a guaranteed spawn or seasonal Gilded Bundle is not required.",
+          "reward": "3 × Invisibility Elixir; 24 × Torch Iron Arrow; 80 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Получи настоящий сигнал обнаружения зверя от тотема и поставь звериную яму в подходящем биоме.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "3 × Invisibility Elixir; 24 × Torch Iron Arrow. Connect habitat knowledge with actual beast detection.",
+        "visual_route": "beast_habitats",
+        "coverage_keys": [
+          "luminous_beasts:beast_hunt",
+          "luminous_beasts:beast_pit",
+          "luminous_beasts:bestiary",
+          "luminous_nether:beast_detection_loot",
+          "luminous_nether:beast_totem",
+          "luminous_nether:cultist_flag"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_combat_beast_watch",
+          "action": "v3_combat_beast_watch",
+          "success_condition": "Native Nether Beast Totem switches to its true proximity-positive state for its holder; player also places native Beast Pit within a biome valid under that item’s effective native conditions. Do not require a successful random attraction. Server-side real actor only; native owner must have committed the stated result. Reject cancelled/previews, FakePlayer, client animation and raw right-click as proof. If a named upstream behavior is absent or disabled in installed bytes/config, preserve an explicit unavailable row instead of fabricating completion.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "research_status": "Authored from exact observations below; new post-success contract is required, not an already observed runtime integration.",
+        "coverage_notes": [
+          {
+            "key": "luminous_beasts:beast_hunt",
+            "ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+            "en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+          },
+          {
+            "key": "luminous_beasts:bestiary",
+            "ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+            "en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+          },
+          {
+            "key": "luminous_beasts:beast_pit",
+            "ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+            "en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+          },
+          {
+            "key": "luminous_nether:beast_totem",
+            "ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+            "en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+          },
+          {
+            "key": "luminous_nether:beast_detection_loot",
+            "ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+            "en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+          },
+          {
+            "key": "luminous_nether:cultist_flag",
+            "ru": "Флаг культистов помогает избегать обычной враждебности культистов-пиглинов; не используй боссовый тотем как замену этому флагу.",
+            "en": "Cultist Flag helps avoid normal cultist-piglin hostility; a beast-detection totem does not replace it."
+          }
+        ],
+        "render_notes_contract": "All coverage_notes must remain accessible in the quest description or its exact native contextual guide link; root may remove duplicate sentences but must not discard distinct functions.",
+        "reward_purpose_ru": "3 × Эликсир невидимости; 24 × Torch Iron Arrow. Соедини знание места обитания с действительным обнаружением зверя.",
+        "reward_purpose_en": "3 × Invisibility Elixir; 24 × Torch Iron Arrow. Connect habitat knowledge with actual beast detection.",
+        "visual_group": "beasts"
+      },
+      "mechanic_sections": [
+        {
+          "keys": [
+            "luminous_beasts:beast_hunt"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+          "text_en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+        },
+        {
+          "keys": [
+            "luminous_beasts:bestiary"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+          "text_en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+        },
+        {
+          "keys": [
+            "luminous_beasts:beast_pit"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+          "text_en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+        },
+        {
+          "keys": [
+            "luminous_nether:cultist_flag"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Флаг культистов помогает избегать обычной враждебности культистов-пиглинов; не используй боссовый тотем как замену этому флагу.",
+          "text_en": "Cultist Flag helps avoid normal cultist-piglin hostility; a beast-detection totem does not replace it."
+        },
+        {
+          "keys": [
+            "luminous_nether:beast_totem"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+          "text_en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+        },
+        {
+          "keys": [
+            "luminous_nether:beast_detection_loot"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Бестиарий задаёт место, тотем обнаруживает близость, яма привлекает с шансом; праздничный свёрток не является обычным обязательным ресурсом.",
+          "text_en": "Bestiary identifies habitats, totem detects proximity, pit attracts by chance; the celebration bundle is not an ordinary required resource."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_era_cold_concert",
+      "number": "v3_era_cold_concert",
+      "chapter_id": "tab-17",
+      "title": "Тёплый концерт",
+      "condition": "Настоящей музыкой вызови танец двух разных видов морозного леса.",
+      "purpose": "Зимняя пластинка и ледяные кирпичи позволят оформить собственную площадку для следующих концертов.",
+      "tip": "Буррел, фростомпер, глацерос, психомедведь, снежный додо и копьезуб имеют родные музыкальные реакции. Для знакомства достаточно двух видов; полное родное достижение по всем шести остаётся необязательной целью.",
+      "branch": "tab-17",
+      "after": [
+        "v3_era_forest_friends"
+      ],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Use real music to make two different Frostbite Forest species dance.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_era_cold_concert"
+        }
+      ],
+      "ftb_id": "3337E07C453427B5",
+      "position": [
+        -9.2,
+        3.8
+      ],
+      "required_mods": [],
+      "icon": "blastfromthepast:blizzard_revelry_disc",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "blastfromthepast:blizzard_revelry_disc",
+            "count": 1,
+            "name": "Music Disc"
+          },
+          {
+            "id": "blastfromthepast:ice_brick",
+            "count": 24,
+            "name": "Ice Brick"
+          }
+        ],
+        "choice": [],
+        "xp": 90,
+        "claim": "once",
+        "reason": "A winter disc and ice bricks help furnish a personal stage for later concerts.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Тёплый концерт",
+          "condition": "Настоящей музыкой вызови танец двух разных видов морозного леса.",
+          "purpose": "Зимняя пластинка и ледяные кирпичи позволят оформить собственную площадку для следующих концертов.",
+          "tip": "Буррел, фростомпер, глацерос, психомедведь, снежный додо и копьезуб имеют родные музыкальные реакции. Для знакомства достаточно двух видов; полное родное достижение по всем шести остаётся необязательной целью.",
+          "reward": "1 × Music Disc; 24 × Ice Brick; 90 опыта."
+        },
+        "en_us": {
+          "title": "A Warm Concert",
+          "condition": "Use real music to make two different Frostbite Forest species dance.",
+          "purpose": "A winter disc and ice bricks help furnish a personal stage for later concerts.",
+          "tip": "Burrel, Frostomper, Glaceros, Psycho Bear, Snowdo and Speartooth have native music reactions. Two species introduce the feature; the native all-six milestone remains optional.",
+          "reward": "1 × Music Disc; 24 × Ice Brick; 90 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Настоящей музыкой вызови танец двух разных видов морозного леса.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "A winter disc and ice bricks help furnish a personal stage for later concerts.",
+        "visual_route": "cold_and_ancient_care",
+        "coverage_keys": [
+          "blastfromthepast:music_herd"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_era_cold_concert",
+          "action": "v3_era_cold_concert",
+          "success_condition": "Actor-operated native music source causes actual native dance-state transitions in two distinct eligible Frostbite species. No proximity-only or generic instrument air-use proof; no animal spawning.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "visual_group": "ancient_care"
+      },
+      "teaching_sections": [
+        {
+          "keys": [
+            "blastfromthepast:music_herd"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Музыкальные реакции есть у шести видов морозного леса; базовая цель знакомит с двумя, полный родной концерт остаётся необязательной вехой.",
+          "text_en": "Play music so each Frostbite animal dances. The installed advancement explicitly recognizes a multi-species dance goal."
+        }
+      ],
+      "mechanic_sections": [
+        {
+          "keys": [
+            "blastfromthepast:music_herd"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Музыкальные реакции есть у шести видов морозного леса; базовая цель знакомит с двумя, полный родной концерт остаётся необязательной вехой.",
+          "text_en": "Play music so each Frostbite animal dances. The installed advancement explicitly recognizes a multi-species dance goal."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_era_ice_echoes",
+      "number": "v3_era_ice_echoes",
+      "chapter_id": "tab-16",
+      "title": "Эхо подо льдом",
+      "condition": "Найди настоящее эхо кладбища кораблей компасом и открой найденный пиратский или сокровищный мешочек.",
+      "purpose": "Лампы осветят следующий слой лабиринта, а запеканка снабдит поиски следующей настоящей находки.",
+      "tip": "Эхо-компас откликается на ближайший ресурс эха. Мешочки встречаются в добыче ледяного лабиринта и раскрываются правой кнопкой; не подменяй находку выдачей мешка командой.",
+      "branch": "tab-16",
+      "after": [],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Find a real Ship Graveyard Echo using Echo Compass and open a looted Pirate or Treasure Pouch.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_era_ice_echoes"
+        }
+      ],
+      "ftb_id": "322BEBF63171E181",
+      "position": [
+        -19.0,
+        3.2
+      ],
+      "required_mods": [],
+      "icon": "aquamirae:luminescent_lamp",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "aquamirae:luminescent_lamp",
+            "count": 8,
+            "name": "Luminescent Lamp"
+          },
+          {
+            "id": "aquamirae:sea_casserole",
+            "count": 8,
+            "name": "Sea Casserole"
+          }
+        ],
+        "choice": [],
+        "xp": 100,
+        "claim": "once",
+        "reason": "Lamps illuminate the next maze layer and casserole provisions the search for another genuine find.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Эхо подо льдом",
+          "condition": "Найди настоящее эхо кладбища кораблей компасом и открой найденный пиратский или сокровищный мешочек.",
+          "purpose": "Лампы осветят следующий слой лабиринта, а запеканка снабдит поиски следующей настоящей находки.",
+          "tip": "Эхо-компас откликается на ближайший ресурс эха. Мешочки встречаются в добыче ледяного лабиринта и раскрываются правой кнопкой; не подменяй находку выдачей мешка командой.",
+          "reward": "8 × Люминесцентная лампа; 8 × Морская запеканка; 100 опыта."
+        },
+        "en_us": {
+          "title": "Echoes under Ice",
+          "condition": "Find a real Ship Graveyard Echo using Echo Compass and open a looted Pirate or Treasure Pouch.",
+          "purpose": "Lamps illuminate the next maze layer and casserole provisions the search for another genuine find.",
+          "tip": "Echo Compass resonates with the nearest echo resource. Pouches come from Ice Maze loot and open on use; command-granted pouches are not exploration proof.",
+          "reward": "8 × Luminescent Lamp; 8 × Sea Casserole; 100 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Найди настоящее эхо кладбища кораблей компасом и открой найденный пиратский или сокровищный мешочек.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "Lamps illuminate the next maze layer and casserole provisions the search for another genuine find.",
+        "visual_route": "era_fieldwork",
+        "coverage_keys": [
+          "aquamirae:echo_navigation",
+          "aquamirae:ice_maze",
+          "aquamirae:pirate_pouches"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_era_ice_echoes",
+          "action": "v3_era_ice_echoes",
+          "success_condition": "Actor using native Echo Compass discovers/reaches a real resonance target and collects Ship Graveyard Echo; native use opens actual looted pirate/treasure pouch and creates legitimate contents, consuming pouch where native behavior requires.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "visual_group": "ancient_routes"
+      },
+      "teaching_sections": [
+        {
+          "keys": [
+            "aquamirae:ice_maze"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Замёрзший лабиринт и нижние слои с обломками содержат особые места, судовые записи и добычу.",
+          "text_en": "Explore the frozen maze and its wreck-filled lower layers to find unique locations and loot. Environmental exploration quest chain."
+        },
+        {
+          "keys": [
+            "aquamirae:pirate_pouches"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Найденный пиратский или сокровищный мешочек раскрывается настоящим использованием и даёт родную добычу.",
+          "text_en": "Find a pouch during Ice Maze exploration and right click to open it. The native item exposes a container-loot interaction."
+        },
+        {
+          "keys": [
+            "aquamirae:echo_navigation"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Эхо-компас откликается на ближайшее настоящее эхо кладбища кораблей и помогает найти ресурс.",
+          "text_en": "Use the Echo Compass while searching for Ship Graveyard Echo. The compass resonates with the nearest echo resource."
+        }
+      ],
+      "mechanic_sections": [
+        {
+          "keys": [
+            "aquamirae:ice_maze"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Замёрзший лабиринт и нижние слои с обломками содержат особые места, судовые записи и добычу.",
+          "text_en": "Explore the frozen maze and its wreck-filled lower layers to find unique locations and loot. Environmental exploration quest chain."
+        },
+        {
+          "keys": [
+            "aquamirae:pirate_pouches"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Найденный пиратский или сокровищный мешочек раскрывается настоящим использованием и даёт родную добычу.",
+          "text_en": "Find a pouch during Ice Maze exploration and right click to open it. The native item exposes a container-loot interaction."
+        },
+        {
+          "keys": [
+            "aquamirae:echo_navigation"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Эхо-компас откликается на ближайшее настоящее эхо кладбища кораблей и помогает найти ресурс.",
+          "text_en": "Use the Echo Compass while searching for Ship Graveyard Echo. The compass resonates with the nearest echo resource."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_era_storm_chain",
+      "number": "v3_era_storm_chain",
+      "chapter_id": "tab-25",
+      "title": "Гроза по цепочке",
+      "condition": "Трезубцем бури наложи сверхпроводник на противника и запусти настоящее цепное поражение.",
+      "purpose": "Ускоряющие пузыри и готовая еда помогут продолжить подводные столкновения уже добытым оружием.",
+      "tip": "Эффект связывает поражённые цели и повторяет молнию по родной механике. Нужны настоящие допустимые враги, а не игроки или манекены. Остальное оружие лабиринта выбирают под бой: глубину, броню или запас здоровья.",
+      "branch": "tab-25",
+      "after": [],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Apply Superconductor with Tempest Trident and trigger a real chain strike.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_era_storm_chain"
+        }
+      ],
+      "ftb_id": "3081DB4428B88655",
+      "position": [
+        -13.2,
+        -0.6
+      ],
+      "required_mods": [],
+      "icon": "aquamirae:luminescent_bubble",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "aquamirae:luminescent_bubble",
+            "count": 6,
+            "name": "Luminescent Bubble"
+          },
+          {
+            "id": "aquamirae:sea_casserole",
+            "count": 8,
+            "name": "Sea Casserole"
+          }
+        ],
+        "choice": [],
+        "xp": 145,
+        "claim": "once",
+        "reason": "Acceleration bubbles and ready food support more underwater encounters using the weapon already acquired.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Гроза по цепочке",
+          "condition": "Трезубцем бури наложи сверхпроводник на противника и запусти настоящее цепное поражение.",
+          "purpose": "Ускоряющие пузыри и готовая еда помогут продолжить подводные столкновения уже добытым оружием.",
+          "tip": "Эффект связывает поражённые цели и повторяет молнию по родной механике. Нужны настоящие допустимые враги, а не игроки или манекены. Остальное оружие лабиринта выбирают под бой: глубину, броню или запас здоровья.",
+          "reward": "6 × Luminescent Bubble; 8 × Морская запеканка; 145 опыта."
+        },
+        "en_us": {
+          "title": "A Chain of Storms",
+          "condition": "Apply Superconductor with Tempest Trident and trigger a real chain strike.",
+          "purpose": "Acceleration bubbles and ready food support more underwater encounters using the weapon already acquired.",
+          "tip": "The native effect links affected targets and replicates lightning. Use valid hostiles, not players or dummies. Other Ice Maze weapons suit depth, armor or maximum-health situations.",
+          "reward": "6 × Luminescent Bubble; 8 × Sea Casserole; 145 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Трезубцем бури наложи сверхпроводник на противника и запусти настоящее цепное поражение.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "Acceleration bubbles and ready food support more underwater encounters using the weapon already acquired.",
+        "visual_route": "era_fieldwork",
+        "coverage_keys": [
+          "aquamirae:dagger_greed",
+          "aquamirae:maze_weapons",
+          "aquamirae:tempest_chain"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_era_storm_chain",
+          "action": "v3_era_storm_chain",
+          "success_condition": "Actor-owned native Tempest Trident applies actual Superconductor to eligible hostile and native follow-up causes a real secondary chain damage/lightning event on another eligible hostile. Do not synthesize effect or count raw throw.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "visual_group": "wild_arsenal"
+      },
+      "teaching_sections": [
+        {
+          "keys": [
+            "aquamirae:maze_weapons"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Оружие лабиринта выбирают под условия: память побед, временное уменьшение максимального здоровья, снижение брони или глубокую воду.",
+          "text_en": "Use Remnant Saber, Shatterblade, Shatterspike or Tidepiercer in their favored combat situation. Native ability text links them to historical Ice Maze kills, temporary maximum-health reduction, armor reduction or deeper underwater damage."
+        },
+        {
+          "keys": [
+            "aquamirae:dagger_greed"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Кинжал жадности может давать изумруды и ломаться; это не разрешение фармить жителей или обходить экономику сервера.",
+          "text_en": "Attack villagers or pillagers with Dagger of Greed only where current server rules permit. Its native ability can produce Emeralds but can also break the weapon; no JEM economy authorization or player objective is inferred."
+        },
+        {
+          "keys": [
+            "aquamirae:tempest_chain"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Настоящий сверхпроводник связывает подходящих врагов и позволяет цепное поражение; два клика или брошенный трезубец не доказывают результат.",
+          "text_en": "Inflict Superconductor with Tempest Trident and strike affected enemies. Native ability text links affected targets through chain shocks and replicated lightning."
+        }
+      ],
+      "mechanic_sections": [
+        {
+          "keys": [
+            "aquamirae:maze_weapons"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Оружие лабиринта выбирают под условия: память побед, временное уменьшение максимального здоровья, снижение брони или глубокую воду.",
+          "text_en": "Use Remnant Saber, Shatterblade, Shatterspike or Tidepiercer in their favored combat situation. Native ability text links them to historical Ice Maze kills, temporary maximum-health reduction, armor reduction or deeper underwater damage."
+        },
+        {
+          "keys": [
+            "aquamirae:dagger_greed"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Кинжал жадности может давать изумруды и ломаться; это не разрешение фармить жителей или обходить экономику сервера.",
+          "text_en": "Attack villagers or pillagers with Dagger of Greed only where current server rules permit. Its native ability can produce Emeralds but can also break the weapon; no JEM economy authorization or player objective is inferred."
+        },
+        {
+          "keys": [
+            "aquamirae:tempest_chain"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Настоящий сверхпроводник связывает подходящих врагов и позволяет цепное поражение; два клика или брошенный трезубец не доказывают результат.",
+          "text_en": "Inflict Superconductor with Tempest Trident and strike affected enemies. Native ability text links affected targets through chain shocks and replicated lightning."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_era_wall_slide",
+      "number": "v3_era_wall_slide",
+      "chapter_id": "tab-16",
+      "title": "По стенке вниз",
+      "condition": "Экипируй медвежьи когти и выполни настоящее скольжение по стене.",
+      "purpose": "Ледяные кирпичи подойдут для тренировочной стены, а мягкий материал — для безопасного основания площадки.",
+      "tip": "Когти получают через медвежий маршрут; при экипировке проверяй именно поддерживаемый слот. Используй невысокую стену: длина спуска и урон не требуются.",
+      "branch": "tab-16",
+      "after": [],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Equip Bear Claws and perform their native wall slide.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_era_wall_slide"
+        }
+      ],
+      "ftb_id": "3F5DB1FD7825FD60",
+      "position": [
+        -16.7,
+        0.9
+      ],
+      "required_mods": [],
+      "icon": "blastfromthepast:ice_brick",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "blastfromthepast:ice_brick",
+            "count": 24,
+            "name": "Ice Brick"
+          },
+          {
+            "id": "blastfromthepast:shaggy_pelt",
+            "count": 8,
+            "name": "Shaggy Pelt"
+          }
+        ],
+        "choice": [],
+        "xp": 90,
+        "claim": "once",
+        "reason": "Ice bricks suit a practice wall and shaggy material makes a soft-looking base around it.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "По стенке вниз",
+          "condition": "Экипируй медвежьи когти и выполни настоящее скольжение по стене.",
+          "purpose": "Ледяные кирпичи подойдут для тренировочной стены, а мягкий материал — для безопасного основания площадки.",
+          "tip": "Когти получают через медвежий маршрут; при экипировке проверяй именно поддерживаемый слот. Используй невысокую стену: длина спуска и урон не требуются.",
+          "reward": "24 × Ice Brick; 8 × Shaggy Pelt; 90 опыта."
+        },
+        "en_us": {
+          "title": "Down the Wall",
+          "condition": "Equip Bear Claws and perform their native wall slide.",
+          "purpose": "Ice bricks suit a practice wall and shaggy material makes a soft-looking base around it.",
+          "tip": "Acquire claws through the bear route and use their supported equipment slot. A low wall is sufficient; neither fall distance nor injury is required.",
+          "reward": "24 × Ice Brick; 8 × Shaggy Pelt; 90 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Экипируй медвежьи когти и выполни настоящее скольжение по стене.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "Ice bricks suit a practice wall and shaggy material makes a soft-looking base around it.",
+        "visual_route": "era_fieldwork",
+        "coverage_keys": [
+          "blastfromthepast:bear_wall_slide"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_era_wall_slide",
+          "action": "v3_era_wall_slide",
+          "success_condition": "Installed Bear Claws native ability actually enters wall-sliding state for real actor with valid equipped claw item; native advancement if semantically exact. Ownership/equip alone insufficient.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "visual_group": "ancient_routes"
+      },
+      "teaching_sections": [
+        {
+          "keys": [
+            "blastfromthepast:bear_wall_slide"
+          ],
+          "title_ru": "Как это работает",
+          "title_en": "How it works",
+          "text_ru": "Экипированные медвежьи когти должны включить настоящее скольжение по стене.",
+          "text_en": "Wear Bear Claws and slide down a wall. A native advancement recognizes the movement ability."
+        }
+      ],
+      "mechanic_sections": [
+        {
+          "keys": [
+            "blastfromthepast:bear_wall_slide"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Экипированные медвежьи когти должны включить настоящее скольжение по стене.",
+          "text_en": "Wear Bear Claws and slide down a wall. A native advancement recognizes the movement ability."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_fauna_capsid_workshop",
+      "number": "v3_fauna_capsid_workshop",
+      "chapter_id": "tab-12",
+      "title": "Лифт из оболочек",
+      "condition": "Перенеси предмет капсидом между контейнерами и получи преобразованный предмет.",
+      "purpose": "Капсид сочетает вертикальную передачу предметов с преобразованием.",
+      "tip": "Капсиды ставят вертикально над контейнерами. Они поднимают вещи и преобразуют определённые предметы; личинка комара превращается в таинственного червя для босса Края. Личинок можно делать через личинок мух, которые также добываются утконосом.",
+      "branch": "tab-12",
+      "after": [
+        "v3_fauna_redstone_creatures"
+      ],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Move an item between inventories with a Capsid and collect a transformed output.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_fauna_capsid_workshop"
+        }
+      ],
+      "ftb_id": "3529AEDFE12BE0FB",
+      "position": [
+        17.25,
+        8.1
+      ],
+      "required_mods": [
+        "alexsmobs"
+      ],
+      "icon": "minecraft:hopper",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "minecraft:hopper",
+            "count": 4,
+            "name": "Hopper"
+          },
+          {
+            "id": "alexsmobs:enderiophage_rocket",
+            "count": 16,
+            "name": "Enderiophage Rocket"
+          }
+        ],
+        "choice": [],
+        "xp": 140,
+        "claim": "once",
+        "reason": "Hoppers extend capsid logistics and rockets apply its later branch.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Лифт из оболочек",
+          "condition": "Перенеси предмет капсидом между контейнерами и получи преобразованный предмет.",
+          "purpose": "Капсид сочетает вертикальную передачу предметов с преобразованием.",
+          "tip": "Капсиды ставят вертикально над контейнерами. Они поднимают вещи и преобразуют определённые предметы; личинка комара превращается в таинственного червя для босса Края. Личинок можно делать через личинок мух, которые также добываются утконосом.",
+          "reward": "4 × Hopper; 16 × Ракета эндериофага; 140 опыта."
+        },
+        "en_us": {
+          "title": "A Lift of Shells",
+          "condition": "Move an item between inventories with a Capsid and collect a transformed output.",
+          "purpose": "The Capsid combines vertical item transfer with transformation.",
+          "tip": "Stack capsids above inventories to lift items. They transform selected inputs; a mosquito larva becomes Mysterious Worm for the End boss. Its maggot route can use platypus foraging despite disabled flies.",
+          "reward": "4 × Hopper; 16 × Enderiophage Rocket; 140 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "The Capsid combines vertical item transfer with transformation.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "Hoppers extend capsid logistics and rockets apply its later branch.",
+        "visual_route": "wildlife_work",
+        "coverage_keys": [
+          "alexsmobs:dictionary_enderiophage"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_fauna_capsid_workshop",
+          "action": "v3_fauna_capsid_workshop",
+          "success_condition": "Native Capsid extracts item from lower inventory and inserts into upper inventory with positive item conservation; native transformation recipe changes permitted input into exact output collected by actor. No place/own recipe pair substitutes.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "visual_group": "alternate_technology"
+      },
+      "mechanic_sections": [
+        {
+          "keys": [
+            "alexsmobs:dictionary_enderiophage"
+          ],
+          "title_ru": "Практическая заметка",
+          "title_en": "Practical note",
+          "text_ru": "Перенеси предмет капсидом между контейнерами и получи преобразованный предмет. Капсиды ставят вертикально над контейнерами. Они поднимают вещи и преобразуют определённые предметы; личинка комара превращается в таинственного червя для босса Края. Личинок можно делать через личинок мух, которые также добываются утконосом.",
+          "text_en": "Move an item between inventories with a Capsid and collect a transformed output. Stack capsids above inventories to lift items. They transform selected inputs; a mosquito larva becomes Mysterious Worm for the End boss. Its maggot route can use platypus foraging despite disabled flies."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_qol_resource_rush",
+      "number": "v3_qol_resource_rush",
+      "chapter_id": "tab-25",
+      "title": "Чужая жила",
+      "condition": "Во время активной Ресурсной гонки добудь один созданный этим событием ресурс.",
+      "purpose": "Опыт и провиант поддерживают следующую экспедицию, не создавая новый запас руды события.",
+      "tip": "Это необязательная ветка выделенного сервера с включёнными событиями. Вход и выход свободны; добывается ресурс настоящего экземпляра события, а обычная руда рядом не подходит.",
+      "branch": "tab-25",
+      "after": [
+        "v2_bosses_eyes_01"
+      ],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Mine one resource created by an active Resource Rush event.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_qol_resource_rush"
+        }
+      ],
+      "ftb_id": "3027BDD970C40EC9",
+      "position": [
+        2.3,
+        -14.1
+      ],
+      "required_mods": [
+        "jem_server"
+      ],
+      "icon": "minecraft:diamond",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "create:experience_nugget",
+            "count": 12,
+            "name": "Nugget of Experience"
+          },
+          {
+            "id": "bakery:grilled_salmon_sandwich",
+            "count": 8,
+            "name": "Grilled Salmon Sandwich"
+          }
+        ],
+        "choice": [],
+        "xp": 40,
+        "claim": "once",
+        "reason": "Experience and provisions support the next expedition without duplicating event ores.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Чужая жила",
+          "condition": "Во время активной Ресурсной гонки добудь один созданный этим событием ресурс.",
+          "purpose": "Опыт и провиант поддерживают следующую экспедицию, не создавая новый запас руды события.",
+          "tip": "Это необязательная ветка выделенного сервера с включёнными событиями. Вход и выход свободны; добывается ресурс настоящего экземпляра события, а обычная руда рядом не подходит.",
+          "reward": "12 × Кусочек опыта; 8 × Бутерброд с лососем; 40 опыта."
+        },
+        "en_us": {
+          "title": "A Passing Vein",
+          "condition": "Mine one resource created by an active Resource Rush event.",
+          "purpose": "Experience and provisions support the next expedition without duplicating event ores.",
+          "tip": "This optional branch needs an event-enabled dedicated host. Players may enter and leave freely. Mine the actual event instance's resource; ordinary nearby ore does not qualify.",
+          "reward": "12 × Nugget of Experience; 8 × Grilled Salmon Sandwich; 40 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Во время активной Ресурсной гонки добудь один созданный этим событием ресурс.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "Experience and provisions support the next expedition without duplicating event ores.",
+        "visual_route": "seasonal",
+        "coverage_keys": [
+          "jem_server:canonical_resource_rush",
+          "jem_server:resource_rush"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_qol_resource_rush",
+          "action": "v3_qol_resource_rush",
+          "success_condition": "Use existing Resource Rush generated-block ownership and successful allowed break commit for authenticated real actor inside ACTIVE same dimension/instance. Native event owner validates; do not add a new participation tally.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "availability": "dedicated server AND canonical EventRuntime.enabled; optional while no active instance; does not gate chapter finale",
+        "visual_group": "events"
+      },
+      "native_options": {
+        "jem_dedicated_event": true,
+        "size": 1.4
+      },
+      "mechanic_sections": [
+        {
+          "keys": [
+            "jem_server:canonical_resource_rush"
+          ],
+          "title_ru": "Полезно знать",
+          "title_en": "Useful to know",
+          "text_ru": "Ресурсная гонка свободно пускает и выпускает игроков; её временные ресурсы и возврат принадлежат экземпляру события.",
+          "text_en": "Resource Rush allows players to enter/leave freely; generated resources and return belong to its event instance."
+        }
+      ],
+      "sources": [],
+      "dedicated_event": true
+    }
+  ],
+  "retired_blueprints": [
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_cave_remote_work.json",
+      "sha256": "c38494fa026bab3f6c9a6c9b5a16acfdda534fc5630b0033bb5c3524dff7141d"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_beast_watch.json",
+      "sha256": "e54a1758624a1793db8dc74ca44c8a6c29d6f5b0ed9af27540c78c5d678d585d"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_cold_concert.json",
+      "sha256": "b98101e3552ff9898abda246084f9984b5d4e5d4542a2781e2b34e47a25cc745"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_ice_echoes.json",
+      "sha256": "ac00a346cc9595bf0a8056207305e46bb238bed0fe7b3467d1283620b35c4854"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_storm_chain.json",
+      "sha256": "bece20b5d79a5651fe919e5c6722ffc05b0341ab0e1d837987dfe1d82eff66bf"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_wall_slide.json",
+      "sha256": "c12cc72489b59f09f57c07b321e621ce3df087591deff894bed9493fa41c4285"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_fauna_capsid_workshop.json",
+      "sha256": "dfdecc7729617fab0fd1692969bb4c0b75271101dfd572ad2197b7bce0dc5f0f"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_qol_resource_rush.json",
+      "sha256": "4e8104605a21788db4eef0dd839abdb0e8136b442458dda68e942da8875b18f8"
+    }
+  ],
+  "corrected_cards": {
+    "v3_pet_bubble_switch": {
+      "ru_condition": "Включи Стрэндеда сотами, выключи его топором и освободи живое существо из крабового пузыря",
+      "en_condition": "Wake a Stranded with Honeycomb, freeze it with an axe and release a living creature from a crab bubble",
+      "ru_tip": "Соты запускают родное пробуждение Стрэндеда. Топор возвращает активного Стрэндеда в замороженное состояние. Заверши оба перехода и отдельно освободи живое существо из настоящего крабового пузыря",
+      "en_tip": "Honeycomb starts the Stranded native wake sequence. An axe returns an active Stranded to its frozen state. Complete both transitions and separately release a living creature from a real crab bubble",
+      "contract": "Actual real actor Honeycomb debit starts native Stranded wake and the same native delayed transition reaches active. Actual native axe interaction commits active-to-frozen state and native wear processing. Actual living native crab bubble capture/release succeeds. All three results mandatory, no invented wax off branch, raw clicks or forced entity state"
+    },
+    "v3_era_soft_landing": {
+      "ru_condition": "Состриги снежного додо, получи родные перья и используй замедление падения, удерживая птицу",
+      "en_condition": "Shear a living Snowdo for its native feathers and use its held-creature slow-fall ability",
+      "ru_tip": "При стрижке живой снежный додо даёт перья и затем восстанавливает их родным способом. Удерживаемая птица замедляет настоящее падение. Для знакомства подходит небольшой спуск",
+      "en_tip": "Shearing a living Snowdo produces feathers, which regrow through its native mechanic. Holding the bird slows a real fall. A short descent is enough to try it",
+      "contract": "Actual native living Snowdo shearing commits an accepted native FEATHER output for real actor, followed by actual native held-Snowdo downward-velocity reduction during real descent. Both mandatory. No Shaggy Pelt shearing requirement, distance quota, death replacement or new mechanic"
+    },
+    "v3_era_hunger_guard": {
+      "ru_condition": "Съешь пустотного кальмара и используй его настоящую защиту, когда запас еды достигнет нуля",
+      "en_condition": "Eat Void Squid and trigger its native protection when your food reserve reaches zero",
+      "ru_tip": "Сохрани полученный защитный эффект до настоящего срабатывания при пустой шкале голода. При наличии еды другой родной обработчик защиты расходует её запас, а при нуле действует отдельная ветка неуязвимости",
+      "en_tip": "Keep the acquired protective effect until it genuinely triggers with an empty hunger bar. A separate native protection handler spends food while reserves remain, while the zero-food branch supplies native invulnerability",
+      "contract": "Real actor actually consumes Void Squid and receives native Devouring Curse. A positive real incoming damage attempt is actually rejected by native PlayerHandler.isInvulnerableTo with the same acquired effect active and native food reserve exactly zero. Reject generic kill, client, FakePlayer, raw possession and arbitrary immunity queries. Never change hunger, damage, effect or immunity gameplay"
+    }
+  },
+  "redirected_cards": [],
+  "remaining_geometry_and_ids_preserved": true,
+  "surviving_reward_items_counts_choices_xp_unchanged": true,
+  "snowdo_note": "Native feathers qualify actual shearing. Original8 Shaggy Pelt and6 Melon Ice Cream/85XP remain valid fixed rewards, no false claim they are shearing loot",
+  "hunger_evidence_correction": "Earlier evidence checked only PlayerHandler.isInvulnerableTo. Complete native call path also has MixinPlayer.modifyDamageAmount -> PlayerHandler.modifyDamageAmount -> LivingEntityHooks -> AquamiraeCombatRules.applyDevouringCurse, which zeros damage and spends food at positive reserves. Earlier absence claim was incomplete. User-approved zero-food branch is genuine and retained, no gameplay change",
+  "native_mechanics_recipes_or_compat_changed": false,
+  "legacy602_cards_2146_rewards_changed": false,
+  "runtime_observed": false,
+  "candidate_regenerated": false,
+  "activated": false
+}

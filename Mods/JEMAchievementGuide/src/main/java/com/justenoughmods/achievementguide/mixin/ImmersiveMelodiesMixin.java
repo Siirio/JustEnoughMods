@@ -19,6 +19,13 @@ public abstract class ImmersiveMelodiesMixin {
         NoteBroadcastRequest request = (NoteBroadcastRequest) (Object) this;
         if (player instanceof ServerPlayer serverPlayer && request.velocity() > 0) {
             JemCriteria.fire(serverPlayer, PLAY_A_NOTE);
+            // The native server has accepted/broadcast this note. Require an actual held instrument,
+            // a playable MIDI tone and the native 8-bit positive velocity instead of menu opening.
+            if (request.tone() >= 0 && request.tone() <= 127 && request.velocity() <= 255
+                    && (player.getMainHandItem().getItem() instanceof immersive_melodies.item.InstrumentItem
+                    || player.getOffhandItem().getItem() instanceof immersive_melodies.item.InstrumentItem)) {
+                com.justenoughmods.achievementguide.advancement.QuestActionTrigger.INSTANCE.emit(serverPlayer, "play_note");
+            }
         }
     }
 }

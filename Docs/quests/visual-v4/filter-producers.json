@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "source_of_contract": "Original immutable Visual V4 integration/success-contracts.json and unchanged canonical book.json design.hook_contract",
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "production_build_owner": "Parent unified build, new filter source has not been built by this worker",
+  "standalone_logical_server": true,
+  "jem_server_required": false,
+  "runtime_observed": false,
+  "native_artifacts": [
+    {
+      "path": "Client/ManagedPack/mods/sophisticatedcore-1.20.1-1.5.15.2427.jar",
+      "sha256": "10947a5807e453ddc8ed3467ff98e91ca989c436d0263bff0f6e580d79277592"
+    },
+    {
+      "path": "Client/ManagedPack/mods/sophisticatedbackpacks-1.20.1-3.26.14.2226.jar",
+      "sha256": "07479d3f03904bbfcd21e8d7c96277336c790e994cafc2c5bb13cccb5dfb8524"
+    },
+    {
+      "path": "Client/ManagedPack/mods/sophisticatedstorage-1.20.1-1.5.9.2197.jar",
+      "sha256": "c3e99010c7296e81fde6acc3e04ef4d2d44244814582ac8434bf7d902e6cf73c"
+    },
+    {
+      "path": "Client/ManagedPack/mods/toms_storage-1.20-1.7.1.jar",
+      "sha256": "08552be86f960111e501227707dc089c91b8a55f6c1be09baee188338576ff9b"
+    }
+  ],
+  "producers": [
+    {
+      "action": "v3_store_filter_void",
+      "emitted_actions": [
+        "storage_filter_comparison",
+        "v3_store_filter_void"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_store_filter_void"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/FilterComparisonProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SophisticatedFilterProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SophisticatedFilterConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SophisticatedFilterDecisionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SophisticatedFilterTransferQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SophisticatedRestockFilterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SophisticatedVoidCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SophisticatedFilteredCommitQuestMixin.java"
+      ],
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_store_filter_void.json",
+          "advancement": "jem_advancements:quest_v3/v3_store_filter_void"
+        }
+      ],
+      "native_evidence": "Real native configuration still binds the same actor, wrapper and exact settings. Native matchesFilters is now eligible only inside the bracket of that exact native FilteredItemHandler insert/extract call. The actual base slot/simple methods and Modifiable simple overrides are observed at HEAD and RETURN. A positive permission record requires a non-simulated positive native result and equal exact child-handler credit or debit during that very call. Native getStackInSlot delegates directly to that endpoint inventoryHandler, and Modifiable inherits that getter. A true filter decision with full unchanged remainder creates no accepted record, even if the controller subsequently delivers the same kind to another child. Final outer source debit and destination credit must still match and cover that positively committed child amount. Genuine native false preflight decisions inside actual authenticated Deposit/Restock remain eligible only with unchanged child stock, full refused result, actual offered source kind and zero outer debit/credit. Free-standing simulations and previews remain outside the authenticated operation. Independent Void and native AND criteria are unchanged.",
+      "attribution": "Same authenticated survival ServerPlayer from native configuration and actual onHandlerInteract, plus exact configured wrapper/handler and actual Void source lineage",
+      "stages": [
+        {
+          "criterion": "filter_compared",
+          "action": "storage_filter_comparison",
+          "proof": "Same configured real core I/O filter accepts an actual transfer and intentionally rejects a distinct offered source kind due to the filter"
+        },
+        {
+          "criterion": "completed",
+          "action": "v3_store_filter_void",
+          "proof": "Same actor configured one plain cheap Void exemplar and native matched GUI-mode void actually debited at least one item from its real source"
+        }
+      ],
+      "unsupported_paths": [
+        "Transfer comparison through unrelated pipes with no authenticated real onHandlerInteract source boundary",
+        "Multiple simultaneous I/O filters on the same native decision list",
+        "Void insertion-overflow, slot-overflow and fluid routes do not earn this producer",
+        "Void examples other than plain untagged cobblestone, dirt or netherrack do not earn this producer",
+        "Configuration/comparison receipts are ephemeral and must be redone after restart, logout, expiration or source invalidation. Completed native criteria persist normally"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_review_fix_round1": {
+        "status": "IMPLEMENTED_PENDING_INDEPENDENT_REVIEW",
+        "finding": "P2 controller aggregation can lend B credit to full filter endpoint A",
+        "mechanism": "Exact native endpoint insertion/extraction method return plus same-call child stock delta, followed by original outer source conservation",
+        "native_methods": [
+          "FilteredItemHandler.insertItem(int,ItemStack,boolean)",
+          "FilteredItemHandler.insertItem(ItemStack,boolean)",
+          "FilteredItemHandler.extractItem(int,int,boolean)",
+          "FilteredItemHandler.Modifiable.insertItem(ItemStack,boolean)",
+          "FilteredItemHandler.Modifiable.extractItem(ItemStack,boolean)"
+        ],
+        "api_evidence": "Exact installed sophisticatedcore1.5.15.2427 javap declarations and cached FilteredItemHandler source. Native controller insertIntoStorage invokes actual IItemHandlerSimpleInserter child, so Modifiable override observation is necessary",
+        "reviewer_counterexample": "Full A returning unchanged X has zero actual moved amount and no accepted record. Actual B return/credit can produce only B-owned record. Earlier A rejection cannot combine with B acceptance",
+        "source_review_approval": false,
+        "production_build_observed_for_fix": false,
+        "runtime_observed": false
+      },
+      "resolved_source_review_findings": [
+        {
+          "priority": "P2",
+          "finding": "P2: overall controller transfer conservation can incorrectly credit a full configured inner endpoint when another endpoint accepts the item. Require exact observed endpoint committed delta before acceptance credit",
+          "resolution": "Exact same native endpoint method RETURN must report real non-sim positive movement and that same child stock delta, followed by outer source conservation. Full A creates no positive Decision when B receives. Independent scoped re-review accepted source fix, runtime unobserved"
+        }
+      ],
+      "independent_source_review": "build/questbook-v4-filter-review-report.md, fix round1 P2 addressed, no new actionable issue",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_network_filter",
+      "emitted_actions": [
+        "v3_store_network_filter"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_store_network_filter"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/FilterComparisonProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsFilterEndpointAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsFilterProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsFilterMenuQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsFilterConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsFilterButtonsQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsFilterEndpointQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsFilteredInsertionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsFilterTerminalQuestMixin.java"
+      ],
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_store_network_filter.json",
+          "advancement": "jem_advancements:quest_v3/v3_store_network_filter",
+          "changed": false
+        }
+      ],
+      "native_evidence": "Actual native InventoryConnectorFilterMenu te and AbstractFilteredMenu pinv identify endpoint and authenticated configuration actor. Native setting/ghost/item mutations must change the exact nine filter slots or native mode/state. FilteredInventoryCableConnectorBlockEntity.lambda$applyFilter$1 constructs its normal native handler once and binds that exact BE identity. Real StorageTerminalMenu onInteract/quickMoveStack captures actual player inventory plus cursor before native push. Exact actual non-simulated FilteredInventoryHandler.insertItem isInFilter call is invoked once and observed at its own guard. Permission requires native positive insertion remainder reduction, exact parent inventory credit and matching final real player debit. Rejection requires exact native false guard, unchanged remainder and parent stock, an actual offered player-held kind and no source debit. A separate distinct item under the same native endpoint identity and unchanged full configuration completes the comparison. Capacity failures have a true guard and zero committed credit, so cannot count as either successful permission or filter rejection.",
+      "attribution": "Same authenticated actual filter-menu configuration actor and terminal actor, same loaded native endpoint BE and unchanged nine-slot allow/keep/priority/facing state",
+      "unsupported_paths": [
+        "Native Inventory Hopper configuration path is not used because the fixed contract permits the filtered connector alternative",
+        "Automation without an actual authenticated terminal source boundary",
+        "Other players or another endpoint configuration cannot share the pair",
+        "Networks or parent inventories above 4096 slots and terminal operations exceeding the 64 observed-insertion budget do not receive speculative credit",
+        "Configuration/comparison receipts are ephemeral and must be redone after restart, logout, expiration or source invalidation. Completed native advancement persists normally"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "bounds": {
+    "inventory_slots": 4096,
+    "upgrades_per_menu": 64,
+    "configuration_receipts_per_family": 256,
+    "native_filter_decisions_per_sophisticated_transfer": 128,
+    "native_toms_insertions_per_terminal_operation": 64,
+    "native_toms_handler_nesting": 8,
+    "pending_void_slots_per_wrapper": 128,
+    "configuration_age_native_ticks": 12000,
+    "native_sophisticated_handler_nesting": 16,
+    "native_sophisticated_inspected_calls_per_transfer": 128
+  },
+  "lifecycle": "Weak native-object keys, weak actor and endpoint links, bounded receipts, exact live setting checks, source invalidation and logical-server stop cleanup. Sophisticated transfer context uses try/finally. Tom terminal context handles nested SPACE_CLICK/quickMoveStack and clears stale tick state, logout and server stop",
+  "central_additions": {
+    "filter_mixins": 12,
+    "parent_owned_registration": "SeashellFoodQuestMixin guarded beachparty, as explicitly requested by parent",
+    "paths": [
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
+      "Mods/JEMAchievementGuide/src/main/resources/jem_advancements.mixins.json"
+    ]
+  },
+  "preserved": "No native filter semantics, item debit/credit calls, mechanics, dependencies, book text, geometry, IDs, rewards, migration, source activation or distribution changed",
+  "verification_limits": [
+    "No production build, runtime Mixin application, gameplay launch, tests, fixtures, static-analysis execution, source activation, distribution sync or Git action performed by this worker",
+    "Parent owns final production build, independent review, canonical Atlas record and domain receipt reconciliation"
+  ],
+  "source_reviewed": true,
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 2
+}

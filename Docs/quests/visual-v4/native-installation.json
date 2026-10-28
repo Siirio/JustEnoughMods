@@ -1,0 +1,68 @@
+{
+  "observed_at_utc": "2026-10-28T05:25:22.914644+00:00",
+  "generation": 88,
+  "published_token": "91adda9ac821e44709f4963a2162bbcc906aa84f",
+  "active_token": "91adda9ac821e44709f4963a2162bbcc906aa84f",
+  "pending_transaction": false,
+  "attached_observed_in_native_log": true,
+  "artifacts": [
+    {
+      "name": "jem-advancements-5.1.0.jar",
+      "expected": "4b51e712cf694398f843dc3018b9322e6efbddc1169cd2bcb25e5191fdf94e21",
+      "managed": "4b51e712cf694398f843dc3018b9322e6efbddc1169cd2bcb25e5191fdf94e21",
+      "server": "4b51e712cf694398f843dc3018b9322e6efbddc1169cd2bcb25e5191fdf94e21",
+      "native_mod_projection": "4b51e712cf694398f843dc3018b9322e6efbddc1169cd2bcb25e5191fdf94e21"
+    },
+    {
+      "name": "jem-rewards-1.0.0.jar",
+      "expected": "ab49824f23de5ae7953da39a4c398980a624ca8fafebf7753b7112207e425bf3",
+      "managed": "ab49824f23de5ae7953da39a4c398980a624ca8fafebf7753b7112207e425bf3",
+      "server": "ab49824f23de5ae7953da39a4c398980a624ca8fafebf7753b7112207e425bf3",
+      "native_mod_projection": "ab49824f23de5ae7953da39a4c398980a624ca8fafebf7753b7112207e425bf3"
+    },
+    {
+      "name": "jemfood-1.0.0.jar",
+      "expected": "efd430fb9a5e89667f37787eb9c301d7e196531f5ba4e77e7d36ba97a28c2adc",
+      "managed": "efd430fb9a5e89667f37787eb9c301d7e196531f5ba4e77e7d36ba97a28c2adc",
+      "server": "efd430fb9a5e89667f37787eb9c301d7e196531f5ba4e77e7d36ba97a28c2adc",
+      "native_mod_projection": "efd430fb9a5e89667f37787eb9c301d7e196531f5ba4e77e7d36ba97a28c2adc"
+    },
+    {
+      "name": "mobhome-1.0.0.jar",
+      "expected": "dd351cb0d37ab60ae35a61de99a96d42f97aae2e09e20bd141b1e47e3354fbd4",
+      "managed": "dd351cb0d37ab60ae35a61de99a96d42f97aae2e09e20bd141b1e47e3354fbd4",
+      "server": "dd351cb0d37ab60ae35a61de99a96d42f97aae2e09e20bd141b1e47e3354fbd4",
+      "native_mod_projection": "dd351cb0d37ab60ae35a61de99a96d42f97aae2e09e20bd141b1e47e3354fbd4"
+    },
+    {
+      "name": "jem-settlements-2.1.0.jar",
+      "expected": "79c3b0f27e4ad0b620c5724c6dd1c627436b7bbe19acab07935263b9a0b99c7f",
+      "managed": "79c3b0f27e4ad0b620c5724c6dd1c627436b7bbe19acab07935263b9a0b99c7f",
+      "server": "79c3b0f27e4ad0b620c5724c6dd1c627436b7bbe19acab07935263b9a0b99c7f",
+      "native_mod_projection": "79c3b0f27e4ad0b620c5724c6dd1c627436b7bbe19acab07935263b9a0b99c7f"
+    }
+  ],
+  "ftb_definitions_matched_in_active_and_game_dir": [
+    "config/ftbquests/quests/data.snbt",
+    "config/ftbquests/quests/chapters/jem_03.snbt",
+    "config/ftbquests/quests/chapters/jem_07.snbt",
+    "config/ftbquests/quests/chapters/jem_12.snbt",
+    "config/ftbquests/quests/chapters/jem_16.snbt",
+    "config/ftbquests/quests/chapters/jem_17.snbt",
+    "config/ftbquests/quests/chapters/jem_25.snbt",
+    "config/ftbquests/quests/chapters/jem_26.snbt",
+    "config/ftbquests/quests/reward_tables/v2_bosses_races_13.snbt",
+    "config/ftbquests/quests/reward_tables/v2_food_brewmaster.snbt",
+    "config/ftbquests/quests/reward_tables/v2_food_feast.snbt",
+    "config/ftbquests/quests/reward_tables/v2_food_h03_05.snbt",
+    "config/ftbquests/quests/reward_tables/v2_food_h04_12.snbt",
+    "config/ftbquests/quests/reward_tables/v2_home_h05_12.snbt",
+    "config/ftbquests/quests/reward_tables/v2_home_h06_09.snbt",
+    "config/ftbquests/quests/reward_tables/v2_home_housewarming.snbt",
+    "config/ftbquests/quests/reward_tables/v2_home_trade_05.snbt",
+    "config/ftbquests/quests/reward_tables/v2_mag_fieldwork.snbt"
+  ],
+  "native_mod_projection_note": "Native UpdatePlan installs JARs into PROJECTION and loads them from active. gameDir/mods remains bootstrap-only, no raw managed JAR copies are required",
+  "gameplay_observed": false,
+  "stable_profile_changed": false
+}

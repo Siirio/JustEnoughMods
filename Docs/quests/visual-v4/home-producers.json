@@ -1,0 +1,427 @@
+{
+  "schema": 1,
+  "status": "SOURCE_IMPLEMENTED_PENDING_COMBINED_REVIEW",
+  "runtime_observed": false,
+  "source_of_contract": "build/questbook-v4-home-cards.json fixed15 exact cards",
+  "artifacts": [
+    {
+      "mod_id": "handcrafted",
+      "path": "Client/ManagedPack/mods/handcrafted-forge-1.20.1-3.0.6.jar",
+      "sha256": "1da3c7c524bfb656bb370757af55f08f1678e8e1cb934e1c4c04aa773ed64a79"
+    },
+    {
+      "mod_id": "bbb",
+      "path": "Client/ManagedPack/mods/bbb-forge-2.0pre4.jar",
+      "sha256": "9127d9013708f72784f538166db42451e3fae5d0f7f348d2675751eb26837d33"
+    },
+    {
+      "mod_id": "fairylights",
+      "path": "Client/ManagedPack/mods/fairylights-7.0.0-1.20.1.jar",
+      "sha256": "5c68ee27feb4ef10675c883ab67bfa0f1c3e3c0c2193f1c35f43a225d930d9b6"
+    },
+    {
+      "mod_id": "infinitybuttons",
+      "path": "Client/ManagedPack/mods/infinitybuttons-1.20.1-4.0.7.jar",
+      "sha256": "8b9c40ec3e2e8369d88cfddd19ee8844822a80987954ff3d2b31476f4314e319"
+    },
+    {
+      "mod_id": "immersive_weathering",
+      "path": "Client/ManagedPack/mods/immersive_weathering-1.20.1-2.0.5-forge.jar",
+      "sha256": "b88353d6efe18635bac2d4169e704320987e9678fd683217195dcdcf2c1ca1ba"
+    },
+    {
+      "mod_id": "dustydecorations",
+      "path": "Client/ManagedPack/mods/DustyDecorations_1.20.1Forge_V1.13.jar",
+      "sha256": "621256a87b4e8e370e20c16359eb91587e7e52efb8ed06b417b24f3eff2cd075"
+    },
+    {
+      "mod_id": "casualswing",
+      "path": "Client/ManagedPack/mods/casualswing-0.1.0-1.20.1-Forge.jar",
+      "sha256": "cb76cc4af706de4d6387b555e36fbb755579a1248a395b7b4d1da29f9535af42"
+    },
+    {
+      "mod_id": "kaleidoscope_doll",
+      "path": "Client/ManagedPack/mods/kaleidoscopedoll-1.4.1-forge+mc1.20.1.jar",
+      "sha256": "e17726edcccf6b77ac7c76bed44439c4307574ff0a53a5afd699073fbef5e5cd"
+    },
+    {
+      "mod_id": "immersive_melodies",
+      "path": "Client/ManagedPack/mods/immersive_melodies-0.8.0%2B1.20.1-forge.jar",
+      "sha256": "bf330d4204723f824e6adddce95e02bed13270095dd6f0e28dbea39da5bfdf9e"
+    },
+    {
+      "mod_id": "sootychimneys",
+      "path": "Client/ManagedPack/mods/sootychimneys-forge-1.20.1-1.3.4.jar",
+      "sha256": "4ce146a1caa9049c59a79dbc77f05de597d341d259f198f41b502186631edf68"
+    },
+    {
+      "mod_id": "chimes",
+      "path": "Client/ManagedPack/mods/Chimes-v2.1.1-1.20.1-Forge.jar",
+      "sha256": "7c2f03be44170898ba1013c5eb1e9ad1d199efa2d6877bfd396be0c3736fae59"
+    },
+    {
+      "mod_id": "copperagebackport",
+      "path": "Client/ManagedPack/mods/copperagebackport-forge-1.20.1-0.1.5.jar",
+      "sha256": "50e64fc55330a51aec678333031ec1f00635ebf24011d60d2737b4dcd64aa9a1"
+    },
+    {
+      "mod_id": "snowrealmagic",
+      "path": "Client/ManagedPack/mods/SnowRealMagic-1.20.1-Forge-10.7.0.jar",
+      "sha256": "969b0e396dc1d5f2fd3783b3638fc49230fe143ea5329584b27e558a77a20dac"
+    }
+  ],
+  "producers": [
+    {
+      "action": "v3_home_personal_touch",
+      "emitted_actions": [
+        "v3_home_personal_touch"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_personal_touch"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeCounterQuestMixin.java"
+      ],
+      "native_evidence": "Native CounterBlock.use changes the supported counter property and consumes exactly one material. Removing a top or cycling its shape supplies no credit.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_joinery",
+      "emitted_actions": [
+        "v3_home_joinery",
+        "v3_home_joinery_pallet"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_joinery"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeFrameQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomePalletQuestMixin.java"
+      ],
+      "native_evidence": "Actual native Frame center change and actual Hammer Pallet layer change are two mandatory criteria. Native hammer/tag selection remains the owner, no click counter.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_planters",
+      "emitted_actions": [
+        "v3_home_planters",
+        "v3_home_planters_urn"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_planters"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeLatticeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeUrnQuestMixin.java"
+      ],
+      "native_evidence": "Native lattice none-to-plant and native urn empty-to-soiled are separate mandatory criteria. Urn must debit one input, native lattice does not consume the plant and this quirk is preserved.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_hanging_lights",
+      "emitted_actions": [
+        "v3_home_hanging_lights"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_hanging_lights"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeFairyLineage.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeFairyProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeItemUseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeFairyItemQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeFairyConnectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeItemUseQuestMixin.java"
+      ],
+      "native_evidence": "Native ConnectionItem reconnect, native material debit and final Forge-accepted placement record creator on the real HangingLights connection. Same native connection must later change slack for that player. Native clamped true-without-change result fails.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_secret_signal",
+      "emitted_actions": [
+        "v3_home_secret_signal",
+        "v3_home_secret_signal_chain"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_secret_signal"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeSignalProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeSecretButtonQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeLanternButtonQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeChainEndpointQuestMixin.java"
+      ],
+      "native_evidence": "Native Secret Button false-to-pressed and live signal. Lantern native checkChains supplies actual endpoint distance, then native chain endpoint signal must be positive. Both mandatory, no copied propagation formula or extra world search.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_restore",
+      "emitted_actions": [
+        "v3_home_restore",
+        "v3_home_restore_bark"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_restore"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeWeatheringQuestMixin.java"
+      ],
+      "native_evidence": "Observe original private brickRepair/barkRepairing setters once, require setter acceptance, retained exact native result and one material debit. Brick must use Mortar, bark only first native stripped-log restoration branch, not the separate log-to-wood branch.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_quirky_corner",
+      "emitted_actions": [
+        "v3_home_quirky_corner",
+        "v3_home_quirky_corner_light"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_quirky_corner"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeRegisterAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeRegisterProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeRegisterAccessMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeRegisterClickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeCopperLightQuestMixin.java"
+      ],
+      "native_evidence": "Real bound native register menu click requires exact item-variant stock increase conserved against real player inventory plus cursor decrease. Plain internal menu or hopper cannot qualify. Separate native Copper Light toggle must change actual illumination, shoddy flicker excluded.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_swing",
+      "emitted_actions": [
+        "v3_home_swing"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_swing"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeSwingLineage.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeSwingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeItemUseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeSwingStructureQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeSwingInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeItemUseQuestMixin.java"
+      ],
+      "native_evidence": "Native finalizeStructure records same real placing actor only after Forge acceptance and retained actual native parts. Same master builder later rides a native EntitySeat, valid formed swing and native input handling actually change targetAmplitude. No copied swing formula or scans.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_toy_story",
+      "emitted_actions": [
+        "v3_home_toy_story",
+        "v3_home_toy_story_tweak"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_toy_story"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeDollPacketView.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeDollProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeDollOpenQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeDollLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeDollDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeDollTweaksQuestMixin.java"
+      ],
+      "native_evidence": "Native populated GiftBox getDrops appends actual doll stack during same real accepted destroyBlock. Same actual accepted ItemEntity is certified only after destruction commits, existing physical collection receipt requires the real opener to receive it. Separate native queued Tweaks packet must change real finite doll transform while actor holds real native tool.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_play_music",
+      "emitted_actions": [
+        "v3_home_play_music",
+        "v3_home_play_music_note"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_play_music"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeMusicStartQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeMusicNoteQuestMixin.java"
+      ],
+      "native_evidence": "Native InstrumentItem.play commits changed playback state for a real held instrument and an existing bundled-namespace datapack melody with actual notes. Dedicated native keyboard-note packet separately handles valid note and positive velocity while real instrument held. Both mandatory.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_chimney",
+      "emitted_actions": [
+        "v3_home_chimney",
+        "v3_home_chimney_smoke"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_chimney"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeChimneyState.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeChimneyQuestMixin.java"
+      ],
+      "native_evidence": "Native actual dirty chimney becomes native clean under real axe operation. Separate empty-hand native blocked-property change proves smoke toggle. Preserve native tool damage and soot yield.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_chime",
+      "emitted_actions": [
+        "v3_home_chime",
+        "v3_home_chime_hang"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_chime"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeChimeCarveQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeChimePlaceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeItemUseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeItemUseQuestMixin.java"
+      ],
+      "native_evidence": "Native Chimes rightClick changes bamboo_chimes to carved_bamboo_chimes under actual axe. Separate real carved placement requires exact native output and one debit, deferred until final Forge acceptance and retained block.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_copper_sort",
+      "emitted_actions": [
+        "v3_home_copper_sort"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_copper_sort"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeCopperProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeItemUseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeCopperSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeCopperTransportQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeCopperHandQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeCopperLoadQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeItemUseQuestMixin.java"
+      ],
+      "native_evidence": "Exact native CopperGolem spawn from player Carved Pumpkin placement, actual accepted entity plus native Copper Chest conversion after final Forge acceptance. Same real golem later physically debits source matching native COPPER_CHESTS tag and credits actual native destination, conserved against its cargo. Native cargo assignment invalidates stale lineage, reload binds only matching native cargo.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_snow_garden",
+      "emitted_actions": [
+        "v3_world_snow_garden"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_snow_garden"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeSnowState.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeItemUseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeSnowStateMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeSnowLayersQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeItemUseQuestMixin.java"
+      ],
+      "native_evidence": "Original fence/wall retained by native SnowBlockEntity.getContainedState, native Hooks.placeLayersOn increases actual layers. Final Forge-accepted use, actual snow debit, same native contained state and retained layer increase required. Worldgen/falling/weather snow supplies no actor.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_enchantment_extract",
+      "emitted_actions": [
+        "v3_home_enchantment_extract"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_enchantment_extract"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/home/HomeInteractionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomeGrindstoneQuestMixin.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/enchanting/GrindstoneExtraction.java"
+      ],
+      "native_evidence": "Exact current compat owner seam after accepted Enchanted Book spawn, first enchantment removal, canonical refund receipt settlement and XP transfer. Native intentional successful event cancellation is the owner result, early/failed returns never reach this seam.",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "authority": "Native committed owner and real survival logical-server actor, standalone integrated or dedicated, no JEMServer/services dependency",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "native_limitations": [
+    "Automation completion requires the real actor online in the same logical world when the native result commits",
+    "Creative, FakePlayer, external native API mutations without an actual native player operation and preexisting unproven assemblies do not receive new provenance",
+    "Native Copper Golem addItemsToContainer decrements cargo by free capacity rather than accepted count in its merge branch. No repair is made, observer uses actual conserved positive source debit and destination credit only",
+    "Native lottery does not preserve a player issuer through its delayed roll. This quest observes the actual populated native box opening and actual doll receipt, not possession or inferred roll ownership",
+    "Native music sound rendering is client-side. The server observes real committed playable bundled melody state and native keyboard-note protocol, never claims server acoustic playback"
+  ],
+  "preservation": "No native recipe, behavior, tool restriction, tuning, packet acceptance, event outcome, inventory equality or ordinary ItemStack tags changed. Technical assembly/cargo lineage lives on native owners. Existing completed criteria/actions and every card identity/reward/localization/position remain, nine mandatory secondary criteria preserve explicit combined objectives.",
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 15
+}

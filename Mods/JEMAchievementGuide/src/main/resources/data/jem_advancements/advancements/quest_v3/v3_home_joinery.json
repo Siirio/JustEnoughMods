@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_home_joinery"
+      }
+    },
+    "pallet": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_home_joinery_pallet"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "pallet"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

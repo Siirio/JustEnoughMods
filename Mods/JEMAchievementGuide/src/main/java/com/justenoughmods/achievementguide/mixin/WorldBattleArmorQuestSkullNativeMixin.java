@@ -1,0 +1,9 @@
+package com.justenoughmods.achievementguide.mixin;
+import com.justenoughmods.achievementguide.integration.battlearmor.*;import net.minecraft.world.entity.*;import net.minecraft.world.effect.MobEffectInstance;import org.spongepowered.asm.mixin.*;import org.spongepowered.asm.mixin.injection.*;import org.spongepowered.asm.mixin.injection.callback.*;
+@Mixin(value=LivingEntity.class,priority=900) public abstract class WorldBattleArmorQuestSkullNativeMixin {
+ @Unique private WorldBattleArmorQuestCurios.Skull jem$skull;
+ @Dynamic("Private native helper merged by installed Cataclysm LivingEntityMixin") @Inject(method="dev1_21_1$handleStunEffectLogic",at=@At("HEAD"),remap=false) private void jem$before(MobEffectInstance effect,Entity source,CallbackInfoReturnable<Boolean> nativeCallback,CallbackInfo ci){jem$skull=WorldBattleArmorQuestCurios.skullBefore((LivingEntity)(Object)this,effect);}
+ @Dynamic("Private native helper merged by installed Cataclysm LivingEntityMixin") @Inject(method="dev1_21_1$handleStunEffectLogic",at=@At("RETURN"),remap=false) private void jem$native(MobEffectInstance effect,Entity source,CallbackInfoReturnable<Boolean> nativeCallback,CallbackInfo ci){var skull=jem$skull;jem$skull=null;WorldBattleArmorQuestCurios.skullNative(skull,nativeCallback);}
+ @Inject(method="addEffect(Lnet/minecraft/world/effect/MobEffectInstance;)Z",at=@At("RETURN")) private void jem$finalOne(MobEffectInstance effect,CallbackInfoReturnable<Boolean> ci){WorldBattleArmorQuestCurios.effectReturned((LivingEntity)(Object)this,effect,ci.getReturnValue());}
+ @Inject(method="addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z",at=@At("RETURN")) private void jem$finalTwo(MobEffectInstance effect,Entity source,CallbackInfoReturnable<Boolean> ci){WorldBattleArmorQuestCurios.effectReturned((LivingEntity)(Object)this,effect,ci.getReturnValue());}
+}

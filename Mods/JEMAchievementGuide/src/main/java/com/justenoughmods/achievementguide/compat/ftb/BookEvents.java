@@ -143,8 +143,7 @@ public final class BookEvents {
 
     @SubscribeEvent
     public static void cloned(PlayerEvent.Clone event) {
-        var receipts = event.getOriginal().getPersistentData().get(BookXpReward.RECEIPTS);
-        if (receipts != null) event.getEntity().getPersistentData().put(BookXpReward.RECEIPTS, receipts.copy());
+        BookXpReward.cloned(event.getOriginal(), event.getEntity());
     }
 
     static void clear() {

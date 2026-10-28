@@ -32,6 +32,7 @@ public final class TreeChopIntegration {
             return;
         }
         JemCriteria.fire(player, TREE_FELLED);
+        com.justenoughmods.achievementguide.advancement.QuestActionTrigger.INSTANCE.emit(player, "v3_world_treefall");
         if (awards == TreeChopAwards.TREE_AND_MUSHROOM) {
             JemCriteria.fire(player, MUSHROOM_FELLED);
         }

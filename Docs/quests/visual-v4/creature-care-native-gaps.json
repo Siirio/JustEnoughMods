@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "runtime_verified": false,
+  "blocked_cards": [],
+  "native_limitations": [
+    {
+      "goal": "v3_fauna_pot_and_present",
+      "route": "mouse_capture_release",
+      "native_contradiction": "CNC native pot creates fresh untagged pot item and fresh default mouse on release, no native serialized entity transfer",
+      "resolution": "Strict external physical pot provenance accepts only actual full non-spatial native-state equality. Native mouse custom name, baby age, injury, texture, effects, attributes or any other data loss stays rejected. No data/UUID restoration and no generalized data-preserving claim",
+      "status": "restricted honest route implemented, runtime match unexercised"
+    },
+    {
+      "goal": "v3_fauna_ringtail_and_caribou",
+      "route": "ringtail",
+      "native_limit": "RingtailPlayerMineProcedure grants a proximity-only advancement without output",
+      "resolution": "Not used. Exact native owner Haste II effect in RingtailOnEntityTickUpdateProcedure is observed only after native addEffect success and useful actual before/after transition",
+      "status": "working OR alternative preserved in source"
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 # JEM Adventure Atlas
 
-The [UI Rescue v3 specification](rescue-v3/specification.md) supersedes the earlier index and subchapter redesign. The native sidebar now contains exactly seven real chapters, without named chapter groups or a mandatory hub. Existing cards move into those canvases
+The canonical authoring source now contains the supplied Visual V4 design with the user's Seed Bag and inert-totem removals:614 quests, seven chapters and512 cosmetic connections. The elder alloy goal now requires only confirmed native Invulnerite smithing, with corrected bilingual guidance and a one-stage reward. Its implementation is in progress and remains isolated from the active modpack until every required native success producer and reward migration is ready. [The V4 implementation receipt](visual-v4/implementation.json) enumerates every advancement, including missing producers. A successful production build alone does not open this activation gate
 
-The authored book contains 602 cards: 577 objectives remain visible across seven chapters, while 25 informational cards stay in source history and are not displayed. Seven invisible historical archives preserve retired identities. Existing objective, task and reward IDs remain stable
+Ordinary V4 quests belong to the standalone modpack and run on Minecraft's integrated logical server in singleplayer. They require no external server, JEMServer, hosted SMP session or remote service. Optional native-mod adapters follow the installed owners on both host types. Dedicated event objectives remain optional and unavailable without their owning feature, with no blocking dependency on ordinary progression. FTB Quests remains the book, progress and team owner, JEMRewards remains its integrated-safe personal delivery companion
+
+The current installed [UI Rescue v3 specification](rescue-v3/specification.md) retains exactly seven real chapters, without named chapter groups or a mandatory hub. The active V3 book contains 602 cards with 577 visible objectives and 25 retained informational records. Seven invisible historical archives preserve retired identities. The following V3 delivery history remains applicable to the installed generation until V4 activation
 
 The client-only **In chat FTB** mod (`in_chat_ftb`) replaces FTB's completed-quest toast with a local chat line. The quest title is cyan, underlined and clickable, and opens that quest in the native FTB book. Chapter captions, separate guide cards and free-standing tab text are not shown; objective details, tasks and rewards remain available on their quest pages
 
@@ -11,7 +13,8 @@ The earlier figure of 596 cards described an older revision. The immutable [base
 ## Canonical source and generation
 
 - `Mods/JEMAchievementGuide/tools/questbook/book.json` owns exact bindings, stable identities, rewards, both languages, chapter membership, saved geometry and image declarations
-- `python Mods/JEMAchievementGuide/tools/compile_questbook.py` emits native SNBT into `Client/ManagedPack/config/ftbquests/quests`, indexed rules, reference resources, localization keys, [card-mapping.csv](card-mapping.csv), the compiled-file manifest and the canonical Atlas reward selector
+- `python Mods/JEMAchievementGuide/tools/compile_questbook.py` now emits candidate native SNBT, indexed rules, references, locales, handbook entries and advancement resources under `Mods/JEMAchievementGuide/build/questbook-v4-candidate`, preserving the active managed output
+- Production activation requires the exact book/resource hashes, reviewed coverage for every native success action and migration readiness in the V4 receipt. An incomplete or stale receipt rejects activation before writing managed resources
 - `python Mods/JEMAchievementGuide/tools/questbook/rescue_v3.py` previews deterministic migration without writing, and `--apply` stores the seven-canvas geometry
 - `python Mods/JEMAchievementGuide/tools/questbook/audit_rescue_v3.py` writes the requested before/after preservation, image/model lookup and geometry receipts under [rescue-v3](rescue-v3)
 - The earlier `audit_book.py`, [layout-audit-20261025.json](layout-audit-20261025.json) and migration CSV describe the superseded redesign, not current visual acceptance

@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_shadow_arsenal"
+      }
+    },
+    "volley": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_shadow_arsenal_volley"
+      }
+    },
+    "burrow": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_shadow_arsenal_burrow"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "volley",
+      "burrow"
+    ],
+    [
+      "completed",
+      "burrow"
+    ],
+    [
+      "completed",
+      "volley"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

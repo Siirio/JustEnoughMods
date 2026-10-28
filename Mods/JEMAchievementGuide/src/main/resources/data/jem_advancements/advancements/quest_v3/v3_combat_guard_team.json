@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_guard_team"
+      }
+    },
+    "recruited": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_guard_team_recruited"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "recruited"
+    ],
+    [
+      "completed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_walrus_signal"
+      }
+    },
+    "bound": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_walrus_signal_bound"
+      }
+    },
+    "played": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_walrus_signal_played"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "bound"
+    ],
+    [
+      "played"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "runtime_observed": false,
+  "artifacts": [
+    {
+      "path": "Client/ManagedPack/mods/aquamirae-forge-1.20.1-7.1.13.jar",
+      "sha256": "720330ca529ed7cbe0af2fb38b82205764be2e0aba28e2ab8a2619ccb7830fba"
+    },
+    {
+      "path": "Client/ManagedPack/mods/oceanicrealms-1.0.7-last-laster-ver.jar",
+      "sha256": "8f346b75b8b1c6d28b069924fe0aed374c3820997dae765698c3a140eccf2321"
+    },
+    {
+      "path": "Client/ManagedPack/mods/primal-1.1.6%2B1.20.1.jar",
+      "sha256": "bfbeb4e2159381be06bee86c072da108887a1e4380e6495087895fa39aae3eb5"
+    },
+    {
+      "path": "Client/ManagedPack/mods/SpiderOverhaul-0.0.6-Forge-v1.20.jar",
+      "sha256": "8d9e056e836271646c71ba3f3f2ff222199396a1b1c63539e3b95fbaaca1e5fd"
+    }
+  ],
+  "producers": [
+    {
+      "action": "v3_fauna_ocean_watch",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_ocean_watch"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldOceanObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldOceanMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeLifecycle.java"
+      ],
+      "native_evidence": "Accepted native movement/look packets drive one16-block gaze ray, same live native ocean shark with line of sight and ocean biome for40ticks, reset on actor positive damage, rejected movement/teleport or gaze loss. No dimension entity scan or proximity award",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_shark_supper",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_shark_supper"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldSharkMealQuestMixin.java"
+      ],
+      "native_evidence": "Exact single raw beef ItemEntity UUID and actor from real toss, unchanged complete stack, native GreatWhiteShark mouth acceptance after real eating state then actual native discard. No nearest-player inference or other discard paths",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_era_abyssal_forging",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_era_abyssal_forging"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldAbyssalSmithingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldAbyssalSmithingQuestMixin.java"
+      ],
+      "native_evidence": "Actual selected registered enabled native SmithingTransformRecipe, exact assembled result and native input debit. Eight real terrible/abyssal armor transforms. Native terrible recipes use fin, not stale tooltip angler fang",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_eagle_captain",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_eagle_captain"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldEagleContributors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldEagleCombatQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldEagleCombatResetQuestMixin.java"
+      ],
+      "native_evidence": "Native actor-owned Primal Eagle actual positive health damage to native raid captain, contribution ends when actual CombatTracker clears, actual successful non-generic native captain death flag before grants. No nearby bird or copied combat timeout",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_era_eye_of_the_blizzard",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_era_eye_of_the_blizzard"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldMaelstromProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldNiveisDrinkQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldMaelstromArrivalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldConsumedEffectRemovalQuestMixin.java"
+      ],
+      "native_evidence": "Real Tear debit and actual native Maelstrom Omen instance, native storm/IceMaze transport owner then confirmed actual registered Maelstrom destination. Native authority sets progress and effects unchanged. No invented distillation station or teleport",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_spider_pollen",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_spider_pollen"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldBambooProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPollenUseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBambooConversionQuestMixin.java"
+      ],
+      "native_evidence": "Real paid Pollen handler invocation creates actual new ConversionTask, exact task carries observational actor, original actual root bamboo replacement must become native GiantBamboo after successful set. Native early impossible advancement is insufficient",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_pet_shelled_friend",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_pet_shelled_friend"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldShellGrowthProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldScuttlerPickupQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldScuttlerGrowthQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldShellbackMountQuestMixin.java"
+      ],
+      "native_evidence": "Actual supplied jelly pickup/debit and native growth, same native accepted evolution result, actual resulting native owner/tame state and successful passenger commit. No age/cooldown copied or new tame mechanics",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_era_hunger_guard",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_era_hunger_guard"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldHungerGuardProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldmisc/WorldNativeLifecycle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldHungerMealQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldHungerDamageQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldHungerNativeProtectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldConsumedEffectRemovalQuestMixin.java"
+      ],
+      "native_evidence": "User-approved zero-food route. Actual Void Squid debit and native acquired Devouring Curse object, same actual positive Player.hurt invocation rejected by native PlayerHandler.isInvulnerableTo, food exactly zero and actual health unchanged. Native arbitrary immunity queries alone do not grant. Complete damage call path also confirms positive-food protection in a separate multiply-zero/food-debit owner, earlier absence claim corrected",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_cache": "build/world-misc-native",
+  "review_status": "PENDING_OVERALL_BATCH",
+  "user_amendment": "native-user-amendment.json, two unsupported original WorldMisc cards retired",
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 8
+}

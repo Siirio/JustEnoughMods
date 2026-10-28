@@ -1,0 +1,779 @@
+{
+  "date": "2026-10-27",
+  "requested_change": "User explicitly chose Stove chicken instead of an unsupported Roaster output",
+  "preserved": [
+    "quest ID v3_food_roaster",
+    "native quest ID 33AF7FAA490AB389",
+    "reward definitions",
+    "advancement ID jem_advancements:quest_v3/v3_food_roaster"
+  ],
+  "runtime_verification": false,
+  "native_sources": [
+    {
+      "path": "Client/ManagedPack/mods/letsdo-farm_and_charm-forge-1.0.14.jar",
+      "sha256": "2311790589a58678640cb788de13bebd40efe3ed92f03e82a8fa871850a382eb",
+      "recipes": [
+        {
+          "resource": "data/farm_and_charm/recipes/stove/roasted_chicken.json",
+          "sha256": "9d7766bcf62ce9fdfe0f742a77db04cffa86acb3585483ace19e6dacde5df961",
+          "definition": {
+            "type": "farm_and_charm:stove",
+            "ingredients": [
+              {
+                "tag": "farm_and_charm:pasta"
+              },
+              {
+                "item": "farm_and_charm:chicken_parts"
+              },
+              {
+                "item": "minecraft:carrot"
+              }
+            ],
+            "result": {
+              "item": "farm_and_charm:roasted_chicken",
+              "count": 3
+            },
+            "experience": 0.3,
+            "requiresLearning": false
+          }
+        },
+        {
+          "resource": "data/farm_and_charm/recipes/mincer/flour.json",
+          "sha256": "5f2c38868bc048f5057f8bbfc87280ec6baaeb49d670c01e081974987a24e12d",
+          "definition": {
+            "type": "farm_and_charm:mincer",
+            "ingredient": {
+              "tag": "farm_and_charm:wheat"
+            },
+            "recipe_type": "STONE",
+            "result": {
+              "item": "farm_and_charm:flour",
+              "count": 4
+            }
+          }
+        },
+        {
+          "resource": "data/farm_and_charm/recipes/crafting_bowl/dough.json",
+          "sha256": "d289d96436f8a659dfcaef55d851ad8f1597791e7da9e2a9b6ad2c9cd6fe9b78",
+          "definition": {
+            "type": "farm_and_charm:crafting_bowl",
+            "ingredients": [
+              {
+                "tag": "farm_and_charm:flour"
+              },
+              {
+                "item": "farm_and_charm:yeast"
+              },
+              {
+                "tag": "farm_and_charm:water_bottles"
+              }
+            ],
+            "result": {
+              "item": "farm_and_charm:dough",
+              "count": 5
+            }
+          }
+        },
+        {
+          "resource": "data/farm_and_charm/recipes/pot_cooking/potato_soup.json",
+          "sha256": "a9a12690edbf5eb916f64bb987f206cb15e6ba27311fac092a2073c6d2a3a1fb",
+          "definition": {
+            "type": "farm_and_charm:pot_cooking",
+            "ingredients": [
+              {
+                "item": "minecraft:potato"
+              },
+              {
+                "tag": "farm_and_charm:onion"
+              }
+            ],
+            "container": {
+              "required": true,
+              "item": {
+                "item": "minecraft:bowl"
+              }
+            },
+            "result": {
+              "item": "farm_and_charm:potato_soup",
+              "count": 1
+            },
+            "requiresLearning": false
+          }
+        }
+      ],
+      "roaster_recipe_resources": [
+        "data/farm_and_charm/recipes/roaster/bacon_with_eggs.json",
+        "data/farm_and_charm/recipes/roaster/barley_patties_with_potatoes.json",
+        "data/farm_and_charm/recipes/roaster/beef_patty_with_vegetables.json",
+        "data/farm_and_charm/recipes/roaster/chicken_wrapped_in_bacon.json",
+        "data/farm_and_charm/recipes/roaster/cooked_cod.json",
+        "data/farm_and_charm/recipes/roaster/cooked_salmon.json",
+        "data/farm_and_charm/recipes/roaster/lamb_with_corn.json",
+        "data/farm_and_charm/recipes/roaster/oat_pancake.json",
+        "data/farm_and_charm/recipes/roaster/sausage_with_oat_patty.json"
+      ]
+    },
+    {
+      "path": "Client/ManagedPack/mods/letsdo-bakery-forge-2.0.6.jar",
+      "sha256": "feb70544c3b8409122c26b9a80d86691c8e36508b95e24fe7bd89e3a973a947e",
+      "recipes": [
+        {
+          "resource": "data/farm_and_charm/recipes/stove/bread.json",
+          "sha256": "f4134c218dca3942e2e6e07e950af6c30f005dd721145c6b021278bc17dc7bba",
+          "definition": {
+            "type": "farm_and_charm:stove",
+            "ingredients": [
+              {
+                "tag": "bakery:dough"
+              },
+              {
+                "item": "minecraft:sugar"
+              },
+              {
+                "tag": "bakery:water_bottles"
+              }
+            ],
+            "result": {
+              "item": "bakery:bread",
+              "count": 4
+            },
+            "experience": 0.125,
+            "requiresLearning": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "Client/ManagedPack/mods/letsdo-brewery-forge-2.0.6.jar",
+      "sha256": "c8ae46cac66ab2a054cac6f9353512855c2cebaf5eb2eacc38503a50f05c56ea",
+      "recipes": [
+        {
+          "resource": "data/brewery/recipes/brewing/wheat_beer.json",
+          "sha256": "960df96a8531e8a18dc254a40800346ebd32e031848dbc5836defa5379bb7c88",
+          "definition": {
+            "type": "brewery:brewing",
+            "ingredients": [
+              {
+                "item": "brewery:hops"
+              },
+              {
+                "item": "brewery:dried_wheat"
+              },
+              {
+                "item": "farm_and_charm:yeast"
+              }
+            ],
+            "material": "WOOD",
+            "result": {
+              "item": "brewery:beer_wheat"
+            }
+          }
+        },
+        {
+          "resource": "data/brewery/recipes/brewing/whiskey_highland_hearth.json",
+          "sha256": "06e2320c7d51d2fc35078b6eba953b0bf5398843d8a27eb46985ce3623b900fb",
+          "definition": {
+            "type": "brewery:brewing",
+            "ingredients": [
+              {
+                "item": "brewery:dried_wheat"
+              },
+              {
+                "item": "brewery:dried_oat"
+              },
+              {
+                "item": "farm_and_charm:yeast"
+              }
+            ],
+            "material": "COPPER",
+            "result": {
+              "item": "brewery:whiskey_highland_hearth"
+            }
+          }
+        },
+        {
+          "resource": "data/farm_and_charm/recipes/drying/dried_wheat.json",
+          "sha256": "e5677ecb8f8af390d382ed6104c674f449865a7255e6cc68f2fa398bae2ce42f",
+          "definition": {
+            "type": "farm_and_charm:drying",
+            "ingredient": {
+              "item": "minecraft:wheat"
+            },
+            "recipe_type": "MEAT",
+            "result": {
+              "item": "brewery:dried_wheat",
+              "count": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Client/ManagedPack/mods/letsdo-herbalbrews-forge-1.0.12.jar",
+      "sha256": "8cf03776a4a876810a2af9c9f18f73eb5a20f041b0791b6c8b8150b5441b83c1",
+      "recipes": [
+        {
+          "resource": "data/herbalbrews/recipes/kettle_brewing/green_tea.json",
+          "sha256": "ded4a361fea72005d81607f2e188579ae879c005d2678dd51965e4edd42d22b5",
+          "definition": {
+            "type": "herbalbrews:kettle_brewing",
+            "experience": 0.8,
+            "crafting_duration": 25,
+            "fluid": [
+              {
+                "amount": 10
+              }
+            ],
+            "heat_needed": [
+              {
+                "amount": 40
+              }
+            ],
+            "ingredients": [
+              {
+                "item": "herbalbrews:dried_green_tea"
+              },
+              {
+                "item": "minecraft:glass_bottle"
+              }
+            ],
+            "result": {
+              "item": "herbalbrews:green_tea",
+              "effect": "herbalbrews:balanced",
+              "effectduration": 1800
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Client/ManagedPack/mods/letsdo-vinery-forge-1.4.41.jar",
+      "sha256": "5d7e11f6e2218562ce75d60788fdcfc9ccf59e4532757c18bf37759d5fc739ee",
+      "recipes": [
+        {
+          "resource": "data/vinery/recipes/apple_fermenting/apple_juice.json",
+          "sha256": "b389e2047519ba645d2ccbc2f2c39e8ed4aba6760f00e1acc007b0f7112e6a36",
+          "definition": {
+            "type": "vinery:apple_fermenting",
+            "input": {
+              "item": "vinery:apple_mash"
+            },
+            "wine_bottle": {
+              "required": true
+            },
+            "output": {
+              "item": "vinery:apple_juice",
+              "count": 1
+            }
+          }
+        },
+        {
+          "resource": "data/vinery/recipes/wine_fermentation/red_wine.json",
+          "sha256": "c7c472a589a05c5c3815be2d983b3e7b1c7485df2704d3ed7c2283a3b5e42368",
+          "definition": {
+            "type": "vinery:wine_fermentation",
+            "juice": {
+              "type": "red_general",
+              "amount": 10
+            },
+            "ingredients": [
+              {
+                "item": "minecraft:sugar"
+              }
+            ],
+            "wine_bottle": {
+              "required": true
+            },
+            "result": {
+              "item": "vinery:red_wine",
+              "count": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Client/ManagedPack/mods/kaleidoscopecookery-1.4.1-forge%2Bmc1.20.1.jar",
+      "sha256": "cf99f12875fee3fa915d06fa8aa62705c2fd55577fd1ddd459350fba1abbff9f",
+      "recipes": [
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/flex_stockpot/beef_noodle.json",
+          "sha256": "1414a1d9c3eb5cf128147d8622ef5fdbcfa32b41161ef2d66e8b1417877a6325",
+          "definition": {
+            "type": "kaleidoscope_cookery:flex_stockpot",
+            "carrier": {
+              "item": "minecraft:bowl"
+            },
+            "cooking_bubble_color": 16772291,
+            "cooking_texture": "kaleidoscope_cookery:stockpot/default_cooking",
+            "finished_bubble_color": 16034443,
+            "finished_texture": "kaleidoscope_cookery:stockpot/default_finished",
+            "ingredients": [
+              {
+                "tag": "forge:raw_beef"
+              },
+              {
+                "item": "kaleidoscope_cookery:raw_noodles"
+              }
+            ],
+            "result": {
+              "item": "kaleidoscope_cookery:beef_noodle"
+            },
+            "soup_base": "minecraft:water",
+            "time": 300
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_1.json",
+          "sha256": "d430dcffa95e635ac5d7c96e26f5b2b239fad70a5b61528eb2acaf8b1d6100af",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_2.json",
+          "sha256": "8ad33e9c25b38963a3daaa60ba46d65c5580c9907e00c7079ea26796c5493d1d",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 2,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_3.json",
+          "sha256": "fc9cef63fd91519b8f3bc5938088ebbb383eda236ec471073f426ff50cfb4b5d",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 3,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_4.json",
+          "sha256": "cb92a4d78534ebc0e65910062f261bbf299164c8673625a93d251457ae467a23",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 4,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_5.json",
+          "sha256": "c43cca173db266c66dea7ebff7cff775e0cdaf8afe4bd9b17b5bf01577b30900",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 5,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_6.json",
+          "sha256": "0ea2e7ce1e62951a6c774fc5600d41768ec28a439dc7e1878903537606500c23",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 6,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_7.json",
+          "sha256": "fdfdebbff727d2623dd113c0d43d8370f2913d99dedcafaf6286077e4f626f54",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 7,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_8.json",
+          "sha256": "702316934b620cef38753e7dcdef7756699d41c35d0199a3aa4b30c2df44573b",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 8,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/pot/egg_to_fried_egg_9.json",
+          "sha256": "d816be504d7809603e139a18eab68e8e4a9d3e3e7a461136356b43ae59702006",
+          "definition": {
+            "type": "kaleidoscope_cookery:pot",
+            "ingredients": [
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              },
+              {
+                "tag": "forge:eggs"
+              }
+            ],
+            "result": {
+              "count": 9,
+              "item": "kaleidoscope_cookery:fried_egg"
+            },
+            "stir_fry_count": 3,
+            "time": 200
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/steamer/mantou.json",
+          "sha256": "06d4e9b502336b88e2f6978a8cf69ba4cfe7e233f15df3e7e899ec78efda42e8",
+          "definition": {
+            "type": "kaleidoscope_cookery:steamer",
+            "cook_tick": 1200,
+            "ingredient": {
+              "tag": "forge:dough"
+            },
+            "result": {
+              "item": "kaleidoscope_cookery:mantou"
+            }
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/stockpot/beef_noodle.json",
+          "sha256": "3731efaa509d9c8d6b57e9ff1ed82eb744d8d15b2ef656580677d87c0f89fbad",
+          "definition": {
+            "type": "kaleidoscope_cookery:stockpot",
+            "carrier": {
+              "item": "minecraft:bowl"
+            },
+            "cooking_bubble_color": 16772291,
+            "cooking_texture": "kaleidoscope_cookery:stockpot/default_cooking",
+            "finished_bubble_color": 16034443,
+            "finished_texture": "kaleidoscope_cookery:stockpot/default_finished",
+            "ingredients": [
+              {
+                "tag": "forge:raw_beef"
+              },
+              {
+                "tag": "forge:raw_beef"
+              },
+              {
+                "tag": "forge:raw_beef"
+              },
+              {
+                "tag": "forge:raw_beef"
+              },
+              {
+                "item": "kaleidoscope_cookery:raw_noodles"
+              },
+              {
+                "item": "kaleidoscope_cookery:raw_noodles"
+              },
+              {
+                "item": "kaleidoscope_cookery:raw_noodles"
+              }
+            ],
+            "result": {
+              "item": "kaleidoscope_cookery:beef_noodle"
+            },
+            "soup_base": "minecraft:water",
+            "time": 300
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/millstone/flour_from_wheat.json",
+          "sha256": "02886216a4898b20c8a4330e318f9c3ff722001d9ace3afc0e81e6316c28a9ca",
+          "definition": {
+            "type": "kaleidoscope_cookery:millstone",
+            "ingredient": {
+              "item": "minecraft:wheat"
+            },
+            "result": {
+              "item": "kaleidoscope_cookery:flour"
+            }
+          }
+        },
+        {
+          "resource": "data/kaleidoscope_cookery/recipes/chopping_board/raw_noodles_from_raw_dough.json",
+          "sha256": "82279b4320f18a978207b6396e8c8fd307f9c8e2d074ef8ddf33021ed7a32997",
+          "definition": {
+            "type": "kaleidoscope_cookery:chopping_board",
+            "cut_count": 4,
+            "ingredient": {
+              "tag": "forge:dough"
+            },
+            "model_id": "kaleidoscope_cookery:raw_dough",
+            "result": {
+              "count": 2,
+              "item": "kaleidoscope_cookery:raw_noodles"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Client/ManagedPack/mods/rightclickharvest-forge-4.6.1+1.20.1.jar",
+      "sha256": "e7ae955174869497a7aa855cf859aba6f37abbb2a93b53e9e05935cf7709cc0a",
+      "recipes": [],
+      "native_method": "private static InteractionResult completeHarvest(Level,BlockState,BlockPos,Player,InteractionHand,ItemStack,boolean,boolean,Runnable)"
+    },
+    {
+      "path": "Client/ManagedPack/mods/letsdo-beachparty-forge-2.0.3.jar",
+      "sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef",
+      "recipes": [],
+      "native_owner": "net.satisfy.beachparty.core.block.entity.WetHayBaleBlockEntity.tick(ServerLevel,BlockPos,BlockState,WetHayBaleBlockEntity)"
+    },
+    {
+      "path": "Client/ManagedPack/mods/kaleidoscope_nether-1.1.8-forge%2Bmc1.20.1.jar",
+      "sha256": "55a86fa55d381e918f3bb0fbc5fa17c73370076d752f8441b36a31758509e687",
+      "recipes": [],
+      "native_owner": "com.bmt.kaleidoscope_nether.item.EverlastingFoodItem.finishUsingItem"
+    }
+  ],
+  "override_scan": {
+    "paths": [
+      "Client/ManagedPack/kubejs/server_scripts",
+      "Client/ManagedPack/config/paxi"
+    ],
+    "roasted_chicken_recipe_overrides_found": false,
+    "cookery_and_silo_exact_ids_outputs_types_matches_found": false,
+    "cookery_and_silo_search": "egg_to_fried_egg, stockpot/beef_noodle, steamer/mantou, drying/dried_wheat, kaleidoscope_cookery pot/stockpot/flex_stockpot/steamer types, brewery:dried_wheat and farm_and_charm:drying within managed kubejs and config/paxi JS/JSON resources"
+  },
+  "native_collection_evidence": {
+    "mincer": "Native output1 is ejected next tick by spawnItem using native physics. Provenance envelope is removed before addFreshEntity, delivered ItemStack bytes stay native. ItemEntity merge and real inventory receipt conserve certified quantities",
+    "bowl": "Native output4 Inventory.add is called only in completed stirring branch (STIRRED>=50, STIRRING==0). Recipe result assembled after native ingredient consumption",
+    "limits": "No runtime/gameplay observation. Source and exact bytecode inspected only",
+    "cooking_pot": "Native output slot7, serving container slot6. canCraft succeeds before craft commits output, consumes recipe inputs and one required container before RETURN. CookingPotGuiHandler binds output7 to actual BlockEntity Container. Concrete CookingPotBlockEntity overrides invalidate receipts then invoke inherited native ImplementedInventory defaults m_6836_/m_6211_",
+    "tea": "TeaKettleGuiHandler output0 is a vanilla FurnaceResultSlot bound to actual native BE Container. craft consumes actual matching ingredients before assembling output and decreases required water before its final return",
+    "vinery": "ApplePress.processFermenting consumes mash1 and required bottle2 then writes/grows output3. Barrel.craft writes/grows output5 then consumes bottle4, fluid and ingredients before return. Native WineBarrelOutputSlot calls DrinkBlockItem.onCraftedBy -> WineYears.setWineYear, handled as exact comparison variant using native API on copy",
+    "plow": "F&C1.0.14 PlowCartEntity.handleServerSide changes supported dirt/grass to vanilla FARMLAND via Level.setBlock. Canonical AbstractTowableEntity has public getDriver/hasDriver, no actor inferred from nearby players. Fertilized soil branch remains native and outside exact requested vanilla target",
+    "silo": "Exact Farm&Charm1.0.14 SiloBlockEntity dry: bytecode107..116 consumes actual whole input,118..142 resolves SiloRecipe output,145..167 commits output into empty slot81..161. tryDropFinish224 invokes native dropStack with that same physical output stack. dropStack loop87..204 mutates source through split and adds each ItemEntity. Envelopes stripped before addFreshEntity, all native item bytes/velocities unchanged. Concrete mutation overrides delegate native interface defaults m_6836_/m_7407_/m_8016_/m_6211_. Native shift-removal route no inventory receipt, intentionally uncredited",
+    "mapping_fix": "Parent unified build log BUILD SUCCESSFUL in1m57s. Independently javap-inspected reobfuscated output: CookingPot/Herbal/Vinery concrete overrides are m_6836_/m_6211_ with invokespecial exact respective native ImplementedInventory same SRG methods. Silo m_7407_/m_8016_ likewise map and delegate correctly. No default interface injectors or native method body copies. This confirms static artifact linkage only, no Forge runtime observation",
+    "cookery_pot": "PotBlockEntity.applyRecipe stores matched recipe assembly and status1. tickCooking at currentTick0 sets status2, but unfulfilled shovel stir count changes output to suspicious, exact pending original output rejects it. takeOutProduct accepts status2/3, only status2 actual fried egg recorded. Native reset after real ItemUtils delivery. ItemUtils can put into main hand or Forge item handler inventory, actual inventory gain checked",
+    "cookery_stockpot": "Stockpot native persisted recipeId/result/status3/takeoutCount. takeOutProduct demands no lid, native carrier, copies result1 then actual ItemUtils transfer and decrements takeoutCount exactly1. Exhaustion clears native batch, no duplicate external counter",
+    "cookery_spit": "Shawarma lambda$onPutCookingItem$0 splits actual input maximum8, assembles native CampfireCookingRecipe, sets native cookTime and refreshes. onTakeCookedItem distinguishes cookTime<=0 cooked result branch versus raw timer>0 branch. giveItem clears both native stacks/time before actual ItemUtils transfer. Receipt requires exact recipe result and real inventory gain",
+    "cookery_steamer": "Native cookingTick timer guard precedes Optional.map original assembly and NonNullList.set actual cooked output, then cookingTime=-1. Exact recipe captured around original Function invocation, no reassembly. takeFood loops native4/8 slots and calls ItemUtils transfer then clears actual slot/time. Bounded receipt consumed before native transfer. Native placeFood invalidates each affected slot",
+    "cookery_limits": "Source/bytecode inspection only, no runtime observation. Native no-room delivery may drop output, this action is credited only where at least one exact output actually reaches player inventory. Moving a completed steamer into a portable steamer item does not copy quest provenance",
+    "cookery_recording": "Exact RecipeItem.useOn routes hasRecipe true to onPutRecipe, false to onRecordRecipe. onRecordRecipe requires Pot status0/Stockpot status1 and actual nonempty inputs, splits actual blank book1, native result resolves matching registered station recipe, writes typed RecipeRecord (input/output/type/flexRecipe), then native ItemUtils delivers. Hook wraps only this delivery with full original method arguments, requires same recorded/native inputs and matching registered native recipe to exclude fallback suspicious dishes, then actual written-book inventory gain. No recipe item singleton context or populated-copy credit",
+    "grape_pot": "Vinery1.4.41 GrapevinePotBlock has no BE, native STAGE0..6 and STORAGE0..9. fallOn accepts LivingEntity, native only state5->6 final setBlock true by actual ServerPlayer creates quest pending stage receipt. Native canTakeWine checks stage6, storage3/6/9 and wine_bottle. use obtains GrapeType.getBottle, decrements storage3 via Level.setBlock, shrinks real bottle1, then Inventory.add actual juice and drops only on failure. Hook preserves those calls, exact actor/chunk/position/state/portion receipt required plus inventory gain. Merely ready pot or existing juice bottle never qualifies",
+    "grape_chunk_capability": "Exact mapped Forge47.4.10 LevelChunk constructor assigns level at bytecode48 and initializes capability provider at149..153, so AttachCapabilitiesEvent<LevelChunk> can safely inspect logical side. Native chunk capability serialization retains bounded pending pot receipts across restart. Transient draw receipts deliberately not serialized. LevelChunk.setBlockState RETURN invalidation checks native grape-pot old/new block before capability lookup and never resolves another chunk",
+    "grape_source_inspection_files": [
+      "build/grape-pot-native-javap.txt",
+      "build/levelchunk-cap-native-javap.txt"
+    ],
+    "grape_failure_behavior": "Source review only: if native bottling setBlock fails or actual inventory has no space, pending draw credit is conservatively lost and no progress is emitted. Native gameplay still runs unchanged. No runtime observation of those failures. Native successful remaining portions retain original owner/state after each actual bottle decrement",
+    "tomato_rightclick": "Exact Farm&Charm1.0.14 TomatoCropBlock.use checks AGE4 and invokes dropTomatoes. Native dropTomatoes emits native tomato/rotten variation then Level.setBlock AGE1 at153. Adapter calls original method, requires native greenhouse predicate before harvest and actual same-head/body post AGE1 state, no raw click credit. Break hook also recognizes exact native tomato body subclass",
+    "lunch_bag": "Exact native1.4.1 actual meal finishUsingItem201 call, extra sampled effects direct addEffect420. Adapter preserves original calls, records only actual primary input decrease1 and actual extra addEffect true. Native local flag9 is insufficient because native discards boolean, adapter does not use it. Native setItems serialization precedes final credit. Same bag ephemeral actor receipt removed RETURN",
+    "chopping_board": "Native ChoppingBoardBlockEntity.onPutItem matched recipe consumes actual input1 before assembly, original result retained exact. Adapter rejects identity result. onCutItem final branch currentCutCount>=max precedes native knife tag check, so adapter explicitly checks actual tool KITCHEN_KNIFE. Native popResource constructs exact result ItemEntity with original position/motion, envelope removed before Level.addFreshEntity. Only exact cutter real pickup qualifies",
+    "actor_drop_extension": "FoodDroppedProof actor UUID optional. Existing ownerless Mincer/Silo keep null/null semantics. Every native pickup/merge explicitly carries captured owner across possible native setItem invalidation. Wrong actor consumes received known portions without awarding. Certified destination/source actor or action mismatch discards destination certification rather than transferring identity. Untransferred source portions retain original owner. No gameplay restriction or output mutation introduced",
+    "rightclick_greenhouse": "Exact RCH4.6.1 completeHarvest posts native break/place cancellation gates, calls native dropStacks then original replant Runnable, preserves native hoe/hunger/radius/XP rules, finally SUCCESS. Adapter requires original mature eligible wheat/lettuce and actual same native crop reset toAGE0 plus Serene native greenhouse. No raw use credit. This route emits greenhouse only, V3 harvest_again awaits stricter actual produced-entity plus reset provenance proof",
+    "jug": "HerbalBrews1.0.12 JugBlock.use native applyEffects at180 then clearDrinks185, actual stored list emptied before credit. JugBlockEntity.applyEffects iterates DrinkBlockItem native effect data and invokes LivingEntity.addEffect120. Adapter requires at least2 distinct valid tea item IDs and actual successful native application of each distinct expected effect. Native calls remain unchanged, transient actor receipt belongs to physical BE",
+    "little_teapot": "Cookery1.4.1 Teapot.tick native matched recipe assembler154 commits result157/status1171, native heat/timer later commits status2294. getDrops serializes portable BlockEntityTag Result/Status, exact pending recipe proof transferred only for same completed native result. EmptyCup.use pourOut183 precedes cup setBlockAndUpdate256, Teacup.use cup setBlockAndUpdate124 precedes pourOut145. HEAD/RETURN receipts on physical pot validate both native debit1 and exact resulting cup state. No serving credit on whole-pot pickup, failed cup mutation, raw click or arbitrary existing portable result",
+    "millstone": "Installed Cookery1.4.1 native tick checks live bound mob and saddle/control restrictions, moves actual mob before actual timer-decrement and completed Optional lambda$tick$4 at1124. Exact lambda consumes actual input toEMPTY after original random output insertions. Max4 outputs, native handler$1.onContentsChanged calls refresh. Adapter invalidates on each actual handler change then certifies committed flour after recipe lambda RETURN. Native ItemEntity constructor receives same output at154, addFreshEntity167, resetWhenTakeout177. Adapter binds exact slot reference/snapshot and existing real inventory pickup proof, no manual placement/animal ownership credit",
+    "dough_noodles": "Native RawDough.releaseUsingItem m_5551_ checks minimum30 use ticks, creates noodle count matching original dough count, clears actual dough at44, ItemUtils delivers at50. Adapter wraps only original delivery, requires exact raw_noodles and actual inventory gain. Native pull_the_dough trigger95 alone would also count no-room attempted delivery and is not substituted. Alternate board exact chopping_board/raw_noodles_from_raw_dough accepts native forge:dough, cuts4, yields native2 noodles. Actual cutter pickup special receipt feeds both existing board goal and native noodles criterion, no alternate progress ledger",
+    "coop": "F&C1.0.14 ChickenCoopBlockEntity.addChicken saves actual chicken NBT UUID into storedChickens73, original removed124, native addEgg128, capped native eggCount9. Coop tick only releases stored chickens and changes native cooldown. Adapter requires exact stored UUID and native count increase1. ChickenCoopBlock.use Player.addItem162 delivers full native count then clearEggs168. Receipt demands actual inventory gain of known native-produced portions and final cleared count0. No manual egg-input branch, no breed/timing invention",
+    "orchard": "Vinery1.4.41 AppleLeaves/DarkCherryLeaves use exact HAS true AGE3 branch. Native randomized fruit popResourceFromFace92/100 precedes Level.setBlock HAS=false AGE1 at139/147. Adapter annotates exact native output argument with ephemeral actor token, strips before native Block private popResource addFreshEntity, records only accepted native drop UUID. After actual native useRETURN, exact reset and still-exact entity output required before certification. Actual same-actor pickup later consumes proof. Vanilla Forge47.4.10 private Block.popResource retains native doTileDrops and restoringBlockSnapshots guards, no default changes",
+    "millstone_item_identity": "Exact mapped Forge47.4.10 ItemEntity ctor calls setItem(actual argument) at30, setItem writes same reference into SynchedEntityData at8. Thus native Millstone output-slot reference equals native ItemEntity item before insertion, not guessed equality. No runtime observation",
+    "sink": "F&C1.0.14 Sink.use server lower-half gate, filled-to-empty setBlock314 before output Player.addItem380 bucket /411 PotionUtils.setPotion(WATER). Opposite fill branch outputs emptybucket232 or sameglassbottle257, explicitly excluded. Adapter passes all original native calls and requires actual expected new sink BlockState plus real exact water-result inventory gain. Native source does not create a generic consume event",
+    "small_pot": "Bakery2.0.6 SmallCookingPotBlockEntity implements F&C ImplementedInventory. craft canCraft3 gate, generates output13, commits/grows output7, consumes actual ingredients native lambda and serving container6 beforeRETURN106. createMenu returns F&C CookingPotGuiHandler with this actual BE Container, output7 same native slot owner. Native generated mushroom-stew effects retained. Any actual native completed recipe accepted, no particular variant imposed",
+    "baking_surface": "Installed Bakery2.0.6 BakerStation.use real cake dough placement sets native BlankCake above station. BlankCake.use actual native tool KNIVES commits CAKEfalse/CUPCAKEtrue at1539, native ROLLING_PIN commits CUPCAKEfalse/COOKIEtrue at1630. Native final decoration branches map exact supported jam/truffle to4 cake,3 cupcake and3 cookie surface blocks. Native setBlock bool ignored upstream, adapter requires actual true and exact committed state. Native material shrink1373/1485 precedes return. Native jar-return inventory/addFreshEntity branch is never treated as pastry output. Adapter requires exact same-actor native preparation for cupcake/cookie, physical chunk state receipt invalidates actual block/state replacement",
+    "wet_hay": "Installed Beachparty2.0.3 WetHayBaleBlockEntity.tick native protection gate, canSeeSky(pos.above) and no-water gate, native hot_biome tag and timer. Only hot branch chooses ObjectRegistry.THATCH399, normal branch chooses vanilla HAY_BLOCK416. Native setBlock423 is original commit. Adapter snapshots actual existing BE placement UUID before native removal and requires exact actual new THATCH state. Forge native BlockEntity persistence owns placer marker, no copied timer implementation or fabricated climate threshold. Offline real placers receive only a deferred observed-native-action notification on next login, not a parallel completion ledger Deferred notification reuses the shared NativeQuestRecipients owner created concurrently for native Rain Frog actions, not a parallel food queue. It retains exact action/advancement notification until native persisted completion acknowledgement on login",
+    "millstone_ap_repair": "Parent1990 BUILD SUCCESSFUL3m29,253mixins packaged/refmap36 after synthetic Millstone handler shadow removal. Replacement Redirect targets the one exact native MillstoneBlockEntity.refresh()V call in handler onContentsChanged, clears pending proof then invokes original refresh exactly once. No runtime observation. Subsequent Baking/WetHay sources await next parent build",
+    "everlasting": "Installed KN1.1.8 EverlastingFoodItem.finishUsingItem checks native isEdible at1, copies source10, LivingEntity.eat13 consumes copy, native addCooldown34, returns original source38. Native isEnabled supplier gate belongs to use/isEdible, adapter does not bypass it. Current managed config everlasting_flame_steak enabled=true/cooldown300 nativeunits, untouched. Adapter validates actual copy decrease1 and exact untouched original native return after cooldown, no duplicated food grant",
+    "brewery_drink": "Brewery2.0.6 DrinkBlockItem.finishUsingItem invokes native super4, native beer_mug Player.addItem50, AlcoholManager.drinkAlcohol69 and quality/default effect120/149 beforeRETURN155. Adapter only observes same native drink input decrease1 after complete method, no effect/quality/intoxication gate. Original Guide first_brew/copper_whiskey resources are exact actions food/first_brew and food/copper_whiskey, reused as native OR in composite goal",
+    "breathalyzer": "Brewery2.0.6 Breathalyzer.use resets tag and starts native use only. Native onUseTick m_5929_ invokes private addNbt only at its native elapsed60 threshold. addNbt requires AlcoholPlayer, reads native AlcoholLevel and writes brewery.drunkenness EASY/WARNING/DANGER at76. Hook requires same actively used tool and post-commit recognized result, EASY is valid. No guessed drunkenness number or raw use trigger",
+    "wine_cellar": "Vinery1.4.41 StorageBlock.use delegates real section-specific canInsertStack or remove. Native add splits actual item1 at25 then setStack28. Native removeStack11 clears physical slot then Inventory.add46, no room native Player.drop56. Native StorageBlockEntity inventory owners setStack/removeStack/setInventory observed with exact descriptor/callback type. Adapter saves actual actor/bottle at most9slots. Native finished red_wine/white_wine tags come from installed jar, actual DrinkBlockItem required. Entire stored stack incl Year/EffectAmplifier/EffectDuration remains native unchanged, no WineYears writes or elapsed-year requirement"
+  },
+  "greenhouse_native_source": {
+    "path": "Client/ManagedPack/mods/SereneSeasons-forge-1.20.1-9.1.0.3.jar",
+    "sha256": "650c35858d335d45adea5445ffaed25ccd433f5cbfe4936ac2694b250177b674",
+    "class": "sereneseasons.season.SeasonalCropGrowthHandler",
+    "method": "private static boolean isGlassAboveBlock(Level,BlockPos)",
+    "semantics": "Native loop checks GREENHOUSE_GLASS block tag one through16blocks vertically above crop. Called directly through static invoker. No seasonal/out-of-season requirement added",
+    "crop_maturity_source": "Installed F&C TomatoCropBlock.MAX_AGE=4 and canGrow compares AGE<4. Lettuce extends vanilla CropBlock with native maximum override"
+  },
+  "reobf_inventory_delegate_inspection": {
+    "artifact": "Mods/JEMAchievementGuide/build/libs/jem-advancements-5.1.0.jar",
+    "sha256": "b6946982aab8689cb734ce6fd7b55f37c67048369e75ef07d27b29d0f3db0088",
+    "methods": [
+      "m_6836_",
+      "m_6211_",
+      "m_7407_ (Silo)",
+      "m_8016_ (Silo)"
+    ],
+    "native_invocation": "invokespecial InterfaceMethod ...ImplementedInventory same SRG name",
+    "runtime_verified": false,
+    "checkpoint": "Parent5340, BUILD SUCCESSFUL2m53, CookingPot/Silo delegates re-inspected, new grape/recipe/archive classes verified in actual reobf JAR. Subsequent LunchBag/Board/Tomato sources await next parent build"
+  },
+  "next_family_investigation": {
+    "status": "Next native food family source inspection pending, no unresolved candidate promoted to action ledger"
+  }
+}

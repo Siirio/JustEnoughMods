@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "deposit": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "storage_deposit"
+      }
+    },
+    "restock": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "storage_restock"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "deposit"
+    ],
+    [
+      "restock"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

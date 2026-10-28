@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_era_fuel_for_time"
+      }
+    },
+    "native_powder": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_era_fuel_for_time_powder"
+      }
+    },
+    "native_seed_growth": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_era_fuel_for_time_seed"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_powder"
+    ],
+    [
+      "native_seed_growth"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

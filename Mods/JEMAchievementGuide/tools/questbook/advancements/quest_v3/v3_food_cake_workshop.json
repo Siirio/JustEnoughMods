@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "cake": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_surface_cake"
+      }
+    },
+    "cupcake": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_surface_cupcake"
+      }
+    },
+    "cookie": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_surface_cookie"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cake"
+    ],
+    [
+      "cupcake"
+    ],
+    [
+      "cookie"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

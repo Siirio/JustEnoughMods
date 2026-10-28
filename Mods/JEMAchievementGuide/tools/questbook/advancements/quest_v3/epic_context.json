@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "epic_context"
+      }
+    },
+    "native_sprint": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "epic_context_sprint"
+      }
+    },
+    "native_air": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "epic_context_air"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_sprint"
+    ],
+    [
+      "native_air"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

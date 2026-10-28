@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_clear_orders"
+      }
+    },
+    "native_owned_group_saved": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v4_pet_recruit_group_saved"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_owned_group_saved"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -38,6 +38,11 @@ public abstract class ZiplineLogicMixin {
     private static void afterCableSwitch(Player player, ZiplinePlayerDuck state, Cable cable, int direction, Vec3 movement, CallbackInfo ci) {
         if (player instanceof ServerPlayer serverPlayer) {
             JemCriteria.fire(serverPlayer, TRANSFER);
+            Cable next = state.zipline$getCable();
+            if (state.zipline$isActuallyUsing() && next != null && !next.equals(cable) && !player.onGround()) {
+                com.justenoughmods.achievementguide.advancement.QuestActionTrigger.INSTANCE
+                        .emit(serverPlayer, "v3_world_zip_transfer");
+            }
         }
     }
 

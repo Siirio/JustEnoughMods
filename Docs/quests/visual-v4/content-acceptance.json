@@ -1,0 +1,35 @@
+{
+  "status": "SOURCE_CONTENT_PASS",
+  "scope": "Single overall authored/generated content pass, no gameplay test or runtime observation",
+  "chapters": 7,
+  "cards": 606,
+  "native_quests": 606,
+  "unique_native_ids": 3177,
+  "groups": 76,
+  "visual_edges": 506,
+  "blueprints": 414,
+  "retired_original_cards": [
+    "v3_cave_remote_work",
+    "v3_combat_beast_watch",
+    "v3_combat_totem_bind",
+    "v3_combat_totem_meld",
+    "v3_era_cold_concert",
+    "v3_era_ice_echoes",
+    "v3_era_storm_chain",
+    "v3_era_wall_slide",
+    "v3_fauna_capsid_workshop",
+    "v3_food_seed_bag",
+    "v3_qol_resource_rush"
+  ],
+  "errors": [],
+  "atlas_unresolved_references": [],
+  "history_migration": "Not required, user confirmed previous quests unused",
+  "runtime_observed": false,
+  "resolved_native_registry_exceptions": [
+    {
+      "id": "minecraft:bell",
+      "reason": "Static Atlas item row absent, exact mapped MC1.20.1 Items static initializer registers Blocks.BELL through registerBlock and assigns Items.BELL at bytecode20472..20478",
+      "scope": "Native artifact evidence, no runtime registry capture"
+    }
+  ]
+}

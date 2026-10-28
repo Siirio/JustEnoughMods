@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "foraged_roots": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_world_root_and_crown_turnip"
+      }
+    },
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_world_root_and_crown"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "foraged_roots"
+    ],
+    [
+      "completed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

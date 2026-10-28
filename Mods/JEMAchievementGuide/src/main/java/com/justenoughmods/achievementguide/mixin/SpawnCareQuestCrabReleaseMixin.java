@@ -1,0 +1,8 @@
+package com.justenoughmods.achievementguide.mixin;
+import com.justenoughmods.achievementguide.integration.spawncare.*;import org.spongepowered.asm.mixin.*;import org.spongepowered.asm.mixin.injection.*;import org.spongepowered.asm.mixin.injection.callback.*;
+import com.ninni.spawn.server.entity.misc.CrabBubble;import net.minecraft.world.entity.LivingEntity;import net.minecraft.world.entity.player.Player;import net.minecraft.world.damagesource.DamageSource;
+@Pseudo @Mixin(targets="com.ninni.spawn.server.entity.misc.CrabBubble",remap=false) public abstract class SpawnCareQuestCrabReleaseMixin { 
+ @Unique private LivingEntity jem$rider;@Unique private float jem$health;@Unique private net.minecraft.server.level.ServerPlayer jem$actor;
+ @Inject(method="m_6469_",at=@At("HEAD"),remap=false) private void jem$before(DamageSource source,float amount,CallbackInfoReturnable<Boolean> ci){var self=(CrabBubble)(Object)this;jem$rider=self.getFirstPassenger() instanceof LivingEntity living&&living.isAlive()?living:null;jem$health=jem$rider==null?0:jem$rider.getHealth();jem$actor=source.getEntity() instanceof Player p?SpawnCareQuestProof.real(p):null;if(self.getLife()<40||self.getOwner()==null||!java.util.Set.of("spawn:coastal_crab","spawn:spider_crab").contains(SpawnCareQuestProof.type(self.getOwner())))jem$actor=null;}
+ @Inject(method="m_6469_",at=@At("RETURN"),remap=false) private void jem$after(DamageSource source,float amount,CallbackInfoReturnable<Boolean> ci){var self=(CrabBubble)(Object)this;if(jem$actor!=null&&jem$rider!=null&&self.isRemoved()&&!jem$rider.isPassenger()&&jem$rider.isAlive()&&jem$rider.getHealth()>=jem$health&&!jem$rider.isInWall())SpawnCareQuestProof.emit(jem$actor,"v3_pet_bubble_switch_release");jem$actor=null;jem$rider=null;}
+ }

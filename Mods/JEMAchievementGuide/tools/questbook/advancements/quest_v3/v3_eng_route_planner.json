@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "constraint": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_navigator_constraint"
+      }
+    },
+    "route": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_navigator_route"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "constraint"
+    ],
+    [
+      "route"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

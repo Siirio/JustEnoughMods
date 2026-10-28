@@ -1,0 +1,359 @@
+{
+  "schema": 1,
+  "source_of_contract": "build/questbook-v4-workshop-cards.json fixed fifteen records and exact installed native artifact",
+  "producer_scope": "Skarrier workshop remaining producer family only, not an activation or independent review receipt",
+  "runtime_observed": false,
+  "production_build_owner": "Parent unified production build only",
+  "standalone_contract": "Ordinary integrated and dedicated logical server, no JEMServer dependency",
+  "artifact": {
+    "path": "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+    "sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc"
+  },
+  "preservation": "Existing Dragger Silk repair and reviewed Venom/Serrated/Bowlder/Wretched actions retain their original emitting code. Existing coating proof helper/Mixins unchanged. Workshop helper only extends successful application material mapping and SLFlesh no-charge eligibility",
+  "bounds": {
+    "native_scope_depth": 16,
+    "native_output_references_per_call": 16,
+    "pending_damage_death_receipts_per_call": 16,
+    "inventory_read": "Current native player inventory only, bounded by native container size",
+    "world_reads": "Exact supplied interaction block only, no scans, forced chunks or nearest-player lookup"
+  },
+  "producers": [
+    {
+      "action": "v3_combat_coat_fire",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierMagmaWeaponQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierMagmaShieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierFinalDamageQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java"
+      ],
+      "native_evidence": "Native MagmadermisWeaponEffectProcedure positive burning-target branch consumes exactly one real coating charge. Final accepted vanilla hurt must reduce actual health/absorption before completion. Native MagmadermisShieldEffectProcedure must increase attacker fire duration and consume shield durability plus one coating charge",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Magma weapon hit on a non-burning target",
+        "Application alone",
+        "Native proc without a real live event"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_coat_fire"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_coat_sustain",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierWardenQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierWroughtQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierFinalDamageQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java"
+      ],
+      "native_evidence": "Native WardenVeinItemEffectProcedure lowers same applied main-hand weapon damage and consumes one native charge. Real native die must then commit its dead flag. Native WroughtScaleItemEffectProcedure must lower same active shield actual damage and consume one charge during a real positive shield block",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Warden armor-only repair does not meet weapon objective",
+        "Unchanged full-durability gear",
+        "Canceled death or block"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_coat_sustain"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_ore_acid",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierAcidUseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierAcidOutputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierOutputPickupQuestMixin.java"
+      ],
+      "native_evidence": "Native AcidicBileItem useOn holds the authenticated UseOnContext actor. Native AcidicBileRightclickedOnBlockProcedure performs actual recipe outputs, successful entity insertion, bile debit1 and ore-to-air commit. Only actual certified output pickup into that same actor inventory completes the card",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Ores with empty smelting result",
+        "Another actor collecting output",
+        "Mixed-owner or mixed-action output merges drop ambiguous certification"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_ore_acid"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_brush_shell",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierBrushQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierOutputPickupQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java"
+      ],
+      "native_evidence": "Native AmmoniteBrushEffectProcedure consumes one charge from the exact actor-applied brush on gravel and removes that exact gravel block. Accepted real archaeology loot output is certified only after native procedure return. Same-actor actual inventory pickup completes",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Non-gravel native tag members are deliberately excluded by the fixed card",
+        "Applying shell alone",
+        "Mixed-owner or mixed-action output merges drop ambiguous certification"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_brush_shell"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_totem_elements",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierFreezingAttackQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierFreezingGuardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierSeethingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierRepulsionQuestMixin.java"
+      ],
+      "native_evidence": "Native Freezing accepted Frostbite on actual target or positive frozen-state clear, native Seething accepted Fire Hex on actual non-owner target, native Repulsion actual target velocity change plus native cooldown and durability debit. All require real offhand exact totem and owner native procedure return",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Possession without a committed function",
+        "Totem public execute(null) shortcut"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_totem_elements"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_totem_empower",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierEmpoweredQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java"
+      ],
+      "native_evidence": "Native Workshop consumes one Semi Living Flesh and changes same totem to SLFlesh, recording application actor on actual item. Native SLFleshTotemHeldEffectProcedure must accept actual penalty effect while same bound totem is offhand and install exact upstream max-health modifier UUID. No health or price mutation by observer",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Possession of another actor enhanced totem",
+        "Penalty effect rejected"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_totem_empower"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_deep_alloy",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierDeepRepairQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierDeepWorkQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierDeepSonicQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierFinalDamageQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierWorkCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierHoeCommitQuestMixin.java"
+      ],
+      "native_evidence": "Native DeepAlloy tool/hoe positive actual experience delta must be inside successful vanilla block break/use with actual block-state change. Native same-tool damage reduction on kill waits for committed native death. Native sword sonic critical must commit accepted health/absorption damage on at least one real target. No copied damage or XP formula",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Armor-only repair/buff outside the selected tool/weapon objective",
+        "Native zero XP random result",
+        "Canceled or unchanged world operation"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_deep_alloy"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_impact_gear",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierPauldronQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierBootsQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierFinalDamageQuestMixin.java"
+      ],
+      "native_evidence": "Native sprinting CrushingPauldron contact damage and native QuakeBoots fall-area damage are observed at exact target hurt calls. Accepted calls must lower actual target health/absorption. Boots additionally defer to completed causeFallDamage and require surviving real actor, preserving safe fall requirement",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Possession or particles without actual damage",
+        "Lethal fall",
+        "Rejected native target hurt"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_impact_gear"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_serrated_defense",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierSerraxeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierBarrierLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierBarrierHitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierNativeEffectQuestMixin.java"
+      ],
+      "native_evidence": "Native Serraxe accepted Hemorrhage on actual hit target. Alternative native Forlorn block spawns actual piercing WretchedToothCleaving projectile owned by blocking actor, carrying provenance only on real projectile. That exact projectile native onHitEntity must accept Armor Crumbling on target before completion",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Ordinary shield block without real projectile effect",
+        "Generic unproven Wretched projectile",
+        "Rejected target effect"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_serrated_defense"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_tranquil_food",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierConsumableQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierNativeEffectQuestMixin.java"
+      ],
+      "native_evidence": "Native actual item finishUsingItem frames scope effect owners. Heart completion requires accepted native Tranquility and actual cooldown. Sack requires real consumption debit1 and accepted Leeching Touch. Native weakness and other side effects execute unchanged once",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Raw use click",
+        "Heart native cooldown denial",
+        "Canceled or rejected effect"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_tranquil_food"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_infernal_crown",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierCrownQuestMixin.java"
+      ],
+      "native_evidence": "Native InfernalCrownEffectProcedure live damage-source checks choose the exact native fire/lava state. Accepted positive-duration native Infernal Crown Damage Bonus on actual equipped crown wearer completes after owner return. No fire, health, damage or lava bypass added",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Crown possession alone",
+        "Wrong damage source",
+        "Rejected native bonus effect"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_infernal_crown"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_quake_ride",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierQuakeFeedQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierQuakeMountQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierQuakeRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierQuakeStompQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_quake_ride.json"
+      ],
+      "native_evidence": "Actual Quake mobInteract cactus debit1 and native tame owner install same-entity actor provenance. Native riding procedure must commit actual passenger. Native riding attack must change cooldown0 to positive and attacking true. Within100 native game ticks that same owned mount and passenger must commit real area stomp target damage. Three ordinary native advancement criteria persist fed, mounted and stomp, no quest progress manager",
+      "attribution": "Real survival logical-server actor from native context, same item/entity/transaction provenance where required",
+      "unsupported_paths": [
+        "Cactus possession",
+        "Raw attack request without native damage",
+        "Unowned mount",
+        "Different actor or different mount chain"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_quake_ride"
+      ],
+      "emitted_actions": [
+        "v3_combat_quake_ride_fed",
+        "v3_combat_quake_ride_mounted",
+        "v3_combat_quake_ride_stomp"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_elder_alloy",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierInvulneriteQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierInvulneriteProof.java"
+      ],
+      "native_evidence": "User-amended Invulnerite-only objective. Exact native SmithingMenu.onTake captures actual selected current RecipeManager SmithingTransformRecipe and exact template0/base1/chunk2, matching one of all nine installed native netherite-to-Invulnerite equipment transformations. Actual taken output must equal native recipe assembly including inherited NBT. Existing ItemCombinerQuestMixin/QuestResultSnapshot supplies genuine Shift-click result when native merge emptied onTake result. At native onTake RETURN all three original matching inputs must each have exactly one actual debit before emitting the unchanged action. Native onCraftedBy, awardUsedRecipes, input consumption and world event execute untouched once",
+      "acquisition_evidence": "Parent-confirmed current-pack tg_lair_x structure contains tangled Invulnerite and Tunnel Gore. Exact installed TunnelGoreEntityDiesProcedure unlocks its tangled ore. Unlocked ore native loot yields7..11 nuggets and Fortune bonus, mineable/pickaxe+needs_diamond_tool tags permit ordinary diamond/netherite mining. Native low-speed mining curse does not prevent this tier. Native9 nuggets->chunk, blank template from Semi Living Flesh plus ordinary ingredients, native Netherite template crafting and native Invulnerite template smithing provide full upstream chain. Parent current-pack override review found no relevant bans/replacements. No acquisition contradiction found in the additional native source read",
+      "attribution": "Actual real survival logical-server menu owner and same native take transaction. No JEMServer, possession polling or custom crafting authority",
+      "unsupported_paths": [
+        "Template-only crafting or possession",
+        "Any Decayerite route",
+        "Preview, wrong selected recipe, false/mismatched native output or missing input debit",
+        "Creative/FakePlayer/spectator",
+        "Nonstandard concurrent slot refill that obscures exact native debit fails closed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_elder_alloy"
+      ],
+      "emitted_actions": [
+        "v3_combat_elder_alloy"
+      ],
+      "scope": "Invulnerite-only equipment transformation, parent owns amended book/localization/reward/graph/blueprint",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "pending_user_decision": [],
+  "gap_evidence": "Docs/quests/visual-v4/workshop-native-gaps.json",
+  "verification": {
+    "source_read_performed": true,
+    "independent_review_performed": false,
+    "tests_run": false,
+    "build_run": false,
+    "runtime_run": false
+  },
+  "source_state": "frozen_for_parent_review_and_integration",
+  "user_content_decision": "Docs/quests/visual-v4/workshop-user-amendment.json supersedes earlier pending3-card handoff. Two cards deleted, native Invulnerite-only goal retained with a separate genuine smithing observer, no recipes added",
+  "previous_user_pending_decision": [
+    "v3_combat_totem_bind",
+    "v3_combat_totem_meld",
+    "v3_combat_elder_alloy"
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 13
+}

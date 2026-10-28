@@ -1,0 +1,5 @@
+package com.justenoughmods.achievementguide.mixin;
+import com.justenoughmods.achievementguide.integration.spawncare.*;import net.minecraft.world.entity.Mob;import net.minecraft.server.level.ServerLevel;import org.spongepowered.asm.mixin.*;import org.spongepowered.asm.mixin.injection.*;import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+@org.spongepowered.asm.mixin.Pseudo @Mixin(targets={"com.ninni.spawn.server.entity.mob.Tuna","com.ninni.spawn.server.entity.mob.Sunfish"},remap=false) public abstract class SpawnCareQuestYoungReceiptMixin {
+ @Inject(method="m_8119_",at=@At("RETURN"),remap=false) private void jem$ready(CallbackInfo ci){var self=(Mob)(Object)this;if(!(self.level() instanceof ServerLevel level)||!self.isAlive()||level.getEntity(self.getUUID())!=self)return;var proof=SpawnCareQuestProof.data(self);if(!proof.hasUUID("wave_ready"))return;var actor=SpawnCareQuestProof.actor(self,"wave_ready");if(actor!=null){proof.remove("wave_ready");SpawnCareQuestProof.emit(actor,"v3_pet_next_wave");}}
+}

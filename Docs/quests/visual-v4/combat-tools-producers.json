@@ -1,0 +1,588 @@
+{
+  "schema": 1,
+  "producer_scope": "Thirteen exact combat-tools cards only, source implementation awaiting parent overall review/build",
+  "standalone_contract": "Ordinary integrated logical server and dedicated server, no JEMServer dependency",
+  "runtime_observed": false,
+  "independent_reviewed": false,
+  "artifacts": [
+    {
+      "mod": "simplybows",
+      "path": "Client/ManagedPack/mods/simplybows-forge-neoforge-0.1.4.jar",
+      "sha256": "70c77f7e2207393f2bbc8f58da06309378897252041e5102d249d33d64753a91"
+    },
+    {
+      "mod": "siegeweapons",
+      "path": "Client/ManagedPack/mods/siegeweapons-1.20.1-0.2.5.jar",
+      "sha256": "777359069e04159c0fedf19b1df56ff1b943d07bdcc09698b098a0ae2962b2ed"
+    },
+    {
+      "mod": "trials",
+      "path": "Client/ManagedPack/mods/Trials-2.3.3.jar",
+      "sha256": "1d86cb3164d84fdcf782f220b2c346c88392508a265fb09c3e10f8758a1453d8"
+    },
+    {
+      "mod": "block_factorys_bosses",
+      "path": "Client/ManagedPack/mods/block_factorys_bosses-2.1.2-forge-1.20.1.jar",
+      "sha256": "8c61087aa483f90861451682519582e03fa76e773d855e35180a8ed3428938bc"
+    },
+    {
+      "mod": "deep_dark_regrowth",
+      "path": "Client/ManagedPack/mods/Deep Dark Regrowth 1.2.6.1 - 1.20.1.jar",
+      "sha256": "3a2d487db40e1fe13307f8203ca69627787aede9bd332cf8bb2c29b41ec3fe88"
+    },
+    {
+      "mod": "rottencreatures",
+      "path": "Client/ManagedPack/mods/rottencreatures-forge-1.20.1-1.1.0.jar",
+      "sha256": "cbf97ceeb4378b493884fc49fb668098edaca135dad81db548dea6f4c324e81b"
+    },
+    {
+      "mod": "guardvillagers",
+      "path": "Client/ManagedPack/mods/guardvillagers-1.20.1-1.6.19.jar",
+      "sha256": "4c48c88144bcd8d47820baa5ca0d0c1cab8984da4ec2ceeb7ed164c27d1266f3"
+    }
+  ],
+  "source_family": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/",
+  "mixin_registration_request": "build/questbook-v4-combat-tools-registration.json",
+  "bounds": {
+    "scope_depth": 16,
+    "receipt_actors": 16,
+    "deferred_events": 64,
+    "deferred_receipts_per_event": 16,
+    "native_rune_objects": 512,
+    "water_cells_per_world": 256,
+    "water_max_body_cells": 16,
+    "output_station_slots": 5,
+    "brew_output_slots": 3,
+    "menu_slots": 256,
+    "pending_native_deadbeard_corpses": 64,
+    "native_deadbeard_chests_per_corpse": 16,
+    "world_reads": "Exact actual entity/native block argument or same known UUID/blockpos only. No player-proximity attribution, broad polling, world/entity scan or forced chunk",
+    "lifecycle": "ServerStopped clears all helper contexts and bounded runtime caches. Persisted native advancement criteria retain actual stage progress"
+  },
+  "preservation": "Every redirected native call runs once with original arguments and return, unchanged native recipes/costs/config/AI/controls. Only proof metadata and ordinary quest criteria added, no gameplay mechanics or tuning duplicated. Prior Workshop/Enderman/Invulnerite/Bow/Anvil/food family sources unchanged",
+  "config_source_scopes": [
+    "Client/ManagedPack/config/simplybows/config.toml",
+    "Client/ManagedPack/config/guardvillagers-common.toml",
+    "Client/ManagedPack/config/rottencreatures-common.toml",
+    "Client/ManagedPack/config/item_obliterator.json5",
+    "Client/ManagedPack/config/incontrol",
+    "Client/ManagedPack/kubejs/server_scripts",
+    "Client/ManagedPack/kubejs/startup_scripts",
+    "Mods/JEMCompat/src/main/java",
+    "Mods/JEMServer/src/main/java"
+  ],
+  "config_findings": [
+    "No selected seven namespace references found in canonical current server/startup KubeJS or InControl JSON searches. Item Obliterator current blacklist has none of these seven mods",
+    "Guard native conversion HOTV requirement false, patrol HOTV requirement false, follow HOTV remains true and original profession/tag/native config are not duplicated",
+    "SimplyBows current Ice Bounty extra-arrow multiplier2, Pain damage1.5 and Bounty damage0.75. Observer compares actual native quantity and accepted outputs, never applies these values",
+    "JEMCompat source contains upstream Kraken/Sandworm stagger and AI/tier/transport policies, observers require actual accepted native outcomes and do not bypass compat",
+    "JEMServer-only source was inspected as current override evidence, standalone producers do not depend on it"
+  ],
+  "native_cache": "C:/Users/user/AppData/Local/Temp/jem-combat-tools-v4-native",
+  "native_api_receipts": [
+    "build/questbook-v4-combat-tools-vanilla-api.txt",
+    "build/questbook-v4-combat-tools-potion-api.txt",
+    "build/questbook-v4-combat-tools-native-DeadBeard.txt",
+    "build/questbook-v4-combat-tools-native-UndyingTentacleItem.txt",
+    "build/questbook-v4-combat-tools-native-TrialsEvents.txt"
+  ],
+  "producers": [
+    {
+      "action": "v3_combat_bow_rune",
+      "required_mods": [
+        "simplybows"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatRuneProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatRuneAnvilProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatRuneControlProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatIceRuneQuantityQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneAnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeChaosHoneyStormActiveHoneyStormQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeChaosHoneyStormQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeGraceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeGraceShieldActiveGraceShieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeHiveSwarmActiveBeeHiveQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBeeHiveSwarmQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBlossomArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBlossomChaosKoiActiveKoiEffectQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBlossomChaosKoiQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBlossomStormActiveStormQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBlossomStormQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBubbleArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBubbleChaosWaveActiveWaveQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBubbleChaosWaveQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBubbleColumnFieldActiveBubbleColumnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBubbleColumnFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneBubblePainArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCocoonQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicBountyActiveBountyStarQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicBountyActiveStardustFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicBountyQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicChaosSunActiveSunQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicChaosSunQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicGraceTrailActiveCocoonQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicGraceTrailActiveGraceFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicGraceTrailQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicOrbitActiveOrbitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneCosmicOrbitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEarthArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEarthChaosSunderActiveSunderFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEarthChaosSunderQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEarthSpikeFieldActiveSpikeFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEarthSpikeFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEchoArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEchoChaosBlackHoleActiveBlackHoleQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEchoChaosBlackHoleQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneEchoCompanionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneHomingArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneHomingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneIceChaosWallActiveWallQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneIceChaosWallQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneIceHomingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneIceVolleyQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneOutcomeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneTakePrepareQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneVineArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneVineFlowerFieldActiveFlowerFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneVineFlowerFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_bow_rune.json"
+      ],
+      "native_evidence": "Paid native AnvilMenu take with native BowUpgradeComponentItem.applyTo/getAnvilCost, original bow/material/XP debits and actor/token/rune on actual result. Later exact source bow native projectile or native Active object lineage reaches actual rune-specific accepted damage, healing, installed effect, cleanse, consumed native shield/cocoon, native loot or actual committed control movement. Native Ice Bounty quantity compared by original getArrowQuantity with RuneEtching.NONE, no copied formula",
+      "emitted_actions": [
+        "v3_combat_bow_rune_etched",
+        "v3_combat_bow_rune"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs",
+        "Unrelated base bow hit, no-rune, direct rune component right-click, visual-only spawn, native effect objects predating observed rune shot, proof evicted at bounded512 objects or server stop",
+        "Cosmic Chaos completion currently proves actual native Celestial Swiftness accepted effect, control/field damage only when exact native object scope is retained"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_rune"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_siege_repair",
+      "required_mods": [
+        "siegeweapons"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatSiegeRepairQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_siege_repair.json"
+      ],
+      "native_evidence": "Native AbstractVehicleEntity.interactIronNuggets returns true, Ballista/Catapult were damaged, health actually increased, actor iron nugget and native plank counts each decrease by one",
+      "emitted_actions": [
+        "v3_combat_siege_repair"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_siege_repair"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_trial_clear",
+      "required_mods": [
+        "trials"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatTrialProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatLifeProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatDropCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLifeCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatNativeDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTrialCycleQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTrialRewardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTrialStateQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatVaultNativeDropsQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_trial_clear.json"
+      ],
+      "native_evidence": "Native setActivity begins cycle epoch. Actual successful setUpMob lineage is taken only after native TrialSpawned flag, actual same-cycle mob player kill records participation. Native remaining=0 reward callback executes once and actual native reward ItemEntity accepted, later inventory-conserved pickup by same actual contributor",
+      "emitted_actions": [
+        "v3_combat_trial_clear"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs",
+        "Native TrialSpawnerEntity stores no real-player UUID roster. Observer records actual native lineage mob kills as proven participation, never nearest-player proximity. Literal native roster wording requires parent review before activation"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_trial_clear"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_mace_smash",
+      "required_mods": [
+        "trials"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatLifeProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftDebitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftQuickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftTakeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLifeCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatMaceAttackQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatMaceSmashQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_mace_smash.json"
+      ],
+      "native_evidence": "Native selected trials:mace recipe matches original matrix, assembles real result, heavy_core1/breeze_rod1 removed through native actual crafting debits, actual take commits actor/token. Later exact native TrialsEvents CriticalHitEvent modifier call increases native bonus, survives final DENY and modifier state, actual target vitality decreases during actual same player attack with same crafted token Mace",
+      "emitted_actions": [
+        "v3_combat_mace_smash_crafted",
+        "v3_combat_mace_smash"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_mace_smash"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_trial_effects",
+      "required_mods": [
+        "trials"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatEffectProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatLifeProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatAppliedEffectQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLifeCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLingeringApplicationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPotionApplicationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPotionThrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTrialEffectOutcomeQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_trial_effects.json"
+      ],
+      "native_evidence": "Actual paid owned splash/lingering potion native spawn establishes effect lineage. Accepted native addEffect on actual mob records only exact actor/effect/amplifier/expiry, any accepted outside replacement clears lineage. Native Infested Silverfish or Ooze Slime real accepted spawn, or new native Weave cobweb commit, reaches final uncancelled accepted native hurt/death",
+      "emitted_actions": [
+        "v3_combat_trial_effects"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs",
+        "Winded wind-cloud option is unavailable in installed Trials2.3.3: onDeath has wind knockback/block activation, no cloud spawn. Fixed card unchanged, explicit native gap pending parent/user decision"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_trial_effects"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_tentacle_route",
+      "required_mods": [
+        "block_factorys_bosses"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatTentacleProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatPullProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPullMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatPullPlayerMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTentacleBlockQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTentacleQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_tentacle_route.json"
+      ],
+      "native_evidence": "Native UndyingTentacle non-summon use pays original durability and cooldown, exact native allowed entity force or SpatialUtil block-grapple force actually changes velocity, same target then actually moves in force direction. Server player checked after native handleMovePlayer acceptance",
+      "emitted_actions": [
+        "v3_combat_tentacle_route"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_tentacle_route"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bone_trophy_craft",
+      "required_mods": [
+        "block_factorys_bosses"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftDebitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftQuickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftTakeQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_bone_trophy_craft.json"
+      ],
+      "native_evidence": "Native current selected Kraken Trident or Dragon Bones recipe matches immutable original matrix, native assembled result matches real take and every occupied input cell removes exactly one. Original kraken teeth3/wooden rods or native dragon bones remain recipe authority",
+      "emitted_actions": [
+        "v3_combat_bone_trophy_craft"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bone_trophy_craft"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_sculk_vault",
+      "required_mods": [
+        "deep_dark_regrowth"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatRegrowthProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCorpseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatDropCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLifeCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatNativeDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatSoulKeyQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatVaultDeathScopeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatVaultLateDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatVaultNativeDropsQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_sculk_vault.json"
+      ],
+      "native_evidence": "Real native Soul Key destroys actual unbreakable_door_keyframe with key debit1. Native VaultChestEntity is an entity, actual player defeat stamps same corpse. Native nested delayed callbacks retain exact corpse lineage and certify only their accepted actual loot ItemEntities, same actor actually picks up native loot",
+      "emitted_actions": [
+        "v3_combat_sculk_vault_unlocked",
+        "v3_combat_sculk_vault"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_sculk_vault"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_fluorite_light",
+      "required_mods": [
+        "deep_dark_regrowth"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatRegrowthProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDeferredProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftDebitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftQuickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftTakeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatDropCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatFluoriteProcessingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatForgeDispatchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatRuneSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_fluorite_light.json"
+      ],
+      "native_evidence": "Native hand/grindstone procedure removes Mossy Fluorite1 and gives crystal1, final Forge event cancellation respected. Full-inventory native accepted drop is certified only after debit and later real pickup. Then actual selected white_neon_lamp_off_r native crafting consumes fluorite crystals4 with all other original native inputs and real result take",
+      "emitted_actions": [
+        "v3_combat_fluorite_light_processed",
+        "v3_combat_fluorite_light"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_fluorite_light"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_frozen_brewing",
+      "required_mods": [
+        "rottencreatures"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatBrewingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCampfireProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatStationProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftDebitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftQuickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCraftTakeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatDropCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatFreezeBrewingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatFrozenCampfireQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatFrozenCookingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatNativeDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatStationCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatStationReplacementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatVaultNativeDropsQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_frozen_brewing.json"
+      ],
+      "native_evidence": "Actual native Frozen Flesh corrupted_wart craft, smoking output receipt or actor-inserted campfire cook/actual pickup establishes processed criterion. Native brewing effective Forge registry output with ingredient debit1 and exact changed conserved bottle outputs establishes separate receipts on every slot0/1/2. Actual menu output receipt emits complete action. Native Freeze upgrades preserve certified per-slot lineage, arbitrary reinsertion invalidates",
+      "emitted_actions": [
+        "v3_combat_frozen_brewing_processed",
+        "v3_combat_frozen_brewing"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_frozen_brewing"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_burned_weather",
+      "required_mods": [
+        "rottencreatures"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatWaterProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCorpseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatBurnedWaterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLifeCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatWaterCellQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatWaterFlowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatWaterPlacementQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_burned_weather.json"
+      ],
+      "native_evidence": "Actual accepted player bucket water placement, committed native flow and bounded exact body-intersecting source cells establish water actor. Same Burned native tick false-to-obsidian true records actor, native false state clears proof, same actor legitimate final native defeat completes",
+      "emitted_actions": [
+        "v3_combat_burned_weather"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_burned_weather"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_deadbeard",
+      "required_mods": [
+        "rottencreatures"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatCorpseProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatTreasureProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatDeadBeardRewardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatDropCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatLifeCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTreasureOpenQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatTreasureReplacementQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_deadbeard.json"
+      ],
+      "native_evidence": "Actual native DeadBeard custom death loot spawns native chest with same corpse Owner and exact nonempty loot. Only committed real player death stamps that exact chest BlockEntityTag.ForgeData, self-discard yields none. Native placement transfers ForgeData into actual native treasure block entity, same actor owner first closed-to-open with original native Items releases actual accepted loot, same actor real pickup completes",
+      "emitted_actions": [
+        "v3_combat_deadbeard_defeated",
+        "v3_combat_deadbeard"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_deadbeard"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_guard_team",
+      "required_mods": [
+        "guardvillagers"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatGuardProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/combattools/CombatDeferredProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatForgeDispatchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatGuardMenuQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatGuardPatrolQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatGuardRecruitQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_guard_team.json"
+      ],
+      "native_evidence": "Native allowed conversion spawns actual new guard, removes same source Villager, debits original equipment1 and copies exact gear. Final Forge event must remain accepted. Same actor and actual open GuardContainer must refer to same recruited Guard, real native patrol packet work actually commits changed patrol position at guard position and patrolling=true",
+      "emitted_actions": [
+        "v3_combat_guard_team_recruited",
+        "v3_combat_guard_team"
+      ],
+      "unsupported_paths": [
+        "Client/FakePlayer/creative/spectator, possession-only, free preview, native denial, uncommitted effects or costs"
+      ],
+      "source_implemented": true,
+      "independent_reviewed": false,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_guard_team"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 13
+}

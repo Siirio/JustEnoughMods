@@ -1,0 +1,7 @@
+package com.justenoughmods.achievementguide.mixin;
+import com.justenoughmods.achievementguide.integration.spawncare.*;import net.minecraft.world.entity.monster.Drowned;import net.minecraft.world.damagesource.DamageSource;import org.spongepowered.asm.mixin.*;import org.spongepowered.asm.mixin.injection.*;import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+@Mixin(value=Drowned.class,priority=900) public abstract class SpawnCareQuestSeahorseDiscMixin {
+ @Unique private SpawnCareQuestNaturalRun jem$run;
+ @Dynamic("Exact installed Spawn DrownedMixin adds this SRG override") @Inject(method="m_7472_(Lnet/minecraft/world/damagesource/DamageSource;IZ)V",at=@At("HEAD"),remap=false) private void jem$before(DamageSource source,int looting,boolean recentlyHit,CallbackInfo ci){var self=(Drowned)(Object)this;jem$run=null;if(!self.level().isClientSide&&com.ninni.spawn.Spawn.COMMON_CONFIG.seahorseJockeysDropsDisc.get()&&self.isBaby()&&self.getVehicle()!=null&&SpawnCareQuestProof.type(self.getVehicle()).equals("spawn:seahorse")&&SpawnCareQuestDrops.nativeMob(self)&&SpawnCareQuestDrops.nativeMob(self.getVehicle()))jem$run=SpawnCareQuestNaturalRun.begin(self);}
+ @Dynamic("Exact installed Spawn DrownedMixin adds this SRG override") @Inject(method="m_7472_(Lnet/minecraft/world/damagesource/DamageSource;IZ)V",at=@At("RETURN"),remap=false) private void jem$after(DamageSource source,int looting,boolean recentlyHit,CallbackInfo ci){var run=jem$run;jem$run=null;SpawnCareQuestNaturalRun.end(run);}
+}

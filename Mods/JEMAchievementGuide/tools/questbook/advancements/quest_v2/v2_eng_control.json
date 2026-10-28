@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "action_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_clutch_stop_restart"
+      }
+    },
+    "action_2": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_gearshift_reverse"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "action_1"
+    ],
+    [
+      "action_2"
+    ]
+  ]
+}

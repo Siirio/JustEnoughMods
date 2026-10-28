@@ -1,0 +1,86 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_cave_counterplay"
+      }
+    },
+    "notor": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_cave_counterplay_notor"
+      }
+    },
+    "vesper": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_cave_counterplay_vesper"
+      }
+    },
+    "corrodent": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_cave_counterplay_corrodent"
+      }
+    },
+    "hullbreaker": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_cave_counterplay_hullbreaker"
+      }
+    },
+    "mine": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_cave_counterplay_mine"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "notor",
+      "vesper",
+      "corrodent",
+      "hullbreaker",
+      "mine"
+    ],
+    [
+      "completed",
+      "vesper",
+      "corrodent",
+      "hullbreaker",
+      "mine"
+    ],
+    [
+      "completed",
+      "notor",
+      "corrodent",
+      "hullbreaker",
+      "mine"
+    ],
+    [
+      "completed",
+      "notor",
+      "vesper",
+      "hullbreaker",
+      "mine"
+    ],
+    [
+      "completed",
+      "notor",
+      "vesper",
+      "corrodent",
+      "mine"
+    ],
+    [
+      "completed",
+      "notor",
+      "vesper",
+      "corrodent",
+      "hullbreaker"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

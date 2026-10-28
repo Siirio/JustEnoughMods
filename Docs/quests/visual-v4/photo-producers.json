@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "status": "SOURCE_IMPLEMENTED_PENDING_COMBINED_REVIEW",
+  "runtime_observed": false,
+  "artifact": {
+    "path": "Client/ManagedPack/mods/exposure-forge-1.20.1-1.9.21.jar",
+    "sha256": "f8a3c47ee0b234e5e09d1c7eaebe7c9aeace19f278b47f5dc3e49ed0d40fb616"
+  },
+  "producers": [
+    {
+      "action": "v3_home_real_print",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_real_print"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCameraProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoDevelopmentOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoImages.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLifecycle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLightroomState.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoPrintingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftReceiptQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomPrintQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoChromaticResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRepositoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRedstoneReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoTimerReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCaptureOwnerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRemoteFrameQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java"
+      ],
+      "native_evidence": "Actual registered FilmDevelopingRecipe consumes the raw B&W roll through captured native ResultSlot removals. Actual developed roll retains exact native Frames, with genuine inventory/cursor receipt including Shift-click or same native crafted-stack accepted drop for Throw-crafting. Native frame IDs record development provenance, not quest completion. Same real print starter later pays native paper/dyes and native frame_printed creates one additional actual photograph in Lightroom output. Original native repository must contain valid image data before award",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_color_print",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_color_print"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCameraProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoDevelopmentOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoImages.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLifecycle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLightroomState.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoPrintingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftReceiptQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomPrintQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoChromaticResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRepositoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRedstoneReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoTimerReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCaptureOwnerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRemoteFrameQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java"
+      ],
+      "native_evidence": "Same registered native developing and exact-frame receipt chain as B&W. PrintingProcess.COLOR plus frame.isTakenBy(real print starter), actual additional physical output and native image data. No image-bearing-item possession shortcut",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_chromatic",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_chromatic"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCameraProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoDevelopmentOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoImages.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLifecycle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLightroomState.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoPrintingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftReceiptQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomPrintQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoChromaticResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRepositoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRedstoneReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoTimerReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCaptureOwnerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRemoteFrameQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java"
+      ],
+      "native_evidence": "Actual real native Lightroom starter, native CHROMATIC_R/G/B, three distinct actual source-image IDs with native RED/GREEN/BLUE frame channels, retained same physical sheet through consumed native ingredient lineage budgets. Exact native paper and configured dye debit at each print, actual native completed photograph, same actual native composite ID and original expected uploader. Award only after native repository validates and stores final printed COLOR image, not merely after native placeholder creation",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_remote_frame",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_remote_frame"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCameraProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoDevelopmentOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoImages.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLifecycle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoLightroomState.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/photo/PhotoPrintingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftReceiptQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCraftDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoLightroomPrintQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoChromaticResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRepositoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRedstoneReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoTimerReleaseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoCaptureOwnerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PhotoRemoteFrameQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java"
+      ],
+      "native_evidence": "Wrap native delayed rising-edge redstone or native self-timer release once. Same scoped native CameraItem.takePhoto reaches native frame_exposed after actual frame insertion. Stand owner is actual criterion actor and native frame photographer. Track actual native executing renderer separately, award owner only after the original native expected upload stores real image for that frame ID. Manual release, timer start alone, empty stand or mere proximity do not qualify",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "native_limitations": [
+    "Native Lightroom frame_printed may select last or closest player. Observer never uses that fallback for quest actor, it binds actual accepted native print-menu start",
+    "Native composite renderer may differ from real print starter. Actual native uploader is retained separately, quest actor stays the starter",
+    "Redstone auto-print has no real native menu starter and is not credited by this observer. Normal manual Lightroom printing is supported",
+    "Preexisting unproven developed film and preexisting unproven chromatic sheets do not manufacture source receipts",
+    "Accepted pending image receipts are bounded2048 and kept for at most120seconds, exceeding native expected-upload60seconds. Native upload acceptance remains authoritative, stale-cache retention grants no grace to native validation",
+    "Development lineage is bounded16384 native frame identities, physical RGB budgets reuse existing bounded native-source conservation infrastructure",
+    "Image delivery lost on logout or native upload failure does not grant completion. Native image/film costs and error behavior remain unchanged"
+  ],
+  "standalone": "Integrated logical server and dedicated server with ordinary pack native client renderer, no JEMServer or external server/service",
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 4
+}

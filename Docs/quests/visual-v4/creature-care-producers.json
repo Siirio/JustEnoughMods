@@ -1,0 +1,372 @@
+{
+  "schema": 1,
+  "status": "source implemented and frozen for parent overall review/build, runtime not exercised",
+  "runtime_verified": false,
+  "source_reviewed": true,
+  "producers": [
+    {
+      "action": "v3_fauna_woodland_care",
+      "route": "gorilla",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareGorillaMixin.java"
+      ],
+      "native_commit": "Native banana consumption commits owner, later original attack hurt returns true with positive damage to that actor threat",
+      "collection": "Native accepted state, no item collection step",
+      "lineage": "Exact native entity and committed owner retained",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_woodland_care",
+      "route": "raccoon",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareRaccoonWashMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareRaccoonOwnershipMixin.java"
+      ],
+      "native_commit": "Native RaccoonAIWash.tick calls postWashItem on actual egg, changes untamed to actor-owned and consumes that same held egg",
+      "collection": "Native egg consumed after postWashItem inside the wash tick scope",
+      "lineage": "Native eggThrowerUUID commits ownership in postWashItem, no new nearest-player query",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_woodland_care",
+      "route": "caiman",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareCaimanHatchMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareCaimanDefenseMixin.java"
+      ],
+      "native_commit": "BlockReptileEgg accepted hatch spawn contains native actor imprint, later native tame defense hurts the actual actor threat",
+      "collection": "Accepted hatch insertion and original damage result",
+      "lineage": "Native newly assigned UUID retained, hatching owner observed after accepted addFreshEntity",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_woodland_care",
+      "route": "maned_wolf",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareManedWolfMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNavigationAccess.java"
+      ],
+      "native_commit": "Accepted apple debit starts native scent, actual native attractAnimals moveTo succeeds with changed path toward the wolf",
+      "collection": "Native successful navigation of eligible animal, no tame check",
+      "lineage": "Same wolf and actor scent window, native navigation object mob",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_woodland_care",
+      "route": "black_bear",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareBlackBearMixin.java"
+      ],
+      "native_commit": "BlackbearEntity accepted Sweet Berries debit commits native actor tame owner, pacifying native untamed hostility",
+      "collection": "Native accepted state, no item collection step",
+      "lineage": "Exact native entity and committed owner retained",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_woodland_care",
+      "route": "cougar",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareCougarMixin.java"
+      ],
+      "native_commit": "CougarEntity accepted native raw_venison debit commits native actor tame owner",
+      "collection": "Native accepted state, no item collection step",
+      "lineage": "Exact native entity and committed owner retained",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_pot_and_present",
+      "route": "strict_default_mouse",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareMouseCaptureMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareMouseReleaseMixin.java"
+      ],
+      "native_commit": "Actual native flower pot debit, native mouse discard and native pot delivery, then accepted native fresh mouse spawn with exact matching non-spatial serialized state",
+      "collection": "Actual pot item portions use public read-only NativeFoodSources API, final pot debit consumes budget once",
+      "lineage": "External saved batch -> original full non-spatial state -> same physical native pot -> actual accepted release. Native new UUID remains unchanged. Custom/baby/injured or any other lost field fails closed",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_pot_and_present_present",
+      "route": "squonk_cookie_present",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareSquonkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNativeInsertionMixin.java"
+      ],
+      "native_commit": "Exact Squonk mobInteract accepts cookie debit and actually inserts one of three native returned discs",
+      "collection": "Existing FoodDroppedProof conserved count/NBT/actor pickup, not the random advance alone",
+      "lineage": "Actual Squonk call producer, exact feeder and accepted drop",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_ringtail_and_caribou",
+      "route": "ringtail_haste",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareRingtailFriendMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareRingtailAssistanceMixin.java"
+      ],
+      "native_commit": "Native glow berries debit commits owner, original addEffect returns true and actual owner Haste II appears, strengthens or extends usefully",
+      "collection": "Positive actual effect before/after, no proximity criterion",
+      "lineage": "Same actor and same native owned Ringtail. Native proximity selector is left unchanged but its mere evaluation never awards",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_ringtail_and_caribou",
+      "route": "caribou_controlled_travel",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareCaribouMixin.java"
+      ],
+      "native_commit": "Native red mushroom tame and saddle debit/state commit precede at least five blocks of actual native server travel under actor directional input",
+      "collection": "At least five horizontal blocks from native server travel HEAD/RETURN under real actor directional input, no use or passenger-only award",
+      "lineage": "Same Caribou owner, saddle and actor. Native Caribou uses first passenger rather than vanilla controlling-passenger API",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_barrel_bear",
+      "route": "barrel_healing",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareBearTameMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareBearHealingMixin.java"
+      ],
+      "native_commit": "Native honeycomb owner commit precedes same barrel-equipped bear native automatic healing, exactly one stored food is consumed and health increases",
+      "collection": "Stored food snapshot and exact single debit, positive health delta, native healing cooldown50",
+      "lineage": "Same native tame owner and bear, native food inventory only, no imposed injury",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_crocodile_retrieval",
+      "route": "feather_retrieval",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareCrocodileMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNativeInsertionMixin.java"
+      ],
+      "native_commit": "Accepted native feather interaction takes nonempty stomach to empty, exact native returned output conserves all snapshot stacks",
+      "collection": "Existing real-actor FoodDroppedProof pickup of exact accepted native returned stack/NBT",
+      "lineage": "Exact crocodile and native stomach snapshot/output, no fabricated returned stacks",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_crocodile_retrieval_clock",
+      "route": "clock_storage",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareCrocodileMixin.java"
+      ],
+      "native_commit": "Native accepted clock feeding consumes held clock stack, conserves the inventory transfer and hasClock becomes true",
+      "collection": "Native stored clock predicate after exact original input debit",
+      "lineage": "Native tick-tock storage/behavior, no invented fear",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_eagle_nursery",
+      "route": "native_egg_lineage",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareEagleEggMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareEggDropMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareEggPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareEggReplacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareEagleTameMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNestEggMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNestContentsMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNestHatchMixin.java"
+      ],
+      "native_commit": "Actual survival native nest egg removal or silk-touch EagleEgg harvest creates exact native egg output, same certified physical portion is placed into native nest or native egg block, original native hatching inserts actual baby, native chicken debit commits that baby owner while still baby",
+      "collection": "Native egg physical source budget is consumed at placement, no give-item receipt",
+      "lineage": "Physical source batch -> exact native nest/placed sibling portion -> actual accepted new baby UUID -> same baby tame. Unknown siblings remain uncredited, native new UUID remains unchanged. Native nest content replacement, egg removal/replacement and hatch reset invalidate or conserve exact physical sibling provenance",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_musical_snake",
+      "route": "music_and_rabbit_owner",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareSnakeMusicMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareSnakeMixin.java"
+      ],
+      "native_commit": "Native accepted music listener event plus live jukebox or fresh note block is active, dancing snake accepts rabbit debit and commits tame owner",
+      "collection": "Actual native music, accepted feed debit and final ownership",
+      "lineage": "Same snake and actor, sound listener source is exact native field, no guessed private enum",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_musical_snake_bottle",
+      "route": "native_potion",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareSnakeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareNativeInsertionMixin.java"
+      ],
+      "native_commit": "Native empty glass bottle debit creates exact potion item/NBT for native public SnakeEffect, cooldown commits600",
+      "collection": "Original Inventory.add exact one-potion receipt or exact accepted native overflow drop collected through FoodDroppedProof",
+      "lineage": "Same snake previously tamed by that actor through active music, specific original native potion output only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_walrus_signal",
+      "route": "ridden_slam",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareAcceptedRideMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareWalrusCommandMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareWalrusAttackMixin.java"
+      ],
+      "native_commit": "Native tamed owner rides with accepted nonzero input-driven movement, actual server native jump request from that rider leads to land slam causing actual native knockback or accepted damage",
+      "collection": "Accepted vehicle movement branch after final vehicleLastGoodZ, no rollback branch. Positive actual eligible target effect",
+      "lineage": "Same owned walrus and real sender/rider. Native packet handler remains unchanged, observer filters spoofed unrelated entities and malformed charge values",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_walrus_signal",
+      "route": "ridden_underwater_whirl",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareAcceptedRideMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareWalrusCommandMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareWalrusAttackMixin.java"
+      ],
+      "native_commit": "Native owned ridden movement and accepted actor underwater command lead to original spin attack positive damage on actual eligible target",
+      "collection": "Original whirlwind hurt true and target health falls",
+      "lineage": "Same owned walrus and actor, native command window and water branch",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_walrus_signal_bound",
+      "route": "owned_pet_conch_binding",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareConchBindingMixin.java"
+      ],
+      "native_commit": "Native ConchShellItem.interactLivingEntity commits ConchShell.pet UUID for actual supported owned pet and native ConchShellsData contains that real pet",
+      "collection": "Exact native unbound-to-bound component and native stored pet record",
+      "lineage": "Registry item stays primal:conch_shell, bound_conch_shell is native translated item name, not a fabricated second registry item",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_walrus_signal_played",
+      "route": "walrus_shell_playing",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareWalrusInstrumentMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareWalrusPlayingMixin.java"
+      ],
+      "native_commit": "Actor native instrument debit stores original instrument and song, native WalrusPlayInstrument.start actually plays song and enters ROARING",
+      "collection": "Original playing behavior after native sound, not inventory possession or early advancement",
+      "lineage": "Same owned walrus, exact actor-provided native instrument and native song id",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_lion_trust",
+      "route": "same_owned_lion_rest",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareLionTameMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareLionRestBehaviorMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatureCareLionRestPoseMixin.java"
+      ],
+      "native_commit": "Accepted native meat debit commits owner, same lion native sleeping-owner behavior targets actor and actual isLaying DIGGING resting pose commits",
+      "collection": "Actual original sleep-owner rest behavior and resting pose after native server AI",
+      "lineage": "Same meat-tamed lion and exact owner LOOK_TARGET, not a normal feed or generic sit",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "shared_helpers": [
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareEggs.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareLineage.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareMouse.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareMusic.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareNest.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareOutputs.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareProof.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareRide.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/creaturecare/CreatureCareWash.java"
+  ],
+  "reused_read_only_food_api": [
+    "NativeFoodSources",
+    "FoodDroppedProof"
+  ],
+  "native_gaps_receipt": "Docs/quests/visual-v4/creature-care-native-gaps.json",
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "runtime_observed": false,
+  "accepted_route_rows": 21
+}

@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_pot_and_present"
+      }
+    },
+    "present": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_pot_and_present_present"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "present"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

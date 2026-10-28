@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "fed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_quake_ride_fed"
+      }
+    },
+    "mounted": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_quake_ride_mounted"
+      }
+    },
+    "stomp": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_quake_ride_stomp"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fed"
+    ],
+    [
+      "mounted"
+    ],
+    [
+      "stomp"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

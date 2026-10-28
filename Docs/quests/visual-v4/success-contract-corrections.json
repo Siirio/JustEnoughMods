@@ -1,0 +1,293 @@
+{
+  "schema": 1,
+  "source_package_immutable": true,
+  "corrections": [
+    {
+      "user_authorization": "Засчитывать курицу из Stove (рекомендую)",
+      "advancement": "jem_advancements:quest_v3/v3_food_roaster",
+      "station": "farm_and_charm:stove",
+      "allowed_outputs": [
+        "farm_and_charm:roasted_chicken"
+      ],
+      "success_condition": "Post-commit manual player receipt of farm_and_charm:roasted_chicken produced by the installed farm_and_charm:stove/roasted_chicken recipe in a native Stove. Require completed recipe provenance and actual transfer to player inventory or carried stack. Gifted or reinserted chicken does not count.",
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_food_knead_and_grind",
+      "requested_behavior": "Original supplied contract requires actual Mincer flour and Crafting Bowl dough, any order",
+      "implementation_choice": "Two native advancement criteria with AND requirements, no second player progress history",
+      "criteria": {
+        "flour": "food_mincer_flour",
+        "dough": "food_bowl_dough"
+      },
+      "requirements": [
+        [
+          "flour"
+        ],
+        [
+          "dough"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_combat_coat_repair",
+      "classification": "Source-backed implementation fact correction, routine direction from parent. Separate from explicit user Stove goal correction.",
+      "requested_behavior": "Repair eligible damaged equipment with Dragger Silk, unchanged",
+      "installed_version": "skarrier_mobs1.1.1",
+      "native_owner": "net.mcreator.skarriermobs.procedures.WorkshopOnButtonClickProcedure.execute(LevelAccessor,DDD,Entity)",
+      "native_evidence": "Installed bytecode9040..9111 checks slot0 DRAGGER_SILK,9114..9214 checks slot1 skarrier_mobs:low_level_gear,9217..9399 reduces slot1 damage by native random8..20,9402..9487 debits one silk from slot0. DraggerSilkItem has no use override.",
+      "text_correction": "RU/EN tip and repeated mechanic sections now describe the actual Workshop material slot0 and target slot1, replacing absent mainhand/offhand use. No goal, criterion, reward or identity changed.",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierRepairQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java"
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_store_logistics",
+      "classification": "Technical native advancement AND split, routine parent direction. Original content goal unchanged.",
+      "requested_behavior": "Same real player successfully performs native Deposit backpack to external inventory and native Restock external inventory to backpack, any order. Refill is not Restock.",
+      "implementation_choice": "Two native advancement criteria with AND requirements, no parallel progress history",
+      "criteria": {
+        "deposit": "storage_deposit",
+        "restock": "storage_restock"
+      },
+      "requirements": [
+        [
+          "deposit"
+        ],
+        [
+          "restock"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_fauna_serious_circle",
+      "classification": "Source-backed native availability annotation, routine parent direction. Native mechanic and config unchanged.",
+      "native_availability": "alexsmobs_april_fools",
+      "emitted_snbt_field": "jem_native_condition",
+      "native_owner": "com.github.alexthe666.alexsmobs.AlexsMobs.isAprilFools()",
+      "native_evidence": "Native stick-on-sand circle interaction is gated by the installed no-argument native bool. Available April1 or native superSecretSettings. No setting is enabled or date overridden by JEM.",
+      "content_correction": "RU/EN tip and repeated native contextual handbook text explain the conditional availability. Original circle goal, IDs and rewards unchanged.",
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_food_mill_noodles",
+      "classification": "Technical native advancement AND split, routine food producer coordination. Original content goal unchanged.",
+      "requested_behavior": "Same real player actually mills grain into flour and makes noodles through the installed native dough preparation, any order",
+      "implementation_choice": "Two native advancement criteria with AND requirements, native advancement progress persists both stages",
+      "criteria": {
+        "flour": "food_mill_flour",
+        "noodles": "food_dough_noodles"
+      },
+      "requirements": [
+        [
+          "flour"
+        ],
+        [
+          "noodles"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_eng_capture_heat",
+      "classification": "Technical native advancement AND split, fixed original multi-step contract unchanged",
+      "requested_behavior": "Same real player actually captures a burner and commits a valid consumed-fuel heat transition, any order",
+      "implementation_choice": "Native per-player advancement criteria persist both stages without a parallel progress history",
+      "criteria": {
+        "capture": "create_burner_capture",
+        "heat": "create_burner_fueled_heat"
+      },
+      "requirements": [
+        [
+          "capture"
+        ],
+        [
+          "heat"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_food_small_kitchen",
+      "classification": "Technical native advancement AND split, original goal unchanged",
+      "requested_behavior": "Same real player actually receives native Sink water and manually receives native SmallPot completed meal, any order",
+      "criteria": {
+        "water": "food_sink_water",
+        "meal": "food_small_pot_meal"
+      },
+      "requirements": [
+        [
+          "water"
+        ],
+        [
+          "meal"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "classification": "Explicit user amendment, supersedes the original immutable package target only for this removed card",
+      "advancement": "jem_advancements:quest_v3/v3_food_seed_bag",
+      "quest": "v3_food_seed_bag",
+      "requested_behavior": "Delete unavailable Seed Bag card and splice its route through to the next node",
+      "new_active_target": {
+        "cards": 616,
+        "groups": 76,
+        "cosmetic_edges": 514,
+        "farm_food_cards": 84,
+        "advancement_blueprints": 424
+      },
+      "visual_splice": {
+        "removed": [
+          {
+            "from": "v2_food_seedtime",
+            "to": "v3_food_seed_bag",
+            "kind": "route"
+          },
+          {
+            "from": "v3_food_seed_bag",
+            "to": "v3_food_harvest_again",
+            "kind": "route"
+          }
+        ],
+        "added": [
+          {
+            "from": "v2_food_seedtime",
+            "to": "v3_food_harvest_again",
+            "kind": "route"
+          }
+        ]
+      },
+      "semantic_after_harvest_again": [
+        "v2_food_ripe_pickings"
+      ],
+      "preserve_every_other_quest_center_id_number_binding_and_reward": true,
+      "immutable_package_and_frozen_legacy_claims_unchanged": true,
+      "evidence": "Docs/quests/visual-v4/seed-bag-removal.json"
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_eng_station_access",
+      "classification": "Technical native advancement AND split, original same-player goal unchanged",
+      "criteria": {
+        "access": "create_train_access_transition",
+        "climb": "create_train_access_climb"
+      },
+      "requirements": [
+        [
+          "access"
+        ],
+        [
+          "climb"
+        ]
+      ],
+      "implementation_choice": "Actual native sliding-window OPEN transition plus actual native climb movement on supported Grab Rails/Bogie Steps. Native per-player advancement persists both stages.",
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_food_cake_workshop",
+      "classification": "Technical native advancement three-way AND split, original goal unchanged",
+      "criteria": {
+        "cake": "food_surface_cake",
+        "cupcake": "food_surface_cupcake",
+        "cookie": "food_surface_cookie"
+      },
+      "requirements": [
+        [
+          "cake"
+        ],
+        [
+          "cupcake"
+        ],
+        [
+          "cookie"
+        ]
+      ],
+      "implementation_choice": "Native per-player criteria persist actual cake, correctly staged cupcake and correctly staged cookie outputs without adding a parallel history or changing native materials.",
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_eng_route_planner",
+      "classification": "Technical native advancement AND split with required ordering, original constraint+route contract unchanged",
+      "criteria": {
+        "constraint": "create_navigator_constraint",
+        "route": "create_navigator_route"
+      },
+      "requirements": [
+        [
+          "constraint"
+        ],
+        [
+          "route"
+        ]
+      ],
+      "implementation_choice": "Route criterion emits only after native constraint criterion already completed and actual query uses the unchanged active committed constraints. Actual network sender must match native request player UUID.",
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_food_brew_tasting",
+      "classification": "Technical native advancement OR within AND split, original brew/drink/measure goal unchanged",
+      "criteria": {
+        "brew_wood": "food/first_brew",
+        "brew_copper": "food/copper_whiskey",
+        "drink": "food_brewery_drink_finished",
+        "measured": "food_breathalyzer_measured"
+      },
+      "requirements": [
+        [
+          "brew_wood",
+          "brew_copper"
+        ],
+        [
+          "drink"
+        ],
+        [
+          "measured"
+        ]
+      ],
+      "implementation_choice": "Either existing native brewing action plus actual finished drinking and actual Breathalyzer measurement, persisted by native advancement criteria. No quality or intoxication minimum added.",
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_store_filter_void",
+      "classification": "Technical native advancement AND split, implementation choice. Original authored goal unchanged",
+      "requested_behavior": "Real configured transfer-filter comparison and deliberate native cheap-item Void consumption, any order",
+      "implementation_choice": "Independent native criteria persist each actual successful stage for the same player, original completed criterion/action retained, no parallel progress history",
+      "criteria": {
+        "filter_compared": "storage_filter_comparison",
+        "completed": "v3_store_filter_void"
+      },
+      "requirements": [
+        [
+          "filter_compared"
+        ],
+        [
+          "completed"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_food_cold_supplies",
+      "classification": "Technical native advancement AND split, implementation choice. Original authored goal unchanged",
+      "requested_behavior": "Native Palm Bar cocktail output receipt and native Mini Fridge supported water/ice cooling output receipt, any order",
+      "implementation_choice": "Independent native criteria persist each actual successful stage for the same player, original completed criterion/action retained, no parallel progress history",
+      "criteria": {
+        "completed": "v3_food_cold_supplies",
+        "cooled": "food_cold_supplies_cooled"
+      },
+      "requirements": [
+        [
+          "completed"
+        ],
+        [
+          "cooled"
+        ]
+      ],
+      "preserve_quest_reward_identities": true
+    }
+  ]
+}

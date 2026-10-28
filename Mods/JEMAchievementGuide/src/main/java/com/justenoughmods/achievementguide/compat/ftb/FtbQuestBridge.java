@@ -28,6 +28,7 @@ public final class FtbQuestBridge {
     public static void register() {
         BookItemReward.register();
         BookXpReward.register();
+        PastRewardsNetwork.register();
         MinecraftForge.EVENT_BUS.register(BookEvents.class);
         if (QuestSignals.loaded("jem_economy")) BookEconomyEvents.register();
         CustomTaskEvent.EVENT.register(event -> {
@@ -58,6 +59,7 @@ public final class FtbQuestBridge {
     @SubscribeEvent
     public static void refresh(TickEvent.ServerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || event.getServer().getTickCount() % 20 != 0) return;
+        BookMigration.refresh(event.getServer());
         ServerQuestFile file = ServerQuestFile.INSTANCE;
         if (file == null || file.server != event.getServer() || file.isLoading()
                 || !FtbQuestProjection.featuresChanged(event.getServer())) return;
@@ -71,5 +73,5 @@ public final class FtbQuestBridge {
     }
 
     @SubscribeEvent
-    public static void stopped(ServerStoppedEvent event) { FtbQuestProjection.clear(event.getServer()); BookEvents.clear(); }
+    public static void stopped(ServerStoppedEvent event) { FtbQuestProjection.clear(event.getServer()); BookMigration.clear(event.getServer()); BookEvents.clear(); }
 }

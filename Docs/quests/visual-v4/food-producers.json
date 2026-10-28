@@ -1,0 +1,1610 @@
+{
+  "schema": 1,
+  "status": "source implemented, exact installed bytecode inspected, runtime not exercised",
+  "evidence": "Docs/quests/visual-v4/native-food-evidence.json",
+  "producers": [
+    {
+      "action": "food/bread_baked",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StoveFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "farm_and_charm:stove",
+      "recipe": "farm_and_charm:stove/bread",
+      "output": "bakery:bread",
+      "native_commit": "StoveBlockEntity.craft(StoveRecipe, RegistryAccess) output slot0 delta after native processing, inputs/fuel remain native",
+      "collection": "AbstractContainerMenu.clicked successful native output decrease plus exact same stack added to real player inventory/cursor",
+      "replay_guard": "Single pending output provenance tied to exact native output count/NBT. Arbitrary setItem invalidates. Known produced portions consumed once. Unknown pre-existing output leaves first. Reinserted/gifted output has no receipt",
+      "user_correction": false,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_roaster",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StoveFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "farm_and_charm:stove",
+      "recipe": "farm_and_charm:stove/roasted_chicken",
+      "output": "farm_and_charm:roasted_chicken",
+      "native_commit": "StoveBlockEntity.craft(StoveRecipe, RegistryAccess) output slot0 delta after native processing, inputs/fuel remain native",
+      "collection": "AbstractContainerMenu.clicked successful native output decrease plus exact same stack added to real player inventory/cursor",
+      "replay_guard": "Single pending output provenance tied to exact native output count/NBT. Arbitrary setItem invalidates. Known produced portions consumed once. Unknown pre-existing output leaves first. Reinserted/gifted output has no receipt",
+      "user_correction": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/first_brew",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BreweryReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station_material": "WOOD",
+      "recipe": "brewery:brewing/wheat_beer",
+      "outputs": [
+        "brewery:beer_wheat"
+      ],
+      "native_commit": "BrewstationBlockEntity.brew(Recipe, RegistryAccess) tail after native beer/quality/event settlement",
+      "collection": "BrewstationBlockEntity.getBeer() exact one-portion decrement then BrewKettleBlock.use Player.addItem true plus inventory increase",
+      "replay_guard": "Pending batch recipe provenance attached to native beer snapshot. Every draw consumes one certified portion. Per-use transient draw context cleared before use and consumed at real receipt. Full inventory or unproven pre-existing beer grants no progress",
+      "quality_policy": "Native quality and solved-event values preserved, no minimum quality requirement",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/copper_whiskey",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BreweryReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station_material": "COPPER",
+      "recipe": "brewery:brewing/whiskey_highland_hearth",
+      "outputs": [
+        "brewery:whiskey_highland_hearth"
+      ],
+      "native_commit": "BrewstationBlockEntity.brew(Recipe, RegistryAccess) tail after native beer/quality/event settlement",
+      "collection": "BrewstationBlockEntity.getBeer() exact one-portion decrement then BrewKettleBlock.use Player.addItem true plus inventory increase",
+      "replay_guard": "Pending batch recipe provenance attached to native beer snapshot. Every draw consumes one certified portion. Per-use transient draw context cleared before use and consumed at real receipt. Full inventory or unproven pre-existing beer grants no progress",
+      "quality_policy": "Native quality and solved-event values preserved, no minimum quality requirement",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/netherite_brew",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BreweryReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station_material": "NETHERITE",
+      "recipe": "brewery:brewing/*",
+      "outputs": [
+        "brewery:beer_wheat",
+        "brewery:beer_barley",
+        "brewery:beer_hops",
+        "brewery:whiskey_highland_hearth",
+        "brewery:whiskey_jamesons_malt",
+        "brewery:whiskey_maggoallan",
+        "brewery:whiskey_smokey_reverie"
+      ],
+      "native_commit": "BrewstationBlockEntity.brew(Recipe, RegistryAccess) tail after native beer/quality/event settlement",
+      "collection": "BrewstationBlockEntity.getBeer() exact one-portion decrement then BrewKettleBlock.use Player.addItem true plus inventory increase",
+      "replay_guard": "Pending batch recipe provenance attached to native beer snapshot. Every draw consumes one certified portion. Per-use transient draw context cleared before use and consumed at real receipt. Full inventory or unproven pre-existing beer grants no progress",
+      "quality_policy": "Native quality and solved-event values preserved, no minimum quality requirement",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_mincer_flour",
+      "advancement": "jem_advancements:quest_v3/v3_food_knead_and_grind",
+      "criterion": "flour",
+      "requirements": "AND with the other native criterion, any order",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MincerFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodRandomizableOutputMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDropMerge.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "recipe": "farm_and_charm:mincer/flour",
+      "output": "farm_and_charm:flour",
+      "native_commit": "Native tick invokes exact matching recipe result only after actual input consumption, then commits result to native output slot",
+      "collection": "Exact native Mincer output ejection attaches provenance to that ItemEntity before world insertion. Native merge conserves known produced portions, unknown portions leave first. Real player pickup must commit an inventory increase and remove certified portions",
+      "replay_guard": "Bounded native pending-output provenance, invalidated on replacement. No second player progress counter. Emitted criterion recorded by native advancements",
+      "reviewed_native_methods": [
+        "MincerBlockEntity.tick/dropItemsInOutputSlot/spawnItem",
+        "CraftingBowlBlockEntity.tick",
+        "CraftingBowlBlock.use",
+        "RandomizableContainerBlockEntity.setItem/clearContent",
+        "ItemEntity.merge(ItemEntity,ItemStack,ItemEntity,ItemStack)/playerTouch/setItem"
+      ],
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_bowl_dough",
+      "advancement": "jem_advancements:quest_v3/v3_food_knead_and_grind",
+      "criterion": "dough",
+      "requirements": "AND with the other native criterion, any order",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BowlFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BowlCollectionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodRandomizableOutputMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "recipe": "farm_and_charm:crafting_bowl/dough",
+      "output": "farm_and_charm:dough",
+      "native_commit": "Native tick invokes exact matching recipe result only after actual input consumption, then commits result to native output slot",
+      "collection": "Native CraftingBowlBlock output4 Inventory.add must actually increase real player inventory. Pre-existing/reinserted outputs have no completed recipe receipt",
+      "replay_guard": "Bounded native pending-output provenance, invalidated on replacement. No second player progress counter. Emitted criterion recorded by native advancements",
+      "reviewed_native_methods": [
+        "MincerBlockEntity.tick/dropItemsInOutputSlot/spawnItem",
+        "CraftingBowlBlockEntity.tick",
+        "CraftingBowlBlock.use",
+        "RandomizableContainerBlockEntity.setItem/clearContent",
+        "ItemEntity.merge(ItemEntity,ItemStack,ItemEntity,ItemStack)/playerTouch/setItem"
+      ],
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/pot_soup",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookingPotFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodImplementedInventoryOutputMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "farm_and_charm:cooking_pot",
+      "recipe": "farm_and_charm:pot_cooking/potato_soup",
+      "output": "farm_and_charm:potato_soup",
+      "native_commit": "CookingPotBlockEntity.craft(Recipe, RegistryAccess) RETURN after native output7 write, ingredient consumption and required container6 consumption",
+      "collection": "Native GUI binds actual Container output7. AbstractContainerMenu.clicked must commit output decrease and exact stack gain to requesting player inventory/carried stack",
+      "replay_guard": "Bounded output provenance survives save/load, native interface default setItem/clearContent invalidates replacement. Previously existing/gifted/reinserted soup does not count Concrete owner overrides invalidate replacements/clears then delegate to exact inherited native ImplementedInventory SRG default methods",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/greenhouse_harvest",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/GreenhouseQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/GreenhouseHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomatoGreenhouseHarvestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RightClickGreenhouseHarvestMixin.java"
+      ],
+      "native_commit": "Native mature eligible crop break, native TomatoCropBlock head/body mature use AGE4 to1, and exact RightClickHarvest4.6.1 completeHarvest SUCCESS old mature wheat/lettuce to actual same crop AGE0. Every route checks actual native Serene greenhouse predicate, no raw click",
+      "native_predicate": "Invoker calls exact Serene Seasons9.1.0.3 SeasonalCropGrowthHandler.isGlassAboveBlock(Level,BlockPos), not a reconstructed roof scan or seasonal assumption",
+      "target_blocks": [
+        "minecraft:wheat",
+        "farm_and_charm:lettuce_crop",
+        "farm_and_charm:tomato_crop"
+      ],
+      "maturity": "Native CropBlock.isMaxAge for wheat/lettuce and native TomatoCropBlock AGE4 bound verified from installed canGrow implementation",
+      "limits": "Native mature break path. No out-of-season requirement. Canceled/failed break rejects. No arbitrary glass or inventory observation",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/tea_brewed",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TeaFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HerbalFoodInventoryMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": [
+        "herbalbrews:tea_kettle",
+        "herbalbrews:copper_tea_kettle"
+      ],
+      "recipe": "herbalbrews:kettle_brewing/green_tea",
+      "output": "herbalbrews:green_tea",
+      "native_commit": "Shared native TeaKettleBlockEntity.craft(TeaKettleRecipe) RETURN, after actual ingredient and water consumption and committed output0 creation with native effect NBT",
+      "collection": "Native TeaKettleGuiHandler FurnaceResultSlot0 binds real BE Container, common menu wrapper requires native output decrease plus exact player inventory/cursor gain",
+      "replay_guard": "Bounded pending output provenance. Arbitrary inherited default interface setItem/clearContent invalidates replacement. Existing/gifted tea does not count Concrete owner overrides invalidate replacements/clears then delegate to exact inherited native ImplementedInventory SRG default methods",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/apple_pressed",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ApplePressFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/VineryFoodInventoryMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodRecipeRun.java"
+      ],
+      "recipe": "vinery:apple_fermenting/apple_juice",
+      "output": "vinery:apple_juice",
+      "native_output_slot": 3,
+      "native_commit": "Actual native recipe operation RETURN after input/required bottle consumption and committed output increase",
+      "collection": "Native menu binds actual BE output. Receipt requires output decrease plus exact stack gain to real player inventory or carried stack",
+      "replay_guard": "Bounded native pending output receipt. Arbitrary inherited/default or owner override setters/clearContent invalidate replacement. Prior/gifted/reinserted products have no receipt Concrete owner overrides invalidate replacements/clears then delegate to exact inherited native ImplementedInventory SRG default methods",
+      "native_variant_policy": "Native juice bytes unchanged, no wine aging or wine recipe required",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/wine_fermented",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WineBarrelFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/VineryFoodInventoryMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodReceiptVariant.java"
+      ],
+      "recipe": "vinery:wine_fermentation/red_wine",
+      "output": "vinery:red_wine",
+      "native_output_slot": 5,
+      "native_commit": "Actual native recipe operation RETURN after input/required bottle consumption and committed output increase",
+      "collection": "Native menu binds actual BE output. Receipt requires output decrease plus exact stack gain to real player inventory or carried stack",
+      "replay_guard": "Bounded native pending output receipt. Arbitrary inherited/default or owner override setters/clearContent invalidate replacement. Prior/gifted/reinserted products have no receipt",
+      "native_variant_policy": "Wine only: native WineYears.setWineYear called on comparison COPY. Actual raw and exact native Year/EffectAmplifier/EffectDuration variants both counted, never arbitrary NBT stripping",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/plow_tilled",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PlowFoodQuestMixin.java"
+      ],
+      "native_commit": "Exact native PlowCartEntity.handleServerSide Level.setBlock returns true, prior soil differs and actual committed result is minecraft:farmland",
+      "actor_authority": "Native AbstractTowableEntity.getDriver is this ServerPlayer, or its actual controlling passenger is this ServerPlayer, alive in the same logical level. No nearby, ownerUUID, inventory or placement inference",
+      "limits": "Exact supplied minecraft:farmland target. Fertilized farmland branch is not silently substituted. No native plow range, soil rules, speed, animation or drop changes",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/grain_dried",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SiloFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/SiloFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java"
+      ],
+      "stations": [
+        "farm_and_charm:silo_wood",
+        "farm_and_charm:silo_copper"
+      ],
+      "recipe": "farm_and_charm:drying/dried_wheat",
+      "output": "brewery:dried_wheat",
+      "native_commit": "SiloBlockEntity.dry obtains recipe result only after input removal then writes an empty native output slot81..161. Exact dried_wheat recipe and actual committed output required",
+      "collection": "Native tryDropFinish ejects its original output stack through native dropStack. Each native split entity carries only its exact certified portion, envelope removed before world insertion. Shared ItemEntity native merge/pickup logic requires actual player inventory gain",
+      "replay_guard": "At most81 pending native slot receipts. Set/remove/noUpdate/clear invalidate. Receipt removed before ejection. No ItemStack copy replaces the native split source. All produced quantities consumed once on real pickup. Reinserted/gifted output has no provenance",
+      "native_limitation": "Native shift-removal route does not insert its returned dried stack into inventory in this installed version, so that route receives no progress and its gameplay is not changed",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/wok_egg",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryPotFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/CookeryFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "kaleidoscope_cookery:pot",
+      "recipes": [
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_1",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_2",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_3",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_4",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_5",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_6",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_7",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_8",
+        "kaleidoscope_cookery:pot/egg_to_fried_egg_9"
+      ],
+      "output": "kaleidoscope_cookery:fried_egg",
+      "native_commit": "Native applyRecipe captures exact matched recipe output, native tickCooking finishes status2 only after cooking and shovel requirements. Suspicious replacement no longer matches pending output",
+      "collection": "Native takeOutProduct true, actual pending output reset, actual matching inventory gain at least one. Native carrier/shovel and damage behavior untouched",
+      "replay_guard": "One pending exact recipe/output receipt, persisted with BE. startCooking/reset invalidate, resulting suspicious/burnt dishes cannot match. No inventory acquisition trigger",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/stockpot_noodles",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryStockpotFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "kaleidoscope_cookery:stockpot",
+      "recipes": [
+        "kaleidoscope_cookery:stockpot/beef_noodle",
+        "kaleidoscope_cookery:flex_stockpot/beef_noodle"
+      ],
+      "output": "kaleidoscope_cookery:beef_noodle",
+      "native_commit": "Native persisted recipeId, result, status3 and positive takeoutCount prove completed actual stockpot batch. Either exact registered stockpot/flex path accepted when natively used",
+      "collection": "Native takeOutProduct true, servings decrease exactly one and actual matching inventory gain at least one. Lid/carrier consumption stays native",
+      "replay_guard": "Native remaining-serving count is authority, no alternate history. Raw ingredients, uncompleted status or unrelated recipe result rejected",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/spit_portion",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookerySpitFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/CookeryFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "kaleidoscope_cookery:shawarma_spit",
+      "recipe": "Actual registered native CampfireCookingRecipe selected by this spit",
+      "output": "Native edible cooked result assembled for consumed input",
+      "native_commit": "Exact successful onPutCookingItem lambda consumes at most8 actual input, assembles Campfire recipe, records native cooked result. Completion requires native cookTime<=0",
+      "collection": "Native onTakeCookedItem true, actual cooked output cleared and at least one exact matching result reaches real inventory. Early raw-item take never qualifies",
+      "replay_guard": "One persisted pending native result/recipe receipt, consumed once on successful native extraction. Item or NBT replacement fails exact snapshot comparison",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/steamed_mantou",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookerySteamerFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/SteamerFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "kaleidoscope_cookery:steamer",
+      "recipe": "kaleidoscope_cookery:steamer/mantou",
+      "output": "kaleidoscope_cookery:mantou",
+      "native_commit": "Native cookingTick passes completed timer, exact Optional matched recipe original native assembler runs unchanged, committed list output saved per physical slot",
+      "collection": "Native takeFood ItemUtils transfer from exact certified slot with native cookingTime=-1 and actual matching real inventory gain",
+      "replay_guard": "Bounded8 pending output slots. placeFood replacement invalidates, receipt consumed before native output transfer. Arbitrary mantou inventory/gift never qualifies",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/recipe_recorded",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryRecipeRecordQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "stations": [
+        "kaleidoscope_cookery:pot",
+        "kaleidoscope_cookery:stockpot"
+      ],
+      "output": "kaleidoscope_cookery:recipe_item with native valid typed RecipeRecord",
+      "native_commit": "Only native onRecordRecipe blank-book branch. It splits a real blank book, obtains station result, writes RecipeRecord before this native ItemUtils delivery. Native exact recorded inputs/type, actual current station inputs and registered native recipe match required, native suspicious fallback rejected",
+      "collection": "Original native ItemUtils delivery preserved and actual exact written-book inventory gain required",
+      "replay_guard": "Populated book copies/use never enter onRecordRecipe, no generic NBT check or item acquisition trigger. All operation context is explicit method arguments, no global/singleton state",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/grape_stomped",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/GrapePotFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/GrapePotStateInvalidationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/GrapePotReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "vinery:grapevine_pot",
+      "allowed_outputs": [
+        "vinery:red_grapejuice",
+        "vinery:white_grapejuice",
+        "vinery:red_jungle_grapejuice",
+        "vinery:white_jungle_grapejuice",
+        "vinery:red_savanna_grapejuice",
+        "vinery:white_savanna_grapejuice",
+        "vinery:red_taiga_grapejuice",
+        "vinery:white_taiga_grapejuice"
+      ],
+      "native_commit": "Exact native fallOn successful actual Level.setBlock stage5->6 by real player records pending completed physical pot state and owner, only native existing storage1..3 juice portions",
+      "collection": "Exact native bottling setBlock storage-3 actual committed transition preserves pending remaining portions, one transient per-pot draw follows same owner. Native Inventory.add must actually increase exact juice inventory before emitting",
+      "replay_guard": "Maximum256 pending native pots per loaded chunk, serialized chunk capability owns dimension+position. Stage UUID and exact native BlockState preserved after restart. Ordinary state/block replacement invalidates, owner-only credit, each native portion consumed once. No global completion history or generic juice acquisition",
+      "performance": "LevelChunk observer bails before any capability access unless old/new block is exact native grape pot. No chunk scan, adjacent chunk lookup or generation. Interaction helper requires already loaded current chunk",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_lunch_bag",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryLunchBagQuestMixin.java"
+      ],
+      "station": "kaleidoscope_cookery:transmutation_lunch_bag",
+      "native_commit": "Exact native finishUsingItem first food/potion ItemStack.finishUsingItem must actually consume one input. Separate native sampled-extra-effect LivingEntity.addEffect must return true. Native random selection and storage serialization unchanged",
+      "collection": "Native consumption result, no inventory acquisition trigger. Emits after native bag setItems completes",
+      "replay_guard": "Ephemeral actor-bound operation receipt stored only on exact bag argument during native function, reset HEAD and removed RETURN. Primary-meal effects do not satisfy extra-effect branch. Rejected effects and empty use cannot count. No singleton/global state",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_knife_board",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryChoppingBoardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/ChoppingBoardFoodDrop.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/CookeryFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java"
+      ],
+      "station": "kaleidoscope_cookery:chopping_board",
+      "native_commit": "Native accepted ChoppingBoardRecipe assembly after actual input split, exact nonidentity transformed result. Final native cut branch must receive actual KITCHEN_KNIFE, then native result ejection/reset runs unchanged",
+      "collection": "Actual native spawned result entity, real inventory gain by exact cutter UUID on native pickup. Entity envelope removed before world insertion, output ItemStack bytes unchanged",
+      "replay_guard": "One persisted exact native result/recipe receipt per board, reset invalidates. Actor-bound entity portions conserved through partial pickup/merge, wrong actor receives no credit, conflicting actor/action merged certification discarded. Ownerless existing Mincer/Silo behavior retained",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_tea_jug",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/JugBlockFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/JugEffectsFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/JugFoodRun.java"
+      ],
+      "station": "herbalbrews:jug",
+      "native_commit": "Exact native JugBlock.use applyEffects then clearDrinks. Pre-consumption native list contains at least two distinct supported DrinkBlockItem registry IDs with valid native effect data, all expected distinct effects must have actual addEffect true",
+      "collection": "Native jug content clear after successful real effect applications, no generic drink/item acquisition proxy",
+      "replay_guard": "Transient receipt owned by this physical native JugBlockEntity, reset before applyEffects and consumed before native clear. Real actor only. Native effect duration, capacity and item mutation unchanged",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_little_teapot",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryTeapotFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryTeacupFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/TeapotServingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/CookeryFoodProof.java"
+      ],
+      "station": "kaleidoscope_cookery:teapot",
+      "native_commit": "Original matched native TeapotRecipe.assemble output must actually commit to same native result/status1. Native heat/timing finishes status2. Exact result recipe proof persists with BE and native portable pot BlockEntityTag",
+      "collection": "Native EmptyCupBlock/TeacupBlock use must succeed, portable exact native completed output decreases one through native pourOut, real resulting cup BlockState must equal exact native one-serving transition. Picking up pot never qualifies",
+      "replay_guard": "One exact native recipe/result receipt per physical pot. Each actual pour updates certified remaining native result count. Ephemeral same-pot same-actor operation receipt removed on return. Existing/gifted arbitrary tea output has no new native recipe receipt",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_mill_flour",
+      "advancement": "jem_advancements:quest_v3/v3_food_mill_noodles",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_mill_noodles.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryMillstoneQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryMillstoneOutputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/MillstoneFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java"
+      ],
+      "station": "kaleidoscope_cookery:millstone",
+      "recipe": "kaleidoscope_cookery:millstone/flour_from_wheat",
+      "native_commit": "Native lambda$tick$4 is reached only after native bound-animal and processing-timer checks. Exact real wheat input and empty native outputs precede actual recipe result insertions, actual input clears before certified flour outputs recorded",
+      "collection": "Native tick creates actual output ItemEntity from same physical native slot then addFreshEntity. Up to4 exact physical slot proofs consumed before insertion. Existing native merge/pickup proof requires real player inventory gain",
+      "replay_guard": "At most4 exact native pending slots serialized with BE. Native output handler onContentsChanged clears prior proof, including automation/override changes. Native reset clears, no ownership/inventory proxy and no output bytes altered",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_dough_noodles",
+      "advancement": "jem_advancements:quest_v3/v3_food_mill_noodles",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_mill_noodles.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryDoughQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookeryChoppingBoardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/ChoppingBoardFoodDrop.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java"
+      ],
+      "station": [
+        "kaleidoscope_cookery:raw_dough",
+        "kaleidoscope_cookery:chopping_board"
+      ],
+      "native_commit": "Stretching: original RawDough.releaseUsingItem duration gate then actual native source setCount0 and actual ItemUtils noodle delivery. Cutting: exact registered raw_noodles_from_raw_dough recipe, valid knife, final native result ejection",
+      "collection": "Stretching requires real inventory gain after unchanged native delivery. Cutting requires exact cutter UUID real entity pickup from native completed board receipt. One cutting action can satisfy both board and noodles goals",
+      "replay_guard": "No singleton dough-item state. Native captured call arguments bind actual actor and cleared input. Cutting special food_board_noodles receipt aliases only on actual certified pickup, existing merge/action/owner conservation unchanged",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_coop_eggs",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ChickenCoopProduceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ChickenCoopCollectQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/CoopFoodProof.java"
+      ],
+      "station": "farm_and_charm:chicken_coop",
+      "native_commit": "Exact native addChicken stores original real chicken UUID then removes that chicken, calls actual addEgg and increments native count by1. Only this successful native producer certifies a portion. Native cap9 unchanged",
+      "collection": "Original native ChickenCoopBlock.use Player.addItem real egg delivery followed by native clearEggs. Actual certified portion must reach interacting player inventory, then native count must become0",
+      "replay_guard": "Persisted one bounded native egg total/certified count receipt, arbitrary addEgg or clear invalidates, physical coop owns proof. Unknown old eggs transfer before certified portions. One ephemeral same-coop actor receipt consumed before native clear",
+      "native_fact": "Installed native eggs are produced when a real chicken enters coop, not by coop tick. No manually inserted egg branch exists. Adapter preserves native production without inventing time or breed requirements",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_orchard",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AppleOrchardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CherryOrchardQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeOrchardDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/OrchardFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java"
+      ],
+      "station": [
+        "vinery:apple_leaves",
+        "vinery:dark_cherry_leaves"
+      ],
+      "native_commit": "Actual native mature HAS_APPLES/HAS_CHERRIES true AGE3 empty-hand harvest invokes original native popResourceFromFace. Native real entity insertion must succeed and same native leaf must commit exact HAS=false AGE1 state",
+      "collection": "Only exact harvested fruit entity gets cutter UUID proof after native harvest RETURN. Real same-player native pickup inventory gain required. Gifted fruit, leaf break and failed reset/insertion get no receipt",
+      "replay_guard": "One ephemeral actor-owned native operation token, exact dimension level, same tick and position, exact native drop UUID and item bytes. Envelope removed before world insertion, native random quantity/position/motion unchanged. No entity scan or global action state. Existing certified-portion merge/pickup conservation applies",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_sink_water",
+      "advancement": "jem_advancements:quest_v3/v3_food_small_kitchen",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_small_kitchen.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SinkFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java"
+      ],
+      "station": "farm_and_charm:sink",
+      "native_commit": "Exact native lower-half Sink.use filled-to-empty actual BlockState commit precedes original Player.addItem. Only actual WATER_BUCKET or POTION with native Potions.WATER result accepted",
+      "collection": "Original native output delivery plus real matching player inventory gain. Filling sink, empty click, upper-half no-op or rejected actual mutation do not count",
+      "replay_guard": "Operation arguments bind actual original filled state, position, player and output. No Block singleton state, no raw click or water-item ownership proxy",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_small_pot_meal",
+      "advancement": "jem_advancements:quest_v3/v3_food_small_kitchen",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_small_kitchen.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SmallPotFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SmallPotFoodInventoryMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java"
+      ],
+      "station": "bakery:small_cooking_pot",
+      "native_commit": "Exact native craft(Recipe,RegistryAccess) canCraft gate, native output7 increase and actual recipe-input/serving-container6 consumption before RETURN. Any real native recipe allowed as supplied contract requires",
+      "collection": "Native F&C CookingPotGuiHandler receives actual SmallCookingPot BE Container. Shared menu proof requires output7 decrease and exact player inventory/cursor gain",
+      "replay_guard": "One bounded exact pending native output receipt. Concrete owner inventory setters/clear delegate exact inherited F&C ImplementedInventory defaults after invalidation. Prior/gifted/reinserted items do not count",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_surface_cake",
+      "advancement": "jem_advancements:quest_v3/v3_food_cake_workshop",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_cake_workshop.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BakingSurfaceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BakingStageInvalidationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BakingSurfaceProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BakingStageReceipt.java"
+      ],
+      "station": "bakery:baker_station",
+      "native_owner": "Bakery2.0.6 BlankCakeBlock.use surface mutation, no invented CakingRecipe registry",
+      "native_output_fields": [
+        "STRAWBERRY_CAKE",
+        "CHOCOLATE_CAKE",
+        "SWEETBERRY_CAKE",
+        "CHOCOLATE_GATEAU"
+      ],
+      "native_commit": "Native CAKE surface and actual supported decoration input. Original native Level.setBlock must return true and actual final surface block must match one exact accepted native output. Original held decoration input decreases1 before native method RETURN",
+      "collection": "Actual native output is committed decorated surface block above native BakerStation. No generic crafting, acquired pastry, raw click or return of empty jar satisfies proof",
+      "replay_guard": "One ephemeral actor-owned action receipt. Tool-preparation capability holds at most256 physical positions per native chunk, bound actor/state and stage1..2, saved natively and invalidated on any actual pastry-state replacement. No duplicate quest progress history",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_surface_cupcake",
+      "advancement": "jem_advancements:quest_v3/v3_food_cake_workshop",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_cake_workshop.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BakingSurfaceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BakingStageInvalidationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BakingSurfaceProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BakingStageReceipt.java"
+      ],
+      "station": "bakery:baker_station",
+      "native_owner": "Bakery2.0.6 BlankCakeBlock.use surface mutation, no invented CakingRecipe registry",
+      "native_output_fields": [
+        "STRAWBERRY_CUPCAKE_BLOCK",
+        "APPLE_CUPCAKE_BLOCK",
+        "SWEETBERRY_CUPCAKE_BLOCK"
+      ],
+      "native_commit": "Actual native knife-tag CAKEtrue to CUPCAKEtrue surface transition by same real actor, same physical station and native current state. Original native Level.setBlock must return true and actual final surface block must match one exact accepted native output. Original held decoration input decreases1 before native method RETURN",
+      "collection": "Actual native output is committed decorated surface block above native BakerStation. No generic crafting, acquired pastry, raw click or return of empty jar satisfies proof",
+      "replay_guard": "One ephemeral actor-owned action receipt. Tool-preparation capability holds at most256 physical positions per native chunk, bound actor/state and stage1..2, saved natively and invalidated on any actual pastry-state replacement. No duplicate quest progress history",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_surface_cookie",
+      "advancement": "jem_advancements:quest_v3/v3_food_cake_workshop",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_cake_workshop.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BakingSurfaceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BakingStageInvalidationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BakingSurfaceProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/BakingStageReceipt.java"
+      ],
+      "station": "bakery:baker_station",
+      "native_owner": "Bakery2.0.6 BlankCakeBlock.use surface mutation, no invented CakingRecipe registry",
+      "native_output_fields": [
+        "STRAWBERRY_COOKIE_BLOCK",
+        "CHOCOLATE_COOKIE_BLOCK",
+        "SWEETBERRY_COOKIE_BLOCK"
+      ],
+      "native_commit": "Actual native knife then actual native ROLLING_PIN transition to COOKIEtrue by same real actor at same physical station. Original native Level.setBlock must return true and actual final surface block must match one exact accepted native output. Original held decoration input decreases1 before native method RETURN",
+      "collection": "Actual native output is committed decorated surface block above native BakerStation. No generic crafting, acquired pastry, raw click or return of empty jar satisfies proof",
+      "replay_guard": "One ephemeral actor-owned action receipt. Tool-preparation capability holds at most256 physical positions per native chunk, bound actor/state and stage1..2, saved natively and invalidated on any actual pastry-state replacement. No duplicate quest progress history",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_thatch",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WetHayQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/WetHayPlacementProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeQuestRecipients.java"
+      ],
+      "station": "beachparty:wet_hay_block",
+      "output": "beachparty:thatch",
+      "native_commit": "Exact native WetHayBaleBlockEntity.tick passes native protection, sky, water, timer and hot-biome-tag rules. Original Level.setBlock must actually commit native THATCH result at same physical owner position",
+      "actor_authority": "Actual uncancelled Forge real-player wet-hay placement records UUID on actual physical native BE, persisted by Forge native BlockEntity data. Transformation credit belongs only to that recorded real placer, never nearest/current territory owner",
+      "collection": "Post-commit native block transition is the requested result, not inventory acquisition. Shared NativeQuestRecipients queues the exact observed native action and advancement for original placer, delivering online or after login and acknowledging persisted native completion. No second food queue or progress owner",
+      "replay_guard": "Exact native BE reference/state/position before transform and exact actual THATCH state after. Actor receipt removed after committed transform. Native normal-biome hay-block branch does not count. No polling, forced chunk access or JEMServer dependency",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_nether_provisions",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EverlastingFoodQuestMixin.java"
+      ],
+      "station": "kaleidoscope_nether:everlasting_flame_steak",
+      "native_commit": "Original EverlastingFoodItem enabled/isEdible gate invokes actual LivingEntity.eat on a COPY then its own addCooldown. Exact original stack reference and bytes retained through native finish RETURN, actual consumed copy decreases1",
+      "collection": "Actual completed native food consumption, not ownership or a duplicated replacement. Actor-owned ephemeral method receipt removed RETURN",
+      "replay_guard": "Exact retained original snapshot plus real native copied-stack debit. Native config enabled check and cooldown remain untouched. Fake/creative/spectator rejected by native criterion owner",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_brewery_drink_finished",
+      "advancement": "jem_advancements:quest_v3/v3_food_brew_tasting",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_brew_tasting.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreweryDrinkFoodQuestMixin.java"
+      ],
+      "station": "Native Brewery DrinkBlockItem",
+      "native_commit": "Original native finishUsingItem commits native super food debit, mug handling, AlcoholManager.drinkAlcohol and native quality/default effects before RETURN. Actual same typed drink stack decreases1",
+      "collection": "Real completed consumption of actual native Brewery drink, no quality or intoxication minimum. Existing native food/first_brew or food/copper_whiskey criterion is separate native OR requirement",
+      "replay_guard": "One ephemeral actor operation receipt, cleared RETURN. No drink-item singleton state, inventory item ownership, generic finish event or raw use substitute",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_breathalyzer_measured",
+      "advancement": "jem_advancements:quest_v3/v3_food_brew_tasting",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_brew_tasting.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreathalyzerFoodQuestMixin.java"
+      ],
+      "station": "brewery:breathalyzer",
+      "native_commit": "Native delayed use threshold calls exact private addNbt(LivingEntity), reads canonical AlcoholPlayer/AlcoholLevel and commits its real measured result to current active Breathalyzer stack. Hook runs after native commit",
+      "collection": "Same actual actively used native tool must hold committed EASY, WARNING or DANGER result. Zero intoxication EASY accepted, no summon/blackout/quality requirement",
+      "replay_guard": "No credit on initial use, inherited measurement NBT acquisition or unrelated tool. Exact private native measurement call and actor native alcohol owner required",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_cellar",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WineCellarQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WineCellarInventoryMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/WineCellarProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodEntityCollectionMixin.java"
+      ],
+      "station": "Native compatible Vinery StorageBlock racks",
+      "native_commit": "Native add splits actual1 finished DrinkBlockItem in native red_wine or white_wine tag into empty actual native rack slot. Same actual real inserting player must later natively remove that exact stored bottle",
+      "collection": "Native slot clears then real matching player inventory gain. Original native no-room Player.drop path retains same actor certificate and requires later real pickup before progress",
+      "replay_guard": "At most9 exact pending native rack-slot/actor/stack receipts, serialized with physical BE. Native setStack/removeStack/setInventory invalidate, each retrieval consumes once. All original native wine/year metadata stays unchanged, no age wait or potency formula",
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_beach_treasure",
+      "advancement": "jem_advancements:quest_v3/v3_food_beach_treasure",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_beach_treasure.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SeashellFoodQuestMixin.java"
+      ],
+      "station": "Beachparty2.0.3 native SeashellItem.m_7203_",
+      "native_commit": "Exact native gameplay/seashell LootTable output list invokes original player consumer once per stack, followed by original returned shell stack shrink1. Observer verifies actual same-player inventory gain from that actual loot consumer and exact original shell reference/count debit at native RETURN",
+      "collection": "Real player actually receives positive matching native loot before completion. No rare Bottle requirement, item reward and native loot tables unchanged",
+      "replay_guard": "One ThreadLocal method receipt with actor UUID and native shell reference, cleared before each use and on RETURN. No source-player strong reference. Real native consumer called exactly once, previews/client/FakePlayer/creative/spectator excluded",
+      "unsupported_paths": [
+        "Native no-inventory-gain route does not receive credit",
+        "Native exceptions have no successful RETURN and do not receive credit",
+        "Reentrant opening can conservatively invalidate the outer receipt rather than borrow inner proof"
+      ],
+      "native_registration_evidence": "Exact ObjectRegistry static registration literal beach_towel and BEACH_TOWEL field at bytecode686..697, registerWithItem helper retains native block item registration. Seashell registry and class confirmed in exact installed JAR",
+      "installed_artifact": "Client/ManagedPack/mods/letsdo-beachparty-forge-2.0.3.jar",
+      "installed_sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Independent focused review build/questbook-v4-seashell-review-report.md found no actionable normal-inventory-route source defect. Parent confirmed central mixin entry and optional beachparty guard after reviewer snapshot. Runtime remains unobserved",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_cold_supplies",
+      "advancement": "jem_advancements:quest_v3/v3_food_cold_supplies",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_cold_supplies.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PalmBarFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/ColdSuppliesOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java"
+      ],
+      "station": "beachparty:palm_bar",
+      "recipes": [
+        "beachparty:palm_bar_mixing/cocoa_cocktail",
+        "beachparty:palm_bar_mixing/coconut_cocktail",
+        "beachparty:palm_bar_mixing/honey_cocktail",
+        "beachparty:palm_bar_mixing/melon_cocktail",
+        "beachparty:palm_bar_mixing/pumpkin_cocktail",
+        "beachparty:palm_bar_mixing/sweetberries_cocktail"
+      ],
+      "native_commit": "Exact installed PalmBarBlockEntity.craft(PalmBarRecipe, RegistryAccess) successful RETURN after native canCraft, output commit and consumeIngredients. Observer requires exact native cocktail recipe/result identity and actual result-count output increment with actual matching ingredient debit. Output slot0 and input slots1..4 stay native",
+      "collection": "Existing AbstractContainerMenu.clicked observer requires actual certified output decrease and exact real same-player inventory/cursor receipt. Original completed criterion/action is retained and separate cooled criterion is required by native AND requirements",
+      "replay_guard": "Single bounded physical station FoodOutputProof certificate, exact output/count/NBT and generation. Native concrete setItem/clear invalidate, save/load retain physical provenance, known produced portions consumed once and unknown output leaves first. Gifts/reinsertion have no producer certificate. Client/FakePlayer/creative/spectator collection excluded",
+      "unsupported_paths": [
+        "Unsupported or replaced recipe/result identities receive no certificate",
+        "Inventory possession, station opening, ordinary clicks, discarded output and automation alone cannot complete the stage",
+        "Native craft exceptions have no successful RETURN and receive no certificate"
+      ],
+      "installed_artifact": "Client/ManagedPack/mods/letsdo-beachparty-forge-2.0.3.jar",
+      "installed_sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Writer manually inspected exact installed craft/menu/mutation bytecode and final source. Independent parent-dispatched source review remains pending",
+      "independent_source_review": "build/questbook-v4-cold-supplies-review-report.md, specification and quality source review passed, actual gameplay unobserved",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_cold_supplies_cooled",
+      "advancement": "jem_advancements:quest_v3/v3_food_cold_supplies",
+      "criterion": "cooled",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_cold_supplies.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MiniFridgeFoodQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/ColdSuppliesOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodOutputProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FoodMenuCollectionMixin.java"
+      ],
+      "station": "beachparty:mini_fridge",
+      "recipes": [
+        "beachparty:mini_fridge_freezing/ice",
+        "beachparty:mini_fridge_freezing/packed_ice",
+        "beachparty:mini_fridge_freezing/blue_ice",
+        "beachparty:mini_fridge_freezing/powder_snow_bucket"
+      ],
+      "native_commit": "Exact installed MiniFridgeBlockEntity.craft(MiniFridgeRecipe, RegistryAccess) successful RETURN after native canCraft and native completion. Observer requires actual supported source input, native recipe/result identity, actual result-count output increment and one actual same-variant input debit. Output slot0/input1, native times and empty-output/reference-comparison quirk preserved",
+      "collection": "Existing physical FoodOutputProof certificate is consumed only by real same-player manual inventory/cursor output receipt. Separate cooled criterion uses the existing quest_action trigger and AND requirements with original completed criterion",
+      "replay_guard": "Native concrete setItem invalidates, inherited clearContent is extended with exact Beachparty ImplementedInventory default forwarding after invalidation. Save/load persist physical provenance. No new completion ledger, no JEMServer dependency, no credit for acquired/gifted ice or unrelated potions",
+      "water_guard": "Installed ice JSON declares lowercase nbt.potion water, while native Serializer uses ordinary Ingredient.fromJson. Observer conservatively requires actual PotionUtils.getPotion(input) == Potions.WATER for ice certification without changing permissive native recipes or processing",
+      "unsupported_paths": [
+        "Non-water potion processing cannot earn the authored water/ice cooling receipt",
+        "Unsupported or replaced recipe/result/source-input identities receive no certificate",
+        "Station possession/opening, discarded output and automation alone cannot complete the stage",
+        "Native craft exceptions have no successful RETURN and receive no certificate"
+      ],
+      "installed_artifact": "Client/ManagedPack/mods/letsdo-beachparty-forge-2.0.3.jar",
+      "installed_sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Writer manually inspected exact installed craft/recipe/Serializer/interface/menu bytecode and final source. Independent parent-dispatched source review remains pending",
+      "independent_source_review": "build/questbook-v4-cold-supplies-review-report.md, specification and quality source review passed, actual gameplay unobserved",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_beach_goal",
+      "advancement": "jem_advancements:quest_v3/v3_food_beach_goal",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_beach_goal.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BeachBallActorQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BeachGoalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/beach/BeachBallActor.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/beach/BeachGoalRun.java"
+      ],
+      "station": "beachparty:beach_goal",
+      "native_commit": "Native BeachGoalBlockEntity.tick actual iterated BeachBallEntity, original successful Shapes.joinIsNotEmpty, original presence counter reaching10 and native false-to-true hasBeachBall transition. Observer requires true native addFreshEntity for at least one original firework and successful tick RETURN after original neighbor notification",
+      "collection": "Last real server player who applied actual finite nonzero horizontal motion through native BeachBallEntity.push or mobInteract. UUID is captured at native kick/push motion, then snapshot from the actually intersected ball at original goal/firework transition",
+      "replay_guard": "One ephemeral last-actor UUID per live native ball, replaced by every later native player motion action including clearing an ineligible actor. One bounded per-goal transient tick receipt cleared at entry/return. Native presence latch remains the sole goal transition owner. No saved attribution ledger or world scan",
+      "unsupported_paths": [
+        "Placed, reloaded or command-created balls without an observed native player motion have no actor receipt",
+        "Sneak pickup, placement, proximity, unrelated fireworks and rejected native firework insertion cannot earn credit",
+        "Offline, dead, different-dimension, FakePlayer, creative or spectator actors receive no completion",
+        "Native exceptional returns cannot emit and next native tick clears the interrupted receipt"
+      ],
+      "installed_artifact": "Client/ManagedPack/mods/letsdo-beachparty-forge-2.0.3.jar",
+      "installed_sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Writer inspected exact installed native bytes and mapped Forge47.4.10 APIs. Parent central registration and independent source review remain pending",
+      "evidence_report": "build/questbook-v4-beach-play-report.md",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_beach_gear",
+      "advancement": "jem_advancements:quest_v3/v3_food_beach_gear",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_beach_gear.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BeachOceanWalkQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BeachAcceptedMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/beach/BeachTraversalProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/beach/BeachGoalRun.java"
+      ],
+      "native_commit": "Exact OceanWalkEffect.applyEffectTick current-water branch completes original LivingEntity.setOnGround(true). Correlate with final accepted ServerGamePacketListenerImpl.handleMovePlayer lastGoodZ write after native collision/rollback decision, actual position commit and native movement statistics",
+      "collection": "One real nonzero horizontal accepted move whose exact start or end position matches actual native current-water support, same native player entity and dimension, observations no older than one server tick. Require actual sprint, native ocean_walk effect and native Crocs in real non-cosmetic Curios feet stacks at observation and completion",
+      "replay_guard": "At most one support and one accepted movement receipt per player connection, no world/global maps or persisted counters. Receipts expire after one server tick, entity/dimension mismatch, teleport or rollback. Successful correlation consumes both. No distance quota or movement physics mutation",
+      "native_registration_evidence": "BeachpartyForge.commonSetup registers ObjectRegistry.CROCS with CrocsCurio through CuriosApi.registerCurio, despite client.integration package. Native feet Curios slot has size1. CrocsCurio.onEquip adds OCEAN_WALK and onUnequip removes it",
+      "bounds": "Read only actual Curios feet getStacks, at most64 slots, never cosmetic stacks, carried inventory or global Curios scan",
+      "unsupported_paths": [
+        "Equipped Crocs or ocean effect alone, underwater upward boost, predicted future water and desired velocity cannot complete",
+        "No-movement packets, invalid/overspeed/rollback/awaiting-teleport/passenger/sleep routes never reach final accepted movement seam",
+        "Stale observations, teleport, changed native player entity or dimension cannot correlate",
+        "FakePlayer, creative, spectator, dead, flying, elytra, underwater, riding or dimension-changing actors are excluded",
+        "Both gear mixins require optional beachparty and curios presence and introduce no JEMServer dependency"
+      ],
+      "installed_artifact": "Client/ManagedPack/mods/letsdo-beachparty-forge-2.0.3.jar",
+      "installed_sha256": "cd31dab1eb6d88e70697ee0342ebb79f22d9b9f0cb09d4a0b1562ed809178aef",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Writer inspected exact installed native bytes, Curios5.14.1 API and mapped Forge47.4.10 accepted movement. Parent central registration and independent source review remain pending",
+      "evidence_report": "build/questbook-v4-beach-play-report.md",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_gummy_alchemy",
+      "advancement": "jem_advancements:quest_v3/v3_cave_gummy_alchemy",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_cave_gummy_alchemy.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingGummyAlchemyQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java"
+      ],
+      "native_commit": "Native GummyBearEntity mobInteract potion debit, digestingEffect identity and native sleepFor. Persist actor, exact bear UUID and native potion identity on that bear. Observe actual native hibernation, then the native backscratch tick creates a potion-matching Jelly Bean and actual accepted native ItemEntity",
+      "collection": "Existing FoodDroppedProof and native item merge/pickup require the exact matching output potion NBT to enter the original feeder inventory",
+      "replay_guard": "New feeding replaces its bear receipt, native sleep and backscratch remain untouched, no arbitrary bean ownership or rare drop requirement",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_venison_table",
+      "advancement": "jem_advancements:quest_v3/v3_fauna_venison_table",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_fauna_venison_table.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeCampfireGameProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeGameDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatNativeDropQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingCampfireGameCookingMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCursorSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodEntitySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodInventorySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodMenuSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodSlotSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodStackSourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingGameCookingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPreparedMealUseMixin.java"
+      ],
+      "native_commit": "Actual native CnC game death drops with real credited killer produce physical source budgets. Native furnace/smoker burn requires exact raw debit and supported cooked output delta. Campfire requires actual selected source, accepted native output spawn and source slot clearing before provisional output becomes usable. Native recipe removal and actual inventory/cursor gain certify stew or pemmican",
+      "collection": "Exact ItemStack.finishUsingItem return consumes one physically certified prepared game portion. Native ingredients, output counts, recipe variants and item tags stay intact",
+      "replay_guard": "Per-source finite shared budget across actual copies/splits/merges and native serialization, original actor identity, unknown portions leave first. Gifted raw or completed meals do not supply the required origin",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "supported_outputs": [
+        "cnc:hunters_stew",
+        "cnc:pemmican",
+        "cnc:cooked_turkey",
+        "cnc:cooked_venison"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_cassowary_orchard",
+      "advancement": "jem_advancements:quest_v3/v3_fauna_cassowary_orchard",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_fauna_cassowary_orchard.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodStackSourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodInventorySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodEntitySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodMenuSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodSlotSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCursorSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeDropMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeCropBreakMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePlantProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodThrowerAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingCassowarySeedQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantReplacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFruitSaplingGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFruitTreeGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPrimalFruitHarvestMixin.java"
+      ],
+      "native_commit": "Exact CassowaryPickFruit selected pendingPickup must be real-player-thrown Petrified Fruit. Native tick emits accepted original seed objects and debits that exact fruit. Actual native seed debit on successful planting consumes certified seed provenance. Native fruit sapling/tree growth preserves only that planted origin, including real upper-half creation",
+      "collection": "Native mature FruitTree use or mature FruitBulk break must actually emit its native fruit. Existing drop collection credits the original seed provider/planter only",
+      "replay_guard": "Exact native seeds, same actor and physical planted position, native stage maximum, native growth transitions and accepted output. No nearest player, generic CropBlock-only logic or acquired fruit proxy",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "native_seed_set": [
+        "primal:litchi_seeds",
+        "primal:kiwano_seeds",
+        "primal:starfruit_seeds"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_fritter_and_thorns",
+      "advancement": "jem_advancements:quest_v3/v3_fauna_fritter_and_thorns",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_fauna_fritter_and_thorns.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodStackSourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodInventorySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodEntitySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodMenuSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodSlotSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCursorSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPreparedMealUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantReplacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeTreeGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePlantProof.java"
+      ],
+      "native_commit": "Native Apple Fritter recipe removes actual ingredients and real player receives native output. Native tree grower must report success and replace actor-planted Thorny Acacia Sapling with its native trunk",
+      "collection": "Exact physical crafted Fritter portion must actually finish consumption. Separate tree criterion is native AND, either stage order",
+      "replay_guard": "Original completed criterion/action retained for meal, separate food_fritter_tree, no thorn damage requirement",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "additional_actions": [
+        "food_fritter_tree"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_cave_garden",
+      "advancement": "jem_advancements:quest_v3/v3_cave_cave_garden",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_cave_cave_garden.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeDropMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeCropBreakMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePlantProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantReplacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFiddleheadGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingGrottoFernQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingCaveFertilizerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeTreeGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFertilizerProof.java"
+      ],
+      "native_commit": "Native Grottoceratops EatPlantsGoal reads its actual selected actor-planted Curly Fern and successfully places native Fiddlehead after eating. Native Alex Caves Fertilizer use must debit its item and cause real successful Thornwood tree placement through native grower",
+      "collection": "Real actor collects the actual Fiddlehead native drop. Original completed criterion retained. Separate native Thornwood success criterion is required through native AND",
+      "replay_guard": "Exact native selected plant and accepted mutations, no new scan, no owned material proxy, native fertilizer attempts and tree geometry untouched",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "additional_actions": [
+        "food_cave_thornwood"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_wild_kitchen",
+      "advancement": "jem_advancements:quest_v3/v3_cave_wild_kitchen",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_cave_wild_kitchen.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodStackSourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodInventorySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodEntitySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodMenuSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodSlotSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCursorSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPreparedMealUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java"
+      ],
+      "native_commit": "Actual enabled native CraftingRecipe result, real native CraftingContainer.removeItem debits and same-player inventory/cursor increase certify the actual output portion",
+      "collection": "Exact certified specialty portion finishes native consumption. Mosquito Repellent Stew additionally requires its actual native mosquito_repellent effect after consumption",
+      "replay_guard": "Native recipe ingredients and output metadata preserved. Gifts or inventory-only output cannot create a source budget",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "native_outputs": [
+        "alexscaves:deep_sea_sushi_roll",
+        "alexscaves:vesper_stew",
+        "alexsmobs:mosquito_repellent_stew"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_era_hunger_guard",
+      "advancement": "jem_advancements:quest_v3/v3_era_hunger_guard",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_hunger_guard.json",
+      "source_files": [],
+      "native_commit": "Historical draft superseded by world-misc-producers.json native zero-food protection. Positive-food protection also exists through AquamiraeCombatRules",
+      "collection": "Exact Aquamirae Void Squid applies Devouring Curse, but native PlayerHandler.isInvulnerableTo is false at food reserve greater than zero",
+      "replay_guard": "Original contract and advancement untouched. No forced hunger or damage, no positive-food protection fabrication",
+      "producer_code_reviewed": false,
+      "runtime_verified": false,
+      "source_review": "Exact installed source and current pack override search, no implementation claim",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "superseded_user_approved_native_route",
+      "native_gap": "Docs/quests/visual-v4/food-native-gaps.json",
+      "source_reviewed": false,
+      "runtime_observed": false,
+      "source_acceptance": "Historical superseded row only, current working producer is world-misc-producers.json"
+    },
+    {
+      "action": "v3_era_ginger_house",
+      "advancement": "jem_advancements:quest_v3/v3_era_ginger_house",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_ginger_house.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodStackSourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodInventorySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodEntitySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodMenuSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodSlotSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCursorSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPreparedMealUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeDropMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeCropBreakMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePlantProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingRightClickHarvestQuestMixin.java"
+      ],
+      "native_commit": "Actor harvests actual maximum-age native cultivated Snowy Spirit Ginger through real break or successful native right-click harvest/replant, and collects its actual native Ginger output. Enabled native construction-part recipe removes that physical source and produces actual player receipt",
+      "collection": "Actual gingerbread construction-part crafting with the actor harvested ingredient lineage. Existing ginger flag is enabled in current canonical pack",
+      "replay_guard": "No prerequisite that the actor planted Ginger, no wild-flower break proxy, no command or gifted ingredient/finished part shortcut",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_living_soil",
+      "advancement": "jem_advancements:quest_v3/v3_food_living_soil",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_living_soil.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingSprinklerPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFarmlandHydrationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingSprinklerRangeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingSprinklerSelectedStateMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPitchforkGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeSoilProof.java"
+      ],
+      "native_commit": "Native successful sprinkler placement and item debit persist actual placer on physical BE. Original FarmBlock water predicate runs once with identical reader. Native transformed PlatformHelper range lookup arms observation of actual native-selected block read. First successful native sprinkler result is followed by actual farmland moisture increase",
+      "collection": "Separate native Pitchfork/Fertilized Soil use must cause a positive native selected live CropBlock growth and actual native soil-size debit before successful method return. Native AND joins hydration and intervention",
+      "replay_guard": "No radius replay or invented sprinkler tick hydration. Original native crop, rain, soil sizes and tool behavior remain unchanged. Original completed action retained for intervention",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "additional_actions": [
+        "food_living_soil_watered"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_end_brushing",
+      "advancement": "jem_advancements:quest_v3/v3_food_end_brushing",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_end_brushing.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingEndBrushingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/FoodDroppedProof.java"
+      ],
+      "native_commit": "Original native BrushableBlockEntity brush completes on exact suspicious End Stone or suspicious Dragon Egg, actual native loot ItemEntity insertion is accepted and native block replacement commits",
+      "collection": "Existing certified drop pickup requires actual Void Conch or Dragon Dust receipt by that exact real brusher",
+      "replay_guard": "No ordinary breaking, arbitrary dust/conch ownership, extra reward, custom dimension gate or block geometry change",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_context_tackle",
+      "advancement": "jem_advancements:quest_v3/v3_food_context_tackle",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_context_tackle.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFishingConversionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/TideCatchProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFishingConversionEventMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFishingConversionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCatchQuestMixin.java"
+      ],
+      "native_commit": "Exact native TideFishingHook retrieve scope captures its native catch type, actual owner/rod and active native getHook result. Native fish item insertion or actual FishingReal mapped living conversion must be accepted",
+      "collection": "Successful actual native fish catch with one exact supported active hook, preserving native fish result data, selection conditions and rod attachment semantics",
+      "replay_guard": "No hook ownership, ordinary casts, XP-only entities or rejected spawning. Actual native FishingReal mappings remain authoritative",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "native_hook_set": [
+        "tide:fiery_hook",
+        "tide:permafrost_hook",
+        "tide:twilight_hook"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_fishing_crate",
+      "advancement": "jem_advancements:quest_v3/v3_food_fishing_crate",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_fishing_crate.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/TideCatchProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCatchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCrateLootMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCrateOpenMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCrateSpawnMixin.java"
+      ],
+      "native_commit": "Native actual CRATE fishing branch creates accepted exact registered crate falling entity with native loot data. That same falling entity successfully lands and native loot fill increases physical container contents",
+      "collection": "Only the caught physical crate receipt follows to that native BE. The same actor must successfully open its actual native ChestMenu. Catch and open are native AND criteria",
+      "replay_guard": "No crafted/gifted crate, arbitrary chest or empty/failed loot fill. Exact physical lineage retained, never overwrite native entity UUID. Native in-flight reload loot-loss limitation is not repaired or fabricated",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "additional_actions": [
+        "food_crate_caught"
+      ],
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_fish_home",
+      "advancement": "jem_advancements:quest_v3/v3_food_fish_home",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_fish_home.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingVoidseekerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java"
+      ],
+      "native_commit": "Native Voidseeker finish consumes its real stack, obtains valid native respawn Optional destination and invokes original native ServerPlayer teleport",
+      "collection": "Observer requires actual same native destination level/position after original teleport and actual source debit, with real relocation",
+      "replay_guard": "Canceled or restricted teleport, missing respawn and no relocation cannot count. Native cross-dimension and canonical arena/campaign restrictions remain untouched",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_catch_toolkit",
+      "advancement": "jem_advancements:quest_v3/v3_food_catch_toolkit",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_catch_toolkit.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideWatchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java"
+      ],
+      "native_commit": "Exact original Enchanted Pocket Watch method passes native mob/tag/blacklist/cooldown guards and changes actual FreezableMob state from false to true on logical server",
+      "collection": "Real survival actor receives completion after actual native time-freeze commit. Unfreeze, player/boss/blacklisted or blocked use does not count",
+      "replay_guard": "Original durations and blacklist preserved. The alternative Dragonfin extra-jump charge exists only in native client input lifecycle, so no invented server charge or client claim is added",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "native_watch_alternative_implemented",
+      "unsupported_paths": [
+        "Native Dragonfin restored/consumed charge is client-only and lacks authoritative server receipt"
+      ],
+      "native_gap": "Docs/quests/visual-v4/food-native-gaps.json",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_void_steps",
+      "advancement": "jem_advancements:quest_v3/v3_food_void_steps",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_void_steps.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingVoidWalkerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java"
+      ],
+      "native_commit": "Read native mainSupportingBlockPos only after final accepted ServerGamePacketListener lastGoodZ update, after native setOnGroundWithKnownMovement and actual findSupportingBlock collision calculation",
+      "collection": "Actual native support must be an air position matching the exact installed native Void Walker collision provider position, supported active boots enchantment and real grounded actor",
+      "replay_guard": "No repeated collision query, invented flight physics, unsafe jump, distance quota or inventory/equip proxy. Native movement and teleport restrictions remain authoritative",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_living_catch",
+      "advancement": "jem_advancements:quest_v3/v3_food_living_catch",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_living_catch.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFishingConversionEventMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFishingConversionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFishingConversionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java"
+      ],
+      "native_commit": "Exact original FishingRealForge ItemFishedEvent scope supplies actual native catch stack, original owner and hook. Native active mapping creates that actual living entity and original fishUpEntity world insertion returns true",
+      "collection": "Only accepted original mapped native catch entity qualifies. Tide is optional and standard FishingReal also works without it",
+      "replay_guard": "No hardcoded fish-to-entity mappings, denied InControl spawn, bucket spawn, nearest-player lookup or forced native UUID",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_harvest_again",
+      "advancement": "jem_advancements:quest_v3/v3_food_harvest_again",
+      "criterion": "completed",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_harvest_again.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingRightClickHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeDropMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeHarvestProof.java"
+      ],
+      "native_commit": "Native RightClickHarvest completeHarvest passes native break/place admission, emits actual accepted positive produce and successfully resets the mature supported crop state",
+      "collection": "Real actor and native replant/reset path, with actual output. Native hoe, hunger, radius, Fortune and XP remain unchanged",
+      "replay_guard": "No raw clicks, immature plants, canceled or denied native interaction, unsupported species or imagined fixed radius",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Full batch implemented before one parent overall source review, no worker builds or checks",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_fritter_tree",
+      "advancement": "jem_advancements:quest_v3/v3_fauna_fritter_and_thorns",
+      "criterion": "tree",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_fauna_fritter_and_thorns.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodStackSourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodInventorySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodEntitySourceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodMenuSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodSlotSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCursorSourceTransferMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/RemainingFoodActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftReceiptMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodCraftCollectionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPreparedMealUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePreparedMealProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantReplacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeTreeGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePlantProof.java"
+      ],
+      "native_commit": "Native Apple Fritter recipe removes actual ingredients and real player receives native output. Native tree grower must report success and replace actor-planted Thorny Acacia Sapling with its native trunk",
+      "collection": "Exact physical crafted Fritter portion must actually finish consumption. Separate tree criterion is native AND, either stage order",
+      "replay_guard": "Original completed criterion/action retained for meal, separate food_fritter_tree, no thorn damage requirement",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Additional native AND criterion in the same batch, overall parent source review pending",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_cave_thornwood",
+      "advancement": "jem_advancements:quest_v3/v3_cave_cave_garden",
+      "criterion": "thornwood",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_cave_cave_garden.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeDropMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeCropBreakMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativePlantProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPlantReplacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFiddleheadGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingGrottoFernQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingCaveFertilizerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingNativeTreeGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFertilizerProof.java"
+      ],
+      "native_commit": "Native Grottoceratops EatPlantsGoal reads its actual selected actor-planted Curly Fern and successfully places native Fiddlehead after eating. Native Alex Caves Fertilizer use must debit its item and cause real successful Thornwood tree placement through native grower",
+      "collection": "Real actor collects the actual Fiddlehead native drop. Original completed criterion retained. Separate native Thornwood success criterion is required through native AND",
+      "replay_guard": "Exact native selected plant and accepted mutations, no new scan, no owned material proxy, native fertilizer attempts and tree geometry untouched",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Additional native AND criterion in the same batch, overall parent source review pending",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_living_soil_watered",
+      "advancement": "jem_advancements:quest_v3/v3_food_living_soil",
+      "criterion": "watered",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_living_soil.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingSprinklerPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFarmlandHydrationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingSprinklerRangeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingSprinklerSelectedStateMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingPitchforkGrowthMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeSoilProof.java"
+      ],
+      "native_commit": "Native successful sprinkler placement and item debit persist actual placer on physical BE. Original FarmBlock water predicate runs once with identical reader. Native transformed PlatformHelper range lookup arms observation of actual native-selected block read. First successful native sprinkler result is followed by actual farmland moisture increase",
+      "collection": "Separate native Pitchfork/Fertilized Soil use must cause a positive native selected live CropBlock growth and actual native soil-size debit before successful method return. Native AND joins hydration and intervention",
+      "replay_guard": "No radius replay or invented sprinkler tick hydration. Original native crop, rain, soil sizes and tool behavior remain unchanged. Original completed action retained for intervention",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Additional native AND criterion in the same batch, overall parent source review pending",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food_crate_caught",
+      "advancement": "jem_advancements:quest_v3/v3_food_fishing_crate",
+      "criterion": "caught",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_fishing_crate.json",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/TideCatchProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingFoodNativeInsertionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCatchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCrateLootMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCrateOpenMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RemainingTideCrateSpawnMixin.java"
+      ],
+      "native_commit": "Native actual CRATE fishing branch creates accepted exact registered crate falling entity with native loot data. That same falling entity successfully lands and native loot fill increases physical container contents",
+      "collection": "Only the caught physical crate receipt follows to that native BE. The same actor must successfully open its actual native ChestMenu. Catch and open are native AND criteria",
+      "replay_guard": "No crafted/gifted crate, arbitrary chest or empty/failed loot fill. Exact physical lineage retained, never overwrite native entity UUID. Native in-flight reload loot-loss limitation is not repaired or fabricated",
+      "producer_code_reviewed": true,
+      "runtime_verified": false,
+      "source_review": "Additional native AND criterion in the same batch, overall parent source review pending",
+      "evidence_report": "build/questbook-v4-food-remaining-report.md",
+      "status": "source_implemented_pending_overall_review",
+      "source_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "unimplemented": [],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "runtime_observed": false,
+  "accepted_route_rows": 63
+}

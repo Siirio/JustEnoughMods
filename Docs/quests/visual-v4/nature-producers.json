@@ -1,0 +1,577 @@
+{
+  "schema": 1,
+  "source_of_contract": "build/questbook-v4-nature-cards.json five fixed original cards, parent nature brief native-success clarification",
+  "producer_scope": "Five nature-world cards, six emitted native actions including one technical root stage",
+  "status": "SOURCE_IMPLEMENTED_FROZEN_FOR_PARENT_INTEGRATION",
+  "runtime_observed": false,
+  "production_build_owner": "Parent only, one overall review before unified build",
+  "standalone_contract": "Ordinary integrated logical server, no JEMServer or external services. Native optional NatureSpirit and Tumbleweed only.",
+  "native_artifacts": {
+    "natures_spirit": {
+      "path": "Client/ManagedPack/mods/natures_spirit-2.2.5-1.20.1.jar",
+      "version": "2.2.5",
+      "sha256": "07818dd985b100ae71b98c755961c135b07c3a08faf5d95afc87fab71a3b9e86",
+      "metadata": "modLoader = \"javafml\"\nloaderVersion = \"[47,)\"\nlicense = \"All Rights Reserved\"\n[[mods]]\nmodId = \"natures_spirit\"\nversion = \"2.2.5-1.20.1\"\ndisplayName = \"Nature's Spirit\"\nupdateJSONURL=\"https://api.modrinth.com/updates/WBvnqHfV/forge_updates.json\"\ndisplayURL=\"https://astonishing-chord-210.notion.site/194f058bb4ac80c2979fdfe22fb8010e\"\nlogoFile=\"assets/natures_spirit/icon.png\"\nauthors = \"Team Hibiscus\"\n\ndescription = '''A mod to expand Minecraft's nature!'''\n[[dependencies.\"natures_spirit\"]]\nmodId = \"forge\"\nmandatory = true\nversionRange = \"[47,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n[[dependencies.\"natures_spirit\"]]\nmodId = \"minecraft\"\nmandatory = true\nversionRange = \"[1.20,1.20.1]\"\nordering = \"NONE\"\nside = \"BOTH\"\n[[dependencies.\"natures_spirit\"]]\nmodId = \"terrablender\"\nmandatory = true\nversionRange = \"[1,)\"\nordering = \"NONE\"\nside = \"BOTH\"",
+      "runtime_observed": false
+    },
+    "tumbleweed": {
+      "path": "Client/ManagedPack/mods/Tumbleweed-forge-1.20.1-0.5.5.jar",
+      "version": "0.5.5",
+      "sha256": "db37a99504d7d506d01504cde1502b5eb93ab835d9455cdb665603ba3fbd5da4",
+      "metadata": "modLoader=\"javafml\"\nloaderVersion=\"[44,)\"\nlicense=\"GNU LGPLv3\"\n\n[[mods]]\nmodId=\"tumbleweed\"\nversion=\"0.5.5\"\ndisplayName=\"Tumbleweed\"\nlogoFile=\"logo.png\"\nauthors=\"konwboy\"\ndescription='Tumbleweeds spawn around dead bushes in deserts. They drop random goodies upon destroying.'",
+      "runtime_observed": false
+    }
+  },
+  "native_source_evidence": "build/questbook-v4-audit/nature-source",
+  "vanilla_source_evidence": "build/questbook-v4-audit/nature-vanilla-source",
+  "atlas_evidence": [
+    "build/questbook-v4-nature-natures_spirit-atlas.json",
+    "build/questbook-v4-nature-tumbleweed-atlas.json"
+  ],
+  "research_evidence": [
+    "build/questbook-v4-nature-natures_spirit-research.json",
+    "build/questbook-v4-nature-tumbleweed-research.json"
+  ],
+  "source_flags": {
+    "manual_family_pass": true,
+    "build_run": false,
+    "automated_verification_run": false,
+    "runtime_application_observed": false
+  },
+  "native_config_observed": {
+    "natures_spirit.calcite_generator": true,
+    "natures_spirit.deepslate_generator": true,
+    "tumbleweed.enableDrops": true,
+    "tumbleweed.dropOnlyByPlayer": false,
+    "preserved": true
+  },
+  "provenance_contract": {
+    "owner": "New bounded serializable Forge LevelChunk capability jem_advancements:nature_origin_v4, native Forge capability persistence/lifecycle",
+    "data": "Only concrete physical mature-calcite coral origin, anvil placement/release origin and pending projectile-detached Coconut origin, no progress/reward/completion state",
+    "bounds": "At most4096 records per kind per loaded native chunk, maximum three kinds. Actual block/state mutations invalidate origins. Loaded getChunkNow access only, no forced chunk loads/scans/timers or ecology changes. Capacity overflow fails proof closed without changing native mechanics.",
+    "save_load": "Native Forge ICapabilitySerializable chunk persistence, no separate SavedData journal, no custom chunk codec or block/entity UUID rewrite"
+  },
+  "transient_contract": "At most one Lotus ride and one root clue/target per real online actor. Mutation-indexed target invalidation and logout/death/clone/dimension/server-stop cleanup. Drop scopes are one native call, restored with try/finally.",
+  "native_criteria_contract": "Root+fruit retain original completed criterion/action for Coconut and AND a new foraged_roots criterion with exact native turnip action. Both stages persist in native advancement. Other four original criteria unchanged. Lotus lift/descent remain one connected native episode.",
+  "blueprint_changes": [
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_world_root_and_crown.json"
+  ],
+  "read_only_reused_sources": [
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestActionTrigger.java"
+  ],
+  "preserved": "All card content/goals/counts/mods/routes/coordinates/rewards/IDs, native random growth/config/loot/physics/control and original native calls, all earlier travel/food/storage/workshop/Create/native/migration owners",
+  "missing_or_disabled_mechanics": [],
+  "limitations": [
+    "Source is unbuilt and actual Mixin application unobserved",
+    "Independent review is deferred to the parent overall pass",
+    "Late CoralBlock randomTick method and exact native private column helper require the submitted source-backed Mixin ordering, runtime remains false",
+    "Preexisting/decorative Calcite clusters lacking observed native maturity provenance must regrow through native large-bud maturity before this proof can award",
+    "Physical provenance beyond4096 entries of one kind in a single chunk is deliberately unproved, native gameplay is unchanged"
+  ],
+  "producers": [
+    {
+      "action": "v3_world_lotus_lift",
+      "actions": [
+        "v3_world_lotus_lift"
+      ],
+      "required_actions": [
+        "v3_world_lotus_lift"
+      ],
+      "reviewed_actions": [
+        "v3_world_lotus_lift"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_lotus_lift"
+      ],
+      "required_mods": [
+        "natures_spirit"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/LotusMovementProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureSessions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureLotusFlowerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureLotusStemQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureMovementPacketQuestMixin.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/LotusMovementProof.java",
+          "sha256": "5a888f187362bd65bf4e6ae485ef0cf6f37063028c5a0c21e0c49d7612cb8dc1"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureSessions.java",
+          "sha256": "89894b3360e9e8834f3f9786f19ab65d9c9b198c9ee9efe14c5f011c7c9845d6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureLotusFlowerQuestMixin.java",
+          "sha256": "b432057ec051cf661788fe067ac57fde31731aea017470023097d5117579278d"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureLotusStemQuestMixin.java",
+          "sha256": "d854ec8d697e048fb7b845f54e2b89bda54553b4fe7f47f645cb3cba617f2b20"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureMovementPacketQuestMixin.java",
+          "sha256": "ed5f9630fda552d41d6261dff0df0447096f976aea6ccb844d7b8e73b1df69bb"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+          "sha256": "08069e647aec36320a11890ac5e35699277bc47c55e268def95a6e259b5411dd"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+          "sha256": "a14a09b965ffcaa477dc1529fd250a1214e836cc4415558154d598c5aab568e2"
+        }
+      ],
+      "native_evidence": "NatureSpirit2.2.5 LotusFlowerBlock.performBonemeal and LotusStemBlock.grow invoke the actual selected Player.move(SHULKER_BOX, Vec3) once. Observe real post-collision Y gain only for the authenticated survival actor standing on exact native flower geometry, then verify original head became connected stem and next native flower committed. Stem head is the unchanged native getFlowerHeadPos result, not a separate search. Same connected ride must accumulate at least2 native blocks and actual net height. Native flower tick crouch descent is not a movement call: preserve its existing nearest-player gameplay query once, validate returned actor is actual supported crouching rider, verify native upper-head removal/lower-head placement, then require actual downward player movement accepted by vanilla handleMovePlayer. Proximity, bonemeal click and desired movement alone never award.",
+      "attribution": "Exact native acting player, validated native Lotus rider, owned projectile or proven falling-anvil placement/release actor. Reuses frozen read-only TravelProof.eligible authentication admission.",
+      "unsupported_paths": [
+        "Bonemeal/raw crouch/proximity without actual rider",
+        "Jump or desired velocity without native lift",
+        "Wrong/disconnected stem, failed head mutation, sideways exit",
+        "Native shrink without accepted downward movement"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One end-of-family manual source pass against installed native source and inspected vanilla/Forge APIs, no automated verifier or per-step review",
+      "independent_review_completed": false,
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_living_calcite",
+      "actions": [
+        "v3_world_living_calcite"
+      ],
+      "required_actions": [
+        "v3_world_living_calcite"
+      ],
+      "reviewed_actions": [
+        "v3_world_living_calcite"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_living_calcite"
+      ],
+      "required_mods": [
+        "natures_spirit"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureCalciteGrowthQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureHarvestProof.java",
+          "sha256": "d97936fa05b76860352918af240baa64eee7a445cfd001af874d71fa6775d3df"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+          "sha256": "08069e647aec36320a11890ac5e35699277bc47c55e268def95a6e259b5411dd"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java",
+          "sha256": "68e3f8a2e08068393777b9c8665d50ef2f3534afda1ed49311270b7bebef33ce"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureCalciteGrowthQuestMixin.java",
+          "sha256": "1a18dc516945886c7b8441ad4520e8323e2d9f7a589e2da7f1ffdd258d5f5824"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+          "sha256": "43a7585d1502317569fd7d70d95bf874fdaf80165fab1942001069517b66d975"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+          "sha256": "f74adb54657f065c450af46a1679ee006e7a9c6dc3e9d60649588186d31174f6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+          "sha256": "d42a6ad82319063df990e92be62963d22211de0e80a1204f059207cca4590da6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+          "sha256": "c145b43732d498a9080a06787346e0f9bbc3c2e69776cc21dc7c89dffd215aed"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+          "sha256": "a14a09b965ffcaa477dc1529fd250a1214e836cc4415558154d598c5aab568e2"
+        }
+      ],
+      "native_evidence": "NatureSpirit2.2.5 CoralBlockBlockMixin native randomTick owns enabled calciteGenerator, bounded native coral/bubble lookup and random growth. Observe accepted ServerLevel.setBlock large_calcite_bud -> calcite_cluster and record exact native coral origin on the affected loaded chunk. Before real ServerPlayerGameMode.destroyBlock validate recorded mature origin, actual attached living CoralBlock and invoke exact native naturespirit$findColumnEnd predicate again. Wrap only native Block.playerDestroy and capture accepted real calcite_shard ItemEntity spawns from that call, then require native block removal. Planted decorative clusters have no native maturation provenance. Silk-touch cluster-only output does not count.",
+      "attribution": "Exact native acting player, validated native Lotus rider, owned projectile or proven falling-anvil placement/release actor. Reuses frozen read-only TravelProof.eligible authentication admission.",
+      "unsupported_paths": [
+        "Inventory shard or decorative planted cluster",
+        "Unobserved maturity or invalid native coral/bubble setup",
+        "Native block removal/drop cancellation",
+        "Silk Touch cluster-only result"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One end-of-family manual source pass against installed native source and inspected vanilla/Forge APIs, no automated verifier or per-step review",
+      "independent_review_completed": false,
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_stone_press",
+      "actions": [
+        "v3_world_stone_press"
+      ],
+      "required_actions": [
+        "v3_world_stone_press"
+      ],
+      "reviewed_actions": [
+        "v3_world_stone_press"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_stone_press"
+      ],
+      "required_mods": [
+        "natures_spirit"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureFallingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureAnvilLandQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureAnvilPlacementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureFallingBlockQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureFallingProof.java",
+          "sha256": "beea2ea25b8e58038169d5bf7523712e45bc15a08dedd0e578d8178d4dc7873a"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+          "sha256": "08069e647aec36320a11890ac5e35699277bc47c55e268def95a6e259b5411dd"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureAnvilPlacementQuestMixin.java",
+          "sha256": "90c90cd08fa670e242e77748b0e6464e0bda2fd0a4d06330ea995ee294f7fe46"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureFallingBlockQuestMixin.java",
+          "sha256": "002ddff5242b90da0855ad6314642d7953c456eff06212b9f752aa67ec1d7852"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureAnvilLandQuestMixin.java",
+          "sha256": "dabdf5fc6695b6ae2393925ea785cf0714f3f08c8606751969ed0a3af3f1046e"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java",
+          "sha256": "68e3f8a2e08068393777b9c8665d50ef2f3534afda1ed49311270b7bebef33ce"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+          "sha256": "43a7585d1502317569fd7d70d95bf874fdaf80165fab1942001069517b66d975"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+          "sha256": "f74adb54657f065c450af46a1679ee006e7a9c6dc3e9d60649588186d31174f6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+          "sha256": "a14a09b965ffcaa477dc1529fd250a1214e836cc4415558154d598c5aab568e2"
+        }
+      ],
+      "native_evidence": "Record actual resource-debited native BlockItem.place anvil success, or the actual survival ServerPlayerGameMode.removeBlock support-removal result immediately below an anvil. Native loaded-chunk provenance binds exact blockstate and real actor. Preserve native FallingBlock.tick -> FallingBlockEntity.fall call once, transfer provenance only when original source changed and the exact returned native falling entity was accepted into ServerLevel. Native identity/start position remain unchanged. Wrap actual Fallable.onLand invocation in FallingBlockEntity.tick, require enabled native deepslateGenerator and exact preexisting Stone above Magma, then native post-call Deepslate mutation. Actor comes solely from exact placement/release lineage. Ordinary mining, nearby players, unrelated/decorative anvils or rejected spawn never award.",
+      "attribution": "Exact native acting player, validated native Lotus rider, owned projectile or proven falling-anvil placement/release actor. Reuses frozen read-only TravelProof.eligible authentication admission.",
+      "unsupported_paths": [
+        "Ordinary Deepslate mining",
+        "Nearest bystander or unknown anvil source",
+        "Rejected falling spawn or failed native conversion",
+        "Missing exact Stone/Magma setup or native generator disabled"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One end-of-family manual source pass against installed native source and inspected vanilla/Forge APIs, no automated verifier or per-step review",
+      "independent_review_completed": false,
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_root_and_crown",
+      "actions": [
+        "v3_world_root_and_crown_turnip",
+        "v3_world_root_and_crown"
+      ],
+      "required_actions": [
+        "v3_world_root_and_crown_turnip",
+        "v3_world_root_and_crown"
+      ],
+      "reviewed_actions": [
+        "v3_world_root_and_crown_turnip",
+        "v3_world_root_and_crown"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_root_and_crown"
+      ],
+      "required_mods": [
+        "natures_spirit"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureFallingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureSessions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureCoconutQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureHarvestProof.java",
+          "sha256": "d97936fa05b76860352918af240baa64eee7a445cfd001af874d71fa6775d3df"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureFallingProof.java",
+          "sha256": "beea2ea25b8e58038169d5bf7523712e45bc15a08dedd0e578d8178d4dc7873a"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+          "sha256": "08069e647aec36320a11890ac5e35699277bc47c55e268def95a6e259b5411dd"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureSessions.java",
+          "sha256": "89894b3360e9e8834f3f9786f19ab65d9c9b198c9ee9efe14c5f011c7c9845d6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java",
+          "sha256": "68e3f8a2e08068393777b9c8665d50ef2f3534afda1ed49311270b7bebef33ce"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureCoconutQuestMixin.java",
+          "sha256": "7de7251f9dff003b0e663fdd64797b87061d43c1ff3a6d98fe2935138de5055e"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+          "sha256": "43a7585d1502317569fd7d70d95bf874fdaf80165fab1942001069517b66d975"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+          "sha256": "f74adb54657f065c450af46a1679ee006e7a9c6dc3e9d60649588186d31174f6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+          "sha256": "d42a6ad82319063df990e92be62963d22211de0e80a1204f059207cca4590da6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+          "sha256": "c145b43732d498a9080a06787346e0f9bbc3c2e69776cc21dc7c89dffd215aed"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+          "sha256": "a14a09b965ffcaa477dc1529fd250a1214e836cc4415558154d598c5aab568e2"
+        }
+      ],
+      "native_evidence": "NatureSpirit2.2.5 sandy_forage is inventory_changed and shoot_coconut triggers before native mutation, so neither is forwarded as success. Native turnip harvest must destroy actual upward-facing desert_turnip_block with real root directly above, or the same actor must have just exposed that exact unchanged vegetable by native adjacent root harvest. Root clue binds one concrete target state and is invalidated by target mutation/lifecycle, not distance. Wrap actual native Block.playerDestroy and accepted desert_turnip loot spawn, no Silk Touch block-only substitute. Coconut requires the actor-owned native projectile handler: either accepted native destruction with actual accepted coconut loot, or accepted attached-to-UP change followed by that exact native source block producing an accepted FallingBlockEntity. Detach-only state/criterion preview cannot award. Root stage emits v3_world_root_and_crown_turnip, Coconut retains original v3_world_root_and_crown/completed. Native advancement AND criteria persist both stages for the same actor in either order.",
+      "attribution": "Exact native acting player, validated native Lotus rider, owned projectile or proven falling-anvil placement/release actor. Reuses frozen read-only TravelProof.eligible authentication admission.",
+      "unsupported_paths": [
+        "Purchases, prepared food or inventory changes",
+        "Unrooted turnip or replaced exposed vegetable",
+        "Silk Touch block-only result",
+        "Coconut native criterion before mutation",
+        "Detach-only state without accepted native falling entity/drop"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One end-of-family manual source pass against installed native source and inspected vanilla/Forge APIs, no automated verifier or per-step review",
+      "independent_review_completed": false,
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_desert_wind",
+      "actions": [
+        "v3_world_desert_wind"
+      ],
+      "required_actions": [
+        "v3_world_desert_wind"
+      ],
+      "reviewed_actions": [
+        "v3_world_desert_wind"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_desert_wind"
+      ],
+      "required_mods": [
+        "tumbleweed"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureTumbleweedQuestMixin.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureTumbleweedQuestMixin.java",
+          "sha256": "2ab54f6c62c9ebc05ec95471f9ef63d357bcd5661fe3c9b8c0660edd0aec63c2"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+          "sha256": "d42a6ad82319063df990e92be62963d22211de0e80a1204f059207cca4590da6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+          "sha256": "c145b43732d498a9080a06787346e0f9bbc3c2e69776cc21dc7c89dffd215aed"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+          "sha256": "a14a09b965ffcaa477dc1529fd250a1214e836cc4415558154d598c5aab568e2"
+        }
+      ],
+      "native_evidence": "Tumbleweed0.5.5 EntityTumbleweed.hurt owns drop enablement, native killer lineage and native loot table execution. Wrap only its actual dropFromLootTable call for the real authenticated survival DamageSource actor, preserve original loot invocation once, observe nonempty ItemEntity accepted by ServerLevel.addFreshEntity inside that exact native loot scope and require native weed destruction. No chosen rare output, copied loot formula, inventory equality or display-item shortcut.",
+      "attribution": "Exact native acting player, validated native Lotus rider, owned projectile or proven falling-anvil placement/release actor. Reuses frozen read-only TravelProof.eligible authentication admission.",
+      "unsupported_paths": [
+        "Lava/cactus or unknown harvester",
+        "Disabled/empty loot or canceled item spawn",
+        "Purchasing/holding equivalent items",
+        "Dropped/display items outside native weed loot call"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One end-of-family manual source pass against installed native source and inspected vanilla/Forge APIs, no automated verifier or per-step review",
+      "independent_review_completed": false,
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_root_and_crown_turnip",
+      "actions": [
+        "v3_world_root_and_crown_turnip"
+      ],
+      "required_actions": [
+        "v3_world_root_and_crown_turnip"
+      ],
+      "reviewed_actions": [
+        "v3_world_root_and_crown_turnip"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_root_and_crown"
+      ],
+      "required_mods": [
+        "natures_spirit"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureFallingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureHarvestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureSessions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureCoconutQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureHarvestProof.java",
+          "sha256": "d97936fa05b76860352918af240baa64eee7a445cfd001af874d71fa6775d3df"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureFallingProof.java",
+          "sha256": "beea2ea25b8e58038169d5bf7523712e45bc15a08dedd0e578d8178d4dc7873a"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureNativeFacts.java",
+          "sha256": "08069e647aec36320a11890ac5e35699277bc47c55e268def95a6e259b5411dd"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureSessions.java",
+          "sha256": "89894b3360e9e8834f3f9786f19ab65d9c9b198c9ee9efe14c5f011c7c9845d6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureHarvestQuestMixin.java",
+          "sha256": "68e3f8a2e08068393777b9c8665d50ef2f3534afda1ed49311270b7bebef33ce"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureCoconutQuestMixin.java",
+          "sha256": "7de7251f9dff003b0e663fdd64797b87061d43c1ff3a6d98fe2935138de5055e"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureChunkOrigins.java",
+          "sha256": "43a7585d1502317569fd7d70d95bf874fdaf80165fab1942001069517b66d975"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureChunkMutationQuestMixin.java",
+          "sha256": "f74adb54657f065c450af46a1679ee006e7a9c6dc3e9d60649588186d31174f6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureDropProof.java",
+          "sha256": "d42a6ad82319063df990e92be62963d22211de0e80a1204f059207cca4590da6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NatureDropSpawnQuestMixin.java",
+          "sha256": "c145b43732d498a9080a06787346e0f9bbc3c2e69776cc21dc7c89dffd215aed"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/nature/NatureActors.java",
+          "sha256": "a14a09b965ffcaa477dc1529fd250a1214e836cc4415558154d598c5aab568e2"
+        }
+      ],
+      "native_evidence": "NatureSpirit2.2.5 sandy_forage is inventory_changed and shoot_coconut triggers before native mutation, so neither is forwarded as success. Native turnip harvest must destroy actual upward-facing desert_turnip_block with real root directly above, or the same actor must have just exposed that exact unchanged vegetable by native adjacent root harvest. Root clue binds one concrete target state and is invalidated by target mutation/lifecycle, not distance. Wrap actual native Block.playerDestroy and accepted desert_turnip loot spawn, no Silk Touch block-only substitute. Coconut requires the actor-owned native projectile handler: either accepted native destruction with actual accepted coconut loot, or accepted attached-to-UP change followed by that exact native source block producing an accepted FallingBlockEntity. Detach-only state/criterion preview cannot award. Root stage emits v3_world_root_and_crown_turnip, Coconut retains original v3_world_root_and_crown/completed. Native advancement AND criteria persist both stages for the same actor in either order.",
+      "attribution": "Exact native acting player, validated native Lotus rider, owned projectile or proven falling-anvil placement/release actor. Reuses frozen read-only TravelProof.eligible authentication admission.",
+      "unsupported_paths": [
+        "Purchases, prepared food or inventory changes",
+        "Unrooted turnip or replaced exposed vegetable",
+        "Silk Touch block-only result",
+        "Coconut native criterion before mutation",
+        "Detach-only state without accepted native falling entity/drop"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One end-of-family manual source pass against installed native source and inspected vanilla/Forge APIs, no automated verifier or per-step review",
+      "independent_review_completed": false,
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "technical_stage_of": "v3_world_root_and_crown",
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 6
+}

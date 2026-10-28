@@ -1,0 +1,966 @@
+{
+  "date": "2026-10-27",
+  "classification": "Direct user amendment, no new native recipe or mechanic",
+  "user_decision": "Delete both inert totem quests, retain elder alloy only as confirmed obtainable native Invulnerite upgrade, update RU/EN/rewards and preserve route continuity",
+  "input_book_sha256": "370df6500b1efd2cc91d4856bf98f472e7ef44365ce44922c71f60bc1aeadefa",
+  "output_book_sha256": "c309eae5d213b2137bf3fc558e9d303229e3e3b57bc0235dc1e80965db0fdb90",
+  "removed_cards": [
+    {
+      "id": "v3_combat_totem_bind",
+      "number": "v3_combat_totem_bind",
+      "chapter_id": "tab-25",
+      "title": "Я тебя запомнил",
+      "condition": "Привяжи тотем вымирания к типу существа и успешно примени его бонус против этого типа.",
+      "purpose": "Выбери противника для бонуса привязанного тотема вместо случайного ношения предмета.",
+      "tip": "Привязка выполняется ПКМ по существу; после этого держи тотем во второй руке. Пустой тотем или удар по другому типу не подходит.",
+      "branch": "tab-25",
+      "after": [],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Bind a Totem of Extinction to a creature type and apply its bonus against that type.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_combat_totem_bind"
+        }
+      ],
+      "ftb_id": "3E6574EC9AA8AE22",
+      "position": [
+        19.8,
+        -4.7
+      ],
+      "required_mods": [
+        "skarrier_mobs"
+      ],
+      "icon": "irons_spellbooks:oakskin_elixir",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "irons_spellbooks:oakskin_elixir",
+            "count": 2,
+            "name": "Oakskin Elixir"
+          },
+          {
+            "id": "farm_and_charm:roasted_chicken",
+            "count": 4,
+            "name": "Roasted Chicken"
+          }
+        ],
+        "choice": [],
+        "xp": 75,
+        "claim": "once",
+        "reason": "2 × Oakskin Elixir; 4 × Roasted Chicken. Choose a target type for a bound totem bonus instead of merely carrying it.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Я тебя запомнил",
+          "condition": "Привяжи тотем вымирания к типу существа и успешно примени его бонус против этого типа.",
+          "purpose": "Выбери противника для бонуса привязанного тотема вместо случайного ношения предмета.",
+          "tip": "Привязка выполняется ПКМ по существу; после этого держи тотем во второй руке. Пустой тотем или удар по другому типу не подходит.",
+          "reward": "2 × Эликсир дубовой кожи; 4 × Запечённая курица; 75 опыта."
+        },
+        "en_us": {
+          "title": "I Remember You",
+          "condition": "Bind a Totem of Extinction to a creature type and apply its bonus against that type.",
+          "purpose": "Choose a target type for a bound totem bonus instead of merely carrying it.",
+          "tip": "Right-click a creature to bind, then hold the totem offhand. An unbound totem or an attack on another type does not qualify.",
+          "reward": "2 × Oakskin Elixir; 4 × Roasted Chicken; 75 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Привяжи тотем вымирания к типу существа и успешно примени его бонус против этого типа.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "2 × Oakskin Elixir; 4 × Roasted Chicken. Choose a target type for a bound totem bonus instead of merely carrying it.",
+        "visual_route": "skar_totems",
+        "coverage_keys": [
+          "skarrier_mobs:extinction_binding",
+          "skarrier_mobs:totem_binding"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_combat_totem_bind",
+          "action": "v3_combat_totem_bind",
+          "success_condition": "Observe the native Skarrier workshop/item/effect owner committing the exact requested transformation, target effect, durability delta, successful transfer or smithing result. Attribute the native result to the real acting player; all named material/target/slot constraints in the objective are mandatory. Server-side real actor only; native owner must have committed the stated result. Reject cancelled/previews, FakePlayer, client animation and raw right-click as proof. If a named upstream behavior is absent or disabled in installed bytes/config, preserve an explicit unavailable row instead of fabricating completion.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "research_status": "Authored from exact observations below; new post-success contract is required, not an already observed runtime integration.",
+        "coverage_notes": [
+          {
+            "key": "skarrier_mobs:extinction_binding",
+            "ru": "Привязка выполняется ПКМ по существу; после этого держи тотем во второй руке. Пустой тотем или удар по другому типу не подходит.",
+            "en": "Right-click a creature to bind, then hold the totem offhand. An unbound totem or an attack on another type does not qualify."
+          },
+          {
+            "key": "skarrier_mobs:totem_binding",
+            "ru": "Extinction связывает тип для бонуса в бою; Melding сохраняет и переносит базовые характеристики между допустимыми существами. Второй путь имеет отдельную карточку.",
+            "en": "Extinction binds a type for combat bonus; Melding stores/transfers base stats between eligible creatures. The second route has its own quest."
+          }
+        ],
+        "render_notes_contract": "All coverage_notes must remain accessible in the quest description or its exact native contextual guide link; root may remove duplicate sentences but must not discard distinct functions.",
+        "reward_purpose_ru": "2 × Эликсир дубовой кожи; 4 × Запечённая курица. Выбери противника для бонуса привязанного тотема вместо случайного ношения предмета.",
+        "reward_purpose_en": "2 × Oakskin Elixir; 4 × Roasted Chicken. Choose a target type for a bound totem bonus instead of merely carrying it.",
+        "visual_group": "skar_workshop"
+      },
+      "mechanic_sections": [
+        {
+          "keys": [
+            "skarrier_mobs:extinction_binding"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Привязка выполняется ПКМ по существу; после этого держи тотем во второй руке. Пустой тотем или удар по другому типу не подходит.",
+          "text_en": "Right-click a creature to bind, then hold the totem offhand. An unbound totem or an attack on another type does not qualify."
+        },
+        {
+          "keys": [
+            "skarrier_mobs:totem_binding"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Extinction связывает тип для бонуса в бою; Melding сохраняет и переносит базовые характеристики между допустимыми существами. Второй путь имеет отдельную карточку.",
+          "text_en": "Extinction binds a type for combat bonus; Melding stores/transfers base stats between eligible creatures. The second route has its own quest."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    },
+    {
+      "id": "v3_combat_totem_meld",
+      "number": "v3_combat_totem_meld",
+      "chapter_id": "tab-25",
+      "title": "Не по породе",
+      "condition": "Сохрани базовые характеристики одного существа в тотеме слияния и успешно перенеси их другому.",
+      "purpose": "Освой перенос разрешённых базовых характеристик без переноса чужой личности.",
+      "tip": "Это последовательность двух нативных операций с данными тотема. Она не переносит навыки, инвентарь или личность; не используй защищённых боссов и игроков вместо разрешённых целей.",
+      "branch": "tab-25",
+      "after": [
+        "v3_combat_totem_bind"
+      ],
+      "kinds": [
+        "advancement"
+      ],
+      "collection": false,
+      "conditions": [
+        {
+          "kind": "advancement",
+          "action": "Store one creature’s base statistics in a Totem of Melding and successfully apply them to another.",
+          "quantity": 1
+        }
+      ],
+      "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+      "bindings": [
+        {
+          "kind": "advancement",
+          "targets": [],
+          "count": 1,
+          "distinct": 0,
+          "argument": "jem_advancements:quest_v3/v3_combat_totem_meld"
+        }
+      ],
+      "ftb_id": "30A8C009FFE04D33",
+      "position": [
+        17.6,
+        -4.7
+      ],
+      "required_mods": [
+        "skarrier_mobs"
+      ],
+      "icon": "irons_spellbooks:oakskin_elixir",
+      "status": "active",
+      "reward": {
+        "tier": "field",
+        "items": [
+          {
+            "id": "irons_spellbooks:oakskin_elixir",
+            "count": 2,
+            "name": "Oakskin Elixir"
+          },
+          {
+            "id": "farm_and_charm:roasted_chicken",
+            "count": 4,
+            "name": "Roasted Chicken"
+          }
+        ],
+        "choice": [],
+        "xp": 75,
+        "claim": "once",
+        "reason": "2 × Oakskin Elixir; 4 × Roasted Chicken. Learn eligible base-stat transfer without transferring another creature’s identity.",
+        "choice_mode": null
+      },
+      "localization": {
+        "ru_ru": {
+          "title": "Не по породе",
+          "condition": "Сохрани базовые характеристики одного существа в тотеме слияния и успешно перенеси их другому.",
+          "purpose": "Освой перенос разрешённых базовых характеристик без переноса чужой личности.",
+          "tip": "Это последовательность двух нативных операций с данными тотема. Она не переносит навыки, инвентарь или личность; не используй защищённых боссов и игроков вместо разрешённых целей.",
+          "reward": "2 × Эликсир дубовой кожи; 4 × Запечённая курица; 75 опыта."
+        },
+        "en_us": {
+          "title": "Beyond the Breed",
+          "condition": "Store one creature’s base statistics in a Totem of Melding and successfully apply them to another.",
+          "purpose": "Learn eligible base-stat transfer without transferring another creature’s identity.",
+          "tip": "This is a two-step native data operation. It does not transfer skills, inventory or identity; respect native exclusions for protected bosses and players.",
+          "reward": "2 × Oakskin Elixir; 4 × Roasted Chicken; 75 XP."
+        }
+      },
+      "design": {
+        "stage": "field",
+        "lesson": "Сохрани базовые характеристики одного существа в тотеме слияния и успешно перенеси их другому.",
+        "old_sources": [],
+        "migration_equivalence": "NEW",
+        "exact_predecessor": null,
+        "reward_purpose": "2 × Oakskin Elixir; 4 × Roasted Chicken. Learn eligible base-stat transfer without transferring another creature’s identity.",
+        "visual_route": "skar_totems",
+        "coverage_keys": [
+          "skarrier_mobs:melding_stats"
+        ],
+        "requires_hook": true,
+        "hook_contract": {
+          "advancement": "jem_advancements:quest_v3/v3_combat_totem_meld",
+          "action": "v3_combat_totem_meld",
+          "success_condition": "Observe the native Skarrier workshop/item/effect owner committing the exact requested transformation, target effect, durability delta, successful transfer or smithing result. Attribute the native result to the real acting player; all named material/target/slot constraints in the objective are mandatory. Server-side real actor only; native owner must have committed the stated result. Reject cancelled/previews, FakePlayer, client animation and raw right-click as proof. If a named upstream behavior is absent or disabled in installed bytes/config, preserve an explicit unavailable row instead of fabricating completion.",
+          "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+        },
+        "research_status": "Authored from exact observations below; new post-success contract is required, not an already observed runtime integration.",
+        "coverage_notes": [
+          {
+            "key": "skarrier_mobs:melding_stats",
+            "ru": "Это последовательность двух нативных операций с данными тотема. Она не переносит навыки, инвентарь или личность; не используй защищённых боссов и игроков вместо разрешённых целей.",
+            "en": "This is a two-step native data operation. It does not transfer skills, inventory or identity; respect native exclusions for protected bosses and players."
+          }
+        ],
+        "render_notes_contract": "All coverage_notes must remain accessible in the quest description or its exact native contextual guide link; root may remove duplicate sentences but must not discard distinct functions.",
+        "reward_purpose_ru": "2 × Эликсир дубовой кожи; 4 × Запечённая курица. Освой перенос разрешённых базовых характеристик без переноса чужой личности.",
+        "reward_purpose_en": "2 × Oakskin Elixir; 4 × Roasted Chicken. Learn eligible base-stat transfer without transferring another creature’s identity.",
+        "visual_group": "skar_workshop"
+      },
+      "mechanic_sections": [
+        {
+          "keys": [
+            "skarrier_mobs:melding_stats"
+          ],
+          "title_ru": "Возможности рядом",
+          "title_en": "Related possibilities",
+          "text_ru": "Это последовательность двух нативных операций с данными тотема. Она не переносит навыки, инвентарь или личность; не используй защищённых боссов и игроков вместо разрешённых целей.",
+          "text_en": "This is a two-step native data operation. It does not transfer skills, inventory or identity; respect native exclusions for protected bosses and players."
+        }
+      ],
+      "native_options": {
+        "size": 1.4
+      },
+      "sources": []
+    }
+  ],
+  "retired_blueprints": [
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_totem_bind.json",
+      "sha256": "7f36290e18573a933e82334ec6ddd489f6be41b43c3f66cf19677d7bfda5c0cd"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_totem_meld.json",
+      "sha256": "2b8f0e878693c65a021d7a7a9e3339bea795795cf151386dfe63cf06467b599a"
+    }
+  ],
+  "before": {
+    "cards": 616,
+    "groups": 76,
+    "cosmetic_edges": 514
+  },
+  "after": {
+    "cards": 614,
+    "groups": 76,
+    "cosmetic_edges": 512
+  },
+  "new_totem_branch_first": "v3_combat_totem_elements",
+  "progression": "Deleted two leading nodes have no surviving predecessor. Elements now has after=[] and is the first remaining native-effects node. Other existing routes/dependencies retain their semantic meaning",
+  "changed_surviving_cards": [
+    "v3_combat_totem_elements",
+    "v3_combat_elder_alloy"
+  ],
+  "remaining_centers_ids_and_numbers_preserved": true,
+  "elder_before": {
+    "id": "v3_combat_elder_alloy",
+    "number": "v3_combat_elder_alloy",
+    "chapter_id": "tab-25",
+    "title": "Дальше незерита",
+    "condition": "Улучши незеритовое снаряжение в Invulnerite, затем подходящий предмет в Decayerite.",
+    "purpose": "Доведи собственное снаряжение через две действительные кузнечные ступени.",
+    "tip": "Нужны собственные материалы и оба шаблона. Нативная неразрушимость меняет смысл Unbreaking: у Decayerite он улучшает область инструмента или критический Decay меча.",
+    "branch": "tab-25",
+    "after": [],
+    "kinds": [
+      "advancement"
+    ],
+    "collection": false,
+    "conditions": [
+      {
+        "kind": "advancement",
+        "action": "Upgrade Netherite equipment to Invulnerite, then a compatible piece to Decayerite.",
+        "quantity": 1
+      }
+    ],
+    "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+    "bindings": [
+      {
+        "kind": "advancement",
+        "targets": [],
+        "count": 1,
+        "distinct": 0,
+        "argument": "jem_advancements:quest_v3/v3_combat_elder_alloy"
+      }
+    ],
+    "ftb_id": "381D1E68FACE0D37",
+    "position": [
+      19.8,
+      -2.7
+    ],
+    "required_mods": [
+      "skarrier_mobs"
+    ],
+    "icon": "irons_spellbooks:oakskin_elixir",
+    "status": "active",
+    "reward": {
+      "tier": "field",
+      "items": [
+        {
+          "id": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "name": "Oakskin Elixir"
+        },
+        {
+          "id": "farm_and_charm:roasted_chicken",
+          "count": 4,
+          "name": "Roasted Chicken"
+        }
+      ],
+      "choice": [],
+      "xp": 75,
+      "claim": "once",
+      "reason": "2 × Oakskin Elixir; 4 × Roasted Chicken. Develop your own equipment through two genuine smithing stages.",
+      "choice_mode": null
+    },
+    "localization": {
+      "ru_ru": {
+        "title": "Дальше незерита",
+        "condition": "Улучши незеритовое снаряжение в Invulnerite, затем подходящий предмет в Decayerite.",
+        "purpose": "Доведи собственное снаряжение через две действительные кузнечные ступени.",
+        "tip": "Нужны собственные материалы и оба шаблона. Нативная неразрушимость меняет смысл Unbreaking: у Decayerite он улучшает область инструмента или критический Decay меча.",
+        "reward": "2 × Эликсир дубовой кожи; 4 × Запечённая курица; 75 опыта."
+      },
+      "en_us": {
+        "title": "Beyond Netherite",
+        "condition": "Upgrade Netherite equipment to Invulnerite, then a compatible piece to Decayerite.",
+        "purpose": "Develop your own equipment through two genuine smithing stages.",
+        "tip": "Supply your own materials and both templates. Native unbreakability changes Unbreaking: on Decayerite it improves tool area or the sword’s critical Decay.",
+        "reward": "2 × Oakskin Elixir; 4 × Roasted Chicken; 75 XP."
+      }
+    },
+    "design": {
+      "stage": "field",
+      "lesson": "Улучши незеритовое снаряжение в Invulnerite, затем подходящий предмет в Decayerite.",
+      "old_sources": [],
+      "migration_equivalence": "NEW",
+      "exact_predecessor": null,
+      "reward_purpose": "2 × Oakskin Elixir; 4 × Roasted Chicken. Develop your own equipment through two genuine smithing stages.",
+      "visual_route": "v3_combat_elder",
+      "coverage_keys": [
+        "skarrier_mobs:upgrade_chain"
+      ],
+      "requires_hook": true,
+      "hook_contract": {
+        "advancement": "jem_advancements:quest_v3/v3_combat_elder_alloy",
+        "action": "v3_combat_elder_alloy",
+        "success_condition": "Observe the native Skarrier workshop/item/effect owner committing the exact requested transformation, target effect, durability delta, successful transfer or smithing result. Attribute the native result to the real acting player; all named material/target/slot constraints in the objective are mandatory. Server-side real actor only; native owner must have committed the stated result. Reject cancelled/previews, FakePlayer, client animation and raw right-click as proof. If a named upstream behavior is absent or disabled in installed bytes/config, preserve an explicit unavailable row instead of fabricating completion.",
+        "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+      },
+      "research_status": "Authored from exact observations below; new post-success contract is required, not an already observed runtime integration.",
+      "coverage_notes": [
+        {
+          "key": "skarrier_mobs:upgrade_chain",
+          "ru": "Нужны собственные материалы и оба шаблона. Нативная неразрушимость меняет смысл Unbreaking: у Decayerite он улучшает область инструмента или критический Decay меча.",
+          "en": "Supply your own materials and both templates. Native unbreakability changes Unbreaking: on Decayerite it improves tool area or the sword’s critical Decay."
+        }
+      ],
+      "render_notes_contract": "All coverage_notes must remain accessible in the quest description or its exact native contextual guide link; root may remove duplicate sentences but must not discard distinct functions.",
+      "reward_purpose_ru": "2 × Эликсир дубовой кожи; 4 × Запечённая курица. Доведи собственное снаряжение через две действительные кузнечные ступени.",
+      "reward_purpose_en": "2 × Oakskin Elixir; 4 × Roasted Chicken. Develop your own equipment through two genuine smithing stages.",
+      "visual_group": "skar_workshop"
+    },
+    "mechanic_sections": [
+      {
+        "keys": [
+          "skarrier_mobs:upgrade_chain"
+        ],
+        "title_ru": "Возможности рядом",
+        "title_en": "Related possibilities",
+        "text_ru": "Нужны собственные материалы и оба шаблона. Нативная неразрушимость меняет смысл Unbreaking: у Decayerite он улучшает область инструмента или критический Decay меча.",
+        "text_en": "Supply your own materials and both templates. Native unbreakability changes Unbreaking: on Decayerite it improves tool area or the sword’s critical Decay."
+      }
+    ],
+    "native_options": {
+      "size": 1.4
+    },
+    "sources": []
+  },
+  "elder_after": {
+    "id": "v3_combat_elder_alloy",
+    "number": "v3_combat_elder_alloy",
+    "chapter_id": "tab-25",
+    "title": "Дальше незерита",
+    "condition": "Улучши незеритовое снаряжение до Invulnerite на кузнечном столе и забери результат",
+    "purpose": "Освой доступное инвульнеритовое улучшение собственного снаряжения",
+    "tip": "После победы над хозяином подземного логова опутанная инвульнеритовая руда освобождается. Из девяти кусочков собери один кусок. Для инвульнеритового шаблона нужны незеритовый шаблон, пустой шаблон и кусочек инвульнерита. Затем используй его с незеритовым предметом и куском инвульнерита",
+    "branch": "tab-25",
+    "after": [],
+    "kinds": [
+      "advancement"
+    ],
+    "collection": false,
+    "conditions": [
+      {
+        "kind": "advancement",
+        "action": "Upgrade Netherite equipment to Invulnerite at a smithing table and take the result",
+        "quantity": 1
+      }
+    ],
+    "technical": "Authored per-mechanic proof; exact new success contract must be implemented where marked. No raw-click substitution for success.",
+    "bindings": [
+      {
+        "kind": "advancement",
+        "targets": [],
+        "count": 1,
+        "distinct": 0,
+        "argument": "jem_advancements:quest_v3/v3_combat_elder_alloy"
+      }
+    ],
+    "ftb_id": "381D1E68FACE0D37",
+    "position": [
+      19.8,
+      -2.7
+    ],
+    "required_mods": [
+      "skarrier_mobs"
+    ],
+    "icon": "irons_spellbooks:oakskin_elixir",
+    "status": "active",
+    "reward": {
+      "tier": "field",
+      "items": [
+        {
+          "id": "irons_spellbooks:oakskin_elixir",
+          "count": 1,
+          "name": "Oakskin Elixir"
+        },
+        {
+          "id": "farm_and_charm:roasted_chicken",
+          "count": 2,
+          "name": "Roasted Chicken"
+        }
+      ],
+      "choice": [],
+      "xp": 40,
+      "claim": "once",
+      "reason": "Supplies for the next expedition after one genuine Invulnerite upgrade",
+      "choice_mode": null
+    },
+    "localization": {
+      "ru_ru": {
+        "title": "Дальше незерита",
+        "condition": "Улучши незеритовое снаряжение до Invulnerite на кузнечном столе и забери результат",
+        "purpose": "Освой доступное инвульнеритовое улучшение собственного снаряжения",
+        "tip": "После победы над хозяином подземного логова опутанная инвульнеритовая руда освобождается. Из девяти кусочков собери один кусок. Для инвульнеритового шаблона нужны незеритовый шаблон, пустой шаблон и кусочек инвульнерита. Затем используй его с незеритовым предметом и куском инвульнерита",
+        "reward": "1 × Эликсир дубовой кожи, 2 × Запечённая курица и 40 опыта"
+      },
+      "en_us": {
+        "title": "Beyond Netherite",
+        "condition": "Upgrade Netherite equipment to Invulnerite at a smithing table and take the result",
+        "purpose": "Improve your own equipment through the available Invulnerite smithing upgrade",
+        "tip": "Defeating the underground lair guardian releases its tangled Invulnerite ore. Craft nine nuggets into one chunk. Make the Invulnerite template with a Netherite template, a blank template and one nugget, then use it with Netherite equipment and an Invulnerite chunk",
+        "reward": "1 × Oakskin Elixir, 2 × Roasted Chicken and 40 XP"
+      }
+    },
+    "design": {
+      "stage": "field",
+      "lesson": "Улучши незеритовое снаряжение до Invulnerite на кузнечном столе и забери результат",
+      "old_sources": [],
+      "migration_equivalence": "NEW",
+      "exact_predecessor": null,
+      "reward_purpose": "Supplies for the next expedition after one genuine Invulnerite upgrade",
+      "visual_route": "v3_combat_elder",
+      "coverage_keys": [
+        "skarrier_mobs:upgrade_chain"
+      ],
+      "requires_hook": true,
+      "hook_contract": {
+        "advancement": "jem_advancements:quest_v3/v3_combat_elder_alloy",
+        "action": "v3_combat_elder_alloy",
+        "success_condition": "Actual native registered Invulnerite SmithingTransformRecipe output take consumes the Invulnerite template, Netherite base and Invulnerite chunk and produces the genuine result for the real acting player. Require native committed output and all three input debits. No Decayerite requirement, possession-only proof or added recipe",
+        "authority": "server, real actor, post-commit native owner; no new gameplay authority, no broad polling, no raw click shortcut"
+      },
+      "research_status": "Authored from exact observations below; new post-success contract is required, not an already observed runtime integration.",
+      "coverage_notes": [
+        {
+          "key": "skarrier_mobs:upgrade_chain",
+          "ru": "После победы над хозяином подземного логова опутанная инвульнеритовая руда освобождается. Из девяти кусочков собери один кусок. Для инвульнеритового шаблона нужны незеритовый шаблон, пустой шаблон и кусочек инвульнерита. Затем используй его с незеритовым предметом и куском инвульнерита",
+          "en": "Defeating the underground lair guardian releases its tangled Invulnerite ore. Craft nine nuggets into one chunk. Make the Invulnerite template with a Netherite template, a blank template and one nugget, then use it with Netherite equipment and an Invulnerite chunk"
+        }
+      ],
+      "render_notes_contract": "All coverage_notes must remain accessible in the quest description or its exact native contextual guide link; root may remove duplicate sentences but must not discard distinct functions.",
+      "reward_purpose_ru": "Освой доступное инвульнеритовое улучшение собственного снаряжения",
+      "reward_purpose_en": "Improve your own equipment through the available Invulnerite smithing upgrade",
+      "visual_group": "skar_workshop"
+    },
+    "mechanic_sections": [
+      {
+        "keys": [
+          "skarrier_mobs:upgrade_chain"
+        ],
+        "title_ru": "Возможности рядом",
+        "title_en": "Related possibilities",
+        "text_ru": "После победы над хозяином подземного логова опутанная инвульнеритовая руда освобождается. Из девяти кусочков собери один кусок. Для инвульнеритового шаблона нужны незеритовый шаблон, пустой шаблон и кусочек инвульнерита. Затем используй его с незеритовым предметом и куском инвульнерита",
+        "text_en": "Defeating the underground lair guardian releases its tangled Invulnerite ore. Craft nine nuggets into one chunk. Make the Invulnerite template with a Netherite template, a blank template and one nugget, then use it with Netherite equipment and an Invulnerite chunk"
+      }
+    ],
+    "native_options": {
+      "size": 1.4
+    },
+    "sources": []
+  },
+  "reward_change": "One retained smithing stage receives1 Oakskin Elixir,2 Roasted Chicken,40XP instead of2/4/75 for the former two-stage goal. Same item IDs and reward/task identities",
+  "native_acquisition": "Overworld Tunnel Gore jigsaw structure contains tangled Invulnerite ore and native guardian. Its existing death handler releases the ore. Native diamond-tier mining yields7..11nuggets,9craft into a chunk. Native crafting and smithing provide blank/Netherite/Invulnerite templates. Existing smithing transforms Netherite equipment with template and chunk. Nothing added",
+  "compat": "Current Item Obliterator has no Skarrier item bans. InControl has a conditional hostile cap and named Dragger/Rager/Sorcerer/Slither exclusions, not Tunnel Gore/Grave Construct. Current gameplay recipe replacements and Paxi contain no Invulnerite removal/override. Native mobs and gameplay restrictions remain unchanged",
+  "native_artifact": "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+  "native_sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+  "resources": [
+    {
+      "resource": "data/skarrier_mobs/structures/tg_lair_x.nbt",
+      "sha256": "6969e006b8f609d2d9a879c6bc7def48e360d58c1368137e54c1eee32a971351",
+      "contains_native_tangled_ore": true,
+      "contains_native_tunnel_gore": true
+    },
+    {
+      "resource": "data/skarrier_mobs/worldgen/structure/tunnel_gore_lair_x.json",
+      "sha256": "9ff2a967418e838680e5d0db659c1969a826f1930ca419e95140e6351189071e",
+      "definition": {
+        "type": "minecraft:jigsaw",
+        "start_pool": "skarrier_mobs:tunnel_gore_lair_x",
+        "size": 7,
+        "max_distance_from_center": 128,
+        "spawn_overrides": {},
+        "step": "underground_decoration",
+        "terrain_adaptation": "none",
+        "start_height": {
+          "type": "minecraft:biased_to_bottom",
+          "min_inclusive": {
+            "absolute": -57
+          },
+          "max_inclusive": {
+            "absolute": -30
+          }
+        },
+        "biomes": "#minecraft:is_overworld",
+        "use_expansion_hack": false
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/worldgen/structure_set/tunnel_gore_lair_x.json",
+      "sha256": "376feb02a46d9e3a6febd209338dd90ff79beb7eac3302f7d25ba65fb32c1d85",
+      "definition": {
+        "structures": [
+          {
+            "structure": "skarrier_mobs:tunnel_gore_lair_x",
+            "weight": 1
+          }
+        ],
+        "placement": {
+          "type": "minecraft:random_spread",
+          "spacing": 22,
+          "separation": 12,
+          "salt": 489090257
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/loot_tables/blocks/wrong_deepslate_ore_invulnerite.json",
+      "sha256": "4a57dd76221b6b8735c8cc37bbba43a1c9a4ea77e18682d1ca567c6949baee9e",
+      "definition": {
+        "type": "minecraft:block",
+        "pools": [
+          {
+            "rolls": 1,
+            "entries": [
+              {
+                "type": "minecraft:item",
+                "name": "skarrier_mobs:invulnerite_nugget",
+                "weight": 1,
+                "functions": [
+                  {
+                    "function": "set_count",
+                    "count": {
+                      "min": 7,
+                      "max": 11
+                    }
+                  },
+                  {
+                    "function": "minecraft:apply_bonus",
+                    "enchantment": "minecraft:fortune",
+                    "formula": "minecraft:ore_drops"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "random_sequence": "skarrier_mobs:blocks/wrong_deepslate_ore_invulnerite"
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/loot_tables/entities/grave_construct_phase_melee.json",
+      "sha256": "e0bc4f9138833e7b19a58c1f8d9a8648702637214e770494e3b5d23f4b1b4fce",
+      "definition": {
+        "type": "minecraft:entity",
+        "pools": [
+          {
+            "rolls": 1,
+            "entries": [
+              {
+                "type": "minecraft:item",
+                "name": "skarrier_mobs:semi_living_flesh",
+                "weight": 1,
+                "functions": [
+                  {
+                    "function": "set_count",
+                    "count": {
+                      "min": 6,
+                      "max": 12
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "random_sequence": "skarrier_mobs:entities/grave_construct_phase_melee"
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/blank_template_recipe.json",
+      "sha256": "0a8b87a2098cec839fe7948d2e8d331472a64fa70dad5e2092a53cc0a635704f",
+      "definition": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "aba",
+          "cdc",
+          " b "
+        ],
+        "key": {
+          "a": {
+            "item": "skarrier_mobs:semi_living_flesh"
+          },
+          "b": {
+            "item": "minecraft:polished_deepslate"
+          },
+          "c": {
+            "item": "minecraft:rotten_flesh"
+          },
+          "d": {
+            "item": "minecraft:bone_block"
+          }
+        },
+        "result": {
+          "item": "skarrier_mobs:blank_template",
+          "count": 1
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/netherite_upgrade_template_recipe.json",
+      "sha256": "e72844bd08363a0d3a46e9eed581b6f886f0b0f349db3b8f0276246d7cb584ca",
+      "definition": {
+        "type": "minecraft:crafting_shaped",
+        "category": "equipment",
+        "pattern": [
+          "aaa",
+          "bcb",
+          " a "
+        ],
+        "key": {
+          "a": {
+            "item": "minecraft:netherrack"
+          },
+          "b": {
+            "item": "minecraft:netherite_ingot"
+          },
+          "c": {
+            "item": "skarrier_mobs:blank_template"
+          }
+        },
+        "result": {
+          "item": "minecraft:netherite_upgrade_smithing_template",
+          "count": 1
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_chunk_recipe.json",
+      "sha256": "5be80557bdfd5f256ad2ec3174ff22503ac83d065662030d47aa892c1c94a841",
+      "definition": {
+        "type": "minecraft:crafting_shaped",
+        "category": "misc",
+        "pattern": [
+          "aaa",
+          "aaa",
+          "aaa"
+        ],
+        "key": {
+          "a": {
+            "item": "skarrier_mobs:invulnerite_nugget"
+          }
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_chunk",
+          "count": 1
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_upgrade_template_recipe.json",
+      "sha256": "f53f3171329b3747c387462f4f7de3f1ba5cccc9dbb7586ba792eb7011dbbf5e",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "minecraft:netherite_upgrade_smithing_template"
+        },
+        "base": {
+          "item": "skarrier_mobs:blank_template"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_nugget"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_axe_recipe.json",
+      "sha256": "1794ed5b93b6d621d831e622fbc1898a48c5ace25edaf8cb4ba3533d75301dc7",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_axe"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_axe"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_boots_recipe.json",
+      "sha256": "4d15ab2e4999095304578b0ac1b4a8ba82c453466fa1093ee6d87a49b3b5e24e",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_boots"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_armor_boots"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_chestplate_recipe.json",
+      "sha256": "30c1c691bdf2e04f20fb6843a8c432b7b18600c89cf339d5cf39aa6544127f86",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_chestplate"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_armor_chestplate"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_helmet_recipe.json",
+      "sha256": "2bc8f7eef21f9fcdaf0cf57db22810d15493673df81f4d30b24ea726a45382fc",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_helmet"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_armor_helmet"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_hoe_recipe.json",
+      "sha256": "cb27684fc20728244f36fa24ceab290773638374c8c6805ce7681e5ce1f54d0a",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_hoe"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_hoe"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_leggings_recipe.json",
+      "sha256": "433fbccf148c0e76833721607cf9704f5082ba2354ca8091e0f60604996d79b7",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_leggings"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_armor_leggings"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_pickaxe_recipe.json",
+      "sha256": "f1b57bf652d9fae79b71602f603133140196d11ca473d8f9f90a79893f999b7c",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_pickaxe"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_pickaxe"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_shovel_recipe.json",
+      "sha256": "a0e590eab69279da8c07a701ec4f46eeb41a20cba92b129211746dc76c8c0f13",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_shovel"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_shovel"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_sword_recipe.json",
+      "sha256": "b6badda130ef1a9047a7a6f4feb03d950d629913ccefc88a69fc5d2f50c68e39",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        },
+        "base": {
+          "item": "minecraft:netherite_sword"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_chunk"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_sword"
+        }
+      }
+    },
+    {
+      "resource": "data/skarrier_mobs/recipes/invulnerite_upgrade_template_recipe.json",
+      "sha256": "f53f3171329b3747c387462f4f7de3f1ba5cccc9dbb7586ba792eb7011dbbf5e",
+      "definition": {
+        "type": "minecraft:smithing_transform",
+        "template": {
+          "item": "minecraft:netherite_upgrade_smithing_template"
+        },
+        "base": {
+          "item": "skarrier_mobs:blank_template"
+        },
+        "addition": {
+          "item": "skarrier_mobs:invulnerite_nugget"
+        },
+        "result": {
+          "item": "skarrier_mobs:invulnerite_upgrade_template"
+        }
+      }
+    }
+  ],
+  "native_completion_source": [
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierInvulneriteProof.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierInvulneriteQuestMixin.java"
+  ],
+  "candidate_generation": "Deferred to the user-requested whole implementation check before build",
+  "native_mechanics_or_recipes_changed": false,
+  "frozen_legacy_claims_changed": false,
+  "runtime_observed": false,
+  "activated": false
+}

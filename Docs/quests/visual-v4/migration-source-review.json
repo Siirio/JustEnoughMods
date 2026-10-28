@@ -1,0 +1,266 @@
+{
+  "date": "2026-10-28",
+  "status": "MIGRATION_NOT_REQUIRED_USER_CONFIRMED_UNUSED",
+  "migration_code_ready": false,
+  "migration_runtime_observed": false,
+  "reviewed_sources": [
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookMigrationDefinitions.java",
+      "sha256": "8e2ad34f16233d984777c559eab12fd4bb940b089da5d9818c54f5b62159195e"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookMigrationRecovery.java",
+      "sha256": "ec4bc9bcf884aed759b28be6f71b201982af5c3deb137967be4585de3b62772d"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookMigration.java",
+      "sha256": "1cdf5e91cdf47cd9c35419292731b89f91d8e818e937738e30d891332960dc58"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookItemReward.java",
+      "sha256": "1e4179914a81afe9fb45935311544417cfb434427612f5fa5483a78261c2afb4"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookXpReward.java",
+      "sha256": "8d17fc733383a1b08be2ee3bfd2ce0d758853d26d16a5c137806b5d90ccd1fc5"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookEvents.java",
+      "sha256": "08791bf6555e158baf202ff812648def864a7e418d1d4cd9caa887daf40e7428"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/PastRewardsScreen.java",
+      "sha256": "2526b9ecca50f67ca7898a1c919aed141ff0cfcbd266d417b6ff7fa683767956"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/PastRewardsNetwork.java",
+      "sha256": "b55c953867f5178017e3dbb3d52b532bf557e7f05da566ac9935cb18a0125b73"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/QuestbookArchives.java",
+      "sha256": "ec3d60632c630e2bc332de266ea65c3987d69e19017a617980e073b6b8f3d6ca"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbRewardClaimMixin.java",
+      "sha256": "751aa4f84827e54997b51da68541272df9e471170da43515b03119e91d52f3c1"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbChoiceClaimMixin.java",
+      "sha256": "0b7279ff3a57c05f2975507156886b416c591941ecd4b5beab11c4f564073ef7"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbPastRewardsMixin.java",
+      "sha256": "fa99dfaa274a7a05b334276020809aa9d4f90150b4d82beffd666a1f0e5ffece"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestbookArchiveSelectionMixin.java",
+      "sha256": "565910e3b33e18d886cefd1dfcadb886fa8a1840cd16ff2fc82d2b3ec9379b62"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestbookArchiveSearchMixin.java",
+      "sha256": "bec2a67322de0d8e88ea4e1a982a70076efbc714b00f86dae5cdc2b45d24de35"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FtbArchiveRewardTablesMixin.java",
+      "sha256": "90d86ce6bad2391faabf43edcc8492cd50dd2c32b295ac42391d57a903122b89"
+    },
+    {
+      "path": "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/PendingRewardContainer.java",
+      "sha256": "9fdf9c92897b0535a1eefe8289e435a86c643dd20f53f96f2c5d722443f42274"
+    },
+    {
+      "path": "Mods/JEMRewards/src/main/java/com/siirio/jemrewards/RewardsData.java",
+      "sha256": "a7077dc4b724f142c462b8636350aa89d8728e8bda7df570ff159e3b7cbd5180"
+    },
+    {
+      "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/FtbQuestProjection.java",
+      "sha256": "b050eafd99c82838fbdd982669c724bbcf4d7f12701215ab3047a8b820c9bdd3"
+    }
+  ],
+  "reviewed_guarantees": [
+    "FtbQuestProjection calls historical preparation only for jem_visual_v4=true, jem_history_migration=true and the exact supported jem_migration_version=visual-v4-1. Current false/absent metadata clears dormant migration state and performs no historical native-definition, old payload or checkpoint reads",
+    "BookMigration.loaded does not construct a migration or read old payloads when historical definitions are inactive. No old progress conversion, reward settlement, original-team freeze or historical receipt lookup runs for the current V4 book",
+    "Current-book management is independent of historical migration activation. Ordinary current fixed, choice and XP claims retain native completed/locked/blocked/claimed validation, safe native choice-parent ordering and personal JEMRewards delivery",
+    "Past rewards mouse controls and hints, requests, claims and snapshot screen opening are disabled. Existing native collect-rewards actions continue normally",
+    "Already-issued generic JEMRewards pending bundles and durable receipts remain intact. No save data, public API or persistent schema was deleted or rewritten",
+    "The earlier accepted source fixes for durable queue issuance, native XP save/read-back and integrated-host native save ownership remain applicable to ordinary current rewards. They create no old quest entitlement or historical payout"
+  ],
+  "data_boundary": {
+    "declared_reward_rows": 2146,
+    "delivery_status_counts": {
+      "allowed_frozen_original": 2134,
+      "exact_allowed_compensation": 2,
+      "not_emitted": 10
+    },
+    "compensation_shape": "Both current compensation decisions are fixed parent rewards, no choice-option preview ambiguity",
+    "original_quest_rows": 602,
+    "original_quest_disposition_counts": {
+      "exact_predicate_successor": 147,
+      "reference_only": 25,
+      "replaced_with_new_goals": 366,
+      "retired_to_claims_only_archive": 64
+    },
+    "frozen_data_modified": false,
+    "current_payload_accounting": {
+      "basis": "Read existing bundled source payload without regeneration or modification",
+      "migration_map_rows": 617,
+      "migration_map_equivalence_counts": {
+        "EXACT": 147,
+        "NEW": 470
+      },
+      "current_complete_source_review_target_cards": 606,
+      "payload_status": "HISTORICAL_AUDIT_ONLY_NOT_REQUIRED",
+      "disposition_policy": "Preserve the observed historical dispositions as audit. The old map and 602/2146 payload are not processed or required for the current no-migration V4 book",
+      "payloads": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/questbook/migration/migration-map.json",
+          "sha256": "a88d90d898efe122faff2ac1836519c42ec8f75d6c9c871516ade2ad03dd9e4e"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/questbook/migration/all-old-quests.json",
+          "sha256": "b51a174ea1f14f0640ff2e49119a462e19f4ea83cc49ac457b6b0f4847fe2077"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/resources/assets/jem_advancements/questbook/migration/all-old-rewards.json",
+          "sha256": "aefdaaf1284197e2f82e30716558a8aa91b391b713eacebcd20fc408ee5ddafe"
+        }
+      ]
+    },
+    "historical_data_required_for_v4": false,
+    "accounting_role": "Retained historical audit only, not an activation or migration acceptance requirement"
+  },
+  "unresolved_gates": [
+    "Parent-owned final current-book compiler output and combined production build/package/refmap acceptance remain pending",
+    "Current reward delivery, optional class loading, native save failure recovery and gameplay remain unobserved under the no-build/no-runtime scope",
+    "Historical migration is not required or part of current V4 activation. No live-world migration evidence is claimed or needed for this user-confirmed unused quest book"
+  ],
+  "new_actionable_findings": [],
+  "source_acceptance": {
+    "scope": "User-confirmed unused quests, no-migration V4 activation amendment",
+    "basis": "Source metadata gate and current-reward guard separation implemented under parent coordination",
+    "supersedes": "Historical migration acceptance and its required 602/2146 data accounting",
+    "build_or_runtime_run": false
+  },
+  "bucket_d_fixes": [
+    {
+      "id": "durable_item_issuance_receipt",
+      "status": "SOURCE_FIXED_REVIEW_ACCEPTED",
+      "boundary": "Separate verified durable Issued snapshot from mutable pending issuance. A failed flush cannot falsely settle an unpersisted native reward parent. Pending-source retries remain idempotent",
+      "sources": [
+        "RewardsData.issuedDurably",
+        "RewardsData.save",
+        "PendingRewardContainer.hasIssued",
+        "PendingRewardContainer.enqueue"
+      ]
+    },
+    {
+      "id": "actual_native_source_membership",
+      "status": "SOURCE_FIXED_REVIEW_ACCEPTED",
+      "boundary": "Freeze actual FTB Teams membership including offline members, without unioning historical UI metadata and merged claim keys",
+      "sources": [
+        "BookMigration.freeze",
+        "TeamData.mergeData",
+        "ServerQuestFile.playerChangedTeam"
+      ]
+    },
+    {
+      "id": "xp_native_save_and_retry",
+      "status": "SOURCE_FIXED_REVIEW_ACCEPTED",
+      "boundary": "Native XP and existing receipt must pass actual owner save/read-back before success. Failed persistence resets only the exact source parent. Same-process retry and clone preserve the already-awarded in-memory receipt without another award",
+      "sources": [
+        "BookXpReward.claimFrom",
+        "BookXpReward.persist",
+        "BookXpReward.cloned",
+        "BookMigration.invoke",
+        "BookMigration.claim",
+        "BookEvents.cloned"
+      ]
+    },
+    {
+      "id": "integrated_host_native_save_owner",
+      "status": "SOURCE_FIXED_REVIEW_ACCEPTED",
+      "boundary": "Read back and recover the same native player owner that PlayerList.load will reload, including integrated-host level.dat/Data/Player. A secondary UUID file alone cannot acknowledge host delivery",
+      "sources": [
+        "RewardsData.savedPlayer",
+        "RewardsData.savePlayer",
+        "RewardsData.recover",
+        "BookXpReward.persist",
+        "PlayerList.load"
+      ]
+    },
+    {
+      "id": "available_original_source_proposal",
+      "status": "SOURCE_FIXED_REVIEW_ACCEPTED",
+      "boundary": "An earlier locked or blocked eligible source does not hide another eligible available source for the same original parent. Parent, option, frozen source and paid-state checks remain unchanged",
+      "sources": [
+        "BookMigration.pending",
+        "BookMigration.claim"
+      ]
+    }
+  ],
+  "native_save_evidence": {
+    "kind": "Exact installed native API bytecode lookup, not runtime observation",
+    "artifacts": [
+      {
+        "path": "Client/ManagedPack/mods/ftb-quests-forge-2001.4.22.jar",
+        "native_owners": [
+          "TeamData",
+          "ServerQuestFile",
+          "FTBQuestsEventHandler",
+          "XPReward"
+        ],
+        "sha256": "9ea9d159a78a2724cfe0457b024680fdb52a2126eff9cfa5280a30578f647a68"
+      },
+      {
+        "path": "Client/ManagedPack/mods/ftb-teams-forge-2001.3.2.jar",
+        "native_owners": [
+          "Team",
+          "PlayerTeam"
+        ],
+        "sha256": "b1cb4d82ea9f137a87e12a7aaf3329619294b56f7d70337dfd557a76e10b6e07"
+      },
+      {
+        "path": "C:/Users/user/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.10_mapped_official_1.20.1/forge-1.20.1-47.4.10_mapped_official_1.20.1.jar",
+        "native_owners": [
+          "PlayerList.load",
+          "PlayerList.save",
+          "MinecraftServer.isSingleplayerOwner",
+          "WorldData.getLoadedPlayerTag",
+          "LevelResource"
+        ],
+        "sha256": "27fecfe541b86817071377d4bd2e441e344a9edb189b759e52e6bbbdcf33f488"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "build/questbook-v4-review-teamdata-native.txt",
+        "sha256": "657e5ad2325d43640b69e78a0d01835c10d9ff5bd6ffd27b81cd9b5b01cd6a36"
+      },
+      {
+        "path": "build/questbook-v4-review-serverquestfile-native.txt",
+        "sha256": "62f9e71915c95a8552ccca66f8d305832d73e102dc436d91cef3918f6f2ed1af"
+      },
+      {
+        "path": "build/questbook-v4-review-ftbevents-native.txt",
+        "sha256": "7e9fdf8db382d59b99ceddea54933a9d64484f8479cc733afbc1dccf0a8e1840"
+      },
+      {
+        "path": "build/questbook-v4-review-playerlist-native.txt",
+        "sha256": "0ffa9481c7abcd873d1f1052a4e246dd677b62a2b425eac3e766caf132294ef3"
+      }
+    ],
+    "claim_boundary": "Native TeamData marks a reward parent before invoking Reward.claim. JEMRewards claimSelection prepares and flushes its existing claim journal before inserting inventory. Remaining slots commit only after actual native player inventory and receipt read-back",
+    "host_boundary": "Mapped MC 1.20.1 PlayerList.load prefers WorldData.getLoadedPlayerTag for the singleplayer owner, which comes from level.dat/Data/Player. Ordinary dedicated players and integrated guests use native UUID playerdata"
+  },
+  "history_migration_policy": "not_required_unused_quests",
+  "migration_required": false,
+  "user_amendment": {
+    "date": "2026-10-28",
+    "decision": "The user explicitly excluded old quest rewards, then confirmed nobody has ever used quests and no migration is needed",
+    "current_book_policy": "Current V4 quests start from zero. No old reward claims, old progress conversion, historical reward settlement, historical archives or historical acceptance requirement",
+    "preserve": "Already-issued generic JEMRewards pending bundles, native current fixed/choice/XP rewards, existing stored public APIs and save schemas",
+    "parent_owned": "Compiler removes legacy chapters/tables, emits jem_history_migration=false with no jem_migration_version, and bypasses migration readiness for this explicit not-required policy",
+    "runtime_observed": false
+  },
+  "historical_review_superseded": true
+}

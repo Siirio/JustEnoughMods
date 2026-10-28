@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "runtime_observed": false,
+  "scope": "Optional dedicated event goals only, no ordinary quest dependency added",
+  "artifact": {
+    "path": "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar",
+    "sha256": "439be97302ca6dbae1cd50dc6b44f71b11982392cf4d8b56070cbbe6d053df3b"
+  },
+  "producers": [
+    {
+      "action": "v3_qol_seasonal_gift",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_qol_seasonal_gift"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/events/HolidayGiftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/events/HolidayGiftView.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HolidayGiftAccessMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HolidayGiftAcceptQuestMixin.java"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "native_evidence": "Exact current HolidayActivities.acceptGift performs authenticated recipient check, complete native capacity check, full Inventory.add transfer, durable CalendarEventData.removeGift and true result. Observer retains same original gift read, excludes identical sender/target account UUIDs, observes exact removal and conserved complete real recipient inventory increase. No new gift state, transfer, refund or event authority. Existing escrow creation owner requires active New Year and different authenticated online players, accepts survive season by native policy",
+      "native_sources": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/calendar/HolidayActivities.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/calendar/CalendarEventData.java"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "unimplemented_actions": [],
+  "retired_actions": [
+    "v3_qol_resource_rush"
+  ],
+  "user_amendment": "native-user-amendment.json",
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 1
+}

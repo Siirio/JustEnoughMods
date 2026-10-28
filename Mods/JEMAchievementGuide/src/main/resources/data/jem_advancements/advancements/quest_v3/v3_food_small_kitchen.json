@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "water": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_sink_water"
+      }
+    },
+    "meal": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_small_pot_meal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "water"
+    ],
+    [
+      "meal"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

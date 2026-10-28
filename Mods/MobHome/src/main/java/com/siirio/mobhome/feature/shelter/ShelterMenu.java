@@ -106,6 +106,9 @@ public final class ShelterMenu extends AbstractContainerMenu {
             pet.home = null; pet.homeDimension = ""; pet.blocked = "";
             // Pending is deliberately retained when unbinding a dead animal or removing its house.
         }
-        data.flush(viewer.serverLevel()); refresh(true); ShelterRecovery.nearby(viewer);
+        data.flush(viewer.serverLevel());
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new CompanionHomeEvent(
+                viewer, pet.id, dimension, anchor, request.bind()));
+        refresh(true); ShelterRecovery.nearby(viewer);
     }
 }

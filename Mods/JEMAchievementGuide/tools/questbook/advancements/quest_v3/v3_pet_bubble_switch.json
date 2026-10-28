@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_bubble_switch_native_wax_on"
+      }
+    },
+    "native_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_bubble_switch_native_axe_off"
+      }
+    },
+    "native_2": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_bubble_switch_release"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_1"
+    ],
+    [
+      "native_2"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

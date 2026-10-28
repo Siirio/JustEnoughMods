@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_resistor"
+      }
+    },
+    "scarlet": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_resistor_scarlet"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "scarlet"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

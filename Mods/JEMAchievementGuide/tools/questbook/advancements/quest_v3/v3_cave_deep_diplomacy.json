@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_deep_diplomacy"
+      }
+    },
+    "pearl": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_deep_diplomacy_pearl"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "pearl"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

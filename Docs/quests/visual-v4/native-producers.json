@@ -1,0 +1,1107 @@
+{
+  "schema": 1,
+  "source_of_contract": "Immutable supplied Visual V4 integration/success-contracts.json and authored candidate advancements, with parent-owned approved corrections",
+  "producer_scope": "Combat, magic and third-party adapters owned by native_producers worker. Other source owners have separate food/create and parent maps. This is not an activation receipt.",
+  "runtime_observed": false,
+  "production_build_owner": "Parent unified production build only",
+  "standalone_contract": "Integrated and dedicated logical server, optional upstream mods only, no JEMServer or external service dependency",
+  "shared_sources": [
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestActionTrigger.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/JemCriteria.java"
+  ],
+  "producers": [
+    {
+      "action": "create_polish_quartz",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SandpaperQuestMixin.java"
+      ],
+      "native_evidence": "Create6.0.8 SandPaperItem native finishUsingItem delivers actual polished_rose_quartz through Inventory.placeItemBackInInventory after native transformation. Original delivery is invoked once.",
+      "attribution": "Actual completing user",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_eng_polish"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "anvil_repair_result",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestResultSnapshot.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java"
+      ],
+      "native_evidence": "Vanilla AnvilMenu.onTake pays positive native level cost, commits input consumption and returns same actual tool with less damage. Tools use the Forge tools tag or source-backed native tool/weapon classes, excluding ordinary armor.",
+      "attribution": "Current native menu owner and same transaction result, including native quickMoveStack",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_repair"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_horned_helmet",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java"
+      ],
+      "native_evidence": "Primal1.1.6 native anvil recipe accepts helmet and goat horn in either orientation. Observe actual changed HelmetDecorations left/right primal:goat_horn, same helmet and exactly one consumed horn after paid native take.",
+      "attribution": "Current actual menu owner and input/result transaction",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_horned_helmet"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "enchanting_table_success",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EnchantmentQuestMixin.java"
+      ],
+      "native_evidence": "Vanilla EnchantmentMenu.clickMenuButton commits changed native enchantment map with actual lapis and player levels debited.",
+      "attribution": "Actual native menu operator",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_enchant"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_qol_map_gallery",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MapGalleryQuestMixin.java"
+      ],
+      "native_evidence": "Vanilla ItemFrame interaction changes empty frame to real filled map, matching map identity, consumes one held map and resolves native MapItemSavedData with actual explored pixels.",
+      "attribution": "Real successful frame user",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_qol_map_gallery"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_lava_nursery",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NetherCaterpillarQuestMixin.java"
+      ],
+      "native_evidence": "Kaleidoscope Nether1.1.8 NetherCaterpillarItem.useOnEntity first return belongs only to successful native baby Strider maturation, item shrink and age zero commit.",
+      "attribution": "Actual consuming real user and same native baby",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_food_lava_nursery"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_first_frame",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ExposureQuestMixin.java"
+      ],
+      "native_evidence": "Exposure1.9.21 FrameExposedTrigger.trigger tail receives actual nonempty frame identity and native frame.isTakenBy(actor) confirms photographer.",
+      "attribution": "Native successful photographer",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_first_frame"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_treefall",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/treechop/TreeChopIntegration.java"
+      ],
+      "native_evidence": "TreeChop0.19.0-fixed FinishChopEvent confirms actual felled tree flag, not ordinary log acquisition.",
+      "attribution": "Actual native chopper from successful event",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_treefall"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_zip_transfer",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ZiplineLogicMixin.java"
+      ],
+      "native_evidence": "Zipline1.3.0 native setCable commit changes currently used cable to distinct cable while same real user remains airborne.",
+      "attribution": "Actual native cable user",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_zip_transfer"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_statue_bargain",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimpleBargainMixin.java"
+      ],
+      "native_evidence": "Paraglider20.1.3 native non-simulated successful goddess_statue bargain has positive spirit_orb demand and actual heart/stamina offer.",
+      "attribution": "Native accepted trade operator",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_statue_bargain"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_successful_cast",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpellCastQuestMixin.java"
+      ],
+      "native_evidence": "Iron Spellbooks3.15.6 AbstractSpell.castSpell single final return follows native onCast, resource settlement and cooldown.",
+      "attribution": "Actual native caster",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_cast"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_inscribe_book",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpellInscriptionQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 InscriptionTableMenu.doInscription final return after actual scroll removal and chosen spell container commit. Requires new nonempty native spell on resulting book.",
+      "attribution": "Same real inscription menu owner",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_inscribe"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_forge_scroll",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ScrollForgeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ScrollForgeQuickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 ScrollForgeMenu$4.onTake final return consumes exactly one native ink, blank and focus, and actual output has valid spell data. Rare action additionally requires native RARE, EPIC or LEGENDARY rarity. Read-only nullable native spell containers never create data.",
+      "attribution": "Same actual forge menu owner and native result slot transaction, including native quick take",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_forge"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_forge_rare",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ScrollForgeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ScrollForgeQuickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 ScrollForgeMenu$4.onTake final return consumes exactly one native ink, blank and focus, and actual output has valid spell data. Rare action additionally requires native RARE, EPIC or LEGENDARY rarity. Read-only nullable native spell containers never create data.",
+      "attribution": "Same actual forge menu owner and native result slot transaction, including native quick take",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_rare_scroll"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_arcane_upgrade",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ArcaneAnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 ArcaneAnvilMenu.onTake consumes exactly one of each native input. Same actual result item respectively has higher spell level, a newly installed spell, removed spell with actual ShrivingStone, or increased native UpgradeData total from actual upgrade orb.",
+      "attribution": "Same actual arcane menu owner and transaction",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_upgrade_spell"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_weapon_imbue",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ArcaneAnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 ArcaneAnvilMenu.onTake consumes exactly one of each native input. Same actual result item respectively has higher spell level, a newly installed spell, removed spell with actual ShrivingStone, or increased native UpgradeData total from actual upgrade orb.",
+      "attribution": "Same actual arcane menu owner and transaction",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_imbue"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_shriving_remove",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ArcaneAnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 ArcaneAnvilMenu.onTake consumes exactly one of each native input. Same actual result item respectively has higher spell level, a newly installed spell, removed spell with actual ShrivingStone, or increased native UpgradeData total from actual upgrade orb.",
+      "attribution": "Same actual arcane menu owner and transaction",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_erase"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_apply_upgrade_orb",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ArcaneAnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestSpellProof.java"
+      ],
+      "native_evidence": "Iron3.15.6 ArcaneAnvilMenu.onTake consumes exactly one of each native input. Same actual result item respectively has higher spell level, a newly installed spell, removed spell with actual ShrivingStone, or increased native UpgradeData total from actual upgrade orb.",
+      "attribution": "Same actual arcane menu owner and transaction",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_orb"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_positive_hostile_damage",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpellDamageQuestMixin.java"
+      ],
+      "native_evidence": "Iron3.15.6 DamageSources.applyDamage invokes original native hurt once. Requires actual native SpellDamageSource, accepted positive finite hostile health/absorption loss.",
+      "attribution": "Native spell source real owner",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_fieldwork"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_effective_player_heal",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpellHealingQuestMixin.java"
+      ],
+      "native_evidence": "Iron3.15.6 HealSpell and GreaterHealSpell native caster.heal call actually increases player health. Original heal called once.",
+      "attribution": "Actual self-healing real caster",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_fieldwork"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_self_relocation",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpellTeleportQuestMixin.java"
+      ],
+      "native_evidence": "Iron3.15.6 TeleportSpell native Utils.handleSpellTeleport returns cancellation flag. Actual successful noncancelled cast must move same alive caster and end without collision. Original teleport called once, return unchanged.",
+      "attribution": "Actual teleporting real caster",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_fieldwork",
+        "jem_advancements:quest_v2/v2_mag_relocate"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_eldritch_knowledge",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EldritchLearningQuestMixin.java"
+      ],
+      "native_evidence": "Iron3.15.6 LearnSpellPacket native server handler consumes exactly one eldritch_manuscript from actual chosen hand and changes previously unknown valid spell to learned.",
+      "attribution": "Authenticated packet-context native real player after commit",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_eldritch"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "exotic_bond",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TameQuestMixin.java"
+      ],
+      "native_evidence": "Vanilla TamableAnimal.tame commits old untamed and unowned to actual player owner. Exact installed native tame calls proven for Alex Caves2.0.2 Vallumraptor/Raycat and Unearthed Journey2.2.3 Leptictidium/Gnatusuchus.",
+      "attribution": "Actual new owner of same native mob",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/exotic_bond"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_era_winter_companion",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TameQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HorseTameQuestMixin.java"
+      ],
+      "native_evidence": "Blast From Past1.0.3 exact baby Speartooth vanilla tame transition or baby Frostomper AbstractHorse.tameWithName successful new actual owner.",
+      "attribution": "Actual new owner of same native baby",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_era_winter_companion"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_small_titans",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TameQuestMixin.java"
+      ],
+      "native_evidence": "Cataclysm3.31 actual ModernRemnant/NetheriteMinistrosity native interaction consumes SnifferEgg/LavaPowerCell before vanilla tame commits actual new ownership.",
+      "attribution": "Actual new real owner of same native pet",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_small_titans"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "shield_block",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShieldQuestMixin.java"
+      ],
+      "native_evidence": "Vanilla LivingEntity.hurt synchronous frame records actual ForgeHooks.onShieldBlock result. Final uncancelled positive blocked amount qualifies even when fully blocked hurt returns false.",
+      "attribution": "Actual blocking real player",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/shield_block"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "hostile_arrow_hit",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ArrowHitQuestMixin.java"
+      ],
+      "native_evidence": "Native accepted BowItem/SimplyBowItem projectile spawn stamps actual actor provenance. Same owned projectile native hurt causes accepted positive hostile health/absorption loss.",
+      "attribution": "Exact accepted launch actor equals native projectile owner, no allies or tame pets",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/hostile_arrow_hit"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "siege_hit",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BallistaLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ArrowHitQuestMixin.java"
+      ],
+      "native_evidence": "Siege Weapons0.2.5 Ballista native loadProjectile accepts and debits exactly one ammo. Native loaded-to-unloaded tick branch launches accepted siegeweapons:ballista_projectile, then same authenticated owned projectile causes actual positive hostile damage.",
+      "attribution": "Actual paid loader and same native launched projectile identity",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v2/siege_hit"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_dummy_workshop",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/DummyQuestMixin.java"
+      ],
+      "native_evidence": "Target Dummy2.0.12 artifact native onActuallyDamagedOrTrueDamageDetected commits positive actual damage statistics. A real player first damages bare dummy, then chestplate-equipped same UUID dummy. Native infinite health precludes health-delta proof.",
+      "attribution": "One persisted bare dummy UUID per real player, cleared after second exact-identity success",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_dummy_workshop"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_web_escape",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WebEscapeQuestMixin.java"
+      ],
+      "native_evidence": "Spider Overhaul0.0.6 native webbed removal only qualifies when actual WebbedBreakProgress for same player is at least16, positive remaining duration and actual effect removed.",
+      "attribution": "Actual real player completing native break mechanic",
+      "unsupported_paths": [
+        "Expiry, milk and generic upstream break_webbed advancement alone do not qualify"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_web_escape"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_ice",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HomingArrowQuestAccess.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 actual SimplyBowItem.shootAll/shootFan spawn accepted native homing projectile with homingEnabled and positive velocity from actual registered simplybows:ice_bow/ice_bow. Nested ID verified in ItemRegistry.",
+      "attribution": "Same real native owned projectile launch",
+      "unsupported_paths": [
+        "CHAOS path disabling homing is not covered by this producer"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_ice"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_bubble",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BubbleArrowQuestMixin.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 actual accepted registered BubbleBow launch while actor underwater marks same projectile. Native water-drag compensation branch actually changes positive movement and consumes proof.",
+      "attribution": "Same native owned underwater launch and later native projectile branch",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_bubble"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_vine",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/VineEffectQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/VineFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BowEffectProof.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 actual owned VineArrow trySpawnFlowerField synchronous native manager commits ACTIVE_FIELDS List.add. Cooldown early returns do not qualify.",
+      "attribution": "Exact accepted launch actor and same native effect operation",
+      "unsupported_paths": [
+        "Separate rune managers beyond this installed field owner are not claimed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_vine"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_earth",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EarthEffectQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EarthFieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BowEffectProof.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 actual owned EarthArrow trySpawnField synchronous native manager commits ACTIVE_FIELDS List.add.",
+      "attribution": "Exact accepted launch actor and same native effect operation",
+      "unsupported_paths": [
+        "Separate CHAOS field manager is not covered"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_earth"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_blossom",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BlossomEffectQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BlossomStormQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BowEffectProof.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 actual owned BlossomArrow trySpawnStorm synchronous native manager commits ACTIVE_STORMS List.add.",
+      "attribution": "Exact accepted launch actor and same native effect operation",
+      "unsupported_paths": [
+        "Separate CHAOS koi manager is not covered"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_blossom"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_echo",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EchoBowQuestMixin.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 ShoulderBowEntity.beginDrawing observes actual queued owner-shot direction before caller clears queue, with positive native draw duration and prepared direction. Native firePreparedArrow accepted spawn has same real owner and positive velocity. Automatic-target drawing alone does not qualify.",
+      "attribution": "Native owned shoulder bow actually mirrors its real owner shot",
+      "unsupported_paths": [
+        "Current native main hand must still be registered Echo Bow at actual mirrored launch"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_echo"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_cosmic",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CosmicArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CosmicOrbitOriginMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CosmicOrbitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BowEffectProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/CosmicQuestOrigin.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 owned CosmicArrow commits real ActiveOrbit creation. Quest-only UUID lives on that native object. Later native leapToTarget original CombatTargeting.applyDamage causes positive finite hostile health/absorption loss for actual target and same originating owner.",
+      "attribution": "Actual native orbit and original real accepted launch actor, no parallel orbit state",
+      "unsupported_paths": [
+        "Existing unmarked orbit refresh alone waits for expiry/new creation",
+        "Separate rune constellation managers are not covered"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_cosmic"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_bee",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BeeArrowQuestMixin.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 registered BeeBow native bee projectile applyStackingPoison original target.addEffect commits accepted positive-duration poison actually installed on a hostile. This is the native attacking bee projectile, not a fabricated vanilla Bee spawn.",
+      "attribution": "Same accepted registered BeeBow launch marker and actual real projectile owner",
+      "unsupported_paths": [
+        "Grace shields, Bounty hive-only and Chaos storm-only routes are not covered by this sting adapter"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_bee"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_research",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_research"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpelunkeryMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SpelunkeryResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CaveMapMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CaveMapResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/CaveResearchProof.java"
+      ],
+      "native_evidence": "Alex Caves2.0.2 SpelunkeryTableMenu$5 is the native generated codex output, withdrawn after native onTake. Its CaveBiome stage persists for same actor. Later actual vanilla ResultSlot.onTake accepts installed alexscaves:cave_map recipe, same center codex biome and actual map output, then exactly9 real native ingredient debits commit before criterion. Native NBT key CaveBiome, 3x3 recipe and result take paths inspected with javap.",
+      "attribution": "Same real player who withdrew native codex and actually crafted map for same biome, bounded16 persisted biome stage keys",
+      "unsupported_paths": [
+        "Automatic transfer on menu close is not counted as explicit codex output withdrawal",
+        "Nonvanilla crafting menus overriding ResultSlot.onTake are not covered"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_cave_painting",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_cave_painting"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CavePaintingQuestMixin.java"
+      ],
+      "native_evidence": "Alex Caves2.0.2 SmoothLimestoneBlock.use native charcoal branch consumes exactly1 item and actually replaces same permitted surface with native cave_paintings tagged state. Snapshot and native return poststate cover both random and mystery paintings. Native CAVE_PAINTING trigger alone is not used because native ignores block-set failure.",
+      "attribution": "Actual native real player operator and same native state/entity operation",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_water_arsenal",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_water_arsenal"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ConchAllyQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MagicConchQuestMixin.java"
+      ],
+      "native_evidence": "Alex Caves2.0.2 MagicConchItem.summonDeepOne sets summoned flag, summonerUUID and positive temporary lifetime before actual native Level.addFreshEntity. Original accepted spawn called once and same actual actor/type/level native binding verified. One stated OR alternative is fully satisfied.",
+      "attribution": "Actual native real player operator and same native state/entity operation",
+      "unsupported_paths": [
+        "This producer implements the explicit MagicConch alternative, not Ortholance or SeaStaff damage paths"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_dinosaur_fieldwork",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_dinosaur_fieldwork"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SubterranodonFlightQuestMixin.java"
+      ],
+      "native_evidence": "Alex Caves2.0.2 Subterranodon native tick HEAD/RETURN has the same living actual owner as controlling rider, native FlyingAnimal.isFlying flag and airborne state both before and after. Forty consecutive actual native tick displacements required, interrupted control or movement clears quest-only local counter. Source inspected: DinosaurEntity extends TamableAnimal, native controlling passenger returns actual player, native flying reads synchronized FLYING state.",
+      "attribution": "Actual authenticated real player and same native item/entity successful operation",
+      "unsupported_paths": [
+        "Implements explicit controlled Subterranodon sustained-flight OR alternative, not Tremorsaurus roar or Atlatitan stomp"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_bow_workbench",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_bow_workbench"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SimplyBowAnvilQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ItemCombinerQuestMixin.java"
+      ],
+      "native_evidence": "SimplyBows0.1.4 native AnvilScreenHandlerMixin computes recognized BowUpgradeComponentItem.applyTo result and getAnvilCost. Observe actual vanilla AnvilMenu.onTake cost debit and input consumption, unique SimplyBowItem string/frame exactly increases and rune unchanged. Full actual result equals native expected copy, preserving other item/tag data. Both native slot orientations accounted for.",
+      "attribution": "Actual authenticated real player and same native item/entity successful operation",
+      "unsupported_paths": [
+        "Rune replacement without string/frame improvement does not satisfy this distinct workbench objective"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_arrow_transport",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_arrow_transport"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BreedingArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UtilityArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/ArrowQuestActor.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CrossbowArrowQuestMixin.java"
+      ],
+      "native_evidence": "XtraArrows3.0.12 BreedingArrowEntity.applyBreedingEffectToSurrounding commits actual eligible adult Animal.setInLove with native loveCause same actual shooter, health unchanged. ArrowsAPI.leashTarget commits actual Mob.setLeashedTo, changed native leash holder equals same shooter and health unchanged. Original operations invoked exactly once. Native arrow paths do not call damage for these functions.",
+      "attribution": "Same actual projectile accepted by authenticated real native bow OR crossbow launch, owner identity retained through native result",
+      "unsupported_paths": [
+        "Dispenser launches have no real acting player and are not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_arrow_tools",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_arrow_tools"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UtilityArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/ArrowQuestActor.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BowLaunchQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CrossbowArrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ExtinguishingArrowQuestMixin.java"
+      ],
+      "native_evidence": "XtraArrows3.0.12 ArrowsAPI light-placement owners inspected: torch/soulTorch/redstoneTorch each3 native placement calls, lantern/soulLantern each4 (17total). Original placement once must returntrue and change declared native state with positive actual light emission. ExtinguishingArrow native removeBlock must actually remove tagged fire OR native setBlockAndUpdate must actually convert lava into declared non-lava state. No scan added, only existing native processing commit calls observed. Crossbow native shootProjectile accepted arrow gets separate authenticated launch marker, without emitting generic bow-hit action.",
+      "attribution": "Same actual projectile accepted by authenticated real native bow OR crossbow launch, owner identity retained through native result",
+      "unsupported_paths": [
+        "Dispenser launches have no real acting player and are not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_coat_repair",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_coat_repair"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierRepairQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java"
+      ],
+      "native_evidence": "Skarrier Mobs1.1.1 WorkshopOnButtonClickProcedure.execute owns repair, not DraggerSilkItem.use (which is absent). Actual native Supplier slot0 dragger_silk debit1, slot1 native low_level_gear item gets lower real damage. Full repaired native item/tag/count otherwise unchanged. Exact native bytecode performs random8..20 repair then shrink1, observed only after full native procedure return.",
+      "attribution": "Actual authenticated real native Workshop operator, same actual coated/repaired native item and native hit source identity",
+      "unsupported_paths": [
+        "Old mainhand/offhand tip is corrected to real native Workshop slots by compiler, goal and identifiers preserved"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_coat_weapon",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_coat_weapon"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierRepairQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierRepairProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierCoatingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierVenomQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SkarrierWretchedQuestMixin.java"
+      ],
+      "native_evidence": "Skarrier Mobs1.1.1 native Workshop successful VenomSack/SerratedShred/BowlderDust/WretchedFang application consumes material1 and changes same actual native item coating/finite uses. Quest-only actor binding persists on actual item. Native Venom/Serrated/Bowlder procedures each commit accepted actual positive-duration native effect on same hit target and consume exactly1 native coating charge before final return. WretchedFang live native LivingHurtEvent actual source commits its native recovery effect on real attacker and consumes1 charge. Original native operations once, real same applying actor+item; no event.setAmount-only success shortcut.",
+      "attribution": "Actual authenticated real native Workshop operator, same actual coated/repaired native item and native hit source identity",
+      "unsupported_paths": [
+        "WretchedFang damage-only adjustment without an actually installed native recovery effect is not claimed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_serious_circle",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_serious_circle"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SandCircleQuestMixin.java"
+      ],
+      "native_evidence": "Alex Mobs1.22.9 ServerEvents.onUseItemOnBlock contains exactly2 native Level.setBlockAndUpdate circle branches. Native stick interaction must replace actual sand/red_sand with exact registered sand_circle/red_sand_circle and actual resulting world state equals declared native state. Native method admission remains AlexsMobs.isAprilFools(), no config/calendar bypass. Native event cancellation after transformation intentionally suppresses vanilla followup and is not used as a failure proxy.",
+      "attribution": "Real native stick user, same exact interaction position and logical level",
+      "native_availability": "CONDITIONAL_NATIVE_APRIL_FOOLS_ADMISSION",
+      "availability_owner": "public static boolean com.github.alexthe666.alexsmobs.AlexsMobs.isAprilFools()",
+      "current_config": "Client/ManagedPack/config/alexsmobs.toml superSecretSettings=false, ordinary dates unavailable, projection must read native owner flag",
+      "unsupported_paths": [
+        "Native admission false means unavailable, never raw-click fallback or enabling configuration",
+        "Only native accepted real world transformation qualifies"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_home_album",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_home_album"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ExposureAlbumQuestMixin.java"
+      ],
+      "native_evidence": "Exposure1.9.21 AlbumSignC2SP.handle has exactly one native Inventory.setItem replacing actual unsigned AlbumItem with AlbumItem.sign result. Original operation invoked once. Require actual signed result installed in exact actor inventory slot, nonblank title, native signed author matching actor, at least one photograph frame isTakenBy actor with nonblank native identifier, and nonempty native page note. Native AlbumMenu.signAlbum is client-only and is not the producer.",
+      "attribution": "Real authenticated native sign packet sender and same unsigned-to-signed album transition",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_sack_food",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_sack_food"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SackOfSatingQuestMixin.java"
+      ],
+      "native_evidence": "AlexCaves2.0.2 SackOfSatingItem overrideOtherStackedOnMe consumes entire real food source and raises same sack native HungerValue. Mark exact supplying actor on same sack only after true native success. Later native inventoryTick FoodData.eat(1,0.05) raises same actual actor hunger and consumes exactly one native reserve. Both complete native method returns observed. Exploding or consumed sacks excluded. Marker persisted only on actual sack and removed after complete success. No broad polling, actual native inventory callback only.",
+      "attribution": "Same authenticated real supplier and later native auto-fed carrier of exact same sack",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "legitimate_dead_king_victory",
+      "advancements": [
+        "jem_advancements:quest_v2/v2_mag_dead_king"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/CanonicalBossDeathProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/DeadKingQuestRecipients.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BossDeathQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CanonicalBossVictoryQuestMixin.java"
+      ],
+      "native_evidence": "Canonical JEMWorldBossTiers.recordBossDeath must actually invoke recordVictory for this exact eligible native dead_king encounter. Guide observes both existing native call sites after they return, without repeating gameplay policy. Exact native source killer must already belong to canonical EncounterData participants. The same pending actual LivingDeathEvent/source/boss is checked only after Forge47.4.10 LivingEntity.die completes: native dead must transition false to true and the same event must remain uncanceled after all event subscribers. Command generic_kill rejected. Irons3.15.6 DeadKingBoss and AbstractSpellCastingMob do not override native die. Hosted branch observes canonical settledHostedEncounter return plus acknowledged canonicalHostedClosed exact attempt receipt, frozen exact dead_king EntityType, non-generic native death and immutable eligibleParticipants. Boss object may be absent. Exact personal pending UUIDs persist in quest-only SavedData for offline players, emit online or login, and retain pending until a later native-loaded completed personal advancement acknowledges. No forced personal save, global defeat-history query, upstream advancement or JEMServer dependency.",
+      "attribution": "Native actual eligible real killer or exact durable successful hosted encounter eligible participant UUID",
+      "unsupported_paths": [
+        "Fake, spectator or creative actors cannot receive criteria",
+        "Unloaded hosted participants wait for their own logical-server login",
+        "Pending personal notification remains until native advancement definition exists and progress has been loaded complete"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_magic_book_translation",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_book_translation"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/LogbookTradeProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MerchantQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/LogbookTradeMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/LogbookTradeResultQuestMixin.java"
+      ],
+      "native_evidence": "Irons3.15.6 installed evoker_fort/villager_spawns/villager_mage.nbt contains native translator offer consuming untranslated logbook1 plus emerald64 and returning translated logbook1. Native PriestEntity$BibleTrade returns native villager spellbook1 for translated logbook1. Actual native structure-spawned merchant required through Forge Mob.getSpawnType()==STRUCTURE, matching native SinglePoolElement finalizeEntities and StructureTemplate MobSpawnType.STRUCTURE. Same actual native MerchantResultSlot.onTake calls MerchantOffer.take in2 allowed slot orientations, invoked once per native call. Successful native debit counts, actual offer uses+1 and positive exact actual inventory/cursor output delta after full clicked return required. Exact newly increased translated output stack gets persistent original actor UUID, later consumed by exact native Priest exchange under same actor before final received real villager spellbook. Native required plain item tag semantics accept the quest-only actor tag, no offer/trade replacement.",
+      "attribution": "Same authenticated real actor and exact same native operation and resulting state",
+      "unsupported_paths": [
+        "Legacy merchants with missing native spawn type are not retrospectively trusted",
+        "Only exact native translator and Priest offers are supported, no arbitrary custom merchant or gifted translated-book shortcut"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_magic_cancel_cast",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_cancel_cast"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/CombatCastCancelProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CombatCancelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeCastCancelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/DodgeCancelQuestMixin.java"
+      ],
+      "native_evidence": "EFIS2.6 MixinSkillExecution injects native SkillContainer.requestCasting HEAD and calls Utils.serverSideCancelCast before canUse. Guide priority1100 snapshots same real actor active LONG cast before EFIS default1000, requires duration/remaining>0. Within exact same request, actual Irons3.15.6 CancelCastPacket.cancelCast native onServerCastComplete(cancelled=true) must fully reset same MagicData: not casting, empty spell ID, NONE type, zero duration and remaining. Same exact native DodgeSkill.executeOnServer must complete, native container activates and real finite stamina decreases. EpicFight20.14.17 SkillContainer.requestCasting must return true after native canUse/resource predicate and actual execution. Reject false native requests even when EFIS already canceled magic. No input, SpellOnCast or client-animation-only proof.",
+      "attribution": "Same authenticated real actor and exact same native operation and resulting state",
+      "unsupported_paths": [
+        "Implements native stamina-consuming Dodge alternative, Guard and zero-cost addon skill alternatives not inferred",
+        "Only active LONG casts before completion qualify, INSTANT and already completed channels excluded",
+        "Mixin callback ordering and native gameplay remain runtime unobserved"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_submarine_restore",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_submarine_restore"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SubmarineRestoreQuestMixin.java"
+      ],
+      "native_evidence": "AlexCaves2.0.2 SubmarineEntity.m_6096_ native server interaction copper_ingot shrink1 decreases actual getDamageLevel by1 and resets internal damageSustained. Native accepted AXE_SCRAPE decreases exact getOxidizationLevel by1, wax-only removal is not substituted. Original real actor UUID observations persist on same actual submarine Entity UUID. Native later interaction must return consumesAction and newly install same actual submarine as actor vehicle before emitting and removing quest-only markers. Actual repaired native damage level is submarine health representation, no LivingEntity health API invented. Exact item identity/tool capability captured before native consumption, including final ingot and broken axe. No scan, native interaction callback only.",
+      "attribution": "Same real authenticated repairer, scraper and later native passenger of exact same submarine UUID",
+      "unsupported_paths": [
+        "Implements explicit repair+scrape+board route, pristine native EnigmaticEngine assembly OR alternative remains separate",
+        "Native wax removal without actual oxidation decrease does not satisfy scraping"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_cave_primitive_tactics",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_cave_primitive_tactics"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/PrimordialFoodProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PrimordialMealQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PrimordialBonusQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PrimordialFoodDataQuestMixin.java"
+      ],
+      "native_evidence": "AlexCaves2.0.2 native FoodDataMixin.ac_eat admits its RAW_MEATS tag, calls actual PrimordialArmorItem.getExtraSaturationFromArmor and, when positive, owns native boosted FoodData.eat nutrition/saturation parameters. Guide scopes same real Player.eat meal and observes this actual positive native bonus getter, actual FoodData.eat parameters above native base food properties, positive committed native food/saturation state delta, then exact same meal source count debit1 after full Player.eat return. No native formula, armor piece balance or raw-food tag list copied. Native branch contains no heal call, so actual nutrition/saturation result is used rather than inventing LivingEntity healing. No equip-only or generic FinishUse success.",
+      "attribution": "Same authenticated real native operation actor and exact actor/item/entity or jukebox result lineage",
+      "unsupported_paths": [
+        "Implements explicit native Primordial armor/raw-meat OR route, not the separate PrimitiveClub/SereneSalad or SeethingStew/Rage alternatives",
+        "Fully capped no-op hunger/saturation mutation is not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_fauna_small_surprises",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_small_surprises"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeQuestRecipients.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/RainFrogMusicProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/MusicDiscActorQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/JukeboxRecordQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RainFrogMusicQuestMixin.java"
+      ],
+      "native_evidence": "AlexMobs1.22.9 EntityRainFrog native setDancing(true) actually assigns synchronized positive DANCE_TIME when native weatherCooldown admits. MessageStartDancing client packet is not success proof. Existing native server aiStep must retain positive native dance state before/after and retain its own native jukeboxPosition after native 15-block/block-state admission. That same actual loaded vanilla jukebox must be actively playing exact actual native disc installed by real native RecordItem.useOn with source debit1 and post-return actual BE/record identity. Exact disc-inserting actor UUID persists on actual jukebox. Native actual record replacement/removal invalidates source even for identical replacement kinds. Native reaction emits only once per authenticated disc installation. Personal pending criterion notifications persist in SavedData for offline original operator and deliver at logical-server login, retaining until a later native-loaded completed personal advancement acknowledges. No nearest player, packet-only success, world scan, new timer, weather modification or music injection.",
+      "attribution": "Same authenticated real native operation actor and exact actor/item/entity or jukebox result lineage",
+      "unsupported_paths": [
+        "Implements actual RainFrog musical response OR route, not separate Seal gift route",
+        "No frog response is manufactured when native weather cooldown denies dancing",
+        "Real inserted disc source is required, hopper/custom command insertion is not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_magic_shroud",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_shroud"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShroudQuestMixin.java"
+      ],
+      "native_evidence": "Irons3.15.6 AbyssalShroudSpell.onCast owns one native LivingEntity.addEffect of registered ABYSSAL_SHROUD. Original operation once. Same actual real caster/recipient and actual MagicData identity required. Native SyncedSpellData.isSpellLearned(this exact spell) must already be true before effect mutation. Native addEffect must return true and actual same effect has positive duration with real duration/amplifier increase. No learned-book inventory check or cast-only success.",
+      "attribution": "Exact actual native spell caster and same committed native effect/entity/result",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_magic_summon_root",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_summon_root"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/SummonExpiryQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/VexSummonQuestMixin.java"
+      ],
+      "native_evidence": "Irons3.15.6 SummonVexSpell.onCast native addFreshEntity must return true for actual same SummonedVex installed in ServerLevel. Same native cast then calls SummonManager.initSummon(owner,entity,duration,castData) once. After native complete mutation require same actual real caster owner, actual SummonManager.getOwner and getSummons membership, exact native castData UUID membership and native getExpirationTick(UUID) strictly in future through narrow Invoker. No mirrored expiration timer or synthetic field access. Accepted-spawn identity set is transient within same native cast and removed at final return.",
+      "attribution": "Exact actual native spell caster and same committed native effect/entity/result",
+      "unsupported_paths": [
+        "Implements explicit owned Vex summon OR alternative, not separate Root restraint alternative"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_magic_healing_blood",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_healing_blood"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/HealingCircleProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HealingCircleOriginQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/HealingCircleResultQuestMixin.java"
+      ],
+      "native_evidence": "Irons3.15.6 HealingCircleSpell.onCast accepted native Level.addFreshEntity installs exact HealingAoe with same real caster as native projectile owner and same actual MagicData. Quest-only original caster UUID persists on exact native entity. Later HealingAoe.applyEffect native shouldHealEntity admission and native SpellHealEvent remain untouched. Observe actual native heal invocation exactly once, require finite positive requested amount and actual recipient health increase, same actual authenticated original circle owner and actual installed same entity. No full-health/cast-only or arbitrary command-created healing entity credit.",
+      "attribution": "Exact actual native spell caster and same committed native effect/entity/result",
+      "unsupported_paths": [
+        "Implements explicit native Healing Circle restoration OR alternative, not separate Blood Slash lifesteal alternative"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 59
+}

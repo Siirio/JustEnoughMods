@@ -1,6 +1,8 @@
 package com.justenoughmods.achievementguide.mixin;
 
 import com.justenoughmods.achievementguide.compat.ftb.FtbQuestProjection;
+import com.justenoughmods.achievementguide.compat.ftb.BookMigration;
+import dev.ftb.mods.ftbquests.quest.ServerQuestFile;
 import java.nio.file.Path;
 import net.minecraft.server.MinecraftServer;
 import org.objectweb.asm.Opcodes;
@@ -17,10 +19,20 @@ public abstract class FtbQuestFileMixin {
     @Shadow @Final public MinecraftServer server;
     @Shadow private Path folder;
 
+    @Inject(method="load", at=@At("HEAD"), remap=false)
+    private void jem$flushBeforeNativeReload(CallbackInfo callback) {
+        if (folder != null) ((ServerQuestFile)(Object)this).saveNow();
+    }
+
     @Inject(method="load", at=@At(value="FIELD",
             target="Ldev/ftb/mods/ftbquests/quest/ServerQuestFile;folder:Ljava/nio/file/Path;",
             opcode=Opcodes.PUTFIELD, ordinal=0, shift=At.Shift.AFTER), remap=false)
     private void jem$authoredProjection(CallbackInfo callback) {
         folder = FtbQuestProjection.prepare(server, folder);
+    }
+
+    @Inject(method="load", at=@At("RETURN"), remap=false)
+    private void jem$migrateNativeHistory(CallbackInfo callback) {
+        BookMigration.loaded((ServerQuestFile)(Object)this);
     }
 }

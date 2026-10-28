@@ -18,6 +18,12 @@ public final class PendingRewardContainer {
 
     private PendingRewardContainer() {}
 
+    /** Read-back-verified issuance receipt, including bundles whose take-only slots are already empty. */
+    public static boolean hasIssued(MinecraftServer server, UUID player, String sourceId) {
+        if (sourceId == null || sourceId.isBlank()) throw new IllegalArgumentException("Missing reward source");
+        return RewardsData.get(server).issuedDurably(player, sourceId);
+    }
+
     public static void enqueue(MinecraftServer server, UUID player, String sourceId, String titleKey, List<ItemStack> items) {
         enqueue(server, player, sourceId, titleKey, items, null);
     }

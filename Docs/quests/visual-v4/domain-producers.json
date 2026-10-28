@@ -1,0 +1,754 @@
+{
+  "schema": 1,
+  "scope": "Native domain and utility source evidence, not a runtime acceptance or activation receipt",
+  "runtime_observed": false,
+  "producers": [
+    {
+      "action": "food/food_blessing_applied",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookFoodActions.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodConsumptionEvent.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodState.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "food/variety_bonus",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookFoodActions.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodConsumptionEvent.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodState.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_meal_choice",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookFoodActions.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodConsumptionEvent.java",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/FoodState.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "shelter_bound",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookHomeActions.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/CompanionHomeEvent.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_pet_moving_day",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookHomeActions.java",
+        "Mods/MobHome/src/main/java/com/siirio/mobhome/feature/shelter/CompanionHomeEvent.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_expand",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_supply",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_kind_gesture",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/ResidentPatService.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_comfort",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/CityComfortService.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_roof_and_work",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/happiness/TownMetricsService.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_first_income",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/payroll/DailyTaxService.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_supper",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookSettlementActions.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementOperationEvent.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/runtime/ResidentFoodService.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Actual owner must be online when native observation is published"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "spell_curio_equipped",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookCurioActions.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_food_ghast_friend",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookCurioActions.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "play_note",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ImmersiveMelodiesMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "wireless_storage",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/WirelessQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AdvancedWirelessQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageNetworkQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WirelessTerminalQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "backpack_pickup",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackPickupQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "backpack_craft",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCraftMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCraftQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCraftRecipeQuestAccess.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "storage_craft",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StorageCraftProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageCraftDebitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageCraftMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageCraftQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageCraftRecipeQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageNetworkQuestAccess.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_food_medicine",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackFeedingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_refill",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackRefillQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Placed-backpack nearby refill and destination handlers over128 slots are not covered"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_tools",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackToolQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Native successful block-tool route, entity-attack route not claimed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_town_coin_deposit",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CoinDepositQuestMixin.java",
+        "Mods/JEMEconomy/src/main/java/com/siirio/jemeconomy/physical/PhysicalCoinService.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_desert_temple",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureGenerationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureTemplateQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Existing containers without actual generation-origin stamp receive no backfill",
+        "Only native WorldGenRegion generation, actual source StructureStart and same unmoved container first deferred-loot menu commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_fortress",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureGenerationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureTemplateQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Existing containers without actual generation-origin stamp receive no backfill",
+        "Only native WorldGenRegion generation, actual source StructureStart and same unmoved container first deferred-loot menu commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_mineshaft",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureGenerationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureTemplateQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Existing containers without actual generation-origin stamp receive no backfill",
+        "Only native WorldGenRegion generation, actual source StructureStart and same unmoved container first deferred-loot menu commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_monument",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureGenerationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureTemplateQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Existing containers without actual generation-origin stamp receive no backfill",
+        "Only native WorldGenRegion generation, actual source StructureStart and same unmoved container first deferred-loot menu commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_ocean_ruins",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureGenerationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureTemplateQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Existing containers without actual generation-origin stamp receive no backfill",
+        "Only native WorldGenRegion generation, actual source StructureStart and same unmoved container first deferred-loot menu commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_ruins",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootOrigin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StructureLootProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureGenerationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureLootQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StructureTemplateQuestMixin.java"
+      ],
+      "native_evidence": "Read-only native post-commit observer at the listed canonical source, actual authenticated actor/result and native source state. Reviewed source semantics, runtime unobserved.",
+      "unsupported_paths": [
+        "Existing containers without actual generation-origin stamp receive no backfill",
+        "Only native WorldGenRegion generation, actual source StructureStart and same unmoved container first deferred-loot menu commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_level_signal",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookDomainActions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookTerminalActions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeQuestRecipients.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeTerminalExtractionEvent.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeTerminalNetworkOwner.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsCableTransferProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsStockSignalProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsCableTerminalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsLevelEmitterQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsLevelEmitterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsMasterNetworkQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsNetworkOwnerQuestMixin.java"
+      ],
+      "native_evidence": "Actual native manual terminal extraction publishes exact actor and matching cached network stock before/after only after real native debit, returned quantity and personal receipt agree. Actual native master identity is attached once to its own native MultiItemHandler, no graph scan. Bounded persisted transfer receipt matches the already observed emitter configuration and master. Its real native matching getCount calls are observed once, native setBlock runs once, final real POWERED state must match the same item count after the actor transfer and both sides of native threshold crossing. Each emitter may consider a transfer only at its first subsequent native sample, persisted seen identities prevent later replay. Emitter metadata explicitly survives its native save override, offline observed-action delivery uses shared NativeQuestRecipients.",
+      "unsupported_paths": [
+        "Actual full manual Tom terminal withdrawal route only, native insertion/hopper and direct standalone inventory routes are not claimed",
+        "Emitter must have already natively sampled the same configuration/master before transfer",
+        "At most4096 cached native network slots,64 pending native transfers and64 first-sample emitter identities per transfer",
+        "Native counter overflow, mismatching intervening stock/configuration/master state or later reuse of an observed transfer fails closed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_linked_wall",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookControllerActions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookDomainActions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeTerminalExtractionEvent.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StorageControllerProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsCableTransferProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CachedInventoryQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageControllerMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsCableTerminalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsTerminalPlayerQuestAccess.java"
+      ],
+      "native_evidence": "Actual authenticated native StorageContainerMenu insertion conserves player debit and real source storage increase. Same native Controller already has at least two accessible loaded independent ordinary storage members. Bounded quest-only receipt on controller persists exact actor, source storage identity/position and item. Later real native terminal full extraction through that same controller conserves actual network debit, native returned quantity and personal inventory/cursor gain. Current original source identity and both controller memberships must still agree. Native sided cached handler is read through its installed Supplier()->this delegate, no gameplay action replay.",
+      "unsupported_paths": [
+        "First insertion through native individual StorageContainerMenu, later full native Tom terminal extraction through same native Controller only",
+        "Native linked-storage shared-host endpoints and unloaded source members are not claimed",
+        "At most256 native cached member positions,4096 local/terminal inventory slots and64 pending personal controller receipts",
+        "Only currently loaded native membership is read, no world graph scan or chunk load"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_cables",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeCableStorage.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/TomsCableTransferProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageNetworkQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsCableProxyQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsCableTerminalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TomsTerminalPlayerQuestAccess.java"
+      ],
+      "native_evidence": "Exact Tom1.7.1 StorageTerminalMenu native onInteract, actual authenticated current player and valid terminal. Its sole native itemHandler must be the actual AbstractInventoryCableConnectorBlockEntity.InvHandler cable-to-master proxy. Native pullStack returns real items, final actual same cached network stock debit equals the full native pulled quantity and the same actual player inventory/cursor gain. Plain individual inventory or direct-master capability is not that proxy and receives no credit.",
+      "unsupported_paths": [
+        "Exact unfiltered native cable-to-master proxy as terminal connection, max4096 native cached inventory slots",
+        "Manual native terminal onInteract extraction only, partial shift pulls that return or drop a remainder are conservatively uncredited",
+        "No claim that a player cannot physically walk to the remote storage, only that this actual terminal transfer used its configured native cable path"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_fixed_upgrades",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StorageTierQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageTierQuestMixin.java"
+      ],
+      "native_evidence": "Exact installed public StorageTierUpgradeItem.tryUpgradeStorage overload final SUCCESS for actual real actor-held upgrade item1 debit. Native unlinked single StorageBlockEntity changes its real block state and increases native inventory, upgrade-slot or stack capacity. Every physical stored stack and existing upgrade identity/count is preserved, with only empty new slots. Adapter neither creates a block nor copies/rebuilds native storage.",
+      "unsupported_paths": [
+        "Native already sophisticated unlinked single-block storage tier conversion only",
+        "Vanilla-to-storage, linked/double-chest, entity-held and crafting-grid conversion routes are not claimed",
+        "At most4096 physical inventory slots and128 native upgrade slots are observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_compression",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/StorageCompressionProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompressionDefinitionQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompressionPartQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageCompressionQuestMixin.java"
+      ],
+      "native_evidence": "Actual native manual StorageContainerMenu transfer for a valid same-level LimitedBarrel with enabled native Compression Upgrade. Exact same native CompressionInventoryPart and its accessible compressible slot definitions provide native item identities and prevSlotMultiplier factors. Genuine physical internal stack material change equals opposite actual same-actor inventory/cursor change in those native units. Chain identity and factors must remain unchanged before/after, with at least two valid chain slots. No recipe recreation, standalone ordinary barrel or upgrade possession credit.",
+      "unsupported_paths": [
+        "Manual native menu insert/extract with an already initialized native compression chain that remains present after the operation",
+        "At most16 native LimitedBarrel slots, no automation, world-face click or initially empty/finally cleared chain route claimed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_processing",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BackpackCookingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCookingInventoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCookingMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCookingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCookingTickQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CookingQuestAccess.java"
+      ],
+      "native_evidence": "One native CookingLogic tick in an enabled actual carried Backpack wrapper, real same actor, native burning state, exact recipe result increment and actual one input debit. Receipt persists on that native upgrade and every native output mutation invalidates it before the original save. Later actual native BackpackContainer collection requires same original actor, native generation, same actual output debit and matching actual player/cursor gain. No furnace or inserted finished output credit.",
+      "unsupported_paths": [
+        "Manual native output collection from carried-owner completed recipes only, automatic output transfer routes are not claimed",
+        "At most128 native upgrade wrappers are observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "storage_compact_commit",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BackpackCompactingProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCompactingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompactingQuestAccess.java"
+      ],
+      "native_evidence": "Enabled native CompactingUpgradeWrapper carried-owner tick wraps its real compactSlotAndQueued call exactly once with try/finally scope. Exact native non-simulated recipe extraction returns full requested input, then same handler actual native compressed-result insertion increases that exact result count by its accepted quantity. No preview, void-only insertion or nearby-player ownership.",
+      "unsupported_paths": [
+        "Actual carried-owner queued native tick route only, immediate on-insert paths outside that tick are not claimed",
+        "Native inventories over4096 slots are not observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "storage_stack_capacity",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BackpackCapacityProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCapacityQuestMixin.java"
+      ],
+      "native_evidence": "Native manual installation accepts ordinary starter/tier1..4 StackUpgrade, player upgrade debit1, actual increased native capacity and every stored stack preserved. Quest-only native upgrade receipt binds installer, actual Backpack contents UUID, an existing 64-stack item slot and its exact former native stack limit. Later same actor native manual insertion conserves actual player debit and raises that same stack beyond the former limit. Native AND criteria preserve compacting and capacity as distinct required successes.",
+      "unsupported_paths": [
+        "Native manual Backpack menu installation and later insertion only",
+        "A nonempty item with native maximum stack size64 must be present when upgrading to preserve the exact native former slot limit",
+        "Omega and infinite upgrades are not required or credited",
+        "At most4096 inventory slots and128 upgrade wrappers are observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_mob_capture",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/compat/ftb/BookBackpackActions.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BackpackCaptureProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackCaptureQuestMixin.java"
+      ],
+      "native_evidence": "Native passive capture stores the exact record and discards its original entity before stage recording. The same player later releases the exact native record fingerprint, one actual native linked-wrapper resolution, accepted native collision-safe spawn and native record removal. No second mob inventory or extra resolution.",
+      "unsupported_paths": [
+        "At most64 pending native capture fingerprints per player, no retroactive capture proof"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "storage_hopper",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageHopperQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Exact native capability moveItems path, actual source slot debit and same-item positive destination delta. Actor has the exact current native StorageContainerMenu, wrapper, block entity, dimension and position at that tick. No nearby or placer ownership.",
+      "unsupported_paths": [
+        "Legacy WorldlyContainer routes and destination handlers over4096 slots are not covered"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_portable_music",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/JukeboxQuestReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageJukeboxMenuQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/StorageJukeboxQuestMixin.java"
+      ],
+      "native_evidence": "Exact active native upgrade menu and actual player play operation, actual native DiscHandler.playDisc callback returns, then native not-playing to playing transition with same valid inserted disc. A message or flag alone is insufficient.",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_xp_power",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/FluidTransferObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackXpQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Exact native XP pump give/fill handler, nonzero actual native XPHelper total change equals opposite native converted XP-tagged tank volume change. Native conversion retained, no display-level shortcut or mending credit.",
+      "unsupported_paths": [
+        "Capabilities over128 tanks are not observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_fluids",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/FluidTransferObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackFluidQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Actual native held-container pump fill/drain commit, strict opposite same-fluid plus tag volume changes in actual Backpack tank and external capability, actual resulting container remains in native operated hand.",
+      "unsupported_paths": [
+        "Capabilities over128 tanks are not observed",
+        "Native held-container route only, world-fluid source route not claimed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_store_nested",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/BackpackNestingObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackNestingQuestMixin.java"
+      ],
+      "native_evidence": "Actual enabled Inception validation and manual current native menu insertion, changed nested slot and actual player input debit conserved, native actor-aware isItemValid applies disallowed, inception, no-inner-inception and linked recursion rules.",
+      "unsupported_paths": [
+        "Native inventories over4096 slots are not observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "storage_deposit",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/ItemTransferObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackTransferQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Exact native Deposit onHandlerInteract original transfer, positive same-item plus NBT debit from actual backpack exactly equals committed external capability credit, no void-only acknowledgement. Native AND criteria preserve same-actor Deposit plus Restock goal.",
+      "unsupported_paths": [
+        "Native inventories over4096 slots are not observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "storage_restock",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/ItemTransferObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/BackpackTransferQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/UpgradeWrapperQuestAccess.java"
+      ],
+      "native_evidence": "Exact native Restock onHandlerInteract original transfer, positive same-item plus NBT debit from external capability exactly equals actual backpack credit. Refill is separate and cannot satisfy this criterion.",
+      "unsupported_paths": [
+        "Native inventories over4096 slots are not observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 45
+}

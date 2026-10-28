@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "action": "v3_qol_resource_rush",
+  "producer_code_reviewed": false,
+  "runtime_observed": false,
+  "required_native_contract": "Existing Resource Rush generated-block ownership and successful allowed break commit, real authenticated actor, ACTIVE same dimension and instance",
+  "observed_native_owner": "Current EventRegions.reserve reserves a natural world region. EventState placements and ResourcePlacements exclude player/machine placements, they are not generated-resource ownership. RushLoot duplicates qualifying natural block drops and records visited positions/participants. No resource-block creation/ownership owner exists in current source",
+  "evidence_sources": [
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventRegions.java",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/RushLoot.java",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/ResourcePlacements.java",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/EventHooks.java",
+    "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/EventState.java"
+  ],
+  "documentation_discrepancy": "Docs/events/RESOURCE_RUSH.md says resources/cleanup belong to instance, but current actual owner has natural-world reservation and bonus drops, not generated-block resources",
+  "decision": "Keep exact card, text, reward, route and completed/action unchanged and unimplemented. No resource generation system, owner map, participation tally or native mechanic added, no substitution with ordinary nearby ore or bonus-item collection",
+  "resolution": "Direct user approved removal of affected original cards, see native-user-amendment.json"
+}

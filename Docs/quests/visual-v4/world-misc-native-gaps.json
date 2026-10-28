@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "runtime_observed": false,
+  "gaps": [
+    {
+      "goal": "v3_era_ice_echoes",
+      "blocking_card": true,
+      "native_sources": [
+        "EchoCompassItem.inventoryTick",
+        "StashItem.use"
+      ],
+      "native_contradiction": "Installed EchoCompass target discovery runs only in the client-side branch. Holding compass at Echo pickup cannot prove the named actual native compass discovery on the server. Stash native loot exists but whole compound contract is not server-observable with existing owner",
+      "decision": "Preserve exact original card and criteria unimplemented/unreviewed for combined decision, do not invent a compass server scanning mechanic or use raw item ownership"
+    },
+    {
+      "goal": "v3_era_storm_chain",
+      "blocking_card": true,
+      "native_sources": [
+        "TempestTridentAbility.modifyOutgoingDamage",
+        "AquamiraeEffects"
+      ],
+      "native_contradiction": "Native language describes Superconductor chain/lightning but installed TempestTridentAbility only multiplies outgoing damage when on ground, and installed effect registry has no Superconductor. Current compat supplies no native chain owner",
+      "decision": "Preserve exact original card and criteria unimplemented/unreviewed for combined decision. No new effect, recipe, chain damage or generic hit substitute"
+    }
+  ],
+  "resolution": "Direct user approved removal of affected original cards, see native-user-amendment.json"
+}

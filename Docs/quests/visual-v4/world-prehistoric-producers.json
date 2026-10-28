@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "status": "SOURCE_IMPLEMENTED_FROZEN_PENDING_PARENT_OVERALL_REVIEW",
+  "source_of_contract": "build/questbook-v4-world-misc-cards.json selected9 plus explicit user-approved native content decisions",
+  "installed_artifacts": [
+    {
+      "filename": "blastfromthepast-1.0.3+1.20.1.jar",
+      "path": "Client/ManagedPack/mods/blastfromthepast-1.0.3+1.20.1.jar",
+      "sha256": "b980f81f1beb74aa3f997783fbfbafa37060f755ddef9f17314453ad00316f7c",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "unearthed_journey-2.2.3.jar",
+      "path": "Client/ManagedPack/mods/unearthed_journey-2.2.3.jar",
+      "sha256": "e7612a0b1c19e6108da3aae5af81aafea365fa8cd9a2dd6787228ed3f54322f6",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "geckolib-forge-1.20.1-4.8.4.jar",
+      "path": "Client/ManagedPack/mods/geckolib-forge-1.20.1-4.8.4.jar",
+      "sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747",
+      "configuration": "compileOnly fg.deobf"
+    }
+  ],
+  "standalone_logical_server": true,
+  "source_flags": {
+    "manual_family_source_pass": true,
+    "independent_review_run": false,
+    "automated_verification_run": false,
+    "build_run": false,
+    "runtime_application_observed": false
+  },
+  "runtime_observed": false,
+  "producers": [
+    {
+      "card_id": "v3_era_fuel_for_time",
+      "advancement": "jem_advancements:quest_v3/v3_era_fuel_for_time",
+      "original_action": "v3_era_fuel_for_time",
+      "emitted_actions": [
+        "v3_era_fuel_for_time",
+        "v3_era_fuel_for_time_powder",
+        "v3_era_fuel_for_time_seed"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestAsync.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestDrops.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestFurnace.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestOrigins.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestPlacement.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestPowderMenu.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestBreakMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestChunkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestFurnaceMenuAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestFurnaceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestHarvestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestPeatDryMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestPickupMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestPowderMenuMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestSeedMixin.java"
+      ],
+      "original_contract": "Actor-placed peat pie completes native drying and actor collects that dried item; actor retrieves Bituminous Powder output from native smelting recipe; native Platypodium seed pod successfully planted/growth initiated by actor. Do not replace processing with unrelated inventory.",
+      "native_success_observation": "Actual paid peat placement -> native delayed block conversion -> native harvest accepted item -> original planter whole pickup, AND current native Bituminous smelt/blast recipe consumes input and creates actual output later withdrawn, AND paid native seed-pod job performs accepted actual template block growth. Native deadlines/random/recipes retained",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_era_forest_friends",
+      "advancement": "jem_advancements:quest_v3/v3_era_forest_friends",
+      "original_action": "v3_era_forest_friends",
+      "emitted_actions": [
+        "v3_era_forest_friends",
+        "v3_era_forest_friends_glaceros"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestBurrelMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestGlacerosFeedMixin.java"
+      ],
+      "original_contract": "Native accepted feeding branches commit Pinecone consumption for Burrel and variant-matching Larkspur consumption for Glaceros by real actor. No unaccepted food click or assumed taming.",
+      "native_success_observation": "Actual native Pinecone feed debit on live Burrel AND native Animal accepted feed/debit of current Glaceros variant.getDelphinium item. No taming assertion",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_era_cool_heads",
+      "advancement": "jem_advancements:quest_v3/v3_era_cool_heads",
+      "original_action": "v3_era_cool_heads",
+      "emitted_actions": [
+        "v3_era_cool_heads"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestPsychoBearMixin.java"
+      ],
+      "original_contract": "Native Psycho Bear ice-cream accepted interaction commits actual pacified state/target clearing with normal item consumption for actor; use native advancement if equivalent. Raw rightclick insufficient.",
+      "native_success_observation": "Actual paid native Psycho Berry Ice Cream mouth receipt, invalidated on mouth replacement, followed by native chewing transition to pacified and cleared target for exact native lastFedPlayer. No stale food/ground pickup substitution",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_era_soft_landing",
+      "advancement": "jem_advancements:quest_v3/v3_era_soft_landing",
+      "original_action": "v3_era_soft_landing",
+      "emitted_actions": [
+        "v3_era_soft_landing",
+        "v3_era_soft_landing_fall"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestDrops.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestSnowdoMixin.java"
+      ],
+      "original_contract": "User-approved correction: native living Snowdo shear commits actual FEATHER output for actor and native held-Snowdo fall branch actually reduces downward motion. No distance quota or death condition",
+      "native_success_observation": "Approved native correction: live Snowdo actual shear state transition with accepted vanilla FEATHER output AND actual held Snowdo native downward-velocity reduction during real falling. No fall distance/death requirement",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_era_little_excavator",
+      "advancement": "jem_advancements:quest_v3/v3_era_little_excavator",
+      "original_action": "v3_era_little_excavator",
+      "emitted_actions": [
+        "v3_era_little_excavator"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestAsync.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestDrops.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestGnatuMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestLeptiMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestPickupMixin.java"
+      ],
+      "original_contract": "Actor-owned native Leptictidium/Gnatusuchus dig ability produces an actual unearthed item and real owner collects it. Preserve native cooldown and owner validation; no arbitrary repeated-click counter.",
+      "native_success_observation": "Native owner-valid/cooldown-accepted dig schedules its original work once, actual native queued item accepted with exact source/owner lineage, current real native owner collects the whole physical output. Partial pickups clear receipt",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_era_turtle_cargo",
+      "advancement": "jem_advancements:quest_v3/v3_era_turtle_cargo",
+      "original_action": "v3_era_turtle_cargo",
+      "emitted_actions": [
+        "v3_era_turtle_cargo"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestTurtle.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestSatchelAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestTurtleEquipMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestTurtleMenuMixin.java"
+      ],
+      "original_contract": "Carbonemys canonical ownership equals actor, native satchel equipment occupied, and authorized storage menu commits >=1 item transfer from creature storage to actor. No arbitrary container/ownership proof.",
+      "native_success_observation": "Canonical owned live Carbonemys has actual paid native LARGE_SATCHEL_EFFECT equipment state, exact entity-bound native 36-slot capability storage, and conserved positive actual native storage-to-actor transfer. Existing equipment/inventory or GUI open alone cannot count",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_era_quiet_dart",
+      "advancement": "jem_advancements:quest_v3/v3_era_quiet_dart",
+      "original_action": "v3_era_quiet_dart",
+      "emitted_actions": [
+        "v3_era_quiet_dart"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/NativeHarvestWitness.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestDart.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/prehistoric/WorldPrehistoricQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativePlayerHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestBlowgunMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestDartHitMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldPrehistoricQuestDartPoisonMixin.java"
+      ],
+      "original_contract": "Actor-shot native bamboo blowgun tipped dart hits real hostile nonplayer target, causes positive damage and applies its native poison effect. Proven projectile owner and selected ammunition required.",
+      "native_success_observation": "Actual selected offhand tipped ammunition debit from native Bamboo Blowgun, accepted owner-bound projectile identity, real hostile nonplayer native impact with positive health/absorption loss and true native poison application. Allied/tamed targets and rejected hurt/effect cannot count",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "producer_code_reviewed": true,
+      "overall_review_status": "PENDING_PARENT_BATCH",
+      "runtime_observed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "approved_content_decisions": [
+    {
+      "card_id": "v3_era_wall_slide",
+      "disposition": "USER_APPROVED_REMOVE_PARENT_BOOK_OWNER",
+      "reason": "Native PlayerMixin.tick wall-grab movement exists only on client. Native adamantium_claws uses inventory_changed. BearGloveWallAnimPayload only updates client animation and server sound, no authoritative server wall motion",
+      "producer_code_reviewed": false,
+      "runtime_observed": false
+    },
+    {
+      "card_id": "v3_era_cold_concert",
+      "disposition": "USER_APPROVED_REMOVE_PARENT_BOOK_OWNER",
+      "reason": "Native species party setters are called by vanilla client LevelRenderer.notifyNearbyEntities. No native/current JEM server dance caller. Native Snowdo also never sets party true",
+      "producer_code_reviewed": false,
+      "runtime_observed": false
+    },
+    {
+      "card_id": "v3_era_soft_landing",
+      "disposition": "USER_APPROVED_NATIVE_CORRECTION_IMPLEMENTED",
+      "reason": "Installed shear outputs vanilla FEATHER, native SHAGGY_PELT belongs to death loot. User approved actual living FEATHER shear plus held native fall reduction, no death replacement",
+      "producer_code_reviewed": false,
+      "runtime_observed": false
+    }
+  ],
+  "whole_card_native_gaps_pending": [],
+  "blueprint_changes": [
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_fuel_for_time.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_forest_friends.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_era_soft_landing.json"
+  ],
+  "evidence_paths": [
+    "build/world-misc-native/research.json",
+    "build/world-misc-native/atlas-before.json",
+    "build/world-misc-native/blastfromthepast/source",
+    "build/world-misc-native/unearthed_journey/source",
+    "build/world-prehistoric-native/evidence.json",
+    "build/world-prehistoric-native/source"
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 7
+}

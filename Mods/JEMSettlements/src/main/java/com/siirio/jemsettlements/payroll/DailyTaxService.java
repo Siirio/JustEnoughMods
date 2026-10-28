@@ -174,6 +174,10 @@ public final class DailyTaxService {
             state.putLong("LastPaidTaxDay", intent.getLong("Day")); pending.remove(i);
             state.put("Pending", pending); publishMetrics(town, state); data.changed();
             TaxDurability.save(server, data, "jem_settlements");
+            if (result.status() == TransferResult.Status.COMMITTED && intent.getBoolean("Coins") && residents > 0) {
+                com.siirio.jemsettlements.api.SettlementOperationEvent.publishOwner(server, town,
+                        com.siirio.jemsettlements.api.SettlementOperationEvent.Kind.HAPPINESS_INCOME_COMMITTED);
+            }
         }
     }
 

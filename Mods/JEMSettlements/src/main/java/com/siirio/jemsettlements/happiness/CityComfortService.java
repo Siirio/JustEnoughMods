@@ -48,6 +48,7 @@ public final class CityComfortService {
                 var level = server.getLevel(ResourceKey.create(Registries.DIMENSION, town.dimension()));
                 if (level != null) {
                     publishMetrics(town);
+                    notifyComfort(server, data, town);
                     var prior = town.comfortChunks().getCompound("OccupiedStreets");
                     long time = prior.getLong("Time"), age = level.getGameTime() - time;
                     if (QUEUE.size() < 4 && !QUEUED.contains(town.id())
@@ -82,6 +83,7 @@ public final class CityComfortService {
                 job.town.comfortChunks().put("OccupiedStreets", prior);
             }
             publishMetrics(job.town); data.changed();
+            notifyComfort(server, data, job.town);
         }
     }
 
@@ -96,6 +98,16 @@ public final class CityComfortService {
         metrics.put("ComfortCategories", categories); metrics.putDouble("ComfortExact", comfort);
         metrics.putBoolean("ComfortConfirmed", evidence.getBoolean("Confirmed"));
         metrics.putInt("Comfort", (int) Math.round(comfort)); town.metrics(metrics);
+    }
+
+    private static void notifyComfort(MinecraftServer server, SettlementSavedData data, TownRecord town) {
+        var metrics = town.metrics();
+        if (!metrics.getBoolean("ComfortConfirmed") || metrics.getDouble("ComfortExact") < 50) return;
+        var level = server.getLevel(ResourceKey.create(Registries.DIMENSION, town.dimension()));
+        if (level == null || data.residents(town.id()).stream().noneMatch(resident -> resident.living()
+                && level.getEntity(resident.villagerId()) instanceof net.minecraft.world.entity.LivingEntity living && living.isAlive())) return;
+        com.siirio.jemsettlements.api.SettlementOperationEvent.publishOwner(server, town,
+                com.siirio.jemsettlements.api.SettlementOperationEvent.Kind.COMFORT_CONFIRMED);
     }
 
     /** Registry-group facts remain explicitly aggregate; coverage is not a per-block reward. */

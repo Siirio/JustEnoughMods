@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_farm_signatures"
+      }
+    },
+    "native_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_farm_signatures_egg"
+      }
+    },
+    "native_2": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_farm_signatures_cap"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_1"
+    ],
+    [
+      "native_2"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

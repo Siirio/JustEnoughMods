@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "compact": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "storage_compact_commit"
+      }
+    },
+    "capacity": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "storage_stack_capacity"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "compact"
+    ],
+    [
+      "capacity"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

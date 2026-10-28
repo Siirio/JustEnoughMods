@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_bow_rune"
+      }
+    },
+    "etched": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_bow_rune_etched"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "etched"
+    ],
+    [
+      "completed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

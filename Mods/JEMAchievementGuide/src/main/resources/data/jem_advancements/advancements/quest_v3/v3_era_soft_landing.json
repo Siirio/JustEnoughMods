@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_era_soft_landing"
+      }
+    },
+    "native_held_snowdo_fall": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_era_soft_landing_fall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_held_snowdo_fall"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

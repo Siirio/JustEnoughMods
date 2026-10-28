@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_magic_arcane_resources"
+      }
+    },
+    "mined": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_magic_arcane_resources_mined"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "mined"
+    ],
+    [
+      "completed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

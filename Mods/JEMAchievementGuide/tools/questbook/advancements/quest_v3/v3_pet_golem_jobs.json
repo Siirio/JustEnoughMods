@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_golem_jobs"
+      }
+    },
+    "native_hay_protection": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v4_pet_hay_protection"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_hay_protection"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

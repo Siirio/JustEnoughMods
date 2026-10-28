@@ -14,6 +14,10 @@ public final class DrillAdvancements {
             case WORK -> award(event, "drill_work");
             case REPLACED -> award(event, "drill_replaced");
             case SERVICED -> {
+                if (event.getServicedCount() > 0) {
+                    com.justenoughmods.achievementguide.advancement.QuestActionTrigger.INSTANCE.emit(
+                            event.getPlayer(), "create_drill_service");
+                }
                 award(event, "drill_service");
                 if (event.isMovingContraption() && event.getServicedCount() > 1) award(event, "batch_service");
                 if (event.isMovingContraption() && event.isFinalService()) award(event, "drill_last_service");

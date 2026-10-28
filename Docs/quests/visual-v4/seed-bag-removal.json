@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-27",
+  "classification": "Explicit user product amendment after source-backed Seed Bag absence, followed by explicit progression-splice correction",
+  "user_request": "Delete Seed Bag quest and redirect its chain to the next node, make the next node first if it was first",
+  "removed_card": {
+    "id": "v3_food_seed_bag",
+    "ftb_id": "3936B980FB9DC644",
+    "position": [
+      -19.7,
+      -9.5
+    ],
+    "after": [
+      "v2_food_seedtime"
+    ],
+    "reward": {
+      "tier": "field",
+      "items": [
+        {
+          "id": "farm_and_charm:tomato_seeds",
+          "count": 8,
+          "name": "Tomato Seeds"
+        },
+        {
+          "id": "farm_and_charm:oat_seeds",
+          "count": 8,
+          "name": "Oat Seeds"
+        }
+      ],
+      "choice": [],
+      "xp": 56,
+      "claim": "once",
+      "reason": "Tomato and oat seeds supply another planting batch for the bag you have learned to use.",
+      "choice_mode": null
+    },
+    "original_card_sha256": "05e02e3275bf11b1aa65d801214730bfe63aa3eaf6ec99e56c1f27b42ce17d83"
+  },
+  "immutable_package_changed": false,
+  "frozen_legacy_claims_and_migration_history_changed": false,
+  "native_item_or_gameplay_changes": false,
+  "before": {
+    "cards": 617,
+    "groups": 76,
+    "cosmetic_edges": 515,
+    "farm_food_cards": 85,
+    "advancement_blueprints": 425
+  },
+  "after": {
+    "cards": 616,
+    "groups": 76,
+    "cosmetic_edges": 514,
+    "farm_food_cards": 84,
+    "advancement_blueprints": 424
+  },
+  "removed_visual_edges": [
+    {
+      "from": "v2_food_seedtime",
+      "to": "v3_food_seed_bag",
+      "kind": "route"
+    },
+    {
+      "from": "v3_food_seed_bag",
+      "to": "v3_food_harvest_again",
+      "kind": "route"
+    }
+  ],
+  "added_visual_edges": [
+    {
+      "from": "v2_food_seedtime",
+      "to": "v3_food_harvest_again",
+      "kind": "route"
+    }
+  ],
+  "semantic_successors_of_removed_node": [],
+  "semantic_successor_rule": "No remaining after list references the removed node. Existing harvest_again after=[v2_food_ripe_pickings] stays unchanged. No invented gameplay dependency or weakened AND gate.",
+  "source_audit": {
+    "remaining_card_records_identical": 616,
+    "changed_remaining_cards": [],
+    "all_remaining_centers_ids_rewards_numbers_and_binding_records_preserved": true,
+    "layout_group_rectangles_and_ids_preserved": true,
+    "first_node_remains": "v2_food_seedtime"
+  },
+  "removed_unused_blueprint": {
+    "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_food_seed_bag.json",
+    "sha256": "af31e42a4f3f53f5fd01ff19ffc3b1b5cd73c5bfbf4f6149a6f91db7e46f5b38"
+  },
+  "candidate_generation": {
+    "generation_command": "python Mods/JEMAchievementGuide/tools/compile_questbook.py --without-reward-selector",
+    "generation_exit_code": 0,
+    "generation_result": "Compiled 7 chapters, 616 mapped cards, 167 indexed predicates.",
+    "output_root": "Mods/JEMAchievementGuide/build/questbook-v4-candidate",
+    "activation": false,
+    "atlas_reward_selector_changed": false,
+    "removed_generated_files_absent": {
+      "Mods\\JEMAchievementGuide\\src\\main\\resources\\data\\jem_advancements\\advancements\\quest_v3\\v3_food_seed_bag.json": true,
+      "Mods\\JEMAchievementGuide\\src\\main\\resources\\assets\\jem_advancements\\patchouli_books\\just_enough_guide\\en_us\\entries\\handbook\\items\\quest_v3\\v3_food_seed_bag.json": true,
+      "Mods\\JEMAchievementGuide\\src\\main\\resources\\assets\\jem_advancements\\patchouli_books\\just_enough_guide\\ru_ru\\entries\\handbook\\items\\quest_v3\\v3_food_seed_bag.json": true
+    },
+    "active_resource_removed_card_mentions": {
+      "data/jem_advancements/questbook/rules.json": 0,
+      "data/jem_advancements/questbook/layout.json": 0,
+      "assets/jem_advancements/questbook/layout.json": 0
+    },
+    "orphan_cleanup": "compile_advancements copies active source blueprints but has no prior-output manifest. Removed the one exact stale candidate Seed Bag advancement path after generation. No production resources or frozen history were removed."
+  },
+  "compiler_resource_ownership": {
+    "source": "Mods/JEMAchievementGuide/tools/compile_questbook.py:compile_advancements",
+    "output_scoped_manifest": "Mods/JEMAchievementGuide/build/questbook-v4-candidate/Mods/JEMAchievementGuide/tools/questbook/compiled-advancement-files.json",
+    "managed_current_resources": 424,
+    "bootstrap": "Exact current source blueprint paths plus explicit retired source resource names, no target directory scan or glob delete",
+    "retired_source_history": "Mods/JEMAchievementGuide/tools/questbook/retired-advancements.json",
+    "deletion_scope": "Only absent-source paths from the prior output manifest after safe_relative/safe_child and exact quest_v2/quest_v3 namespace validation",
+    "candidate_generation": "Exit0, seven chapters/616mapped cards/167predicates, --without-reward-selector, never --activate",
+    "runtime_observed": false
+  }
+}

@@ -1,0 +1,5077 @@
+{
+  "id": "212CD19C4F30BF20",
+  "filename": "jem_07",
+  "title": "{\"translate\":\"jem.atlas.chapter.tab-07\"}",
+  "subtitle": [],
+  "icon": "minecraft:oak_door",
+  "order_index": 2,
+  "default_quest_shape": "circle",
+  "default_hide_dependency_lines": true,
+  "default_quest_size": 1.0,
+  "autofocus_id": "2BBB57873FA2E468",
+  "tags": [
+    "jem_rescue_v3"
+  ],
+  "progression_mode": "flexible",
+  "quests": [
+    {
+      "id": "258B0E23340F9AC2",
+      "title": "{\"translate\":\"jem.atlas.card.start_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.start_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.start_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.start_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.start_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.start_01.reward\"}"
+      ],
+      "icon": "minecraft:bread",
+      "x": -14.4,
+      "y": -10.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BE61FEEF57B03BE",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.start_01.condition\"}",
+          "icon": "minecraft:bread",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "222A5138ACEA64AB",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:grilled_bacon_sandwich",
+          "count": 8,
+          "claim_key": "start_01/item/0",
+          "claim_reward_id": "222A5138ACEA64AB",
+          "team_reward": false
+        },
+        {
+          "id": "2DAFBBC483E0D161",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 8,
+          "claim_key": "start_01/item/1",
+          "claim_reward_id": "2DAFBBC483E0D161",
+          "team_reward": false
+        },
+        {
+          "id": "21AE6767EE5643E4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "start_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B4E01D0F217D313",
+      "title": "{\"translate\":\"jem.atlas.card.start_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.start_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.start_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.start_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.start_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.start_02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:torch",
+      "x": -12.144,
+      "y": -10.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27320407A1D57ACE",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.start_02.condition\"}",
+          "icon": "minecraft:torch",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "249BE71D4AC2307E",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 2,
+          "claim_key": "start_02/item/0",
+          "claim_reward_id": "249BE71D4AC2307E",
+          "team_reward": false
+        },
+        {
+          "id": "293B3D96BC492E6B",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_cupboard",
+          "count": 2,
+          "claim_key": "start_02/item/1",
+          "claim_reward_id": "293B3D96BC492E6B",
+          "team_reward": false
+        },
+        {
+          "id": "2A1D92F3B4881E4B",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:red_cushion",
+          "count": 8,
+          "claim_key": "start_02/item/2",
+          "claim_reward_id": "2A1D92F3B4881E4B",
+          "team_reward": false
+        },
+        {
+          "id": "2D70BA90C2F0A2F8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "start_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22BE1831879F0877",
+      "title": "{\"translate\":\"jem.atlas.card.field_08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.field_08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.field_08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.field_08.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "natures_spirit:cypress_planks",
+      "x": -7.632,
+      "y": -7.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2624CB8629612539",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
+          "icon": "natures_spirit:cypress_planks",
+          "count": 4
+        },
+        {
+          "id": "2A43EFF951FFC9F3",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.field_08.condition\"}",
+          "icon": "natures_spirit:cypress_planks",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DF0DA8CD802EEBF",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_planks",
+          "count": 128,
+          "claim_key": "field_08/item/0",
+          "claim_reward_id": "2DF0DA8CD802EEBF",
+          "team_reward": false
+        },
+        {
+          "id": "2692E5B08A43FCEE",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_stairs",
+          "count": 32,
+          "claim_key": "field_08/item/1",
+          "claim_reward_id": "2692E5B08A43FCEE",
+          "team_reward": false
+        },
+        {
+          "id": "290BA05A3A2BCED9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29F156CE13A1F437",
+      "title": "{\"translate\":\"jem.atlas.card.field_10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.field_10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.field_10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.field_10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.field_10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.field_10.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:stone_bricks",
+      "x": -12.144,
+      "y": -7.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27990324973ABCA7",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.field_10.condition\"}",
+          "icon": "minecraft:stone_bricks",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2977E66CAD549603",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 128,
+          "claim_key": "field_10/item/0",
+          "claim_reward_id": "2977E66CAD549603",
+          "team_reward": false
+        },
+        {
+          "id": "258C2127FDAE08E1",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_fence",
+          "count": 32,
+          "claim_key": "field_10/item/1",
+          "claim_reward_id": "258C2127FDAE08E1",
+          "team_reward": false
+        },
+        {
+          "id": "249D76D556B0D24D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "field_10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23FD98E3E92C7349",
+      "title": "{\"translate\":\"jem.atlas.card.H05.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.01.reward\"}"
+      ],
+      "icon": "bbb:acacia_balustrade",
+      "x": -8.64,
+      "y": -6.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "245C6B7B96DB2585",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.01.condition\"}",
+          "icon": "bbb:acacia_balustrade",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28BA2A12803E5B0D",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:brick_layer",
+          "count": 128,
+          "claim_key": "H05.01/item/0",
+          "claim_reward_id": "28BA2A12803E5B0D",
+          "team_reward": false
+        },
+        {
+          "id": "2A41737C574F448F",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 128,
+          "claim_key": "H05.01/item/1",
+          "claim_reward_id": "2A41737C574F448F",
+          "team_reward": false
+        },
+        {
+          "id": "24C3B50787B218E7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "25EBCB6566808E4B",
+      "title": "{\"translate\":\"jem.atlas.card.H05.02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:oak_fence",
+      "x": -14.4,
+      "y": -3.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "214062A4028424A8",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.02.condition\"}",
+          "icon": "minecraft:oak_fence",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2717D0871F4FD154",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:iron_fence",
+          "count": 64,
+          "claim_key": "H05.02/item/0",
+          "claim_reward_id": "2717D0871F4FD154",
+          "team_reward": false
+        },
+        {
+          "id": "2F03C7E1AEA3E8F6",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_fence",
+          "count": 64,
+          "claim_key": "H05.02/item/1",
+          "claim_reward_id": "2F03C7E1AEA3E8F6",
+          "team_reward": false
+        },
+        {
+          "id": "2181DAC3BD116EA3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "200D59EE80AC2CCD",
+      "title": "{\"translate\":\"jem.atlas.card.H05.03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "handcrafted:acacia_chair",
+      "x": -9.6,
+      "y": 4.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25F8FBA9E7CDF8C8",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.03.condition\"}",
+          "icon": "handcrafted:acacia_chair",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2449973F235915EF",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:acacia_table",
+          "count": 2,
+          "claim_key": "H05.03/item/0",
+          "claim_reward_id": "2449973F235915EF",
+          "team_reward": false
+        },
+        {
+          "id": "24FBF7A36F0BDE7E",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:acacia_counter",
+          "count": 8,
+          "claim_key": "H05.03/item/1",
+          "claim_reward_id": "24FBF7A36F0BDE7E",
+          "team_reward": false
+        },
+        {
+          "id": "2953FEDCB051B895",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:acacia_shelf",
+          "count": 16,
+          "claim_key": "H05.03/item/2",
+          "claim_reward_id": "2953FEDCB051B895",
+          "team_reward": false
+        },
+        {
+          "id": "27646020DB155CFB",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:red_cushion",
+          "count": 16,
+          "claim_key": "H05.03/item/3",
+          "claim_reward_id": "27646020DB155CFB",
+          "team_reward": false
+        },
+        {
+          "id": "2F9DB1C639B12BB7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2407E505CAE88DF5",
+      "title": "{\"translate\":\"jem.atlas.card.H05.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.04.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "shutterup:acacia_shutter",
+      "x": -2.88,
+      "y": 7.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23FCEB1377C1C35A",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.04.condition\"}",
+          "icon": "shutterup:acacia_shutter",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "274A742188D8F092",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_trapdoor",
+          "count": 32,
+          "claim_key": "H05.04/item/0",
+          "claim_reward_id": "274A742188D8F092",
+          "team_reward": false
+        },
+        {
+          "id": "290E7196A5975BB7",
+          "type": "jem_advancements:quest_item",
+          "item": "chimes:bamboo_chimes",
+          "count": 2,
+          "claim_key": "H05.04/item/1",
+          "claim_reward_id": "290E7196A5975BB7",
+          "team_reward": false
+        },
+        {
+          "id": "24BF24DD9D773DC1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BC50FB087AD9AD4",
+      "title": "{\"translate\":\"jem.atlas.card.H05.05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.05.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "secretdoors:secret_acacia_log_door",
+      "x": 0.96,
+      "y": 7.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "208F1849B4ABDEA8",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.05.condition\"}",
+          "icon": "secretdoors:secret_acacia_log_door",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "241120D81E940586",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:bookstack",
+          "count": 16,
+          "claim_key": "H05.05/item/0",
+          "claim_reward_id": "241120D81E940586",
+          "team_reward": false
+        },
+        {
+          "id": "2A87B0C4E5F0995A",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:dark_oak_shelf",
+          "count": 16,
+          "claim_key": "H05.05/item/1",
+          "claim_reward_id": "2A87B0C4E5F0995A",
+          "team_reward": false
+        },
+        {
+          "id": "2BBC2A23DFB0AD11",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C24BB078DA25075",
+      "title": "{\"translate\":\"jem.atlas.card.H05.06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.06.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "infinitybuttons:oak_large_button",
+      "x": 4.8,
+      "y": 7.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25705057BB105590",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.06.condition\"}",
+          "icon": "infinitybuttons:oak_large_button",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "256BFCF6EA9C57E3",
+          "type": "jem_advancements:quest_item",
+          "item": "create:redstone_link",
+          "count": 2,
+          "claim_key": "H05.06/item/0",
+          "claim_reward_id": "256BFCF6EA9C57E3",
+          "team_reward": false
+        },
+        {
+          "id": "240B3B7B1DADF41C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:redstone_contact",
+          "count": 4,
+          "claim_key": "H05.06/item/1",
+          "claim_reward_id": "240B3B7B1DADF41C",
+          "team_reward": false
+        },
+        {
+          "id": "2CFE542ED1A6ED43",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BED2E276730914C",
+      "title": "{\"translate\":\"jem.atlas.card.H05.07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.07.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "fairylights:hanging_lights",
+      "x": 14.4,
+      "y": -3.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2597BD5C5C1F1683",
+          "type": "item",
+          "item": "fairylights:hanging_lights",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2D4C71E8ADDAA49D",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.07.condition\"}",
+          "icon": "fairylights:hanging_lights",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CBC0BBE738E21B4",
+          "type": "jem_advancements:quest_item",
+          "item": "fairylights:candle_lantern",
+          "count": 32,
+          "claim_key": "H05.07/item/0",
+          "claim_reward_id": "2CBC0BBE738E21B4",
+          "team_reward": false
+        },
+        {
+          "id": "237465BC3D9B420A",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_white",
+          "count": 16,
+          "claim_key": "H05.07/item/1",
+          "claim_reward_id": "237465BC3D9B420A",
+          "team_reward": false
+        },
+        {
+          "id": "2752C3BF566A5759",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A6992EC7B282A53",
+      "title": "{\"translate\":\"jem.atlas.card.H05.08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.08.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "dustydecorations:rope",
+      "x": 11.52,
+      "y": -8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D17FA535D950CBC",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.08.condition\"}",
+          "icon": "dustydecorations:rope",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "282B50B961F2F51F",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:rope",
+          "count": 64,
+          "claim_key": "H05.08/item/0",
+          "claim_reward_id": "282B50B961F2F51F",
+          "team_reward": false
+        },
+        {
+          "id": "251770B1285139DA",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:giant_anchor",
+          "count": 2,
+          "claim_key": "H05.08/item/1",
+          "claim_reward_id": "251770B1285139DA",
+          "team_reward": false
+        },
+        {
+          "id": "288D8912346D6E41",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:wooden_buoy",
+          "count": 16,
+          "claim_key": "H05.08/item/2",
+          "claim_reward_id": "288D8912346D6E41",
+          "team_reward": false
+        },
+        {
+          "id": "2A147966564E6001",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F6B1AC9B77D4727",
+      "title": "{\"translate\":\"jem.atlas.card.H05.09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.09.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "sootychimneys:brick_chimney",
+      "x": 6.72,
+      "y": -8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E62955550CF56C9",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.09.condition\"}",
+          "icon": "sootychimneys:brick_chimney",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29A23FB04528116C",
+          "type": "jem_advancements:quest_item",
+          "item": "sootychimneys:brick_chimney",
+          "count": 32,
+          "claim_key": "H05.09/item/0",
+          "claim_reward_id": "29A23FB04528116C",
+          "team_reward": false
+        },
+        {
+          "id": "23DFC96E3027AC66",
+          "type": "jem_advancements:quest_item",
+          "item": "sootychimneys:copper_chimney",
+          "count": 16,
+          "claim_key": "H05.09/item/1",
+          "claim_reward_id": "23DFC96E3027AC66",
+          "team_reward": false
+        },
+        {
+          "id": "217905E4C3D36717",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2121FCB0922D79BF",
+      "title": "{\"translate\":\"jem.atlas.card.H05.10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.10.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "immersive_weathering:rusted_cut_iron",
+      "x": -3.84,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23F7B690A1088464",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.10.condition\"}",
+          "icon": "immersive_weathering:rusted_cut_iron",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E79F0E30702FBFE",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:mossy_stone_brick_layer",
+          "count": 128,
+          "claim_key": "H05.10/item/0",
+          "claim_reward_id": "2E79F0E30702FBFE",
+          "team_reward": false
+        },
+        {
+          "id": "22E911BD47237E39",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:weathered_cut_copper_layer",
+          "count": 64,
+          "claim_key": "H05.10/item/1",
+          "claim_reward_id": "22E911BD47237E39",
+          "team_reward": false
+        },
+        {
+          "id": "264BCBA1A5F8AEA6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DA1E1FFDB518886",
+      "title": "{\"translate\":\"jem.atlas.card.H05.11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.11.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.11.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.11.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.11.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.11.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:snow",
+      "x": 14.4,
+      "y": 4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23E99F7035E5BE73",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.11.condition\"}",
+          "icon": "minecraft:snow",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26B8E02ABCE63EC3",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_light_blue",
+          "count": 32,
+          "claim_key": "H05.11/item/0",
+          "claim_reward_id": "26B8E02ABCE63EC3",
+          "team_reward": false
+        },
+        {
+          "id": "2B96D625504B673E",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:gingerbread_cookie",
+          "count": 16,
+          "claim_key": "H05.11/item/1",
+          "claim_reward_id": "2B96D625504B673E",
+          "team_reward": false
+        },
+        {
+          "id": "2EF2E4739310CEBC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 20,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BBB57873FA2E468",
+      "title": "{\"translate\":\"jem.atlas.card.H05.12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.12.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.12.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.12.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.12.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.12.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "chimes:amethyst_chimes",
+      "x": 0.0,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B8C98361CD011BE",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.12.condition\"}",
+          "icon": "chimes:amethyst_chimes",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22321BEE037391EC",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:blue_glazed_thick_pot",
+          "count": 16,
+          "claim_key": "H05.12/item/0",
+          "claim_reward_id": "22321BEE037391EC",
+          "team_reward": false
+        },
+        {
+          "id": "235114BF0259B2F8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        },
+        {
+          "id": "2627498778BC5928",
+          "type": "choice",
+          "table_id": 2332614185941597477L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22163E80B98910BE",
+      "title": "{\"translate\":\"jem.atlas.card.H05.13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H05.13.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H05.13.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.13.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.13.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H05.13.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "moa_decor_holidays:arana_en_telarana",
+      "x": 3.84,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24FB3AE5CD4D10EC",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H05.13.condition\"}",
+          "icon": "moa_decor_holidays:arana_en_telarana",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "28A2974F76D7031E",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:snow_globe",
+          "count": 1,
+          "claim_key": "H05.13/item/0",
+          "claim_reward_id": "28A2974F76D7031E",
+          "team_reward": false
+        },
+        {
+          "id": "2EA83557A6F46310",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:wreath",
+          "count": 8,
+          "claim_key": "H05.13/item/1",
+          "claim_reward_id": "2EA83557A6F46310",
+          "team_reward": false
+        },
+        {
+          "id": "22B2E9B8943AAFC4",
+          "type": "jem_advancements:quest_item",
+          "item": "snowyspirit:glow_lights_prismatic",
+          "count": 32,
+          "claim_key": "H05.13/item/2",
+          "claim_reward_id": "22B2E9B8943AAFC4",
+          "team_reward": false
+        },
+        {
+          "id": "2C4EB75BBE513FC0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H05.13",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2109213C28DB3BCB",
+      "title": "{\"translate\":\"jem.atlas.card.H06.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.01.reward\"}"
+      ],
+      "icon": "exposure:camera",
+      "x": -14.4,
+      "y": 7.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B9E6C230F8D3A83",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H06.01.condition\"}",
+          "icon": "exposure:camera",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "249191CED531CADE",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 8,
+          "claim_key": "H06.01/item/0",
+          "claim_reward_id": "249191CED531CADE",
+          "team_reward": false
+        },
+        {
+          "id": "26845AF11603DFC9",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 4,
+          "claim_key": "H06.01/item/1",
+          "claim_reward_id": "26845AF11603DFC9",
+          "team_reward": false
+        },
+        {
+          "id": "28866666FF12B1B2",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22D33BBA9F68298C",
+      "title": "{\"translate\":\"jem.atlas.card.H06.02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "exposure:developed_black_and_white_film",
+      "x": -12.144,
+      "y": 7.8,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21C50B40D6D4D601",
+          "type": "item",
+          "item": "exposure:developed_black_and_white_film",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2C959A9F4E4EAC7B",
+          "type": "item",
+          "item": "exposure:photograph",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2430FD0B4FEEE83F",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:lightroom",
+          "count": 1,
+          "claim_key": "H06.02/item/0",
+          "claim_reward_id": "2430FD0B4FEEE83F",
+          "team_reward": false
+        },
+        {
+          "id": "2B5F50E8B9F9EC21",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_black_and_white_film",
+          "count": 8,
+          "claim_key": "H06.02/item/1",
+          "claim_reward_id": "2B5F50E8B9F9EC21",
+          "team_reward": false
+        },
+        {
+          "id": "2C6B95FFC6C6ED74",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C16BE3929950742",
+      "title": "{\"translate\":\"jem.atlas.card.H06.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.04.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "exposure:developed_color_film",
+      "x": -7.632,
+      "y": 7.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "28DE5E8A7D62EA7E",
+          "type": "item",
+          "item": "exposure:developed_color_film",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D9250D5C4E6544D",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_color_film",
+          "count": 8,
+          "claim_key": "H06.04/item/0",
+          "claim_reward_id": "2D9250D5C4E6544D",
+          "team_reward": false
+        },
+        {
+          "id": "2B38FF9C5707E61B",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 8,
+          "claim_key": "H06.04/item/1",
+          "claim_reward_id": "2B38FF9C5707E61B",
+          "team_reward": false
+        },
+        {
+          "id": "24C347B1F98A217E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CC368B6E0021BE8",
+      "title": "{\"translate\":\"jem.atlas.card.H06.05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.05.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "exposure:camera_stand",
+      "x": -5.376,
+      "y": 7.8,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "212D56DE851FEE52",
+          "type": "item",
+          "item": "exposure:camera_stand",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "240D0255A26079DD",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 8,
+          "claim_key": "H06.05/item/0",
+          "claim_reward_id": "240D0255A26079DD",
+          "team_reward": false
+        },
+        {
+          "id": "2E6304FB9CA88005",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:glass_photograph_frame",
+          "count": 16,
+          "claim_key": "H06.05/item/1",
+          "claim_reward_id": "2E6304FB9CA88005",
+          "team_reward": false
+        },
+        {
+          "id": "2A8A00973F2698F7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E79FB6D893C857F",
+      "title": "{\"translate\":\"jem.atlas.card.H06.07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.07.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "exposure:album",
+      "x": -3.12,
+      "y": 11.3,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2FE091D18D90E5D1",
+          "type": "item",
+          "item": "exposure:album",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "22452DBF415A753A",
+          "type": "item",
+          "item": "exposure:photograph_frame",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27A5FA58F77C59A1",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:album",
+          "count": 2,
+          "claim_key": "H06.07/item/0",
+          "claim_reward_id": "27A5FA58F77C59A1",
+          "team_reward": false
+        },
+        {
+          "id": "240F978ECF3BEB75",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:photograph_frame",
+          "count": 32,
+          "claim_key": "H06.07/item/1",
+          "claim_reward_id": "240F978ECF3BEB75",
+          "team_reward": false
+        },
+        {
+          "id": "2347E5B514B31BD8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F93C978D3C26542",
+      "title": "{\"translate\":\"jem.atlas.card.H06.08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.08.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "exposure:aged_photograph",
+      "x": -5.376,
+      "y": 10.3,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F1B60E5CCD54A2F",
+          "type": "item",
+          "item": "exposure:aged_photograph",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24EA155F2CE2A407",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:camera",
+          "count": 1,
+          "claim_key": "H06.08/item/0",
+          "claim_reward_id": "24EA155F2CE2A407",
+          "team_reward": false
+        },
+        {
+          "id": "27C57B915BDBDE96",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_color_film",
+          "count": 16,
+          "claim_key": "H06.08/item/1",
+          "claim_reward_id": "27C57B915BDBDE96",
+          "team_reward": false
+        },
+        {
+          "id": "2E78C4FDC034A413",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26888A4207561732",
+      "title": "{\"translate\":\"jem.atlas.card.H06.09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.09.reward\"}"
+      ],
+      "icon": "immersive_melodies:flute",
+      "x": -7.632,
+      "y": 10.3,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2267373FE40E675D",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H06.09.condition\"}",
+          "icon": "immersive_melodies:flute",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "230EB512B34181EC",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:white_cushion",
+          "count": 16,
+          "claim_key": "H06.09/item/0",
+          "claim_reward_id": "230EB512B34181EC",
+          "team_reward": false
+        },
+        {
+          "id": "2D7CC05A972ACDA6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        },
+        {
+          "id": "26604FFC3D0A974E",
+          "type": "choice",
+          "table_id": 2714499338224502179L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "221BD59443ED86CD",
+      "title": "{\"translate\":\"jem.atlas.card.H06.10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.10.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "immersive_melodies:flute",
+      "x": -9.888,
+      "y": 10.3,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "20E7FBC70A8F6526",
+          "type": "item",
+          "item": "immersive_melodies:flute",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "22CA36995CF76F43",
+          "type": "item",
+          "item": "immersive_melodies:lute",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2FC87B65C2462F97",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 4,
+          "claim_key": "H06.10/item/0",
+          "claim_reward_id": "2FC87B65C2462F97",
+          "team_reward": false
+        },
+        {
+          "id": "239C36767DB9C51E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        },
+        {
+          "id": "2BD8BB77ACB3B9EB",
+          "type": "choice",
+          "table_id": 3209230277776788357L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F2885CF51A6273C",
+      "title": "{\"translate\":\"jem.atlas.card.H06.11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H06.11.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H06.11.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.11.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.11.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H06.11.reward\"}"
+      ],
+      "icon": "kaleidoscope_doll:custom_doll",
+      "x": -12.144,
+      "y": 10.3,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "204822C5AA9B7B6D",
+          "type": "item",
+          "item": "kaleidoscope_doll:custom_doll",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2BB04C41A585511C",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_doll:tweaks_tool",
+          "count": 1,
+          "claim_key": "H06.11/item/0",
+          "claim_reward_id": "2BB04C41A585511C",
+          "team_reward": false
+        },
+        {
+          "id": "21DE25F91F6247BF",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_shelf",
+          "count": 16,
+          "claim_key": "H06.11/item/1",
+          "claim_reward_id": "21DE25F91F6247BF",
+          "team_reward": false
+        },
+        {
+          "id": "238B2C2353163C84",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H06.11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B94EFD2AFAD5541",
+      "title": "{\"translate\":\"jem.atlas.card.H07.01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H07.01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H07.01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.01.reward\"}"
+      ],
+      "icon": "toms_storage:ts.storage_terminal",
+      "x": 7.68,
+      "y": -9.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F9063827CF90248",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H07.01.condition\"}",
+          "icon": "toms_storage:ts.storage_terminal",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26E020B1F6B775D7",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "H07.01/item/0",
+          "claim_reward_id": "26E020B1F6B775D7",
+          "team_reward": false
+        },
+        {
+          "id": "26E1A36EA4626FB1",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable_connector",
+          "count": 16,
+          "claim_key": "H07.01/item/1",
+          "claim_reward_id": "26E1A36EA4626FB1",
+          "team_reward": false
+        },
+        {
+          "id": "2D42AC97A1AEAB10",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.trim",
+          "count": 32,
+          "claim_key": "H07.01/item/2",
+          "claim_reward_id": "2D42AC97A1AEAB10",
+          "team_reward": false
+        },
+        {
+          "id": "2D08BC7AFABC2D54",
+          "type": "jem_advancements:quest_xp",
+          "xp": 40,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AF7007E520DCD3B",
+      "title": "{\"translate\":\"jem.atlas.card.H07.02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H07.02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H07.02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "toms_storage:ts.crafting_terminal",
+      "x": 9.936,
+      "y": -9.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25919AC939B1C08B",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H07.02.condition\"}",
+          "icon": "toms_storage:ts.crafting_terminal",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27C612EAC97FD733",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_hopper_basic",
+          "count": 4,
+          "claim_key": "H07.02/item/0",
+          "claim_reward_id": "27C612EAC97FD733",
+          "team_reward": false
+        },
+        {
+          "id": "20C5EEFA3801511D",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.open_crate",
+          "count": 8,
+          "claim_key": "H07.02/item/1",
+          "claim_reward_id": "20C5EEFA3801511D",
+          "team_reward": false
+        },
+        {
+          "id": "226E5033B53BD280",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.item_filter",
+          "count": 8,
+          "claim_key": "H07.02/item/2",
+          "claim_reward_id": "226E5033B53BD280",
+          "team_reward": false
+        },
+        {
+          "id": "238396970B48B8A5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2D5481C02BA4597A",
+      "title": "{\"translate\":\"jem.atlas.card.H07.03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H07.03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H07.03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "toms_storage:ts.inventory_cable_connector_filtered",
+      "x": 12.672,
+      "y": -9.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2DBF9F5509CAC20C",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H07.03.condition\"}",
+          "icon": "toms_storage:ts.inventory_cable_connector_filtered",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A77D77FDE1E1853",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.tag_item_filter",
+          "count": 8,
+          "claim_key": "H07.03/item/0",
+          "claim_reward_id": "2A77D77FDE1E1853",
+          "team_reward": false
+        },
+        {
+          "id": "211A6A3C9BE3AB00",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.polymorphic_item_filter",
+          "count": 8,
+          "claim_key": "H07.03/item/1",
+          "claim_reward_id": "211A6A3C9BE3AB00",
+          "team_reward": false
+        },
+        {
+          "id": "2935A12A38D32772",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable_connector_filtered",
+          "count": 8,
+          "claim_key": "H07.03/item/2",
+          "claim_reward_id": "2935A12A38D32772",
+          "team_reward": false
+        },
+        {
+          "id": "20D5511BFBA04D09",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F8375B1CF0CFE36",
+      "title": "{\"translate\":\"jem.atlas.card.H07.04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H07.04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H07.04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.04.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "toms_storage:ts.level_emitter",
+      "x": 14.448,
+      "y": -9.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2A271E1C5820B25A",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H07.04.condition\"}",
+          "icon": "toms_storage:ts.level_emitter",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2016A2A7A0B1B000",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.level_emitter",
+          "count": 4,
+          "claim_key": "H07.04/item/0",
+          "claim_reward_id": "2016A2A7A0B1B000",
+          "team_reward": false
+        },
+        {
+          "id": "297895E9B4063563",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_hopper_basic",
+          "count": 8,
+          "claim_key": "H07.04/item/1",
+          "claim_reward_id": "297895E9B4063563",
+          "team_reward": false
+        },
+        {
+          "id": "240257E33C8EFC60",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "244ED0B81F86B22D",
+      "title": "{\"translate\":\"jem.atlas.card.H07.05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.H07.05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.H07.05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.H07.05.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "toms_storage:ts.wireless_terminal",
+      "x": 14.448,
+      "y": -6.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2943FF170E2A61BA",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.H07.05.condition\"}",
+          "icon": "toms_storage:ts.wireless_terminal",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "204A673D2F465C06",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.wireless_terminal",
+          "count": 1,
+          "claim_key": "H07.05/item/0",
+          "claim_reward_id": "204A673D2F465C06",
+          "team_reward": false
+        },
+        {
+          "id": "2250E643DC3DBC5A",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_proxy",
+          "count": 8,
+          "claim_key": "H07.05/item/1",
+          "claim_reward_id": "2250E643DC3DBC5A",
+          "team_reward": false
+        },
+        {
+          "id": "2CA1F7F35B0F8653",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "H07.05/item/2",
+          "claim_reward_id": "2CA1F7F35B0F8653",
+          "team_reward": false
+        },
+        {
+          "id": "261E41CB0B810E1E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "H07.05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "23BB48F00D112709",
+      "title": "{\"translate\":\"jem.atlas.card.bag_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.bag_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.bag_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_01.reward\"}"
+      ],
+      "icon": "sophisticatedbackpacks:backpack",
+      "x": 12.672,
+      "y": -6.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D5038F500C05DC0",
+          "type": "item",
+          "item": "sophisticatedbackpacks:backpack",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20455569EAAE0F19",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "bag_01/item/0",
+          "claim_reward_id": "20455569EAAE0F19",
+          "team_reward": false
+        },
+        {
+          "id": "26042DE56CDADE63",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "bag_01",
+      "jem_required_mods": [
+        "sophisticatedbackpacks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "217ADA4B1CFF6C7B",
+      "title": "{\"translate\":\"jem.atlas.card.bag_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.bag_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.bag_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_02.reward\"}"
+      ],
+      "icon": "sophisticatedbackpacks:backpack",
+      "x": 9.936,
+      "y": -6.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24DA3C41795CF93B",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.bag_02.condition\"}",
+          "icon": "sophisticatedbackpacks:backpack",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2ECA1164E4810760",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "bag_02/item/0",
+          "claim_reward_id": "2ECA1164E4810760",
+          "team_reward": false
+        },
+        {
+          "id": "2EF472FC1EB5EE79",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "bag_02",
+      "jem_required_mods": [
+        "sophisticatedbackpacks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "284ECC70DC4A7807",
+      "title": "{\"translate\":\"jem.atlas.card.bag_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.bag_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.bag_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_03.reward\"}"
+      ],
+      "icon": "sophisticatedbackpacks:iron_backpack",
+      "x": 7.68,
+      "y": -6.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "263B10E46B1E27B9",
+          "type": "item",
+          "item": "sophisticatedbackpacks:iron_backpack",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20F873596B9AB0A0",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "bag_03/item/0",
+          "claim_reward_id": "20F873596B9AB0A0",
+          "team_reward": false
+        },
+        {
+          "id": "260E9714C70DDD56",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "bag_03",
+      "jem_required_mods": [
+        "sophisticatedbackpacks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DFFD3EA8A2219F7",
+      "title": "{\"translate\":\"jem.atlas.card.bag_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.bag_04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.bag_04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_04.reward\"}"
+      ],
+      "icon": "sophisticatedbackpacks:pickup_upgrade",
+      "x": 7.68,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E0B9B12C9A5B83B",
+          "type": "item",
+          "item": "sophisticatedbackpacks:pickup_upgrade",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "214A240B93EC758B",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "bag_04/item/0",
+          "claim_reward_id": "214A240B93EC758B",
+          "team_reward": false
+        },
+        {
+          "id": "291716C2061526DE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "bag_04",
+      "jem_required_mods": [
+        "sophisticatedbackpacks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E19F4D085572CE7",
+      "title": "{\"translate\":\"jem.atlas.card.bag_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.bag_05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.bag_05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.bag_05.reward\"}"
+      ],
+      "icon": "sophisticatedbackpacks:crafting_upgrade",
+      "x": 9.936,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "25C253FB709A75D6",
+          "type": "item",
+          "item": "sophisticatedbackpacks:crafting_upgrade",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A0D14079E342B3A",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "bag_05/item/0",
+          "claim_reward_id": "2A0D14079E342B3A",
+          "team_reward": false
+        },
+        {
+          "id": "2DB5DAEB614132F4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "bag_05",
+      "jem_required_mods": [
+        "sophisticatedbackpacks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BEB2F7008C4F843",
+      "title": "{\"translate\":\"jem.atlas.card.store_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.store_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.store_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_01.reward\"}"
+      ],
+      "icon": "sophisticatedstorage:barrel",
+      "x": 12.192,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24EECAAFF5A24E67",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.store_01.condition\"}",
+          "icon": "sophisticatedstorage:barrel",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "22F65595E5A75A49",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "store_01/item/0",
+          "claim_reward_id": "22F65595E5A75A49",
+          "team_reward": false
+        },
+        {
+          "id": "29E075E2ED5E0B62",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "store_01",
+      "jem_required_mods": [
+        "sophisticatedstorage"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27CA40B72D746241",
+      "title": "{\"translate\":\"jem.atlas.card.store_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.store_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.store_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_02.reward\"}"
+      ],
+      "icon": "sophisticatedstorage:basic_to_iron_tier_upgrade",
+      "x": 15.408,
+      "y": -4.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23A95DC0693077BA",
+          "type": "item",
+          "item": "sophisticatedstorage:basic_to_iron_tier_upgrade",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "226F6C26A8463DB8",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "store_02/item/0",
+          "claim_reward_id": "226F6C26A8463DB8",
+          "team_reward": false
+        },
+        {
+          "id": "2B1176D0571ACA29",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "store_02",
+      "jem_required_mods": [
+        "sophisticatedstorage"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24003706BA9CAEA3",
+      "title": "{\"translate\":\"jem.atlas.card.store_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.store_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.store_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_03.reward\"}"
+      ],
+      "icon": "sophisticatedstorage:controller",
+      "x": 14.448,
+      "y": -1.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "299FA1C5F845B57B",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.store_03.condition\"}",
+          "icon": "sophisticatedstorage:controller",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2935830A5560836F",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "store_03/item/0",
+          "claim_reward_id": "2935830A5560836F",
+          "team_reward": false
+        },
+        {
+          "id": "23306300207C8525",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "store_03",
+      "jem_required_mods": [
+        "sophisticatedstorage"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BB4E4D2195BBBE3",
+      "title": "{\"translate\":\"jem.atlas.card.store_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.store_04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.store_04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_04.reward\"}"
+      ],
+      "icon": "sophisticatedstorage:storage_tool",
+      "x": 12.192,
+      "y": -1.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E7C432823B8E64B",
+          "type": "item",
+          "item": "sophisticatedstorage:storage_tool",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26C579627A6A38FC",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "store_04/item/0",
+          "claim_reward_id": "26C579627A6A38FC",
+          "team_reward": false
+        },
+        {
+          "id": "2FFA4B0F188069EF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "store_04",
+      "jem_required_mods": [
+        "sophisticatedstorage"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22604CEB1A5939EA",
+      "title": "{\"translate\":\"jem.atlas.card.store_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.store_05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.store_05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.store_05.reward\"}"
+      ],
+      "icon": "sophisticatedstorage:hopper_upgrade",
+      "x": 9.936,
+      "y": -1.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2E4D586CECE7D8B3",
+          "type": "item",
+          "item": "sophisticatedstorage:hopper_upgrade",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CA3FDD11E8196DB",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:torch",
+          "count": 8,
+          "claim_key": "store_05/item/0",
+          "claim_reward_id": "2CA3FDD11E8196DB",
+          "team_reward": false
+        },
+        {
+          "id": "2EF801D6D1B47AC5",
+          "type": "jem_advancements:quest_xp",
+          "xp": 12,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "store_05",
+      "jem_required_mods": [
+        "sophisticatedstorage"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2213E5F6426ECD0B",
+      "title": "{\"translate\":\"jem.atlas.card.town_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_01.reward\"}"
+      ],
+      "icon": "bbb:stone_brick_layer",
+      "x": 2.88,
+      "y": 8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2281B58DC6CFBFE1",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_01.condition\"}",
+          "icon": "bbb:stone_brick_layer",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A63923524DADBFB",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_brick_layer",
+          "count": 128,
+          "claim_key": "town_01/item/0",
+          "claim_reward_id": "2A63923524DADBFB",
+          "team_reward": false
+        },
+        {
+          "id": "212DA1232FDE4D77",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 32,
+          "claim_key": "town_01/item/1",
+          "claim_reward_id": "212DA1232FDE4D77",
+          "team_reward": false
+        },
+        {
+          "id": "2C40D03F401E7270",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:farmer_salad",
+          "count": 12,
+          "claim_key": "town_01/item/2",
+          "claim_reward_id": "2C40D03F401E7270",
+          "team_reward": false
+        },
+        {
+          "id": "217849FE16A68050",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_01",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CF0186E5409FA56",
+      "title": "{\"translate\":\"jem.atlas.card.town_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "handcrafted:oak_bench",
+      "x": 6.096,
+      "y": 9.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F70B04E109A949F",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_02.condition\"}",
+          "icon": "handcrafted:oak_bench",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "272DB14D8E49B156",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 4,
+          "claim_key": "town_02/item/0",
+          "claim_reward_id": "272DB14D8E49B156",
+          "team_reward": false
+        },
+        {
+          "id": "243A766C080934DD",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_nightstand",
+          "count": 4,
+          "claim_key": "town_02/item/1",
+          "claim_reward_id": "243A766C080934DD",
+          "team_reward": false
+        },
+        {
+          "id": "264B2733D1AEE403",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "28E0671220C0A2DA",
+      "title": "{\"translate\":\"jem.atlas.card.town_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:lantern",
+      "x": 7.392,
+      "y": 7.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C55F5748067BE70",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_03.condition\"}",
+          "icon": "minecraft:lantern",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A0C378ACE8D457D",
+          "type": "jem_advancements:quest_item",
+          "item": "vinery:dark_cherry_stairs",
+          "count": 64,
+          "claim_key": "town_03/item/0",
+          "claim_reward_id": "2A0C378ACE8D457D",
+          "team_reward": false
+        },
+        {
+          "id": "2357182F4F2D9B97",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_shelf",
+          "count": 16,
+          "claim_key": "town_03/item/1",
+          "claim_reward_id": "2357182F4F2D9B97",
+          "team_reward": false
+        },
+        {
+          "id": "2879EBBD7FB7338C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F6818C05E4BFA46",
+      "title": "{\"translate\":\"jem.atlas.card.town_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_04.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:chest",
+      "x": 9.648,
+      "y": 8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26E45C3966BF676F",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_04.condition\"}",
+          "icon": "minecraft:chest",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26611DB584ECEFE7",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.open_crate",
+          "count": 8,
+          "claim_key": "town_04/item/0",
+          "claim_reward_id": "26611DB584ECEFE7",
+          "team_reward": false
+        },
+        {
+          "id": "20BE363B7F7E7496",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.trim",
+          "count": 32,
+          "claim_key": "town_04/item/1",
+          "claim_reward_id": "20BE363B7F7E7496",
+          "team_reward": false
+        },
+        {
+          "id": "24963ECFA028A65A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2F7400395E3D3FDF",
+      "title": "{\"translate\":\"jem.atlas.card.town_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_05.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": 11.904,
+      "y": 8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2525DEE9F9EF03C4",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_05.condition\"}",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "269265BC51F3640C",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:vegetable_sandwich",
+          "count": 16,
+          "claim_key": "town_05/item/0",
+          "claim_reward_id": "269265BC51F3640C",
+          "team_reward": false
+        },
+        {
+          "id": "2C750703BBC966D9",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:fertilizer",
+          "count": 32,
+          "claim_key": "town_05/item/1",
+          "claim_reward_id": "2C750703BBC966D9",
+          "team_reward": false
+        },
+        {
+          "id": "22A10CD269682EFF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26F0F466C7DFC3FC",
+      "title": "{\"translate\":\"jem.atlas.card.town_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_06.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:composter",
+      "x": 14.16,
+      "y": 8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2020B5B1971B4458",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_06.condition\"}",
+          "icon": "minecraft:composter",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2026F3BDFB348645",
+          "type": "jem_advancements:quest_item",
+          "item": "barnyardbuddies:iron_corral_bars",
+          "count": 32,
+          "claim_key": "town_06/item/0",
+          "claim_reward_id": "2026F3BDFB348645",
+          "team_reward": false
+        },
+        {
+          "id": "2DFE9B1519356E85",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:tool_rack",
+          "count": 8,
+          "claim_key": "town_06/item/1",
+          "claim_reward_id": "2DFE9B1519356E85",
+          "team_reward": false
+        },
+        {
+          "id": "258B6DD7C4AEEA6C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "29B11D9F4FF639C3",
+      "title": "{\"translate\":\"jem.atlas.card.town_07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_07.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:flower_pot",
+      "x": 14.16,
+      "y": 10.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "280D7E2C1A74A640",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_07.condition\"}",
+          "icon": "minecraft:flower_pot",
+          "count": 3
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2788E8D173ED37DD",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_dining_bench",
+          "count": 8,
+          "claim_key": "town_07/item/0",
+          "claim_reward_id": "2788E8D173ED37DD",
+          "team_reward": false
+        },
+        {
+          "id": "238926141B790B55",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_table",
+          "count": 4,
+          "claim_key": "town_07/item/1",
+          "claim_reward_id": "238926141B790B55",
+          "team_reward": false
+        },
+        {
+          "id": "27677B1DFF403C90",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:red_cushion",
+          "count": 16,
+          "claim_key": "town_07/item/2",
+          "claim_reward_id": "27677B1DFF403C90",
+          "team_reward": false
+        },
+        {
+          "id": "2639C6265CE43D68",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2971C356BC0C2EB6",
+      "title": "{\"translate\":\"jem.atlas.card.town_08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_08.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:zombie_spawn_egg",
+      "x": 11.904,
+      "y": 10.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "259DFD197DE752AC",
+          "type": "kill",
+          "entity": "minecraft:zombie",
+          "value": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B716A2E66A27D99",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 32,
+          "claim_key": "town_08/item/0",
+          "claim_reward_id": "2B716A2E66A27D99",
+          "team_reward": false
+        },
+        {
+          "id": "2E0F80657B2E147E",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:goulash",
+          "count": 8,
+          "claim_key": "town_08/item/1",
+          "claim_reward_id": "2E0F80657B2E147E",
+          "team_reward": false
+        },
+        {
+          "id": "2E65E562E71583DD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "216798B7EA612BCE",
+      "title": "{\"translate\":\"jem.atlas.card.town_09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_09.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": 9.648,
+      "y": 10.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F57C75B0612E535",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_09.condition\"}",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2ED7E9636282E2CB",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:farmer_salad",
+          "count": 16,
+          "claim_key": "town_09/item/0",
+          "claim_reward_id": "2ED7E9636282E2CB",
+          "team_reward": false
+        },
+        {
+          "id": "299E504E747118DF",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:berry_jam_jar",
+          "count": 8,
+          "claim_key": "town_09/item/1",
+          "claim_reward_id": "299E504E747118DF",
+          "team_reward": false
+        },
+        {
+          "id": "22B9170F28838C93",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2527DC1E45D085CD",
+      "title": "{\"translate\":\"jem.atlas.card.town_10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_10.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "create:schematicannon",
+      "x": 7.392,
+      "y": 10.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C3B7F98DB22B30D",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_10.condition\"}",
+          "icon": "create:schematicannon",
+          "count": 5
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20D72B03BBBB13AB",
+          "type": "jem_advancements:quest_item",
+          "item": "create:schematicannon",
+          "count": 1,
+          "claim_key": "town_10/item/0",
+          "claim_reward_id": "20D72B03BBBB13AB",
+          "team_reward": false
+        },
+        {
+          "id": "2A7D2D2B40F74135",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:brick_layer",
+          "count": 128,
+          "claim_key": "town_10/item/1",
+          "claim_reward_id": "2A7D2D2B40F74135",
+          "team_reward": false
+        },
+        {
+          "id": "21F7E95AD7A006AF",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 64,
+          "claim_key": "town_10/item/2",
+          "claim_reward_id": "21F7E95AD7A006AF",
+          "team_reward": false
+        },
+        {
+          "id": "2215C788A535C6F7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_10",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C2EE8E9DE379D7F",
+      "title": "{\"translate\":\"jem.atlas.card.town_11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_11.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_11.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_11.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_11.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_11.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "recruits:bowman_spawn_egg",
+      "x": 5.136,
+      "y": 10.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C9786FFFA2139E2",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_11.condition\"}",
+          "icon": "recruits:bowman_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AFDFFC8A412511B",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 32,
+          "claim_key": "town_11/item/0",
+          "claim_reward_id": "2AFDFFC8A412511B",
+          "team_reward": false
+        },
+        {
+          "id": "2837A6AD6B84E8FD",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 24,
+          "claim_key": "town_11/item/1",
+          "claim_reward_id": "2837A6AD6B84E8FD",
+          "team_reward": false
+        },
+        {
+          "id": "2CD2E259628C7300",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "226D5834EF44F782",
+      "title": "{\"translate\":\"jem.atlas.card.town_13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.town_13.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.town_13.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_13.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_13.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.town_13.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "toms_storage:ts.storage_terminal",
+      "x": 2.88,
+      "y": 13.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D6671813DC8AD0E",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.town_13.condition\"}",
+          "icon": "toms_storage:ts.storage_terminal",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26C295820B74852F",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.storage_terminal",
+          "count": 1,
+          "claim_key": "town_13/item/0",
+          "claim_reward_id": "26C295820B74852F",
+          "team_reward": false
+        },
+        {
+          "id": "2DCF52B1C9D39C63",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_connector",
+          "count": 1,
+          "claim_key": "town_13/item/1",
+          "claim_reward_id": "2DCF52B1C9D39C63",
+          "team_reward": false
+        },
+        {
+          "id": "2ABF02620AE57253",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "town_13/item/2",
+          "claim_reward_id": "2ABF02620AE57253",
+          "team_reward": false
+        },
+        {
+          "id": "2B251A08C2B37272",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:cypress_chest_boat",
+          "count": 1,
+          "claim_key": "town_13/item/3",
+          "claim_reward_id": "2B251A08C2B37272",
+          "team_reward": false
+        },
+        {
+          "id": "2D9A872FBCB2C2D8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "town_13",
+      "jem_required_mods": [
+        "jem_settlements"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "253950A907099A3C",
+      "title": "{\"translate\":\"jem.atlas.card.guard_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.guard_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.guard_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_01.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:villager_spawn_egg",
+      "x": 5.136,
+      "y": 13.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "27A0D68DF7E3E2EA",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.guard_01.condition\"}",
+          "icon": "minecraft:villager_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2130D71CF2260CCD",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 64,
+          "claim_key": "guard_01/item/0",
+          "claim_reward_id": "2130D71CF2260CCD",
+          "team_reward": false
+        },
+        {
+          "id": "2CC5FA2B0F24D959",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:flint_tracking_arrow",
+          "count": 16,
+          "claim_key": "guard_01/item/1",
+          "claim_reward_id": "2CC5FA2B0F24D959",
+          "team_reward": false
+        },
+        {
+          "id": "21E9A6CA416F4CB3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "guard_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2534D17B581E77BC",
+      "title": "{\"translate\":\"jem.atlas.card.guard_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.guard_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.guard_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "xtraarrows:iron_arrow",
+      "x": 7.392,
+      "y": 13.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22D01AC796F4A958",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.guard_02.condition\"}",
+          "icon": "xtraarrows:iron_arrow",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C36DBE2729CB4C8",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_arrow",
+          "count": 64,
+          "claim_key": "guard_02/item/0",
+          "claim_reward_id": "2C36DBE2729CB4C8",
+          "team_reward": false
+        },
+        {
+          "id": "2DD6602777143C3E",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:beef_patty_with_vegetables",
+          "count": 16,
+          "claim_key": "guard_02/item/1",
+          "claim_reward_id": "2DD6602777143C3E",
+          "team_reward": false
+        },
+        {
+          "id": "22CD315DAB4D64CD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 48,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "guard_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2966B729C7A44271",
+      "title": "{\"translate\":\"jem.atlas.card.guard_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.guard_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.guard_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.guard_03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "kaleidoscope_cookery:beef_noodle",
+      "x": 9.648,
+      "y": 13.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "21604DEA72916D17",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.guard_03.condition\"}",
+          "icon": "kaleidoscope_cookery:beef_noodle",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F7708031F34EE9B",
+          "type": "jem_advancements:quest_item",
+          "item": "kaleidoscope_cookery:beef_noodle",
+          "count": 24,
+          "claim_key": "guard_03/item/0",
+          "claim_reward_id": "2F7708031F34EE9B",
+          "team_reward": false
+        },
+        {
+          "id": "2C9F4DB5EF596F39",
+          "type": "jem_advancements:quest_xp",
+          "xp": 300,
+          "team_reward": false
+        },
+        {
+          "id": "2CE8B44000A2A7A0",
+          "type": "choice",
+          "table_id": 3011125533168029351L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "guard_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "26CF623E58BD63D1",
+      "title": "{\"translate\":\"jem.atlas.card.trade_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.trade_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.trade_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_02.reward\"}"
+      ],
+      "icon": "bakery:breadbox",
+      "x": 14.16,
+      "y": 13.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2F688AD08790DA60",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.trade_02.condition\"}",
+          "icon": "bakery:breadbox",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CBB2C4CCE812044",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:breadbox",
+          "count": 2,
+          "claim_key": "trade_02/item/0",
+          "claim_reward_id": "2CBB2C4CCE812044",
+          "team_reward": false
+        },
+        {
+          "id": "24532781E3028730",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_counter",
+          "count": 8,
+          "claim_key": "trade_02/item/1",
+          "claim_reward_id": "24532781E3028730",
+          "team_reward": false
+        },
+        {
+          "id": "2826F4627F514988",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_02",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20A26A07AB5ED2A9",
+      "title": "{\"translate\":\"jem.atlas.card.trade_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.trade_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.trade_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "dustydecorations:small_globe",
+      "x": 14.16,
+      "y": 15.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "277997B0E32A5804",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.trade_03.condition\"}",
+          "icon": "dustydecorations:small_globe",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2339A3D0C119B6CD",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:small_globe",
+          "count": 1,
+          "claim_key": "trade_03/item/0",
+          "claim_reward_id": "2339A3D0C119B6CD",
+          "team_reward": false
+        },
+        {
+          "id": "2B1FCDC670C8058B",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_cupboard",
+          "count": 4,
+          "claim_key": "trade_03/item/1",
+          "claim_reward_id": "2B1FCDC670C8058B",
+          "team_reward": false
+        },
+        {
+          "id": "264534D468AA567D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 16,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_03",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2BC369103D6809AE",
+      "title": "{\"translate\":\"jem.atlas.card.trade_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.trade_04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.trade_04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_04.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "bakery:bread_knife",
+      "x": 11.904,
+      "y": 15.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "23052E52D48F660E",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.trade_04.condition\"}",
+          "icon": "bakery:bread_knife",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21FF8125F4951ED7",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:bread_knife",
+          "count": 1,
+          "claim_key": "trade_04/item/0",
+          "claim_reward_id": "21FF8125F4951ED7",
+          "team_reward": false
+        },
+        {
+          "id": "2751E8B7C076F2F4",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:chocolate_glazed_cookie",
+          "count": 24,
+          "claim_key": "trade_04/item/1",
+          "claim_reward_id": "2751E8B7C076F2F4",
+          "team_reward": false
+        },
+        {
+          "id": "27083A95FC36FD9E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 24,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_04",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "20FE6638B0021E0E",
+      "title": "{\"translate\":\"jem.atlas.card.trade_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.trade_05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.trade_05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_05.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:bell",
+      "x": 9.648,
+      "y": 15.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24D57F7580406920",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.trade_05.condition\"}",
+          "icon": "minecraft:bell",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21894B24238C77C3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 32,
+          "team_reward": false
+        },
+        {
+          "id": "20DEEEF1048A601D",
+          "type": "choice",
+          "table_id": 3019680093957674945L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_05",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2CBC690E425ACC6B",
+      "title": "{\"translate\":\"jem.atlas.card.trade_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.trade_06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.trade_06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.trade_06.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "farm_and_charm:supply_cart",
+      "x": 7.392,
+      "y": 15.5,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "252A0054109B93EF",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.trade_06.condition\"}",
+          "icon": "farm_and_charm:supply_cart",
+          "count": 1
+        },
+        {
+          "id": "23B81634ACEEEEC2",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.trade_06.condition\"}",
+          "icon": "farm_and_charm:supply_cart",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E3DE1F7507A954B",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:supply_cart",
+          "count": 1,
+          "claim_key": "trade_06/item/0",
+          "claim_reward_id": "2E3DE1F7507A954B",
+          "team_reward": false
+        },
+        {
+          "id": "2496FE24C16D30D8",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable",
+          "count": 64,
+          "claim_key": "trade_06/item/1",
+          "claim_reward_id": "2496FE24C16D30D8",
+          "team_reward": false
+        },
+        {
+          "id": "2A5E501F39539FBA",
+          "type": "jem_advancements:quest_item",
+          "item": "toms_storage:ts.inventory_cable_connector",
+          "count": 8,
+          "claim_key": "trade_06/item/2",
+          "claim_reward_id": "2A5E501F39539FBA",
+          "team_reward": false
+        },
+        {
+          "id": "2DA143C8441557CD",
+          "type": "jem_advancements:quest_xp",
+          "xp": 64,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "trade_06",
+      "jem_required_mods": [
+        "jem_economy"
+      ],
+      "jem_economy": true,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B1D9CC234FA6E96",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_01.reward\"}"
+      ],
+      "icon": "minecraft:copper_pickaxe",
+      "x": -11.136,
+      "y": -6.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "26E79F5669576AFC",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_01.condition\"}",
+          "icon": "minecraft:copper_pickaxe",
+          "count": 1
+        },
+        {
+          "id": "2CA119CE4B12E873",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_01.condition\"}",
+          "icon": "minecraft:copper_pickaxe",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "23EF36ABCAEC8F8E",
+          "type": "jem_advancements:quest_item",
+          "item": "create:copper_tiles",
+          "count": 64,
+          "claim_key": "vanilla_01/item/0",
+          "claim_reward_id": "23EF36ABCAEC8F8E",
+          "team_reward": false
+        },
+        {
+          "id": "2421C8363BADDC27",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 16,
+          "claim_key": "vanilla_01/item/1",
+          "claim_reward_id": "2421C8363BADDC27",
+          "team_reward": false
+        },
+        {
+          "id": "21E33AB7A8D654CC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24BCA8F4E60AF888",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:copper_chest",
+      "x": -12.384,
+      "y": -3.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2569525749C41510",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_02.condition\"}",
+          "icon": "minecraft:copper_chest",
+          "count": 2
+        }
+      ],
+      "rewards": [
+        {
+          "id": "295E987DA0A7839D",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_casing",
+          "count": 32,
+          "claim_key": "vanilla_02/item/0",
+          "claim_reward_id": "295E987DA0A7839D",
+          "team_reward": false
+        },
+        {
+          "id": "2CF534249CE10F4F",
+          "type": "jem_advancements:quest_item",
+          "item": "sophisticatedbackpacks:backpack_dock",
+          "count": 1,
+          "claim_key": "vanilla_02/item/1",
+          "claim_reward_id": "2CF534249CE10F4F",
+          "team_reward": false
+        },
+        {
+          "id": "25937139DABF142E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 65,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C3CEA795D0D260B",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_03.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:copper_block",
+      "x": -11.616,
+      "y": 4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "24D50156BEF9B2BD",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_03.condition\"}",
+          "icon": "minecraft:copper_block",
+          "count": 1
+        },
+        {
+          "id": "2169EE85BB4DF0F1",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_03.condition\"}",
+          "icon": "minecraft:copper_block",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "215869DA77B6EB87",
+          "type": "jem_advancements:quest_item",
+          "item": "create:copper_shingles",
+          "count": 64,
+          "claim_key": "vanilla_03/item/0",
+          "claim_reward_id": "215869DA77B6EB87",
+          "team_reward": false
+        },
+        {
+          "id": "25E2909570E24786",
+          "type": "jem_advancements:quest_item",
+          "item": "create:copper_tiles",
+          "count": 32,
+          "claim_key": "vanilla_03/item/1",
+          "claim_reward_id": "25E2909570E24786",
+          "team_reward": false
+        },
+        {
+          "id": "2E6B09A4DD6A1AFB",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2861C23F1D2BF8E1",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_04.reward\"}"
+      ],
+      "icon": "minecraft:oak_shelf",
+      "x": -0.864,
+      "y": 7.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "246976D2F4B0BB3D",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_04.condition\"}",
+          "icon": "minecraft:oak_shelf",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2F15CF148C20EDF0",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_shelf",
+          "count": 4,
+          "claim_key": "vanilla_04/item/0",
+          "claim_reward_id": "2F15CF148C20EDF0",
+          "team_reward": false
+        },
+        {
+          "id": "2063030D59CD37A3",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_cupboard",
+          "count": 2,
+          "claim_key": "vanilla_04/item/1",
+          "claim_reward_id": "2063030D59CD37A3",
+          "team_reward": false
+        },
+        {
+          "id": "25C6AA556A67F35A",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "22CF6E7DA7A109D1",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_05.reward\"}"
+      ],
+      "icon": "minecraft:resin_clump",
+      "x": -1.056,
+      "y": 9.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2C59F658039CD04A",
+          "type": "item",
+          "item": "minecraft:resin_clump",
+          "count": 4,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26BB7169FBD76B37",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:amber",
+          "count": 32,
+          "claim_key": "vanilla_05/item/0",
+          "claim_reward_id": "26BB7169FBD76B37",
+          "team_reward": false
+        },
+        {
+          "id": "2A079124A6C5F845",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:ambersol",
+          "count": 4,
+          "claim_key": "vanilla_05/item/1",
+          "claim_reward_id": "2A079124A6C5F845",
+          "team_reward": false
+        },
+        {
+          "id": "2B5A690765085D04",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2C1106ABDB1A7A0A",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_06.reward\"}"
+      ],
+      "icon": "minecraft:pale_oak_sapling",
+      "x": 7.776,
+      "y": 5.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2BB66135D5DDF942",
+          "type": "item",
+          "item": "minecraft:pale_oak_sapling",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "27BA8AB3C7CDB747",
+          "type": "item",
+          "item": "minecraft:open_eyeblossom",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2CAE33BFE379D4BA",
+          "type": "item",
+          "item": "minecraft:closed_eyeblossom",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "244A2A88729FB28E",
+          "type": "jem_advancements:quest_item",
+          "item": "ribbits:mossy_oak_planks",
+          "count": 96,
+          "claim_key": "vanilla_06/item/0",
+          "claim_reward_id": "244A2A88729FB28E",
+          "team_reward": false
+        },
+        {
+          "id": "246895623D454C12",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:willow_planks",
+          "count": 64,
+          "claim_key": "vanilla_06/item/1",
+          "claim_reward_id": "246895623D454C12",
+          "team_reward": false
+        },
+        {
+          "id": "2B40D8ED44BBC497",
+          "type": "jem_advancements:quest_xp",
+          "xp": 100,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E812F952089886E",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_09.reward\"}"
+      ],
+      "icon": "minecraft:sulfur",
+      "x": 10.944,
+      "y": 0.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "275EC9F3742559EA",
+          "type": "item",
+          "item": "minecraft:sulfur",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "29E9F27FFA1C9199",
+          "type": "item",
+          "item": "minecraft:cinnabar",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "2AEA5CADC30D6B4B",
+          "type": "item",
+          "item": "minecraft:sulfur_cube_bucket",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2589C56B18704A75",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hazmat_mask",
+          "count": 1,
+          "claim_key": "vanilla_09/item/0",
+          "claim_reward_id": "2589C56B18704A75",
+          "team_reward": false
+        },
+        {
+          "id": "2B49027D649225EF",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:cinder_block",
+          "count": 96,
+          "claim_key": "vanilla_09/item/1",
+          "claim_reward_id": "2B49027D649225EF",
+          "team_reward": false
+        },
+        {
+          "id": "21F5BED5B5D50A71",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_09",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "227BC99FAEE6E93A",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_10.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_10.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_10.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_10.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_10.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_10.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:sulfur_cube_spawn_egg",
+      "x": 15.936,
+      "y": -8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2D3AB02A0809412C",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_10.condition\"}",
+          "icon": "minecraft:sulfur_cube_spawn_egg",
+          "count": 1
+        },
+        {
+          "id": "2D38CAB11B74D8A6",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_10.condition\"}",
+          "icon": "minecraft:sulfur_cube_spawn_egg",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2E4C1DDF848E7BFD",
+          "type": "jem_advancements:quest_item",
+          "item": "create:industrial_iron_block",
+          "count": 64,
+          "claim_key": "vanilla_10/item/0",
+          "claim_reward_id": "2E4C1DDF848E7BFD",
+          "team_reward": false
+        },
+        {
+          "id": "2518512A6818B375",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_scaffolding",
+          "count": 32,
+          "claim_key": "vanilla_10/item/1",
+          "claim_reward_id": "2518512A6818B375",
+          "team_reward": false
+        },
+        {
+          "id": "23F489D4B214F7C7",
+          "type": "jem_advancements:quest_xp",
+          "xp": 60,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_10",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AF663C37B580581",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_11.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_11.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_11.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_11.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_11.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_11.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:potent_sulfur",
+      "x": 4.704,
+      "y": -8.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2801E62329DA8072",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_11.condition\"}",
+          "icon": "minecraft:potent_sulfur",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B13020129CFDB29",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:hazmat_warning_block",
+          "count": 32,
+          "claim_key": "vanilla_11/item/0",
+          "claim_reward_id": "2B13020129CFDB29",
+          "team_reward": false
+        },
+        {
+          "id": "29201D58042E6E7B",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:metal_scaffolding",
+          "count": 48,
+          "claim_key": "vanilla_11/item/1",
+          "claim_reward_id": "29201D58042E6E7B",
+          "team_reward": false
+        },
+        {
+          "id": "280E2399EC42BDB8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 55,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_11",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E9F83EC97C79802",
+      "title": "{\"translate\":\"jem.atlas.card.vanilla_12.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.vanilla_12.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.vanilla_12.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_12.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_12.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.vanilla_12.reward\"}"
+      ],
+      "icon": "minecraft:blue_bundle",
+      "x": -1.824,
+      "y": -4.0,
+      "shape": "circle",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EF91A6FC66AC663",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.vanilla_12.condition\"}",
+          "icon": "minecraft:blue_bundle",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C8C899808D2FF33",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:album",
+          "count": 1,
+          "claim_key": "vanilla_12/item/0",
+          "claim_reward_id": "2C8C899808D2FF33",
+          "team_reward": false
+        },
+        {
+          "id": "2D2595FD21597BF1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 35,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "vanilla_12",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "27AC080FC1BFDF03",
+      "title": "{\"translate\":\"jem.atlas.card.project_01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_01.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_01.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_01.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_01.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_01.reward\"}"
+      ],
+      "icon": "minecraft:crafting_table",
+      "x": -16.32,
+      "y": -3.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2744CEACA48A4354",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_01.condition\"}",
+          "icon": "minecraft:crafting_table",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2044031886A3A38C",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:spruce_beam",
+          "count": 128,
+          "claim_key": "project_01/item/0",
+          "claim_reward_id": "2044031886A3A38C",
+          "team_reward": false
+        },
+        {
+          "id": "24026257D30D61E5",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:spruce_lattice",
+          "count": 64,
+          "claim_key": "project_01/item/1",
+          "claim_reward_id": "24026257D30D61E5",
+          "team_reward": false
+        },
+        {
+          "id": "29C4CE0AB3FC18DB",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:spruce_lantern",
+          "count": 24,
+          "claim_key": "project_01/item/2",
+          "claim_reward_id": "29C4CE0AB3FC18DB",
+          "team_reward": false
+        },
+        {
+          "id": "236514F7879F4100",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:spruce_cupboard",
+          "count": 8,
+          "claim_key": "project_01/item/3",
+          "claim_reward_id": "236514F7879F4100",
+          "team_reward": false
+        },
+        {
+          "id": "2A111231AB459DE2",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:spruce_chair",
+          "count": 8,
+          "claim_key": "project_01/item/4",
+          "claim_reward_id": "2A111231AB459DE2",
+          "team_reward": false
+        },
+        {
+          "id": "2F525F15E59F5C5D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 300,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_01",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2458208BE8CA937F",
+      "title": "{\"translate\":\"jem.atlas.card.project_02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_02.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_02.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_02.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_02.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_02.reward\"}"
+      ],
+      "icon": "create:millstone",
+      "x": -13.104,
+      "y": -5.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2B089E8C9F1DD606",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_02.condition\"}",
+          "icon": "create:millstone",
+          "count": 6
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21C8ADCB0703AD9E",
+          "type": "jem_advancements:quest_item",
+          "item": "create:andesite_alloy",
+          "count": 96,
+          "claim_key": "project_02/item/0",
+          "claim_reward_id": "21C8ADCB0703AD9E",
+          "team_reward": false
+        },
+        {
+          "id": "29EF9E145A9AA6A2",
+          "type": "jem_advancements:quest_item",
+          "item": "create:brass_ingot",
+          "count": 48,
+          "claim_key": "project_02/item/1",
+          "claim_reward_id": "29EF9E145A9AA6A2",
+          "team_reward": false
+        },
+        {
+          "id": "2F12127CB5F5B54C",
+          "type": "jem_advancements:quest_item",
+          "item": "create:shaft",
+          "count": 128,
+          "claim_key": "project_02/item/2",
+          "claim_reward_id": "2F12127CB5F5B54C",
+          "team_reward": false
+        },
+        {
+          "id": "22F2C9F8372A3FDE",
+          "type": "jem_advancements:quest_item",
+          "item": "create:fluid_pipe",
+          "count": 64,
+          "claim_key": "project_02/item/3",
+          "claim_reward_id": "22F2C9F8372A3FDE",
+          "team_reward": false
+        },
+        {
+          "id": "26F2DFB0181CCFAE",
+          "type": "jem_advancements:quest_item",
+          "item": "create:cogwheel",
+          "count": 64,
+          "claim_key": "project_02/item/4",
+          "claim_reward_id": "26F2DFB0181CCFAE",
+          "team_reward": false
+        },
+        {
+          "id": "254EA9C794DF1043",
+          "type": "jem_advancements:quest_xp",
+          "xp": 550,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_02",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "271FE8BFD7A1EC46",
+      "title": "{\"translate\":\"jem.atlas.card.project_03.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_03.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_03.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_03.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_03.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_03.reward\"}"
+      ],
+      "icon": "create:track",
+      "x": -10.368,
+      "y": -3.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "22E33060F98DBFF0",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_03.condition\"}",
+          "icon": "create:track",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A52385357E7BD9A",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:station_platform",
+          "count": 128,
+          "claim_key": "project_03/item/0",
+          "claim_reward_id": "2A52385357E7BD9A",
+          "team_reward": false
+        },
+        {
+          "id": "21DE6B32436E9355",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:metro_casing",
+          "count": 64,
+          "claim_key": "project_03/item/1",
+          "claim_reward_id": "21DE6B32436E9355",
+          "team_reward": false
+        },
+        {
+          "id": "2A8BC28218691642",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:metro_window",
+          "count": 48,
+          "claim_key": "project_03/item/2",
+          "claim_reward_id": "2A8BC28218691642",
+          "team_reward": false
+        },
+        {
+          "id": "288E46A3850FFD8E",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:brass_grab_rails",
+          "count": 24,
+          "claim_key": "project_03/item/3",
+          "claim_reward_id": "288E46A3850FFD8E",
+          "team_reward": false
+        },
+        {
+          "id": "20ED7BA81F87D724",
+          "type": "jem_advancements:quest_item",
+          "item": "bellsandwhistles:headlight",
+          "count": 8,
+          "claim_key": "project_03/item/4",
+          "claim_reward_id": "20ED7BA81F87D724",
+          "team_reward": false
+        },
+        {
+          "id": "2585262DEE05A8CF",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_03",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2449D4B1EB911551",
+      "title": "{\"translate\":\"jem.atlas.card.project_04.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_04.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_04.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_04.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_04.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_04.reward\"}"
+      ],
+      "icon": "minecraft:chest",
+      "x": -8.592,
+      "y": -3.0,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2AD4BF58812E2474",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_04.condition\"}",
+          "icon": "minecraft:chest",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CA42CCD9D925CB3",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:spruce_wall",
+          "count": 96,
+          "claim_key": "project_04/item/0",
+          "claim_reward_id": "2CA42CCD9D925CB3",
+          "team_reward": false
+        },
+        {
+          "id": "24894B16C78816BB",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:spruce_lattice",
+          "count": 64,
+          "claim_key": "project_04/item/1",
+          "claim_reward_id": "24894B16C78816BB",
+          "team_reward": false
+        },
+        {
+          "id": "28EC096764316E1D",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:oak_lantern",
+          "count": 24,
+          "claim_key": "project_04/item/2",
+          "claim_reward_id": "28EC096764316E1D",
+          "team_reward": false
+        },
+        {
+          "id": "2277F29D398AB5DB",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:oak_bench",
+          "count": 12,
+          "claim_key": "project_04/item/3",
+          "claim_reward_id": "2277F29D398AB5DB",
+          "team_reward": false
+        },
+        {
+          "id": "2019F200727D5FE9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_04",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A9BE2777A9B3A54",
+      "title": "{\"translate\":\"jem.atlas.card.project_05.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_05.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_05.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_05.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_05.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_05.reward\"}"
+      ],
+      "icon": "minecraft:calcite",
+      "x": -8.592,
+      "y": -0.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EA0FED018493095",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_05.condition\"}",
+          "icon": "minecraft:calcite",
+          "count": 6
+        },
+        {
+          "id": "22EA9D9FE331E51C",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_05.condition\"}",
+          "icon": "minecraft:calcite",
+          "count": 1
+        }
+      ],
+      "rewards": [
+        {
+          "id": "233AD317CE37AE7B",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_column",
+          "count": 128,
+          "claim_key": "project_05/item/0",
+          "claim_reward_id": "233AD317CE37AE7B",
+          "team_reward": false
+        },
+        {
+          "id": "2DF290909DAA74D2",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_frame",
+          "count": 64,
+          "claim_key": "project_05/item/1",
+          "claim_reward_id": "2DF290909DAA74D2",
+          "team_reward": false
+        },
+        {
+          "id": "20E20BC9AF65F16B",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:photograph_frame",
+          "count": 24,
+          "claim_key": "project_05/item/2",
+          "claim_reward_id": "20E20BC9AF65F16B",
+          "team_reward": false
+        },
+        {
+          "id": "221C6EB2B778547F",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:high_sensitivity_color_film",
+          "count": 8,
+          "claim_key": "project_05/item/3",
+          "claim_reward_id": "221C6EB2B778547F",
+          "team_reward": false
+        },
+        {
+          "id": "2C350499C5A305C8",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:dark_oak_shelf",
+          "count": 12,
+          "claim_key": "project_05/item/4",
+          "claim_reward_id": "2C350499C5A305C8",
+          "team_reward": false
+        },
+        {
+          "id": "2EA82784AB4358A1",
+          "type": "jem_advancements:quest_xp",
+          "xp": 400,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_05",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2A1D708C4108AC48",
+      "title": "{\"translate\":\"jem.atlas.card.project_06.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_06.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_06.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_06.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_06.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_06.reward\"}"
+      ],
+      "icon": "minecraft:compass",
+      "x": -10.848,
+      "y": -0.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2011BC4FB4664252",
+          "type": "item",
+          "item": "minecraft:compass",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "216F87C49CF274E6",
+          "type": "item",
+          "item": "minecraft:bucket",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "23B25EC37E25EA29",
+          "type": "item",
+          "item": "minecraft:spyglass",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "27AA00F4DB550AD2",
+          "type": "item",
+          "item": "minecraft:bow",
+          "count": 1,
+          "consume_items": false
+        },
+        {
+          "id": "22380FDB87D5BD23",
+          "type": "item",
+          "item": "minecraft:iron_pickaxe",
+          "count": 1,
+          "consume_items": false
+        }
+      ],
+      "rewards": [
+        {
+          "id": "24F8992009BCD2EF",
+          "type": "jem_advancements:quest_item",
+          "item": "xtraarrows:iron_lantern_arrow",
+          "count": 48,
+          "claim_key": "project_06/item/0",
+          "claim_reward_id": "24F8992009BCD2EF",
+          "team_reward": false
+        },
+        {
+          "id": "251EC05480F14A90",
+          "type": "jem_advancements:quest_item",
+          "item": "tide:bait",
+          "count": 48,
+          "claim_key": "project_06/item/1",
+          "claim_reward_id": "251EC05480F14A90",
+          "team_reward": false
+        },
+        {
+          "id": "2945A1A84A9C2970",
+          "type": "jem_advancements:quest_item",
+          "item": "farm_and_charm:roasted_chicken",
+          "count": 24,
+          "claim_key": "project_06/item/2",
+          "claim_reward_id": "2945A1A84A9C2970",
+          "team_reward": false
+        },
+        {
+          "id": "20A265AC86CC13B1",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:invisibility_elixir",
+          "count": 6,
+          "claim_key": "project_06/item/3",
+          "claim_reward_id": "20A265AC86CC13B1",
+          "team_reward": false
+        },
+        {
+          "id": "24D3F7573A8A13B0",
+          "type": "jem_advancements:quest_xp",
+          "xp": 220,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_06",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2EF08D47E6773910",
+      "title": "{\"translate\":\"jem.atlas.card.project_07.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_07.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_07.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_07.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_07.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_07.reward\"}"
+      ],
+      "icon": "immersive_melodies:bagpipe",
+      "x": -13.104,
+      "y": -0.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "29E82A4E72F481D2",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_07.condition\"}",
+          "icon": "immersive_melodies:bagpipe",
+          "count": 4
+        }
+      ],
+      "rewards": [
+        {
+          "id": "269E66C82D0D522B",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:sakura_paper_lantern",
+          "count": 32,
+          "claim_key": "project_07/item/0",
+          "claim_reward_id": "269E66C82D0D522B",
+          "team_reward": false
+        },
+        {
+          "id": "2424EB2F6CF2CC22",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 8,
+          "claim_key": "project_07/item/1",
+          "claim_reward_id": "2424EB2F6CF2CC22",
+          "team_reward": false
+        },
+        {
+          "id": "2125F218A5415D5A",
+          "type": "jem_advancements:quest_item",
+          "item": "bakery:strawberry_cupcake",
+          "count": 24,
+          "claim_key": "project_07/item/2",
+          "claim_reward_id": "2125F218A5415D5A",
+          "team_reward": false
+        },
+        {
+          "id": "26E47C05C53FAC2C",
+          "type": "jem_advancements:quest_xp",
+          "xp": 320,
+          "team_reward": false
+        },
+        {
+          "id": "24534B80FDF4B9B5",
+          "type": "choice",
+          "table_id": 2450000353764464480L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_07",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2B0C0B1DD9106FC8",
+      "title": "{\"translate\":\"jem.atlas.card.project_08.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.project_08.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.project_08.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_08.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_08.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.project_08.reward\"}"
+      ],
+      "icon": "minecraft:book",
+      "x": -15.36,
+      "y": -0.5,
+      "shape": "hexagon",
+      "size": 1.0,
+      "tasks": [
+        {
+          "id": "2EFB8AC7350B7B11",
+          "type": "custom",
+          "title": "{\"translate\":\"jem.atlas.card.project_08.condition\"}",
+          "icon": "minecraft:book",
+          "count": 8
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27A83999C632F18A",
+          "type": "jem_advancements:quest_item",
+          "item": "handcrafted:dark_oak_shelf",
+          "count": 16,
+          "claim_key": "project_08/item/0",
+          "claim_reward_id": "27A83999C632F18A",
+          "team_reward": false
+        },
+        {
+          "id": "22716BA00C66FBAE",
+          "type": "jem_advancements:quest_item",
+          "item": "bbb:stone_column",
+          "count": 96,
+          "claim_key": "project_08/item/1",
+          "claim_reward_id": "22716BA00C66FBAE",
+          "team_reward": false
+        },
+        {
+          "id": "25F8F8366CAA78AB",
+          "type": "jem_advancements:quest_item",
+          "item": "dustydecorations:regal_wallpaper",
+          "count": 64,
+          "claim_key": "project_08/item/2",
+          "claim_reward_id": "25F8F8366CAA78AB",
+          "team_reward": false
+        },
+        {
+          "id": "2353FB4D144C9DD8",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 12,
+          "claim_key": "project_08/item/3",
+          "claim_reward_id": "2353FB4D144C9DD8",
+          "team_reward": false
+        },
+        {
+          "id": "259CAF3990340891",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:photograph_frame",
+          "count": 32,
+          "claim_key": "project_08/item/4",
+          "claim_reward_id": "259CAF3990340891",
+          "team_reward": false
+        },
+        {
+          "id": "2E7AFC39784D47AC",
+          "type": "jem_advancements:quest_xp",
+          "xp": 450,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "project_08",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    }
+  ],
+  "images": [
+    {
+      "x": 0,
+      "y": 0,
+      "width": 44,
+      "height": 29.333333,
+      "image": "jem_advancements:textures/questbook/atlas/background-home.png",
+      "order": -100
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "width": 13.248,
+      "height": 7.394232558139534,
+      "image": "jem_advancements:textures/questbook/atlas/identity-home.jpg",
+      "order": -50
+    }
+  ],
+  "jem_rescue_entry_bounds": [
+    -18,
+    -12,
+    19,
+    12
+  ]
+}

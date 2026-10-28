@@ -68,6 +68,8 @@ public final class FoodState {
         double triggeredWind = 0;
         // Recovery talents react to any genuine other food, including unclassified native food.
         var previous = active(player);
+        String previousDish = previous == null ? "" : dish;
+        boolean admittedBundle = false;
         if (previous != null && !dish.equals(id.toString())) {
             double reserve = value(player, "reserve");
             if (reserve > 0 && ready("reserve", now)) {
@@ -91,6 +93,7 @@ public final class FoodState {
                     try { added = player.addEffect(new MobEffectInstance(JEMFood.BLESSING.get(), next.duration(), 0, false, false, true)); }
                     finally { internal = false; }
                     if (added) {
+                        admittedBundle = true;
                         dish = id.toString();
                         expires = now + next.duration();
                         if (next.traits().contains("hearth")) cooldowns.putIfAbsent("hearth", now + (long) value(player, "hearth"));
@@ -109,6 +112,12 @@ public final class FoodState {
         }
         pulse(player);
         save(player);
+        boolean activeBundle = admittedBundle && active(player) != null && dish.equals(id.toString());
+        if (activeBundle || meals.size() >= 5) {
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new FoodConsumptionEvent(
+                    player, previousDish.isEmpty() ? null : new ResourceLocation(previousDish), id,
+                    activeBundle, meals.size() >= 5));
+        }
     }
 
     public void pulse(ServerPlayer player) {

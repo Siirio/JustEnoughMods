@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_hazmat_processing"
+      }
+    },
+    "sulfur": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_hazmat_processing_sulfur"
+      }
+    },
+    "radon": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_hazmat_processing_radon"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "sulfur"
+    ],
+    [
+      "radon"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

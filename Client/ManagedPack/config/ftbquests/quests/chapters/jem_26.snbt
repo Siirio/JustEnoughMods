@@ -8,849 +8,931 @@
   "default_quest_shape": "circle",
   "default_hide_dependency_lines": true,
   "default_quest_size": 1.0,
-  "autofocus_id": "2FA8CB035117201E",
+  "autofocus_id": "2A0EE1820CF62FBF",
   "tags": [
-    "jem_rescue_v3"
+    "jem_visual_v4",
+    "jem_authored_v3"
   ],
   "progression_mode": "flexible",
   "quests": [
     {
-      "id": "23F877D7CF654E6B",
-      "title": "{\"translate\":\"jem.atlas.card.mg01.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg01.condition\"}",
+      "id": "2A0EE1820CF62FBF",
+      "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg01.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_magic_mg01.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg01.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg01.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg01.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg01.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg01.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg01.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg01.reward\"}"
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg01.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg01.guide_hint\"}"
       ],
       "icon": "irons_spellbooks:scroll",
-      "x": -15.0,
-      "y": -10.0,
+      "x": -4.6,
+      "y": -9.9,
       "shape": "hexagon",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "21138543EF3CC003",
+          "id": "277ED90894FCB0F5",
           "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg01.condition\"}",
+          "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg01.condition\"}",
           "icon": "irons_spellbooks:scroll",
           "count": 2
         }
       ],
       "rewards": [
         {
-          "id": "26AEED762A1A2EA5",
+          "id": "2B6BB591292C4C1C",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:common_ink",
-          "count": 8,
-          "claim_key": "mg01/item/0",
-          "claim_reward_id": "26AEED762A1A2EA5",
+          "count": 4,
+          "claim_key": "v2_magic_mg01/item/0",
+          "claim_reward_id": "2B6BB591292C4C1C",
           "team_reward": false
         },
         {
-          "id": "265CC001AD9CA53E",
+          "id": "21262E52F537BA5A",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_essence",
-          "count": 32,
-          "claim_key": "mg01/item/1",
-          "claim_reward_id": "265CC001AD9CA53E",
+          "count": 12,
+          "claim_key": "v2_magic_mg01/item/1",
+          "claim_reward_id": "21262E52F537BA5A",
           "team_reward": false
         },
         {
-          "id": "2CC21637FE843D9E",
+          "id": "257C7A4C25587D24",
           "type": "jem_advancements:quest_item",
           "item": "minecraft:paper",
-          "count": 32,
-          "claim_key": "mg01/item/2",
-          "claim_reward_id": "2CC21637FE843D9E",
+          "count": 12,
+          "claim_key": "v2_magic_mg01/item/2",
+          "claim_reward_id": "257C7A4C25587D24",
           "team_reward": false
         },
         {
-          "id": "2F928BB6CF98ACE2",
+          "id": "267C919A46DC6783",
           "type": "jem_advancements:quest_xp",
-          "xp": 100,
+          "xp": 25,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg01",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_magic_mg01",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2F43CD88E92AD6FA",
-      "title": "{\"translate\":\"jem.atlas.card.mg02.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
+      "id": "2641092D5A24948D",
+      "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg02.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_magic_mg02.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg02.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg02.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg02.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg02.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg02.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg02.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg02.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg02.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:inscription_table",
-      "x": -12.4,
-      "y": -9.802,
+      "x": -2.3,
+      "y": -9.9,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2C9DFD3A06582B99",
+          "id": "2693FD7A8EE2DC91",
           "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
+          "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg02.condition\"}",
           "icon": "irons_spellbooks:inscription_table",
           "count": 1
         },
         {
-          "id": "221907B2046D6E5F",
+          "id": "2BBD858D5CEDF476",
           "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg02.condition\"}",
+          "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg02.condition\"}",
           "icon": "irons_spellbooks:inscription_table",
           "count": 1
         }
       ],
       "rewards": [
         {
-          "id": "26EBF865169CC7FC",
+          "id": "2805CE9138F1BABA",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:common_ink",
-          "count": 16,
-          "claim_key": "mg02/item/0",
-          "claim_reward_id": "26EBF865169CC7FC",
+          "count": 4,
+          "claim_key": "v2_magic_mg02/item/0",
+          "claim_reward_id": "2805CE9138F1BABA",
           "team_reward": false
         },
         {
-          "id": "21CD7962A38DA08D",
+          "id": "2106F9087DFEC046",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_essence",
-          "count": 64,
-          "claim_key": "mg02/item/1",
-          "claim_reward_id": "21CD7962A38DA08D",
+          "count": 16,
+          "claim_key": "v2_magic_mg02/item/1",
+          "claim_reward_id": "2106F9087DFEC046",
           "team_reward": false
         },
         {
-          "id": "24390A9A476FE7F0",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:oakskin_elixir",
-          "count": 8,
-          "claim_key": "mg02/item/2",
-          "claim_reward_id": "24390A9A476FE7F0",
-          "team_reward": false
-        },
-        {
-          "id": "296BCB3958A304F3",
+          "id": "2945F3D92388C84F",
           "type": "jem_advancements:quest_xp",
-          "xp": 200,
+          "xp": 50,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg02",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_magic_mg02",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "26112A5D3076EBF7",
-      "title": "{\"translate\":\"jem.atlas.card.mg03.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg03.condition\"}",
+      "id": "2B86620D1ECD72A7",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg03.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg03.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg03.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg03.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_inscribe.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "irons_spellbooks:scroll",
-      "x": -9.8,
-      "y": -10.051,
+      "icon": "irons_spellbooks:inscription_table",
+      "x": 0,
+      "y": -9.9,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "26D4625E79122BDD",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg03.condition\"}",
-          "icon": "irons_spellbooks:scroll",
-          "count": 1
+          "id": "2283D0B2BBB1EEF7",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_inscribe"
         }
       ],
       "rewards": [
         {
-          "id": "28A4F4A5D50AB6B3",
+          "id": "259A10DDAAB44283",
           "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:common_ink",
-          "count": 8,
-          "claim_key": "mg03/item/0",
-          "claim_reward_id": "28A4F4A5D50AB6B3",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 16,
+          "claim_key": "v2_mag_inscribe/item/0",
+          "claim_reward_id": "259A10DDAAB44283",
           "team_reward": false
         },
         {
-          "id": "2AD82B26127D6D08",
+          "id": "24DCB06B62F8F984",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:oakskin_elixir",
-          "count": 8,
-          "claim_key": "mg03/item/1",
-          "claim_reward_id": "2AD82B26127D6D08",
+          "count": 2,
+          "claim_key": "v2_mag_inscribe/item/1",
+          "claim_reward_id": "24DCB06B62F8F984",
           "team_reward": false
         },
         {
-          "id": "2603FEB6DDA002E7",
+          "id": "24AE8B37F46DD250",
           "type": "jem_advancements:quest_xp",
           "xp": 80,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg03",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_inscribe",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "29AFEA83EC1F6A38",
-      "title": "{\"translate\":\"jem.atlas.card.mg04.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg04.condition\"}",
+      "id": "27373B258930148F",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_cast.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_cast.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg04.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cast.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg04.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cast.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg04.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cast.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg04.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cast.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cast.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "irons_spellbooks:fire_rune",
-      "x": -7.2,
-      "y": -10.185,
-      "shape": "hexagon",
-      "size": 1.0,
+      "icon": "irons_spellbooks:scroll",
+      "x": 0,
+      "y": -5.3,
+      "shape": "circle",
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2E67201C5FF14F96",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg04.condition\"}",
-          "icon": "irons_spellbooks:fire_rune",
-          "count": 3
+          "id": "2F09A33C563C3BDE",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_cast"
         }
       ],
       "rewards": [
         {
-          "id": "27702A2DE9320BF4",
+          "id": "2B4FD10CA04BCE74",
           "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:blank_rune",
-          "count": 8,
-          "claim_key": "mg04/item/0",
-          "claim_reward_id": "27702A2DE9320BF4",
+          "item": "irons_spellbooks:common_ink",
+          "count": 4,
+          "claim_key": "v2_mag_cast/item/0",
+          "claim_reward_id": "2B4FD10CA04BCE74",
           "team_reward": false
         },
         {
-          "id": "268C77C30C780C0F",
+          "id": "2E81211895840D86",
           "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:arcane_ingot",
-          "count": 12,
-          "claim_key": "mg04/item/1",
-          "claim_reward_id": "268C77C30C780C0F",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 20,
+          "claim_key": "v2_mag_cast/item/1",
+          "claim_reward_id": "2E81211895840D86",
           "team_reward": false
         },
         {
-          "id": "29E1E8F8A6DB6E79",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:oakskin_elixir",
-          "count": 12,
-          "claim_key": "mg04/item/2",
-          "claim_reward_id": "29E1E8F8A6DB6E79",
-          "team_reward": false
-        },
-        {
-          "id": "2B7E7694AA9D27CF",
+          "id": "2E5C0F6B08E4443D",
           "type": "jem_advancements:quest_xp",
-          "xp": 260,
+          "xp": 90,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg04",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_cast",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2FA8CB035117201E",
-      "title": "{\"translate\":\"jem.atlas.card.mg05.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg05.condition\"}",
+      "id": "26D561D21EE0860F",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_forge.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_forge.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg05.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_forge.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg05.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_forge.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg05.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_forge.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg05.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_forge.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_forge.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:scroll_forge",
-      "x": -7.007,
-      "y": -7.385,
+      "x": 2.3,
+      "y": -8.6,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "290CDD1CEACD297B",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg05.condition\"}",
-          "icon": "irons_spellbooks:scroll_forge",
-          "count": 1
+          "id": "23E93C15F4E1973A",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_forge"
         }
       ],
       "rewards": [
         {
-          "id": "2E21FAD95564ADC7",
+          "id": "22A0AF52C33BCEFA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:blank_rune",
+          "count": 2,
+          "claim_key": "v2_mag_forge/item/0",
+          "claim_reward_id": "22A0AF52C33BCEFA",
+          "team_reward": false
+        },
+        {
+          "id": "25851E3D6804C2C7",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:uncommon_ink",
-          "count": 12,
-          "claim_key": "mg05/item/0",
-          "claim_reward_id": "2E21FAD95564ADC7",
+          "count": 4,
+          "claim_key": "v2_mag_forge/item/1",
+          "claim_reward_id": "25851E3D6804C2C7",
           "team_reward": false
         },
         {
-          "id": "2430CC9944AB1312",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:arcane_essence",
-          "count": 64,
-          "claim_key": "mg05/item/1",
-          "claim_reward_id": "2430CC9944AB1312",
-          "team_reward": false
-        },
-        {
-          "id": "2646CC448468DEB7",
+          "id": "229DE339A7A394AC",
           "type": "jem_advancements:quest_item",
           "item": "minecraft:paper",
-          "count": 64,
-          "claim_key": "mg05/item/2",
-          "claim_reward_id": "2646CC448468DEB7",
+          "count": 16,
+          "claim_key": "v2_mag_forge/item/2",
+          "claim_reward_id": "229DE339A7A394AC",
           "team_reward": false
         },
         {
-          "id": "2CF20E104061EC43",
+          "id": "2694BBE94BEB2AF9",
           "type": "jem_advancements:quest_xp",
-          "xp": 180,
+          "xp": 120,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg05",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_forge",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2535CCD044AF7F0E",
-      "title": "{\"translate\":\"jem.atlas.card.mg06.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg06.condition\"}",
+      "id": "2EB8C6C4FA7EBB4C",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg06.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg06.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg06.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg06.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_rare_scroll.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:uncommon_ink",
-      "x": -9.607,
-      "y": -7.251,
-      "shape": "hexagon",
-      "size": 1.0,
+      "x": 4.6,
+      "y": -8.6,
+      "shape": "circle",
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2228237CFA625BFA",
-          "type": "item",
-          "item": "irons_spellbooks:uncommon_ink",
-          "count": 1,
-          "consume_items": false
-        },
-        {
-          "id": "28140FA04F50EE77",
-          "type": "item",
-          "item": "irons_spellbooks:rare_ink",
-          "count": 1,
-          "consume_items": false
+          "id": "26B3B3FB35C7B72B",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_rare_scroll"
         }
       ],
       "rewards": [
         {
-          "id": "2D7315F61A276E2E",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:epic_ink",
-          "count": 4,
-          "claim_key": "mg06/item/0",
-          "claim_reward_id": "2D7315F61A276E2E",
-          "team_reward": false
-        },
-        {
-          "id": "2E2A9A2DECF815D2",
+          "id": "2576BE3837201645",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:rare_ink",
-          "count": 12,
-          "claim_key": "mg06/item/1",
-          "claim_reward_id": "2E2A9A2DECF815D2",
+          "count": 3,
+          "claim_key": "v2_mag_rare_scroll/item/0",
+          "claim_reward_id": "2576BE3837201645",
           "team_reward": false
         },
         {
-          "id": "220DC63695FA634D",
+          "id": "2C5811EA597801DB",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_essence",
-          "count": 64,
-          "claim_key": "mg06/item/2",
-          "claim_reward_id": "220DC63695FA634D",
+          "count": 32,
+          "claim_key": "v2_mag_rare_scroll/item/1",
+          "claim_reward_id": "2C5811EA597801DB",
           "team_reward": false
         },
         {
-          "id": "2C44BEE9CC924687",
-          "type": "jem_advancements:quest_xp",
-          "xp": 300,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "mg06",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "222539A0D01316AA",
-      "title": "{\"translate\":\"jem.atlas.card.mg07.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg07.condition\"}",
-      "description": [
-        "{\"translate\":\"jem.atlas.card.mg07.condition\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg07.purpose\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg07.tip\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg07.reward\"}",
-        "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
-      ],
-      "icon": "irons_spellbooks:arcane_anvil",
-      "x": -12.207,
-      "y": -7.002,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "25FC73C5C05DB26F",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg07.condition\"}",
-          "icon": "irons_spellbooks:arcane_anvil",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "22D778DE32D3ECD0",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:arcane_ingot",
-          "count": 16,
-          "claim_key": "mg07/item/0",
-          "claim_reward_id": "22D778DE32D3ECD0",
-          "team_reward": false
-        },
-        {
-          "id": "228554AAFC38FFB8",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:oakskin_elixir",
-          "count": 12,
-          "claim_key": "mg07/item/1",
-          "claim_reward_id": "228554AAFC38FFB8",
-          "team_reward": false
-        },
-        {
-          "id": "2228594C901D9D6E",
+          "id": "2085C0CA873D9333",
           "type": "jem_advancements:quest_xp",
           "xp": 180,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg07",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_rare_scroll",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2F97518169FC0248",
-      "title": "{\"translate\":\"jem.atlas.card.mg08.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg08.condition\"}",
+      "id": "2649AA0469A871A4",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg08.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg08.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg08.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg08.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_upgrade_spell.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "irons_spellbooks:shriving_stone",
-      "x": -14.807,
-      "y": -7.2,
-      "shape": "hexagon",
-      "size": 1.0,
+      "icon": "irons_spellbooks:arcane_anvil",
+      "x": 2.3,
+      "y": -6.3,
+      "shape": "circle",
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2031A1FE3B4875F9",
-          "type": "item",
-          "item": "irons_spellbooks:shriving_stone",
-          "count": 1,
-          "consume_items": false
-        },
-        {
-          "id": "2049A8996188902D",
-          "type": "item",
-          "item": "minecraft:diamond_sword",
-          "count": 1,
-          "consume_items": false
+          "id": "24DEAE1974BDD126",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_upgrade_spell"
         }
       ],
       "rewards": [
         {
-          "id": "20C62E217165474B",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:divine_pearl",
-          "count": 8,
-          "claim_key": "mg08/item/0",
-          "claim_reward_id": "20C62E217165474B",
-          "team_reward": false
-        },
-        {
-          "id": "2D0BCFCBF17B61F5",
+          "id": "29FC776CA0494FD4",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_ingot",
-          "count": 12,
-          "claim_key": "mg08/item/1",
-          "claim_reward_id": "2D0BCFCBF17B61F5",
-          "team_reward": false
-        },
-        {
-          "id": "258F79F0D8AF4D49",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:oakskin_elixir",
           "count": 6,
-          "claim_key": "mg08/item/2",
-          "claim_reward_id": "258F79F0D8AF4D49",
+          "claim_key": "v2_mag_upgrade_spell/item/0",
+          "claim_reward_id": "29FC776CA0494FD4",
           "team_reward": false
         },
         {
-          "id": "2602DB601C33F35F",
+          "id": "2736707AFC8082FA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 2,
+          "claim_key": "v2_mag_upgrade_spell/item/1",
+          "claim_reward_id": "2736707AFC8082FA",
+          "team_reward": false
+        },
+        {
+          "id": "2062E5683FBB7282",
           "type": "jem_advancements:quest_xp",
-          "xp": 200,
+          "xp": 170,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg08",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_upgrade_spell",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "21FA3ACB8E36F9E2",
-      "title": "{\"translate\":\"jem.atlas.card.mg09.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg09.condition\"}",
+      "id": "2D933A47F966F05F",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_imbue.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_imbue.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg09.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_imbue.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg09.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_imbue.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg09.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_imbue.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg09.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_imbue.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_imbue.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:shriving_stone",
+      "x": 4.6,
+      "y": -6.3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "26A4FD8841D8314E",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_imbue"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "218EB00B0333989E",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_ingot",
+          "count": 6,
+          "claim_key": "v2_mag_imbue/item/0",
+          "claim_reward_id": "218EB00B0333989E",
+          "team_reward": false
+        },
+        {
+          "id": "26F03F82754177A4",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 3,
+          "claim_key": "v2_mag_imbue/item/1",
+          "claim_reward_id": "26F03F82754177A4",
+          "team_reward": false
+        },
+        {
+          "id": "2FE5780EA0B3644F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 190,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_imbue",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2E41E3554E6C5E7C",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_erase.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_erase.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v2_mag_erase.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_erase.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_erase.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_erase.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_erase.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:shriving_stone",
+      "x": 6.9,
+      "y": -6.3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2F0C877E1AF5C4C0",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_erase"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29F87284092AC4FD",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 24,
+          "claim_key": "v2_mag_erase/item/0",
+          "claim_reward_id": "29F87284092AC4FD",
+          "team_reward": false
+        },
+        {
+          "id": "27A6B366F18529A7",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:uncommon_ink",
+          "count": 3,
+          "claim_key": "v2_mag_erase/item/1",
+          "claim_reward_id": "27A6B366F18529A7",
+          "team_reward": false
+        },
+        {
+          "id": "2F4BBFDACB53C0EE",
+          "type": "jem_advancements:quest_xp",
+          "xp": 140,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_erase",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2DF08489D8F5495D",
+      "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg09.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_magic_mg09.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg09.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg09.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg09.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg09.reward\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:archevoker_boots",
-      "x": -14.897,
-      "y": -4.4,
+      "x": 6.9,
+      "y": -3.7,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "254946218A17CB14",
+          "id": "292283575ED27CFC",
           "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg09.condition\"}",
+          "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg09.condition\"}",
           "icon": "irons_spellbooks:archevoker_boots",
           "count": 1
         }
       ],
       "rewards": [
         {
-          "id": "20BF514773C7ABE8",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:rare_ink",
-          "count": 12,
-          "claim_key": "mg09/item/0",
-          "claim_reward_id": "20BF514773C7ABE8",
-          "team_reward": false
-        },
-        {
-          "id": "27F5C22467B1FD79",
+          "id": "286B3605192857E2",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_ingot",
-          "count": 24,
-          "claim_key": "mg09/item/1",
-          "claim_reward_id": "27F5C22467B1FD79",
+          "count": 6,
+          "claim_key": "v2_magic_mg09/item/0",
+          "claim_reward_id": "286B3605192857E2",
           "team_reward": false
         },
         {
-          "id": "21C01C8FEF8D3876",
+          "id": "23EA9171DA294994",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:rare_ink",
+          "count": 2,
+          "claim_key": "v2_magic_mg09/item/1",
+          "claim_reward_id": "23EA9171DA294994",
+          "team_reward": false
+        },
+        {
+          "id": "2288376720EC98BB",
           "type": "jem_advancements:quest_xp",
-          "xp": 240,
+          "xp": 130,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg09",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_magic_mg09",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2E7BBA03B1C82A0F",
-      "title": "{\"translate\":\"jem.atlas.card.mg10.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg10.condition\"}",
+      "id": "266D3E6DFDD78E05",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_orb.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_orb.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg10.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_orb.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg10.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_orb.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg10.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_orb.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg10.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_orb.reward\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:blood_upgrade_orb",
-      "x": 8.0,
-      "y": -10.0,
+      "x": 9.2,
+      "y": -3.7,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "265AF03B1C82949B",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg10.condition\"}",
-          "icon": "irons_spellbooks:blood_upgrade_orb",
-          "count": 1
+          "id": "2ED3F3D092FABE81",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_orb"
         }
       ],
       "rewards": [
         {
-          "id": "22CEAF1856BB125C",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:arcane_essence",
-          "count": 96,
-          "claim_key": "mg10/item/0",
-          "claim_reward_id": "22CEAF1856BB125C",
-          "team_reward": false
-        },
-        {
-          "id": "2411F09ECB6CD1D5",
+          "id": "2721D9BDE5D38295",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:epic_ink",
-          "count": 4,
-          "claim_key": "mg10/item/1",
-          "claim_reward_id": "2411F09ECB6CD1D5",
+          "count": 2,
+          "claim_key": "v2_mag_orb/item/0",
+          "claim_reward_id": "2721D9BDE5D38295",
           "team_reward": false
         },
         {
-          "id": "24EBE46DC5081EBC",
+          "id": "26A9657CBB52BFEA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 40,
+          "claim_key": "v2_mag_orb/item/1",
+          "claim_reward_id": "26A9657CBB52BFEA",
+          "team_reward": false
+        },
+        {
+          "id": "2F0C30649335EEEF",
           "type": "jem_advancements:quest_xp",
-          "xp": 350,
-          "team_reward": false
-        },
-        {
-          "id": "2FFC2C1A45E38C58",
-          "type": "choice",
-          "table_id": 2475810173128267351L,
+          "xp": 230,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg10",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_orb",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "29587EF124291797",
-      "title": "{\"translate\":\"jem.atlas.card.mg11.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg11.condition\"}",
+      "id": "203C34F48FE0EA8E",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_accessory.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_accessory.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg11.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_accessory.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg11.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_accessory.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg11.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_accessory.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg11.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_accessory.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_accessory.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:affinity_ring",
-      "x": 10.6,
-      "y": -9.752,
+      "x": 11.5,
+      "y": -3.7,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2CB963D9718B7397",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg11.condition\"}",
-          "icon": "irons_spellbooks:affinity_ring",
-          "count": 1
+          "id": "241B93D17D8108F4",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_accessory"
         }
       ],
       "rewards": [
         {
-          "id": "261A3F929BD9E6EF",
+          "id": "2B6AE478741DA19D",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:oakskin_elixir",
-          "count": 16,
-          "claim_key": "mg11/item/0",
-          "claim_reward_id": "261A3F929BD9E6EF",
+          "count": 4,
+          "claim_key": "v2_mag_accessory/item/0",
+          "claim_reward_id": "2B6AE478741DA19D",
           "team_reward": false
         },
         {
-          "id": "25DECE11AE9C2740",
+          "id": "2303831F5BEE859D",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_essence",
-          "count": 64,
-          "claim_key": "mg11/item/1",
-          "claim_reward_id": "25DECE11AE9C2740",
+          "count": 24,
+          "claim_key": "v2_mag_accessory/item/1",
+          "claim_reward_id": "2303831F5BEE859D",
           "team_reward": false
         },
         {
-          "id": "2BB572B17679EC0C",
+          "id": "2EA636EA101D8226",
           "type": "jem_advancements:quest_xp",
-          "xp": 300,
-          "team_reward": false
-        },
-        {
-          "id": "264BCE1DA91B788E",
-          "type": "choice",
-          "table_id": 2877334246928302388L,
+          "xp": 150,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg11",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_accessory",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2932DE394091B599",
-      "title": "{\"translate\":\"jem.atlas.card.mg12.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg12.condition\"}",
+      "id": "294FA81AD101239C",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg12.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg12.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg12.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg12.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_cauldron.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:alchemist_cauldron",
-      "x": 13.2,
-      "y": -10.064,
+      "x": -6.9,
+      "y": 5.4,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2FC3CB668BA15FAF",
+          "id": "2B031792EF14839B",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_cauldron"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D806B739EAAD4EB",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:glass_bottle",
+          "count": 8,
+          "claim_key": "v2_mag_cauldron/item/0",
+          "claim_reward_id": "2D806B739EAAD4EB",
+          "team_reward": false
+        },
+        {
+          "id": "2738AE14AB7ECED5",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 16,
+          "claim_key": "v2_mag_cauldron/item/1",
+          "claim_reward_id": "2738AE14AB7ECED5",
+          "team_reward": false
+        },
+        {
+          "id": "29C8C2EC45B127F6",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_cauldron",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2030CC5155974B29",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_elixir.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_elixir.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v2_mag_elixir.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_elixir.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_elixir.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_elixir.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:alchemist_cauldron",
+      "x": -9.2,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2CDA58E59431A8F7",
           "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg12.condition\"}",
+          "title": "{\"translate\":\"jem.atlas.card.v2_mag_elixir.condition\"}",
           "icon": "irons_spellbooks:alchemist_cauldron",
           "count": 1
         }
       ],
       "rewards": [
         {
-          "id": "28B8B3658BFBD096",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:evasion_elixir",
-          "count": 6,
-          "claim_key": "mg12/item/0",
-          "claim_reward_id": "28B8B3658BFBD096",
-          "team_reward": false
-        },
-        {
-          "id": "24FBF7B5B3698B88",
+          "id": "2EEC11E2B42B3B6B",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:oakskin_elixir",
-          "count": 6,
-          "claim_key": "mg12/item/1",
-          "claim_reward_id": "24FBF7B5B3698B88",
+          "count": 3,
+          "claim_key": "v2_mag_elixir/item/0",
+          "claim_reward_id": "2EEC11E2B42B3B6B",
           "team_reward": false
         },
         {
-          "id": "2B5254AD9041F5F7",
+          "id": "2FE1EF81ADCE1C07",
           "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:invisibility_elixir",
-          "count": 6,
-          "claim_key": "mg12/item/2",
-          "claim_reward_id": "2B5254AD9041F5F7",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 3,
+          "claim_key": "v2_mag_elixir/item/1",
+          "claim_reward_id": "2FE1EF81ADCE1C07",
           "team_reward": false
         },
         {
-          "id": "20FC0D5E317E7721",
+          "id": "2D94DFFD7BCF3B99",
           "type": "jem_advancements:quest_xp",
-          "xp": 220,
+          "xp": 100,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg12",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_elixir",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2BB6648F77E59D07",
-      "title": "{\"translate\":\"jem.atlas.card.mg13.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg13.condition\"}",
+      "id": "20D0922BB4BFE03A",
+      "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg13.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_magic_mg13.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg13.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg13.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg13.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg13.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg13.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg13.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg13.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg13.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg13.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:wayward_compass",
-      "x": 15.8,
-      "y": -10.231,
+      "x": 6.9,
+      "y": 5.4,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "2991ED2E785FCACF",
+          "id": "2E7C193697E2233C",
           "type": "item",
           "item": "irons_spellbooks:wayward_compass",
           "count": 1,
@@ -859,726 +941,1853 @@
       ],
       "rewards": [
         {
-          "id": "2F16F32B74323D9E",
-          "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:iron_lantern_arrow",
-          "count": 32,
-          "claim_key": "mg13/item/0",
-          "claim_reward_id": "2F16F32B74323D9E",
-          "team_reward": false
-        },
-        {
-          "id": "24D647B779707218",
+          "id": "2EBF5B33651B8AD6",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:invisibility_elixir",
-          "count": 8,
-          "claim_key": "mg13/item/1",
-          "claim_reward_id": "24D647B779707218",
+          "count": 3,
+          "claim_key": "v2_magic_mg13/item/0",
+          "claim_reward_id": "2EBF5B33651B8AD6",
           "team_reward": false
         },
         {
-          "id": "2C6AD5585CEFE590",
-          "type": "jem_advancements:quest_item",
-          "item": "farm_and_charm:chicken_wrapped_in_bacon",
-          "count": 16,
-          "claim_key": "mg13/item/2",
-          "claim_reward_id": "2C6AD5585CEFE590",
-          "team_reward": false
-        },
-        {
-          "id": "25ABAC24CE48AD17",
-          "type": "jem_advancements:quest_xp",
-          "xp": 200,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "mg13",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "2B54B620C0D075CF",
-      "title": "{\"translate\":\"jem.atlas.card.mg14.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg14.condition\"}",
-      "description": [
-        "{\"translate\":\"jem.atlas.card.mg14.condition\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg14.purpose\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg14.tip\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg14.reward\"}",
-        "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
-      ],
-      "icon": "irons_spellbooks:legendary_ink",
-      "x": 16.041,
-      "y": -7.431,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2D3BF7400F212B7F",
-          "type": "kill",
-          "entity": "irons_spellbooks:dead_king",
-          "value": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2E2C54CFDB912C91",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:legendary_ink",
-          "count": 4,
-          "claim_key": "mg14/item/0",
-          "claim_reward_id": "2E2C54CFDB912C91",
-          "team_reward": false
-        },
-        {
-          "id": "2833883783A1D5B9",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:arcane_essence",
-          "count": 128,
-          "claim_key": "mg14/item/1",
-          "claim_reward_id": "2833883783A1D5B9",
-          "team_reward": false
-        },
-        {
-          "id": "242BA8B43D6963C4",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:greater_oakskin_elixir",
-          "count": 8,
-          "claim_key": "mg14/item/2",
-          "claim_reward_id": "242BA8B43D6963C4",
-          "team_reward": false
-        },
-        {
-          "id": "238A4954F3A54C60",
-          "type": "jem_advancements:quest_xp",
-          "xp": 1100,
-          "team_reward": false
-        },
-        {
-          "id": "216D3FDC67127960",
-          "type": "choice",
-          "table_id": 2883615225908123570L,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "mg14",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "20B5E710139CEB7B",
-      "title": "{\"translate\":\"jem.atlas.card.mg15.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg15.condition\"}",
-      "description": [
-        "{\"translate\":\"jem.atlas.card.mg15.condition\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg15.purpose\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg15.tip\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.mg15.reward\"}",
-        "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
-      ],
-      "icon": "irons_spellbooks:eldritch_manuscript",
-      "x": 13.441,
-      "y": -7.264,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "2091934FA8F5488B",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg15.condition\"}",
-          "icon": "irons_spellbooks:eldritch_manuscript",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "21E43DE642A6A744",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:epic_ink",
-          "count": 4,
-          "claim_key": "mg15/item/0",
-          "claim_reward_id": "21E43DE642A6A744",
-          "team_reward": false
-        },
-        {
-          "id": "2A54548B5F065F9F",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:arcane_essence",
-          "count": 64,
-          "claim_key": "mg15/item/1",
-          "claim_reward_id": "2A54548B5F065F9F",
-          "team_reward": false
-        },
-        {
-          "id": "24C9D259DF2EC99E",
+          "id": "20CF64481308709C",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:oakskin_elixir",
-          "count": 12,
-          "claim_key": "mg15/item/2",
-          "claim_reward_id": "24C9D259DF2EC99E",
+          "count": 3,
+          "claim_key": "v2_magic_mg13/item/1",
+          "claim_reward_id": "20CF64481308709C",
           "team_reward": false
         },
         {
-          "id": "2AF3F9C64CEA59A8",
+          "id": "2ECAACA7EA6E8112",
           "type": "jem_advancements:quest_xp",
-          "xp": 240,
+          "xp": 140,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg15",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_magic_mg13",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2BED97D634301DEA",
-      "title": "{\"translate\":\"jem.atlas.card.mg16.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg16.condition\"}",
+      "id": "2174317F1E44B97E",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_relocate.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_relocate.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg16.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_relocate.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg16.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_relocate.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg16.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_relocate.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg16.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_relocate.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_relocate.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:hither_thither_wand",
-      "x": 10.841,
-      "y": -6.952,
+      "x": 9.2,
+      "y": 5.4,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "246CB062915484D0",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg16.condition\"}",
-          "icon": "irons_spellbooks:hither_thither_wand",
-          "count": 1
+          "id": "2D0DCCDF251DD0E0",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_relocate"
         }
       ],
       "rewards": [
         {
-          "id": "2F76315AF0AFA2E3",
+          "id": "2DD611021060847C",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:arcane_ingot",
-          "count": 24,
-          "claim_key": "mg16/item/0",
-          "claim_reward_id": "2F76315AF0AFA2E3",
-          "team_reward": false
-        },
-        {
-          "id": "2121F5328D6D135B",
-          "type": "jem_advancements:quest_item",
-          "item": "irons_spellbooks:divine_pearl",
           "count": 8,
-          "claim_key": "mg16/item/1",
-          "claim_reward_id": "2121F5328D6D135B",
+          "claim_key": "v2_mag_relocate/item/0",
+          "claim_reward_id": "2DD611021060847C",
           "team_reward": false
         },
         {
-          "id": "2DD4825ED9B73FD2",
+          "id": "22ACBA8F6740698E",
           "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:iron_ender_arrow",
+          "item": "irons_spellbooks:arcane_essence",
           "count": 32,
-          "claim_key": "mg16/item/2",
-          "claim_reward_id": "2DD4825ED9B73FD2",
+          "claim_key": "v2_mag_relocate/item/1",
+          "claim_reward_id": "22ACBA8F6740698E",
           "team_reward": false
         },
         {
-          "id": "2E203A4A7883EDDE",
+          "id": "256E8578DE5D7C0C",
           "type": "jem_advancements:quest_xp",
-          "xp": 280,
+          "xp": 230,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg16",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_mag_relocate",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "285C49D545D40B2A",
-      "title": "{\"translate\":\"jem.atlas.card.mg17.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.mg17.condition\"}",
+      "id": "21BBD9B2FA27B452",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.mg17.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg17.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg17.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.mg17.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_eldritch.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:eldritch_manuscript",
+      "x": 11.5,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2E21AC5218978137",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_eldritch"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D0FFB66AB039F3C",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 2,
+          "claim_key": "v2_mag_eldritch/item/0",
+          "claim_reward_id": "2D0FFB66AB039F3C",
+          "team_reward": false
+        },
+        {
+          "id": "2FA5D036DB32FDA6",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 48,
+          "claim_key": "v2_mag_eldritch/item/1",
+          "claim_reward_id": "2FA5D036DB32FDA6",
+          "team_reward": false
+        },
+        {
+          "id": "25338EA32A904AF8",
+          "type": "jem_advancements:quest_xp",
+          "xp": 270,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_eldritch",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "262FE9777E584969",
+      "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg17.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_magic_mg17.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg17.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg17.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg17.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_magic_mg17.reward\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "irons_spellbooks:arcane_ingot",
-      "x": 8.241,
-      "y": -7.2,
+      "x": 11.5,
+      "y": -1.4,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "22A0660830BD7E3B",
+          "id": "2B10AA7D1764D3AE",
           "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.mg17.condition\"}",
+          "title": "{\"translate\":\"jem.atlas.card.v2_magic_mg17.condition\"}",
           "icon": "irons_spellbooks:arcane_ingot",
           "count": 3
         }
       ],
       "rewards": [
         {
-          "id": "29155D4D2E5E07FA",
+          "id": "24F0556B686670A5",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:oakskin_elixir",
-          "count": 12,
-          "claim_key": "mg17/item/0",
-          "claim_reward_id": "29155D4D2E5E07FA",
+          "count": 4,
+          "claim_key": "v2_magic_mg17/item/0",
+          "claim_reward_id": "24F0556B686670A5",
           "team_reward": false
         },
         {
-          "id": "2E75CECA0EA9EFDD",
+          "id": "2073290B28FB4162",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:rare_ink",
-          "count": 6,
-          "claim_key": "mg17/item/1",
-          "claim_reward_id": "2E75CECA0EA9EFDD",
+          "count": 2,
+          "claim_key": "v2_magic_mg17/item/1",
+          "claim_reward_id": "2073290B28FB4162",
           "team_reward": false
         },
         {
-          "id": "292F2C6298E03AB8",
-          "type": "jem_advancements:quest_item",
-          "item": "farm_and_charm:roasted_chicken",
-          "count": 12,
-          "claim_key": "mg17/item/2",
-          "claim_reward_id": "292F2C6298E03AB8",
-          "team_reward": false
-        },
-        {
-          "id": "2223F1187BFF3510",
+          "id": "263677DA379417AE",
           "type": "jem_advancements:quest_xp",
-          "xp": 160,
+          "xp": 130,
           "team_reward": false
         }
       ],
-      "jem_source_id": "mg17",
-      "jem_required_mods": [],
+      "jem_source_id": "v2_magic_mg17",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2D724A0BFE39300C",
-      "title": "{\"translate\":\"jem.atlas.card.combat_extra_01.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.combat_extra_01.condition\"}",
+      "id": "2C1DB22ACB50C0A5",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_repair.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_repair.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.combat_extra_01.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_repair.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_01.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_repair.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_01.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_repair.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_01.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_repair.reward\"}",
         "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
+        "{\"translate\":\"jem.atlas.card.v2_mag_repair.guide_hint\"}"
       ],
       "icon": "minecraft:anvil",
-      "x": -10.0,
-      "y": 10.5,
+      "x": -16.1,
+      "y": -3,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "266126334C68CE12",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.combat_extra_01.condition\"}",
-          "icon": "minecraft:anvil",
-          "count": 1
+          "id": "28E04473E54F0017",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_repair"
         }
       ],
       "rewards": [
         {
-          "id": "25720636AFCD9494",
+          "id": "2CD28BC0E975ACD5",
           "type": "jem_advancements:quest_item",
-          "item": "create:iron_sheet",
-          "count": 16,
-          "claim_key": "combat_extra_01/item/0",
-          "claim_reward_id": "25720636AFCD9494",
+          "item": "minecraft:iron_ingot",
+          "count": 6,
+          "claim_key": "v2_mag_repair/item/0",
+          "claim_reward_id": "2CD28BC0E975ACD5",
           "team_reward": false
         },
         {
-          "id": "24711D75DB5A1845",
+          "id": "2D46DED0E8356EBB",
           "type": "jem_advancements:quest_item",
-          "item": "brewery:pretzel",
-          "count": 12,
-          "claim_key": "combat_extra_01/item/1",
-          "claim_reward_id": "24711D75DB5A1845",
+          "item": "minecraft:book",
+          "count": 2,
+          "claim_key": "v2_mag_repair/item/1",
+          "claim_reward_id": "2D46DED0E8356EBB",
           "team_reward": false
         },
         {
-          "id": "2BBBC2A359858674",
+          "id": "2DA52A67D1627768",
           "type": "jem_advancements:quest_xp",
-          "xp": 60,
+          "xp": 75,
           "team_reward": false
         }
       ],
-      "jem_source_id": "combat_extra_01",
+      "jem_source_id": "v2_mag_repair",
       "jem_required_mods": [],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "24AFAFBC8A67187F",
-      "title": "{\"translate\":\"jem.atlas.card.combat_extra_02.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.combat_extra_02.condition\"}",
+      "id": "274BBEBC15A43B02",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_enchant.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_enchant.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.combat_extra_02.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_enchant.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_02.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_enchant.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_02.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_enchant.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_02.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v2_mag_enchant.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_enchant.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
       "icon": "minecraft:enchanting_table",
-      "x": -6.0,
-      "y": 10.5,
+      "x": -16.1,
+      "y": -0.7,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "281C24D50EEB12FB",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.combat_extra_02.condition\"}",
-          "icon": "minecraft:enchanting_table",
-          "count": 1
+          "id": "216DDCDE6B389479",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_enchant"
         }
       ],
       "rewards": [
         {
-          "id": "277ACF841A0271C7",
+          "id": "2E1BAA23B10FA3C4",
           "type": "jem_advancements:quest_item",
           "item": "minecraft:lapis_lazuli",
-          "count": 32,
-          "claim_key": "combat_extra_02/item/0",
-          "claim_reward_id": "277ACF841A0271C7",
+          "count": 12,
+          "claim_key": "v2_mag_enchant/item/0",
+          "claim_reward_id": "2E1BAA23B10FA3C4",
           "team_reward": false
         },
         {
-          "id": "2825FC3CFE9C9D8F",
+          "id": "2AA6BCFA8E73D414",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:book",
+          "count": 3,
+          "claim_key": "v2_mag_enchant/item/1",
+          "claim_reward_id": "2AA6BCFA8E73D414",
+          "team_reward": false
+        },
+        {
+          "id": "2501B57345AA6C51",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_enchant",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "2AE76E7C308C68EF",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_fieldwork.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_fieldwork.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v2_mag_fieldwork.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_fieldwork.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_fieldwork.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_fieldwork.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:scroll",
+      "x": 6.9,
+      "y": 7.7,
+      "shape": "diamond",
+      "size": 1.65,
+      "tasks": [
+        {
+          "id": "26C30F078424E0F3",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_fieldwork"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2D72D654256880AD",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 2,
+          "claim_key": "v2_mag_fieldwork/item/0",
+          "claim_reward_id": "2D72D654256880AD",
+          "team_reward": false
+        },
+        {
+          "id": "2335C84897EB3942",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 48,
+          "claim_key": "v2_mag_fieldwork/item/1",
+          "claim_reward_id": "2335C84897EB3942",
+          "team_reward": false
+        },
+        {
+          "id": "26C37C0264C2B2B3",
+          "type": "jem_advancements:quest_xp",
+          "xp": 350,
+          "team_reward": false
+        },
+        {
+          "id": "27A7BDA6E2285FBC",
+          "type": "choice",
+          "table_id": 2841322184686554221L,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_fieldwork",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "24CE3F520EFE5342",
+      "title": "{\"translate\":\"jem.atlas.card.v2_mag_dead_king.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v2_mag_dead_king.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v2_mag_dead_king.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_dead_king.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_dead_king.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v2_mag_dead_king.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:legendary_ink",
+      "x": 11.5,
+      "y": 7.7,
+      "shape": "diamond",
+      "size": 1.65,
+      "tasks": [
+        {
+          "id": "21DAA94975442AFF",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v2/v2_mag_dead_king"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B3A0F4B801E8571",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:epic_ink",
+          "count": 4,
+          "claim_key": "v2_mag_dead_king/item/0",
+          "claim_reward_id": "2B3A0F4B801E8571",
+          "team_reward": false
+        },
+        {
+          "id": "2A30BFA50588103D",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 64,
+          "claim_key": "v2_mag_dead_king/item/1",
+          "claim_reward_id": "2A30BFA50588103D",
+          "team_reward": false
+        },
+        {
+          "id": "2039DBE04653FB88",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:evasion_elixir",
+          "count": 4,
+          "claim_key": "v2_mag_dead_king/item/2",
+          "claim_reward_id": "2039DBE04653FB88",
+          "team_reward": false
+        },
+        {
+          "id": "20D38F5E54EBE60E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 450,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v2_mag_dead_king",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3ED408451A102CE3",
+      "title": "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_occult_links.guide_hint\"}"
+      ],
+      "icon": "alexscaves:moth_ball",
+      "x": 16.1,
+      "y": -3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "29B9177904DBFBEB",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_cave_occult_links"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2DEF8F3D2D1241A9",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:moth_ball",
+          "count": 6,
+          "claim_key": "v3_cave_occult_links/item/0",
+          "claim_reward_id": "2DEF8F3D2D1241A9",
+          "team_reward": false
+        },
+        {
+          "id": "2C250C28AB349AD3",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:black_and_white_film",
+          "count": 4,
+          "claim_key": "v3_cave_occult_links/item/1",
+          "claim_reward_id": "2C250C28AB349AD3",
+          "team_reward": false
+        },
+        {
+          "id": "253F5F68EA521AD9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 170,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_cave_occult_links",
+      "jem_required_mods": [
+        "alexscaves"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "343A670642AD9ED1",
+      "title": "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_moth_lighting.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "alexscaves:moth_dust",
+      "x": 16.1,
+      "y": -0.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "27EADC6D2952F37F",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_cave_moth_lighting"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "29F3D30CB1D44AB1",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:moth_dust",
+          "count": 8,
+          "claim_key": "v3_cave_moth_lighting/item/0",
+          "claim_reward_id": "29F3D30CB1D44AB1",
+          "team_reward": false
+        },
+        {
+          "id": "2B7F1CD8B744AAC9",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:moth_ball",
+          "count": 8,
+          "claim_key": "v3_cave_moth_lighting/item/1",
+          "claim_reward_id": "2B7F1CD8B744AAC9",
+          "team_reward": false
+        },
+        {
+          "id": "2EF3BAB2EC98C359",
+          "type": "jem_advancements:quest_xp",
+          "xp": 110,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_cave_moth_lighting",
+      "jem_required_mods": [
+        "alexscaves"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3D672DCE448D11E4",
+      "title": "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_shadow_flight.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "alexscaves:darkened_apple",
+      "x": 16.1,
+      "y": 1.6,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "24F005A398E89496",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_cave_shadow_flight"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "219CA16566242EFE",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:darkened_apple",
+          "count": 6,
+          "claim_key": "v3_cave_shadow_flight/item/0",
+          "claim_reward_id": "219CA16566242EFE",
+          "team_reward": false
+        },
+        {
+          "id": "2C53F521641BE1BA",
+          "type": "jem_advancements:quest_item",
+          "item": "exposure:color_film",
+          "count": 6,
+          "claim_key": "v3_cave_shadow_flight/item/1",
+          "claim_reward_id": "2C53F521641BE1BA",
+          "team_reward": false
+        },
+        {
+          "id": "2B4365CE473D5B4B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 210,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_cave_shadow_flight",
+      "jem_required_mods": [
+        "alexscaves"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "38E22490AF433057",
+      "title": "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_cave_landscape_recipe.guide_hint\"}"
+      ],
+      "icon": "alexscaves:licoroot_sprout",
+      "x": -9.2,
+      "y": 7.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "22D7835CA3EAE334",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_cave_landscape_recipe"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B40D223014BEBF4",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:licoroot_sprout",
+          "count": 6,
+          "claim_key": "v3_cave_landscape_recipe/item/0",
+          "claim_reward_id": "2B40D223014BEBF4",
+          "team_reward": false
+        },
+        {
+          "id": "2F55305E5CFF3AAE",
+          "type": "jem_advancements:quest_item",
+          "item": "natures_spirit:white_kaolin_bricks",
+          "count": 64,
+          "claim_key": "v3_cave_landscape_recipe/item/1",
+          "claim_reward_id": "2F55305E5CFF3AAE",
+          "team_reward": false
+        },
+        {
+          "id": "2FC44D7ED686599F",
+          "type": "jem_advancements:quest_xp",
+          "xp": 240,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_cave_landscape_recipe",
+      "jem_required_mods": [
+        "alexscaves"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "33328A70B6D20318",
+      "title": "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_field_draughts.guide_hint\"}"
+      ],
+      "icon": "minecraft:glass_bottle",
+      "x": -11.5,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "29136051F22F5176",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_fauna_field_draughts"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "231648BC078A931B",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:glass_bottle",
+          "count": 16,
+          "claim_key": "v3_fauna_field_draughts/item/0",
+          "claim_reward_id": "231648BC078A931B",
+          "team_reward": false
+        },
+        {
+          "id": "2B2B580502B213A3",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:mosquito_repellent_stew",
+          "count": 6,
+          "claim_key": "v3_fauna_field_draughts/item/1",
+          "claim_reward_id": "2B2B580502B213A3",
+          "team_reward": false
+        },
+        {
+          "id": "2BF7F1D2C2923CA4",
+          "type": "jem_advancements:quest_xp",
+          "xp": 120,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_fauna_field_draughts",
+      "jem_required_mods": [
+        "alexsmobs"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3413476E4AA37B80",
+      "title": "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_far_exchange.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "minecraft:experience_bottle",
+      "x": -13.8,
+      "y": 5.4,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2B65893AC8C2DA4F",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_fauna_far_exchange"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C49D4C7DD655301",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:experience_bottle",
+          "count": 8,
+          "claim_key": "v3_fauna_far_exchange/item/0",
+          "claim_reward_id": "2C49D4C7DD655301",
+          "team_reward": false
+        },
+        {
+          "id": "24F92DFDF6B988C6",
+          "type": "jem_advancements:quest_item",
+          "item": "secretdoors:secret_purpur_door",
+          "count": 4,
+          "claim_key": "v3_fauna_far_exchange/item/1",
+          "claim_reward_id": "24F92DFDF6B988C6",
+          "team_reward": false
+        },
+        {
+          "id": "20256994CE4F3796",
+          "type": "jem_advancements:quest_xp",
+          "xp": 200,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_fauna_far_exchange",
+      "jem_required_mods": [
+        "alexsmobs"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3C801CDEC507309E",
+      "title": "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_mutable_materials.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "alexsmobs:rainbow_glass",
+      "x": -13.8,
+      "y": 7.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "23D628295B4539CC",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_fauna_mutable_materials"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26C877AEEB48691A",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:rainbow_glass",
+          "count": 16,
+          "claim_key": "v3_fauna_mutable_materials/item/0",
+          "claim_reward_id": "26C877AEEB48691A",
+          "team_reward": false
+        },
+        {
+          "id": "21E9CB384729E420",
+          "type": "jem_advancements:quest_item",
+          "item": "alexscaves:fertilizer",
+          "count": 8,
+          "claim_key": "v3_fauna_mutable_materials/item/1",
+          "claim_reward_id": "21E9CB384729E420",
+          "team_reward": false
+        },
+        {
+          "id": "264624B77BF821D9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 150,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_fauna_mutable_materials",
+      "jem_required_mods": [
+        "alexsmobs"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3285120D59506AA1",
+      "title": "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_fauna_fungal_landscape.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "alexsmobs:mungal_spores",
+      "x": -11.5,
+      "y": 7.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "29CEEF3ADEA95D67",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_fauna_fungal_landscape"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2CE85523CB094A0F",
+          "type": "jem_advancements:quest_item",
+          "item": "alexsmobs:mungal_spores",
+          "count": 6,
+          "claim_key": "v3_fauna_fungal_landscape/item/0",
+          "claim_reward_id": "2CE85523CB094A0F",
+          "team_reward": false
+        },
+        {
+          "id": "2B571FB2E238AD63",
+          "type": "jem_advancements:quest_item",
+          "item": "minecraft:poisonous_potato",
+          "count": 2,
+          "claim_key": "v3_fauna_fungal_landscape/item/1",
+          "claim_reward_id": "2B571FB2E238AD63",
+          "team_reward": false
+        },
+        {
+          "id": "28D39F54D5E93829",
+          "type": "jem_advancements:quest_xp",
+          "xp": 170,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_fauna_fungal_landscape",
+      "jem_required_mods": [
+        "alexsmobs"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3B91BBC8A56C4BA0",
+      "title": "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_pet_book_and_robes.guide_hint\"}"
+      ],
+      "icon": "companions:soul_gem",
+      "x": 9.2,
+      "y": -1.4,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "272E81A869C558B2",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_pet_book_and_robes"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "21A759EE73FB8848",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:soul_gem",
+          "count": 8,
+          "claim_key": "v3_pet_book_and_robes/item/0",
+          "claim_reward_id": "21A759EE73FB8848",
+          "team_reward": false
+        },
+        {
+          "id": "2F371F0EBE9C2016",
+          "type": "jem_advancements:quest_item",
+          "item": "companions:crystallized_blood",
+          "count": 24,
+          "claim_key": "v3_pet_book_and_robes/item/1",
+          "claim_reward_id": "2F371F0EBE9C2016",
+          "team_reward": false
+        },
+        {
+          "id": "2FBEFA51150D354B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 125,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_pet_book_and_robes",
+      "jem_required_mods": [],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "399E5B0D38365A1F",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_lightning.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -8.1,
+      "y": -9.9,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2855AA0815C1FDA1",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_focus_lightning"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "20AE8F211BC22FAB",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_focus_lightning/item/0",
+          "claim_reward_id": "20AE8F211BC22FAB",
+          "team_reward": false
+        },
+        {
+          "id": "242FF3FFA5E3A714",
           "type": "jem_advancements:quest_item",
           "item": "irons_spellbooks:oakskin_elixir",
-          "count": 8,
-          "claim_key": "combat_extra_02/item/1",
-          "claim_reward_id": "2825FC3CFE9C9D8F",
+          "count": 2,
+          "claim_key": "v3_magic_focus_lightning/item/1",
+          "claim_reward_id": "242FF3FFA5E3A714",
           "team_reward": false
         },
         {
-          "id": "2B0FC3064183B73C",
-          "type": "jem_advancements:quest_item",
-          "item": "bakery:chocolate_cake_slice",
-          "count": 12,
-          "claim_key": "combat_extra_02/item/2",
-          "claim_reward_id": "2B0FC3064183B73C",
-          "team_reward": false
-        },
-        {
-          "id": "2DC15059BB492AED",
+          "id": "2BB74FC5D4C5FBDF",
           "type": "jem_advancements:quest_xp",
-          "xp": 100,
+          "xp": 80,
           "team_reward": false
         }
       ],
-      "jem_source_id": "combat_extra_02",
-      "jem_required_mods": [],
+      "jem_source_id": "v3_magic_focus_lightning",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "2805696936445619",
-      "title": "{\"translate\":\"jem.atlas.card.combat_extra_03.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.combat_extra_03.condition\"}",
+      "id": "3448A81585822173",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.combat_extra_03.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_03.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_03.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_03.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_focus_blood.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "minecraft:lapis_lazuli",
-      "x": -2.0,
-      "y": 10.5,
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -10.4,
+      "y": -9.9,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "207387937D7A79F3",
-          "type": "item",
-          "item": "minecraft:lapis_lazuli",
-          "count": 8,
-          "consume_items": false
+          "id": "2CE898F4DEAAA580",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_focus_blood"
         }
       ],
       "rewards": [
         {
-          "id": "23A18C10F860678E",
+          "id": "217F7EDBD4AAABAE",
           "type": "jem_advancements:quest_item",
-          "item": "minecraft:lapis_lazuli",
-          "count": 48,
-          "claim_key": "combat_extra_03/item/0",
-          "claim_reward_id": "23A18C10F860678E",
-          "team_reward": false
-        },
-        {
-          "id": "2A82C38814E23F60",
-          "type": "jem_advancements:quest_item",
-          "item": "herbalbrews:green_tea",
+          "item": "irons_spellbooks:arcane_essence",
           "count": 8,
-          "claim_key": "combat_extra_03/item/1",
-          "claim_reward_id": "2A82C38814E23F60",
+          "claim_key": "v3_magic_focus_blood/item/0",
+          "claim_reward_id": "217F7EDBD4AAABAE",
           "team_reward": false
         },
         {
-          "id": "2A104C1D54094668",
+          "id": "2FE24412DC68BE66",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_focus_blood/item/1",
+          "claim_reward_id": "2FE24412DC68BE66",
+          "team_reward": false
+        },
+        {
+          "id": "2D4B12C7F62707ED",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_focus_blood",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3A645D8379119B93",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_arcane_resources.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -12.7,
+      "y": -9.9,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2B9D89C1D764484E",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_arcane_resources"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AB989387272AB3C",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_arcane_resources/item/0",
+          "claim_reward_id": "2AB989387272AB3C",
+          "team_reward": false
+        },
+        {
+          "id": "2662F0751D75FB07",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_arcane_resources/item/1",
+          "claim_reward_id": "2662F0751D75FB07",
+          "team_reward": false
+        },
+        {
+          "id": "2AB64A97D15FEDBA",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_arcane_resources",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "398BB861F761B08D",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_book_translation.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -15,
+      "y": -9.9,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2545CD811885E073",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_book_translation"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "27541B380275A477",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_book_translation/item/0",
+          "claim_reward_id": "27541B380275A477",
+          "team_reward": false
+        },
+        {
+          "id": "26A95CB228ACBCD9",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_book_translation/item/1",
+          "claim_reward_id": "26A95CB228ACBCD9",
+          "team_reward": false
+        },
+        {
+          "id": "20ADE2281F573F25",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_book_translation",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "34786429C05D67A3",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_fire_ice.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -4.6,
+      "y": -5.3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "25DD7C2C9227BB24",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_fire_ice"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2696632ACFB20FA1",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_fire_ice/item/0",
+          "claim_reward_id": "2696632ACFB20FA1",
+          "team_reward": false
+        },
+        {
+          "id": "26ED822DBA8194F1",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_fire_ice/item/1",
+          "claim_reward_id": "26ED822DBA8194F1",
+          "team_reward": false
+        },
+        {
+          "id": "2BD70CE4E9A251F9",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_fire_ice",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "37CC8A3A2FF94655",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_healing_blood.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -6.9,
+      "y": -5.3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "20086377B293E234",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_healing_blood"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2276CF4EC6BB966E",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_healing_blood/item/0",
+          "claim_reward_id": "2276CF4EC6BB966E",
+          "team_reward": false
+        },
+        {
+          "id": "29E2CF961564EB0B",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_healing_blood/item/1",
+          "claim_reward_id": "29E2CF961564EB0B",
+          "team_reward": false
+        },
+        {
+          "id": "2109CC955CE1820D",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_healing_blood",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3AD73220704FD997",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_summon_root.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -9.2,
+      "y": -5.3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "226440475D231001",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_summon_root"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2AC5C44EB6D1EFAE",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_summon_root/item/0",
+          "claim_reward_id": "2AC5C44EB6D1EFAE",
+          "team_reward": false
+        },
+        {
+          "id": "2E6AC04C54C43951",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_summon_root/item/1",
+          "claim_reward_id": "2E6AC04C54C43951",
+          "team_reward": false
+        },
+        {
+          "id": "23F882440896B44E",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_summon_root",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3808E10BD60D7E51",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_shroud.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_shroud.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_shroud.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_shroud.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_shroud.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_shroud.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_shroud.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -11.5,
+      "y": -5.3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2B17E1528A58B6AC",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_shroud"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2B08299496AA600A",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_shroud/item/0",
+          "claim_reward_id": "2B08299496AA600A",
+          "team_reward": false
+        },
+        {
+          "id": "2D4C84B79CFB639B",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_shroud/item/1",
+          "claim_reward_id": "2D4C84B79CFB639B",
+          "team_reward": false
+        },
+        {
+          "id": "28060AD46260C310",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_shroud",
+      "jem_required_mods": [
+        "irons_spellbooks"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3FD63F78A904E22C",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_blade_cast.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -11.5,
+      "y": -3,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "257000F41D17F914",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_blade_cast"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2C9867B1DF50F201",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_blade_cast/item/0",
+          "claim_reward_id": "2C9867B1DF50F201",
+          "team_reward": false
+        },
+        {
+          "id": "2E24B7FBE94673DE",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_blade_cast/item/1",
+          "claim_reward_id": "2E24B7FBE94673DE",
+          "team_reward": false
+        },
+        {
+          "id": "22A186AF6157FE01",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_blade_cast",
+      "jem_required_mods": [
+        "efs_iss"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3F13EDA098A46AC8",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_mana_trade.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -11.5,
+      "y": -0.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2FE11836E1A6AA8A",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_mana_trade"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2A42A21426EEF6DA",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_mana_trade/item/0",
+          "claim_reward_id": "2A42A21426EEF6DA",
+          "team_reward": false
+        },
+        {
+          "id": "2B3757B16547AF04",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_mana_trade/item/1",
+          "claim_reward_id": "2B3757B16547AF04",
+          "team_reward": false
+        },
+        {
+          "id": "261B7541361FF74B",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_mana_trade",
+      "jem_required_mods": [
+        "efs_iss"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "303C23EE24B08496",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_cancel_cast.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:arcane_essence",
+      "x": -11.5,
+      "y": 1.6,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "2C1C84434F1BD1C3",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_cancel_cast"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "2EFC6F4AB8EAD766",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:arcane_essence",
+          "count": 8,
+          "claim_key": "v3_magic_cancel_cast/item/0",
+          "claim_reward_id": "2EFC6F4AB8EAD766",
+          "team_reward": false
+        },
+        {
+          "id": "2F7544556476DFCF",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_cancel_cast/item/1",
+          "claim_reward_id": "2F7544556476DFCF",
+          "team_reward": false
+        },
+        {
+          "id": "236D21EBB3D66727",
+          "type": "jem_advancements:quest_xp",
+          "xp": 80,
+          "team_reward": false
+        }
+      ],
+      "jem_source_id": "v3_magic_cancel_cast",
+      "jem_required_mods": [
+        "efiscompat"
+      ],
+      "jem_economy": false,
+      "jem_dedicated_event": false
+    },
+    {
+      "id": "3236CC797D37FD1A",
+      "title": "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.condition\"}",
+      "description": [
+        "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.condition\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.purpose\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.tip\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_magic_nether_ritual.guide_hint\"}",
+        "",
+        "{\"translate\":\"jem.atlas.free_order\"}"
+      ],
+      "icon": "irons_spellbooks:oakskin_elixir",
+      "x": -6.9,
+      "y": 7.7,
+      "shape": "circle",
+      "size": 1.4,
+      "tasks": [
+        {
+          "id": "22790AAF6CFD9F82",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_magic_nether_ritual"
+        }
+      ],
+      "rewards": [
+        {
+          "id": "26229A117ED0D84C",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:oakskin_elixir",
+          "count": 3,
+          "claim_key": "v3_magic_nether_ritual/item/0",
+          "claim_reward_id": "26229A117ED0D84C",
+          "team_reward": false
+        },
+        {
+          "id": "283F2F6526980F8E",
+          "type": "jem_advancements:quest_item",
+          "item": "irons_spellbooks:invisibility_elixir",
+          "count": 2,
+          "claim_key": "v3_magic_nether_ritual/item/1",
+          "claim_reward_id": "283F2F6526980F8E",
+          "team_reward": false
+        },
+        {
+          "id": "27667CF0D2FA42C6",
           "type": "jem_advancements:quest_xp",
           "xp": 60,
           "team_reward": false
         }
       ],
-      "jem_source_id": "combat_extra_03",
-      "jem_required_mods": [],
+      "jem_source_id": "v3_magic_nether_ritual",
+      "jem_required_mods": [
+        "luminous_nether"
+      ],
       "jem_economy": false,
       "jem_dedicated_event": false
     },
     {
-      "id": "29167C97E8E25FCB",
-      "title": "{\"translate\":\"jem.atlas.card.combat_extra_04.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.combat_extra_04.condition\"}",
+      "id": "39951C69F07DC1A8",
+      "title": "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.title\"}",
+      "subtitle": "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.condition\"}",
       "description": [
-        "{\"translate\":\"jem.atlas.card.combat_extra_04.condition\"}",
+        "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.condition\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_04.purpose\"}",
+        "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.purpose\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_04.tip\"}",
+        "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.tip\"}",
         "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_04.reward\"}",
+        "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.reward\"}",
+        "",
+        "{\"translate\":\"jem.atlas.card.v3_home_enchantment_extract.guide_hint\"}",
         "",
         "{\"translate\":\"jem.atlas.free_order\"}"
       ],
-      "icon": "simplybows:upgrades/reinforced_bow_frame",
-      "x": 2.0,
-      "y": 10.5,
+      "icon": "minecraft:book",
+      "x": -16.1,
+      "y": 1.6,
       "shape": "circle",
-      "size": 1.0,
+      "size": 1.4,
       "tasks": [
         {
-          "id": "221E69BC2E181877",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.combat_extra_04.condition\"}",
-          "icon": "simplybows:upgrades/reinforced_bow_frame",
-          "count": 1
+          "id": "2303583B47CE8F14",
+          "type": "advancement",
+          "advancement": "jem_advancements:quest_v3/v3_home_enchantment_extract"
         }
       ],
       "rewards": [
         {
-          "id": "2B2B28420627FC59",
+          "id": "283F904507F052FD",
           "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:iron_lightning_arrow",
-          "count": 32,
-          "claim_key": "combat_extra_04/item/0",
-          "claim_reward_id": "2B2B28420627FC59",
+          "item": "minecraft:book",
+          "count": 4,
+          "claim_key": "v3_home_enchantment_extract/item/0",
+          "claim_reward_id": "283F904507F052FD",
           "team_reward": false
         },
         {
-          "id": "28440FA125F79CC0",
+          "id": "22028D581AEB5E27",
           "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:iron_tracking_arrow",
-          "count": 32,
-          "claim_key": "combat_extra_04/item/1",
-          "claim_reward_id": "28440FA125F79CC0",
-          "team_reward": false
-        },
-        {
-          "id": "2CF4C78029DA8364",
-          "type": "jem_advancements:quest_xp",
-          "xp": 140,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "combat_extra_04",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "2F6DC15962938566",
-      "title": "{\"translate\":\"jem.atlas.card.combat_extra_05.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.combat_extra_05.condition\"}",
-      "description": [
-        "{\"translate\":\"jem.atlas.card.combat_extra_05.condition\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_05.purpose\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_05.tip\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_05.reward\"}",
-        "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
-      ],
-      "icon": "simplybows:upgrades/rune_etching_bounty",
-      "x": 6.0,
-      "y": 10.5,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "25DF68F0DBDD4CE5",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.combat_extra_05.condition\"}",
-          "icon": "simplybows:upgrades/rune_etching_bounty",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "206EA3D32CDA567D",
-          "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:diamond_freezing_arrow",
-          "count": 24,
-          "claim_key": "combat_extra_05/item/0",
-          "claim_reward_id": "206EA3D32CDA567D",
-          "team_reward": false
-        },
-        {
-          "id": "2FCE80E639624056",
-          "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:diamond_gravity_arrow",
-          "count": 24,
-          "claim_key": "combat_extra_05/item/1",
-          "claim_reward_id": "2FCE80E639624056",
-          "team_reward": false
-        },
-        {
-          "id": "270046D80C51F50A",
-          "type": "jem_advancements:quest_item",
-          "item": "brewery:pork_knuckle",
+          "item": "minecraft:lapis_lazuli",
           "count": 12,
-          "claim_key": "combat_extra_05/item/2",
-          "claim_reward_id": "270046D80C51F50A",
+          "claim_key": "v3_home_enchantment_extract/item/1",
+          "claim_reward_id": "22028D581AEB5E27",
           "team_reward": false
         },
         {
-          "id": "245D3986CAB796A4",
+          "id": "22E827D178050C28",
           "type": "jem_advancements:quest_xp",
-          "xp": 180,
+          "xp": 130,
           "team_reward": false
         }
       ],
-      "jem_source_id": "combat_extra_05",
-      "jem_required_mods": [],
-      "jem_economy": false,
-      "jem_dedicated_event": false
-    },
-    {
-      "id": "25750086F0CFF855",
-      "title": "{\"translate\":\"jem.atlas.card.combat_extra_06.title\"}",
-      "subtitle": "{\"translate\":\"jem.atlas.card.combat_extra_06.condition\"}",
-      "description": [
-        "{\"translate\":\"jem.atlas.card.combat_extra_06.condition\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_06.purpose\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_06.tip\"}",
-        "",
-        "{\"translate\":\"jem.atlas.card.combat_extra_06.reward\"}",
-        "",
-        "{\"translate\":\"jem.atlas.free_order\"}"
+      "jem_source_id": "v3_home_enchantment_extract",
+      "jem_required_mods": [
+        "jemcompat"
       ],
-      "icon": "simplybows:bee_bow/bee_bow",
-      "x": 10.0,
-      "y": 10.5,
-      "shape": "circle",
-      "size": 1.0,
-      "tasks": [
-        {
-          "id": "233DF28FCAE40537",
-          "type": "custom",
-          "title": "{\"translate\":\"jem.atlas.card.combat_extra_06.condition\"}",
-          "icon": "simplybows:bee_bow/bee_bow",
-          "count": 1
-        }
-      ],
-      "rewards": [
-        {
-          "id": "2019F78637C7C803",
-          "type": "jem_advancements:quest_item",
-          "item": "xtraarrows:iron_arrow",
-          "count": 32,
-          "claim_key": "combat_extra_06/item/0",
-          "claim_reward_id": "2019F78637C7C803",
-          "team_reward": false
-        },
-        {
-          "id": "26754D0648385073",
-          "type": "jem_advancements:quest_item",
-          "item": "farm_and_charm:beef_patty_with_vegetables",
-          "count": 8,
-          "claim_key": "combat_extra_06/item/1",
-          "claim_reward_id": "26754D0648385073",
-          "team_reward": false
-        },
-        {
-          "id": "2E683C552A6502F5",
-          "type": "jem_advancements:quest_xp",
-          "xp": 60,
-          "team_reward": false
-        }
-      ],
-      "jem_source_id": "combat_extra_06",
-      "jem_required_mods": [],
       "jem_economy": false,
       "jem_dedicated_event": false
     }
   ],
   "images": [
     {
-      "x": 0,
-      "y": 0,
-      "width": 44,
-      "height": 29.333333,
+      "x": 0.0,
+      "y": 0.0,
+      "width": 36,
+      "height": 24,
       "image": "jem_advancements:textures/questbook/atlas/background-magic.png",
       "order": -100
     },
     {
       "x": 0,
       "y": -0.5,
-      "width": 13.8,
-      "height": 7.702325581395349,
+      "width": 9,
+      "height": 5.023255813953488,
       "image": "jem_advancements:textures/questbook/atlas/identity-magic.jpg",
       "order": -50
     }
   ],
   "jem_rescue_entry_bounds": [
-    -18,
-    -12,
-    19,
-    12
+    -18.0,
+    -12.0,
+    18.0,
+    12.0
   ]
 }

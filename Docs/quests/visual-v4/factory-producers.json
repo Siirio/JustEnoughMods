@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "source_of_contract": "Original immutable Visual V4 integration/success-contracts.json and build/questbook-v4-create_factory-cards.json exact v3_eng_factory_recipe",
+  "status": "SOURCE_IMPLEMENTED_WITH_EXPLICIT_NATIVE_ROUTE_BOUNDS_FROZEN",
+  "installed_create": "create-1.20.1-6.0.8.jar",
+  "installed_create_sha256": "6fbb910c367dbce8e4fc7e5bf64b6edd4de980906ed00af8e47e4af843c0d9b0",
+  "installed_forge": "1.20.1-47.4.10",
+  "production_build_owner": "parent overall review then unified build",
+  "runtime_observed": false,
+  "source_flags": {
+    "manual_family_pass": true,
+    "independent_review_run": false,
+    "build_run": false,
+    "automated_verification_run": false,
+    "runtime_application_observed": false
+  },
+  "native_source_evidence": "build/questbook-v4-audit/create-factory-source",
+  "atlas_evidence": "build/questbook-v4-create-factory-atlas.json",
+  "research_evidence": "build/questbook-v4-create-factory-research.json",
+  "contract_interpretation": {
+    "native_order_identity": "Each ingredient network has its own actual native order ID in installed Create6.0.8. The native FactoryPanelBehaviour.tickRequests invocation is the common causal parent. Retain each native PackageOrderWithCrafts/request multimap object and its actual ID in one exact observed vector, never claim or manufacture one shared native integer",
+    "all_AND_clauses": "Only emit after configured real actor, real native deficit-driven requests, full actual parcel fulfillment for the native vector, exact same-cycle native ingredient insertion, real successful native recipe execution, and actual conserved finished-result debit/credit into the original native linked product stock",
+    "auto_arrangement": "Observed native activeCraftingArrangement included in exact configuration but optional, manual native arrangement is also allowed, no forced recipe or alternative recipe ID"
+  },
+  "producer_scope": "One original factory action with strict closed-owner mechanical-crafting and item-only Basin routes",
+  "producers": [
+    {
+      "action": "v3_eng_factory_recipe",
+      "card_id": "v3_eng_factory_recipe",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryRecipeProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryGridReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryResultReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryPanelPacketAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryIngredients.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryStockCommit.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/FactoryBasinReceipt.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryResultStackQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryPanelPacketQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryGaugeRecipeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryRequestDiscoveryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryPackagingQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryCrafterInventoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryGroupedItemsQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryRecipeResultQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryCrafterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryBasinRecipeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/FactoryBasinQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java"
+      ],
+      "native_evidence": {
+        "actor": "Actual ServerPlayer native factory configuration packet or setValueSettings commit, TravelProof.eligible authenticated survival admission, exact native panel/slot/configuration identity persisted in ForgeData",
+        "deficit": "FactoryPanelBehaviour.tick -> tickRequests only, preserve original invocation once, native recipe mode and native deficit flags, actual findPackagersForRequest returns and actual performPackageRequests calls",
+        "fulfilled": "Existing CreateOrderProofs actual native parcels and exact native fragment IDs, summed real delivered payload equals complete native requested ingredient vector before fulfilled marker, no promise/preview-only success",
+        "mechanical": "Native UnpackingHandler actual committed inserter callbacks, exact pending slot payload, native begin/GroupedItems/merge/write/read, native RecipeGridHandler.tryToApplyRecipe result, completed native CRAFTING or INSERTING countDown, actual native inventory insertion and post-call native source debit",
+        "basin": "Native input contents callback invalidation, exact accepted unpack delta, actual non-test BasinRecipe.apply, actual acceptOutputs(false), completed consumption with no residual inputs, actual native outputInventory credit or native closed spoutputBuffer delivery",
+        "stock": "Original gauge native network UUID, native LogisticallyLinkedBehaviour.getAllPresent cached links, PackagerLink native getPackager, loaded native inventory identity or native isTargetingSameInventory alias, exact product increase from the same native insertion equals source debit"
+      },
+      "attribution": "Same original eligible authenticated configured actor and immutable gauge configuration identity throughout native request/craft/result lineage, no nearest placer or bystander",
+      "producer_code_reviewed": true,
+      "review_scope": "One manual end-family source pass over implemented routes only, independent review/build/runtime deferred",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Arbitrary intermediate chests, belts, depots, processing machines and multistage production outside the observed closed mechanical-crafter or Basin owners have no carried item provenance and remain unimplemented, no fungible inventory top-up can borrow proof",
+        "Basin recipes requiring fluid inputs, multiple native recipe executions for one requested batch, residual ingredient inventories or preexisting identical output remain unproved",
+        "Mechanical batches requiring multiple separate result groups rather than one actual recipe result remain unproved",
+        "Direct belt/ejection export and later manual result transport remain unproved, all produced result units must be causally credited through actual native inventory insertion into the original product network",
+        "Missing offline actors, offline-mode dedicated actors without admission, old/unattributed gauges or ingredients, changed gauge configuration identity, mixed cycles and unobserved parcels fail closed",
+        "Partial native unpacking, failed request fulfillment, unknown inventory handlers and conservative observation caps fail closed",
+        "Native Mixins, remapping, optional-mod guards, save/load and production runtime behavior remain unverified until parent overall review/build and runtime evidence"
+      ],
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_factory_recipe.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_factory_recipe",
+          "modified": false,
+          "criterion": "completed"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "persistent_provenance": {
+    "factory_panel": "One configuration owner per actual panel slot in native BE ForgeData, no global owner registry",
+    "parcels": "Existing CreateParcelCarrier native stack sidecar and its existing root-level save/copy support, raw native tag SHA-256, existing conserved native repack propagation unchanged",
+    "ingredients": "Exact real slot snapshot on native crafter or input inventory snapshot on native Basin, any native input mutation invalidates before rebinding actual unpack commit",
+    "native_jobs": "Closed native GroupedItems receipt and exact coordinate/grid snapshots in native GroupedItems write/read, transient actual recipe return-value marker consumed once by actual new product group",
+    "basin_finished_product": "Only actual recipe result already committed in closed native spoutputBuffer, remaining/delivered counts describe conserved physical output, native BE ForgeData persistence",
+    "completion": "Only existing native advancement criterion persists completion, no separate reward/progress journal"
+  },
+  "bounds": {
+    "native_ingredient_groups": 32,
+    "requests_per_group": 256,
+    "ingredient_kinds": 128,
+    "parcels": 256,
+    "native_crafter_cells": 1024,
+    "unpack_crafters_and_groups": 1024,
+    "inventory_slots": 256,
+    "cached_product_network_links": 128,
+    "basin_native_buffer_entries": 256
+  },
+  "chunk_safety": "Loaded getChunkNow guards before native gauge/target reads, cached native links only, guarded adjacent chunks before native getPackager, target loaded before getInventory, no world scans or chunk tickets",
+  "backward_compatible_extension": {
+    "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java",
+    "method": "requestPrepared(ServerPlayer,PackageOrderWithCrafts,CompoundTag,Collection<PackagingRequest>,Supplier<Boolean>)",
+    "reason": "Native factory has already-discovered requests before the existing request scope can be entered, forward them into the same existing fulfilled-parcel observer without changing its original methods"
+  },
+  "preserved": "All fixed text, routes, positions, quantities, rewards, IDs and original completed criterion, native recipe selection and production formulas, native order IDs and raw item tags/equality, existing45 Create producers, other families and central owners",
+  "unimplemented_paths": [
+    "Arbitrary intermediate chests, belts, depots, processing machines and multistage production outside the observed closed mechanical-crafter or Basin owners have no carried item provenance and remain unimplemented, no fungible inventory top-up can borrow proof",
+    "Basin recipes requiring fluid inputs, multiple native recipe executions for one requested batch, residual ingredient inventories or preexisting identical output remain unproved",
+    "Mechanical batches requiring multiple separate result groups rather than one actual recipe result remain unproved",
+    "Direct belt/ejection export and later manual result transport remain unproved, all produced result units must be causally credited through actual native inventory insertion into the original product network",
+    "Missing offline actors, offline-mode dedicated actors without admission, old/unattributed gauges or ingredients, changed gauge configuration identity, mixed cycles and unobserved parcels fail closed",
+    "Partial native unpacking, failed request fulfillment, unknown inventory handlers and conservative observation caps fail closed",
+    "Native Mixins, remapping, optional-mod guards, save/load and production runtime behavior remain unverified until parent overall review/build and runtime evidence"
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 1
+}

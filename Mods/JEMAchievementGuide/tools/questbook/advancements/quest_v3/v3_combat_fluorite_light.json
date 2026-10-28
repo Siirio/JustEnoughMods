@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_fluorite_light"
+      }
+    },
+    "processed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_fluorite_light_processed"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "processed"
+    ],
+    [
+      "completed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

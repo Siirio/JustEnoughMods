@@ -17,6 +17,7 @@ public final class JemAdvancementGuide {
         com.justenoughmods.achievementguide.handbook.HandbookWorldAccess.register();
         modBus.addListener(JemCriteria::onCommonSetup);
         MinecraftForge.EVENT_BUS.register(JemCriteria.class);
+        com.justenoughmods.achievementguide.compat.ftb.BookDomainActions.register();
         modBus.addListener(JemAdvancementGuide::registerPackCriteria);
         MinecraftForge.EVENT_BUS.register(com.justenoughmods.achievementguide.integration.ForgeGameplayEvents.class);
         if (net.minecraftforge.fml.ModList.get().isLoaded("immersive_weathering")) {

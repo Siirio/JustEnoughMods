@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "capture": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_burner_capture"
+      }
+    },
+    "heat": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "create_burner_fueled_heat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "capture"
+    ],
+    [
+      "heat"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,1239 @@
+{
+  "schema": 1,
+  "source_of_contract": "integration/success-contracts.json from original immutable Visual V4 package",
+  "installed_create": "create-1.20.1-6.0.8.jar",
+  "installed_forge": "1.20.1-47.4.10",
+  "production_build_owner": "parent unified build",
+  "producers": [
+    {
+      "action": "create_press_iron_sheet",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePressQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 MechanicalPressBlockEntity.tryProcessInWorld non-simulated run calls onItemPressed only with actual committed nonempty output. Exact create:iron_sheet required.",
+      "attribution": "Exact native player-toss entity snapshot UUID captured before native processing",
+      "unsupported_paths": [
+        "Automated and depot inputs without authenticated run provenance do not receive personal credit",
+        "Actor must be online when native success is emitted"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_network.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_network"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_press.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_press"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_workshop.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_workshop"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_mill_flour",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateMillstoneInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateMillstoneInventoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateMillstoneQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Native landing insertion accepts input, later Millstone.process consumes input and increases actual outputInv wheat_flour count. Any later capability insertion invalidates run ownership.",
+      "attribution": "Persistent single-run actor plus exact native input inventory snapshot",
+      "unsupported_paths": [
+        "Unknown or automated suppliers are not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_mill.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_mill"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_network.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_network"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_workshop.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_workshop"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_fan_wash",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateFanQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Native FanProcessing.applyProcessing ItemEntity overload returns true for SplashingType and leaves nonempty actual output.",
+      "attribution": "Authenticated native tossed input snapshot before transformation",
+      "unsupported_paths": [
+        "Belt/depot processing without source provenance is not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_fan.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_fan"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_network.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_network"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_workshop.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_workshop"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_mix_brass",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinInventoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinRecipeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinQuestMixin.java"
+      ],
+      "native_evidence": "Native heated create:mixing BasinRecipe.apply succeeds and actual non-simulated acceptOutputs accepts a brass_ingot.",
+      "attribution": "Committed manual dropped ingredient insertion, exact native input snapshot",
+      "unsupported_paths": [
+        "Unknown or automated suppliers are not credited"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_brass.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_brass"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_network.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_network"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_workshop.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_workshop"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_windmill_power",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBearingCommandQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBearingQuestMixin.java"
+      ],
+      "native_evidence": "Native player assembly command queues assembly, nonempty real contraption changes native angle and Windmill has nonzero generated and transmitted rotation.",
+      "attribution": "Actual native start command actor persisted on the bearing",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_windmill.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_windmill"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_contraption_motion",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBearingCommandQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBearingQuestMixin.java"
+      ],
+      "native_evidence": "Native Mechanical Bearing command creates a nonempty real contraption and native angle changes.",
+      "attribution": "Actual native start command actor persisted on the bearing",
+      "unsupported_paths": [
+        "Mechanical Piston and Gantry start paths are not yet attributed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_contraption.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_contraption"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_steam_power",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSteamQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSteamActivationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateSteamPlacement.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Native engine tick confirms valid water-supplied boiler efficiency, its owned Powered Shaft has nonzero generated and transmitted rotation. Setting activation additionally requires actual output direction change.",
+      "attribution": "Committed local engine/shaft connection placement or actual changed native engine setting",
+      "unsupported_paths": [
+        "Later water-only activation without an authenticated engine activation command is not attributed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_steam.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_steam"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_train_trip",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTrainQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateTrainRun.java"
+      ],
+      "native_evidence": "Native Train departs station A, moves, retains its actual controlling player, and native arriveAt commits distinct station B.",
+      "attribution": "Native CarriageContraptionEntity controlling player, never Train.owner or nearest players",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_train.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_train"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_scheduled_arrival",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTrainQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateScheduleAssignmentQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateScheduleLifecycleQuestMixin.java"
+      ],
+      "native_evidence": "ScheduleItem native setSchedule commits nonempty itinerary. Same train departs, moves under IN_TRANSIT, reaches exact scheduled destination. Replaced/canceled schedule or manual takeover invalidates proof.",
+      "attribution": "Real player assigning native schedule to validated conductor",
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_network.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_network"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_schedule.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_schedule"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_elevator_trip",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateElevatorQuestMixin.java"
+      ],
+      "native_evidence": "Actual native seated passenger remains on the same elevator entity from a valid Elevator Contact stop to a distinct valid contact stop.",
+      "attribution": "Actual ServerPlayer passenger",
+      "unsupported_paths": [
+        "Standing carry is not inferred from collidingEntities because that map also includes side impacts",
+        "Transient ride proof restarts after world reload"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_elevator.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_elevator"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_train_cargo_delivery",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTrainQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePortableStorageQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateHopperCargoQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateCargoTransfers.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateCargoProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateCargoConnection.java"
+      ],
+      "native_evidence": "Carried stack fingerprint and native wagon mutation version are unchanged over a proven station trip. Paired native PSI storage must be the exact carriage manager. Forge47.4.10 extractHook true plus exact stationary hopper +1 delta and native source version +1 prove actual delivery.",
+      "attribution": "Authenticated driver or schedule assigner of the completed native trip",
+      "unsupported_paths": [
+        "A wagon mutation including fuel use conservatively invalidates its proof",
+        "Native cargo versions are not saved, so cargo proof is deliberately cleared on reload",
+        "Current committed destination adapter is a native stationary hopper",
+        "Offline actor has no synthetic credit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_cargo.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_cargo"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_network.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_network"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_arm_transfer",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateArmConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateArmQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateArmRun.java"
+      ],
+      "native_evidence": "Native ArmPlacementPacket commits exact endpoints, native init resolves the configuration. Actual non-simulated native ArmInteractionPoint extraction produces a nonempty held stack, then native insertion at a distinct configured point accepts a positive count of that same item.",
+      "attribution": "Real player committing the native endpoint configuration, persisted on the same arm",
+      "unsupported_paths": [
+        "Unknown endpoint configuration or changed configuration receives no synthetic operator"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_arm.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_arm"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_signal_wait_resume",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSignalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTrainQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateScheduleAssignmentQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateScheduleLifecycleQuestMixin.java"
+      ],
+      "native_evidence": "Same active scheduled train has native waitingForSignal, positive native ticksWaitingForSignal and zero speed. It later clears that native obstruction and resumes positive speed toward the same destination under the same schedule.",
+      "attribution": "Authenticated native schedule assigner, with schedule replacement/manual interruption invalidation",
+      "unsupported_paths": [
+        "Offline actors receive no synthetic credit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_signal.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_signal"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_schematic_complete",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSchematicCommandQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSchematicQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSchematicProjectileQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateSchematicRun.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateSchematicProjectile.java"
+      ],
+      "native_evidence": "Real PLAY commit arms one native cannon job and exact schematic input. Native launched block/belt projectiles carry that job token through native saves. A projectile must actually change its target to its declared non-air block. Native finishedPrinting must commit STOPPED/finished for the same job, with at least one confirmed required placement. Old projectiles, canceled jobs, changed input, empty schematics and launch-only counters cannot award completion.",
+      "attribution": "Authenticated native cannon menu PLAY command actor",
+      "unsupported_paths": [
+        "Actor must be online and eligible when the native job completes",
+        "Entity-only schematics cannot satisfy a required block-placement goal"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_schematic.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_schematic"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_package_filled",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateStockRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLogisticsRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePackagerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java"
+      ],
+      "native_evidence": "A real Stock Ticker request enters the native synchronous LogisticsManager broadcast. Only newly committed native Packager heldBox or queued parcels with discovered matching native order IDs and nonempty actual contents count. A previous held package or inventory acquisition cannot award it.",
+      "attribution": "Real player accepted by the existing native Stock Ticker configuration packet",
+      "unsupported_paths": [
+        "The current operator path is a real Stock Ticker request, unknown redstone/computer jobs are not attributed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_package.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_package"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_stock_order_fulfilled",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateStockRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLogisticsRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePackagerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java"
+      ],
+      "native_evidence": "Original native requested quantities are snapshotted for one synchronous call. Discovered native order IDs and unique native order/link/package indices bind actual newly committed shipments. Every originally requested item quantity must be present in those shipments and native broadcast must return accepted. Request click, partial shipment, unavailable stock and failed packing cannot award it.",
+      "attribution": "Real player accepted by the existing native Stock Ticker configuration packet",
+      "unsupported_paths": [
+        "A partial native order does not accumulate a second quest-owned fulfillment history",
+        "Offline or unknown actors receive no synthetic credit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_stock.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_stock"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_belt_delivery",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBeltInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateFunnelConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateFunnelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateBeltTransfers.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateFunnelRun.java"
+      ],
+      "native_evidence": "Exact native powered BeltInventory direct insertion passes the same transported stack into an Andesite Funnel. The actual target inventory insertion must accept a positive count, verified from its native remainder. Create onTransfer is deliberately not used because it fires before insertion even when full.",
+      "attribution": "Real player committing native funnel wrench configuration",
+      "unsupported_paths": [
+        "Placement-only or unknown funnel operators are not inferred"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_belt.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_belt"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_filtered_funnel",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateFilterConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateFunnelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateFunnelRun.java"
+      ],
+      "native_evidence": "Same actual native filter configuration accepts a real item transfer and rejects a different item type through its actual native filter test branch. Filter changes reset proof. Inventory-full rejection, simulation and mere comparison cannot count.",
+      "attribution": "Real player committing native filter interaction, value setting or clipboard configuration",
+      "unsupported_paths": [
+        "Only actual direct-input transfer attempts are observed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_filter.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_filter"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_mechanical_craft",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCrafterInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCrafterInventoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCrafterGridQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCrafterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateCrafterInput.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateCrafterGrid.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 MechanicalCrafterBlock native manual ItemHandlerHelper insertion mutates Inventory and invokes lambda$new$0 before synchronous checkCompletedRecipe/begin. Native GroupedItems.mergeOnto follows the actual assembled ingredients. tick second sendData follows successful tryToApplyRecipe, output-grid replacement and CRAFTING/countDown commit. Exact nonempty output must exist at native grid origin. Source review correction: native GroupedItems.mergeOnto now propagates personal proof only when every nonempty ingredient group has the same authenticated actor. Only groups containing no real ingredients are neutral. Unknown/different suppliers invalidate the merged proof. Each pre/post grid snapshot is limited to1024 native entries, with oversized grids uncredited and native crafting unchanged.",
+      "attribution": "Actual supplied ingredient actor stored with exact input snapshot, carried by the native grouped job through merge/write/read. Unknown input mutations invalidate the pending proof.",
+      "unsupported_paths": [
+        "Automated suppliers without native authenticated ingredient provenance are uncredited",
+        "Actor must be online at native completion",
+        "Unknown/different-supplier ingredient groups or native grouped grids above1024entries fail closed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_crafter.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_crafter"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_precision_assembly",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportProofQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSequenceAdvanceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateDeployerSequenceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateDepotCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateTransportInputs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateTransportProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 precision_mechanism recipe is5 loops x3 native deploying steps. Exact authenticated BeltBlock ItemEntity capability insertion constructs native TransportedItemStack. Native SequencedAssemblyRecipe.advance reports actual step/completion and rolled result, Deployer.activate maps actual output into new native transported stack. Credit occurs only after BeltInventory.insert installs that precise final result into native items or DepotBehaviour.setCenteredHeldItem installs it. The native applyToEachWithin queue alone is not completion.",
+      "attribution": "Exact original supplied base input actor. Native transported snapshot and initialized sequence identity persist through copy/serializeNBT/read. Injected or found intermediate mechanisms cannot acquire initialized proof. Native final byproducts are rejected.",
+      "unsupported_paths": [
+        "Initial automated/depot supplies without authenticated native provenance are uncredited",
+        "Removing intermediate work into plain inventories discards transported provenance",
+        "Unknown item/count mutation invalidates snapshot",
+        "Actor offline at completed insertion is not credited later"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_precision.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_precision"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_harvester_crop",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBearingHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateHarvesterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateMovingHarvest.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateHarvestDropCommit.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 actual mounted movement operation on mature native-supported crop. Native BlockHelper destroy emits loot before final block-state commit, so adapter joins exact native drop storage insertion or exact successfully registered world ItemEntity with changed original block after native destroy returned. Forge EntityJoinLevelEvent alone never emits credit. Mature crop requires native maximum age, supported logs require native LOGS membership and Saw owner.",
+      "attribution": "Actual authenticated bearing assembly command attached to its newly assembled native contraption Entity ForgeData. Native entity lifecycle/save owns the bounded operator UUID, no global owner map.",
+      "unsupported_paths": [
+        "Controllers other than the authenticated native bearing assembly path have no operator proof yet",
+        "Actor must be online at actual harvest completion"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_harvest.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_harvest"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_moving_saw_harvest",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBearingHarvestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateMovingSawQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateMovingHarvest.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateHarvestDropCommit.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 actual mounted movement operation on native mounted Saw supported log. Native BlockHelper destroy emits loot before final block-state commit, so adapter joins exact native drop storage insertion or exact successfully registered world ItemEntity with changed original block after native destroy returned. Forge EntityJoinLevelEvent alone never emits credit. Mature crop requires native maximum age, supported logs require native LOGS membership and Saw owner.",
+      "attribution": "Actual authenticated bearing assembly command attached to its newly assembled native contraption Entity ForgeData. Native entity lifecycle/save owns the bounded operator UUID, no global owner map.",
+      "unsupported_paths": [
+        "Controllers other than the authenticated native bearing assembly path have no operator proof yet",
+        "Actor must be online at actual harvest completion"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_saw.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_saw"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_clutch_stop_restart",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLeverControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateKineticControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateControlPropagationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateControlInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateControlProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 native Clutch actual output nonzero->zero->nonzero. Vanilla LeverBlock.use actual pull scopes real actor across synchronous native redstone propagation. Native ClutchBlock/GearshiftBlock.neighborChanged must really toggle POWERED. Stop observes native handleRemoved committed zero output. Restart/reversal waits native GearshiftBlock.tick RETURN after RotationPropagator.handleAdded and verifies actual adjacent output BE speed and source link.",
+      "attribution": "Real player committing each local native lever control action. One native split-shaft run stores actor, native input/output BE identity, input sign and input-stop epoch. Native onSpeedChanged invalidates if input itself stops. Failed output transitions discard the proof.",
+      "unsupported_paths": [
+        "Delayed redstone circuits or non-lever controls without synchronous authenticated native actor context are uncredited",
+        "Actual output requires a native adjacent kinetic consumer on the output face",
+        "Actor must be online at actual native output commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_control.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_control"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_gearshift_reverse",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLeverControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateKineticControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateControlPropagationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateControlInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateControlProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 native Gearshift actual output sign reversal. Vanilla LeverBlock.use actual pull scopes real actor across synchronous native redstone propagation. Native ClutchBlock/GearshiftBlock.neighborChanged must really toggle POWERED. Stop observes native handleRemoved committed zero output. Restart/reversal waits native GearshiftBlock.tick RETURN after RotationPropagator.handleAdded and verifies actual adjacent output BE speed and source link.",
+      "attribution": "Real player committing each local native lever control action. One native split-shaft run stores actor, native input/output BE identity, input sign and input-stop epoch. Native onSpeedChanged invalidates if input itself stops. Failed output transitions discard the proof.",
+      "unsupported_paths": [
+        "Delayed redstone circuits or non-lever controls without synchronous authenticated native actor context are uncredited",
+        "Actual output requires a native adjacent kinetic consumer on the output face",
+        "Actor must be online at actual native output commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_control.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_control"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_spout_fill",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePumpConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSpoutNetworkQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSpoutQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportProofQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateDepotCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateSpoutRun.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateSpoutProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateTransportInputs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateTransportProof.java"
+      ],
+      "native_evidence": "Create6.0.8 actual WrenchItem IWrenchable.onWrenched commits changed pump configuration. FluidNetwork.tick executed IFluidHandler.fill accepts positive fluid into exact native Spout target handler. Powered Pump native flow-cache/visited refs carry one authenticated operator. Spout actual FillingBySpout.fillItem produces changed nonempty item and exact required tank debit, then native output is installed in belt/depot. Native empty tank-update callback is replaced only on Spout to invalidate unknown mutations, native updateFluids still performs sync/dirty work.",
+      "attribution": "Same real player supplies exact native transported item and configures actual powered pump in native flow graph. Only fully authenticated pumped fluid starting from an empty tank is tracked. Every native tank update invalidates old proof and only exact known native transfer/debit can restore it, preventing manual drain/refill replay.",
+      "unsupported_paths": [
+        "Unknown or multiple pump operators in native flow graph do not receive personal credit",
+        "Preexisting untracked tank contents or manual mutation require a new authenticated native run",
+        "Initial item supply without native transported provenance is uncredited",
+        "Actor must be online at actual native item installation"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_fluid.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_fluid"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_chain_delivery",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateParcelStackQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateChainExportQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateChainArrivalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateFrogportReceiptQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePackagerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateParcelCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateParcelProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java"
+      ],
+      "native_evidence": "Create6.0.8 native Packager actual committed order parcel initializes causal proof. ChainConveyorFrogportTarget.export native addLoopingPackage/addTravellingPackage must return accepted, records exact sender port. Native ChainConveyorBlockEntity.exportToPort marks actual incoming receiver, Frogport.tick actual non-simulated own-inventory insertion must accept the whole nonempty parcel. Sender and receiver must differ in the same native world.",
+      "attribution": "Immutable original order actor and per-native-request UUID copied/saved on actual native ItemStack carrier. Native item identity, order/link/package indices and canonical SHA256 of exact native package tag reject unrelated or mutated parcels. Disk read/copy retain the same actor only. Proof is separate root save data, outside native item tag/ForgeCaps, equality/filter methods are unchanged. Client share-tag decoding does not read the root proof field.",
+      "unsupported_paths": [
+        "Only actual authenticated native request parcels have original actor provenance",
+        "Unknown serialization/codec routes that omit owner root data fail closed",
+        "Changed native package tag/order metadata invalidates proof",
+        "Actor offline at actual native receiving commit is not credited later"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_chain.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_chain"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_redstone_order",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLogisticsConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateRequesterQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLogisticsRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePackagerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRequesterProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java"
+      ],
+      "native_evidence": "Exact installed Create6.0.8 BlockEntityConfigurationPacket.applySettings(ServerPlayer,SyncedBlockEntity) surrounds actual authorized settings application. Only changed native requester writeSafe configuration records the actor. RedstoneRequester.onRedstonePowerChanged invokes triggerRequest only for a real rising edge. The exact encoded native order must be accepted and every requested item/count represented in actual newly committed nonempty heldBox/queuedExitingPackages within that request call. Computer/manual triggerRequest and lastRequestSucceeded display are never proof.",
+      "attribution": "Last real survival player committing changed native requester configuration, whose exact current native settings must still match the saved configuration snapshot. The edge operator or network viewer never replaces that actor.",
+      "unsupported_paths": [
+        "Configuration paths overriding the two-argument native applySettings without passing its base owner require their own actor seam",
+        "Request items changed through another route invalidate old configuration proof until the next actual changed settings commit",
+        "Deferred packaging outside the synchronous authenticated native request call is not yet credited",
+        "Original configuration actor must be online when actual shipment commits"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_requester.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_requester"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_gauge_restock",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLogisticsConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateGaugeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateGaugeReceiptQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLogisticsRequestQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePackagerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateParcelStackQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateGaugeProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateParcelProofs.java"
+      ],
+      "native_evidence": "Exact installed Create6.0.8 FactoryPanelBehaviour.setValueSettings or changed board configuration captures the actual target actor. Native tryRestock must observe the actual same-product stock below positive native demand and issue its native configured broadcast request. Only a fully shipped same request stamps gauge origin on actual parcel root provenance. PackagerBlockEntity.unwrapBox must non-simulated succeed and exact native target handler product count must increase by the parcel payload. The actual same attached packager inventory must reach native target and authenticated native delivered quantity must cover the original deficit. Receipt never uses gauge satisfied display, promised stock, manual refill, placement or package presence.",
+      "attribution": "Actual changed target/settings commit player, exact same native gauge slot/configuration/cycle and attached receiving packager identity. Original actor/request/parcel identity lives on the actual native carrier, outside native item equality. Per-gauge native persistent cycle holds bounded receipt identities and amounts, never a separate logistics authority.",
+      "unsupported_paths": [
+        "Current receiving producer covers the native restocker gauge path, not a non-restocker crafting-product transformation",
+        "Filter, target, network, address, gauge mode or receiving packager changes invalidate the old cycle",
+        "Deferred packaging outside the synchronous authenticated native request call is not yet credited",
+        "Custom unpack handlers without the exact observed same-product inventory increase fail closed",
+        "Each cycle accepts at most 256 unique parcel receipts",
+        "Stacked repeated recipe parcels retaining one copied parcel identity are conservatively counted once",
+        "Actor must be online at native request and final receipt",
+        "Receipt inventory scanning fails closed above 4096 slots"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_gauge.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_gauge"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_split_order_repacked",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateRepackagerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateParcelStackQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRepackProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateParcelProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateOrderProofs.java"
+      ],
+      "native_evidence": "Exact installed Create6.0.8 RepackagerBlockEntity.attemptToRepackage observes the actual native helper fragment inputs and repack result, then every non-simulated source extraction and final native queuedExitingPackages. At least two authenticated parcels must share one actual native order plus immutable original actor/request UUID, distinct native link/index and parcel identity. Actual consumed parcel fingerprints must equal exactly the complete native helper input set. Consolidated nonempty output item/count totals, including native BigItemStack multiplicities, must exactly conserve input contents and every exact output object must already be committed in the native queue. Pure helper.repack calculation and passing through one complete parcel do not emit.",
+      "attribution": "Original requesting real player, copied only after actual native input consumption and output queue commit. New output carriers retain the original actor/request and optional exact gauge origin, with a fresh parcel UUID and binding to their actual native output tag. Native recipe-generated child order IDs are accepted only through this exact conserved native transformation.",
+      "unsupported_paths": [
+        "Unknown or mutated input parcel provenance fails closed",
+        "Extra same-order parcels consumed beyond the complete helper input set fail closed rather than losing or inventing contents",
+        "Later native sign/address rewrites changing the output tag invalidate carried proof until a separately reviewed native transformation seam exists",
+        "Original actor must be online when actual repack commit emits"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_repack.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_repack"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_compact",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinRecipeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinInputQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBasinInventoryQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateMixingRun.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Native BasinRecipe.apply actual create:compacting recipe below the exact native MechanicalPress owner. Existing authenticated input snapshot is captured before input debit, actual acceptOutputs must accept nonempty item/fluid output, and native apply must return true. Ordinary pressing and mixing cannot satisfy this criterion.",
+      "attribution": "Actual native input supplier, not the press placer or nearby player",
+      "unsupported_paths": [
+        "Only authenticated manually supplied native basin inputs currently retain personal proof",
+        "Actor must be online at recipe completion"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_compact.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_compact"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_crush",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCrusherQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Native CrushingWheelController.intakeItem must actually consume the exact player-tossed entity and install its unchanged stack. Native itemInserted invalidates old proof. Native applyRecipe must consume exact pending input and commit nonempty actual output in native ProcessingInventory slots. Mere wheel rotation, passing an entity through, or a missing recipe cannot emit.",
+      "attribution": "Real native tossed-input player, scoped to the exact native controller/input snapshot",
+      "unsupported_paths": [
+        "Unknown automated input suppliers have no personal proof",
+        "Zero-output native recipe rolls are conservatively uncredited",
+        "Actor must be online at actual output commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_crush.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_crush"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_saw_recipe",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSawRecipeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Native Saw.insertItem must accept the exact player-tossed input into an initially empty native inventory. Native start invalidates unknown suppliers before the accepted manual insertion restores proof. Native applyRecipe must consume exact pending input and commit nonempty output matching the unchanged selected nonempty native filter. Native package opening is explicitly rejected.",
+      "attribution": "Real native tossed-input player and actual selected output filter on the same native recipe run",
+      "unsupported_paths": [
+        "Unknown automated input suppliers have no personal proof",
+        "Any changed filter or input invalidates the observed run",
+        "Actor must be online at actual output commit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_saw_recipe.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_saw_recipe"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_burner_capture",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBurnerCaptureQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Installed native BlazeBurnerBlockItem.giveBurnerItemTo called by its validated entity/spawner capture path must actually debit one empty burner and increase the real player native inventory filled-burner count by exactly one. Separate capture criterion preserves the supplied AND contract with native fueled heat.",
+      "attribution": "Actual real capture actor",
+      "unsupported_paths": [
+        "Capture whose output is dropped due to a full inventory is conservatively uncredited",
+        "Creative capture and gifted filled burners cannot emit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_capture_heat.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_capture_heat"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_burner_fueled_heat",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateBurnerHeatQuestMixin.java"
+      ],
+      "native_evidence": "Installed native BlazeBurnerBlock.use actual tryInsert is invoked exactly once. It must succeed non-simulated, consume one fuel from the actual real actor and change actual noncreative burner block heat to at least KINDLED. No raw click, lighting an empty burner, stockkeeper interaction, fuel preview or same heat refill emits. Separate heat criterion preserves the supplied AND contract with native capture.",
+      "attribution": "Actual player supplying native consumed fuel",
+      "unsupported_paths": [
+        "Automated/fake-player fueling has no real personal actor",
+        "Native fuel refill without a heat-level transition does not satisfy this transition criterion"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_capture_heat.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_capture_heat"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_excavate",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ExcavationPlaneQuestMixin.java"
+      ],
+      "native_evidence": "Existing JEMCompat ExcavationMining native Batch.breakOne must actually remove the first and at least one extra permitted same-plane block in the same native tool/player batch. Native removed flag and successful native return are both required. Eligibility, access, tool restrictions and native durability remain untouched.",
+      "attribution": "Exact real player in the canonical excavation batch",
+      "unsupported_paths": [
+        "Only origin removal without any actual extra plane block does not qualify",
+        "No new breaking, access, durability or enchantment rules are introduced"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_excavate.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_excavate"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_hose",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateHoseQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSpoutNetworkQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreatePumpConfigurationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateFluidOperator.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateSpoutProofs.java"
+      ],
+      "native_evidence": "Native FluidNetwork executed drain/fill scopes the real configured powered-pump actor from its existing bounded flow graph. Exact HosePulleyFluidHandler native non-simulated FluidDrainingBehaviour.pullNext or FluidFillingBehaviour.tryDeposit must succeed and its enclosing actual handler call must return/accept positive fluid. Internal tank buffering alone cannot emit.",
+      "attribution": "Same single actual native pump configuration actor across the native flow graph",
+      "unsupported_paths": [
+        "Unknown or conflicting native pump operators fail closed",
+        "Native flow caches/visited sets above4096 and target lists above4096 fail closed",
+        "Actor must be online at the actual pool operation"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_hose.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_hose"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_photo_develop",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateSpoutQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateDepotCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateTransportCommitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateFilmProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateTransportInputs.java"
+      ],
+      "native_evidence": "Installed Exposure1.9.21 bundled native Create one-step black-and-white film developing recipe consumes250water and changes exposed black-and-white or high-sensitivity black-and-white film into developed_black_and_white_film. Require exact authenticated item and pumped-fluid actor, preserved nonempty native film_frames or legacy Frames, exact tank debit and actual native belt/depot output installation. Fresh empty film, gifted developed film and possessed output cannot emit.",
+      "attribution": "Exact original native exposed-film supplier and pump operator must be the same real player",
+      "unsupported_paths": [
+        "Three-step color-film developing path is not yet supported by this adapter",
+        "Full input provenance must survive native transported lifecycle",
+        "Actor must be online when actual output is installed"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_photo_develop.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_photo_develop"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_deployer",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateDeployerPlacementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateDeployerProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRunProofs.java"
+      ],
+      "native_evidence": "Exact native DeployerHandler.activateInner keeps its original exact native invocation untouched, with HEAD/RETURN observation and package-private Mode received only as @Coerce Object. Interrupted calls cannot emit and scope clears at native tick END. Forge native EntityPlaceEvent must belong to that exact native DeployerFakePlayer, remain uncanceled after native return and its final actual block state must equal the placed block and differ from replaced snapshot. At most64placement events are retained in the synchronous scope. Native DeployerFakePlayer.getUUID resolves its native actual owner.",
+      "attribution": "Canonical native deployer owner UUID, resolved to a real online survival player. Native fake player itself never receives credit",
+      "unsupported_paths": [
+        "Current adapter covers actual block placement, not other deployer entity-use/attack/harvest branches",
+        "Unknown native deployer owner fails closed",
+        "Canceled or rolled-back native placement cannot emit"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_deployer.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_deployer"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_cart",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCartPlacementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCartAssemblyQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateCartMovementQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateCartProofs.java"
+      ],
+      "native_evidence": "Exact native MinecartItem.useOn addFreshEntity must accept a real player supplied cart directly on the actual native assembler. Its persisted proof binds that exact cart, assembler position/dimension and native assembler identity. Native CartAssembler.assemble must newly attach a registered nonempty mounted contraption to an initially passenger-empty cart. Only later actual native AbstractMinecart.moveAlongTrack position change emits. Placement, assembly alone, empty cart movement and unrelated existing mounted contraptions cannot satisfy the composite.",
+      "attribution": "Exact real survival player supplying this cart to this assembler, retained on native cart and newly assembled contraption",
+      "unsupported_paths": [
+        "Dispenser or unknown cart suppliers have no real actor proof",
+        "Existing cart moved onto an assembler without authenticated direct supply is conservatively uncredited",
+        "Actor must be online when actual native rail movement commits"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_cart.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_cart"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_train_access_transition",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TrainWindowQuestMixin.java"
+      ],
+      "native_evidence": "Exact installed CreateTrainParts0.5.1 SlidingWindowBlock.toggle six-argument native owner must actually change OPEN on the same surviving block after the native operation for a real ServerPlayer. Automatic redstone calls with no player and raw no-op interactions cannot emit.",
+      "attribution": "Exact real player whose native access transition or climb movement commits, persisted by two AND advancement criteria",
+      "unsupported_paths": [
+        "Current accepted access alternative is installed stationary SlidingWindow, not moving-contraption access or other slide/step variants"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_station_access.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_station_access"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_train_access_climb",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TrainAccessClimbQuestMixin.java"
+      ],
+      "native_evidence": "Actual native LivingEntity.travel must move this real player upward, onClimbable must identify a currently supported native climb block, and native lastClimbablePos must resolve to an installed BellsAndWhistles Andesite/Brass/Copper Grab Rails or Bogie Steps. Flying, elytra/passenger motion and block placement cannot emit.",
+      "attribution": "Exact real player whose native access transition or climb movement commits, persisted by two AND advancement criteria",
+      "unsupported_paths": [
+        "Only actual stationary native climb blocks are covered, not contraption-specific ladder behavior"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_station_access.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_station_access"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_rail_couple",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RailCouplerControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/RailCouplerQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateLeverControlQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateControlProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateRailCouplerRun.java"
+      ],
+      "native_evidence": "Exact installed Steam_Rails1.7.3 TrackCouplerBlock native rising POWERED transition captures only synchronous authenticated native LeverBlock.pull actor. Native TrackCouplerBlockEntity.onPowered consumes one exact configuration-bound edge proof. Actual TrainUtils.splitTrain must return a distinct registered nonempty train with exact conserved native carriage identities, or combineTrains must merge the exact registered native carriage set into front train and remove/empty back train. Native failure returning the unchanged original train cannot emit. Each native call executes exactly once and native train balance/state transitions remain untouched.",
+      "attribution": "Real player triggering the actual native rising edge, retained only on the actual native coupler until its canonical onPowered operation",
+      "unsupported_paths": [
+        "Delayed circuits/non-lever controls without authenticated synchronous native actor fail closed",
+        "Changed native coupler configuration or falling edge invalidates pending attribution",
+        "Native carriage snapshots are limited to1024entries",
+        "Actor must be online when native coupling/decoupling commits"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_rail_couple.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_rail_couple"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_navigator_constraint",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateNavigatorProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/NavigatorRouteAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NavigatorRouteQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NavigatorSettingsQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NavigatorQueryQuestMixin.java"
+      ],
+      "native_evidence": "Exact native SaveUserSettingsPacketData.handle UserSettings.save executes once. Actual network context ServerPlayer must equal native settings owner. Canonical before/after transfer-time and category constraints must differ and end as an active nondefault valid native setting in the actual canonical settings instance. Native per-player constraint criterion emits on logical server thread. Formatting/time display/global admin aliases are not substituted for a route constraint.",
+      "attribution": "Authenticated actual native network sender, matched to native owner/request player UUID, never client-supplied UUID alone",
+      "unsupported_paths": [
+        "Snapshot bounds:128excluded categories,64native itineraries,32parts per itinerary",
+        "Settings changes during an in-flight query discard personal proof",
+        "Native defaults and private/admin-only configuration do not qualify as a user route constraint"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_route_planner.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_route_planner"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "create_navigator_route",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateNavigatorProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/NavigatorRouteAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NavigatorRouteQuestAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NavigatorSettingsQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NavigatorQueryQuestMixin.java"
+      ],
+      "native_evidence": "Exact native NavigatePacketData.handle NavigableGraph.searchRoutes executes once with actual sender UUID matched to requested player UUID. Native returned routes must include a bounded nonempty uncanceled itinerary with actual distinct start/end station names and exact requested native endpoint IDs. Query constraints must remain unchanged, active and previously committed by this same actor. Route criterion emits on logical server thread only after native constraint criterion already completed. Screen opening/client-reported result cannot emit.",
+      "attribution": "Authenticated actual native network sender, matched to native owner/request player UUID, never client-supplied UUID alone",
+      "unsupported_paths": [
+        "Snapshot bounds:128excluded categories,64native itineraries,32parts per itinerary",
+        "Settings changes during an in-flight query discard personal proof",
+        "Native defaults and private/admin-only configuration do not qualify as a user route constraint"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_route_planner.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_route_planner"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_eng_conductor",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ConductorCreationQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ConductorWhistleQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateWhistleTrainQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CreateScheduleLifecycleQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateWhistleProofs.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/create/CreateWhistleRun.java"
+      ],
+      "native_evidence": "Exact Steam_Rails1.7.3 ConductorCap native spawn must register the actual conductor, remove native Andesite Casing and debit one cap for the real survival actor. Creator proof stays on this native conductor ForgeData. Native whistle binding must commit exact SelectedConductor/SelectedTrain for that same actual conductor and creator, storing actual assignment on the conductor. A later successful native whistle call must replace its schedule with the exact native automatic one-destination schedule while that same conductor is in native controlling-conductor set. The actual native leading rail point must then move under that schedule, and actual Train.arriveAt must commit the recorded matching station ID/name while the same conductor retains creator/assignment proof in native live entity or native serialized passenger. Native schedule replacement/cancel, changed conductor, derailment and invalid train discard proof. Installing a schedule, sound/message, no-train whistle or pathless request alone never emits.",
+      "attribution": "Same original real player who actually creates, assigns and summons this exact native conductor/train. Item method observations are logical-thread local, preserving integrated client/server separation. Native conductor and Train NBT persist their exact scoped proof, no global owner/progress registry.",
+      "unsupported_paths": [
+        "Previously existing/gifted conductors without authenticated native creation cannot satisfy the creation clause",
+        "Native carriage/controller limits1024/128 and native passenger snapshots64 fail closed",
+        "Destination text above256characters is conservatively uncredited",
+        "Native control membership must remain valid through the same native schedule and final arrival",
+        "Actor must be online and eligible at actual native arrival",
+        "Only native server Train.tick arrival scope can emit, not direct synthetic arrival"
+      ],
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_eng_conductor.json",
+          "advancement": "jem_advancements:quest_v3/v3_eng_conductor"
+        }
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "external_owners": [
+    {
+      "action": "create_polish_quartz",
+      "owner": "SandpaperQuestMixin owned by native_producers",
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_polish.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_polish"
+        }
+      ]
+    },
+    {
+      "action": "create_drill_service",
+      "owner": "Native DrillAdvancements service owned by native_producers/parent",
+      "advancement_blueprints": [
+        {
+          "path": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/v2_eng_drill.json",
+          "advancement": "jem_advancements:quest_v2/v2_eng_drill"
+        }
+      ]
+    }
+  ],
+  "unimplemented_actions": [],
+  "parcel_provenance_investigation": {
+    "status": "Source implementations cover all 29 local Create actions, including conserved native repack propagation. Runtime remains unobserved and unsupported paths remain explicit.",
+    "native_item_tag": "Do not add actor proof to native PackageItem item tag because native NBT-aware filters can observe it",
+    "forge_serializable_capability": "Rejected after exact Forge47.4.10 CapabilityDispatcher.areCompatible source inspection. Native ItemStack comparison compares serialized cap NBT, so actor differences would change established equality",
+    "candidate_native_owner": "Nullable native ItemStack proof field, native copy and root-level save/constructor read. Canonical native-tag SHA256 binds the parcel. Actor/request remain immutable across reviewed native repack transformation, every new concrete native output receives a new parcel UUID. Root data stays outside native tag/capability equality. Runtime unobserved.",
+    "global_owner_map": "No parallel order owner/progress map proposed"
+  },
+  "v3_engineering_pending": [
+    "v3_eng_factory_recipe"
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "runtime_observed": false,
+  "accepted_route_rows": 45
+}

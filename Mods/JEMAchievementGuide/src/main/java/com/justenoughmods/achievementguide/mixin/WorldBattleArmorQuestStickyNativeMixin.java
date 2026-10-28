@@ -1,0 +1,9 @@
+package com.justenoughmods.achievementguide.mixin;
+import com.justenoughmods.achievementguide.integration.battlearmor.*;import java.util.*;import java.util.function.Predicate;import net.minecraft.world.entity.LivingEntity;import net.minecraft.world.item.ItemStack;import top.theillusivec4.curios.api.SlotResult;import top.theillusivec4.curios.api.type.util.ICuriosHelper;import org.spongepowered.asm.mixin.*;import org.spongepowered.asm.mixin.injection.*;import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+@Pseudo @Mixin(targets="com.github.L_Ender.cataclysm.entity.AnimationMonster.Koboleton_Entity",remap=false) public abstract class WorldBattleArmorQuestStickyNativeMixin {
+ @Unique private WorldBattleArmorQuestCurios.Theft jem$theft;
+ @Inject(method="m_8119_",at=@At("HEAD"),remap=false) private void jem$before(CallbackInfo ci){jem$theft=null;}
+ @Redirect(method="m_8119_",at=@At(value="INVOKE",target="Ltop/theillusivec4/curios/api/type/util/ICuriosHelper;findFirstCurio(Lnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Predicate;)Ljava/util/Optional;",remap=false),remap=false) private Optional<SlotResult> jem$query(ICuriosHelper helper,LivingEntity target,Predicate<ItemStack> predicate){var actual=helper.findFirstCurio(target,predicate);jem$theft=WorldBattleArmorQuestCurios.queried(target,actual);return actual;}
+ @Redirect(method="m_8119_",at=@At(value="INVOKE",target="Ljava/util/Optional;isEmpty()Z",remap=false),remap=false) private boolean jem$acceptedRoll(Optional<?> actual){boolean empty=actual.isEmpty();WorldBattleArmorQuestCurios.optional(jem$theft,actual,empty);return empty;}
+ @Inject(method="m_8119_",at=@At("RETURN"),remap=false) private void jem$after(CallbackInfo ci){var theft=jem$theft;jem$theft=null;WorldBattleArmorQuestCurios.finish(theft);}
+}

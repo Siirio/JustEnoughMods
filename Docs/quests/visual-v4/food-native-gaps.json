@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "runtime_verified": false,
+  "source_reviewed": false,
+  "scope": "Exact native food contradictions and unavailable alternative server receipts, collected for the overall decision",
+  "gaps": [
+    {
+      "card": "v3_era_hunger_guard",
+      "status": "resolved_user_approved_zero_food_native_route",
+      "contract_unchanged": false,
+      "native_evidence": [
+        "build/food-remaining-native/aquamirae-more/source/dev/obscuria/aquamirae/common/hook/handler/PlayerHandler.java",
+        "build/food-remaining-native/aquamirae-more/source/dev/obscuria/aquamirae/registry/AquamiraeItems.java",
+        "build/world-misc-native/aquamirae/more-source/dev/obscuria/aquamirae/common/AquamiraeCombatRules.java",
+        "build/world-misc-native/aquamirae/more-source/dev/obscuria/aquamirae/common/hook/LivingEntityHooks.java",
+        "build/world-misc-native/aquamirae/player-mixin.bytecode.txt"
+      ],
+      "installed_behavior": "Void Squid supplies Devouring Curse, native PlayerHandler.isInvulnerableTo returns false at positive food reserve and permits the curse branch only at zero food",
+      "pack_override_check": "Searched current canonical managed KubeJS/config and module Java for void_squid, devouring_curse and native protection owner. Only book and economy metadata mentions were found, no gameplay override resolving the contradiction",
+      "required_decision": "Resolved by explicit user approval, see native-user-amendment.json",
+      "implemented": true,
+      "producer_code_reviewed": false,
+      "earlier_evidence_correction": "Earlier installed_behavior absence inference inspected only isInvulnerableTo. Actual MixinPlayer.modifyDamageAmount calls PlayerHandler -> LivingEntityHooks -> AquamiraeCombatRules.applyDevouringCurse, which zeros incoming damage and debits food while positive. Native zero-food invulnerability is independently real and is the approved current quest contract",
+      "current_producer": "world-misc-producers.json"
+    },
+    {
+      "card": "v3_food_catch_toolkit",
+      "route": "Dragonfin Boots extra jump",
+      "status": "native_alternative_has_no_server_charge_receipt",
+      "card_supported_by": "Implemented native watch OR alternative",
+      "native_evidence": [
+        "build/food-remaining-native/tide-last/source/com/li64/tide/loaders/forge/ForgeClientEntrypoint$ForgeBus.java",
+        "build/food-remaining-native/tide-more/source/com/li64/tide/mixin/PlayerMixin.java"
+      ],
+      "installed_behavior": "Only Dist.CLIENT ForgeBus calls native restored/consumed charge and double-jump methods. Native server has no input charge producer or authoritative use receipt",
+      "rejected": "Do not trust a new client completion packet, guess from upward velocity, fabricate charge state or require a dangerous jump",
+      "producer_code_reviewed": false
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "producer_scope": "Exact4 WorldRitual cards, source implementation frozen awaiting parent overall review/build",
+  "runtime_observed": false,
+  "independent_reviewed": false,
+  "artifacts": [
+    {
+      "mod": "luminous_nether",
+      "path": "Client/ManagedPack/mods/Luminous%20Nether%20V1.3.3%20-%20Forge%201.20.1.jar",
+      "sha256": "6b3a02d00b8c7cd92718b968e123622b531f9b2272acc1b944d8a60c9c610a42"
+    },
+    {
+      "mod": "cnc",
+      "path": "Client/ManagedPack/mods/Critters n' Crawlers-2.2.5-mc1.20.1.jar",
+      "sha256": "ddd1946dbbb958369d3fc6217481ca2cc53b018f3d29bec3301b4d2393707dca"
+    },
+    {
+      "mod": "geckolib",
+      "path": "Client/ManagedPack/mods/geckolib-forge-1.20.1-4.8.4.jar",
+      "sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747"
+    }
+  ],
+  "registration_request": "build/questbook-v4-world-rituals-registration.json",
+  "native_gaps": [],
+  "bounds": {
+    "native_scope_depth": 16,
+    "native_output_entities_per_scope": 16,
+    "pending_final_stun_events": 128,
+    "active_stun_actors": 256,
+    "native_goal_entries_per_target": 32,
+    "pending_paid_sanctuary_actors": 256,
+    "sanctuary_receipt_ttl": 200,
+    "physical_sidecar": "Existing NativeFoodSources budgets, at most8 claims per actual stack and16384 batches shared world",
+    "world_reads": "Actual native hit/table/pedestal positions and direct owner lookup only, no proximity attribution, world scans or forced chunks",
+    "lifecycle": "Server stop clears all runtime scopes/maps, logout/clone clears pending actor proof, dimension change invalidates stun proof. Paid sanctuary receipt intentionally survives its own native dimension transfer"
+  },
+  "research": [
+    "build/world-misc-native/research.json",
+    "build/world-misc-native/atlas-before.json"
+  ],
+  "native_cache": [
+    "build/world-misc-native/luminous_nether/source",
+    "build/world-misc-native/luminous_nether/resources",
+    "build/world-misc-native/luminous_nether/sanctuary/source",
+    "build/world-misc-native/cnc/source",
+    "build/world-misc-native/cnc/resources"
+  ],
+  "current_pack_source_scopes": [
+    "Client/ManagedPack/kubejs/server_scripts",
+    "Client/ManagedPack/kubejs/startup_scripts",
+    "Client/ManagedPack/config/item_obliterator.json5",
+    "Client/ManagedPack/config/incontrol",
+    "Mods/JEMCompat/src/main/java"
+  ],
+  "current_pack_findings": [
+    "Selected4 mechanic literals absent from modifying server/startup scripts",
+    "Current ItemObliterator/InControl CNC exclusions apply coyote/rattlesnake/snake, not selected Wendigo/Wechuge/Skinwalker",
+    "EnhancedAiTierPolicy includes luminous_nether, native AI and owner data remain authority. TransportEvents special cases glider/caribou, not these proof routes",
+    "No new ritual recipe, cost, timer, daily-reset owner, tame mechanic, gravity mechanic or stun mechanic added"
+  ],
+  "preservation": "Existing NativeFoodSources sidecar and TravelProof.eligible authentication/admission reused without edits. Native calls once unchanged, ordinary item NBT untouched. No prior source/central/Atlas/book/reward/route edits",
+  "producers": [
+    {
+      "quest": "v3_combat_nether_houseguest",
+      "action": "v3_combat_nether_houseguest",
+      "emitted_actions": [
+        "v3_combat_nether_houseguest"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_nether_houseguest"
+      ],
+      "source_implemented": true,
+      "native_evidence": "Actual native Pottergeist mobInteract untamed -> tamed and owner UUID for real actor, rejected native AnimalTame cancellation. Same pet and bound native menu, actual new decorative_vases-tag slot15 attachment equals actual entity item handler slot15 and storage capability exists. Native follow controls and texture procedure remain native",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldritual/WorldRitualQuestPotter.java"
+      ],
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_guzzle_ectoplasm",
+      "action": "v3_combat_guzzle_ectoplasm",
+      "emitted_actions": [
+        "v3_combat_guzzle_ectoplasm"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_guzzle_ectoplasm"
+      ],
+      "source_implemented": true,
+      "native_evidence": "Original native Guzzle feeding food1 debit, hunger result and accepted actual ectoplasm reward drop. Existing NativeFoodSources physical sidecar actor budget survives pickup/split/merge. Actual native findAmmo input and ammo1 debit bind accepted owned native EctoplasmShot, then its original native allowed-block hit creates accepted exact FallingBlockEntity from same block state and removes actual original block. Raw feeding/drop/projectile launch does not complete",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldritual/WorldRitualQuestEctoplasm.java"
+      ],
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_magic_nether_ritual",
+      "action": "v3_magic_nether_ritual",
+      "emitted_actions": [
+        "v3_magic_nether_ritual"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_magic_nether_ritual"
+      ],
+      "source_implemented": true,
+      "native_evidence": "Exact real bound native RitualGUIMenu table/pedestal arrangement, actual daily ActiveRitual and native toggle, original ghostly_essence16 Slot.remove return and actual debit. All10 native useful ritual owners supported: health, night, cleansing, XP, chance, perception, saturation, mending, luck and sanctuary. Require actual HP/food/saturation/level gain, accepted beneficial/perception/mending effect, removed harmful effect, actual day->night, real same-actor Chance reward pickup, or actual native delayed sanctuary teleport. Negative Chance result alone never completes",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldritual/WorldRitualQuestRitual.java"
+      ],
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_fauna_fireworks_escape",
+      "action": "v3_fauna_fireworks_escape",
+      "emitted_actions": [
+        "v3_fauna_fireworks_escape"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_fauna_fireworks_escape"
+      ],
+      "source_implemented": true,
+      "native_evidence": "Actual actor-owned FireworkRocketEntity native FIREWORKS source invokes one exact native species stun procedure, DATA_stunned false->true and final original LivingAttackEvent post not canceled. Original actual MeleeAttackGoal protected native reach getter is invoked through public Mixin bridge, no range formula copied. Same actor physically moves from inside to outside actual current attack distance alive while that target native stun state still true. Native false data write immediately invalidates epoch, no copied stun timer",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/worldritual/WorldRitualQuestStun.java"
+      ],
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 4
+}

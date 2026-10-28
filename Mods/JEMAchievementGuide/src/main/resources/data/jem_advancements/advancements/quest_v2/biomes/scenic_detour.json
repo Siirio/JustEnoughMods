@@ -1,0 +1,61 @@
+{
+  "criteria": {
+    "option_1": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "natures_spirit:redwood_forest"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_2": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "natures_spirit:white_cliffs"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_3": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "natures_spirit:wisteria_forest"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "option_1",
+      "option_2",
+      "option_3"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

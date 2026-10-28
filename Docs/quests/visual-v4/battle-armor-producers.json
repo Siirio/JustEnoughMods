@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "status": "source frozen pending parent single overall review/build",
+  "source_reviewed": true,
+  "runtime_verified": false,
+  "selected_existing_cards": [
+    "v3_combat_forged_armor",
+    "v3_combat_cursium",
+    "v3_combat_abyss_kit"
+  ],
+  "implemented_remaining_routes": 8,
+  "unavailable_routes": [],
+  "producers": [
+    {
+      "goal": "v3_combat_forged_armor",
+      "action": "v3_combat_forged_armor",
+      "route": "ignitium_leggings_brand_reflex",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Native ServerEventHandler.onLivingDamage(LivingDamageEvent) actual leggings branch adds accepted useful Blazing Brand to real attacker. Final Forge damage remains accepted and native hurt returns with actual player health decrease",
+      "lineage": "Certified Ignitium LEGS piece before and after, same physical source sidecar. Existing head-brand route remains independently supported",
+      "cost": "Native damage, actual brand effect/stack/duration, native proc chance and equipment wear remain unchanged",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestHurtMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestNativeDamageMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFinalEventMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_forged_armor",
+      "action": "v3_combat_forged_armor",
+      "route": "ignitium_boots_lava_walk",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Native StandOnFluidEventEvent changes previously uncanceled exact lava event to canceled. After all subscribers, Lionfish accepts final canceled event, real actor moves horizontally and actually contacts the native lava surface with ground contact",
+      "lineage": "Certified Ignitium FEET piece and matching physical sidecar before/after native move. Movement packet routes wait for final accepted packet coordinates and recheck current physical contact",
+      "cost": "Actual native Lionfish collision and native Cataclysm boots condition remain authoritative. No synthetic surface, fluid event, or fluid-walking mechanic is created",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestMoveMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestLavaNativeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFinalEventMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestAcceptedMovementMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_forged_armor",
+      "action": "v3_combat_forged_armor",
+      "route": "ignitium_elytra_fusion_and_flight",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Actual installed cataclysm:weapon_infusion/ignitium_elytra_chestplate WeaponfusionMenu recipe consumes native Ignitium chest and Elytra, real actor gains exact native output. Native elytraFlightTick returns true during actual flight and accepted real server travel follows",
+      "lineage": "Already certified original Ignitium smith chest consumed by exact native fusion. New finite external battle_armor_elytra sidecar plus WorldBattleEquipmentOrigins.confirmed follows native output across native NBT changes. Old consumed physical base budget retired",
+      "cost": "Native two-input fusion cost, native copied armor NBT, native Elytra flight eligibility/tick and native unbreakable armor behavior preserved. No crafting-grid recipe or ResultSlot redirect added",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFusionClickMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFusionNativeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFlightNativeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestMoveMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestAcceptedMovementMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_cursium",
+      "action": "v3_combat_cursium",
+      "route": "cursium_boots_backstep",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Native Cursium_Armor.onKeyPacket type 7 commits real grounded boots backstep impulse and a new real cooldown. Same actor then commits accepted server movement in the native impulse direction with remaining native momentum",
+      "lineage": "Corresponding certified Cursium FEET piece, same physical sidecar, dimension-bound short observational receipt. Packet correction, no displacement, no momentum, wrong direction, expiry and gear replacement fail closed",
+      "cost": "Native backstep and ten-second cooldown remain native. The bounded observation window links actual movement, it adds no gameplay timer",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestBackstepNativeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestAcceptedMovementMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_cursium",
+      "action": "v3_combat_cursium",
+      "route": "cursium_leggings_dodge",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Native ServerEventHandler.onLivingAttack actually cancels previously uncanceled positive attack in its equipped leggings branch, with preexisting Ghost Form excluded. Final EventBus result is still canceled, and actual native hurt returns false with player health unchanged",
+      "lineage": "Certified Cursium LEGS piece and same physical sidecar before/after actual hit. Native random decision is observed, never reconstructed",
+      "cost": "Native chance, source restrictions and final attack cancellation preserved. Native chest death revival is not a producer and JEM elimination is untouched",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestHurtMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestNativeDamageMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestFinalEventMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_abyss_kit",
+      "action": "v3_combat_abyss_kit",
+      "route": "sticky_gloves_native_theft_prevention",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Actual Koboleton attack queries native Sticky Gloves slot. Native Optional.isEmpty is reached only after native theft roll passes and returns false because actual gloves are present. Eligible actual hand item stays unchanged at native method return",
+      "lineage": "The exact returned native Optional identity, actual native Curios slot and actual eligible offhand-first item are retained only for that attack. Existing sticky-tag item immunity cannot substitute",
+      "cost": "Original native RNG, config threshold, attack, Curios query and Optional check execute once. No theft chance is copied or forced, no item is stolen/restored by this family",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestStickyNativeMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_abyss_kit",
+      "action": "v3_combat_abyss_kit",
+      "route": "sturdy_boots_powder_snow_surface",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Native vanilla canEntityWalkOnPowderSnow result is observed false before Curios. Native equipped Sturdy Boots callback returns true and final Curios result is true. Actual final powder-snow collision shape is full height and real actor moves on that exact physical surface",
+      "lineage": "Scoped actual real actor move plus exact shape block position, current equipped native Sturdy Boots and final physical AABB/top/ground contact. Leather boots or other vanilla walk permission cannot substitute",
+      "cost": "Native Curios capability and collision rules remain native. No replacement surface, snow block change or generic equipment/proximity award",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestMoveMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestSturdyNativeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestSnowBaselineMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestSnowShapeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestAcceptedMovementMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "goal": "v3_combat_abyss_kit",
+      "action": "v3_combat_abyss_kit",
+      "route": "unbreakable_skull_native_stun_rejection",
+      "status": "implemented_pending_overall_review",
+      "native_commit": "Installed private Cataclysm LivingEntity helper rejects actual positive Stun application with native callback false and newly committed real skull cooldown. Final addEffect return remains false and actual Stun stays absent",
+      "lineage": "Real actor had actual equipped Skull, no previous Stun and no preexisting cooldown. Exact input effect identity follows native helper to final effect result",
+      "cost": "Native forty-five-second cooldown and native rejection remain unchanged. An item equip or cooldown alone cannot produce the action",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleArmorQuestSkullNativeMixin.java"
+      ],
+      "cancellation": "Actual final event/native return and actual physical/effect/output state are required. Original native mechanics execute once. Pure observation only",
+      "source_reviewed": true,
+      "runtime_verified": false,
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "already_supported_elsewhere": [
+    "Ignitium helmet brand",
+    "Cursium helmet vision",
+    "Blessed Crab Meat blessing"
+  ],
+  "parallel_parent_owned": [
+    "Bloom pauldrons eight exact native projectiles"
+  ],
+  "excluded_producer": "Cursium chest death revival is intentionally not a card condition, and no JEM elimination authority is changed",
+  "shared_apis_unchanged": [
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battle/BattleQuestSmithing.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battle/WorldBattleEquipmentOrigins.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/food/NativeFoodSources.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/advancement/QuestResultSnapshot.java"
+  ],
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "runtime_observed": false,
+  "accepted_route_rows": 8
+}

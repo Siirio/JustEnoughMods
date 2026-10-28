@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "filter_compared": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "storage_filter_comparison"
+      }
+    },
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_store_filter_void"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "filter_compared"
+    ],
+    [
+      "completed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,557 @@
+{
+  "schema": 1,
+  "status": "SOURCE_IMPLEMENTED_FROZEN_PENDING_PARENT_OVERALL_REVIEW",
+  "source_of_contract": "build/questbook-v4-companion-systems-cards.json exact13 current fixed cards including pinned Essence/Follow and Grail corrections",
+  "installed_artifacts": [
+    {
+      "filename": "companions-forge-1.20.1-1.3.3.jar",
+      "path": "Client/ManagedPack/mods/companions-forge-1.20.1-1.3.3.jar",
+      "sha256": "5b01cd1d4d54dc6021a2e56480e791e5321fe4bcfdb9e8c63cefe98d825100f5",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "knightlib-forge-1.20.1-2.0.0.jar",
+      "path": "Client/ManagedPack/mods/knightlib-forge-1.20.1-2.0.0.jar",
+      "sha256": "ca30fa182da961b0ad3996b86fff029c801b7f3008b412aecb89c6809b2e9114",
+      "configuration": "compileOnly fg.deobf"
+    },
+    {
+      "filename": "geckolib-forge-1.20.1-4.8.4.jar",
+      "path": "Client/ManagedPack/mods/geckolib-forge-1.20.1-4.8.4.jar",
+      "sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747",
+      "configuration": "compileOnly fg.deobf"
+    }
+  ],
+  "source_flags": {
+    "manual_family_source_pass": true,
+    "independent_review_run": false,
+    "automated_verification_run": false,
+    "build_run": false,
+    "runtime_application_observed": false
+  },
+  "runtime_observed": false,
+  "standalone_logical_server": true,
+  "producers": [
+    {
+      "card_id": "v3_pet_soul_workshop",
+      "advancement": "jem_advancements:quest_v3/v3_pet_soul_workshop",
+      "original_action": "v3_pet_soul_workshop",
+      "emitted_actions": [
+        "v3_pet_soul_workshop",
+        "v3_pet_soul_workshop_soul"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestFurnaceAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestMenu.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestFurnaceMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestMenuMixin.java"
+      ],
+      "original_contract": "Actor retrieves native recipe outputs for Rotten Flesh->Crystallized Blood and Diamond->Soul Gem from actual Soul Furnace output menu with consumed inputs. Placement/inventory acquisition alone insufficient.",
+      "native_success_observation": "Native findRecipe result and exact input object -> native actual shrink1 -> same currentRecipe native completion with actual charge cost and real output growth -> conserved native menu output withdrawal. Rotten Flesh/Blood and Diamond/Soul Gem are separate AND criteria",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Native mismatched-output world-drop route is uncredited because authored card specifically retrieves output menu",
+        "Unknown/mixed preexisting output is uncredited",
+        "Native currentRecipe is not serialized by installed SoulFurnace, unfinished process proof is transient and no observer resume mechanism is added"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_phases_and_faces",
+      "advancement": "jem_advancements:quest_v3/v3_pet_phases_and_faces",
+      "original_action": "v3_pet_phases_and_faces",
+      "emitted_actions": [
+        "v3_pet_phases_and_faces",
+        "v3_pet_phases_and_faces_lock"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAntlionMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestMinionLockMixin.java"
+      ],
+      "original_contract": "Native actor-owned Antlion phase changes through fully-durable Hourglass action; actor-owned native minion phase-lock flag then commits with Netherite Chains consumed/applied. No clock/chain ownership proof.",
+      "native_success_observation": "Owned native Antlion actual variant change with originally fully durable Hourglass and actual durability payment, plus actual same-actor owned Minion false-to-true phase lock with native Netherite Chains debit1",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Native damaged Hourglass can change Antlion phase but fixed card requires full durability, observer requires the authored precondition without modifying native acceptance"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_porcelain_trip",
+      "advancement": "jem_advancements:quest_v3/v3_pet_porcelain_trip",
+      "original_action": "v3_pet_porcelain_trip",
+      "emitted_actions": [
+        "v3_pet_porcelain_trip"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPorcelainMixin.java"
+      ],
+      "original_contract": "Native Holy Porcelain capture commits eligible creature NBT/container and removes original; same stored native identity is safely released by actor. All blacklist/ownership checks remain canonical.",
+      "native_success_observation": "Actual native Holy Porcelain capture serializes permitted live creature UUID and removes original, exact same-actor physical stored-container sidecar and native NBT identity -> accepted release of that UUID, actual emptied storage and collision-free live poststate",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Placed filled-pottery block release and cross-player container transfer are unimplemented and unreviewed",
+        "No credit for players, hostiles or foreign-owned native entities",
+        "Installed HolyPorcelain capture has blacklist/size checks but no own tame-owner guard, observer rejects foreign-owner credit and leaves native gameplay/protection unchanged"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_totem_shapes",
+      "advancement": "jem_advancements:quest_v3/v3_pet_totem_shapes",
+      "original_action": "v3_pet_totem_shapes",
+      "emitted_actions": [
+        "v3_pet_totem_shapes",
+        "v3_pet_totem_shapes_mankh"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTotemMixin.java"
+      ],
+      "original_contract": "Native old-cloth/relic-gold application on Respawn Totem commits material consumption and corresponding Cloak/Mankh native summon for actor. Do not confuse with player resurrection or grant boss materials.",
+      "native_success_observation": "Actual native RespawnTotem Old Cloth OR Relic Gold debit1 produces matching accepted native owned Cloak OR Mankh. Original material branch remains authority, no player resurrection or Sacred Pontiff substitute",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_bread_hatch",
+      "advancement": "jem_advancements:quest_v3/v3_pet_bread_hatch",
+      "original_action": "v3_pet_bread_hatch",
+      "emitted_actions": [
+        "v3_pet_bread_hatch"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestEggPlacementMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestHatchMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestDragonMixin.java"
+      ],
+      "original_contract": "Actor-attributed native Croissant Egg hatches actual owned dragon; native milk growth commits mature state; native equipment slot accepts one listed flavor armor. No egg/armor inventory proof.",
+      "native_success_observation": "Observed real egg placement debit -> native accepted hatchling UUID retains placer -> same actor native milk debit and tame transition -> native milk maturity -> same actor actual listed CroissantDragonArmor debit and native armor slot/name change on that same hatchling",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Native 1.3.3 milk branch tames and increments once, next native dragon tick sets MilkAmount3. Observer follows actual native state without inventing repeated feed/growth mechanics",
+        "Unobserved preexisting/command eggs or gifted hatchlings lack same-actor birth lineage and are uncredited"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_current_flows",
+      "advancement": "jem_advancements:quest_v3/v3_pet_current_flows",
+      "original_action": "v3_pet_current_flows",
+      "emitted_actions": [
+        "v3_pet_current_flows",
+        "v3_pet_current_flows_link",
+        "v3_pet_current_flows_lamp"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestElectricity.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRepairMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTeslaLinkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestGeneratorPulseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRelayPulseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTeslaCycleMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestLampMixin.java"
+      ],
+      "original_contract": "Canonical Broken Dinamo repair stages finish after native consumption/confirmation; actor links actual valid Tesla nodes; connected Plasma Lamp receives real current and enters powered state. No placement-only proof or second network graph.",
+      "native_success_observation": "All native paid BrokenDinamo stages and wrench confirmations -> accepted native owned repaired Dinamo, actual validated Wrench creates native outgoing/incoming edge, same repaired generator native startCycle propagation through native coil/pillar/relay owner calls -> connected same-actor Lamp actual active/LIT state. All three criteria AND",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Unknown native startCycle call invalidates pulse lineage",
+        "No copied Tesla graph or force-loaded chunk search, actual native existing outgoing/incoming/distance is read only",
+        "Lamp must have actual same actor Wrench input-edge provenance and native current from an actually observed repaired same-owner Dinamo"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_recall_trip",
+      "advancement": "jem_advancements:quest_v3/v3_pet_recall_trip",
+      "original_action": "v3_pet_recall_trip",
+      "emitted_actions": [
+        "v3_pet_recall_trip"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestElectricity.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestGeneratorPulseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRelayPulseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTeslaCycleMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRecallMixin.java"
+      ],
+      "original_contract": "Native Recall Platform transport commits real actor move from source to distinct destination platform in same valid powered native Tesla network. No arbitrary teleport/mere placement.",
+      "native_success_observation": "Actual native powered source platform onStepped selects native validated connected distinct platform, exact native teleportTo call once and real accepted actor position delta to that destination, native network distance and real propagated generator pulse retained",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Recall requires no personal generator repair/configuration history, existing native owned working generator pulses support it even when generator owner is offline",
+        "Unknown unobserved current pulse lineage is uncredited until a real native generator pulse occurs"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_shade_call",
+      "advancement": "jem_advancements:quest_v3/v3_pet_shade_call",
+      "original_action": "v3_pet_shade_call",
+      "emitted_actions": [
+        "v3_pet_shade_call"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestShade.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAltarChargeMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAltarMutationMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestBellMixin.java"
+      ],
+      "original_contract": "Actor’s native blood input charges real shade altar; Shadow Bell stores validated native link to it; native bell success consumes charge and spawns exact matching Shade summon. No altar/bell inventory credit.",
+      "native_success_observation": "Real actor native Crystallized Blood debit increases exact altar charges from a known unmixed sequence, actual native Shadow Bell stores same altar/dimension link, exact same generation charge consumption and accepted matching native Shade UUID/owner, actual cached_shade and activeShadeUUID agree",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Cross-dimension bell summons and mixed/unknown prior charge pools remain unimplemented and unreviewed",
+        "Other actor or unknown direct charge mutation invalidates physical charge attribution"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_a_hand_in_action",
+      "advancement": "jem_advancements:quest_v3/v3_pet_a_hand_in_action",
+      "original_action": "v3_pet_a_hand_in_action",
+      "emitted_actions": [
+        "v3_pet_a_hand_in_action"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestMenu.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestPuppetMenuAccess.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestPuppetRun.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestMenuMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPuppetMenuMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPuppetRightMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPuppetLeftMixin.java"
+      ],
+      "original_contract": "Actor-owned puppet native arm equipment commits one valid arm; native arm ability successfully applies its intended output/projectile/positive damage to eligible nonplayer hostile target. Merely possessing two arm items insufficient.",
+      "native_success_observation": "Actual same owner native menu arm debit/slot credit commits valid arm, actual same-side native special performAttack dispatch once applies accepted owned projectile output to native hostile target or committed positive damage/effect/velocity outcome. Both native arm sides and all four registered arm kinds use native owner dispatch",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Preexisting unknown arm installation is uncredited until real observed same-owner native installation",
+        "Unknown count/tag mutation of the observed native arm invalidates its matching slot proof"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_essence_and_orders",
+      "advancement": "jem_advancements:quest_v3/v3_pet_essence_and_orders",
+      "original_action": "v3_pet_essence_and_orders",
+      "emitted_actions": [
+        "v3_pet_essence_and_orders"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestEssenceMixin.java"
+      ],
+      "original_contract": "Pinned Companions1.3.3 CompanionEntity.handleDefaultMainActionAndHeal accepted KnightLibItems.SMALL_ESSENCE/GREAT_ESSENCE branch for authenticated noncreative real owner, actual companion prehealth<max, consumes1heldEssence, actual posthealth>prehealth and native getMainAction()==1(Follow) at the same committed heal. Native state proves Follow; native positive health delta proves healing. Do not infer from method return true (also cycles modes). Summons do not use this healing path. No new history tracker or nearestplayer attribution.",
+      "native_success_observation": "Pinned native CompanionEntity.handleDefaultMainActionAndHeal owner branch, actual Small/Great Essence debit1, actual health below native max before and finite positive health delta after, native MainAction Follow1 at that same committed heal. Return true or mode cycling alone is insufficient",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Native summon entities do not take this healing path, no summon substitution or follow history tracker"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_grail_filling",
+      "advancement": "jem_advancements:quest_v3/v3_pet_grail_filling",
+      "original_action": "v3_pet_grail_filling",
+      "emitted_actions": [
+        "v3_pet_grail_filling"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestGrail.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestGrailMixin.java"
+      ],
+      "original_contract": "Pinned KnightLib2.0.0 EmptyGrailItem.canInteract accepts full GreatChaliceState.NORMAL; authenticated real survival actor EmptyGrail use commits native charge decrease12→0, consumesEmptyGrail and createsFILLED_GRAIL (inventory insert or native configured dropped output). Award after actual native output commit only. Filling tutorial is supporting teaching, not an additional historical personal producer requirement; another player may prepare the same chalice. Reject failed/mereopening/inventory-only acquisition.",
+      "native_success_observation": "Pinned native Empty Grail branch accepts full NORMAL GreatChalice12 -> native charge0 and EmptyGrail debit1 -> actual Filled Grail inventory credit OR accepted native spawnReward ItemEntity. Only final committed fill operation is required",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Another player may prepare the native Chalice. No historical personal essence-production/filling requirement added",
+        "Configured YEET_GRAIL_WHEN_FILLED true dropped-output route and native inventory route are both observed"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_book_and_robes",
+      "advancement": "jem_advancements:quest_v3/v3_pet_book_and_robes",
+      "original_action": "v3_pet_book_and_robes",
+      "emitted_actions": [
+        "v3_pet_book_and_robes",
+        "v3_pet_book_and_robes_support"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestSpell.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestSpellDamageMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestIceChildrenMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestHealRingMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestFireMarkMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestBlackHoleMixin.java"
+      ],
+      "original_contract": "Native Magic Book success applies actual combat output to eligible hostile target and actual support effect/healing to self/valid ally, using two different registered book IDs while real Mage equipment condition holds. Do not count denied/offcooldown item input.",
+      "native_success_observation": "Actual native ItemStack.use dispatch with real survival user, native off-cooldown book and positive native Mage armor count, exact native projectile owner/object lineage including scheduled pieces and ice children -> actual hostile combat damage/mark/pull. Separate Heal Ring book applies finite positive actual health delta to self/owned ally/team ally. Combat excludes Heal Ring ID so the two native registered book IDs are necessarily distinct",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Native Brace is a damaging fire projectile, not support in installed1.3.3, no invented Brace support effect",
+        "Native Mage Util.hasFullSetOn returns actual count of armor pieces, observer requires positive native condition at casting and outcome, no invented full-four-slot requirement",
+        "Non-Mage casts and inventory holding do not emit either criterion"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "card_id": "v3_pet_blood_and_halo",
+      "advancement": "jem_advancements:quest_v3/v3_pet_blood_and_halo",
+      "original_action": "v3_pet_blood_and_halo",
+      "emitted_actions": [
+        "v3_pet_blood_and_halo",
+        "v3_pet_blood_and_halo_holy"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestSpell.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestHolyCraft.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestEquipment.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestHolyCraftMixin.java"
+      ],
+      "original_contract": "Actor’s native Blood Sword/Axe special ability produces real output/positive hostile damage; actor equips real acquired Holy Robe item in valid armor slot. Low-health trigger is tutorial context only, not forced injury.",
+      "native_success_observation": "Native Blood Sword/Axe actual accepted special projectile output with owner and off-cooldown native use, plus real paid native Holy Robe recipe input debit -> physical produced item sidecar -> committed same-actor valid native armor slot equip. Criteria AND",
+      "status": "SOURCE_IMPLEMENTED_PENDING_PARENT_OVERALL_REVIEW",
+      "manual_family_source_pass": true,
+      "producer_code_reviewed": true,
+      "review_scope": "Pending parent overall batch review, one manual end-family source pass only",
+      "runtime_observed": false,
+      "unsupported_paths": [
+        "Exact hook requires real acquired item, not dropped-only gear. Current native holy_robe mask/coat/leggings recipes use Old Cloth and netherite armor, mask additionally Relic Gold",
+        "No new recipe/loot rule added, no free Holy Robe reward or low-health injury requirement",
+        "Automated crafting, unknown gifted pieces or output with unsupported ingredient remainder mutation is uncredited"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_paths": [
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestElectricity.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestEquipment.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestFurnaceAccess.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestGrail.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestHolyCraft.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestMenu.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestProof.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestPuppetMenuAccess.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestPuppetRun.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestShade.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestSpell.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStack.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/companions/CompanionQuestStackCarrier.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAcceptedSpawnMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAltarChargeMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAltarMutationMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestAntlionMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestBellMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestBlackHoleMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestDragonMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestEggPlacementMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestEssenceMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestFireMarkMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestFurnaceMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestGeneratorPulseMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestGrailMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestHatchMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestHealRingMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestHolyCraftMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestIceChildrenMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestItemUseMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestLampMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestMenuMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestMinionLockMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPorcelainMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestProjectileOwnerMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPuppetLeftMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPuppetMenuMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestPuppetRightMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRecallMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRelayPulseMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestRepairMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestSpellDamageMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestStackMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTeslaCycleMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTeslaLinkMixin.java",
+    "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/CompanionQuestTotemMixin.java"
+  ],
+  "blueprint_changes": [
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_soul_workshop.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_phases_and_faces.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_totem_shapes.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_current_flows.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_book_and_robes.json",
+    "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_pet_blood_and_halo.json"
+  ],
+  "evidence": {
+    "atlas": "build/questbook-v4-companion-systems-atlas.json",
+    "research": "build/questbook-v4-companion-systems-research.json",
+    "native_bytes_and_configs": "build/questbook-v4-companion-systems-native-evidence.json",
+    "native_source": "build/questbook-v4-audit/companion-systems-source",
+    "native_descriptor_seams": "build/questbook-v4-audit/companion-systems-seams"
+  },
+  "attribution": "Authenticated actual survival ServerPlayer through read-only TravelProof, actual native ownership/recipe/debit/physical source identities, no nearest player, global bystander or command output attribution",
+  "persistence": "Native advancement criteria own successful completion, existing FTB/JEMRewards own rewards. Physical ForgeData/root ItemStack sidecar store source identity only. Actual native serializers and lifecycle remain authority. No item native tags/capability equality changed",
+  "blueprint_semantics": "Soul materials AND, Antlion/minion AND, native totem Old Cloth OR Relic Gold, repair/link/native lamp AND, combat book AND distinct support book, special blood output AND real acquired/equipped holy piece",
+  "central_owner": "parent only for OptionalMixins.java/mixin JSON/build.gradle/central ledger/book/compiler/migration/Atlas and production build",
+  "missing_original_actions": [],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 13
+}

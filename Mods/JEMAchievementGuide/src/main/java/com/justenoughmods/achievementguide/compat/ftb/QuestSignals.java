@@ -43,13 +43,21 @@ final class QuestSignals {
 
     static boolean loaded(String id) { return ModList.get().isLoaded(id); }
 
+    static boolean nativeCondition(String token) {
+        return switch (token) {
+            case "alexsmobs_april_fools" -> loaded("alexsmobs") && (Boolean) call(
+                    "com.github.alexthe666.alexsmobs.AlexsMobs", "isAprilFools", new Class<?>[0]);
+            default -> throw new IllegalArgumentException("Unknown authored native quest condition: " + token);
+        };
+    }
+
     private static boolean flag(String owner, String method, MinecraftServer server) {
         return (Boolean)call(owner, method, new Class<?>[]{MinecraftServer.class}, server);
     }
 
-    private static Object call(String owner, String method, Class<?>[] signature, Object argument) {
+    private static Object call(String owner, String method, Class<?>[] signature, Object... arguments) {
         try {
-            return Class.forName(owner).getMethod(method, signature).invoke(null, argument);
+            return Class.forName(owner).getMethod(method, signature).invoke(null, arguments);
         } catch (InvocationTargetException failure) {
             throw new IllegalStateException("Canonical quest signal failed: " + owner + "." + method, failure.getCause());
         } catch (ReflectiveOperationException failure) {

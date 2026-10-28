@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_seagrass_pasture"
+      }
+    },
+    "native_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_seagrass_pasture_forage"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_1"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

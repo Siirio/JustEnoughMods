@@ -1,0 +1,68 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_wild_gear"
+      }
+    },
+    "tendon": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_wild_gear_tendon"
+      }
+    },
+    "parry": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_wild_gear_parry"
+      }
+    },
+    "climb": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_wild_gear_climb"
+      }
+    },
+    "emu": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_wild_gear_emu"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed",
+      "tendon",
+      "parry",
+      "climb"
+    ],
+    [
+      "completed",
+      "tendon",
+      "parry",
+      "emu"
+    ],
+    [
+      "completed",
+      "tendon",
+      "climb",
+      "emu"
+    ],
+    [
+      "completed",
+      "parry",
+      "climb",
+      "emu"
+    ],
+    [
+      "tendon",
+      "parry",
+      "climb",
+      "emu"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

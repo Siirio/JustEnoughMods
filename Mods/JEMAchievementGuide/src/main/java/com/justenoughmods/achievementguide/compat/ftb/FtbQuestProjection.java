@@ -58,6 +58,13 @@ public final class FtbQuestProjection {
         try {
             Map<String, CompoundTag> definitions = read(authored);
             if (!definitions.get("data.snbt").getBoolean("jem_universal_book")) return authored;
+            CompoundTag metadata = definitions.get("data.snbt");
+            boolean visualV4 = metadata.getBoolean("jem_visual_v4");
+            if (visualV4 && metadata.getBoolean("jem_history_migration")
+                    && metadata.getString("jem_migration_version").equals("visual-v4-1"))
+                BookMigrationDefinitions.prepare(server, definitions);
+            else BookMigration.clear(server);
+            BookMigration.currentBook(server, visualV4);
             if (definitions.containsKey("chapters/_jem_unavailable.snbt"))
                 throw new IOException("The reserved JEM dormant chapter path is already authored: " + authored);
             Features features = features(server);
@@ -65,6 +72,7 @@ public final class FtbQuestProjection {
             Map<String, String> unavailableReasons = new TreeMap<>();
             List<CompoundTag> dormant = new ArrayList<>();
             Set<String> unavailable = new HashSet<>(LEGACY);
+            Set<String> conditional = new HashSet<>();
             Map<String, CompoundTag> quests = new LinkedHashMap<>();
             for (var entry : definitions.entrySet()) {
                 if (!entry.getKey().startsWith("chapters/")) continue;
@@ -78,8 +86,23 @@ public final class FtbQuestProjection {
                     if (!enabled || !questEnabled(id, features) || !referencesAvailable(quest)) unavailable.add(id);
                     if (authoredBook && !chapter.getBoolean("jem_archive")) {
                         String reason = authoredUnavailable(quest, definitions, features, server);
-                        if (!reason.isEmpty()) { unavailable.add(id); unavailableReasons.put(id, reason); }
+                        if (!reason.isEmpty()) {
+                            unavailable.add(id); unavailableReasons.put(id, reason);
+                            String condition = quest.getString("jem_native_condition");
+                            if (!condition.isEmpty() && !QuestSignals.nativeCondition(condition)) conditional.add(id);
+                        }
                     }
+                }
+            }
+            // A native calendar/config condition is optional context, never a gate on ordinary V4 goals.
+            if (definitions.get("data.snbt").getBoolean("jem_visual_v4") && !conditional.isEmpty()) {
+                for (CompoundTag quest : quests.values()) {
+                    ListTag originalDependencies = quest.getList("dependencies", Tag.TAG_STRING);
+                    if (originalDependencies.stream().noneMatch(dependency -> conditional.contains(dependency.getAsString()))) continue;
+                    ListTag dependencies = new ListTag();
+                    for (Tag dependency : originalDependencies)
+                        if (!conditional.contains(dependency.getAsString())) dependencies.add(dependency.copy());
+                    quest.put("dependencies", dependencies);
                 }
             }
             // Active children never retain an impossible dependency on a dormant objective.
@@ -110,7 +133,7 @@ public final class FtbQuestProjection {
                             CompoundTag task = (CompoundTag)taskRaw;
                             dormantTasks.put(Long.parseUnsignedLong(task.getString("id"), 16), Math.max(1L, Math.max(task.getLong("count"), task.getLong("value"))));
                         }
-                        blocked.add(dormant(quest));
+                        blocked.add(dormant(quest, chapter.getBoolean("jem_claims_archive")));
                     } else {
                         visible.add(quest);
                         active.add(Long.parseUnsignedLong(quest.getString("id"), 16));
@@ -148,7 +171,7 @@ public final class FtbQuestProjection {
         }
     }
 
-    private static Map<String, CompoundTag> read(Path root) throws IOException {
+    static Map<String, CompoundTag> read(Path root) throws IOException {
         Map<String, CompoundTag> definitions = new TreeMap<>();
         try (var paths = Files.walk(root)) {
             for (Path path : paths.filter(Files::isRegularFile).filter(path -> path.toString().endsWith(".snbt")).sorted().toList()) {
@@ -193,6 +216,9 @@ public final class FtbQuestProjection {
                                               Features features, MinecraftServer server) {
         for (Tag mod : quest.getList("jem_required_mods", Tag.TAG_STRING))
             if (!QuestSignals.loaded(mod.getAsString())) return "Не установлено требуемое содержимое: " + mod.getAsString();
+        String nativeCondition = quest.getString("jem_native_condition");
+        if (!nativeCondition.isEmpty() && !QuestSignals.nativeCondition(nativeCondition))
+            return "Нативное условие мода сейчас недоступно / Native mod condition is currently unavailable: " + nativeCondition;
         if (!QuestSignals.loaded("jem_rewards")) return "Недоступна система получения наград";
         if (quest.getBoolean("jem_economy") && !features.economy) return "Торговая экономика отключена в этом мире";
         if (quest.getBoolean("jem_dedicated_event") && !features.events)
@@ -233,16 +259,17 @@ public final class FtbQuestProjection {
         return id != null && BuiltInRegistries.ITEM.containsKey(id);
     }
 
-    private static CompoundTag dormant(CompoundTag original) {
+    private static CompoundTag dormant(CompoundTag original, boolean claimsArchive) {
         CompoundTag quest = original.copy();
         quest.putString("icon", "minecraft:book");
         quest.putBoolean("optional", true);
-        quest.remove("rewards");
+        if (!claimsArchive) quest.remove("rewards");
         ListTag tasks = new ListTag();
         for (Tag raw : quest.getList("tasks", Tag.TAG_COMPOUND)) {
             CompoundTag task = new CompoundTag();
             task.putString("id", ((CompoundTag)raw).getString("id"));
             task.putString("type", "custom");
+            task.putLong("count", Math.max(1L, Math.max(((CompoundTag)raw).getLong("count"), ((CompoundTag)raw).getLong("value"))));
             tasks.add(task);
         }
         quest.put("tasks", tasks);

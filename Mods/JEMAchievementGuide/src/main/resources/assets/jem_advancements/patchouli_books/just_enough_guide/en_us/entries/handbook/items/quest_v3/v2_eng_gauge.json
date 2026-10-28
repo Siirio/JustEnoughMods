@@ -1,0 +1,37 @@
+{
+  "name": "Never Run Dry",
+  "icon": "create:factory_gauge",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 4025,
+  "jem_aliases": [
+    "v2_eng_gauge",
+    "create:factory_gauge",
+    "Never Run Dry",
+    "Cogs & Trains",
+    "Запас не иссякнет",
+    "Шестерни и поезда"
+  ],
+  "jem_summary": "Use a Factory Gauge target to request and restore a consumed stock item.",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Never Run Dry",
+      "text": "Use a Factory Gauge target to request and restore a consumed stock item."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Never Run Dry",
+      "text": "Make the factory respond to actual demand."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Getting started",
+      "text": "Choose a modest target for an available product, remove some stock, and let the configured native request restore it. The gauge must cause the replenishment."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How to use it",
+      "text": "Bind a Factory Gauge, choose its item, destination address and target amount. Request replacement packages when the monitored inventory falls below target."
+    }
+  ]
+}

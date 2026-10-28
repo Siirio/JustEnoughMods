@@ -1,0 +1,355 @@
+{
+  "schema": 1,
+  "producer_scope": "Remaining EpicFight/EFN/Luminous alternatives plus two compound-criteria architecture corrections, parent owns disjoint Cataclysm alternatives",
+  "runtime_observed": false,
+  "independent_reviewed": false,
+  "registration_request": "build/questbook-v4-battle-final-registration.json",
+  "artifacts": [
+    {
+      "mod": "epicfight",
+      "path": "Client/ManagedPack/mods/epic-fight-20.14.17-mc1.20.1-forge.jar",
+      "sha256": "69566cf70ae2d91d3f2564c608f014c87e290cef6215c2a27719851165485f73"
+    },
+    {
+      "mod": "efn",
+      "path": "Client/ManagedPack/mods/EpicFight%20Nightfall-3.4.1-all.jar",
+      "sha256": "cd778690df2aad55f2025351a349f599d0c98830eb8644524813c86a39a05b7a"
+    },
+    {
+      "mod": "invincible",
+      "path": "Client/ManagedPack/mods/epic-fight-invincible-lib-20.14.8.2-mc1.20.1-forge.jar",
+      "sha256": "0017db1a54bca5ac90ac7e4010e3a59a93ab287ad2a6b68b6781dd5beabf31ed"
+    },
+    {
+      "mod": "epic_fight_avalon",
+      "path": "Client/ManagedPack/mods/epic_fight_avalon-20.12.6.4.jar",
+      "sha256": "596462a617e203cc1ead934387477d95382ac84a2bcd0707cf927a794a5518ed"
+    },
+    {
+      "mod": "luminous_beasts",
+      "path": "Client/ManagedPack/mods/Luminous%20Beasts%20V1.2.7%20-%20Forge%201.20.1.jar",
+      "sha256": "dd27bea022dab3aca47011819e17e6252315c1c8b1c5bb5d969481f0470d34b3"
+    },
+    {
+      "mod": "geckolib",
+      "path": "Client/ManagedPack/mods/geckolib-forge-1.20.1-4.8.4.jar",
+      "sha256": "c04abba4fd354dd8c0e8a732f1f05f4dca893d2e1d962b2ab128bbd411478747"
+    }
+  ],
+  "native_gaps": [
+    {
+      "quest": "v3_combat_skill_mobility",
+      "scope": "OR_BRANCH_ONLY",
+      "native_owner": "yesman.epicfight.skill.mover.PhantomAscentSkill",
+      "finding": "Actual local client jump owner has no authoritative native server execution/motion completion seam. Existing Demolition Leap and new Meteor Slam real server routes remain valid",
+      "status": "Explicit unreviewed branch, no native behavior invented"
+    }
+  ],
+  "deleted_card_preserved_as_deleted": "Parent user-approved BeastWatch deletion, no restoration or pit criterion edits",
+  "bounds": {
+    "native_scope_depth": 16,
+    "per_hurt_or_death_callbacks": 16,
+    "runtime_actor_rows_per_map": 256,
+    "native_source_target_candidates": 128,
+    "verified_damage_records_per_actor": 1,
+    "world_reads": "Actual native entity/caller/impact arguments only, no world or proximity scans or forced chunks",
+    "lifecycle": "Server stop clears runtime scopes/maps, actor logout/dimension/clone clears native active source receipts. Native effect removal invalidates failed/stale replay/blood activation",
+    "completion_tracking": "Independent normal/sprint/air and dodge/guard stages belong only to native advancement AND criteria. Runtime maps correlate one actual native ability, cost, history record or physical effect lineage"
+  },
+  "native_cache": [
+    "build/battle-schools-native/epicfight/source",
+    "build/battle-schools-native/epicfight/extra/source",
+    "build/battle-schools-native/efn/source",
+    "build/battle-schools-native/efn/extra/source",
+    "build/battle-final-native/epicfight/source",
+    "build/battle-final-native/epicfight/animations/source",
+    "build/battle-final-native/epicfight/fracture/source",
+    "build/battle-final-native/epicfight/guard/source",
+    "build/battle-final-native/efn/source",
+    "build/battle-final-native/efn/extra/source",
+    "build/battle-final-native/efn/effects/source",
+    "build/battle-final-native/invincible/source",
+    "build/battle-final-native/luminous_beasts/source"
+  ],
+  "preservation": "All native calls once, original arguments/results unchanged. No native recipe, cost, damage, charge, cooldown, AI, PvP, claim or protection changed. No ordinary item NBT added, only native orb physical provenance entity data. Parent owns all central/book/Atlas/build and Cataclysm source amendments",
+  "producers": [
+    {
+      "quest": "v3_revised_v2_bosses_combat_01",
+      "action": "epic_context",
+      "emitted_actions": [
+        "epic_context",
+        "epic_context_sprint",
+        "epic_context_air"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Normal native attack natural end",
+        "Sprinting native attack natural end",
+        "Airborne native attack natural end"
+      ],
+      "native_evidence": "Original completed/action preserved as normal context. New native_sprint and native_air criteria are AND, no persistent perplayer completion bitmap",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battle/BattleQuestEpic.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/epic_context.json"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/epic_context"
+      ],
+      "unsupported_paths": [],
+      "criteria": {
+        "completed": {
+          "trigger": "jem_advancements:quest_action",
+          "conditions": {
+            "action": "epic_context"
+          }
+        },
+        "native_sprint": {
+          "trigger": "jem_advancements:quest_action",
+          "conditions": {
+            "action": "epic_context_sprint"
+          }
+        },
+        "native_air": {
+          "trigger": "jem_advancements:quest_action",
+          "conditions": {
+            "action": "epic_context_air"
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completed"
+        ],
+        [
+          "native_sprint"
+        ],
+        [
+          "native_air"
+        ]
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_dodge_guard",
+      "action": "v3_combat_dodge_guard",
+      "emitted_actions": [
+        "v3_combat_dodge_guard",
+        "v3_combat_dodge_guard_dodge"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Native learned Guard actual final BLOCKED result",
+        "Native learned Roll/Step dodge success"
+      ],
+      "native_evidence": "Original completed/action is real Guard success. Native dodge action owns new native_dodge AND criterion, no persistent perplayer bitmap",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battle/BattleQuestEpic.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_dodge_guard.json"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_dodge_guard"
+      ],
+      "unsupported_paths": [],
+      "criteria": {
+        "completed": {
+          "trigger": "jem_advancements:quest_action",
+          "conditions": {
+            "action": "v3_combat_dodge_guard"
+          }
+        },
+        "native_dodge": {
+          "trigger": "jem_advancements:quest_action",
+          "conditions": {
+            "action": "v3_combat_dodge_guard_dodge"
+          }
+        }
+      },
+      "requirements": [
+        [
+          "completed"
+        ],
+        [
+          "native_dodge"
+        ]
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_skill_synergy",
+      "action": "v3_combat_skill_synergy",
+      "emitted_actions": [
+        "v3_combat_skill_synergy"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Technician native positive resource gain, original Battle source",
+        "Stamina Pillager native positive stamina gain and actual final accepted native kill",
+        "Death Harvest native weapon-innate kill, accepted actual native orb lineage, later real owner actual innate-resource gain"
+      ],
+      "native_evidence": "Pillager/orb creation wait original final LivingDeathEvent and actual native die commit. Full/clamped resource without gain does not qualify",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestPassive.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestLife.java"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_skill_synergy"
+      ],
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_skill_mobility",
+      "action": "v3_combat_skill_mobility",
+      "emitted_actions": [
+        "v3_combat_skill_mobility"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Demolition Leap actual paid native release and accepted motion, original Battle source",
+        "Meteor Slam exact native compatible selection, real server movement and successful original native impact or accepted native slam damage"
+      ],
+      "native_evidence": "Native MeteorSlamSkill controls compatible weapon and original ray/fall prerequisites. Original animation fracture boolean and original radius remain native, no formula copied",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestMeteor.java"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_skill_mobility"
+      ],
+      "unsupported_paths": [
+        "Phantom Ascent authoritative native server jump execution proof remains absent. Native owner is client movement input and server protection-data synchronization does not certify actual native jump. No invented server mirror or scan"
+      ],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_heavy_school",
+      "action": "v3_combat_heavy_school",
+      "emitted_actions": [
+        "v3_combat_heavy_school"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Ruin Greatsword native clash with payment and damage, original Battle source",
+        "Duskfire native full-energy both-button charge, real server stage3 callback, native full release, actual native effect/damage and original phase-end stack payment"
+      ],
+      "native_evidence": "Native Duskfire release occurs when the combined mouse hold stops, parent owns approved factual tip correction. Stage3 must be produced in the same server animation epoch, no copied charge threshold or client-key-only completion",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestNightfall.java"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_heavy_school"
+      ],
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_agile_school",
+      "action": "v3_combat_agile_school",
+      "emitted_actions": [
+        "v3_combat_agile_school"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Echo native launcher/finisher route, original Battle source",
+        "Vanguard otherwise-valid native Guard bypass with paid native skill and positive accepted nonlethal PvP damage",
+        "Exile actual native left-attack node -> Key3 B-branch native node with accepted positive damage",
+        "Queen Short Blade actual prior committed damage record -> paid native replay activation -> native replay modifier -> exact eventual accepted positive damage"
+      ],
+      "native_evidence": "Vanguard player-target exception is local and parent-authorized, surviving real Survival target only under existing native PvP/claim policies. Other combat proof still excludes player/tamed/protected victims. Queen verifies actual DamageRecord object identity, not native pre-damage event alone",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestNightfall.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestLife.java"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_agile_school"
+      ],
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_risky_school",
+      "action": "v3_combat_risky_school",
+      "emitted_actions": [
+        "v3_combat_risky_school"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Wild Claw native roar buff with actual native payment, original Battle source",
+        "Blood Mania/Bloodlust actual native installed power and positive native initial/periodic HP drain alive"
+      ],
+      "native_evidence": "Only native Bloodlust owner determines cost, minimum HP and modifiers. No damage/stat/drain formula copied, no death requirement and no raw effect ownership completion. Native time-event install and actual cost must both commit",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestNightfall.java"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_risky_school"
+      ],
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "quest": "v3_combat_beast_relics",
+      "action": "v3_combat_beast_relics",
+      "emitted_actions": [
+        "v3_combat_beast_relics"
+      ],
+      "source_implemented": true,
+      "runtime_observed": false,
+      "independent_reviewed": false,
+      "covered_alternatives": [
+        "Yeti native HP recovery, original Battle source",
+        "Viper native underwater effect, original Battle source",
+        "Magic Root native accepted slowing proc with native durability result and actual final hit",
+        "Gator Tooth native accepted universal poison proc with native durability result and actual final hit",
+        "Jungle Pendant native accepted resistance proc with native durability result and actual final kill"
+      ],
+      "native_evidence": "Native chance/timer/durability logic executes once unchanged, original Unbreaking exemption remains native. Exact native proc event, actual own effect and matching item are required. Rejected hit/death never completes",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestRelics.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battlefinal/BattleFinalQuestLife.java"
+      ],
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_beast_relics"
+      ],
+      "unsupported_paths": [],
+      "producer_code_reviewed": true,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 8
+}

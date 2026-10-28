@@ -1,0 +1,398 @@
+{
+  "schema": 1,
+  "source_of_contract": "build/questbook-v4-travel-cards.json, immutable fixed V4 cards",
+  "producer_scope": "Only seven native travel family actions",
+  "status": "SOURCE_IMPLEMENTED_FROZEN_FOR_PARENT_INTEGRATION",
+  "runtime_observed": false,
+  "production_build_owner": "Parent only, deferred until complete larger implementation batch",
+  "standalone_contract": "Ordinary integrated logical server without JEMServer or external services. Native upstream mods optional. Local optional JEMIdentity admission read only.",
+  "native_artifacts": {
+    "immersive_aircraft": {
+      "jar": "Client/ManagedPack/mods/immersive_aircraft-1.5.0+1.20.1-forge.jar",
+      "sha256": "7e00754f893d910f301134e0cada37dde0be36c8df15ebf98a5b6512fa664077",
+      "metadata": "modLoader = \"javafml\"\nloaderVersion = \"[47,)\"\nissueTrackerURL = \"https://github.com/Luke100000/ImmersiveAircraft/issues\"\nlicense = \"GPL-3.0-only\"\n\n[[mods]]\nmodId = \"immersive_aircraft\"\nversion = \"1.5.0+1.20.1\"\ndisplayName = \"Immersive Aircraft\"\ndisplayURL = \"https://www.curseforge.com/minecraft/mc-mods/immersive-aircraft\"\nauthors = \"Luke100000\"\ndescription = \"A bunch of rustic aircraft to travel, transport, and explore!\"\nlogoFile = \"icon.png\"\nitemIcon = \"immersive_aircraft:biplane\"\n\n[[dependencies.immersive_aircraft]]\nmodId = \"minecraft\"\nmandatory = true\nversionRange = \"[1.20.1,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n\n[[dependencies.immersive_aircraft]]\nmodId = \"forge\"\nmandatory = true\nversionRange = \"[47,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n\n[[dependencies.immersive_aircraft]]\nmodId = \"ad_astra\"\nmandatory = false\nversionRange = \"[1.15.6,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n",
+      "native_source_root": "build/questbook-v4-audit/travel-source",
+      "runtime_observed": false
+    },
+    "smallships": {
+      "jar": "Client/ManagedPack/mods/smallships-forge-1.20.1-2.0.0-b1.4.jar",
+      "sha256": "f79a4dcab3e1c8e4d14467cbfa655f4a16e0f0d0901e8f9bde9e3f5e36735eff",
+      "metadata": "modLoader = \"javafml\"\nloaderVersion = \"[47,)\"\n#issueTrackerURL = \"\"\nlicense = \"All Rights Reserved\"\n\n[[mods]]\nmodId = \"smallships\"\nversion = \"2.0.0-b1.4\"\ndisplayName = \"Small Ships\"\nauthors = \"talhanation, metroite\"\nupdateJSONURL=\"https://raw.githubusercontent.com/talhanation/smallships/main/update.json\"\ndescription = '''\nThis mod adds vanilla friendly ships into Minecraft!\n'''\nlogoFile = \"icon.png\"\n\n[[dependencies.smallships]]\nmodId = \"forge\"\nmandatory = true\nversionRange = \"[47,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n\n[[dependencies.smallships]]\nmodId = \"minecraft\"\nmandatory = true\nversionRange = \"[1.20.1,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n",
+      "native_source_root": "build/questbook-v4-audit/travel-source",
+      "runtime_observed": false
+    },
+    "paraglider": {
+      "jar": "Client/ManagedPack/mods/Paraglider-forge-20.1.3.jar",
+      "sha256": "3528e4d424682a415ae97b9597e5ed0567e5a194b4aeb30ae364e962da43b36a",
+      "metadata": "modLoader = \"javafml\"\nloaderVersion = \"[47,)\"\nlicense=\"GNU General Public License version 3 (GPLv3)\"\nissueTrackerURL=\"https://github.com/Tictim/Paraglider/issues\"\nlogoFile=\"icon.png\"\n\n[[mods]]\nmodId=\"paraglider\"\nversion=\"20.1.3\"\ndisplayName=\"Paraglider\"\ndisplayURL=\"https://www.curseforge.com/minecraft/mc-mods/paragliders\"\nauthors=\"Tictim\"\ndescription=\"BotW style Paraglider\"",
+      "native_source_root": "build/questbook-v4-audit/travel-source",
+      "runtime_observed": false
+    },
+    "gouge": {
+      "jar": "Client/ManagedPack/mods/gouge-1.5.1-mc1.20.1-forge.jar",
+      "sha256": "d4c439d41ea90a206dd84257bee335c1121e9aa21db1560a08f441dfcc8c5cd1",
+      "metadata": "modLoader=\"javafml\"\r\nloaderVersion=\"[47,)\"\r\nlicense=\"MIT\"\r\n\r\n[[mods]]\r\n    modId=\"gouge\"\r\n    version=\"${file.jarVersion}\"\r\n    displayName=\"Gouge\"\r\n    description=\"Slam your pickaxe into a wall to save yourself from a fatal fall.\"\r\n    authors=\"Simplezes\"\r\n    logoFile=\"icon.png\"\r\n\r\n[[dependencies.gouge]]\r\n    modId=\"forge\"\r\n    mandatory=true\r\n    versionRange=\"[47,)\"\r\n    ordering=\"NONE\"\r\n    side=\"BOTH\"\r\n\r\n[[dependencies.gouge]]\r\n    modId=\"minecraft\"\r\n    mandatory=true\r\n    versionRange=\"[1.20.1,1.21)\"\r\n    ordering=\"NONE\"\r\n    side=\"BOTH\"\r\n",
+      "native_source_root": "build/questbook-v4-audit/travel-source",
+      "runtime_observed": false
+    }
+  },
+  "native_source_evidence": "build/questbook-v4-audit/travel-source",
+  "vanilla_source_evidence": "build/questbook-v4-audit/travel-vanilla-source",
+  "vanilla_bytecode_evidence": "build/questbook-v4-travel-packet-bytecode.txt",
+  "atlas_query_evidence": "build/questbook-v4-travel-atlas-summary.json",
+  "cached_research_evidence": [
+    "build/questbook-v4-travel-immersive_aircraft-research.json",
+    "build/questbook-v4-travel-smallships-research.json",
+    "build/questbook-v4-travel-paraglider-research.json",
+    "build/questbook-v4-travel-gouge-research.json"
+  ],
+  "preserved_owners": [
+    "IA controls/collision/fuel/repair/allowed aircraft",
+    "JEMCompat active fuel clock/inventory/capacity",
+    "SmallShips native sail/controller/repair/ammo/projectile/damage",
+    "Paraglider state/updraft/stamina/wear",
+    "Gouge native support/wear/enchantments/cooldown/kick",
+    "Native advancement and FTB progress persistence"
+  ],
+  "state_bounds": {
+    "vehicle": "One flight and grounded launch snapshot per aircraft, one sail journey per ship, expire after one Minecraft day of native updates. Current controller/session/position/native lifecycle invalidate. No scans or chunk loads.",
+    "thermal": "One native impulse position/update stamp on native movement object, at most two native updates before accepted actual altitude gain.",
+    "gouge": "One catch per online authenticated actor. Native failure/stop and logout/death/clone/dimension/server-stop cleanup, one Minecraft day expiry.",
+    "cannon": "One pending projectile per fire call, three provenance UUIDs on actual spent projectile, native entity lifetime. Ammo observation capped4096slots."
+  },
+  "criterion_persistence": "Original completed criterion and action remain unchanged on all seven. Native advancement persists completed success. Only transient episodes are held here, no SavedData or second progress authority.",
+  "blueprint_changes": [],
+  "missing_or_disabled_mechanics": [],
+  "limitations": [
+    "Production compile/reobfuscation and independent review remain parent-owned and unrun",
+    "Actual Mixin application and runtime remain unobserved",
+    "Two native grounded engine updates are an implementation-selected proof delay, not a new landing-physics guarantee",
+    "Offline dedicated sessions without trustworthy optional JEMIdentity admission fail closed"
+  ],
+  "producers": [
+    {
+      "action": "v3_world_thermal",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_thermal"
+      ],
+      "required_mods": [
+        "paraglider"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ParagliderThermalQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ParagliderTravelPacketQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelThermalObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ParagliderThermalQuestMixin.java",
+          "sha256": "15ebdbcfb87bbecd7558279f33b0802f56fe104267d097d3070b3eaf2a15fe2d"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ParagliderTravelPacketQuestMixin.java",
+          "sha256": "e46ae7cb1ff8680844534f3e1953c66c34f47206361205bef1b629e957d24b44"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelThermalObservation.java",
+          "sha256": "301d56893530fb06aa16cc81d2b4018061be8d6b1a282acdc02a3bc81c1ec8bf"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "Paraglider20.1.3 ServerPlayerMovement.applyMovement calls PlayerMovement.applyMovement. Observe finite positive native upward velocity increase only in actual ASCENDING state with both PARAGLIDING and ASCENDING flags. ParagliderDefaultPlugin selects it through Cfg.ascendingWinds and Wind.isInside. Require a following handleMovePlayer packet accepted through setOnGroundWithKnownMovement after collision validation, actual positive altitude delta from exact impulse position, same current native state, at most two native player updates. No desired velocity alone awards.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Acquisition or equipped glider",
+        "Jump, elytra, ordinary/creative flight, vehicle, noPhysics",
+        "Desired lift without accepted altitude gain",
+        "Rejected movement, mismatched origin, expired receipt"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_wall_catch",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_wall_catch"
+      ],
+      "required_mods": [
+        "gouge"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/GougeTravelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/GougeTravelProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/GougeTravelQuestMixin.java",
+          "sha256": "e5bf69fa357bd63fdcaa6523ddf32938d33357eed8fbd67c1f593a78ee0b20c6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/GougeTravelProof.java",
+          "sha256": "9c60a7c90afe22b4061f30a854ae8e97d64652bbe25cb816844af37aff0c1afc"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "Gouge1.5.1 GougeItemMixin invokes applyImpactDamage after native descending, minimum fall distance, reach, tool, hardness and admission gates. Surviving impact for actual descending actor starts one catch. Native tick0 must subsequently return true with native activeUse and gougeNoGravity both containing actor, proving supported hang/slide. Later native wallKick must return true for that same current catch. Native friction, durability, grip/momentum, cooldown and kick impulse formulas remain untouched.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Standing wall use",
+        "Broken impact tool",
+        "Soft upward branch without native supported state",
+        "Kick before native supported tick",
+        "Stop/release, failed support, death, logout, clone, dimension change, server stop"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_air_route",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_air_route"
+      ],
+      "required_mods": [
+        "immersive_aircraft"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AircraftTravelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TravelVehiclePacketQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/AircraftFuelObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelVehicleObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AircraftTravelQuestMixin.java",
+          "sha256": "69692ab83525b26f738a49e49cea104a6005f5e7bb753ea00d187b1574931e71"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TravelVehiclePacketQuestMixin.java",
+          "sha256": "fab8214424b1d8688507a77ca4998ee99eb2956df3a9f6cdbebc4824ec6f7d59"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/AircraftFuelObservation.java",
+          "sha256": "19fb3bce0b07c4ab1ea62593cafc9e7b84d0bf627f178d35a5ee308e26fb81e5"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelVehicleObservation.java",
+          "sha256": "7d7e6f7ef197c4a89f6d521a6fb8e867d584efe3dd749255329acd74ada01b2a"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "IA1.5.0 native vehicle movement is observed only after vanilla handleMoveVehicle accepts actual controller, vehicle and collision result. Accepted grounded movement first establishes launch provenance, followed by continuous grounded-to-air movement in the same Biplane. Adjacent completed EngineVehicle TAIL snapshots for that pilot must strictly decrease native fuel[] or optional exact AircraftFuelState.jemcompat$writeFuel read projection JemActiveFuelNanos while airborne. At least64 net horizontal blocks and accepted grounded landing are required. Emit after two native engine updates retain living pilot, positive aircraft health, exact last accepted position and dry grounded state. No clock conversion or fuel formula is reproduced.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Mount-only/acquisition",
+        "Other curated-disabled aircraft",
+        "No actual engine buffer consumption",
+        "Refill-only or serialization-only snapshot",
+        "Pilot/session/vehicle change, teleport gap, rejected movement",
+        "Water landing, destroyed aircraft, bounced landing, expired context"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_air_service",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_air_service"
+      ],
+      "required_mods": [
+        "immersive_aircraft"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AircraftServiceQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/AircraftServiceQuestMixin.java",
+          "sha256": "4c41c906f838f9fc4ec5cc2f6ae97c7974f2126fc060943cd80840970c154027"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "IA1.5.0 VehicleEntity.m_6096_(Player,InteractionHand) native repair branch applies repairExhaustion, invokes private repair(repairSpeed), then returns CONSUME. Observe finite positive health increase from damaged grounded permitted Biplane for actual external authenticated survival actor. Native repair uses exhaustion, no invented item material debit.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Full health or preview",
+        "Upgrade/menu admission",
+        "Airborne/different aircraft",
+        "Creative/passenger/fake/unauthenticated actor"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_ship_sailing",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_ship_sailing"
+      ],
+      "required_mods": [
+        "smallships"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipTravelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TravelVehiclePacketQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelVehicleObservation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipTravelQuestMixin.java",
+          "sha256": "a82a684d492cfdebe89de6c40748c68c8355ed33b864a2ef231287f9e9d5a5a6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/TravelVehiclePacketQuestMixin.java",
+          "sha256": "fab8214424b1d8688507a77ca4998ee99eb2956df3a9f6cdbebc4824ec6f7d59"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelVehicleObservation.java",
+          "sha256": "7d7e6f7ef197c4a89f6d521a6fb8e867d584efe3dd749255329acd74ada01b2a"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "SmallShips2.0.0-b1.4 Sailable.setSailState calls Ship.setData(SAIL_STATE,byte). Observe native0-to-valid-raised1..4 transition for actual controller over water. Only accepted handleMoveVehicle movement for same ship and actor counts, continuously under native raised sails and water/not-sunken/not-submerged state. At least64 net horizontal blocks since native sail-raise completes. River currents are not assumed.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Mount-only/acquisition",
+        "Sails raised for another actor",
+        "Land/submerged/sunken movement, lowered/invalid sails",
+        "Teleport discontinuity or rejected movement",
+        "River-current assumption"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_ship_repair",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_ship_repair"
+      ],
+      "required_mods": [
+        "smallships"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipTravelQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipTravelQuestMixin.java",
+          "sha256": "a82a684d492cfdebe89de6c40748c68c8355ed33b864a2ef231287f9e9d5a5a6"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "SmallShips2.0.0-b1.4 Ship.interactIronNuggets tests positive native damage, held Iron Nugget and inventory PLANKS, invokes repairShip and consumes one nugget plus one plank outside Creative. Observe native return true, finite strict damage reduction and both exact inventory resource debits for same external actor. Native ship health is maxHealth minus getDamage, so damage reduction is restored health.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Full health or canceled native result",
+        "Missing nugget or plank debit",
+        "Creative/passenger/fake/unauthenticated actor",
+        "Sunken or removed ship"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_world_ship_cannon",
+      "advancements": [
+        "jem_advancements:quest_v3/v3_world_ship_cannon"
+      ],
+      "required_mods": [
+        "smallships"
+      ],
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipCannonFireQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipCannonHitQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java"
+      ],
+      "sources": [
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipCannonFireQuestMixin.java",
+          "sha256": "e9419c5a83065f1decf1044ec9acdf524e08a4761627e7851e4508638375462d"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/ShipCannonHitQuestMixin.java",
+          "sha256": "b70b6a548859cb4228625c391dd8cc1c97f6d5be89412e6d3a2ae6efea455f8e"
+        },
+        {
+          "path": "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/travel/TravelProof.java",
+          "sha256": "71876a9145973ad9892403ef4d66d2154338efd18badd2d1f493b066c16f0f6c"
+        }
+      ],
+      "native_evidence": "SmallShips2.0.0-b1.4 Cannon.shoot(Vec3,double,LivingEntity,double,double) constructs native CannonBallEntity with actual driver owner and exact Cannon.ship. Preserve/observe Level.addFreshEntity boolean and subsequent native consumeCannonBall debit. Only accepted spawn with same controller/owner and exactly one spent native cannonball stores three bounded actor/ship/projectile UUIDs on projectile. AbstractCannonBall.m_5790_(EntityHitResult) wraps actual Entity.hurt exactly once and emits after accepted positive finite damage measurably decreases health plus absorption on Enemy, matching direct projectile, source actor and proven actor/projectile UUIDs.",
+      "attribution": "Exact current authenticated survival ServerPlayer from native acting method/controller/projectile lineage. Optional JEMIdentity owns offline dedicated authentication. Integrated/online vanilla sessions remain standalone.",
+      "unsupported_paths": [
+        "Dry fire/acquisition/dropped item",
+        "Rejected spawn or no native ammo debit",
+        "Unproven/altered projectile owner",
+        "Player/non-Enemy/allied/tamed target",
+        "Canceled/nonfinite/zero/non-damaging hurt result"
+      ],
+      "producer_code_reviewed": true,
+      "source_review_kind": "One manual end-of-family source pass against exact installed owners and vanilla packet source/bytecode, no compile/Mixin-application/runtime claim.",
+      "runtime_observed": false,
+      "runtime_success_observed": false,
+      "independent_review_completed": false,
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 7
+}

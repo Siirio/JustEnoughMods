@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "fa26fd040fa67677b0c1cd2c0f753ddf475836b31a030d3c5eaf834057c74b05",
+  "change_records_sha256": "5b107f095b1890f91b6f3a4462d4cc6ce28ffb9f0bad4799440157b975cf94de",
   "totals": {
-    "watched": 4033,
-    "covered": 2284,
-    "unresolved": 1749
+    "watched": 4085,
+    "covered": 2254,
+    "unresolved": 1831
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1432,
-      "covered": 91,
-      "unresolved": 1341,
+      "watched": 1433,
+      "covered": 24,
+      "unresolved": 1409,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -204,7 +204,6 @@
         "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/2djembg.png",
         "Client/ManagedPack/config/fancymenu/custom_gui_screens.txt",
         "Client/ManagedPack/config/fancymenu/customizablemenus.txt",
-        "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
         "Client/ManagedPack/config/fancymenu/layout_editor/widgets/element_layer_control.lewidget",
         "Client/ManagedPack/config/fancymenu/legacy_checklist.txt",
         "Client/ManagedPack/config/fancymenu/normalized_scroll_screens.json",
@@ -241,6 +240,74 @@
         "Client/ManagedPack/config/forge-client.toml",
         "Client/ManagedPack/config/fpsbooster-client.toml",
         "Client/ManagedPack/config/fpsreducer/fpsreducer-client.toml",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_bosses_12_eyes.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_create.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_events.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_exploration.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_getting_started.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_living_world.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/_archive_races.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/ac15.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/ac32.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/after_end_01.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/after_end_03.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/after_end_06.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/aquamirae_03.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/aquamirae_05.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_01.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_02.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_07.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/boss_loot_08.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/cp05.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/cp06.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/cp09.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_03.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_04.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_05.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_06.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_07.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_08.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_09.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_10.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_11.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_12.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_13.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_14.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/eyes_15.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/field_07.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/guard_03.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h02_13.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h03_05.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h03_14.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h03_16.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h04_08.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h04_12.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h05_12.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h06_09.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h06_10.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h08_08.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/h12_12.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/hostiles_04.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/hostiles_08.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/mg10.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/mg11.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/mg14.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/nether_life_11.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/project_07.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/races_13.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk14.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk15.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk17.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/sk18.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/trade_05.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/uj14.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/vanilla_07.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/wd13.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/wf05.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/wo20.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws28.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws34.snbt",
+        "Client/ManagedPack/config/ftbquests/quests/reward_tables/ws37.snbt",
         "Client/ManagedPack/config/fwa.json",
         "Client/ManagedPack/config/fzzy_config/keybinds.toml",
         "Client/ManagedPack/config/golemoverhaul.jsonc",
@@ -313,6 +380,7 @@
         "Client/ManagedPack/config/lithium.properties",
         "Client/ManagedPack/config/lithostitched.json",
         "Client/ManagedPack/config/lodestone-client.toml",
+        "Client/ManagedPack/config/luxium-client.toml",
         "Client/ManagedPack/config/midnightlib.json",
         "Client/ManagedPack/config/minecraft-cursor.json",
         "Client/ManagedPack/config/modernfix-common.toml",
@@ -1399,17 +1467,13 @@
       ]
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 836,
-      "covered": 828,
-      "unresolved": 8,
+      "watched": 833,
+      "covered": 829,
+      "unresolved": 4,
       "unresolved_paths": [
         "Mods/JEMAchievementGuide/gradle.properties",
-        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/questbook/BookInformationScreen.java",
-        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/JemCriteria.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/NodeCriterion.java",
         "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/criterion/UpstreamAdvancementCriterion.java",
-        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestChapterImageMixin.java",
-        "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/questbook/information.json",
         "Mods/JEMAchievementGuide/src/main/resources/pack.mcmeta"
       ]
     },
@@ -1433,21 +1497,39 @@
         "Mods/JEMAdaptiveCulling/src/main/resources/pack.mcmeta"
       ]
     },
+    "Mods/JEMAnimalHints": {
+      "watched": 11,
+      "covered": 1,
+      "unresolved": 10,
+      "unresolved_paths": [
+        "Mods/JEMAnimalHints/gradle.properties",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/JEMAnimalHints.java",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/compat/jade/BreedingFoodCatalog.java",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/compat/jade/BreedingProvider.java",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/compat/jade/JEMAnimalHintsJadePlugin.java",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/compat/jade/TamingCatalog.java",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/compat/jade/TamingDataLoader.java",
+        "Mods/JEMAnimalHints/src/main/java/com/siirio/jemanimalhints/compat/jade/TamingProvider.java",
+        "Mods/JEMAnimalHints/src/main/resources/data/jemcompat/jemcompat/taming/current_pack.json",
+        "Mods/JEMAnimalHints/src/main/resources/pack.mcmeta"
+      ]
+    },
+    "Mods/JEMCinematicInteractions": {
+      "watched": 12,
+      "covered": 12,
+      "unresolved": 0,
+      "unresolved_paths": []
+    },
     "Mods/JEMCompat": {
-      "watched": 171,
-      "covered": 120,
-      "unresolved": 51,
+      "watched": 143,
+      "covered": 98,
+      "unresolved": 45,
       "unresolved_paths": [
         "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/SourceNameTooltipFilter.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/render/FrozenTintBufferSource.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingFoodCatalog.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingProvider.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingCatalog.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingDataLoader.java",
-        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingProvider.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/blastfromthepast/FrostbiteSpawnSupport.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/elements/ElementalImpactEvents.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/kaleidoscope/VoidWalkerEvents.java",
@@ -1482,7 +1564,6 @@
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_side.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/block/augment_bay_top.png",
         "Mods/JEMCompat/src/main/resources/assets/jemcompat/textures/item/aircraft_fuel.png",
-        "Mods/JEMCompat/src/main/resources/data/jemcompat/jemcompat/taming/current_pack.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/freezing_impact_items.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/igniting_impact_items.json",
         "Mods/JEMCompat/src/main/resources/data/jemcompat/tags/items/jei/create_redstone.json",
@@ -1492,9 +1573,9 @@
       ]
     },
     "Mods/JEMDrillLifecycle": {
-      "watched": 26,
-      "covered": 3,
-      "unresolved": 23,
+      "watched": 21,
+      "covered": 2,
+      "unresolved": 19,
       "unresolved_paths": [
         "Mods/JEMDrillLifecycle/gradle.properties",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/JemDrillLifecycle.java",
@@ -1513,10 +1594,6 @@
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/mixin/BlockBreakingMovementBehaviourMixin.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/mixin/DrillBlockEntityMixin.java",
         "Mods/JEMDrillLifecycle/src/main/java/com/siirio/jemdrill/mixin/DrillBlockMixin.java",
-        "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/categories/engineering.json",
-        "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/entries/engineering/drill_replaced.json",
-        "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/entries/engineering/drill_service.json",
-        "Mods/JEMDrillLifecycle/src/main/resources/assets/jemcompat/patchouli_books/just_enough_guide/en_us/entries/engineering/drill_work.json",
         "Mods/JEMDrillLifecycle/src/main/resources/jem_drill_lifecycle.mixins.json",
         "Mods/JEMDrillLifecycle/src/main/resources/pack.mcmeta"
       ]
@@ -1534,11 +1611,29 @@
         "Mods/JEMEconomy/src/main/resources/data/minecraft/tags/blocks/mineable/axe.json"
       ]
     },
+    "Mods/JEMExcavation": {
+      "watched": 14,
+      "covered": 12,
+      "unresolved": 2,
+      "unresolved_paths": [
+        "Mods/JEMExcavation/gradle.properties",
+        "Mods/JEMExcavation/src/main/resources/pack.mcmeta"
+      ]
+    },
     "Mods/JEMFood": {
       "watched": 23,
       "covered": 23,
       "unresolved": 0,
       "unresolved_paths": []
+    },
+    "Mods/JEMFreecam": {
+      "watched": 13,
+      "covered": 11,
+      "unresolved": 2,
+      "unresolved_paths": [
+        "Mods/JEMFreecam/gradle.properties",
+        "Mods/JEMFreecam/src/main/resources/pack.mcmeta"
+      ]
     },
     "Mods/JEMGuiSandbox": {
       "watched": 32,
@@ -1560,6 +1655,39 @@
         "Mods/JEMIdentity/src/main/resources/pack.mcmeta"
       ]
     },
+    "Mods/JEMInChatFTB": {
+      "watched": 6,
+      "covered": 5,
+      "unresolved": 1,
+      "unresolved_paths": [
+        "Mods/JEMInChatFTB/gradle.properties"
+      ]
+    },
+    "Mods/JEMInventoryShortcuts": {
+      "watched": 8,
+      "covered": 6,
+      "unresolved": 2,
+      "unresolved_paths": [
+        "Mods/JEMInventoryShortcuts/gradle.properties",
+        "Mods/JEMInventoryShortcuts/src/main/resources/pack.mcmeta"
+      ]
+    },
+    "Mods/JEMLuxium": {
+      "watched": 11,
+      "covered": 2,
+      "unresolved": 9,
+      "unresolved_paths": [
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/JEMLuxium.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumClientBootstrap.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionPage.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumOptionStorage.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/client/LuxiumShaderController.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/config/LuxiumClientConfig.java",
+        "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/NeoSkyCelestiaOculusGuardMixin.java",
+        "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json",
+        "Mods/JEMLuxium/src/main/resources/pack.mcmeta"
+      ]
+    },
     "Mods/JEMProfessions": {
       "watched": 23,
       "covered": 23,
@@ -1578,9 +1706,18 @@
       "unresolved": 0,
       "unresolved_paths": []
     },
+    "Mods/JEMSeasonsHud": {
+      "watched": 10,
+      "covered": 8,
+      "unresolved": 2,
+      "unresolved_paths": [
+        "Mods/JEMSeasonsHud/gradle.properties",
+        "Mods/JEMSeasonsHud/src/main/resources/pack.mcmeta"
+      ]
+    },
     "Mods/JEMServer": {
-      "watched": 494,
-      "covered": 322,
+      "watched": 495,
+      "covered": 323,
       "unresolved": 172,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
@@ -1900,8 +2037,8 @@
       ]
     },
     "Mods/MobHome": {
-      "watched": 94,
-      "covered": 94,
+      "watched": 95,
+      "covered": 95,
       "unresolved": 0,
       "unresolved_paths": []
     }

@@ -25,7 +25,7 @@ def intro_parts(text):
     return [*parts, current] if current else parts
 
 
-def generate_navigation(resources=RESOURCES):
+def generate_navigation(resources=RESOURCES, *, questbook_source=MODULE / "tools/questbook/book.json"):
     assets = resources / "assets/jem_advancements"
     book = assets / "patchouli_books/just_enough_guide"
     (assets / "advancement_guides/index.json").unlink(missing_ok=True)
@@ -69,6 +69,9 @@ def generate_navigation(resources=RESOURCES):
             lang["jem_advancements.handbook.section." + section["id"]] = section[language]["name"]
         write(lang_path, lang)
     generate_authored_content(book)
+    if questbook_source is not None:
+        from compile_questbook import compile_handbook
+        compile_handbook(json.loads(Path(questbook_source).read_text(encoding="utf-8")), resources=resources)
 
 
 def generate_authored_content(book=BOOK):

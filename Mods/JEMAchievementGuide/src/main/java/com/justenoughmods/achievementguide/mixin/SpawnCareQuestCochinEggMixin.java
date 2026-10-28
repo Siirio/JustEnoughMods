@@ -1,0 +1,6 @@
+package com.justenoughmods.achievementguide.mixin;
+import com.justenoughmods.achievementguide.integration.spawncare.*;import org.spongepowered.asm.mixin.*;import org.spongepowered.asm.mixin.injection.*;import org.spongepowered.asm.mixin.injection.callback.*;
+import net.minecraft.server.level.ServerLevel;import net.minecraft.world.entity.Entity;import net.minecraft.world.entity.item.ItemEntity;import net.minecraft.world.level.LevelAccessor;
+@Pseudo @Mixin(targets="net.mcreator.barnyardbuddies.procedures.CochinBantamEntityFallsProcedure",remap=false) public abstract class SpawnCareQuestCochinEggMixin { 
+ @Redirect(method="execute",at=@At(value="INVOKE",target="Lnet/minecraft/server/level/ServerLevel;m_7967_(Lnet/minecraft/world/entity/Entity;)Z",remap=false),remap=false) private static boolean jem$egg(ServerLevel level,Entity made,LevelAccessor world,double x,double y,double z,Entity source){boolean ok=level.addFreshEntity(made);if(ok&&source.isAlive()&&SpawnCareQuestDrops.nativeMob(source)&&SpawnCareQuestProof.type(source).equals("barnyardbuddies:cochin_bantam")&&made instanceof ItemEntity drop&&SpawnCareQuestProof.item(drop.getItem()).equals("barnyardbuddies:cochin_bantam_chicken_egg"))SpawnCareQuestDrops.mark(drop,source,"v3_pet_farm_signatures_egg");return ok;}
+ }

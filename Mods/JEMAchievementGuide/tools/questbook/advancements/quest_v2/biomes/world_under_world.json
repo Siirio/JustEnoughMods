@@ -1,0 +1,112 @@
+{
+  "criteria": {
+    "option_1": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "alexscaves:magnetic_caves"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_2": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "alexscaves:primordial_caves"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_3": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "alexscaves:toxic_caves"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_4": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "alexscaves:abyssal_chasm"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_5": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "alexscaves:forlorn_hollows"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "option_6": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "alexscaves:candy_cavity"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "option_1",
+      "option_2",
+      "option_3",
+      "option_4",
+      "option_5",
+      "option_6"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

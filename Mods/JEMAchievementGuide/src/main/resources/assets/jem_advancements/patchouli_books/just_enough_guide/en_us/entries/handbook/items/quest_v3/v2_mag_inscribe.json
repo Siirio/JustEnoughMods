@@ -1,0 +1,42 @@
+{
+  "name": "Between the Covers",
+  "icon": "irons_spellbooks:inscription_table",
+  "category": "jem_advancements:handbook/items",
+  "sortnum": 5002,
+  "jem_aliases": [
+    "v2_mag_inscribe",
+    "irons_spellbooks:inscription_table",
+    "Between the Covers",
+    "Secrets of Magic",
+    "Между страниц",
+    "Тайны магии"
+  ],
+  "jem_summary": "Successfully inscribe a populated Scroll into a compatible Spell Book.",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Between the Covers",
+      "text": "Successfully inscribe a populated Scroll into a compatible Spell Book."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Between the Covers",
+      "text": "Make the prepared book useful; this rewards a real inscription rather than owning an empty book."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Getting started",
+      "text": "Open the Inscription Table, use a populated scroll and a compatible book, then take the committed result. Follow the table’s actual compatibility rules."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Related possibilities",
+      "text": "Inscription accepts a compatible scroll; book tier limits capacity and eligibility."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Related possibilities",
+      "text": "Inscription must actually change the book container; cancellable InscribeSpellEvent is not completion."
+    }
+  ]
+}

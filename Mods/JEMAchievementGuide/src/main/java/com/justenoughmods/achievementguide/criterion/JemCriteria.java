@@ -31,6 +31,7 @@ public final class JemCriteria {
             return;
         }
         CriteriaTriggers.register(UPSTREAM_ADVANCEMENT);
+        com.justenoughmods.achievementguide.advancement.QuestActionTrigger.register();
         registered = true;
     }
 

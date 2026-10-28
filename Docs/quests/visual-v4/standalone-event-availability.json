@@ -1,0 +1,58 @@
+{
+  "classification": "Explicit canonical event metadata normalization, existing standalone availability and fixed event goals unchanged",
+  "source_cause": "Advancement-only seasonal_gift and resource_rush have no indexed dedicated rule, but their pre-existing native_options.jem_dedicated_event=true already overrides the computed rule flag in compiler quest.update. Raid and Blood Moon already have dedicated indexed rules. All four goals were therefore already marked dedicated-only before normalization",
+  "implementation_choice": "Explicit dedicated_event card metadata normalizes classification while preserving existing native_options overrides and indexed rule flags. This is not a fix for a previously false effective availability flag",
+  "cards": [
+    {
+      "id": "v3_qol_seasonal_gift",
+      "ftb_id": "38A2FC87072B59D5",
+      "previous_compiler_flag": true,
+      "new_explicit_dedicated_event": true,
+      "all_preexisting_card_fields_unchanged": true,
+      "candidate_dedicated_event_flag": true,
+      "previous_indexed_rule_flag": false,
+      "previous_native_options_override": true
+    },
+    {
+      "id": "v2_bosses_boss_loot_08",
+      "ftb_id": "2F268498F3A20409",
+      "previous_compiler_flag": true,
+      "new_explicit_dedicated_event": true,
+      "all_preexisting_card_fields_unchanged": true,
+      "candidate_dedicated_event_flag": true,
+      "previous_indexed_rule_flag": true,
+      "previous_native_options_override": null
+    },
+    {
+      "id": "v2_bosses_events_02",
+      "ftb_id": "213877F2F80E2A47",
+      "previous_compiler_flag": true,
+      "new_explicit_dedicated_event": true,
+      "all_preexisting_card_fields_unchanged": true,
+      "candidate_dedicated_event_flag": true,
+      "previous_indexed_rule_flag": true,
+      "previous_native_options_override": null
+    },
+    {
+      "id": "v3_qol_resource_rush",
+      "ftb_id": "3027BDD970C40EC9",
+      "previous_compiler_flag": true,
+      "new_explicit_dedicated_event": true,
+      "all_preexisting_card_fields_unchanged": true,
+      "candidate_dedicated_event_flag": null,
+      "previous_indexed_rule_flag": false,
+      "previous_native_options_override": true,
+      "disposition": "retired_by_explicit_user_decision"
+    }
+  ],
+  "chapter_card_count": 606,
+  "graph_changes": false,
+  "reward_identity_or_amount_changes": false,
+  "event_goal_redesign": false,
+  "runtime_observed": false,
+  "source_paths": [
+    "Mods/JEMAchievementGuide/tools/questbook/book.json",
+    "Mods/JEMAchievementGuide/tools/compile_questbook.py"
+  ],
+  "candidate_generation": "Seven chapters,606 mapped cards, three retained optional dedicated goals. Retired Resource Rush remains historical evidence only"
+}

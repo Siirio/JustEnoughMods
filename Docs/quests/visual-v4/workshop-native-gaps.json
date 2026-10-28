@@ -1,0 +1,83 @@
+{
+  "artifact": "Client/ManagedPack/mods/skarrier_mobs-1.1.1-forge-1.20.1.jar",
+  "sha256": "8f41751e2ee395f128e45b5361687f7f5df4ec808892817b6ae759b076a3aefc",
+  "runtime_verified": false,
+  "search_scopes": [
+    "installed artifact net/**/*.java decompilation including all procedures, item overrides, entity handlers, init and utils",
+    "Mods/**/*.java",
+    "Mods/**/*.js",
+    "Client/ManagedPack/kubejs/server_scripts",
+    "Client/ManagedPack/kubejs/startup_scripts",
+    "Client/ManagedPack/config/paxi",
+    "Catalog/effective/*.json"
+  ],
+  "literal_search": [
+    "totem_of_extinction",
+    "totem_of_melding",
+    "TotemOfExtinction",
+    "TotemOfMelding",
+    "TOTEM_OF_EXTINCTION",
+    "TOTEM_OF_MELDING",
+    "extinction",
+    "melding"
+  ],
+  "gaps": [
+    {
+      "action": "v3_combat_totem_bind",
+      "item": "skarrier_mobs:totem_of_extinction",
+      "status": "unavailable_native_owner",
+      "reviewed": false,
+      "native_classes": [
+        "net.mcreator.skarriermobs.item.TotemOfExtinctionItem",
+        "net.mcreator.skarriermobs.init.SkarrierMobsModItems",
+        "net.mcreator.skarriermobs.init.SkarrierMobsModTabs"
+      ],
+      "evidence": "Registered ordinary Item subclass overrides tooltip only. No binding interaction, stored target type or damage bonus handler references name, class or registry constant. Installed language describes a feature but does not implement it. No current JEM Java or gameplay script override or effective rule found",
+      "decision": "Direct user removed quest, native inert item unchanged, former leading route now starts at native totem elements"
+    },
+    {
+      "action": "v3_combat_totem_meld",
+      "item": "skarrier_mobs:totem_of_melding",
+      "status": "unavailable_native_owner",
+      "reviewed": false,
+      "native_classes": [
+        "net.mcreator.skarriermobs.item.TotemOfMeldingItem",
+        "net.mcreator.skarriermobs.init.SkarrierMobsModItems",
+        "net.mcreator.skarriermobs.init.SkarrierMobsModTabs"
+      ],
+      "evidence": "Registered ordinary Item subclass overrides tooltip only. No capture or transfer interaction, stored base attributes or transfer handler references name, class or registry constant. Installed language describes a feature but does not implement it. No current JEM Java or gameplay script override or effective rule found",
+      "decision": "Direct user removed quest, native inert item unchanged, former leading route now starts at native totem elements"
+    },
+    {
+      "action": "v3_combat_elder_alloy",
+      "item": "skarrier_mobs:decayerite_upgrade_template",
+      "status": "missing_native_second_stage_recipe",
+      "reviewed": false,
+      "native_classes": [
+        "net.mcreator.skarriermobs.init.SkarrierMobsModItems"
+      ],
+      "evidence": "Installed data contains native Invulnerite smithing transforms and the Decayerite template crafting recipe but no Decayerite smithing transforms or equipment recipes. Decayerite item classes exist. No current JEM gameplay script or Paxi recipe override found by decayerite literal search",
+      "decision": "Direct user removed Decayerite requirement and retained confirmed native Invulnerite-only smithing. Native missing Decayerite recipe remains unchanged and is no longer an active quest requirement"
+    }
+  ],
+  "additional_handler_search": {
+    "native_patterns": [
+      "skarrier_mobs:totems",
+      "EntityInteract",
+      "RightClickItem"
+    ],
+    "actual_generic_totem_owners": [
+      "WorkshopOnButtonClickProcedure applies SLFlesh only",
+      "SLFleshTotemHeldEffectProcedure installs health penalty only",
+      "TooltipSemiLivingFleshProcedure supplies text only"
+    ],
+    "actual_entity_interact_owners": [
+      "QuakeAntiRidingProcedure",
+      "RawKrillUsedOnDolphinProcedure",
+      "TunnelGoreLeadPreventionProcedure"
+    ],
+    "conclusion": "No generic/tag-based binding or attribute-transfer route exists in these installed handlers"
+  },
+  "user_decision": "Pending. User asked to continue the other twelve. All three original cards remain unchanged and unreviewed",
+  "user_amendment": "Docs/quests/visual-v4/workshop-user-amendment.json"
+}

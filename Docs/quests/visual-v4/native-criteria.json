@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "scope": "Explicit reviewed native resource allowlist only",
+  "resources": [
+    {
+      "advancement": "jem_advancements:quest_v2/biomes/scenic_detour",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/biomes/scenic_detour.json",
+      "sha256": "4e028aa794d4dc5e6b1d37b3b8900f89d6b2e35f81deb220c39d315ccee97ca1",
+      "allowed_triggers": [
+        "minecraft:location"
+      ],
+      "native_criterion_reviewed": true,
+      "runtime_observed": false,
+      "native_evidence": "Original supplied V4 native biome discovery criterion, reviewed exact resource and minecraft:location trigger",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestActorMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestListenerAccess.java"
+      ],
+      "actor_eligibility_evidence": "Native final matched Listener.run dispatch rejects Forge FakePlayer, creative and spectator only for these exact five reviewed resources. Other native advancement dispatch is unchanged."
+    },
+    {
+      "advancement": "jem_advancements:quest_v2/biomes/stranger_nether",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/biomes/stranger_nether.json",
+      "sha256": "654cfb2ce5bcb2cf4ba1e558e83051fbce821dc2e9ce8fea17e707ec1862847f",
+      "allowed_triggers": [
+        "minecraft:location"
+      ],
+      "native_criterion_reviewed": true,
+      "runtime_observed": false,
+      "native_evidence": "Original supplied V4 native biome discovery criterion, reviewed exact resource and minecraft:location trigger",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestActorMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestListenerAccess.java"
+      ],
+      "actor_eligibility_evidence": "Native final matched Listener.run dispatch rejects Forge FakePlayer, creative and spectator only for these exact five reviewed resources. Other native advancement dispatch is unchanged."
+    },
+    {
+      "advancement": "jem_advancements:quest_v2/biomes/world_under_world",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v2/biomes/world_under_world.json",
+      "sha256": "e1074c539ad8ec2aadb649d0ac93d9681f6dc58d2e8fb7dd2a6c922f5d4e97e7",
+      "allowed_triggers": [
+        "minecraft:location"
+      ],
+      "native_criterion_reviewed": true,
+      "runtime_observed": false,
+      "native_evidence": "Original supplied V4 native biome discovery criterion, reviewed exact resource and minecraft:location trigger",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestActorMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestListenerAccess.java"
+      ],
+      "actor_eligibility_evidence": "Native final matched Listener.run dispatch rejects Forge FakePlayer, creative and spectator only for these exact five reviewed resources. Other native advancement dispatch is unchanged."
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_home_nether_flesh",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_home_nether_flesh.json",
+      "sha256": "510efe86c00e80a225fc20ee64023a19123e0c0b9f19413bf319435f96bd048c",
+      "allowed_triggers": [
+        "minecraft:location"
+      ],
+      "native_criterion_reviewed": true,
+      "runtime_observed": false,
+      "native_evidence": "Installed incision-1.0.10-forge-1.20.1.jar contains exact eroded_yard biome. Vanilla location criterion requires that biome and the_nether dimension. Native player loot conditions reject creative and spectator modes.",
+      "installed_jar_sha256": "8694e5915cfceb85c6e7c1c02f74cfa392df0392ae7e5d972dc455435d1202a5",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestActorMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestListenerAccess.java"
+      ],
+      "actor_eligibility_evidence": "Native final matched Listener.run dispatch rejects Forge FakePlayer, creative and spectator only for these exact five reviewed resources. Other native advancement dispatch is unchanged."
+    },
+    {
+      "advancement": "jem_advancements:quest_v3/v3_world_kaolin_knock",
+      "blueprint": "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_world_kaolin_knock.json",
+      "sha256": "755fabaa6e207f00180bbc17a485c63065e98fe0f3b0379f073d685c80ccb5ae",
+      "allowed_triggers": [
+        "minecraft:player_killed_entity"
+      ],
+      "native_criterion_reviewed": true,
+      "runtime_observed": false,
+      "native_evidence": "Exact installed Nature Spirit2.2.5 kaolin_kill criterion copied directly: player kills zombie with killing_blow.direct_entity.equipment.mainhand.items=[natures_spirit:kaolin]. Native advancement forwarding is not used. Added negative creative/spectator player predicates, retained native entity and killing_blow conditions.",
+      "installed_jar_sha256": "07818dd985b100ae71b98c755961c135b07c3a08faf5d95afc87fab71a3b9e86",
+      "installed_native_resource": "data/natures_spirit/advancements/adventure/kaolin_kill.json",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestActorMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/NativeQuestListenerAccess.java"
+      ],
+      "actor_eligibility_evidence": "Native final matched Listener.run dispatch rejects Forge FakePlayer, creative and spectator only for these exact five reviewed resources. Other native advancement dispatch is unchanged."
+    }
+  ]
+}

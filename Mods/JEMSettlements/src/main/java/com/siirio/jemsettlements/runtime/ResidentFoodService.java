@@ -103,6 +103,14 @@ public final class ResidentFoodService {
         mob.playSound(net.minecraft.sounds.SoundEvents.GENERIC_EAT, .8F, .9F + mob.getRandom().nextFloat() * .2F);
         mob.gameEvent(net.minecraft.world.level.gameevent.GameEvent.EAT);
         level.sendParticles(new net.minecraft.core.particles.ItemParticleOption(net.minecraft.core.particles.ParticleTypes.ITEM, taken), mob.getX(), mob.getEyeY(), mob.getZ(), 8, .2, .2, .2, .05);
+        if (town != null && selected.storage() != null && value.mood() >= 0 && mob.isAlive() && needs.living()) {
+            var data = com.siirio.jemsettlements.town.SettlementSavedData.get(level.getServer());
+            if (data.resident(mob.getUUID()).orElse(null) == needs && needs.townId().equals(town.id())) {
+                data.changed();
+                com.siirio.jemsettlements.api.SettlementOperationEvent.publishOwner(level.getServer(), town,
+                        com.siirio.jemsettlements.api.SettlementOperationEvent.Kind.RESIDENT_MEAL);
+            }
+        }
         return true;
     }
     public static void preserveBreedingFood(Villager villager, ItemStack stack) {

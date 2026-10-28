@@ -1,6 +1,12 @@
 package com.justenoughmods.achievementguide.mixin;
 
 import com.justenoughmods.achievementguide.client.questbook.QuestbookCamera;
+import com.justenoughmods.achievementguide.client.questbook.QuestbookLayout;
+import dev.ftb.mods.ftblibrary.ui.input.Key;
+import dev.ftb.mods.ftblibrary.util.TooltipList;
+import net.minecraft.network.chat.Component;
+import org.lwjgl.glfw.GLFW;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import dev.ftb.mods.ftbquests.client.ClientQuestFile;
 import dev.ftb.mods.ftbquests.client.gui.quests.ChapterPanel;
 import dev.ftb.mods.ftbquests.client.gui.quests.QuestPanel;
@@ -33,6 +39,111 @@ public abstract class QuestbookViewportMixin {
     @Unique private static final Map<ClientQuestFile, Map<Long, QuestbookCamera>> jem$cameras = new WeakHashMap<>();
     @Unique private boolean jem$pendingEntry = true;
     @Unique private boolean jem$cameraReady;
+    @Unique private int jem$viewportWidth;
+    @Unique private int jem$viewportHeight;
+    @Unique private int jem$sidebar;
+    @Unique private int jem$layoutRevision = -1;
+    @Unique private boolean jem$targetFocused;
+    @Unique private boolean jem$overviewActive;
+    @Unique private boolean jem$overviewUnsupported;
+    @Unique private double jem$lastScrollX;
+    @Unique private double jem$lastScrollY;
+
+    @Unique private QuestbookLayout.Board jem$board() {
+        return selectedChapter != null && selectedChapter.hasTag("jem_visual_v4")
+                ? QuestbookLayout.board(selectedChapter.id) : null;
+    }
+
+    @Unique private int jem$visibleSidebar() {
+        return Math.max(0, Math.min(questPanel.width,
+                chapterPanel.getX() + chapterPanel.width - questPanel.getX()));
+    }
+
+    @Inject(method = "getQuestButtonSpacing", at = @At("HEAD"), cancellable = true, remap = false)
+    private void jem$authoredSpacing(CallbackInfoReturnable<Double> callback) {
+        // V4 uses the native spacing parameter4 instead of default8. Node/icon
+        // sizes stay native, while readable zoom4 fits the authored overview.
+        if (selectedChapter != null && selectedChapter.hasTag("jem_visual_v4")) {
+            callback.setReturnValue((double)zoom);
+        }
+    }
+
+    @Unique private int jem$fitZoom(QuestbookLayout.Board board) {
+        double unitPerZoom = 1.5D + getQuestButtonSpacing() / Math.max(1, zoom);
+        double unit = Math.min((questPanel.width - jem$visibleSidebar() - 16D) / (board.maxX() - board.minX()),
+                (questPanel.height - 16D) / (board.maxY() - board.minY()));
+        // Four is the actual native lower bound. Smaller icons are illegible.
+        int fit = (int)Math.floor(unit / unitPerZoom);
+        jem$overviewUnsupported = fit < 4;
+        return Math.max(4, Math.min(28, fit));
+    }
+
+    @Unique private void jem$overview(QuestbookLayout.Board board) {
+        zoom = jem$fitZoom(board);
+        questPanel.refreshWidgets();
+        questPanel.alignWidgets();
+        double unit = zoom * 1.5D + getQuestButtonSpacing();
+        double x = (board.minX() + board.maxX()) / 2D - jem$visibleSidebar() / (2D * unit);
+        double y = (board.minY() + board.maxY()) / 2D;
+        jem$scroll(x, y);
+        jem$targetFocused = false;
+        jem$overviewActive = true;
+        jem$lastScrollX = questPanel.getScrollX();
+        jem$lastScrollY = questPanel.getScrollY();
+    }
+
+    @Unique private void jem$scroll(double x, double y) {
+        questPanel.scrollTo(x, y);
+        var camera = (QuestPanelCameraAccess)questPanel;
+        camera.jem$setCenterX(x);
+        camera.jem$setCenterY(y);
+    }
+
+    @Unique private void jem$clamp(QuestbookLayout.Board board) {
+        var camera = (QuestPanelCameraAccess)questPanel;
+        double unit = zoom * 1.5D + getQuestButtonSpacing();
+        // Read scroll itself, because native drag updates it between draw frames.
+        double x = camera.jem$getMinX() + (questPanel.getScrollX() + questPanel.width / 2D) / unit;
+        double y = camera.jem$getMinY() + (questPanel.getScrollY() + questPanel.height / 2D) / unit;
+        double left = board.minX() + (questPanel.width / 2D - jem$visibleSidebar() - 8D) / unit;
+        double right = board.maxX() - (questPanel.width / 2D - 8D) / unit;
+        double top = board.minY() + (questPanel.height / 2D - 8D) / unit;
+        double bottom = board.maxY() - (questPanel.height / 2D - 8D) / unit;
+        double nextX = left > right ? (board.minX() + board.maxX()) / 2D - jem$visibleSidebar() / (2D * unit)
+                : Math.max(left, Math.min(right, x));
+        double nextY = top > bottom ? (board.minY() + board.maxY()) / 2D : Math.max(top, Math.min(bottom, y));
+        if (Math.abs(nextX - x) > .001 || Math.abs(nextY - y) > .001) jem$scroll(nextX, nextY);
+    }
+
+    @Inject(method = "addZoom", at = @At("TAIL"), remap = false)
+    private void jem$limitZoomOut(double delta, CallbackInfo callback) {
+        var board = jem$board();
+        if (board == null || file.canEdit()) return;
+        if (delta != 0) jem$overviewActive = false;
+        int minimum = jem$fitZoom(board);
+        if (zoom < minimum) {
+            zoom = minimum;
+            questPanel.withPreservedPos(panel -> panel.alignWidgets());
+        }
+        jem$clamp(board);
+    }
+
+    @Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true, remap = false)
+    private void jem$returnOverview(Key key, CallbackInfoReturnable<Boolean> callback) {
+        var board = jem$board();
+        if (board != null && !file.canEdit() && key.is(GLFW.GLFW_KEY_HOME)) {
+            jem$overview(board);
+            callback.setReturnValue(true);
+        }
+    }
+
+    @Inject(method = "addMouseOverText", at = @At("TAIL"), remap = false)
+    private void jem$overviewHint(TooltipList tooltip, CallbackInfo callback) {
+        if (jem$board() != null && !file.canEdit()) {
+            if (jem$targetFocused) tooltip.add(Component.translatable("jem.questbook.overview.home"));
+            if (jem$overviewUnsupported) tooltip.add(Component.translatable("jem.questbook.overview.gui_scale"));
+        }
+    }
 
     @Unique private boolean jem$isRescueChapter() {
         return selectedChapter != null && selectedChapter.hasTag("jem_rescue_v3");
@@ -52,6 +163,7 @@ public abstract class QuestbookViewportMixin {
             jem$rememberCamera();
             jem$pendingEntry = true;
             jem$cameraReady = false;
+            jem$targetFocused = false;
         }
     }
 
@@ -63,14 +175,42 @@ public abstract class QuestbookViewportMixin {
     @Inject(method = "open", at = @At("TAIL"), remap = false)
     private void jem$explicitQuestTarget(QuestObject object, boolean focus, CallbackInfo callback) {
         // Native search and #quest links have already focused their exact target.
-        if (jem$isRescueChapter() && (object instanceof Quest || object instanceof QuestLink)) {
+        if ((jem$isRescueChapter() || jem$board() != null) && (object instanceof Quest || object instanceof QuestLink)) {
             jem$pendingEntry = false;
             jem$cameraReady = true;
+            jem$targetFocused = true;
+            jem$overviewActive = false;
         }
     }
 
     @Inject(method = "tick", at = @At("TAIL"), remap = false)
     private void jem$enter(CallbackInfo callback) {
+        var board = jem$board();
+        if (board != null && !file.canEdit() && questPanel.width > 0 && questPanel.height > 0) {
+            int sidebar = jem$visibleSidebar();
+            boolean changed = jem$viewportWidth != questPanel.width || jem$viewportHeight != questPanel.height
+                    || jem$sidebar != sidebar || jem$layoutRevision != QuestbookLayout.revision();
+            if (!jem$pendingEntry && !changed && (Math.abs(questPanel.getScrollX() - jem$lastScrollX) > 1
+                    || Math.abs(questPanel.getScrollY() - jem$lastScrollY) > 1)) jem$overviewActive = false;
+            if (jem$pendingEntry || changed) {
+                if (jem$pendingEntry || !jem$cameraReady || jem$overviewActive) {
+                    jem$overview(board);
+                } else {
+                    zoom = Math.max(zoom, jem$fitZoom(board));
+                    questPanel.withPreservedPos(panel -> panel.alignWidgets());
+                }
+                jem$viewportWidth = questPanel.width;
+                jem$viewportHeight = questPanel.height;
+                jem$sidebar = sidebar;
+                jem$layoutRevision = QuestbookLayout.revision();
+                jem$pendingEntry = false;
+                jem$cameraReady = true;
+            }
+            jem$clamp(board);
+            jem$lastScrollX = questPanel.getScrollX();
+            jem$lastScrollY = questPanel.getScrollY();
+            return;
+        }
         if (!jem$pendingEntry || !jem$isRescueChapter() || questPanel.width < 100 || questPanel.height < 100) return;
         var saved = jem$cameras.getOrDefault(file, Map.of()).get(selectedChapter.id);
         double centerX;

@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_candy_arsenal"
+      }
+    },
+    "staff": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_candy_arsenal_staff"
+      }
+    },
+    "spear": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_cave_candy_arsenal_spear"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "staff",
+      "spear"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

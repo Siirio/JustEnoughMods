@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_redstone_creatures"
+      }
+    },
+    "boomer": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_fauna_redstone_creatures_boomer"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "boomer"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

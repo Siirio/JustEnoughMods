@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "flour": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_mincer_flour"
+      }
+    },
+    "dough": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "food_bowl_dough"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "flour"
+    ],
+    [
+      "dough"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

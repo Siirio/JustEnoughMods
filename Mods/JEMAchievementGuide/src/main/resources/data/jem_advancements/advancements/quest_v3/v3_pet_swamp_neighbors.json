@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_swamp_neighbors"
+      }
+    },
+    "native_home_changed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v4_pet_ribbit_home"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_home_changed"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

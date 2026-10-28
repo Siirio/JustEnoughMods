@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_soul_pearl"
+      }
+    },
+    "bound": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_soul_pearl_bound"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "bound"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

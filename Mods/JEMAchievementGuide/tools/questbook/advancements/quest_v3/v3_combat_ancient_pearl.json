@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_ancient_pearl"
+      }
+    },
+    "summoned": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_ancient_pearl_summoned"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "summoned"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

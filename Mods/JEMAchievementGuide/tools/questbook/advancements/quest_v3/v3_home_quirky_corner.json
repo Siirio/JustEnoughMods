@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_home_quirky_corner"
+      }
+    },
+    "light": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_home_quirky_corner_light"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "light"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

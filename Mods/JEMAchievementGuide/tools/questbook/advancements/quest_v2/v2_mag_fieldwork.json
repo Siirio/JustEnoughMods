@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "action_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "spell_positive_hostile_damage"
+      }
+    },
+    "action_2": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "spell_effective_player_heal"
+      }
+    },
+    "action_3": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "spell_self_relocation"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "action_1"
+    ],
+    [
+      "action_2"
+    ],
+    [
+      "action_3"
+    ]
+  ]
+}

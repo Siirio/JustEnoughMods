@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "producer_scope": "Five fixed Enderman Overhaul cards only, no activation or independent-review receipt",
+  "runtime_observed": false,
+  "production_build_owner": "Parent unified production build only",
+  "standalone_contract": "Ordinary integrated and dedicated logical server, no JEMServer or other producer-family dependency",
+  "artifact": {
+    "path": "Client/ManagedPack/mods/endermanoverhaul-forge-1.20.1-1.0.4.jar",
+    "sha256": "18f9f0bf3a9b4f77ad6913c28ccb927cde24f5d19524152cfe79ebb3dcccacc5",
+    "version": "1.0.4"
+  },
+  "config": "Client/ManagedPack/config/endermanoverhaul.jsonc current native spawning and friendly behavior enabled",
+  "bounds": {
+    "native_scope_depth": 16,
+    "binding_receipts_per_entity": 16,
+    "world_reads": "Exact native bound entity ID lookup only, no entity/world scans, forced chunks or nearest-player lookup",
+    "inventory_reads": "Exact native delivery arguments only, no inventory polling"
+  },
+  "preservation": "No native inventory ItemStack metadata added, preserving native bound-pearl stacking and slots. Proof-only metadata is kept on actual bound/summoned/projectile entities. Every redirected native operation runs exactly once with original arguments and original return. All native damage/cost/cooldown/effects/teleport/ownership/equipment remain owned upstream",
+  "native_quirks": [
+    "Native ThrownSoulPearl constructor uses the CORRUPTED_PEARL entity type. Producer targets the actual native class, not a guessed registry identity",
+    "Native CorruptedBlade checks attacker blacklist rather than target. Observer additionally rejects protected target proof, without replacing or repairing native gameplay. Existing server teleport guards remain in force",
+    "Native boundEntity is not serialized by ThrownSoulPearl, so successful runtime relocation after lost native lineage is not synthesized"
+  ],
+  "producers": [
+    {
+      "action": "v3_combat_soul_pearl",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/EndermanPearlProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanSoulBindQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanPearlThrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanSoulImpactQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_soul_pearl.json"
+      ],
+      "native_evidence": "SoulPearlItem.interactLivingEntity native BoundEntity/BoundType result must actually enter the hand, inventory or accepted dropped entity before binding is recorded on that exact entity UUID for the real actor. Native use must consume one pearl and spawn the exact owned projectile with cooldown. Native ThrownSoulPearl.boundEntity must match the previously bound UUID, and its actual native teleportTo call must change the same live allowed target position. Two ordinary native criteria preserve bound and original completed action",
+      "emitted_actions": [
+        "v3_combat_soul_pearl_bound",
+        "v3_combat_soul_pearl"
+      ],
+      "unsupported_paths": [
+        "Summoner Pearl is only related guide information and does not satisfy the fixed Soul objective",
+        "Native projectile reload loses the native boundEntity field, observer never reconstructs native mechanics",
+        "Protected/dead target, denied output insertion, failed throw or unchanged final relocation"
+      ],
+      "attribution": "Actual real survival logical-server actor, exact native transaction/owner/lineage, no nearest-player or travel-family helper",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_soul_pearl"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_ancient_pearl",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/EndermanPearlProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanPearlThrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanAncientSummonQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanAncientRecallQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanRecallOutputQuestMixin.java",
+        "Mods/JEMAchievementGuide/tools/questbook/advancements/quest_v3/v3_combat_ancient_pearl.json"
+      ],
+      "native_evidence": "AncientPearlItem actual paid throw creates provenance on the accepted projectile. Native ThrownAncientPearl.onHit must successfully insert one of the three real owned pet variants. That same actual pet UUID carries summon provenance through native serialization. Native BasePetEnderman.mobInteract must accept same owner, output an accepted Ancient Pearl whose native PetEntity UUID matches that exact pet, and remove the native pet with DISCARDED. Summoned and original completed criteria both remain native persistent advancement criteria",
+      "emitted_actions": [
+        "v3_combat_ancient_pearl_summoned",
+        "v3_combat_ancient_pearl"
+      ],
+      "unsupported_paths": [
+        "Different pet lineage or owner",
+        "Wild aggressive Enderman",
+        "Rejected pet spawn, rejected recall output, or unchanged pet removal"
+      ],
+      "attribution": "Actual real survival logical-server actor, exact native transaction/owner/lineage, no nearest-player or travel-family helper",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_ancient_pearl"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_pearl_control",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/EndermanPearlProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanPearlThrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanIcyImpactQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanBubbleFlightQuestMixin.java"
+      ],
+      "native_evidence": "Icy alternative observes actual native setTicksFrozen on an eligible living non-owner combat opponent, with native positive increased frozen state reaching its own freeze threshold and canFreeze true. Bubble alternative requires an actual paid accepted native throw followed by a native server tick with actual displacement and native getGravity result0 outside water. A proof-only notification bit on the projectile prevents repeated flight emissions. Native gravity, acceleration, movement, damage, effects, cost and cooldown run unchanged",
+      "emitted_actions": [
+        "v3_combat_pearl_control"
+      ],
+      "unsupported_paths": [
+        "Raw throw or item possession",
+        "Freeze-immune or peaceful non-opponent target",
+        "Water-only Bubble motion, immediately discarded/no-displacement projectile",
+        "Crimson/Warped are related guide notes, outside the fixed Icy-or-Bubble objective"
+      ],
+      "attribution": "Actual real survival logical-server actor, exact native transaction/owner/lineage, no nearest-player or travel-family helper",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_pearl_control"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_corrupted_gear",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/EndermanPearlProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanPearlThrowQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanCorruptedImpactQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanCorruptedBladeQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanCorruptedShieldQuestMixin.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/EndermanRandomTeleportQuestMixin.java"
+      ],
+      "native_evidence": "All three alternatives scope exact native owners: paid accepted Corrupted Pearl onEntityHit, native actual held CorruptedBlade.hurtEnemy, or actual active CorruptedShield block. Native ModUtils.teleportTarget randomTeleport must return accepted and change the same actual live allowed target position after all native/server guards. No copied random-search or teleport formula. Shield observer priority900 follows the upstream priority1000 TAIL injection before completing the block scope",
+      "emitted_actions": [
+        "v3_combat_corrupted_gear"
+      ],
+      "unsupported_paths": [
+        "Random proc fails or native randomTeleport returns false",
+        "Native call returns true without actual displacement",
+        "Protected target, generic damage or ordinary block without native relocation"
+      ],
+      "attribution": "Actual real survival logical-server actor, exact native transaction/owner/lineage, no nearest-player or travel-family helper",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_corrupted_gear"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    },
+    {
+      "action": "v3_combat_hood",
+      "source_paths": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/EndermanPearlProof.java"
+      ],
+      "native_evidence": "Forge LivingEquipmentChangeEvent observes actual committed CHEST equipment. Exact registered badlands_hood, savanna_hood or snowy_hood must be the current real player chest stack and actual changed result. Installed HoodItem uses ArmorItem.Type.CHESTPLATE, and native EnderManMixin.isLookingAtMe checks the chest slot for HoodItem. Fixed goal requires equipping, not a fabricated universal invisibility or arbitrary defense effect",
+      "emitted_actions": [
+        "v3_combat_hood"
+      ],
+      "unsupported_paths": [
+        "Inventory possession",
+        "Wrong slot",
+        "Creative/FakePlayer/spectator",
+        "Identical unchanged equipment state"
+      ],
+      "attribution": "Actual real survival logical-server actor, exact native transaction/owner/lineage, no nearest-player or travel-family helper",
+      "producer_code_reviewed": true,
+      "runtime_observed": false,
+      "advancements": [
+        "jem_advancements:quest_v3/v3_combat_hood"
+      ],
+      "source_reviewed": true,
+      "source_acceptance": "Combined native-owner source review, compilation and runtime application remain separate"
+    }
+  ],
+  "confirmed_unavailable_fixed_cards": [],
+  "verification": {
+    "source_api_read_performed": true,
+    "independent_review_performed": false,
+    "tests_run": false,
+    "build_run": false,
+    "runtime_run": false
+  },
+  "source_state": "frozen_for_parent_review_and_registration",
+  "source_reviewed": true,
+  "source_review_scope": "Implemented native routes only, unsupported and user-retired rows remain individually false",
+  "source_review_reports": [
+    "Docs/quests/visual-v4/source-review-food-home-photo-world.md",
+    "Docs/quests/visual-v4/source-review-native-domains.md",
+    "Docs/quests/visual-v4/source-review-battle-companion-spawn.md"
+  ],
+  "accepted_route_rows": 5
+}

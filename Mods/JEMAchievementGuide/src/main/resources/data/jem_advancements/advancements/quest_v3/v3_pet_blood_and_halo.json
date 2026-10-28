@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_blood_and_halo"
+      }
+    },
+    "holy": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_blood_and_halo_holy"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "holy"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

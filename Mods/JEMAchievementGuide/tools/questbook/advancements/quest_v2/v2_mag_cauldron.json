@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "action_1": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "spell_cauldron_brew"
+      }
+    },
+    "native_brewed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "spell_cauldron_native_brew"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "native_brewed"
+    ],
+    [
+      "action_1"
+    ]
+  ]
+}

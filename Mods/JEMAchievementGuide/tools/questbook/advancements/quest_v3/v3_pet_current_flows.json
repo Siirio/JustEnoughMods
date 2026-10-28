@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_current_flows"
+      }
+    },
+    "link": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_current_flows_link"
+      }
+    },
+    "lamp": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_pet_current_flows_lamp"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "link"
+    ],
+    [
+      "lamp"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}

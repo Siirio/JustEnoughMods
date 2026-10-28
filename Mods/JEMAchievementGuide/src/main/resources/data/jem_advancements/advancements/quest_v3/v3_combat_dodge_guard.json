@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "completed": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_dodge_guard"
+      }
+    },
+    "native_dodge": {
+      "trigger": "jem_advancements:quest_action",
+      "conditions": {
+        "action": "v3_combat_dodge_guard_dodge"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "completed"
+    ],
+    [
+      "native_dodge"
+    ]
+  ],
+  "rewards": {},
+  "sends_telemetry_event": false
+}
