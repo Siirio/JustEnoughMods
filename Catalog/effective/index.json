@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model": "Original Registry -> Applied JEM Changes -> Effective Gameplay Behavior",
-  "change_records_sha256": "5b107f095b1890f91b6f3a4462d4cc6ce28ffb9f0bad4799440157b975cf94de",
+  "change_records_sha256": "c83b0e62ba1e7b88b2c3ce3bcc6348343534554479daed78830f65776048c639",
   "precedence": {
     "order": "priority ascending, selector specificity ascending, change_id ascending",
     "specificity": {
@@ -351,7 +351,7 @@
     {
       "change_id": "client.quickskin-main-menu-presentation-20261028",
       "status": "conditional",
-      "summary": "Present the native Quick Skin player preview in the user-outlined lower-left box while keeping every main-menu action as transparent text on the right.",
+      "summary": "Present the native Quick Skin player preview and Change Skin text in the user-outlined lower-left boxes while keeping the primary main-menu actions as transparent text on the right.",
       "record": "Catalog/changes/records/client.quickskin-main-menu-presentation-20261028.json",
       "selectors": [
         {
@@ -3612,7 +3612,7 @@
     "Client/ManagedPack/config/copperagebackport.json": "410faae183c6b92b8b2abb0b61928b35705f01fea5c1c2ba395a2458e11f8325",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png": "9d250ea8dc75ec0df65b719d0a86473d73805e8bf43e4750955fd74cb168f591",
     "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_title.png": "30a2d47abb2ba7ffdf9e0ebf2347a907191ce6a064b65e0c69f4354a9c0a47f6",
-    "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt": "30aa518a869f533134f99b8c73cb99002753e3f2862866f299c428713b58fcf1",
+    "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt": "0cea7ff6ead16d8894d323eec08798c83d5ccddf0fd40ddb1afd6abab725bcff",
     "Client/ManagedPack/config/ftbquests/quests/chapter_groups.snbt": "dcefa23f7441409db799365bac250dc2418800a7b7468b15984c2c866f0cb4cd",
     "Client/ManagedPack/config/ftbquests/quests/chapters/jem_03.snbt": "561e855dd38d044f8a0e419f9fabe1bc415e6e2cf45dbe444b215da14c4b2191",
     "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt": "0f738626f5c20e840c178c054aa1405320c50625396254f2376941b44b4873c6",
@@ -3643,10 +3643,10 @@
     "Client/ManagedPack/config/paxi/datapacks/jem-oceanic-worldgen-safety/pack.mcmeta": "8653140c810c87d2af75fce751331fac84a87b5b094c7a084968df08078f0ff8",
     "Client/ManagedPack/config/paxi/resourcepack_load_order.json": "7cd92a07775d3d70549f3b0775e5fdefe9683e4e5502faf3ccdf1bda1a0cdeaa",
     "Client/ManagedPack/config/paxi/resourcepacks/Create Immersive Aircrafts Resource Pack 1.20.1 - 3.0.zip": "6474ca9582bccb35c96851f5c8f51657fe0d09b139004144c30cad88264d2fea",
-    "Client/ManagedPack/config/quickskin-client.json": "42fa8b6ef2cac9b0795d3fefc585bbff66c7c0cfef2c11ab78c383d108cd62ea",
+    "Client/ManagedPack/config/quickskin-client.json": "fd93d6b4048850fa3b615d90e4314926e8a7eab6a1b49a2258eeb6cc69b0bb51",
     "Client/ManagedPack/config/quickskin_preferences.json": "8710941f51651e91a63125a6ccddf18407900900f55e6b127f45b9a145cb933f",
     "Client/ManagedPack/config/vinery.toml": "060af71b78a7d7dbd937deeb4709ea98f1dadbb7577eaf452f7c406d388de00f",
-    "Client/ManagedPack/jem-pack/manifest.json": "77584928bf9d24edb905b16731259daceb8196b4382f4a582f6bc1ac44dbdcb6",
+    "Client/ManagedPack/jem-pack/manifest.json": "1cda996bc66ca269f612105a15e9a928c2508282d694175b2cb17f3aca481b8e",
     "Client/ManagedPack/kubejs/assets/alexscaves/lang/ru_ru.json": "4c849404ee0d9b8ce0e20a3eed7f039727b92101883896eabf2249508dc7c91f",
     "Client/ManagedPack/kubejs/assets/alexsmobs/lang/ru_ru.json": "5615ba732a44fef2fb71fb6983d3f6e2a7d35e44c5f1ba869c2b9e3173639acf",
     "Client/ManagedPack/kubejs/assets/aquamirae/lang/ru_ru.json": "8dc0068901f9e3c85ac3c02183420f265201a6f1a480c8a80fc79932dcc3d9d0",
@@ -3829,7 +3829,7 @@
     "Client/ManagedPack/mods/jem-bootstrap.jar": "5e02d07f8bf30da5e6a1d7c4b9308d2f6979b76b4387892127e7044d5956e1f1",
     "Client/ManagedPack/mods/jem-economy-1.3.0.jar": "f25ce0e1eeef4ee156d77f325d6f1700c7ed7c6c356c311ac0767283bece4ad7",
     "Client/ManagedPack/mods/jem-identity-1.0.0.jar": "c84a1cc030dd5a91b7bae287b24ced375387c18f171b382e7aa128763eba010d",
-    "Client/ManagedPack/mods/jem-races-2.0.0.jar": "e9827399017b585f1fcbdcf56a14ad918b26c8b73eb32676fdf4626febf623c3",
+    "Client/ManagedPack/mods/jem-races-2.0.0.jar": "9d44dfb33c18def2c51d6937c463d33695e42de0ae379851b3da22895067c28c",
     "Client/ManagedPack/mods/jem-rewards-1.0.0.jar": "ab49824f23de5ae7953da39a4c398980a624ca8fafebf7753b7112207e425bf3",
     "Client/ManagedPack/mods/jem-server-2.0.0-dev.jar": "439be97302ca6dbae1cd50dc6b44f71b11982392cf4d8b56070cbbe6d053df3b",
     "Client/ManagedPack/mods/jem-settlements-2.1.0.jar": "79c3b0f27e4ad0b620c5724c6dd1c627436b7bbe19acab07935263b9a0b99c7f",
@@ -7892,6 +7892,7 @@
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/ClientHooks.java": "3d7fb0c53eab730d5fd7cd9f945922683eb377af1dc55889d6da13db5a2d4a19",
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/Demo.java": "7090df302036e14c3bc6c153ffd003ed73c70bce29045ae5bc1f6e0a579601d7",
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/GalleryScreen.java": "64c90b31f75255d5ab7821143d847107e6af78e610a1a2025d0c7d05b3358223",
+    "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/QuickSkinTitleScreenDefaults.java": "b45a9759bc1dc0f508e708458c17e9df615590681a00909f1ff9db8cfcea7dcc",
     "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/mirror/jemvisualsandbox/workbench/RaceExperience.java": "db47de3f052bb980db7a3c0fe8434cc4058613973c99bd0e5b6b1417cc8ce716",
     "Mods/JEMIdentity/build.gradle": "55eeae3546a73ba8a9cc2627f842bcb85c1fbdda13653602a301adef0206cc47",
     "Mods/JEMIdentity/settings.gradle": "ee4b083f606e93c75776c44a379918f792f1e7f925a67e307866f12691211b76",
@@ -8025,6 +8026,7 @@
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/OptionalRacePresentation.java": "73a7d88a256aadf465aca5f38b66631c300bec7a87802b7ed023a403b1857272",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/PreviewRenderState.java": "e4d6bf648098c0754c04d3810844255963ad3a544418302a1ce1bd9658262fe4",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinSessionResume.java": "090adb3fa0abc8e10406f35af0476ef7b57988aa4698633e16fefe9b1ecdd977",
+    "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java": "51fd5c6129cebe5ebea5a0e74a9ff9f84f10ecb8e072b456359b52f191224533",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceAbilityHud.java": "6cb32d281591f195ee1a07d657075322ad022df695951dfc742b859bfb350f0b",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceDamagePresentation.java": "2e73936d9c11f7468b26936a1b9819d9bdc6b49e0297ab951d26de630511d007",
     "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java": "31ad89804204d7189931ccde81f2fa194835b0bccd25bf1153ea24a9a5833997",
@@ -9016,7 +9018,7 @@
     "tools/generate_profession_skills.py": "9800359f334ff9887cac91885122de7734a0279c4a9d6b0d2be5c7b6c1c437e0",
     "tools/jem.py": "7ad9626dca8910e6a9455710e4da504988faa5d39a8e4fea7a19604585d5d10d",
     "tools/module-inventory.json": "b3a7f380e2ff8e33195c3703348a3e6f6c4c6be4bac7e1a3fcb4ff05321b57db",
-    "tools/state/packSyncHost-sync.json": "5a0a7932a7eedafd7044fea1da88d93f866f4e0c97c2684c62a3e55759efc8a3",
+    "tools/state/packSyncHost-sync.json": "c9d959ad26d11029ba30b0d73d38d5756dad28d28f4ae4b8c6c6ab259b8f013c",
     "tools/workspace.json": "8890c406eb103826c46d9616839b617ad30aa31b136824c852cbf7cdc040f199"
   }
 }

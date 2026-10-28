@@ -1,3 +1,19 @@
+## 2026-10-28 - Fit and flip the Quick Skin menu preview
+
+- User marked the final lower-left model and action boxes, required Change Skin below the model, and required the default player pose flipped horizontally because it faced left
+- Codex implementation: reduce the native Quick Skin model from 30 to 25 percent, move its Y offset from 130 to 119 while retaining X offset -422, move the transparent Change Skin text to the marked strip below the player, and initialize the optional native widget at -20 instead of +20 degrees yaw through JEMRoles
+- The scoped production `:JEMRoles:build` completed successfully without tests. The rebuilt JAR is synchronized byte-identically to `Client/ManagedPack` and the ordinary local Server with SHA-256 `9d44dfb33c18def2c51d6937c463d33695e42de0ae379851b3da22895067c28c`
+- Bug / Client / the first sandbox installation added the production `jem_roles` artifact beside the sandbox's existing overlapping `jem_visual_sandbox` races implementation, and the client stopped during mod discovery / in testing, the added production JAR was removed to a recoverable sandbox backup and the same optional Quick Skin yaw adapter was built into the sandbox's existing `jem_gui_sandbox` owner instead, SHA-256 `ddf8f1eeb3c8b1d51e498de805897b36d37e0f42f238dd916aa33ba0f2265c97`
+- Published native AutoModpack generation 92 with exact preview `+0 ~4 -0` and content token `7074a81bc6e332d182db572c7e9ebd36e26471b3`. The ordinary local server stopped cleanly after publication, and native installation completed on the closed `test jem` profile with matching token, files and no pending transaction
+- Runtime visual acceptance remains unobserved pending player confirmation
+
+## 2026-10-28 - Correct Quick Skin main-menu position
+
+- User reported that Quick Skin still rendered on the right and blocked the text-only menu actions instead of occupying the marked lower-left area
+- Bug / Client / the first composition treated FancyMenu's captured zero-size player widget coordinates as the preview owner, but Quick Skin 2.6.2.4 renders from the largest-button anchor plus its own client-config offsets, leaving the model over the right-side navigation / in testing, the native title-screen model settings now use 30 percent size with X offset -422 and Y offset 130
+- Updated the canonical managed config and the closed `jem sandbox` profile while preserving its personal skin hashes. Post-correction runtime appearance and player acceptance remain unobserved because no client launch was authorized
+- Published native AutoModpack generation 91 with content token `582b3844ffd493c84bd85a2e5a331f785f0482e8` and applied it to the closed `test jem` profile. Its active token and Quick Skin config hash match the published generation with no pending transaction, and the ordinary local server was stopped after publication
+
 ## 2026-10-28 - Correct standalone compatibility coverage
 
 - User requested every JEM Food Blessings supported mod, challenged the incomplete Barnyard Buddies and Blast From The Past coverage shown for Mob Home and Animal Hints, and requested universal integrations to be described by their actual contract

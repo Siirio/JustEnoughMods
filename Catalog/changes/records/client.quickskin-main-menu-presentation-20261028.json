@@ -19,19 +19,19 @@
     "priority": 92
   },
   "change": {
-    "summary": "Present the native Quick Skin player preview in the user-outlined lower-left box while keeping every main-menu action as transparent text on the right.",
+    "summary": "Present the native Quick Skin player preview and Change Skin text in the user-outlined lower-left boxes while keeping the primary main-menu actions as transparent text on the right.",
     "modifiers": [
       {
         "property": "client.quickskin.title_screen_preview",
         "operation": "replace",
         "before": "Quick Skin derives its title-screen preview from the native button cluster.",
-        "after": "Quick Skin retains native skin, model, cape and interaction ownership. FancyMenu places its native title-screen widget at x 8 and y 258 in the 640 by 360 base layout so the rendered player occupies the user-outlined lower-left box. Change Skin remains in the right-side text column, and the editable Quick Skin preference file remains user-owned."
+        "after": "Quick Skin retains native skin, model, cape and interaction ownership. Its native title-screen render configuration uses 25 percent size, X offset -422 and Y offset 119 so the rendered player fits the user-outlined lower-left box instead of the right-side button cluster. JEMRoles initializes the optional native widget at -20 degrees yaw so the default pose faces into the composition. FancyMenu places Change Skin as transparent text directly below the model and suppresses Quick Skin's icon controls. Personal skin hashes and appearance choices remain user-owned."
       },
       {
         "property": "client.main_menu.navigation_presentation",
         "operation": "replace",
         "before": "The FancyMenu title screen mixes centered JEM resource-pack button plates with icon-only controls and notification widgets.",
-        "after": "Singleplayer, Multiplayer, Realms, Mods, Options, Quit Game and Change Skin form one right-side column. FancyMenu forces transparent backgrounds and label shadows, hides icon-sized widgets and retains text-only hover underlines. Language and accessibility remain reachable through Options."
+        "after": "Singleplayer, Multiplayer, Realms, Mods, Options and Quit Game form one right-side column. Change Skin is a separate transparent text action directly below the lower-left player preview. FancyMenu forces transparent backgrounds and label shadows, hides icon-sized widgets and retains text-only hover underlines. Language and accessibility remain reachable through Options."
       },
       {
         "property": "client.main_menu.visual_sources",
@@ -46,6 +46,9 @@
     "kind": "user_requested_client_presentation",
     "source_files": [
       "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
+      "Client/ManagedPack/config/quickskin-client.json",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java",
+      "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/QuickSkinTitleScreenDefaults.java",
       "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png",
       "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_title.png",
       "Docs/art/quickskin-main-menu-20261028/provenance.json"
@@ -53,7 +56,7 @@
   },
   "rationale": {
     "purpose": "Show the native Quick Skin character clearly without allowing the release resource pack to restyle navigation as icon or plate buttons.",
-    "decision_source": "The user supplied both images, prohibited Gemini for the title cutout, required text-only right-side buttons, and supplied red placement boxes for the upper-center title and narrow lower-left Quick Skin model. Codex translated those boxes into exact FancyMenu coordinates and preserved Quick Skin's editable native preferences."
+    "decision_source": "The user supplied both images, prohibited Gemini for the title cutout, required text-only right-side buttons, and supplied red placement boxes for the upper-center title, lower-left Quick Skin model and Change Skin action beneath it. The user's runtime screenshot then proved that FancyMenu widget coordinates did not move Quick Skin's renderer and requested the default model face the opposite direction. Codex derived the native Quick Skin offsets and initialization seam from the exact installed render path while preserving personal appearance state."
   },
   "introduced": {
     "date": "2026-10-28",
@@ -79,12 +82,13 @@
     ],
     "relations": [
       "Quick Skin 2.6.2.4 remains the only owner of selected skin, model, cape and local appearance assets",
-      "FancyMenu owns title-screen positioning and transparent text-only navigation",
+      "Quick Skin owns the rendered model position and size, JEMRoles owns the optional default title-screen yaw adapter, and FancyMenu owns art, transparent text-only navigation and control visibility",
       "The JEM resource pack cannot reintroduce title-screen button backgrounds through these FancyMenu overrides"
     ],
     "notes": [
       "The exact installed Quick Skin bytecode was inspected before positioning its native widget.",
-      "The captured FancyMenu widget set includes the native Quick Skin action, player preview, rotate button and animation controls. Only Change Skin remains visible as a text action.",
+      "The first layout incorrectly treated the captured FancyMenu widget box as the player renderer owner. Quick Skin 2.6.2.4 instead adds its client-config offsets to the largest-button anchor.",
+      "The captured FancyMenu widget set includes the native Quick Skin action, player preview, rotate button and animation controls. Only Change Skin remains visible as a text action below the player.",
       "The title cutout and final red-box composition passed source-grounded visual review after the user's placement correction."
     ],
     "unresolved": [
