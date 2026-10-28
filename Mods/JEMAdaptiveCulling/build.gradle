@@ -23,28 +23,12 @@ minecraft {
 
 repositories {
     mavenCentral()
-}
-
-def instancePath = providers.gradleProperty('jem_instance')
-        .orElse(providers.environmentVariable('JEM_INSTANCE'))
-        .orElse(rootProject.file('Client/ManagedPack').absolutePath)
-        .orNull
-
-if (instancePath == null || instancePath.isBlank()) {
-    throw new GradleException('Set -Pjem_instance=<path> or JEM_INSTANCE before building JEM Adaptive Culling')
-}
-
-def installedMod = { String pattern ->
-    def matches = fileTree(dir: file("${instancePath}/mods"), include: pattern).files
-    if (matches.size() != 1) {
-        throw new GradleException("Expected one installed mod matching ${pattern}, found ${matches.size()}")
-    }
-    matches.first()
+    maven { url = 'https://api.modrinth.com/maven' }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly fg.deobf(files(installedMod('oculus-*.jar')))
+    compileOnly fg.deobf(oculus_coordinate)
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
@@ -86,12 +70,6 @@ tasks.named('jar', Jar).configure {
         ])
     }
     finalizedBy 'reobfJar'
-}
-
-tasks.register('installToModpack', Copy) {
-    dependsOn 'build'
-    from tasks.named('jar').flatMap { it.archiveFile }
-    into file("${instancePath}/mods")
 }
 
 tasks.withType(JavaCompile).configureEach {

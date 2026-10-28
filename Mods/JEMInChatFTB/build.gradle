@@ -1,23 +1,32 @@
 plugins {
+    id 'java'
     id 'net.minecraftforge.gradle' version '6.0.54'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
-group = 'com.justenoughmods'
-version = '1.0.0'
+group = mod_group_id
+version = mod_version
+
+base { archivesName = mod_id }
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.20.1'
+    mappings channel: mapping_channel, version: mapping_version
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.ftb.dev/releases' }
+    maven { url = 'https://maven.architectury.dev/' }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
-    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/ftb-quests-forge-2001.4.22.jar'))
-    compileOnly fg.deobf(files('../../Client/ManagedPack/mods/ftb-library-forge-2001.2.13.jar'))
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    compileOnly fg.deobf("dev.ftb.mods:ftb-quests-forge:${ftb_quests_version}")
+    compileOnly fg.deobf("dev.ftb.mods:ftb-library-forge:${ftb_library_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
@@ -32,6 +41,15 @@ tasks.withType(JavaCompile).configureEach {
     options.incremental = false
 }
 
+tasks.named('processResources', ProcessResources).configure {
+    def values = [minecraft_version_range: minecraft_version_range, forge_version_range: forge_version_range,
+        loader_version_range: loader_version_range, mod_id: mod_id, mod_name: mod_name,
+        mod_license: mod_license, mod_version: mod_version, mod_authors: mod_authors,
+        mod_description: mod_description]
+    inputs.properties values
+    filesMatching('META-INF/mods.toml') { expand values }
+}
+
 afterEvaluate {
     tasks.withType(JavaCompile).configureEach {
         ['refMapFile', 'outTsrgFile'].each { name ->
@@ -41,7 +59,6 @@ afterEvaluate {
 }
 
 jar {
-    archiveBaseName = 'in-chat-ftb'
     manifest {
         attributes([
             'Specification-Title': 'In chat FTB',

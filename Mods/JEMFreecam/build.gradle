@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+version = mod_version
+group = mod_group_id
+base { archivesName = mod_id }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft { mappings channel: mapping_channel, version: mapping_version }
+repositories { mavenCentral() }
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+mixin {
+    add sourceSets.main, 'jem_freecam.refmap.json'
+    config 'jem_freecam.mixins.json'
+}
+tasks.named('processResources', ProcessResources).configure {
+    def values = [minecraft_version_range: minecraft_version_range, forge_version_range: forge_version_range,
+        loader_version_range: loader_version_range, mod_id: mod_id, mod_name: mod_name,
+        mod_license: mod_license, mod_version: mod_version, mod_authors: mod_authors,
+        mod_description: mod_description]
+    inputs.properties values
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) { expand values }
+}
+tasks.named('jar', Jar).configure {
+    manifest.attributes('MixinConfigs': 'jem_freecam.mixins.json')
+    finalizedBy 'reobfJar'
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.incremental = false }
+tasks.withType(Test).configureEach { enabled = false }

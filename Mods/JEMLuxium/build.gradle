@@ -22,26 +22,18 @@ minecraft {
 
 repositories {
     mavenCentral()
-}
-
-def instancePath = providers.gradleProperty('jem_instance')
-        .orElse(providers.environmentVariable('JEM_INSTANCE'))
-        .orElse(rootProject.file('Client/ManagedPack').absolutePath)
-        .get()
-
-def installedMod = { String exactName ->
-    def candidate = file("${instancePath}/mods/${exactName}")
-    if (!candidate.isFile()) {
-        throw new GradleException("Missing exact installed dependency ${candidate}")
+    maven { url = 'https://api.modrinth.com/maven' }
+    maven {
+        url = 'https://www.cursemaven.com'
+        content { includeGroup 'curse.maven' }
     }
-    candidate
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly fg.deobf(files(installedMod('embeddium-0.3.31+mc1.20.1.jar')))
-    compileOnly fg.deobf(files(installedMod('oculus-mc1.20.1-1.8.0.jar')))
-    compileOnly fg.deobf(files(installedMod('Luxium Let there be light-2.8.0-pre-alpha.jar')))
+    compileOnly fg.deobf("maven.modrinth:embeddium:${embeddium_version}")
+    compileOnly fg.deobf(oculus_coordinate)
+    compileOnly fg.deobf(luxium_coordinate)
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -75,12 +67,6 @@ tasks.named('jar', Jar).configure {
         ])
     }
     finalizedBy 'reobfJar'
-}
-
-tasks.register('installToModpack', Copy) {
-    dependsOn 'build'
-    from tasks.named('jar').flatMap { it.archiveFile }
-    into file("${instancePath}/mods")
 }
 
 tasks.withType(JavaCompile).configureEach {

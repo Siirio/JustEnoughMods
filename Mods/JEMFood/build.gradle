@@ -17,9 +17,8 @@ mixin {
     add sourceSets.main, 'jemfood.refmap.json'
     config 'jemfood.mixins.json'
 }
-// The standalone checkout contains the same authority at catalog/food-quality-assignments.json.
-def authority = file(findProperty('jemFoodAssignments') ?: '../../Catalog/changes/food-quality-assignments.json')
-if (!authority.isFile()) authority = file('catalog/food-quality-assignments.json')
+def authority = file('catalog/food-quality-assignments.json')
+if (!authority.isFile()) throw new GradleException('Missing bundled catalog/food-quality-assignments.json')
 tasks.named('processResources', ProcessResources).configure {
     from(authority) { into 'data/jemfood'; rename { 'food_quality.json' } }
     def properties = [minecraft_version_range: minecraft_version_range,

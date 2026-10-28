@@ -1,15 +1,15 @@
 {
   "publicProjects": [
-    {"name": "Gem Animal Hints", "module": "GemAnimalHints", "modId": "gem_animal_hints", "side": "client-only"},
-    {"name": "Gem Drill Durability", "module": "JEMDrillLifecycle", "modId": "jem_drill_lifecycle", "side": "client-and-server-required"},
-    {"name": "Gem Mob Home", "module": "MobHome", "modId": "mobhome", "side": "client-and-server-required"},
-    {"name": "Gem Excavation", "module": "GemExcavation", "modId": "gem_excavation", "side": "client-and-server-required"},
-    {"name": "Gem Freecam", "module": "GemFreecam", "modId": "gem_freecam", "side": "client-only"},
-    {"name": "Gem Food Blessings", "module": "JEMFood", "modId": "jemfood", "side": "client-and-server-required"},
-    {"name": "Gem Seasons HUD", "module": "GemSeasonsHud", "modId": "gem_seasons_hud", "side": "client-only"},
-    {"name": "Gem Inventory Shortcuts", "module": "GemInventoryShortcuts", "modId": "gem_inventory_shortcuts", "side": "client-and-server-required"},
+    {"name": "JEM Animal Hints", "module": "JEMAnimalHints", "modId": "jem_animal_hints", "side": "client-only"},
+    {"name": "JEM Drill Durability", "module": "JEMDrillLifecycle", "modId": "jem_drill_lifecycle", "side": "client-and-server-required"},
+    {"name": "JEM Mob Home", "module": "MobHome", "modId": "mobhome", "side": "client-and-server-required"},
+    {"name": "JEM Excavation", "module": "JEMExcavation", "modId": "jem_excavation", "side": "client-and-server-required"},
+    {"name": "JEM Freecam", "module": "JEMFreecam", "modId": "jem_freecam", "side": "client-only"},
+    {"name": "JEM Food Blessings", "module": "JEMFood", "modId": "jemfood", "side": "client-and-server-required"},
+    {"name": "JEM Seasons HUD", "module": "JEMSeasonsHud", "modId": "jem_seasons_hud", "side": "client-only"},
+    {"name": "JEM Inventory Shortcuts", "module": "JEMInventoryShortcuts", "modId": "jem_inventory_shortcuts", "side": "client-and-server-required"},
     {"name": "In Chat FTB", "module": "JEMInChatFTB", "modId": "in_chat_ftb", "side": "client-only"},
-    {"name": "Gem Adaptive Culling", "module": "JEMAdaptiveCulling", "modId": "jem_adaptive_culling", "side": "client-only"},
+    {"name": "JEM Adaptive Culling", "module": "JEMAdaptiveCulling", "modId": "jem_adaptive_culling", "side": "client-only"},
     {"name": "Unofficial Luxium Compatibility", "module": "JEMLuxium", "modId": "jem_luxium", "side": "client-only"}
   ],
   "modules": [
@@ -80,6 +80,51 @@
       ],
       "additionalSourceRoots": [
         "src/generated/resources"
+      ]
+    },
+    {
+      "name": "JEMAnimalHints",
+      "status": "development",
+      "java": true,
+      "side": "client-only",
+      "modIds": [
+        "jem_animal_hints"
+      ]
+    },
+    {
+      "name": "JEMExcavation",
+      "status": "development",
+      "java": true,
+      "side": "client-and-server-required",
+      "modIds": [
+        "jem_excavation"
+      ]
+    },
+    {
+      "name": "JEMFreecam",
+      "status": "development",
+      "java": true,
+      "side": "client-only",
+      "modIds": [
+        "jem_freecam"
+      ]
+    },
+    {
+      "name": "JEMSeasonsHud",
+      "status": "development",
+      "java": true,
+      "side": "client-only",
+      "modIds": [
+        "jem_seasons_hud"
+      ]
+    },
+    {
+      "name": "JEMInventoryShortcuts",
+      "status": "development",
+      "java": true,
+      "side": "client-and-server-required",
+      "modIds": [
+        "jem_inventory_shortcuts"
       ]
     },
     {

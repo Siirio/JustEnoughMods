@@ -12,10 +12,10 @@
 
 ## Global Constraints
 
-- Public projects: Gem Animal Hints, Gem Drill Durability, Gem Mob Home, Gem Excavation, Gem Freecam, Gem Food Blessings, Gem Seasons HUD, Gem Inventory Shortcuts, In Chat FTB, Gem Adaptive Culling, and Unofficial Luxium Compatibility
+- Public projects: JEM Animal Hints, JEM Drill Durability, JEM Mob Home, JEM Excavation, JEM Freecam, JEM Food Blessings, JEM Seasons HUD, JEM Inventory Shortcuts, In Chat FTB, JEM Adaptive Culling, and Unofficial Luxium Compatibility
 - Forge is required for every project, with exact additional required and optional dependencies declared per project
-- Gem Animal Hints, Gem Drill Durability, In Chat FTB, Gem Seasons HUD, and Gem Adaptive Culling list their upstream integrations as dependencies, not as credit obligations
-- Gem Drill Durability is presented as a Create addon
+- JEM Animal Hints, JEM Drill Durability, In Chat FTB, JEM Seasons HUD, and JEM Adaptive Culling list their upstream integrations as dependencies, not as credit obligations
+- JEM Drill Durability is presented as a Create addon
 - Unofficial Luxium Compatibility alone carries the explicit unofficial disclaimer and Vinlanx attribution required by this plan
 - Never bundle, mirror, modify, or redistribute Luxium code, shaders, assets, branding, or JAR content, users obtain the official unmodified Luxium separately
 - Preserve existing registry IDs, enchantment IDs, NBT, saved data, configuration keys, translations, network compatibility, and safe migrations wherever a feature already has players or worlds
@@ -74,10 +74,10 @@
 - [ ] Verify each empty public scaffold with its own production build before feature migration
 - [ ] Commit the reusable structure separately from gameplay extraction
 
-### Task 3: Extract Gem Animal Hints
+### Task 3: Extract JEM Animal Hints
 
 **Files:**
-- Create: `Mods/GemAnimalHints/`
+- Create: `Mods/JEMAnimalHints/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingFoodCatalog.java`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/BreedingProvider.java`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/jade/TamingCatalog.java`
@@ -97,7 +97,7 @@
 - [ ] Remove only the replaced animal registrations from the old Jade plugin
 - [ ] Build and inspect the standalone JAR, then commit the extraction
 
-### Task 4: Publish-ready Gem Drill Durability
+### Task 4: Publish-ready JEM Drill Durability
 
 **Files:**
 - Modify: `Mods/JEMDrillLifecycle/build.gradle`
@@ -109,7 +109,7 @@
 - Consumes: Create as a required dependency, Jade as optional
 - Produces: a public Create addon preserving the current drill wear contract
 
-- [ ] Rebrand the project as Gem Drill Durability while preserving its existing mod ID and saved wear data unless a documented migration proves safe
+- [ ] Rebrand the project as JEM Drill Durability while preserving its existing mod ID and saved wear data unless a documented migration proves safe
 - [ ] Preserve moving and stationary drill wear, worn-speed reduction, iron-ingot servicing, repair limits, and replacement behavior
 - [ ] Keep Jade condition display optional
 - [ ] Remove JEM-specific Patchouli content from the public JAR
@@ -117,7 +117,7 @@
 - [ ] Verify clean startup with Create only and with Create plus Jade
 - [ ] Build and inspect the standalone JAR, then commit the release preparation
 
-### Task 5: Publish-ready Gem Mob Home
+### Task 5: Publish-ready JEM Mob Home
 
 **Files:**
 - Modify: `Mods/MobHome/build.gradle`
@@ -136,10 +136,10 @@
 - [ ] Verify an existing saved home and a newly placed home in a clean Forge instance
 - [ ] Build and inspect the standalone JAR, then commit the release preparation
 
-### Task 6: Extract Gem Excavation
+### Task 6: Extract JEM Excavation
 
 **Files:**
-- Create: `Mods/GemExcavation/`
+- Create: `Mods/JEMExcavation/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/excavation/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/ExcavationHighlight.java`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/excavation/`
@@ -155,10 +155,10 @@
 - [ ] Verify existing enchanted items and newly enchanted items in a clean instance
 - [ ] Build and inspect the standalone JAR, then commit the extraction
 
-### Task 7: Extract Gem Freecam
+### Task 7: Extract JEM Freecam
 
 **Files:**
-- Create: `Mods/GemFreecam/`
+- Create: `Mods/JEMFreecam/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/FreeCameraController.java`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/freecam/`
 - Modify: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java`
@@ -173,7 +173,7 @@
 - [ ] Verify clean startup with and without Epic Fight
 - [ ] Build and inspect the client-only JAR, then commit the extraction
 
-### Task 8: Prepare Gem Food Blessings
+### Task 8: Prepare JEM Food Blessings
 
 **Files:**
 - Modify: `Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java`
@@ -194,10 +194,10 @@
 - [ ] Verify boundary displays at 1, 19, 20, 21, 1199, and 1200 ticks by direct runtime inspection
 - [ ] Build and inspect the standalone JAR, then commit the release preparation
 
-### Task 9: Extract Gem Seasons HUD
+### Task 9: Extract JEM Seasons HUD
 
 **Files:**
-- Create: `Mods/GemSeasonsHud/`
+- Create: `Mods/JEMSeasonsHud/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/time/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/seasons/SeasonHudAdapter.java`
 - Modify: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/config/JEMClientConfig.java`
@@ -213,10 +213,10 @@
 - [ ] Remove only the replaced HUD state and configuration from `JEMCompat`
 - [ ] Build and inspect the client-only JAR, then commit the extraction
 
-### Task 10: Extract Gem Inventory Shortcuts
+### Task 10: Extract JEM Inventory Shortcuts
 
 **Files:**
-- Create: `Mods/GemInventoryShortcuts/`
+- Create: `Mods/JEMInventoryShortcuts/`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/InventoryDeleteKeys.java`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/InventoryDeleteNetwork.java`
 - Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/inventory/SophisticatedStorageDelete.java`
@@ -250,7 +250,7 @@
 - [ ] Verify clean startup and one completion message in a minimal FTB Quests instance
 - [ ] Build and inspect the client-compatible JAR, then commit the release preparation
 
-### Task 12: Publish-ready Gem Adaptive Culling
+### Task 12: Publish-ready JEM Adaptive Culling
 
 **Files:**
 - Modify: `Mods/JEMAdaptiveCulling/build.gradle`
@@ -347,7 +347,7 @@
 - [ ] Attach license, compatibility, source, issue-reporting, and changelog information
 - [ ] Review project slugs, categories, game versions, loaders, release channels, and side designations
 - [ ] Request explicit user authorization before creating or uploading any CurseForge project
-- [ ] Publish one project at a time, beginning with Gem Animal Hints, then Gem Drill Durability, Gem Mob Home, Gem Food Blessings, the remaining extractions, and Unofficial Luxium Compatibility after its upstream-facing wording is approved
+- [ ] Publish one project at a time, beginning with JEM Animal Hints, then JEM Drill Durability, JEM Mob Home, JEM Food Blessings, the remaining extractions, and Unofficial Luxium Compatibility after its upstream-facing wording is approved
 
 ## Completion Definition
 

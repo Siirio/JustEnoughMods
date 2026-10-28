@@ -1,0 +1,17 @@
+# JEM Animal Hints
+
+JEM Animal Hints is a client-side Jade addon for Forge 1.20.1. The scaffold is public-build ready, while the animal providers remain in migration from JEMCompat
+
+## Requirements
+
+- Minecraft 1.20.1
+
+- Forge 47.4.10 or newer in the 47.x line
+
+- Jade 11.13.3 or newer in the 11.x line
+
+## Build
+
+Run `./gradlew clean build` with Java 17. Dependencies resolve from public Maven repositories and the build does not read a local Minecraft profile
+
+See [LICENSE](LICENSE) for the rights covering only original project code and assets

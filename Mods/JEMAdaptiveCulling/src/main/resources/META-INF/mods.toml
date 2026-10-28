@@ -24,3 +24,17 @@ versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="CLIENT"
 
+[[dependencies.${mod_id}]]
+modId="embeddium"
+mandatory=false
+versionRange="[0.3.31,1)"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.${mod_id}]]
+modId="oculus"
+mandatory=false
+versionRange="[1.8.0,2)"
+ordering="AFTER"
+side="CLIENT"
+
