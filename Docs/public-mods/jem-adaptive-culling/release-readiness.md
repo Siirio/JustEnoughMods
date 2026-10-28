@@ -26,7 +26,7 @@ Optional:
 - Existing-world or saved-state migration requires authorized player review where applicable
 - English and Russian presentation requires in-game inspection where applicable
 - Original icon and real gameplay screenshots remain blocked by the required Gemini Work handoff and gameplay-launch authorization
-- CurseForge project creation and upload are not authorized
+- CurseForge and Modrinth upload authorization was granted on 2026-10-28, but creation and submission remain paused by the other unresolved release gates
 
 The candidate must remain private until every applicable unresolved gate is closed
 

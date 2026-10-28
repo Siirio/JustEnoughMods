@@ -1,6 +1,8 @@
 # Changelog
 
-## 1.4.1 - in development
+## 1.4.2 - 2026-10-28
 
-- Prepare the existing client culling owner for an independent public build
+- Remove private local-profile dependency resolution from the public build
+- Preserve plain Forge startup with optional Embeddium and Oculus compatibility
+- Refresh the standalone release metadata and inspected production artifact
 

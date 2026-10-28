@@ -2266,3 +2266,10 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Production `:JEMServer:jar` build succeeded. Its SHA-256 `439be97302ca6dbae1cd50dc6b44f71b11982392cf4d8b56070cbbe6d053df3b` matches the ordinary local Server and `Client/ManagedPack`. The local server reached `Done` on `127.0.0.1:31604` and remained responsive to `list`
 - Native AutoModpack preview showed only `jem-server-2.0.0-dev.jar` and `jem-pack/manifest.json` changed. Publication 85 has content token `48abdf6c5a0ae418fb35c6d6a677f19cea8f8e69`, with staged and published manifest SHA-1 both `b6b997b50a055ae52ef699b09ad24de6ea6329ca`
 - Atlas regeneration, effective rebuild, audit, impact scan and validation passed, with no uncovered impact paths. No automated tests, gameplay client launch, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
+
+## 2026-10-28 - Prepare standalone public publishing and existing project updates
+
+- User explicitly authorized starting publication of all current standalone mods on CurseForge and Modrinth and requested fresh versions for existing public projects
+- Confirmed the canonical public scope contains eleven standalone Forge 1.20.1 projects, including Unofficial Luxium Compatibility, while Villager Talking, Settlements and Economy remain excluded
+- Prepared fresh existing-project versions: JEM Adaptive Culling 1.4.2, JEM Advancements 5.2.0, JEM Compat 3.8.0, JEM Twelve Eyes 1.7.0 and JEM World Boss Tiers 2.5.0
+- Added independent changelogs and explicit All Rights Reserved license files where the existing public modules lacked them. Public upload remains gated by the recorded clean-launch, in-game localization and approved-media requirements unless the user explicitly authorizes or waives those checks
