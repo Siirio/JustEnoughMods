@@ -1,0 +1,50 @@
+{
+  "round": "C0",
+  "result": "USER_REJECTED",
+  "candidate_sha256": "d0c592dffac9f487db1ca7fb2ad54833bf3af62c7b52a88ed1ba5a1c91a88756",
+  "references": [
+    "references/user-reference-gui-experience-paper-transparent.png",
+    "references/user-reference-reimagined-recess.png",
+    "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Exact Wanted GUI Approach and Style 3.png",
+    "C:/MyProjects/Coding/Solo/Ultimate-Skills/Taste-Engine/Pairs/Minecraft/GUI/Reference/For_JEM_Resource_Pack/Exact Wanted GUI Approach and Style 4.png"
+  ],
+  "reviewed_outputs": [
+    "assets/minecraft/textures/gui/container/inventory.png",
+    "assets/minecraft/textures/gui/container/crafting_table.png",
+    "assets/minecraft/textures/gui/container/anvil.png",
+    "assets/minecraft/textures/gui/container/generic_54.png",
+    "assets/accessories/textures/gui/container/accessories_inventory.png"
+  ],
+  "cold_read": {
+    "inventory": "Floating parchment crafting title and orange crafting station remain readable above a transparent frame. The 27-slot storage bank now reads as one dark recessed center while the hotbar remains light",
+    "crafting_table": "The orange GUI Experience crafting block remains unchanged. Only the player storage bank below becomes recessed",
+    "container": "GUI Experience title and upper container construction remain intact while the lower player storage bank gains the Reimagined recess",
+    "immersive_fallback": "The Accessories interface remains the original Immersive Interfaces asset without hybrid pixels"
+  },
+  "checks": {
+    "user_reference_hierarchy": "PASS",
+    "native_canvas_dimensions": "PASS",
+    "paper_titles_preserved": "PASS",
+    "transparent_outer_gui_preserved": "PASS",
+    "gui_experience_crafting_art_preserved": "PASS",
+    "reimagined_center_recess_present": "FAIL",
+    "light_hotbar_preserved": "PASS",
+    "immersive_fallback_unchanged": "PASS",
+    "resource_pack_order_unchanged": "PASS",
+    "minecraft_runtime_result": "UNOBSERVED"
+  },
+  "finding": {
+    "severity": "blocking",
+    "region": "27-slot player storage bank",
+    "visible_defect": "Only the 16 by 16 dark fills were transferred. GUI Experience bright separators remained, so the result read as recolored flat cells rather than Reimagined recessed slots",
+    "reference_evidence": "The supplied Reimagined screenshot and original Reimagined inventory atlas use the complete 18 by 18 dark slot construction, including inset border and surrounding shadow",
+    "corrective_action": "Transfer each complete Reimagined 18 by 18 slot frame identified by its connected 16 by 16 dark well",
+    "closing_observation": "Every player-storage cell must show the dark Reimagined border and inset well while the GUI Experience hotbar, paper title and crafting art remain unchanged"
+  },
+  "limits": [
+    "The new ZIP was inserted but not enabled or reloaded in Minecraft",
+    "C0 review covers native texture exports rather than a runtime screenshot",
+    "Agent review does not imply user approval",
+    "The private composite must not be redistributed"
+  ]
+}

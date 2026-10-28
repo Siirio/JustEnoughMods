@@ -1,0 +1,32 @@
+{
+  "round": "C4",
+  "result": "AGENT_PASS",
+  "candidate": "C:/Users/user/AppData/Roaming/.minecraft/versions/jem sandbox/resourcepacks/JEM Release v0.2.zip",
+  "candidate_sha256": "cd61fcbbbc864ffad1f66894bbee9620bdbc8024e62b39d3143a30f80d46bd70",
+  "correction": "Preserved GUI Experience's five-pixel light upper ledge and placed the native Reimagined recessed bank directly below it, without light side or bottom rails",
+  "checks": {
+    "requested_light_gray_continuation": "PASS",
+    "upper_bank_connection": "PASS",
+    "light_side_and_bottom_perimeter_absent": "PASS",
+    "reimagined_recessed_bank_present": "PASS",
+    "creative_player_interface_reimagined_byte_exact": "PASS",
+    "embedded_user_selected_title_byte_exact": "PASS",
+    "immersive_fallback_byte_exact": "PASS",
+    "legacy_v0_1_sha256_unchanged": "PASS",
+    "zip_crc": "PASS",
+    "minecraft_runtime_result": "UNOBSERVED"
+  },
+  "evidence": {
+    "preview_directory": "C:/Users/user/.codex/visualizations/2026/10/27/01a17e22-5e80-7d43-bd17-66fa39870ba7/jem-release-v02-c4",
+    "light_ledge_bank_interfaces_checked": 19,
+    "light_ledge_bank_failures": 0,
+    "validated_png_count": 1187,
+    "zip_entries": 3613
+  },
+  "limits": [
+    "The currently running Minecraft client was not restarted or reloaded after the final ZIP replacement",
+    "Native atlas and ownership checks do not prove the final runtime composition",
+    "Agent review does not imply user approval",
+    "The private composite must not be redistributed"
+  ]
+}

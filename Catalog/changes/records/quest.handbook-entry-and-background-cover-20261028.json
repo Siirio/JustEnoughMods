@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "change_id": "quest.handbook-entry-and-background-cover-20261028",
+  "status": "active",
+  "selectors": [
+    { "type": "namespace", "registry": "items", "value": "ftbquests" },
+    { "type": "id", "registry": "items", "value": "patchouli:guide_book" }
+  ],
+  "conditions": [
+    { "runtime": "The client has both the JEM Handbook and the installed FTB Quests 2001.4.22 interface." }
+  ],
+  "precedence": { "layer": "jem_presentation", "priority": 1130 },
+  "change": {
+    "summary": "Expose FTB Quests from the Handbook ribbon and keep authored quest backgrounds covering the complete visible viewport.",
+    "modifiers": [
+      {
+        "property": "handbook.navigation.quests",
+        "operation": "add",
+        "before": "The Handbook ribbon had no direct route to the native FTB Quests screen.",
+        "after": "A Quests ribbon opens ClientQuestFile.openGui and leaves quest state, rewards and navigation owned by FTB Quests."
+      },
+      {
+        "property": "questbook.authored_background.minimum_zoom",
+        "operation": "replace",
+        "before": "Minimum zoom fitted the entire background inside the viewport, exposing pixels outside it when aspect ratios differed.",
+        "after": "Minimum zoom uses cover geometry and clamps the camera to exact authored bounds, so no visible content pixel can leave the background."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMAchievementGuide native navigation and FTB presentation adapter",
+    "kind": "native_interface_extension",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookSection.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestbookViewportMixin.java",
+      "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the quest book reachable from the guide without replacing FTB Quests and prevent the authored board from revealing an unpainted exterior.",
+    "decision_source": "User requested the Handbook quest tab and a strict background edge. Codex retained the installed native FTB entry point and corrected the existing camera math."
+  },
+  "introduced": {
+    "date": "2026-10-28",
+    "commit": "SELF",
+    "action": "add_native_quest_tab_and_cover_clamp",
+    "summary": "Add native FTB Quests navigation and strict authored-background cover geometry."
+  },
+  "history": [
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "add_native_quest_tab_and_cover_clamp",
+      "summary": "Open the installed quest screen from the Handbook and replace fit zoom with cover zoom plus exact camera clamps.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/HandbookNavigation.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/QuestbookViewportMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["JEM Handbook", "FTB Quests", "questbook_camera", "client_navigation"],
+    "relations": ["Handbook Quests ribbon -> ClientQuestFile.openGui", "authored background bounds -> minimum zoom and camera clamp"],
+    "notes": ["The extension does not duplicate quest progression, rewards, chapter selection or native FTB state."],
+    "unresolved": ["Runtime visual acceptance remains pending until the user opens the updated client."]
+  }
+}

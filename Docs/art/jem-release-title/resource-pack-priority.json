@@ -1,0 +1,47 @@
+{
+  "status": "working-selection",
+  "presets": {
+    "existing": "Legacy JEM",
+    "new": "JEM Release"
+  },
+  "rules": [
+    {
+      "priority": 1,
+      "scope": "HUD textures including hearts, armor and equivalent HUD elements",
+      "source": "HUD Reimagined",
+      "behavior": "wins over every other pack in this scope"
+    },
+    {
+      "priority": 2,
+      "scope": "icons throughout the game",
+      "source": "Effect Icons Recrafted and Icons v1.14",
+      "behavior": "Effect Icons Recrafted owns status-effect icons and Icons v1.14 owns the remaining icon-language assets"
+    },
+    {
+      "priority": 3,
+      "scope": "buttons and complete recessed player banks inside shared vanilla interfaces",
+      "source": "GUI Reimagined Light",
+      "behavior": "owns buttons and each recessed 27-slot player bank below GUI Experience's light upper ledge, without replacing paper titles, crafting art or the separate light hotbar"
+    },
+    {
+      "priority": 4,
+      "scope": "shared vanilla and block GUI outer construction",
+      "source": "GUI Experience +",
+      "behavior": "owns paper titles, transparent outer composition, light hotbar framing and functional crafting artwork wherever supplied"
+    },
+    {
+      "priority": 5,
+      "scope": "modded block GUIs not supplied by GUI Experience +",
+      "source": "Immersive Interfaces",
+      "behavior": "fallback only for uncovered GUIs"
+    }
+  ],
+  "interface_composite": {
+    "version": "0.2",
+    "scope": "shared Minecraft container atlases supplied by both GUI Experience + and Reimagined GUI Light",
+    "method": "preserve GUI Experience paper titles, crafting art, the five-pixel light upper ledge and the separate light hotbar, then transfer the native Reimagined player bank below the ledge without restoring light side or bottom rails; creative player tabs stay complete Reimagined assets instead of entering the block-GUI hybrid pass",
+    "minimum_connected_region_pixels": 200,
+    "immersive_rule": "interfaces owned only by Immersive Interfaces remain unchanged"
+  },
+  "merge_state": "JEM Release v0.2 is inserted beside unchanged v0.1 in the jem sandbox resourcepacks directory; the builder does not write Minecraft options.txt"
+}

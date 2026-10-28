@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "3d7995d176338d980b4b459ebcd1a364f6f946dccbbe7495b59721cddaa7071e",
+  "change_records_sha256": "98d877cf06a3087f7e1e61a12e1be3aa786d5a244b098359a4ec0fce77f1e0f8",
   "totals": {
-    "watched": 7151,
-    "covered": 5390,
+    "watched": 7159,
+    "covered": 5398,
     "unresolved": 1761
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1377,
-      "covered": 36,
-      "unresolved": 1341,
+      "watched": 1381,
+      "covered": 39,
+      "unresolved": 1342,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -204,6 +204,7 @@
         "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/2djembg.png",
         "Client/ManagedPack/config/fancymenu/custom_gui_screens.txt",
         "Client/ManagedPack/config/fancymenu/customizablemenus.txt",
+        "Client/ManagedPack/config/fancymenu/customization/legacy_jem_title_screen.txt",
         "Client/ManagedPack/config/fancymenu/layout_editor/widgets/element_layer_control.lewidget",
         "Client/ManagedPack/config/fancymenu/legacy_checklist.txt",
         "Client/ManagedPack/config/fancymenu/normalized_scroll_screens.json",
@@ -1454,10 +1455,9 @@
     },
     "Mods/JEMCompat": {
       "watched": 143,
-      "covered": 98,
-      "unresolved": 45,
+      "covered": 99,
+      "unresolved": 44,
       "unresolved_paths": [
-        "Mods/JEMCompat/gradle.properties",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedItemTooltips.java",
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/SourceNameTooltipFilter.java",
@@ -1605,8 +1605,8 @@
       ]
     },
     "Mods/JEMLuxium": {
-      "watched": 11,
-      "covered": 4,
+      "watched": 15,
+      "covered": 8,
       "unresolved": 7,
       "unresolved_paths": [
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/JEMLuxium.java",

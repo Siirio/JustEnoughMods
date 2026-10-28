@@ -1,0 +1,34 @@
+{
+  "round": "C1",
+  "result": "USER_REJECTED",
+  "candidate": "C:/Users/user/AppData/Roaming/.minecraft/versions/jem sandbox/resourcepacks/JEM Release v0.2.zip",
+  "candidate_sha256": "614b5ce4669e31becd42d494e34a89ae927d743401373df972643679a257de0e",
+  "correction": "Replaced the C0 fill-only mask with complete native Reimagined 18 by 18 slot frames around every detected 16 by 16 recessed well, but retained the unwanted GUI Experience outer light perimeter",
+  "reviewed_outputs": [
+    "assets/minecraft/textures/gui/container/inventory.png",
+    "assets/minecraft/textures/gui/container/crafting_table.png",
+    "assets/minecraft/textures/gui/container/anvil.png",
+    "assets/minecraft/textures/gui/container/generic_54.png",
+    "assets/accessories/textures/gui/container/accessories_inventory.png"
+  ],
+  "checks": {
+    "complete_reimagined_slot_frame_present": "PASS",
+    "dark_inset_well_present": "PASS",
+    "outer_light_bank_perimeter_removed": "FAIL",
+    "gui_experience_paper_title_preserved": "PASS",
+    "gui_experience_transparent_outer_composition_preserved": "PASS",
+    "gui_experience_crafting_art_preserved": "PASS",
+    "light_hotbar_preserved": "PASS",
+    "immersive_fallback_byte_preserved": "PASS",
+    "native_dimensions_and_alpha_preserved": "PASS",
+    "resource_pack_order_unchanged": "PASS",
+    "minecraft_runtime_result": "UNOBSERVED"
+  },
+  "limits": [
+    "The user rejected C1 because the full 27-slot bank still retained GUI Experience's light outer border",
+    "The corrected ZIP was inserted but not enabled or reloaded in Minecraft",
+    "C1 review covers native texture exports rather than a runtime screenshot",
+    "Agent review does not imply user approval",
+    "The private composite must not be redistributed"
+  ]
+}

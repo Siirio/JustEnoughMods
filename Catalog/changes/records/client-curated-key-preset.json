@@ -14,7 +14,7 @@
     "priority": 40
   },
   "change": {
-    "summary": "Key-only user layout with M/V/B/F6 and native modifier conflict resolution; clean-first-use or explicit one-time preview/apply.",
+    "summary": "Key-only layout reproduced from the versioned GitHub controls snapshot, excluding bindings for the retired Backpacked and TrashSlot mods; forced exactly once per client profile for the 2026-10-28 release migration.",
     "modifiers": [
       {
         "property": "client.curated-key-preset",
@@ -27,6 +27,18 @@
         "operation": "replace",
         "before": "Previous presentation or binding behavior",
         "after": "Apply newly added default bindings on the next managed-client generation only where the player has not customized that binding; retire TrashSlot and old backpack bindings."
+      },
+      {
+        "property": "client.requested_2026_10_28_github_keymap",
+        "operation": "replace",
+        "before": "The embedded preset had later curated deviations from the checked-in original-controls snapshot.",
+        "after": "The embedded preset is mechanically rebuilt from Docs/releases/2026-10-26-original-controls-development-inventory/original-keybinds.txt. Only Backpacked and TrashSlot actions are omitted because those mods are no longer installed."
+      },
+      {
+        "property": "client.requested_2026_10_28_one_time_delivery",
+        "operation": "replace",
+        "before": "Existing profiles with an older receipt would not automatically consume a replaced embedded preset.",
+        "after": "Every client profile applies the GitHub-derived preset once when its versioned 2026-10-28 receipt is absent. The receipt lives inside that profile, so test jem cannot consume the future JustEnoughMods/friend migration, and later launches or AutoModpack generations preserve player edits."
       }
     ]
   },
@@ -36,7 +48,10 @@
     "source_files": [
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/OptionsKeyRetentionMixin.java",
-      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json"
+      "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+      "Mods/JEMCompat/gradle.properties",
+      "Docs/releases/2026-10-26-original-controls-development-inventory/original-keybinds.txt",
+      "Client/ManagedPack/mods/jemcompat-3.9.0.jar"
     ]
   },
   "rationale": {
@@ -73,6 +88,30 @@
       "summary": "Apply newly added default bindings on the next managed-client generation only where the player has not customized that binding; retire TrashSlot and old backpack bindings.",
       "source_files": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "restore_github_keymap",
+      "summary": "Rebuild the delivered key preset from the checked-in GitHub controls snapshot while removing only Backpacked and TrashSlot rows.",
+      "source_files": [
+        "Docs/releases/2026-10-26-original-controls-development-inventory/original-keybinds.txt",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+        "Client/ManagedPack/mods/jemcompat-3.7.0.jar",
+        "Client/ManagedPack/mods/jemcompat-3.8.0.jar"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "force_once_per_profile",
+      "summary": "Apply the GitHub-derived keymap once per game directory with a new versioned receipt, then preserve all later player edits across reconnects, launcher restarts and future pack updates.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/CuratedKeyPreset.java",
+        "Mods/JEMCompat/src/main/resources/assets/jemcompat/input/default_keys.json",
+        "Mods/JEMCompat/gradle.properties",
+        "Client/ManagedPack/mods/jemcompat-3.9.0.jar"
       ]
     }
   ],

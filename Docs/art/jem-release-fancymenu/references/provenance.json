@@ -1,0 +1,25 @@
+{
+  "received": "2026-10-27",
+  "classification": "user-selected production assets for the JEM Release FancyMenu preset",
+  "files": [
+    {
+      "path": "user-selected-main-menu-background.jpg",
+      "sha256": "f3a37d3c9a1409774f8ddccadab3fdb1d733e8b87baf5ad011666607be641f29",
+      "dimensions": [736, 414],
+      "role": "full-screen JEM Release main-menu background"
+    },
+    {
+      "path": "user-selected-minecraft-jem-edition-title.png",
+      "sha256": "9d6ae56d3e4ed4ff242929fc0592cd724a19f55547fcf56e2ea1e0112ce32436",
+      "dimensions": [1003, 290],
+      "role": "transparent Minecraft JEM Edition title"
+    }
+  ],
+  "sandbox_install": {
+    "layout": "config/fancymenu/customization/jem_release_title_screen.txt",
+    "legacy_layout": "config/fancymenu/customization/legacy_jem_title_screen.txt",
+    "active_layout": "JEM Release",
+    "legacy_enabled": false,
+    "runtime_verified": false
+  }
+}

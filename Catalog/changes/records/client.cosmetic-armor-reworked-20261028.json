@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "change_id": "client.cosmetic-armor-reworked-20261028",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "minecraft:player"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "Cosmetic Armor Reworked 1.20.1-v1a is installed with matching versions on the Forge client and server"
+    }
+  ],
+  "precedence": {
+    "layer": "native_mod_extensions",
+    "priority": 45
+  },
+  "change": {
+    "summary": "Add the native Cosmetic Armor Reworked client-and-server extension so players can separate displayed armor from functional armor.",
+    "modifiers": [
+      {
+        "property": "player.cosmetic_armor_slots",
+        "operation": "add",
+        "before": null,
+        "after": "The native mod owns four cosmetic armor slots, armor visibility toggles, synchronization and rendering. Functional armor stats and ordinary armor inventory ownership remain unchanged."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Cosmetic Armor Reworked",
+    "kind": "user_requested_third_party_dependency",
+    "source_files": [
+      "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar"
+    ]
+  },
+  "rationale": {
+    "purpose": "Let players choose armor appearance independently from protection without adding a second JEM armor-state owner.",
+    "decision_source": "The user explicitly requested Cosmetic Armor on 2026-10-28. Codex selected the latest Forge 1.20.1 release v1a after checking exact metadata, side requirements and the official source."
+  },
+  "introduced": {
+    "date": "2026-10-28",
+    "commit": "SELF",
+    "action": "add_native_mod",
+    "summary": "Install Cosmetic Armor Reworked 1.20.1-v1a on both client and server."
+  },
+  "history": [
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "add_native_mod",
+      "summary": "Add the exact CurseForge file 4600191 with SHA-1 afd9fa3fe95e8c086e8d439df403ed1e5ea5cbea and retain its native client/server ownership.",
+      "source_files": [
+        "Client/ManagedPack/mods/cosmeticarmorreworked-1.20.1-v1a.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "player inventory",
+      "armor rendering",
+      "client_server_contract",
+      "AutoModpack delivery"
+    ],
+    "relations": [
+      "The exact mod metadata declares Forge 47+ and MATCH_VERSION on both sides",
+      "The mod adds presentation slots and does not replace native functional armor stats",
+      "Redistributed binary source is available at https://github.com/zlainsama/CosmeticArmorReworked under the embedded MMPL 1.0.1 license"
+    ],
+    "notes": [
+      "The installed archive has no additional mod dependency beyond Forge."
+    ],
+    "unresolved": [
+      "Client inventory-screen and multiplayer synchronization acceptance remain unobserved because the client was not launched."
+    ]
+  }
+}

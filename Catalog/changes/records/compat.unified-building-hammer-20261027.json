@@ -23,7 +23,7 @@
         "property": "handcrafted.hammer.acquisition",
         "operation": "deny",
         "before": "The Handcrafted hammer has a craft recipe, JEI catalog entry, quest references and a JEM trade listing.",
-        "after": "New Handcrafted-hammer crafting, curated JEI display, authored quest references and JEM trade listing are removed in favor of bbb:hammer. The old registered item remains loadable in existing saves."
+        "after": "New Handcrafted-hammer crafting, creative-tab and curated JEI display, authored quest rewards and JEM trade listing are removed in favor of bbb:hammer. The old registered item remains loadable only for existing-save compatibility."
       }
     ]
   },
@@ -34,9 +34,11 @@
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
       "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/jei/JEMJeiPlugin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
       "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
       "Mods/JEMAchievementGuide/tools/questbook/book.json",
-      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/profession_pools.json"
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/building_purchase_prices.json",
+      "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy/market_search_terms.json"
     ]
   },
   "rationale": {
@@ -55,6 +57,15 @@
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/compat/handcrafted/UnifiedHammer.java",
         "Client/ManagedPack/kubejs/server_scripts/jem/recipe_replacements.js",
         "Mods/JEMAchievementGuide/tools/questbook/book.json"
+      ]
+    },
+    {
+      "date": "2026-10-28", "commit": "SELF", "action": "retire_legacy_hammer_acquisition",
+      "summary": "Remove the legacy Handcrafted hammer from creative tabs and authored acquisition, while moving the furniture quest reward to the BBB hammer.",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+        "Mods/JEMAchievementGuide/tools/questbook/book.json",
+        "Client/ManagedPack/config/ftbquests/quests/chapters/jem_07.snbt"
       ]
     }
   ],

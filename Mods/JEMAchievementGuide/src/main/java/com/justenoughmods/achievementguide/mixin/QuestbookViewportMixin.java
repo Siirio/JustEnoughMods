@@ -70,11 +70,12 @@ public abstract class QuestbookViewportMixin {
 
     @Unique private int jem$fitZoom(QuestbookLayout.Board board) {
         double unitPerZoom = 1.5D + getQuestButtonSpacing() / Math.max(1, zoom);
-        double unit = Math.min((questPanel.width - jem$visibleSidebar() - 16D) / (board.maxX() - board.minX()),
-                (questPanel.height - 16D) / (board.maxY() - board.minY()));
-        // Four is the actual native lower bound. Smaller icons are illegible.
-        int fit = (int)Math.floor(unit / unitPerZoom);
-        jem$overviewUnsupported = fit < 4;
+        // Cover the complete visible viewport. Fitting the whole illustration with
+        // Math.min letterboxed it and exposed pixels beyond the authored background.
+        double unit = Math.max((questPanel.width - jem$visibleSidebar() + 1D) / (board.maxX() - board.minX()),
+                (questPanel.height + 1D) / (board.maxY() - board.minY()));
+        int fit = (int)Math.ceil(unit / unitPerZoom);
+        jem$overviewUnsupported = fit > 28;
         return Math.max(4, Math.min(28, fit));
     }
 
@@ -105,10 +106,10 @@ public abstract class QuestbookViewportMixin {
         // Read scroll itself, because native drag updates it between draw frames.
         double x = camera.jem$getMinX() + (questPanel.getScrollX() + questPanel.width / 2D) / unit;
         double y = camera.jem$getMinY() + (questPanel.getScrollY() + questPanel.height / 2D) / unit;
-        double left = board.minX() + (questPanel.width / 2D - jem$visibleSidebar() - 8D) / unit;
-        double right = board.maxX() - (questPanel.width / 2D - 8D) / unit;
-        double top = board.minY() + (questPanel.height / 2D - 8D) / unit;
-        double bottom = board.maxY() - (questPanel.height / 2D - 8D) / unit;
+        double left = board.minX() + (questPanel.width / 2D - jem$visibleSidebar()) / unit;
+        double right = board.maxX() - questPanel.width / (2D * unit);
+        double top = board.minY() + questPanel.height / (2D * unit);
+        double bottom = board.maxY() - questPanel.height / (2D * unit);
         double nextX = left > right ? (board.minX() + board.maxX()) / 2D - jem$visibleSidebar() / (2D * unit)
                 : Math.max(left, Math.min(right, x));
         double nextY = top > bottom ? (board.minY() + board.maxY()) / 2D : Math.max(top, Math.min(bottom, y));

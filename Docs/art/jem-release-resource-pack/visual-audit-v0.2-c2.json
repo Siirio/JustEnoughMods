@@ -1,0 +1,43 @@
+{
+  "round": "C2",
+  "result": "USER_REJECTED",
+  "candidate": "C:/Users/user/AppData/Roaming/.minecraft/versions/jem sandbox/resourcepacks/JEM Release v0.2.zip",
+  "candidate_sha256": "4aa95a0263026b2ade4678840325039ed99db13ae693dd69eb292d10ba5bf63a",
+  "correction": "Removed GUI Experience's four-pixel light cap and replaced the complete 176-pixel-wide 27-slot player bank with the native Reimagined dark enclosure and transparent outer edge",
+  "reviewed_outputs": [
+    "assets/minecraft/textures/gui/container/inventory.png",
+    "assets/minecraft/textures/gui/container/crafting_table.png",
+    "assets/minecraft/textures/gui/container/anvil.png",
+    "assets/minecraft/textures/gui/container/generic_54.png",
+    "assets/accessories/textures/gui/container/accessories_inventory.png"
+  ],
+  "checks": {
+    "outer_light_bank_perimeter_removed": "PASS",
+    "upper_bank_connection": "FAIL",
+    "complete_reimagined_player_bank_present": "PASS",
+    "dark_inset_wells_present": "PASS",
+    "gui_experience_paper_title_preserved": "PASS",
+    "gui_experience_crafting_art_preserved": "PASS",
+    "light_hotbar_preserved": "PASS",
+    "immersive_fallback_byte_preserved": "PASS",
+    "native_dimensions_and_alpha_preserved": "PASS",
+    "zip_crc": "PASS",
+    "resource_pack_order_unchanged": "PASS",
+    "legacy_v0_1_sha256_unchanged": "PASS",
+    "minecraft_runtime_result": "FAIL"
+  },
+  "evidence": {
+    "preview_directory": "C:/Users/user/.codex/visualizations/2026/10/27/01a17e22-5e80-7d43-bd17-66fa39870ba7/jem-release-v02-c2",
+    "legacy_v0_1_sha256": "3319177ba932e015c313497907502efc59a3b06aca7793caaefc6e941f9d9cdc",
+    "full_player_bank_interfaces_checked": 20,
+    "full_player_bank_failures": 0,
+    "validated_png_count": 1187,
+    "zip_entries": 3613
+  },
+  "limits": [
+    "The user supplied runtime screenshots showing that the transparent four-pixel cap made the bank look severed",
+    "The creative destroy-slot state exposed the same disconnected construction",
+    "Agent review does not imply user approval",
+    "The private composite must not be redistributed"
+  ]
+}

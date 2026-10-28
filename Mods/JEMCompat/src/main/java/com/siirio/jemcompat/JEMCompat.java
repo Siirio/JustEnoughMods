@@ -17,6 +17,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(JEMCompat.MOD_ID)
@@ -42,6 +43,15 @@ public final class JEMCompat {
     }
 
     private static void creativeTabs(BuildCreativeModeTabContentsEvent event) {
+        if (ModList.get().isLoaded("handcrafted")) {
+            var legacyHammer = ForgeRegistries.ITEMS.getValue(new ResourceLocation("handcrafted", "hammer"));
+            if (legacyHammer != null) {
+                var entries = event.getEntries().iterator();
+                while (entries.hasNext()) {
+                    if (entries.next().getKey().is(legacyHammer)) entries.remove();
+                }
+            }
+        }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS || event.getTabKey() == CreativeModeTabs.SEARCH) {
             event.accept(TransportContent.AIRCRAFT_FUEL);
         }

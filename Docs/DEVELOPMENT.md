@@ -4,6 +4,16 @@
 
 Current contract: SMP routes to independent Settlements/Market; Rewards are in normal inventory E on both host types. Integrated/LAN has no JEM Events or parties. Common ordinary Minecraft XP has one x2 baseline; other modifiers apply above it.
 
+## Ветки и версии
+
+| Ветка | Единственная версия, которую она представляет |
+| --- | --- |
+| `main` | Последний подтверждённый production-снимок: MineRENT и стабильный профиль `JustEnoughMods` |
+| `develop` | Полный текущий снимок `test jem`, включая ещё не выпущенную разработку |
+| `sandbox/<short-purpose>` | Временная работа только для `jem sandbox`, ответвлённая от `develop` |
+
+Обычная разработка, локальная публикация AutoModpack и пользовательская проверка идут в `develop`. Sandbox не является источником релиза: одобренные изменения сначала переходят в `develop`, а временная ветка удаляется после переноса или отказа от работы. `main` обновляется только на явной границе релиза MineRENT, когда сервер, стабильный профиль, release metadata и baseline уже синхронизированы с одним и тем же снимком. Переписывание истории и прямой перенос sandbox в `main` не являются частью этого процесса.
+
 ## Рабочие поверхности
 
 - `Client` — единственный чистый клиентский набор и источник полного ZIP.

@@ -25,6 +25,7 @@ import net.minecraft.commands.Commands;
 @Mod.EventBusSubscriber(modid = "jemcompat", value = Dist.CLIENT)
 public final class CuratedKeyPreset {
     private static final String REVISION = "2026-10-20";
+    private static final String RELEASE_PRESET_REVISION = "2026-10-28-github-keymap-v1";
     // Compared with the GitHub original-controls snapshot. TrashSlot and Backpacked were retired.
     private static final Set<String> NEW_SINCE_ORIGINAL = Set.of(
             "key.jemcompat.free_camera", "key.puffish_skills.open", "key.sophisticatedbackpacks.open_backpack");
@@ -33,6 +34,10 @@ public final class CuratedKeyPreset {
     public static void observeOptions(Path file) { if (!Files.exists(file)) cleanOptions = true; }
     private static Path marker() { return Minecraft.getInstance().gameDirectory.toPath().resolve("config/jemcompat-key-preset.applied"); }
     private static Path upgradeMarker() { return Minecraft.getInstance().gameDirectory.toPath().resolve("config/jemcompat-new-keybinds-2026-10-27.applied"); }
+    private static Path releasePresetMarker() {
+        return Minecraft.getInstance().gameDirectory.toPath()
+                .resolve("config/jemcompat-key-preset-" + RELEASE_PRESET_REVISION + ".applied");
+    }
     private static Map<String, String> desired() {
         try (var stream = CuratedKeyPreset.class.getResourceAsStream("/assets/jemcompat/input/default_keys.json")) {
             if (stream == null) throw new java.io.IOException("Missing curated key resource");
@@ -103,6 +108,28 @@ public final class CuratedKeyPreset {
             throw new IllegalStateException("Cannot record new JEM key defaults", failure);
         }
     }
+    private static void applyReleasePresetOnce() {
+        Path receipt = releasePresetMarker();
+        if (Files.exists(receipt)) return;
+        var changes = changes();
+        // Record this profile before mutation so a restart can never reapply over later player edits.
+        try {
+            Files.createDirectories(receipt.getParent());
+            Files.writeString(receipt, RELEASE_PRESET_REVISION + "\n", StandardCharsets.UTF_8,
+                    java.nio.file.StandardOpenOption.CREATE_NEW);
+        } catch (java.io.IOException failure) {
+            throw new IllegalStateException("Cannot record the one-time JEM release key preset", failure);
+        }
+        changes.forEach((mapping, value) -> {
+            String[] parts = value.split(":", 2);
+            mapping.setKeyModifierAndCode(parts.length == 1 ? KeyModifier.NONE : KeyModifier.valueOf(parts[1]),
+                    InputConstants.getKey(parts[0]));
+        });
+        if (!changes.isEmpty()) {
+            KeyMapping.resetMapping();
+            Minecraft.getInstance().options.save();
+        }
+    }
     @SubscribeEvent public static void commands(RegisterClientCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("jemkeys")
                 .executes(context -> preview(context.getSource()))
@@ -117,6 +144,7 @@ public final class CuratedKeyPreset {
         if (event.phase != TickEvent.Phase.END || initialized || Minecraft.getInstance().options == null) return;
         initialized = true;
         if (cleanOptions) apply();
+        applyReleasePresetOnce();
         applyNewDefaults();
     }
 }

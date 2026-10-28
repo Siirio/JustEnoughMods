@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "Mods/JEMEconomy/src/main/resources/data/jem_economy/economy"
 FINAL = ROOT / "Docs/economy/FINAL_PRICE_LIST"
+RETIRED_ITEMS = {"handcrafted:hammer"}
 
 
 def read(path):
@@ -74,7 +75,7 @@ def author_prices(runtime):
         memo[item] = value
         return value
 
-    rows = [{"item": item, "buy_copper": price(item)} for item in sorted(items)]
+    rows = [{"item": item, "buy_copper": price(item)} for item in sorted(items) if item not in RETIRED_ITEMS]
     definition = {"schema": 1, "capture": runtime["capturedUtc"],
         "scope": "Exact registered item acquisition budgets only. Admission is exclusively JemCatalogCategories.isMarketBuilding plus wood/wool/glass/painting selectors, after trade_restrictions. Unlisted future items fail closed. Does not authorize NPC buyback.",
         "pricing": "Existing canonical/native acquisition prices retained; new building material budgets 12/16/24/32/128 Copper with captured ingredient-cost floor. Captured recipes are historical evidence; no runtime/arbitrage verification claimed.",
@@ -132,7 +133,7 @@ def author_search_index(runtime, assets_root):
         # Loaded display names cover items with native custom description IDs.
         captured = row.get("name", "")
         if captured and not captured.startswith(("item.", "block.")): names.add(captured)
-        if names: items[row["id"]] = sorted(names)
+        if names and row["id"] not in RETIRED_ITEMS: items[row["id"]] = sorted(names)
     paintings = {key: sorted(values) for key, values in sorted(terms.items())
         if key.startswith("painting.") and key.endswith(".title")}
     definition = {"schema": 1, "locales": ["en_us", "ru_ru"],

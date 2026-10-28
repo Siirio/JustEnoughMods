@@ -25,13 +25,13 @@
         "property": "client.quickskin.title_screen_preview",
         "operation": "replace",
         "before": "Quick Skin derives its title-screen preview from the native button cluster.",
-        "after": "Quick Skin retains native skin, model, cape and interaction ownership. Its native title-screen render configuration uses 25 percent size, X offset -422 and Y offset 119 so the rendered player fits the user-outlined lower-left box instead of the right-side button cluster. JEMRoles initializes the optional native widget at -20 degrees yaw so the default pose faces into the composition. FancyMenu places Change Skin as transparent text directly below the model and suppresses Quick Skin's icon controls. Personal skin hashes and appearance choices remain user-owned."
+        "after": "Quick Skin retains native skin, model, cape and interaction ownership. JEMRoles applies the approved 25 percent size, X offset -432 and Y offset 104 in memory whenever JEM Release or JEM Legacy is selected, so AutoModpack's preservation of the player's mutable Quick Skin config cannot leave stale menu coordinates. JEM Legacy derives an independent reference point so Release adjustments cannot compound into its placement. JEMRoles initializes the optional native widget at -20 degrees yaw so the default pose faces into the composition. FancyMenu places Change Skin as transparent text directly below the model and suppresses Quick Skin's icon controls. Personal skin hashes and appearance choices remain user-owned."
       },
       {
         "property": "client.main_menu.navigation_presentation",
         "operation": "replace",
         "before": "The FancyMenu title screen mixes centered JEM resource-pack button plates with icon-only controls and notification widgets.",
-        "after": "Singleplayer, Multiplayer, Realms, Mods, Options and Quit Game form one right-side column. Change Skin is a separate transparent text action directly below the lower-left player preview. FancyMenu forces transparent backgrounds and label shadows, hides icon-sized widgets and retains text-only hover underlines. Language and accessibility remain reachable through Options."
+        "after": "Singleplayer, Multiplayer, Realms, Mods, Options and Quit Game form one lowered right-side column. The approved blue hand-painted brush assets provide restrained button contrast. Change Skin is a separate transparent text action directly below the lower-left player preview. FancyMenu hides icon-sized widgets. Language and accessibility remain reachable through Options."
       },
       {
         "property": "client.main_menu.visual_sources",
@@ -46,7 +46,12 @@
     "kind": "user_requested_client_presentation",
     "source_files": [
       "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_normal.png",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_hover.png",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/buttons/sky_brush_inactive.png",
       "Client/ManagedPack/config/quickskin-client.json",
+      "Client/ManagedPack/mods/jem-races-2.0.1.jar",
+      "Mods/JEMRoles/build.gradle",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/QuickSkinTitleScreenDefaults.java",
       "Mods/JEMGuiSandbox/src/main/java/com/siirio/jemguisandbox/QuickSkinTitleScreenDefaults.java",
       "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/main_menu_background.png",
@@ -70,6 +75,18 @@
       "commit": "SELF",
       "action": "replace",
       "summary": "Use the supplied background and transparent title, suppress button plates and icons, and retain Quick Skin as the native appearance owner."
+    },
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "finalize_release_and_legacy_offsets",
+      "summary": "Keep the user-approved Release placement at -432/104 and calculate Legacy from its own reference point so later Release nudges do not move Legacy."
+    },
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "enforce_managed_offsets_at_runtime",
+      "summary": "Apply the approved Quick Skin title-screen size and offsets in memory for both managed resource-pack profiles because native AutoModpack correctly preserved the player's mutable root config instead of overwriting it from the managed projection."
     }
   ],
   "impacts": {
@@ -82,12 +99,13 @@
     ],
     "relations": [
       "Quick Skin 2.6.2.4 remains the only owner of selected skin, model, cape and local appearance assets",
-      "Quick Skin owns the rendered model position and size, JEMRoles owns the optional default title-screen yaw adapter, and FancyMenu owns art, transparent text-only navigation and control visibility",
+      "Quick Skin owns native model rendering and personal appearance state, JEMRoles supplies the managed title-screen size, position and optional default yaw for JEM Release and JEM Legacy, and FancyMenu owns art, transparent text-only navigation and control visibility",
       "The JEM resource pack cannot reintroduce title-screen button backgrounds through these FancyMenu overrides"
     ],
     "notes": [
       "The exact installed Quick Skin bytecode was inspected before positioning its native widget.",
       "The first layout incorrectly treated the captured FancyMenu widget box as the player renderer owner. Quick Skin 2.6.2.4 instead adds its client-config offsets to the largest-button anchor.",
+      "The test jem root Quick Skin config remained a user-owned mutable overlay at size 0, X 0 and Y 25 even though the active AutoModpack projection contained 25, -432 and 104. JEMRoles now applies the managed presentation values in memory without saving or replacing personal skin hashes.",
       "The captured FancyMenu widget set includes the native Quick Skin action, player preview, rotate button and animation controls. Only Change Skin remains visible as a text action below the player.",
       "The title cutout and final red-box composition passed source-grounded visual review after the user's placement correction."
     ],

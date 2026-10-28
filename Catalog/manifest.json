@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_sha": "34dc1a9ece3b798a352af1adb0658359fc4f0faa",
-  "generated_utc": "2026-10-28T08:44:57.536721+00:00",
+  "snapshot_sha": "8408ae454f920bb88e5ba171c2ba4bb9ac911bb3",
+  "generated_utc": "2026-10-28T13:46:01.284651+00:00",
   "minecraft": "1.20.1",
   "forge": "47.4.10",
   "java": "17",
@@ -2192,6 +2192,48 @@
       ],
       "namespaces": [],
       "source_path": "Server\\mods\\coroutil-forge-1.20.1-1.3.7.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "cosmeticarmorreworked-1.20.1-v1a.jar",
+      "sha256": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804",
+      "sides": [
+        "client"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "cosmeticarmorreworked",
+          "name": "CosmeticArmorReworked",
+          "version": "1.20.1-v1a",
+          "display_test": "MATCH_VERSION"
+        }
+      ],
+      "namespaces": [
+        "cosmeticarmorreworked"
+      ],
+      "source_path": "Client\\ManagedPack\\mods\\cosmeticarmorreworked-1.20.1-v1a.jar",
+      "nested_dependencies": []
+    },
+    {
+      "filename": "cosmeticarmorreworked-1.20.1-v1a.jar",
+      "sha256": "c790e8671625b05ec0aa19272e0ea74ea95619f953e3c6f39a6736af0d386804",
+      "sides": [
+        "server"
+      ],
+      "enabled": true,
+      "mods": [
+        {
+          "id": "cosmeticarmorreworked",
+          "name": "CosmeticArmorReworked",
+          "version": "1.20.1-v1a",
+          "display_test": "MATCH_VERSION"
+        }
+      ],
+      "namespaces": [
+        "cosmeticarmorreworked"
+      ],
+      "source_path": "Server\\mods\\cosmeticarmorreworked-1.20.1-v1a.jar",
       "nested_dependencies": []
     },
     {
@@ -9277,8 +9319,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jem-races-2.0.0.jar",
-      "sha256": "9d44dfb33c18def2c51d6937c463d33695e42de0ae379851b3da22895067c28c",
+      "filename": "jem-races-2.0.1.jar",
+      "sha256": "690e12d7d3a947dea1f5de4ff84af069d4cf3a8b62942db68737fb31f63dad67",
       "sides": [
         "client"
       ],
@@ -9296,12 +9338,12 @@
         "jem_roles",
         "jem_visual_sandbox"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jem-races-2.0.0.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jem-races-2.0.1.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jem-races-2.0.0.jar",
-      "sha256": "9d44dfb33c18def2c51d6937c463d33695e42de0ae379851b3da22895067c28c",
+      "filename": "jem-races-2.0.1.jar",
+      "sha256": "690e12d7d3a947dea1f5de4ff84af069d4cf3a8b62942db68737fb31f63dad67",
       "sides": [
         "server"
       ],
@@ -9319,7 +9361,7 @@
         "jem_roles",
         "jem_visual_sandbox"
       ],
-      "source_path": "Server\\mods\\jem-races-2.0.0.jar",
+      "source_path": "Server\\mods\\jem-races-2.0.1.jar",
       "nested_dependencies": []
     },
     {
@@ -9705,8 +9747,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jem_luxium-1.0.5.jar",
-      "sha256": "16616a13cbfd7d970ac757f4f15d7a30631e428bc4194b9188473930a622ce9f",
+      "filename": "jem_luxium-1.0.7.jar",
+      "sha256": "5a02b93d94dc50d9a0b077b3f2b2ecadd39abadc903eee02094e3c4d3ea085d3",
       "sides": [
         "client"
       ],
@@ -9715,14 +9757,14 @@
         {
           "id": "jem_luxium",
           "name": "Unofficial Luxium Compatibility",
-          "version": "1.0.5",
+          "version": "1.0.7",
           "display_test": "IGNORE_SERVER_VERSION"
         }
       ],
       "namespaces": [
         "jem_luxium"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jem_luxium-1.0.5.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jem_luxium-1.0.7.jar",
       "nested_dependencies": []
     },
     {
@@ -9793,8 +9835,8 @@
       "nested_dependencies": []
     },
     {
-      "filename": "jemcompat-3.7.0.jar",
-      "sha256": "4ea744e40a631c96676050cd1143e8a53253734e06c0f36ad3fc4269416c3639",
+      "filename": "jemcompat-3.9.0.jar",
+      "sha256": "e3eeba44bf1fc797079f36315eac6f6864a52705306e7ffca3804a87941735c3",
       "sides": [
         "client"
       ],
@@ -9803,7 +9845,7 @@
         {
           "id": "jemcompat",
           "name": "JustEnoughMods Compatibility",
-          "version": "3.7.0",
+          "version": "3.9.0",
           "display_test": "unknown"
         }
       ],
@@ -9815,12 +9857,12 @@
         "minecraft",
         "sereneseasons"
       ],
-      "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.7.0.jar",
+      "source_path": "Client\\ManagedPack\\mods\\jemcompat-3.9.0.jar",
       "nested_dependencies": []
     },
     {
-      "filename": "jemcompat-3.7.0.jar",
-      "sha256": "4ea744e40a631c96676050cd1143e8a53253734e06c0f36ad3fc4269416c3639",
+      "filename": "jemcompat-3.9.0.jar",
+      "sha256": "e3eeba44bf1fc797079f36315eac6f6864a52705306e7ffca3804a87941735c3",
       "sides": [
         "server"
       ],
@@ -9829,7 +9871,7 @@
         {
           "id": "jemcompat",
           "name": "JustEnoughMods Compatibility",
-          "version": "3.7.0",
+          "version": "3.9.0",
           "display_test": "unknown"
         }
       ],
@@ -9841,7 +9883,7 @@
         "minecraft",
         "sereneseasons"
       ],
-      "source_path": "Server\\mods\\jemcompat-3.7.0.jar",
+      "source_path": "Server\\mods\\jemcompat-3.9.0.jar",
       "nested_dependencies": []
     },
     {

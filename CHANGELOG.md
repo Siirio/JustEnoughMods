@@ -1,3 +1,40 @@
+## 2026-10-28 - Establish develop delivery and finish the test jem presentation update
+
+- User defined the repository model: `main` represents the confirmed MineRENT and stable `JustEnoughMods` production snapshot, `develop` represents `test jem`, and temporary `sandbox/<purpose>` branches exist only while sandbox work is active. `AGENTS.md` and `Docs/DEVELOPMENT.md` now preserve that pipeline
+- User requested no sandbox payload in this update, required Cosmetic Armor to remain, retired the Handcrafted hammer in favor of the Building But Better hammer, requested a Handbook route to FTB Quests, prohibited zooming beyond the authored quest background, and removed Bloop and CoffeeGUI from the managed distribution
+- Codex implementation keeps `handcrafted:hammer` registered only for existing-save compatibility, removes new recipe, JEI, creative, market and quest acquisition, and routes Handcrafted's native `Hammerable` behavior through `bbb:hammer`
+- The Handbook adds a presentation-only Quests ribbon that opens the installed native FTB Quests screen. Authored quest chapters now calculate minimum zoom with cover geometry and clamp to exact background bounds instead of letterboxing beyond them
+- Bug / Client Sided / both the canonical pack and `test jem` had `entityShadows:false`, while Oculus also used `maxShadowRenderDistance=0` and selected the retired Bloop archive / in testing, restore entity shadows, set the shared shadow distance to 9 and select the packaged Comfortable Complementary profile without forcing shaders on
+- Removed `Bloop-1.8.0-Alpha-3.zip`, its sidecar and the standalone `CoffeeGUI_1.20.1_release_v2.2.1.zip` from `Client/ManagedPack`. The approved self-contained `JEM Release v0.3.zip` is now managed, while the private Coffee-derived JEM Legacy composite remains profile-local and inactive
+- The final `test jem` preference application derives the full original stable resource-pack order, removes CoffeeGUI, adds active JEM Release at highest precedence, leaves JEM Legacy installed but inactive, preserves the curated one-time keybind contract and restores both vanilla and Oculus shadow settings
+- Cosmetic Armor remains in the managed client and server inventory. No MineRENT or stable-profile deployment is authorized by this development update
+- Published native AutoModpack generation 99 with reviewed delta `+2 ~5 -4`, content token `d560fa35dedf1f9cb8c5a6ba76971f7fb562bd0e` and matching staged/published manifest SHA-1 `f54a5f2ba046c48dc1dcd0aa75a75511f1038466`. Applied it natively to the closed `test jem` profile, whose active token and task-owned file hashes match the published generation with no pending transaction
+- Final profile state copies the original stable resource-pack order, activates `JEM Release v0.3.zip` at the highest precedence, keeps the installed `JEM Legacy v1.0.zip` inactive and removes the remaining unmanaged CoffeeGUI archive. Entity shadows are enabled, Oculus shadow distance is 9, the user's selected Comfortable shader profile remains enabled, and Bloop is absent
+- The ordinary local server saved all dimensions and stopped after publication. Its existing MapSyncer shutdown path again logged `NoSuchFieldException: AIR` only after saving. Runtime menu, quest-screen, hammer and shadow acceptance remain unobserved because the client was not launched
+
+## 2026-10-28 - Deliver the GitHub keymap once per client profile
+
+- User clarified that the next update must apply the GitHub-derived keymap to every existing client exactly once, while reconnects, TLauncher restarts and any number of later AutoModpack updates must preserve player changes
+- JEMCompat 3.9.0 adds a versioned receipt inside each game directory. Running `test jem` consumes only its own receipt and cannot suppress the future one-time application in the separate original `JustEnoughMods` profile or a friend's installation
+- Backpacked and TrashSlot remain excluded. The preset changes registered key mappings only and does not distribute personal non-key options
+- User reported during the live `test jem` review that the final sandbox Quick Skin positions did not appear under either JEM Release or JEM Legacy
+- Bug / Client / native AutoModpack preserved the mutable root `quickskin-client.json`, leaving `test jem` at title size 0, X 0 and Y 25 while the active managed projection correctly contained size 25, X -432 and Y 104 / in testing, JEMRoles 2.0.1 applies the approved presentation values in memory whenever JEM Release or JEM Legacy is selected, keeps Legacy on its independent reference point and never saves over personal skin hashes
+- Published native AutoModpack generation 98 with the reviewed delta `+2 ~1 -2`, content token `97018d7e3b14c38cd3b984dd0cf651c33f89ffba` and matching staged/published manifest SHA-1 `2ec1fc1561ef569566379e8bf8a39966a7ee528b`. The delta contains only JEMRoles 2.0.1, JEMCompat 3.9.0 and retirement of their immediately previous JARs
+- The ordinary local server required a temporary watchdog bypass because its existing pregenerated-world startup exceeded 60 seconds. The publication completed, the world saved, the server stopped and `max-tick-time=60000` was restored
+- Applied generation 98 natively to the closed `test jem` profile. Its active token matches the published head, both installed JAR hashes match the approved artifacts, the previous JARs are absent and no transaction remains pending. Runtime menu and key-input acceptance remain pending until the user launches the client
+
+## 2026-10-28 - Apply the approved menu, GitHub keybinds and Cosmetic Armor to test jem
+
+- User requested the sandbox-approved JEM Release menu in `test jem`, required that only the two local JEM theme archives be moved, and required both JEM Release and JEM Legacy to remain self-contained rather than depend on CoffeeGUI, GUI Experience+ or other separately installed resource packs
+- Bug / Client / native AutoModpack correctly delivered the complete `Client/ManagedPack` snapshot, whose historical `resourcepacks` folder contains CoffeeGUI and other independent packs, making those files reappear even though neither JEM theme requires them / in testing, keep the historical managed packs untouched but copy only `JEM Release v0.3.zip` and `JEM Legacy v1.0.zip` from the approved local sandbox and enable only JEM Release with vanilla and mod resources in the target profile
+- User requested the GitHub keybind layout through AutoModpack while excluding bindings for the removed Backpacked and TrashSlot mods. The embedded JEMCompat preset is mechanically rebuilt from the checked-in original-controls snapshot with only those retired rows omitted
+- User requested Cosmetic Armor. Added the exact Forge 1.20.1-v1a client-and-server archive from CurseForge file 4600191 with SHA-1 `afd9fa3fe95e8c086e8d439df403ed1e5ea5cbea`, no additional mod dependency and official MMPL source at `https://github.com/zlainsama/CosmeticArmorReworked`
+- Final menu production artifacts use JEM Luxium 1.0.7 for direct Embeddium routing, JEM Roles Quick Skin positioning with independent Legacy compensation, and JEMCompat 3.8.0 for the key preset. Production builds completed successfully without tests
+- Published native AutoModpack generation 97 with content token `a45186a576a91d6bcefc74f754265efbe5d2eeed` and matching staged/published manifest SHA-1 `70c893a4b1f3df56e7a3fd09e5a0f1355c02bf02`. The closed `test jem` profile has the same active token, matching approved JAR hashes and no pending transaction
+- Copied exactly the two approved self-contained JEM theme archives into `test jem`. `JEM Release v0.3.zip` is active with vanilla and mod resources, `JEM Legacy v1.0.zip` remains available but inactive, and the 244 installed key rows exactly match the GitHub snapshot after omitting Backpacked and TrashSlot
+- The Registry Atlas was fully regenerated for the installed artifact changes, its impact scan reports no uncovered paths or artifact drift, and validation passes. Runtime menu, key input and Cosmetic Armor acceptance remain unobserved because the client was not launched
+- The ordinary local server stopped after world saving. Its existing MapSyncer shutdown path again logged `NoSuchFieldException: AIR` after all dimensions were saved, without leaving the server process running
+
 ## 2026-10-28 - Select complete GUI profiles through resource packs
 
 - User requested FancyMenu title and button placement tied to the selected resource pack, approved separate Legacy and JEM Release profiles, supplied `ModdedCoffeeGUI_Release_v1.16.0.zip` for Legacy, then clarified that Legacy must be one selectable pack and that choosing neither pack must preserve default Minecraft
@@ -31,8 +68,8 @@
 - Codex implementation: reduce the native Quick Skin model from 30 to 25 percent, move its Y offset from 130 to 119 while retaining X offset -422, move the transparent Change Skin text to the marked strip below the player, and initialize the optional native widget at -20 instead of +20 degrees yaw through JEMRoles
 - The scoped production `:JEMRoles:build` completed successfully without tests. The rebuilt JAR is synchronized byte-identically to `Client/ManagedPack` and the ordinary local Server with SHA-256 `9d44dfb33c18def2c51d6937c463d33695e42de0ae379851b3da22895067c28c`
 - Bug / Client / the first sandbox installation added the production `jem_roles` artifact beside the sandbox's existing overlapping `jem_visual_sandbox` races implementation, and the client stopped during mod discovery / in testing, the added production JAR was removed to a recoverable sandbox backup and the same optional Quick Skin yaw adapter was built into the sandbox's existing `jem_gui_sandbox` owner instead, SHA-256 `ddf8f1eeb3c8b1d51e498de805897b36d37e0f42f238dd916aa33ba0f2265c97`
-- Published native AutoModpack generation 92 with exact preview `+0 ~4 -0` and content token `7074a81bc6e332d182db572c7e9ebd36e26471b3`. The ordinary local server stopped cleanly after publication, and native installation completed on the closed `test jem` profile with matching token, files and no pending transaction
-- Runtime visual acceptance remains unobserved pending player confirmation
+- Published native AutoModpack generation 92 with exact preview `+0 ~4 -0` and content token `7074a81bc6e332d182db572c7e9ebd36e26471b3`. The ordinary local server stopped cleanly after publication
+- Runtime visual acceptance remains unobserved until the user reopens the client after native publication and sandbox installation
 
 ## 2026-10-28 - Correct Quick Skin main-menu position
 
@@ -40,14 +77,6 @@
 - Bug / Client / the first composition treated FancyMenu's captured zero-size player widget coordinates as the preview owner, but Quick Skin 2.6.2.4 renders from the largest-button anchor plus its own client-config offsets, leaving the model over the right-side navigation / in testing, the native title-screen model settings now use 30 percent size with X offset -422 and Y offset 130
 - Updated the canonical managed config and the closed `jem sandbox` profile while preserving its personal skin hashes. Post-correction runtime appearance and player acceptance remain unobserved because no client launch was authorized
 - Published native AutoModpack generation 91 with content token `582b3844ffd493c84bd85a2e5a331f785f0482e8` and applied it to the closed `test jem` profile. Its active token and Quick Skin config hash match the published generation with no pending transaction, and the ordinary local server was stopped after publication
-
-## 2026-10-28 - Correct standalone compatibility coverage
-
-- User requested every JEM Food Blessings supported mod, challenged the incomplete Barnyard Buddies and Blast From The Past coverage shown for Mob Home and Animal Hints, and requested universal integrations to be described by their actual contract
-- Bug / Both Sided / the public matrix collapsed Animal Hints' universal breeding-food discovery and curated taming catalog into one short namespace list, truncated Mob Home's exact adapter inventory, and described Food Blessings as universal without exposing its exact-ID quality catalog / in testing, the matrix now separates those contracts and records complete source-backed coverage
-- JEM Food Blessings currently assigns 848 foods across 37 namespaces. Other Forge-native foods are consumed safely and can trigger recovery from an existing blessing, but receive no new quality, variety credit, traits, or blessing until cataloged
-- Mob Home already includes exact adapters for Barnyard Buddies and Blast From The Past among 26 supported projects. Animal Hints already discovers their breeding foods through `Animal.isFood`, but its curated taming and mountability layer does not yet cover them
-- Added the missing Animal Hints taming and mountability audit as a mandatory pre-release task. Documentation only, with no gameplay source, build, runtime, AutoModpack, or deployment change
 
 ## 2026-10-28 - Install Quick Skin menu in jem sandbox
 
@@ -89,12 +118,14 @@
 - Bug / Client / the first transfer bridge returned `player.containerMenu`, which remains `InventoryMenu` during the dedicated Cinematic table scene, so JEI correctly selected its ordinary 2x2 player transfer handler instead of the block's 3x3 owner / in testing, Cinematic tables now expose a dedicated marker menu whose JEI handler selects the exact recipe in Cinematic Interactions' installed `TableRecipeBook` and invokes its native `TableStation` layout queue
 - Ordinary inventory crafting, other JEI menu handlers, the scene consultation lifecycle, Mouse Tweaks and the Cinematic-only Shift plus left-button sweep remain unchanged
 - JEM Cinematic Interactions 1.0.4 built successfully with tests disabled by project policy and was installed into the closed `jem sandbox` profile. The prior 1.0.3 JAR is recoverable under `visual-backups/2026-10-28-cinematic-3x3-transfer`; runtime transfer and player acceptance remain pending
+
 ## 2026-10-28 - Restore native JEI transfer and scene-only sweep transfer
 
 - User clarified that JEI's native recipe-transfer `+` must appear in the Cinematic recipe view, that Shift plus left-button cursor sweep must quick-move every crossed stack without individual clicks, and that this custom sweep belongs only to Cinematic block interactions
 - Bug / Client / JEI's `RecipesGui` only discovers a parent menu when its parent is an `AbstractContainerScreen`, while Cinematic Interactions uses a plain `SceneScreen`, so JEI had no active menu from which to resolve its native recipe-transfer handler and hid the `+` control / in testing, the adapter exposes the player's existing active block menu only when the JEI parent is `SceneScreen`, preserving JEI's native transfer eligibility and execution
 - Bug / Client / the earlier sweep adapter intercepted Shift plus left click on every `AbstractContainerScreen`, replacing normal Creative and Mouse Tweaks behavior, yet could not see Cinematic Interactions' non-container `SceneScreen` / in testing, gesture ownership is confined to `SceneScreen` and every crossed player or block slot delegates to Cinematic Interactions' native quick-transfer path
-- Source and documentation now describe Shift plus left-button sweep and its Cinematic-only boundary. JEM Cinematic Interactions 1.0.3 built successfully with tests disabled by project policy and was installed into the closed `jem sandbox` profile. Runtime visibility of the JEI `+`, bidirectional sweep behavior and player acceptance remain pending
+- Source and documentation now describe Shift plus left-button sweep and its Cinematic-only boundary. Runtime visibility of the JEI `+`, bidirectional sweep behavior and player acceptance remain pending
+
 ## 2026-10-28 - Preserve cinematic scene across JEI lookup
 
 - User reported that clicking a JEI ingredient or bookmark during Cinematic Interactions removed the cinematic interface while the player remained movement-locked, and explicitly requested this lifecycle defect before the missing JEI recipe-transfer "+" control
@@ -125,6 +156,15 @@
 - User corrected the fast-transfer gesture from Shift plus right mouse button to Shift plus left mouse button. The native `QUICK_MOVE` routing and bidirectional container restrictions are unchanged
 - Runtime layout and sweep behavior remain unobserved pending player acceptance
 
+## 2026-10-27 - JEM Release v0.3 menu and colored shulker sandbox update
+
+- User requested the supplied Trails & Tales ZIP artwork as the sandbox FancyMenu background without its baked wordmark, a slightly smaller JEM title, removal of the wind effect, restoration of the DEV splash and shulker GUIs matching each box's native dye color
+- The background keeps the original 2058 by 1440 composition and uses a bounded generated-sky repair only where the removed Trails & Tales logo occupied the image. The source ZIP and the remaining illustration stay unchanged
+- The enabled JEM Release layout now uses the repaired PNG, scales the existing JEM title from 300 by 87 to 270 by 78, disables the active falling-leaves overlay and its wind values, and restores the vanilla splash widget
+- `JEM Release v0.3.zip` adds the single `DEV` splash and retains the v0.2 resource contents, including all sixteen existing OptiFine-format colored shulker GUI textures. v0.1 and v0.2 remain preserved, while v0.3 replaces v0.2 at the same resource-pack priority position
+- Bug / Client / Forge with Embeddium and Oculus had no OptiFine or OptiGUI-compatible selector, so every dyed shulker fell back to the one shared vanilla `shulker_box.png` / in testing, the sandbox-only JEM GUI screen hook now selects the pack's matching dye texture when the opened targeted block is a shulker box and resets to the ordinary texture otherwise
+- The prior JEM GUI Sandbox JAR is recoverable under `jem sandbox/backups/2026-10-27`. No Gradle task, client launch, resource reload, stable-profile change, commit or push was performed, so runtime appearance remains unobserved
+
 ## 2026-10-27 - Native Luxium shader switch in graphics settings
 
 - User clarified that the Luxium control must always be available, Oculus must remain the default when it is off, the vanilla recipe book must be removed in favor of JEI, and Shift plus right-button cursor sweeps must quick-transfer stacks through every integrated container in both directions
@@ -132,6 +172,7 @@
 - Added the sandbox-only `jem_cinematic_interactions` owner, which closes and removes the vanilla recipe-book control while retaining the existing JEI right-side ingredient list and left-side bookmarks
 - The Shift plus right-button sweep now sends each newly crossed stack through the open menu's native `QUICK_MOVE` contract, preserving bidirectional vanilla and modded-machine insertion restrictions
 - JEM Luxium 1.0.1 and JEM Cinematic Interactions 1.0.0 production builds completed with tests disabled by project policy, and their exact artifacts were installed into the closed `jem sandbox` profile without launching Minecraft
+
 - User requested a Luxium section beside the installed Embeddium, More Culling, Sodium Extras and Oculus graphics controls, with an on/off switch and ordinary Oculus behavior when off
 - Added the client-only `jem_luxium` owner instead of restoring shader-preset responsibility to JEMAdaptiveCulling, whose approved scope remains culling only
 - The native Embeddium page uses its standard checkbox and Apply lifecycle, while the exact installed Oculus 1.8.0 API remains the only shader loader
@@ -143,6 +184,36 @@
 - User follow-up requested the same required graphics files in the isolated `jem sandbox` profile. The exact active `test jem` copies of JEM Luxium, Oculus, Sodium Dynamic Lights and the Luxium archive were installed, the differing JEM Adaptive Culling artifact was aligned, and already matching Embeddium, More Culling and Sodium Extras artifacts were retained
 - The prior sandbox-only Luxium 2.8.4 mod and differing culling JAR remain recoverable under `backups/luxium-install-2026-10-27`. Sandbox options, Oculus config, Luxium config and resource-pack order remained byte-identical. Source, ManagedPack, local Server and AutoModpack publication were unchanged, and no client was launched
 - Bug / Client / TLauncher still registered the separate Luxium 2.8.4 Forge mod as active and restored its JAR on launch, where Luxium's own `NOoculus` guard deliberately replaced the normal screen with "REMOVE OCULUS" / in testing, removed that exact TLauncher project entry and moved the restored mod JAR into the existing backup while retaining Oculus, JEM Luxium and the Luxium shader archive
+
+## 2026-10-27 - JEM Release v0.2 hybrid GUI centers
+
+- User requested a new JEM Release version while preserving v0.1 and the sandbox resource-pack order
+- User rejected C0 because fill-only centers did not create a visible dip-in, C1 because the complete Reimagined slots retained a light perimeter, C2 because removing the upper ledge severed the bank, and C3 because a dark replacement rail contradicted the requested higher light-gray continuation. Final C4 keeps only GUI Experience's five-pixel light upper ledge above the dark bank
+- User-selected construction: GUI Experience + owns parchment titles, transparent upper composition, the light upper ledge, separate light hotbar framing and functional crafting art, while Reimagined GUI Light supplies the recessed 27-slot bank below it
+- The native-pixel composer detects the 27 connected Reimagined wells where both packs share the same canvas, preserves the upper five GUI Experience rows and transfers the native 176-pixel-wide player bank below them without the rejected light side and bottom rails. It does not resize, trace or reuse screenshot pixels
+- Twenty-four shared vanilla container atlases are evaluated after excluding creative player tabs from the block-GUI hybrid pass. Nineteen player-storage banks receive the same light-ledge transition, no-op sheets remain GUI Experience, creative tabs remain complete Reimagined player interfaces and Immersive-only interfaces remain unchanged
+- `JEM Release v0.2.zip` was inserted beside the unchanged v0.1 ZIP in the local `jem sandbox` resourcepacks directory. Minecraft `options.txt` and its current pack order were not modified
+- ZIP CRC, all 1,187 PNGs, required ownership and v0.1 preservation checks passed. C0 through C3 are preserved as user-rejected evidence, while final C4 checks pass across all nineteen applicable bank atlases plus creative and Immersive ownership examples
+- The sandbox now has a separate active `JEM Release` FancyMenu layout using the user-supplied 736 by 414 background and 1003 by 290 title, while copied `Legacy JEM` remains available but disabled. FancyMenu 3.9.12 and Konkrete 1.8.0 are installed for the next restart
+- Private candidate only due source-pack redistribution restrictions. The currently running client was not restarted, so C4 GUI and new FancyMenu runtime appearance remain unobserved. No commit or push was performed and user approval remains pending
+
+## 2026-10-27 - Private JEM Release resource-pack composite
+
+- User requested one resource pack combining the selected GUI, HUD and icon sources in the `jem sandbox` profile
+- Local build uses Reimagined GUI - Light for buttons and player interfaces, GUI Experience + for every block GUI it supplies, Immersive Interfaces for uncovered modded GUIs, HUD Reimagined for HUD assets, Effect Icons Recrafted for status-effect icons and Icons v1.14 for the remaining icon language
+- The shared Minecraft 1.20.1 `widgets.png` is composed at its native 256 by 256 grid, with HUD Reimagined rows 0 through 45 and Reimagined GUI button rows 46 through 255, preserving both requested owners without resampling
+- `JEM Release v0.1.zip` was built only in the local `jem sandbox` resourcepacks directory with 3,613 entries, 1,187 validated PNGs and explicit source hashes, credits, precedence and collision provenance inside the archive
+- C0 inspection passed for representative player, block, modded fallback, HUD, effect-icon, general-icon, mixed-widget and title assets. ZIP CRC and required-winner checks passed with no failures
+- Private candidate only due source-pack redistribution restrictions. The original source archives remain unchanged. Minecraft reload, FancyMenu activation, runtime appearance, commit and push were not performed, and user approval remains pending
+
+## 2026-10-27 - JEM Release title candidate and GUI merge priorities
+
+- User requested a direct Blockbench title for the new "JEM Release" FancyMenu preset while preserving the existing GUI as "Legacy JEM"
+- User correction: do not return the title to Gemini, replace the earlier farming theme with Companions and replace Trials with Skarrier
+- Candidate implementation: "MINECRAFT" uses one original ancient-slate, copper-seam and brass-frame construction, while every letter of "JEM EDITION" has a distinct mod-derived material and geometry signature
+- Selection contract records HUD Reimagined as HUD owner, Icons Recrafted / Icons as global icon owner, GUI Reimagined Light for buttons and the player interface, GUI Experience + for every other GUI it supplies, and Immersive Interfaces as the uncovered modded-GUI fallback
+- Editable Blockbench geometry, native Aseprite sources, PNG materials, front and three-quarter previews, design mapping and C0 audit are preserved under `Docs/art/jem-release-title`
+- Candidate only. Geometry validation passed with zero errors and warnings. No FancyMenu integration, resource-pack merge, client launch, runtime review, commit or push was performed and user approval remains pending
 
 ## 2026-10-28 - Standalone Visual V4 questbook
 
@@ -2287,6 +2358,13 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Production `:JEMServer:jar` build succeeded. Its SHA-256 `439be97302ca6dbae1cd50dc6b44f71b11982392cf4d8b56070cbbe6d053df3b` matches the ordinary local Server and `Client/ManagedPack`. The local server reached `Done` on `127.0.0.1:31604` and remained responsive to `list`
 - Native AutoModpack preview showed only `jem-server-2.0.0-dev.jar` and `jem-pack/manifest.json` changed. Publication 85 has content token `48abdf6c5a0ae418fb35c6d6a677f19cea8f8e69`, with staged and published manifest SHA-1 both `b6b997b50a055ae52ef699b09ad24de6ea6329ca`
 - Atlas regeneration, effective rebuild, audit, impact scan and validation passed, with no uncovered impact paths. No automated tests, gameplay client launch, MineRENT deployment, stable-profile mutation or release-baseline promotion was performed
+## 2026-10-28 - Correct standalone compatibility coverage
+
+- User requested every JEM Food Blessings supported mod, challenged the incomplete Barnyard Buddies and Blast From The Past coverage shown for Mob Home and Animal Hints, and requested universal integrations to be described by their actual contract
+- Bug / Both Sided / the public matrix collapsed Animal Hints' universal breeding-food discovery and curated taming catalog into one short namespace list, truncated Mob Home's exact adapter inventory, and described Food Blessings as universal without exposing its exact-ID quality catalog / in testing, the matrix now separates those contracts and records complete source-backed coverage
+- JEM Food Blessings currently assigns 848 foods across 37 namespaces. Other Forge-native foods are consumed safely and can trigger recovery from an existing blessing, but receive no new quality, variety credit, traits, or blessing until cataloged
+- Mob Home already includes exact adapters for Barnyard Buddies and Blast From The Past among 26 supported projects. Animal Hints already discovers their breeding foods through `Animal.isFood`, but its curated taming and mountability layer does not yet cover them
+- Added the missing Animal Hints taming and mountability audit as a mandatory pre-release task. Documentation only, with no gameplay source, build, runtime, AutoModpack, or deployment change
 
 ## 2026-10-28 - Prepare standalone public publishing and existing project updates
 
@@ -2294,3 +2372,11 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Confirmed the canonical public scope contains eleven standalone Forge 1.20.1 projects, including Unofficial Luxium Compatibility, while Villager Talking, Settlements and Economy remain excluded
 - Prepared fresh existing-project versions: JEM Adaptive Culling 1.4.2, JEM Advancements 5.2.0, JEM Compat 3.8.0, JEM Twelve Eyes 1.7.0 and JEM World Boss Tiers 2.5.0
 - Added independent changelogs and explicit All Rights Reserved license files where the existing public modules lacked them. Public upload remains gated by the recorded clean-launch, in-game localization and approved-media requirements unless the user explicitly authorizes or waives those checks
+
+## 2026-10-28 - Record the proven GraveStone recovery procedure
+
+- User confirmed that Crosbu received the lost inventory and requested the cause, fast future recovery path and temporary-script cleanup procedure to remain documented
+- Bug / Server Sided / GraveStone Forge 1.20.1-1.0.35 `restore ... add` iterates only `Death.getAllItems()`, so it reported success after restoring the auxiliary belt while omitting the saved `MainInventory` and `ArmorInventory` / resolved, the explicitly approved `restore ... replace` path restored the full record and live NBT confirmed the named sword, weapons, books, resources, Duskfire armor and level 31
+- Future recovery must select the complete death UUID from log and file evidence, inspect the live inventory before destructive replacement, verify actual NBT after the command and restore the recorded experience separately without lowering a higher current level
+- A one-time login script is only an offline-player bridge. After verified recovery, remove its exact local and MineRENT files and reload KubeJS server scripts. Clients, AutoModpack, stable profiles and the release baseline remain unchanged
+

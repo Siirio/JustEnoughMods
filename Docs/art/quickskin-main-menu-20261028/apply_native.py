@@ -10,24 +10,23 @@ server = root / "Server"
 profile = Path("C:/Users/user/AppData/Roaming/.minecraft/versions/test jem")
 canonical = root / "Client/ManagedPack"
 allowed = {
-    "config/fancymenu/assets/just_enough_mods/main_menu_background.png",
-    "config/fancymenu/assets/just_enough_mods/main_menu_title.png",
-    "config/fancymenu/customization/just_enough_mods_title_screen.txt",
-    "config/quickskin-client.json",
-    "mods/in-chat-ftb-1.0.0.jar",
+    "config/ftbquests/quests/chapters/jem_07.snbt",
+    "config/oculus.properties",
     "mods/jem-advancements-5.1.0.jar",
-    "mods/jem_adaptive_culling-1.4.1.jar",
-    "mods/jem_animal_hints-1.0.0.jar",
-    "mods/jem_drill_lifecycle-1.0.0.jar",
-    "mods/jem_excavation-1.0.0.jar",
-    "mods/jem_freecam-1.0.0.jar",
-    "mods/jem_inventory_shortcuts-1.0.0.jar",
-    "mods/jem_luxium-1.0.4.jar",
-    "mods/jem-races-2.0.0.jar",
-    "mods/jem_seasons_hud-1.0.0.jar",
-    "mods/jemcompat-3.7.0.jar",
-    "mods/jemfood-1.0.0.jar",
+    "mods/jem-advancements-5.2.0.jar",
+    "mods/jem-economy-1.3.0.jar",
+    "mods/jemcompat-3.9.0.jar",
+    "resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip",
+    "resourcepacks/JEM Release v0.3.zip",
+    "shaderpacks/Bloop-1.8.0-Alpha-3.zip",
+    "shaderpacks/Bloop-1.8.0-Alpha-3.zip.txt",
     "jem-pack/manifest.json",
+}
+allowed_deletes = {
+    "mods/jem-advancements-5.1.0.jar",
+    "resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip",
+    "shaderpacks/Bloop-1.8.0-Alpha-3.zip",
+    "shaderpacks/Bloop-1.8.0-Alpha-3.zip.txt",
 }
 
 processes = subprocess.run(
@@ -88,24 +87,23 @@ class ApprovedMainMenuInstall {
   var target=SelectedModpackTarget.prepare(document,new ClientSelectionStore(storage.selectionFile()),ClientPlatform.WINDOWS);
   Path canonical=Path.of("C:/MyProjects/Minecraft/JustEnoughMods/Client/ManagedPack");
   Set<String> allowed=Set.of(
-   "config/fancymenu/assets/just_enough_mods/main_menu_background.png",
-   "config/fancymenu/assets/just_enough_mods/main_menu_title.png",
-   "config/fancymenu/customization/just_enough_mods_title_screen.txt",
-   "config/quickskin-client.json",
-   "mods/in-chat-ftb-1.0.0.jar",
+   "config/ftbquests/quests/chapters/jem_07.snbt",
+   "config/oculus.properties",
    "mods/jem-advancements-5.1.0.jar",
-   "mods/jem_adaptive_culling-1.4.1.jar",
-   "mods/jem_animal_hints-1.0.0.jar",
-   "mods/jem_drill_lifecycle-1.0.0.jar",
-   "mods/jem_excavation-1.0.0.jar",
-   "mods/jem_freecam-1.0.0.jar",
-   "mods/jem_inventory_shortcuts-1.0.0.jar",
-   "mods/jem_luxium-1.0.4.jar",
-   "mods/jem-races-2.0.0.jar",
-   "mods/jem_seasons_hud-1.0.0.jar",
-   "mods/jemcompat-3.7.0.jar",
-   "mods/jemfood-1.0.0.jar",
+   "mods/jem-advancements-5.2.0.jar",
+   "mods/jem-economy-1.3.0.jar",
+   "mods/jemcompat-3.9.0.jar",
+   "resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip",
+   "resourcepacks/JEM Release v0.3.zip",
+   "shaderpacks/Bloop-1.8.0-Alpha-3.zip",
+   "shaderpacks/Bloop-1.8.0-Alpha-3.zip.txt",
    "jem-pack/manifest.json"
+  );
+  Set<String> allowedDeletes=Set.of(
+   "mods/jem-advancements-5.1.0.jar",
+   "resourcepacks/CoffeeGUI_1.20.1_release_v2.2.1.zip",
+   "shaderpacks/Bloop-1.8.0-Alpha-3.zip",
+   "shaderpacks/Bloop-1.8.0-Alpha-3.zip.txt"
   );
   try(var updater=new ModpackUpdater(target,null,null,storage)){
    Object session=invoke(updater,"beginUpdateAttempt",new Class<?>[0]);
@@ -115,8 +113,9 @@ class ApprovedMainMenuInstall {
    for(var operation:plan.operations()){
     System.out.println("Native operation: "+operation.operation()+" "+operation.root()+" "+operation.relativePath());
     if(!allowed.contains(operation.relativePath()))throw new IllegalStateException("Unreviewed native mutation: "+operation.relativePath());
-    if(operation.operation()==UpdatePlan.OperationType.DELETE)throw new IllegalStateException("Unexpected delete: "+operation.relativePath());
-    if(!sha(canonical.resolve(operation.relativePath())).equals(operation.expectedObjectHash()))throw new IllegalStateException("Target differs from canonical source: "+operation.relativePath());
+    if(operation.operation()==UpdatePlan.OperationType.DELETE){
+     if(!allowedDeletes.contains(operation.relativePath()))throw new IllegalStateException("Unexpected delete: "+operation.relativePath());
+    } else if(!sha(canonical.resolve(operation.relativePath())).equals(operation.expectedObjectHash()))throw new IllegalStateException("Target differs from canonical source: "+operation.relativePath());
    }
    if(!plan.conflicts().isEmpty())throw new IllegalStateException("Native plan contains conflicts");
    if(plan.operations().isEmpty())throw new IllegalStateException("Native plan contains no combined update");
@@ -164,9 +163,13 @@ if after["contentToken"] != expected:
 if (profile / "automodpack/client/update-transaction.json").exists():
     raise RuntimeError("Native transaction remains pending")
 
-for relative in allowed - {"jem-pack/manifest.json"}:
+for relative in allowed - allowed_deletes - {"jem-pack/manifest.json"}:
     installed = profile / "automodpack/client/active" / relative
     if hashlib.sha256(installed.read_bytes()).hexdigest() != hashlib.sha256((canonical / relative).read_bytes()).hexdigest():
         raise RuntimeError("Installed main-menu file differs from canonical source: " + relative)
+
+for relative in allowed_deletes:
+    if (profile / "automodpack/client/active" / relative).exists():
+        raise RuntimeError("Retired JAR remains installed after native update: " + relative)
 
 print("Exact native combined installation complete with matching token, files and no pending transaction")

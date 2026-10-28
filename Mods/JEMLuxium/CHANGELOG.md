@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6 - in development
+
+- Package the production Mixin refmap required to resolve Mojmap method targets in Forge runtime
+- Preserve the direct Embeddium route and Luxium-tab controls introduced in 1.0.5
+
 ## 1.0.5 - in development
 
 - Open Embeddium video settings directly instead of Luxium's intermediate hub

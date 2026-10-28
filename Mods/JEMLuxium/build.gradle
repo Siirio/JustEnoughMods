@@ -4,6 +4,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
 version = mod_version
@@ -34,6 +35,12 @@ dependencies {
     compileOnly fg.deobf("maven.modrinth:embeddium:${embeddium_version}")
     compileOnly fg.deobf(oculus_coordinate)
     compileOnly fg.deobf(luxium_coordinate)
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'jem_luxium.refmap.json'
+    config 'jem_luxium.mixins.json'
 }
 
 tasks.named('processResources', ProcessResources).configure {

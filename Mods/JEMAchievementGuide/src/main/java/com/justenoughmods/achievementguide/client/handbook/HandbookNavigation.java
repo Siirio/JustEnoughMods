@@ -21,6 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import dev.ftb.mods.ftbquests.client.ClientQuestFile;
 import org.lwjgl.glfw.GLFW;
 import vazkii.patchouli.api.PatchouliAPI;
 import vazkii.patchouli.client.book.gui.GuiBook;
@@ -145,6 +146,8 @@ public final class HandbookNavigation {
     static void select(GuiBook source, HandbookSection section) {
         if (section == HandbookSection.START) {
             source.displayLexiconGui(new GuiBookIndex(source.book), true);
+        } else if (section == HandbookSection.QUESTS) {
+            if (net.minecraftforge.fml.ModList.get().isLoaded("ftbquests")) ClientQuestFile.openGui();
         } else if (section == HandbookSection.MANUALS) {
             source.displayLexiconGui(new HandbookManualScreen(source.book), true);
         } else {
