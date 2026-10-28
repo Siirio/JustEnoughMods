@@ -1,3 +1,13 @@
+## 2026-10-28 - Select complete GUI profiles through resource packs
+
+- User requested FancyMenu title and button placement tied to the selected resource pack, approved separate Legacy and JEM Release profiles, supplied `ModdedCoffeeGUI_Release_v1.16.0.zip` for Legacy, then clarified that Legacy must be one selectable pack and that choosing neither pack must preserve default Minecraft
+- Codex implementation: the approved current Quick Skin layout loads only for `file/JEM Release v0.3.zip`, the preserved original Legacy layout loads only for `file/JEM Legacy v1.0.zip`, and neither custom title layout loads when neither pack is enabled
+- Built private local `JEM Legacy v1.0.zip` by layering CoffeeGUI first and ModdedCoffeeGUI second. The resulting 1,501-entry ZIP has SHA-256 `9e43d9b7bf7305e634bd4f988d2d2fb36cfea46e178cf1c0c32f8c0a2600eee1` and is available in the closed `jem sandbox` resource-pack folder
+- The sandbox currently keeps JEM Release selected. Switching profiles requires disabling the selected JEM pack and enabling the other one, while disabling both returns to default Minecraft
+- The two vendor packs and the private Legacy composite remain outside ManagedPack and Git because no redistribution license was present. Only the exact FancyMenu pack-name selectors are published
+- Published native AutoModpack generation 96 with final content token `52d90fe86629c50fffb90686c64277c9528619b3` and matching staged/published manifest SHA-1 `dbf9353fc8846ad548ba90bd8252e7f15d2915a1`. The closed `test jem` profile has the same active token, both installed layout hashes match ManagedPack and no native transaction remains pending
+- The ordinary local server stopped after clean world saving. Static layout and pack-archive checks passed, while runtime resource reload, menu switching and player visual acceptance remain unobserved because no client launch was authorized
+
 ## 2026-10-28 - Open Embeddium directly and move Luxium controls into its tab
 
 - User requested removal of Luxium's intermediate graphics-settings hub so Video Settings opens Embeddium immediately, with Luxium's full-settings button on the second row of the existing Luxium tab and the Vinlanx YouTube artwork below it

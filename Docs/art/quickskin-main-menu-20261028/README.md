@@ -17,4 +17,12 @@ This folder preserves the user-supplied visual sources and the deterministic Ase
 - `prepare_fancymenu_layout.ps1` deterministically applies the approved right-side text-only layout to the current tracked FancyMenu title-screen file
 The captured FancyMenu widget identifiers correspond to Quick Skin's text action, player preview, rotation control and animation controls. FancyMenu leaves only the Change Skin text action visible directly below the player and suppresses every icon-sized control plus the JEM resource-pack button backgrounds. Quick Skin's native client configuration owns the actual rendered model position and size. The production values are 25 percent size, X offset -422 and Y offset 119 for the user-marked lower-left area. JEMRoles initializes the optional title-screen widget at -20 degrees yaw so the default pose faces into the composition. Personal skin hashes and appearance choices remain user-owned
 
+## Resource-pack profile routing
+
+- The approved pastoral Quick Skin composition is the `JEM Release` title layout and loads only while `file/JEM Release v0.3.zip` is enabled
+- The preserved original `Legacy JEM` layout loads only while `file/JEM Legacy v1.0.zip` is enabled
+- The local `JEM Legacy v1.0.zip` combines CoffeeGUI first and ModdedCoffeeGUI second, so the modded extension fills additional GUI consumers inside one selectable pack
+- When neither JEM pack is enabled, neither custom title layout loads and Minecraft keeps its default menu and GUI
+- The private composite ZIP remains outside ManagedPack and Git because its vendor sources provide no redistribution license. FancyMenu configuration keeps the exact pack-name selectors without copying those resource-pack bytes
+
 No generative or Gemini step is used in the extraction

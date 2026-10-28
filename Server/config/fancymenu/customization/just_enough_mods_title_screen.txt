@@ -9,7 +9,8 @@ layout-meta {
   randomgroup = 1
   randomonlyfirsttime = false
   layout_index = 0
-  [loading_requirement_container_meta:03b48de0-8543-4c2b-a989-246f3bbd3050-1789253542184] = [groups:][instances:]
+  [loading_requirement_container_meta:03b48de0-8543-4c2b-a989-246f3bbd3050-1789253542184] = [groups:][instances:jem-release-resource-pack-enabled;]
+  [loading_requirement:is_resource_pack_enabled][requirement_mode:if][req_id:jem-release-resource-pack-enabled] = file/JEM Release v0.3.zip
 }
 
 menu_background {
@@ -1938,9 +1939,9 @@ vanilla_button {
   auto_sizing_base_gui_scale = 4.0
   sticky_anchor = false
   anchor_point = mid-centered
-  x = 105
-  y = 84
-  width = 190
+  x = -245
+  y = 162
+  width = 110
   height = 20
   stay_on_screen = true
   element_loading_requirement_container_identifier = a4da2132-0a2a-44ad-93ec-2e98201ad7e1-1788108211197
