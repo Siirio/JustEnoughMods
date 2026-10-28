@@ -1,3 +1,10 @@
+## 2026-10-28 - Preserve cinematic scene across JEI lookup
+
+- User reported that clicking a JEI ingredient or bookmark during Cinematic Interactions removed the cinematic interface while the player remained movement-locked, and explicitly requested this lifecycle defect before the missing JEI recipe-transfer "+" control
+- Bug / Client / the JEM JEI overlay opened `RecipesGui` directly from `SceneScreen`, bypassing Cinematic Interactions' native `Scene.consult` lifecycle, so the active scene continued suppressing movement while its scene screen was displaced / in testing, only the `SceneScreen` to JEI recipe-screen transition is routed through the native consultation owner so closing JEI restores the active cinematic scene
+- The missing JEI recipe-transfer "+" control is unchanged and remains a separate follow-up
+- JEM Cinematic Interactions 1.0.2 built successfully with tests disabled by project policy and was installed into the closed `jem sandbox` profile. The prior 1.0.1 JAR is recoverable under `visual-backups/2026-10-28-cinematic-jei-lifecycle`; player acceptance remains pending
+
 ## 2026-10-28 - Plan public standalone CurseForge projects
 
 - User approved eleven independent Forge 1.20.1 release candidates and corrected the public attribution policy: Gem Animal Hints, Gem Drill Durability, In Chat FTB, Gem Seasons HUD and Gem Adaptive Culling declare upstream projects as dependencies without separate credit obligations

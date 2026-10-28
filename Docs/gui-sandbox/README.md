@@ -50,6 +50,10 @@ not depend on the gallery's copied screens. In every recipe-aware container it
 closes and removes the vanilla recipe-book control, leaving the installed JEI
 ingredient list on the right and bookmarks on the left.
 
+Opening a recipe from either JEI overlay enters Cinematic Interactions' native
+consultation lifecycle. Closing JEI restores the same active scene instead of
+leaving the scene active behind a missing screen with movement still suppressed.
+
 Hold Shift and the right mouse button, then sweep across item stacks. Every newly
 crossed stack uses the active menu's native `QUICK_MOVE` action, so the gesture
 works from block or machine to player inventory and from player inventory back to
