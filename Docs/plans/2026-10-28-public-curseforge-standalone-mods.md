@@ -10,6 +10,8 @@
 
 **Spec:** User-approved public standalone scope from 2026-10-28, including the corrected dependency and credit policy captured below
 
+**Future scope:** JEM Serene Seasons Compatibility is recorded as a separate multi-mod compatibility candidate after the frozen eleven. It is planning-only until its own extraction and release gate are approved
+
 ## Global Constraints
 
 - Public projects: JEM Animal Hints, JEM Drill Durability, JEM Mob Home, JEM Excavation, JEM Freecam, JEM Food Blessings, JEM Seasons HUD, JEM Inventory Shortcuts, In Chat FTB, JEM Adaptive Culling, and Unofficial Luxium Compatibility
@@ -43,12 +45,13 @@
 - Modify: `Docs/DEVELOPMENT.md`
 
 **Interfaces:**
-- Produces: one canonical row per project containing public name, mod ID, owner module, side, required dependencies, optional dependencies, preserved identities, and migration source
+- Produces: one canonical row per project containing public name, mod ID, owner module, side, required dependencies, optional dependencies, supported mods, preserved identities, and migration source
 
 - [ ] Record exactly the eleven approved public projects and no additional candidates
 - [ ] Mark the five corrected projects as dependency-only attribution cases
 - [ ] Mark Unofficial Luxium Compatibility as the only project with the special unofficial and Vinlanx credit block
 - [ ] Record whether each project is client-only, both-sided, or server-capable before source extraction starts
+- [ ] Record the exact upstream and content mods each project supports without treating optional compatibility as a required dependency
 - [ ] Review the matrix against installed mod metadata and the current module inventory
 - [ ] Commit the release matrix independently
 
@@ -348,6 +351,33 @@
 - [ ] Review project slugs, categories, game versions, loaders, release channels, and side designations
 - [ ] Request explicit user authorization before creating or uploading any CurseForge project
 - [ ] Publish one project at a time, beginning with JEM Animal Hints, then JEM Drill Durability, JEM Mob Home, JEM Food Blessings, the remaining extractions, and Unofficial Luxium Compatibility after its upstream-facing wording is approved
+
+### Future Task 17: Extract JEM Serene Seasons Compatibility
+
+This future task is outside the frozen eleven and does not change their release count or completion definition
+
+**Files:**
+- Future create: `Mods/JEMSereneSeasonsCompat/`
+- Move/adapt from: `Mods/JEMCompat/src/main/resources/data/sereneseasons/tags/`
+- Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/seasons/SpawnSunflowerSeasons.java`
+- Move/adapt from: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/seasons/SpawnSunflowerSeasonsMixin.java`
+- Modify after replacement proof: `Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java`
+
+**Interfaces:**
+- Requires: Serene Seasons 9.1.0.3+
+- Supports through optional data tags: Alex's Caves, Beachparty, Blast from the Past, Brewery, Deep Dark Regrowth, Farm & Charm, HerbalBrews, Kaleidoscope End, Kaleidoscope Nether, Luminous Nether, Nature's Spirit, Nether's Exoticism, Oceanic Realms, Primal, Snowy Spirit, Unearthed Journey, and Vinery
+- Supports through one isolated version-reviewed adapter: Spawn sunflower seed growth
+- Produces: one independently installable crop-season compatibility owner without JEM Compat
+
+- [ ] Reinspect every supported installed mod version and verify each tagged block and item still exists
+- [ ] Keep every content mod optional, with missing registry IDs ignored safely
+- [ ] Convert every cross-mod Serene Seasons tag member to an optional `required: false` entry so absent content mods cannot invalidate tag loading
+- [ ] Keep Serene Seasons as the only required third-party dependency
+- [ ] Preserve native Serene Seasons greenhouse, biome, season, fertility, and configuration ownership
+- [ ] Move the complete crop-tag tree and Spawn adapter before removing their old JEM Compat owners
+- [ ] Determine the narrowest valid side declaration from clean dedicated and integrated startup evidence
+- [ ] Add an exact "Mods it supports" list to CurseForge metadata and the public description
+- [ ] Run an independent release gate before requesting upload authorization
 
 ## Completion Definition
 

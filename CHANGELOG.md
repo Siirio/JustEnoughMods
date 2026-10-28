@@ -5,6 +5,14 @@
 - Preserved `Legacy JEM` as disabled, backed up the previously active `JEM Release` layout under `visual-backups/2026-10-28-quickskin-main-menu`, disabled it and left only the new Quick Skin layout enabled
 - All five copied files match their canonical `Client/ManagedPack` SHA-256 values and the sandbox remained closed. No client launch, AutoModpack publication, MineRENT deployment or stable-profile mutation was performed
 
+## 2026-10-28 - Plan standalone Serene Seasons compatibility
+
+- User requested a future standalone JEM Serene Seasons multi-mod compatibility project and a new "Mods it supports" column in the public standalone matrix
+- The frozen eleven-project release count remains unchanged. The future candidate is provisionally named JEM Serene Seasons Compatibility and requires Serene Seasons while keeping all supported content mods optional
+- The evidence-backed future scope covers 18 existing crop namespaces. Seventeen use native Serene Seasons item and block tags, while Spawn additionally retains one isolated version-reviewed sunflower growth adapter
+- Updated the public matrix with explicit supported-mod coverage for every current standalone project and added a future extraction task with ownership, optionality, side-verification, migration and release-gate requirements
+- Planning and documentation only. No source extraction, build, runtime installation, AutoModpack publication, CurseForge upload, MineRENT deployment or profile mutation was performed
+
 ## 2026-10-28 - Implement public JEM standalone project foundations
 
 - User requested implementation of the eleven-project public standalone plan, corrected every public "GEM" name to "JEM", and made this standalone baseline the priority that other active sessions must extend
