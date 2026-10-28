@@ -1,3 +1,9 @@
+## 2026-10-28 - Use the approved pastoral scene as the FancyMenu background
+
+- User selected the final hand-painted landscape revision as the FancyMenu main-menu background
+- Replaced only the canonical background image in the art source, `Client/ManagedPack`, ordinary local Server and closed `jem sandbox` profile while preserving the approved FancyMenu layout, title, Quick Skin placement and menu controls
+- The new 1672 by 941 PNG keeps the relaxed backpacked player, proportionally scaled farmer, sheep and cows from the approved revision. Runtime appearance remains unobserved pending player confirmation
+
 ## 2026-10-28 - Fit and flip the Quick Skin menu preview
 
 - User marked the final lower-left model and action boxes, required Change Skin below the model, and required the default player pose flipped horizontally because it faced left
