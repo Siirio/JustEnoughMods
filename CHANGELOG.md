@@ -1,3 +1,10 @@
+## 2026-10-28 - Install Quick Skin menu in jem sandbox
+
+- User requested installation of the approved Quick Skin title-screen composition into the isolated `jem sandbox` profile
+- Installed the exact Quick Skin 2.6.2.4 JAR, its `enableStyledButtons=false` client configuration, the approved FancyMenu layout and both approved image assets without changing sandbox resource-pack order or unrelated configuration
+- Preserved `Legacy JEM` as disabled, backed up the previously active `JEM Release` layout under `visual-backups/2026-10-28-quickskin-main-menu`, disabled it and left only the new Quick Skin layout enabled
+- All five copied files match their canonical `Client/ManagedPack` SHA-256 values and the sandbox remained closed. No client launch, AutoModpack publication, MineRENT deployment or stable-profile mutation was performed
+
 ## 2026-10-28 - Implement public JEM standalone project foundations
 
 - User requested implementation of the eleven-project public standalone plan, corrected every public "GEM" name to "JEM", and made this standalone baseline the priority that other active sessions must extend
