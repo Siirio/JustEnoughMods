@@ -1,3 +1,11 @@
+## 2026-10-28 - Correct standalone compatibility coverage
+
+- User requested every JEM Food Blessings supported mod, challenged the incomplete Barnyard Buddies and Blast From The Past coverage shown for Mob Home and Animal Hints, and requested universal integrations to be described by their actual contract
+- Bug / Both Sided / the public matrix collapsed Animal Hints' universal breeding-food discovery and curated taming catalog into one short namespace list, truncated Mob Home's exact adapter inventory, and described Food Blessings as universal without exposing its exact-ID quality catalog / in testing, the matrix now separates those contracts and records complete source-backed coverage
+- JEM Food Blessings currently assigns 848 foods across 37 namespaces. Other Forge-native foods are consumed safely and can trigger recovery from an existing blessing, but receive no new quality, variety credit, traits, or blessing until cataloged
+- Mob Home already includes exact adapters for Barnyard Buddies and Blast From The Past among 26 supported projects. Animal Hints already discovers their breeding foods through `Animal.isFood`, but its curated taming and mountability layer does not yet cover them
+- Added the missing Animal Hints taming and mountability audit as a mandatory pre-release task. Documentation only, with no gameplay source, build, runtime, AutoModpack, or deployment change
+
 ## 2026-10-28 - Install Quick Skin menu in jem sandbox
 
 - User requested installation of the approved Quick Skin title-screen composition into the isolated `jem sandbox` profile

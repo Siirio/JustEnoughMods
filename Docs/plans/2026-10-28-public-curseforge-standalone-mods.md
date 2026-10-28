@@ -94,6 +94,7 @@
 
 - [ ] Separate animal hints from all boss-help providers that remain in `JEMCompat`
 - [ ] Preserve datapack extension behavior and verified mod-specific adapters
+- [ ] Before public release, audit every installed tameable and mountable species missing from the curated catalog, starting with Barnyard Buddies and Blast From The Past, then add only source-proven taming items and genuine riding paths
 - [ ] Add `Mountable` and `Можно оседлать` only when the species has a real supported riding path
 - [ ] Keep tameable and mountable classification independent
 - [ ] Verify vanilla animals, one supported modded animal per adapter, a tameable non-mount, and an unsupported entity
