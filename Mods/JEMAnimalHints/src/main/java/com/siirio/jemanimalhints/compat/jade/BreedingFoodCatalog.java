@@ -1,4 +1,4 @@
-package com.siirio.jemcompat.compat.jade;
+package com.siirio.jemanimalhints.compat.jade;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

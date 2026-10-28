@@ -1,4 +1,4 @@
-package com.siirio.jemcompat.compat.jade;
+package com.siirio.jemanimalhints.compat.jade;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

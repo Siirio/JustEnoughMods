@@ -1,6 +1,5 @@
 package com.siirio.jemcompat;
 
-import com.siirio.jemcompat.compat.jade.TamingDataLoader;
 import com.siirio.jemcompat.config.JEMClientConfig;
 import com.siirio.jemcompat.feature.worldtier.EnhancedAiTierController;
 import com.siirio.jemcompat.feature.leash.UniversalLeashEvents;
@@ -10,7 +9,6 @@ import com.siirio.jemcompat.feature.transport.TransportContent;
 import com.siirio.jemcompat.feature.transport.TransportEvents;
 import com.siirio.jemcompat.feature.inventory.InventoryDeleteNetwork;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -58,8 +56,4 @@ public final class JEMCompat {
                 });
     }
 
-    @SubscribeEvent
-    public void addReloadListeners(AddReloadListenerEvent event) {
-        event.addListener(TamingDataLoader.instance());
-    }
 }

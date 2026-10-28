@@ -1,12 +1,12 @@
-package com.siirio.jemcompat.compat.jade;
+package com.siirio.jemanimalhints.compat.jade;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IEntityComponentProvider;
@@ -17,18 +17,23 @@ import snownee.jade.api.config.IPluginConfig;
 final class TamingProvider implements IServerDataProvider<EntityAccessor>, IEntityComponentProvider {
     private static final ResourceLocation TAMING_UID = new ResourceLocation("jemcompat", "taming_item");
     private static final String TAMING_ITEMS = "JEMTamingItems";
+    private static final String MOUNTABLE = "JEMMountable";
 
     @Override
     public void appendServerData(CompoundTag tag, EntityAccessor accessor) {
         ResourceLocation entityId = BuiltInRegistries.ENTITY_TYPE.getKey(accessor.getEntity().getType());
+        TamingCatalog.Entry entry = TamingDataLoader.catalog().entryFor(entityId);
         ListTag items = new ListTag();
-        TamingDataLoader.catalog().itemsFor(entityId).stream()
+        entry.items().stream()
                 .filter(BuiltInRegistries.ITEM::containsKey)
                 .map(ResourceLocation::toString)
                 .map(StringTag::valueOf)
                 .forEach(items::add);
         if (!items.isEmpty()) {
             tag.put(TAMING_ITEMS, items);
+        }
+        if (entry.mountable()) {
+            tag.putBoolean(MOUNTABLE, true);
         }
     }
 
@@ -43,6 +48,9 @@ final class TamingProvider implements IServerDataProvider<EntityAccessor>, IEnti
             ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(itemId));
             tooltip.add(Component.translatable("jade.jemcompat.tamable_with", Component.translatable(stack.getDescriptionId())));
             tooltip.append(tooltip.getElementHelper().smallItem(stack));
+        }
+        if (accessor.getServerData().getBoolean(MOUNTABLE)) {
+            tooltip.add(Component.translatable("jade.jemcompat.mountable"));
         }
     }
 

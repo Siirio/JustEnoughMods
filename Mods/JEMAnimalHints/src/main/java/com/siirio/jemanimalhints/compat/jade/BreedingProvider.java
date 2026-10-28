@@ -1,13 +1,13 @@
-package com.siirio.jemcompat.compat.jade;
+package com.siirio.jemanimalhints.compat.jade;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.animal.Animal;
@@ -51,14 +51,12 @@ final class BreedingProvider implements IServerDataProvider<EntityAccessor>, IEn
         List<ItemStack> foods = new ArrayList<>();
         for (Tag itemTag : items) {
             ResourceLocation itemId = ResourceLocation.tryParse(itemTag.getAsString());
-            if (itemId == null || !BuiltInRegistries.ITEM.containsKey(itemId)) {
-                continue;
+            if (itemId != null && BuiltInRegistries.ITEM.containsKey(itemId)) {
+                foods.add(new ItemStack(BuiltInRegistries.ITEM.get(itemId)));
             }
-            foods.add(new ItemStack(BuiltInRegistries.ITEM.get(itemId)));
         }
         if (foods.size() >= COMPACT_FOOD_THRESHOLD) {
-            long rotation = System.nanoTime() / FOOD_ICON_ROTATION_NANOS;
-            ItemStack rotatingFood = foods.get((int) (rotation % foods.size()));
+            ItemStack rotatingFood = foods.get((int) ((System.nanoTime() / FOOD_ICON_ROTATION_NANOS) % foods.size()));
             tooltip.add(compactFoodLabel(foods));
             tooltip.append(tooltip.getElementHelper().smallItem(rotatingFood));
             return;
