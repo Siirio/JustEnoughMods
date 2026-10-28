@@ -9,6 +9,8 @@ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 public final class OptionalMixins implements IMixinConfigPlugin {
+    private static final String EXCAVATION_PLANE_MIXIN =
+            "com.justenoughmods.achievementguide.mixin.ExcavationPlaneQuestMixin";
     private static final Map<String, List<String>> DEPENDENCIES = Map.<String, List<String>>ofEntries(
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.NativePlayerHarvestQuestMixin", List.<String>of()),
             Map.<String, List<String>>entry("com.justenoughmods.achievementguide.mixin.WorldPrehistoricQuestDartDamageMixin", List.<String>of("unearthed_journey")),
@@ -1043,8 +1045,15 @@ public final class OptionalMixins implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        if (EXCAVATION_PLANE_MIXIN.equals(mixinClassName)) {
+            return isLoaded("jemcompat") || isLoaded("jem_excavation");
+        }
         return DEPENDENCIES.getOrDefault(mixinClassName, List.<String>of()).stream()
-                .allMatch(mod -> FMLLoader.getLoadingModList().getModFileById(mod) != null);
+                .allMatch(OptionalMixins::isLoaded);
+    }
+
+    private static boolean isLoaded(String modId) {
+        return FMLLoader.getLoadingModList().getModFileById(modId) != null;
     }
 
     @Override public void onLoad(String mixinPackage) { }

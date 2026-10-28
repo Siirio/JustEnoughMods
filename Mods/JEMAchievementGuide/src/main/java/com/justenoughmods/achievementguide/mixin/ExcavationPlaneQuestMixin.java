@@ -13,7 +13,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Pseudo
-@Mixin(targets = "com.siirio.jemcompat.feature.excavation.ExcavationMining$Batch", remap = false)
+@Mixin(targets = {
+        "com.siirio.jemcompat.feature.excavation.ExcavationMining$Batch",
+        "com.siirio.jemexcavation.feature.ExcavationMining$Batch"
+}, remap = false)
 public abstract class ExcavationPlaneQuestMixin {
     @Shadow @Final private ServerPlayer player;
     @Shadow private boolean removed;
