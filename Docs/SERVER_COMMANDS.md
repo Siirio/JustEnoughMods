@@ -8,6 +8,23 @@ Wallet actions move to Shipping's money tab; the older “Wallet” navigation d
 
 Команды без `/` вводятся в server console; в игре используется `/`.
 
+## GraveStone inventory recovery
+
+Installed GraveStone Forge `1.20.1-1.0.35` stores one binary death record under `world/deaths/<player-uuid>/<death-uuid>.dat`. Resolve the player's UUID from `usercache.json`, then correlate the exact death UUID with `latest.log`. A second death a few milliseconds later can create a separate nearly empty record, so file existence or the newest timestamp alone does not identify the complete inventory.
+
+Do not use `restore <player> <death-uuid> add` for complete recovery in this installed version. Its bytecode calls `Death.getAllItems()`, which restored only the auxiliary `Items` list during the 2026-10-28 Crosbu incident. It returned the Curios belt but omitted `MainInventory` and `ArmorInventory`, while still reporting success. The full native path is `replace`, which clears the ordinary current inventory and delegates to `GraveStoneBlock.fillPlayerInventory` for the saved main inventory and armor. Obtain explicit approval immediately before using it because current items are overwritten.
+
+Fast recovery while the player is online:
+
+1. Read `latest.log`, `usercache.json` and the candidate `.dat` files, then select the record containing the complete `MainInventory` and `ArmorInventory`
+2. Inspect the live player before mutation with `data get entity <player> Inventory` and confirm that overwriting the current inventory is acceptable
+3. Run `restore <player> <death-uuid> replace`
+4. Verify the result with `data get entity <player> Inventory` and `data get entity <player> XpLevel`, checking representative unique items, armor slots and counts instead of trusting the success message
+5. GraveStone's restore command does not restore its saved `Experience` field. Restore the recorded level separately only when authorized, without lowering a higher current level
+6. If `add` was already attempted, inspect for duplicated auxiliary or Curios items after `replace`. The native inventory clear does not prove that an external capability slot was cleared
+
+If the player is offline, prefer waiting until they join and then run the same verified console sequence. A temporary `PlayerEvents.loggedIn` KubeJS recovery script is a last-resort operational bridge. It must target one exact player and death UUID, use a persistent one-shot marker written only after successful recovery and never use `add` for a complete restore. After live NBT verification, delete the exact recovery file from both local `Server/kubejs/server_scripts/jem` and MineRENT `kubejs/server_scripts/jem`, then run `kubejs reload server_scripts`. Confirm that the reload no longer lists the removed file. Client files, AutoModpack publication, stable profiles and the release baseline are not involved in this server-only recovery.
+
 ## SMP and events
 
 `smp` is the dedicated-only SMP route to parties/events and independent domain screens. Profiles and Rewards tabs are retired. `/market` opens the Economy-owned market directly on either host type when Economy is enabled and identity is authorized. Personal item rewards are claimed through the normal inventory E panel, without a command or SMP dependency.
