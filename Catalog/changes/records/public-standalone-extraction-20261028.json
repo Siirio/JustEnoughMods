@@ -58,6 +58,18 @@
         "operation": "replace",
         "before": "JEMCompat owns the Delete key handler and jemcompat:inventory_delete channel",
         "after": "JEM Inventory Shortcuts exclusively owns the same key behavior and jemcompat:inventory_delete protocol 1 channel"
+      },
+      {
+        "property": "food_blessing.duration_presentation",
+        "operation": "replace",
+        "before": "Sub-minute duration labels may contain fractional seconds",
+        "after": "Every positive duration is ceiling-rounded to whole seconds before seconds or minutes presentation, while simulation and synchronization remain in ticks"
+      },
+      {
+        "property": "luxium.public_identity",
+        "operation": "replace",
+        "before": "Internal JEM Luxium display naming",
+        "after": "Unofficial Luxium Compatibility public display name with stable jem_luxium technical ID and required upstream disclaimer"
       }
     ]
   },
@@ -71,6 +83,8 @@
       "Mods/JEMFreecam/src/main/resources/jem_freecam.mixins.json",
       "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/**",
       "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/**",
+      "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java",
+      "Mods/JEMLuxium/gradle.properties",
       "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
     ]
   },
@@ -88,6 +102,22 @@
       "Docs/public-mods/release-matrix.md"
     ]
   },
+  "history": [
+    {
+      "date": "2026-10-28",
+      "commit": "SELF",
+      "action": "extract_public_standalone_owners",
+      "summary": "Move approved feature owners into independently buildable JEM modules, retain established technical identities, and prepare truthful public presentation without uploading projects.",
+      "source_files": [
+        "Mods/JEMExcavation/src/main/java/com/siirio/jemexcavation/**",
+        "Mods/JEMFreecam/src/main/java/com/siirio/jemfreecam/**",
+        "Mods/JEMSeasonsHud/src/main/java/com/siirio/jemseasonshud/**",
+        "Mods/JEMInventoryShortcuts/src/main/java/com/siirio/jeminventoryshortcuts/**",
+        "Mods/JEMFood/src/main/java/com/siirio/jemfood/client/FoodTime.java",
+        "Mods/JEMLuxium/gradle.properties"
+      ]
+    }
+  ],
   "revisions": [],
   "impacts": {
     "systems": [
