@@ -1,3 +1,16 @@
+## 2026-10-29 - Isolate disconnect logging and AutoModpack secret persistence
+
+- User requested that the confirmed MineRENT connection incident fixes become part of `develop` for the next batch update with the other current features
+- Bug / Server Sided / one closed player channel produced 21,417 repeated ServerLogin diagnostics, then AutoModpack synchronously persisted the reconnect secret on the server thread while MineRENT filesystem I/O stalled for more than 60 seconds and the watchdog stopped the fresh server / in testing
+- JEM Compat now preserves the first `ClosedChannelException` diagnostic for each connection and cancels every duplicate regardless of the channel-open race
+- JEM Bootstrap revision `jem.11` publishes each generated host secret to the current process immediately and performs the existing locked atomic persistence on one bounded daemon writer, so a slow host filesystem cannot block game ticks. Disk-backed multi-process lookup, player-bound secret replacement, expiry pruning and fail-closed handshake validation remain intact
+- This change targets the server amplification after a real socket loss. It does not claim to repair the separate MineRENT route timeout to `ForeverSMP.minerent.io:25565`
+- Production JEM Compat 3.9.1 and JEM Bootstrap `jem.11` builds completed without tests. Their SHA-256 values are `a6e001fcd04a978d95a877728a11dbf25c29ddce8221c9f4c611a82126e94368` and `feb25e2682c77b7d3e8a6157c52664705873bd9f307789385d55f15ed58f5628`
+- Synchronized both artifacts to the ordinary local Server, canonical managed source and clean bootstrap-only installer template. The actual stable `JustEnoughMods` profile and MineRENT remain unchanged
+- Published native AutoModpack generation 104 after reviewing the exact delta `+1 ~1 -1`, with content token `2944222d06d89154f19960a09845929d7cbd63d4` and matching staged/published manifest SHA-1 `2301347225d82a501ec77b253145e68184eb8234`
+- Applied generation 104 natively to the closed `test jem` profile. Its active token, JEM Compat and bootstrap hashes match the published/canonical artifacts, the old 3.9.0 JAR is absent and no transaction remains pending
+- The ordinary local server loaded JEM Compat 3.9.1 and stopped cleanly after publication. A real remote disconnect and slow MineRENT filesystem were not reproduced locally, so player acceptance remains unobserved
+
 ## 2026-10-29 - Adjust Ancestral Guardian damage and Born in Bloom boss roots
 
 - User requested that every player and mob except the player who summoned the Ancestral Guardian can damage it

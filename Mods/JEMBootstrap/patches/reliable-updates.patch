@@ -13268,3 +13268,86 @@ diff --git a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUp
  		if (!updater.requiresUpdateBeforeLogin(updateCheckResult)) {
  			updater.close();
  			if (alreadyDisconnected) ScreenImpl.multiplayer();
+
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java b/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java
+@@ -11,8 +11,12 @@ import java.security.NoSuchAlgorithmException;
+ import java.util.HexFormat;
+ import java.util.Map;
+ import java.util.UUID;
++import java.util.concurrent.ArrayBlockingQueue;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.concurrent.ConcurrentMap;
++import java.util.concurrent.RejectedExecutionException;
++import java.util.concurrent.ThreadPoolExecutor;
++import java.util.concurrent.TimeUnit;
+ import java.util.regex.Pattern;
+ 
+ import pl.skidam.automodpack_core.config.AuthJsons;
+@@ -25,6 +29,12 @@ public class SecretsStore {
+ 	static class SecretsCache {
+ 		private static final Pattern KEY_SHAPE = Pattern.compile("[0-9a-f]{64}");
+ 		private static final String DESCRIPTION = "Host secrets";
++		private static final ThreadPoolExecutor WRITER = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
++				new ArrayBlockingQueue<>(64), task -> {
++					Thread thread = new Thread(task, "AutoModpack Host Secret Writer");
++					thread.setDaemon(true);
++					return thread;
++				}, new ThreadPoolExecutor.AbortPolicy());
+ 
+ 		// Swapped whole on every save and reload, so a validating reader sees the old map or the new one, never a half-built one.
+ 		private volatile ConcurrentMap<String, IssuedSecret> cache = new ConcurrentHashMap<>();
+@@ -45,7 +55,15 @@ public class SecretsStore {
+ 			if (knownAbsent.contains(secret)) return null;
+ 			try {
+ 				FileLocks.withLock(lockFile(), () -> {
+-					cache = new ConcurrentHashMap<>(readSecrets());
++					Map<String, IssuedSecret> merged = readSecrets();
++					synchronized (this) {
++						for (var entry : cache.entrySet()) {
++							IssuedSecret local = entry.getValue();
++							if (local != null) replaceByPlayer(merged, local.playerId(), entry.getKey(), local);
++						}
++						pruneExpired(merged);
++						cache = new ConcurrentHashMap<>(merged);
++					}
+ 					return null;
+ 				});
+ 			} catch (IOException | ConfigTools.ConfigException e) {
+@@ -62,6 +80,19 @@ public class SecretsStore {
+ 				throw new IllegalArgumentException("Player id, secret and player name cannot be null or blank");
+ 			String key = hash(secret.secret());
+ 			IssuedSecret issued = new IssuedSecret(playerId, secret.timestamp(), playerName);
++			Map<String, IssuedSecret> published = new ConcurrentHashMap<>(cache);
++			replaceByPlayer(published, playerId, key, issued);
++			pruneExpired(published);
++			cache = new ConcurrentHashMap<>(published);
++			knownAbsent.remove(secret.secret());
++			try {
++				WRITER.execute(() -> persist(playerId, key, issued));
++			} catch (RejectedExecutionException e) {
++				LOGGER.error("Host secret persistence queue is full; the issued secret remains valid until this server stops", e);
++			}
++		}
++
++		private void persist(String playerId, String key, IssuedSecret issued) {
+ 			try {
+ 				FileLocks.withLock(lockFile(), () -> {
+ 					// Read fresh inside the lock: the folder may be shared, so an in-memory view is never authoritative.
+@@ -69,13 +100,11 @@ public class SecretsStore {
+ 					replaceByPlayer(fresh, playerId, key, issued);
+ 					pruneExpired(fresh);
+ 					write(fresh);
+-					cache = new ConcurrentHashMap<>(fresh);
+ 					return null;
+ 				});
+-			} catch (IOException e) {
+-				throw new ConfigTools.ConfigException("Failed to save the host secrets", e);
++			} catch (IOException | RuntimeException e) {
++				LOGGER.error("Failed to persist the host secret for {}; the issued secret remains valid until this server stops", issued.name(), e);
+ 			}
+-			knownAbsent.remove(secret.secret());
+ 		}
+ 
+ 		private Map<String, IssuedSecret> readSecrets() {

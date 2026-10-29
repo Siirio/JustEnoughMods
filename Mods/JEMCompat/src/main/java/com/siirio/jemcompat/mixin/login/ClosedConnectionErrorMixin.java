@@ -16,7 +16,7 @@ public abstract class ClosedConnectionErrorMixin {
 
     @Inject(method="exceptionCaught",at=@At("HEAD"),cancellable=true)
     private void jem$closedChannelOnce(ChannelHandlerContext context,Throwable failure,CallbackInfo callback) {
-        if (!(failure instanceof ClosedChannelException) || context.channel().isOpen()) return;
+        if (!(failure instanceof ClosedChannelException)) return;
         if (jem$closedChannelReported) callback.cancel();
         else jem$closedChannelReported=true;
     }

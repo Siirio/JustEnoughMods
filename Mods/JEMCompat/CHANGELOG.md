@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.9.1 - 2026-10-29
+
+- Collapse repeated closed-channel diagnostics to one report per connection
+- Preserve the first disconnect diagnostic while preventing Netty log storms after queued writes fail
+
 ## 3.9.0 - 2026-10-28
 
 - Apply the GitHub-derived JEM keymap once per client profile through a versioned local receipt
