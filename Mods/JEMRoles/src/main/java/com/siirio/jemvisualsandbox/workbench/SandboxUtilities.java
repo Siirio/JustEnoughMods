@@ -144,7 +144,7 @@ public final class SandboxUtilities {
         }
     }
     private static void guardian(ServerPlayer p) {
-        if(!RaceExperience.ready(p,"guardian"))return;
+        if(!RaceExperience.guardianReady(p))return;
         var tag=p.getPersistentData();
         if(tag.hasUUID("JemSandboxGuardian") && p.serverLevel().getEntity(tag.getUUID("JemSandboxGuardian")) instanceof IronGolem g && g.isAlive())return;
         IronGolem golem=new IronGolem(EntityType.IRON_GOLEM,p.level()) {

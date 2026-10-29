@@ -1,8 +1,0 @@
-{
-  "reviewer": "critical_audit_review",
-  "utc": "2026-10-13T21:50:54.956447+00:00",
-  "scope": "Read-only exact native API, bytecode and proposed repair review; no private logs/auth or writes/builds/gameplay",
-  "ftb_teams": "ClientPacketListener.getLocalGameProfile is existing server-login-success profile; native sync initializes knownPlayers before initSelfDetails; public API getters only. Optional @Pseudo client redirect of GameProfile.getId in exact initSelfDetails(UUID)V, remapfalse, plugin dependencyftbteams. Preserve disconnected/integrated behavior.",
-  "quest_qualification": "Quest GUI barrier is disable_gui or locked selfTeamData. Quests sync assigns self data directly; no proven dependency on Teams.selfKnownPlayer. Identity repair alone cannot be promised to fix quest UI.",
-  "emf": "Exact ModelVariableFactory defaults absent float variables0. Native runtime Float division/FDIV allows0/0 while validation interpreter has special handling. Zero frame and initial SprintingVactor0 allow nonfinite body/leg expressions; cape division independently unguarded. Initialize once to natural equilibrium1, preserve positive-frame recurrence; positive-frame-only cape velocity is valid because IfMethod lazily evaluates chosen branch. Actual earliest values and whole-avatar cause remain pending native isolation. Separate head>64 warning not part of denominator claim."
-}

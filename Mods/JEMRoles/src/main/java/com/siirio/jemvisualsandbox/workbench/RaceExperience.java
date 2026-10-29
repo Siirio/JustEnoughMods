@@ -36,6 +36,8 @@ public final class RaceExperience {
     private static int uses(ServerPlayer p,int race){return RaceService.uses(p,race);}
     public static long remaining(ServerPlayer p,String key){return RaceDevelopment.cooldownsDisabled(p)?0:Math.max(0,RaceService.mechanicsCooldown(p,key)-p.server.overworld().getGameTime());}
     public static boolean ready(ServerPlayer p,String key){return remaining(p,key)==0;}
+    public static long guardianRemaining(ServerPlayer p){return Math.max(remaining(p,"guardian"),remaining(p,"guardian_penalty"));}
+    public static boolean guardianReady(ServerPlayer p){return guardianRemaining(p)==0;}
     public static void cooldown(ServerPlayer p,String key,int ticks){
         if(!allowed(p)||!selected(p)||RaceDevelopment.cooldownsDisabled(p))return;
         RaceService.mutate(p, record -> record.mechanicsCooldown(key,p.server.overworld().getGameTime()+Math.max(0,ticks)));
@@ -102,7 +104,8 @@ public final class RaceExperience {
         boolean test=RaceService.testRaceReselect(p.server);
         long reselect=!test?RaceService.remainingReselectTicks(p):0L;
         UUID nonce=RaceService.currentNonce(p);
-        SandboxNetwork.sendStatus(p,new Status(Math.max(0,race(p)),selected(p),tiers,progress,remaining(p,"signature"),remaining(p,secondary),developerMode(p),bloomUpgrade(p),reselect,test,nonce,SandboxRaceTraits.healingPenalty(p)));
+        long secondaryRemaining=race(p)==0?guardianRemaining(p):remaining(p,secondary);
+        SandboxNetwork.sendStatus(p,new Status(Math.max(0,race(p)),selected(p),tiers,progress,remaining(p,"signature"),secondaryRemaining,developerMode(p),bloomUpgrade(p),reselect,test,nonce,SandboxRaceTraits.healingPenalty(p)));
         SandboxOptionalIrons.sync(p);
     }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent e){if(e.getEntity() instanceof ServerPlayer p&&(allowed(p))){mirrorIfLocal(p);snapshot(p);}}

@@ -4,6 +4,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import java.util.List;
 
 public final class RaceRules {
+    public static final int GUARDIAN_PENALTY_TICKS = 2_400;
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.IntValue GUARDIAN_COOLDOWN;
     public static final ForgeConfigSpec.IntValue LIFE_CHORUS_COOLDOWN;

@@ -3,7 +3,7 @@ package com.siirio.jemroles.race;
 import net.minecraft.nbt.CompoundTag;
 
 public final class RaceRecord {
-    public static final int SCHEMA = 5;
+    public static final int SCHEMA = 6;
     private long reselectReadyAt;
     private String testChoiceEpoch = "";
     private boolean choiceRequired;
@@ -58,6 +58,18 @@ public final class RaceRecord {
             mechanics.putInt("BloomUpgrade", race.ordinal() == 2
                     ? com.siirio.jemvisualsandbox.workbench.RacePowerStages.stageForUses(mechanics.getInt("Uses2")) : 0);
             mechanics.putBoolean("Migrated", true);
+            changed = true;
+        }
+        if (!mechanics.getBoolean("GuardianPenaltyV3")) {
+            long guardianReadyAt = mechanics.getLong("Cooldown0_guardian");
+            long remaining = Math.max(0L, guardianReadyAt - gameTime);
+            if (remaining > RaceRules.GUARDIAN_COOLDOWN.get()) {
+                mechanics.putLong("Cooldown0_guardian_penalty",
+                        gameTime + Math.min(remaining, RaceRules.GUARDIAN_PENALTY_TICKS));
+                mechanics.putLong("Cooldown0_guardian",
+                        gameTime + Math.min(remaining, RaceRules.GUARDIAN_COOLDOWN.get()));
+            }
+            mechanics.putBoolean("GuardianPenaltyV3", true);
             changed = true;
         }
         if (!mechanics.getBoolean("GuardianCooldownV2")) {

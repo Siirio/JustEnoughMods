@@ -170,7 +170,10 @@ public final class SandboxRaceTraits {
             RaceExperience.cooldown(p, "second_blossom", 24000);
         }
         if (e.getSource().getEntity() instanceof ServerPlayer p && hasRace(p, 0)
-                && (e.getEntity() instanceof Animal || e.getEntity() instanceof AbstractVillager)) RaceExperience.cooldown(p, "guardian", 24000);
+                && (e.getEntity() instanceof Animal || e.getEntity() instanceof AbstractVillager)) {
+            RaceExperience.cooldown(p, "guardian_penalty", com.siirio.jemroles.race.RaceRules.GUARDIAN_PENALTY_TICKS);
+            RaceExperience.snapshot(p);
+        }
     }
     @SubscribeEvent public static void experience(LivingExperienceDropEvent e) {
         if (e.getAttackingPlayer() instanceof ServerPlayer p && hasRace(p, 3)) e.setDroppedExperience((int)Math.floor(e.getDroppedExperience() * 1.15));

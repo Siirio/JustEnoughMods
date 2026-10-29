@@ -39,6 +39,18 @@
           "guardian": "One-time saved-cooldown clamp; eligible actual attacker priority including PvP-allowed player, no random player targets.",
           "jade": "Roles-owned server race ID snapshot and client localization, no balances/hidden progress."
         }
+      },
+      {
+        "property": "races.ancestors.guardian_peaceful_kill_penalty",
+        "operation": "replace",
+        "before": "A peaceful animal or villager kill overwrote the ordinary guardian cooldown with 24000 ticks, conflating the moral penalty and the normal ability timer.",
+        "after": {
+          "ordinary_cooldown_ticks": 1200,
+          "peaceful_kill_penalty_ticks": 2400,
+          "repeat_kill": "Restart the independent penalty at the full 2400 ticks.",
+          "expiry": "When the penalty expires, the independently running ordinary cooldown is authoritative again.",
+          "migration": "Clamp the legacy guardian timer to 1200 ticks and move any larger remaining legacy penalty to a separate timer capped at 2400 ticks."
+        }
       }
     ]
   },
@@ -50,7 +62,9 @@
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/irons/RacialSpell.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
       "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
@@ -60,7 +74,7 @@
   },
   "rationale": {
     "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
-    "decision_source": "User plan and explicit later overrides on2026-10-21; Docs/plans/2026-10-21-economy-races-settlements-gui.md current override section.",
+    "decision_source": "User plan and explicit later overrides on 2026-10-21, plus the user's 2026-10-29 correction separating the 2-minute peaceful-kill penalty from the ordinary 60-second guardian cooldown.",
     "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
     "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
   },
@@ -134,6 +148,22 @@
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/compat/jade/RaceJadePlugin.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemroles/trait/RaceAbilities.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",
+        "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
+        "Docs/races/README.md"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "separate_guardian_penalty_from_normal_cooldown_in_testing",
+      "summary": "Replace the accidental 20-minute overwrite with an independent 2-minute peaceful-kill penalty that restarts on another qualifying kill, then returns control to the ordinary 60-second guardian cooldown.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRecord.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemroles/race/RaceRules.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxRaceTraits.java",
         "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
         "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/en_us.json",

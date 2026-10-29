@@ -1,5 +1,9 @@
 # JEM Races
 
+## Ancestral Guardian peaceful-kill penalty — 2026-10-29
+
+The Ancestral Guardian keeps its ordinary 60-second cooldown. Killing a peaceful animal or villager now starts a separate 2-minute guardian lock. Another qualifying kill restarts that penalty at the full 2 minutes. When the penalty expires, only the independently running ordinary cooldown can still block the guardian. Existing saves with the former oversized guardian cooldown migrate once: the ordinary cooldown is clamped to 60 seconds and any larger remainder becomes at most the new 2-minute penalty. The race screen displays whichever guardian gate has more time remaining.
+
 ## Quiet race health changes — 2026-10-26
 
 The user requested that race-owned heart changes not shake the camera or flash the player red. Vanilla `LocalPlayer.hurtTo` treats an ordinary server health decrease as a hit even when the cause was a race's maximum-health adjustment. JEM Races now pre-synchronizes the final health value to the affected player for race-owned max-health clamps, Born in Bloom's daylight regeneration, Life Chorus player healing, Sculk resonance recovery, and Nether lava drinking. The Void water-contact penalty still uses native drowning damage, preserving absorption, invulnerability, totems, Forge damage hooks and death behavior. A short server-marked packet window suppresses only that particular drowning damage event on the affected player and its tracking clients; the final health is then pre-synchronized to the owner. Combat hits, hostile race abilities and unrelated damage still use native damage presentation. Leaving a green biome only stops Born in Bloom's regeneration and applies its existing healing penalty; it does not itself subtract health. This is source behavior pending local player acceptance.

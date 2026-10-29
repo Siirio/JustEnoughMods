@@ -1,3 +1,13 @@
+## 2026-10-29 - Separate the Ancestors penalty and remove obsolete repository documents
+
+- User requested a 2-minute Ancestral Guardian penalty after killing a peaceful animal or villager. Another qualifying kill restarts the full 2 minutes, and after expiry the ordinary 60-second guardian cooldown applies again
+- Bug / Both Sided / the peaceful-kill handler overwrote the ordinary guardian cooldown with 24000 ticks, conflating two independent rules and producing a 20-minute lock / in testing, store a separate 2400-tick penalty gate, restart only that gate on another peaceful kill, require both gates to be ready and show the longer remaining gate in the race screen
+- Existing affected saves migrate once. A legacy guardian remainder above 60 seconds is split into an ordinary cooldown capped at 60 seconds and a penalty capped at 2 minutes without increasing the remaining legacy time
+- Removed 207 obsolete tracked QA dumps, completed Superpowers plans/specification, Engineering v2 delivery receipts, the Stage B handoff, the duplicated `JEM_SMP_COMMANDS.docx` and seven completed plan delivery receipts. Also removed untracked remnants of the same QA evidence, stale Atlas caches, the 2026-09-25 server archive and temporary inspection/JAR backups. Canonical gameplay documents, current Atlas evidence, active visual sources and the 2026-10-26 and 2026-10-29 keybind snapshots remain
+- Built JEM Races without tests and synchronized SHA-256 `0b56fe3d3443a4e4a4a010541756d3b30199b2a5cf0aeab4ff78c87f9c376171` to the ordinary local Server and `Client/ManagedPack`. Native JEM Pack Sync generation 102 was published and applied to the closed `test jem` profile with token `775fc6f202bd7ad9bcbc65838cfe5cf16386e4ab`, matching installed JAR hashes and no pending transaction
+- Regenerated and validated the permanent Atlas. Its remaining impact-scan finding belongs only to the unrelated pre-existing JEM GUI Sandbox working-tree change
+- The user selected the penalty duration and reset behavior. Codex chose a separate persisted timer and one-time migration so the normal cooldown remains an independent mechanic instead of being reconstructed after the penalty
+
 ## 2026-10-29 - Repair Living Path descent, uncap settlements and add Void Walker F7
 
 - User requested ordinary break/fire behavior for Born in Bloom Living Path leaves, one-block descending layer regeneration, settlement territory expansion without artificial minimum/maximum width, and an on/off key for the Void Walker enchantment under the Compat controls section
