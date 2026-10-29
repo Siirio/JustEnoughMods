@@ -13285,7 +13285,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.jav
  import java.util.regex.Pattern;
  
  import pl.skidam.automodpack_core.config.AuthJsons;
-@@ -25,6 +29,12 @@ public class SecretsStore {
+@@ -25,9 +29,17 @@ public class SecretsStore {
  	static class SecretsCache {
  		private static final Pattern KEY_SHAPE = Pattern.compile("[0-9a-f]{64}");
  		private static final String DESCRIPTION = "Host secrets";
@@ -13298,14 +13298,19 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.jav
  
  		// Swapped whole on every save and reload, so a validating reader sees the old map or the new one, never a half-built one.
  		private volatile ConcurrentMap<String, IssuedSecret> cache = new ConcurrentHashMap<>();
-@@ -45,7 +55,15 @@ public class SecretsStore {
++		// Secrets issued in this process but not durably written yet. Only these may override a shared-folder reload.
++		private final ConcurrentMap<String, IssuedSecret> pending = new ConcurrentHashMap<>();
+ 		// Recently failed lookups, so a flood of bogus secrets cannot turn into a flood of locked full-file reads.
+ 		private final TimedSet<String> knownAbsent = new TimedSet<>(3500);
+ 		private final Path file;
+@@ -45,7 +57,15 @@ public class SecretsStore {
  			if (knownAbsent.contains(secret)) return null;
  			try {
  				FileLocks.withLock(lockFile(), () -> {
 -					cache = new ConcurrentHashMap<>(readSecrets());
 +					Map<String, IssuedSecret> merged = readSecrets();
 +					synchronized (this) {
-+						for (var entry : cache.entrySet()) {
++						for (var entry : pending.entrySet()) {
 +							IssuedSecret local = entry.getValue();
 +							if (local != null) replaceByPlayer(merged, local.playerId(), entry.getKey(), local);
 +						}
@@ -13315,7 +13320,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.jav
  					return null;
  				});
  			} catch (IOException | ConfigTools.ConfigException e) {
-@@ -62,6 +80,19 @@ public class SecretsStore {
+@@ -62,6 +82,20 @@ public class SecretsStore {
  				throw new IllegalArgumentException("Player id, secret and player name cannot be null or blank");
  			String key = hash(secret.secret());
  			IssuedSecret issued = new IssuedSecret(playerId, secret.timestamp(), playerName);
@@ -13323,6 +13328,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.jav
 +			replaceByPlayer(published, playerId, key, issued);
 +			pruneExpired(published);
 +			cache = new ConcurrentHashMap<>(published);
++			replaceByPlayer(pending, playerId, key, issued);
 +			knownAbsent.remove(secret.secret());
 +			try {
 +				WRITER.execute(() -> persist(playerId, key, issued));
@@ -13335,11 +13341,12 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.jav
  			try {
  				FileLocks.withLock(lockFile(), () -> {
  					// Read fresh inside the lock: the folder may be shared, so an in-memory view is never authoritative.
-@@ -69,13 +100,11 @@ public class SecretsStore {
+@@ -69,13 +103,12 @@ public class SecretsStore {
  					replaceByPlayer(fresh, playerId, key, issued);
  					pruneExpired(fresh);
  					write(fresh);
 -					cache = new ConcurrentHashMap<>(fresh);
++					pending.remove(key, issued);
  					return null;
  				});
 -			} catch (IOException e) {
