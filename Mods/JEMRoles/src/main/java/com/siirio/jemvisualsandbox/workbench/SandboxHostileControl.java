@@ -35,9 +35,9 @@ public final class SandboxHostileControl {
         long now=owner.server.overworld().getGameTime();
         boolean boss=ProductionRaceBridge.registeredBoss(target);
         if(boss && target.getPersistentData().getLong("JemSandboxRootProtectedUntil")>now)return;
-        int duration=boss?20:BloomMechanics.GRIP_TICKS;
+        int duration=boss?BloomMechanics.BOSS_GRIP_TICKS:BloomMechanics.GRIP_TICKS;
         int upgrade=MainSkillProgression.level(owner,2);
-        SandboxNetwork.effect(owner,upgrade==0?34:10,2,target.position(),0,target.getId());
+        SandboxNetwork.effect(owner,boss?37:upgrade==0?34:10,2,target.position(),0,target.getId());
         if(!(target instanceof Mob mob) || !(mob instanceof Enemy || mob.isAggressive() || mob.getTarget() instanceof net.minecraft.world.entity.player.Player))return;
         var tag=mob.getPersistentData();tag.putUUID("JemSandboxRootOwner",owner.getUUID());tag.putLong(UNTIL,now+duration);
         tag.putDouble("JemRootX",mob.getX());tag.putDouble("JemRootY",mob.getY());tag.putDouble("JemRootZ",mob.getZ());

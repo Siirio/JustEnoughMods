@@ -199,6 +199,14 @@ public final class SandboxUtilities {
             g.setTarget(guardianThreat(owner,g));
         }
     }
+    @SubscribeEvent(priority=net.minecraftforge.eventbus.api.EventPriority.HIGHEST)
+    public static void guardianOwnerAttack(net.minecraftforge.event.entity.living.LivingAttackEvent event) {
+        if(!(event.getEntity() instanceof IronGolem golem)
+                ||!golem.getPersistentData().hasUUID("JemSandboxGuardianOwner"))return;
+        var attacker=event.getSource().getEntity()!=null?event.getSource().getEntity():event.getSource().getDirectEntity();
+        if(attacker instanceof ServerPlayer player
+                &&player.getUUID().equals(golem.getPersistentData().getUUID("JemSandboxGuardianOwner")))event.setCanceled(true);
+    }
     private static boolean validGuardianTarget(ServerPlayer owner,IronGolem golem,LivingEntity target) {
         if(owner==null||target==null||target==owner||!target.isAlive()||target.isSpectator()
                 ||target.level()!=golem.level()||target.isInvulnerable()||owner.isAlliedTo(target)

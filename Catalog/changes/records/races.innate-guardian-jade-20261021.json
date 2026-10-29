@@ -51,6 +51,16 @@
           "expiry": "When the penalty expires, the independently running ordinary cooldown is authoritative again.",
           "migration": "Clamp the legacy guardian timer to 1200 ticks and move any larger remaining legacy penalty to a separate timer capped at 2400 ticks."
         }
+      },
+      {
+        "property": "races.ancestors.guardian_damage_admission",
+        "operation": "replace",
+        "before": "The guardian previously used global invulnerability and later only cleared that legacy flag, without an explicit persisted owner-only damage rule.",
+        "after": {
+          "summoning_player": "Direct and indirect attacks attributed to the exact guardian owner are canceled.",
+          "other_players_and_mobs": "Native Minecraft damage is admitted without a JEM immunity override.",
+          "preserved": "Native damage processing, no-loot/no-experience policy, tier lifetime, targeting and encounter interaction remain unchanged."
+        }
       }
     ]
   },
@@ -74,7 +84,7 @@
   },
   "rationale": {
     "purpose": "Implement the final approved economy/races/settlements/encounter functional plan while retaining native owners and the current SMP design.",
-    "decision_source": "User plan and explicit later overrides on 2026-10-21, plus the user's 2026-10-29 correction separating the 2-minute peaceful-kill penalty from the ordinary 60-second guardian cooldown.",
+    "decision_source": "User plan and explicit later overrides on 2026-10-21, plus the user's 2026-10-29 corrections separating the 2-minute peaceful-kill penalty from the ordinary 60-second guardian cooldown and allowing everyone except the summoning player to damage the guardian.",
     "user_requested": "Approved anchors, public terminal, death/home, race/Jade, membership/happiness income, boss barrier removal/attack GUI/Raid preparation and official marker travel.",
     "codex_choices": "Scoped owner adapters, persisted operation/day receipts, rational carry, safe-box preflight and isolated recovery; technical details are not separately user-approved balance changes."
   },
@@ -170,6 +180,16 @@
         "Mods/JEMRoles/src/main/resources/assets/jem_roles/lang/ru_ru.json",
         "Docs/races/README.md"
       ]
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "admit_non_owner_guardian_damage_in_testing",
+      "summary": "Keep the summoned guardian vulnerable to ordinary damage from every source except direct or indirect attacks attributed to its exact summoning player.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java",
+        "Docs/races/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -178,7 +198,8 @@
       "irons_spellbooks",
       "pvp",
       "jade",
-      "save_migration"
+      "save_migration",
+      "guardian_damage"
     ],
     "relations": "Owning modules remain single authorities; adapters translate server-authoritative identities/state. Source paths include the complete current task diff for this domain; unrelated VFX/registry-coverage.csv excluded.",
     "notes": "Prohibitions on tests/static analysis/gameplay respected. Atlas effective/artifact refresh belongs to parent release workflow after fresh artifacts.",

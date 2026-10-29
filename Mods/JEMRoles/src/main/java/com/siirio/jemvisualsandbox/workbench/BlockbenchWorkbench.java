@@ -137,12 +137,13 @@ public final class BlockbenchWorkbench {
         if(packet.action()>=20 && packet.action()<=29) { UtilityVfx.receive(packet);return; }
         if (packet.action() >= 2 && packet.action() <= 4 && packet.race() == 4) { FlameSlashRenderer.receive(packet); return; }
         if(packet.action()==5 || packet.action()==7 || packet.action()==9) { ElementalRenderer.receive(packet);return; }
-        if(packet.action()==8 || packet.action()==10 || packet.action()==34) {
+        if(packet.action()==8 || packet.action()==10 || packet.action()==34 || packet.action()==37) {
             String id=packet.action()!=8?"entity_vines":"eruption"+Math.floorMod(packet.subject(),3);
             try {
                 WorkbenchMesh model=CACHE.get(id);if(model==null){model=WorkbenchMesh.load(id,2);CACHE.put(id,model);}
                 if(INSTANCES.size()>=64)INSTANCES.remove(0);
-                INSTANCES.add(new Instance(model,packet.origin(),client.level,client.level.getGameTime(),packet.yaw(),packet.action()!=8?packet.subject():-1,packet.action()!=8?BloomMechanics.GRIP_TICKS+12:model.poses.length-1));
+                int ticks=packet.action()==37?BloomMechanics.BOSS_GRIP_TICKS+12:BloomMechanics.GRIP_TICKS+12;
+                INSTANCES.add(new Instance(model,packet.origin(),client.level,client.level.getGameTime(),packet.yaw(),packet.action()!=8?packet.subject():-1,packet.action()!=8?ticks:model.poses.length-1));
             } catch(IOException error){LogUtils.getLogger().error("Cannot load elemental model "+id,error);label(client,"Elemental model failed to load; see log");}
             return;
         }
@@ -184,7 +185,8 @@ public final class BlockbenchWorkbench {
             if(subject==null || !subject.isAlive())return;
             origin=subject.getPosition(event.getPartialTick());
             double tick=seconds*20;
-            if(instance.ticks()==BloomMechanics.GRIP_TICKS+12)seconds=BloomMechanics.rootPoseTick(tick)/20;
+            if(instance.ticks()==BloomMechanics.GRIP_TICKS+12 || instance.ticks()==BloomMechanics.BOSS_GRIP_TICKS+12)
+                seconds=BloomMechanics.rootPoseTick(tick,instance.ticks()-12)/20;
         }
         float sx=1,sy=1,sz=1;
         if(subject!=null){var box=subject.getBoundingBox();sx=(float)(box.getXsize()+.16);sy=(float)(box.getYsize()/2);sz=(float)(box.getZsize()+.16);}

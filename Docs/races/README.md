@@ -1,5 +1,13 @@
 # JEM Races
 
+## Born in Bloom boss-root duration — 2026-10-29
+
+Born in Bloom roots keep their ordinary 3-second duration against normal targets. Every boss registered through the canonical World Tier boss profile uses exactly 40% of that duration, currently 1.2 seconds, so bosses escape 60% sooner. The same ratio is derived from the shared root duration and therefore remains correct if the ordinary value changes later. Boss native ticking and phase behavior continue while rooted, existing repeat protection remains unchanged, and the client vine release now matches the shorter server-owned boss duration.
+
+## Ancestral Guardian damage ownership — 2026-10-29
+
+The Ancestral Guardian is an ordinary damageable iron golem for every player and mob except the player who summoned that exact guardian. Direct and indirect attacks attributed to the summoning player are canceled on the server. Other damage keeps native Minecraft armor, immunity, hurt-cooldown, death, knockback and attacker behavior. The guardian still drops no loot or experience and still expires through its existing tier duration.
+
 ## Ancestral Guardian peaceful-kill penalty — 2026-10-29
 
 The Ancestral Guardian keeps its ordinary 60-second cooldown. Killing a peaceful animal or villager now starts a separate 2-minute guardian lock. Another qualifying kill restarts that penalty at the full 2 minutes. When the penalty expires, only the independently running ordinary cooldown can still block the guardian. Existing saves with the former oversized guardian cooldown migrate once: the ordinary cooldown is clamped to 60 seconds and any larger remainder becomes at most the new 2-minute penalty. The race screen displays whichever guardian gate has more time remaining.

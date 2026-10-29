@@ -128,11 +128,13 @@
         },
         "after": {
           "normal_ticks": 60,
-          "boss_ticks": 20,
+          "boss_duration_ratio": 0.4,
+          "boss_ticks": 24,
           "boss_repeat_protection_after_release_ticks": 160,
           "admission": "before damage plus native acceptance, each delayed pulse owner-attributed indirectMagic",
           "boss_native_tick": "continues",
-          "boss_poison": "native accepted effective-health path, no direct HP overwrite"
+          "boss_poison": "native accepted effective-health path, no direct HP overwrite",
+          "presentation": "Client vine release uses the same server-owned normal or boss grip duration."
         }
       },
       {
@@ -218,6 +220,8 @@
     "source_files": [
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceScreen.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/LifeChorusAbility.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BloomMechanics.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/ProductionRaceBridge.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/RaceExperience.java",
       "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
@@ -280,7 +284,7 @@
   },
   "rationale": {
     "purpose": "Fix repeated growth and cross-action scaling before targeted numeric tuning; retain native phases, reward value, saves, optional-mod independence and server authority.",
-    "decision_source": "User supplied correction brief; lower Raid/climate/Void/fire/root/telegraph/chorus values requested; exact native adapters, snapshot scopes and MULTIPLY_BASE implementation chosen from installed bytecode.",
+    "decision_source": "User supplied correction brief; lower Raid/climate/Void/fire/root/telegraph/chorus values requested; on 2026-10-29 the user explicitly defined boss-root duration as 40% of the ordinary duration; exact native adapters, snapshot scopes and MULTIPLY_BASE implementation chosen from installed bytecode.",
     "artifacts": [
       {
         "file": "L_Enders_Cataclysm-3.31.jar",
@@ -336,6 +340,18 @@
       "commit": "SELF",
       "action": "preserve_primary_shredder_contract",
       "summary": "Independent review found lawful native primary Shredder bonus would be excluded by vanilla PLAYER_ATTACK classification. Exact pinned onUseTick adapter retains the bonus with supplied stack and per-invocation identity."
+    },
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "set_boss_root_to_forty_percent_in_testing",
+      "summary": "Derive every registered boss root duration as 40% of the ordinary Born in Bloom root duration and release the client vine presentation on the same authoritative schedule.",
+      "source_files": [
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BloomMechanics.java",
+        "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxHostileControl.java",
+        "Docs/races/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -348,7 +364,8 @@
       "healing_modifiers",
       "native allies and projectiles",
       "event_balance",
-      "network_compatibility"
+      "network_compatibility",
+      "boss_control_duration"
     ],
     "relations": [
       "native formula -> source-scoped adapter -> one generic skip -> native target defenses",

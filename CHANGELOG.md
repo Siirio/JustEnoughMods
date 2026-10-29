@@ -1,3 +1,17 @@
+## 2026-10-29 - Adjust Ancestral Guardian damage and Born in Bloom boss roots
+
+- User requested that every player and mob except the player who summoned the Ancestral Guardian can damage it
+- Bug / Both Sided / the guardian originally used global entity invulnerability, and the later migration only cleared that legacy flag without defining the requested owner-only damage boundary / in testing, keep the guardian's invulnerability flag disabled and cancel only direct or indirect attacks attributed to its persisted summoning-player UUID
+- Native damage handling, knockback, hurt cooldowns, death, targeting, tier lifetime and the existing no-loot/no-experience rule remain unchanged
+- The user selected the owner-only immunity rule. Codex chose the persisted guardian owner UUID as the server-authoritative admission signal so no client or proximity inference can grant immunity
+- User requested that registered bosses remain in Born in Bloom vines for 40% of the ordinary duration, described as escaping 60% sooner. The exact current values are 3 seconds for ordinary targets and 1.2 seconds for bosses
+- The former boss-specific value was 1 second, approximately 33% of the ordinary duration. The new duration is derived from the shared ordinary timer and the client release animation follows the same server-owned value
+- Built JEM Races without tests and synchronized SHA-256 `08f9865f7cccd25834d61b63514200a2b3fbfde9873ce21267cf6a1c68c5456c` to the ordinary local Server and `Client/ManagedPack`
+- Published native AutoModpack generation 103 with reviewed delta `+0 ~2 -0` and content token `6020ae7fd1bf89f920f603127931f509531a0bf0`. The ordinary local server saved all dimensions and stopped after publication
+- Applied generation 103 natively to the closed `test jem` profile. Its active token and installed JAR hash match the published and canonical artifacts, and no transaction remains pending
+- Regenerated and validated the permanent Atlas with 178 change records. The impact scan covers every task-owned JEM Roles source and reports only the unrelated pre-existing JEM GUI Sandbox working-tree change
+- Runtime player acceptance of guardian damage admission and boss vine timing remains unobserved because the client was not launched
+
 ## 2026-10-29 - Separate the Ancestors penalty and remove obsolete repository documents
 
 - User requested a 2-minute Ancestral Guardian penalty after killing a peaceful animal or villager. Another qualifying kill restarts the full 2 minutes, and after expiry the ordinary 60-second guardian cooldown applies again
