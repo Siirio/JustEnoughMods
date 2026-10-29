@@ -73,6 +73,7 @@ The approved public Forge 1.20.1 extraction scope is frozen in the [public relea
 | `JEMEconomy` | Единственный runtime owner `jem_economy` Coins, Wallet/physical ledger, provenance/escrow/receipts, funded native merchants, market и Shipping Box; world SERVER config `[economy] enabled=true` |
 | `JEMSettlements` | Одна production-реализация settlements для integrated/dedicated: unlimited towns, residents/housing/happiness, real storage, payroll и native GUI; Coin adapter optional, при Economy absent/off используется существующий EmeraldTreasury |
 | `JEMServer` | Общие non-event SMP services, parties, profile/map UX и ordinary boss/Raid UI. Scheduled/seasonal Events запускаются только при explicit dedicated host opt-in |
+| `JEMSecurity` | Dedicated-host security: server-owned command/Creative audit, Creative item provenance, outgoing chunk Anti-Xray, authoritative reach/visibility guards, required client attestation and consent-only sanitized client log collection. `jem_freecam` remains explicitly allowed |
 | `JEMBootstrap` / AutoModpack | Native generation/download/trust/transaction/ownership owner; source patch `jem.9` исправляет acquisition/projection paths и показывает один file list, risk consent и Download |
 | `JEMProfessions` | Development-only consumer Pufferfish-owned category XP/levels/points; не включается в original/shareable pack |
 | `JEMVillagerTalking` | Development-only text-only villager scenes/subtitles; не включается в original/shareable pack |

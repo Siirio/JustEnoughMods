@@ -1,3 +1,16 @@
+## 2026-10-29 - Add JEM Security without updating test jem
+
+- User requested a dedicated JEM Security system after rejecting FCW AntiCheat because it conflicted with Embeddium and the pack and crashed the server
+- User clarified that the existing collision-limited `jem_freecam` is allowed. The prohibited freecam is the third-party client mod that can fly the camera through blocks
+- Added the matching client/server `jem_security` 1.0.0 module without any Embeddium, Oculus or renderer hook
+- Dedicated servers now require the matching security channel, record commands and game-mode transitions, tag Creative-created stacks with provenance and follow count changes, drops, pickups, use, placement and storage closure in per-player JSONL journals. One bounded daemon writer owns disk I/O so audit persistence never blocks the game thread
+- Anti-Xray replaces fully enclosed Forge-tagged ores and Ancient Debris only in outgoing chunk data, then reveals the real block state after exposure. Xray resource packs therefore do not receive hidden ore identities to render
+- Known declared client mod IDs and suspicious enabled resource-pack IDs are checked by bounded attestation. The server independently rejects block or entity actions outside authoritative reach or through solid collision and records a suspicion score
+- Administrators can inspect `/jemsecurity status`, `/jemsecurity history` and request a bounded sanitized tail of `latest.log`. Log content is transmitted only after the player clicks the consent action, and user paths, likely secrets and IP addresses are redacted first
+- Client attestation is supporting evidence and can be forged by a modified client. Server-owned Anti-Xray, action validation and audit remain the primary controls
+- Production JEM Security compilation completed without tests. SHA-256 is `6c2d833d5d81848464b27c47b26140190053c59c4c7a3b1c8163d62e576d87a2`
+- Per the user's explicit request, `Client/ManagedPack`, the ordinary local Server, native AutoModpack publication and the `test jem` profile were not updated. Runtime Mixin loading and player acceptance remain unobserved
+
 ## 2026-10-29 - Isolate disconnect logging and AutoModpack secret persistence
 
 - User requested that the confirmed MineRENT connection incident fixes become part of `develop` for the next batch update with the other current features

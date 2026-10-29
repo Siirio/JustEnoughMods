@@ -1,0 +1,132 @@
+{
+  "schema_version": 2,
+  "change_id": "security.audit-antixray-20261029",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "conditions": [
+    {
+      "host": "Dedicated Forge server with jem_security enabled and the matching required client companion"
+    }
+  ],
+  "precedence": {
+    "layer": "server_security",
+    "priority": 90,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Add server-authoritative Creative provenance, command and game-mode audit, outgoing-chunk Anti-Xray, action validation and bounded client attestation",
+    "modifiers": [
+      {
+        "property": "client.hidden_ore_identity",
+        "operation": "derive",
+        "before": "The initial chunk packet exposes every real ore block state to resource packs and client render mods",
+        "after": "Fully enclosed forge:ores blocks and Ancient Debris are encoded as a neighboring solid filler until server-observed exposure, without changing the authoritative world block",
+        "conditions": [
+          "Dedicated host",
+          "antiXray enabled"
+        ],
+        "notes": "Exposed ores remain visible. The server reveals adjacent real states after block removal"
+      },
+      {
+        "property": "creative_item.provenance_audit",
+        "operation": "add",
+        "before": "No JEM-owned durable correlation between a Creative slot mutation and the later stack",
+        "after": "Creative-created stacks receive a provenance UUID and per-player JSONL transitions cover creation, clearing, count reduction, inventory exit, drop, pickup, use, placement and container closure through one bounded daemon writer that never blocks the game thread"
+      },
+      {
+        "property": "client.security_attestation",
+        "operation": "add",
+        "before": "No matching JEM security channel or bounded declared-mod/resource-pack report",
+        "after": "Matching client/server protocol is required; exact configured banned mod IDs and suspicious enabled pack tokens are rejected while jem_freecam remains allowed"
+      },
+      {
+        "property": "client.latest_log_collection",
+        "operation": "add",
+        "before": "No JEM Security client-log route",
+        "after": "An operator may request a bounded sanitized latest.log tail, but transmission starts only after an explicit player click and removes user paths, likely secrets and IP addresses"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMSecurity",
+    "kind": "dedicated_host_security_module",
+    "source_files": [
+      "Mods/JEMSecurity/build.gradle",
+      "Mods/JEMSecurity/gradle.properties",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/ItemProvenance.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/JEMSecurity.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityAuditLog.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityCommands.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityConfig.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityRuntime.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/ChunkPacketDataMixin.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/CreativeSlotMixin.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+      "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
+      "Mods/JEMSecurity/src/main/resources/jem_security.mixins.json",
+      "Mods/JEMSecurity/src/main/resources/pack.mcmeta"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent hidden-ore disclosure and unauthorized remote interactions while preserving auditable Creative administration without FCW AntiCheat render integration",
+    "decision_source": "User request and clarification on 2026-10-29",
+    "user_requested": "Create JEM Security, keep test jem unchanged, allow JEM Freecam, block third-party through-block freecam and xray advantages, and track Creative and suspicious actions",
+    "codex_choices": "Use outgoing chunk encoding instead of renderer hooks, exact configurable client IDs plus server authority, provenance NBT for Creative stacks, JSONL journals and consent-only sanitized log transfer"
+  },
+  "introduced": {
+    "date": "2026-10-29",
+    "commit": "SELF",
+    "action": "add_jem_security",
+    "summary": "Add the standalone source and production artifact without installing it into test jem or runtime distributions"
+  },
+  "history": [
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "add_jem_security",
+      "summary": "Add server-authoritative audit, Anti-Xray and matching client attestation while explicitly allowing jem_freecam",
+      "source_files": [
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/AntiXray.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/SecurityEvents.java",
+        "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "server_security",
+      "creative_inventory",
+      "inventory",
+      "chunk_networking",
+      "ore_visibility",
+      "commands",
+      "client_server_contract",
+      "privacy"
+    ],
+    "relations": [
+      "Authoritative LevelChunk -> filtered outgoing section copy -> client chunk only",
+      "Creative slot packet -> provenance tag -> server transition journal",
+      "Declared client mods and packs -> bounded attestation -> exact configured admission decision",
+      "Administrator request -> player consent -> client-side redaction -> bounded server file"
+    ],
+    "notes": [
+      "JEM Freecam remains allowed and retains its own collision and interaction guards",
+      "No Embeddium, Oculus or renderer class is referenced",
+      "The module is inactive on integrated servers",
+      "Client attestation is forgeable and is never treated as sole proof"
+    ],
+    "unresolved": [
+      "Runtime Mixin application, modded ore-tag coverage, handshake behavior and player acceptance are unobserved because no game or server launch was authorized",
+      "Unknown or deliberately renamed client mods and resource packs cannot be identified reliably from a hostile client",
+      "The production JAR is not installed in Client/ManagedPack, test jem or the ordinary local Server by explicit user request"
+    ]
+  }
+}
