@@ -74,16 +74,22 @@ public final class TownRecord implements com.siirio.jemsettlements.payroll.Payro
     public int territoryRadius() { return territoryRadius; }
     public int territoryMinX() { return territoryMinX; } public int territoryMaxX() { return territoryMaxX; }
     public int territoryMinZ() { return territoryMinZ; } public int territoryMaxZ() { return territoryMaxZ; }
-    public long territoryArea() { return (long) (territoryMaxX - territoryMinX + 1) * (territoryMaxZ - territoryMinZ + 1); }
+    public long territoryArea() { long width=(long)territoryMaxX-territoryMinX+1L,height=(long)territoryMaxZ-territoryMinZ+1L;return width>Long.MAX_VALUE/height?Long.MAX_VALUE:width*height; }
     public void rename(String value) { name = value; }
     public boolean expansionSeen(UUID request) { return expansionReceipts.contains(request); }
     public void recordExpansion(UUID request) { expansionReceipts.add(request); while (expansionReceipts.size() > 64) expansionReceipts.remove(expansionReceipts.iterator().next()); }
     public boolean contains(BlockPos position) { return position.getX() >= territoryMinX && position.getX() <= territoryMaxX && position.getZ() >= territoryMinZ && position.getZ() <= territoryMaxZ; }
-    public void territoryRadius(int value) { territoryRadius = Math.max(32, Math.min(256, value)); territoryMinX = center.getX() - territoryRadius; territoryMaxX = center.getX() + territoryRadius; territoryMinZ = center.getZ() - territoryRadius; territoryMaxZ = center.getZ() + territoryRadius; }
+    public void territoryRadius(int value) {
+        long radius=Math.max(0,value);
+        territoryBounds((int)Math.max(Integer.MIN_VALUE,(long)center.getX()-radius),(int)Math.max(Integer.MIN_VALUE,(long)center.getZ()-radius),
+                (int)Math.min(Integer.MAX_VALUE,(long)center.getX()+radius),(int)Math.min(Integer.MAX_VALUE,(long)center.getZ()+radius));
+    }
     public void territoryBounds(int minX, int minZ, int maxX, int maxZ) {
-        territoryMinX = Math.max(center.getX() - 256, Math.min(minX, center.getX())); territoryMaxX = Math.min(center.getX() + 256, Math.max(maxX, center.getX()));
-        territoryMinZ = Math.max(center.getZ() - 256, Math.min(minZ, center.getZ())); territoryMaxZ = Math.min(center.getZ() + 256, Math.max(maxZ, center.getZ()));
-        territoryRadius = Math.max(Math.max(center.getX() - territoryMinX, territoryMaxX - center.getX()), Math.max(center.getZ() - territoryMinZ, territoryMaxZ - center.getZ()));
+        territoryMinX=Math.min(minX,center.getX());territoryMaxX=Math.max(maxX,center.getX());
+        territoryMinZ=Math.min(minZ,center.getZ());territoryMaxZ=Math.max(maxZ,center.getZ());
+        long radius=Math.max(Math.max((long)center.getX()-territoryMinX,(long)territoryMaxX-center.getX()),
+                Math.max((long)center.getZ()-territoryMinZ,(long)territoryMaxZ-center.getZ()));
+        territoryRadius=(int)Math.min(Integer.MAX_VALUE,radius);
     }
     public void lastHappinessDay(long value) { lastHappinessDay = value; }
     public void happiness(int value) { happiness = clamp(value); }

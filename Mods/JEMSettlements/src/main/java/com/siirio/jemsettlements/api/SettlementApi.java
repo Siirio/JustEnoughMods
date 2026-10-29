@@ -12,6 +12,8 @@ import java.util.Optional;
 import java.util.UUID;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.Villager;
@@ -192,12 +194,13 @@ public final class SettlementApi {
         if (!SettlementAuthority.active(player)) return Result.UNAVAILABLE;
         var town = ownedTown(player);
         if (town.isEmpty()) return Result.UNAUTHENTICATED;
-        if (radius < 32 || radius > 256) return Result.INVALID;
+        if (radius < 0) return Result.INVALID;
         // Legacy command must pass through the same priced union as Xaero. Shrinking
         // and reclaiming land is not a means of bypassing the area price.
-        return expandBounds(player, town.get(), town.get().center().getX() - radius,
-                town.get().center().getZ() - radius, town.get().center().getX() + radius,
-                town.get().center().getZ() + radius, UUID.randomUUID());
+        long minX=(long)town.get().center().getX()-radius,minZ=(long)town.get().center().getZ()-radius;
+        long maxX=(long)town.get().center().getX()+radius,maxZ=(long)town.get().center().getZ()+radius;
+        if(minX<Integer.MIN_VALUE||minZ<Integer.MIN_VALUE||maxX>Integer.MAX_VALUE||maxZ>Integer.MAX_VALUE)return Result.INVALID;
+        return expandBounds(player, town.get(), (int)minX, (int)minZ, (int)maxX, (int)maxZ, UUID.randomUUID());
     }
 
     public static Result expandTerritory(ServerPlayer player, UUID townId, int targetX, int targetZ, UUID requestId) {
@@ -211,12 +214,16 @@ public final class SettlementApi {
     private static Result expandBounds(ServerPlayer player, TownRecord value, int proposedMinX, int proposedMinZ,
                                        int proposedMaxX, int proposedMaxZ, UUID requestId) {
         var town = Optional.of(value); UUID townId = value.id();
-        if ((long) proposedMinX < (long) value.center().getX() - 256 || (long) proposedMaxX > (long) value.center().getX() + 256
-                || (long) proposedMinZ < (long) value.center().getZ() - 256 || (long) proposedMaxZ > (long) value.center().getZ() + 256) return Result.CONFLICT;
+        var level=player.server.getLevel(ResourceKey.create(Registries.DIMENSION,value.dimension()));
+        if(level==null)return Result.INVALID;
+        int y=town.get().center().getY();
+        if(!level.getWorldBorder().isWithinBounds(new BlockPos(proposedMinX,y,proposedMinZ))
+                ||!level.getWorldBorder().isWithinBounds(new BlockPos(proposedMinX,y,proposedMaxZ))
+                ||!level.getWorldBorder().isWithinBounds(new BlockPos(proposedMaxX,y,proposedMinZ))
+                ||!level.getWorldBorder().isWithinBounds(new BlockPos(proposedMaxX,y,proposedMaxZ)))return Result.CONFLICT;
         var quote = com.siirio.jemsettlements.town.TerritoryQuote.union(value.territoryMinX(), value.territoryMinZ(), value.territoryMaxX(), value.territoryMaxZ(),
                 proposedMinX, proposedMinZ, proposedMaxX, proposedMaxZ);
         int minX = quote.minX(), maxX = quote.maxX(), minZ = quote.minZ(), maxZ = quote.maxZ();
-        if (minX < town.get().center().getX() - 256 || maxX > town.get().center().getX() + 256 || minZ < town.get().center().getZ() - 256 || maxZ > town.get().center().getZ() + 256) return Result.CONFLICT;
         long added = quote.addedCopper();
         if (added <= 0L) return Result.INVALID;
         SettlementSavedData data = SettlementSavedData.get(player.getServer());

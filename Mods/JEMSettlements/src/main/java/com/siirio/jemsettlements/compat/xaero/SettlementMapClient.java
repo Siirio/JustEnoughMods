@@ -87,9 +87,7 @@ public final class SettlementMapClient {
         if (state != TerritoryDragState.DRAGGING || draft == null) return;
         if (!draft.area().dimension().equals(dim)) { cancel(); return; }
         Area a = draft.area();
-        int tx = Math.max(a.center().getX() - 256, Math.min(a.center().getX() + 256, x));
-        int tz = Math.max(a.center().getZ() - 256, Math.min(a.center().getZ() + 256, z));
-        draft = new Draft(a, tx, tz, TerritoryQuote.union(a.minX(), a.minZ(), a.maxX(), a.maxZ(), tx, tz, tx, tz, perBlock, minimum));
+        draft = new Draft(a, x, z, TerritoryQuote.union(a.minX(), a.minZ(), a.maxX(), a.maxZ(), x, z, x, z, perBlock, minimum));
     }
     public static boolean finish() {
         if (state != TerritoryDragState.DRAGGING) return false;

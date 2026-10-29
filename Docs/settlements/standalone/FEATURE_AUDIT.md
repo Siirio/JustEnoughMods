@@ -25,7 +25,7 @@ The matrix below records the **before** state and rationale for these changes; i
 | Entry | `client/SettlementClientState.openSmp` reflects JEMServer screen and swallows missing class; key default unbound | Own screens, compatible-server detection and real request path |
 | Command | `/settlements` currently registers only `help`; `/jem town` opens first town | Executable root `/settlements`, selector behavior, backward-compatible alias |
 | Founding | `SettlementApi.create`: bell within 16 blocks, name 3–32, global name conflict, 64-block anchor check, territory separation; config default 300 copper | Preserve restrictions and fee; idempotent request/result, exact created ID, informative failures |
-| Territory geometry | `town/TownRecord`: inclusive X/Z rectangle, initial radius48, schema6, bounds ±256 | Preserve rectangle and migration; do not switch to chunks/cell sets |
+| Territory geometry | `town/TownRecord`: inclusive X/Z rectangle, initial radius48, no artificial minimum/maximum expansion width, natural world-border limit | Preserve rectangle and migration; do not switch to chunks/cell sets |
 | Expansion | `SettlementApi.expandBounds`, `town/TerritoryQuote`: union area; physical backed Copper debit, bounded64 town receipt IDs | New Gold-per-added-block price and full-strip preview; durable request intent/replay audit |
 | Built-in map | No built-in MapCanvas in this module | New pan/zoom map; explored terrain policy; authoritative bounds; optional Xaero adapter stays native |
 | Main GUI | Only founding and hire/noble quote clients in module; town management in `Mods/JEMServer/.../client/smp/SmpScreen.java` | Own persistent shell, eight sections, detail routes, scale/focus/scroll |

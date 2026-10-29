@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "change_id": "jemcompat.void-walker-toggle",
+  "status": "conditional",
+  "selectors": [{"type": "id", "registry": "enchantments", "value": "kaleidoscope_end:void_walker"}],
+  "conditions": [{"runtime": "Kaleidoscope End and matching JEMCompat are installed on client and logical server", "acceptance": "Manual key and movement acceptance pending"}],
+  "precedence": {"layer": "jemcompat_gameplay_adapter", "priority": 14},
+  "change": {
+    "summary": "Add a persistent server-authoritative Void Walker on/off control",
+    "modifiers": [{"property": "kaleidoscope_end.void_walker.player_activation", "operation": "add", "before": "The equipped enchantment is always active and JEMCompat only clears fall accumulation over its air support", "after": "F7 in the JEM Compat controls category toggles the equipped enchantment's native air collision, jump lock and JEMCompat fall support together. Enabled remains the default"}]
+  },
+  "cause": {
+    "owner": "JEMCompat Kaleidoscope adapter",
+    "kind": "explicit_user_requested_compatibility_control",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/JEMCompat.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/kaleidoscope/VoidWalkerEvents.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/kaleidoscope/VoidWalkerNetwork.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/VoidWalkerClient.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/VoidWalkerJumpToggleMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/kaleidoscope/VoidWalkerCollisionToggleMixin.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {"purpose": "Let a player intentionally disable Void Walker without removing enchanted boots", "decision_source": "User confirmed this is an enchantment toggle, requested any free F key, then specified the Compat controls section. The pre-change test jem snapshot showed F7 free, so Codex selected F7 and preserved enabled-by-default behavior"},
+  "introduced": {"date": "2026-10-29", "commit": "SELF", "action": "add", "summary": "Add the F7 Void Walker toggle after capturing current test jem controls"},
+  "history": [{"date": "2026-10-29", "commit": "SELF", "action": "add", "summary": "Add key registration, synchronized persistent state and narrow native mixin redirects"}],
+  "impacts": {
+    "systems": ["keybinds", "networking", "enchantments", "collision", "player_persistence"],
+    "relations": ["Kaleidoscope End retains enchantment registration and native mechanics", "JEMCompat owns only toggle state and compatibility interception"],
+    "notes": ["The toggle refuses to change state when Void Walker is not equipped", "The exact pre-change test jem controls are preserved under Docs/releases/2026-10-29-test-jem-controls-before-void-walker"],
+    "unresolved": ["Player movement and reconnect acceptance remain pending"]
+  }
+}

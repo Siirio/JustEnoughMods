@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "change_id": "races.breakable-descending-living-path",
+  "status": "conditional",
+  "selectors": [{"type": "id", "registry": "blocks", "value": "minecraft:oak_leaves"}],
+  "conditions": [{"runtime": "Born in Bloom Living Path is active", "acceptance": "Manual gameplay acceptance pending"}],
+  "precedence": {"layer": "jem_races_gameplay", "priority": 14, "overrides": ["sandbox-elemental-main-skills"]},
+  "change": {
+    "summary": "Make temporary Living Path leaves removable and allow controlled one-block descent",
+    "modifiers": [{
+      "property": "born_in_bloom.living_path.temporary_leaf_lifecycle",
+      "operation": "replace",
+      "before": "Tracked temporary leaves reject block breaking and are immediately recreated over air",
+      "after": "Tracked leaves use ordinary block breaking and fire behavior. Their expiry record prevents same-coordinate recreation until expiry, while a newly exposed lower coordinate can receive the next path layer"
+    }]
+  },
+  "cause": {"owner": "JEMRoles Living Path", "kind": "user_reported_defect_and_explicit_behavior_change", "source_files": ["Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/SandboxUtilities.java"]},
+  "rationale": {"purpose": "Let players remove or burn the temporary bridge and intentionally descend one block at a time", "decision_source": "User explicitly requested ordinary break/fire behavior and lower-layer regeneration. Codex retained the existing saved expiry coordinate as the minimal anti-recreation tombstone"},
+  "introduced": {"date": "2026-10-29", "commit": "SELF", "action": "replace", "summary": "Replace temporary-path break protection with breakable descending layers"},
+  "history": [{"date": "2026-10-29", "commit": "SELF", "action": "replace", "summary": "Remove break cancellation and skip already tracked coordinates during placement"}],
+  "impacts": {
+    "systems": ["races", "temporary_blocks", "block_breaking", "fire", "saved_data"],
+    "relations": ["TemporaryPathSavedData remains the expiry owner", "Vanilla oak leaves own drops and fire behavior"],
+    "notes": ["Existing bridge duration and placement width/forward distance are unchanged"],
+    "unresolved": ["Player gameplay acceptance remains pending"]
+  }
+}

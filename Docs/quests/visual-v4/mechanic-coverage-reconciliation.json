@@ -2626,7 +2626,7 @@
       "key": "alexsmobs:falconry",
       "original_observation": true,
       "supplied_disposition": "disabled",
-      "current_disposition": "disabled",
+        "current_disposition": "passive_context",
       "supplied_quest_ids": [],
       "current_quest_ids": [],
       "user_retired_quest_ids": [],
@@ -20960,7 +20960,7 @@
       "user_retired_quest_ids": [],
       "unresolved_quest_ids": [],
       "native_route_limit_cards": [],
-      "reason": "The requested on/off toggle is absent from the inspected current owner VoidWalkerEvents.java. Classify this specific proposed toggle as disabled/absent, not an implemented capability or an open mystery. The existing enchantment behavior remains separately documented.",
+        "reason": "JEMCompat implements a persistent server-authoritative F7 toggle in the JEM Compat controls category for the equipped Void Walker enchantment's native air collision, jump lock and fall support.",
       "supplied_source_pointer": "coverage/MECHANIC_COVERAGE.json#jemcompat:void_walker_toggle",
       "runtime_verified": false
     },

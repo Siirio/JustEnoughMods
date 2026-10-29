@@ -81,9 +81,11 @@ dimension/death/logout/selection cleanup, native temporary-path storage and lava
 item-use animation are wired; no invented GUI-only demonstration. Packet protocol3
 adds bounded128-point server-authored paths. Release cancels when UI focus is lost.
 Changing races does not prematurely erase already accepted root VFX.
-Native temporary-path break protection is also retained: tracked leaves cannot
-be harvested/replaced before expiry, avoiding removal of a later player leaf at
-the same position by the old800-tick expiry entry.
+Tracked temporary leaves now behave like ordinary persistent oak leaves: they
+can be broken, harvested and burned. The saved expiry entry remains as a short
+placement tombstone, so a removed layer is not recreated at the same height.
+After the player falls one block, Living Path may create a new untracked layer
+below, allowing deliberate downward traversal.
 
 ## Art audit and evidence
 

@@ -387,7 +387,7 @@ This directory owns the standalone GUI contract and delivery evidence. Settlemen
 5. Native Recruits remains optional and guarded. Workers adapters/dependencies are retired; historical records load as inactive. Jade and the independently usable Xaero adapter remain optional presentation integrations.
 
 
-6. Use block-area expansion: exact rectangular union, price = newly added blocks × one canonical Gold Coin (currently 100 copper units). Initial territory remains 97×97, center-relative bounds ±256, 16-block separation. A clicked neighboring block may add a whole strip because the saved territory is rectangular; show the entire strip and its total cost before confirmation.
+6. Use block-area expansion: exact rectangular union, price = newly added blocks × one canonical Gold Coin (currently 100 copper units). Initial territory remains 97×97, there is no artificial minimum or maximum expansion width, the world border is the natural outer limit, and 16-block separation remains. A clicked neighboring block may add a whole strip because the saved territory is rectangular; show the entire strip and its total cost before confirmation.
 
 
 7. Keep the existing legitimate founding cost (config default 300 copper), bell interaction, 3–32-character normalized name and location restrictions. No extra GUI fee.
@@ -471,7 +471,7 @@ Emerald transfers prepare a durable intent, save actual inventory with an intent
 
 
 
-Xaero World Map1.46.0 and Minimap26.4.2 are installed into sandbox with native embedded XaeroLib selection. Open the native map, start a held-left-click drag inside your settlement, release on the desired extension and confirm its native context-menu entry. Low-alpha fill and outline show public town bounds; only the server-verified owner can extend them. The same server journal, expected bounds, overlap checks, radius clamp and payment owner serve both built-in and native maps. Protocol8 carries map-only snapshots without opening the Settlements screen. The old JEM Server client implementation is retired so there is one interface owner.
+Xaero World Map1.46.0 and Minimap26.4.2 are installed into sandbox with native embedded XaeroLib selection. Open the native map, start a held-left-click drag inside your settlement, release on the desired extension and confirm its native context-menu entry. Low-alpha fill and outline show public town bounds; only the server-verified owner can extend them. The same server journal, expected bounds, overlap checks, world-border validation and payment owner serve both built-in and native maps. Protocol8 carries map-only snapshots without opening the Settlements screen. The old JEM Server client implementation is retired so there is one interface owner.
 
 
 
@@ -612,7 +612,7 @@ Delivery evidence: [readability/recovery delivery](readability-recovery-delivery
 
 
 
-User direction: cheaper positive configurable expansion, complete five-denomination prices and a selection that stops after release, cancellation or completion. Codex balance choice: `expansionCopperPerBlock=1`, `expansionMinimumCopper=10`; standalone `expansionEmeraldsPerBlock=1`, `expansionMinimumEmeralds=1`. Defaults reduce a97-block strip from9700 to97 copper/emeralds. The existing300 founding price, radius, rectangular union,16-block separation, authenticated owner, physical payment and journal remain unchanged. No save migration is required.
+User direction: cheaper positive configurable expansion, complete five-denomination prices and a selection that stops after release, cancellation or completion. Codex balance choice: `expansionCopperPerBlock=1`, `expansionMinimumCopper=10`; standalone `expansionEmeraldsPerBlock=1`, `expansionMinimumEmeralds=1`. Defaults reduce a97-block strip from9700 to97 copper/emeralds. The existing300 founding price, rectangular union,16-block separation, authenticated owner, physical payment and journal remain unchanged. The former center-relative ±256 clamp was removed by the later 2026-10-29 user correction. No save migration is required.
 
 
 

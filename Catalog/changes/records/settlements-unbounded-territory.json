@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "change_id": "settlements.unbounded-territory",
+  "status": "conditional",
+  "selectors": [{"type": "namespace", "registry": "*", "value": "jem_settlements"}],
+  "conditions": [{"runtime": "JEMSettlements territory expansion", "acceptance": "Manual built-in and Xaero expansion acceptance pending"}],
+  "precedence": {"layer": "settlements_territory", "priority": 15, "overrides": ["settlements.configured-territory-and-pointer-lifecycle", "settlements-standalone"]},
+  "change": {
+    "summary": "Remove the artificial territory width floor and ±256 expansion ceiling",
+    "modifiers": [{"property": "settlements.territory_bounds", "operation": "replace", "before": "Initial 97x97 rectangle with every expansion clamped to center ±256", "after": "Initial 97x97 rectangle with unrestricted priced rectangular expansion inside the dimension world border"}]
+  },
+  "cause": {
+    "owner": "JEMSettlements territory authority",
+    "kind": "user_reported_defect_and_explicit_limit_removal",
+    "source_files": [
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/api/SettlementApi.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/network/SettlementActions.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TownRecord.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/town/TerritoryQuote.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementMap.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/compat/xaero/SettlementMapClient.java"
+    ]
+  },
+  "rationale": {"purpose": "Allow territory to grow as large as the player can afford without a hidden size rejection", "decision_source": "User explicitly removed minimum and maximum territory width. Codex retained the Minecraft world border as the natural coordinate safety boundary"},
+  "introduced": {"date": "2026-10-29", "commit": "SELF", "action": "replace", "summary": "Remove artificial settlement size clamps"},
+  "history": [{"date": "2026-10-29", "commit": "SELF", "action": "replace", "summary": "Remove client, packet, API and saved-model ±256 checks and validate the server world border"}],
+  "impacts": {
+    "systems": ["settlements", "territory", "economy", "native_xaero", "saved_data"],
+    "relations": ["SettlementApi remains authoritative", "TerritoryQuote retains exact marginal-area pricing", "SettlementCurrency retains debit ownership"],
+    "notes": ["Initial size, 16-block neighbor separation, overlap rejection, request replay protection and existing prices are unchanged"],
+    "unresolved": ["Player acceptance on both expansion interfaces remains pending"]
+  }
+}

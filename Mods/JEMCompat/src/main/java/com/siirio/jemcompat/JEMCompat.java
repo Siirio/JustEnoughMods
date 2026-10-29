@@ -5,6 +5,7 @@ import com.siirio.jemcompat.feature.worldtier.EnhancedAiTierController;
 import com.siirio.jemcompat.feature.leash.UniversalLeashEvents;
 import com.siirio.jemcompat.feature.elements.ElementalImpactEvents;
 import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerEvents;
+import com.siirio.jemcompat.feature.kaleidoscope.VoidWalkerNetwork;
 import com.siirio.jemcompat.feature.transport.TransportContent;
 import com.siirio.jemcompat.feature.transport.TransportEvents;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +27,7 @@ public final class JEMCompat {
 
     public JEMCompat() {
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        VoidWalkerNetwork.register(modBus);
         com.siirio.jemcompat.feature.spawning.CreatureSpawnProbability.SERIALIZERS.register(modBus);
         TransportContent.register(modBus);
         modBus.addListener(JEMCompat::creativeTabs);

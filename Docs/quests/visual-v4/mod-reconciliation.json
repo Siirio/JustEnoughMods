@@ -10781,9 +10781,9 @@
         },
         {
           "key": "jemcompat:void_walker_toggle",
-          "disposition": "disabled",
-          "reason_en": "The requested on/off toggle is absent from the inspected current owner VoidWalkerEvents.java. Classify this specific proposed toggle as disabled/absent, not an implemented capability or an open mystery. The existing enchantment behavior remains separately documented.",
-          "reason_ru": "Запрошенного переключателя нет в прочитанном текущем VoidWalkerEvents.java. Именно переключатель отмечен как отсутствующая возможность; фактическое поведение зачарования рассматривается отдельно."
+            "disposition": "passive_context",
+            "reason_en": "JEMCompat now provides a persistent server-authoritative Void Walker toggle on F7 in the JEM Compat controls category. It changes only the equipped enchantment's native air collision, jump lock and fall support.",
+            "reason_ru": "JEMCompat теперь предоставляет сохраняемый серверный переключатель Void Walker на F7 в разделе управления JEM Compat. Он меняет только нативную воздушную опору, блокировку прыжка и защиту от падения надетого зачарования."
         },
         {
           "key": "jemcompat:season_hud",

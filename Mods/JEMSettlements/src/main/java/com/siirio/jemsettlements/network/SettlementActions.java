@@ -151,7 +151,6 @@ public final class SettlementActions {
         int x = p.getInt("X"), z = p.getInt("Z");
         if (!packet.action().equals("mapexpand") && ((long) x < (long) town.territoryMinX() - 1L || (long) x > (long) town.territoryMaxX() + 1L
                 || (long) z < (long) town.territoryMinZ() - 1L || (long) z > (long) town.territoryMaxZ() + 1L)) return SettlementApi.Result.INVALID;
-        if (Math.abs((long) x - town.center().getX()) > 256L || Math.abs((long) z - town.center().getZ()) > 256L) return SettlementApi.Result.CONFLICT;
         long expected = com.siirio.jemsettlements.town.TerritoryQuote.union(town.territoryMinX(), town.territoryMinZ(),
                 town.territoryMaxX(), town.territoryMaxZ(), x, z, x, z).addedCopper();
         if (!p.contains("ExpectedCost") || p.getLong("ExpectedCost") != expected

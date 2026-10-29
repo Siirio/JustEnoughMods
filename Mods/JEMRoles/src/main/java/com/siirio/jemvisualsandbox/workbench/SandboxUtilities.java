@@ -31,7 +31,6 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingExperienceDropEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
-import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -132,11 +131,12 @@ public final class SandboxUtilities {
     private static void livingPath(ServerPlayer p) {
         Vec3 direction=p.getDeltaMovement().multiply(1,0,1);if(direction.lengthSqr()<.0025)direction=p.getLookAngle().multiply(1,0,1);
         direction=direction.normalize();Vec3 side=new Vec3(-direction.z,0,direction.x);
+        var paths=com.siirio.jemroles.trait.TemporaryPathSavedData.getSandbox(p.server);
         for(int forward=0;forward<=RacePowerStages.bridgeForward(RaceExperience.tier(p));forward++)for(int lateral=-1;lateral<=1;lateral++) {
             Vec3 point=p.position().add(direction.scale(forward)).add(side.scale(lateral));BlockPos below=BlockPos.containing(point.x,p.getY(),point.z).below();
-            if(!p.serverLevel().hasChunkAt(below) || !p.serverLevel().getWorldBorder().isWithinBounds(below) || !p.level().getBlockState(below).isAir() || !p.level().getFluidState(below).isEmpty())continue;
+            if(paths.contains(p.level().dimension(),below) || !p.serverLevel().hasChunkAt(below) || !p.serverLevel().getWorldBorder().isWithinBounds(below) || !p.level().getBlockState(below).isAir() || !p.level().getFluidState(below).isEmpty())continue;
             if(!p.level().setBlock(below,Blocks.OAK_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT,true),3))continue;
-            com.siirio.jemroles.trait.TemporaryPathSavedData.getSandbox(p.server).add(p.level().dimension(),below,p.server.overworld().getGameTime()+RacePowerStages.bridgeTicks(RaceExperience.tier(p)));
+            paths.add(p.level().dimension(),below,p.server.overworld().getGameTime()+RacePowerStages.bridgeTicks(RaceExperience.tier(p)));
             SandboxNetwork.effect(p,23,2,Vec3.atBottomCenterOf(below.above()).add(0,.04,0),0,-1);
             if(!p.getPersistentData().getBoolean("JemSandboxLivingPathAwarded")){
                 p.getPersistentData().putBoolean("JemSandboxLivingPathAwarded",true);RaceExperience.finishUtility(p);
@@ -238,10 +238,6 @@ public final class SandboxUtilities {
         if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p);
     }
     @SubscribeEvent public static void drops(LivingDropsEvent e) { if(e.getEntity().getPersistentData().contains("JemSandboxGuardianExpiry"))e.getDrops().clear(); }
-    @SubscribeEvent public static void pathBreak(BlockEvent.BreakEvent e) {
-        if(e.getLevel() instanceof net.minecraft.server.level.ServerLevel level && RaceExperience.serverActive(level.getServer())
-                && e.getState().is(Blocks.OAK_LEAVES) && com.siirio.jemroles.trait.TemporaryPathSavedData.getSandbox(level.getServer()).contains(level.dimension(),e.getPos()))e.setCanceled(true);
-    }
     @SubscribeEvent public static void xp(LivingExperienceDropEvent e) { if(e.getEntity().getPersistentData().contains("JemSandboxGuardianExpiry"))e.setDroppedExperience(0); }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e) { if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p); }
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent e) { if(e.getEntity() instanceof ServerPlayer p && RaceExperience.serverActive(p.server))selectionChanged(p); }

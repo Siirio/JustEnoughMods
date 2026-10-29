@@ -53,26 +53,25 @@ final class SettlementMap {
     boolean drag(double mx,double my,double dx,double dy,CompoundTag town) {
         if (panning) { centerX-=dx/zoom; centerZ-=dy/zoom; return true; }
         if (state!=TerritoryDragState.DRAGGING) return false;
-        BlockPos center=BlockPos.of(town.getLong("Center"));
-        targetX=Math.max(center.getX()-256,Math.min(center.getX()+256,(int)Math.floor(worldX(mx))));
-        targetZ=Math.max(center.getZ()-256,Math.min(center.getZ()+256,(int)Math.floor(worldZ(my))));
+        targetX=(int)Math.floor(worldX(mx));
+        targetZ=(int)Math.floor(worldZ(my));
         return true;
     }
     boolean quoted() { return targetX!=null; }
     long added(CompoundTag town) {
         if (!quoted()) return 0;
         long minX=town.getInt("TerritoryMinX"), maxX=town.getInt("TerritoryMaxX"), minZ=town.getInt("TerritoryMinZ"), maxZ=town.getInt("TerritoryMaxZ");
-        return (Math.max(maxX,targetX)-Math.min(minX,targetX)+1)*(Math.max(maxZ,targetZ)-Math.min(minZ,targetZ)+1)-(maxX-minX+1)*(maxZ-minZ+1);
+        long width=Math.max(maxX,targetX)-Math.min(minX,targetX)+1,height=Math.max(maxZ,targetZ)-Math.min(minZ,targetZ)+1;
+        long expanded=width>Long.MAX_VALUE/height?Long.MAX_VALUE:width*height,existing=(maxX-minX+1)*(maxZ-minZ+1);
+        return expanded==Long.MAX_VALUE?Long.MAX_VALUE:Math.max(0L,expanded-existing);
     }
-    long cost(CompoundTag town) { return added(town)<=0 ? 0L : Math.max(town.getLong("ExpansionMinimumCost"),Math.multiplyExact(added(town),town.getLong("ExpansionCostPerBlock"))); }
+    long cost(CompoundTag town) { long added=added(town),rate=town.getLong("ExpansionCostPerBlock");return added<=0?0L:Math.max(town.getLong("ExpansionMinimumCost"),added>Long.MAX_VALUE/rate?Long.MAX_VALUE:added*rate); }
     String invalidReason(CompoundTag town) {
         if(!quoted())return "";
         if(added(town)<=0 || town.getLong("ExpansionCostPerBlock")<=0 || town.getLong("ExpansionMinimumCost")<=0)return "selection";
         if(!town.getBoolean("SameDimension"))return "dimension";
-        BlockPos center=BlockPos.of(town.getLong("Center"));
         long minX=Math.min(town.getInt("TerritoryMinX"),targetX),maxX=Math.max(town.getInt("TerritoryMaxX"),targetX);
         long minZ=Math.min(town.getInt("TerritoryMinZ"),targetZ),maxZ=Math.max(town.getInt("TerritoryMaxZ"),targetZ);
-        if(minX<(long)center.getX()-256 || maxX>(long)center.getX()+256 || minZ<(long)center.getZ()-256 || maxZ>(long)center.getZ()+256)return "limit";
         for(Tag value:town.getList("PublicTerritories",Tag.TAG_COMPOUND)) {
             CompoundTag other=(CompoundTag)value;
             if(town.hasUUID("Id")&&other.hasUUID("Id")&&town.getUUID("Id").equals(other.getUUID("Id")))continue;
