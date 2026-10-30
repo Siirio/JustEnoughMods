@@ -1,3 +1,56 @@
+## 2026-10-29 - Unblock ordinary quests and expose Xray selection attempts
+
+- User requested that blocked quests be restored, the crashed local server be restarted, and JEM Security print a clear warning such as `[JEM Security] Temirlan attempted to enable Xray pack ...`
+- Bug / Server Sided / the FTB quest projection treated a missing optional item reward as a reason to make the entire ordinary quest dormant. The installed Sophisticated Backpacks 3.26.14.2226 registry has no `sophisticatedbackpacks:backpack_dock`, which hid two otherwise valid quests / in testing
+- JEM Advancements 5.2.1 removes only a missing direct item reward from the temporary host projection. The quest, tasks, remaining rewards, authored IDs and native FTB progress remain available
+- Three dedicated-event objectives remain dormant while Events are disabled, as required by the existing dedicated-host event contract. One separate Alex's Mobs April Fools objective remains dormant because its native mod condition is unavailable. This repair does not silently enable either condition
+- Bug / Server Sided / the local server watchdog terminated the process after vanilla `/tp` synchronously waited more than 60 seconds for a distant terrain chunk / in testing
+- JEM Security 1.0.4 reports a content-matched Xray pack as soon as a connected player selects it, before the disabled Done button can commit it. The server writes `resource_pack_enable_attempt` to the player's UUID audit and prints `[JEM Security] <player> attempted to enable Xray pack <pack>`
+- The new attempt packet is bounded, deduplicated by the resource-pack screen and rate-limited by the server. It is supporting evidence only, while server-owned Anti-Xray remains authoritative
+- Production builds completed without tests. SHA-256 is `13ddb84fef4f46688d6a5c4865f2ae2ca003952a08f14ef4ce5e7291da92e3a5` for JEM Security 1.0.4 and `c49ac7ffa6e292ea7474e3123b7988eb70d2444f69bd304f4b309283fdd94154` for JEM Advancements 5.2.1
+- Synchronized both exact artifacts to the ordinary local Server and `Client/ManagedPack`. The dedicated server loaded both versions, generated 606 projected quests and no longer reports `sophisticatedbackpacks:backpack_dock` as an unavailable quest reason
+- Reviewed the native AutoModpack delta `+2 ~1 -2`, then published generation 111 with content token `4598fee3db60997b1ae4c8924d6580939c9ddc18` and matching staged/published manifest SHA-1 `3461bc5986946519316042382df3e4b297ffeb05`
+- Applied generation 111 natively to the closed `test jem` profile. The active token and both JAR hashes match the published canonical artifacts, both replaced versions are absent and no transaction remains pending
+- Registry Atlas rebuilt and audited successfully. The impact scan covers all task-owned JEM Security and quest projection paths, while its remaining uncovered paths belong to unrelated pre-existing working-tree changes
+- The ordinary local server is running at `127.0.0.1:31604`. Client loading, the 1.0.4 handshake, resource-pack UI behavior and player quest acceptance remain unobserved because the client was not launched
+
+## 2026-10-29 - Block content-based Xray resource packs
+
+- User reported that Xray still worked and requested inspection of the actual `test jem` resource packs, content-based blocking when the same code is copied or renamed, a disabled resource-pack confirmation action and the localized message "Gotcha)" / "Попался)"
+- Bug / Both Sided / JEM Security checked only enabled resource-pack ID tokens during login, so a pack enabled after connection was never re-attested and a renamed or merged pack could avoid the name check / in testing
+- The active `§9X-Ray Vision 26.3.zip` removes geometry from the base `minecraft:block/block` model and selectively restores solid geometry for ores and valuable blocks, while `Xray_Ultimate_26.X_v5.4.4.zip` contains 1,770 `models/block/xray/*` entries across vanilla and mod namespaces
+- JEM Security 1.0.3 scans selected file resource packs by those bounded content structures rather than filename. In the resource-pack screen it disables "Done", blocks Escape/close from committing the selection and renders the requested localized warning until the offending pack is removed
+- Successful resource-pack changes refresh attestation immediately. A persisted content-matched pack is also reported at login and rejected by the server even when its archive name no longer contains an Xray token
+- JEM Freecam, ordinary visual resource packs, Embeddium, Oculus, server-owned Anti-Xray and all existing audit behavior remain unchanged. A hostile modified client can remove or forge client-side checks, so chunk filtering remains the authoritative protection
+- Production JEM Security 1.0.3 compilation completed without tests. SHA-256 is `1eb213f36afa1bc6d62a8bc5a54ad70ab0ef5c4c85578f68ac2d803ca8f71e48`
+- Synchronized the exact artifact to the ordinary local Server and `Client/ManagedPack`. The dedicated server loaded JEM Security 1.0.3 without a JEM Security startup failure
+- Reviewed the final native AutoModpack delta `+0 ~2 -0`, then published generation 110 with content token `6d7a4cd6949925f239b2c2f64fb8665cd15d87b3` and matching staged/published manifest SHA-1 `87eb6b855be3ff80854b40c72c868429c1e95df3`
+- Applied generation 110 natively to the closed `test jem` profile. Its active token and JEM Security hash match the published/canonical artifacts, the old 1.0.2 JAR is absent and no transaction remains pending
+- The client was not launched, so resource-pack screen behavior and player acceptance remain unobserved
+
+## 2026-10-29 - Allow JEM Security attestation through ServerLogin
+
+- User requested that the local server connection be repaired and exercised directly after JEM Security continued rejecting the client
+- Bug / Server Sided / ServerLogin 1.0.3 denied the pre-auth `jem_security:main` custom payload because its allowlist contained only Minecraft, Forge, FML and voice chat, so both valid client attestations were discarded before JEM Security and the fail-closed deadline kicked the player / resolved by admitting only `jem_security:main` through the pre-auth payload gate
+- Added only the exact `jem_security:main` channel to ServerLogin's pre-auth payload allowlist. Authentication, every other blocked payload, JEM Security validation, the attestation deadline, banned-mod checks and banned-resource-pack checks remain unchanged
+- Launched the ordinary local dedicated server and the `test jem` client, connected to `127.0.0.1:31604`, entered the world and remained connected beyond the attestation deadline. The server audit recorded `client_attested` twice for JEM Security 1.0.2 with 357 mods, 60 enabled resource packs and allowed JEM Freecam
+- Set both TLauncher's global memory value and the `test jem` profile-specific memory override to 10240 MB. The live client process was verified with `-Xmx10240M`
+- Local Server and `test jem` remain running at the ServerLogin `/login` prompt for the user's play session. No password was read or entered
+
+## 2026-10-29 - Unblock JEM Security attestation during client world loading
+
+- User reported that JEM Security still disconnected the updated client after generation 107
+- Bug / Both Sided / the server challenge reached the client after `PlayerLoggedInEvent`, but its `consumerMainThread` handler waited behind the client's JEI world-entry initialization for longer than the configured 12-second fail-closed deadline, so no response could run before the server kicked the player / in testing
+- JEM Security 1.0.2 snapshots the bounded mod, enabled resource-pack and companion-version report at client login, then answers the server challenge directly on Forge's network consumer without waiting for the blocked render thread
+- The existing early login report remains best effort. Server authority, the 12-second deadline, exact banned-mod and pack decisions, allowed `jem_freecam`, privacy redaction and fail-closed admission remain unchanged
+
+## 2026-10-29 - Repair JEM Security client attestation admission
+
+- User reported that the local server disconnected the freshly updated client with `JEM Security did not receive the required client attestation`
+- Bug / Both Sided / JEM Security depended on the client-only `ClientPlayerNetworkEvent.LoggingIn` callback to initiate attestation, but the observed Forge lifecycle completed login without delivering that report, so the server reached its mandatory attestation deadline and disconnected the player / in testing
+- JEM Security 1.0.1 keeps the early client callback as a best-effort path and adds a server-owned PLAY-channel challenge immediately after `PlayerLoggedInEvent`. The client answers the challenge with the same bounded mod, resource-pack and version report after the channel is guaranteed active
+- Server authority, exact banned-mod and resource-pack decisions, allowed `jem_freecam`, privacy redaction and the fail-closed timeout remain unchanged
+
 ## 2026-10-29 - Add JEM Security without updating test jem
 
 - User requested a dedicated JEM Security system after rejecting FCW AntiCheat because it conflicted with Embeddium and the pack and crashed the server
@@ -9,7 +62,8 @@
 - Administrators can inspect `/jemsecurity status`, `/jemsecurity history` and request a bounded sanitized tail of `latest.log`. Log content is transmitted only after the player clicks the consent action, and user paths, likely secrets and IP addresses are redacted first
 - Client attestation is supporting evidence and can be forged by a modified client. Server-owned Anti-Xray, action validation and audit remain the primary controls
 - Production JEM Security compilation completed without tests. SHA-256 is `6c2d833d5d81848464b27c47b26140190053c59c4c7a3b1c8163d62e576d87a2`
-- Per the user's explicit request, `Client/ManagedPack`, the ordinary local Server, native AutoModpack publication and the `test jem` profile were not updated. Runtime Mixin loading and player acceptance remain unobserved
+- The initial request kept `test jem` unchanged. The user's later instruction authorized local installation, so the exact artifact was synchronized to the ordinary local Server and `Client/ManagedPack`, published as native generation 105 with token `0ce42e53f2831989d1b8fbd062241a3d3178c7a9`, and applied to the closed `test jem` profile with no pending transaction
+- The dedicated server loaded JEM Security 1.0.0. The first client launch then exposed the separate Barnyard Buddies startup defect documented above, rather than a JEM Security, Embeddium or Oculus failure. After that repair, the client loaded JEM Security and completed the required modded-server handshake successfully
 
 ## 2026-10-29 - Isolate disconnect logging and AutoModpack secret persistence
 
@@ -2453,4 +2507,19 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Bug / Server Sided / GraveStone Forge 1.20.1-1.0.35 `restore ... add` iterates only `Death.getAllItems()`, so it reported success after restoring the auxiliary belt while omitting the saved `MainInventory` and `ArmorInventory` / resolved, the explicitly approved `restore ... replace` path restored the full record and live NBT confirmed the named sword, weapons, books, resources, Duskfire armor and level 31
 - Future recovery must select the complete death UUID from log and file evidence, inspect the live inventory before destructive replacement, verify actual NBT after the command and restore the recorded experience separately without lowering a higher current level
 - A one-time login script is only an offline-player bridge. After verified recovery, remove its exact local and MineRENT files and reload KubeJS server scripts. Clients, AutoModpack, stable profiles and the release baseline remain unchanged
+
+## 2026-10-30 - Bound client rendering preparation and preserve LeadItem compatibility
+
+- User supplied the Phase 2 optimization archive only as patch evidence and required useful changes to be reconciled manually with current `develop`, Adaptive Culling 1.4.2 and every later source change
+- Bug / Client Sided / each event telegraph and impact synchronously scanned as many as 512 by 512 terrain columns on the client main thread before the warning could render, while settlement presentation repeatedly decoded stacks or labels and broad shared-buffer flushes submitted unrelated render work / in testing
+- Event surface preparation is now shared between matching warning and impact snapshots, prioritizes a distributed visible warning set, and processes at most 768 columns and 0.75 ms per frame. Replaced or expired snapshots cancel remaining work, block and chunk changes invalidate affected columns, and partial preparation continues rendering available warning cells
+- Adaptive Culling 1.5.0 uses bounded weak-owner caches, deferred per-frame certificate searches, localized geometry invalidation, cached native shapes and closed-chest bounds, configurable exclusions and fail-open handling for missing evidence, movement, shader shadow passes and exhausted budgets
+- Settlements prepares the current storage page and immutable storage-label views once per accepted snapshot or rebuild. Settlements labels and JEM event markers flush only the `RenderType` buffers they actually use
+- EMF private reflection cleanup is intentionally excluded because no profiling evidence identifies it as the owner
+- Bug / Both Sided / lowering JEM's `LeadItem.bindPlayerMobs` Mixin from the previously working equal priority to 900 reversed the observed application order and made the installed Small Ships 2.0.0-b1.4 `CAPTURE_FAILHARD` local analysis crash dedicated-server bootstrap / in testing
+- JEM's existing Horseman leash observation now uses priority 1100, restoring the runtime-proven Small Ships then JEM preparation order deterministically. The HEAD and RETURN proof, native leash result and quest criteria are unchanged
+- Combined production compilation completed for JEM Advancements 5.2.1 (`1604d341b6fade348e2e0f4c9b199bb4e79f9c07f13f8e84933c5388df9a22a1`), JEM Security 1.0.4 (`7a5fff30bc5dd4a284e037ec3edef3d123e0dd8bf100099063cef79b35032c31`), Adaptive Culling 1.5.0 (`81c8115c9594b5f83ee3649d3cae4d0a095d4f1984af901dcf4e753bf8240e9f`), JEM Server 2.0.0-dev (`2f75ade90302d710967f9107c9f06e74e1d59f540765dc0a5ac7f35749a53265`) and Settlements 2.1.0 (`f516f326fea720ee3549af0066ae8cb85cf533a828640a1e6caf691e3a18e3d3`). Build success alone does not mark the optimization successful
+- The ordinary local dedicated server reached `Done (7.506s)` with the corrected artifact and passed the earlier Small Ships bootstrap failure point. Existing unrelated mod and datapack warnings remain visible and were not hidden
+- Native AutoModpack preview reported exactly `+1 ~5 -1`, then publication 112 and closed-profile `test jem` application completed with content token `926a0c19210ad275b90e87d0844ef5fa55ec70fe`, identical staged and published manifest SHA-1 `ee5636f9370fa54204a7f93a25f6ee595c28181e`, matching installed files and no pending transaction
+- Optimization acceptance still requires identical-scene comparison of frame times and stalls, allocations and GC, and visual correctness with the active shaders
 

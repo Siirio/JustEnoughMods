@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-29",
+  "scope": "ordinary local Server, Client/ManagedPack and test jem only",
+  "artifacts": [
+    {
+      "path": "Client/ManagedPack/mods/jem_security-1.0.4.jar",
+      "sha256": "13ddb84fef4f46688d6a5c4865f2ae2ca003952a08f14ef4ce5e7291da92e3a5"
+    },
+    {
+      "path": "Client/ManagedPack/mods/jem-advancements-5.2.1.jar",
+      "sha256": "c49ac7ffa6e292ea7474e3123b7988eb70d2444f69bd304f4b309283fdd94154"
+    }
+  ],
+  "server": {
+    "loadedVersions": {
+      "jem_security": "1.0.4",
+      "jem_advancements": "5.2.1"
+    },
+    "address": "127.0.0.1:31604"
+  },
+  "publication": {
+    "generation": 111,
+    "contentToken": "4598fee3db60997b1ae4c8924d6580939c9ddc18",
+    "manifestSha1": "3461bc5986946519316042382df3e4b297ffeb05",
+    "reviewedDelta": "+2 ~1 -2"
+  },
+  "nativeClient": {
+    "applied": true,
+    "pendingTransaction": false,
+    "installedVersions": {
+      "jem_security": "1.0.4",
+      "jem_advancements": "5.2.1"
+    },
+    "removedVersions": {
+      "jem_security": "1.0.3",
+      "jem_advancements": "5.2.0"
+    }
+  },
+  "acceptance": {
+    "serverLoad": "observed",
+    "clientLoad": "unobserved",
+    "requiredHandshake": "unobserved for 1.0.4",
+    "clientGameplay": "unobserved",
+    "resourcePackScreen": "unobserved because the client was not launched",
+    "questProjection": "observed with the missing backpack_dock reward pruned and no corresponding unavailable reason"
+  },
+  "untouched": [
+    "MineRENT",
+    "stable JustEnoughMods profile",
+    "immutable release baseline"
+  ]
+}

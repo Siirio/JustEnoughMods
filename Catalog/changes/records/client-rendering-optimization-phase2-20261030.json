@@ -1,0 +1,115 @@
+{
+  "schema_version": 2,
+  "change_id": "client.rendering-optimization-phase2-20261030",
+  "status": "conditional",
+  "selectors": [
+    {"type": "registry", "registry": "*", "value": "*"}
+  ],
+  "conditions": [
+    {"scope": "Client rendering, settlement presentation and LeadItem Mixin compatibility only"},
+    {"acceptance": "Performance and shader correctness remain in testing until identical runtime scenes are compared"}
+  ],
+  "precedence": {"layer": "client_runtime_compatibility", "priority": 70, "overrides": []},
+  "change": {
+    "summary": "Bound expensive client preparation, localize culling invalidation and preserve installed LeadItem Mixin ordering",
+    "modifiers": [
+      {
+        "property": "jem_server.event_attack_surface_preparation",
+        "operation": "replace",
+        "before": "Every telegraph or impact packet synchronously scanned its complete bounded surface on the client main thread before the warning could render.",
+        "after": "One client-owned sampler prepares priority warning columns first, then processes at most 768 columns and 0.75 ms per frame across active attacks. Replaced or expired snapshots cancel their sampler, changed columns are invalidated, and loaded chunks are reconsidered after installation.",
+        "notes": "Incomplete preparation renders every available priority cell and never suppresses the packet or waits for the full mesh. Server attack geometry, damage and timing remain authoritative."
+      },
+      {
+        "property": "jem_adaptive_culling.cache_and_geometry_contract",
+        "operation": "replace",
+        "before": "Version 1.4.2 performed render-path visibility work with globally invalidated cache state and repeated shape and bound construction.",
+        "after": "Version 1.5.0 defers bounded certificate searches to render-tick completion, uses weak owner references and bounded queues, localizes section and chunk invalidation, reuses classified shapes and closed-chest bounds, and fails open when evidence or budget is insufficient.",
+        "notes": "Player, camera, glowing, targeted, recently fighting, boss-like, excluded and shader-shadow entities remain visible. EMF private reflection cleanup is intentionally absent."
+      },
+      {
+        "property": "jem_settlements.client_presentation_preparation",
+        "operation": "replace",
+        "before": "Storage slot stacks and label NBT were decoded repeatedly during drawing and rendering flushed the complete shared buffer source.",
+        "after": "The active storage page and label views are decoded once per accepted snapshot or screen rebuild, lifecycle state is bounded and cleared on unload, and only RenderTypes actually used by JEM labels or event markers are flushed.",
+        "notes": "Settlement inventory contents, tooltip semantics, label distance and native shader shadow-pass behavior remain unchanged."
+      },
+      {
+        "property": "jem_advancements.lead_item_mixin_order",
+        "operation": "replace",
+        "before": "JEM and Small Ships both used default Mixin priority 1000 on LeadItem.bindPlayerMobs. Their existing registration order loaded successfully, but lowering JEM to 900 reversed the observed application order and made Small Ships CAPTURE_FAILHARD local analysis crash dedicated-server bootstrap.",
+        "after": "JEM PetUtilityQuestFenceMixin uses priority 1100, deterministically preserving the runtime-proven order in which installed Small Ships 2.0.0-b1.4 prepares its TAIL-local injection before JEM adds the quest observation.",
+        "notes": "The existing JEM Horseman leash proof still observes the same HEAD and RETURN states and introduces no new quest or leash behavior."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM client rendering and compatibility adapters",
+    "kind": "bounded_client_work_and_mixin_ordering",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestFenceMixin.java",
+      "Mods/JEMAdaptiveCulling/gradle.properties",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/ClientLifecycle.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/CompatibilityPolicy.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/GeometryTracker.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/OpaqueOcclusion.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/ShapeClassifier.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/VisibilityCache.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/config/JEMConfig.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/ClientLevelMixin.java",
+      "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/EntityRenderDispatcherMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/AttackVisual.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventAttackRenderer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventMobRenderer.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventSurfaceSampler.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/TelegraphVisual.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/client/EventSurfaceLevelMixin.java",
+      "Mods/JEMServer/src/main/resources/jem_server.mixins.json",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+      "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Remove avoidable client stalls and repeated allocations without weakening visual warnings, shader behavior or installed-mod compatibility.",
+    "decision_source": "User supplied the Phase 2 optimization archive as patch evidence, required manual reconciliation with current sources, excluded EMF cleanup and required measured before/after acceptance. The LeadItem priority correction follows the successful and failing dedicated-server Mixin order recorded in local debug logs."
+  },
+  "introduced": {
+    "date": "2026-10-30",
+    "commit": "SELF",
+    "action": "bound_client_rendering_work",
+    "summary": "Introduce incremental event surfaces, bounded culling caches, prepared settlement presentation and deterministic LeadItem Mixin order"
+  },
+  "history": [
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "bound_client_rendering_work",
+      "summary": "Port reviewed Phase 2 changes into current sources and preserve later module behavior",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/PetUtilityQuestFenceMixin.java",
+        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/VisibilityCache.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventSurfaceSampler.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/SettlementScreen.java",
+        "Mods/JEMSettlements/src/main/java/com/siirio/jemsettlements/client/StorageLabels.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": ["client_rendering", "event_telegraphs", "adaptive_culling", "settlement_gui", "storage_labels", "quest_signals", "mixin_compatibility"],
+    "relations": [
+      "EventTelegraph or EventAttackVfx -> bounded EventSurfaceSampler -> partial visible surface mesh",
+      "ClientLevel changes -> localized geometry invalidation -> fail-open visibility certificate refresh",
+      "Settlement snapshot -> prepared stacks and labels -> selective RenderType flush",
+      "Small Ships LeadItemMixin priority 1000 -> runtime-proven ordering -> JEM PetUtilityQuestFenceMixin priority 1100"
+    ],
+    "notes": [
+      "No server gameplay authority, event damage geometry, storage contents, quest criteria or native leash result changes.",
+      "No EMF private reflection cache cleanup is included.",
+      "Compilation proves packaging compatibility only and does not establish runtime performance."
+    ],
+    "unresolved": [
+      "Identical-scene frame-time, stall, allocation, GC and shader correctness comparison remains required before success or publication is claimed.",
+      "Player acceptance of Small Ships and Horseman leash interaction remains unobserved."
+    ]
+  }
+}

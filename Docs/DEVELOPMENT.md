@@ -74,6 +74,14 @@ The approved public Forge 1.20.1 extraction scope is frozen in the [public relea
 | `JEMSettlements` | Одна production-реализация settlements для integrated/dedicated: unlimited towns, residents/housing/happiness, real storage, payroll и native GUI; Coin adapter optional, при Economy absent/off используется существующий EmeraldTreasury |
 | `JEMServer` | Общие non-event SMP services, parties, profile/map UX и ordinary boss/Raid UI. Scheduled/seasonal Events запускаются только при explicit dedicated host opt-in |
 | `JEMSecurity` | Dedicated-host security: server-owned command/Creative audit, Creative item provenance, outgoing chunk Anti-Xray, authoritative reach/visibility guards, required client attestation and consent-only sanitized client log collection. `jem_freecam` remains explicitly allowed |
+
+### Client rendering performance boundary
+
+JEM Adaptive Culling 1.5.0 remains a client-only, fail-open presentation optimization. Visibility work is admitted through bounded per-frame and 50 ms window budgets, uses bounded weak-owner caches and localized section/chunk invalidation, and never suppresses players, the camera entity, glowing or targeted entities, recent combat targets, boss-like entities, configured exclusions or Oculus shadow-pass rendering. A certificate may hide an entity only when one native opaque solid covers the camera segment to every padded render-bound corner. Missing evidence, rapid movement, budget exhaustion, unloaded data and incompatible renderers remain visible.
+
+JEM Server event surface preparation uses the same bounded-work principle without delegating gameplay authority. Priority columns render before complete preparation, remaining columns are processed incrementally on the client thread, stale snapshots cancel their work and block/chunk changes invalidate the affected cached surface. JEM event markers and Settlements labels flush only the `RenderType` buffers they submit. Settlement storage pages and label snapshots decode their bounded stack/text data once per accepted view. EMF private reflection cleanup is excluded until profiling identifies it as a measured owner.
+
+Build success establishes source and packaging compatibility only. Before any claim that this optimization succeeded, compare the same runtime scene before and after for frame-time distribution and visible stalls, allocations and GC, and visual correctness with the active shader configuration.
 | `JEMBootstrap` / AutoModpack | Native generation/download/trust/transaction/ownership owner; source patch `jem.9` исправляет acquisition/projection paths и показывает один file list, risk consent и Download |
 | `JEMProfessions` | Development-only consumer Pufferfish-owned category XP/levels/points; не включается в original/shareable pack |
 | `JEMVillagerTalking` | Development-only text-only villager scenes/subtitles; не включается в original/shareable pack |

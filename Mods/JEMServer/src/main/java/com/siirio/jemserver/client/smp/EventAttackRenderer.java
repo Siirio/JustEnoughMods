@@ -3,10 +3,11 @@ package com.siirio.jemserver.client.smp;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.siirio.jemserver.smp.events.*;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -14,9 +15,7 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
@@ -30,7 +29,6 @@ import org.joml.Matrix4f;
 public final class EventAttackRenderer {
     private static final Map<UUID, TelegraphVisual> TELEGRAPHS = new HashMap<>();
     private static final Map<UUID, AttackVisual> ATTACKS = new HashMap<>();
-    private static final float GROUND_OFFSET = .025F;
     private static final float OUTLINE_OFFSET = .004F;
     private static final float TILE_INSET = .065F;
     private static final float WARNING_SWEEP_WIDTH = .075F;
@@ -43,24 +41,35 @@ public final class EventAttackRenderer {
     private static final int ARROW_SPACING = 19;
     private static final int FINAL_WARNING_START_PERCENT = 72;
     private static final int MAX_WARNING_FILL_ALPHA = 76;
+    private static final int SURFACE_COLUMNS_PER_FRAME = 768;
+    private static final long SURFACE_NANOS_PER_FRAME = 750_000L;
 
     public static void accept(EventTelegraph packet) {
         Minecraft client = Minecraft.getInstance();
-        if (client.level == null) {
+        if (client.level == null || !packet.dimension().equals(client.level.dimension().location())) {
             return;
         }
-        TELEGRAPHS.put(packet.eventId(), new TelegraphVisual(packet,
-                client.level.getGameTime() + packet.duration(), sample(packet.geometry())));
+        TelegraphVisual previous = TELEGRAPHS.get(packet.eventId());
+        EventSurfaceSampler surface = previous != null && previous.surface().matches(packet.geometry())
+                ? previous.surface() : new EventSurfaceSampler(packet.geometry());
+        TelegraphVisual replaced = TELEGRAPHS.put(packet.eventId(), new TelegraphVisual(packet,
+                client.level.getGameTime() + packet.duration(), surface));
+        if (replaced != null && replaced.surface() != surface) replaced.surface().cancel();
     }
 
     public static void accept(EventAttackVfx packet) {
         Minecraft client = Minecraft.getInstance();
-        if (client.level == null) {
+        if (client.level == null || !packet.dimension().equals(client.level.dimension().location())) {
             return;
         }
         long started = client.level.getGameTime();
-        TELEGRAPHS.remove(packet.eventId());
-        ATTACKS.put(packet.eventId(), new AttackVisual(packet, started, started + packet.duration(), sample(packet.geometry())));
+        TelegraphVisual warning = TELEGRAPHS.remove(packet.eventId());
+        EventSurfaceSampler surface = warning != null && warning.surface().matches(packet.geometry())
+                ? warning.surface() : new EventSurfaceSampler(packet.geometry());
+        if (warning != null && warning.surface() != surface) warning.surface().cancel();
+        AttackVisual replaced = ATTACKS.put(packet.eventId(), new AttackVisual(packet, started,
+                started + packet.duration(), surface));
+        if (replaced != null && replaced.surface() != surface) replaced.surface().cancel();
     }
 
     @SubscribeEvent
@@ -73,11 +82,11 @@ public final class EventAttackRenderer {
             return;
         }
         long now = client.level.getGameTime();
-        TELEGRAPHS.entrySet().removeIf(entry -> entry.getValue().expires() <= now);
-        ATTACKS.entrySet().removeIf(entry -> entry.getValue().expires() <= now);
+        removeExpiredOrForeign(client, now);
         if (TELEGRAPHS.isEmpty() && ATTACKS.isEmpty()) {
             return;
         }
+        prepareSurfaces(client.level);
         var camera = event.getCamera().getPosition();
         PoseStack poses = event.getPoseStack();
         poses.pushPose();
@@ -95,7 +104,7 @@ public final class EventAttackRenderer {
             AttackGeometry geometry = packet.geometry().atProgress(progress);
             int fillAlpha = warningAlpha(progress);
             int outlineAlpha = Math.min(255, 145 + (int) (progress * 95));
-            renderTelegraph(consumer, pose, telegraph.cells(), geometry, packet.color(), fillAlpha, outlineAlpha);
+            renderTelegraph(consumer, pose, telegraph.surface().cells(), geometry, packet.color(), fillAlpha, outlineAlpha);
         }
         for (AttackVisual attack : ATTACKS.values()) {
             EventAttackVfx packet = attack.packet();
@@ -103,13 +112,13 @@ public final class EventAttackRenderer {
                 continue;
             }
             double progress = progress(client.level.getGameTime() + event.getPartialTick(), attack.started(), packet.duration());
-            renderAttack(consumer, pose, attack.cells(), packet.geometry(), packet.color(), progress);
+            renderAttack(consumer, pose, attack.surface().cells(), packet.geometry(), packet.color(), progress);
         }
         buffers.endBatch(TelegraphRenderType.ground());
         poses.popPose();
     }
 
-    private static void renderTelegraph(VertexConsumer consumer, PoseStack.Pose pose, List<EventSurfaceCell> cells, AttackGeometry geometry,
+    private static void renderTelegraph(VertexConsumer consumer, PoseStack.Pose pose, Iterable<EventSurfaceCell> cells, AttackGeometry geometry,
                                         int color, int fillAlpha, int outlineAlpha) {
         int shadowColor = mix(color, 0x000000, .32);
         int accentColor = mix(color, 0xFFFFFF, .62);
@@ -135,7 +144,7 @@ public final class EventAttackRenderer {
         }
     }
 
-    private static void renderAttack(VertexConsumer consumer, PoseStack.Pose pose, List<EventSurfaceCell> cells, AttackGeometry geometry,
+    private static void renderAttack(VertexConsumer consumer, PoseStack.Pose pose, Iterable<EventSurfaceCell> cells, AttackGeometry geometry,
                                      int color, double progress) {
         int coreColor = mix(color, 0xFFFFFF, .78);
         for (EventSurfaceCell cell : cells) {
@@ -235,28 +244,49 @@ public final class EventAttackRenderer {
                 .endVertex();
     }
 
-    private static List<EventSurfaceCell> sample(AttackGeometry geometry) {
-        Minecraft client = Minecraft.getInstance();
-        if (client.level == null) {
-            return List.of();
+    private static void prepareSurfaces(ClientLevel level) {
+        Set<EventSurfaceSampler> surfaces = Collections.newSetFromMap(new IdentityHashMap<>());
+        TELEGRAPHS.values().forEach(visual -> surfaces.add(visual.surface()));
+        ATTACKS.values().forEach(visual -> surfaces.add(visual.surface()));
+        if (surfaces.isEmpty()) return;
+        long deadline = System.nanoTime() + SURFACE_NANOS_PER_FRAME;
+        int remaining = SURFACE_COLUMNS_PER_FRAME;
+        int pending = surfaces.size();
+        for (EventSurfaceSampler surface : surfaces) {
+            int share = Math.max(1, remaining / pending--);
+            remaining -= surface.advance(level, deadline, share);
+            if (remaining <= 0) break;
         }
-        List<EventSurfaceCell> cells = new ArrayList<>();
-        for (int x = geometry.minX(); x <= geometry.maxX(); x++) {
-            for (int z = geometry.minZ(); z <= geometry.maxZ(); z++) {
-                if (!geometry.contains(x + .5, z + .5)) {
-                    continue;
-                }
-                cells.add(new EventSurfaceCell(x, z, surfaceY(client.level, x, z)));
-            }
-        }
-        return List.copyOf(cells);
     }
 
-    private static float surfaceY(ClientLevel level, int x, int z) {
-        int height = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
-        BlockPos overlayPosition = new BlockPos(x, height, z);
-        VoxelShape overlay = level.getBlockState(overlayPosition).getBlockSupportShape(level, overlayPosition);
-        return height + (overlay.isEmpty() ? 0 : (float) overlay.max(Direction.Axis.Y)) + GROUND_OFFSET;
+    public static void invalidateSurface(BlockPos position) {
+        TELEGRAPHS.values().forEach(visual -> visual.surface().invalidate(position));
+        ATTACKS.values().forEach(visual -> visual.surface().invalidate(position));
+    }
+
+    public static void invalidateSurface(ChunkPos chunk) {
+        TELEGRAPHS.values().forEach(visual -> visual.surface().invalidate(chunk));
+        ATTACKS.values().forEach(visual -> visual.surface().invalidate(chunk));
+    }
+
+    private static void removeExpiredOrForeign(Minecraft client, long now) {
+        var dimension = client.level.dimension().location();
+        var telegraphs = TELEGRAPHS.values().iterator();
+        while (telegraphs.hasNext()) {
+            TelegraphVisual visual = telegraphs.next();
+            if (visual.expires() <= now || !visual.packet().dimension().equals(dimension)) {
+                visual.surface().cancel();
+                telegraphs.remove();
+            }
+        }
+        var attacks = ATTACKS.values().iterator();
+        while (attacks.hasNext()) {
+            AttackVisual visual = attacks.next();
+            if (visual.expires() <= now || !visual.packet().dimension().equals(dimension)) {
+                visual.surface().cancel();
+                attacks.remove();
+            }
+        }
     }
 
     private static boolean outsideEdge(EventSurfaceCell cell, AttackGeometry geometry) {
@@ -288,6 +318,8 @@ public final class EventAttackRenderer {
     }
 
     private static void clear() {
+        TELEGRAPHS.values().forEach(visual -> visual.surface().cancel());
+        ATTACKS.values().forEach(visual -> visual.surface().cancel());
         TELEGRAPHS.clear();
         ATTACKS.clear();
     }

@@ -1,6 +1,8 @@
 package com.siirio.jemsecurity.network;
 
+import com.mojang.logging.LogUtils;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.siirio.jemsecurity.client.ResourcePackGuard;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
@@ -23,31 +25,69 @@ import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import org.slf4j.Logger;
 
 @Mod.EventBusSubscriber(modid = "jem_security", value = Dist.CLIENT)
 public final class SecurityClient {
+    private static final Logger LOGGER = LogUtils.getLogger();
     private static final int MAX_LOG_BYTES = 128 * 1024;
     private static final int CHUNK_CHARS = 16_000;
     private static final Pattern SECRET = Pattern.compile("(?i)(access[_-]?token|authorization|bearer|password|secret)(\\s*[:=]\\s*)\\S+");
     private static final Pattern USER_PATH = Pattern.compile("(?i)[A-Z]:\\\\Users\\\\[^\\\\\\s]+");
     private static final Pattern IPV4 = Pattern.compile("(?<![0-9])(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(?::[0-9]{1,5})?");
     private static final Map<UUID, Long> LOG_REQUESTS = new HashMap<>();
+    private static volatile SecurityNetwork.Attestation cachedAttestation;
 
     private SecurityClient() { }
 
     @SubscribeEvent
     public static void login(ClientPlayerNetworkEvent.LoggingIn event) {
+        cachedAttestation = snapshot();
+        send(cachedAttestation, "login");
+    }
+
+    public static void respondToAttestationRequest() {
+        SecurityNetwork.Attestation attestation = cachedAttestation;
+        if (attestation == null) {
+            attestation = snapshot();
+            cachedAttestation = attestation;
+        }
+        send(attestation, "server_challenge");
+    }
+
+    public static void resourcePacksChanged() {
+        cachedAttestation = snapshot();
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.getConnection() != null) send(cachedAttestation, "resource_pack_change");
+    }
+
+    public static void reportBlockedPackAttempt(String packId) {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.getConnection() != null && packId != null && !packId.isBlank())
+            SecurityNetwork.sendPackAttempt(packId);
+    }
+
+    private static SecurityNetwork.Attestation snapshot() {
         List<String> mods = ModList.get().getMods().stream().map(info -> info.getModId().toLowerCase(Locale.ROOT)).sorted().toList();
-        List<String> packs = Minecraft.getInstance().getResourcePackRepository().getSelectedPacks().stream()
+        var selectedPacks = Minecraft.getInstance().getResourcePackRepository().getSelectedPacks();
+        List<String> packs = selectedPacks.stream()
                 .map(pack -> pack.getId().toLowerCase(Locale.ROOT)).sorted().toList();
+        String blockedPack = ResourcePackGuard.findForbiddenPacks(selectedPacks.stream());
         String version = ModList.get().getModContainerById("jem_security")
                 .map(container -> container.getModInfo().getVersion().toString()).orElse("unknown");
-        SecurityNetwork.sendAttestation(mods, packs, version);
+        return new SecurityNetwork.Attestation(mods, packs, version, blockedPack == null ? "" : blockedPack);
+    }
+
+    private static void send(SecurityNetwork.Attestation attestation, String trigger) {
+        SecurityNetwork.sendAttestation(attestation.mods(), attestation.packs(), attestation.clientVersion(), attestation.blockedPackId());
+        LOGGER.info("JEM Security sent client attestation from {} with {} mods and {} resource packs",
+                trigger, attestation.mods().size(), attestation.packs().size());
     }
 
     @SubscribeEvent
     public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
         LOG_REQUESTS.clear();
+        cachedAttestation = null;
     }
 
     @SubscribeEvent

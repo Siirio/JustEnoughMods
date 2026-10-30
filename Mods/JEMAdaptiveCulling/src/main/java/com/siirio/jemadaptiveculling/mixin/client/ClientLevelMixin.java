@@ -1,6 +1,7 @@
 package com.siirio.jemadaptiveculling.mixin.client;
 
 import com.siirio.jemadaptiveculling.client.GeometryTracker;
+import com.siirio.jemadaptiveculling.client.VisibilityCache;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
@@ -18,20 +19,21 @@ public abstract class ClientLevelMixin {
     private void jemadaptiveculling$trackGeometryChange(BlockPos position, BlockState state, int flags, int recursion,
                                                         CallbackInfoReturnable<Boolean> callback) {
         if (callback.getReturnValue()) {
-            GeometryTracker.changed();
+            GeometryTracker.changed(position);
         }
     }
     @Inject(method = "unload", at = @At("HEAD"))
     private void jemadaptiveculling$trackChunkUnload(LevelChunk chunk, CallbackInfo callback) {
-        GeometryTracker.changed();
+        GeometryTracker.changed(chunk.getPos());
+        VisibilityCache.removeChunk(chunk.getPos());
     }
 
     @Inject(method = "onChunkLoaded", at = @At("HEAD"))
     private void jemadaptiveculling$trackChunkLoad(ChunkPos position, CallbackInfo callback) {
-        GeometryTracker.changed();
+        GeometryTracker.changed(position);
     }
-    @Inject(method = "setServerVerifiedBlockState", at = @At("HEAD"))
+    @Inject(method = "setServerVerifiedBlockState", at = @At("RETURN"))
     private void jemadaptiveculling$trackServerGeometry(BlockPos position, BlockState state, int flags, CallbackInfo callback) {
-        GeometryTracker.changed();
+        GeometryTracker.changed(position);
     }
 }

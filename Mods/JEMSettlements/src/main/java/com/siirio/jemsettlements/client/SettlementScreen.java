@@ -24,7 +24,11 @@ public class SettlementScreen extends Screen {
     private static final int ROW_HEIGHT=43;
     private static final String[] CHAPTERS={"founding","territory","feeding","housing","food_satisfaction","safety","jobs","community","decoration","chest_delivery","payroll","rebellion","treasury","tax"};
     private static final int INK=0xff342b26, MUTED=0xff6c6257, PALE=0xfff4e7cb, GOLD=0xffd7b86a;
+    private static final ItemStack[] NO_CHEST_STACKS=new ItemStack[0];
+    private static final boolean[] NO_CHEST_NBT_FLAGS=new boolean[0];
     private CompoundTag envelope, town=new CompoundTag(), detail, chest;
+    private ItemStack[] chestStacks=NO_CHEST_STACKS;
+    private boolean[] chestNbtOmitted=NO_CHEST_NBT_FLAGS;
     private String section="settlement", mode="loading", search="", filter="all", notice="";
     private String guideReturn="residents", guideMode="town";
     private int chapter, scroll, left, top, panelW, panelH, cx, cy, cw, bottom, listTop, listBottom;
@@ -106,7 +110,7 @@ public class SettlementScreen extends Screen {
         if (searchBox!=null) search=searchBox.getValue();
         if (nameBox!=null) editedName=nameBox.getValue();
         if (amountBox!=null) amount=amountBox.getValue();
-        searchBox=null; nameBox=null; amountBox=null; clearWidgets(); drawings.clear(); rows.clear(); map.release();
+        searchBox=null; nameBox=null; amountBox=null; clearWidgets(); drawings.clear(); rows.clear(); map.release();clearChestSlots();
         boolean citySection=mode.equals("town")&&section.equals("settlement");
         boolean directory=mode.equals("selector"), storage=mode.equals("town")&&section.equals("chests")&&chest!=null;
         int wantedW=directory?460:storage?364:860;
@@ -343,6 +347,18 @@ public class SettlementScreen extends Screen {
     }
     private int chestColumns(){return Math.min(9,Math.max(1,(cw-8)/18));}
     private int chestPageSize(){return Math.min(54,chestColumns()*Math.max(1,(bottom-52-(cy+40))/18));}
+    private void clearChestSlots(){chestStacks=NO_CHEST_STACKS;chestNbtOmitted=NO_CHEST_NBT_FLAGS;}
+    private void prepareChestSlots(int offset,int size){
+        chestStacks=new ItemStack[size];chestNbtOmitted=new boolean[size];
+        var slots=chest.getList("Slots",Tag.TAG_COMPOUND);
+        for(int i=0;i<slots.size();i++){
+            CompoundTag slot=slots.getCompound(i);int index=slot.getInt("Slot")-offset;
+            if(index>=0&&index<size&&chestStacks[index]==null){
+                chestStacks[index]=ItemStack.of(slot.getCompound("Stack").copy());chestNbtOmitted[index]=slot.getBoolean("NbtOmitted");
+            }
+        }
+        for(int i=0;i<size;i++)if(chestStacks[i]==null)chestStacks[i]=ItemStack.EMPTY;
+    }
     private void chestContents(){
         button(tr("back"),cx,cy,52,()->{chest=null;scroll=0;rebuild();},false);
         drawLine(Component.translatable("jem.settlements.storage_name",chest.getInt("Number")),cx+58,cy+5,INK);
@@ -350,14 +366,17 @@ public class SettlementScreen extends Screen {
         if(bottom-52-(cy+40)<18){drawWrapped(tr("scale"),cx,cy+28,cw,MUTED);return;}
         int columns=chestColumns(),capacity=chestPageSize(),offset=chest.getInt("SlotOffset"),total=chest.getInt("SlotsTotal");
         if(!chest.getBoolean("InventoryKnown"))drawWrapped(tr("chest_unavailable"),cx,cy+46,cw,MUTED);
-        else drawings.add(()->{
-            int gx=cx+(cw-columns*18)/2,gy=cy+40;
-            for(int i=0;i<Math.min(capacity,Math.max(0,total-offset));i++){
-                int sx=gx+i%columns*18,sy=gy+i/columns*18;
-                graphics.fill(sx,sy,sx+18,sy+18,0xff72614c);graphics.fill(sx+1,sy+1,sx+17,sy+17,0xff211b16);
-                for(CompoundTag slot:tags(chest,"Slots"))if(slot.getInt("Slot")==offset+i){ItemStack stack=ItemStack.of(slot.getCompound("Stack"));graphics.renderItem(stack,sx+1,sy+1);graphics.renderItemDecorations(font,stack,sx+1,sy+1);break;}
-            }
-        });
+        else {
+            prepareChestSlots(offset,Math.min(capacity,Math.max(0,total-offset)));
+            drawings.add(()->{
+                int gx=cx+(cw-columns*18)/2,gy=cy+40;
+                for(int i=0;i<chestStacks.length;i++){
+                    int sx=gx+i%columns*18,sy=gy+i/columns*18;
+                    graphics.fill(sx,sy,sx+18,sy+18,0xff72614c);graphics.fill(sx+1,sy+1,sx+17,sy+17,0xff211b16);
+                    ItemStack stack=chestStacks[i];if(!stack.isEmpty()){graphics.renderItem(stack,sx+1,sy+1);graphics.renderItemDecorations(font,stack,sx+1,sy+1);}
+                }
+            });
+        }
         boolean paged=total>capacity;
         if(paged){
             button(Component.literal("<"),cx,bottom-44,24,()->openStorage(chest,offset-capacity),false).active=offset>0&&!SettlementClientState.pending();
@@ -719,7 +738,7 @@ public class SettlementScreen extends Screen {
         }}
     }
     @Override public void onClose(){map.clearQuote();SettlementClientState.closed();minecraft.setScreen(null);}
-    @Override public void removed(){map.clearQuote();SettlementClientState.closed();}
+    @Override public void removed(){map.clearQuote();clearChestSlots();SettlementClientState.closed();}
     @Override public boolean keyPressed(int key,int scan,int modifiers){
         if(key==256){map.clearQuote();if(confirm!=null){confirm=null;mode=confirmMode;rebuild();return true;}if(mode.equals("guide")){mode=guideMode;section=guideReturn;rebuild();return true;}if(chest!=null){chest=null;rebuild();return true;}if(detail!=null&&!residentSplit){detail=null;rebuild();return true;}}
         return super.keyPressed(key,scan,modifiers);
@@ -759,9 +778,8 @@ public class SettlementScreen extends Screen {
         if(mode.equals("town")&&section.equals("chests")&&chest!=null&&confirm==null&&bottom-52-(cy+40)>=18){
             int columns=chestColumns(),gx=cx+(cw-columns*18)/2,gy=cy+40;
             int col=(mouseX-gx)/18,row=(mouseY-gy)/18,index=row*columns+col;
-            if(mouseX>=gx&&col<columns&&mouseY>=gy&&index<chestPageSize()&&mouseY<bottom-52){
-                int slotIndex=chest.getInt("SlotOffset")+index;
-                for(CompoundTag slot:tags(chest,"Slots"))if(slot.getInt("Slot")==slotIndex){ItemStack stack=ItemStack.of(slot.getCompound("Stack"));if(!stack.isEmpty()){if(slot.getBoolean("NbtOmitted"))g.renderComponentTooltip(font,List.of(stack.getHoverName(),tr("chest_nbt_omitted")),mouseX,mouseY);else g.renderTooltip(font,stack,mouseX,mouseY);}break;}
+            if(mouseX>=gx&&col<columns&&mouseY>=gy&&index<chestStacks.length&&mouseY<bottom-52){
+                ItemStack stack=chestStacks[index];if(!stack.isEmpty()){if(chestNbtOmitted[index])g.renderComponentTooltip(font,List.of(stack.getHoverName(),tr("chest_nbt_omitted")),mouseX,mouseY);else g.renderTooltip(font,stack,mouseX,mouseY);}
             }
         }
         graphics=null;

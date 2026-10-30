@@ -11,7 +11,7 @@ import net.minecraft.world.InteractionResult;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.*;
-@Mixin(LeadItem.class)
+@Mixin(value = LeadItem.class, priority = 1100)
 public abstract class PetUtilityQuestFenceMixin {
  @Unique private static final ThreadLocal<PetUtilityQuestHorseman.Hitch> JEM_HITCH=new ThreadLocal<>();
  @Inject(method="bindPlayerMobs",at=@At("HEAD"))private static void jem$before(Player p,Level l,BlockPos pos,CallbackInfoReturnable<InteractionResult> ci){JEM_HITCH.remove();if(p instanceof ServerPlayer actor && PetUtilityQuestProof.actor(actor)!=null && p.getRootVehicle() instanceof AbstractHorse horse && horse instanceof HitchableHorse h && horse.getLeashHolder()==actor)JEM_HITCH.set(new PetUtilityQuestHorseman.Hitch(actor,horse,HitchableHorse.getLead(h).copy()));}

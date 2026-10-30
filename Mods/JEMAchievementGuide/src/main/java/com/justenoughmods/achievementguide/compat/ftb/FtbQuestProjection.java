@@ -85,6 +85,7 @@ public final class FtbQuestProjection {
                     quests.put(id, quest);
                     if (!enabled || !questEnabled(id, features) || !referencesAvailable(quest)) unavailable.add(id);
                     if (authoredBook && !chapter.getBoolean("jem_archive")) {
+                        pruneUnavailableRewards(quest);
                         String reason = authoredUnavailable(quest, definitions, features, server);
                         if (!reason.isEmpty()) {
                             unavailable.add(id); unavailableReasons.put(id, reason);
@@ -251,6 +252,16 @@ public final class FtbQuestProjection {
 
     private static String itemId(CompoundTag row) {
         return row.contains("item", Tag.TAG_COMPOUND) ? row.getCompound("item").getString("id") : row.getString("item");
+    }
+
+    private static void pruneUnavailableRewards(CompoundTag quest) {
+        ListTag retained = new ListTag();
+        for (Tag raw : quest.getList("rewards", Tag.TAG_COMPOUND)) {
+            CompoundTag reward = (CompoundTag)raw;
+            if (reward.contains("item") && !itemAvailable(itemId(reward))) continue;
+            retained.add(reward);
+        }
+        quest.put("rewards", retained);
     }
 
     private static boolean itemAvailable(String raw) {

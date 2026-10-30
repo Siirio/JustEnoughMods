@@ -1,8 +1,14 @@
 # JEM Adventure Atlas
 
+## Lead interaction compatibility
+
+The existing Horseman pet-utility proof observes vanilla `LeadItem.bindPlayerMobs` at HEAD and RETURN without replacing the native leash result. Its Mixin priority is `1100`, above the installed Small Ships 2.0.0-b1.4 default priority `1000`. This preserves the runtime-proven order in which Small Ships prepares its `CAPTURE_FAILHARD` TAIL-local injection before JEM adds the quest observation. Lowering JEM to priority `900` reversed that order and caused Small Ships local analysis to fail during dedicated-server bootstrap. This ordering changes no quest criterion, leash target or native interaction result.
+
 The canonical authoring source now contains the supplied Visual V4 design with the user's Seed Bag and inert-totem removals:614 quests, seven chapters and512 cosmetic connections. The elder alloy goal now requires only confirmed native Invulnerite smithing, with corrected bilingual guidance and a one-stage reward. Its implementation is in progress and remains isolated from the active modpack until every required native success producer and reward migration is ready. [The V4 implementation receipt](visual-v4/implementation.json) enumerates every advancement, including missing producers. A successful production build alone does not open this activation gate
 
 Ordinary V4 quests belong to the standalone modpack and run on Minecraft's integrated logical server in singleplayer. They require no external server, JEMServer, hosted SMP session or remote service. Optional native-mod adapters follow the installed owners on both host types. Dedicated event objectives remain optional and unavailable without their owning feature, with no blocking dependency on ordinary progression. FTB Quests remains the book, progress and team owner, JEMRewards remains its integrated-safe personal delivery companion
+
+If an authored item reward no longer exists in the installed registry, the host projection removes only that invalid reward from its temporary book. The ordinary quest, its tasks, its other rewards and native FTB progress remain available
 
 The current installed [UI Rescue v3 specification](rescue-v3/specification.md) retains exactly seven real chapters, without named chapter groups or a mandatory hub. The active V3 book contains 602 cards with 577 visible objectives and 25 retained informational records. Seven invisible historical archives preserve retired identities. The following V3 delivery history remains applicable to the installed generation until V4 activation
 

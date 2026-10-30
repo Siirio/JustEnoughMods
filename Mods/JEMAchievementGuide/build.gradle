@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.justenoughmods'
-version = '5.2.0'
+version = '5.2.1'
 
 def instanceOverride = findProperty('jemRuntimeRoot') ?: findProperty('jem_instance') ?: System.getenv('JEM_INSTANCE')
 def jemRuntimeRoot = file(instanceOverride?.toString()?.trim() ?: '../../Client/ManagedPack')

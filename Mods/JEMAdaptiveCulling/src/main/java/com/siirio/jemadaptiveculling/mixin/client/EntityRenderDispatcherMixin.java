@@ -37,7 +37,7 @@ public abstract class EntityRenderDispatcherMixin {
                 || Minecraft.getInstance().player.getLastHurtByMob() == entity)) {
             return;
         }
-        if (!VisibilityCache.shouldRenderEntity(entity.getId(), entity.getBoundingBoxForCulling())) {
+        if (!VisibilityCache.shouldRenderEntity(entity, entity.getBoundingBoxForCulling())) {
             callback.setReturnValue(false);
         }
     }
