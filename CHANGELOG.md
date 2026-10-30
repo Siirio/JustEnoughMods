@@ -1,3 +1,28 @@
+## 2026-10-30 - Fast-fix and publish the Jalloween client update
+
+- User corrected the earlier fallback decision and required JEM Holidays to keep AudioYT installed and automatically use its existing YouTube extraction, decoding and playback during the Halloween window
+- Bug / Client Sided / JEM Holidays and AudioYT independently wrote different gain values to the same Java Sound line, alternating the MUSIC/MASTER result with AudioYT's RECORDS result and producing periodic harsh white-noise or volume jumps / in testing
+- JEM Holidays 1.0.3 now starts and stops one owned sound through AudioYT 1.0.1 public playback methods, changes the payload volume without competing gain writes in worlds and applies menu gain only after AudioYT creates its own line
+- The menu loops `2PNX8arJLoU`. Worlds rotate `neUXoluDW1k` and `EU5XFHhuLzY`. The explicitly rejected FNAF track `jSWLy5iMWV4` remains excluded despite also appearing in the supplied three-link list
+- AudioYT's public `maxDurationSec` value becomes unlimited only while the Halloween playlist is active and returns to the player's prior configured value when the season ends
+- Vanilla sounds in the `MUSIC` category are rejected only during active Halloween playback, while ambience, effects, voices, music discs and AudioYT's manual functionality remain untouched
+- Moving between the main menu and a world stops the previous JEM-owned AudioYT sound before starting the other playlist. November 3 stops only that owned sound and returns the vanilla music scheduler and AudioYT duration limit to ordinary behavior
+- No YouTube recording is bundled. AudioYT 1.0.1 remains in `jem sandbox`, canonical `Client/ManagedPack` and the native `test jem` installation with SHA-256 `31d8139d45c142d2f55cb9d4ee9880ba911aa1d366f97ffe100770a65bc31f5c`
+- Bug / Client Sided / the supplied Halloween GUI contained an opaque vanilla panorama overlay that replaced the approved JEM background, while its GUI textures were absent from the managed seasonal stack / in testing
+- Added the supplied Halloween GUI archive to the seasonal stack above JEM Jalloween and removed only its opaque panorama overlay. JEM Jalloween remains above ordinary packs and JEM Release remains the fallback for every texture the Halloween GUI does not provide
+- Bug / Client Sided / the Default-Style Halloween source owned the iron-golem CEM model and four golem textures, allowing EMF to replace ordinary golems with an incorrect seasonal appearance / in testing
+- The managed JEM Jalloween archive excludes those five golem assets and every creeper override, leaving iron golems, creepers and villagers to Fresh Animations or other selected packs
+- Bug / Client Sided / JEM Holidays removed only JEM Jalloween when no saved restoration file existed, which could leave the separate Halloween GUI enabled after November 3 / in testing
+- Normal restoration now removes both seasonal pack IDs while preserving unrelated user-selected packs, priorities and settings
+- Bug / Client Sided / JEM Luxium suppressed the warning screen eligibility result but did not persist Luxium's `alphaWarningShown` setting, so a future lifecycle could still reconstruct the 200-tick Continue gate / in testing
+- JEM Luxium 1.0.9 writes and saves only that acknowledged flag before returning false. Luxium settings, renderer options and Oculus compatibility remain unchanged, and obsolete JEM Luxium 1.0.8 is removed from the managed installation
+- FTB Quests remained configured with `disable_gui: false`. The dedicated server loaded 1 chapter group, 8 chapters, 606 quests and 10 reward tables without resetting quest data, confirming the reported disabled state was the unavailable duplicate local server rather than a Halloween configuration change
+- Production builds completed without tests. JEM Holidays 1.0.3 SHA-256 is `1bd893bf452a512c52e2cec0078d61cf5e3e9e973fa80f5f2378da13e374f492` and JEM Luxium 1.0.9 SHA-256 is `74b8afdc994c22eabcc4fe42030e4f7549a587550afe614c2f8c96e85aa9ee2a`
+- Deployed the exact client artifacts directly to the closed non-AutoModpack `jem sandbox` profile first. No Minecraft client was launched
+- Reviewed and published final native AutoModpack generation 119 with content token `75dd27f6e0b98aa58bcf2649190d16bf8658a80a` and matching staged/published manifest SHA-1 `99887aef51a90412a68edad135b13c1ccbf21bec`
+- Applied generation 119 natively to the closed `test jem` profile. AudioYT, JEM Holidays, JEM Luxium and Halloween GUI hashes match canonical artifacts, replaced JARs are absent and no transaction remains pending
+- The dedicated server was stopped after publication and world saving. Client playback, menu/world transitions, visuals and player acceptance remain unverified because the user requested no client launch or gameplay test
+
 ## 2026-10-30 - Add the Jalloween client atmosphere
 
 - User player-tested the first `jem sandbox` candidate and rejected four observed behaviors: ordinary iron golems used the seasonal guard replacement, the normal JEM Release menu overlaid the Jalloween background, Halloween GUI textures lost resource-pack priority, and AudioYT failed or emitted harsh white-noise bursts

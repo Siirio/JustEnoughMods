@@ -6,8 +6,10 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.packs.PackSelectionScreen;
 import net.minecraft.server.packs.repository.PackRepository;
+import net.minecraft.sounds.SoundSource;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -34,6 +36,12 @@ public final class SeasonalController {
     private static final String JALLOWEEN_PACK = "file/JEM Jalloween v0.1.zip";
     private static final String HALLOWEEN_GUI_PACK = "file/Halloween%20GUI%201.20.zip";
     private static final List<String> SEASONAL_PACKS = List.of(JALLOWEEN_PACK, HALLOWEEN_GUI_PACK);
+    private static final String MENU_TRACK = "https://youtu.be/2PNX8arJLoU";
+    private static final String[] WORLD_TRACKS = {
+            "https://youtu.be/neUXoluDW1k",
+            "https://youtu.be/EU5XFHhuLzY"
+    };
+    private static final AudioYtBridge AUDIO_YT = new AudioYtBridge();
 
     private static LocalDate observedDate;
     private static boolean halloweenActive;
@@ -41,6 +49,10 @@ public final class SeasonalController {
     private static long nextZoneCheckNanos;
     private static boolean packReconcileRequested = true;
     private static long packReconcileNotBeforeMillis;
+    private static MusicContext musicContext = MusicContext.NONE;
+    private static int worldTrackIndex = Math.floorMod((int) System.nanoTime(), WORLD_TRACKS.length);
+    private static long earliestTrackEndCheckMillis;
+    private static int audioTick;
 
     private SeasonalController() {
     }
@@ -61,6 +73,8 @@ public final class SeasonalController {
             packReconcileRequested = false;
             reconcileSeasonalPacks(Minecraft.getInstance());
         }
+
+        updateMusic(Minecraft.getInstance(), nowMillis);
     }
 
     @SubscribeEvent
@@ -68,6 +82,14 @@ public final class SeasonalController {
         if (event.getScreen() instanceof PackSelectionScreen) {
             packReconcileRequested = true;
             packReconcileNotBeforeMillis = System.currentTimeMillis() + 15_000L;
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onPlaySound(PlaySoundEvent event) {
+        if (halloweenActive && event.getSound() != null
+                && event.getSound().getSource() == SoundSource.MUSIC) {
+            event.setSound(null);
         }
     }
 
@@ -124,9 +146,7 @@ public final class SeasonalController {
     private static List<String> restoreNormalStack(List<String> current) {
         SavedSelection saved = readSavedSelection();
         if (saved == null) {
-            List<String> target = new ArrayList<>(current);
-            target.removeIf(JALLOWEEN_PACK::equals);
-            return target;
+            return withoutSeasonalPacks(current);
         }
 
         List<String> target = withoutSeasonalPacks(current);
@@ -194,6 +214,68 @@ public final class SeasonalController {
         } catch (IOException exception) {
             LOGGER.warn("Could not remove the completed JEM Holidays restoration state", exception);
         }
+    }
+
+    private static void updateMusic(Minecraft minecraft, long nowMillis) {
+        if (!halloweenActive || !AUDIO_YT.isAvailable()) {
+            stopSeasonalMusic();
+            AUDIO_YT.setSeasonalDurationOverride(false);
+            return;
+        }
+
+        AUDIO_YT.setSeasonalDurationOverride(true);
+        MusicContext desired = minecraft.level == null ? MusicContext.MENU : MusicContext.WORLD;
+        float volume = seasonalMusicVolume(minecraft);
+        if (desired != musicContext) {
+            AUDIO_YT.stopOwned();
+            musicContext = desired;
+            minecraft.getMusicManager().stopPlaying();
+            startCurrentTrack(nowMillis, volume);
+        }
+
+        AUDIO_YT.updateOwnedVolume(volume, musicContext == MusicContext.MENU);
+        if (++audioTick % 20 != 0) {
+            return;
+        }
+
+        if (nowMillis < earliestTrackEndCheckMillis || AUDIO_YT.isOwnedTrackPlaying()) {
+            return;
+        }
+
+        if (musicContext == MusicContext.WORLD) {
+            worldTrackIndex = (worldTrackIndex + 1) % WORLD_TRACKS.length;
+        }
+        startCurrentTrack(nowMillis, volume);
+    }
+
+    private static float seasonalMusicVolume(Minecraft minecraft) {
+        return 0.55F
+                * minecraft.options.getSoundSourceVolume(SoundSource.MUSIC)
+                * minecraft.options.getSoundSourceVolume(SoundSource.MASTER);
+    }
+
+    private static void startCurrentTrack(long nowMillis, float volume) {
+        String url = musicContext == MusicContext.MENU
+                ? MENU_TRACK
+                : WORLD_TRACKS[worldTrackIndex];
+        AUDIO_YT.playOwned(url, volume);
+        earliestTrackEndCheckMillis = nowMillis + 10_000L;
+    }
+
+    private static void stopSeasonalMusic() {
+        if (musicContext == MusicContext.NONE) {
+            return;
+        }
+        AUDIO_YT.stopOwned();
+        musicContext = MusicContext.NONE;
+        earliestTrackEndCheckMillis = 0L;
+        audioTick = 0;
+    }
+
+    private enum MusicContext {
+        NONE,
+        MENU,
+        WORLD
     }
 
     private static final class SavedSelection {

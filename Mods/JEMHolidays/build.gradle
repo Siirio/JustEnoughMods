@@ -14,6 +14,7 @@ repositories { mavenCentral() }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    compileOnly files("${rootDir}/../../Client/ManagedPack/mods/AudioYT-1.0.1.jar")
 }
 
 tasks.named('processResources', ProcessResources).configure {

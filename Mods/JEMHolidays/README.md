@@ -15,13 +15,19 @@ JEM Holidays is the standalone client-only owner for annual JEM presentation cha
 - The controller places `file/JEM Jalloween v0.1.zip` at seasonal top priority during Halloween
 - When the separately installed `Halloween GUI 1.20` pack is available, it is placed above JEM Jalloween so its GUI textures override the release fallback
 - Before the first seasonal transition, the controller records the selected positions of only the seasonal packs
-- On November 3 it removes seasonal additions and restores any previously selected seasonal pack near its saved neighbors
+- On November 3 it removes every seasonal addition, including the GUI pack when no restoration file exists, and restores any previously selected seasonal pack near its saved neighbors
 - Unrelated pack additions, removals and relative priority remain untouched
 - Closing the resource-pack screen schedules one delayed reconciliation so it does not overlap the screen's own resource reload
 - The Jalloween pack supplies reversible autumn grass and foliage colormaps, seasonal leaves, the menu marker and other seasonal presentation without changing biome or world data
 
 ## Audio status
 
-Automatic AudioYT playback is disabled in 1.0.1 after sandbox acceptance exposed two upstream limitations: the requested ambience videos exceed the observed 600-second loading boundary, and the AudioYT Java Sound output intermittently produces harsh white-noise bursts. The FNAF track `jSWLy5iMWV4` was also rejected stylistically and has been removed
-
-JEM Holidays does not suppress Minecraft music while seasonal streaming is disabled. It does not implement a replacement extractor or playback engine, and no recording or AudioYT binary is redistributed. Seasonal calendar, packs, autumn visuals and menu theme remain fully local and offline
+- AudioYT 1.0.1 remains the only extractor, decoder and playback engine
+- During Halloween the main menu loops `2PNX8arJLoU`
+- In worlds the controller rotates `neUXoluDW1k` and `EU5XFHhuLzY`; the rejected FNAF track `jSWLy5iMWV4` remains excluded
+- Moving between the main menu and a world stops the JEM-owned AudioYT sound before starting the other playlist
+- Only sounds in Minecraft's background `MUSIC` category are rejected while the seasonal playlist is active; ambience, effects, voices and `RECORDS` music discs are untouched
+- The AudioYT duration limit is temporarily disabled only while Halloween playback is active and its configured value is restored when the season ends
+- Seasonal volume follows Minecraft's MUSIC and MASTER sliders without the competing gain writes that caused periodic white-noise bursts
+- On November 3 JEM Holidays stops only its owned AudioYT sound and returns Minecraft background music to its ordinary scheduler
+- No YouTube recording is bundled or downloaded by JEM Holidays itself

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.9
+
+- Persist Luxium's first-run warning acknowledgement before suppressing the warning screen, so new installations never retain the 200-tick gate
+
 ## 1.0.8 - in development
 
 - Suppress Luxium 2.8.0's first-run alpha warning and ten-second Continue gate
