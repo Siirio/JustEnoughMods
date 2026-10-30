@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.packs.PackSelectionScreen;
+import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.server.packs.repository.PackRepository;
 import net.minecraft.sounds.SoundSource;
 import net.minecraftforge.api.distmarker.Dist;
@@ -26,7 +27,10 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = JEMHolidays.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class SeasonalController {
@@ -42,6 +46,8 @@ public final class SeasonalController {
             "https://youtu.be/EU5XFHhuLzY"
     };
     private static final AudioYtBridge AUDIO_YT = new AudioYtBridge();
+    private static final Map<SoundInstance, Long> ACTIVE_RECORD_SOUNDS = new IdentityHashMap<>();
+    private static final long RECORD_START_GRACE_NANOS = 1_000_000_000L;
 
     private static LocalDate observedDate;
     private static boolean halloweenActive;
@@ -90,6 +96,14 @@ public final class SeasonalController {
         if (halloweenActive && event.getSound() != null
                 && event.getSound().getSource() == SoundSource.MUSIC) {
             event.setSound(null);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onRecordSound(PlaySoundEvent event) {
+        SoundInstance sound = event.getSound();
+        if (halloweenActive && sound != null && sound.getSource() == SoundSource.RECORDS) {
+            ACTIVE_RECORD_SOUNDS.put(sound, System.nanoTime());
         }
     }
 
@@ -225,7 +239,10 @@ public final class SeasonalController {
 
         AUDIO_YT.setSeasonalDurationOverride(true);
         MusicContext desired = minecraft.level == null ? MusicContext.MENU : MusicContext.WORLD;
-        float volume = seasonalMusicVolume(minecraft);
+        boolean recordAudible = desired == MusicContext.WORLD
+                && (isVanillaRecordAudible(minecraft, System.nanoTime())
+                || AUDIO_YT.hasAudibleExternalPositionalSound(minecraft));
+        float volume = recordAudible ? 0.0F : seasonalMusicVolume(minecraft);
         if (desired != musicContext) {
             AUDIO_YT.stopOwned();
             musicContext = desired;
@@ -254,6 +271,41 @@ public final class SeasonalController {
                 * minecraft.options.getSoundSourceVolume(SoundSource.MASTER);
     }
 
+    private static boolean isVanillaRecordAudible(Minecraft minecraft, long nowNanos) {
+        if (minecraft.player == null
+                || minecraft.options.getSoundSourceVolume(SoundSource.MASTER) <= 0.0F
+                || minecraft.options.getSoundSourceVolume(SoundSource.RECORDS) <= 0.0F) {
+            return false;
+        }
+
+        boolean audible = false;
+        Iterator<Map.Entry<SoundInstance, Long>> iterator = ACTIVE_RECORD_SOUNDS.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<SoundInstance, Long> entry = iterator.next();
+            SoundInstance sound = entry.getKey();
+            boolean active = minecraft.getSoundManager().isActive(sound);
+            if (!active && nowNanos - entry.getValue() >= RECORD_START_GRACE_NANOS) {
+                iterator.remove();
+                continue;
+            }
+            if (!active || sound.getVolume() <= 0.0F) {
+                continue;
+            }
+            if (sound.isRelative() || sound.getAttenuation() == SoundInstance.Attenuation.NONE) {
+                audible = true;
+                continue;
+            }
+
+            double radius = 16.0D * Math.max(1.0F, sound.getVolume());
+            double distanceSquared = minecraft.player.distanceToSqr(
+                    sound.getX(), sound.getY(), sound.getZ());
+            if (distanceSquared < radius * radius) {
+                audible = true;
+            }
+        }
+        return audible;
+    }
+
     private static void startCurrentTrack(long nowMillis, float volume) {
         String url = musicContext == MusicContext.MENU
                 ? MENU_TRACK
@@ -270,6 +322,7 @@ public final class SeasonalController {
         musicContext = MusicContext.NONE;
         earliestTrackEndCheckMillis = 0L;
         audioTick = 0;
+        ACTIVE_RECORD_SOUNDS.clear();
     }
 
     private enum MusicContext {

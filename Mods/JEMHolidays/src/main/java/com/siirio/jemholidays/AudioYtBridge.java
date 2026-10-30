@@ -4,6 +4,9 @@ import SCP.audioyt_1_20_1.audio.AudioManager;
 import SCP.audioyt_1_20_1.config.ModConfig;
 import SCP.audioyt_1_20_1.network.ModPackets.PlaySoundPayload;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import org.slf4j.Logger;
 
@@ -94,6 +97,45 @@ final class AudioYtBridge {
             return running.getBoolean(sound);
         } catch (IllegalAccessException exception) {
             disable("Could not inspect JEM Holidays AudioYT playback", exception);
+            return false;
+        }
+    }
+
+    boolean hasAudibleExternalPositionalSound(Minecraft minecraft) {
+        if (!initialize() || minecraft.player == null
+                || minecraft.options.getSoundSourceVolume(SoundSource.MASTER) <= VOLUME_EPSILON
+                || minecraft.options.getSoundSourceVolume(SoundSource.RECORDS) <= VOLUME_EPSILON) {
+            return false;
+        }
+
+        try {
+            Vec3 listener = minecraft.player.getEyePosition(1.0F);
+            float categoryVolume = minecraft.options.getSoundSourceVolume(SoundSource.MASTER)
+                    * minecraft.options.getSoundSourceVolume(SoundSource.RECORDS);
+            for (Map.Entry<UUID, Object> entry : sounds().entrySet()) {
+                if (entry.getKey().equals(ownedSoundId) || !running.getBoolean(entry.getValue())) {
+                    continue;
+                }
+
+                Object soundPayload = payload.get(entry.getValue());
+                if (!(soundPayload instanceof PlaySoundPayload external)
+                        || external.position().isEmpty() || external.radius() <= 0.0F) {
+                    continue;
+                }
+
+                double distance = listener.distanceTo(external.position().get());
+                if (distance >= external.radius()) {
+                    continue;
+                }
+
+                double attenuation = 1.0D - distance / external.radius();
+                if (external.volume() * categoryVolume * attenuation > VOLUME_EPSILON) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (ReflectiveOperationException exception) {
+            disable("Could not inspect external AudioYT playback", exception);
             return false;
         }
     }

@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "change_id": "seasonal.jalloween-night-and-audio-coexistence-20261030",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "category",
+      "registry": "*",
+      "value": "jem_holidays"
+    }
+  ],
+  "conditions": [
+    {
+      "calendar": "October 30 through November 2 inclusive",
+      "client_timezone": "operating-system local timezone for presentation",
+      "server_timezone": "logical-server operating-system local timezone for authoritative world time"
+    }
+  ],
+  "precedence": {
+    "layer": "jem_seasonal_runtime",
+    "priority": 900,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Restore the complete Halloween GUI, make seasonal music yield to audible record players and keep skylit worlds at midnight only during the annual Halloween window",
+    "modifiers": [
+      {
+        "property": "client.halloween_gui_archive",
+        "operation": "replace",
+        "before": "The locally rewritten ZIP had corrupt local headers after its first GUI entries, so enabled textures resolved to missing-resource checkerboards",
+        "after": "The official CurseForge file 9143523 is intact and retains every GUI texture, with only its opaque panorama overlay removed so the approved FancyMenu background remains visible"
+      },
+      {
+        "property": "client.seasonal_music.record_player_priority",
+        "operation": "replace",
+        "before": "The JEM-owned AudioYT background track continued at full gain while a vanilla record or positional AudioYT jukebox was audible",
+        "after": "The owned seasonal track is muted without stopping while an audible record source is in range and its configured MUSIC gain resumes outside that range"
+      },
+      {
+        "property": "world.halloween_day_time",
+        "operation": "set",
+        "before": "World day time followed the existing daylight rule throughout the Halloween window",
+        "after": "Every skylit dimension without fixed time is held at Minecraft midnight while the logical server calendar is October 30 through November 2, then JEM stops writing time on November 3",
+        "conditions": [
+          {
+            "calendar": "October 30 through November 2 inclusive"
+          }
+        ]
+      },
+      {
+        "property": "network.audioyt_channel_presence",
+        "operation": "replace",
+        "before": "AudioYT 1.0.1 was present only on the client even though upstream declares side BOTH and requires protocol audioyt_1_20_1:main",
+        "after": "The exact same AudioYT 1.0.1 JAR is installed on the dedicated server and clients so native jukebox packets and Forge channel negotiation have one owner"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Holidays and upstream AudioYT integration",
+    "kind": "seasonal_client_server_runtime",
+    "source_files": [
+      "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/AudioYtBridge.java",
+      "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java",
+      "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/ServerSeasonalController.java",
+      "Mods/JEMHolidays/src/main/resources/META-INF/mods.toml",
+      "Mods/JEMHolidays/README.md"
+    ]
+  },
+  "rationale": {
+    "purpose": "Keep the Halloween presentation complete, avoid simultaneous music and apply the requested annual night without permanent world or gamerule changes",
+    "decision_source": "The user reported the checkerboard GUI, overlapping record-player and background music, the AudioYT channel rejection and requested permanent night during the Halloween dates. The implementation uses upstream AudioYT positional payloads and logical-server time authority as the smallest native seams"
+  },
+  "introduced": {
+    "date": "2026-10-30",
+    "commit": "SELF",
+    "action": "repair_and_extend",
+    "summary": "Repair seasonal GUI/audio/server admission and add bounded Halloween midnight"
+  },
+  "history": [
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "repair_and_extend",
+      "summary": "Replace the corrupt GUI archive from its official source, yield seasonal playback to audible record sources, install the required upstream AudioYT server channel and hold world time at midnight only inside the Halloween calendar window",
+      "source_files": [
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/AudioYtBridge.java",
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java",
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/ServerSeasonalController.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "resource_packs",
+      "fancymenu",
+      "audioyt",
+      "vanilla_music",
+      "music_discs",
+      "forge_handshake",
+      "world_time",
+      "singleplayer",
+      "multiplayer"
+    ],
+    "relations": [
+      "Season calendar -> client resource stack and AudioYT playlist",
+      "Record-player audibility -> owned seasonal AudioYT gain only",
+      "Server calendar -> skylit world day time",
+      "AudioYT both-side metadata -> matching Forge channel presence"
+    ],
+    "notes": [
+      "Unrelated sound categories, record playback, resource-pack ordering, gamerules, biome data and world data formats remain unchanged",
+      "Stable JEM and MineRENT remain outside this sandbox delivery"
+    ],
+    "unresolved": [
+      "Player acceptance of GUI rendering, radius transitions and the visible midnight state remains unrun"
+    ]
+  }
+}

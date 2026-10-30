@@ -18,20 +18,25 @@ replacements = {
     "mods/jem_adaptive_culling-1.5.0.jar",
 }
 removed_paths = {"mods/jem_adaptive_culling-1.4.1.jar"}''': '''installed_paths = {
+    "config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_hover.png",
+    "config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_inactive.png",
+    "config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_normal.png",
+    "config/fancymenu/customization/jalloween_title_screen.txt",
     "jem-pack/manifest.json",
     "mods/AudioYT-1.0.1.jar",
-    "mods/jem_holidays-1.0.3.jar",
+    "mods/jem_holidays-1.0.4.jar",
     "mods/jem_luxium-1.0.9.jar",
     "resourcepacks/Halloween%20GUI%201.20.zip",
 }
 removed_paths = {
     "mods/jem_holidays-1.0.1.jar",
+    "mods/jem_holidays-1.0.3.jar",
     "mods/jem_luxium-1.0.8.jar",
 }''',
     '''Set<String> allowed=Set.of("jem-pack/manifest.json","mods/jem-advancements-5.2.1.jar","mods/jem_security-1.0.4.jar","mods/jem-server-2.0.0-dev.jar","mods/jem-settlements-2.1.0.jar","mods/jem_adaptive_culling-1.4.1.jar","mods/jem_adaptive_culling-1.5.0.jar");
-  Set<String> removed=Set.of("mods/jem_adaptive_culling-1.4.1.jar");''': '''Set<String> allowed=Set.of("jem-pack/manifest.json","mods/jem_holidays-1.0.3.jar");
-  Set<String> removed=Set.of();''',
-    '''if(plan.operations().size()!=8)throw new IllegalStateException("Native plan operation count differs from reviewed preview");''': '''if(plan.operations().size()!=3)throw new IllegalStateException("Native plan operation count differs from reviewed preview");''',
+  Set<String> removed=Set.of("mods/jem_adaptive_culling-1.4.1.jar");''': '''Set<String> allowed=Set.of("config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_hover.png","config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_inactive.png","config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_normal.png","config/fancymenu/customization/jalloween_title_screen.txt","jem-pack/manifest.json","mods/jem_holidays-1.0.3.jar","mods/jem_holidays-1.0.4.jar","resourcepacks/Halloween%20GUI%201.20.zip");
+  Set<String> removed=Set.of("mods/jem_holidays-1.0.3.jar");''',
+    '''if(plan.operations().size()!=8)throw new IllegalStateException("Native plan operation count differs from reviewed preview");''': '''if(plan.operations().size()!=14)throw new IllegalStateException("Native plan operation count differs from reviewed preview");''',
     'jem-combined-head-': 'jem-jalloween-head-',
     'jem-combined-journal-': 'jem-jalloween-journal-',
     'local/jem-combined-native.jsh': 'local/jem-jalloween-native.jsh',

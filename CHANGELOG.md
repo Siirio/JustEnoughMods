@@ -1,3 +1,27 @@
+## 2026-10-30 - Repair Halloween GUI, jukebox priority and local server admission
+
+- User reported that the seasonal background returned but enabled Halloween GUI textures rendered as missing-resource checkerboards in `test jem`
+- Bug / Client Sided / the managed Halloween GUI ZIP had corrupt local headers after its first entries, so Minecraft selected the pack from its readable central directory but failed to open textures including `options_background.png` / in testing
+- Replaced the damaged archive with official CurseForge file `9143523` for Minecraft 1.20.1 and removed only `assets/minecraft/textures/gui/title/background/panorama_overlay.png`, preserving the approved FancyMenu background and every supplied GUI texture
+- User required Halloween background music to yield whenever a block record player is audible and resume after leaving its audible radius
+- Bug / Client Sided / the JEM-owned AudioYT background used an independent Java Sound line and did not observe vanilla RECORDS sounds or AudioYT positional jukebox payloads, so both tracks played together / in testing
+- JEM Holidays 1.0.4 keeps its owned track alive but at zero gain while an active vanilla record or positional AudioYT sound is audible, then restores the existing MUSIC and MASTER-derived gain outside the source radius
+- User reported local server rejection with `Connection closed - mismatched mod channel list` naming AudioYT 1.0.1
+- Bug / Both Sided / AudioYT was distributed only to clients although its exact `mods.toml` declares side BOTH and its `audioyt_1_20_1:main` channel requires the same protocol on the server / in testing
+- The exact existing AudioYT 1.0.1 artifact is now also a dedicated-server artifact, preserving its native jukebox packets, manual playback and client functionality
+- User requested permanent night from October 30 through November 2
+- JEM Holidays 1.0.4 adds logical-server authority that holds skylit non-fixed-time dimensions at midnight only during that calendar window, leaves `doDaylightCycle` and biome/world formats unchanged and stops writing time on November 3
+- Client presentation follows the client operating-system timezone while authoritative multiplayer night follows the logical server operating-system timezone so one world has one time state
+- A current resource-pack search found Halloween packs with scary or orange harvest moons, but no verified exact Minecraft 1.20.1 laughing-pumpkin moon pack was added
+- User rejected every proposed custom pumpkin-moon texture and cancelled the feature. No moon texture was added to `JEM Jalloween`, AutoModpack, `jem sandbox` or `test jem`, and the unapproved art workspace was removed
+- User requested that the closed `test jem` profile receive the current Halloween update, that the local dedicated server remain running, and that only the Halloween main-menu buttons change from blue to purple
+- Bug / Client Sided / `jalloween_title_screen.txt` still referenced the ordinary `sky_brush` button textures, so its active seasonal layout inherited the normal blue controls / in testing
+- Added native 190 by 20 Jalloween normal, hover and inactive button backgrounds in a distinct violet family and changed only the seasonal FancyMenu layout to use them. The ordinary blue controls, hit bounds, labels and non-seasonal layouts remain unchanged
+- Published native AutoModpack generation 120 with content token `836a6f4c1b221d09fb3c3a167d8ea919138a21dc` and matching staged/published manifest SHA-1 `a0eeb8569b0bdaa3cf9642a5f1972bc9feca11c4`
+- Applied generation 120 natively to the closed `test jem` profile. The active token matches the published head, AudioYT 1.0.1 and JEM Holidays 1.0.4 remain installed, all nine reviewed artifacts match canonical SHA-256 values, JEM Holidays 1.0.3 is absent and no transaction remains pending
+- The ordinary local dedicated server loaded successfully and remains running for the user. No Minecraft client launch or gameplay test was performed
+- The affected JEM Holidays production artifact compiled successfully without tests or a Minecraft client launch. Runtime player acceptance remains pending
+
 ## 2026-10-30 - Fast-fix and publish the Jalloween client update
 
 - User corrected the earlier fallback decision and required JEM Holidays to keep AudioYT installed and automatically use its existing YouTube extraction, decoding and playback during the Halloween window

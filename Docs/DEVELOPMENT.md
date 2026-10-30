@@ -59,7 +59,7 @@ The approved public Forge 1.20.1 extraction scope is frozen in the [public relea
 | Модуль | Единственная ответственность |
 | --- | --- |
 | `JEMAdaptiveCulling` | Client rendering performance и только culling; dedicated server не нужен |
-| `JEMHolidays` | Client-local annual holiday calendar, reversible seasonal resource-pack ownership, FancyMenu theme activation and an exact AudioYT 1.0.1 presentation bridge; dedicated server is never an authority or dependency |
+| `JEMHolidays` | Client-local annual resource-pack, FancyMenu and exact AudioYT 1.0.1 presentation control, plus logical-server Halloween midnight authority from October 30 through November 2; AudioYT remains its own both-side jukebox/channel owner |
 | `JEMLuxium` | Client-only Embeddium page with mutually exclusive Luxium 2.8.0 and Oculus ownership. Video Settings opens Embeddium directly, the Luxium page keeps the renderer toggle first, full Luxium settings second and the upstream YouTube artwork below. Luxium suspends Oculus, directly enabling Oculus disables Luxium, and every owner change requests a rebuild through Embeddium's managed OpenGL context, dedicated server не нужен |
 | `JEMCinematicInteractions` | Development-only `jem sandbox` adapter that removes Cinematic Interactions side panels, exposes ordinary JEI bookmarks/ingredients around its scene and owns the Shift plus left-button bidirectional native quick-transfer sweep |
 | `JEMAchievementGuide` | Advancement criteria/providers, curated native placements, RU/EN guide resources и optional Better Advancements/Patchouli; content-aware FTB book projection наблюдает domain APIs, не владеет progression |
