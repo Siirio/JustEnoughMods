@@ -1161,6 +1161,18 @@ Production JAR builds and pinned Bootstrap patch reproduction were completed on 
 
 # Changelog
 
+## 2026-10-30 - Prepare the cumulative Jalloween production release and first-login handbook
+
+- User requested promotion of the complete developed update to MineRENT, the stable original profile and `main`, with the Halloween menu and music, hosted structure-boss barriers, Mob Home, JEM Food, Seasons HUD, lossless Sophisticated Backpacks migration, native inventory rendering, SMP-only player preview adaptation and accessible FTB Quests
+- User additionally requested that every player receive the JEM handbook on first login
+- Bug / Client Sided / the Halloween EMF ownership script attempted to load `java.lang.System`, which the active KubeJS Rhino class filter rejects before registering the seasonal vanilla-model condition / in testing, use Rhino's native `Date.now()` clock while preserving the one-second resource-marker cache and exact entity set
+- Bug / Client Sided / the historical GUI player override affected ordinary inventory rendering before its scope was narrowed, which could place armor at the model center / in testing, the current `develop` owner activates the neutral vanilla model only while the exact JEM SMP screen renders and leaves ordinary inventory on its native player renderer
+- Bug / Server Sided / the earlier FTB projection could make ordinary quests unavailable when an optional reward item was missing / in testing, the current Guide projection removes only the unavailable optional reward, keeps `disable_gui` false and preserves the loaded 606-quest book
+- JEM Advancement Guide 5.2.2 gives the exact native `patchouli:guide_book` for `jem_advancements:just_enough_guide` once to every real player on the first login after this release, including existing accounts. Forge-persisted player data prevents repeat delivery after death, an already carried handbook is not duplicated and native inventory overflow drops safely
+- User requested proportional glowing pumpkins on seasonal mobs, then explicitly narrowed the scope to humanoid mobs and excluded both players and creepers
+- JEM Holidays 1.0.5 adds a client-only full-bright vanilla jack-o-lantern render for zombies and their variants, skeletons, villagers, illagers, witches, piglins, endermen and other humanoid-rendered mobs during October 30 through November 2. Its scale follows each mob's live width and height; it changes no equipment, drops, collision, world light or server state
+- The separate visual sandbox contains a user-rejected mass-art pass and unresolved candidate-only studies, so those visuals remain outside the production inventory. The approved Jalloween candidate already lives on `develop`; production promotion does not convert rejected sandbox studies into accepted assets
+
 ## 2026-10-25 - Ordinary-mob ownership repair and Adventure Atlas
 
 - User requested a deep investigation of 119 original-profile identity warnings, correction and migration before the supplied quest redesign, preservation of World Tier and the Paladin support group, and installation only into "test jem"

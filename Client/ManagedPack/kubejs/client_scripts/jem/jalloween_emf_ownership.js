@@ -3,7 +3,6 @@
 const JEM_JALLOWEEN_RESOURCE = Java.loadClass('net.minecraft.resources.ResourceLocation')
 const JEM_JALLOWEEN_MINECRAFT = Java.loadClass('net.minecraft.client.Minecraft')
 const JEM_JALLOWEEN_EMF_API = Java.loadClass('traben.entity_model_features.EMFAnimationApi')
-const JEM_JALLOWEEN_SYSTEM = Java.loadClass('java.lang.System')
 
 const JEM_JALLOWEEN_VANILLA_MODEL_TYPES = {
   'minecraft:bee': true,
@@ -19,7 +18,7 @@ let jemJalloweenLastResourceCheck = 0
 let jemJalloweenActive = false
 
 function isJemJalloweenActive() {
-  const now = JEM_JALLOWEEN_SYSTEM.currentTimeMillis()
+  const now = Date.now()
   if (now - jemJalloweenLastResourceCheck >= 1000) {
     const resourceManager = JEM_JALLOWEEN_MINECRAFT.getInstance().getResourceManager()
     jemJalloweenActive = resourceManager.getResource(JEM_JALLOWEEN_MARKER).isPresent()

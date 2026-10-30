@@ -28,7 +28,13 @@
         "property": "client.halloween_music",
         "operation": "replace",
         "before": "Minecraft menu and world music remain native.",
-        "after": "Automatic AudioYT playback is disabled after sandbox acceptance exposed its 600-second loading boundary and intermittent white-noise output. The rejected FNAF URL is removed and normal Minecraft music remains active."
+        "after": "JEM Holidays owns the approved AudioYT menu and world playlists during the seasonal window, suppresses only ordinary background music and yields audibly to records without interrupting them."
+      },
+      {
+        "property": "client.halloween_humanoid_pumpkins",
+        "operation": "add",
+        "before": "Seasonal mobs have no JEM-owned head decoration.",
+        "after": "Humanoid-rendered mobs receive a proportional full-bright vanilla jack-o-lantern during October 30 through November 2. Players, creepers and other non-humanoid mobs are excluded."
       }
     ]
   },
@@ -36,9 +42,13 @@
     "owner": "JEM Holidays",
     "kind": "approved_user_change",
     "source_files": [
+      "Mods/JEMHolidays/gradle.properties",
+      "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/JEMHolidays.java",
       "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonCalendar.java",
       "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java",
-      "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip"
+      "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/HalloweenMobPumpkins.java",
+      "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip",
+      "Client/ManagedPack/kubejs/client_scripts/jem/jalloween_emf_ownership.js"
     ]
   },
   "rationale": {
@@ -77,6 +87,17 @@
         "Mods/JEMHolidays",
         "Client/ManagedPack/mods/jem_holidays-1.0.1.jar"
       ]
+    },
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "add_humanoid_mob_pumpkins",
+      "summary": "Render proportional full-bright vanilla jack-o-lanterns on the requested humanoid seasonal mobs while excluding players, creepers and other non-humanoid mobs.",
+      "source_files": [
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/HalloweenMobPumpkins.java",
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/JEMHolidays.java",
+        "Client/ManagedPack/mods/jem_holidays-1.0.5.jar"
+      ]
     }
   ],
   "impacts": {
@@ -84,19 +105,19 @@
       "JEM Holidays",
       "Minecraft resource-pack repository",
       "FancyMenu",
-      "AudioYT limitation boundary",
+      "AudioYT",
+      "humanoid mob rendering",
       "native AutoModpack client distribution"
     ],
     "relations": [],
     "notes": [
       "The seasonal controller is client-only and uses the operating-system local date and timezone.",
       "No biome, world, server or gameplay state is modified.",
-      "The YouTube recordings and AudioYT JAR are not redistributed.",
-      "Normal Minecraft music remains authoritative because automatic AudioYT streaming is disabled."
+      "The YouTube recordings are not bundled or downloaded by JEM Holidays.",
+      "The mob decoration reuses the vanilla jack-o-lantern model and changes no item, equipment, light-level or server-authority state."
     ],
     "unresolved": [
-      "Reliable seasonal streaming requires a fixed AudioYT release and approved sources that its duration boundary can load.",
-      "The corrected calendar and resource-pack transition remain pending player acceptance because Codex did not launch the client."
+      "The corrected calendar, resource-pack transition, AudioYT coexistence and proportional mob placement remain pending player acceptance because Codex did not launch the client."
     ]
   }
 }

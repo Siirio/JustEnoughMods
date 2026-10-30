@@ -56,6 +56,12 @@
         "operation": "replace",
         "before": "No creative_tab, so Patchouli contributes this book variant only to the native Search tab.",
         "after": "Native minecraft:tools_and_utilities also contains the exact generated handbook variant, making it available to JEI ingredient enumeration and its curated Books consumer."
+      },
+      {
+        "property": "handbook.first_login_delivery",
+        "operation": "add",
+        "before": "Players had to craft or otherwise obtain the native JEM handbook themselves.",
+        "after": "Every real player receives the exact native JEM handbook once on the first login after this delivery, including existing accounts. Forge-persisted player data prevents repeats after death; an already carried handbook is recognized, and native inventory return drops overflow safely instead of deleting it."
       }
     ]
   },
@@ -64,11 +70,13 @@
     "kind": "native_handbook_extension",
     "source_files": [
       "Mods/JEMAchievementGuide/README.md",
+      "Mods/JEMAchievementGuide/build.gradle",
       "Mods/JEMAchievementGuide/tools/*.py",
       "Mods/JEMAchievementGuide/src/main/handbook/navigation.json",
       "Mods/JEMAchievementGuide/src/main/handbook/manuals.json",
       "Mods/JEMAchievementGuide/src/main/handbook/translations.json",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/HandbookStarter.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/OptionalMixins.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/ClientBootstrap.java",
       "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/client/handbook/Handbook*.java",
@@ -88,8 +96,8 @@
       "Mods/JEMDrillLifecycle/README.md",
       "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
       "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
-      "Client/ManagedPack/mods/jem-advancements-5.2.1.jar",
-      "Server/mods/jem-advancements-5.2.1.jar",
+      "Client/ManagedPack/mods/jem-advancements-5.2.2.jar",
+      "Server/mods/jem-advancements-5.2.2.jar",
       "Docs/handbook/README.md",
       "Docs/handbook/manuals.md",
       "Docs/handbook/delivery.json",
@@ -135,8 +143,8 @@
       "Mods/JEMDrillLifecycle/src/main/resources/data/jemcompat/patchouli_books/just_enough_guide/book.json",
       "Client/ManagedPack/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
       "Server/kubejs/data/jemcompat/patchouli_books/just_enough_guide/book.json",
-      "Client/ManagedPack/mods/jem-advancements-5.2.1.jar",
-      "Server/mods/jem-advancements-5.2.1.jar",
+      "Client/ManagedPack/mods/jem-advancements-5.2.2.jar",
+      "Server/mods/jem-advancements-5.2.2.jar",
       "Docs/handbook/README.md",
       "Docs/handbook/manuals.md",
       "Docs/handbook/delivery.json",
@@ -201,6 +209,18 @@
       "source_files": [
         "Mods/JEMAchievementGuide/src/main/resources/data/jem_advancements/patchouli_books/just_enough_guide/book.json"
       ]
+    },
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "add_first_login_handbook_delivery",
+      "summary": "Give the exact native JEM handbook once to every real player on their first login after the release, including existing accounts, with death-persistent entitlement and native full-inventory overflow delivery.",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/JemAdvancementGuide.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/handbook/HandbookStarter.java",
+        "Mods/JEMAchievementGuide/README.md",
+        "Docs/handbook/README.md"
+      ]
     }
   ],
   "impacts": {
@@ -210,11 +230,13 @@
       "JEI",
       "Jade",
       "optional native manuals",
+      "first-login item delivery",
       "local distribution"
     ],
     "relations": [
       "native/domain state -> presentation adapter -> handbook or tooltip",
-      "canonical authored resources -> localized Patchouli pages and JEI information"
+      "canonical authored resources -> localized Patchouli pages and JEI information",
+      "first real login after delivery -> exact native handbook -> persisted one-time entitlement"
     ],
     "notes": [
       "FTB progress bridge, chapter image Mixin, content and rewards from 67d9f215 remain intact.",

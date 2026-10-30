@@ -42,3 +42,11 @@ JEM Holidays is the standalone owner for annual JEM presentation and bounded sea
 - The controller does not change `doDaylightCycle`, world data formats or biome data
 - On November 3 it stops writing day time and the existing daylight rule continues ordinary time from the current night
 - AudioYT 1.0.1 is installed on the dedicated server as well as clients because the upstream mod declares both-side behavior and a mandatory Forge channel for its jukebox functionality
+
+## Halloween mob pumpkins
+
+- During the Halloween calendar window rendered humanoid mobs receive a full-bright vanilla jack-o-lantern over their heads
+- Zombies and their variants, skeletons, villagers, illagers, witches, piglins, endermen and other mobs using a humanoid renderer are included
+- Players, animals, spiders, slimes, creepers, ravagers and other non-humanoid mobs are excluded, so the seasonal decoration never replaces player head equipment or covers unrelated creature silhouettes
+- Pumpkin size follows the mob's rendered bounding-box width and height, preserving a proportional result for babies, ordinary mobs and large bosses
+- The decoration is presentation-only and does not change equipment, drops, light levels, collision or server state
