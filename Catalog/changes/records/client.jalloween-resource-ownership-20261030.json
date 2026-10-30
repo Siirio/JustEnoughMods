@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "change_id": "client.jalloween-resource-ownership-20261030",
+  "status": "conditional",
+  "selectors": [
+    {"type": "id", "registry": "entities", "value": "minecraft:bee"},
+    {"type": "id", "registry": "entities", "value": "minecraft:cat"},
+    {"type": "id", "registry": "entities", "value": "minecraft:chicken"},
+    {"type": "id", "registry": "entities", "value": "minecraft:evoker"},
+    {"type": "id", "registry": "entities", "value": "minecraft:pig"},
+    {"type": "id", "registry": "entities", "value": "minecraft:pillager"},
+    {"type": "id", "registry": "entities", "value": "minecraft:ravager"},
+    {"type": "id", "registry": "entities", "value": "minecraft:slime"},
+    {"type": "id", "registry": "entities", "value": "minecraft:vindicator"}
+  ],
+  "conditions": [
+    {"active_resource": "jem_jalloween:enabled.marker"}
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 80
+  },
+  "change": {
+    "summary": "Give the enabled Jalloween pack model and texture ownership for its nine approved Default-Style Halloween mobs without claiming creepers or iron golems.",
+    "modifiers": [
+      {
+        "property": "client.entity_visual_owner",
+        "operation": "replace",
+        "before": "Fresh Animations and its extensions may provide the active model geometry.",
+        "after": "JEM Jalloween owns the presentation while its marker resource is active. Cat, pig and ravager use the pack's CEM models. Bee, chicken, evoker, pillager, slime and vindicator retain vanilla geometry through the EMF API and use the Jalloween textures.",
+        "conditions": [
+          {"active_resource": "jem_jalloween:enabled.marker"}
+        ],
+        "notes": "minecraft:creeper and minecraft:iron_golem are intentionally absent and remain owned by Fresh Animations and other active packs."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Jalloween client presentation",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip",
+      "Client/ManagedPack/kubejs/client_scripts/jem/jalloween_emf_ownership.js"
+    ]
+  },
+  "rationale": {
+    "purpose": "Preserve the approved Default-Style Halloween mob presentation without allowing Fresh Animations to reshape those textures, while keeping creepers and iron golems outside the seasonal pack.",
+    "decision_source": "User request on 2026-10-30"
+  },
+  "introduced": {
+    "date": "2026-10-30",
+    "commit": "SELF",
+    "action": "add_conditional_jalloween_visual_owner",
+    "summary": "Assign Jalloween presentation ownership to nine Halloween mobs and explicitly leave creepers and iron golems to other packs.",
+    "source_files": [
+      "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip",
+      "Client/ManagedPack/kubejs/client_scripts/jem/jalloween_emf_ownership.js"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "add_conditional_jalloween_visual_owner",
+      "summary": "Assign Jalloween presentation ownership to the ten requested Halloween mobs and explicitly leave creepers to other packs.",
+      "source_files": [
+        "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip",
+        "Client/ManagedPack/kubejs/client_scripts/jem/jalloween_emf_ownership.js"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "remove_iron_golem_override",
+      "summary": "Remove the Default-Style iron golem model and textures after sandbox acceptance showed that the seasonal replacement changed ordinary golems into guards.",
+      "source_files": [
+        "Client/ManagedPack/resourcepacks/JEM Jalloween v0.1.zip"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client resource packs",
+      "Entity Model Features",
+      "KubeJS client scripts"
+    ],
+    "relations": [],
+    "notes": [
+      "No gameplay registry, AI, damage, loot, recipe, economy, progression, networking or server-authority behavior changes."
+    ],
+    "unresolved": [
+      "The original sandbox candidate was player-tested and rejected for its iron golem replacement. The corrected archive remains pending player acceptance."
+    ]
+  }
+}

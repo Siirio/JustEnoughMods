@@ -9,8 +9,9 @@ layout-meta {
   randomgroup = 1
   randomonlyfirsttime = false
   layout_index = 0
-  [loading_requirement_container_meta:03b48de0-8543-4c2b-a989-246f3bbd3050-1789253542184] = [groups:][instances:jem-release-resource-pack-enabled;]
+  [loading_requirement_container_meta:03b48de0-8543-4c2b-a989-246f3bbd3050-1789253542184] = [groups:][instances:jem-release-resource-pack-enabled,jem-jalloween-resource-pack-disabled;]
   [loading_requirement:is_resource_pack_enabled][requirement_mode:if][req_id:jem-release-resource-pack-enabled] = file/JEM Release v0.3.zip
+  [loading_requirement:is_resource_pack_enabled][requirement_mode:if_not][req_id:jem-jalloween-resource-pack-disabled] = file/JEM Jalloween v0.1.zip
 }
 
 menu_background {

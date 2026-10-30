@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.8 - in development
+
+- Suppress Luxium 2.8.0's first-run alpha warning and ten-second Continue gate
+- Preserve the native Luxium settings screen, Embeddium page, renderer toggle, Oculus arbitration and YouTube action
+
 ## 1.0.6 - in development
 
 - Package the production Mixin refmap required to resolve Mojmap method targets in Forge runtime

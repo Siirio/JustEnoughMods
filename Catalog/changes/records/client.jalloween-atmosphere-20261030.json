@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "change_id": "client.jalloween-atmosphere-20261030",
+  "status": "active",
+  "selectors": [
+    {"type": "registry", "registry": "*", "value": "*"}
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 70
+  },
+  "change": {
+    "summary": "Deliver the Jalloween FancyMenu atmosphere and select the lowest Hysteria shader profile with all cloud paths disabled.",
+    "modifiers": [
+      {
+        "property": "client.title_screen",
+        "operation": "replace",
+        "before": "The JEM Release pastoral title screen is selected by the release resource-pack requirement.",
+        "after": "The Jalloween resource-pack requirement selects the supplied moonlit Halloween background and the approved transparent JEM Edition title."
+      },
+      {
+        "property": "client.default_shader",
+        "operation": "replace",
+        "before": "Oculus shaders are disabled and the previous shader selection remains recorded.",
+        "after": "Hysteria Shaders Universal 1.1.0 is enabled with its lowest profile values, vanilla clouds disabled and every shader cloud family and cloud shadow disabled."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Jalloween client atmosphere",
+    "kind": "approved_user_change",
+    "source_files": [
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_background.png",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_title.png",
+      "Client/ManagedPack/config/fancymenu/customization/jalloween_title_screen.txt",
+      "Client/ManagedPack/config/oculus.properties",
+      "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt"
+    ]
+  },
+  "rationale": {
+    "purpose": "Make the next managed client generation open with the approved Halloween identity and the lowest practical Hysteria presentation cost.",
+    "decision_source": "User request and approved title selection on 2026-10-30"
+  },
+  "introduced": {
+    "date": "2026-10-30",
+    "commit": "SELF",
+    "action": "add_jalloween_atmosphere",
+    "summary": "Add the pack-gated Jalloween title screen and select Hysteria lowest with clouds disabled.",
+    "source_files": [
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_background.png",
+      "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_title.png",
+      "Client/ManagedPack/config/fancymenu/customization/jalloween_title_screen.txt",
+      "Client/ManagedPack/config/oculus.properties",
+      "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "add_jalloween_atmosphere",
+      "summary": "Add the pack-gated Jalloween title screen and select Hysteria lowest with clouds disabled.",
+      "source_files": [
+        "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_background.png",
+        "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/main_menu_title.png",
+        "Client/ManagedPack/config/fancymenu/customization/jalloween_title_screen.txt",
+        "Client/ManagedPack/config/oculus.properties",
+        "Client/ManagedPack/shaderpacks/Hysteria-Shaders-Universal-v1.1.0.zip.txt"
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "make_jalloween_layout_exclusive",
+      "summary": "Disable the JEM Release and legacy title layouts whenever JEM Jalloween is enabled so the seasonal background cannot be overdrawn.",
+      "source_files": [
+        "Client/ManagedPack/config/fancymenu/customization/just_enough_mods_title_screen.txt",
+        "Client/ManagedPack/config/fancymenu/customization/legacy_jem_title_screen.txt",
+        "Client/ManagedPack/config/fancymenu/customization/jalloween_title_screen.txt"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "FancyMenu",
+      "Oculus",
+      "Hysteria Shaders",
+      "native AutoModpack client distribution"
+    ],
+    "relations": [],
+    "notes": [
+      "This is client presentation only and changes no gameplay registry, network or server-authority fact."
+    ],
+    "unresolved": [
+      "The original sandbox candidate was player-tested and rejected because the normal title layout overlaid the seasonal background. The mutually exclusive correction remains pending player acceptance."
+    ]
+  }
+}

@@ -1,3 +1,44 @@
+## 2026-10-30 - Add the Jalloween client atmosphere
+
+- User player-tested the first `jem sandbox` candidate and rejected four observed behaviors: ordinary iron golems used the seasonal guard replacement, the normal JEM Release menu overlaid the Jalloween background, Halloween GUI textures lost resource-pack priority, and AudioYT failed or emitted harsh white-noise bursts
+- Bug / Client Sided / the merged Default-Style Halloween layer included `iron_golem.jem` and four iron-golem textures, so the seasonal resource owner replaced ordinary golems / in testing
+- Removed every iron-golem model and entity texture from `JEM Jalloween v0.1`. Creepers and iron golems now remain available to Fresh Animations and other user-selected packs
+- Bug / Client Sided / JEM Holidays appended Jalloween after every selected pack while the separate Halloween GUI was already selected earlier, and Minecraft gives the later pack higher priority, so the release fallback inside Jalloween overrode the intended Halloween GUI / in testing
+- JEM Holidays 1.0.1 now owns an ordered seasonal stack: Jalloween above normal packs and the locally installed Halloween GUI above Jalloween. It records the pre-season seasonal positions and restores them near their surviving neighbors without reverting unrelated user pack changes
+- Bug / Client Sided / the JEM Release and Jalloween FancyMenu title layouts were simultaneously eligible, which allowed the normal layout to draw over the seasonal background / in testing
+- The normal release and legacy FancyMenu layouts now require Jalloween to be disabled, making the seasonal title layout the only eligible JEM title layout during the event
+- Bug / Client Sided / AudioYT 1.0.1 could not load the requested ambience videos beyond the observed 600-second boundary and its independent Java Sound output intermittently emitted dangerous white-noise bursts / in testing
+- Removed the rejected FNAF URL `jSWLy5iMWV4` and disabled all automatic AudioYT playback. JEM Holidays no longer suppresses native music, implements no replacement extractor and waits for a reliable upstream AudioYT path with approved compatible sources
+- JEM Holidays 1.0.1 production compilation completed without tests. SHA-256 is `c4761fa5d2bfbf4c91b2554ac30116a890a1ee93bb27e8983f37553a39d0f5b3`
+- Deployed the corrected 1.0.1 JAR, golem-safe Jalloween archive and mutually exclusive FancyMenu layouts directly to the closed `jem sandbox` profile. The corrected client was not launched by Codex
+- Published final native AutoModpack generation 117 after reviewing the exact delta `+0 ~2 -0`, with content token `015b4eaaec4f8f5f21ec56e2515b32a83d31803d` and matching staged/published manifest SHA-1 `af6304d42b8a7ddd1601b28c885fc21b2b969cd0`
+- Applied generation 117 natively to the closed `test jem` profile. Its active token and JEM Holidays SHA-256 match the published canonical artifacts, and no transaction remains pending. The client was not launched
+- User also requested removal of Luxium's pre-menu wait-and-Continue screen before the real shared update reaches friends
+- Bug / Client Sided / Luxium 2.8.0 registers `luxiumMod.onClientTick`, sees `alphaWarningShown=false` on the first title screen and replaces it with `AlphaWarningScreen`, whose Continue button remains disabled for 200 ticks / in testing
+- JEM Luxium 1.0.8 suppresses only the exact `AlphaWarningScreen.shouldShow()` eligibility result. The real Luxium settings page, Embeddium page, renderer toggle, Oculus arbitration and YouTube settings action remain available
+- JEM Luxium 1.0.8 production compilation completed without tests. SHA-256 is `bb2d0643284291b0349d67f04985362e0d50cad5d4feb9feddcfb790aa5914aa`
+- User requested a sandbox Jalloween atmosphere built on the release resource pack, the supplied Halloween menu art, the installed Default-Style Halloween assets, a Halloween crosshair and Hysteria as the next AutoModpack default
+- Added `JEM Jalloween v0.1` as a release-pack superset with the MIT Default-Style Halloween assets and an original pumpkin-orange pixel crosshair
+- Excluded every Default-Style creeper asset so Fresh Animations and the other active creeper packs remain authoritative
+- While Jalloween is active, Entity Model Features uses vanilla models for bee, chicken, slime, evoker, pillager and vindicator so their Default-Style textures do not inherit Fresh Animations geometry. Cat, pig and ravager retain the Default-Style CEM models
+- Added a separate FancyMenu layout keyed to the Jalloween pack, using the supplied moonlit Minecraft background and the user-approved transparent Jalloween title with its skeleton, zombie, pumpkin, moss, moon, bats and witch-hat details preserved
+- Hysteria Shaders Universal 1.1.0 is enabled by default at its lowest profile values. Vanilla clouds, every Hysteria cloud layer, blocky clouds and cloud shadows are disabled
+- The installed Halloween GUI and Halloween crosshair archives are All Rights Reserved. They remain local reference packs and are not copied into GitHub or AutoModpack. Unoverridden GUI textures continue to fall back to the JEM release base inside Jalloween
+- Native preview first rejected a ZIP with `./` root entries. The archive was rebuilt with Java ZIP-filesystem-safe paths, then preview confirmed only `+5 ~3 -0` for the eight intended Jalloween files
+- Published native AutoModpack generation 113 with content token `25a1da6` and matching staged/published manifest SHA-1 `c5509eec56da0ac2a6e37289eb51cddf94409ce4`
+- Applied the closed `jem sandbox` profile directly because it is an isolated non-AutoModpack visual sandbox. Its active order is JEM Jalloween base, local Halloween GUI and a local-only compatibility overlay that preserves the Halloween GUI HUD sheet while replacing only its crosshair region with the original JEM pixel crosshair
+- Installed EMF and ETF into `jem sandbox` for the Default-Style CEM models, selected Hysteria, disabled vanilla clouds and preserved the previous sandbox options/Oculus files under `local/jalloween-backup-20261030`
+- User changed the Jalloween atmosphere from a sandbox-only choice to an automatic annual modpack season and assigned that ownership to a new standalone client-only `JEM Holidays` mod
+- JEM Holidays 1.0.0 uses the operating-system local date and timezone. October 30 through November 2 enables the exact Jalloween resource pack at seasonal top priority, while November 3 removes only that pack and preserves every unrelated pack and its relative order
+- The date is applied on startup, checked at the next local midnight and recalculated after a bounded timezone check. Resource-pack screen changes receive one delayed reconciliation so the controller does not overlap the screen's own reload
+- The Jalloween pack's grass and foliage colormaps and leaf textures provide reversible autumn presentation without changing biome or world data. Its marker selects the existing FancyMenu Halloween layout
+- User supplied one YouTube menu track and three in-world tracks and explicitly selected AudioYT instead of a new extractor. The inspected AudioYT 1.0.1 API can start and stop URL playback but exposes no track-completion, main-menu lifecycle or main-menu volume API
+- JEM Holidays owns one AudioYT sound UUID, rotates only that sound, suppresses native `MUSIC` only while AudioYT is available and applies the Minecraft Music and Master sliders on the menu. It does not use server commands or stop unrelated jukebox/server sounds
+- AudioYT and the recordings are not included in GitHub or AutoModpack because the CurseForge release is All Rights Reserved and the supplied recordings have no redistribution permission. Seasonal visuals work offline, while streamed YouTube playback inherently requires Internet access
+- JEM Holidays production compilation completed without tests. SHA-256 is `63c44a140dced3622184a1adc4daaada162d72f034a4257fefe6fb9283cec743`
+- Deployed JEM Holidays 1.0.0 and JEM Luxium 1.0.8 directly to the closed non-AutoModpack `jem sandbox` profile first as requested. The replaced sandbox JEM Luxium 1.0.7 JAR remains recoverable under `local/jalloween-backup-20261030/mods`
+- No client launch or gameplay acceptance was run in this task
+
 ## 2026-10-29 - Unblock ordinary quests and expose Xray selection attempts
 
 - User requested that blocked quests be restored, the crashed local server be restarted, and JEM Security print a clear warning such as `[JEM Security] Temirlan attempted to enable Xray pack ...`

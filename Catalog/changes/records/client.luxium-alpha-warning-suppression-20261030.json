@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "change_id": "client.luxium-alpha-warning-suppression-20261030",
+  "status": "active",
+  "selectors": [
+    {"type": "registry", "registry": "*", "value": "*"}
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 72
+  },
+  "change": {
+    "summary": "Skip Luxium 2.8.0's first-run alpha warning gate on JEM clients.",
+    "modifiers": [
+      {
+        "property": "client.startup_screen",
+        "operation": "remove",
+        "before": "Luxium opens AlphaWarningScreen over the first title screen, disables Continue for 200 ticks and requires acknowledgement.",
+        "after": "JEM Luxium reports the exact alpha warning as not eligible, so startup proceeds directly to the ordinary JEM title screen."
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Luxium exact-version UI compatibility",
+    "kind": "bug_fix",
+    "source_files": [
+      "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/mixin/AlphaWarningScreenSuppressMixin.java",
+      "Mods/JEMLuxium/src/main/resources/jem_luxium.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent every new JEM client from seeing a ten-second third-party pre-menu gate while preserving the actual Luxium controls.",
+    "decision_source": "User request on 2026-10-30"
+  },
+  "introduced": {
+    "date": "2026-10-30",
+    "commit": "SELF",
+    "action": "suppress_luxium_alpha_warning",
+    "summary": "Disable the exact Luxium alpha warning eligibility check.",
+    "source_files": [
+      "Mods/JEMLuxium",
+      "Client/ManagedPack/mods/jem_luxium-1.0.8.jar"
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "suppress_luxium_alpha_warning",
+      "summary": "Disable the exact Luxium alpha warning eligibility check.",
+      "source_files": [
+        "Mods/JEMLuxium",
+        "Client/ManagedPack/mods/jem_luxium-1.0.8.jar"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "JEM Luxium",
+      "Luxium 2.8.0",
+      "client startup",
+      "native AutoModpack client distribution"
+    ],
+    "relations": [],
+    "notes": [
+      "Only AlphaWarningScreen.shouldShow is overridden.",
+      "The Luxium settings screen, Embeddium page, renderer state, Oculus compatibility and YouTube action remain unchanged."
+    ],
+    "unresolved": [
+      "Fresh-profile runtime startup remains pending because no client launch was authorized."
+    ]
+  }
+}

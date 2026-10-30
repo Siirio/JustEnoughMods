@@ -8,6 +8,8 @@ This project is not affiliated with or endorsed by Luxium or Vinlanx. Install th
 
 It removes Luxium 2.8.0's intermediate video-settings hub so the vanilla Video Settings action opens Embeddium directly. The native `Luxium` Embeddium page keeps the renderer checkbox on its first row, opens Luxium's complete settings on the second row, and retains the upstream Vinlanx YouTube button below those rows:
 
+It also suppresses Luxium 2.8.0's first-run alpha warning gate. New clients reach the ordinary JEM title screen immediately instead of waiting 200 ticks and pressing Continue. The complete Luxium settings screen, renderer controls and informational YouTube action remain available through their existing settings routes
+
 - on enables the exact installed Luxium 2.8.0 renderer and suspends Oculus shaders
 - off disables Luxium and restores the Oculus shader enabled state that existed before Luxium was selected
 - enabling Oculus shaders while Luxium is active disables Luxium and discards the temporary restore marker
