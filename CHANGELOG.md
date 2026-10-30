@@ -1,3 +1,30 @@
+## 2026-10-31 - Stabilize the JEM Races login connection snapshot
+
+- User reported that the fully updated production client still lost its MineRENT connection with `Minecraft.getConnection()` returning null while JEM Races requested the underlying network connection, and explicitly prohibited a bootstrap update
+- Bug / Client Sided / JEM Races checked `Minecraft.getConnection()` and then fetched it a second time in always-active client tick and packet paths, allowing the login/disconnect transition to invalidate the second lookup / in testing
+- JEM Races 2.0.2 now captures one `ClientPacketListener` snapshot per support check and reuses that exact snapshot for the Forge channel check
+- The race protocol, server authority, progression, abilities, VFX, Quick Skin placement, JEM Security and bootstrap behavior are unchanged
+- MineRENT loaded the replacement JEM Races 2.0.2 artifact and returned to the running state without changing `jem-bootstrap.jar`
+- Native AutoModpack published content token `2b57d71` with the exact reviewed diff `+1 ~1 -1`: add JEM Races 2.0.2, update the managed manifest and remove JEM Races 2.0.1
+- A second MineRENT `/jempack preview` returned `+0 ~0 -0`, proving that the hosted catalogue matches the published generation
+
+## 2026-10-31 - Repair MineRENT login lifecycle
+
+- User reported that the production client entered MineRENT and immediately lost the connection with `ClientPacketListener` missing from `Minecraft.getConnection()`
+- Bug / Both Sided / JEM Security sent a duplicate best-effort attestation from Forge `ClientPlayerNetworkEvent.LoggingIn`, where the PLAY connection is not guaranteed to remain available, so `SimpleChannel.sendToServer` could dereference a missing `ClientPacketListener` and close the client channel / in testing
+- JEM Security 1.0.5 now only caches the bounded report during `LoggingIn`. The existing server-owned challenge remains the sole send trigger and is answered on the established PLAY channel
+- The mandatory attestation deadline, fail-closed behavior, banned-mod and resource-pack checks, Xray content inspection, audit and allowed JEM Freecam behavior are unchanged
+- MineRENT loaded JEM Security 1.0.5 and JEM Holidays 1.0.6, reached `Done (1.546s)` and published native AutoModpack token `2f43a3bc2230b0b53f6f5add1c02ca887ba353b5` with exact diff `+2 ~2 -2`
+- The published generation replaces JEM Holidays 1.0.5 and JEM Security 1.0.4, updates JEMRoles 2.0.1 plus its manifest, and a second preview returned `+0 ~0 -0`
+
+## 2026-10-30 - Restore Quick Skin placement in the Jalloween menu
+
+- User reported that the Quick Skin player preview rendered over the right-side menu buttons in the original profile and required the placement already used in `test jem`, while keeping the bottom-left "Change Skin" action unchanged
+- Bug / Client Sided / JEMRoles applied the approved 25 percent size and -432/104 title offsets only when `JEM Release` or `JEM Legacy` was selected, while the original profile selected `JEM Jalloween` alone and therefore fell back to its preserved mutable Quick Skin values / in testing
+- User confirmed that manually activating `JEM Release` below `JEM Jalloween` immediately restored the correct Quick Skin position and required that exact stack after AutoModpack installation
+- JEM Holidays 1.0.6 now ensures `JEM Release v0.3` is active as the base and appends `JEM Jalloween v0.1` above it during the seasonal window, while preserving the existing Halloween GUI top layer and reversible seasonal state
+- Added `JEM Jalloween` to the existing managed title-layout selector as a defensive path so the seasonal menu still uses the approved Quick Skin size, position and yaw without replacing personal skin state or moving the button
+
 ## 2026-10-30 - Publish the cumulative Jalloween production release
 
 - User explicitly resumed the production update after starting MineRENT and required `main` to become the released copy of `develop`

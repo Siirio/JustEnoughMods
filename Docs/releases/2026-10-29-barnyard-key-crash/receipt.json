@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-29",
+  "rootCause": {
+    "crashReport": "C:/Users/user/AppData/Roaming/.minecraft/versions/test jem/crash-reports/crash-2026-10-29_13.21.45-client.txt",
+    "owner": "Barnyard Buddies 0.6..4 Clydesdale sprint key override",
+    "failure": "SimpleChannel.sendToServer dereferenced Minecraft.getConnection() before a connection existed"
+  },
+  "artifact": {
+    "path": "Client/ManagedPack/mods/jemcompat-3.9.2.jar",
+    "sha256": "0b657750b7cdb66673185b3bad12d01290530fb525da11a658bfbf57844f6952",
+    "build": "successful without tests"
+  },
+  "server": {
+    "loadedVersion": "3.9.2",
+    "address": "127.0.0.1:31604",
+    "running": true
+  },
+  "publication": {
+    "generation": 106,
+    "contentToken": "df6c6626d9e158538a407856269223559b2ed4c3",
+    "manifestSha1": "a1151acbf4df5fd6900eaa61aa3509e3bf398359",
+    "reviewedDelta": "+1 ~1 -1"
+  },
+  "nativeClient": {
+    "applied": true,
+    "activeTokenMatches": true,
+    "jarHashMatches": true,
+    "oldJarAbsent": true,
+    "detached": false,
+    "pendingTransaction": false
+  },
+  "clientLaunch": {
+    "profile": "test jem",
+    "status": "joined local dedicated server",
+    "resourceReloadCompleted": true,
+    "barnyardPreConnectionCrashAbsent": true,
+    "gameplayActionsPerformedByCodex": false,
+    "loadedArtifacts": [
+      "jemcompat-3.9.2.jar",
+      "jem_security-1.0.0.jar"
+    ]
+  },
+  "untouched": [
+    "MineRENT",
+    "stable JustEnoughMods profile",
+    "immutable release baseline"
+  ]
+}

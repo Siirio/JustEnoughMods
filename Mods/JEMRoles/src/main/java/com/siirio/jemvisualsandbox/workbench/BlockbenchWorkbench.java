@@ -78,7 +78,7 @@ public final class BlockbenchWorkbench {
         if (!(com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported())) clear();
         INSTANCES.removeIf(instance -> instance.level() != client.level || client.level == null || client.level.getGameTime() - instance.startTick() >= instance.ticks());
 
-        boolean connected=client.getConnection()!=null&&SandboxNetwork.supported(client.getConnection().getConnection());
+        boolean connected=com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.supported();
         com.siirio.jemvisualsandbox.client.races.RaceExperienceClient.tick();
         if(connected&&client.player!=null&&client.player.tickCount%40==0&&raceStatus==null)SandboxNetwork.sync();
         boolean allowed = client.player != null && client.level != null && client.screen == null && connected;

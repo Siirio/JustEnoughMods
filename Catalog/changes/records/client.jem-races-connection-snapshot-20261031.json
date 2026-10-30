@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "change_id": "client.jem-races-connection-snapshot-20261031",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "namespace",
+      "registry": "*",
+      "value": "jem_roles"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "JEM Races client support checks during multiplayer connection transitions"
+    }
+  ],
+  "precedence": {
+    "layer": "client_network_lifecycle",
+    "priority": 90
+  },
+  "change": {
+    "summary": "Use one stable ClientPacketListener snapshot when checking whether the JEM Races channel is available",
+    "modifiers": [
+      {
+        "property": "jem_roles.client_channel_support_check",
+        "operation": "replace",
+        "before": "Always-active client paths checked Minecraft.getConnection and then fetched it again before reading the underlying network connection",
+        "after": "Each support check captures one ClientPacketListener snapshot, rejects null and uses the same snapshot for the underlying Forge channel check",
+        "notes": "Only lifecycle admission changes. Race state, packets, server authority and presentation remain unchanged"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Races client network adapter",
+    "kind": "evidence_backed_client_disconnect_fix",
+    "source_files": [
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/client/races/RaceExperienceClient.java",
+      "Mods/JEMRoles/src/main/java/com/siirio/jemvisualsandbox/workbench/BlockbenchWorkbench.java",
+      "Mods/JEMRoles/build.gradle",
+      "Mods/JEMRoles/src/main/resources/META-INF/mods.toml"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent a valid multiplayer login or disconnect transition from turning a repeated global connection lookup into a client-side NullPointerException",
+    "decision_source": "The user reproduced the production disconnect on 2026-10-31 after JEM Security 1.0.5 was installed. The displayed mapped exception and installed JEM Races bytecode identify the repeated Minecraft.getConnection lookup. The user explicitly required that bootstrap remain unchanged"
+  },
+  "introduced": {
+    "date": "2026-10-31",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Capture and reuse one client connection snapshot in JEM Races support checks"
+  },
+  "history": [
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Repair the repeated production login disconnect without changing bootstrap or the race protocol"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_network_lifecycle",
+      "race_protocol_availability",
+      "local_pack_delivery"
+    ],
+    "relations": [
+      "Minecraft ClientPacketListener snapshot -> underlying Connection -> JEM Races Forge channel availability"
+    ],
+    "notes": [
+      "Five Whys: login disconnected -> a ClientPacketListener method was invoked on a null second lookup -> JEM Races queried the global connection twice -> the connection transition could invalidate the second value -> the support contract lacked a stable per-call snapshot",
+      "No registry identity, gameplay value, packet payload, server authority, JEM Security rule or bootstrap behavior changes"
+    ],
+    "unresolved": [
+      "Player acceptance on MineRENT remains pending"
+    ]
+  }
+}

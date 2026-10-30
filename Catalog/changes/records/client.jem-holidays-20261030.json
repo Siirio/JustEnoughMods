@@ -22,7 +22,7 @@
         "property": "client.halloween_resource_pack",
         "operation": "add",
         "before": "The Jalloween pack has no calendar owner.",
-        "after": "JEM Holidays places Jalloween above normal packs and the separately installed Halloween GUI above Jalloween. On November 3 it removes seasonal additions, restores previously selected seasonal packs near their saved neighbors and preserves unrelated changes."
+        "after": "JEM Holidays ensures JEM Release is active as the base, places Jalloween above it and places the separately installed Halloween GUI above Jalloween. On November 3 it removes seasonal additions, restores previously selected seasonal packs near their saved neighbors and preserves JEM Release plus unrelated changes."
       },
       {
         "property": "client.halloween_music",
@@ -42,6 +42,7 @@
     "owner": "JEM Holidays",
     "kind": "approved_user_change",
     "source_files": [
+      "Mods/JEMHolidays/build.gradle",
       "Mods/JEMHolidays/gradle.properties",
       "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/JEMHolidays.java",
       "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonCalendar.java",
@@ -98,6 +99,16 @@
         "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/JEMHolidays.java",
         "Client/ManagedPack/mods/jem_holidays-1.0.5.jar"
       ]
+    },
+    {
+      "date": "2026-10-30",
+      "commit": "SELF",
+      "action": "enforce_release_below_jalloween",
+      "summary": "Ensure every AutoModpack client activates JEM Release below JEM Jalloween during the seasonal window so the approved base presentation and Quick Skin placement are available without manual pack selection.",
+      "source_files": [
+        "Mods/JEMHolidays/src/main/java/com/siirio/jemholidays/SeasonalController.java",
+        "Client/ManagedPack/mods/jem_holidays-1.0.6.jar"
+      ]
     }
   ],
   "impacts": {
@@ -112,6 +123,7 @@
     "relations": [],
     "notes": [
       "The seasonal controller is client-only and uses the operating-system local date and timezone.",
+      "During Halloween the selected-pack order keeps JEM Release below JEM Jalloween, matching the user-approved test jem stack.",
       "No biome, world, server or gameplay state is modified.",
       "The YouTube recordings are not bundled or downloaded by JEM Holidays.",
       "The mob decoration reuses the vanilla jack-o-lantern model and changes no item, equipment, light-level or server-authority state."

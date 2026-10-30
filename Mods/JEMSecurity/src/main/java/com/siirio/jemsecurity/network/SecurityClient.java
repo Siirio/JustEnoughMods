@@ -43,7 +43,6 @@ public final class SecurityClient {
     @SubscribeEvent
     public static void login(ClientPlayerNetworkEvent.LoggingIn event) {
         cachedAttestation = snapshot();
-        send(cachedAttestation, "login");
     }
 
     public static void respondToAttestationRequest() {

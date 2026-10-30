@@ -2,17 +2,17 @@
   "schema_version": 2,
   "scope": "Tracked canonical gameplay-source paths matched by Catalog/changes/source-watch.json",
   "meaning": "Unresolved means no reviewed Atlas change record owns this historical source yet; it does not assert that the file changes gameplay.",
-  "change_records_sha256": "89df964a2bb3a7957671808f9c5d10fc579387e5544252ccaf36133c96c5bbf7",
+  "change_records_sha256": "762326573a625c59fc9fe4651c75f33aaad5e66320ccc6052ff33fa63fc24632",
   "totals": {
-    "watched": 7164,
-    "covered": 5405,
-    "unresolved": 1759
+    "watched": 7204,
+    "covered": 5454,
+    "unresolved": 1750
   },
   "groups": {
     "Client/ManagedPack/config": {
-      "watched": 1381,
-      "covered": 39,
-      "unresolved": 1342,
+      "watched": 1387,
+      "covered": 42,
+      "unresolved": 1345,
       "unresolved_paths": [
         "Client/ManagedPack/config/Barnyard Buddies Config.toml",
         "Client/ManagedPack/config/CoroUtil/General.toml",
@@ -202,6 +202,9 @@
         "Client/ManagedPack/config/fallen-eflw-compat-client.toml",
         "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/2djem.png",
         "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/2djembg.png",
+        "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_hover.png",
+        "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_inactive.png",
+        "Client/ManagedPack/config/fancymenu/assets/just_enough_mods/jalloween/buttons/jalloween_brush_normal.png",
         "Client/ManagedPack/config/fancymenu/custom_gui_screens.txt",
         "Client/ManagedPack/config/fancymenu/customizablemenus.txt",
         "Client/ManagedPack/config/fancymenu/customization/legacy_jem_title_screen.txt",
@@ -1373,8 +1376,8 @@
       ]
     },
     "Client/ManagedPack/kubejs": {
-      "watched": 17,
-      "covered": 5,
+      "watched": 18,
+      "covered": 6,
       "unresolved": 12,
       "unresolved_paths": [
         "Client/ManagedPack/kubejs/README.txt",
@@ -1400,8 +1403,8 @@
       ]
     },
     "Mods/JEMAchievementGuide": {
-      "watched": 3950,
-      "covered": 3946,
+      "watched": 3951,
+      "covered": 3947,
       "unresolved": 4,
       "unresolved_paths": [
         "Mods/JEMAchievementGuide/gradle.properties",
@@ -1411,21 +1414,12 @@
       ]
     },
     "Mods/JEMAdaptiveCulling": {
-      "watched": 14,
-      "covered": 1,
-      "unresolved": 13,
+      "watched": 15,
+      "covered": 11,
+      "unresolved": 4,
       "unresolved_paths": [
-        "Mods/JEMAdaptiveCulling/gradle.properties",
         "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/JEMAdaptiveCulling.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/CompatibilityPolicy.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/GeometryTracker.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/OpaqueOcclusion.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/ShapeClassifier.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/client/VisibilityCache.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/config/JEMConfig.java",
         "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/BlockEntityRenderDispatcherMixin.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/ClientLevelMixin.java",
-        "Mods/JEMAdaptiveCulling/src/main/java/com/siirio/jemadaptiveculling/mixin/client/EntityRenderDispatcherMixin.java",
         "Mods/JEMAdaptiveCulling/src/main/resources/jem_adaptive_culling.mixins.json",
         "Mods/JEMAdaptiveCulling/src/main/resources/pack.mcmeta"
       ]
@@ -1454,8 +1448,8 @@
       "unresolved_paths": []
     },
     "Mods/JEMCompat": {
-      "watched": 147,
-      "covered": 104,
+      "watched": 148,
+      "covered": 105,
       "unresolved": 43,
       "unresolved_paths": [
         "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/advancement/AdvancementAwards.java",
@@ -1571,6 +1565,14 @@
       "unresolved": 0,
       "unresolved_paths": []
     },
+    "Mods/JEMHolidays": {
+      "watched": 9,
+      "covered": 8,
+      "unresolved": 1,
+      "unresolved_paths": [
+        "Mods/JEMHolidays/src/main/resources/pack.mcmeta"
+      ]
+    },
     "Mods/JEMIdentity": {
       "watched": 10,
       "covered": 3,
@@ -1603,8 +1605,8 @@
       ]
     },
     "Mods/JEMLuxium": {
-      "watched": 15,
-      "covered": 8,
+      "watched": 16,
+      "covered": 9,
       "unresolved": 7,
       "unresolved_paths": [
         "Mods/JEMLuxium/src/main/java/com/siirio/jemluxium/JEMLuxium.java",
@@ -1643,10 +1645,16 @@
         "Mods/JEMSeasonsHud/src/main/resources/pack.mcmeta"
       ]
     },
+    "Mods/JEMSecurity": {
+      "watched": 18,
+      "covered": 18,
+      "unresolved": 0,
+      "unresolved_paths": []
+    },
     "Mods/JEMServer": {
-      "watched": 495,
-      "covered": 323,
-      "unresolved": 172,
+      "watched": 497,
+      "covered": 329,
+      "unresolved": 168,
       "unresolved_paths": [
         "Mods/JEMServer/gradle.properties",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/LandmarkNetwork.java",
@@ -1656,13 +1664,10 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/SleepBallot.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/SleepVote.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/LandmarkClient.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/AttackVisual.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/BackNavigation.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/CombatHud.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EntityPreview.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventAttackRenderer.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventEntryScreen.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventMobRenderer.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventRulesPanel.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventShaderState.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/EventSurfaceCell.java",
@@ -1672,7 +1677,6 @@
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpClient.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/SmpHit.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/TelegraphRenderType.java",
-        "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/smp/TelegraphVisual.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemPalette.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/JemScreens.java",
         "Mods/JEMServer/src/main/java/com/siirio/jemserver/client/ui/SmpRenderState.java",

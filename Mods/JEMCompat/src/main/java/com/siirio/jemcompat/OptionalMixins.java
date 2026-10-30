@@ -26,6 +26,7 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             Map.entry("com.siirio.jemcompat.mixin.transport.AircraftLiftMixin", List.of("immersive_aircraft")),
             Map.entry("com.siirio.jemcompat.mixin.transport.RoyalWagonInventoryMixin", List.of("trotting_wagons")),
             Map.entry("com.siirio.jemcompat.mixin.transport.TrottingWagonClydesdaleMixin", List.of("trotting_wagons", "barnyardbuddies")),
+            Map.entry("com.siirio.jemcompat.mixin.client.barnyard.BarnyardClydesdaleSprintKeyMixin", List.of("barnyardbuddies")),
             Map.entry("com.siirio.jemcompat.mixin.client.IngredientListOverlayAccessor", List.of("jei")),
             Map.entry("com.siirio.jemcompat.mixin.client.StorageTerminalFocusMixin", List.of("toms_storage")),
             Map.entry("com.siirio.jemcompat.mixin.kaleidoscope.VoidWalkerJumpToggleMixin", List.of("kaleidoscope_end")),
@@ -71,6 +72,12 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             var file = FMLLoader.getLoadingModList().getModFileById("recruits");
             return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("recruits")
                     && mod.getVersion().toString().equals("1.15.2"));
+        }
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.client.barnyard.BarnyardClydesdaleSprintKeyMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("barnyardbuddies");
+            return FMLLoader.getDist().isClient() && file != null && file.getMods().stream()
+                    .anyMatch(mod -> mod.getModId().equals("barnyardbuddies")
+                            && mod.getVersion().toString().equals("0.6..4"));
         }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.login.ServerLoginRespawnPacketMixin")) {
             return FMLLoader.getDist().isDedicatedServer()

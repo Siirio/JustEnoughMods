@@ -81,7 +81,7 @@
       "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
       "Mods/JEMSecurity/src/main/resources/jem_security.mixins.json",
       "Mods/JEMSecurity/src/main/resources/pack.mcmeta",
-      "Client/ManagedPack/mods/jem_security-1.0.4.jar"
+      "Client/ManagedPack/mods/jem_security-1.0.5.jar"
     ]
   },
   "rationale": {
@@ -188,6 +188,15 @@
           "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/mixin/PackSelectionScreenMixin.java",
           "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
           "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java"
+        ]
+      },
+      {
+        "date": "2026-10-31",
+        "commit": "SELF",
+        "action": "remove_pre_connection_attestation_send",
+        "summary": "Cache the client attestation during Forge LoggingIn without sending through a possibly absent ClientPacketListener, then answer only the existing server challenge on the established PLAY channel",
+        "source_files": [
+          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java"
         ]
     }
   ],

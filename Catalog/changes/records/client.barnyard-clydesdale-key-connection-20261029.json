@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "change_id": "client.barnyard-clydesdale-key-connection-20261029",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "entities",
+      "value": "barnyardbuddies:clydesdale_horse"
+    }
+  ],
+  "conditions": [
+    {
+      "requires": "Barnyard Buddies 0.6..4 client and its Clydesdale sprint key override"
+    }
+  ],
+  "precedence": {
+    "layer": "native_client_input_contract",
+    "priority": 90
+  },
+  "change": {
+    "summary": "Prevent Barnyard Buddies from sending the Clydesdale sprint packet before a client connection exists while retaining its native in-world key behavior",
+    "modifiers": [
+      {
+        "property": "barnyardbuddies.clydesdale_sprint.client_key",
+        "operation": "replace",
+        "before": "BarnyardbuddiesModKeyMappings$2 sends ClydesdaleSprintMessage on every Left Control transition, including initial resource reload before Minecraft has a ClientPacketListener or LocalPlayer",
+        "after": "The exact-version client adapter ignores the Barnyard override only while connection or local player is absent. Once joined, the original key transition, packet, pressAction and timing behavior execute unchanged"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "Barnyard Buddies 0.6..4 Clydesdale key override via optional JEMCompat adapter",
+    "kind": "evidence_backed_client_crash_fix",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/client/barnyard/BarnyardClydesdaleSprintKeyMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json",
+      "Mods/JEMCompat/gradle.properties"
+    ]
+  },
+  "rationale": {
+    "purpose": "Repair the missing client-lifecycle admission check at the narrow Barnyard input owner instead of disabling the mod, suppressing Forge networking failures globally or changing the shared Left Control binding",
+    "decision_source": "The user reported the repeated client crash on 2026-10-29. The 13:21:45 crash report and installed 0.6..4 bytecode prove an unconditional SimpleChannel.sendToServer call before Minecraft.getConnection exists"
+  },
+  "introduced": {
+    "date": "2026-10-29",
+    "commit": "SELF",
+    "action": "replace",
+    "summary": "Gate the exact Barnyard Clydesdale key override on an established client connection and player"
+  },
+  "history": [
+    {
+      "date": "2026-10-29",
+      "commit": "SELF",
+      "action": "replace",
+      "summary": "Replace the previously rejected restart-only workaround after the identical missing-connection crash recurred with exact bytecode evidence"
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_input",
+      "network_compatibility",
+      "native_mod_success_signals",
+      "local_pack_delivery"
+    ],
+    "relations": [
+      "Left Control transition -> Barnyard Clydesdale key override -> native packet only after ClientPacketListener and LocalPlayer exist"
+    ],
+    "notes": [
+      "Five Whys: client crash -> Forge sendToServer dereferenced a missing connection -> Barnyard sent during initial reload -> its key override has no lifecycle guard -> exact-version JEMCompat adapter restores the missing admission boundary",
+      "JEM Security, JEM Freecam, Embeddium, Oculus, resource packs and server gameplay authority are unchanged"
+    ],
+    "unresolved": [
+      "JEMCompat 3.9.2 built and loaded on both sides, native generation 106 is active in test jem, and the fresh client passed resource reload and joined the local dedicated server without the Barnyard pre-connection crash",
+      "In-world Clydesdale sprint behavior remains unobserved until player acceptance"
+    ]
+  }
+}

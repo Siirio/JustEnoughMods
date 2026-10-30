@@ -37,6 +37,7 @@ public final class SeasonalController {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path PACK_STATE_FILE = FMLPaths.CONFIGDIR.get().resolve("jem-holidays-pack-state.json");
+    private static final String JEM_RELEASE_PACK = "file/JEM Release v0.3.zip";
     private static final String JALLOWEEN_PACK = "file/JEM Jalloween v0.1.zip";
     private static final String HALLOWEEN_GUI_PACK = "file/Halloween%20GUI%201.20.zip";
     private static final List<String> SEASONAL_PACKS = List.of(JALLOWEEN_PACK, HALLOWEEN_GUI_PACK);
@@ -147,6 +148,10 @@ public final class SeasonalController {
         }
 
         List<String> target = withoutSeasonalPacks(current);
+        if (repository.getAvailableIds().contains(JEM_RELEASE_PACK)
+                && !target.contains(JEM_RELEASE_PACK)) {
+            target.add(JEM_RELEASE_PACK);
+        }
         for (String packId : SEASONAL_PACKS) {
             if (repository.getAvailableIds().contains(packId)) {
                 target.add(packId);

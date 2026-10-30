@@ -48,7 +48,9 @@ public final class QuickSkinTitleScreenDefaults {
     private static void applyManagedTitlePreviewConfig() throws ReflectiveOperationException {
         Minecraft minecraft = Minecraft.getInstance();
         boolean managedLayoutSelected = minecraft.options.resourcePacks.stream()
-                .anyMatch(pack -> pack.contains("JEM Release") || pack.contains("JEM Legacy"));
+                .anyMatch(pack -> pack.contains("JEM Release")
+                        || pack.contains("JEM Legacy")
+                        || pack.contains("JEM Jalloween"));
         if (!managedLayoutSelected) {
             return;
         }
