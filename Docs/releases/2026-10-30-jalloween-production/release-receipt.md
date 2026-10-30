@@ -33,4 +33,8 @@ The user must still complete ordinary player acceptance of the released client a
 - Corrective publication: `2026-10-30 23:29:12 +05:00`, content token `9b91261`, diff `+0 ~0 -29`
 - Post-publication preview: `2026-10-30 23:29:36 +05:00`, content token `9b91261`, diff `+0 ~0 -0`, `No catalogue changes`
 - MineRENT runtime state after publication: running
-- Stable-client state: native application and player acceptance remain pending. No stable-profile files, AutoModpack pointers or cache state were edited directly
+- Stable-client application: completed through the ordinary TLauncher and AutoModpack prelaunch path at `2026-10-30 23:42:06 +05:00`
+- Stable active token: `9b912612f5202368e236e59e757e513505a74fea`, status `ACTIVE`, `detached=false`, no pending `update-transaction.json`
+- Stable projection verification: all 300 managed JARs match `Client/ManagedPack` by SHA-256. The separately installed `jem-bootstrap.jar` is intentionally excluded from the managed projection, and all retired conflicting JARs are absent
+- Runtime observation: Forge reached `Mod loading complete - 355 mods loaded`. Existing warnings and later gameplay behavior were not repaired or accepted in this operation
+- No stable-profile files, AutoModpack pointers, cache state or observed errors were edited directly
