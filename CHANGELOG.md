@@ -1,3 +1,17 @@
+## 2026-10-30 - Publish the cumulative Jalloween production release
+
+- User explicitly resumed the production update after starting MineRENT and required `main` to become the released copy of `develop`
+- The already staged cumulative release was loaded on MineRENT and the dedicated server reached `Done (250.243s)` at `ForeverSMP.minerent.io:25565`
+- MineRENT loaded the JEM production domains, 1 FTB Quests chapter group with 15 chapters, 643 quests and 10 reward tables, and the active JEM Holidays Halloween calendar state for 2026-10-30
+- Backpacked migration acknowledged its retained refund obligation through JEM Rewards, preserving the migration path to Sophisticated Backpacks and Sophisticated Storage
+- Published the MineRENT AutoModpack generation with content token `ec0faa0` and production diff `+189 ~68 -0`, excluding only `mods/jem-bootstrap.jar` and `options.txt` by their established ownership rules
+- A second MineRENT `/jempack preview` returned the same token with `+0 ~0 -0`, proving the hosted catalogue matches the published production source
+- Stable `JustEnoughMods` bootstrap synchronization required no file copy or deletion because its installer boundary already matched the reviewed release
+- Created cumulative friend update `JustEnoughMods-update-2026-10-30_22-28-57.zip` with SHA-256 `fe02f64f40f4be4bbbf974a1a8fbe3fce69e80a0331552e78e3a9720dcd15041`, including the complete current `kubejs` tree
+- Promoted the immutable client release baseline at `2026-10-30T22:29:52.226476+05:00`, replacing the previous 2026-10-21 production boundary
+- Existing unrelated working-tree changes in Catalog generation, Barnyard compatibility, QuickSkin defaults, documentation and local Server runtime state were preserved and excluded from this release commit
+- No Gradle build, automated test, client launch or gameplay acceptance was run during the production promotion because the reviewed artifacts were already built, published and applied before release
+
 ## 2026-10-30 - Repair Halloween GUI, jukebox priority and local server admission
 
 - User reported that the seasonal background returned but enabled Halloween GUI textures rendered as missing-resource checkerboards in `test jem`
