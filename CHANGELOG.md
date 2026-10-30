@@ -2639,3 +2639,9 @@ Installed the reobfuscated gallery plus exact native GUI/dependency JARs into `j
 - Native AutoModpack preview reported exactly `+1 ~5 -1`, then publication 112 and closed-profile `test jem` application completed with content token `926a0c19210ad275b90e87d0844ef5fa55ec70fe`, identical staged and published manifest SHA-1 `ee5636f9370fa54204a7f93a25f6ee595c28181e`, matching installed files and no pending transaction
 - Optimization acceptance still requires identical-scene comparison of frame times and stalls, allocations and GC, and visual correctness with the active shaders
 
+## 2026-10-30 - Correct the production AutoModpack deletion boundary
+
+- User reported that the stable JustEnoughMods client still did not load after the Jalloween production update
+- Bug / Client Sided / the MineRENT release archive was extracted over the existing AutoModpack host tree, so the published catalogue contained additions and replacements but retained 29 retired paths. The stable client consequently loaded `jem-pack-core-2.0.0-dev.jar` beside `jem-advancements-5.1.0.jar` and `jem-advancements-5.2.2.jar`, and Java module resolution aborted before Forge mod loading because both modules exported `com.justenoughmods.achievementguide.client` / in testing
+- Resolution mechanism: replace only MineRENT `automodpack/host-modpack/main` with the complete canonical local host tree over SFTP, repair the interrupted `AudioYT-1.0.1.jar` transfer before publication, and publish native content token `9b91261` with exact diff `+0 ~0 -29`. The post-publication preview reports `+0 ~0 -0`, the server remains running, and no world, player data, stable-profile cache pointer or release baseline was manually changed. Stable-client application and player acceptance remain pending
+

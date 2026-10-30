@@ -20,3 +20,17 @@
 - Runtime seasonal state: Halloween night active for 2026-10-30 in `Asia/Almaty`
 
 The user must still complete ordinary player acceptance of the released client and gameplay behavior
+
+## Corrective AutoModpack publication
+
+- Trigger: stable JustEnoughMods aborted during Java module resolution after the first production generation retained retired files
+- Established cause: the original MineRENT extraction merged the clean host tree over the old tree, producing `+189 ~68 -0` even though the release boundary contained 29 deletions
+- Corrective action started: `2026-10-30 22:52:00 +05:00`
+- MineRENT replacement scope: only `automodpack/host-modpack/main`
+- Recovery source: the complete canonical local `Server/automodpack/host-modpack/main` tree transferred over SFTP. The existing root archive was inspected but rejected as an incomplete delta and was never published
+- Transfer correction: an interrupted duplicate upload temporarily truncated `AudioYT-1.0.1.jar`. The exact canonical file was uploaded again and the clean preview completed without archive errors
+- Verified corrective preview: content token `9b91261`, diff `+0 ~0 -29`, with only `main/mods/jem-bootstrap.jar` and `main/options.txt` excluded by the existing rules
+- Corrective publication: `2026-10-30 23:29:12 +05:00`, content token `9b91261`, diff `+0 ~0 -29`
+- Post-publication preview: `2026-10-30 23:29:36 +05:00`, content token `9b91261`, diff `+0 ~0 -0`, `No catalogue changes`
+- MineRENT runtime state after publication: running
+- Stable-client state: native application and player acceptance remain pending. No stable-profile files, AutoModpack pointers or cache state were edited directly
