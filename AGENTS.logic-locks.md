@@ -30,14 +30,15 @@
 - Amended: 2026-10-06 after the user clarified that every point-update must contain the complete KubeJS tree rather than only the Russian localization overlay.
 - Amended: 2026-10-11 after the user explicitly replaced the monolithic full client ZIP with a bootstrap-only installer backed by a separate canonical managed-pack source.
 
-## LOCKED: Production releases originate only from explicitly approved develop
+## LOCKED: Production releases originate only from clean pushed develop
 - Scope: tools/jem.py production actions, MineRENT deployment workflow, stable JustEnoughMods synchronization, release packaging, release-baseline promotion and main promotion
 - Approved signal: Сделай так, чтобы никогда больше вот эти вот обновления не брались из feature веток, только с develop, который я одобрил.
-- Protected behavior: No production or MineRENT release may originate from feature, sandbox, main, detached HEAD or another checkout. The source must be local develop exactly equal to fetched origin/develop and to the full commit SHA explicitly approved by the user. A production preflight records the actual release and AutoModpack inventory identities, and every guarded production action refuses changed branch, commit, controlled source or inventory. Local stage-pack-sync, test jem publication and recovery remain development operations and never grant production approval.
+- Protected behavior: No production or MineRENT release may originate from feature, sandbox, main, detached HEAD or another checkout. The source must be clean local develop exactly equal to fetched origin/develop. Production preflight automatically derives and records that exact commit plus the actual release and AutoModpack inventory identities without asking the user to paste or separately approve a SHA. Every guarded production action reruns the fail-closed check before mutation. Local stage-pack-sync, test jem publication and recovery remain development operations and never satisfy production preflight.
 - Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
-- Allowed changes: Strengthen the fail-closed preflight, approval receipt, inventory binding or diagnostics while preserving ordinary local feature/sandbox testing and requiring a fresh explicit approval after any source or inventory change.
+- Allowed changes: Strengthen the fail-closed preflight, receipt, inventory binding or diagnostics while preserving ordinary local feature/sandbox testing and automatic continuation from a clean pushed develop snapshot without manual SHA confirmation.
 - Unlock condition: Explicit user request to replace this exact production-source policy.
 - Created: 2026-10-31
+- Amended: 2026-10-31 after the user explicitly removed manual SHA approval and required production work to continue automatically once clean pushed develop passes preflight.
 
 ## LOCKED: One active event and SMP GUI specification
 - Scope: `Docs/events/*.md`, `Docs/SERVER_COMMANDS.md`, and `Docs/smp-gui/README.md`

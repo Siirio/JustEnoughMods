@@ -162,27 +162,23 @@ def inventory_identity(files):
     return hashlib.sha256(canonical).hexdigest()
 
 
-def inspect_approved_develop(config, approved_develop):
-    if not approved_develop or not re.fullmatch(r"[0-9a-fA-F]{40}", approved_develop):
-        raise SystemExit("Production release requires --approved-develop with the full 40-character commit SHA explicitly approved by the user")
+def inspect_release_develop(config):
     branch = git_output("branch", "--show-current")
     if branch != PRODUCTION_BRANCH:
-        raise SystemExit(f"Production release is blocked on branch '{branch or 'detached HEAD'}'; switch to approved develop")
+        raise SystemExit(f"Production release is blocked on branch '{branch or 'detached HEAD'}'; switch to develop")
     git_output("fetch", "origin", PRODUCTION_BRANCH)
     head = git_output("rev-parse", "HEAD").lower()
     remote_head = git_output("rev-parse", PRODUCTION_REMOTE_REF).lower()
     if head != remote_head:
         raise SystemExit(f"Production release is blocked: local develop {head} differs from origin/develop {remote_head}")
-    if approved_develop.lower() != head:
-        raise SystemExit(f"Production release is blocked: approved develop {approved_develop.lower()} differs from current develop {head}")
     dirty = git_output("status", "--porcelain=v1", "--untracked-files=all", "--", *PRODUCTION_SOURCE_PATHS)
     if dirty:
-        raise SystemExit("Production release inputs differ from the approved develop commit:\n" + dirty)
+        raise SystemExit("Production release inputs differ from the pushed develop commit:\n" + dirty)
     release_files = release_inventory(config)
     pack_files = pack_sync_inventory(config)
     return {
-        "format": 1,
-        "approvedAt": datetime.now().astimezone().isoformat(),
+        "format": 2,
+        "verifiedAt": datetime.now().astimezone().isoformat(),
         "branch": PRODUCTION_BRANCH,
         "developCommit": head,
         "originDevelopCommit": remote_head,
@@ -193,32 +189,17 @@ def inspect_approved_develop(config, approved_develop):
     }
 
 
-def production_preflight(config, approved_develop):
-    approval = inspect_approved_develop(config, approved_develop)
+def record_production_preflight(config):
+    approval = inspect_release_develop(config)
     destination = config["state"] / PRODUCTION_APPROVAL_FILE
     destination.parent.mkdir(parents=True, exist_ok=True)
     write_json_atomic(destination, approval)
+    return approval, destination
+
+
+def production_preflight(config):
+    approval, destination = record_production_preflight(config)
     print(json.dumps({**approval, "approvalReceipt": str(destination)}, ensure_ascii=False, indent=2))
-
-
-def require_production_approval(config, approved_develop):
-    destination = config["state"] / PRODUCTION_APPROVAL_FILE
-    if not destination.is_file():
-        raise SystemExit("Production release is blocked: run production-preflight after the user approves the exact develop commit")
-    recorded = json.loads(destination.read_text(encoding="utf-8"))
-    current = inspect_approved_develop(config, approved_develop)
-    protected_fields = (
-        "branch",
-        "developCommit",
-        "originDevelopCommit",
-        "releaseInventorySha256",
-        "packSyncInventorySha256",
-        "releaseFiles",
-        "packSyncFiles",
-    )
-    changed = [field for field in protected_fields if recorded.get(field) != current.get(field)]
-    if changed:
-        raise SystemExit("Production release is blocked: approved snapshot changed in " + ", ".join(changed) + ". Obtain fresh user approval and rerun production-preflight")
 
 
 def release_inventory(config):
@@ -790,15 +771,15 @@ def main():
     parser.add_argument("action", choices=("baseline", "promote-baseline", "production-preflight", "status", "sync-stable", "sync-test", "stage-pack-sync", "recover-pack-sync", "package-update", "repackage-release", "package-full", "package-universal"))
     parser.add_argument("--base-update", type=Path)
     parser.add_argument("--transaction", type=Path)
-    parser.add_argument("--approved-develop")
+    parser.add_argument("--approved-develop", help=argparse.SUPPRESS)
     args = parser.parse_args()
     config = load_config()
     if args.action in PRODUCTION_ACTIONS:
-        require_production_approval(config, args.approved_develop)
+        record_production_preflight(config)
     actions = {
         "baseline": baseline,
         "promote-baseline": promote_baseline,
-        "production-preflight": lambda value: production_preflight(value, args.approved_develop),
+        "production-preflight": production_preflight,
         "status": status,
         "sync-stable": lambda value: synchronize(value, "stableClient"),
         "sync-test": lambda value: synchronize(value, "testClient"),

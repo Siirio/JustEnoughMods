@@ -1,3 +1,13 @@
+## 2026-10-31 - Remove manual production SHA approval
+
+- User required production work to stop asking for a pasted develop SHA and continue automatically once the release source is valid
+- Bug / Tooling / the production gate duplicated Git's branch and remote identity with a separate user-entered 40-character SHA, so an already authorized MineRENT release paused for a value the tooling could derive exactly from clean `HEAD == origin/develop` / resolved through automatic commit derivation and fail-closed preflight on every guarded production action
+- Five Whys: production paused because `--approved-develop` was mandatory, the argument represented a separate manual approval, the original feature-branch incident was addressed by combining source identity with human confirmation, source identity was already fully established by branch, fetched remote equality, clean controlled paths and inventory hashes, and the gate owner unnecessarily exposed that internal witness as user input
+- `python tools/jem.py production-preflight` now fetches and records the exact pushed develop commit without an SHA argument. `sync-stable`, release packaging and baseline actions run the same check automatically before mutation
+- Feature, sandbox, main, detached HEAD, dirty release inputs and local develop commits that differ from `origin/develop` remain blocked
+- The legacy `--approved-develop` option remains accepted but is ignored so old commands do not fail while current documentation and the MineRENT workflow no longer request it
+- Bootstrap audit only: the supplied old working JAR, stable `JustEnoughMods`, canonical installer and ManagedPack all match SHA-256 `75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8`. `test jem` still has a different JAR at SHA-256 `1930ec66b1f41e40dd2e6b0278731f1483f605b4a9509ebd41e9d67f7d9d8f9c`. No client file was changed
+
 ## 2026-10-31 - Repair structural boss arenas, quests and live pack integrations
 
 - User required every registered structure-backed boss to receive its existing full three-dimensional barrier, without special-casing Frostbitten Golem, Overgrown Colossus or any other entity type, while bosses without native structures receive no boundary
