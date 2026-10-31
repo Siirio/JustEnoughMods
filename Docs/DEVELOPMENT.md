@@ -14,6 +14,8 @@ Current contract: SMP routes to independent Settlements/Market; Rewards are in n
 
 Обычная разработка, локальная публикация AutoModpack и пользовательская проверка идут в `develop`. Sandbox не является источником релиза: одобренные изменения сначала переходят в `develop`, а временная ветка удаляется после переноса или отказа от работы. `main` обновляется только на явной границе релиза MineRENT, когда сервер, стабильный профиль, release metadata и baseline уже синхронизированы с одним и тем же снимком. Переписывание истории и прямой перенос sandbox в `main` не являются частью этого процесса.
 
+Production-релиз технически закрыт для `feature/*`, `sandbox/*`, `main`, detached HEAD и любого другого ref. После явного одобрения пользователем точного полного SHA ветки `develop` сначала выполняется `python tools/jem.py production-preflight --approved-develop <40-character-sha>`. Проверка fetch-ит `origin/develop`, требует `HEAD == origin/develop == approved SHA`, чистые release-owned source paths и записывает локальный approval receipt с SHA-256 фактических release/AutoModpack inventories. Любая production-упаковка, `sync-stable`, baseline initialization или promotion повторно проверяет тот же receipt и блокируется при изменении ветки, commit или байтов ManagedPack. Обычные `stage-pack-sync`, native публикация в локальный `test jem`, `sync-test` и recovery остаются development-операциями и не создают production approval.
+
 ## Рабочие поверхности
 
 - `Client` — единственный чистый клиентский набор и источник полного ZIP.
@@ -186,6 +188,8 @@ WorldTier и TwelveEyes имеют разные content policies. WorldTier фи
 ## Build, deployment и distribution
 
 Production build/sync, необходимые для явно запрошенного project change, следуют standing authorization в `AGENTS.md`. Tests, automated analysis, gameplay launches, MineRENT/stable changes и release-baseline promotion требуют своего разрешённого scope; текущая реализация не превращает build в player acceptance.
+
+Перед любой внешней мутацией MineRENT normal или server-only release обязан пройти `production-preflight` на явно одобренном пользователем полном SHA `develop`. Загружать файлы из рабочей feature/sandbox ветки, локальной test generation или другого checkout запрещено даже при совпадающих именах артефактов. До успешной проверки MineRENT нельзя останавливать, загружать, удалять, публиковать или перезапускать в рамках релиза.
 
 Явно запрошенный overnight player QA использует `.agents/skills/jem-overnight-player-qa/SKILL.md` и durable отчёт в `Docs/playtests/`. Разрешение относится только к указанной локальной сессии: отдельный disposable world/server clone, `test jem`, native AutoModpack и проверенный backup; MineRENT, stable profile и release baseline не входят в этот scope. У JEMCompat нет compile-зависимости от удалённого BackToBed; `/home` принадлежит JEM Server.
 

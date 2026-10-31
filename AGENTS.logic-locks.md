@@ -30,6 +30,15 @@
 - Amended: 2026-10-06 after the user clarified that every point-update must contain the complete KubeJS tree rather than only the Russian localization overlay.
 - Amended: 2026-10-11 after the user explicitly replaced the monolithic full client ZIP with a bootstrap-only installer backed by a separate canonical managed-pack source.
 
+## LOCKED: Production releases originate only from explicitly approved develop
+- Scope: tools/jem.py production actions, MineRENT deployment workflow, stable JustEnoughMods synchronization, release packaging, release-baseline promotion and main promotion
+- Approved signal: Сделай так, чтобы никогда больше вот эти вот обновления не брались из feature веток, только с develop, который я одобрил.
+- Protected behavior: No production or MineRENT release may originate from feature, sandbox, main, detached HEAD or another checkout. The source must be local develop exactly equal to fetched origin/develop and to the full commit SHA explicitly approved by the user. A production preflight records the actual release and AutoModpack inventory identities, and every guarded production action refuses changed branch, commit, controlled source or inventory. Local stage-pack-sync, test jem publication and recovery remain development operations and never grant production approval.
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Strengthen the fail-closed preflight, approval receipt, inventory binding or diagnostics while preserving ordinary local feature/sandbox testing and requiring a fresh explicit approval after any source or inventory change.
+- Unlock condition: Explicit user request to replace this exact production-source policy.
+- Created: 2026-10-31
+
 ## LOCKED: One active event and SMP GUI specification
 - Scope: `Docs/events/*.md`, `Docs/SERVER_COMMANDS.md`, and `Docs/smp-gui/README.md`
 - Approved signal: The user explicitly requested one state of truth per event, a server command reference, and an SMP GUI folder containing visual assets and click logic.
