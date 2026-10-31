@@ -37,8 +37,8 @@ public final class WorldBattleExtraMovement {
                 && ride.hook.getOwner() == ride.actor;
     }
     public static net.minecraft.nbt.CompoundTag stackReceipt(ItemStack stack) {
-        if(stack.isEmpty()||stack.getCount()!=1||!((Object)stack instanceof WorldBattleExtraStackCarrier carrier))return new net.minecraft.nbt.CompoundTag();
-        var value=carrier.jem$battleRelease();return value.hasUUID("source")&&value.hasUUID("actor")&&value.getString("item").equals(BattleQuestProof.item(stack))?value:new net.minecraft.nbt.CompoundTag();
+        if(stack.isEmpty()||stack.getCount()!=1||!((Object)stack instanceof WorldBattleExtraStackCarrier carrier))return null;
+        var value=carrier.jem$battleRelease();return value!=null&&value.hasUUID("source")&&value.hasUUID("actor")&&value.getString("item").equals(BattleQuestProof.item(stack))?value:null;
     }
     private static void persist(Ride ride) {
         var value=new net.minecraft.nbt.CompoundTag();value.putUUID("source",UUID.randomUUID());value.putUUID("actor",ride.actor.getUUID());value.putString("kind",ride.kind);value.putString("item",BattleQuestProof.item(ride.stack));
@@ -51,7 +51,7 @@ public final class WorldBattleExtraMovement {
         if(!value.hasUUID("source")||!value.hasUUID("actor")||!value.getUUID("actor").equals(actor.getUUID())||!java.util.Set.of("soul","bulwark").contains(kind))return null;
         if(!value.getString("dimension").equals(actor.level().dimension().location().toString())){clear(actor);return null;}
         for(ItemStack stack:java.util.List.of(actor.getMainHandItem(),actor.getOffhandItem())){
-            var physical=stackReceipt(stack);if(physical.isEmpty()||!physical.getUUID("source").equals(value.getUUID("source"))||!physical.getUUID("actor").equals(actor.getUUID())||!physical.getString("kind").equals(kind)||!physical.getString("item").equals(value.getString("item")))continue;
+            var physical=stackReceipt(stack);if(physical==null||!physical.getUUID("source").equals(value.getUUID("source"))||!physical.getUUID("actor").equals(actor.getUUID())||!physical.getString("kind").equals(kind)||!physical.getString("item").equals(value.getString("item")))continue;
             Ride restored=new Ride(actor,stack,kind,null);restored.force=new Vec3(value.getDouble("x"),value.getDouble("y"),value.getDouble("z"));
             if(!Double.isFinite(restored.force.lengthSqr())||restored.force.lengthSqr()<=1.0E-10||!active(restored)){clear(actor);return null;}
             if(RIDES.size()>=256)return null;RIDES.put(actor.getUUID(),restored);return restored;

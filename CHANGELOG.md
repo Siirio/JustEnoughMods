@@ -1,3 +1,14 @@
+## 2026-10-31 - Repair the integrated-server item and mob tick stall
+
+- User reported mined coal repeatedly snapping between two positions without being collected, then zombies and other mobs freezing, losing aggression and becoming unhittable across multiple chunks in the original singleplayer profile
+- Bug / Both Sided / broad native Skarrier procedures entered JEM Advancement Guide observation for every living entity tick, and rejected non-player calls still constructed a `SkarrierWorkshopProof.Run` with four `ItemStack.copy()` snapshots while the global JEM battle-release ItemStack Mixin allocated an empty `CompoundTag` for ordinary stacks / in testing through pre-snapshot real-player admission and allocation-free absent receipts
+- Five Whys: entities and drops froze because the integrated server stopped advancing them, the server thread spent its budget in allocation-heavy entity tick work, JEM copied held/use stacks for Skarrier procedure calls that could never satisfy an advancement, each copy also created an empty battle-release NBT value, and both JEM observers validated eligibility only after entering their global hot paths
+- Bug / Both Sided / JEM structure/event collision, teleport and hosted native-tick hooks entered global entity movement and tick paths in integrated worlds even though Events, parties and hosted boss admission are disabled there / in testing through earliest dedicated-host admission guards
+- Singleplayer opened to LAN remains integrated and receives no JEM structure or event boundaries. Dedicated hosts such as ForeverSMP retain the existing registered structure-volume walls, event boundaries, teleport rules and hosted encounter lifecycle
+- Skarrier Mobs remains the native owner of its AI, procedures, effects, cooldowns, items and damage. JEM observes only eligible real-player actions and does not disable or patch Skarrier gameplay
+- `Modefite` reflection log spam while an interface is open is a separate render/logging defect and is not the cause of the frozen server ticks
+- No world save, entity, item, quest progress, recipe, loot or native mod JAR is rewritten. Player acceptance and comparative runtime profiling remain pending
+
 ## 2026-10-31 - Remove manual production SHA approval
 
 - User required production work to stop asking for a pasted develop SHA and continue automatically once the release source is valid

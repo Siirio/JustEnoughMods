@@ -1,6 +1,7 @@
 package com.siirio.jemserver.mixin.teleport;
 
 import com.siirio.jemserver.smp.events.BossTeleportSafety;
+import com.siirio.jemserver.smp.SmpEnvironment;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
@@ -16,7 +17,7 @@ public abstract class MobBoundaryTeleportMixin {
     @Inject(method = "setPos(DDD)V", at = @At("HEAD"), cancellable = true)
     private void jem$nativePositionDestination(double x,double y,double z,CallbackInfo callback) {
         Entity entity=(Entity)(Object)this;
-        if(!entity.isAddedToWorld() || !(entity.level() instanceof ServerLevel level)) return;
+        if(!entity.isAddedToWorld() || !(entity.level() instanceof ServerLevel level) || !SmpEnvironment.active(level.getServer())) return;
         Vec3 destination=new Vec3(x,y,z);
         BossTeleportSafety.Decision decision=BossTeleportSafety.validatePosition(entity,level,destination);
         if(decision.matched() && !destination.equals(decision.destination())) callback.cancel();
@@ -25,7 +26,7 @@ public abstract class MobBoundaryTeleportMixin {
     @Inject(method = "teleportTo(DDD)V", at = @At("HEAD"), cancellable = true)
     private void jem$boundaryDestination(double x, double y, double z, CallbackInfo callback) {
         Entity entity = (Entity) (Object) this;
-        if (!(entity.level() instanceof ServerLevel level)) return;
+        if (!(entity.level() instanceof ServerLevel level) || !SmpEnvironment.active(level.getServer())) return;
         BossTeleportSafety.Decision decision = BossTeleportSafety.validate(entity, level, new Vec3(x, y, z));
         if (!decision.matched() || new Vec3(x, y, z).equals(decision.destination())) return;
         callback.cancel();
@@ -36,6 +37,7 @@ public abstract class MobBoundaryTeleportMixin {
     @Inject(method = "changeDimension(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraftforge/common/util/ITeleporter;)Lnet/minecraft/world/entity/Entity;", at = @At("HEAD"), cancellable = true, remap = false)
     private void jem$boundaryDimension(ServerLevel level, net.minecraftforge.common.util.ITeleporter teleporter, CallbackInfoReturnable<Entity> callback) {
         Entity entity = (Entity) (Object) this;
+        if (!SmpEnvironment.active(level.getServer())) return;
         if (!BossTeleportSafety.permitsDimensionChange(entity, level)) callback.setReturnValue(null);
     }
 
@@ -45,6 +47,7 @@ public abstract class MobBoundaryTeleportMixin {
             java.util.function.Function<ServerLevel,net.minecraft.world.level.portal.PortalInfo> fallback) {
         var info=teleporter.getPortalInfo(entity,level,fallback);
         if(info==null) return null;
+        if(!SmpEnvironment.active(level.getServer())) return info;
         var decision=BossTeleportSafety.validate(entity,level,info.pos);
         return !decision.matched() || info.pos.equals(decision.destination()) ? info : null;
     }

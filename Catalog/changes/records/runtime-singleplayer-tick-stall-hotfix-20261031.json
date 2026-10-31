@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "change_id": "runtime.singleplayer-tick-stall-hotfix-20261031",
+  "status": "conditional",
+  "selectors": [
+    {
+      "type": "registry",
+      "registry": "*",
+      "value": "*"
+    }
+  ],
+  "conditions": [
+    {
+      "runtime": "JEM Advancement Guide optional Skarrier observation, ItemStack receipt copying, and integrated/LAN hosted-boundary admission"
+    }
+  ],
+  "precedence": {
+    "layer": "runtime_admission_and_observation",
+    "priority": 70
+  },
+  "change": {
+    "summary": "Reject irrelevant Skarrier observations before snapshot allocation and bypass dedicated-only hosted boundary work in integrated/LAN worlds",
+    "modifiers": [
+      {
+        "property": "jem_advancements.skarrier_observation_admission",
+        "operation": "replace",
+        "before": "Every injected Skarrier procedure call created a Run and copied four ItemStacks even when the owner was not a real server player",
+        "after": "Only live real-server-player calls create the bounded Run snapshot; rejected nested calls retain balanced begin/end depth without inventory copies"
+      },
+      {
+        "property": "jem_advancements.battle_release_empty_receipt",
+        "operation": "replace",
+        "before": "Every ordinary ItemStack copy asked for a battle-release receipt and allocated an empty CompoundTag when none existed",
+        "after": "Absent or invalid receipts are represented by null and allocate no CompoundTag; valid receipt copy, save and restoration semantics remain unchanged"
+      },
+      {
+        "property": "jem_hosted_boundary.integrated_lan_admission",
+        "operation": "deny",
+        "before": "Global entity move, collision, setPos, teleport and native-tick Mixins entered hosted boundary or provenance code before later lookups discovered no integrated event",
+        "after": "Integrated and LAN logical servers return before boundary, teleport and hosted native-tick work; dedicated hosts retain the existing structure and event lifecycle"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEM Advancement Guide, JEM Server and JEM World Boss Tiers runtime adapters",
+    "kind": "hot_path_admission_repair",
+    "source_files": [
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battle/WorldBattleExtraMovement.java",
+      "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleReleaseStackQuestMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/MobBoundaryTeleportMixin.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+      "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/NativeEncounterSource.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Restore integrated-server ticking while preserving native Skarrier mechanics, advancement proof and dedicated-host arena behavior",
+    "decision_source": "User runtime report and explicit 2026-10-31 request to remove JEM boundary hooks from singleplayer while retaining ForeverSMP boundaries",
+    "user_requested": "Fix the item and mob freeze on a new hotfix branch, and keep boundaries out of singleplayer including LAN",
+    "codex_choices": "Repair the earliest JEM allocation/admission owners instead of disabling Skarrier or masking frozen entities"
+  },
+  "introduced": {
+    "date": "2026-10-31",
+    "commit": "SELF",
+    "action": "repair_singleplayer_tick_stall",
+    "summary": "Add allocation-free rejection for invalid observations and dedicated-host guards for hosted boundaries"
+  },
+  "history": [
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "repair_singleplayer_tick_stall",
+      "summary": "JFR and save evidence tied the freeze to JEM snapshot allocation on broad Skarrier hooks, with boundary and hosted wrappers as integrated-world amplifiers",
+      "source_files": [
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/SkarrierWorkshopProof.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/integration/battle/WorldBattleExtraMovement.java",
+        "Mods/JEMAchievementGuide/src/main/java/com/justenoughmods/achievementguide/mixin/WorldBattleReleaseStackQuestMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/mixin/teleport/MobBoundaryTeleportMixin.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/BossTeleportSafety.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/SolidBoundary.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/encounter/NativeEncounterSource.java",
+        "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/mixin/HostedBossTickMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "integrated_server_tick",
+      "advancement_proof",
+      "skarrier_integration",
+      "item_stack_copy",
+      "boss_boundaries",
+      "hosted_encounters"
+    ],
+    "relations": [
+      "Skarrier native procedures remain unchanged and JEM observes only eligible real-player actions",
+      "Valid battle-release receipts keep their source, actor, item and persistence proof",
+      "Integrated singleplayer and LAN use native boss combat without JEM structure or event boundaries",
+      "Dedicated hosts retain JEM structure walls, teleport admission and hosted provenance"
+    ],
+    "notes": [
+      "Modefite interface reflection spam is an independent render-log defect and is not treated as the freeze owner",
+      "No entity, item, progression, recipe, loot, AI or world data is rewritten"
+    ],
+    "unresolved": [
+      "Manual player acceptance and comparative runtime profiling of the built hotfix remain pending"
+    ]
+  }
+}

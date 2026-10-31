@@ -4,6 +4,8 @@
 
 Current contract: SMP routes to independent Settlements/Market; Rewards are in normal inventory E on both host types. Integrated/LAN has no JEM Events or parties. Common ordinary Minecraft XP has one x2 baseline; other modifiers apply above it.
 
+Integrated/LAN also bypasses JEM structural boss and event boundary collision, teleport and hosted native-tick provenance hooks at their earliest runtime admission. Opening a singleplayer world to LAN does not activate those dedicated-host systems. Dedicated hosts retain the registered structure-volume and event boundary lifecycle unchanged.
+
 ## Ветки и версии
 
 | Ветка | Единственная версия, которую она представляет |

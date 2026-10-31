@@ -24,6 +24,10 @@ public final class NativeEncounterSource {
     private NativeEncounterSource() {}
 
     public static void run(Entity ticking, Runnable tick) {
+        if (ticking.getServer() == null || !HostedEncounterApi.enabled(ticking.getServer())) {
+            tick.run();
+            return;
+        }
         Entity previous = CURRENT.get();
         Entity owner = canonicalOwner(ticking);
         if (denied(ticking)) owner = ticking;

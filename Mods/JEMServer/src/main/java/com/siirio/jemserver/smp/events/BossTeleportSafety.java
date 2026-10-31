@@ -1,5 +1,6 @@
 package com.siirio.jemserver.smp.events;
 
+import com.siirio.jemserver.smp.SmpEnvironment;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -9,24 +10,26 @@ public final class BossTeleportSafety {
     private static final ThreadLocal<Boolean> APPLYING = ThreadLocal.withInitial(() -> false);
 
     public static Decision validate(ServerPlayer player, ServerLevel level, Vec3 requested) {
-        if (APPLYING.get() || player.hasPermissions(2)) return Decision.allow(requested);
+        if (!SmpEnvironment.active(level.getServer()) || APPLYING.get() || player.hasPermissions(2)) return Decision.allow(requested);
         Decision structure = StructureStaging.safeTeleport(player, level, requested);
         return structure.matched() ? structure : BloodMoonSolidBoundary.validateTeleport(player, level, requested);
     }
 
     public static Decision validate(Entity entity, ServerLevel level, Vec3 requested) {
+        if (!SmpEnvironment.active(level.getServer())) return Decision.allow(requested);
         if (entity instanceof ServerPlayer player) return validate(player, level, requested);
         return APPLYING.get() || SolidBoundary.permitsTeleport(entity, level, requested)
                 ? Decision.allow(requested) : Decision.redirect(null);
     }
 
     public static boolean permitsDimensionChange(Entity entity, ServerLevel level) {
+        if (!SmpEnvironment.active(level.getServer())) return true;
         if (APPLYING.get() || entity instanceof ServerPlayer player && player.hasPermissions(2)) return true;
         return !SolidBoundary.contained(entity);
     }
 
     public static Decision validatePosition(Entity entity,ServerLevel level,Vec3 requested) {
-        if(APPLYING.get() || entity instanceof ServerPlayer player && player.hasPermissions(2)
+        if(!SmpEnvironment.active(level.getServer()) || APPLYING.get() || entity instanceof ServerPlayer player && player.hasPermissions(2)
                 || StructureStaging.canonicalPlacement(entity,level,requested)) return Decision.allow(requested);
         var source=SolidBoundary.movementBox(entity);
         var target=SolidBoundary.destinationBox(entity,requested);

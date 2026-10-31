@@ -6,6 +6,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import com.siirio.jemserver.smp.SmpEnvironment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ public final class SolidBoundary {
             return clientZones.stream().filter(zone -> !zone.passable())
                     .filter(zone -> zone.dimension().equals(entity.level().dimension().location().toString())).toList();
         }
+        if (!serverActive(entity)) return List.of();
         List<EventBoundary> result = new ArrayList<>(StructureStaging.solidBoundaries(entity));
         result.addAll(BloodMoonSolidBoundary.boundaries(entity));
         return result;
@@ -42,6 +44,7 @@ public final class SolidBoundary {
     }
 
     public static List<VoxelShape> collisionShapes(Entity entity, AABB query) {
+        if (!entity.level().isClientSide && !serverActive(entity)) return List.of();
         List<EventBoundary> boundaries;
         if (entity.level().isClientSide) boundaries = boundaries(entity);
         else {
@@ -61,6 +64,7 @@ public final class SolidBoundary {
     }
 
     public static boolean permitsTeleport(Entity entity, net.minecraft.server.level.ServerLevel level, Vec3 destination) {
+        if (!SmpEnvironment.active(level.getServer())) return true;
         List<EventBoundary> boundaries = new ArrayList<>(boundaries(entity));
         boundaries.addAll(StructureStaging.destinationBoundaries(entity, level, destination));
         boundaries = boundaries.stream().filter(boundary -> !boundary.type().equals("RESOURCE_RUSH")).toList();
@@ -77,6 +81,7 @@ public final class SolidBoundary {
     }
 
     public static boolean permitsMovement(Entity entity, AABB origin, AABB target) {
+        if (!entity.level().isClientSide && !serverActive(entity)) return true;
         List<EventBoundary> relevant = entity.level().isClientSide ? boundaries(entity)
                 : new ArrayList<>(StructureStaging.solidBoundaries(entity, origin.minmax(target)));
         if (!entity.level().isClientSide) relevant.addAll(BloodMoonSolidBoundary.boundaries(entity));
@@ -106,7 +111,7 @@ public final class SolidBoundary {
 
     /** Clamp the complete mount/passenger family before vanilla resolves individual block collisions. */
     public static Vec3 limitMovement(Entity entity, Vec3 movement) {
-        if (movement.lengthSqr() == 0 || entity.isPassenger()) return movement;
+        if (movement.lengthSqr() == 0 || entity.isPassenger() || !entity.level().isClientSide && !serverActive(entity)) return movement;
         AABB box = movementBox(entity);
         AABB admissionBox = box;
         List<EventBoundary> structural = entity.level().isClientSide ? boundaries(entity).stream().filter(boundary -> boundary.type().equals("BOSS_FIGHT")).toList()
@@ -136,6 +141,7 @@ public final class SolidBoundary {
     }
 
     static boolean contained(Entity entity) {
+        if (!entity.level().isClientSide && !serverActive(entity)) return false;
         AABB box = movementBox(entity);
         return boundaries(entity).stream().filter(boundary -> !boundary.type().equals("RESOURCE_RUSH"))
                 .anyMatch(boundary -> contains(box, boundary));
@@ -144,6 +150,10 @@ public final class SolidBoundary {
     static AABB movementBox(Entity entity) {
         Entity root = entity.getRootVehicle();
         return root.getSelfAndPassengers().map(Entity::getBoundingBox).reduce(root.getBoundingBox(), AABB::minmax);
+    }
+
+    private static boolean serverActive(Entity entity) {
+        return SmpEnvironment.active(entity.getServer());
     }
 
     static AABB destinationBox(Entity entity, Vec3 destination) {

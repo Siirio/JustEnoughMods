@@ -112,14 +112,18 @@ public final class SkarrierWorkshopProof {
     public static void begin(String route, Entity owner, Entity target, Event event) { begin(route, owner, target, event, ItemStack.EMPTY); }
     public static void begin(String route, Entity owner, Entity target, Event event, ItemStack item) {
         State state = CALLS.get();
-        if (state.overflow > 0 || state.calls.size() >= LIMIT) { state.overflow++; return; }
         ServerPlayer actor = owner instanceof ServerPlayer player ? player : null;
         boolean valid = real(owner) && live(event) && (target == null || target.level() == owner.level());
-        state.calls.push(new Run(route, actor, target, event, item, valid));
+        if (!valid || state.overflow > 0 || state.calls.size() >= LIMIT) { state.overflow++; return; }
+        state.calls.push(new Run(route, actor, target, event, item, true));
     }
     public static void end() {
         State state = CALLS.get();
-        if (state.overflow > 0) { state.overflow--; return; }
+        if (state.overflow > 0) {
+            state.overflow--;
+            if (state.overflow == 0 && state.calls.isEmpty()) CALLS.remove();
+            return;
+        }
         Run run = state.calls.isEmpty() ? null : state.calls.pop();
         if (state.calls.isEmpty()) CALLS.remove();
         if (run == null || !run.valid || !live(run.event) || !real(run.actor)) return;

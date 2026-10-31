@@ -20,6 +20,7 @@ public abstract class HostedBossTickMixin {
     // NoAI stops native goals, but custom boss tick overrides also run combat and presentation.
     @Inject(method = "tickNonPassenger", at = @At("HEAD"), cancellable = true)
     private void jem$waitForHostedStart(Entity entity, CallbackInfo callback) {
+        if (entity.getServer() == null || !HostedEncounterApi.enabled(entity.getServer())) return;
         if (com.siirio.jemworldbosstiers.revival.NativeBossStorage.pending(entity)) {
             callback.cancel();
             return;
