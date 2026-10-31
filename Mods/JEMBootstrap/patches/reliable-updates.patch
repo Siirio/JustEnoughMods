@@ -1869,7 +1869,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePl
 diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
-@@ -1,184 +1,178 @@
+@@ -1,184 +1,181 @@
 -package pl.skidam.automodpack_core.client;
 -
 -import static pl.skidam.automodpack_core.Constants.*;
@@ -2092,7 +2092,10 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdate
 +
 +public final class DetachedUpdateHelper {
 +	private static final String HELPER_MAIN = UpdateHelperMain.class.getName();
-+	private static final Duration HELPER_LEASE_WAIT = Duration.ofMinutes(3);
++	// Real Windows profile updates can spend several minutes waiting for the previous game process and
++	// retrying locked projection files. The held OS lease proves that helper still owns the transaction.
++	// Keep the launch fail-closed, but give a healthy helper enough time to finish before declaring it stuck.
++	private static final Duration HELPER_LEASE_WAIT = Duration.ofMinutes(10);
 +	// A released lease is noticed within half a second, the helper's own initial backoff step.
 +	private static final long LEASE_POLL_MILLIS = 500;
 +	// The helper log accumulates whole runs; the tail covers the most recent one or two.
@@ -12319,9 +12322,9 @@ diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/re
 +  "automodpack.browser.allGroups": "All groups",
 +  "automodpack.browser.groupDescription": "Files supplied by this group",
 +  "automodpack.browser.packEffect": "Modpack %s",
-+	"jem.bootstrap.files": "Download these files",
-+	"jem.bootstrap.consent": "I accept the risks",
-+	"jem.bootstrap.download": "Download",
++	"jem.bootstrap.files": "Update the modpack",
++	"jem.bootstrap.consent": "I accept the risk and allow the complete plan",
++	"jem.bootstrap.download": "Update all",
 +	"jem.bootstrap.remove": "Remove:"
 +}
 diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/resources/assets/automodpack/lang/ru_ru.json
@@ -13185,9 +13188,9 @@ diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/re
 +  "automodpack.selection.metrics.many": "(%s файлов, %s)",
 +  "automodpack.update.groupsSelected.few": "Выбраны %s группы",
 +  "automodpack.update.groupsSelected.many": "Выбрано %s групп",
-+	"jem.bootstrap.files": "Скачать эти файлы",
-+	"jem.bootstrap.consent": "Согласен с рисками",
-+	"jem.bootstrap.download": "Скачать",
++	"jem.bootstrap.files": "Обновить сборку",
++	"jem.bootstrap.consent": "Принимаю риск и разрешаю применить весь план",
++	"jem.bootstrap.download": "Обновить всё",
 +	"jem.bootstrap.remove": "Удалить:"
 +}
 
@@ -13358,3 +13361,164 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.jav
  		}
  
  		private Map<String, IssuedSecret> readSecrets() {
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java b/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java
+@@ -5,12 +5,14 @@ import java.awt.image.BufferedImage;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+ import java.nio.file.Paths;
++import java.util.List;
+ import java.util.concurrent.CompletableFuture;
+ import java.util.concurrent.Semaphore;
++import java.util.concurrent.atomic.AtomicBoolean;
+ 
+ import javax.imageio.ImageIO;
+ import javax.swing.*;
+ import javax.swing.plaf.ColorUIResource;
+ 
+@@ -20,10 +22,87 @@ import pl.skidam.automodpack_core.utils.PlatformUtils;
+ public class Gui {
+ 
+ 	private String text;
+ 	private Semaphore semaphore;
+ 
++	/**
++	 * Preload cannot use Minecraft screens yet. This modal is the explicit, one-update consent gate for a plan that
++	 * would write JARs without a first-party catalogue match. Closing or cancelling leaves the active pack untouched.
++	 */
++	public static boolean confirmUpdate(List<String> changedPaths) {
++		if (!hasAwtSupport() || GraphicsEnvironment.isHeadless()) return false;
++		AtomicBoolean accepted = new AtomicBoolean();
++		Runnable prompt = () -> accepted.set(updateConfirmationWindow(changedPaths));
++		try {
++			if (SwingUtilities.isEventDispatchThread()) prompt.run();
++			else SwingUtilities.invokeAndWait(prompt);
++		} catch (Exception e) {
++			Constants.LOGGER.error("Cannot show the preload update confirmation", e);
++			return false;
++		}
++		return accepted.get();
++	}
++
++	private static boolean updateConfirmationWindow(List<String> changedPaths) {
++		AtomicBoolean accepted = new AtomicBoolean();
++		JDialog dialog = new JDialog((Frame) null, "JEM Update", true);
++		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
++		dialog.setResizable(false);
++
++		JPanel panel = new JPanel();
++		panel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
++		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
++
++		JLabel title = new JLabel("<html><b>Доступно обновление JEM</b></html>");
++		title.setAlignmentX(Component.LEFT_ALIGNMENT);
++		panel.add(title);
++		panel.add(Box.createVerticalStrut(8));
++
++		JLabel explanation = new JLabel("<html>Все перечисленные файлы будут добавлены, заменены или удалены по плану сервера. Старые managed-файлы не останутся активными.</html>");
++		explanation.setAlignmentX(Component.LEFT_ALIGNMENT);
++		panel.add(explanation);
++		panel.add(Box.createVerticalStrut(6));
++
++		JTextArea files = new JTextArea(String.join("\n", changedPaths));
++		files.setEditable(false);
++		files.setLineWrap(false);
++		files.setCaretPosition(0);
++		JScrollPane scroll = new JScrollPane(files);
++		scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
++		scroll.setPreferredSize(new Dimension(520, Math.min(220, Math.max(80, changedPaths.size() * 20 + 12))));
++		panel.add(scroll);
++		panel.add(Box.createVerticalStrut(10));
++
++		JCheckBox consent = new JCheckBox("Я понимаю риск и разрешаю применить весь план");
++		consent.setAlignmentX(Component.LEFT_ALIGNMENT);
++		panel.add(consent);
++		panel.add(Box.createVerticalStrut(10));
++
++		JButton update = new JButton("Обновить всё");
++		update.setEnabled(false);
++		JButton cancel = new JButton("Отмена");
++		consent.addActionListener(event -> update.setEnabled(consent.isSelected()));
++		update.addActionListener(event -> {
++			accepted.set(true);
++			dialog.dispose();
++		});
++		cancel.addActionListener(event -> dialog.dispose());
++
++		JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
++		actions.setAlignmentX(Component.LEFT_ALIGNMENT);
++		actions.add(cancel);
++		actions.add(update);
++		panel.add(actions);
++
++		dialog.setContentPane(panel);
++		dialog.pack();
++		dialog.setLocationRelativeTo(null);
++		dialog.setAlwaysOnTop(true);
++		dialog.setVisible(true);
++		return accepted.get();
++	}
++
+ 	// After the window is closed, the jvm should exit without forgetting about eventual callbacks from ReLauncher
+ 	public Semaphore open(String text) {
+ 		this.text = text;
+ 		semaphore = new Semaphore(0, true);
+ 		if (hasAwtSupport()) {
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
+@@ -1,10 +1,11 @@
+ package pl.skidam.automodpack_core.screen;
+ 
+ import static pl.skidam.automodpack_core.Constants.LOGGER;
+ 
+ import java.awt.GraphicsEnvironment;
++import java.util.List;
+ import java.util.Objects;
+ import java.util.Optional;
+ import java.util.concurrent.Future;
+ import java.util.concurrent.Semaphore;
+ 
+@@ -44,10 +45,15 @@ public final class ScreenManager {
+ 	public static Semaphore preloadRestart(String message) {
+ 		if (GraphicsEnvironment.isHeadless()) return null;
+ 		return new Gui().open(message);
+ 	}
+ 
++	/** One explicit consent for this preload plan. A refusal never changes the active pack. */
++	public static boolean preloadUpdateReview(List<String> changedPaths) {
++		return Gui.confirmUpdate(List.copyOf(changedPaths));
++	}
++
+ 	public static void completeWithoutRestart() {
+ 		instance.completeWithoutRestart();
+ 	}
+ 
+ 	public static void welcome(ReviewPayload payload) {
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
+@@ -397,12 +397,18 @@ public class ModpackUpdater implements AutoCloseable {
+ 					"Launch apply skipped: the selected pack needs Minecraft {} ({}) and this launcher cannot switch versions automatically - join the server in-game to sync it, then set the instance's version manually",
+ 					serverModpackContent.mcVersion, serverModpackContent.loader);
+ 			return;
+ 		}
+ 		if (review.planWritesUnverifiedJar(launch.prepared().plan())) {
+-			LOGGER.warn("Launch apply aborted: unverified jars will not be written during preload; leaving the live pack unchanged");
+-			return;
++			List<String> changedPaths = launch.prepared().plan().operations().stream()
++					.map(operation -> (operation.operation() == UpdatePlan.OperationType.DELETE ? "Удалить: " : "Установить: ") + operation.relativePath())
++					.distinct().sorted().toList();
++			if (!ScreenManager.preloadUpdateReview(changedPaths)) {
++				LOGGER.warn("Launch apply cancelled: the player did not approve the unverified JAR plan; leaving the live pack unchanged");
++				return;
++			}
++			LOGGER.info("The player approved the unverified JAR plan for this launch apply");
+ 		}
+ 		if (!review.firstConnection() && !launch.requiresReconciliation(storedTarget())) {
+ 			LOGGER.info("Launch apply reused the active projection");
+ 			return;
+ 		}

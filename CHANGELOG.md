@@ -1,3 +1,21 @@
+## 2026-10-31 - Restore explicit preload consent for JEM JAR updates
+
+- User asked why accepting the risk did not allow the update and explicitly requested restoring the trust confirmation in bootstrap
+- Bug / Client Sided / preload correctly detected an unverified locally authored JEM JAR but had no Minecraft screen service yet, so it aborted before the existing in-game confirmation could open and kept loading the crash-prone old active generation / in testing
+- Five Whys: the old generation remained active because preload refused the JAR plan; it refused because no approval existed; approval normally belongs to the Minecraft confirmation screen; that screen is installed only after Forge initialization; the preload owner had no equivalent bounded consent adapter
+- JEM Bootstrap revision `jem.13` now shows one preload modal containing the exact planned file operations, one per-update risk checkbox, Update All and Cancel. Update All stays disabled until the checkbox is selected, then approves the complete plan including replacements and deletions so obsolete managed files do not remain active
+- Approval applies only to the already prepared native plan in that launch. Cancel, closing the window, unavailable AWT or a UI failure leave the active generation unchanged. No blanket consent, trust bypass, raw file copy, active-pointer edit or cache deletion was added
+- The production `jem.13` artifact was built from the pinned source and synchronized byte-for-byte to the ordinary local Server, clean bootstrap-only installer, closed stable profile and MineRENT. Its SHA-256 is `877f26f0de3c21bc45c5abf565dc5c363d1fb8b32296156464a4a5bc584191e3`
+- MineRENT was restarted with the new bootstrap and left running. Native `jempack publish` reported `NO_CHANGES` for content token `995c4e1`, and the final preview confirmed `Diff: +0 ~0 -0`, so the already published managed generation exactly matches the hosted source while bootstrap remains correctly excluded from managed content
+
+## 2026-10-31 - Keep JEM Security replies on their owning login connection
+
+- User reported a fourth production join failure after the complete AutoModpack download and authorized autonomous repair, bootstrap deployment and repeated MineRENT verification while preserving the unfinished work in the other active session
+- Bug / Both Sided / MineRENT accepted the player and completed the join, then the JEM Security attestation response used Forge's global `sendToServer` lookup while the client connection field was changing, so the client threw a null `ClientPacketListener` exception and disconnected itself one second after joining / in testing
+- Five Whys: the client disconnected because Forge dereferenced a null global listener; JEM Security called `SimpleChannel.sendToServer` from the server-challenge handler; that helper performs a second unsynchronized `Minecraft.getConnection()` lookup; the login lifecycle can replace or clear the field between checks; the security protocol already had the exact inbound `Connection` but discarded it instead of preserving ownership
+- JEM Security 1.0.6 sends attestation, audit-log and blocked-pack replies through one captured live `Connection`. The server challenge passes its exact network manager into the client handler, and later client actions snapshot the listener once before resolving its connection
+- Security policy, attestation contents, blocked-mod and blocked-resource-pack enforcement, audit logging and server authority are unchanged
+
 ## 2026-10-31 - Implement Major Update 4 for test jem
 
 - User supplied the complete Major Update 4 specification and seven downloaded mod artifacts, required the work to start from `develop`, remain outside `main`, reuse the local downloads and finish with a new local-server world for testing in `test jem`
@@ -14,6 +32,14 @@
 - Bug / Both Sided / static registry metadata advertised 11 native spawn-egg item ids that the installed live Forge registry does not contain, so their generated recipes initially had empty results / in testing. The generator now records those runtime-missing ids and registers JEM fallback eggs for them
 - Bug / Both Sided / the Advancement Frames persistence mixin named Mojmap methods on an installed dependency that remains SRG-obfuscated at runtime, so its save hook initially had no target / in testing. The hooks now target the exact installed `m_183515_` and `m_142466_` methods
 - Production JAR packaging and Java compilation completed successfully. A fresh dedicated-server world reached `Done`, all task-owned recipes parsed, and the task-owned mixins applied without errors. No automated tests, client launch or gameplay QA were run under the project testing prohibition
+
+## 2026-10-31 - Let native bootstrap recovery finish
+
+- User confirmed that the latest failed launch only needed more time and explicitly authorized the previously deferred bootstrap update
+- Bug / Client Sided / JEM Bootstrap stopped prelaunch after a fixed three-minute helper-lease wait, while real Windows recovery runs in the stable profile legitimately took between 203 and 428 seconds and the latest helper completed successfully 33 seconds after the client aborted / in testing
+- Five Whys: the client stopped because the lease deadline expired; the lease remained held because the detached helper was still completing the pending transaction; parent-process exit and Windows projection locks make native recovery take several minutes; the three-minute constant was shorter than observed healthy runs; bootstrap owns prelaunch readiness and therefore must allow its healthy transaction owner to finish without loading the modpack early
+- JEM Bootstrap revision `jem.12` raises the bounded helper-lease wait to ten minutes. The operating-system lease remains authoritative, recovery still retries only after release, and a helper that remains stuck beyond the bound still stops the launch before managed mods load
+- AutoModpack cache, active-state pointers, managed gameplay files, the confirmation flow and preservation rules are unchanged
 
 ## 2026-10-31 - Stabilize the JEM Races login connection snapshot
 

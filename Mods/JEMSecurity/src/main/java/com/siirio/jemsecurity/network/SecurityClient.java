@@ -17,6 +17,8 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientPacketListener;
+import net.minecraft.network.Connection;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
@@ -45,25 +47,25 @@ public final class SecurityClient {
         cachedAttestation = snapshot();
     }
 
-    public static void respondToAttestationRequest() {
+    public static void respondToAttestationRequest(Connection connection) {
         SecurityNetwork.Attestation attestation = cachedAttestation;
         if (attestation == null) {
             attestation = snapshot();
             cachedAttestation = attestation;
         }
-        send(attestation, "server_challenge");
+        send(connection, attestation, "server_challenge");
     }
 
     public static void resourcePacksChanged() {
         cachedAttestation = snapshot();
-        Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.getConnection() != null) send(cachedAttestation, "resource_pack_change");
+        Connection connection = activeConnection();
+        if (connection != null) send(connection, cachedAttestation, "resource_pack_change");
     }
 
     public static void reportBlockedPackAttempt(String packId) {
-        Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.getConnection() != null && packId != null && !packId.isBlank())
-            SecurityNetwork.sendPackAttempt(packId);
+        Connection connection = activeConnection();
+        if (connection != null && packId != null && !packId.isBlank())
+            SecurityNetwork.sendPackAttempt(connection, packId);
     }
 
     private static SecurityNetwork.Attestation snapshot() {
@@ -77,10 +79,15 @@ public final class SecurityClient {
         return new SecurityNetwork.Attestation(mods, packs, version, blockedPack == null ? "" : blockedPack);
     }
 
-    private static void send(SecurityNetwork.Attestation attestation, String trigger) {
-        SecurityNetwork.sendAttestation(attestation.mods(), attestation.packs(), attestation.clientVersion(), attestation.blockedPackId());
+    private static void send(Connection connection, SecurityNetwork.Attestation attestation, String trigger) {
+        SecurityNetwork.sendAttestation(connection, attestation.mods(), attestation.packs(), attestation.clientVersion(), attestation.blockedPackId());
         LOGGER.info("JEM Security sent client attestation from {} with {} mods and {} resource packs",
                 trigger, attestation.mods().size(), attestation.packs().size());
+    }
+
+    private static Connection activeConnection() {
+        ClientPacketListener listener = Minecraft.getInstance().getConnection();
+        return listener == null ? null : listener.getConnection();
     }
 
     @SubscribeEvent
@@ -123,7 +130,10 @@ public final class SecurityClient {
             return 0;
         }
         List<String> chunks = split(sanitized);
-        for (int index = 0; index < chunks.size(); index++) SecurityNetwork.sendLogChunk(token, index, chunks.size(), chunks.get(index));
+        Connection connection = activeConnection();
+        if (connection == null) return 0;
+        for (int index = 0; index < chunks.size(); index++)
+            SecurityNetwork.sendLogChunk(connection, token, index, chunks.size(), chunks.get(index));
         if (Minecraft.getInstance().player != null)
             Minecraft.getInstance().player.sendSystemMessage(Component.translatable("jem_security.log_sent").withStyle(ChatFormatting.GREEN));
         return 1;

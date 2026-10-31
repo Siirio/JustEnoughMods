@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -96,8 +97,10 @@ public final class SecurityNetwork {
                 .encoder((packet, buffer) -> { })
                 .decoder(buffer -> new AttestationRequest())
                 .consumerNetworkThread((packet, context) -> {
-                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> SecurityClient::respondToAttestationRequest);
-                    context.get().setPacketHandled(true);
+                    var networkContext = context.get();
+                    Connection connection = networkContext.getNetworkManager();
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> SecurityClient.respondToAttestationRequest(connection));
+                    networkContext.setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(PackAttempt.class, 4, NetworkDirection.PLAY_TO_SERVER)
                 .encoder((packet, buffer) -> buffer.writeUtf(packet.packId(), 256))
@@ -109,16 +112,21 @@ public final class SecurityNetwork {
                 }).add();
     }
 
-    public static void sendAttestation(List<String> mods, List<String> packs, String clientVersion, String blockedPackId) {
-        CHANNEL.sendToServer(new Attestation(List.copyOf(mods), List.copyOf(packs), clientVersion, blockedPackId));
+    public static void sendAttestation(Connection connection, List<String> mods, List<String> packs, String clientVersion, String blockedPackId) {
+        sendToServer(connection, new Attestation(List.copyOf(mods), List.copyOf(packs), clientVersion, blockedPackId));
     }
 
-    public static void sendLogChunk(UUID token, int index, int total, String text) {
-        CHANNEL.sendToServer(new LogChunk(token, index, total, text));
+    public static void sendLogChunk(Connection connection, UUID token, int index, int total, String text) {
+        sendToServer(connection, new LogChunk(token, index, total, text));
     }
 
-    public static void sendPackAttempt(String packId) {
-        CHANNEL.sendToServer(new PackAttempt(packId));
+    public static void sendPackAttempt(Connection connection, String packId) {
+        sendToServer(connection, new PackAttempt(packId));
+    }
+
+    private static void sendToServer(Connection connection, Object packet) {
+        if (connection != null && connection.isConnected() && CHANNEL.isRemotePresent(connection))
+            CHANNEL.sendTo(packet, connection, NetworkDirection.PLAY_TO_SERVER);
     }
 
     public static void expect(ServerPlayer player) {
