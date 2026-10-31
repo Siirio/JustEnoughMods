@@ -64,8 +64,11 @@ public final class WorldTierData extends SavedData {
 
     /** Reconcile after profiles load or reload, never from an incomplete registry. */
     private void migrateNonExclusiveArenaIdentities(MinecraftServer server) {
-        long revision = BalanceRegistry.bossRevision();
-        if (revision == 0 || revision == ownershipRevision) return;
+        long bossRevision = BalanceRegistry.bossRevision();
+        long structureRevision = com.siirio.jemworldbosstiers.api.StructureEncounterApi.revision();
+        if (bossRevision == 0 || structureRevision == 0) return;
+        long revision = (bossRevision << 32) ^ structureRevision;
+        if (revision == ownershipRevision) return;
         ownershipRevision = revision;
         for (ArenaRecord arena : List.copyOf(arenas.values())) {
             var profile = BalanceRegistry.bossByKey(arena.profileKey()).orElse(null);

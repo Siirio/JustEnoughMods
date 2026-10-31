@@ -98,9 +98,19 @@ public final class PartyTeleportFlow {
             if (member.returnPoint() == null) continue;
             member.returnPending(true);
             var player = server.getPlayerList().getPlayer(id);
-            if (player != null && player.isAlive()) returnNow(player, party);
+            if (player != null && player.isAlive()) {
+                if (atSavedOrigin(player, member)) clearReturnDurably(player, party, member);
+                else if (!returnNow(player, party)) throw new IllegalStateException("return_pending");
+            }
         }
+        clearSessionIfResolved(party);
         SmpData.get(server).flush(server);
+    }
+
+    private static boolean atSavedOrigin(ServerPlayer player, PartyMember member) {
+        WorldPosition point = member.returnPoint();
+        return point != null && player.serverLevel().dimension().location().equals(point.dimension())
+                && player.position().distanceToSqr(point.x(), point.y(), point.z()) <= .01D;
     }
 
     public static void finish(MinecraftServer server, PartyState party) {

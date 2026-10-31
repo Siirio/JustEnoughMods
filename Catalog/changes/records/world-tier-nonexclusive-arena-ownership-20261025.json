@@ -10,7 +10,7 @@
   ],
   "conditions": [
     {
-      "profile": "Non-hosted profiles with arena_strategy none and native revival do not own exclusive arenas"
+      "profile": "Non-hosted profiles with arena_strategy none, native revival and no registered native structure do not own exclusive arenas"
     }
   ],
   "precedence": {
@@ -24,7 +24,7 @@
         "property": "encounter.exclusive_arena_ownership",
         "operation": "replace",
         "before": "Every verified arena-bound progression entity competed for one saved living UUID",
-        "after": "Exclusive identity applies only to a hosted, explicitly arena-owned or JEM-scheduled profile. Other enrolled mobs retain independent encounter snapshots and progression without an arena claim"
+        "after": "Exclusive identity applies to a hosted, explicitly arena-owned, JEM-scheduled or registered native structure-backed profile. Other enrolled mobs retain independent encounter snapshots and progression without an arena claim"
       },
       {
         "property": "encounter.nonexclusive_legacy_migration",
@@ -46,13 +46,14 @@
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/progression/WorldTierData.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/ArenaService.java",
       "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/revival/NativeBossStorage.java",
-      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java"
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/RaidArenaApi.java",
+      "Mods/JEMWorldBossTiers/src/main/java/com/siirio/jemworldbosstiers/api/StructureEncounterApi.java"
     ]
   },
   "rationale": {
     "purpose": "Allow legitimate multi-mob populations while preserving World Tier progression and the Paladin's canonical support group",
-    "decision_source": "User explicitly requested fixing ownership and migrating existing conflicting records before the quest redesign, with development-profile delivery only",
-    "implementation_choice": "One profile-owned predicate, deferred save-owner migration after registry readiness, retained archival NBT and per-entity arena detachment"
+    "decision_source": "User explicitly requested fixing ownership and migrating existing conflicting records before the quest redesign, then clarified on 2026-10-31 that every and only registered structure-backed boss must receive a barrier",
+    "implementation_choice": "One profile-owned predicate derived from the canonical structure-to-boss registry, deferred save-owner migration after registry readiness, retained archival NBT and per-entity arena detachment"
   },
   "introduced": {
     "date": "2026-10-25",
@@ -66,6 +67,12 @@
       "commit": "SELF",
       "action": "fix",
       "summary": "Original-profile diagnostics and active development JAR confirm the same defect. Preserve original profile and all legitimate entities"
+    },
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "restore_registered_structure_ownership",
+      "summary": "Derive exclusive arena ownership from the canonical native structure mapping for every structural boss without adding an entity allowlist"
     }
   ],
   "impacts": {
@@ -74,14 +81,18 @@
       "entity_lifecycle",
       "save_migration",
       "hosted_encounters",
-      "paladin_support"
+      "paladin_support",
+      "structure_discovery",
+      "event_boundaries"
     ],
     "relations": [
       "BossProfile ownership -> spawn/load/death admission -> WorldTierData claim migration",
-      "Paladin support continues to follow its canonical structural boss arena"
+      "Paladin support continues to follow its canonical structural boss arena",
+      "Registered structure mapping -> exclusive arena identity -> saved three-dimensional geometry -> six-face barrier"
     ],
     "notes": [
       "No registered entity, scaling curve, defeat threshold, native loot, support tag or campaign boss roster changes",
+      "Boss profiles without a registered native structure remain nonexclusive and receive no artificial boundary",
       "No live or offline world NBT is manually patched"
     ],
     "unresolved": [

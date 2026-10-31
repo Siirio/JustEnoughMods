@@ -49,7 +49,7 @@
 	#
 	#Opening a channel only permits the connection. Deny the actions themselves
 	#with permissions via the serverlogin:authenticated context, not by closing the channel.
-	allowedPayloadChannels = ["minecraft", "forge", "fml", "voicechat", "jem_security:main"]
+	allowedPayloadChannels = ["minecraft", "forge", "fml", "voicechat", "jem_security:main", "mapsyncer:main"]
 	#Password hashes started per second across the whole server.
 	#The per-player guard stops one account from queueing work; this stops a crowd.
 	#On an offline-mode server, connecting under many names is cheap, and every

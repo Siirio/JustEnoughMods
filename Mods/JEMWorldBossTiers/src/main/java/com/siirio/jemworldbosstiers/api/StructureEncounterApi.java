@@ -35,6 +35,7 @@ public final class StructureEncounterApi {
     private static volatile Map<ResourceLocation, ResourceLocation> structures = Map.of();
     private static volatile Set<ResourceLocation> activationBlocks = Set.of();
     private static volatile Set<ResourceLocation> activationItems = Set.of();
+    private static volatile long revision;
     private StructureEncounterApi() { }
 
     @SubscribeEvent
@@ -57,12 +58,19 @@ public final class StructureEncounterApi {
                 structures = Map.copyOf(registered);
                 activationBlocks = Set.copyOf(blocks);
                 activationItems = Set.copyOf(items);
+                revision++;
             }
         });
     }
 
     public static boolean activationBlock(ResourceLocation id) { return activationBlocks.contains(id); }
     public static boolean activationItem(ResourceLocation id) { return activationItems.contains(id); }
+    public static long revision() { return revision; }
+
+    /** Registered native structure ownership, independent from hosted-combat eligibility. */
+    public static boolean structuralBoss(ResourceLocation entityType) {
+        return structures.containsValue(entityType);
+    }
 
     /** Saved canonical geometry is authoritative even before a player discovers the arena. */
     public static List<Arena> registeredArenas(net.minecraft.server.MinecraftServer server, ResourceLocation dimension) {
@@ -136,6 +144,6 @@ public final class StructureEncounterApi {
     @SubscribeEvent(priority = net.minecraftforge.eventbus.api.EventPriority.LOWEST)
     public static void joined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
         if (!event.getLevel().isClientSide() && event.getEntity() instanceof LivingEntity boss
-                && HostedEncounterApi.canHost(boss)) bind(boss);
+                && WorldTierApi.profile(boss).isPresent()) bind(boss);
     }
 }

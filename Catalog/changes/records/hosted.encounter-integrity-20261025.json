@@ -152,6 +152,18 @@
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/wither.json",
         "Mods/JEMServer/src/main/resources/data/jem_server/tags/entity_types/raid_allies/yeti.json"
       ]
+    },
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "repair_staging_occupancy_and_return_resolution",
+      "summary": "Count only live connected real players as arena blockers, expose pre-start party dissolution and clear or retry durable return state without trapping the leader in a preparing group",
+      "source_files": [
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/Parties.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/PartyAdmission.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/PartyTeleportFlow.java",
+        "Mods/JEMServer/src/main/java/com/siirio/jemserver/smp/events/StructureStaging.java"
+      ]
     }
   ],
   "impacts": {

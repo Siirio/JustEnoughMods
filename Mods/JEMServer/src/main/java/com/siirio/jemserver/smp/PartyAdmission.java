@@ -32,7 +32,8 @@ final class PartyAdmission {
         return canStart(player, party) && party.state().equals("ACTIVE");
     }
     static boolean canDissolve(ServerPlayer player, PartyState party) {
-        return owner(player, party) && preparing(party);
+        return owner(player, party) && !SmpData.closed(party) && !party.state().equals("ACTIVE")
+                && party.pendingOutcome().isEmpty();
     }
     static boolean canMakeSolo(ServerPlayer player, PartyState party) {
         return owner(player, party) && party.members().size() == 1;
@@ -47,11 +48,11 @@ final class PartyAdmission {
     static java.util.List<String> actions(ServerPlayer player, PartyState party) {
         var actions = new java.util.ArrayList<String>();
         if (canCancelActive(player, party)) add(actions, "cancel");
+        if (canDissolve(player, party)) add(actions, "dissolve");
         if (!preparing(party)) return java.util.List.copyOf(actions);
         // Visibility intentionally omits idempotent START/JOIN and non-member LEAVE.
         if (owner(player, party)) {
             if (canStart(player, party)) add(actions, "start");
-            if (canDissolve(player, party)) add(actions, "dissolve");
             if (canInvite(player, party)) add(actions, "invite");
         } else if (!SmpRecords.member(party, player.getUUID()) && publishedFor(player, party)
                 && multiplayerFor(player, party)) add(actions, "join");

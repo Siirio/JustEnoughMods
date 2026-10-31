@@ -39,6 +39,7 @@ public record BossProfile(
     /** Progression enrollment alone never gives a mob exclusive arena ownership. */
     public boolean ownsExclusiveArena() {
         return hostedEncounter || !"none".equals(arenaStrategy)
-                || com.siirio.jemworldbosstiers.revival.RespawnOwnership.usesJemScheduler(revivalStrategy);
+                || com.siirio.jemworldbosstiers.revival.RespawnOwnership.usesJemScheduler(revivalStrategy)
+                || entityIds.stream().anyMatch(com.siirio.jemworldbosstiers.api.StructureEncounterApi::structuralBoss);
     }
 }

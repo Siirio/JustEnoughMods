@@ -1,3 +1,14 @@
+## 2026-10-31 - Repair structural boss arenas, quests and live pack integrations
+
+- User required every registered structure-backed boss to receive its existing full three-dimensional barrier, without special-casing Frostbitten Golem, Overgrown Colossus or any other entity type, while bosses without native structures receive no boundary
+- Bug / Server Sided / `BossProfile.ownsExclusiveArena()` classified non-hosted native-revival profiles as nonexclusive even when the canonical structure registry mapped their entity type, so those valid structure arenas were detached and never admitted to Raid barriers / in testing through registry-derived structural ownership and shared arena binding
+- Bug / Server Sided / the Raid occupancy scan read the level entity list and could admit disconnected or Forge fake `ServerPlayer` instances as blockers, so a solo player could be told that another player occupied the arena / in testing through the connected PlayerList and real-player filter
+- Bug / Server Sided / a failed encounter Start could retain its return session even when the player had never left the exact saved origin, and the preparing-only action filter then hid Dissolve / in testing through durable at-origin return cleanup and nonactive owner dissolution after rollback
+- Bug / Server Sided / native FTB `TeamData` retained one persisted `locked=true` value, so the JEM Guide, inventory button and direct FTB entry all correctly reported `Quests locked!` / resolved through the native one-time `ftbquests locked false` owner command, which persists the corrected boolean without code, config, progress or claim changes
+- Bug / Server Sided / ServerLogin omitted the installed MapSyncer channel `mapsyncer:main`, so its early payload was dropped and the client reported the mod missing while authoritative boss discoveries could not synchronize / in testing through the exact channel allowlist addition
+- Bug / Client Sided / JEM Holidays still registered the rejected seasonal mob pumpkin renderer / in testing by removing its registration and renderer source while preserving the calendar, menu, resource-pack and music owners
+- No quest Java hook or config override was added because new native teams already default to unlocked
+
 ## 2026-10-31 - Restore JEM Security attestation on MineRENT
 
 - User reported that the original production client was rejected by MineRENT because JEM Security did not receive its mandatory client attestation and explicitly approved production source commit `9ece950890a236e49524c94c1a9d8d0a2f7bb2ea`

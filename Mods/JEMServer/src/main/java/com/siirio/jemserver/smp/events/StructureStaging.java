@@ -775,7 +775,10 @@ public final class StructureStaging {
     }
 
     private static List<ServerPlayer> blockers(ServerLevel level, Area area, Set<UUID> participants) {
-        return level.players().stream()
+        return level.getServer().getPlayerList().getPlayers().stream()
+                .filter(player -> player.serverLevel() == level && player.connection != null
+                        && player.connection.isAcceptingMessages()
+                        && !(player instanceof net.minecraftforge.common.util.FakePlayer))
                 .filter(player -> player.isAlive() && !player.isSpectator() && !player.hasPermissions(2))
                 .filter(player -> !participants.contains(player.getUUID()) && SolidBoundary.movementBox(player).intersects(
                         new AABB(area.bounds().minX(), area.bounds().minY(), area.bounds().minZ(), area.bounds().maxX()+1D, area.bounds().maxY()+1D, area.bounds().maxZ()+1D)))

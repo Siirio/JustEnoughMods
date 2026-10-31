@@ -268,6 +268,10 @@ public final class Parties {
                 HostedParties.forfeit(player, row.id(), com.siirio.jemserver.smp.events.HostedBoundary.actionToken(player.server, row)); return;
             }
             SmpRecords.require(!row.state().equals("ACTIVE"), "combat_locked");
+            if (row.hasPartyTeleportSession()) {
+                com.siirio.jemserver.smp.events.PartyTeleportFlow.rollback(player.server, row);
+                SmpRecords.require(!row.hasPartyTeleportSession(), "return_pending");
+            }
             HostedParties.release(player.server, row); row.state("CANCELLED");
         });
     }
