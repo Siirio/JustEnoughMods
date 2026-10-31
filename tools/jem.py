@@ -18,6 +18,26 @@ PACK_SYNC_MANIFEST = "jem-pack/manifest.json"
 MODULE_INVENTORY = json.loads((ROOT / "tools/module-inventory.json").read_text(encoding="utf-8"))["modules"]
 DEVELOPMENT_MOD_IDS = frozenset(mod_id for module in MODULE_INVENTORY
                                 if module["status"] == "development" for mod_id in module["modIds"])
+PRODUCTION_BRANCH = "develop"
+PRODUCTION_REMOTE_REF = "refs/remotes/origin/develop"
+PRODUCTION_APPROVAL_FILE = "production-approval.json"
+PRODUCTION_ACTIONS = frozenset({
+    "baseline",
+    "promote-baseline",
+    "sync-stable",
+    "package-update",
+    "repackage-release",
+    "package-full",
+    "package-universal",
+})
+PRODUCTION_SOURCE_PATHS = (
+    "Mods",
+    "Client/ManagedPack",
+    "Client/JustEnoughMods",
+    "tools/jem.py",
+    "tools/workspace.json",
+    "tools/module-inventory.json",
+)
 
 
 def load_config():
@@ -120,6 +140,85 @@ def write_json_atomic(path, payload):
     temporary = path.with_suffix(path.suffix + ".tmp")
     temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     temporary.replace(path)
+
+
+def git_output(*arguments):
+    result = subprocess.run(
+        ["git", *arguments],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    if result.returncode != 0:
+        detail = result.stderr.strip() or result.stdout.strip() or "unknown Git error"
+        raise SystemExit(f"Git command failed: git {' '.join(arguments)}\n{detail}")
+    return result.stdout.strip()
+
+
+def inventory_identity(files):
+    canonical = json.dumps(files, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(canonical).hexdigest()
+
+
+def inspect_approved_develop(config, approved_develop):
+    if not approved_develop or not re.fullmatch(r"[0-9a-fA-F]{40}", approved_develop):
+        raise SystemExit("Production release requires --approved-develop with the full 40-character commit SHA explicitly approved by the user")
+    branch = git_output("branch", "--show-current")
+    if branch != PRODUCTION_BRANCH:
+        raise SystemExit(f"Production release is blocked on branch '{branch or 'detached HEAD'}'; switch to approved develop")
+    git_output("fetch", "origin", PRODUCTION_BRANCH)
+    head = git_output("rev-parse", "HEAD").lower()
+    remote_head = git_output("rev-parse", PRODUCTION_REMOTE_REF).lower()
+    if head != remote_head:
+        raise SystemExit(f"Production release is blocked: local develop {head} differs from origin/develop {remote_head}")
+    if approved_develop.lower() != head:
+        raise SystemExit(f"Production release is blocked: approved develop {approved_develop.lower()} differs from current develop {head}")
+    dirty = git_output("status", "--porcelain=v1", "--untracked-files=all", "--", *PRODUCTION_SOURCE_PATHS)
+    if dirty:
+        raise SystemExit("Production release inputs differ from the approved develop commit:\n" + dirty)
+    release_files = release_inventory(config)
+    pack_files = pack_sync_inventory(config)
+    return {
+        "format": 1,
+        "approvedAt": datetime.now().astimezone().isoformat(),
+        "branch": PRODUCTION_BRANCH,
+        "developCommit": head,
+        "originDevelopCommit": remote_head,
+        "releaseInventorySha256": inventory_identity(release_files),
+        "packSyncInventorySha256": inventory_identity(pack_files),
+        "releaseFiles": len(release_files),
+        "packSyncFiles": len(pack_files),
+    }
+
+
+def production_preflight(config, approved_develop):
+    approval = inspect_approved_develop(config, approved_develop)
+    destination = config["state"] / PRODUCTION_APPROVAL_FILE
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    write_json_atomic(destination, approval)
+    print(json.dumps({**approval, "approvalReceipt": str(destination)}, ensure_ascii=False, indent=2))
+
+
+def require_production_approval(config, approved_develop):
+    destination = config["state"] / PRODUCTION_APPROVAL_FILE
+    if not destination.is_file():
+        raise SystemExit("Production release is blocked: run production-preflight after the user approves the exact develop commit")
+    recorded = json.loads(destination.read_text(encoding="utf-8"))
+    current = inspect_approved_develop(config, approved_develop)
+    protected_fields = (
+        "branch",
+        "developCommit",
+        "originDevelopCommit",
+        "releaseInventorySha256",
+        "packSyncInventorySha256",
+        "releaseFiles",
+        "packSyncFiles",
+    )
+    changed = [field for field in protected_fields if recorded.get(field) != current.get(field)]
+    if changed:
+        raise SystemExit("Production release is blocked: approved snapshot changed in " + ", ".join(changed) + ". Obtain fresh user approval and rerun production-preflight")
 
 
 def release_inventory(config):
@@ -688,14 +787,18 @@ def package_universal(config):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("baseline", "promote-baseline", "status", "sync-stable", "sync-test", "stage-pack-sync", "recover-pack-sync", "package-update", "repackage-release", "package-full", "package-universal"))
+    parser.add_argument("action", choices=("baseline", "promote-baseline", "production-preflight", "status", "sync-stable", "sync-test", "stage-pack-sync", "recover-pack-sync", "package-update", "repackage-release", "package-full", "package-universal"))
     parser.add_argument("--base-update", type=Path)
     parser.add_argument("--transaction", type=Path)
+    parser.add_argument("--approved-develop")
     args = parser.parse_args()
     config = load_config()
+    if args.action in PRODUCTION_ACTIONS:
+        require_production_approval(config, args.approved_develop)
     actions = {
         "baseline": baseline,
         "promote-baseline": promote_baseline,
+        "production-preflight": lambda value: production_preflight(value, args.approved_develop),
         "status": status,
         "sync-stable": lambda value: synchronize(value, "stableClient"),
         "sync-test": lambda value: synchronize(value, "testClient"),
