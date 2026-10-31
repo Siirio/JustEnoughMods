@@ -1,3 +1,12 @@
+## 2026-10-31 - Restore JEM Security attestation on MineRENT
+
+- User reported that the original production client was rejected by MineRENT because JEM Security did not receive its mandatory client attestation and explicitly approved production source commit `9ece950890a236e49524c94c1a9d8d0a2f7bb2ea`
+- Bug / Server Sided / MineRENT retained a stale `serverlogin-common.toml` whose `gate.allowedPayloadChannels` omitted `jem_security:main`, so ServerLogin discarded the valid custom login payload before JEM Security could receive it / resolved by deploying the exact approved `develop` config
+- Five Whys: JEM Security timed out because its response never reached the handler, ServerLogin filtered the channel, the live allowlist lacked `jem_security:main`, the repository already contained the correct allowlist but the earlier production upload omitted this server config, and the deployed server therefore diverged from the approved release snapshot
+- Uploaded only `Server/config/serverlogin-common.toml` from the approved `develop` snapshot and restarted MineRENT after the console confirmed every dimension had been saved
+- MineRENT returned to `Работает`, loaded 11 ServerLogin accounts and the original `JustEnoughMods` client completed AutoModpack verification, logged in as `Sirio_o` and loaded the multiplayer world
+- No client files, bootstrap, stable profile, AutoModpack generation, release baseline or feature-branch artifact changed in this server-only hotfix
+
 ## 2026-10-31 - Lock production releases to explicitly approved develop
 
 - User required that MineRENT, stable-client and release updates never again originate from a feature branch and use only the exact `develop` snapshot they explicitly approved
