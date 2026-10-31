@@ -1869,7 +1869,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ClientUpdatePl
 diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 --- a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
 +++ b/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdateHelper.java
-@@ -1,184 +1,181 @@
+@@ -1,184 +1,178 @@
 -package pl.skidam.automodpack_core.client;
 -
 -import static pl.skidam.automodpack_core.Constants.*;
@@ -2092,10 +2092,7 @@ diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/DetachedUpdate
 +
 +public final class DetachedUpdateHelper {
 +	private static final String HELPER_MAIN = UpdateHelperMain.class.getName();
-+	// Real Windows profile updates can spend several minutes waiting for the previous game process and
-+	// retrying locked projection files. The held OS lease proves that helper still owns the transaction.
-+	// Keep the launch fail-closed, but give a healthy helper enough time to finish before declaring it stuck.
-+	private static final Duration HELPER_LEASE_WAIT = Duration.ofMinutes(10);
++	private static final Duration HELPER_LEASE_WAIT = Duration.ofMinutes(3);
 +	// A released lease is noticed within half a second, the helper's own initial backoff step.
 +	private static final long LEASE_POLL_MILLIS = 500;
 +	// The helper log accumulates whole runs; the tail covers the most recent one or two.
@@ -10929,7 +10926,7 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java b/src/ma
 diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java b/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java
 --- a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java
 +++ b/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java
-@@ -1,440 +1,147 @@
+@@ -1,440 +1,131 @@
 -package pl.skidam.automodpack.client.ui.screen;
 -
 -import java.util.ArrayList;
@@ -11398,7 +11395,6 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +    private final PreviewPayload later;
 +    private final ReviewActions actions;
 +    private final Screen parent;
-+    private boolean keepExistingMods;
 +    private boolean acknowledged;
 +    private boolean finished;
 +    private AbstractWidget downloadButton;
@@ -11428,21 +11424,6 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +        downloadButton = download.widget();
 +        downloadButton.active = acknowledged && !finished;
 +        int bottom = actionAreaTop(ActionAreaLayout.FOOTER_RAIL, height - 28, row);
-+        if (welcome != null && !welcome.firstInstallLocalModPaths().isEmpty()) {
-+            CheckboxWidget keepOldFiles = new CheckboxWidget(font, 0, 0, panelWidth(BODY),
-+                    VersionedText.text("jem.bootstrap.keepOldFiles", welcome.firstInstallLocalModPaths().size()),
-+                    keepExistingMods, value -> {
-+                        keepExistingMods = value;
-+                        actions.setFirstInstallLocalModCleanup().accept(!value);
-+                    });
-+            String joined = String.join("\n", wrapToWidth(font,
-+                    String.join(", ", welcome.firstInstallLocalModPaths()), 240, 8));
-+            VersionedScreen.setTooltip(keepOldFiles,
-+                    VersionedText.text("jem.bootstrap.keepOldFilesTooltip", joined));
-+            keepOldFiles.moveTo(panelLeft(BODY), bottom - keepOldFiles.boxHeight() - 8);
-+            addRenderableWidget(keepOldFiles);
-+            bottom = keepOldFiles.yPosition();
-+        }
 +        CheckboxWidget consent = new CheckboxWidget(font, 0, 0, panelWidth(BODY),
 +                VersionedText.text("jem.bootstrap.consent"), acknowledged, value -> {
 +                    acknowledged = value;
@@ -11474,7 +11455,7 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +        downloadButton.active = false;
 +        ScreenManager.waiting(actions.cancelFromPlayer());
 +        if (welcome != null) {
-+            actions.setFirstInstallLocalModCleanup().accept(!keepExistingMods);
++            actions.setFirstInstallLocalModCleanup().accept(true);
 +            actions.startConfirmedUpdate().run();
 +        } else {
 +            later.continueAction().run();
@@ -11517,41 +11498,10 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +        return handleBackOnEscape(this::cancel);
 +    }
 +}
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
---- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
-@@ -99,7 +99,7 @@ public final class UpdateTransactionValidator {
- 		validateManifest(target, transaction.plan().modpackId());
- 		validateSelectionMetadata(transaction);
- 		if (transaction.purpose == UpdateTransaction.Purpose.MODPACK_UPDATE) validateGeneratedCopies(transaction);
--		validateStoredClientState(transaction, record);
-+		validateStoredClientState();
- 		if (transaction.plan().plannedClientConfig() == null) throw new IOException("Planned client config is missing");
- 		if (transaction.purpose == UpdateTransaction.Purpose.MODPACK_UPDATE) validatePlannedClientConfig(transaction);
- 		else validateRemovalClientConfig(transaction);
-@@ -223,7 +223,7 @@ public final class UpdateTransactionValidator {
- 		}
- 	}
- 
--	private void validateStoredClientState(UpdateTransaction transaction, PackDocument targetRecord) throws IOException {
-+	private void validateStoredClientState() throws IOException {
- 		ClientStorageJsons.ClientGenerationStateFields state = storage.readActiveState();
- 		if (state == null) return;
- 		if (!ModpackId.isValid(state.modpackId)) throw new IOException("Active client state modpack ID is invalid");
-@@ -232,9 +232,6 @@ public final class UpdateTransactionValidator {
- 		PackDocument stateRecord = new ClientGenerationStore(storage).activeDocument()
- 				.orElseThrow(() -> new IOException("Active client generation is missing: " + state.contentToken));
- 		if (!state.modpackId.equals(stateRecord.manifest().modpackId())) throw new IOException("Active client state and generation belong to different modpacks");
--		if (state.modpackId.equals(transaction.plan().modpackId()) && state.contentToken.equals(targetRecord.contentToken())) {
--			if (!stateRecord.equals(targetRecord)) throw new IOException("Active client state disagrees with its generation record");
--		}
- 	}
- 
- 	private void validateSelectionMetadata(UpdateTransaction transaction) throws IOException {
 diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/resources/assets/automodpack/lang/en_us.json
 --- a/src/main/resources/assets/automodpack/lang/en_us.json
 +++ b/src/main/resources/assets/automodpack/lang/en_us.json
-@@ -1,409 +1,415 @@
+@@ -1,409 +1,413 @@
 -{
 -  "automodpack.restart.full": "The modpack download is complete.",
 -  "automodpack.restart.update": "The modpack update is ready.",
@@ -12369,17 +12319,15 @@ diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/re
 +  "automodpack.browser.allGroups": "All groups",
 +  "automodpack.browser.groupDescription": "Files supplied by this group",
 +  "automodpack.browser.packEffect": "Modpack %s",
-+	"jem.bootstrap.files": "Update the modpack",
-+	"jem.bootstrap.consent": "I accept the risk and allow the complete plan",
-+	"jem.bootstrap.download": "Update all",
-+	"jem.bootstrap.remove": "Remove:",
-+	"jem.bootstrap.keepOldFiles": "Keep %s old local file(s) active",
-+	"jem.bootstrap.keepOldFilesTooltip": "Checked keeps these old files in the active mods folder. Unchecked removes them from the active pack while a safety copy remains on the instance timeline. Applies to: %s"
++	"jem.bootstrap.files": "Download these files",
++	"jem.bootstrap.consent": "I accept the risks",
++	"jem.bootstrap.download": "Download",
++	"jem.bootstrap.remove": "Remove:"
 +}
 diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/resources/assets/automodpack/lang/ru_ru.json
 --- a/src/main/resources/assets/automodpack/lang/ru_ru.json
 +++ b/src/main/resources/assets/automodpack/lang/ru_ru.json
-@@ -1,429 +1,435 @@
+@@ -1,429 +1,433 @@
 -{
 -  "automodpack.restart.full": "Загрузка модпака завершена.",
 -  "automodpack.restart.update": "Обновление модпака готово.",
@@ -13237,339 +13185,8 @@ diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/re
 +  "automodpack.selection.metrics.many": "(%s файлов, %s)",
 +  "automodpack.update.groupsSelected.few": "Выбраны %s группы",
 +  "automodpack.update.groupsSelected.many": "Выбрано %s групп",
-+	"jem.bootstrap.files": "Обновить сборку",
-+	"jem.bootstrap.consent": "Принимаю риск и разрешаю применить весь план",
-+	"jem.bootstrap.download": "Обновить всё",
-+	"jem.bootstrap.remove": "Удалить:",
-+	"jem.bootstrap.keepOldFiles": "Оставить активными старые локальные файлы: %s",
-+	"jem.bootstrap.keepOldFilesTooltip": "Если отмечено, старые файлы останутся в активной папке mods. Если снято, они будут удалены из активной сборки, а страховочная копия останется в хронологии экземпляра. Применяется к: %s"
++	"jem.bootstrap.files": "Скачать эти файлы",
++	"jem.bootstrap.consent": "Согласен с рисками",
++	"jem.bootstrap.download": "Скачать",
++	"jem.bootstrap.remove": "Удалить:"
 +}
-
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
---- a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
-@@ -25,21 +25,25 @@
- public class ModpackUtils {
- 
- 	// Modpack may require update even if there's no files to update, because some files may need to be deleted
--	public record UpdateCheckResult(boolean requiresUpdate, Set<ModpackJsons.ModpackContentFields.ModpackContentItem> filesToUpdate) {}
-+	public record UpdateCheckResult(boolean requiresUpdate, Set<ModpackJsons.ModpackContentFields.ModpackContentItem> filesToUpdate, Set<String> verifiedPaths) {}
- 
- 	// Checks if the modpack is up to date without modifying anything on disk
- 	public static UpdateCheckResult isUpdate(ModpackJsons.ModpackContentFields serverModpackContent, ClientStorage storage) throws IOException {
- 		if (serverModpackContent == null || serverModpackContent.list == null) throw new IllegalArgumentException("Server modpack content list is null");
--		if (verificationCannotDecide(serverModpackContent, storage)) return new UpdateCheckResult(true, serverModpackContent.list);
-+		if (verificationCannotDecide(serverModpackContent, storage)) return new UpdateCheckResult(true, serverModpackContent.list, Set.of());
- 
- 		LOGGER.info("Verifying content against server list...");
- 		var start = System.currentTimeMillis();
- 
- 		Set<ModpackJsons.ModpackContentFields.ModpackContentItem> filesToUpdate = new HashSet<>();
-+		Set<String> verifiedPaths = new HashSet<>();
- 		try (var cache = FileCache.open(storage.fileCacheDirectory())) {
- 			Map<String, UpdatePlan.FileState> live = ClientProjectionView.open(storage).liveFiles(cache);
- 			for (var serverItem : serverModpackContent.list) {
--				if (verifyActiveItem(serverItem, LogicalPath.normalize(serverItem.file), live) == FileVerification.MISMATCH) filesToUpdate.add(serverItem);
-+				String relative = LogicalPath.normalize(serverItem.file);
-+				FileVerification verification = verifyActiveItem(serverItem, relative, live);
-+				if (verification == FileVerification.MISMATCH) filesToUpdate.add(serverItem);
-+				else if (verification == FileVerification.MATCH) verifiedPaths.add(relative);
- 			}
- 
- 			if (filesToUpdate.isEmpty()) {
-@@ -48,22 +52,28 @@
- 				for (String relative : live.keySet()) {
- 					if (!serverFileSet.contains(relative)) {
- 						LOGGER.info("Found projected file marked for deletion: {}", relative);
--						return new UpdateCheckResult(true, Set.of());
-+						return new UpdateCheckResult(true, Set.of(), Set.copyOf(verifiedPaths));
- 					}
- 				}
- 			}
- 		} catch (Exception e) {
- 			LOGGER.error("Error during update check", e);
--			return new UpdateCheckResult(true, serverModpackContent.list);
-+			return new UpdateCheckResult(true, serverModpackContent.list, Set.of());
- 		}
- 
- 		if (!filesToUpdate.isEmpty()) {
- 			LOGGER.info("Active projection requires update! Took {} ms", System.currentTimeMillis() - start);
--			return new UpdateCheckResult(true, filesToUpdate);
-+			return new UpdateCheckResult(true, filesToUpdate, Set.copyOf(verifiedPaths));
- 		}
- 
- 		LOGGER.info("Active projection is up to date! Took {} ms", System.currentTimeMillis() - start);
--		return new UpdateCheckResult(false, Set.of());
-+		return new UpdateCheckResult(false, Set.of(), Set.copyOf(verifiedPaths));
-+	}
-+
-+	// Reuses the same verified snapshot during login, avoiding a second full projection scan before the server times out.
-+	public static void reprotectVerifiedFiles(ModpackJsons.ModpackContentFields serverModpackContent, ClientStorage storage, UpdateCheckResult result) throws IOException {
-+		if (new ClientGenerationStore(storage).isDetached(serverModpackContent.modpackId)) return;
-+		for (String relative : result.verifiedPaths()) ImmutableFiles.protect(storage.activePath(relative));
- 	}
- 
- 	// Re-applies the filesystem's immutability to active files that already match the server content; the update verdict above stays read-only
-diff --git a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
---- a/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
-+++ b/src/main/java/pl/skidam/automodpack/networking/packet/ClientLoginUpdateFlow.java
-@@ -244,7 +244,7 @@
- 			SelectedModpackTarget selectedTarget, boolean alreadyDisconnected) throws Exception {
- 		ModpackJsons.ModpackContentFields serverModpackContent = selectedTarget.flatTarget();
- 		ModpackUtils.UpdateCheckResult updateCheckResult = ModpackUtils.isUpdate(serverModpackContent, storage);
--		ModpackUtils.reprotectActiveFiles(serverModpackContent, storage);
-+		ModpackUtils.reprotectVerifiedFiles(serverModpackContent, storage, updateCheckResult);
- 		if (!updater.requiresUpdateBeforeLogin(updateCheckResult)) {
- 			updater.close();
- 			if (alreadyDisconnected) ScreenImpl.multiplayer();
-
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java b/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java
---- a/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/auth/SecretsStore.java
-@@ -11,8 +11,12 @@ import java.security.NoSuchAlgorithmException;
- import java.util.HexFormat;
- import java.util.Map;
- import java.util.UUID;
-+import java.util.concurrent.ArrayBlockingQueue;
- import java.util.concurrent.ConcurrentHashMap;
- import java.util.concurrent.ConcurrentMap;
-+import java.util.concurrent.RejectedExecutionException;
-+import java.util.concurrent.ThreadPoolExecutor;
-+import java.util.concurrent.TimeUnit;
- import java.util.regex.Pattern;
- 
- import pl.skidam.automodpack_core.config.AuthJsons;
-@@ -25,9 +29,17 @@ public class SecretsStore {
- 	static class SecretsCache {
- 		private static final Pattern KEY_SHAPE = Pattern.compile("[0-9a-f]{64}");
- 		private static final String DESCRIPTION = "Host secrets";
-+		private static final ThreadPoolExecutor WRITER = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-+				new ArrayBlockingQueue<>(64), task -> {
-+					Thread thread = new Thread(task, "AutoModpack Host Secret Writer");
-+					thread.setDaemon(true);
-+					return thread;
-+				}, new ThreadPoolExecutor.AbortPolicy());
- 
- 		// Swapped whole on every save and reload, so a validating reader sees the old map or the new one, never a half-built one.
- 		private volatile ConcurrentMap<String, IssuedSecret> cache = new ConcurrentHashMap<>();
-+		// Secrets issued in this process but not durably written yet. Only these may override a shared-folder reload.
-+		private final ConcurrentMap<String, IssuedSecret> pending = new ConcurrentHashMap<>();
- 		// Recently failed lookups, so a flood of bogus secrets cannot turn into a flood of locked full-file reads.
- 		private final TimedSet<String> knownAbsent = new TimedSet<>(3500);
- 		private final Path file;
-@@ -45,7 +57,15 @@ public class SecretsStore {
- 			if (knownAbsent.contains(secret)) return null;
- 			try {
- 				FileLocks.withLock(lockFile(), () -> {
--					cache = new ConcurrentHashMap<>(readSecrets());
-+					Map<String, IssuedSecret> merged = readSecrets();
-+					synchronized (this) {
-+						for (var entry : pending.entrySet()) {
-+							IssuedSecret local = entry.getValue();
-+							if (local != null) replaceByPlayer(merged, local.playerId(), entry.getKey(), local);
-+						}
-+						pruneExpired(merged);
-+						cache = new ConcurrentHashMap<>(merged);
-+					}
- 					return null;
- 				});
- 			} catch (IOException | ConfigTools.ConfigException e) {
-@@ -62,6 +82,20 @@ public class SecretsStore {
- 				throw new IllegalArgumentException("Player id, secret and player name cannot be null or blank");
- 			String key = hash(secret.secret());
- 			IssuedSecret issued = new IssuedSecret(playerId, secret.timestamp(), playerName);
-+			Map<String, IssuedSecret> published = new ConcurrentHashMap<>(cache);
-+			replaceByPlayer(published, playerId, key, issued);
-+			pruneExpired(published);
-+			cache = new ConcurrentHashMap<>(published);
-+			replaceByPlayer(pending, playerId, key, issued);
-+			knownAbsent.remove(secret.secret());
-+			try {
-+				WRITER.execute(() -> persist(playerId, key, issued));
-+			} catch (RejectedExecutionException e) {
-+				LOGGER.error("Host secret persistence queue is full; the issued secret remains valid until this server stops", e);
-+			}
-+		}
-+
-+		private void persist(String playerId, String key, IssuedSecret issued) {
- 			try {
- 				FileLocks.withLock(lockFile(), () -> {
- 					// Read fresh inside the lock: the folder may be shared, so an in-memory view is never authoritative.
-@@ -69,13 +103,12 @@ public class SecretsStore {
- 					replaceByPlayer(fresh, playerId, key, issued);
- 					pruneExpired(fresh);
- 					write(fresh);
--					cache = new ConcurrentHashMap<>(fresh);
-+					pending.remove(key, issued);
- 					return null;
- 				});
--			} catch (IOException e) {
--				throw new ConfigTools.ConfigException("Failed to save the host secrets", e);
-+			} catch (IOException | RuntimeException e) {
-+				LOGGER.error("Failed to persist the host secret for {}; the issued secret remains valid until this server stops", issued.name(), e);
- 			}
--			knownAbsent.remove(secret.secret());
- 		}
- 
- 		private Map<String, IssuedSecret> readSecrets() {
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java b/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java
---- a/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/screen/Gui.java
-@@ -5,12 +5,14 @@ import java.awt.image.BufferedImage;
- import java.io.IOException;
- import java.io.InputStream;
- import java.nio.file.Files;
- import java.nio.file.Path;
- import java.nio.file.Paths;
-+import java.util.List;
- import java.util.concurrent.CompletableFuture;
- import java.util.concurrent.Semaphore;
-+import java.util.concurrent.atomic.AtomicBoolean;
- 
- import javax.imageio.ImageIO;
- import javax.swing.*;
- import javax.swing.plaf.ColorUIResource;
- 
-@@ -20,10 +22,87 @@ import pl.skidam.automodpack_core.utils.PlatformUtils;
- public class Gui {
- 
- 	private String text;
- 	private Semaphore semaphore;
- 
-+	/**
-+	 * Preload cannot use Minecraft screens yet. This modal is the explicit, one-update consent gate for a plan that
-+	 * would write JARs without a first-party catalogue match. Closing or cancelling leaves the active pack untouched.
-+	 */
-+	public static boolean confirmUpdate(List<String> changedPaths) {
-+		if (!hasAwtSupport() || GraphicsEnvironment.isHeadless()) return false;
-+		AtomicBoolean accepted = new AtomicBoolean();
-+		Runnable prompt = () -> accepted.set(updateConfirmationWindow(changedPaths));
-+		try {
-+			if (SwingUtilities.isEventDispatchThread()) prompt.run();
-+			else SwingUtilities.invokeAndWait(prompt);
-+		} catch (Exception e) {
-+			Constants.LOGGER.error("Cannot show the preload update confirmation", e);
-+			return false;
-+		}
-+		return accepted.get();
-+	}
-+
-+	private static boolean updateConfirmationWindow(List<String> changedPaths) {
-+		AtomicBoolean accepted = new AtomicBoolean();
-+		JDialog dialog = new JDialog((Frame) null, "JEM Update", true);
-+		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-+		dialog.setResizable(false);
-+
-+		JPanel panel = new JPanel();
-+		panel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
-+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-+
-+		JLabel title = new JLabel("<html><b>Доступно обновление JEM</b></html>");
-+		title.setAlignmentX(Component.LEFT_ALIGNMENT);
-+		panel.add(title);
-+		panel.add(Box.createVerticalStrut(8));
-+
-+		JLabel explanation = new JLabel("<html>Все перечисленные файлы будут добавлены, заменены или удалены по плану сервера. Старые managed-файлы не останутся активными.</html>");
-+		explanation.setAlignmentX(Component.LEFT_ALIGNMENT);
-+		panel.add(explanation);
-+		panel.add(Box.createVerticalStrut(6));
-+
-+		JTextArea files = new JTextArea(String.join("\n", changedPaths));
-+		files.setEditable(false);
-+		files.setLineWrap(false);
-+		files.setCaretPosition(0);
-+		JScrollPane scroll = new JScrollPane(files);
-+		scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-+		scroll.setPreferredSize(new Dimension(520, Math.min(220, Math.max(80, changedPaths.size() * 20 + 12))));
-+		panel.add(scroll);
-+		panel.add(Box.createVerticalStrut(10));
-+
-+		JCheckBox consent = new JCheckBox("Я понимаю риск и разрешаю применить весь план");
-+		consent.setAlignmentX(Component.LEFT_ALIGNMENT);
-+		panel.add(consent);
-+		panel.add(Box.createVerticalStrut(10));
-+
-+		JButton update = new JButton("Обновить всё");
-+		update.setEnabled(false);
-+		JButton cancel = new JButton("Отмена");
-+		consent.addActionListener(event -> update.setEnabled(consent.isSelected()));
-+		update.addActionListener(event -> {
-+			accepted.set(true);
-+			dialog.dispose();
-+		});
-+		cancel.addActionListener(event -> dialog.dispose());
-+
-+		JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
-+		actions.setAlignmentX(Component.LEFT_ALIGNMENT);
-+		actions.add(cancel);
-+		actions.add(update);
-+		panel.add(actions);
-+
-+		dialog.setContentPane(panel);
-+		dialog.pack();
-+		dialog.setLocationRelativeTo(null);
-+		dialog.setAlwaysOnTop(true);
-+		dialog.setVisible(true);
-+		return accepted.get();
-+	}
-+
- 	// After the window is closed, the jvm should exit without forgetting about eventual callbacks from ReLauncher
- 	public Semaphore open(String text) {
- 		this.text = text;
- 		semaphore = new Semaphore(0, true);
- 		if (hasAwtSupport()) {
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
---- a/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/screen/ScreenManager.java
-@@ -1,10 +1,11 @@
- package pl.skidam.automodpack_core.screen;
- 
- import static pl.skidam.automodpack_core.Constants.LOGGER;
- 
- import java.awt.GraphicsEnvironment;
-+import java.util.List;
- import java.util.Objects;
- import java.util.Optional;
- import java.util.concurrent.Future;
- import java.util.concurrent.Semaphore;
- 
-@@ -44,10 +45,15 @@ public final class ScreenManager {
- 	public static Semaphore preloadRestart(String message) {
- 		if (GraphicsEnvironment.isHeadless()) return null;
- 		return new Gui().open(message);
- 	}
- 
-+	/** One explicit consent for this preload plan. A refusal never changes the active pack. */
-+	public static boolean preloadUpdateReview(List<String> changedPaths) {
-+		return Gui.confirmUpdate(List.copyOf(changedPaths));
-+	}
-+
- 	public static void completeWithoutRestart() {
- 		instance.completeWithoutRestart();
- 	}
- 
- 	public static void welcome(ReviewPayload payload) {
-diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
---- a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
-+++ b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUpdater.java
-@@ -397,12 +397,18 @@ public class ModpackUpdater implements AutoCloseable {
- 					"Launch apply skipped: the selected pack needs Minecraft {} ({}) and this launcher cannot switch versions automatically - join the server in-game to sync it, then set the instance's version manually",
- 					serverModpackContent.mcVersion, serverModpackContent.loader);
- 			return;
- 		}
- 		if (review.planWritesUnverifiedJar(launch.prepared().plan())) {
--			LOGGER.warn("Launch apply aborted: unverified jars will not be written during preload; leaving the live pack unchanged");
--			return;
-+			List<String> changedPaths = launch.prepared().plan().operations().stream()
-+					.map(operation -> (operation.operation() == UpdatePlan.OperationType.DELETE ? "Удалить: " : "Установить: ") + operation.relativePath())
-+					.distinct().sorted().toList();
-+			if (!ScreenManager.preloadUpdateReview(changedPaths)) {
-+				LOGGER.warn("Launch apply cancelled: the player did not approve the unverified JAR plan; leaving the live pack unchanged");
-+				return;
-+			}
-+			LOGGER.info("The player approved the unverified JAR plan for this launch apply");
- 		}
- 		if (!review.firstConnection() && !launch.requiresReconciliation(storedTarget())) {
- 			LOGGER.info("Launch apply reused the active projection");
- 			return;
- 		}

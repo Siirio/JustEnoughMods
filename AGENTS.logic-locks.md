@@ -110,3 +110,12 @@
 - Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
 - Created: 2026-10-19
 
+## LOCKED: JEM Bootstrap jem.9 multi-screen consent
+- Scope: Mods/JEMBootstrap source and every deployed mods/jem-bootstrap.jar in Client installers, stable profiles and dedicated servers
+- Approved signal: User supplied the working jem.9 JAR and explicitly said to leave this Bootstrap because its four separate windows update correctly
+- Protected behavior: Use the exact approved jem.9 source and artifact workflow with separate server consent, explicit risk acceptance, old-file keep or remove choice, and final review or apply. Old files stay active only after an explicit keep choice. Do not collapse these decisions into one preload modal or default to keeping old files active
+- Reuse pattern: Preserve the existing implementation pattern unless the unlock condition is met.
+- Allowed changes: Documentation, packaging and deployment synchronization may change around the exact artifact. Replace or modify the Bootstrap only after an explicit user request that names the new behavior
+- Unlock condition: Explicit user request to change this behavior or evidence that the core execution pipeline changed.
+- Created: 2026-10-31
+

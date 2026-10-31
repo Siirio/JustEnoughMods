@@ -1,3 +1,17 @@
+## 2026-10-31 - Restore the proven jem.9 Bootstrap workflow
+
+- User rejected the simplified Bootstrap workflow after another failed production update, supplied the previously working JAR and explicitly required that exact Bootstrap and its separate confirmation screens remain in use
+- Bug / Client Sided / revisions `jem.13` through `jem.15` moved approval into one preload modal that approved the complete prepared plan before the native in-game consent, risk, old-file and final review sequence could own those decisions / in testing
+- Five Whys: the client presented one Update All screen because the preload owner had no Minecraft screen service, that modal approved the complete plan before Forge initialization, the later native screens therefore no longer owned consent and old-file cleanup independently, the replacement checkbox added in `jem.14` covered only one first-install branch, and the Bootstrap redesign replaced the user-approved native decision sequence instead of preserving it
+- The supplied file is the existing official `jem.9` artifact, not an unknown binary. Its manifest identifies upstream AutoModpack `5.0.0-rc.1`, JEM revision `jem.9` and pinned commit `4348bf2532bb8261af3297cf2480a3a0ee91befb`, while SHA-256 `75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8` exactly matches `Docs/universal/DELIVERY.json`
+- Canonical Bootstrap source was restored to `jem.9`. The exact supplied artifact replaced only `jem-bootstrap.jar` in the canonical managed source, clean installer and closed stable `JustEnoughMods` profile, leaving every managed gameplay, configuration and native AutoModpack state file untouched
+- The restored workflow keeps server consent, explicit risk acceptance, old-file keep or remove choice and final review as separate native decisions. Old files remain active only after an explicit keep choice, while the default removal path retains timeline safety copies without loading them
+- The ordinary local dedicated server was already running under another active session and was deliberately not modified or restarted
+- MineRENT was stopped cleanly, its previous Bootstrap was moved to `/backups/jem-bootstrap-pre-jem9-20261031-133144.jar`, and the exact supplied `jem.9` artifact was installed atomically as `/mods/jem-bootstrap.jar`
+- The remote artifact was verified after installation with size `3486754` and SHA-256 `75f2d0c18751b0c0ccb657d98d39b6c9f0d5ecb381c6e24f82f967bdd12c18c8`
+- MineRENT restarted successfully. The dedicated server completed Forge loading in 49.896 seconds, AutoModpack resumed its login-holepunch host and JEM Holidays reported `halloweenNight=true`
+- Bootstrap remains excluded from the managed AutoModpack catalogue, so this rollback did not publish or alter the existing client generation. No client launch or player acceptance was performed, and the defect remains `in testing` until the player exercises the restored native sequence
+
 ## 2026-10-31 - Repair no-op bootstrap updates and fit Halloween mob pumpkins
 
 - User reported that the production client failed after preparing an AutoModpack update and then clarified that seasonal pumpkins were too small to cover mob heads
