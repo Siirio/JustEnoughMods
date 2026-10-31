@@ -6,6 +6,16 @@
 - Restored the unchanged one rotten flesh to one leather smelting conversion with its existing recipe ID. No balance value, item, registry, packet, serializer or client resource changed
 - Existing clients understand the vanilla ingredient, result and smelting serializer, so normal server recipe synchronization is sufficient and no client update, friend package or release-baseline change is required
 
+## 2026-10-31 - Apply Luxium shadows immediately from the in-game switch
+
+- User clarified that selecting "Enable Luxium" inside Minecraft must activate the complete Luxium renderer immediately, without leaving it selected and restarting the game
+- Bug / Client Sided / JEM Luxium changed Luxium's master enabled setting and rebuilt Embeddium, but did not refresh Luxium's cached GPU feature mask, so a client that started with Luxium disabled rebuilt the renderer with every Luxium GPU feature still masked off / in testing
+- Five Whys: the enabled client had no object shadows or lighting because the active GPU feature mask remained zero, the mask was initialized while Luxium was disabled at startup, JEM's switch changed only the Forge config value, the subsequent Embeddium rebuild reused the cached mask, and the adapter omitted the same `LuxiumGpuShaderFeatures.refreshNow()` call used by Luxium's native settings Apply path
+- JEM Luxium 1.0.10 refreshes the installed Luxium 2.8.0 feature mask after every Luxium or Oculus ownership change and before rebuilding Embeddium, so celestial shadows, sky lighting and configured renderer features can activate in the same in-game Apply operation
+- AutoModpack no longer distributes `luxium-client.toml` with `luxiumEnabled = false`. Luxium now owns that generated personal preference locally, so pack updates do not reset the player's renderer selection
+- Oculus mutual exclusion, previous shader restoration, the official Luxium JAR and the existing Embeddium settings route remain unchanged
+- Production artifact build, native AutoModpack publication and closed-client application are still pending, and player acceptance remains `in testing`
+
 ## 2026-10-31 - Repair the integrated-server item and mob tick stall
 
 - User reported mined coal repeatedly snapping between two positions without being collected, then zombies and other mobs freezing, losing aggression and becoming unhittable across multiple chunks in the original singleplayer profile
