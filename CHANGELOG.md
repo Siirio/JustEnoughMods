@@ -7,6 +7,7 @@
 - Bug / Server Sided / native FTB `TeamData` retained one persisted `locked=true` value, so the JEM Guide, inventory button and direct FTB entry all correctly reported `Quests locked!` / resolved through the native one-time `ftbquests locked false` owner command, which persists the corrected boolean without code, config, progress or claim changes
 - Bug / Server Sided / ServerLogin omitted the installed MapSyncer channel `mapsyncer:main`, so its early payload was dropped and the client reported the mod missing while authoritative boss discoveries could not synchronize / in testing through the exact channel allowlist addition
 - Bug / Client Sided / JEM Holidays still registered the rejected seasonal mob pumpkin renderer / in testing by removing its registration and renderer source while preserving the calendar, menu, resource-pack and music owners
+- Bug / Both Sided / JEM Server and Twelve Eyes required the noncanonical dependency version `jem_world_boss_tiers 2.5.0-dev` while the production World Boss Tiers artifact declares `2.5.0`, so Forge rejected the otherwise matching release before mod loading / in testing through dependency ranges aligned with the installed owner version `2.5.0`
 - No quest Java hook or config override was added because new native teams already default to unlocked
 
 ## 2026-10-31 - Restore JEM Security attestation on MineRENT
