@@ -81,7 +81,7 @@
       "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
       "Mods/JEMSecurity/src/main/resources/jem_security.mixins.json",
       "Mods/JEMSecurity/src/main/resources/pack.mcmeta",
-      "Client/ManagedPack/mods/jem_security-1.0.6.jar"
+      "Client/ManagedPack/mods/jem_security-1.0.7.jar"
     ]
   },
   "rationale": {
@@ -198,6 +198,17 @@
         "source_files": [
           "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java"
         ]
+      },
+      {
+        "date": "2026-10-31",
+        "commit": "SELF",
+        "action": "bind_attestation_reply_to_inbound_context",
+        "summary": "Reply to the server challenge through Forge's exact inbound packet context instead of a second remote-channel presence lookup that could silently suppress the required response",
+        "source_files": [
+          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityClient.java",
+          "Mods/JEMSecurity/src/main/java/com/siirio/jemsecurity/network/SecurityNetwork.java",
+          "Client/ManagedPack/mods/jem_security-1.0.7.jar"
+        ]
     }
   ],
   "impacts": {
@@ -227,6 +238,7 @@
       "Client attestation is forgeable and is never treated as sole proof",
       "Renaming a ZIP or merging the inspected Xray model code into another file resource pack does not change its content verdict",
       "Five Whys: disconnect -> server deadline expired -> ServerLogin discarded the client custom payload before JEM Security -> jem_security:main was absent from the pre-auth allowlist -> the security and authentication modules lacked an explicit pre-auth channel contract",
+      "Production evidence on 2026-10-31: the client received the server challenge and logged a nominal send at 11:13:40, but MineRENT recorded no client_attested event and disconnected at 11:13:53. The 1.0.6 helper logged success even when its additional isRemotePresent guard skipped the send. Challenge replies now use SimpleChannel.reply on the proven inbound NetworkEvent context",
       "Local acceptance verified on 2026-10-29: test jem entered 127.0.0.1:31604, the server audit recorded client_attested for JEM Security 1.0.2, and the connection remained active beyond the deadline"
     ],
     "unresolved": [

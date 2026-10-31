@@ -98,8 +98,12 @@ public final class SecurityNetwork {
                 .decoder(buffer -> new AttestationRequest())
                 .consumerNetworkThread((packet, context) -> {
                     var networkContext = context.get();
-                    Connection connection = networkContext.getNetworkManager();
-                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> SecurityClient.respondToAttestationRequest(connection));
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                        Attestation response = SecurityClient.attestationForServerChallenge();
+                        CHANNEL.reply(response, networkContext);
+                        LOGGER.info("JEM Security replied to the server challenge with {} mods and {} resource packs",
+                                response.mods().size(), response.packs().size());
+                    });
                     networkContext.setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(PackAttempt.class, 4, NetworkDirection.PLAY_TO_SERVER)
@@ -112,8 +116,8 @@ public final class SecurityNetwork {
                 }).add();
     }
 
-    public static void sendAttestation(Connection connection, List<String> mods, List<String> packs, String clientVersion, String blockedPackId) {
-        sendToServer(connection, new Attestation(List.copyOf(mods), List.copyOf(packs), clientVersion, blockedPackId));
+    public static boolean sendAttestation(Connection connection, List<String> mods, List<String> packs, String clientVersion, String blockedPackId) {
+        return sendToServer(connection, new Attestation(List.copyOf(mods), List.copyOf(packs), clientVersion, blockedPackId));
     }
 
     public static void sendLogChunk(Connection connection, UUID token, int index, int total, String text) {
@@ -124,9 +128,12 @@ public final class SecurityNetwork {
         sendToServer(connection, new PackAttempt(packId));
     }
 
-    private static void sendToServer(Connection connection, Object packet) {
-        if (connection != null && connection.isConnected() && CHANNEL.isRemotePresent(connection))
+    private static boolean sendToServer(Connection connection, Object packet) {
+        if (connection != null && connection.isConnected() && CHANNEL.isRemotePresent(connection)) {
             CHANNEL.sendTo(packet, connection, NetworkDirection.PLAY_TO_SERVER);
+            return true;
+        }
+        return false;
     }
 
     public static void expect(ServerPlayer player) {

@@ -47,13 +47,13 @@ public final class SecurityClient {
         cachedAttestation = snapshot();
     }
 
-    public static void respondToAttestationRequest(Connection connection) {
+    public static SecurityNetwork.Attestation attestationForServerChallenge() {
         SecurityNetwork.Attestation attestation = cachedAttestation;
         if (attestation == null) {
             attestation = snapshot();
             cachedAttestation = attestation;
         }
-        send(connection, attestation, "server_challenge");
+        return attestation;
     }
 
     public static void resourcePacksChanged() {
@@ -80,9 +80,9 @@ public final class SecurityClient {
     }
 
     private static void send(Connection connection, SecurityNetwork.Attestation attestation, String trigger) {
-        SecurityNetwork.sendAttestation(connection, attestation.mods(), attestation.packs(), attestation.clientVersion(), attestation.blockedPackId());
-        LOGGER.info("JEM Security sent client attestation from {} with {} mods and {} resource packs",
-                trigger, attestation.mods().size(), attestation.packs().size());
+        if (SecurityNetwork.sendAttestation(connection, attestation.mods(), attestation.packs(), attestation.clientVersion(), attestation.blockedPackId()))
+            LOGGER.info("JEM Security sent client attestation from {} with {} mods and {} resource packs",
+                    trigger, attestation.mods().size(), attestation.packs().size());
     }
 
     private static Connection activeConnection() {

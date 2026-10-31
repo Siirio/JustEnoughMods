@@ -1,3 +1,14 @@
+## 2026-10-31 - Bind JEM Security attestation to the server challenge context
+
+- User reported that production now reached the world but MineRENT disconnected with "JEM Security did not receive the required client attestation"
+- Bug / Both Sided / JEM Security 1.0.6 received the challenge and logged a nominal response at 11:13:40, but its generic client sender performed a second `isRemotePresent` lookup and logged success even when that guard could suppress the packet, so MineRENT received no attestation and enforced its deadline at 11:13:53 / in testing
+- Five Whys: MineRENT disconnected because the deadline expired; the server never accepted an attestation; the 1.0.6 response used the generic optional-event sender; that sender could return without queuing after a second channel-presence lookup; the required challenge path failed to preserve Forge's already-proven inbound reply context as its transport owner
+- JEM Security 1.0.7 answers the required challenge with Forge `SimpleChannel.reply` on the exact inbound `NetworkEvent.Context`. Optional resource-pack and audit sends retain the remote-channel guard, and their success log is emitted only when a packet was actually queued
+- Server authority, the fail-closed deadline, attestation contents, banned-mod and resource-pack policy, Anti-Xray, audit logging and explicit JEM Freecam allowance are unchanged
+- MineRENT loaded JEM Security 1.0.7 and reached `Done` at 2026-10-31 11:49 Asia/Yekaterinburg
+- MineRENT AutoModpack published content token `b3b16bde689df823f19c00ad9b18a4ad8f733aa7` with only the reviewed manifest change and JEM Security 1.0.5 -> 1.0.7 replacement. The post-publish preview reported `Diff: +0 ~0 -0`
+- The stable client already contains the exact reviewed JEM Security and manifest bytes. Its first connection to the new production head entered native AutoModpack reconciliation and disconnected before the JEM Security challenge stage, so player acceptance remains `in testing` until the native restart finishes and a successful `client_attested` event is observed
+
 ## 2026-10-31 - Restore explicit preload consent for JEM JAR updates
 
 - User asked why accepting the risk did not allow the update and explicitly requested restoring the trust confirmation in bootstrap
