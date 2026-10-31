@@ -41,6 +41,8 @@ public final class JEMCompat {
         MinecraftForge.EVENT_BUS.register(ElementalImpactEvents.class);
         MinecraftForge.EVENT_BUS.register(TransportEvents.class);
         MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.feature.spawner.SpawnEggPolicy.class);
+        if (ModList.get().isLoaded("audioyt_1_20_1"))
+            MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.compat.audioyt.AudioYtJukeboxEvents.class);
         if (ModList.get().isLoaded("kaleidoscope_end")) MinecraftForge.EVENT_BUS.register(VoidWalkerEvents.class);
         if (ModList.get().isLoaded("handcrafted") && ModList.get().isLoaded("bbb"))
             MinecraftForge.EVENT_BUS.register(com.siirio.jemcompat.compat.handcrafted.UnifiedHammer.class);

@@ -83,6 +83,11 @@ public final class OptionalMixins implements IMixinConfigPlugin {
             return FMLLoader.getDist().isDedicatedServer()
                     && FMLLoader.getLoadingModList().getModFileById("serverlogin") != null;
         }
+        if (mixinClassName.equals("com.siirio.jemcompat.mixin.audioyt.AudioYtJukeboxMonitorMixin")) {
+            var file = FMLLoader.getLoadingModList().getModFileById("audioyt_1_20_1");
+            return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("audioyt_1_20_1")
+                    && mod.getVersion().toString().equals("1.0.1"));
+        }
         if (mixinClassName.equals("com.siirio.jemcompat.mixin.trading.FabricTypeAwareTradeMixin")) {
             var file = FMLLoader.getLoadingModList().getModFileById("fabric_object_builder_api_v1");
             return file != null && file.getMods().stream().anyMatch(mod -> mod.getModId().equals("fabric_object_builder_api_v1")
