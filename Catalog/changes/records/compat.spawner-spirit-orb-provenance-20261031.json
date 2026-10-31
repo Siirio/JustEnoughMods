@@ -1,0 +1,91 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.spawner-spirit-orb-provenance-20261031",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "blocks",
+      "value": "minecraft:spawner"
+    },
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "paraglider:spirit_orb"
+    }
+  ],
+  "precedence": {
+    "layer": "compatibility_policy",
+    "priority": 70,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Keep Paraglider's finite natural-spawner reward while denying repeat rewards from player-placed spawners",
+    "modifiers": [
+      {
+        "property": "loot.spirit_orb_from_spawner",
+        "operation": "derive",
+        "before": "Every broken minecraft:spawner qualifies, including the same Mineable Spawner block after repeated placement",
+        "after": "Natural spawners retain Paraglider's configured reward, while a player-placed spawner is persistently marked and denied the modifier reward",
+        "conditions": [
+          "Paraglider 20.1.3 is installed",
+          "The loot context contains the placed spawner block entity"
+        ],
+        "notes": "The generic spawner item, native Paraglider reward count and ordinary spawner behavior remain owned by their original mods"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "installed_mod_loot_provenance_adapter",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawner/SpawnerSpiritOrbPolicy.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/spawner/SpawnerSpiritOrbLootMixin.java",
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/OptionalMixins.java",
+      "Mods/JEMCompat/src/main/resources/jemcompat.mixins.json"
+    ]
+  },
+  "rationale": {
+    "purpose": "Close an infinite Spirit Orb loop without deleting the intended exploration reward",
+    "decision_source": "User bug report on 2026-10-31",
+    "user_requested": "Prevent repeatedly breaking and replacing a movable spawner from farming unlimited Paraglider Spirit Orbs",
+    "codex_choices": "Persist player-placement provenance on the spawner block entity and suppress only Paraglider's reward for that provenance"
+  },
+  "introduced": {
+    "date": "2026-10-31",
+    "commit": "SELF",
+    "action": "add_spawner_reward_provenance",
+    "summary": "Mark player-placed spawners and reject their Paraglider Spirit Orb modifier reward"
+  },
+  "history": [
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "add_spawner_reward_provenance",
+      "summary": "Preserve the first natural-spawner reward while making every later placement ineligible",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/feature/spawner/SpawnerSpiritOrbPolicy.java",
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/mixin/spawner/SpawnerSpiritOrbLootMixin.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "spawner_loot",
+      "paraglider_progression",
+      "mineable_spawner_compatibility"
+    ],
+    "relations": [
+      "Player placement -> persistent spawner provenance -> Paraglider modifier admission",
+      "Natural spawner break -> unchanged Paraglider configured Spirit Orb reward",
+      "Mineable generic spawner item -> later placement -> no renewable Spirit Orb reward"
+    ],
+    "notes": [
+      "Spawner contents, Silk Touch handling, spawning rules and Paraglider's reward count are unchanged",
+      "A previously placed unmarked spawner can grant at most one transitional reward before its next placement receives provenance"
+    ],
+    "unresolved": [
+      "Player gameplay acceptance remains required"
+    ]
+  }
+}

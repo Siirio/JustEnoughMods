@@ -15,3 +15,5 @@ The sole former Menu Support consumer now uses private `client.menu.VanillaGuiPl
 Native crop tags and the optional Spawn sunflower seed-growth adapter are documented in [Serene Seasons crop compatibility](SEASONS.md), including exact coverage, preserved windows and growth-route exceptions.
 
 For the exact installed AudioYT 1.0.1, JEMCompat replaces its repeated 33x17x33 nearby-block search with event-driven discovery of jukebox block entities when an already loaded chunk enters the server. AudioYT retains ownership of disc changes, playback state and its loaded-only known-jukebox checks. The adapter never requests a missing chunk.
+
+For the exact installed Paraglider 20.1.3, natural spawners retain the native Spirit Orb exploration reward. A spawner placed by a player receives persistent provenance, and Paraglider's spawner loot modifier skips that block on every later break. Moving a discovered spawner therefore cannot turn the finite reward into a renewable loop.

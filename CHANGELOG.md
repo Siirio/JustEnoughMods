@@ -1,3 +1,17 @@
+## 2026-10-31 - Close the movable-spawner orb loop and preserve Magnet tooltips
+
+- User reported unlimited Paraglider Spirit Orb farming by breaking and replacing a Mineable Spawner, and a Minecraft crash when attempting to take Item Magnet
+- Bug / Server Sided / Paraglider 20.1.3 admits every `minecraft:spawner` block to its Spirit Orb global loot modifier while Mineable Spawner 2.4.2 drops a reusable generic spawner with no placement provenance, so the same block can earn the finite exploration reward after every replacement / in testing
+- Five Whys: Spirit Orbs were renewable because every replacement qualified again, qualification used only the spawner block state, the dropped item carried no natural-origin identity, Paraglider therefore could not distinguish discovery from player placement, and the integration lacked a persistent provenance signal at the loot boundary
+- JEMCompat 3.10.2 marks every player-placed spawner persistently and skips only Paraglider's spawner reward for that provenance. Natural spawners retain the native configured reward, while spawner contents, Silk Touch behavior and spawning rules remain unchanged
+- Bug / Client Sided / JEMCompat source-name filtering removed Item Magnet's only tooltip component because the native item title and mod display name are both "Item Magnet", leaving CreativeModeInventoryScreen to insert its tab label at index 1 of an empty list / in testing
+- Five Whys: the creative screen crashed because its tooltip list was empty, JEMCompat removed the only title component, the title matched an installed mod display name, the filter treated the title and source metadata as interchangeable, and it had no invariant protecting tooltip line zero
+- JEMCompat now filters source-mod metadata only after the title line. Item titles remain native and the existing hidden-source-name preference is preserved
+- Production JAR packaging completed successfully. JEMCompat 3.10.2 SHA-256 is `58e33853523dc4c71ca95a45d504d9921f037816e9e73953fe576288b5b54a77`
+- The ordinary local dedicated server loaded JEMCompat 3.10.2 and reached `Done (17.922s)` on the preserved Major Update 4 world
+- Native AutoModpack published content token `b132227d1acbd95f02b1eeb38bdf224076be7583` with the reviewed `+1 ~1 -1` JEMCompat replacement. The closed `test jem` profile applied that head natively with the exact artifact hash and no pending transaction, and the final server preview reported `Diff: +0 ~0 -0`
+- No client launch or gameplay acceptance was performed. Both defects remain `in testing` until the player verifies a natural and replaced spawner plus Item Magnet pickup
+
 ## 2026-10-31 - Bind JEM Security attestation to the server challenge context
 
 - User reported that production now reached the world but MineRENT disconnected with "JEM Security did not receive the required client attestation"

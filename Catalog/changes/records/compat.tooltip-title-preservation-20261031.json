@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "change_id": "compat.tooltip-title-preservation-20261031",
+  "status": "active",
+  "selectors": [
+    {
+      "type": "id",
+      "registry": "items",
+      "value": "item_magnet:item_magnet"
+    }
+  ],
+  "precedence": {
+    "layer": "client_presentation",
+    "priority": 70,
+    "overrides": []
+  },
+  "change": {
+    "summary": "Hide optional source-mod metadata without ever removing an item's title line",
+    "modifiers": [
+      {
+        "property": "tooltip.source_mod_filter",
+        "operation": "derive",
+        "before": "Every tooltip component equal to any installed mod display name was removed, including line zero when an item and its mod shared a name",
+        "after": "Only metadata components after the immutable title line are eligible for source-mod filtering",
+        "notes": "Item Magnet keeps its native title even though both the item and mod display names are Item Magnet"
+      }
+    ]
+  },
+  "cause": {
+    "owner": "JEMCompat",
+    "kind": "client_tooltip_presentation_invariant",
+    "source_files": [
+      "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/SourceNameTooltipFilter.java"
+    ]
+  },
+  "rationale": {
+    "purpose": "Prevent creative inventory tooltip rendering from receiving an empty list",
+    "decision_source": "User crash report and exact client crash evidence on 2026-10-31",
+    "user_requested": "Fix Minecraft crashing when attempting to take Item Magnet",
+    "codex_choices": "Make line zero structurally ineligible for mod-name removal instead of special-casing Item Magnet"
+  },
+  "introduced": {
+    "date": "2026-10-31",
+    "commit": "SELF",
+    "action": "preserve_tooltip_title",
+    "summary": "Restrict source-mod filtering to tooltip metadata after the title"
+  },
+  "history": [
+    {
+      "date": "2026-10-31",
+      "commit": "SELF",
+      "action": "preserve_tooltip_title",
+      "summary": "Keep every item title while retaining the user's hidden source-mod preference",
+      "source_files": [
+        "Mods/JEMCompat/src/main/java/com/siirio/jemcompat/client/SourceNameTooltipFilter.java"
+      ]
+    }
+  ],
+  "impacts": {
+    "systems": [
+      "client_tooltips",
+      "creative_inventory"
+    ],
+    "relations": [
+      "Native item title -> preserved line zero -> non-empty creative tooltip",
+      "Source-mod metadata after title -> existing optional filter"
+    ],
+    "notes": [
+      "No item acquisition, inventory, magnet behavior or server authority changes"
+    ],
+    "unresolved": [
+      "Player gameplay acceptance remains required"
+    ]
+  }
+}
