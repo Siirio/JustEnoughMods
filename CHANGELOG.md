@@ -1,3 +1,15 @@
+## 2026-10-31 - Remove Major Update 4 from MineRENT production
+
+- User clarified that JEM Advancements 5.3.0, Sitting Plus, Advancement Frames, Icy's Better Horses and the other Major Update 4 files belong only to the unfinished `feature/major-update-4` work and must not be present on MineRENT
+- Bug / Both Sided / MineRENT AutoModpack was published directly from the feature checkout even though `develop`, `origin/develop` and `origin/main` still pointed to production commit `b244bda4a`, so production clients received feature-only Forge channels that the dedicated server did not install / in testing
+- Five Whys: production clients could not connect because their channel list contained unfinished mods, those mods came from AutoModpack generation 17, generation 17 was built from the physical `Client/ManagedPack` state of the active feature checkout, MineRENT publication did not prove that the source snapshot belonged to the approved production branch, and the established feature to develop to main promotion boundary was bypassed during an emergency client update
+- Native history proved generation 16 with content token `b3b16bde689df823f19c00ad9b18a4ad8f733aa7` was the final pre-feature production state, while generation 17 token `d27a271` introduced the characteristic `+12 ~2 -9` Major Update 4 delta and generation 18 changed only the excluded Bootstrap boundary
+- MineRENT AutoModpack was reverted to generation 16 without deleting the feature branch or its local managed source
+- The physical MineRENT host source was reconstructed byte-for-byte from generation 16's native object store, restoring 13 target files, removing 13 feature-only files and verifying every restored SHA-1
+- Final native preview reports content token `b3b16bd`, `Diff: +0 ~0 -0` and no catalogue changes, so a later publication cannot silently reintroduce the leaked feature snapshot from the host directory
+- The dedicated server contained only one leaked replacement, JEM Holidays 1.0.7. It was moved to `/backups/jem_holidays-1.0.7-feature-leak-20261031.jar`, exact generation 16 JEM Holidays 1.0.6 was restored with SHA-1 `20e0d7cc8963b706aa64bf3ef9805e73978fbe97`, and MineRENT restarted successfully with its SRV target port open
+- The local `feature/major-update-4` checkout and its unfinished implementation remain intact. The running stable client still needs to close and apply the native rollback before player acceptance can be recorded
+
 ## 2026-10-31 - Restore the proven jem.9 Bootstrap workflow
 
 - User rejected the simplified Bootstrap workflow after another failed production update, supplied the previously working JAR and explicitly required that exact Bootstrap and its separate confirmation screens remain in use
