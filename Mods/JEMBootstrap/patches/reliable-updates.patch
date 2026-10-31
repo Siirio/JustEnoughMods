@@ -11517,10 +11517,41 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +        return handleBackOnEscape(this::cancel);
 +    }
 +}
+diff --git a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
+--- a/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
++++ b/core/src/main/java/pl/skidam/automodpack_core/update/UpdateTransactionValidator.java
+@@ -99,7 +99,7 @@ public final class UpdateTransactionValidator {
+ 		validateManifest(target, transaction.plan().modpackId());
+ 		validateSelectionMetadata(transaction);
+ 		if (transaction.purpose == UpdateTransaction.Purpose.MODPACK_UPDATE) validateGeneratedCopies(transaction);
+-		validateStoredClientState(transaction, record);
++		validateStoredClientState();
+ 		if (transaction.plan().plannedClientConfig() == null) throw new IOException("Planned client config is missing");
+ 		if (transaction.purpose == UpdateTransaction.Purpose.MODPACK_UPDATE) validatePlannedClientConfig(transaction);
+ 		else validateRemovalClientConfig(transaction);
+@@ -223,7 +223,7 @@ public final class UpdateTransactionValidator {
+ 		}
+ 	}
+ 
+-	private void validateStoredClientState(UpdateTransaction transaction, PackDocument targetRecord) throws IOException {
++	private void validateStoredClientState() throws IOException {
+ 		ClientStorageJsons.ClientGenerationStateFields state = storage.readActiveState();
+ 		if (state == null) return;
+ 		if (!ModpackId.isValid(state.modpackId)) throw new IOException("Active client state modpack ID is invalid");
+@@ -232,9 +232,6 @@ public final class UpdateTransactionValidator {
+ 		PackDocument stateRecord = new ClientGenerationStore(storage).activeDocument()
+ 				.orElseThrow(() -> new IOException("Active client generation is missing: " + state.contentToken));
+ 		if (!state.modpackId.equals(stateRecord.manifest().modpackId())) throw new IOException("Active client state and generation belong to different modpacks");
+-		if (state.modpackId.equals(transaction.plan().modpackId()) && state.contentToken.equals(targetRecord.contentToken())) {
+-			if (!stateRecord.equals(targetRecord)) throw new IOException("Active client state disagrees with its generation record");
+-		}
+ 	}
+ 
+ 	private void validateSelectionMetadata(UpdateTransaction transaction) throws IOException {
 diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/resources/assets/automodpack/lang/en_us.json
 --- a/src/main/resources/assets/automodpack/lang/en_us.json
 +++ b/src/main/resources/assets/automodpack/lang/en_us.json
-@@ -1,409 +1,413 @@
+@@ -1,409 +1,415 @@
 -{
 -  "automodpack.restart.full": "The modpack download is complete.",
 -  "automodpack.restart.update": "The modpack update is ready.",
@@ -12348,7 +12379,7 @@ diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/re
 diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/resources/assets/automodpack/lang/ru_ru.json
 --- a/src/main/resources/assets/automodpack/lang/ru_ru.json
 +++ b/src/main/resources/assets/automodpack/lang/ru_ru.json
-@@ -1,429 +1,433 @@
+@@ -1,429 +1,435 @@
 -{
 -  "automodpack.restart.full": "Загрузка модпака завершена.",
 -  "automodpack.restart.update": "Обновление модпака готово.",

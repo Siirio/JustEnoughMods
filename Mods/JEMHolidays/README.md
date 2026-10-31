@@ -48,5 +48,5 @@ JEM Holidays is the standalone owner for annual JEM presentation and bounded sea
 - During the Halloween calendar window rendered humanoid mobs receive a full-bright vanilla jack-o-lantern over their heads
 - Zombies and their variants, skeletons, villagers, illagers, witches, piglins, endermen and other mobs using a humanoid renderer are included
 - Players, animals, spiders, slimes, creepers, ravagers and other non-humanoid mobs are excluded, so the seasonal decoration never replaces player head equipment or covers unrelated creature silhouettes
-- Pumpkin size follows the mob's rendered bounding-box width and height, preserving a proportional result for babies, ordinary mobs and large bosses
+- Pumpkin size follows the mob's rendered bounding-box width and height, includes vanilla's larger relative baby-head scale, and keeps enough outer margin to cover the complete humanoid head and hat layer for babies, ordinary mobs and large bosses
 - The decoration is presentation-only and does not change equipment, drops, light levels, collision or server state

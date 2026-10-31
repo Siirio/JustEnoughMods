@@ -1,3 +1,20 @@
+## 2026-10-31 - Repair no-op bootstrap updates and fit Halloween mob pumpkins
+
+- User reported that the production client failed after preparing an AutoModpack update and then clarified that seasonal pumpkins were too small to cover mob heads
+- Bug / Client Sided / the active client and current server head could carry the same content token with different legitimate journal records, while bootstrap required the complete records to be equal and rejected the zero-file transition / in testing
+- Five Whys: connection stopped because transaction validation failed, validation compared the active record with the target record, both records described the same file tree but different publication events, `contentToken` intentionally identifies the tree rather than the journal event, and the validator incorrectly treated a newer record for identical content as corrupted active state
+- JEM Bootstrap `jem.15` keeps independent verification of the installed generation witness but no longer requires it to equal a newer target record that the transaction already validates from the server journal
+- Bug / Client Sided / the `jem.14` language patch declared two fewer output lines than it contained, so both generated JSON files ended before their tooltip and closing brace and Minecraft displayed raw translation keys / in testing
+- The corrected patch sizes retain complete valid English and Russian localization resources
+- Bug / Client Sided / Halloween pumpkins used only 72 percent of a humanoid bounding-box width, producing a shell smaller than the vanilla 8 by 8 head and 9 by 9 outer hat layer / in testing
+- JEM Holidays 1.0.7 scales the full-bright jack-o-lantern shell to 25/24 of rendered humanoid width, applies vanilla's 1.5-times relative baby-head scale and uses a 48 percent height cap, covering the complete head and hat layer for adults, babies and large humanoids
+- The existing mob selector is unchanged, so players, creepers and other non-humanoid mobs remain excluded
+- Production artifacts were built and synchronized to the ordinary local Server and managed client source. JEM Bootstrap SHA-256 is `6304c1acff7985970cd25860fc3f78b1737ed3950bec16d0b5686c398ff5c32a`, and JEM Holidays 1.0.7 SHA-256 is `1fc7dad9fee123eadc0fbe21850ac141f5f688414fe0fcaa3f7b46bd4b3f83`
+- The closed stable `JustEnoughMods` profile received only the matching standalone bootstrap JAR, preserving native AutoModpack ownership of every managed file
+- MineRENT loaded JEM Holidays 1.0.7 and the matching bootstrap, reached the running state and reported `halloweenNight=true` for 2026-10-31
+- Native AutoModpack published content token `6cd1f68` with the reviewed `+1 ~1 -1` replacement. The recoverable 1.0.6 backup was moved outside `host-modpack/main` before publication, and the final preview reported `+0 ~0 -0`
+- No client launch or player acceptance was performed. Both defects remain `in testing` until the player completes a native update and visually verifies the mob pumpkin fit
+
 ## 2026-10-31 - Restore the first-install old-file choice
 
 - User explicitly asked to restore the bootstrap screen that asks whether old local files should stay active, while keeping every non-bootstrap local file unchanged

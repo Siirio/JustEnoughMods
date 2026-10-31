@@ -19,6 +19,9 @@ import java.time.LocalDate;
 
 final class HalloweenMobPumpkins {
     private static final float MIN_SCALE = 0.22F;
+    private static final float HEAD_COVERAGE_SCALE = 25.0F / 24.0F;
+    private static final float BABY_HEAD_SCALE = 1.5F;
+    private static final float HEIGHT_LIMIT_SCALE = 0.48F;
 
     private HalloweenMobPumpkins() {
     }
@@ -65,8 +68,9 @@ final class HalloweenMobPumpkins {
     }
 
     private static float pumpkinScale(Mob mob) {
-        float widthScale = mob.getBbWidth() * 0.72F;
-        float heightLimit = mob.getBbHeight() * 0.34F;
+        float modelHeadScale = mob.isBaby() ? BABY_HEAD_SCALE : 1.0F;
+        float widthScale = mob.getBbWidth() * HEAD_COVERAGE_SCALE * modelHeadScale;
+        float heightLimit = mob.getBbHeight() * HEIGHT_LIMIT_SCALE;
         return Math.max(MIN_SCALE, Math.min(widthScale, heightLimit));
     }
 }
