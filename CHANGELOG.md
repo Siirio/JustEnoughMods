@@ -1,3 +1,14 @@
+## 2026-10-31 - Restore the first-install old-file choice
+
+- User explicitly asked to restore the bootstrap screen that asks whether old local files should stay active, while keeping every non-bootstrap local file unchanged
+- Bug / Client Sided / the simplified first-install confirmation hardcoded `setFirstInstallLocalModCleanup(true)`, so the player could approve the complete update but could no longer choose whether detected pre-existing local mods remained active / in testing
+- Five Whys: the choice disappeared because confirmation always requested cleanup, cleanup was hardcoded when the UI was simplified, the prior checkbox was removed with the upstream multi-screen flow, the replacement preserved transaction safety but not this first-install preference, and bootstrap is the only owner that can expose the native local-mod decision before projection
+- JEM Bootstrap revision `jem.14` restores one first-install-only checkbox when old local mods are actually detected. Unchecked remains the safe default and removes those files from the active pack, while checked keeps them active. Removed files still remain in the native instance timeline as a safety copy
+- Risk consent and "Update all" still approve the complete reviewed plan including replacements and deletions. No trust bypass, managed-file copy, active-state edit, cache deletion or AutoModpack generation change was added
+- The production artifact was built from the pinned upstream source and synchronized byte-for-byte to the clean bootstrap installer, ordinary local Server, closed stable `JustEnoughMods` profile and MineRENT. SHA-256 is `da3624251289903956b39144eccdb8c5769870dae350af314443dba6608df8e5`
+- MineRENT restarted successfully, loaded unchanged production content token `d27a271534211afbe224c1d0b130a582a5c2382c` and reached `Done (1.197s)`. The stable profile retains that same active token, remains attached and has no pending update transaction
+- No client launch or first-install player acceptance was performed. The restored choice remains `in testing` until the player sees and exercises it
+
 ## 2026-10-31 - Close the movable-spawner orb loop and preserve Magnet tooltips
 
 - User reported unlimited Paraglider Spirit Orb farming by breaking and replacing a Mineable Spawner, and a Minecraft crash when attempting to take Item Magnet
@@ -20,8 +31,8 @@
 - JEM Security 1.0.7 answers the required challenge with Forge `SimpleChannel.reply` on the exact inbound `NetworkEvent.Context`. Optional resource-pack and audit sends retain the remote-channel guard, and their success log is emitted only when a packet was actually queued
 - Server authority, the fail-closed deadline, attestation contents, banned-mod and resource-pack policy, Anti-Xray, audit logging and explicit JEM Freecam allowance are unchanged
 - MineRENT loaded JEM Security 1.0.7 and reached `Done` at 2026-10-31 11:49 Asia/Yekaterinburg
-- MineRENT AutoModpack published content token `b3b16bde689df823f19c00ad9b18a4ad8f733aa7` with only the reviewed manifest change and JEM Security 1.0.5 -> 1.0.7 replacement. The post-publish preview reported `Diff: +0 ~0 -0`
-- The stable client already contains the exact reviewed JEM Security and manifest bytes. Its first connection to the new production head entered native AutoModpack reconciliation and disconnected before the JEM Security challenge stage, so player acceptance remains `in testing` until the native restart finishes and a successful `client_attested` event is observed
+- MineRENT first published intermediate content token `b3b16bde689df823f19c00ad9b18a4ad8f733aa7` containing only the JEM Security replacement. That incomplete head was superseded before approval by the full production generation `d27a271534211afbe224c1d0b130a582a5c2382c`, whose final preview reported `Diff: +0 ~0 -0`
+- The stable client contains the exact reviewed JEM Security bytes and the complete production generation. Its first connection entered native AutoModpack reconciliation and disconnected before the JEM Security challenge stage, so player acceptance remains `in testing` until a successful `client_attested` event is observed
 
 ## 2026-10-31 - Restore explicit preload consent for JEM JAR updates
 

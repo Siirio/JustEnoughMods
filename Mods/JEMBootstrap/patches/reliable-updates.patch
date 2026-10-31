@@ -10929,7 +10929,7 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ScreenImpl.java b/src/ma
 diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java b/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java
 --- a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java
 +++ b/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScreen.java
-@@ -1,440 +1,131 @@
+@@ -1,440 +1,147 @@
 -package pl.skidam.automodpack.client.ui.screen;
 -
 -import java.util.ArrayList;
@@ -11398,6 +11398,7 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +    private final PreviewPayload later;
 +    private final ReviewActions actions;
 +    private final Screen parent;
++    private boolean keepExistingMods;
 +    private boolean acknowledged;
 +    private boolean finished;
 +    private AbstractWidget downloadButton;
@@ -11427,6 +11428,21 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +        downloadButton = download.widget();
 +        downloadButton.active = acknowledged && !finished;
 +        int bottom = actionAreaTop(ActionAreaLayout.FOOTER_RAIL, height - 28, row);
++        if (welcome != null && !welcome.firstInstallLocalModPaths().isEmpty()) {
++            CheckboxWidget keepOldFiles = new CheckboxWidget(font, 0, 0, panelWidth(BODY),
++                    VersionedText.text("jem.bootstrap.keepOldFiles", welcome.firstInstallLocalModPaths().size()),
++                    keepExistingMods, value -> {
++                        keepExistingMods = value;
++                        actions.setFirstInstallLocalModCleanup().accept(!value);
++                    });
++            String joined = String.join("\n", wrapToWidth(font,
++                    String.join(", ", welcome.firstInstallLocalModPaths()), 240, 8));
++            VersionedScreen.setTooltip(keepOldFiles,
++                    VersionedText.text("jem.bootstrap.keepOldFilesTooltip", joined));
++            keepOldFiles.moveTo(panelLeft(BODY), bottom - keepOldFiles.boxHeight() - 8);
++            addRenderableWidget(keepOldFiles);
++            bottom = keepOldFiles.yPosition();
++        }
 +        CheckboxWidget consent = new CheckboxWidget(font, 0, 0, panelWidth(BODY),
 +                VersionedText.text("jem.bootstrap.consent"), acknowledged, value -> {
 +                    acknowledged = value;
@@ -11458,7 +11474,7 @@ diff --git a/src/main/java/pl/skidam/automodpack/client/ui/screen/PackConfirmScr
 +        downloadButton.active = false;
 +        ScreenManager.waiting(actions.cancelFromPlayer());
 +        if (welcome != null) {
-+            actions.setFirstInstallLocalModCleanup().accept(true);
++            actions.setFirstInstallLocalModCleanup().accept(!keepExistingMods);
 +            actions.startConfirmedUpdate().run();
 +        } else {
 +            later.continueAction().run();
@@ -12325,7 +12341,9 @@ diff --git a/src/main/resources/assets/automodpack/lang/en_us.json b/src/main/re
 +	"jem.bootstrap.files": "Update the modpack",
 +	"jem.bootstrap.consent": "I accept the risk and allow the complete plan",
 +	"jem.bootstrap.download": "Update all",
-+	"jem.bootstrap.remove": "Remove:"
++	"jem.bootstrap.remove": "Remove:",
++	"jem.bootstrap.keepOldFiles": "Keep %s old local file(s) active",
++	"jem.bootstrap.keepOldFilesTooltip": "Checked keeps these old files in the active mods folder. Unchecked removes them from the active pack while a safety copy remains on the instance timeline. Applies to: %s"
 +}
 diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/resources/assets/automodpack/lang/ru_ru.json
 --- a/src/main/resources/assets/automodpack/lang/ru_ru.json
@@ -13191,7 +13209,9 @@ diff --git a/src/main/resources/assets/automodpack/lang/ru_ru.json b/src/main/re
 +	"jem.bootstrap.files": "Обновить сборку",
 +	"jem.bootstrap.consent": "Принимаю риск и разрешаю применить весь план",
 +	"jem.bootstrap.download": "Обновить всё",
-+	"jem.bootstrap.remove": "Удалить:"
++	"jem.bootstrap.remove": "Удалить:",
++	"jem.bootstrap.keepOldFiles": "Оставить активными старые локальные файлы: %s",
++	"jem.bootstrap.keepOldFilesTooltip": "Если отмечено, старые файлы останутся в активной папке mods. Если снято, они будут удалены из активной сборки, а страховочная копия останется в хронологии экземпляра. Применяется к: %s"
 +}
 
 diff --git a/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java b/core/src/main/java/pl/skidam/automodpack_core/client/ModpackUtils.java
