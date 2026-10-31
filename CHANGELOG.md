@@ -8,6 +8,9 @@
 - Skarrier Mobs remains the native owner of its AI, procedures, effects, cooldowns, items and damage. JEM observes only eligible real-player actions and does not disable or patch Skarrier gameplay
 - `Modefite` reflection log spam while an interface is open is a separate render/logging defect and is not the cause of the frozen server ticks
 - No world save, entity, item, quest progress, recipe, loot or native mod JAR is rewritten. Player acceptance and comparative runtime profiling remain pending
+- Production source was exact pushed `develop` commit `0a770ffc3e136b8106913c0bb18d094586d496ef`. MineRENT received matching JEM Advancements 5.2.2, JEM Server 2.0.0-dev and JEM World Boss Tiers 2.5.0-dev artifacts plus the managed manifest, then returned to `Работает`
+- Native AutoModpack preview reported exact diff `+0 ~4 -0`: the managed manifest and those three JARs. Publication completed with content token `4e3998b`, and the second preview returned `+0 ~0 -0`
+- Per the user's explicit deployment scope, the local stable `JustEnoughMods` profile, friend packages and immutable release baseline remain unchanged. The user will receive the published generation through native AutoModpack
 
 ## 2026-10-31 - Remove manual production SHA approval
 
