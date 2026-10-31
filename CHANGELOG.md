@@ -1,3 +1,13 @@
+## 2026-10-31 - Lock production releases to explicitly approved develop
+
+- User required that MineRENT, stable-client and release updates never again originate from a feature branch and use only the exact `develop` snapshot they explicitly approved
+- Bug / Both Sided / the documented `feature -> develop -> main` promotion contract had no executable branch or snapshot gate, so a local AutoModpack generation prepared from `feature/major-update-4` could be reused during production publication / resolved by fail-closed approved-develop preflight
+- Five Whys: unfinished mods reached production because MineRENT received files from the feature checkout, the upload workflow trusted the active filesystem rather than a branch-bound receipt, local `stage-pack-sync` intentionally works on development branches, release commands did not distinguish development publication from production authorization, and no tool compared the release source with an explicitly approved `origin/develop` commit
+- Added `python tools/jem.py production-preflight --approved-develop <full-sha>`. It fetches `origin/develop`, requires the current branch to be exactly `develop`, requires `HEAD == origin/develop == approved SHA`, rejects dirty release-owned source paths and records SHA-256 identities for the actual release and AutoModpack inventories
+- `baseline`, `promote-baseline`, `sync-stable` and every release-package action now require the same full SHA and a matching approval receipt. A branch, commit, controlled-source or ManagedPack byte change invalidates the receipt before mutation
+- Local `stage-pack-sync`, native publication to `test jem`, `sync-test` and native recovery remain available on development branches and cannot create production approval
+- The MineRENT deployment skill, development contract and permanent logic lock now require a second successful preflight immediately before any external MineRENT mutation and forbid feature, sandbox, main, detached HEAD and other checkouts as release sources
+
 ## 2026-10-31 - Stabilize the JEM Races login connection snapshot
 
 - User reported that the fully updated production client still lost its MineRENT connection with `Minecraft.getConnection()` returning null while JEM Races requested the underlying network connection, and explicitly prohibited a bootstrap update
